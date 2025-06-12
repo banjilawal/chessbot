@@ -1,4 +1,4 @@
-import unittestfr
+import unittest
 
 from game.board.game_board import GameBoard
 

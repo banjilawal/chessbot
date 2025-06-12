@@ -5,14 +5,20 @@ from game.board.board_square import GameBoardSquare
 
 
 class TestGameBoardSquare(unittest.TestCase):
+    def test_init(self):
+        """Test basic board initialization with valid values"""
+        square = GameBoardSquare(id=1, row=0, column=0)
+        self.assertIsNotNone(square)
+        self.assertEqual(square.id, 1)
+        self.assertEqual(square.row, 0)
+        self.assertEqual(square.column, 0)
+        self.assertIsNone(square.occupant, None)
 
-    # ID tests
     def test_valid_id(self):
         """Test square creation with valid ID"""
         squares_cell = GameBoardSquare(id=1, row=0, column=0)
         self.assertEqual(squares_cell.id, 1)
 
-    # Row tests
     def test_valid_row(self):
         """Test square creation with valid row"""
         squares_cell = GameBoardSquare(id=1, row=0, column=0)

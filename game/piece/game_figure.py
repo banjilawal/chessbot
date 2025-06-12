@@ -22,7 +22,7 @@ class GameFigure:
 
     @property
     def square(self) -> Optional['GameBoardSquare']:
-        return self._sqaure
+        return self._square
 
     def leave_square(self):
         if self._square is None:
