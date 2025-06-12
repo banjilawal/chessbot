@@ -22,29 +22,6 @@ class GameBoardSquare:
     def occupant(self) -> Optional['GameFigure']:
         return self._occupant
 
-    def occupy(self, game_figure: 'GameFigure') -> None:
-        """
-        Marks the square as occupied by a piece.
-
-        :param game_figure: The game piece to occupy this square
-        :raises ValueError: if piece is None or square is already occupied
-        """
-        if game_figure is None:
-            raise ValueError("a null game piece cannot occupy a square.")
-        if self._occupant is not None:
-            raise ValueError("square already occupied.")
-
-        # Update the new occupant's square reference
-        if game_figure.square != self:
-            game_figure.square = self
-        self._occupant = game_figure
-
-    def vacate(self) -> None:
-        """Marks the square as unoccupied."""
-        if self._occupant:
-            self._occupant.square = None
-        # self._occupant = None
-
     @property
     def occupied(self) -> bool:
         return self._occupant is not None

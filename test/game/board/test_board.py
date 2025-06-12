@@ -1,7 +1,6 @@
-import unittest
+import unittestfr
 
 from game.board.game_board import GameBoard
-
 
 class TestGameBoard(unittest.TestCase):
     def test_init(self):

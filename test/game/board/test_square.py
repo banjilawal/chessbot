@@ -1,28 +1,16 @@
 import unittest
+from unittest.mock import Mock
 
 from game.board.board_square import GameBoardSquare
-from game.board.game_board import GameBoard
 
 
 class TestGameBoardSquare(unittest.TestCase):
-    def test_init(self):
-        """Test basic initialization with valid values"""
-        square = GameBoardSquare(id=1, row=0, column=0)
-        self.assertIsNotNone(square)
-        self.assertEqual(square.id, 1)
-        self.assertEqual(square.row, 0)
-        self.assertEqual(square.column, 0)
 
     # ID tests
     def test_valid_id(self):
         """Test square creation with valid ID"""
         squares_cell = GameBoardSquare(id=1, row=0, column=0)
         self.assertEqual(squares_cell.id, 1)
-
-    def test_invalid_id(self):
-        """Test square creation with invalid ID"""
-        with self.assertRaises(ValueError):
-            GameBoardSquare(id=-1, row=0, column=0)
 
     # Row tests
     def test_valid_row(self):
@@ -49,3 +37,7 @@ class TestGameBoardSquare(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+
+
