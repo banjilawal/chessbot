@@ -2,10 +2,9 @@ import unittest
 from unittest.mock import Mock
 
 
-from exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
+from game.exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
     OccupiedSquareEntryError, SelfOccupiedSquareError, InvalidFigureLengthError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError
-from game.board.board_square import GameBoardSquare
 from game.figure.game_figure import GameFigure
 
 

@@ -1,7 +1,8 @@
 from itertools import count
 from typing import List
 
-from exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
+from game.common.game_constant import GameConstant
+from game.exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from game.board.board_square import GameBoardSquare
 
 from dataclasses import dataclass
@@ -12,6 +13,8 @@ from game.figure.game_figure import GameFigure
 
 @dataclass
 class GameBoard:
+    MINIMUM_NUMBER_OF_ROWS = 2
+    MINIMUM_NUMBER_OF_COLUMNS = 2
     _id: int
     _number_of_rows: int
     _number_of_columns: int
@@ -19,13 +22,13 @@ class GameBoard:
 
     def __post_init__(self):
         """Validate initialization parameters"""
-        if self.id < 0:
-            raise InvalidIdError("figure id cannot be less than 1.")
+        if self._id < GameConstant.MINIMUM_ID:
+            raise InvalidIdError("GameBoard id below minimum value.")
 
-        if self._number_of_rows < 2:
-            raise InvalidNumberOfRowsError("Game board must have at least 2 number_of_rows.");
-        if self._number_of_columns < 2:
-            raise InvalidNumberOfColumnsError("Game board must have at least 2 number_of_columns.");
+        if self._number_of_rows < GameBoard.MINIMUM_NUMBER_OF_ROWS:
+            raise InvalidNumberOfRowsError("GameBoard number_of_rows below minimum value.");
+        if self._number_of_columns < GameBoard.MINIMUM_NUMBER_OF_COLUMNS:
+            raise InvalidNumberOfColumnsError("GameBoard number_of_columns below minimum value.");
 
         index = count(1)
         self._squares = [
@@ -42,7 +45,7 @@ class GameBoard:
 
     @property
     def number_of_columns(self):
-        return self.number_of__columns
+        return self.number_of_columns
 
     @property
     def squares(self):

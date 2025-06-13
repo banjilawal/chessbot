@@ -30,7 +30,6 @@ class InvalidFigureLengthError(GameError):
 class FigureAreaBelowLimitError(GameError):
     """Raised when a figure's area is below the limit"""
 
-
 class InvalidIdError(GameError):
     """Raised when an id iss not valid for the game"""
     pass
@@ -60,4 +59,12 @@ class SquareOwnershipError(GameError):
 
 class NoSquareToLeaveError(GameError):
     """Raised when attempting to leave a square while not occupying any"""
+    pass
+
+class NegativeRowError(GameError):
+    """Raised GameBoardSquare cannot be on a negative row."""
+    pass
+
+class NegativeColumnError(GameError):
+    """GameBoardSquare cannot be on a negative column."""
     pass

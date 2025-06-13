@@ -1,8 +1,7 @@
-from typing import List, Union, Optional
 from dataclasses import dataclass
 from typing import Optional
 
-from exception.exception import InvalidIdError, InvalidFigureLengthError, InvalidFigureHeightError, \
+from game.exception.exception import InvalidIdError, InvalidFigureLengthError, InvalidFigureHeightError, \
     NullSquareEntryError, OccupiedSquareEntryError, SquareOwnershipError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError, SelfOccupiedSquareError
 from game.board.board_square import GameBoardSquare
