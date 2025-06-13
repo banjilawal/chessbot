@@ -16,15 +16,20 @@ class TestGameBoardSquare(unittest.TestCase):
 
     def test_valid_id(self):
         """Test square creation with valid ID"""
-        squares_cell = GameBoardSquare(id=1, row=0, column=0)
-        self.assertEqual(squares_cell.id, 1)
+        square = GameBoardSquare(id=1, row=0, column=0)
+        self.assertEqual(square.id, 1)
+
+    def test_invalid_id_throws_error(self):
+        """Test square creation with ivalid ID"""
+        with self.assertRaises(ValueError):
+            GameBoardSquare(id=-1, row=0, column=-1)
 
     def test_valid_row(self):
         """Test square creation with valid row"""
         squares_cell = GameBoardSquare(id=1, row=0, column=0)
         self.assertEqual(squares_cell.row, 0)
 
-    def test_invalid_row(self):
+    def test_invalid_row_throws_error(self):
         """Test square creation with invalid row"""
         with self.assertRaises(ValueError):
             GameBoardSquare(id=1, row=-1, column=0)
@@ -35,7 +40,7 @@ class TestGameBoardSquare(unittest.TestCase):
         squares_cell = GameBoardSquare(id=1, row=0, column=0)
         self.assertEqual(squares_cell.column, 0)
 
-    def test_invalid_column(self):
+    def test_invalid_colum_throws(self):
         """Test square creation with invalid column"""
         with self.assertRaises(ValueError):
             GameBoardSquare(id=1, row=0, column=-1)
