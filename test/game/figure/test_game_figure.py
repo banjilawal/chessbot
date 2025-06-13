@@ -61,17 +61,25 @@ class TestGameFigure(unittest.TestCase):
         with self.assertRaises(NoSquareToLeaveError):
             self.figure.leave_square()
 
+    def test_create_figure_with_valid_length(self):
+        figure = GameFigure(_id=1, _length=2, _height=3)
+        self.assertGreaterEqual(figure._length, GameFigure.MINIMUM_LENGTH)
+
     def test_invalid_length_throws_error(self):
         """Test figure creation with an invalid length"""
         with self.assertRaises(InvalidFigureLengthError):
             GameFigure(_id=1, _length=0, _height=2)
+
+    def test_create_figure_with_valid_height(self):
+        figure = GameFigure(_id=1, _length=2, _height=3)
+        self.assertGreaterEqual(figure._height, GameFigure.MINIMUM_HEIGHT)
 
     def test_invalid_height_throws_error(self):
         """Test figure creation with invalid height"""
         with self.assertRaises(InvalidFigureHeightError):
             GameFigure(_id=1, _length=2, _height=0)
 
-    def test_valid_id(self):
+    def test_create_figure_with_valid_id(self):
         """Test figure creation with valid ID"""
         figure = GameFigure(_id=1, _length=2, _height=3)
         self.assertEqual(figure.id, 1)

@@ -9,6 +9,8 @@ from game.board.board_square import GameBoardSquare
 
 @dataclass
 class GameFigure:
+    MINIMUM_LENGTH = 1  # public static final int
+    MINIMUM_HEIGHT = 1
     _id: int
     _length: int
     _height: int
