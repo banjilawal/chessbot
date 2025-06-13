@@ -30,7 +30,7 @@ class GameBoardSquare:
         status = f"Occupied by {self._occupant}" if self.occupied else "Empty"
         return f"Square({self.row}, {self.column}) - {status}"
 
-# from game.piece.game_figure import GameFigure
+# from game.figure.game_figure import GameFigure
 #
 # class GameBoardSquare:
 #     def __init__(self, id: int, row: int, column: int):
@@ -95,12 +95,12 @@ class GameBoardSquare:
 #
 #     def occupy(self, game_figure: GameFigure):
 #         """
-#         Marks the square as occupied by a piece or player.
+#         Marks the square as occupied by a figure or player.
 #
 #         :param game_figure: The object or identifier representing the occupant.
 #         """
 #         if game_figure is None:
-#             raise ValueError("a null game piece cannot occupy a square.")
+#             raise ValueError("a null game figure cannot occupy a square.")
 #
 #         if self.occupant is not None:
 #             raise ValueError("square already occupied.")
