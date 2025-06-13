@@ -84,11 +84,15 @@ class TestGameFigure(unittest.TestCase):
         figure = GameFigure(_id=1, _length=2, _height=3)
         self.assertEqual(figure.id, 1)
 
-
     def test_invalid_id_throws_error(self):
         """Test figure creation with invalid ID"""
         with self.assertRaises(InvalidIdError):
             GameFigure(_id=-1, _length=2, _height=2)
+
+    def test_area_of_figure_greater_or_equal_minimum_area(self):
+        """Test figure area is greater than or equal to the minimum area"""
+        figure = GameFigure(_id=1, _length=2, _height=3)
+        self.assertGreaterEqual(figure.area(), GameFigure.MINIMUM_AREA)
 
 if __name__ == '__main__':
     unittest.main()

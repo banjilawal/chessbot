@@ -11,6 +11,7 @@ from game.board.board_square import GameBoardSquare
 class GameFigure:
     MINIMUM_LENGTH = 1  # public static final int
     MINIMUM_HEIGHT = 1
+    MINIMUM_AREA = 2
     _id: int
     _length: int
     _height: int
@@ -22,13 +23,13 @@ class GameFigure:
         if self._id < 1:
             raise InvalidIdError("figure id cannot be less than 1.")
 
-        if self._length < 1:
+        if self._length < GameFigure.MINIMUM_LENGTH:
             raise InvalidFigureLengthError("figure length cannot be less than 1.")
 
-        if self._height < 1:
+        if self._height < GameFigure.MINIMUM_HEIGHT:
             raise InvalidFigureHeightError("figure height cannot be less than 1.")
 
-        if self._height * self._length < 2:
+        if self._height * self._length < GameFigure.MINIMUM_AREA:
             raise FigureAreaBelowLimitError("The area occupied by the figure cannot be less than 2.")
 
     @property
