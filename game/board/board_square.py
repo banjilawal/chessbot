@@ -1,8 +1,13 @@
 from dataclasses import dataclass
-from typing import Optional
+from itertools import count
+from typing import Optional, List
+
+import pygame
 
 from game.common.game_constant import GameConstant
-from game.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
+from game.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError, InvalidNumberOfRowsError, \
+    InvalidNumberOfColumnsError
+from game.figure.game_figure import GameFigure
 
 
 @dataclass
