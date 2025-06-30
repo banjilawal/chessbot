@@ -5,12 +5,12 @@ import pygame
 
 from game.common.game_constant import GameConstant
 from game.exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
-from game.model.square.board_square import GameBoardSquare
+from game.model.cell.cell import Cell
 
 from dataclasses import dataclass
 from typing import Optional
 
-from game.model.occupy.game_figure import GameFigure
+from game.model.occupant.obstacle import Obstacle
 
 @dataclass
 class GameBoard:
@@ -19,7 +19,7 @@ class GameBoard:
     id: int
     num_rows: int
     num_columns: int
-    figures: Optional[List[GameFigure]] = None
+    figures: Optional[List[Obstacle]] = None
 
     # Drawing constants as class attributes
     SQUARE_SIZE_IN_PIXELS = 40
@@ -43,7 +43,7 @@ class GameBoard:
         index = count(1)
         self._squares = [
             [
-                GameBoardSquare(_id=next(index), _row=row, _column=column)
+                Cell(_id=next(index), _row=row, _column=column)
                 for column in range(self.num_columns)
             ]
             for row in range(self.num_rows)

@@ -3,27 +3,27 @@ from typing import Optional
 
 from game.common.game_constant import GameConstant
 from game.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
-from game.model.occupy.game_figure import GameFigure
+from game.model.occupant.obstacle import Obstacle
 
 
 @dataclass
-class GameBoardSquare:
+class Cell:
     id: int
     row: int
     column: int
-    occupant: Optional['GameFigure'] = None
+    occupant: Optional['Obstacle'] = None
 
     def __post_init__(self):
         """Validate initialization parameters"""
         if self.id < GameConstant.MINIMUM_ID:
-            raise InvalidIdError("GameBoardSquare id below minimum value.")
+            raise InvalidIdError("Cell id below minimum value.")
         if self.row < 0:
-            raise NegativeRowError("GameBoardSquare cannot be on a negative row.")
+            raise NegativeRowError("Cell cannot be on a negative row.")
         if self.column < 0:
-            raise NegativeColumnError("GameBoardSquare cannot be on a negative column.")
+            raise NegativeColumnError("Cell cannot be on a negative column.")
 
     @property
-    def occupant(self) -> Optional['GameFigure']:
+    def occupant(self) -> Optional['Obstacle']:
         return self.occupant
 
     @property

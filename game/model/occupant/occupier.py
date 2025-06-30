@@ -4,7 +4,7 @@ from typing import Optional, List
 
 from gi.overrides.Gdk import Color
 
-from game.model.square.board_square import GameBoardSquare
+from game.model.cell.cell import Cell
 from game.common.game_coordinate import GameCoordinate
 
 
@@ -15,7 +15,7 @@ class Occupier(ABC):
     _length: int
     _height: int
     _coordinates: [GameCoordinate]
-    _squares: Optional[List[GameBoardSquare]]
+    _squares: Optional[List[Cell]]
 
     def __init__(self, _id: int, color: Color, length: int, height: int):
         self._id = _id
@@ -24,7 +24,7 @@ class Occupier(ABC):
         self._height = height
 
         self._coordinates = [GameCoordinate]
-        self.square = Optional[List[GameBoardSquare]]
+        self.square = Optional[List[Cell]]
 
     @property
     def id(self):
