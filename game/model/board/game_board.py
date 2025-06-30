@@ -75,7 +75,7 @@ class GameBoard:
                     color = light_color
                 else:
                     color = dark_color
-
+g
                 pygame.draw.rect(screen, color, (left, top, square_size, square_size))
                 pygame.draw.rect(screen, border_color, (left, top, square_size, square_size), 1)
 
