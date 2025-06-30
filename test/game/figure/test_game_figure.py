@@ -5,7 +5,7 @@ from unittest.mock import Mock
 from game.exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
     OccupiedSquareEntryError, SelfOccupiedSquareError, InvalidFigureLengthError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError
-from game.figure.game_figure import GameFigure
+from game.occupy.game_figure import GameFigure
 
 
 class TestGameFigure(unittest.TestCase):
@@ -20,12 +20,12 @@ class TestGameFigure(unittest.TestCase):
         self.figure = GameFigure(_id=1, _length=2, _height=3)
 
     def test_constructing_figure_with_valid_id(self):
-        """Test figure creation with valid ID"""
+        """Test occupy creation with valid ID"""
         figure = GameFigure(_id=1, _length=2, _height=3)
         self.assertEqual(figure.id, 1)
 
     def test_constructing_figure_with_invalid_id_raises_error(self):
-        """Test figure creation with invalid ID"""
+        """Test occupy creation with invalid ID"""
         with self.assertRaises(InvalidIdError):
             GameFigure(_id=-1, _length=2, _height=2)
 
@@ -34,7 +34,7 @@ class TestGameFigure(unittest.TestCase):
         self.assertGreaterEqual(figure._length, GameFigure.MINIMUM_LENGTH)
 
     def test_invalid_figure_length_throws_error(self):
-        """Test figure creation with an invalid length"""
+        """Test occupy creation with an invalid length"""
         with self.assertRaises(InvalidFigureLengthError):
             GameFigure(_id=1, _length=0, _height=2)
 
@@ -43,12 +43,12 @@ class TestGameFigure(unittest.TestCase):
         self.assertGreaterEqual(figure._height, GameFigure.MINIMUM_HEIGHT)
 
     def test_invalid_height_throws_error(self):
-        """Test figure creation with invalid height"""
+        """Test occupy creation with invalid height"""
         with self.assertRaises(InvalidFigureHeightError):
             GameFigure(_id=1, _length=2, _height=0)
 
     def test_area_of_figure_greater_or_equal_minimum_area(self):
-        """Test figure area is greater than or equal to the minimum area"""
+        """Test occupy area is greater than or equal to the minimum area"""
         figure = GameFigure(_id=1, _length=2, _height=3)
         self.assertGreaterEqual(figure.area(), GameFigure.MINIMUM_AREA)
 

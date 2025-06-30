@@ -10,7 +10,7 @@ from game.board.board_square import GameBoardSquare
 from dataclasses import dataclass
 from typing import Optional
 
-from game.figure.game_figure import GameFigure
+from game.occupy.game_figure import GameFigure
 
 @dataclass
 class GameBoard:

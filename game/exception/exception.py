@@ -20,15 +20,15 @@ class InvalidIdError(GameError):
     pass
 
 class InvalidFigureHeightError(GameError):
-    """Raised when a figure's height is not valid"""
+    """Raised when a occupy's height is not valid"""
     pass
 
 class InvalidFigureLengthError(GameError):
-    """Raised when a figure's height is not valid"""
+    """Raised when a occupy's height is not valid"""
     pass
 
 class FigureAreaBelowLimitError(GameError):
-    """Raised when a figure's area is below the limit"""
+    """Raised when a occupy's area is below the limit"""
 
 class InvalidIdError(GameError):
     """Raised when an id iss not valid for the game"""
@@ -54,7 +54,7 @@ class SelfOccupiedSquareError(GameError):
     pass
 
 class SquareOwnershipError(GameError):
-    """Raised when attempting to leave a square owned by a different figure."""
+    """Raised when attempting to leave a square owned by a different occupy."""
     pass
 
 class NoSquareToLeaveError(GameError):

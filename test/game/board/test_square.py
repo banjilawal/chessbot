@@ -4,7 +4,7 @@ from unittest.mock import Mock
 from game.board.board_square import GameBoardSquare
 from game.common.game_constant import GameConstant
 from game.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
-from game.figure.game_figure import GameFigure
+from game.occupy.game_figure import GameFigure
 
 
 class TestGameBoardSquare(unittest.TestCase):

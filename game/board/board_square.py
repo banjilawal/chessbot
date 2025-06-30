@@ -7,7 +7,7 @@ import pygame
 from game.common.game_constant import GameConstant
 from game.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError, InvalidNumberOfRowsError, \
     InvalidNumberOfColumnsError
-from game.figure.game_figure import GameFigure
+from game.occupy.game_figure import GameFigure
 
 
 @dataclass

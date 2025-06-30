@@ -19,16 +19,16 @@ class GameFigure:
     def __post_init__(self):
         """Validate initialization parameters"""
         if self._id < 1:
-            raise InvalidIdError("figure id cannot be less than 1.")
+            raise InvalidIdError("occupy id cannot be less than 1.")
 
         if self._length < GameFigure.MINIMUM_LENGTH:
-            raise InvalidFigureLengthError("figure length cannot be less than 1.")
+            raise InvalidFigureLengthError("occupy length cannot be less than 1.")
 
         if self._height < GameFigure.MINIMUM_HEIGHT:
-            raise InvalidFigureHeightError("figure height cannot be less than 1.")
+            raise InvalidFigureHeightError("occupy height cannot be less than 1.")
 
         if self._height * self._length < GameFigure.MINIMUM_AREA:
-            raise FigureAreaBelowLimitError("The area occupied by the figure cannot be less than 2.")
+            raise FigureAreaBelowLimitError("The area occupied by the occupy cannot be less than 2.")
 
     @property
     def id(self):
@@ -51,9 +51,9 @@ class GameFigure:
 
     def leave_square(self):
         if self._square is None:
-            raise NoSquareToLeaveError("figure is not on a square.. No where to leave from.")
+            raise NoSquareToLeaveError("occupy is not on a square.. No where to leave from.")
         if self._square.occupant is not self:
-            raise SquareOwnershipError("square does not belong to this figure you cannot leave.")
+            raise SquareOwnershipError("square does not belong to this occupy you cannot leave.")
 
         # square = self._square
 
@@ -68,13 +68,13 @@ class GameFigure:
             raise NullSquareEntryError("Cannot enter square that does not exist.")
 
         if self._square is square and square.occupant is self:
-            raise SelfOccupiedSquareError("figure is already on this square.")
+            raise SelfOccupiedSquareError("occupy is already on this square.")
 
         if self._square is not None:
             raise ValueError("you have left the old square.")
 
         if square.occupant is not None:
-            raise OccupiedSquareEntryError("square already occupied by another figure you cannot enter.")
+            raise OccupiedSquareEntryError("square already occupied by another occupy you cannot enter.")
 
         self._square = square
         square._occupant = self
@@ -83,10 +83,10 @@ class GameFigure:
     #     if square is None:
     #         raise NullSquareEntryError("Cannot enter square that does not exist.")
     #     if self._square is square and square.occupant is self:
-    #         raise SelfOccupiedSquareError("Cannot enter the square the figure already occupies")
+    #         raise SelfOccupiedSquareError("Cannot enter the square the occupy already occupies")
     #     if self._square is not None:
     #         raise SquareNotVacatedError("You have not left the old square. You cannot enter a new one.")
     #     if square.occupant is not None:
-    #         raise OccupiedSquareEntryError("square already occupied by another figure you cannot enter.")
+    #         raise OccupiedSquareEntryError("square already occupied by another occupy you cannot enter.")
     #     self._square = square
     #     square._occupant = self
