@@ -52,17 +52,3 @@ class Occupier(ABC):
 
     def area(self):
         return self.length * self.height
-
-
-@dataclass
-class Wall(Occupier):
-
-    def __init__(self, _id: int, color: Color, length: int, height: int):
-        super().__init__(_id, color, length, height)
-
-
-@dataclass
-class Wall(Occupier):
-
-    def __init__(self, _id: int, color: Color, length: int, height: int):
-        super().__init__(_id, color, length, height)
