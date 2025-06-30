@@ -5,20 +5,20 @@ import pygame
 
 from game.common.game_constant import GameConstant
 from game.exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
-from game.board.board_square import GameBoardSquare
+from game.model.square.board_square import GameBoardSquare
 
 from dataclasses import dataclass
 from typing import Optional
 
-from game.occupy.game_figure import GameFigure
+from game.model.occupy.game_figure import GameFigure
 
 @dataclass
 class GameBoard:
     MINIMUM_NUMBER_OF_ROWS = 2
     MINIMUM_NUMBER_OF_COLUMNS = 2
     id: int
-    number_of_rows: int
-    number_of_columns: int
+    num_rows: int
+    num_columns: int
     figures: Optional[List[GameFigure]] = None
 
     # Drawing constants as class attributes
@@ -35,30 +35,30 @@ class GameBoard:
     def __post_init__(self):
         if self.id < GameConstant.MINIMUM_ID:
             raise InvalidIdError("GameBoard id below minimum value.")
-        if self.number_of_rows < GameBoard.MINIMUM_NUMBER_OF_ROWS:
-            raise InvalidNumberOfRowsError("GameBoard number_of_rows below minimum value.")
-        if self.number_of_columns < GameBoard.MINIMUM_NUMBER_OF_COLUMNS:
-            raise InvalidNumberOfColumnsError("GameBoard number_of_columns below minimum value.")
+        if self.num_rows < GameBoard.MINIMUM_NUMBER_OF_ROWS:
+            raise InvalidNumberOfRowsError("GameBoard num_rows below minimum value.")
+        if self.num_columns < GameBoard.MINIMUM_NUMBER_OF_COLUMNS:
+            raise InvalidNumberOfColumnsError("GameBoard num_columns below minimum value.")
 
         index = count(1)
         self._squares = [
             [
                 GameBoardSquare(_id=next(index), _row=row, _column=column)
-                for column in range(self.number_of_columns)
+                for column in range(self.num_columns)
             ]
-            for row in range(self.number_of_rows)
+            for row in range(self.num_rows)
         ]
 
     @property
     def columns(self):
-        return self.number_of_columns
+        return self.num_columns
 
     @property
     def squares(self):
         return self._squares
 
     def area(self):
-        return self.number_of_rows * self.number_of_columns
+        return self.num_rows * self.num_columns
 
     def draw(self, screen):
         square_size = GameBoard.SQUARE_SIZE_IN_PIXELS
@@ -66,8 +66,8 @@ class GameBoard:
         dark_color = GameBoard.GRAY_DARK
         border_color = GameBoard.BLACK
 
-        for row_index in range(self.number_of_rows):
-            for col_index in range(self.number_of_columns):
+        for row_index in range(self.num_rows):
+            for col_index in range(self.num_columns):
                 left = col_index * square_size
                 top = row_index * square_size
 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     # pygame.display.set_caption("My Pygame Game Board") # Set the window title
 
-    my_board = GameBoard(id=1, number_of_rows=BOARD_ROWS, number_of_columns=BOARD_COLS)
+    my_board = GameBoard(id=1, num_rows=BOARD_ROWS, num_columns=BOARD_COLS)
     running = True
     while running:
         for event in pygame.event.get():

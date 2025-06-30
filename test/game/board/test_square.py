@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import Mock
 
-from game.board.board_square import GameBoardSquare
+from game.model.square.board_square import GameBoardSquare
 from game.common.game_constant import GameConstant
 from game.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
-from game.occupy.game_figure import GameFigure
+from game.model.occupy.game_figure import GameFigure
 
 
 class TestGameBoardSquare(unittest.TestCase):
@@ -55,24 +55,24 @@ class TestGameBoardSquare(unittest.TestCase):
         self.assertFalse(self.square.occupied)
 
     def test_square_is_unoccupied_when_figure_leaves(self):
-        figure: GameFigure = GameFigure(_id=1, _length=2, _height=3)
+        figure: GameFigure = GameFigure(id=1, length=2, height=3)
         figure.enter_square(self.square)
         figure.leave_square()
         self.assertIsNone(self.square._occupant)
 
     def test_figure_leaving_square_looses_ownership(self):
-        figure: GameFigure = GameFigure(_id=1, _length=2, _height=3)
+        figure: GameFigure = GameFigure(id=1, length=2, height=3)
         figure.enter_square(self.square)
         figure.leave_square()
         self.assertNotEqual(self.square._occupant, figure)
 
     def test_square_is_occupied_by_entering_figure(self):
-        figure: GameFigure = GameFigure(_id=1, _length=2, _height=3)
+        figure: GameFigure = GameFigure(id=1, length=2, height=3)
         figure.enter_square(self.square)
         self.assertEqual(self.square.occupant, figure)
 
     def test_figure_entering_square_gains_ownership(self):
-        figure: GameFigure = GameFigure(_id=1, _length=2, _height=3)
+        figure: GameFigure = GameFigure(id=1, length=2, height=3)
         figure.enter_square(self.square)
         self.assertEqual(self.square.occupant, figure)
 

@@ -1,10 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from dataclasses import dataclass
 from typing import Optional, List
 
 from gi.overrides.Gdk import Color
 
-from game.board.board_square import GameBoardSquare
+from game.model.square.board_square import GameBoardSquare
 from game.common.game_coordinate import GameCoordinate
 
 
