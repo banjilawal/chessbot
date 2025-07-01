@@ -4,7 +4,7 @@ from typing import List
 from travel.board_direction import BoardDirection
 from src.model.cell.cell import Cell
 
-class Traveller(ABC):
+class Travler(ABC):
     """Interface for obstacles that can be moved."""
 
     @abstractmethod
