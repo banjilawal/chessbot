@@ -23,3 +23,8 @@ class Cell:
             raise NegativeRowError("Cell cannot be on a negative row.")
         if self.column < 0:
             raise NegativeColumnError("Cell cannot be on a negative column.")
+        object.__setattr__(self, 'id', self.id)
+        object.__setattr__(self, 'row', self.row)
+        object.__setattr__(self, 'column', self.column)
+        object.__setattr__(self, 'color', self.color)
+        object.__setattr__(self, 'occupant', self.occupant)
