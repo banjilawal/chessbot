@@ -11,7 +11,11 @@ from typing import Optional
 
 from src.model.occupant.obstacle import Obstacle
 
-@dataclass
+# The Board class represents a game board with a grid of cells. The board is initialized with a specific number of
+# rows and columns, and it can contain obstacles. Each cell in the board is represented by an instance
+# of the Cell class.
+# The board cannot be changed during play. It's number of rows, columns and the 2D array of cells are immutable.
+@dataclass(frozen=True)
 class Board:
     MIN_ROW_COUNT = 2
     MIN_COLUMN_COUNT = 2
@@ -36,17 +40,20 @@ class Board:
         self.column_count = column_count
     #
 
-
     def __post_init__(self):
+        rows = []
+        for row in range(self.row_count):
+            current_row = []
+            for column in range(self.column_count):
+                cell_id = row * self.column_count + column + 1
+                cell = Cell(id=cell_id, row=row, column=column)
+                current_row.append(cell)
+            rows.append(tuple(current_row))
 
-        index = count(1)
-        self._squares = [
-            [
-                Cell(_id=next(index), _row=row, _column=column)
-                for column in range(self.column_count)
-            ]
-            for row in range(self.row_count)
-        ]
+        # If sycnronization issues cause attribute setting of cells to freeze. This can happen when there is complex
+        # setups in __post_init__, using object.__setattr__ to bypass the dataclass field initialization so we don't
+        # run into issues with frozen dataclass fields. that can raise errors like "cannot assign to field 'cells'".
+        object.__setattr__(self, 'cells', tuple(rows))
 
     @property
     def columns(self):
