@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from common.game_default import GameDefault
+from common.id_generator import IdGenerator
 from model.board.board import Board
 from model.occupant.traveler import Traveler
 from travel.bearing import Bearing
@@ -17,8 +17,8 @@ class TravelService:
 
     def create_request(self, traveller: Traveler, bearing: Bearing) -> TravelRequest:
         request = TravelRequest(
-            request_id=len(self.queue) + 1,
-            traveller_id=traveller.id,
+            request_id=IdGenerator.next_travel_request_id(),
+            traveller_id=traveller.traveler_id(),
             bearing=bearing
         )
         self.enqueue_request(request)
@@ -32,7 +32,7 @@ class TravelService:
         return self.apply_rules(request)
 
     def apply_rules(self, request: TravelRequest) -> TravelDecision:
-        return TravelDecision(original_request=request, distance_granted=0)
+        return TravelDecision(IdGenerator.next_travel_decision_id(), original_request=request, distance_granted=0)
 
 
 
