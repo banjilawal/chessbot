@@ -1,9 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import List
 
+from model.board.grid_coordinate import Coordinate
 from travel.bearing import Bearing
-from travel.board_direction import BoardDirection
-from src.model.cell.cell import Cell
 from travel.travel_decision import TravelDecision
 from travel.travel_request import TravelRequest
 
@@ -13,6 +11,10 @@ class Traveler(ABC):
 
     @abstractmethod
     def traveler_id(self) -> int:
+
+    # The coordinate is going to be the top-left coord.
+    @abstractmethod
+    def current_coordinate(self) -> Coordinate:
 
     @abstractmethod
     def send_travel_request(self, bearing: Bearing) -> TravelRequest:

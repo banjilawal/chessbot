@@ -3,7 +3,7 @@ from typing import List
 
 from common.id_generator import IdGenerator
 from model.board.board import Board
-from model.occupant.traveler import Traveler
+from travel.traveler import Traveler
 from travel.bearing import Bearing
 from travel.travel_decision import TravelDecision
 from travel.travel_request import TravelRequest

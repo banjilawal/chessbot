@@ -4,8 +4,7 @@ from typing import List
 from model.occupant.obstacle import Obstacle
 from src.exception.exception import OccupiedSquareEntryError
 from src.model.cell.cell import Cell
-from src.model.occupant.traveler import Movable
-from src.model.occupant.occupant import Occupant
+from travel.traveler import Movable
 
 
 @dataclass
