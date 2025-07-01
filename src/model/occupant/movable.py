@@ -17,6 +17,9 @@ class Movable(ABC):
         """Updates internal state to reflect the new cell occupancy."""
         pass
 
+    # Added BoardDirection parameter to occupant.Movable.can_move_to() abstract method.
+    # If moving left-right then travelling on length.
+    # If Moving up-down then travelling on height."
     @abstractmethod
     def can_move_to(self, cells: List[Cell], direction: BoardDirection) -> bool:
         """Returns True if the obstacle is allowed to move to the given cells."""

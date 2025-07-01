@@ -31,7 +31,7 @@ class TestGameFigure(unittest.TestCase):
 
     def test_constructing_figure_with_valid_length(self):
         figure = Obstacle(id=1, length=2, height=3)
-        self.assertGreaterEqual(figure.length, Obstacle.MINIMUM_LENGTH)
+        self.assertGreaterEqual(figure.length, Obstacle.MIN_LENGTH)
 
     def test_invalid_figure_length_throws_error(self):
         """Test occupant creation with an invalid length"""
@@ -40,7 +40,7 @@ class TestGameFigure(unittest.TestCase):
 
     def test_constructing_figure_with_valid_height(self):
         figure = Obstacle(id=1, length=2, height=3)
-        self.assertGreaterEqual(figure.height, Obstacle.MINIMUM_HEIGHT)
+        self.assertGreaterEqual(figure.height, Obstacle.MIN_HEIGHT)
 
     def test_invalid_height_throws_error(self):
         """Test occupant creation with invalid height"""
@@ -50,11 +50,11 @@ class TestGameFigure(unittest.TestCase):
     def test_area_of_figure_greater_or_equal_minimum_area(self):
         """Test occupant area is greater than or equal to the minimum area"""
         figure = Obstacle(id=1, length=2, height=3)
-        self.assertGreaterEqual(figure.area(), Obstacle.MINIMUM_AREA)
+        self.assertGreaterEqual(figure.area(), Obstacle.MIN_AREA)
 
     def test_area_of_figure_below_minimum_raises_error(self):
         with self.assertRaises(FigureAreaBelowLimitError):
-            Obstacle(id=1, length=Obstacle.MINIMUM_LENGTH, height=Obstacle.MINIMUM_HEIGHT)
+            Obstacle(id=1, length=Obstacle.MIN_LENGTH, height=Obstacle.MIN_HEIGHT)
 
     def test_figure_entering_square_updates_square(self):
         self.figure.enter_square(self.mock_square)

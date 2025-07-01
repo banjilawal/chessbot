@@ -5,7 +5,7 @@ from src.common.side import Side
 
 
 @dataclass
-class Quadilateral:
+class Quadrilateral:
     _length: int
     _height: int
 
