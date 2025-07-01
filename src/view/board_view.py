@@ -25,5 +25,5 @@ class BoardView:
         x = cell.column * self.cell_px
         y = cell.row * self.cell_px
         rectangle = pygame.Rect(x, y, self.cell_px, self.cell_px)
-        pygame.draw.rect(surface, pygame.Color("Gray"), rectangle)
+        pygame.draw.rect(surface, cell.color.pygame_color, rectangle)
     #
