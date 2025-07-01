@@ -13,9 +13,9 @@ class BoardView:
 
     def draw(self, surface: pygame.Surface):
         """Draw the board on the given surface."""
-        for row in range(self.board.height):
-            for col in range(self.board.width):
-                cell = self.board.get_cell(row, col)
+        for row_index in range(self.board.row_count):
+            for column_index in range(self.board.column_count):
+                cell = self.board.
                 rect = pygame.Rect(col * self.cell_px, row * self.cell_px, self.cell_px, self.cell_px)
                 if cell.is_occupied():
                     color = cell.occupant.color

@@ -6,7 +6,7 @@ from src.common.game_constant import GameConstant
 from src.exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from src.model.cell.cell import Cell
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 from src.model.occupant.obstacle import Obstacle
@@ -20,24 +20,24 @@ class Board:
     column_count: int
     figures: Optional[List[Obstacle]] = None
 
-    # Drawing constants as class attributes
-    SQUARE_SIZE_IN_PIXELS = 40
+    # 2D list of immutable cells that is filled after Board initialization.
+    cells: tuple[tuple[Cell, ...], ...] = field(init=False)
 
-    # Pygame colors (defined as RGB tuples)
-    WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
-    GRAY_LIGHT = (200, 200, 200)
-    GRAY_DARK = (150, 150, 150)
-    RED = (255, 0, 0)
-    BLUE = (0, 0, 255)
+    def __init__(self, id: int, row_count: int, column_count: int):
+        if id < GameConstant.MINIMUM_ID:
+            raise InvalidIdError("Board id below minimum value.")
+        if row_count < Board.MIN_ROW_COUNT:
+            raise InvalidNumberOfRowsError("Board num_rows below minimum value.")
+        if column_count < Board.MIN_COLUMN_COUNT:
+            raise InvalidNumberOfColumnsError("Board num_columns below minimum value.")
+
+        self.id = id
+        self.row_count = row_count
+        self.column_count = column_count
+    #
+
 
     def __post_init__(self):
-        if self.id < GameConstant.MINIMUM_ID:
-            raise InvalidIdError("GameBoard id below minimum value.")
-        if self.row_count < Board.MIN_ROW_COUNT:
-            raise InvalidNumberOfRowsError("GameBoard num_rows below minimum value.")
-        if self.column_count < Board.MIN_COLUMN_COUNT:
-            raise InvalidNumberOfColumnsError("GameBoard num_columns below minimum value.")
 
         index = count(1)
         self._squares = [
