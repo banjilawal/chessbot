@@ -1,16 +1,23 @@
-# This is a sample Python script.
+from model.board.board import Board
+from view.board_view import BoardView
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+clock = pygame.time.Clock()
 
+# Construct your game board model
+board = Board(...)  # Initialize as per your logic
+view = BoardView(board)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
+    screen.fill((30, 30, 30))  # Clear screen
+    view.draw(screen)         # Draw the board and pieces
+    pygame.display.flip()
+    clock.tick(60)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+pygame.quit()

@@ -2,7 +2,7 @@ from itertools import count
 from typing import List
 
 
-from src.common.game_constant import GameConstant
+from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from src.model.cell.cell import Cell
 
@@ -27,17 +27,19 @@ class Board:
     # 2D list of immutable cells that is filled after Board initialization.
     cells: tuple[tuple[Cell, ...], ...] = field(init=False)
 
-    def __init__(self, id: int, row_count: int, column_count: int):
-        if id < GameConstant.MINIMUM_ID:
+    def __init__(self, id: int, row_count: int = GameDefault.COLUMN_COUNT, column_count: int = GameDefault.ROW_COUNT):
+        if id < GameDefault.MIN_ID:
             raise InvalidIdError("Board id below minimum value.")
         if row_count < Board.MIN_ROW_COUNT:
             raise InvalidNumberOfRowsError("Board num_rows below minimum value.")
         if column_count < Board.MIN_COLUMN_COUNT:
             raise InvalidNumberOfColumnsError("Board num_columns below minimum value.")
 
-        self.id = id
-        self.row_count = row_count
-        self.column_count = column_count
+        # Using object.__setattr__ to bypass the frozen dataclass restriction for setting attributes.
+        # Need to use object.__setattr__ for frozen classes. You cannot use self.attribute = value with frozen dataclasses.
+        object.__setattr__(self, 'id', id)
+        object.__setattr__(self, 'row_count', row_count)
+        object.__setattr__(self, 'column_count', column_count)
     #
 
     def __post_init__(self):
