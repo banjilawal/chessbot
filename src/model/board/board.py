@@ -11,7 +11,7 @@ from src.model.cell.cell import Cell
 from dataclasses import dataclass, field
 from typing import Optional
 
-from src.model.occupant.obstacle import Obstacle
+from src.model.occupant.occupant import Occupant
 
 # The Board class represents a game board with a grid of cells. The board is initialized with a specific number of
 # rows and columns, and it can contain obstacles. Each cell in the board is represented by an instance
@@ -23,10 +23,9 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     id: int
-
     portal: EscapePortal
     boulders: Optional[List[Boulder]] = None
-    obstacles: Optional[List[Obstacle]] = None
+    obstacles: Optional[List[Occupant]] = None
     # 2D list of immutable cells that is filled after Board initialization.
     cells: tuple[tuple[Cell, ...], ...] = field(init=False, repr=False)
 

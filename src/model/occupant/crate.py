@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List
 
-from model.occupant.obstacle import Obstacle
+from model.occupant.occupant import Occupant
 from src.exception.exception import OccupiedSquareEntryError
 from src.model.cell.cell import Cell
 from travel.traveler import Movable
 
 
 @dataclass
-class Crate(Obstacle, Movable):
+class Crate(Occupant, Movable):
     def __init__(self, _id: int, color: str, length: int, height: int):
         super().__init__(_id, color, length, height)
         self._type = "Crate"

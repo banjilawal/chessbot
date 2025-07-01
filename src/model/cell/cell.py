@@ -5,7 +5,7 @@ from model.board.grid_coordinate import GridCoordinate
 from common.game_color import GameColor
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError
-from src.model.occupant.obstacle import Obstacle
+from src.model.occupant.occupant import Occupant
 
 
 @dataclass
@@ -13,7 +13,7 @@ class Cell:
     id: int
     coordinate: GridCoordinate
     color: GameColor = field(default=GameDefault.CELL_COLOR)
-    occupant: Optional['Obstacle'] = field(default=None)
+    occupant: Optional['Occupant'] = field(default=None)
 
     def __post_init__(self):
         if self.id < GameDefault.MIN_ID:

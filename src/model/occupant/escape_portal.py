@@ -2,16 +2,16 @@ from dataclasses import dataclass
 
 from common.game_color import GameColor
 from common.game_default import GameDefault
-from model.occupant.obstacle import Obstacle
+from model.occupant.occupant import Occupant
 
 @dataclass
-class EscapePortal(Obstacle):
+class EscapePortal(Occupant):
     """
     Represents an escape portal in the game, which is an obstacle that allows occupants to escape.
     It inherits from the Obstacle class.
     """
     def __init__(self, color: GameColor = GameDefault.PORTAL_COLOR):
-        super().__init__(id=1, color=color, length=Obstacle.MIN_LENGTH, height=Obstacle.MIN_HEIGHT)
+        super().__init__(id=1, color=color, length=Occupant.MIN_LENGTH, height=Occupant.MIN_HEIGHT)
         self._is_escape_portal = True
 
     @property
