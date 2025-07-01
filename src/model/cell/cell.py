@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from email.policy import default
 from typing import Optional
 
+from common.game_color import GameColor
 from src.common.game_constant import GameConstant
 from src.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
 from src.model.occupant.obstacle import Obstacle
@@ -12,9 +13,10 @@ class Cell:
     id: int
     row: int
     column: int
+    color: GameColor
     occupant: Optional['Obstacle'] = field(default=None)
 
-    def __init__(self, id: int, row: int, column: int):
+    def __init__(self, id: int, row: int, column: int, color: GameColor=GameColor.LIGHT_GRAY_2):
         if id < GameConstant.MINIMUM_ID:
             raise InvalidIdError("Cell id below minimum value.")
         if row < 0:
@@ -26,3 +28,4 @@ class Cell:
         object.__setattr__(self, 'row', row)
         object.__setattr__(self, 'column', column)
         object.__setattr__(self, 'occupant', None)
+        object.__setattr__(self, 'color', color)
