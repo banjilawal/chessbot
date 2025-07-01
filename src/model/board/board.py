@@ -13,8 +13,8 @@ from src.model.occupant.obstacle import Obstacle
 
 @dataclass
 class Board:
-    MINIMUM_NUMBER_OF_ROWS = 2
-    MINIMUM_NUMBER_OF_COLUMNS = 2
+    MIN_ROW_COUNT = 2
+    MIN_COLUMN_COUNT = 2
     id: int
     row_count: int
     column_count: int
@@ -34,9 +34,9 @@ class Board:
     def __post_init__(self):
         if self.id < GameConstant.MINIMUM_ID:
             raise InvalidIdError("GameBoard id below minimum value.")
-        if self.row_count < Board.MINIMUM_NUMBER_OF_ROWS:
+        if self.row_count < Board.MIN_ROW_COUNT:
             raise InvalidNumberOfRowsError("GameBoard num_rows below minimum value.")
-        if self.column_count < Board.MINIMUM_NUMBER_OF_COLUMNS:
+        if self.column_count < Board.MIN_COLUMN_COUNT:
             raise InvalidNumberOfColumnsError("GameBoard num_columns below minimum value.")
 
         index = count(1)
