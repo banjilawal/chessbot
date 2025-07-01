@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
+
+from move.board_direction import BoardDirection
 from src.model.cell.cell import Cell
 
 class Movable(ABC):
@@ -16,6 +18,6 @@ class Movable(ABC):
         pass
 
     @abstractmethod
-    def can_move_to(self, cells: List[Cell]) -> bool:
+    def can_move_to(self, cells: List[Cell], direction: BoardDirection) -> bool:
         """Returns True if the obstacle is allowed to move to the given cells."""
         pass
