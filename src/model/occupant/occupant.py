@@ -8,7 +8,7 @@ from src.model.cell.cell import Cell
 
 
 @dataclass
-class Occupier(ABC):
+class Occupant(ABC):
     _id: int
     _color: Color
     _length: int

@@ -2,7 +2,7 @@ from itertools import count
 from typing import List
 
 from model.occupant.escape_portal import EscapePortal
-from model.occupant.wall import Wall
+from model.occupant.boulder import Boulder
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from src.model.cell.cell import Cell
@@ -24,7 +24,7 @@ class Board:
     id: int
 
     portal: EscapePortal
-    walls: Optional[List[Wall]] = None
+    walls: Optional[List[Boulder]] = None
     obstacles: Optional[List[Obstacle]] = None
     # 2D list of immutable cells that is filled after Board initialization.
     cells: tuple[tuple[Cell, ...], ...] = field(init=False, repr=False)
