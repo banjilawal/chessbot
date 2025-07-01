@@ -10,17 +10,6 @@ class Traveler(ABC):
     """Interface for obstacles that can be moved."""
 
     @abstractmethod
-    def traveler_id(self) -> int:
-        """Returns the unique identifier of the traveler."""
-        pass
-
-
-    @abstractmethod
-    def current_coordinate(self) -> GridCoordinate:
-        """Returns the traveler's top-left coordinate."""
-        pass
-
-    @abstractmethod
     def send_travel_request(self, bearing: Bearing) -> TravelRequest:
         """Sends a travel request to the travel service."""
         pass

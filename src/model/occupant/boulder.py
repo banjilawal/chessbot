@@ -9,10 +9,4 @@ from model.occupant.occupant import Occupant
 
 @dataclass
 class Boulder(Occupant):
-    def __init__(self, _id: int, color: str, length: int, height: int):
-        super().__init__(_id, color, length, height)
-        self._type = "Boulder"
-
-    @property
-    def type(self) -> str:
-        return self._type
+    pass

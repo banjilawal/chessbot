@@ -8,8 +8,8 @@ class GameDefault:
     MIN_ID: int = 1
     COLUMN_COUNT: int = 8
     ROW_COUNT: int = 8
-    OBSTACLE_HEIGHT: int = 1
-    OBSTACLE_LENGTH: int = 2
+    OCCUPANT_HEIGHT: int = 1
+    OCCUPANT_LENGTH: int = 2
 
     CELL_PX: int = 400
     CELL_COLOR: GameColor = GameColor.LIGHT_SALMON_PINK
