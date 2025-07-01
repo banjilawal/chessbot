@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from game.common.direction import Direction
-from game.common.side import Side
+from src.common.direction import Direction
+from src.common.side import Side
 
 
 @dataclass

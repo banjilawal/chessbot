@@ -1,6 +1,6 @@
 # First, define your custom exceptions (in a separate exceptions.py file)
 class GameError(Exception):
-    """Base exception for all game-related errors"""
+    """Base exception for all src-related errors"""
     pass
 
 class InvalidBoardError(GameError):
@@ -16,7 +16,7 @@ class InvalidNumberOfColumnsError(GameError):
     pass
 
 class InvalidIdError(GameError):
-    """Raised when an id iss not valid for the game"""
+    """Raised when an id iss not valid for the src"""
     pass
 
 class InvalidFigureHeightError(GameError):
@@ -31,7 +31,7 @@ class FigureAreaBelowLimitError(GameError):
     """Raised when a occupant's area is below the limit"""
 
 class InvalidIdError(GameError):
-    """Raised when an id iss not valid for the game"""
+    """Raised when an id iss not valid for the src"""
     pass
 
 class InvalidSquareError(GameError):

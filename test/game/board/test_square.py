@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import Mock
 
-from game.model.cell.cell import Cell
-from game.common.game_constant import GameConstant
-from game.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
-from game.model.occupant.obstacle import Obstacle
+from src.model.cell.cell import Cell
+from src.common.game_constant import GameConstant
+from src.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
+from src.model.occupant.obstacle import Obstacle
 
 
 class TestGameBoardSquare(unittest.TestCase):

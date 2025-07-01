@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import List
 
-from game.exception.exception import OccupiedSquareEntryError
-from game.model.cell.cell import Cell
-from game.model.occupant.movable import Movable
-from game.model.occupant.occupier import Occupier
+from src.exception.exception import OccupiedSquareEntryError
+from src.model.cell.cell import Cell
+from src.model.occupant.movable import Movable
+from src.model.occupant.occupier import Occupier
 
 
 @dataclass

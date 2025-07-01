@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from game.exception.exception import InvalidIdError, InvalidFigureLengthError, InvalidFigureHeightError, \
+from src.exception.exception import InvalidIdError, InvalidFigureLengthError, InvalidFigureHeightError, \
     NullSquareEntryError, OccupiedSquareEntryError, SquareOwnershipError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError, SelfOccupiedSquareError
 

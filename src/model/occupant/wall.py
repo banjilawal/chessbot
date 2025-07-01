@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from game.model.occupant.occupier import Occupier
+from src.model.occupant.occupier import Occupier
 
 
 @dataclass

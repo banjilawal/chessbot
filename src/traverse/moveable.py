@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
-from game.model.board.game_board import GameBoard
-from game.common.coordinate import Coordinate
-from game.model.occupant.obstacle import Obstacle
+from src.model.board.game_board import GameBoard
+from src.common.coordinate import Coordinate
+from src.model.occupant.obstacle import Obstacle
 
 
 class Moveable(ABC):

@@ -2,10 +2,10 @@ import unittest
 from unittest.mock import Mock
 
 
-from game.exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
+from src.exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
     OccupiedSquareEntryError, SelfOccupiedSquareError, InvalidFigureLengthError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError
-from game.model.occupant.obstacle import Obstacle
+from src.model.occupant.obstacle import Obstacle
 
 
 class TestGameFigure(unittest.TestCase):

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
-from game.model.cell.cell import Cell
+from src.model.cell.cell import Cell
 
 class Movable(ABC):
     """Interface for obstacles that can be moved."""

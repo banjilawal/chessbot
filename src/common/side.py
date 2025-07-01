@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from game.common.direction import Direction
+from src.common.direction import Direction
 
 
 @dataclass

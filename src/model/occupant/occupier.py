@@ -4,8 +4,8 @@ from typing import Optional, List
 
 from gi.overrides.Gdk import Color
 
-from game.model.cell.cell import Cell
-from game.common.game_coordinate import GameCoordinate
+from src.model.cell.cell import Cell
+from src.common.game_coordinate import GameCoordinate
 
 
 @dataclass
