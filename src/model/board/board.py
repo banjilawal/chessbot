@@ -45,20 +45,19 @@ class Board:
                 cell = Cell(id=cell_id, row=row, column=column)
                 current_row.append(cell)
             rows.append(tuple(current_row))
-
-        # If sycnronization issues cause attribute setting of cells to freeze. This can happen when there is complex
-        # setups in __post_init__, using object.__setattr__ to bypass the dataclass field initialization so we don't
-        # run into issues with frozen dataclass fields. that can raise errors like "cannot assign to field 'cells'".
         object.__setattr__(self, 'cells', tuple(rows))
 
 
     def area(self):
         return self.row_count * self.column_count
 
-
-
-    def print_grid(self): # Keeping your original method for text-based printing
+    def print(self):
         for row in self.cells:
+            # Top border of the row
             print("".join("+---" for _ in row) + "+")
-            print("".join("|   " for _ in row) + "|")
+
+            # Cell IDs in the row, centered in each cell
+            print("".join(f"|{cell.id:^3}" for cell in row) + "|")
+
+        # Bottom border of the final row
         print("".join("+---" for _ in self.cells[0]) + "+")
