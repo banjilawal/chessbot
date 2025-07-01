@@ -2,6 +2,6 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class Coordinate:
+class GridCoordinate:
     row: int
     column: int

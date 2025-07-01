@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from model.board.grid_coordinate import Coordinate
+from model.board.grid_coordinate import GridCoordinate
 from common.game_color import GameColor
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError
@@ -11,7 +11,7 @@ from src.model.occupant.obstacle import Obstacle
 @dataclass
 class Cell:
     id: int
-    coordinate: Coordinate
+    coordinate: GridCoordinate
     color: GameColor = field(default=GameDefault.CELL_COLOR)
     occupant: Optional['Obstacle'] = field(default=None)
 

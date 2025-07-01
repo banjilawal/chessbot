@@ -1,6 +1,6 @@
 from typing import List
 
-from model.board.grid_coordinate import Coordinate
+from model.board.grid_coordinate import GridCoordinate
 from model.occupant.escape_portal import EscapePortal
 from model.occupant.boulder import Boulder
 from src.common.game_default import GameDefault
@@ -48,7 +48,7 @@ class Board:
             current_row = []
             for column in range(self.column_count):
                 cell_id = row * self.column_count + column + 1
-                cell = Cell(id=cell_id, Coordinate(row=row, column=column))
+                cell = Cell(id=cell_id, coordinate=GridCoordinate(row=row, column=column))
                 current_row.append(cell)
             rows.append(tuple(current_row))
         object.__setattr__(self, 'cells', tuple(rows))

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from model.board.grid_coordinate import Coordinate
+from model.board.grid_coordinate import GridCoordinate
 from travel.bearing import Bearing
 from travel.travel_decision import TravelDecision
 from travel.travel_request import TravelRequest
@@ -11,10 +11,14 @@ class Traveler(ABC):
 
     @abstractmethod
     def traveler_id(self) -> int:
+        """Returns the unique identifier of the traveler."""
+        pass
 
-    # The coordinate is going to be the top-left coord.
+
     @abstractmethod
-    def current_coordinate(self) -> Coordinate:
+    def current_coordinate(self) -> GridCoordinate:
+        """Returns the traveler's top-left coordinate."""
+        pass
 
     @abstractmethod
     def send_travel_request(self, bearing: Bearing) -> TravelRequest:
