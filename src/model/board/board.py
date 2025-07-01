@@ -1,5 +1,6 @@
 from typing import List
 
+from common.id_generator import IdGenerator
 from model.board.grid_coordinate import GridCoordinate
 from model.occupant.escape_portal import EscapePortal
 from model.occupant.boulder import Boulder
@@ -24,7 +25,7 @@ class Board:
     id: int
 
     portal: EscapePortal
-    walls: Optional[List[Boulder]] = None
+    boulders: Optional[List[Boulder]] = None
     obstacles: Optional[List[Obstacle]] = None
     # 2D list of immutable cells that is filled after Board initialization.
     cells: tuple[tuple[Cell, ...], ...] = field(init=False, repr=False)
@@ -43,6 +44,8 @@ class Board:
              raise InvalidNumberOfRowsError("Board num_rows below minimum value.")
         if self.column_count < Board.MIN_COLUMN_COUNT:
             raise InvalidNumberOfColumnsError("Board num_columns below minimum value.")
+
+
         rows = []
         for row in range(self.row_count):
             current_row = []
