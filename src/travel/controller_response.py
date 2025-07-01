@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
-from move.message_body import MessageBody
+from travel.message_body import MessageBody
 
-
+MovementQuery
 @dataclass(frozen=True)
 class ControllerResponse:
     requestor_id: int
-    response: MessageBody
+    distance_granted: int

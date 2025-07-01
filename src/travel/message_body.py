@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from model.occupant.obstacle import Obstacle
-from move.board_direction import BoardDirection
+from travel.board_direction import BoardDirection
 
 
 @dataclass(frozen=True)

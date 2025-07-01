@@ -2,10 +2,10 @@ from dataclasses import dataclass
 from typing import List
 
 from model.board.board import Board
-from move.movement_query import MovementQuery
+from travel.travel_request import TravelRequest
 
 
 @dataclass
-class MovementController:
+class TravelService:
     board: Board
-    queries: List['MovementQuery'] = tuple()
+    queries: List['TravelRequest'] = tuple()

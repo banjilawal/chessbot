@@ -1,6 +1,6 @@
 from enum import Enum
 
-# Made move.Direction enum to indicate the direction of movement on an XY axis on a unit circle. Either;
+# Made travel.Direction enum to indicate the direction of movement on an XY axis on a unit circle. Either;
 # LEFT(-1,0) = 0,
 # UP(0,1)
 # RIGHT(1,0),

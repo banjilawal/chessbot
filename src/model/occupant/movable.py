@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from move.board_direction import BoardDirection
+from travel.board_direction import BoardDirection
 from src.model.cell.cell import Cell
 
-class Movable(ABC):
+class Traveller(ABC):
     """Interface for obstacles that can be moved."""
 
     @abstractmethod
@@ -22,5 +22,5 @@ class Movable(ABC):
     # If Moving up-down then travelling on height."
     @abstractmethod
     def can_move_to(self, cells: List[Cell], direction: BoardDirection) -> bool:
-        """Returns True if the obstacle is allowed to move to the given cells."""
+        """Returns True if the obstacle is allowed to travel to the given cells."""
         pass
