@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from email.policy import default
 from typing import Optional
 
 from src.common.game_constant import GameConstant
@@ -11,25 +12,17 @@ class Cell:
     id: int
     row: int
     column: int
-    occupant: Optional['Obstacle'] = None
+    occupant: Optional['Obstacle'] = field(default=None)
 
-    def __post_init__(self):
-        """Validate initialization parameters"""
-        if self.id < GameConstant.MINIMUM_ID:
+    def __init__(self, id: int, row: int, column: int):
+        if id < GameConstant.MINIMUM_ID:
             raise InvalidIdError("Cell id below minimum value.")
-        if self.row < 0:
+        if row < 0:
             raise NegativeRowError("Cell cannot be on a negative row.")
-        if self.column < 0:
+        if column < 0:
             raise NegativeColumnError("Cell cannot be on a negative column.")
 
-    @property
-    def occupant(self) -> Optional['Obstacle']:
-        return self.occupant
-
-    @property
-    def occupied(self) -> bool:
-        return self._occupant is not None
-
-    def __repr__(self) -> str:
-        status = f"Occupied by {self.occupant}" if self.occupied else "Empty"
-        return f"Square({self.row}, {self.column}) - {status}"
+        object.__setattr__(self, 'id', id)
+        object.__setattr__(self, 'row', row)
+        object.__setattr__(self, 'column', column)
+        object.__setattr__(self, 'occupant', None)
