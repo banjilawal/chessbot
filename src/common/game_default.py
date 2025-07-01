@@ -11,5 +11,6 @@ class GameDefault:
     OBSTACLE_LENGTH = 2
 
     CELL_PX = 400
-    CELL_COLOR = GameColor.LIGHT_GRAY_2
-    OBSTACLE_COLOR = GameColor.CRIMSON
+    CELL_COLOR = GameColor.LIGHT_SALMON_PINK
+    OBSTACLE_COLOR = GameColor.GRAY_2
+    PORTAL_COLOR = GameColor.GREEN

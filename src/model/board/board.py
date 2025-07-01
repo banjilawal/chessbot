@@ -1,7 +1,8 @@
 from itertools import count
 from typing import List
 
-
+from model.occupant.escape_portal import EscapePortal
+from model.occupant.wall import Wall
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError, InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from src.model.cell.cell import Cell
@@ -21,12 +22,17 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     id: int
-    row_count: int = field(default=GameDefault.ROW_COUNT)
-    column_count: int = field(default=GameDefault.COLUMN_COUNT)
-    figures: Optional[List[Obstacle]] = None
 
+    portal: EscapePortal
+    walls: Optional[List[Wall]] = None
+    obstacles: Optional[List[Obstacle]] = None
     # 2D list of immutable cells that is filled after Board initialization.
     cells: tuple[tuple[Cell, ...], ...] = field(init=False, repr=False)
+
+    row_count: int = field(default=GameDefault.ROW_COUNT)
+    column_count: int = field(default=GameDefault.COLUMN_COUNT)
+
+
 
     def __post_init__(self):
         if self.id < GameDefault.MIN_ID:
