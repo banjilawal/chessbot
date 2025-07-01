@@ -1,4 +1,4 @@
-# Unblock
+# Podscape
 
 ## Table of Contents
 1. [About the Project](#about-the-project)
@@ -13,7 +13,7 @@
 
 ---
 ## About the Project
-Unblock is a game similar to Rushour.
+Podscape is a game similar to Rushour.
 
 ---
 ## Screenshots
