@@ -1,37 +1,22 @@
 from dataclasses import dataclass
-from typing import List
 
+from model.board.grid_coordinate import GridCoordinate
 from model.occupant.occupant import Occupant
-from src.exception.exception import OccupiedSquareEntryError
-from src.model.cell.cell import Cell
-from travel.traveler import Movable
+from travel.bearing import Bearing
+from travel.travel_decision import TravelDecision
+from travel.travel_request import TravelRequest
+from travel.traveler import Traveler
 
 
 @dataclass
-class Crate(Occupant, Movable):
-    def __init__(self, _id: int, color: str, length: int, height: int):
-        super().__init__(_id, color, length, height)
-        self._type = "Crate"
+class Crate(Occupant, Traveler):
 
-    @property
-    def type(self) -> str:
-        return self._type
+    def send_travel_request(self, bearing: Bearing) -> TravelRequest:
+        pass
 
-    def leave_cells(self) -> List[Cell]:
-        if not self._squares:
-            return []
-        cells = self._squares
-        for cell in cells:
-            cell.occupant = None
-        self._squares = []
-        return cells
+    def accept_travel_decision(self, travel_decision: TravelDecision) -> bool:
+        pass
 
-    def enter_cells(self, cells: List[Cell]) -> None:
-        for cell in cells:
-            if cell.occupant is not None:
-                raise OccupiedSquareEntryError("Cannot enter a cell that's already occupied.")
-            cell.occupant = self
-        self._squares = cells
+    def move(self, bearing: Bearing) -> bool:
+        pass
 
-    def can_move_to(self, cells: List[Cell]) -> bool:
-        return all(cell.occupant is None for cell in cells)
