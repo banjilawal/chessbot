@@ -1,0 +1,1 @@
+An `Occupant`'s position is the top left coordinate.
