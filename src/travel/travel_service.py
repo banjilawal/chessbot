@@ -3,8 +3,8 @@ from typing import List
 
 from common.game_default import GameDefault
 from model.board.board import Board
-from model.occupant.traveler import Travler
-from travel.board_direction import BoardDirection
+from model.occupant.traveler import Traveler
+from travel.bearing import Bearing
 from travel.travel_decision import TravelDecision
 from travel.travel_request import TravelRequest
 
@@ -15,12 +15,11 @@ class TravelService:
     board: Board
     queue: List[TravelRequest] = field(default_factory=list)
 
-    def create_request(self, traveller: Travler, direction: BoardDirection, distance: int = GameDefault.MAX_TRAVEL_DISTANCE) -> TravelRequest:
+    def create_request(self, traveller: Traveler, bearing: Bearing) -> TravelRequest:
         request = TravelRequest(
             request_id=len(self.queue) + 1,
             traveller_id=traveller.id,
-            direction=direction,
-            distance=distance
+            bearing=bearing
         )
         self.enqueue_request(request)
         return request
