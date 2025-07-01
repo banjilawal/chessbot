@@ -13,19 +13,13 @@ class Cell:
     id: int
     row: int
     column: int
-    color: GameColor
+    color: GameColor = field(default=GameDefault.CELL_COLOR)
     occupant: Optional['Obstacle'] = field(default=None)
 
-    def __init__(self, id: int, row: int, column: int, color: GameColor=GameColor.LIGHT_GRAY_2):
-        if id < GameDefault.MINIMUM_ID:
+    def __post_init__(self):
+        if self.id < GameDefault.MIN_ID:
             raise InvalidIdError("Cell id below minimum value.")
-        if row < 0:
+        if self.row < 0:
             raise NegativeRowError("Cell cannot be on a negative row.")
-        if column < 0:
+        if self.column < 0:
             raise NegativeColumnError("Cell cannot be on a negative column.")
-
-        object.__setattr__(self, 'id', id)
-        object.__setattr__(self, 'row', row)
-        object.__setattr__(self, 'column', column)
-        object.__setattr__(self, 'occupant', None)
-        object.__setattr__(self, 'color', color)
