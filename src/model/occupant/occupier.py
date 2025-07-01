@@ -5,7 +5,6 @@ from typing import Optional, List
 from gi.overrides.Gdk import Color
 
 from src.model.cell.cell import Cell
-from src.common.game_coordinate import GameCoordinate
 
 
 @dataclass

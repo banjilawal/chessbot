@@ -16,8 +16,8 @@ class Board:
     MINIMUM_NUMBER_OF_ROWS = 2
     MINIMUM_NUMBER_OF_COLUMNS = 2
     id: int
-    num_rows: int
-    num_columns: int
+    row_count: int
+    column_count: int
     figures: Optional[List[Obstacle]] = None
 
     # Drawing constants as class attributes
@@ -34,30 +34,30 @@ class Board:
     def __post_init__(self):
         if self.id < GameConstant.MINIMUM_ID:
             raise InvalidIdError("GameBoard id below minimum value.")
-        if self.num_rows < Board.MINIMUM_NUMBER_OF_ROWS:
+        if self.row_count < Board.MINIMUM_NUMBER_OF_ROWS:
             raise InvalidNumberOfRowsError("GameBoard num_rows below minimum value.")
-        if self.num_columns < Board.MINIMUM_NUMBER_OF_COLUMNS:
+        if self.column_count < Board.MINIMUM_NUMBER_OF_COLUMNS:
             raise InvalidNumberOfColumnsError("GameBoard num_columns below minimum value.")
 
         index = count(1)
         self._squares = [
             [
                 Cell(_id=next(index), _row=row, _column=column)
-                for column in range(self.num_columns)
+                for column in range(self.column_count)
             ]
-            for row in range(self.num_rows)
+            for row in range(self.row_count)
         ]
 
     @property
     def columns(self):
-        return self.num_columns
+        return self.column_count
 
     @property
     def squares(self):
         return self._squares
 
     def area(self):
-        return self.num_rows * self.num_columns
+        return self.row_count * self.column_count
 
 
 

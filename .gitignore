@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Virtual environment
-venv/
+venv-old/
 env/
 .venv/
 ENV/
@@ -64,7 +64,7 @@ ehthumbs.db
 Desktop.ini
 
 # No virtual environment
-venv/
+venv-old/
 .venv/
 env/
 .env/
