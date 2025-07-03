@@ -1,10 +1,14 @@
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from common.game_color import GameColor
 from model.board.grid_coordinate import GridCoordinate
-from model.cell.cell import Cell
-from model.occupant.dimension import Dimension
+
+from common.dimension import Dimension
+
+if TYPE_CHECKING:
+    from model.cell.cell import Cell
+
 
 @dataclass
 class Occupant:
@@ -12,7 +16,7 @@ class Occupant:
     dimension: Dimension
     color: Optional[GameColor] = None
     coordinate: GridCoordinate = None
-    cells: tuple[tuple[Cell, ...], ...] = field(init=False, repr=False)
+    cells: tuple[tuple['Cell', ...], ...] = field(init=False, repr=False)
 
     def __post_init__(self):
         cell_grid = tuple(
