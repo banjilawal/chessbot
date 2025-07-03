@@ -4,6 +4,7 @@ from common.game_color import GameColor
 from common.game_default import GameDefault
 from model.board.board import Board
 from model.cell.cell import Cell
+from view.cell_view import CellView
 
 
 class BoardView:
@@ -11,8 +12,12 @@ class BoardView:
     cell_px: int
     color: GameColor
 
-    def __init__(self, board: Board, cell_px: int = GameDefault.CELL_PX, color: GameColor = GameDefault.BOARD_COLOR):
+    def __init__(self, board: Board, cell_view: CellView, cell_px: int, board_color: GameColor, cell_color: GameColor):
         self.board = board
+        self.cell_view = cell_view
+        self.cell_px = cell_px
+        self.board_color = board_color
+        self.cell_color = cell_color
         self.cell_px = cell_px
 
     def screen_dimension(self):

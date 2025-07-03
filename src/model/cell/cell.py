@@ -14,7 +14,6 @@ if TYPE_CHECKING:
 class Cell:
     id: int
     coordinate: GridCoordinate
-    color: GameColor = field(default=GameColor.WHITE)
     occupant: Optional['Occupant'] = field(default=None)
 
     def __post_init__(self):
@@ -22,5 +21,4 @@ class Cell:
             raise InvalidIdError("Cell id below minimum value.")
         object.__setattr__(self, 'id', self.id)
         object.__setattr__(self, 'coordinate', self.coordinate)
-        object.__setattr__(self, 'color', self.color)
         object.__setattr__(self, 'occupant', self.occupant)

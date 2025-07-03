@@ -19,8 +19,6 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     id: int
-    color: Optional[GameColor] = None
-
     portal: Optional[EscapePortal] = None
     crates: Tuple[Crate, ...] = field(default_factory=tuple)
     boulders: Tuple[Boulder, ...] = field(default_factory=tuple)
