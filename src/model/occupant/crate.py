@@ -11,6 +11,9 @@ from travel.traveler import Traveler
 @dataclass
 class Crate(Occupant, Traveler):
 
+    def id(self) -> int:
+        return super().id
+
     def send_travel_request(self, bearing: Bearing) -> TravelRequest:
         pass
 

@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List
 
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from model.board.grid_coordinate import GridCoordinate
@@ -20,7 +20,7 @@ class Board:
     id: int
     portal: Optional[Door] = None
     crates: Tuple[Crate, ...] = field(default_factory=tuple)
-    boulders: Tuple[Boulder, ...] = field(default_factory=tuple)
+    boulders: List[Boulder] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
 
     dimension: Dimension = field(default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
@@ -55,6 +55,22 @@ class Board:
 
     def column_count(self) -> int:
         return self.dimension.length
+
+    def add_boulder(self, boulder: Boulder):
+        self.boulders.append(boulder)
+
+    def add_boulders(self, boulders: List[Boulder]):
+        self.boulders.extend(boulders)
+
+    def are_occupied(self, top_left_coord: GridCoordinate, dimension: Dimension) -> bool:
+        """
+        Check if the cells starting from the top-left coordinate with the given dimension are occupied.
+        """
+        for row in range(top_left_coord.row, top_left_coord.row + dimension.height):
+            for col in range(top_left_coord.column, top_left_coord.column + dimension.length):
+                if self.cells[row][col].occupant is not None:
+                    return True
+        return False
 
     def print(self):
         """Print the board with cell IDs"""

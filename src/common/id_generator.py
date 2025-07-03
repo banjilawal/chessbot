@@ -6,6 +6,7 @@ class IdGenerator:
         self.boulder_id = 1
         self.travel_server_id = 1
         self.portal_id = 1
+        self.crate_id = 1
 
     def next_portal_id(self) -> int:
         current_id = self.portal_id
@@ -25,6 +26,11 @@ class IdGenerator:
     def next_boulder_id(self) -> int:
         current_id = self.boulder_id
         self.boulder_id += 1
+        return current_id
+
+    def next_crate_id(self) -> int:
+        current_id = self.crate_id
+        self.crate_id += 1
         return current_id
 
     def next_travel_request_id(self) -> int:

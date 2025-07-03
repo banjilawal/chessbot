@@ -1,6 +1,9 @@
 from abc import ABC
 from dataclasses import dataclass
+from typing import Optional
 
+from common.dimension import Dimension
+from model.board.grid_coordinate import GridCoordinate
 from model.occupant.occupant import Occupant
 from model.portal.door_state import DoorState
 from model.portal.portal import Portal
@@ -13,6 +16,11 @@ from model.portal.portal import Portal
 @dataclass
 class Door(Occupant, Portal, ABC):
     state: DoorState = DoorState.CLOSED
+
+    def __init__(self, id: int, coordinate: Optional[GridCoordinate] = None):
+        super().__init__(id=id, dimension=Dimension(1,1), coordinate=coordinate)
+        self.state = DoorState.CLOSED
+
 
     def open(self):
         if self.state == DoorState.CLOSED:

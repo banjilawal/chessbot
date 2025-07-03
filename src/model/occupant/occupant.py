@@ -15,11 +15,17 @@ class Occupant:
     id: int
     dimension: Dimension
     coordinate: GridCoordinate = None
-    cells: tuple[tuple['Cell', ...], ...] = field(init=False, repr=False)
+    cells: Optional[list[list['Cell']]] = None
 
-    def __post_init__(self):
-        cell_grid = tuple(
-            tuple(Cell() for w in range(self.dimension.length))
-            for h in range(self.dimension.height)
-        )
-        object.__setattr__(self, 'cells', cell_grid)
+    def occupy_cells(self, top_left_coord: GridCoordinate, cells: list[list['Cell']]):
+        """
+        Occupies the cells in the grid starting from the top-left coordinate.
+        """
+        self.coordinate = top_left_coord
+        self.cells = cells
+        for row in cells:
+            for cell in row:
+                cell.occupant = self
+
+
+

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from model.board.grid_coordinate import GridCoordinate
+
 from travel.bearing import Bearing
 from travel.travel_decision import TravelDecision
 from travel.travel_request import TravelRequest
@@ -8,6 +8,11 @@ from travel.travel_request import TravelRequest
 
 class Traveler(ABC):
     """Interface for obstacles that can be moved."""
+
+    @abstractmethod
+    def id(self) -> int:
+        """Returns the unique identifier of the traveler."""
+        pass
 
     @abstractmethod
     def send_travel_request(self, bearing: Bearing) -> TravelRequest:
