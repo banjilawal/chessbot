@@ -1,41 +1,34 @@
 import random
-from enum import global_enum_repr
-
 from common.dimension import Dimension
-from common.id_generator import IdGenerator, global_id_generator
+from common.id_generator import global_id_generator
 from model.occupant.boulder import Boulder
 from model.occupant.crate import Crate
 
+class OccupantGenerator:
+    def random_dimension(self) -> Dimension:
+        return Dimension(
+            length=random.randint(1, 6),
+            height=random.randint(1, 6)
+        )
 
-def random_dimension():
-    return Dimension(
-        length=random.randint(1, 6),
-        height=random.randint(1, 6)
-    )
+    def generate_boulder(self) -> Boulder:
+        boulder = Boulder(
+            id=global_id_generator.next_boulder_id(),
+            dimension=self.random_dimension()
+        )
+        print(f"created boulder with id: {boulder.id}, dimension: {boulder.dimension}, area: {boulder.dimension.area()}")
+        return boulder
 
-def generate_boulder():
-    boulder = Boulder(id=global_id_generator.next_boulder_id(), dimension=random_dimension())
-    print("created boulder with id:", boulder.id, "and dimension:", boulder.dimension, "area:", boulder.dimension.area())
-    return boulder
+    def generate_boulders(self, count: int) -> list[Boulder]:
+        return [self.generate_boulder() for _ in range(count)]
 
-def generate_boulders(count: int):
-    boulders = []
-    for _ in range(count):
-        boulder = generate_boulder()
-        boulders.append(boulder)
-    return boulders
+    def generate_crate(self) -> Crate:
+        crate = Crate(
+            id=global_id_generator.next_crate_id(),
+            dimension=self.random_dimension()
+        )
+        print(f"created crate with id: {crate.id}, dimension: {crate.dimension}, area: {crate.dimension.area()}")
+        return crate
 
-def generate_crate():
-    crate = Crate(id=global_id_generator.next_crate_id(), dimension=random_dimension())
-    print("created crate with id:", crate.id, "and dimension:", crate.dimension, "area:", crate.dimension.area())
-
-def generate_crates(count: int):
-    crates = []
-    for _ in range(count):
-        crate = generate_crate()
-        crates.append(crate)
-    return crates
-
-if __name__ == "__main__":
-    generate_boulders(10)
-    generate_crates(12)
+    def generate_crates(self, count: int) -> list[Crate]:
+        return [self.generate_crate() for _ in range(count)]

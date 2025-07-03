@@ -1,4 +1,6 @@
+import random
 from dataclasses import dataclass, field
+
 from typing import Optional, Tuple, List
 
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
@@ -71,6 +73,39 @@ class Board:
                 if self.cells[row][col].occupant is not None:
                     return True
         return False
+
+    def place_boulders_randomly(self):
+        placed_boulders = []
+        for boulder in self.boulders:
+            placed = False
+            attempts = 0
+            while not placed and attempts < 1:
+                attempts += 1
+                max_row = self.dimension.height - boulder.dimension.height
+                max_col = self.dimension.length - boulder.dimension.length
+
+                if max_row < 0 or max_col < 0:
+                    # Boulder is too big for the board, skip
+                    print(f"Boulder {boulder.id} too big for the board, skipping.")
+                    break
+
+                row = random.randint(0, max_row)
+                col = random.randint(0, max_col)
+                coord = GridCoordinate(row=row, column=col)
+
+                if not self.are_occupied(coord, boulder.dimension):
+                    # Occupy cells and add boulder
+                    cells_to_occupy = [
+                        [self.cells[r][c] for c in range(col, col + boulder.dimension.length)]
+                        for r in range(row, row + boulder.dimension.height)
+                    ]
+                    boulder.occupy_cells(coord, cells_to_occupy)
+                    self.boulders.append(boulder)
+                    print(f"Placed boulder {boulder.id} (area {boulder.dimension.area()}) at {coord}")
+                    placed = True
+            #
+            # if not placed:
+            #     print(f"Failed to place boulder {boulder.id} after {max_attempts_per_boulder}
 
     def print(self):
         """Print the board with cell IDs"""
