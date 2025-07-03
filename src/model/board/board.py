@@ -19,13 +19,13 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     id: int
-    portal: Optional[EscapePortal] = None
+    color: GameColor
 
+    portal: Optional[EscapePortal] = None
     crates: Tuple[Crate, ...] = field(default_factory=tuple)
     boulders: Tuple[Boulder, ...] = field(default_factory=tuple)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
 
-    color: GameColor
     dimension: Dimension = field(default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
 
     def __post_init__(self):

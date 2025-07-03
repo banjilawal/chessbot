@@ -11,10 +11,13 @@ class GameDefault:
     OCCUPANT_HEIGHT: int = 1
     OCCUPANT_LENGTH: int = 2
 
-    CELL_PX: int = 400
+    CELL_PX: int = 200
     CELL_COLOR: GameColor = GameColor.LIGHT_SALMON_PINK
-    OBSTACLE_COLOR: GameColor = GameColor.GRAY_2
+    CELL_BORDER_COLOR: GameColor = GameColor.LIGHT_GRAY_2
+    CELL_BORDER_WIDTH: int = 5
+
     PORTAL_COLOR: GameColor = GameColor.GREEN
+    # BOULDER_COLOR: GameColor = GameColor.DARK_GRAY
 
     MIN_TRAVEL_DISTANCE: int = 1
     MAX_TRAVEL_DISTANCE: int = sys.maxsize
