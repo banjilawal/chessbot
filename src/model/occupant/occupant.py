@@ -14,7 +14,6 @@ if TYPE_CHECKING:
 class Occupant:
     id: int
     dimension: Dimension
-    color: Optional[GameColor] = None
     coordinate: GridCoordinate = None
     cells: tuple[tuple['Cell', ...], ...] = field(init=False, repr=False)
 

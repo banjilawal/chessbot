@@ -11,10 +11,11 @@ class GameDefault:
     OCCUPANT_HEIGHT: int = 1
     OCCUPANT_LENGTH: int = 2
 
-    CELL_PX: int = 200
+    CELL_PX: int = 80
     CELL_COLOR: GameColor = GameColor.LIGHT_SALMON_PINK
     CELL_BORDER_COLOR: GameColor = GameColor.LIGHT_GRAY_2
-    CELL_BORDER_WIDTH: int = 5
+    CELL_BORDER_WIDTH: int = 2
+    SCREEN_PADDING: int = 40
 
     PORTAL_COLOR: GameColor = GameColor.GREEN
     BOULDER_COLOR: GameColor = GameColor.BLUE_GRAY

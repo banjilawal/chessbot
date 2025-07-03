@@ -56,6 +56,7 @@ class Board:
 
     def column_count(self) -> int:
         return self.dimension.length
+
     def print(self):
         """Print the board with cell IDs"""
         for row in self.cells:
