@@ -3,12 +3,12 @@ import sys
 
 
 # Simple test to isolate the pygame issue
-def pygame_debug():
+def pygame_info():
     print("Testing pygame...")
     pygame.init()
 
     # Test 1: Create a small window
-    width, height = 300, 300
+    width, height = 1400, 1400
     print(f"Creating window: {width}x{height}")
 
     try:
@@ -65,4 +65,4 @@ def pygame_debug():
 
 
 if __name__ == "__main__":
-    pygame_debug()
+    pygame_info()
