@@ -1,12 +1,11 @@
 from dataclasses import dataclass, field
-from typing import List, Optional, Tuple
+from typing import Optional, Tuple
 
-from common.game_color import GameColor
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from model.board.grid_coordinate import GridCoordinate
 from model.occupant.crate import Crate
 from common.dimension import Dimension
-from model.occupant.door import Door
+from model.portal.door import Door
 from model.occupant.boulder import Boulder
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError
