@@ -1,5 +1,6 @@
 import pygame
 
+from common.game_color import GameColor
 from common.game_default import GameDefault
 from model.board.board import Board
 from model.cell.cell import Cell
@@ -8,8 +9,9 @@ from model.cell.cell import Cell
 class BoardView:
     board: Board
     cell_px: int
+    color: GameColor
 
-    def __init__(self, board: Board, cell_px: int = GameDefault.CELL_PX):
+    def __init__(self, board: Board, cell_px: int = GameDefault.CELL_PX, color: GameColor = GameDefault.BOARD_COLOR):
         self.board = board
         self.cell_px = cell_px
 

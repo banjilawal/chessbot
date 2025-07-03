@@ -9,17 +9,16 @@ if __name__ == "__main__":
     board = Board(id=1)
     print(board.print())
     pygame.init()
+
+    # Get a board view with the default cell pixel size. Initialize BoarView before declaring the screen.
     board_view = BoardView(board=board, cell_px=GameDefault.CELL_PX)
 
-    # Sets the screen to be 800x600 pixels
+    # Set the screen size based on the board's dimensions
     screen = pygame.display.set_mode(board_view.screen_dimension())
 
     # Clock to help control frame rate. We need this for drawing the screen and handle input
     clock = pygame.time.Clock()
-    #
-    # board = Board(id=1)
-    # view = BoardView(board)
-    #
+
     running = True
     while running:
 

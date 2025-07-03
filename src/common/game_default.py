@@ -17,7 +17,9 @@ class GameDefault:
     CELL_BORDER_WIDTH: int = 5
 
     PORTAL_COLOR: GameColor = GameColor.GREEN
-    # BOULDER_COLOR: GameColor = GameColor.DARK_GRAY
+    BOULDER_COLOR: GameColor = GameColor.BLUE_GRAY
+    CRATE_COLOR: GameColor = GameColor.BLUE
+    BOARD_COLOR: GameColor = GameColor.WHITE
 
     MIN_TRAVEL_DISTANCE: int = 1
     MAX_TRAVEL_DISTANCE: int = sys.maxsize
