@@ -6,7 +6,7 @@ from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumns
 from model.board.grid_coordinate import GridCoordinate
 from model.occupant.crate import Crate
 from common.dimension import Dimension
-from model.occupant.escape_portal import EscapePortal
+from model.occupant.door import Door
 from model.occupant.boulder import Boulder
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError
@@ -19,7 +19,7 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     id: int
-    portal: Optional[EscapePortal] = None
+    portal: Optional[Door] = None
     crates: Tuple[Crate, ...] = field(default_factory=tuple)
     boulders: Tuple[Boulder, ...] = field(default_factory=tuple)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
