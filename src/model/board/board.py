@@ -5,7 +5,7 @@ from typing import Optional, Tuple, List
 
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from model.board.grid_coordinate import GridCoordinate
-from model.occupant.ladder import Crate
+from model.occupant.ladder import Ladder
 from common.dimension import Dimension
 from model.portal.door import Door
 from model.occupant.boulder import Boulder
@@ -22,7 +22,7 @@ class Board:
 
     id: int
     door: Optional[Portal] = None
-    crates: Tuple[Crate, ...] = field(default_factory=tuple)
+    ladders: List[Ladder] = field(default_factory=list)
     boulders: List[Boulder] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
 
@@ -64,6 +64,12 @@ class Board:
 
     def add_boulders(self, boulders: List[Boulder]):
         self.boulders.extend(boulders)
+
+    def add_ladder(self, ladder: Ladder):
+        self.ladders.append(ladder)
+
+    def add_ladders(self, ladders: List[Ladder]):
+        self.ladders.extend(ladders)
 
     def are_occupied(self, top_left_coord: GridCoordinate, dimension: Dimension) -> bool:
         """
