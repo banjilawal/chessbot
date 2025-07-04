@@ -1,7 +1,7 @@
-Pacakge `model.occupant`
+Package `model.occupant`
 
 ## Table of Contents
-1. [Purpose](#purpose):w
+1. [Purpose](#purpose):
 
 ## Purpose
 An `Occupant`'s position is the top left coordinate.

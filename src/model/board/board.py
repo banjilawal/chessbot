@@ -9,6 +9,7 @@ from model.occupant.crate import Crate
 from common.dimension import Dimension
 from model.portal.door import Door
 from model.occupant.boulder import Boulder
+from model.portal.portal import Portal
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError
 from src.model.cell.cell import Cell
@@ -20,7 +21,7 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     id: int
-    portal: Optional[Door] = None
+    door: Optional[Portal] = None
     crates: Tuple[Crate, ...] = field(default_factory=tuple)
     boulders: List[Boulder] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)

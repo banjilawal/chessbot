@@ -27,6 +27,23 @@ class Occupant:
             for cell in row:
                 cell.occupant = self
 
+    def print_cells(self):
+        """
+        Prints the cells occupied by this occupant.
+        """
+        if self.cells is None:
+            print("No cells occupied.")
+            return
+
+        mismatch_count = 0
+        for row in self.cells:
+            for cell in row:
+                if cell.occupant != self:
+                    print("Mismatch:" , mismatch_count, " for cell", cell.id, " at ", cell.coordinate)
+
+                print(f"Cell {cell.id} at {cell.coordinate} is occupied by Occupant {self.id}.")
+        print()
+
 
 
 
