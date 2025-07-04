@@ -9,7 +9,7 @@ from travel.traveler import Traveler
 
 
 @dataclass
-class Crate(Occupant, Traveler):
+class Ladder(Occupant, Traveler):
 
     def id(self) -> int:
         return super().id

@@ -2,13 +2,13 @@ import random
 from common.dimension import Dimension
 from common.id_generator import global_id_generator
 from model.occupant.boulder import Boulder
-from model.occupant.crate import Crate
+from model.occupant.ladder import Crate
 
 class OccupantGenerator:
     def random_dimension(self) -> Dimension:
         return Dimension(
-            length=random.randint(1, 6),
-            height=random.randint(1, 6)
+            length=random.randint(1, 4),
+            height=random.randint(1, 3)
         )
 
     def generate_boulder(self) -> Boulder:

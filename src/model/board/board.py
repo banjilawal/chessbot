@@ -5,7 +5,7 @@ from typing import Optional, Tuple, List
 
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from model.board.grid_coordinate import GridCoordinate
-from model.occupant.crate import Crate
+from model.occupant.ladder import Crate
 from common.dimension import Dimension
 from model.portal.door import Door
 from model.occupant.boulder import Boulder
