@@ -21,8 +21,6 @@ class Board:
     MIN_ROW_COUNT = 2
     MIN_COLUMN_COUNT = 2
 
-    id: int
-    door_cell: Optional[Cell] =field(default_factory=Cell)
     door: Portal = field(default_factory=lambda: Door(id=global_id_generator.next_portal_id(), coordinate=None))
     ladders: List[Ladder] = field(default_factory=list)
     boulders: List[Boulder] = field(default_factory=list)
@@ -31,8 +29,6 @@ class Board:
     dimension: Dimension = field(default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
 
     def __post_init__(self):
-        if self.id < GameDefault.MIN_ID:
-            raise InvalidIdError("Board id below minimum value.")
 
         if self.dimension.height < self.MIN_ROW_COUNT:
             raise InvalidNumberOfRowsError("Board number of rows below minimum value.")
@@ -53,12 +49,6 @@ class Board:
 
         # Set the cells attribute using object.__setattr__ for frozen dataclass
         object.__setattr__(self, 'cells', tuple(rows_list)) # Convert outer list to tuple
-
-        self.door_cell = random.choice(self.cells)
-        self.door.coordinate = self.door_cell.coordinate
-        self.door.cells.append(self.door_cell)  # Add the door cell to the door's cells
-        self.door_cell.door = self.door  # Assign the door to the cell
-
 
     def row_count(self) -> int:
         return self.dimension.height
