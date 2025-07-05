@@ -1,40 +1,114 @@
 import pygame
 
-from common.game_color import GameColor
-from common.game_default import GameDefault
+from common.dimension import Dimension
+from common.occupant_generator import OccupantGenerator
 from model.board.board import Board
-from view.board_view import BoardView
+from model.occupant.ladder import Ladder
+
 
 if __name__ == "__main__":
-    board = Board(id=1)
+    board = Board(dimension=Dimension(length=11, height=11))
+
+
+    max_length = board.dimension.length % 2 + 1
+    max_height = board.dimension.height % 2 + 1
+    board.add_boulders(OccupantGenerator().generate_boulders(max_length=2, max_height=3, count=9))
+    board.place_boulders_randomly()
+
+    board.add_ladders(OccupantGenerator().generate_ladders(max_height=max_height, count=9))
+    board.place_ladders_randomly()
     print(board.print())
+
+    for boulder in board.boulders:
+        boulder.print_cells()
     pygame.init()
 
-    # Get a board view with the default cell pixel size. Initialize BoarView before declaring the screen.
-    board_view = BoardView(board=board, cell_px=GameDefault.CELL_PX)
+    cell_px = 80  # Or use GameDefault.CELL_PX if you prefer
+    width = board.dimension.length * cell_px
+    height = board.dimension.height * cell_px
 
-    # Set the screen size based on the board's dimensions
-    screen = pygame.display.set_mode(board_view.screen_dimension())
-
-    # Clock to help control frame rate. We need this for drawing the screen and handle input
+    screen = pygame.display.set_mode((width, height))
+    pygame.display.set_caption("Podscape!!")
     clock = pygame.time.Clock()
+
+    color1 = (220, 220, 220)  # Light
+    color2 = (60, 60, 60)     # Dark
+    boulder_color = (0, 200, 0)  # Green
+    padding_color = (100, 100, 100)  # Gray
+    cream = (255, 253, 208)
+    khaki = (240, 230, 140)
+    light_gray =  (192, 192, 192)
+    dark_gray = (64, 64, 64)
+    very_light_gray = (211, 211, 211)
+    slate_gray = (112, 128, 144)
+    blue = (0, 0, 255)
 
     running = True
     while running:
-
-    #     If any event from an input device sends a quit, ie mouse or kepybaard saying quit then stop running
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-    # Fills the screen with a color. This is the background color
-        screen.fill(GameColor.GREEN.pygame_color)
-        board_view.draw_board(screen)
-    #     view.draw_board(screen)         # Draw the board and pieces
 
-    # when itesms are drawn they are in a hidden surface stored in memory. We need to call flip to draw the
-    # items on the screen. Thy are flipped from hidden screen to visible screen
+        ladder_line_width = 2
+
+        # 1. Draw base grid
+        for row_idx, row in enumerate(board.cells):
+            for col_idx, cell in enumerate(row):
+                x = col_idx * cell_px
+                y = row_idx * cell_px
+                color = cream if (row_idx + col_idx) % 2 == 0 else khaki
+                pygame.draw.rect(screen, color, (x, y, cell_px, cell_px))
+
+        # 2. Draw boulders (gray square + inner border)
+        for boulder in board.boulders:
+            if boulder.cells:
+                for row in boulder.cells:
+                    for cell in row:
+                        x = cell.coordinate.column * cell_px
+                        y = cell.coordinate.row * cell_px
+                        pygame.draw.rect(screen, light_gray, (x, y, cell_px, cell_px))  # main fill
+                        pygame.draw.rect(screen, padding_color, (x + 1, y + 1, cell_px - 2, cell_px - 2),
+                                         width=2)  # border
+
+        # 3. Draw ladders on top (only blue lines)
+        for ladder in board.ladders:
+            if isinstance(ladder, Ladder) and ladder.cells:
+                for row in ladder.cells:
+                    for cell in row:
+                        x = cell.coordinate.column * cell_px
+                        y = cell.coordinate.row * cell_px
+
+                        # Left vertical border (side rail)
+                        pygame.draw.line(
+                            screen,
+                            blue,
+                            (x + 3, y),
+                            (x + 3, y + cell_px),
+                            2
+                        )
+
+                        # Right vertical border (side rail)
+                        pygame.draw.line(
+                            screen,
+                            blue,
+                            (x + cell_px - 4, y),
+                            (x + cell_px - 4, y + cell_px),
+                            2
+                        )
+
+                        # Draw ladder rungs as horizontal blue lines with gaps
+                        rung_y = y
+                        while rung_y < y + cell_px - 4:
+                            pygame.draw.line(
+                                screen,
+                                blue,
+                                (x + 4, rung_y),  # start 4 px in from the left
+                                (x + cell_px - 4, rung_y),  # end 4 px before the right
+                                2  # line thickness
+                            )
+                            rung_y += 30
+
+
         pygame.display.flip()
-    # clock.tick() controls the frame rate. Its saying goe as fast as 60 FPS
         clock.tick(60)
-    #
     pygame.quit()
