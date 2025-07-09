@@ -77,13 +77,6 @@ class Board:
         return False
 
     def place_racks_randomly(self, racks: List[Rack]) -> None:
-        """
-        Places racks randomly on the board, ensuring enough space to the right.
-        Each rack is placed in a random valid position or skipped if no valid position is found.
-
-        Args:
-            racks: List of Rack objects to be placed
-        """
         for rack in racks:
             attempts = 0
             max_attempts = 10  # Limit attempts to avoid infinite loops
@@ -108,141 +101,93 @@ class Board:
                     # Try to position the rack
                     positioned_rack = self.position_rack(rack, coordinate)
                     if positioned_rack is not None:
+                        # Set rack as occupant for all cells it covers
+                        for r in range(coordinate.row, coordinate.row + rack.dimension.height):
+                            for c in range(coordinate.column, coordinate.column + rack.dimension.length):
+                                self.cells[r][c].occupant = positioned_rack
                         placed = True
 
                 attempts += 1
 
-    def place_boulders_randomly(self):
-        placed_boulders = []
-        for boulder in self.vaults:
-            placed = False
+    def place_vertical_vaults_randomly(self, vaults: List[VerticalVaults]) -> None:
+        for vault in vaults:
             attempts = 0
-            while not placed and attempts < 1:
-                attempts += 1
-                max_row = self.dimension.height - boulder.dimension.height
-                max_col = self.dimension.length - boulder.dimension.length
+            max_attempts = 10  # Limit attempts to avoid infinite loops
+            placed = False
+
+            while not placed and attempts < max_attempts:
+                # Calculate maximum valid row and column positions
+                max_row = self.dimension.height - vault.dimension.height
+                max_col = self.dimension.length - vault.dimension.length
 
                 if max_row < 0 or max_col < 0:
-                    # Vault is too big for the board, skip
-                    print(f"Boulder {boulder.id} too big for the board, skipping.")
+                    # Vault is too big for the board, skip it
                     break
 
+                # Generate random coordinates
                 row = random.randint(0, max_row)
                 col = random.randint(0, max_col)
-                coord = GridCoordinate(row=row, column=col)
+                coordinate = GridCoordinate(row=row, column=col)
 
-                if not self.are_occupied(coord, boulder.dimension):
-                    # Occupy cells and add boulder
-                    cells_to_occupy = [
-                        [self.cells[r][c] for c in range(col, col + boulder.dimension.length)]
-                        for r in range(row, row + boulder.dimension.height)
-                    ]
-                    boulder.occupy_cells(coord, cells_to_occupy)
-                    # self.vaults.append(boulder)
-                    # print(f"Placed boulder {boulder.id} (area {boulder.dimension.area()}) at {coord}")
-                    # placed = True
-            #
-            # if not placed:
-            #     print(f"Failed to place boulder {boulder.id} after {max_attempts_per_boulder}
+                # Check if there's enough space for the vault and space above for growth
+                if (self._space_is_available(vault.dimension, coordinate) and
+                        row >= vault.dimension.height):  # Ensure space above for vertical growth
+                    # Try to position the vault
+                    positioned_vault = self.position_vertical_vaults(vault, coordinate)
+                    if positioned_vault is not None:
+                        for r in range(coordinate.row, coordinate.row - vault.dimension.height, -1):
+                            self.cells[r][coordinate.column].occupant = positioned_vault
 
-    def position_rack(self, rack: Rack, top_left_coordinate: GridCoordinate) -> Optional[Rack]:
-        entity = self.__position_grid_entity(rack, top_left_coordinate)
+                        next_key = len(self.vertical_vaults) + 1
+                        self.vertical_vaults[next_key] = positioned_vault
+                        placed = True
 
-        if entity is not None and isinstance(entity, Rack):
-            positioned_rack = cast(Rack, entity)
-            self.racks.append(positioned_rack)
-            return positioned_rack
-        return None
+                attempts += 1
 
-    def position_vertical_vaults(self, starting_vault: Vault, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
-        entity = self.__position_grid_entity(starting_vault, starting_coordinate)
+    def place_horizontal_vaults_randomly(self, vaults: List[HorizontalVaults]) -> None:
+        """
+        Places horizontal vaults randomly on the board and adds them to the horizontal_vaults dictionary.
+        Each vault is placed in a random valid position or skipped if no valid position is found.
+        Sets the vault as the occupant for all cells it covers.
 
-        if entity is not None and isinstance(entity, VerticalVaults):
-            positioned_vault = cast(Vault, entity)
-            vaults = [positioned_vault]
-            for i in range(1, 5):
-                vault = Vault(vault_id=global_id_generator.next_vault_id())
-                coordinate = GridCoordinate(positioned_vault.coordinate.row + i, positioned_vault.coordinate.column)
-                self.cells[coordinate.row][coordinate.column].occupant = vault
-                vaults.append(vault)
-            return vaults
-        return None
+        Args:
+            vaults: List[HorizontalVaults] objects to be placed
+        """
+        for vault in vaults:
+            attempts = 0
+            max_attempts = 10  # Limit attempts to avoid infinite loops
+            placed = False
 
+            while not placed and attempts < max_attempts:
+                # Calculate maximum valid row and column positions
+                max_row = self.dimension.height - vault.dimension.height
+                max_col = self.dimension.length - vault.dimension.length
 
-    def position_horizontal_vaults(self, starting_vault: Vault, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
-        entity = self.__position_grid_entity(starting_vault, starting_coordinate)
+                if max_row < 0 or max_col < 0:
+                    # Vault is too big for the board, skip it
+                    break
 
-        if entity is not None and isinstance(entity, HorizontalVaults):
-            positioned_vault = cast(Vault, entity)
-            max_vaults = self.dimension.length - positioned_vault.coordinate.column
+                # Generate random coordinates
+                row = random.randint(0, max_row)
+                col = random.randint(0, max_col)
+                coordinate = GridCoordinate(row=row, column=col)
 
-            if max_vaults <= 0:
-                return None
+                # Check if there's enough space for the vault and space to the right for growth
+                if (self._space_is_available(vault.dimension, coordinate) and
+                        col + vault.dimension.length <= self.dimension.length):  # Ensure space to the right for horizontal growth
+                    # Try to position the vault
+                    positioned_vault = self.position_horizontal_vaults(vault, coordinate)
+                    if positioned_vault is not None:
+                        # Set vault as occupant for all cells it covers horizontally
+                        for c in range(coordinate.column, coordinate.column + vault.dimension.length):
+                            self.cells[coordinate.row][c].occupant = positioned_vault
 
-            total_new_vaults = random.randint(1, max_vaults)
-            vaults = [positioned_vault]
-            for i in total_new_vaults:
-                vault = Vault(vault_id=global_id_generator.next_vault_id())
-                coordinate = GridCoordinate(
-                    positioned_vault.coordinate.row,
-                    positioned_vault.coordinate.column + 1
-                )
-                self.cells[coordinate.row][coordinate.column].occupant = vault
-                vaults.append(vault)
-            key = len(self.vertical_vaults.keys()) + 1
-            self.vertical_vaults[key] = vaults
+                        # Add to horizontal_vaults dictionary with next available key
+                        next_key = len(self.horizontal_vaults) + 1
+                        self.horizontal_vaults[next_key] = positioned_vault
+                        placed = True
 
-            return vaults
-        return None
-
-
-    def position_vault_group(self, starting_vault: Vault, vault_group_direction: Direction, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
-        entity = self.__position_grid_entity(starting_vault, starting_coordinate)
-
-        if entity is not None and isinstance(entity, Vault):
-            positioned_vault = cast(Vault, entity)
-            vault_group = VaultGroup(
-                vault_group_id=global_id_generator.next_vault_group__id(),
-                growth_direction=vault_group_direction
-            )
-            key = len(self.vaults) + 1
-            self.vaults[key] = vault_group
-            return vault_group
-        return None
-
-    def add_vaults(self, vault__group_id: int):
-        max_growth_space = self._get_growth_space(vault__group_id)
-        if max_growth_space == 0:
-            return
-        total_new_vaults = random.randint(1, max_growth_space)
-        for i in range(total_new_vaults):
-            vault_group = self.vaults[vault__group_id]
-            vault_group.vaults.append(Vault(vault_id=global_id_generator.next_vault_id()))
-            self.vaults[vault__group_id] = vault_group
-
-    def _add_vertical_vault(self, vault_group_key: int):
-        max_growth_space = self._get_growth_space(vault_group_key)
-
-        if growth_space > 0:
-            vault_group = self.vaults[vault_group_key]
-            coordinate_bounds = self._coordinate_bounds(vault_group_key)
-            total_new_vaults = random.randint(1, max_growth_space)
-
-            for i in range(total_new_vaults):
-                vault = Vault(vault_id=global_id_generator.next_vault_id())
-                new_coordinate = GridCoordinate()
-                vault_group = self.vaults[vault_group_key]
-                vault_group.vaults.append(vault)
-                self.vaults[vault_group_key] = vault_group
-        vault_group = self.vaults[vault_group_key]
-        if vault_group is None:
-            return
-        first_vault = vault_group[0]
-        first_coordinate = first_vault.coordinate
-        current_num_vaults = len(self.vaults[vault_group_key])
-
-        if vault_group.growth_direction == Direction.RIGHT:
-            last_coordinate = first_coordinate.column + first_vault.dimension.length - 1
+                attempts += 1
 
     def __position_grid_entity(
             self,
