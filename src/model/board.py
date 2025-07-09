@@ -5,14 +5,13 @@ from typing import Tuple, List, Optional, cast, Dict
 
 from common.direction import Direction
 from common.id_generator import global_id_generator
-from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from model.grid_coordinate import GridCoordinate, CoordinateRange
 from model.crate import Crate
 from common.dimension import Dimension
 from model.grid_entity import GridEntity
 from model.portal.door import Door
 from model.rack import Rack
-from model.vault import Vault, VaultGroup, VerticalVaults, HorizontalVaults
+from model.vault import VerticalVaults, HorizontalVaults
 from model.portal.portal import Portal
 from src.common.game_default import GameDefault
 from model.cell import Cell
@@ -23,26 +22,23 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     door: Portal = field(default_factory=lambda: Door(id=global_id_generator.next_portal_id(), coordinate=None))
-    vaults: Dict[int, VaultGroup] = field(default_factory=dict)
     vertical_vaults: Dict[int, VerticalVaults] = field(default_factory=dict)
     horizontal_vaults: Dict[int, HorizontalVaults] = field(default_factory=dict)
-    crates: List[Crate] = field(default_factory=list)
+    crate: Crate = Crate(crate_id=1, coordinate=Nome)
     racks: List[Rack] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
     dimension: Dimension = field(
         default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
 
-    def _create_default_crate(self) -> Crate:
-        """Create the default crate at the center of row 1"""
+    def _set_crate_coordinates(self) -> Crate:
         middle_column = self.dimension.length // 2
         if self.dimension.length % 2 == 0:
-            # Even number of columns, place at middle_column
             coordinate = GridCoordinate(row=1, column=middle_column)
         else:
-            # Odd number of columns, place at middle_column + 1
             coordinate = GridCoordinate(row=1, column=middle_column + 1)
 
         return Crate(id=1, coordinate=coordinate)
+
 
     def __post_init__(self):
         if not all([
@@ -61,7 +57,7 @@ class Board:
             )
             for row in range(self.dimension.height)
         )
-
+        self._set_crate_coordinates()
         object.__setattr__(self, 'cells', cells)
 
     def row_count(self) -> int:
@@ -69,19 +65,6 @@ class Board:
 
     def column_count(self) -> int:
         return self.dimension.length
-
-    def add_boulder(self, boulder: Vault):
-        self.vaults.append(boulder)
-
-    def add_boulders(self, boulders: List[Vault]):
-
-        self.vaults.extend(boulders)
-
-    def position_crate(self, crate: Crate, coordinate: GridCoordinate) -> Optional[Crate]:
-        self.crates.append(ladder)
-
-    def add_ladders(self, ladders: List[Crate]):
-        self.crates.extend(ladders)
 
     def are_occupied(self, top_left_coord: GridCoordinate, dimension: Dimension) -> bool:
         """
@@ -92,6 +75,42 @@ class Board:
                 if self.cells[row][col].occupant is not None:
                     return True
         return False
+
+    def place_racks_randomly(self, racks: List[Rack]) -> None:
+        """
+        Places racks randomly on the board, ensuring enough space to the right.
+        Each rack is placed in a random valid position or skipped if no valid position is found.
+
+        Args:
+            racks: List of Rack objects to be placed
+        """
+        for rack in racks:
+            attempts = 0
+            max_attempts = 10  # Limit attempts to avoid infinite loops
+            placed = False
+
+            while not placed and attempts < max_attempts:
+                # Calculate maximum valid row and column positions
+                max_row = self.dimension.height - rack.dimension.height
+                max_col = self.dimension.length - rack.dimension.length
+
+                if max_row < 0 or max_col < 0:
+                    # Rack is too big for the board, skip it
+                    break
+
+                # Generate random coordinates
+                row = random.randint(0, max_row)
+                col = random.randint(0, max_col)
+                coordinate = GridCoordinate(row=row, column=col)
+
+                # Check if there's enough space for the rack
+                if self._space_is_available(rack.dimension, coordinate):
+                    # Try to position the rack
+                    positioned_rack = self.position_rack(rack, coordinate)
+                    if positioned_rack is not None:
+                        placed = True
+
+                attempts += 1
 
     def place_boulders_randomly(self):
         placed_boulders = []
@@ -125,45 +144,6 @@ class Board:
             #
             # if not placed:
             #     print(f"Failed to place boulder {boulder.id} after {max_attempts_per_boulder}
-
-    def place_ladders_randomly(self):
-        placed_boulders = []
-        for ladder in self.crates:
-            placed = False
-            attempts = 0
-            while not placed and attempts < 1:
-                attempts += 1
-                max_row = self.dimension.height -ladder.dimension.height
-                max_col = self.dimension.length - ladder.dimension.length
-
-                if max_row < 0 or max_col < 0:
-                    # Vault is too big for the board, skip
-                    print(f"Boulder {ladder.id} too big for the board, skipping.")
-                    break
-
-                row = random.randint(0, max_row)
-                col = random.randint(0, max_col)
-                coord = GridCoordinate(row=row, column=col)
-
-                if not self.are_occupied(coord, ladder.dimension):
-                    # Occupy cells and add boulder
-                    cells_to_occupy = [
-                        [self.cells[r][c] for c in range(col, col + ladder.dimension.length)]
-                        for r in range(row, row + ladder.dimension.height)
-                    ]
-                    ladder.occupy_cells(coord, cells_to_occupy)
-                    # self.crates.append(boulder)
-                    # print(f"Placed boulder {boulder.id} (area {boulder.dimension.area()}) at {coord}")
-                    # placed = True
-
-    def position_crate(self, crate: Crate, top_left_coordinate: GridCoordinate) -> Optional[Crate]:
-        entity = self.__position_grid_entity(crate, top_left_coordinate)
-
-        if entity is not None and isinstance(entity, Crate):
-            positioned_crate = cast(Crate, entity)
-            self.crates.append(positioned_crate)
-            return positioned_crate
-        return None
 
     def position_rack(self, rack: Rack, top_left_coordinate: GridCoordinate) -> Optional[Rack]:
         entity = self.__position_grid_entity(rack, top_left_coordinate)
@@ -216,7 +196,6 @@ class Board:
         return None
 
 
-
     def position_vault_group(self, starting_vault: Vault, vault_group_direction: Direction, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
         entity = self.__position_grid_entity(starting_vault, starting_coordinate)
 
@@ -264,71 +243,6 @@ class Board:
 
         if vault_group.growth_direction == Direction.RIGHT:
             last_coordinate = first_coordinate.column + first_vault.dimension.length - 1
-
-    def _get_growth_space(self, vault_group_key: int) -> int:
-        vaults = self.vaults[vault_group_key]
-        if vaults is None:
-            return 0
-
-        coordinate_bounds = self._coordinate_bounds(vault_group_key)
-        if coordinate_bounds is None:
-            return 0
-
-        if vaults.growth_direction == Direction.RIGHT:
-            return self.dimension.length - coordinate_bounds.column.column - 1
-
-        elif vaults.growth_direction == Direction.DOWN:
-            return self.dimension.height - coordinate_bounds.row.row - 1
-        else:
-            return 0
-
-        def _coordinate_range(self, entity: GridEntity) -> CoordinateRange:
-            if entity is None:
-                return None
-
-            if isinstance(entity, Crate):
-                first_coordinate = entity.coordinate
-                last_coordinate = GridCoordinate(
-                    row=first_coordinate.row,
-                    column=first_coordinate.column + entity.dimension.length - 1
-                )
-                return CoordinateRange(first_coordinate=first_coordinate, last_coordinate=last_coordinate)
-
-            if isinstance(entity, Rack):
-                first_coordinate = entity.coordinate
-                last_coordinate = GridCoordinate(
-                    row=first_coordinate.row + entity.dimension.height - 1,
-                    column=first_coordinate.column
-                )
-                return CoordinateRange(first_coordinate=first_coordinate, last_coordinate=last_coordinate)
-
-            if isinstance(entity, Vault):
-                first_coordinate = entity.coordinate
-                last_coordinate = GridCoordinate(
-                    row=first_coordinate.row + entity.dimension.height - 1,
-                    column=first_coordinate.column + entity.dimension.length - 1
-                )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        if
-        available_vault_space =
 
     def __position_grid_entity(
             self,

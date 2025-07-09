@@ -69,8 +69,8 @@ if __name__ == "__main__":
                         pygame.draw.rect(screen, padding_color, (x + 1, y + 1, cell_px - 2, cell_px - 2),
                                          width=2)  # border
 
-        # 3. Draw crates on top (only blue lines)
-        for ladder in board.crates:
+        # 3. Draw crate on top (only blue lines)
+        for ladder in board.crate:
             if isinstance(ladder, Crate) and ladder.cells:
                 for row in ladder.cells:
                     for cell in row:
