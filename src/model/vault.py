@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-from typing import Optional, List
+from typing import Optional, List, Union
 
 from common.dimension import Dimension
 from common.direction import Direction
-from model.grid_coordinate import GridCoordinate
+from model.grid_coordinate import GridCoordinate, CoordinateRange
 from model.grid_entity import GridEntity
 
 
@@ -13,24 +13,38 @@ class Vault(GridEntity):
     def __init__(self, vault_id: int, coordinate: Optional[GridCoordinate] = None):
         super().__init__(id=vault_id, dimension=Dimension(length=1, height=1), coordinate=coordinate)
 
-@dataclass
-class , :
-    id: int
-    growth_direction: Direction
-    vaults: List[Vault] = field(default_factory=list)
-
-    def __init__(self, vault_group_id: int, growth_direction: Direction):
-        self.id = vault_group_id
-        self.growth_direction = growth_direction
 
 @dataclass
 class HorizontalVaults:
     id: int
     vaults: List[Vault] = field(default_factory=list)
 
+    def coordinate_range(self) -> Optional[CoordinateRange]:
+        positioned_vaults = [v for v in self.vaults if v.coordinate is not None]
+        if not positioned_vaults:
+            return None
+
+        sorted_vaults = sorted(positioned_vaults, key=lambda v: v.coordinate.x)
+        return CoordinateRange(
+            first_coordinate=sorted_vaults[0].coordinate,
+            last_coordinate=sorted_vaults[-1].coordinate
+        )
+
+
 @dataclass
 class VerticalVaults:
     vaults: List[Vault] = field(default_factory=list)
+
+    def coordinate_range(self) -> Optional[CoordinateRange]:
+        positioned_vaults = [v for v in self.vaults if v.coordinate is not None]
+        if not positioned_vaults:
+            return None
+
+        sorted_vaults = sorted(positioned_vaults, key=lambda v: v.coordinate.y)
+        return CoordinateRange(
+            first_coordinate=sorted_vaults[0].coordinate,
+            last_coordinate=sorted_vaults[-1].coordinate
+        )
 
 
 class VaultArrayBuilder:
