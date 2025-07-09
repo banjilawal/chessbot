@@ -1,0 +1,20 @@
+from dataclasses import dataclass
+
+from common.dimension import Dimension
+from model.board.grid_coordinate import GridCoordinate
+from model.occupant.occupant import Occupant
+
+
+@dataclass
+class Rack(Occupant):
+
+    def __init__(self, id: int, height: int, coordinate: Optional[GridCoordinate] = None):
+        super().__init__(id=id, dimension=Dimension(length=1, height=height), coordinate=coordinate)
+
+    def move_up(self, distance: int):
+        new_coordinate = GridCoordinate(row=self.coordinate.row - distance, column=self.coordinate.column)
+        self.coordinate = new_coordinate
+
+    def move_down(self, distance: int):
+        new_coordinate = GridCoordinate(row=self.coordinate.row + distance, column=self.coordinate.column)
+        self.coordinate = new_coordinate

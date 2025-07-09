@@ -1,10 +1,9 @@
 import pygame
 
-from common.dimension import Dimension
-from common.occupant_generator import OccupantGenerator
-from model.board.board import Board
-from model.occupant.ladder import Ladder
-
+from src.common.dimension import Dimension
+from src.common.occupant_generator import OccupantGenerator
+from src.model.board.board import Board
+from src.model.occupant.crate import Crate
 
 if __name__ == "__main__":
     board = Board(dimension=Dimension(length=11, height=11))
@@ -72,7 +71,7 @@ if __name__ == "__main__":
 
         # 3. Draw ladders on top (only blue lines)
         for ladder in board.ladders:
-            if isinstance(ladder, Ladder) and ladder.cells:
+            if isinstance(ladder, Crate) and ladder.cells:
                 for row in ladder.cells:
                     for cell in row:
                         x = cell.coordinate.column * cell_px

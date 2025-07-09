@@ -1,7 +1,6 @@
 import sys
-from enum import Enum
 
-from common.game_color import GameColor
+from src.common.game_color import GameColor
 
 
 class GameDefault:

@@ -1,13 +1,9 @@
 from dataclasses import dataclass, field
 from typing import Optional, TYPE_CHECKING
 
-from common.game_color import GameColor
-from model.board.grid_coordinate import GridCoordinate
+from src.common.dimension import Dimension
+from src.model.board.grid_coordinate import GridCoordinate
 
-from common.dimension import Dimension
-
-if TYPE_CHECKING:
-    from model.cell.cell import Cell
 
 
 @dataclass

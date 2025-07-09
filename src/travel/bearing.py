@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from common.game_default import GameDefault
-from travel.board_direction import BoardDirection
+from src.common.game_default import GameDefault
+from src.travel.board_direction import BoardDirection
 
 
 @dataclass(frozen=True)

@@ -6,10 +6,10 @@ from typing import Optional, Tuple, List
 from common.id_generator import global_id_generator
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from model.board.grid_coordinate import GridCoordinate
-from model.occupant.ladder import Ladder
+from model.occupant.crate import Crate
 from common.dimension import Dimension
 from model.portal.door import Door
-from model.occupant.boulder import Boulder
+from model.occupant.vault import Vault
 from model.portal.portal import Portal
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError
@@ -22,8 +22,8 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     door: Portal = field(default_factory=lambda: Door(id=global_id_generator.next_portal_id(), coordinate=None))
-    ladders: List[Ladder] = field(default_factory=list)
-    boulders: List[Boulder] = field(default_factory=list)
+    ladders: List[Crate] = field(default_factory=list)
+    boulders: List[Vault] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
 
     dimension: Dimension = field(default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
@@ -56,16 +56,16 @@ class Board:
     def column_count(self) -> int:
         return self.dimension.length
 
-    def add_boulder(self, boulder: Boulder):
+    def add_boulder(self, boulder: Vault):
         self.boulders.append(boulder)
 
-    def add_boulders(self, boulders: List[Boulder]):
+    def add_boulders(self, boulders: List[Vault]):
         self.boulders.extend(boulders)
 
-    def add_ladder(self, ladder: Ladder):
+    def add_ladder(self, ladder: Crate):
         self.ladders.append(ladder)
 
-    def add_ladders(self, ladders: List[Ladder]):
+    def add_ladders(self, ladders: List[Crate]):
         self.ladders.extend(ladders)
 
     def are_occupied(self, top_left_coord: GridCoordinate, dimension: Dimension) -> bool:
@@ -89,7 +89,7 @@ class Board:
                 max_col = self.dimension.length - boulder.dimension.length
 
                 if max_row < 0 or max_col < 0:
-                    # Boulder is too big for the board, skip
+                    # Vault is too big for the board, skip
                     print(f"Boulder {boulder.id} too big for the board, skipping.")
                     break
 
@@ -122,7 +122,7 @@ class Board:
                 max_col = self.dimension.length - ladder.dimension.length
 
                 if max_row < 0 or max_col < 0:
-                    # Boulder is too big for the board, skip
+                    # Vault is too big for the board, skip
                     print(f"Boulder {ladder.id} too big for the board, skipping.")
                     break
 
