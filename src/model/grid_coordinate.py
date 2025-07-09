@@ -9,3 +9,8 @@ instead of row, and height. This gives a GridCoordinate as a single-source-of-tr
 class GridCoordinate:
     row: int
     column: int
+
+@dataclass(frozen=True)
+class CoordinateRange:
+    first_coordinate: GridCoordinate
+    last_coordinate: GridCoordinate

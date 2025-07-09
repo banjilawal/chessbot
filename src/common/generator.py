@@ -57,6 +57,7 @@ class Generator:
             racks.append(self.random_rack(max_height))
         return racks
 
+
     def random_vault_group(self) -> VaultGroup:
         return VaultGroup(
             id=global_id_generator.vault_group_id(),

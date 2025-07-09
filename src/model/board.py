@@ -1,18 +1,18 @@
 import random
 from dataclasses import dataclass, field
 
-from typing import Tuple, List, Optional, cast
+from typing import Tuple, List, Optional, cast, Dict
 
 from common.direction import Direction
 from common.id_generator import global_id_generator
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
-from model.grid_coordinate import GridCoordinate
+from model.grid_coordinate import GridCoordinate, CoordinateRange
 from model.crate import Crate
 from common.dimension import Dimension
 from model.grid_entity import GridEntity
 from model.portal.door import Door
 from model.rack import Rack
-from model.vault import Vault, VaultGroup
+from model.vault import Vault, VaultGroup, VerticalVaults, HorizontalVaults
 from model.portal.portal import Portal
 from src.common.game_default import GameDefault
 from model.cell import Cell
@@ -25,6 +25,8 @@ class Board:
 
     door: Portal = field(default_factory=lambda: Door(id=global_id_generator.next_portal_id(), coordinate=None))
     vaults: Dict[int, VaultGroup] = field(default_factory=dict)
+    vertical_vaults: Dict[int, VerticalVaults] = field(default_factory=dict)
+    horizontal_vaults: Dict[int, HorizontalVaults] = field(default_factory=dict)
     crates: List[Crate] = field(default_factory=list)
     racks: List[Rack] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
@@ -161,6 +163,49 @@ class Board:
             return positioned_rack
         return None
 
+    def position_vertical_vaults(self, starting_vault: Vault, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
+        entity = self.__position_grid_entity(starting_vault, starting_coordinate)
+
+        if entity is not None and isinstance(entity, VerticalVaults):
+            positioned_vault = cast(Vault, entity)
+            vaults = [positioned_vault]
+            for i in range(1, 5):
+                vault = Vault(vault_id=global_id_generator.next_vault_id())
+                coordinate = GridCoordinate(positioned_vault.coordinate.row + i, positioned_vault.coordinate.column)
+                self.cells[coordinate.row][coordinate.column].occupant = vault
+                vaults.append(vault)
+            return vaults
+        return None
+
+
+    def position_horizontal_vaults(self, starting_vault: Vault, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
+        entity = self.__position_grid_entity(starting_vault, starting_coordinate)
+
+        if entity is not None and isinstance(entity, HorizontalVaults):
+            positioned_vault = cast(Vault, entity)
+            max_vaults = self.dimension.length - positioned_vault.coordinate.column
+
+            if max_vaults <= 0:
+                return None
+
+            total_new_vaults = random.randint(1, max_vaults)
+            vaults = [positioned_vault]
+            for i in total_new_vaults:
+                vault = Vault(vault_id=global_id_generator.next_vault_id())
+                coordinate = GridCoordinate(
+                    positioned_vault.coordinate.row,
+                    positioned_vault.coordinate.column + 1
+                )
+                self.cells[coordinate.row][coordinate.column].occupant = vault
+                vaults.append(vault)
+            key = len(self.vertical_vaults.keys()) + 1
+            self.vertical_vaults[key] = vaults
+
+            return vaults
+        return None
+
+
+
     def position_vault_group(self, starting_vault: Vault, vault_group_direction: Direction, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
         entity = self.__position_grid_entity(starting_vault, starting_coordinate)
 
@@ -176,10 +221,103 @@ class Board:
         return None
 
     def add_vaults(self, vault__group_id: int):
-        growth
+        max_growth_space = self._get_growth_space(vault__group_id)
+        if max_growth_space == 0:
+            return
+        total_new_vaults = random.randint(1, max_growth_space)
+        for i in range(total_new_vaults):
+            vault_group = self.vaults[vault__group_id]
+            vault_group.vaults.append(Vault(vault_id=global_id_generator.next_vault_id()))
+            self.vaults[vault__group_id] = vault_group
 
-    def _get_growth_space(self, vault_group: VaultGroup) -> int:
-        size
+    def _add_vertical_vault(self, vault_group_key: int):
+        max_growth_space = self._get_growth_space(vault_group_key)
+
+        if growth_space > 0:
+            vault_group = self.vaults[vault_group_key]
+            coordinate_bounds = self._coordinate_bounds(vault_group_key)
+            total_new_vaults = random.randint(1, max_growth_space)
+
+            for i in range(total_new_vaults):
+                vault = Vault(vault_id=global_id_generator.next_vault_id())
+                new_coordinate = GridCoordinate()
+                vault_group = self.vaults[vault_group_key]
+                vault_group.vaults.append(vault)
+                self.vaults[vault_group_key] = vault_group
+        vault_group = self.vaults[vault_group_key]
+        if vault_group is None:
+            return
+        first_vault = vault_group[0]
+        first_coordinate = first_vault.coordinate
+        current_num_vaults = len(self.vaults[vault_group_key])
+
+        if vault_group.growth_direction == Direction.RIGHT:
+            last_coordinate = first_coordinate.column + first_vault.dimension.length - 1
+
+    def _get_growth_space(self, vault_group_key: int) -> int:
+        vaults = self.vaults[vault_group_key]
+        if vaults is None:
+            return 0
+
+        coordinate_bounds = self._coordinate_bounds(vault_group_key)
+        if coordinate_bounds is None:
+            return 0
+
+        if vaults.growth_direction == Direction.RIGHT:
+            return self.dimension.length - coordinate_bounds.column.column - 1
+
+        elif vaults.growth_direction == Direction.DOWN:
+            return self.dimension.height - coordinate_bounds.row.row - 1
+        else:
+            return 0
+
+        def _coordinate_range(self, entity: GridEntity) -> CoordinateRange:
+            if entity is None:
+                return None
+
+            if isinstance(entity, Crate):
+                first_coordinate = entity.coordinate
+                last_coordinate = GridCoordinate(
+                    row=first_coordinate.row,
+                    column=first_coordinate.column + entity.dimension.length - 1
+                )
+                return CoordinateRange(first_coordinate=first_coordinate, last_coordinate=last_coordinate)
+
+            if isinstance(entity, Rack):
+                first_coordinate = entity.coordinate
+                last_coordinate = GridCoordinate(
+                    row=first_coordinate.row + entity.dimension.height - 1,
+                    column=first_coordinate.column
+                )
+                return CoordinateRange(first_coordinate=first_coordinate, last_coordinate=last_coordinate)
+
+            if isinstance(entity, Vault):
+                first_coordinate = entity.coordinate
+                last_coordinate = GridCoordinate(
+                    row=first_coordinate.row + entity.dimension.height - 1,
+                    column=first_coordinate.column + entity.dimension.length - 1
+                )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if
+        available_vault_space =
 
     def __position_grid_entity(
             self,
