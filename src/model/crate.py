@@ -9,8 +9,8 @@ from model.grid_entity import GridEntity
 @dataclass
 class Crate(GridEntity):
 
-    def __init__(self, id: int, height: int, coordinate: Optional[GridCoordinate] = None):
-        super().__init__(id=id, dimension=Dimension(length=1, height=height), coordinate=coordinate)
+    def __init__(self, id: int, length: int, coordinate: Optional[GridCoordinate] = None):
+        super().__init__(id=id, dimension=Dimension(length=length, height=1), coordinate=coordinate)
 
     def move_left(self, distance: int):
         new_coordinate = GridCoordinate(row=self.coordinate.row, column=self.coordinate.column - distance)
