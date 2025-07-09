@@ -1,7 +1,7 @@
 import random
 from dataclasses import dataclass, field
 
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 
 from common.id_generator import global_id_generator
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
@@ -59,9 +59,10 @@ class Board:
         self.vaults.append(boulder)
 
     def add_boulders(self, boulders: List[Vault]):
+
         self.vaults.extend(boulders)
 
-    def add_ladder(self, ladder: Crate):
+    def position_crate(self, crate: Crate, coordinate: GridCoordinate) -> Optional[Crate]:
         self.crates.append(ladder)
 
     def add_ladders(self, ladders: List[Crate]):
@@ -139,6 +140,19 @@ class Board:
                     # self.crates.append(boulder)
                     # print(f"Placed boulder {boulder.id} (area {boulder.dimension.area()}) at {coord}")
                     # placed = True
+
+    def _space_is_available(self, dimension: Dimension, top_left_coordinate: GridCoordinate) -> bool:
+        # Early boundary check
+        if (top_left_coordinate.row + dimension.height > self.height or
+                top_left_coordinate.column + dimension.width > self.width):
+            return False
+
+        for row in range(top_left_coordinate.row, top_left_coordinate.row + dimension.height):
+            for col in range(top_left_coordinate.column, top_left_coordinate.column + dimension.width):
+                coord = GridCoordinate(row=row, column=col)
+                if not self._is_valid_coordinate(coord) or self._is_cell_occupied(coord):
+                    return False
+        return True
 
     def print(self):
         """Print the board with cell IDs"""

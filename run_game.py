@@ -1,7 +1,7 @@
 import pygame
 
 from src.common.dimension import Dimension
-from src.common.grid_entity_generator import GridEntityGenerator
+from src.common.generator import Generator
 from model.board import Board
 from model.crate import Crate
 
@@ -11,10 +11,10 @@ if __name__ == "__main__":
 
     max_length = board.dimension.length % 2 + 1
     max_height = board.dimension.height % 2 + 1
-    board.add_boulders(GridEntityGenerator().generate_boulders(max_length=2, max_height=3, count=9))
+    board.add_boulders(Generator().generate_boulders(max_length=2, max_height=3, count=9))
     board.place_boulders_randomly()
 
-    board.add_ladders(GridEntityGenerator().random_racks(max_height=max_height, count=9))
+    board.add_ladders(Generator().racks(max_height=max_height, count=9))
     board.place_ladders_randomly()
     print(board.print())
 
