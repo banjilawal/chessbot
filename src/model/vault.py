@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Optional, List, Union
+from typing import Optional, List, Union, Dict
 
 from common.dimension import Dimension
 from common.direction import Direction
@@ -60,4 +60,43 @@ class VaultArrayBuilder:
             return HorizontalVaults(id=vault.id, vaults=vaults)
         else:
             return VerticalVaults(vaults=vaults)
+
+
+class VerticalVaultsDictionary:
+    def __init__(self):
+        self._vaults: Dict[int, VerticalVaults] = {}
+
+    def add(self, key: int, vaults: VerticalVaults) -> None:
+        self._vaults[key] = vaults
+
+    def get(self, key: int) -> Optional[VerticalVaults]:
+        return self._vaults.get(key)
+
+    def remove(self, key: int) -> None:
+        if key in self._vaults:
+            del self._vaults[key]
+
+    @property
+    def items(self) -> Dict[int, VerticalVaults]:
+        return self._vaults.copy()
+
+
+class HorizontalVaultsDictionary:
+    def __init__(self):
+        self._vaults: Dict[int, HorizontalVaults] = {}
+
+    def add(self, key: int, vaults: HorizontalVaults) -> None:
+        self._vaults[key] = vaults
+
+    def get(self, key: int) -> Optional[HorizontalVaults]:
+        return self._vaults.get(key)
+
+    def remove(self, key: int) -> None:
+        if key in self._vaults:
+            del self._vaults[key]
+
+    @property
+    def items(self) -> Dict[int, HorizontalVaults]:
+        return self._vaults.copy()
+
 
