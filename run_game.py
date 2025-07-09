@@ -14,7 +14,7 @@ if __name__ == "__main__":
     board.add_boulders(GridEntityGenerator().generate_boulders(max_length=2, max_height=3, count=9))
     board.place_boulders_randomly()
 
-    board.add_ladders(GridEntityGenerator().generate_ladders(max_height=max_height, count=9))
+    board.add_ladders(GridEntityGenerator().random_racks(max_height=max_height, count=9))
     board.place_ladders_randomly()
     print(board.print())
 

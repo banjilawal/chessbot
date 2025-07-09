@@ -3,10 +3,12 @@ class IdGenerator:
         self.travel_request_id = 1
         self.travel_decision_id = 1
         self.board_id = 1
-        self.boulder_id = 1
+        self.vault_id = 1
         self.travel_server_id = 1
         self.portal_id = 1
         self.crate_id = 1
+        self.rack_id = 1
+        self.vault_group_id = 1
 
     def next_portal_id(self) -> int:
         current_id = self.portal_id
@@ -23,14 +25,24 @@ class IdGenerator:
         self.board_id += 1
         return current_id
 
-    def next_boulder_id(self) -> int:
-        current_id = self.boulder_id
-        self.boulder_id += 1
-        return current_id
-
     def next_crate_id(self) -> int:
         current_id = self.crate_id
         self.crate_id += 1
+        return current_id
+
+    def next_rack_id(self) -> int:
+        current_id = self.rack_id
+        self.rack_id += 1
+        return current_id
+
+    def next_vault_id(self) -> int:
+        current_id = self.vault_id
+        self.vault_id += 1
+        return current_id
+
+    def next_vault_group__id(self) -> int:
+        current_id = self.vault_group_id
+        self.vault_group_id += 1
         return current_id
 
     def next_travel_request_id(self) -> int:
