@@ -9,6 +9,7 @@ from model.grid_coordinate import GridCoordinate
 from model.crate import Crate
 from common.dimension import Dimension
 from model.portal.door import Door
+from model.rack import Rack
 from model.vault import Vault
 from model.portal.portal import Portal
 from src.common.game_default import GameDefault
@@ -21,33 +22,32 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     door: Portal = field(default_factory=lambda: Door(id=global_id_generator.next_portal_id(), coordinate=None))
-    ladders: List[Crate] = field(default_factory=list)
-    boulders: List[Vault] = field(default_factory=list)
+    vaults: List[Vault] = field(default_factory=list)
+    crates: List[Crate] = field(default_factory=list)
+    racks: List[Rack] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
-
-    dimension: Dimension = field(default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
+    dimension: Dimension = field(
+        default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
 
     def __post_init__(self):
+        if not all([
+            self.dimension.height >= self.MIN_ROW_COUNT,
+            self.dimension.length >= self.MIN_COLUMN_COUNT
+        ]):
+            raise ValueError("Board dimensions below minimum values")
 
-        if self.dimension.height < self.MIN_ROW_COUNT:
-            raise InvalidNumberOfRowsError("Board number of rows below minimum value.")
+        cells = tuple(
+            tuple(
+                Cell(
+                    id=row * self.dimension.length + col + 1,
+                    coordinate=GridCoordinate(row=row, column=col)
+                )
+                for col in range(self.dimension.length)
+            )
+            for row in range(self.dimension.height)
+        )
 
-        if self.dimension.length < self.MIN_COLUMN_COUNT:
-            raise InvalidNumberOfColumnsError("Board number of columns below minimum value.")
-
-        # Create the grid of cells with correct coordinates
-        rows_list = [] # Use a list for building, then convert to tuple
-        for row_index in range(self.dimension.height):
-            current_row_list = []
-            for column_index in range(self.dimension.length):
-                # Correctly assign the cell's own row and column to its coordinate
-                cell_id = row_index * self.dimension.length + column_index + 1 # More standard ID calculation
-                cell = Cell(id=cell_id, coordinate=GridCoordinate(row=row_index, column=column_index))
-                current_row_list.append(cell)
-            rows_list.append(tuple(current_row_list)) # Convert inner list to tuple
-
-        # Set the cells attribute using object.__setattr__ for frozen dataclass
-        object.__setattr__(self, 'cells', tuple(rows_list)) # Convert outer list to tuple
+        object.__setattr__(self, 'cells', cells)
 
     def row_count(self) -> int:
         return self.dimension.height
@@ -56,16 +56,16 @@ class Board:
         return self.dimension.length
 
     def add_boulder(self, boulder: Vault):
-        self.boulders.append(boulder)
+        self.vaults.append(boulder)
 
     def add_boulders(self, boulders: List[Vault]):
-        self.boulders.extend(boulders)
+        self.vaults.extend(boulders)
 
     def add_ladder(self, ladder: Crate):
-        self.ladders.append(ladder)
+        self.crates.append(ladder)
 
     def add_ladders(self, ladders: List[Crate]):
-        self.ladders.extend(ladders)
+        self.crates.extend(ladders)
 
     def are_occupied(self, top_left_coord: GridCoordinate, dimension: Dimension) -> bool:
         """
@@ -79,7 +79,7 @@ class Board:
 
     def place_boulders_randomly(self):
         placed_boulders = []
-        for boulder in self.boulders:
+        for boulder in self.vaults:
             placed = False
             attempts = 0
             while not placed and attempts < 1:
@@ -103,7 +103,7 @@ class Board:
                         for r in range(row, row + boulder.dimension.height)
                     ]
                     boulder.occupy_cells(coord, cells_to_occupy)
-                    # self.boulders.append(boulder)
+                    # self.vaults.append(boulder)
                     # print(f"Placed boulder {boulder.id} (area {boulder.dimension.area()}) at {coord}")
                     # placed = True
             #
@@ -112,7 +112,7 @@ class Board:
 
     def place_ladders_randomly(self):
         placed_boulders = []
-        for ladder in self.ladders:
+        for ladder in self.crates:
             placed = False
             attempts = 0
             while not placed and attempts < 1:
@@ -136,7 +136,7 @@ class Board:
                         for r in range(row, row + ladder.dimension.height)
                     ]
                     ladder.occupy_cells(coord, cells_to_occupy)
-                    # self.ladders.append(boulder)
+                    # self.crates.append(boulder)
                     # print(f"Placed boulder {boulder.id} (area {boulder.dimension.area()}) at {coord}")
                     # placed = True
 

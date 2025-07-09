@@ -18,7 +18,7 @@ if __name__ == "__main__":
     board.place_ladders_randomly()
     print(board.print())
 
-    for boulder in board.boulders:
+    for boulder in board.vaults:
         boulder.print_cells()
     pygame.init()
 
@@ -58,8 +58,8 @@ if __name__ == "__main__":
                 color = cream if (row_idx + col_idx) % 2 == 0 else khaki
                 pygame.draw.rect(screen, color, (x, y, cell_px, cell_px))
 
-        # 2. Draw boulders (gray square + inner border)
-        for boulder in board.boulders:
+        # 2. Draw vaults (gray square + inner border)
+        for boulder in board.vaults:
             if boulder.cells:
                 for row in boulder.cells:
                     for cell in row:
@@ -69,8 +69,8 @@ if __name__ == "__main__":
                         pygame.draw.rect(screen, padding_color, (x + 1, y + 1, cell_px - 2, cell_px - 2),
                                          width=2)  # border
 
-        # 3. Draw ladders on top (only blue lines)
-        for ladder in board.ladders:
+        # 3. Draw crates on top (only blue lines)
+        for ladder in board.crates:
             if isinstance(ladder, Crate) and ladder.cells:
                 for row in ladder.cells:
                     for cell in row:
