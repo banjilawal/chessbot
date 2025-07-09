@@ -5,7 +5,8 @@ from model.board import Board
 from model.rack import Rack
 from src.common.dimension import Dimension
 from src.common.id_generator import global_id_generator
-from model.vault import Vault, VaultGroup
+from model.vault import Vault, VaultGroup, VaultArrayBuilder, VerticalVaults, VerticalVaultsDictionary, \
+    HorizontalVaultsDictionary
 from model.crate import Crate
 
 
@@ -36,11 +37,53 @@ class Generator:
         # print(f"created crate with id: {ladder.id}, dimension: {ladder.dimension}, area: {ladder.dimension.area()}")
         # return ladder
 
-    def crates(self, max_length:int, count: int) -> list[Crate]:
-        crates: list[Crate] = []
-        for _ in range(count):
-            crates.append(self.random_crate(max_length))
-        return crates
+    def create_vaults(self, direction: Direction, length: int) -> Union[VerticalVaults, HorizontalVaults]:
+        if direction in (Direction.UP, Direction.DOWN):
+            build_direction = Direction.UP  # VaultArrayBuilder only needs UP
+            return VaultArrayBuilder.build(
+                vault=Vault(vault_id=1),
+                direction=build_direction,
+                size=length
+            )
+        elif direction in (Direction.LEFT, Direction.RIGHT):
+            build_direction = Direction.RIGHT  # VaultArrayBuilder only needs RIGHT
+            return VaultArrayBuilder.build(
+                vault=Vault(vault_id=1),
+                direction=build_direction,
+                size=length
+            )
+        else:
+            raise ValueError("Direction must be UP, DOWN, LEFT, or RIGHT")
+
+    def create_vaults_dictionary(
+            self,
+            direction: Direction,
+            max_array_length: int,
+            dictionary_size: int
+    ) -> Union[VerticalVaultsDictionary, HorizontalVaultsDictionary]:
+        if max_array_length < 2:
+            raise ValueError("max_array_length must be at least 2")
+
+        if direction in (Direction.UP, Direction.DOWN):
+            dictionary = VerticalVaultsDictionary()
+            build_direction = Direction.UP
+        elif direction in (Direction.LEFT, Direction.RIGHT):
+            dictionary = HorizontalVaultsDictionary()
+            build_direction = Direction.RIGHT
+        else:
+            raise ValueError("Direction must be UP, DOWN, LEFT, or RIGHT")
+
+        for i in range(dictionary_size):
+            length = random.randint(2, max_array_length)
+
+            vaults = VaultArrayBuilder.build(
+                vault=Vault(vault_id=i + 1),  # Using index+1 as vault_id
+                direction=build_direction,
+                size=length
+            )
+            dictionary.add(i, vaults)
+
+        return dictionary
 
     def random_rack(self, max_height: int) -> Rack:
         return Rack(
