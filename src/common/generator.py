@@ -1,4 +1,5 @@
 import random
+from typing import Union
 
 from common.direction import Direction
 from model.board import Board
@@ -6,7 +7,7 @@ from model.rack import Rack
 from src.common.dimension import Dimension
 from src.common.id_generator import global_id_generator
 from model.vault import Vault, VaultGroup, VaultArrayBuilder, VerticalVaults, VerticalVaultsDictionary, \
-    HorizontalVaultsDictionary
+    HorizontalVaultsDictionary, HorizontalVaults
 from model.crate import Crate
 
 
@@ -39,7 +40,7 @@ class Generator:
 
     def create_vaults(self, direction: Direction, length: int) -> Union[VerticalVaults, HorizontalVaults]:
         if direction in (Direction.UP, Direction.DOWN):
-            build_direction = Direction.UP  # VaultArrayBuilder only needs UP
+            build_direction = Direction.UP
             return VaultArrayBuilder.build(
                 vault=Vault(vault_id=1),
                 direction=build_direction,
@@ -58,8 +59,8 @@ class Generator:
     def create_vaults_dictionary(
             self,
             direction: Direction,
-            max_array_length: int,
-            dictionary_size: int
+            max_array_length: int = 10,
+            dictionary_size: int = 10
     ) -> Union[VerticalVaultsDictionary, HorizontalVaultsDictionary]:
         if max_array_length < 2:
             raise ValueError("max_array_length must be at least 2")
