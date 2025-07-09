@@ -118,22 +118,12 @@ class Generator:
             self,
             length:int = 21,
             height:int = 21,
-            max_crates:int = 20,
             max_racks:int = 20,
-            max_vault_groups: int = 10,
-            max_vault_group_length:int = 10
+            max_vertical_vaults:int = 10,
+            max_horizontal_vaults:int = 10,
     ) -> Board:
         board: Board(Dimension(length=length, height=height))
-        crates = self.crates(max_length=8, count=max_crates)
         racks = self.racks(max_height=10, count=max_racks)
-        vault_groups = self.vault_groups(count=max_vault_groups)
-
-        board.add_vault_groups(vault_groups)
-        board.add_crates(crates)
-        board.add_racks(racks)
-
-        board.add_boulders(self.generate_boulders(max_length=2, max_height=3, count=9))
-        board.place_boulders_randomly()
-        board.add_ladders(self.racks(max_height=3, count=9))
-        board.place_ladders_randomly()
+        horizontal_vaults = self.create_vaults_dictionary(max_array_length=max_horizontal_vaults, direction=Direction.DOWN)
+        vertical_vaults = self.create_vaults_dictionary(max_array_length=max_vertical_vaults, direction=Direction.RIGHT)
         return board
