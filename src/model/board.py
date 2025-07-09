@@ -18,7 +18,6 @@ from src.common.game_default import GameDefault
 from model.cell import Cell
 
 
-@dataclass(frozen=True)
 class Board:
     MIN_ROW_COUNT = 2
     MIN_COLUMN_COUNT = 2
@@ -32,6 +31,18 @@ class Board:
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
     dimension: Dimension = field(
         default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
+
+    def _create_default_crate(self) -> Crate:
+        """Create the default crate at the center of row 1"""
+        middle_column = self.dimension.length // 2
+        if self.dimension.length % 2 == 0:
+            # Even number of columns, place at middle_column
+            coordinate = GridCoordinate(row=1, column=middle_column)
+        else:
+            # Odd number of columns, place at middle_column + 1
+            coordinate = GridCoordinate(row=1, column=middle_column + 1)
+
+        return Crate(id=1, coordinate=coordinate)
 
     def __post_init__(self):
         if not all([
