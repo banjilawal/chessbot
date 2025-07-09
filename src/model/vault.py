@@ -9,5 +9,5 @@ from model.grid_entity import GridEntity
 @dataclass
 class Vault(GridEntity):
 
-    def __init__(self, id: int, coordinate: Optional[GridCoordinate] = None):
-        super().__init__(id=id, dimension=Dimension(length=1, height=1), coordinate=coordinate)
+    def __init__(self, vault_id: int, coordinate: Optional[GridCoordinate] = None):
+        super().__init__(id=vault_id, dimension=Dimension(length=1, height=1), coordinate=coordinate)
