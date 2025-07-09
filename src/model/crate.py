@@ -1,16 +1,17 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from model.rack import Rack
 from src.common.dimension import Dimension
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity
 
 
 @dataclass
-class Crate(GridEntity):
+class Crate(Rack):
 
     def __init__(self, crate_id: int, coordinate: Optional[GridCoordinate] = None):
-        super().__init__(id=crate_id, dimension=Dimension(length=1, height=1), coordinate=coordinate)
+        super().__init__(rack_id=crate_id, height=1, coordinate=coordinate)
 
     def move_left(self, distance: int):
         new_coordinate = GridCoordinate(row=self.coordinate.row, column=self.coordinate.column - distance)
@@ -19,6 +20,8 @@ class Crate(GridEntity):
     def move_right(self, distance: int):
         new_coordinate = GridCoordinate(row=self.coordinate.row, column=self.coordinate.column + distance)
         self.coordinate = new_coordinate
+
+
 
 
     # def id(self) -> int:
