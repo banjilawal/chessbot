@@ -1,13 +1,15 @@
 import random
 from dataclasses import dataclass, field
 
-from typing import Tuple, List, Optional
+from typing import Tuple, List, Optional, cast
 
+from common.direction import Direction
 from common.id_generator import global_id_generator
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 from model.grid_coordinate import GridCoordinate
 from model.crate import Crate
 from common.dimension import Dimension
+from model.grid_entity import GridEntity
 from model.portal.door import Door
 from model.rack import Rack
 from model.vault import Vault, VaultGroup
@@ -22,7 +24,7 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     door: Portal = field(default_factory=lambda: Door(id=global_id_generator.next_portal_id(), coordinate=None))
-    vaults: List[VaultGroup] = field(default_factory=list)
+    vaults: Dict[int, VaultGroup] = field(default_factory=dict)
     crates: List[Crate] = field(default_factory=list)
     racks: List[Rack] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
@@ -140,6 +142,59 @@ class Board:
                     # self.crates.append(boulder)
                     # print(f"Placed boulder {boulder.id} (area {boulder.dimension.area()}) at {coord}")
                     # placed = True
+
+    def position_crate(self, crate: Crate, top_left_coordinate: GridCoordinate) -> Optional[Crate]:
+        entity = self.__position_grid_entity(crate, top_left_coordinate)
+
+        if entity is not None and isinstance(entity, Crate):
+            positioned_crate = cast(Crate, entity)
+            self.crates.append(positioned_crate)
+            return positioned_crate
+        return None
+
+    def position_rack(self, rack: Rack, top_left_coordinate: GridCoordinate) -> Optional[Rack]:
+        entity = self.__position_grid_entity(rack, top_left_coordinate)
+
+        if entity is not None and isinstance(entity, Rack):
+            positioned_rack = cast(Rack, entity)
+            self.racks.append(positioned_rack)
+            return positioned_rack
+        return None
+
+    def position_vault_group(self, starting_vault: Vault, vault_group_direction: Direction, starting_coordinate: GridCoordinate) -> Optional[VaultGroup]:
+        entity = self.__position_grid_entity(starting_vault, starting_coordinate)
+
+        if entity is not None and isinstance(entity, Vault):
+            positioned_vault = cast(Vault, entity)
+            vault_group = VaultGroup(
+                vault_group_id=global_id_generator.next_vault_group__id(),
+                growth_direction=vault_group_direction
+            )
+            key = len(self.vaults) + 1
+            self.vaults[key] = vault_group
+            return vault_group
+        return None
+
+    def add_vaults(self, vault__group_id: int):
+        growth
+
+    def _get_growth_space(self, vault_group: VaultGroup) -> int:
+        size
+
+    def __position_grid_entity(
+            self,
+            entity: GridEntity,
+            top_left_coordinate: GridCoordinate
+    ) -> Optional[GridEntity]:
+        if not self._check_space_available(entity.dimension, top_left_coordinate):
+            return None
+
+        entity.position = top_left_coordinate
+        for row in range(top_left_coordinate.row, top_left_coordinate.row + entity.dimension.height):
+            for col in range(top_left_coordinate.column, top_left_coordinate.column + entity.dimension.width):
+                self.occupied_cells.add(GridCoordinate(row=row, column=col))
+
+        return entity
 
     def _space_is_available(self, dimension: Dimension, top_left_coordinate: GridCoordinate) -> bool:
         # Early boundary check

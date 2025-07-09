@@ -15,5 +15,10 @@ class Vault(GridEntity):
 
 @dataclass
 class VaultGroup:
+    id: int
     growth_direction: Direction
     vaults: List[Vault] = field(default_factory=list)
+
+    def __init__(self, vault_group_id: int, growth_direction: Direction):
+        self.id = vault_group_id
+        self.growth_direction = growth_direction
