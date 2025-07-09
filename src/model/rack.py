@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 from common.dimension import Dimension
 from model.grid_coordinate import GridCoordinate
