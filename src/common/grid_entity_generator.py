@@ -6,7 +6,7 @@ from model.vault import Vault
 from model.crate import Crate
 
 
-class OccupantGenerator:
+class GridEntityGenerator:
     def random_dimension(self, max_length: int, max_height: int) -> Dimension:
         return Dimension(
             length=random.randint(1, max_length),

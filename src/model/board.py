@@ -10,7 +10,7 @@ from model.crate import Crate
 from common.dimension import Dimension
 from model.portal.door import Door
 from model.rack import Rack
-from model.vault import Vault
+from model.vault import Vault, VaultGroup
 from model.portal.portal import Portal
 from src.common.game_default import GameDefault
 from model.cell import Cell
@@ -22,7 +22,7 @@ class Board:
     MIN_COLUMN_COUNT = 2
 
     door: Portal = field(default_factory=lambda: Door(id=global_id_generator.next_portal_id(), coordinate=None))
-    vaults: List[Vault] = field(default_factory=list)
+    vaults: List[VaultGroup] = field(default_factory=list)
     crates: List[Crate] = field(default_factory=list)
     racks: List[Rack] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
