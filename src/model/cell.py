@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-from typing import Optional, TYPE_CHECKING
+from typing import Optional
 
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError
-from src.model.board.grid_coordinate import GridCoordinate
+from model.grid_coordinate import GridCoordinate
 
 
 @dataclass

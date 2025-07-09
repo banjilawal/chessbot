@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from typing import Optional
 
 from common.dimension import Dimension
-from model.board.grid_coordinate import GridCoordinate
-from model.occupant.grid_entity import GridEntity
+from model.grid_coordinate import GridCoordinate
+from model.grid_entity import GridEntity
 from model.portal.door_state import DoorState
 from model.portal.portal import Portal
 

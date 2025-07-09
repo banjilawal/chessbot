@@ -1,19 +1,18 @@
 import random
 from dataclasses import dataclass, field
 
-from typing import Optional, Tuple, List
+from typing import Tuple, List
 
 from common.id_generator import global_id_generator
 from exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
-from model.board.grid_coordinate import GridCoordinate
-from model.occupant.crate import Crate
+from model.grid_coordinate import GridCoordinate
+from model.crate import Crate
 from common.dimension import Dimension
 from model.portal.door import Door
-from model.occupant.vault import Vault
+from model.vault import Vault
 from model.portal.portal import Portal
 from src.common.game_default import GameDefault
-from src.exception.exception import InvalidIdError
-from src.model.cell.cell import Cell
+from model.cell import Cell
 
 
 @dataclass(frozen=True)

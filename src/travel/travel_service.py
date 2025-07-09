@@ -1,8 +1,8 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from common.id_generator import IdGenerator, global_id_generator
-from model.board.board import Board
+from common.id_generator import global_id_generator
+from model.board import Board
 from travel.traveler import Traveler
 from travel.bearing import Bearing
 from travel.travel_decision import TravelDecision

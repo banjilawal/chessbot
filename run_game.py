@@ -2,8 +2,8 @@ import pygame
 
 from src.common.dimension import Dimension
 from src.common.occupant_generator import OccupantGenerator
-from src.model.board.board import Board
-from src.model.occupant.crate import Crate
+from model.board import Board
+from model.crate import Crate
 
 if __name__ == "__main__":
     board = Board(dimension=Dimension(length=11, height=11))

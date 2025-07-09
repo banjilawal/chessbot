@@ -2,8 +2,8 @@ import random
 
 from src.common.dimension import Dimension
 from src.common.id_generator import global_id_generator
-from src.model.occupant.vault import Vault
-from src.model.occupant.crate import Crate
+from model.vault import Vault
+from model.crate import Crate
 
 
 class OccupantGenerator:

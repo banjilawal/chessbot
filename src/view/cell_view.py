@@ -1,8 +1,7 @@
 import pygame
 
 from common.game_color import GameColor
-from common.game_default import GameDefault
-from model.cell.cell import Cell
+from model.cell import Cell
 
 #
 # class CellView:

@@ -1,13 +1,8 @@
-from curses.textpad import rectangle
-
 import pygame
-from pygame.examples.headless_no_windows_needed import screen
-from pygame.examples.testsprite import screen_dims
 
 from common.game_color import GameColor
 from common.game_default import GameDefault
-from model.board.board import Board
-from model.cell.cell import Cell
+from model.board import Board
 from view.cell_view import CellView
 
 #

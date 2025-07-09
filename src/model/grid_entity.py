@@ -1,8 +1,8 @@
-from dataclasses import dataclass, field
-from typing import Optional, TYPE_CHECKING
+from dataclasses import dataclass
+from typing import Optional
 
 from src.common.dimension import Dimension
-from src.model.board.grid_coordinate import GridCoordinate
+from model.grid_coordinate import GridCoordinate
 
 
 

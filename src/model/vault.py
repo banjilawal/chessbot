@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from src.model.occupant.grid_entity import GridEntity
+from model.grid_entity import GridEntity
 
 
 @dataclass

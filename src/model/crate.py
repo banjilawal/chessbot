@@ -2,12 +2,8 @@ from dataclasses import dataclass
 from typing import Optional
 
 from src.common.dimension import Dimension
-from src.model.board.grid_coordinate import GridCoordinate
-from src.model.occupant.grid_entity import GridEntity
-from src.travel.bearing import Bearing
-from src.travel.travel_decision import TravelDecision
-from src.travel.travel_request import TravelRequest
-from src.travel.traveler import Traveler
+from model.grid_coordinate import GridCoordinate
+from model.grid_entity import GridEntity
 
 
 @dataclass
