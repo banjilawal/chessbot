@@ -4,7 +4,7 @@ from unittest.mock import Mock
 from src.model.cell.cell import Cell
 from src.common.game_default import GameDefault
 from src.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
-from src.model.occupant.occupant import Occupant
+from src.model.occupant.grid_entity import GridEntity
 
 
 class TestGameBoardSquare(unittest.TestCase):
@@ -55,24 +55,24 @@ class TestGameBoardSquare(unittest.TestCase):
         self.assertFalse(self.square.occupied)
 
     def test_square_is_unoccupied_when_figure_leaves(self):
-        figure: Occupant = Occupant(id=1, length=2, height=3)
+        figure: GridEntity = GridEntity(id=1, length=2, height=3)
         figure.enter_square(self.square)
         figure.leave_square()
         self.assertIsNone(self.square._occupant)
 
     def test_figure_leaving_square_looses_ownership(self):
-        figure: Occupant = Occupant(id=1, length=2, height=3)
+        figure: GridEntity = GridEntity(id=1, length=2, height=3)
         figure.enter_square(self.square)
         figure.leave_square()
         self.assertNotEqual(self.square._occupant, figure)
 
     def test_square_is_occupied_by_entering_figure(self):
-        figure: Occupant = Occupant(id=1, length=2, height=3)
+        figure: GridEntity = GridEntity(id=1, length=2, height=3)
         figure.enter_square(self.square)
         self.assertEqual(self.square.occupant, figure)
 
     def test_figure_entering_square_gains_ownership(self):
-        figure: Occupant = Occupant(id=1, length=2, height=3)
+        figure: GridEntity = GridEntity(id=1, length=2, height=3)
         figure.enter_square(self.square)
         self.assertEqual(self.square.occupant, figure)
 

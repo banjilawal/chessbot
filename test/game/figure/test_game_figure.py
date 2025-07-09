@@ -5,7 +5,7 @@ from unittest.mock import Mock
 from src.exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
     OccupiedSquareEntryError, SelfOccupiedSquareError, InvalidFigureLengthError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError
-from src.model.occupant.occupant import Occupant
+from src.model.occupant.grid_entity import GridEntity
 
 
 class TestGameFigure(unittest.TestCase):
@@ -17,44 +17,44 @@ class TestGameFigure(unittest.TestCase):
         type(self.mock_square).occupant = property(lambda s: s._occupant)
 
         self.mock_figure = Mock(name="MockFigure")
-        self.figure = Occupant(id=1, length=2, height=3)
+        self.figure = GridEntity(id=1, length=2, height=3)
 
     def test_constructing_figure_with_valid_id(self):
         """Test occupant creation with valid ID"""
-        figure = Occupant(id=1, length=2, height=3)
+        figure = GridEntity(id=1, length=2, height=3)
         self.assertEqual(figure.id, 1)
 
     def test_constructing_figure_with_invalid_id_raises_error(self):
         """Test occupant creation with invalid ID"""
         with self.assertRaises(InvalidIdError):
-            Occupant(id=-1, length=2, height=2)
+            GridEntity(id=-1, length=2, height=2)
 
     def test_constructing_figure_with_valid_length(self):
-        figure = Occupant(id=1, length=2, height=3)
-        self.assertGreaterEqual(figure.length, Occupant.MIN_LENGTH)
+        figure = GridEntity(id=1, length=2, height=3)
+        self.assertGreaterEqual(figure.length, GridEntity.MIN_LENGTH)
 
     def test_invalid_figure_length_throws_error(self):
         """Test occupant creation with an invalid length"""
         with self.assertRaises(InvalidFigureLengthError):
-            Occupant(id=1, length=0, height=2)
+            GridEntity(id=1, length=0, height=2)
 
     def test_constructing_figure_with_valid_height(self):
-        figure = Occupant(id=1, length=2, height=3)
-        self.assertGreaterEqual(figure.height, Occupant.MIN_HEIGHT)
+        figure = GridEntity(id=1, length=2, height=3)
+        self.assertGreaterEqual(figure.height, GridEntity.MIN_HEIGHT)
 
     def test_invalid_height_throws_error(self):
         """Test occupant creation with invalid height"""
         with self.assertRaises(InvalidFigureHeightError):
-            Occupant(id=1, length=2, height=0)
+            GridEntity(id=1, length=2, height=0)
 
     def test_area_of_figure_greater_or_equal_minimum_area(self):
         """Test occupant area is greater than or equal to the minimum area"""
-        figure = Occupant(id=1, length=2, height=3)
-        self.assertGreaterEqual(figure.area(), Occupant.MIN_AREA)
+        figure = GridEntity(id=1, length=2, height=3)
+        self.assertGreaterEqual(figure.area(), GridEntity.MIN_AREA)
 
     def test_area_of_figure_below_minimum_raises_error(self):
         with self.assertRaises(FigureAreaBelowLimitError):
-            Occupant(id=1, length=Occupant.MIN_LENGTH, height=Occupant.MIN_HEIGHT)
+            GridEntity(id=1, length=GridEntity.MIN_LENGTH, height=GridEntity.MIN_HEIGHT)
 
     def test_figure_entering_square_updates_square(self):
         self.figure.enter_square(self.mock_square)

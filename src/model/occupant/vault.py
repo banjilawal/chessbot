@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
-from src.model.occupant.occupant import Occupant
+from src.model.occupant.grid_entity import GridEntity
 
 
 @dataclass
-class Vault(Occupant):
+class Vault(GridEntity):
     pass

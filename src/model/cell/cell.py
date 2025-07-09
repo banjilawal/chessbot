@@ -10,7 +10,7 @@ from src.model.board.grid_coordinate import GridCoordinate
 class Cell:
     id: int
     coordinate: GridCoordinate
-    occupant: Optional['Occupant'] = field(default=None)
+    occupant: Optional['GridEntity'] = field(default=None)
     door: Optional['Portal'] = field(default=None)
 
 def __post_init__(self):
@@ -20,7 +20,7 @@ def __post_init__(self):
     object.__setattr__(self, 'coordinate', self.coordinate)
     object.__setattr__(self, 'occupant', self.occupant)
 
-def enter_cell(self, occupant: 'Occupant'):
+def enter_cell(self, occupant: 'GridEntity'):
     """
     Allows the given occupant to enter this cell if it is unoccupied.
     Returns True if successful, False otherwise.

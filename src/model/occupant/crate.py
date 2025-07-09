@@ -3,7 +3,7 @@ from typing import Optional
 
 from src.common.dimension import Dimension
 from src.model.board.grid_coordinate import GridCoordinate
-from src.model.occupant.occupant import Occupant
+from src.model.occupant.grid_entity import GridEntity
 from src.travel.bearing import Bearing
 from src.travel.travel_decision import TravelDecision
 from src.travel.travel_request import TravelRequest
@@ -11,7 +11,7 @@ from src.travel.traveler import Traveler
 
 
 @dataclass
-class Crate(Occupant):
+class Crate(GridEntity):
 
     def __init__(self, id: int, height: int, coordinate: Optional[GridCoordinate] = None):
         super().__init__(id=id, dimension=Dimension(length=1, height=height), coordinate=coordinate)
