@@ -1,11 +1,11 @@
 from common.dimension import Dimension
 from common.direction import Direction
-from model.grid import Grid
+from model.board import Board
 from model.grid_coordinate import GridCoordinate
 from model.vault import HorizontalMover
 
 if __name__ == "__main__":
-    board = Grid(dimension=Dimension(length=21, height=21))
+    board = Board(dimension=Dimension(length=21, height=21))
     print("board dimensions:", board.dimension)
     # print("total empty cells:", len(board.empty_cells()))
     # print("total occupied cells:", len(board.occupied_cells()))

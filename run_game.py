@@ -2,11 +2,11 @@ import pygame
 
 from src.common.dimension import Dimension
 from src.common.generator import Generator
-from model.grid import Grid
+from model.board import Board
 from model.crate import Crate
 
 if __name__ == "__main__":
-    board = Grid(dimension=Dimension(length=11, height=11))
+    board = Board(dimension=Dimension(length=11, height=11))
 
 
     max_length = board.dimension.length % 2 + 1

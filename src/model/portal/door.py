@@ -9,8 +9,8 @@ from model.portal.door_state import DoorState
 from model.portal.portal import Portal
 
 
-# Added model.occupant.EscapePortal which extends GridEntity class. Added list of walls to the Grid. Renamed
-# model.occupant.Wall to model.occupant.Vault. The Grid has 4 walls so the old name was ambigous and not
+# Added model.occupant.EscapePortal which extends GridEntity class. Added list of walls to the Board. Renamed
+# model.occupant.Wall to model.occupant.Vault. The Board has 4 walls so the old name was ambigous and not
 # communicating the item's intent."
 
 @dataclass

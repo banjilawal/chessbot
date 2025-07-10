@@ -2,7 +2,7 @@ import random
 from typing import Union, Dict, List
 
 from common.direction import Direction
-from model.grid import Grid
+from model.board import Board
 from model.bin import Bin
 from src.common.dimension import Dimension
 from src.common.id_generator import global_id_generator
@@ -38,8 +38,8 @@ class Generator:
             dimension=Dimension(21, 21),
             max_entity_dimension: int = 7,
             max_entities: int = 10
-    ) -> Grid:
-        board = Grid()
+    ) -> Board:
+        board = Board()
         board.add_horizontal_mover(Generator.random_horizontal_mover(max_height=max_entity_dimension))
         return board
 

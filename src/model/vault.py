@@ -8,7 +8,7 @@ from model.grid_entity import GridEntity
 from strategy.horizontal_movement_strategy import HorizontalMovementStrategy
 
 if TYPE_CHECKING:
-    from model.grid import Grid
+    from model.board import Board
 
 
 @dataclass
@@ -24,7 +24,7 @@ class HorizontalMover(GridEntity):
         super().__init__(id=mover_id, dimension=Dimension(length=1, height=height), coordinate=coordinate)
         self.movement_strategy = HorizontalMovementStrategy()
 
-    def move(self, grid: 'Grid', direction: Direction, distance: int = 1):
+    def move(self, grid: 'Board', direction: Direction, distance: int = 1):
         if not self.movement_strategy.move(self, grid, direction, distance):
             print(f"Failed to move {self.id} in direction {direction} by {distance} cells.")
         else :

@@ -6,17 +6,17 @@ from strategy.movement_strategy import MovementStrategy
 
 
 if TYPE_CHECKING:
-    from model.grid import Grid
+    from model.board import Board
     from model.vault import HorizontalMover
 
 class HorizontalMovementStrategy(MovementStrategy):
-    def move(self, mover: 'HorizontalMover', grid: 'Grid', direction: Direction, distance: int = 1) -> bool :
+    def move(self, mover: 'HorizontalMover', grid: 'Board', direction: Direction, distance: int = 1) -> bool :
 
         if mover is None:
             ("[Warning] Mover cannot be None. It cannot move.")
             return False
         if grid is None:
-            print("[Warning] Grid cannot be None. Cannot move.")
+            print("[Warning] Board cannot be None. Cannot move.")
             return False
         if mover.coordinate is None:
             print("[Warning] Mover has no coordinate. Cannot move.")

@@ -32,7 +32,7 @@ class Grid:
             self.dimension.height > self.MIN_ROW_COUNT,
             self.dimension.length >        self.MIN_COLUMN_COUNT
         ]):
-            raise ValueError("Grid dimensions below minimum values")
+            raise ValueError("Board dimensions below minimum values")
 
         cells = tuple(
             tuple(
@@ -63,7 +63,7 @@ class Grid:
 
 
 @dataclass
-class Grid:
+class Board:
     MIN_ROW_COUNT = 6
     MIN_COLUMN_COUNT = 6
 
@@ -78,7 +78,7 @@ class Grid:
             self.dimension.height > self.MIN_ROW_COUNT,
             self.dimension.length > self.MIN_COLUMN_COUNT
         ]):
-            raise ValueError("Grid dimensions below minimum values")
+            raise ValueError("Board dimensions below minimum values")
 
         cells = tuple(
             tuple(
@@ -228,7 +228,7 @@ class Grid:
         if entity not in self.entities:
             self.entities.append(entity)
 # @dataclass
-# class Grid:
+# class Board:
 #     MIN_ROW_COUNT = 6
 #     MIN_COLUMN_COUNT = 6
 #
@@ -243,7 +243,7 @@ class Grid:
 #             self.dimension.height > self.MIN_ROW_COUNT,
 #             self.dimension.length >        self.MIN_COLUMN_COUNT
 #         ]):
-#             raise ValueError("Grid dimensions below minimum values")
+#             raise ValueError("Board dimensions below minimum values")
 #
 #         cells = tuple(
 #             tuple(
