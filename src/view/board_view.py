@@ -2,12 +2,12 @@ import pygame
 
 from common.game_color import GameColor
 from common.game_default import GameDefault
-from model.board import Board
+from model.grid import Grid
 from view.cell_view import CellView
 
 #
 # class BoardView:
-#     def __init__(self, board: Board, cell_view: CellView, board_color: GameColor, cell_color: GameColor):
+#     def __init__(self, board: Grid, cell_view: CellView, board_color: GameColor, cell_color: GameColor):
 #         self.board = board
 #         self.cell_view = cell_view
 #         self.board_color = board_color
@@ -32,12 +32,12 @@ from view.cell_view import CellView
 
 
 class BoardView:
-    board: Board
+    board: Grid
     cell_view: CellView
     board_color: GameColor
     cell_color: GameColor
 
-    def __init__(self, board: Board, cell_view: CellView): #, board_color: GameColor, cell_color: GameColor):
+    def __init__(self, board: Grid, cell_view: CellView): #, board_color: GameColor, cell_color: GameColor):
         self.board = board
         self.cell_view = cell_view
         # self.board_color = board_color

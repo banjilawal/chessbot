@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from model.rack import Rack
+from model.bin import Bin
 from src.common.dimension import Dimension
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity
 
 
 @dataclass
-class Crate(Rack):
+class Crate(Bin):
 
     def __init__(self, crate_id: int, coordinate: Optional[GridCoordinate] = None):
         super().__init__(rack_id=crate_id, height=1, coordinate=coordinate)
@@ -24,8 +24,8 @@ class Crate(Rack):
 
 
 
-    # def id(self) -> int:
-    #     return super().id
+    # def cell_id(self) -> int:
+    #     return super().cell_id
     #
     # def send_travel_request(self, bearing: Bearing) -> TravelRequest:
     #     pass

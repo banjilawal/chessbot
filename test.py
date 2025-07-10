@@ -1,5 +1,6 @@
-print("Hello world")
+from common.generator import Generator
 
 if __name__ == "__main__":
-    print("Hello World")
+    board = Generator.board()
+
 

@@ -16,7 +16,7 @@ class InvalidNumberOfColumnsError(GameError):
     pass
 
 class InvalidIdError(GameError):
-    """Raised when an id iss not valid for the src"""
+    """Raised when an cell_id iss not valid for the src"""
     pass
 
 class InvalidFigureHeightError(GameError):
@@ -31,7 +31,7 @@ class FigureAreaBelowLimitError(GameError):
     """Raised when a occupant's area is below the limit"""
 
 class InvalidIdError(GameError):
-    """Raised when an id iss not valid for the src"""
+    """Raised when an cell_id iss not valid for the src"""
     pass
 
 class InvalidSquareError(GameError):
