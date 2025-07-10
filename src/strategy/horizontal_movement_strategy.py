@@ -42,28 +42,9 @@ class HorizontalMovementStrategy(MovementStrategy):
             return None
 
         upper_left_destination = GridCoordinate(row=mover.coordinate.row, column=destination_column)
-        print("strategy extracted coordinate", mover.coordinate, "from mover", mover.id)
-        print("strategy calculated destination coordinate", upper_left_destination)
 
-        print("strategy gettint target cells from grid")
-        target_cells = grid.get_cells_in_entity_area(upper_left_destination, mover)
-        if target_cells is None:
-           print("grid sent unexpected null target cells list")
-           return None
-        if len(target_cells) == 0:
-            print("grid sent no cells to move into")
-            return None
-
-        count = 1
-        for cell in target_cells:
-            print("Empty Target Cells")
-            if cell.occupant is None:
-                print(count, cell)
-            if cell.occupant is not None:
-                print(count, cell, "occupied by", cell.occupant)
-                count += 1
-
-        grid.move_entity(upper_left_destination, mover)
+        grid.move_entity(upper_left_destination, mover.id)
         return upper_left_destination
+
 
 

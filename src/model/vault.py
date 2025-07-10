@@ -29,7 +29,7 @@ class HorizontalMover(GridEntity):
         if coordinate is not None:
             self.coordinate = coordinate
         else:
-            print("move failed")
+            print("horizontal move failed")
 
 
 

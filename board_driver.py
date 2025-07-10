@@ -18,4 +18,6 @@ if __name__ == "__main__":
     mover_a_cells = board.get_cells_occupied_by_entity(mover_a.id)
     print("moverA cells:", mover_a_cells)
 
+    mover_a.move(board, Direction.RIGHT, 1)
+
 
