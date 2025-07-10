@@ -92,54 +92,11 @@ class Grid:
         )
         object.__setattr__(self, 'cells', cells)
 
-    def find_entity_by_id(self, entity_id: int) -> Optional[GridEntity]:
+    def get_entity_by_id(self, entity_id: int) -> Optional[GridEntity]:
         for entity in self.entities:
             if entity.id == entity_id:
                 return entity
         return None
-
-
-
-    def add_new_entity(self, top_left_coordinate: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
-        if top_left_coordinate is None or entity is None:
-            raise ValueError("Top-left coordinate and entity must not be None.")
-
-        # Bounds check
-        if top_left_coordinate.row + entity.dimension.height > self.dimension.height:
-            raise Exception("Entity does not fit within grid bounds at the specified coordinate.")
-
-        if top_left_coordinate.column + entity.dimension.length > self.dimension.length:
-            raise Exception("Entity does not fit within grid bounds at the specified coordinate.")
-
-        if not self.can_entity_move_to_cells(entity, top_left_coordinate):
-            raise Exception("Entity cannot move to the specified coordinate.")
-
-        self.add_entity_to_area(entity, top_left_coordinate)
-        self.register_entity(entity)
-        return entity
-
-    def can_entity_move_to_cells(self, entity: GridEntity, new_top_left_coordinate: GridCoordinate) -> bool:
-        if entity is None or new_top_left_coordinate is None:
-            raise ValueError("Entity and coordinate must not be None.")
-
-        entity_length = entity.dimension.length
-        entity_height = entity.dimension.height
-
-        new_bottom_row = new_top_left_coordinate.row + entity_height - 1
-        new_right_column = new_top_left_coordinate.column + entity_length - 1
-
-        if new_bottom_row >= self.dimension.height:
-            return False
-        if new_right_column >= self.dimension.length:
-            return False
-
-        for r in range(new_top_left_coordinate.row, new_bottom_row + 1):
-            for c in range(new_top_left_coordinate.column, new_right_column + 1):
-                cell = self.cells[r][c]
-                if cell.occupant is not None and cell.occupant != entity:
-                    print(f"Cell at {r}, {c} is occupied by {cell.occupant}")
-                    return False
-        return True
 
     def get_cells_by_area(self, top_left_coordinate: GridCoordinate, dimension: Dimension) -> List[Cell]:
         if top_left_coordinate is None or dimension is None:
@@ -158,7 +115,7 @@ class Grid:
         return cells_in_area
 
     def get_cells_occupied_by_entity(self, entity_id: int) -> List[Cell]:
-        entity = self.find_entity_by_id(entity_id)
+        entity = self.get_entity_by_id(entity_id)
         if entity is None:
             return []
 
@@ -186,10 +143,73 @@ class Grid:
 
         for cell in target_cells:
             cell.occupant = entity
-
         entity.coordinate = top_left
 
-    def register_entity(self, entity: GridEntity) -> None:
+    def add_new_entity(self, top_left_coordinate: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
+        if top_left_coordinate is None or entity is None:
+            raise ValueError("Top-left coordinate and entity must not be None.")
+
+        # Bounds check
+        if top_left_coordinate.row + entity.dimension.height > self.dimension.height:
+            raise Exception("Entity does not fit within grid bounds at the specified coordinate.")
+
+        if top_left_coordinate.column + entity.dimension.length > self.dimension.length:
+            raise Exception("Entity does not fit within grid bounds at the specified coordinate.")
+
+        if not self.can_entity_move_to_cells(entity, top_left_coordinate):
+            raise Exception("Entity cannot move to the specified coordinate.")
+
+        self.add_entity_to_area(entity, top_left_coordinate)
+        self.register_new_entity(entity)
+        return entity
+
+    def move_entity(self, upper_left_destination: GridCoordinate, entity_id: int) -> Optional[GridEntity]:
+        if upper_left_destination is None
+            raise ValueError("Destination coordinate must not be None.")
+
+        entity = self.get_entity_by_id(entity_id)
+        if entity is None:
+            raise ValueError("Entity does not exist. in the grid. cannot move a non-existent entity.")
+
+        if not self.can_entity_move_to_cells(entity, upper_left_destination):
+            print("Entity", entity.id,  "cannot move to", upper_left_destination)
+            return None
+
+        self.remove_entity_from_cells(entity)
+        self.add_entity_to_area(entity, upper_left_destination)
+        return entity
+
+    def remove_entity(self, entity_id: int) -> None:
+        entity = self.get_entity_by_id(entity_id)
+        if entity is None:
+            raise ValueError("Entity does not exist. in the grid. cannot remove a non-existent entity.")
+        self.remove_entity_from_cells(entity)
+        self.entities.remove(entity)
+
+    def can_entity_move_to_cells(self, entity: GridEntity, new_top_left_coordinate: GridCoordinate) -> bool:
+        if entity is None or new_top_left_coordinate is None:
+            raise ValueError("Entity and coordinate must not be None.")
+
+        entity_length = entity.dimension.length
+        entity_height = entity.dimension.height
+
+        new_bottom_row = new_top_left_coordinate.row + entity_height - 1
+        new_right_column = new_top_left_coordinate.column + entity_length - 1
+
+        if new_bottom_row >= self.dimension.height:
+            return False
+        if new_right_column >= self.dimension.length:
+            return False
+
+        for r in range(new_top_left_coordinate.row, new_bottom_row + 1):
+            for c in range(new_top_left_coordinate.column, new_right_column + 1):
+                cell = self.cells[r][c]
+                if cell.occupant is not None and cell.occupant != entity:
+                    print(f"Cell at {r}, {c} is occupied by {cell.occupant}")
+                    return False
+        return True
+
+    def register_new_entity(self, entity: GridEntity) -> None:
         if entity is None:
             raise ValueError("Entity must not be None.")
         if entity not in self.entities:
