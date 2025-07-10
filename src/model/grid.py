@@ -78,7 +78,7 @@ class Grid:
                     return cell
         return None
 
-    def place_on_grid(self, upper_left_coordinate: GridCoordinate, grid_entity: GridEntity) -> GridEntity:
+    def place_on_grid(self, upper_left_coordinate: GridCoordinate, grid_entity: GridEntity) -> Optional[GridEntity]:
         if upper_left_coordinate is None:
             raise ValueError("Coordinate cannot be None")
         if grid_entity is None:
@@ -89,16 +89,45 @@ class Grid:
             print("the cells is null")
         if len(cells) == 0:
             print("There are no cells available in the entity's area")
+            return None
+        if not self.are_destination_cells_empty(cells, grid_entity):
+            print("There are occupied cells in the destination area")
+            return None
 
         for cell in cells:
             cell.enter_cell(grid_entity)
+        grid_entity.coordinate = upper_left_coordinate
+        return grid_entity
+
+    def move_entity(self, destination_coordinate: GridCoordinate, grid_entity: GridEntity) -> Optional[GridEntity]:
+        if destination_coordinate is None:
+            raise ValueError("Coordinate cannot be None")
+        if grid_entity is None:
+            raise ValueError("Entity cannot be None")
+
+        destination_cells = self.get_cells_in_entity_area(destination_coordinate, grid_entity)
+        if len(destination_cells) == 0:
+            print("There is no cells for moving into.")
+            return None
+
+        if not self.are_destination_cells_empty(destination_cells, grid_entity):
+            print("There are occupied cells in the destination area")
+            return None
+
+
+        for cell in grid_entity.cells:
+            cell.leave_cell()
+
+        for cell in destination_cells:
+            cell.enter_cell(grid_entity)
+        grid_entity.coordinate = destination_coordinate
         return grid_entity
 
 
     def random_empty_cell(self) -> Optional[Cell]:
         return random.choice(self.empty_cells())
 
-    def cells_empty(self, cells: List[Cell], grid_entity: GridEntity) -> bool:
+    def are_destination_cells_empty(self, cells: List[Cell], grid_entity: GridEntity) -> bool:
         if not cells:
             return False
         return all(cell.occupant is None or cell.occupnat is not None and cell.occupant == grid_entity for cell in cells)
@@ -124,9 +153,6 @@ class Grid:
                     cells.append(cell)
         return cells
 
-
-
-
     def add_horizontal_mover(self, mover: HorizontalMover) -> Optional[HorizontalMover]:
         cell = self.random_empty_cell()
         print("randomly selected cell", cell)
@@ -148,3 +174,7 @@ class Grid:
             return placed_mover
         return None
 
+    def random_mover(self) -> Optional[HorizontalMover]:
+        if len(self.horizontal_movers) == 0:
+            return None
+        return random.choice(self.horizontal_movers)
