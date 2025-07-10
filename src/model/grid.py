@@ -122,36 +122,29 @@ class Grid:
                 if cell is not None:
                     print(cell.__str__(), " in area", grid_entity.dimension.area())
                     cells.append(cell)
-
         return cells
 
-    def move_entity(self, entity: GridEntity, direction: Direction, distance: int):
-        if entity is None:
-            raise ValueError("Entity cannot be None")
-        if direction is None:
-            raise ValueError("Direction cannot be None")
-        if distance < 0:
-            raise ValueError("Distance cannot be negative")
 
-        if isinstance(entity, HorizontalMover):
-            
 
-    def add_horizontal_mover(self, mover: HorizontalMover):
+
+    def add_horizontal_mover(self, mover: HorizontalMover) -> Optional[HorizontalMover]:
         cell = self.random_empty_cell()
         print("randomly selected cell", cell)
         print("horizontal mover dimension", mover.dimension, " mover area=", mover.dimension.area())
         if cell is None:
             print("No place for mover")
-            return
+            return None
 
         entity = self.place_on_grid(self.random_empty_cell().coordinate, mover)
         if entity is None:
             print("No place for mover")
-            return
+            return None
         if not isinstance(entity, HorizontalMover):
             print("Mover is not horizontal")
-            return
+            return None
         if isinstance(entity, HorizontalMover):
             placed_mover = cast(HorizontalMover, entity)
             self.horizontal_movers.append(placed_mover)
+            return placed_mover
+        return None
 
