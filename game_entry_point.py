@@ -12,7 +12,7 @@ sys.path.append(str(Path(__file__).parent.absolute()))
 
 def main():
     board = Board()
-    visualizer = Visualizer()
+    visualizer = Visualizer(board)
 
     running = True
     while running:

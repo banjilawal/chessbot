@@ -9,15 +9,14 @@ from model.grid_coordinate import GridCoordinate, CoordinateRange
 from model.crate import Crate
 from common.dimension import Dimension
 from model.grid_entity import GridEntity
-from model.portal.door import Door
-from model.bin import Bin
+
 from model.vault import VerticalMover, HorizontalMover
-from model.portal.portal import Portal
+
 from src.common.game_default import GameDefault
 from model.cell import Cell
 
 @dataclass
-class Grid:
+class Board:
     MIN_ROW_COUNT = 6
     MIN_COLUMN_COUNT = 6
 

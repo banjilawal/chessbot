@@ -2,7 +2,6 @@ from dataclasses import dataclass, field
 
 import pygame
 from typing import TYPE_CHECKING, List
-
 from model.grid_entity import GridEntity
 
 if TYPE_CHECKING:
@@ -11,17 +10,16 @@ if TYPE_CHECKING:
 
 @dataclass
 class Visualizer:
-    board: Board
-    entities: List[GridEntity] = field(default_factory=list)
+    board: 'Board'
 
     cell_px: int = 60
     border_px: int = 2
     screen_width: int = 800
     screen_height: int = 800
 
-    background_color: pygame.Color = pygame.Color("black")
-    cell_color: pygame.Color = pygame.Color("white")
-    horizontal_mover_color: pygame.Color = pygame.Color("red")
+    background_color: pygame.Color = field(default_factory=lambda: pygame.Color('black'))
+    cell_color: pygame.Color = field(default_factory=lambda: pygame.Color('white'))
+    horizontal_mover_color: pygame.Color = field(default_factory=lambda: pygame.Color('red'))
 
     def __post_init__(self):
         self.screen_width = self.board.dimension.length * self.cell_px + self.border_px * 2
@@ -32,7 +30,7 @@ class Visualizer:
         pygame.display.set_caption("Podscape")
         self.font = pygame.font.SysFont("monospace", 15)
 
-    def draw_grid(self, board: 'Board'):
+    def draw_grid(self):
         self.screen.fill(self.background_color)
         for row in range(self.board.dimension.height):
             for col in range(self.board.dimension.length):
@@ -44,7 +42,7 @@ class Visualizer:
                 )
                 # Draw filled rectangle
                 pygame.draw.rect(self.screen, self.cell_color, cell_rect)
-                # Draw outlined rectangle
+                # Draw an outlined rectangle
                 pygame.draw.rect(self.screen, self.background_color, cell_rect, 1)
 
     def update_display(self):
