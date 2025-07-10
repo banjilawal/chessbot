@@ -13,7 +13,6 @@ class GridEntity:
     id: int
     dimension: Dimension
     coordinate: GridCoordinate = None
-    cells: List[Cell] = field(default_factory=list)
 
 
 

@@ -11,7 +11,6 @@ class Cell:
     cell_id: int
     coordinate: GridCoordinate
     occupant: Optional['GridEntity'] = field(default=None)
-    door: Optional['Portal'] = field(default=None)
 
     def __post_init__(self):
         if self.cell_id < GameDefault.MIN_ID:
@@ -19,32 +18,6 @@ class Cell:
         object.__setattr__(self, 'cell_id', self.cell_id)
         object.__setattr__(self, 'coordinate', self.coordinate)
         object.__setattr__(self, 'occupant', self.occupant)
-
-    def enter_cell(self, occupant: 'GridEntity'):
-        if self.occupant is None:
-            self.occupant = occupant
-            occupant.cells.append(self)
-
-    def leave_cell(self):
-        if self.occupant is not None:
-            self.occupant.cells.remove(self)
-            self.occupant = None
-
-    def __str__(self) -> str:
-        parts = [f"Cell(id={self.cell_id})"]
-
-        coord_str = f"coord={self.coordinate}" if self.coordinate is not None else "coord=None"
-        parts.append(coord_str)
-
-        if self.occupant is not None:
-            occupant_str = f"occupied by {self.occupant.__class__.__name__}(id={getattr(self.occupant, 'id', 'unknown')})"
-        else:
-            occupant_str = "occupied by None"
-
-        parts.append(occupant_str)
-
-        return " | ".join(parts)
-
 
 
 
