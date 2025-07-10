@@ -82,17 +82,27 @@ class Grid:
     def random_empty_cell(self) -> Optional[Cell]:
         return random.choice(self.empty_cells())
 
-    def has_space_for_entity(self, upper_left_coordinate: GridCoordinate, grid_entity: GridEntity) -> bool:
+    def are_cells_available(self, cells: List[Cell], grid_entity: GridEntity) -> bool:
+        if not cells:
+            return False
+        return all(cell.is_empty() or cell.is_occupied_by(grid_entity) for cell in cells)
+
+    def get_cells_in_entity_area(self, upper_left_coordinate: GridCoordinate, grid_entity: GridEntity) -> Optional[List[Cell]]:
         if upper_left_coordinate is None:
             raise ValueError("Coordinate cannot be None")
         if grid_entity is None:
             raise ValueError("Entity cannot be None")
 
-        if upper_left_coordinate.row < 0 or coordinate.column < 0:
-            return False
+        if upper_left_coordinate.column + grid_entity.dimension.length > self.dimension.length:
+            return None
+        if upper_left_coordinate.row + grid_entity.dimension.height > self.dimension.height:
+            return None
 
-        # Check if there's enough space horizontally
-        if coordinate.column + mover.dimension.length > self.dimension.length:
-            return False
+        cells = []
+        for row in range(upper_left_coordinate.row, upper_left_coordinate.row + grid_entity.dimension.height):
+            for col in range(upper_left_coordinate.column, upper_left_coordinate.column + grid_entity.dimension.length):
+                cell = self.find_cell_by_coordinate(GridCoordinate(row=row, column=col))
+                cells.append(cell)
 
-        return True
+        return cells
+
