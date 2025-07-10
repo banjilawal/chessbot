@@ -125,6 +125,17 @@ class Grid:
 
         return cells
 
+    def move_entity(self, entity: GridEntity, direction: Direction, distance: int):
+        if entity is None:
+            raise ValueError("Entity cannot be None")
+        if direction is None:
+            raise ValueError("Direction cannot be None")
+        if distance < 0:
+            raise ValueError("Distance cannot be negative")
+
+        if isinstance(entity, HorizontalMover):
+            
+
     def add_horizontal_mover(self, mover: HorizontalMover):
         cell = self.random_empty_cell()
         print("randomly selected cell", cell)
