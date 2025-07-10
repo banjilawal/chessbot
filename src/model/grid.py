@@ -19,8 +19,8 @@ from model.cell import Cell
 
 @dataclass
 class Grid:
-    MIN_ROW_COUNT = 2
-    MIN_COLUMN_COUNT = 2
+    MIN_ROW_COUNT = 6
+    MIN_COLUMN_COUNT = 6
 
     horizontal_movers: List[HorizontalMover] = field(default_factory=list)
 
@@ -30,8 +30,8 @@ class Grid:
 
     def __post_init__(self):
         if not all([
-            self.dimension.height >= self.MIN_ROW_COUNT,
-            self.dimension.length >= self.MIN_COLUMN_COUNT
+            self.dimension.height > self.MIN_ROW_COUNT,
+            self.dimension.length >        self.MIN_COLUMN_COUNT
         ]):
             raise ValueError("Grid dimensions below minimum values")
 
@@ -45,7 +45,6 @@ class Grid:
             )
             for row in range(self.dimension.height)
         )
-        self._set_crate_coordinates()
         object.__setattr__(self, 'cells', cells)
 
 
@@ -79,30 +78,69 @@ class Grid:
                     return cell
         return None
 
-    def random_empty_cell(self) -> Optional[Cell]:
-        return random.choice(self.empty_cells())
-
-    def are_cells_available(self, cells: List[Cell], grid_entity: GridEntity) -> bool:
-        if not cells:
-            return False
-        return all(cell.is_empty() or cell.is_occupied_by(grid_entity) for cell in cells)
-
-    def get_cells_in_entity_area(self, upper_left_coordinate: GridCoordinate, grid_entity: GridEntity) -> Optional[List[Cell]]:
+    def place_on_grid(self, upper_left_coordinate: GridCoordinate, grid_entity: GridEntity) -> GridEntity:
         if upper_left_coordinate is None:
             raise ValueError("Coordinate cannot be None")
         if grid_entity is None:
             raise ValueError("Entity cannot be None")
 
-        if upper_left_coordinate.column + grid_entity.dimension.length > self.dimension.length:
-            return None
-        if upper_left_coordinate.row + grid_entity.dimension.height > self.dimension.height:
-            return None
+        cells = self.get_cells_in_entity_area(upper_left_coordinate, grid_entity)
+        if cells is None:
+            print("the cells is null")
+        if len(cells) == 0:
+            print("There are no cells available in the entity's area")
+
+        for cell in cells:
+            cell.enter_cell(grid_entity)
+        return grid_entity
+
+
+    def random_empty_cell(self) -> Optional[Cell]:
+        return random.choice(self.empty_cells())
+
+    def cells_empty(self, cells: List[Cell], grid_entity: GridEntity) -> bool:
+        if not cells:
+            return False
+        return all(cell.occupant is None or cell.occupnat is not None and cell.occupant == grid_entity for cell in cells)
+
+    def get_cells_in_entity_area(self, upper_left_coordinate: GridCoordinate, grid_entity: GridEntity) -> List[Cell]:
+        if upper_left_coordinate is None:
+            raise ValueError("Coordinate cannot be None")
+        if grid_entity is None:
+            raise ValueError("Entity cannot be None")
 
         cells = []
+        if upper_left_coordinate.column + grid_entity.dimension.length > self.dimension.length:
+            return cells
+        if upper_left_coordinate.row + grid_entity.dimension.height > self.dimension.height:
+            return cells
+
+
         for row in range(upper_left_coordinate.row, upper_left_coordinate.row + grid_entity.dimension.height):
             for col in range(upper_left_coordinate.column, upper_left_coordinate.column + grid_entity.dimension.length):
                 cell = self.find_cell_by_coordinate(GridCoordinate(row=row, column=col))
-                cells.append(cell)
+                if cell is not None:
+                    print(cell.__str__(), " in area", grid_entity.dimension.area())
+                    cells.append(cell)
 
         return cells
+
+    def add_horizontal_mover(self, mover: HorizontalMover):
+        cell = self.random_empty_cell()
+        print("randomly selected cell", cell)
+        print("horizontal mover dimension", mover.dimension, " mover area=", mover.dimension.area())
+        if cell is None:
+            print("No place for mover")
+            return
+
+        entity = self.place_on_grid(self.random_empty_cell().coordinate, mover)
+        if entity is None:
+            print("No place for mover")
+            return
+        if not isinstance(entity, HorizontalMover):
+            print("Mover is not horizontal")
+            return
+        if isinstance(entity, HorizontalMover):
+            placed_mover = cast(HorizontalMover, entity)
+            self.horizontal_movers.append(placed_mover)
 

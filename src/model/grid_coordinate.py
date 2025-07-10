@@ -18,7 +18,6 @@ class GridCoordinate:
         if self.column < 0:
             raise ValueError("Column cannot be negative")
 
-
 @dataclass(frozen=True)
 class CoordinateRange:
     first_coordinate: GridCoordinate

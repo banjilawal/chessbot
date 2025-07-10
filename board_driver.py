@@ -1,8 +1,9 @@
 from common.generator import Generator
 
 if __name__ == "__main__":
-    generator = Generator()
-    board = generator.board()
-    for cell in board.cells:
-        if cell.occupnat is not None:
-            print("cell_id:", cell.id, " ")
+    board = Generator.board()
+    movers = Generator.horizontal_movers(max_height=12, count=12)
+    for mover in movers:
+        board.add_horizontal_mover(mover)
+    for cell in board.occupied_cells():
+        print(cell)
