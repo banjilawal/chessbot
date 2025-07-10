@@ -25,11 +25,10 @@ class HorizontalMover(GridEntity):
         self.movement_strategy = HorizontalMovementStrategy()
 
     def move(self, grid: 'Grid', direction: Direction, distance: int = 1):
-        coordinate = self.movement_strategy.move(self, grid, direction, distance)
-        if coordinate is not None:
-            self.coordinate = coordinate
-        else:
-            print("horizontal move failed")
+        if not self.movement_strategy.move(self, grid, direction, distance):
+            print(f"Failed to move {self.id} in direction {direction} by {distance} cells.")
+        else :
+            print(f"Moved {self.id} in direction {direction} by {distance} cells.")
 
 
 

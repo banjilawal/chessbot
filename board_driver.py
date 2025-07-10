@@ -18,6 +18,14 @@ if __name__ == "__main__":
     mover_a_cells = board.get_cells_occupied_by_entity(mover_a.id)
     print("moverA cells:", mover_a_cells)
 
-    mover_a.move(board, Direction.RIGHT, 1)
+    mover_a.move(board, Direction.RIGHT, 2)
+    print("moverA coord", mover_a.coordinate)
+
+    mover_b = HorizontalMover(mover_id=2, height=1)
+    print("moverB coord:", mover_b.coordinate)
+    board.add_new_entity(GridCoordinate(row=11, column=14), mover_b)
+    print("moverB coord", mover_b.coordinate)
+    mover_b.move(board, Direction.LEFT, 1)
+    print("moverB coord", mover_b.coordinate)
 
 

@@ -10,17 +10,17 @@ if TYPE_CHECKING:
     from model.vault import HorizontalMover
 
 class HorizontalMovementStrategy(MovementStrategy):
-    def move(self, mover: 'HorizontalMover', grid: 'Grid', direction: Direction, distance: int = 1) -> Optional[GridCoordinate] :
+    def move(self, mover: 'HorizontalMover', grid: 'Grid', direction: Direction, distance: int = 1) -> bool :
 
         if mover is None:
             ("[Warning] Mover cannot be None. It cannot move.")
-            return
+            return False
         if grid is None:
             print("[Warning] Grid cannot be None. Cannot move.")
-            return
+            return False
         if mover.coordinate is None:
             print("[Warning] Mover has no coordinate. Cannot move.")
-            return
+            return False
 
         destination_column = mover.coordinate.column
         print("strategy calculated destination column:", destination_column)
@@ -32,19 +32,18 @@ class HorizontalMovementStrategy(MovementStrategy):
                 destination_column = mover.coordinate.column + distance
             case Direction.UP | Direction.DOWN:
                 print(f"[Warning] Invalid direction for horizontal mover: {direction}")
-                return None
+                return False
             case _:
                 print(f"[Warning] Invalid direction for horizontal mover: {direction}")
-                return None
+                return False
 
         if destination_column < 0 or destination_column >= grid.dimension.length:
             print(f"[Warning] Horizontal move out of bounds: {destination_column}")
-            return None
+            return False
 
         upper_left_destination = GridCoordinate(row=mover.coordinate.row, column=destination_column)
 
-        grid.move_entity(upper_left_destination, mover.id)
-        return upper_left_destination
+        return grid.move_entity(upper_left_destination, mover.id) is not None
 
 
 
