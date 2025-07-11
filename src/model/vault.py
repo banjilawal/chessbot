@@ -24,11 +24,11 @@ class HorizontalMover(GridEntity):
         super().__init__(id=mover_id, dimension=Dimension(length=1, height=height), coordinate=coordinate)
         self.movement_strategy = HorizontalMovementStrategy()
 
-    def move(self, grid: 'Board', direction: Direction, distance: int = 1):
-        if not self.movement_strategy.move(self, grid, direction, distance):
-            print(f"Failed to move {self.id} in direction {direction} by {distance} cells.")
+    def move(self, board: 'Board', destination_coordinate: GridCoordinate):
+        if not self.movement_strategy.move(self, board, destination_coordinate):
+            print(f"Failed to move {self.id} to {destination_coordinate}.")
         else :
-            print(f"Moved {self.id} in direction {direction} by {distance} cells.")
+            print(f"Moved {self.id} to {destination_coordinate}.")
 
 
 
