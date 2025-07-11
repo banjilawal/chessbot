@@ -1,9 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from common.dimension import Dimension
-from model.grid_coordinate import GridCoordinate
-from model.grid_entity import GridEntity
+from geometry import Dimension
+from grid_entity import GridEntity
 
 
 @dataclass

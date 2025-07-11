@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import Mock
 
-from model.cell import Cell
-from src.common.constants import Config
+from cell import Cell
+from constants import Config
 from src.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
-from model.grid_entity import GridEntity
+from grid_entity import GridEntity
 
 
 class TestGameBoardSquare(unittest.TestCase):

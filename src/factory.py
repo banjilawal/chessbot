@@ -1,13 +1,10 @@
 import random
-from typing import Union, Dict, List
+from typing import List
 
-from common.direction import Direction
-from model.board import Board
-from model.bin import Bin
-from model.grid_entity import HorizontalMover
-from src.common.dimension import Dimension
+from board import Board
+from grid_entity import HorizontalMover
+from geometry import Dimension
 
-from model.crate import Crate
 
 class IdFactory:
     def __init__(self):

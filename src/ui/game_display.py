@@ -1,13 +1,12 @@
 from dataclasses import dataclass, field
 
 import pygame
-from typing import TYPE_CHECKING, List, Optional, cast
+from typing import TYPE_CHECKING, Optional, cast
 
-from model.grid_coordinate import GridCoordinate
-from model.grid_entity import GridEntity, Mover
+from grid_entity import GridEntity, Mover
 
 if TYPE_CHECKING:
-    from model.board import Board
+    from board import Board
 
 @dataclass(frozen=True)
 class DragState:

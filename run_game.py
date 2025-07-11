@@ -1,13 +1,12 @@
-import os
 import sys
 from pathlib import Path
 
 import pygame
 
-from common.dimension import Dimension
-from model.board import Board
-from model.grid_coordinate import GridCoordinate
-from model.grid_entity import HorizontalMover
+from geometry import Dimension
+from board import Board
+
+from grid_entity import HorizontalMover
 
 from ui.game_display import GameDisplay
 

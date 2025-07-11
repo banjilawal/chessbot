@@ -2,9 +2,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 from model.bin import Bin
-from src.common.dimension import Dimension
-from model.grid_coordinate import GridCoordinate
-from model.grid_entity import GridEntity
 
 
 @dataclass

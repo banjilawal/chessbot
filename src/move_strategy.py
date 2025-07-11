@@ -1,18 +1,21 @@
-from typing import TYPE_CHECKING, Optional
+from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
 
-from model.grid_coordinate import GridCoordinate
-from model.grid_entity import HorizontalMover
-from strategy.move_strategy import MoveStrategy
-
+from grid_entity import Mover, HorizontalMover
 
 if TYPE_CHECKING:
-    from model.board import Board
+    from board import Board
+
+class MoveStrategy(ABC):
+    @abstractmethod
+    def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        pass
 
 class HorizontalMoveStrategy(MoveStrategy):
-    def move(self, mover: HorizontalMover, board: 'Board', destination_coordinate: GridCoordinate) -> bool :
+    def move(self, mover: HorizontalMover, board: Board, destination_coordinate: GridCoordinate) -> bool :
 
         if mover is None:
-            ("[Warning] Mover cannot be None. It cannot move.")
+            print("[Warning] Mover cannot be None. It cannot move.")
             return False
         if board is None:
             print("[Warning] Board cannot be None. Cannot move.")
@@ -39,5 +42,6 @@ class HorizontalMoveStrategy(MoveStrategy):
         print("strategy calculated destination column:", destination_column)
         return board.move_entity(destination_coordinate, mover) is not None
 
-
-
+class DragStrategy(ABC):
+    def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        pass

@@ -1,14 +1,12 @@
 from abc import abstractmethod, ABC
 from dataclasses import dataclass, field
-from typing import Optional, List, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 
-from model.cell import Cell
-from src.common.dimension import Dimension
-from model.grid_coordinate import GridCoordinate
-from strategy.horizontal_movement_strategy import HorizontalMoveStrategy
+from geometry import Dimension
+
 
 if TYPE_CHECKING:
-    from model.cell import Cell
+    pass
 
 @dataclass
 class GridEntity:

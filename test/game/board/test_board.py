@@ -1,6 +1,6 @@
 import unittest
 
-from model.board import Board
+from board import Board
 from src.exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 
 

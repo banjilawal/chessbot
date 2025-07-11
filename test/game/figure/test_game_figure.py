@@ -5,7 +5,7 @@ from unittest.mock import Mock
 from src.exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
     OccupiedSquareEntryError, SelfOccupiedSquareError, InvalidFigureLengthError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError
-from model.grid_entity import GridEntity
+from grid_entity import GridEntity
 
 
 class TestGameFigure(unittest.TestCase):

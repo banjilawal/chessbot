@@ -1,17 +1,13 @@
-import random
 from dataclasses import dataclass, field
 
-from typing import Tuple, List, Optional, cast, Dict
+from typing import Tuple, List, Optional
 
-from common.direction import Direction
 
-from model.grid_coordinate import GridCoordinate, CoordinateRange
-from model.crate import Crate
-from common.dimension import Dimension
-from model.grid_entity import GridEntity, Mover
+from geometry import Dimension
+from grid_entity import GridEntity, Mover
 
-from src.common.constants import Config
-from model.cell import Cell
+from constants import Config
+from cell import Cell
 
 @dataclass
 class Board:

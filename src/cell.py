@@ -1,9 +1,8 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from src.common.constants import Config
+from constants import Config
 from src.exception.exception import InvalidIdError
-from model.grid_coordinate import GridCoordinate
 
 
 @dataclass

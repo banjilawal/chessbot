@@ -1,5 +1,22 @@
 from dataclasses import dataclass
 
+class Direction(Enum):
+    UP = 1
+    DOWN = 2
+    LEFT = 3
+    RIGHT = 4
+
+@dataclass(frozen=True)
+class GridCoordinate:
+    row: int
+    column: int
+
+    def __post_init__(self):
+        if self.row < 0:
+            raise ValueError("Row cannot be negative")
+        if self.column < 0:
+            raise ValueError("Column cannot be negative")
+
 @dataclass(frozen=True)
 class Dimension:
 
