@@ -1,3 +1,4 @@
+from abc import abstractmethod, ABC
 from dataclasses import dataclass, field
 from typing import Optional, List, TYPE_CHECKING
 
@@ -10,20 +11,20 @@ if TYPE_CHECKING:
 
 @dataclass
 class GridEntity:
-    id: int
     dimension: Dimension
-    coordinate: GridCoordinate = None
+    top_left_coordinate: Optional[GridCoordinate] = None
 
 @dataclass
-class ImmovableGridEntity(GridEntity):
+class BrikPallet(GridEntity):
     pass
 
-@dataclass
-class BrikPallet(ImmovableGridEntity):
-    pass
+@dataclass(kw_only=True)
+class Mover(GridEntity, ABC):
+    id: int
 
-@dataclass
-class MovableGridEntity(GridEntity):
-    pass
+    @abstractmethod
+    def move(self, board: 'Board', destination_coordinate: GridCoordinate) -> None:
+        pass
 
 
+git commit -m "Changed GridEmtity hiereach to Mover<--GricEntity-->BrickPallet. model.Mover has: 1) id field. 2) move(self, BOARD, GridCoordinate)"

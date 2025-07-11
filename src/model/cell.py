@@ -16,7 +16,7 @@ class Cell:
         if self.id < GameDefault.MIN_ID:
             raise InvalidIdError("Cell id below minimum value.")
         object.__setattr__(self, 'id', self.id)
-        object.__setattr__(self, 'coordinate', self.coordinate)
+        object.__setattr__(self, 'top_left_coordinate', self.coordinate)
         object.__setattr__(self, 'occupant', self.occupant)
 
 

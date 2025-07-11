@@ -50,8 +50,8 @@ class Board:
             raise ValueError("Coordinate cannot be None")
         if grid_entity is None:
             raise ValueError("Entity cannot be None")
-        if grid_entity.coordinate is not None:
-            raise Exception("Entity already has a coordinate")
+        if grid_entity.top_left_coordinate is not None:
+            raise Exception("Entity already has a top_left_coordinate")
         cell = self.cells[upper_left_coordinate.row][upper_left_coordinate.column]
         if cell.occupant is not None:
             raise Exception("Cell already occupied")
@@ -137,33 +137,33 @@ class Board:
     def add_entity_to_area(self, entity: GridEntity, top_left_coordinate: GridCoordinate) -> None:
 
         if top_left_coordinate is None:
-            raise ValueError("Cannot add entity to an area without a top-left coordinate.")
+            raise ValueError("Cannot add entity to an area without a top-left top_left_coordinate.")
 
         if entity is None:
             raise ValueError("Entity not found on the board. cannot add a non-existent entity.")
 
         if entity is None or top_left_coordinate is None:
-            raise ValueError("Entity and coordinate must not be None.")
+            raise ValueError("Entity and top_left_coordinate must not be None.")
 
         target_cells = self.get_cells_by_area(top_left_coordinate, entity.dimension)
 
         for cell in target_cells:
             cell.occupant = entity
-        entity.coordinate = top_left_coordinate
+        entity.top_left_coordinate = top_left_coordinate
 
     def add_new_entity(self, top_left_coordinate: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
         if top_left_coordinate is None or entity is None:
-            raise ValueError("Top-left coordinate and entity must not be None.")
+            raise ValueError("Top-left top_left_coordinate and entity must not be None.")
 
         # Bounds check
         if top_left_coordinate.row + entity.dimension.height > self.dimension.height:
-            raise Exception("Entity does not fit within board bounds at the specified coordinate.")
+            raise Exception("Entity does not fit within board bounds at the specified top_left_coordinate.")
 
         if top_left_coordinate.column + entity.dimension.length > self.dimension.length:
-            raise Exception("Entity does not fit within board bounds at the specified coordinate.")
+            raise Exception("Entity does not fit within board bounds at the specified top_left_coordinate.")
 
         if not self.can_entity_move_to_cells(entity, top_left_coordinate):
-            raise Exception("Entity cannot move to the specified coordinate.")
+            raise Exception("Entity cannot move to the specified top_left_coordinate.")
 
         self.register_new_entity(entity)
         self.add_entity_to_area(entity, top_left_coordinate)
@@ -173,7 +173,7 @@ class Board:
 
     def move_entity(self, upper_left_destination: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
         if upper_left_destination is None:
-            raise ValueError("Destination coordinate must not be None.")
+            raise ValueError("Destination top_left_coordinate must not be None.")
 
         if entity is None:
             raise ValueError("Entity does not exist. in the board. cannot move a non-existent entity.")
@@ -194,7 +194,7 @@ class Board:
 
     def can_entity_move_to_cells(self, entity: GridEntity, new_top_left_coordinate: GridCoordinate) -> bool:
         if entity is None or new_top_left_coordinate is None:
-            raise ValueError("Entity and coordinate must not be None.")
+            raise ValueError("Entity and top_left_coordinate must not be None.")
 
         entity_length = entity.dimension.length
         entity_height = entity.dimension.height
@@ -243,7 +243,7 @@ class Board:
 #             tuple(
 #                 Cell(
 #                     id=row * self.dimension.length + col + 1,
-#                     coordinate=GridCoordinate(row=row, column=col)
+#                     top_left_coordinate=GridCoordinate(row=row, column=col)
 #                 )
 #                 for col in range(self.dimension.length)
 #             )
@@ -268,12 +268,12 @@ class Board:
     #                 occupied_cells.append(cell)
     #     return occupied_cells
     #
-    # def find_cell_by_coordinate(self, coordinate: GridCoordinate) -> Optional[Cell]:
-    #     if coordinate.row < 0 or coordinate.row >= self.dimension.height:
+    # def find_cell_by_coordinate(self, top_left_coordinate: GridCoordinate) -> Optional[Cell]:
+    #     if top_left_coordinate.row < 0 or top_left_coordinate.row >= self.dimension.height:
     #         return None
-    #     if coordinate.column < 0 or coordinate.column >= self.dimension.length:
+    #     if top_left_coordinate.column < 0 or top_left_coordinate.column >= self.dimension.length:
     #         return None
-    #     return self.cells[coordinate.row][coordinate.column]
+    #     return self.cells[top_left_coordinate.row][top_left_coordinate.column]
     #
     # def find_cell_by_id(self, id: int) -> Optional[Cell]:
     #     for row in self.cells:
@@ -300,7 +300,7 @@ class Board:
     #
     #     for cell in cells:
     #         cell.enter_cell(entity)
-    #     entity.coordinate = upper_left_coordinate
+    #     entity.top_left_coordinate = upper_left_coordinate
     #     return entity
     #
     # def move_entity(self, destination_coordinate: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
@@ -324,7 +324,7 @@ class Board:
     #     if result:
     #         print("the destination cells are unoccupied", entity, "is leaving its cells")
     #         for cell in list(entity.cells):
-    #             print(cell.occupant, "is leaving", cell.coordinate)
+    #             print(cell.occupant, "is leaving", cell.top_left_coordinate)
     #             cell.leave_cell()
     #             if cell.occupant is None:
     #                 print("cell", cell.id, "cell has no occupant")
@@ -340,7 +340,7 @@ class Board:
     #             if (cell.occupant is not None) and (cell.occupant != entity):
     #                 print("cell", cell.id, "already occupied by", cell.occupant)
     #                 return None
-    #         entity.coordinate = destination_coordinate
+    #         entity.top_left_coordinate = destination_coordinate
     #         return entity
     #
     #
@@ -390,7 +390,7 @@ class Board:
     #         print("No place for mover")
     #         return None
     #
-    #     entity = self.add_entity_to_grid(self.random_empty_cell().coordinate, mover)
+    #     entity = self.add_entity_to_grid(self.random_empty_cell().top_left_coordinate, mover)
     #     if entity is None:
     #         print("No place for mover")
     #         return None
