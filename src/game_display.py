@@ -13,16 +13,16 @@ if TYPE_CHECKING:
 @dataclass(frozen=True)
 class DragState:
     mover: Mover
-    original_coord: GridCoordinate
-    current_coord: GridCoordinate
+    original_coordinate: GridCoordinate
+    current_coordinate: GridCoordinate
     offset_x: int = 0
     offset_y: int = 0
 
     def with_updated_position(self, new_coordinate: GridCoordinate) -> 'DragState':
         return DragState(
             mover=self.mover,
-            original_coord=self.original_coord,
-            current_coord=new_coordinate,
+            original_coordinate=self.original_coordinate,
+            current_coordinate=new_coordinate,
             offset_x=self.offset_x,
             offset_y=self.offset_y
         )
@@ -49,7 +49,6 @@ class GameDisplay:
 
     def draw_grid(self):
         screen_color = GameColor.DARK_GRAY
-
         self.screen.fill(screen_color)
         for row in range(self.board.dimension.height):
             for col in range(self.board.dimension.length):
@@ -64,7 +63,6 @@ class GameDisplay:
                 cell_color = screen_color
                 if cell.id % 2 == 0:
                     cell_color = GameColor.LIGHT_SAND
-
                 # Draw filled rectangle
                 pygame.draw.rect(self.screen, cell_color, cell_rect)
                 # Draw an outlined rectangle
@@ -84,7 +82,6 @@ class GameDisplay:
             return
 
         # print(f"Drawing mover {mover.mover_id} at top_left_coordinate {mover.top_left_coordinate}")
-
         # Calculate position and dimensions
         rect = pygame.Rect(
             entity.top_left_coordinate.column * self.cell_px + self.border_px,
@@ -92,7 +89,6 @@ class GameDisplay:
             entity.dimension.length * self.cell_px - self.border_px,
             entity.dimension.height * self.cell_px - self.border_px
         )
-
         # Draw the mover (fixed the width parameter)
         pygame.draw.rect(self.screen, self.OLIVE, rect)
 
@@ -105,12 +101,10 @@ class GameDisplay:
         if mouse_position is None:
             print("[Warning] Mouse position cannot be None. Cannot get an mover at a null position.")
             return None
-
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
             print("Mouse is outside the game board. Cannot get an mover at a position outside the board.")
             return None
-
         return self.board.cells[coordinate.row][coordinate.column].occupant
 
     def handle_mouse_down(self, event: pygame.event.Event):
@@ -131,10 +125,9 @@ class GameDisplay:
         self.is_dragging = True
         self.dragged_entity = entity
         self.original_position = entity.top_left_coordinate
-
         self.dragging = DragState(
             mover=entity,
-            original_coord=entity.top_left_coordinate,  # Store the original top_left_coordinate
+            original_coordinate=entity.top_left_coordinate,  # Store the original top_left_coordinate
             offset_x=mouse_position[0] - (entity.top_left_coordinate.column * self.cell_px + self.border_px),
             offset_y=mouse_position[1] - (entity.top_left_coordinate.row * self.cell_px + self.border_px)
         )
@@ -147,8 +140,9 @@ class GameDisplay:
             f"Starting dragging mover {entity.id} at {entity.top_left_coordinate} with offset ({self.drag_offset_x}, {self.drag_offset_y})")
 
     def update_drag(self, mouse_position: tuple):
-        if not self.is_dragging or not self.dragged_entity:
+        if not self.is_dragging or not self.dragging:
             return
+        new_oord
 
         # Update the visual position of the mover during drag
         current_column = (mouse_position[0] - self.border_px - self.drag_offset_x) // self.cell_px
@@ -163,7 +157,7 @@ class GameDisplay:
 
         current_column = (mouse_position[0] - self.border_px) // self.cell_px
         current_row = (mouse_position[1] - self.border_px) // self.cell_px
-        destination_coordinate = GridCoordinate(row=self.dragging.original_coord.row, column=current_column)
+        destination_coordinate = GridCoordinate(row=self.dragging.original_coordinate.row, column=current_column)
 
         # Try to move the mover
         if not self.move_handler(self.dragged_entity, destination_coordinate):
