@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
 import pygame
-from typing import TYPE_CHECKING, List, Optional
+from typing import TYPE_CHECKING, List, Optional, cast
 
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity
@@ -149,6 +149,38 @@ class Visualizer:
         if not self.dragging or not self.dragged_entity:
             return
         pass
+
+    def end_dragging(self, mouse_position: tuple):
+        if not self.dragging or not self.dragged_entity:
+            return
+
+        current_column = (mouse_position[0] - self.border_px - self.drag_offset_x) // self.cell_px
+        current_row = (mouse_position[1] - self.border_px - self.drag_offset_y) // self.cell_px
+        current_coordinate = GridCoordinate(row=current_row, column=current_column)
+
+
+    def move_handler(self, entity: GridEntity) -> bool:
+        if entity is None:
+            print("[Warning] Entity cannot be None. Cannot move null entity.")
+            return False
+
+        if self.board is None:
+            print("[Warning] Board cannot be None. Cannot move on a nonexistent board.")
+            return False
+        if entity.coordinate is None:
+            print("[Warning] Entity has no coordinate. Cannot move an entity without a coordinate.")
+            return False
+        if entity.coordinate is None:
+            print("[Warning] Entity has no coordinate. Cannot move an entity without a coordinate.")
+            return False
+        if not isinstance(entity, 'HorizontalMover'):
+            print(f"[Warning] Entity {entity.id} is not a horizontal mover. Cannot move.")
+            return False
+
+        horizontal_mover = cast('HorizontalMover', entity)
+        horizontal_mover.move()
+        return False
+
 
     def update_display(self):
         self.draw_grid()

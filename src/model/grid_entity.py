@@ -16,11 +16,14 @@ class GridEntity:
 
 @dataclass
 class ImmovableGridEntity(GridEntity):
+    pass
 
 @dataclass
 class BrikPallet(ImmovableGridEntity):
+    pass
 
 @dataclass
 class MovableGridEntity(GridEntity):
+    pass
 
 
