@@ -1,6 +1,6 @@
-from common.generator import Generator
+from common.entityfactory import EntityFactory
 
 if __name__ == "__main__":
-    board = Generator.board()
+    board = EntityFactory.build_board()
 
 
