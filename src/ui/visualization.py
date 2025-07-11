@@ -1,7 +1,9 @@
 from dataclasses import dataclass, field
 
 import pygame
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Optional
+
+from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity
 
 if TYPE_CHECKING:
@@ -103,10 +105,37 @@ class Visualizer:
         text_rect = text_surface.get_rect(center=rect.center)
         self.screen.blit(text_surface, text_rect)
 
+    def get_entity_at_mouse_position(self, mouse_position: tuple) -> Optional['GridEntity']:
+        if mouse_position is None:
+            print("[Warning] Mouse position cannot be None. Cannot get an entity at a null position.")
+            return None
+
+        coordinate = self.mouse_position_to_grid_coordinate(mouse_position)
+        if coordinate is None:
+            print("Mouse is outside the game grid. Cannot get an entity at a position outside the grid.")
+            return None
+
+        return self.board.cells[coordinate.row][coordinate.column].occupant
+
+
+
+
     def update_display(self):
         self.draw_grid()
         self.draw_entities()
         pygame.display.flip()
+
+    def mouse_position_to_grid_coordinate(self, mouse_position: tuple) -> Optional[GridCoordinate]:
+        column = mouse_position[0] // self.cell_px
+        row = mouse_position[1] // self.cell_px
+
+        if column < 0 or column >= self.board.dimension.length:
+            print(f"[Warning] Mouse id outside the game grid at: {column}")
+            return None
+        if row < 0 or row >= self.board.dimension.height:
+            print(f"[Warning] Mouse id outside the game grid at: {row}")
+            return None
+        return GridCoordinate(row=row, column=column)
 
     def close(self):
         pygame.quit()
