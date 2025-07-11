@@ -3,6 +3,7 @@ from typing import Optional
 
 from constants import Config
 from exception import InvalidIdError
+from geometry import GridCoordinate
 
 
 @dataclass

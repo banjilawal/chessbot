@@ -3,7 +3,9 @@ from dataclasses import dataclass, field
 import pygame
 from typing import TYPE_CHECKING, Optional, cast
 
-from grid_entity import GridEntity, Mover
+from constants import GameColor
+from geometry import GridCoordinate
+from grid_entity import GridEntity, Mover, HorizontalMover
 
 if TYPE_CHECKING:
     from board import Board

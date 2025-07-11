@@ -2,8 +2,8 @@ from dataclasses import dataclass, field
 
 from typing import Tuple, List, Optional
 
-
-from geometry import Dimension
+from factory import global_id_generator
+from geometry import Dimension, GridCoordinate
 from grid_entity import GridEntity, Mover
 
 from constants import Config

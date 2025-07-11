@@ -2,8 +2,8 @@ from abc import abstractmethod, ABC
 from dataclasses import dataclass, field
 from typing import Optional, TYPE_CHECKING
 
-from geometry import Dimension
-
+from geometry import Dimension, GridCoordinate
+from move_strategy import HorizontalMoveStrategy
 
 if TYPE_CHECKING:
     pass

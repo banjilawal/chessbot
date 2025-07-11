@@ -8,7 +8,7 @@ from board import Board
 
 from grid_entity import HorizontalMover
 
-from ui.game_display import GameDisplay
+from game_display import GameDisplay
 
 sys.path.append(str(Path(__file__).parent.absolute()))
 

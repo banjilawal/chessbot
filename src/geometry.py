@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from enum import Enum
+
 
 class Direction(Enum):
     UP = 1
