@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import Mock
 
 from model.cell import Cell
-from src.common.game_default import GameDefault
+from src.common.constants import Config
 from src.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
 from model.grid_entity import GridEntity
 
@@ -18,7 +18,7 @@ class TestGameBoardSquare(unittest.TestCase):
     def test_constructing_square_with_valid_id(self):
         """Test cell creation with valid ID"""
         square = Cell(_id=1, _row=0, _column=0)
-        self.assertGreaterEqual(square._id, GameDefault.MINIMUM_ID)
+        self.assertGreaterEqual(square._id, Config.MINIMUM_ID)
 
     def test_invalid_id_raises_error(self):
         """Test cell creation with invalid ID"""

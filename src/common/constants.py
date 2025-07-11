@@ -1,9 +1,12 @@
+import sys
 from enum import Enum
-import pygame
 
-# Changed pygame_colors to common.GameColor enum. Has methods for converting human-friendly name to pygame hex code and
-# vice versa. GameColor has mapping methods from name to hex and vice versa. Otherwise it would belong in
-# resources\static.
+class Config:
+    COLUMN_COUNT: int = 21
+    ROW_COUNT: int = 21
+    GRID_ENTITY_HEIGHT: int = 1
+    GRID_ENTITY_LENGTH: int = 1
+    CELL_PX: int = 80
 
 class GameColor(Enum):
     # Yellows (Darkest to Lightest)

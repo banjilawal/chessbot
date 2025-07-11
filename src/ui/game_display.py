@@ -3,7 +3,6 @@ from dataclasses import dataclass, field
 import pygame
 from typing import TYPE_CHECKING, List, Optional, cast
 
-from common.game_color import GameColor
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity, Mover
 

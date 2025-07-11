@@ -10,7 +10,7 @@ from model.crate import Crate
 from common.dimension import Dimension
 from model.grid_entity import GridEntity, Mover
 
-from src.common.game_default import GameDefault
+from src.common.constants import Config
 from model.cell import Cell
 
 @dataclass
@@ -21,7 +21,7 @@ class Board:
     entities: List[Mover] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
     dimension: Dimension = field(
-        default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT)
+        default_factory=lambda: Dimension(length=Config.COLUMN_COUNT, height=Config.ROW_COUNT)
     )
 
     def __post_init__(self):
@@ -68,7 +68,7 @@ class Board:
 
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
     dimension: Dimension = field(
-        default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
+        default_factory=lambda: Dimension(length=Config.COLUMN_COUNT, height=Config.ROW_COUNT))
 
     def __post_init__(self):
         if not all([
@@ -228,7 +228,7 @@ class Board:
 #
 #     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
 #     dimension: Dimension = field(
-#         default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
+#         default_factory=lambda: Dimension(length=Config.COLUMN_COUNT, height=Config.ROW_COUNT))
 #
 #     def __post_init__(self):
 #         if not all([
