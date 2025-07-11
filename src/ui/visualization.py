@@ -44,6 +44,13 @@ class Visualizer:
         pygame.display.set_caption("Podscape")
         self.font = pygame.font.SysFont("monospace", 30)
 
+        self.dragging = False
+        self.drag_offset_x = 0
+        self.drag_offset_y = 0
+        self.dragged_entity = None
+        self.original_position = None
+        self.dragged_entity_coordinate = None
+
     def draw_grid(self):
         self.screen.fill(self.DARK_GRAY)
         for row in range(self.board.dimension.height):
