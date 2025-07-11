@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import Mock
 
 
-from src.exception.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
+from exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
     OccupiedSquareEntryError, SelfOccupiedSquareError, InvalidFigureLengthError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError
 from grid_entity import GridEntity

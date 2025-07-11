@@ -1,7 +1,7 @@
 import unittest
 
 from board import Board
-from src.exception.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
+from exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 
 
 class TestGameBoard(unittest.TestCase):

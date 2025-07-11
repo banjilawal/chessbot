@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from constants import Config
-from src.exception.exception import InvalidIdError
+from exception import InvalidIdError
 
 
 @dataclass

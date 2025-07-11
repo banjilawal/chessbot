@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 from cell import Cell
 from constants import Config
-from src.exception.exception import InvalidIdError, NegativeRowError, NegativeColumnError
+from exception import InvalidIdError, NegativeRowError, NegativeColumnError
 from grid_entity import GridEntity
 
 
