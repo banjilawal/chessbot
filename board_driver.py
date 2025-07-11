@@ -17,7 +17,7 @@ if __name__ == "__main__":
     board.add_new_entity(GridCoordinate(row=9, column=9), mover_a)
     print("moverA coord", mover_a.coordinate)
 
-    mover_a_cells = board.get_cells_occupied_by_entity(mover_a.id)
+    mover_a_cells = board.get_cells_occupied_by_entity(mover_a)
     print("moverA cells:", mover_a_cells)
 
     mover_a.move(board, Direction.RIGHT, 2)
@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     mover_b = HorizontalMover(mover_id=2, height=1)
     print("moverB coord:", mover_b.coordinate)
-    board.add_new_entity(GridCoordinate(row=8, column=10), mover_b)
+    board.add_new_entity(GridCoordinate(row=0, column=0), mover_b)
     print("moverB coord", mover_b.coordinate)
     mover_b.move(board, Direction.LEFT, 1)
     print("moverB coord", mover_b.coordinate)

@@ -45,8 +45,40 @@ class Visualizer:
                 # Draw an outlined rectangle
                 pygame.draw.rect(self.screen, self.background_color, cell_rect, 1)
 
+    def draw_entities(self):
+        for entity in self.board.entities:
+            self.draw_entity(entity)
+
+    def draw_entity(self, entity: 'GridEntity'):
+        """Draw a single entity on the board"""
+        if entity is None:
+            print("[Warning] Entity cannot be None. Cannot draw a null entity to the screen.")
+            return
+        if entity.coordinate is None:
+            print("[Warning] Entity has no coordinate. Cannot draw an entity without a coordinate to the screen.")
+            return
+
+        print(f"Drawing entity {entity.id} at coordinate {entity.coordinate}")
+
+        # Calculate position and dimensions
+        rect = pygame.Rect(
+            entity.coordinate.column * self.cell_px + self.border_px,
+            entity.coordinate.row * self.cell_px + self.border_px,
+            entity.dimension.length * self.cell_px - self.border_px,
+            entity.dimension.height * self.cell_px - self.border_px
+        )
+
+        # Draw the entity (fixed the width parameter)
+        pygame.draw.rect(self.screen, self.horizontal_mover_color, rect)
+
+        # Draw entity ID
+        text_surface = self.font.render(str(entity.id), True, self.background_color)
+        text_rect = text_surface.get_rect(center=rect.center)
+        self.screen.blit(text_surface, text_rect)
+
     def update_display(self):
         self.draw_grid()
+        self.draw_entities()
         pygame.display.flip()
 
     def close(self):

@@ -114,8 +114,7 @@ class Board:
                 cells_in_area.append(self.cells[r][c])
         return cells_in_area
 
-    def get_cells_occupied_by_entity(self, entity_id: int) -> List[Cell]:
-        entity = self.get_entity_by_id(entity_id)
+    def get_cells_occupied_by_entity(self, entity: GridEntity) -> List[Cell]:
         if entity is None:
             return []
 
@@ -126,23 +125,20 @@ class Board:
                     occupied_cells.append(cell)
         return occupied_cells
 
-    def remove_entity_from_cells(self, entity_id: int) -> None:
-        entity = self.get_entity_by_id(entity_id)
-
+    def remove_entity_from_cells(self, entity: GridEntity) -> None:
         if entity is None:
             raise ValueError("Entity not found on the grid. cannot remove a non-existent entity.")
 
-        target_cells = self.get_cells_occupied_by_entity(entity_id)
+        target_cells = self.get_cells_occupied_by_entity(entity)
         for cell in target_cells:
             if cell.occupant == entity:
                 cell.occupant = None
 
-    def add_entity_to_area(self, entity_id: int, top_left_coordinate: GridCoordinate) -> None:
+    def add_entity_to_area(self, entity: GridEntity, top_left_coordinate: GridCoordinate) -> None:
 
         if top_left_coordinate is None:
             raise ValueError("Cannot add entity to an area without a top-left coordinate.")
 
-        entity = self.get_entity_by_id(entity_id)
         if entity is None:
             raise ValueError("Entity not found on the grid. cannot add a non-existent entity.")
 
@@ -170,16 +166,15 @@ class Board:
             raise Exception("Entity cannot move to the specified coordinate.")
 
         self.register_new_entity(entity)
-        self.add_entity_to_area(entity.id, top_left_coordinate)
+        self.add_entity_to_area(entity, top_left_coordinate)
 
 
         return entity
 
-    def move_entity(self, upper_left_destination: GridCoordinate, entity_id: int) -> Optional[GridEntity]:
+    def move_entity(self, upper_left_destination: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
         if upper_left_destination is None:
             raise ValueError("Destination coordinate must not be None.")
 
-        entity = self.get_entity_by_id(entity_id)
         if entity is None:
             raise ValueError("Entity does not exist. in the grid. cannot move a non-existent entity.")
 
@@ -187,12 +182,11 @@ class Board:
             print("Entity", entity.id,  "cannot move to", upper_left_destination)
             return None
 
-        self.remove_entity_from_cells(entity.id)
-        self.add_entity_to_area(entity.id, upper_left_destination)
+        self.remove_entity_from_cells(entity)
+        self.add_entity_to_area(entity, upper_left_destination)
         return entity
 
-    def remove_entity(self, entity_id: int) -> None:
-        entity = self.get_entity_by_id(entity_id)
+    def remove_entity(self, entity: GridEntity) -> None:
         if entity is None:
             raise ValueError("Entity does not exist. in the grid. cannot remove a non-existent entity.")
         self.remove_entity_from_cells(entity)

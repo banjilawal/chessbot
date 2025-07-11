@@ -5,8 +5,8 @@ from src.common.game_color import GameColor
 
 class GameDefault:
     MIN_ID: int = 1
-    COLUMN_COUNT: int = 8
-    ROW_COUNT: int = 8
+    COLUMN_COUNT: int = 21
+    ROW_COUNT: int = 21
     OCCUPANT_HEIGHT: int = 1
     OCCUPANT_LENGTH: int = 2
 

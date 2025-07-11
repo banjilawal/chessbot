@@ -14,12 +14,13 @@ from ui.visualization import Visualizer
 sys.path.append(str(Path(__file__).parent.absolute()))
 
 def main():
-    board = Board(Dimension(length=21, height=21))
+    board = Board(dimension=Dimension(length=12, height=12))
     board.add_new_entity(GridCoordinate(1,1), HorizontalMover(1, 1))
     board.add_new_entity(GridCoordinate(1,2), HorizontalMover(2, 3))
-    board.add_new_entity(GridCoordinate(11,11), HorizontalMover(3, 2))
+    board.add_new_entity(GridCoordinate(8,8), HorizontalMover(3, 2))
     visualizer = Visualizer(board)
 
+    visualizer.board.add_new_entity(GridCoordinate(5,0), HorizontalMover(6, 4))
 
     clock = pygame.time.Clock()
     frame_count = 0

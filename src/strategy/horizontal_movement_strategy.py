@@ -43,7 +43,7 @@ class HorizontalMovementStrategy(MovementStrategy):
 
         upper_left_destination = GridCoordinate(row=mover.coordinate.row, column=destination_column)
 
-        return grid.move_entity(upper_left_destination, mover.id) is not None
+        return grid.move_entity(upper_left_destination, mover) is not None
 
 
 
