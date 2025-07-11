@@ -30,39 +30,14 @@ class DragState:
 
 @dataclass
 class Visualizer:
-
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
-    RED = (255, 0, 0)
-    CREAM = (255, 253, 208)
-    KHAKI = (240, 230, 140)
-    LIGHT_GRAY = (211, 211, 211)
-    DARK_GRAY = (169, 169, 169)
-    SALMON = (250, 128, 114)
-    BLUE = (0, 0, 255)
-    BLUE_GRAY = (102, 153, 204)
-    PINK = (255, 192, 203)
-    GINGER = (176, 101, 0)
-    CERULEAN = (0, 123, 167)
-    OLIVE = (128, 128, 0)
-    LIGHT_SAND = (245, 222, 179)
-    SAND = (194, 178, 128)
-
     board: 'Board'
-
     cell_px: int = 60
     border_px: int = 2
     screen_width: int = 800
     screen_height: int = 800
 
-    dragging: DragState = field(default_factory=lambda: DragState(entity=None, original_coord=None, offset_x=0, offset_y=0))
-
+    active_drags: dict[int, DragState] = field(default_factory=dict)
     is_dragging: bool = False
-    drag_offset_x: int = 0
-    drag_offset_y: int = 0
-    dragged_entity: Optional['GridEntity'] = None
-    original_position: Optional[GridCoordinate] = None
-    dragged_entity_coordinate: Optional[GridCoordinate] = None
 
     def __post_init__(self):
         self.screen_width = self.board.dimension.length * self.cell_px + self.border_px * 2
