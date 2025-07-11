@@ -2,7 +2,6 @@ from common.dimension import Dimension
 from common.direction import Direction
 from model.board import Board
 from model.grid_coordinate import GridCoordinate
-from model.vault import HorizontalMover
 
 if __name__ == "__main__":
     board = Board(dimension=Dimension(length=11, height=11))

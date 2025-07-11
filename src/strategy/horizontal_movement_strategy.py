@@ -7,7 +7,6 @@ from strategy.movement_strategy import MovementStrategy
 
 if TYPE_CHECKING:
     from model.board import Board
-    from model.vault import HorizontalMover
 
 class HorizontalMovementStrategy(MovementStrategy):
     def move(self, mover: 'HorizontalMover', board: 'Board', destination_coordinate: GridCoordinate) -> bool :

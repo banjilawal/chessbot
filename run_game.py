@@ -7,7 +7,7 @@ import pygame
 from common.dimension import Dimension
 from model.board import Board
 from model.grid_coordinate import GridCoordinate
-from model.vault import HorizontalMover
+
 
 from ui.visualization import Visualizer
 

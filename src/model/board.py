@@ -10,7 +10,6 @@ from model.crate import Crate
 from common.dimension import Dimension
 from model.grid_entity import GridEntity
 
-from model.vault import VerticalMover, HorizontalMover
 
 from src.common.game_default import GameDefault
 from model.cell import Cell

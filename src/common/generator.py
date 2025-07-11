@@ -6,7 +6,6 @@ from model.board import Board
 from model.bin import Bin
 from src.common.dimension import Dimension
 from src.common.id_generator import global_id_generator
-from model.vault import VerticalMover, HorizontalMover
 from model.crate import Crate
 
 

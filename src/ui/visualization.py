@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, List, Optional, cast
 from common.game_color import GameColor
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity
-from model.vault import HorizontalMover
+
 
 if TYPE_CHECKING:
     from model.board import Board
@@ -194,7 +194,7 @@ class Visualizer:
             return False
 
         # Fix the isinstance check - remove quotes around HorizontalMover
-        from model.vault import HorizontalMover  # Make sure this import is at the top of the file
+ # Make sure this import is at the top of the file
         if not isinstance(entity, HorizontalMover):
             print(f"[Warning] Entity {entity.id} is not a horizontal mover. Cannot move.")
             return False
