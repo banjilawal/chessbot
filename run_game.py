@@ -9,7 +9,7 @@ from model.board import Board
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import HorizontalMover
 
-from ui.visualization import Visualizer
+from ui.visualization import GameDisplay
 
 sys.path.append(str(Path(__file__).parent.absolute()))
 
@@ -18,7 +18,7 @@ def main():
     board.add_new_entity(GridCoordinate(1,1), HorizontalMover(1, 1))
     board.add_new_entity(GridCoordinate(1,2), HorizontalMover(2, 3))
     board.add_new_entity(GridCoordinate(8,8), HorizontalMover(3, 2))
-    visualizer = Visualizer(board)
+    visualizer = GameDisplay(board)
 
     visualizer.board.add_new_entity(GridCoordinate(5,0), HorizontalMover(6, 4))
 

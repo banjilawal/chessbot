@@ -28,7 +28,7 @@ class DragState:
         )
 
 @dataclass
-class Visualizer:
+class GameDisplay:
     board: 'Board'
     cell_px: int = 60
     border_px: int = 2
