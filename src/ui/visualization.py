@@ -3,31 +3,13 @@ from dataclasses import dataclass, field
 import pygame
 from typing import TYPE_CHECKING, List, Optional, cast
 
+from common.game_color import GameColor
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity
 from model.vault import HorizontalMover
 
 if TYPE_CHECKING:
     from model.board import Board
-
-@dataclass
-class VisualizerColor:
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
-    RED = (255, 0, 0)
-    CREAM = (255, 253, 208)
-    KHAKI = (240, 230, 140)
-    LIGHT_GRAY = (211, 211, 211)
-    DARK_GRAY = (169, 169, 169)
-    SALMON = (250, 128, 114)
-    BLUE = (0, 0, 255)
-    BLUE_GRAY = (102, 153, 204)
-    PINK = (255, 192, 203)
-    GINGER = (176, 101, 0)
-    CERULEAN = (0, 123, 167)
-    OLIVE = (128, 128, 0)
-    LIGHT_SAND = (245, 222, 179)
-    SAND = (194, 178, 128)
 
 @dataclass(frozen=True)
 class DragState:
@@ -45,10 +27,6 @@ class DragState:
             offset_x=self.offset_x,
             offset_y=self.offset_y
         )
-
-
-
-
 
 @dataclass
 class Visualizer:
@@ -96,7 +74,9 @@ class Visualizer:
         self.font = pygame.font.SysFont("monospace", 30)
 
     def draw_grid(self):
-        self.screen.fill(self.DARK_GRAY)
+        screen_color = GameColor.DARK_GRAY
+
+        self.screen.fill(screen_color)
         for row in range(self.board.dimension.height):
             for col in range(self.board.dimension.length):
                 cell_rect = pygame.Rect(
@@ -105,16 +85,16 @@ class Visualizer:
                     self.cell_px,
                     self.cell_px
                 )
-                fill_color = self.DARK_GRAY
 
                 cell = self.board.cells[row][col]
+                cell_color = screen_color
                 if cell.id % 2 == 0:
-                    fill_color = self.LIGHT_SAND
+                    cell_color = GameColor.LIGHT_SAND
 
                 # Draw filled rectangle
-                pygame.draw.rect(self.screen, fill_color, cell_rect)
+                pygame.draw.rect(self.screen, cell_color, cell_rect)
                 # Draw an outlined rectangle
-                pygame.draw.rect(self.screen, self.BLACK, cell_rect, 1)
+                pygame.draw.rect(self.screen, GameColor.BLACK, cell_rect, 1)
 
     def draw_entities(self):
         for entity in self.board.entities:
