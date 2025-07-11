@@ -30,6 +30,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                visualizer.handle_mouse_down(event)
+            elif event.type == pygame.MOUSEBUTTONUP:
+                visualizer.handle_mouse_up(event)
+            elif event.type == pygame.MOUSEMOTION:
+                visualizer.handle_mouse_motion(event)
+
         visualizer.update_display()
         clock.tick(200)
         frame_count += 1
