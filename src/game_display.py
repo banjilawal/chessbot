@@ -12,9 +12,9 @@ if TYPE_CHECKING:
 
 @dataclass(frozen=True)
 class DragState:
-    mover: Optional[Mover]
-    original_coord: Optional[GridCoordinate]
-    current_coord: Optional[GridCoordinate]
+    mover: Mover
+    original_coord: GridCoordinate
+    current_coord: GridCoordinate
     offset_x: int = 0
     offset_y: int = 0
 
