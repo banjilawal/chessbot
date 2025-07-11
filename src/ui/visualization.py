@@ -145,6 +145,10 @@ class Visualizer:
         self.drag_offset_y = mouse_position[1] - entity_screen_y
         print(f"Starting dragging entity {entity.id} at {entity.coordinate} with offset ({self.drag_offset_x}, {self.drag_offset_y})")
 
+    def update_drag(self, mouse_position: tuple):
+        if not self.dragging or not self.dragged_entity:
+            return
+        pass
 
     def update_display(self):
         self.draw_grid()
