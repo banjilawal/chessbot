@@ -2,11 +2,13 @@ from dataclasses import dataclass, field
 
 from typing import Tuple, List, Optional
 
-from factory import global_id_generator
+from exception import InvalidIdError
 from geometry import Dimension, GridCoordinate
 from grid_entity import GridEntity, Mover
 
 from constants import Config
+from id_factory import global_id_generator
+
 
 @dataclass
 class Cell:
@@ -15,8 +17,6 @@ class Cell:
     occupant: Optional['GridEntity'] = field(default=None)
 
     def __post_init__(self):
-        if self.id < Config.MIN_ID:
-            raise InvalidIdError("Cell mover_id below minimum value.")
         object.__setattr__(self, 'mover_id', self.id)
         object.__setattr__(self, 'top_left_coordinate', self.coordinate)
         object.__setattr__(self, 'occupant', self.occupant)

@@ -4,23 +4,7 @@ from typing import List
 from board import Board
 from grid_entity import HorizontalMover
 from geometry import Dimension
-
-
-class IdFactory:
-    def __init__(self):
-        self.cell_id = 1
-        self.mover_id = 1
-
-    def next_cell_id(self) -> int:
-        current_id = self.cell_id
-        self.cell_id += 1
-        return current_id
-
-    def next_mover_id(self) -> int:
-        current_id = self.mover_id
-        self.mover_id += 1
-        return current_id
-global_id_generator = IdFactory()
+from id_factory import global_id_generator
 
 
 class EntityFactory:
@@ -51,7 +35,7 @@ class EntityFactory:
             dimension=Dimension(21, 21),
             max_entity_dimension: int = 7,
             max_entities: int = 10
-    ) -> Board:
+    ) -> 'Board':
         board = Board()
         board.add_horizontal_mover(EntityFactory.horizontal_mover(max_height=max_entity_dimension))
         return board

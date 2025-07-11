@@ -133,7 +133,7 @@ class GameDisplay:
         print("mover", mover.id, "dragging started at", self.active_drags[mover.id].original_coordinate)
 
     def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
-        if not self.is_dragging or mover_id not in
+        if not self.is_dragging or mover_id not in self.active_drags:
             return
         new_column = (mouse_position[0] - self.active_drags[mover_id].offset_x) // self.cell_px
         new_row = (mouse_position[1] - self.active_drags[mover_id].offset_y) // self.cell_px

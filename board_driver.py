@@ -1,4 +1,4 @@
-from geometry import Dimension
+from geometry import Dimension, GridCoordinate
 from board import Board
 
 from grid_entity import HorizontalMover
@@ -11,7 +11,7 @@ if __name__ == "__main__":
     # print("total empty cells:", len(board.empty_cells()))
     # print("total occupied cells:", len(board.occupied_cells()))
 
-    mover_a = HorizontalMover(mover_id=1, height=1, coordinate=None)
+    mover_a = HorizontalMover(mover_id=1, height=1, top_left_coordinate=None)
     print("moverA coord:", mover_a.top_left_coordinate)
     board.add_new_entity(GridCoordinate(row=9, column=9), mover_a)
     print("moverA coord", mover_a.top_left_coordinate)
