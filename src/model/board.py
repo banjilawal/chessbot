@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from typing import Tuple, List, Optional, cast, Dict
 
 from common.direction import Direction
-from common.id_generator import global_id_generator
+
 from model.grid_coordinate import GridCoordinate, CoordinateRange
 from model.crate import Crate
 from common.dimension import Dimension

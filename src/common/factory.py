@@ -6,14 +6,30 @@ from model.board import Board
 from model.bin import Bin
 from model.grid_entity import HorizontalMover
 from src.common.dimension import Dimension
-from src.common.id_generator import global_id_generator
+
 from model.crate import Crate
+
+class IdFactory:
+    def __init__(self):
+        self.cell_id = 1
+        self.mover_id = 1
+
+    def next_cell_id(self) -> int:
+        current_id = self.cell_id
+        self.cell_id += 1
+        return current_id
+
+    def next_mover_id(self) -> int:
+        current_id = self.mover_id
+        self.mover_id += 1
+        return current_id
+global_id_generator = IdFactory()
 
 
 class EntityFactory:
 
     @staticmethod
-    def build_dimensopm(max_length: int, max_height: int) -> Dimension:
+    def build_dimension(max_length: int, max_height: int) -> Dimension:
         return Dimension(
             length=random.randint(1, max_length),
             height=random.randint(1, max_height)
