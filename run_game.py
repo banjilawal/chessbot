@@ -4,15 +4,23 @@ from pathlib import Path
 
 import pygame
 
+from common.dimension import Dimension
 from model.board import Board
+from model.grid_coordinate import GridCoordinate
+from model.vault import HorizontalMover
 
 from ui.visualization import Visualizer
 
 sys.path.append(str(Path(__file__).parent.absolute()))
 
 def main():
-    board = Board()
+    board = Board(Dimension(length=21, height=21))
     visualizer = Visualizer(board)
+    visualizer.board.add_new_entity(GridCoordinate(0,0), HorizontalMover(1, 1))
+    visualizer.board.add_new_entity(GridCoordinate(0,1), HorizontalMover(2, 3))
+    visualizer.board.add_new_entity(GridCoordinate(11,11), HorizontalMover(3, 2))
+
+    clock = pygame.time.Clock()
 
     running = True
     while running:
@@ -20,6 +28,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
         visualizer.update_display()
+        clock.tick(60)
     visualizer.close()
 
 if __name__ == "__main__":
