@@ -126,6 +126,9 @@ class Visualizer:
                 self.original_position = entity.coordinate
                 self.dragged_entity_coordinate = entity.coordinate
 
+    def handle_mouse_up(self, event: pygame.event.Event):
+        if event.button == 1 and self.dragging:
+            self.end_dragging(event.pos)
 
 
 
