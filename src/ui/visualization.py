@@ -134,6 +134,16 @@ class Visualizer:
         if self.dragging:
             self.update_drag(event.pos)
 
+    def start_dragging(self, entity: GridEntity, mouse_position: tuple):
+        self.dragging = True
+        self.dragged_entity = entity
+        self.original_position = entity.coordinate
+
+        entity_screen_x = entity.coordinate.column * self.cell_px + self.border_px
+        entity_screen_y = entity.coordinate.row * self.cell_px + self.border_px
+        self.drag_offset_x = mouse_position[0] - entity_screen_x
+        self.drag_offset_y = mouse_position[1] - entity_screen_y
+        print(f"Starting dragging entity {entity.id} at {entity.coordinate} with offset ({self.drag_offset_x}, {self.drag_offset_y})")
 
 
     def update_display(self):
