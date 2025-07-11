@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 import pygame
 from typing import TYPE_CHECKING, Optional, cast
 
-from constants import GameColor
+from constants import GameColor, PlacementStatus
 from geometry import GridCoordinate
 from grid_entity import GridEntity, Mover, HorizontalMover
 
@@ -145,9 +145,10 @@ class GameDisplay:
         self.active_drags[mover_id] = self.active_drags[mover_id].with_updated_position(new_coordinate)
         print("mover", mover_id, "dragging updated to", self.active_drags[mover_id].current_coordinate)
 
-    def end_drag(self, mouse_position: tuple):
-        if not self.is_dragging or not self.dragged_entity:
-            return
+    def end_drag(self, mover_id: int) -> PlacementStatus:
+        if not self.is_dragging or mover_id not in self.active_drags:
+            return PlacementStatus.FAILURE
+        drag_state = self.active_drags[mover_id].pop(mover_id)
 
         current_column = (mouse_position[0] - self.border_px) // self.cell_px
         current_row = (mouse_position[1] - self.border_px) // self.cell_px
@@ -238,17 +239,3 @@ class GameDisplay:
 
     def close(self):
         pygame.quit()
-
-Abstract Mover etity chas three subclases; HorizontalMover, VeritcalMover and  UniversalMover. For moving in the grid they
-either use HorizontalMovementStrategy, VerticalMovementStrategy, or UniversalMovementStrategy. The models and strategies
-work on the correctly in Board. I am using pygame to create the GameDisplay. I found out the easiet way for the display
-to implement the business rules is with MouseDrag events. With my current handlers I can drag items around. There are
-two problems. 1) The most important problem is I want a HorizontalMover instance mosue drag to either restrict movement to
-the row. What is probably easier is no matter how they move the mouse a HOrizontalMover('s final position is going to be '
-'on the same row but a different column, IN other words if intial_coord(x0, y0) then final_coord(xf, y0). 2) The second
-problem is no matter where I drag the entity it ends up back in its original position. I suspec the second problem will
-be fixed once I use DragState in the mouseHandlers. Problem 1 is more important. Problem 2 might b easier to solve. Which
-should I start with.
-
-The HorizontalMover ais already restricted to movingon the same y-coord through HorizontalMovementStrategy.
-The problem is that if the cell contains a HorizontalMover I want to restrict mouse movement to the y-coord

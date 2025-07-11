@@ -1,5 +1,12 @@
 import sys
-from enum import Enum
+from enum import Enum, auto
+
+
+class PlacementStatus(Enum):
+    PLACED = auto()
+    BLOCKED = auto()
+    RELEASED = auto
+    INVALID = auto
 
 class Config:
     COLUMN_COUNT: int = 21
