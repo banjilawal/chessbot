@@ -8,14 +8,14 @@ from model.grid_coordinate import GridCoordinate
 
 @dataclass
 class Cell:
-    cell_id: int
+    id: int
     coordinate: GridCoordinate
     occupant: Optional['GridEntity'] = field(default=None)
 
     def __post_init__(self):
-        if self.cell_id < GameDefault.MIN_ID:
-            raise InvalidIdError("Cell cell_id below minimum value.")
-        object.__setattr__(self, 'cell_id', self.cell_id)
+        if self.id < GameDefault.MIN_ID:
+            raise InvalidIdError("Cell id below minimum value.")
+        object.__setattr__(self, 'id', self.id)
         object.__setattr__(self, 'coordinate', self.coordinate)
         object.__setattr__(self, 'occupant', self.occupant)
 

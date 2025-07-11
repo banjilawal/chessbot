@@ -24,8 +24,8 @@ class Crate(Bin):
 
 
 
-    # def cell_id(self) -> int:
-    #     return super().cell_id
+    # def id(self) -> int:
+    #     return super().id
     #
     # def send_travel_request(self, bearing: Bearing) -> TravelRequest:
     #     pass
