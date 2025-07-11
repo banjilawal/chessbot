@@ -20,16 +20,16 @@ class Board:
     MIN_ROW_COUNT = 6
     MIN_COLUMN_COUNT = 6
 
-    horizontal_movers: List[HorizontalMover] = field(default_factory=list)
-
+    entities: List[HorizontalMover] = field(default_factory=list)
     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
     dimension: Dimension = field(
-        default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT))
+        default_factory=lambda: Dimension(length=GameDefault.COLUMN_COUNT, height=GameDefault.ROW_COUNT)
+    )
 
     def __post_init__(self):
         if not all([
             self.dimension.height > self.MIN_ROW_COUNT,
-            self.dimension.length >        self.MIN_COLUMN_COUNT
+            self.dimension.length > self.MIN_COLUMN_COUNT
         ]):
             raise ValueError("Board dimensions below minimum values")
 
@@ -82,7 +82,7 @@ class Board:
         cells = tuple(
             tuple(
                 Cell(
-                    cell_id=row * self.dimension.length + col + 1,
+                    cell_id=global_id_generator.next_cell_id(),
                     coordinate=GridCoordinate(row=row, column=col)
                 )
                 for col in range(self.dimension.length)
@@ -224,6 +224,7 @@ class Board:
     def register_new_entity(self, entity: GridEntity) -> None:
         if entity is None:
             raise ValueError("Entity must not be None.")
+
         if entity not in self.entities:
             self.entities.append(entity)
 # @dataclass
@@ -231,7 +232,7 @@ class Board:
 #     MIN_ROW_COUNT = 6
 #     MIN_COLUMN_COUNT = 6
 #
-#     horizontal_movers: List[HorizontalMover] = field(default_factory=list)
+#     entities: List[HorizontalMover] = field(default_factory=list)
 #
 #     cells: Tuple[Tuple[Cell, ...], ...] = field(init=False, repr=False)
 #     dimension: Dimension = field(
@@ -404,11 +405,11 @@ class Board:
     #         return None
     #     if isinstance(entity, HorizontalMover):
     #         placed_mover = cast(HorizontalMover, entity)
-    #         self.horizontal_movers.append(placed_mover)
+    #         self.entities.append(placed_mover)
     #         return placed_mover
     #     return None
     #
     # def random_mover(self) -> Optional[HorizontalMover]:
-    #     if len(self.horizontal_movers) == 0:
+    #     if len(self.entities) == 0:
     #         return None
-    #     return random.choice(self.horizontal_movers)
+    #     return random.choice(self.entities)

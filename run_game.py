@@ -15,12 +15,14 @@ sys.path.append(str(Path(__file__).parent.absolute()))
 
 def main():
     board = Board(Dimension(length=21, height=21))
+    board.add_new_entity(GridCoordinate(1,1), HorizontalMover(1, 1))
+    board.add_new_entity(GridCoordinate(1,2), HorizontalMover(2, 3))
+    board.add_new_entity(GridCoordinate(11,11), HorizontalMover(3, 2))
     visualizer = Visualizer(board)
-    visualizer.board.add_new_entity(GridCoordinate(0,0), HorizontalMover(1, 1))
-    visualizer.board.add_new_entity(GridCoordinate(0,1), HorizontalMover(2, 3))
-    visualizer.board.add_new_entity(GridCoordinate(11,11), HorizontalMover(3, 2))
+
 
     clock = pygame.time.Clock()
+    frame_count = 0
 
     running = True
     while running:
@@ -28,7 +30,10 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
         visualizer.update_display()
-        clock.tick(60)
+        clock.tick(200)
+        frame_count += 1
+        if frame_count % 60== 0:
+            print(f"Frame {frame_count}")
     visualizer.close()
 
 if __name__ == "__main__":
