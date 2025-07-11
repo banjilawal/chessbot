@@ -9,7 +9,7 @@ from model.board import Board
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import HorizontalMover
 
-from ui.visualization import GameDisplay
+from ui.game_display import GameDisplay
 
 sys.path.append(str(Path(__file__).parent.absolute()))
 
