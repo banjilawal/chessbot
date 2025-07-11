@@ -242,7 +242,7 @@ class Board:
 #         cells = tuple(
 #             tuple(
 #                 Cell(
-#                     id=row * self.dimension.length + col + 1,
+#                     mover_id=row * self.dimension.length + col + 1,
 #                     top_left_coordinate=GridCoordinate(row=row, column=col)
 #                 )
 #                 for col in range(self.dimension.length)
@@ -275,10 +275,10 @@ class Board:
     #         return None
     #     return self.cells[top_left_coordinate.row][top_left_coordinate.column]
     #
-    # def find_cell_by_id(self, id: int) -> Optional[Cell]:
+    # def find_cell_by_id(self, mover_id: int) -> Optional[Cell]:
     #     for row in self.cells:
     #         for cell in row:
-    #             if cell.id == id:
+    #             if cell.mover_id == mover_id:
     #                 return cell
     #     return None
     #
@@ -327,18 +327,18 @@ class Board:
     #             print(cell.occupant, "is leaving", cell.top_left_coordinate)
     #             cell.leave_cell()
     #             if cell.occupant is None:
-    #                 print("cell", cell.id, "cell has no occupant")
+    #                 print("cell", cell.mover_id, "cell has no occupant")
     #             else :
-    #                 print("cell", cell.id, "cell still has occupant is", cell.occupant)
+    #                 print("cell", cell.mover_id, "cell still has occupant is", cell.occupant)
     #                 return None
     #
     #         print("moving", entity, "to", destination_coordinate)
     #         for cell in destination_cells:
     #             if cell.occupant is None:
     #                 cell.enter_cell(entity)
-    #                 print("cell", cell.id, "has occupant", entity)
+    #                 print("cell", cell.mover_id, "has occupant", entity)
     #             if (cell.occupant is not None) and (cell.occupant != entity):
-    #                 print("cell", cell.id, "already occupied by", cell.occupant)
+    #                 print("cell", cell.mover_id, "already occupied by", cell.occupant)
     #                 return None
     #         entity.top_left_coordinate = destination_coordinate
     #         return entity

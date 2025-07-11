@@ -14,8 +14,8 @@ class Cell:
 
     def __post_init__(self):
         if self.id < GameDefault.MIN_ID:
-            raise InvalidIdError("Cell id below minimum value.")
-        object.__setattr__(self, 'id', self.id)
+            raise InvalidIdError("Cell mover_id below minimum value.")
+        object.__setattr__(self, 'mover_id', self.id)
         object.__setattr__(self, 'top_left_coordinate', self.coordinate)
         object.__setattr__(self, 'occupant', self.occupant)
 

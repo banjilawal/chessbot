@@ -84,7 +84,7 @@ class Visualizer:
             print("[Warning] Entity has no top_left_coordinate. Cannot draw an entity without a top_left_coordinate to the screen.")
             return
 
-        # print(f"Drawing entity {entity.id} at top_left_coordinate {entity.top_left_coordinate}")
+        # print(f"Drawing entity {entity.mover_id} at top_left_coordinate {entity.top_left_coordinate}")
 
         # Calculate position and dimensions
         rect = pygame.Rect(
