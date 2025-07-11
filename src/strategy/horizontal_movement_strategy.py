@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from model.vault import HorizontalMover
 
 class HorizontalMovementStrategy(MovementStrategy):
-    def move(self, mover: 'HorizontalMover', grid: 'Board', direction: Direction, distance: int = 1) -> bool :
+    def move(self, mover: 'HorizontalMover', grid: 'Board', destination_coordinate: GridCoordinate) -> bool :
 
         if mover is None:
             ("[Warning] Mover cannot be None. It cannot move.")
@@ -21,29 +21,41 @@ class HorizontalMovementStrategy(MovementStrategy):
         if mover.coordinate is None:
             print("[Warning] Mover has no coordinate. Cannot move.")
             return False
+        if destination_coordinate is None:
+            print("[Warning] Destination coordinate cannot be None. Cannot move.")
+
+        if destination_coordinate.column < 0 or destination_coordinate.column >= grid.dimension.length:
+            print(f"[Warning] Horizontal move out of bounds: {destination_coordinate.column}")
+            return False
+
+        if destination_coordinate == mover.coordinate:
+            print("[Warning] Mover is already at destination coordinate. Cannot move.")
+            return False
+
+        if destination_coordinate.row != mover.coordinate.row:
+            print("[Warning] Destination coordinate is not on the same row as the mover. Cannot move.")
+            return False
 
         destination_column = mover.coordinate.column
         print("strategy calculated destination column:", destination_column)
+        #
+        # match destination_coordinate:
+        #     case Direction.LEFT:
+        #         destination_column = mover.coordinate.column - distance
+        #     case Direction.RIGHT:
+        #         destination_column = mover.coordinate.column + distance
+        #     case Direction.UP | Direction.DOWN:
+        #         print(f"[Warning] Invalid direction for horizontal mover: {destination_coordinate}")
+        #         return False
+        #     case _:
+        #         print(f"[Warning] Invalid direction for horizontal mover: {destination_coordinate}")
+        #         return False
+        #
+        #
+        #
+        # upper_left_destination = GridCoordinate(row=mover.coordinate.row, column=destination_column)
 
-        match direction:
-            case Direction.LEFT:
-                destination_column = mover.coordinate.column - distance
-            case Direction.RIGHT:
-                destination_column = mover.coordinate.column + distance
-            case Direction.UP | Direction.DOWN:
-                print(f"[Warning] Invalid direction for horizontal mover: {direction}")
-                return False
-            case _:
-                print(f"[Warning] Invalid direction for horizontal mover: {direction}")
-                return False
-
-        if destination_column < 0 or destination_column >= grid.dimension.length:
-            print(f"[Warning] Horizontal move out of bounds: {destination_column}")
-            return False
-
-        upper_left_destination = GridCoordinate(row=mover.coordinate.row, column=destination_column)
-
-        return grid.move_entity(upper_left_destination, mover) is not None
+        return grid.move_entity(destination_coordinate, mover) is not None
 
 
 
