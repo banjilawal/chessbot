@@ -14,5 +14,13 @@ class GridEntity:
     dimension: Dimension
     coordinate: GridCoordinate = None
 
+@dataclass
+class ImmovableGridEntity(GridEntity):
+
+@dataclass
+class BrikPallet(ImmovableGridEntity):
+
+@dataclass
+class MovableGridEntity(GridEntity):
 
 
