@@ -5,10 +5,10 @@ from typing import TYPE_CHECKING, List, Optional, cast
 
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import GridEntity
+from model.vault import HorizontalMover
 
 if TYPE_CHECKING:
     from model.board import Board
-    from model.vault import HorizontalMover
 
 @dataclass
 class Visualizer:
@@ -213,12 +213,12 @@ class Visualizer:
         if entity.coordinate is None:
             print("[Warning] Entity has no coordinate. Cannot move an entity without a coordinate.")
             return False
-        if not isinstance(entity, 'HorizontalMover'):
+        if not isinstance(entity, HorizontalMover):
             print(f"[Warning] Entity {entity.id} is not a horizontal mover. Cannot move.")
             return False
 
-        horizontal_mover = cast('HorizontalMover', entity)
-        return horizontal_mover.move(horizontal_mover, self.board, destination_coordinate)
+        horizontal_mover = cast(HorizontalMover, entity)
+        return horizontal_mover.move(self.board, destination_coordinate)
 
 
     def update_display(self):
