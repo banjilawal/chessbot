@@ -37,6 +37,13 @@ class Visualizer:
     screen_width: int = 800
     screen_height: int = 800
 
+    dragging: bool = False
+    drag_offset_x: int = 0
+    drag_offset_y: int = 0
+    dragged_entity: Optional['GridEntity'] = None
+    original_position: Optional[GridCoordinate] = None
+    dragged_entity_coordinate: Optional[GridCoordinate] = None
+
     def __post_init__(self):
         self.screen_width = self.board.dimension.length * self.cell_px + self.border_px * 2
         self.screen_height = self.board.dimension.height * self.cell_px + self.border_px * 2
@@ -45,13 +52,6 @@ class Visualizer:
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
         pygame.display.set_caption("Podscape")
         self.font = pygame.font.SysFont("monospace", 30)
-
-        self.dragging = False
-        self.drag_offset_x = 0
-        self.drag_offset_y = 0
-        self.dragged_entity = None
-        self.original_position = None
-        self.dragged_entity_coordinate = None
 
     def draw_grid(self):
         self.screen.fill(self.DARK_GRAY)
@@ -110,12 +110,21 @@ class Visualizer:
             print("[Warning] Mouse position cannot be None. Cannot get an entity at a null position.")
             return None
 
-        coordinate = self.mouse_position_to_grid_coordinate(mouse_position)
+        coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
             print("Mouse is outside the game grid. Cannot get an entity at a position outside the grid.")
             return None
 
         return self.board.cells[coordinate.row][coordinate.column].occupant
+
+    def handle_mouse_down(self, event: pygame.event.Event):
+        if event.button == 1:
+            entity = self.get_entity_at_mouse_position(event.pos)
+            if entity is not None:
+                self.dragging = True
+                self.dragged_entity = entity
+                self.original_position = entity.coordinate
+                self.dragged_entity_coordinate = entity.coordinate
 
 
 
@@ -125,7 +134,7 @@ class Visualizer:
         self.draw_entities()
         pygame.display.flip()
 
-    def mouse_position_to_grid_coordinate(self, mouse_position: tuple) -> Optional[GridCoordinate]:
+    def grid_coordinate_at_mouse_position(self, mouse_position: tuple) -> Optional[GridCoordinate]:
         column = mouse_position[0] // self.cell_px
         row = mouse_position[1] // self.cell_px
 
