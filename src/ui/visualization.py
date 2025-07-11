@@ -130,6 +130,10 @@ class Visualizer:
         if event.button == 1 and self.dragging:
             self.end_dragging(event.pos)
 
+    def handle_mouse_motion(self, event: pygame.event.Event):
+        if self.dragging:
+            self.update_drag(event.pos)
+
 
 
     def update_display(self):
