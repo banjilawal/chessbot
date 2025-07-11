@@ -4,6 +4,7 @@ from typing import Union, Dict, List
 from common.direction import Direction
 from model.board import Board
 from model.bin import Bin
+from model.grid_entity import HorizontalMover
 from src.common.dimension import Dimension
 from src.common.id_generator import global_id_generator
 from model.crate import Crate

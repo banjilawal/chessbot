@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING, Optional
 
-from common.direction import Direction
 from model.grid_coordinate import GridCoordinate
+from model.grid_entity import HorizontalMover
 from strategy.movement_strategy import MovementStrategy
 
 
@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from model.board import Board
 
 class HorizontalMovementStrategy(MovementStrategy):
-    def move(self, mover: 'HorizontalMover', board: 'Board', destination_coordinate: GridCoordinate) -> bool :
+    def move(self, mover: HorizontalMover, board: 'Board', destination_coordinate: GridCoordinate) -> bool :
 
         if mover is None:
             ("[Warning] Mover cannot be None. It cannot move.")

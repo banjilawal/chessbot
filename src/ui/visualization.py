@@ -5,15 +5,14 @@ from typing import TYPE_CHECKING, List, Optional, cast
 
 from common.game_color import GameColor
 from model.grid_coordinate import GridCoordinate
-from model.grid_entity import GridEntity
-
+from model.grid_entity import GridEntity, Mover
 
 if TYPE_CHECKING:
     from model.board import Board
 
 @dataclass(frozen=True)
 class DragState:
-    entity: Optional[GridEntity]
+    mover: Optional[Mover]
     original_coord: Optional[GridCoordinate]
     current_coord: Optional[GridCoordinate]
     offset_x: int = 0
@@ -21,7 +20,7 @@ class DragState:
 
     def with_updated_position(self, new_coordinate: GridCoordinate) -> 'DragState':
         return DragState(
-            entity=self.entity,
+            mover=self.mover,
             original_coord=self.original_coord,
             current_coord=new_coordinate,
             offset_x=self.offset_x,
@@ -76,15 +75,15 @@ class Visualizer:
             self.draw_entity(entity)
 
     def draw_entity(self, entity: 'GridEntity'):
-        """Draw a single entity on the board"""
+        """Draw a single mover on the board"""
         if entity is None:
-            print("[Warning] Entity cannot be None. Cannot draw a null entity to the screen.")
+            print("[Warning] Entity cannot be None. Cannot draw a null mover to the screen.")
             return
         if entity.top_left_coordinate is None:
-            print("[Warning] Entity has no top_left_coordinate. Cannot draw an entity without a top_left_coordinate to the screen.")
+            print("[Warning] Entity has no top_left_coordinate. Cannot draw an mover without a top_left_coordinate to the screen.")
             return
 
-        # print(f"Drawing entity {entity.mover_id} at top_left_coordinate {entity.top_left_coordinate}")
+        # print(f"Drawing mover {mover.mover_id} at top_left_coordinate {mover.top_left_coordinate}")
 
         # Calculate position and dimensions
         rect = pygame.Rect(
@@ -94,22 +93,22 @@ class Visualizer:
             entity.dimension.height * self.cell_px - self.border_px
         )
 
-        # Draw the entity (fixed the width parameter)
+        # Draw the mover (fixed the width parameter)
         pygame.draw.rect(self.screen, self.OLIVE, rect)
 
-        # Draw entity ID
+        # Draw mover ID
         text_surface = self.font.render(str(entity.id), True, self.BLACK)
         text_rect = text_surface.get_rect(center=rect.center)
         self.screen.blit(text_surface, text_rect)
 
     def get_entity_at_mouse_position(self, mouse_position: tuple) -> Optional['GridEntity']:
         if mouse_position is None:
-            print("[Warning] Mouse position cannot be None. Cannot get an entity at a null position.")
+            print("[Warning] Mouse position cannot be None. Cannot get an mover at a null position.")
             return None
 
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the game board. Cannot get an entity at a position outside the board.")
+            print("Mouse is outside the game board. Cannot get an mover at a position outside the board.")
             return None
 
         return self.board.cells[coordinate.row][coordinate.column].occupant
@@ -134,7 +133,7 @@ class Visualizer:
         self.original_position = entity.top_left_coordinate
 
         self.dragging = DragState(
-            entity=entity,
+            mover=entity,
             original_coord=entity.top_left_coordinate,  # Store the original top_left_coordinate
             offset_x=mouse_position[0] - (entity.top_left_coordinate.column * self.cell_px + self.border_px),
             offset_y=mouse_position[1] - (entity.top_left_coordinate.row * self.cell_px + self.border_px)
@@ -145,13 +144,13 @@ class Visualizer:
         self.drag_offset_x = mouse_position[0] - entity_screen_x
         self.drag_offset_y = mouse_position[1] - entity_screen_y
         print(
-            f"Starting dragging entity {entity.id} at {entity.top_left_coordinate} with offset ({self.drag_offset_x}, {self.drag_offset_y})")
+            f"Starting dragging mover {entity.id} at {entity.top_left_coordinate} with offset ({self.drag_offset_x}, {self.drag_offset_y})")
 
     def update_drag(self, mouse_position: tuple):
         if not self.is_dragging or not self.dragged_entity:
             return
 
-        # Update the visual position of the entity during drag
+        # Update the visual position of the mover during drag
         current_column = (mouse_position[0] - self.border_px - self.drag_offset_x) // self.cell_px
         current_row = (mouse_position[1] - self.border_px - self.drag_offset_y) // self.cell_px
 
@@ -166,7 +165,7 @@ class Visualizer:
         current_row = (mouse_position[1] - self.border_px) // self.cell_px
         destination_coordinate = GridCoordinate(row=self.dragging.original_coord.row, column=current_column)
 
-        # Try to move the entity
+        # Try to move the mover
         if not self.move_handler(self.dragged_entity, destination_coordinate):
             # If move fails, return to original position
             self.dragged_entity.top_left_coordinate = self.original_position
@@ -180,17 +179,17 @@ class Visualizer:
 
     def move_handler(self, entity: GridEntity, destination_coordinate: GridCoordinate) -> bool:
         if entity is None:
-            print("[Warning] Entity cannot be None. Cannot move null entity.")
+            print("[Warning] Entity cannot be None. Cannot move null mover.")
             return False
         if destination_coordinate is None:
             print(
-                "[Warning] Destination top_left_coordinate cannot be None. Cannot move entity without a destination top_left_coordinate.")
+                "[Warning] Destination top_left_coordinate cannot be None. Cannot move mover without a destination top_left_coordinate.")
             return False
         if self.board is None:
             print("[Warning] Board cannot be None. Cannot move on a nonexistent board.")
             return False
         if entity.top_left_coordinate is None:
-            print("[Warning] Entity has no top_left_coordinate. Cannot move an entity without a top_left_coordinate.")
+            print("[Warning] Entity has no top_left_coordinate. Cannot move an mover without a top_left_coordinate.")
             return False
 
         # Fix the isinstance check - remove quotes around HorizontalMover
@@ -204,25 +203,25 @@ class Visualizer:
 
     def move_handler(self, entity: GridEntity, destination_coordinate) -> bool:
         if entity is None:
-            print("[Warning] Entity cannot be None. Cannot move null entity.")
+            print("[Warning] Entity cannot be None. Cannot move null mover.")
             return False
         if destination_coordinate is None:
-            print("[Warning] Destination top_left_coordinate cannot be None. Cannot move entity without a destination top_left_coordinate.")
+            print("[Warning] Destination top_left_coordinate cannot be None. Cannot move mover without a destination top_left_coordinate.")
 
         if self.board is None:
             print("[Warning] Board cannot be None. Cannot move on a nonexistent board.")
             return False
         if entity.top_left_coordinate is None:
-            print("[Warning] Entity has no top_left_coordinate. Cannot move an entity without a top_left_coordinate.")
+            print("[Warning] Entity has no top_left_coordinate. Cannot move an mover without a top_left_coordinate.")
             return False
         if entity.top_left_coordinate is None:
-            print("[Warning] Entity has no top_left_coordinate. Cannot move an entity without a top_left_coordinate.")
+            print("[Warning] Entity has no top_left_coordinate. Cannot move an mover without a top_left_coordinate.")
             return False
         if not isinstance(entity, HorizontalMover):
             print(f"[Warning] Entity {entity.id} is not a horizontal mover. Cannot move.")
             return False
 
-        print(f"Debug: Moving entity {entity.id}")
+        print(f"Debug: Moving mover {entity.id}")
         print(f"Debug: From top_left_coordinate: row={entity.top_left_coordinate.row}, column={entity.top_left_coordinate.column}")
         print(f"Debug: To top_left_coordinate: row={destination_coordinate.row}, column={destination_coordinate.column}")
 

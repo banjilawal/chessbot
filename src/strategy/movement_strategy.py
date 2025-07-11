@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Optional
 
-from common.direction import Direction
+
 from model.grid_coordinate import GridCoordinate
-from model.grid_entity import GridEntity
+from model.grid_entity import Mover
 
 if TYPE_CHECKING:
     from model.board import Board
@@ -11,5 +11,5 @@ if TYPE_CHECKING:
 
 class MovementStrategy(ABC):
     @abstractmethod
-    def move(self, mover: GridEntity, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+    def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
         pass
