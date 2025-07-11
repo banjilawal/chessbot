@@ -158,11 +158,18 @@ class Visualizer:
         current_row = (mouse_position[1] - self.border_px - self.drag_offset_y) // self.cell_px
         current_coordinate = GridCoordinate(row=current_row, column=current_column)
 
+        self.dragging: bool = False
+        self.drag_offset_x: int = 0
+        self.drag_offset_y: int = 0
+        self.dragged_entity: Optional['GridEntity'] = None
+        self.original_position: Optional[GridCoordinate] = None
 
-    def move_handler(self, entity: GridEntity) -> bool:
+    def move_handler(self, entity: GridEntity, destination_coordinate) -> bool:
         if entity is None:
             print("[Warning] Entity cannot be None. Cannot move null entity.")
             return False
+        if destination_coordinate is None:
+            print("[Warning] Destination coordinate cannot be None. Cannot move entity without a destination coordinate.")
 
         if self.board is None:
             print("[Warning] Board cannot be None. Cannot move on a nonexistent board.")
@@ -178,8 +185,7 @@ class Visualizer:
             return False
 
         horizontal_mover = cast('HorizontalMover', entity)
-        horizontal_mover.move()
-        return False
+        return horizontal_mover.move(horizontal_mover, self.board, destination_coordinate)
 
 
     def update_display(self):
