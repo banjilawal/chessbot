@@ -11,6 +11,46 @@ if TYPE_CHECKING:
     from model.board import Board
 
 @dataclass
+class VisualizerColor:
+    BLACK = (0, 0, 0)
+    WHITE = (255, 255, 255)
+    RED = (255, 0, 0)
+    CREAM = (255, 253, 208)
+    KHAKI = (240, 230, 140)
+    LIGHT_GRAY = (211, 211, 211)
+    DARK_GRAY = (169, 169, 169)
+    SALMON = (250, 128, 114)
+    BLUE = (0, 0, 255)
+    BLUE_GRAY = (102, 153, 204)
+    PINK = (255, 192, 203)
+    GINGER = (176, 101, 0)
+    CERULEAN = (0, 123, 167)
+    OLIVE = (128, 128, 0)
+    LIGHT_SAND = (245, 222, 179)
+    SAND = (194, 178, 128)
+
+@dataclass(frozen=True)
+class DragState:
+    entity: Optional[GridEntity]
+    original_coord: Optional[GridCoordinate]
+    current_coord: Optional[GridCoordinate]
+    offset_x: int = 0
+    offset_y: int = 0
+
+    def with_updated_position(self, new_coordinate: GridCoordinate) -> 'DragState':
+        return DragState(
+            entity=self.entity,
+            original_coord=self.original_coord,
+            current_coord=new_coordinate,
+            offset_x=self.offset_x,
+            offset_y=self.offset_y
+        )
+
+
+
+
+
+@dataclass
 class Visualizer:
 
     BLACK = (0, 0, 0)
@@ -37,7 +77,9 @@ class Visualizer:
     screen_width: int = 800
     screen_height: int = 800
 
-    dragging: bool = False
+    dragging: DragState = field(default_factory=lambda: DragState(entity=None, original_coord=None, offset_x=0, offset_y=0))
+
+    is_dragging: bool = False
     drag_offset_x: int = 0
     drag_offset_y: int = 0
     dragged_entity: Optional['GridEntity'] = None
@@ -87,7 +129,7 @@ class Visualizer:
             print("[Warning] Entity has no coordinate. Cannot draw an entity without a coordinate to the screen.")
             return
 
-        print(f"Drawing entity {entity.id} at coordinate {entity.coordinate}")
+        # print(f"Drawing entity {entity.id} at coordinate {entity.coordinate}")
 
         # Calculate position and dimensions
         rect = pygame.Rect(
@@ -124,17 +166,24 @@ class Visualizer:
                 self.start_dragging(entity, event.pos)
 
     def handle_mouse_motion(self, event: pygame.event.Event):
-        if self.dragging:
+        if self.is_dragging:
             self.update_drag(event.pos)
 
     def handle_mouse_up(self, event: pygame.event.Event):
-        if event.button == 1 and self.dragging:  # Left mouse button
+        if event.button == 1 and self.is_dragging:  # Left mouse button
             self.end_dragging(event.pos)
 
     def start_dragging(self, entity: GridEntity, mouse_position: tuple):
-        self.dragging = True
+        self.is_dragging = True
         self.dragged_entity = entity
         self.original_position = entity.coordinate
+
+        self.dragging = DragState(
+            entity=entity,
+            original_coord=entity.coordinate,  # Store the original coordinate
+            offset_x=mouse_position[0] - (entity.coordinate.column * self.cell_px + self.border_px),
+            offset_y=mouse_position[1] - (entity.coordinate.row * self.cell_px + self.border_px)
+        )
 
         entity_screen_x = entity.coordinate.column * self.cell_px + self.border_px
         entity_screen_y = entity.coordinate.row * self.cell_px + self.border_px
@@ -144,7 +193,7 @@ class Visualizer:
             f"Starting dragging entity {entity.id} at {entity.coordinate} with offset ({self.drag_offset_x}, {self.drag_offset_y})")
 
     def update_drag(self, mouse_position: tuple):
-        if not self.dragging or not self.dragged_entity:
+        if not self.is_dragging or not self.dragged_entity:
             return
 
         # Update the visual position of the entity during drag
@@ -155,20 +204,20 @@ class Visualizer:
         self.dragged_entity.coordinate = GridCoordinate(row=current_row, column=current_column)
 
     def end_dragging(self, mouse_position: tuple):
-        if not self.dragging or not self.dragged_entity:
+        if not self.is_dragging or not self.dragged_entity:
             return
 
-        current_column = (mouse_position[0] - self.border_px - self.drag_offset_x) // self.cell_px
-        current_row = (mouse_position[1] - self.border_px - self.drag_offset_y) // self.cell_px
-        destination_coordinate = GridCoordinate(row=current_row, column=current_column)
+        current_column = (mouse_position[0] - self.border_px) // self.cell_px
+        current_row = (mouse_position[1] - self.border_px) // self.cell_px
+        destination_coordinate = GridCoordinate(row=self.dragging.original_coord.row, column=current_column)
 
         # Try to move the entity
         if not self.move_handler(self.dragged_entity, destination_coordinate):
             # If move fails, return to original position
             self.dragged_entity.coordinate = self.original_position
 
-        # Reset dragging state
-        self.dragging = False
+        # Reset is_dragging state
+        self.is_dragging = False
         self.drag_offset_x = 0
         self.drag_offset_y = 0
         self.dragged_entity = None
@@ -197,6 +246,7 @@ class Visualizer:
 
         # Remove the first horizontal_mover argument as it's redundant
         return entity.move(self.board, destination_coordinate)
+
     def move_handler(self, entity: GridEntity, destination_coordinate) -> bool:
         if entity is None:
             print("[Warning] Entity cannot be None. Cannot move null entity.")
@@ -217,9 +267,15 @@ class Visualizer:
             print(f"[Warning] Entity {entity.id} is not a horizontal mover. Cannot move.")
             return False
 
-        horizontal_mover = cast(HorizontalMover, entity)
-        return horizontal_mover.move(self.board, destination_coordinate)
+        print(f"Debug: Moving entity {entity.id}")
+        print(f"Debug: From coordinate: row={entity.coordinate.row}, column={entity.coordinate.column}")
+        print(f"Debug: To coordinate: row={destination_coordinate.row}, column={destination_coordinate.column}")
 
+        horizontal_mover = cast(HorizontalMover, entity)
+        move_result = horizontal_mover.move(self.board, destination_coordinate)
+        if not move_result:
+            print(f"[Warning] Move failed - Movement might be restricted to top row only")
+        return move_result
 
     def update_display(self):
         self.draw_grid()
