@@ -147,24 +147,18 @@ class GameDisplay:
 
     def end_drag(self, mover_id: int) -> PlacementStatus:
         if not self.is_dragging or mover_id not in self.active_drags:
-            return PlacementStatus.FAILURE
-        drag_state = self.active_drags[mover_id].pop(mover_id)
+            return PlacementStatus.RELEASED
 
-        current_column = (mouse_position[0] - self.border_px) // self.cell_px
-        current_row = (mouse_position[1] - self.border_px) // self.cell_px
-        destination_coordinate = GridCoordinate(row=self.dragging.original_coordinate.row, column=current_column)
+        drag_state = self.active_drags.pop(mover_id)
+        if drag_state.current_coordinate == drag_state.original_coordinate:
+            return PlacementStatus.RELEASED
 
-        # Try to move the mover
-        if not self.move_handler(self.dragged_entity, destination_coordinate):
-            # If move fails, return to original position
-            self.dragged_entity.top_left_coordinate = self.original_position
-
-        # Reset is_dragging state
-        self.is_dragging = False
-        self.drag_offset_x = 0
-        self.drag_offset_y = 0
-        self.dragged_entity = None
-        self.original_position = None
+        moved_entity = self.board.move_entity(drag_state.mover, drag_state.current_coordinate)
+        if moved_entity is not None:
+            return PlacementStatus.PLACED
+        else:
+            drag_state.mover.coordinate = drag_state.original_coordinate
+            return PlacementStatus.BLOCK
 
     def move_handler(self, entity: GridEntity, destination_coordinate: GridCoordinate) -> bool:
         if entity is None:

@@ -97,10 +97,10 @@ class Board:
         )
         object.__setattr__(self, 'cells', cells)
 
-    def get_entity_by_id(self, id: int) -> Optional[GridEntity]:
+    def get_mover_by_id(self, mover_id: int) -> Optional[GridEntity]:
         for entity in self.entities:
             print(entity)
-            if entity.id == id:
+            if entity.id == mover_id:
                 return entity
         return None
 
