@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pygame
 
-from geometry import Dimension
+from geometry import Dimension, GridCoordinate
 from board import Board
 
 from grid_entity import HorizontalMover

@@ -48,7 +48,7 @@ class GameDisplay:
         self.font = pygame.font.SysFont("monospace", 30)
 
     def draw_grid(self):
-        screen_color = GameColor.DARK_GRAY
+        screen_color = GameColor.DARK_GRAY_2
         self.screen.fill(screen_color)
         for row in range(self.board.dimension.height):
             for col in range(self.board.dimension.length):

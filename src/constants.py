@@ -126,8 +126,9 @@ class GameColor(Enum):
 
     # Greyscale (Darkest to Lightest)
     BLACK = (0, 0, 0)
-    DARK_GRAY_1 = (28, 28, 28)
-    DARK_GRAY_2 = (56, 56, 56)
+    DARK_GRAK_1 = (64, 64, 64)
+    DARK_GRAY_2 = (28, 28, 28)
+    DARK_GRAY_3 = (56, 56, 56)
     GRAY_1 = (85, 85, 85)
     GRAY_2 = (119, 119, 119)
     GRAY_3 = (153, 153, 153)
