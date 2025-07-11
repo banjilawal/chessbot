@@ -37,23 +37,6 @@ class HorizontalMoveStrategy(MoveStrategy):
 
         destination_column = mover.top_left_coordinate.column
         print("strategy calculated destination column:", destination_column)
-        #
-        # match destination_coordinate:
-        #     case Direction.LEFT:
-        #         destination_column = mover.top_left_coordinate.column - distance
-        #     case Direction.RIGHT:
-        #         destination_column = mover.top_left_coordinate.column + distance
-        #     case Direction.UP | Direction.DOWN:
-        #         print(f"[Warning] Invalid direction for horizontal mover: {destination_coordinate}")
-        #         return False
-        #     case _:
-        #         print(f"[Warning] Invalid direction for horizontal mover: {destination_coordinate}")
-        #         return False
-        #
-        #
-        #
-        # upper_left_destination = GridCoordinate(row=mover.top_left_coordinate.row, column=destination_column)
-
         return board.move_entity(destination_coordinate, mover) is not None
 
 
