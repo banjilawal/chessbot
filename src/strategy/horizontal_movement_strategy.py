@@ -2,13 +2,13 @@ from typing import TYPE_CHECKING, Optional
 
 from model.grid_coordinate import GridCoordinate
 from model.grid_entity import HorizontalMover
-from strategy.movement_strategy import MovementStrategy
+from strategy.move_strategy import MoveStrategy
 
 
 if TYPE_CHECKING:
     from model.board import Board
 
-class HorizontalMovementStrategy(MovementStrategy):
+class HorizontalMoveStrategy(MoveStrategy):
     def move(self, mover: HorizontalMover, board: 'Board', destination_coordinate: GridCoordinate) -> bool :
 
         if mover is None:

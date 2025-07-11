@@ -5,7 +5,7 @@ from typing import Optional, List, TYPE_CHECKING
 from model.cell import Cell
 from src.common.dimension import Dimension
 from model.grid_coordinate import GridCoordinate
-from strategy.horizontal_movement_strategy import HorizontalMovementStrategy
+from strategy.horizontal_movement_strategy import HorizontalMoveStrategy
 
 if TYPE_CHECKING:
     from model.cell import Cell
@@ -43,7 +43,7 @@ class VerticalMover(Mover):
 
 @dataclass
 class HorizontalMover(Mover):
-    movement_strategy: HorizontalMovementStrategy = field(default_factory=HorizontalMovementStrategy)
+    movement_strategy: HorizontalMoveStrategy = field(default_factory=HorizontalMoveStrategy)
 
     def __init__(self, mover_id: int, height: int, top_left_coordinate: Optional[GridCoordinate] = None):
         super().__init__(
@@ -51,7 +51,7 @@ class HorizontalMover(Mover):
             dimension=Dimension(length=1, height=height),
             top_left_coordinate=top_left_coordinate
          )
-        self.movement_strategy = HorizontalMovementStrategy()
+        self.movement_strategy = HorizontalMoveStrategy()
 
     def move(self, board: 'Board', destination_coordinate: GridCoordinate):
         if not self.movement_strategy.move(self, board, destination_coordinate):

@@ -8,8 +8,11 @@ from model.grid_entity import Mover
 if TYPE_CHECKING:
     from model.board import Board
 
-
-class MovementStrategy(ABC):
+class MoveStrategy(ABC):
     @abstractmethod
+    def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        pass
+
+class DragStrategy(ABC):
     def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
         pass
