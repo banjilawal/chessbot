@@ -111,7 +111,7 @@ class GameDisplay:
         if event.button == 1:  # Left mouse button
             entity = self.get_entity_at_mouse_position(event.pos)
             if entity is not None:
-                self.start_dragging(entity, event.pos)
+                self.start_drag(entity, event.pos)
 
     def handle_mouse_motion(self, event: pygame.event.Event):
         if self.is_dragging:
@@ -119,39 +119,33 @@ class GameDisplay:
 
     def handle_mouse_up(self, event: pygame.event.Event):
         if event.button == 1 and self.is_dragging:  # Left mouse button
-            self.end_dragging(event.pos)
+            self.end_drag(event.pos)
 
-    def start_dragging(self, entity: GridEntity, mouse_position: tuple):
-        self.is_dragging = True
-        self.dragged_entity = entity
-        self.original_position = entity.top_left_coordinate
-        self.dragging = DragState(
-            mover=entity,
-            original_coordinate=entity.top_left_coordinate,  # Store the original top_left_coordinate
-            offset_x=mouse_position[0] - (entity.top_left_coordinate.column * self.cell_px + self.border_px),
-            offset_y=mouse_position[1] - (entity.top_left_coordinate.row * self.cell_px + self.border_px)
+    def start_drag(self, mover: Mover, mouse_position: tuple[int, int]) -> None:
+        self.active_drags[mover.id] = DragState(
+            mover=mover,
+            original_coordinate=mover.top_left_coordinate,
+            current_coordinate=mover.top_left_coordinate,
+            offset_x=mouse_position[0] - (mover.top_left_coordinate.column * self.cell_px),
+            offset_y=mouse_position[1] - (mover.top_left_coordinate.row * self.cell_px)
         )
+        self.is_dragging = True
+        print("mover", mover.id, "dragging started at", self.active_drags[mover.id].original_coordinate)
 
-        entity_screen_x = entity.top_left_coordinate.column * self.cell_px + self.border_px
-        entity_screen_y = entity.top_left_coordinate.row * self.cell_px + self.border_px
-        self.drag_offset_x = mouse_position[0] - entity_screen_x
-        self.drag_offset_y = mouse_position[1] - entity_screen_y
-        print(
-            f"Starting dragging mover {entity.id} at {entity.top_left_coordinate} with offset ({self.drag_offset_x}, {self.drag_offset_y})")
-
-    def update_drag(self, mouse_position: tuple):
-        if not self.is_dragging or not self.dragging:
+    def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
+        if not self.is_dragging or mover_id not in
             return
-        new_oord
+        new_column = (mouse_position[0] - self.active_drags[mover_id].offset_x) // self.cell_px
+        new_row = (mouse_position[1] - self.active_drags[mover_id].offset_y) // self.cell_px
 
-        # Update the visual position of the mover during drag
-        current_column = (mouse_position[0] - self.border_px - self.drag_offset_x) // self.cell_px
-        current_row = (mouse_position[1] - self.border_px - self.drag_offset_y) // self.cell_px
+        if isinstance(self.active_drags[mover_id].mover, HorizontalMover):
+            new_row = self.active_drags[mover_id].original_coordinate.row
 
-        # Temporarily update the top_left_coordinate for visual feedback
-        self.dragged_entity.top_left_coordinate = GridCoordinate(row=current_row, column=current_column)
+        new_coordinate = GridCoordinate(row=new_row, column=new_column)
+        self.active_drags[mover_id] = self.active_drags[mover_id].with_updated_position(new_coordinate)
+        print("mover", mover_id, "dragging updated to", self.active_drags[mover_id].current_coordinate)
 
-    def end_dragging(self, mouse_position: tuple):
+    def end_drag(self, mouse_position: tuple):
         if not self.is_dragging or not self.dragged_entity:
             return
 
@@ -245,5 +239,16 @@ class GameDisplay:
     def close(self):
         pygame.quit()
 
+Abstract Mover etity chas three subclases; HorizontalMover, VeritcalMover and  UniversalMover. For moving in the grid they
+either use HorizontalMovementStrategy, VerticalMovementStrategy, or UniversalMovementStrategy. The models and strategies
+work on the correctly in Board. I am using pygame to create the GameDisplay. I found out the easiet way for the display
+to implement the business rules is with MouseDrag events. With my current handlers I can drag items around. There are
+two problems. 1) The most important problem is I want a HorizontalMover instance mosue drag to either restrict movement to
+the row. What is probably easier is no matter how they move the mouse a HOrizontalMover('s final position is going to be '
+'on the same row but a different column, IN other words if intial_coord(x0, y0) then final_coord(xf, y0). 2) The second
+problem is no matter where I drag the entity it ends up back in its original position. I suspec the second problem will
+be fixed once I use DragState in the mouseHandlers. Problem 1 is more important. Problem 2 might b easier to solve. Which
+should I start with.
 
-
+The HorizontalMover ais already restricted to movingon the same y-coord through HorizontalMovementStrategy.
+The problem is that if the cell contains a HorizontalMover I want to restrict mouse movement to the y-coord

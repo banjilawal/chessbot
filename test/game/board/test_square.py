@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from cell import Cell
+from board import Cell
 from constants import Config
 from exception import InvalidIdError, NegativeRowError, NegativeColumnError
 from grid_entity import GridEntity
