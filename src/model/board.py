@@ -127,7 +127,7 @@ class Board:
 
     def remove_entity_from_cells(self, entity: GridEntity) -> None:
         if entity is None:
-            raise ValueError("Entity not found on the grid. cannot remove a non-existent entity.")
+            raise ValueError("Entity not found on the board. cannot remove a non-existent entity.")
 
         target_cells = self.get_cells_occupied_by_entity(entity)
         for cell in target_cells:
@@ -140,7 +140,7 @@ class Board:
             raise ValueError("Cannot add entity to an area without a top-left coordinate.")
 
         if entity is None:
-            raise ValueError("Entity not found on the grid. cannot add a non-existent entity.")
+            raise ValueError("Entity not found on the board. cannot add a non-existent entity.")
 
         if entity is None or top_left_coordinate is None:
             raise ValueError("Entity and coordinate must not be None.")
@@ -157,10 +157,10 @@ class Board:
 
         # Bounds check
         if top_left_coordinate.row + entity.dimension.height > self.dimension.height:
-            raise Exception("Entity does not fit within grid bounds at the specified coordinate.")
+            raise Exception("Entity does not fit within board bounds at the specified coordinate.")
 
         if top_left_coordinate.column + entity.dimension.length > self.dimension.length:
-            raise Exception("Entity does not fit within grid bounds at the specified coordinate.")
+            raise Exception("Entity does not fit within board bounds at the specified coordinate.")
 
         if not self.can_entity_move_to_cells(entity, top_left_coordinate):
             raise Exception("Entity cannot move to the specified coordinate.")
@@ -176,7 +176,7 @@ class Board:
             raise ValueError("Destination coordinate must not be None.")
 
         if entity is None:
-            raise ValueError("Entity does not exist. in the grid. cannot move a non-existent entity.")
+            raise ValueError("Entity does not exist. in the board. cannot move a non-existent entity.")
 
         if not self.can_entity_move_to_cells(entity, upper_left_destination):
             print("Entity", entity.id,  "cannot move to", upper_left_destination)
@@ -188,7 +188,7 @@ class Board:
 
     def remove_entity(self, entity: GridEntity) -> None:
         if entity is None:
-            raise ValueError("Entity does not exist. in the grid. cannot remove a non-existent entity.")
+            raise ValueError("Entity does not exist. in the board. cannot remove a non-existent entity.")
         self.remove_entity_from_cells(entity)
         self.entities.remove(entity)
 
@@ -366,10 +366,10 @@ class Board:
     #
     #     cells = []
     #     if upper_left_coordinate.column + entity.dimension.length > self.dimension.length:
-    #         print("Cannot traverse left beyond the grid")
+    #         print("Cannot traverse left beyond the board")
     #         return cells
     #     if upper_left_coordinate.row + entity.dimension.height > self.dimension.height:
-    #         print("Cannot traverse up beyond the grid")
+    #         print("Cannot traverse up beyond the board")
     #         return cells
     #
     #     for row in range(upper_left_coordinate.row, upper_left_coordinate.row + entity.dimension.height):

@@ -92,7 +92,7 @@ if __name__ == "__main__":
 #
 #         ladder_line_width = 2
 #
-#         # 1. Draw base grid
+#         # 1. Draw base board
 #         for row_idx, row in enumerate(board.cells):
 #             for col_idx, cell in enumerate(row):
 #                 x = col_idx * cell_px

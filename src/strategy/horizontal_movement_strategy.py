@@ -10,12 +10,12 @@ if TYPE_CHECKING:
     from model.vault import HorizontalMover
 
 class HorizontalMovementStrategy(MovementStrategy):
-    def move(self, mover: 'HorizontalMover', grid: 'Board', destination_coordinate: GridCoordinate) -> bool :
+    def move(self, mover: 'HorizontalMover', board: 'Board', destination_coordinate: GridCoordinate) -> bool :
 
         if mover is None:
             ("[Warning] Mover cannot be None. It cannot move.")
             return False
-        if grid is None:
+        if board is None:
             print("[Warning] Board cannot be None. Cannot move.")
             return False
         if mover.coordinate is None:
@@ -24,7 +24,7 @@ class HorizontalMovementStrategy(MovementStrategy):
         if destination_coordinate is None:
             print("[Warning] Destination coordinate cannot be None. Cannot move.")
 
-        if destination_coordinate.column < 0 or destination_coordinate.column >= grid.dimension.length:
+        if destination_coordinate.column < 0 or destination_coordinate.column >= board.dimension.length:
             print(f"[Warning] Horizontal move out of bounds: {destination_coordinate.column}")
             return False
 
@@ -55,7 +55,7 @@ class HorizontalMovementStrategy(MovementStrategy):
         #
         # upper_left_destination = GridCoordinate(row=mover.coordinate.row, column=destination_column)
 
-        return grid.move_entity(destination_coordinate, mover) is not None
+        return board.move_entity(destination_coordinate, mover) is not None
 
 
 

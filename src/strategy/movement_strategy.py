@@ -11,5 +11,5 @@ if TYPE_CHECKING:
 
 class MovementStrategy(ABC):
     @abstractmethod
-    def move(self, mover: GridEntity, grid: 'Board', direction: Direction, distance: int = 1) -> Optional[GridCoordinate]:
+    def move(self, mover: GridEntity, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
         pass

@@ -112,7 +112,7 @@ class Visualizer:
 
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the game grid. Cannot get an entity at a position outside the grid.")
+            print("Mouse is outside the game board. Cannot get an entity at a position outside the board.")
             return None
 
         return self.board.cells[coordinate.row][coordinate.column].occupant
@@ -192,10 +192,10 @@ class Visualizer:
         row = mouse_position[1] // self.cell_px
 
         if column < 0 or column >= self.board.dimension.length:
-            print(f"[Warning] Mouse id outside the game grid at: {column}")
+            print(f"[Warning] Mouse id outside the game board at: {column}")
             return None
         if row < 0 or row >= self.board.dimension.height:
-            print(f"[Warning] Mouse id outside the game grid at: {row}")
+            print(f"[Warning] Mouse id outside the game board at: {row}")
             return None
         return GridCoordinate(row=row, column=column)
 
