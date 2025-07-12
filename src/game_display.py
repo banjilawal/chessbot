@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
 import pygame
-from typing import TYPE_CHECKING, Optional, cast
+from typing import TYPE_CHECKING, Optional, cast, OrderedDict
 
 from constants import GameColor, PlacementStatus
 from geometry import GridCoordinate
@@ -35,7 +35,7 @@ class GameDisplay:
     screen_width: int = 800
     screen_height: int = 800
 
-    active_drags: dict[int, DragState] = field(default_factory=dict)
+    active_drags: OrderedDict[int, DragState] = field(default_factory=OrderedDict)
     is_dragging: bool = False
 
     def __post_init__(self):
@@ -48,7 +48,7 @@ class GameDisplay:
         self.font = pygame.font.SysFont("monospace", 30)
 
     def draw_grid(self):
-        screen_color = GameColor.DARK_GRAY_2
+        screen_color = GameColor.DARK_GRAY_1.value
         self.screen.fill(screen_color)
         for row in range(self.board.dimension.height):
             for col in range(self.board.dimension.length):
@@ -62,11 +62,11 @@ class GameDisplay:
                 cell = self.board.cells[row][col]
                 cell_color = screen_color
                 if cell.id % 2 == 0:
-                    cell_color = GameColor.LIGHT_SAND
+                    cell_color = GameColor.LIGHT_SAND.value
                 # Draw filled rectangle
                 pygame.draw.rect(self.screen, cell_color, cell_rect)
                 # Draw an outlined rectangle
-                pygame.draw.rect(self.screen, GameColor.BLACK, cell_rect, 1)
+                pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
 
     def draw_entities(self):
         for entity in self.board.entities:
@@ -90,10 +90,10 @@ class GameDisplay:
             entity.dimension.height * self.cell_px - self.border_px
         )
         # Draw the mover (fixed the width parameter)
-        pygame.draw.rect(self.screen, self.OLIVE, rect)
+        pygame.draw.rect(self.screen, GameColor.OLIVE.value, rect)
 
         # Draw mover ID
-        text_surface = self.font.render(str(entity.id), True, self.BLACK)
+        text_surface = self.font.render(str(entity.id), True, GameColor.BLACK.value)
         text_rect = text_surface.get_rect(center=rect.center)
         self.screen.blit(text_surface, text_rect)
 
@@ -114,8 +114,9 @@ class GameDisplay:
                 self.start_drag(entity, event.pos)
 
     def handle_mouse_motion(self, event: pygame.event.Event):
-        if self.is_dragging:
-            self.update_drag(event.pos)
+        if self.is_dragging and self.active_drags:
+            mover_id = list(self.active_drags.keys())[0]
+            self.update_drag(mover_id, event.pos)
 
     def handle_mouse_up(self, event: pygame.event.Event):
         if event.button == 1 and self.is_dragging:  # Left mouse button
