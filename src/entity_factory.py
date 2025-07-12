@@ -4,7 +4,7 @@ from typing import List
 from board import Board
 from grid_entity import HorizontalMover
 from geometry import Dimension
-from id_factory import global_id_generator
+from id_factory import id_factory
 
 
 class EntityFactory:
@@ -19,7 +19,7 @@ class EntityFactory:
     @staticmethod
     def build_horizontal_mover(max_height: int) -> HorizontalMover:
         mover = HorizontalMover(
-            mover_id=global_id_generator.next_vault_id(),
+            mover_id=id_factory.next_vault_id(),
             height=random.randint(2, max_height),
             coordinate=None
         )

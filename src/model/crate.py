@@ -21,8 +21,8 @@ class Crate(Bin):
 
 
 
-    # def mover_id(self) -> int:
-    #     return super().mover_id
+    # def mover_id_counter(self) -> int:
+    #     return super().mover_id_counter
     #
     # def send_travel_request(self, bearing: Bearing) -> TravelRequest:
     #     pass

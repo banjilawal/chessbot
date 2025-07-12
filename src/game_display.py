@@ -88,7 +88,7 @@ class GameDisplay:
                 drag_state.mover.dimension.height * self.cell_px - self.border_px
             )
             pygame.draw.rect(self.screen, GameColor.OLIVE.value, rect)
-            text_surface = self.font.render(str(drag_state.mover.id), True, GameColor.BLACK.value)
+            text_surface = self.font.render(str(drag_state.mover.mover_id), True, GameColor.BLACK.value)
             text_rect = text_surface.get_rect(center=rect.center)
             self.screen.blit(text_surface, text_rect)
 
@@ -101,7 +101,7 @@ class GameDisplay:
             print("[Warning] Entity has no top_left_coordinate. Cannot draw an mover without a top_left_coordinate to the screen.")
             return
 
-        # print(f"Drawing mover {mover.mover_id} at top_left_coordinate {mover.top_left_coordinate}")
+        # print(f"Drawing mover {mover.mover_id_counter} at top_left_coordinate {mover.top_left_coordinate}")
         # Calculate position and dimensions
         rect = pygame.Rect(
             entity.top_left_coordinate.column * self.cell_px + self.border_px,
@@ -113,7 +113,7 @@ class GameDisplay:
         pygame.draw.rect(self.screen, GameColor.OLIVE.value, rect)
 
         # Draw mover ID
-        text_surface = self.font.render(str(entity.id), True, GameColor.BLACK.value)
+        text_surface = self.font.render(str(entity.mover_id), True, GameColor.BLACK.value)
         text_rect = text_surface.get_rect(center=rect.center)
         self.screen.blit(text_surface, text_rect)
 
@@ -147,7 +147,7 @@ class GameDisplay:
         return PlacementStatus.RELEASED
 
     def start_drag(self, mover: Mover, mouse_position: tuple[int, int]) -> None:
-        self.active_drags[mover.id] = DragState(
+        self.active_drags[mover.mover_id] = DragState(
             mover=mover,
             original_coordinate=mover.top_left_coordinate,
             current_coordinate=mover.top_left_coordinate,
@@ -155,7 +155,7 @@ class GameDisplay:
             offset_y=mouse_position[1] - (mover.top_left_coordinate.row * self.cell_px)
         )
         self.is_dragging = True
-        print("mover", mover.id, "dragging started at", self.active_drags[mover.id].original_coordinate)
+        print("mover", mover.mover_id, "dragging started at", self.active_drags[mover.mover_id].original_coordinate)
 
     def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
         if not self.is_dragging or mover_id not in self.active_drags:
@@ -194,7 +194,7 @@ class GameDisplay:
 
         # 2. Check against other dragged entities
         for other_id, other_state in self.active_drags.items():
-            if other_id == mover.id:
+            if other_id == mover.mover_id:
                 continue
             other_cells = self.get_occupied_cells(
                 other_state.current_coordinate.row,
@@ -206,11 +206,11 @@ class GameDisplay:
                 return False
         return True
 
-    # def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
-    #     if not self.is_dragging or mover_id not in self.active_drags:
+    # def update_drag(self, mover_id_counter: int, mouse_position: tuple[int, int]) -> None:
+    #     if not self.is_dragging or mover_id_counter not in self.active_drags:
     #         return
     #
-    #     drag_state = self.active_drags[mover_id]
+    #     drag_state = self.active_drags[mover_id_counter]
     #
     #     # Calculate proposed grid position (single division)
     #     new_col = max(0, (mouse_position[0] - drag_state.offset_x) // self.cell_px)
@@ -238,13 +238,13 @@ class GameDisplay:
     #     # Only update if position changed and is valid
     #     if (new_coord != drag_state.current_coordinate and
     #             self.board.can_entity_move_to_cells(drag_state.mover, new_coord)):
-    #         self.active_drags[mover_id] = drag_state.with_updated_position(new_coord)
+    #         self.active_drags[mover_id_counter] = drag_state.with_updated_position(new_coord)
 
-    # def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
-    #     if not self.is_dragging or mover_id not in self.active_drags:
+    # def update_drag(self, mover_id_counter: int, mouse_position: tuple[int, int]) -> None:
+    #     if not self.is_dragging or mover_id_counter not in self.active_drags:
     #         return
     #
-    #     drag_state = self.active_drags[mover_id]
+    #     drag_state = self.active_drags[mover_id_counter]
     #
     #     # Using floating point.  Need higher precision for collision detection.
     #     proposed_column = (mouse_position[0] - drag_state.offset_x) // self.cell_px
@@ -253,16 +253,16 @@ class GameDisplay:
     #     new_column = int(proposed_column // self.cell_px)
     #     new_row = int(proposed_row // self.cell_px)
     #
-    #     if isinstance(self.active_drags[mover_id].mover, HorizontalMover):
-    #         new_row = self.active_drags[mover_id].original_coordinate.row
+    #     if isinstance(self.active_drags[mover_id_counter].mover, HorizontalMover):
+    #         new_row = self.active_drags[mover_id_counter].original_coordinate.row
     #
     #     new_coordinate = GridCoordinate(row=new_row, column=new_column)
     #     if new_coordinate == drag_state.current_coordinate:
     #         return
     #
     #     if self.board.can_entity_move_to_cells(drag_state.mover, new_coordinate):
-    #         self.active_drags[mover_id] = self.active_drags[mover_id].with_updated_position(new_coordinate)
-    #         print("mover", mover_id, "dragging updated to", self.active_drags[mover_id].current_coordinate)
+    #         self.active_drags[mover_id_counter] = self.active_drags[mover_id_counter].with_updated_position(new_coordinate)
+    #         print("mover", mover_id_counter, "dragging updated to", self.active_drags[mover_id_counter].current_coordinate)
     #     else:
     #         self.show_invalid_position_feedback(new_coordinate)
 

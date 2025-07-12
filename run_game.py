@@ -9,17 +9,18 @@ from board import Board
 from grid_entity import HorizontalMover
 
 from game_display import GameDisplay
+from id_factory import id_factory
 
 sys.path.append(str(Path(__file__).parent.absolute()))
 
 def main():
     board = Board(dimension=Dimension(length=12, height=12))
-    board.add_new_entity(GridCoordinate(1,1), HorizontalMover(1, 1))
-    board.add_new_entity(GridCoordinate(1,2), HorizontalMover(2, 3))
-    board.add_new_entity(GridCoordinate(8,8), HorizontalMover(3, 2))
+    board.add_new_entity(GridCoordinate(1,1), HorizontalMover(mover_id=id_factory.mover_id(), height=1))
+    board.add_new_entity(GridCoordinate(1,2), HorizontalMover(mover_id=id_factory.mover_id(), height=3))
+    board.add_new_entity(GridCoordinate(8,8), HorizontalMover(mover_id=id_factory.mover_id(), height=4))
     visualizer = GameDisplay(board)
 
-    visualizer.board.add_new_entity(GridCoordinate(5,0), HorizontalMover(6, 4))
+    visualizer.board.add_new_entity(GridCoordinate(5,0), HorizontalMover(mover_id=id_factory.mover_id(), height=4))
 
     clock = pygame.time.Clock()
     frame_count = 0

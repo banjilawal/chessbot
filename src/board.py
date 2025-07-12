@@ -7,7 +7,7 @@ from geometry import Dimension, GridCoordinate
 from grid_entity import GridEntity, Mover
 
 from constants import Config
-from id_factory import global_id_generator
+from id_factory import id_factory
 
 @dataclass
 class Cell:
@@ -16,7 +16,7 @@ class Cell:
     occupant: Optional['GridEntity'] = field(default=None)
 
     def __post_init__(self):
-        object.__setattr__(self, 'mover_id', self.id)
+        object.__setattr__(self, 'mover_id_counter', self.id)
         object.__setattr__(self, 'top_left_coordinate', self.coordinate)
         object.__setattr__(self, 'occupant', self.occupant)
 
@@ -87,7 +87,7 @@ class Board:
         cells = tuple(
             tuple(
                 Cell(
-                    id=global_id_generator.next_cell_id(),
+                    id=id_factory.cell_id(),
                     coordinate=GridCoordinate(row=row, column=col)
                 )
                 for col in range(self.dimension.length)
@@ -260,7 +260,7 @@ class Board:
 #         cells = tuple(
 #             tuple(
 #                 Cell(
-#                     mover_id=row * self.dimension.length + col + 1,
+#                     mover_id_counter=row * self.dimension.length + col + 1,
 #                     top_left_coordinate=GridCoordinate(row=row, column=col)
 #                 )
 #                 for col in range(self.dimension.length)
@@ -293,10 +293,10 @@ class Board:
     #         return None
     #     return self.cells[top_left_coordinate.row][top_left_coordinate.column]
     #
-    # def find_cell_by_id(self, mover_id: int) -> Optional[Cell]:
+    # def find_cell_by_id(self, mover_id_counter: int) -> Optional[Cell]:
     #     for row in self.cells:
     #         for cell in row:
-    #             if cell.mover_id == mover_id:
+    #             if cell.mover_id_counter == mover_id_counter:
     #                 return cell
     #     return None
     #
@@ -345,18 +345,18 @@ class Board:
     #             print(cell.occupant, "is leaving", cell.top_left_coordinate)
     #             cell.leave_cell()
     #             if cell.occupant is None:
-    #                 print("cell", cell.mover_id, "cell has no occupant")
+    #                 print("cell", cell.mover_id_counter, "cell has no occupant")
     #             else :
-    #                 print("cell", cell.mover_id, "cell still has occupant is", cell.occupant)
+    #                 print("cell", cell.mover_id_counter, "cell still has occupant is", cell.occupant)
     #                 return None
     #
     #         print("moving", mover, "to", destination_coordinate)
     #         for cell in destination_cells:
     #             if cell.occupant is None:
     #                 cell.enter_cell(mover)
-    #                 print("cell", cell.mover_id, "has occupant", mover)
+    #                 print("cell", cell.mover_id_counter, "has occupant", mover)
     #             if (cell.occupant is not None) and (cell.occupant != mover):
-    #                 print("cell", cell.mover_id, "already occupied by", cell.occupant)
+    #                 print("cell", cell.mover_id_counter, "already occupied by", cell.occupant)
     #                 return None
     #         mover.top_left_coordinate = destination_coordinate
     #         return mover
