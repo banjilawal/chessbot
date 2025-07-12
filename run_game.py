@@ -6,7 +6,7 @@ import pygame
 from geometry import Dimension, GridCoordinate
 from board import Board
 
-from grid_entity import HorizontalMover
+from grid_entity import HorizontalMover, VerticalMover
 
 from game_display import GameDisplay
 from id_factory import id_factory
@@ -18,9 +18,15 @@ def main():
     board.add_new_entity(GridCoordinate(1,1), HorizontalMover(mover_id=id_factory.mover_id(), height=1))
     board.add_new_entity(GridCoordinate(1,2), HorizontalMover(mover_id=id_factory.mover_id(), height=3))
     board.add_new_entity(GridCoordinate(8,8), HorizontalMover(mover_id=id_factory.mover_id(), height=4))
-    visualizer = GameDisplay(board)
 
-    visualizer.board.add_new_entity(GridCoordinate(5,0), HorizontalMover(mover_id=id_factory.mover_id(), height=4))
+    board.add_new_entity(GridCoordinate(5,4), VerticalMover(mover_id=id_factory.mover_id(), length=6))
+    board.add_new_entity(GridCoordinate(1,6), VerticalMover(mover_id=id_factory.mover_id(), length=6))
+    board.add_new_entity(GridCoordinate(8,2), VerticalMover(mover_id=id_factory.mover_id(), length=1))
+
+
+    visualizer = GameDisplay(board)
+    visualizer.board.add_new_entity(GridCoordinate(5, 0), HorizontalMover(mover_id=id_factory.mover_id(), height=4))
+
 
     clock = pygame.time.Clock()
     frame_count = 0

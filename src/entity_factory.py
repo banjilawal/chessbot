@@ -2,7 +2,7 @@ import random
 from typing import List
 
 from board import Board
-from grid_entity import HorizontalMover
+from grid_entity import HorizontalMover, VerticalMover
 from geometry import Dimension
 from id_factory import id_factory
 
@@ -19,16 +19,31 @@ class EntityFactory:
     @staticmethod
     def build_horizontal_mover(max_height: int) -> HorizontalMover:
         mover = HorizontalMover(
-            mover_id=id_factory.next_vault_id(),
-            height=random.randint(2, max_height),
-            coordinate=None
+            mover_id=id_factory.mover_id(),
+            height=random.randint(1, max_height),
+            top_left_coordinate=None
         )
         print(mover)
         return mover
 
     @staticmethod
     def build_horizontal_mover_list(max_height: int, count: int) -> List[HorizontalMover]:
-        return [EntityFactory.horizontal_mover(max_height) for _ in range(count)]
+        return [EntityFactory.build_horizontal_mover(max_height) for _ in range(count)]
+
+    @staticmethod
+    def build_vertical_mover(max_length: int) -> HorizontalMover:
+        mover = VerticalMover(
+            mover_id=id_factory.mover_id(),
+            length=random.randint(1, max_length),
+            top_left_coordinate=None
+        )
+        print(mover)
+        return mover
+
+    @staticmethod
+    def build_vertical_mover_list(max_length: int, count: int) -> List[HorizontalMover]:
+        return [EntityFactory.build_vertical_mover(max_length) for _ in range(count)]
+
 
     @staticmethod
     def build_board(

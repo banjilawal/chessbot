@@ -7,7 +7,7 @@ from colorama.ansi import clear_line
 
 from constants import GameColor, PlacementStatus
 from geometry import GridCoordinate
-from grid_entity import GridEntity, Mover, HorizontalMover
+from grid_entity import GridEntity, Mover, HorizontalMover, VerticalMover
 
 if TYPE_CHECKING:
     from board import Board
@@ -101,6 +101,8 @@ class GameDisplay:
             print("[Warning] Entity has no top_left_coordinate. Cannot draw an mover without a top_left_coordinate to the screen.")
             return
 
+        horizontal_mover_color = GameColor.OLIVE.value
+        vertical_mover_color = GameColor.DEEP_ORANGE.value
         # print(f"Drawing mover {mover.mover_id_counter} at top_left_coordinate {mover.top_left_coordinate}")
         # Calculate position and dimensions
         rect = pygame.Rect(
@@ -110,7 +112,11 @@ class GameDisplay:
             entity.dimension.height * self.cell_px - self.border_px
         )
         # Draw the mover (fixed the width parameter)
-        pygame.draw.rect(self.screen, GameColor.OLIVE.value, rect)
+
+        if isinstance(entity, HorizontalMover):
+            pygame.draw.rect(self.screen, horizontal_mover_color, rect)
+        if isinstance(entity, VerticalMover):
+            pygame.draw.rect(self.screen, vertical_mover_color, rect)
 
         # Draw mover ID
         text_surface = self.font.render(str(entity.mover_id), True, GameColor.BLACK.value)
@@ -175,6 +181,9 @@ class GameDisplay:
         # Enforce HorizontalMover constraint
         if isinstance(mover, HorizontalMover):
             proposed_row = drag_state.original_coordinate.row
+
+        if isinstance(mover, VerticalMover):
+            proposed_column = drag_state.original_coordinate.column
 
         # Check against both visual and board states
         test_coordinate = GridCoordinate(row=proposed_row, column=new_column)
@@ -308,8 +317,15 @@ class GameDisplay:
         print(f"Debug: From top_left_coordinate: row={entity.top_left_coordinate.row}, column={entity.top_left_coordinate.column}")
         print(f"Debug: To top_left_coordinate: row={destination_coordinate.row}, column={destination_coordinate.column}")
 
-        horizontal_mover = cast(HorizontalMover, entity)
-        move_result = horizontal_mover.move(self.board, destination_coordinate)
+        move_result = False
+        if isinstance(entity, HorizontalMover):
+            horizontal_mover = cast(HorizontalMover, entity)
+            move_result = horizontal_mover.move(self.board, destination_coordinate)
+
+        if isinstance(entity, VerticalMover):
+            vertical_mover = cast(VerticalMover, entity)
+            move_result = vertical_mover.move(self.board, destination_coordinate)
+
         if not move_result:
             print(f"[Warning] Move failed - Movement might be restricted to top row only")
         return move_result
