@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 import pygame
 from typing import TYPE_CHECKING, Optional, cast, OrderedDict
 
+from colorama.ansi import clear_line
+
 from constants import GameColor, PlacementStatus
 from geometry import GridCoordinate
 from grid_entity import GridEntity, Mover, HorizontalMover
@@ -50,6 +52,12 @@ class GameDisplay:
     def draw_grid(self):
         screen_color = GameColor.DARK_GRAY_1.value
         self.screen.fill(screen_color)
+
+        cell_color = GameColor.LIGHT_SAND.value
+        opposite_cell_color = screen_color
+
+        current_cell_color = cell_color
+        previous_cell_color = cell_color
         for row in range(self.board.dimension.height):
             for col in range(self.board.dimension.length):
                 cell_rect = pygame.Rect(
@@ -60,11 +68,9 @@ class GameDisplay:
                 )
 
                 cell = self.board.cells[row][col]
-                cell_color = screen_color
-                if cell.id % 2 == 0:
-                    cell_color = GameColor.LIGHT_SAND.value
-                # Draw filled rectangle
-                pygame.draw.rect(self.screen, cell_color, cell_rect)
+                current_cell_color = cell_color if (row + col) % 2 == 0 else opposite_cell_color
+
+                pygame.draw.rect(self.screen, current_cell_color, cell_rect)
                 # Draw an outlined rectangle
                 pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
 
