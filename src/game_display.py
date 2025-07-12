@@ -162,18 +162,30 @@ class GameDisplay:
             return
 
         drag_state = self.active_drags[mover_id]
-        new_column = (mouse_position[0] - self.active_drags[mover_id].offset_x) // self.cell_px
-        new_row = (mouse_position[1] - self.active_drags[mover_id].offset_y) // self.cell_px
+
+        # Using floating point.  Need higher precision for collision detection.
+        proposed_column = (mouse_position[0] - drag_state.offset_x) // self.cell_px
+        proposed_row = (mouse_position[1] - drag_state.offset_y) // self.cell_px
+
+        new_column = int(proposed_column // self.cell_px)
+        new_row = int(proposed_row // self.cell_px)
 
         if isinstance(self.active_drags[mover_id].mover, HorizontalMover):
             new_row = self.active_drags[mover_id].original_coordinate.row
 
         new_coordinate = GridCoordinate(row=new_row, column=new_column)
-        if self.board.can_entity_move_to_cells(drag_state.mover, new_coordinate):
+        if new_coordinate == drag_state.current_coordinate:
+            return
+
+        if self.is_drag_out_of_bounds(new_coordinate):
+            return
+
+        if not self.board.can_entity_move_to_cells(drag_state.mover, drag_state.current_coordinate):
+            # print("mover", mover_id, "dragging update failed. Cannot go to ", new_coordinate, " it is occupied.")
+            return
+        else:
             self.active_drags[mover_id] = self.active_drags[mover_id].with_updated_position(new_coordinate)
             print("mover", mover_id, "dragging updated to", self.active_drags[mover_id].current_coordinate)
-        else:
-            print("mover", mover_id, "dragging update failed. Cannot go to ", new_coordinate, " it is occupied.")
 
     def end_drag(self, mover_id: int) -> PlacementStatus:
         if not self.is_dragging or mover_id not in self.active_drags:
@@ -185,7 +197,7 @@ class GameDisplay:
 
         moved_entity = self.board.move_entity(entity=drag_state.mover, upper_left_destination= drag_state.current_coordinate)
         if moved_entity is None:
-            self.board,moved_entity(entity=drag_state.mover, upper_left_destination=drag_state.original_coordinate)
+            self.board.moved_entity(entity=drag_state.mover, upper_left_destination=drag_state.original_coordinate)
             return PlacementStatus.BLOCKED
         return PlacementStatus.PLACED
 
@@ -235,6 +247,8 @@ class GameDisplay:
             print(f"[Warning] Mouse id outside the game board at: {row}")
             return None
         return GridCoordinate(row=row, column=column)
+
+
 
     def close(self):
         pygame.quit()

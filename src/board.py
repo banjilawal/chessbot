@@ -200,24 +200,31 @@ class Board:
 
     def can_entity_move_to_cells(self, entity: GridEntity, new_top_left_coordinate: GridCoordinate) -> bool:
         if entity is None or new_top_left_coordinate is None:
-            raise ValueError("Entity and top_left_coordinate must not be None.")
+            raise ValueError("Entity and coordinate must not be None.")
 
-        entity_length = entity.dimension.length
         entity_height = entity.dimension.height
+        entity_length = entity.dimension.length
 
-        new_bottom_row = new_top_left_coordinate.row + entity_height - 1
-        new_right_column = new_top_left_coordinate.column + entity_length - 1
+        # Top-left (already have this as new_top_left_coordinate)
+        top = new_top_left_coordinate.row
+        left = new_top_left_coordinate.column
 
-        if new_bottom_row >= self.dimension.height:
+        # Bottom-right
+        bottom = top + entity_height - 1
+        right = left + entity_length - 1
+
+        # Boundary checks (all must be True)
+        if not (0 <= top < self.dimension.height and
+                0 <= left < self.dimension.length and
+                0 <= bottom < self.dimension.height and
+                0 <= right < self.dimension.length):
             return False
-        if new_right_column >= self.dimension.length:
-            return False
 
-        for r in range(new_top_left_coordinate.row, new_bottom_row + 1):
-            for c in range(new_top_left_coordinate.column, new_right_column + 1):
+        # Collision detection (now using proper boundaries)
+        for r in range(top, bottom + 1):
+            for c in range(left, right + 1):
                 cell = self.cells[r][c]
                 if cell.occupant is not None and cell.occupant != entity:
-                    print(f"Cell at {r}, {c} is occupied by {cell.occupant}")
                     return False
         return True
 
