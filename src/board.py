@@ -130,13 +130,13 @@ class Board:
                     occupied_cells.append(cell)
         return occupied_cells
 
-    def remove_entity_from_cells(self, entity: GridEntity) -> None:
-        if entity is None:
+    def remove_entity_from_cells(self, mover: Mover) -> None:
+        if mover is None:
             raise ValueError("Entity not found on the board. cannot remove a non-existent mover.")
 
-        target_cells = self.get_cells_occupied_by_entity(entity)
+        target_cells = self.get_cells_occupied_by_entity(mover)
         for cell in target_cells:
-            if cell.occupant == entity:
+            if cell.occupant == mover:
                 cell.occupant = None
 
     def add_entity_to_area(self, entity: GridEntity, top_left_coordinate: GridCoordinate) -> None:
@@ -176,20 +176,20 @@ class Board:
 
         return entity
 
-    def move_entity(self, upper_left_destination: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
+    def move_entity(self, upper_left_destination: GridCoordinate, mover: Mover) -> Optional[Mover]:
         if upper_left_destination is None:
             raise ValueError("Destination top_left_coordinate must not be None.")
 
-        if entity is None:
+        if mover is None:
             raise ValueError("Entity does not exist. in the board. cannot move a non-existent mover.")
 
-        if not self.can_entity_move_to_cells(entity, upper_left_destination):
-            print("Entity", entity.id,  "cannot move to", upper_left_destination)
+        if not self.can_entity_move_to_cells(mover, upper_left_destination):
+            print("Entity", mover.mover_id, "cannot move to", upper_left_destination)
             return None
 
-        self.remove_entity_from_cells(entity)
-        self.add_entity_to_area(entity, upper_left_destination)
-        return entity
+        self.remove_entity_from_cells(mover)
+        self.add_entity_to_area(mover, upper_left_destination)
+        return mover
 
     def remove_entity(self, entity: GridEntity) -> None:
         if entity is None:

@@ -276,12 +276,12 @@ class GameDisplay:
 
         if not self.board.can_entity_move_to_cells(drag_state.mover, drag_state.current_coordinate):
             self.board.move_entity(
-                entity=drag_state.mover,
+                mover=drag_state.mover,
                 upper_left_destination=drag_state.original_coordinate
             )
             return PlacementStatus.BLOCKED
 
-        moved_entity = self.board.move_entity(entity=drag_state.mover, upper_left_destination= drag_state.current_coordinate)
+        moved_entity = self.board.move_entity(mover=drag_state.mover, upper_left_destination= drag_state.current_coordinate)
         return PlacementStatus.PLACED if moved_entity else PlacementStatus.BLOCKED
 
     def move_handler(self, entity: GridEntity, destination_coordinate: GridCoordinate) -> bool:
