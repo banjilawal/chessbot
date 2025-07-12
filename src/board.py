@@ -202,6 +202,12 @@ class Board:
         if entity is None or new_top_left_coordinate is None:
             raise ValueError("Entity and coordinate must not be None.")
 
+        if (new_top_left_coordinate.row < 0 or new_top_left_coordinate.column < 0 or
+                new_top_left_coordinate.row + entity.dimension.height > self.dimension.height or
+                new_top_left_coordinate.column + entity.dimension.length > self.dimension.length):
+            return False
+
+
         entity_height = entity.dimension.height
         entity_length = entity.dimension.length
 
