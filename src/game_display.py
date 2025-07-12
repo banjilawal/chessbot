@@ -68,9 +68,23 @@ class GameDisplay:
                 # Draw an outlined rectangle
                 pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
 
-    def draw_entities(self):
+    def draw_all_entities(self):
+        # First draw board entities
         for entity in self.board.entities:
             self.draw_entity(entity)
+
+        # Then draw any entities being dragged at their current position
+        for drag_state in self.active_drags.values():
+            rect = pygame.Rect(
+                drag_state.current_coordinate.column * self.cell_px + self.border_px,
+                drag_state.current_coordinate.row * self.cell_px + self.border_px,
+                drag_state.mover.dimension.length * self.cell_px - self.border_px,
+                drag_state.mover.dimension.height * self.cell_px - self.border_px
+            )
+            pygame.draw.rect(self.screen, GameColor.OLIVE.value, rect)
+            text_surface = self.font.render(str(drag_state.mover.id), True, GameColor.BLACK.value)
+            text_rect = text_surface.get_rect(center=rect.center)
+            self.screen.blit(text_surface, text_rect)
 
     def draw_entity(self, entity: 'GridEntity'):
         """Draw a single mover on the board"""
@@ -118,9 +132,13 @@ class GameDisplay:
             mover_id = list(self.active_drags.keys())[0]
             self.update_drag(mover_id, event.pos)
 
-    def handle_mouse_up(self, event: pygame.event.Event):
-        if event.button == 1 and self.is_dragging:  # Left mouse button
-            self.end_drag(event.pos)
+    def handle_mouse_up(self, event: pygame.event.Event) -> PlacementStatus | None:
+        if event.button == 1 and self.is_dragging and self.active_drags:
+            mover_id = list(self.active_drags.keys())[0]
+            placement_status = self.end_drag(mover_id)
+            self.is_dragging = False
+            return placement_status
+        return PlacementStatus.RELEASED
 
     def start_drag(self, mover: Mover, mouse_position: tuple[int, int]) -> None:
         self.active_drags[mover.id] = DragState(
@@ -154,7 +172,7 @@ class GameDisplay:
         if drag_state.current_coordinate == drag_state.original_coordinate:
             return PlacementStatus.RELEASED
 
-        moved_entity = self.board.move_entity(drag_state.mover, drag_state.current_coordinate)
+        moved_entity = self.board.move_entity(entity=drag_state.mover, upper_left_destination= drag_state.current_coordinate)
         if moved_entity is not None:
             return PlacementStatus.PLACED
         else:
@@ -162,30 +180,6 @@ class GameDisplay:
             return PlacementStatus.BLOCK
 
     def move_handler(self, entity: GridEntity, destination_coordinate: GridCoordinate) -> bool:
-        if entity is None:
-            print("[Warning] Entity cannot be None. Cannot move null mover.")
-            return False
-        if destination_coordinate is None:
-            print(
-                "[Warning] Destination top_left_coordinate cannot be None. Cannot move mover without a destination top_left_coordinate.")
-            return False
-        if self.board is None:
-            print("[Warning] Board cannot be None. Cannot move on a nonexistent board.")
-            return False
-        if entity.top_left_coordinate is None:
-            print("[Warning] Entity has no top_left_coordinate. Cannot move an mover without a top_left_coordinate.")
-            return False
-
-        # Fix the isinstance check - remove quotes around HorizontalMover
- # Make sure this import is at the top of the file
-        if not isinstance(entity, HorizontalMover):
-            print(f"[Warning] Entity {entity.id} is not a horizontal mover. Cannot move.")
-            return False
-
-        # Remove the first horizontal_mover argument as it's redundant
-        return entity.move(self.board, destination_coordinate)
-
-    def move_handler(self, entity: GridEntity, destination_coordinate) -> bool:
         if entity is None:
             print("[Warning] Entity cannot be None. Cannot move null mover.")
             return False
@@ -217,7 +211,7 @@ class GameDisplay:
 
     def update_display(self):
         self.draw_grid()
-        self.draw_entities()
+        self.draw_all_entities()
         pygame.display.flip()
 
     def grid_coordinate_at_mouse_position(self, mouse_position: tuple) -> Optional[GridCoordinate]:
