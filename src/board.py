@@ -9,7 +9,6 @@ from grid_entity import GridEntity, Mover
 from constants import Config
 from id_factory import global_id_generator
 
-
 @dataclass
 class Cell:
     id: int

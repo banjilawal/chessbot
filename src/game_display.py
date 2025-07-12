@@ -162,34 +162,83 @@ class GameDisplay:
             return
 
         drag_state = self.active_drags[mover_id]
+        mover = drag_state.mover
 
-        # Calculate proposed grid position (single division)
-        new_col = max(0, (mouse_position[0] - drag_state.offset_x) // self.cell_px)
-        new_row = max(0, (mouse_position[1] - drag_state.offset_y) // self.cell_px)
+        # Calculate proposed grid position
+        proposed_column = (mouse_position[0] - drag_state.offset_x) // self.cell_px
+        proposed_row = (mouse_position[1] - drag_state.offset_y) // self.cell_px
+
+        # Boundary checks
+        new_column = max(0, min(proposed_column, self.board.dimension.length - mover.dimension.length))
+        proposed_row = max(0, min(proposed_row, self.board.dimension.height - mover.dimension.height))
 
         # Enforce HorizontalMover constraint
-        if isinstance(drag_state.mover, HorizontalMover):
-            new_row = drag_state.original_coordinate.row
+        if isinstance(mover, HorizontalMover):
+            proposed_row = drag_state.original_coordinate.row
 
-        # Prevent going beyond right/bottom edges
-        new_col = min(new_col, self.board.dimension.length - drag_state.mover.dimension.length)
-        new_row = min(new_row, self.board.dimension.height - drag_state.mover.dimension.height)
-
+        # Check against both visual and board states
+        test_coordinate = GridCoordinate(row=proposed_row, column=new_column)
+        if not self.is_position_valid_for_drag(mover, test_coordinate):
+            return
         try:
-            new_coord = GridCoordinate(row=new_row, column=new_col)
+            new_coord = GridCoordinate(row=proposed_row, column=proposed_column)
+            self.active_drags[mover_id] = drag_state.with_updated_position(new_coord)
         except ValueError as e:
             print(f"Invalid coordinate: {e}")
-            return
 
-        # DEBUG PRINT - RIGHT BEFORE VALIDATION CHECK
-        print(f"Proposed: row={new_row}, col={new_col} | "
-              f"Current: {drag_state.current_coordinate} | "
-              f"Valid: {self.board.can_entity_move_to_cells(drag_state.mover, new_coord)}")
+    def is_position_valid_for_drag(self, mover: Mover, test_coordinate: GridCoordinate) -> bool:
+        """Combined check for visual dragging"""
+        # 1. Check board's official position (for static entities)
+        if not self.board.can_entity_move_to_cells(mover, test_coordinate):
+            return False
 
-        # Only update if position changed and is valid
-        if (new_coord != drag_state.current_coordinate and
-                self.board.can_entity_move_to_cells(drag_state.mover, new_coord)):
-            self.active_drags[mover_id] = drag_state.with_updated_position(new_coord)
+        # 2. Check against other dragged entities
+        for other_id, other_state in self.active_drags.items():
+            if other_id == mover.id:
+                continue
+            other_cells = self.get_occupied_cells(
+                other_state.current_coordinate.row,
+                other_state.current_coordinate.column,
+                other_state.mover.dimension
+            )
+
+            if self.get_occupied_cells(test_coordinate.row, test_coordinate.columnl, mover.dimension) & other_cells:
+                return False
+        return True
+
+    # def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
+    #     if not self.is_dragging or mover_id not in self.active_drags:
+    #         return
+    #
+    #     drag_state = self.active_drags[mover_id]
+    #
+    #     # Calculate proposed grid position (single division)
+    #     new_col = max(0, (mouse_position[0] - drag_state.offset_x) // self.cell_px)
+    #     new_row = max(0, (mouse_position[1] - drag_state.offset_y) // self.cell_px)
+    #
+    #     # Enforce HorizontalMover constraint
+    #     if isinstance(drag_state.mover, HorizontalMover):
+    #         new_row = drag_state.original_coordinate.row
+    #
+    #     # Prevent going beyond right/bottom edges
+    #     new_col = min(new_col, self.board.dimension.length - drag_state.mover.dimension.length)
+    #     new_row = min(new_row, self.board.dimension.height - drag_state.mover.dimension.height)
+    #
+    #     try:
+    #         new_coord = GridCoordinate(row=new_row, column=new_col)
+    #     except ValueError as e:
+    #         print(f"Invalid coordinate: {e}")
+    #         return
+    #
+    #     # DEBUG PRINT - RIGHT BEFORE VALIDATION CHECK
+    #     print(f"Proposed: row={new_row}, col={new_col} | "
+    #           f"Current: {drag_state.current_coordinate} | "
+    #           f"Valid: {self.board.can_entity_move_to_cells(drag_state.mover, new_coord)}")
+    #
+    #     # Only update if position changed and is valid
+    #     if (new_coord != drag_state.current_coordinate and
+    #             self.board.can_entity_move_to_cells(drag_state.mover, new_coord)):
+    #         self.active_drags[mover_id] = drag_state.with_updated_position(new_coord)
 
     # def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
     #     if not self.is_dragging or mover_id not in self.active_drags:
@@ -281,17 +330,6 @@ class GameDisplay:
             print(f"[Warning] Mouse id outside the game board at: {row}")
             return None
         return GridCoordinate(row=row, column=column)
-
-    def show_invalid_position_feedback(self, coord: GridCoordinate):
-        """Visual indicator that position is invalid"""
-        highlight_rect = pygame.Rect(
-            coord.column * self.cell_px,
-            coord.row * self.cell_px,
-            self.cell_px,
-            self.cell_px
-        )
-        pygame.draw.rect(self.screen, (255, 0, 0, 100), highlight_rect, 2)
-        pygame.display.flip()
 
     def close(self):
         pygame.quit()

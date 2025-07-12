@@ -103,6 +103,37 @@ class HorizontalMoveStrategy(MoveStrategy):
         print("strategy calculated destination column:", destination_column)
         return board.move_entity(destination_coordinate, mover) is not None
 
+class VerticalMoveStrategy(MoveStrategy):
+    def move(self, mover: VerticalMover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        if mover is None:
+            print("[Warning] Mover cannot be None. It cannot move.")
+            return False
+        if board is None:
+            print("[Warning] Board cannot be None. Cannot move.")
+            return False
+        if mover.top_left_coordinate is None:
+            print("[Warning] Mover has no top_left_coordinate. Cannot move.")
+            return False
+        if destination_coordinate is None:
+            print("[Warning] Destination top_left_coordinate cannot be None. Cannot move.")
+            return False
+
+        if destination_coordinate.row < 0 or destination_coordinate.row >= board.dimension.length:
+            print(f"[Warning] Vertical move out of bounds: {destination_coordinate.row}")
+            return False
+
+        if destination_coordinate == mover.top_left_coordinate:
+            print("[Warning] Mover is already at destination top_left_coordinate. Cannot move.")
+            return False
+
+        if destination_coordinate.column != mover.top_left_coordinate.column:
+            print("[Warning] Destination top_left_coordinate is not on the same column as the mover. Cannot move.")
+            return False
+
+        destination_row = mover.top_left_coordinate.row
+        print("strategy calculated destination row:", destination_row)
+        return board.move_entity(destination_coordinate, mover) is not None
+
 class DragStrategy(ABC):
     def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
         pass
