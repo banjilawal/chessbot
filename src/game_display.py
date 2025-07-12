@@ -160,6 +160,8 @@ class GameDisplay:
     def update_drag(self, mover_id: int, mouse_position: tuple[int, int]) -> None:
         if not self.is_dragging or mover_id not in self.active_drags:
             return
+
+        drag_state = self.active_drags[mover_id]
         new_column = (mouse_position[0] - self.active_drags[mover_id].offset_x) // self.cell_px
         new_row = (mouse_position[1] - self.active_drags[mover_id].offset_y) // self.cell_px
 
@@ -167,8 +169,11 @@ class GameDisplay:
             new_row = self.active_drags[mover_id].original_coordinate.row
 
         new_coordinate = GridCoordinate(row=new_row, column=new_column)
-        self.active_drags[mover_id] = self.active_drags[mover_id].with_updated_position(new_coordinate)
-        print("mover", mover_id, "dragging updated to", self.active_drags[mover_id].current_coordinate)
+        if self.board.can_entity_move_to_cells(drag_state.mover, new_coordinate):
+            self.active_drags[mover_id] = self.active_drags[mover_id].with_updated_position(new_coordinate)
+            print("mover", mover_id, "dragging updated to", self.active_drags[mover_id].current_coordinate)
+        else:
+            print("mover", mover_id, "dragging update failed. Cannot go to ", new_coordinate, " it is occupied.")
 
     def end_drag(self, mover_id: int) -> PlacementStatus:
         if not self.is_dragging or mover_id not in self.active_drags:
@@ -179,11 +184,10 @@ class GameDisplay:
             return PlacementStatus.RELEASED
 
         moved_entity = self.board.move_entity(entity=drag_state.mover, upper_left_destination= drag_state.current_coordinate)
-        if moved_entity is not None:
-            return PlacementStatus.PLACED
-        else:
-            drag_state.mover.coordinate = drag_state.original_coordinate
-            return PlacementStatus.BLOCK
+        if moved_entity is None:
+            self.board,moved_entity(entity=drag_state.mover, upper_left_destination=drag_state.original_coordinate)
+            return PlacementStatus.BLOCKED
+        return PlacementStatus.PLACED
 
     def move_handler(self, entity: GridEntity, destination_coordinate: GridCoordinate) -> bool:
         if entity is None:
