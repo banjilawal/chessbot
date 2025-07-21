@@ -9,9 +9,10 @@ class Team:
     color: GameColor
     starting_row: int
     advancement_direction: int
+    goal_row: int
 
 class ChessPiece(ABC):
-    def __init__(self, piece_id: int, name: str, color: GameColor, rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: Team, rank: 'Rank'):
         if not piece_id:
             raise ValueError("piece_id cannot be null or empty.")
         if not name:
