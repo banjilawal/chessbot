@@ -1,7 +1,12 @@
 from abc import ABC, abstractmethod
+from typing import List, TYPE_CHECKING
 
 from geometry import GridCoordinate
 
+if TYPE_CHECKING:
+    from chess.rank.rank import Rank
+    from chess.chess_piece.piece import ChessPiece
+    from board import Board
 
 class MoveRule(ABC):
     @abstractmethod
@@ -40,3 +45,29 @@ class MovementStrategy(ABC):
 
     def is_valid_move(self, start: GridCoordinate, end: GridCoordinate) -> bool:
         return any(rule.is_valid(start, end) for rule in self.rules)
+
+    def _check_basic_conditions(self, chess_piece: ChessPiece, board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
+        if chess_piece is None:
+            print("[Warning] Mover cannot be None. It cannot move.")
+            return False
+        if board is None:
+            print("[Warning] Board cannot be None. Cannot move.")
+            return False
+        if chess_piece.top_left_coordinate is None:
+            print("[Warning] Mover has no top_left_coordinate. Cannot move.")
+            return False
+        if destination_coordinate is None:
+            print("[Warning] Destination top_left_coordinate cannot be None. Cannot move.")
+            return False
+        if destination_coordinate.column < 0 or destination_coordinate.column >= board.dimension.length:
+            print(f"[Warning] Horizontal move out of bounds: {destination_coordinate.column}")
+            return False
+        if destination_coordinate.row < 0 or destination_coordinate.row >= board.dimension.length:
+            print(f"[Warning] Vertical move out of bounds: {destination_coordinate.row}")
+            return False
+        return True
+
+    @abstractmethod
+    def move(self, mover: 'Mover', board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
+        """Perform the move if valid. Return True if successful, False otherwise."""
+        pass
