@@ -9,8 +9,7 @@ from podscape.constants import GameColor
 class Team:
     team_id: int
     color: GameColor
-    home_row: int = field(init=False)
-    advancement_direction: HomeOrientation = field(init=False)
+    home: HomeOrientation
     piece_registry: Dict[ChessFigureCategory, Dict[int, Optional[ChessPiece]]] = field(init=False)
 
     def __post_init__(self):
