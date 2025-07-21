@@ -5,6 +5,8 @@ from chess.figure.figure_rank import PawnRank, FigureRank, KnightRank, BishopRan
 from chess.movement.movement_strategy import PawnMovement, KnightMovement, BishopMovement, CastleMovement, \
     QueenMovement, KingMovement
 
+BOARD_DIMENSION = 8
+
 class ChessFigureCategory(Enum):
     PAWN = "Pawn"
     KNIGHT = "Knight"
