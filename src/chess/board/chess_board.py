@@ -1,31 +1,16 @@
 from dataclasses import dataclass, field
 from typing import Tuple, List, Optional, cast
 
+from chess.common.emitter import id_emitter
+from chess.common.geometry import ChessSquare, Coordinate
 from chess.figure.chess_piece import ChessPiece
 
 DIMENSION = 8
 
-class Coordinate:
-    row: int
-    column: int
-
-    def __post_init__(self):
-        if self.row < 0:
-            raise ValueError("Row cannot be negative")
-        if self.column < 0:
-            raise ValueError("Column cannot be negative")
-
-@dataclass
-class ChessSquare:
-    id: int
-    coordinate: Coordinate
-    occupant: Optional[ChessPiece] = field(default=None)
 
 
 @dataclass
 class ChessBoard:
-
-
     chess_pieces: List[ChessPiece] = field(default_factory=list)
     squares: Tuple[Tuple[ChessSquare, ...], ...] = field(init=False, repr=False)
 
@@ -33,7 +18,7 @@ class ChessBoard:
         squares = tuple(
             tuple(
                 ChessSquare(
-                    id=id_factory.cell_id(),
+                    id=id_emitter.square_id_counter(),
                     coordinate=Coordinate(row=row, column=col)
                 )
                 for col in range(DIMENSION)
@@ -42,9 +27,9 @@ class ChessBoard:
         )
         object.__setattr__(self, 'squares', squares)
 
-    def get_chess_piece_by_id(self, target_id: int) -> Optional[GridEntity]:
+    def get_chess_piece_by_id(self, target_id: int) -> Optional[ChessPiece]:
         for chess_piece in self.chess_pieces:
-            print("Checking if ", chess_piece.name, " is mover with id ", mover_id)
+            print("Checking if ", chess_piece.name, " is mover with id ", target_id)
             if chess_piece.id == target_id:
                 return chess_piece
         return None
@@ -87,29 +72,42 @@ class ChessBoard:
 
     def move_chess_piece(self, chess_piece: ChessPiece, destination: Coordinate) -> Optional[ChessPiece]:
         if chess_piece is None:
-            raise ValueError("Cannot move a null chess piece.")
+            print("Cannot move a null chess piece.")
             return None
         if not self.is_valid_coordinate(destination):
-            raise ValueError("Cannot move the chess piece. The destination coordinate is out of range.")
+            print("Cannot move the chess piece. The destination coordinate is out of range.")
             return None
 
         square = self.squares[destination.row][destination.column]
-        if square.occupant is not None and not self.are_enemies(chess_piece, square.occupant):
-            raise ValueError("Cannot move the chess piece. It is occupied by a friendly")
-            retun None
-
-        if square.occupant is not None and self.are_enemies(chess_piece, square.occupant):
-            return self.process_capture(captor=chess_piece, prisoner=square.occupant)
+        if square.occupant is not None:
+            return process_capture(chess_piece, square.occupant)
 
         self.process_occupation(chess_piece, destination)
         return None
 
+    # change tthe signature and name to capture_square then it can deal with all the cases
     def process_capture(self, captor: ChessPiece, prisoner: ChessPiece) -> ChessPiece:
         if captor is None or prisoner is None:
-            raise ValueError("Cannot process a capture. A null figure is specified.")
-        recorded_prisoner = self.process_withdrawal(prisoner)
-        self.process_withdrawal(captor)
-        return recorded_prisoner
+            print("Captor cannot be null. Aborting capture process.")
+            return None
+        if prisoner is not None and not self.are_enemies(captor, prisoner):
+            print("A friendly is occupying the square. Aborting capture process.")
+            return None
+
+        if prisoner is not None and self.are_enemies(captor, prisoner):
+            square = self.squares[prisoner.row][prisoner.column]
+            recorded_prisoner = self.remove_chess_piece(prisoner)
+            square.occupant = captor
+            captor.coordinate = square.coordinate
+            return recorded_prisoner
+
+        if prisoner is None:
+            print("No prisoner. Captor occupying square")
+            self.process_occupation(captor)
+            return None
+
+
+
 
     def process_occupation(self, occupant: ChessPiece, destination: Coordinate) -> None:
         if occupant is None or not self.is_valid_coordinate(destination):

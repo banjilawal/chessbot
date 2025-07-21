@@ -4,7 +4,7 @@ from typing import List
 from board import Board
 from grid_entity import HorizontalMover, VerticalMover
 from geometry import Dimension
-from id_factory import id_factory
+from emitter import id_factory
 
 
 class EntityFactory:

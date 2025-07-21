@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/chess_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/chess_board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/chess_square.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/id_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/id_factory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +57,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "chess",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/podscape/src/chess/board",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/podscape/src/chess/common",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -84,6 +82,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\common" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\board" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\chess_piece" />
@@ -278,7 +277,7 @@
       <workItem from="1752708903578" duration="6000" />
       <workItem from="1752965567062" duration="2390000" />
       <workItem from="1753011601753" duration="739000" />
-      <workItem from="1753074520002" duration="28584000" />
+      <workItem from="1753074520002" duration="35902000" />
     </task>
     <servers />
   </component>

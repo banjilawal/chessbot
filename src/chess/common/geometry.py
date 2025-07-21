@@ -1,15 +1,10 @@
-from dataclasses import dataclass
-from enum import Enum
+from dataclasses import field
+from typing import Optional
+
+from chess.figure.chess_piece import ChessPiece
 
 
-class Direction(Enum):
-    UP = 1
-    DOWN = 2
-    LEFT = 3
-    RIGHT = 4
-
-@dataclass(frozen=True)
-class GridCoordinate:
+class Coordinate:
     row: int
     column: int
 
@@ -19,21 +14,8 @@ class GridCoordinate:
         if self.column < 0:
             raise ValueError("Column cannot be negative")
 
-@dataclass(frozen=True)
-class Dimension:
-
-    MIN_LENGTH = 1
-    MIN_HEIGHT = 1
-    MIN_AREA = MIN_LENGTH * MIN_HEIGHT
-
-    length: int
-    height: int
-
-    def __post_init__(self):
-        if self.length < 1:
-            raise ValueError("length must be greater than 0")
-        if self.height < 1:
-            raise ValueError("height must be greater than 0")
-
-    def area(self) -> int:
-        return self.length * self.height
+@dataclass
+class ChessSquare:
+    id: int
+    coordinate: Coordinate
+    occupant: Optional[ChessPiece] = field(default=None)
