@@ -71,3 +71,38 @@ class MovementStrategy(ABC):
     def move(self, mover: 'Mover', board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
         """Perform the move if valid. Return True if successful, False otherwise."""
         pass
+
+class PawnMovement(MovementStrategy):
+    def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        # TODO: Implement pawn-specific movement logic
+        return False
+
+
+class KnightMovement(MovementStrategy):
+    def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        # TODO: Implement knight's L-shaped movement
+        return False
+
+
+class BishopMovement(MovementStrategy):
+    def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        # TODO: Implement bishop's diagonal movement
+        return False
+
+
+class CastleMovement(MovementStrategy):
+    def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        # TODO: Implement rook's straight-line movement
+        return False
+
+
+class QueenMovement(MovementStrategy):
+    def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        # TODO: Implement queen's combined rook + bishop movement
+        return False
+
+
+class KingMovement(MovementStrategy):
+    def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+        # TODO: Implement king's single-step any direction, and castling
+        return False
