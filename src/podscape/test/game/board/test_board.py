@@ -1,7 +1,7 @@
 import unittest
 
-from board import Board
-from exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
+from podscape.board import Board
+from podscape.exception import InvalidNumberOfRowsError, InvalidNumberOfColumnsError
 
 
 class TestGameBoard(unittest.TestCase):

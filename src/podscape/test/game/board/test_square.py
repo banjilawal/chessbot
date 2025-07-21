@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import Mock
 
-from board import Cell
-from constants import Config
-from exception import InvalidIdError, NegativeRowError, NegativeColumnError
-from grid_entity import GridEntity
+from podscape.board import Cell
+from podscape.constants import Config
+from podscape.exception import InvalidIdError, NegativeRowError, NegativeColumnError
+from podscape.grid_entity import GridEntity
 
 
 class TestGameBoardSquare(unittest.TestCase):

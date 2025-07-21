@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from geometry import Dimension
-from grid_entity import GridEntity
+from podscape.geometry import Dimension
+from podscape.grid_entity import GridEntity
 
 
 @dataclass

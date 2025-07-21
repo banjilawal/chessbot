@@ -2,10 +2,10 @@ import unittest
 from unittest.mock import Mock
 
 
-from exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
+from podscape.exception import NullSquareEntryError, InvalidIdError, InvalidFigureHeightError, \
     OccupiedSquareEntryError, SelfOccupiedSquareError, InvalidFigureLengthError, NoSquareToLeaveError, \
     FigureAreaBelowLimitError
-from grid_entity import GridEntity
+from podscape.grid_entity import GridEntity
 
 
 class TestGameFigure(unittest.TestCase):

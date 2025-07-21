@@ -2,10 +2,10 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Optional
 
-from geometry import Dimension
-from grid_entity import GridEntity
-from model.portal.door_state import DoorState
-from model.portal.portal import Portal
+from podscape.geometry import Dimension
+from podscape.grid_entity import GridEntity
+from podscape.model.portal.door_state import DoorState
+from podscape.model.portal.portal import Portal
 
 
 # Added model.occupant.EscapePortal which extends GridEntity class. Added list of walls to the Board. Renamed

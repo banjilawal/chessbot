@@ -1,8 +1,5 @@
-from abc import ABC, abstractmethod
-from typing import List, Optional
-
 from chess.team.team import Team
-from geometry import GridCoordinate
+from podscape.geometry import GridCoordinate
 
 from abc import ABC
 from typing import List, Optional

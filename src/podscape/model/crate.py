@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from model.bin import Bin
+from podscape.model.bin import Bin
 
 
 @dataclass

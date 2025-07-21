@@ -1,11 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from geometry import GridCoordinate
+from podscape.geometry import GridCoordinate
 
 if TYPE_CHECKING:
-    from chess.figure.chess_piece import ChessPiece
-    from board import Board
+    pass
 
 class MoveRule(ABC):
     @abstractmethod

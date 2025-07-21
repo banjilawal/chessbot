@@ -2,7 +2,7 @@ from dataclasses import field
 from typing import Dict, Optional
 
 from chess.figure.chess_piece import ChessPiece
-from constants import GameColor
+from podscape.constants import GameColor
 
 
 class Team:
