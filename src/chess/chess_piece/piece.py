@@ -16,7 +16,7 @@ class ChessPiece(ABC):
         if not team:
             raise ValueError("team cannot be null or empty.")
         if rank is None:
-            raise ValueError("rank cannot be null.")
+            raise ValueError("movement cannot be null.")
 
         self._piece_id = piece_id
         self._name = name

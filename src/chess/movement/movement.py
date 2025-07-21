@@ -1,10 +1,9 @@
 from abc import ABC, abstractmethod
-from typing import List, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from geometry import GridCoordinate
 
 if TYPE_CHECKING:
-    from chess.rank.rank import Rank
     from chess.chess_piece.piece import ChessPiece
     from board import Board
 
