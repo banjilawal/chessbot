@@ -2,7 +2,13 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 
 from constants import GameColor
+from geometry import GridCoordinate
 
+@dataclass(frozen=True)
+class Team:
+    color: GameColor
+    starting_row: int
+    advancement_direction: int
 
 class ChessPiece(ABC):
     def __init__(self, piece_id: int, name: str, color: GameColor, rank: 'Rank'):
