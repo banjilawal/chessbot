@@ -4,12 +4,7 @@ from typing import List, Optional
 from constants import GameColor
 from geometry import GridCoordinate
 
-@dataclass(frozen=True)
-class Team:
-    color: GameColor
-    starting_row: int
-    advancement_direction: int
-    goal_row: int
+
 
 class ChessPiece(ABC):
     def __init__(self, piece_id: int, name: str, team: Team, rank: 'Rank'):
@@ -17,16 +12,16 @@ class ChessPiece(ABC):
             raise ValueError("piece_id cannot be null or empty.")
         if not name:
             raise ValueError("name cannot be null or empty.")
-        if not color:
+        if not team:
             raise ValueError("color cannot be null or empty.")
         if rank is None:
             raise ValueError("rank cannot be null.")
 
         self._piece_id = piece_id
         self._name = name
-        self._color = color
+        self._team = team
         self._rank = rank
-        self._position_stack: List['GridCoordinate'] = []
+        self._position_history: List['GridCoordinate'] = []
 
     # === Immutable attributes ===
     @property
@@ -49,20 +44,20 @@ class ChessPiece(ABC):
     def add_position(self, coordinate: 'GridCoordinate') -> None:
         if coordinate is None:
             raise ValueError("coordinate cannot be null.")
-        self._position_stack.append(coordinate)
+        self._position_history.append(coordinate)
 
     def undo_last_position(self) -> Optional['GridCoordinate']:
-        if self._position_stack:
-            return self._position_stack.pop()
+        if self._position_history:
+            return self._position_history.pop()
         return None
 
     @property
     def current_position(self) -> Optional['GridCoordinate']:
-        return self._position_stack[-1] if self._position_stack else None
+        return self._position_history[-1] if self._position_history else None
 
     @property
     def position_history(self) -> List['GridCoordinate']:
-        return list(self._position_stack)  # Defensive copy
+        return list(self._position_history)  # Defensive copy
 
     # === Rank-defined strategy ===
     @abstractmethod
