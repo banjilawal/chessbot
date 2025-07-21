@@ -1,4 +1,4 @@
-from chess.chess_piece.chess_piece import ChessPiece
+from chess.figure.chess_piece import ChessPiece
 from chess.movement.movement import MoveRule
 from geometry import GridCoordinate
 

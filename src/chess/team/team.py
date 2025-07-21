@@ -1,7 +1,7 @@
 from dataclasses import field
 from typing import Dict, Optional
 
-from chess.chess_piece.chess_piece import ChessPiece
+from chess.figure.chess_piece import ChessPiece
 from constants import GameColor
 
 

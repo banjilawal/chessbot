@@ -8,7 +8,7 @@ from abc import ABC
 from typing import List, Optional
 
 class ChessPiece(ABC):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         if not piece_id:
             raise ValueError("piece_id cannot be null or empty.")
         if not name:
@@ -38,7 +38,7 @@ class ChessPiece(ABC):
         return self._team
 
     @property
-    def rank(self) -> 'Rank':
+    def rank(self) -> 'FigureRank':
         return self._rank
 
     # === Stack operations ===
@@ -62,31 +62,31 @@ class ChessPiece(ABC):
 
 
 class Pawn(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(piece_id, name, team, rank)
 
 
 class Knight(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(piece_id, name, team, rank)
 
 
 class Bishop(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(piece_id, name, team, rank)
 
 
 class Castle(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(piece_id, name, team, rank)
 
 
 class Queen(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(piece_id, name, team, rank)
 
 
 class King(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(piece_id, name, team, rank)
 

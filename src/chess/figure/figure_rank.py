@@ -3,7 +3,7 @@ from dataclasses import field, dataclass
 
 
 @dataclass
-class Rank(ABC):
+class FigureRank(ABC):
     movement_strategy: 'MovementStrategy' = field(init=False, repr=False)
 
     def __post_init__(self):
@@ -11,7 +11,7 @@ class Rank(ABC):
         if not hasattr(self, 'movement_strategy') or self.movement_strategy is None:
             raise TypeError(f"{self.__class__.__name__} must initialize movement_strategy")
 
-class PawnRank(Rank):
+class PawnRank(FigureRank):
     def __init__(self, movement_strategy: 'PawnMovement'):
         self._movement_strategy = movement_strategy
 
@@ -20,7 +20,7 @@ class PawnRank(Rank):
         return self._movement_strategy
 
 
-class KnightRank(Rank):
+class KnightRank(FigureRank):
     def __init__(self, movement_strategy: 'KnightMovement'):
         self._movement_strategy = movement_strategy
 
@@ -29,7 +29,7 @@ class KnightRank(Rank):
         return self._movement_strategy
 
 
-class BishopRank(Rank):
+class BishopRank(FigureRank):
     def __init__(self, movement_strategy: 'BishopMovement'):
         self._movement_strategy = movement_strategy
 
@@ -38,7 +38,7 @@ class BishopRank(Rank):
         return self._movement_strategy
 
 
-class CastleRank(Rank):
+class CastleRank(FigureRank):
     def __init__(self, movement_strategy: 'CastleMovement'):
         self._movement_strategy = movement_strategy
 
@@ -47,7 +47,7 @@ class CastleRank(Rank):
         return self._movement_strategy
 
 
-class QueenRank(Rank):
+class QueenRank(FigureRank):
     def __init__(self, movement_strategy: 'QueenMovement'):
         self._movement_strategy = movement_strategy
 
@@ -56,7 +56,7 @@ class QueenRank(Rank):
         return self._movement_strategy
 
 
-class KingRank(Rank):
+class KingRank(FigureRank):
     def __init__(self, movement_strategy: 'KingMovement'):
         self._movement_strategy = movement_strategy
 

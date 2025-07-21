@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 from geometry import GridCoordinate
 
 if TYPE_CHECKING:
-    from chess.chess_piece.chess_piece import ChessPiece
+    from chess.figure.chess_piece import ChessPiece
     from board import Board
 
 class MoveRule(ABC):
