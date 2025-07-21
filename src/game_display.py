@@ -7,7 +7,7 @@ from colorama.ansi import clear_line
 
 from constants import GameColor, PlacementStatus
 from geometry import GridCoordinate
-from grid_entity import GridEntity, Mover, HorizontalMover, VerticalMover
+from grid_entity import GridEntity, Mover, HorizontalMover, VerticalMover, BrickPallet
 
 if TYPE_CHECKING:
     from board import Board
@@ -112,7 +112,8 @@ class GameDisplay:
             entity.dimension.height * self.cell_px - self.border_px
         )
         # Draw the mover (fixed the width parameter)
-
+        if isinstance(entity, BrickPallet):
+            pygame.draw.rect(self.screen, GameColor.SLATE.value, rect)
         if isinstance(entity, HorizontalMover):
             pygame.draw.rect(self.screen, horizontal_mover_color, rect)
         if isinstance(entity, VerticalMover):

@@ -10,8 +10,9 @@ class GridEntity:
     top_left_coordinate: Optional[GridCoordinate] = None
 
 @dataclass
-class BrikPallet(GridEntity):
+class BrickPallet(GridEntity):
     pass
+
 
 @dataclass(kw_only=True)
 class Mover(GridEntity, ABC):
