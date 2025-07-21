@@ -5,42 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/podscape/test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/podscape/test/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/podscape/test/game/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/podscape/test/game/figure/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board_driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/board_driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pygame_diagnostic_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/pygame_diagnostic_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/run_game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity_RESPONSIBILITIES.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/Entity_RESPONSIBILITIES.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/chess_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/chess_board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/chess_square.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/movement/movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/movement/movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/movement/movement_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/movement/movement_strategy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/entity_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/game_display.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/game_piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/geometry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/grid_entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/grid_entity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/id_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/id_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MODEL.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/MODEL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/OCCUPANT.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/OCCUPANT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/bin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/bin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/crate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/crate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/portal/door.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/portal/door.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/portal/door_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/portal/door_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/portal/portal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/portal/portal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/game/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/game/board/test_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/test/game/board/test_board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/game/board/test_square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/test/game/board/test_square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/game/figure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/model/portal/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/game/figure/test_game_figure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/test/game/figure/test_game_figure.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +59,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "chess",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/podscape/src/chess",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/podscape/src/chess/board",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -115,6 +84,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\board" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\chess_piece" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\movement" />
@@ -308,7 +278,7 @@
       <workItem from="1752708903578" duration="6000" />
       <workItem from="1752965567062" duration="2390000" />
       <workItem from="1753011601753" duration="739000" />
-      <workItem from="1753074520002" duration="23070000" />
+      <workItem from="1753074520002" duration="28584000" />
     </task>
     <servers />
   </component>

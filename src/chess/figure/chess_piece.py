@@ -5,9 +5,9 @@ from abc import ABC
 from typing import List, Optional
 
 class ChessPiece(ABC):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
-        if not piece_id:
-            raise ValueError("piece_id cannot be null or empty.")
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+        if not chess_piece_id:
+            raise ValueError("chess_piece_id cannot be null or empty.")
         if not name:
             raise ValueError("name cannot be null or empty.")
         if not team:
@@ -15,11 +15,11 @@ class ChessPiece(ABC):
         if rank is None:
             raise ValueError("movement cannot be null.")
 
-        self._piece_id = piece_id
+        self._piece_id = chess_piece_id
         self._name = name
         self._team = team
         self._rank = rank
-        self._position_history: List['GridCoordinate'] = []
+        self._position_history: List['Coordinate'] = []
 
     # === Immutable attributes ===
     @property
@@ -59,31 +59,31 @@ class ChessPiece(ABC):
 
 
 class Pawn(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
-        super().__init__(piece_id, name, team, rank)
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+        super().__init__(chess_piece_id, name, team, rank)
 
 
 class Knight(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
-        super().__init__(piece_id, name, team, rank)
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+        super().__init__(chess_piece_id, name, team, rank)
 
 
 class Bishop(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
-        super().__init__(piece_id, name, team, rank)
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+        super().__init__(chess_piece_id, name, team, rank)
 
 
 class Castle(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
-        super().__init__(piece_id, name, team, rank)
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+        super().__init__(chess_piece_id, name, team, rank)
 
 
 class Queen(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
-        super().__init__(piece_id, name, team, rank)
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+        super().__init__(chess_piece_id, name, team, rank)
 
 
 class King(ChessPiece):
-    def __init__(self, piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
-        super().__init__(piece_id, name, team, rank)
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+        super().__init__(chess_piece_id, name, team, rank)
 

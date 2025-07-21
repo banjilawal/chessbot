@@ -1,5 +1,6 @@
 import random
 from dataclasses import dataclass, field
+from time import process_time
 
 from typing import Tuple, List, Optional, cast
 
@@ -9,6 +10,10 @@ from grid_entity import GridEntity, Mover
 
 from constants import Config
 from id_factory import id_factory
+
+from chess.figure.chess_piece import ChessPiece
+
+DIMENSION = 8
 
 class Coordinate:
     row: int
@@ -28,205 +33,125 @@ class ChessSquare:
 
 
 @dataclass
-class Board:
-    MIN_ROW_COUNT = 6
-    MIN_COLUMN_COUNT = 6
+class ChessBoard:
 
-    entities: List[GridEntity] = field(default_factory=list)
 
+    chess_pieces: List[ChessPiece] = field(default_factory=list)
     squares: Tuple[Tuple[ChessSquare, ...], ...] = field(init=False, repr=False)
-    dimension: Dimension = field(
-        default_factory=lambda: Dimension(length=Config.COLUMN_COUNT, height=Config.ROW_COUNT))
 
     def __post_init__(self):
-        if not all([
-            self.dimension.height > self.MIN_ROW_COUNT,
-            self.dimension.length > self.MIN_COLUMN_COUNT
-        ]):
-            raise ValueError("Board dimensions below minimum values")
-
-        cells = tuple(
+        squares = tuple(
             tuple(
-                Cell(
+                ChessSquare(
                     id=id_factory.cell_id(),
-                    coordinate=GridCoordinate(row=row, column=col)
+                    coordinate=Coordinate(row=row, column=col)
                 )
-                for col in range(self.dimension.length)
+                for col in range(DIMENSION)
             )
-            for row in range(self.dimension.height)
+            for row in range(DIMENSION)
         )
-        object.__setattr__(self, 'cells', cells)
+        object.__setattr__(self, 'squares', squares)
 
-    def get_mover_by_id(self, mover_id: int) -> Optional[GridEntity]:
-        for entity in self.entities:
-            print(entity)
-            if entity.id == mover_id:
-                return entity
+    def get_chess_piece_by_id(self, target_id: int) -> Optional[GridEntity]:
+        for chess_piece in self.chess_pieces:
+            print("Checking if ", chess_piece.name, " is mover with id ", mover_id)
+            if chess_piece.id == target_id:
+                return chess_piece
         return None
 
-    def get_all_movers(self) -> List[Mover]:
-        movers = []
-        for entity in self.entities:
-            if isinstance(entity, Mover):
-                mover = cast(Mover, entity)
-                if mover not in movers:
-                    movers.append(mover)
-        return self.entities
+    def get_all_occupants(self) -> List[ChessPiece]:
+        return self.chess_pieces
 
-    def get_empty_cells(self) -> List[Cell]:
-        empty_cells = []
-        for row in self.cells:
-            for cell in row:
-                if cell.occupant is None and cell not in empty_cells:
-                    empty_cells.append(cell)
-        return empty_cells
+    def get_empty_squares(self) -> List[ChessSquare]:
+        empty_squares = []
+        for row in self.squares:
+            for square in row:
+                if square.occupant is None and square not in empty_squares:
+                    empty_squares.append(square)
+        return empty_squares
 
-    def get_occupied_cells(self) -> List[Cell]:
-        occupied_cells = []
-        for row in self.cells:
-            for cell in row:
-                if cell.occupant is not None and cell not in occupied_cells:
-                    occupied_cells.append(cell)
-        return occupied_cells
+    def get_occupied_squares(self) -> List[ChessSquare]:
+        occupied_squares = []
+        for row in self.squares:
+            for square in row:
+                if square.occupant is not None and square not in occupied_squares:
+                    occupied_squares.append(square)
+        return occupied_squares
 
-    def get_cells_by_area(self, top_left_coordinate: GridCoordinate, dimension: Dimension) -> List[Cell]:
-        if top_left_coordinate is None or dimension is None:
-            raise ValueError("Coordinate and dimension must not be None.")
+    def remove_chess_piece(self, chess_piece_id: int) -> ChessPiece:
+        chess_piece = self.get_chess_piece_by_id(chess_piece_id)
+        if chess_piece is None:
+            raise ValueError("No chess piece with id", chess_piece_id,
+                             " is on the board. cannot remove a non-existent figure.")
+        return self.process_withdrawal(chess_piece)
 
-        start_row = top_left_coordinate.row
-        start_col = top_left_coordinate.column
+    def add_chess_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
+        if chess_piece is None:
+            raise ValueError("Cannot add a null chess piece")
+        if not self.is_valid_coordinate(coordinate):
+            raise ValueError("THe chess piece cannot be addd. The destination coordinate is out of range.")
+        if self.squares[coordinate.row][coordinate.column].occupant is not None:
+            raise ValueError("The chess piece cannot be added. The destination square is already occupied.")
 
-        end_row = start_row + dimension.height - 1
-        end_col = start_col + dimension.length - 1
+        self.process_occupation(chess_piece, coordinate)
 
-        cells_in_area = []
-        for r in range(start_row, end_row + 1):
-            for c in range(start_col, end_col + 1):
-                cells_in_area.append(self.cells[r][c])
-        return cells_in_area
-
-    def get_cells_occupied_by_entity(self, entity: GridEntity) -> List[Cell]:
-        if entity is None:
-            return []
-        occupied_cells = []
-        for row in self.cells:
-            for cell in row:
-                if cell.occupant == entity:
-                    occupied_cells.append(cell)
-        return occupied_cells
-
-    def remove_entity_from_cells(self, mover: Mover) -> None:
-        if mover is None:
-            raise ValueError("Entity not found on the board. cannot remove a non-existent figure.")
-
-        target_cells = self.get_cells_occupied_by_entity(mover)
-        for cell in target_cells:
-            if cell.occupant == mover:
-                cell.occupant = None
-
-    def add_entity_to_area(self, entity: GridEntity, top_left_coordinate: GridCoordinate) -> None:
-
-        if top_left_coordinate is None:
-            raise ValueError("Cannot add figure to an area without a top-left top_left_coordinate.")
-
-        if entity is None:
-            raise ValueError("Entity not found on the board. cannot add a non-existent figure.")
-
-        if entity is None or top_left_coordinate is None:
-            raise ValueError("Entity and top_left_coordinate must not be None.")
-
-        target_cells = self.get_cells_by_area(top_left_coordinate, entity.dimension)
-
-        for cell in target_cells:
-            cell.occupant = entity
-        entity.top_left_coordinate = top_left_coordinate
-
-    def add_new_entity(self, top_left_coordinate: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
-        if top_left_coordinate is None or entity is None:
-            raise ValueError("Top-left top_left_coordinate and figure must not be None.")
-
-        # Bounds check
-        if top_left_coordinate.row + entity.dimension.height > self.dimension.height:
-            raise Exception("Entity does not fit within board bounds at the specified top_left_coordinate.")
-
-        if top_left_coordinate.column + entity.dimension.length > self.dimension.length:
-            raise Exception("Entity does not fit within board bounds at the specified top_left_coordinate.")
-
-        if not self.can_entity_move_to_cells(entity, top_left_coordinate):
-            print("Coordinate", top_left_coordinate, "is ouccupoied by another entity. Canni=ot move here")
+    def move_chess_piece(self, chess_piece: ChessPiece, destination: Coordinate) -> Optional[ChessPiece]:
+        if chess_piece is None:
+            raise ValueError("Cannot move a null chess piece.")
+            return None
+        if not self.is_valid_coordinate(destination):
+            raise ValueError("Cannot move the chess piece. The destination coordinate is out of range.")
             return None
 
-        self.register_new_entity(entity)
-        self.add_entity_to_area(entity, top_left_coordinate)
-        return entity
+        square = self.squares[destination.row][destination.column]
+        if square.occupant is not None and not self.are_enemies(chess_piece, square.occupant):
+            raise ValueError("Cannot move the chess piece. It is occupied by a friendly")
+            retun None
 
-    def move_entity(self, upper_left_destination: GridCoordinate, mover: Mover) -> Optional[Mover]:
-        if upper_left_destination is None:
-            raise ValueError("Destination top_left_coordinate must not be None.")
+        if square.occupant is not None and self.are_enemies(chess_piece, square.occupant):
+            return self.process_capture(captor=chess_piece, prisoner=square.occupant)
 
-        if mover is None:
-            raise ValueError("Entity does not exist. in the board. cannot move a non-existent figure.")
+        self.process_occupation(chess_piece, destination)
+        return None
 
-        if not self.can_entity_move_to_cells(mover, upper_left_destination):
-            print("Entity", mover.mover_id, "cannot move to", upper_left_destination)
+    def process_capture(self, captor: ChessPiece, prisoner: ChessPiece) -> ChessPiece:
+        if captor is None or prisoner is None:
+            raise ValueError("Cannot process a capture. A null figure is specified.")
+        recorded_prisoner = self.process_withdrawal(prisoner)
+        self.process_withdrawal(captor)
+        return recorded_prisoner
+
+    def process_occupation(self, occupant: ChessPiece, destination: Coordinate) -> None:
+        if occupant is None or not self.is_valid_coordinate(destination):
+            raise ValueError("Cannot process an occupation. A null figure is specified.")
             return None
 
-        self.remove_entity_from_cells(mover)
-        self.add_entity_to_area(mover, upper_left_destination)
-        return mover
+        self.squares[destination.row][destination.column].occupant = occupant
+        occupant.coordinate = destination
 
-    def remove_entity(self, entity: GridEntity) -> None:
-        if entity is None:
-            raise ValueError("Entity does not exist. in the board. cannot remove a non-existent figure.")
-        self.remove_entity_from_cells(entity)
-        self.entities.remove(entity)
+    def process_withdrawal(self, ex_occupant: ChessPiece) -> ChessPiece:
+        if ex_occupant is None:
+            raise ValueError("Cannot process a withdrawal. A null figure is specified.")
+            return None
+        if ex_occupant.coordinate is None:
+            raise ValueError("Cannot process a withdrawal. The occupant does not have a coordinate.")
+            return None
 
-    def can_entity_move_to_cells(self, entity: GridEntity, new_top_left_coordinate: GridCoordinate) -> bool:
-        if entity is None or new_top_left_coordinate is None:
-            raise ValueError("Entity and coordinate must not be None.")
+        self.squares[ex_occupant.coordinate.row][ex_occupant.coordinate.column].occupant = None
+        ex_occupant.coordinate = None
+        return ex_occupant
 
-        if (new_top_left_coordinate.row < 0 or new_top_left_coordinate.column < 0 or
-                new_top_left_coordinate.row + entity.dimension.height > self.dimension.height or
-                new_top_left_coordinate.column + entity.dimension.length > self.dimension.length):
+    def are_enemies(self, a: ChessPiece, b: ChessPiece):
+        return a.team.color == b.team.color
+
+    def is_valid_coordinate(self, coordinate: Coordinate):
+        if coordinate is None:
+            print("A null coordinate is not valid")
             return False
-
-        entity_height = entity.dimension.height
-        entity_length = entity.dimension.length
-
-        # Top-left (already have this as new_top_left_coordinate)
-        top = new_top_left_coordinate.row
-        left = new_top_left_coordinate.column
-
-        # Bottom-right
-        bottom = top + entity_height - 1
-        right = left + entity_length - 1
-
-        # Boundary checks (all must be True)
-        if not (0 <= top < self.dimension.height and
-                0 <= left < self.dimension.length and
-                0 <= bottom < self.dimension.height and
-                0 <= right < self.dimension.length):
+        if coordinate.row <= -1 or coordinate.row >= DIMENSION:
+            print("The coordinate is not valid. Its row is out of range")
             return False
-
-        # Collision detection (now using proper boundaries)
-        for r in range(top, bottom + 1):
-            for c in range(left, right + 1):
-                cell = self.cells[r][c]
-                if cell.occupant is not None and cell.occupant != entity:
-                    return False
+        if coordinate.column <= -1 or coordinate.column >= DIMENSION:
+            print("The coordinate is not valid. Its column is out of range")
+            return False
         return True
-
-    def random_empty_cell(self) -> Optional[Cell]:
-        if len(self.get_empty_cells()) == 0:
-            return None
-        cell = random.choice(self.get_empty_cells())
-        while cell is None:
-            cell = random.choice(self.get_empty_cells())
-        return cell
-
-    def register_new_entity(self, entity: GridEntity) -> None:
-        if entity is None:
-            raise ValueError("Entity must not be None.")
-
-        if entity not in self.entities:
-            self.entities.append(entity)

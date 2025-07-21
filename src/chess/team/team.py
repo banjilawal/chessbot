@@ -33,5 +33,5 @@ class Team:
         for rank_name, count in ranks.items():
             for i in range(1, count + 1):
                 piece_id = f"{rank_name}_{i}" if count > 1 else rank_name
-                registry[piece_id] = ChessPiece(team=self, rank_name=rank_name, piece_id=piece_id)
+                registry[piece_id] = ChessPiece(team=self, rank_name=rank_name, chess_piece_id=piece_id)
         return registry
