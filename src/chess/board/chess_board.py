@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from typing import Tuple, List, Optional, cast
+from wsgiref.validate import check_errors
 
 from chess.common.emitter import id_emitter
 from chess.common.geometry import ChessSquare, Coordinate
@@ -60,7 +61,7 @@ class ChessBoard:
                              " is on the board. cannot remove a non-existent figure.")
         return self.process_withdrawal(chess_piece)
 
-    def add_chess_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
+    def add_new_chess_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
         if chess_piece is None:
             raise ValueError("Cannot add a null chess piece")
         if not self.is_valid_coordinate(coordinate):
@@ -70,43 +71,32 @@ class ChessBoard:
 
         self.process_occupation(chess_piece, coordinate)
 
-    def move_chess_piece(self, chess_piece: ChessPiece, destination: Coordinate) -> Optional[ChessPiece]:
+    def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate) -> Optional[ChessPiece]:
         if chess_piece is None:
-            print("Cannot move a null chess piece.")
-            return None
-        if not self.is_valid_coordinate(destination):
-            print("Cannot move the chess piece. The destination coordinate is out of range.")
-            return None
-
-        square = self.squares[destination.row][destination.column]
-        if square.occupant is not None:
-            return process_capture(chess_piece, square.occupant)
-
-        self.process_occupation(chess_piece, destination)
-        return None
-
-    # change tthe signature and name to capture_square then it can deal with all the cases
-    def process_capture(self, captor: ChessPiece, prisoner: ChessPiece) -> ChessPiece:
-        if captor is None or prisoner is None:
             print("Captor cannot be null. Aborting capture process.")
             return None
-        if prisoner is not None and not self.are_enemies(captor, prisoner):
+        if not self.is_valid_coordinate(coordinate):
+            print("The destination coordinate is out of range. Aborting capture process.")
+            return None
+
+        square = self.squares[coordinate.row][coordinate.column]
+        current_occupant = square.occupant
+        if current_occupant is not None and not self.are_enemies(chess_piece, current_occupant ):
             print("A friendly is occupying the square. Aborting capture process.")
             return None
 
-        if prisoner is not None and self.are_enemies(captor, prisoner):
-            square = self.squares[prisoner.row][prisoner.column]
-            recorded_prisoner = self.remove_chess_piece(prisoner)
+        if current_occupant is not None and self.are_enemies(chess_piece, current_occupant):
+            prisoner = self.remove_chess_piece(current_occupant.id)
+            captor = self.remove_chess_piece(chess_piece)
             square.occupant = captor
             captor.coordinate = square.coordinate
-            return recorded_prisoner
+            return prisoner
 
-        if prisoner is None:
-            print("No prisoner. Captor occupying square")
-            self.process_occupation(captor)
+        if current_occupant is None:
+            future_occupant = self.remove_chess_piece(chess_piece.piece_id)
+            square.occupant = future_occupant
+            future_occupant.coordinate = square.coordinate
             return None
-
-
 
 
     def process_occupation(self, occupant: ChessPiece, destination: Coordinate) -> None:
