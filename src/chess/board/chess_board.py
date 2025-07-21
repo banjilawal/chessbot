@@ -57,9 +57,19 @@ class ChessBoard:
     def remove_chess_piece(self, chess_piece_id: int) -> ChessPiece:
         chess_piece = self.get_chess_piece_by_id(chess_piece_id)
         if chess_piece is None:
-            raise ValueError("No chess piece with id", chess_piece_id,
-                             " is on the board. cannot remove a non-existent figure.")
-        return self.process_withdrawal(chess_piece)
+            print("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent figure.")
+            return None
+        if chess_piece.coordinate is None:
+            print("Cannot remove a chess piece from an empty square.")
+            return None
+
+
+        square = self.squares[chess_piece.coordinate.row][chess_piece.coordinate.column]
+        square.occupant = None
+        chess_piece.coordinate = None
+        self.chess_pieces.remove(chess_piece)
+
+        return chess_piece
 
     def add_new_chess_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
         if chess_piece is None:
@@ -97,27 +107,8 @@ class ChessBoard:
             square.occupant = future_occupant
             future_occupant.coordinate = square.coordinate
             return None
+        return None
 
-
-    def process_occupation(self, occupant: ChessPiece, destination: Coordinate) -> None:
-        if occupant is None or not self.is_valid_coordinate(destination):
-            raise ValueError("Cannot process an occupation. A null figure is specified.")
-            return None
-
-        self.squares[destination.row][destination.column].occupant = occupant
-        occupant.coordinate = destination
-
-    def process_withdrawal(self, ex_occupant: ChessPiece) -> ChessPiece:
-        if ex_occupant is None:
-            raise ValueError("Cannot process a withdrawal. A null figure is specified.")
-            return None
-        if ex_occupant.coordinate is None:
-            raise ValueError("Cannot process a withdrawal. The occupant does not have a coordinate.")
-            return None
-
-        self.squares[ex_occupant.coordinate.row][ex_occupant.coordinate.column].occupant = None
-        ex_occupant.coordinate = None
-        return ex_occupant
 
     def are_enemies(self, a: ChessPiece, b: ChessPiece):
         return a.team.color == b.team.color
