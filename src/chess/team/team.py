@@ -1,19 +1,21 @@
 from dataclasses import field
 from typing import Dict, Optional
 
+from chess.common.config import ChessFigureCategory
+from chess.common.geometry import Direction
 from chess.figure.chess_piece import ChessPiece
 from podscape.constants import GameColor
 
 
 class Team:
+    team_id: int
     color: GameColor
-    starting_row: int = field(init=False)
-    advancement_direction: int = field(init=False)
-    goal_row: int = field(init=False)
-    piece_registry: Dict[str, Optional[ChessPiece]] = field(init=False)
+    home_row: int = field(init=False)
+    advancement_direction: Direction = field(init=False)
+    piece_registry: Dict[ChessFigureCategory, Dict[int, Optional[ChessPiece]]] = field(init=False)
 
     def __post_init__(self):
-        object.__setattr__(self, 'starting_row', 6 if self.color == GameColor.RED else 1)
+        object.__setattr__(self, 'home_row', 6 if self.color == GameColor.RED else 1)
         object.__setattr__(self, 'goal_row', 0 if self.color == GameColor.RED else 7)
         object.__setattr__(self, 'advancement_direction', -1 if self.color == GameColor.RED else +1)
 

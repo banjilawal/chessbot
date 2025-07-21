@@ -3,6 +3,12 @@ from typing import Optional
 
 from chess.figure.chess_piece import ChessPiece
 
+class Direction(Enum):
+    NORTH = auto()
+    SOUTH = auto()
+    EAST = auto()
+    WEST = auto()
+
 
 class Coordinate:
     row: int
