@@ -1,5 +1,5 @@
 from dataclasses import field
-from typing import Dict
+from typing import Dict, Optional
 
 from chess.chess_piece.piece import ChessPiece
 from constants import GameColor
