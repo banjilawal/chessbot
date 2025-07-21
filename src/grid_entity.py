@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 from dataclasses import dataclass, field
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, List
 
 from geometry import Dimension, GridCoordinate
 
@@ -63,7 +63,10 @@ class UniversalMover(Mover):
         )
 
 class MoveStrategy(ABC):
-    def _check_basic_conditions(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+    def __init__(self, rules: List['MoveRule']):
+        self.rules = rules
+
+    def _check_basic_conditions(self, mover: 'Mover', board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
         if mover is None:
             print("[Warning] Mover cannot be None. It cannot move.")
             return False
@@ -83,36 +86,8 @@ class MoveStrategy(ABC):
             print(f"[Warning] Vertical move out of bounds: {destination_coordinate.row}")
             return False
         return True
+
     @abstractmethod
-    def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        pass
-
-class HorizontalMoveStrategy(MoveStrategy):
-    def move(self, mover: HorizontalMover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        if destination_coordinate.row != mover.top_left_coordinate.row:
-            print("[Warning] Destination top_left_coordinate is not on the same row as the mover. Cannot move.")
-            return False
-
-        destination_column = mover.top_left_coordinate.column
-        print("strategy calculated destination column:", destination_column)
-        return board.move_entity(destination_coordinate, mover) is not None
-
-class VerticalMoveStrategy(MoveStrategy):
-    def move(self, mover: VerticalMover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        if destination_coordinate.column != mover.top_left_coordinate.column:
-            print("[Warning] Destination top_left_coordinate is not on the same column as the mover. Cannot move.")
-            return False
-
-        destination_row = mover.top_left_coordinate.row
-        print("strategy calculated destination row:", destination_row)
-        return board.move_entity(destination_coordinate, mover) is not None
-
-class UniversalMoveStrategy(MoveStrategy):
-    def move(self, mover: VerticalMover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        destination_row = mover.top_left_coordinate.row
-        print("strategy calculated destination row:", destination_row)
-        return board.move_entity(destination_coordinate, mover) is not None
-
-class DragStrategy(ABC):
-    def move(self, mover: Mover, board: 'Board', destination_coordinate: GridCoordinate) -> bool:
+    def move(self, mover: 'Mover', board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
+        """Perform the move if valid. Return True if successful, False otherwise."""
         pass
