@@ -9,7 +9,7 @@ class HomeOrientation(Enum):
     NORTH = "North"
     SOUTH = "South"
 
-    def home_row(self):
+    def first_home_row(self):
         if self == HomeOrientation.NORTH:
             return 0
         return BOARD_DIMENSION - 1
@@ -18,6 +18,11 @@ class HomeOrientation(Enum):
         if self == HomeOrientation.NORTH:
             return HomeOrientation.SOUTH
         return HomeOrientation.NORTH
+
+    def step_toward_enemy(self):
+        if self == HomeOrientation.NORTH:
+            return -1
+        return 1
 
 
 @dataclass(frozen=True)
