@@ -35,4 +35,19 @@ class ChessFigureCategory(Enum):
             return self
         return None
 
+    def number_per_team(self) -> int:
+        if self == ChessFigureCategory.PAWN:
+            return 8
+        if self == ChessFigureCategory.KNIGHT:
+            return 2
+        if self == ChessFigureCategory.BISHOP:
+            return 2
+        if self == ChessFigureCategory.CASTLE:
+            return 2
+        if self == ChessFigureCategory.QUEEN:
+            return 1
+        if self == ChessFigureCategory.KING:
+            return 1
+        return 0
+
 
