@@ -1,5 +1,5 @@
 from dataclasses import field
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 
 from chess.common.config import ChessPieceConfig
 from chess.figure.chess_piece import ChessPiece
@@ -10,6 +10,7 @@ class Team:
     team_id: int
     color: GameColor
     home: TeamHome
+    captives:List[ChessPiece] = field(default_factory=list)
     piece_registry: Dict[ChessPieceConfig, Dict[int, Optional[ChessPiece]]] = field(init=False)
 
     def __post_init__(self):
