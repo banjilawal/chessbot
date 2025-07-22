@@ -1,14 +1,12 @@
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
 
-from podscape.geometry import GridCoordinate
+from chess.common.geometry import Coordinate
 
-if TYPE_CHECKING:
-    pass
 
 class MoveRule(ABC):
+    __
     @abstractmethod
-    def is_valid(self, start: GridCoordinate, end: GridCoordinate) -> bool:
+    def is_valid(self, start: Coordinate, end: Coordinate) -> bool:
         pass
 
 class VerticalMoveRule(MoveRule):

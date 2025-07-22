@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/record.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/record.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/chess_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/chess_board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/figure/figure_rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/figure/figure_rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/movement/movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/movement/movement.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +91,11 @@
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\movement" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\game\record" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\podscape" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\chess_piece" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\rank" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src" />
-      <recent name="C:\Users\banji\PycharmProjects\podscape\docs" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run_game">
@@ -277,7 +280,7 @@
       <workItem from="1752965567062" duration="2390000" />
       <workItem from="1753011601753" duration="739000" />
       <workItem from="1753074520002" duration="78753000" />
-      <workItem from="1753197301502" duration="1156000" />
+      <workItem from="1753197301502" duration="3608000" />
     </task>
     <servers />
   </component>

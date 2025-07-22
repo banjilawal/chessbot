@@ -1,19 +1,14 @@
 from dataclasses import dataclass, field
-from typing import Tuple, List, Optional, cast
-from wsgiref.validate import check_errors
+from typing import Tuple, List, Optional
 
 from chess.common.emitter import id_emitter
 from chess.common.geometry import ChessSquare, Coordinate
 from chess.figure.chess_piece import ChessPiece, CaptivityStatus
 
-DIMENSION = 8
-
-
-
-@dataclass
+@dataclass(frozen=True)
 class ChessBoard:
-    chess_pieces: List[ChessPiece] = field(default_factory=list)
-    squares: Tuple[Tuple[ChessSquare, ...], ...] = field(init=False, repr=False)
+    _chess_pieces: List[ChessPiece] = field(default_factory=list)
+    _squares: Tuple[Tuple[ChessSquare, ...], ...] = field(init=False, repr=False)
 
     def __post_init__(self):
         squares = tuple(
@@ -22,7 +17,7 @@ class ChessBoard:
                     id=id_emitter.square_id_counter(),
                     coordinate=Coordinate(row=row, column=col)
                 )
-                for col in range(DIMENSION)
+                for col in range(BOARD_DIMENSION)
             )
             for row in range(DIMENSION)
         )
