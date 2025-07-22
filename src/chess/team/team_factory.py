@@ -24,7 +24,7 @@ def TeamBuilder():
 
     def get_pawn_dictionary(team: Team):
         base_name = team.color + "_" + ChessPieceConfig.PAWN.name
-        rank = ChessPieceConfig.PAWN.get_rank()
+        rank = ChessPieceConfig.PAWN.rank()
         pawn_dict = {}
 
         for i in ChessPieceConfig.PAWN.number_per_team():
@@ -50,7 +50,7 @@ def TeamBuilder():
 
     def get_bishop_dictionary(team: Team):
         base_name = team.color + "_" + ChessPieceConfig.BISHOP.name
-        rank = ChessPieceConfig.BISHOP.get_rank()
+        rank = ChessPieceConfig.BISHOP.rank()
         bishop_dict = {}
 
         for i in ChessPieceConfig.BISHOP.number_per_team():
@@ -76,7 +76,7 @@ def TeamBuilder():
 
     def get_queen_dictionary(team: Team):
         base_name = team.color + "_" + ChessPieceConfig.QUEEN.name
-        rank = ChessPieceConfig.QUEEN.get_rank()
+        rank = ChessPieceConfig.QUEEN.rank()
         queen_dict = {}
 
         for i in ChessPieceConfig.QUEEN.number_per_team():

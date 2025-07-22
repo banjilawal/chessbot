@@ -15,7 +15,7 @@ class ChessPieceConfig(Enum):
     QUEEN = "Queen"
     KING = "King"
 
-    def get_movement_strategy(self) -> Optional[PawnMovement]:
+    def movement_strategy(self) -> Optional[PawnMovement]:
         if self == ChessPieceConfig.PAWN:
             return PawnMovement()
         if self == ChessPieceConfig.KNIGHT:
@@ -30,7 +30,7 @@ class ChessPieceConfig(Enum):
             return KingMovement()
         return None
 
-    def get_rank(self) -> Optional[FigureRank]:
+    def rank(self) -> Optional[FigureRank]:
         if self == ChessPieceConfig.PAWN:
             return PawnRank(PawnMovement())
         if self == ChessPieceConfig.KNIGHT:
@@ -45,8 +45,8 @@ class ChessPieceConfig(Enum):
             return KingRank(KingMovement())
         return None
 
-    def find_category(self, figure_rank: FigureRank) -> Optional['ChessPieceConfig']:
-        if figure_rank == self.get_rank():
+    def find_config(self, figure_rank: FigureRank) -> Optional['ChessPieceConfig']:
+        if figure_rank == self.rank():
             return self
         return None
 
