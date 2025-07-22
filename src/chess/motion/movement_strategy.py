@@ -1,15 +1,16 @@
-from chess.figure.chess_piece import ChessPiece
-from chess.movement.movement import Move
-from podscape.geometry import GridCoordinate
+from abc import ABC
 
+from chess.common.geometry import Coordinate
+from chess.figure.chess_piece import ChessPiece
+from chess.motion.diagonal import Move
 
 class MovementStrategy(ABC):
     """ A MovementStrategy is a collection of MoveRules that define how a piece can move."""
     def __init__(self, rules: list[Move]):
         self.rules = rules
 
-    def is_valid_move(self, start: GridCoordinate, end: GridCoordinate) -> bool:
-        return any(rule.is_valid_move(start, end) for rule in self.rules)
+    def is_valid_move(self, origin: Coordinate, destination: Coordinate) -> bool:
+        return any(rule.motion_fits_rule(origin, destinatio) for rule in self.rules)
 
     def _check_basic_conditions(self, chess_piece: ChessPiece, board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
         if chess_piece is None:
@@ -39,31 +40,31 @@ class MovementStrategy(ABC):
 
 class PawnMovement(MovementStrategy):
     def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        # TODO: Implement pawn-specific movement logic
+        # TODO: Implement pawn-specific motion logic
         return False
 
 
 class KnightMovement(MovementStrategy):
     def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        # TODO: Implement knight's L-shaped movement
+        # TODO: Implement knight's L-shaped motion
         return False
 
 
 class BishopMovement(MovementStrategy):
     def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        # TODO: Implement bishop's diagonal movement
+        # TODO: Implement bishop's diagonal motion
         return False
 
 
 class CastleMovement(MovementStrategy):
     def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        # TODO: Implement rook's straight-line movement
+        # TODO: Implement rook's straight-line motion
         return False
 
 
 class QueenMovement(MovementStrategy):
     def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:
-        # TODO: Implement queen's combined rook + bishop movement
+        # TODO: Implement queen's combined rook + bishop motion
         return False
 
 

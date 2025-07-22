@@ -2,7 +2,7 @@ from enum import Enum, auto
 from typing import Optional
 
 from chess.figure.figure_rank import PawnRank, FigureRank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
-from chess.movement.movement_strategy import PawnMovement, KnightMovement, BishopMovement, CastleMovement, \
+from chess.motion.movement_strategy import PawnMovement, KnightMovement, BishopMovement, CastleMovement, \
     QueenMovement, KingMovement
 
 BOARD_DIMENSION = 8

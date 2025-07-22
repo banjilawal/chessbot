@@ -4,7 +4,7 @@ from chess.common.config import ChessPieceConfig
 from chess.common.geometry import Coordinate
 from chess.figure.figure_rank import PawnRank, FigureRank, QueenRank
 from chess.figure.promotable import RankPromotable
-from chess.movement.movement_strategy import QueenMovement
+from chess.motion.movement_strategy import QueenMovement
 from chess.team.team import Team
 
 from abc import ABC
@@ -24,7 +24,7 @@ class ChessPiece(ABC):
         if not team:
             raise ValueError("team cannot be null or empty.")
         if rank is None:
-            raise ValueError("movement cannot be null.")
+            raise ValueError("motion cannot be null.")
         self._status = CaptivityStatus.FREE
         self._piece_id = chess_piece_id
         self._name = name
