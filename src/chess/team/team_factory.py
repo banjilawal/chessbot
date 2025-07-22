@@ -1,6 +1,6 @@
 from chess.common.config import ChessPieceConfig
 from chess.common.emitter import id_emitter
-from chess.figure.chess_piece import Pawn, Knight
+from chess.figure.chess_piece import Pawn, Knight, Bishop, Castle, King
 from chess.team.chess_piece_builder import ChessPieceBuilder
 from chess.team.team import Team
 from podscape.constants import GameColor
@@ -12,26 +12,23 @@ def TeamBuilder():
         pass
 
     def build_team(self, team_id: int, team_color: GameColor) -> Team:
-        product = Team(team_id=team_id, color=team_color)
+        team = Team(team_id=team_id, color=team_color)
+        team.piece_registry[ChessPieceConfig.PAWN.name] = get_pawn_dictionary(team)
+        team.piece_registry[ChessPieceConfig.KNIGHT.name] = get_knight_dictionary(team)
+        team.piece_registry[ChessPieceConfig.BISHOP.name] = get_bishop_dictionary(team)
+        team.piece_registry[ChessPieceConfig.CASTLE.name] = get_castle_dictionary(team)
+        team.piece_registry[ChessPieceConfig.QUEEN.name] = get_queen_dictionary(team)
+        team.piece_registry[ChessPieceConfig.KING.name] = get_king_dictionary(team)
 
-        for config in ChessPieceConfig:
-            add_rank_members(team, config)
-        return product
-
-    def add_rank_memebers(self, team: Team, config: ChessPieceConfig):
-        base_name = team.color + "_" + config.name
-        for i in range config.number_of_members():
-            name = base_name + "_" + str(i + 1)
-            chess_piec
+        return team
 
 
     def get_pawn_dictionary(team: Team):
-        pawn_config = ChessPieceConfig.PAWN
-        rank = pawn_config.get_rank()
-        base_name = team.color + "_" + pawn_config.name
+        base_name = team.color + "_" + ChessPieceConfig.PAWN.name
+        rank = ChessPieceConfig.PAWN.get_rank()
         pawn_dict = {}
 
-        for i in pawn_config.number_per_team():
+        for i in ChessPieceConfig.PAWN.number_per_team():
             key = i + 1
             name = base_name + "_" + key
             rank = i + 1
@@ -42,7 +39,7 @@ def TeamBuilder():
 
     def get_knight_dictionary(team: Team):
         base_name = team.color + "_" + ChessPieceConfig.KNIGHT.name
-        rank = ChessPieceBuildConfig.KNIGHT.rank()
+        rank = ChessPieceConfig.KNIGHT.rank()
         knight_dict = {}
 
         for i in ChessPieceConfig.KNIGHT.number_per_team():
@@ -52,3 +49,53 @@ def TeamBuilder():
             knight_dict[key] = Knight(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
         return knight_dict
 
+    def get_bishop_dictionary(team: Team):
+        base_name = team.color + "_" + ChessPieceConfig.BISHOP.name
+        rank = ChessPieceConfig.BISHOP.get_rank()
+        bishop_dict = {}
+
+        for i in ChessPieceConfig.BISHOP.number_per_team():
+            key = i + 1
+            name = base_name + "_" + key
+            chess_piece_id = id_emitter.chess_piece_id()
+            bishop_dict[key] = Bishop(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
+        return bishop_dict
+
+
+    def get_castle_dictionary(team: Team):
+        base_name = team.color + "_" + ChessPieceConfig.CASTLE.name
+        rank = ChessPieceConfig.CASTLE.rank()
+        castle_dict = {}
+
+        for i in ChessPieceConfig.CASTLE.number_per_team():
+            key = i + 1
+            name = base_name + "_" + key
+            chess_piece_id = id_emitter.chess_piece_id()
+            castle_dict[key] = Castle(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
+        return castle_dict
+
+
+    def get_queen_dictionary(team: Team):
+        base_name = team.color + "_" + ChessPieceConfig.QUEEN.name
+        rank = ChessPieceConfig.QUEEN.get_rank()
+        queen_dict = {}
+
+        for i in ChessPieceConfig.QUEEN.number_per_team():
+            key = i + 1
+            name = base_name + "_" + key
+            chess_piece_id = id_emitter.chess_piece_id()
+            queen_dict[key] = Bishop(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
+        return queen_dict
+
+
+    def get_king_dictionary(team: Team):
+        base_name = team.color + "_" + ChessPieceConfig.KING.name
+        rank = ChessPieceConfig.CASTLE.rank()
+        king_dict = {}
+
+        for i in ChessPieceConfig.KING.number_per_team():
+            key = i + 1
+            name = base_name + "_" + key
+            chess_piece_id = id_emitter.chess_piece_id()
+            king_dict[key] = King(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
+        return king_dict
