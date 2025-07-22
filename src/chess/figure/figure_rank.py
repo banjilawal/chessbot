@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABC
 
 
-class Rank(ABC):
+class FigureRank(ABC):
     _movement_strategy: MovementStrategy
     def __init__(self, movement_strategy: MovementStrategy):
         if movement_strategy is None:
@@ -13,32 +13,32 @@ class Rank(ABC):
         return self._movement_strategy
 
 
-class PawnRank(Rank):
+class PawnRank(FigureRank):
     def __init__(self, movement_strategy: 'PawnMovement'):
         super().__init__(movement_strategy)
 
 
-class KnightRank(Rank):
+class KnightRank(FigureRank):
     def __init__(self, movement_strategy: 'KnightMovement'):
         super().__init__(movement_strategy)
 
 
-class BishopRank(Rank):
+class BishopRank(FigureRank):
     def __init__(self, movement_strategy: 'BishopMovement'):
         super().__init__(movement_strategy)
 
 
-class CastleRank(Rank):
+class CastleRank(FigureRank):
     def __init__(self, movement_strategy: 'CastleMovement'):
         super().__init__(self, movement_strategy)
 
 
-class KingRank(Rank):
+class KingRank(FigureRank):
     def __init__(self, movement_strategy: 'KingMovement'):
         super().__init__(movement_strategy)
 
 
-class QueenRank(Rank):
+class QueenRank(FigureRank):
     def __init__(self, movement_strategy: 'QueenMovement'):
         super().__init__(self, movement_strategy)
 
