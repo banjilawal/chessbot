@@ -1,7 +1,7 @@
 from dataclasses import field
 from typing import Dict, Optional
 
-from chess.common.config import CheckPieceBuildConfig
+from chess.common.config import ChessPieceConfig
 from chess.common.geometry import HomeOrientation
 from chess.figure.chess_piece import ChessPiece
 from podscape.constants import GameColor
@@ -10,7 +10,7 @@ class Team:
     team_id: int
     color: GameColor
     home: HomeOrientation
-    piece_registry: Dict[CheckPieceBuildConfig, Dict[int, Optional[ChessPiece]]] = field(init=False)
+    piece_registry: Dict[ChessPieceConfig, Dict[int, Optional[ChessPiece]]] = field(init=False)
 
     def __post_init__(self):
         object.__setattr__(self, 'home_row', 6 if self.color == GameColor.RED else 1)

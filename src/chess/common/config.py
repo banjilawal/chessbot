@@ -7,7 +7,7 @@ from chess.movement.movement_strategy import PawnMovement, KnightMovement, Bisho
 
 BOARD_DIMENSION = 8
 
-class CheckPieceBuildConfig(Enum):
+class ChessPieceConfig(Enum):
     PAWN = "Pawn"
     KNIGHT = "Knight"
     BISHOP = "Bishop"
@@ -16,53 +16,54 @@ class CheckPieceBuildConfig(Enum):
     KING = "King"
 
     def get_movement_strategy(self) -> Optional[PawnMovement]:
-        if self == CheckPieceBuildConfig.PAWN:
+        if self == ChessPieceConfig.PAWN:
             return PawnMovement()
-        if self == CheckPieceBuildConfig.KNIGHT:
+        if self == ChessPieceConfig.KNIGHT:
             return KnightMovement()
-        if self == CheckPieceBuildConfig.BISHOP:
+        if self == ChessPieceConfig.BISHOP:
             return BishopMovement()
-        if self == CheckPieceBuildConfig.CASTLE:
+        if self == ChessPieceConfig.CASTLE:
             return CastleMovement()
-        if self == CheckPieceBuildConfig.QUEEN:
+        if self == ChessPieceConfig.QUEEN:
             return QueenMovement()
-        if self == CheckPieceBuildConfig.KING:
+        if self == ChessPieceConfig.KING:
             return KingMovement()
         return None
 
-    def get_figure_rank(self) -> Optional[FigureRank]:
-        if self == CheckPieceBuildConfig.PAWN:
+    def get_rank(self) -> Optional[FigureRank]:
+        if self == ChessPieceConfig.PAWN:
             return PawnRank(PawnMovement())
-        if self == CheckPieceBuildConfig.KNIGHT:
+        if self == ChessPieceConfig.KNIGHT:
             return KnightRank(KnightMovement())
-        if self == CheckPieceBuildConfig.BISHOP:
+        if self == ChessPieceConfig.BISHOP:
             return BishopRank(BishopMovement())
-        if self == CheckPieceBuildConfig.CASTLE:
+        if self == ChessPieceConfig.CASTLE:
             return CastleRank(CastleMovement())
-        if self == CheckPieceBuildConfig.QUEEN:
+        if self == ChessPieceConfig.QUEEN:
             return QueenRank(QueenMovement())
-        if self == CheckPieceBuildConfig.KING:
+        if self == ChessPieceConfig.KING:
             return KingRank(KingMovement())
         return None
 
-    def find_category(self, figure_rank: FigureRank) -> Optional['CheckPieceBuildConfig']:
-        if figure_rank == self.get_figure_rank():
+    def find_category(self, figure_rank: FigureRank) -> Optional['ChessPieceConfig']:
+        if figure_rank == self.get_rank():
             return self
         return None
 
     def number_per_team(self) -> int:
-        if self == CheckPieceBuildConfig.PAWN:
+        if self == ChessPieceConfig.PAWN:
             return 8
-        if self == CheckPieceBuildConfig.KNIGHT:
+        if self == ChessPieceConfig.KNIGHT:
             return 2
-        if self == CheckPieceBuildConfig.BISHOP:
+        if self == ChessPieceConfig.BISHOP:
             return 2
-        if self == CheckPieceBuildConfig.CASTLE:
+        if self == ChessPieceConfig.CASTLE:
             return 2
-        if self == CheckPieceBuildConfig.QUEEN:
+        if self == ChessPieceConfig.QUEEN:
             return 1
-        if self == CheckPieceBuildConfig.KING:
+        if self == ChessPieceConfig.KING:
             return 1
         return 0
+
 
 
