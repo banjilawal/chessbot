@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 from chess.common.geometry import Coordinate
 from chess.figure.chess_piece import ChessPiece, CaptivityStatus
@@ -72,5 +73,62 @@ class CaptureRecord:
 
 class TurnRecord:
     _id: int
-    _location: Coordinate
+    _moved_piece_id: int
+    _mover_color: GameColor
+    _departure_coordinate: Coordinate
+    _arrival_coordinate: Coordinate
+    _capture_record: Optional[CaptureRecord]
+
+    def __init__(
+            self,
+            record_id: int,
+            moved_piece: ChessPiece,
+            departure_coordinate: Coordinate,
+            arrival_coordinate: Coordinate,
+            capture_record: CaptureRecord=None
+     ):
+        if moved_piece is None:
+            print("moved_piece cannot be null or empty.")
+            return
+        if departure_coordinate is None:
+            print("departure_coordinate cannot be null or empty.")
+            return
+        if arrival_coordinate is None:
+            print("arrival_coordinate cannot be null or empty.")
+            return
+        if capture_record is not None and capture_record._captor_id != moved_piece.id:
+            print("mismatch between mover and captor id.")
+            return
+
+        self._id = record_id
+        self._moved_piece_id = moved_piece.piece_id
+        self._mover_color = moved_piece.team.color
+        self._departure_coordinate = departure_coordinate
+        self._arrival_coordinate = arrival_coordinate
+        self._capture_record = capture_record
+
+    @property
+    def id(self) -> int:
+        return self._id
+    @property
+    def moved_piece_id(self) -> int:
+        return self._moved_piece_id
+    @property
+    def mover_color(self) -> GameColor:
+        return self._mover_color
+    @property
+    def departure_coordinate(self) -> Coordinate:
+        return self._departure_coordinate
+    @property
+    def arrival_coordinate(self) -> Coordinate:
+        return self._arrival_coordinate
+    @property
+    def capture_record(self) -> Optional[CaptureRecord]:
+        return self._capture_record
+
+
+
+
+
+
 
