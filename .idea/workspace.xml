@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/figure/promotable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/figure/promotable.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -276,7 +273,7 @@
       <workItem from="1752708903578" duration="6000" />
       <workItem from="1752965567062" duration="2390000" />
       <workItem from="1753011601753" duration="739000" />
-      <workItem from="1753074520002" duration="64820000" />
+      <workItem from="1753074520002" duration="65202000" />
     </task>
     <servers />
   </component>

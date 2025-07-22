@@ -1,9 +1,9 @@
 from chess.common.config import ChessPieceConfig
+from chess.common.geometry import Coordinate
 from chess.figure.figure_rank import PawnRank, FigureRank, QueenRank
 from chess.figure.promotable import RankPromotable
 from chess.movement.movement_strategy import QueenMovement
 from chess.team.team import Team
-from podscape.geometry import GridCoordinate
 
 from abc import ABC
 from typing import List, Optional
@@ -43,23 +43,23 @@ class ChessPiece(ABC):
         return self._rank
 
     # === Stack operations ===
-    def add_position(self, coordinate: 'GridCoordinate') -> None:
+    def add_position(self, coordinate: Coordinate) -> None:
         if coordinate is None:
             raise ValueError("coordinate cannot be null.")
         self._position_history.append(coordinate)
 
-    def undo_last_position(self) -> Optional['GridCoordinate']:
+    def undo_last_position(self) -> Optional[Coordinate]:
         if self._position_history:
             return self._position_history.pop()
         return None
 
     @property
-    def current_position(self) -> Optional['GridCoordinate']:
+    def current_position(self) -> Optional[Coordinate]:
         return self._position_history[-1] if self._position_history else None
 
     @property
-    def position_history(self) -> List['GridCoordinate']:
-        return list(self._position_history)  # Defensive copy
+    def position_history(self) -> List[Coordinate]:
+        return list(self._position_history)
 
 
 class Pawn(ChessPiece, RankPromotable):
@@ -102,13 +102,14 @@ class Castle(ChessPiece):
 class Queen(ChessPiece):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(chess_piece_id, name, team, rank)
-)
 
 class King(ChessPiece, RankPromotable):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(chess_piece_id, name, team, rank)
 
-
+    def add_position(self, coordinate: Coordinate) -> None:
+        super.add_position(coordinate)
+        # if coordinate.row == self.team.home.enemy_orientation().
 
     def promote(self, new_rank: FigureRank) -> Optional[ChessPiece]:
         if new_rank is None:
