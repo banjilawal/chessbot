@@ -1,3 +1,5 @@
+from enum import Enum, auto
+
 from chess.common.config import ChessPieceConfig
 from chess.common.geometry import Coordinate
 from chess.figure.figure_rank import PawnRank, FigureRank, QueenRank
@@ -8,7 +10,12 @@ from chess.team.team import Team
 from abc import ABC
 from typing import List, Optional
 
+class CaptivityStatus(Enum):
+    FREE = "Free"
+    CAPTURED = "Captured"
+
 class ChessPiece(ABC):
+    _state: CaptivityStatus
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         if not chess_piece_id:
             raise ValueError("chess_piece_id cannot be null or empty.")
@@ -18,7 +25,7 @@ class ChessPiece(ABC):
             raise ValueError("team cannot be null or empty.")
         if rank is None:
             raise ValueError("movement cannot be null.")
-
+        self._state = CaptivityStatus.FREE
         self._piece_id = chess_piece_id
         self._name = name
         self._team = team
@@ -41,6 +48,17 @@ class ChessPiece(ABC):
     @property
     def rank(self) -> 'FigureRank':
         return self._rank
+
+    @property
+    def state(self) -> CaptivityStatus:
+        return self._state
+
+    @state.setter
+    def state(self, state: CaptivityStatus):
+        if self._state == state:
+            print("The piece is already", self._state)
+            return None
+        self._state = state
 
     # === Stack operations ===
     def add_position(self, coordinate: Coordinate) -> None:
