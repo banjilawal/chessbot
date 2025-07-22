@@ -27,3 +27,36 @@ class CaptureRecord:
         self._captor = captor
         self._prisoner = prisoner
 
+    @property
+    def id(self) -> int:
+        return self._id
+    @property
+    def location(self) -> Coordinate:
+        return self._location
+    @property
+    def captor(self) -> ChessPiece:
+        return self._captor
+    @property
+    def prisoner(self) -> ChessPiece:
+        return self._prisoner
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, CaptureRecord):
+            return False
+        if isinstance(other, CaptureRecord):
+            return (
+                    self.id == other.id and self.location == other.location and
+                    self.captor == other.captor and self.prisoner == other.prisoner
+            )
+        return False
+
+    def __hash__(self):
+        return hash((self.id, self.location))
+
+
+
+
