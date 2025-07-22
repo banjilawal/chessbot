@@ -15,6 +15,21 @@ class ChessFigureCategory(Enum):
     QUEEN = "Queen"
     KING = "King"
 
+    def get_movement_strategy(self) -> Optional[PawnMovement]:
+        if self == ChessFigureCategory.PAWN:
+            return PawnMovement()
+        if self == ChessFigureCategory.KNIGHT:
+            return KnightMovement()
+        if self == ChessFigureCategory.BISHOP:
+            return BishopMovement()
+        if self == ChessFigureCategory.CASTLE:
+            return CastleMovement()
+        if self == ChessFigureCategory.QUEEN:
+            return QueenMovement()
+        if self == ChessFigureCategory.KING:
+            return KingMovement()
+        return None
+
     def get_figure_rank(self) -> Optional[FigureRank]:
         if self == ChessFigureCategory.PAWN:
             return PawnRank(PawnMovement())
