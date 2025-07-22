@@ -11,11 +11,11 @@ from abc import ABC
 from typing import List, Optional
 
 class CaptivityStatus(Enum):
-    FREE = "Free"
-    CAPTURED = "Captured"
+    FREE = auto()
+    PRISONER = auto
 
 class ChessPiece(ABC):
-    _state: CaptivityStatus
+    _status: CaptivityStatus
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         if not chess_piece_id:
             raise ValueError("chess_piece_id cannot be null or empty.")
@@ -25,7 +25,7 @@ class ChessPiece(ABC):
             raise ValueError("team cannot be null or empty.")
         if rank is None:
             raise ValueError("movement cannot be null.")
-        self._state = CaptivityStatus.FREE
+        self._status = CaptivityStatus.FREE
         self._piece_id = chess_piece_id
         self._name = name
         self._team = team
@@ -50,15 +50,13 @@ class ChessPiece(ABC):
         return self._rank
 
     @property
-    def state(self) -> CaptivityStatus:
-        return self._state
+    def status(self) -> CaptivityStatus:
+        return self._status
 
-    @state.setter
-    def state(self, state: CaptivityStatus):
-        if self._state == state:
-            print("The piece is already", self._state)
-            return None
-        self._state = state
+    @status.setter
+    def status(self, status: CaptivityStatus):
+        if self._status != status:
+            self._status = status
 
     # === Stack operations ===
     def add_position(self, coordinate: Coordinate) -> None:
