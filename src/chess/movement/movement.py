@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from chess.common.geometry import Coordinate
 
 
-class MoveRule(ABC):
+class Move(ABC):
     origin: Coordinate
     destination: Coordinate
 
@@ -34,7 +34,7 @@ class MoveRule(ABC):
             return True
         if other is None:
             return False
-        if not isinstance(other, MoveRule):
+        if not isinstance(other, Move):
             return False
         return self.origin == other.origin and self.destination == other.destination
 
@@ -48,7 +48,7 @@ class MoveRule(ABC):
         pass
 
 
-class VerticalMoveRule(MoveRule):
+class VerticalMove(Move):
     """Y changes while X stays the same."""
     def __init__(self, origin: Coordinate, destination: Coordinate):
         super().__init__(origin, destination)
@@ -58,7 +58,7 @@ class VerticalMoveRule(MoveRule):
         return origin.column == destination.column and origin.row != destination.row
 
 
-class HorizontalMoveRule(MoveRule):
+class HorizontalMove(Move):
     """X changes while Y stays the same."""
     def __init__(self, origin: Coordinate, destination: Coordinate):
         super().__init__(origin, destination)
@@ -68,9 +68,9 @@ class HorizontalMoveRule(MoveRule):
         return origin.row == destination.row and origin.column != destination.column
 
 
-class DiagonalMoveRule(MoveRule):
+class DiagonalMove(Move):
     """
-    A DiagonalMoveRule is a rule that defines a diagonal movement. Diagonal movement is:
+    A DiagonalMove is a rule that defines a diagonal movement. Diagonal movement is:
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """

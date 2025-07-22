@@ -1,11 +1,11 @@
 from chess.figure.chess_piece import ChessPiece
-from chess.movement.movement import MoveRule
+from chess.movement.movement import Move
 from podscape.geometry import GridCoordinate
 
 
 class MovementStrategy(ABC):
     """ A MovementStrategy is a collection of MoveRules that define how a piece can move."""
-    def __init__(self, rules: list[MoveRule]):
+    def __init__(self, rules: list[Move]):
         self.rules = rules
 
     def is_valid_move(self, start: GridCoordinate, end: GridCoordinate) -> bool:
