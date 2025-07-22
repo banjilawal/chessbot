@@ -4,7 +4,7 @@ from wsgiref.validate import check_errors
 
 from chess.common.emitter import id_emitter
 from chess.common.geometry import ChessSquare, Coordinate
-from chess.figure.chess_piece import ChessPiece
+from chess.figure.chess_piece import ChessPiece, CaptivityStatus
 
 DIMENSION = 8
 
@@ -81,6 +81,7 @@ class ChessBoard:
 
         self.process_occupation(chess_piece, coordinate)
 
+
     def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate) -> Optional[ChessPiece]:
         if chess_piece is None:
             print("Captor cannot be null. Aborting capture process.")
@@ -97,9 +98,12 @@ class ChessBoard:
 
         if current_occupant is not None and self.are_enemies(chess_piece, current_occupant):
             prisoner = self.remove_chess_piece(current_occupant.id)
+            prisoner.status = CaptivityStatus.PRISONER
+
             captor = self.remove_chess_piece(chess_piece)
             square.occupant = captor
             captor.coordinate = square.coordinate
+
             return prisoner
 
         if current_occupant is None:
