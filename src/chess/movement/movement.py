@@ -14,15 +14,18 @@ class MoveRule(ABC):
             raise ValueError("Destination cannot be None")
         self._origin = origin
         self._destination = destination
-        
+
+
     @property
     def origin(self) -> Coordinate:
         return self._origin
-    
+
+
     @property
     def destination(self) -> Coordinate:
         return self._destination
-        
+
+
     def __eq__(self, other):
         if other is self:
             return True
@@ -31,20 +34,25 @@ class MoveRule(ABC):
         if not isinstance(other, MoveRule):
             return False
         return self.origin == other.origin and self.destination == other.destination
-    
+
+
+    def __hash__(self):
+        return hash((self.origin, self.destination))
+
+
     @abstractmethod
-    def is_valid(self, start: Coordinate, end: Coordinate) -> bool:
+    def is_valid_move(self, origin: Coordinate, destination: Coordinate) -> bool:
         pass
 
 class VerticalMoveRule(MoveRule):
     """Y changes while X stays the same."""
-    def is_valid(self, start: GridCoordinate, end: GridCoordinate) -> bool:
+    def is_valid_move(self, start: GridCoordinate, end: GridCoordinate) -> bool:
         # Same column, row changes
         return start.column == end.column and start.row != end.row
 
 class HorizontalMoveRule(MoveRule):
     """X changes while Y stays the same."""
-    def is_valid(self, start: GridCoordinate, end: GridCoordinate) -> bool:
+    def is_valid_move(self, start: GridCoordinate, end: GridCoordinate) -> bool:
         # Same row, column changes
         return start.row == end.row and start.column != end.column
 
@@ -55,7 +63,7 @@ class DiagonalMoveRule(MoveRule):
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """
-    def is_valid(self, start: GridCoordinate, end: GridCoordinate) -> bool:
+    def is_valid_move(self, start: GridCoordinate, end: GridCoordinate) -> bool:
         # Row and column difference equal (non-zero)
         return abs(end.row - start.row) == abs(end.column - start.column) and start != end
 

@@ -9,7 +9,7 @@ class MovementStrategy(ABC):
         self.rules = rules
 
     def is_valid_move(self, start: GridCoordinate, end: GridCoordinate) -> bool:
-        return any(rule.is_valid(start, end) for rule in self.rules)
+        return any(rule.is_valid_move(start, end) for rule in self.rules)
 
     def _check_basic_conditions(self, chess_piece: ChessPiece, board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
         if chess_piece is None:
