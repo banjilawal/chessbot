@@ -2,13 +2,16 @@ from dataclasses import dataclass
 
 from chess.common.geometry import Coordinate
 from chess.figure.chess_piece import ChessPiece, CaptivityStatus
+from podscape.constants import GameColor
 
 
 class CaptureRecord:
     _id: int
-    _location: Coordinate
-    _captor: ChessPiece
-    _prisoner: ChessPiece
+    _location_id: int
+    _captor_color: GameColor
+    _captor_id: int
+    _prisoner_id: int
+    _prisoner_color: GameColor
 
     def __init__(self, record_id:int, location: Coordinate, captor: ChessPiece, prisoner: ChessPiece):
         if location is None:
@@ -23,22 +26,30 @@ class CaptureRecord:
             raise ValueError("prisoner cannot be running free.")
 
         self._id = record_id
-        self._location = location
-        self._captor = captor
-        self._prisoner = prisoner
+        self._location_id = location.id
+        self._captor_color = captor.team.color
+
+        self._prisoner.id = prisoner.id
+        self._prisoner_color = prisoner.team.color
 
     @property
     def id(self) -> int:
         return self._id
     @property
-    def location(self) -> Coordinate:
-        return self._location
+    def location_id(self) -> int:
+        return self._location.id
     @property
-    def captor(self) -> ChessPiece:
-        return self._captor
+    def captor_id(self) -> int:
+        return self._captor_id
     @property
-    def prisoner(self) -> ChessPiece:
-        return self._prisoner
+    def captor_color(self) -> GameColor:
+        return self._captor_color
+    @property
+    def prisoner_id(self) -> int:
+        return self._prisoner_id
+    @property
+    def prisoner_color(self) -> GameColor:
+        return self._prisoner_color
 
     def __eq__(self, other):
         if other is self:
@@ -49,14 +60,17 @@ class CaptureRecord:
             return False
         if isinstance(other, CaptureRecord):
             return (
-                    self.id == other.id and self.location == other.location and
-                    self.captor == other.captor and self.prisoner == other.prisoner
+                    self.id == other.id and self.location.id == other.location.id and
+                    self.captor.id == other.captor.id and self.prisoner.id == other.prisoner.id and
+                    self.prisoner_color == other.prisoner_color
             )
         return False
 
     def __hash__(self):
-        return hash((self.id, self.location))
+        return hash((self.id, self.location.id, self.captor_id, self.prisoner_id))
 
 
-
+class TurnRecord:
+    _id: int
+    _location: Coordinate
 
