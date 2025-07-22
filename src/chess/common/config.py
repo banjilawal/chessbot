@@ -45,9 +45,14 @@ class ChessPieceConfig(Enum):
             return KingRank(KingMovement())
         return None
 
-    def find_config(self, figure_rank: FigureRank) -> Optional['ChessPieceConfig']:
+    def find_category(self, figure_rank: FigureRank) -> Optional['ChessPieceConfig']:
         if figure_rank == self.rank():
             return self
+        return None
+
+    def promotion_rank(self) -> Optional[FigureRank]:
+        if self == ChessPieceConfig.PAWN or self == ChessPieceConfig.KING:
+            return QueenRank(QueenMovement())
         return None
 
     def number_per_team(self) -> int:
