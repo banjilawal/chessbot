@@ -1,3 +1,7 @@
+from chess.common.config import ChessPieceConfig
+from chess.figure.figure_rank import PawnRank, FigureRank, QueenRank
+from chess.figure.promotable import RankPromotable
+from chess.movement.movement_strategy import QueenMovement
 from chess.team.team import Team
 from podscape.geometry import GridCoordinate
 
@@ -58,9 +62,26 @@ class ChessPiece(ABC):
         return list(self._position_history)  # Defensive copy
 
 
-class Pawn(ChessPiece):
+class Pawn(ChessPiece, RankPromotable):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(chess_piece_id, name, team, rank)
+
+    def promote(self, new_rank: FigureRank) -> Optional[ChessPiece]:
+        if new_rank is None:
+            print("new_rank cannot be null or empty.")
+            return None
+        if self.rank == QueenRank:
+            print("Pawn is already promoted")
+            return None
+        if new_rank != QueenRank:
+            print("New rank must be Queen")
+            return None
+        return Pawn(
+            chess_piece_id=self.piece_id,
+            name=self.name,
+            team=self.team,
+            rank=QueenRank(QueenMovement())
+        )
 
 
 class Knight(ChessPiece):
@@ -81,9 +102,28 @@ class Castle(ChessPiece):
 class Queen(ChessPiece):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(chess_piece_id, name, team, rank)
+)
 
-
-class King(ChessPiece):
+class King(ChessPiece, RankPromotable):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(chess_piece_id, name, team, rank)
+
+
+
+    def promote(self, new_rank: FigureRank) -> Optional[ChessPiece]:
+        if new_rank is None:
+            print("new_rank cannot be null or empty.")
+            return None
+        if self.rank == QueenRank:
+            print("Pawn is already promoted")
+            return None
+        if new_rank != QueenRank:
+            print("New rank must be Queen")
+            return None
+        return Pawn(
+            chess_piece_id=self.piece_id,
+            name=self.name,
+            team=self.team,
+            rank=QueenRank(QueenMovement())
+        )
 
