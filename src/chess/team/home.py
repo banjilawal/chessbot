@@ -12,13 +12,18 @@ class HomeOrientation(Enum):
             return 0
         return BOARD_DIMENSION - 1
 
-    def enemy_orientation(self):
+    def second_home_row(self):
+        if self == HomeOrientation.SOUTH:
+            return 1
+        return BOARD_DIMENSION - 2
+
+    def get_enemy_home(self):
         if self == HomeOrientation.NORTH:
             return HomeOrientation.SOUTH
         return HomeOrientation.NORTH
 
-    def enemy_home_row(self):
-        return self.enemy_orientation().first_home_row()
+    def get_enemy_home_row(self):
+        return self.get_enemy_home().first_home_row()
 
     def step_toward_enemy(self):
         if self == HomeOrientation.NORTH:
