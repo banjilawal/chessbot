@@ -17,6 +17,9 @@ class HomeOrientation(Enum):
             return HomeOrientation.SOUTH
         return HomeOrientation.NORTH
 
+    def enemy_home_row(self):
+        return self.enemy_orientation().first_home_row()
+
     def step_toward_enemy(self):
         if self == HomeOrientation.NORTH:
             return -1
