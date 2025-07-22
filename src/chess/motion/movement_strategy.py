@@ -1,42 +1,5 @@
-from abc import ABC
 
-from chess.common.geometry import Coordinate
-from chess.figure.chess_piece import ChessPiece
-from chess.motion.diagonal import Move
 
-class MovementStrategy(ABC):
-    """ A MovementStrategy is a collection of MoveRules that define how a piece can move."""
-    def __init__(self, rules: list[Move]):
-        self.rules = rules
-
-    def is_valid_move(self, origin: Coordinate, destination: Coordinate) -> bool:
-        return any(rule.motion_fits_rule(origin, destinatio) for rule in self.rules)
-
-    def _check_basic_conditions(self, chess_piece: ChessPiece, board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
-        if chess_piece is None:
-            print("[Warning] Mover cannot be None. It cannot move.")
-            return False
-        if board is None:
-            print("[Warning] Board cannot be None. Cannot move.")
-            return False
-        if chess_piece.top_left_coordinate is None:
-            print("[Warning] Mover has no top_left_coordinate. Cannot move.")
-            return False
-        if destination_coordinate is None:
-            print("[Warning] Destination top_left_coordinate cannot be None. Cannot move.")
-            return False
-        if destination_coordinate.column < 0 or destination_coordinate.column >= board.dimension.length:
-            print(f"[Warning] Horizontal move out of bounds: {destination_coordinate.column}")
-            return False
-        if destination_coordinate.row < 0 or destination_coordinate.row >= board.dimension.length:
-            print(f"[Warning] Vertical move out of bounds: {destination_coordinate.row}")
-            return False
-        return True
-
-    @abstractmethod
-    def move(self, mover: 'Mover', board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
-        """Perform the move if valid. Return True if successful, False otherwise."""
-        pass
 
 class PawnMovement(MovementStrategy):
     def move(self, chess_piece: 'ChessPiece', board: 'Board', destination_coordinate: GridCoordinate) -> bool:

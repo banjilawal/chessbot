@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/figure/chess_piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/move/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/movement/movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/move/movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/movement/movement_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/move/movement_pkg_info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/movement/movement_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/move/movement_strategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/movement_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/motion_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/movement_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/movement_strategy.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +279,7 @@
       <workItem from="1752965567062" duration="2390000" />
       <workItem from="1753011601753" duration="739000" />
       <workItem from="1753074520002" duration="78753000" />
-      <workItem from="1753197301502" duration="6174000" />
+      <workItem from="1753197301502" duration="10873000" />
     </task>
     <servers />
   </component>
