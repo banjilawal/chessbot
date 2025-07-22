@@ -2,14 +2,14 @@ from dataclasses import field
 from typing import Dict, Optional
 
 from chess.common.config import ChessPieceConfig
-from chess.common.geometry import HomeOrientation
 from chess.figure.chess_piece import ChessPiece
+from chess.team.home import TeamHome
 from podscape.constants import GameColor
 
 class Team:
     team_id: int
     color: GameColor
-    home: HomeOrientation
+    home: TeamHome
     piece_registry: Dict[ChessPieceConfig, Dict[int, Optional[ChessPiece]]] = field(init=False)
 
     def __post_init__(self):

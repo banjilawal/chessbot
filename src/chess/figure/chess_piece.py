@@ -66,6 +66,11 @@ class Pawn(ChessPiece, RankPromotable):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
         super().__init__(chess_piece_id, name, team, rank)
 
+    def add_position(self, coordinate: Coordinate) -> None:
+        super.add_position(coordinate)
+        if coordinate.row == self.team.home.get_enemy_home().first_home_row():
+            self.promote(self, QueenRank(QueenMovement))
+
     def promote(self, new_rank: FigureRank) -> Optional[ChessPiece]:
         if new_rank is None:
             print("new_rank cannot be null or empty.")
@@ -109,7 +114,8 @@ class King(ChessPiece, RankPromotable):
 
     def add_position(self, coordinate: Coordinate) -> None:
         super.add_position(coordinate)
-        # if coordinate.row == self.team.home.enemy_orientation().
+        if coordinate.row == self.team.home.get_enemy_home().first_home_row():
+            self.promote(self, QueenRank(QueenMovement))
 
     def promote(self, new_rank: FigureRank) -> Optional[ChessPiece]:
         if new_rank is None:
@@ -121,7 +127,7 @@ class King(ChessPiece, RankPromotable):
         if new_rank != QueenRank:
             print("New rank must be Queen")
             return None
-        return Pawn(
+        return King(
             chess_piece_id=self.piece_id,
             name=self.name,
             team=self.team,
