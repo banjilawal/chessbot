@@ -1,9 +1,7 @@
 from enum import Enum, auto
 
 from chess.common.geometry import Coordinate
-from chess.piece.rank import Rank, QueenRank, PawnRank
-from chess.piece.promotable import RankPromotable
-from chess.motion.movement.queen_movement import QueenMovement
+from chess.piece.rank import Rank
 from chess.team.team import Team
 
 from abc import ABC
