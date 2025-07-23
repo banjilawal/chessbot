@@ -5,14 +5,14 @@ from typing import Dict
 from chess.board.chess_board import ChessBoard
 from chess.common.geometry import Coordinate
 from chess.figure.chess_piece import ChessPiece
-from chess.motion.diagonal import Move
+from chess.motion.motions.diagonal import Motion
 
 
 class MovementStrategy(ABC):
     _move_rules: {}
     """ A MovementStrategy is a collection of MoveRules that define how a piece can move."""
 
-    def __init__(self, rules: list[Move]):
+    def __init__(self, rules: list[Motion]):
         self._move_rules = {}
         for rule in rules:
             class_name = type(rule).__name__
@@ -41,7 +41,7 @@ class MovementStrategy(ABC):
 
 
     @property
-    def move_rules(self) -> Dict[str, Move]:
+    def move_rules(self) -> Dict[str, Motion]:
         return self._move_rules.copy()
 
 

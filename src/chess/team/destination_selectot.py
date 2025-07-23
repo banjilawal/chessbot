@@ -1,6 +1,3 @@
-from chess.motion.diagonal import DiagonalMove
-
-
 class DestinationSelector:
     def __init__(self):
         pass

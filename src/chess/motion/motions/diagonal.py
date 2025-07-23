@@ -1,10 +1,10 @@
 from chess.common.geometry import Coordinate
-from chess.motion.move import Move
+from chess.motion.motions.motion import Motion
 
 
-class DiagonalMove(Move):
+class DiagonalMotion(Motion):
     """
-    A DiagonalMove is a rule that defines a diagonal motion. Diagonal motion is:
+    A DiagonalMotion is a rule that defines a diagonal motion. Diagonal motion is:
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """

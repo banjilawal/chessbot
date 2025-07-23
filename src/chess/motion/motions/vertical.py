@@ -1,8 +1,8 @@
 from chess.common.geometry import Coordinate
-from chess.motion.move import Move
+from chess.motion.motions.motion import Motion
 
 
-class VerticalMove(Move):
+class VerticalMotion(Motion):
     """Y changes while X stays the same."""
     def __init__(self):
         super().__init__(self)

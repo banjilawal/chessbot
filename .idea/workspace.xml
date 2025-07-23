@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/motion/motions/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/chess_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/chess_board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/diagonal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/motions/diagonal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/horizontal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/motions/horizontal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/motions/motion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/motion/strategy/bishop_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/strategy/bishop_movement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/strategy/movement_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/strategy/movement_strategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/strategy/pawn_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/strategy/pawn_movement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/vertical.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/motions/vertical.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/destination_selectot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/destination_selectot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/podscape/grid_entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/grid_entity.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,11 +97,11 @@
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\movement" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion" />
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion\motions" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion\strategy" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\game\record" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\podscape" />
-      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\chess_piece" />
-      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\rank" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run_game">
@@ -281,7 +287,7 @@
       <workItem from="1753011601753" duration="739000" />
       <workItem from="1753074520002" duration="78753000" />
       <workItem from="1753197301502" duration="29496000" />
-      <workItem from="1753242062539" duration="2995000" />
+      <workItem from="1753242062539" duration="9546000" />
     </task>
     <servers />
   </component>
