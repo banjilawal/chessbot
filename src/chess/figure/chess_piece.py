@@ -3,7 +3,7 @@ from enum import Enum, auto
 from chess.common.geometry import Coordinate
 from chess.figure.rank import Rank, QueenRank, PawnRank
 from chess.figure.promotable import RankPromotable
-from chess.motion.strategy.queen_movement import QueenMovement
+from chess.motion.movement.queen_movement import QueenMovement
 from chess.team.team import Team
 
 from abc import ABC
@@ -97,39 +97,6 @@ class ChessPiece(ABC):
     def position_history(self) -> List[Coordinate]:
         return list(self._position_history)
 
-
-class PromotablePiece(ChessPiece, RankPromotable):
-    def promote(self, new_rank: PawnRank) -> Optional[ChessPiece]:
-        pass
-
-
-class Pawn(ChessPiece, RankPromotable):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        super().__init__(chess_piece_id, name, team, rank)
-
-    def add_position(self, coordinate: Coordinate) -> None:
-        super.add_position(coordinate)
-        if coordinate.row == self.team.home.get_enemy_home().first_home_row():
-            self.promote(self, QueenRank(QueenMovement))
-
-    def promote(self, new_rank: Rank) -> Optional[ChessPiece]:
-        if new_rank is None:
-            print("new_rank cannot be null or empty.")
-            return None
-        if self.rank == QueenRank:
-            print("Pawn is already promoted")
-            return None
-        if new_rank != QueenRank:
-            print("New rank must be Queen")
-            return None
-        return Pawn(
-            chess_piece_id=self.id,
-            name=self.name,
-            team=self.team,
-            rank=QueenRank(QueenMovement())
-        )
-
-
 class Knight(ChessPiece):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
@@ -149,7 +116,8 @@ class Queen(ChessPiece):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
-class King(ChessPiece, RankPromotable):
+
+class PromotablePiece(ChessPiece, RankPromotable):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
@@ -168,10 +136,16 @@ class King(ChessPiece, RankPromotable):
         if new_rank != QueenRank:
             print("New rank must be Queen")
             return None
-        return King(
+        return PromotablePiece(
             chess_piece_id=self.id,
             name=self.name,
             team=self.team,
             rank=QueenRank(QueenMovement())
         )
 
+
+class Pawn(PromotablePiece):
+    pass
+
+class King(PromotablePiece):
+    pass

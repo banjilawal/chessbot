@@ -35,16 +35,22 @@ def diagonal_walk(
         origin: Coordinate,
         x_delta: int,
         y_delta: int,
-        board: ChessBoard
+        board: ChessBoard,
+        max_steps: int = None
 ) -> list[Coordinate]:
-    destinations = []
+    positions = []
     current = origin.shift(x_delta, y_delta)
+    steps = 0
 
     while board.coordinate_is_valid(current):
         occupant = board.get_chess_piece_by_coordinate(current)
         if occupant is None:
-            destinations.append(current)
+            positions.append(current)
         else:
             break
         current = current.shift(x_delta, y_delta)
-    return destinations
+        steps += 1
+
+        if max_steps is not None and steps >= max_steps:
+            break
+    return positions

@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 
-from chess.motion.strategy.movement_strategy import MovementStrategy
+from chess.motion.movement.movement import MovementStrategy
 
 
 class Rank(ABC):
