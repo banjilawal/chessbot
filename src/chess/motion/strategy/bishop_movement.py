@@ -13,6 +13,20 @@ class BishopMovement(MovementStrategy):
     def possible_destinations(self, origin: Coordinate, board: ChessBoard) -> list[Coordinate]:
         pass
 
+    def _walk_diagonal(
+            self,
+            origin: Coordinate,
+            x_delta: int,
+            y_delta: int,
+            board: ChessBoard
+   ) -> list[Coordinate]:
+        destinations = []
+        current = origin.shift(x_delta, y_delta)
+
+        while board.is_valid_coordinate(current):
+            occupant = board.sq
+
+
 
 
     def get_quadrant_one_destinations(self, origin: Coordinate, board: ChessBoard) -> list[Coordinate]:

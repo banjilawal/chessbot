@@ -1,5 +1,5 @@
 from dataclasses import field, dataclass
-from enum import Enum, auto
+
 from typing import Optional
 
 from chess.common.config import BOARD_DIMENSION
@@ -7,9 +7,6 @@ from chess.figure.chess_piece import ChessPiece
 
 
 @dataclass(frozen=True)
-class ChessSquareCoordinate:
-    row: int
-    column: int
 class Coordinate:
     row: int
     column: int
@@ -19,6 +16,9 @@ class Coordinate:
             raise ValueError("Row cannot be negative")
         if self.column < 0:
             raise ValueError("Column cannot be negative")
+
+    def shift(self, row_delta: int, column_delta: int) -> 'Coordinate':
+        return Coordinate(row=self.row + row_delta, column=self.column + column_delta)
 
 @dataclass
 class ChessSquare:

@@ -1,17 +1,19 @@
 from dataclasses import dataclass, field
 from typing import Tuple, List, Optional
 
+from chess.common.config import BOARD_DIMENSION
 from chess.common.emitter import id_emitter
 from chess.common.geometry import ChessSquare, Coordinate
 from chess.figure.chess_piece import ChessPiece, CaptivityStatus
 
-@dataclass(frozen=True)
+#@dataclass(frozen=True)
 class ChessBoard:
-    _chess_pieces: List[ChessPiece] = field(default_factory=list)
-    _squares: Tuple[Tuple[ChessSquare, ...], ...] = field(init=False, repr=False)
+    _chess_pieces: List[ChessPiece]
+    _squares: Tuple[Tuple[ChessSquare, ...], ...]# = field(init=False, repr=False)
 
-    def __post_init__(self):
-        squares = tuple(
+    def __init__(self):
+        self._chess_pieces = field(default_factory=list)
+        self._squares = tuple(
             tuple(
                 ChessSquare(
                     id=id_emitter.square_id_counter(),
@@ -19,9 +21,21 @@ class ChessBoard:
                 )
                 for col in range(BOARD_DIMENSION)
             )
-            for row in range(DIMENSION)
+            for row in range(BOARD_DIMENSION)
         )
-        object.__setattr__(self, 'squares', squares)
+        # object.__setattr__(self, 'squares', squares)
+
+    @property
+    def chess_pieces(self) -> List[ChessPiece]:
+        return self._chess_pieces.copy()
+
+
+    def get_chess_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[ChessPiece]:
+        if not self.is_valid_coordinate(coordinate):
+            print("The coordinate is not valid. Cannot find chess piece.")
+            return None
+        return self.squares[coordinate.row][coordinate.column].occupant
+
 
     def get_chess_piece_by_id(self, target_id: int) -> Optional[ChessPiece]:
         for chess_piece in self.chess_pieces:
@@ -30,10 +44,13 @@ class ChessBoard:
                 return chess_piece
         return None
 
-    def get_all_occupants(self) -> List[ChessPiece]:
-        return self.chess_pieces
 
-    def get_empty_squares(self) -> List[ChessSquare]:
+    @property
+    def squares(self) -> Tuple[Tuple[ChessSquare, ...], ...]:
+        return self._squares
+
+
+    def empty_squares(self) -> List[ChessSquare]:
         empty_squares = []
         for row in self.squares:
             for square in row:
@@ -41,7 +58,8 @@ class ChessBoard:
                     empty_squares.append(square)
         return empty_squares
 
-    def get_occupied_squares(self) -> List[ChessSquare]:
+
+    def occupied_squares(self) -> List[ChessSquare]:
         occupied_squares = []
         for row in self.squares:
             for square in row:
@@ -49,7 +67,8 @@ class ChessBoard:
                     occupied_squares.append(square)
         return occupied_squares
 
-    def remove_chess_piece(self, chess_piece_id: int) -> ChessPiece:
+
+    def remove_chess_piece_from_board(self, chess_piece_id: int) -> ChessPiece:
         chess_piece = self.get_chess_piece_by_id(chess_piece_id)
         if chess_piece is None:
             print("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent figure.")
@@ -58,15 +77,14 @@ class ChessBoard:
             print("Cannot remove a chess piece from an empty square.")
             return None
 
-
         square = self.squares[chess_piece.coordinate.row][chess_piece.coordinate.column]
         square.occupant = None
         chess_piece.coordinate = None
         self.chess_pieces.remove(chess_piece)
-
         return chess_piece
 
-    def add_new_chess_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
+
+    def add_chess_piece_to_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
         if chess_piece is None:
             raise ValueError("Cannot add a null chess piece")
         if not self.is_valid_coordinate(coordinate):
@@ -91,35 +109,31 @@ class ChessBoard:
             print("A friendly is occupying the square. Aborting capture process.")
             return None
 
-        if current_occupant is not None and self.are_enemies(chess_piece, current_occupant):
-            prisoner = self.remove_chess_piece(current_occupant.id)
+        if current_occupant is not None and chess_piece.is_enemy(current_occupant):
+            prisoner = self.remove_chess_piece_from_board(current_occupant.id)
             prisoner.status = CaptivityStatus.PRISONER
 
-            captor = self.remove_chess_piece(chess_piece)
+            captor = self.remove_chess_piece_from_board(chess_piece)
             square.occupant = captor
             captor.coordinate = square.coordinate
-
             return prisoner
 
         if current_occupant is None:
-            future_occupant = self.remove_chess_piece(chess_piece.piece_id)
+            future_occupant = self.remove_chess_piece_from_board(chess_piece.piece_id)
             square.occupant = future_occupant
             future_occupant.coordinate = square.coordinate
             return None
         return None
 
 
-    def are_enemies(self, a: ChessPiece, b: ChessPiece):
-        return a.team.color == b.team.color
-
     def is_valid_coordinate(self, coordinate: Coordinate):
         if coordinate is None:
             print("A null coordinate is not valid")
             return False
-        if coordinate.row <= -1 or coordinate.row >= DIMENSION:
+        if coordinate.row <= -1 or coordinate.row >= len(self._squares):
             print("The coordinate is not valid. Its row is out of range")
             return False
-        if coordinate.column <= -1 or coordinate.column >= DIMENSION:
+        if coordinate.column <= -1 or coordinate.column >= len(self._squares[0]):
             print("The coordinate is not valid. Its column is out of range")
             return False
         return True

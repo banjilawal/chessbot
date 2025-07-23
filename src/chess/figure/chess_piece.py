@@ -57,6 +57,9 @@ class ChessPiece(ABC):
         if self._status != status:
             self._status = status
 
+    def is_enemy(self, chess_piece: 'ChessPiece'):
+        return self._team.color == chess_piece.team.color
+
     # === Stack operations ===
     def add_position(self, coordinate: Coordinate) -> None:
         if coordinate is None:
