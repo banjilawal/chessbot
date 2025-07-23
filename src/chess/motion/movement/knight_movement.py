@@ -4,7 +4,7 @@ from chess.motion.motions.diagonal import DiagonalMotion
 from chess.motion.motions.vertical import VerticalMotion
 from chess.motion.movement.movement import MovementStrategy
 from chess.motion.quadrant import Quadrant
-from chess.motion.walks import linear_walk
+from chess.motion.walks import linear_walk, diagonal_walk
 
 
 class KnightMovement(MovementStrategy):

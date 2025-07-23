@@ -13,7 +13,7 @@ class CaptivityStatus(Enum):
     FREE = auto()
     PRISONER = auto
 
-class ChessPiece(ABC):
+class Piece(ABC):
     _id: int
     _name: str
     _team: 'Team'
@@ -64,9 +64,9 @@ class ChessPiece(ABC):
             return True
         if other is None:
             return False
-        if not isinstance(other, ChessPiece):
+        if not isinstance(other, Piece):
             return False
-        if isinstance(other, ChessPiece):
+        if isinstance(other, Piece):
             self.id == other.id
         return False
 
@@ -75,7 +75,7 @@ class ChessPiece(ABC):
         if self._status != status:
             self._status = status
 
-    def is_enemy(self, chess_piece: 'ChessPiece'):
+    def is_enemy(self, chess_piece: 'Piece'):
         return self._team.color == chess_piece.team.color
 
     # === Stack operations ===
@@ -96,56 +96,3 @@ class ChessPiece(ABC):
     @property
     def position_history(self) -> List[Coordinate]:
         return list(self._position_history)
-
-class Knight(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        super().__init__(chess_piece_id, name, team, rank)
-
-
-class Bishop(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        super().__init__(chess_piece_id, name, team, rank)
-
-
-class Castle(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        super().__init__(chess_piece_id, name, team, rank)
-
-
-class Queen(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        super().__init__(chess_piece_id, name, team, rank)
-
-
-class PromotablePiece(ChessPiece, RankPromotable):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        super().__init__(chess_piece_id, name, team, rank)
-
-    def add_position(self, coordinate: Coordinate) -> None:
-        super.add_position(coordinate)
-        if coordinate.row == self.team.home.get_enemy_home().first_home_row():
-            self.promote(self, QueenRank(QueenMovement))
-
-    def promote(self, new_rank: Rank) -> Optional[ChessPiece]:
-        if new_rank is None:
-            print("new_rank cannot be null or empty.")
-            return None
-        if self.rank == QueenRank:
-            print("Pawn is already promoted")
-            return None
-        if new_rank != QueenRank:
-            print("New rank must be Queen")
-            return None
-        return PromotablePiece(
-            chess_piece_id=self.id,
-            name=self.name,
-            team=self.team,
-            rank=QueenRank(QueenMovement())
-        )
-
-
-class Pawn(PromotablePiece):
-    pass
-
-class King(PromotablePiece):
-    pass

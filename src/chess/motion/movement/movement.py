@@ -1,11 +1,12 @@
 
 from abc import ABC, abstractmethod
-from typing import Dict
+from typing import Dict, Optional
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.piece.chess_piece import ChessPiece
+from chess.piece.chess_piece import Piece
 from chess.motion.motions.diagonal import Motion
+from chess.team.home import TeamHome
 
 
 class MovementStrategy(ABC):
@@ -19,7 +20,7 @@ class MovementStrategy(ABC):
             if class_name not in self._move_rules:
                 self._move_rules[class_name] = rule
 
-    def check_basic_conditions(self, chess_piece: ChessPiece, board: 'PodBoard', destination: 'Coordinate') -> bool:
+    def check_basic_conditions(self, chess_piece: Piece, board: 'PodBoard', destination: 'Coordinate') -> bool:
         if chess_piece is None:
             print("[Warning] Mover cannot be None. It cannot move.")
             return False
@@ -35,7 +36,7 @@ class MovementStrategy(ABC):
         return True
 
     @abstractmethod
-    def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
+    def possible_destinations(self, origin: Coordinate, board: Board, team_home: Optional[TeamHome] = None) -> list[Coordinate]:
         """Return a list of valid destinations from the given origin."""
         pass
 

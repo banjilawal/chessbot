@@ -1,7 +1,7 @@
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.piece.chess_piece import ChessPiece
+from chess.piece.chess_piece import Piece
 from chess.game.record.capture_record import CaptureRecord
 from podscape.constants import GameColor
 
@@ -17,7 +17,7 @@ class TurnRecord:
     def __init__(
             self,
             record_id: int,
-            moved_piece: ChessPiece,
+            moved_piece: Piece,
             departure_coordinate: Coordinate,
             arrival_coordinate: Coordinate,
             capture_record: CaptureRecord=None

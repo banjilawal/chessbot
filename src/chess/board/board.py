@@ -4,11 +4,11 @@ from typing import Tuple, List, Optional
 from chess.common.config import BOARD_DIMENSION
 from chess.common.emitter import id_emitter
 from chess.common.geometry import ChessSquare, Coordinate
-from chess.piece.chess_piece import ChessPiece, CaptivityStatus
+from chess.piece.chess_piece import Piece, CaptivityStatus
 
 #@dataclass(frozen=True)
 class Board:
-    _chess_pieces: List[ChessPiece]
+    _chess_pieces: List[Piece]
     _squares: Tuple[Tuple[ChessSquare, ...], ...]# = field(init=False, repr=False)
 
     def __init__(self):
@@ -26,18 +26,18 @@ class Board:
         # object.__setattr__(self, 'squares', squares)
 
     @property
-    def chess_pieces(self) -> List[ChessPiece]:
+    def chess_pieces(self) -> List[Piece]:
         return self._chess_pieces.copy()
 
 
-    def get_chess_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[ChessPiece]:
+    def get_chess_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[Piece]:
         if not self.coordinate_is_valid(coordinate):
             print("The coordinate is not valid. Cannot find chess piece.")
             return None
         return self.squares[coordinate.row][coordinate.column].occupant
 
 
-    def get_chess_piece_by_id(self, target_id: int) -> Optional[ChessPiece]:
+    def get_chess_piece_by_id(self, target_id: int) -> Optional[Piece]:
         for chess_piece in self.chess_pieces:
             print("Checking if ", chess_piece.name, " is mover with id ", target_id)
             if chess_piece.id == target_id:
@@ -68,7 +68,7 @@ class Board:
         return occupied_squares
 
 
-    def remove_chess_piece_from_board(self, chess_piece_id: int) -> ChessPiece:
+    def remove_chess_piece_from_board(self, chess_piece_id: int) -> Piece:
         chess_piece = self.get_chess_piece_by_id(chess_piece_id)
         if chess_piece is None:
             print("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent piece.")
@@ -84,7 +84,7 @@ class Board:
         return chess_piece
 
 
-    def add_chess_piece_to_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
+    def add_chess_piece_to_board(self, chess_piece: Piece, coordinate: Coordinate) -> None:
         if chess_piece is None:
             raise ValueError("Cannot add a null chess piece")
         if not self.coordinate_is_valid(coordinate):
@@ -95,7 +95,7 @@ class Board:
         self.process_occupation(chess_piece, coordinate)
 
 
-    def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate) -> Optional[ChessPiece]:
+    def capture_square(self, chess_piece: Piece, coordinate: Coordinate) -> Optional[Piece]:
         if chess_piece is None:
             print("Captor cannot be null. Aborting capture process.")
             return None

@@ -3,7 +3,7 @@ from dataclasses import field, dataclass
 from typing import Optional
 
 from chess.common.config import BOARD_DIMENSION
-from chess.piece.chess_piece import ChessPiece
+from chess.piece.chess_piece import Piece
 
 
 @dataclass(frozen=True)
@@ -24,4 +24,4 @@ class Coordinate:
 class ChessSquare:
     id: int
     coordinate: Coordinate
-    occupant: Optional[ChessPiece] = field(default=None)
+    occupant: Optional[Piece] = field(default=None)

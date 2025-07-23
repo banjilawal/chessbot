@@ -19,28 +19,7 @@ class BishopMovement(MovementStrategy):
         return destinations
 
 
-class CastleMovement(MovementStrategy):
-    def __init__(self, rules=[HorizontalMotion, VerticalMotion]):
-        super().__init__(rules)
-
-    def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
-        destinations = []
-        for quadrant in [Quadrant.N, Quadrant.E, Quadrant.S, Quadrant.W]:
-            destinations.extend(linear_walk(origin, quadrant.x_delta, quadrant.y_delta, board))
-        return destinations
 
 
 
-class PawnMovement(MovementStrategy):
-    def __init__(self, rules=[VerticalMotion, DiagonalMotion]):
-        super().__init__(rules)
 
-    def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
-        destinations = []
-        next_point = origin.shift(0, 1)
-        if board.coordinate_is_valid(next_point):
-            destinations.append(next_point)
-        return destinations
-
-    class KingMovement(MovementStrategy):
-    class QueenMovement(MovementStrategy):

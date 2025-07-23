@@ -4,3 +4,6 @@ from chess.motion.movement.movement import MovementStrategy
 
 
 
+class QueenMovement(MovementStrategy):
+    def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
+        pass

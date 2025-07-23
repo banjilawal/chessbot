@@ -20,6 +20,6 @@ class DestinationSelector:
     #
     #
     # @abstractmethod
-    # def move(self, chess_piece: 'ChessPiece', board: 'PodBoard', destination: Coordinate) -> bool:
+    # def move(self, chess_piece: 'Piece', board: 'PodBoard', destination: Coordinate) -> bool:
     #     """Perform the move if valid. Return True if successful, False otherwise."""
     #     pass

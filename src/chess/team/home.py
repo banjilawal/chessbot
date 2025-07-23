@@ -1,6 +1,7 @@
 from enum import Enum
 
 from chess.common.config import BOARD_DIMENSION
+from chess.motion.quadrant import Quadrant
 
 
 class TeamHome(Enum):
@@ -29,3 +30,8 @@ class TeamHome(Enum):
         if self == TeamHome.NORTH:
             return -1
         return 1
+
+    def home_quadrant(self):
+        if self == TeamHome.NORTH:
+            return Quadrant.N
+        return Quadrant.S
