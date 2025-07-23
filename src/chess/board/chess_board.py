@@ -119,7 +119,7 @@ class ChessBoard:
             return prisoner
 
         if current_occupant is None:
-            future_occupant = self.remove_chess_piece_from_board(chess_piece.piece_id)
+            future_occupant = self.remove_chess_piece_from_board(chess_piece.id)
             square.occupant = future_occupant
             future_occupant.coordinate = square.coordinate
             return None

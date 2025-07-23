@@ -1,9 +1,8 @@
 from enum import Enum, auto
 
 from chess.common.geometry import Coordinate
-from chess.figure.figure_rank import FigureRank, QueenRank
+from chess.figure.rank import Rank, QueenRank
 from chess.figure.promotable import RankPromotable
-from chess.motion.strategy.king_movement import QueenMovement
 from chess.team.team import Team
 
 from abc import ABC
@@ -14,8 +13,14 @@ class CaptivityStatus(Enum):
     PRISONER = auto
 
 class ChessPiece(ABC):
+    _id: int
+    _name: str
+    _team: 'Team'
+    _rank: 'Rank'
+    _position_history: List['Coordinate']
     _status: CaptivityStatus
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         if not chess_piece_id:
             raise ValueError("chess_piece_id cannot be null or empty.")
         if not name:
@@ -24,17 +29,18 @@ class ChessPiece(ABC):
             raise ValueError("team cannot be null or empty.")
         if rank is None:
             raise ValueError("motion cannot be null.")
-        self._status = CaptivityStatus.FREE
-        self._piece_id = chess_piece_id
+        self._id = chess_piece_id
         self._name = name
         self._team = team
         self._rank = rank
+        self._status = CaptivityStatus.FREE
         self._position_history: List['Coordinate'] = []
 
     # === Immutable attributes ===
     @property
-    def piece_id(self) -> int:
-        return self._piece_id
+    def id(self) -> int:
+        return self._id
+
 
     @property
     def name(self) -> str:
@@ -45,12 +51,24 @@ class ChessPiece(ABC):
         return self._team
 
     @property
-    def rank(self) -> 'FigureRank':
+    def rank(self) -> 'Rank':
         return self._rank
 
     @property
     def status(self) -> CaptivityStatus:
         return self._status
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, ChessPiece):
+            return False
+        if isinstance(other, ChessPiece):
+            return (
+                    self.id == other.id and self.name == other.name and
+            )
 
     @status.setter
     def status(self, status: CaptivityStatus):
@@ -81,7 +99,7 @@ class ChessPiece(ABC):
 
 
 class Pawn(ChessPiece, RankPromotable):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
     def add_position(self, coordinate: Coordinate) -> None:
@@ -89,7 +107,7 @@ class Pawn(ChessPiece, RankPromotable):
         if coordinate.row == self.team.home.get_enemy_home().first_home_row():
             self.promote(self, QueenRank(QueenMovement))
 
-    def promote(self, new_rank: FigureRank) -> Optional[ChessPiece]:
+    def promote(self, new_rank: Rank) -> Optional[ChessPiece]:
         if new_rank is None:
             print("new_rank cannot be null or empty.")
             return None
@@ -100,7 +118,7 @@ class Pawn(ChessPiece, RankPromotable):
             print("New rank must be Queen")
             return None
         return Pawn(
-            chess_piece_id=self.piece_id,
+            chess_piece_id=self.id,
             name=self.name,
             team=self.team,
             rank=QueenRank(QueenMovement())
@@ -108,26 +126,26 @@ class Pawn(ChessPiece, RankPromotable):
 
 
 class Knight(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
 
 class Bishop(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
 
 class Castle(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
 
 class Queen(ChessPiece):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
 class King(ChessPiece, RankPromotable):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'FigureRank'):
+    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)
 
     def add_position(self, coordinate: Coordinate) -> None:
@@ -135,7 +153,7 @@ class King(ChessPiece, RankPromotable):
         if coordinate.row == self.team.home.get_enemy_home().first_home_row():
             self.promote(self, QueenRank(QueenMovement))
 
-    def promote(self, new_rank: FigureRank) -> Optional[ChessPiece]:
+    def promote(self, new_rank: Rank) -> Optional[ChessPiece]:
         if new_rank is None:
             print("new_rank cannot be null or empty.")
             return None
@@ -146,7 +164,7 @@ class King(ChessPiece, RankPromotable):
             print("New rank must be Queen")
             return None
         return King(
-            chess_piece_id=self.piece_id,
+            chess_piece_id=self.id,
             name=self.name,
             team=self.team,
             rank=QueenRank(QueenMovement())

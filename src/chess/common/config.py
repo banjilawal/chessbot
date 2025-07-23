@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from chess.figure.figure_rank import PawnRank, FigureRank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
+from chess.figure.rank import PawnRank, Rank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
 from chess.motion.strategy.bishop_movement import BishopMovement
 from chess.motion.strategy.castle_movement import CastleMovement
 from chess.motion.strategy.king_movement import KingMovement
@@ -38,7 +38,7 @@ class ChessPieceConfig(Enum):
             return KingMovement()
         return None
 
-    def rank(self) -> Optional[FigureRank]:
+    def rank(self) -> Optional[Rank]:
         if self == ChessPieceConfig.PAWN:
             return PawnRank(PawnMovement())
         if self == ChessPieceConfig.KNIGHT:
@@ -53,12 +53,12 @@ class ChessPieceConfig(Enum):
             return KingRank(KingMovement())
         return None
 
-    def find_category(self, figure_rank: FigureRank) -> Optional['ChessPieceConfig']:
+    def find_category(self, figure_rank: Rank) -> Optional['ChessPieceConfig']:
         if figure_rank == self.rank():
             return self
         return None
 
-    def promotion_rank(self) -> Optional[FigureRank]:
+    def promotion_rank(self) -> Optional[Rank]:
         if self == ChessPieceConfig.PAWN or self == ChessPieceConfig.KING:
             return QueenRank(QueenMovement())
         return None

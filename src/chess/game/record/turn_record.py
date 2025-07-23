@@ -36,7 +36,7 @@ class TurnRecord:
             return
 
         self._id = record_id
-        self._moved_piece_id = moved_piece.piece_id
+        self._moved_piece_id = moved_piece.id
         self._mover_color = moved_piece.team.color
         self._departure_coordinate = departure_coordinate
         self._arrival_coordinate = arrival_coordinate

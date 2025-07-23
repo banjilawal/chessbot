@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from chess.figure.chess_piece import ChessPiece
-from chess.figure.figure_rank import PawnRank
+from chess.figure.rank import PawnRank
 
 
 class RankPromotable(ABC):
