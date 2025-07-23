@@ -1,10 +1,9 @@
 from enum import Enum, auto
 
-from chess.common.config import ChessPieceConfig
 from chess.common.geometry import Coordinate
-from chess.figure.figure_rank import PawnRank, FigureRank, QueenRank
+from chess.figure.figure_rank import FigureRank, QueenRank
 from chess.figure.promotable import RankPromotable
-from chess.motion.movement_strategy import QueenMovement
+from chess.motion.strategy.king_movement import QueenMovement
 from chess.team.team import Team
 
 from abc import ABC

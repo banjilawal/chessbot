@@ -1,0 +1,28 @@
+from chess.motion.diagonal import DiagonalMove
+
+
+class DestinationSelector:
+    def __init__(self):
+        pass
+
+    #
+    # @abstractmethod
+    # def best_destinations(self, origin: Coordinate, board: ChessBoard) -> list[Coordinate]:
+    #     """Return the best destination from the given origin."""
+    #     pass
+    #
+    # @abstractmethod
+    # def worst_destinations(self, origin:Coordinate, board:ChessBoard) -> list[Coordinate]:
+    #     """Return the worst destination from the given origin."""
+    #     pass
+    #
+    # @abstractmethod
+    # def select_destination(self, origin: Coordinate, destinations:list[Coordinate]) -> bool:
+    #     """Return True if the given move is valid, False otherwise."""
+    #     pass
+    #
+    #
+    # @abstractmethod
+    # def move(self, chess_piece: 'ChessPiece', board: 'Board', destination: Coordinate) -> bool:
+    #     """Perform the move if valid. Return True if successful, False otherwise."""
+    #     pass

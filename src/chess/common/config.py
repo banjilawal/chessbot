@@ -1,11 +1,15 @@
-from enum import Enum, auto
+from enum import Enum
 from typing import Optional
 
 from chess.figure.figure_rank import PawnRank, FigureRank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
-from chess.motion.movement_strategy import PawnMovement, KnightMovement, BishopMovement, CastleMovement, \
+from chess.motion.strategy.king_movement import PawnMovement, KnightMovement, BishopMovement, CastleMovement, \
     QueenMovement, KingMovement
 
 BOARD_DIMENSION = 8
+
+CAPTURE_PRIORITY = {
+
+}
 
 class ChessPieceConfig(Enum):
     PAWN = "Pawn"
