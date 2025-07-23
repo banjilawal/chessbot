@@ -18,21 +18,3 @@ class BishopMovement(MovementStrategy):
         return destinations
 
 
-    def _diagonal_walk(
-            self,
-            origin: Coordinate,
-            x_delta: int,
-            y_delta: int,
-            board: ChessBoard
-   ) -> list[Coordinate]:
-        destinations = []
-        current = origin.shift(x_delta, y_delta)
-
-        while board.is_valid_coordinate(current):
-            occupant = board.get_chess_piece_by_coordinate(current)
-            if occupant is None:
-                destinations.append(current)
-            else:
-                break
-            current = current.shift(x_delta, y_delta)
-        return destinations

@@ -31,7 +31,7 @@ class ChessBoard:
 
 
     def get_chess_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[ChessPiece]:
-        if not self.is_valid_coordinate(coordinate):
+        if not self.coordinate_is_valid(coordinate):
             print("The coordinate is not valid. Cannot find chess piece.")
             return None
         return self.squares[coordinate.row][coordinate.column].occupant
@@ -87,7 +87,7 @@ class ChessBoard:
     def add_chess_piece_to_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> None:
         if chess_piece is None:
             raise ValueError("Cannot add a null chess piece")
-        if not self.is_valid_coordinate(coordinate):
+        if not self.coordinate_is_valid(coordinate):
             raise ValueError("THe chess piece cannot be addd. The destination coordinate is out of range.")
         if self.squares[coordinate.row][coordinate.column].occupant is not None:
             raise ValueError("The chess piece cannot be added. The destination square is already occupied.")
@@ -99,7 +99,7 @@ class ChessBoard:
         if chess_piece is None:
             print("Captor cannot be null. Aborting capture process.")
             return None
-        if not self.is_valid_coordinate(coordinate):
+        if not self.coordinate_is_valid(coordinate):
             print("The destination coordinate is out of range. Aborting capture process.")
             return None
 
@@ -126,7 +126,7 @@ class ChessBoard:
         return None
 
 
-    def is_valid_coordinate(self, coordinate: Coordinate):
+    def coordinate_is_valid(self, coordinate: Coordinate):
         if coordinate is None:
             print("A null coordinate is not valid")
             return False
