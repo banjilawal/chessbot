@@ -1,12 +1,12 @@
 from entity_factory import EntityFactory
 from geometry import Dimension, GridCoordinate
-from board import Board
+from pod_board import PodBoard
 
 from grid_entity import HorizontalMover, VerticalMover, BrickPallet
 from id_factory import id_factory
 
 if __name__ == "__main__":
-    board = Board(dimension=Dimension(length=21, height=21))
+    board = PodBoard(dimension=Dimension(length=21, height=21))
     for cell in board.cells:
         print(cell)
     print("board dimensions:", board.dimension)

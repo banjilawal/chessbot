@@ -1,6 +1,6 @@
 from chess.common.config import ChessPieceConfig
 from chess.common.emitter import id_emitter
-from chess.figure.chess_piece import Pawn, Knight, Bishop, Castle, King
+from chess.piece.chess_piece import Pawn, Knight, Bishop, Castle, King
 from chess.team.team import Team
 from podscape.constants import GameColor
 

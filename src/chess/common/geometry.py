@@ -3,7 +3,7 @@ from dataclasses import field, dataclass
 from typing import Optional
 
 from chess.common.config import BOARD_DIMENSION
-from chess.figure.chess_piece import ChessPiece
+from chess.piece.chess_piece import ChessPiece
 
 
 @dataclass(frozen=True)

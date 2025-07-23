@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.figure.chess_piece import ChessPiece, CaptivityStatus
+from chess.piece.chess_piece import ChessPiece, CaptivityStatus
 from podscape.constants import GameColor
 
 

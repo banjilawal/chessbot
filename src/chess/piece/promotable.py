@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from chess.figure.chess_piece import ChessPiece
-from chess.figure.rank import PawnRank
+from chess.piece.chess_piece import ChessPiece
+from chess.piece.rank import PawnRank
 
 
 class RankPromotable(ABC):

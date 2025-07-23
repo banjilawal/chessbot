@@ -2,7 +2,7 @@ from dataclasses import field
 from typing import Dict, Optional, List
 
 from chess.common.config import ChessPieceConfig
-from chess.figure.chess_piece import ChessPiece
+from chess.piece.chess_piece import ChessPiece
 from chess.team.home import TeamHome
 from podscape.constants import GameColor
 

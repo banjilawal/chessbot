@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from chess.figure.rank import PawnRank, Rank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
+from chess.piece.rank import PawnRank, Rank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
 from chess.motion.movement.bishop_movement import BishopMovement
 from chess.motion.movement.castle_movement import CastleMovement
 from chess.motion.movement.king_movement import KingMovement

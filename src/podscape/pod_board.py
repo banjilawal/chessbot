@@ -22,7 +22,7 @@ class Cell:
         object.__setattr__(self, 'occupant', self.occupant)
 
 @dataclass
-class Board:
+class PodBoard:
     MIN_ROW_COUNT = 6
     MIN_COLUMN_COUNT = 6
 
@@ -37,7 +37,7 @@ class Board:
             self.dimension.height > self.MIN_ROW_COUNT,
             self.dimension.length > self.MIN_COLUMN_COUNT
         ]):
-            raise ValueError("Board dimensions below minimum values")
+            raise ValueError("PodBoard dimensions below minimum values")
 
         cells = tuple(
             tuple(
@@ -111,7 +111,7 @@ class Board:
 
     def remove_entity_from_cells(self, mover: Mover) -> None:
         if mover is None:
-            raise ValueError("Entity not found on the board. cannot remove a non-existent figure.")
+            raise ValueError("Entity not found on the board. cannot remove a non-existent piece.")
 
         target_cells = self.get_cells_occupied_by_entity(mover)
         for cell in target_cells:
@@ -121,10 +121,10 @@ class Board:
     def add_entity_to_area(self, entity: GridEntity, top_left_coordinate: GridCoordinate) -> None:
 
         if top_left_coordinate is None:
-            raise ValueError("Cannot add figure to an area without a top-left top_left_coordinate.")
+            raise ValueError("Cannot add piece to an area without a top-left top_left_coordinate.")
 
         if entity is None:
-            raise ValueError("Entity not found on the board. cannot add a non-existent figure.")
+            raise ValueError("Entity not found on the board. cannot add a non-existent piece.")
 
         if entity is None or top_left_coordinate is None:
             raise ValueError("Entity and top_left_coordinate must not be None.")
@@ -137,7 +137,7 @@ class Board:
 
     def add_new_entity(self, top_left_coordinate: GridCoordinate, entity: GridEntity) -> Optional[GridEntity]:
         if top_left_coordinate is None or entity is None:
-            raise ValueError("Top-left top_left_coordinate and figure must not be None.")
+            raise ValueError("Top-left top_left_coordinate and piece must not be None.")
 
         # Bounds check
         if top_left_coordinate.row + entity.dimension.height > self.dimension.height:
@@ -159,7 +159,7 @@ class Board:
             raise ValueError("Destination top_left_coordinate must not be None.")
 
         if mover is None:
-            raise ValueError("Entity does not exist. in the board. cannot move a non-existent figure.")
+            raise ValueError("Entity does not exist. in the board. cannot move a non-existent piece.")
 
         if not self.can_entity_move_to_cells(mover, upper_left_destination):
             print("Entity", mover.mover_id, "cannot move to", upper_left_destination)
@@ -171,7 +171,7 @@ class Board:
 
     def remove_entity(self, entity: GridEntity) -> None:
         if entity is None:
-            raise ValueError("Entity does not exist. in the board. cannot remove a non-existent figure.")
+            raise ValueError("Entity does not exist. in the board. cannot remove a non-existent piece.")
         self.remove_entity_from_cells(entity)
         self.entities.remove(entity)
 

@@ -1,7 +1,7 @@
 import random
 from typing import List
 
-from board import Board
+from pod_board import PodBoard
 from grid_entity import HorizontalMover, VerticalMover
 from geometry import Dimension
 from id_factory import id_factory
@@ -50,8 +50,8 @@ class EntityFactory:
             dimension=Dimension(21, 21),
             max_entity_dimension: int = 7,
             max_entities: int = 10
-    ) -> 'Board':
-        board = Board()
+    ) -> 'PodBoard':
+        board = PodBoard()
         board.add_horizontal_mover(EntityFactory.horizontal_mover(max_height=max_entity_dimension))
         return board
 

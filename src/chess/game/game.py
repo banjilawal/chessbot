@@ -1,10 +1,10 @@
-from chess.board.chess_board import ChessBoard
+from chess.board.board import Board
 from chess.game.record.turn_record import TurnRecord
 from chess.team.team import Team
 
 
 class Game:
-    _board = ChessBoard
+    _board = Board
     _white_team = Team
     _black_team = Team
     _game_history: list[TurnRecord]

@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.board.chess_board import ChessBoard
+from chess.board.board import Board
 from chess.common.geometry import Coordinate
 
 
@@ -8,7 +8,7 @@ def linear_walk(
     origin: Coordinate,
     x_delta: int,
     y_delta: int,
-    board: ChessBoard,
+    board: Board,
     max_steps: int = None
 ) -> List[Coordinate]:
     positions = []
@@ -35,7 +35,7 @@ def diagonal_walk(
         origin: Coordinate,
         x_delta: int,
         y_delta: int,
-        board: ChessBoard,
+        board: Board,
         max_steps: int = None
 ) -> list[Coordinate]:
     positions = []

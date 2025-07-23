@@ -25,7 +25,7 @@ class Mover(GridEntity, ABC):
         super().__init__(dimension=dimension, top_left_coordinate=top_left_coordinate)
         self.mover_id = mover_id
 
-    def move(self, board: 'Board', destination_coordinate: GridCoordinate) -> None:
+    def move(self, board: 'PodBoard', destination_coordinate: GridCoordinate) -> None:
         if not self.movement_strategy.move(self, board, destination_coordinate):
             print(f"Failed to move {self.mover_id} to {destination_coordinate}.")
         else:
@@ -66,12 +66,12 @@ class MovementStrategy(ABC):
     def __init__(self, rules: List['Motion']):
         self.rules = rules
 
-    def _check_basic_conditions(self, mover: 'Mover', board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
+    def _check_basic_conditions(self, mover: 'Mover', board: 'PodBoard', destination_coordinate: 'GridCoordinate') -> bool:
         if mover is None:
             print("[Warning] Mover cannot be None. It cannot move.")
             return False
         if board is None:
-            print("[Warning] Board cannot be None. Cannot move.")
+            print("[Warning] PodBoard cannot be None. Cannot move.")
             return False
         if mover.top_left_coordinate is None:
             print("[Warning] Mover has no top_left_coordinate. Cannot move.")
@@ -88,6 +88,6 @@ class MovementStrategy(ABC):
         return True
 
     @abstractmethod
-    def move(self, mover: 'Mover', board: 'Board', destination_coordinate: 'GridCoordinate') -> bool:
+    def move(self, mover: 'Mover', board: 'PodBoard', destination_coordinate: 'GridCoordinate') -> bool:
         """Perform the move if valid. Return True if successful, False otherwise."""
         pass

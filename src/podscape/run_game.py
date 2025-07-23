@@ -4,7 +4,7 @@ from pathlib import Path
 import pygame
 
 from geometry import Dimension, GridCoordinate
-from board import Board
+from pod_board import PodBoard
 
 from grid_entity import HorizontalMover, VerticalMover
 
@@ -14,7 +14,7 @@ from id_factory import id_factory
 sys.path.append(str(Path(__file__).parent.absolute()))
 
 def main():
-    board = Board(dimension=Dimension(length=13, height=13))
+    board = PodBoard(dimension=Dimension(length=13, height=13))
     board.add_new_entity(GridCoordinate(1,1), HorizontalMover(mover_id=id_factory.mover_id(), height=1))
     board.add_new_entity(GridCoordinate(1,2), HorizontalMover(mover_id=id_factory.mover_id(), height=3))
     board.add_new_entity(GridCoordinate(8,8), HorizontalMover(mover_id=id_factory.mover_id(), height=4))

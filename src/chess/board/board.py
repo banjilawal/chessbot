@@ -4,10 +4,10 @@ from typing import Tuple, List, Optional
 from chess.common.config import BOARD_DIMENSION
 from chess.common.emitter import id_emitter
 from chess.common.geometry import ChessSquare, Coordinate
-from chess.figure.chess_piece import ChessPiece, CaptivityStatus
+from chess.piece.chess_piece import ChessPiece, CaptivityStatus
 
 #@dataclass(frozen=True)
-class ChessBoard:
+class Board:
     _chess_pieces: List[ChessPiece]
     _squares: Tuple[Tuple[ChessSquare, ...], ...]# = field(init=False, repr=False)
 
@@ -71,7 +71,7 @@ class ChessBoard:
     def remove_chess_piece_from_board(self, chess_piece_id: int) -> ChessPiece:
         chess_piece = self.get_chess_piece_by_id(chess_piece_id)
         if chess_piece is None:
-            print("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent figure.")
+            print("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent piece.")
             return None
         if chess_piece.coordinate is None:
             print("Cannot remove a chess piece from an empty square.")

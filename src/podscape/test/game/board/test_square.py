@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from podscape.board import Cell
+from podscape.pod_board import Cell
 from podscape.constants import Config
 from podscape.exception import InvalidIdError, NegativeRowError, NegativeColumnError
 from podscape.grid_entity import GridEntity

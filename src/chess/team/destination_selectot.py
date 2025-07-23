@@ -4,12 +4,12 @@ class DestinationSelector:
 
     #
     # @abstractmethod
-    # def best_destinations(self, origin: Coordinate, board: ChessBoard) -> list[Coordinate]:
+    # def best_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
     #     """Return the best destination from the given origin."""
     #     pass
     #
     # @abstractmethod
-    # def worst_destinations(self, origin:Coordinate, board:ChessBoard) -> list[Coordinate]:
+    # def worst_destinations(self, origin:Coordinate, board:Board) -> list[Coordinate]:
     #     """Return the worst destination from the given origin."""
     #     pass
     #
@@ -20,6 +20,6 @@ class DestinationSelector:
     #
     #
     # @abstractmethod
-    # def move(self, chess_piece: 'ChessPiece', board: 'Board', destination: Coordinate) -> bool:
+    # def move(self, chess_piece: 'ChessPiece', board: 'PodBoard', destination: Coordinate) -> bool:
     #     """Perform the move if valid. Return True if successful, False otherwise."""
     #     pass
