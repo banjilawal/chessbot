@@ -1,8 +1,9 @@
 from enum import Enum, auto
 
 from chess.common.geometry import Coordinate
-from chess.figure.rank import Rank, QueenRank
+from chess.figure.rank import Rank, QueenRank, PawnRank
 from chess.figure.promotable import RankPromotable
+from chess.motion.strategy.queen_movement import QueenMovement
 from chess.team.team import Team
 
 from abc import ABC
@@ -66,9 +67,8 @@ class ChessPiece(ABC):
         if not isinstance(other, ChessPiece):
             return False
         if isinstance(other, ChessPiece):
-            return (
-                    self.id == other.id and self.name == other.name and
-            )
+            self.id == other.id
+        return False
 
     @status.setter
     def status(self, status: CaptivityStatus):
@@ -96,6 +96,11 @@ class ChessPiece(ABC):
     @property
     def position_history(self) -> List[Coordinate]:
         return list(self._position_history)
+
+
+class PromotablePiece(ChessPiece, RankPromotable):
+    def promote(self, new_rank: PawnRank) -> Optional[ChessPiece]:
+        pass
 
 
 class Pawn(ChessPiece, RankPromotable):
