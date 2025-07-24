@@ -1,6 +1,13 @@
 from chess.common.geometry import Coordinate
 
 class PawnAdvancePattern:
+    """
+    Refactored PawnAdvancePattern to handle the pawn's first move which can be two steps forward.
+    PawnAdvancePattern has a different method siganture than patterns for king, quuen, bishop,
+    and castle. It cannot be part of the GeometryPattern class hierarchy. Because its the one and
+    only class that need to handle first advances differently and there's only 6 cases and interface
+    is pointless.
+    """
 
     @staticmethod
     def matches(
