@@ -26,7 +26,7 @@ class DefinitionCategory(Enum):
             return 6
         elif self == DefinitionCategory.QUEEN:
             return 7
-        elif self == DefinitionCategory.PAWN_CAPTURE_ENEMY
+        elif self == DefinitionCategory.PAWN_CAPTURE_ENEMY:
             return 8
         else:
             return 0

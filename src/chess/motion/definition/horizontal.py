@@ -5,13 +5,9 @@ from chess.motion.definition.definition_category import DefinitionCategory
 
 class HorizontalDefinition(Definition):
     """X changes while Y stays the same."""
-    def __init__(self, definition_category: DefinitionCategory= DefinitionCategory.HORIZONTAL):
-        if definition_category is None:
-            raise TypeError("definition_category cannot be None")
-        if not definition_category == DefinitionCategory.HORIZONTAL:
-            raise ValueError("definition_category must be horizontal")
+    def __init__(self, definition_id, title):
 
-        super().__init__(self, id=definition_category.id, title=definition_category.value)
+        super().__init__(self, id=definition_id, title=title)
 
 
     def line_fits_definition(self, origin: Coordinate, destination: Coordinate) -> bool:

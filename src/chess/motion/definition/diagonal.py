@@ -9,20 +9,14 @@ class DiagonalDefinition(Definition):
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """
-    def __init__(self, definition_category: DefinitionCategory= DefinitionCategory.DIAGONAL):
-        if definition_category is None:
-            raise TypeError("definition_category cannot be None")
-        if not definition_category == DefinitionCategory.DIAGONAL:
-            raise ValueError("definition_category must be diagonal:")
 
-        super().__init__(self, id=definition_category.id, title=definition_category.value)
+    def __init__(self, definition_id, title):
+        super().__init__(self, id=definition_id, title=title)
 
 
     def line_fits_definition(self, origin: Coordinate, destination: Coordinate) -> bool:
         # Row and column difference equal (non-zero)
-        return (
-            origin != destination and
-                abs(origin.row - destination.row) == abs(destination.column - origin.column)
-        )
+        return (origin != destination and
+            abs(origin.row - destination.row) == abs(destination.column - origin.column))
 
 

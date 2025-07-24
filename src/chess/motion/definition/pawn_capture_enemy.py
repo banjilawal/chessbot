@@ -1,9 +1,7 @@
 from typing import Optional
 
-from chess.board import board
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.motion.definition.definition_category import DefinitionCategory
 from chess.motion.definition.pawn_defintion import PawnDefinition
 from chess.team.home import TeamHome
 
@@ -26,11 +24,11 @@ class PawnCaptureEnemyDefinition(PawnDefinition):
         return self._board
 
 
-    def can_caputure_enemy(
-            self,
-            origin: Coordinate,
-            destination: Coordinate,
-            pawn_home: Optional[TeamHome]
+    def can_capture_enemy(
+        self,
+        origin: Coordinate,
+        destination: Coordinate,
+        pawn_home: Optional[TeamHome]
     ) -> bool:
         if pawn_home is None:
         if origin is None:
