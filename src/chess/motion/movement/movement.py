@@ -5,7 +5,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.piece.piece import Piece
-from chess.motion.logic.diagonal import GeometryPattern
+from chess.motion.logic.diagonal_pattern import GeometryPattern
 from chess.team.home import TeamHome
 
 # if TYPE_CHECKING:

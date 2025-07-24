@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/definition.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/geomtery_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/diagonal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/diagonal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/horizontal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/horizontal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/king_definition.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/king_definition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/knight_definition.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/knight_definition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/pawn_defintion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/pawn_defintion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/queen_definition.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/queen_definition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/vertical.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/vertical.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/movement/bishop_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/movement/bishop_movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/movement/movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/movement/movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/podscape/grid_entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/grid_entity.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -288,7 +275,7 @@
       <workItem from="1753011601753" duration="739000" />
       <workItem from="1753074520002" duration="78753000" />
       <workItem from="1753197301502" duration="29496000" />
-      <workItem from="1753242062539" duration="71922000" />
+      <workItem from="1753242062539" duration="72264000" />
     </task>
     <servers />
   </component>

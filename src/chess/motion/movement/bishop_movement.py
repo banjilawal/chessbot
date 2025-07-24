@@ -3,7 +3,7 @@ from typing import Optional
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.motion.logic.geomtery_pattern import GeometryPattern
-from chess.motion.logic.diagonal import DiagonalDefinition
+from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.horizontal import HorizontalDefinition
 from chess.motion.logic.vertical import VerticalDefinition
 from chess.motion.quadrant import Quadrant
@@ -12,7 +12,7 @@ from chess.motion.walks import diagonal_walk, linear_walk
 
 
 class BishopMovement(MovementStrategy):
-    def __init__(self, motion_definitions=[DiagonalDefinition]):
+    def __init__(self, motion_definitions=[DiagonalPattern]):
         super().__init__(motion_definitions)
 
     def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[GeometryPattern]:

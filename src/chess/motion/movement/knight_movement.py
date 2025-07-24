@@ -1,6 +1,6 @@
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.motion.logic.diagonal import DiagonalDefinition
+from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.vertical import VerticalDefinition
 from chess.motion.movement.movement import MovementStrategy
 from chess.motion.quadrant import Quadrant
@@ -8,7 +8,7 @@ from chess.motion.walks import linear_walk, diagonal_walk
 
 
 class KnightMovement(MovementStrategy):
-    def __init__(self, motion_definitions=[DiagonalDefinition, VerticalDefinition]):
+    def __init__(self, motion_definitions=[DiagonalPattern, VerticalDefinition]):
         super().__init__(motion_definitions)
 
     def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
