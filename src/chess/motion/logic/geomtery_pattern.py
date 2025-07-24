@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from chess.common.geometry import Coordinate
 
-class Definition(ABC):
+class GeometryPattern(ABC):
     _id: int
     _title: str
 
@@ -22,7 +22,7 @@ class Definition(ABC):
             return True
         if other is None:
             return False
-        if not isinstance(other, Definition):
+        if not isinstance(other, GeometryPattern):
             return False
         return self._id == other.id and self._title == other.title
 

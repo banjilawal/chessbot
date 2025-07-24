@@ -1,8 +1,8 @@
 from chess.common.geometry import Coordinate
-from chess.motion.logic.definition import Definition
+from chess.motion.logic.geomtery_pattern import GeometryPattern
 
 
-class KnightDefinition(Definition):
+class KnightDefinition(GeometryPattern):
     def __init__(self, definition_id: int, title: str):
         super().__init__(definition_id, title)
 

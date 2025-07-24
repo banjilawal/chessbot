@@ -1,9 +1,9 @@
 from chess.common.geometry import Coordinate
-from chess.motion.logic.definition import Definition
+from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.definition_category import DefinitionCategory
 
 
-class VerticalDefinition(Definition):
+class VerticalDefinition(GeometryPattern):
     """Y changes while X stays the same."""
     def __init__(self, definition_category: DefinitionCategory= DefinitionCategory.VERTICAL):
         if definition_category is None:

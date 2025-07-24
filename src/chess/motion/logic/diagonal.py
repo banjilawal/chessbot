@@ -1,9 +1,9 @@
 from chess.common.geometry import Coordinate
-from chess.motion.logic.definition import Definition
+from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.definition_category import DefinitionCategory
 
 
-class DiagonalDefinition(Definition):
+class DiagonalDefinition(GeometryPattern):
     """
     A DiagonalDefinition is a rule that defines a diagonal motion. Diagonal motion is:
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1

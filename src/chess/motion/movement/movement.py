@@ -5,7 +5,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.piece.piece import Piece
-from chess.motion.logic.diagonal import Definition
+from chess.motion.logic.diagonal import GeometryPattern
 from chess.team.home import TeamHome
 
 # if TYPE_CHECKING:
@@ -16,7 +16,7 @@ class MovementStrategy(ABC):
     _motion_definitions: {}
     """ A MovementStrategy is a collection of MoveRules that logic how a piece can move."""
 
-    def __init__(self, motion_definitions: list[Definition]):
+    def __init__(self, motion_definitions: list[GeometryPattern]):
         self._motion_definitions = {}
         for definition in motion_definitions:
             if definition.id not in self._motion_definitions:
@@ -24,7 +24,7 @@ class MovementStrategy(ABC):
 
 
     @property
-    def motion_definitions(self) -> Dict[int, Definition]:
+    def motion_definitions(self) -> Dict[int, GeometryPattern]:
         return self._motion_definitions.copy()
 
 
@@ -49,7 +49,7 @@ class MovementStrategy(ABC):
         pass
 
     @abstractmethod
-    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[Definition]:
+    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[GeometryPattern]:
         pass
 
     @abstractmethod

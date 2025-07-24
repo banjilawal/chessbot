@@ -1,10 +1,10 @@
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.motion.logic.definition import Definition
+from chess.motion.logic.geomtery_pattern import GeometryPattern
 
 
-class PawnDefinition(Definition):
+class PawnDefinition(GeometryPattern):
     def __init__(self, definition_id, title):
         super().__init__(definition_id, title)
 
