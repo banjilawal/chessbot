@@ -2,11 +2,11 @@ from typing import Optional
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.motion.logic.pawn_defintion import PawnDefinition
+from chess.motion.logic.pawn_advance_pattern import PawnAdvancePattern
 from chess.team.home import TeamHome
 
 
-class PawnCaptureEnemyDefinition(PawnDefinition):
+class PawnCaptureEnemyAdvancePattern(PawnAdvancePattern):
     _pawn_home: TeamHome
     _board: Board
 
