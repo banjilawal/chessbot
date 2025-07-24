@@ -8,8 +8,8 @@ class DiagonalDefinition(Definition):
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """
-    def __init__(self):
-        super().__init__(self)
+    def __init__(self, definition_id: int=, title: str="diagonal"):
+        super().__init__(self, id=definition_id, title=title)
 
 
     def line_fits_definition(self, origin: Coordinate, destination: Coordinate) -> bool:

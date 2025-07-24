@@ -31,7 +31,7 @@ def TeamBuilder():
             key = i + 1
             name = base_name + "_" + key
             rank = i + 1
-            chess_piece_id = id_emitter.chess_piece_id()
+            chess_piece_id = id_emitter.piece_id()
             pawn_dict[key] = Pawn(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
         return pawn_dict
 
@@ -44,7 +44,7 @@ def TeamBuilder():
         for i in ChessPieceConfig.KNIGHT.number_per_team():
             key = i + 1
             name = base_name + "_" + key
-            chess_piece_id = id_emitter.chess_piece_id()
+            chess_piece_id = id_emitter.piece_id()
             knight_dict[key] = Knight(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
         return knight_dict
 
@@ -56,7 +56,7 @@ def TeamBuilder():
         for i in ChessPieceConfig.BISHOP.number_per_team():
             key = i + 1
             name = base_name + "_" + key
-            chess_piece_id = id_emitter.chess_piece_id()
+            chess_piece_id = id_emitter.piece_id()
             bishop_dict[key] = Bishop(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
         return bishop_dict
 
@@ -69,7 +69,7 @@ def TeamBuilder():
         for i in ChessPieceConfig.CASTLE.number_per_team():
             key = i + 1
             name = base_name + "_" + key
-            chess_piece_id = id_emitter.chess_piece_id()
+            chess_piece_id = id_emitter.piece_id()
             castle_dict[key] = Castle(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
         return castle_dict
 
@@ -82,7 +82,7 @@ def TeamBuilder():
         for i in ChessPieceConfig.QUEEN.number_per_team():
             key = i + 1
             name = base_name + "_" + key
-            chess_piece_id = id_emitter.chess_piece_id()
+            chess_piece_id = id_emitter.piece_id()
             queen_dict[key] = Bishop(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
         return queen_dict
 
@@ -95,6 +95,6 @@ def TeamBuilder():
         for i in ChessPieceConfig.KING.number_per_team():
             key = i + 1
             name = base_name + "_" + key
-            chess_piece_id = id_emitter.chess_piece_id()
+            chess_piece_id = id_emitter.piece_id()
             king_dict[key] = King(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
         return king_dict
