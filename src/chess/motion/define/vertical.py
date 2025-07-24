@@ -8,6 +8,6 @@ class VerticalDefine(Define):
         super().__init__(self)
 
 
-    def motion_fits_rule(self, origin: Coordinate, destination: Coordinate) -> bool:
+    def line_fits_definition(self, origin: Coordinate, destination: Coordinate) -> bool:
         # Same column, row changes
         return origin.column == destination.column and origin.row != destination.row
