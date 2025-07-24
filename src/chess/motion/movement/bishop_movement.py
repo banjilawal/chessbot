@@ -4,7 +4,7 @@ from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
-from chess.motion.logic.horizontal import HorizontalDefinition
+from chess.motion.logic.horizontal_pattern import HorizontalPattern
 from chess.motion.logic.vertical import VerticalDefinition
 from chess.motion.quadrant import Quadrant
 from chess.motion.movement.movement import MovementStrategy
