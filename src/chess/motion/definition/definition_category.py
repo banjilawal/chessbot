@@ -9,6 +9,7 @@ class DefinitionCategory(Enum):
     KNIGHT = "knight"
     KING = "king"
     QUEEN = "queen"
+    PAWN_CAPTURE_ENEMY = "pawn capture enemy"
 
     def id(self):
         if self == DefinitionCategory.HORIZONTAL:
@@ -25,5 +26,7 @@ class DefinitionCategory(Enum):
             return 6
         elif self == DefinitionCategory.QUEEN:
             return 7
+        elif self == DefinitionCategory.PAWN_CAPTURE_ENEMY
+            return 8
         else:
             return 0

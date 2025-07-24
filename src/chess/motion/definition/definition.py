@@ -5,7 +5,7 @@ class Definition(ABC):
     _id: int
     _title: str
 
-    def __init__(self, id: int, title: str):
+    def __init__(self, definition_id: int, title: str):
         self._id = id
         self._title = title
 
