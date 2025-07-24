@@ -1,6 +1,6 @@
 
 from abc import ABC, abstractmethod
-from typing import Dict, Optional
+from typing import Dict, Optional, TYPE_CHECKING
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
@@ -8,19 +8,25 @@ from chess.piece.piece import Piece
 from chess.motion.definition.diagonal import Definition
 from chess.team.home import TeamHome
 
+# if TYPE_CHECKING:
+#     from chess.board.board import Board
+
 
 class MovementStrategy(ABC):
-    _move_rules: {}
+    _motion_definitions: {}
     """ A MovementStrategy is a collection of MoveRules that definition how a piece can move."""
 
-    def __init__(self, rules: list[Definition]):
-        self._move_rules = {}
-        for rule in rules:
-            class_name = type(rule).__name__
-            if class_name not in self._move_rules:
-                self._move_rules[class_name] = rule
+    def __init__(self, motion_definitions: list[Definition]):
+        self._motion_definitions = {}
+        for definition in motion_definitions:
+            if definition.id not in self._motion_definitions:
+                self._motion_definitions[definition.id] = definition
 
-    def check_basic_conditions(self, chess_piece: Piece, board: 'PodBoard', destination: 'Coordinate') -> bool:
+    @property
+    def motion_definitions(self) -> Dict[int, Definition]:
+        return self._motion_definitions.copy()
+
+    def check_basic_conditions(self, chess_piece: Piece, board: Board, destination: 'Coordinate') -> bool:
         if chess_piece is None:
             print("[Warning] Mover cannot be None. It cannot move.")
             return False
@@ -43,6 +49,6 @@ class MovementStrategy(ABC):
 
     @property
     def move_rules(self) -> Dict[str, Definition]:
-        return self._move_rules.copy()
+        return self.motion_definitions.copy()
 
 

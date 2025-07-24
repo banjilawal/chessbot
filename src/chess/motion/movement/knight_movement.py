@@ -8,8 +8,8 @@ from chess.motion.walks import linear_walk, diagonal_walk
 
 
 class KnightMovement(MovementStrategy):
-    def __init__(self, rules=[DiagonalDefinition, VerticalDefinition]):
-        super().__init__(rules)
+    def __init__(self, motion_definitions=[DiagonalDefinition, VerticalDefinition]):
+        super().__init__(motion_definitions)
 
     def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []

@@ -9,11 +9,11 @@ from chess.motion.walks import diagonal_walk, linear_walk
 
 
 class BishopMovement(MovementStrategy):
-    def __init__(self, rules=[DiagonalDefinition]):
-        super().__init__(rules)
+    def __init__(self, motion_definitions=[DiagonalDefinition]):
+        super().__init__(motion_definitions)
 
     def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> bool:
-
+        fo
 
     def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []
