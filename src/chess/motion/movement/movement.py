@@ -5,7 +5,7 @@ from typing import Dict, Optional
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.piece.piece import Piece
-from chess.motion.define.diagonal import Define
+from chess.motion.define.diagonal import Definition
 from chess.team.home import TeamHome
 
 
@@ -13,7 +13,7 @@ class MovementStrategy(ABC):
     _move_rules: {}
     """ A MovementStrategy is a collection of MoveRules that define how a piece can move."""
 
-    def __init__(self, rules: list[Define]):
+    def __init__(self, rules: list[Definition]):
         self._move_rules = {}
         for rule in rules:
             class_name = type(rule).__name__
@@ -42,7 +42,7 @@ class MovementStrategy(ABC):
 
 
     @property
-    def move_rules(self) -> Dict[str, Define]:
+    def move_rules(self) -> Dict[str, Definition]:
         return self._move_rules.copy()
 
 

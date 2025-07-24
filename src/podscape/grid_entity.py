@@ -63,7 +63,7 @@ class UniversalMover(Mover):
         )
 
 class MovementStrategy(ABC):
-    def __init__(self, rules: List['Define']):
+    def __init__(self, rules: List['Definition']):
         self.rules = rules
 
     def _check_basic_conditions(self, mover: 'Mover', board: 'PodBoard', destination_coordinate: 'GridCoordinate') -> bool:

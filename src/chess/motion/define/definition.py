@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from chess.common.geometry import Coordinate
 
-class Define(ABC):
+class Definition(ABC):
 
     @abstractmethod
     def line_fits_definition(self, origin: Coordinate, destination: Coordinate) -> bool:

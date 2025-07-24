@@ -1,8 +1,8 @@
 from chess.common.geometry import Coordinate
-from chess.motion.define.define import Define
+from chess.motion.define.definition import Definition
 
 
-class HorizontalDefine(Define):
+class HorizontalDefinition(Definition):
     """X changes while Y stays the same."""
     def __init__(self):
         super().__init__(self)
