@@ -1,5 +1,8 @@
+from typing import Optional
+
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
+from chess.motion.definition.definition import Definition
 from chess.motion.definition.diagonal import DiagonalDefinition
 from chess.motion.definition.horizontal import HorizontalDefinition
 from chess.motion.definition.vertical import VerticalDefinition
@@ -12,8 +15,11 @@ class BishopMovement(MovementStrategy):
     def __init__(self, motion_definitions=[DiagonalDefinition]):
         super().__init__(motion_definitions)
 
-    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> bool:
-        fo
+    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[Definition]:
+        for definition in self.motion_definitions.values():
+            if definition.line_fits_definition(origin, destination):
+                return definition
+        return None
 
     def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []

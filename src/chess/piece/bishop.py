@@ -7,5 +7,4 @@ class Bishop(Piece):
         super().__init__(chess_piece_id, name, team, rank)
 
     def move(self, destination: 'Coordinate', board: Board):
-        if rank.path_to_coordinate_exists(cooordinate=destination, board=board):
-            board.capture_square(destination)
+        if self.rank.

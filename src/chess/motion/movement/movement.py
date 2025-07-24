@@ -22,9 +22,11 @@ class MovementStrategy(ABC):
             if definition.id not in self._motion_definitions:
                 self._motion_definitions[definition.id] = definition
 
+
     @property
     def motion_definitions(self) -> Dict[int, Definition]:
         return self._motion_definitions.copy()
+
 
     def check_basic_conditions(self, chess_piece: Piece, board: Board, destination: 'Coordinate') -> bool:
         if chess_piece is None:
@@ -42,13 +44,18 @@ class MovementStrategy(ABC):
         return True
 
     @abstractmethod
+    def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:
+        """Perform the move if valid. Return True if successful, False otherwise."""
+        pass
+
+    @abstractmethod
+    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[Definition]:
+        pass
+
+    @abstractmethod
     def possible_destinations(self, origin: Coordinate, board: Board, team_home: Optional[TeamHome] = None) -> list[Coordinate]:
         """Return a list of valid destinations from the given origin."""
         pass
 
-
-    @property
-    def move_rules(self) -> Dict[str, Definition]:
-        return self.motion_definitions.copy()
 
 
