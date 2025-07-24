@@ -3,19 +3,19 @@ from typing import Tuple, List, Optional
 
 from chess.common.config import BOARD_DIMENSION
 from chess.common.emitter import id_emitter
-from chess.common.geometry import ChessSquare, Coordinate
-from chess.piece.chess_piece import Piece, CaptivityStatus
+from chess.common.geometry import Square, Coordinate
+from chess.piece.piece import Piece, CaptivityStatus
 
 #@dataclass(frozen=True)
 class Board:
     _chess_pieces: List[Piece]
-    _squares: Tuple[Tuple[ChessSquare, ...], ...]# = field(init=False, repr=False)
+    _squares: Tuple[Tuple[Square, ...], ...]# = field(init=False, repr=False)
 
     def __init__(self):
         self._chess_pieces = field(default_factory=list)
         self._squares = tuple(
             tuple(
-                ChessSquare(
+                Square(
                     id=id_emitter.square_id_counter(),
                     coordinate=Coordinate(row=row, column=col)
                 )
@@ -46,11 +46,11 @@ class Board:
 
 
     @property
-    def squares(self) -> Tuple[Tuple[ChessSquare, ...], ...]:
+    def squares(self) -> Tuple[Tuple[Square, ...], ...]:
         return self._squares
 
 
-    def empty_squares(self) -> List[ChessSquare]:
+    def empty_squares(self) -> List[Square]:
         empty_squares = []
         for row in self.squares:
             for square in row:
@@ -59,7 +59,7 @@ class Board:
         return empty_squares
 
 
-    def occupied_squares(self) -> List[ChessSquare]:
+    def occupied_squares(self) -> List[Square]:
         occupied_squares = []
         for row in self.squares:
             for square in row:
@@ -116,6 +116,7 @@ class Board:
             captor = self.remove_chess_piece_from_board(chess_piece)
             square.occupant = captor
             captor.coordinate = square.coordinate
+            captor.add_position(coordinate)
             return prisoner
 
         if current_occupant is None:

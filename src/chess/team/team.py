@@ -2,9 +2,9 @@ from dataclasses import field
 from typing import Dict, Optional, List
 
 from chess.common.config import ChessPieceConfig
-from chess.piece.chess_piece import Piece
+from chess.common.constant import GameColor
+from chess.piece.piece import Piece
 from chess.team.home import TeamHome
-from podscape.constants import GameColor
 
 class Team:
     _id: int
@@ -33,3 +33,13 @@ class Team:
     @property
     def piece_registry(self) -> Dict[int, Optional[Piece]]:
         return Dict(self._piece_registry)
+
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, Team):
+            return False
+        return self._id == other.id and self._color == other.color and self._home == other.home

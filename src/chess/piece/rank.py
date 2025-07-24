@@ -1,5 +1,7 @@
 from abc import abstractmethod, ABC
 
+from chess.board.board import Board
+from chess.common.geometry import Coordinate
 from chess.motion.movement.movement import MovementStrategy
 
 
@@ -29,6 +31,10 @@ class BishopRank(Rank):
     def __init__(self, movement_strategy: 'BishopMovement'):
         super().__init__(movement_strategy)
 
+    def
+
+    def path_to_coordinate_exists(self, coordinate: Coordinate, board=Board) -> bool :
+        self.movement_strategy.possible_destinations(coordinate, board)
 
 class CastleRank(Rank):
     def __init__(self, movement_strategy: 'CastleMovement'):

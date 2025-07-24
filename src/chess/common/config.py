@@ -9,7 +9,7 @@ from chess.motion.movement.knight_movement import KnightMovement
 from chess.motion.movement.pawn_movement import PawnMovement
 from chess.motion.movement.queen_movement import QueenMovement
 
-BOARD_DIMENSION = 8
+
 
 CAPTURE_PRIORITY = {
 

@@ -40,7 +40,6 @@ class Piece(ABC):
     def id(self) -> int:
         return self._id
 
-
     @property
     def name(self) -> str:
         return self._name
@@ -57,16 +56,9 @@ class Piece(ABC):
     def status(self) -> CaptivityStatus:
         return self._status
 
-    def __eq__(self, other):
-        if other is self:
-            return True
-        if other is None:
-            return False
-        if not isinstance(other, Piece):
-            return False
-        if isinstance(other, Piece):
-            self.id == other.id
-        return False
+    @property
+    def position_history(self) -> List[Coordinate]:
+        return self._position_history.copy()
 
     @status.setter
     def status(self, status: CaptivityStatus):
@@ -87,10 +79,17 @@ class Piece(ABC):
             return self._position_history.pop()
         return None
 
-    @property
     def current_position(self) -> Optional[Coordinate]:
         return self._position_history[-1] if self._position_history else None
 
-    @property
-    def position_history(self) -> List[Coordinate]:
-        return list(self._position_history)
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, Piece):
+            return False
+        if isinstance(other, Piece):
+            self.id == other.id
+        return False

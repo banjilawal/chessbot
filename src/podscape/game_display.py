@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, Optional, cast, OrderedDict
 
 from colorama.ansi import clear_line
 
-from constants import GameColor, PlacementStatus
+from constants import PodscapeColor, PlacementStatus
 from geometry import GridCoordinate
 from grid_entity import GridEntity, Mover, HorizontalMover, VerticalMover, BrickPallet
 
@@ -50,10 +50,10 @@ class GameDisplay:
         self.font = pygame.font.SysFont("monospace", 30)
 
     def draw_grid(self):
-        screen_color = GameColor.DARK_GRAY_1.value
+        screen_color = PodscapeColor.DARK_GRAY_1.value
         self.screen.fill(screen_color)
 
-        cell_color = GameColor.LIGHT_SAND.value
+        cell_color = PodscapeColor.LIGHT_SAND.value
         opposite_cell_color = screen_color
 
         current_cell_color = cell_color
@@ -72,7 +72,7 @@ class GameDisplay:
 
                 pygame.draw.rect(self.screen, current_cell_color, cell_rect)
                 # Draw an outlined rectangle
-                pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
+                pygame.draw.rect(self.screen, PodscapeColor.BLACK.value, cell_rect, 1)
 
     def draw_all_entities(self):
         # First draw board entities
@@ -87,8 +87,8 @@ class GameDisplay:
                 drag_state.mover.dimension.length * self.cell_px - self.border_px,
                 drag_state.mover.dimension.height * self.cell_px - self.border_px
             )
-            pygame.draw.rect(self.screen, GameColor.OLIVE.value, rect)
-            text_surface = self.font.render(str(drag_state.mover.mover_id), True, GameColor.BLACK.value)
+            pygame.draw.rect(self.screen, PodscapeColor.OLIVE.value, rect)
+            text_surface = self.font.render(str(drag_state.mover.mover_id), True, PodscapeColor.BLACK.value)
             text_rect = text_surface.get_rect(center=rect.center)
             self.screen.blit(text_surface, text_rect)
 
@@ -101,8 +101,8 @@ class GameDisplay:
             print("[Warning] Entity has no top_left_coordinate. Cannot draw an piece without a top_left_coordinate to the screen.")
             return
 
-        horizontal_mover_color = GameColor.OLIVE.value
-        vertical_mover_color = GameColor.DEEP_ORANGE.value
+        horizontal_mover_color = PodscapeColor.OLIVE.value
+        vertical_mover_color = PodscapeColor.DEEP_ORANGE.value
         # print(f"Drawing piece {piece.mover_id_counter} at top_left_coordinate {piece.top_left_coordinate}")
         # Calculate position and dimensions
         rect = pygame.Rect(
@@ -113,14 +113,14 @@ class GameDisplay:
         )
         # Draw the piece (fixed the width parameter)
         if isinstance(entity, BrickPallet):
-            pygame.draw.rect(self.screen, GameColor.SLATE.value, rect)
+            pygame.draw.rect(self.screen, PodscapeColor.SLATE.value, rect)
         if isinstance(entity, HorizontalMover):
             pygame.draw.rect(self.screen, horizontal_mover_color, rect)
         if isinstance(entity, VerticalMover):
             pygame.draw.rect(self.screen, vertical_mover_color, rect)
 
         # Draw piece ID
-        text_surface = self.font.render(str(entity.mover_id), True, GameColor.BLACK.value)
+        text_surface = self.font.render(str(entity.mover_id), True, PodscapeColor.BLACK.value)
         text_rect = text_surface.get_rect(center=rect.center)
         self.screen.blit(text_surface, text_rect)
 

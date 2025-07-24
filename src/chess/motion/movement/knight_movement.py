@@ -1,7 +1,7 @@
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.motion.motions.diagonal import DiagonalMotion
-from chess.motion.motions.vertical import VerticalMotion
+from chess.motion.orientation.diagonal import DiagonalMotion
+from chess.motion.orientation.vertical import VerticalMotion
 from chess.motion.movement.movement import MovementStrategy
 from chess.motion.quadrant import Quadrant
 from chess.motion.walks import linear_walk, diagonal_walk

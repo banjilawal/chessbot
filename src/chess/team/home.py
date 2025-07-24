@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.common.config import BOARD_DIMENSION
+from chess.common.constant import BOARD_DIMENSION
 from chess.motion.quadrant import Quadrant
 
 

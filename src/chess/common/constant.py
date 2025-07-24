@@ -1,21 +1,8 @@
-import sys
-from enum import Enum, auto
+from enum import Enum
 
+BOARD_DIMENSION = 8
 
-class PlacementStatus(Enum):
-    PLACED = auto()
-    BLOCKED = auto()
-    RELEASED = auto
-    INVALID = auto
-
-class Config:
-    COLUMN_COUNT: int = 21
-    ROW_COUNT: int = 21
-    GRID_ENTITY_HEIGHT: int = 1
-    GRID_ENTITY_LENGTH: int = 1
-    CELL_PX: int = 80
-
-class PodscapeColor(Enum):
+class GameColor(Enum):
     # Yellows (Darkest to Lightest)
     GOLDENROD = (218, 165, 32)
     GOLD = (255, 215, 0)

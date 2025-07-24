@@ -4,8 +4,8 @@ from typing import Dict, Optional
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.piece.chess_piece import Piece
-from chess.motion.motions.diagonal import Motion
+from chess.piece.piece import Piece
+from chess.motion.orientation.diagonal import Motion
 from chess.team.home import TeamHome
 
 

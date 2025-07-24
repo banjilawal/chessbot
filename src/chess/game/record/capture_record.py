@@ -3,17 +3,17 @@ from dataclasses import dataclass
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.piece.chess_piece import Piece, CaptivityStatus
-from podscape.constants import GameColor
+from chess.piece.piece import Piece, CaptivityStatus
+from podscape.constants import PodscapeColor
 
 
 class CaptureRecord:
     _id: int
     _location_id: int
     _captor_name: string
-    _captor_color: GameColor
+    _captor_color: PodscapeColor
     _prisoner_name: string
-    _prisoner_color: GameColor
+    _prisoner_color: PodscapeColor
 
     def __init__(self, record_id:int, location: Coordinate, captor: Piece, prisoner: Piece):
         if location is None:
@@ -48,7 +48,7 @@ class CaptureRecord:
         return self._captor_name
 
     @property
-    def captor_color(self) -> GameColor:
+    def captor_color(self) -> PodscapeColor:
         return self._captor_color
 
     @property
@@ -56,7 +56,7 @@ class CaptureRecord:
         return self._prisoner_name
 
     @property
-    def prisoner_color(self) -> GameColor:
+    def prisoner_color(self) -> PodscapeColor:
         return self._prisoner_color
 
     def __eq__(self, other):

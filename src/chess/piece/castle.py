@@ -1,4 +1,4 @@
-from chess.piece.chess_piece import Piece
+from chess.piece.piece import Piece
 
 
 class Castle(Piece):

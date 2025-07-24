@@ -1,5 +1,5 @@
 from chess.common.geometry import Coordinate
-from chess.motion.motions.motion import Motion
+from chess.motion.orientation.motion import Motion
 
 
 class VerticalMotion(Motion):

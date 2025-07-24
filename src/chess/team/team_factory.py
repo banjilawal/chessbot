@@ -1,8 +1,8 @@
 from chess.common.config import ChessPieceConfig
 from chess.common.emitter import id_emitter
-from chess.piece.chess_piece import Pawn, Knight, Bishop, Castle, King
+from chess.piece.piece import Pawn, Knight, Bishop, Castle, King
 from chess.team.team import Team
-from podscape.constants import GameColor
+from podscape.constants import PodscapeColor
 
 
 def TeamBuilder():
@@ -10,7 +10,7 @@ def TeamBuilder():
     def __init__(self):
         pass
 
-    def build_team(self, team_id: int, team_color: GameColor) -> Team:
+    def build_team(self, team_id: int, team_color: PodscapeColor) -> Team:
         team = Team(team_id=team_id, color=team_color)
         team.piece_registry[ChessPieceConfig.PAWN.name] = get_pawn_dictionary(team)
         team.piece_registry[ChessPieceConfig.KNIGHT.name] = get_knight_dictionary(team)
