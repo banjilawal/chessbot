@@ -6,6 +6,11 @@ from chess.motion.definition.definition_category import DefinitionCategory
 class VerticalDefinition(Definition):
     """Y changes while X stays the same."""
     def __init__(self, definition_category: DefinitionCategory= DefinitionCategory.VERTICAL):
+        if definition_category is None:
+            raise TypeError("definition_category cannot be None")
+        if not definition_category == DefinitionCategory.VERTICAL:
+            raise ValueError("definition_category must be vertical")
+
         super().__init__(self, id=definition_category.id, title=definition_category.value)
 
 

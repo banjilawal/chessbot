@@ -10,6 +10,11 @@ class DiagonalDefinition(Definition):
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """
     def __init__(self, definition_category: DefinitionCategory= DefinitionCategory.DIAGONAL):
+        if definition_category is None:
+            raise TypeError("definition_category cannot be None")
+        if not definition_category == DefinitionCategory.DIAGONAL:
+            raise ValueError("definition_category must be diagonal:")
+
         super().__init__(self, id=definition_category.id, title=definition_category.value)
 
 
