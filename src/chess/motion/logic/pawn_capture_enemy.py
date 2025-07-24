@@ -2,7 +2,7 @@ from typing import Optional
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.motion.definition.pawn_defintion import PawnDefinition
+from chess.motion.logic.pawn_defintion import PawnDefinition
 from chess.team.home import TeamHome
 
 

@@ -1,6 +1,6 @@
 from chess.common.geometry import Coordinate
-from chess.motion.definition.definition import Definition
-from chess.motion.definition.horizontal import HorizontalDefinition
+from chess.motion.logic.definition import Definition
+from chess.motion.logic.horizontal import HorizontalDefinition
 
 
 class QueenDefinition(Definition):

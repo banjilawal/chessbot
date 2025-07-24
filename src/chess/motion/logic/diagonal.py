@@ -1,6 +1,6 @@
 from chess.common.geometry import Coordinate
-from chess.motion.definition.definition import Definition
-from chess.motion.definition.definition_category import DefinitionCategory
+from chess.motion.logic.definition import Definition
+from chess.motion.logic.definition_category import DefinitionCategory
 
 
 class DiagonalDefinition(Definition):

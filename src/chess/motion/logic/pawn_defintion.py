@@ -1,7 +1,7 @@
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.motion.definition.definition import Definition
+from chess.motion.logic.definition import Definition
 
 
 class PawnDefinition(Definition):

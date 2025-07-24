@@ -1,4 +1,4 @@
-# First, definition your custom exceptions (in a separate exceptions.py file)
+# First, logic your custom exceptions (in a separate exceptions.py file)
 class GameError(Exception):
     """Base exception for all src-related errors"""
     pass

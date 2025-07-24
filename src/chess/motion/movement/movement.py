@@ -5,7 +5,7 @@ from typing import Dict, Optional, TYPE_CHECKING
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.piece.piece import Piece
-from chess.motion.definition.diagonal import Definition
+from chess.motion.logic.diagonal import Definition
 from chess.team.home import TeamHome
 
 # if TYPE_CHECKING:
@@ -14,7 +14,7 @@ from chess.team.home import TeamHome
 
 class MovementStrategy(ABC):
     _motion_definitions: {}
-    """ A MovementStrategy is a collection of MoveRules that definition how a piece can move."""
+    """ A MovementStrategy is a collection of MoveRules that logic how a piece can move."""
 
     def __init__(self, motion_definitions: list[Definition]):
         self._motion_definitions = {}
