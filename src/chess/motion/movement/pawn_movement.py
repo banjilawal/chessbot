@@ -1,12 +1,12 @@
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.motion.orientation.diagonal import DiagonalMotion
-from chess.motion.orientation.vertical import VerticalMotion
+from chess.motion.define.diagonal import DiagonalDefine
+from chess.motion.define.vertical import VerticalDefine
 from chess.motion.movement.movement import MovementStrategy
 
 
 class PawnMovement(MovementStrategy):
-    def __init__(self, rules=[VerticalMotion, DiagonalMotion]):
+    def __init__(self, rules=[VerticalDefine, DiagonalDefine]):
         super().__init__(rules)
 
     def possible_destinations(self, origin: Coordinate, board: Board,) -> list[Coordinate]:
