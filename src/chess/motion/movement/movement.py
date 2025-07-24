@@ -5,13 +5,13 @@ from typing import Dict, Optional
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.piece.piece import Piece
-from chess.motion.define.diagonal import Definition
+from chess.motion.definition.diagonal import Definition
 from chess.team.home import TeamHome
 
 
 class MovementStrategy(ABC):
     _move_rules: {}
-    """ A MovementStrategy is a collection of MoveRules that define how a piece can move."""
+    """ A MovementStrategy is a collection of MoveRules that definition how a piece can move."""
 
     def __init__(self, rules: list[Definition]):
         self._move_rules = {}

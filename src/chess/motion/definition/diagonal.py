@@ -1,5 +1,6 @@
 from chess.common.geometry import Coordinate
-from chess.motion.define.definition import Definition
+from chess.motion.definition.definition import Definition
+from chess.motion.definition.definition_category import DefinitionCategory
 
 
 class DiagonalDefinition(Definition):
@@ -8,8 +9,8 @@ class DiagonalDefinition(Definition):
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """
-    def __init__(self, definition_id: int=, title: str="diagonal"):
-        super().__init__(self, id=definition_id, title=title)
+    def __init__(self, definition_category: DefinitionCategory= DefinitionCategory.DIAGONAL):
+        super().__init__(self, id=definition_category.id, title=definition_category.value)
 
 
     def line_fits_definition(self, origin: Coordinate, destination: Coordinate) -> bool:

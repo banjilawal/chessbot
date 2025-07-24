@@ -1,7 +1,7 @@
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.motion.define.diagonal import DiagonalDefinition
-from chess.motion.define.vertical import VerticalDefinition
+from chess.motion.definition.diagonal import DiagonalDefinition
+from chess.motion.definition.vertical import VerticalDefinition
 from chess.motion.movement.movement import MovementStrategy
 
 
