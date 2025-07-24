@@ -1,8 +1,7 @@
 from chess.common.geometry import Coordinate
-from chess.motion.logic.geomtery_pattern import GeometryPattern
-
 
 class PawnAdvancePattern:
+
     @staticmethod
     def matches(
         origin: Coordinate,
@@ -19,6 +18,6 @@ class PawnAdvancePattern:
 
         if len(position_history) == 1:
             return row_diff in (1, 2)
-        else
+        else:
             return row_diff == 1
 
