@@ -83,6 +83,9 @@ class PromotableRank(Rank):
     def promote(self, piece) -> TurnRecord:
         pass
 
+    @abstractmethod
+    def is_promoted(self) -> bool:
+        pass
 
 
 
