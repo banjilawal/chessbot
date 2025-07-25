@@ -5,10 +5,10 @@ from chess.common.geometry import Coordinate
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.vertical import VerticalDefinition
-from chess.motion.movement.movement import MovementStrategy
+from chess.motion.movement import MovementStrategy
 from chess.motion.quadrant import Quadrant
 from chess.motion.walks import linear_walk, diagonal_walk
-from chess.piece.piece import Piece
+from chess.common.piece import Piece
 
 
 class KnightMovement(MovementStrategy):

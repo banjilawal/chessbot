@@ -1,5 +1,5 @@
 from chess.board.board import Board
-from chess.piece.piece import Piece
+from chess.common.piece import Piece
 
 
 class Bishop(Piece):

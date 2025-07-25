@@ -1,7 +1,7 @@
 from enum import Enum, auto
 
 from chess.common.geometry import Coordinate
-from chess.piece.rank import Rank
+from chess.common.rank import Rank
 from chess.team.team import Team
 
 from abc import ABC

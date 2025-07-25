@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.motion.movement.queen_movement import QueenMovement
-from chess.piece.piece import Piece
-from chess.piece.rank import PawnRank, QueenRank, Rank
+from chess.queen.queen_movement import QueenMovement
+from chess.common.piece import Piece
+from chess.common.rank import PawnRank, QueenRank, Rank
 
 
 class RankPromotable(ABC):

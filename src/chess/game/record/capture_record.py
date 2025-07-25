@@ -1,9 +1,7 @@
 import string
-from dataclasses import dataclass
-from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.piece.piece import Piece, CaptivityStatus
+from chess.common.piece import Piece, CaptivityStatus
 from podscape.constants import PodscapeColor
 
 

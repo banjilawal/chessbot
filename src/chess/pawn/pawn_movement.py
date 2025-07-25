@@ -5,8 +5,8 @@ from chess.common.geometry import Coordinate
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.vertical import VerticalDefinition
-from chess.motion.movement.movement import MovementStrategy
-from chess.piece.piece import Piece
+from chess.motion.movement import MovementStrategy
+from chess.common.piece import Piece
 
 
 class PawnMovement(MovementStrategy):

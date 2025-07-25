@@ -3,7 +3,7 @@ from typing import Dict, Optional, List
 
 from chess.common.config import ChessPieceConfig
 from chess.common.constant import GameColor
-from chess.piece.piece import Piece
+from chess.common.piece import Piece
 from chess.team.home import TeamHome
 
 class Team:

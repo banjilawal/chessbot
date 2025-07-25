@@ -3,8 +3,8 @@ from typing import Optional
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.motion.logic.geomtery_pattern import GeometryPattern
-from chess.motion.movement.movement import MovementStrategy
-from chess.piece.piece import Piece
+from chess.motion.movement import MovementStrategy
+from chess.common.piece import Piece
 
 
 class KingMovement(MovementStrategy):

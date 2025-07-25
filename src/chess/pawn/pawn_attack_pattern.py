@@ -1,6 +1,6 @@
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.piece.promotable import Pawn
+from chess.common.promotable import Pawn
 
 
 

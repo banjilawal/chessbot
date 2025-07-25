@@ -1,10 +1,10 @@
 
 from abc import ABC, abstractmethod
-from typing import Dict, Optional, TYPE_CHECKING
+from typing import Dict, Optional
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.piece.piece import Piece
+from chess.common.piece import Piece
 from chess.motion.logic.diagonal_pattern import GeometryPattern
 from chess.team.home import TeamHome
 

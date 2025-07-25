@@ -1,6 +1,6 @@
-from chess.piece.piece import Piece
+from chess.common.piece import Piece
 
 
-class Castle(Piece):
+class Queen(Piece):
     def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
         super().__init__(chess_piece_id, name, team, rank)

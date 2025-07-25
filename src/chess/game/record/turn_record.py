@@ -1,7 +1,7 @@
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.piece.piece import Piece
+from chess.common.piece import Piece
 from chess.game.record.capture_record import CaptureRecord
 from podscape.constants import PodscapeColor
 

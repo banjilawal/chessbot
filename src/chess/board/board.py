@@ -1,10 +1,10 @@
-from dataclasses import dataclass, field
+from dataclasses import field
 from typing import Tuple, List, Optional
 
 from chess.common.config import BOARD_DIMENSION
 from chess.common.emitter import id_emitter
 from chess.common.geometry import Square, Coordinate
-from chess.piece.piece import Piece, CaptivityStatus
+from chess.common.piece import Piece, CaptivityStatus
 
 #@dataclass(frozen=True)
 class Board:
