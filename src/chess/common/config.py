@@ -23,6 +23,21 @@ class ChessPieceConfig(Enum):
     QUEEN = "Queen"
     KING = "King"
 
+    def letter(self) -> str:
+        if self == ChessPieceConfig.PAWN:
+            return "P"
+        if self == ChessPieceConfig.KNIGHT:
+            return "N"
+        if self == ChessPieceConfig.BISHOP:
+            return "B"
+        if self == ChessPieceConfig.CASTLE:
+            return "C"
+        if self == ChessPieceConfig.QUEEN:
+            return "Q"
+        if self == ChessPieceConfig.KING:
+            return "K"
+        return ""
+
     def movement_strategy(self) -> Optional[PawnSearchPattern]:
         if self == ChessPieceConfig.PAWN:
             return PawnSearchPattern()

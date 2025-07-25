@@ -16,7 +16,8 @@ class BishopRank(Rank):
            print("Bishop is None")
            return None
        if piece.current_position() is None:
-           print("Bishop current position is None")
+           print("Bishop current position is None.")
+
            return None
        if board is None:
            print("Board is None")

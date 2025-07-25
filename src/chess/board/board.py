@@ -12,10 +12,12 @@ from chess.game.record.turn_record import TurnRecord
 #@dataclass(frozen=True)
 class Board:
     _chess_pieces: List[Piece]
+    _killed_pieces: List[Piece]
     _squares: Tuple[Tuple[Square, ...], ...]# = field(init=False, repr=False)
 
     def __init__(self):
         self._chess_pieces = field(default_factory=list)
+        self._killed_pieces = field(default_factory=list)
         self._squares = tuple(
             tuple(
                 Square(
@@ -98,7 +100,7 @@ class Board:
         self.process_occupation(chess_piece, coordinate)
 
 
-    def capture_square(self, chess_piece: Piece, coordinate: Coordinate) -> Optional[TurnRecord]:
+    def capture_square(self, chess_piece: Piece, coordinate: Coordinate) -> TurnRecord:
         if chess_piece is None:
             print("Captor cannot be null. Aborting capture process.")
             return None
@@ -119,6 +121,7 @@ class Board:
             prisoner = self.remove_chess_piece_from_board(current_occupant.id)
             prisoner.status = CaptivityStatus.PRISONER
 
+
             captor = self.remove_chess_piece_from_board(chess_piece)
             square.occupant = captor
             captor.coordinate = square.coordinate
@@ -129,7 +132,7 @@ class Board:
                 captor=captor,
                 prisoner=prisoner
             )
-            return prisoner
+            self._killed_pieces.append(prisoner)
 
         if current_occupant is None:
             new_occupant = self.remove_chess_piece_from_board(chess_piece.id)
