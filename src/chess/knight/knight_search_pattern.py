@@ -1,15 +1,9 @@
-from typing import Optional
-
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.knight.knight import Knight
-from chess.motion.logic.diagonal_pattern import DiagonalPattern
-from chess.motion.logic.geomtery_pattern import GeometryPattern
-from chess.motion.logic.vertical_pattern import VerticalPatern
+from chess.rank.knight import Knight
 from chess.motion.search import SearchPattern
 from chess.motion.quadrant import Quadrant
 from chess.motion.walk import linear_walk, diagonal_walk
-from chess.common.piece import Piece
 
 
 class KnightSearchPattern(SearchPattern):

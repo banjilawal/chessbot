@@ -1,9 +1,8 @@
-from chess.bishop.bishop import Bishop
+from chess.rank.bishop import Bishop
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.common.rank import Rank
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
-from chess.motion.logic.vertical_pattern import VerticalPatern
 
 
 class BishopRank(Rank):

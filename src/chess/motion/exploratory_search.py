@@ -4,7 +4,7 @@ from chess.board.board import Board
 from chess.common.geometry import Coordinate, Delta
 from chess.common.piece import Piece
 from chess.common.promotable import King, Pawn
-from chess.knight.knight import Knight
+from chess.rank.knight import Knight
 from chess.motion.quadrant import Quadrant
 from chess.motion.walk import Walk
 
