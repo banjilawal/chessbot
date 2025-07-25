@@ -2,7 +2,6 @@ from enum import Enum, auto
 
 from chess.common.geometry import Delta
 
-
 class Quadrant(Enum):
     NW = Delta(x=-1, y=1)
     NE = Delta(x=1, y=1)
@@ -12,3 +11,7 @@ class Quadrant(Enum):
     S = Delta(x=0, y=-1)
     E = Delta(x=1, y=0)
     W = Delta(x=-1, y=0)
+
+    @property
+    def delta(self) -> Delta:
+        return self.value
