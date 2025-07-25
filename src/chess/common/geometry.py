@@ -163,5 +163,5 @@ class Quadrant(Enum):
             return Quadrant.S
         elif self == Quadrant.S:
             return Quadrant.N
-        else
+        else:
             return None
