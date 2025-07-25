@@ -1,4 +1,4 @@
-from chess.common.rank import Rank
+from chess.rank.rank import Rank
 
 
 class KnightRank(Rank):

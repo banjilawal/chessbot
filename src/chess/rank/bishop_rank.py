@@ -1,7 +1,7 @@
 from chess.rank.bishop import Bishop
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.common.rank import Rank
+from chess.rank.rank import Rank
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 
 

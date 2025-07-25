@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from chess.common.rank import PawnRank, Rank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
+from chess.rank.rank import PawnRank, Rank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
 from chess.bishop.bishop_search_pattern import BishopSearchPattern
 from chess.castle.castle_search_pattern import CastleSearchPattern
 from chess.king.king_search_pattern import KingSearchPattern
