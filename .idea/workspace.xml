@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/player/player_pk_info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/game.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -280,7 +276,7 @@
       <workItem from="1753074520002" duration="78753000" />
       <workItem from="1753197301502" duration="29496000" />
       <workItem from="1753242062539" duration="100762000" />
-      <workItem from="1753458064410" duration="14791000" />
+      <workItem from="1753458064410" duration="16603000" />
     </task>
     <servers />
   </component>

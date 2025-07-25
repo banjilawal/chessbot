@@ -141,6 +141,14 @@ class Quadrant(Enum):
     def delta(self) -> Delta:
         return self.value
 
+    def home_row_index(self) -> Optional[int]:
+        if self == Quadrant.N:
+            return 0
+        elif self == Quadrant.S:
+            return 7
+        else:
+            return None
+
     def advance_size(self) -> int:
         if self == Quadrant.N:
             return 1
