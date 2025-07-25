@@ -1,9 +1,10 @@
 from dataclasses import field
 from typing import Dict, Optional, List
 
+from chess.board.board import Board
 from chess.common.config import ChessPieceConfig
 from chess.common.constant import GameColor
-from chess.common.geometry import Quadrant
+from chess.common.geometry import Quadrant, Coordinate
 from chess.common.piece import Piece
 
 class Team:
@@ -46,3 +47,24 @@ class Team:
         if not isinstance(other, Team):
             return False
         return self._id == other.id
+
+
+    @staticmethod
+    def occupy_destination(self, piece: Piece, destination: Coordinate, board: Board):
+       if piece is None:
+           print("Bishop is None")
+           return None
+       if piece.current_position() is None:
+           print("Bishop current position is None.")
+
+           return None
+       if board is None:
+           print("Board is None")
+           return None
+       if not board.coordinate_is_valid(destination):
+           print("Destination is not valid")
+           return None
+       if not DiagonalPattern.points_match_pattern(piece.current_position(), destination):
+           print("points are not in diagonal pattern")
+           return
+       board.capture_square(piece, destination)
