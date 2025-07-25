@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from enum import Enum
 from typing import Optional
 from chess.common.piece import Piece
 
@@ -124,3 +125,26 @@ class Square:
 
     def __hash__(self):
         return hash(self.id)
+
+
+class Quadrant(Enum):
+    NW = Delta(x=-1, y=1)
+    NE = Delta(x=1, y=1)
+    SW = Delta(x=-1, y=-1)
+    SE = Delta(x=1, y=-1)
+    N = Delta(x=0, y=1)
+    S = Delta(x=0, y=-1)
+    E = Delta(x=1, y=0)
+    W = Delta(x=-1, y=0)
+
+    @property
+    def delta(self) -> Delta:
+        return self.value
+
+    def advance_size(self) -> int:
+        if self == Quadrant.N:
+            return 1
+        elif self == Quadrant.S:
+            return -1
+        else:
+            return 0
