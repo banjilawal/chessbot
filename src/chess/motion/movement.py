@@ -49,7 +49,7 @@ class MovementStrategy(ABC):
         pass
 
     @abstractmethod
-    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[GeometryPattern]:
+    def path_exists(self, origin: Coordinate, destination: Coordinate) -> bool:
         pass
 
     @abstractmethod

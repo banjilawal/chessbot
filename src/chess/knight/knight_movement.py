@@ -4,7 +4,7 @@ from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.geomtery_pattern import GeometryPattern
-from chess.motion.logic.vertical import VerticalDefinition
+from chess.motion.logic.vertical_pattern import VerticalPatern
 from chess.motion.movement import MovementStrategy
 from chess.motion.quadrant import Quadrant
 from chess.motion.walks import linear_walk, diagonal_walk
@@ -13,7 +13,7 @@ from chess.common.piece import Piece
 
 class KnightMovement(MovementStrategy):
 
-    def __init__(self, motion_definitions=[DiagonalPattern, VerticalDefinition]):
+    def __init__(self, motion_definitions=[DiagonalPattern, VerticalPatern]):
         super().__init__(motion_definitions)
 
     def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:

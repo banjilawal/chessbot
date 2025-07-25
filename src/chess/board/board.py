@@ -5,6 +5,9 @@ from chess.common.config import BOARD_DIMENSION
 from chess.common.emitter import id_emitter
 from chess.common.geometry import Square, Coordinate
 from chess.common.piece import Piece, CaptivityStatus
+from chess.game.record.capture_record import CaptureRecord
+from chess.game.record.turn_record import TurnRecord
+
 
 #@dataclass(frozen=True)
 class Board:
@@ -95,7 +98,7 @@ class Board:
         self.process_occupation(chess_piece, coordinate)
 
 
-    def capture_square(self, chess_piece: Piece, coordinate: Coordinate) -> Optional[Piece]:
+    def capture_square(self, chess_piece: Piece, coordinate: Coordinate) -> Optional[TurnRecord]:
         if chess_piece is None:
             print("Captor cannot be null. Aborting capture process.")
             return None
@@ -103,6 +106,9 @@ class Board:
             print("The destination coordinate is out of range. Aborting capture process.")
             return None
 
+        turn_record = None
+        capture_record = None
+        previous_coordinate = chess_piece.current_position();
         square = self.squares[coordinate.row][coordinate.column]
         current_occupant = square.occupant
         if current_occupant is not None and not self.are_enemies(chess_piece, current_occupant ):
@@ -117,13 +123,26 @@ class Board:
             square.occupant = captor
             captor.coordinate = square.coordinate
             captor.add_position(coordinate)
+            capture_record = CaptureRecord(
+                id=id_emitter.capture_record_id_counter(),
+                location=coordinate,
+                captor=captor,
+                prisoner=prisoner
+            )
             return prisoner
 
         if current_occupant is None:
-            future_occupant = self.remove_chess_piece_from_board(chess_piece.id)
-            square.occupant = future_occupant
-            future_occupant.coordinate = square.coordinate
-            return None
+            new_occupant = self.remove_chess_piece_from_board(chess_piece.id)
+            square.occupant = new_occupant
+            new_occupant.coordinate = square.coordinate
+            turn_record = TurnRecord(
+                record_id=id_emitter.turn_record_id_counter(),
+                moved_piece=new_occupant,
+                departure_coordinate=previous_coordinate,
+                arrival_coordinate=coordinate,
+                capture_record=capture_record
+            )
+            return turn_record
         return None
 
 

@@ -3,10 +3,9 @@ from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.definition_category import DefinitionCategory
 
 
-class HorizontalPattern(GeometryPattern):
-    """X changes while Y stays the same."""
+class VerticalPatern(GeometryPattern):
+    """Y changes while X stays the same."""
 
     @staticmethod
     def points_match_pattern(origin: Coordinate, destination: Coordinate) -> bool:
-        # Same row, column changes
-        return origin.row == destination.row and origin.column != destination.column
+        return origin.column == destination.column and origin.row != destination.row

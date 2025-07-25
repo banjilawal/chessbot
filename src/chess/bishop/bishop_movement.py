@@ -11,17 +11,14 @@ from chess.common.piece import Piece
 
 
 class BishopMovement(MovementStrategy):
-    def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:
-        pass
-
     def __init__(self, motion_definitions=[DiagonalPattern]):
         super().__init__(motion_definitions)
 
-    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[GeometryPattern]:
-        for definition in self.motion_definitions.values():
-            if definition.line_fits_definition(origin, destination):
-                return definition
-        return None
+    def path_exists(self, origin: Coordinate, destination: Coordinate) -> bool:
+        return DiagonalPattern.points_match_pattern(origin, destination)
+
+    def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:
+        pass
 
     def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []

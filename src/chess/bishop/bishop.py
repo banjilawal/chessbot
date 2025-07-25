@@ -7,4 +7,4 @@ class Bishop(Piece):
         super().__init__(chess_piece_id, name, team, rank)
 
     def move(self, destination: 'Coordinate', board: Board):
-        if self.rank.
+        if self

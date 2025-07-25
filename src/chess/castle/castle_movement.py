@@ -4,7 +4,7 @@ from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.horizontal_pattern import HorizontalPattern
-from chess.motion.logic.vertical import VerticalDefinition
+from chess.motion.logic.vertical_pattern import VerticalPatern
 from chess.motion.movement import MovementStrategy
 from chess.motion.quadrant import Quadrant
 from chess.motion.walks import linear_walk
@@ -12,14 +12,14 @@ from chess.common.piece import Piece
 
 
 class CastleMovement(MovementStrategy):
+    def __init__(self, motion_definitions=[HorizontalPattern, VerticalPatern]):
+        super().__init__(motion_definitions)
+
     def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:
         pass
 
-    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[GeometryPattern]:
-        pass
-
-    def __init__(self, motion_definitions=[HorizontalPattern, VerticalDefinition]):
-        super().__init__(motion_definitions)
+    def path_exists(self, origin: Coordinate, destination: Coordinate) -> bool:
+        return Vert
 
     def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []
