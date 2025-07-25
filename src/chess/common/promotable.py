@@ -14,8 +14,8 @@ class RankPromotable(ABC):
         pass
 
 class PromotablePiece(Piece, RankPromotable):
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        super().__init__(chess_piece_id, name, team, rank)
+    def __init__(self, piece_id: int, label: str, team: 'Team', rank: 'Rank'):
+        super().__init__(piece_id, label, team, rank)
 
     def add_position(self, coordinate: Coordinate) -> None:
         super.add_position(coordinate)
@@ -33,8 +33,8 @@ class PromotablePiece(Piece, RankPromotable):
             print("New rank must be Queen")
             return None
         return PromotablePiece(
-            chess_piece_id=self.id,
-            name=self.name,
+            piece_id=self.id,
+            label=self.name,
             team=self.team,
             rank=QueenRank(QueenSearchPattern())
         )

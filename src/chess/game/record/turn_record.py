@@ -3,6 +3,7 @@ from typing import Optional
 from chess.common.geometry import Coordinate
 from chess.common.piece import Piece
 from chess.game.record.capture_record import CaptureRecord
+from chess.game.record.promotion_record import PromotionRecord
 from podscape.constants import PodscapeColor
 
 
@@ -13,6 +14,7 @@ class TurnRecord:
     _departure_coordinate: Coordinate
     _arrival_coordinate: Coordinate
     _capture_record: Optional[CaptureRecord]
+    _promotion_record: Optional[PromotionRecord]
 
     def __init__(
             self,
@@ -20,7 +22,8 @@ class TurnRecord:
             moved_piece: Piece,
             departure_coordinate: Coordinate,
             arrival_coordinate: Coordinate,
-            capture_record: CaptureRecord=None
+            capture_record: CaptureRecord=None,
+            promotion_record: PromotionRecord=None
      ):
         if moved_piece is None:
             print("moved_piece cannot be null or empty.")
@@ -31,7 +34,7 @@ class TurnRecord:
         if arrival_coordinate is None:
             print("arrival_coordinate cannot be null or empty.")
             return
-        if capture_record is not None and capture_record._captor_id != moved_piece.id:
+        if capture_record is not None and capture_record.captor_id != moved_piece.id:
             print("mismatch between mover and captor id.")
             return
 
@@ -41,6 +44,12 @@ class TurnRecord:
         self._departure_coordinate = departure_coordinate
         self._arrival_coordinate = arrival_coordinate
         self._capture_record = capture_record
+
+        if capture_record is not None:
+            self._capture_record = capture_record
+
+        if promotion_record is not None:
+            self.promotion_record = promotion_record
 
     @property
     def id(self) -> int:

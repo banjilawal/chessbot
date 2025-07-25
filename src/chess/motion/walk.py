@@ -5,6 +5,7 @@ from chess.motion.quadrant import Quadrant
 
 
 class Walk:
+    _pattern
 
     @staticmethod
     def horizontal_walk(self, origin: Coordinate, delta: Delta, number_of_steps: int) -> list[Coordinate]:

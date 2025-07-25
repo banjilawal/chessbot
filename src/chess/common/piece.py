@@ -42,23 +42,23 @@ class CaptivityStatus(Enum):
 
 class Piece(ABC):
     _id: int
-    _name: str
+    _label: Label
     _team: 'Team'
     _rank: 'Rank'
     _position_history: List['Coordinate']
     _status: CaptivityStatus
 
-    def __init__(self, chess_piece_id: int, name: str, team: 'Team', rank: 'Rank'):
-        if not chess_piece_id:
-            raise ValueError("chess_piece_id cannot be null or empty.")
-        if not name:
-            raise ValueError("name cannot be null or empty.")
+    def __init__(self, piece_id: int, label: Label, team: 'Team', rank: 'Rank'):
+        if not piece_id:
+            raise ValueError("piece_id cannot be null or empty.")
+        if not label:
+            raise ValueError("label cannot be null or empty.")
         if not team:
             raise ValueError("team cannot be null or empty.")
         if rank is None:
             raise ValueError("motion cannot be null.")
-        self._id = chess_piece_id
-        self._name = name
+        self._id = piece_id
+        self._label = label
         self._team = team
         self._rank = rank
         self._status = CaptivityStatus.FREE
@@ -70,8 +70,8 @@ class Piece(ABC):
         return self._id
 
     @property
-    def name(self) -> str:
-        return self._name
+    def label(self) -> str:
+        return self._label
 
     @property
     def team(self) -> 'Team':
