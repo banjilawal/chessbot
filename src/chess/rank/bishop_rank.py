@@ -1,10 +1,25 @@
+from typing import List, Optional
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
+from chess.common.piece import Piece
+from chess.game.record.turn_record import TurnRecord
 from chess.rank.rank import Rank
-from chess.motion.logic.diagonal_pattern import DiagonalPattern
 
 
-class BishopRank(Rank):
-    def __init__(self, movement_strategy: 'BishopSearchPattern'):
-        super().__init__(movement_strategy)
+class Bishop(Rank):
+
+    def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
+        pass
+
+    def walk(self) -> List[Coordinate]:
+        pass
+
+    def search_pattern(self) -> List[Coordinate]:
+        pass
+
+    def explore(self, piece: Piece, board: Board):
+        pass
+
+    def select_destination(self):
+        pass
