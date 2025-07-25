@@ -8,7 +8,7 @@ from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.vertical_pattern import VerticalPatern
 from chess.motion.search import SearchPattern
 from chess.motion.quadrant import Quadrant
-from chess.motion.walks import linear_walk, diagonal_walk
+from chess.motion.walk import linear_walk, diagonal_walk
 from chess.common.piece import Piece
 
 

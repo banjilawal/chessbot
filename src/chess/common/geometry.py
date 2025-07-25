@@ -7,6 +7,9 @@ class Delta:
     x: int
     y: int
 
+    def __mul__(self, scalar: int) -> 'Delta':
+        return Delta(x=self.x * scalar, y=self.y * scalar)
+
 class Coordinate:
     _row: int
     _column: int

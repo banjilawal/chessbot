@@ -5,7 +5,7 @@ from chess.common.geometry import Coordinate
 
 from chess.motion.quadrant import Quadrant
 from chess.motion.search_pattern import SearchPattern
-from chess.motion.walks import diagonal_walk
+from chess.motion.walk import diagonal_walk
 
 
 
