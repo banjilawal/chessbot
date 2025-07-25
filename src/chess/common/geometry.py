@@ -2,6 +2,35 @@ from dataclasses import dataclass
 from typing import Optional
 from chess.common.piece import Piece
 
+class Column:
+    _letter: str
+    _index: int
+    def __init__(self, letter:str):
+        self.__letter = letter
+
+    @property
+    def letter(self) -> str:
+        return self._letter
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, Column):
+            return False
+        return self._letter == other.letter
+
+class Row:
+    _id: int
+    def __int__(self, row_id: int):
+        self._id = row_id
+
+    @property
+    def id(self) -> int:
+        return self._id
+
+
 @dataclass(Frozen=True)
 class Delta:
     x: int
@@ -11,23 +40,25 @@ class Delta:
         return Delta(x=self.x * scalar, y=self.y * scalar)
 
 class Coordinate:
-    _row: int
-    _column: int
+    _row: Row
+    _column: Column
 
-    def __init__(self, row: int, column: int):
-        if row < 0:
-            raise ValueError("Row cannot be negative")
-        if column < 0:
-            raise ValueError("Column cannot be negative")
+    def __init__(self, row: Row, column: Column):
+        if row is None:
+            print("A coordinate cannot have a null row")
+            return
+        if column is None:
+            print("A coordinate cannot have a null column")
+            return
         self._row = row
         self._column = column
 
     @property
-    def row(self) -> int:
+    def row(self) -> Row:
         return self._row
 
     @property
-    def column(self) -> int:
+    def column(self) -> Column:
         return self._column
 
     def __eq__(self, other):
@@ -37,14 +68,13 @@ class Coordinate:
             return False
         if not isinstance(other, Coordinate):
             return False
-        return self.row == other.row and self.column == other.column
+        return self._row == other.row and self._column == other.column
 
     def __hash__(self):
         return hash((self.row, self.column))
 
-
     def shift(self, delta: Delta) -> 'Coordinate':
-        return Coordinate(row=self.row + delta.y, column=self.column + delta)
+        return Coordinate(row=self.row.id + delta.y, column=self.column.index + delta.x)
 
 
 class Square:
