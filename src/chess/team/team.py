@@ -8,7 +8,6 @@ from chess.team.home import TeamHome
 
 class Team:
     _id: int
-    _color: GameColor
     _home: TeamHome
     _captives:List[Piece] = field(default_factory=list)
     _piece_registry: Dict[ChessPieceConfig, Dict[int, Optional[Piece]]] = field(init=False)
