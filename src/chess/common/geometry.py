@@ -5,8 +5,9 @@ from chess.common.piece import Piece
 class Column:
     _letter: str
     _index: int
-    def __init__(self, letter:str):
+    def __init__(self, letter:str, index):
         self.__letter = letter
+        self._index = letter
 
     @property
     def letter(self) -> str:
@@ -19,7 +20,7 @@ class Column:
             return False
         if not isinstance(other, Column):
             return False
-        return self._letter == other.letter
+        return self._index == other.indexr
 
 class Row:
     _id: int
@@ -73,6 +74,9 @@ class Coordinate:
     def __hash__(self):
         return hash((self.row, self.column))
 
+    def name(self) -> str:
+        return self._column.letter.capitalize() + str(self._row.id)
+
     def shift(self, delta: Delta) -> 'Coordinate':
         return Coordinate(row=self.row.id + delta.y, column=self.column.index + delta.x)
 
@@ -107,6 +111,7 @@ class Square:
     @occupant.setter
     def occupant(self, occupant: Optional[Piece]):
         self._occupant = occupant
+
 
     def __eq__(self, other):
         if other is self:
