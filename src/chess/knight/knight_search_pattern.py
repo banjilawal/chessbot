@@ -1,6 +1,6 @@
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
-from chess.rank.knight import Knight
+from chess.rank.knight_piece import Knight
 from chess.motion.search import SearchPattern
 from chess.motion.quadrant import Quadrant
 from chess.motion.walk import linear_walk, diagonal_walk

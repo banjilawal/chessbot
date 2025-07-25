@@ -1,6 +1,6 @@
 
 from chess.board.board import Board
-from chess.rank.castle import Castle
+from chess.rank.castle_piece import Castle
 from chess.common.geometry import Coordinate
 
 from chess.motion.quadrant import Quadrant

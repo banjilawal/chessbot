@@ -1,4 +1,4 @@
-from chess.rank.bishop import Bishop
+from chess.rank.bishop_piece import Bishop
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.rank.rank import Rank
