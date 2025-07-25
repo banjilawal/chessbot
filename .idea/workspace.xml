@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b12fee5-17f7-4667-a99c-32cddd369517" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/castle/castle_pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/motion/logic/vertical_pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/bishop/bishop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/bishop/bishop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/bishop/bishop_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/bishop/bishop_movement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/bishop/bishop_rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/bishop/bishop_rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/castle/castle_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/castle/castle_movement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/king/king_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/king/king_pattern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/knight/knight_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/knight/knight_movement.py" afterDir="false" />
@@ -14,7 +19,7 @@
       <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/diagonal_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/diagonal_pattern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/geomtery_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/geomtery_pattern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/horizontal_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/horizontal_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/vertical.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/vertical_pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/vertical.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/motion/movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/movement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/pawn/pawn_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/pawn/pawn_movement.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/queen/queen_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/queen/queen_pattern.py" afterDir="false" />
@@ -55,28 +60,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.board_driver.executor&quot;: &quot;Run&quot;,
-    &quot;Python.game_entry_point.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.visualization.executor&quot;: &quot;Profiler&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;chess&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/banji/PycharmProjects/podscape/src/chess/common&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.board_driver.executor": "Run",
+    "Python.game_entry_point.executor": "Run",
+    "Python.run_game.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.visualization.executor": "Profiler",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "chess",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/podscape/src/chess/castle",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings sdk-home="$USER_HOME$/AppData/Local/Programs/Python/Python313/python.exe">
@@ -92,11 +97,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\castle" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\common" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\board" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\chess_piece" />
-      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\movement" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\common" />
@@ -289,7 +294,7 @@
       <workItem from="1753011601753" duration="739000" />
       <workItem from="1753074520002" duration="78753000" />
       <workItem from="1753197301502" duration="29496000" />
-      <workItem from="1753242062539" duration="81745000" />
+      <workItem from="1753242062539" duration="84244000" />
     </task>
     <servers />
   </component>

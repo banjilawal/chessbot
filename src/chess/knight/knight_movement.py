@@ -5,13 +5,13 @@ from chess.common.geometry import Coordinate
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.vertical_pattern import VerticalPatern
-from chess.motion.movement import MovementStrategy
+from chess.motion.search import SearchPattern
 from chess.motion.quadrant import Quadrant
 from chess.motion.walks import linear_walk, diagonal_walk
 from chess.common.piece import Piece
 
 
-class KnightMovement(MovementStrategy):
+class KnightMovement(SearchPattern):
 
     def __init__(self, motion_definitions=[DiagonalPattern, VerticalPatern]):
         super().__init__(motion_definitions)
@@ -24,7 +24,7 @@ class KnightMovement(MovementStrategy):
 
 
 
-    def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
+    def search(self, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []
         northern_coordinate = linear_walk(
             origin,

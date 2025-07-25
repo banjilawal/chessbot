@@ -17,7 +17,7 @@ class BrickPallet(GridEntity):
 @dataclass(kw_only=True)
 class Mover(GridEntity, ABC):
     mover_id: int
-    movement_strategy: 'MovementStrategy' = field(init=False, repr=False)
+    movement_strategy: 'SearchPattern' = field(init=False, repr=False)
 
     def __init__(self, *, dimension: Dimension, top_left_coordinate: Optional[GridCoordinate] = None, mover_id: int = None):
         if not hasattr(self, 'movement_strategy'):
