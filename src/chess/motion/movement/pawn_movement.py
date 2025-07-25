@@ -1,11 +1,21 @@
+from typing import Optional
+
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
+from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.vertical import VerticalDefinition
 from chess.motion.movement.movement import MovementStrategy
+from chess.piece.piece import Piece
 
 
 class PawnMovement(MovementStrategy):
+    def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:
+        pass
+
+    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[GeometryPattern]:
+        pass
+
     def __init__(self, motion_definitions=[VerticalDefinition, DiagonalPattern]):
         super().__init__(motion_definitions)
 

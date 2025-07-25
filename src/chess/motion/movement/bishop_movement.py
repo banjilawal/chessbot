@@ -9,9 +9,13 @@ from chess.motion.logic.vertical import VerticalDefinition
 from chess.motion.quadrant import Quadrant
 from chess.motion.movement.movement import MovementStrategy
 from chess.motion.walks import diagonal_walk, linear_walk
+from chess.piece.piece import Piece
 
 
 class BishopMovement(MovementStrategy):
+    def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:
+        pass
+
     def __init__(self, motion_definitions=[DiagonalPattern]):
         super().__init__(motion_definitions)
 
@@ -23,7 +27,7 @@ class BishopMovement(MovementStrategy):
 
     def possible_destinations(self, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []
-        for quadrant in [Quadrant.NE, Quadrant.SW, Quadrant.SE, Quadrant.NE]:
+        for quadrant in [Quadrant.NE, Quadrant.SW, Quadrant.SE, Quadrant.NW]:
             destinations.extend(diagonal_walk(origin, quadrant.x_delta, quadrant.y_delta, board))
         return destinations
 
