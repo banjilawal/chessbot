@@ -8,6 +8,7 @@ class TeamHome(Enum):
     NORTH = "North"
     SOUTH = "South"
 
+
     def first_home_row(self):
         if self == TeamHome.NORTH:
             return 0

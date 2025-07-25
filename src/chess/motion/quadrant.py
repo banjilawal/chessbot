@@ -15,3 +15,11 @@ class Quadrant(Enum):
     @property
     def delta(self) -> Delta:
         return self.value
+
+    def advance_size(self) -> int:
+        if self == Quadrant.N:
+            return 1
+        elif self == Quadrant.S:
+            return -1
+        else:
+            return 0

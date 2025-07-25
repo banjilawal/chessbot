@@ -4,10 +4,12 @@ from typing import Dict, Optional, List
 from chess.common.config import ChessPieceConfig
 from chess.common.constant import GameColor
 from chess.common.piece import Piece
+from chess.motion.quadrant import Quadrant
 from chess.team.home import TeamHome
 
 class Team:
     _id: int
+    _home_quadrant: Quadrant
     _home: TeamHome
     _captives:List[Piece] = field(default_factory=list)
     _piece_registry: Dict[ChessPieceConfig, Dict[int, Optional[Piece]]] = field(init=False)
