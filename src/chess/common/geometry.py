@@ -1,6 +1,11 @@
+from dataclasses import dataclass
 from typing import Optional
 from chess.common.piece import Piece
 
+@dataclass(Frozen=True)
+class Delta:
+    x: int
+    y: int
 
 class Coordinate:
     _row: int
@@ -35,8 +40,8 @@ class Coordinate:
         return hash((self.row, self.column))
 
 
-    def shift(self, row_delta: int, column_delta: int) -> 'Coordinate':
-        return Coordinate(row=self.row + row_delta, column=self.column + column_delta)
+    def shift(self, delta: Delta) -> 'Coordinate':
+        return Coordinate(row=self.row + delta.y, column=self.column + delta)
 
 
 class Square:

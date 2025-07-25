@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.queen.queen_movement import QueenSearchPattern
+from chess.queen.queen_search_pattern import QueenSearchPattern
 from chess.common.piece import Piece
 from chess.common.rank import PawnRank, QueenRank, Rank
 

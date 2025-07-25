@@ -7,7 +7,7 @@ from chess.castle.castle_search_pattern import CastleSearchPattern
 from chess.king.king_search_pattern import KingSearchPattern
 from chess.knight.knight_search_pattern import KightSearchPattern
 from chess.pawn.pawn_search_pattern import PawnSearchPattern
-from chess.queen.queen_movement import QueenSearchPattern
+from chess.queen.queen_search_pattern import QueenSearchPattern
 
 
 
