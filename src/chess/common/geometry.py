@@ -1,3 +1,4 @@
+from asyncio import QueueShutDown
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional
@@ -156,3 +157,11 @@ class Quadrant(Enum):
             return -1
         else:
             return 0
+
+    def enemy_home_quadrant(self) -> Optional['Quadrant']:
+        if self == Quadrant.N:
+            return Quadrant.S
+        elif self == Quadrant.S:
+            return Quadrant.N
+        else
+            return None
