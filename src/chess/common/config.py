@@ -2,12 +2,12 @@ from enum import Enum
 from typing import Optional
 
 from chess.common.rank import PawnRank, Rank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
-from chess.bishop.bishop_movement import BishopMovement
-from chess.castle.castle_movement import CastleMovement
-from chess.king.king_movement import KingMovement
-from chess.knight.knight_movement import KnightMovement
-from chess.pawn.pawn_movement import PawnMovement
-from chess.queen.queen_movement import QueenMovement
+from chess.bishop.bishop_search_pattern import BishopSearchPattern
+from chess.castle.castle_search_pattern import CastleSearchPattern
+from chess.king.king_search_pattern import KingSearchPattern
+from chess.knight.knight_search_pattern import KightSearchPattern
+from chess.pawn.pawn_search_pattern import PawnSearchPattern
+from chess.queen.queen_movement import QueenSearchPattern
 
 
 
@@ -23,34 +23,34 @@ class ChessPieceConfig(Enum):
     QUEEN = "Queen"
     KING = "King"
 
-    def movement_strategy(self) -> Optional[PawnMovement]:
+    def movement_strategy(self) -> Optional[PawnSearchPattern]:
         if self == ChessPieceConfig.PAWN:
-            return PawnMovement()
+            return PawnSearchPattern()
         if self == ChessPieceConfig.KNIGHT:
-            return KnightMovement()
+            return KightSearchPattern()
         if self == ChessPieceConfig.BISHOP:
-            return BishopMovement()
+            return BishopSearchPattern()
         if self == ChessPieceConfig.CASTLE:
-            return CastleMovement()
+            return CastleSearchPattern()
         if self == ChessPieceConfig.QUEEN:
-            return QueenMovement()
+            return QueenSearchPattern()
         if self == ChessPieceConfig.KING:
-            return KingMovement()
+            return KingSearchPattern()
         return None
 
     def rank(self) -> Optional[Rank]:
         if self == ChessPieceConfig.PAWN:
-            return PawnRank(PawnMovement())
+            return PawnRank(PawnSearchPattern())
         if self == ChessPieceConfig.KNIGHT:
-            return KnightRank(KnightMovement())
+            return KnightRank(KightSearchPattern())
         if self == ChessPieceConfig.BISHOP:
-            return BishopRank(BishopMovement())
+            return BishopRank(BishopSearchPattern())
         if self == ChessPieceConfig.CASTLE:
-            return CastleRank(CastleMovement())
+            return CastleRank(CastleSearchPattern())
         if self == ChessPieceConfig.QUEEN:
-            return QueenRank(QueenMovement())
+            return QueenRank(QueenSearchPattern())
         if self == ChessPieceConfig.KING:
-            return KingRank(KingMovement())
+            return KingRank(KingSearchPattern())
         return None
 
     def find_category(self, figure_rank: Rank) -> Optional['ChessPieceConfig']:
@@ -60,7 +60,7 @@ class ChessPieceConfig(Enum):
 
     def promotion_rank(self) -> Optional[Rank]:
         if self == ChessPieceConfig.PAWN or self == ChessPieceConfig.KING:
-            return QueenRank(QueenMovement())
+            return QueenRank(QueenSearchPattern())
         return None
 
     def number_per_team(self) -> int:

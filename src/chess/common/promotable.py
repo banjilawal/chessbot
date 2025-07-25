@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from chess.common.geometry import Coordinate
-from chess.queen.queen_movement import QueenMovement
+from chess.queen.queen_movement import QueenSearchPattern
 from chess.common.piece import Piece
 from chess.common.rank import PawnRank, QueenRank, Rank
 
@@ -20,7 +20,7 @@ class PromotablePiece(Piece, RankPromotable):
     def add_position(self, coordinate: Coordinate) -> None:
         super.add_position(coordinate)
         if coordinate.row == self.team.home.get_enemy_home().first_home_row():
-            self.promote(self, QueenRank(QueenMovement))
+            self.promote(self, QueenRank(QueenSearchPattern))
 
     def promote(self, new_rank: Rank) -> Optional[Piece]:
         if new_rank is None:
@@ -36,7 +36,7 @@ class PromotablePiece(Piece, RankPromotable):
             chess_piece_id=self.id,
             name=self.name,
             team=self.team,
-            rank=QueenRank(QueenMovement())
+            rank=QueenRank(QueenSearchPattern())
         )
 
 

@@ -28,12 +28,12 @@ class SearchPattern(ABC):
         return self._motion_definitions.copy()
 
     @staticmethod
-    def check_basic_conditions(self, chess_piece: Piece, board: Board, destination: 'Coordinate') -> bool:
-        if chess_piece is None:
+    def check_basic_conditions(self, piece: Piece, board: Board) -> bool:
+        if piece is None:
             print("[Warning] Mover cannot be None. It cannot move.")
             return False
-        if chess_piece.coordinate is None:
-            print("[Warning] chess_piece has not coordinate. Cannot move.")
+        if piece.position_history is None or len(piece.position_history) == 0:
+            print("[Warning] piece has not coordinate. Cannot move.")
             return False
         if board is None:
             print("[Warning] PodBoard cannot be None. Cannot move.")

@@ -1,10 +1,12 @@
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
+from chess.common.piece import Piece
 from chess.motion.search_pattern import SearchPattern
 
 
-class QueenSearchPattern(SearchPattern):
+class KingSearchPattern(SearchPattern):
+
 
     @staticmethod
-    def search(piece: Queen, board: Board) -> list[Coordinate]:
+    def search(piece: Piece, board: Board) -> list[Coordinate]:
         pass

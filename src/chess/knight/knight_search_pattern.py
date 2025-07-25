@@ -2,6 +2,7 @@ from typing import Optional
 
 from chess.board.board import Board
 from chess.common.geometry import Coordinate
+from chess.knight.knight import Knight
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.vertical_pattern import VerticalPatern
@@ -11,20 +12,14 @@ from chess.motion.walks import linear_walk, diagonal_walk
 from chess.common.piece import Piece
 
 
-class KnightMovement(SearchPattern):
+class KnightSearchPattern(SearchPattern):
 
-    def __init__(self, motion_definitions=[DiagonalPattern, VerticalPatern]):
-        super().__init__(motion_definitions)
+    @staticmethod
+    def search(piece: Knight, board: Board) -> list[Coordinate]:
+        if not SearchPattern.check_basic_conditions(piece, board):
+            return []
 
-    def move(self, chess_piece: Piece, board: Board, destination: Coordinate) -> bool:
-        pass
-
-    def path_exists(self, origin: Coordinate, destination: Coordinate, board: Board) -> Optional[GeometryPattern]:
-        pass
-
-
-
-    def search(self, origin: Coordinate, board: Board) -> list[Coordinate]:
+        origin = piece.current_position()
         destinations = []
         northern_coordinate = linear_walk(
             origin,

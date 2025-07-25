@@ -7,7 +7,7 @@ from chess.motion.logic.vertical_pattern import VerticalPatern
 
 
 class BishopRank(Rank):
-    def __init__(self, movement_strategy: 'BishopMovement'):
+    def __init__(self, movement_strategy: 'BishopSearchPattern'):
         super().__init__(movement_strategy)
 
     @staticmethod
