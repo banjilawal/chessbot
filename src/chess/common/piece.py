@@ -2,7 +2,6 @@ from enum import Enum, auto
 
 from chess.common.geometry import Coordinate
 from chess.rank.rank import Rank
-from chess.team.team import Team
 
 from abc import ABC
 from typing import List, Optional
