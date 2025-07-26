@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 class Delta:
     _x: int
     _y: int
