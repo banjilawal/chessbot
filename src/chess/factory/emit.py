@@ -14,7 +14,7 @@ class IdEmitter:
         self._square_id += 1
         return self._square_id
 
-    @
+    @property
     def piece_id(self) -> int:
         self._piece_id += 1
         return self._piece_id
