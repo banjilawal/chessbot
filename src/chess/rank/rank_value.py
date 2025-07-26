@@ -20,21 +20,21 @@ class RankValue(Enum):
 
     @property
     def quadrants(self) -> List[Quadrant]:
-        if self == RankValue.KING:
+        if self == RankConfig.KING:
             return [
                 Quadrant.N, Quadrant.NE, Quadrant.NW,
                 Quadrant.E, Quadrant.SE, Quadrant.SW,
                 Quadrant.W, Quadrant.S
             ]
-        if self == RankValue.PAWN:
+        if self == RankConfig.PAWN:
             return [Quadrant.N, Quadrant.NE, Quadrant.NW]
-        if self == RankValue.KNIGHT:
+        if self == RankConfig.KNIGHT:
             return [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW]
-        if self == RankValue.BISHOP:
+        if self == RankConfig.BISHOP:
             return [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW]
-        if self == RankValue.CASTLE:
+        if self == RankConfig.CASTLE:
             return [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W]
-        if self == RankValue.QUEEN:
+        if self == RankConfig.QUEEN:
             return [
                 Quadrant.N, Quadrant.NE, Quadrant.NW,
                 Quadrant.E, Quadrant.SE, Quadrant.SW,

@@ -6,13 +6,13 @@ from chess.piece.piece import Piece, Label
 from chess.game.record.turn_record import TurnRecord
 from chess.motion.search_pattern import SearchPattern
 from chess.motion.walk import Walk
-from chess.rank.rank_value import RankValue
+from chess.rank.rank_value import RankConfig
 
 
 class Rank(ABC):
     _name: str
     _walk: Walk
-    _value: RankValue
+    _value: RankConfig
     _members: dict[Label, Piece]
     _quadrants: List[Quadrant]
     _search_pattern: SearchPattern

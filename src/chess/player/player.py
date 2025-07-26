@@ -8,7 +8,7 @@ from chess.geometry.quadrant import Quadrant
 
 from chess.piece.piece import Piece, Label
 from chess.game.record.turn_record import TurnRecord
-from chess.rank.rank_value import RankValue
+from chess.rank.rank_value import RankConfig
 
 if TYPE_CHECKING:
     from chess.geometry.board import Board
@@ -20,7 +20,7 @@ class Player(ABC):
     _color: GameColor
     _captives: List['Piece']
     _home_quadrant: Quadrant
-    _pieces: Dict[RankValue, List['Piece']]
+    _pieces: Dict[RankConfig, List['Piece']]
     def __init__(self, player_id: int, name: str, color: GameColor):
         self._id = player_id
         self._name = name
@@ -45,7 +45,7 @@ class Player(ABC):
         return self._captives.copy()
 
     @property
-    def pieces(self) -> Dict[RankValue, List[Piece]]:
+    def pieces(self) -> Dict[RankConfig, List[Piece]]:
         return self._pieces.copy()
 
     @property
