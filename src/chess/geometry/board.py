@@ -19,11 +19,13 @@ if TYPE_CHECKING:
 class Board:
     _chess_pieces: List[Piece]
     _killed_pieces: List[Piece]
-    _squares: List[Square]
+    _grid: List[Square]
+
+
     def __init__(self):
         self._chess_pieces = field(default_factory=list)
         self._killed_pieces = field(default_factory=list)
-        self._squares = GridBuilder.build()
+        self._grid = GridBuilder.build()
 
     @property
     def chess_pieces(self) -> List[Piece]:
@@ -34,7 +36,7 @@ class Board:
         if not self.coordinate_is_valid(coordinate):
             print("The coordinate is not valid. Cannot find chess piece.")
             return None
-        return self.squares[coordinate.row][coordinate.column].occupant
+        return self.grid[coordinate.row][coordinate.column].occupant
 
 
     def get_chess_piece_by_id(self, target_id: int) -> Optional[Piece]:
@@ -46,25 +48,23 @@ class Board:
 
 
     @property
-    def squares(self) -> Tuple[Tuple[Square, ...], ...]:
-        return self._squares
+    def grid(self) -> List[Square]:
+        return self._grid
 
 
     def empty_squares(self) -> List[Square]:
         empty_squares = []
-        for row in self.squares:
-            for square in row:
-                if square.occupant is None and square not in empty_squares:
-                    empty_squares.append(square)
+        for square in self.grid:
+            if square.occupant is None and square not in empty_squares:
+                empty_squares.append(square)
         return empty_squares
 
 
     def occupied_squares(self) -> List[Square]:
         occupied_squares = []
-        for row in self.squares:
-            for square in row:
-                if square.occupant is not None and square not in occupied_squares:
-                    occupied_squares.append(square)
+        for square in self._grid:
+            if square.occupant is not None and square not in occupied_squares:
+                occupied_squares.append(square)
         return occupied_squares
 
 
@@ -77,7 +77,7 @@ class Board:
             print("Cannot remove a chess piece from an empty square.")
             return None
 
-        square = self.squares[chess_piece.coordinate.row][chess_piece.coordinate.column]
+        square = self.grid[chess_piece.coordinate.row][chess_piece.coordinate.column]
         square.occupant = None
         chess_piece.coordinate = None
         self.chess_pieces.remove(chess_piece)
@@ -89,7 +89,7 @@ class Board:
             raise ValueError("Cannot add a null chess piece")
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("THe chess piece cannot be addd. The destination coordinate is out of range.")
-        if self.squares[coordinate.row][coordinate.column].occupant is not None:
+        if self.grid[coordinate.row][coordinate.column].occupant is not None:
             raise ValueError("The chess piece cannot be added. The destination square is already occupied.")
 
         self.process_occupation(chess_piece, coordinate)
@@ -106,7 +106,7 @@ class Board:
         turn_record = None
         capture_record = None
         previous_coordinate = chess_piece.current_position();
-        square = self.squares[coordinate.row][coordinate.column]
+        square = self.grid[coordinate.row][coordinate.column]
         current_occupant = square.occupant
         if current_occupant is not None and not self.are_enemies(chess_piece, current_occupant ):
             print("A friendly is occupying the square. Aborting capture process.")
@@ -148,10 +148,10 @@ class Board:
         if coordinate is None:
             print("A null coordinate is not valid")
             return False
-        if coordinate.row <= -1 or coordinate.row >= len(self._squares):
+        if coordinate.row <= -1 or coordinate.row >= len(self._grid):
             print("The coordinate is not valid. Its row is out of range")
             return False
-        if coordinate.column <= -1 or coordinate.column >= len(self._squares[0]):
+        if coordinate.column <= -1 or coordinate.column >= len(self._grid[0]):
             print("The coordinate is not valid. Its column is out of range")
             return False
         return True

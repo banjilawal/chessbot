@@ -54,7 +54,7 @@ class GridBuilder:
 def main():
     from chess.geometry.board import Board
     board = Board()
-    print(board.squares)
+    print(board.grid)
 
 
 
