@@ -8,7 +8,13 @@ from chess.rank.rank import Rank
 
 
 class Bishop(Rank):
-
+    def __init__(
+            self,
+            name: str,
+            value,
+            quadrants: List[Quadrant],
+            members: List[Piece],
+     ):
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
         pass
 
