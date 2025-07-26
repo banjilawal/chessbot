@@ -1,13 +1,13 @@
 from typing import List, Optional
 
 from chess.board.board import Board
-from chess.common.geometry import Coordinate, Quadrant
+from chess.common.geometry import Quadrant, Coordinate
 from chess.common.piece import Piece
 from chess.game.record.turn_record import TurnRecord
 from chess.rank.rank import Rank
 
 
-class Bishop(Rank):
+class King(Rank):
     def __init__(
         self,
         name: str,
