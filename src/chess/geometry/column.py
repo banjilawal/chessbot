@@ -1,15 +1,15 @@
 class Column:
     _id: int
-    _letter: str
-    def __init__(self, column_id, letter:str):
+    _name: str
+    def __init__(self, column_id, name:str):
         if column_id < 0:
             raise print("column_id cannot be negative.")
             return
-        if letter is None:
-            raise print("letter cannot be null.")
+        if name is None:
+            raise print("name cannot be null.")
             return
         self._id = column_id
-        self._letter = letter
+        self._name = name
 
 
     @property
@@ -18,8 +18,8 @@ class Column:
 
 
     @property
-    def letter(self) -> str:
-        return self._letter
+    def name(self) -> str:
+        return self._name
 
 
     def __eq__(self, other):

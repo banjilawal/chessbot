@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/quadrant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/quadrant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/placement_chart.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +65,11 @@
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\geometry" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\factory" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\rank" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\castle" />
-      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\king" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run_game">
@@ -258,7 +258,7 @@
       <workItem from="1753242062539" duration="100762000" />
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
-      <workItem from="1753520484992" duration="5519000" />
+      <workItem from="1753520484992" duration="6421000" />
     </task>
     <servers />
   </component>
