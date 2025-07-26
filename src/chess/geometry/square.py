@@ -1,7 +1,11 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from chess.common.piece import Piece
 from chess.geometry.coordinate import Coordinate
+
+
+if TYPE_CHECKING:
+    from chess.common.piece import Piece
 
 
 class Square:

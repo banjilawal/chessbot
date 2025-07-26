@@ -17,6 +17,8 @@ class GridBuilder:
             for j in range(COLUMN_SIZE):
                 column = Column(column_id=j + 1, name=id_emitter.column_name())
                 coordinate = Coordinate(coordinate_id=id_emitter.coordinate_id(), row=row, column=column)
+                print(coordinate)
                 square = Square(id=id_emitter.square_id(), coordinate=coordinate)
+                print(square)
                 squares.append(square)
         return squares

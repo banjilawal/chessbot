@@ -1,9 +1,12 @@
 from enum import Enum, auto
 
+from chess.geometry.coordinate import Coordinate
 from chess.rank.rank import Rank
 
 from abc import ABC
 from typing import List, Optional
+
+
 
 class Label:
     _letters: str
@@ -71,9 +74,6 @@ class Piece(ABC):
     def label(self) -> str:
         return self._label
 
-    @property
-    def team(self) -> 'Team':
-        return self._team
 
     @property
     def rank(self) -> 'Rank':
