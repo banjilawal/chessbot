@@ -1,5 +1,5 @@
 from chess.geometry.board import Board
-from chess.common.piece import Piece
+from chess.piece.piece import Piece
 from chess.geometry.coordinate import Coordinate
 from chess.motion.search_pattern import SearchPattern
 

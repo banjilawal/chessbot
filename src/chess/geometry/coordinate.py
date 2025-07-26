@@ -69,7 +69,7 @@ class Coordinate:
         return self._column
 
     def name(self) -> str:
-        return self._column.letter.capitalize() + str(self._row.id)
+        return self._column.name.capitalize() + "-" + str(self._row.id)
 
     def __eq__(self, other):
         if other is self:

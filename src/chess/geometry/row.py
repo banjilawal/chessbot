@@ -1,10 +1,10 @@
 class Row:
     _id: int
 
-    def __int__(self, row_id: int):
+
+    def __init__(self, row_id: int):
         if row_id < 0:
-            print("row_id cannot be negative.")
-            return
+            raise ValueError("row_id cannot be negative.")
         self._id = row_id
 
 

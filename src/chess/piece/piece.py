@@ -3,40 +3,40 @@ from enum import Enum, auto
 from chess.geometry.coordinate import Coordinate
 from chess.piece.captivity_status import CaptivityStatus
 from chess.piece.label import Label
-from chess.rank.rank import Rank
+
+
 
 from abc import ABC
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 
-
-
-
-
+if TYPE_CHECKING:
+    from chess.player.player import Player
+    from chess.rank.rank import Rank
 
 
 class Piece(ABC):
     _id: int
     _label: Label
-    _team: 'Team'
     _rank: 'Rank'
-    _position_history: List['Coordinate']
+    _player: Player
+    _position_history: List[Coordinate]
     _status: CaptivityStatus
 
-    def __init__(self, piece_id: int, label: Label, team: 'Team', rank: 'Rank'):
+    def __init__(self, piece_id: int, label: Label, player: Player, rank: 'Rank'):
         if not piece_id:
             raise ValueError("piece_id cannot be null or empty.")
         if not label:
             raise ValueError("label cannot be null or empty.")
-        if not team:
+        if not player:
             raise ValueError("team cannot be null or empty.")
         if rank is None:
             raise ValueError("motion cannot be null.")
         self._id = piece_id
         self._label = label
-        self._team = team
+        self._player = player
         self._rank = rank
         self._status = CaptivityStatus.FREE
-        self._position_history: List['Coordinate'] = []
+        self._position_history: List[Coordinate] = []
 
     # === Immutable attributes ===
     @property
@@ -44,7 +44,7 @@ class Piece(ABC):
         return self._id
 
     @property
-    def label(self) -> str:
+    def label(self) -> Label:
         return self._label
 
 
@@ -66,7 +66,7 @@ class Piece(ABC):
             self._status = status
 
     def is_enemy(self, piece: 'Piece'):
-        return self._team == piece.team
+        return self._player == piece.player
 
     # === Stack operations ===
     def add_position(self, coordinate: Coordinate) -> None:

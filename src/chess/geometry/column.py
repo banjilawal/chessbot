@@ -1,13 +1,12 @@
 class Column:
     _id: int
     _name: str
-    def __init__(self, column_id, name:str):
+
+    def __init__(self, column_id: int, name: str):
         if column_id < 0:
-            raise print("column_id cannot be negative.")
-            return
+            raise ValueError("column_id cannot be negative.")
         if name is None:
-            raise print("name cannot be null.")
-            return
+            raise ValueError("name cannot be null.")
         self._id = column_id
         self._name = name
 

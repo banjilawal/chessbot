@@ -1,4 +1,4 @@
-from chess.common.piece import Label
+from chess.piece.piece import Label
 
 
 class PromotionRecord:

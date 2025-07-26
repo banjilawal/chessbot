@@ -1,7 +1,7 @@
 import string
 
 
-from chess.common.piece import Piece, CaptivityStatus
+from chess.piece.piece import Piece, CaptivityStatus
 from podscape.constants import PodscapeColor
 
 

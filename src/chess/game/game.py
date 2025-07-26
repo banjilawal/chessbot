@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.geometry.board import Board
-from chess.common.piece import Piece
+from chess.piece.piece import Piece
 from chess.game.record.turn_record import TurnRecord
 from chess.player.player import Player
 

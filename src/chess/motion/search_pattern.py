@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Dict
 
 from chess.geometry.board import Board
-from chess.common.piece import Piece
+from chess.piece.piece import Piece
 from chess.motion.logic.diagonal_pattern import GeometryPattern
 
 # if TYPE_CHECKING:
