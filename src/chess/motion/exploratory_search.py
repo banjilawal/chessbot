@@ -2,7 +2,6 @@ from typing import List
 
 from chess.geometry.board import Board
 from chess.piece.piece import Piece
-from chess.common.promotable import King, Pawn
 from chess.motion.walk import Walk
 
 
@@ -50,7 +49,7 @@ class ExploratorySearch:
                         destinations.append(dest)
 
         else:
-            # Castle, Bishop, Queen, etc.
+            # Rook, Bishop, Queen, etc.
             walk_method = Walk.bishop_walk if piece.rank.is_bishop() else \
                           Walk.castle_walk if piece.rank.is_rook() else \
                           Walk.queen_walk if piece.rank.is_queen() else None

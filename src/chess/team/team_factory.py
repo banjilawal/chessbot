@@ -69,7 +69,7 @@
 #             key = i + 1
 #             name = base_name + "_" + key
 #             chess_piece_id = id_emitter.piece_id()
-#             castle_dict[key] = Castle(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
+#             castle_dict[key] = Rook(chess_piece_id=chess_piece_id, name=name, team=team, rank=rank)
 #         return castle_dict
 #
 #

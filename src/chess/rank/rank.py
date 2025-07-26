@@ -2,23 +2,22 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 
 from chess.geometry.board import Board
+from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.piece.piece import Piece, Label
 from chess.game.record.turn_record import TurnRecord
-from chess.motion.search_pattern import SearchPattern
-from chess.motion.walk import Walk
-from chess.rank.rank_value import RankConfig
 
 
 class Rank(ABC):
+    _name: str
     _capture_value: int
     _members: List[Piece]
     _territories: List[Quadrant]
 
     def __init__(self, name: str, capture_value: int, territories: List[Quadrant]):
-        self._capture_value = capture_value
         self._name = name
         self._members = []
+        self._capture_value = capture_value
         self._territories = territories
 
 
@@ -74,11 +73,22 @@ class PromotableRank(Rank):
     def promote(self, piece) -> TurnRecord:
         pass
 
-    @abstractmethod
-    def is_promoted(self) -> bool:
-        pass
+    # @abstractmethod
+    # def is_promoted(self) -> bool:
+    #     pass
 
-
+    # def promote(self, piece: Piece) -> Piece:
+    #     pass
+        # if piece is None:
+        #     raise ValueError("Cannot promote null piece cannot be null.")
+        #     print("new_rank cannot be null or empty.")
+        #     return None
+        # return Piece(
+        #     piece_id=self.id,
+        #     label=self.name,
+        #     team=self.team,
+        #     rank=QueenRank(QueenSearchPattern())
+        # )
 
 
 

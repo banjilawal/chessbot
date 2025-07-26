@@ -19,7 +19,7 @@ class ChessPieceConfig(Enum):
     PAWN = "Pawn"
     KNIGHT = "Knight"
     BISHOP = "Bishop"
-    CASTLE = "Castle"
+    CASTLE = "Rook"
     QUEEN = "Queen"
     KING = "King"
 

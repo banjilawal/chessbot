@@ -3,13 +3,13 @@ from chess.geometry.quadrant import Quadrant
 
 
 class RankConfig(Enum):
-    def __new__(cls, name: str, symbol, number_per_player: int, capture_value: int, quadrants: [Quadrant]):
+    def __new__(cls, name: str, acronym, number_per_player: int, capture_value: int, territories: [Quadrant]):
         obj = object.__new__(cls)
         obj._value_ = name
-        obj._symbol = symbol
+        obj._acronym = acronym
         obj._number_per_player = number_per_player
         obj._capture_value = capture_value
-        obj._quadrants = quadrants
+        obj._territories = territories
         return obj
 
     KING =(
@@ -26,8 +26,8 @@ class RankConfig(Enum):
      )
 
     @property
-    def symbol(self) -> str:
-        return self._symbol
+    def acronym(self) -> str:
+        return self._acronym
 
     @property
     def number_per_player(self) -> int:
@@ -38,7 +38,7 @@ class RankConfig(Enum):
         return self._capture_value
 
     @property
-    def quadrants(self) -> [Quadrant]:
-        return self._quadrants.copy()
+    def territories(self) -> [Quadrant]:
+        return self._territories.copy()
 from enum import Enum
 from typing import List

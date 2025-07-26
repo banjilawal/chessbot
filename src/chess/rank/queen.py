@@ -1,20 +1,16 @@
 from typing import List, Optional
 
 from chess.geometry.board import Board
+from chess.geometry.coordinate import Coordinate
+from chess.geometry.quadrant import Quadrant
 from chess.piece.piece import Piece
 from chess.game.record.turn_record import TurnRecord
 from chess.rank.rank import Rank
 
 
 class Queen(Rank):
-    def __init__(
-        self,
-        name: str,
-        capture_value,
-        quadrants: List[Quadrant],
-        members: List[Piece],
-    ):
-        super.__init__(name, capture_value, quadrants, members)
+    def __init__(self, name: str, capture_value: int, territories: List[Quadrant]):
+        super.__init__(name, capture_value, territories)
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
         pass
