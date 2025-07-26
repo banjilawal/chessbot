@@ -36,7 +36,7 @@ class GridBuilder:
 
 def main():
     from chess.geometry.board import Board
-    board = Board()
+    board = Board(grid=GridBuilder.build())
     print(board.grid)
 
 

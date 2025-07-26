@@ -22,10 +22,10 @@ class Board:
     _grid: List[Square]
 
 
-    def __init__(self):
+    def __init__(self, grid: List[List[Square]]):
         self._chess_pieces = field(default_factory=list)
         self._killed_pieces = field(default_factory=list)
-        self._grid = GridBuilder.build()
+        self._grid = grid
 
     @property
     def chess_pieces(self) -> List[Piece]:
