@@ -4,6 +4,7 @@ from typing import Tuple, List, Optional
 from chess.common.constant import BOARD_DIMENSION
 from chess.factory.emit import id_emitter
 from chess.common.piece import Piece, CaptivityStatus
+from chess.factory.grid_builder import GridBuilder
 from chess.game.record.capture_record import CaptureRecord
 from chess.game.record.turn_record import TurnRecord
 from chess.geometry.coordinate import Coordinate
@@ -14,22 +15,11 @@ from chess.geometry.square import Square
 class Board:
     _chess_pieces: List[Piece]
     _killed_pieces: List[Piece]
-    _squares: Tuple[Tuple[Square, ...], ...]# = field(init=False, repr=False)
-
+    _squares: List[Square]
     def __init__(self):
         self._chess_pieces = field(default_factory=list)
         self._killed_pieces = field(default_factory=list)
-        self._squares = tuple(
-            tuple(
-                Square(
-                    id=id_emitter.square_id_counter(),
-                    coordinate=Coordinate(row=row, column=col)
-                )
-                for col in range(BOARD_DIMENSION)
-            )
-            for row in range(BOARD_DIMENSION)
-        )
-        # object.__setattr__(self, 'squares', squares)
+        self._squares = GridBuilder.build()
 
     @property
     def chess_pieces(self) -> List[Piece]:

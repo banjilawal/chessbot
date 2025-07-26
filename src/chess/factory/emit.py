@@ -1,6 +1,7 @@
 class IdEmitter:
     def __init__(self):
         self._player_id = 0
+        self._coordinate_id = 0
         self._square_id = 0
         self._piece_id = 0
         self._column_name = ord('a')  # Start at 'a'
@@ -9,6 +10,11 @@ class IdEmitter:
     def player_id(self) -> int:
         self._player_id += 1
         return self._player_id
+
+    @property
+    def coordinate_id(self) -> int:
+        self._coordinate_id += 1
+        return self._coordinate.id
 
     @property
     def square_id(self) -> int:

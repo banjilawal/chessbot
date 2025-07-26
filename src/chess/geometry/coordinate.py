@@ -1,3 +1,7 @@
+from chess.geometry.column import Column
+from chess.geometry.row import Row
+
+
 class Delta:
     _x: int
     _y: int
@@ -34,18 +38,27 @@ class Delta:
 
 
 class Coordinate:
+    _id: int
     _row: Row
     _column: Column
 
-    def __init__(self, row: Row, column: Column):
+    def __init__(self, coordinate_id: int, row: Row, column: Column):
+        if coordinate_id < 1:
+            print("Coordinate id must be greater than zero")
+            return
         if row is None:
             print("A coordinate cannot have a null row")
             return
         if column is None:
             print("A coordinate cannot have a null column")
             return
+        self._id = id
         self._row = row
         self._column = column
+
+    @@property
+    def id(self):
+        return self._id
 
     @property
     def row(self) -> Row:
@@ -54,6 +67,9 @@ class Coordinate:
     @property
     def column(self) -> Column:
         return self._column
+
+    def name(self) -> str:
+        return self._column.letter.capitalize() + str(self._row.id)
 
     def __eq__(self, other):
         if other is self:
@@ -67,8 +83,7 @@ class Coordinate:
     def __hash__(self):
         return hash((self.row, self.column))
 
-    def name(self) -> str:
-        return self._column.letter.capitalize() + str(self._row.id)
+
 
     def shift(self, delta: Delta) -> 'Coordinate':
         return Coordinate(row=self.row.id + delta.y, column=self.column.index + delta.x)
