@@ -1,6 +1,9 @@
 from enum import Enum
 from typing import List
 
+from chess.config.rank_config import RankConfig
+from chess.geometry.quadrant import Quadrant
+
 
 class RankValue(Enum):
     KING = 0

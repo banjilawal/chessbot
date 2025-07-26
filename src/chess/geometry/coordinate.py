@@ -5,13 +5,8 @@ from chess.geometry.row import Row
 class Delta:
     _x: int
     _y: int
+
     def __init__(self, x: int, y: int):
-        if x < 0:
-            print("x cannot be negative.")
-            return
-        if y < 0:
-            print("y cannot be negative.")
-            return
         self._x = x
         self._y = y
 
