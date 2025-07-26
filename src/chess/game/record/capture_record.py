@@ -1,8 +1,9 @@
 import string
 
-
+from chess.geometry.coordinate import Coordinate
 from chess.piece.piece import Piece, CaptivityStatus
 from podscape.constants import PodscapeColor
+
 
 
 class CaptureRecord:

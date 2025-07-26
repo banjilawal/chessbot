@@ -1,14 +1,18 @@
 from dataclasses import field
-from typing import Tuple, List, Optional
+from typing import Tuple, List, Optional, TYPE_CHECKING
 
 from chess.factory.emit import id_emitter
 from chess.factory.grid_builder import GridBuilder
-from chess.game.record.capture_record import CaptureRecord
+
 from chess.game.record.turn_record import TurnRecord
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.square import Square
 from chess.piece.captivity_status import CaptivityStatus
 from chess.piece.piece import Piece
+
+if TYPE_CHECKING:
+    from chess.game.record.capture_record import CaptureRecord
+
 
 
 #@dataclass(frozen=True)

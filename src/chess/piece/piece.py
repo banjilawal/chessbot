@@ -18,11 +18,11 @@ class Piece(ABC):
     _id: int
     _label: Label
     _rank: 'Rank'
-    _player: Player
+    _player: 'Player'
     _position_history: List[Coordinate]
     _status: CaptivityStatus
 
-    def __init__(self, piece_id: int, label: Label, player: Player, rank: 'Rank'):
+    def __init__(self, piece_id: int, label: Label, player: 'Player', rank: 'Rank'):
         if not piece_id:
             raise ValueError("piece_id cannot be null or empty.")
         if not label:

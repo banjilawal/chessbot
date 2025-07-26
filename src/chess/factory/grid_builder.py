@@ -1,12 +1,16 @@
-from typing import List
+from typing import List, TYPE_CHECKING
 
 from chess.common.constant import ROW_SIZE, COLUMN_SIZE
 from chess.factory.emit import id_emitter
-from chess.geometry.board import Board
+
 from chess.geometry.column import Column
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.row import Row
 from chess.geometry.square import Square
+
+
+
+
 
 class GridBuilder:
 
@@ -48,6 +52,7 @@ class GridBuilder:
 
 
 def main():
+    from chess.geometry.board import Board
     board = Board()
     print(board.squares)
 
