@@ -10,11 +10,11 @@ class Castle(Rank):
     def __init__(
         self,
         name: str,
-        value,
+        capture_value,
         quadrants: List[Quadrant],
         members: List[Piece],
     ):
-        super.__init__(name, value, quadrants, members)
+        super.__init__(name, capture_value, quadrants, members)
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
         pass

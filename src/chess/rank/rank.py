@@ -11,33 +11,20 @@ from chess.rank.rank_value import RankConfig
 
 
 class Rank(ABC):
-    _name: str
-    _walk: Walk
-    _value: int
-    _members: dict[Label, Piece]
-    _quadrants: List[Quadrant]
-    _search_pattern: SearchPattern
+    _capture_value: int
+    _members: List[Piece]
+    _territories: List[Quadrant]
 
-    def __init__(
-            self,
-            name: str,
-            walk: Walk,
-            value: int,
-            quadrants: List[Quadrant],
-            members: List[Piece],
-     ):
-        self._value = value
+    def __init__(self, name: str, capture_value: int, territories: List[Quadrant]):
+        self._capture_value = capture_value
         self._name = name
-        self._walk = walk
-        self._quadrants = quadrants
+        self._members = []
+        self._territories = territories
 
-        self._members = {}
-        for member in members:
-            self._members[member.label] = member
 
     @property
     def value(self) -> int:
-        return self._value
+        return self._capture_value
 
     @property
     def name(self) -> str:
@@ -45,7 +32,7 @@ class Rank(ABC):
 
     @property
     def quadrants(self) -> List[Quadrant]:
-        return self._quadrants.copy()
+        return self._territories.copy()
 
     @property
     def members(self) -> [Label, Piece]:

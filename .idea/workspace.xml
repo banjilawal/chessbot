@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/config/piece_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/factory/rank_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/rank_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/bishop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/bishop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/castle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/castle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/knight.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/knight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/pawn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +189,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/factory/rank_factory.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\banji\PycharmProjects\podscape\src\chess\factory\rank_factory.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -265,7 +268,7 @@
       <workItem from="1753242062539" duration="100762000" />
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
-      <workItem from="1753520484992" duration="33734000" />
+      <workItem from="1753520484992" duration="35995000" />
     </task>
     <servers />
   </component>
