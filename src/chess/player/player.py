@@ -20,13 +20,13 @@ class Player(ABC):
     _color: GameColor
     _captives: List['Piece']
     _home_quadrant: Quadrant
-    _pieces: Dict[RankConfig, List['Piece']]
+    _pieces: List['Piece']
     def __init__(self, player_id: int, name: str, color: GameColor):
         self._id = player_id
         self._name = name
         self._color = color
         self._captives = []
-        self._pieces = {}
+        self._pieces = []
 
     @property
     def id(self) -> int:
@@ -54,12 +54,7 @@ class Player(ABC):
 
 
     @abstractmethod
-    def advance_piece(
-        self,
-        piece: 'Piece',
-        destination: Coordinate,
-        board: 'Board'
-    ) -> Optional[TurnRecord]:
+    def piece_to_coordinate(self,piece: 'Piece',destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
         pass
 
     @abstractmethod

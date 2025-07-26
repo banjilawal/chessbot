@@ -15,16 +15,16 @@ if TYPE_CHECKING:
 
 
 
-#@dataclass(frozen=True)
+
 class Board:
     _chess_pieces: List[Piece]
     _killed_pieces: List[Piece]
     _grid: List[Square]
 
 
-    def __init__(self, grid: List[List[Square]]):
-        self._chess_pieces = field(default_factory=list)
-        self._killed_pieces = field(default_factory=list)
+    def __init__(self, grid: List[Square]):
+        self._chess_pieces = []
+        self._killed_pieces = []
         self._grid = grid
 
     @property

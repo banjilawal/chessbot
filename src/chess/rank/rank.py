@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 
 from chess.geometry.board import Board
+from chess.geometry.quadrant import Quadrant
 from chess.piece.piece import Piece, Label
 from chess.game.record.turn_record import TurnRecord
 from chess.motion.search_pattern import SearchPattern
@@ -12,7 +13,7 @@ from chess.rank.rank_value import RankConfig
 class Rank(ABC):
     _name: str
     _walk: Walk
-    _value: RankConfig
+    _value: int
     _members: dict[Label, Piece]
     _quadrants: List[Quadrant]
     _search_pattern: SearchPattern
@@ -21,19 +22,14 @@ class Rank(ABC):
             self,
             name: str,
             walk: Walk,
-            value,
+            value: int,
             quadrants: List[Quadrant],
             members: List[Piece],
-            search_pattern: SearchPattern
      ):
         self._value = value
         self._name = name
         self._walk = walk
-        self._search_pattern = search_pattern
-
-        self._quadrants = []
-        for quadrant in quadrants:
-            self._quadrants.append(quadrant)
+        self._quadrants = quadrants
 
         self._members = {}
         for member in members:
