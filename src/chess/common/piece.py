@@ -37,9 +37,6 @@ class Label:
         return self._letters == other.letters and self._number == other.number
 
 
-class CaptivityStatus(Enum):
-    FREE = auto()
-    PRISONER = auto
 
 class Piece(ABC):
     _id: int

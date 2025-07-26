@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" afterDir="false" />
-    </list>
+    <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -259,7 +257,7 @@
       <workItem from="1753242062539" duration="100762000" />
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
-      <workItem from="1753520484992" duration="10846000" />
+      <workItem from="1753520484992" duration="11245000" />
     </task>
     <servers />
   </component>
