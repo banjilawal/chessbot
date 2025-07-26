@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chess.board.board import Board
+from chess.geometry.board import Board
 from chess.common.geometry import Coordinate, Quadrant
 from chess.common.piece import Piece
 from chess.game.record.turn_record import TurnRecord

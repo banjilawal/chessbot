@@ -1,6 +1,4 @@
-from typing import Optional
-
-from chess.board.board import Board
+from chess.geometry.board import Board
 from chess.common.geometry import Coordinate
 
 from chess.motion.quadrant import Quadrant

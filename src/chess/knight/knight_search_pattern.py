@@ -1,4 +1,4 @@
-from chess.board.board import Board
+from chess.geometry.board import Board
 from chess.common.geometry import Coordinate
 from chess.motion.search import SearchPattern
 from chess.motion.walk import linear_walk, diagonal_walk

@@ -1,12 +1,13 @@
 from dataclasses import field
 from typing import Tuple, List, Optional
 
-from chess.common.config import BOARD_DIMENSION
+from chess.common.constant import BOARD_DIMENSION
 from chess.factory.emit import id_emitter
-from chess.common.geometry import Square, Coordinate
 from chess.common.piece import Piece, CaptivityStatus
 from chess.game.record.capture_record import CaptureRecord
 from chess.game.record.turn_record import TurnRecord
+from chess.geometry.coordinate import Coordinate
+from chess.geometry.square import Square
 
 
 #@dataclass(frozen=True)

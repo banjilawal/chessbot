@@ -1,6 +1,4 @@
-from typing import Optional
-
-from chess.board.board import Board
+from chess.geometry.board import Board
 from chess.common.geometry import Coordinate
 from chess.common.promotable import Pawn
 from chess.motion.search_pattern import SearchPattern

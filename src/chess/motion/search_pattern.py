@@ -1,8 +1,8 @@
 
 from abc import ABC, abstractmethod
-from typing import Dict, Optional
+from typing import Dict
 
-from chess.board.board import Board
+from chess.geometry.board import Board
 from chess.common.geometry import Coordinate
 from chess.common.piece import Piece
 from chess.motion.logic.diagonal_pattern import GeometryPattern

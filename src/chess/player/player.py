@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABC
 from typing import Optional, List, Dict
 
-from chess.board.board import Board
+from chess.geometry.board import Board
 from chess.common.constant import GameColor
 from chess.common.geometry import Coordinate, Quadrant
 from chess.common.piece import Piece, Label
