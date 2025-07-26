@@ -1,5 +1,3 @@
-from chess.common.geometry import Coordinate
-
 class PawnAdvancePattern:
     """
     Refactored PawnAdvancePattern to handle the pawn's first move which can be two steps forward.

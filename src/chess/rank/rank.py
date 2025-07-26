@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 
 from chess.geometry.board import Board
-from chess.common.geometry import Coordinate, Quadrant
 from chess.common.piece import Piece, Label
 from chess.game.record.turn_record import TurnRecord
 from chess.motion.search_pattern import SearchPattern

@@ -1,9 +1,9 @@
 from typing import Optional
 
-from chess.common.geometry import Coordinate
 from chess.common.piece import Piece
 from chess.game.record.capture_record import CaptureRecord
 from chess.game.record.promotion_record import PromotionRecord
+from chess.geometry.coordinate import Coordinate
 from podscape.constants import PodscapeColor
 
 

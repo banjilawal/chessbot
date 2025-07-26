@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
-from chess.common.geometry import Coordinate
+
+from chess.geometry.coordinate import Coordinate
+
 
 class GeometryPattern(ABC):
     @staticmethod

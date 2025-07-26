@@ -1,6 +1,7 @@
 from chess.geometry.board import Board
-from chess.common.geometry import Coordinate
 from chess.motion.search import SearchPattern
+
+from chess.geometry.coordinate import Coordinate
 from chess.motion.walk import linear_walk, diagonal_walk
 
 

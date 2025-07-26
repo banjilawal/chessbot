@@ -1,7 +1,6 @@
 from typing import List
 
 from chess.geometry.board import Board
-from chess.common.geometry import Coordinate, Delta
 from chess.common.piece import Piece
 from chess.common.promotable import King, Pawn
 from chess.motion.walk import Walk

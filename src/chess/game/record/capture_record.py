@@ -1,6 +1,6 @@
 import string
 
-from chess.common.geometry import Coordinate
+
 from chess.common.piece import Piece, CaptivityStatus
 from podscape.constants import PodscapeColor
 

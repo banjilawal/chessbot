@@ -1,5 +1,4 @@
 from chess.castle.castle_pattern import CastlePattern
-from chess.common.geometry import Coordinate
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 

@@ -1,4 +1,4 @@
-from chess.common.geometry import Coordinate
+from chess.geometry.coordinate import Coordinate
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 from chess.motion.logic.definition_category import DefinitionCategory
 

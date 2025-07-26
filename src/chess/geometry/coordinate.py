@@ -56,7 +56,7 @@ class Coordinate:
         self._row = row
         self._column = column
 
-    @@property
+    @property
     def id(self):
         return self._id
 
@@ -82,7 +82,6 @@ class Coordinate:
 
     def __hash__(self):
         return hash((self.row, self.column))
-
 
 
     def shift(self, delta: Delta) -> 'Coordinate':

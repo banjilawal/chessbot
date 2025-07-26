@@ -1,8 +1,6 @@
 from enum import Enum
 from typing import List
 
-from chess.common.geometry import Quadrant
-
 
 class RankValue(Enum):
     KING = 0

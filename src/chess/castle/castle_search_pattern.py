@@ -1,8 +1,6 @@
 
 from chess.geometry.board import Board
-from chess.common.geometry import Coordinate
 
-from chess.motion.quadrant import Quadrant
 from chess.motion.search_pattern import SearchPattern
 from chess.motion.walk import linear_walk
 
