@@ -1,0 +1,38 @@
+from typing import List
+
+
+from chess.config.rank_config import RankConfig
+from chess.rank.bishop import Bishop
+from chess.rank.king import King
+from chess.rank.knight import Knight
+from chess.rank.pawn import Pawn
+from chess.rank.queen import Queen
+from chess.rank.rank import Rank
+from chess.rank.rook import Rook
+
+
+class RankBuilder:
+
+    @staticmethod
+    def build(config: RankConfig) -> Rank:
+        if config == RankConfig.KING:
+            return King(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+        if config == RankConfig.PAWN:
+            return Pawn(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+        if config == RankConfig.KNIGHT:
+            return Knight(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+        if config == RankConfig.BISHOP:
+            return Bishop(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+        if  config == RankConfig.ROOK:
+            return Rook(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+        if config == RankConfig.QUEEN:
+            return Queen(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+        raise ValueError(f"Invalid rank config: {config}")
+
+def main ():
+    for config in RankConfig:
+        rank = RankBuilder.build(config)
+        print(rank)
+
+if __name__ == "__main__":
+    main()

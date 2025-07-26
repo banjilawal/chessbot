@@ -58,6 +58,13 @@ class Rank(ABC):
             return False
         return self._name == other.name
 
+    def __hash__(self):
+        return hash(self._name)
+
+    def __str__(self):
+        return (f"{self._name}, value:{self._acronym}, {self._capture_value} "
+                f"num_members:{len(self._members)} num_territories:{len(self._territories)}")
+
 
     @abstractmethod
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:

@@ -10,7 +10,7 @@ from chess.rank.rank import Rank
 
 class Knight(Rank):
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
-        super.__init__(name, acronym, capture_value, territories)
+        super().__init__(name, acronym, capture_value, territories)
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
         pass
