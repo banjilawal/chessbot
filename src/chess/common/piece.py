@@ -1,6 +1,8 @@
 from enum import Enum, auto
 
 from chess.geometry.coordinate import Coordinate
+from chess.piece.captivity_status import CaptivityStatus
+from chess.piece.label import Label
 from chess.rank.rank import Rank
 
 from abc import ABC
