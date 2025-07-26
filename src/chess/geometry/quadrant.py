@@ -1,3 +1,4 @@
+from chess.common.constant import BOARD_DIMENSION
 from chess.geometry.coordinate import Delta
 from enum import Enum
 from typing import Optional
@@ -18,7 +19,7 @@ class Quadrant(Enum):
     NE = (Delta(x=1, y=1), 1, "northeast")
     E = (Delta(x=1, y=0), 2, "east")
     SE = (Delta(x=1, y=-1), 3, "southeast")
-    S = (Delta(x=0, y=-1), 4, "south", -1, 7)
+    S = (Delta(x=0, y=-1), 4, "south", -1, BOARD_DIMENSION - 1)
     SW = (Delta(x=-1, y=-1), 5, "southwest")
     W = (Delta(x=-1, y=0), 6, "west")
     NW = (Delta(x=-1, y=1), 7, "northwest")
@@ -40,5 +41,5 @@ class Quadrant(Enum):
         return self._forward_step
 
     @property
-    def home_row_id(self) -> Optional[int]:
-        return self._home_row_id
+    def row_id(self) -> Optional[int]:
+        return self._row_id
