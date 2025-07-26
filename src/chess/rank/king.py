@@ -9,8 +9,8 @@ from chess.rank.rank import Rank
 
 
 class King(Rank):
-    def __init__(self, name: str, capture_value: int, territories: List[Quadrant]):
-        super.__init__(name, capture_value, territories)
+    def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
+        super.__init__(name, acronym, capture_value, territories)
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
         pass

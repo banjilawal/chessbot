@@ -3,6 +3,7 @@ from typing import List
 
 from chess.config.rank_config import RankConfig
 from chess.rank.king import King
+from chess.rank.pawn import Pawn
 from chess.rank.rank import Rank
 
 
@@ -18,7 +19,12 @@ class RankFactory:
     def build(config: RankConfig):
         if config == RankConfig.KING:
             return King(name=config.name, capture=config.capture_value, territories=config.territories)
-
+        elif config == RankConfig.PAWN:
+            return Pawn(name=config.name, capture=config.capture_value, territories=config.territories)
+        elif config == RankConfig.KNIGHT:
+            return King(name=config.name, capture=config.capture_value, territories=config.territories)
+        elif config == RankConfig.BISHOP:
+            return Pawn(name=config.name, capture=config.capture_value, territories=config.territories)
 def main ():
     RankFactory.build()
 

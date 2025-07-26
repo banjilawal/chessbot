@@ -35,7 +35,7 @@ class RankValue(Enum):
             return [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW]
         if self == RankConfig.BISHOP:
             return [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW]
-        if self == RankConfig.CASTLE:
+        if self == RankConfig.ROOK:
             return [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W]
         if self == RankConfig.QUEEN:
             return [

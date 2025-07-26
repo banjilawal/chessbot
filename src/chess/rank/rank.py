@@ -10,32 +10,44 @@ from chess.game.record.turn_record import TurnRecord
 
 class Rank(ABC):
     _name: str
+    _acronym: str
     _capture_value: int
     _members: List[Piece]
     _territories: List[Quadrant]
 
-    def __init__(self, name: str, capture_value: int, territories: List[Quadrant]):
+    def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
         self._name = name
         self._members = []
+        self._acronym = name[0]
         self._capture_value = capture_value
         self._territories = territories
 
 
     @property
-    def value(self) -> int:
-        return self._capture_value
-
-    @property
     def name(self) -> str:
         return self._name
 
+
     @property
-    def quadrants(self) -> List[Quadrant]:
+    def acronym(self) -> str:
+        return self._acronym
+
+
+    @property
+    def capture_value(self) -> int:
+        return self._capture_value
+
+    @property
+    def territories(self) -> List[Quadrant]:
         return self._territories.copy()
 
     @property
     def members(self) -> [Label, Piece]:
         return self._members.copy()
+
+    @property
+    def acronym(self) -> str:
+        return self._acronym
 
     def __eq__(self, other):
         if other is self:
