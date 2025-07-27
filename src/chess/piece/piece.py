@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from chess.rank.rank import Rank
 
 
-class Piece(ABC):
+class Piece:
     _id: int
     _label: Label
     _rank: 'Rank'
@@ -22,21 +22,30 @@ class Piece(ABC):
     _position_history: List[Coordinate]
     _status: CaptivityStatus
 
-    def __init__(self, piece_id: int, label: Label, player: 'Player', rank: 'Rank'):
+    def __init__(self, piece_id: int, rank: 'Rank', player: Optional['Player']=None):
         if not piece_id:
-            raise ValueError("piece_id cannot be null or empty.")
-        if not label:
-            raise ValueError("label cannot be null or empty.")
-        if not player:
-            raise ValueError("team cannot be null or empty.")
+            raise ValueError("Cannot create a piece with an empty id.")
+        # if not player:
+        #     raise ValueError("Cannot create a piece with an null player.")
         if rank is None:
-            raise ValueError("motion cannot be null.")
+            raise ValueError("Cannot create a piece with an null rank.")
         self._id = piece_id
-        self._label = label
-        self._player = player
         self._rank = rank
+        self._player = player
         self._status = CaptivityStatus.FREE
         self._position_history: List[Coordinate] = []
+        self._label = None
+
+        # if self not in player.pieces:
+        #     player.pieces.append(self)
+        print("size", len(rank.members))
+        if rank.members is None:
+            rank.members = []
+        if self not in rank.members:
+            rank.members.append(self)
+            print("after size", len(rank.members))
+        self._rank = rank
+
 
     # === Immutable attributes ===
     @property
@@ -46,6 +55,11 @@ class Piece(ABC):
     @property
     def label(self) -> Label:
         return self._label
+
+
+    @property
+    def player(self) -> 'Player':
+        return self._player
 
 
     @property
@@ -64,6 +78,24 @@ class Piece(ABC):
     def status(self, status: CaptivityStatus):
         if self._status != status:
             self._status = status
+
+    @player.setter
+    def player(self, player: 'Player'):
+        if self._player == player:
+            print("player is already set to", player.name)
+            return
+        old_player = self._player
+
+        if player is not None:
+            if player.pieces is None:
+                player.pieces = []
+            if not self in player.pieces:
+                player.pieces.append(self)
+            self._player = player
+
+        if old_player is not None:
+            old_player.pieces.remove(self)
+
 
     def is_enemy(self, piece: 'Piece'):
         return self._player == piece.player

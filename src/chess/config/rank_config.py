@@ -1,5 +1,6 @@
 from enum import Enum
 from chess.geometry.quadrant import Quadrant
+from chess.rank.rank import Rank
 
 
 class RankConfig(Enum):
@@ -40,5 +41,12 @@ class RankConfig(Enum):
     @property
     def territories(self) -> [Quadrant]:
         return self._territories.copy()
-from enum import Enum
-from typing import List
+
+    @staticmethod
+    def find_config_by_class(rank: Rank):
+        for config in RankConfig:
+            if config.name == rank.name:
+                return config
+        return None
+
+

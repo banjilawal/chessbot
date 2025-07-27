@@ -54,3 +54,6 @@ class Square:
 
     def __hash__(self):
         return hash(self.id)
+
+    def __str__(self):
+        return f"square {self._id} {self.coordinate.name} occupant: {self._occupant}"

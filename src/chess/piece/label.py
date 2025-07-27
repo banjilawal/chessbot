@@ -9,13 +9,16 @@ class Label:
     def letters(self) -> str:
         return self._letters
 
+
     @property
     def number(self) -> int:
         return self._number
 
+
     @property
     def label(self) -> str:
         return f"{self._letters}-{self._number}"
+
 
     def __eq__(self, other):
         if other is self:
@@ -25,3 +28,10 @@ class Label:
         if not isinstance(other, Label):
             return False
         return self._letters == other.letters and self._number == other.number
+
+
+    def __hash__(self):
+        return hash((self._letters, self._number))
+
+    def __str__(self):
+        return f"{self._letters}-{self._number}"

@@ -29,3 +29,10 @@ class Column:
         if not isinstance(other, Column):
             return False
         return self._id == other.id
+
+    def __hash__(self):
+        return hash(self._id)
+
+
+    def __str__(self):
+        return f"{self._name}{id}"

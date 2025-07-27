@@ -75,8 +75,13 @@ class Coordinate:
             return False
         return self._row == other.row and self._column == other.column
 
+
     def __hash__(self):
         return hash((self.row, self.column))
+
+
+    def __str__(self):
+        return self.name()
 
 
     def shift(self, delta: Delta) -> 'Coordinate':
