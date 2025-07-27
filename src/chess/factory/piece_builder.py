@@ -20,18 +20,22 @@ class PieceBuilder:
     @staticmethod
     def build(rank: Rank) -> List[Piece]:
         pieces: List[Piece] = []
+
+        print(f"{rank.name} has {len(rank.members)} members")
         rank_config = RankConfig.find_config_by_class(rank=rank)
-        for i in range(rank_config.number_per_player):
-            print("i", i)
+        for i in range(rank_config.number_per_player * 2):
             piece = Piece(id_emitter.piece_id, rank=rank)
-            print("id:" + str(piece.id) + " " + piece.label)
+            print("id:" + str(piece.id) + " " + str(piece.label))
             pieces.append(piece)
         return pieces
 
 
 def main ():
-    rank = RankBuilder.build(RankConfig.BISHOP)
-    pieces: List[Piece] = PieceBuilder.build(rank)
+    pieces: List[Piece] = []
+    ranks: List[Rank] = RankBuilder.build_products()
+
+    for rank in ranks:
+        pieces.extend(PieceBuilder.build(rank))
     for piece in pieces:
         print(piece)
 

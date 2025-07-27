@@ -14,6 +14,13 @@ from chess.rank.rook import Rook
 class RankBuilder:
 
     @staticmethod
+    def build_products() -> List[Rank]:
+        ranks: list[Rank] =  []
+        for config in RankConfig:
+            ranks.append(RankBuilder.build(config))
+        return ranks
+
+    @staticmethod
     def build(config: RankConfig) -> Rank:
         if config == RankConfig.KING:
             return King(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
@@ -30,9 +37,15 @@ class RankBuilder:
         raise ValueError(f"Invalid rank config: {config}")
 
 def main ():
+    ranks: List[Rank] = []
     for config in RankConfig:
         rank = RankBuilder.build(config)
+        ranks.append(rank)
         print(rank)
+    print(f"num ranks {len(ranks)}")
+
+    for rank in ranks:
+        print(rank.name)
 
 if __name__ == "__main__":
     main()

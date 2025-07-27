@@ -18,7 +18,7 @@ class Rank(ABC):
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
         self._name = name
         self._members = []
-        self._acronym = name[0]
+        self._acronym = acronym
         self._capture_value = capture_value
         self._territories = territories
 
@@ -43,7 +43,7 @@ class Rank(ABC):
 
     @property
     def members(self) -> [Label, Piece]:
-        return self._members.copy()
+        return self._members
 
     @property
     def acronym(self) -> str:

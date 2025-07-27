@@ -22,7 +22,7 @@ class Piece:
     _position_history: List[Coordinate]
     _status: CaptivityStatus
 
-    def __init__(self, piece_id: int, rank: 'Rank', player: Optional['Player']=None):
+    def __init__(self, piece_id: int, rank: 'Rank'):
         if not piece_id:
             raise ValueError("Cannot create a piece with an empty id.")
         # if not player:
@@ -30,21 +30,16 @@ class Piece:
         if rank is None:
             raise ValueError("Cannot create a piece with an null rank.")
         self._id = piece_id
-        self._rank = rank
-        self._player = player
+        self._player = None
         self._status = CaptivityStatus.FREE
         self._position_history: List[Coordinate] = []
-        self._label = None
 
-        # if self not in player.pieces:
-        #     player.pieces.append(self)
-        print("size", len(rank.members))
-        if rank.members is None:
-            rank.members = []
-        if self not in rank.members:
-            rank.members.append(self)
-            print("after size", len(rank.members))
+        print(f"Current Members in {rank.name}:")
+        for member in rank.members:
+            print(member)
+        rank.members.append(self)
         self._rank = rank
+        self._label = Label(rank.acronym, len(rank.members))
 
 
     # === Immutable attributes ===
@@ -123,5 +118,12 @@ class Piece:
         if not isinstance(other, Piece):
             return False
         if isinstance(other, Piece):
-            self.id == other.id
+            self.id == other.id and self.rank == other.rank
         return False
+
+
+    def __hash__(self):
+        return hash((self.id, self.rank))
+
+    def __str__(self):
+        return f"{self.id} {self.label} status:{self.status.name}"
