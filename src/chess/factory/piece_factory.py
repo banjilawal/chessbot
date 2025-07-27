@@ -15,10 +15,20 @@ from chess.rank.rank import Rank
 from chess.rank.rook import Rook
 
 
-class PieceBuilder:
+class PieceFactory:
+
 
     @staticmethod
-    def build(rank: Rank) -> List[Piece]:
+    def run_factory(ranks: List[Rank]) -> List[Piece]:
+        pieces: List[Piece]
+
+        for rank in ranks:
+            pieces.extend(PieceFactory.build_rank_members(rank))
+        return pieces
+
+
+    @staticmethod
+    def build_rank_members(rank: Rank) -> List[Piece]:
         pieces: List[Piece] = []
 
         print(f"{rank.name} has {len(rank.members)} members")
@@ -32,12 +42,14 @@ class PieceBuilder:
 
 def main ():
     pieces: List[Piece] = []
-    ranks: List[Rank] = RankFactory.build_products()
+    ranks: List[Rank] = RankFactory.run_factory()
 
     for rank in ranks:
-        pieces.extend(PieceBuilder.build(rank))
+        pieces.extend(PieceFactory.build_rank_members(rank))
     for piece in pieces:
         print(piece)
+    for rank in ranks:
+        print(len(rank.members))
 
 if __name__ == "__main__":
     main()

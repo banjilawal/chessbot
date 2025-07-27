@@ -30,5 +30,6 @@ class Label:
     def __hash__(self):
         return hash((self._letters, self._number))
 
+
     def __str__(self):
         return f"{self._letters}{self._number}"
