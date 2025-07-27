@@ -25,21 +25,19 @@ class Piece:
     def __init__(self, piece_id: int, rank: 'Rank'):
         if not piece_id:
             raise ValueError("Cannot create a piece with an empty id.")
-        # if not player:
-        #     raise ValueError("Cannot create a piece with an null player.")
+        if piece_id < 0:
+            raise ValueError("Cannot create a piece with a negative id.")
         if rank is None:
             raise ValueError("Cannot create a piece with an null rank.")
+
+        rank.members.append(self)
+        self._rank = rank
+        self._label = Label(rank.acronym, len(rank.members))
+
         self._id = piece_id
         self._player = None
         self._status = CaptivityStatus.FREE
         self._position_history: List[Coordinate] = []
-
-        print(f"Current Members in {rank.name}:")
-        for member in rank.members:
-            print(member)
-        rank.members.append(self)
-        self._rank = rank
-        self._label = Label(rank.acronym, len(rank.members))
 
 
     # === Immutable attributes ===
@@ -87,27 +85,10 @@ class Piece:
             if not self in player.pieces:
                 player.pieces.append(self)
             self._player = player
+            self.__rebuild_label()
 
         if old_player is not None:
             old_player.pieces.remove(self)
-
-
-    def is_enemy(self, piece: 'Piece'):
-        return self._player == piece.player
-
-    # === Stack operations ===
-    def add_position(self, coordinate: Coordinate) -> None:
-        if coordinate is None:
-            raise ValueError("coordinate cannot be null.")
-        self._position_history.append(coordinate)
-
-    def undo_last_position(self) -> Optional[Coordinate]:
-        if self._position_history:
-            return self._position_history.pop()
-        return None
-
-    def current_position(self) -> Optional[Coordinate]:
-        return self._position_history[-1] if self._position_history else None
 
 
     def __eq__(self, other):
@@ -127,3 +108,31 @@ class Piece:
 
     def __str__(self):
         return f"{self.id} {self.label} status:{self.status.name}"
+
+    def is_enemy(self, piece: 'Piece'):
+        return self._player == piece.player
+
+    def __rebuild_label(self):
+        old_label = self._label
+
+        if self._playeris is not None:
+            letters = self._player.color + self._label.letters
+            number = self._label.number % 2 + 1
+            self._label = Label(letters, number)
+
+
+    # === Stack operations ===
+    def add_position(self, coordinate: Coordinate) -> None:
+        if coordinate is None:
+            raise ValueError("coordinate cannot be null.")
+        self._position_history.append(coordinate)
+
+
+    def undo_last_position(self) -> Optional[Coordinate]:
+        if self._position_history:
+            return self._position_history.pop()
+        return None
+
+
+    def current_position(self) -> Optional[Coordinate]:
+        return self._position_history[-1] if self._position_history else None
