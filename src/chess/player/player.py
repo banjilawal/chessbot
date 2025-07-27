@@ -21,6 +21,7 @@ class Player(ABC):
     _captives: List['Piece']
     _home_quadrant: Quadrant
     _pieces: List['Piece']
+
     def __init__(self, player_id: int, name: str, color: GameColor):
         self._id = player_id
         self._name = name
