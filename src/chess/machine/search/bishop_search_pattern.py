@@ -1,7 +1,7 @@
 from chess.geometry.board import Board
 from chess.geometry.coordinate import Coordinate
 
-from chess.motion.search_pattern import SearchPattern
+from chess.machine.search.search_pattern import SearchPattern
 
 
 

@@ -2,11 +2,11 @@ from enum import Enum
 from typing import Optional
 
 from chess.rank.rank import PawnRank, Rank, KnightRank, BishopRank, CastleRank, QueenRank, KingRank
-from chess.bishop.bishop_search_pattern import BishopSearchPattern
+from chess.machine.search.bishop_search_pattern import BishopSearchPattern
 from chess.castle.castle_search_pattern import CastleSearchPattern
-from chess.king.king_search_pattern import KingSearchPattern
-from chess.knight.knight_search_pattern import KightSearchPattern
-from chess.pawn.pawn_search_pattern import PawnSearchPattern
+from chess.machine.search.king_search_pattern import KingSearchPattern
+from chess.machine.search.knight_search_pattern import KightSearchPattern
+from chess.machine.search.pawn_search_pattern import PawnSearchPattern
 from chess.queen.queen_search_pattern import QueenSearchPattern
 
 

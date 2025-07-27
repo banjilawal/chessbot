@@ -29,25 +29,31 @@ class Player(ABC):
         self._captives = []
         self._pieces = []
 
+
     @property
     def id(self) -> int:
         return self._id
+
 
     @property
     def name(self) -> str:
         return self._name
 
+
     @property
     def color(self) -> GameColor:
         return self._color
+
 
     @property
     def captives(self) -> List['Piece']:
         return self._captives.copy()
 
+
     @property
     def pieces(self) -> List[Piece]:
         return self._pieces.copy()
+
 
     @property
     def home_quadrant(self) -> Quadrant:
