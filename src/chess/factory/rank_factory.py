@@ -11,17 +11,17 @@ from chess.rank.rank import Rank
 from chess.rank.rook import Rook
 
 
-class RankBuilder:
+class RankFactory:
 
     @staticmethod
-    def build_products() -> List[Rank]:
+    def run_factory() -> List[Rank]:
         ranks: list[Rank] =  []
         for config in RankConfig:
-            ranks.append(RankBuilder.build(config))
+            ranks.append(RankFactory.build_rank(config))
         return ranks
 
     @staticmethod
-    def build(config: RankConfig) -> Rank:
+    def build_rank(config: RankConfig) -> Rank:
         if config == RankConfig.KING:
             return King(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
         if config == RankConfig.PAWN:
@@ -39,7 +39,7 @@ class RankBuilder:
 def main ():
     ranks: List[Rank] = []
     for config in RankConfig:
-        rank = RankBuilder.build(config)
+        rank = RankFactory.build_rank(config)
         ranks.append(rank)
         print(rank)
     print(f"num ranks {len(ranks)}")

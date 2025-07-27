@@ -3,7 +3,7 @@ from typing import List
 
 from chess.config.rank_config import RankConfig
 from chess.factory.emit import id_emitter
-from chess.factory.rank_builder import RankBuilder
+from chess.factory.rank_factory import RankFactory
 from chess.piece.piece import Piece
 from chess.player.player import Player
 from chess.rank.bishop import Bishop
@@ -32,7 +32,7 @@ class PieceBuilder:
 
 def main ():
     pieces: List[Piece] = []
-    ranks: List[Rank] = RankBuilder.build_products()
+    ranks: List[Rank] = RankFactory.build_products()
 
     for rank in ranks:
         pieces.extend(PieceBuilder.build(rank))
