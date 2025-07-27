@@ -46,7 +46,7 @@ class Player(ABC):
         return self._captives.copy()
 
     @property
-    def pieces(self) -> Dict[RankConfig, List[Piece]]:
+    def pieces(self) -> List[Piece]:
         return self._pieces.copy()
 
     @property

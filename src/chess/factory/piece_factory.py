@@ -31,11 +31,9 @@ class PieceFactory:
     def build_rank_members(rank: Rank) -> List[Piece]:
         rank_items: List[Piece] = []
 
-        print(f"{rank.name} has {len(rank.members)} members")
         rank_config = RankConfig.find_config_by_class(rank=rank)
         for i in range(rank_config.number_per_player * 2):
             piece = Piece(id_emitter.piece_id, rank=rank)
-            print("id:" + str(piece.id) + " " + str(piece.label))
             rank_items.append(piece)
         return rank_items
 

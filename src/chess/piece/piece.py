@@ -115,8 +115,9 @@ class Piece:
     def __rebuild_label(self):
         old_label = self._label
 
-        if self._playeris is not None:
-            letters = self._player.color + self._label.letters
+        if self._player is not None:
+
+            letters = self._player.color.name[0] + self._label.letters
             number = self._label.number % 2 + 1
             self._label = Label(letters, number)
 

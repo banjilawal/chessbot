@@ -10,11 +10,6 @@ from chess.pawn.pawn_search_pattern import PawnSearchPattern
 from chess.queen.queen_search_pattern import QueenSearchPattern
 
 
-
-CAPTURE_PRIORITY = {
-
-}
-
 class ChessPieceConfig(Enum):
     PAWN = "Pawn"
     KNIGHT = "Knight"

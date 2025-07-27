@@ -29,9 +29,6 @@ class HumanPlayer(Player):
     def piece_to_coordinate(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
         pass
 
-    def __init__(self, player_id: int,  name: str):
-        super().__init__(player_id, name)
-
 
     def name(self, name: str):
         if name is None:
