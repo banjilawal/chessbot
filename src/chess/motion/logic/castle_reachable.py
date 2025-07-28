@@ -1,7 +1,6 @@
-from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.reachable import Reachable
-from chess.motion.logic.horizontal_pattern import HorizontalPattern
-from chess.motion.logic.vertical_pattern import VerticalPatern
+from chess.motion.travel.horizontal_pattern import HorizontalPattern
+from chess.motion.travel.vertical_pattern import VerticalPatern
 
 
 class CastleReachable(Reachable):
