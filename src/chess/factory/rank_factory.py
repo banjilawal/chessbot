@@ -1,6 +1,11 @@
 from typing import List
 
-
+from chess.motion.bishop_motion import BishopMotion
+from chess.motion.castle_motion import CastleMotion
+from chess.motion.king_motion import KingMotion
+from chess.motion.knight_motion import KnightMotion
+from chess.motion.pawn_motion import PawnMotion
+from chess.motion.queen_motion import QueenMotion
 from chess.rank.rank_config import RankConfig
 from chess.rank.bishop import Bishop
 from chess.rank.king import King
@@ -23,17 +28,53 @@ class RankFactory:
     @staticmethod
     def build_rank(config: RankConfig) -> Rank:
         if config == RankConfig.KING:
-            return King(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+            return King(
+                name=config.name,
+                acronym=config.acronym,
+                motion=KingMotion,
+                capture_value=config.capture_value,
+                territories=config.territories
+            )
         if config == RankConfig.PAWN:
-            return Pawn(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+            return Pawn(
+                name=config.name,
+                acronym=config.acronym,
+                motion=PawnMotion,
+                capture_value=config.capture_value,
+                territories=config.territories
+            )
         if config == RankConfig.KNIGHT:
-            return Knight(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+            return Knight(
+                name=config.name,
+                acronym=config.acronym,
+                motion=KnightMotion,
+                capture_value=config.capture_value,
+                territories=config.territories
+            )
         if config == RankConfig.BISHOP:
-            return Bishop(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+            return Bishop(
+                name=config.name,
+                acronym=config.acronym,
+                motion=BishopMotion,
+                capture_value=config.capture_value,
+                territories=config.territories
+            )
         if  config == RankConfig.CASTLE:
-            return Castle(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+            return Castle(
+                name=config.name,
+                acronym=config.acronym,
+                motion=CastleMotion,
+                capture_value=config.capture_value,
+                territories=config.territories
+            )
         if config == RankConfig.QUEEN:
-            return Queen(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+            return Queen(
+                name=config.name,
+                acronym=config.acronym,
+                motion=QueenMotion,
+                capture_value=config.capture_value,
+                territories=config.territories
+            )
         raise ValueError(f"Invalid rank config: {config}")
 
 def main ():
