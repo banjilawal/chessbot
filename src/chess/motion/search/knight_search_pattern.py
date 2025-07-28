@@ -1,37 +1,34 @@
-from chess.geometry.board import Board
-from chess.motion.search import SearchPattern
 
 from chess.geometry.coordinate import Coordinate
-from chess.motion.walk import linear_walk, diagonal_walk
+from chess.geometry.board import Board
+from chess.motion.search.search_pattern import SearchPattern
+from chess.rank.knight import Knight
+from chess.motion.logic.knight_reachable import KnightReachable
+from typing import List
 
 
 class KnightSearchPattern(SearchPattern):
 
     @staticmethod
-    def search(piece: Knight, board: Board) -> list[Coordinate]:
-        if not SearchPattern.check_basic_conditions(piece, board):
+    def search(rank: 'Knight', origin: Coordinate, board: Board) -> List[Coordinate]:
+        if origin is None or board is None:
             return []
 
-        origin = piece.current_position()
-        destinations = []
-        northern_coordinate = linear_walk(
-            origin,
-            Quadrant.N.x_delta,
-            Quadrant.N.y_delta,
-            board,
-            2
-        )[0]
-        southern_coordinate = linear_walk(
-            origin,
-            Quadrant.S.x_delta,
-            Quadrant.S.y_delta,
-            board,
-            2
-        )[0]
+        destinations: List[Coordinate] = []
 
-        for q in [Quadrant.NE, Quadrant.NW]:
-            destinations.extend(diagonal_walk(northern_coordinate, q.x_delta, q.y_delta, board, 1))
+        for quadrant in rank.territories:
+            delta = quadrant.delta
+            # Try both L-shaped offsets for this quadrant
+            candidate_1 = origin.shift(delta.x * 2, delta.y)
+            candidate_2 = origin.shift(delta.x, delta.y * 2)
 
-        for q in [Quadrant.SE, Quadrant.SW]:
-            destinations.extend(diagonal_walk(southern_coordinate, q.x_delta, q.y_delta, board, 1))
+            for candidate in [candidate_1, candidate_2]:
+                if not board.coordinate_is_valid(candidate):
+                    continue
+                piece = board.get_chess_piece_by_coordinate(origin)
+                if not board.square_is_empty_or_contains_enemy(candidate, piece.player):
+                    continue
+                if KnightReachable.is_reachable(origin, candidate):
+                    destinations.append(candidate)
+
         return destinations

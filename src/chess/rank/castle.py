@@ -11,7 +11,10 @@ from chess.rank.rank import Rank
 class Castle(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
-        super().__init__(name, acronym, CastleMotion(), capture_value, territories)
+
+        from chess.motion.castle_motion import CastleMotion
+
+        super().__init__(name, acronym, CastleMotion, capture_value, territories)
 
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:

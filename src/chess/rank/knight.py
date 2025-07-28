@@ -11,7 +11,9 @@ from chess.rank.rank import Rank
 class Knight(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
-        super().__init__(name, acronym, KnightMotion(), capture_value, territories)
+
+        from chess.motion.knight_motion import KnightMotion
+        super().__init__(name, acronym, KnightMotion, capture_value, territories)
 
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:

@@ -1,61 +1,61 @@
 
 
-#
-#
-#
-# class Walk:
-#     _pattern
-#
-#     @staticmethod
-#     def horizontal_walk(self, origin: Coordinate, delta: Delta, number_of_steps: int) -> list[Coordinate]:
-#         points = []
-#         theta = Delta(x=delta.x, y=0)
-#         for i in range(number_of_steps):
-#             points.append(origin.shift(theta * i))
-#         return points
-#
-#     @staticmethod
-#     def vertical_walk(self, origin: Coordinate, delta: Delta, number_of_steps: int) -> list[Coordinate]:
-#         points = []
-#         theta = Delta(x=0, y=delta.y)
-#         for i in range(number_of_steps):
-#             points.append(origin.shift(theta * i))
-#         return points
-#
-#     @staticmethod
-#     def diagonal_walk(self, origin: Coordinate, delta: Delta, number_of_steps: int) -> list[Coordinate]:
-#         points = []
-#         for i in range(number_of_steps):
-#             points.append(origin.shift(delta * i))
-#         return points
-#
-#     @staticmethod
-#     def bishop_walk(self, origin: Coordinate, number_of_steps: int) -> list[Coordinate]:
-#         points = []
-#         i = 0
-#         for q in [Quadrant.NE, Quadrant.NW, Quadrant.SW, Quadrant.SE]:
-#             points.extend(self.diagonal_walk(origin, Delta(q.x_delta, q.y_delta), number_of_steps))
-#             i += 1
-#             if i >= number_of_steps:
-#                 break
-#         return points
-#
-#     @staticmethod
-#     def castle_walk(self, origin: Coordinate, number_of_steps) -> list[Coordinate]:
-#         points = []
-#         i = 0
-#         for q in [Quadrant.N, Quadrant.S]:
-#             points.extend(self.vertical_walk(origin, Delta(q.x_delta, q.y_delta), number_of_steps))
-#             i += 1
-#             if i >= number_of_steps:
-#                 break
-#         for q in [Quadrant.E, Quadrant.W]:
-#             points.extend(self.horizontal_walk(origin, Delta(q.x_delta, q.y_delta), number_of_steps))
-#             i += 1
-#             if i >= number_of_steps:
-#                 break
-#         return points
-#
+
+
+
+class Walk:
+    _pattern
+
+    @staticmethod
+    def horizontal_walk(self, origin: Coordinate, delta: Delta, number_of_steps: int) -> list[Coordinate]:
+        points = []
+        theta = Delta(x=delta.x, y=0)
+        for i in range(number_of_steps):
+            points.append(origin.shift(theta * i))
+        return points
+
+    @staticmethod
+    def vertical_walk(self, origin: Coordinate, delta: Delta, number_of_steps: int) -> list[Coordinate]:
+        points = []
+        theta = Delta(x=0, y=delta.y)
+        for i in range(number_of_steps):
+            points.append(origin.shift(theta * i))
+        return points
+
+    @staticmethod
+    def diagonal_walk(self, origin: Coordinate, delta: Delta, number_of_steps: int) -> list[Coordinate]:
+        points = []
+        for i in range(number_of_steps):
+            points.append(origin.shift(delta * i))
+        return points
+
+    @staticmethod
+    def bishop_walk(self, origin: Coordinate, number_of_steps: int) -> list[Coordinate]:
+        points = []
+        i = 0
+        for q in [Quadrant.NE, Quadrant.NW, Quadrant.SW, Quadrant.SE]:
+            points.extend(self.diagonal_walk(origin, Delta(q.x_delta, q.y_delta), number_of_steps))
+            i += 1
+            if i >= number_of_steps:
+                break
+        return points
+
+    @staticmethod
+    def castle_walk(self, origin: Coordinate, number_of_steps) -> list[Coordinate]:
+        points = []
+        i = 0
+        for q in [Quadrant.N, Quadrant.S]:
+            points.extend(self.vertical_walk(origin, Delta(q.x_delta, q.y_delta), number_of_steps))
+            i += 1
+            if i >= number_of_steps:
+                break
+        for q in [Quadrant.E, Quadrant.W]:
+            points.extend(self.horizontal_walk(origin, Delta(q.x_delta, q.y_delta), number_of_steps))
+            i += 1
+            if i >= number_of_steps:
+                break
+        return points
+
 #     @staticmethod
 #     def queen_walk(self, origin: Coordinate, number_of_steps) -> list[Coordinate]:
 #         points = []

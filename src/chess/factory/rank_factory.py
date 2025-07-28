@@ -31,7 +31,7 @@ class RankFactory:
             return King(
                 name=config.name,
                 acronym=config.acronym,
-                motion=KingMotion,
+                # motion=KingMotion,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -39,7 +39,7 @@ class RankFactory:
             return Pawn(
                 name=config.name,
                 acronym=config.acronym,
-                motion=PawnMotion,
+                # motion=PawnMotion,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -47,7 +47,7 @@ class RankFactory:
             return Knight(
                 name=config.name,
                 acronym=config.acronym,
-                motion=KnightMotion,
+                # motion=KnightMotion,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -55,7 +55,7 @@ class RankFactory:
             return Bishop(
                 name=config.name,
                 acronym=config.acronym,
-                motion=BishopMotion,
+                # motion=BishopMotion,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -63,7 +63,7 @@ class RankFactory:
             return Castle(
                 name=config.name,
                 acronym=config.acronym,
-                motion=CastleMotion,
+                # motion=CastleMotion,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -71,7 +71,7 @@ class RankFactory:
             return Queen(
                 name=config.name,
                 acronym=config.acronym,
-                motion=QueenMotion,
+                # motion=QueenMotion,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
