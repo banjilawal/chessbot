@@ -1,5 +1,5 @@
 from chess.motion.logic.castle_reachable import CastleReachable
-from chess.motion.logic.diagonal import Diagonal
+from chess.geometry.diagonal import Diagonal
 from chess.motion.logic.reachable import Reachable
 
 class QueenReachable(Reachable):
@@ -8,5 +8,5 @@ class QueenReachable(Reachable):
     def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
         return (
                 CastleReachable.is_reachable(origin, destination) or
-                Diagonal.is_reachable(origin, destination)
+                Diagonal.is_diagonal(origin, destination)
         )

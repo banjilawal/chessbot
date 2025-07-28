@@ -4,7 +4,7 @@ from typing import Dict
 
 from chess.geometry.board import Board
 from chess.piece.piece import Piece
-from chess.motion.logic.diagonal import Reachable
+from chess.geometry.diagonal import Reachable
 
 # if TYPE_CHECKING:
 #     from chess.board.board import Board

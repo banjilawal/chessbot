@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/castle_reachable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/castle_reachable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/king_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/king_reachable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/queen_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/queen_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/search/search_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/search/search_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/travel/diagonal_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/diagonal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/travel/horizontal_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/horizontal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/travel/vertical_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/vertical.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +316,7 @@
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
       <workItem from="1753520484992" duration="53365000" />
-      <workItem from="1753631107091" duration="31689000" />
+      <workItem from="1753631107091" duration="32564000" />
     </task>
     <servers />
   </component>
