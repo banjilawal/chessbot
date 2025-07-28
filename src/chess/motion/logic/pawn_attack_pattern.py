@@ -2,7 +2,7 @@ from chess.geometry.board import Board
 
 
 
-class PawnAttackPattern:
+class :
     """
     Refactored PawnAttackPattern. Like the other pawn patern this cannot be in the Reachable
     class hierarchy because it requres the pawn and board. The pawn is the source of truth for

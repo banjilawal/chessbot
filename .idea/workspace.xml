@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/motion/logic/pawn_reachable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/pawn_attack_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/pawn_attack_pattern.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,44 +45,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.grid_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.piece.executor&quot;: &quot;Run&quot;,
-    &quot;Python.piece_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.piece_factory (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.player_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank_builder (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank_factory (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank_factory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_game.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;chess&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/banji/PycharmProjects/podscape/src/chess/factory&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.grid_builder.executor": "Run",
+    "Python.piece.executor": "Run",
+    "Python.piece_builder.executor": "Run",
+    "Python.piece_factory (1).executor": "Run",
+    "Python.player_builder.executor": "Run",
+    "Python.rank_builder (1).executor": "Run",
+    "Python.rank_builder.executor": "Run",
+    "Python.rank_factory (1).executor": "Run",
+    "Python.rank_factory.executor": "Run",
+    "Python.run_game.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "chess",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/podscape/src/chess/motion/logic",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion\logic" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\factory" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\player" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\castle" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\common" />
-      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\board" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\geometry" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion\logic" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion\travel" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\motion" />
       <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess" />
-      <recent name="C:\Users\banji\PycharmProjects\podscape\src\chess\common" />
     </key>
   </component>
   <component name="RunManager" selected="Python.player_builder">
@@ -316,7 +318,7 @@
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
       <workItem from="1753520484992" duration="53365000" />
-      <workItem from="1753631107091" duration="32564000" />
+      <workItem from="1753631107091" duration="34421000" />
     </task>
     <servers />
   </component>
@@ -340,6 +342,12 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/chess/motion/logic/pawn_attack_pattern.py</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="NONE" type="python-line">
+          <url>file://$PROJECT_DIR$/src/chess/motion/logic/pawn_attack_pattern.py</url>
+          <line>29</line>
+          <log-expression expression="@staticmethod&#10;    def matches(pawn: Pawn, destination: Coordinate, board: Board) -&gt; bool:&#10;        if pawn is None or board is None:&#10;            return False&#10;&#10;        origin = pawn.current_position()&#10;        if origin is None or not board.coordinate_is_valid(destination):&#10;            return False&#10;&#10;        row_diff = destination.row - origin.row&#10;        col_diff = abs(destination.column - origin.column)&#10;&#10;        if row_diff != 1 or col_diff != 1:&#10;            return False&#10;&#10;        target = board.get_chess_piece_by_coordinate(destination)&#10;        if target is None:&#10;            return False&#10;&#10;        return pawn.is_enemy(target" language="Python" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
