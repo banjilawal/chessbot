@@ -1,7 +1,5 @@
-from enum import Enum, auto
 
-from chess.game.record.turn_record import TurnRecord
-from chess.geometry.board import Board
+
 from chess.geometry.coordinate import Coordinate
 from chess.piece.captivity_status import CaptivityStatus
 from chess.piece.label import Label
@@ -14,7 +12,8 @@ from typing import List, Optional, TYPE_CHECKING
 if TYPE_CHECKING:
     from chess.player.player import Player
     from chess.rank.rank import Rank
-
+    from chess.game.record.turn_record import TurnRecord
+    from chess.geometry.board import Board
 
 class Piece:
     _id: int
@@ -92,13 +91,13 @@ class Piece:
         if old_player is not None:
             old_player.pieces.remove(self)
 
-    def move(self, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
+    def move(self, board: 'Board', destination: Coordinate) -> Optional['TurnRecord']:
         if self._rank is None:
             raise ValueError("Piece has no rank assigned")
         return self._rank.move(self, board, destination)
 
 
-    def explore_moves(self, board: Board) -> List[Coordinate]:
+    def explore_moves(self, board: 'Board') -> List[Coordinate]:
         if self._rank is None:
             return []
         return self._rank.explore(self, board)

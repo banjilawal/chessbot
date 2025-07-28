@@ -1,15 +1,12 @@
 from typing import List, TYPE_CHECKING
 
-from chess.common.game_color import ROW_SIZE, COLUMN_SIZE
 from chess.factory.emit import id_emitter
 
 from chess.geometry.column import Column
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.row import Row
 from chess.geometry.square import Square
-
-
-
+from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 
 class GridBuilder:
