@@ -3,7 +3,7 @@ from chess.motion.logic.reachable import Reachable
 from chess.motion.logic.definition_category import DefinitionCategory
 
 
-class HorizontalPattern(Reachable):
+class Horizontal(Reachable):
     """X changes while Y stays the same."""
 
     @staticmethod

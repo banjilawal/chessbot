@@ -2,7 +2,7 @@ from chess.geometry.coordinate import Coordinate
 from chess.motion.logic.reachable import Reachable
 
 
-class KnightPattern(Reachable):
+class KnightReachable(Reachable):
 
     @staticmethod
     def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:

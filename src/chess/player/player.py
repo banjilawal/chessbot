@@ -95,7 +95,7 @@ class Player(ABC):
     #    if not board.coordinate_is_valid(destination):
     #        print("Destination is not valid")
     #        return None
-    #    if not DiagonalPattern.points_match_pattern(piece.current_position(), destination):
+    #    if not Diagonal.points_match_pattern(piece.current_position(), destination):
     #        print("points are not in diagonal pattern")
     #        return
     #    board.capture_square(piece, destination)
