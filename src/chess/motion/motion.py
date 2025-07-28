@@ -52,7 +52,7 @@ class Motion(ABC):
         board: Board
     ) -> List[Coordinate]:
         self._validate(rank, origin, board)
-        return self._perform_explore(rank, origin, board)
+        return self._perform_exploration(rank, origin, board)
 
     @abstractmethod
     def _perform_move(

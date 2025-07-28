@@ -66,7 +66,7 @@ class Piece:
 
     @property
     def position_history(self) -> List[Coordinate]:
-        return self._position_history.copy()
+        return self._position_history
 
     @status.setter
     def status(self, status: CaptivityStatus):
@@ -96,12 +96,16 @@ class Piece:
             raise ValueError("Piece has no rank assigned")
         if destination is None:
             raise ValueError("destination cannot be null.")
-        return self._rank.move(self, board, destination)
+        return self._rank.move(piece=self, board=board, destination=destination)
 
 
-    def explore_moves(self, board: 'Board') -> List[Coordinate]:
+    def explore_destinations(self, board: 'Board') -> List[Coordinate]:
         if self._rank is None:
+            raise ValueError(f"Piece {self.label} has no rank assigned. It cannot explore.")
             return []
+        if board is None:
+            raise ValueError(f"board cannot be null. {self._label} cannot explore.")
+        print(f"Everything is fine with {self._label} calling Rank.explore for the list")
         return self._rank.explore(self, board)
 
 
@@ -121,7 +125,7 @@ class Piece:
         return hash((self.id, self.rank))
 
     def __str__(self):
-        return f"{self.id} {self.label} status:{self.status.name}"
+        return f"{self.id} {self.label} {self.status.name} stack_size:{len(self._position_history)}"
 
     def is_enemy(self, piece: 'Piece'):
         return self._player == piece.player

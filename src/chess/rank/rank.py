@@ -56,7 +56,7 @@ class Rank(ABC):
         return self._territories.copy()
 
     @property
-    def members(self) -> [Label, Piece]:
+    def members(self) -> [Piece]:
         return self._members
 
     @property

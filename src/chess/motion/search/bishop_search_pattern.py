@@ -9,7 +9,8 @@ from chess.piece.piece import Piece
 
 
 class BishopSearchPattern(SearchPattern):
-
+    def __init__(self):
+        super().__init__([])
     @staticmethod
     def search(piece: Piece, board: Board) -> List[Coordinate]:
         if not SearchPattern.check_basic_conditions(piece, board):

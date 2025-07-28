@@ -55,6 +55,13 @@ def main():
         DevMode.raise_or_print(f"Error adding piece to board: {e}")
     print(f"{piece} {piece.current_position()}")
 
+    piece.move(destination=Coordinate(row=4, column=4), board=board)
+    print(f"{piece} {piece.current_position()}")
+    print(f"{piece.label} is exploring the board")
+    places = piece.explore_destinations(board=board)
+    for place in places:
+        print(place)
+
 
 
 
