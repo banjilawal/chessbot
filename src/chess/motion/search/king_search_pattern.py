@@ -1,7 +1,7 @@
 from chess.geometry.board import Board
 from chess.piece.piece import Piece
 from chess.geometry.coordinate import Coordinate
-from chess.machine.search.search_pattern import SearchPattern
+from chess.motion.search.search_pattern import SearchPattern
 
 
 class KingSearchPattern(SearchPattern):

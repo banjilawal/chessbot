@@ -6,32 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/board_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board_pkg_info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/castle/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/castle/castle_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/castle_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/castle/castle_search_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/machine/search/castle_search_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/game_color.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/figure_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/figure_pkg_info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/player_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/player_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/quadrant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/quadrant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/king/king_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/king_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/knight/knight_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/knight_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/pawn/pawn_advance_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/pawn_advance_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/pawn/pawn_attack_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/pawn_attack_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/human_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/human_player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/machine_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/machine_player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/queen/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/queen/queen_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/queen_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/queen/queen_search_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/machine/search/queen_search_pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank_value.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,7 +316,7 @@
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
       <workItem from="1753520484992" duration="53365000" />
-      <workItem from="1753631107091" duration="27773000" />
+      <workItem from="1753631107091" duration="29364000" />
     </task>
     <servers />
   </component>
