@@ -1,6 +1,9 @@
+from typing import List
+
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.row import Row
 from chess.geometry.column import Column
+from chess.rank.rank import Rank
 from chess.utils.env import DevMode
 
 
@@ -32,6 +35,12 @@ from chess.geometry.coordinate import Coordinate
 from chess.rank.bishop import Bishop
 
 
+def find_rank(ranks: List[Rank], rank_name: str) -> Rank:
+    for rank in ranks:
+        if rank.name == rank_name:
+            return rank
+    raise ValueError(f"Rank '{rank_name}' not found in ranks")
+
 
 
 def main():
@@ -61,6 +70,13 @@ def main():
     places = piece.explore_destinations(board=board)
     for place in places:
         print(place)
+
+    rank = find_rank(ranks, "CASTLE")
+    print(rank)
+    piece = rank.members[0]
+    print(piece)
+    board.add_piece_to_board(piece, Coordinate(row=4, column=7))
+    print(piece)
 
 
 
