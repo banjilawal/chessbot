@@ -6,6 +6,7 @@ from chess.geometry.quadrant import Quadrant
 from chess.motion.logic.bishop_reachable import BishopReachable
 from chess.motion.search.search_pattern import SearchPattern
 from chess.piece.piece import Piece
+from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 
 class BishopSearchPattern(SearchPattern):
@@ -34,6 +35,14 @@ class BishopSearchPattern(SearchPattern):
                     break
                 else:
                     break  # Blocked by friendly piece
+
+                next_row = current.row + delta.y
+                next_column = current.column + delta.x
+
+                if 0 <= next_row < ROW_SIZE and 0 <=  next_column < COLUMN_SIZE:
+                    current = current.shift(delta)
+                else:
+                    break
 
                 current = current.shift(delta)
 
