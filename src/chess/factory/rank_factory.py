@@ -1,7 +1,7 @@
 from typing import List
 
 
-from chess.config.rank_config import RankConfig
+from chess.rank.rank_config import RankConfig
 from chess.rank.bishop import Bishop
 from chess.rank.king import King
 from chess.rank.knight import Knight
