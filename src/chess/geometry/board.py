@@ -135,7 +135,7 @@ class Board:
             # captor = self.remove_piece_from_board(piece)
             square.occupant = captor
             # captor.coordinate = square.coordinate
-            captor.add_position(coordinate)
+            # captor.add_position(coordinate)
             capture_record = CaptureRecord(
                 id=id_emitter.capture_record_id_counter(),
                 location=coordinate,
@@ -145,8 +145,9 @@ class Board:
             self._killed_pieces.append(prisoner)
 
         if current_occupant is None:
+            print("The current occupant is None. The piece is free to move to the destination square.")
+            print(f"Square {square} has occupant {current_occupant} and piece {piece} is free to move to the destination square.")
             square.occupant = piece
-            piece.add_position(coordinate)
             piece.coordinate = square.coordinate
             turn_record = TurnRecord(
                 record_id=id_emitter.turn_record_id,

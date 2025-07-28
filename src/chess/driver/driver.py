@@ -1,31 +1,7 @@
 from typing import List
 
-from chess.geometry.coordinate import Coordinate
-from chess.geometry.row import Row
-from chess.geometry.column import Column
 from chess.rank.rank import Rank
 from chess.utils.env import DevMode
-
-
-def make_coordinate(coordinate_id: int, row_number: int, column_number: int) -> Coordinate:
-    """
-    Builds a Coordinate object using chess-style row and column indexes.
-
-    :param coordinate_id: Unique identifier for the coordinate.
-    :param row_number: 1-based row index (1 to 8 for a standard board).
-    :param column_number: 1-based column index (1 = A, 2 = B, ..., 8 = H).
-    :return: Coordinate instance.
-    """
-    if row_number < 1 or row_number > 8:
-        raise ValueError("Row number must be between 1 and 8")
-    if column_number < 1 or column_number > 8:
-        raise ValueError("Column number must be between 1 and 8")
-
-    row = Row(row_number)
-    column_letter = chr(ord("A") + column_number - 1)
-    column = Column(column_number, column_letter)
-    return Coordinate(coordinate_id=coordinate_id, row=row, column=column)
-
 
 from chess.factory.grid_builder import GridBuilder
 from chess.factory.piece_factory import PieceFactory
@@ -74,9 +50,11 @@ def main():
     rank = find_rank(ranks, "CASTLE")
     print(rank)
     piece = rank.members[0]
-    print(piece)
+    print("New piece:", piece)
     board.add_piece_to_board(piece, Coordinate(row=4, column=7))
     print(piece)
+    for coordinate in piece.position_history:
+        print(coordinate)
 
 
 

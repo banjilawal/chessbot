@@ -68,7 +68,7 @@ class Coordinate:
 
 
     def __hash__(self):
-        return hash((self.row, self.column))
+        return hash((self._row, self._column))
 
 
     def __str__(self):

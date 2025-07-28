@@ -141,9 +141,14 @@ class Piece:
 
 
     # === Stack operations ===
-    def add_position(self, coordinate: Coordinate) -> None:
+    def add_position(self, coordinate: Coordinate):
         if coordinate is None:
             raise ValueError("coordinate cannot be null.")
+        print("current position history")
+        for c in self._position_history:
+            print(c)
+        if coordinate in self._position_history:
+            raise ValueError(f"Cannot add {coordinate} to {self._label} stack. It is already present.")
         self._position_history.append(coordinate)
 
 

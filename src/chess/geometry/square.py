@@ -1,5 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 
+from chess.geometry import coordinate
 from chess.geometry.coordinate import Coordinate
 
 if TYPE_CHECKING:
@@ -46,7 +47,22 @@ class Square:
 
     @occupant.setter
     def occupant(self, piece: Optional['Piece']):
-        self._occupant = piece
+        print(f"{piece} wants to be my new occupant. Currently {self._occupant} is resident.")
+        current_occupant = self._occupant
+
+        if current_occupant is not None:
+            print(f"Current occupant {current_occupant} has {current_occupant.current_position} as their address.")
+            self._occupant = None
+            print(f"my occupant is {self._current} now.")
+
+        if piece is not None:
+            self._occupant = piece;
+            print(f"{self._occupant} is my new occupant.")
+            # if self.coordinate not in piece.position_history:
+            piece.add_position(self._coordinate)
+
+        if piece is None:
+            self._occupant = None
 
 
     def __eq__(self, other):
