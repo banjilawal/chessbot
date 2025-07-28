@@ -1,4 +1,4 @@
-from chess.castle.castle_pattern import CastlePattern
+from chess.motion.logic.castle_pattern import CastlePattern
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
 from chess.motion.logic.geomtery_pattern import GeometryPattern
 

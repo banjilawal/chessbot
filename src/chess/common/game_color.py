@@ -1,9 +1,5 @@
 from enum import Enum
 
-BOARD_DIMENSION = 8
-ROW_SIZE = 8
-COLUMN_SIZE = 8
-
 class GameColor(Enum):
     # Yellows (Darkest to Lightest)
     GOLDENROD = (218, 165, 32)

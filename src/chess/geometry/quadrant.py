@@ -1,4 +1,4 @@
-from chess.common.constant import BOARD_DIMENSION
+from chess.common.game_color import BOARD_DIMENSION
 from chess.geometry.coordinate import Delta
 from enum import Enum
 from typing import Optional

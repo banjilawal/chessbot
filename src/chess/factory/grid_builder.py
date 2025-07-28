@@ -1,6 +1,6 @@
 from typing import List, TYPE_CHECKING
 
-from chess.common.constant import ROW_SIZE, COLUMN_SIZE
+from chess.common.game_color import ROW_SIZE, COLUMN_SIZE
 from chess.factory.emit import id_emitter
 
 from chess.geometry.column import Column

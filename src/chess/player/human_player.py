@@ -1,6 +1,6 @@
 from typing import Optional, List, Dict
 
-from chess.common.constant import GameColor
+from chess.common.game_color import GameColor
 from chess.game.record.turn_record import TurnRecord
 from chess.geometry.coordinate import Coordinate
 from chess.piece.label import Label

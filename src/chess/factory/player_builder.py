@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.common.constant import GameColor
+from chess.common.game_color import GameColor
 from chess.factory.emit import id_emitter
 from chess.factory.piece_factory import PieceFactory
 from chess.factory.rank_factory import RankFactory

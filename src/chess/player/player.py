@@ -2,13 +2,12 @@ from abc import abstractmethod, ABC
 from typing import Optional, List, Dict, TYPE_CHECKING
 
 from chess.geometry.board import Board
-from chess.common.constant import GameColor
+from chess.common.game_color import GameColor
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 
 from chess.piece.piece import Piece, Label
 from chess.game.record.turn_record import TurnRecord
-from chess.rank.rank_value import RankConfig
 
 if TYPE_CHECKING:
     from chess.geometry.board import Board
