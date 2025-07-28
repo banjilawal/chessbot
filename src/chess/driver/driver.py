@@ -1,6 +1,7 @@
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.row import Row
 from chess.geometry.column import Column
+from chess.utils.env import DevMode
 
 
 def make_coordinate(coordinate_id: int, row_number: int, column_number: int) -> Coordinate:
@@ -34,7 +35,7 @@ from chess.rank.bishop import Bishop
 
 
 def main():
-
+    DevMode._raise_errors = True  # Set to False for production
     board = Board(grid=GridBuilder.build())
     ranks = RankFactory.run_factory()
 
@@ -48,10 +49,12 @@ def main():
         print(rank)
     piece = pieces[22]
     print(board)
-    board.add_chess_piece_to_board(piece, Coordinate(coordinate_id=1, row=1, column=1) )
-
+    try:
+        board.add_piece_to_board(piece, Coordinate(row=1, column=1))
+    except ValueError as e:
+        DevMode.raise_or_print(f"Error adding piece to board: {e}")
     print(f"{piece} {piece.current_position()}")
-    print(Coordinate(coordinate_id=1, row=1, column=1))
+
 
 
 

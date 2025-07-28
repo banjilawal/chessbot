@@ -2,7 +2,6 @@ from dataclasses import field
 from typing import Tuple, List, Optional, TYPE_CHECKING
 
 from chess.factory.emit import id_emitter
-from chess.factory.grid_builder import GridBuilder
 
 from chess.game.record.turn_record import TurnRecord
 from chess.geometry.coordinate import Coordinate
@@ -15,32 +14,38 @@ if TYPE_CHECKING:
 
 
 class Board:
-    _chess_pieces: List[Piece]
+    _pieces: List[Piece]
     _killed_pieces: List[Piece]
     _grid: List[List[Square]]
 
 
     def __init__(self, grid: List[List[Square]]):
-        self._chess_pieces = []
+        self._pieces = []
         self._killed_pieces = []
         self._grid = grid
 
     @property
-    def chess_pieces(self) -> List[Piece]:
-        return self._chess_pieces.copy()
+    def pieces(self) -> List[Piece]:
+        return self._pieces
 
 
-    def get_chess_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[Piece]:
+    def get_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[Piece]:
+        print("Checking for coordinate", coordinate, "")
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("The coordinate is not valid. Cannot find chess piece.")
             return None
+        square = self._grid[coordinate.row][coordinate.column]
+        print("The square at ", coordinate, " is ", square, " it contains ", square.occupant, "")
         return self.grid[coordinate.row][coordinate.column].occupant
 
 
-    def get_chess_piece_by_id(self, target_id: int) -> Optional[Piece]:
-        for chess_piece in self.chess_pieces:
+    def get_piece_by_id(self, target_id: int) -> Optional[Piece]:
+        print("Searching for chess piece with id ", target_id, " on the board.")
+        for chess_piece in self._pieces:
             print("Checking if ", chess_piece.name, " is mover with id ", target_id)
+            print("checking against ", chess_piece.id, " and ", target_id, "")
             if chess_piece.id == target_id:
+
                 return chess_piece
         return None
 
@@ -52,8 +57,9 @@ class Board:
 
     def empty_squares(self) -> List[Square]:
         empty_squares = []
-        for square in self.grid:
+        for square in self._grid:
             if square.occupant is None and square not in empty_squares:
+                print(f"Empty square name:{square}")
                 empty_squares.append(square)
         return empty_squares
 
@@ -61,40 +67,43 @@ class Board:
     def occupied_squares(self) -> List[Square]:
         occupied_squares = []
         for square in self._grid:
-            if square.occupant is not None and square not in occupied_squares:
+            occupant = square.occupant
+            if occupant is not None and square not in occupied_squares:
+                print(f"Occupied square name:{square} occupant label:{occupant.label}")
                 occupied_squares.append(square)
         return occupied_squares
 
 
-    def remove_chess_piece_from_board(self, chess_piece_id: int) -> Piece:
-        chess_piece = self.get_chess_piece_by_id(chess_piece_id)
-        if chess_piece is None:
-            raise ValueError("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent piece.")
-            return None
-        if chess_piece.coordinate is None:
+    def remove_piece_from_board(self, piece_id: int) -> Piece:
+        piece = self.get_piece_by_id(piece_id)
+        if piece is None:
+            raise ValueError("No chess piece with id", piece_id, "is on the board. cannot remove a non-existent piece.")
+        if piece.coordinate is None:
             raise ValueError("Cannot remove a chess piece from an empty square.")
-            return None
 
-        square = self.grid[chess_piece.coordinate.row][chess_piece.coordinate.column]
+        print(f"Found piece with id {piece.id} at coordinate {piece.coordinate} to remove.")
+        square = self.grid[piece.coordinate.row][piece.coordinate.column]
+        print(f"the square at {piece.coordinate} is {square}.")
         square.occupant = None
-        chess_piece.coordinate = None
-        self.chess_pieces.remove(chess_piece)
-        return chess_piece
+        piece.coordinate = None
+        self.pieces.remove(piece)
+        return piece
 
 
-    def add_chess_piece_to_board(self, chess_piece: Piece, coordinate: Coordinate) -> None:
+    def add_piece_to_board(self, chess_piece: Piece, coordinate: Coordinate) -> None:
         if chess_piece is None:
             raise ValueError("Cannot add a null chess piece")
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("THe chess piece cannot be addd. The destination coordinate is out of range.")
         if self.grid[coordinate.row][coordinate.column].occupant is not None:
-            raise ValueError("The chess piece cannot be added. The destination square is already occupied.")
+            raise ValueError("The chess piece cannot be added. The destination square is already occupied. by ", gt)
 
+        print("Calling capture_square with ", chess_piece, " and ", coordinate, "")
         self.capture_square(chess_piece, coordinate)
 
 
-    def capture_square(self, chess_piece: Piece, coordinate: Coordinate) -> TurnRecord:
-        if chess_piece is None:
+    def capture_square(self, piece: Piece, coordinate: Coordinate) -> TurnRecord:
+        if piece is None:
             raise ValueError("Captor cannot be null. Aborting capture process.")
             # return None
         if not self.coordinate_is_valid(coordinate):
@@ -103,21 +112,29 @@ class Board:
 
         turn_record = None
         capture_record = None
-        previous_coordinate = chess_piece.current_position();
-        square = self.grid[coordinate.row][coordinate.column]
+        square = self._grid[coordinate.row][coordinate.column]
         current_occupant = square.occupant
-        if current_occupant is not None and not self.are_enemies(chess_piece, current_occupant ):
+        print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
+        if current_occupant is not None and not self.are_enemies(piece, current_occupant):
             print("A friendly is occupying the square. Aborting capture process.")
             return None
 
-        if current_occupant is not None and chess_piece.is_enemy(current_occupant):
-            prisoner = self.remove_chess_piece_from_board(current_occupant.id)
+        if current_occupant is not None and piece.is_enemy(current_occupant):
+            print("The current occupant is an enemy on ")
+            prisoner = current_occupant
+            square.occupant = None
+            prisoner.coordinate = None
+
+            captor = piece
+            # prisoner = self.remove_piece_from_board(current_occupant.id)
             prisoner.status = CaptivityStatus.PRISONER
 
+            print("prisoner=", prisoner, " captor=", captor, "")
 
-            captor = self.remove_chess_piece_from_board(chess_piece)
+
+            # captor = self.remove_piece_from_board(piece)
             square.occupant = captor
-            captor.coordinate = square.coordinate
+            # captor.coordinate = square.coordinate
             captor.add_position(coordinate)
             capture_record = CaptureRecord(
                 id=id_emitter.capture_record_id_counter(),
@@ -128,11 +145,12 @@ class Board:
             self._killed_pieces.append(prisoner)
 
         if current_occupant is None:
-            square.occupant = chess_piece
-            chess_piece.coordinate = square.coordinate
+            square.occupant = piece
+            piece.add_position(coordinate)
+            piece.coordinate = square.coordinate
             turn_record = TurnRecord(
                 record_id=id_emitter.turn_record_id,
-                moved_piece=chess_piece,
+                moved_piece=piece,
                 arrival_coordinate=coordinate,
                 capture_record=capture_record
             )

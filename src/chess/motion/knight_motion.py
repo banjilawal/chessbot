@@ -27,7 +27,7 @@ class KnightMotion(Motion):
             raise ValueError(f"Bishop cannot reach destination {destination} from origin {origin}.")
 
         # Get the piece at the origin
-        piece = board.get_chess_piece_by_coordinate(origin)
+        piece = board.get_piece_by_coordinate(origin)
         if piece is None:
             raise ValueError("No piece found at origin to move.")
 

@@ -24,7 +24,7 @@ class CastleSearchPattern(SearchPattern):
             while board.coordinate_is_valid(next_coord):
                 if board.coordinate_is_occupied(next_coord):
                     # Can capture enemy but not move beyond
-                    occupant = board.get_chess_piece_by_coordinate(next_coord)
+                    occupant = board.get_piece_by_coordinate(next_coord)
                     if occupant and occupant.player != rank.members[0].player:
                         destinations.append(next_coord)
                     break  # blocked

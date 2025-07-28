@@ -27,7 +27,7 @@ class BishopSearchPattern(SearchPattern):
                 if not BishopReachable.is_reachable(origin, current):
                     break
 
-                occupant = board.get_chess_piece_by_coordinate(current)
+                occupant = board.get_piece_by_coordinate(current)
 
                 if occupant is None:
                     destinations.append(current)
