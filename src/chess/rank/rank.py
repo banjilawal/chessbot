@@ -42,9 +42,9 @@ class Rank(ABC):
     def acronym(self) -> str:
         return self._acronym
     
-    @@property
+    @property
     def motion(self):
-        return 
+        return self._motion
 
 
     @property

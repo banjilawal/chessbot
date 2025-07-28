@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/motion/bishop_motion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/motion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/motion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank.py" afterDir="false" />
-    </list>
+    <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -319,7 +314,7 @@
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
       <workItem from="1753520484992" duration="53365000" />
-      <workItem from="1753631107091" duration="44206000" />
+      <workItem from="1753631107091" duration="45014000" />
     </task>
     <servers />
   </component>
