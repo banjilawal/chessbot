@@ -1,21 +1,19 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.board import Board
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
-
-
+from chess.piece.piece import Piece
 
 
 class CastleSearchPattern(SearchPattern):
+    def __init__(self):
+        super().__init__()
 
-    @staticmethod
-    def search(rank, origin: Coordinate, board: Board) -> list[Coordinate]:
+    def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
         destinations = []
-        if not SearchPattern.validate_search_parameters(rank, origin, board):
-            return destinations
-
+        origin = piece.current_position()
         for quadrant in [Quadrant.N, Quadrant.E, Quadrant.S, Quadrant.W]:
             x_delta = quadrant.x_delta
             y_delta = quadrant.y_delta

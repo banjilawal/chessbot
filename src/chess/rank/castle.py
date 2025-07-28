@@ -10,22 +10,31 @@ from chess.rank.rank import Rank
 
 class Castle(Rank):
 
-    def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
-
+    def __init__(self, name: str, acronym: str, capture_value: int, territories: List['Quadrant']):
         from chess.motion.castle_motion import CastleMotion
+        super().__init__(name, acronym, CastleMotion(), capture_value, territories)
 
-        super().__init__(name, acronym, CastleMotion, capture_value, territories)
 
+    def move(self, piece: 'Piece', board: 'Board', destination: 'Coordinate') -> Optional['TurnRecord']:
+        if piece is None:
+            raise ValueError("Castle cannot move without a piece.")
+        if piece.current_position() is None:
+            raise ValueError(f"Castle cannot move {piece} when its coordinate is null. It's not even on the board.")
+        if board is None:
+            raise ValueError("castle cannot move without a board.")
+        if destination is None:
+            raise ValueError(f"Castle cannot move {piece.label} without a destination.")
 
-    def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
-        origin = piece.current_position()
-        if origin is None:
-            raise ValueError("Bishop has no known current position.")
-        return self.motion.move(self, origin, destination, board)
+        return self.motion.move(self, piece.current_position(), destination, board)
 
 
     def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
-        origin = piece.current_position()
-        if origin is None:
-            return []
-        return self.motion.explore(self, origin, board)
+        """Find all possible moves for a bishop piece."""
+        if piece is None:
+            raise ValueError("Bishop cannot explore without a piece.")
+        if piece.current_position() is None:
+            raise ValueError(f"Bishop cannot explore {piece} when its coordinate is null.")
+        if board is None:
+            raise ValueError("Bishop cannot explore without a board.")
+
+        return self.motion.explore(self, piece.current_position(), board)

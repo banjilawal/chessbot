@@ -9,6 +9,6 @@ class CastleReachable(Reachable):
     @staticmethod
     def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
         return (
-                Horizontal.is_horizontal(origin, destination) or
-                Vertical.is_vertical(origin, destination)
+            Horizontal.is_horizontal(origin, destination) or
+            Vertical.is_vertical(origin, destination)
         )

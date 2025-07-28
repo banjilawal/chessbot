@@ -11,6 +11,9 @@ from chess.rank.rank import Rank
 
 
 class CastleMotion(Motion):
+
+    """Motion implementation for bishop pieces."""
+
     def __init__(self):
         super().__init__(logic=CastleReachable(), search_pattern=CastleSearchPattern())
 
