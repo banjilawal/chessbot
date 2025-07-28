@@ -10,7 +10,7 @@ class DiagonalPattern(GeometryPattern):
     """
 
     @staticmethod
-    def points_match_pattern(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
         # Row and column difference equal (non-zero)
         return (origin != destination and
             abs(origin.row - destination.row) == abs(destination.column - origin.column))

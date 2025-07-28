@@ -7,6 +7,6 @@ class HorizontalPattern(GeometryPattern):
     """X changes while Y stays the same."""
 
     @staticmethod
-    def points_match_pattern(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
         # Same row, column changes
         return origin.row == destination.row and origin.column != destination.column

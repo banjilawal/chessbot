@@ -6,5 +6,5 @@ class VerticalPatern(GeometryPattern):
     """Y changes while X stays the same."""
 
     @staticmethod
-    def points_match_pattern(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
         return origin.column == destination.column and origin.row != destination.row

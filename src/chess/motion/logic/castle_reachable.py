@@ -7,8 +7,8 @@ from chess.motion.logic.vertical_pattern import VerticalPatern
 class CastleReachable(GeometryPattern):
 
     @staticmethod
-    def points_match_pattern(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
         return (
-            HorizontalPattern.points_match_pattern(origin, destination) or
-            VerticalPatern.points_match_pattern(origin, destination)
+                HorizontalPattern.is_reachable(origin, destination) or
+                VerticalPatern.is_reachable(origin, destination)
         )
