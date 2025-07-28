@@ -4,7 +4,7 @@ from chess.motion.logic.horizontal_pattern import HorizontalPattern
 from chess.motion.logic.vertical_pattern import VerticalPatern
 
 
-class CastlePattern(GeometryPattern):
+class CastleReachable(GeometryPattern):
 
     @staticmethod
     def points_match_pattern(origin: Coordinate, destination: Coordinate) -> bool:
