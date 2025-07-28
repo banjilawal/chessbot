@@ -1,10 +1,13 @@
 from chess.factory.grid_builder import GridBuilder
-
+from chess.factory.rank_factory import RankFactory
+from chess.geometry.board import Board
 
 def main():
-    from chess.geometry.board import Board
+
     board = Board(grid=GridBuilder.build())
-    print(board.grid)
+    ranks = RankFactory.run_factory()
+
+
 
 
 

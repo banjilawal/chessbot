@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Dict
 
 from chess.geometry.board import Board
+from chess.geometry.coordinate import Coordinate
 from chess.piece.piece import Piece
 from chess.geometry.diagonal import Reachable
 

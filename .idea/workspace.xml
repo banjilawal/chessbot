@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/horizontal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/horizontal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/vertical.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/vertical.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/definition_category.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/driver/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/driver/driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/quadrant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/quadrant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +272,7 @@
       <workItem from="1753458064410" duration="16603000" />
       <workItem from="1753483009371" duration="11106000" />
       <workItem from="1753520484992" duration="53365000" />
-      <workItem from="1753631107091" duration="49158000" />
+      <workItem from="1753631107091" duration="49696000" />
     </task>
     <servers />
   </component>
@@ -308,7 +306,7 @@
     <SUITE FILE_PATH="coverage/podscape$board_driver.coverage" NAME="board_driver Coverage Results" MODIFIED="1752335979726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/podscape$rank_builder.coverage" NAME="rank_builder Coverage Results" MODIFIED="1753571692885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/factory" />
     <SUITE FILE_PATH="coverage/podscape$piece_factory__1_.coverage" NAME="piece_factory (1) Coverage Results" MODIFIED="1753649641705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/factory" />
-    <SUITE FILE_PATH="coverage/podscape$driver.coverage" NAME="driver Coverage Results" MODIFIED="1753686099984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/driver" />
+    <SUITE FILE_PATH="coverage/podscape$driver.coverage" NAME="driver Coverage Results" MODIFIED="1753686985994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/driver" />
     <SUITE FILE_PATH="coverage/podscape$rank_builder__1_.coverage" NAME="rank_builder (1) Coverage Results" MODIFIED="1753639194658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/factory" />
     <SUITE FILE_PATH="coverage/podscape$test.coverage" NAME="test Coverage Results" MODIFIED="1752010090590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/podscape$grid_builder.coverage" NAME="grid_builder Coverage Results" MODIFIED="1753555168501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/factory" />

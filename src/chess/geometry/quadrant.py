@@ -1,7 +1,9 @@
-from chess.common.game_color import BOARD_DIMENSION
+
 from chess.geometry.coordinate import Delta
 from enum import Enum
 from typing import Optional
+
+from chess.system_config import BOARD_DIMENSION
 
 
 class Quadrant(Enum):
