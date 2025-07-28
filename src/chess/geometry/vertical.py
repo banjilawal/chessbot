@@ -1,5 +1,4 @@
-from chess.motion.logic.reachable import Reachable
-from chess.motion.logic.definition_category import DefinitionCategory
+
 
 
 class Vertical:

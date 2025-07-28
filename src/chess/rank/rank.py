@@ -90,7 +90,6 @@ class Rank(ABC):
 
 
 
-
 class PromotableRank(Rank):
 
     @abstractmethod
