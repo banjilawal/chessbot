@@ -1,5 +1,7 @@
 from typing import List, TYPE_CHECKING
 
+from pygame.examples import grid
+
 from chess.factory.emit import id_emitter
 
 from chess.geometry.column import Column
@@ -12,29 +14,32 @@ from chess.system_config import ROW_SIZE, COLUMN_SIZE
 class GridBuilder:
 
     @staticmethod
-    def build() -> List[Square]:
+    def build() -> List[List[Square]]:
 
-        squares: List[Square] = []
+        grid: List[List[Square]] = []
 
         for i in range(ROW_SIZE):
+            row_squares: List[Square] = []
             row = Row(row_id=(i + 1))
             ascii_value = ord('A')
 
             for j in range(COLUMN_SIZE):
-                column = Column(j + 1, chr(ascii_value))
-                coordinate = Coordinate(coordinate_id=id_emitter.coordinate_id, row=row, column=column)
+                name = chr(ascii_value) + str(i + 1)
+                coordinate = Coordinate(row=i, column=j)
                 # print("built coord:", coordinate.name())
-                square = Square(id_emitter.square_id, coordinate)
+                square = Square(id_emitter.square_id, name, coordinate)
                 # print("built: square", square.id, "coord:",coordinate.name() )
-                squares.append(square)
+                row_squares.append(square)
                 ascii_value += 1
-        return squares
+            grid.append(row_squares)
+        return grid
 
 
 def main():
     from chess.geometry.board import Board
     board = Board(grid=GridBuilder.build())
-    print(board.grid)
+    print(board)
+
 
 
 

@@ -21,3 +21,11 @@ class Row:
         if not isinstance(other, Row):
             return False
         return self._id == other.id
+
+
+    def __hash__(self):
+        return hash(self._id)
+
+
+    def __str__(self):
+        return f"{self._id}"

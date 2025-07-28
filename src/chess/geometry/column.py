@@ -35,4 +35,4 @@ class Column:
 
 
     def __str__(self):
-        return f"{self._name}{id}"
+        return f"{self._name}"

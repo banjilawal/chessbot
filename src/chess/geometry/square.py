@@ -8,16 +8,18 @@ if TYPE_CHECKING:
 
 class Square:
     _id: int
+    _name: str
     _coordinate: Coordinate
     _occupant: Optional['Piece']
 
-    def __init__(self, square_id: int, coordinate: Coordinate):
+    def __init__(self, square_id: int, name: str, coordinate: Coordinate):
         if square_id < 0:
             raise ValueError("Square id cannot be negative.")
         if coordinate is None:
             raise ValueError("Coordinate cannot be None.")
 
         self._id = square_id
+        self._name = name
         self._coordinate = coordinate
         self._occupant = None
 
@@ -25,6 +27,11 @@ class Square:
     @property
     def id(self) -> int:
         return self._id
+
+
+    @property
+    def name(self) -> str:
+        return self._name
 
 
     @property
@@ -56,4 +63,4 @@ class Square:
         return hash(self.id)
 
     def __str__(self):
-        return f"square {self._id} {self.coordinate.name} occupant: {self._occupant}"
+        return f"square {self._id} {self.name} occupant: {self._occupant}"

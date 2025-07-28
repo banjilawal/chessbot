@@ -94,6 +94,8 @@ class Piece:
     def move(self, board: 'Board', destination: Coordinate) -> Optional['TurnRecord']:
         if self._rank is None:
             raise ValueError("Piece has no rank assigned")
+        if destination is None:
+            raise ValueError("destination cannot be null.")
         return self._rank.move(self, board, destination)
 
 

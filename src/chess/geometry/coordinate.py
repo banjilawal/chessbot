@@ -1,5 +1,6 @@
 from chess.geometry.column import Column
 from chess.geometry.row import Row
+from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 
 class Delta:
@@ -33,38 +34,28 @@ class Delta:
 
 
 class Coordinate:
-    _id: int
-    _row: Row
-    _column: Column
+    _row: int
+    _column: int
 
-    def __init__(self, coordinate_id: int, row: Row, column: Column):
-        if coordinate_id < 1:
-            print("Coordinate id must be greater than zero")
+    def __init__(self, row: int, column: int):
+        if row < 0 or row >= ROW_SIZE:
+            raise ValueError("A row must be between 0 and 7 inclusive.")
             return
-        if row is None:
-            print("A coordinate cannot have a null row")
+        if column < 0 or column >= COLUMN_SIZE:
+            raise ValueError("A column must be between 0 and 7 inclusive.")
             return
-        if column is None:
-            print("A coordinate cannot have a null column")
-            return
-        self._id = id
+
         self._row = row
         self._column = column
 
     @property
-    def id(self):
-        return self._id
-
-    @property
-    def row(self) -> Row:
+    def row(self) -> int:
         return self._row
 
     @property
-    def column(self) -> Column:
+    def column(self) -> int:
         return self._column
 
-    def name(self) -> str:
-        return self._column.name.capitalize() + "-" + str(self._row.id)
 
     def __eq__(self, other):
         if other is self:
@@ -81,8 +72,8 @@ class Coordinate:
 
 
     def __str__(self):
-        return self.name()
+        return f"[{self._column}, {self._row}]"
 
 
     def shift(self, delta: Delta) -> 'Coordinate':
-        return Coordinate(row=self.row.id + delta.y, column=self.column.index + delta.x)
+        return Coordinate(row=self._row + delta.y, column=self._column+ delta.x)

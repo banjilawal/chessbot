@@ -14,15 +14,13 @@ if TYPE_CHECKING:
     from chess.game.record.capture_record import CaptureRecord
 
 
-
-
 class Board:
     _chess_pieces: List[Piece]
     _killed_pieces: List[Piece]
-    _grid: List[Square]
+    _grid: List[List[Square]]
 
 
-    def __init__(self, grid: List[Square]):
+    def __init__(self, grid: List[List[Square]]):
         self._chess_pieces = []
         self._killed_pieces = []
         self._grid = grid
@@ -34,7 +32,7 @@ class Board:
 
     def get_chess_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[Piece]:
         if not self.coordinate_is_valid(coordinate):
-            print("The coordinate is not valid. Cannot find chess piece.")
+            raise ValueError("The coordinate is not valid. Cannot find chess piece.")
             return None
         return self.grid[coordinate.row][coordinate.column].occupant
 
@@ -48,7 +46,7 @@ class Board:
 
 
     @property
-    def grid(self) -> List[Square]:
+    def grid(self) -> List[List[Square]]:
         return self._grid
 
 
@@ -71,10 +69,10 @@ class Board:
     def remove_chess_piece_from_board(self, chess_piece_id: int) -> Piece:
         chess_piece = self.get_chess_piece_by_id(chess_piece_id)
         if chess_piece is None:
-            print("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent piece.")
+            raise ValueError("No chess piece with id", chess_piece_id, "is on the board. cannot remove a non-existent piece.")
             return None
         if chess_piece.coordinate is None:
-            print("Cannot remove a chess piece from an empty square.")
+            raise ValueError("Cannot remove a chess piece from an empty square.")
             return None
 
         square = self.grid[chess_piece.coordinate.row][chess_piece.coordinate.column]
@@ -92,16 +90,16 @@ class Board:
         if self.grid[coordinate.row][coordinate.column].occupant is not None:
             raise ValueError("The chess piece cannot be added. The destination square is already occupied.")
 
-        self.process_occupation(chess_piece, coordinate)
+        self.capture_square(chess_piece, coordinate)
 
 
     def capture_square(self, chess_piece: Piece, coordinate: Coordinate) -> TurnRecord:
         if chess_piece is None:
-            print("Captor cannot be null. Aborting capture process.")
-            return None
+            raise ValueError("Captor cannot be null. Aborting capture process.")
+            # return None
         if not self.coordinate_is_valid(coordinate):
-            print("The destination coordinate is out of range. Aborting capture process.")
-            return None
+            raise ValueError("The destination coordinate is out of range. Aborting capture process.")
+            # return None
 
         turn_record = None
         capture_record = None
@@ -130,13 +128,11 @@ class Board:
             self._killed_pieces.append(prisoner)
 
         if current_occupant is None:
-            new_occupant = self.remove_chess_piece_from_board(chess_piece.id)
-            square.occupant = new_occupant
-            new_occupant.coordinate = square.coordinate
+            square.occupant = chess_piece
+            chess_piece.coordinate = square.coordinate
             turn_record = TurnRecord(
-                record_id=id_emitter.turn_record_id_counter(),
-                moved_piece=new_occupant,
-                departure_coordinate=previous_coordinate,
+                record_id=id_emitter.turn_record_id,
+                moved_piece=chess_piece,
                 arrival_coordinate=coordinate,
                 capture_record=capture_record
             )
@@ -155,3 +151,11 @@ class Board:
             print("The coordinate is not valid. Its column is out of range")
             return False
         return True
+
+    def __str__(self) -> str:
+        board_str = ""
+        for row_index in reversed(range(len(self._grid))):  # start from top row (8) to bottom (1)
+            row_squares = self._grid[row_index]
+            row_str = " ".join(f"[{square.name}]" for square in row_squares)
+            board_str += row_str + "\n"
+        return board_str.strip()

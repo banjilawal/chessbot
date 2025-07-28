@@ -1,16 +1,16 @@
 from typing import Optional
 
+from chess.common.game_color import GameColor
 from chess.piece.piece import Piece
 from chess.game.record.capture_record import CaptureRecord
 from chess.game.record.promotion_record import PromotionRecord
 from chess.geometry.coordinate import Coordinate
-from podscape.constants import PodscapeColor
 
 
 class TurnRecord:
     _id: int
     _moved_piece_id: int
-    _mover_color: PodscapeColor
+    _moved_piece: Piece
     _departure_coordinate: Coordinate
     _arrival_coordinate: Coordinate
     _capture_record: Optional[CaptureRecord]
@@ -20,28 +20,22 @@ class TurnRecord:
             self,
             record_id: int,
             moved_piece: Piece,
-            departure_coordinate: Coordinate,
             arrival_coordinate: Coordinate,
             capture_record: CaptureRecord=None,
             promotion_record: PromotionRecord=None
      ):
         if moved_piece is None:
-            print("moved_piece cannot be null or empty.")
-            return
-        if departure_coordinate is None:
-            print("departure_coordinate cannot be null or empty.")
-            return
+           raise  ValueError("moved_piece cannot be null or empty.")
+            # return
         if arrival_coordinate is None:
-            print("arrival_coordinate cannot be null or empty.")
-            return
+            raise ValueError("arrival_coordinate cannot be null or empty.")
+            # return
         if capture_record is not None and capture_record.captor_id != moved_piece.id:
-            print("mismatch between mover and captor id.")
-            return
+            raise ValueError("mismatch between mover and captor id.")
+            # return
 
         self._id = record_id
         self._moved_piece_id = moved_piece.id
-        self._mover_color = moved_piece.team.color
-        self._departure_coordinate = departure_coordinate
         self._arrival_coordinate = arrival_coordinate
         self._capture_record = capture_record
 
@@ -60,7 +54,7 @@ class TurnRecord:
         return self._moved_piece_id
 
     @property
-    def mover_color(self) -> PodscapeColor:
+    def mover_color(self) -> GameColor:
         return self._mover_color
 
     @property
