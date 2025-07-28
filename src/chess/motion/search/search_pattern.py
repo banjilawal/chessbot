@@ -4,7 +4,7 @@ from typing import Dict
 
 from chess.geometry.board import Board
 from chess.piece.piece import Piece
-from chess.motion.logic.diagonal_pattern import GeometryPattern
+from chess.motion.logic.diagonal_pattern import Reachable
 
 # if TYPE_CHECKING:
 #     from chess.board.board import Board
@@ -14,7 +14,7 @@ class SearchPattern(ABC):
     _motion_definitions: {}
     """ A SearchPattern is a collection of MoveRules that logic how a piece can move."""
 
-    def __init__(self, motion_definitions: list[GeometryPattern]):
+    def __init__(self, motion_definitions: list[Reachable]):
         self._motion_definitions = {}
         for definition in motion_definitions:
             if definition.id not in self._motion_definitions:
@@ -22,7 +22,7 @@ class SearchPattern(ABC):
 
 
     @property
-    def motion_definitions(self) -> Dict[int, GeometryPattern]:
+    def motion_definitions(self) -> Dict[int, Reachable]:
         return self._motion_definitions.copy()
 
     @staticmethod

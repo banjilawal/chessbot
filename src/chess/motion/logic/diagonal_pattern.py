@@ -1,8 +1,8 @@
 from chess.geometry.coordinate import Coordinate
-from chess.motion.logic.geomtery_pattern import GeometryPattern
+from chess.motion.logic.reachable import Reachable
 
 
-class DiagonalPattern(GeometryPattern):
+class DiagonalPattern(Reachable):
     """
     A DiagonalPattern is a rule that defines a diagonal motion. Diagonal motion is:
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1

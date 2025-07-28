@@ -4,7 +4,7 @@ from chess.geometry.board import Board
 
 class PawnAttackPattern:
     """
-    Refactored PawnAttackPattern. Like the other pawn patern this cannot be in the GeometryPattern
+    Refactored PawnAttackPattern. Like the other pawn patern this cannot be in the Reachable
     class hierarchy because it requres the pawn and board. The pawn is the source of truth for
     the originating coordinate and the establishing if an occupant is an enemy.
     """

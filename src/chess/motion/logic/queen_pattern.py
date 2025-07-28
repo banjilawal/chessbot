@@ -1,8 +1,8 @@
 from chess.motion.logic.castle_reachable import CastleReachable
 from chess.motion.logic.diagonal_pattern import DiagonalPattern
-from chess.motion.logic.geomtery_pattern import GeometryPattern
+from chess.motion.logic.reachable import Reachable
 
-class QueenPattern(GeometryPattern):
+class QueenPattern(Reachable):
 
     @staticmethod
     def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:

@@ -1,8 +1,8 @@
-from chess.motion.logic.geomtery_pattern import GeometryPattern
+from chess.motion.logic.reachable import Reachable
 from chess.motion.logic.definition_category import DefinitionCategory
 
 
-class VerticalPatern(GeometryPattern):
+class VerticalPatern(Reachable):
     """Y changes while X stays the same."""
 
     @staticmethod

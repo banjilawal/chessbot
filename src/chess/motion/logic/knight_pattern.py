@@ -1,8 +1,8 @@
 from chess.geometry.coordinate import Coordinate
-from chess.motion.logic.geomtery_pattern import GeometryPattern
+from chess.motion.logic.reachable import Reachable
 
 
-class KnightPattern(GeometryPattern):
+class KnightPattern(Reachable):
 
     @staticmethod
     def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:

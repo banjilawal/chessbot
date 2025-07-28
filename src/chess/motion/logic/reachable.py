@@ -3,7 +3,8 @@ from abc import ABC, abstractmethod
 from chess.geometry.coordinate import Coordinate
 
 
-class GeometryPattern(ABC):
+class Reachable(ABC):
+
     @staticmethod
     @abstractmethod
     def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:

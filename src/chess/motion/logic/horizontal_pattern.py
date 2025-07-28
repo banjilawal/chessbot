@@ -1,9 +1,9 @@
 from chess.geometry.coordinate import Coordinate
-from chess.motion.logic.geomtery_pattern import GeometryPattern
+from chess.motion.logic.reachable import Reachable
 from chess.motion.logic.definition_category import DefinitionCategory
 
 
-class HorizontalPattern(GeometryPattern):
+class HorizontalPattern(Reachable):
     """X changes while Y stays the same."""
 
     @staticmethod
