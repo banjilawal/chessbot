@@ -6,6 +6,8 @@ def main():
 
     board = Board(grid=GridBuilder.build())
     ranks = RankFactory.run_factory()
+    for rank in ranks:
+        print(rank)
 
 
 

@@ -8,7 +8,7 @@ from chess.rank.knight import Knight
 from chess.rank.pawn import Pawn
 from chess.rank.queen import Queen
 from chess.rank.rank import Rank
-from chess.rank.rook import Rook
+from chess.rank.castle import Castle
 
 
 class RankFactory:
@@ -30,8 +30,8 @@ class RankFactory:
             return Knight(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
         if config == RankConfig.BISHOP:
             return Bishop(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
-        if  config == RankConfig.ROOK:
-            return Rook(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
+        if  config == RankConfig.CASTLE:
+            return Castle(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
         if config == RankConfig.QUEEN:
             return Queen(name=config.name, acronym=config.acronym, capture_value=config.capture_value, territories=config.territories)
         raise ValueError(f"Invalid rank config: {config}")

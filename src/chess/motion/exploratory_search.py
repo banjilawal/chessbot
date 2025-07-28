@@ -49,7 +49,7 @@
 #                         destinations.append(dest)
 #
 #         else:
-#             # Rook, Bishop, Queen, etc.
+#             # Castle, Bishop, Queen, etc.
 #             walk_method = Walk.bishop_walk if piece.rank.is_bishop() else \
 #                           Walk.castle_walk if piece.rank.is_rook() else \
 #                           Walk.queen_walk if piece.rank.is_queen() else None

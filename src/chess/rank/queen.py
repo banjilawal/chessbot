@@ -9,20 +9,20 @@ from chess.rank.rank import Rank
 
 
 class Queen(Rank):
+
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
-        super().__init__(name, acronym, capture_value, territories)
+        super().__init__(name, acronym, QueenMotion(), capture_value, territories)
+
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
-        pass
+        origin = piece.current_position()
+        if origin is None:
+            raise ValueError("Bishop has no known current position.")
+        return self.motion.move(self, origin, destination, board)
 
-    def walk(self) -> List[Coordinate]:
-        pass
 
-    def search_pattern(self) -> List[Coordinate]:
-        pass
-
-    def explore(self, piece: Piece, board: Board):
-        pass
-
-    def select_destination(self):
-        pass
+    def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
+        origin = piece.current_position()
+        if origin is None:
+            return []
+        return self.motion.explore(self, origin, board)

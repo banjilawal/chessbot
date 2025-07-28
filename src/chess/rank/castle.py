@@ -8,10 +8,10 @@ from chess.game.record.turn_record import TurnRecord
 from chess.rank.rank import Rank
 
 
-class King(Rank):
+class Castle(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
-        super().__init__(name, acronym, KingMotion(), capture_value, territories)
+        super().__init__(name, acronym, CastleMotion(), capture_value, territories)
 
 
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:

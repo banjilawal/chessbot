@@ -20,7 +20,7 @@ class RankConfig(Enum):
     PAWN = ("Pawn", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
     KNIGHT = ("Knight", "N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
     BISHOP = ("Bishop", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
-    ROOK = ("Rook", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
+    CASTLE = ("Castle", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
     QUEEN = (
         "Queen", "Q", 1, 9,
          [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]

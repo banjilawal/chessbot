@@ -25,7 +25,7 @@ class GridBuilder:
                 coordinate = Coordinate(coordinate_id=id_emitter.coordinate_id, row=row, column=column)
                 # print("built coord:", coordinate.name())
                 square = Square(id_emitter.square_id, coordinate)
-                print("built: square", square.id, "coord:",coordinate.name() )
+                # print("built: square", square.id, "coord:",coordinate.name() )
                 squares.append(square)
                 ascii_value += 1
         return squares
