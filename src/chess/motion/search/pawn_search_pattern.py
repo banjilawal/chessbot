@@ -14,7 +14,7 @@ class PawnSearchPattern(SearchPattern):
     def search(pawn: Pawn, board: Board) -> List[Coordinate]:
         destinations = []
         origin = pawn.current_position()
-        if origin is None or not SearchPattern.check_basic_conditions(pawn, board):
+        if origin is None or not SearchPattern.validate_search_parameters(pawn, board):
             return destinations
 
         # Define quadrants to check for pawn moves:

@@ -1,11 +1,10 @@
 
 from abc import ABC, abstractmethod
-from typing import Dict
+from typing import Dict, List
 
 from chess.geometry.board import Board
 from chess.geometry.coordinate import Coordinate
 from chess.piece.piece import Piece
-from chess.geometry.diagonal import Reachable
 
 # if TYPE_CHECKING:
 #     from chess.board.board import Board
@@ -15,35 +14,31 @@ class SearchPattern(ABC):
     _motion_definitions: {}
     """ A SearchPattern is a collection of MoveRules that logic how a piece can move."""
 
-    def __init__(self, motion_definitions: list[Reachable]):
-        self._motion_definitions = {}
-        for definition in motion_definitions:
-            if definition.id not in self._motion_definitions:
-                self._motion_definitions[definition.id] = definition
+    def __init__(self):
+        pass
 
 
-    @property
-    def motion_definitions(self) -> Dict[int, Reachable]:
-        return self._motion_definitions.copy()
+    def search(self, piece: Piece, board: Board) -> list[Coordinate]:
+        if not self.validate_search_parameters(piece, board):
+            return []
+        return self._perform_search(piece, board)
 
-    @staticmethod
-    def check_basic_conditions(self, piece: Piece, board: Board) -> bool:
+
+    def validate_search_parameters(self, piece: Piece, board: Board) -> bool:
         if piece is None:
-            print("[Warning] Mover cannot be None. It cannot move.")
-            return False
-        if piece.position_history is None or len(piece.position_history) == 0:
-            print("[Warning] piece has not coordinate. Cannot move.")
-            return False
+            raise ValueError("[Warning] Cannot search for places with a null piece. Destination search is impossible.")
+        if piece.current_position() is None:
+            raise ValueError("Cannot search for destinations if the piece does not have coordinate on the board.")
         if board is None:
-            print("[Warning] PodBoard cannot be None. Cannot move.")
-            return False
+            raise ValueError("Cannot search for destinations when the board is null.")
         return True
 
-    @staticmethod
     @abstractmethod
-    def search(self, piece: Piece, board: Board) -> list[Coordinate]:
-        """Return a list of valid destinations from the given origin."""
+    def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
+        """Concrete classes implement the actual search logic."""
         pass
+
+
 
 
 

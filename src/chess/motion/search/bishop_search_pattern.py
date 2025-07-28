@@ -10,12 +10,9 @@ from chess.piece.piece import Piece
 
 class BishopSearchPattern(SearchPattern):
     def __init__(self):
-        super().__init__([])
-    @staticmethod
-    def search(piece: Piece, board: Board) -> List[Coordinate]:
-        if not SearchPattern.check_basic_conditions(piece, board):
-            return []
+        super().__init__()
 
+    def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
         origin = piece.current_position()
         territories: List[Quadrant] = piece.rank.territories
         destinations: List[Coordinate] = []

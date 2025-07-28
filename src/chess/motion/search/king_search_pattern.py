@@ -11,7 +11,7 @@ class KingSearchPattern(SearchPattern):
 
     @staticmethod
     def search(piece: Piece, board: Board) -> List[Coordinate]:
-        if not SearchPattern.check_basic_conditions(piece, board):
+        if not SearchPattern.validate_search_parameters(piece, board):
             return []
 
         origin = piece.current_position()

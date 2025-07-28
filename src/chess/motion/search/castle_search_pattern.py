@@ -13,7 +13,7 @@ class CastleSearchPattern(SearchPattern):
     @staticmethod
     def search(rank, origin: Coordinate, board: Board) -> list[Coordinate]:
         destinations = []
-        if not SearchPattern.check_basic_conditions(rank, origin, board):
+        if not SearchPattern.validate_search_parameters(rank, origin, board):
             return destinations
 
         for quadrant in [Quadrant.N, Quadrant.E, Quadrant.S, Quadrant.W]:
