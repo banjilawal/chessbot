@@ -12,14 +12,22 @@ from chess.game.record.turn_record import TurnRecord
 class Rank(ABC):
     _name: str
     _acronym: str
+    _motion: Motion
     _capture_value: int
     _members: List[Piece]
     _territories: List[Quadrant]
-    _motion: Motion
 
-    def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
+    def __init__(
+        self, 
+        name: str, 
+        acronym: str, 
+        motion: Motion, 
+        capture_value: int, 
+        territories: List[Quadrant]
+    ):
         self._name = name
         self._members = []
+        self._motion = motion
         self._acronym = acronym
         self._capture_value = capture_value
         self._territories = territories
@@ -33,6 +41,10 @@ class Rank(ABC):
     @property
     def acronym(self) -> str:
         return self._acronym
+    
+    @@property
+    def motion(self):
+        return 
 
 
     @property
@@ -72,20 +84,11 @@ class Rank(ABC):
     def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
         pass
 
-    @abstractmethod
-    def walk(self) -> List[Coordinate]:
-        pass
-
-    @abstractmethod
-    def search_pattern(self) -> List[Coordinate]:
-        pass
 
     @abstractmethod
     def explore(self, piece: Piece, board: Board): List[Coordinate]
 
-    @abstractmethod
-    def select_destination(self):
-        pass
+
 
 
 class PromotableRank(Rank):

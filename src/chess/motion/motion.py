@@ -63,7 +63,7 @@ class Motion(ABC):
         raise NotImplementedError("Subclasses must implement _perform_move.")
 
     @abstractmethod
-    def _perform_explore(
+    def _perform_exploration(
         self,
         rank: Rank,
         origin: Coordinate,
