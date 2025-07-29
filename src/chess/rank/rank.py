@@ -4,7 +4,7 @@ from typing import List, Optional
 from chess.geometry.board import Board
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.motion.motion import Motion
+from chess.motion.motion_service import Motion
 from chess.piece.piece import Piece, Label
 from chess.game.record.turn_record import TurnRecord
 

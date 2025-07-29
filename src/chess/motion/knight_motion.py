@@ -5,7 +5,7 @@ from chess.geometry.board import Board
 from chess.game.record.turn_record import TurnRecord
 from chess.motion.logic.knight_reachable import KnightReachable
 
-from chess.motion.motion import Motion
+from chess.motion.motion_service import Motion
 from chess.motion.search.knight_search_pattern import KnightSearchPattern
 from chess.rank.rank import Rank
 
