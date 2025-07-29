@@ -38,17 +38,6 @@ class Board:
         return self.grid[coordinate.row][coordinate.column].occupant
 
 
-    def get_piece_by_id(self, target_id: int) -> Optional[Piece]:
-        print("Searching for chess piece with id ", target_id, " on the board.")
-        for chess_piece in self._pieces:
-            print("Checking if ", chess_piece.name, " is mover with id ", target_id)
-            print("checking against ", chess_piece.id, " and ", target_id, "")
-            if chess_piece.id == target_id:
-
-                return chess_piece
-        return None
-
-
     @property
     def grid(self) -> List[List[Square]]:
         return self._grid
@@ -71,22 +60,6 @@ class Board:
                 print(f"Occupied square name:{square} occupant label:{occupant.label}")
                 occupied_squares.append(square)
         return occupied_squares
-
-
-    def remove_piece_from_board(self, piece_id: int) -> Piece:
-        piece = self.get_piece_by_id(piece_id)
-        if piece is None:
-            raise ValueError("No chess piece with id", piece_id, "is on the board. cannot remove a non-existent piece.")
-        if piece.coordinate is None:
-            raise ValueError("Cannot remove a chess piece from an empty square.")
-
-        print(f"Found piece with id {piece.id} at coord {piece.coordinate} to remove.")
-        square = self.grid[piece.coordinate.row][piece.coordinate.column]
-        print(f"the square at {piece.coordinate} is {square}.")
-        square.occupant = None
-        piece.coordinate = None
-        self.pieces.remove(piece)
-        return piece
 
 
     def add_piece_to_board(self, chess_piece: Piece, coordinate: Coordinate) -> None:
