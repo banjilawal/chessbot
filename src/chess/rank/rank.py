@@ -85,7 +85,7 @@ class Rank(ABC):
         if piece is None:
             raise ValueError("Cannot move a null piece")
         if piece.current_position() is None:
-            raise ValueError(f"{piece.label} when its coordinate is null. It's not even on the board.")
+            raise ValueError(f"{piece.label} when its coord is null. It's not even on the board.")
         if board is None:
             raise ValueError(f"{piece.label} cannot move without a board.")
         if destination is None:

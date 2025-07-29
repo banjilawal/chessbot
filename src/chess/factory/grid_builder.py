@@ -26,9 +26,9 @@ class GridBuilder:
             for j in range(COLUMN_SIZE):
                 name = chr(ascii_value) + str(i + 1)
                 coordinate = Coordinate(row=i, column=j)
-                # print("built coord:", coordinate.name())
+                # print("built coord:", coord.name())
                 square = Square(id_emitter.square_id, name, coordinate)
-                # print("built: square", square.id, "coord:",coordinate.name() )
+                # print("built: square", square.id, "coord:",coord.name() )
                 row_squares.append(square)
                 ascii_value += 1
             grid.append(row_squares)

@@ -45,7 +45,7 @@ class BishopMotion(Motion):
 #         if piece is None:
 #             raise ValueError("Bishop cannot move without a piece.")
 #         if piece.current_position() is None:
-#             raise ValueError(f"Bishop cannot move {piece} when its coordinate is null. It's not even on the board.")
+#             raise ValueError(f"Bishop cannot move {piece} when its coord is null. It's not even on the board.")
 #         if board is None:
 #             raise ValueError("Bishop cannot move without a board.")
 #         if destination is None:
@@ -62,7 +62,7 @@ class BishopMotion(Motion):
 #         if piece is None:
 #             raise ValueError("Bishop cannot explore without a piece.")
 #         if piece.current_position() is None:
-#             raise ValueError(f"Bishop cannot explore {piece} when its coordinate is null.")
+#             raise ValueError(f"Bishop cannot explore {piece} when its coord is null.")
 #         if board is None:
 #             raise ValueError("Bishop cannot explore without a board.")
 #

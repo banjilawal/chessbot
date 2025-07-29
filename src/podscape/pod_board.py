@@ -177,7 +177,7 @@ class PodBoard:
 
     def can_entity_move_to_cells(self, entity: GridEntity, new_top_left_coordinate: GridCoordinate) -> bool:
         if entity is None or new_top_left_coordinate is None:
-            raise ValueError("Entity and coordinate must not be None.")
+            raise ValueError("Entity and coord must not be None.")
 
         if (new_top_left_coordinate.row < 0 or new_top_left_coordinate.column < 0 or
                 new_top_left_coordinate.row + entity.dimension.height > self.dimension.height or

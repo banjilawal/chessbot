@@ -30,9 +30,9 @@ class Board:
 
 
     def get_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[Piece]:
-        print("Checking for coordinate", coordinate, "")
+        print("Checking for coord", coordinate, "")
         if not self.coordinate_is_valid(coordinate):
-            raise ValueError("The coordinate is not valid. Cannot find chess piece.")
+            raise ValueError("The coord is not valid. Cannot find chess piece.")
             return None
         square = self._grid[coordinate.row][coordinate.column]
         print("The square at ", coordinate, " is ", square, " it contains ", square.occupant, "")
@@ -81,7 +81,7 @@ class Board:
         if piece.coordinate is None:
             raise ValueError("Cannot remove a chess piece from an empty square.")
 
-        print(f"Found piece with id {piece.id} at coordinate {piece.coordinate} to remove.")
+        print(f"Found piece with id {piece.id} at coord {piece.coordinate} to remove.")
         square = self.grid[piece.coordinate.row][piece.coordinate.column]
         print(f"the square at {piece.coordinate} is {square}.")
         square.occupant = None
@@ -94,7 +94,7 @@ class Board:
         if chess_piece is None:
             raise ValueError("Cannot add a null chess piece")
         if not self.coordinate_is_valid(coordinate):
-            raise ValueError("THe chess piece cannot be addd. The destination coordinate is out of range.")
+            raise ValueError("THe chess piece cannot be addd. The destination coord is out of range.")
         if self.grid[coordinate.row][coordinate.column].occupant is not None:
             raise ValueError("The chess piece cannot be added. The destination square is already occupied. by ", gt)
 
@@ -107,7 +107,7 @@ class Board:
             raise ValueError("Captor cannot be null. Aborting capture process.")
             # return None
         if not self.coordinate_is_valid(coordinate):
-            raise ValueError("The destination coordinate is out of range. Aborting capture process.")
+            raise ValueError("The destination coord is out of range. Aborting capture process.")
             # return None
 
         turn_record = None
@@ -134,8 +134,8 @@ class Board:
 
             # captor = self.remove_piece_from_board(piece)
             square.occupant = captor
-            # captor.coordinate = square.coordinate
-            # captor.add_position(coordinate)
+            # captor.coord = square.coord
+            # captor.add_position(coord)
             self._killed_pieces.append(prisoner)
 
         if current_occupant is None:
@@ -147,13 +147,13 @@ class Board:
 
     def coordinate_is_valid(self, coordinate: Coordinate):
         if coordinate is None:
-            print("A null coordinate is not valid")
+            print("A null coord is not valid")
             return False
-        print("chekcing coordinate ", coordinate, " for validity.")
+        print("chekcing coord ", coordinate, " for validity.")
         if coordinate.row < 0 or coordinate.row >= len(self._grid):
-            raise ValueError("The coordinate is not valid. Its row is out of range")
+            raise ValueError("The coord is not valid. Its row is out of range")
         if coordinate.column < 0 or coordinate.column >= len(self._grid[0]):
-            print("The coordinate is not valid. Its column is out of range")
+            print("The coord is not valid. Its column is out of range")
             return False
         return True
 

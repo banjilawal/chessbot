@@ -143,7 +143,7 @@ class Piece:
     # === Stack operations ===
     def add_position(self, coordinate: Coordinate):
         if coordinate is None:
-            raise ValueError("coordinate cannot be null.")
+            raise ValueError("coord cannot be null.")
         print("current position history")
         for c in self._position_history:
             print(c)

@@ -237,7 +237,7 @@ class GameDisplay:
     #     try:
     #         new_coord = GridCoordinate(row=new_row, column=new_col)
     #     except ValueError as e:
-    #         print(f"Invalid coordinate: {e}")
+    #         print(f"Invalid coord: {e}")
     #         return
     #
     #     # DEBUG PRINT - RIGHT BEFORE VALIDATION CHECK
