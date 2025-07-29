@@ -1,12 +1,9 @@
 from typing import List, TYPE_CHECKING
 
-from pygame.examples import grid
-
 from chess.factory.emit import id_emitter
 
 from chess.geometry.column import Column
 from chess.geometry.coordinate import Coordinate
-from chess.geometry.row import Row
 from chess.geometry.square import Square
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
@@ -20,7 +17,6 @@ class GridBuilder:
 
         for i in range(ROW_SIZE):
             row_squares: List[Square] = []
-            row = Row(row_id=(i + 1))
             ascii_value = ord('A')
 
             for j in range(COLUMN_SIZE):
