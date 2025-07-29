@@ -1,19 +1,11 @@
 # src/chess/validator/piece_validator.py
 
-from chess.piece.piece import Piece
-from chess.piece.mobility_status import MobilityStatus
-from chess.rank.king import King
-from chess.rank.pawn import Pawn
-from chess.transaction.transaction_result import TransactionResult
-from chess.transaction.status_code import StatusCode
-
 
 # src/chess/validator/piece_validator.py
 
 from chess.piece.piece import Piece
 from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.transaction_result import TransactionResult
-from chess.transaction.status_code import StatusCode
 
 
 class PieceValidator:

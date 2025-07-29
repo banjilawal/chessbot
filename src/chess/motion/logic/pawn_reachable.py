@@ -4,7 +4,7 @@ from chess.geometry.diagonal import Diagonal
 from chess.geometry.vertical import Vertical
 from chess.motion.logic.reachable import Reachable
 from chess.piece.piece import Piece
-from chess.rank.pawn import Pawn
+from chess.rank.promotable.pawn import Pawn
 
 
 class PawnReachable(Reachable):

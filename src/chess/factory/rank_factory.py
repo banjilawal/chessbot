@@ -2,9 +2,9 @@ from typing import List
 
 from chess.rank.rank_config import RankConfig
 from chess.rank.bishop import Bishop
-from chess.rank.king import King
+from chess.rank.promotable.king import King
 from chess.rank.knight import Knight
-from chess.rank.pawn import Pawn
+from chess.rank.promotable.pawn import Pawn
 from chess.rank.queen import Queen
 from chess.rank.rank import Rank
 from chess.rank.castle import Castle

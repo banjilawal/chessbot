@@ -111,16 +111,3 @@ class Rank(ABC):
         return self.motion.explore(piece, board)
 
 
-
-class PromotableRank(Rank):
-    _previous_rank: Optional[Rank] = None
-
-    def __init__(self, name: str, acronym: str, motion_service: MotionService, capture_value: int, territories: List[Quadrant], previous_rank: Optional[Rank] = None):
-        super().__init__(name, acronym, motion_service, capture_value, territories)
-        self._previous_rank = previous_rank
-
-    def is_promoted(self) -> bool:
-        return self._previous_rank is not None
-
-    @abstractmethod
-    def promote(self, piece: 'Piece') -> TurnRecord:
