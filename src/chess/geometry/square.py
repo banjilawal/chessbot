@@ -3,6 +3,8 @@ from typing import Optional, TYPE_CHECKING
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.occupation_status import OccupationStatus
 from chess.piece.captivity_status import CaptivityStatus
+from chess.transaction.failure import Failure
+from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
 
 if TYPE_CHECKING:
@@ -53,6 +55,24 @@ class Square:
     def status(self) -> OccupationStatus:
         return self._status
 
+    def occupy(self, piece: 'Piece') -> TransactionResult:
+        method = "Square.occupy"
+
+        if self._occupant == piece:
+            print(f"{piece.label} is already occupying {self._coordinate}")
+            return TransactionResult(method, StatusCode.SUCCESS)
+
+        if self._status == OccupationStatus.BLOCKED:
+            return TransactionResult(method, Failure(f"Square is blocked by friendly {self._occupant.label}"))
+
+        if self._occupant is None:
+            return self._handle_occupation(OccupationStatus.IS_VACANT, piece)
+
+        if piece.is_enemy(self._occupant):
+            return self._handle_occupation(OccupationStatus.HAS_ENEMY, piece)
+
+        return TransactionResult(method, Failure(f"Occupation failed after mutation"))
+
 
     @occupant.setter
     def occupant(self, piece: Optional['Piece']):
@@ -66,21 +86,6 @@ class Square:
             self._handle_occupation(self, OccupationStatus.HAS_ENEMY, piece)
         print(f"{self._coordinate} is occupied by friendly {current_occupant.label}")
 
-        #
-        #
-        # if current_occupant is not None:
-        #     print(f"Current occupant {current_occupant} has {current_occupant.current_position} as their address.")
-        #     self._occupant = None
-        #     print(f"my occupant is {self._occupant} now.")
-        #
-        # if piece is not None:
-        #     self._occupant = piece;
-        #     print(f"{self._occupant} is my new occupant.")
-        #     # if self.coord not in piece.position_history:
-        #     piece.add_position(self._coordinate)
-        #
-        # if piece is None:
-        #     self._occupant = None
 
 
     def __eq__(self, other):
@@ -110,7 +115,4 @@ class Square:
 
         self._occupant = piece
         piece.add_position(self._coordinate)
-        if(self._occupant == piece and self in piece.position_history):
-            return TransactionResult.SUCCESS
-        else return TransactionResult(faiur)
 
