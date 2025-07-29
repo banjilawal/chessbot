@@ -1,16 +1,14 @@
-from typing import Optional, List
+from typing import List
 
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.board import Board
-from chess.game.record.turn_record import TurnRecord
 from chess.motion.logic.knight_reachable import KnightReachable
 
-from chess.motion.motion_service import Motion
+from chess.motion.service.motion_service import MotionService
 from chess.motion.search.knight_search_pattern import KnightSearchPattern
-from chess.rank.rank import Rank
 
 
-class KnightMotion(Motion):
+class KnightMotionService(MotionService):
     def __init__(self):
         super().__init__(logic=KnightReachable(), search_pattern=KnightSearchPattern())
 

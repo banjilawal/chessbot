@@ -8,6 +8,6 @@ class Knight(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
 
-        from chess.motion.knight_motion import KnightMotion
-        super().__init__(name, acronym, KnightMotion(), capture_value, territories)
+        from chess.motion.knight_motion import KnightMotionService
+        super().__init__(name, acronym, KnightMotionService(), capture_value, territories)
 

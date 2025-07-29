@@ -1,16 +1,14 @@
-from typing import Optional, List
+from typing import List
 
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.board import Board
-from chess.game.record.turn_record import TurnRecord
 
 from chess.motion.logic.pawn_reachable import PawnReachable
-from chess.motion.motion_service import Motion
+from chess.motion.service.motion_service import MotionService
 from chess.motion.search.pawn_search_pattern import PawnSearchPattern
-from chess.rank.rank import Rank
 
 
-class PawnMotion(Motion):
+class PawnMotionService(MotionService):
     def __init__(self):
         super().__init__(logic=PawnReachable(), search_pattern=PawnSearchPattern())
 

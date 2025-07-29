@@ -8,5 +8,5 @@ class Queen(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
 
-        from chess.motion.queen_motion import QueenMotion
-        super().__init__(name, acronym, QueenMotion(), capture_value, territories)
+        from chess.motion.queen_motion import QueenMotionService
+        super().__init__(name, acronym, QueenMotionService(), capture_value, territories)

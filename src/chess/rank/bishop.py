@@ -11,6 +11,6 @@ class Bishop(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List['Quadrant']):
 
-        from chess.motion.bishop_motion import BishopMotion
-        super().__init__(name, acronym, BishopMotion(), capture_value, territories)
+        from chess.motion.bishop_motion import BishopMotionService
+        super().__init__(name, acronym, BishopMotionService(), capture_value, territories)
 

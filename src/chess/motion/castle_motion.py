@@ -1,18 +1,16 @@
-from typing import Optional, List
+from typing import List
 
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.board import Board
-from chess.game.record.turn_record import TurnRecord
 from chess.motion.logic.castle_reachable import CastleReachable
 
-from chess.motion.motion_service import Motion
+from chess.motion.service.motion_service import MotionService
 from chess.motion.search.castle_search_pattern import CastleSearchPattern
-from chess.rank.rank import Rank
 
 
-class CastleMotion(Motion):
+class CastleMotionService(MotionService):
 
-    """Motion implementation for bishop pieces."""
+    """MotionService implementation for bishop pieces."""
 
     def __init__(self):
         super().__init__(logic=CastleReachable(), search_pattern=CastleSearchPattern())

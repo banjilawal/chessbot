@@ -12,13 +12,13 @@ if TYPE_CHECKING:
     from chess.rank.rank import Rank
 
 
-class Motion(ABC):
+class MotionService(ABC):
     _logic: Reachable
     _search_pattern: SearchPattern
 
     def __init__(self, logic: Reachable, search_pattern: SearchPattern):
         if logic is None:
-            raise ValueError("Motion logic cannot be None.")
+            raise ValueError("MotionService logic cannot be None.")
         if search_pattern is None:
             raise ValueError("Search pattern cannot be None.")
 

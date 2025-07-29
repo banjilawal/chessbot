@@ -1,11 +1,11 @@
 from typing import List
 
-from chess.motion.bishop_motion import BishopMotion
-from chess.motion.castle_motion import CastleMotion
-from chess.motion.king_motion import KingMotion
-from chess.motion.knight_motion import KnightMotion
-from chess.motion.pawn_motion import PawnMotion
-from chess.motion.queen_motion import QueenMotion
+from chess.motion.bishop_motion import BishopMotionService
+from chess.motion.castle_motion import CastleMotionService
+from chess.motion.king_motion import KingMotionService
+from chess.motion.knight_motion import KnightMotionService
+from chess.motion.pawn_motion import PawnMotionService
+from chess.motion.queen_motion import QueenMotionService
 from chess.rank.rank_config import RankConfig
 from chess.rank.bishop import Bishop
 from chess.rank.king import King
@@ -31,7 +31,7 @@ class RankFactory:
             return King(
                 name=config.name,
                 acronym=config.acronym,
-                # motion=KingMotion,
+                # motion=KingMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -39,7 +39,7 @@ class RankFactory:
             return Pawn(
                 name=config.name,
                 acronym=config.acronym,
-                # motion=PawnMotion,
+                # motion=PawnMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -47,7 +47,7 @@ class RankFactory:
             return Knight(
                 name=config.name,
                 acronym=config.acronym,
-                # motion=KnightMotion,
+                # motion=KnightMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -55,7 +55,7 @@ class RankFactory:
             return Bishop(
                 name=config.name,
                 acronym=config.acronym,
-                # motion=BishopMotion,
+                # motion=BishopMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -63,7 +63,7 @@ class RankFactory:
             return Castle(
                 name=config.name,
                 acronym=config.acronym,
-                # motion=CastleMotion,
+                # motion=CastleMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -71,7 +71,7 @@ class RankFactory:
             return Queen(
                 name=config.name,
                 acronym=config.acronym,
-                # motion=QueenMotion,
+                # motion=QueenMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )

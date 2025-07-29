@@ -1,18 +1,18 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import List
 
 from chess.geometry.board import Board
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.motion.motion_service import Motion
-from chess.piece.piece import Piece, Label
+from chess.motion.service.motion_service import MotionService
+from chess.piece.piece import Piece
 from chess.game.record.turn_record import TurnRecord
 
 
 class Rank(ABC):
     _name: str
     _acronym: str
-    _motion: Motion
+    _motion: MotionService
     _capture_value: int
     _members: List[Piece]
     _territories: List[Quadrant]
@@ -21,7 +21,7 @@ class Rank(ABC):
         self, 
         name: str, 
         acronym: str, 
-        motion: Motion, 
+        motion: MotionService,
         capture_value: int, 
         territories: List[Quadrant]
     ):
