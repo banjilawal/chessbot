@@ -2,6 +2,7 @@ from typing import Optional, TYPE_CHECKING
 
 from chess.geometry import coordinate
 from chess.geometry.coordinate import Coordinate
+from chess.geometry.occupation_status import OccupationStatus
 
 if TYPE_CHECKING:
     from chess.piece.piece import Piece
@@ -10,6 +11,7 @@ if TYPE_CHECKING:
 class Square:
     _id: int
     _name: str
+    _status: OccupationStatus
     _coordinate: Coordinate
     _occupant: Optional['Piece']
 
@@ -19,10 +21,14 @@ class Square:
         if coordinate is None:
             raise ValueError("Coordinate cannot be None.")
 
-        self._id = square_id
+
         self._name = name
-        self._coordinate = coordinate
+        self._id = square_id
         self._occupant = None
+        self._coordinate = coordinate
+        self._occupation_status = OccupationStatus.IS_VACANT
+
+
 
 
     @property
