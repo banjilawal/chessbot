@@ -15,7 +15,6 @@ if TYPE_CHECKING:
 
 class Board:
     _pieces: List[Piece]
-    _killed_pieces: List[Piece]
     _grid: List[List[Square]]
 
 
