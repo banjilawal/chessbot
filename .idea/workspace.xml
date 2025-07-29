@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2583d627-b3f4-4dec-9f6f-7594dc9a4c41" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/transaction/failure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/utils/failure_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/transaction_result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/utils/status_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/status_code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/utils/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/transaction/failure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/failure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/transaction/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/transaction/transaction_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/transaction_result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +277,7 @@
       <workItem from="1753631107091" duration="67205000" />
       <workItem from="1753727183873" duration="38672000" />
       <workItem from="1753773778222" duration="5272000" />
-      <workItem from="1753802728399" duration="8134000" />
+      <workItem from="1753802728399" duration="9125000" />
     </task>
     <servers />
   </component>

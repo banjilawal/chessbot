@@ -1,34 +1,32 @@
-from dataclasses import dataclass
-from os.path import defpath
 from typing import Union
-
-from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
+from chess.transaction.failure import Failure
 
-
-@dataclass(Frozen=True)
 class TransactionResult:
-    _id: int
     _method_name: str
-    _status: StatusCode
     _outcome: Union[StatusCode, Failure]
 
-    @property
-    def id(self) -> int:
-        return self._id
+    def __init__(self, method_name: str, outcome: Union[StatusCode, Failure]):
+        self._method_name = method_name
+        self._outcome = outcome
 
     @property
     def method_name(self) -> str:
         return self._method_name
 
     @property
+    def outcome(self) -> Union[StatusCode, Failure]:
+        return self._outcome
+
+    @property
     def status(self) -> StatusCode:
-        return self._status
+        return StatusCode.FAILURE if isinstance(self._outcome, Failure) else self._outcome
 
     @property
     def is_success(self) -> bool:
-        return self._status == StatusCode.SUCCESS
+        return self.status == StatusCode.SUCCESS
 
     @property
     def is_failure(self) -> bool:
-        return isinstance(self._outcome, Failure)
+        return self.status == StatusCode.FAILURE
+

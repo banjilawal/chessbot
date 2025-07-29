@@ -3,11 +3,11 @@ from chess.transaction.status_code import StatusCode
 
 
 class Failure:
-    _code: StatusCode = StatusCode.FAILURE
-    _message: str = 'Operation failed'
+    _code: StatusCode
+    _message: str
 
-    def __init__(self, code: StatusCode, message: str):
-        self._code = code
+    def __init__(self, message: str="Operation failed"):
+        self._code = StatusCode.FAILURE
         self._message = message
 
     @property
