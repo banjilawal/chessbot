@@ -2,7 +2,6 @@ from typing import List, TYPE_CHECKING
 
 from chess.factory.emit import id_emitter
 
-from chess.geometry.column import Column
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.square import Square
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
