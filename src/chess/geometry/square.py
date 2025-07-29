@@ -2,7 +2,7 @@ from typing import Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.occupation_status import OccupationStatus
-from chess.piece.captivity_status import CaptivityStatus
+from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
@@ -130,7 +130,7 @@ class Square:
             raise ValueError(f"{piece.label} is not allowed to occupy this blocked square.")
 
         if occupation_status == OccupationStatus.HAS_ENEMY:
-            self._occupant.status = CaptivityStatus.PRISONER
+            self._occupant.status = MobilityStatus.PRISONER
 
         self._occupant = piece
         piece.add_position(self._coordinate)

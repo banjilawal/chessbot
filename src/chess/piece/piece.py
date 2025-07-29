@@ -1,7 +1,7 @@
 
 
 from chess.geometry.coordinate import Coordinate
-from chess.piece.captivity_status import CaptivityStatus
+from chess.piece.mobility_status import MobilityStatus
 from chess.piece.label import Label
 
 
@@ -21,7 +21,7 @@ class Piece:
     _rank: 'Rank'
     _player: 'Player'
     _coordinate_stack: List[Coordinate]
-    _status: CaptivityStatus
+    _status: MobilityStatus
 
     def __init__(self, piece_id: int, rank: 'Rank'):
         if not piece_id:
@@ -37,7 +37,7 @@ class Piece:
 
         self._id = piece_id
         self._player = None
-        self._status = CaptivityStatus.FREE
+        self._status = MobilityStatus.FREE
         self._coordinate_stack: List[Coordinate] = []
 
 
@@ -61,7 +61,7 @@ class Piece:
         return self._rank
 
     @property
-    def status(self) -> CaptivityStatus:
+    def status(self) -> MobilityStatus:
         return self._status
 
     @property
@@ -69,7 +69,7 @@ class Piece:
         return self._coordinate_stack
 
     @status.setter
-    def status(self, status: CaptivityStatus):
+    def status(self, status: MobilityStatus):
         if self._status != status:
             self._status = status
 

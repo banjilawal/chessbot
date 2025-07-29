@@ -1,7 +1,7 @@
 import string
 
 from chess.geometry.coordinate import Coordinate
-from chess.piece.piece import Piece, CaptivityStatus
+from chess.piece.piece import Piece, MobilityStatus
 from podscape.constants import PodscapeColor
 
 
@@ -21,9 +21,9 @@ class CaptureRecord:
             raise ValueError("captor cannot be null or empty.")
         if prisoner is None:
             raise ValueError("prisoner cannot be null or empty.")
-        if captor.status != CaptivityStatus.FREE:
+        if captor.status != MobilityStatus.FREE:
             raise ValueError("captor must be free.")
-        if prisoner.status != CaptivityStatus.PRISONER:
+        if prisoner.status != MobilityStatus.PRISONER:
             raise ValueError("prisoner cannot be running free.")
 
         self._id = record_id

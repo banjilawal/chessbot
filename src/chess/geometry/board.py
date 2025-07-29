@@ -6,7 +6,7 @@ from chess.factory.emit import id_emitter
 from chess.game.record.turn_record import TurnRecord, CaptureRecord
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.square import Square
-from chess.piece.captivity_status import CaptivityStatus
+from chess.piece.mobility_status import MobilityStatus
 from chess.piece.piece import Piece
 
 if TYPE_CHECKING:
@@ -99,7 +99,7 @@ class Board:
 
             captor = piece
             # prisoner = self.remove_piece_from_board(current_occupant.id)
-            prisoner.status = CaptivityStatus.PRISONER
+            prisoner.status = MobilityStatus.PRISONER
 
             print("prisoner=", prisoner, " captor=", captor, "")
 
