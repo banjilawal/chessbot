@@ -26,7 +26,7 @@ class HumanPlayer(Player):
     def select_target(self, board: 'Board') -> Optional[TurnRecord]:
         pass
 
-    def piece_to_coordinate(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
         pass
 
 

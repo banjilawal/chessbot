@@ -34,17 +34,17 @@ class Motion(ABC):
         return self._search_pattern
 
     # Final method — performs common validation before deferring to subclass logic
-    def move(self, piece: Piece, destination: Coordinate, board: Board):
+    def dispatch_to_move_executor(self, piece: Piece, destination: Coordinate, board: Board):
         self._validate(piece, board)
         self._validate_destination(destination, board)
-        self._perform_move(piece, destination, board)
+        self._execute_move(piece, destination, board)
 
     # Final method — performs common validation before deferring to subclass logic
     def explore(self, piece: 'Piece', board: Board) -> List[Coordinate]:
         return self._perform_exploration(piece, board)
 
     @abstractmethod
-    def _perform_move(self, piece: 'Piece', destination: Coordinate, board: Board):
+    def _execute_move(self, piece: 'Piece', destination: Coordinate, board: Board):
         raise NotImplementedError("Subclasses must implement _perform_move.")
 
     @abstractmethod

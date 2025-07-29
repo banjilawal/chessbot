@@ -14,7 +14,7 @@ class MachinePlayer(Player):
         super().__init__(player_id, name, color)
 
 
-    def piece_to_coordinate(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
         pass
 
     def hunt(self, board: 'Board') -> Dict[Label, List[Piece]]:

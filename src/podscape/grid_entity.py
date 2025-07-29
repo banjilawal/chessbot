@@ -26,7 +26,7 @@ class Mover(GridEntity, ABC):
         self.mover_id = mover_id
 
     def move(self, board: 'PodBoard', destination_coordinate: GridCoordinate) -> None:
-        if not self.movement_strategy.move(self, board, destination_coordinate):
+        if not self.movement_strategy.forward_move_request(self, board, destination_coordinate):
             print(f"Failed to move {self.mover_id} to {destination_coordinate}.")
         else:
             print(f"Moved {self.mover_id} to {destination_coordinate}.")

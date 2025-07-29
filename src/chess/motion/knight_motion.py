@@ -15,7 +15,7 @@ class KnightMotion(Motion):
         super().__init__(logic=KnightReachable(), search_pattern=KnightSearchPattern())
 
 
-    def _perform_move(self, piece: 'Piece', destination: Coordinate, board: Board):
+    def _execute_move(self, piece: 'Piece', destination: Coordinate, board: Board):
         origin = piece.current_position()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"B{piece.label} cannot reach destination {destination} from origin {origin}.")

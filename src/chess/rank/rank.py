@@ -80,7 +80,7 @@ class Rank(ABC):
                 f"num_members:{len(self._members)} num_territories:{len(self._territories)}")
 
 
-    def move(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
+    def delegate_move_excution(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
         """Move a piece to the specified destination."""
         if piece is None:
             raise ValueError("Cannot move a null piece")
@@ -95,7 +95,7 @@ class Rank(ABC):
         print(f"{piece.label} starting move from {origin} to {destination}")
 
         # Call motion.move() with keyword arguments to ensure proper parameter alignment
-        self.motion.move(piece, destination, board)
+        self.motion.dispatch_to_move_executor(piece, destination, board)
 
 
     def explore(self, piece: Piece, board: 'Board') -> List['Coordinate']:

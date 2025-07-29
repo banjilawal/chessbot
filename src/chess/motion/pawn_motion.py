@@ -14,7 +14,7 @@ class PawnMotion(Motion):
     def __init__(self):
         super().__init__(logic=PawnReachable(), search_pattern=PawnSearchPattern())
 
-    def _perform_move(self, piece: 'Piece', destination: Coordinate, board: Board):
+    def _execute_move(self, piece: 'Piece', destination: Coordinate, board: Board):
         origin = piece.current_positio()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")

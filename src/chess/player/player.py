@@ -60,7 +60,7 @@ class Player(ABC):
 
 
     @abstractmethod
-    def piece_to_coordinate(self,piece: 'Piece',destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
         pass
 
     @abstractmethod

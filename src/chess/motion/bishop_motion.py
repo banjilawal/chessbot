@@ -15,7 +15,7 @@ class BishopMotion(Motion):
     def __init__(self):
         super().__init__(logic=BishopReachable(), search_pattern=BishopSearchPattern())
 
-    def _perform_move(self, piece: 'Piece', destination: Coordinate, board: Board):
+    def _execute_move(self, piece: 'Piece', destination: Coordinate, board: Board):
         origin = piece.current_position()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")
