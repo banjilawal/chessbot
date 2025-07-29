@@ -47,12 +47,11 @@ class Motion(ABC):
     # Final method — performs common validation before deferring to subclass logic
     def explore(
         self,
-        rank: 'Rank',
-        origin: Coordinate,
+        piece: 'Piece',
         board: Board
     ) -> List[Coordinate]:
-        self._validate(rank, origin, board)
-        return self._perform_exploration(rank, origin, board)
+        # self._validate(rank, origin, board)
+        return self._perform_exploration(piece, board)
 
     @abstractmethod
     def _perform_move(
@@ -67,8 +66,7 @@ class Motion(ABC):
     @abstractmethod
     def _perform_exploration(
         self,
-        rank: 'Rank',
-        origin: Coordinate,
+        piece: 'Piece',
         board: Board
     ) -> List[Coordinate]:
         raise NotImplementedError("Subclasses must implement _perform_explore.")

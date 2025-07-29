@@ -3,8 +3,8 @@ from typing import Optional, List
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.board import Board
 from chess.game.record.turn_record import TurnRecord
-
 from chess.motion.logic.castle_reachable import CastleReachable
+
 from chess.motion.motion import Motion
 from chess.motion.search.castle_search_pattern import CastleSearchPattern
 from chess.rank.rank import Rank
@@ -39,8 +39,7 @@ class CastleMotion(Motion):
 
     def _perform_exploration(
         self,
-        rank: Rank,
         origin: Coordinate,
         board: Board
     ) -> List[Coordinate]:
-        return self.search_pattern.search(rank, origin, board)
+        return self.search_pattern.search(origin, board)

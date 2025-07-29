@@ -163,10 +163,10 @@ class Board:
         if coordinate is None:
             print("A null coordinate is not valid")
             return False
-        if coordinate.row <= -1 or coordinate.row >= len(self._grid):
-            print("The coordinate is not valid. Its row is out of range")
-            return False
-        if coordinate.column <= -1 or coordinate.column >= len(self._grid[0]):
+        print("chekcing coordinate ", coordinate, " for validity.")
+        if coordinate.row < 0 or coordinate.row >= len(self._grid):
+            raise ValueError("The coordinate is not valid. Its row is out of range")
+        if coordinate.column < 0 or coordinate.column >= len(self._grid[0]):
             print("The coordinate is not valid. Its column is out of range")
             return False
         return True

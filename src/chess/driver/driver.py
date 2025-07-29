@@ -56,6 +56,10 @@ def main():
     for coordinate in piece.position_history:
         print(coordinate)
 
+    castle_places = piece.explore_destinations(board=board)
+    for castle_place in castle_places:
+        print(castle_place)
+
 
 
 

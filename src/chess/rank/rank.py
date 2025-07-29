@@ -86,7 +86,8 @@ class Rank(ABC):
 
 
     @abstractmethod
-    def explore(self, piece: Piece, board: Board): List[Coordinate]
+    def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
+        pass
 
 
 

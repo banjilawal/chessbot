@@ -28,13 +28,11 @@ class Castle(Rank):
         return self.motion.move(self, piece.current_position(), destination, board)
 
 
-    def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
+    def explore(self, origin: Coordinate, board: Board) -> List[Coordinate]:
         """Find all possible moves for a bishop piece."""
-        if piece is None:
-            raise ValueError("Bishop cannot explore without a piece.")
-        if piece.current_position() is None:
-            raise ValueError(f"Bishop cannot explore {piece} when its coordinate is null.")
+        if origin is None:
+            raise ValueError("Bishop cannot explore without a coordinate.")
         if board is None:
             raise ValueError("Bishop cannot explore without a board.")
 
-        return self.motion.explore(self, piece.current_position(), board)
+        return self.motion.explore(origin, board)

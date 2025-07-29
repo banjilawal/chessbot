@@ -45,14 +45,12 @@ class Bishop(Rank):
         # Call motion.move() with keyword arguments to ensure proper parameter alignment
         return self.motion.move(rank=self, origin=origin, destination=destination, board=board)
 
-    def explore(self, piece: 'Piece', board: 'Board') -> List['Coordinate']:
+    def explore(self, piece: Piece, board: 'Board') -> List['Coordinate']:
         """Find all possible moves for a bishop piece."""
         if piece is None:
             raise ValueError("Bishop cannot explore without a piece.")
-        if piece.current_position() is None:
-            raise ValueError(f"Bishop cannot explore {piece} when its coordinate is null.")
+
         if board is None:
             raise ValueError("Bishop cannot explore without a board.")
 
-        origin = piece.current_position()
-        return self.motion.explore(rank=self, origin=origin, board=board)
+        return self.motion.explore(piece, board)

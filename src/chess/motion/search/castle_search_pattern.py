@@ -5,6 +5,7 @@ from chess.geometry.board import Board
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
 from chess.piece.piece import Piece
+from chess.system_config import ROW_SIZE
 
 
 class CastleSearchPattern(SearchPattern):
@@ -12,21 +13,38 @@ class CastleSearchPattern(SearchPattern):
         super().__init__()
 
     def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
-        destinations = []
+        destinations: List[Coordinate] = []
         origin = piece.current_position()
-        for quadrant in [Quadrant.N, Quadrant.E, Quadrant.S, Quadrant.W]:
-            x_delta = quadrant.x_delta
-            y_delta = quadrant.y_delta
-            next_coord = origin.shift(x_delta, y_delta)
 
-            while board.coordinate_is_valid(next_coord):
-                if board.coordinate_is_occupied(next_coord):
-                    # Can capture enemy but not move beyond
-                    occupant = board.get_piece_by_coordinate(next_coord)
-                    if occupant and occupant.player != rank.members[0].player:
-                        destinations.append(next_coord)
-                    break  # blocked
-                destinations.append(next_coord)
-                next_coord = next_coord.shift(x_delta, y_delta)
+        if origin is None:
+            return destinations
+
+        for quadrant in [Quadrant.N, Quadrant.E, Quadrant.S, Quadrant.W]:
+            delta = quadrant.delta
+            current = origin.shift(delta)
+
+            while board.coordinate_is_valid(current):
+                occupant = board.get_piece_by_coordinate(current)
+
+                if occupant is None:
+                    destinations.append(current)
+                elif piece.is_enemy(occupant):
+                    destinations.append(current)
+                    break
+                else:
+                    break  # blocked by friendly piece
+
+                next_row = current.row + delta.y
+                next_col = current.column + delta.x
+
+                if 0 <= next_row <= 7 and 0 <= next_col <= 7:
+                    try:
+                        current = Coordinate(next_row, next_col)
+                    except ValueError:
+                        break  # Just in case coordinate constructor has guards
+                else:
+                    break  # next move would go out of bounds
 
         return destinations
+
+
