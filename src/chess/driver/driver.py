@@ -65,7 +65,9 @@ def main():
 
     knight_piece = find_rank(ranks, "KNIGHT").members[0]
     print(knight_piece)
-    knight_piece.forward_move_request(destination=Coordinate(row=3, column=6), board=board)
+    board.add_piece_to_board(knight_piece, Coordinate(row=3, column=3))
+    knight_piece.forward_move_request(destination=Coordinate(row=5, column=4), board=board)
+    # knight_piece.forward_move_request(destination=Coordinate(row=3, column=6), board=board)
     print(knight_piece)
 
 

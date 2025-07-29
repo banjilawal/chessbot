@@ -93,7 +93,9 @@ class Rank(ABC):
 
         origin = piece.current_position()
         print(f"{piece.label} starting move from {origin} to {destination}")
-
+        print(f"motion instance: {self.motion}")
+        print(f"motion type: {type(self.motion)}")
+        print(f"dispatch_to_move_executor: {self.motion.dispatch_to_move_executor}")
         # Call motion.move() with keyword arguments to ensure proper parameter alignment
         self.motion.dispatch_to_move_executor(piece, destination, board)
 
