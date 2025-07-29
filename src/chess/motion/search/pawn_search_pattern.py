@@ -10,16 +10,17 @@ from chess.motion.logic.pawn_reachable import PawnReachable
 
 class PawnSearchPattern(SearchPattern):
 
-    @staticmethod
-    def search(pawn: Pawn, board: Board) -> List[Coordinate]:
+    def _perform_search(self, pawn: Pawn, board: Board) -> List[Coordinate]:
+        origin = pawn.current_position()
+        destinations: List[Coordinate] = []
+        quadrants = pawn.rank.territories
+        print(f"{pawn.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
+
         destinations = []
         origin = pawn.current_position()
         if origin is None or not SearchPattern.validate_search_parameters(pawn, board):
             return destinations
 
-        # Define quadrants to check for pawn moves:
-        # Forward (N) for advances, NE and NW for captures
-        quadrants = [Quadrant.N, Quadrant.NE, Quadrant.NW]
 
         for quadrant in quadrants:
             candidate = origin.shift(quadrant.delta)

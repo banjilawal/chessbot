@@ -15,10 +15,11 @@ class BishopSearchPattern(SearchPattern):
 
     def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
         origin = piece.current_position()
-        territories: List[Quadrant] = piece.rank.territories
         destinations: List[Coordinate] = []
+        quadrants = piece.rank.territories
+        print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 
-        for quadrant in territories:
+        for quadrant in quadrants:
             delta = quadrant.delta
             current = origin.shift(delta)
 
@@ -27,13 +28,14 @@ class BishopSearchPattern(SearchPattern):
                     break
 
                 occupant = board.get_piece_by_coordinate(current)
-
                 if occupant is None:
                     destinations.append(current)
                 elif piece.is_enemy(occupant):
+                    print(f"{piece.label} found enemy {occupant.label} at {current} adding the target")
                     destinations.append(current)
                     break
                 else:
+                    print(f"{piece.label} cannot occupy {current} friendly {occupant.label} lives there")
                     break  # Blocked by friendly piece
 
                 next_row = current.row + delta.y
@@ -43,9 +45,7 @@ class BishopSearchPattern(SearchPattern):
                     current = current.shift(delta)
                 else:
                     break
-
                 current = current.shift(delta)
-
         return destinations
 
 

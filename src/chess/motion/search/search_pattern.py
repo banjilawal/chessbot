@@ -28,7 +28,7 @@ class SearchPattern(ABC):
         if piece is None:
             raise ValueError("[Warning] Cannot search for places with a null piece. Destination search is impossible.")
         if piece.current_position() is None:
-            raise ValueError("Cannot search for destinations if the piece does not have coordinate on the board.")
+            raise ValueError(f"{piece.label} has a null coordinate. The piece must be on the board to do a search.")
         if board is None:
             raise ValueError("Cannot search for destinations when the board is null.")
         return True

@@ -23,9 +23,5 @@ class KnightMotion(Motion):
         board.capture_square(piece, destination)
 
 
-    def _perform_exploration(
-        self,
-        piece: 'Piece',
-        board: Board
-    ) -> List[Coordinate]:
+    def _perform_exploration(self, piece: 'Piece', board: Board) -> List[Coordinate]:
         return self.search_pattern.search(piece, board)

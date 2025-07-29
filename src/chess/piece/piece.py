@@ -91,12 +91,12 @@ class Piece:
         if old_player is not None:
             old_player.pieces.remove(self)
 
-    def move(self, board: 'Board', destination: Coordinate) -> Optional['TurnRecord']:
+    def move(self, board: 'Board', destination: Coordinate):
         if self._rank is None:
             raise ValueError("Piece has no rank assigned")
         if destination is None:
             raise ValueError("destination cannot be null.")
-        return self._rank.move(piece=self, board=board, destination=destination)
+        self._rank.move(piece=self, board=board, destination=destination)
 
 
     def explore_destinations(self, board: 'Board') -> List[Coordinate]:

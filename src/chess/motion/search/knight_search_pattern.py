@@ -14,10 +14,12 @@ class KnightSearchPattern(SearchPattern):
         super().__init__()
 
     def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
-        destinations = []
         origin = piece.current_position()
+        destinations: List[Coordinate] = []
+        quadrants = piece.rank.territories
+        print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 
-        for quadrant in  piece.rank.territories:
+        for quadrant in  quadrants:
             delta = quadrant.delta
             # Try both L-shaped offsets for this quadrant
             candidate_1 = origin.shift(delta.x * 2, delta.y)
@@ -30,6 +32,15 @@ class KnightSearchPattern(SearchPattern):
                 if not board.square_is_empty_or_contains_enemy(candidate, piece.player):
                     continue
                 if KnightReachable.is_reachable(origin, candidate):
+                    occupant = board.get_piece_by_coordinate(candidate)
+                    if occupant is None:
+                        destinations.append(candidate)
+                    elif piece.is_enemy(occupant):
+                        print(f"{piece.label} found enemy {occupant.label} at {candidate} adding the target")
+                        destinations.append(candidate)
+                        break
+                    else:
+                        print(f"{piece.label} cannot occupy {candidate} friendly {occupant.label} lives there")
+                        break  # Blocked by friendly piece
                     destinations.append(candidate)
-
         return destinations

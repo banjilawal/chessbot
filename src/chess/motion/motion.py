@@ -48,11 +48,7 @@ class Motion(ABC):
         raise NotImplementedError("Subclasses must implement _perform_move.")
 
     @abstractmethod
-    def _perform_exploration(
-        self,
-        piece: 'Piece',
-        board: Board
-    ) -> List[Coordinate]:
+    def _perform_exploration(self, piece: 'Piece', board: Board) -> List[Coordinate]:
         raise NotImplementedError("Subclasses must implement _perform_explore.")
 
     def _validate(self, piece: Piece,  board: Board):

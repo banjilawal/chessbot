@@ -22,10 +22,5 @@ class QueenMotion(Motion):
         board.capture_square(piece, destination)
 
 
-    def _perform_exploration(
-        self,
-        rank: Rank,
-        origin: Coordinate,
-        board: Board
-    ) -> List[Coordinate]:
-        return self.search_pattern.search(rank, origin, board)
+    def _perform_exploration(self, piece: 'Piece', board: Board) -> List[Coordinate]:
+        return self.search_pattern.search(piece, board)

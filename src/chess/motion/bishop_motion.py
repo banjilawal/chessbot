@@ -16,21 +16,13 @@ class BishopMotion(Motion):
         super().__init__(logic=BishopReachable(), search_pattern=BishopSearchPattern())
 
     def _perform_move(self, piece: 'Piece', destination: Coordinate, board: Board):
-        origin = piece.current_positio()
+        origin = piece.current_position()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")
 
         board.capture_square(piece, destination)
 
-    def _perform_exploration(
-            self,
-            piece: 'Piece',
-            board: 'Board'
-    ) -> List['Coordinate']:
-        """Find all possible destinations for bishop from origin."""
-        if piece is None:
-            raise ValueError("No piece found at origin to explore.")
-
+    def _perform_exploration(self, piece: 'Piece', board: Board) -> List[Coordinate]:
         return self.search_pattern.search(piece, board)
 #
 #

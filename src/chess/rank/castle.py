@@ -15,17 +15,22 @@ class Castle(Rank):
         super().__init__(name, acronym, CastleMotion(), capture_value, territories)
 
 
-    def move(self, piece: 'Piece', board: 'Board', destination: 'Coordinate') -> Optional['TurnRecord']:
+    def move(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
+        """Move a piece to the specified destination."""
         if piece is None:
-            raise ValueError("Castle cannot move without a piece.")
+            raise ValueError("Cannot move a null piece")
         if piece.current_position() is None:
-            raise ValueError(f"Castle cannot move {piece} when its coordinate is null. It's not even on the board.")
+            raise ValueError(f"{piece.label} when its coordinate is null. It's not even on the board.")
         if board is None:
-            raise ValueError("castle cannot move without a board.")
+            raise ValueError(f"{piece.label} cannot move without a board.")
         if destination is None:
-            raise ValueError(f"Castle cannot move {piece.label} without a destination.")
+            raise ValueError(f"{piece.label} without a destination.")
 
-        return self.motion.move(self, piece.current_position(), destination, board)
+        origin = piece.current_position()
+        print(f"{piece.label} starting move from {origin} to {destination}")
+
+        # Call motion.move() with keyword arguments to ensure proper parameter alignment
+        self.motion.move(piece, destination, board)
 
 
     def explore(self, piece: Piece, board: Board) -> List[Coordinate]:

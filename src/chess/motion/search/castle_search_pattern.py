@@ -12,31 +12,32 @@ class CastleSearchPattern(SearchPattern):
         super().__init__()
 
     def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
-        destinations = []
         origin = piece.current_position()
+        destinations: List[Coordinate] = []
         quadrants = piece.rank.territories
+        print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 
         for quadrant in quadrants:
             delta = quadrant.delta
-            next_coord = origin
+            current = origin
 
             while True:
                 try:
-                    next_coord = next_coord.shift(delta)
+                    current= current.shift(delta)
                 except ValueError:
                     # Went off the board — stop searching in this direction
                     break
 
-                occupant = board.get_piece_by_coordinate(next_coord)
-
+                occupant = board.get_piece_by_coordinate(current)
                 if occupant is None:
-                    destinations.append(next_coord)
+                    destinations.append(current)
                 elif piece.is_enemy(occupant):
-                    destinations.append(next_coord)
+                    print(f"{piece.label} found enemy {occupant.label} at {current} adding the target")
+                    destinations.append(current)
                     break
                 else:
-                    # Blocked by friendly piece
-                    break
+                    print(f"{piece.label} cannot occupy {current} friendly {occupant.label} lives there")
+                    break  # Blocked by friendly piece
 
         return destinations
 

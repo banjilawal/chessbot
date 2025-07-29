@@ -10,10 +10,11 @@ from chess.piece.piece import Piece
 
 class QueenSearchPattern(SearchPattern):
 
-    @staticmethod
-    def search(piece: Piece, board: Board) -> List[Coordinate]:
-        if not SearchPattern.validate_search_parameters(piece, board):
-            return []
+    def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
+        origin = piece.current_position()
+        destinations: List[Coordinate] = []
+        quadrants = piece.rank.territories
+        print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 
         bishop_destinations = BishopSearchPattern.search(piece, board)
         castle_destinations = CastleSearchPattern.search(piece.rank, piece.current_position(), board)
