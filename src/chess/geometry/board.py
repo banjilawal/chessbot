@@ -3,7 +3,7 @@ from typing import Tuple, List, Optional, TYPE_CHECKING
 
 from chess.factory.emit import id_emitter
 
-from chess.game.record.turn_record import TurnRecord
+from chess.game.record.turn_record import TurnRecord, CaptureRecord
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.square import Square
 from chess.piece.captivity_status import CaptivityStatus
@@ -102,7 +102,7 @@ class Board:
         self.capture_square(chess_piece, coordinate)
 
 
-    def capture_square(self, piece: Piece, coordinate: Coordinate) -> TurnRecord:
+    def capture_square(self, piece: Piece, coordinate: Coordinate):
         if piece is None:
             raise ValueError("Captor cannot be null. Aborting capture process.")
             # return None
@@ -115,7 +115,7 @@ class Board:
         square = self._grid[coordinate.row][coordinate.column]
         current_occupant = square.occupant
         print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
-        if current_occupant is not None and not self.are_enemies(piece, current_occupant):
+        if current_occupant is not None and not piece.is_enemy(current_occupant):
             print("A friendly is occupying the square. Aborting capture process.")
             return None
 
@@ -136,12 +136,6 @@ class Board:
             square.occupant = captor
             # captor.coordinate = square.coordinate
             # captor.add_position(coordinate)
-            capture_record = CaptureRecord(
-                id=id_emitter.capture_record_id_counter(),
-                location=coordinate,
-                captor=captor,
-                prisoner=prisoner
-            )
             self._killed_pieces.append(prisoner)
 
         if current_occupant is None:
@@ -149,14 +143,6 @@ class Board:
             print(f"Square {square} has occupant {current_occupant} and piece {piece} is free to move to the destination square.")
             square.occupant = piece
             piece.coordinate = square.coordinate
-            turn_record = TurnRecord(
-                record_id=id_emitter.turn_record_id,
-                moved_piece=piece,
-                arrival_coordinate=coordinate,
-                capture_record=capture_record
-            )
-            return turn_record
-        return None
 
 
     def coordinate_is_valid(self, coordinate: Coordinate):

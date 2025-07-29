@@ -53,7 +53,7 @@ class Square:
         if current_occupant is not None:
             print(f"Current occupant {current_occupant} has {current_occupant.current_position} as their address.")
             self._occupant = None
-            print(f"my occupant is {self._current} now.")
+            print(f"my occupant is {self._occupant} now.")
 
         if piece is not None:
             self._occupant = piece;

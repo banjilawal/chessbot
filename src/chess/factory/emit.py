@@ -5,6 +5,7 @@ class IdEmitter:
         self._square_id = 0
         self._piece_id = 0
         self._turn_record_id = 0
+        self._capture_record_id = 0
 
 
     @property
@@ -35,5 +36,10 @@ class IdEmitter:
     def turn_record_id(self) -> int:
         self._turn_record_id += 1
         return self._turn_record_id
+
+    @property
+    def capture_record_id(self) -> int:
+        self._capture_record_id += 1
+        return self._capture_record_id
 
 id_emitter = IdEmitter()

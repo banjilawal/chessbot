@@ -13,38 +13,32 @@ class CastleSearchPattern(SearchPattern):
         super().__init__()
 
     def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
-        destinations: List[Coordinate] = []
+        destinations = []
         origin = piece.current_position()
-
-        if origin is None:
-            return destinations
 
         for quadrant in [Quadrant.N, Quadrant.E, Quadrant.S, Quadrant.W]:
             delta = quadrant.delta
-            current = origin.shift(delta)
+            next_coord = origin
 
-            while board.coordinate_is_valid(current):
-                occupant = board.get_piece_by_coordinate(current)
+            while True:
+                try:
+                    next_coord = next_coord.shift(delta)
+                except ValueError:
+                    # Went off the board — stop searching in this direction
+                    break
+
+                occupant = board.get_piece_by_coordinate(next_coord)
 
                 if occupant is None:
-                    destinations.append(current)
+                    destinations.append(next_coord)
                 elif piece.is_enemy(occupant):
-                    destinations.append(current)
+                    destinations.append(next_coord)
                     break
                 else:
-                    break  # blocked by friendly piece
-
-                next_row = current.row + delta.y
-                next_col = current.column + delta.x
-
-                if 0 <= next_row <= 7 and 0 <= next_col <= 7:
-                    try:
-                        current = Coordinate(next_row, next_col)
-                    except ValueError:
-                        break  # Just in case coordinate constructor has guards
-                else:
-                    break  # next move would go out of bounds
+                    # Blocked by friendly piece
+                    break
 
         return destinations
+
 
 

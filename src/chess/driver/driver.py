@@ -60,6 +60,9 @@ def main():
     for castle_place in castle_places:
         print(castle_place)
 
+    piece.move(destination=Coordinate(row=4, column=4), board=board)
+    piece.move(destination=Coordinate(row=6, column=4), board=board)
+
 
 
 
