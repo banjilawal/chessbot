@@ -5,3 +5,4 @@ class OccupationStatus(Enum):
     BLOCKED = auto()
     HAS_ENEMY = auto()
     IS_VACANT = auto()
+    OCCUPIED_BY_SELF = auto()

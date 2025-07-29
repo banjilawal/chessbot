@@ -59,7 +59,8 @@ class Square:
         method = "Square.occupy"
 
         if self._occupant == piece:
-            print(f"{piece.label} is already occupying {self._coordinate}")
+            self.status = OccupationStatus.OCCUPIED_BY_SELF
+            print(f"{piece.label} is already occupying {self._coordinate} nohing to do")
             return TransactionResult(method, StatusCode.SUCCESS)
 
         if self._status == OccupationStatus.BLOCKED:
@@ -72,6 +73,24 @@ class Square:
             return self._handle_occupation(OccupationStatus.HAS_ENEMY, piece)
 
         return TransactionResult(method, Failure(f"Occupation failed after mutation"))
+
+
+    def leave(self, piece: 'Piece') -> TransactionResult:
+        method = "Square.leave"
+
+        if self._occupant is None:
+            return TransactionResult(method, Failure(f"{piece.label} cCannot leave a square already vacant"))
+
+        if self._occupant != piece:
+            return TransactionResult(method, Failure(f"C{piece.lable} is not the current occupant of {self._coordinate}"))
+
+        self._occupant = None
+        self._status = OccupationStatus.IS_VACANT
+
+        if self._occupant is None and piece.current_position() == self._coordinate:
+            return TransactionResult(method, StatusCode.SUCCESS)
+        else:
+            return TransactionResult(method, Failure(f"Leave failed after mutation"))
 
 
     @occupant.setter
