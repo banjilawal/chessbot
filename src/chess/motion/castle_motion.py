@@ -39,7 +39,7 @@ class CastleMotion(Motion):
 
     def _perform_exploration(
         self,
-        origin: Coordinate,
+        piece: 'Piece',
         board: Board
     ) -> List[Coordinate]:
-        return self.search_pattern.search(origin, board)
+        return self.search_pattern.search(piece, board)

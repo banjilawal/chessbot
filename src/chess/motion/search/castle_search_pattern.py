@@ -5,7 +5,6 @@ from chess.geometry.board import Board
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
 from chess.piece.piece import Piece
-from chess.system_config import ROW_SIZE
 
 
 class CastleSearchPattern(SearchPattern):

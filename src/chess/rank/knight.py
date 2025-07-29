@@ -24,7 +24,10 @@ class Knight(Rank):
 
 
     def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
-        origin = piece.current_position()
-        if origin is None:
-            return []
-        return self.motion.explore(self, origin, board)
+        """Find all possible moves for a bishop piece."""
+        if piece is None:
+            raise ValueError("Castle cannot explore without a coordinate.")
+        if board is None:
+            raise ValueError("Castle  cannot explore without a board.")
+
+        return self.motion.explore(piece, board)

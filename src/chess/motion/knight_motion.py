@@ -36,8 +36,7 @@ class KnightMotion(Motion):
 
     def _perform_exploration(
         self,
-        rank: Rank,
-        origin: Coordinate,
+        piece: 'Piece',
         board: Board
     ) -> List[Coordinate]:
-        return self.search_pattern.search(rank, origin, board)
+        return self.search_pattern.search(piece, board)
