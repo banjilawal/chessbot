@@ -1,11 +1,5 @@
 from typing import List
 
-from chess.motion.bishop_motion import BishopMotionService
-from chess.motion.castle_motion import CastleMotionService
-from chess.motion.king_motion import KingMotionService
-from chess.motion.knight_motion import KnightMotionService
-from chess.motion.pawn_motion import PawnMotionService
-from chess.motion.queen_motion import QueenMotionService
 from chess.rank.rank_config import RankConfig
 from chess.rank.bishop import Bishop
 from chess.rank.king import King

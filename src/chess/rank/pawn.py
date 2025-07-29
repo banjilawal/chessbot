@@ -8,5 +8,5 @@ class Pawn(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
 
-        from chess.motion.pawn_motion import PawnMotionService
+        from chess.motion.service.pawn_motion_service import PawnMotionService
         super().__init__(name, acronym, PawnMotionService(), capture_value, territories)

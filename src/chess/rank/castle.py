@@ -8,5 +8,5 @@ class Castle(Rank):
 
     def __init__(self, name: str, acronym: str, capture_value: int, territories: List['Quadrant']):
 
-        from chess.motion.castle_motion import CastleMotionService
+        from chess.motion.service.castle_motion_service import CastleMotionService
         super().__init__(name, acronym, CastleMotionService(), capture_value, territories)
