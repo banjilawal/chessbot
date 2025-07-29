@@ -129,6 +129,7 @@ class Square:
         if occupation_status == OccupationStatus.BLOCKER:
             raise ValueError(f"{piece.label} is not allowed to occupy this blocked square.")
 
+
         if occupation_status == OccupationStatus.HAS_ENEMY:
             self._occupant.status = MobilityStatus.PRISONER
 

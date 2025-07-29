@@ -8,6 +8,9 @@ from chess.geometry.coordinate import Coordinate
 from chess.geometry.square import Square
 from chess.piece.mobility_status import MobilityStatus
 from chess.piece.piece import Piece
+from chess.transaction.failure import Failure
+from chess.transaction.transaction_result import TransactionResult
+from chess.validator.piece_validator import PieceValidator
 
 if TYPE_CHECKING:
     from chess.game.record.capture_record import CaptureRecord
@@ -23,12 +26,18 @@ class Board:
         self._killed_pieces = []
         self._grid = grid
 
+
     @property
     def pieces(self) -> List[Piece]:
         return self._pieces
 
 
-    def get_piece_by_coordinate(self, coordinate: Coordinate) -> Optional[Piece]:
+    @property
+    def grid(self) -> List[List[Square]]:
+        return self._grid
+
+
+    def find_piece(self, coordinate: Coordinate) -> Optional[Piece]:
         print("Checking for coord", coordinate, "")
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("The coord is not valid. Cannot find chess piece.")
@@ -37,10 +46,14 @@ class Board:
         print("The square at ", coordinate, " is ", square, " it contains ", square.occupant, "")
         return self.grid[coordinate.row][coordinate.column].occupant
 
+    def find_square(self, coordinate: Coordinate) -> Optional[Square]:
+        print("Checking for coord", coordinate, "")
+        if not self.coordinate_is_valid(coordinate):
+            raise ValueError("The coord is not valid. Cannot find chess piece.")
+        return self.grid[coordinate.row][coordinate.column]
 
-    @property
-    def grid(self) -> List[List[Square]]:
-        return self._grid
+
+
 
 
     def empty_squares(self) -> List[Square]:
@@ -74,47 +87,71 @@ class Board:
         self.capture_square(chess_piece, coordinate)
 
 
-    def capture_square(self, piece: Piece, coordinate: Coordinate):
-        if piece is None:
-            raise ValueError("Captor cannot be null. Aborting capture process.")
-            # return None
-        if not self.coordinate_is_valid(coordinate):
-            raise ValueError("The destination coord is out of range. Aborting capture process.")
-            # return None
+    def capture_square(self, piece: Piece, destination: Coordinate) -> TransactionResult:
+        method = "Board.capture_square"
 
-        turn_record = None
-        capture_record = None
-        square = self._grid[coordinate.row][coordinate.column]
-        current_occupant = square.occupant
-        print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
-        if current_occupant is not None and not piece.is_enemy(current_occupant):
-            print("A friendly is occupying the square. Aborting capture process.")
-            return None
+        # 1. Validate the piece isn't None (this also logs)
+        validation_result = PieceValidator.is_present(piece)
+        if validation_result.is_failure:
+            return validation_result
 
-        if current_occupant is not None and piece.is_enemy(current_occupant):
-            print("The current occupant is an enemy on ")
-            prisoner = current_occupant
-            square.occupant = None
-            prisoner.coordinate = None
+        # 2. Get the destination square
+        if not self.coordinate_is_valid(destination):
+            return TransactionResult(method, Failure("Coordinate is not a valid coordinate to capture"))
 
-            captor = piece
-            # prisoner = self.remove_piece_from_board(current_occupant.id)
-            prisoner.status = MobilityStatus.PRISONER
+        square_to_leave = self.find_square(piece.current_position())
+        destination_square = self.find_square(destination)
 
-            print("prisoner=", prisoner, " captor=", captor, "")
+        # 3. Attempt to occupy the square
+        occupation_result = destination_square.occupy(piece)
 
+        # 4. If successful, make the piece leave its previous square (if any)
+        if occupation_result.is_success:
+            return square_to_leave.leave(piece)
 
-            # captor = self.remove_piece_from_board(piece)
-            square.occupant = captor
-            # captor.coord = square.coord
-            # captor.add_position(coord)
-            self._killed_pieces.append(prisoner)
+        return occupation_result  # failed occupation result
 
-        if current_occupant is None:
-            print("The current occupant is None. The piece is free to move to the destination square.")
-            print(f"Square {square} has occupant {current_occupant} and piece {piece} is free to move to the destination square.")
-            square.occupant = piece
-            piece.coordinate = square.coordinate
+        # def capture_square(self, piece: Piece, coordinate: Coordinate):
+        #     if piece is None:
+        #         raise ValueError("Captor cannot be null. Aborting capture process.")
+        #         # return None
+        #     if not self.coordinate_is_valid(coordinate):
+        #         raise ValueError("The destination coord is out of range. Aborting capture process.")
+        #         # return None
+        #
+        #     turn_record = None
+        #     capture_record = None
+        #     square = self._grid[coordinate.row][coordinate.column]
+        #     current_occupant = square.occupant
+        #     print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
+        #     if current_occupant is not None and not piece.is_enemy(current_occupant):
+        #         print("A friendly is occupying the square. Aborting capture process.")
+        #         return None
+        #
+        # if current_occupant is not None and piece.is_enemy(current_occupant):
+        #     print("The current occupant is an enemy on ")
+        #     prisoner = current_occupant
+        #     square.occupant = None
+        #     prisoner.coordinate = None
+        #
+        #     captor = piece
+        #     # prisoner = self.remove_piece_from_board(current_occupant.id)
+        #     prisoner.status = MobilityStatus.PRISONER
+        #
+        #     print("prisoner=", prisoner, " captor=", captor, "")
+        #
+        #
+        #     # captor = self.remove_piece_from_board(piece)
+        #     square.occupant = captor
+        #     # captor.coord = square.coord
+        #     # captor.add_position(coord)
+        #     self._killed_pieces.append(prisoner)
+        #
+        # if current_occupant is None:
+        #     print("The current occupant is None. The piece is free to move to the destination square.")
+        #     print(f"Square {square} has occupant {current_occupant} and piece {piece} is free to move to the destination square.")
+        #     square.occupant = piece
+        #     piece.coordinate = square.coordinate
 
 
     def coordinate_is_valid(self, coordinate: Coordinate):

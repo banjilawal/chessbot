@@ -72,7 +72,7 @@ class PawnReachable(Reachable):
         if not Diagonal.is_diagonal(origin, destination) or  not (destination.row - origin.row) == 1:
             return False
 
-        target = board.get_piece_by_coordinate(destination)
+        target = board.find_piece(destination)
         if target is None:
             return False
 
