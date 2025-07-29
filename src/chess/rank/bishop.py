@@ -28,29 +28,29 @@ class Bishop(Rank):
     #     from chess.motion.bishop_motion import BishopMotion
     #     self.motion = BishopMotion()
 
-    def move(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
-        """Move a piece to the specified destination."""
-        if piece is None:
-            raise ValueError("Cannot move a null piece")
-        if piece.current_position() is None:
-            raise ValueError(f"{piece.label} when its coordinate is null. It's not even on the board.")
-        if board is None:
-            raise ValueError(f"{piece.label} cannot move without a board.")
-        if destination is None:
-            raise ValueError(f"{piece.label} without a destination.")
+    # def move(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
+    #     """Move a piece to the specified destination."""
+    #     if piece is None:
+    #         raise ValueError("Cannot move a null piece")
+    #     if piece.current_position() is None:
+    #         raise ValueError(f"{piece.label} when its coordinate is null. It's not even on the board.")
+    #     if board is None:
+    #         raise ValueError(f"{piece.label} cannot move without a board.")
+    #     if destination is None:
+    #         raise ValueError(f"{piece.label} without a destination.")
+    #
+    #     origin = piece.current_position()
+    #     print(f"{piece.label} starting move from {origin} to {destination}")
+    #
+    #     # Call motion.move() with keyword arguments to ensure proper parameter alignment
+    #     self.motion.move(piece, destination, board)
 
-        origin = piece.current_position()
-        print(f"{piece.label} starting move from {origin} to {destination}")
-
-        # Call motion.move() with keyword arguments to ensure proper parameter alignment
-        self.motion.move(piece, destination, board)
-
-    def explore(self, piece: Piece, board: 'Board') -> List['Coordinate']:
-        """Find all possible moves for a bishop piece."""
-        if piece is None:
-            raise ValueError("Bishop cannot explore without a piece.")
-
-        if board is None:
-            raise ValueError("Bishop cannot explore without a board.")
-
-        return self.motion.explore(piece, board)
+    # def explore(self, piece: Piece, board: 'Board') -> List['Coordinate']:
+    #     """Find all possible moves for a bishop piece."""
+    #     if piece is None:
+    #         raise ValueError("Bishop cannot explore without a piece.")
+    #
+    #     if board is None:
+    #         raise ValueError("Bishop cannot explore without a board.")
+    #
+    #     return self.motion.explore(piece, board)

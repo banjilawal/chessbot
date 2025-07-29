@@ -80,14 +80,33 @@ class Rank(ABC):
                 f"num_members:{len(self._members)} num_territories:{len(self._territories)}")
 
 
-    @abstractmethod
-    def move(self, piece: Piece, board: Board, destination: Coordinate):
-        pass
+    def move(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
+        """Move a piece to the specified destination."""
+        if piece is None:
+            raise ValueError("Cannot move a null piece")
+        if piece.current_position() is None:
+            raise ValueError(f"{piece.label} when its coordinate is null. It's not even on the board.")
+        if board is None:
+            raise ValueError(f"{piece.label} cannot move without a board.")
+        if destination is None:
+            raise ValueError(f"{piece.label} without a destination.")
+
+        origin = piece.current_position()
+        print(f"{piece.label} starting move from {origin} to {destination}")
+
+        # Call motion.move() with keyword arguments to ensure proper parameter alignment
+        self.motion.move(piece, destination, board)
 
 
-    @abstractmethod
-    def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
-        pass
+    def explore(self, piece: Piece, board: 'Board') -> List['Coordinate']:
+        """Find all possible moves for a bishop piece."""
+        if piece is None:
+            raise ValueError("Bishop cannot explore without a piece.")
+
+        if board is None:
+            raise ValueError("Bishop cannot explore without a board.")
+
+        return self.motion.explore(piece, board)
 
 
 

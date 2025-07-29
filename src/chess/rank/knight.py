@@ -16,29 +16,29 @@ class Knight(Rank):
         super().__init__(name, acronym, KnightMotion, capture_value, territories)
 
 
-    def move(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
-        """Move a piece to the specified destination."""
-        if piece is None:
-            raise ValueError("Cannot move a null piece")
-        if piece.current_position() is None:
-            raise ValueError(f"{piece.label} when its coordinate is null. It's not even on the board.")
-        if board is None:
-            raise ValueError(f"{piece.label} cannot move without a board.")
-        if destination is None:
-            raise ValueError(f"{piece.label} without a destination.")
-
-        origin = piece.current_position()
-        print(f"{piece.label} starting move from {origin} to {destination}")
-
-        # Call motion.move() with keyword arguments to ensure proper parameter alignment
-        self.motion.move(piece, destination, board)
-
-
-    def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
-        """Find all possible moves for a bishop piece."""
-        if piece is None:
-            raise ValueError("Castle cannot explore without a coordinate.")
-        if board is None:
-            raise ValueError("Castle  cannot explore without a board.")
-
-        return self.motion.explore(piece, board)
+    # def move(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
+    #     """Move a piece to the specified destination."""
+    #     if piece is None:
+    #         raise ValueError("Cannot move a null piece")
+    #     if piece.current_position() is None:
+    #         raise ValueError(f"{piece.label} when its coordinate is null. It's not even on the board.")
+    #     if board is None:
+    #         raise ValueError(f"{piece.label} cannot move without a board.")
+    #     if destination is None:
+    #         raise ValueError(f"{piece.label} without a destination.")
+    #
+    #     origin = piece.current_position()
+    #     print(f"{piece.label} starting move from {origin} to {destination}")
+    #
+    #     # Call motion.move() with keyword arguments to ensure proper parameter alignment
+    #     self.motion.move(piece, destination, board)
+    #
+    #
+    # def explore(self, piece: Piece, board: Board) -> List[Coordinate]:
+    #     """Find all possible moves for a bishop piece."""
+    #     if piece is None:
+    #         raise ValueError("Castle cannot explore without a coordinate.")
+    #     if board is None:
+    #         raise ValueError("Castle  cannot explore without a board.")
+    #
+    #     return self.motion.explore(piece, board)
