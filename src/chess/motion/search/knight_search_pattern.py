@@ -22,8 +22,8 @@ class KnightSearchPattern(SearchPattern):
         for quadrant in  quadrants:
             delta = quadrant.delta
             # Try both L-shaped offsets for this quadrant
-            candidate_1 = origin.shift(delta.x * 2, delta.y)
-            candidate_2 = origin.shift(delta.x, delta.y * 2)
+            candidate_1 = origin.shift(delta.delta_column * 2, delta.delta_row)
+            candidate_2 = origin.shift(delta.delta_column, delta.delta_row * 2)
 
             for candidate in [candidate_1, candidate_2]:
                 if not board.coordinate_is_valid(candidate):

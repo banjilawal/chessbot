@@ -17,14 +17,14 @@ class Quadrant(Enum):
         obj._row_id = row_id
         return obj
 
-    N = (Delta(x=0, y=1), 0, "north", 1, 0)
-    NE = (Delta(x=1, y=1), 1, "northeast")
-    E = (Delta(x=1, y=0), 2, "east")
-    SE = (Delta(x=1, y=-1), 3, "southeast")
-    S = (Delta(x=0, y=-1), 4, "south", -1, BOARD_DIMENSION - 1)
-    SW = (Delta(x=-1, y=-1), 5, "southwest")
-    W = (Delta(x=-1, y=0), 6, "west")
-    NW = (Delta(x=-1, y=1), 7, "northwest")
+    N = (Delta(delta_column=0, delta_row=1), 0, "north", 1, 0)
+    NE = (Delta(delta_column=1, delta_row=1), 1, "northeast")
+    E = (Delta(delta_column=1, delta_row=0), 2, "east")
+    SE = (Delta(delta_column=1, delta_row=-1), 3, "southeast")
+    S = (Delta(delta_column=0, delta_row=-1), 4, "south", -1, BOARD_DIMENSION - 1)
+    SW = (Delta(delta_column=-1, delta_row=-1), 5, "southwest")
+    W = (Delta(delta_column=-1, delta_row=0), 6, "west")
+    NW = (Delta(delta_column=-1, delta_row=1), 7, "northwest")
 
     @property
     def delta(self) -> Delta:

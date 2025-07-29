@@ -1,23 +1,21 @@
-from chess.geometry.column import Column
-from chess.geometry.row import Row
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 
 class Delta:
-    _x: int
-    _y: int
+    _delta_column: int
+    _delta_row: int
 
-    def __init__(self, x: int, y: int):
-        self._x = x
-        self._y = y
-
-    @property
-    def x(self) -> int:
-        return self._x
+    def __init__(self, delta_column: int, delta_row: int):
+        self._delta_column = delta_column
+        self._delta_row = delta_row
 
     @property
-    def y(self) -> int:
-        return self._y
+    def delta_column(self) -> int:
+        return self._delta_column
+
+    @property
+    def delta_row(self) -> int:
+        return self._delta_row
 
     def __eq__(self, other):
         if other is self:
@@ -26,10 +24,14 @@ class Delta:
             return False
         if not isinstance(other, Delta):
             return False
-        return self._x == other.x and self._y == other.y
+
+        return self._delta_column == other.delta_column and self._delta_row == other.delta_row
 
     def __mul__(self, scalar: int) -> 'Delta':
-        return Delta(x=self.x * scalar, y=self.y * scalar)
+        new_column_delta = self.delta_column * scalar
+        new_row_delta = self.delta_row * scalar
+
+        return Delta(delta_column=new_column_delta, delta_row=new_row_delta)
 
 
 
@@ -75,8 +77,8 @@ class Coordinate:
         return f"[{self._column}, {self._row}]"
 
     def shift(self, delta: Delta) -> 'Coordinate':
-        new_row = self._row + delta.y
-        new_col = self._column + delta.x
+        new_row = self._row + delta.delta_row
+        new_col = self._column + delta.delta_column
 
         if new_row < 0 or new_row >= ROW_SIZE:
             raise ValueError(f"Shift results in invalid row {new_row}. Must be 0..{ROW_SIZE - 1}.")

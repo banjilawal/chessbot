@@ -38,8 +38,8 @@ class BishopSearchPattern(SearchPattern):
                     print(f"{piece.label} cannot occupy {current} friendly {occupant.label} lives there")
                     break  # Blocked by friendly piece
 
-                next_row = current.row + delta.y
-                next_column = current.column + delta.x
+                next_row = current.row + delta.delta_row
+                next_column = current.column + delta.delta_column
 
                 if 0 <= next_row < ROW_SIZE and 0 <=  next_column < COLUMN_SIZE:
                     current = current.shift(delta)
