@@ -1,4 +1,4 @@
-from chess.utils.status_code import StatusCode
+from chess.transaction.status_code import StatusCode
 
 
 # FailueResult:

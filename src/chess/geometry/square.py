@@ -3,7 +3,7 @@ from typing import Optional, TYPE_CHECKING
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.occupation_status import OccupationStatus
 from chess.piece.captivity_status import CaptivityStatus
-from chess.utils.failure_result import TransactionResult
+from chess.transaction.transaction_result import TransactionResult
 
 if TYPE_CHECKING:
     from chess.piece.piece import Piece
