@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Optional
 
 from chess.geometry.board import Board
 from chess.geometry.coordinate import Coordinate
@@ -113,33 +113,14 @@ class Rank(ABC):
 
 
 class PromotableRank(Rank):
+    _previous_rank: Optional[Rank] = None
+
+    def __init__(self, name: str, acronym: str, motion_service: MotionService, capture_value: int, territories: List[Quadrant], previous_rank: Optional[Rank] = None):
+        super().__init__(name, acronym, motion_service, capture_value, territories)
+        self._previous_rank = previous_rank
+
+    def is_promoted(self) -> bool:
+        return self._previous_rank is not None
 
     @abstractmethod
-    def promote(self, piece) -> TurnRecord:
-        pass
-
-    # @abstractmethod
-    # def is_promoted(self) -> bool:
-    #     pass
-
-    # def promote(self, piece: Piece) -> Piece:
-    #     pass
-        # if piece is None:
-        #     raise ValueError("Cannot promote null piece cannot be null.")
-        #     print("new_rank cannot be null or empty.")
-        #     return None
-        # return Piece(
-        #     piece_id=self.id,
-        #     label=self.name,
-        #     team=self.team,
-        #     rank=QueenRank(QueenSearchPattern())
-        # )
-
-
-
-
-
-
-
-
-
+    def promote(self, piece: 'Piece') -> TurnRecord:
