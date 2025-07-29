@@ -20,7 +20,7 @@ class Piece:
     _label: Label
     _rank: 'Rank'
     _player: 'Player'
-    _position_history: List[Coordinate]
+    _coordinate_stack: List[Coordinate]
     _status: CaptivityStatus
 
     def __init__(self, piece_id: int, rank: 'Rank'):
@@ -38,7 +38,7 @@ class Piece:
         self._id = piece_id
         self._player = None
         self._status = CaptivityStatus.FREE
-        self._position_history: List[Coordinate] = []
+        self._coordinate_stack: List[Coordinate] = []
 
 
     # === Immutable attributes ===
@@ -66,7 +66,7 @@ class Piece:
 
     @property
     def position_history(self) -> List[Coordinate]:
-        return self._position_history
+        return self._coordinate_stack
 
     @status.setter
     def status(self, status: CaptivityStatus):
@@ -125,7 +125,7 @@ class Piece:
         return hash((self.id, self.rank))
 
     def __str__(self):
-        return f"{self.id} {self.label} {self.status.name} stack_size:{len(self._position_history)}"
+        return f"{self.id} {self.label} {self.status.name} stack_size:{len(self._coordinate_stack)}"
 
     def is_enemy(self, piece: 'Piece'):
         return self._player == piece.player
@@ -145,18 +145,18 @@ class Piece:
         if coordinate is None:
             raise ValueError("coord cannot be null.")
         print("current position history")
-        for c in self._position_history:
+        for c in self._coordinate_stack:
             print(c)
-        if coordinate in self._position_history:
+        if coordinate in self._coordinate_stack:
             raise ValueError(f"Cannot add {coordinate} to {self._label} stack. It is already present.")
-        self._position_history.append(coordinate)
+        self._coordinate_stack.append(coordinate)
 
 
     def undo_last_position(self) -> Optional[Coordinate]:
-        if self._position_history:
-            return self._position_history.pop()
+        if self._coordinate_stack:
+            return self._coordinate_stack.pop()
         return None
 
 
     def current_position(self) -> Optional[Coordinate]:
-        return self._position_history[-1] if self._position_history else None
+        return self._coordinate_stack[-1] if self._coordinate_stack else None
