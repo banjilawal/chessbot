@@ -81,7 +81,7 @@ class Rank(ABC):
 
 
     @abstractmethod
-    def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
+    def move(self, piece: Piece, board: Board, destination: Coordinate):
         pass
 
 

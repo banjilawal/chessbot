@@ -18,7 +18,7 @@ class Queen(Rank):
         super().__init__(name, acronym, QueenMotion, capture_value, territories)
 
 
-    def move(self, piece: Piece, board: Board, destination: Coordinate) -> Optional[TurnRecord]:
+    def move(self, piece: Piece, board: Board, destination: Coordinate):
         origin = piece.current_position()
         if origin is None:
             raise ValueError("Bishop has no known current position.")

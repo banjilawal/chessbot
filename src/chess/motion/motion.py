@@ -6,6 +6,7 @@ from chess.geometry.board import Board
 from chess.game.record.turn_record import TurnRecord
 from chess.motion.logic.reachable import Reachable
 from chess.motion.search.search_pattern import SearchPattern
+from chess.piece.piece import Piece
 
 if TYPE_CHECKING:
     from chess.rank.rank import Rank
@@ -33,34 +34,17 @@ class Motion(ABC):
         return self._search_pattern
 
     # Final method — performs common validation before deferring to subclass logic
-    def move(
-        self,
-        rank: 'Rank',
-        origin: Coordinate,
-        destination: Coordinate,
-        board: Board
-    ) -> Optional[TurnRecord]:
-        self._validate(rank, origin, board)
+    def move(self, piece: Piece, destination: Coordinate, board: Board):
+        self._validate(piece, board)
         self._validate_destination(destination, board)
-        return self._perform_move(rank, origin, destination, board)
+        self._perform_move(piece, destination, board)
 
     # Final method — performs common validation before deferring to subclass logic
-    def explore(
-        self,
-        piece: 'Piece',
-        board: Board
-    ) -> List[Coordinate]:
-        # self._validate(rank, origin, board)
+    def explore(self, piece: 'Piece', board: Board) -> List[Coordinate]:
         return self._perform_exploration(piece, board)
 
     @abstractmethod
-    def _perform_move(
-        self,
-        rank: 'Rank',
-        origin: Coordinate,
-        destination: Coordinate,
-        board: Board
-    ) -> Optional[TurnRecord]:
+    def _perform_move(self, piece: 'Piece', destination: Coordinate, board: Board):
         raise NotImplementedError("Subclasses must implement _perform_move.")
 
     @abstractmethod
@@ -71,13 +55,13 @@ class Motion(ABC):
     ) -> List[Coordinate]:
         raise NotImplementedError("Subclasses must implement _perform_explore.")
 
-    def _validate(self, rank: 'Rank', origin: Coordinate, board: Board):
-        if rank is None:
-            raise ValueError("Rank cannot be None.")
+    def _validate(self, piece: Piece,  board: Board):
+        if piece is None:
+            raise ValueError("Cannot move a piece that does not exist.")
+        if piece.current_position() is None:
+            raise ValueError(f"Before {piece.label} can be moved it has to be placed in its starting positon.")
         if board is None:
-            raise ValueError("Board cannot be None.")
-        if not board.coordinate_is_valid(origin):
-            raise ValueError(f"Origin coordinate {origin} is invalid.")
+            raise ValueError(f"Cannot move {piece.label} the board does not exist.")
 
     def _validate_destination(self, destination: Coordinate, board: Board):
         if not board.coordinate_is_valid(destination):

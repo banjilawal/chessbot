@@ -14,8 +14,9 @@ class CastleSearchPattern(SearchPattern):
     def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
         destinations = []
         origin = piece.current_position()
+        quadrants = piece.rank.territories
 
-        for quadrant in [Quadrant.N, Quadrant.E, Quadrant.S, Quadrant.W]:
+        for quadrant in quadrants:
             delta = quadrant.delta
             next_coord = origin
 

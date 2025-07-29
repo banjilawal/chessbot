@@ -17,7 +17,7 @@ class KnightSearchPattern(SearchPattern):
         destinations = []
         origin = piece.current_position()
 
-        for quadrant in RankConfig.KNIGHT.territories:
+        for quadrant in  piece.rank.territories:
             delta = quadrant.delta
             # Try both L-shaped offsets for this quadrant
             candidate_1 = origin.shift(delta.x * 2, delta.y)

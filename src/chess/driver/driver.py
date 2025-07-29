@@ -63,6 +63,11 @@ def main():
     piece.move(destination=Coordinate(row=4, column=4), board=board)
     piece.move(destination=Coordinate(row=6, column=4), board=board)
 
+    knight_piece = find_rank(ranks, "KNIGHT").members[0]
+    print(knight_piece)
+    knight_piece.move(destination=Coordinate(row=3, column=6), board=board)
+    print(knight_piece)
+
 
 
 
