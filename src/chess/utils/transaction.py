@@ -1,8 +1,8 @@
 from chess.utils.status_code import StatusCode
 
 
-FailueResult:
-    meesage: str
+# FailueResult:
+#     meesage: str
 
 class Transaction:
     _id: int
@@ -23,13 +23,13 @@ class Transaction:
     @property
     def id(self) -> int:
         return self._id
-
-Thhen some sort of transaction(id, mehtod_name: str, succes_condition: bool) -> TransactionResult
-
-    @property
-    def get_result(self) -> StatusCode:
-        return self._result
-
-    @property
-    def get_message(self) -> str:
-        return self._message
+#
+# Thhen some sort of transaction(id, mehtod_name: str, succes_condition: bool) -> TransactionResult
+#
+#     @property
+#     def get_result(self) -> StatusCode:
+#         return self._result
+#
+#     @property
+#     def get_message(self) -> str:
+#         return self._message

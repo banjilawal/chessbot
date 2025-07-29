@@ -3,6 +3,7 @@ from typing import Optional, TYPE_CHECKING
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.occupation_status import OccupationStatus
 from chess.piece.captivity_status import CaptivityStatus
+from chess.utils.failure_result import TransactionResult
 
 if TYPE_CHECKING:
     from chess.piece.piece import Piece
@@ -109,4 +110,7 @@ class Square:
 
         self._occupant = piece
         piece.add_position(self._coordinate)
+        if(self._occupant == piece and self in piece.position_history):
+            return TransactionResult.SUCCESS
+        else return TransactionResult(faiur)
 
