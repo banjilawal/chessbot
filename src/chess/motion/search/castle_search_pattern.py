@@ -37,7 +37,7 @@ class CastleSearchPattern(SearchPattern):
                     break
                 else:
                     print(f"{piece.label} cannot occupy {current} friendly {occupant.label} lives there")
-                    break  # Blocked by friendly piece
+                    break  # Blocked by friendly chess_piece
 
         return destinations
 

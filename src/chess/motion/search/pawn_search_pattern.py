@@ -43,7 +43,7 @@ class PawnSearchPattern(SearchPattern):
                             destinations.append(two_step)
 
             else:
-                # For diagonal quadrants, only add if there's an enemy piece and pawn can attack
+                # For diagonal quadrants, only add if there's an enemy chess_piece and pawn can attack
                 if (board.coordinate_is_occupied(candidate) and
                     PawnReachable.can_attack(pawn, candidate, board)):
                     destinations.append(candidate)

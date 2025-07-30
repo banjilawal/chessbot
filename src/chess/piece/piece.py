@@ -24,11 +24,11 @@ class ChessPiece:
 
     def __init__(self, piece_id: int, rank: 'Rank'):
         if not piece_id:
-            raise ValueError("Cannot create a piece with an empty id.")
+            raise ValueError("Cannot create a chess_piece with an empty id.")
         if piece_id < 0:
-            raise ValueError("Cannot create a piece with a negative id.")
+            raise ValueError("Cannot create a chess_piece with a negative id.")
         if rank is None:
-            raise ValueError("Cannot create a piece with an null rank.")
+            raise ValueError("Cannot create a chess_piece with an null rank.")
 
         rank.members.append(self)
         self._rank = rank

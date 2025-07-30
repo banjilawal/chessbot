@@ -81,11 +81,11 @@ class Player(ABC):
 
 
     # @staticmethod
-    # def occupy_destination(self, piece: ChessPiece, destination: Coordinate, board: Board):
-    #    if piece is None:
+    # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, board: Board):
+    #    if chess_piece is None:
     #        print("Bishop is None")
     #        return None
-    #    if piece.current_position() is None:
+    #    if chess_piece.current_position() is None:
     #        print("Bishop current position is None.")
     #
     #        return None
@@ -95,7 +95,7 @@ class Player(ABC):
     #    if not board.coordinate_is_valid(destination):
     #        print("Destination is not valid")
     #        return None
-    #    if not Diagonal.points_match_pattern(piece.current_position(), destination):
+    #    if not Diagonal.points_match_pattern(chess_piece.current_position(), destination):
     #        print("points are not in diagonal pattern")
     #        return
-    #    board.capture_square(piece, destination)
+    #    board.capture_square(chess_piece, destination)

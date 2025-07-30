@@ -54,7 +54,7 @@ class MotionService(ABC):
 
     def _validate(self, piece: ChessPiece, board: Board):
         if piece is None:
-            raise ValueError("Cannot move a piece that does not exist.")
+            raise ValueError("Cannot move a chess_piece that does not exist.")
         if piece.current_position() is None:
             raise ValueError(f"Before {piece.label} can be moved it has to be placed in its starting positon.")
         if board is None:

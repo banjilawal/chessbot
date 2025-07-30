@@ -41,6 +41,6 @@ class KnightSearchPattern(SearchPattern):
                         break
                     else:
                         print(f"{piece.label} cannot occupy {candidate} friendly {occupant.label} lives there")
-                        break  # Blocked by friendly piece
+                        break  # Blocked by friendly chess_piece
                     destinations.append(candidate)
         return destinations

@@ -37,7 +37,7 @@ def main():
     try:
         board.add_piece_to_board(piece, Coordinate(row=1, column=1))
     except ValueError as e:
-        DevMode.raise_or_print(f"Error adding piece to board: {e}")
+        DevMode.raise_or_print(f"Error adding chess_piece to board: {e}")
     print(f"{piece} {piece.current_position()}")
 
     piece.forward_move_request(destination=Coordinate(row=4, column=4), board=board)
@@ -50,7 +50,7 @@ def main():
     rank = find_rank(ranks, "CASTLE")
     print(rank)
     piece = rank.members[0]
-    print("New piece:", piece)
+    print("New chess_piece:", piece)
     board.add_piece_to_board(piece, Coordinate(row=4, column=7))
     print(piece)
     for coordinate in piece.position_history:

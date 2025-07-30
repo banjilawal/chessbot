@@ -81,9 +81,9 @@ class Rank(ABC):
 
 
     def delegate_move_excution(self, piece: ChessPiece, board: 'Board', destination: 'Coordinate'):
-        """Move a piece to the specified destination."""
+        """Move a chess_piece to the specified destination."""
         if piece is None:
-            raise ValueError("Cannot move a null piece")
+            raise ValueError("Cannot move a null chess_piece")
         if piece.current_position() is None:
             raise ValueError(f"{piece.label} when its coord is null. It's not even on the board.")
         if board is None:
@@ -101,9 +101,9 @@ class Rank(ABC):
 
 
     def explore(self, piece: ChessPiece, board: 'Board') -> List['Coordinate']:
-        """Find all possible moves for a bishop piece."""
+        """Find all possible moves for a bishop chess_piece."""
         if piece is None:
-            raise ValueError("Bishop cannot explore without a piece.")
+            raise ValueError("Bishop cannot explore without a chess_piece.")
 
         if board is None:
             raise ValueError("Bishop cannot explore without a board.")
