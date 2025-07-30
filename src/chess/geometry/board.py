@@ -83,7 +83,7 @@ class ChessBoard:
         if can_add_chess_piece_result.is_failure:
             return can_add_chess_piece_result
 
-        # Validate coordinate on board
+        # Validate coordinate on chess_board
         coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
         if coordinate_validation_result.is_failure:
             return coordinate_validation_result
@@ -106,7 +106,7 @@ class ChessBoard:
         if can_move_chess_piece_result.is_failure:
             return can_move_chess_piece_result
 
-        # 2. Validate the destination coordinate on the board
+        # 2. Validate the destination coordinate on the chess_board
         coord_validation_result = CoordinateValidator.validate_coordinate_on_board(destination, self)
         if coord_validation_result.is_failure:
             return TransactionResult(method, Failure("The coordinate is not valid"))

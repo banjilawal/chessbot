@@ -7,7 +7,7 @@ from chess.geometry.coordinate import Coordinate
 from chess.piece.piece import ChessPiece
 
 # if TYPE_CHECKING:
-#     from chess.board.board import ChessBoard
+#     from chess.chess_board.chess_board import ChessBoard
 
 
 class SearchPattern(ABC):
@@ -28,9 +28,9 @@ class SearchPattern(ABC):
         if piece is None:
             raise ValueError("[Warning] Cannot search for places with a null chess_piece. Destination search is impossible.")
         if piece.current_coordinate() is None:
-            raise ValueError(f"{piece.label} has a null coordinate. The chess_piece must be on the board to do a search.")
+            raise ValueError(f"{piece.label} has a null coordinate. The chess_piece must be on the chess_board to do a search.")
         if board is None:
-            raise ValueError("Cannot search for destinations when the board is null.")
+            raise ValueError("Cannot search for destinations when the chess_board is null.")
         return True
 
     @abstractmethod

@@ -9,9 +9,9 @@ if __name__ == "__main__":
     board = PodBoard(dimension=Dimension(length=21, height=21))
     for cell in board.cells:
         print(cell)
-    print("board dimensions:", board.dimension)
-    # print("total empty cells:", len(board.empty_cells()))
-    # print("total occupied cells:", len(board.occupied_cells()))
+    print("chess_board dimensions:", board.dimension)
+    # print("total empty cells:", len(chess_board.empty_cells()))
+    # print("total occupied cells:", len(chess_board.occupied_cells()))
 
     brick_pallet = BrickPallet(dimension=Dimension(length=10, height=5), top_left_coordinate=None)
     board.add_new_entity(GridCoordinate(row=0, column=0), brick_pallet)
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     print("moverV coord:", vertical_mover_v.top_left_coordinate)
 
     # brick_pallet = BrickPallet(dimension=Dimension(length=10, height=5), top_left_coordinate=None)
-    # board.add_new_entity(GridCoordinate(row=10, column=10), brick_pallet)
+    # chess_board.add_new_entity(GridCoordinate(row=10, column=10), brick_pallet)
     # print("brick pallet coord:", brick_pallet.top_left_coordinate)
 
 

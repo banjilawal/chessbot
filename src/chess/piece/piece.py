@@ -59,18 +59,22 @@ class ChessPiece:
     def rank(self) -> 'Rank':
         return self._rank
 
+
     @property
     def status(self) -> MobilityStatus:
         return self._status
+
 
     @property
     def position_history(self) -> List[Coordinate]:
         return self._coordinate_stack
 
+
     @status.setter
     def status(self, status: MobilityStatus):
         if self._status != status:
             self._status = status
+
 
     @player.setter
     def player(self, player: 'Player'):
@@ -90,12 +94,13 @@ class ChessPiece:
         if old_player is not None:
             old_player.pieces.remove(self)
 
-    def forward_move_request(self, board: 'ChessBoard', destination: Coordinate):
+
+    def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate):
         if self._rank is None:
             raise ValueError("ChessPiece has no rank assigned")
         if destination is None:
             raise ValueError("destination cannot be null.")
-        self._rank.delegate_move_excution(piece=self, board=board, destination=destination)
+        self._rank.delegate_move_excution(piece=self, board=chess_board, destination=destination)
 
 
     def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:

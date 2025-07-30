@@ -4,7 +4,7 @@ class GameError(Exception):
     pass
 
 class InvalidBoardError(GameError):
-    """Raised when the board is not valid"""
+    """Raised when the chess_board is not valid"""
     pass
 
 class InvalidNumberOfRowsError(GameError):

@@ -85,9 +85,9 @@ class Rank(ABC):
         if piece is None:
             raise ValueError("Cannot move a null chess_piece")
         if piece.current_coordinate() is None:
-            raise ValueError(f"{piece.label} when its coord is null. It's not even on the board.")
+            raise ValueError(f"{piece.label} when its coord is null. It's not even on the chess_board.")
         if board is None:
-            raise ValueError(f"{piece.label} cannot move without a board.")
+            raise ValueError(f"{piece.label} cannot move without a chess_board.")
         if destination is None:
             raise ValueError(f"{piece.label} without a destination.")
 
@@ -106,7 +106,7 @@ class Rank(ABC):
             raise ValueError("Bishop cannot explore without a chess_piece.")
 
         if board is None:
-            raise ValueError("Bishop cannot explore without a board.")
+            raise ValueError("Bishop cannot explore without a chess_board.")
 
         return self.motion.explore(piece, board)
 

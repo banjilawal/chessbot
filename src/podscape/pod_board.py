@@ -111,7 +111,7 @@ class PodBoard:
 
     def remove_entity_from_cells(self, mover: Mover) -> None:
         if mover is None:
-            raise ValueError("Entity not found on the board. cannot remove a non-existent chess_piece.")
+            raise ValueError("Entity not found on the chess_board. cannot remove a non-existent chess_piece.")
 
         target_cells = self.get_cells_occupied_by_entity(mover)
         for cell in target_cells:
@@ -124,7 +124,7 @@ class PodBoard:
             raise ValueError("Cannot add chess_piece to an area without a top-left top_left_coordinate.")
 
         if entity is None:
-            raise ValueError("Entity not found on the board. cannot add a non-existent chess_piece.")
+            raise ValueError("Entity not found on the chess_board. cannot add a non-existent chess_piece.")
 
         if entity is None or top_left_coordinate is None:
             raise ValueError("Entity and top_left_coordinate must not be None.")
@@ -141,10 +141,10 @@ class PodBoard:
 
         # Bounds check
         if top_left_coordinate.row + entity.dimension.height > self.dimension.height:
-            raise Exception("Entity does not fit within board bounds at the specified top_left_coordinate.")
+            raise Exception("Entity does not fit within chess_board bounds at the specified top_left_coordinate.")
 
         if top_left_coordinate.column + entity.dimension.length > self.dimension.length:
-            raise Exception("Entity does not fit within board bounds at the specified top_left_coordinate.")
+            raise Exception("Entity does not fit within chess_board bounds at the specified top_left_coordinate.")
 
         if not self.can_entity_move_to_cells(entity, top_left_coordinate):
             print("Coordinate", top_left_coordinate, "is ouccupoied by another entity. Canni=ot move here")
@@ -159,7 +159,7 @@ class PodBoard:
             raise ValueError("Destination top_left_coordinate must not be None.")
 
         if mover is None:
-            raise ValueError("Entity does not exist. in the board. cannot move a non-existent chess_piece.")
+            raise ValueError("Entity does not exist. in the chess_board. cannot move a non-existent chess_piece.")
 
         if not self.can_entity_move_to_cells(mover, upper_left_destination):
             print("Entity", mover.mover_id, "cannot move to", upper_left_destination)
@@ -171,7 +171,7 @@ class PodBoard:
 
     def remove_entity(self, entity: GridEntity) -> None:
         if entity is None:
-            raise ValueError("Entity does not exist. in the board. cannot remove a non-existent chess_piece.")
+            raise ValueError("Entity does not exist. in the chess_board. cannot remove a non-existent chess_piece.")
         self.remove_entity_from_cells(entity)
         self.entities.remove(entity)
 

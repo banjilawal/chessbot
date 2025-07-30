@@ -75,7 +75,7 @@ class GameDisplay:
                 pygame.draw.rect(self.screen, PodscapeColor.BLACK.value, cell_rect, 1)
 
     def draw_all_entities(self):
-        # First draw board entities
+        # First draw chess_board entities
         for entity in self.board.entities:
             self.draw_entity(entity)
 
@@ -93,7 +93,7 @@ class GameDisplay:
             self.screen.blit(text_surface, text_rect)
 
     def draw_entity(self, entity: 'GridEntity'):
-        """Draw a single chess_piece on the board"""
+        """Draw a single chess_piece on the chess_board"""
         if entity is None:
             print("[Warning] Entity cannot be None. Cannot draw a null chess_piece to the screen.")
             return
@@ -130,7 +130,7 @@ class GameDisplay:
             return None
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the game board. Cannot get an chess_piece at a position outside the board.")
+            print("Mouse is outside the game chess_board. Cannot get an chess_piece at a position outside the chess_board.")
             return None
         return self.board.cells[coordinate.row][coordinate.column].occupant
 
@@ -186,7 +186,7 @@ class GameDisplay:
         if isinstance(mover, VerticalMover):
             proposed_column = drag_state.original_coordinate.column
 
-        # Check against both visual and board states
+        # Check against both visual and chess_board states
         test_coordinate = GridCoordinate(row=proposed_row, column=new_column)
         if not self.is_position_valid_for_drag(mover, test_coordinate):
             return
@@ -198,7 +198,7 @@ class GameDisplay:
 
     def is_position_valid_for_drag(self, mover: Mover, test_coordinate: GridCoordinate) -> bool:
         """Combined check for visual dragging"""
-        # 1. Check board's official position (for static entities)
+        # 1. Check chess_board's official position (for static entities)
         if not self.board.can_entity_move_to_cells(mover, test_coordinate):
             return False
 
@@ -231,8 +231,8 @@ class GameDisplay:
     #         new_row = drag_state.original_coordinate.row
     #
     #     # Prevent going beyond right/bottom edges
-    #     new_col = min(new_col, self.board.dimension.length - drag_state.chess_piece.dimension.length)
-    #     new_row = min(new_row, self.board.dimension.height - drag_state.chess_piece.dimension.height)
+    #     new_col = min(new_col, self.chess_board.dimension.length - drag_state.chess_piece.dimension.length)
+    #     new_row = min(new_row, self.chess_board.dimension.height - drag_state.chess_piece.dimension.height)
     #
     #     try:
     #         new_coord = GridCoordinate(row=new_row, column=new_col)
@@ -243,11 +243,11 @@ class GameDisplay:
     #     # DEBUG PRINT - RIGHT BEFORE VALIDATION CHECK
     #     print(f"Proposed: row={new_row}, col={new_col} | "
     #           f"Current: {drag_state.current_coordinate} | "
-    #           f"Valid: {self.board.can_entity_move_to_cells(drag_state.chess_piece, new_coord)}")
+    #           f"Valid: {self.chess_board.can_entity_move_to_cells(drag_state.chess_piece, new_coord)}")
     #
     #     # Only update if position changed and is valid
     #     if (new_coord != drag_state.current_coordinate and
-    #             self.board.can_entity_move_to_cells(drag_state.chess_piece, new_coord)):
+    #             self.chess_board.can_entity_move_to_cells(drag_state.chess_piece, new_coord)):
     #         self.active_drags[mover_id_counter] = drag_state.with_updated_position(new_coord)
 
     # def update_drag(self, mover_id_counter: int, mouse_position: tuple[int, int]) -> None:
@@ -270,7 +270,7 @@ class GameDisplay:
     #     if new_coordinate == drag_state.current_coordinate:
     #         return
     #
-    #     if self.board.can_entity_move_to_cells(drag_state.chess_piece, new_coordinate):
+    #     if self.chess_board.can_entity_move_to_cells(drag_state.chess_piece, new_coordinate):
     #         self.active_drags[mover_id_counter] = self.active_drags[mover_id_counter].with_updated_position(new_coordinate)
     #         print("chess_piece", mover_id_counter, "dragging updated to", self.active_drags[mover_id_counter].current_coordinate)
     #     else:
@@ -302,7 +302,7 @@ class GameDisplay:
             print("[Warning] Destination top_left_coordinate cannot be None. Cannot move chess_piece without a destination top_left_coordinate.")
 
         if self.board is None:
-            print("[Warning] PodBoard cannot be None. Cannot move on a nonexistent board.")
+            print("[Warning] PodBoard cannot be None. Cannot move on a nonexistent chess_board.")
             return False
         if entity.top_left_coordinate is None:
             print("[Warning] Entity has no top_left_coordinate. Cannot move an chess_piece without a top_left_coordinate.")
@@ -341,10 +341,10 @@ class GameDisplay:
         row = mouse_position[1] // self.cell_px
 
         if column < 0 or column >= self.board.dimension.length:
-            print(f"[Warning] Mouse id outside the game board at: {column}")
+            print(f"[Warning] Mouse id outside the game chess_board at: {column}")
             return None
         if row < 0 or row >= self.board.dimension.height:
-            print(f"[Warning] Mouse id outside the game board at: {row}")
+            print(f"[Warning] Mouse id outside the game chess_board at: {row}")
             return None
         return GridCoordinate(row=row, column=column)
 

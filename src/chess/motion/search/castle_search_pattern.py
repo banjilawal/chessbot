@@ -25,7 +25,7 @@ class CastleSearchPattern(SearchPattern):
                 try:
                     current= current.shift(delta)
                 except ValueError:
-                    # Went off the board — stop searching in this direction
+                    # Went off the chess_board — stop searching in this direction
                     break
 
                 occupant = board.find_chess_piece(current)
