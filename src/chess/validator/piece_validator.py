@@ -20,7 +20,7 @@ class ChessPieceValidator:
 
 
     @staticmethod
-    def can_move(self, piece: ChessPiece) -> TransactionResult:
+    def can_be_moved(self, piece: ChessPiece) -> TransactionResult:
         method = "ChessPieceValidator.can_move"
 
         if piece.status == MobilityStatus.FREE and piece.current_coordinate() is not None:
@@ -30,7 +30,7 @@ class ChessPieceValidator:
 
 
     @staticmethod
-    def can_add_to_board(self, chess_piece: ChessPiece) -> TransactionResult:
+    def can_place_on_board(self, chess_piece: ChessPiece) -> TransactionResult:
         method = "ChessPieceValidator.can_add_to_board"
         if (
             chess_piece is not None and

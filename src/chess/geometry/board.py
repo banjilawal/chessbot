@@ -1,12 +1,10 @@
-from dataclasses import field
+
 from typing import Tuple, List, Optional, TYPE_CHECKING
 
-from chess.factory.emit import id_emitter
 
-from chess.game.record.turn_record import TurnRecord, CaptureRecord
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.square import Square
-from chess.piece.mobility_status import MobilityStatus
+
 from chess.piece.piece import ChessPiece
 from chess.transaction.failure import Failure
 from chess.transaction.transaction_result import TransactionResult
@@ -72,7 +70,7 @@ class Board:
                 occupied_squares.append(square)
         return occupied_squares
 
-    def add_new_chess_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
+    def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
         method = "Board.add_new_piece"
 
         # Validate chess_piece presence
@@ -80,7 +78,7 @@ class Board:
         if chess_piece_not_null_result.is_failure:
             return chess_piece_not_null_result
 
-        can_add_chess_piece_result = ChessPieceValidator.can_add_to_board(chess_piece)
+        can_add_chess_piece_result = ChessPieceValidator.can_place_on_board(chess_piece)
         if can_add_chess_piece_result.is_failure:
             return can_add_chess_piece_result
 
@@ -102,14 +100,9 @@ class Board:
     def capture_square(self, piece: ChessPiece, destination: Coordinate) -> TransactionResult:
         method = "Board.capture_square"
 
-        # 1. Validate the chess_piece isn't None (this also logs)
-        piece_validation_result = ChessPieceValidator.is_not_null(piece)
-        if piece_validation_result.is_failure:
-            return piece_validation_result
-
-        piece_already_on_board_result = ChessPieceValidator.is_on_board(piece)
-        if piece_already_on_board_result.is_failure:
-            return piece_already_on_board_result
+        can_move_chess_piece_result = ChessPieceValidator.can_be_moved(piece)
+        if can_move_chess_piece_result.is_failure:
+            return can_move_chess_piece_result
 
         # 2. Validate the destination coordinate on the board
         coord_validation_result = CoordinateValidator.validate_coordinate_on_board(destination, self)
