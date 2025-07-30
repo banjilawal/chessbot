@@ -28,11 +28,11 @@ class KnightSearchPattern(SearchPattern):
             for candidate in [candidate_1, candidate_2]:
                 if not board.coordinate_is_valid(candidate):
                     continue
-                piece = board.find_piece(origin)
+                piece = board.find_chess_piece(origin)
                 if not board.square_is_empty_or_contains_enemy(candidate, piece.player):
                     continue
                 if KnightReachable.is_reachable(origin, candidate):
-                    occupant = board.find_piece(candidate)
+                    occupant = board.find_chess_piece(candidate)
                     if occupant is None:
                         destinations.append(candidate)
                     elif piece.is_enemy(occupant):

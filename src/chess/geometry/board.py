@@ -16,29 +16,29 @@ if TYPE_CHECKING:
 
 
 class Board:
-    _pieces: List[ChessPiece]
+    _chess_pieces: List[ChessPiece]
     _grid: List[List[Square]]
 
 
     def __init__(self, grid: List[List[Square]]):
-        self._pieces = []
+        self._chess_pieces = []
         self._grid = grid
 
 
     @property
-    def pieces(self) -> List[ChessPiece]:
-        return self._pieces
+    def chess_pieces(self) -> List[ChessPiece]:
+        return self._chess_pieces
 
 
     @property
     def grid(self) -> List[List[Square]]:
         return self._grid
 
-    def find_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
+    def find_chess_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
 
         coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
         if coordinate_validation_result.is_failure:
-            print("Cannot find piece at invalid coordinate")
+            print("Cannot find chess_piece at invalid coordinate")
             return None
         return self._grid[coordinate.row][coordinate.column].occupant
 
@@ -70,6 +70,7 @@ class Board:
                 occupied_squares.append(square)
         return occupied_squares
 
+
     def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
         method = "Board.add_new_piece"
 
@@ -97,10 +98,11 @@ class Board:
 
         return square.occupy(chess_piece)
 
-    def capture_square(self, piece: ChessPiece, destination: Coordinate) -> TransactionResult:
+
+    def capture_square(self, chess_piece: ChessPiece, destination: Coordinate) -> TransactionResult:
         method = "Board.capture_square"
 
-        can_move_chess_piece_result = ChessPieceValidator.can_be_moved(piece)
+        can_move_chess_piece_result = ChessPieceValidator.can_be_moved(chess_piece)
         if can_move_chess_piece_result.is_failure:
             return can_move_chess_piece_result
 
@@ -110,15 +112,15 @@ class Board:
             return TransactionResult(method, Failure("The coordinate is not valid"))
 
         # 3. Get the squares
-        square_to_leave = self.find_square(piece.current_coordinate())
+        square_to_leave = self.find_square(chess_piece.current_coordinate())
         destination_square = self.find_square(destination)
 
         # 4. Attempt to occupy the square
-        occupation_result = destination_square.occupy(piece)
+        occupation_result = destination_square.occupy(chess_piece)
 
         # 5. If successful, make the chess_piece leave its previous square (if any)
         if occupation_result.is_success:
-            return square_to_leave.leave(piece)
+            return square_to_leave.leave(chess_piece)
 
         return occupation_result  # failed occupation result
 
