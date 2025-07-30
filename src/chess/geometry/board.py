@@ -81,7 +81,7 @@ class Board:
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("THe chess piece cannot be addd. The destination coord is out of range.")
         if self.grid[coordinate.row][coordinate.column].occupant is not None:
-            raise ValueError("The chess piece cannot be added. The destination square is already occupied. by ", gt)
+            raise ValueError("The chess piece cannot be added. The destination square is already occupied.")
 
         print("Calling capture_square with ", chess_piece, " and ", coordinate, "")
         self.capture_square(chess_piece, coordinate)
