@@ -10,6 +10,7 @@ from abc import ABC
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.transaction.failure import Failure
+from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
 from chess.validator.board_validator import BoardValidator
 from chess.validator.coordinate_validator import CoordinateValidator
@@ -166,18 +167,29 @@ class ChessPiece:
 
 
     # === Stack operations ===
-    def push_new_coordinate(self, coordinate: Coordinate):
+    def push_new_coordinate(self, coordinate: Coordinate) -> TransactionResult:
+        method = "ChessPiece.push_new_coordinate"
+        old_size = len(self._coordinate_stack)
+
         if coordinate is None:
-            raise ValueError("coord cannot be null.")
-        print("current position history")
-        for c in self._coordinate_stack:
-            print(c)
+            return TransactionResult(method, Failure("Cannot push a null coordinate on to te stack"))
         if coordinate in self._coordinate_stack:
-            raise ValueError(f"Cannot add {coordinate} to {self._label} stack. It is already present.")
+            print(f"{coordinate} is already on {self._label}'s stack. No need for a push.")
+            return TransactionResult(method, StatusCode.SUCCESS)
+
         self._coordinate_stack.append(coordinate)
+
+        if coordinate == self.current_coordinate() and old_size + 1 == len(self._coordinate_stack):
+            return TransactionResult(method, StatusCode.SUCCESS)
+        return TransactionResult(method, Failure("Failed to push coordinate on to stack"))
 
 
     def undo_last_coordinate_push(self) -> Optional[Coordinate]:
+
+        if len(self._coordinate_stack) == 0:
+            print(f"{self._label} has no coordinates to undo")
+            return None
+
         if self._coordinate_stack:
             return self._coordinate_stack.pop()
         return None
