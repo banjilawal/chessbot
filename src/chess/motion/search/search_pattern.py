@@ -1,13 +1,13 @@
 
 from abc import ABC, abstractmethod
-from typing import Dict, List
+from typing import Dict, List, TYPE_CHECKING
 
-from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate import Coordinate
-from chess.piece.piece import ChessPiece
 
-# if TYPE_CHECKING:
-#     from chess.chess_board.chess_board import ChessBoard
+
+if TYPE_CHECKING:
+    from chess.geometry.board import ChessBoard
+    from chess.piece.piece import ChessPiece
 
 
 class SearchPattern(ABC):
@@ -18,13 +18,13 @@ class SearchPattern(ABC):
         pass
 
 
-    def search(self, piece: ChessPiece, board: ChessBoard) -> list[Coordinate]:
+    def search(self, piece: 'ChessPiece', board: 'ChessBoard') -> list[Coordinate]:
         if not self.validate_search_parameters(piece, board):
             return []
         return self._perform_search(piece, board)
 
 
-    def validate_search_parameters(self, piece: ChessPiece, board: ChessBoard) -> bool:
+    def validate_search_parameters(self, piece: 'ChessPiece', board: 'ChessBoard') -> bool:
         if piece is None:
             raise ValueError("[Warning] Cannot search for places with a null chess_piece. Destination search is impossible.")
         if piece.current_coordinate() is None:
@@ -34,7 +34,7 @@ class SearchPattern(ABC):
         return True
 
     @abstractmethod
-    def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
+    def _perform_search(self, piece: 'ChessPiece', board: 'ChessBoard') -> List[Coordinate]:
         """Concrete classes implement the actual search logic."""
         pass
 

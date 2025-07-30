@@ -4,7 +4,7 @@ from chess.geometry.coordinate import Coordinate
 from chess.geometry.board import ChessBoard
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
-from chess.rank.promotable.pawn import Pawn
+from chess.rank.pawn import Pawn
 from chess.motion.logic.pawn_reachable import PawnReachable
 
 

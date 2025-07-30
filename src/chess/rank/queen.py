@@ -1,8 +1,11 @@
-from typing import List
+from typing import List, TYPE_CHECKING
 
-from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 
+if TYPE_CHECKING:
+    from chess.rank.rank import Rank
+
+from chess.rank.rank import Rank
 
 class Queen(Rank):
 

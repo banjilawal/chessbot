@@ -44,8 +44,10 @@ class RankConfig(Enum):
 
     @staticmethod
     def find_config_by_class(rank: Rank):
+        print(f"Looking for config with name: {rank.name}")
         for config in RankConfig:
-            if config.name == rank.name:
+            print(f"Checking config: {config.value}")
+            if config.value.upper() == rank.name.upper():
                 return config
         return None
 
