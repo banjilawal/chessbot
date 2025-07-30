@@ -87,7 +87,7 @@ class Square:
         self._occupant = None
         self._status = OccupationStatus.IS_VACANT
 
-        if self._occupant is None and piece.current_position() == self._coordinate:
+        if self._occupant is None and piece.current_coordinate() == self._coordinate:
             return TransactionResult(method, StatusCode.SUCCESS)
         else:
             return TransactionResult(method, Failure(f"Leave failed after mutation"))
@@ -134,5 +134,5 @@ class Square:
             self._occupant.status = MobilityStatus.PRISONER
 
         self._occupant = piece
-        piece.add_position(self._coordinate)
+        piece.push_new_coordinate(self._coordinate)
 

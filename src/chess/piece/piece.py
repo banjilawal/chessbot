@@ -140,7 +140,7 @@ class ChessPiece:
 
 
     # === Stack operations ===
-    def add_position(self, coordinate: Coordinate):
+    def push_new_coordinate(self, coordinate: Coordinate):
         if coordinate is None:
             raise ValueError("coord cannot be null.")
         print("current position history")
@@ -151,11 +151,11 @@ class ChessPiece:
         self._coordinate_stack.append(coordinate)
 
 
-    def undo_last_position(self) -> Optional[Coordinate]:
+    def undo_last_coordinate_push(self) -> Optional[Coordinate]:
         if self._coordinate_stack:
             return self._coordinate_stack.pop()
         return None
 
 
-    def current_position(self) -> Optional[Coordinate]:
+    def current_coordinate(self) -> Optional[Coordinate]:
         return self._coordinate_stack[-1] if self._coordinate_stack else None

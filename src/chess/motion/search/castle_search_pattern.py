@@ -12,7 +12,7 @@ class CastleSearchPattern(SearchPattern):
         super().__init__()
 
     def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
-        origin = piece.current_position()
+        origin = piece.current_coordinate()
         destinations: List[Coordinate] = []
         quadrants = piece.rank.territories
         print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")

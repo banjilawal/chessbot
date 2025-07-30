@@ -123,7 +123,7 @@ class Board:
             return TransactionResult(method, Failure("The coordinate is not valid"))
 
         # 3. Get the squares
-        square_to_leave = self.find_square(piece.current_position())
+        square_to_leave = self.find_square(piece.current_coordinate())
         destination_square = self.find_square(destination)
 
         # 4. Attempt to occupy the square

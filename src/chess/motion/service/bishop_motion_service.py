@@ -15,7 +15,7 @@ class BishopMotionService(MotionService):
         super().__init__(logic=BishopReachable(), search_pattern=BishopSearchPattern())
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: Board) -> TransactionResult:
-        origin = piece.current_position()
+        origin = piece.current_coordinate()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")
 

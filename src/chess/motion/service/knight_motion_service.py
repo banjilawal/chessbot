@@ -15,7 +15,7 @@ class KnightMotionService(MotionService):
 
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: Board) -> TransactionResult :
-        origin = piece.current_position()
+        origin = piece.current_coordinate()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"B{piece.label} cannot reach destination {destination} from origin {origin}.")
 

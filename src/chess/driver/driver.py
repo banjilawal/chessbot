@@ -38,10 +38,10 @@ def main():
         board.add_piece_to_board(piece, Coordinate(row=1, column=1))
     except ValueError as e:
         DevMode.raise_or_print(f"Error adding chess_piece to board: {e}")
-    print(f"{piece} {piece.current_position()}")
+    print(f"{piece} {piece.current_coordinate()}")
 
     piece.forward_move_request(destination=Coordinate(row=4, column=4), board=board)
-    print(f"{piece} {piece.current_position()}")
+    print(f"{piece} {piece.current_coordinate()}")
     print(f"{piece.label} is exploring the board")
     places = piece.explore_destinations(board=board)
     for place in places:

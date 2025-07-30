@@ -84,14 +84,14 @@ class Rank(ABC):
         """Move a chess_piece to the specified destination."""
         if piece is None:
             raise ValueError("Cannot move a null chess_piece")
-        if piece.current_position() is None:
+        if piece.current_coordinate() is None:
             raise ValueError(f"{piece.label} when its coord is null. It's not even on the board.")
         if board is None:
             raise ValueError(f"{piece.label} cannot move without a board.")
         if destination is None:
             raise ValueError(f"{piece.label} without a destination.")
 
-        origin = piece.current_position()
+        origin = piece.current_coordinate()
         print(f"{piece.label} starting move from {origin} to {destination}")
         print(f"motion instance: {self.motion}")
         print(f"motion type: {type(self.motion)}")

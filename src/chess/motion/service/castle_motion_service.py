@@ -17,7 +17,7 @@ class CastleMotionService(MotionService):
 
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: Board):
-        origin = piece.current_position()
+        origin = piece.current_coordinate()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")
 

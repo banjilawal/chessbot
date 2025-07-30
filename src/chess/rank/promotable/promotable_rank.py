@@ -30,6 +30,7 @@ class PromotableRank(Rank):
     def promote(self, piece: 'ChessPiece') -> TransactionResult:
         method = "PromotableRank.promote"
 
+
         if self.is_promoted():
             return TransactionResult(
                 method_name=method,
@@ -41,7 +42,7 @@ class PromotableRank(Rank):
         previous_top = piece.coordinate_stack[-1] if piece.coordinate_stack else None
         previous_id = piece.id
 
-        new_rank = Queen(previous_rank=self)
+        new_rank = Queen()
         piece.assign_rank(new_rank)
 
         if self._promotion_succeeded(piece, previous_stack_size, previous_top, previous_id):
@@ -53,13 +54,18 @@ class PromotableRank(Rank):
             outcome=Failure(StatusCode.FAILURE, f"Promotion failed integrity check on piece {piece.id}")
         )
 
-    def _promotion_succeeded(self, piece: 'ChessPiece', old_stack_size: int, old_top: Coordinate, old_id: int) -> bool:
-        if not isinstance(piece.rank, QueenRank):
+    def _promotion_succeeded(
+            self, piece: 'ChessPiece',
+            old_stack_size: int,
+            old_top_coordinate: Coordinate,
+            old_id: int
+    ) -> bool:
+        if not isinstance(piece.rank, Queen):
             return False
         if hasattr(piece.rank, "piece_id") and piece.rank.piece_id != old_id:
             return False
         if len(piece.coordinate_stack) != old_stack_size:
             return False
-        if piece.coordinate_stack[-1] != old_top:
+        if piece.coordinate_stack[-1] != old_top_coordinate:
             return False
         return True

@@ -40,7 +40,7 @@ class PawnReachable(Reachable):
         if not isinstance(pawn.rank, Pawn):
             return False
 
-        origin = pawn.current_position()
+        origin = pawn.current_coordinate()
         if origin is None:
             return False
 
@@ -65,7 +65,7 @@ class PawnReachable(Reachable):
         if not isinstance(pawn.rank, Pawn):
             return False
 
-        origin = pawn.current_position()
+        origin = pawn.current_coordinate()
         if origin is None or not board.coordinate_is_valid(destination):
             return False
 

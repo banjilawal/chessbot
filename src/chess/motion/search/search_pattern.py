@@ -27,7 +27,7 @@ class SearchPattern(ABC):
     def validate_search_parameters(self, piece: ChessPiece, board: Board) -> bool:
         if piece is None:
             raise ValueError("[Warning] Cannot search for places with a null chess_piece. Destination search is impossible.")
-        if piece.current_position() is None:
+        if piece.current_coordinate() is None:
             raise ValueError(f"{piece.label} has a null coordinate. The chess_piece must be on the board to do a search.")
         if board is None:
             raise ValueError("Cannot search for destinations when the board is null.")
