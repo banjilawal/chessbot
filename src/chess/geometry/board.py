@@ -11,7 +11,7 @@ from chess.piece.piece import ChessPiece
 from chess.transaction.failure import Failure
 from chess.transaction.transaction_result import TransactionResult
 from chess.validator.coordinate_validator import CoordinateValidator
-from chess.validator.piece_validator import PieceValidator
+from chess.validator.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:
     from chess.game.record.capture_record import CaptureRecord
@@ -24,7 +24,6 @@ class Board:
 
     def __init__(self, grid: List[List[Square]]):
         self._pieces = []
-        self._killed_pieces = []
         self._grid = grid
 
 
@@ -39,6 +38,7 @@ class Board:
 
 
     def find_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
+
         print("Checking for coord", coordinate, "")
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("The coord is not valid. Cannot find chess piece.")
@@ -46,6 +46,7 @@ class Board:
         square = self._grid[coordinate.row][coordinate.column]
         print("The square at ", coordinate, " is ", square, " it contains ", square.occupant, "")
         return self.grid[coordinate.row][coordinate.column].occupant
+
 
     def find_square(self, coordinate: Coordinate) -> Optional[Square]:
         print("Checking for coord", coordinate, "")
@@ -79,7 +80,7 @@ class Board:
         method = "Board.add_new_piece"
 
         # Validate piece presence
-        validation_result = PieceValidator.is_present(chess_piece)
+        validation_result = ChessPieceValidator.is_not_null(chess_piece)
         if validation_result.is_failure:
             return validation_result
 
@@ -112,7 +113,7 @@ class Board:
         method = "Board.capture_square"
 
         # 1. Validate the piece isn't None (this also logs)
-        piece_validation_result = PieceValidator.is_present(piece)
+        piece_validation_result = ChessPieceValidator.is_not_null(piece)
         if piece_validation_result.is_failure:
             return piece_validation_result
 

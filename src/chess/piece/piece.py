@@ -12,7 +12,6 @@ from typing import List, Optional, TYPE_CHECKING
 if TYPE_CHECKING:
     from chess.player.player import Player
     from chess.rank.rank import Rank
-    from chess.game.record.turn_record import TurnRecord
     from chess.geometry.board import Board
 
 class ChessPiece:
