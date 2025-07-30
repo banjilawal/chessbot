@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from chess.game.record.capture_record import CaptureRecord
 
 
-class Board:
+class ChessBoard:
     _chess_pieces: List[ChessPiece]
     _grid: List[List[Square]]
 
@@ -72,7 +72,7 @@ class Board:
 
 
     def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
-        method = "Board.add_new_piece"
+        method = "ChessBoard.add_new_piece"
 
         # Validate chess_piece presence
         chess_piece_not_null_result = ChessPieceValidator.is_not_null(chess_piece)
@@ -100,7 +100,7 @@ class Board:
 
 
     def capture_square(self, chess_piece: ChessPiece, destination: Coordinate) -> TransactionResult:
-        method = "Board.capture_square"
+        method = "ChessBoard.capture_square"
 
         can_move_chess_piece_result = ChessPieceValidator.can_be_moved(chess_piece)
         if can_move_chess_piece_result.is_failure:

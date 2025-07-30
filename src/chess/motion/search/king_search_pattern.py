@@ -3,13 +3,13 @@ from typing import List
 from chess.motion.search.search_pattern import SearchPattern
 from chess.motion.search.queen_search_pattern import QueenSearchPattern
 from chess.geometry.coordinate import Coordinate
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.piece.piece import ChessPiece
 
 
 class KingSearchPattern(SearchPattern):
 
-    def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
+    def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
         origin = piece.current_coordinate()
         destinations: List[Coordinate] = []
         quadrants = piece.rank.territories

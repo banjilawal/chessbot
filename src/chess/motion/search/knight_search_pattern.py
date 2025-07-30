@@ -1,6 +1,6 @@
 
 from chess.geometry.coordinate import Coordinate
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.motion.search.search_pattern import SearchPattern
 from chess.piece.piece import ChessPiece
 from chess.motion.logic.knight_reachable import KnightReachable
@@ -13,7 +13,7 @@ class KnightSearchPattern(SearchPattern):
     def __init__(self):
         super().__init__()
 
-    def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
+    def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
         origin = piece.current_coordinate()
         destinations: List[Coordinate] = []
         quadrants = piece.rank.territories

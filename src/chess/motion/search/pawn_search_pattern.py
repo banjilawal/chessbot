@@ -1,7 +1,7 @@
 
 from typing import List
 from chess.geometry.coordinate import Coordinate
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
 from chess.rank.promotable.pawn import Pawn
@@ -10,7 +10,7 @@ from chess.motion.logic.pawn_reachable import PawnReachable
 
 class PawnSearchPattern(SearchPattern):
 
-    def _perform_search(self, pawn: Pawn, board: Board) -> List[Coordinate]:
+    def _perform_search(self, pawn: Pawn, board: ChessBoard) -> List[Coordinate]:
         origin = pawn.current_position()
         destinations: List[Coordinate] = []
         quadrants = pawn.rank.territories

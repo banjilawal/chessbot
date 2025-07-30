@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABC
 from typing import Optional, List, Dict, TYPE_CHECKING
 
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.common.game_color import GameColor
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
@@ -10,7 +10,7 @@ from chess.piece.piece import ChessPiece, Label
 from chess.game.record.turn_record import TurnRecord
 
 if TYPE_CHECKING:
-    from chess.geometry.board import Board
+    from chess.geometry.board import ChessBoard
     from chess.piece.piece import ChessPiece
 
 class Player(ABC):
@@ -60,11 +60,11 @@ class Player(ABC):
 
 
     @abstractmethod
-    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> Optional[TurnRecord]:
         pass
 
     @abstractmethod
-    def hunt(self, board: 'Board') -> Dict[Label, List[ChessPiece]]:
+    def hunt(self, board: 'ChessBoard') -> Dict[Label, List[ChessPiece]]:
         pass
 
     @abstractmethod
@@ -76,12 +76,12 @@ class Player(ABC):
         pass
 
     @abstractmethod
-    def select_target(self, board: 'Board') -> Optional[TurnRecord]:
+    def select_target(self, board: 'ChessBoard') -> Optional[TurnRecord]:
         pass
 
 
     # @staticmethod
-    # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, board: Board):
+    # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, board: ChessBoard):
     #    if chess_piece is None:
     #        print("Bishop is None")
     #        return None
@@ -90,7 +90,7 @@ class Player(ABC):
     #
     #        return None
     #    if board is None:
-    #        print("Board is None")
+    #        print("ChessBoard is None")
     #        return None
     #    if not board.coordinate_is_valid(destination):
     #        print("Destination is not valid")

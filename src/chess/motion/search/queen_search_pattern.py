@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate import Coordinate
 from chess.motion.search.bishop_search_pattern import BishopSearchPattern
 from chess.motion.search.castle_search_pattern import CastleSearchPattern
@@ -10,7 +10,7 @@ from chess.piece.piece import ChessPiece
 
 class QueenSearchPattern(SearchPattern):
 
-    def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
+    def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
         origin = piece.current_coordinate()
         destinations: List[Coordinate] = []
         quadrants = piece.rank.territories

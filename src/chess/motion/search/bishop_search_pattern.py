@@ -1,6 +1,6 @@
 
 from typing import List
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.logic.bishop_reachable import BishopReachable
@@ -13,7 +13,7 @@ class BishopSearchPattern(SearchPattern):
     def __init__(self):
         super().__init__()
 
-    def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
+    def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
         origin = piece.current_coordinate()
         destinations: List[Coordinate] = []
         quadrants = piece.rank.territories

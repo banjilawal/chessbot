@@ -7,17 +7,17 @@ from chess.system_config import ROW_SIZE, COLUMN_SIZE
 class BoardValidator:
 
     @staticmethod
-    def validate(board: 'Board') -> bool:
+    def validate(board: 'ChessBoard') -> bool:
 
         if board is None:
-            raise ValueError("Board cannot be None.")
+            raise ValueError("ChessBoard cannot be None.")
 
         grid = getattr(board, 'grid', None)
         if grid is None:
-            raise ValueError("Board has no grid attribute.")
+            raise ValueError("ChessBoard has no grid attribute.")
 
         if len(grid) != ROW_SIZE:
-            raise ValueError(f"Board must have 8 rows, found {len(grid)}.")
+            raise ValueError(f"ChessBoard must have 8 rows, found {len(grid)}.")
 
         for row_index, row in enumerate(grid):
             if not isinstance(row, list):

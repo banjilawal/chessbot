@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.service.motion_service import MotionService
@@ -80,7 +80,7 @@ class Rank(ABC):
                 f"num_members:{len(self._members)} num_territories:{len(self._territories)}")
 
 
-    def delegate_move_excution(self, piece: ChessPiece, board: 'Board', destination: 'Coordinate'):
+    def delegate_move_excution(self, piece: ChessPiece, board: 'ChessBoard', destination: 'Coordinate'):
         """Move a chess_piece to the specified destination."""
         if piece is None:
             raise ValueError("Cannot move a null chess_piece")
@@ -100,7 +100,7 @@ class Rank(ABC):
         self.motion.dispatch_to_move_executor(piece, destination, board)
 
 
-    def explore(self, piece: ChessPiece, board: 'Board') -> List['Coordinate']:
+    def explore(self, piece: ChessPiece, board: 'ChessBoard') -> List['Coordinate']:
         """Find all possible moves for a bishop chess_piece."""
         if piece is None:
             raise ValueError("Bishop cannot explore without a chess_piece.")

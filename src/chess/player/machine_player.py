@@ -14,10 +14,10 @@ class MachinePlayer(Player):
         super().__init__(player_id, name, color)
 
 
-    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> Optional[TurnRecord]:
         pass
 
-    def hunt(self, board: 'Board') -> Dict[Label, List[ChessPiece]]:
+    def hunt(self, board: 'ChessBoard') -> Dict[Label, List[ChessPiece]]:
         pass
 
     def prepare_kill_list(self) -> List['ChessPiece']:
@@ -26,7 +26,7 @@ class MachinePlayer(Player):
     def select_killer(self) -> 'ChessPiece':
         pass
 
-    def select_target(self, board: 'Board') -> Optional[TurnRecord]:
+    def select_target(self, board: 'ChessBoard') -> Optional[TurnRecord]:
         pass
 
     def __init__(self, player_id: int,  name: str):

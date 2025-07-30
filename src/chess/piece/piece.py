@@ -12,7 +12,7 @@ from typing import List, Optional, TYPE_CHECKING
 if TYPE_CHECKING:
     from chess.player.player import Player
     from chess.rank.rank import Rank
-    from chess.geometry.board import Board
+    from chess.geometry.board import ChessBoard
 
 class ChessPiece:
     _id: int
@@ -90,7 +90,7 @@ class ChessPiece:
         if old_player is not None:
             old_player.pieces.remove(self)
 
-    def forward_move_request(self, board: 'Board', destination: Coordinate):
+    def forward_move_request(self, board: 'ChessBoard', destination: Coordinate):
         if self._rank is None:
             raise ValueError("ChessPiece has no rank assigned")
         if destination is None:
@@ -98,7 +98,7 @@ class ChessPiece:
         self._rank.delegate_move_excution(piece=self, board=board, destination=destination)
 
 
-    def explore_destinations(self, board: 'Board') -> List[Coordinate]:
+    def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
         if self._rank is None:
             raise ValueError(f"ChessPiece {self.label} has no rank assigned. It cannot explore.")
             return []

@@ -1,4 +1,4 @@
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.diagonal import Diagonal
 from chess.geometry.vertical import Vertical
@@ -58,7 +58,7 @@ class PawnReachable(Reachable):
             return row_diff == 1
 
     @staticmethod
-    def can_attack(pawn: ChessPiece, destination: Coordinate, board: Board) -> bool:
+    def can_attack(pawn: ChessPiece, destination: Coordinate, board: ChessBoard) -> bool:
         if pawn is None or board is None:
             return False
 

@@ -1,9 +1,9 @@
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate import Coordinate, Delta
 
 
 class CoordinateIterator:
-    def __init__(self, origin: Coordinate, delta: Delta, board: Board):
+    def __init__(self, origin: Coordinate, delta: Delta, board: ChessBoard):
         self.current = origin
         self.delta = delta
         self.board = board

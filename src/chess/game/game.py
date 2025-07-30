@@ -1,13 +1,13 @@
 from typing import List
 
-from chess.geometry.board import Board
+from chess.geometry.board import ChessBoard
 from chess.piece.piece import ChessPiece
 from chess.game.record.turn_record import TurnRecord
 from chess.player.player import Player
 
 
 class Game:
-    _board = Board
+    _board = ChessBoard
     _white_player: Player
     _blck_player: Player
     _pieces: List[ChessPiece]
