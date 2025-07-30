@@ -19,14 +19,14 @@ class Player(ABC):
     _color: GameColor
     _captives: List['ChessPiece']
     _home_quadrant: Quadrant
-    _pieces: List['ChessPiece']
+    _chess_pieces: List['ChessPiece']
 
     def __init__(self, player_id: int, name: str, color: GameColor):
         self._id = player_id
         self._name = name
         self._color = color
         self._captives = []
-        self._pieces = []
+        self._chess_pieces = []
 
 
     @property
@@ -50,8 +50,8 @@ class Player(ABC):
 
 
     @property
-    def pieces(self) -> List[ChessPiece]:
-        return self._pieces.copy()
+    def chess_pieces(self) -> List[ChessPiece]:
+        return self._chess_pieces
 
 
     @property
@@ -59,25 +59,14 @@ class Player(ABC):
         return self._home_quadrant
 
 
+
+
     @abstractmethod
     def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> Optional[TurnRecord]:
         pass
 
-    @abstractmethod
-    def hunt(self, board: 'ChessBoard') -> Dict[Label, List[ChessPiece]]:
-        pass
 
-    @abstractmethod
-    def prepare_kill_list(self) -> List['ChessPiece']:
-        pass
 
-    @abstractmethod
-    def select_killer(self) -> 'ChessPiece':
-        pass
-
-    @abstractmethod
-    def select_target(self, board: 'ChessBoard') -> Optional[TurnRecord]:
-        pass
 
 
     # @staticmethod

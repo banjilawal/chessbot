@@ -49,6 +49,26 @@ class GameDisplay:
         pygame.display.set_caption("Podscape")
         self.font = pygame.font.SysFont("monospace", 30)
 
+    def load_chess_piece_images(self):
+        import os
+
+        base_path = "assets"
+
+        chess_pieces = [
+            "white-castle", "white-knight", "white-bishop", "white-king", "white-queen", "white-pawn"
+            "black-castle", "black-knight", "black-bishop", "black-king", "black-queen", "black-pawn"
+        ]
+
+        for name in chess_pieces:
+            try:
+                path = os.path.join(base_path, f"{name}.png")  # or .svg if you’re using pygame-svg
+                image = pygame.image.load(path)
+                scaled = pygame.transform.scale(image, (self.cell_px, self.cell_px))  # auto-scale to square
+                self.piece_images[name] = scaled
+            except Exception as e:
+                print(f"⚠️ Failed to load image {name}: {e}")
+
+
     def draw_grid(self):
         screen_color = GameColor.DARK_GRAY_1.value
         self.screen.fill(screen_color)

@@ -13,18 +13,18 @@ class RankConfig(Enum):
         obj._territories = territories
         return obj
 
-    KING =(
-        "King", "K", 1, 0,
-        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW]
-    )
+    KING =("King", "K", 1, 0, [
+        Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW
+     ])
     PAWN = ("Pawn", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
-    KNIGHT = ("Knight", "N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
+    KNIGHT = ("Knight", "N", 2, 3, [
+        Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW
+    ])
     BISHOP = ("Bishop", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
     CASTLE = ("Castle", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
-    QUEEN = (
-        "Queen", "Q", 1, 9,
-         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
-     )
+    QUEEN = ("Queen", "Q", 1, 9, [
+        Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW
+    ])
 
     @property
     def acronym(self) -> str:

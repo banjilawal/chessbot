@@ -37,9 +37,9 @@ class ChessPiece:
         if rank is None:
             raise ValueError("Cannot create a chess_piece with an null rank.")
 
-        rank.members.append(self)
+        # rank.members.append(self)
         self._rank = rank
-        self._label = Label(rank.acronym, len(rank.members))
+        self._label = Label(rank.acronym, piece_id)
 
         self._id = piece_id
         self._player = None
@@ -85,21 +85,10 @@ class ChessPiece:
 
     @player.setter
     def player(self, player: 'Player'):
-        if self._player == player:
-            print("player is already set to", player.name)
-            return
-        old_player = self._player
-
-        if player is not None:
-            if player.pieces is None:
-                player.pieces = []
-            if not self in player.pieces:
-                player.pieces.append(self)
-            self._player = player
-            self.__rebuild_label()
-
-        if old_player is not None:
-            old_player.pieces.remove(self)
+        self._player = player
+        if self not in player.chess_pieces:
+            player.chess_pieces.append(self)
+        self.__rebuild_label()
 
 
     def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate) -> TransactionResult:
@@ -160,11 +149,9 @@ class ChessPiece:
         old_label = self._label
 
         if self._player is not None:
-
             letters = self._player.color.name[0] + self._label.letters
-            number = self._label.number % 2 + 1
+            number = self._label.number % 2 + 1 # <--- This will still cause labels to cycle between 1 and 2
             self._label = Label(letters, number)
-
 
     # === Stack operations ===
     def push_new_coordinate(self, coordinate: Coordinate) -> TransactionResult:

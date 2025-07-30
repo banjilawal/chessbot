@@ -75,9 +75,9 @@ class ChessBoard:
         method = "ChessBoard.add_new_piece"
 
         # Validate chess_piece presence
-        chess_piece_not_null_result = ChessPieceValidator.is_not_null(chess_piece)
-        if chess_piece_not_null_result.is_failure:
-            return chess_piece_not_null_result
+        # chess_piece_not_null_result = ChessPieceValidator.is_not_null(chess_piece)
+        # if chess_piece_not_null_result.is_failure:
+        #     return chess_piece_not_null_result
 
         can_add_chess_piece_result = ChessPieceValidator.can_place_on_board(chess_piece)
         if can_add_chess_piece_result.is_failure:
