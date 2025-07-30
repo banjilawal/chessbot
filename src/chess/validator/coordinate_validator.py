@@ -1,14 +1,17 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
-from chess.geometry.board import ChessBoard
+
 from chess.geometry.coordinate import Coordinate
 
 from chess.transaction.transaction_result import TransactionResult, Failure, StatusCode
 
+if TYPE_CHECKING:
+    from chess.geometry.board import ChessBoard
+
 class CoordinateValidator:
 
     @staticmethod
-    def coordinate_exists(coordinate: Optional[Coordinate], board: Optional[ChessBoard]) -> TransactionResult:
+    def coordinate_exists(coordinate: Optional[Coordinate], board: Optional['ChessBoard']) -> TransactionResult:
         method = "CoordinateValidator.validate_coordinate_on_board"
 
         if board is None:

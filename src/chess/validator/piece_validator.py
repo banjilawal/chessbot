@@ -1,16 +1,19 @@
+from typing import TYPE_CHECKING
 
-from chess.piece.piece import ChessPiece
 from chess.piece.mobility_status import MobilityStatus
 from chess.rank.promotable.promotable_rank import PromotableRank
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
 
+if TYPE_CHECKING:
+    from chess.piece.piece import ChessPiece
+
 
 class ChessPieceValidator:
 
     @staticmethod
-    def has_player(self, chess_piece: ChessPiece) -> TransactionResult:
+    def has_player(self, chess_piece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.has_player"
 
         if chess_piece.player is None:
@@ -18,7 +21,7 @@ class ChessPieceValidator:
         return TransactionResult(method, StatusCode.SUCCESS)
 
     @staticmethod
-    def has_rank(self, chess_piece: ChessPiece) -> TransactionResult:
+    def has_rank(self, chess_piece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.has_rank"
 
         if chess_piece.rank is None:
@@ -27,7 +30,7 @@ class ChessPieceValidator:
 
 
     @staticmethod
-    def is_not_null(self, piece: ChessPiece) -> TransactionResult:
+    def is_not_null(self, piece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.is_not_null"
 
         if piece is None:
@@ -36,7 +39,7 @@ class ChessPieceValidator:
 
 
     @staticmethod
-    def can_be_moved(self, piece: ChessPiece) -> TransactionResult:
+    def can_be_moved(self, piece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.can_move"
 
         if piece.status == MobilityStatus.FREE and piece.current_coordinate() is not None:
@@ -45,7 +48,7 @@ class ChessPieceValidator:
 
 
     @staticmethod
-    def can_place_on_board(self, chess_piece: ChessPiece) -> TransactionResult:
+    def can_place_on_board(self, chess_piece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.can_add_to_board"
         if (
             chess_piece is not None and
@@ -57,7 +60,7 @@ class ChessPieceValidator:
 
 
     @staticmethod
-    def can_be_promoted(self, chess_piece: ChessPiece) -> TransactionResult:
+    def can_be_promoted(self, chess_piece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.is_promotable"
 
         rank = chess_piece.rank
@@ -67,7 +70,7 @@ class ChessPieceValidator:
 
 
     @staticmethod
-    def is_on_board(self, piece: ChessPiece) -> TransactionResult:
+    def is_on_board(self, piece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.is_on_board"
 
         if piece.current_coordinate() is None:
