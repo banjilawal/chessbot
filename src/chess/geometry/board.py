@@ -72,7 +72,7 @@ class Board:
                 occupied_squares.append(square)
         return occupied_squares
 
-    def add_new_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
+    def add_new_chess_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
         method = "Board.add_new_piece"
 
         # Validate chess_piece presence
@@ -106,6 +106,10 @@ class Board:
         piece_validation_result = ChessPieceValidator.is_not_null(piece)
         if piece_validation_result.is_failure:
             return piece_validation_result
+
+        piece_already_on_board_result = ChessPieceValidator.is_on_board(piece)
+        if piece_already_on_board_result.is_failure:
+            return piece_already_on_board_result
 
         # 2. Validate the destination coordinate on the board
         coord_validation_result = CoordinateValidator.validate_coordinate_on_board(destination, self)
