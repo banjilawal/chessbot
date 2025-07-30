@@ -10,6 +10,7 @@ from chess.piece.mobility_status import MobilityStatus
 from chess.piece.piece import Piece
 from chess.transaction.failure import Failure
 from chess.transaction.transaction_result import TransactionResult
+from chess.validator.coordinate_validator import CoordinateValidator
 from chess.validator.piece_validator import PieceValidator
 
 if TYPE_CHECKING:
@@ -86,26 +87,27 @@ class Board:
         print("Calling capture_square with ", chess_piece, " and ", coordinate, "")
         self.capture_square(chess_piece, coordinate)
 
-
     def capture_square(self, piece: Piece, destination: Coordinate) -> TransactionResult:
         method = "Board.capture_square"
 
         # 1. Validate the piece isn't None (this also logs)
-        validation_result = PieceValidator.is_present(piece)
-        if validation_result.is_failure:
-            return validation_result
+        piece_validation_result = PieceValidator.is_present(piece)
+        if piece_validation_result.is_failure:
+            return piece_validation_result
 
-        # 2. Get the destination square
-        if not self.coordinate_is_valid(destination):
-            return TransactionResult(method, Failure("Coordinate is not a valid coordinate to capture"))
+        # 2. Validate the destination coordinate on the board
+        coord_validation_result = CoordinateValidator.validate_coordinate_on_board(destination, self)
+        if coord_validation_result.is_failure:
+            return TransactionResult(method, Failure("The coordinate is not valid"))
 
+        # 3. Get the squares
         square_to_leave = self.find_square(piece.current_position())
         destination_square = self.find_square(destination)
 
-        # 3. Attempt to occupy the square
+        # 4. Attempt to occupy the square
         occupation_result = destination_square.occupy(piece)
 
-        # 4. If successful, make the piece leave its previous square (if any)
+        # 5. If successful, make the piece leave its previous square (if any)
         if occupation_result.is_success:
             return square_to_leave.leave(piece)
 
@@ -154,17 +156,17 @@ class Board:
         #     piece.coordinate = square.coordinate
 
 
-    def coordinate_is_valid(self, coordinate: Coordinate):
-        if coordinate is None:
-            print("A null coord is not valid")
-            return False
-        print("chekcing coord ", coordinate, " for validity.")
-        if coordinate.row < 0 or coordinate.row >= len(self._grid):
-            raise ValueError("The coord is not valid. Its row is out of range")
-        if coordinate.column < 0 or coordinate.column >= len(self._grid[0]):
-            print("The coord is not valid. Its column is out of range")
-            return False
-        return True
+    # def coordinate_is_valid(self, coordinate: Coordinate):
+    #     if coordinate is None:
+    #         print("A null coord is not valid")
+    #         return False
+    #     print("chekcing coord ", coordinate, " for validity.")
+    #     if coordinate.row < 0 or coordinate.row >= len(self._grid):
+    #         raise ValueError("The coord is not valid. Its row is out of range")
+    #     if coordinate.column < 0 or coordinate.column >= len(self._grid[0]):
+    #         print("The coord is not valid. Its column is out of range")
+    #         return False
+    #     return True
 
     def __str__(self) -> str:
         board_str = ""
