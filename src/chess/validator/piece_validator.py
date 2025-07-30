@@ -10,7 +10,6 @@ from chess.transaction.transaction_result import TransactionResult
 class ChessPieceValidator:
 
     @staticmethod
-
     def is_not_null(self, piece: ChessPiece) -> TransactionResult:
         method = "ChessPieceValidator.is_not_null"
 
@@ -61,4 +60,3 @@ class ChessPieceValidator:
             return TransactionResult(method, Failure(f"{piece.label} is not on the board."))
 
         return TransactionResult(method, StatusCode.SUCCESS)
-

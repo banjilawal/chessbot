@@ -95,18 +95,18 @@ class Square:
         else:
             return TransactionResult(method, Failure(f"Leave failed after mutation"))
 
-
-    @occupant.setter
-    def occupant(self, piece: Optional['ChessPiece']):
-        print(f"{piece} wants to be my new occupant. Currently {self._occupant} is resident.")
-
-        current_occupant = self._occupant
-
-        if current_occupant is None:
-            self._handle_occupation(self, OccupationStatus.IS_VACANT, piece)
-        if piece.is_enemy(current_occupant):
-            self._handle_occupation(self, OccupationStatus.HAS_ENEMY, piece)
-        print(f"{self._coordinate} is occupied by friendly {current_occupant.label}")
+    #
+    # @occupant.setter
+    # def occupant(self, piece: Optional['ChessPiece']):
+    #     print(f"{piece} wants to be my new occupant. Currently {self._occupant} is resident.")
+    #
+    #     current_occupant = self._occupant
+    #
+    #     if current_occupant is None:
+    #         self._handle_occupation(self, OccupationStatus.IS_VACANT, piece)
+    #     if piece.is_enemy(current_occupant):
+    #         self._handle_occupation(self, OccupationStatus.HAS_ENEMY, piece)
+    #     print(f"{self._coordinate} is occupied by friendly {current_occupant.label}")
 
 
 

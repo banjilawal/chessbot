@@ -36,28 +36,22 @@ class Board:
     def grid(self) -> List[List[Square]]:
         return self._grid
 
-
     def find_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
 
-
-
-        print("Checking for coord", coordinate, "")
-        if not self.coordinate_is_valid(coordinate):
-            raise ValueError("The coord is not valid. Cannot find chess chess_piece.")
+        coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
+        if coordinate_validation_result.is_failure:
+            print("Cannot find piece at invalid coordinate")
             return None
-        square = self._grid[coordinate.row][coordinate.column]
-        print("The square at ", coordinate, " is ", square, " it contains ", square.occupant, "")
-        return self.grid[coordinate.row][coordinate.column].occupant
+        return self._grid[coordinate.row][coordinate.column].occupant
 
 
     def find_square(self, coordinate: Coordinate) -> Optional[Square]:
-        print("Checking for coord", coordinate, "")
-        if not self.coordinate_is_valid(coordinate):
-            raise ValueError("The coord is not valid. Cannot find chess chess_piece.")
+
+        coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
+        if coordinate_validation_result.is_failure:
+            print("Cannot find square at invalid coordinate")
+            return None
         return self.grid[coordinate.row][coordinate.column]
-
-
-
 
 
     def empty_squares(self) -> List[Square]:
@@ -82,34 +76,28 @@ class Board:
         method = "Board.add_new_piece"
 
         # Validate chess_piece presence
-        validation_result = ChessPieceValidator.is_not_null(chess_piece)
-        if validation_result.is_failure:
-            return validation_result
+        chess_piece_not_null_result = ChessPieceValidator.is_not_null(chess_piece)
+        if chess_piece_not_null_result.is_failure:
+            return chess_piece_not_null_result
+
+        can_add_chess_piece_result = ChessPieceValidator.can_add_to_board(chess_piece)
+        if can_add_chess_piece_result.is_failure:
+            return can_add_chess_piece_result
 
         # Validate coordinate on board
-        coord_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
-        if coord_validation_result.is_failure:
-            return TransactionResult(method, Failure(coord_validation_result.outcome.status_code,
-                                                     coord_validation_result.outcome.message))
+        coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
+        if coordinate_validation_result.is_failure:
+            return coordinate_validation_result
 
         # Check if the destination square is free
-        destination_square = self.find_square(coordinate)
-        if destination_square.occupant is not None:
-            return TransactionResult(method, Failure("The destination square is already occupied."))
+        square = self.find_square(coordinate)
+        if square.occupant is None:
+            return TransactionResult(
+                method,
+                Failure(f"Square not found at f{coordinate} {chess_piece.label} to the board.")
+            )
 
-        # Check if chess_piece has an empty coordinate stack (meaning it’s new and not placed yet)
-        if len(chess_piece.coordinate_stack) > 0:
-            return TransactionResult(method, Failure(
-                "ChessPiece has already been placed on the board. Use move methods to reposition."))
-
-        # Now perform the actual placement (similar to capture_square logic, but no capture expected)
-        occupation_result = destination_square.occupy(chess_piece)
-        if occupation_result.is_success:
-            # Add to the board’s chess_piece list if you track that
-            self._pieces.append(chess_piece)
-            return occupation_result
-
-        return occupation_result  # Occupation failed
+        return square.occupy(chess_piece)
 
     def capture_square(self, piece: ChessPiece, destination: Coordinate) -> TransactionResult:
         method = "Board.capture_square"
