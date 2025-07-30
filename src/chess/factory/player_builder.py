@@ -16,8 +16,8 @@ class PlayerFactory:
     def run_factory(player_names: List[str], pieces: List[ChessPiece]) -> List[Player]:
         players: List[Player] = []
 
-        white_player = HumanPlayer(player_id=id_emitter.player_id, name=player_names[0], color=GameColor.IVORY)
-        black_player = HumanPlayer(player_id=id_emitter.player_id, name=player_names[1], color=GameColor.DARK_GRAY_3)
+        white_player = HumanPlayer(player_id=id_emitter.player_id, name=player_names[0], color=GameColor.WHITE)
+        black_player = HumanPlayer(player_id=id_emitter.player_id, name=player_names[1], color=GameColor.BLACK)
 
         for piece in pieces:
             if piece.id % 2 == 0:

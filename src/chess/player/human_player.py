@@ -29,8 +29,3 @@ class HumanPlayer(Player):
     def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> Optional[TurnRecord]:
         pass
 
-
-    def name(self, name: str):
-        if name is None:
-            raise ValueError("name cannot be null.")
-        self._name = name
