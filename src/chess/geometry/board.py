@@ -75,17 +75,38 @@ class Board:
                 occupied_squares.append(square)
         return occupied_squares
 
+    def add_new_piece(self, chess_piece: Piece, coordinate: Coordinate) -> TransactionResult:
+        method = "Board.add_new_piece"
 
-    def add_piece_to_board(self, chess_piece: Piece, coordinate: Coordinate) -> None:
-        if chess_piece is None:
-            raise ValueError("Cannot add a null chess piece")
-        if not self.coordinate_is_valid(coordinate):
-            raise ValueError("THe chess piece cannot be addd. The destination coord is out of range.")
-        if self.grid[coordinate.row][coordinate.column].occupant is not None:
-            raise ValueError("The chess piece cannot be added. The destination square is already occupied.")
+        # Validate piece presence
+        validation_result = PieceValidator.is_present(chess_piece)
+        if validation_result.is_failure:
+            return validation_result
 
-        print("Calling capture_square with ", chess_piece, " and ", coordinate, "")
-        self.capture_square(chess_piece, coordinate)
+        # Validate coordinate on board
+        coord_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
+        if coord_validation_result.is_failure:
+            return TransactionResult(method, Failure(coord_validation_result.outcome.status_code,
+                                                     coord_validation_result.outcome.message))
+
+        # Check if the destination square is free
+        destination_square = self.find_square(coordinate)
+        if destination_square.occupant is not None:
+            return TransactionResult(method, Failure("The destination square is already occupied."))
+
+        # Check if piece has an empty coordinate stack (meaning it’s new and not placed yet)
+        if len(chess_piece.coordinate_stack) > 0:
+            return TransactionResult(method, Failure(
+                "Piece has already been placed on the board. Use move methods to reposition."))
+
+        # Now perform the actual placement (similar to capture_square logic, but no capture expected)
+        occupation_result = destination_square.occupy(chess_piece)
+        if occupation_result.is_success:
+            # Add to the board’s piece list if you track that
+            self._pieces.append(chess_piece)
+            return occupation_result
+
+        return occupation_result  # Occupation failed
 
     def capture_square(self, piece: Piece, destination: Coordinate) -> TransactionResult:
         method = "Board.capture_square"
