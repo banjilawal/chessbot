@@ -10,6 +10,14 @@ from chess.transaction.transaction_result import TransactionResult
 class ChessPieceValidator:
 
     @staticmethod
+    def has_player(self, chess_piece: ChessPiece) -> TransactionResult:
+        method = "ChessPieceValidator.has_player"
+
+        if chess_piece.player is None:
+            return TransactionResult(method, Failure(f"{chess_piece.label} does not have a player assigned to it."))
+        return TransactionResult(method, StatusCode.SUCCESS)
+
+    @staticmethod
     def has_rank(self, chess_piece: ChessPiece) -> TransactionResult:
         method = "ChessPieceValidator.has_rank"
 
