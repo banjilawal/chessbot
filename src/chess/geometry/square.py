@@ -8,7 +8,7 @@ from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
 
 if TYPE_CHECKING:
-    from chess.piece.piece import Piece
+    from chess.piece.piece import ChessPiece
 
 
 class Square:
@@ -16,7 +16,7 @@ class Square:
     _name: str
     _status: OccupationStatus
     _coordinate: Coordinate
-    _occupant: Optional['Piece']
+    _occupant: Optional['ChessPiece']
 
     def __init__(self, square_id: int, name: str, coord: Coordinate):
         if square_id < 0:
@@ -48,14 +48,14 @@ class Square:
 
 
     @property
-    def occupant(self) -> Optional['Piece']:
+    def occupant(self) -> Optional['ChessPiece']:
         return self._occupant
 
     @property
     def status(self) -> OccupationStatus:
         return self._status
 
-    def occupy(self, piece: 'Piece') -> TransactionResult:
+    def occupy(self, piece: 'ChessPiece') -> TransactionResult:
         method = "Square.occupy"
 
         if self._occupant == piece:
@@ -75,7 +75,7 @@ class Square:
         return TransactionResult(method, Failure(f"Occupation failed after mutation"))
 
 
-    def leave(self, piece: 'Piece') -> TransactionResult:
+    def leave(self, piece: 'ChessPiece') -> TransactionResult:
         method = "Square.leave"
 
         if self._occupant is None:
@@ -94,7 +94,7 @@ class Square:
 
 
     @occupant.setter
-    def occupant(self, piece: Optional['Piece']):
+    def occupant(self, piece: Optional['ChessPiece']):
         print(f"{piece} wants to be my new occupant. Currently {self._occupant} is resident.")
 
         current_occupant = self._occupant
@@ -124,7 +124,7 @@ class Square:
         return f"square {self._id} {self.name} occupant: {self._occupant}"
 
 
-    def _handle_occupation(self, occupation_status: OccupationStatus, piece: 'Piece'):
+    def _handle_occupation(self, occupation_status: OccupationStatus, piece: 'ChessPiece'):
 
         if occupation_status == OccupationStatus.BLOCKER:
             raise ValueError(f"{piece.label} is not allowed to occupy this blocked square.")

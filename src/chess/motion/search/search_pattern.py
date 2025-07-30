@@ -4,7 +4,7 @@ from typing import Dict, List
 
 from chess.geometry.board import Board
 from chess.geometry.coordinate import Coordinate
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 
 # if TYPE_CHECKING:
 #     from chess.board.board import Board
@@ -18,13 +18,13 @@ class SearchPattern(ABC):
         pass
 
 
-    def search(self, piece: Piece, board: Board) -> list[Coordinate]:
+    def search(self, piece: ChessPiece, board: Board) -> list[Coordinate]:
         if not self.validate_search_parameters(piece, board):
             return []
         return self._perform_search(piece, board)
 
 
-    def validate_search_parameters(self, piece: Piece, board: Board) -> bool:
+    def validate_search_parameters(self, piece: ChessPiece, board: Board) -> bool:
         if piece is None:
             raise ValueError("[Warning] Cannot search for places with a null piece. Destination search is impossible.")
         if piece.current_position() is None:
@@ -34,7 +34,7 @@ class SearchPattern(ABC):
         return True
 
     @abstractmethod
-    def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
+    def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
         """Concrete classes implement the actual search logic."""
         pass
 

@@ -7,7 +7,7 @@ from chess.game.record.turn_record import TurnRecord, CaptureRecord
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.square import Square
 from chess.piece.mobility_status import MobilityStatus
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 from chess.transaction.failure import Failure
 from chess.transaction.transaction_result import TransactionResult
 from chess.validator.coordinate_validator import CoordinateValidator
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 
 class Board:
-    _pieces: List[Piece]
+    _pieces: List[ChessPiece]
     _grid: List[List[Square]]
 
 
@@ -29,7 +29,7 @@ class Board:
 
 
     @property
-    def pieces(self) -> List[Piece]:
+    def pieces(self) -> List[ChessPiece]:
         return self._pieces
 
 
@@ -38,7 +38,7 @@ class Board:
         return self._grid
 
 
-    def find_piece(self, coordinate: Coordinate) -> Optional[Piece]:
+    def find_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
         print("Checking for coord", coordinate, "")
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("The coord is not valid. Cannot find chess piece.")
@@ -75,7 +75,7 @@ class Board:
                 occupied_squares.append(square)
         return occupied_squares
 
-    def add_new_piece(self, chess_piece: Piece, coordinate: Coordinate) -> TransactionResult:
+    def add_new_piece(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
         method = "Board.add_new_piece"
 
         # Validate piece presence
@@ -97,7 +97,7 @@ class Board:
         # Check if piece has an empty coordinate stack (meaning it’s new and not placed yet)
         if len(chess_piece.coordinate_stack) > 0:
             return TransactionResult(method, Failure(
-                "Piece has already been placed on the board. Use move methods to reposition."))
+                "ChessPiece has already been placed on the board. Use move methods to reposition."))
 
         # Now perform the actual placement (similar to capture_square logic, but no capture expected)
         occupation_result = destination_square.occupy(chess_piece)
@@ -108,7 +108,7 @@ class Board:
 
         return occupation_result  # Occupation failed
 
-    def capture_square(self, piece: Piece, destination: Coordinate) -> TransactionResult:
+    def capture_square(self, piece: ChessPiece, destination: Coordinate) -> TransactionResult:
         method = "Board.capture_square"
 
         # 1. Validate the piece isn't None (this also logs)
@@ -134,7 +134,7 @@ class Board:
 
         return occupation_result  # failed occupation result
 
-        # def capture_square(self, piece: Piece, coordinate: Coordinate):
+        # def capture_square(self, piece: ChessPiece, coordinate: Coordinate):
         #     if piece is None:
         #         raise ValueError("Captor cannot be null. Aborting capture process.")
         #         # return None

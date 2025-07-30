@@ -4,7 +4,7 @@ from chess.common.game_color import GameColor
 from chess.factory.emit import id_emitter
 from chess.factory.piece_factory import PieceFactory
 from chess.factory.rank_factory import RankFactory
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 from chess.player.human_player import HumanPlayer
 from chess.player.player import Player
 from chess.rank.rank import Rank
@@ -13,7 +13,7 @@ from chess.rank.rank import Rank
 class PlayerFactory:
 
     @staticmethod
-    def run_factory(player_names: List[str], pieces: List[Piece]) -> List[Player]:
+    def run_factory(player_names: List[str], pieces: List[ChessPiece]) -> List[Player]:
         players: List[Player] = []
 
         white_player = HumanPlayer(player_id=id_emitter.player_id, name=player_names[0], color=GameColor.IVORY)

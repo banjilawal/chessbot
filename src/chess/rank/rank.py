@@ -5,7 +5,7 @@ from chess.geometry.board import Board
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.service.motion_service import MotionService
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 from chess.game.record.turn_record import TurnRecord
 
 
@@ -14,7 +14,7 @@ class Rank(ABC):
     _acronym: str
     _motion: MotionService
     _capture_value: int
-    _members: List[Piece]
+    _members: List[ChessPiece]
     _territories: List[Quadrant]
 
     def __init__(
@@ -56,7 +56,7 @@ class Rank(ABC):
         return self._territories.copy()
 
     @property
-    def members(self) -> [Piece]:
+    def members(self) -> [ChessPiece]:
         return self._members
 
     @property
@@ -80,7 +80,7 @@ class Rank(ABC):
                 f"num_members:{len(self._members)} num_territories:{len(self._territories)}")
 
 
-    def delegate_move_excution(self, piece: Piece, board: 'Board', destination: 'Coordinate'):
+    def delegate_move_excution(self, piece: ChessPiece, board: 'Board', destination: 'Coordinate'):
         """Move a piece to the specified destination."""
         if piece is None:
             raise ValueError("Cannot move a null piece")
@@ -100,7 +100,7 @@ class Rank(ABC):
         self.motion.dispatch_to_move_executor(piece, destination, board)
 
 
-    def explore(self, piece: Piece, board: 'Board') -> List['Coordinate']:
+    def explore(self, piece: ChessPiece, board: 'Board') -> List['Coordinate']:
         """Find all possible moves for a bishop piece."""
         if piece is None:
             raise ValueError("Bishop cannot explore without a piece.")

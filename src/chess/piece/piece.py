@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from chess.game.record.turn_record import TurnRecord
     from chess.geometry.board import Board
 
-class Piece:
+class ChessPiece:
     _id: int
     _label: Label
     _rank: 'Rank'
@@ -93,7 +93,7 @@ class Piece:
 
     def forward_move_request(self, board: 'Board', destination: Coordinate):
         if self._rank is None:
-            raise ValueError("Piece has no rank assigned")
+            raise ValueError("ChessPiece has no rank assigned")
         if destination is None:
             raise ValueError("destination cannot be null.")
         self._rank.delegate_move_excution(piece=self, board=board, destination=destination)
@@ -101,7 +101,7 @@ class Piece:
 
     def explore_destinations(self, board: 'Board') -> List[Coordinate]:
         if self._rank is None:
-            raise ValueError(f"Piece {self.label} has no rank assigned. It cannot explore.")
+            raise ValueError(f"ChessPiece {self.label} has no rank assigned. It cannot explore.")
             return []
         if board is None:
             raise ValueError(f"board cannot be null. {self._label} cannot explore.")
@@ -114,9 +114,9 @@ class Piece:
             return True
         if other is None:
             return False
-        if not isinstance(other, Piece):
+        if not isinstance(other, ChessPiece):
             return False
-        if isinstance(other, Piece):
+        if isinstance(other, ChessPiece):
             self.id == other.id and self.rank == other.rank
         return False
 
@@ -127,7 +127,7 @@ class Piece:
     def __str__(self):
         return f"{self.id} {self.label} {self.status.name} stack_size:{len(self._coordinate_stack)}"
 
-    def is_enemy(self, piece: 'Piece'):
+    def is_enemy(self, piece: 'ChessPiece'):
         return self._player == piece.player
 
     def __rebuild_label(self):

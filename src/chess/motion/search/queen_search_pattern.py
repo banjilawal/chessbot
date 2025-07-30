@@ -5,12 +5,12 @@ from chess.geometry.coordinate import Coordinate
 from chess.motion.search.bishop_search_pattern import BishopSearchPattern
 from chess.motion.search.castle_search_pattern import CastleSearchPattern
 from chess.motion.search.search_pattern import SearchPattern
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 
 
 class QueenSearchPattern(SearchPattern):
 
-    def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
+    def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
         origin = piece.current_position()
         destinations: List[Coordinate] = []
         quadrants = piece.rank.territories

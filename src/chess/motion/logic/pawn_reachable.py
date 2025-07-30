@@ -3,7 +3,7 @@ from chess.geometry.coordinate import Coordinate
 from chess.geometry.diagonal import Diagonal
 from chess.geometry.vertical import Vertical
 from chess.motion.logic.reachable import Reachable
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 from chess.rank.promotable.pawn import Pawn
 
 
@@ -33,7 +33,7 @@ class PawnReachable(Reachable):
         return False
 
     @staticmethod
-    def can_advance(pawn: Piece, destination: Coordinate) -> bool:
+    def can_advance(pawn: ChessPiece, destination: Coordinate) -> bool:
         if pawn is None:
             return False
 
@@ -58,7 +58,7 @@ class PawnReachable(Reachable):
             return row_diff == 1
 
     @staticmethod
-    def can_attack(pawn: Piece, destination: Coordinate, board: Board) -> bool:
+    def can_attack(pawn: ChessPiece, destination: Coordinate, board: Board) -> bool:
         if pawn is None or board is None:
             return False
 

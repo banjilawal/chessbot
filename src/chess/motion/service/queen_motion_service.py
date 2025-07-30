@@ -12,7 +12,7 @@ class QueenMotionService(MotionService):
     def __init__(self):
         super().__init__(logic=QueenReachable(), search_pattern=QueenSearchPattern())
 
-    def _execute_move(self, piece: 'Piece', destination: Coordinate, board: Board):
+    def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: Board):
         origin = piece.current_positio()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")
@@ -20,5 +20,5 @@ class QueenMotionService(MotionService):
         board.capture_square(piece, destination)
 
 
-    def _perform_exploration(self, piece: 'Piece', board: Board) -> List[Coordinate]:
+    def _perform_exploration(self, piece: 'ChessPiece', board: Board) -> List[Coordinate]:
         return self.search_pattern.search(piece, board)

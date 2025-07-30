@@ -27,7 +27,7 @@ class PromotableRank(Rank):
     def is_promoted(self) -> bool:
         return self._previous_rank is not None
 
-    def promote(self, piece: 'Piece') -> TransactionResult:
+    def promote(self, piece: 'ChessPiece') -> TransactionResult:
         method = "PromotableRank.promote"
 
         if self.is_promoted():
@@ -53,7 +53,7 @@ class PromotableRank(Rank):
             outcome=Failure(StatusCode.FAILURE, f"Promotion failed integrity check on piece {piece.id}")
         )
 
-    def _promotion_succeeded(self, piece: 'Piece', old_stack_size: int, old_top: Coordinate, old_id: int) -> bool:
+    def _promotion_succeeded(self, piece: 'ChessPiece', old_stack_size: int, old_top: Coordinate, old_id: int) -> bool:
         if not isinstance(piece.rank, QueenRank):
             return False
         if hasattr(piece.rank, "piece_id") and piece.rank.piece_id != old_id:

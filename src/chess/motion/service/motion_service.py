@@ -6,7 +6,7 @@ from chess.geometry.board import Board
 from chess.game.record.turn_record import TurnRecord
 from chess.motion.logic.reachable import Reachable
 from chess.motion.search.search_pattern import SearchPattern
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 from chess.transaction.transaction_result import TransactionResult
 
 if TYPE_CHECKING:
@@ -35,24 +35,24 @@ class MotionService(ABC):
         return self._search_pattern
 
     # Final method — performs common validation before deferring to subclass logic
-    def dispatch_to_move_executor(self, piece: Piece, destination: Coordinate, board: Board) -> TransactionResult:
+    def dispatch_to_move_executor(self, piece: ChessPiece, destination: Coordinate, board: Board) -> TransactionResult:
         self._validate(piece, board)
         self._validate_destination(destination, board)
         self._execute_move(piece, destination, board)
 
     # Final method — performs common validation before deferring to subclass logic
-    def explore(self, piece: 'Piece', board: Board) -> List[Coordinate]:
+    def explore(self, piece: 'ChessPiece', board: Board) -> List[Coordinate]:
         return self._perform_exploration(piece, board)
 
     @abstractmethod
-    def _execute_move(self, piece: 'Piece', destination: Coordinate, board: Board) -> TransactionResult:
+    def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: Board) -> TransactionResult:
         raise NotImplementedError("Subclasses must implement _perform_move.")
 
     @abstractmethod
-    def _perform_exploration(self, piece: 'Piece', board: Board) -> List[Coordinate]:
+    def _perform_exploration(self, piece: 'ChessPiece', board: Board) -> List[Coordinate]:
         raise NotImplementedError("Subclasses must implement _perform_explore.")
 
-    def _validate(self, piece: Piece,  board: Board):
+    def _validate(self, piece: ChessPiece, board: Board):
         if piece is None:
             raise ValueError("Cannot move a piece that does not exist.")
         if piece.current_position() is None:

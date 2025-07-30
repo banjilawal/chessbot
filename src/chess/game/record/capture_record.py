@@ -1,7 +1,7 @@
 import string
 
 from chess.geometry.coordinate import Coordinate
-from chess.piece.piece import Piece, MobilityStatus
+from chess.piece.piece import ChessPiece, MobilityStatus
 from podscape.constants import PodscapeColor
 
 
@@ -14,7 +14,7 @@ class CaptureRecord:
     _prisoner_name: string
     _prisoner_color: PodscapeColor
 
-    def __init__(self, record_id:int, location: Coordinate, captor: Piece, prisoner: Piece):
+    def __init__(self, record_id:int, location: Coordinate, captor: ChessPiece, prisoner: ChessPiece):
         if location is None:
             raise ValueError("location cannot be null or empty.")
         if captor is None:

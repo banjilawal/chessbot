@@ -4,14 +4,14 @@ from chess.geometry.coordinate import Coordinate
 from chess.geometry.board import Board
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 
 
 class CastleSearchPattern(SearchPattern):
     def __init__(self):
         super().__init__()
 
-    def _perform_search(self, piece: Piece, board: Board) -> List[Coordinate]:
+    def _perform_search(self, piece: ChessPiece, board: Board) -> List[Coordinate]:
         origin = piece.current_position()
         destinations: List[Coordinate] = []
         quadrants = piece.rank.territories

@@ -6,20 +6,20 @@ from chess.common.game_color import GameColor
 from chess.geometry.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 
-from chess.piece.piece import Piece, Label
+from chess.piece.piece import ChessPiece, Label
 from chess.game.record.turn_record import TurnRecord
 
 if TYPE_CHECKING:
     from chess.geometry.board import Board
-    from chess.piece.piece import Piece
+    from chess.piece.piece import ChessPiece
 
 class Player(ABC):
     _id: int
     _name: str
     _color: GameColor
-    _captives: List['Piece']
+    _captives: List['ChessPiece']
     _home_quadrant: Quadrant
-    _pieces: List['Piece']
+    _pieces: List['ChessPiece']
 
     def __init__(self, player_id: int, name: str, color: GameColor):
         self._id = player_id
@@ -45,12 +45,12 @@ class Player(ABC):
 
 
     @property
-    def captives(self) -> List['Piece']:
+    def captives(self) -> List['ChessPiece']:
         return self._captives.copy()
 
 
     @property
-    def pieces(self) -> List[Piece]:
+    def pieces(self) -> List[ChessPiece]:
         return self._pieces.copy()
 
 
@@ -60,19 +60,19 @@ class Player(ABC):
 
 
     @abstractmethod
-    def request_move(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
         pass
 
     @abstractmethod
-    def hunt(self, board: 'Board') -> Dict[Label, List[Piece]]:
+    def hunt(self, board: 'Board') -> Dict[Label, List[ChessPiece]]:
         pass
 
     @abstractmethod
-    def prepare_kill_list(self) -> List['Piece']:
+    def prepare_kill_list(self) -> List['ChessPiece']:
         pass
 
     @abstractmethod
-    def select_killer(self) -> 'Piece':
+    def select_killer(self) -> 'ChessPiece':
         pass
 
     @abstractmethod
@@ -81,7 +81,7 @@ class Player(ABC):
 
 
     # @staticmethod
-    # def occupy_destination(self, piece: Piece, destination: Coordinate, board: Board):
+    # def occupy_destination(self, piece: ChessPiece, destination: Coordinate, board: Board):
     #    if piece is None:
     #        print("Bishop is None")
     #        return None

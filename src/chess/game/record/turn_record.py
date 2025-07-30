@@ -1,7 +1,7 @@
 from typing import Optional
 
 from chess.common.game_color import GameColor
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 from chess.game.record.capture_record import CaptureRecord
 from chess.game.record.promotion_record import PromotionRecord
 from chess.geometry.coordinate import Coordinate
@@ -10,7 +10,7 @@ from chess.geometry.coordinate import Coordinate
 class TurnRecord:
     _id: int
     _moved_piece_id: int
-    _moved_piece: Piece
+    _moved_piece: ChessPiece
     _departure_coordinate: Coordinate
     _arrival_coordinate: Coordinate
     _capture_record: Optional[CaptureRecord]
@@ -19,7 +19,7 @@ class TurnRecord:
     def __init__(
             self,
             record_id: int,
-            moved_piece: Piece,
+            moved_piece: ChessPiece,
             arrival_coordinate: Coordinate,
             capture_record: CaptureRecord=None,
             promotion_record: PromotionRecord=None

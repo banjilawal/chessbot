@@ -4,7 +4,7 @@ from chess.common.game_color import GameColor
 from chess.game.record.turn_record import TurnRecord
 from chess.geometry.coordinate import Coordinate
 from chess.piece.label import Label
-from chess.piece.piece import Piece
+from chess.piece.piece import ChessPiece
 from chess.player.player import Player
 
 
@@ -14,16 +14,16 @@ class MachinePlayer(Player):
         super().__init__(player_id, name, color)
 
 
-    def request_move(self, piece: 'Piece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'Board') -> Optional[TurnRecord]:
         pass
 
-    def hunt(self, board: 'Board') -> Dict[Label, List[Piece]]:
+    def hunt(self, board: 'Board') -> Dict[Label, List[ChessPiece]]:
         pass
 
-    def prepare_kill_list(self) -> List['Piece']:
+    def prepare_kill_list(self) -> List['ChessPiece']:
         pass
 
-    def select_killer(self) -> 'Piece':
+    def select_killer(self) -> 'ChessPiece':
         pass
 
     def select_target(self, board: 'Board') -> Optional[TurnRecord]:
