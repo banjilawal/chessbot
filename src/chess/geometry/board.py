@@ -36,7 +36,7 @@ class ChessBoard:
 
     def find_chess_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
 
-        coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
+        coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
         if coordinate_validation_result.is_failure:
             print("Cannot find chess_piece at invalid coordinate")
             return None
@@ -45,7 +45,7 @@ class ChessBoard:
 
     def find_square(self, coordinate: Coordinate) -> Optional[Square]:
 
-        coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
+        coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
         if coordinate_validation_result.is_failure:
             print("Cannot find square at invalid coordinate")
             return None
@@ -84,7 +84,7 @@ class ChessBoard:
             return can_add_chess_piece_result
 
         # Validate coordinate on chess_board
-        coordinate_validation_result = CoordinateValidator.validate_coordinate_on_board(coordinate, self)
+        coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
         if coordinate_validation_result.is_failure:
             return coordinate_validation_result
 
@@ -107,7 +107,7 @@ class ChessBoard:
             return can_move_chess_piece_result
 
         # 2. Validate the destination coordinate on the chess_board
-        coord_validation_result = CoordinateValidator.validate_coordinate_on_board(destination, self)
+        coord_validation_result = CoordinateValidator.coordinate_exists(destination, self)
         if coord_validation_result.is_failure:
             return TransactionResult(method, Failure("The coordinate is not valid"))
 

@@ -8,11 +8,7 @@ from chess.transaction.transaction_result import TransactionResult, Failure, Sta
 class CoordinateValidator:
 
     @staticmethod
-    def validate_coordinate_on_board(
-        coordinate: Optional[Coordinate],
-        board: Optional[ChessBoard]
-    ) -> TransactionResult:
-
+    def coordinate_exists(coordinate: Optional[Coordinate], board: Optional[ChessBoard]) -> TransactionResult:
         method = "CoordinateValidator.validate_coordinate_on_board"
 
         if board is None:

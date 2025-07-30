@@ -9,6 +9,12 @@ from chess.piece.label import Label
 from abc import ABC
 from typing import List, Optional, TYPE_CHECKING
 
+from chess.transaction.failure import Failure
+from chess.transaction.transaction_result import TransactionResult
+from chess.validator.board_validator import BoardValidator
+from chess.validator.coordinate_validator import CoordinateValidator
+from chess.validator.piece_validator import ChessPieceValidator
+
 if TYPE_CHECKING:
     from chess.player.player import Player
     from chess.rank.rank import Rank
@@ -95,20 +101,32 @@ class ChessPiece:
             old_player.pieces.remove(self)
 
 
-    def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate):
-        if self._rank is None:
-            raise ValueError("ChessPiece has no rank assigned")
-        if destination is None:
-            raise ValueError("destination cannot be null.")
-        self._rank.delegate_move_excution(piece=self, board=chess_board, destination=destination)
+    def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate) -> TransactionResult:
+        method = "ChessPiece.forward_move_request"
+
+        chess_piece_can_be_moved = ChessPieceValidator.can_be_moved(self)
+        if chess_piece_can_be_moved.is_failure:
+            return TransactionResult(method, Failure("The chess chess_piece cannot be moved."))
+
+        destination_validation_result = CoordinateValidator.coordinate_exists(destination)
+        if destination_validation_result.is_failure:
+            return destination_validation_result
+
+        return self._rank.delegate_move_excution(piece=self, board=chess_board, destination=destination)
 
 
     def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
-        if self._rank is None:
-            raise ValueError(f"ChessPiece {self.label} has no rank assigned. It cannot explore.")
+
+        chess_piece_rank_validation_result = ChessPieceValidator.has_rank(self)
+        if chess_piece_rank_validation_result.is_failure:
+            print(f"{self._label} does not have a rank. It cannot explore without a rank.")
             return []
-        if board is None:
-            raise ValueError(f"board cannot be null. {self._label} cannot explore.")
+
+        board_validation_result = BoardValidator.board_exists(board)
+        if board_validation_result.is_failure:
+            print(f"{self._label} cannot explore without a board. The board is null.")
+            return []
+
         print(f"Everything is fine with {self._label} calling Rank.explore for the list")
         return self._rank.explore(self, board)
 
@@ -131,8 +149,11 @@ class ChessPiece:
     def __str__(self):
         return f"{self.id} {self.label} {self.status.name} stack_size:{len(self._coordinate_stack)}"
 
-    def is_enemy(self, piece: 'ChessPiece'):
-        return self._player == piece.player
+    def is_enemy(self, chess_piece: 'ChessPiece'):
+        if chess_piece is None:
+            print(f"{self._label} cannot be an enemy of a null chess_piece.")
+            return False
+        return self._player == chess_piece.player
 
     def __rebuild_label(self):
         old_label = self._label
