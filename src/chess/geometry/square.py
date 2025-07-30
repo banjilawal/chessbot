@@ -82,7 +82,10 @@ class Square:
             return TransactionResult(method, Failure(f"{piece.label} cCannot leave a square already vacant"))
 
         if self._occupant != piece:
-            return TransactionResult(method, Failure(f"C{piece.lable} is not the current occupant of {self._coordinate}"))
+            return TransactionResult(
+                method,
+                Failure(f"C{piece.lable} is not the current occupant of {self._coordinate}")
+            )
 
         self._occupant = None
         self._status = OccupationStatus.IS_VACANT
@@ -124,15 +127,21 @@ class Square:
         return f"square {self._id} {self.name} occupant: {self._occupant}"
 
 
-    def _handle_occupation(self, occupation_status: OccupationStatus, piece: 'ChessPiece'):
+    def _handle_occupation(self, occupation_status: OccupationStatus, chess_piece: 'ChessPiece') -> TransactionResult:
+        method = "Square._handle_occupation"
 
         if occupation_status == OccupationStatus.BLOCKER:
-            raise ValueError(f"{piece.label} is not allowed to occupy this blocked square.")
-
+            TransactionResult(method, Failure(f"{chess_piece.label} is not allowed to occupy this blocked square."))
 
         if occupation_status == OccupationStatus.HAS_ENEMY:
             self._occupant.status = MobilityStatus.PRISONER
 
-        self._occupant = piece
-        piece.push_new_coordinate(self._coordinate)
+        self._occupant = chess_piece
+        chess_piece.push_new_coordinate(self._coordinate)
+
+        if self._coordinate == chess_piece.current_coordinate():
+            return TransactionResult(method, StatusCode.SUCCESS)
+
+        return TransactionResult(method, Failure(f"Occupation failed after mutation"))
+
 

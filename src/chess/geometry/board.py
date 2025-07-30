@@ -39,6 +39,8 @@ class Board:
 
     def find_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
 
+
+
         print("Checking for coord", coordinate, "")
         if not self.coordinate_is_valid(coordinate):
             raise ValueError("The coord is not valid. Cannot find chess chess_piece.")
