@@ -1,19 +1,25 @@
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
-class MissingBoardException(ChessException):
+class BoardException(ChessException):
+    default_message = "An error occurred in the ChessBoard."
+
+class CoordinateException(BoardException):
+    default_message = "An error occurred in the Coordinate."
+
+class MissingBoardException(BoardException):
     default_message = "ChessBoard does not exist.Passing null board not allowed."
 
-class MissingGridException(ChessException):
+class MissingGridException(BoardException):
     default_message = "The ChessBoard has no grid of squares. Passing null grid not allowed."
 
-class ArrayDimensionException(ChessException):
+class ArrayDimensionException(BoardException):
     default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} board requirement"
 
-class MissingCoordinateException(ChessException):
+class MissingCoordinateException(CoordinateException):
     default_message = "Coordinate does not exist. Passing null coordinate not allowed"
 
-class CoordinateRowOutOfBoundsException(ChessException):
+class CoordinateRowOutOfBoundsException(CoordinateException):
     default_message = f"Coordinate row out of bounds."
 
-class CoordinateColumnIndexOutOfBoundsException(ChessException):
+class CoordinateColumnIndexOutOfBoundsException(CoordinateException):
     default_message = "Coordinate column out of bounds."
