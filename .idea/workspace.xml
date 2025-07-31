@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c49b8ac4-e646-42fc-8e25-066534ee4df4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/logging_setup.py" afterDir="false" />
+    <list default="true" id="3265b511-a3cc-4ed1-a56d-2df2620c29c3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/run_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/podscape.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/podscape.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/logging_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/logging_setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,54 +24,34 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="origin/chess" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="17ac5ab7a12b7fbfeaf2f16201861d718be4ec6c" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;banjilawal&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "banjilawal"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/banjilawal/podscape.git&quot;,
-    &quot;accountId&quot;: &quot;a0af42e8-f55e-4789-b290-f40c15893f56&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/banjilawal/greedy-chess-monster.git",
+    "accountId": "a0af42e8-f55e-4789-b290-f40c15893f56"
   }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="30cDv62Gr0473nUlHlPPsTXlSd8" />
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="30d5aAVKdid5fHBkGkjPtm33qRe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python.grid_builder.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "chess",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/New folder/src/chess/validator",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,41 +60,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\banji\New folder\src\chess\validator" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="grid_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="podscape" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/factory" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/factory/grid_builder.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.grid_builder" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -126,21 +70,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c49b8ac4-e646-42fc-8e25-066534ee4df4" name="Changes" comment="" />
-      <created>1753918195351</created>
+      <changelist id="3265b511-a3cc-4ed1-a56d-2df2620c29c3" name="Changes" comment="" />
+      <created>1753944671643</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1753918195351</updated>
-      <workItem from="1753918196835" duration="899000" />
-      <workItem from="1753934602675" duration="67000" />
-      <workItem from="1753934689422" duration="3803000" />
+      <updated>1753944671643</updated>
+      <workItem from="1753944675082" duration="3875000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/New_folder$grid_builder.coverage" NAME="grid_builder Coverage Results" MODIFIED="1753936196949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/factory" />
   </component>
 </project>
