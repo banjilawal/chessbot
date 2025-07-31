@@ -26,7 +26,7 @@ class PawnReachable(Reachable):
         if origin.column == destination.column:
             return row_diff in (1, 2)
 
-        # Diagonal move (1 square)
+        # Diagonal move (1 model)
         if col_diff == 1:
             return row_diff == 1
 

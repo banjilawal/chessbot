@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/REDME.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/for_my_resume.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/square/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/square/square_repo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/transaction_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/transaction_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/grid_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/square/occupation_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/occupation_status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/square/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/square/square_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/square_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/square/square_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/square_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/logic/pawn_reachable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/logic/pawn_reachable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/search/pawn_search_pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/search/pawn_search_pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/validator/board_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/validator/board_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/validator/coordinate_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/validator/coordinate_validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +89,11 @@
       </console-settings>
     </option>
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
@@ -115,7 +134,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
-      <workItem from="1753986943709" duration="9471000" />
+      <workItem from="1753986943709" duration="14786000" />
     </task>
     <servers />
   </component>

@@ -3,7 +3,7 @@ from typing import List
 from chess.factory.emit import id_emitter
 
 from chess.geometry.board.coordinate import Coordinate
-from chess.geometry.square import Square
+from chess.square.model import Square
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 

@@ -29,7 +29,7 @@ class PawnSearchPattern(SearchPattern):
 
             # Use PawnReachable to decide if move is valid
             if quadrant == Quadrant.N:
-                # For forward moves, make sure square is empty and pawn can advance
+                # For forward moves, make sure model is empty and pawn can advance
                 if (not board.coordinate_is_occupied(candidate) and
                     PawnReachable.can_advance(pawn, candidate)):
                     destinations.append(candidate)

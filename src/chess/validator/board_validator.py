@@ -1,6 +1,5 @@
-from chess.geometry.square import Square
+from chess.square.model import Square
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
-from chess.validator.validation_result import ValidationResult
 
 
 class BoardValidator:

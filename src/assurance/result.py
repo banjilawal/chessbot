@@ -2,6 +2,8 @@ from abc import ABC
 from enum import Enum, auto
 from typing import Optional, TypeVar, Generic
 
+from assurance.validation_result import ValidationResult
+
 T = TypeVar('T')
 
 
@@ -11,18 +13,20 @@ class ResultStatus(Enum):
     FAILURE_REQUIRES_ROLLBACK = auto()
 
 
-class Result(Generic[T]):
+class Result(ABC, Generic[T]):
     def __init__(
         self,
         status: ResultStatus,
         payload: Optional[T] = None,
         message: Optional[str] = None,
-        exception: Optional[Exception] = None
+        exception: Optional[Exception] = None,
+        validation_result: Optional['ValidationResult'] = None
     ):
         self._status = status
         self._payload = payload
         self._message = message
         self._exception = exception
+        self._validation_result = validation_result
 
     @property
     def status(self) -> ResultStatus:
@@ -49,13 +53,15 @@ class Result(Generic[T]):
     def ok(data: Optional[T] = None) -> 'Result[T]':
         return Result(status=ResultStatus.SUCCESS, payload=data, message=None)
 
-    @staticmethod
-    def fail(message: str, exception: Optional[Exception] = None) -> 'Result[T]':
-        return Result(status=ResultStatus.FAILURE, message=message, exception=exception)
 
     @staticmethod
-    def fail_with_rollback(message: str, exception: Optional[Exception] = None) -> 'Result[T]':
-        return Result(status=ResultStatus.FAILURE_REQUIRES_ROLLBACK, message=message, exception=exception)
+    def fail(
+        message: str,
+        validation_result: Optional[ValidationResult],
+        exception: Optional[Exception] = None,
+        status: ResultStatus = ResultStatus.FAILURE | ResultStatus.FAILURE_REQUIRES_ROLLBACK
+    ) -> 'Result[T]':
+        return Result(status=ResultStatus.FAILURE, message=message, exception=exception)
 
 
 

@@ -3,7 +3,7 @@ from typing import List, Optional, TYPE_CHECKING
 
 
 from chess.geometry.board.coordinate import Coordinate
-from chess.geometry.square import Square
+from chess.square.model import Square
 
 from chess.piece.piece import ChessPiece
 from chess.transaction.failure import Failure
@@ -46,7 +46,7 @@ class ChessBoard:
 
         coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
         if coordinate_validation_result.is_failure:
-            print("Cannot find square at invalid coordinate")
+            print("Cannot find model at invalid coordinate")
             return None
         return self.grid[coordinate.row][coordinate.column]
 
@@ -55,7 +55,7 @@ class ChessBoard:
         empty_squares = []
         for square in self._grid:
             if square.occupant is None and square not in empty_squares:
-                print(f"Empty square name:{square}")
+                print(f"Empty model name:{square}")
                 empty_squares.append(square)
         return empty_squares
 
@@ -65,7 +65,7 @@ class ChessBoard:
         for square in self._grid:
             occupant = square.occupant
             if occupant is not None and square not in occupied_squares:
-                print(f"Occupied square name:{square} occupant label:{occupant.label}")
+                print(f"Occupied model name:{square} occupant label:{occupant.label}")
                 occupied_squares.append(square)
         return occupied_squares
 
@@ -87,7 +87,7 @@ class ChessBoard:
         if coordinate_validation_result.is_failure:
             return coordinate_validation_result
 
-        # Check if the destination square is free
+        # Check if the destination model is free
         square = self.find_square(coordinate)
         if square.occupant is None:
             return TransactionResult(
@@ -114,10 +114,10 @@ class ChessBoard:
         square_to_leave = self.find_square(chess_piece.current_coordinate())
         destination_square = self.find_square(destination)
 
-        # 4. Attempt to occupy the square
+        # 4. Attempt to occupy the model
         occupation_result = destination_square.occupy(chess_piece)
 
-        # 5. If successful, make the chess_piece leave its previous square (if any)
+        # 5. If successful, make the chess_piece leave its previous model (if any)
         if occupation_result.is_success:
             return square_to_leave.leave(chess_piece)
 
@@ -133,17 +133,17 @@ class ChessBoard:
         #
         #     turn_record = None
         #     capture_record = None
-        #     square = self._grid[coordinate.row][coordinate.column]
-        #     current_occupant = square.occupant
-        #     print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
+        #     model = self._grid[coordinate.row][coordinate.column]
+        #     current_occupant = model.occupant
+        #     print("The model at ", coordinate, " is ", model, " it contains ", current_occupant)
         #     if current_occupant is not None and not chess_piece.is_enemy(current_occupant):
-        #         print("A friendly is occupying the square. Aborting capture process.")
+        #         print("A friendly is occupying the model. Aborting capture process.")
         #         return None
         #
         # if current_occupant is not None and chess_piece.is_enemy(current_occupant):
         #     print("The current occupant is an enemy on ")
         #     prisoner = current_occupant
-        #     square.occupant = None
+        #     model.occupant = None
         #     prisoner.coordinate = None
         #
         #     captor = chess_piece
@@ -154,16 +154,16 @@ class ChessBoard:
         #
         #
         #     # captor = self.remove_piece_from_board(chess_piece)
-        #     square.occupant = captor
-        #     # captor.coord = square.coord
+        #     model.occupant = captor
+        #     # captor.coord = model.coord
         #     # captor.add_position(coord)
         #     self._killed_pieces.append(prisoner)
         #
         # if current_occupant is None:
-        #     print("The current occupant is None. The chess_piece is free to move to the destination square.")
-        #     print(f"Square {square} has occupant {current_occupant} and chess_piece {chess_piece} is free to move to the destination square.")
-        #     square.occupant = chess_piece
-        #     chess_piece.coordinate = square.coordinate
+        #     print("The current occupant is None. The chess_piece is free to move to the destination model.")
+        #     print(f"Square {model} has occupant {current_occupant} and chess_piece {chess_piece} is free to move to the destination model.")
+        #     model.occupant = chess_piece
+        #     chess_piece.coordinate = model.coordinate
 
 
     # def coordinate_is_valid(self, coordinate: Coordinate):

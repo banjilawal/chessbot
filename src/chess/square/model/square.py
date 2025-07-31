@@ -3,7 +3,7 @@ from typing import Optional, TYPE_CHECKING
 from chess.common.exceptions import NegativeIdException
 from chess.geometry.board.board_exception import MissingCoordinateException
 from chess.geometry.board.coordinate import Coordinate
-from chess.geometry.square.occupation_status import OccupationStatus
+from chess.square.model.occupation_status import OccupationStatus
 from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
@@ -85,7 +85,7 @@ class Square:
         method = "Square.leave"
 
         if self._occupant is None:
-            return TransactionResult(method, Failure(f"{piece.label} cCannot leave a square already vacant"))
+            return TransactionResult(method, Failure(f"{piece.label} cCannot leave a model already vacant"))
 
         if self._occupant != piece:
             return TransactionResult(
@@ -130,14 +130,14 @@ class Square:
         return hash(self.id)
 
     def __str__(self):
-        return f"square {self._id} {self.name} occupant: {self._occupant}"
+        return f"model {self._id} {self.name} occupant: {self._occupant}"
 
 
     def _handle_occupation(self, occupation_status: OccupationStatus, chess_piece: 'ChessPiece') -> TransactionResult:
         method = "Square._handle_occupation"
 
         if occupation_status == OccupationStatus.BLOCKER:
-            TransactionResult(method, Failure(f"{chess_piece.label} is not allowed to occupy this blocked square."))
+            TransactionResult(method, Failure(f"{chess_piece.label} is not allowed to occupy this blocked model."))
 
         if occupation_status == OccupationStatus.HAS_ENEMY:
             self._occupant.status = MobilityStatus.PRISONER
