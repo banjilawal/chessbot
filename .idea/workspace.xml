@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/error_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/podscape.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/transaction_result.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation_result.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/validator/board_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/validator/board_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/validator/validation_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/validator/validation_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +116,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
-      <workItem from="1753986943709" duration="2975000" />
+      <workItem from="1753986943709" duration="5555000" />
     </task>
     <servers />
   </component>
