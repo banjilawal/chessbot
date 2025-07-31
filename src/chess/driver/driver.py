@@ -7,7 +7,7 @@ from chess.factory.grid_builder import GridBuilder
 from chess.factory.piece_factory import PieceFactory
 from chess.factory.rank_factory import RankFactory
 from chess.geometry.board import ChessBoard
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.rank.bishop import Bishop
 
 

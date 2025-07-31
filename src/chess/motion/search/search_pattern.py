@@ -1,8 +1,8 @@
 
 from abc import ABC, abstractmethod
-from typing import Dict, List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 
 
 if TYPE_CHECKING:

@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.geometry.board import ChessBoard
 from chess.motion.logic.castle_reachable import CastleReachable
 

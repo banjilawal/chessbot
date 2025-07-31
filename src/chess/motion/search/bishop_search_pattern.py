@@ -1,8 +1,7 @@
 
 from typing import List
 from chess.geometry.board import ChessBoard
-from chess.geometry.coordinate import Coordinate
-from chess.geometry.quadrant import Quadrant
+from chess.geometry.board.coordinate import Coordinate
 from chess.motion.logic.bishop_reachable import BishopReachable
 from chess.motion.search.search_pattern import SearchPattern
 from chess.piece.piece import ChessPiece

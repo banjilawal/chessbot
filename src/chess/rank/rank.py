@@ -1,12 +1,11 @@
-from abc import ABC, abstractmethod
-from typing import List, Optional
+from abc import ABC
+from typing import List
 
 from chess.geometry.board import ChessBoard
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.service.motion_service import MotionService
 from chess.piece.piece import ChessPiece
-from chess.game.record.turn_record import TurnRecord
 
 
 class Rank(ABC):

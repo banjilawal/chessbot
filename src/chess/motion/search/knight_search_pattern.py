@@ -1,12 +1,10 @@
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.geometry.board import ChessBoard
 from chess.motion.search.search_pattern import SearchPattern
 from chess.piece.piece import ChessPiece
 from chess.motion.logic.knight_reachable import KnightReachable
 from typing import List
-
-from chess.rank.rank_config import RankConfig
 
 
 class KnightSearchPattern(SearchPattern):

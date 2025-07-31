@@ -1,5 +1,4 @@
-from chess.geometry.coordinate import Coordinate
-from chess.motion.logic.reachable import Reachable
+from chess.geometry.board.coordinate import Coordinate
 
 
 class Diagonal:

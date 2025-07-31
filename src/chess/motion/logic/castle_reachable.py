@@ -1,5 +1,5 @@
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.geometry.horizontal import Horizontal
 from chess.geometry.vertical import Vertical
 from chess.motion.logic.reachable import Reachable

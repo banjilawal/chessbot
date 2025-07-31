@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Optional, List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 
 
 from chess.motion.logic.reachable import Reachable

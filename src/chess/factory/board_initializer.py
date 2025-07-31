@@ -1,13 +1,12 @@
 from typing import List
 
-from chess.factory.board_populator import BoardPopulatorFactory
 from chess.factory.human_player_builder import HumanPlayerBuilder
 from chess.geometry.board import ChessBoard
 
 
 from chess.factory.grid_builder import GridBuilder
 from chess.geometry.board import ChessBoard
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.piece.piece import ChessPiece
 from chess.player.player_config import PlayerConfig
 

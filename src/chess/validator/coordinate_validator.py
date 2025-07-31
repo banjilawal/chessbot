@@ -1,7 +1,7 @@
 from typing import Optional, TYPE_CHECKING
 
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 
 from chess.transaction.transaction_result import TransactionResult, Failure, StatusCode
 

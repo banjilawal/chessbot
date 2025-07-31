@@ -1,5 +1,5 @@
 from chess.geometry.board import ChessBoard
-from chess.geometry.coordinate import Coordinate, Delta
+from chess.geometry.board.coordinate import Coordinate, Delta
 
 
 class CoordinateIterator:

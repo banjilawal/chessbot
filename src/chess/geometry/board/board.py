@@ -1,8 +1,8 @@
 
-from typing import Tuple, List, Optional, TYPE_CHECKING
+from typing import List, Optional, TYPE_CHECKING
 
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.geometry.square import Square
 
 from chess.piece.piece import ChessPiece
@@ -12,7 +12,7 @@ from chess.validator.coordinate_validator import CoordinateValidator
 from chess.validator.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:
-    from chess.game.record.capture_record import CaptureRecord
+    pass
 
 
 class ChessBoard:

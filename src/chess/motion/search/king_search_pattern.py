@@ -2,7 +2,7 @@
 from typing import List
 from chess.motion.search.search_pattern import SearchPattern
 from chess.motion.search.queen_search_pattern import QueenSearchPattern
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.geometry.board import ChessBoard
 from chess.piece.piece import ChessPiece
 

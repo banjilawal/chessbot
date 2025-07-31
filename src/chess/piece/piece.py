@@ -1,12 +1,9 @@
 
 
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 from chess.piece.mobility_status import MobilityStatus
 from chess.piece.label import Label
 
-
-
-from abc import ABC
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.transaction.failure import Failure

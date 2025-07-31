@@ -1,4 +1,4 @@
-from chess.geometry.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate
 
 
 class Horizontal:

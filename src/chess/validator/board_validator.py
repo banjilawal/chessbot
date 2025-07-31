@@ -1,6 +1,4 @@
-from typing import List
 from chess.geometry.square import Square
-from chess.geometry.coordinate import Coordinate
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 

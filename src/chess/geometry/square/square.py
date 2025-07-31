@@ -1,7 +1,7 @@
 from typing import Optional, TYPE_CHECKING
 
-from chess.geometry.coordinate import Coordinate
-from chess.geometry.occupation_status import OccupationStatus
+from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.square.occupation_status import OccupationStatus
 from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
