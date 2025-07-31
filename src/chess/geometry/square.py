@@ -6,6 +6,7 @@ from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
+from chess.validator.id_validator import IdValidator
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece
@@ -19,6 +20,9 @@ class Square:
     _occupant: Optional['ChessPiece']
 
     def __init__(self, square_id: int, name: str, coord: Coordinate):
+        id_validation_result = IdValidator.id_is_positive(square_id)
+        if id_validation_result.is_failure:
+
         if square_id < 0:
             raise ValueError("Square id cannot be negative.")
         if coord is None:
