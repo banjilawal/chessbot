@@ -34,13 +34,13 @@ class MotionService(ABC):
     def search_pattern(self) -> SearchPattern:
         return self._search_pattern
 
-    # Final method — performs global validation before deferring to subclass logic
+    # Final method — performs common validation before deferring to subclass logic
     def dispatch_to_move_executor(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> TransactionResult:
         self._validate(piece, board)
         self._validate_destination(destination, board)
         self._execute_move(piece, destination, board)
 
-    # Final method — performs global validation before deferring to subclass logic
+    # Final method — performs common validation before deferring to subclass logic
     def explore(self, piece: 'ChessPiece', board: 'ChessBoard') -> List[Coordinate]:
         return self._perform_exploration(piece, board)
 
