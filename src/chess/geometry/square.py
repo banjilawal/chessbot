@@ -23,6 +23,7 @@ class Square:
         id_validation_result = IdValidator.id_is_positive(square_id)
         if id_validation_result.is_failure:
 
+
         if square_id < 0:
             raise ValueError("Square id cannot be negative.")
         if coord is None:

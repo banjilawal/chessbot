@@ -2,7 +2,7 @@ from typing import List
 
 from chess.factory.board_populator import BoardPopulatorFactory
 from chess.factory.grid_builder import GridBuilder
-from chess.factory.player_factory import PlayerFactory
+
 from chess.factory.rank_factory import RankFactory
 from chess.factory.piece_factory import PieceFactory
 

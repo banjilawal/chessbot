@@ -35,7 +35,6 @@ class ChessBoard:
         return self._grid
 
     def find_chess_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
-
         coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
         if coordinate_validation_result.is_failure:
             print("Cannot find chess_piece at invalid coordinate")
