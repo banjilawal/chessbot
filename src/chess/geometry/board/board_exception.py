@@ -1,3 +1,4 @@
+from chess.common.exceptions import ChessException
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 class BoardException(ChessException):
