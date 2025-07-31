@@ -24,5 +24,5 @@ class ValidationResult:
         return ValidationResult(payload, True, None)
 
     @staticmethod
-    def failure(error_message: str) -> 'ValidationResult':
+    def failure(self, error_message: str) -> 'ValidationResult':
         return ValidationResult(None, False, error_message)

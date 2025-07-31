@@ -1,11 +1,18 @@
 from chess.geometry.square import Square
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
+from chess.validator.validation_result import ValidationResult
 
 
 class BoardValidator:
 
     @staticmethod
+    def not_none(board: 'ChessBoard') -> ValidationResultl:
+        return board is not None
+
+    @staticmethod
     def validate(board: 'ChessBoard') -> bool:
+
+
 
         if board is None:
             raise ValueError("ChessBoard cannot be None.")
