@@ -10,6 +10,7 @@ T = TypeVar('T')
 class ResultStatus(Enum):
     SUCCESS = auto()
     FAILURE = auto()
+    EMPTY_SEARCH_RESULT = auto()
     FAILURE_REQUIRES_ROLLBACK = auto()
 
 
