@@ -19,13 +19,13 @@ class ChessPieceMovableValidationFailed(ValidationException):
 class ChessPiecePromotableValidationFailed(ValidationException):
     default_message = "ChessPiece failed promotable validation test"
 class ChessPieceOnBoardValidationFailed(ValidationException):
-
+    default_message = "ChessPiece failed on board validation test"
 
 
 class ChessPieceValidator:
 
     @staticmethod
-    def is_not_null_test(chess_piece: ChessPiece) -> ValidationReport[ChessPiece]:
+    def not_null_test(chess_piece: ChessPiece) -> ValidationReport[ChessPiece]:
         if chess_piece is None:
             return ValidationReport.send_failed_valtidation_report(
                 ChessPieceNotNullValidationFailed("ChessPiece failed not null validation test"))
@@ -34,7 +34,7 @@ class ChessPieceValidator:
 
     @staticmethod
     def is_movable_test(chess_piece: ChessPiece) -> ValidationReport[ChessPiece]:
-        test_report = ChessPieceValidator.is_not_null_test(chess_piece)
+        test_report = ChessPieceValidator.not_null_test(chess_piece)
 
         if test_report.payload is None:
              return ValidationReport.send_failed_valtidation_report(
@@ -49,7 +49,7 @@ class ChessPieceValidator:
 
     @staticmethod
     def is_promotable_test(chess_piece: 'ChessPiece') -> ValidationReport[ChessPiece]:
-        test_report = ChessPieceValidator.is_not_null_test(chess_piece)
+        test_report = ChessPieceValidator.not_null_test(chess_piece)
 
         if test_report.payload is None:
             return ValidationReport.send_failed_valtidation_report(
@@ -61,61 +61,59 @@ class ChessPieceValidator:
                 ChessPiecePromotableValidationFailed("ChessPiece not king or pawn. failed promotable validation test")
             )
 
-        if testing_payload.current_coordinate().row != testing_payload.player.home_quadrant.
-
-            coordinate_stack < 1 and testing_payload.status != MobilityStatus.FREE:
+        if testing_payload.current_coordinate().row != testing_payload.player.home_quadrant.enemy_quadrant():
             return ValidationReport.send_failed_valtidation_report(
-                ChessPieceMovableValidationFailed("ChessPiece failed movable validation test"))
+                ChessPiecePromotableValidationFailed(
+                    "Promotable chess piece is not in enemy home. Failed is_promotable_test"
+                )
+            )
 
         return ValidationReport.send_passed_validation_report(payload=chess_piece)
 
     @staticmethod
-    def target_is_capturable_test():
+    def target_is_capturable_test(captor: 'ChessPiece', target: 'ChessPiece') -> ValidationReport[ChessPiece]:
+        captor_test_report = ChessPieceValidator.not_null_test(captor)
+        target_test_report = ChessPieceValidator.not_null_test(target)
+
+        if captor_test_report.payload is None or target_test_report.payload is None:
+            return ValidationReport.send_failed_valtidation_report(
+                ChessPiecePromotableValidationFailed(
+                    "ChessPiece failed target_is_capturable_test. One of the pieces is None"
+                )
+            )
+
+        captor_payload = captor_test_report.payload
+        target_payload = target_test_report.payload
+
+        if captor_payload.player == target_payload.player:
+            return ValidationReport.send_failed_valtidation_report(
+                ChessPiecePromotableValidationFailed(
+                    "ChessPiece failed target_is_capturable_test. Captor and target are on the same team"
+                )
+            )
+        if captor_payload.status != target_payload.status and captor_payload.status != MobilityStatus.FREE:
+            return ValidationReport.send_failed_valtidation_report(
+                ChessPiecePromotableValidationFailed(
+                    "ChessPiece failed target_is_capturable_test. Captor and target are not in the same mobility status"
+                )
+            )
+        return ValidationReport.send_passed_validation_report(payload=target_payload)
 
     @staticmethod
-    def is_starting_square_placeable(piece: 'ChessPiece') -> TransactionResult:
-        method = "ChessPieceValidator.is_not_null"
+    def is_starting_square_placeable(piece: 'ChessPiece') -> ValidationReport[ChessPiece]:
+        not_null_report = ChessPieceValidator.not_null_test(piece)
+        if not_null_report.payload is None:
+            return ValidationReport.send_failed_valtidation_report(
+                ChessPieceOnBoardValidationFailed(not_null_report.validation_exception.message))
 
-        if piece is None:
-            return TransactionResult.failure("ChessPiece does not exist. It is null (None).")
-        return TransactionResult(method, StatusCode.SUCCESS)
+        test_payload = not_null_report.payload
+        not_movable_report = ChessPieceValidator.is_movable_test(test_payload)
+        if not_movable_report.payload is None:
+            return ValidationReport.send_failed_valtidation_report(
+                ChessPieceOnBoardValidationFailed(not_movable_report.validation_exception.message))
 
+        if len(piece.coordinate_stack) != 0 :
+            return ValidationReport.send_failed_valtidation_report(
+                ChessPieceOnBoardValidationFailed("The chess piece is already on the board"))
 
-    @staticmethod
-    def can_be_moved(iece: 'ChessPiece') -> TransactionResult:
-        method = "ChessPieceValidator.can_move"
-
-        if piece.test_outcome == MobilityStatus.FREE and piece.current_coordinate() is not None:
-            return TransactionResult(method, StatusCode.SUCCESS)
-        return TransactionResult.failure(f"{piece.label} is not free to move.")
-
-
-    @staticmethod
-    def can_place_on_board(chess_piece: 'ChessPiece') -> TransactionResult:
-        method = "ChessPieceValidator.can_add_to_board"
-        if (
-            chess_piece is not None and
-            chess_piece.status == MobilityStatus.FREE and
-            chess_piece.current_coordinate() is None
-        ):
-            return TransactionResult(method, StatusCode.SUCCESS)
-        return TransactionResult(method, Failure(f"{chess_piece.label} Cannot be added to the board"))
-
-
-    @staticmethod
-    def can_be_promoted(chess_piece: 'ChessPiece') -> TransactionResult:
-        method = "ChessPieceValidator.is_promotable"
-
-        rank = chess_piece.rank
-        if isinstance(rank, PromotableRank) and not rank.is_promoted():
-            return TransactionResult(method, StatusCode.SUCCESS)
-        return TransactionResult(method, Failure(f"{chess_piece.label} of rank {rank.name} cannot be promoted."))
-
-
-    @staticmethod
-    def is_on_board(piece: 'ChessPiece') -> TransactionResult:
-        method = "ChessPieceValidator.is_on_board"
-
-        if piece.current_coordinate() is None:
-            return TransactionResult(method, Failure(f"{piece.label} is not on the board."))
-        return TransactionResult(method, StatusCode.SUCCESS)
+        return ValidationReport.send_passed_validation_report(payload=test_payload)
