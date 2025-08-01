@@ -45,3 +45,9 @@ class Quadrant(Enum):
     @property
     def row_id(self) -> Optional[int]:
         return self._row_id
+
+
+    def enemy_quadrant(self) -> Optional['Quadrant']:
+        if self == Quadrant.N:
+            return Quadrant.S
+        return Quadrant.N
