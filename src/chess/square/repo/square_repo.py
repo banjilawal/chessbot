@@ -6,21 +6,32 @@ from assurance.validation_result import ValidationStatus
 from chess.geometry.board.coordinate import Coordinate, Delta
 from chess.piece.piece import ChessPiece
 from chess.square.model.square import Square
+from chess.square.repo.iterator import SquareIterator
 from chess.validator.coordinate_validator import CoordinateValidator
 
 
 class SquareRepo:
     _squares: List[List[Square]]
 
+
     def __init__(self, squares: List[List[Square]]):
         self._squares = squares
+
 
     @property
     def squares(self) -> List[List[Square]]:
         return self._squares
 
 
-    def find_square(self, coordinate: Coordinate) -> TransactionResult[Square]:
+    def iterator(
+        self,
+        index: Coordinate = Coordinate(0, 0),
+        delta: Delta=Delta(delta_column=1, delta_row=1)
+     ) -> SquareIterator:
+        return SquareIterator(self._squares, index, delta)
+
+
+    def square(self, coordinate: Coordinate) -> TransactionResult[Square]:
         method_name = "SquareRepo.find_square"
 
         validation_result = CoordinateValidator.coordinate_exists(coordinate)
@@ -44,7 +55,7 @@ class SquareRepo:
         )
 
 
-    def find_ches_piece(self, coordinate) -> TransactionResult[ChessPiece]:
+    def chess_piece(self, coordinate) -> TransactionResult[ChessPiece]:
         method_name = "SquareRepo.find_ches_piece"
 
         search_transaction_result = self.find_square(coordinate)

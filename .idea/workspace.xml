@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/square/repo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/square/repo/iterator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/square/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/square/service/square_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board/coordinate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/square_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/square_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/square_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
-      <workItem from="1753986943709" duration="31277000" />
+      <workItem from="1753986943709" duration="33102000" />
     </task>
     <servers />
   </component>
