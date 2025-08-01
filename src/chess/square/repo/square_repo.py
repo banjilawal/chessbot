@@ -3,7 +3,7 @@ from typing import List, Optional
 from assurance.result import Result, ResultStatus
 from assurance.transaction_result import TransactionResult, StatusCode
 from assurance.validation_result import ValidationStatus
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.board.coordinate import Coordinate, Delta
 from chess.piece.piece import ChessPiece
 from chess.square.model.square import Square
 from chess.validator.coordinate_validator import CoordinateValidator
@@ -64,5 +64,7 @@ class SquareRepo:
             )
 
         return TransactionResult(method_name, StatusCode.SUCCESS, Result.ok(square.occupant))
+
+
 
 

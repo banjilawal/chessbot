@@ -76,13 +76,6 @@ class Coordinate:
     def __str__(self):
         return f"[{self._column}, {self._row}]"
 
+
     def shift(self, delta: Delta) -> 'Coordinate':
-        new_row = self._row + delta.delta_row
-        new_col = self._column + delta.delta_column
-
-        if new_row < 0 or new_row >= ROW_SIZE:
-            raise ValueError(f"Shift results in invalid row {new_row}. Must be 0..{ROW_SIZE - 1}.")
-        if new_col < 0 or new_col >= COLUMN_SIZE:
-            raise ValueError(f"Shift results in invalid column {new_col}. Must be 0..{COLUMN_SIZE - 1}.")
-
-        return Coordinate(row=new_row, column=new_col)
+        return Coordinate(row=self._row + delta.delta_row, column=self._column + delta.delta_column)
