@@ -23,7 +23,7 @@ class Square:
     _occupant: Optional['ChessPiece']
 
     def __init__(self, square_id: int, name: str, coord: Coordinate):
-        id_validation_result = IdValidator.id_is_positive(square_id)
+        id_validation_result = IdValidator.test_id_positive(square_id)
         if id_validation_result.is_failure:
             raise NegativeIdException(NegativeIdException.default_message)
 

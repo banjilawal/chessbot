@@ -3,7 +3,6 @@ from typing import TYPE_CHECKING
 from chess.piece.mobility_status import MobilityStatus
 from chess.rank.promotable.promotable_rank import PromotableRank
 from chess.transaction.failure import Failure
-from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
 
 if TYPE_CHECKING:

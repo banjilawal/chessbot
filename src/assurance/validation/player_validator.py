@@ -1,16 +1,20 @@
+from typing import Optional
 
+from assurance.validation.validatin_report import ValidationReport
+from assurance.validation.validation_exception import ValidationException
 from chess.player.player import Player
-from chess.transaction.failure import Failure
-from chess.transaction.status_code import StatusCode
-from chess.transaction.transaction_result import TransactionResult
 
+
+class PlayerNotNUllValidationFailed(ValidationException):
+    default_message = "Player failed not null validation test"
 
 class PlayerValidator:
 
     @staticmethod
-    def is_not_null(self, player: Player) -> TransactionResult:
-        method = "PlayerValidator.is_not_null"
+    def is_not_null_test(player: Optional[Player]) -> ValidationReport[Player]:
 
         if player is None:
-            return TransactionResult(method, Failure(f"{player} is null"))
-        return TransactionResult(method, StatusCode.SUCCESS)
+            return ValidationReport.send_failed_valtidation_report(
+                PlayerNotNUllValidationFailed("Player failed not null validation test"))
+
+        return ValidationReport.send_passed_validation_report(payload=player)

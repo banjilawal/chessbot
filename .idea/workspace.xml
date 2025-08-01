@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/board_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/board_validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validation/coordinate_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/coordinate_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/piece_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validation_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/validation_result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/model/square_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/square_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validation_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/validatin_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/model/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/square.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/validator/validation_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/validator/validation_result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +127,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
-      <workItem from="1753986943709" duration="38028000" />
+      <workItem from="1753986943709" duration="42840000" />
     </task>
     <servers />
   </component>

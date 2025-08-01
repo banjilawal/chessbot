@@ -9,7 +9,7 @@ from typing import List, Optional, TYPE_CHECKING
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
-from assurance.validation.board_validator import BoardValidator
+from assurance.validation.square_repo_validator import SquareRepoValidator
 from assurance.validation.coordinate_validator import CoordinateValidator
 from assurance.validation.piece_validator import ChessPieceValidator
 
@@ -135,7 +135,7 @@ class ChessPiece:
             print(f"{self._label} does not have a rank. It cannot explore without a rank.")
             return []
 
-        board_validation_result = BoardValidator.board_exists(board)
+        board_validation_result = SquareRepoValidator.board_exists(board)
         if board_validation_result.is_failure:
             print(f"{self._label} cannot explore without a board. The board is null.")
             return []
