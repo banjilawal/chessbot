@@ -18,11 +18,37 @@ if TYPE_CHECKING:
     from chess.rank.rank import Rank
     from chess.geometry.board import ChessBoard
 
+class RankTag:
+    _member_id: int
+    _rank: 'Rank'
+
+    def __init__(self, member_id: int, rank: 'Rank'):
+        self._member_id = member_id
+        self._rank = rank
+
+    @property
+    def member_id(self) -> int:
+        return self._member_id
+
+    @property
+    def rank(self) -> 'Rank':
+        return self._rank
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, RankTag):
+            return False
+        return self._member_id == other.member_id and self._rank == other.rank
+
+
 class ChessPiece:
     _id: int
     _label: Label
-    _rank: 'Rank'
     _player: 'Player'
+    _rank_tag: RankTag
     _coordinate_stack: List[Coordinate]
     _status: MobilityStatus
 
