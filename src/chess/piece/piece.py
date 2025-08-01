@@ -9,9 +9,9 @@ from typing import List, Optional, TYPE_CHECKING
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
-from chess.validator.board_validator import BoardValidator
-from chess.validator.coordinate_validator import CoordinateValidator
-from chess.validator.piece_validator import ChessPieceValidator
+from assurance.validation.board_validator import BoardValidator
+from assurance.validation.coordinate_validator import CoordinateValidator
+from assurance.validation.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:
     from chess.player.player import Player

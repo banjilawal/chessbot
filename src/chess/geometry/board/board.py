@@ -8,8 +8,8 @@ from chess.square.model import Square
 from chess.piece.piece import ChessPiece
 from chess.transaction.failure import Failure
 from chess.transaction.transaction_result import TransactionResult
-from chess.validator.coordinate_validator import CoordinateValidator
-from chess.validator.piece_validator import ChessPieceValidator
+from assurance.validation.coordinate_validator import CoordinateValidator
+from assurance.validation.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:
     pass

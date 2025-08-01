@@ -8,8 +8,8 @@ from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
 from chess.transaction.transaction_result import TransactionResult
-from chess.validator.coordinate_validator import CoordinateValidator
-from chess.validator.id_validator import IdValidator
+from assurance.validation.coordinate_validator import CoordinateValidator
+from assurance.validation.id_validator import IdValidator
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece

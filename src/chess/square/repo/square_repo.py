@@ -1,13 +1,13 @@
-from typing import List, Optional
+from typing import List
 
 from assurance.result import Result, ResultStatus
 from assurance.transaction_result import TransactionResult, StatusCode
-from assurance.validation_result import ValidationStatus
+from assurance.validation.validation_result import ValidationStatus
 from chess.geometry.board.coordinate import Coordinate, Delta
 from chess.piece.piece import ChessPiece
 from chess.square.model.square import Square
 from chess.square.repo.iterator import SquareIterator
-from chess.validator.coordinate_validator import CoordinateValidator
+from assurance.validation.coordinate_validator import CoordinateValidator
 
 
 class SquareRepo:

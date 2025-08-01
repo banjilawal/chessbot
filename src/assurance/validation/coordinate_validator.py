@@ -1,6 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 
-from assurance.validation_result import ValidationResult, ValidationStatus
+from assurance.validation.validation_result import ValidationResult, ValidationStatus
 from chess.geometry.board.coordinate import Coordinate
 
 from chess.transaction.transaction_result import TransactionResult, Failure, StatusCode
