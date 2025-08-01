@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from enum import Enum, auto
 from typing import Optional, TypeVar, Generic
 
@@ -13,7 +13,7 @@ class ResultStatus(Enum):
     FAILURE_REQUIRES_ROLLBACK = auto()
 
 
-class Result(ABC, Generic[T]):
+class Result(Generic[T]):
     def __init__(
         self,
         status: ResultStatus,
@@ -28,40 +28,45 @@ class Result(ABC, Generic[T]):
         self._exception = exception
         self._validation_result = validation_result
 
+
     @property
     def status(self) -> ResultStatus:
         return self._status
+
 
     @property
     def payload(self) -> Optional[T]:
         return self._payload
 
+
     @property
     def message(self) -> Optional[str]:
         return self._message
+
 
     @property
     def exception(self) -> Optional[Exception]:
         return self._exception
 
-    @property
-    def status(self) -> ResultStatus:
-        return self._status
 
+    @property
+    def validation_result(self) -> Optional['ValidationResult']:
+        return self._validation_result
 
     @staticmethod
-    def ok(data: Optional[T] = None) -> 'Result[T]':
-        return Result(status=ResultStatus.SUCCESS, payload=data, message=None)
-
+    def ok(payload: Optional[T], message: Optional[str]) -> 'Result[T]':
+        return Result(status=ResultStatus.SUCCESS, payload=payload, message=message)
 
     @staticmethod
     def fail(
         message: str,
-        validation_result: Optional[ValidationResult],
         exception: Optional[Exception] = None,
+        validation_result: Optional['ValidationResult'] = None,
         status: ResultStatus = ResultStatus.FAILURE | ResultStatus.FAILURE_REQUIRES_ROLLBACK
-    ) -> 'Result[T]':
-        return Result(status=ResultStatus.FAILURE, message=message, exception=exception)
+     ) -> 'Result[T]':
+        return Result(status=status, message=message, exception=exception, validation_result=validation_result)
+
+
 
 
 

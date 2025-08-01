@@ -121,7 +121,7 @@ class ChessBoard:
         if occupation_result.is_success:
             return square_to_leave.leave(chess_piece)
 
-        return occupation_result  # failed occupation result
+        return occupation_result  # failed occupation outcome
 
         # def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):
         #     if chess_piece is None:

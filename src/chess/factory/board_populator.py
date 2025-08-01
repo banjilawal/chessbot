@@ -32,8 +32,8 @@ class BoardPopulatorFactory:
                 piece = grouped[code].pop(0)
                 coord = Coordinate(row=back_row, column=col)
                 result = board.place_chess_piece_on_board(piece, coord)
-                # if result.is_failure:
-                #     print(f"❌ Failed to place {piece.label} at {coord}: {result.message}")
+                # if outcome.is_failure:
+                #     print(f"❌ Failed to place {piece.label} at {coord}: {outcome.message}")
 
             # ✅ Place pawns
             for col in range(8):
@@ -43,6 +43,6 @@ class BoardPopulatorFactory:
                 pawn = grouped["P"].pop(0)
                 coord = Coordinate(row=pawn_row, column=col)
                 result = board.place_chess_piece_on_board(pawn, coord)
-                # if result.is_failure:
-                #     print(f"❌ Failed to place {pawn.label} at {coord}: {result.message}")
+                # if outcome.is_failure:
+                #     print(f"❌ Failed to place {pawn.label} at {coord}: {outcome.message}")
 
