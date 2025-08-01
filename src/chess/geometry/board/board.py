@@ -148,7 +148,7 @@ class ChessBoard:
         #
         #     captor = chess_piece
         #     # prisoner = self.remove_piece_from_board(current_occupant.id)
-        #     prisoner.status = MobilityStatus.PRISONER
+        #     prisoner.test_outcome = MobilityStatus.PRISONER
         #
         #     print("prisoner=", prisoner, " captor=", captor, "")
         #

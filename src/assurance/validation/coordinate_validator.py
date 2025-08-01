@@ -1,6 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 
-from assurance.validation.validation_result import ValidationResult, ValidationStatus
+from assurance.validation.validation_result import ValidationReport, TestOutcome
 from chess.geometry.board.coordinate import Coordinate
 
 from chess.transaction.transaction_result import TransactionResult, Failure, StatusCode
@@ -11,11 +11,11 @@ if TYPE_CHECKING:
 class CoordinateValidator:
 
     @staticmethod
-    def coordinate_exists(coordinate: Optional[Coordinate], board: Optional['ChessBoard']) -> ValidationResult:
+    def coordinate_exists(coordinate: Optional[Coordinate], board: Optional['ChessBoard']) -> ValidationReport:
         method = "CoordinateValidator.coordinate_exists"
 
         if board is None:
-            return ValidationResult(ValidationStatus.INVALID, )
+            return ValidationReport(TestOutcome.INVALID, )
         if coordinate is None:
             return TransactionResult(method, Failure("Coordinate cannot be None."))
 

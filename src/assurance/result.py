@@ -1,7 +1,7 @@
 from enum import Enum, auto
 from typing import Optional, TypeVar, Generic
 
-from assurance.validation.validation_result import ValidationResult
+from assurance.validation.validation_result import ValidationReport
 
 T = TypeVar('T')
 
@@ -20,7 +20,7 @@ class Result(Generic[T]):
         payload: Optional[T] = None,
         message: Optional[str] = None,
         exception: Optional[Exception] = None,
-        validation_result: Optional['ValidationResult'] = None
+        validation_result: Optional['ValidationReport'] = None
     ):
         self._status = status
         self._payload = payload
@@ -50,7 +50,7 @@ class Result(Generic[T]):
 
 
     @property
-    def validation_result(self) -> Optional['ValidationResult']:
+    def validation_result(self) -> Optional['ValidationReport']:
         return self._validation_result
 
     @staticmethod
@@ -61,7 +61,7 @@ class Result(Generic[T]):
     def fail(
         message: str,
         exception: Optional[Exception] = None,
-        validation_result: Optional['ValidationResult'] = None,
+        validation_result: Optional['ValidationReport'] = None,
         status: ResultStatus = ResultStatus.FAILURE | ResultStatus.FAILURE_REQUIRES_ROLLBACK
      ) -> 'Result[T]':
         return Result(status=status, message=message, exception=exception, validation_result=validation_result)

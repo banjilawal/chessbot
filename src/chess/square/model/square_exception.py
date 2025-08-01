@@ -17,4 +17,4 @@ class VacateCleanUpException(SquareException):
     default_message = "An vacate clean up task failed. Entities have inconsistent states."
 
 class InaccurateOccupationStatusException(SquareException):
-    default_message = "The occupation status is inaccurate"
+    default_message = "The occupation test_outcome is inaccurate"

@@ -52,20 +52,20 @@ class ChessPiece:
     _coordinate_stack: List[Coordinate]
     _status: MobilityStatus
 
-    def __init__(self, piece_id: int, rank: 'Rank'):
+    def __init__(self, piece_id: int, rank_tag: 'RankTag', player: 'Player' = None):
         if not piece_id:
             raise ValueError("Cannot create a chess_piece with an empty id.")
         if piece_id < 0:
             raise ValueError("Cannot create a chess_piece with a negative id.")
-        if rank is None:
+        if rank_tag is None:
             raise ValueError("Cannot create a chess_piece with an null rank.")
 
         # rank.members.append(self)
-        self._rank = rank
-        self._label = Label(rank.acronym, piece_id)
+        self._rank_tag = rank_tag
+        self._label = Label(rank_tag.rank.acronym, piece_id)
 
         self._id = piece_id
-        self._player = None
+        self._player = player
         self._status = MobilityStatus.FREE
         self._coordinate_stack: List[Coordinate] = []
 
@@ -86,8 +86,8 @@ class ChessPiece:
 
 
     @property
-    def rank(self) -> 'Rank':
-        return self._rank
+    def rank_tag(self) -> 'RankTag':
+        return self._rank_tahg
 
 
     @property

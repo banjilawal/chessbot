@@ -2,7 +2,7 @@ from typing import List
 
 from assurance.result import Result, ResultStatus
 from assurance.transaction_result import TransactionResult, StatusCode
-from assurance.validation.validation_result import ValidationStatus
+from assurance.validation.validation_result import TestOutcome
 from chess.geometry.board.coordinate import Coordinate, Delta
 from chess.piece.piece import ChessPiece
 from chess.square.model.square import Square
@@ -35,7 +35,7 @@ class SquareRepo:
         method_name = "SquareRepo.find_square"
 
         validation_result = CoordinateValidator.coordinate_exists(coordinate)
-        if validation_result.status is ValidationStatus.INVALID:
+        if validation_result.test_outcome is TestOutcome.INVALID:
             return TransactionResult(
                 transaction_method_name = method_name,
                 status_code=StatusCode.FAILURE,

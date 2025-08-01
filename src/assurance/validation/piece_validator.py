@@ -42,7 +42,7 @@ class ChessPieceValidator:
     def can_be_moved(iece: 'ChessPiece') -> TransactionResult:
         method = "ChessPieceValidator.can_move"
 
-        if piece.status == MobilityStatus.FREE and piece.current_coordinate() is not None:
+        if piece.test_outcome == MobilityStatus.FREE and piece.current_coordinate() is not None:
             return TransactionResult(method, StatusCode.SUCCESS)
         return TransactionResult.failure(f"{piece.label} is not free to move.")
 

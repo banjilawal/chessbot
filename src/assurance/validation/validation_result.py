@@ -3,36 +3,39 @@ from typing import Optional, T, Generic, TypeVar
 
 T = TypeVar('T')
 
-class ValidationStatus(Enum):
+class TestOutcome(Enum):
     IS_VALID = auto()
     INVALID = auto()
 
 
-class ValidationResult(Generic[T]):
+class ValidationReport(Generic[T]):
+    _payload: T
+    _test_outcome: TestOutcome
+    _validation_failure_message: Optional[str]
 
-    def __init__(self, payload: Optional[T], status: ValidationStatus, error_message: Optional[str] = None):
+    def __init__(self, payload: Optional[T], test_outcome: TestOutcome, validation_failure_message: Optional[str] = None):
         self._payload = payload
-        self._status = status
-        self._error_message = error_message
+        self._test_outcome = test_outcome
+        self._validation_failure_message = validation_failure_message
 
     @property
     def payload(self) -> Optional[T]:
         return self._payload
 
     @property
-    def status(self) -> ValidationStatus:
-        return self._status
+    def test_outcome(self) -> TestOutcome:
+        return self._test_outcome
 
     @property
-    def error_message(self) -> Optional[str]:
-        return self._error_message
+    def validation_failure_message(self) -> Optional[str]:
+        return self._validation_failure_message
 
 
     @staticmethod
-    def valid(payload: T) -> 'ValidationResult[T]':
-        return ValidationResult(payload=payload, status=ValidationStatus.IS_VALID)
+    def valid_outcome_report(payload: T) -> 'ValidationReport[T]':
+        return ValidationReport(payload=payload, test_outcome=TestOutcome.IS_VALID)
 
 
     @staticmethod
-    def invalid(message: str) -> 'ValidationResult[T]':
-        return ValidationResult(payload=None, status=ValidationStatus.INVALID, error_message=message)
+    def invalid_outcome_report(message: str) -> 'ValidationReport[T]':
+        return ValidationReport(payload=None, test_outcome=TestOutcome.INVALID, validation_failure_message=message)
