@@ -1,47 +1,26 @@
-
+from dataclasses import dataclass
 
 from chess.geometry.board.coordinate import Coordinate
 from chess.piece.mobility_status import MobilityStatus
 from chess.piece.label import Label
 
-from typing import List, Optional, TYPE_CHECKING
+from typing import List, TYPE_CHECKING
 
 from chess.transaction.failure import Failure
-from chess.transaction.status_code import StatusCode
-from chess.transaction.transaction_result import TransactionResult
-from assurance.validation.square_repo_validator import SquareRepoValidator
-from assurance.validation.coordinate_validator import CoordinateValidator
-from assurance.validation.piece_validator import ChessPieceValidator
+from chess.transaction.old_transaction_result import OldTransactionResult
+from chess.square.repo.square_repo_validator import SquareRepoValidator
+from chess.geometry.board.coordinate_validator import CoordinateValidator
+from chess.piece.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:
     from chess.player.player import Player
     from chess.rank.rank import Rank
     from chess.geometry.board import ChessBoard
 
+@dataclass(Frozen=True)
 class RankTag:
-    _member_id: int
-    _rank: 'Rank'
-
-    def __init__(self, member_id: int, rank: 'Rank'):
-        self._member_id = member_id
-        self._rank = rank
-
-    @property
-    def member_id(self) -> int:
-        return self._member_id
-
-    @property
-    def rank(self) -> 'Rank':
-        return self._rank
-
-    def __eq__(self, other):
-        if other is self:
-            return True
-        if other is None:
-            return False
-        if not isinstance(other, RankTag):
-            return False
-        return self._member_id == other.member_id and self._rank == other.rank
+    member_id: int
+    rank: 'Rank''
 
 
 class ChessPiece:
@@ -109,17 +88,14 @@ class ChessPiece:
     @player.setter
     def player(self, player: 'Player'):
         self._player = player
-        if self not in player.chess_pieces:
-            player.chess_pieces.append(self)
-        self.__rebuild_label()
 
 
-    def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate) -> TransactionResult:
+    def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate) -> OldTransactionResult:
         method = "ChessPiece.forward_move_request"
 
         chess_piece_can_be_moved = ChessPieceValidator.can_be_moved(self)
         if chess_piece_can_be_moved.is_failure:
-            return TransactionResult(method, Failure("The chess chess_piece cannot be moved."))
+            return OldTransactionResult(method, Failure("The chess chess_piece cannot be moved."))
 
         destination_validation_result = CoordinateValidator.coordinate_exists(destination)
         if destination_validation_result.is_failure:
@@ -176,34 +152,3 @@ class ChessPiece:
             number = self._label.number % 2 + 1 # <--- This will still cause labels to cycle between 1 and 2
             self._label = Label(letters, number)
 
-    # === Stack operations ===
-    def push_new_coordinate(self, coordinate: Coordinate) -> TransactionResult:
-        method = "ChessPiece.push_new_coordinate"
-        old_size = len(self._coordinate_stack)
-
-        if coordinate is None:
-            return TransactionResult(method, Failure("Cannot push a null coordinate on to te stack"))
-        if coordinate in self._coordinate_stack:
-            print(f"{coordinate} is already on {self._label}'s stack. No need for a push.")
-            return TransactionResult(method, StatusCode.SUCCESS)
-
-        self._coordinate_stack.append(coordinate)
-
-        if coordinate == self.current_coordinate() and old_size + 1 == len(self._coordinate_stack):
-            return TransactionResult(method, StatusCode.SUCCESS)
-        return TransactionResult(method, Failure("Failed to push coordinate on to stack"))
-
-
-    def undo_last_coordinate_push(self) -> Optional[Coordinate]:
-
-        if len(self._coordinate_stack) == 0:
-            print(f"{self._label} has no coordinates to undo")
-            return None
-
-        if self._coordinate_stack:
-            return self._coordinate_stack.pop()
-        return None
-
-
-    def current_coordinate(self) -> Optional[Coordinate]:
-        return self._coordinate_stack[-1] if self._coordinate_stack else None

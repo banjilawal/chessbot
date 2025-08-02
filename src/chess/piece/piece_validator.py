@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
-from assurance.validation.validatin_report import ValidationReport
+from assurance.validation.validation_report import ValidationReport
 from assurance.validation.validation_exception import ValidationException
 from chess.piece.mobility_status import MobilityStatus
 from chess.rank.king import King
 from chess.rank.pawn import Pawn
 from chess.rank.promotable.promotable_rank import PromotableRank
 from chess.transaction.failure import Failure
-from chess.transaction.transaction_result import TransactionResult
+from chess.transaction.old_transaction_result import OldTransactionResult
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece

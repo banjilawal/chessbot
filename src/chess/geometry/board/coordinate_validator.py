@@ -1,7 +1,7 @@
-from typing import Optional, TYPE_CHECKING
+from typing import Optional
 
-from assurance.validation.square_repo_validator import SquareRepoValidator
-from assurance.validation.validatin_report import ValidationReport
+from chess.square.repo.square_repo_validator import SquareRepoValidator
+from assurance.validation.validation_report import ValidationReport
 from assurance.validation.validation_exception import ValidationException
 from chess.geometry.board.coordinate import Coordinate
 from chess.square.repo.square_repo import SquareRepo
@@ -16,7 +16,7 @@ class CoordinateDimensionValidationFailed(ValidationException):
 class CoordinateValidator(ValidationException):
 
     @staticmethod
-    def test_coordinate_not_none(coordinate: Optional[Coordinate]) -> ValidationReport[Coordinate]:
+    def test_not_none(coordinate: Optional[Coordinate]) -> ValidationReport[Coordinate]:
         if coordinate is None:
             return ValidationReport.send_failed_valtidation_report(
                 CoordinateNotNullValidationFailed("Coordinate failed not null validation test")
@@ -30,7 +30,7 @@ class CoordinateValidator(ValidationException):
         square_repo: Optional[SquareRepo]
     ) -> ValidationReport[Coordinate]:
 
-        square_repo_validation_report = SquareRepoValidator.test_square_repo_exists(square_repo)
+        square_repo_validation_report = SquareRepoValidator.not_null_test(square_repo)
         if square_repo_validation_report.payload is None:
             return ValidationReport.send_failed_valtidation_report(
                 CoordinateDimensionValidationFailed(square_repo_validation_report.validation_exception)

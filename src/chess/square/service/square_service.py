@@ -1,6 +1,6 @@
 from typing import List
 
-from assurance.transaction_result import TransactionResult
+from assurance.transaction_result import TransactionReport
 from chess.geometry.board.coordinate import Coordinate
 from chess.piece.piece import ChessPiece
 from chess.square.model.square import Square
@@ -31,11 +31,11 @@ class SquareService:
                 matches.append(square)
         return matches
 
-    def find_square(self, coordinate: Coordinate) -> TransactionResult[Square]:
+    def find_square(self, coordinate: Coordinate) -> TransactionReport[Square]:
         return self._square_repo.square(coordinate)
 
 
-    def find_chess_piece(self, chess_piece: ChessPiece) -> TransactionResult[ChessPiece]:
+    def find_chess_piece(self, chess_piece: ChessPiece) -> TransactionReport[ChessPiece]:
         return self._square_repo.chess_piece(chess_piece)
 
 

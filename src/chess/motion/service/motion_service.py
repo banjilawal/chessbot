@@ -7,7 +7,7 @@ from chess.geometry.board.coordinate import Coordinate
 from chess.motion.logic.reachable import Reachable
 from chess.motion.search.search_pattern import SearchPattern
 
-from chess.transaction.transaction_result import TransactionResult
+from chess.transaction.old_transaction_result import OldTransactionResult
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece
@@ -35,7 +35,7 @@ class MotionService(ABC):
         return self._search_pattern
 
     # Final method — performs common validation before deferring to subclass logic
-    def dispatch_to_move_executor(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> TransactionResult:
+    def dispatch_to_move_executor(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> OldTransactionResult:
         self._validate(piece, board)
         self._validate_destination(destination, board)
         self._execute_move(piece, destination, board)
@@ -45,7 +45,7 @@ class MotionService(ABC):
         return self._perform_exploration(piece, board)
 
     @abstractmethod
-    def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> TransactionResult:
+    def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> OldTransactionResult:
         raise NotImplementedError("Subclasses must implement _perform_move.")
 
     @abstractmethod

@@ -7,8 +7,8 @@ from chess.square.model.occupation_status import OccupationStatus
 from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
-from chess.transaction.transaction_result import TransactionResult
-from assurance.validation.coordinate_validator import CoordinateValidator
+from chess.transaction.old_transaction_result import OldTransactionResult
+from chess.geometry.board.coordinate_validator import CoordinateValidator
 from assurance.validation.id_validator import IdValidator
 
 if TYPE_CHECKING:
@@ -61,16 +61,16 @@ class Square:
     def status(self) -> OccupationStatus:
         return self._status
 
-    def occupy(self, piece: 'ChessPiece') -> TransactionResult:
+    def occupy(self, piece: 'ChessPiece') -> OldTransactionResult:
         method = "Square.occupy"
 
         if self._occupant == piece:
             self.status = OccupationStatus.OCCUPIED_BY_SELF
             print(f"{piece.label} is already occupying {self._coordinate} nohing to do")
-            return TransactionResult(method, StatusCode.SUCCESS)
+            return OldTransactionResult(method, StatusCode.SUCCESS)
 
         if self._status == OccupationStatus.BLOCKED:
-            return TransactionResult(method, Failure(f"Square is blocked by friendly {self._occupant.label}"))
+            return OldTransactionResult(method, Failure(f"Square is blocked by friendly {self._occupant.label}"))
 
         if self._occupant is None:
             return self._handle_occupation(OccupationStatus.IS_VACANT, piece)
@@ -78,17 +78,17 @@ class Square:
         if piece.is_enemy(self._occupant):
             return self._handle_occupation(OccupationStatus.HAS_ENEMY, piece)
 
-        return TransactionResult(method, Failure(f"Occupation failed after mutation"))
+        return OldTransactionResult(method, Failure(f"Occupation failed after mutation"))
 
 
-    def leave(self, piece: 'ChessPiece') -> TransactionResult:
+    def leave(self, piece: 'ChessPiece') -> OldTransactionResult:
         method = "Square.leave"
 
         if self._occupant is None:
-            return TransactionResult(method, Failure(f"{piece.label} cCannot leave a model already vacant"))
+            return OldTransactionResult(method, Failure(f"{piece.label} cCannot leave a model already vacant"))
 
         if self._occupant != piece:
-            return TransactionResult(
+            return OldTransactionResult(
                 method,
                 Failure(f"C{piece.lable} is not the current occupant of {self._coordinate}")
             )
@@ -97,9 +97,9 @@ class Square:
         self._status = OccupationStatus.IS_VACANT
 
         if self._occupant is None and piece.current_coordinate() == self._coordinate:
-            return TransactionResult(method, StatusCode.SUCCESS)
+            return OldTransactionResult(method, StatusCode.SUCCESS)
         else:
-            return TransactionResult(method, Failure(f"Leave failed after mutation"))
+            return OldTransactionResult(method, Failure(f"Leave failed after mutation"))
 
     #
     # @occupant.setter
@@ -133,11 +133,11 @@ class Square:
         return f"model {self._id} {self.name} occupant: {self._occupant}"
 
 
-    def _handle_occupation(self, occupation_status: OccupationStatus, chess_piece: 'ChessPiece') -> TransactionResult:
+    def _handle_occupation(self, occupation_status: OccupationStatus, chess_piece: 'ChessPiece') -> OldTransactionResult:
         method = "Square._handle_occupation"
 
         if occupation_status == OccupationStatus.BLOCKER:
-            TransactionResult(method, Failure(f"{chess_piece.label} is not allowed to occupy this blocked model."))
+            OldTransactionResult(method, Failure(f"{chess_piece.label} is not allowed to occupy this blocked model."))
 
         if occupation_status == OccupationStatus.HAS_ENEMY:
             self._occupant.status = MobilityStatus.PRISONER
@@ -146,8 +146,8 @@ class Square:
         chess_piece.push_new_coordinate(self._coordinate)
 
         if self._coordinate == chess_piece.current_coordinate():
-            return TransactionResult(method, StatusCode.SUCCESS)
+            return OldTransactionResult(method, StatusCode.SUCCESS)
 
-        return TransactionResult(method, Failure(f"Occupation failed after mutation"))
+        return OldTransactionResult(method, Failure(f"Occupation failed after mutation"))
 
 

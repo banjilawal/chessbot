@@ -2,7 +2,7 @@ from typing import Union
 from chess.transaction.status_code import StatusCode
 from chess.transaction.failure import Failure
 
-class TransactionResult:
+class OldTransactionResult:
     _method_name: str
     _outcome: Union[StatusCode, Failure]
 

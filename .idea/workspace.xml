@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/piece_validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/square/model/square_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/transaction_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/transaction_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/coordinate_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board/coordinate_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/player_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/player_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/squar_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/coordinate_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/square_repo_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/repo/square_repo_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validatin_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/validation_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/service/bishop_motion_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/service/bishop_motion_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/service/knight_motion_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/service/knight_motion_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/service/motion_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/service/motion_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/model/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/square_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/square_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/transaction/failure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/failure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/transaction/transaction_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/old_transaction_result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,9 +95,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\assurance\validation" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square\model" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square\repo" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\geometry\board" />
     </key>
   </component>
   <component name="RunManager">
@@ -120,7 +142,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
-      <workItem from="1753986943709" duration="53398000" />
+      <workItem from="1753986943709" duration="62685000" />
     </task>
     <servers />
   </component>

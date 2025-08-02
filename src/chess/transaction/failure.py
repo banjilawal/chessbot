@@ -1,5 +1,4 @@
-
-from chess.transaction.status_code import StatusCode
+from assurance.transaction_result import StatusCode
 
 
 class Failure:

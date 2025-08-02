@@ -1,6 +1,6 @@
-from assurance.validation.validatin_report import ValidationReport
+from assurance.validation.validation_report import ValidationReport
 from assurance.validation.validation_exception import ValidationException
-from chess.transaction.transaction_result import TransactionResult, Failure, StatusCode
+from chess.transaction.old_transaction_result import OldTransactionResult, Failure, StatusCode
 
 class IdPositiveValidationFailed(ValidationException):
     default_message = "Failed id is positive validation test"

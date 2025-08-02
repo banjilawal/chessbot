@@ -1,6 +1,6 @@
 from typing import Optional
 
-from assurance.validation.validatin_report import ValidationReport, TestOutcome
+from assurance.validation.validation_report import ValidationReport, TestOutcome
 from assurance.validation.validation_exception import ValidationException
 from chess.square.repo.square_repo import SquareRepo
 
@@ -15,7 +15,7 @@ class RepoNotEmptyValidationFailed(ValidationException):
 class SquareRepoValidator:
 
     @staticmethod
-    def test_square_repo_exists(square_repo: Optional[SquareRepo]) -> ValidationReport[SquareRepo]:
+    def not_null_test(square_repo: Optional[SquareRepo]) -> ValidationReport[SquareRepo]:
         if square_repo is None:
             return ValidationReport.send_failed_valtidation_report(
                 RepoNotNullValidationFailed("SquareRepo failed not null validation test")
@@ -23,8 +23,8 @@ class SquareRepoValidator:
         return ValidationReport.send_passed_validation_report(payload=square_repo)[SquareRepo]
 
     @staticmethod
-    def test_square_repo_not_empty(square_repo: Optional[SquareRepo]) -> ValidationReport[SquareRepo]:
-        test_report = SquareRepoValidator.test_square_repo_exists(square_repo)
+    def not_empty_test(square_repo: Optional[SquareRepo]) -> ValidationReport[SquareRepo]:
+        test_report = SquareRepoValidator.not_null_test(square_repo)
 
         if test_report.payload is None:
             return ValidationReport.send_failed_valtidation_report(

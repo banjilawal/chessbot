@@ -1,13 +1,13 @@
 from typing import List
 
 from assurance.result import Result, ResultStatus
-from assurance.transaction_result import TransactionResult, StatusCode
-from assurance.validation.validatin_report import TestOutcome
+from assurance.transaction_result import TransactionReport, StatusCode
+from assurance.validation.validation_report import TestOutcome
 from chess.geometry.board.coordinate import Coordinate, Delta
 from chess.piece.piece import ChessPiece
 from chess.square.model.square import Square
 from chess.square.repo.iterator import SquareIterator
-from assurance.validation.coordinate_validator import CoordinateValidator
+from chess.geometry.board.coordinate_validator import CoordinateValidator
 
 
 class SquareRepo:
@@ -31,50 +31,50 @@ class SquareRepo:
         return SquareIterator(self._squares, index, delta)
 
 
-    def square(self, coordinate: Coordinate) -> TransactionResult[Square]:
+    def square(self, coordinate: Coordinate) -> TransactionReport[Square]:
         method_name = "SquareRepo.find_square"
 
         validation_result = CoordinateValidator.coordinate_exists(coordinate)
         if validation_result.test_outcome is TestOutcome.FAILED_VALIDATION_TEST:
-            return TransactionResult(
-                transaction_method_name = method_name,
+            return TransactionReport(
+                method_name= method_name,
                 status_code=StatusCode.FAILURE,
-                outcome= Result(status=ResultStatus.FAILURE, validation_result=validation_result)
+                operation_result= Result(status=ResultStatus.FAILURE, validation_result=validation_result)
             )
         square = self._squares[coordinate.row][coordinate.column]
 
         if square is None:
-            return TransactionResult(
-                transaction_method_name = method_name,
+            return TransactionReport(
+                method_name= method_name,
                 status_code=StatusCode.SUCCESS,
-                outcome= Result.ok(f"No square at {coordinate} was found")
+                operation_result= Result.ok(f"No square at {coordinate} was found")
             )
 
-        return TransactionResult(
-            transaction_method_name = method_name, status_code=StatusCode.SUCCESS, outcome= Result.ok(square)
+        return TransactionReport(
+            method_name= method_name, status_code=StatusCode.SUCCESS, operation_result= Result.ok(square)
         )
 
 
-    def chess_piece(self, coordinate) -> TransactionResult[ChessPiece]:
+    def chess_piece(self, coordinate) -> TransactionReport[ChessPiece]:
         method_name = "SquareRepo.find_ches_piece"
 
         search_transaction_result = self.find_square(coordinate)
-        if search_transaction_result.outcome.payload is None:
-            return TransactionResult(
+        if search_transaction_result.operation_result.payload is None:
+            return TransactionReport(
                 method_name,
                 StatusCode.SUCCESS,
                 Result.ok(f"There is no square at {coordinate} so ChessPiece at the location")
             )
 
-        square = search_transaction_result.outcome.payload
+        square = search_transaction_result.operation_result.payload
         if square.occupant is None:
-            return TransactionResult(
+            return TransactionReport(
                 method_name,
                 StatusCode.SUCCESS,
                 Result.ok(f"There is no square at {coordinate} so ChessPiece at the location")
             )
 
-        return TransactionResult(method_name, StatusCode.SUCCESS, Result.ok(square.occupant))
+        return TransactionReport(method_name, StatusCode.SUCCESS, Result.ok(square.occupant))
 
 
 

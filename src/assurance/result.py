@@ -1,7 +1,7 @@
 from enum import Enum, auto
 from typing import Optional, TypeVar, Generic
 
-from assurance.validation.validatin_report import ValidationReport
+from assurance.validation.validation_report import ValidationReport
 
 T = TypeVar('T')
 
@@ -20,13 +20,11 @@ class Result(Generic[T]):
         payload: Optional[T] = None,
         message: Optional[str] = None,
         exception: Optional[Exception] = None,
-        validation_result: Optional['ValidationReport'] = None
     ):
         self._status = status
         self._payload = payload
         self._message = message
         self._exception = exception
-        self._validation_result = validation_result
 
 
     @property
@@ -49,22 +47,21 @@ class Result(Generic[T]):
         return self._exception
 
 
-    @property
-    def validation_result(self) -> Optional['ValidationReport']:
-        return self._validation_result
+    @staticmethod
+    def send_success_result(payload: Optional[T], message: Optional[str]) -> 'Result[T]':
+        return Result(status=ResultStatus.SUCCESS, payload=payload, message=message)
 
     @staticmethod
-    def ok(payload: Optional[T], message: Optional[str]) -> 'Result[T]':
-        return Result(status=ResultStatus.SUCCESS, payload=payload, message=message)
+    def send_empty_search_result(message: Optional[str]) -> 'Result[T]':
+        return Result(status=ResultStatus.EMPTY_SEARCH_RESULT, message=message)
 
     @staticmethod
     def fail(
         message: str,
         exception: Optional[Exception] = None,
-        validation_result: Optional['ValidationReport'] = None,
         status: ResultStatus = ResultStatus.FAILURE | ResultStatus.FAILURE_REQUIRES_ROLLBACK
      ) -> 'Result[T]':
-        return Result(status=status, message=message, exception=exception, validation_result=validation_result)
+        return Result(status=status, message=message, exception=exception)
 
 
 

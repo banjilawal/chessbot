@@ -5,7 +5,7 @@ from chess.geometry.board import ChessBoard
 from chess.motion.logic.bishop_reachable import BishopReachable
 from chess.motion.search.bishop_search_pattern import BishopSearchPattern
 from chess.motion.service.motion_service import MotionService
-from chess.transaction.transaction_result import TransactionResult
+from chess.transaction.old_transaction_result import OldTransactionResult
 
 
 class BishopMotionService(MotionService):
@@ -14,7 +14,7 @@ class BishopMotionService(MotionService):
     def __init__(self):
         super().__init__(logic=BishopReachable(), search_pattern=BishopSearchPattern())
 
-    def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard) -> TransactionResult:
+    def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard) -> OldTransactionResult:
         origin = piece.current_coordinate()
         if not self.logic.is_reachable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")

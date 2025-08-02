@@ -7,9 +7,9 @@ from chess.square.model import Square
 
 from chess.piece.piece import ChessPiece
 from chess.transaction.failure import Failure
-from chess.transaction.transaction_result import TransactionResult
-from assurance.validation.coordinate_validator import CoordinateValidator
-from assurance.validation.piece_validator import ChessPieceValidator
+from chess.transaction.old_transaction_result import OldTransactionResult
+from chess.geometry.board.coordinate_validator import CoordinateValidator
+from chess.piece.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:
     pass
@@ -70,7 +70,7 @@ class ChessBoard:
         return occupied_squares
 
 
-    def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> TransactionResult:
+    def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> OldTransactionResult:
         method = "ChessBoard.add_new_piece"
 
         # Validate chess_piece presence
@@ -90,7 +90,7 @@ class ChessBoard:
         # Check if the destination model is free
         square = self.find_square(coordinate)
         if square.occupant is None:
-            return TransactionResult(
+            return OldTransactionResult(
                 method,
                 Failure(f"Square not found at f{coordinate} {chess_piece.label} to the board.")
             )
@@ -98,7 +98,7 @@ class ChessBoard:
         return square.occupy(chess_piece)
 
 
-    def capture_square(self, chess_piece: ChessPiece, destination: Coordinate) -> TransactionResult:
+    def capture_square(self, chess_piece: ChessPiece, destination: Coordinate) -> OldTransactionResult:
         method = "ChessBoard.capture_square"
 
         can_move_chess_piece_result = ChessPieceValidator.can_be_moved(chess_piece)
@@ -108,7 +108,7 @@ class ChessBoard:
         # 2. Validate the destination coordinate on the chess_board
         coord_validation_result = CoordinateValidator.coordinate_exists(destination, self)
         if coord_validation_result.is_failure:
-            return TransactionResult(method, Failure("The coordinate is not valid"))
+            return OldTransactionResult(method, Failure("The coordinate is not valid"))
 
         # 3. Get the squares
         square_to_leave = self.find_square(chess_piece.current_coordinate())
@@ -121,7 +121,7 @@ class ChessBoard:
         if occupation_result.is_success:
             return square_to_leave.leave(chess_piece)
 
-        return occupation_result  # failed occupation outcome
+        return occupation_result  # failed occupation operation_result
 
         # def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):
         #     if chess_piece is None:
