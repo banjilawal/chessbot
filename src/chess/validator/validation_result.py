@@ -20,9 +20,9 @@ class ValidationResult:
         return self._isValid
 
     @staticmethod
-    def success(payload: object) -> 'ValidationReport':
+    def success(payload: object) -> 'ValidationResult':
         return ValidationResult(payload, True, None)
 
     @staticmethod
-    def failure(self, error_message: str) -> 'ValidationReport':
+    def failure(self, error_message: str) -> 'ValidationResult':
         return ValidationResult(None, False, error_message)

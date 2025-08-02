@@ -1,4 +1,4 @@
-from assurance.validation.validation_report import ValidationReport
+from assurance.validation.validation_report import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.transaction.old_transaction_result import OldTransactionResult, Failure, StatusCode
 
@@ -11,19 +11,19 @@ class IdNotNullValidationFailed(ValidationException):
 class IdValidator:
 
     @staticmethod
-    def test_id_positive(id: int) -> ValidationReport[int]:
+    def test_id_positive(id: int) -> ValidationResult[int]:
         if id < 1:
-            return ValidationReport.send_failed_valtidation_report(
+            return ValidationResult.send_failed_valtidation_report(
                 IdPositiveValidationFailed(IdPositiveValidationFailed.default_message)
             )
-        return ValidationReport(payload=id)
+        return ValidationResult(payload=id)
 
 
     @staticmethod
-    def id_exists(id: int) -> ValidationReport[int]:
+    def id_exists(id: int) -> ValidationResult[int]:
 
         if id is None:
-            return ValidationReport.send_failed_valtidation_report(
+            return ValidationResult.send_failed_valtidation_report(
                 IdNotNullValidationFailed("Failed id exists validation test")
             )
-        return ValidationReport.send_passed_validation_report(payload=id)
+        return ValidationResult.send_passed_validation_report(payload=id)

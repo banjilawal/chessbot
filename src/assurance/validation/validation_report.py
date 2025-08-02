@@ -5,42 +5,29 @@ from assurance.validation.validation_exception import ValidationException
 
 T = TypeVar('T')
 
-class TestOutcome(Enum):
-    PASSED_VALIDATION_TEST = auto()
-    FAILED_VALIDATION_TEST = auto()
+from typing import Generic, TypeVar, Optional
 
+T = TypeVar('T')
 
-class ValidationReport(Generic[T]):
-    _payload: T
-    _test_outcome: TestOutcome
-    _validation_exception: Optional[ValidationException]
+class ValidationResult(Generic[T]):
+    """Simple validation container that either contains:
+    - The validated payload (if validation passed), or
+    - A validation exception (if validation failed)
+    """
+    def __init__(self, payload: Optional[T] = None, validation_exception: Optional[Exception] = None):
 
+        if payload is not None and validation_exception is not None:
+            raise ValueError("Payload and validation_exception cannot both be set in a ValidationResult constructor.")
 
-    def __init__(self, payload: Optional[T], test_outcome: TestOutcome, validation_exception: ValidationException):
         self._payload = payload
-        self._test_outcome = test_outcome
         self._validation_exception = validation_exception
 
     @property
     def payload(self) -> Optional[T]:
+        """Returns the validated payload if validation succeeded"""
         return self._payload
 
-
     @property
-    def test_outcome(self) -> TestOutcome:
-        return self._test_outcome
-
-
-    @property
-    def validation_exception(self) -> Optional[ValidationException]:
+    def validation_exception(self) -> Optional[Exception]:
+        """Returns the exception if validation failed"""
         return self._validation_exception
-
-
-    @staticmethod
-    def send_passed_validation_report(payload: T) -> 'ValidationReport[T]':
-        return ValidationReport(payload=payload, test_outcome=TestOutcome.PASSED_VALIDATION_TEST)
-
-
-    @staticmethod
-    def send_failed_valtidation_report(validation_exception: ValidationException) -> 'ValidationReport[T]':
-        return ValidationReport(payload=None, test_outcome=TestOutcome.FAILED_VALIDATION_TEST, validation_exception=validation_exception)
