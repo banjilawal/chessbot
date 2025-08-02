@@ -6,7 +6,7 @@ from chess.geometry.board import ChessBoard
 
 from chess.factory.grid_builder import GridBuilder
 from chess.geometry.board import ChessBoard
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.piece.piece import ChessPiece
 from chess.player.player_config import PlayerConfig
 

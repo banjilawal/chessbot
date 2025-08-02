@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 from chess.piece.mobility_status import MobilityStatus
 from chess.piece.label import Label
 
@@ -9,7 +10,7 @@ from typing import List, TYPE_CHECKING
 from chess.transaction.failure import Failure
 from chess.transaction.old_transaction_result import OldTransactionResult
 from chess.square.repo.square_repo_validator import SquareRepoValidator
-from chess.geometry.board.coordinate_validator import CoordinateValidator
+from chess.geometry.coordinate.coordinate_validator import CoordinateValidator
 from chess.piece.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:
@@ -17,10 +18,10 @@ if TYPE_CHECKING:
     from chess.rank.rank import Rank
     from chess.geometry.board import ChessBoard
 
-@dataclass(Frozen=True)
+@dataclass(frozen=True)
 class RankTag:
     member_id: int
-    rank: 'Rank''
+    rank: Rank
 
 
 class ChessPiece:
@@ -28,10 +29,10 @@ class ChessPiece:
     _label: Label
     _player: 'Player'
     _rank_tag: RankTag
-    _coordinate_stack: List[Coordinate]
+    _coordinate_stack: CoordinateStack
     _status: MobilityStatus
 
-    def __init__(self, piece_id: int, rank_tag: 'RankTag', player: 'Player' = None):
+    def __init__(self, piece_id: int, label: Label, rank_tag: RankTag, player: 'Player'):
         if not piece_id:
             raise ValueError("Cannot create a chess_piece with an empty id.")
         if piece_id < 0:
@@ -39,17 +40,14 @@ class ChessPiece:
         if rank_tag is None:
             raise ValueError("Cannot create a chess_piece with an null rank.")
 
-        # rank.members.append(self)
-        self._rank_tag = rank_tag
-        self._label = Label(rank_tag.rank.acronym, piece_id)
-
         self._id = piece_id
         self._player = player
+        self._rank_tag = rank_tag
+        self._label = label
         self._status = MobilityStatus.FREE
         self._coordinate_stack: List[Coordinate] = []
 
 
-    # === Immutable attributes ===
     @property
     def id(self) -> int:
         return self._id
@@ -83,12 +81,6 @@ class ChessPiece:
     def status(self, status: MobilityStatus):
         if self._status != status:
             self._status = status
-
-
-    @player.setter
-    def player(self, player: 'Player'):
-        self._player = player
-
 
     def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate) -> OldTransactionResult:
         method = "ChessPiece.forward_move_request"

@@ -1,5 +1,5 @@
 
-from chess.geometry.board.coordinate import Delta
+from chess.geometry.coordinate.coordinate import Delta
 from enum import Enum
 from typing import Optional
 

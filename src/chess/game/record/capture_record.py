@@ -1,6 +1,6 @@
 import string
 
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.piece.piece import ChessPiece, MobilityStatus
 from podscape.constants import PodscapeColor
 

@@ -3,7 +3,7 @@ from typing import Optional
 from chess.square.repo.square_repo_validator import SquareRepoValidator
 from assurance.validation.validation_report import ValidationReport
 from assurance.validation.validation_exception import ValidationException
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.square.repo.square_repo import SquareRepo
 
 

@@ -3,11 +3,12 @@ from typing import List
 from chess.factory.emit import id_emitter
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.square.model import Square
+from chess.square.model.square import Square
+from chess.square.repo.square_repo import SquareRepo
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 
 
-class GridBuilder:
+class SquareRepoBuilder:
 
     @staticmethod
     def build() -> List[List[Square]]:
@@ -21,9 +22,7 @@ class GridBuilder:
             for j in range(COLUMN_SIZE):
                 name = chr(ascii_value) + str(i + 1)
                 coordinate = Coordinate(row=i, column=j)
-
                 square = Square(id_emitter.square_id, name, coordinate)
-
                 row_squares.append(square)
                 ascii_value += 1
             grid.append(row_squares)
@@ -31,9 +30,9 @@ class GridBuilder:
 
 
 def main():
-    from chess.geometry.board import ChessBoard
-    board = ChessBoard(grid=GridBuilder.build())
-    print(board)
+
+    repo = SquareRepo(squares=SquareRepoBuilder.build())
+    print(repo)
 
 
 

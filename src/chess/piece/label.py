@@ -1,10 +1,14 @@
+from chess.piece.piece import RankTag
+from chess.player.player import Player
+
+
 class Label:
     _letters: str
     _number: int
 
-    def __init__(self, letters: str, number: int):
-        self._letters = letters
-        self._number = number
+    def __init__(self, player:Player, rank_tag: RankTag):
+        self._letters = player.color.name[0] + rank_tag.rank.acronym
+        self._number = rank_tag.member_id % player.
 
 
     @property

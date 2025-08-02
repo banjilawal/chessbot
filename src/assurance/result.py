@@ -1,4 +1,4 @@
-from enum import Enum, auto
+from enum import Flag, auto
 from typing import Optional, TypeVar, Generic
 
 from assurance.validation.validation_report import ValidationReport
@@ -6,7 +6,8 @@ from assurance.validation.validation_report import ValidationReport
 T = TypeVar('T')
 
 
-class ResultStatus(Enum):
+class OperationStatus(Flag):
+    LOADING = auto()
     SUCCESS = auto()
     FAILURE = auto()
     EMPTY_SEARCH_RESULT = auto()
@@ -16,7 +17,7 @@ class ResultStatus(Enum):
 class Result(Generic[T]):
     def __init__(
         self,
-        status: ResultStatus,
+        status: OperationStatus,
         payload: Optional[T] = None,
         message: Optional[str] = None,
         exception: Optional[Exception] = None,
@@ -28,7 +29,7 @@ class Result(Generic[T]):
 
 
     @property
-    def status(self) -> ResultStatus:
+    def status(self) -> OperationStatus:
         return self._status
 
 
@@ -46,22 +47,6 @@ class Result(Generic[T]):
     def exception(self) -> Optional[Exception]:
         return self._exception
 
-
-    @staticmethod
-    def send_success_result(payload: Optional[T], message: Optional[str]) -> 'Result[T]':
-        return Result(status=ResultStatus.SUCCESS, payload=payload, message=message)
-
-    @staticmethod
-    def send_empty_search_result(message: Optional[str]) -> 'Result[T]':
-        return Result(status=ResultStatus.EMPTY_SEARCH_RESULT, message=message)
-
-    @staticmethod
-    def fail(
-        message: str,
-        exception: Optional[Exception] = None,
-        status: ResultStatus = ResultStatus.FAILURE | ResultStatus.FAILURE_REQUIRES_ROLLBACK
-     ) -> 'Result[T]':
-        return Result(status=status, message=message, exception=exception)
 
 
 

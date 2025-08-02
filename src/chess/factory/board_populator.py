@@ -1,5 +1,5 @@
 from typing import List
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.board import ChessBoard
 from chess.player.player import Player
 from chess.piece.piece import ChessPiece

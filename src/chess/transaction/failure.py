@@ -1,4 +1,4 @@
-from assurance.transaction_result import StatusCode
+from assurance.transaction_report import StatusCode
 
 
 class Failure:

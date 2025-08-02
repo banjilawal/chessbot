@@ -2,13 +2,13 @@ from typing import Optional, TYPE_CHECKING
 
 from chess.common.exceptions import NegativeIdException
 from chess.geometry.board.board_exception import MissingCoordinateException
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.square.model.occupation_status import OccupationStatus
 from chess.piece.mobility_status import MobilityStatus
 from chess.transaction.failure import Failure
 from chess.transaction.status_code import StatusCode
 from chess.transaction.old_transaction_result import OldTransactionResult
-from chess.geometry.board.coordinate_validator import CoordinateValidator
+from chess.geometry.coordinate.coordinate_validator import CoordinateValidator
 from assurance.validation.id_validator import IdValidator
 
 if TYPE_CHECKING:

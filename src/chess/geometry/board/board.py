@@ -2,13 +2,13 @@
 from typing import List, Optional, TYPE_CHECKING
 
 
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.square.model import Square
 
 from chess.piece.piece import ChessPiece
 from chess.transaction.failure import Failure
 from chess.transaction.old_transaction_result import OldTransactionResult
-from chess.geometry.board.coordinate_validator import CoordinateValidator
+from chess.geometry.coordinate.coordinate_validator import CoordinateValidator
 from chess.piece.piece_validator import ChessPieceValidator
 
 if TYPE_CHECKING:

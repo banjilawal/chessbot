@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.geometry.board.coordinate import Coordinate, Delta
+from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.square.model.square import Square
 
 

@@ -1,4 +1,4 @@
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.logic.reachable import Reachable
 
 

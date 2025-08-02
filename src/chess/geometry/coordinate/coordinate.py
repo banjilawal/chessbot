@@ -1,4 +1,11 @@
+from typing import Optional
+
+from assurance.transaction_report import TransactionReport
+from chess.common.exceptions import ChessException
+from chess.geometry.coordinate.coordinate_validator import CoordinateValidator
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
+
+
 
 
 class Delta:
@@ -79,3 +86,5 @@ class Coordinate:
 
     def shift(self, delta: Delta) -> 'Coordinate':
         return Coordinate(row=self._row + delta.delta_row, column=self._column + delta.delta_column)
+
+

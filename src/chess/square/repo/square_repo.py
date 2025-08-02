@@ -1,13 +1,13 @@
 from typing import List
 
-from assurance.result import Result, ResultStatus
-from assurance.transaction_result import TransactionReport, StatusCode
+from assurance.result import Result, OperationStatus
+from assurance.transaction_report import TransactionReport, StatusCode
 from assurance.validation.validation_report import TestOutcome
-from chess.geometry.board.coordinate import Coordinate, Delta
+from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.piece.piece import ChessPiece
 from chess.square.model.square import Square
 from chess.square.repo.iterator import SquareIterator
-from chess.geometry.board.coordinate_validator import CoordinateValidator
+from chess.geometry.coordinate.coordinate_validator import CoordinateValidator
 
 
 class SquareRepo:
@@ -39,7 +39,7 @@ class SquareRepo:
             return TransactionReport(
                 method_name= method_name,
                 status_code=StatusCode.FAILURE,
-                operation_result= Result(status=ResultStatus.FAILURE, validation_result=validation_result)
+                operation_result= Result(status=OperationStatus.FAILURE, validation_result=validation_result)
             )
         square = self._squares[coordinate.row][coordinate.column]
 
@@ -75,6 +75,15 @@ class SquareRepo:
             )
 
         return TransactionReport(method_name, StatusCode.SUCCESS, Result.ok(square.occupant))
+
+
+    def __str__(self) -> str:
+        string = ""
+        for row_index in reversed(range(len(self._grid))):  # start from top row (8) to bottom (1)
+            row_squares = self._squares[row_index]
+            row_str = " ".join(f"[{square.name}]" for square in row_squares)
+            string += row_str + "\n"
+        return string.strip()
 
 
 

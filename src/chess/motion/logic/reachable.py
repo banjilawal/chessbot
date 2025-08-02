@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 
 
 class Reachable(ABC):

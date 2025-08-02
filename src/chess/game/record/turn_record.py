@@ -4,7 +4,7 @@ from chess.common.game_color import GameColor
 from chess.piece.piece import ChessPiece
 from chess.game.record.capture_record import CaptureRecord
 from chess.game.record.promotion_record import PromotionRecord
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 
 
 class TurnRecord:

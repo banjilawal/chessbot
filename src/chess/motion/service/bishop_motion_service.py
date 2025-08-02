@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.geometry.board.coordinate import Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.board import ChessBoard
 from chess.motion.logic.bishop_reachable import BishopReachable
 from chess.motion.search.bishop_search_pattern import BishopSearchPattern
