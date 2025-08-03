@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/placement_chart.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/player_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/player_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validation_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/validation_result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/coordinate_stack.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/model/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/model/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/repo/square_repo_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/repo/square_repo_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/transaction/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/transaction/failure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/transaction/old_transaction_result.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/transaction/status_code.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/player/human_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/human_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank_config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +159,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
-      <workItem from="1753986943709" duration="98597000" />
+      <workItem from="1753986943709" duration="103694000" />
     </task>
     <servers />
   </component>
@@ -180,6 +167,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/chessbot$square_repo_builder.coverage" NAME="square_repo_builder Coverage Results" MODIFIED="1754201940065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/square" />
+    <SUITE FILE_PATH="coverage/chessbot$square_repo_builder.coverage" NAME="square_repo_builder Coverage Results" MODIFIED="1754228124005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/square" />
   </component>
 </project>

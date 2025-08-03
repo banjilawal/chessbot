@@ -6,7 +6,6 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 
 if TYPE_CHECKING:
-    from chess.geometry.board.board import ChessBoard
     from chess.piece.piece import ChessPiece
 
 class Player(ABC):
@@ -42,7 +41,7 @@ class Player(ABC):
 
     @property
     def captives(self) -> List['ChessPiece']:
-        return self._captives.copy()
+        return self._captives
 
 
     @property
@@ -55,7 +54,8 @@ class Player(ABC):
         return self._home_quadrant
 
 
-
+    def move_chess_piece(self, chess_piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard'):
+        chess_piece.forward_move_request(board, destination)
 
 
 

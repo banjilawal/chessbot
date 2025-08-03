@@ -14,18 +14,5 @@ class HumanPlayer(Player):
         super().__init__(player_id, name, color)
 
 
-    def hunt(self, board: 'ChessBoard') -> Dict[Label, List[ChessPiece]]:
-        pass
 
-    def prepare_kill_list(self) -> List['ChessPiece']:
-        pass
-
-    def select_killer(self) -> 'ChessPiece':
-        pass
-
-    def select_target(self, board: 'ChessBoard') -> Optional[TurnRecord]:
-        pass
-
-    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> Optional[TurnRecord]:
-        pass
 
