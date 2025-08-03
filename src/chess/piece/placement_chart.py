@@ -1,11 +1,17 @@
+from enum import Enum
+from typing import List
+
+from chess.player.player_config import PlayerConfig
+from chess.rank.rank_config import RankConfig
+
+
 class PlacementChart(Enum):
     def __new__(
             cls,
             acronym: str,
-            game_color: GameColor,
-            back_rank_index: int,
-            pawn_rank_index: int,
-            back_rank_layout: [RankConfig]
+            rank_config: RankConfig,
+            player_config: PlayerConfig,
+            start_positions: List[str],
     ):
         obj = object.__new__(cls)
         obj._acronym = acronym

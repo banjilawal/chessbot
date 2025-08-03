@@ -3,7 +3,7 @@ from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.rank import Rank
-
+pawn_home_squares = ["A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2", "A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7"]
 
 class RankConfig(Enum):
     def __new__(
@@ -30,9 +30,14 @@ class RankConfig(Enum):
        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW]
     )
 
-    PAWN = ("Pawn", "P", 8, 1, [],[Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
+    PAWN = (
+        "Pawn", "P", 8, 1,
+        ["A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2", "A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7"]
+        [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW]
+    )
 
-    KNIGHT = ("Knight", "N", 2, 3, ["B1", "G1", "B8", "G8"],
+    KNIGHT = (
+        "Knight", "N", 2, 3, ["B1", "G1", "B8", "G8"],
       [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW]
     )
 

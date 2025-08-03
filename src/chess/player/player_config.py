@@ -15,6 +15,7 @@ class PlayerConfig(Enum):
             back_rank_layout: [RankConfig]
     ):
         obj = object.__new__(cls)
+
         obj._acronym = acronym
         obj._game_color = game_color
         obj._back_rank_index = back_rank_index
