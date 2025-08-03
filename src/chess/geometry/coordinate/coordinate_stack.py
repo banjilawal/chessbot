@@ -4,7 +4,6 @@ from assurance.result import Result, OperationStatus
 from assurance.transaction_report import TransactionReport
 from chess.common.exceptions import ChessException
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.coordinate.coordinate_validator import CoordinateValidator
 
 
 class PopEmptyCoordinateStackException(ChessException):
@@ -29,24 +28,14 @@ class CoordinateStack:
         return self._stack[-1] if self._stack else None
 
 
-    def push_coordinate(self, coordinate) -> TransactionReport:
+    def push_coordinate(self, coordinate):
         method_name = "CoordinateStack.push"
-        test_report = CoordinateValidator.test_not_none(coordinate)
-        if test_report.payload is None:
-            raise test_report.validation_exception
-            # return OldTransactionResult(method_name,  test_report.validation_exception)
 
-        destination = test_report.payload
-        source = self.current_coordinate()
+        if self.current_coordinate() != coordinate:
+            self._stack.append(coordinate)
 
-        if source != destination:
-            self._stack.append(destination)
-
-        return TransactionReport(method_name, Result(OperationStatus.SUCCESS))
-
-    def undo_push(self) -> TransactionReport:
+    def undo_push(self):
         if self.size() == 0:
             raise PopEmptyCoordinateStackException("Cannot pop from empty coordinate stack")
 
         self._stak.pop()
-        return TransactionReport("CoordinateStack.undo_push", Result(OperationStatus.SUCCESS))

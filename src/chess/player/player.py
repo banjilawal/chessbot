@@ -1,16 +1,12 @@
 from abc import abstractmethod, ABC
 from typing import Optional, List, TYPE_CHECKING
 
-from chess.geometry.board import ChessBoard
 from chess.common.game_color import GameColor
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 
-from chess.piece.piece import ChessPiece
-from chess.game.record.turn_record import TurnRecord
-
 if TYPE_CHECKING:
-    from chess.geometry.board import ChessBoard
+    from chess.geometry.board.board import ChessBoard
     from chess.piece.piece import ChessPiece
 
 class Player(ABC):
@@ -50,7 +46,7 @@ class Player(ABC):
 
 
     @property
-    def chess_pieces(self) -> List[ChessPiece]:
+    def chess_pieces(self) -> List['ChessPiece']:
         return self._chess_pieces
 
 
@@ -60,10 +56,6 @@ class Player(ABC):
 
 
 
-
-    @abstractmethod
-    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> Optional[TurnRecord]:
-        pass
 
 
 

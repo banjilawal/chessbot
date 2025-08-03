@@ -1,6 +1,6 @@
 from typing import Optional
 
-from assurance.validation.validation_report import ValidationResult
+from assurance.validation.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.player.player import Player
 

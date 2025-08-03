@@ -1,4 +1,4 @@
-from assurance.validation.validation_report import ValidationResult
+from assurance.validation.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.transaction.old_transaction_result import OldTransactionResult, Failure, StatusCode
 

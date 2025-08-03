@@ -3,13 +3,10 @@ from typing import List, Optional, TYPE_CHECKING
 
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.square.model import Square
 
 from chess.piece.piece import ChessPiece
-from chess.transaction.failure import Failure
-from chess.transaction.old_transaction_result import OldTransactionResult
-from chess.geometry.coordinate.coordinate_validator import CoordinateValidator
-from chess.piece.piece_validator import ChessPieceValidator
+
+from chess.square.model.square import Square
 
 if TYPE_CHECKING:
     pass
@@ -35,19 +32,10 @@ class ChessBoard:
         return self._grid
 
     def find_chess_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
-        coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
-        if coordinate_validation_result.is_failure:
-            print("Cannot find chess_piece at invalid coordinate")
-            return None
         return self._grid[coordinate.row][coordinate.column].occupant
 
 
     def find_square(self, coordinate: Coordinate) -> Optional[Square]:
-
-        coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
-        if coordinate_validation_result.is_failure:
-            print("Cannot find model at invalid coordinate")
-            return None
         return self.grid[coordinate.row][coordinate.column]
 
 
@@ -70,58 +58,20 @@ class ChessBoard:
         return occupied_squares
 
 
-    def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate) -> OldTransactionResult:
+    def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate):
         method = "ChessBoard.add_new_piece"
-
-        # Validate chess_piece presence
-        # chess_piece_not_null_result = ChessPieceValidator.is_not_null(chess_piece)
-        # if chess_piece_not_null_result.is_failure:
-        #     return chess_piece_not_null_result
-
-        can_add_chess_piece_result = ChessPieceValidator.can_place_on_board(chess_piece)
-        if can_add_chess_piece_result.is_failure:
-            return can_add_chess_piece_result
-
-        # Validate coordinate on chess_board
-        coordinate_validation_result = CoordinateValidator.coordinate_exists(coordinate, self)
-        if coordinate_validation_result.is_failure:
-            return coordinate_validation_result
-
-        # Check if the destination model is free
         square = self.find_square(coordinate)
-        if square.occupant is None:
-            return OldTransactionResult(
-                method,
-                Failure(f"Square not found at f{coordinate} {chess_piece.label} to the board.")
-            )
-
-        return square.occupy(chess_piece)
+        square.occupy(chess_piece)
 
 
-    def capture_square(self, chess_piece: ChessPiece, destination: Coordinate) -> OldTransactionResult:
+    def capture_square(self, chess_piece: ChessPiece, destination: Coordinate):
         method = "ChessBoard.capture_square"
-
-        can_move_chess_piece_result = ChessPieceValidator.can_be_moved(chess_piece)
-        if can_move_chess_piece_result.is_failure:
-            return can_move_chess_piece_result
-
-        # 2. Validate the destination coordinate on the chess_board
-        coord_validation_result = CoordinateValidator.coordinate_exists(destination, self)
-        if coord_validation_result.is_failure:
-            return OldTransactionResult(method, Failure("The coordinate is not valid"))
 
         # 3. Get the squares
         square_to_leave = self.find_square(chess_piece.current_coordinate())
         destination_square = self.find_square(destination)
-
-        # 4. Attempt to occupy the model
-        occupation_result = destination_square.occupy(chess_piece)
-
-        # 5. If successful, make the chess_piece leave its previous model (if any)
-        if occupation_result.is_success:
-            return square_to_leave.leave(chess_piece)
-
-        return occupation_result  # failed occupation operation_result
+        destination_square.occupy(chess_piece)
+        square_to_leave.leave(chess_piece)
 
         # def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):
         #     if chess_piece is None:
