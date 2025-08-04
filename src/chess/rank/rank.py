@@ -1,7 +1,6 @@
 from abc import ABC
 from typing import List
 
-from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.service.motion_service import MotionService
@@ -17,11 +16,11 @@ class Rank(ABC):
     _territories: List[Quadrant]
 
     def __init__(
-        self, 
-        name: str, 
-        acronym: str, 
+        self,
+        name: str,
+        acronym: str,
         motion: MotionService,
-        capture_value: int, 
+        capture_value: int,
         territories: List[Quadrant]
     ):
         self._name = name
@@ -40,7 +39,7 @@ class Rank(ABC):
     @property
     def acronym(self) -> str:
         return self._acronym
-    
+
     @property
     def motion(self):
         return self._motion

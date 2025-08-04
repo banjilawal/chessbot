@@ -4,7 +4,7 @@ class IdEmitter:
         self._coordinate_id = 0
         self._square_id = 0
         self._piece_id = 0
-        self._turn_record_id = 0
+        self._team_id = 0
         self._capture_record_id = 0
 
 
@@ -33,9 +33,9 @@ class IdEmitter:
 
 
     @property
-    def turn_record_id(self) -> int:
-        self._turn_record_id += 1
-        return self._turn_record_id
+    def team_id(self) -> int:
+        self._team_id += 1
+        return self._team_id
 
     @property
     def capture_record_id(self) -> int:

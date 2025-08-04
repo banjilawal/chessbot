@@ -1,3 +1,4 @@
+from chess.factory.emit import id_emitter
 from chess.team import team_config
 from chess.team.team import Team
 from chess.team.team_config import TeamConfig
@@ -6,15 +7,27 @@ from chess.team.team_config import TeamConfig
 class TeamBuilder:
 
     @staticmethod
-    def build(team_config: TeamConfig) -> Team:
-
-        if team_config == TeamConfig.WHITE:
-           return Team()
-
-        return Team()
+    def build(config: TeamConfig) -> Team:
+       return Team(
+           team_id=id_emitter.team_id,
+           letter=config.letter,
+           team_order=config.player_order,
+           team_color=config.game_color,
+           back_row_index=config.back_rank_index,
+           pawn_row_index=config.pawn_rank_index,
+           home_quadrant=config.quadrant
+       )
 
 
 def main():
-    team_builder = TeamBuilder.build(TeamConfig.WHITE)
+    teams: list[Team] = []
+    for config in TeamConfig:
+        team = TeamBuilder.build(config)
+        print(team)
+        if team not in teams:
+            teams.append(team)
+    print(len(teams))
+
 
 if __name__ == "__main__":
+    main()

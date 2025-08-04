@@ -30,8 +30,13 @@ class TeamConfig(Enum):
 
 
     @property
-    def acronym(self) -> str:
-        return self._acronym
+    def letter(self) -> str:
+        return self._letter
+
+
+    @property
+    def player_order(self) -> PlayerOrder:
+        return self._player_order
 
     @property
     def game_color(self) -> GameColor:

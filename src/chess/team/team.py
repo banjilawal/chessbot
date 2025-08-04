@@ -70,7 +70,7 @@ class Team:
         return self._pawn_row_index
 
 
-    @@property
+    @property
     def home_quadrant(self) -> Quadrant:
         return self._home_quadrant
 
@@ -83,6 +83,25 @@ class Team:
     @property
     def chess_pieces(self) -> List['ChessPiece']:
         return self._chess_pieces
+
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, Team):
+            return False
+        return self.id == other.id and self.letter == other.letter
+
+
+    def __hash__(self):
+        return hash(self.id)
+
+
+    def __str__(self):
+        return (f"Team id:{self._id} color:{self._color} play_order{self._team_order} rank_row:{self._back_row_index} "
+                f"pawn_row:{self._pawn_row_index} home:{self._home_quadrant}")
 
 
 
