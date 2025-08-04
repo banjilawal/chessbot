@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/game/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/game/team/team.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/game/team/team_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/player/player_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/player_config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,22 +26,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "banjilawal"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;banjilawal&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:banjilawal/greedy-chess-monster.git",
-    "accountId": "a0af42e8-f55e-4789-b290-f40c15893f56"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:banjilawal/greedy-chess-monster.git&quot;,
+    &quot;accountId&quot;: &quot;a0af42e8-f55e-4789-b290-f40c15893f56&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="30eTFqUxEVfKfrSUlE7gHvkSqR7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -53,7 +56,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/square",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/game/team",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -156,7 +159,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
-      <workItem from="1753986943709" duration="105723000" />
+      <workItem from="1753986943709" duration="107410000" />
+      <workItem from="1754330871077" duration="436000" />
     </task>
     <servers />
   </component>
