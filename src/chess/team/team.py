@@ -1,29 +1,41 @@
-from abc import abstractmethod, ABC
+from multiprocessing.process import parent_process
 from typing import Optional, List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
-from chess.game.team.play_order import TeamOrder
-from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
+from chess.team.play_order import PlayOrder
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece
 
 class Team:
     _id: int
-    _name: str
+    _letter: str
     _color: GameColor
     _team_order: PlayOrder
     _back_row_index: int
     _pawn_row_index: int
-    _captives: List['ChessPiece']
     _home_quadrant: Quadrant
+    _captives: List['ChessPiece']
     _chess_pieces: List['ChessPiece']
 
-    def __init__(self, player_id: int, name: str, color: GameColor):
-        self._id = player_id
-        self._name = name
-        self._color = color
+    def __init__(
+        self,
+        team_id: int,
+        letter: str,
+        team_color: GameColor,
+        team_order: PlayOrder,
+        back_row_index: int,
+        pawn_row_index: int,
+        home_quadrant: Quadrant
+    ):
+        self._id = team_id
+        self._letter = letter
+        self._color = team_color
+        self._team_order = team_order
+        self._back_row_index = back_row_index
+        self._pawn_row_index = pawn_row_index
+        self._home_quadrant = home_quadrant
         self._captives = []
         self._chess_pieces = []
 
@@ -34,13 +46,33 @@ class Team:
 
 
     @property
-    def name(self) -> str:
-        return self._name
+    def letter(self) -> str:
+        return self._letter
 
 
     @property
     def color(self) -> GameColor:
         return self._color
+
+
+    @property
+    def team_order(self) -> PlayOrder:
+        return self._team_order
+
+
+    @property
+    def back_rank_index(self) -> int:
+        return self._back_row_index
+
+
+    @property
+    def pawn_rank_index(self) -> int:
+        return self._pawn_row_index
+
+
+    @@property
+    def home_quadrant(self) -> Quadrant:
+        return self._home_quadrant
 
 
     @property
@@ -53,9 +85,7 @@ class Team:
         return self._chess_pieces
 
 
-    @property
-    def home_quadrant(self) -> Quadrant:
-        return self._home_quadrant
+
 
 
 

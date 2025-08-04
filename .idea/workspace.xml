@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/factory/builder/team_builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/factory/placement_chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/placement_chart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/team/play_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/play_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/team/team_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team_config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +87,11 @@
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\geometry\coordinate" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square\model" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square\repo" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
     </key>
   </component>
   <component name="RunManager">
@@ -157,7 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1751725609134</updated>
       <workItem from="1753986943709" duration="107410000" />
-      <workItem from="1754330871077" duration="5120000" />
+      <workItem from="1754330871077" duration="6632000" />
     </task>
     <servers />
   </component>

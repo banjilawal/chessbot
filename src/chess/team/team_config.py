@@ -9,24 +9,24 @@ from chess.rank.rank_config import RankConfig
 class TeamConfig(Enum):
     def __new__(
         cls,
-        acronym: str,
+        letter: str,
         player_order: PlayerOrder,
         game_color: GameColor,
         back_row_index: int,
         pawn_row_index: int,
-        home_quadant: Quadrant
+        home_quadrant: Quadrant
     ):
         obj = object.__new__(cls)
-        obj._acronym = acronym
+        obj._letter = letter
         obj._player_order = player_order
-        obj._acronym = acronym
         obj._game_color = game_color
         obj._back_row_index = back_row_index
         obj._pawn_row_index = pawn_row_index
+        obj._quadrant = home_quadrant
         return obj
 
-    WHITE = ("W", GameColor.WHITE, 0, 1, Quadrant.N)
-    BLACK = ("B", GameColor.BLACK, 7, 6, Quadrant.S)
+    WHITE = ("W", PlayerOrder.FIRST, GameColor.WHITE, 0, 1, Quadrant.N)
+    BLACK = ("B", PlayerOrder.SECOND, GameColor.BLACK, 7, 6, Quadrant.S)
 
 
     @property

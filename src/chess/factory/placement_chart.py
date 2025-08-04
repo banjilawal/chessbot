@@ -1,7 +1,6 @@
 from enum import Enum
 
-from chess.game.team.team_config import TeamConfig
-from chess.piece.piece import RankTag
+from chess.team.team_config import TeamConfig
 from chess.rank.rank_config import RankConfig
 
 
