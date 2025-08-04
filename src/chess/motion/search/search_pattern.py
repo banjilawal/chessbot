@@ -6,7 +6,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 
 
 if TYPE_CHECKING:
-    from chess.geometry.board import ChessBoard
+    from chess.geometry.board.board import ChessBoard
     from chess.piece.piece import ChessPiece
 
 

@@ -1,4 +1,4 @@
-from chess.geometry.board import ChessBoard
+from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.diagonal import Diagonal
 from chess.geometry.vertical import Vertical

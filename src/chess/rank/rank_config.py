@@ -2,18 +2,7 @@ from enum import Enum
 from typing import List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.logic.bishop_reachable import BishopReachable
-from chess.motion.logic.castle_reachable import CastleReachable
-from chess.motion.logic.king_reachable import KingReachable
-from chess.motion.logic.knight_reachable import KnightReachable
-from chess.motion.logic.pawn_reachable import PawnReachable
-from chess.motion.logic.reachable import Reachable
-from chess.motion.search.bishop_search_pattern import BishopSearchPattern
-from chess.motion.search.castle_search_pattern import CastleSearchPattern
-from chess.motion.search.king_search_pattern import KingSearchPattern
-from chess.motion.search.knight_search_pattern import KnightSearchPattern
-from chess.motion.search.pawn_search_pattern import PawnSearchPattern
-from chess.motion.search.search_pattern import SearchPattern
+
 from chess.motion.service.bishop_motion_service import BishopMotionService
 from chess.motion.service.castle_motion_service import CastleMotionService
 from chess.motion.service.king_motion_service import KingMotionService
@@ -29,15 +18,15 @@ class RankConfig(Enum):
     def __new__(
         cls,
         name: str,
-        acronym,
+        letter,
         number_per_player: int,
         capture_value: int,
         territories: List[Quadrant],
-        motion_service: MotionService = None,
+        motion_service: 'MotionService',
     ):
         obj = object.__new__(cls)
         obj._value_ = name
-        obj._acronym = acronym
+        obj._letter = letter
         obj._number_per_player = number_per_player
         obj._capture_value = capture_value
         obj._territories = territories
@@ -74,8 +63,8 @@ class RankConfig(Enum):
     )
 
     @property
-    def acronym(self) -> str:
-        return self._acronym
+    def letter(self) -> str:
+        return self._letter
 
     @property
     def number_per_player(self) -> int:
@@ -86,8 +75,12 @@ class RankConfig(Enum):
         return self._capture_value
 
     @property
-    def territories(self) -> [Quadrant]:
-        return self._territories.copy()
+    def territories(self) -> List[Quadrant]:
+        return self._territories
+
+    @property
+    def motion_service(self) -> 'MotionService':
+        return self._motion_service
 
     @staticmethod
     def find_config_by_class(rank: Rank):

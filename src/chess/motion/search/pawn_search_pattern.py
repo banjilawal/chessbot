@@ -1,7 +1,8 @@
 
 from typing import List
+
+from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.board import ChessBoard
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
 from chess.rank.pawn import Pawn

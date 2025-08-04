@@ -6,8 +6,8 @@ from chess.geometry.quadrant import Quadrant
 
 class Knight(Rank):
 
-    def __init__(self, name: str, acronym: str, capture_value: int, territories: List[Quadrant]):
+    def __init__(self, name: str, letter: str, capture_value: int, territories: List[Quadrant]):
 
         from chess.motion.service.knight_motion_service import KnightMotionService
-        super().__init__(name, acronym, KnightMotionService(), capture_value, territories)
+        super().__init__(name, letter, KnightMotionService(), capture_value, territories)
 

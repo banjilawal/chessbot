@@ -9,7 +9,7 @@ from chess.piece.piece import ChessPiece
 
 class Rank(ABC):
     _name: str
-    _acronym: str
+    _letter: str
     _motion: MotionService
     _capture_value: int
     _members: List[ChessPiece]
@@ -18,7 +18,7 @@ class Rank(ABC):
     def __init__(
         self,
         name: str,
-        acronym: str,
+        letter: str,
         motion: MotionService,
         capture_value: int,
         territories: List[Quadrant]
@@ -26,7 +26,7 @@ class Rank(ABC):
         self._name = name
         self._members = []
         self._motion = motion
-        self._acronym = acronym
+        self._letter = letter
         self._capture_value = capture_value
         self._territories = territories
 
@@ -37,8 +37,9 @@ class Rank(ABC):
 
 
     @property
-    def acronym(self) -> str:
-        return self._acronym
+    def letter(self) -> str:
+        return self._letter
+
 
     @property
     def motion(self):
@@ -57,9 +58,6 @@ class Rank(ABC):
     def members(self) -> [ChessPiece]:
         return self._members
 
-    @property
-    def acronym(self) -> str:
-        return self._acronym
 
     def __eq__(self, other):
         if other is self:
@@ -74,7 +72,7 @@ class Rank(ABC):
         return hash(self._name)
 
     def __str__(self):
-        return (f"{self._name}, value:{self._acronym}, {self._capture_value} "
+        return (f"{self._name}, value:{self._letter}, {self._capture_value} "
                 f"num_members:{len(self._members)} num_territories:{len(self._territories)}")
 
 

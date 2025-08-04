@@ -2,44 +2,46 @@
 from typing import List, Optional, TYPE_CHECKING
 
 
-from chess.geometry.coordinate.coordinate import Coordinate
 
-from chess.piece.piece import ChessPiece
 
-from chess.square.model.square import Square
+
+
+
 
 if TYPE_CHECKING:
-    pass
+    from chess.piece.piece import ChessPiece
+    from chess.square.model.square import Square
+    from chess.geometry.coordinate.coordinate import Coordinate
 
 
 class ChessBoard:
-    _chess_pieces: List[ChessPiece]
-    _grid: List[List[Square]]
+    _chess_pieces: List['ChessPiece']
+    _grid: List[List['Square']]
 
 
-    def __init__(self, grid: List[List[Square]]):
+    def __init__(self, grid: List[List['Square']]):
         self._chess_pieces = []
         self._grid = grid
 
 
     @property
-    def chess_pieces(self) -> List[ChessPiece]:
+    def chess_pieces(self) -> List['ChessPiece']:
         return self._chess_pieces
 
 
     @property
-    def grid(self) -> List[List[Square]]:
+    def grid(self) -> List[List['Square']]:
         return self._grid
 
-    def find_chess_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
+    def find_chess_piece(self, coordinate: 'Coordinate') -> Optional['ChessPiece']:
         return self._grid[coordinate.row][coordinate.column].occupant
 
 
-    def find_square(self, coordinate: Coordinate) -> Optional[Square]:
+    def find_square(self, coordinate: 'Coordinate') -> Optional['Square']:
         return self.grid[coordinate.row][coordinate.column]
 
 
-    def empty_squares(self) -> List[Square]:
+    def empty_squares(self) -> List['Square']:
         empty_squares = []
         for square in self._grid:
             if square.occupant is None and square not in empty_squares:
@@ -48,7 +50,7 @@ class ChessBoard:
         return empty_squares
 
 
-    def occupied_squares(self) -> List[Square]:
+    def occupied_squares(self) -> List['Square']:
         occupied_squares = []
         for square in self._grid:
             occupant = square.occupant
@@ -58,13 +60,13 @@ class ChessBoard:
         return occupied_squares
 
 
-    def place_chess_piece_on_board(self, chess_piece: ChessPiece, coordinate: Coordinate):
+    def place_chess_piece_on_board(self, chess_piece: 'ChessPiece', coordinate: 'Coordinate'):
         method = "ChessBoard.add_new_piece"
         square = self.find_square(coordinate)
         square.occupy(chess_piece)
 
 
-    def capture_square(self, chess_piece: ChessPiece, destination: Coordinate):
+    def capture_square(self, chess_piece: 'ChessPiece', destination: 'Coordinate'):
         method = "ChessBoard.capture_square"
 
         # 3. Get the squares

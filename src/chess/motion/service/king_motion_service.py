@@ -1,7 +1,7 @@
 from typing import List
 
+from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.board import ChessBoard
 from chess.motion.logic.king_reachable import KingReachable
 
 from chess.motion.service.motion_service import MotionService

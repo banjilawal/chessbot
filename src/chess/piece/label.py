@@ -12,7 +12,7 @@ class Label:
     _number: int
 
     def __init__(self, player:Player, rank_tag: 'RankTag'):
-        self._letters = player.color.name[0] + rank_tag.rank.acronym
+        self._letters = player.color.name[0] + rank_tag.rank.letter
         self._number = rank_tag.member_id % player.id
 
 

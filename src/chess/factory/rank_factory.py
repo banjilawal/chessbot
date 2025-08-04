@@ -24,7 +24,7 @@ class RankFactory:
         if config == RankConfig.KING:
             return King(
                 name=config.name,
-                acronym=config.acronym,
+                letter=config.letter,
                 # motion=KingMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
@@ -32,7 +32,7 @@ class RankFactory:
         if config == RankConfig.PAWN:
             return Pawn(
                 name=config.name,
-                acronym=config.acronym,
+                letter=config.letter,
                 # motion=PawnMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
@@ -40,7 +40,7 @@ class RankFactory:
         if config == RankConfig.KNIGHT:
             return Knight(
                 name=config.name,
-                acronym=config.acronym,
+                letter=config.letter,
                 # motion=KnightMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
@@ -48,7 +48,7 @@ class RankFactory:
         if config == RankConfig.BISHOP:
             return Bishop(
                 name=config.name,
-                acronym=config.acronym,
+                letter=config.letter,
                 # motion=BishopMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
@@ -56,7 +56,7 @@ class RankFactory:
         if  config == RankConfig.CASTLE:
             return Castle(
                 name=config.name,
-                acronym=config.acronym,
+                letter=config.letter,
                 # motion=CastleMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
@@ -64,7 +64,7 @@ class RankFactory:
         if config == RankConfig.QUEEN:
             return Queen(
                 name=config.name,
-                acronym=config.acronym,
+                letter=config.letter,
                 # motion=QueenMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories

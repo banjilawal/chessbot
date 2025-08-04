@@ -10,7 +10,8 @@ from chess.motion.search.search_pattern import SearchPattern
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece
-    from chess.geometry.board import ChessBoard
+    from chess.geometry.board.board import ChessBoard
+
 
 class MotionService(ABC):
     _logic: Reachable
