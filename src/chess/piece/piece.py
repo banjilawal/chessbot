@@ -4,14 +4,13 @@ from dataclasses import dataclass
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 from chess.piece.mobility_status import MobilityStatus
-from chess.piece.label import Label
 
 from typing import List, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from chess.player.player import Player
     from chess.rank.rank import Rank
+    from chess.team.team import Team
     from chess.geometry.board.board import ChessBoard
 
 @dataclass(frozen=True)
@@ -22,24 +21,24 @@ class RankTag:
 
 class ChessPiece:
     _id: int
-    _label: Label
-    _player: 'Player'
-    _rank_tag: RankTag
+    _name: str
+    _team: 'Team'
+    _rank: 'Rank'
     _coordinate_stack: CoordinateStack
     _status: MobilityStatus
 
-    def __init__(self, piece_id: int, label: Label, rank_tag: RankTag, player: 'Player'):
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
         if not piece_id:
             raise ValueError("Cannot create a chess_piece with an empty id.")
         if piece_id < 0:
             raise ValueError("Cannot create a chess_piece with a negative id.")
-        if rank_tag is None:
+        if rank is None:
             raise ValueError("Cannot create a chess_piece with an null rank.")
 
         self._id = piece_id
-        self._player = player
-        self._rank_tag = rank_tag
-        self._label = label
+        self._team = team
+        self._rank = rank
+        self._name = name
         self._status = MobilityStatus.FREE
         self._coordinate_stack: List[Coordinate] = []
 
@@ -49,18 +48,18 @@ class ChessPiece:
         return self._id
 
     @property
-    def label(self) -> Label:
-        return self._label
+    def name(self) -> str:
+        return self._name
 
 
     @property
-    def player(self) -> 'Player':
-        return self._player
+    def team(self) -> 'Team':
+        return self._team
 
 
     @property
-    def rank_tag(self) -> 'RankTag':
-        return self._rank_tahg
+    def rank(self) -> 'Rank':
+        return self._rank
 
 
     @property
@@ -69,7 +68,7 @@ class ChessPiece:
 
 
     @property
-    def position_history(self) -> List[Coordinate]:
+    def coordinate_stack(self) -> List[Coordinate]:
         return self._coordinate_stack
 
 
@@ -85,7 +84,7 @@ class ChessPiece:
 
     def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
 
-        print(f"Everything is fine with {self._label} calling Rank.explore for the list")
+        print(f"Everything is fine with {self._name} calling Rank.explore for the list")
         return self._rank.explore(self, board)
 
 
@@ -109,7 +108,7 @@ class ChessPiece:
 
     def is_enemy(self, chess_piece: 'ChessPiece'):
         if chess_piece is None:
-            print(f"{self._label} cannot be an enemy of a null chess_piece.")
+            print(f"{self._name} cannot be an enemy of a null chess_piece.")
             return False
-        return self._player == chess_piece.player
+        return self._team == chess_piece.player
 

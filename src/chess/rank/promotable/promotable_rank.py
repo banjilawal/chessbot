@@ -33,7 +33,7 @@ class PromotableRank:
         # method = "PromotableRank.promote"
         #
         # if self.is_promoted():
-        #     print( f"{piece.label} has already been promoted.")
+        #     print( f"{piece.name} has already been promoted.")
         #     return piece
         # return ChessPiece(
         #     piece_id = self._id

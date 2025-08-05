@@ -44,7 +44,7 @@ class PawnReachable(Reachable):
         if origin is None:
             return False
 
-        position_history = pawn.position_history
+        position_history = pawn.coordinate_stack
         if len(position_history) == 0 or position_history is None:
             return False
 

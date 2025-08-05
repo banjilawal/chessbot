@@ -9,7 +9,7 @@ from podscape.model.portal.portal import Portal
 
 
 # Added model.occupant.EscapePortal which extends GridEntity class. Added list of walls to the PodBoard. Renamed
-# model.occupant.Wall to model.occupant.Vault. The PodBoard has 4 walls so the old label was ambigous and not
+# model.occupant.Wall to model.occupant.Vault. The PodBoard has 4 walls so the old name was ambigous and not
 # communicating the item's intent."
 
 @dataclass

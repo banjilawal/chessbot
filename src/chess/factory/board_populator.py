@@ -15,7 +15,7 @@ class BoardPopulatorFactory:
             back_row = 0 if is_white else 7
             pawn_row = 1 if is_white else 6
 
-            # ✅ Group player's pieces by their rank letter ("P", "K", etc.)
+            # ✅ Group team's pieces by their rank letter ("P", "K", etc.)
             grouped: dict[str, List[ChessPiece]] = {}
             for piece in player.chess_pieces:
                 acronym = piece.rank.letter
@@ -33,7 +33,7 @@ class BoardPopulatorFactory:
                 coord = Coordinate(row=back_row, column=col)
                 result = board.place_chess_piece_on_board(piece, coord)
                 # if operation_result.is_failure:
-                #     print(f"❌ Failed to place {piece.label} at {coord}: {operation_result.message}")
+                #     print(f"❌ Failed to place {piece.name} at {coord}: {operation_result.message}")
 
             # ✅ Place pawns
             for col in range(8):
@@ -44,5 +44,5 @@ class BoardPopulatorFactory:
                 coord = Coordinate(row=pawn_row, column=col)
                 result = board.place_chess_piece_on_board(pawn, coord)
                 # if operation_result.is_failure:
-                #     print(f"❌ Failed to place {pawn.label} at {coord}: {operation_result.message}")
+                #     print(f"❌ Failed to place {pawn.name} at {coord}: {operation_result.message}")
 

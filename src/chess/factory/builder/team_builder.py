@@ -7,9 +7,9 @@ from chess.team.team_config import TeamConfig
 class TeamBuilder:
 
     @staticmethod
-    def build(config: TeamConfig) -> Team:
+    def build(team_id:int, config: TeamConfig) -> Team:
        return Team(
-           team_id=id_emitter.team_id,
+           team_id=team_id,
            letter=config.letter,
            team_order=config.player_order,
            team_color=config.game_color,
@@ -22,7 +22,7 @@ class TeamBuilder:
 def main():
     teams: list[Team] = []
     for config in TeamConfig:
-        team = TeamBuilder.build(config)
+        team = TeamBuilder.build(id_emitter.team_id, config)
         print(team)
         if team not in teams:
             teams.append(team)

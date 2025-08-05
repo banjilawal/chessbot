@@ -53,7 +53,7 @@ def main():
     print("New chess_piece:", piece)
     board.add_piece_to_board(piece, Coordinate(row=4, column=7))
     print(piece)
-    for coordinate in piece.position_history:
+    for coordinate in piece.coordinate_stack:
         print(coordinate)
 
     castle_places = piece.explore_destinations(board=board)

@@ -87,7 +87,7 @@ class Square:
     #         self._handle_occupation(self, OccupationStatus.IS_VACANT, chess_piece)
     #     if chess_piece.is_enemy(current_occupant):
     #         self._handle_occupation(self, OccupationStatus.HAS_ENEMY, chess_piece)
-    #     print(f"{self._coordinate} is occupied by friendly {current_occupant.label}")
+    #     print(f"{self._coordinate} is occupied by friendly {current_occupant.name}")
 
 
 
