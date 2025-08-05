@@ -1,12 +1,12 @@
 from typing import List
 
-from chess.rank.rank_config import RankConfig
+from chess.motion.abstract.rank_config import RankConfig
 from chess.motion.bishop.bishop import Bishop
 from chess.motion.king.king_motion_controller import KingMotionController
 from chess.motion.knight.knight_motion_controller import KnightMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 from chess.motion.queen.queen_motion_controller import Queen
-from chess.motion.motion_controller import MotionController
+from chess.motion.abstract.motion_controller import MotionController
 from chess.motion.castle.castle_motion_controller import CastleMotionController
 
 

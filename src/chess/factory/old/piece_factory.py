@@ -1,11 +1,11 @@
 from typing import List
 
 
-from chess.rank.rank_config import RankConfig
+from chess.motion.abstract.rank_config import RankConfig
 from chess.factory.emit import id_emitter
 from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.piece.piece import ChessPiece
-from chess.motion.motion_controller import MotionController
+from chess.motion.abstract.motion_controller import MotionController
 
 
 class PieceFactory:

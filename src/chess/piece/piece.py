@@ -9,7 +9,7 @@ from chess.piece.mobility_status import MobilityStatus
 from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from chess.motion.motion_controller import MotionController
+    from chess.motion.abstract.motion_controller import MotionController
     from chess.team.team import Team
     from chess.geometry.board.board import ChessBoard
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
@@ -34,7 +34,7 @@ class ChessPiece:
         if chess_piece_id < 0:
             raise ValueError("Cannot create a chess_piece with a negative id.")
         if rank is None:
-            raise ValueError("Cannot create a chess_piece with an null rank.")
+            raise ValueError("Cannot create a chess_piece with an null abstract.")
 
         self._id = chess_piece_id
         self._team = team

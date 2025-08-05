@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.motion.motion_controller import MotionController
+from chess.motion.abstract.motion_controller import MotionController
 from chess.utils.env import DevMode
 
 from chess.factory.grid_builder import GridBuilder

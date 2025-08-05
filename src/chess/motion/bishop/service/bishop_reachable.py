@@ -1,6 +1,6 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.diagonal import Diagonal
-from chess.motion.reachable import Reachable
+from chess.motion.abstract.reachable import Reachable
 
 
 class BishopReachable(Reachable):

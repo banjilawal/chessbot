@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.motion.motion_controller import MotionController
+from chess.motion.abstract.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
 
 

@@ -4,7 +4,7 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.castle.service.castle_reachable import CastleReachable
 
-from chess.motion.motion_service import MotionService
+from chess.motion.abstract.motion_service import MotionService
 from chess.motion.castle.service.castle_search_pattern import CastleSearchPattern
 
 

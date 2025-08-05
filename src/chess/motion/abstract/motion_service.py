@@ -4,8 +4,8 @@ from typing import List, TYPE_CHECKING
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
-from chess.motion.reachable import Reachable
-from chess.motion.search_pattern import SearchPattern
+from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.search_pattern import SearchPattern
 
 
 if TYPE_CHECKING:

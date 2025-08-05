@@ -15,7 +15,7 @@ class BoardPopulatorFactory:
             back_row = 0 if is_white else 7
             pawn_row = 1 if is_white else 6
 
-            # ✅ Group team's pieces by their rank letter ("P", "K", etc.)
+            # ✅ Group team's pieces by their abstract letter ("P", "K", etc.)
             grouped: dict[str, List[ChessPiece]] = {}
             for piece in player.chess_pieces:
                 acronym = piece.rank.letter

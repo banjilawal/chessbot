@@ -4,7 +4,7 @@ from chess.motion.king.king_motion_controller import KingMotionController
 from chess.motion.knight.knight_motion_controller import KnightMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 from chess.motion.queen.queen_motion_controller import Queen
-from chess.rank.rank_config import RankConfig
+from chess.motion.abstract.rank_config import RankConfig
 
 
 class RankBuilder:

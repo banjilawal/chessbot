@@ -4,7 +4,7 @@ from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.piece.piece import ChessPiece
 from chess.player.human_player import HumanPlayer
 from chess.player.player_config import PlayerConfig
-from chess.rank.rank_config import RankConfig
+from chess.motion.abstract.rank_config import RankConfig
 
 
 class HumanPlayerBuilder:

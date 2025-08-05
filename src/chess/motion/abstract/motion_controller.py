@@ -3,7 +3,7 @@ from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.motion.motion_service import MotionService
+from chess.motion.abstract.motion_service import MotionService
 from chess.piece.piece import ChessPiece
 
 

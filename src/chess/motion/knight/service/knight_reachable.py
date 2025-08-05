@@ -1,5 +1,5 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.reachable import Reachable
+from chess.motion.abstract.reachable import Reachable
 
 
 class KnightReachable(Reachable):

@@ -3,7 +3,7 @@ from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.piece.piece import ChessPiece
 from chess.player.human_player import HumanPlayer
 from chess.player.player_config import PlayerConfig
-from chess.rank.rank_config import RankConfig
+from chess.motion.abstract.rank_config import RankConfig
 
 
 class HumanPlayerBuilder:
@@ -29,7 +29,7 @@ class HumanPlayerBuilder:
         castle_rank = RankFactoryAntiPattern.build_rank(RankConfig.CASTLE)
         for _ in range(2):
             piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=castle_rank)
-            piece.player = player # The piece's setter adds it to team.pieces and rank.members
+            piece.player = player # The piece's setter adds it to team.pieces and abstract.members
 
         # Create 2 Knights
         knight_rank = RankFactoryAntiPattern.build_rank(RankConfig.KNIGHT)

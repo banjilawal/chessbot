@@ -2,7 +2,7 @@ from typing import List
 
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.motion_controller import MotionController
+from chess.motion.abstract.motion_controller import MotionController
 
 
 class PawnMotionController(MotionController):

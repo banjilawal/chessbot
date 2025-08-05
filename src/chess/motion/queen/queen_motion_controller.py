@@ -4,9 +4,9 @@ from chess.geometry.quadrant import Quadrant
 
 
 if TYPE_CHECKING:
-    from chess.motion.motion_controller import MotionController
+    from chess.motion.abstract.motion_controller import MotionController
 
-from chess.motion.motion_controller import MotionController
+from chess.motion.abstract.motion_controller import MotionController
 
 class QueenMotionController(MotionController):
 

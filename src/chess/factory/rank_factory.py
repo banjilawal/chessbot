@@ -1,8 +1,8 @@
 from typing import List
 
 from chess.factory.builder.rank_builder import RankBuilder
-from chess.motion.motion_controller import MotionController
-from chess.rank.rank_config import RankConfig
+from chess.motion.abstract.motion_controller import MotionController
+from chess.motion.abstract.rank_config import RankConfig
 
 
 class RankFactory:
