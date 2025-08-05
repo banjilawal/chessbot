@@ -3,7 +3,7 @@ from typing import List
 from chess.rank.rank_config import RankConfig
 from chess.rank.bishop import Bishop
 from chess.motion.king.king_motion_controller import KingMotionController
-from chess.rank.knight import Knight
+from chess.motion.knight.knight_motion_controller import KnightMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 from chess.rank.queen import Queen
 from chess.rank.rank import Rank
@@ -38,7 +38,7 @@ class RankFactoryAntiPattern:
                 territories=config.territories
             )
         if config == RankConfig.KNIGHT:
-            return Knight(
+            return KnightMotionController(
                 name=config.name,
                 letter=config.letter,
                 # motion_service=KnightMotionService,

@@ -4,7 +4,7 @@ from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 
 
-class Knight(Rank):
+class KnightMotionController(Rank):
 
     def __init__(
         self,
@@ -14,7 +14,7 @@ class Knight(Rank):
         int, number_per_player: int,
         territories: List[Quadrant]
     ):
-        from chess.motion.service.knight_motion_service import KnightMotionService
+        from chess.motion.knight.service.knight_motion_service import KnightMotionService
         super().__init__(
             name=name,
             letter=letter,

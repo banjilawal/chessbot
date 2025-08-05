@@ -1,7 +1,7 @@
 from chess.rank.bishop import Bishop
 from chess.rank.castle import Castle
 from chess.motion.king.king_motion_controller import KingMotionController
-from chess.rank.knight import Knight
+from chess.motion.knight.knight_motion_controller import KnightMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 from chess.rank.queen import Queen
 from chess.rank.rank_config import RankConfig
@@ -29,7 +29,7 @@ class RankBuilder:
                 capture_value=config.capture_value,
             )
         if config is RankConfig.KNIGHT:
-            return Knight(
+            return KnightMotionController(
                 name=config.name,
                 letter=config.letter,
                 number_per_player=config.number_per_player,
