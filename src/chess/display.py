@@ -149,7 +149,7 @@ class GameDisplay:
             return None
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the game board. Cannot get an mover at a position outside the board.")
+            print("Mouse is outside the field board. Cannot get an mover at a position outside the board.")
             return None
         return self.board.cells[coordinate.row][coordinate.column].occupant
 

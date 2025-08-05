@@ -130,7 +130,7 @@ class GameDisplay:
             return None
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the game chess_board. Cannot get an chess_piece at a position outside the chess_board.")
+            print("Mouse is outside the field chess_board. Cannot get an chess_piece at a position outside the chess_board.")
             return None
         return self.board.cells[coordinate.row][coordinate.column].occupant
 
@@ -341,10 +341,10 @@ class GameDisplay:
         row = mouse_position[1] // self.cell_px
 
         if column < 0 or column >= self.board.dimension.length:
-            print(f"[Warning] Mouse id outside the game chess_board at: {column}")
+            print(f"[Warning] Mouse id outside the field chess_board at: {column}")
             return None
         if row < 0 or row >= self.board.dimension.height:
-            print(f"[Warning] Mouse id outside the game chess_board at: {row}")
+            print(f"[Warning] Mouse id outside the field chess_board at: {row}")
             return None
         return GridCoordinate(row=row, column=column)
 
