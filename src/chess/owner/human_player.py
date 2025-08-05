@@ -1,6 +1,6 @@
 from chess.common.game_color import GameColor
 from chess.game.record.turn_record import TurnRecord
-from chess.player.player import Player
+from chess.owner.player import Player
 
 
 class HumanPlayer(Player):

@@ -3,7 +3,7 @@ from typing import List
 from chess.geometry.board import ChessBoard
 from chess.team.model.piece import ChessPiece
 from chess.game.record.turn_record import TurnRecord
-from chess.player.player import Player
+from chess.owner.player import Player
 
 
 class Game:

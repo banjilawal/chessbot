@@ -4,7 +4,7 @@ from chess.common.game_color import GameColor
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.piece.label import Label
 from chess.team.model.piece import ChessPiece
-from chess.player.player import Player
+from chess.owner.player import Player
 
 
 class MachinePlayer(Player):
