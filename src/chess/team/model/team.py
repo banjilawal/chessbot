@@ -1,7 +1,7 @@
 from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
-from chess.geometry.line.quadrant import Quadrant
+from chess.geometry.quadrant import Quadrant
 from chess.team.model.play_order import PlayOrder
 
 if TYPE_CHECKING:

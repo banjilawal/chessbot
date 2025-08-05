@@ -1,7 +1,7 @@
 # promotable_rank.py
 from typing import Optional, List, TYPE_CHECKING
 
-from chess.geometry.line.quadrant import Quadrant
+from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.motion_service import MotionService
 
 if TYPE_CHECKING:

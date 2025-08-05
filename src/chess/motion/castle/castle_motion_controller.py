@@ -2,7 +2,7 @@ from typing import List
 
 
 from chess.motion.abstract.motion_controller import MotionController
-from chess.geometry.line.quadrant import Quadrant
+from chess.geometry.quadrant import Quadrant
 
 
 class CastleMotionController(MotionController):

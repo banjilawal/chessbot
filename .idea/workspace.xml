@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/run_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/field/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/game.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/game_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/field/field_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/podscape/game_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/game_display.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -258,7 +266,7 @@
       <updated>1751725609134</updated>
       <workItem from="1753986943709" duration="107410000" />
       <workItem from="1754330871077" duration="28118000" />
-      <workItem from="1754365775191" duration="21541000" />
+      <workItem from="1754365775191" duration="25091000" />
     </task>
     <servers />
   </component>

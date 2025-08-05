@@ -1,6 +1,6 @@
 from typing import List, TYPE_CHECKING
 
-from chess.geometry.line.quadrant import Quadrant
+from chess.geometry.quadrant import Quadrant
 
 
 if TYPE_CHECKING:
