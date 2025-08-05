@@ -24,8 +24,8 @@ class TeamConfig(Enum):
         obj._quadrant = home_quadrant
         return obj
 
-    WHITE = ("W", PlayerOrder.FIRST, GameColor.WHITE, 0, 1, Quadrant.N)
-    BLACK = ("B", PlayerOrder.SECOND, GameColor.BLACK, 7, 6, Quadrant.S)
+    WHITE = ("W", PlayOrder.FIRST, GameColor.WHITE, 0, 1, Quadrant.N)
+    BLACK = ("B", PlayOrder.SECOND, GameColor.BLACK, 7, 6, Quadrant.S)
 
 
     @property
@@ -34,7 +34,7 @@ class TeamConfig(Enum):
 
 
     @property
-    def player_order(self) -> PlayerOrder:
+    def player_order(self) -> PlayOrder:
         return self._player_order
 
     @property

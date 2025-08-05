@@ -8,9 +8,10 @@ from chess.team.team_config import TeamConfig
 class TeamBuilder:
 
     @staticmethod
-    def build(team_id:int, config: TeamConfig, rank_factory: RankFactory) -> Team:
+    def build(config: TeamConfig) -> Team:
+       print("build team got config", config)
        team = Team(
-           team_id=team_id,
+           team_id=id_emitter.team_id,
            letter=config.letter,
            team_order=config.player_order,
            team_color=config.game_color,
@@ -18,6 +19,7 @@ class TeamBuilder:
            pawn_row_index=config.pawn_rank_index,
            home_quadrant=config.quadrant
        )
+       return team
 
 
 
@@ -25,7 +27,7 @@ class TeamBuilder:
 def main():
     teams: list[Team] = []
     for config in TeamConfig:
-        team = TeamBuilder.build(id_emitter.team_id, config)
+        team = TeamBuilder.build(config)
         print(team)
         if team not in teams:
             teams.append(team)
