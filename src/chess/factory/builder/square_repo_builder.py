@@ -5,7 +5,7 @@ from chess.factory.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.square.model.square import Square
 from chess.square.repo.square_repo import SquareRepo
-from chess.common.system_config import ROW_SIZE, COLUMN_SIZE
+from chess.common.config import ROW_SIZE, COLUMN_SIZE
 
 
 class SquareRepoBuilder:
