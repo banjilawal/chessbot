@@ -4,7 +4,7 @@
 # from assurance.validation.validation_result import ValidationResult
 # from assurance.validation.validation_exception import ValidationException
 # from chess.geometry.coordinate.coordinate import Coordinate
-# from chess.square.repo.square_repo import SquareRepo
+# from chess.square.repo.repo import SquareRepo
 #
 #
 # class CoordinateNotNullValidationFailed(ValidationException):
@@ -27,10 +27,10 @@
 #     @staticmethod
 #     def test_coordinate_in_board_dimension(
 #         coordinate: Optional[Coordinate],
-#         square_repo: Optional[SquareRepo]
+#         repo: Optional[SquareRepo]
 #     ) -> ValidationResult[Coordinate]:
 #
-#         square_repo_validation_report = SquareRepoValidator.not_null_test(square_repo)
+#         square_repo_validation_report = SquareRepoValidator.not_null_test(repo)
 #         if square_repo_validation_report.payload is None:
 #             return ValidationResult.send_failed_valtidation_report(
 #                 CoordinateDimensionValidationFailed(square_repo_validation_report.validation_exception)
@@ -43,7 +43,7 @@
 #             )
 #
 #         payload = coordinate_validation_report.payload
-#         if payload.row >= len(square_repo.squares) or payload.column >= len(square_repo.squares[0]):
+#         if payload.row >= len(repo.squares) or payload.column >= len(repo.squares[0]):
 #             return ValidationResult.send_failed_valtidation_report(
 #                 CoordinateDimensionValidationFailed("Coordinate failed dimension validation test")
 #             )

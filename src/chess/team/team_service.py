@@ -1,8 +1,11 @@
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.team.model.piece import ChessPiece
 from chess.team.model.team import Team
+
+# if TYPE_CHECKING:
+#     from chess.team.model.team import Team
 
 
 class TeamService:
@@ -45,7 +48,7 @@ class TeamService:
         for team in self._teams:
             if team.letter == letter:
                 return team
-        return team
+        return None
 
 
     def find_chess_piece_by_id(self, chess_piece_id: int) -> Optional[ChessPiece]:

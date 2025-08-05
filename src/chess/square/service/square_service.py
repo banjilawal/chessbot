@@ -1,58 +1,38 @@
 from typing import List, Optional
 
-from assurance.transaction_report import TransactionReport
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.team.model.piece import ChessPiece
 from chess.square.model.square import Square
 from chess.square.repo.square_repo import SquareRepo
 
 
 class SquareService:
-    _square_repo: SquareRepo
+    _repo: SquareRepo
 
-    def __init__(self, square_repo: SquareRepo):
-        self.square_repo = square_repo
+    def __init__(self, repo: SquareRepo):
+        self._repo = repo
 
 
     def squares(self) -> List[List[Square]]:
-        return self._square_repo.squares
+        return self._repo.squares
 
 
     def empty_squares(self) -> List[Square]:
-        matches: List[Square] = []
-        iterator = self._square_repo.iterator()
-        for square in self._square_repo.iterator():
-            if square.occupant is None:
-                matches.append(square)
-        return matches
+        return self._repo.empty_squares()
 
 
     def occupied_squares(self) -> List[Square]:
-        matches: List[Square] = []
-        iterator = self._square_repo.iterator()
-        for square in self._square_repo.iterator():
-            if square.occupant is not None:
-                matches.append(square)
-        return matches
+        return self._repo.occupied_squares()
 
     def find_square(self, coordinate: Coordinate) -> Optional[Square]:
-        return self._square_repo.find_square_by_coordinate(coordinate)
+        return self._repo.find_square_by_coordinate(coordinate)
 
 
     def find_square_by_id(self, square_id) -> Optional[Square]:
-        for row in self._square_repo.squares:
-            for square in row:
-                if square.id == square_id:
-                    return square
-        return True
+        return self._repo.find_square_by_id(square_id)
 
 
     def find_square_by_name(self, name:str) -> Optional[Square]:
-        for row in self._square_repo.squares:
-            for square in row:
-                if square.name.upper() == name:
-                    return square
-        return True
+        return self._repo.find_square_by_name(name)
 
 
 

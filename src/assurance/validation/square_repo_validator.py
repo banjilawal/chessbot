@@ -2,7 +2,7 @@
 #
 # from assurance.validation.validation_result import ValidationResult
 # from assurance.validation.validation_exception import ValidationException
-# from chess.square.repo.square_repo import SquareRepo
+# from chess.square.repo.repo import SquareRepo
 #
 #
 # class RepoNotNullValidationFailed(ValidationException):
@@ -15,16 +15,16 @@
 # class SquareRepoValidator:
 #
 #     @staticmethod
-#     def not_null_test(square_repo: Optional[SquareRepo]) -> ValidationResult[SquareRepo]:
-#         if square_repo is None:
+#     def not_null_test(repo: Optional[SquareRepo]) -> ValidationResult[SquareRepo]:
+#         if repo is None:
 #             return ValidationResult.send_failed_valtidation_report(
 #                 RepoNotNullValidationFailed("SquareRepo failed not null validation test")
 #             )[SquareRepo]
-#         return ValidationResult.send_passed_validation_report(payload=square_repo)[SquareRepo]
+#         return ValidationResult.send_passed_validation_report(payload=repo)[SquareRepo]
 #
 #     @staticmethod
-#     def not_empty_test(square_repo: Optional[SquareRepo]) -> ValidationResult[SquareRepo]:
-#         test_report = SquareRepoValidator.not_null_test(square_repo)
+#     def not_empty_test(repo: Optional[SquareRepo]) -> ValidationResult[SquareRepo]:
+#         test_report = SquareRepoValidator.not_null_test(repo)
 #
 #         if test_report.payload is None:
 #             return ValidationResult.send_failed_valtidation_report(
@@ -36,4 +36,4 @@
 #                 RepoNotEmptyValidationFailed("SquareRepo failed not empty validation test")
 #             )
 #
-#         return ValidationResult.send_passed_validation_report(payload=square_repo)
+#         return ValidationResult.send_passed_validation_report(payload=repo)

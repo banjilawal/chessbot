@@ -42,6 +42,23 @@ class SquareRepo:
         """
         return SquareIterator(self._squares, index, delta)
 
+    def occupied_squares(self) -> List[Square]:
+        matches: List[Square] = []
+        for row in self._squares:
+            for square in row:
+                if square.occupant is not None and square not in matches:
+                    matches.append(square)
+        return matches
+
+    def empty_squares(self) -> List[Square]:
+        matches: List[Square] = []
+        for row in self._squares:
+            for square in row:
+                if square.occupant is None and square not in matches:
+                    matches.append(square)
+        return matches
+
+
     def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
         """
         Finds a square by its coordinate.
