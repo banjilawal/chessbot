@@ -35,4 +35,8 @@ class SquareService:
         return self._repo.find_square_by_name(name)
 
 
+    def squares_to_string(self) -> str:
+        return str(self._repo)
+
+
 
