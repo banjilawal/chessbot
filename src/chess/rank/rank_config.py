@@ -8,7 +8,7 @@ from chess.motion.castle.service.castle_motion_service import CastleMotionServic
 from chess.motion.king.service.king_motion_service import KingMotionService
 from chess.motion.knight.service.knight_motion_service import KnightMotionService
 from chess.motion.pawn.service.pawn_motion_service import PawnMotionService
-from chess.motion.service.queen_motion_service import QueenMotionService
+from chess.motion.queen.service.queen_motion_service import QueenMotionService
 from chess.rank.rank import Rank
 
 if TYPE_CHECKING:

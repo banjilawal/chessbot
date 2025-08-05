@@ -5,7 +5,7 @@ from chess.motion.bishop.bishop import Bishop
 from chess.motion.king.king_motion_controller import KingMotionController
 from chess.motion.knight.knight_motion_controller import KnightMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
-from chess.rank.queen import Queen
+from chess.motion.queen.queen_motion_controller import Queen
 from chess.rank.rank import Rank
 from chess.motion.castle.castle_motion_controller import CastleMotionController
 

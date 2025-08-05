@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 from chess.rank.rank import Rank
 
-class Queen(Rank):
+class QueenMotionController(Rank):
 
     def __init__(
         self,
@@ -18,7 +18,7 @@ class Queen(Rank):
         int, number_per_player: int,
         territories: List[Quadrant]
     ):
-        from chess.motion.service.queen_motion_service import QueenMotionService
+        from chess.motion.queen.service.queen_motion_service import QueenMotionService
         super().__init__(
             name=name,
             letter=letter,

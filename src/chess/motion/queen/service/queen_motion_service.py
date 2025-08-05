@@ -2,10 +2,10 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.logic.queen_reachable import QueenReachable
+from chess.motion.queen.service.queen_reachable import QueenReachable
 
 from chess.motion.service.motion_service import MotionService
-from chess.motion.search.queen_search_pattern import QueenSearchPattern
+from chess.motion.queen.service.queen_search_pattern import QueenSearchPattern
 
 
 class QueenMotionService(MotionService):
