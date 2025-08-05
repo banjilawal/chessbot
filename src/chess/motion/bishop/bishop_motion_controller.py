@@ -6,7 +6,7 @@ from chess.geometry.quadrant import Quadrant
 
 
 
-class Bishop(MotionController):
+class BishopMotionController(MotionController):
     def __init__(
         self,
         name: str,
