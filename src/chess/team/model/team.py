@@ -91,7 +91,7 @@ class Team:
             return False
         if not isinstance(other, Team):
             return False
-        return self.id == other.id and self.letter == other.letter
+        return self.id == other.id
 
 
     def __hash__(self):

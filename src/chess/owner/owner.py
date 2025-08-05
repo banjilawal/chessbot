@@ -41,7 +41,7 @@ class Owner(ABC):
             return False
         if not isinstance(other, Owner):
             return False
-        return self.id == other.id and self.name == other.name
+        return self.id == other.id
 
 
 

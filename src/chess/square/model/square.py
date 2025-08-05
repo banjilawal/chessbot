@@ -98,7 +98,7 @@ class Square:
             return False
         if not isinstance(other, Square):
             return False
-        return self._id == other.id and self._name == other.name
+        return self._id == other.id
 
 
     def __hash__(self):

@@ -111,7 +111,7 @@ class ChessPiece:
         if not isinstance(other, ChessPiece):
             return False
         if isinstance(other, ChessPiece):
-            return  self._id == other.id and self._motion_controller == other.motion_controller
+            return  self._id == other.id
         return False
 
 

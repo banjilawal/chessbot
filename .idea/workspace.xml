@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/run_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/display.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/field/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/game.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/game_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/field/field_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/podscape/game_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/podscape/game_display.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,30 +41,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.chess_piece_builder.executor": "Run",
-    "Python.rank_builder.executor": "Run",
-    "Python.rank_factory.executor": "Run",
-    "Python.square_repo_builder.executor": "Run",
-    "Python.team_builder.executor": "Run",
-    "Python.team_factory.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/team/model",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.chess_piece_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rank_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rank_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.square_repo_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_factory.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/banji/PycharmProjects/chessbot/src/chess/team/model&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings sdk-home="$USER_HOME$/AppData/Local/Programs/Python/Python313/python.exe">
@@ -93,11 +85,11 @@
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\geometry" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\geometry\coordinate" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\geometry\line" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\team" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\team\model" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\config" />
     </key>
   </component>
   <component name="RunManager" selected="Python.team_factory">
@@ -266,7 +258,7 @@
       <updated>1751725609134</updated>
       <workItem from="1753986943709" duration="107410000" />
       <workItem from="1754330871077" duration="28118000" />
-      <workItem from="1754365775191" duration="25091000" />
+      <workItem from="1754365775191" duration="26399000" />
     </task>
     <servers />
   </component>
