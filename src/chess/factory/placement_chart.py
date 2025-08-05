@@ -7,20 +7,22 @@ from chess.rank.rank_config import RankConfig
 class PlacementChart(Enum):
     def __new__(
             cls,
+            chess_piece_name: str,
             square_name: [str],
             rank_config: RankConfig,
             team_config: TeamConfig
     ):
         obj = object.__new__(cls)
-        obj._value = square_name
+        obj._value = chess_piece_name
+        obj._square_name = square_name
         obj._rank_config = rank_config
         obj._team_config = team_config
         return obj
 
-    WHITE_KING_CASTLE = ("A8", RankConfig.CASTLE, TeamConfig.WHITE)
-    WHITE_KING_KNIGHT = ("B8", RankConfig.KNIGHT, TeamConfig.WHITE)
-    WHITE_KING_BISHOP = ("C8", RankConfig.BISHOP, TeamConfig.WHITE)
-    WHITE_KING = ("D8", RankConfig.QUEEN, TeamConfig.WHITE)
+    WHITE_KING_CASTLE = ("WC1", "A8", RankConfig.CASTLE, TeamConfig.WHITE)
+    WHITE_KING_KNIGHT = ("WN1", "B8", RankConfig.KNIGHT, TeamConfig.WHITE)
+    WHITE_KING_BISHOP = ("WB1", "C8", RankConfig.BISHOP, TeamConfig.WHITE)
+    WHITE_KING = ("WQ""D8", RankConfig.QUEEN, TeamConfig.WHITE)
     WHITE_QUEEN = ("E8", RankConfig.QUEEN, TeamConfig.WHITE)
     WHITE_QUEEN_BISHOP = ("F8", RankConfig.BISHOP, TeamConfig.WHITE)
     WHITE_QUEEN_KNIGHT = ("G8", RankConfig.KNIGHT, TeamConfig.WHITE)

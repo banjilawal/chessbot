@@ -11,27 +11,29 @@ from chess.rank.rank_config import RankConfig
 from chess.team.team import Team
 from chess.team.team_config import TeamConfig
 
-if TYPE_CHECKING:
-    from chess.rank.rank import Rank
+# if TYPE_CHECKING:
+#     from chess.rank.rank import Rank
 
 
 class ChessPieceBuilder:
 
 
     @staticmethod
-    def build(chess_piece_id: int, team_rank_member_id: int, rank: 'Rank', team: Team):
+    def build(chess_piece_id: int, team_rank_member_id: int, rank: Rank, team: Team):
         name = team.letter.capitalize() + rank.letter.capitalize() + str(team_rank_member_id)
+        if rank.letter == "K" or rank.letter == "Q":
+            name = team.letter.capitalize() + rank.letter.capitalize()
         return ChessPiece(
             chess_piece_id=chess_piece_id,
             name=name,
-            rank='Rank',
+            rank=Rank,
             team=team
         )
 
 
 def main():
     rank = RankBuilder.build(RankConfig.BISHOP)
-    team = TeamBuilder.build(id_emitter.team_id, TeamConfig.WHITE)
+    team = TeamBuilder.build(TeamConfig.WHITE)
     chess_piece = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, rank=rank, team=team)
     print(chess_piece)
 
