@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.motion.abstract.motion_controller import MotionController
-from chess.utils.env import DevMode
+from assurance.deployment_mode import ErrorHandler
 
 from chess.factory.grid_builder import GridBuilder
 from chess.factory.old.piece_factory import PieceFactory
@@ -20,7 +20,7 @@ def find_rank(ranks: List[MotionController], rank_name: str) -> MotionController
 
 
 def main():
-    DevMode._raise_errors = True  # Set to False for production
+    ErrorHandler._raise_errors = True  # Set to False for production
     board = ChessBoard(grid=GridBuilder.build())
     ranks = RankFactoryAntiPattern.run_factory()
 
@@ -37,7 +37,7 @@ def main():
     try:
         board.add_piece_to_board(piece, Coordinate(row=1, column=1))
     except ValueError as e:
-        DevMode.raise_or_print(f"Error adding chess_piece to board: {e}")
+        ErrorHandler.raise_or_print(f"Error adding chess_piece to board: {e}")
     print(f"{piece} {piece.current_coordinate()}")
 
     piece.forward_move_request(destination=Coordinate(row=4, column=4), chess_board=board)
