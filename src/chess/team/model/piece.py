@@ -94,7 +94,7 @@ class ChessPiece:
 
 
     def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate):
-        return self._motion_controller.delegate_move_excution(piece=self, board=chess_board, destination=destination)
+        return self._motion_controller.delegate_move_execution(piece=self, board=chess_board, destination=destination)
 
 
     def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:

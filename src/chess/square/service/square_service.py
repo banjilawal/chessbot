@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from assurance.transaction_report import TransactionReport
 from chess.geometry.coordinate.coordinate import Coordinate
@@ -12,6 +12,10 @@ class SquareService:
 
     def __init__(self, square_repo: SquareRepo):
         self.square_repo = square_repo
+
+
+    def squares(self) -> List[List[Square]]:
+        return self._square_repo.squares
 
 
     def empty_squares(self) -> List[Square]:
@@ -31,12 +35,11 @@ class SquareService:
                 matches.append(square)
         return matches
 
-    def find_square(self, coordinate: Coordinate) -> TransactionReport[Square]:
+    def find_square(self, coordinate: Coordinate) -> Optional[Square]:
         return self._square_repo.find_square_by_coordinate(coordinate)
 
 
-    def find_chess_piece(self, chess_piece: ChessPiece) -> TransactionReport[ChessPiece]:
-        return self._square_repo.chess_piece(chess_piece)
+    def find_square_by_name(self, name: str) -> Optional[Square]:
 
 
     def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):

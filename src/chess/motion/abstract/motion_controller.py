@@ -78,7 +78,7 @@ class MotionController(ABC):
                 f"num_per_player:{self._number_per_player} num_territories:{len(self._territories)}")
 
 
-    def delegate_move_excution(self, piece: ChessPiece, board: 'ChessBoard', destination: 'Coordinate'):
+    def delegate_move_execution(self, piece: ChessPiece, board: 'ChessBoard', destination: 'Coordinate'):
         """Move a chess_piece to the specified destination."""
         if piece is None:
             raise ValueError("Cannot move a null chess_piece")
