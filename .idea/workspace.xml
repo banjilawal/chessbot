@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/factory/builder/entity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/factory/builder/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/factory/entity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/factory/entity/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/chessbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/driver/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/driver/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/builder/chess_piece_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/entity/builder/chess_piece_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/builder/rank_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/entity/builder/rank_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/builder/square_repo_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/entity/builder/square_repo_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/builder/team_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/entity/builder/team_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/rank_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/rank_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/factory/team_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/factory/team_factory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +87,11 @@
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory\service" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\config" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory\entity\factory" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory\entity\builder" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\old_podscape" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\assurance" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\assets\images" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\assets\white" />
     </key>
   </component>
   <component name="RunManager" selected="Python.team_factory">
@@ -167,7 +155,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/factory/rank_factory.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory\entity\factory\rank_factory.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -236,7 +224,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/factory/team_factory.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory\entity\factory\team_factory.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -273,7 +261,7 @@
       <workItem from="1753986943709" duration="107410000" />
       <workItem from="1754330871077" duration="28118000" />
       <workItem from="1754365775191" duration="26399000" />
-      <workItem from="1754407776490" duration="5738000" />
+      <workItem from="1754407776490" duration="6424000" />
     </task>
     <servers />
   </component>
