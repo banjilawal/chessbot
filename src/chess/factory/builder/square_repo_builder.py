@@ -31,7 +31,7 @@ class SquareRepoBuilder:
 
 def main():
 
-    repo = SquareRepo(squares=SquareRepoBuilder.build())
+    repo = SquareRepo(SquareRepoBuilder.build())
     print(repo)
 
 

@@ -1,5 +1,7 @@
 from enum import Enum
+from typing import Optional
 
+from chess.piece.piece import ChessPiece
 from chess.team.team_config import TeamConfig
 from chess.rank.rank_config import RankConfig
 
@@ -8,12 +10,12 @@ class PlacementChart(Enum):
     def __new__(
             cls,
             chess_piece_name: str,
-            square_name: [str],
+            square_name: str,
             rank_config: RankConfig,
             team_config: TeamConfig
     ):
         obj = object.__new__(cls)
-        obj._value = chess_piece_name
+        obj._chess_piece_name= chess_piece_name
         obj._square_name = square_name
         obj._rank_config = rank_config
         obj._team_config = team_config
@@ -54,3 +56,25 @@ class PlacementChart(Enum):
     BLACK_PAWN_6 = ("BP6", "F2", RankConfig.PAWN, TeamConfig.BLACK)
     BLACK_PAWN_7 = ("BP7", "G2", RankConfig.PAWN, TeamConfig.BLACK)
     BLACK_PAWN_8 = ("BP8", "H2", RankConfig.PAWN, TeamConfig.BLACK)
+
+    @property
+    def chess_piece_name(self) -> str:
+        return self._chess_piece_name
+
+    @property
+    def square_name(self) -> str:
+        return self._square_name
+
+    @property
+    def rank_config(self) -> RankConfig:
+        return self._rank_config
+
+    @property
+    def team_config(self) -> TeamConfig:
+        return self._team_config
+
+    def map_chess_piece_to_square_name(self, chess_piece: ChessPiece) -> Optional[str]:
+        # print(chess_piece.name.upper())
+        if chess_piece.name.upper() == self.chess_piece_name.upper():
+            return self._square_name
+        return None

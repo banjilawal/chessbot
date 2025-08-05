@@ -1,9 +1,12 @@
 from typing import List
 
 from chess.factory.builder.chess_piece_builder import ChessPieceBuilder
+from chess.factory.builder.square_repo_builder import SquareRepoBuilder
 from chess.factory.builder.team_builder import TeamBuilder
 from chess.factory.emit import id_emitter
+from chess.factory.placement_chart import PlacementChart
 from chess.factory.rank_factory import RankFactory
+from chess.square.repo.square_repo import SquareRepo
 from chess.team.team import Team
 from chess.team.team_config import TeamConfig
 
@@ -27,7 +30,7 @@ class TeamFactory:
             for rank in ranks:
                 for i in range(rank.number_per_player):
                     chess_piece = ChessPieceBuilder.build(id_emitter.chess_piece_id, (i + 1), rank=rank, team=team)
-                    print(chess_piece)
+                    # print(chess_piece)
         return teams
 
 
@@ -37,6 +40,25 @@ def main():
     teams = TeamFactory.assemble()
     for team in teams:
         print(team)
+
+    repo = SquareRepo(SquareRepoBuilder.build())
+    for team in teams:
+        for chess_piece in team.chess_pieces:
+
+            for placement in PlacementChart:
+                square_name = placement.map_chess_piece_to_square_name(chess_piece)
+                if square_name is not None:
+                    square = repo.find_square_by_name(square_name)
+                    square.occupy(chess_piece)
+                    print(square)
+    print(repo)
+                    # print(square.name, " occupied by", square.occupant.name)
+                # print(placement.value[0])
+                # placement.map_chess_piece_to_square_name(chess_piece)
+                # print("comparing", placement.chess_piece_name.capitalize(), " with", chess_piece.name.capitalize())
+                # chess_piece.name.capitalize() == placement.value[0].capitalize():
+
+       # print(f"matched square:{placement.square_name} with {chess_piece.name}")`````````
 
 if __name__ == "__main__":
     main()

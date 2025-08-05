@@ -32,7 +32,7 @@ class SquareService:
         return matches
 
     def find_square(self, coordinate: Coordinate) -> TransactionReport[Square]:
-        return self._square_repo.square(coordinate)
+        return self._square_repo.find_square_by_coordinate(coordinate)
 
 
     def find_chess_piece(self, chess_piece: ChessPiece) -> TransactionReport[ChessPiece]:

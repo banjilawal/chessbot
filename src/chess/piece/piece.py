@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack
+
 from chess.piece.mobility_status import MobilityStatus
 
 from typing import List, TYPE_CHECKING
@@ -11,6 +12,7 @@ if TYPE_CHECKING:
     from chess.rank.rank import Rank
     from chess.team.team import Team
     from chess.geometry.board.board import ChessBoard
+    # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
 @dataclass(frozen=True)
 class RankTag:
@@ -39,7 +41,7 @@ class ChessPiece:
         self._rank = rank
         self._name = name
         self._status = MobilityStatus.FREE
-        self._coordinate_stack: List[Coordinate] = []
+        self._coordinate_stack = CoordinateStack()
         team.chess_pieces.append(self)
 
 
@@ -68,7 +70,7 @@ class ChessPiece:
 
 
     @property
-    def coordinate_stack(self) -> List[Coordinate]:
+    def coordinate_stack(self) -> CoordinateStack:
         return self._coordinate_stack
 
 
@@ -78,7 +80,6 @@ class ChessPiece:
             self._status = status
 
     def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate):
-
         return self._rank.delegate_move_excution(piece=self, board=chess_board, destination=destination)
 
 
@@ -104,11 +105,11 @@ class ChessPiece:
         return hash((self.id, self.rank))
 
     def __str__(self):
-        return f"{self.id} {self._name} {self._status.name} stack_size:{len(self._coordinate_stack)}"
+        return f"{self._id} {self._name} {self._status.name} stack_size:{self._coordinate_stack} + current:{self._coordinate_stack.current_coordinate()}"
 
     def is_enemy(self, chess_piece: 'ChessPiece'):
         if chess_piece is None:
             print(f"{self._name} cannot be an enemy of a null chess_piece.")
             return False
-        return self._team == chess_piece.player
+        return self._team == chess_piece.team
 
