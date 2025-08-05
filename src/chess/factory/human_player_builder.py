@@ -28,35 +28,35 @@ class HumanPlayerBuilder:
         # Create 2 Castles (Rooks)
         castle_rank = RankFactory.build_rank(RankConfig.CASTLE)
         for _ in range(2):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=castle_rank)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=castle_rank)
             piece.player = player # The piece's setter adds it to team.pieces and rank.members
 
         # Create 2 Knights
         knight_rank = RankFactory.build_rank(RankConfig.KNIGHT)
         for _ in range(2):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=knight_rank)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=knight_rank)
             piece.player = player
 
         # Create 2 Bishops
         bishop_rank = RankFactory.build_rank(RankConfig.BISHOP)
         for _ in range(2):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=bishop_rank)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=bishop_rank)
             piece.player = player
 
         # Create 8 Pawns
         pawn_rank = RankFactory.build_rank(RankConfig.PAWN)
         for _ in range(8):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=pawn_rank)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=pawn_rank)
             piece.player = player
 
         # Create 1 King
         king_rank = RankFactory.build_rank(RankConfig.KING)
-        piece = ChessPiece(piece_id=id_emitter.piece_id, rank=king_rank)
+        piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=king_rank)
         piece.player = player
 
         # Create 1 Queen
         queen_rank = RankFactory.build_rank(RankConfig.QUEEN)
-        piece = ChessPiece(piece_id=id_emitter.piece_id, rank=queen_rank)
+        piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=queen_rank)
         piece.player = player
 
         return player

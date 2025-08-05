@@ -25,30 +25,30 @@ class HumanPlayerBuilder:
 
         castle = RankFactory.build_rank(RankConfig.CASTLE)
         for i in range (2):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=castle)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=castle)
             piece.player = player
 
         knight = RankFactory.build_rank(RankConfig.KNIGHT)
         for i in range (2):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=knight)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=knight)
             piece.player = player
 
         bishop = RankFactory.build_rank(RankConfig.BISHOP)
         for i in range (2):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=bishop)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=bishop)
             piece.player = player
 
         pawn = RankFactory.build_rank(RankConfig.PAWN)
         for i in range (8):
-            piece = ChessPiece(piece_id=id_emitter.piece_id, rank=pawn)
+            piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=pawn)
             piece.player = player
 
         king = RankFactory.build_rank(RankConfig.KING)
-        piece = ChessPiece(piece_id=id_emitter, rank=king)
+        piece = ChessPiece(chess_piece_id=id_emitter, rank=king)
         piece.player = player
 
         queen = RankFactory.build_rank(RankConfig.QUEEN)
-        piece = ChessPiece(piece_id=id_emitter, rank=queen)
+        piece = ChessPiece(chess_piece_id=id_emitter, rank=queen)
         piece.player = player
 
         return player

@@ -1,7 +1,6 @@
 from typing import Optional, List, Dict
 
 from chess.common.game_color import GameColor
-from chess.game.record.turn_record import TurnRecord
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.piece.label import Label
 from chess.piece.piece import ChessPiece
@@ -14,7 +13,7 @@ class MachinePlayer(Player):
         super().__init__(player_id, name, color)
 
 
-    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard') -> Optional[TurnRecord]:
+    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard'):
         pass
 
     def hunt(self, board: 'ChessBoard') -> Dict[Label, List[ChessPiece]]:

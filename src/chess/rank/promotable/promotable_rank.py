@@ -36,7 +36,7 @@ class PromotableRank:
         #     print( f"{piece.name} has already been promoted.")
         #     return piece
         # return ChessPiece(
-        #     piece_id = self._id
+        #     chess_piece_id = self._id
         #     rank = Queen()
         #
         #
@@ -59,7 +59,7 @@ class PromotableRank:
     # ) -> bool:
     #     if not isinstance(piece.rank, Queen):
     #         return False
-    #     if hasattr(piece.rank, "piece_id") and piece.rank.piece_id != old_id:
+    #     if hasattr(piece.rank, "chess_piece_id") and piece.rank.chess_piece_id != old_id:
     #         return False
     #     if len(piece.coordinate_stack) != old_stack_size:
     #         return False

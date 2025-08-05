@@ -26,7 +26,7 @@ class PieceFactory:
 
         rank_config = RankConfig.find_config_by_class(rank=rank)
         for i in range(rank_config.number_per_player * 2):
-            piece = ChessPiece(id_emitter.piece_id, rank=rank)
+            piece = ChessPiece(id_emitter.chess_piece_id, rank=rank)
             rank_items.append(piece)
         return rank_items
 

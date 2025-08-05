@@ -7,7 +7,6 @@ from chess.piece.mobility_status import MobilityStatus
 
 from typing import List, TYPE_CHECKING
 
-
 if TYPE_CHECKING:
     from chess.rank.rank import Rank
     from chess.team.team import Team
@@ -27,15 +26,15 @@ class ChessPiece:
     _coordinate_stack: CoordinateStack
     _status: MobilityStatus
 
-    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
-        if not piece_id:
+    def __init__(self, chess_piece_id: int, name: str, rank: 'Rank', team: 'Team'):
+        if not chess_piece_id:
             raise ValueError("Cannot create a chess_piece with an empty id.")
-        if piece_id < 0:
+        if chess_piece_id < 0:
             raise ValueError("Cannot create a chess_piece with a negative id.")
         if rank is None:
             raise ValueError("Cannot create a chess_piece with an null rank.")
 
-        self._id = piece_id
+        self._id = chess_piece_id
         self._team = team
         self._rank = rank
         self._name = name
@@ -96,7 +95,7 @@ class ChessPiece:
         if not isinstance(other, ChessPiece):
             return False
         if isinstance(other, ChessPiece):
-            self.id == other.id and self.rank == other.rank
+            return  self._id == other.id and self._rank == other.rank
         return False
 
 
@@ -104,7 +103,7 @@ class ChessPiece:
         return hash((self.id, self.rank))
 
     def __str__(self):
-        return f"{self.id} {self.label} {self.status.name} stack_size:{len(self._coordinate_stack)}"
+        return f"{self.id} {self._name} {self._status.name} stack_size:{len(self._coordinate_stack)}"
 
     def is_enemy(self, chess_piece: 'ChessPiece'):
         if chess_piece is None:

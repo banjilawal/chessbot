@@ -3,7 +3,7 @@ class IdEmitter:
         self._player_id = 0
         self._coordinate_id = 0
         self._square_id = 0
-        self._piece_id = 0
+        self._chess_piece_id = 0
         self._team_id = 0
         self._capture_record_id = 0
 
@@ -27,9 +27,9 @@ class IdEmitter:
 
 
     @property
-    def piece_id(self) -> int:
-        self._piece_id += 1
-        return self._piece_id
+    def chess_piece_id(self) -> int:
+        self._chess_piece_id += 1
+        return self._chess_piece_id
 
 
     @property
