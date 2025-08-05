@@ -39,8 +39,20 @@ class SquareService:
         return self._square_repo.find_square_by_coordinate(coordinate)
 
 
-    def find_square_by_name(self, name: str) -> Optional[Square]:
+    def find_square_by_id(self, square_id) -> Optional[Square]:
+        for row in self._square_repo.squares:
+            for square in row:
+                if square.id == square_id:
+                    return square
+        return True
 
+
+    def find_square_by_name(self, name:str) -> Optional[Square]:
+        for row in self._square_repo.squares:
+            for square in row:
+                if square.name.upper() == name.i:
+                    return square
+        return True
 
     def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):
 
