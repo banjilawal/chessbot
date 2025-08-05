@@ -2,8 +2,8 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.logic.bishop_reachable import BishopReachable
-from chess.motion.search.bishop_search_pattern import BishopSearchPattern
+from chess.motion.bishop.service.bishop_reachable import BishopReachable
+from chess.motion.bishop.service.bishop_search_pattern import BishopSearchPattern
 from chess.motion.service.motion_service import MotionService
 
 

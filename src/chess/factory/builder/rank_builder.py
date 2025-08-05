@@ -1,4 +1,4 @@
-from chess.rank.bishop import Bishop
+from chess.motion.bishop.bishop import Bishop
 from chess.rank.castle import Castle
 from chess.motion.king.king_motion_controller import KingMotionController
 from chess.motion.knight.knight_motion_controller import KnightMotionController

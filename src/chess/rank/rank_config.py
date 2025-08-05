@@ -3,7 +3,7 @@ from typing import List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
 
-from chess.motion.service.bishop_motion_service import BishopMotionService
+from chess.motion.bishop.service.bishop_motion_service import BishopMotionService
 from chess.motion.service.castle_motion_service import CastleMotionService
 from chess.motion.king.service.king_motion_service import KingMotionService
 from chess.motion.knight.service.knight_motion_service import KnightMotionService

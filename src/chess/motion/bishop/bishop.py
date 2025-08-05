@@ -15,7 +15,7 @@ class Bishop(Rank):
         int, number_per_player: int,
         territories: List[Quadrant]
     ):
-        from chess.motion.service.bishop_motion_service import BishopMotionService
+        from chess.motion.bishop.service.bishop_motion_service import BishopMotionService
         super().__init__(
             name=name,
             letter=letter,

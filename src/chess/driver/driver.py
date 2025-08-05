@@ -8,7 +8,7 @@ from chess.factory.old.piece_factory import PieceFactory
 from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.rank.bishop import Bishop
+from chess.motion.bishop.bishop import Bishop
 
 
 def find_rank(ranks: List[Rank], rank_name: str) -> Rank:
