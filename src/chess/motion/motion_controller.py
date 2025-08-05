@@ -3,11 +3,11 @@ from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.motion.service.motion_service import MotionService
+from chess.motion.motion_service import MotionService
 from chess.piece.piece import ChessPiece
 
 
-class Rank(ABC):
+class MotionController(ABC):
     _name: str
     _letter: str
     _motion_service: MotionService
@@ -66,7 +66,7 @@ class Rank(ABC):
             return True
         if other is None:
             return False
-        if not isinstance(other, Rank):
+        if not isinstance(other, MotionController):
             return False
         return self._name == other.name
 

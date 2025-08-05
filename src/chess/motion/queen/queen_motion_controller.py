@@ -4,11 +4,11 @@ from chess.geometry.quadrant import Quadrant
 
 
 if TYPE_CHECKING:
-    from chess.rank.rank import Rank
+    from chess.motion.motion_controller import MotionController
 
-from chess.rank.rank import Rank
+from chess.motion.motion_controller import MotionController
 
-class QueenMotionController(Rank):
+class QueenMotionController(MotionController):
 
     def __init__(
         self,

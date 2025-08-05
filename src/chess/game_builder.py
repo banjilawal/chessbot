@@ -10,13 +10,13 @@ from chess.factory.old.piece_factory import PieceFactory
 from chess.geometry.board import ChessBoard
 from chess.piece.piece import ChessPiece
 from chess.player.player import Player
-from chess.rank.rank import Rank
+from chess.motion.motion_controller import MotionController
 
 
 class GameBuilder:
     _board: ChessBoard
     _players: List[Player]
-    _ranks: List[Rank]
+    _ranks: List[MotionController]
     _pieces: List[ChessPiece]
 
     def __init__(self, player_names: List[str]):
@@ -57,7 +57,7 @@ class GameBuilder:
         return self._pieces
 
     @property
-    def ranks(self) -> List[Rank]:
+    def ranks(self) -> List[MotionController]:
         return self._ranks
 
 

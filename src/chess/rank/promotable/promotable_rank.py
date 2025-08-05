@@ -2,14 +2,14 @@
 from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.service.motion_service import MotionService
+from chess.motion.motion_service import MotionService
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece
-    from chess.rank.rank import Rank
+    from chess.motion.motion_controller import MotionController
 
 class PromotableRank:
-    _previous_rank: Optional['Rank'] = None
+    _previous_rank: Optional['MotionController'] = None
 
     def __init__(
         self,
@@ -18,11 +18,11 @@ class PromotableRank:
         motion_service: MotionService,
         capture_value: int,
         territories: List[Quadrant],
-        previous_rank: Optional['Rank'] = None
+        previous_rank: Optional['MotionController'] = None
     ):
-        from chess.rank.rank import Rank  # LOCAL IMPORT TO BREAK CYCLE
+        from chess.motion.motion_controller import MotionController  # LOCAL IMPORT TO BREAK CYCLE
         self._previous_rank = previous_rank
-        Rank.__init__(self, name, acronym, motion_service, capture_value, territories)
+        MotionController.__init__(self, name, acronym, motion_service, capture_value, territories)
 
     def is_promoted(self) -> bool:
         return self._previous_rank is not None

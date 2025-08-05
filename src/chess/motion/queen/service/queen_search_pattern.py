@@ -4,7 +4,7 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.bishop.service.bishop_search_pattern import BishopSearchPattern
 from chess.motion.castle.service.castle_search_pattern import CastleSearchPattern
-from chess.motion.search.search_pattern import SearchPattern
+from chess.motion.search_pattern import SearchPattern
 from chess.piece.piece import ChessPiece
 
 

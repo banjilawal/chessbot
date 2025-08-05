@@ -1,6 +1,6 @@
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.search.search_pattern import SearchPattern
+from chess.motion.search_pattern import SearchPattern
 from chess.piece.piece import ChessPiece
 from chess.motion.knight.service.knight_reachable import KnightReachable
 from typing import List

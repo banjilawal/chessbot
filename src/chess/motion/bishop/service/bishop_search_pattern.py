@@ -4,7 +4,7 @@ from typing import List
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.bishop.service.bishop_reachable import BishopReachable
-from chess.motion.search.search_pattern import SearchPattern
+from chess.motion.search_pattern import SearchPattern
 from chess.piece.piece import ChessPiece
 from chess.system_config import ROW_SIZE, COLUMN_SIZE
 

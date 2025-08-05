@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.rank.rank import Rank
+from chess.motion.motion_controller import MotionController
 from chess.utils.env import DevMode
 
 from chess.factory.grid_builder import GridBuilder
@@ -11,7 +11,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.bishop.bishop import Bishop
 
 
-def find_rank(ranks: List[Rank], rank_name: str) -> Rank:
+def find_rank(ranks: List[MotionController], rank_name: str) -> MotionController:
     for rank in ranks:
         if rank.name == rank_name:
             return rank

@@ -1,15 +1,15 @@
 from typing import List
 
 from chess.factory.builder.rank_builder import RankBuilder
-from chess.rank.rank import Rank
+from chess.motion.motion_controller import MotionController
 from chess.rank.rank_config import RankConfig
 
 
 class RankFactory:
 
     @staticmethod
-    def  assemble() -> List[Rank]:
-        ranks: List[Rank] = []
+    def  assemble() -> List[MotionController]:
+        ranks: List[MotionController] = []
 
         for rank_config in RankConfig:
             ranks.append(RankBuilder.build(rank_config))

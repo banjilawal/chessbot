@@ -9,7 +9,7 @@ from chess.piece.mobility_status import MobilityStatus
 from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from chess.rank.rank import Rank
+    from chess.motion.motion_controller import MotionController
     from chess.team.team import Team
     from chess.geometry.board.board import ChessBoard
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
@@ -17,18 +17,18 @@ if TYPE_CHECKING:
 @dataclass(frozen=True)
 class RankTag:
     member_id: int
-    rank: 'Rank'
+    rank: 'MotionController'
 
 
 class ChessPiece:
     _id: int
     _name: str
     _team: 'Team'
-    _rank: 'Rank'
+    _rank: 'MotionController'
     _coordinate_stack: CoordinateStack
     _status: MobilityStatus
 
-    def __init__(self, chess_piece_id: int, name: str, rank: 'Rank', team: 'Team'):
+    def __init__(self, chess_piece_id: int, name: str, rank: 'MotionController', team: 'Team'):
         if not chess_piece_id:
             raise ValueError("Cannot create a chess_piece with an empty id.")
         if chess_piece_id < 0:
@@ -60,7 +60,7 @@ class ChessPiece:
 
 
     @property
-    def rank(self) -> 'Rank':
+    def rank(self) -> 'MotionController':
         return self._rank
 
 
@@ -85,7 +85,7 @@ class ChessPiece:
 
     def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
 
-        print(f"Everything is fine with {self._name} calling Rank.explore for the list")
+        print(f"Everything is fine with {self._name} calling MotionController.explore for the list")
         return self._rank.explore(self, board)
 
 

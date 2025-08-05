@@ -9,10 +9,10 @@ from chess.motion.king.service.king_motion_service import KingMotionService
 from chess.motion.knight.service.knight_motion_service import KnightMotionService
 from chess.motion.pawn.service.pawn_motion_service import PawnMotionService
 from chess.motion.queen.service.queen_motion_service import QueenMotionService
-from chess.rank.rank import Rank
+from chess.motion.motion_controller import MotionController
 
 if TYPE_CHECKING:
-    from chess.motion.service.motion_service import MotionService
+    from chess.motion.motion_service import MotionService
 
 class RankConfig(Enum):
     def __new__(
@@ -83,7 +83,7 @@ class RankConfig(Enum):
         return self._motion_service
 
     @staticmethod
-    def find_config_by_class(rank: Rank):
+    def find_config_by_class(rank: MotionController):
         print(f"Looking for config with name: {rank.name}")
         for config in RankConfig:
             print(f"Checking config: {config.value}")

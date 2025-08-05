@@ -5,14 +5,14 @@ from chess.rank.rank_config import RankConfig
 from chess.factory.emit import id_emitter
 from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.piece.piece import ChessPiece
-from chess.rank.rank import Rank
+from chess.motion.motion_controller import MotionController
 
 
 class PieceFactory:
 
 
     @staticmethod
-    def run_factory(ranks: List[Rank]) -> List[ChessPiece]:
+    def run_factory(ranks: List[MotionController]) -> List[ChessPiece]:
         pieces: List[ChessPiece] = []
 
         for rank in ranks:
@@ -21,7 +21,7 @@ class PieceFactory:
 
 
     @staticmethod
-    def build_rank_members(rank: Rank) -> List[ChessPiece]:
+    def build_rank_members(rank: MotionController) -> List[ChessPiece]:
         rank_items: List[ChessPiece] = []
 
         rank_config = RankConfig.find_config_by_class(rank=rank)
@@ -32,7 +32,7 @@ class PieceFactory:
 
 
 def main ():
-    ranks: List[Rank] = RankFactoryAntiPattern.run_factory()
+    ranks: List[MotionController] = RankFactoryAntiPattern.run_factory()
     pieces = PieceFactory.run_factory(ranks)
 
     for piece in pieces:
