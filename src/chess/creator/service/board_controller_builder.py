@@ -1,19 +1,14 @@
-from typing import List
-
+from typing import List, TYPE_CHECKING
 
 from chess.config.placement_chart import PlacementChart
-from chess.creator.emit import id_emitter
-from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
-from chess.creator.entity.builder.team_builder import TeamBuilder
-from chess.creator.entity.factory.motion_controller_factory import MotionControllerFactory
+
 from chess.creator.service.square_service_builder import SquareServiceBuilder
 from chess.creator.service.team_service_builder import TeamServiceBuilder
+
 from chess.field.board_controller import BoardController
-from chess.square import repo
-from chess.config.team_config import TeamConfig
 from chess.square.service.square_service import SquareService
-from chess.team.model.team import Team
 from chess.team.team_service import TeamService
+
 
 
 class BoardControllerBuilder:
@@ -21,8 +16,13 @@ class BoardControllerBuilder:
     @staticmethod
     def build(team_service: TeamService, square_service: SquareService) -> BoardController:
 
-        BoardControllerBuilder.place_teams(team_service, square_service)
-        return BoardController(team_service=team_service, square_service=square_service)
+        board_controller = BoardController(team_service=team_service, square_service=square_service)
+
+        from chess.creator.team_placement_manager import TeamPlacementManager
+        TeamPlacementManager.place_teams(board_controller)
+        return board_controller
+        # BoardControllerBuilder.place_teams(team_service, square_service)
+        # return BoardController(team_service=team_service, square_service=square_service)
         # teams: List[Team] = []
         #
         # for team_config in TeamConfig:
