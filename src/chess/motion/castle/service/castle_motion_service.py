@@ -2,10 +2,10 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.logic.castle_reachable import CastleReachable
+from chess.motion.castle.service.castle_reachable import CastleReachable
 
 from chess.motion.service.motion_service import MotionService
-from chess.motion.search.castle_search_pattern import CastleSearchPattern
+from chess.motion.castle.service.castle_search_pattern import CastleSearchPattern
 
 
 class CastleMotionService(MotionService):

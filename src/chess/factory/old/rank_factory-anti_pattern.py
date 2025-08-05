@@ -7,7 +7,7 @@ from chess.motion.knight.knight_motion_controller import KnightMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 from chess.rank.queen import Queen
 from chess.rank.rank import Rank
-from chess.rank.castle import Castle
+from chess.motion.castle.castle_motion_controller import CastleMotionController
 
 
 class RankFactoryAntiPattern:
@@ -54,7 +54,7 @@ class RankFactoryAntiPattern:
                 territories=config.territories
             )
         if  config == RankConfig.CASTLE:
-            return Castle(
+            return CastleMotionController(
                 name=config.name,
                 letter=config.letter,
                 # motion_service=CastleMotionService,

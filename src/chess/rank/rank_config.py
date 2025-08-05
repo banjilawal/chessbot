@@ -4,7 +4,7 @@ from typing import List, TYPE_CHECKING
 from chess.geometry.quadrant import Quadrant
 
 from chess.motion.bishop.service.bishop_motion_service import BishopMotionService
-from chess.motion.service.castle_motion_service import CastleMotionService
+from chess.motion.castle.service.castle_motion_service import CastleMotionService
 from chess.motion.king.service.king_motion_service import KingMotionService
 from chess.motion.knight.service.knight_motion_service import KnightMotionService
 from chess.motion.pawn.service.pawn_motion_service import PawnMotionService
@@ -53,7 +53,7 @@ class RankConfig(Enum):
     )
 
     CASTLE = (
-        "Castle", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W], CastleMotionService()
+        "CastleMotionController", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W], CastleMotionService()
     )
 
     QUEEN = (

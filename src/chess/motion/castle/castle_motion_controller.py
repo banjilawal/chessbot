@@ -5,7 +5,7 @@ from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 
 
-class Castle(Rank):
+class CastleMotionController(Rank):
     def __init__(
         self,
         name: str,
@@ -14,7 +14,7 @@ class Castle(Rank):
         int, number_per_player: int,
         territories: List[Quadrant]
     ):
-        from chess.motion.service.castle_motion_service import CastleMotionService
+        from chess.motion.castle.service.castle_motion_service import CastleMotionService
         super().__init__(
             name=name,
             letter=letter,
