@@ -1,11 +1,11 @@
 from typing import List
 
-from chess.factory.builder.chess_piece_builder import ChessPieceBuilder
-from chess.factory.builder.square_repo_builder import SquareRepoBuilder
-from chess.factory.builder.team_builder import TeamBuilder
+from chess.factory.entity.builder.chess_piece_builder import ChessPieceBuilder
+from chess.factory.entity.builder.square_repo_builder import SquareRepoBuilder
+from chess.factory.entity.builder.team_builder import TeamBuilder
 from chess.factory.emit import id_emitter
-from chess.factory.placement_chart import PlacementChart
-from chess.factory.rank_factory import RankFactory
+from chess.config.placement_chart import PlacementChart
+from chess.factory.entity.factory.rank_factory import RankFactory
 from chess.square.repo.square_repo import SquareRepo
 from chess.config.team_config import TeamConfig
 from chess.team.model.team import Team

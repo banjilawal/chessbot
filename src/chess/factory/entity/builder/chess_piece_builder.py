@@ -1,5 +1,5 @@
-from chess.factory.builder.rank_builder import RankBuilder
-from chess.factory.builder.team_builder import TeamBuilder
+from chess.factory.entity.builder.rank_builder import RankBuilder
+from chess.factory.entity.builder.team_builder import TeamBuilder
 from chess.factory.emit import id_emitter
 
 from chess.team.model.piece import ChessPiece
