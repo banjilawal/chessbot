@@ -3,7 +3,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 
 class Diagonal:
     """
-    A Diagonal is a rule that defines a diagonal motion. Diagonal motion is:
+    A Diagonal is a rule that defines a diagonal motion_service. Diagonal motion_service is:
     forward Xj, Yj <= Xi, Yi = Xi-1, Yi+1
     backward Xj, Yj>=Xi, Yi = Xi+1, Yi+1
     """

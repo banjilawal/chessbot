@@ -10,24 +10,26 @@ from chess.piece.piece import ChessPiece
 class Rank(ABC):
     _name: str
     _letter: str
-    _motion: MotionService
+    _motion_service: MotionService
     _capture_value: int
-    _members: List[ChessPiece]
+    _number_per_player: int
     _territories: List[Quadrant]
 
     def __init__(
         self,
         name: str,
         letter: str,
-        motion: MotionService,
+        motion_service: MotionService,
         capture_value: int,
+        number_per_player: int,
         territories: List[Quadrant]
     ):
         self._name = name
         self._members = []
-        self._motion = motion
+        self._motion_service = motion_service
         self._letter = letter
         self._capture_value = capture_value
+        self._number_per_player = number_per_player
         self._territories = territories
 
 
@@ -42,8 +44,8 @@ class Rank(ABC):
 
 
     @property
-    def motion(self):
-        return self._motion
+    def motion_service(self):
+        return self._motion_service
 
 
     @property
@@ -55,8 +57,8 @@ class Rank(ABC):
         return self._territories.copy()
 
     @property
-    def members(self) -> [ChessPiece]:
-        return self._members
+    def number_per_player(self) -> int:
+        return self._number_per_player
 
 
     def __eq__(self, other):
@@ -73,7 +75,7 @@ class Rank(ABC):
 
     def __str__(self):
         return (f"{self._name}, value:{self._letter}, {self._capture_value} "
-                f"num_members:{len(self._members)} num_territories:{len(self._territories)}")
+                f"num_per_player:{self._number_per_player} num_territories:{len(self._territories)}")
 
 
     def delegate_move_excution(self, piece: ChessPiece, board: 'ChessBoard', destination: 'Coordinate'):
@@ -89,11 +91,11 @@ class Rank(ABC):
 
         origin = piece.current_coordinate()
         print(f"{piece.label} starting move from {origin} to {destination}")
-        print(f"motion instance: {self.motion}")
-        print(f"motion type: {type(self.motion)}")
-        print(f"dispatch_to_move_executor: {self.motion.dispatch_to_move_executor}")
-        # Call motion.move() with keyword arguments to ensure proper parameter alignment
-        self.motion.dispatch_to_move_executor(piece, destination, board)
+        print(f"motion instance: {self.motion_service}")
+        print(f"motion type: {type(self.motion_service)}")
+        print(f"dispatch_to_move_executor: {self.motion_service.dispatch_to_move_executor}")
+        # Call motion_service.move() with keyword arguments to ensure proper parameter alignment
+        self.motion_service.dispatch_to_move_executor(piece, destination, board)
 
 
     def explore(self, piece: ChessPiece, board: 'ChessBoard') -> List['Coordinate']:
@@ -104,6 +106,6 @@ class Rank(ABC):
         if board is None:
             raise ValueError("Bishop cannot explore without a chess_board.")
 
-        return self.motion.explore(piece, board)
+        return self.motion_service.explore(piece, board)
 
 

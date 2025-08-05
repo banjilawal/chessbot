@@ -25,7 +25,7 @@ class RankFactory:
             return King(
                 name=config.name,
                 letter=config.letter,
-                # motion=KingMotionService,
+                # motion_service=KingMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -33,7 +33,7 @@ class RankFactory:
             return Pawn(
                 name=config.name,
                 letter=config.letter,
-                # motion=PawnMotionService,
+                # motion_service=PawnMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -41,7 +41,7 @@ class RankFactory:
             return Knight(
                 name=config.name,
                 letter=config.letter,
-                # motion=KnightMotionService,
+                # motion_service=KnightMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -49,7 +49,7 @@ class RankFactory:
             return Bishop(
                 name=config.name,
                 letter=config.letter,
-                # motion=BishopMotionService,
+                # motion_service=BishopMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -57,7 +57,7 @@ class RankFactory:
             return Castle(
                 name=config.name,
                 letter=config.letter,
-                # motion=CastleMotionService,
+                # motion_service=CastleMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )
@@ -65,7 +65,7 @@ class RankFactory:
             return Queen(
                 name=config.name,
                 letter=config.letter,
-                # motion=QueenMotionService,
+                # motion_service=QueenMotionService,
                 capture_value=config.capture_value,
                 territories=config.territories
             )

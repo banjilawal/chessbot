@@ -15,63 +15,59 @@ class RankBuilder:
 
         if config is RankConfig.KING:
             return King(
-                config.name,
-                config.letter,
-                config.number_per_player,
-                config.territories,
-                config.capture_value,
-                config.motion_service
+                name=config.name,
+                letter=config.letter,
+                number_per_player=config.number_per_player,
+                territories=config.territories,
+                capture_value=config.capture_value,
             )
         if config is RankConfig.PAWN:
             return Pawn(
-                config.name,
-                config.letter,
-                config.number_per_player,
-                config.territories,
-                config.capture_value,
-                config.motion_service
+                name=config.name,
+                letter=config.letter,
+                number_per_player=config.number_per_player,
+                territories=config.territories,
+                capture_value=config.capture_value,
             )
         if config is RankConfig.KNIGHT:
             return Knight(
-                config.name,
-                config.letter,
-                config.number_per_player,
-                config.territories,
-                config.capture_value,
-                config.motion_service
+                name=config.name,
+                letter=config.letter,
+                number_per_player=config.number_per_player,
+                territories=config.territories,
+                capture_value=config.capture_value,
             )
         if config is RankConfig.BISHOP:
             return Bishop(
-                config.name,
-                config.letter,
-                config.number_per_player,
-                config.territories,
-                config.capture_value,
-                config.motion_service
+                name=config.name,
+                letter=config.letter,
+                number_per_player=config.number_per_player,
+                territories=config.territories,
+                capture_value=config.capture_value,
             )
         if config is RankConfig.CASTLE:
             return Castle(
-                config.name,
-                config.letter,
-                config.number_per_player,
-                config.territories,
-                config.capture_value,
-                config.motion_service
+                name=config.name,
+                letter=config.letter,
+                number_per_player=config.number_per_player,
+                territories=config.territories,
+                capture_value=config.capture_value,
             )
         if config is RankConfig.QUEEN:
             return Queen(
-                config.name,
-                config.letter,
-                config.number_per_player,
-                config.territories,
-                config.capture_value,
-                config.motion_service
+                name=config.name,
+                letter=config.letter,
+                number_per_player=config.number_per_player,
+                territories=config.territories,
+                capture_value=config.capture_value,
             )
+        raise ValueError(f"Invalid rank config: {config}")
 
 
 
 def main():
     rank = RankBuilder.build(RankConfig.PAWN)
+    print(rank)
 
 
 if __name__ == "__main__":
