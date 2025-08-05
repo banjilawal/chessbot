@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.factory.human_player_builder import HumanPlayerBuilder
+from chess.factory.old.human_player_builder import HumanPlayerBuilder
 from chess.geometry.board import ChessBoard
 
 

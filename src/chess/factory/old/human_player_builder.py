@@ -1,5 +1,5 @@
 from chess.factory.emit import id_emitter
-from chess.factory.rank_factory import RankFactory
+from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.piece.piece import ChessPiece
 from chess.player.human_player import HumanPlayer
 from chess.player.player_config import PlayerConfig
@@ -26,36 +26,36 @@ class HumanPlayerBuilder:
         #    The piece counts are hardcoded here, as per your preference for direct control.
 
         # Create 2 Castles (Rooks)
-        castle_rank = RankFactory.build_rank(RankConfig.CASTLE)
+        castle_rank = RankFactoryAntiPattern.build_rank(RankConfig.CASTLE)
         for _ in range(2):
             piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=castle_rank)
             piece.player = player # The piece's setter adds it to team.pieces and rank.members
 
         # Create 2 Knights
-        knight_rank = RankFactory.build_rank(RankConfig.KNIGHT)
+        knight_rank = RankFactoryAntiPattern.build_rank(RankConfig.KNIGHT)
         for _ in range(2):
             piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=knight_rank)
             piece.player = player
 
         # Create 2 Bishops
-        bishop_rank = RankFactory.build_rank(RankConfig.BISHOP)
+        bishop_rank = RankFactoryAntiPattern.build_rank(RankConfig.BISHOP)
         for _ in range(2):
             piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=bishop_rank)
             piece.player = player
 
         # Create 8 Pawns
-        pawn_rank = RankFactory.build_rank(RankConfig.PAWN)
+        pawn_rank = RankFactoryAntiPattern.build_rank(RankConfig.PAWN)
         for _ in range(8):
             piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=pawn_rank)
             piece.player = player
 
         # Create 1 King
-        king_rank = RankFactory.build_rank(RankConfig.KING)
+        king_rank = RankFactoryAntiPattern.build_rank(RankConfig.KING)
         piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=king_rank)
         piece.player = player
 
         # Create 1 Queen
-        queen_rank = RankFactory.build_rank(RankConfig.QUEEN)
+        queen_rank = RankFactoryAntiPattern.build_rank(RankConfig.QUEEN)
         piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=queen_rank)
         piece.player = player
 

@@ -3,7 +3,7 @@ from typing import List
 
 from chess.rank.rank_config import RankConfig
 from chess.factory.emit import id_emitter
-from chess.factory.rank_factory import RankFactory
+from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.piece.piece import ChessPiece
 from chess.rank.rank import Rank
 
@@ -32,7 +32,7 @@ class PieceFactory:
 
 
 def main ():
-    ranks: List[Rank] = RankFactory.run_factory()
+    ranks: List[Rank] = RankFactoryAntiPattern.run_factory()
     pieces = PieceFactory.run_factory(ranks)
 
     for piece in pieces:

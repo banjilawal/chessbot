@@ -1,10 +1,10 @@
 from typing import List
 
-from chess.factory.board_populator import BoardPopulatorFactory
+from chess.factory.old.board_populator import BoardPopulatorFactory
 from chess.factory.grid_builder import GridBuilder
 
-from chess.factory.rank_factory import RankFactory
-from chess.factory.piece_factory import PieceFactory
+from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
+from chess.factory.old.piece_factory import PieceFactory
 
 
 from chess.geometry.board import ChessBoard
@@ -33,7 +33,7 @@ class GameBuilder:
         self._board = ChessBoard(grid=grid)
 
         # Step 2: Build ranks
-        self._ranks = RankFactory.run_factory()
+        self._ranks = RankFactoryAntiPattern.run_factory()
 
         # Step 3: Build pieces for all ranks
         self._pieces = PieceFactory.run_factory(self._ranks)

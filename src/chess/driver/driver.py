@@ -4,8 +4,8 @@ from chess.rank.rank import Rank
 from chess.utils.env import DevMode
 
 from chess.factory.grid_builder import GridBuilder
-from chess.factory.piece_factory import PieceFactory
-from chess.factory.rank_factory import RankFactory
+from chess.factory.old.piece_factory import PieceFactory
+from chess.factory.old.expired_rank_factory import RankFactoryAntiPattern
 from chess.geometry.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.rank.bishop import Bishop
@@ -22,7 +22,7 @@ def find_rank(ranks: List[Rank], rank_name: str) -> Rank:
 def main():
     DevMode._raise_errors = True  # Set to False for production
     board = ChessBoard(grid=GridBuilder.build())
-    ranks = RankFactory.run_factory()
+    ranks = RankFactoryAntiPattern.run_factory()
 
     pieces = PieceFactory.run_factory(ranks)
     for piece in pieces:
