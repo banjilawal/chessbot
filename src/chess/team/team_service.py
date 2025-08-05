@@ -46,7 +46,7 @@ class TeamService:
 
     def find_team_by_letter(self, letter: str) -> Optional[Team]:
         for team in self._teams:
-            if team.letter == letter:
+            if team.letter.upper() == letter.upper():
                 return team
         return None
 
@@ -62,6 +62,6 @@ class TeamService:
     def find_chess_piece_by_name(self, name: str) -> Optional[ChessPiece]:
         for team in self._teams:
             for chess_piece in team.chess_pieces:
-                if chess_piece.name == name:
+                if chess_piece.name.upper() == name.upper():
                     return chess_piece
         return None

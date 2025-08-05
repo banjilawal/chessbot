@@ -17,6 +17,14 @@ def main():
 
      for s in board.square_service.occupied_squares():
          print(s.__str__())
+
+     print(board.square_service.squares_to_string())
+
+
+     chess_piece = board.team_service.find_chess_piece_by_id(23)
+     print("\nFound by id", chess_piece)
+     chess_piece = board.team_service.find_chess_piece_by_name("bp6")
+     print("Found by name", chess_piece)
      # for s in board_controller.square_service.squares():
      #     print(square.__str__(), "\n")
 
