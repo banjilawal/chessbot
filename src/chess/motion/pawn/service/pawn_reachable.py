@@ -4,7 +4,7 @@ from chess.geometry.diagonal import Diagonal
 from chess.geometry.vertical import Vertical
 from chess.motion.logic.reachable import Reachable
 from chess.piece.piece import ChessPiece
-from chess.rank.pawn import Pawn
+from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 
 
 class PawnReachable(Reachable):
@@ -37,7 +37,7 @@ class PawnReachable(Reachable):
         if pawn is None:
             return False
 
-        if not isinstance(pawn.rank, Pawn):
+        if not isinstance(pawn.rank, PawnMotionController):
             return False
 
         origin = pawn.current_coordinate()
@@ -62,7 +62,7 @@ class PawnReachable(Reachable):
         if pawn is None or board is None:
             return False
 
-        if not isinstance(pawn.rank, Pawn):
+        if not isinstance(pawn.rank, PawnMotionController):
             return False
 
         origin = pawn.current_coordinate()

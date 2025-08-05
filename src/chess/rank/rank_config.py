@@ -7,7 +7,7 @@ from chess.motion.service.bishop_motion_service import BishopMotionService
 from chess.motion.service.castle_motion_service import CastleMotionService
 from chess.motion.king.service.king_motion_service import KingMotionService
 from chess.motion.service.knight_motion_service import KnightMotionService
-from chess.motion.service.pawn_motion_service import PawnMotionService
+from chess.motion.pawn.service.pawn_motion_service import PawnMotionService
 from chess.motion.service.queen_motion_service import QueenMotionService
 from chess.rank.rank import Rank
 
@@ -40,7 +40,7 @@ class RankConfig(Enum):
     )
 
     PAWN = (
-        "Pawn", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW], PawnMotionService()
+        "PawnMotionController", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW], PawnMotionService()
     )
 
     KNIGHT = (

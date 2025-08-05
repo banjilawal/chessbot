@@ -3,9 +3,9 @@ from typing import List
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 
-from chess.motion.logic.pawn_reachable import PawnReachable
+from chess.motion.pawn.service.pawn_reachable import PawnReachable
 from chess.motion.service.motion_service import MotionService
-from chess.motion.search.pawn_search_pattern import PawnSearchPattern
+from chess.motion.pawn.service.pawn_search_pattern import PawnSearchPattern
 
 
 class PawnMotionService(MotionService):

@@ -5,13 +5,13 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.search.search_pattern import SearchPattern
-from chess.rank.pawn import Pawn
-from chess.motion.logic.pawn_reachable import PawnReachable
+from chess.motion.pawn.pawn_motion_controller import PawnMotionController
+from chess.motion.pawn.service.pawn_reachable import PawnReachable
 
 
 class PawnSearchPattern(SearchPattern):
 
-    def _perform_search(self, pawn: Pawn, board: ChessBoard) -> List[Coordinate]:
+    def _perform_search(self, pawn: PawnMotionController, board: ChessBoard) -> List[Coordinate]:
         origin = pawn.current_position()
         destinations: List[Coordinate] = []
         quadrants = pawn.rank.territories

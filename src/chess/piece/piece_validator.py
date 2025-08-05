@@ -4,7 +4,7 @@ from assurance.validation.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.piece.mobility_status import MobilityStatus
 from chess.motion.king.king_motion_controller import KingMotionController
-from chess.rank.pawn import Pawn
+from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 
 if TYPE_CHECKING:
     from chess.piece.piece import ChessPiece
@@ -53,7 +53,7 @@ class ChessPieceValidator:
                 ChessPiecePromotableValidationFailed(test_report.validation_exception.message))
 
         testing_payload = test_report.payload
-        if testing_payload.rank_tag.rank not in [KingMotionController, Pawn]:
+        if testing_payload.rank_tag.rank not in [KingMotionController, PawnMotionController]:
             return ValidationResult.send_failed_valtidation_report(
                 ChessPiecePromotableValidationFailed("ChessPiece not king or pawn. failed promotable validation test")
             )
