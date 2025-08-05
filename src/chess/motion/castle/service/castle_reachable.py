@@ -1,7 +1,7 @@
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.horizontal import Horizontal
-from chess.geometry.vertical import Vertical
+from chess.geometry.line.horizontal import Horizontal
+from chess.geometry.line.vertical import Vertical
 from chess.motion.abstract.reachable import Reachable
 
 

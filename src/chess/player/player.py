@@ -3,7 +3,7 @@ from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.quadrant import Quadrant
+from chess.geometry.line.quadrant import Quadrant
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece

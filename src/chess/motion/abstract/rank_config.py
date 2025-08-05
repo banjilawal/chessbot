@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List, TYPE_CHECKING
 
-from chess.geometry.quadrant import Quadrant
+from chess.geometry.line.quadrant import Quadrant
 
 from chess.motion.bishop.service.bishop_motion_service import BishopMotionService
 from chess.motion.castle.service.castle_motion_service import CastleMotionService

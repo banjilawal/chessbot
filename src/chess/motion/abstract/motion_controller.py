@@ -2,7 +2,7 @@ from abc import ABC
 from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.quadrant import Quadrant
+from chess.geometry.line.quadrant import Quadrant
 from chess.motion.abstract.motion_service import MotionService
 from chess.team.model.piece import ChessPiece
 

@@ -1,6 +1,6 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.castle.service.castle_reachable import CastleReachable
-from chess.geometry.diagonal import Diagonal
+from chess.geometry.line.diagonal import Diagonal
 from chess.motion.abstract.reachable import Reachable
 
 class QueenReachable(Reachable):

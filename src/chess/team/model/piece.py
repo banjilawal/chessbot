@@ -24,6 +24,7 @@ class ChessPiece:
     _id: int
     _name: str
     _team: 'Team'
+    _captor: 'ChessPiece'
     _motion_controller: 'MotionController'
     _coordinate_stack: CoordinateStack
     _status: MobilityStatus
@@ -36,11 +37,11 @@ class ChessPiece:
         if motion_controller is None:
             raise ValueError("Cannot create a chess_piece with an null abstract.")
 
-        self._id = chess_piece_id
         self._team = team
-        self._motion_controller = motion_controller
         self._name = name
+        self._id = chess_piece_id
         self._status = MobilityStatus.FREE
+        self._motion_controller = motion_controller
         self._coordinate_stack = CoordinateStack()
         team.chess_pieces.append(self)
 
@@ -48,6 +49,7 @@ class ChessPiece:
     @property
     def id(self) -> int:
         return self._id
+
 
     @property
     def name(self) -> str:
@@ -65,6 +67,11 @@ class ChessPiece:
 
 
     @property
+    def captor(self) -> 'ChessPiece':
+        return self._captor
+
+
+    @property
     def status(self) -> MobilityStatus:
         return self._status
 
@@ -78,6 +85,13 @@ class ChessPiece:
     def status(self, status: MobilityStatus):
         if self._status != status:
             self._status = status
+
+
+    @status.setter
+    def captor(self, captor: 'ChessPiece'):
+        self._captor = captor
+
+
 
     def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate):
         return self._motion_controller.delegate_move_excution(piece=self, board=chess_board, destination=destination)

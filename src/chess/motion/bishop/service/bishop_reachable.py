@@ -1,5 +1,5 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.diagonal import Diagonal
+from chess.geometry.line.diagonal import Diagonal
 from chess.motion.abstract.reachable import Reachable
 
 

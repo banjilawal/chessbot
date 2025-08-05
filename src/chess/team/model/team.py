@@ -1,7 +1,7 @@
 from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
-from chess.geometry.quadrant import Quadrant
+from chess.geometry.line.quadrant import Quadrant
 from chess.team.model.play_order import PlayOrder
 
 if TYPE_CHECKING:
@@ -96,6 +96,20 @@ class Team:
 
     def __hash__(self):
         return hash(self.id)
+
+
+    def find_chess_piece(self, piece_id: int):
+        for piece in self._chess_pieces:
+            if piece.id == piece_id:
+                return piece
+        return None
+
+
+    def find_chess_piece_name(self, name):
+        for piece in self._chess_pieces:
+            if name.upper() == piece.name.upper():
+                return piece
+        return None
 
 
     def __str__(self):
