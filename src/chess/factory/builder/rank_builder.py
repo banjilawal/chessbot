@@ -1,10 +1,10 @@
-from chess.motion.bishop.bishop import Bishop
+from chess.motion.bishop.bishop_motion_controller import BishopMotionController
 from chess.motion.castle.castle_motion_controller import CastleMotionController
 from chess.motion.king.king_motion_controller import KingMotionController
 from chess.motion.knight.knight_motion_controller import KnightMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
-from chess.motion.queen.queen_motion_controller import Queen
 from chess.motion.abstract.rank_config import RankConfig
+from chess.motion.queen.queen_motion_controller import QueenMotionController
 
 
 class RankBuilder:
@@ -37,7 +37,7 @@ class RankBuilder:
                 capture_value=config.capture_value,
             )
         if config is RankConfig.BISHOP:
-            return Bishop(
+            return BishopMotionController(
                 name=config.name,
                 letter=config.letter,
                 number_per_player=config.number_per_player,
@@ -53,7 +53,7 @@ class RankBuilder:
                 capture_value=config.capture_value,
             )
         if config is RankConfig.QUEEN:
-            return Queen(
+            return QueenMotionController(
                 name=config.name,
                 letter=config.letter,
                 number_per_player=config.number_per_player,

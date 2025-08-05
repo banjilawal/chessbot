@@ -2,12 +2,12 @@ from typing import TYPE_CHECKING
 
 from assurance.validation.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
-from chess.piece.mobility_status import MobilityStatus
+from chess.team.model.mobility_status import MobilityStatus
 from chess.motion.king.king_motion_controller import KingMotionController
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 
 if TYPE_CHECKING:
-    from chess.piece.piece import ChessPiece
+    from chess.team.model.piece import ChessPiece
 
 class ChessPieceNotNullValidationFailed(ValidationException):
     default_message = "ChessPiece failed not null validation test"

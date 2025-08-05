@@ -1,10 +1,10 @@
 from typing import Optional, TYPE_CHECKING
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.square.model.occupation_status import OccupationStatus
-from chess.piece.mobility_status import MobilityStatus
+from chess.team.model.mobility_status import MobilityStatus
 
 if TYPE_CHECKING:
-    from chess.piece.piece import ChessPiece
+    from chess.team.model.piece import ChessPiece
 
 
 class Square:

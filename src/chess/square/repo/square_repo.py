@@ -2,7 +2,7 @@ from typing import List, Optional
 
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 from chess.square.model.square import Square
 from chess.square.repo.iterator import SquareIterator
 

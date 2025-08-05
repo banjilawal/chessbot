@@ -2,12 +2,13 @@ from chess.factory.builder.rank_builder import RankBuilder
 from chess.factory.builder.team_builder import TeamBuilder
 from chess.factory.emit import id_emitter
 
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 from chess.motion.abstract.motion_controller import MotionController
 
 from chess.motion.abstract.rank_config import RankConfig
-from chess.team.team import Team
-from chess.team.team_config import TeamConfig
+from chess.config.team_config import TeamConfig
+from chess.team.model.team import Team
+
 
 # if TYPE_CHECKING:
 #     from chess.abstract.abstract import MotionController

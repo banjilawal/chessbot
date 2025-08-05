@@ -1,12 +1,11 @@
-from multiprocessing.process import parent_process
-from typing import Optional, List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.team.play_order import PlayOrder
+from chess.team.model.play_order import PlayOrder
 
 if TYPE_CHECKING:
-    from chess.piece.piece import ChessPiece
+    from chess.team.model.piece import ChessPiece
 
 class Team:
     _id: int
@@ -113,10 +112,10 @@ class Team:
     # @staticmethod
     # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, chess_board: ChessBoard):
     #    if chess_piece is None:
-    #        print("Bishop is None")
+    #        print("BishopMotionController is None")
     #        return None
     #    if chess_piece.current_position() is None:
-    #        print("Bishop current position is None.")
+    #        print("BishopMotionController current position is None.")
     #
     #        return None
     #    if chess_board is None:

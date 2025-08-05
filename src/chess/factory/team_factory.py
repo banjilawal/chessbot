@@ -7,8 +7,8 @@ from chess.factory.emit import id_emitter
 from chess.factory.placement_chart import PlacementChart
 from chess.factory.rank_factory import RankFactory
 from chess.square.repo.square_repo import SquareRepo
-from chess.team.team import Team
-from chess.team.team_config import TeamConfig
+from chess.config.team_config import TeamConfig
+from chess.team.model.team import Team
 
 
 class TeamFactory:

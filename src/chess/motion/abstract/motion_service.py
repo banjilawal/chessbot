@@ -9,7 +9,7 @@ from chess.motion.abstract.search_pattern import SearchPattern
 
 
 if TYPE_CHECKING:
-    from chess.piece.piece import ChessPiece
+    from chess.team.model.piece import ChessPiece
     from chess.geometry.board.board import ChessBoard
 
 

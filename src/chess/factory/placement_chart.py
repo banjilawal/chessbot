@@ -1,8 +1,8 @@
 from enum import Enum
 from typing import Optional
 
-from chess.piece.piece import ChessPiece
-from chess.team.team_config import TeamConfig
+from chess.team.model.piece import ChessPiece
+from chess.config.team_config import TeamConfig
 from chess.motion.abstract.rank_config import RankConfig
 
 

@@ -3,7 +3,7 @@ from typing import Optional, List, Dict
 from chess.common.game_color import GameColor
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.piece.label import Label
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 from chess.player.player import Player
 
 

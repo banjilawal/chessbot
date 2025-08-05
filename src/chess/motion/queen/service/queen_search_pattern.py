@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.bishop.service.bishop_search_pattern import BishopSearchPattern
 from chess.motion.castle.service.castle_search_pattern import CastleSearchPattern
 from chess.motion.abstract.search_pattern import SearchPattern
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 
 
 class QueenSearchPattern(SearchPattern):

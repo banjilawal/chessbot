@@ -5,7 +5,7 @@ from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.motion_service import MotionService
 
 if TYPE_CHECKING:
-    from chess.piece.piece import ChessPiece
+    from chess.team.model.piece import ChessPiece
     from chess.motion.abstract.motion_controller import MotionController
 
 class PromotableRank:

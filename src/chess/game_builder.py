@@ -8,7 +8,7 @@ from chess.factory.old.piece_factory import PieceFactory
 
 
 from chess.geometry.board import ChessBoard
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 from chess.player.player import Player
 from chess.motion.abstract.motion_controller import MotionController
 

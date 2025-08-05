@@ -1,8 +1,6 @@
 from chess.factory.emit import id_emitter
-from chess.factory.rank_factory import RankFactory
-from chess.team import team_config
-from chess.team.team import Team
-from chess.team.team_config import TeamConfig
+from chess.config.team_config import TeamConfig
+from chess.team.model.team import Team
 
 
 class TeamBuilder:

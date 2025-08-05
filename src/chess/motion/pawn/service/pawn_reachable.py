@@ -3,7 +3,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.diagonal import Diagonal
 from chess.geometry.vertical import Vertical
 from chess.motion.abstract.reachable import Reachable
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 
 

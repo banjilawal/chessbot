@@ -49,7 +49,7 @@ class RankConfig(Enum):
     )
 
     BISHOP = (
-        "Bishop", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW], BishopMotionService()
+        "BishopMotionController", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW], BishopMotionService()
     )
 
     CASTLE = (

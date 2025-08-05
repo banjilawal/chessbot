@@ -1,12 +1,12 @@
-from abc import abstractmethod, ABC
-from typing import Optional, List, TYPE_CHECKING
+from abc import ABC
+from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 
 if TYPE_CHECKING:
-    from chess.piece.piece import ChessPiece
+    from chess.team.model.piece import ChessPiece
 
 class Player(ABC):
     _id: int
@@ -64,10 +64,10 @@ class Player(ABC):
     # @staticmethod
     # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, chess_board: ChessBoard):
     #    if chess_piece is None:
-    #        print("Bishop is None")
+    #        print("BishopMotionController is None")
     #        return None
     #    if chess_piece.current_position() is None:
-    #        print("Bishop current position is None.")
+    #        print("BishopMotionController current position is None.")
     #
     #        return None
     #    if chess_board is None:

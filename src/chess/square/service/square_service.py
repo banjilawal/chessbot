@@ -2,7 +2,7 @@ from typing import List
 
 from assurance.transaction_report import TransactionReport
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 from chess.square.model.square import Square
 from chess.square.repo.square_repo import SquareRepo
 

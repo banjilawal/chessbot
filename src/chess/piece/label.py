@@ -4,7 +4,7 @@ from chess.player.player import Player
 
 
 if TYPE_CHECKING:
-    from chess.piece.piece import RankTag
+    from chess.team.model.piece import RankTag
 
 
 class Label:

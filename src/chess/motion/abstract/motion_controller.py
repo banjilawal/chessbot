@@ -4,7 +4,7 @@ from typing import List
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.motion_service import MotionService
-from chess.piece.piece import ChessPiece
+from chess.team.model.piece import ChessPiece
 
 
 class MotionController(ABC):
@@ -101,10 +101,10 @@ class MotionController(ABC):
     def explore(self, piece: ChessPiece, board: 'ChessBoard') -> List['Coordinate']:
         """Find all possible moves for a bishop chess_piece."""
         if piece is None:
-            raise ValueError("Bishop cannot explore without a chess_piece.")
+            raise ValueError("BishopMotionController cannot explore without a chess_piece.")
 
         if board is None:
-            raise ValueError("Bishop cannot explore without a chess_board.")
+            raise ValueError("BishopMotionController cannot explore without a chess_board.")
 
         return self.motion_service.explore(piece, board)
 
