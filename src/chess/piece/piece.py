@@ -40,6 +40,7 @@ class ChessPiece:
         self._name = name
         self._status = MobilityStatus.FREE
         self._coordinate_stack: List[Coordinate] = []
+        team.chess_pieces.append(self)
 
 
     @property

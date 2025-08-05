@@ -2,15 +2,14 @@ from enum import Enum
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.player.player_order import PlayerOrder
-from chess.rank.rank_config import RankConfig
+from chess.team.play_order import PlayOrder
 
 
 class TeamConfig(Enum):
     def __new__(
         cls,
         letter: str,
-        player_order: PlayerOrder,
+        player_order: PlayOrder,
         game_color: GameColor,
         back_row_index: int,
         pawn_row_index: int,

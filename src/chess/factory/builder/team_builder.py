@@ -1,4 +1,5 @@
 from chess.factory.emit import id_emitter
+from chess.factory.rank_factory import RankFactory
 from chess.team import team_config
 from chess.team.team import Team
 from chess.team.team_config import TeamConfig
@@ -7,8 +8,8 @@ from chess.team.team_config import TeamConfig
 class TeamBuilder:
 
     @staticmethod
-    def build(team_id:int, config: TeamConfig) -> Team:
-       return Team(
+    def build(team_id:int, config: TeamConfig, rank_factory: RankFactory) -> Team:
+       team = Team(
            team_id=team_id,
            letter=config.letter,
            team_order=config.player_order,
@@ -17,6 +18,8 @@ class TeamBuilder:
            pawn_row_index=config.pawn_rank_index,
            home_quadrant=config.quadrant
        )
+
+
 
 
 def main():
