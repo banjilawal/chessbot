@@ -1,5 +1,5 @@
 
-from chess.system_config import ROW_SIZE, COLUMN_SIZE
+from chess.common.system_config import ROW_SIZE, COLUMN_SIZE
 
 
 

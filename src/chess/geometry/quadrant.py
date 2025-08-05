@@ -3,7 +3,7 @@ from chess.geometry.coordinate.coordinate import Delta
 from enum import Enum
 from typing import Optional
 
-from chess.system_config import BOARD_DIMENSION
+from chess.common.system_config import BOARD_DIMENSION
 
 
 class Quadrant(Enum):

@@ -6,7 +6,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.bishop.service.bishop_reachable import BishopReachable
 from chess.motion.abstract.search_pattern import SearchPattern
 from chess.team.model.piece import ChessPiece
-from chess.system_config import ROW_SIZE, COLUMN_SIZE
+from chess.common.system_config import ROW_SIZE, COLUMN_SIZE
 
 
 class BishopSearchPattern(SearchPattern):

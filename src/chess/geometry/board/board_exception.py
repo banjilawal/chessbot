@@ -1,5 +1,5 @@
 from chess.common.exceptions import ChessException
-from chess.system_config import ROW_SIZE, COLUMN_SIZE
+from chess.common.system_config import ROW_SIZE, COLUMN_SIZE
 
 class BoardException(ChessException):
     default_message = "An error occurred in the ChessBoard."
