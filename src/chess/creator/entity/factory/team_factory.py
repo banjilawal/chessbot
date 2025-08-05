@@ -42,31 +42,31 @@ class TeamFactory:
 
 
 
-
-def main():
-    teams = TeamFactory.assemble()
-    for team in teams:
-        print(team)
-
-    square_service = SquareServiceBuilder.assemble()
-
-    for team in teams:
-        for chess_piece in team.chess_pieces:
-
-            for placement in PlacementChart:
-                square_name = placement.map_chess_piece_to_square_name(chess_piece)
-                if square_name is not None:
-                    square = square_service.find_square_by_name(square_name)
-                    square.occupy(chess_piece)
-                    print(square)
-    print(repo)
-                    # print(square.name, " occupied by", square.occupant.name)
-                # print(placement.value[0])
-                # placement.map_chess_piece_to_square_name(chess_piece)
-                # print("comparing", placement.chess_piece_name.capitalize(), " with", chess_piece.name.capitalize())
-                # chess_piece.name.capitalize() == placement.value[0].capitalize():
-
-       # print(f"matched square:{placement.square_name} with {chess_piece.name}")`````````
-
-if __name__ == "__main__":
-    main()
+#
+# def main():
+#     teams = TeamFactory.assemble()
+#     for team in teams:
+#         print(team)
+#
+#     square_service = SquareServiceBuilder.assemble()
+#
+#     for team in teams:
+#         for chess_piece in team.chess_pieces:
+#
+#             for placement in PlacementChart:
+#                 square_name = placement.map_chess_piece_to_square_name(chess_piece)
+#                 if square_name is not None:
+#                     square = square_service.find_square_by_name(square_name)
+#                     square.occupy(chess_piece)
+#                     print(square)
+#     print(repo)
+#                     # print(square.name, " occupied by", square.occupant.name)
+#                 # print(placement.value[0])
+#                 # placement.map_chess_piece_to_square_name(chess_piece)
+#                 # print("comparing", placement.chess_piece_name.capitalize(), " with", chess_piece.name.capitalize())
+#                 # chess_piece.name.capitalize() == placement.value[0].capitalize():
+#
+#        # print(f"matched square:{placement.square_name} with {chess_piece.name}")`````````
+#
+# if __name__ == "__main__":
+#     main()

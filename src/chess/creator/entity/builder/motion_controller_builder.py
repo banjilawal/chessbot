@@ -62,12 +62,12 @@ class MotionControllerBuilder:
             )
         raise ValueError(f"Invalid rank config: {config}")
 
-
-
-def main():
-    rank = MotionControllerBuilder.build(RankConfig.PAWN)
-    print(rank)
-
-
-if __name__ == "__main__":
-    main()
+#
+#
+# def main():
+#     rank = MotionControllerBuilder.build(RankConfig.PAWN)
+#     print(rank)
+#
+#
+# if __name__ == "__main__":
+#     main()

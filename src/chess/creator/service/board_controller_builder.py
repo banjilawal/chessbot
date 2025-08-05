@@ -45,30 +45,30 @@ class BoardControllerBuilder:
         #             )
         #             # print(chess_piece)
         # return teams
+    #
+    # @staticmethod
+    # def place_teams(team_service: TeamService, square_service: SquareService):
+    #
+    #     for chess_piece in team_service.chess_pieces():
+    #         for placement in PlacementChart:
+    #             square_name = placement.map_chess_piece_to_square_name(chess_piece)
+    #             if square_name is not None:
+    #                 square = square_service.find_square_by_name(square_name)
+    #                 square.occupy(chess_piece)
+    #                 print(square)
 
-    @staticmethod
-    def place_teams(team_service: TeamService, square_service: SquareService):
-
-        for chess_piece in team_service.chess_pieces():
-            for placement in PlacementChart:
-                square_name = placement.map_chess_piece_to_square_name(chess_piece)
-                if square_name is not None:
-                    square = square_service.find_square_by_name(square_name)
-                    square.occupy(chess_piece)
-                    print(square)
-
-
-
-
-
-
-def main():
-    square_service = SquareServiceBuilder.assemble()
-    team_service = TeamServiceBuilder.assemble()
-    board_controller = BoardControllerBuilder.build(team_service, square_service)
-
-    print(board_controller.square_service.squares_to_string())
-
-
-if __name__ == "__main__":
-    main()
+#
+#
+#
+#
+#
+# def main():
+#     square_service = SquareServiceBuilder.assemble()
+#     team_service = TeamServiceBuilder.assemble()
+#     board_controller = BoardControllerBuilder.build(team_service, square_service)
+#
+#     print(board_controller.square_service.squares_to_string())
+#
+#
+# if __name__ == "__main__":
+#     main()

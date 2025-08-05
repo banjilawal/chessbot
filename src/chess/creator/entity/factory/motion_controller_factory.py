@@ -9,16 +9,16 @@ class MotionControllerFactory:
 
     @staticmethod
     def  assemble() -> List[MotionController]:
-        ranks: List[MotionController] = []
+        motion_controllers: List[MotionController] = []
 
         for rank_config in RankConfig:
-            ranks.append(MotionControllerBuilder.build(rank_config))
-        return ranks
+            motion_controllers.append(MotionControllerBuilder.build(rank_config))
+        return motion_controllers
 
-def main():
-    ranks = MotionControllerFactory.assemble()
-    for rank in ranks:
-        print(rank)
-
-if __name__ == "__main__":
-    main()
+# def main():
+#     ranks = MotionControllerFactory.assemble()
+#     for rank in ranks:
+#         print(rank)
+#
+# if __name__ == "__main__":
+#     main()

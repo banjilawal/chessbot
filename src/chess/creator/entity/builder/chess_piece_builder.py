@@ -24,13 +24,13 @@ class ChessPieceBuilder:
             motion_controller=motion_controller,
             team=team
         )
-
-
-def main():
-    rank = MotionControllerBuilder.build(RankConfig.BISHOP)
-    team = TeamBuilder.build(TeamConfig.WHITE)
-    chess_piece = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, motion_controller=rank, team=team)
-    print(chess_piece)
-
-if __name__ == "__main__":
-    main()
+#
+#
+# def main():
+#     rank = MotionControllerBuilder.build(RankConfig.BISHOP)
+#     team = TeamBuilder.build(TeamConfig.WHITE)
+#     chess_piece = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, motion_controller=rank, team=team)
+#     print(chess_piece)
+#
+# if __name__ == "__main__":
+#     main()

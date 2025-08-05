@@ -32,17 +32,17 @@ class SquareServiceBuilder:
             grid.append(row_squares)
         return SquareRepo(grid)
 
-
-
-
-def main():
-
-    service = SquareServiceBuilder.assemble_service()
-    print(service.square_repo)
-
-
-
-
-
-if __name__ == "__main__":
-    main()
+#
+#
+#
+# def main():
+#
+#     service = SquareServiceBuilder.assemble()
+#     print(service.squares_to_string())
+#
+#
+#
+#
+#
+# if __name__ == "__main__":
+#     main()
