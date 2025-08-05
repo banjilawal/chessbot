@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from assurance.validation.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.piece.mobility_status import MobilityStatus
-from chess.rank.king import King
+from chess.motion.king.king_motion_controller import KingMotionController
 from chess.rank.pawn import Pawn
 
 if TYPE_CHECKING:
@@ -53,7 +53,7 @@ class ChessPieceValidator:
                 ChessPiecePromotableValidationFailed(test_report.validation_exception.message))
 
         testing_payload = test_report.payload
-        if testing_payload.rank_tag.rank not in [King, Pawn]:
+        if testing_payload.rank_tag.rank not in [KingMotionController, Pawn]:
             return ValidationResult.send_failed_valtidation_report(
                 ChessPiecePromotableValidationFailed("ChessPiece not king or pawn. failed promotable validation test")
             )

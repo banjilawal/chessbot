@@ -1,10 +1,9 @@
 from chess.rank.bishop import Bishop
 from chess.rank.castle import Castle
-from chess.rank.king import King
+from chess.motion.king.king_motion_controller import KingMotionController
 from chess.rank.knight import Knight
 from chess.rank.pawn import Pawn
 from chess.rank.queen import Queen
-from chess.rank.rank import Rank
 from chess.rank.rank_config import RankConfig
 
 
@@ -14,7 +13,7 @@ class RankBuilder:
     def build(config: RankConfig):
 
         if config is RankConfig.KING:
-            return King(
+            return KingMotionController(
                 name=config.name,
                 letter=config.letter,
                 number_per_player=config.number_per_player,

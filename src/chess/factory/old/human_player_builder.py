@@ -49,7 +49,7 @@ class HumanPlayerBuilder:
             piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=pawn_rank)
             piece.player = player
 
-        # Create 1 King
+        # Create 1 KingMotionController
         king_rank = RankFactoryAntiPattern.build_rank(RankConfig.KING)
         piece = ChessPiece(chess_piece_id=id_emitter.chess_piece_id, rank=king_rank)
         piece.player = player

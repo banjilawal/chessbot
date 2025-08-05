@@ -2,7 +2,7 @@ from typing import List
 
 from chess.rank.rank_config import RankConfig
 from chess.rank.bishop import Bishop
-from chess.rank.king import King
+from chess.motion.king.king_motion_controller import KingMotionController
 from chess.rank.knight import Knight
 from chess.rank.pawn import Pawn
 from chess.rank.queen import Queen
@@ -22,7 +22,7 @@ class RankFactoryAntiPattern:
     @staticmethod
     def build_rank(config: RankConfig) -> Rank:
         if config == RankConfig.KING:
-            return King(
+            return KingMotionController(
                 name=config.name,
                 letter=config.letter,
                 # motion_service=KingMotionService,

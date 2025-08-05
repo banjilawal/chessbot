@@ -5,7 +5,7 @@ from chess.geometry.quadrant import Quadrant
 
 from chess.motion.service.bishop_motion_service import BishopMotionService
 from chess.motion.service.castle_motion_service import CastleMotionService
-from chess.motion.service.king_motion_service import KingMotionService
+from chess.motion.king.service.king_motion_service import KingMotionService
 from chess.motion.service.knight_motion_service import KnightMotionService
 from chess.motion.service.pawn_motion_service import PawnMotionService
 from chess.motion.service.queen_motion_service import QueenMotionService
@@ -34,7 +34,7 @@ class RankConfig(Enum):
         return obj
 
     KING =(
-        "King", "K", 1, 0,
+        "KingMotionController", "K", 1, 0,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW],
         KingMotionService()
     )
