@@ -25,7 +25,7 @@ class ChessPieceBuilder:
         return ChessPiece(
             chess_piece_id=chess_piece_id,
             name=name,
-            rank=MotionController,
+            motion_controller=MotionController,
             team=team
         )
 

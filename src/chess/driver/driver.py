@@ -26,7 +26,7 @@ def main():
 
     pieces = PieceFactory.run_factory(ranks)
     for piece in pieces:
-        if isinstance(piece.rank, Bishop):
+        if isinstance(piece.motion_controller, Bishop):
             print(piece)
             print()
 

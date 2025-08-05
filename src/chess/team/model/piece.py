@@ -24,21 +24,21 @@ class ChessPiece:
     _id: int
     _name: str
     _team: 'Team'
-    _rank: 'MotionController'
+    _motion_controller: 'MotionController'
     _coordinate_stack: CoordinateStack
     _status: MobilityStatus
 
-    def __init__(self, chess_piece_id: int, name: str, rank: 'MotionController', team: 'Team'):
+    def __init__(self, chess_piece_id: int, name: str, motion_controller: 'MotionController', team: 'Team'):
         if not chess_piece_id:
             raise ValueError("Cannot create a chess_piece with an empty id.")
         if chess_piece_id < 0:
             raise ValueError("Cannot create a chess_piece with a negative id.")
-        if rank is None:
+        if motion_controller is None:
             raise ValueError("Cannot create a chess_piece with an null abstract.")
 
         self._id = chess_piece_id
         self._team = team
-        self._rank = rank
+        self._motion_controller = motion_controller
         self._name = name
         self._status = MobilityStatus.FREE
         self._coordinate_stack = CoordinateStack()
@@ -60,8 +60,8 @@ class ChessPiece:
 
 
     @property
-    def rank(self) -> 'MotionController':
-        return self._rank
+    def motion_controller(self) -> 'MotionController':
+        return self._motion_controller
 
 
     @property
@@ -80,13 +80,13 @@ class ChessPiece:
             self._status = status
 
     def forward_move_request(self, chess_board: 'ChessBoard', destination: Coordinate):
-        return self._rank.delegate_move_excution(piece=self, board=chess_board, destination=destination)
+        return self._motion_controller.delegate_move_excution(piece=self, board=chess_board, destination=destination)
 
 
     def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
 
         print(f"Everything is fine with {self._name} calling MotionController.explore for the list")
-        return self._rank.explore(self, board)
+        return self._motion_controller.explore(self, board)
 
 
     def __eq__(self, other):
@@ -97,12 +97,12 @@ class ChessPiece:
         if not isinstance(other, ChessPiece):
             return False
         if isinstance(other, ChessPiece):
-            return  self._id == other.id and self._rank == other.rank
+            return  self._id == other.id and self._motion_controller == other.motion_controller
         return False
 
 
     def __hash__(self):
-        return hash((self.id, self.rank))
+        return hash((self.id, self.motion_controller))
 
     def __str__(self):
         return f"{self._id} {self._name} {self._status.name} stack_size:{self._coordinate_stack} + current:{self._coordinate_stack.current_coordinate()}"

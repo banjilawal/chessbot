@@ -37,7 +37,7 @@ class PawnReachable(Reachable):
         if pawn is None:
             return False
 
-        if not isinstance(pawn.rank, PawnMotionController):
+        if not isinstance(pawn.motion_controller, PawnMotionController):
             return False
 
         origin = pawn.current_coordinate()
@@ -62,7 +62,7 @@ class PawnReachable(Reachable):
         if pawn is None or board is None:
             return False
 
-        if not isinstance(pawn.rank, PawnMotionController):
+        if not isinstance(pawn.motion_controller, PawnMotionController):
             return False
 
         origin = pawn.current_coordinate()
