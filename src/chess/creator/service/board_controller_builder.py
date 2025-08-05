@@ -14,7 +14,10 @@ from chess.team.team_service import TeamService
 class BoardControllerBuilder:
 
     @staticmethod
-    def build(team_service: TeamService, square_service: SquareService) -> BoardController:
+    def build() -> BoardController:
+
+        team_service = TeamServiceBuilder.assemble()
+        square_service = SquareServiceBuilder.assemble()
 
         board_controller = BoardController(team_service=team_service, square_service=square_service)
 
