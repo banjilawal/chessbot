@@ -1,10 +1,26 @@
 from chess.creator.service.board_controller_builder import BoardControllerBuilder
+from chess.field import board_controller
+from chess.geometry.coordinate.coordinate import Coordinate
 
 
 def main():
 
-     board_controller = BoardControllerBuilder.build()
-     board_controller.square_service.squares_to_string()
+     board = BoardControllerBuilder.build()
+     square = board.square_service.find_square_by_id(58)
+     print("searched by id", square)
+
+     square = board.square_service.find_square_by_coordinate(Coordinate(1, 1))
+     print("searched by coordinate", square)
+
+     square = board.square_service.find_square_by_name("b2")
+     print("searched by name:", square)
+
+     for s in board.square_service.occupied_squares():
+         print(s.__str__())
+     # for s in board_controller.square_service.squares():
+     #     print(square.__str__(), "\n")
+
+
 
 
 if __name__ == "__main__":

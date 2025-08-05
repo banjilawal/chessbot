@@ -23,7 +23,7 @@ class SquareService:
     def occupied_squares(self) -> List[Square]:
         return self._repo.occupied_squares()
 
-    def find_square(self, coordinate: Coordinate) -> Optional[Square]:
+    def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
         return self._repo.find_square_by_coordinate(coordinate)
 
 

@@ -75,22 +75,6 @@ class Square:
         self._occupant = None
         self._status = OccupationStatus.IS_VACANT
 
-
-    #
-    # @occupant.setter
-    # def occupant(self, chess_piece: Optional['ChessPiece']):
-    #     print(f"{chess_piece} wants to be my new occupant. Currently {self._occupant} is resident.")
-    #
-    #     current_occupant = self._occupant
-    #
-    #     if current_occupant is None:
-    #         self._handle_occupation(self, OccupationStatus.IS_VACANT, chess_piece)
-    #     if chess_piece.is_enemy(current_occupant):
-    #         self._handle_occupation(self, OccupationStatus.HAS_ENEMY, chess_piece)
-    #     print(f"{self._coordinate} is occupied by friendly {current_occupant.name}")
-
-
-
     def __eq__(self, other):
         if other is self:
             return True
@@ -100,15 +84,24 @@ class Square:
             return False
         return self._id == other.id
 
-
     def __hash__(self):
         return hash(self.id)
 
-    def __str__(self):
-        if self._occupant is None:
-            return f"model {self._id} {self.name} is empty"
-        return f"model {self._id} {self.name} is occupied by {self._occupant.name}"
+    def __str__(self) -> str:
+        # if self._occupant is None:
+        occupant_str = f"occupant:{self._occupant.name}" if self._occupant else "vacant"
+        return f"Square[id:{self._id} name:{self.name} {occupant_str} {self._coordinate}]"
+        # return f"model {self._id} {self.name} is occupied by {self._occupant.name}"
 
+    def __repr__(self) -> str:
+        """
+        Provides an unambiguous string representation, useful for debugging.
+        This method is crucial for how objects appear when printed as part of a list.
+        """
+        occupant_repr = repr(self._occupant) if self._occupant else "None"
+        return (f"Square(id={self._id}, name='{self._name}', "
+                f"coordinate={repr(self._coordinate)}, "
+                f"status={self._status.name}, occupant={occupant_repr})")
 
     def _handle_occupation(self, occupation_status: OccupationStatus, chess_piece: 'ChessPiece'):
         method = "Square._handle_occupation"
@@ -126,5 +119,27 @@ class Square:
         #     f"{self._coordinate} is occupied by friendly {self._occupant.name} status:{self._status} "
         #     f"stack_size:{self._occupant.coordinate_stack.size()}"
         # )
+    #
+    # @occupant.setter
+    # def occupant(self, chess_piece: Optional['ChessPiece']):
+    #     print(f"{chess_piece} wants to be my new occupant. Currently {self._occupant} is resident.")
+    #
+    #     current_occupant = self._occupant
+    #
+    #     if current_occupant is None:
+    #         self._handle_occupation(self, OccupationStatus.IS_VACANT, chess_piece)
+    #     if chess_piece.is_enemy(current_occupant):
+    #         self._handle_occupation(self, OccupationStatus.HAS_ENEMY, chess_piece)
+    #     print(f"{self._coordinate} is occupied by friendly {current_occupant.name}")
+
+
+
+
+
+
+
+
+
+
 
 

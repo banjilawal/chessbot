@@ -84,7 +84,7 @@ class SquareRepo:
         """
         for row in self._squares:
             for square in row:
-                if square.name == name:
+                if square.name.upper() == name.upper():
                     return square
         return None
 

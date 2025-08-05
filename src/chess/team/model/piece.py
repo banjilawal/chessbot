@@ -119,7 +119,10 @@ class ChessPiece:
         return hash((self.id, self.motion_controller))
 
     def __str__(self):
-        return f"{self._id} {self._name} {self._status.name} stack_size:{self._coordinate_stack} + current:{self._coordinate_stack.current_coordinate()}"
+        location_str = f"current_coord:{self._coordinate_stack.current_coordinate()}"
+        if self._status == MobilityStatus.PRISONER:
+            location_str = f"prisoner"
+        return f"ChessPiece[id:{self._id} name:{self._name} status:{self._status.name} {location_str}]"
 
     def is_enemy(self, chess_piece: 'ChessPiece'):
         if chess_piece is None:
