@@ -1,16 +1,17 @@
 from typing import Optional, List, Dict
 
-from chess.common.game_color import GameColor
+
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.piece.label import Label
+
 from chess.team.model.piece import ChessPiece
-from chess.owner.player import Player
+from chess.owner.owner import Owner
+from chess.team.model.team import Team
 
 
-class MachinePlayer(Player):
+class CyberneticOwner(Owner):
 
-    def __init__(self, player_id: int, name: str, color: GameColor):
-        super().__init__(player_id, name, color)
+    def __init__(self, owner_id: int, name: str, team: Optional[Team] = None):
+        super().__init__(owner_id, name, team)
 
 
     def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard'):

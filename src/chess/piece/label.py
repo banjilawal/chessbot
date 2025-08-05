@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from chess.owner.player import Player
+from chess.owner.owner import Player
 
 
 if TYPE_CHECKING:

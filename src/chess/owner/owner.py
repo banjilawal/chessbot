@@ -1,27 +1,19 @@
 from abc import ABC
-from typing import List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING, Optional
+from chess.team.model.team import Team
 
-from chess.common.game_color import GameColor
-from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.line.quadrant import Quadrant
+# if TYPE_CHECKING:
 
-if TYPE_CHECKING:
-    from chess.team.model.piece import ChessPiece
 
-class Player(ABC):
+class Owner(ABC):
     _id: int
     _name: str
-    _color: GameColor
-    _captives: List['ChessPiece']
-    _home_quadrant: Quadrant
-    _chess_pieces: List['ChessPiece']
+    _team: Team
 
-    def __init__(self, player_id: int, name: str, color: GameColor):
-        self._id = player_id
+    def __init__(self, owner_id: int, name: str, team: Optional[Team] = None):
+        self._id = owner_id
         self._name = name
-        self._color = color
-        self._captives = []
-        self._chess_pieces = []
+        self._team = team
 
 
     @property
@@ -35,27 +27,31 @@ class Player(ABC):
 
 
     @property
-    def color(self) -> GameColor:
-        return self._color
+    def team(self) -> Team:
+        return self._team
+
+    @team.setter
+    def team(self, team: Team):
+        self._team = team
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, Owner):
+            return False
+        return self.id == other.id and self.name == other.name
 
 
-    @property
-    def captives(self) -> List['ChessPiece']:
-        return self._captives
+
+    def __str__(self):
+        return f"Player[{self._id} {self._name} {self._team}]"
 
 
-    @property
-    def chess_pieces(self) -> List['ChessPiece']:
-        return self._chess_pieces
 
-
-    @property
-    def home_quadrant(self) -> Quadrant:
-        return self._home_quadrant
-
-
-    def move_chess_piece(self, chess_piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard'):
-        chess_piece.forward_move_request(board, destination)
+    # def move_chess_piece(self, chess_piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard'):
+    #     chess_piece.forward_move_request(board, destination)
 
 
 
