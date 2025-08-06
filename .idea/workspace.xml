@@ -6,26 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/square_repo_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/square_repo_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/factory/team_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/factory/team_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/creator/service/board_controller_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/service/board_controller_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/creator/service/square_service_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/service/square_service_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/driver/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/driver/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/field/board_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/field/board_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/board/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/model/occupation_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/model/occupation_status.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/model/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/model/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/model/square_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/model/square_exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/model/square_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/model/square_pkg_info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/repo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/repo/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/repo/square_iterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/repo/square_iterator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/repo/square_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/repo/square_repo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/square_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/grid/service/grid_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/model/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/model/piece.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +269,7 @@
       <workItem from="1753986943709" duration="107410000" />
       <workItem from="1754330871077" duration="28118000" />
       <workItem from="1754365775191" duration="26399000" />
-      <workItem from="1754407776490" duration="25597000" />
+      <workItem from="1754407776490" duration="26537000" />
     </task>
     <servers />
   </component>
