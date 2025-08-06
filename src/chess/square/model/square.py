@@ -90,7 +90,7 @@ class Square:
     def __str__(self) -> str:
         # if self._occupant is None:
         occupant_str = f"occupant:{self._occupant.name}" if self._occupant else "vacant"
-        return f"Square[id:{self._id} name:{self.name} {occupant_str} {self._coordinate}]"
+        return f"Square[id:{self._id} name:{self.name} coordinate:{self._coordinate} {occupant_str}]"
         # return f"model {self._id} {self.name} is occupied by {self._occupant.name}"
 
     def __repr__(self) -> str:

@@ -4,12 +4,12 @@ from typing import List, Optional
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.team.model.piece import ChessPiece
 from chess.square.model.square import Square
-from chess.square.repo.iterator import SquareIterator
+from chess.square.repo.square_iterator import SquareIterator
 
 
 class SquareRepo:
     """
-    A repository for managing all the squares on the chess board.
+    A repository for managing all the squares on the chess square_service.
     It provides methods for finding squares and iterating over them.
     """
     _squares: List[List[Square]]
@@ -19,7 +19,7 @@ class SquareRepo:
         Initializes the SquareRepo with a 2D list of Square objects.
 
         Args:
-            squares: A list of lists representing the rows and columns of the board.
+            squares: A list of lists representing the rows and columns of the square_service.
         """
         self._squares = squares
 
@@ -34,7 +34,7 @@ class SquareRepo:
         delta: Delta = Delta(delta_column=1, delta_row=1)
      ) -> SquareIterator:
         """
-        Returns a SquareIterator for traversing the board.
+        Returns a SquareIterator for traversing the square_service.
 
         Args:
             index: The starting coordinate for the iteration.
@@ -114,7 +114,7 @@ class SquareRepo:
         Returns:
             The ChessPiece object if a piece is on the square, otherwise None.
         """
-        # This implementation is inefficient as it iterates the whole board.
+        # This implementation is inefficient as it iterates the whole square_service.
         # A more efficient approach would be to use find_square_by_coordinate first.
         square = self.find_square_by_coordinate(coordinate)
         return square.occupant if square else None
@@ -122,7 +122,7 @@ class SquareRepo:
 
     def __str__(self) -> str:
         """
-        Provides a string representation of the board, showing pieces or square names.
+        Provides a string representation of the square_service, showing pieces or square names.
 
         If a square is occupied, it shows the chess piece's name.
         If a square is vacant, it shows the square's name in brackets.

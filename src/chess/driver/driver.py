@@ -25,6 +25,16 @@ def main():
      print("\nFound by id", chess_piece)
      chess_piece = board.team_service.find_chess_piece_by_name("bp6")
      print("Found by name", chess_piece)
+
+     square = board.square_service.find_square_by_name("a2")
+     print("Found by name", square)
+     chess_piece = square.occupant
+     print("a2 occupant", chess_piece)
+     print("a2 occupant", chess_piece.name)
+
+     new_square = board.square_service.find_square_by_name("a3")
+     print(chess_piece.name, "requesting move to", new_square)
+     chess_piece.forward_move_request(destination=new_square.coordinate)
      # for s in board_controller.square_service.squares():
      #     print(square.__str__(), "\n")
 

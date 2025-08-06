@@ -50,8 +50,8 @@ class Owner(ABC):
 
 
 
-    # def move_chess_piece(self, chess_piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard'):
-    #     chess_piece.forward_move_request(board, destination)
+    # def move_chess_piece(self, chess_piece: 'ChessPiece', destination: Coordinate, square_service: 'ChessBoard'):
+    #     chess_piece.forward_move_request(square_service, destination)
 
 
 
