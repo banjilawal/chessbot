@@ -59,63 +59,60 @@ class ChessBoard:
                 occupied_squares.append(square)
         return occupied_squares
 
+    #
+    #    def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):
+    #         if chess_piece is None:
+    #             raise ValueError("Captor cannot be null. Aborting capture process.")
+    #             # return None
+    #         if not self.coordinate_is_valid(coordinate):
+    #             raise ValueError("The destination coord is out of range. Aborting capture process.")
+    #             # return None
+    #
+    #         turn_record = None
+    #         capture_record = None
+    #         model = self._grid[coordinate.row][coordinate.column]
+    #         current_occupant = model.occupant
+    #         print("The model at ", coordinate, " is ", model, " it contains ", current_occupant)
+    #         if current_occupant is not None and not chess_piece.is_enemy(current_occupant):
+    #             print("A friendly is occupying the model. Aborting capture process.")
+    #             return None
+    #
+    #     if current_occupant is not None and chess_piece.is_enemy(current_occupant):
+    #         print("The current occupant is an enemy on ")
+    #         prisoner = current_occupant
+    #         model.occupant = None
+    #         prisoner.coordinate = None
+    #
+    #         captor = chess_piece
+    #         # prisoner = self.remove_piece_from_board(current_occupant.id)
+    #         prisoner.test_outcome = MobilityStatus.PRISONER
+    #
+    #         print("prisoner=", prisoner, " captor=", captor, "")
+    #
+    #
+    #         # captor = self.remove_piece_from_board(chess_piece)
+    #         model.occupant = captor
+    #         # captor.coord = model.coord
+    #         # captor.add_position(coord)
+    #         self._killed_pieces.append(prisoner)
+    #
+    #     if current_occupant is None:
+    #         print("The current occupant is None. The chess_piece is free to move to the destination model.")
+    #         print(f"Square {model} has occupant {current_occupant} and chess_piece {chess_piece} is free to move to the destination model.")
+    #         model.occupant = chess_piece
+    #         chess_piece.coordinate = model.coordinate
+    #
+    #
+    # def capture_square(self, chess_piece: 'ChessPiece', destination: 'Coordinate'):
+    #     method = "ChessBoard.capture_square"
+    #
+    #     # 3. Get the squares
+    #     square_to_leave = self.find_square(chess_piece.current_coordinate())
+    #     destination_square = self.find_square(destination)
+    #     destination_square.occupy(chess_piece)
+    #     square_to_leave.leave(chess_piece)
 
-    def place_chess_piece_on_board(self, chess_piece: 'ChessPiece', coordinate: 'Coordinate'):
-        method = "ChessBoard.add_new_piece"
-        square = self.find_square(coordinate)
-        square.occupy(chess_piece)
 
-
-    def capture_square(self, chess_piece: 'ChessPiece', destination: 'Coordinate'):
-        method = "ChessBoard.capture_square"
-
-        # 3. Get the squares
-        square_to_leave = self.find_square(chess_piece.current_coordinate())
-        destination_square = self.find_square(destination)
-        destination_square.occupy(chess_piece)
-        square_to_leave.leave(chess_piece)
-
-        # def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):
-        #     if chess_piece is None:
-        #         raise ValueError("Captor cannot be null. Aborting capture process.")
-        #         # return None
-        #     if not self.coordinate_is_valid(coordinate):
-        #         raise ValueError("The destination coord is out of range. Aborting capture process.")
-        #         # return None
-        #
-        #     turn_record = None
-        #     capture_record = None
-        #     model = self._grid[coordinate.row][coordinate.column]
-        #     current_occupant = model.occupant
-        #     print("The model at ", coordinate, " is ", model, " it contains ", current_occupant)
-        #     if current_occupant is not None and not chess_piece.is_enemy(current_occupant):
-        #         print("A friendly is occupying the model. Aborting capture process.")
-        #         return None
-        #
-        # if current_occupant is not None and chess_piece.is_enemy(current_occupant):
-        #     print("The current occupant is an enemy on ")
-        #     prisoner = current_occupant
-        #     model.occupant = None
-        #     prisoner.coordinate = None
-        #
-        #     captor = chess_piece
-        #     # prisoner = self.remove_piece_from_board(current_occupant.id)
-        #     prisoner.test_outcome = MobilityStatus.PRISONER
-        #
-        #     print("prisoner=", prisoner, " captor=", captor, "")
-        #
-        #
-        #     # captor = self.remove_piece_from_board(chess_piece)
-        #     model.occupant = captor
-        #     # captor.coord = model.coord
-        #     # captor.add_position(coord)
-        #     self._killed_pieces.append(prisoner)
-        #
-        # if current_occupant is None:
-        #     print("The current occupant is None. The chess_piece is free to move to the destination model.")
-        #     print(f"Square {model} has occupant {current_occupant} and chess_piece {chess_piece} is free to move to the destination model.")
-        #     model.occupant = chess_piece
-        #     chess_piece.coordinate = model.coordinate
 
 
     # def coordinate_is_valid(self, coordinate: Coordinate):
