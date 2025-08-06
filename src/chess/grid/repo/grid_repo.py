@@ -3,11 +3,11 @@ from typing import List, Optional
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.team.model.piece import ChessPiece
-from chess.square.model.square import Square
-from chess.square.repo.square_iterator import SquareIterator
+from chess.grid.model.square import Square
+from chess.grid.repo.square_iterator import SquareIterator
 
 
-class SquareRepo:
+class GridRepo:
     """
     A repository for managing all the squares on the chess square_service.
     It provides methods for finding squares and iterating over them.
@@ -16,7 +16,7 @@ class SquareRepo:
 
     def __init__(self, squares: List[List[Square]]):
         """
-        Initializes the SquareRepo with a 2D list of Square objects.
+        Initializes the GridRepo with a 2D list of Square objects.
 
         Args:
             squares: A list of lists representing the rows and columns of the square_service.
@@ -61,23 +61,23 @@ class SquareRepo:
 
     def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
         """
-        Finds a square by its coordinate.
+        Finds a grid by its coordinate.
 
         Args:
-            coordinate: The Coordinate object of the square.
+            coordinate: The Coordinate object of the grid.
 
         Returns:
             The Square object if found, otherwise None.
         """
-        # Corrected to return the square.
+        # Corrected to return the grid.
         return self._squares[coordinate.row][coordinate.column]
 
     def find_square_by_name(self, name: str) -> Optional[Square]:
         """
-        Finds a square by its algebraic notation name (e.g., "a1").
+        Finds a grid by its algebraic notation name (e.g., "a1").
 
         Args:
-            name: The name of the square to find.
+            name: The name of the grid to find.
 
         Returns:
             The Square object if found, otherwise None.
@@ -90,10 +90,10 @@ class SquareRepo:
 
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
         """
-        Finds a square by its unique ID.
+        Finds a grid by its unique ID.
 
         Args:
-            square_id: The ID of the square to find.
+            square_id: The ID of the grid to find.
 
         Returns:
             The Square object if found, otherwise None.
@@ -112,7 +112,7 @@ class SquareRepo:
             coordinate: The coordinate to check.
 
         Returns:
-            The ChessPiece object if a piece is on the square, otherwise None.
+            The ChessPiece object if a piece is on the grid, otherwise None.
         """
         # This implementation is inefficient as it iterates the whole square_service.
         # A more efficient approach would be to use find_square_by_coordinate first.
@@ -122,10 +122,10 @@ class SquareRepo:
 
     def __str__(self) -> str:
         """
-        Provides a string representation of the square_service, showing pieces or square names.
+        Provides a string representation of the square_service, showing pieces or grid names.
 
-        If a square is occupied, it shows the chess piece's name.
-        If a square is vacant, it shows the square's name in brackets.
+        If a grid is occupied, it shows the chess piece's name.
+        If a grid is vacant, it shows the grid's name in brackets.
         """
         string = ""
         # Iterate from the top row (row 7) down to the bottom (row 0)
@@ -133,10 +133,10 @@ class SquareRepo:
             row_str_parts = []
             for square in row:
                 if square.occupant is not None:
-                    # Display the piece's name if the square is occupied.
+                    # Display the piece's name if the grid is occupied.
                     row_str_parts.append(f"[{square.occupant.name}]")
                 else:
-                    # Display the square's name in brackets if it's empty.
+                    # Display the grid's name in brackets if it's empty.
                     row_str_parts.append(f"[{square.name}]")
             string += " ".join(row_str_parts) + "\n"
         return string.strip()

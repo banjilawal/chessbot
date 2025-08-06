@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-from chess.square.model.square import Square
+from chess.grid.model.square import Square
 
 
 class SquareIterator:

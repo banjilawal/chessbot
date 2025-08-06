@@ -1,14 +1,14 @@
 from typing import List, Optional
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.square.model.square import Square
-from chess.square.repo.square_repo import SquareRepo
+from chess.grid.model.square import Square
+from chess.grid.repo.grid_repo import GridRepo
 
 
-class SquareService:
-    _repo: SquareRepo
+class GridService:
+    _repo: GridRepo
 
-    def __init__(self, repo: SquareRepo):
+    def __init__(self, repo: GridRepo):
         self._repo = repo
 
 

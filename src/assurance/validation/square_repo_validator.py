@@ -2,7 +2,7 @@
 #
 # from assurance.validation.validation_result import ValidationResult
 # from assurance.validation.validation_exception import ValidationException
-# from chess.square.repo.repo import SquareRepo
+# from chess.grid.repo.repo import GridRepo
 #
 #
 # class RepoNotNullValidationFailed(ValidationException):
@@ -15,15 +15,15 @@
 # class SquareRepoValidator:
 #
 #     @staticmethod
-#     def not_null_test(repo: Optional[SquareRepo]) -> ValidationResult[SquareRepo]:
+#     def not_null_test(repo: Optional[GridRepo]) -> ValidationResult[GridRepo]:
 #         if repo is None:
 #             return ValidationResult.send_failed_valtidation_report(
-#                 RepoNotNullValidationFailed("SquareRepo failed not null validation test")
-#             )[SquareRepo]
-#         return ValidationResult.send_passed_validation_report(payload=repo)[SquareRepo]
+#                 RepoNotNullValidationFailed("GridRepo failed not null validation test")
+#             )[GridRepo]
+#         return ValidationResult.send_passed_validation_report(payload=repo)[GridRepo]
 #
 #     @staticmethod
-#     def not_empty_test(repo: Optional[SquareRepo]) -> ValidationResult[SquareRepo]:
+#     def not_empty_test(repo: Optional[GridRepo]) -> ValidationResult[GridRepo]:
 #         test_report = SquareRepoValidator.not_null_test(repo)
 #
 #         if test_report.payload is None:
@@ -33,7 +33,7 @@
 #
 #         if test_report.payload.squares is None or len(test_report.payload.squares) == 0 or len(test_report.payload.squares[0]) == 0:
 #             return ValidationResult.send_failed_valtidation_report(
-#                 RepoNotEmptyValidationFailed("SquareRepo failed not empty validation test")
+#                 RepoNotEmptyValidationFailed("GridRepo failed not empty validation test")
 #             )
 #
 #         return ValidationResult.send_passed_validation_report(payload=repo)

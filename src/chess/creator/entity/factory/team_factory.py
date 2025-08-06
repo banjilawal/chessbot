@@ -7,9 +7,9 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.motion_controller_factory import MotionControllerFactory
 from chess.creator.service.square_service_builder import SquareServiceBuilder
-from chess.square import repo
+from chess.grid import repo
 from chess.config.team_config import TeamConfig
-from chess.square.service.square_service import SquareService
+from chess.grid.service.grid_service import GridService
 from chess.team.model.team import Team
 
 
@@ -56,17 +56,17 @@ class TeamFactory:
 #             for placement in PlacementChart:
 #                 square_name = placement.map_chess_piece_to_square_name(chess_piece)
 #                 if square_name is not None:
-#                     square = square_service.find_square_by_name(square_name)
-#                     square.occupy(chess_piece)
-#                     print(square)
+#                     grid = square_service.find_square_by_name(square_name)
+#                     grid.occupy(chess_piece)
+#                     print(grid)
 #     print(repo)
-#                     # print(square.name, " occupied by", square.occupant.name)
+#                     # print(grid.name, " occupied by", grid.occupant.name)
 #                 # print(placement.value[0])
 #                 # placement.map_chess_piece_to_square_name(chess_piece)
 #                 # print("comparing", placement.chess_piece_name.capitalize(), " with", chess_piece.name.capitalize())
 #                 # chess_piece.name.capitalize() == placement.value[0].capitalize():
 #
-#        # print(f"matched square:{placement.square_name} with {chess_piece.name}")`````````
+#        # print(f"matched grid:{placement.square_name} with {chess_piece.name}")`````````
 #
 # if __name__ == "__main__":
 #     main()

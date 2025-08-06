@@ -2,20 +2,20 @@ from typing import List
 
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.square.model.square import Square
-from chess.square.repo.square_repo import SquareRepo
+from chess.grid.model.square import Square
+from chess.grid.repo.grid_repo import GridRepo
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.square.service.square_service import SquareService
+from chess.grid.service.grid_service import GridService
 
 
 class SquareServiceBuilder:
 
     @staticmethod
     def assemble():
-        return SquareService(repo=SquareServiceBuilder._build_repo(), )
+        return GridService(repo=SquareServiceBuilder._build_repo(), )
 
     @staticmethod
-    def _build_repo() -> SquareRepo:
+    def _build_repo() -> GridRepo:
 
         grid: List[List[Square]] = []
 
@@ -30,7 +30,7 @@ class SquareServiceBuilder:
                 row_squares.append(square)
                 ascii_value += 1
             grid.append(row_squares)
-        return SquareRepo(grid)
+        return GridRepo(grid)
 
 #
 #
