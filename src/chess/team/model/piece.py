@@ -11,7 +11,6 @@ from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from chess.motion.abstract.motion_controller import MotionController
-    from chess.team.duplicate_team import Team
     from chess.geometry.board.board import ChessBoard
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
