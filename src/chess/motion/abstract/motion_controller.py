@@ -4,13 +4,15 @@ from typing import List
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.motion_service import MotionService
+from chess.motion.abstract.reachable import Reachable
 from chess.team.model.piece import ChessPiece
 
 
 class MotionController(ABC):
     _name: str
     _letter: str
-    _motion_service: MotionService
+    _reachable: Reachable
+    _search_pattern: 'SearchPattern'
     _capture_value: int
     _number_per_player: int
     _territories: List[Quadrant]
@@ -19,14 +21,20 @@ class MotionController(ABC):
         self,
         name: str,
         letter: str,
-        motion_service: MotionService,
+        reachable: Reachable,
+        search_pattern: 'SearchPattern',
         capture_value: int,
         number_per_player: int,
         territories: List[Quadrant]
     ):
+        if reachable is None:
+            raise ValueError("Reachable logic cannot be None.")
+        if search_pattern is None:
+            raise ValueError("Search pattern cannot be None.")
+
         self._name = name
-        self._members = []
-        self._motion_service = motion_service
+        self._reachable = reachable
+        self._search_pattern = search_pattern
         self._letter = letter
         self._capture_value = capture_value
         self._number_per_player = number_per_player
@@ -108,4 +116,59 @@ class MotionController(ABC):
 
         return self.motion_service.explore(piece, board)
 
+    def __str__(self):
+        return (f"{self._name}, value:{self._letter}, {self._capture_value} "
+                f"num_per_player:{self._number_per_player} num_territories:{len(self._territories)}")
+
+    def validate_and_check_move(self, piece: 'ChessPiece', board: 'ChessBoard', destination: 'Coordinate'):
+        """
+        Validates a move for a chess piece. This method performs general checks
+        and then delegates to _apply_move_logic for piece-specific validation.
+        It does NOT modify the board state. It raises ValueError if the move is invalid.
+        """
+        if piece is None:
+            raise ValueError("Cannot validate move for a chess_piece that does not exist.")
+        if piece.current_coordinate() is None:
+            raise ValueError(f"Before {piece.label} can be moved it has to be placed in its starting position.")
+        if board is None:
+            raise ValueError(f"Cannot validate move for {piece.label} as the board does not exist.")
+        if destination is None:
+            raise ValueError(f"{piece.label} move without a destination.")
+        if not board.coordinate_is_valid(destination):
+            raise ValueError(f"Destination coordinate {destination} is invalid.")
+
+        # Delegate to piece-specific logic for detailed validation
+        self._apply_move_logic(piece, board, destination)
+
+
+    def get_legal_moves(self, piece: 'ChessPiece', board: 'ChessBoard') -> List['Coordinate']:
+        """
+        Finds all legal destination coordinates for the given chess piece.
+        This method is for exploring possible moves on the board.
+        """
+        self._validate_explore_parameters(piece, board)
+        return self._generate_moves_from_pattern(piece, board)
+
+    @abstractmethod
+    def _apply_move_logic(self, piece: 'ChessPiece', board: 'ChessBoard', destination: 'Coordinate'):
+        """
+        Subclasses implement the specific logic for validating a move for the piece.
+        This method should raise ValueError if the move is invalid (e.g., geometrically unreachable,
+        destination occupied by friendly piece, path blocked).
+        It should NOT modify the board state.
+        """
+        pass
+
+    @abstractmethod
+    def _generate_moves_from_pattern(self, piece: 'ChessPiece', board: 'ChessBoard') -> List['Coordinate']:
+        """
+        Subclasses implement the specific logic for generating possible moves.
+        """
+        pass
+
+    def _validate_explore_parameters(self, piece: 'ChessPiece', board: 'ChessBoard'):
+        if piece is None:
+            raise ValueError("Cannot explore moves for a chess_piece that does not exist.")
+        if board is None:
+            raise ValueError("Cannot explore moves without a board.")
 
