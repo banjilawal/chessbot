@@ -123,12 +123,13 @@ class Map:
         return square.occupant if square else None
 
 
-    def destinations_from_origin(self, origin: Coordinate, delta: Delta) -> List[Square]:
-        destinations: List[Square] = []
+    def destination_squares_from_origin(self, origin: Coordinate, delta: Delta) -> List[Square]:
+        destination_squares: List[Square] = []
 
         for square in self.iterator(origin, delta):
-            destinations.append(square.coordinate)
-        return destinations                                      -
+            if square not in destination_squares:
+                destination_squares.append(square)
+        return destination_squares
 
 
     def __str__(self) -> str:
