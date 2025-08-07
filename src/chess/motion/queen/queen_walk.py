@@ -1,5 +1,5 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.castle.service.castle_walk import CastleWalk
+from chess.motion.castle.castle_walk import CastleWalk
 from chess.geometry.line.diagonal import Diagonal
 from chess.motion.interfaces.walk import Walk
 

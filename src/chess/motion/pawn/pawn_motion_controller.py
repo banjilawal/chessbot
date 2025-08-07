@@ -4,7 +4,7 @@ from typing import List
 from chess.geometry.quadrant import Quadrant
 from chess.motion.interfaces.motion_controller import MotionController
 from chess.motion.pawn.service.pawn_search_pattern import PawnMoveGenerator
-from chess.motion.pawn.service.pawn_walk import PawnWalk
+from chess.motion.pawn.pawn_walk import PawnWalk
 
 
 class PawnMotionController(MotionController):

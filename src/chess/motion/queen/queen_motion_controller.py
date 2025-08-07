@@ -1,9 +1,9 @@
-from typing import List, TYPE_CHECKING
+from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.motion.interfaces.motion_controller import MotionController
 from chess.motion.queen.service.queen_search_pattern import QueenMoveGenerator
-from chess.motion.queen.service.queen_walk import QueenWalk
+from chess.motion.queen.queen_walk import QueenWalk
 
 
 

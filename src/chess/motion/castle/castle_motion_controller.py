@@ -4,7 +4,7 @@ from typing import List
 from chess.motion.interfaces.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
 from chess.motion.castle.service.castle_search_pattern import CastleMoveGenerator
-from chess.motion.castle.service.castle_walk import CastleWalk
+from chess.motion.castle.castle_walk import CastleWalk
 
 
 class CastleMotionController(MotionController):

@@ -3,7 +3,7 @@ from typing import List
 from chess.motion.interfaces.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
 from chess.motion.knight.service.knight_move_generator import KnightMoveGenerator
-from chess.motion.knight.service.knight_walk import KnightWalk
+from chess.motion.knight.knight_walk import KnightWalk
 
 
 class KnightMotionController(MotionController):
