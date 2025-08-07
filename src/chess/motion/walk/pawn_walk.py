@@ -1,10 +1,8 @@
 from typing import Optional
 
-from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
-from chess.map.element.occupation_status import OccupationStatus
 from chess.map.map_service import MapService
 from chess.motion.walk.walk import Walk
 from chess.team.model.piece import ChessPiece
@@ -23,12 +21,9 @@ class PawnWalk(Walk):
         Basic geometric reachability - maintains Walk interface.
         Only checks if destination is geometrically walk by chess_piece movement.
         """
-        return (PawnWalk.can_advance(chess_piece=chess_piece, destination=destination) or
-            PawnWalk.can_attack(
-                pawn=chess_piece,
-                destination=destination,
-                map_service=map_service
-            )
+        return (
+            PawnWalk.can_advance(chess_piece, destination) or
+            PawnWalk.can_attack(chess_piece, destination)
         )
 
 
@@ -44,7 +39,7 @@ class PawnWalk(Walk):
 
 
     @staticmethod
-    def can_attack(pawn: ChessPiece, destination: Coordinate, map_service: MapService) -> bool:
+    def can_attack(pawn: ChessPiece, destination: Coordinate) -> bool:
         if not PawnWalk._satisfies_walk_preconditions(pawn):
             print(f"{pawn.name} does not satisfy walk preconditions to advance")
             return False
@@ -55,9 +50,6 @@ class PawnWalk(Walk):
 
         if abs(destination.column - pawn.coordinate_stack.current_coordinate().column) != 1:
             print(f"{pawn.name} is not one column away from attack coordinate {destination}")
-            return False
-
-        if map_service.find_square_by_coordinate(destination).status != OccupationStatus.HAS_ENEMY:
             return False
         return True
 

@@ -1,13 +1,13 @@
 from abc import ABC, abstractmethod
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.map_service import MapService
+from chess.team.model.piece import ChessPiece
 
 
 class Walk(ABC):
 
     @staticmethod
     @abstractmethod
-    def is_walkable(origin: Coordinate, destination: Coordinate, map_service: MapService) -> bool:
+    def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
         """Returns True if the move from origin to destination fits this pattern."""
         pass
