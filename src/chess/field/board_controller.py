@@ -2,15 +2,15 @@ from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
-from chess.map.service.grid_service import GridService
+from chess.map.service.map_service import MapService
 from chess.team.team_service import TeamService
 
 
 class BoardController:
     _team_service: TeamService
-    _square_service: GridService
+    _square_service: MapService
 
-    def __init__(self, team_service: TeamService, square_service: GridService):
+    def __init__(self, team_service: TeamService, square_service: MapService):
         self._team_service = team_service
         self._square_service = square_service
 
@@ -19,7 +19,7 @@ class BoardController:
         return self._team_service
 
     @property
-    def square_service(self) -> GridService:
+    def square_service(self) -> MapService:
         return self._square_service
 
     def _create_motion_board_adapter(self) -> List[List[Square]]:
@@ -52,7 +52,7 @@ class BoardController:
         piece.motion_controller.validate_and_check_move(piece, self._board_for_motion_logic, destination_coordinate)
         print(f"BoardController: Move for {piece.label} is valid.")
 
-        # 2. If validation passes, update the board state via GridService
+        # 2. If validation passes, update the board state via MapService
         print(f"BoardController: Executing move for {piece.label} via GridService.")
         self._grid_service.capture_square(piece, origin_coordinate, destination_coordinate)  # Renamed call
         print(f"BoardController: Move for {piece.label} executed successfully.")

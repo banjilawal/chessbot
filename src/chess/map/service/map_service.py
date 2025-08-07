@@ -5,39 +5,39 @@ from chess.map.element.square import Square
 
 
 
-class GridService:
+class MapService:
     from chess.map.map import Map
-    _repo: Map
+    _map: Map
 
     def __init__(self, repo: Map):
-        self._repo = repo
+        self._map = repo
 
 
     def squares(self) -> List[List[Square]]:
-        return self._repo.squares
+        return self._map.squares
 
 
     def empty_squares(self) -> List[Square]:
-        return self._repo.empty_squares()
+        return self._map.empty_squares()
 
 
     def occupied_squares(self) -> List[Square]:
-        return self._repo.occupied_squares()
+        return self._map.occupied_squares()
 
     def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
-        return self._repo.find_square_by_coordinate(coordinate)
+        return self._map.find_square_by_coordinate(coordinate)
 
 
     def find_square_by_id(self, square_id) -> Optional[Square]:
-        return self._repo.find_square_by_id(square_id)
+        return self._map.find_square_by_id(square_id)
 
 
     def find_square_by_name(self, name:str) -> Optional[Square]:
-        return self._repo.find_square_by_name(name)
+        return self._map.find_square_by_name(name)
 
 
     def squares_to_string(self) -> str:
-        return str(self._repo)
+        return str(self._map)
 
     def capture_square(self, piece: 'ChessPiece', from_coordinate: Coordinate, to_coordinate: Coordinate):
         """

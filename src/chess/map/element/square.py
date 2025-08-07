@@ -44,11 +44,11 @@ class Square:
     def status(self) -> 'OccupationStatus':
         return self._status
 
-    # Removed occupy() and leave() methods. GridService will manage these.
+    # Removed occupy() and leave() methods. MapService will manage these.
     def set_occupant(self, piece: Optional['ChessPiece']):
         """
         Sets or clears the occupant of the square and updates its status.
-        This method is intended to be called by GridService, not directly.
+        This method is intended to be called by MapService, not directly.
         """
         self._occupant = piece
         self._status = OccupationStatus.OCCUPIED_BY_SELF if piece else OccupationStatus.IS_VACANT

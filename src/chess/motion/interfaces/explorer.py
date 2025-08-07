@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import List, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.service.grid_service import GridService
+from chess.map.service.map_service import MapService
 
 if TYPE_CHECKING:
     from chess.geometry.board.board import ChessBoard
@@ -18,7 +18,7 @@ class Explorer(ABC):
         pass
 
     @abstractmethod
-    def discover_destinations(self, piece: 'ChessPiece', grid_service: GridService) -> List[Coordinate]:
+    def discover_destinations(self, piece: 'ChessPiece', grid_service: MapService) -> List[Coordinate]:
         pass
         """Returns a list of coordinates that the chess_piece can reach from its current position."""
 

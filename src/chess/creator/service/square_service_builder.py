@@ -5,14 +5,14 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
 from chess.map.map import Map
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.map.service.grid_service import GridService
+from chess.map.service.map_service import MapService
 
 
 class SquareServiceBuilder:
 
     @staticmethod
     def assemble():
-        return GridService(repo=SquareServiceBuilder._build_repo(), )
+        return MapService(repo=SquareServiceBuilder._build_repo(), )
 
     @staticmethod
     def _build_repo() -> Map:

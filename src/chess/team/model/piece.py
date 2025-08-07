@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack
-from chess.map.service.grid_service import GridService
+from chess.map.service.map_service import MapService
 
 from chess.team.model.mobility_status import MobilityStatus
 
@@ -94,7 +94,7 @@ class ChessPiece:
 
 
 
-    def walk(self, square_service: GridService, destination: Coordinate):
+    def walk(self, square_service: MapService, destination: Coordinate):
         return self._motion_controller.delegate_move_execution(piece=self, square_service=square_service, destination=destination)
 
 

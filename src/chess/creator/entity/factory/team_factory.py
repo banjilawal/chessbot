@@ -9,7 +9,7 @@ from chess.creator.entity.factory.motion_controller_factory import MotionControl
 from chess.creator.service.square_service_builder import SquareServiceBuilder
 from chess.map import repo
 from chess.config.team_config import TeamConfig
-from chess.map.service.grid_service import GridService
+from chess.map.service.map_service import MapService
 from chess.team.model.team import Team
 
 
