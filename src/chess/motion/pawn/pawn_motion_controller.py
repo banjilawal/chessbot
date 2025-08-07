@@ -10,7 +10,7 @@ from chess.motion.abstract.search_pattern import SearchPattern
 class PawnMotionController(MotionController):
     def _apply_move_logic(self, piece: 'ChessPiece', board: 'ChessBoard', destination: 'Coordinate'):
         origin = piece.current_positio()
-        if not self.logic.is_walkable(origin, destination):
+        if not self.walk.is_walkable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")
 
         board.capture_square(piece, destination)
@@ -23,7 +23,7 @@ class PawnMotionController(MotionController):
             self,
             name: str,
             letter: str,
-            logic: Walk,
+            walk: Walk,
             search_pattern: SearchPattern,
             capture_value: int,
             number_per_team: int,
@@ -33,7 +33,7 @@ class PawnMotionController(MotionController):
         super().__init__(
             name=name,
             letter=letter,
-            logic=logic,
+            walk=walk,
             search_pattern=search_pattern,
             capture_value=capture_value,
             territories=territories,

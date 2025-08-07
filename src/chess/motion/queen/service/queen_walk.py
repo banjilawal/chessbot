@@ -8,6 +8,6 @@ class QueenWalk(Walk):
     @staticmethod
     def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
         return (
-                CastleWalk.is_walkable(origin, destination) or
-                Diagonal.is_diagonal(origin, destination)
+            CastleWalk.is_walkable(origin, destination) or
+            Diagonal.is_diagonal(origin, destination)
         )

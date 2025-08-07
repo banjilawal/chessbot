@@ -19,7 +19,7 @@ class MotionService(ABC):
 
     def __init__(self, logic: Walk, search_pattern: SearchPattern):
         if logic is None:
-            raise ValueError("MotionService logic cannot be None.")
+            raise ValueError("MotionService walk cannot be None.")
         if search_pattern is None:
             raise ValueError("Search pattern cannot be None.")
 
@@ -34,13 +34,13 @@ class MotionService(ABC):
     def search_pattern(self) -> SearchPattern:
         return self._search_pattern
 
-    # Final method — performs common validation before deferring to subclass logic
+    # Final method — performs common validation before deferring to subclass walk
     def dispatch_to_move_executor(self, piece: 'ChessPiece', destination: Coordinate, board: 'ChessBoard'):
         self._validate(piece, board)
         self._validate_destination(destination, board)
         self._execute_move(piece, destination, board)
 
-    # Final method — performs common validation before deferring to subclass logic
+    # Final method — performs common validation before deferring to subclass walk
     def explore(self, piece: 'ChessPiece', board: 'ChessBoard') -> List[Coordinate]:
         return self._perform_exploration(piece, board)
 

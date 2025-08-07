@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 
 class SearchPattern(ABC):
     _motion_definitions: {}
-    """ A SearchPattern is a collection of MoveRules that logic how a chess_piece can move."""
+    """ A SearchPattern is a collection of MoveRules that walk how a chess_piece can move."""
 
     def __init__(self):
         pass
@@ -35,7 +35,7 @@ class SearchPattern(ABC):
 
     @abstractmethod
     def _perform_search(self, piece: 'ChessPiece', board: 'ChessBoard') -> List[Coordinate]:
-        """Concrete classes implement the actual search logic."""
+        """Concrete classes implement the actual search walk."""
         pass
 
 

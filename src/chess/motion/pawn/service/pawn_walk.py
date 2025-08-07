@@ -17,7 +17,7 @@ class PawnWalk(Walk):
     def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
         """
         Basic geometric reachability - maintains Walk interface.
-        Only checks if destination is geometrically logic by pawn movement.
+        Only checks if destination is geometrically walk by pawn movement.
         """
         row_diff = destination.row - origin.row
         col_diff = abs(destination.column - origin.column)
