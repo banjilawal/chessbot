@@ -4,7 +4,6 @@ from typing import List
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.motion.explorer.explorer import MoveGenerator
 from chess.motion.controller.promotable.pawn_motion_controller import PawnMotionController
 from chess.motion.walk.pawn_walk import PawnWalk
 

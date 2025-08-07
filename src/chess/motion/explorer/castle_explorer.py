@@ -2,7 +2,6 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.explorer.explorer import MoveGenerator
 from chess.team.model.piece import ChessPiece
 
 
