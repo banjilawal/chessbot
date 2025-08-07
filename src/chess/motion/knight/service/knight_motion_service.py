@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.walk.knight_walk import KnightWalk
 
 from chess.motion.interfaces.motion_service import MotionService
-from chess.motion.knight.service.knight_move_generator import KnightMoveGenerator
+from chess.motion.explorer.knight_move_generator import KnightMoveGenerator
 
 
 class KnightMotionService(MotionService):

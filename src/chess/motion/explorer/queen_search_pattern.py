@@ -2,9 +2,9 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.bishop.service.bishop_search_pattern import BishopMoveGenerator
-from chess.motion.castle.service.castle_search_pattern import CastleMoveGenerator
-from chess.motion.interfaces.explorer import MoveGenerator
+from chess.motion.explorer.bishop_search_pattern import BishopMoveGenerator
+from chess.motion.explorer.castle_search_pattern import CastleMoveGenerator
+from chess.motion.explorer.explorer import MoveGenerator
 from chess.team.model.piece import ChessPiece
 
 

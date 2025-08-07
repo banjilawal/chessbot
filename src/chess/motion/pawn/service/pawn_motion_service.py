@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 
 from chess.motion.walk.pawn_walk import PawnWalk
 from chess.motion.interfaces.motion_service import MotionService
-from chess.motion.pawn.service.pawn_search_pattern import PawnMoveGenerator
+from chess.motion.explorer.pawn_search_pattern import PawnMoveGenerator
 
 
 class PawnMotionService(MotionService):

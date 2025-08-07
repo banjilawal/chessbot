@@ -2,8 +2,8 @@
 from typing import List
 
 from chess.geometry.board.board import ChessBoard
-from chess.motion.interfaces.explorer import MoveGenerator
-from chess.motion.queen.service.queen_search_pattern import QueenMoveGenerator
+from chess.motion.explorer.explorer import MoveGenerator
+from chess.motion.explorer.queen_search_pattern import QueenMoveGenerator
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.team.model.piece import ChessPiece
 

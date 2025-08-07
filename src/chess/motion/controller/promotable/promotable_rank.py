@@ -2,18 +2,14 @@ from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
 from chess.motion.controller.queen_motion_controller import QueenMotionController
-from chess.motion.interfaces.explorer import Explorer
-from chess.motion.interfaces.motion_service import MotionService
+from chess.motion.explorer.explorer import Explorer
 from chess.motion.walk.walk import Walk
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece
-    from chess.motion.controller.motion_controller import MotionController
+
 
 class PromotableRank:
-    _previous_rank: Optional['MotionController']
-    _walk: Walk
-    _explorer: Explorer
 
     def __init__(
         self,
@@ -21,7 +17,9 @@ class PromotableRank:
         letter: str,
         capture_value:
         int, number_per_team: int,
-        territories: List[Quadrant]
+        territories: List[Quadrant],
+        walk:Optional[Walk] = None,
+        explorer:Optional[Explorer] = None,
     ):
         super().__init__(
             name=name,
@@ -32,22 +30,6 @@ class PromotableRank:
             number_per_team=number_per_team,
             territories=territories
         )
-        _previous_rank: None
-
-
-
-    def __init__(
-        self,
-        name: str,
-        acronym: str,
-        motion_service: MotionService,
-        capture_value: int,
-        territories: List[Quadrant],
-        previous_rank: Optional['MotionController'] = None
-    ):
-        from chess.motion.controller.motion_controller import MotionController  # LOCAL IMPORT TO BREAK CYCLE
-        self._previous_rank = previous_rank
-        MotionController.__init__(self, name, acronym, motion_service, capture_value, territories)
 
     def is_promoted(self) -> bool:
         return self._previous_rank is not None

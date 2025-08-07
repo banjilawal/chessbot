@@ -2,7 +2,7 @@ from abc import ABC
 from typing import List, Optional
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.interfaces.explorer import Explorer
+from chess.motion.explorer.explorer import Explorer
 from chess.motion.walk.walk import Walk
 
 

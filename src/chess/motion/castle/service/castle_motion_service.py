@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.walk.castle_walk import CastleWalk
 
 from chess.motion.interfaces.motion_service import MotionService
-from chess.motion.castle.service.castle_search_pattern import CastleMoveGenerator
+from chess.motion.explorer.castle_search_pattern import CastleMoveGenerator
 
 
 class CastleMotionService(MotionService):
