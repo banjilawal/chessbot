@@ -2,6 +2,7 @@ from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.motion_controller import MotionController
+from chess.motion.king.service.king_walk import KingWalk
 
 
 class KingMotionController(MotionController):
@@ -13,11 +14,10 @@ class KingMotionController(MotionController):
         int, number_per_team: int,
         territories: List[Quadrant]
     ):
-        from chess.motion.king.service.king_motion_service import KingMotionService
         super().__init__(
             name=name,
             letter=letter,
-            motion_service=KingMotionService(),
+            walk=KingWalk
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team
