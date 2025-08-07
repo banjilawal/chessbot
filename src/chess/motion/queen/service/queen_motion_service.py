@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.walk.queen_walk import QueenWalk
 
 from chess.motion.interfaces.motion_service import MotionService
-from chess.motion.explorer.queen_search_pattern import QueenMoveGenerator
+from chess.motion.explorer.queen_explorer import QueenMoveGenerator
 
 
 class QueenMotionService(MotionService):
