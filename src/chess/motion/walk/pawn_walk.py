@@ -2,6 +2,7 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
+from chess.map.map_service import MapService
 from chess.motion.walk.walk import Walk
 from chess.team.model.piece import ChessPiece
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
@@ -14,7 +15,7 @@ class PawnWalk(Walk):
     """
 
     @staticmethod
-    def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_walkable(origin: Coordinate, destination: Coordinate, map_service: MapService) -> bool:
         """
         Basic geometric reachability - maintains Walk interface.
         Only checks if destination is geometrically walk by pawn movement.

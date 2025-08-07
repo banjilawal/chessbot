@@ -1,11 +1,12 @@
 from chess.geometry.coordinate.coordinate import Coordinate
+from chess.map.map_service import MapService
 from chess.motion.walk.walk import Walk
 
 
 class KnightWalk(Walk):
 
     @staticmethod
-    def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_walkable(origin: Coordinate, destination: Coordinate, map_service: MapService) -> bool:
         row_diff = abs(origin.row - destination.row)
         col_diff = abs(origin.column - destination.column)
 
