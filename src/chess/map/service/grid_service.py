@@ -6,10 +6,10 @@ from chess.map.element.square import Square
 
 
 class GridService:
-    from chess.map.repo.grid_repo import GridRepo
-    _repo: GridRepo
+    from chess.map.map import Map
+    _repo: Map
 
-    def __init__(self, repo: GridRepo):
+    def __init__(self, repo: Map):
         self._repo = repo
 
 

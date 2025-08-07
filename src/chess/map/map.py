@@ -3,13 +3,13 @@ from typing import List, Optional, TYPE_CHECKING
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 # from chess.team.element.piece import ChessPiece
 from chess.map.element.square import Square
-from chess.map.repo.square_iterator import SquareIterator
+from chess.map.square_iterator import SquareIterator
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece
 
 
-class GridRepo:
+class Map:
     """
     A repository for managing all the squares on the chess square_service.
     It provides methods for finding squares and iterating over them.
@@ -18,7 +18,7 @@ class GridRepo:
 
     def __init__(self, squares: List[List[Square]]):
         """
-        Initializes the GridRepo with a 2D list of Square objects.
+        Initializes the Map with a 2D list of Square objects.
 
         Args:
             squares: A list of lists representing the rows and columns of the square_service.
