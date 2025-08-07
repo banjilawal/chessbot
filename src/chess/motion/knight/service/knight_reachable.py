@@ -1,11 +1,11 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.walk import Walk
 
 
-class KnightReachable(Reachable):
+class KnightWalk(Walk):
 
     @staticmethod
-    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
         row_diff = abs(origin.row - destination.row)
         col_diff = abs(origin.column - destination.column)
 

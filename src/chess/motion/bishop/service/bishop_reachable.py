@@ -1,10 +1,10 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
-from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.walk import Walk
 
 
-class BishopReachable(Reachable):
+class BishopWalk(Walk):
 
     @staticmethod
-    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
         return Diagonal.is_diagonal(origin, destination)

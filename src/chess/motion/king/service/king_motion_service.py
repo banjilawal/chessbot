@@ -2,7 +2,7 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.king.service.king_reachable import KingReachable
+from chess.motion.king.service.king_reachable import KingWalk
 
 from chess.motion.abstract.motion_service import MotionService
 from chess.motion.king.service.king_search_pattern import KingSearchPattern
@@ -10,12 +10,12 @@ from chess.motion.king.service.king_search_pattern import KingSearchPattern
 
 class KingMotionService(MotionService):
     def __init__(self):
-        super().__init__(logic=KingReachable(), search_pattern=KingSearchPattern())
+        super().__init__(logic=KingWalk(), search_pattern=KingSearchPattern())
 
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard):
         origin = piece.current_coordinate()
-        if not self.logic.is_reachable(origin, destination):
+        if not self.logic.is_walkable(origin, destination):
             raise ValueError(f"{piece.label} cannot reach destination {destination} from origin {origin}.")
         board.capture_square(piece, destination)
 

@@ -39,7 +39,7 @@ class BoardControllerBuilder:
         #
         # for team in teams:
         #     for motion_controller in motion_controllers:
-        #         for i in range(motion_controller.number_per_player):
+        #         for i in range(motion_controller.number_per_team):
         #             chess_piece = ChessPieceBuilder.build(
         #                 id_emitter.chess_piece_id,
         #                 (i + 1),

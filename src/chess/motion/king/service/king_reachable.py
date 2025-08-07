@@ -1,9 +1,9 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.walk import Walk
 
 
-class KingReachable(Reachable):
+class KingWalk(Walk):
 
     @staticmethod
-    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
         return abs(origin.row - destination.row) == 1 and abs(origin.column - destination.column) == 1

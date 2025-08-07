@@ -1,13 +1,13 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.castle.service.castle_reachable import CastleReachable
+from chess.motion.castle.service.castle_reachable import CastleWalk
 from chess.geometry.line.diagonal import Diagonal
-from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.walk import Walk
 
-class QueenReachable(Reachable):
+class QueenWalk(Walk):
 
     @staticmethod
-    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
         return (
-                CastleReachable.is_reachable(origin, destination) or
+                CastleWalk.is_walkable(origin, destination) or
                 Diagonal.is_diagonal(origin, destination)
         )

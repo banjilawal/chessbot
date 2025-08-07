@@ -1,4 +1,7 @@
+from typing import List
 
+from chess.geometry.coordinate.coordinate import Coordinate
+from chess.grid.model.square import Square
 from chess.grid.service.grid_service import GridService
 from chess.team.team_service import TeamService
 
@@ -19,8 +22,8 @@ class BoardController:
     def square_service(self) -> GridService:
         return self._square_service
 
-    def _create_motion_board_adapter(self) -> ChessBoard:
-        adapter = ChessBoard()
+    def _create_motion_board_adapter(self) -> List[List[Square]]:
+        adapter = self._square_service.squares()
         adapter.coordinate_is_valid = self._grid_service.find_square_by_coordinate
         adapter.coordinate_is_occupied = lambda coord: self._grid_service.find_square_by_coordinate(
             coord) is not None and \

@@ -2,10 +2,11 @@ from typing import List, Optional
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.grid.model.square import Square
-from chess.grid.repo.grid_repo import GridRepo
+
 
 
 class GridService:
+    from chess.grid.repo.grid_repo import GridRepo
     _repo: GridRepo
 
     def __init__(self, repo: GridRepo):

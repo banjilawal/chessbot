@@ -36,7 +36,7 @@ class Square:
 
 
     @property
-    def occupant(self) -> Optional[ChessPiece]:
+    def occupant(self) -> Optional['ChessPiece']:
         return self._occupant
 
 

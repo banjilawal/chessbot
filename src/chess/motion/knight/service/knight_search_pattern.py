@@ -2,7 +2,7 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.abstract.search_pattern import SearchPattern
 from chess.team.model.piece import ChessPiece
-from chess.motion.knight.service.knight_reachable import KnightReachable
+from chess.motion.knight.service.knight_reachable import KnightWalk
 from typing import List
 
 
@@ -28,7 +28,7 @@ class KnightSearchPattern(SearchPattern):
                 piece = board.find_chess_piece(origin)
                 if not board.square_is_empty_or_contains_enemy(candidate, piece.player):
                     continue
-                if KnightReachable.is_reachable(origin, candidate):
+                if KnightWalk.is_walkable(origin, candidate):
                     occupant = board.find_chess_piece(candidate)
                     if occupant is None:
                         destinations.append(candidate)

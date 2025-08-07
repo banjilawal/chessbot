@@ -1,43 +1,43 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.motion.abstract.motion_service import MotionService
-from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.walk import Walk
+from chess.motion.abstract.search_pattern import SearchPattern
 from chess.team.model.piece import ChessPiece
 
 
 class MotionController(ABC):
     _name: str
     _letter: str
-    _reachable: Reachable
-    _search_pattern: 'SearchPattern'
+    _logic: Walk
+    _search_pattern: SearchPattern
     _capture_value: int
-    _number_per_player: int
+    _number_per_team: int
     _territories: List[Quadrant]
 
     def __init__(
         self,
         name: str,
         letter: str,
-        reachable: Reachable,
-        search_pattern: 'SearchPattern',
+        logic: Walk,
+        search_pattern:SearchPattern,
         capture_value: int,
-        number_per_player: int,
+        number_per_team: int,
         territories: List[Quadrant]
     ):
-        if reachable is None:
-            raise ValueError("Reachable logic cannot be None.")
+        if logic is None:
+            raise ValueError("Walk logic cannot be None.")
         if search_pattern is None:
             raise ValueError("Search pattern cannot be None.")
 
         self._name = name
-        self._reachable = reachable
-        self._search_pattern = search_pattern
+        self._logic = logic
         self._letter = letter
+        self._search_pattern = search_pattern
         self._capture_value = capture_value
-        self._number_per_player = number_per_player
+        self._number_per_team = number_per_team
         self._territories = territories
 
 
@@ -52,21 +52,27 @@ class MotionController(ABC):
 
 
     @property
-    def motion_service(self):
-        return self._motion_service
-
-
-    @property
     def capture_value(self) -> int:
         return self._capture_value
+
 
     @property
     def territories(self) -> List[Quadrant]:
         return self._territories.copy()
 
+
     @property
-    def number_per_player(self) -> int:
-        return self._number_per_player
+    def number_per_team(self) -> int:
+        return self._number_per_team
+
+
+    @property
+    def logic(self) -> Walk:
+        return self._logic
+
+    @property
+    def search_pattern(self) -> SearchPattern:
+        return self._search_pattern
 
 
     def __eq__(self, other):
@@ -78,12 +84,14 @@ class MotionController(ABC):
             return False
         return self._name == other.name
 
+
     def __hash__(self):
         return hash(self._name)
 
+
     def __str__(self):
         return (f"{self._name}, value:{self._letter}, {self._capture_value} "
-                f"num_per_player:{self._number_per_player} num_territories:{len(self._territories)}")
+                f"num_per_player:{self._number_per_team} num_territories:{len(self._territories)}")
 
 
     def delegate_move_execution(self, piece: ChessPiece, square_service: 'ChessBoard', destination: 'Coordinate'):
@@ -118,7 +126,7 @@ class MotionController(ABC):
 
     def __str__(self):
         return (f"{self._name}, value:{self._letter}, {self._capture_value} "
-                f"num_per_player:{self._number_per_player} num_territories:{len(self._territories)}")
+                f"num_per_player:{self._number_per_team} num_territories:{len(self._territories)}")
 
     def validate_and_check_move(self, piece: 'ChessPiece', board: 'ChessBoard', destination: 'Coordinate'):
         """

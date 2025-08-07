@@ -3,7 +3,7 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.bishop.service.bishop_reachable import BishopReachable
+from chess.motion.bishop.service.bishop_reachable import BishopWalk
 from chess.motion.abstract.search_pattern import SearchPattern
 from chess.team.model.piece import ChessPiece
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
@@ -24,7 +24,7 @@ class BishopSearchPattern(SearchPattern):
             current = origin.shift(delta)
 
             while board.coordinate_is_valid(current):
-                if not BishopReachable.is_reachable(origin, current):
+                if not BishopWalk.is_walkable(origin, current):
                     break
 
                 occupant = board.find_chess_piece(current)

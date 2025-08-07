@@ -11,7 +11,7 @@ class KnightMotionController(MotionController):
         name: str,
         letter: str,
         capture_value:
-        int, number_per_player: int,
+        int, number_per_team: int,
         territories: List[Quadrant]
     ):
         from chess.motion.knight.service.knight_motion_service import KnightMotionService
@@ -21,7 +21,7 @@ class KnightMotionController(MotionController):
             motion_service=KnightMotionService(),
             capture_value=capture_value,
             territories=territories,
-            number_per_player=number_per_player
+            number_per_team=number_per_team
         )
 
 

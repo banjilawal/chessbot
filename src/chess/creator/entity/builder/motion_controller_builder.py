@@ -16,7 +16,7 @@ class MotionControllerBuilder:
             return KingMotionController(
                 name=config.name,
                 letter=config.letter,
-                number_per_player=config.number_per_player,
+                number_per_team=config.number_per_player,
                 territories=config.territories,
                 capture_value=config.capture_value,
             )
@@ -24,7 +24,7 @@ class MotionControllerBuilder:
             return PawnMotionController(
                 name=config.name,
                 letter=config.letter,
-                number_per_player=config.number_per_player,
+                number_per_team=config.number_per_player,
                 territories=config.territories,
                 capture_value=config.capture_value,
             )
@@ -32,7 +32,7 @@ class MotionControllerBuilder:
             return KnightMotionController(
                 name=config.name,
                 letter=config.letter,
-                number_per_player=config.number_per_player,
+                number_per_team=config.number_per_player,
                 territories=config.territories,
                 capture_value=config.capture_value,
             )
@@ -40,7 +40,7 @@ class MotionControllerBuilder:
             return BishopMotionController(
                 name=config.name,
                 letter=config.letter,
-                number_per_player=config.number_per_player,
+                number_per_team=config.number_per_player,
                 territories=config.territories,
                 capture_value=config.capture_value,
             )
@@ -48,7 +48,7 @@ class MotionControllerBuilder:
             return CastleMotionController(
                 name=config.name,
                 letter=config.letter,
-                number_per_player=config.number_per_player,
+                number_per_team=config.number_per_player,
                 territories=config.territories,
                 capture_value=config.capture_value,
             )
@@ -56,7 +56,7 @@ class MotionControllerBuilder:
             return QueenMotionController(
                 name=config.name,
                 letter=config.letter,
-                number_per_player=config.number_per_player,
+                number_per_team=config.number_per_player,
                 territories=config.territories,
                 capture_value=config.capture_value,
             )

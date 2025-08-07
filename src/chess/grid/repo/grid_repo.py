@@ -1,10 +1,12 @@
-from typing import List, Optional
-
+from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-from chess.team.model.piece import ChessPiece
+# from chess.team.model.piece import ChessPiece
 from chess.grid.model.square import Square
 from chess.grid.repo.square_iterator import SquareIterator
+
+if TYPE_CHECKING:
+    from chess.team.model.piece import ChessPiece
 
 
 class GridRepo:
@@ -104,7 +106,7 @@ class GridRepo:
                     return square
         return None
 
-    def chess_piece(self, coordinate: Coordinate) -> Optional[ChessPiece]:
+    def chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
         """
         Returns the chess piece at a given coordinate.
 

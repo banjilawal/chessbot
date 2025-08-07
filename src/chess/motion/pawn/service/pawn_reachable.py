@@ -2,22 +2,22 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
-from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.walk import Walk
 from chess.team.model.piece import ChessPiece
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 
 
-class PawnReachable(Reachable):
+class PawnWalk(Walk):
     """
     Consolidated pawn movement validation with specialized static methods
     for different movement types.
     """
 
     @staticmethod
-    def is_reachable(origin: Coordinate, destination: Coordinate) -> bool:
+    def is_walkable(origin: Coordinate, destination: Coordinate) -> bool:
         """
-        Basic geometric reachability - maintains Reachable interface.
-        Only checks if destination is geometrically reachable by pawn movement.
+        Basic geometric reachability - maintains Walk interface.
+        Only checks if destination is geometrically logic by pawn movement.
         """
         row_diff = destination.row - origin.row
         col_diff = abs(destination.column - origin.column)

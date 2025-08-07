@@ -4,7 +4,7 @@ from typing import List, TYPE_CHECKING
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
-from chess.motion.abstract.reachable import Reachable
+from chess.motion.abstract.walk import Walk
 from chess.motion.abstract.search_pattern import SearchPattern
 
 
@@ -14,10 +14,10 @@ if TYPE_CHECKING:
 
 
 class MotionService(ABC):
-    _logic: Reachable
+    _logic: Walk
     _search_pattern: SearchPattern
 
-    def __init__(self, logic: Reachable, search_pattern: SearchPattern):
+    def __init__(self, logic: Walk, search_pattern: SearchPattern):
         if logic is None:
             raise ValueError("MotionService logic cannot be None.")
         if search_pattern is None:
@@ -27,7 +27,7 @@ class MotionService(ABC):
         self._search_pattern = search_pattern
 
     @property
-    def logic(self) -> Reachable:
+    def logic(self) -> Walk:
         return self._logic
 
     @property

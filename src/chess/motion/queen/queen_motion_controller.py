@@ -15,7 +15,7 @@ class QueenMotionController(MotionController):
         name: str,
         letter: str,
         capture_value:
-        int, number_per_player: int,
+        int, number_per_team: int,
         territories: List[Quadrant]
     ):
         from chess.motion.queen.service.queen_motion_service import QueenMotionService
@@ -25,5 +25,5 @@ class QueenMotionController(MotionController):
             motion_service=QueenMotionService(),
             capture_value=capture_value,
             territories=territories,
-            number_per_player=number_per_player
+            number_per_team=number_per_team
         )
