@@ -2,7 +2,7 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.queen.queen_walk import QueenWalk
+from chess.motion.walk.queen_walk import QueenWalk
 
 from chess.motion.interfaces.motion_service import MotionService
 from chess.motion.queen.service.queen_search_pattern import QueenMoveGenerator

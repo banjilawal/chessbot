@@ -2,7 +2,7 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.bishop.bishop_walk import BishopWalk
+from chess.motion.walk.bishop_walk import BishopWalk
 from chess.motion.bishop.service.bishop_search_pattern import BishopMoveGenerator
 from chess.motion.interfaces.motion_service import MotionService
 

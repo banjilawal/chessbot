@@ -3,7 +3,7 @@ from typing import List
 from chess.motion.interfaces.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
 from chess.motion.bishop.service.bishop_search_pattern import BishopMoveGenerator
-from chess.motion.bishop.bishop_walk import BishopWalk
+from chess.motion.walk.bishop_walk import BishopWalk
 
 
 

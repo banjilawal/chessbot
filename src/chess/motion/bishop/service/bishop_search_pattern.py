@@ -3,7 +3,7 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.bishop.bishop_walk import BishopWalk
+from chess.motion.walk.bishop_walk import BishopWalk
 from chess.motion.interfaces.explorer import MoveGenerator
 from chess.team.model.piece import ChessPiece
 from chess.common.config import ROW_SIZE, COLUMN_SIZE

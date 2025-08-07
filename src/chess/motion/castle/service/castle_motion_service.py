@@ -2,7 +2,7 @@ from typing import List
 
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.castle.castle_walk import CastleWalk
+from chess.motion.walk.castle_walk import CastleWalk
 
 from chess.motion.interfaces.motion_service import MotionService
 from chess.motion.castle.service.castle_search_pattern import CastleMoveGenerator

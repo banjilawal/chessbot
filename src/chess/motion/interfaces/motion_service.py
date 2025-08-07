@@ -4,7 +4,7 @@ from typing import List, TYPE_CHECKING
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
-from chess.motion.interfaces.walk import Walk
+from chess.motion.walk.walk import Walk
 from chess.motion.interfaces.explorer import MoveGenerator
 
 

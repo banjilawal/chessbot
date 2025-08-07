@@ -2,7 +2,7 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
-from chess.motion.interfaces.walk import Walk
+from chess.motion.walk.walk import Walk
 from chess.team.model.piece import ChessPiece
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
 

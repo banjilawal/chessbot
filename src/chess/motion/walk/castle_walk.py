@@ -2,7 +2,7 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.horizontal import Horizontal
 from chess.geometry.line.vertical import Vertical
-from chess.motion.interfaces.walk import Walk
+from chess.motion.walk.walk import Walk
 
 
 
