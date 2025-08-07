@@ -2,7 +2,7 @@
 #
 # from assurance.validation.validation_result import ValidationResult
 # from assurance.validation.validation_exception import ValidationException
-# from chess.grid.repo.repo import GridRepo
+# from chess.map.repo.repo import GridRepo
 #
 #
 # class RepoNotNullValidationFailed(ValidationException):

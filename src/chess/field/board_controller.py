@@ -1,8 +1,8 @@
 from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.grid.model.square import Square
-from chess.grid.service.grid_service import GridService
+from chess.map.model.square import Square
+from chess.map.service.grid_service import GridService
 from chess.team.team_service import TeamService
 
 

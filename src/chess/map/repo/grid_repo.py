@@ -2,8 +2,8 @@ from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 # from chess.team.model.piece import ChessPiece
-from chess.grid.model.square import Square
-from chess.grid.repo.square_iterator import SquareIterator
+from chess.map.model.square import Square
+from chess.map.repo.square_iterator import SquareIterator
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece
@@ -63,23 +63,23 @@ class GridRepo:
 
     def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
         """
-        Finds a grid by its coordinate.
+        Finds a map by its coordinate.
 
         Args:
-            coordinate: The Coordinate object of the grid.
+            coordinate: The Coordinate object of the map.
 
         Returns:
             The Square object if found, otherwise None.
         """
-        # Corrected to return the grid.
+        # Corrected to return the map.
         return self._squares[coordinate.row][coordinate.column]
 
     def find_square_by_name(self, name: str) -> Optional[Square]:
         """
-        Finds a grid by its algebraic notation name (e.g., "a1").
+        Finds a map by its algebraic notation name (e.g., "a1").
 
         Args:
-            name: The name of the grid to find.
+            name: The name of the map to find.
 
         Returns:
             The Square object if found, otherwise None.
@@ -92,10 +92,10 @@ class GridRepo:
 
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
         """
-        Finds a grid by its unique ID.
+        Finds a map by its unique ID.
 
         Args:
-            square_id: The ID of the grid to find.
+            square_id: The ID of the map to find.
 
         Returns:
             The Square object if found, otherwise None.
@@ -114,7 +114,7 @@ class GridRepo:
             coordinate: The coordinate to check.
 
         Returns:
-            The ChessPiece object if a piece is on the grid, otherwise None.
+            The ChessPiece object if a piece is on the map, otherwise None.
         """
         # This implementation is inefficient as it iterates the whole square_service.
         # A more efficient approach would be to use find_square_by_coordinate first.
@@ -124,10 +124,10 @@ class GridRepo:
 
     def __str__(self) -> str:
         """
-        Provides a string representation of the square_service, showing pieces or grid names.
+        Provides a string representation of the square_service, showing pieces or map names.
 
-        If a grid is occupied, it shows the chess piece's name.
-        If a grid is vacant, it shows the grid's name in brackets.
+        If a map is occupied, it shows the chess piece's name.
+        If a map is vacant, it shows the map's name in brackets.
         """
         string = ""
         # Iterate from the top row (row 7) down to the bottom (row 0)
@@ -135,10 +135,10 @@ class GridRepo:
             row_str_parts = []
             for square in row:
                 if square.occupant is not None:
-                    # Display the piece's name if the grid is occupied.
+                    # Display the piece's name if the map is occupied.
                     row_str_parts.append(f"[{square.occupant.name}]")
                 else:
-                    # Display the grid's name in brackets if it's empty.
+                    # Display the map's name in brackets if it's empty.
                     row_str_parts.append(f"[{square.name}]")
             string += " ".join(row_str_parts) + "\n"
         return string.strip()

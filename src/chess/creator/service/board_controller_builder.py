@@ -6,7 +6,7 @@ from chess.creator.service.square_service_builder import SquareServiceBuilder
 from chess.creator.service.team_service_builder import TeamServiceBuilder
 
 from chess.field.board_controller import BoardController
-from chess.grid.service.grid_service import GridService
+from chess.map.service.grid_service import GridService
 from chess.team.team_service import TeamService
 
 
@@ -56,9 +56,9 @@ class BoardControllerBuilder:
     #         for placement in PlacementChart:
     #             square_name = placement.map_chess_piece_to_square_name(chess_piece)
     #             if square_name is not None:
-    #                 grid = square_service.find_square_by_name(square_name)
-    #                 grid.occupy(chess_piece)
-    #                 print(grid)
+    #                 map = square_service.find_square_by_name(square_name)
+    #                 map.occupy(chess_piece)
+    #                 print(map)
 
 #
 #

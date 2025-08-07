@@ -11,7 +11,7 @@ class MissingBoardException(BoardException):
     default_message = "ChessBoard does not exist.Passing null square_service not allowed."
 
 class MissingGridException(BoardException):
-    default_message = "The ChessBoard has no grid of squares. Passing null grid not allowed."
+    default_message = "The ChessBoard has no map of squares. Passing null map not allowed."
 
 class ArrayDimensionException(BoardException):
     default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} square_service requirement"

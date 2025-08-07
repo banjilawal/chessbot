@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 
 
 from chess.motion.interfaces.walk import Walk
-from chess.motion.interfaces.move_generation import MoveGenerator
+from chess.motion.interfaces.explorer import MoveGenerator
 
 
 if TYPE_CHECKING:
