@@ -15,7 +15,11 @@ class BishopExplorer(Explorer):
         destinations: List[Coordinate] = []
 
         for quadrant in chess_piece.motion_controller.territories:
-            destinations.extend(map_service.find_destinations())
+            destinations.extend(
+                map_service.find_destinations_from_origin(
+                    chess_piece.coordinate_stack.current_coordinate()
+                )
+            )
         return destinations
 
         # quadrants = piece.motion_controller.territories

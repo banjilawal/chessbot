@@ -35,6 +35,9 @@ class MapService:
     def find_square_by_name(self, name:str) -> Optional[Square]:
         return self._map.find_square_by_name(name)
 
+    def find_destinations_from_origin(self, origin: Coordinate) -> List[Coordinate]:
+        return self._map.coo
+
 
     def squares_to_string(self) -> str:
         return str(self._map)

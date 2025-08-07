@@ -106,6 +106,7 @@ class Map:
                     return square
         return None
 
+
     def chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
         """
         Returns the chess chess_piece at a given coordinate.
@@ -120,6 +121,14 @@ class Map:
         # A more efficient approach would be to use find_square_by_coordinate first.
         square = self.find_square_by_coordinate(coordinate)
         return square.occupant if square else None
+
+
+    def destinations_from_origin(self, origin: Coordinate, delta: Delta) -> List[Square]:
+        destinations: List[Square] = []
+
+        for square in self.iterator(origin, delta):
+            destinations.append(square.coordinate)
+        return destinations                                      -
 
 
     def __str__(self) -> str:
