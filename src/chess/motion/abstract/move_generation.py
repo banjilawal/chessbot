@@ -10,9 +10,9 @@ if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece
 
 
-class SearchPattern(ABC):
+class MoveGenerator(ABC):
     _motion_definitions: {}
-    """ A SearchPattern is a collection of MoveRules that walk how a chess_piece can move."""
+    """ A MoveGenerator is a collection of MoveRules that walk how a chess_piece can move."""
 
     def __init__(self):
         pass

@@ -2,13 +2,13 @@
 from typing import List
 
 from chess.geometry.board.board import ChessBoard
-from chess.motion.abstract.search_pattern import SearchPattern
-from chess.motion.queen.service.queen_search_pattern import QueenSearchPattern
+from chess.motion.abstract.move_generation import MoveGenerator
+from chess.motion.queen.service.queen_search_pattern import QueenMoveGenerator
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.team.model.piece import ChessPiece
 
 
-class KingSearchPattern(SearchPattern):
+class KingMoveGenerator(MoveGenerator):
 
     def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
         origin = piece.current_coordinate()
@@ -17,7 +17,7 @@ class KingSearchPattern(SearchPattern):
         print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 
 
-        queen_destinations = QueenSearchPattern.search(piece, board)
+        queen_destinations = QueenMoveGenerator.search(piece, board)
 
         # Filter only coordinates that are one step away (Chebyshev distance == 1)
         destinations = [

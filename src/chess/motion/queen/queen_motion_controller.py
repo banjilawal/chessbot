@@ -1,12 +1,11 @@
 from typing import List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
-
-
-if TYPE_CHECKING:
-    from chess.motion.abstract.motion_controller import MotionController
-
 from chess.motion.abstract.motion_controller import MotionController
+from chess.motion.queen.service.queen_search_pattern import QueenMoveGenerator
+from chess.motion.queen.service.queen_walk import QueenWalk
+
+
 
 class QueenMotionController(MotionController):
 
@@ -18,11 +17,11 @@ class QueenMotionController(MotionController):
         int, number_per_team: int,
         territories: List[Quadrant]
     ):
-        from chess.motion.queen.service.queen_motion_service import QueenMotionService
         super().__init__(
             name=name,
             letter=letter,
-            motion_service=QueenMotionService(),
+            walk=QueenWalk(),
+            search_pattern=QueenMoveGenerator(),
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team

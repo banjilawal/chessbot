@@ -2,6 +2,7 @@ from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.motion_controller import MotionController
+from chess.motion.king.service.king_search_pattern import KingMoveGenerator
 from chess.motion.king.service.king_walk import KingWalk
 
 
@@ -17,9 +18,9 @@ class KingMotionController(MotionController):
         super().__init__(
             name=name,
             letter=letter,
-            walk=KingWalk
+            walk=KingWalk(),
+            search_pattern=KingMoveGenerator(),
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team
         )
-

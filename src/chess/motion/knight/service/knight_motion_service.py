@@ -5,12 +5,12 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.knight.service.knight_walk import KnightWalk
 
 from chess.motion.abstract.motion_service import MotionService
-from chess.motion.knight.service.knight_search_pattern import KnightSearchPattern
+from chess.motion.knight.service.knight_search_pattern import KnightMoveGenerator
 
 
 class KnightMotionService(MotionService):
     def __init__(self):
-        super().__init__(logic=KnightWalk(), search_pattern=KnightSearchPattern())
+        super().__init__(logic=KnightWalk(), search_pattern=KnightMoveGenerator())
 
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard):

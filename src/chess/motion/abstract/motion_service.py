@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 
 
 from chess.motion.abstract.walk import Walk
-from chess.motion.abstract.search_pattern import SearchPattern
+from chess.motion.abstract.move_generation import MoveGenerator
 
 
 if TYPE_CHECKING:
@@ -15,9 +15,9 @@ if TYPE_CHECKING:
 
 class MotionService(ABC):
     _logic: Walk
-    _search_pattern: SearchPattern
+    _search_pattern: MoveGenerator
 
-    def __init__(self, logic: Walk, search_pattern: SearchPattern):
+    def __init__(self, logic: Walk, search_pattern: MoveGenerator):
         if logic is None:
             raise ValueError("MotionService walk cannot be None.")
         if search_pattern is None:
@@ -31,7 +31,7 @@ class MotionService(ABC):
         return self._logic
 
     @property
-    def search_pattern(self) -> SearchPattern:
+    def search_pattern(self) -> MoveGenerator:
         return self._search_pattern
 
     # Final method — performs common validation before deferring to subclass walk

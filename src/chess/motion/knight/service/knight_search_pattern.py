@@ -1,12 +1,12 @@
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.abstract.search_pattern import SearchPattern
+from chess.motion.abstract.move_generation import MoveGenerator
 from chess.team.model.piece import ChessPiece
 from chess.motion.knight.service.knight_walk import KnightWalk
 from typing import List
 
 
-class KnightSearchPattern(SearchPattern):
+class KnightMoveGenerator(MoveGenerator):
     def __init__(self):
         super().__init__()
 

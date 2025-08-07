@@ -3,7 +3,7 @@ from typing import List
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.bishop.service.bishop_walk import BishopWalk
-from chess.motion.bishop.service.bishop_search_pattern import BishopSearchPattern
+from chess.motion.bishop.service.bishop_search_pattern import BishopMoveGenerator
 from chess.motion.abstract.motion_service import MotionService
 
 
@@ -12,7 +12,7 @@ class BishopMotionService(MotionService):
     """MotionService implementation for bishop pieces."""
 
     def __init__(self):
-        super().__init__(logic=BishopWalk(), search_pattern=BishopSearchPattern())
+        super().__init__(logic=BishopWalk(), search_pattern=BishopMoveGenerator())
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard):
         origin = piece.current_coordinate()

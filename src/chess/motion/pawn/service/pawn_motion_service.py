@@ -5,12 +5,12 @@ from chess.geometry.coordinate.coordinate import Coordinate
 
 from chess.motion.pawn.service.pawn_walk import PawnWalk
 from chess.motion.abstract.motion_service import MotionService
-from chess.motion.pawn.service.pawn_search_pattern import PawnSearchPattern
+from chess.motion.pawn.service.pawn_search_pattern import PawnMoveGenerator
 
 
 class PawnMotionService(MotionService):
     def __init__(self):
-        super().__init__(logic=PawnWalk(), search_pattern=PawnSearchPattern())
+        super().__init__(logic=PawnWalk(), search_pattern=PawnMoveGenerator())
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard):
         origin = piece.current_positio()

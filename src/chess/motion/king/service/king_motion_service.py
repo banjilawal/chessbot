@@ -5,12 +5,12 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.king.service.king_walk import KingWalk
 
 from chess.motion.abstract.motion_service import MotionService
-from chess.motion.king.service.king_search_pattern import KingSearchPattern
+from chess.motion.king.service.king_search_pattern import KingMoveGenerator
 
 
 class KingMotionService(MotionService):
     def __init__(self):
-        super().__init__(logic=KingWalk(), search_pattern=KingSearchPattern())
+        super().__init__(logic=KingWalk(), search_pattern=KingMoveGenerator())
 
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard):

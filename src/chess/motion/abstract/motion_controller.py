@@ -4,7 +4,7 @@ from typing import List
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.walk import Walk
-from chess.motion.abstract.search_pattern import SearchPattern
+from chess.motion.abstract.move_generation import MoveGenerator
 from chess.team.model.piece import ChessPiece
 
 
@@ -12,7 +12,7 @@ class MotionController(ABC):
     _name: str
     _letter: str
     _walk: Walk
-    _search_pattern: SearchPattern
+    _search_pattern: MoveGenerator
     _capture_value: int
     _number_per_team: int
     _territories: List[Quadrant]
@@ -22,7 +22,7 @@ class MotionController(ABC):
         name: str,
         letter: str,
         walk: Walk,
-        search_pattern:SearchPattern,
+        search_pattern:MoveGenerator,
         capture_value: int,
         number_per_team: int,
         territories: List[Quadrant]
@@ -72,7 +72,7 @@ class MotionController(ABC):
 
 
     @property
-    def search_pattern(self) -> SearchPattern:
+    def search_pattern(self) -> MoveGenerator:
         return self._search_pattern
 
 

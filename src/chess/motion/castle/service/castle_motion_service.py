@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.castle.service.castle_walk import CastleWalk
 
 from chess.motion.abstract.motion_service import MotionService
-from chess.motion.castle.service.castle_search_pattern import CastleSearchPattern
+from chess.motion.castle.service.castle_search_pattern import CastleMoveGenerator
 
 
 class CastleMotionService(MotionService):
@@ -13,7 +13,7 @@ class CastleMotionService(MotionService):
     """MotionService implementation for bishop pieces."""
 
     def __init__(self):
-        super().__init__(logic=CastleWalk(), search_pattern=CastleSearchPattern())
+        super().__init__(logic=CastleWalk(), search_pattern=CastleMoveGenerator())
 
 
     def _execute_move(self, piece: 'ChessPiece', destination: Coordinate, board: ChessBoard):
