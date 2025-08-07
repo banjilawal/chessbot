@@ -10,12 +10,12 @@ if TYPE_CHECKING:
 
 
 class Explorer(ABC):
-    _motion_definitions: {}
-    """ A MoveGenerator is a collection of MoveRules that walk how a chess_piece can move."""
 
     def __init__(self):
         pass
 
+
+    @staticmethod
     @abstractmethod
     def discover_destinations(self, chess_piece: ChessPiece,  map_service: MapService) -> List[Coordinate]:
         pass
