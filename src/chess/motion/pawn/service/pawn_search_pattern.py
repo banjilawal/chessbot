@@ -30,7 +30,7 @@ class PawnMoveGenerator(MoveGenerator):
 
             # Use PawnWalk to decide if move is valid
             if quadrant == Quadrant.N:
-                # For forward moves, make sure model is empty and pawn can advance
+                # For forward moves, make sure element is empty and pawn can advance
                 if (not board.coordinate_is_occupied(candidate) and
                     PawnWalk.can_advance(pawn, candidate)):
                     destinations.append(candidate)

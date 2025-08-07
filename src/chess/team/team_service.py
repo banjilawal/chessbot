@@ -5,7 +5,7 @@ from chess.team.model.piece import ChessPiece
 from chess.team.model.team import Team
 
 # if TYPE_CHECKING:
-#     from chess.team.model.team import Team
+#     from chess.team.element.team import Team
 
 
 class TeamService:

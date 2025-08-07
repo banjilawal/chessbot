@@ -1,8 +1,8 @@
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-# from chess.team.model.piece import ChessPiece
-from chess.map.model.square import Square
+# from chess.team.element.piece import ChessPiece
+from chess.map.element.square import Square
 from chess.map.repo.square_iterator import SquareIterator
 
 if TYPE_CHECKING:

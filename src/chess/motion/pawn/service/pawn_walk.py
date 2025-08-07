@@ -26,7 +26,7 @@ class PawnWalk(Walk):
         if origin.column == destination.column:
             return row_diff in (1, 2)
 
-        # Diagonal move (1 model)
+        # Diagonal move (1 element)
         if col_diff == 1:
             return row_diff == 1
 

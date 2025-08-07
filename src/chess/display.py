@@ -63,7 +63,7 @@ class GameDisplay:
             try:
                 path = os.path.join(base_path, f"{name}.png")  # or .svg if you’re using pygame-svg
                 image = pygame.image.load(path)
-                scaled = pygame.transform.scale(image, (self.cell_px, self.cell_px))  # auto-scale to model
+                scaled = pygame.transform.scale(image, (self.cell_px, self.cell_px))  # auto-scale to element
                 self.piece_images[name] = scaled
             except Exception as e:
                 print(f"⚠️ Failed to load image {name}: {e}")

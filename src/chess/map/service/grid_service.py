@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.model.square import Square
+from chess.map.element.square import Square
 
 
 

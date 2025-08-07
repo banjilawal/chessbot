@@ -1,6 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.model.occupation_status import OccupationStatus
+from chess.map.element.occupation_status import OccupationStatus
 from chess.team.model.mobility_status import MobilityStatus
 
 if TYPE_CHECKING:
