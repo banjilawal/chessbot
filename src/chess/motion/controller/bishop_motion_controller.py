@@ -1,13 +1,13 @@
 from typing import List
 
+from chess.motion.controller.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
-from chess.motion.interfaces.motion_controller import MotionController
-from chess.motion.queen.service.queen_search_pattern import QueenMoveGenerator
-from chess.motion.walk.queen_walk import QueenWalk
+from chess.motion.bishop.service.bishop_search_pattern import BishopMoveGenerator
+from chess.motion.walk.bishop_walk import BishopWalk
 
 
 
-class QueenMotionController(MotionController):
+class BishopMotionController(MotionController):
 
     def __init__(
         self,
@@ -20,8 +20,8 @@ class QueenMotionController(MotionController):
         super().__init__(
             name=name,
             letter=letter,
-            walk=QueenWalk(),
-            search_pattern=QueenMoveGenerator(),
+            walk=BishopWalk(),
+            search_pattern=BishopMoveGenerator(),
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team

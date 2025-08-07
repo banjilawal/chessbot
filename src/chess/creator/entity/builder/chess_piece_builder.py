@@ -1,11 +1,6 @@
-from chess.creator.emit import id_emitter
-from chess.creator.entity.builder.motion_controller_builder import MotionControllerBuilder
-from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.team.model.piece import ChessPiece
-from chess.motion.interfaces.motion_controller import MotionController
+from chess.motion.controller.motion_controller import MotionController
 
-from chess.motion.interfaces.rank_config import RankConfig
-from chess.config.team_config import TeamConfig
 from chess.team.model.team import Team
 
 

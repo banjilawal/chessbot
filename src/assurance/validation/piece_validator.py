@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING
 from assurance.validation.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.team.model.mobility_status import MobilityStatus
-from chess.motion.king.king_motion_controller import KingMotionController
-from chess.motion.pawn.pawn_motion_controller import PawnMotionController
+from chess.motion.controller.king_motion_controller import KingMotionController
+from chess.motion.controller.pawn_motion_controller import PawnMotionController
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece

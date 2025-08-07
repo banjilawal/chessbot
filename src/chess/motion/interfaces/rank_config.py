@@ -6,10 +6,10 @@ from chess.geometry.quadrant import Quadrant
 from chess.motion.bishop.service.bishop_motion_service import BishopMotionService
 from chess.motion.castle.service.castle_motion_service import CastleMotionService
 from chess.motion.king.service.king_motion_service import KingMotionService
-from chess.motion.knight.service.knight_motion_service import KnightMotionService
+from chess.motion.controller.knight_motion_service import KnightMotionService
 from chess.motion.pawn.service.pawn_motion_service import PawnMotionService
 from chess.motion.queen.service.queen_motion_service import QueenMotionService
-from chess.motion.interfaces.motion_controller import MotionController
+from chess.motion.controller.motion_controller import MotionController
 
 if TYPE_CHECKING:
     from chess.motion.interfaces.motion_service import MotionService

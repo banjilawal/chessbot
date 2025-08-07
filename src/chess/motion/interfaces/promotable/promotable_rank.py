@@ -6,7 +6,7 @@ from chess.motion.interfaces.motion_service import MotionService
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece
-    from chess.motion.interfaces.motion_controller import MotionController
+    from chess.motion.controller.motion_controller import MotionController
 
 class PromotableRank:
     _previous_rank: Optional['MotionController'] = None
@@ -20,7 +20,7 @@ class PromotableRank:
         territories: List[Quadrant],
         previous_rank: Optional['MotionController'] = None
     ):
-        from chess.motion.interfaces.motion_controller import MotionController  # LOCAL IMPORT TO BREAK CYCLE
+        from chess.motion.controller.motion_controller import MotionController  # LOCAL IMPORT TO BREAK CYCLE
         self._previous_rank = previous_rank
         MotionController.__init__(self, name, acronym, motion_service, capture_value, territories)
 

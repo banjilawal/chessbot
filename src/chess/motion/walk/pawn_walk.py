@@ -5,7 +5,7 @@ from chess.geometry.line.vertical import Vertical
 from chess.map.map_service import MapService
 from chess.motion.walk.walk import Walk
 from chess.team.model.piece import ChessPiece
-from chess.motion.pawn.pawn_motion_controller import PawnMotionController
+from chess.motion.controller.pawn_motion_controller import PawnMotionController
 
 
 class PawnWalk(Walk):
