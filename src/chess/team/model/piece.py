@@ -10,7 +10,7 @@ from chess.team.model.mobility_status import MobilityStatus
 from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from chess.motion.abstract.motion_controller import MotionController
+    from chess.motion.interfaces.motion_controller import MotionController
     from chess.geometry.board.board import ChessBoard
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
@@ -35,7 +35,7 @@ class ChessPiece:
         if chess_piece_id < 0:
             raise ValueError("Cannot create a chess_piece with a negative id.")
         if motion_controller is None:
-            raise ValueError("Cannot create a chess_piece with an null abstract.")
+            raise ValueError("Cannot create a chess_piece with an null interfaces.")
 
         self._team = team
         self._name = name

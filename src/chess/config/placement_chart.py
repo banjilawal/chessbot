@@ -3,7 +3,7 @@ from typing import Optional
 
 from chess.team.model.piece import ChessPiece
 from chess.config.team_config import TeamConfig
-from chess.motion.abstract.rank_config import RankConfig
+from chess.motion.interfaces.rank_config import RankConfig
 
 
 class PlacementChart(Enum):

@@ -9,10 +9,10 @@ from chess.motion.king.service.king_motion_service import KingMotionService
 from chess.motion.knight.service.knight_motion_service import KnightMotionService
 from chess.motion.pawn.service.pawn_motion_service import PawnMotionService
 from chess.motion.queen.service.queen_motion_service import QueenMotionService
-from chess.motion.abstract.motion_controller import MotionController
+from chess.motion.interfaces.motion_controller import MotionController
 
 if TYPE_CHECKING:
-    from chess.motion.abstract.motion_service import MotionService
+    from chess.motion.interfaces.motion_service import MotionService
 
 class RankConfig(Enum):
     def __new__(

@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.motion.abstract.motion_controller import MotionController
+from chess.motion.interfaces.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
 from chess.motion.knight.service.knight_search_pattern import KnightMoveGenerator
 from chess.motion.knight.service.knight_walk import KnightWalk

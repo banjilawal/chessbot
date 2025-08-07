@@ -2,11 +2,11 @@
 from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.abstract.motion_service import MotionService
+from chess.motion.interfaces.motion_service import MotionService
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece
-    from chess.motion.abstract.motion_controller import MotionController
+    from chess.motion.interfaces.motion_controller import MotionController
 
 class PromotableRank:
     _previous_rank: Optional['MotionController'] = None
@@ -20,7 +20,7 @@ class PromotableRank:
         territories: List[Quadrant],
         previous_rank: Optional['MotionController'] = None
     ):
-        from chess.motion.abstract.motion_controller import MotionController  # LOCAL IMPORT TO BREAK CYCLE
+        from chess.motion.interfaces.motion_controller import MotionController  # LOCAL IMPORT TO BREAK CYCLE
         self._previous_rank = previous_rank
         MotionController.__init__(self, name, acronym, motion_service, capture_value, territories)
 
@@ -37,7 +37,7 @@ class PromotableRank:
         #     return piece
         # return ChessPiece(
         #     chess_piece_id = self._id
-        #     abstract = Queen()
+        #     interfaces = Queen()
         #
         #
         # )
@@ -57,9 +57,9 @@ class PromotableRank:
     #         old_top_coordinate: Coordinate,
     #         old_id: int
     # ) -> bool:
-    #     if not isinstance(piece.abstract, Queen):
+    #     if not isinstance(piece.interfaces, Queen):
     #         return False
-    #     if hasattr(piece.abstract, "chess_piece_id") and piece.abstract.chess_piece_id != old_id:
+    #     if hasattr(piece.interfaces, "chess_piece_id") and piece.interfaces.chess_piece_id != old_id:
     #         return False
     #     if len(piece.coordinate_stack) != old_stack_size:
     #         return False

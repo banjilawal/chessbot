@@ -4,7 +4,7 @@ from typing import List
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.bishop.service.bishop_walk import BishopWalk
-from chess.motion.abstract.move_generation import MoveGenerator
+from chess.motion.interfaces.move_generation import MoveGenerator
 from chess.team.model.piece import ChessPiece
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 

@@ -1,5 +1,5 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.abstract.walk import Walk
+from chess.motion.interfaces.walk import Walk
 
 
 class KingWalk(Walk):

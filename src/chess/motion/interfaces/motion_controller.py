@@ -3,8 +3,8 @@ from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.motion.abstract.walk import Walk
-from chess.motion.abstract.move_generation import MoveGenerator
+from chess.motion.interfaces.walk import Walk
+from chess.motion.interfaces.move_generation import MoveGenerator
 from chess.team.model.piece import ChessPiece
 
 

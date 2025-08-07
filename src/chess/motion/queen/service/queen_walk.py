@@ -1,7 +1,7 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.castle.service.castle_walk import CastleWalk
 from chess.geometry.line.diagonal import Diagonal
-from chess.motion.abstract.walk import Walk
+from chess.motion.interfaces.walk import Walk
 
 class QueenWalk(Walk):
 

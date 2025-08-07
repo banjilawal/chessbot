@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.abstract.motion_controller import MotionController
+from chess.motion.interfaces.motion_controller import MotionController
 from chess.motion.king.service.king_search_pattern import KingMoveGenerator
 from chess.motion.king.service.king_walk import KingWalk
 

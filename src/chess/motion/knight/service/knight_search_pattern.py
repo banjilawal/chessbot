@@ -1,6 +1,6 @@
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.abstract.move_generation import MoveGenerator
+from chess.motion.interfaces.move_generation import MoveGenerator
 from chess.team.model.piece import ChessPiece
 from chess.motion.knight.service.knight_walk import KnightWalk
 from typing import List

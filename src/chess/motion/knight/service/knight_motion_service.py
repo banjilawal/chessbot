@@ -4,7 +4,7 @@ from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.knight.service.knight_walk import KnightWalk
 
-from chess.motion.abstract.motion_service import MotionService
+from chess.motion.interfaces.motion_service import MotionService
 from chess.motion.knight.service.knight_search_pattern import KnightMoveGenerator
 
 
