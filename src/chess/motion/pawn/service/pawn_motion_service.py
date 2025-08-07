@@ -3,7 +3,7 @@ from typing import List
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 
-from chess.motion.pawn.service.pawn_reachable import PawnWalk
+from chess.motion.pawn.service.pawn_walk import PawnWalk
 from chess.motion.abstract.motion_service import MotionService
 from chess.motion.pawn.service.pawn_search_pattern import PawnSearchPattern
 

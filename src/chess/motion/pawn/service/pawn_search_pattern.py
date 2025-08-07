@@ -6,7 +6,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.motion.abstract.search_pattern import SearchPattern
 from chess.motion.pawn.pawn_motion_controller import PawnMotionController
-from chess.motion.pawn.service.pawn_reachable import PawnWalk
+from chess.motion.pawn.service.pawn_walk import PawnWalk
 
 
 class PawnSearchPattern(SearchPattern):
