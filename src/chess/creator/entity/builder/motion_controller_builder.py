@@ -1,8 +1,8 @@
 from chess.motion.controller.bishop_motion_controller import BishopMotionController
 from chess.motion.controller.castle_motion_controller import CastleMotionController
-from chess.motion.controller.king_motion_controller import KingMotionController
-from chess.motion.knight.knight_motion_controller import KnightMotionController
-from chess.motion.controller.pawn_motion_controller import PawnMotionController
+from chess.motion.controller.promotable.king_motion_controller import KingMotionController
+from chess.motion.controller.knight_motion_controller import KnightMotionController
+from chess.motion.controller.promotable.pawn_motion_controller import PawnMotionController
 from chess.motion.interfaces.rank_config import RankConfig
 from chess.motion.controller.queen_motion_controller import QueenMotionController
 

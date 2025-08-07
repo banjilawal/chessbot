@@ -2,7 +2,6 @@ from typing import List
 
 from chess.motion.controller.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
-from chess.motion.bishop.service.bishop_search_pattern import BishopMoveGenerator
 from chess.motion.walk.bishop_walk import BishopWalk
 
 
@@ -15,13 +14,15 @@ class BishopMotionController(MotionController):
         letter: str,
         capture_value:
         int, number_per_team: int,
-        territories: List[Quadrant]
+        territories: List[Quadrant],
+        walk=BishopWalk(),
+        explorer=BishopExplorer(),
     ):
         super().__init__(
             name=name,
             letter=letter,
-            walk=BishopWalk(),
-            search_pattern=BishopMoveGenerator(),
+            walk=walk,
+            explorer=explorer,
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team

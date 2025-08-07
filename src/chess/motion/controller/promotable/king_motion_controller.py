@@ -1,25 +1,26 @@
 from typing import List
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.controller.motion_controller import MotionController
-from chess.motion.king.service.king_move_generator import KingMoveGenerator
+from chess.motion.controller.promotable.promotable_rank import PromotableRank
 from chess.motion.walk.king_walk import KingWalk
 
 
-class KingMotionController(MotionController):
+class KingMotionController(PromotableRank):
     def __init__(
         self,
         name: str,
         letter: str,
         capture_value:
         int, number_per_team: int,
-        territories: List[Quadrant]
+        territories: List[Quadrant],
+        walk=KingWalk(),
+        explorer=KingExplorer()
     ):
         super().__init__(
             name=name,
             letter=letter,
-            walk=KingWalk(),
-            search_pattern=KingMoveGenerator(),
+            walk=walk,
+            explorer=explorer,
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team

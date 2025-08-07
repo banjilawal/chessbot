@@ -1,16 +1,16 @@
 from abc import ABC
-from typing import List
+from typing import List, Optional
 
 from chess.geometry.quadrant import Quadrant
+from chess.motion.interfaces.explorer import Explorer
 from chess.motion.walk.walk import Walk
-from chess.motion.interfaces.explorer import MoveGenerator
 
 
 class MotionController(ABC):
     _name: str
     _letter: str
     _walk: Walk
-    _search_pattern: MoveGenerator
+    _explorer: Explorer
     _capture_value: int
     _number_per_team: int
     _territories: List[Quadrant]
@@ -19,21 +19,21 @@ class MotionController(ABC):
         self,
         name: str,
         letter: str,
-        walk: Walk,
-        search_pattern:MoveGenerator,
         capture_value: int,
         number_per_team: int,
-        territories: List[Quadrant]
+        territories: List[Quadrant],
+        walk: Optional[Walk] = None,
+        explorer:Optional[Explorer] = None
     ):
         if walk is None:
             raise ValueError("Walk walk cannot be None.")
-        if search_pattern is None:
+        if explorer is None:
             raise ValueError("Search pattern cannot be None.")
 
         self._name = name
         self._walk = walk
         self._letter = letter
-        self._search_pattern = search_pattern
+        self._explorer = explorer
         self._capture_value = capture_value
         self._number_per_team = number_per_team
         self._territories = territories
@@ -70,8 +70,8 @@ class MotionController(ABC):
 
 
     @property
-    def search_pattern(self) -> MoveGenerator:
-        return self._search_pattern
+    def explorer(self) -> Explorer:
+        return self._explorer
 
 
     def __eq__(self, other):

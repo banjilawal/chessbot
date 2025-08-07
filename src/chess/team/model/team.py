@@ -112,6 +112,13 @@ class Team:
         return None
 
 
+    def enemy_back_row_index(self):
+        if self.back_rank_index == 0:
+            return 7
+        else:
+            return 0
+
+
     def __str__(self):
         return (f"Team id:{self._id} color:{self._color} play_order{self._team_order} rank_row:{self._back_row_index} "
                 f"pawn_row:{self._pawn_row_index} home:{self._home_quadrant}")

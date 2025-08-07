@@ -2,7 +2,6 @@ from typing import List
 
 from chess.motion.controller.motion_controller import MotionController
 from chess.geometry.quadrant import Quadrant
-from chess.motion.knight.service.knight_move_generator import KnightMoveGenerator
 from chess.motion.walk.knight_walk import KnightWalk
 
 
@@ -14,16 +13,18 @@ class KnightMotionController(MotionController):
         letter: str,
         capture_value:
         int, number_per_team: int,
-        territories: List[Quadrant]
+        territories: List[Quadrant],
+        walk=KnightWalk(),
+        explorer=KnightExplorer()
     ):
         super().__init__(
-        name = name,
-        letter = letter,
-        walk = KnightWalk(),
-        search_pattern =KnightMoveGenerator(),
-        capture_value = capture_value,
-        territories = territories,
-        number_per_team = number_per_team
+        name=name,
+        letter=letter,
+        walk=walk,
+        explorer=explorer,
+        capture_value=capture_value,
+        territories=territories,
+        number_per_team=number_per_team
     )
 
 

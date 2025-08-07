@@ -1,15 +1,40 @@
-# promotable_rank.py
 from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
+from chess.motion.controller.queen_motion_controller import QueenMotionController
+from chess.motion.interfaces.explorer import Explorer
 from chess.motion.interfaces.motion_service import MotionService
+from chess.motion.walk.walk import Walk
 
 if TYPE_CHECKING:
     from chess.team.model.piece import ChessPiece
     from chess.motion.controller.motion_controller import MotionController
 
 class PromotableRank:
-    _previous_rank: Optional['MotionController'] = None
+    _previous_rank: Optional['MotionController']
+    _walk: Walk
+    _explorer: Explorer
+
+    def __init__(
+        self,
+        name: str,
+        letter: str,
+        capture_value:
+        int, number_per_team: int,
+        territories: List[Quadrant]
+    ):
+        super().__init__(
+            name=name,
+            letter=letter,
+            walk=walk,
+            explorer=explorer,
+            capture_value=capture_value,
+            number_per_team=number_per_team,
+            territories=territories
+        )
+        _previous_rank: None
+
+
 
     def __init__(
         self,
@@ -27,8 +52,30 @@ class PromotableRank:
     def is_promoted(self) -> bool:
         return self._previous_rank is not None
 
-    def promote(self, piece: 'ChessPiece') -> 'ChessPiece':
-        pass
+    def promote(self, chess_piece: 'ChessPiece') -> Optional['ChessPiece']:
+
+        enemy_back_row_index = chess_piece.team.enemy_back_row_index()
+        if chess_piece.coordinate_stack.current_coordinate().row != enemy_back_row_index():
+            print(f"{chess_piece.name} is not the enemy's home row. Cannot be promoted.")
+            raise TypeError(f"{chess_piece.name} is not on the enemy home row. Cannot be promoted.")
+
+        if isinstance(self.rank, QueenMotionController) and self._previous_rank is not None:
+            raise TypeError(f"{chess_piece.name} is already promoted.")
+
+        promoted_chess_piece = ChessPiece(
+            chess_piece_id=chess_piece.id,
+            name=chess_piece.name,
+            motion_controller=QueenMotionController(),
+            team=chess_piece.team
+        )
+        stack = chess_piece.coordinate_stack.stack
+        while (len(stack)) > 0:
+            entry = stack.pop()
+            promoted_chess_piece.coordinate_stack.push_coordinate(entry)
+
+        return promoted_chess_piece
+
+
 
         # method = "PromotableRank.promote"
         #
