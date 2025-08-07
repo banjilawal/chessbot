@@ -1,7 +1,10 @@
+from typing import Optional
+
 from chess.geometry.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
+from chess.map.element.occupation_status import OccupationStatus
 from chess.map.map_service import MapService
 from chess.motion.walk.walk import Walk
 from chess.team.model.piece import ChessPiece
@@ -10,71 +13,86 @@ from chess.motion.controller.pawn_motion_controller import PawnMotionController
 
 class PawnWalk(Walk):
     """
-    Consolidated pawn movement validation with specialized static methods
+    Consolidated chess_piece movement validation with specialized static methods
     for different movement types.
     """
 
     @staticmethod
-    def is_walkable(origin: Coordinate, destination: Coordinate, map_service: MapService) -> bool:
+    def is_walkable(chess_piece: ChessPiece, destination: Coordinate, map_service: MapService) -> Optional[bool]:
         """
         Basic geometric reachability - maintains Walk interface.
-        Only checks if destination is geometrically walk by pawn movement.
+        Only checks if destination is geometrically walk by chess_piece movement.
         """
-        row_diff = destination.row - origin.row
-        col_diff = abs(destination.column - origin.column)
+        return (PawnWalk.can_advance(chess_piece=chess_piece, destination=destination) or
+            PawnWalk.can_attack(
+                pawn=chess_piece,
+                destination=destination,
+                map_service=map_service
+            )
+        )
 
-        # Forward move (1 or 2 squares)
-        if origin.column == destination.column:
-            return row_diff in (1, 2)
-
-        # Diagonal move (1 element)
-        if col_diff == 1:
-            return row_diff == 1
-
-        return False
 
     @staticmethod
-    def can_advance(pawn: ChessPiece, destination: Coordinate) -> bool:
-        if pawn is None:
+    def can_advance(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+        if not PawnWalk._satisfies_walk_preconditions(chess_piece):
+            print(f"{chess_piece.name} does not satisfy walk preconditions to advance")
             return False
-
-        if not isinstance(pawn.motion_controller, PawnMotionController):
+        if PawnWalk._number_of_advancing_steps(chess_piece, destination) == 0:
+            print(f"{chess_piece.name} cannot advance to {destination}")
             return False
+        return True
 
-        origin = pawn.current_coordinate()
-        if origin is None:
-            return False
-
-        position_history = pawn.coordinate_stack
-        if len(position_history) == 0 or position_history is None:
-            return False
-
-        if not Vertical.is_vertical(origin, destination):
-            return False
-
-        row_diff = destination.row - origin.row
-        if len(position_history) == 1:
-            return row_diff in (1, 2)
-        else:
-            return row_diff == 1
 
     @staticmethod
-    def can_attack(pawn: ChessPiece, destination: Coordinate, board: ChessBoard) -> bool:
-        if pawn is None or board is None:
+    def can_attack(pawn: ChessPiece, destination: Coordinate, map_service: MapService) -> bool:
+        if not PawnWalk._satisfies_walk_preconditions(pawn):
+            print(f"{pawn.name} does not satisfy walk preconditions to advance")
             return False
 
-        if not isinstance(pawn.motion_controller, PawnMotionController):
+        if Diagonal.is_diagonal(pawn.coordinate_stack.current_coordinate(), destination):
+            print(f"{pawn.name} is not diagonal from attack coordinate {destination}")
             return False
 
-        origin = pawn.current_coordinate()
-        if origin is None or not board.coordinate_is_valid(destination):
+        if abs(destination.column - pawn.coordinate_stack.current_coordinate().column) != 1:
+            print(f"{pawn.name} is not one column away from attack coordinate {destination}")
             return False
 
-        if not Diagonal.is_diagonal(origin, destination) or  not (destination.row - origin.row) == 1:
+        if map_service.find_square_by_coordinate(destination).status != OccupationStatus.HAS_ENEMY:
+            return False
+        return True
+
+
+    @staticmethod
+    def _satisfies_walk_preconditions(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+        if chess_piece is None:
+            print("Pawn is None cannot advance")
+            return False
+        if not isinstance(chess_piece.motion_controller, PawnMotionController):
+            print("ChessPiece is not a chess_piece cannot advance")
             return False
 
-        target = board.find_chess_piece(destination)
-        if target is None:
-            return False
+        pawn = chess_piece
 
-        return pawn.is_enemy(target)
+        if pawn.coordinate_stack is None:
+            print("Pawn has no coordinate_stack cannot advance")
+            return False
+        if pawn.coordinate_stack.current_coordinate() is None or pawn.coordinate_stack.size() == 0:
+            print("Pawn is not on the board cannot advance")
+            return False
+        if not Vertical.is_vertical(pawn.coordinate_stack.current_coordinate(), destination):
+            print("Pawn cannot advance to non-vertical destination")
+            return False
+        return True
+
+
+    @staticmethod
+    def _number_of_advancing_steps(pawn: ChessPiece, destination: Coordinate) -> int:
+        row_diff = destination.row - pawn.coordinate_stack.current_coordinate().row
+        if row_diff < 0:
+            return 0
+
+        if pawn.coordinate_stack.size() == 1:
+            return 2
+        if pawn.coordinate_stack.size() > 1:
+            return  1
+        return 0

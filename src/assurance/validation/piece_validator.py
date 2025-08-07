@@ -55,7 +55,7 @@ class ChessPieceValidator:
         testing_payload = test_report.payload
         if testing_payload.rank_tag.motion_controller not in [KingMotionController, PawnMotionController]:
             return ValidationResult.send_failed_valtidation_report(
-                ChessPiecePromotableValidationFailed("ChessPiece not king or pawn. failed promotable validation test")
+                ChessPiecePromotableValidationFailed("ChessPiece not king or chess_piece. failed promotable validation test")
             )
 
         if testing_payload.current_coordinate().row != testing_payload.player.home_quadrant.enemy_quadrant():

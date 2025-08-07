@@ -30,7 +30,7 @@ class PawnMoveGenerator(MoveGenerator):
 
             # Use PawnWalk to decide if move is valid
             if quadrant == Quadrant.N:
-                # For forward moves, make sure element is empty and pawn can advance
+                # For forward moves, make sure element is empty and chess_piece can advance
                 if (not board.coordinate_is_occupied(candidate) and
                     PawnWalk.can_advance(pawn, candidate)):
                     destinations.append(candidate)
@@ -44,7 +44,7 @@ class PawnMoveGenerator(MoveGenerator):
                             destinations.append(two_step)
 
             else:
-                # For diagonal quadrants, only add if there's an enemy chess_piece and pawn can attack
+                # For diagonal quadrants, only add if there's an enemy chess_piece and chess_piece can attack
                 if (board.coordinate_is_occupied(candidate) and
                     PawnWalk.can_attack(pawn, candidate, board)):
                     destinations.append(candidate)
