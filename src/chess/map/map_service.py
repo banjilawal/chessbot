@@ -3,6 +3,7 @@ from typing import List, Optional
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
 from chess.team.model.mobility_status import MobilityStatus
+from chess.team.model.piece import ChessPiece
 
 
 class MapService:
@@ -35,8 +36,16 @@ class MapService:
     def find_square_by_name(self, name:str) -> Optional[Square]:
         return self._map.find_square_by_name(name)
 
-    def find_destinations_from_origin(self, origin: Coordinate) -> List[Coordinate]:
-        return self._map.coo
+    def find_squares_from_origin(self, chess_piece: ChessPiece) -> List[Square]:
+        destination_squares: List[Square]
+
+        for quadrant in chess_piece.motion_controller.territories:
+            results = self._map.destination_squares_from_origin(
+                chess_piece.coordinate_stack.current_coordinate(),
+                quadrant.delta
+            )
+            destination_squares.extend(results)
+        return destination_squares
 
 
     def squares_to_string(self) -> str:
