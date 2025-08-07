@@ -1,14 +1,7 @@
-from typing import List, TYPE_CHECKING
-
-from chess.config.placement_chart import PlacementChart
-
 from chess.creator.service.square_service_builder import SquareServiceBuilder
 from chess.creator.service.team_service_builder import TeamServiceBuilder
 
 from chess.field.board_controller import BoardController
-from chess.map.service.map_service import MapService
-from chess.team.team_service import TeamService
-
 
 
 class BoardControllerBuilder:

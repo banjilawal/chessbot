@@ -61,7 +61,7 @@ class ChessPieceValidator:
         if testing_payload.current_coordinate().row != testing_payload.player.home_quadrant.enemy_quadrant():
             return ValidationResult.send_failed_valtidation_report(
                 ChessPiecePromotableValidationFailed(
-                    "Promotable chess piece is not in enemy home. Failed is_promotable_test"
+                    "Promotable chess chess_piece is not in enemy home. Failed is_promotable_test"
                 )
             )
 
@@ -112,6 +112,6 @@ class ChessPieceValidator:
 
         if len(piece.coordinate_stack) != 0 :
             return ValidationResult.send_failed_valtidation_report(
-                ChessPieceOnBoardValidationFailed("The chess piece is already on the square_service"))
+                ChessPieceOnBoardValidationFailed("The chess chess_piece is already on the square_service"))
 
         return ValidationResult.send_passed_validation_report(payload=test_payload)

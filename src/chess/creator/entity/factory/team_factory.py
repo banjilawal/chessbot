@@ -1,15 +1,10 @@
 from typing import List
 
-
-from chess.config.placement_chart import PlacementChart
 from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.motion_controller_factory import MotionControllerFactory
-from chess.creator.service.square_service_builder import SquareServiceBuilder
-from chess.map import repo
 from chess.config.team_config import TeamConfig
-from chess.map.service.map_service import MapService
 from chess.team.model.team import Team
 
 

@@ -1,7 +1,7 @@
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-# from chess.team.element.piece import ChessPiece
+# from chess.team.element.chess_piece import ChessPiece
 from chess.map.element.square import Square
 from chess.map.square_iterator import SquareIterator
 
@@ -108,13 +108,13 @@ class Map:
 
     def chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
         """
-        Returns the chess piece at a given coordinate.
+        Returns the chess chess_piece at a given coordinate.
 
         Args:
             coordinate: The coordinate to check.
 
         Returns:
-            The ChessPiece object if a piece is on the map, otherwise None.
+            The ChessPiece object if a chess_piece is on the map, otherwise None.
         """
         # This implementation is inefficient as it iterates the whole square_service.
         # A more efficient approach would be to use find_square_by_coordinate first.
@@ -126,7 +126,7 @@ class Map:
         """
         Provides a string representation of the square_service, showing pieces or map names.
 
-        If a map is occupied, it shows the chess piece's name.
+        If a map is occupied, it shows the chess chess_piece's name.
         If a map is vacant, it shows the map's name in brackets.
         """
         string = ""
@@ -135,7 +135,7 @@ class Map:
             row_str_parts = []
             for square in row:
                 if square.occupant is not None:
-                    # Display the piece's name if the map is occupied.
+                    # Display the chess_piece's name if the map is occupied.
                     row_str_parts.append(f"[{square.occupant.name}]")
                 else:
                     # Display the map's name in brackets if it's empty.

@@ -33,8 +33,8 @@ class PromotableRank:
         # method = "PromotableRank.promote"
         #
         # if self.is_promoted():
-        #     print( f"{piece.name} has already been promoted.")
-        #     return piece
+        #     print( f"{chess_piece.name} has already been promoted.")
+        #     return chess_piece
         # return ChessPiece(
         #     chess_piece_id = self._id
         #     interfaces = Queen()
@@ -42,27 +42,27 @@ class PromotableRank:
         #
         # )
         # #
-        # previous_stack_size = len(piece.coordinate_stack)
-        # previous_top = piece.coordinate_stack[-1] if piece.coordinate_stack else None
-        # previous_id = piece.id
+        # previous_stack_size = len(chess_piece.coordinate_stack)
+        # previous_top = chess_piece.coordinate_stack[-1] if chess_piece.coordinate_stack else None
+        # previous_id = chess_piece.id
         #
         # new_rank = Queen()
-        # piece.assign_rank(new_rank)
+        # chess_piece.assign_rank(new_rank)
 
 
     #
     # def _promotion_succeeded(
-    #         self, piece: 'ChessPiece',
+    #         self, chess_piece: 'ChessPiece',
     #         old_stack_size: int,
     #         old_top_coordinate: Coordinate,
     #         old_id: int
     # ) -> bool:
-    #     if not isinstance(piece.interfaces, Queen):
+    #     if not isinstance(chess_piece.interfaces, Queen):
     #         return False
-    #     if hasattr(piece.interfaces, "chess_piece_id") and piece.interfaces.chess_piece_id != old_id:
+    #     if hasattr(chess_piece.interfaces, "chess_piece_id") and chess_piece.interfaces.chess_piece_id != old_id:
     #         return False
-    #     if len(piece.coordinate_stack) != old_stack_size:
+    #     if len(chess_piece.coordinate_stack) != old_stack_size:
     #         return False
-    #     if piece.coordinate_stack[-1] != old_top_coordinate:
+    #     if chess_piece.coordinate_stack[-1] != old_top_coordinate:
     #         return False
     #     return True

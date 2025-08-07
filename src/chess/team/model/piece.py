@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack
-from chess.map.service.map_service import MapService
+from chess.map.map_service import MapService
 
 from chess.team.model.mobility_status import MobilityStatus
 

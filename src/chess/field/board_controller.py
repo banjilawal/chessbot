@@ -2,7 +2,7 @@ from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
-from chess.map.service.map_service import MapService
+from chess.map.map_service import MapService
 from chess.team.team_service import TeamService
 
 
@@ -35,7 +35,7 @@ class BoardController:
 
     def execute_move(self, piece_id: int, destination_coordinate: Coordinate):
         """
-        Executes a chess piece's move. This is the high-level entry point for moves.
+        Executes a chess chess_piece's move. This is the high-level entry point for moves.
         It orchestrates validation and board state updates.
         """
         piece = self._team_service.find_chess_piece_by_id(piece_id)
@@ -46,7 +46,7 @@ class BoardController:
         if not origin_coordinate:
             raise ValueError(f"Move failed: {piece.label} has no current position.")
 
-        # 1. Validate the move using the piece's motion controller
+        # 1. Validate the move using the chess_piece's motion controller
         print(
             f"BoardController: Validating move for {piece.label} from {origin_coordinate} to {destination_coordinate}")
         piece.motion_controller.validate_and_check_move(piece, self._board_for_motion_logic, destination_coordinate)

@@ -2,15 +2,15 @@ from typing import List, Optional
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
-
+from chess.team.model.mobility_status import MobilityStatus
 
 
 class MapService:
     from chess.map.map import Map
     _map: Map
 
-    def __init__(self, repo: Map):
-        self._map = repo
+    def __init__(self, mao: Map):
+        self._map = map
 
 
     def squares(self) -> List[List[Square]]:
@@ -41,9 +41,9 @@ class MapService:
 
     def capture_square(self, piece: 'ChessPiece', from_coordinate: Coordinate, to_coordinate: Coordinate):
         """
-        Moves a piece from its origin to a destination square, handling captures.
+        Moves a chess_piece from its origin to a destination square, handling captures.
         This method assumes the move has already been validated by the motion controller.
-        It updates the board state and piece coordinates/status.
+        It updates the board state and chess_piece coordinates/status.
         """
         origin_square = self.find_square_by_coordinate(from_coordinate)
         destination_square = self.find_square_by_coordinate(to_coordinate)
@@ -61,16 +61,16 @@ class MapService:
         if target_occupant is not None:
             # This is a capture scenario
             captured_piece = target_occupant
-            captured_piece.status = MobilityStatus.PRISONER  # Update status of captured piece
+            captured_piece.status = MobilityStatus.PRISONER  # Update status of captured chess_piece
             captured_piece.captor = piece  # Set the captor
             print(f"GridService: {piece.label} captured {captured_piece.label} at {to_coordinate}")
         else:
             # This is a move to an empty square
             print(f"GridService: {piece.label} moved to empty square {to_coordinate}")
 
-        # Place the moving piece on the destination square
+        # Place the moving chess_piece on the destination square
         destination_square.set_occupant(piece)
-        piece.coordinate_stack.push_coordinate(to_coordinate)  # Update piece's coordinate stack
+        piece.coordinate_stack.push_coordinate(to_coordinate)  # Update chess_piece's coordinate stack
         print(f"GridService: {piece.label} now at {to_coordinate}")
 
 
