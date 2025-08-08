@@ -106,8 +106,8 @@ class MotionController(ABC):
     #
     #     origin = chess_piece.current_coordinate()
     #     print(f"{chess_piece.label} starting move from {origin} to {destination}")
-    #     print(f"motion instance: {self.motion_service}")
-    #     print(f"motion type: {type(self.motion_service)}")
+    #     print(f"rank instance: {self.motion_service}")
+    #     print(f"rank type: {type(self.motion_service)}")
     #     print(f"dispatch_to_move_executor: {self.motion_service.dispatch_to_move_executor}")
     #     # Call motion_service.move() with keyword arguments to ensure proper parameter alignment
     #     self.motion_service.dispatch_to_move_executor(chess_piece, destination, square_service)

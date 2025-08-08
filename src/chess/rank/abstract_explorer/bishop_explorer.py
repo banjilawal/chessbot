@@ -3,7 +3,7 @@
 #
 # from chess.geometry.coordinate.coordinate import Coordinate
 # from chess.map.map_service import MapService
-# from chess.motion.abstract_explorer.abstract_explorer import Explorer
+# from chess.rank.abstract_explorer.abstract_explorer import Explorer
 # from chess.team.model.piece import ChessPiece
 #
 #

@@ -2,7 +2,6 @@ from enum import Enum
 from typing import List
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.controller.motion_controller import MotionController
 
 class RankConfig(Enum):
     def __new__(
