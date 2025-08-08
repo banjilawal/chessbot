@@ -1,10 +1,10 @@
-from chess.rank.bishop_motion_controller import BishopMotionController
-from chess.rank.castle_motion_controller import CastleMotionController
-from chess.rank.promotable.king_motion_controller import KingMotionController
-from chess.rank.knight_motion_controller import KnightMotionController
-from chess.rank.promotable.pawn_motion_controller import PawnMotionController
+from chess.rank.bishop_rank import BishopMotionController
+from chess.rank.castle_rank import CastleMotionController
+from chess.rank.promotable.king_rank import KingMotionController
+from chess.rank.knight_rank import KnightMotionController
+from chess.rank.promotable.pawn_rank import PawnMotionController
 from chess.config.rank_config import RankConfig
-from chess.rank.queen_motion_controller import QueenMotionController
+from chess.rank.queen_rank import QueenMotionController
 
 
 class MotionControllerBuilder:

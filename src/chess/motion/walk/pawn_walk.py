@@ -6,7 +6,7 @@ from chess.geometry.line.vertical import Vertical
 from chess.map.map_service import MapService
 from chess.motion.walk.walk import Walk
 from chess.team.model.piece import ChessPiece
-from chess.rank.promotable.pawn_motion_controller import PawnMotionController
+from chess.rank.promotable.pawn_rank import PawnMotionController
 
 
 class PawnWalk(Walk):

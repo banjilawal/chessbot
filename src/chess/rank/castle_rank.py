@@ -1,7 +1,7 @@
 from typing import List
 
 
-from chess.rank.motion_controller import MotionController
+from chess.rank.rank import MotionController
 from chess.geometry.quadrant import Quadrant
 from chess.motion.walk.castle_walk import CastleWalk
 

@@ -10,7 +10,7 @@ from chess.team.model.mobility_status import MobilityStatus
 from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from chess.rank.motion_controller import MotionController
+    from chess.rank.rank import MotionController
     from chess.geometry.board.board import ChessBoard
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
