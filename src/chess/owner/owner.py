@@ -1,6 +1,6 @@
 from abc import ABC
 from typing import List, TYPE_CHECKING, Optional
-from chess.team.model.team import Team
+from chess.team.element.team import Team
 
 # if TYPE_CHECKING:
 

@@ -5,7 +5,7 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.motion_controller_factory import MotionControllerFactory
 from chess.config.team_config import TeamConfig
-from chess.team.model.team import Team
+from chess.team.element.team import Team
 
 
 class TeamFactory:

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.team.model.piece import ChessPiece
+from chess.team.element.piece import ChessPiece
 
 
 class Walk(ABC):

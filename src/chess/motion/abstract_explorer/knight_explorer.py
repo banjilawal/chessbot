@@ -1,7 +1,7 @@
 # from chess.geometry.board.board import ChessBoard
 # from chess.geometry.coordinate.coordinate import Coordinate
 #
-# from chess.team.model.piece import ChessPiece
+# from chess.team.element.piece import ChessPiece
 # from chess.motion.walk.knight_walk import KnightWalk
 # from typing import List
 #

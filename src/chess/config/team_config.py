@@ -2,7 +2,7 @@ from enum import Enum
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.team.model.play_order import PlayOrder
+from chess.team.element.play_order import PlayOrder
 
 
 class TeamConfig(Enum):

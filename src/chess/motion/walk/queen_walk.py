@@ -4,7 +4,7 @@ from chess.motion.walk.bishop_walk import BishopWalk
 from chess.motion.walk.castle_walk import CastleWalk
 from chess.geometry.line.diagonal import Diagonal
 from chess.motion.walk.walk import Walk
-from chess.team.model.piece import ChessPiece
+from chess.team.element.piece import ChessPiece
 
 
 class QueenWalk(Walk):

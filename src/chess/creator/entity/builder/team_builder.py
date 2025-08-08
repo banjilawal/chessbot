@@ -1,7 +1,7 @@
 
 from chess.config.team_config import TeamConfig
 from chess.creator.emit import id_emitter
-from chess.team.model.team import Team
+from chess.team.element.team import Team
 
 
 class TeamBuilder:

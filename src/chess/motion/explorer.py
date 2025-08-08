@@ -4,7 +4,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.map_service import MapService
 
 if TYPE_CHECKING:
-    from chess.team.model.piece import ChessPiece
+    from chess.team.element.piece import ChessPiece
 
 
 class Explorer:

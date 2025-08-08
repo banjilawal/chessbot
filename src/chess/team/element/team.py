@@ -2,10 +2,10 @@ from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.team.model.play_order import PlayOrder
+from chess.team.element.play_order import PlayOrder
 
 if TYPE_CHECKING:
-    from chess.team.model.piece import ChessPiece
+    from chess.team.element.piece import ChessPiece
 
 class Team:
     _id: int

@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
-from chess.team.model.mobility_status import MobilityStatus
+from chess.team.element.mobility_status import MobilityStatus
 
 
 class MapService:

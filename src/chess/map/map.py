@@ -6,7 +6,7 @@ from chess.map.element.square import Square
 from chess.map.square_iterator import SquareIterator
 
 if TYPE_CHECKING:
-    from chess.team.model.piece import ChessPiece
+    from chess.team.element.piece import ChessPiece
 
 
 class Map:

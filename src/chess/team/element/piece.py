@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 from chess.map.map_service import MapService
 
-from chess.team.model.mobility_status import MobilityStatus
+from chess.team.element.mobility_status import MobilityStatus
 
 from typing import List, TYPE_CHECKING
 
