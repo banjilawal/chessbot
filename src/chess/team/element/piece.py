@@ -87,7 +87,7 @@ class ChessPiece:
             self._status = status
 
 
-    @status.setter
+    @captor.setter
     def captor(self, captor: 'ChessPiece'):
         self._captor = captor
 

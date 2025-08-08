@@ -44,6 +44,7 @@ class Square:
     def status(self) -> 'OccupationStatus':
         return self._status
 
+
     # Removed occupy() and leave() methods. MapService will manage these.
     def set_occupant(self, piece: Optional['ChessPiece']):
         """

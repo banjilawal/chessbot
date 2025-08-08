@@ -1,8 +1,11 @@
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
 from chess.team.element.mobility_status import MobilityStatus
+
+if TYPE_CHECKING:
+    from chess.team.element.piece import ChessPiece
 
 
 class MapService:
@@ -35,7 +38,7 @@ class MapService:
     def find_square_by_name(self, name:str) -> Optional[Square]:
         return self._map.find_square_by_name(name)
 
-    def find_coordinates_reachable_from_chess_piece(self, chess_piece: ChessPiece) -> List[Coordinate]:
+    def find_coordinates_reachable_from_chess_piece(self, chess_piece: 'ChessPiece') -> List[Coordinate]:
         destinations: List[Coordinate]
         origin = chess_piece.coordinate_stack.current_coordinate()
 
