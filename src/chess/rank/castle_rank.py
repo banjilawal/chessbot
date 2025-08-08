@@ -6,7 +6,7 @@ from chess.geometry.quadrant import Quadrant
 from chess.motion.walk.castle_walk import CastleWalk
 
 
-class CastleMotionController(MotionController):
+class CastleRank(MotionController):
     def __init__(
         self,
         name: str,

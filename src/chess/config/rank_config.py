@@ -22,13 +22,13 @@ class RankConfig(Enum):
 
     PAWN = ("PawnRank", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
     BISHOP = ("BishopRank", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
-    CASTLE = ("CastleMotionController", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
+    CASTLE = ("CastleRank", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
     KING =(
         "KingRank", "K", 1, 0,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW]
     )
     KNIGHT = (
-        "KnightMotionController", "N", 2, 3,
+        "KnightRank", "N", 2, 3,
         [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW]
     )
     QUEEN = (

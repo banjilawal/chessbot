@@ -1,7 +1,7 @@
 from chess.rank.bishop_rank import BishopRank
-from chess.rank.castle_rank import CastleMotionController
+from chess.rank.castle_rank import CastleRank
 from chess.rank.promotable.king_rank import KingRank
-from chess.rank.knight_rank import KnightMotionController
+from chess.rank.knight_rank import KnightRank
 from chess.rank.promotable.pawn_rank import PawnRank
 from chess.config.rank_config import RankConfig
 from chess.rank.queen_rank import QueenMotionController
@@ -29,7 +29,7 @@ class MotionControllerBuilder:
                 capture_value=config.capture_value
             )
         if config is RankConfig.KNIGHT:
-            return KnightMotionController(
+            return KnightRank(
                 name=config.name,
                 letter=config.letter,
                 number_per_team=config.number_per_player,
@@ -45,7 +45,7 @@ class MotionControllerBuilder:
                 capture_value=config.capture_value
             )
         if config is RankConfig.CASTLE:
-            return CastleMotionController(
+            return CastleRank(
                 name=config.name,
                 letter=config.letter,
                 number_per_team=config.number_per_player,

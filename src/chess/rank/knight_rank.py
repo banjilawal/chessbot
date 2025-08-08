@@ -5,7 +5,7 @@ from chess.geometry.quadrant import Quadrant
 from chess.motion.walk.knight_walk import KnightWalk
 
 
-class KnightMotionController(MotionController):
+class KnightRank(MotionController):
 
     def __init__(
         self,
