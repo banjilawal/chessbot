@@ -25,7 +25,7 @@ class ChessPiece:
     _name: str
     _team: 'Team'
     _captor: 'ChessPiece'
-    _motion_controller: 'Rank'
+    _rank: 'Rank'
     _coordinate_stack: CoordinateStack
     _status: MobilityStatus
 
@@ -41,7 +41,7 @@ class ChessPiece:
         self._name = name
         self._id = chess_piece_id
         self._status = MobilityStatus.FREE
-        self._motion_controller = rank
+        self._rank = rank
         self._coordinate_stack = CoordinateStack()
         team.chess_pieces.append(self)
 
@@ -62,8 +62,8 @@ class ChessPiece:
 
 
     @property
-    def motion_controller(self) -> 'Rank':
-        return self._motion_controller
+    def rank(self) -> 'Rank':
+        return self._rank
 
 
     @property
@@ -92,16 +92,14 @@ class ChessPiece:
         self._captor = captor
 
 
-
-
     def walk(self, square_service: MapService, destination: Coordinate):
-        return self._motion_controller.delegate_move_execution(piece=self, square_service=square_service, destination=destination)
+        return self._rank.delegate_move_execution(piece=self, square_service=square_service, destination=destination)
 
 
     def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
 
         print(f"Everything is fine with {self._name} calling Rank.explore for the list")
-        return self._motion_controller.explore(self, board)
+        return self._rank.explore(self, board)
 
 
     def __eq__(self, other):
@@ -117,7 +115,7 @@ class ChessPiece:
 
 
     def __hash__(self):
-        return hash((self.id, self.motion_controller))
+        return hash((self.id, self.rank))
 
     def __str__(self):
         location_str = f"current_coord:{self._coordinate_stack.current_coordinate()}"

@@ -59,7 +59,7 @@ class PawnWalk(Walk):
         if chess_piece is None:
             print("Pawn is None cannot advance")
             return False
-        if not isinstance(chess_piece.motion_controller, PawnRank):
+        if not isinstance(chess_piece.rank, PawnRank):
             print("ChessPiece is not a chess_piece cannot advance")
             return False
 

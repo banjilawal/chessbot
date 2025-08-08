@@ -13,6 +13,7 @@ class ChessPieceBuilder:
         name = team.letter.capitalize() + rank.letter.capitalize() + str(team_rank_member_id)
         if rank.letter == "K" or rank.letter == "Q":
             name = team.letter.capitalize() + rank.letter.capitalize()
+
         return ChessPiece(
             chess_piece_id=chess_piece_id,
             name=name,

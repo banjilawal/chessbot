@@ -39,7 +39,7 @@ class MapService:
         destinations: List[Coordinate]
         origin = chess_piece.coordinate_stack.current_coordinate()
 
-        for quadrant in chess_piece.motion_controller.territories:
+        for quadrant in chess_piece.rank.territories:
             results = self._map.coordinates_from_origin(origin, quadrant.delta)
             destinations.extend(results)
 

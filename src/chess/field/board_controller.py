@@ -49,7 +49,7 @@ class BoardController:
         # 1. Validate the move using the chess_piece's motion rank
         print(
             f"BoardController: Validating move for {piece.label} from {origin_coordinate} to {destination_coordinate}")
-        piece.motion_controller.validate_and_check_move(piece, self._board_for_motion_logic, destination_coordinate)
+        piece.rank.validate_and_check_move(piece, self._board_for_motion_logic, destination_coordinate)
         print(f"BoardController: Move for {piece.label} is valid.")
 
         # 2. If validation passes, update the board state via MapService
