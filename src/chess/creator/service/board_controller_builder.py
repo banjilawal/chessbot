@@ -27,16 +27,16 @@ class BoardControllerBuilder:
         #     teams.append(team)
         #
         # motion_controllers = MotionControllerFactory.assemble()
-        # for motion_controller in motion_controllers:
-        #     print(motion_controller)
+        # for rank in motion_controllers:
+        #     print(rank)
         #
         # for team in teams:
-        #     for motion_controller in motion_controllers:
-        #         for i in range(motion_controller.number_per_team):
+        #     for rank in motion_controllers:
+        #         for i in range(rank.number_per_team):
         #             chess_piece = ChessPieceBuilder.build(
         #                 id_emitter.chess_piece_id,
         #                 (i + 1),
-        #                 motion_controller=motion_controller,
+        #                 rank=rank,
         #                 team=team
         #             )
         #             # print(chess_piece)

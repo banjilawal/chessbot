@@ -11,10 +11,10 @@
 #     def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
 #         origin = piece.current_coordinate()
 #         destinations: List[Coordinate] = []
-#         quadrants = piece.motion_controller.territories
+#         quadrants = piece.rank.territories
 #         print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 #
 #         bishop_destinations = BishopMoveGenerator.search(piece, board)
-#         castle_destinations = CastleMoveGenerator.search(piece.motion_controller, piece.current_coordinate(), board)
+#         castle_destinations = CastleMoveGenerator.search(piece.rank, piece.current_coordinate(), board)
 #
 #         return bishop_destinations + castle_destinations

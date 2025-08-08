@@ -11,7 +11,7 @@
 #     def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
 #         origin = piece.current_coordinate()
 #         destinations: List[Coordinate] = []
-#         quadrants = piece.motion_controller.territories
+#         quadrants = piece.rank.territories
 #         print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 #
 #         for quadrant in quadrants:

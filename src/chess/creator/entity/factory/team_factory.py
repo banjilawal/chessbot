@@ -29,7 +29,7 @@ class TeamFactory:
                     chess_piece = ChessPieceBuilder.build(
                         id_emitter.chess_piece_id,
                         (i + 1),
-                        motion_controller=motion_controller,
+                        rank=motion_controller,
                         team=team
                     )
                     # print(chess_piece)

@@ -29,19 +29,19 @@ class ChessPiece:
     _coordinate_stack: CoordinateStack
     _status: MobilityStatus
 
-    def __init__(self, chess_piece_id: int, name: str, motion_controller: 'Rank', team: 'Team'):
+    def __init__(self, chess_piece_id: int, name: str, rank: 'Rank', team: 'Team'):
         if not chess_piece_id:
             raise ValueError("Cannot create a chess_piece with an empty id.")
         if chess_piece_id < 0:
             raise ValueError("Cannot create a chess_piece with a negative id.")
-        if motion_controller is None:
+        if rank is None:
             raise ValueError("Cannot create a chess_piece with an null interfaces.")
 
         self._team = team
         self._name = name
         self._id = chess_piece_id
         self._status = MobilityStatus.FREE
-        self._motion_controller = motion_controller
+        self._motion_controller = rank
         self._coordinate_stack = CoordinateStack()
         team.chess_pieces.append(self)
 

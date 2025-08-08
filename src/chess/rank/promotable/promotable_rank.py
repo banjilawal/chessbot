@@ -44,7 +44,7 @@ class PromotableRank:
         promoted_chess_piece = ChessPiece(
             chess_piece_id=chess_piece.id,
             name=chess_piece.name,
-            motion_controller=QueenRank(),
+            rank=QueenRank(),
             team=chess_piece.team
         )
         stack = chess_piece.coordinate_stack.stack
