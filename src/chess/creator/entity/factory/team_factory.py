@@ -19,17 +19,17 @@ class TeamFactory:
             team = TeamBuilder.build(team_config)
             teams.append(team)
 
-        motion_controllers = RankFactory.assemble()
-        for motion_controller in motion_controllers:
-            print(motion_controller)
+        ranks = RankFactory.assemble()
+        for rank in ranks:
+            print(rank)
 
         for team in teams:
-            for motion_controller in motion_controllers:
-                for i in range(motion_controller.number_per_team):
+            for rank in ranks:
+                for i in range(rank.number_per_team):
                     chess_piece = ChessPieceBuilder.build(
                         id_emitter.chess_piece_id,
                         (i + 1),
-                        rank=motion_controller,
+                        rank=rank,
                         team=team
                     )
                     # print(chess_piece)
