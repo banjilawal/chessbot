@@ -18,7 +18,7 @@ class BoardControllerBuilder:
         TeamPlacementManager.place_teams(board_controller)
         return board_controller
         # BoardControllerBuilder.place_teams(team_service, square_service)
-        # return ArenaController(team_service=team_service, square_service=square_service)
+        # return Arena(team_service=team_service, square_service=square_service)
         # teams: List[Team] = []
         #
         # for team_config in TeamConfig:

@@ -8,13 +8,19 @@ from chess.team.element.piece import ChessPiece
 from chess.team.team_service import TeamService
 
 
-class ArenaController:
+class Arena:
+    _id: int
     _team_service: TeamService
     _square_service: MapService
 
-    def __init__(self, team_service: TeamService, square_service: MapService):
+    def __init__(self, arena_id: int, team_service: TeamService, square_service: MapService):
+        self._id = arena_id
         self._team_service = team_service
         self._square_service = square_service
+
+    @property
+    def id(self) -> int:
+        return self._id
 
 
     @property
@@ -87,13 +93,13 @@ class ArenaController:
     #
     #     # 1. Validate the move using the chess_piece's motion rank
     #     print(
-    #         f"ArenaController: Validating move for {piece.label} from {origin_coordinate} to {destination_coordinate}")
+    #         f"Arena: Validating move for {piece.label} from {origin_coordinate} to {destination_coordinate}")
     #     piece.rank.validate_and_check_move(piece, self._board_for_motion_logic, destination_coordinate)
-    #     print(f"ArenaController: Move for {piece.label} is valid.")
+    #     print(f"Arena: Move for {piece.label} is valid.")
     #
     #     # 2. If validation passes, update the obsolete_board state via MapService
-    #     print(f"ArenaController: Executing move for {piece.label} via GridService.")
+    #     print(f"Arena: Executing move for {piece.label} via GridService.")
     #     self._grid_service.capture_square(piece, origin_coordinate, destination_coordinate)  # Renamed call
-    #     print(f"ArenaController: Move for {piece.label} executed successfully.")
+    #     print(f"Arena: Move for {piece.label} executed successfully.")
 
 
