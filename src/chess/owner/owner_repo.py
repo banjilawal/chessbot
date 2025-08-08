@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from chess.owner.model.cybernetic_owner import CyberneticOwner
-from chess.owner.model.human_owner import HumanPlayer
+from chess.owner.model.human_owner import HumanOwner
 from chess.owner.model.owner import Owner
 
 
@@ -30,11 +30,11 @@ class OwnerRepo:
         return None
 
 
-    def human_owners(self) -> List[HumanPlayer]:
-        matches: List[HumanPlayer] = []
+    def human_owners(self) -> List[HumanOwner]:
+        matches: List[HumanOwner] = []
 
         for owner in self._owners:
-            if isinstance(owner, HumanPlayer) and owner not in matches:
+            if isinstance(owner, HumanOwner) and owner not in matches:
                 matches.append(owner)
         return matches
 
