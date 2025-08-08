@@ -92,7 +92,7 @@ class ChessPiece:
 
 
     # def walk(self, map_service: MapService, destination: Coordinate):
-    #     return self._rank.delegate_move_execution(piece=self, map_service=map_service, destination=destination)
+    #     return self._rank.delegate_move_execution(chess_piece=self, map_service=map_service, destination=destination)
     #
     #
     # def explore_destinations(self, obsolete_board: 'ObsoleteChessBoard') -> List[Coordinate]:

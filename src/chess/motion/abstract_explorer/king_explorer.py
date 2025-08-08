@@ -4,19 +4,19 @@
 # from chess.geometry.obsolete_board.obsolete_board import ObsoleteChessBoard
 #
 # from chess.geometry.coordinate.coordinate import Coordinate
-# from chess.team.element.piece import ChessPiece
+# from chess.team.element.chess_piece import ChessPiece
 #
 #
 # class KingMoveGenerator(MoveGenerator):
 #
-#     def _perform_search(self, piece: ChessPiece, obsolete_board: ObsoleteChessBoard) -> List[Coordinate]:
-#         origin = piece.current_coordinate()
+#     def _perform_search(self, chess_piece: ChessPiece, obsolete_board: ObsoleteChessBoard) -> List[Coordinate]:
+#         origin = chess_piece.current_coordinate()
 #         destinations: List[Coordinate] = []
-#         quadrants = piece.rank.territories
-#         print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
+#         quadrants = chess_piece.rank.territories
+#         print(f"{chess_piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")
 #
 #
-#         queen_destinations = QueenMoveGenerator.search(piece, obsolete_board)
+#         queen_destinations = QueenMoveGenerator.search(chess_piece, obsolete_board)
 #
 #         # Filter only coordinates that are one step away (Chebyshev distance == 1)
 #         destinations = [

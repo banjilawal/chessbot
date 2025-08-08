@@ -45,7 +45,7 @@ class Map:
         return SquareIterator(self._squares, index, delta)
 
     def occupied_squares(self) -> List[Square]:
-        """Returns a list of all squares that are currently occupied by a piece."""
+        """Returns a list of all squares that are currently occupied by a chess_piece."""
         return [square for row in self._squares for square in row if square.occupant is not None]
 
     def empty_squares(self) -> List[Square]:
