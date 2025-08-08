@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/owner/player_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/owner_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,11 +95,11 @@
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\owner\model" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\config" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\team" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\field" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\creator\service" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\factory\service" />
     </key>
   </component>
   <component name="RunManager" selected="Python.driver">
@@ -272,7 +272,7 @@
       <workItem from="1754407776490" duration="30591000" />
       <workItem from="1754453608087" duration="1824000" />
       <workItem from="1754455478725" duration="3056000" />
-      <workItem from="1754625868607" duration="12136000" />
+      <workItem from="1754625868607" duration="15363000" />
     </task>
     <servers />
   </component>
