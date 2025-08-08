@@ -5,6 +5,7 @@ from chess.motion.controller.knight_motion_controller import KnightMotionControl
 from chess.motion.controller.promotable.pawn_motion_controller import PawnMotionController
 from chess.motion.interfaces.rank_config import RankConfig
 from chess.motion.controller.queen_motion_controller import QueenMotionController
+from chess.motion.walk.king_walk import KingWalk
 
 
 class MotionControllerBuilder:
@@ -18,7 +19,7 @@ class MotionControllerBuilder:
                 letter=config.letter,
                 number_per_team=config.number_per_player,
                 territories=config.territories,
-                capture_value=config.capture_value,
+                capture_value=config.capture_value
             )
         if config is RankConfig.PAWN:
             return PawnMotionController(
@@ -26,7 +27,7 @@ class MotionControllerBuilder:
                 letter=config.letter,
                 number_per_team=config.number_per_player,
                 territories=config.territories,
-                capture_value=config.capture_value,
+                capture_value=config.capture_value
             )
         if config is RankConfig.KNIGHT:
             return KnightMotionController(
@@ -34,7 +35,7 @@ class MotionControllerBuilder:
                 letter=config.letter,
                 number_per_team=config.number_per_player,
                 territories=config.territories,
-                capture_value=config.capture_value,
+                capture_value=config.capture_value
             )
         if config is RankConfig.BISHOP:
             return BishopMotionController(
@@ -42,7 +43,7 @@ class MotionControllerBuilder:
                 letter=config.letter,
                 number_per_team=config.number_per_player,
                 territories=config.territories,
-                capture_value=config.capture_value,
+                capture_value=config.capture_value
             )
         if config is RankConfig.CASTLE:
             return CastleMotionController(
@@ -50,7 +51,7 @@ class MotionControllerBuilder:
                 letter=config.letter,
                 number_per_team=config.number_per_player,
                 territories=config.territories,
-                capture_value=config.capture_value,
+                capture_value=config.capture_value
             )
         if config is RankConfig.QUEEN:
             return QueenMotionController(
@@ -58,7 +59,7 @@ class MotionControllerBuilder:
                 letter=config.letter,
                 number_per_team=config.number_per_player,
                 territories=config.territories,
-                capture_value=config.capture_value,
+                capture_value=config.capture_value
             )
         raise ValueError(f"Invalid rank config: {config}")
 

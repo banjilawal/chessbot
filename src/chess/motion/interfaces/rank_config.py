@@ -2,17 +2,7 @@ from enum import Enum
 from typing import List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
-
-from chess.motion.bishop.service.bishop_motion_service import BishopMotionService
-from chess.motion.castle.service.castle_motion_service import CastleMotionService
-from chess.motion.king.service.king_motion_service import KingMotionService
-from chess.motion.knight.service.knight_motion_service import KnightMotionService
-from chess.motion.pawn.service.pawn_motion_service import PawnMotionService
-from chess.motion.queen.service.queen_motion_service import QueenMotionService
 from chess.motion.controller.motion_controller import MotionController
-
-if TYPE_CHECKING:
-    from chess.motion.interfaces.motion_service import MotionService
 
 class RankConfig(Enum):
     def __new__(
@@ -21,8 +11,7 @@ class RankConfig(Enum):
         letter,
         number_per_player: int,
         capture_value: int,
-        territories: List[Quadrant],
-        motion_service: 'MotionService',
+        territories: List[Quadrant]
     ):
         obj = object.__new__(cls)
         obj._value_ = name
@@ -30,36 +19,22 @@ class RankConfig(Enum):
         obj._number_per_player = number_per_player
         obj._capture_value = capture_value
         obj._territories = territories
-        obj._motion_service = motion_service
         return obj
 
+    PAWN = ("PawnMotionController", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
+    BISHOP = ("BishopMotionController", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
+    CASTLE = ("CastleMotionController", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
     KING =(
         "KingMotionController", "K", 1, 0,
-        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW],
-        KingMotionService()
+        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW]
     )
-
-    PAWN = (
-        "PawnMotionController", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW], PawnMotionService()
-    )
-
     KNIGHT = (
-        "KnightMotionController", "N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW],
-        KnightMotionService()
+        "KnightMotionController", "N", 2, 3,
+        [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW]
     )
-
-    BISHOP = (
-        "BishopMotionController", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW], BishopMotionService()
-    )
-
-    CASTLE = (
-        "CastleMotionController", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W], CastleMotionService()
-    )
-
     QUEEN = (
         "Queen", "Q", 1, 9,
-        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW],
-        QueenMotionService()
+        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
     )
 
     @property
