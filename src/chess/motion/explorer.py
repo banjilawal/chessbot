@@ -1,4 +1,4 @@
-from typing import List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING, Dict
 
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.map_service import MapService
@@ -13,6 +13,10 @@ class Explorer:
         pass
 
     @staticmethod
-    def discover_destinations(self, chess_piece: ChessPiece, map_service: MapService) -> List[Coordinate]:
+    def discover_destinations(
+        chess_piece: ChessPiece,
+        map_service: MapService
+    ) -> Dict[ChessPiece, List[Coordinate]]:
+
         return map_service.find_coordinates_reachable_from_chess_piece(chess_piece)
 

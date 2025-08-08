@@ -31,7 +31,6 @@ class BoardController:
 
         if chess_piece is  None:
             raise ValueError(f"ChessPiece with ID {chess_piece_id} not found.")
-
         origin = chess_piece.coordinate_stack.current_coordinate()
 
         if not chess_piece.rank.walk.is_walkable(origin, destination):
@@ -39,7 +38,6 @@ class BoardController:
                 f"Destination {destination} is not reachable from {origin} by a "
                 f"{chess_piece.rank.walk.__class__.__name__}"
             )
-
         self._square_service.capture_square(chess_piece, destination)
 
 
@@ -49,7 +47,8 @@ class BoardController:
         if team is None:
             raise ValueError(f"Team with ID {id} not found.")
 
-        free_chess_pieces = .
+        explorers = team.free_chess_pieces()
+
 
 
 
