@@ -1,4 +1,4 @@
-from chess.rank.bishop_rank import BishopMotionController
+from chess.rank.bishop_rank import BishopRank
 from chess.rank.castle_rank import CastleMotionController
 from chess.rank.promotable.king_rank import KingRank
 from chess.rank.knight_rank import KnightMotionController
@@ -37,7 +37,7 @@ class MotionControllerBuilder:
                 capture_value=config.capture_value
             )
         if config is RankConfig.BISHOP:
-            return BishopMotionController(
+            return BishopRank(
                 name=config.name,
                 letter=config.letter,
                 number_per_team=config.number_per_player,

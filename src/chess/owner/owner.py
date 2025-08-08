@@ -60,10 +60,10 @@ class Owner(ABC):
     # @staticmethod
     # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, chess_board: ChessBoard):
     #    if chess_piece is None:
-    #        print("BishopMotionController is None")
+    #        print("BishopRank is None")
     #        return None
     #    if chess_piece.current_position() is None:
-    #        print("BishopMotionController current position is None.")
+    #        print("BishopRank current position is None.")
     #
     #        return None
     #    if chess_board is None:

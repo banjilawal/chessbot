@@ -21,7 +21,7 @@ class RankConfig(Enum):
         return obj
 
     PAWN = ("PawnRank", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
-    BISHOP = ("BishopMotionController", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
+    BISHOP = ("BishopRank", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
     CASTLE = ("CastleMotionController", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
     KING =(
         "KingRank", "K", 1, 0,

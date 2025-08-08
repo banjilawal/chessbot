@@ -6,7 +6,7 @@ from chess.motion.walk.bishop_walk import BishopWalk
 
 
 
-class BishopMotionController(MotionController):
+class BishopRank(MotionController):
 
     def __init__(
         self,

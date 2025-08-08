@@ -116,10 +116,10 @@ class MotionController(ABC):
     # def explore(self, chess_piece: ChessPiece, board: 'ChessBoard') -> List['Coordinate']:
     #     """Find all possible moves for a bishop chess_piece."""
     #     if chess_piece is None:
-    #         raise ValueError("BishopMotionController cannot explore without a chess_piece.")
+    #         raise ValueError("BishopRank cannot explore without a chess_piece.")
     #
     #     if board is None:
-    #         raise ValueError("BishopMotionController cannot explore without a chess_board.")
+    #         raise ValueError("BishopRank cannot explore without a chess_board.")
     #
     #     return self.motion_service.explore(chess_piece, board)
     #
