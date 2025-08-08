@@ -2,6 +2,8 @@ from enum import Enum
 from typing import List
 
 from chess.geometry.quadrant import Quadrant
+from chess.rank.rank import Rank
+
 
 class RankConfig(Enum):
     def __new__(
@@ -25,7 +27,10 @@ class RankConfig(Enum):
     CASTLE = ("CastleRank", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
     KING =(
         "KingRank", "K", 1, 0,
-        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW]
+        [
+            Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE,
+            Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW
+        ]
     )
     KNIGHT = (
         "KnightRank", "N", 2, 3,
@@ -33,7 +38,10 @@ class RankConfig(Enum):
     )
     QUEEN = (
         "Queen", "Q", 1, 9,
-        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
+        [
+            Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE,
+            Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW
+        ]
     )
 
     @property
@@ -53,7 +61,7 @@ class RankConfig(Enum):
         return self._territories
 
     @staticmethod
-    def find_config_by_class(rank: MotionController):
+    def find_config_by_class(rank: Rank) -> "RankConfig":
         print(f"Looking for config with name: {rank.name}")
         for config in RankConfig:
             print(f"Checking config: {config.value}")
