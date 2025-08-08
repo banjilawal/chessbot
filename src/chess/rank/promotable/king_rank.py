@@ -5,7 +5,7 @@ from chess.rank.promotable.promotable_rank import PromotableRank
 from chess.motion.walk.king_walk import KingWalk
 
 
-class KingMotionController(PromotableRank):
+class KingRank(PromotableRank):
     def __init__(
         self,
         name: str,

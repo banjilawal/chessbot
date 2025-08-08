@@ -6,7 +6,7 @@ from chess.rank.promotable.promotable_rank import PromotableRank
 from chess.motion.walk.pawn_walk import PawnWalk
 
 
-class PawnMotionController(PromotableRank):
+class PawnRank(PromotableRank):
 
     def __init__(
             self,

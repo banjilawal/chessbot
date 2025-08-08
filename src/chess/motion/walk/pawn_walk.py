@@ -6,7 +6,7 @@ from chess.geometry.line.vertical import Vertical
 from chess.map.map_service import MapService
 from chess.motion.walk.walk import Walk
 from chess.team.model.piece import ChessPiece
-from chess.rank.promotable.pawn_rank import PawnMotionController
+from chess.rank.promotable.pawn_rank import PawnRank
 
 
 class PawnWalk(Walk):
@@ -59,7 +59,7 @@ class PawnWalk(Walk):
         if chess_piece is None:
             print("Pawn is None cannot advance")
             return False
-        if not isinstance(chess_piece.motion_controller, PawnMotionController):
+        if not isinstance(chess_piece.motion_controller, PawnRank):
             print("ChessPiece is not a chess_piece cannot advance")
             return False
 

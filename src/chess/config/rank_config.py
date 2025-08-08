@@ -20,11 +20,11 @@ class RankConfig(Enum):
         obj._territories = territories
         return obj
 
-    PAWN = ("PawnMotionController", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
+    PAWN = ("PawnRank", "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
     BISHOP = ("BishopMotionController", "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
     CASTLE = ("CastleMotionController", "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
     KING =(
-        "KingMotionController", "K", 1, 0,
+        "KingRank", "K", 1, 0,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W,Quadrant.NW]
     )
     KNIGHT = (
