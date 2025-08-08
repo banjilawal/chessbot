@@ -1,11 +1,11 @@
 from typing import List
 
-from chess.rank.rank import MotionController
+from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 from chess.motion.walk.knight_walk import KnightWalk
 
 
-class KnightRank(MotionController):
+class KnightRank(Rank):
 
     def __init__(
         self,

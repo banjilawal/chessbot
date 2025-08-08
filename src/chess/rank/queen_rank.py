@@ -1,12 +1,12 @@
 from typing import List
 
 from chess.geometry.quadrant import Quadrant
-from chess.rank.rank import MotionController
+from chess.rank.rank import Rank
 from chess.motion.walk.queen_walk import QueenWalk
 
 
 
-class QueenRank(MotionController):
+class QueenRank(Rank):
 
     def __init__(
         self,

@@ -1,12 +1,12 @@
 from typing import List
 
-from chess.rank.rank import MotionController
+from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 from chess.motion.walk.bishop_walk import BishopWalk
 
 
 
-class BishopRank(MotionController):
+class BishopRank(Rank):
 
     def __init__(
         self,

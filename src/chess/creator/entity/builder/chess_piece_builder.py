@@ -1,5 +1,5 @@
 from chess.team.model.piece import ChessPiece
-from chess.rank.rank import MotionController
+from chess.rank.rank import Rank
 
 from chess.team.model.team import Team
 
@@ -8,7 +8,7 @@ class ChessPieceBuilder:
 
 
     @staticmethod
-    def build(chess_piece_id: int, team_rank_member_id: int, motion_controller: MotionController, team: Team):
+    def build(chess_piece_id: int, team_rank_member_id: int, motion_controller: Rank, team: Team):
 
         name = team.letter.capitalize() + motion_controller.letter.capitalize() + str(team_rank_member_id)
         if motion_controller.letter == "K" or motion_controller.letter == "Q":
