@@ -12,10 +12,10 @@ def main():
         # launch_game(arena)
 
     except Exception as e:
-        logger.critical(f"Game failed: {e}", exc_info=True)
+        logger.critical(f"Match failed: {e}", exc_info=True)
         raise
     finally:
-        logger.info("Game session ended")
+        logger.info("Match session ended")
 
 
 

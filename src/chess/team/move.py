@@ -1,20 +1,21 @@
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.team.element.piece import ChessPiece
+from chess.team.element.team import Team
 
 
 class Move:
-    _team: TeamBuilder
+    _team: Team
     _team_member: ChessPiece
     _destination: Coordinate
 
-    def __init__(self, team: TeamBuilder, team_member: ChessPiece, destination: Coordinate):
+    def __init__(self, team: Team, team_member: ChessPiece, destination: Coordinate):
         self._team = team
         self._team_member = team_member
         self._destination = destination
 
     @property
-    def team(self) -> TeamBuilder:
+    def team(self) -> Team:
         return self._team
 
     @property
