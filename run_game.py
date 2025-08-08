@@ -7,9 +7,9 @@ def main():
     logger = init_logging()  # Explicit logging start
 
     try:
-        logger.info("Starting field initialization")
-        # field = build_game()
-        # launch_game(field)
+        logger.info("Starting arena initialization")
+        # arena = build_game()
+        # launch_game(arena)
 
     except Exception as e:
         logger.critical(f"Game failed: {e}", exc_info=True)

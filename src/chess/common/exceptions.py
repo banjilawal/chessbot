@@ -1,6 +1,6 @@
 class ChessException(Exception):
     """Base exception with default message support"""
-    default_message = "Chess field error occurred"
+    default_message = "Chess arena error occurred"
 
     def __init__(self, message=None, **kwargs):
         self.message = message or self.default_message
