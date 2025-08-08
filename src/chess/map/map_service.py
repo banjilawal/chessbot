@@ -36,7 +36,7 @@ class MapService:
     def find_square_by_name(self, name:str) -> Optional[Square]:
         return self._map.find_square_by_name(name)
 
-    def find_squares_from_origin(self, chess_piece: ChessPiece) -> List[Square]:
+    def find_sqaure_squares_reachable_from_chess_piece(self, chess_piece: ChessPiece) -> List[Square]:
         destination_squares: List[Square]
 
         for quadrant in chess_piece.motion_controller.territories:
