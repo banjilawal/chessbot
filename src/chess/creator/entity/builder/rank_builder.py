@@ -7,7 +7,7 @@ from chess.config.rank_config import RankConfig
 from chess.rank.queen_rank import QueenRank
 
 
-class MotionControllerBuilder:
+class RankBuilder:
 
     @staticmethod
     def build(config: RankConfig):
@@ -65,7 +65,7 @@ class MotionControllerBuilder:
 #
 #
 # def main():
-#     motion = MotionControllerBuilder.build(RankConfig.PAWN)
+#     motion = RankBuilder.build(RankConfig.PAWN)
 #     print(motion)
 #
 #

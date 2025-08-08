@@ -26,7 +26,7 @@ class BoardControllerBuilder:
         #     team = TeamBuilder.build(team_config)
         #     teams.append(team)
         #
-        # motion_controllers = MotionControllerFactory.assemble()
+        # motion_controllers = RankFactory.assemble()
         # for rank in motion_controllers:
         #     print(rank)
         #

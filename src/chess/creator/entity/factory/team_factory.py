@@ -3,7 +3,7 @@ from typing import List
 from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
-from chess.creator.entity.factory.motion_controller_factory import MotionControllerFactory
+from chess.creator.entity.factory.rank_factory import RankFactory
 from chess.config.team_config import TeamConfig
 from chess.team.element.team import Team
 
@@ -19,7 +19,7 @@ class TeamFactory:
             team = TeamBuilder.build(team_config)
             teams.append(team)
 
-        motion_controllers = MotionControllerFactory.assemble()
+        motion_controllers = RankFactory.assemble()
         for motion_controller in motion_controllers:
             print(motion_controller)
 
