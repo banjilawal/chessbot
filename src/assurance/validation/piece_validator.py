@@ -16,7 +16,7 @@ class ChessPieceMovableValidationFailed(ValidationException):
 class ChessPiecePromotableValidationFailed(ValidationException):
     default_message = "ChessPiece failed promotable validation test"
 class ChessPieceOnBoardValidationFailed(ValidationException):
-    default_message = "ChessPiece failed on square_service validation test"
+    default_message = "ChessPiece failed on map_service validation test"
 
 
 class ChessPieceValidator:
@@ -112,6 +112,6 @@ class ChessPieceValidator:
 
         if len(piece.coordinate_stack) != 0 :
             return ValidationResult.send_failed_valtidation_report(
-                ChessPieceOnBoardValidationFailed("The chess chess_piece is already on the square_service"))
+                ChessPieceOnBoardValidationFailed("The chess chess_piece is already on the map_service"))
 
         return ValidationResult.send_passed_validation_report(payload=test_payload)

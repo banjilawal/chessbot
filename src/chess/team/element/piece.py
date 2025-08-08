@@ -91,8 +91,8 @@ class ChessPiece:
         self._captor = captor
 
 
-    # def walk(self, square_service: MapService, destination: Coordinate):
-    #     return self._rank.delegate_move_execution(piece=self, square_service=square_service, destination=destination)
+    # def walk(self, map_service: MapService, destination: Coordinate):
+    #     return self._rank.delegate_move_execution(piece=self, map_service=map_service, destination=destination)
     #
     #
     # def explore_destinations(self, obsolete_board: 'ObsoleteChessBoard') -> List[Coordinate]:

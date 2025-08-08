@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 class Map:
     """
-    A repository for managing all the squares on the chess square_service.
+    A repository for managing all the squares on the chess map_service.
     It provides methods for finding squares and iterating over them.
     """
     _squares: List[List[Square]]
@@ -21,7 +21,7 @@ class Map:
         Initializes the Map with a 2D list of Square objects.
 
         Args:
-            squares: A list of lists representing the rows and columns of the square_service.
+            squares: A list of lists representing the rows and columns of the map_service.
         """
         self._squares = squares
 
@@ -36,7 +36,7 @@ class Map:
         delta: Delta = Delta(delta_column=1, delta_row=1)
      ) -> SquareIterator:
         """
-        Returns a SquareIterator for traversing the square_service.
+        Returns a SquareIterator for traversing the map_service.
 
         Args:
             index: The starting coordinate for the iteration.
@@ -117,7 +117,7 @@ class Map:
         Returns:
             The ChessPiece object if a chess_piece is on the map, otherwise None.
         """
-        # This implementation is inefficient as it iterates the whole square_service.
+        # This implementation is inefficient as it iterates the whole map_service.
         # A more efficient approach would be to use find_square_by_coordinate first.
         square = self.find_square_by_coordinate(coordinate)
         return square.occupant if square else None
@@ -139,7 +139,7 @@ class Map:
 
     def __str__(self) -> str:
         """
-        Provides a string representation of the square_service, showing pieces or map names.
+        Provides a string representation of the map_service, showing pieces or map names.
 
         If a map is occupied, it shows the chess chess_piece's name.
         If a map is vacant, it shows the map's name in brackets.

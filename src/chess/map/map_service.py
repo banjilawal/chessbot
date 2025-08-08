@@ -41,16 +41,16 @@ class MapService:
     def find_coordinates_reachable_from_chess_piece(
         self,
         chess_piece: 'ChessPiece'
-    ) -> (ChessPiece, List[Coordinate]):
+    ) -> List[Coordinate]:
 
-        destinations: List[Coordinate]
+        destinations: List[Coordinate] = []
         origin = chess_piece.coordinate_stack.current_coordinate()
 
         for quadrant in chess_piece.rank.territories:
             results = self._map.coordinates_from_origin(origin, quadrant.delta)
             destinations.extend(results)
 
-        return ChessPiece, destinations
+        return destinations
 
 
     def squares_to_string(self) -> str:

@@ -17,8 +17,8 @@ class BoardControllerBuilder:
         from chess.creator.team_placement_manager import TeamPlacementManager
         TeamPlacementManager.place_teams(board_controller)
         return board_controller
-        # BoardControllerBuilder.place_teams(team_service, square_service)
-        # return Arena(team_service=team_service, square_service=square_service)
+        # BoardControllerBuilder.place_teams(team_service, map_service)
+        # return Arena(team_service=team_service, map_service=map_service)
         # teams: List[Team] = []
         #
         # for team_config in TeamConfig:
@@ -43,13 +43,13 @@ class BoardControllerBuilder:
         # return teams
     #
     # @staticmethod
-    # def place_teams(team_service: TeamService, square_service: MapService):
+    # def place_teams(team_service: TeamService, map_service: MapService):
     #
     #     for chess_piece in team_service.chess_pieces():
     #         for placement in PlacementChart:
     #             square_name = placement.map_chess_piece_to_square_name(chess_piece)
     #             if square_name is not None:
-    #                 map = square_service.find_square_by_name(square_name)
+    #                 map = map_service.find_square_by_name(square_name)
     #                 map.occupy(chess_piece)
     #                 print(map)
 
@@ -59,11 +59,11 @@ class BoardControllerBuilder:
 #
 #
 # def main():
-#     square_service = SquareServiceBuilder.assemble()
+#     map_service = SquareServiceBuilder.assemble()
 #     team_service = TeamServiceBuilder.assemble()
-#     board_controller = BoardControllerBuilder.build(team_service, square_service)
+#     board_controller = BoardControllerBuilder.build(team_service, map_service)
 #
-#     print(board_controller.square_service.squares_to_string())
+#     print(board_controller.map_service.squares_to_string())
 #
 #
 # if __name__ == "__main__":

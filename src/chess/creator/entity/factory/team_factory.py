@@ -43,7 +43,7 @@ class TeamFactory:
 #     for team in teams:
 #         print(team)
 #
-#     square_service = SquareServiceBuilder.assemble()
+#     map_service = SquareServiceBuilder.assemble()
 #
 #     for team in teams:
 #         for chess_piece in team.chess_pieces:
@@ -51,7 +51,7 @@ class TeamFactory:
 #             for placement in PlacementChart:
 #                 square_name = placement.map_chess_piece_to_square_name(chess_piece)
 #                 if square_name is not None:
-#                     map = square_service.find_square_by_name(square_name)
+#                     map = map_service.find_square_by_name(square_name)
 #                     map.occupy(chess_piece)
 #                     print(map)
 #     print(repo)

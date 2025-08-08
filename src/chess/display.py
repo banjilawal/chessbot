@@ -95,7 +95,7 @@ class GameDisplay:
                 pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
 
     def draw_all_entities(self):
-        # First draw square_service entities
+        # First draw map_service entities
         for entity in self.board.entities:
             self.draw_entity(entity)
 
@@ -113,7 +113,7 @@ class GameDisplay:
             self.screen.blit(text_surface, text_rect)
 
     def draw_entity(self, entity: 'GridEntity'):
-        """Draw a single mover on the square_service"""
+        """Draw a single mover on the map_service"""
         if entity is None:
             print("[Warning] Entity cannot be None. Cannot draw a null mover to the screen.")
             return
@@ -149,7 +149,7 @@ class GameDisplay:
             return None
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the arena square_service. Cannot get an mover at a position outside the square_service.")
+            print("Mouse is outside the arena map_service. Cannot get an mover at a position outside the map_service.")
             return None
         return self.board.cells[coordinate.row][coordinate.column].occupant
 
@@ -205,7 +205,7 @@ class GameDisplay:
         if isinstance(mover, VerticalMover):
             proposed_column = drag_state.original_coordinate.column
 
-        # Check against both visual and square_service states
+        # Check against both visual and map_service states
         test_coordinate = GridCoordinate(row=proposed_row, column=new_column)
         if not self.is_position_valid_for_drag(mover, test_coordinate):
             return
@@ -217,7 +217,7 @@ class GameDisplay:
 
     def is_position_valid_for_drag(self, mover: Mover, test_coordinate: GridCoordinate) -> bool:
         """Combined check for visual dragging"""
-        # 1. Check square_service's official position (for static entities)
+        # 1. Check map_service's official position (for static entities)
         if not self.board.can_entity_move_to_cells(mover, test_coordinate):
             return False
 

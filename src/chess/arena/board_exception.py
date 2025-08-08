@@ -8,13 +8,13 @@ class CoordinateException(BoardException):
     default_message = "An error occurred in the Coordinate."
 
 class MissingBoardException(BoardException):
-    default_message = "ObsoleteChessBoard does not exist.Passing null square_service not allowed."
+    default_message = "ObsoleteChessBoard does not exist.Passing null map_service not allowed."
 
 class MissingGridException(BoardException):
     default_message = "The ObsoleteChessBoard has no map of squares. Passing null map not allowed."
 
 class ArrayDimensionException(BoardException):
-    default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} square_service requirement"
+    default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} map_service requirement"
 
 class MissingCoordinateException(CoordinateException):
     default_message = "Coordinate does not exist. Passing null coordinate not allowed"
