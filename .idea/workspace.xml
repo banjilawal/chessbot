@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/map/element/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/map/element/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/map/map_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/map/map_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/map/repo/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/map/service/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/element/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/element/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen_rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen_rank.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +272,7 @@
       <workItem from="1754407776490" duration="30591000" />
       <workItem from="1754453608087" duration="1824000" />
       <workItem from="1754455478725" duration="3056000" />
-      <workItem from="1754625868607" duration="1632000" />
+      <workItem from="1754625868607" duration="2108000" />
     </task>
     <servers />
   </component>

@@ -2,6 +2,7 @@ from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
+from chess.team.element.mobility_status import MobilityStatus
 from chess.team.element.play_order import PlayOrder
 
 if TYPE_CHECKING:
@@ -82,6 +83,26 @@ class Team:
     @property
     def chess_pieces(self) -> List['ChessPiece']:
         return self._chess_pieces
+
+
+    def free_chess_pieces(self) -> List['ChessPiece']:
+        matches: List['ChessPiece'] = []
+
+        for chess_piece in self._chess_pieces:
+            if chess_piece.status == MobilityStatus.FREE and chess_piece not in matches:
+                matches.append(chess_piece)
+        return matches
+
+    def blocked_chess_pieces(self) -> List['ChessPiece']:
+        matches: List['ChessPiece'] = []
+
+        for chess_piece in self._chess_pieces:
+            if (
+                chess_piece.status == MobilityStatus.BLOCKED_FROM_MOVING and
+                chess_piece not in matches
+            ):
+                matches.append(chess_piece)
+        return matches
 
 
     def __eq__(self, other):

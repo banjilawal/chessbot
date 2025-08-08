@@ -92,14 +92,14 @@ class ChessPiece:
         self._captor = captor
 
 
-    def walk(self, square_service: MapService, destination: Coordinate):
-        return self._rank.delegate_move_execution(piece=self, square_service=square_service, destination=destination)
-
-
-    def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
-
-        print(f"Everything is fine with {self._name} calling Rank.explore for the list")
-        return self._rank.explore(self, board)
+    # def walk(self, square_service: MapService, destination: Coordinate):
+    #     return self._rank.delegate_move_execution(piece=self, square_service=square_service, destination=destination)
+    #
+    #
+    # def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
+    #
+    #     print(f"Everything is fine with {self._name} calling Rank.explore for the list")
+    #     return self._rank.explore(self, board)
 
 
     def __eq__(self, other):
