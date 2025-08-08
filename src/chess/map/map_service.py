@@ -50,7 +50,7 @@ class MapService:
             self._capture_helper(chess_piece, destination_square, target_occupant)
         else:
             print("The square is occupied by a friendly")
-            chess_piece.obst
+            chess_piece.add_obstruction(target_occupant)
             return
 
 
@@ -74,7 +74,7 @@ class MapService:
 
         originating_square.set_occupant(None)
         target_square.set_occupant(chess_piece)
-        chess_piece.coordinate_stack.push_coordinate(originating_square.coordinate)
+        chess_piece.coordinate_stack.push_coordinate(target_square.coordinate)
 
 
 
