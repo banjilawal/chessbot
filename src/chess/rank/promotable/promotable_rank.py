@@ -2,7 +2,6 @@ from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.queen_rank import QueenMotionController
-from chess.motion.abstract_explorer.explorer import Explorer
 from chess.motion.walk.walk import Walk
 
 if TYPE_CHECKING:
@@ -19,20 +18,18 @@ class PromotableRank:
         int, number_per_team: int,
         territories: List[Quadrant],
         walk:Optional[Walk] = None,
-        explorer:Optional[Explorer] = None,
+        # explorer:Optional[Explorer] = None,
     ):
         super().__init__(
             name=name,
             letter=letter,
             walk=walk,
-            explorer=explorer,
+            # explorer=explorer,
             capture_value=capture_value,
             number_per_team=number_per_team,
             territories=territories
         )
 
-    def is_promoted(self) -> bool:
-        return self._previous_rank is not None
 
     def promote(self, chess_piece: 'ChessPiece') -> Optional['ChessPiece']:
 
