@@ -105,7 +105,6 @@ class ChessPiece:
         enemy.status = MobilityStatus.PRISONER
 
 
-
     def __eq__(self, other):
         if other is self:
             return True
