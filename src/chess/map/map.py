@@ -45,20 +45,12 @@ class Map:
         return SquareIterator(self._squares, index, delta)
 
     def occupied_squares(self) -> List[Square]:
-        matches: List[Square] = []
-        for row in self._squares:
-            for square in row:
-                if square.occupant is not None and square not in matches:
-                    matches.append(square)
-        return matches
+        """Returns a list of all squares that are currently occupied by a piece."""
+        return [square for row in self._squares for square in row if square.occupant is not None]
 
     def empty_squares(self) -> List[Square]:
-        matches: List[Square] = []
-        for row in self._squares:
-            for square in row:
-                if square.occupant is None and square not in matches:
-                    matches.append(square)
-        return matches
+        """Returns a list of all squares that are currently vacant."""
+        return [square for row in self._squares for square in row if square.occupant is None]
 
 
     def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
@@ -71,8 +63,10 @@ class Map:
         Returns:
             The Square object if found, otherwise None.
         """
-        # Corrected to return the map.
-        return self._squares[coordinate.row][coordinate.column]
+        if 0 <= coordinate.row < len(self._squares) and 0 <= coordinate.column < len(self._squares[0]):
+            return self._squares[coordinate.row][coordinate.column]
+        return None
+
 
     def find_square_by_name(self, name: str) -> Optional[Square]:
         """
@@ -121,20 +115,6 @@ class Map:
         # A more efficient approach would be to use find_square_by_coordinate first.
         square = self.find_square_by_coordinate(coordinate)
         return square.occupant if square else None
-
-
-    def coordinates_from_origin(self, origin: Coordinate, delta: Delta) -> List[Coordinate]:
-        destinations: List[Coordinate] = []
-
-        for square in self.iterator(origin, delta):
-            coordinate = square.coordinate
-            if coordinate not in destinations:
-                if square.occupant is not None:
-                    destinations.append(coordinate)
-                    return destinations
-                destinations.append(coordinate)
-
-        return destinations
 
 
     def __str__(self) -> str:
