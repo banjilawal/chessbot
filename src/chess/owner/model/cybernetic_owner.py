@@ -4,7 +4,7 @@ from typing import Optional, List, Dict
 from chess.geometry.coordinate.coordinate import Coordinate
 
 from chess.team.element.piece import ChessPiece
-from chess.owner.owner import Owner
+from chess.owner.model.owner import Owner
 from chess.team.element.team import Team
 
 

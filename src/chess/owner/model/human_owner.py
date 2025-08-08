@@ -1,6 +1,6 @@
 from typing import Optional
 
-from chess.owner.owner import Owner
+from chess.owner.model.owner import Owner
 from chess.team.element.team import Team
 
 
