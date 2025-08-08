@@ -4,7 +4,7 @@
 # from chess.geometry.board.board import ChessBoard
 # from chess.geometry.coordinate.coordinate import Coordinate
 # from chess.geometry.quadrant import Quadrant
-# from chess.motion.controller.promotable.pawn_motion_controller import PawnMotionController
+# from chess.motion.rank.promotable.pawn_motion_controller import PawnMotionController
 # from chess.motion.walk.pawn_walk import PawnWalk
 #
 #

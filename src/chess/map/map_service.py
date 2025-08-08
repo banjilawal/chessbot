@@ -52,7 +52,7 @@ class MapService:
     def capture_square(self, piece: 'ChessPiece', from_coordinate: Coordinate, to_coordinate: Coordinate):
         """
         Moves a chess_piece from its origin to a destination square, handling captures.
-        This method assumes the move has already been validated by the motion controller.
+        This method assumes the move has already been validated by the motion rank.
         It updates the board state and chess_piece coordinates/status.
         """
         origin_square = self.find_square_by_coordinate(from_coordinate)

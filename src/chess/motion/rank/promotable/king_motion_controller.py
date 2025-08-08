@@ -1,13 +1,11 @@
 from typing import List
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.controller.motion_controller import MotionController
-from chess.motion.walk.queen_walk import QueenWalk
+from chess.motion.rank.promotable.promotable_rank import PromotableRank
+from chess.motion.walk.king_walk import KingWalk
 
 
-
-class QueenMotionController(MotionController):
-
+class KingMotionController(PromotableRank):
     def __init__(
         self,
         name: str,
@@ -15,14 +13,14 @@ class QueenMotionController(MotionController):
         capture_value:
         int, number_per_team: int,
         territories: List[Quadrant],
-        walk=QueenWalk()
-        # explorer=QueenExplorer()
+        walk=KingWalk()
+        # explorer=KingExplorer()
     ):
         super().__init__(
             name=name,
             letter=letter,
             walk=walk,
-            explorer=explorer,
+            # explorer=explorer,
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team

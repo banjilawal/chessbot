@@ -2,7 +2,7 @@ from typing import List
 
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.controller.promotable.promotable_rank import PromotableRank
+from chess.motion.rank.promotable.promotable_rank import PromotableRank
 from chess.motion.walk.pawn_walk import PawnWalk
 
 

@@ -1,5 +1,5 @@
 from chess.team.model.piece import ChessPiece
-from chess.motion.controller.motion_controller import MotionController
+from chess.motion.rank.motion_controller import MotionController
 
 from chess.team.model.team import Team
 
