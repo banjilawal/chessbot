@@ -128,7 +128,11 @@ class Map:
 
         for square in self.iterator(origin, delta):
             if square not in destination_squares:
+                if square.occupant is not None:
+                    destination_squares.append(square)
+                    return destination_squares
                 destination_squares.append(square)
+
         return destination_squares
 
 
