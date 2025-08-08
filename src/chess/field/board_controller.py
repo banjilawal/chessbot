@@ -3,6 +3,7 @@ from typing import List
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.map.element.square import Square
 from chess.map.map_service import MapService
+from chess.motion.explorer import Explorer
 from chess.team.element.piece import ChessPiece
 from chess.team.team_service import TeamService
 
@@ -47,10 +48,17 @@ class BoardController:
         if team is None:
             raise ValueError(f"Team with ID {id} not found.")
 
+        tuples: List[(ChessPiece, List[Coordinate])] = []
         explorers = team.free_chess_pieces()
 
-
-
+        for explorer in explorers:
+            t = Explorer.discover_destinations(explorer, self._square_service)
+            chess_piece: ChessPiece = t[0]
+            destination_count = len(t[1])
+            print(f"TUPLE: {chess_piece.name} destination_count={destination_count}")
+            if destination_count > 0 and tuple not in tuples:
+                tuples.append(Explorer.discover_destinations(explorer, self._square_service))
+        return tuples
 
 
     def _create_motion_board_adapter(self) -> List[List[Square]]:

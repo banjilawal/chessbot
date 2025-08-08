@@ -39,7 +39,8 @@ class MapService:
         return self._map.find_square_by_name(name)
 
     def find_coordinates_reachable_from_chess_piece(
-        self, chess_piece: 'ChessPiece'
+        self,
+        chess_piece: 'ChessPiece'
     ) -> (ChessPiece, List[Coordinate]):
 
         destinations: List[Coordinate]
