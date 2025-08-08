@@ -4,7 +4,7 @@ from chess.rank.promotable.king_rank import KingRank
 from chess.rank.knight_rank import KnightRank
 from chess.rank.promotable.pawn_rank import PawnRank
 from chess.config.rank_config import RankConfig
-from chess.rank.queen_rank import QueenMotionController
+from chess.rank.queen_rank import QueenRank
 
 
 class MotionControllerBuilder:
@@ -53,7 +53,7 @@ class MotionControllerBuilder:
                 capture_value=config.capture_value
             )
         if config is RankConfig.QUEEN:
-            return QueenMotionController(
+            return QueenRank(
                 name=config.name,
                 letter=config.letter,
                 number_per_team=config.number_per_player,

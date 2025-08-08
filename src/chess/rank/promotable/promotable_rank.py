@@ -1,7 +1,7 @@
 from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
-from chess.rank.queen_rank import QueenMotionController
+from chess.rank.queen_rank import QueenRank
 from chess.motion.walk.walk import Walk
 
 if TYPE_CHECKING:
@@ -38,13 +38,13 @@ class PromotableRank:
             print(f"{chess_piece.name} is not the enemy's home row. Cannot be promoted.")
             raise TypeError(f"{chess_piece.name} is not on the enemy home row. Cannot be promoted.")
 
-        if isinstance(self.rank, QueenMotionController) and self._previous_rank is not None:
+        if isinstance(self.rank, QueenRank) and self._previous_rank is not None:
             raise TypeError(f"{chess_piece.name} is already promoted.")
 
         promoted_chess_piece = ChessPiece(
             chess_piece_id=chess_piece.id,
             name=chess_piece.name,
-            motion_controller=QueenMotionController(),
+            motion_controller=QueenRank(),
             team=chess_piece.team
         )
         stack = chess_piece.coordinate_stack.stack

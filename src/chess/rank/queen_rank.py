@@ -6,7 +6,7 @@ from chess.motion.walk.queen_walk import QueenWalk
 
 
 
-class QueenMotionController(MotionController):
+class QueenRank(MotionController):
 
     def __init__(
         self,
@@ -22,7 +22,7 @@ class QueenMotionController(MotionController):
             name=name,
             letter=letter,
             walk=walk,
-            explorer=explorer,
+            # explorer=explorer,
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team
