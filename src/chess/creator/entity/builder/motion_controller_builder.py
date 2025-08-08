@@ -65,8 +65,8 @@ class MotionControllerBuilder:
 #
 #
 # def main():
-#     rank = MotionControllerBuilder.build(RankConfig.PAWN)
-#     print(rank)
+#     motion = MotionControllerBuilder.build(RankConfig.PAWN)
+#     print(motion)
 #
 #
 # if __name__ == "__main__":

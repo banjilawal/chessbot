@@ -17,8 +17,8 @@ class MotionControllerFactory:
 
 # def main():
 #     ranks = MotionControllerFactory.assemble()
-#     for rank in ranks:
-#         print(rank)
+#     for motion in ranks:
+#         print(motion)
 #
 # if __name__ == "__main__":
 #     main()

@@ -2,7 +2,7 @@
 # from chess.geometry.coordinate.coordinate import Coordinate
 #
 # from chess.team.model.piece import ChessPiece
-# from chess.rank.walk.knight_walk import KnightWalk
+# from chess.motion.walk.knight_walk import KnightWalk
 # from typing import List
 #
 #

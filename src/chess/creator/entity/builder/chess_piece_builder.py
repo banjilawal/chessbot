@@ -22,9 +22,9 @@ class ChessPieceBuilder:
 #
 #
 # def main():
-#     rank = MotionControllerBuilder.build(RankConfig.BISHOP)
+#     motion = MotionControllerBuilder.build(RankConfig.BISHOP)
 #     team = TeamBuilder.build(TeamConfig.WHITE)
-#     chess_piece = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, motion_controller=rank, team=team)
+#     chess_piece = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, motion_controller=motion, team=team)
 #     print(chess_piece)
 #
 # if __name__ == "__main__":
