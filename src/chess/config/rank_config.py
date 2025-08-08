@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, TYPE_CHECKING
+from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.motion.controller.motion_controller import MotionController
@@ -52,10 +52,6 @@ class RankConfig(Enum):
     @property
     def territories(self) -> List[Quadrant]:
         return self._territories
-
-    @property
-    def motion_service(self) -> 'MotionService':
-        return self._motion_service
 
     @staticmethod
     def find_config_by_class(rank: MotionController):

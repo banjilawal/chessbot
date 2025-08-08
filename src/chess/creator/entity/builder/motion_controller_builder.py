@@ -3,9 +3,8 @@ from chess.motion.controller.castle_motion_controller import CastleMotionControl
 from chess.motion.controller.promotable.king_motion_controller import KingMotionController
 from chess.motion.controller.knight_motion_controller import KnightMotionController
 from chess.motion.controller.promotable.pawn_motion_controller import PawnMotionController
-from chess.motion.interfaces.rank_config import RankConfig
+from chess.config.rank_config import RankConfig
 from chess.motion.controller.queen_motion_controller import QueenMotionController
-from chess.motion.walk.king_walk import KingWalk
 
 
 class MotionControllerBuilder:
