@@ -91,14 +91,19 @@ class ChessPiece:
         self._captor = captor
 
 
-    # def walk(self, map_service: MapService, destination: Coordinate):
-    #     return self._rank.delegate_move_execution(chess_piece=self, map_service=map_service, destination=destination)
-    #
-    #
-    # def explore_destinations(self, obsolete_board: 'ObsoleteChessBoard') -> List[Coordinate]:
-    #
-    #     print(f"Everything is fine with {self._name} calling Rank.explore for the list")
-    #     return self._rank.explore(self, obsolete_board)
+    def capture_prisoner(self, enemy: 'ChessPiece'):
+        if enemy is None:
+            raise Exception("Cannot captue a nonexistent enemy")
+        if enemy.team == self._team:
+            raise Exception("Illegal capture of friendly")
+        if enemy.captor is not None:
+            raise Exception("Double capture is not allowed")
+        if enemy is self:
+            raise Exception("Cannot capture self")
+
+        enemy.captor = self
+        enemy.status = MobilityStatus.PRISONER
+
 
 
     def __eq__(self, other):
