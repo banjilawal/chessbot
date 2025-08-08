@@ -4,7 +4,7 @@ from chess.common.game_color import GameColor
 from chess.owner.player_order import PlayerOrder
 
 
-class PlayerConfig(Enum):
+class OwnerConfig(Enum):
     def __new__(
             cls,
             acronym: str,
