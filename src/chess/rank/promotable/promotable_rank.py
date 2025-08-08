@@ -1,7 +1,7 @@
 from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.rank.queen_motion_controller import QueenMotionController
+from chess.rank.queen_motion_controller import QueenMotionController
 from chess.motion.abstract_explorer.explorer import Explorer
 from chess.motion.walk.walk import Walk
 

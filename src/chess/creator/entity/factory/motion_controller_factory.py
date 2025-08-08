@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.creator.entity.builder.motion_controller_builder import MotionControllerBuilder
-from chess.motion.rank.motion_controller import MotionController
+from chess.rank.motion_controller import MotionController
 from chess.config.rank_config import RankConfig
 
 
