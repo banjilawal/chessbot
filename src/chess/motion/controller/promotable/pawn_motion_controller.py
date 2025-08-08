@@ -15,14 +15,14 @@ class PawnMotionController(PromotableRank):
             capture_value: int,
             number_per_team: int,
             territories: List[Quadrant],
-            walk: PawnWalk(),
-            explorer: PawnExplorer
+            walk: PawnWalk()
+            # explorer: PawnExplorer
         ):
         super().__init__(
             name=name,
             letter=letter,
             walk=walk,
-            explorer=explorer,
+            # explorer=explorer,
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team

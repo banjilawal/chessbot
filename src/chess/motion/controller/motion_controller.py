@@ -2,7 +2,7 @@ from abc import ABC
 from typing import List, Optional
 
 from chess.geometry.quadrant import Quadrant
-from chess.motion.explorer.explorer import Explorer
+from chess.motion.abstract_explorer.explorer import Explorer
 from chess.motion.walk.walk import Walk
 
 
@@ -22,18 +22,18 @@ class MotionController(ABC):
         capture_value: int,
         number_per_team: int,
         territories: List[Quadrant],
-        walk: Optional[Walk] = None,
-        explorer:Optional[Explorer] = None
+        walk: Optional[Walk] = None
+        # explorer:Optional[Explorer] = Explorer
     ):
         if walk is None:
             raise ValueError("Walk walk cannot be None.")
-        if explorer is None:
-            raise ValueError("Search pattern cannot be None.")
+        # if explorer is None:
+        #     raise ValueError("Search pattern cannot be None.")
 
         self._name = name
         self._walk = walk
         self._letter = letter
-        self._explorer = explorer
+        # self._explorer = explorer
         self._capture_value = capture_value
         self._number_per_team = number_per_team
         self._territories = territories
@@ -67,11 +67,11 @@ class MotionController(ABC):
     @property
     def walk(self) -> Walk:
         return self._walk
-
-
-    @property
-    def explorer(self) -> Explorer:
-        return self._explorer
+    #
+    #
+    # @property
+    # def explorer(self) -> Explorer:
+    #     return self._explorer
 
 
     def __eq__(self, other):

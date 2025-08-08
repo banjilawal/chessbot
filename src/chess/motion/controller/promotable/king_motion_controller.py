@@ -13,14 +13,14 @@ class KingMotionController(PromotableRank):
         capture_value:
         int, number_per_team: int,
         territories: List[Quadrant],
-        walk=KingWalk(),
-        explorer=KingExplorer()
+        walk=KingWalk()
+        # explorer=KingExplorer()
     ):
         super().__init__(
             name=name,
             letter=letter,
             walk=walk,
-            explorer=explorer,
+            # explorer=explorer,
             capture_value=capture_value,
             territories=territories,
             number_per_team=number_per_team

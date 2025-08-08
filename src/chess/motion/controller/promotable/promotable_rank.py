@@ -2,7 +2,7 @@ from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
 from chess.motion.controller.queen_motion_controller import QueenMotionController
-from chess.motion.explorer.explorer import Explorer
+from chess.motion.abstract_explorer.explorer import Explorer
 from chess.motion.walk.walk import Walk
 
 if TYPE_CHECKING:

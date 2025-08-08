@@ -15,8 +15,8 @@ class QueenMotionController(MotionController):
         capture_value:
         int, number_per_team: int,
         territories: List[Quadrant],
-        walk=QueenWalk(),
-        explorer=QueenExplorer()
+        walk=QueenWalk()
+        # explorer=QueenExplorer()
     ):
         super().__init__(
             name=name,
