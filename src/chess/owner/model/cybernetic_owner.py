@@ -6,28 +6,16 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.team.element.piece import ChessPiece
 from chess.owner.model.owner import Owner
 from chess.team.element.team import Team
+from engine.engine import Engine
 
 
 class CyberneticOwner(Owner):
+    _engine: Engine
 
-    def __init__(self, owner_id: int, name: str, team: Optional[Team] = None):
+    def __init__(self, owner_id: int, name: str, team: Optional[Team] = None, engine: Engine = None):
         super().__init__(owner_id, name, team)
+        self._engine = engine
 
-
-    def request_move(self, piece: 'ChessPiece', destination: Coordinate, board: 'ObsoleteChessBoard'):
-        pass
-
-    def hunt(self, board: 'ObsoleteChessBoard') -> Dict[Label, List[ChessPiece]]:
-        pass
-
-    def prepare_kill_list(self) -> List['ChessPiece']:
-        pass
-
-    def select_killer(self) -> 'ChessPiece':
-        pass
-
-    def select_target(self, board: 'ObsoleteChessBoard') -> Optional[TurnRecord]:
-        pass
-
-    def __init__(self, player_id: int,  name: str):
-        super().__init__(player_id, name)
+    @property
+    def engine(self) -> Engine:
+        return self._engine
