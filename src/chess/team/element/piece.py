@@ -9,6 +9,8 @@ from chess.team.element.mobility_status import MobilityStatus
 
 from typing import List, TYPE_CHECKING
 
+from chess.team.element.obstruction import Obstruction
+
 if TYPE_CHECKING:
     from chess.rank.rank import Rank
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
@@ -23,10 +25,12 @@ class ChessPiece:
     _id: int
     _name: str
     _team: 'Team'
-    _captor: 'ChessPiece'
     _rank: 'Rank'
-    _coordinate_stack: CoordinateStack
+    _captor: 'ChessPiece'
     _status: MobilityStatus
+    _obstructions: List[Obstruction]
+    _coordinate_stack: CoordinateStack
+
 
     def __init__(self, chess_piece_id: int, name: str, rank: 'Rank', team: 'Team'):
         if not chess_piece_id:
@@ -38,9 +42,11 @@ class ChessPiece:
 
         self._team = team
         self._name = name
+        self._rank = rank
+        self._obstructions = []
         self._id = chess_piece_id
         self._status = MobilityStatus.FREE
-        self._rank = rank
+
         self._coordinate_stack = CoordinateStack()
         team.chess_pieces.append(self)
 
@@ -78,6 +84,10 @@ class ChessPiece:
     @property
     def coordinate_stack(self) -> CoordinateStack:
         return self._coordinate_stack
+
+    @property
+    def obstructions(self) -> List[Obstruction]:
+        return self._obstructions
 
 
     @status.setter
