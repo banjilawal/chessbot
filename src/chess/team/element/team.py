@@ -12,11 +12,9 @@ class Team:
     _id: int
     _letter: str
     _color: GameColor
-    _team_order: PlayOrder
     _back_row_index: int
     _pawn_row_index: int
     _home_quadrant: Quadrant
-    _captives: List['ChessPiece']
     _chess_pieces: List['ChessPiece']
 
     def __init__(
@@ -36,7 +34,6 @@ class Team:
         self._back_row_index = back_row_index
         self._pawn_row_index = pawn_row_index
         self._home_quadrant = home_quadrant
-        self._captives = []
         self._chess_pieces = []
 
 
@@ -56,11 +53,6 @@ class Team:
 
 
     @property
-    def team_order(self) -> PlayOrder:
-        return self._team_order
-
-
-    @property
     def back_rank_index(self) -> int:
         return self._back_row_index
 
@@ -76,11 +68,6 @@ class Team:
 
 
     @property
-    def captives(self) -> List['ChessPiece']:
-        return self._captives
-
-
-    @property
     def chess_pieces(self) -> List['ChessPiece']:
         return self._chess_pieces
 
@@ -92,6 +79,7 @@ class Team:
             if chess_piece.status == MobilityStatus.FREE and chess_piece not in matches:
                 matches.append(chess_piece)
         return matches
+
 
     def blocked_chess_pieces(self) -> List['ChessPiece']:
         matches: List['ChessPiece'] = []
@@ -143,30 +131,3 @@ class Team:
     def __str__(self):
         return (f"Team id:{self._id} color:{self._color} play_order{self._team_order} rank_row:{self._back_row_index} "
                 f"pawn_row:{self._pawn_row_index} home:{self._home_quadrant}")
-
-
-
-
-
-
-
-
-    # @staticmethod
-    # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, chess_board: ObsoleteChessBoard):
-    #    if chess_piece is None:
-    #        print("BishopRank is None")
-    #        return None
-    #    if chess_piece.current_position() is None:
-    #        print("BishopRank current position is None.")
-    #
-    #        return None
-    #    if chess_board is None:
-    #        print("ObsoleteChessBoard is None")
-    #        return None
-    #    if not chess_board.coordinate_is_valid(destination):
-    #        print("Destination is not valid")
-    #        return None
-    #    if not Diagonal.points_match_pattern(chess_piece.current_position(), destination):
-    #        print("points are not in diagonal pattern")
-    #        return
-    #    chess_board.capture_square(chess_piece, destination)
