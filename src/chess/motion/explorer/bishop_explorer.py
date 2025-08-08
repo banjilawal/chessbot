@@ -11,16 +11,9 @@ from chess.team.model.piece import ChessPiece
 
 class BishopExplorer(Explorer):
 
+    @staticmethod
     def discover_destinations(self, chess_piece: ChessPiece, map_service: MapService) -> List[Coordinate]:
-        destinations: List[Coordinate] = []
-
-        for quadrant in chess_piece.motion_controller.territories:
-            destinations.extend(
-                map_service.find_destinations_from_origin(
-                    chess_piece.coordinate_stack.current_coordinate()
-                )
-            )
-        return destinations
+        return map_service.find_coordinates_reachable_from_chess_piece(chess_piece)
 
         # quadrants = piece.motion_controller.territories
         # print(f"{piece.label} at {origin} will search {len(quadrants)} quadrants for potential destinations")

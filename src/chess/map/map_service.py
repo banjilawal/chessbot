@@ -36,16 +36,15 @@ class MapService:
     def find_square_by_name(self, name:str) -> Optional[Square]:
         return self._map.find_square_by_name(name)
 
-    def find_squares_reachable_from_chess_piece(self, chess_piece: ChessPiece) -> List[Square]:
-        destination_squares: List[Square]
+    def find_coordinates_reachable_from_chess_piece(self, chess_piece: ChessPiece) -> List[Coordinate]:
+        destinations: List[Coordinate]
+        origin = chess_piece.coordinate_stack.current_coordinate()
 
         for quadrant in chess_piece.motion_controller.territories:
-            results = self._map.destination_squares_from_origin(
-                chess_piece.coordinate_stack.current_coordinate(),
-                quadrant.delta
-            )
-            destination_squares.extend(results)
-        return destination_squares
+            results = self._map.coordinates_from_origin(origin, quadrant.delta)
+            destinations.extend(results)
+
+        return destinations
 
 
     def squares_to_string(self) -> str:
