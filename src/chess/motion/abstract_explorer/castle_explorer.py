@@ -8,7 +8,7 @@
 #     def __init__(self):
 #         super().__init__()
 #
-#     def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
+#     def _perform_search(self, piece: ChessPiece, obsolete_board: ObsoleteChessBoard) -> List[Coordinate]:
 #         origin = piece.current_coordinate()
 #         destinations: List[Coordinate] = []
 #         quadrants = piece.rank.territories
@@ -25,7 +25,7 @@
 #                     # Went off the chess_board — stop searching in this direction
 #                     break
 #
-#                 occupant = board.find_chess_piece(current)
+#                 occupant = obsolete_board.find_chess_piece(current)
 #                 if occupant is None:
 #                     destinations.append(current)
 #                 elif piece.is_enemy(occupant):

@@ -69,7 +69,7 @@ class PawnWalk(Walk):
             print("Pawn has no coordinate_stack cannot advance")
             return False
         if pawn.coordinate_stack.current_coordinate() is None or pawn.coordinate_stack.size() == 0:
-            print("Pawn is not on the board cannot advance")
+            print("Pawn is not on the obsolete_board cannot advance")
             return False
         if not Vertical.is_vertical(pawn.coordinate_stack.current_coordinate(), destination):
             print("Pawn cannot advance to non-vertical destination")

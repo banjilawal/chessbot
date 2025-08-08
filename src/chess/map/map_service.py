@@ -60,7 +60,7 @@ class MapService:
         """
         Moves a chess_piece from its origin to a destination square, handling captures.
         This method assumes the move has already been validated by the motion rank.
-        It updates the board state and chess_piece coordinates/status.
+        It updates the obsolete_board state and chess_piece coordinates/status.
         """
         origin_square = self.find_square_by_coordinate(from_coordinate)
         destination_square = self.find_square_by_coordinate(to_coordinate)

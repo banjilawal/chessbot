@@ -11,7 +11,6 @@ from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from chess.rank.rank import Rank
-    from chess.geometry.board.board import ChessBoard
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
 @dataclass(frozen=True)
@@ -96,10 +95,10 @@ class ChessPiece:
     #     return self._rank.delegate_move_execution(piece=self, square_service=square_service, destination=destination)
     #
     #
-    # def explore_destinations(self, board: 'ChessBoard') -> List[Coordinate]:
+    # def explore_destinations(self, obsolete_board: 'ObsoleteChessBoard') -> List[Coordinate]:
     #
     #     print(f"Everything is fine with {self._name} calling Rank.explore for the list")
-    #     return self._rank.explore(self, board)
+    #     return self._rank.explore(self, obsolete_board)
 
 
     def __eq__(self, other):

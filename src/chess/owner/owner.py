@@ -47,32 +47,3 @@ class Owner(ABC):
 
     def __str__(self):
         return f"Player[{self._id} {self._name} {self._team}]"
-
-
-
-    # def move_chess_piece(self, chess_piece: 'ChessPiece', destination: Coordinate, square_service: 'ChessBoard'):
-    #     chess_piece.forward_move_request(square_service, destination)
-
-
-
-
-
-    # @staticmethod
-    # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, chess_board: ChessBoard):
-    #    if chess_piece is None:
-    #        print("BishopRank is None")
-    #        return None
-    #    if chess_piece.current_position() is None:
-    #        print("BishopRank current position is None.")
-    #
-    #        return None
-    #    if chess_board is None:
-    #        print("ChessBoard is None")
-    #        return None
-    #    if not chess_board.coordinate_is_valid(destination):
-    #        print("Destination is not valid")
-    #        return None
-    #    if not Diagonal.points_match_pattern(chess_piece.current_position(), destination):
-    #        print("points are not in diagonal pattern")
-    #        return
-    #    chess_board.capture_square(chess_piece, destination)

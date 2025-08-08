@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from chess.geometry.coordinate.coordinate import Coordinate
 
 
-class ChessBoard:
+class ObsoleteChessBoard:
     _chess_pieces: List['ChessPiece']
     _grid: List[List['Square']]
 
@@ -104,7 +104,7 @@ class ChessBoard:
     #
     #
     # def capture_square(self, chess_piece: 'ChessPiece', destination: 'Coordinate'):
-    #     method = "ChessBoard.capture_square"
+    #     method = "ObsoleteChessBoard.capture_square"
     #
     #     # 3. Get the squares
     #     square_to_leave = self.find_square(chess_piece.current_coordinate())

@@ -152,7 +152,7 @@ class Team:
 
 
     # @staticmethod
-    # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, chess_board: ChessBoard):
+    # def occupy_destination(self, chess_piece: ChessPiece, destination: Coordinate, chess_board: ObsoleteChessBoard):
     #    if chess_piece is None:
     #        print("BishopRank is None")
     #        return None
@@ -161,7 +161,7 @@ class Team:
     #
     #        return None
     #    if chess_board is None:
-    #        print("ChessBoard is None")
+    #        print("ObsoleteChessBoard is None")
     #        return None
     #    if not chess_board.coordinate_is_valid(destination):
     #        print("Destination is not valid")

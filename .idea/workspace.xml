@@ -7,7 +7,19 @@
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/field/board_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/field/board_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen_rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen_rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/obsolete_board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/obsolete_board/obsolete_chess_board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/obsolete_board/board_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/board/board_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/obsolete_board/board_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/map/map_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/map/map_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/castle_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/castle_explorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/king_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/king_explorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/knight_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/knight_explorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/pawn_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/pawn_explorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/queen_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/abstract_explorer/queen_explorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/motion/walk/pawn_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/motion/walk/pawn_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/owner/cybernetic_owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/owner/cybernetic_owner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/owner/owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/owner/owner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/element/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/element/piece.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/element/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/element/team.py" afterDir="false" />
     </list>
@@ -276,7 +288,7 @@
       <workItem from="1754407776490" duration="30591000" />
       <workItem from="1754453608087" duration="1824000" />
       <workItem from="1754455478725" duration="3056000" />
-      <workItem from="1754625868607" duration="6300000" />
+      <workItem from="1754625868607" duration="10816000" />
     </task>
     <servers />
   </component>

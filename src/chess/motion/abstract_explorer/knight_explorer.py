@@ -1,4 +1,4 @@
-# from chess.geometry.board.board import ChessBoard
+# from chess.geometry.obsolete_board.obsolete_board import ObsoleteChessBoard
 # from chess.geometry.coordinate.coordinate import Coordinate
 #
 # from chess.team.element.piece import ChessPiece
@@ -10,7 +10,7 @@
 #     def __init__(self):
 #         super().__init__()
 #
-#     def _perform_search(self, piece: ChessPiece, board: ChessBoard) -> List[Coordinate]:
+#     def _perform_search(self, piece: ChessPiece, obsolete_board: ObsoleteChessBoard) -> List[Coordinate]:
 #         origin = piece.current_coordinate()
 #         destinations: List[Coordinate] = []
 #         quadrants = piece.rank.territories
@@ -23,13 +23,13 @@
 #             candidate_2 = origin.shift(delta.delta_column, delta.delta_row * 2)
 #
 #             for candidate in [candidate_1, candidate_2]:
-#                 if not board.coordinate_is_valid(candidate):
+#                 if not obsolete_board.coordinate_is_valid(candidate):
 #                     continue
-#                 piece = board.find_chess_piece(origin)
-#                 if not board.square_is_empty_or_contains_enemy(candidate, piece.player):
+#                 piece = obsolete_board.find_chess_piece(origin)
+#                 if not obsolete_board.square_is_empty_or_contains_enemy(candidate, piece.player):
 #                     continue
 #                 if KnightWalk.is_walkable(origin, candidate):
-#                     occupant = board.find_chess_piece(candidate)
+#                     occupant = obsolete_board.find_chess_piece(candidate)
 #                     if occupant is None:
 #                         destinations.append(candidate)
 #                     elif piece.is_enemy(occupant):

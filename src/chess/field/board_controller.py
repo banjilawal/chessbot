@@ -75,7 +75,7 @@ class BoardController:
     # def execute_move(self, piece_id: int, destination_coordinate: Coordinate):
     #     """
     #     Executes a chess chess_piece's move. This is the high-level entry point for moves.
-    #     It orchestrates validation and board state updates.
+    #     It orchestrates validation and obsolete_board state updates.
     #     """
     #     piece = self._team_service.find_chess_piece_by_id(piece_id)
     #     if not piece:
@@ -91,7 +91,7 @@ class BoardController:
     #     piece.rank.validate_and_check_move(piece, self._board_for_motion_logic, destination_coordinate)
     #     print(f"BoardController: Move for {piece.label} is valid.")
     #
-    #     # 2. If validation passes, update the board state via MapService
+    #     # 2. If validation passes, update the obsolete_board state via MapService
     #     print(f"BoardController: Executing move for {piece.label} via GridService.")
     #     self._grid_service.capture_square(piece, origin_coordinate, destination_coordinate)  # Renamed call
     #     print(f"BoardController: Move for {piece.label} executed successfully.")
