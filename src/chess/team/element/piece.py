@@ -89,6 +89,14 @@ class ChessPiece:
     def obstructions(self) -> List[Obstruction]:
         return self._obstructions
 
+    def add_obstruction(self, obstructor: 'ChessPiece'):
+        if obstructor not in self._obstructions:
+            self._obstructions.append(Obstruction(obstructor))
+
+
+    def reset_obstruction_list(self):
+        self._obstructions.clear();
+
 
     @status.setter
     def status(self, status: MobilityStatus):
@@ -113,6 +121,9 @@ class ChessPiece:
 
         enemy.captor = self
         enemy.status = MobilityStatus.PRISONER
+
+
+
 
 
     def __eq__(self, other):
