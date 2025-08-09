@@ -9,25 +9,30 @@ if TYPE_CHECKING:
 
 
 class ChessBoard:
-    """
-    A repository for managing all the squares on the chess map_service.
-    It provides methods for finding squares and iterating over them.
-    """
+    _id: int
     _squares: List[List[Square]]
 
-    def __init__(self, squares: List[List[Square]]):
-        """
-        Initializes the ChessBoard with a 2D list of Square objects.
-
-        Args:
-            squares: A list of lists representing the rows and columns of the map_service.
-        """
+    def __init__(self, board_id: int, squares: List[List[Square]]):
+        self._id = board_id
         self._squares = squares
+
+
+    @property
+    def id(self) -> int:
+        return self._id
+
 
     @property
     def squares(self) -> List[List[Square]]:
-        """Returns the 2D list of squares."""
         return self._squares
+
+
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if not isinstance(other, ChessBoard): return False
+        return self._id == other.id
+
 
     def iterator(
         self,
@@ -44,39 +49,19 @@ class ChessBoard:
         return SquareIterator(self._squares, index, delta)
 
     def occupied_squares(self) -> List[Square]:
-        """Returns a list of all squares that are currently occupied by a chess_piece."""
         return [square for row in self._squares for square in row if square.occupant is not None]
 
     def empty_squares(self) -> List[Square]:
-        """Returns a list of all squares that are currently vacant."""
         return [square for row in self._squares for square in row if square.occupant is None]
 
 
     def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
-        """
-        Finds a board by its coordinate.
-
-        Args:
-            coordinate: The Coordinate object of the board.
-
-        Returns:
-            The Square object if found, otherwise None.
-        """
         if 0 <= coordinate.row < len(self._squares) and 0 <= coordinate.column < len(self._squares[0]):
             return self._squares[coordinate.row][coordinate.column]
         return None
 
 
     def find_square_by_name(self, name: str) -> Optional[Square]:
-        """
-        Finds a board by its algebraic notation name (e.g., "a1").
-
-        Args:
-            name: The name of the board to find.
-
-        Returns:
-            The Square object if found, otherwise None.
-        """
         for row in self._squares:
             for square in row:
                 if square.name.upper() == name.upper():
@@ -84,13 +69,6 @@ class ChessBoard:
         return None
 
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
-        """
-        Finds a board by its unique ID.
-        Args:
-            square_id: The ID of the board to find.
-        Returns:
-            The Square object if found, otherwise None.
-        """
         for row in self._squares:
             for square in row:
                 if square.id == square_id:
@@ -98,20 +76,12 @@ class ChessBoard:
         return None
 
 
-    def chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
-        """
-        Returns the chess chess_piece at a given coordinate.
-        Args:
-            coordinate: The coordinate to check.
-        Returns:
-            The ChessPiece object if a chess_piece is on the board, otherwise None.
-        """
+    def find_chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
         square = self.find_square_by_coordinate(coordinate)
         return square.occupant if square else None
 
 
     def capture_square(self, chess_piece: 'ChessPiece', destination: Coordinate):
-
         destination_square = self.find_square_by_coordinate(destination)
         target_occupant = destination_square.occupant
 
