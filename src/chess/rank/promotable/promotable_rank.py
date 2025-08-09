@@ -2,7 +2,7 @@ from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.queen_rank import QueenRank
-from chess.motion.walk.walk import Walk
+from chess.rank.walk.walk import Walk
 
 if TYPE_CHECKING:
     from chess.token.piece import ChessPiece

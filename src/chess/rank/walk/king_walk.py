@@ -1,5 +1,5 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.motion.walk.walk import Walk
+from chess.rank.walk.walk import Walk
 from chess.token.piece import ChessPiece
 
 

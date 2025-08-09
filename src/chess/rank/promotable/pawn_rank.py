@@ -3,7 +3,7 @@ from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.promotable.promotable_rank import PromotableRank
-from chess.motion.walk.pawn_walk import PawnWalk
+from chess.rank.walk.pawn_walk import PawnWalk
 
 
 class PawnRank(PromotableRank):

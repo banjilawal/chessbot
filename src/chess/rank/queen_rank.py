@@ -2,7 +2,7 @@ from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.rank import Rank
-from chess.motion.walk.queen_walk import QueenWalk
+from chess.rank.walk.queen_walk import QueenWalk
 
 
 class QueenRank(Rank):

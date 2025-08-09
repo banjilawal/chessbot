@@ -1,8 +1,8 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.board.map_service import MapService
-from chess.motion.walk.bishop_walk import BishopWalk
-from chess.motion.walk.castle_walk import CastleWalk
-from chess.motion.walk.walk import Walk
+from chess.rank.walk.bishop_walk import BishopWalk
+from chess.rank.walk.castle_walk import CastleWalk
+from chess.rank.walk.walk import Walk
 from chess.token.piece import ChessPiece
 
 

@@ -4,7 +4,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
 from chess.board.map_service import MapService
-from chess.motion.walk.walk import Walk
+from chess.rank.walk.walk import Walk
 from chess.token.piece import ChessPiece
 from chess.rank.promotable.pawn_rank import PawnRank
 
