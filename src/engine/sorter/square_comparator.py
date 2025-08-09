@@ -1,9 +1,22 @@
-class SquareDistanceComparator:
-    _origin
-    def __init__(self, piece):
-        self.piece = piece
-    def compare(self, square1, square2):
-        if self.piece.color == 'white':
-            return square1.y - square2.y
-        else:
-            return square2.y - square1.y
+from chess.board.element.square import Square
+
+
+class SquareComparator:
+    _a: Square
+    _b: Square
+
+    def __init__(self, a: Square, b: Square):
+        self_a = a
+        self_b = b
+
+    @property
+    def a(self) -> Square:
+        return self._a
+
+    @property
+    def b(self) -> Square:
+        return self._b
+
+
+    def compare(self, a, b) -> int:
+        return

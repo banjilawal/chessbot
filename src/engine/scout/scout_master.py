@@ -3,14 +3,14 @@ from typing import List
 from chess.board.board import ChessBoard
 from chess.owner.model.cybernetic_owner import CyberneticOwner
 from engine.scout.scout import Scout
-from engine.scout.scout_report import ScoutReport
+from engine.scout.raw_scout_report import RawScoutReport
 
 
 class ScoutMaster:
 
     @staticmethod
-    def send_scouts(cybernetic_owner: CyberneticOwner, chess_board: ChessBoard) -> List[ScoutReport]:
-        scout_reports: List[ScoutReport] = []
+    def send_scouts(cybernetic_owner: CyberneticOwner, chess_board: ChessBoard) -> List[RawScoutReport]:
+        scout_reports: List[RawScoutReport] = []
 
         for chess_piece in cybernetic_owner.team.free_chess_pieces():
             report = Scout(chess_piece).survey(chess_board)
