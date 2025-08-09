@@ -1,5 +1,5 @@
 from chess.arena.arena import Arena
-from chess.creator.service.square_service_builder import ChessBoardBuilder
+from chess.creator.service.chess_board_builder import ChessBoardBuilder
 from chess.creator.service.team_service_builder import TeamServiceBuilder
 
 
