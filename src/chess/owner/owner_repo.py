@@ -11,23 +11,30 @@ class OwnerRepo:
     def __init__(self):
         self._owners = []
 
+
+    def __len__(self):
+        return len(self._owners)
+
+
     def add_owner(self, owner: Owner):
         if owner not in self._owners:
             self._owners.append(owner)
 
 
-    def find_owner_by_id(self, owner_id: int) -> Optional[Owner]:
+    def owner_by_id(self, owner_id: int) -> Optional[Owner]:
         for owner in self._owners:
             if owner.id == owner_id:
                 return owner
         return None
 
 
-    def find_owner_by_name(self, name: str) -> Optional[Owner]:
+    def owners_by_name(self, name: str) -> List[Owner]:
+        matches: List[Owner] = []
+
         for owner in self._owners:
-            if owner.name.upper() == name.upper():
-                return owner
-        return None
+            if owner.name.upper() == name.upper() and owner not in matches:
+                matches.append(owner)
+        return matches
 
 
     def human_owners(self) -> List[HumanOwner]:
@@ -39,8 +46,8 @@ class OwnerRepo:
         return matches
 
 
-    def cybernetic_owners(self) -> List[Owner]:
-        matches: List[Owner] = []
+    def cybernetic_owners(self) -> List[CyberneticOwner]:
+        matches: List[CyberneticOwner] = []
 
         for owner in self._owners:
             if isinstance(owner, CyberneticOwner) and owner not in matches:

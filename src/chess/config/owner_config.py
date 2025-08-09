@@ -1,7 +1,7 @@
 from enum import Enum
 
 from chess.common.game_color import GameColor
-from chess.owner.model.player_order import PlayerOrder
+from chess.game.player_order import PlayerOrder
 
 
 class OwnerConfig(Enum):
