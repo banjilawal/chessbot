@@ -31,13 +31,10 @@ class Scout:
                     squares.append(square)
                     break
                 squares.append(square)
+
         return RawScoutReport(
             scout_report_id=id_emitter.scout_report_id,
             scout=self._scout,
             squares=squares
         )
-
-
-    def __str__(self) -> str:
-        return f"Scout(scout:{self._scout.name})"
 

@@ -4,10 +4,9 @@ from chess.board.element.square import Square
 from chess.geometry.coordinate.coordinate import CartesianDistance
 from chess.token.obstruction import Obstruction
 from chess.token.piece import ChessPiece
-from engine.scout import scout
-from engine.scout.scout import Scout
+
 from engine.scout.raw_scout_report import RawScoutReport
-from engine.sorter.square_comparator import SquareComparator
+
 
 
 class ScoutReportSorter:
@@ -29,8 +28,8 @@ class ScoutReportSorter:
             else:
                 continue
         empty_squares.sort(
+            reverse=True,
             key=lambda vacant_square: CartesianDistance(origin, vacant_square.coordinate).distance,
-            reverse=True
         )
         return empty_squares
 
