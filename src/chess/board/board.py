@@ -1,7 +1,6 @@
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-# from chess.team.element.chess_piece import ChessPiece
 from chess.board.element.square import Square
 from chess.board.square_iterator import SquareIterator
 
@@ -87,10 +86,8 @@ class Map:
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
         """
         Finds a board by its unique ID.
-
         Args:
             square_id: The ID of the board to find.
-
         Returns:
             The Square object if found, otherwise None.
         """
@@ -104,17 +101,49 @@ class Map:
     def chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
         """
         Returns the chess chess_piece at a given coordinate.
-
         Args:
             coordinate: The coordinate to check.
-
         Returns:
             The ChessPiece object if a chess_piece is on the board, otherwise None.
         """
-        # This implementation is inefficient as it iterates the whole map_service.
-        # A more efficient approach would be to use find_square_by_coordinate first.
         square = self.find_square_by_coordinate(coordinate)
         return square.occupant if square else None
+
+
+    def capture_square(self, chess_piece: 'ChessPiece', destination: Coordinate):
+
+        destination_square = self.find_square_by_coordinate(destination)
+        target_occupant = destination_square.occupant
+
+        if target_occupant is None or chess_piece.is_enemy(target_occupant):
+            self._capture_helper(chess_piece, destination_square, target_occupant)
+        else:
+            print("The square is occupied by a friendly")
+            chess_piece.add_obstruction(target_occupant)
+            return
+
+
+    def _capture_helper(
+        self,
+        chess_piece: 'ChessPiece',
+        target_square: Square,
+        enemy: Optional['ChessPiece']
+    ):
+        originating_square = self.find_square_by_coordinate(
+            chess_piece.coordinate_stack.current_coordinate()
+        )
+
+        if not chess_piece.is_enemy(enemy):
+            raise Exception(
+                "Fatal error. A friendly should never be a self._capture_helper parameter."
+            )
+
+        if enemy is not None:
+            chess_piece.capture_prisoner(enemy)
+
+        originating_square.set_occupant(None)
+        target_square.set_occupant(chess_piece)
+        chess_piece.coordinate_stack.push_coordinate(target_square.coordinate)
 
 
     def __str__(self) -> str:

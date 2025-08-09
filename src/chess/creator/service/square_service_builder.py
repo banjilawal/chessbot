@@ -3,7 +3,7 @@ from typing import List
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.board.element.square import Square
-from chess.board.map import Map
+from chess.board.board import Map
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.board.map_service import MapService
 

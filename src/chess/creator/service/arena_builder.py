@@ -1,8 +1,6 @@
 from chess.creator.service.square_service_builder import SquareServiceBuilder
 from chess.creator.service.team_service_builder import TeamServiceBuilder
 
-from chess.field.board_controller import BoardController
-
 
 class BoardControllerBuilder:
 

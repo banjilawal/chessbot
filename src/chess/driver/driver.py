@@ -1,4 +1,4 @@
-from chess.creator.service.board_controller_builder import BoardControllerBuilder
+from chess.creator.service.arena_builder import BoardControllerBuilder
 from chess.field import board_controller
 from chess.geometry.coordinate.coordinate import Coordinate
 

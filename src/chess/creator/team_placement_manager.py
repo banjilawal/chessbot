@@ -1,5 +1,5 @@
 from chess.config.placement_chart import PlacementChart
-from chess.creator.service.board_controller_builder import BoardControllerBuilder
+from chess.creator.service.arena_builder import BoardControllerBuilder
 from chess.field.board_controller import BoardController
 from chess.team.team_service import TeamService
 

@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 
 class MapService:
-    from chess.board.map import Map
+    from chess.board.board import Map
     _map: Map
 
     def __init__(self, mao: Map):
