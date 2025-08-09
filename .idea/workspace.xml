@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/sorter/chess_piece_comparator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/sorter/chess_piece_comparator.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +65,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "service-layer-feature",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/team",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/game",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -87,18 +90,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\game" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\team" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\creator\service" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\team\model" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\game\team" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\square" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\engine\sorter" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\rank" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\token" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\engine\scout" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\engine" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\owner\model" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\config" />
     </key>
   </component>
   <component name="RunManager" selected="Python.driver">
@@ -125,7 +128,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="board_controller_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="arena_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,7 +142,30 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/creator/service/board_controller_builder.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\banji\PycharmProjects\chessbot\src\chess\creator\service\arena_builder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="chess_board_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/creator/service" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\banji\PycharmProjects\chessbot\src\chess\creator\service\chess_board_builder.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -194,29 +220,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="square_service_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/creator/service" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/creator/service/square_service_builder.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="team_factory" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -243,8 +246,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.driver" />
-        <item itemvalue="Python.board_controller_builder" />
-        <item itemvalue="Python.square_service_builder" />
+        <item itemvalue="Python.arena_builder" />
+        <item itemvalue="Python.chess_board_builder" />
         <item itemvalue="Python.team_factory" />
         <item itemvalue="Python.motion_controller_factory" />
       </list>
@@ -272,7 +275,7 @@
       <workItem from="1754453608087" duration="1824000" />
       <workItem from="1754455478725" duration="3056000" />
       <workItem from="1754625868607" duration="15363000" />
-      <workItem from="1754660304524" duration="30042000" />
+      <workItem from="1754660304524" duration="36920000" />
     </task>
     <servers />
   </component>
