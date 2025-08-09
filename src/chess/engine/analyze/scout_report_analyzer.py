@@ -7,7 +7,7 @@ from chess.token.obstruction import Obstruction
 from chess.token.piece import ChessPiece
 
 from chess.engine.scout.scout_report import ScoutReport
-from chess.engine.analysis.scout_report_analysis import ScoutReportAnalysis
+from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
 
 
 class ScoutReportAnalyzer:

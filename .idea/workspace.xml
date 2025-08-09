@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/map/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analysis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/map/neighbor_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analysis/scout_report_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/map/neighbor_table_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analysis/scout_report_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/map/situation_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analysis/board_analyzer.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -279,7 +273,7 @@
       <workItem from="1754455478725" duration="3056000" />
       <workItem from="1754625868607" duration="15363000" />
       <workItem from="1754660304524" duration="48869000" />
-      <workItem from="1754751191536" duration="6744000" />
+      <workItem from="1754751191536" duration="7724000" />
     </task>
     <servers />
   </component>

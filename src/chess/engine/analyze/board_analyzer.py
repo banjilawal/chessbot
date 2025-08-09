@@ -2,8 +2,8 @@ from typing import List
 
 from chess.board.board import ChessBoard
 from chess.owner.model.cybernetic_owner import CyberneticOwner
-from chess.engine.analysis.scout_report_analysis import ScoutReportAnalysis
-from chess.engine.analysis.scout_report_analyzer import ScoutReportAnalyzer
+from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
+from chess.engine.analyze.scout_report_analyzer import ScoutReportAnalyzer
 from chess.engine.scout.scout_master import ScoutMaster
 
 
