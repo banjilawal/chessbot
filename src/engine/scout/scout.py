@@ -5,7 +5,7 @@ from chess.board.element.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.piece import ChessPiece
-from engine.scout.raw_scout_report import ScoutReport
+from engine.scout.scout_report import ScoutReport
 
 
 class Scout:

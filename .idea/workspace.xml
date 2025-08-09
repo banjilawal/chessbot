@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/engine/map/situation_map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/scout/raw_scout_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/scout/scout_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/scout/scout.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/scout/scout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/scout/scout_master.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/scout/scout_master.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/sorter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/map/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/sorter/chess_piece_comparator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/sorter/neighbor_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/map/neighbor_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/sorter/neighbor_table_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/map/neighbor_table_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/sorter/square_comparator.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,6 +284,7 @@
       <workItem from="1754455478725" duration="3056000" />
       <workItem from="1754625868607" duration="15363000" />
       <workItem from="1754660304524" duration="48869000" />
+      <workItem from="1754751191536" duration="5000000" />
     </task>
     <servers />
   </component>
