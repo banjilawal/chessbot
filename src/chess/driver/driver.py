@@ -36,7 +36,7 @@ def main():
      print(chess_piece.name, "requesting move to", new_square)
      chess_piece.forward_move_request(destination=new_square.coordinate)
      # for s in board_controller.map_service.squares():
-     #     print(map.__str__(), "\n")
+     #     print(board.__str__(), "\n")
 
 
 

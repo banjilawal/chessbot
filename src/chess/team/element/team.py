@@ -2,11 +2,11 @@ from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.team.element.mobility_status import MobilityStatus
+from chess.token.mobility_status import MobilityStatus
 from chess.team.element.play_order import PlayOrder
 
 if TYPE_CHECKING:
-    from chess.team.element.piece import ChessPiece
+    from chess.token.piece import ChessPiece
 
 class Team:
     _id: int

@@ -1,9 +1,5 @@
-from typing import Optional, List, Dict
+from typing import Optional
 
-
-from chess.geometry.coordinate.coordinate import Coordinate
-
-from chess.team.element.piece import ChessPiece
 from chess.owner.model.owner import Owner
 from chess.team.element.team import Team
 from engine.engine import Engine

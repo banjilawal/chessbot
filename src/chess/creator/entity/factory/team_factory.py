@@ -51,17 +51,17 @@ class TeamFactory:
 #             for placement in PlacementChart:
 #                 square_name = placement.map_chess_piece_to_square_name(chess_piece)
 #                 if square_name is not None:
-#                     map = map_service.find_square_by_name(square_name)
-#                     map.occupy(chess_piece)
-#                     print(map)
+#                     board = map_service.find_square_by_name(square_name)
+#                     board.occupy(chess_piece)
+#                     print(board)
 #     print(repo)
-#                     # print(map.name, " occupied by", map.occupant.name)
+#                     # print(board.name, " occupied by", board.occupant.name)
 #                 # print(placement.value[0])
 #                 # placement.map_chess_piece_to_square_name(chess_piece)
 #                 # print("comparing", placement.chess_piece_name.capitalize(), " with", chess_piece.name.capitalize())
 #                 # chess_piece.name.capitalize() == placement.value[0].capitalize():
 #
-#        # print(f"matched map:{placement.square_name} with {chess_piece.name}")`````````
+#        # print(f"matched board:{placement.square_name} with {chess_piece.name}")`````````
 #
 # if __name__ == "__main__":
 #     main()

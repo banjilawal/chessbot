@@ -49,9 +49,9 @@ class BoardControllerBuilder:
     #         for placement in PlacementChart:
     #             square_name = placement.map_chess_piece_to_square_name(chess_piece)
     #             if square_name is not None:
-    #                 map = map_service.find_square_by_name(square_name)
-    #                 map.occupy(chess_piece)
-    #                 print(map)
+    #                 board = map_service.find_square_by_name(square_name)
+    #                 board.occupy(chess_piece)
+    #                 print(board)
 
 #
 #

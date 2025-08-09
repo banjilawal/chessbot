@@ -2,10 +2,10 @@ from abc import ABC
 from typing import List, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.map_service import MapService
+from chess.board.map_service import MapService
 
 if TYPE_CHECKING:
-    from chess.team.element.piece import ChessPiece
+    from chess.token.piece import ChessPiece
 
 
 class AbstractExplorer(ABC):

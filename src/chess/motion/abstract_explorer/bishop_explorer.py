@@ -2,7 +2,7 @@
 # from typing import List
 #
 # from chess.geometry.coordinate.coordinate import Coordinate
-# from chess.map.map_service import MapService
+# from chess.board.map_service import MapService
 # from chess.motion.abstract_explorer.abstract_explorer import Explorer
 # from chess.team.element.chess_piece import ChessPiece
 #

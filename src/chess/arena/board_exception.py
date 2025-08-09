@@ -11,7 +11,7 @@ class MissingBoardException(BoardException):
     default_message = "ObsoleteChessBoard does not exist.Passing null map_service not allowed."
 
 class MissingGridException(BoardException):
-    default_message = "The ObsoleteChessBoard has no map of squares. Passing null map not allowed."
+    default_message = "The ObsoleteChessBoard has no board of squares. Passing null board not allowed."
 
 class ArrayDimensionException(BoardException):
     default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} map_service requirement"

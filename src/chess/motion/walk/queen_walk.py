@@ -1,10 +1,9 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.map_service import MapService
+from chess.board.map_service import MapService
 from chess.motion.walk.bishop_walk import BishopWalk
 from chess.motion.walk.castle_walk import CastleWalk
-from chess.geometry.line.diagonal import Diagonal
 from chess.motion.walk.walk import Walk
-from chess.team.element.piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 
 class QueenWalk(Walk):

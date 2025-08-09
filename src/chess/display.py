@@ -190,7 +190,7 @@ class GameDisplay:
         drag_state = self.active_drags[mover_id]
         mover = drag_state.mover
 
-        # Calculate proposed map position
+        # Calculate proposed board position
         proposed_column = (mouse_position[0] - drag_state.offset_x) // self.cell_px
         proposed_row = (mouse_position[1] - drag_state.offset_y) // self.cell_px
 

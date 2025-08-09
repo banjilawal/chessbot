@@ -4,4 +4,6 @@ from engine.explorer import Explorer
 
 
 class Engine(ABC):
-    _explorer: Explorer
+    _scout_master: ScoutMaster
+    _report_sorter: ReportSorter
+    _target_selector: TargetSelector

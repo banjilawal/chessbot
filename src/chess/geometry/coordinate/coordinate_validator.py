@@ -1,10 +1,10 @@
 # from typing import Optional
 #
-# from chess.map.repo.square_repo_validator import SquareRepoValidator
+# from chess.board.repo.square_repo_validator import SquareRepoValidator
 # from assurance.validation.validation_result import ValidationResult
 # from assurance.validation.validation_exception import ValidationException
 # from chess.geometry.coordinate.coordinate import Coordinate
-# from chess.map.repo.repo import Map
+# from chess.board.repo.repo import Map
 #
 #
 # class CoordinateNotNullValidationFailed(ValidationException):

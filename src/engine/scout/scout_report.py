@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.team.element.piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 
 class ScoutReport:

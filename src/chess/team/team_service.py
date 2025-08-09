@@ -1,7 +1,7 @@
-from typing import List, Optional, TYPE_CHECKING
+from typing import List, Optional
 
 from chess.common.game_color import GameColor
-from chess.team.element.piece import ChessPiece
+from chess.token.piece import ChessPiece
 from chess.team.element.team import Team
 
 # if TYPE_CHECKING:

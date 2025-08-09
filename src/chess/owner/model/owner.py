@@ -45,5 +45,7 @@ class Owner(ABC):
 
 
 
+
+
     def __str__(self):
         return f"Player[{self._id} {self._name} {self._team}]"

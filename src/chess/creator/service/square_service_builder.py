@@ -2,10 +2,10 @@ from typing import List
 
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.element.square import Square
-from chess.map.map import Map
+from chess.board.element.square import Square
+from chess.board.map import Map
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.map.map_service import MapService
+from chess.board.map_service import MapService
 
 
 class SquareServiceBuilder:

@@ -1,11 +1,5 @@
-from typing import List
-
-from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.element.square import Square
-from chess.map.map_service import MapService
+from chess.board.map_service import MapService
 from chess.team.move import Move
-from engine.explorer import Explorer
-from chess.team.element.piece import ChessPiece
 from chess.team.team_service import TeamService
 
 

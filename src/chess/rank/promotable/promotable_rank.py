@@ -5,7 +5,7 @@ from chess.rank.queen_rank import QueenRank
 from chess.motion.walk.walk import Walk
 
 if TYPE_CHECKING:
-    from chess.team.element.piece import ChessPiece
+    from chess.token.piece import ChessPiece
 
 
 class PromotableRank:

@@ -1,15 +1,14 @@
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.map.element.square import Square
-from chess.team.element.mobility_status import MobilityStatus
+from chess.board.element.square import Square
 
 if TYPE_CHECKING:
-    from chess.team.element.piece import ChessPiece
+    from chess.token.piece import ChessPiece
 
 
 class MapService:
-    from chess.map.map import Map
+    from chess.board.map import Map
     _map: Map
 
     def __init__(self, mao: Map):

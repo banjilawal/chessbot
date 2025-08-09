@@ -1,6 +1,5 @@
-from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.team.element.piece import ChessPiece
+from chess.token.piece import ChessPiece
 from chess.team.element.team import Team
 
 

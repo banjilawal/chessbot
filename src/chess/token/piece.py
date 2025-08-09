@@ -1,15 +1,12 @@
 from dataclasses import dataclass
 
-
-from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack
-from chess.map.map_service import MapService
 
-from chess.team.element.mobility_status import MobilityStatus
+from chess.token.mobility_status import MobilityStatus
 
 from typing import List, TYPE_CHECKING
 
-from chess.team.element.obstruction import Obstruction
+from chess.token.obstruction import Obstruction
 
 if TYPE_CHECKING:
     from chess.rank.rank import Rank

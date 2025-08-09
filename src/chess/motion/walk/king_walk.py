@@ -1,6 +1,6 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.motion.walk.walk import Walk
-from chess.team.element.piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 
 class KingWalk(Walk):
