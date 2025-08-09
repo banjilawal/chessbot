@@ -7,28 +7,19 @@ from chess.token.obstruction import Obstruction
 from chess.token.piece import ChessPiece
 
 from chess.engine.scout.scout_report import ScoutReport
-from chess.engine.map.neighbor_table import NeighborTable
+from chess.engine.analysis.scout_report_analysis import ScoutReportAnalysis
 
 
-class NeighborTableGenerator:
-    _scout_report: ScoutReport
-
-    def __init__(self, scout_report: ScoutReport):
-        self._scout_report = scout_report
-
-    @property
-    def scout(self) -> ScoutReport:
-        return self._scout_report
-
+class ScoutReportAnalyzer:
 
     @staticmethod
-    def issue_neighbor_table(scout_report: ScoutReport) -> NeighborTable:
-        return NeighborTable(
+    def issue_analysis(scout_report: ScoutReport) -> ScoutReportAnalysis:
+        return ScoutReportAnalysis(
             neighbor_table_id=id_emitter.neighbor_table_id,
             chess_piece=scout_report.scout,
-            enemies=NeighborTableGenerator.sort_enemies(scout_report),
-            obstructions=NeighborTableGenerator.sort_obstructions(scout_report),
-            vacant_squares=NeighborTableGenerator.sort_vacant_squares(scout_report)
+            enemies=ScoutReportAnalyzer.sort_enemies(scout_report),
+            obstructions=ScoutReportAnalyzer.sort_obstructions(scout_report),
+            vacant_squares=ScoutReportAnalyzer.sort_vacant_squares(scout_report)
         )
 
 

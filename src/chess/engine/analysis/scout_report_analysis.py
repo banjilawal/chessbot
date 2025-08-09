@@ -5,14 +5,12 @@ from chess.token.obstruction import Obstruction
 from chess.token.piece import ChessPiece
 
 
-class NeighborTable:
+class ScoutReportAnalysis:
     _id: int
     _chess_piece: ChessPiece
     _enemies: List[ChessPiece]
     _vacant_squares: List[Square]
     _obstructions: List[Obstruction]
-
-
 
     def __init__(self,
          neighbor_table_id: int,
