@@ -5,7 +5,7 @@ from chess.board.element.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.piece import ChessPiece
-from engine.scout.raw_scout_report import RawScoutReport
+from engine.scout.raw_scout_report import ScoutReport
 
 
 class Scout:
@@ -19,7 +19,7 @@ class Scout:
         return self._scout
 
 
-    def survey(self, chess_board: ChessBoard) -> RawScoutReport:
+    def survey(self, chess_board: ChessBoard) -> ScoutReport:
         squares: List[Square] = []
         origin = self._scout.coordinate_stack.current_coordinate()
 
@@ -32,7 +32,7 @@ class Scout:
                     break
                 squares.append(square)
 
-        return RawScoutReport(
+        return ScoutReport(
             scout_report_id=id_emitter.scout_report_id,
             scout=self._scout,
             squares=squares

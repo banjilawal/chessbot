@@ -9,6 +9,7 @@ class IdEmitter:
         self._arena_id = 0
         self._game_id = 0
         self._board_id = 0
+        self._neighbor_table_id = 0
 
     @property
     def player_id(self) -> int:
@@ -58,5 +59,10 @@ class IdEmitter:
     def board_id(self) -> int:
         self._board_id += 1
         return self._board_id
+
+    @property
+    def neighbor_table_id(self) -> int:
+        self._neighbor_table_id += 1
+        return self._neighbor_table_id
 
 id_emitter = IdEmitter()

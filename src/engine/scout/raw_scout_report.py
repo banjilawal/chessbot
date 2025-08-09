@@ -4,7 +4,7 @@ from chess.board.element.square import Square
 from chess.token.piece import ChessPiece
 
 
-class RawScoutReport:
+class ScoutReport:
     _id: int
     _scout: ChessPiece
     _squares: List[Square]
@@ -30,16 +30,16 @@ class RawScoutReport:
     def __eq__(self, other) -> bool:
         if other is self: return True
         if other is None: return False
-        if not isinstance(other, RawScoutReport): return False
+        if not isinstance(other, ScoutReport): return False
         return self._id == other.id
 
 
     def __hash__(self) -> int:
-        return hash(self._id, self._scout.id)
+        return hash(self._id)
 
 
     def __str__(self) -> str:
-        return (f"ScoutReport(id:{self._id} "
-                f"scout:{self._scout.name} "
-                f"number_of_locations:{len(self._squares)}"
+        return (
+            f"ScoutReport(id:{self._id} scout:{self._scout.name} "
+            f"observation_count:{len(self._squares)}"
         )
