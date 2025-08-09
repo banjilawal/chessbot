@@ -1,11 +1,11 @@
-from chess.creator.service.arena_builder import BoardControllerBuilder
+from chess.creator.service.arena_builder import ArenaBuilder
 from chess.field import board_controller
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
 def main():
 
-     board = BoardControllerBuilder.build()
+     board = ArenaBuilder.build()
      square = board.square_service.find_square_by_id(58)
      print("searched by id", square)
 
