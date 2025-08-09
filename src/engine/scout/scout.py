@@ -1,8 +1,8 @@
 from typing import List
 
+from chess.board.board import ChessBoard
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.board.square_iterator import SquareIterator
 from chess.token.piece import ChessPiece
 from engine.scout.scout_report import ScoutReport
 
@@ -18,19 +18,19 @@ class Scout:
         return self._scout
 
 
-    def survey(self) -> ScoutReport:
+    def survey(self, chess_board: ChessBoard) -> ScoutReport:
         locations: List[Coordinate] = []
         origin = self._scout.coordinate_stack.current_coordinate()
 
-        for delta in self._scout.rank.delta:
-            square_iterator = SquareIterator(origin, delta)
-
-            for square in square_iterator:
+        for territory in self._scout.rank.territories:
+            for square in chess_board.iterator(origin, territory.delta):
                 location = square.coordinate
                 if not self._scout.rank.walk.is_walkable(self._scout, location):
                     break
                 if square.occupant is not None:
                     locations.append(location)
+                    break
+                locations.append(location)
         return ScoutReport(
             scout_report_id=id_emitter.scout_report_id,
             scout=self._scout,

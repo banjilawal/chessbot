@@ -42,7 +42,8 @@ class Arena:
         self._board.capture_square(move.team_member, move.destination)
 
 
-    def survey_board(self, cybernetic_owner: CyberneticOwner):
+    def survey_board(self, cybernaut: CyberneticOwner):
+        cybernaut.engine._scout_master.send_scouts(cybernaut, self._chess_board)
 
 
 
