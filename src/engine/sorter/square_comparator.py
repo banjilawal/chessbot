@@ -1,4 +1,5 @@
-class SquareComparator:
+class SquareDistanceComparator:
+    _origin
     def __init__(self, piece):
         self.piece = piece
     def compare(self, square1, square2):

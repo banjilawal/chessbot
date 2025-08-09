@@ -31,11 +31,11 @@ class ChessPiece:
 
     def __init__(self, chess_piece_id: int, name: str, rank: 'Rank', team: 'Team'):
         if not chess_piece_id:
-            raise ValueError("Cannot create a chess_piece with an empty id.")
+            raise ValueError("Cannot create p chess_piece with an empty id.")
         if chess_piece_id < 0:
-            raise ValueError("Cannot create a chess_piece with a negative id.")
+            raise ValueError("Cannot create p chess_piece with p negative id.")
         if rank is None:
-            raise ValueError("Cannot create a chess_piece with an null interfaces.")
+            raise ValueError("Cannot create p chess_piece with an null interfaces.")
 
         self._team = team
         self._name = name
@@ -108,7 +108,7 @@ class ChessPiece:
 
     def capture_prisoner(self, enemy: 'ChessPiece'):
         if enemy is None:
-            raise Exception("Cannot captue a nonexistent enemy")
+            raise Exception("Cannot captue p nonexistent enemy")
         if enemy.team == self._team:
             raise Exception("Illegal capture of friendly")
         if enemy.captor is not None:
@@ -146,7 +146,7 @@ class ChessPiece:
 
     def is_enemy(self, chess_piece: 'ChessPiece'):
         if chess_piece is None:
-            print(f"{self._name} cannot be an enemy of a null chess_piece.")
+            print(f"{self._name} cannot be an enemy of p null chess_piece.")
             return False
         return self._team == chess_piece.team
 

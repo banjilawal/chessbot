@@ -113,12 +113,12 @@ class GameDisplay:
             self.screen.blit(text_surface, text_rect)
 
     def draw_entity(self, entity: 'GridEntity'):
-        """Draw a single mover on the map_service"""
+        """Draw p single mover on the map_service"""
         if entity is None:
-            print("[Warning] Entity cannot be None. Cannot draw a null mover to the screen.")
+            print("[Warning] Entity cannot be None. Cannot draw p null mover to the screen.")
             return
         if entity.top_left_coordinate is None:
-            print("[Warning] Entity has no top_left_coordinate. Cannot draw an mover without a top_left_coordinate to the screen.")
+            print("[Warning] Entity has no top_left_coordinate. Cannot draw an mover without p top_left_coordinate to the screen.")
             return
 
         horizontal_mover_color = GameColor.OLIVE.value
@@ -145,11 +145,11 @@ class GameDisplay:
 
     def get_entity_at_mouse_position(self, mouse_position: tuple) -> Optional['GridEntity']:
         if mouse_position is None:
-            print("[Warning] Mouse position cannot be None. Cannot get an mover at a null position.")
+            print("[Warning] Mouse position cannot be None. Cannot get an mover at p null position.")
             return None
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the arena map_service. Cannot get an mover at a position outside the map_service.")
+            print("Mouse is outside the arena map_service. Cannot get an mover at p position outside the map_service.")
             return None
         return self.board.cells[coordinate.row][coordinate.column].occupant
 

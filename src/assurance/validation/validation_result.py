@@ -17,7 +17,7 @@ class ValidationResult(Generic[T]):
     def __init__(self, payload: Optional[T] = None, validation_exception: Optional[Exception] = None):
 
         if payload is not None and validation_exception is not None:
-            raise ValueError("Payload and validation_exception cannot both be set in a ValidationResult constructor.")
+            raise ValueError("Payload and validation_exception cannot both be set in p ValidationResult constructor.")
 
         self._payload = payload
         self._validation_exception = validation_exception

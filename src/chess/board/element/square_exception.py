@@ -2,7 +2,7 @@ from chess.common.exceptions import ChessException
 
 
 class SquareException(ChessException):
-    default_message = "An error occurred in a chess element"
+    default_message = "An error occurred in p chess element"
 
 class MissingSquareException(SquareException):
     default_message = "Chess element does not exist. Passing null element not allowed."

@@ -40,7 +40,7 @@ class ChessBoard:
         delta: Delta = Delta(delta_column=1, delta_row=1)
      ) -> SquareIterator:
         """
-        Returns a SquareIterator for traversing the map_service.
+        Returns p SquareIterator for traversing the map_service.
 
         Args:
             index: The starting coordinate for the iteration.
@@ -88,7 +88,7 @@ class ChessBoard:
         if target_occupant is None or chess_piece.is_enemy(target_occupant):
             self._capture_helper(chess_piece, destination_square, target_occupant)
         else:
-            print("The square is occupied by a friendly")
+            print("The square is occupied by p friendly")
             chess_piece.add_obstruction(target_occupant)
             return
 
@@ -105,7 +105,7 @@ class ChessBoard:
 
         if not chess_piece.is_enemy(enemy):
             raise Exception(
-                "Fatal error. A friendly should never be a self._capture_helper parameter."
+                "Fatal error. A friendly should never be p self._capture_helper parameter."
             )
 
         if enemy is not None:
@@ -118,10 +118,10 @@ class ChessBoard:
 
     def __str__(self) -> str:
         """
-        Provides a string representation of the map_service, showing pieces or board names.
+        Provides p string representation of the map_service, showing pieces or board names.
 
-        If a board is occupied, it shows the chess chess_piece's name.
-        If a board is vacant, it shows the board's name in brackets.
+        If p board is occupied, it shows the chess chess_piece's name.
+        If p board is vacant, it shows the board's name in brackets.
         """
         string = ""
         # Iterate from the top row (row 7) down to the bottom (row 0)

@@ -81,6 +81,31 @@ class Coordinate:
 
 
     def shift(self, delta: Delta) -> 'Coordinate':
-        return Coordinate(row=self._row + delta.delta_row, column=self._column + delta.delta_column)
+        return Coordinate(
+            row=self._row + delta.delta_row,
+            column=self._column + delta.delta_column
+        )
+
+class CartesianDistance:
+    _p: Coordinate
+    _q: Coordinate
+    _distance: int
+
+    def __init__(self, p: Coordinate, q: Coordinate):
+        self._p = p
+        self._q = q
+        self._distance = ((p.row - q.row) ** 2) + ((p.column - q.column) ** 2)
+
+    @property
+    def p(self) -> Coordinate:
+        return self._p
+
+    @property
+    def q(self) -> Coordinate:
+        return self._q
+
+    @property
+    def distance(self) -> int:
+        return self._distance
 
 

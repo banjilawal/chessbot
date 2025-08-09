@@ -8,7 +8,7 @@ class PopEmptyCoordinateStackException(ChessException):
     default_message = "Cannot pop from empty coordinate stack"
 
 class PushNullCoordinateException(ChessException):
-    default_message = "Cannot push a null coordinate on to te stack"
+    default_message = "Cannot push p null coordinate on to te stack"
 
 class CoordinateStack:
     _stack: List[Coordinate]
