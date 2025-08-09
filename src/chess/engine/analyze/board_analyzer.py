@@ -9,6 +9,8 @@ from chess.engine.scout.scout_master import ScoutMaster
 
 class BoardAnalyzer:
 
+
+
     @staticmethod
     def issue_analysis(owner: CyberneticOwner, chess_board: ChessBoard) -> List[ScoutReportAnalysis]:
         situation_map: List[ScoutReportAnalysis] = []

@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/engine/decision/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/decision/decision_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/owner/model/cybernetic_owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/owner/model/cybernetic_owner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/owner/model/human_owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/owner/model/human_owner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/owner/model/owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/owner/model/owner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/obstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/obstruction.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,11 +105,11 @@
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\game\team" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\engine\decision" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\engine\sorter" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\rank" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\token" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\engine\scout" />
     </key>
   </component>
   <component name="RunManager" selected="Python.driver">
@@ -273,7 +284,7 @@
       <workItem from="1754455478725" duration="3056000" />
       <workItem from="1754625868607" duration="15363000" />
       <workItem from="1754660304524" duration="48869000" />
-      <workItem from="1754751191536" duration="7724000" />
+      <workItem from="1754751191536" duration="19968000" />
     </task>
     <servers />
   </component>

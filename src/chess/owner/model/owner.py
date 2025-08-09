@@ -30,6 +30,12 @@ class Owner(ABC):
     def team(self) -> Team:
         return self._team
 
+
+    @name.setter
+    def name(self, name: str):
+        self._name = name
+
+
     @team.setter
     def team(self, team: Team):
         self._team = team
