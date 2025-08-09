@@ -3,19 +3,19 @@ from typing import List
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.board.element.square import Square
-from chess.board.board import Map
+from chess.board.board import ChessBoard
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.board.map_service import MapService
 
 
-class SquareServiceBuilder:
+class ChessBoardBuilder:
 
     @staticmethod
     def assemble():
-        return MapService(repo=SquareServiceBuilder._build_repo(), )
+        return MapService(repo=ChessBoardBuilder._build_repo(), )
 
     @staticmethod
-    def _build_repo() -> Map:
+    def _build_repo() -> ChessBoard:
 
         grid: List[List[Square]] = []
 
@@ -30,14 +30,14 @@ class SquareServiceBuilder:
                 row_squares.append(square)
                 ascii_value += 1
             grid.append(row_squares)
-        return Map(grid)
+        return ChessBoard(grid)
 
 #
 #
 #
 # def main():
 #
-#     service = SquareServiceBuilder.assemble()
+#     service = ChessBoardBuilder.assemble()
 #     print(service.squares_to_string())
 #
 #

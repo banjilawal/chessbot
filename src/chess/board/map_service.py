@@ -8,10 +8,10 @@ if TYPE_CHECKING:
 
 
 class MapService:
-    from chess.board.board import Map
-    _map: Map
+    from chess.board.board import ChessBoard
+    _map: ChessBoard
 
-    def __init__(self, mao: Map):
+    def __init__(self, mao: ChessBoard):
         self._map = map
 
     def squares(self) -> List[List[Square]]:

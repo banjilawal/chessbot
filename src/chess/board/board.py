@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from chess.token.piece import ChessPiece
 
 
-class Map:
+class ChessBoard:
     """
     A repository for managing all the squares on the chess map_service.
     It provides methods for finding squares and iterating over them.
@@ -17,7 +17,7 @@ class Map:
 
     def __init__(self, squares: List[List[Square]]):
         """
-        Initializes the Map with a 2D list of Square objects.
+        Initializes the ChessBoard with a 2D list of Square objects.
 
         Args:
             squares: A list of lists representing the rows and columns of the map_service.

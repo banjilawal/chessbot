@@ -43,7 +43,7 @@ class TeamFactory:
 #     for team in teams:
 #         print(team)
 #
-#     map_service = SquareServiceBuilder.assemble()
+#     map_service = ChessBoardBuilder.assemble()
 #
 #     for team in teams:
 #         for chess_piece in team.chess_pieces:

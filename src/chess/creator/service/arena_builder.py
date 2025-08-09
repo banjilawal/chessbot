@@ -1,5 +1,5 @@
 from chess.arena.arena import Arena
-from chess.creator.service.square_service_builder import SquareServiceBuilder
+from chess.creator.service.square_service_builder import ChessBoardBuilder
 from chess.creator.service.team_service_builder import TeamServiceBuilder
 
 
@@ -9,7 +9,7 @@ class ArenaBuilder:
     def build() -> Arena:
 
         team_service = TeamServiceBuilder.assemble()
-        square_service = SquareServiceBuilder.assemble()
+        square_service = ChessBoardBuilder.assemble()
 
         arena = Arena(team_service=team_service, square_service=square_service)
 
@@ -58,7 +58,7 @@ class ArenaBuilder:
 #
 #
 # def main():
-#     map_service = SquareServiceBuilder.assemble()
+#     map_service = ChessBoardBuilder.assemble()
 #     team_service = TeamServiceBuilder.assemble()
 #     board_controller = ArenaBuilder.build(team_service, map_service)
 #
