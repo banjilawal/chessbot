@@ -1,15 +1,22 @@
-class ChessPieceService:
-    _repo: ChessPieceRepo
+from typing import Optional, List
 
-    def __init__(self, repo: ChessPieceRepo):
+from chess.game.game import Game
+from chess.game.game_repo import GameRepo
+from chess.owner.model.owner import Owner
+
+
+class GameService:
+    _repo: GameRepo
+
+    def __init__(self, repo: GameRepo):
         self._repo = repo
 
 
-    def add_chess_piece(self, chess_piece: ChessPiece):
-        self._repo.add(chess_piece)
+    def add_game(self, game):
+        self._repo.add(game)
 
-    def find_chess_piece_by_id(self, chess_piece_id: int) -> Optional[ChessPiece]:
-        return self._repo.find(chess_piece_id)
+    def find_game_by_id(self, game_id: int) -> Optional[Game]:
+        return self._repo.find(game_id)
 
-    def find_by_owner(self, owner: Owner) -> List[ChessPiece]:
-        return self._repo.filter_by_owner_id(owner.id)
+    def find_games_by_winner(self, winner: Owner) -> List[Game]:
+        return self._repo.filter_by_winner(winner)
