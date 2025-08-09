@@ -1,7 +1,6 @@
 from abc import ABC
 
-from engine.explorer import Explorer
-from engine.scout.scout_master import ScoutMaster
+from chess.engine.scout.scout_master import ScoutMaster
 
 
 class Engine(ABC):

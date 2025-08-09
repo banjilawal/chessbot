@@ -3,9 +3,8 @@ from typing import List
 from chess.board.board import ChessBoard
 from chess.board.element.square import Square
 from chess.creator.emit import id_emitter
-from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.piece import ChessPiece
-from engine.scout.scout_report import ScoutReport
+from chess.engine.scout.scout_report import ScoutReport
 
 
 class Scout:

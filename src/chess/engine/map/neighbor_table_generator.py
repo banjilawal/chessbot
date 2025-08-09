@@ -6,8 +6,8 @@ from chess.geometry.coordinate.coordinate import CartesianDistance
 from chess.token.obstruction import Obstruction
 from chess.token.piece import ChessPiece
 
-from engine.scout.scout_report import ScoutReport
-from engine.map.neighbor_table import NeighborTable
+from chess.engine.scout.scout_report import ScoutReport
+from chess.engine.map.neighbor_table import NeighborTable
 
 
 class NeighborTableGenerator:

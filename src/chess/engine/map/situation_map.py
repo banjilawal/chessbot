@@ -1,11 +1,10 @@
 from typing import List
 
 from chess.board.board import ChessBoard
-from chess.creator.emit import id_emitter
 from chess.owner.model.cybernetic_owner import CyberneticOwner
-from engine.map.neighbor_table import NeighborTable
-from engine.map.neighbor_table_generator import NeighborTableGenerator
-from engine.scout.scout_master import ScoutMaster
+from chess.engine.map.neighbor_table import NeighborTable
+from chess.engine.map.neighbor_table_generator import NeighborTableGenerator
+from chess.engine.scout.scout_master import ScoutMaster
 
 
 class SituationMapGenerator:
