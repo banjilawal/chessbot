@@ -105,9 +105,10 @@ class ChessBoard:
                 f"destination square {destination_square.name}"
                 f" is empty calling ChessBoard._finalize_capture"
             )
-            self._finalize_capture(self, chess_piece, destination_square)
+            self._finalize_capture(chess_piece, destination_square)
+            return
 
-        if not  chess_piece.is_enemy(target_occupant):
+        if not chess_piece.is_enemy(target_occupant):
             print(
                 f"{method}: "
                 f"destination square {destination_square.name}"
@@ -121,12 +122,13 @@ class ChessBoard:
         if chess_piece.is_enemy(target_occupant):
             print(
                 f"current occupant {target_occupant.name} "
-                f"is an enemy of {chess_piece.name} "
+                f"is being captured by its enemy {chess_piece.name} "
                 f"calling ChesBoard.take_prisoner"
             )
-            self._imprison_occupant()
-            print(f"From BAORD.capture_square destination square is {destination_square}")
-            self._capture_helper(chess_piece, destination_square, target_occupant)
+            self._imprison_occupant(chess_piece, target_occupant)
+            self._finalize_capture(chess_piece, destination_square)
+            # print(f"From BAORD.capture_square destination square is {destination_square}")
+            # self._capture_helper(chess_piece, destination_square, target_occupant)
 
 
     def _capture_helper(
@@ -138,7 +140,6 @@ class ChessBoard:
         originating_square = self.find_square_by_coordinate(
             chess_piece.coordinate_stack.current_coordinate()
         )
-        if enemy is None :
 
         if not chess_piece.is_enemy(enemy):
             raise Exception(
@@ -156,10 +157,20 @@ class ChessBoard:
         target_square.occpant = chess_piece
         chess_piece.coordinate_stack.push_coordinate(target_square.coordinate)
 
+    def _imprison_occupant(self, jailer: 'ChessPiece', prisoner: 'ChessPiece'):
+        self.find_square_by_coordinate(prisoner.coordinate_stack.current_coordinate()).occupant = None
+        prisoner.captor = jailer
+
+
+
     def _finalize_capture(self, chess_piece: 'ChessPiece', destination_square: Square):
         method = f"ChessBoard._finalize_capture"
 
         destination_square.occupant = chess_piece
+        self.find_square_by_coordinate(
+            chess_piece.coordinate_stack.current_coordinate()
+        ).occupant
+
         chess_piece.coordinate_stack.push_coordinate(destination_square.coordinate)
 
         if destination_square.occupant is not chess_piece:

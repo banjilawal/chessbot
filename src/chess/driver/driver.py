@@ -25,7 +25,7 @@ def main():
           arena.chess_board.capture_square(chess_piece, dest)
      else:
           print(f"cannot walk to {dest} from {coord}")
-     # print(arena.chess_board)
+     print(arena.chess_board)
 
 
 
