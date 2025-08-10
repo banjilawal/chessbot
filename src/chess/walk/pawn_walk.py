@@ -1,10 +1,7 @@
-from typing import Optional
-
-from chess.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
-from chess.rank.walk.walk import Walk
+from chess.walk.walk import Walk
 from chess.token.chess_piece import ChessPiece
 from chess.rank.promotable.pawn_rank import PawnRank
 

@@ -1,7 +1,7 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.rank.walk.bishop_walk import BishopWalk
-from chess.rank.walk.castle_walk import CastleWalk
-from chess.rank.walk.walk import Walk
+from chess.walk.bishop_walk import BishopWalk
+from chess.walk.castle_walk import CastleWalk
+from chess.walk.walk import Walk
 from chess.token.chess_piece import ChessPiece
 
 

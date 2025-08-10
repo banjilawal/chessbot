@@ -2,7 +2,7 @@ from typing import List
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.promotable.promotable_rank import PromotableRank
-from chess.rank.walk.king_walk import KingWalk
+from chess.walk.king_walk import KingWalk
 
 
 class KingRank(PromotableRank):

@@ -2,7 +2,7 @@ from abc import ABC
 from typing import List, Optional
 
 from chess.geometry.quadrant import Quadrant
-from chess.rank.walk.walk import Walk
+from chess.walk import Walk
 
 
 class Rank(ABC):

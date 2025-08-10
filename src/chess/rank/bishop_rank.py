@@ -2,7 +2,7 @@ from typing import List
 
 from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
-from chess.rank.walk.bishop_walk import BishopWalk
+from chess.walk import BishopWalk
 
 
 

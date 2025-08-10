@@ -3,7 +3,7 @@ from typing import List
 
 from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
-from chess.rank.walk.castle_walk import CastleWalk
+from chess.walk import CastleWalk
 
 
 class CastleRank(Rank):
