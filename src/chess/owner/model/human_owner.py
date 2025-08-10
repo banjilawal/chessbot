@@ -1,7 +1,7 @@
 from typing import Optional
 
 from chess.owner.model.owner import Owner
-from chess.team.element.team import Team
+from chess.team.team import Team
 
 
 class HumanOwner(Owner):

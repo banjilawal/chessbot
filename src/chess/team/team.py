@@ -3,10 +3,10 @@ from typing import List, TYPE_CHECKING
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
 from chess.token.mobility_status import MobilityStatus
-from chess.team.element.play_order import PlayOrder
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.chess_piece import ChessPiece
+
 
 class Team:
     _id: int
@@ -22,7 +22,6 @@ class Team:
         team_id: int,
         letter: str,
         team_color: GameColor,
-        team_order: PlayOrder,
         back_row_index: int,
         pawn_row_index: int,
         home_quadrant: Quadrant
@@ -30,7 +29,6 @@ class Team:
         self._id = team_id
         self._letter = letter
         self._color = team_color
-        self._team_order = team_order
         self._back_row_index = back_row_index
         self._pawn_row_index = pawn_row_index
         self._home_quadrant = home_quadrant
@@ -129,5 +127,5 @@ class Team:
 
 
     def __str__(self):
-        return (f"Team id:{self._id} color:{self._color} play_order{self._team_order} rank_row:{self._back_row_index} "
+        return (f"Team id:{self._id} color:{self._color}  rank_row:{self._back_row_index} "
                 f"pawn_row:{self._pawn_row_index} home:{self._home_quadrant}")

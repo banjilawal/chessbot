@@ -1,9 +1,9 @@
 from typing import Optional, TYPE_CHECKING
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.board.element.occupation_status import OccupationStatus
+from chess.board.occupation_status import OccupationStatus
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.chess_piece import ChessPiece
 
 class Square:
     _id: int

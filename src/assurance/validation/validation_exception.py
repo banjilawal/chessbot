@@ -1,4 +1,4 @@
-from chess.common.exceptions import ChessException
+from chess.common.chess_exception import ChessException
 
 
 class ValidationException(ChessException):

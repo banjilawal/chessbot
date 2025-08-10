@@ -1,4 +1,4 @@
-from chess.common.exceptions import ChessException
+from chess.common.chess_exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 
 class BoardException(ChessException):
@@ -8,13 +8,13 @@ class CoordinateException(BoardException):
     default_message = "An error occurred in the Coordinate."
 
 class MissingBoardException(BoardException):
-    default_message = "ObsoleteChessBoard does not exist.Passing null map_service not allowed."
+    default_message = "ObsoleteChessBoard does not exist.Passing null chess_board not allowed."
 
 class MissingGridException(BoardException):
     default_message = "The ObsoleteChessBoard has no board of squares. Passing null board not allowed."
 
 class ArrayDimensionException(BoardException):
-    default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} map_service requirement"
+    default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} chess_board requirement"
 
 class MissingCoordinateException(CoordinateException):
     default_message = "Coordinate does not exist. Passing null coordinate not allowed"

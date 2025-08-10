@@ -9,8 +9,8 @@ from typing import List, Optional, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
-    from chess.board.element.square import Square
+    from chess.token.chess_piece import ChessPiece
+    from chess.board.square import Square
     from chess.geometry.coordinate.coordinate import Coordinate
 
 
@@ -70,17 +70,17 @@ class ObsoleteChessBoard:
     #
     #         turn_record = None
     #         capture_record = None
-    #         element = self._grid[coordinate.row][coordinate.column]
-    #         current_occupant = element.occupant
-    #         print("The element at ", coordinate, " is ", element, " it contains ", current_occupant)
+    #         square = self._grid[coordinate.row][coordinate.column]
+    #         current_occupant = square.occupant
+    #         print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
     #         if current_occupant is not None and not chess_piece.is_enemy(current_occupant):
-    #             print("A friendly is occupying the element. Aborting capture process.")
+    #             print("A friendly is occupying the square. Aborting capture process.")
     #             return None
     #
     #     if current_occupant is not None and chess_piece.is_enemy(current_occupant):
     #         print("The current occupant is an enemy on ")
     #         prisoner = current_occupant
-    #         element.occupant = None
+    #         square.occupant = None
     #         prisoner.coordinate = None
     #
     #         captor = chess_piece
@@ -91,16 +91,16 @@ class ObsoleteChessBoard:
     #
     #
     #         # captor = self.remove_piece_from_board(chess_piece)
-    #         element.occupant = captor
-    #         # captor.coord = element.coord
+    #         square.occupant = captor
+    #         # captor.coord = square.coord
     #         # captor.add_position(coord)
     #         self._killed_pieces.append(prisoner)
     #
     #     if current_occupant is None:
-    #         print("The current occupant is None. The chess_piece is free to move to the destination element.")
-    #         print(f"Square {element} has occupant {current_occupant} and chess_piece {chess_piece} is free to move to the destination element.")
-    #         element.occupant = chess_piece
-    #         chess_piece.coordinate = element.coordinate
+    #         print("The current occupant is None. The chess_piece is free to move to the destination square.")
+    #         print(f"Square {square} has occupant {current_occupant} and chess_piece {chess_piece} is free to move to the destination square.")
+    #         square.occupant = chess_piece
+    #         chess_piece.coordinate = square.coordinate
     #
     #
     # def capture_square(self, chess_piece: 'ChessPiece', destination: 'Coordinate'):

@@ -1,67 +1,41 @@
 from typing import List, Optional
 
 from chess.common.game_color import GameColor
-from chess.token.piece import ChessPiece
-from chess.team.element.team import Team
+from chess.geometry.quadrant import Quadrant
+from chess.owner.model.owner import Owner
+from chess.team.team_repo import TeamRepo
+from chess.team.team import Team
 
 # if TYPE_CHECKING:
-#     from chess.team.element.team import Team
+#     from chess.team.square.team import Team
 
 
 class TeamService:
-    _teams: List[Team]
+    _repo: TeamRepo
 
-    def __init__(self, teams: List[Team]):
-        self._teams = teams
-
-    @property
-    def teams(self) -> List[Team]:
-        return self._teams
-
-
-    def chess_pieces(self) -> List[ChessPiece]:
-        pieces = []
-        for team in self._teams:
-            pieces.extend(team.chess_pieces)
-        return pieces
+    def __init__(self, team_repo: TeamRepo):
+        self._repo = team_repo
 
 
     def size(self) -> int:
-        return len(self._teams)
+        return self._repo.__len__()
+
+
+    def add_team(self, team: Team):
+        self._repo.add(team)
 
 
     def find_team_by_id(self, team_id: int) -> Optional[Team]:
-        for team in self._teams:
-            if team.id == team_id:
-                return team
-        return None
+        return self._repo.team_by_id(team_id)
 
 
-    def find_team_by_color(self, color: GameColor) -> Optional[Team]:
-        for team in self._teams:
-            if team.color == color:
-                return team
-        return None
+    def filter_teams_by_owner(self, owner: Owner) -> List[Team]:
+        return self._repo.teams_by_owner(owner)
 
 
-    def find_team_by_letter(self, letter: str) -> Optional[Team]:
-        for team in self._teams:
-            if team.letter.upper() == letter.upper():
-                return team
-        return None
+    def filter_teams_by_color(self, color: GameColor) -> List[Team]:
+        return self._repo.teams_by_color(color)
 
 
-    def find_chess_piece_by_id(self, chess_piece_id: int) -> Optional[ChessPiece]:
-        for team in self._teams:
-            for chess_piece in team.chess_pieces:
-                if chess_piece.id == chess_piece_id:
-                    return chess_piece
-        return None
-
-
-    def find_chess_piece_by_name(self, name: str) -> Optional[ChessPiece]:
-        for team in self._teams:
-            for chess_piece in team.chess_pieces:
-                if chess_piece.name.upper() == name.upper():
-                    return chess_piece
-        return None
+    def filter_teams_by_quadrant(self, quadrant: Quadrant) -> List[Team]:
+        return self._repo.teams_by_quadrant(quadrant)

@@ -5,7 +5,7 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
 from chess.config.team_config import TeamConfig
-from chess.team.element.team import Team
+from chess.team.team import Team
 
 
 class TeamFactory:
@@ -27,7 +27,7 @@ class TeamFactory:
             for rank in ranks:
                 for i in range(rank.number_per_team):
                     chess_piece = ChessPieceBuilder.build(
-                        id_emitter.chess_piece_id,
+                        id_emitter.token_id,
                         (i + 1),
                         rank=rank,
                         team=team
@@ -43,7 +43,7 @@ class TeamFactory:
 #     for team in teams:
 #         print(team)
 #
-#     map_service = ChessBoardBuilder.assemble()
+#     chess_board = ChessBoardBuilder.assemble()
 #
 #     for team in teams:
 #         for chess_piece in team.chess_pieces:
@@ -51,7 +51,7 @@ class TeamFactory:
 #             for placement in PlacementChart:
 #                 square_name = placement.map_chess_piece_to_square_name(chess_piece)
 #                 if square_name is not None:
-#                     board = map_service.find_square_by_name(square_name)
+#                     board = chess_board.find_square_by_name(square_name)
 #                     board.occupy(chess_piece)
 #                     print(board)
 #     print(repo)

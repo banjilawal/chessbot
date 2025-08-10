@@ -7,7 +7,7 @@ from chess.rank.promotable.king_rank import KingRank
 from chess.rank.promotable.pawn_rank import PawnRank
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.chess_piece import ChessPiece
 
 class ChessPieceNotNullValidationFailed(ValidationException):
     default_message = "ChessPiece failed not null validation test"
@@ -16,7 +16,7 @@ class ChessPieceMovableValidationFailed(ValidationException):
 class ChessPiecePromotableValidationFailed(ValidationException):
     default_message = "ChessPiece failed promotable validation test"
 class ChessPieceOnBoardValidationFailed(ValidationException):
-    default_message = "ChessPiece failed on map_service validation test"
+    default_message = "ChessPiece failed on chess_board validation test"
 
 
 class ChessPieceValidator:
@@ -112,6 +112,6 @@ class ChessPieceValidator:
 
         if len(piece.coordinate_stack) != 0 :
             return ValidationResult.send_failed_valtidation_report(
-                ChessPieceOnBoardValidationFailed("The chess chess_piece is already on the map_service"))
+                ChessPieceOnBoardValidationFailed("The chess chess_piece is already on the chess_board"))
 
         return ValidationResult.send_passed_validation_report(payload=test_payload)

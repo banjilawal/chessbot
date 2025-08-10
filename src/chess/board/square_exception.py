@@ -1,14 +1,14 @@
-from chess.common.exceptions import ChessException
+from chess.common.chess_exception import ChessException
 
 
 class SquareException(ChessException):
-    default_message = "An error occurred in p chess element"
+    default_message = "An error occurred in p chess square"
 
 class MissingSquareException(SquareException):
-    default_message = "Chess element does not exist. Passing null element not allowed."
+    default_message = "Chess square does not exist. Passing null square not allowed."
 
 class OccupationBlockedException(SquareException):
-    default_message = "The chess element is occupied by another friendly chess_piece."
+    default_message = "The chess square is occupied by another friendly chess_piece."
 
 class OccupationCleanupException(SquareException):
     default_message = "An occupation clean up task failed. Entities have inconsistent states."

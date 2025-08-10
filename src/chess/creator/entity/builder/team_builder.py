@@ -1,7 +1,7 @@
 
 from chess.config.team_config import TeamConfig
 from chess.creator.emit import id_emitter
-from chess.team.element.team import Team
+from chess.team.team import Team
 
 
 class TeamBuilder:
@@ -12,7 +12,6 @@ class TeamBuilder:
        team = Team(
            team_id=id_emitter.team_id,
            letter=config.letter,
-           team_order=config.player_order,
            team_color=config.game_color,
            back_row_index=config.back_rank_index,
            pawn_row_index=config.pawn_rank_index,
@@ -21,8 +20,8 @@ class TeamBuilder:
        return team
 
 
-#
-#
+
+
 # def main():
 #     teams: list[Team] = []
 #     for config in TeamConfig:

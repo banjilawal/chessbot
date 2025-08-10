@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from chess.token.piece import ChessPiece
+from chess.token.chess_piece import ChessPiece
 from chess.config.team_config import TeamConfig
 from chess.config.rank_config import RankConfig
 

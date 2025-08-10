@@ -63,7 +63,7 @@ class GameDisplay:
             try:
                 path = os.path.join(base_path, f"{name}.png")  # or .svg if you’re using pygame-svg
                 image = pygame.image.load(path)
-                scaled = pygame.transform.scale(image, (self.cell_px, self.cell_px))  # auto-scale to element
+                scaled = pygame.transform.scale(image, (self.cell_px, self.cell_px))  # auto-scale to square
                 self.piece_images[name] = scaled
             except Exception as e:
                 print(f"⚠️ Failed to load image {name}: {e}")
@@ -95,7 +95,7 @@ class GameDisplay:
                 pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
 
     def draw_all_entities(self):
-        # First draw map_service entities
+        # First draw chess_board entities
         for entity in self.board.entities:
             self.draw_entity(entity)
 
@@ -113,7 +113,7 @@ class GameDisplay:
             self.screen.blit(text_surface, text_rect)
 
     def draw_entity(self, entity: 'GridEntity'):
-        """Draw p single mover on the map_service"""
+        """Draw p single mover on the chess_board"""
         if entity is None:
             print("[Warning] Entity cannot be None. Cannot draw p null mover to the screen.")
             return
@@ -149,7 +149,7 @@ class GameDisplay:
             return None
         coordinate = self.grid_coordinate_at_mouse_position(mouse_position)
         if coordinate is None:
-            print("Mouse is outside the arena map_service. Cannot get an mover at p position outside the map_service.")
+            print("Mouse is outside the arena chess_board. Cannot get an mover at p position outside the chess_board.")
             return None
         return self.board.cells[coordinate.row][coordinate.column].occupant
 
@@ -205,7 +205,7 @@ class GameDisplay:
         if isinstance(mover, VerticalMover):
             proposed_column = drag_state.original_coordinate.column
 
-        # Check against both visual and map_service states
+        # Check against both visual and chess_board states
         test_coordinate = GridCoordinate(row=proposed_row, column=new_column)
         if not self.is_position_valid_for_drag(mover, test_coordinate):
             return
@@ -217,7 +217,7 @@ class GameDisplay:
 
     def is_position_valid_for_drag(self, mover: Mover, test_coordinate: GridCoordinate) -> bool:
         """Combined check for visual dragging"""
-        # 1. Check map_service's official position (for static entities)
+        # 1. Check chess_board's official position (for static entities)
         if not self.board.can_entity_move_to_cells(mover, test_coordinate):
             return False
 

@@ -1,5 +1,5 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.token.piece import ChessPiece
+from chess.token.chess_piece import ChessPiece
 
 
 class Obstruction:

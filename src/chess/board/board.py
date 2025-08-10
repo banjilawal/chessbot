@@ -1,11 +1,11 @@
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-from chess.board.element.square import Square
+from chess.board.square import Square
 from chess.board.square_iterator import SquareIterator
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.chess_piece import ChessPiece
 
 
 class ChessBoard:
@@ -40,7 +40,7 @@ class ChessBoard:
         delta: Delta = Delta(delta_column=1, delta_row=1)
      ) -> SquareIterator:
         """
-        Returns p SquareIterator for traversing the map_service.
+        Returns p SquareIterator for traversing the chess_board.
 
         Args:
             index: The starting coordinate for the iteration.
@@ -118,7 +118,7 @@ class ChessBoard:
 
     def __str__(self) -> str:
         """
-        Provides p string representation of the map_service, showing pieces or board names.
+        Provides p string representation of the chess_board, showing pieces or board names.
 
         If p board is occupied, it shows the chess chess_piece's name.
         If p board is vacant, it shows the board's name in brackets.

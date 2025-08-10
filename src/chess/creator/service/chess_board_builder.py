@@ -2,22 +2,17 @@ from typing import List
 
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.board.element.square import Square
+from chess.board.square import Square
 from chess.board.board import ChessBoard
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.board.map_service import MapService
 
 
 class ChessBoardBuilder:
 
     @staticmethod
-    def assemble():
-        return MapService(repo=ChessBoardBuilder._build_repo(), )
+    def build() -> ChessBoard:
 
-    @staticmethod
-    def _build_repo() -> ChessBoard:
-
-        grid: List[List[Square]] = []
+        squares: List[List[Square]] = []
 
         for i in range(ROW_SIZE):
             row_squares: List[Square] = []
@@ -29,16 +24,14 @@ class ChessBoardBuilder:
                 square = Square(id_emitter.square_id, name, coordinate)
                 row_squares.append(square)
                 ascii_value += 1
-            grid.append(row_squares)
-        return ChessBoard(grid)
+            squares.append(row_squares)
+        return ChessBoard(board_id=id_emitter.board_id, squares=squares)
 
-#
-#
-#
+
 # def main():
 #
-#     service = ChessBoardBuilder.assemble()
-#     print(service.squares_to_string())
+#     chess_board = ChessBoardBuilder.build()
+#     print(chess_board.__str__())
 #
 #
 #

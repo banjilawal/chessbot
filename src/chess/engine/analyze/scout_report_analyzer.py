@@ -1,10 +1,10 @@
 from typing import List
 
-from chess.board.element.square import Square
+from chess.board.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.coordinate import CartesianDistance, Coordinate
 from chess.token.obstruction import Obstruction
-from chess.token.piece import ChessPiece
+from chess.token.chess_piece import ChessPiece
 
 from chess.engine.scout.scout_report import ScoutReport
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis

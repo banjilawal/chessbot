@@ -1,13 +1,17 @@
 from typing import List, Optional
 
-from chess.token.piece import ChessPiece
+from chess.token.chess_piece import ChessPiece
 
 
 class ChessPieceRepo:
     _chess_pieces: List[ChessPiece]
 
+
     def __init__(self,):
         self._chess_pieces = []
+
+    def __len__(self):
+        return len(self._chess_pieces)
 
 
     def add(self, chess_piece: ChessPiece):
@@ -15,14 +19,14 @@ class ChessPieceRepo:
             self._chess_pieces.append(chess_piece)
 
 
-    def find(self, chess_piece_id: int) -> Optional[ChessPiece]:
+    def chess_piece_by_id(self, chess_piece_id: int) -> Optional[ChessPiece]:
         for chess_piece in self._chess_pieces:
             if chess_piece.id == chess_piece_id:
                 return chess_piece
         return None
 
 
-    def filter_by_owner_id(self, owner_id: int) -> List[ChessPiece]:
+    def filter_by_team(self, owner_id: int) -> List[ChessPiece]:
         matches: List[ChessPiece] = []
 
         for chess_piece in self._chess_pieces:

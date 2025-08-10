@@ -1,8 +1,8 @@
 from typing import List
 
-from chess.board.element.square import Square
+from chess.board.square import Square
 from chess.token.obstruction import Obstruction
-from chess.token.piece import ChessPiece
+from chess.token.chess_piece import ChessPiece
 
 
 class ScoutReportAnalysis:

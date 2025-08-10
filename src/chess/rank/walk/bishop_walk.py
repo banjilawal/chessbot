@@ -1,7 +1,7 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.rank.walk.walk import Walk
-from chess.token.piece import ChessPiece
+from chess.token.chess_piece import ChessPiece
 
 
 class BishopWalk(Walk):

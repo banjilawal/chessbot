@@ -1,9 +1,7 @@
 from chess.board.board import ChessBoard
-from chess.board.map_service import MapService
 from chess.owner.model.cybernetic_owner import CyberneticOwner
 from chess.owner.model.owner import Owner
 from chess.team.move import Move
-from chess.team.team_service import TeamService
 
 
 class Arena:

@@ -1,9 +1,6 @@
 from typing import List
 
-from chess.board.element.square import Square
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
-from chess.token.obstruction import Obstruction
-from chess.token.piece import ChessPiece
 
 
 class BoardAnalysis:

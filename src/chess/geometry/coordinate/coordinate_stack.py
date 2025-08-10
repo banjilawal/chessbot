@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from chess.common.exceptions import ChessException
+from chess.common.chess_exception import ChessException
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
