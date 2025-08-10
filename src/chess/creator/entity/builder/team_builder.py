@@ -1,13 +1,15 @@
 
 from chess.config.team_config import TeamConfig
 from chess.creator.emit import id_emitter
+from chess.creator.entity.builder.owner_builder import OwnerBuilder
+from chess.owner.owner import Owner
 from chess.team.team import Team
 
 
 class TeamBuilder:
 
     @staticmethod
-    def build(config: TeamConfig) -> Team:
+    def build(owner: Owner, config: TeamConfig) -> Team:
        print("build team got config", config)
        team = Team(
            team_id=id_emitter.team_id,
@@ -15,7 +17,8 @@ class TeamBuilder:
            team_color=config.game_color,
            back_row_index=config.back_rank_index,
            pawn_row_index=config.pawn_rank_index,
-           home_quadrant=config.quadrant
+           home_quadrant=config.quadrant,
+           owner=owner
        )
        return team
 
@@ -25,7 +28,8 @@ class TeamBuilder:
 def main():
     teams: list[Team] = []
     for config in TeamConfig:
-        team = TeamBuilder.build(config)
+        owner = OwnerBuilder.build(id_emitter.owner_id)
+        team = TeamBuilder.build(owner, config)
         print(team)
         if team not in teams:
             teams.append(team)

@@ -6,8 +6,8 @@ from chess.team.team import Team
 
 class HumanOwner(Owner):
 
-    def __init__(self, owner_id: int, name: str, team: Optional[Team] = None):
-        super().__init__(owner_id, name, team)
+    def __init__(self, owner_id: int, name: str):
+        super().__init__(owner_id, name)
 
 
     def __eq__(self, other):
@@ -15,7 +15,7 @@ class HumanOwner(Owner):
             return False
 
         if isinstance(other, HumanOwner):
-            return self._id == other.id
+            return self.id == other.id
         return False
 
 

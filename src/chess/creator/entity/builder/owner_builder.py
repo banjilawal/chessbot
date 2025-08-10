@@ -31,7 +31,7 @@ class OwnerBuilder:
 def main():
 
     owner = OwnerBuilder.build(id_emitter.owner_id)
-    print(owner)
+    print(owner, owner.team_stack.size())
 
 if __name__ == "__main__":
     main()

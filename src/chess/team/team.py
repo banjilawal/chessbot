@@ -2,17 +2,18 @@ from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.owner.owner import Owner
+
 from chess.token.mobility_status import MobilityStatus
 
 if TYPE_CHECKING:
+    from chess.owner.owner import Owner
     from chess.token.chess_piece import ChessPiece
 
 
 class Team:
     _id: int
     _letter: str
-    _owner: Owner
+    _owner: 'Owner'
     _color: GameColor
     _back_row_index: int
     _pawn_row_index: int
@@ -27,7 +28,7 @@ class Team:
         back_row_index: int,
         pawn_row_index: int,
         home_quadrant: Quadrant,
-        owner: Owner = None
+        owner: 'Owner'
     ):
         self._id = team_id
         self._letter = letter
@@ -38,8 +39,12 @@ class Team:
         self._chess_pieces = []
         self._owner = owner
 
-        if owner is not None:
-            owner.team_stack.push_team(self)
+
+        self._owner.team_stack.push_team(self)
+
+
+        #
+        # print("Team owner is", owner.id) if owner is not None else print("Team owner is None")
 
 
     @property
@@ -53,16 +58,8 @@ class Team:
 
 
     @property
-    def owner(self) -> Owner:
+    def owner(self) -> 'Owner':
         return self._owner
-
-
-    @owner.setter
-    def owner(self, owner: Owner):
-        self._owner = owner
-        if owner is not None:
-            owner.team_stack.push_team(self)
-
 
 
     @property
@@ -147,5 +144,11 @@ class Team:
 
 
     def __str__(self):
-        return (f"Team id:{self._id} color:{self._color}  rank_row:{self._back_row_index} "
-                f"pawn_row:{self._pawn_row_index} home:{self._home_quadrant}")
+        return (
+            f"owner name: {self._owner} "
+            f"Team id:{self._id} "
+            f"color:{self._color}  "
+            f"rank_row:{self._back_row_index} "
+            f"pawn_row:{self._pawn_row_index} "
+            f"home:{self._home_quadrant}]"
+        )

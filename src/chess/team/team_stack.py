@@ -34,9 +34,9 @@ class TeamStack:
 
     def push_team(self, team):
         method_name = "TeamStack.push"
-
-        if self.current_team() != team:
-            self._stack.append(team)
+        #
+        # if self.current_team() != team:
+        self._stack.append(team)
 
     def undo_push(self):
         if self.size() == 0:

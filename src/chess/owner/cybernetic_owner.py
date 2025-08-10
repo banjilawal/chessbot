@@ -9,12 +9,12 @@ class CyberneticOwner(Owner):
     _decision_engine: DecisionEngine
 
     def __init__(
-            self, owner_id: int,
+            self,
+            owner_id: int,
             name: str,
             decision_engine: DecisionEngine,
-            team: Optional[Team] = None
     ):
-        super().__init__(owner_id, name, team)
+        super().__init__(owner_id, name)
         self._decision_engine = decision_engine
 
 

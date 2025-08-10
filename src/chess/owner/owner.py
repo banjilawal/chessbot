@@ -49,8 +49,11 @@ class Owner(ABC):
 
 
     def __str__(self):
+        current_team = self._team_stack.current_team()
+        current_team_str = f"current_team:{current_team.id}, {current_team.color}" if (
+            current_team) else "current_team:None"
         return (
             f"Player[id:{self._id} "
-            f"name:{self._name} "
-            f"current_team:{self._team_stack.current_team()}]"
+            f"name:{self._name} {current_team_str} "
+            f"teams owned {self._team_stack.size()}]"
         )
