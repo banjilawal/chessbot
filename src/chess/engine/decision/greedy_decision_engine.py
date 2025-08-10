@@ -1,20 +1,24 @@
 from typing import List, Optional
 
-from chess.config.rank_config import RankConfig
+from chess.board.board import ChessBoard
 from chess.engine.analyze.board_analysis import BoardAnalysis
+from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
 from chess.geometry.coordinate.coordinate import Coordinate, CartesianDistance
+from chess.owner.cybernetic_owner import CyberneticOwner
 
 
 class GreedyDecisionEngine(DecisionEngine):
+    _board_analysis: BoardAnalysis
+
+    def __init__(self, engine_id: int):
+        super().__init__(engine_id=engine_id)
+        self._board_analysis = None
 
 
-    def __init__(self, board_analysis: BoardAnalysis):
-        super().__init__(board_analysis)
-
-
-    def decide_destination(self) -> Optional[Coordinate]:
-        return self._decision_helper()
+    def decide_destination(self, cybernaut: CyberneticOwner, chess_board: ChessBoard) -> Optional[Coordinate]:
+        self._board_analysis = self.board_analyzer.issue_analysis(cybernaut, chess_board)
+        return self._decision_helper(self.board_analyzer.issue_analysis())
 
 
     def _decision_helper(self) -> Optional[Coordinate]:

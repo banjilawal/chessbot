@@ -8,21 +8,21 @@ class BoardAnalysis:
     _enemy_report_count: int
     _vacancy_report_count: int
     _obstruction_report_count: int
-    _reports: List[ScoutReportAnalysis]
+    _assessments: List[ScoutReportAnalysis]
 
 
     def __init__(self,
          analysis_id: int,
-         enemy_report_count: int,
-         vacancy_report_count: int,
-         obstruction_report_count: int,
-         reports: List[ScoutReportAnalysis]
+         enemy_report_count:int,
+         vacancy_report_count:int,
+         obstruction_report_count:int,
+         assessments: List[ScoutReportAnalysis]
     ):
         self._id = analysis_id
         self._enemy_report_count = enemy_report_count
         self._vacancy_report_count = vacancy_report_count
         self._obstruction_report_count = obstruction_report_count
-        self._reports
+        self.assessments = assessments
 
     @property
     def id(self) -> int:
@@ -41,6 +41,6 @@ class BoardAnalysis:
         return self._obstruction_report_count
 
     @property
-    def reports(self) -> List[ScoutReportAnalysis]:
-        return self._reports
+    def assessments(self) -> List[ScoutReportAnalysis]:
+        return self._assessments
 

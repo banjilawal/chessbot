@@ -10,6 +10,7 @@ class IdEmitter:
         self._board_id = 0
         self._board_analysis_id = 0
         self._scout_analysis_id = 0
+        self._engine_id = 0
 
 
     @property
@@ -64,5 +65,10 @@ class IdEmitter:
     def board_analysis_id(self) -> int:
         self._board_analysis_id += 1
         return self._board_analysis_id
+
+    @property
+    def engine_id(self) -> int:
+        self._engine_id += 1
+        return self._engine_id
 
 id_emitter = IdEmitter()
