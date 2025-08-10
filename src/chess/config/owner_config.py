@@ -17,7 +17,7 @@ class DecisionMode(Enum):
         return obj
 
     HUMAN = (None, None,)
-    MACHINE = (GreedyDecisionEngine, BoardAnalyzer)
+    MACHINE = (GreedyDecisionEngine(), BoardAnalyzer())
 
     @property
     def decision_engine(self) -> DecisionEngine:

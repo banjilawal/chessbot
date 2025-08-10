@@ -12,17 +12,22 @@ class OwnerBuilder:
     @staticmethod
     def build(owner_id: int, name: str, owner_config: OwnerConfig) -> Owner:
         if owner_config is OwnerConfig.CYBERNETIC:
-            return CyberneticOwner(
-                owner_id=owner_id,
-                name=name,
-                decision_engine=owner_config
-                    .decision_mode.decision_engine
+            decision_engine = GreedyDecisionEngine(
+                engine_id=id_emitter.engine_id,
+                board_analyzer=BoardAnalyzer()
             )
+            return CyberneticOwner(owner_id=owner_id, name=name, decision_engine=decision_engine)
+
         return HumanOwner(owner_id=owner_id, name=name)
 
 
 def main():
-    owner = CyberneticOwner(engine_id=id_emitter.owner_id, name="banji", decision_engine=GreedyDecisionEngine())
+
+    owner = OwnerBuilder.build(
+        owner_id=id_emitter.owner_id1,
+        name="banji", OwnerConfig.CYBERNETIC
+    )
+
     print(owner)
 
 if __name__ == "__main__":

@@ -3,14 +3,12 @@ from typing import List, Optional, TYPE_CHECKING
 
 from chess.board.board import ChessBoard
 from chess.config.rank_config import RankConfig
-from chess.engine.analyze import board_analyzer
-from chess.engine.analyze.board_analysis import BoardAnalysis
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.owner.cybernetic_owner import CyberneticOwner
 
 if TYPE_CHECKING:
     from chess.engine.analyze.board_analyzer import BoardAnalyzer
+    from chess.owner.cybernetic_owner import CyberneticOwner
 
 
 class DecisionEngine(ABC):
@@ -42,6 +40,10 @@ class DecisionEngine(ABC):
 
 
     @abstractmethod
-    def decide_destination(self, cybernaut: CyberneticOwner, chess_board: ChessBoard) -> Optional[Coordinate]:
+    def decide_destination(
+            self,
+            cybernaut: 'CyberneticOwner',
+            chess_board: ChessBoard
+    ) -> Optional[Coordinate]:
         pass
 

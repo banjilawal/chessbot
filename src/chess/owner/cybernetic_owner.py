@@ -30,3 +30,6 @@ class CyberneticOwner(Owner):
         if isinstance(other, CyberneticOwner):
             return self._id == other.id
         return False
+
+    def __str__(self):
+        return f"{super().__str__()} engine:{self.decision_engine.__class__.__name__.title()}"
