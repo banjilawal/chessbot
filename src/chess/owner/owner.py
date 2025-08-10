@@ -4,9 +4,6 @@ from chess.team.team import Team
 from chess.team.team_stack import TeamStack
 
 
-# if TYPE_CHECKING:
-
-
 class Owner(ABC):
     _id: int
     _name: str

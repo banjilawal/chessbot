@@ -10,6 +10,6 @@ class TeamPlacementManager:
             for placement in PlacementChart:
                 square_name = placement.map_chess_piece_to_square_name(chess_piece)
                 if square_name is not None:
-                    square = board_controller.square_service.find_square_by_name(square_name)
+                    square = arena.chess_board.find_square_by_name(square_name)
                     square.occupy(chess_piece)
 
