@@ -35,6 +35,17 @@ def main():
             teams.append(team)
     print(len(teams))
 
+    old_owwer = teams[0].owner
+    teams[0].owner = None
+    print(teams[0])
+
+    teams[0].owner = OwnerBuilder.build(id_emitter.owner_id)
+    print(teams[0])
+
+    team = TeamBuilder.build(old_owwer, TeamConfig.WHITE)
+    print(team)
+    print(old_owwer)
+
 
 if __name__ == "__main__":
     main()

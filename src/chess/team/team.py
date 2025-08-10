@@ -37,11 +37,11 @@ class Team:
         self._pawn_row_index = pawn_row_index
         self._home_quadrant = home_quadrant
         self._chess_pieces = []
+
+
+        if owner is not None and self != owner.team_stack.current_team():
+            owner.team_stack.push_team(self)
         self._owner = owner
-
-
-        self._owner.team_stack.push_team(self)
-
 
         #
         # print("Team owner is", owner.id) if owner is not None else print("Team owner is None")
@@ -85,6 +85,15 @@ class Team:
     @property
     def chess_pieces(self) -> List['ChessPiece']:
         return self._chess_pieces
+
+
+    @owner.setter
+    def owner(self, owner: 'Owner'):
+        if owner == self.owner:
+            raise ValueError("Cannot set owner to the same owner.")
+        if owner is not None and self != owner.team_stack.current_team():
+            owner.team_stack.push_team(self)
+        self._owner = owner
 
 
     def free_chess_pieces(self) -> List['ChessPiece']:
