@@ -10,13 +10,22 @@ def main():
      print(arena.chess_board)
 
      chess_piece = arena.chess_board.find_square_by_name("B2").occupant
-     coord = chess_piece.current_coordinate
-     dest = Coordinate(coord.row + 1, coord.column +1)
-     print(coord, dest)
-     print(chess_piece)
+     coord = chess_piece.coordinate_stack.current_coordinate()
+     dest = Coordinate(row=(coord.row + 1), column=coord.column)
+     print(f"\nCOORDS[origin:{coord} dest:{dest}]")
+     print(f"\n{chess_piece}")
      rank = chess_piece.rank
-     print(rank)
-     print(rank.walk.is_walkable(chess_piece=chess_piece, destination=dest))
+     print(f"Rank:{rank}")
+
+     dest_square =  arena.chess_board.find_square_by_coordinate(dest)
+     print(f"dest square:{dest_square}")
+     # if rank.walk.is_walkable(chess_piece=chess_piece, destination=dest):
+     #      print("can walk")
+     #      print(f" {chess_piece} advancing to to {dest} from {coord}")
+     #      arena.chess_board.capture_square(chess_piece, dest)
+     # else:
+     #      print("cannot walk")
+     # print(arena.chess_board)
 
 
 

@@ -65,9 +65,6 @@ class ChessPiece(Token):
     def obstructions(self) -> List[Obstruction]:
         return self._obstructions
 
-    @property
-    def current_coordinate(self) -> Optional['Coordinate']:
-        return self._coordinate_stack.current_coordinate()
     #
     #
     # def get_id(self):

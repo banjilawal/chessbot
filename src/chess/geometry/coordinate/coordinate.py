@@ -77,7 +77,7 @@ class Coordinate:
 
 
     def __str__(self):
-        return f"(row:{self._row} column:{self._row})"
+        return f"(row:{self._row} column:{self._column})"
 
 
     def shift(self, delta: Delta) -> 'Coordinate':

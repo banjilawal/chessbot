@@ -106,14 +106,18 @@ class ChessBoard:
 
         if not chess_piece.is_enemy(enemy):
             raise Exception(
-                "Fatal error. A friendly should never be p self._capture_helper parameter."
+                f"{enemy} is not an enemy of "
+                f"{chess_piece} who is coming from"
+                f" {originating_square} to"
+                f" {enemy.current_coordinate}r"
+                f" Capture failed"
             )
 
         if enemy is not None:
             chess_piece.capture_prisoner(enemy)
 
-        originating_square.set_occupant(None)
-        target_square.set_occupant(chess_piece)
+        originating_square.occupant = None
+        target_square.occpant = chess_piece
         chess_piece.coordinate_stack.push_coordinate(target_square.coordinate)
 
 
