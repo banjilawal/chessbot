@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import Optional
+from typing import Optional, List
 from chess.team.team import Team
 
 # if TYPE_CHECKING:
@@ -8,12 +8,12 @@ from chess.team.team import Team
 class Owner(ABC):
     _id: int
     _name: str
-    _team: Team
+    _teams: List[Team]
 
-    def __init__(self, owner_id: int, name: str, team: Optional[Team] = None):
+    def __init__(self, owner_id: int, name: str):
         self._id = owner_id
         self._name = name
-        self._team = team
+        self._team = []
 
 
     @property
@@ -27,8 +27,8 @@ class Owner(ABC):
 
 
     @property
-    def team(self) -> Team:
-        return self._team
+    def teams(self) -> List[Team]:
+        return self._teams
 
 
     @name.setter

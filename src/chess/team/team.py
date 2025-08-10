@@ -2,6 +2,7 @@ from typing import List, TYPE_CHECKING
 
 from chess.common.game_color import GameColor
 from chess.geometry.quadrant import Quadrant
+from chess.owner.owner import Owner
 from chess.token.mobility_status import MobilityStatus
 
 if TYPE_CHECKING:
@@ -11,6 +12,7 @@ if TYPE_CHECKING:
 class Team:
     _id: int
     _letter: str
+    _owner: Owner
     _color: GameColor
     _back_row_index: int
     _pawn_row_index: int
@@ -24,7 +26,8 @@ class Team:
         team_color: GameColor,
         back_row_index: int,
         pawn_row_index: int,
-        home_quadrant: Quadrant
+        home_quadrant: Quadrant,
+        owner: Owner = None
     ):
         self._id = team_id
         self._letter = letter
@@ -33,6 +36,10 @@ class Team:
         self._pawn_row_index = pawn_row_index
         self._home_quadrant = home_quadrant
         self._chess_pieces = []
+        self._owner = owner
+
+        if owner is not None:
+            owner.teams.append(self)
 
 
     @property
