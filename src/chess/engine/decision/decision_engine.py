@@ -18,7 +18,7 @@ class DecisionEngine(ABC):
     _max_capture_value: int
     _board_analyzer: 'BoardAnalyzer'
 
-    def __init__(self, engine_id:int, analyzer: 'BoardAnalyzer' = BoardAnalyzer()):
+    def __init__(self, engine_id:int, analyzer: 'BoardAnalyzer'):
         self._id = engine_id
         self._board_analyzer = analyzer
         self._max_capture_value = RankConfig.QUEEN.capture_value

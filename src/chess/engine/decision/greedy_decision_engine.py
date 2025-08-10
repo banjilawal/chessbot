@@ -11,14 +11,14 @@ from chess.owner.cybernetic_owner import CyberneticOwner
 class GreedyDecisionEngine(DecisionEngine):
     _board_analysis: BoardAnalysis
 
-    def __init__(self, engine_id: int):
-        super().__init__(engine_id=engine_id)
+    def __init__(self, engine_id: int, board_analyzer: BoardAnalyzer = BoardAnalyzer()):
+        super().__init__(engine_id=engine_id, analyzer=board_analyzer)
         self._board_analysis = None
 
 
     def decide_destination(self, cybernaut: CyberneticOwner, chess_board: ChessBoard) -> Optional[Coordinate]:
         self._board_analysis = self.board_analyzer.issue_analysis(cybernaut, chess_board)
-        return self._decision_helper(self.board_analyzer.issue_analysis())
+        return self._decision_helper()
 
 
     def _decision_helper(self) -> Optional[Coordinate]:
@@ -35,9 +35,9 @@ class GreedyDecisionEngine(DecisionEngine):
 
     def _select_best_capture_report(self) -> Optional[Coordinate]:
         best_report = None
-        min_capture_diff = self._max_capture_value
+        min_capture_diff = self.max_capture_value
 
-        for analysis in self._board_analysis:
+        for analysis in self._board_analysis.assessments:
             current_capture_value = analysis.enemies[0].rank.capture_value
 
             if self._max_capture_value - current_capture_value < min_capture_diff:
@@ -53,7 +53,7 @@ class GreedyDecisionEngine(DecisionEngine):
         max_distance = 0
         best_report = None
 
-        for analysis in self._board_analysis:
+        for analysis in self._board_analysis.assessments:
 
             square = analysis.vacant_squares[0]
             origin = analysis.chess_piece.coordinate_stack.current_coordinate()
@@ -72,7 +72,7 @@ class GreedyDecisionEngine(DecisionEngine):
         max_distance = 0
         best_report = None
 
-        for analysis in self._board_analysis:
+        for analysis in self._board_analysis.assessments:
             coordinate = analysis.obstructions[0].blocked_coordinate
             origin = analysis.chess_piece.coordinate_stack.current_coordinate()
 
