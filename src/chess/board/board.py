@@ -1,3 +1,4 @@
+import random
 from typing import List, Optional, TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
@@ -114,6 +115,11 @@ class ChessBoard:
         originating_square.set_occupant(None)
         target_square.set_occupant(chess_piece)
         chess_piece.coordinate_stack.push_coordinate(target_square.coordinate)
+
+
+    def random_chess_piece(self) -> Optional['ChessPiece']:
+        square = random.choice(self.occupied_squares())
+        return square.occupant if square else None
 
 
     def __str__(self) -> str:
