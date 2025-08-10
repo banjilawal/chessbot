@@ -39,7 +39,7 @@ class Team:
         self._owner = owner
 
         if owner is not None:
-            owner.teams.append(self)
+            owner.team_stack.push_team(self)
 
 
     @property
@@ -50,6 +50,19 @@ class Team:
     @property
     def letter(self) -> str:
         return self._letter
+
+
+    @property
+    def owner(self) -> Owner:
+        return self._owner
+
+
+    @owner.setter
+    def owner(self, owner: Owner):
+        self._owner = owner
+        if owner is not None:
+            owner.team_stack.push_team(self)
+
 
 
     @property

@@ -1,6 +1,8 @@
 from abc import ABC
 from typing import Optional, List
 from chess.team.team import Team
+from chess.team.team_stack import TeamStack
+
 
 # if TYPE_CHECKING:
 
@@ -8,12 +10,12 @@ from chess.team.team import Team
 class Owner(ABC):
     _id: int
     _name: str
-    _teams: List[Team]
+    _team_stack: TeamStack
 
     def __init__(self, owner_id: int, name: str):
         self._id = owner_id
         self._name = name
-        self._team = []
+        self._team_stack =TeamStack()
 
 
     @property
@@ -27,18 +29,13 @@ class Owner(ABC):
 
 
     @property
-    def teams(self) -> List[Team]:
-        return self._teams
+    def team_stack(self) -> TeamStack:
+        return self._team_stack
 
 
     @name.setter
     def name(self, name: str):
         self._name = name
-
-
-    @team.setter
-    def team(self, team: Team):
-        self._team = team
 
 
     def __eq__(self, other):
@@ -52,4 +49,8 @@ class Owner(ABC):
 
 
     def __str__(self):
-        return f"Player[id:{self._id} name:{self._name} team:{self._team}]"
+        return (
+            f"Player[id:{self._id} "
+            f"name:{self._name} "
+            f"current_team:{self._team_stack.current_team()}]"
+        )
