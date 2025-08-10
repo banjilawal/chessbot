@@ -3,13 +3,14 @@ from typing import List, TYPE_CHECKING
 from chess.token.obstruction import Obstruction
 from chess.token.mobility_status import MobilityStatus
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack
+from chess.token.token import Token
 
 if TYPE_CHECKING:
     from chess.rank.rank import Rank
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
 
-class ChessPiece:
+class ChessPiece(Token):
     _id: int
     _name: str
     _team: 'Team'
@@ -59,9 +60,19 @@ class ChessPiece:
     def coordinate_stack(self) -> CoordinateStack:
         return self._coordinate_stack
 
+
     @property
     def obstructions(self) -> List[Obstruction]:
         return self._obstructions
+    #
+    #
+    # def get_id(self):
+    #     return self._id
+    #
+    #
+    # def get_name(self):
+    #     return self._name
+
 
     def add_obstruction(self, obstructor: 'ChessPiece'):
         if obstructor not in self._obstructions:

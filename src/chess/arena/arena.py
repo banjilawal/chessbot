@@ -1,6 +1,6 @@
 from chess.board.board import ChessBoard
-from chess.owner.model.cybernetic_owner import CyberneticOwner
-from chess.owner.model.owner import Owner
+from chess.owner.cybernetic_owner import CyberneticOwner
+from chess.owner.owner import Owner
 from chess.team.move import Move
 
 

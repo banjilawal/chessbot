@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from chess.owner.model.owner import Owner
+from chess.owner.owner import Owner
 from chess.owner.owner_repo import OwnerRepo
 
 
@@ -15,8 +15,8 @@ class OwnerService:
         return self._repo.__len__()
 
 
-    def find_owner_by_id(self, owener_id: int) -> Optional[Owner]:
-        return self._repo.owner_by_id(owener_id)
+    def find_owner_by_id(self, owner_id: int) -> Optional[Owner]:
+        return self._repo.owner_by_id(owner_id)
 
 
     def filter_owners_by_name(self, name: str) -> List[Owner]:

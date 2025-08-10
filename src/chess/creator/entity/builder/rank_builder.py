@@ -62,12 +62,12 @@ class RankBuilder:
             )
         raise ValueError(f"Invalid rank config: {config}")
 
-#
-#
-# def main():
-#     motion = RankBuilder.build(RankConfig.PAWN)
-#     print(motion)
-#
-#
-# if __name__ == "__main__":
-#     main()
+
+
+def main():
+    rank = RankBuilder.build(RankConfig.PAWN)
+    print(rank)
+
+
+if __name__ == "__main__":
+    main()

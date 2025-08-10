@@ -22,15 +22,15 @@ class TeamBuilder:
 
 
 
-# def main():
-#     teams: list[Team] = []
-#     for config in TeamConfig:
-#         team = TeamBuilder.build(config)
-#         print(team)
-#         if team not in teams:
-#             teams.append(team)
-#     print(len(teams))
-#
-#
-# if __name__ == "__main__":
-#     main()
+def main():
+    teams: list[Team] = []
+    for config in TeamConfig:
+        team = TeamBuilder.build(config)
+        print(team)
+        if team not in teams:
+            teams.append(team)
+    print(len(teams))
+
+
+if __name__ == "__main__":
+    main()

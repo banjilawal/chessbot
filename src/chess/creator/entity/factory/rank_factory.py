@@ -15,10 +15,10 @@ class RankFactory:
             motion_controllers.append(RankBuilder.build(rank_config))
         return motion_controllers
 
-# def main():
-#     ranks = RankFactory.assemble()
-#     for motion in ranks:
-#         print(motion)
-#
-# if __name__ == "__main__":
-#     main()
+def main():
+    ranks = RankFactory.assemble()
+    for motion in ranks:
+        print(motion)
+
+if __name__ == "__main__":
+    main()

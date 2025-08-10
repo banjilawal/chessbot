@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.board.board import ChessBoard
-from chess.owner.model.cybernetic_owner import CyberneticOwner
+from chess.owner.cybernetic_owner import CyberneticOwner
 from chess.engine.scout.scout import Scout
 from chess.engine.scout.scout_report import ScoutReport
 

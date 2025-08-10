@@ -40,6 +40,7 @@ class Owner(ABC):
     def team(self, team: Team):
         self._team = team
 
+
     def __eq__(self, other):
         if other is self:
             return True
@@ -48,9 +49,6 @@ class Owner(ABC):
         if not isinstance(other, Owner):
             return False
         return self.id == other.id
-
-
-
 
 
     def __str__(self):

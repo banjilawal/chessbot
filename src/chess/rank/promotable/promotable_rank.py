@@ -2,13 +2,14 @@ from typing import Optional, List, TYPE_CHECKING
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.queen_rank import QueenRank
-from chess.walk import Walk
+from chess.rank.rank import Rank
+from chess.walk.walk import Walk
 
 if TYPE_CHECKING:
     from chess.token.chess_piece import ChessPiece
 
 
-class PromotableRank:
+class PromotableRank(Rank):
 
     def __init__(
         self,
@@ -18,13 +19,11 @@ class PromotableRank:
         int, number_per_team: int,
         territories: List[Quadrant],
         walk:Optional[Walk] = None,
-        # explorer:Optional[Explorer] = None,
     ):
         super().__init__(
             name=name,
             letter=letter,
             walk=walk,
-            # explorer=explorer,
             capture_value=capture_value,
             number_per_team=number_per_team,
             territories=territories
@@ -35,15 +34,15 @@ class PromotableRank:
 
         enemy_back_row_index = chess_piece.team.enemy_back_row_index()
         if chess_piece.coordinate_stack.current_coordinate().row != enemy_back_row_index():
-            print(f"{chess_piece.name} is not the enemy's home row. Cannot be promoted.")
-            raise TypeError(f"{chess_piece.name} is not on the enemy home row. Cannot be promoted.")
+            print(f"{chess_piece.get_name()} is not the enemy's home row. Cannot be promoted.")
+            raise TypeError(f"{chess_piece.get_name()} is not on the enemy home row. Cannot be promoted.")
 
-        if isinstance(self.rank, QueenRank) and self._previous_rank is not None:
-            raise TypeError(f"{chess_piece.name} is already promoted.")
+        # if isinstance(self.rank, QueenRank) and self._previous_rank is not None:
+        #     raise TypeError(f"{chess_piece.name} is already promoted.")
 
         promoted_chess_piece = ChessPiece(
-            chess_piece_id=chess_piece.id,
-            name=chess_piece.name,
+            token_id=chess_piece.get_id(),
+            name=chess_piece.get_name(),
             rank=QueenRank(),
             team=chess_piece.team
         )

@@ -1,10 +1,14 @@
+from typing import TYPE_CHECKING
+
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
+
 from chess.walk.walk import Walk
 from chess.token.chess_piece import ChessPiece
-from chess.rank.promotable.pawn_rank import PawnRank
 
+if TYPE_CHECKING:
+    from chess.rank.promotable.pawn_rank import PawnRank
 
 class PawnWalk(Walk):
     """
@@ -27,10 +31,10 @@ class PawnWalk(Walk):
     @staticmethod
     def can_advance(chess_piece: ChessPiece, destination: Coordinate) -> bool:
         if not PawnWalk._satisfies_walk_preconditions(chess_piece):
-            print(f"{chess_piece.name} does not satisfy walk preconditions to advance")
+            print(f"{chess_piece.get_name()} does not satisfy walk preconditions to advance")
             return False
         if PawnWalk._number_of_advancing_steps(chess_piece, destination) == 0:
-            print(f"{chess_piece.name} cannot advance to {destination}")
+            print(f"{chess_piece.get_name()} cannot advance to {destination}")
             return False
         return True
 
@@ -38,15 +42,15 @@ class PawnWalk(Walk):
     @staticmethod
     def can_attack(pawn: ChessPiece, destination: Coordinate) -> bool:
         if not PawnWalk._satisfies_walk_preconditions(pawn):
-            print(f"{pawn.name} does not satisfy walk preconditions to advance")
+            print(f"{pawn.get_name()} does not satisfy walk preconditions to advance")
             return False
 
         if Diagonal.is_diagonal(pawn.coordinate_stack.current_coordinate(), destination):
-            print(f"{pawn.name} is not diagonal from attack coordinate {destination}")
+            print(f"{pawn.get_name()} is not diagonal from attack coordinate {destination}")
             return False
 
         if abs(destination.column - pawn.coordinate_stack.current_coordinate().column) != 1:
-            print(f"{pawn.name} is not one column away from attack coordinate {destination}")
+            print(f"{pawn.get_name()} is not one column away from attack coordinate {destination}")
             return False
         return True
 

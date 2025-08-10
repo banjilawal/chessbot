@@ -2,7 +2,7 @@ from abc import ABC
 from typing import List, Optional
 
 from chess.geometry.quadrant import Quadrant
-from chess.walk import Walk
+from chess.walk.walk import Walk
 
 
 class Rank(ABC):
@@ -22,7 +22,6 @@ class Rank(ABC):
         number_per_team: int,
         territories: List[Quadrant],
         walk: Optional[Walk] = None
-        # explorer:Optional[Explorer] = Explorer
     ):
         if walk is None:
             raise ValueError("Walk walk cannot be None.")
@@ -32,7 +31,6 @@ class Rank(ABC):
         self._name = name
         self._walk = walk
         self._letter = letter
-        # self._explorer = explorer
         self._capture_value = capture_value
         self._number_per_team = number_per_team
         self._territories = territories

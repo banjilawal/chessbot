@@ -8,14 +8,14 @@ class ChessPieceBuilder:
 
 
     @staticmethod
-    def build(chess_piece_id: int, team_rank_member_id: int, rank: Rank, team: Team):
+    def build(token_id: int, team_rank_member_id: int, rank: Rank, team: Team):
 
         name = team.letter.capitalize() + rank.letter.capitalize() + str(team_rank_member_id)
         if rank.letter == "K" or rank.letter == "Q":
             name = team.letter.capitalize() + rank.letter.capitalize()
 
         return ChessPiece(
-            chess_piece_id=chess_piece_id,
+            token_id=token_id,
             name=name,
             rank=rank,
             team=team

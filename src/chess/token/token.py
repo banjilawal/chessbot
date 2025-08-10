@@ -14,9 +14,11 @@ class Token(ABC):
         self._id = token_id
         self._name = name
 
+
     @property
     def id(self) -> int:
         return self._id
+
 
     @property
     def name(self) -> str:

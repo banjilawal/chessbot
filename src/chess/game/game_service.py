@@ -2,7 +2,7 @@ from typing import Optional, List
 
 from chess.game.game import Game
 from chess.game.game_repo import GameRepo
-from chess.owner.model.owner import Owner
+from chess.owner.owner import Owner
 
 
 class GameService:
