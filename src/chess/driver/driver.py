@@ -19,12 +19,12 @@ def main():
 
      dest_square =  arena.chess_board.find_square_by_coordinate(dest)
      print(f"dest square:{dest_square}")
-     # if rank.walk.is_walkable(chess_piece=chess_piece, destination=dest):
-     #      print("can walk")
+     if rank.walk.is_walkable(chess_piece=chess_piece, destination=dest):
+          print(f"can walk to {dest}")
      #      print(f" {chess_piece} advancing to to {dest} from {coord}")
-     #      arena.chess_board.capture_square(chess_piece, dest)
-     # else:
-     #      print("cannot walk")
+          arena.chess_board.capture_square(chess_piece, dest)
+     else:
+          print(f"cannot walk to {dest} from {coord}")
      # print(arena.chess_board)
 
 

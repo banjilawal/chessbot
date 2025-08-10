@@ -1,6 +1,8 @@
 import random
+from sys import deactivate_stack_trampoline
 from typing import List, Optional, TYPE_CHECKING
 
+from chess.board import square
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.board.square import Square
 from chess.board.square_iterator import SquareIterator
@@ -83,15 +85,48 @@ class ChessBoard:
 
 
     def capture_square(self, chess_piece: 'ChessPiece', destination: Coordinate):
+        method = f"ChessBoard.capture_square"
+
+        if chess_piece is None:
+            raise Exception(f"{method}: chess_piece is None")
+        if chess_piece.coordinate_stack.current_coordinate() is None:
+            raise Exception(f"{method}: chess_piece cannot move to a location if its not on th board")
+
+        if self.find_square_by_coordinate(destination) is None:
+            raise Exception(f"{method}: coordinate {destination} is not on the board")
+
+
         destination_square = self.find_square_by_coordinate(destination)
         target_occupant = destination_square.occupant
 
-        if target_occupant is None or chess_piece.is_enemy(target_occupant):
-            self._capture_helper(chess_piece, destination_square, target_occupant)
-        else:
-            print("The square is occupied by p friendly")
+        if target_occupant is None:
+            print(
+                f"{method}: "
+                f"destination square {destination_square.name}"
+                f" is empty calling ChessBoard._finalize_capture"
+            )
+            self._finalize_capture(self, chess_piece, destination_square)
+
+        if not  chess_piece.is_enemy(target_occupant):
+            print(
+                f"{method}: "
+                f"destination square {destination_square.name}"
+                f" is occupied by friend{target_occupant.name} "
+                f"mark as obstruction"
+            )
             chess_piece.add_obstruction(target_occupant)
             return
+
+
+        if chess_piece.is_enemy(target_occupant):
+            print(
+                f"current occupant {target_occupant.name} "
+                f"is an enemy of {chess_piece.name} "
+                f"calling ChesBoard.take_prisoner"
+            )
+            self._imprison_occupant()
+            print(f"From BAORD.capture_square destination square is {destination_square}")
+            self._capture_helper(chess_piece, destination_square, target_occupant)
 
 
     def _capture_helper(
@@ -103,13 +138,14 @@ class ChessBoard:
         originating_square = self.find_square_by_coordinate(
             chess_piece.coordinate_stack.current_coordinate()
         )
+        if enemy is None :
 
         if not chess_piece.is_enemy(enemy):
             raise Exception(
                 f"{enemy} is not an enemy of "
                 f"{chess_piece} who is coming from"
                 f" {originating_square} to"
-                f" {enemy.current_coordinate}r"
+                f" {enemy.coordinate_stack.current_coordinate()}r"
                 f" Capture failed"
             )
 
@@ -119,6 +155,19 @@ class ChessBoard:
         originating_square.occupant = None
         target_square.occpant = chess_piece
         chess_piece.coordinate_stack.push_coordinate(target_square.coordinate)
+
+    def _finalize_capture(self, chess_piece: 'ChessPiece', destination_square: Square):
+        method = f"ChessBoard._finalize_capture"
+
+        destination_square.occupant = chess_piece
+        chess_piece.coordinate_stack.push_coordinate(destination_square.coordinate)
+
+        if destination_square.occupant is not chess_piece:
+            raise Exception(f"{method}: data inconsistency square occupant not updated")
+        if chess_piece.coordinate_stack.current_coordinate() is not destination_square.coordinate:
+            raise Exception(f"{method}: chess_piece coordinate stack not updated")
+
+        print(f"{method}: capture complete")
 
 
     def random_chess_piece(self) -> Optional['ChessPiece']:

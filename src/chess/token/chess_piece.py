@@ -76,8 +76,16 @@ class ChessPiece(Token):
 
 
     def add_obstruction(self, obstructor: 'ChessPiece'):
+        if obstructor is None:
+            raise Exception("Cannot add null obstruction.")
+        if obstructor.status != MobilityStatus.PRISONER:
+            raise Exception("A prisoner is not on the board it cannot be blocking")
+        if obstructor is self:
+            raise Exception("Cannot block self.")
+
         if obstructor not in self._obstructions:
             self._obstructions.append(Obstruction(obstructor))
+        print("Obstruction added")
 
 
     def reset_obstruction_list(self):
@@ -92,21 +100,33 @@ class ChessPiece(Token):
 
     @captor.setter
     def captor(self, captor: 'ChessPiece'):
+        if captor is None:
+            raise Exception("Captor cannot be null,")
+        if captor.status != MobilityStatus.FREE:
+            raise Exception("Captor must be free. Capture failed")
+        if not self.is_enemy(captor):
+            raise Exception("Captor cannot be from the same team as the piece to be captured.")
+        if  captor is self:
+            raise Exception("Cannot capture self.")
+        if self._status != MobilityStatus.FREE:
+            raise Exception("Cannot capture a piece that is already captured.")
+
         self._captor = captor
+        self._status = MobilityStatus.PRISONER
 
 
-    def capture_prisoner(self, enemy: 'ChessPiece'):
-        if enemy is None:
-            raise Exception("Cannot captue p nonexistent enemy")
-        if enemy.team == self._team:
-            raise Exception("Illegal capture of friendly")
-        if enemy.captor is not None:
-            raise Exception("Double capture is not allowed")
-        if enemy is self:
-            raise Exception("Cannot capture self")
-
-        enemy.captor = self
-        enemy.status = MobilityStatus.PRISONER
+    # def capture_prisoner(self, enemy: 'ChessPiece'):
+    #     if enemy is None:
+    #         raise Exception("Cannot capture p nonexistent enemy")
+    #     if enemy.team == self._team:
+    #         raise Exception("Illegal capture of friendly")
+    #     if enemy.captor is not None:
+    #         raise Exception("Double capture is not allowed")
+    #     if enemy is self:
+    #         raise Exception("Cannot capture self")
+    #
+    #     enemy.captor = self
+    #     enemy.status = MobilityStatus.PRISONER
 
     def __eq__(self, other):
         if not super().__eq__(other):
@@ -130,7 +150,6 @@ class ChessPiece(Token):
 
     def is_enemy(self, chess_piece: 'ChessPiece'):
         if chess_piece is None:
-            print(f"{self._name} cannot be an enemy of p null chess_piece.")
-            return False
+            raise Exception("Cannot run is_enemy() check on a null chess_piece.")
         return self._team == chess_piece.team
 
