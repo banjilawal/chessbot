@@ -3,7 +3,6 @@ from typing import List, Optional
 
 from chess.config.rank_config import RankConfig
 from chess.engine.analyze.board_analysis import BoardAnalysis
-from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
