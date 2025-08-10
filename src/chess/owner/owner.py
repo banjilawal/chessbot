@@ -29,6 +29,10 @@ class Owner(ABC):
     def team_stack(self) -> TeamStack:
         return self._team_stack
 
+    @property
+    def team(self) -> Optional[Team]:
+        return self._team_stack.current_team()
+
 
     @name.setter
     def name(self, name: str):

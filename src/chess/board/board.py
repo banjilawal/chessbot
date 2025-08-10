@@ -118,10 +118,10 @@ class ChessBoard:
 
     def __str__(self) -> str:
         """
-        Provides p string representation of the chess_board, showing pieces or board names.
+        Provides a string representation of the board, showing pieces or square names.
 
-        If p board is occupied, it shows the chess chess_piece's name.
-        If p board is vacant, it shows the board's name in brackets.
+        If a square is occupied, it shows the chess piece's name.
+        If a square is vacant, it shows the square's name in brackets.
         """
         string = ""
         # Iterate from the top row (row 7) down to the bottom (row 0)
@@ -129,14 +129,13 @@ class ChessBoard:
             row_str_parts = []
             for square in row:
                 if square.occupant is not None:
-                    # Display the chess_piece's name if the board is occupied.
+                    # Display the piece's name if the square is occupied.
                     row_str_parts.append(f"[{square.occupant.name}]")
                 else:
-                    # Display the board's name in brackets if it's empty.
+                    # Display the square's name in brackets if it's empty.
                     row_str_parts.append(f"[{square.name}]")
             string += " ".join(row_str_parts) + "\n"
         return string.strip()
-
 
 
 

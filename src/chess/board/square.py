@@ -43,15 +43,25 @@ class Square:
     def status(self) -> 'OccupationStatus':
         return self._status
 
+    @occupant.setter
+    def occupant(self, chess_piece: Optional['ChessPiece']):
+        self._occupant = chess_piece
+        if chess_piece is not None:
+            chess_piece.coordinate_stack.push_coordinate(self._coordinate)
+        else:
+            self._status = OccupationStatus.IS_VACANT
+
 
     # Removed occupy() and leave() methods. MapService will manage these.
-    def set_occupant(self, piece: Optional['ChessPiece']):
-        """
-        Sets or clears the occupant of the square and updates its status.
-        This method is intended to be called by MapService, not directly.
-        """
-        self._occupant = piece
-        self._status = OccupationStatus.OCCUPIED_BY_SELF if piece else OccupationStatus.IS_VACANT
+    # def set_occupant(self, chess_piece: Optional['ChessPiece']):
+    #     """
+    #     Sets or clears the occupant of the square and updates its status.
+    #     This method is intended to be called by MapService, not directly.
+    #     """
+    #     self._occupant = chess_piece
+    #
+    #     if chess_piece is not None:
+    #         chess_piece.coordinate_stack.push_coordinate(self._coordinate)
 
 
     def __eq__(self, other):
@@ -65,9 +75,18 @@ class Square:
 
 
     def __str__(self) -> str:
-        if self._occupant:
-            return f"Square ID: {self._id}, Name: {self._name}, Occupied by: {self._occupant.name} ({self._occupant.label})"
-        return f"Square ID: {self._id}, Name: {self._name}, Status: {self._status.name}"
+        if self._occupant is not None:
+            return (
+                f"Square ID: {self._id}"
+                f", Name: {self._name}"
+                f", Occupied by: {self._occupant.name}"
+            )
+        return (
+            f"Square ID:{self._id} "
+            f"Name:{self._name} "
+            f"coordinate:{self._coordinate} "
+            f"Status: {self._status.name}"
+        )
 
 
     def __repr__(self) -> str:

@@ -2,9 +2,10 @@ from chess.arena.arena import Arena
 from chess.board.board import ChessBoard
 from chess.config.team_config import TeamConfig
 from chess.creator.emit import id_emitter
-from chess.creator.entity.builder.owner_builder import OwnerBuilder
+from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
-from chess.creator.service.chess_board_builder import ChessBoardBuilder
+from chess.creator.entity.factory.team_factory import TeamFactory
+from chess.creator.team_placement_manager import TeamPlacementManager
 from chess.owner.owner import Owner
 
 
@@ -30,18 +31,36 @@ class ArenaBuilder:
          )
 
 def main():
-    white_team = TeamBuilder.build(OwnerBuilder.build(id_emitter.owner_id), TeamConfig.WHITE)
-    black_team = TeamBuilder.build(OwnerBuilder.build(id_emitter.owner_id), TeamConfig.BLACK)
-    chess_board = ChessBoardBuilder.build()
 
-    arena = ArenaBuilder.build(id_emitter.arena_id, white_team.owner, black_team.owner, chess_board)
+    teams = TeamFactory.assemble()
+    white_team_owner = teams[0].owner
+    black_team_owner = teams[1].owner
 
-    print(arena.white_owner, arena.black_owner)
-    print(
-        arena.white_owner.team_stack.size(),
-        arena.black_owner.team_stack.size()
+
+    arena = ArenaBuilder.build(
+        id_emitter.arena_id,
+        white_team_owner,
+        black_team_owner,
+        ChessBoardBuilder.build(id_emitter.board_id)
     )
 
+    print("white team owner", arena.white_owner,
+          "\nwhite chess pieces:", len(arena.white_owner.team.chess_pieces))
+
+    print("\nblack team owner", arena.black_owner,
+          "\nblack chess pieces:", len(arena.black_owner.team.chess_pieces))
+
+
+    #
+    # for chess_piece in arena.white_owner.team.chess_pieces:
+    #     print(chess_piece, " current coord", chess_piece.coordinate_stack.current_coordinate())
+
+    TeamPlacementManager.place_teams(arena)
+    print(arena.chess_board)
+    # for chess_piece in arena.white_owner.team.chess_pieces:
+    #     print(chess_piece, " current coord", chess_piece.coordinate_stack.current_coordinate())
+    # for square in arena.chess_board.squares:
+    #     print(square)
 
 if __name__ == "__main__":
     main()

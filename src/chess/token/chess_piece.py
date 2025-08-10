@@ -1,4 +1,4 @@
-from typing import List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING, Optional
 
 from chess.token.obstruction import Obstruction
 from chess.token.mobility_status import MobilityStatus
@@ -64,6 +64,10 @@ class ChessPiece(Token):
     @property
     def obstructions(self) -> List[Obstruction]:
         return self._obstructions
+
+    @property
+    def current_coordinate(self) -> Optional['Coordinate']:
+        return self._coordinate_stack.current_coordinate()
     #
     #
     # def get_id(self):

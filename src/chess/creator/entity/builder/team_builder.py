@@ -1,6 +1,7 @@
 
 from chess.config.team_config import TeamConfig
 from chess.creator.emit import id_emitter
+from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.owner.owner import Owner
 from chess.team.team import Team
@@ -24,28 +25,28 @@ class TeamBuilder:
 
 
 
-
-def main():
-    teams: list[Team] = []
-    for config in TeamConfig:
-        owner = OwnerBuilder.build(id_emitter.owner_id)
-        team = TeamBuilder.build(owner, config)
-        print(team)
-        if team not in teams:
-            teams.append(team)
-    print(len(teams))
-
-    old_owwer = teams[0].owner
-    teams[0].owner = None
-    print(teams[0])
-
-    teams[0].owner = OwnerBuilder.build(id_emitter.owner_id)
-    print(teams[0])
-
-    team = TeamBuilder.build(old_owwer, TeamConfig.WHITE)
-    print(team)
-    print(old_owwer)
-
-
-if __name__ == "__main__":
-    main()
+#
+# def main():
+#     teams: list[Team] = []
+#     for config in TeamConfig:
+#         owner = OwnerBuilder.build(id_emitter.owner_id)
+#         team = TeamBuilder.build(owner, config)
+#         print(team)
+#         if team not in teams:
+#             teams.append(team)
+#     print(len(teams))
+#
+#     old_owwer = teams[0].owner
+#     teams[0].owner = None
+#     print(teams[0])
+#
+#     teams[0].owner = OwnerBuilder.build(id_emitter.owner_id)
+#     print(teams[0])
+#
+#     team = TeamBuilder.build(old_owwer, TeamConfig.WHITE)
+#     print(team)
+#     print(old_owwer)
+#
+#
+# if __name__ == "__main__":
+#     main()

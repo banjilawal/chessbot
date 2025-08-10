@@ -3,19 +3,19 @@ from chess.creator.service.chess_board_builder import ChessBoardBuilder
 from chess.creator.service.team_service_builder import TeamServiceBuilder
 
 
-class ArenaBuilder:
-
-    @staticmethod
-    def build() -> Arena:
-
-        team_service = TeamServiceBuilder.assemble()
-        square_service = ChessBoardBuilder.assemble()
-
-        arena = Arena(team_service=team_service, square_service=square_service)
-
-        from chess.creator.team_placement_manager import TeamPlacementManager
-        TeamPlacementManager.place_teams(arena)
-        return arena
+# class ObsololeteArenaBuilder:
+#
+#     @staticmethod
+#     def build() -> Arena:
+#
+#         team_service = TeamServiceBuilder.assemble()
+#         square_service = ChessBoardBuilder.assemble()
+#
+#         arena = Arena(team_service=team_service, square_service=square_service)
+#
+#         from chess.creator.team_placement_manager import TeamPlacementManager
+#         TeamPlacementManager.place_teams(arena)
+#         return arena
         # ArenaBuilder.place_teams(team_service, chess_board)
         # return Arena(team_service=team_service, chess_board=chess_board)
         # teams: List[Team] = []

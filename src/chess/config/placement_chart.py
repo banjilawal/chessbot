@@ -74,7 +74,10 @@ class PlacementChart(Enum):
         return self._team_config
 
     def map_chess_piece_to_square_name(self, chess_piece: ChessPiece) -> Optional[str]:
-        # print(chess_piece.name.upper())
+        # print("inside map", chess_piece.name.upper(),
+        #       "against", self.chess_piece_name.upper()
+        # )
         if chess_piece.name.upper() == self.chess_piece_name.upper():
+            # print("MATCHED")
             return self._square_name
         return None
