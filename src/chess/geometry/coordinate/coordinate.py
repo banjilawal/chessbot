@@ -1,4 +1,5 @@
-from chess.common.chess_exception import ChessException, NollChessObjectException
+from chess.common.chess_exception import ChessException, NullChessObjectException, NullDeltaeException, \
+    NullDeltaException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.geometry.coordinate.delta import Delta
 
@@ -42,16 +43,17 @@ class Coordinate:
             column (int): column index
 
         Raise:
-            NollChessObjectException: If row or column are None.
+            RowOutOfRangeException: If row is out of bounds of ROW_SIZE.
+            ColumnOutOfRangeException: If column is out of bounds of COLUMN_SIZE.
             CoordinateOutOfBoundsException: If row or column are out ChessBoard's dimensions
         """
 
         if row is None:
-            raise NollChessObjectException(
+            raise NullChessObjectException(
                 f"{method}: row cannot be null. Coordinate instantiation failed"
             )
         if column is None:
-            raise NollChessObjectException(
+            raise NullChessObjectException(
                 f"{method}: column cannot be null. Coordinate instantiation failed"
             )
 
@@ -101,11 +103,11 @@ class Coordinate:
             delta (Delta): vector added to coordinate's x, y values
 
         Raise:
-            NollChessObjectException: If delta is None.
+            NullDeltaException: if delta is null.
         """
 
         if delta is None:
-            raise NollChessObjectException(f"{method}: row cannot be null. Coordinate instantiation failed")
+            raise NullDeltaException(f"{method} {NullDeltaException.default_message}")
 
         # Creating totally new values makes sure nothing
         # hinky happens creating the new shifted coordinate.

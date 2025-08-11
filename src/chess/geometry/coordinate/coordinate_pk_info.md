@@ -121,9 +121,12 @@ distance = CartesianDistance(p, q)
 ```
 
 ## Class Exceptions
- - `CoordinateOutOfBoundsException`: Invalid board position
- - `NollChessObjectException`: Null arguments detected
+Exceptions for tracing source of exceptions with a `Coordinate`.
 
+ - `CoordinateException`: General thrown by a `Coordinate` object.
+ - `RowOutOfRangeException`: Thrown if `Coordinate.row` outside the `ChessBoard` dimensions.
+ - `COlumnutOfRangeException`: Thrown if `Coordinate.column` outside the `ChessBoard` dimensions.
+\
 ## ASCII Art of Relationship Diagram
 
   ┌─────────────────────────────────┐      

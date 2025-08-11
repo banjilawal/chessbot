@@ -24,8 +24,11 @@ class MissingNameException(ChessException):
     """Exception raised when an id is negative"""
     default_message = "The name is missing. Passing null name not allowed."
 
-class NollChessObjectException(ChessException):
+class NullChessObjectException(ChessException):
     default_message = "object cannot be null"
 
-class NullCoordinateException(ChessException):
+class NullCoordinateException(NullChessObjectException):
     default_message = "Null Coordinate not allowed"
+
+class NullDeltaException(NullChessObjectException):
+    default_message = "Null Delta not allowed"

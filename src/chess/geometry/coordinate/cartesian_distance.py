@@ -1,4 +1,4 @@
-from chess.common.chess_exception import NollChessObjectException
+from chess.common.chess_exception import NullChessObjectException
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
 from chess.geometry.coordinate.coordinate import CoordinateOutOfBoundsException, Coordinate
 
@@ -35,11 +35,11 @@ class CartesianDistance:
         """
 
         if p is None:
-            raise NollChessObjectException(
+            raise NullChessObjectException(
                 f"{method}: Coordinate p cannot be null. CoordinateDistance instantiation failed"
             )
         if q is None:
-            raise NollChessObjectException(
+            raise NullChessObjectException(
                 f"{method}: Coordinate q cannot be null. CoordinateDistance instantiation failed"
             )
 
