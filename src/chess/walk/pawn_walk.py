@@ -50,19 +50,24 @@ class PawnWalk(Walk):
 
         # Must be diagonal (NOT vertical for attacks)
         if not Diagonal.is_diagonal(origin, destination):
-            raise ValueError(
+            print(
                 f"{method} "
                 f"{pawn.name} origin {origin} "
-                f"is not diagonal from {destination} "
-                f" cannot attack"
+                f"cannot attack {destination} "
+                f"the destination is more one row away from origin"
+                f"{method} returning False"
             )
+            return False
 
         if abs(destination.column - origin.column) != 1:
-            raise ValueError(
+            print(
                 f"{method} "
                 f"{pawn.name} origin {origin} "
-                f"s not one column away from attack coordinate {destination}"
+                f"cannot attack {destination} "
+                f"the destination is more than one column away from origin"
+                f"{method} returning False"
             )
+            return False
 
         row_diff = destination.row - origin.row
         from chess.config.team_config import TeamConfig
