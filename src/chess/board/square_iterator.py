@@ -13,7 +13,7 @@ class SquareIterator:
         self,
         squares: List[List[Square]],
         index: Coordinate = Coordinate(0, 0),
-        delta: Delta=Delta(delta_column=1, delta_row=1)
+        delta: Delta=Delta(column_delta=1, row_delta=1)
     ):
         self._squares = squares
         self._index = index

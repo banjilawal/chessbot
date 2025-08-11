@@ -38,7 +38,7 @@ class ChessBoard:
     def iterator(
         self,
         index: Coordinate = Coordinate(0, 0),
-        delta: Delta = Delta(delta_column=1, delta_row=1)
+        delta: Delta = Delta(column_delta=1, row_delta=1)
      ) -> SquareIterator:
         """
         Returns p SquareIterator for traversing the chess_board.

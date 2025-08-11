@@ -21,10 +21,15 @@ class PawnWalk(Walk):
         Basic geometric reachability - maintains Walk interface.
         Only checks if destination is geometrically walk by captor movement.
         """
+
+        quadrant = chess_piece.team.home_quadrant
+        delta = quadrant.delta
+        print(f"Pawn {chess_piece.name} quadrant:")
         return (
             PawnWalk.can_advance(chess_piece, destination) or
             PawnWalk.can_attack(chess_piece, destination)
         )
+
 
 
     @staticmethod

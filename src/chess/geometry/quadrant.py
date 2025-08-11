@@ -1,6 +1,6 @@
 
 from chess.geometry.coordinate.coordinate import Delta
-from enum import Enum
+from enum import Enum, auto
 from typing import Optional
 
 from chess.common.config import BOARD_DIMENSION
@@ -17,14 +17,14 @@ class Quadrant(Enum):
         obj._row_id = row_id
         return obj
 
-    N = (Delta(delta_column=0, delta_row=1), 0, "north", 1, 0)
-    NE = (Delta(delta_column=1, delta_row=1), 1, "northeast")
-    E = (Delta(delta_column=1, delta_row=0), 2, "east")
-    SE = (Delta(delta_column=1, delta_row=-1), 3, "southeast")
-    S = (Delta(delta_column=0, delta_row=-1), 4, "south", -1, BOARD_DIMENSION - 1)
-    SW = (Delta(delta_column=-1, delta_row=-1), 5, "southwest")
-    W = (Delta(delta_column=-1, delta_row=0), 6, "west")
-    NW = (Delta(delta_column=-1, delta_row=1), 7, "northwest")
+    N = (Delta(column_delta=0, row_delta=1), auto(), "north", 1, 0)
+    NE = (Delta(column_delta=1, row_delta=1), auto(), "northeast")
+    E = (Delta(column_delta=1, row_delta=0), auto(), "east")
+    SE = (Delta(column_delta=1, row_delta=-1), auto(), "southeast")
+    S = (Delta(column_delta=0, row_delta=-1), auto(), "south", -1, BOARD_DIMENSION - 1)
+    SW = (Delta(column_delta=-1, row_delta=-1), auto(), "southwest")
+    W = (Delta(column_delta=-1, row_delta=0), auto(), "west")
+    NW = (Delta(column_delta=-1, row_delta=1), auto(), "northwest")
 
     @property
     def delta(self) -> Delta:
@@ -51,3 +51,13 @@ class Quadrant(Enum):
         if self == Quadrant.N:
             return Quadrant.S
         return Quadrant.N
+
+    def __str__(self):
+        row_id_str = "row_id:{self._row_id" if self._row_id == None
+        return (
+            f"Quadrant[name:"
+            f"{self._name} "
+            f"forward_step:{self._forward_step} "
+            f"]"
+                f""
+                f"")
