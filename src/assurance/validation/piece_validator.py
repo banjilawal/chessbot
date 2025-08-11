@@ -55,13 +55,13 @@ class ChessPieceValidator:
         testing_payload = test_report.payload
         if testing_payload.rank_tag.rank not in [KingRank, PawnRank]:
             return ValidationResult.send_failed_valtidation_report(
-                ChessPiecePromotableValidationFailed("ChessPiece not king or chess_piece. failed promotable validation test")
+                ChessPiecePromotableValidationFailed("ChessPiece not king or captor. failed promotable validation test")
             )
 
         if testing_payload.current_coordinate().row != testing_payload.player.home_quadrant.enemy_quadrant():
             return ValidationResult.send_failed_valtidation_report(
                 ChessPiecePromotableValidationFailed(
-                    "Promotable chess chess_piece is not in enemy home. Failed is_promotable_test"
+                    "Promotable chess captor is not in enemy home. Failed is_promotable_test"
                 )
             )
 
@@ -112,6 +112,6 @@ class ChessPieceValidator:
 
         if len(piece.coordinate_stack) != 0 :
             return ValidationResult.send_failed_valtidation_report(
-                ChessPieceOnBoardValidationFailed("The chess chess_piece is already on the chess_board"))
+                ChessPieceOnBoardValidationFailed("The chess captor is already on the chess_board"))
 
         return ValidationResult.send_passed_validation_report(payload=test_payload)

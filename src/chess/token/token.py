@@ -7,9 +7,9 @@ class Token(ABC):
 
     def __init__(self, token_id: int, name: str):
         if not token_id:
-            raise ValueError("Cannot create p chess_piece with an empty id.")
+            raise ValueError("Cannot create p captor with an empty id.")
         if token_id < 0:
-            raise ValueError("Cannot create p chess_piece with p negative id.")
+            raise ValueError("Cannot create p captor with p negative id.")
 
         self._id = token_id
         self._name = name

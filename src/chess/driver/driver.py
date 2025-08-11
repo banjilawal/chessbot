@@ -1,4 +1,3 @@
-from xml.sax.handler import feature_string_interning
 
 from chess.creator.entity.builder.arena_builder import ArenaBuilder
 from chess.geometry.coordinate.coordinate import Delta, Coordinate
@@ -28,8 +27,7 @@ def main():
      print(arena.chess_board)
 
 
-
-
-
 if __name__ == "__main__":
-    main()
+     main()
+
+

@@ -42,4 +42,4 @@ class CoordinateStack:
         if self.size() == 0:
             raise PopEmptyCoordinateStackException("Cannot pop from empty coordinate stack")
 
-        self._stak.pop()
+        self._stack.pop()

@@ -1,11 +1,9 @@
 import random
-from sys import deactivate_stack_trampoline
 from typing import List, Optional, TYPE_CHECKING
 
-from chess.board import square
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
-from chess.board.square import Square
 from chess.board.square_iterator import SquareIterator
+from chess.board.square import Square
 
 if TYPE_CHECKING:
     from chess.token.chess_piece import ChessPiece
@@ -89,18 +87,23 @@ class ChessBoard:
 
 
     def find_chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
+        method = f"ChessBoard.find_chess_piece"
+
         if coordinate is None:
-            raise Exception(f"Cannot find a chess piece with a null coordinate")
+            raise Exception(f"{method} Cannot find a chess piece with a null coordinate")
         if coordinate.row < 0 or coordinate.row >= len(self._squares):
-            raise Exception(f"find_chess_piece: coordinate row {coordinate.row} is out of range")
+            raise Exception(f"{method} find_chess_piece: coordinate row {coordinate.row} is out of range")
         if coordinate.column < 0 or coordinate.column >= len(self._squares[0]):
-            raise Exception(f"find_chess_piece: coordinate column {coordinate.column} is out of range")
+            raise Exception(f"{method} find_chess_piece: coordinate column {coordinate.column} is out of range")
 
         return  self.find_square_by_coordinate(coordinate).occupant
 
 
 
     def capture_square(self, chess_piece: 'ChessPiece', destination: Coordinate):
+        """
+        The entry point to the ches
+        """
         method = f"ChessBoard.capture_square"
 
         if chess_piece is None:
@@ -144,37 +147,70 @@ class ChessBoard:
             self._imprison_occupant(chess_piece, target_occupant)
             self._finalize_capture(chess_piece, destination_square)
             return
-            # print(f"From BAORD.capture_square destination square is {destination_square}")
-            # self._capture_helper(chess_piece, destination_square, target_occupant)
+            # print(f"From BAORD.capture_square destination square is {destination}")
+            # self._capture_helper(captor, destination, target_occupant)
 
 
     def _imprison_occupant(self, jailer: 'ChessPiece', prisoner: 'ChessPiece'):
-        self.find_square_by_coordinate(prisoner.coordinate_stack.current_coordinate()).occupant = None
+        method = f"ChessBoard._imprison_occupant"
+
+        self.find_square_by_coordinate(
+            prisoner.coordinate_stack.current_coordinate()
+        ).occupant = None
+
         prisoner.captor = jailer
 
 
+    """
+    Private methods
+    """
 
-    def _finalize_capture(self, chess_piece: 'ChessPiece', destination_square: Square):
+    def _finalize_capture(self, captor: 'ChessPiece', destination: Square):
+        """
+        Helper method fthat handles the final steps of a capture.
+        Sets the captor as the resident and adds square's coordinates to the captor's
+        stack. Sets the captor's old resident as empty.
+        """
+
         method = f"ChessBoard._finalize_capture"
 
-        destination_square.occupant = chess_piece
+        # Remove the captor from their old square. I think its easier to understand
+        # because there is less code than if I got the coords first to find the square
+        # then deleted it.
         self.find_square_by_coordinate(
-            chess_piece.coordinate_stack.current_coordinate()
-        ).occupant
+            captor.coordinate_stack.current_coordinate()
+        ).occupant = None
 
-        chess_piece.coordinate_stack.push_coordinate(destination_square.coordinate)
+        validated_destination = self.find_square_by_coordinate(destination.coordinate)
 
-        if destination_square.occupant is not chess_piece:
+        # Set the Square side of the relationship
+        validated_destination.occupant = captor
+
+
+
+
+
+        # Put the destination square's coordinates at the top of the captor's
+        # coordinate stack.
+        captor.coordinate_stack.push_coordinate(validated_destination.coordinate)
+
+        # Checks to make sure everything worked correctly.
+        # If there are inconsistencies, throw exceptions.
+        if destination.occupant is not captor:
             raise Exception(f"{method}: data inconsistency square occupant not updated")
-        if chess_piece.coordinate_stack.current_coordinate() is not destination_square.coordinate:
+        if captor.coordinate_stack.current_coordinate() is not destination.coordinate:
             raise Exception(f"{method}: chess_piece coordinate stack not updated")
 
+        # Method showing success.
         print(f"{method}: capture complete")
 
 
     def random_chess_piece(self) -> Optional['ChessPiece']:
-        square = random.choice(self.occupied_squares())
-        return square.occupant if square else None
+        """"
+        Used for testing purposes.
+        """
+        return  random.choice(self.occupied_squares()).occupant
+
 
 
     def __str__(self) -> str:

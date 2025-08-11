@@ -55,8 +55,8 @@ class GameDisplay:
         base_path = "assets"
 
         chess_pieces = [
-            "white-castle", "white-knight", "white-bishop", "white-king", "white-queen", "white-chess_piece"
-            "black-castle", "black-knight", "black-bishop", "black-king", "black-queen", "black-chess_piece"
+            "white-castle", "white-knight", "white-bishop", "white-king", "white-queen", "white-captor"
+            "black-castle", "black-knight", "black-bishop", "black-king", "black-queen", "black-captor"
         ]
 
         for name in chess_pieces:

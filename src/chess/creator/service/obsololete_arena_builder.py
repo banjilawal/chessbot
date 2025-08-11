@@ -32,24 +32,24 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
         # for team in teams:
         #     for rank in motion_controllers:
         #         for i in range(rank.number_per_team):
-        #             chess_piece = ChessPieceBuilder.build(
+        #             captor = ChessPieceBuilder.build(
         #                 id_emitter.chess_piece_id,
         #                 (i + 1),
         #                 rank=rank,
         #                 team=team
         #             )
-        #             # print(chess_piece)
+        #             # print(captor)
         # return teams
     #
     # @staticmethod
     # def place_teams(team_service: TeamService, chess_board: MapService):
     #
-    #     for chess_piece in team_service.chess_pieces():
+    #     for captor in team_service.chess_pieces():
     #         for placement in PlacementChart:
-    #             square_name = placement.map_chess_piece_to_square_name(chess_piece)
+    #             square_name = placement.map_chess_piece_to_square_name(captor)
     #             if square_name is not None:
     #                 board = chess_board.find_square_by_name(square_name)
-    #                 board.occupy(chess_piece)
+    #                 board.occupy(captor)
     #                 print(board)
 
 #

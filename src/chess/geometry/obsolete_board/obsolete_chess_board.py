@@ -60,8 +60,8 @@ class ObsoleteChessBoard:
         return occupied_squares
 
     #
-    #    def capture_square(self, chess_piece: ChessPiece, coordinate: Coordinate):
-    #         if chess_piece is None:
+    #    def capture_square(self, captor: ChessPiece, coordinate: Coordinate):
+    #         if captor is None:
     #             raise ValueError("Captor cannot be null. Aborting capture process.")
     #             # return None
     #         if not self.coordinate_is_valid(coordinate):
@@ -73,44 +73,44 @@ class ObsoleteChessBoard:
     #         square = self._grid[coordinate.row][coordinate.column]
     #         current_occupant = square.occupant
     #         print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
-    #         if current_occupant is not None and not chess_piece.is_enemy(current_occupant):
+    #         if current_occupant is not None and not captor.is_enemy(current_occupant):
     #             print("A friendly is occupying the square. Aborting capture process.")
     #             return None
     #
-    #     if current_occupant is not None and chess_piece.is_enemy(current_occupant):
+    #     if current_occupant is not None and captor.is_enemy(current_occupant):
     #         print("The current occupant is an enemy on ")
     #         prisoner = current_occupant
     #         square.occupant = None
     #         prisoner.coordinate = None
     #
-    #         captor = chess_piece
+    #         captor = captor
     #         # prisoner = self.remove_piece_from_board(current_occupant.id)
     #         prisoner.test_outcome = MobilityStatus.PRISONER
     #
     #         print("prisoner=", prisoner, " captor=", captor, "")
     #
     #
-    #         # captor = self.remove_piece_from_board(chess_piece)
+    #         # captor = self.remove_piece_from_board(captor)
     #         square.occupant = captor
     #         # captor.coord = square.coord
     #         # captor.add_position(coord)
     #         self._killed_pieces.append(prisoner)
     #
     #     if current_occupant is None:
-    #         print("The current occupant is None. The chess_piece is free to move to the destination square.")
-    #         print(f"Square {square} has occupant {current_occupant} and chess_piece {chess_piece} is free to move to the destination square.")
-    #         square.occupant = chess_piece
-    #         chess_piece.coordinate = square.coordinate
+    #         print("The current occupant is None. The captor is free to move to the destination square.")
+    #         print(f"Square {square} has occupant {current_occupant} and captor {captor} is free to move to the destination square.")
+    #         square.occupant = captor
+    #         captor.coordinate = square.coordinate
     #
     #
-    # def capture_square(self, chess_piece: 'ChessPiece', destination: 'Coordinate'):
+    # def capture_square(self, captor: 'ChessPiece', destination: 'Coordinate'):
     #     method = "ObsoleteChessBoard.capture_square"
     #
     #     # 3. Get the squares
-    #     square_to_leave = self.find_square(chess_piece.current_coordinate())
-    #     destination_square = self.find_square(destination)
-    #     destination_square.occupy(chess_piece)
-    #     square_to_leave.leave(chess_piece)
+    #     square_to_leave = self.find_square(captor.current_coordinate())
+    #     destination = self.find_square(destination)
+    #     destination.occupy(captor)
+    #     square_to_leave.leave(captor)
 
 
 

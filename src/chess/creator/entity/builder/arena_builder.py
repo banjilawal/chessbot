@@ -23,11 +23,16 @@ class ArenaBuilder:
             chess_board=ChessBoardBuilder.build(id_emitter.board_id)
          )
         TeamPlacementManager.place_teams(arena)
+        for p in arena.chess_board.occupied_squares():
+            print(p, " occupied by", p.occupant.name)
         return arena
 
 def main():
     arena = ArenaBuilder.build()
     print(arena.chess_board)
+    for c in arena.white_owner.team.chess_pieces, arena.black_owner.team.chess_pieces:
+        for p in c:
+            print(p, " current coord", p.coordinate_stack.current_coordinate(), p.coordinate_stack.size())
     #
     # teams = TeamFactory.assemble()
     # white_team_owner = teams[0].owner
@@ -48,8 +53,8 @@ def main():
 
 
     #
-    # for chess_piece in arena.white_owner.team.chess_pieces:
-    #     print(chess_piece, " current coord", chess_piece.coordinate_stack.current_coordinate())
+    # for captor in arena.white_owner.team.chess_pieces:
+    #     print(captor, " current coord", captor.coordinate_stack.current_coordinate())
 
     # TeamPlacementManager.place_teams(arena)
     # print(arena.chess_board)
@@ -57,8 +62,8 @@ def main():
     # for square in arena.chess_board.occupied_squares():
     #     print(square, " occupied by", square.occupant.name)
 
-    # for chess_piece in arena.white_owner.team.chess_pieces:
-    #     print(chess_piece, " current coord", chess_piece.coordinate_stack.current_coordinate())
+    # for captor in arena.white_owner.team.chess_pieces:
+    #     print(captor, " current coord", captor.coordinate_stack.current_coordinate())
     # for square in arena.chess_board.squares:
     #     print(square)
 

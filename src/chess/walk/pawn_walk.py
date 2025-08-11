@@ -11,7 +11,7 @@ from chess.token.chess_piece import ChessPiece
 
 class PawnWalk(Walk):
     """
-    Consolidated chess_piece movement validation with specialized static methods
+    Consolidated captor movement validation with specialized static methods
     for different movement types.
     """
 
@@ -19,7 +19,7 @@ class PawnWalk(Walk):
     def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
         """
         Basic geometric reachability - maintains Walk interface.
-        Only checks if destination is geometrically walk by chess_piece movement.
+        Only checks if destination is geometrically walk by captor movement.
         """
         return (
             PawnWalk.can_advance(chess_piece, destination) or
@@ -61,7 +61,7 @@ class PawnWalk(Walk):
             return False
         from chess.rank.promotable.pawn_rank import PawnRank
         if not isinstance(chess_piece.rank, PawnRank):
-            print("ChessPiece is not p chess_piece cannot advance")
+            print("ChessPiece is not p captor cannot advance")
             return False
 
         pawn = chess_piece

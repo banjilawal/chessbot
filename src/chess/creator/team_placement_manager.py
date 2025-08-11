@@ -15,7 +15,7 @@ class TeamPlacementManager:
 
         for chess_piece in chess_pieces:
                 # .black_owner.team.chess_pieces):
-            # print("placing", chess_piece.name)
+            # print("placing", captor.name)
             for placement in PlacementChart:
                 # print("checking placement", placement.value[0])
                 square_name = placement.map_chess_piece_to_square_name(chess_piece)
@@ -24,6 +24,7 @@ class TeamPlacementManager:
                     square = arena.chess_board.find_square_by_name(square_name)
                     # print("found square", square)
                     square.occupant = chess_piece
+                    chess_piece.coordinate_stack.push_coordinate(square.coordinate)
                     # print(square)
 
 

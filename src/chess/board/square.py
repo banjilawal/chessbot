@@ -8,7 +8,6 @@ if TYPE_CHECKING:
 class Square:
     _id: int
     _name: str
-    _status: 'OccupationStatus'
     _coordinate: Coordinate
     _occupant: Optional['ChessPiece']
 
@@ -17,7 +16,6 @@ class Square:
         self._name = name
         self._occupant = None
         self._coordinate = coord
-        self._status = OccupationStatus.IS_VACANT
 
     @property
     def id(self) -> int:
@@ -39,29 +37,10 @@ class Square:
         return self._occupant
 
 
-    @property
-    def status(self) -> 'OccupationStatus':
-        return self._status
-
     @occupant.setter
     def occupant(self, chess_piece: Optional['ChessPiece']):
+        method = f"Square.occupant"
         self._occupant = chess_piece
-        if chess_piece is not None:
-            chess_piece.coordinate_stack.push_coordinate(self._coordinate)
-        else:
-            self._status = OccupationStatus.IS_VACANT
-
-
-    # Removed occupy() and leave() methods. MapService will manage these.
-    # def set_occupant(self, chess_piece: Optional['ChessPiece']):
-    #     """
-    #     Sets or clears the occupant of the square and updates its status.
-    #     This method is intended to be called by MapService, not directly.
-    #     """
-    #     self._occupant = chess_piece
-    #
-    #     if chess_piece is not None:
-    #         chess_piece.coordinate_stack.push_coordinate(self._coordinate)
 
 
     def __eq__(self, other):
@@ -85,7 +64,6 @@ class Square:
             f"Square ID:{self._id} "
             f"Name:{self._name} "
             f"coordinate:{self._coordinate} "
-            f"Status: {self._status.name}"
         )
 
 
@@ -93,4 +71,4 @@ class Square:
         occupant_repr = repr(self._occupant) if self._occupant else "None"
         return (f"Square(id={self._id}, name='{self._name}', "
                 f"coordinate={repr(self._coordinate)}, "
-                f"status={self._status.name}, occupant={occupant_repr})")
+                f"occupant={occupant_repr})")

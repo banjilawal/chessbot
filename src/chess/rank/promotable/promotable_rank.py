@@ -38,7 +38,7 @@ class PromotableRank(Rank):
             raise TypeError(f"{chess_piece.get_name()} is not on the enemy home row. Cannot be promoted.")
 
         # if isinstance(self.rank, QueenRank) and self._previous_rank is not None:
-        #     raise TypeError(f"{chess_piece.name} is already promoted.")
+        #     raise TypeError(f"{captor.name} is already promoted.")
 
         promoted_chess_piece = ChessPiece(
             token_id=chess_piece.get_id(),
@@ -58,8 +58,8 @@ class PromotableRank(Rank):
         # method = "PromotableRank.promote"
         #
         # if self.is_promoted():
-        #     print( f"{chess_piece.name} has already been promoted.")
-        #     return chess_piece
+        #     print( f"{captor.name} has already been promoted.")
+        #     return captor
         # return ChessPiece(
         #     chess_piece_id = self._id
         #     interfaces = Queen()
@@ -67,27 +67,27 @@ class PromotableRank(Rank):
         #
         # )
         # #
-        # previous_stack_size = len(chess_piece.coordinate_stack)
-        # previous_top = chess_piece.coordinate_stack[-1] if chess_piece.coordinate_stack else None
-        # previous_id = chess_piece.id
+        # previous_stack_size = len(captor.coordinate_stack)
+        # previous_top = captor.coordinate_stack[-1] if captor.coordinate_stack else None
+        # previous_id = captor.id
         #
         # new_rank = Queen()
-        # chess_piece.assign_rank(new_rank)
+        # captor.assign_rank(new_rank)
 
 
     #
     # def _promotion_succeeded(
-    #         self, chess_piece: 'ChessPiece',
+    #         self, captor: 'ChessPiece',
     #         old_stack_size: int,
     #         old_top_coordinate: Coordinate,
     #         old_id: int
     # ) -> bool:
-    #     if not isinstance(chess_piece.interfaces, Queen):
+    #     if not isinstance(captor.interfaces, Queen):
     #         return False
-    #     if hasattr(chess_piece.interfaces, "chess_piece_id") and chess_piece.interfaces.chess_piece_id != old_id:
+    #     if hasattr(captor.interfaces, "chess_piece_id") and captor.interfaces.chess_piece_id != old_id:
     #         return False
-    #     if len(chess_piece.coordinate_stack) != old_stack_size:
+    #     if len(captor.coordinate_stack) != old_stack_size:
     #         return False
-    #     if chess_piece.coordinate_stack[-1] != old_top_coordinate:
+    #     if captor.coordinate_stack[-1] != old_top_coordinate:
     #         return False
     #     return True

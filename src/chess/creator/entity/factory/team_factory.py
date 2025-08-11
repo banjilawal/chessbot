@@ -33,7 +33,7 @@ class TeamFactory:
                         rank=rank,
                         team=team
                     )
-                    # print(chess_piece)
+                    # print(captor)
         return teams
 
 
@@ -45,23 +45,23 @@ def main():
         print(team)
 
     # for team in teams:
-    #     for chess_piece in team.chess_pieces:
-    #         print(chess_piece)
+    #     for captor in team.chess_pieces:
+    #         print(captor)
 
             # for placement in PlacementChart:
-            #     square_name = placement.map_chess_piece_to_square_name(chess_piece)
+            #     square_name = placement.map_chess_piece_to_square_name(captor)
             #     if square_name is not None:
             #         board = chess_board.find_square_by_name(square_name)
-            #         board(chess_piece)
+            #         board(captor)
             #         print(board)
     # print(repo)
                     # print(board.name, " occupied by", board.occupant.name)
                 # print(placement.value[0])
-                # placement.map_chess_piece_to_square_name(chess_piece)
-                # print("comparing", placement.chess_piece_name.capitalize(), " with", chess_piece.name.capitalize())
-                # chess_piece.name.capitalize() == placement.value[0].capitalize():
+                # placement.map_chess_piece_to_square_name(captor)
+                # print("comparing", placement.chess_piece_name.capitalize(), " with", captor.name.capitalize())
+                # captor.name.capitalize() == placement.value[0].capitalize():
 
-       # print(f"matched board:{placement.square_name} with {chess_piece.name}")`````````
+       # print(f"matched board:{placement.square_name} with {captor.name}")`````````
 
 if __name__ == "__main__":
     main()

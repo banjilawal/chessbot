@@ -8,7 +8,7 @@ class MissingSquareException(SquareException):
     default_message = "Chess square does not exist. Passing null square not allowed."
 
 class OccupationBlockedException(SquareException):
-    default_message = "The chess square is occupied by another friendly chess_piece."
+    default_message = "The chess square is occupied by another friendly captor."
 
 class OccupationCleanupException(SquareException):
     default_message = "An occupation clean up task failed. Entities have inconsistent states."

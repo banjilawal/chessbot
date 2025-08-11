@@ -25,7 +25,7 @@ class ChessPiece(Token):
         super().__init__(token_id, name)
 
         if rank is None:
-            raise ValueError("Cannot create p chess_piece with an null interfaces.")
+            raise ValueError("Cannot create p captor with an null interfaces.")
 
         self._team = team
         self._rank = rank
@@ -142,14 +142,17 @@ class ChessPiece(Token):
 
 
     def __str__(self):
-        location_str = f"current_coord:{self._coordinate_stack.current_coordinate()}"
-        if self._status == MobilityStatus.PRISONER:
-            location_str = f"prisoner"
-        return f"ChessPiece[id:{self._id} name:{self._name} status:{self._status.name} {location_str}]"
+        return (
+            f"ChessPiece[id:{self._id} "
+            f"name:{self._name} "
+            f"stack_size:{self._coordinate_stack.size()} "
+            f"current_coordinate: {self._coordinate_stack.current_coordinate()} "
+            f"status:{self._status.name}"
+        )
 
 
     def is_enemy(self, chess_piece: 'ChessPiece'):
         if chess_piece is None:
-            raise Exception("Cannot run is_enemy() check on a null chess_piece.")
-        return self._team == chess_piece.team
+            raise Exception("Cannot run is_enemy() check on a null captor.")
+        return self._team != chess_piece.team
 
