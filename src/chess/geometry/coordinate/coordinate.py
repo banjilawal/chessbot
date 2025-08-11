@@ -1,4 +1,10 @@
+from chess.common.chess_exception import ChessException, NollChessObjectException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
+from chess.geometry.coordinate.delta import Delta
+
+
+class CoordinateOutOfBoundsException(ChessException):
+    default_message = "The coordinate is outside the bounds of the ChessBoard rows and columns"
 
 class Coordinate:
     _row: int
@@ -6,6 +12,7 @@ class Coordinate:
 
     """
     Coordinate is a tuple of the row, and column indices of the 2x2 array which makes up a ChessBoard.
+    All fields are immutable.
     
     Attributes:
         _row (int): index of row array position.
@@ -13,6 +20,8 @@ class Coordinate:
     """
 
     def __init__(self, row: int, column: int):
+        method = "Coordinate.__init__()"
+
         """
         Creates a Coordinate instance
 
@@ -21,20 +30,33 @@ class Coordinate:
             column (int): column index
 
         Raise:
-
-
+            NollChessObjectException: If row or column are None.
+            CoordinateOutOfBoundsException: If row or column are out ChessBoard's dimensions
         """
+
         if row is None:
-            raise
+            raise NollChessObjectException(
+                f"{method}: row cannot be null. Coordinate instantiation failed"
+            )
+        if column is None:
+            raise NollChessObjectException(
+                f"{method}: column cannot be null. Coordinate instantiation failed"
+            )
+
         if row < 0 or row >= ROW_SIZE:
-            raise ValueError("A row must be between 0 and 7 inclusive.")
-            return
+            raise CoordinateOutOfBoundsException(
+                f"Row index{column} is outside ChessBoard's row range."
+                f"It must be between 0 and {ROW_SIZE - 1} inclusive."
+            )
         if column < 0 or column >= COLUMN_SIZE:
-            raise ValueError("A column must be between 0 and 7 inclusive.")
-            return
+            raise CoordinateOutOfBoundsException(
+                f"Row index{column} is outside ChessBoard's column range."
+                f"It must be between 0 and {COLUMN_SIZE - 1} inclusive."
+            )
 
         self._row = row
         self._column = column
+
 
     @property
     def row(self) -> int:
@@ -60,35 +82,30 @@ class Coordinate:
 
 
     def __str__(self):
-        return f"(row:{self._row} column:{self._column})"
+        return f"Coordinate(row:{self._row} column:{self._column})"
 
 
     def shift(self, delta: Delta) -> 'Coordinate':
-        return Coordinate(
-            row=self._row + delta.delta_row,
-            column=self._column + delta.column_delta
-        )
+        method = "Coordinate.shift()"
 
-class CartesianDistance:
-    _p: Coordinate
-    _q: Coordinate
-    _distance: int
+        """
+        Creates a new Coordinate shifted by row + row_delta, colum + column_delta
 
-    def __init__(self, p: Coordinate, q: Coordinate):
-        self._p = p
-        self._q = q
-        self._distance = ((p.row - q.row) ** 2) + ((p.column - q.column) ** 2)
+        Args:
+            delta (Delta): vector added to coordinate's x, y values
 
-    @property
-    def p(self) -> Coordinate:
-        return self._p
+        Raise:
+            NollChessObjectException: If delta is None.
+        """
 
-    @property
-    def q(self) -> Coordinate:
-        return self._q
+        if delta is None:
+            raise NollChessObjectException(f"{method}: row cannot be null. Coordinate instantiation failed")
 
-    @property
-    def distance(self) -> int:
-        return self._distance
+        # Creating totally new values makes sure nothing
+        # hinky happens creating the new shifted coordinate.
+        new_row = self._row + delta.row_delta
+        new_colum = self._column + delta.column_delta
+
+        return Coordinate(row=new_row, column=new_colum)
 
 
