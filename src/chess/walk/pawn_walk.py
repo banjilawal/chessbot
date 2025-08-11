@@ -53,28 +53,50 @@ class PawnWalk(Walk):
             return False
         return True
 
-
     @staticmethod
     def _satisfies_walk_preconditions(chess_piece: ChessPiece, destination: Coordinate) -> bool:
         if chess_piece is None:
-            print("Pawn is None cannot advance")
             return False
+
         from chess.rank.promotable.pawn_rank import PawnRank
         if not isinstance(chess_piece.rank, PawnRank):
-            print("ChessPiece is not p captor cannot advance")
             return False
+
+        if chess_piece.coordinate_stack.current_coordinate() is None:
+            return False
+
+    @staticmethod
+    def _satisfies_walk_preconditions(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+        method = f"PawnWalk._satisfies_walk_preconditions"
+
+        if chess_piece is None:
+            raise ValueError(f"{method} ChessPiece cannot be None in precond check")
+        if destination is None:
+            raise ValueError(f"{method} Destination cannot be None in precond check")
+
+        from chess.rank.promotable.pawn_rank import PawnRank
+        if not isinstance(chess_piece.rank, PawnRank):
+            raise ValueError(f"{method} ChessPiece rank is not a PawnRank")
 
         pawn = chess_piece
 
         if pawn.coordinate_stack is None:
-            print("Pawn has no coordinate_stack cannot advance")
-            return False
+            raise ValueError(
+                f"{method} "
+                f"Pawn {pawn.name} has no coordinate_stack cannot advance"
+            )
+
         if pawn.coordinate_stack.current_coordinate() is None or pawn.coordinate_stack.size() == 0:
-            print("Pawn is not on the obsolete_board cannot advance")
-            return False
+            raise ValueError(
+                f"{method} "
+                f"Pawn {pawn.name} "
+                f"has stack size {pawn.coordinate_stack.size()} "
+                f" {pawn.name} is not on the chess board cannot advance"
+            )
+
         if not Vertical.is_vertical(pawn.coordinate_stack.current_coordinate(), destination):
-            print("Pawn cannot advance to non-vertical destination")
-            return False
+            raise ValueError(f"{method} Pawn {pawn.name} cannot advance to non-vertical destination")
+
         return True
 
 
