@@ -40,30 +40,35 @@ class PawnWalk(Walk):
 
     @staticmethod
     def can_attack(pawn: ChessPiece, destination: Coordinate) -> bool:
+        method = "PawnWalk.can_attack"
+
         if not PawnWalk._satisfies_walk_preconditions(pawn, destination):
             print(f"{pawn.name} does not satisfy walk preconditions to advance")
             return False
 
-        if Diagonal.is_diagonal(pawn.coordinate_stack.current_coordinate(), destination):
-            print(f"{pawn.name} is not diagonal from attack coordinate {destination}")
-            return False
+        origin = pawn.coordinate_stack.current_coordinate()
 
-        if abs(destination.column - pawn.coordinate_stack.current_coordinate().column) != 1:
-            print(f"{pawn.name} is not one column away from attack coordinate {destination}")
-            return False
+        # Must be diagonal (NOT vertical for attacks)
+        if not Diagonal.is_diagonal(origin, destination):
+            raise ValueError(
+                f"{method} "
+                f"{pawn.name} origin {origin} "
+                f"is not diagonal from {destination} "
+                f" cannot attack"
+            )
+
+        if abs(destination.column - origin.column) != 1:
+            raise ValueError(
+                f"{method} "
+                f"{pawn.name} origin {origin} "
+                f"s not one column away from attack coordinate {destination}"
+            )
+
+        row_diff = destination.row - origin.row
+        from chess.config.team_config import TeamConfig
+        expected_direction = -1 if pawn.team.config == TeamConfig.WHITE else 1
         return True
 
-    @staticmethod
-    def _satisfies_walk_preconditions(chess_piece: ChessPiece, destination: Coordinate) -> bool:
-        if chess_piece is None:
-            return False
-
-        from chess.rank.promotable.pawn_rank import PawnRank
-        if not isinstance(chess_piece.rank, PawnRank):
-            return False
-
-        if chess_piece.coordinate_stack.current_coordinate() is None:
-            return False
 
     @staticmethod
     def _satisfies_walk_preconditions(chess_piece: ChessPiece, destination: Coordinate) -> bool:
