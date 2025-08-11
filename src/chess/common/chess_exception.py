@@ -23,3 +23,6 @@ class MissingIdException(ChessException):
 class MissingNameException(ChessException):
     """Exception raised when an id is negative"""
     default_message = "The name is missing. Passing null name not allowed."
+
+class NollChessObjectException(ChessException):
+    default_message = "object cannot be null"

@@ -1,18 +1,31 @@
-
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-
-
-
-
-
-
-
 
 class Coordinate:
     _row: int
     _column: int
 
+    """
+    Coordinate is a tuple of the row, and column indices of the 2x2 array which makes up a ChessBoard.
+    
+    Attributes:
+        _row (int): index of row array position.
+        _colum (int): index of the column array.
+    """
+
     def __init__(self, row: int, column: int):
+        """
+        Creates a Coordinate instance
+
+        Args:
+            row (int): row index
+            column (int): column index
+
+        Raise:
+
+
+        """
+        if row is None:
+            raise
         if row < 0 or row >= ROW_SIZE:
             raise ValueError("A row must be between 0 and 7 inclusive.")
             return

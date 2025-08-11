@@ -1,3 +1,6 @@
+from chess.common.chess_exception import NullChessObjectException, NollChessObjectException
+
+
 class Delta:
     _row_delta: int
     _column_delta: int
@@ -23,13 +26,17 @@ class Delta:
             column_delta (int): value fpr column_delta
             
         Raises:
-            ValueError: if either row_delta or column_delta are null.
+            NollChessObjectException: if either row_delta or column_delta are null.
         """
 
         if row_delta is None:
-            raise ValueError(f"{method}: row_delta cannot be null. Delta instantiation failed")
+            raise NollChessObjectException(
+                f"{method}: row_delta cannot be null. Delta instantiation failed"
+            )
         if column_delta is None:
-            raise ValueError(f"{method}: column_delta cannot be null. Delta instantiation failed")
+            raise NollChessObjectException(
+                f"{method}: column_delta cannot be null. Delta instantiation failed"
+            )
 
         self._row_delta = row_delta
         self._column_delta = column_delta
@@ -72,11 +79,11 @@ class Delta:
             Delta:
             
         Raises:
-            ValueError: If scalar is None
+            NollChessObjectException: If scalar is None
         """
 
         if scalar is None:
-            raise ValueError(
+            raise NollChessObjectException(
                 f"{method}: cannot be executed. "
                 f"Cannot multiply Delta object {self.__str__} "
                 f"by null scalar"
