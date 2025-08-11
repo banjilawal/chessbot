@@ -24,7 +24,7 @@ class PlacementChart(Enum):
     WHITE_KING_CASTLE = ("WC1", "A8", RankConfig.CASTLE, TeamConfig.WHITE)
     WHITE_KING_KNIGHT = ("WN1", "B8", RankConfig.KNIGHT, TeamConfig.WHITE)
     WHITE_KING_BISHOP = ("WB1", "C8", RankConfig.BISHOP, TeamConfig.WHITE)
-    WHITE_KING = ("WK", "D8", RankConfig.QUEEN, TeamConfig.WHITE)
+    WHITE_KING = ("WK", "D8", RankConfig.KING, TeamConfig.WHITE)
     WHITE_QUEEN = ("WQ", "E8", RankConfig.QUEEN, TeamConfig.WHITE)
     WHITE_QUEEN_BISHOP = ("WB2", "F8", RankConfig.BISHOP, TeamConfig.WHITE)
     WHITE_QUEEN_KNIGHT = ("WN2", "G8", RankConfig.KNIGHT, TeamConfig.WHITE)

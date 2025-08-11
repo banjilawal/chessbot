@@ -177,6 +177,15 @@ class ChessBoard:
         # Remove the captor from their old square. I think its easier to understand
         # because there is less code than if I got the coords first to find the square
         # then deleted it.
+        # STORE the old coordinate FIRST before any modifications
+        old_coordinate = captor.coordinate_stack.current_coordinate()
+
+        # Clear the old square
+        if old_coordinate:
+            old_square = self.find_square_by_coordinate(old_coordinate)
+            if old_square:
+                old_square.occupant = None
+                print(f"DEBUG: Cleared old square {old_square.name}")
         self.find_square_by_coordinate(
             captor.coordinate_stack.current_coordinate()
         ).occupant = None
