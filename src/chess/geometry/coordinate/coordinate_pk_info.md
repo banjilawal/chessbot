@@ -1,9 +1,3 @@
-# `chess.geometry.coordinate` Package
-
-# Purpose
-- Addressing squares in `ChessBoard` with `Coordinate` ADT. 
-- classes performing mathematical operations on `Coordinae`.
-
 # `chess.geometry.coordinate` Package Documentation
 
 ## 📌 Purpose
@@ -17,6 +11,52 @@ Provides geometric primitives for chess board coordinates:
  - Validation: Strict constructor checks
  - Performance: Integer math optimized for chess
  - Type Safety: Python type hints throughout
+
+## Class Relationship Diagram
+```plantuml
+@startuml 
+title Coordinate Package Class Relationships
+class Coordinate {
+  + row: int
+  + column: int
+  + shift(delta: Delta): Coordinate
+}
+
+class Delta {
+  + row_delta: int
+  + column_delta: int
+  + __mul__(scalar: int): Delta
+}
+
+class CartesianDistance {
+  + p: Coordinate
+  + q: Coordinate
+  + distance: int
+}
+
+  ┌─────────────────────────────────┐      
+           │Coordinate                       │      
+           ├─────────────────────────────────┤      
+           │+ row: int                       │      
+           │+ column: int                    │      
+           │+ shift(delta: Delta): Coordinate│      
+           └─────────────────────────────────┘      
+                                                    
+                                                    
+┌─────────────────────────────┐  ┌─────────────────┐
+│Delta                        │  │CartesianDistance│
+├─────────────────────────────┤  ├─────────────────┤
+│+ row_delta: int             │  │+ p: Coordinate  │
+│+ column_delta: int          │  │+ q: Coordinate  │
+│+ __mul__(scalar: int): Delta│  │+ distance: int  │
+└─────────────────────────────┘  └─────────────────┘
+
+Coordinate "1" *-- "1" Delta : uses for transformation
+Coordinate "1" *-- "2" CartesianDistance : measures between
+
+@enduml
+
+```
 
 ## 🧩 Classes
 
