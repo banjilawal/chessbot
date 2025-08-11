@@ -65,23 +65,39 @@ class ChessBoard:
 
 
     def find_square_by_name(self, name: str) -> Optional[Square]:
+        if name is None:
+            raise Exception(f"Cannot find a square with a null name")
+
         for row in self._squares:
-            for square in row:
-                if square.name.upper() == name.upper():
-                    return square
+            for current_square in row:
+                if current_square.name.upper() == name.upper():
+                    return current_square
         return None
 
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
+        if square_id is None:
+            raise Exception(f"Cannot find a square with a null id")
+
+        if square_id < 0:
+            raise Exception(f"find_square_by_id: square_id {square_id} is negative")
+
         for row in self._squares:
-            for square in row:
-                if square.id == square_id:
-                    return square
+            for current_square in row:
+                if current_square.id == square_id:
+                    return current_square
         return None
 
 
     def find_chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
-        square = self.find_square_by_coordinate(coordinate)
-        return square.occupant if square else None
+        if coordinate is None:
+            raise Exception(f"Cannot find a chess piece with a null coordinate")
+        if coordinate.row < 0 or coordinate.row >= len(self._squares):
+            raise Exception(f"find_chess_piece: coordinate row {coordinate.row} is out of range")
+        if coordinate.column < 0 or coordinate.column >= len(self._squares[0]):
+            raise Exception(f"find_chess_piece: coordinate column {coordinate.column} is out of range")
+
+        return  self.find_square_by_coordinate(coordinate).occupant
+
 
 
     def capture_square(self, chess_piece: 'ChessPiece', destination: Coordinate):
@@ -89,12 +105,12 @@ class ChessBoard:
 
         if chess_piece is None:
             raise Exception(f"{method}: chess_piece is None")
+
         if chess_piece.coordinate_stack.current_coordinate() is None:
             raise Exception(f"{method}: chess_piece cannot move to a location if its not on th board")
 
         if self.find_square_by_coordinate(destination) is None:
             raise Exception(f"{method}: coordinate {destination} is not on the board")
-
 
         destination_square = self.find_square_by_coordinate(destination)
         target_occupant = destination_square.occupant
@@ -127,35 +143,10 @@ class ChessBoard:
             )
             self._imprison_occupant(chess_piece, target_occupant)
             self._finalize_capture(chess_piece, destination_square)
+            return
             # print(f"From BAORD.capture_square destination square is {destination_square}")
             # self._capture_helper(chess_piece, destination_square, target_occupant)
 
-
-    def _capture_helper(
-        self,
-        chess_piece: 'ChessPiece',
-        target_square: Square,
-        enemy: Optional['ChessPiece']
-    ):
-        originating_square = self.find_square_by_coordinate(
-            chess_piece.coordinate_stack.current_coordinate()
-        )
-
-        if not chess_piece.is_enemy(enemy):
-            raise Exception(
-                f"{enemy} is not an enemy of "
-                f"{chess_piece} who is coming from"
-                f" {originating_square} to"
-                f" {enemy.coordinate_stack.current_coordinate()}r"
-                f" Capture failed"
-            )
-
-        if enemy is not None:
-            chess_piece.capture_prisoner(enemy)
-
-        originating_square.occupant = None
-        target_square.occpant = chess_piece
-        chess_piece.coordinate_stack.push_coordinate(target_square.coordinate)
 
     def _imprison_occupant(self, jailer: 'ChessPiece', prisoner: 'ChessPiece'):
         self.find_square_by_coordinate(prisoner.coordinate_stack.current_coordinate()).occupant = None
