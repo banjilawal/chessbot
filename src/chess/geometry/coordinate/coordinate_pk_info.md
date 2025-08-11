@@ -34,26 +34,9 @@ class CartesianDistance {
   + distance: int
 }
 
-  ┌─────────────────────────────────┐      
-           │Coordinate                       │      
-           ├─────────────────────────────────┤      
-           │+ row: int                       │      
-           │+ column: int                    │      
-           │+ shift(delta: Delta): Coordinate│      
-           └─────────────────────────────────┘      
-                                                    
-                                                    
-┌─────────────────────────────┐  ┌─────────────────┐
-│Delta                        │  │CartesianDistance│
-├─────────────────────────────┤  ├─────────────────┤
-│+ row_delta: int             │  │+ p: Coordinate  │
-│+ column_delta: int          │  │+ q: Coordinate  │
-│+ __mul__(scalar: int): Delta│  │+ distance: int  │
-└─────────────────────────────┘  └─────────────────┘
 
 Coordinate "1" *-- "1" Delta : uses for transformation
 Coordinate "1" *-- "2" CartesianDistance : measures between
-
 @enduml
 
 ```
@@ -138,3 +121,22 @@ distance = CartesianDistance(p, q)
 ## Class Exceptions
  - `CoordinateOutOfBoundsException`: Invalid board position
  - `NollChessObjectException`: Null arguments detected
+
+## ASCII Art of Relationship Diagram
+
+  ┌─────────────────────────────────┐      
+           │Coordinate                       │      
+           ├─────────────────────────────────┤      
+           │+ row: int                       │      
+           │+ column: int                    │      
+           │+ shift(delta: Delta): Coordinate│      
+           └─────────────────────────────────┘      
+                                                    
+                                                    
+┌─────────────────────────────┐  ┌─────────────────┐
+│Delta                        │  │CartesianDistance│
+├─────────────────────────────┤  ├─────────────────┤
+│+ row_delta: int             │  │+ p: Coordinate  │
+│+ column_delta: int          │  │+ q: Coordinate  │
+│+ __mul__(scalar: int): Delta│  │+ distance: int  │
+└─────────────────────────────┘  └─────────────────┘
