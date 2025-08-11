@@ -4,9 +4,17 @@ from chess.token.chess_piece import ChessPiece
 
 
 class KnightWalk(Walk):
+    """
+    Implementation of Walk interface for ChessPiece with QueenRank
+    """
+
 
     @staticmethod
     def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+
+        # Uses difference between the origin and destination rows and columns to
+        # see if they form an L shaped motion.
+
         origin = chess_piece.coordinate_stack.current_coordinate()
 
         row_diff = abs(origin.row - destination.row)

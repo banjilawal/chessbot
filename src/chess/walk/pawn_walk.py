@@ -11,8 +11,7 @@ from chess.token.chess_piece import ChessPiece
 
 class PawnWalk(Walk):
     """
-    Consolidated captor movement validation with specialized static methods
-    for different movement types.
+    Implementation of Walk interface for ChessPiece holing PawnRank
     """
 
     @staticmethod

@@ -1,5 +1,4 @@
-from chess.common.chess_exception import ChessException, NullChessObjectException, NullDeltaeException, \
-    NullDeltaException
+from chess.common.chess_exception import ChessException, NullChessObjectException, NullDeltaException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.geometry.coordinate.delta import Delta
 
@@ -7,12 +6,12 @@ from chess.geometry.coordinate.delta import Delta
 class CoordinateException(ChessException):
     default_message = "Invalid Coordinate state"
 
-class RowOutOfRangeException(CoordinateException):
+class RowOutOfBoundsException(CoordinateException):
     default_message = (
         f"The coordinate row is outside ChessBoard's row range of 0 to {ROW_SIZE - 1} inclusive."
     )
 
-class ColumnOutOfRangeException(CoordinateException):
+class ColumnOutOfBoundsException(CoordinateException):
     default_message = (
         f"The coordinate colum is outside ChessBoard's row range of 0 to {ROW_SIZE - 1} inclusive."
     )
@@ -43,9 +42,9 @@ class Coordinate:
             column (int): column index
 
         Raise:
-            RowOutOfRangeException: If row is out of bounds of ROW_SIZE.
-            ColumnOutOfRangeException: If column is out of bounds of COLUMN_SIZE.
-            CoordinateOutOfBoundsException: If row or column are out ChessBoard's dimensions
+            NullChessObject: If row or column are null
+            RowOutOfBoundsException: If row is out of bounds of ROW_SIZE.
+            ColumnOutOfBoundsException: If column is out of bounds of COLUMN_SIZE.
         """
 
         if row is None:
@@ -58,9 +57,9 @@ class Coordinate:
             )
 
         if row < 0 or row >= ROW_SIZE:
-            raise RowOutOfRangeException(RowOutOfRangeException.default_message)
+            raise RowOutOfBoundsException(RowOutOfBoundsException.default_message)
         if column < 0 or column >= COLUMN_SIZE:
-            raise ColumnOutOfRangeException(ColumnOutOfRangeException.default_message)
+            raise ColumnOutOfBoundsException(ColumnOutOfBoundsException.default_message)
 
         self._row = row
         self._column = column
@@ -101,6 +100,9 @@ class Coordinate:
 
         Args:
             delta (Delta): vector added to coordinate's x, y values
+        
+        Return:
+            Coordinate
 
         Raise:
             NullDeltaException: if delta is null.

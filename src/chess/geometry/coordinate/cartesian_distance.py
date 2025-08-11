@@ -1,6 +1,6 @@
-from chess.common.chess_exception import NullChessObjectException
+from chess.common.chess_exception import NullChessObjectException, NullCoordinateException
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
-from chess.geometry.coordinate.coordinate import CoordinateOutOfBoundsException, Coordinate
+from chess.geometry.coordinate.coordinate import Coordinate, RowOutOfBoundsException, ColumnOutOfBoundsException
 
 
 class CartesianDistance:
@@ -30,40 +30,25 @@ class CartesianDistance:
             q (Coordinate): Other coordinate in the pair
 
         Raise:
-            NollChessObjectException: If p or q are null.
-            CoordinateOutOfBoundsException: If p or q are out ChessBoard's dimensions
+            NullCoordinateException: If p or q are null.
+            RowOutOfRangeException: If p or q rows are out of bounds
+            ColumnOutOfRangeException: if p or q columns are out of bounds
         """
 
         if p is None:
-            raise NullChessObjectException(
-                f"{method}: Coordinate p cannot be null. CoordinateDistance instantiation failed"
-            )
+            raise NullCoordinateException(f"{method} {NullCoordinateException.default_message}")
         if q is None:
-            raise NullChessObjectException(
-                f"{method}: Coordinate q cannot be null. CoordinateDistance instantiation failed"
-            )
-
-        if q.row < 0 or q.row >= ROW_SIZE:
-            raise CoordinateOutOfBoundsException(
-                f"{method} row {q.row} is outside ChessBoard's row range."
-                f"It must be between 0 and {ROW_SIZE - 1} inclusive."
-            )
-        if q.column < 0 or q.column >= COLUMN_SIZE:
-            raise CoordinateOutOfBoundsException(
-                f"{method} column {q.column} is outside ChessBoard's column range."
-                f"It must be between 0 and {COLUMN_SIZE - 1} inclusive."
-            )
+            raise NullCoordinateException(f"{method} {NullCoordinateException.default_message}")
 
         if p.row < 0 or p.row >= ROW_SIZE:
-            raise CoordinateOutOfBoundsException(
-                f"{method} row {p.row} is outside ChessBoard's row range."
-                f"It must be between 0 and {ROW_SIZE - 1} inclusive."
-            )
+            raise RowOutOfBoundsException(f"{method} {p.row} {RowOutOfBoundsException.default_message}")
         if p.column < 0 or p.column >= COLUMN_SIZE:
-            raise CoordinateOutOfBoundsException(
-                f"{method} column {p.column} is outside ChessBoard's column range."
-                f"It must be between 0 and {COLUMN_SIZE - 1} inclusive."
-            )
+            raise ColumnOutOfBoundsException(f"{method} {p.column} {ColumnOutOfBoundsException.default_message}")
+
+        if q.row < 0 or q.row >= ROW_SIZE:
+            raise RowOutOfBoundsException(f"{method} {q.row} {RowOutOfBoundsException.default_message}")
+        if q.column < 0 or q.column >= COLUMN_SIZE:
+            raise ColumnOutOfBoundsException(f"{method} {q.column} {ColumnOutOfBoundsException.default_message}")
 
         self._p = p
         self._q = q

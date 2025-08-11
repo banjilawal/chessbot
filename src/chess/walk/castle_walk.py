@@ -7,9 +7,17 @@ from chess.token.chess_piece import ChessPiece
 
 
 class CastleWalk(Walk):
+    """
+    Implementation of Walk interface for ChessPiece holding CastleRank
+    """
 
     @staticmethod
     def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+        """
+        Uses chess.geometry.line.Vertical and chess.geometry.line.Horizontal to
+        test if Castle can legally reach the destination.
+        """
+
         origin = chess_piece.coordinate_stack.current_coordinate()
 
         return (
