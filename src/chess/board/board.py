@@ -1,12 +1,18 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
+from chess.common.chess_exception import ChessException
+from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.board.square_iterator import SquareIterator
 from chess.board.square import Square
 
 if TYPE_CHECKING:
     from chess.token.chess_piece import ChessPiece
+
+
+class CoordinateOutOfBoundsException(ChessException):
+    default_message = f"coordinate is outside bounds of board {ROW_SIZE} x {COLUMN_SIZE} dimensions"
 
 
 class ChessBoard:

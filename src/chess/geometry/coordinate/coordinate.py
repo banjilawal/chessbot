@@ -3,8 +3,20 @@ from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.geometry.coordinate.delta import Delta
 
 
-class CoordinateOutOfBoundsException(ChessException):
-    default_message = "The coordinate is outside the bounds of the ChessBoard rows and columns"
+class CoordinateException(ChessException):
+    default_message = "Invalid Coordinate state"
+
+class RowOutOfRangeException(CoordinateException):
+    default_message = (
+        f"The coordinate row is outside ChessBoard's row range of 0 to {ROW_SIZE - 1} inclusive."
+    )
+
+class ColumnOutOfRangeException(CoordinateException):
+    default_message = (
+        f"The coordinate colum is outside ChessBoard's row range of 0 to {ROW_SIZE - 1} inclusive."
+    )
+
+
 
 class Coordinate:
     _row: int
@@ -44,15 +56,9 @@ class Coordinate:
             )
 
         if row < 0 or row >= ROW_SIZE:
-            raise CoordinateOutOfBoundsException(
-                f"Row index{column} is outside ChessBoard's row range."
-                f"It must be between 0 and {ROW_SIZE - 1} inclusive."
-            )
+            raise RowOutOfRangeException(RowOutOfRangeException.default_message)
         if column < 0 or column >= COLUMN_SIZE:
-            raise CoordinateOutOfBoundsException(
-                f"Row index{column} is outside ChessBoard's column range."
-                f"It must be between 0 and {COLUMN_SIZE - 1} inclusive."
-            )
+            raise ColumnOutOfRangeException(ColumnOutOfRangeException.default_message)
 
         self._row = row
         self._column = column

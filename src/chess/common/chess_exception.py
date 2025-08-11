@@ -26,3 +26,6 @@ class MissingNameException(ChessException):
 
 class NollChessObjectException(ChessException):
     default_message = "object cannot be null"
+
+class NullCoordinateException(ChessException):
+    default_message = "Null Coordinate not allowed"

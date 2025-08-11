@@ -1,5 +1,7 @@
 # `chess.geometry.coordinate` Package Documentation
 
+## Table of Contents
+
 ## 📌 Purpose
 Provides geometric primitives for chess board coordinates:
 - `Coordinate`: Represents board positions (row, column)
