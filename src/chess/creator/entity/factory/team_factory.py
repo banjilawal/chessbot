@@ -51,17 +51,17 @@ def main():
             # for placement in PlacementChart:
             #     square_name = placement.map_chess_piece_to_square_name(captor)
             #     if square_name is not None:
-            #         board = chess_board.find_square_by_name(square_name)
-            #         board(captor)
-            #         print(board)
+            #         chessboard = chess_board.find_square_by_name(square_name)
+            #         chessboard(captor)
+            #         print(chessboard)
     # print(repo)
-                    # print(board.name, " occupied by", board.occupant.name)
+                    # print(chessboard.name, " occupied by", chessboard.occupant.name)
                 # print(placement.value[0])
                 # placement.map_chess_piece_to_square_name(captor)
                 # print("comparing", placement.chess_piece_name.capitalize(), " with", captor.name.capitalize())
                 # captor.name.capitalize() == placement.value[0].capitalize():
 
-       # print(f"matched board:{placement.square_name} with {captor.name}")`````````
+       # print(f"matched chessboard:{placement.square_name} with {captor.name}")`````````
 
 if __name__ == "__main__":
     main()

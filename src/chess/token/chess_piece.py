@@ -79,7 +79,7 @@ class ChessPiece(Token):
         if obstructor is None:
             raise Exception("Cannot add null obstruction.")
         if obstructor.status != MobilityStatus.PRISONER:
-            raise Exception("A prisoner is not on the board it cannot be blocking")
+            raise Exception("A prisoner is not on the chessboard it cannot be blocking")
         if obstructor is self:
             raise Exception("Cannot block self.")
 

@@ -4,7 +4,7 @@ from assurance.validation.chess_piece_specification import ChessPieceSpecificati
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from assurance.validation.validation_exception import ChessPieceValidationException, CoordinateValidationException
 from chess.board.board import ChessBoard
-from chess.exception.null.null import NullChessBoardExcepton
+from chess.exception.null import NullChessBoardExcepton
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 
@@ -196,7 +196,7 @@ class PawnWalk(Walk):
         Raise:
             NullChessPieceException: If chess_piece is null.
             NullCoordinateException: If destination is null.
-            UnplacedChessPieceMoveException: If chess_piece is not on the board. 
+            UnplacedChessPieceMoveException: If chess_piece is not on the chessboard. 
             UnsatisfiedPawnWalkPreConditionException: If there is no vertical relationship between
                 pawn and destination.
         """

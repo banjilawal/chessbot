@@ -2,7 +2,7 @@
 #
 # from assurance.validation.validation_result import ValidationResult
 # from assurance.validation.validation_exception import ValidationException
-# from chess.board.repo.repo import ChessBoard
+# from chess.chessboard.repo.repo import ChessBoard
 #
 #
 # class RepoNotNullValidationFailed(ValidationException):

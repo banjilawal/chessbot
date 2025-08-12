@@ -3,7 +3,7 @@ from typing import Generic, cast
 from assurance.validation.specification import Specification, T
 from assurance.validation.validation_exception import CoordinateValidationException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.null.null import NullCoordinateException
+from chess.exception.null import NullCoordinateException
 from chess.geometry.coordinate.coordinate import Coordinate, RowOutOfBoundsException, ColumnOutOfBoundsException
 
 
@@ -16,7 +16,7 @@ class CoordinateSpecification(Specification):
         """
         Validates a coordinate with chained exceptions for coordinate meeting specifications:
             - Not null
-            - Within the bounds of the chess board
+            - Within the bounds of the chess chessboard
         If either validation fails their exception will be encapsulated in a CoordinateValidationException
             
         Args

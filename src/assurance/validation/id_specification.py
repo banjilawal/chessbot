@@ -2,7 +2,7 @@ from typing import Generic
 
 from assurance.validation.specification import Specification, T
 from chess.exception.negative_id_exception import NegativeIdException
-from chess.exception.null.null import IdNullException
+from chess.exception.null import IdNullException
 
 
 class IdSpecification(Specification):

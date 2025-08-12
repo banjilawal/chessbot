@@ -2,8 +2,8 @@
 #
 # from chess.creator.emit import id_emitter
 # from chess.geometry.coordinate.coordinate import Coordinate
-# from chess.board.square import Square
-# from chess.board.board import ChessBoard
+# from chess.chessboard.square import Square
+# from chess.chessboard.chessboard import ChessBoard
 # from chess.common.config import ROW_SIZE, COLUMN_SIZE
 #
 #

@@ -14,17 +14,7 @@ from chess.board.square import Square
 if TYPE_CHECKING:
     from chess.token.chess_piece import ChessPiece
 
-class ChessBoardException(ChessException):
-    default_message = f"ChessBoard {ChessException.default_message}"
 
-class CoordinateOutOfBoundsException(ChessBoardException):
-    default_message = f"coordinate is outside bounds of board {ROW_SIZE} x {COLUMN_SIZE} dimensions"
-
-class MissingPlacementException(PlacementException):
-    default_message = f"{PlacementException} cannot move ChessPiece that is not on the ChessBoard"
-
-class CapturedPieceMoveException(ChessBoardException):
-    default_message = f"Cannot move ChessPiece that has been captured by an enemy"
 
 
 class ChessBoard:
@@ -32,7 +22,7 @@ class ChessBoard:
     _squares: List[List[Square]]
 
     """
-    ChessBoard is responsible for managing the movement of ChessPieces on the board. Squares and 
+    ChessBoard is responsible for managing the movement of ChessPieces on the chessboard. Squares and 
     ChessPieces are data-holding objects referenced by a Coordinate. The class
     - Maintain the relationship between a ChessPiece and Square.
     - Performs bounds checking.. ChessBoard does not know directly about a ChessPiece. All
@@ -40,7 +30,7 @@ class ChessBoard:
 
     Attributes:
         _idw (int): id of ChessBoard.
-        _squares (List[List[Square]]): 8x8 array of Square objects representing the chess board.
+        _squares (List[List[Square]]): 8x8 array of Square objects representing the chess chessboard.
     """
 
     def __init__(self, board_id: int, squares: List[List[Square]]):
@@ -96,7 +86,7 @@ class ChessBoard:
             delta: The direction of the iteration.
             
         Returns:
-            SquareIterator: An iterator instance for traversing the board.
+            SquareIterator: An iterator instance for traversing the chessboard.
             
         Raises:
             CoordinateValidationException: If index fails at least one specification message
@@ -196,8 +186,8 @@ class ChessBoard:
             destination (Coordinate): The Coordinate of the destination square.
             
         Raises:
-            Exception: If chess_piece is None, if chess_piece is not on the board, if
-            destination is not on the board, or if the destination square is occupied by a friend.
+            Exception: If chess_piece is None, if chess_piece is not on the chessboard, if
+            destination is not on the chessboard, or if the destination square is occupied by a friend.
         """
 
         if not ChessPieceSpecification.is_satisfied_by(chess_piece):
@@ -342,7 +332,7 @@ class ChessBoard:
 
     def __str__(self) -> str:
         """
-        Provides a string representation of the board, showing pieces or square names.
+        Provides a string representation of the chessboard, showing pieces or square names.
 
         If a square is occupied, it shows the chess piece's name.
         If a square is vacant, it shows the square's name in brackets.

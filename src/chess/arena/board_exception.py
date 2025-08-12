@@ -11,7 +11,7 @@ class MissingBoardException(BoardException):
     default_message = "ObsoleteChessBoard does not exist.Passing null chess_board not allowed."
 
 class MissingGridException(BoardException):
-    default_message = "The ObsoleteChessBoard has no board of squares. Passing null board not allowed."
+    default_message = "The ObsoleteChessBoard has no chessboard of squares. Passing null chessboard not allowed."
 
 class ArrayDimensionException(BoardException):
     default_message = f"Grid violates the {ROW_SIZE}x{COLUMN_SIZE} chess_board requirement"

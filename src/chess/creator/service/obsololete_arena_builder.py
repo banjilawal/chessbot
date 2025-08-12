@@ -48,9 +48,9 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
     #         for placement in PlacementChart:
     #             square_name = placement.map_chess_piece_to_square_name(captor)
     #             if square_name is not None:
-    #                 board = chess_board.find_square_by_name(square_name)
-    #                 board.occupy(captor)
-    #                 print(board)
+    #                 chessboard = chess_board.find_square_by_name(square_name)
+    #                 chessboard.occupy(captor)
+    #                 print(chessboard)
 
 #
 #

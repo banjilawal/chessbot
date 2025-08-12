@@ -1,4 +1,4 @@
-from chess.exception.null.null import NullException
+from chess.exception.null import NullException
 
 
 class NullSquareException(NullException):

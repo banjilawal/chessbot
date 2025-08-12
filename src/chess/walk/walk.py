@@ -7,7 +7,7 @@ from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.chess_piece import ChessPiece
 
 class DestinationUnreachableException(ChessException):
-    default_message = "The destination coordinate is not reachable"
+    default_message = "Unreachable Destination coordinate"
 
 
 class Walk(ABC):
