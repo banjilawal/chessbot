@@ -1,14 +1,19 @@
 from typing import List
 
 from chess.arena.arena import Arena
+from chess.common.chess_exception import ChessException
 from chess.config.placement_chart import PlacementChart
 from chess.token.chess_piece import ChessPiece
 
+class PlacementException(ChessException):
+    default_message = "Placemen failed"
 
 class TeamPlacementManager:
 
     @staticmethod
     def place_teams(arena: Arena):
+        method = "TeamPlacementManager.place_teams"
+
         chess_pieces: List[ChessPiece] = []
         chess_pieces.extend(arena.white_owner.team.chess_pieces)
         chess_pieces.extend(arena.black_owner.team.chess_pieces)

@@ -1,7 +1,11 @@
 from abc import ABC, abstractmethod
 
+from chess.common.chess_exception import ChessException
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.chess_piece import ChessPiece
+
+class DestinationUnreachableException(ChessException):
+    default_message = "The destination coordinate is not reachable"
 
 
 class Walk(ABC):
@@ -16,6 +20,7 @@ class Walk(ABC):
     @staticmethod
     @abstractmethod
     def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+        method = "Walk.is_walkable"
 
         """
         Validates a ChessPiece can reach a destination with its movement constraints. Must be instantiated by

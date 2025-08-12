@@ -1,7 +1,9 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.walk.walk import Walk
+from chess.walk.walk import Walk, DestinationUnreachableException
 from chess.token.chess_piece import ChessPiece
 
+class KnightWalkException(DestinationUnreachableException):
+    default_message = f"KnightRank {DestinationUnreachableException.default_message}"
 
 class KnightWalk(Walk):
     """
@@ -21,4 +23,6 @@ class KnightWalk(Walk):
         col_diff = abs(origin.column - destination.column)
 
         # A KnightRank's move is always (2,1) or (1,2) in terms of row/column difference
-        return (row_diff == 2 and col_diff == 1) or (row_diff == 1 and col_diff == 2)
+        if not (row_diff == 2 and col_diff == 1) or (row_diff == 1 and col_diff == 2):
+            raise KnightWalkException(KnightWalkException.default_message)
+        return True

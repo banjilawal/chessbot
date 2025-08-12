@@ -48,7 +48,7 @@ Tests if `ChessPiece` instance can reach a destination with constraints on motio
 title Relationships Between Classes in Walk Package
 
 Interface Walk {
-  + is_walkable(chess_piece: ChessPiece, destination: Coordinate): bool
+ + is_walkable(chess_piece: ChessPiece, destination: Coordinate): bool
 }
 
 Class KingWalk {}
@@ -56,9 +56,10 @@ Class QueenWalk {}
 Class KnightWalk {}
 Class BishopWalk {}
 Class CastleWalk {}
+
 Class PawnWalk {
-  - can_advance(chess_piece: ChessPiece, destination: Coordinate): bool
-  - can_attack(chess_piece: ChessPiece, destination: Coordinate): bool
+ - can_advance(chess_piece: ChessPiece, destination: Coordinate): bool
+ - can_attack(chess_piece: ChessPiece, destination: Coordinate): bool
 }
 
 Walk <-left- KingWalk
@@ -69,7 +70,6 @@ Walk <-up- CastleWalk
 
 Walk <-Down- KnightWalk
 Walk <-Down- PawnWalk
-
 @enduml
 ```
 
@@ -112,4 +112,19 @@ if not chess_piece.rank.is_walkable(chess_piece, destination):
     )
 chess_board.capture_square(chess_piece, destination)
 ```
+## Class Exceptions
+Exceptions for tracing source of exceptions with a `Walk` contractors.
 
+ - `DestiantionUnreachableException`: Thrown when an attempt to walk to a destination fails.
+ - `QueenWalkException(DestinationUnreachableException)`
+ - `KnightWalkException(DestinationUnreachableException)`
+ - `KingWalkException(DestinationUnreachableException)`
+ - `BishopWalkException(DestinationUnreachableException)`
+ - `CastleWalkException(DestinationUnreachableException)`
+
+### Pawn Exceptions
+Its helpful to have exceptions for specific PawnWalk failures
+ - `PawnWalkException(DestinationUnreachableException)`: Helpful to have a hierarchy of pawn exceptions
+ - `PawnAdvanceException(PawnWalkException)`
+ - `PawnAttackException(PawnWalkException)`
+ - `UnsatisfiedPawnWalkPreConditionException(PawnWalkException)`

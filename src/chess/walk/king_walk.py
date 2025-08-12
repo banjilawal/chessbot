@@ -1,7 +1,10 @@
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.walk.walk import Walk
+from chess.walk.knight_walk import KnightWalkException
+from chess.walk.walk import Walk, DestinationUnreachableException
 from chess.token.chess_piece import ChessPiece
 
+class KingWalkException(DestinationUnreachableException):
+    default_message = f"KingRank {DestinationUnreachableException.default_message}"
 
 class KingWalk(Walk):
     """
@@ -16,7 +19,9 @@ class KingWalk(Walk):
 
         origin = chess_piece.coordinate_stack.current_coordinate()
 
-        return (
+        if not (
             abs(origin.row - destination.row) == 1 and
             abs(origin.column - destination.column) == 1
-        )
+        ):
+            raise KingWalkException(KnightWalkException.default_message)
+        return True

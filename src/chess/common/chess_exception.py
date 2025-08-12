@@ -32,3 +32,9 @@ class NullCoordinateException(NullChessObjectException):
 
 class NullDeltaException(NullChessObjectException):
     default_message = "Null Delta not allowed"
+
+class NullChessPieceException(NullChessObjectException):
+    default_message = "Null ChessPiece not allowed"
+
+class NullCoordinateStackException(NullChessObjectException):
+    default_message = "Null CoordinateStack not allowed"
