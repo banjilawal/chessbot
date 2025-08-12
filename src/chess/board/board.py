@@ -1,6 +1,8 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
+from assurance.validation.coordinate_specification import CoordinateSpecification
+from assurance.validation.validation_exception import CoordinateValidationException
 from chess.exception.exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.creator.team_placement_manager import PlacementException
@@ -130,9 +132,9 @@ class ChessBoard:
             CoordinateValidationException: If coordinate is fails any validation checks.
         """
 
-        if 0 <= coordinate.row < len(self._squares) and 0 <= coordinate.column < len(self._squares[0]):
-            return self._squares[coordinate.row][coordinate.column]
-        return None
+        if not CoordinateSpecification.is_satisfied_by(coordinate):
+            raise CoordinateValidationException(CoordinateValidationException.default_message)
+        return self._squares[coordinate.row][coordinate.column]
 
 
     def find_square_by_name(self, name: str) -> Optional[Square]:
@@ -162,12 +164,18 @@ class ChessBoard:
     def find_chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
         method = f"ChessBoard.find_chess_piece"
 
-        if coordinate is None:
-            raise Exception(f"{method} Cannot find a chess piece with a null coordinate")
-        if coordinate.row < 0 or coordinate.row >= len(self._squares):
-            raise Exception(f"{method} find_chess_piece: coordinate row {coordinate.row} is out of range")
-        if coordinate.column < 0 or coordinate.column >= len(self._squares[0]):
-            raise Exception(f"{method} find_chess_piece: coordinate column {coordinate.column} is out of range")
+        """" 
+        Finds a ChessPiece if it exists at the Coordinate. 
+
+        Args:
+            coordinate (Coordinate): The coordinate of the ChessPiece to find.      
+
+        Returns:    
+            Optional[ChessPiece] The ChessPiece if found at the coordinate otherwise None.
+
+        Raises: 
+            CoordinateValidationException: If coordinate is fails any validation checks.
+        """
 
         return  self.find_square_by_coordinate(coordinate).occupant
 
