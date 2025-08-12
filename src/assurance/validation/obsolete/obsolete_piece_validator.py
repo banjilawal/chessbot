@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from assurance.validation.validation_result import ValidationResult
+from assurance.validation.obsolete.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.token.mobility_status import MobilityStatus
 from chess.rank.promotable.king_rank import KingRank
@@ -19,7 +19,7 @@ class ChessPieceOnBoardValidationFailed(ValidationException):
     default_message = "ChessPiece failed on chess_board validation test"
 
 
-class ChessPieceValidator:
+class ObsoleteChessPieceValidator:
 
     @staticmethod
     def not_null_test(chess_piece: ChessPiece) -> ValidationResult[ChessPiece]:
@@ -31,7 +31,7 @@ class ChessPieceValidator:
 
     @staticmethod
     def is_movable_test(chess_piece: ChessPiece) -> ValidationResult[ChessPiece]:
-        test_report = ChessPieceValidator.not_null_test(chess_piece)
+        test_report = ObsoleteChessPieceValidator.not_null_test(chess_piece)
 
         if test_report.payload is None:
              return ValidationResult.send_failed_valtidation_report(
@@ -46,7 +46,7 @@ class ChessPieceValidator:
 
     @staticmethod
     def is_promotable_test(chess_piece: 'ChessPiece') -> ValidationResult[ChessPiece]:
-        test_report = ChessPieceValidator.not_null_test(chess_piece)
+        test_report = ObsoleteChessPieceValidator.not_null_test(chess_piece)
 
         if test_report.payload is None:
             return ValidationResult.send_failed_valtidation_report(
@@ -69,8 +69,8 @@ class ChessPieceValidator:
 
     @staticmethod
     def target_is_capturable_test(captor: 'ChessPiece', target: 'ChessPiece') -> ValidationResult[ChessPiece]:
-        captor_test_report = ChessPieceValidator.not_null_test(captor)
-        target_test_report = ChessPieceValidator.not_null_test(target)
+        captor_test_report = ObsoleteChessPieceValidator.not_null_test(captor)
+        target_test_report = ObsoleteChessPieceValidator.not_null_test(target)
 
         if captor_test_report.payload is None or target_test_report.payload is None:
             return ValidationResult.send_failed_valtidation_report(
@@ -98,14 +98,14 @@ class ChessPieceValidator:
 
     @staticmethod
     def is_starting_square_placeable(piece: 'ChessPiece') -> ValidationResult[ChessPiece]:
-        not_null_report = ChessPieceValidator.not_null_test(piece)
+        not_null_report = ObsoleteChessPieceValidator.not_null_test(piece)
         if not_null_report.payload is None:
             return ValidationResult(payload=None,
                 validationException=ChessPieceOnBoardValidationFailed(not_null_report.validation_exception.message)
             )
 
         test_payload = not_null_report.payload
-        not_movable_report = ChessPieceValidator.is_movable_test(test_payload)
+        not_movable_report = ObsoleteChessPieceValidator.is_movable_test(test_payload)
         if not_movable_report.payload is None:
             return ValidationResult.send_failed_valtidation_report(
                 ChessPieceOnBoardValidationFailed(not_movable_report.validation_exception.message))

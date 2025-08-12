@@ -1,4 +1,4 @@
-# `chess.geometry.coordinate` Package Documentation
+# `chess.boarrd` Package Documentation
 
 ## Table of Contents
 - [📌 Purpose](#-purpose)

@@ -1,7 +1,7 @@
 from enum import Flag, auto
 from typing import Optional, TypeVar, Generic
 
-from assurance.validation.validation_result import ValidationResult
+from assurance.validation.obsolete.validation_result import ValidationResult
 
 T = TypeVar('T')
 

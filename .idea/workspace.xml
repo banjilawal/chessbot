@@ -5,7 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation/coordinate_validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/obsolete_id_validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/validation_exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation/validatio_exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/board/board_pkg_info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/exception/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/exception/exception_pkg_info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/exception/null_exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/obsolete_piece_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/player_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/player_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/square_repo_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/square_repo_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validation_exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validation_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/validation_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/board_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/board_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/chess_exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/cartesian_distance.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/cartesian_distance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_pk_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_pk_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/delta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/walk.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +60,12 @@
     &quot;assignee&quot;: &quot;banjilawal&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:/banjilawal/chessbot.git",
-    "accountId": "6e47f767-25d6-4d8f-810a-8394097bb1c3"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:/banjilawal/chessbot.git&quot;,
+    &quot;accountId&quot;: &quot;6e47f767-25d6-4d8f-810a-8394097bb1c3&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -69,7 +101,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/creator/entity/factory",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validation",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -94,18 +126,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validation" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\creator\entity\factory" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\team" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\arena" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\engine\analyze" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\game" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validation/obsolete" />
+      <recent name="$PROJECT_DIR$/src/chess/exception" />
+      <recent name="$PROJECT_DIR$/src/chess/common/exception" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\owner" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\team" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\board" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\rank" />
     </key>
   </component>
   <component name="RunManager" selected="Python.driver">
@@ -284,6 +316,7 @@
       <workItem from="1754751191536" duration="38546000" />
       <workItem from="1754798156010" duration="61221000" />
       <workItem from="1754877671637" duration="19157000" />
+      <workItem from="1754969960971" duration="5084000" />
     </task>
     <servers />
   </component>

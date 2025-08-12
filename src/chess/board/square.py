@@ -1,6 +1,9 @@
 from typing import Optional, TYPE_CHECKING
+
+from assurance.validation.obsolete.obsolete_id_validator import ObsoleteIdValidator
+from assurance.validation.validatio_exception import IdValidationException, CoordinateValidationException
+from chess.exception.null_exception import NullNameException
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.board.occupation_status import OccupationStatus
 
 if TYPE_CHECKING:
     from chess.token.chess_piece import ChessPiece
@@ -11,11 +14,46 @@ class Square:
     _coordinate: Coordinate
     _occupant: Optional['ChessPiece']
 
-    def __init__(self, square_id: int, name: str, coord: Coordinate):
+    """
+    Square is a data-holding object that can store a ChessPiece. Ideally would have no public setters.
+    That is difficult in Python. ChessBoard does not know directly about a ChessPiece.
+    All fields are immutable.
+
+    Attributes:
+        _id (int): unique identifier for the square.
+        _name (str): Name of square in Chess notation (e.g. "A1", "B2").
+        _coordinate (Coordinate): Coordinate of the square on the ChessBoard.
+        _occupant (ChessPiece): The ChessPiece occupying the square, if any.
+    """
+
+    def __init__(self, square_id: int, name: str, coordinate: Coordinate):
+        method = "Square.__init__()"
+
+        """
+        Creates a Square instance
+
+        Args:
+            square_id (int): id of the square, unique across the ChessBoard.
+            name (str): name of the square in Chess notation (e.g. "A1", "B2").
+            coordinate (Coordinate): coordinate of the square on the ChessBoard
+
+        Raise:
+            NullNameException: If name is null
+            IdValidationException: If id fails validation checks for non-null and positive.
+            CoordinateValidationException: If coordinate is null, its row or colum are out of bounds
+        """
+
+        if name is None:
+            raise NullNameException(NullNameException.default_message)
+        if not ObsoleteIdValidator.is_valid(id):
+            raise IdValidationException(IdValidationException.default_message)
+        if not CoordinateValidator.is_valid(coordinate):
+            raise CoordinateValidationException(CoordinateValidationException.default_message)
+
         self._id = square_id
         self._name = name
         self._occupant = None
-        self._coordinate = coord
+        self._coordinate = coordinate
 
     @property
     def id(self) -> int:

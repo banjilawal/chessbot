@@ -1,4 +1,4 @@
-from chess.common.chess_exception import ChessException
+from chess.exception.exception import ChessException
 
 
 class SquareException(ChessException):

@@ -1,7 +1,5 @@
-from typing import TYPE_CHECKING
-
 from chess.board.board import UnplacedChessPieceMoveException
-from chess.common.chess_exception import NullCoordinateException, NullChessPieceException, NullCoordinateStackException
+from chess.exception.exception import NullCoordinateException, NullChessPieceException, NullCoordinateStackException
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical

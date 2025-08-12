@@ -1,4 +1,4 @@
-from chess.common.chess_exception import NullChessObjectException, NullChessObjectException
+from chess.exception.exception import NullChessObjectException
 
 
 class Delta:

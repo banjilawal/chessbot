@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from chess.common.chess_exception import ChessException
+from chess.exception.exception import ChessException
 from chess.team.team import Team
 
 

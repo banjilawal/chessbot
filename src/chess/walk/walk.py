@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from chess.common.chess_exception import ChessException
+from chess.exception.exception import ChessException
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.chess_piece import ChessPiece
 

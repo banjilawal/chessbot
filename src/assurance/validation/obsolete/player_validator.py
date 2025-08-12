@@ -1,6 +1,6 @@
 from typing import Optional
 
-from assurance.validation.validation_result import ValidationResult
+from assurance.validation.obsolete.validation_result import ValidationResult
 from assurance.validation.validation_exception import ValidationException
 from chess.owner.owner import Player
 
@@ -8,7 +8,7 @@ from chess.owner.owner import Player
 class PlayerNotNUllValidationFailed(ValidationException):
     default_message = "Player failed not null validation test"
 
-class PlayerValidator:
+class ObsoletePlayerValidator:
 
     @staticmethod
     def not_null_test(player: Optional[Player]) -> ValidationResult[Player]:

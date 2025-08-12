@@ -1,4 +1,4 @@
-from chess.common.chess_exception import ChessException, NullChessObjectException, NullDeltaException
+from chess.exception.exception import ChessException, NullChessObjectException, NullDeltaException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.geometry.coordinate.delta import Delta
 

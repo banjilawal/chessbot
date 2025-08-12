@@ -1,4 +1,4 @@
-from chess.common.chess_exception import NullChessObjectException, NullCoordinateException
+from chess.exception.exception import NullCoordinateException
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
 from chess.geometry.coordinate.coordinate import Coordinate, RowOutOfBoundsException, ColumnOutOfBoundsException
 

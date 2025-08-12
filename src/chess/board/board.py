@@ -1,7 +1,7 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
-from chess.common.chess_exception import ChessException
+from chess.exception.exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.creator.team_placement_manager import PlacementException
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
