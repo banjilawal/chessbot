@@ -3,9 +3,9 @@ from typing import Generic, TypeVar, Optional
 
 T = TypeVar('T')
 
-class Validator(ABC, Generic[T]):
+class Specification(ABC, Generic[T]):
 
     @staticmethod
     @abstractmethod
-    def is_valid(item: Generic[T]) -> bool:
+    def is_satisfied_by(t: Generic[T]) -> bool:
         pass

@@ -1,4 +1,4 @@
-from chess.board.board import UnplacedChessPieceMoveException
+from chess.board.board import UninitializedChessPieceMoveExccption
 from chess.exception.exception import NullCoordinateException, NullChessPieceException, NullCoordinateStackException
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
@@ -159,7 +159,7 @@ class PawnWalk(Walk):
 
         origin = chess_piece.coordinate_stack.current_coordinate()
         if origin is None or chess_piece.coordinate_stack.size() == 0:
-            raise UnplacedChessPieceMoveException(UnplacedChessPieceMoveException.default_message)
+            raise UninitializedChessPieceMoveExccption(UninitializedChessPieceMoveExccption.default_message)
 
         if not Vertical.is_vertical(origin, destination):
             raise UnsatisfiedPawnWalkPreConditionException(

@@ -11,11 +11,17 @@ from chess.board.square import Square
 if TYPE_CHECKING:
     from chess.token.chess_piece import ChessPiece
 
+class ChessBoardException(ChessException):
+    default_message = f"ChessBoard {ChessException.default_message}"
 
-class CoordinateOutOfBoundsException(ChessException):
+class CoordinateOutOfBoundsException(ChessBoardException):
     default_message = f"coordinate is outside bounds of board {ROW_SIZE} x {COLUMN_SIZE} dimensions"
-class UnplacedChessPieceMoveException(PlacementException):
+
+class MissingPlacementException(PlacementException):
     default_message = f"{PlacementException} cannot move ChessPiece that is not on the ChessBoard"
+
+class CapturedPieceMoveException(ChessBoardException):
+    default_message = f"Cannot move ChessPiece that has been captured by an enemy"
 
 
 class ChessBoard:
