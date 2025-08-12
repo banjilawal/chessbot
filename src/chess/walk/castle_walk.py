@@ -2,11 +2,11 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.horizontal import Horizontal
 from chess.geometry.line.vertical import Vertical
-from chess.walk.walk import Walk, DestinationUnreachableException
+from chess.walk.walk import Walk, WalkException
 from chess.token.chess_piece import ChessPiece
 
-class CastleWalkException(DestinationUnreachableException):
-    default_message = f"CastleRank {DestinationUnreachableException.default_message}"
+class CastleWalkException(WalkException):
+    default_message = f"CastleRank {WalkException.default_message}"
 
 class CastleWalk(Walk):
     """

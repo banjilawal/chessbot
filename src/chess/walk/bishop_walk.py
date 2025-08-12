@@ -1,10 +1,10 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
-from chess.walk.walk import Walk, DestinationUnreachableException
+from chess.walk.walk import Walk, WalkException
 from chess.token.chess_piece import ChessPiece
 
-class BishopWalkException(DestinationUnreachableException):
-    default_message = f"BishopRank {DestinationUnreachableException.default_message}"
+class BishopWalkException(WalkException):
+    default_message = f"BishopRank {WalkException.default_message}"
 
 class BishopWalk(Walk):
     """

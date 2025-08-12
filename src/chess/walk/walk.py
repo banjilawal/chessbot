@@ -6,7 +6,7 @@ from chess.exception.negative_id_exception import ChessException
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.chess_piece import ChessPiece
 
-class DestinationUnreachableException(ChessException):
+class WalkException(ChessException):
     default_message = "Unreachable Destination coordinate"
 
 

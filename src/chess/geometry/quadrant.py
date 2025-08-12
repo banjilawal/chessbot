@@ -1,4 +1,5 @@
 
+
 from chess.geometry.coordinate.coordinate import Delta
 from enum import Enum, auto
 from typing import Optional
@@ -52,12 +53,14 @@ class Quadrant(Enum):
             return Quadrant.S
         return Quadrant.N
 
-    def __str__(self):
-        row_id_str = "row_id:{self._row_id" if self._row_id == None
+    def __str__(self) -> str:
+        row_id_str = ""
+        if self in [Quadrant.N, Quadrant.S]:
+            row_id_str = f"self._row_id"
         return (
             f"Quadrant[name:"
             f"{self._name} "
+            f"row_id:{row_id_str}"
             f"forward_step:{self._forward_step} "
             f"]"
-                f""
-                f"")
+        )

@@ -5,7 +5,6 @@ from chess.team.team import Team
 
 class Move:
     _team: Team
-    _team_member: ChessPiece
     _destination: Coordinate
 
     def __init__(self, team: Team, team_member: ChessPiece, destination: Coordinate):

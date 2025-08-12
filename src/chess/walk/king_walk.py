@@ -1,10 +1,10 @@
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.walk.knight_walk import KnightWalkException
-from chess.walk.walk import Walk, DestinationUnreachableException
+from chess.walk.walk import Walk, WalkException
 from chess.token.chess_piece import ChessPiece
 
-class KingWalkException(DestinationUnreachableException):
-    default_message = f"KingRank {DestinationUnreachableException.default_message}"
+class KingWalkException(WalkException):
+    default_message = f"KingRank {WalkException.default_message}"
 
 class KingWalk(Walk):
     """
