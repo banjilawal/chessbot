@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/occupation_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -289,7 +283,7 @@
       <workItem from="1754751191536" duration="38546000" />
       <workItem from="1754798156010" duration="61221000" />
       <workItem from="1754877671637" duration="19157000" />
-      <workItem from="1754969960971" duration="15845000" />
+      <workItem from="1754969960971" duration="16810000" />
     </task>
     <servers />
   </component>

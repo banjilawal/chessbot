@@ -13,6 +13,9 @@ class SquareValidationException(ValidationException):
 class CoordinateValidationException(ValidationException):
     default_message = f"Coordinate {ValidationException.default_message}"
 
+class ChessPieceValidationException(ValidationException):
+    default_message = f"ChessPiece {ValidationException.default_message}"
+
 
 """
 RankValidationException Hierarchy

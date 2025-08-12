@@ -1,8 +1,9 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
+from assurance.validation.chess_piece_specification import ChessPieceSpecification
 from assurance.validation.coordinate_specification import CoordinateSpecification
-from assurance.validation.validation_exception import CoordinateValidationException
+from assurance.validation.validation_exception import CoordinateValidationException, ChessPieceValidationException
 from chess.exception.exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.creator.team_placement_manager import PlacementException
@@ -182,19 +183,32 @@ class ChessBoard:
 
 
     def capture_square(self, chess_piece: 'ChessPiece', destination: Coordinate):
-        """
-        The entry point to the ches
-        """
         method = f"ChessBoard.capture_square"
 
-        if chess_piece is None:
-            raise Exception(f"{method}: chess_piece is None")
+        """
+        The entry point to the ChessBoard for moving a ChessPiece to a new Square.
+        It checks if the destination square is occupied, and if so, whether the occupant is an enemy or a friend.
+        If the destination square is empty, it finalizes the capture by moving the chess_piece to
+        the destination square. If the occupant is a friend, it marks the move as obstructed.
+        If the occupant is an enemy, it captures the occupant and finalizes the capture.
+        Args:
+            chess_piece (ChessPiece): The ChessPiece that is attempting to capture a square.
+            destination (Coordinate): The Coordinate of the destination square.
+            
+        Raises:
+            Exception: If chess_piece is None, if chess_piece is not on the board, if
+            destination is not on the board, or if the destination square is occupied by a friend.
+        """
 
-        if chess_piece.coordinate_stack.current_coordinate() is None:
-            raise Exception(f"{method}: chess_piece cannot move to a location if its not on th board")
+        if not ChessPieceSpecification.is_satisfied_by(chess_piece):
+            raise ChessPieceValidationException(
+                f"{method}: {ChessPieceValidationException.default_message}"
+            )
 
-        if self.find_square_by_coordinate(destination) is None:
-            raise Exception(f"{method}: coordinate {destination} is not on the board")
+        if not CoordinateSpecification.is_satisfied_by(destination):
+            raise CoordinateValidationException(
+                f"{method}: {CoordinateValidationException.default_message}"
+            )
 
         destination_square = self.find_square_by_coordinate(destination)
         target_occupant = destination_square.occupant
@@ -235,6 +249,20 @@ class ChessBoard:
     def _imprison_occupant(self, jailer: 'ChessPiece', prisoner: 'ChessPiece'):
         method = f"ChessBoard._imprison_occupant"
 
+        """        
+            Helper method that handles the steps of capturing a ChessPiece.
+            Sets the captor as the resident of the square, adds the square's coordinates to the captor's
+            stack, and sets the captor's old resident as empty.
+            Also sets the prisoner.captor to the captor.
+      .
+        Args:
+            jailer (ChessPiece): The ChessPiece that is capturing the prisoner.
+            prisoner (ChessPiece): The ChessPiece that is being captured.
+        Raises:
+            ChessBoardException: If the prisoner is None or if the prisoner is already captured.
+            
+        """
+
         self.find_square_by_coordinate(
             prisoner.coordinate_stack.current_coordinate()
         ).occupant = None
@@ -247,13 +275,22 @@ class ChessBoard:
     """
 
     def _finalize_capture(self, captor: 'ChessPiece', destination: Square):
+        method = f"ChessBoard._finalize_capture"
+
         """
         Helper method fthat handles the final steps of a capture.
         Sets the captor as the resident and adds square's coordinates to the captor's
         stack. Sets the captor's old resident as empty.
+        
+        Args:
+            captor (ChessPiece): The ChessPiece that is capturing the destination.
+            destination (Square): The Square that is being captured.
+            
+        Raises:
+            ChessBoardException: If the destination is None or if the captor is None.
         """
 
-        method = f"ChessBoard._finalize_capture"
+
 
         # Remove the captor from their old square. I think its easier to understand
         # because there is less code than if I got the coords first to find the square
