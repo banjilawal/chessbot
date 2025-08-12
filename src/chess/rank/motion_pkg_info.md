@@ -37,9 +37,7 @@ The `motion` package provides the foundational logic and structures needed to de
 ---
 
 ### 2. Walks
-- A **walk** is a defined movement pattern made up of one or more steps in one or more orientations.
-- It may have constraints on step count or sequence.
-- Can be single-step (e.g., King), compound (e.g., Knight), or unbounded (e.g., Bishop).
+
 
 **Examples:**
 - `single_step.py`

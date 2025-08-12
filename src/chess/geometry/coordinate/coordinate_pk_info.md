@@ -36,11 +36,9 @@ class CartesianDistance {
   + distance: int
 }
 
-
 Coordinate "1" *-- "1" Delta : uses for transformation
 Coordinate "1" *-- "2" CartesianDistance : measures between
 @enduml
-
 ```
 
 ## 🧩 Classes
