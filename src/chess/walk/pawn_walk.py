@@ -4,10 +4,9 @@ from assurance.validation.chess_piece_specification import ChessPieceSpecificati
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from assurance.validation.validation_exception import ChessPieceValidationException, CoordinateValidationException
 from chess.board.board import ChessBoard
-from chess.exception.null_exception import NullChessBoardExcepton
+from chess.exception.null.null import NullChessBoardExcepton
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
-from chess.geometry.line.vertical import Vertical
 
 from chess.walk.walk import Walk, DestinationUnreachableException
 from chess.token.chess_piece import ChessPiece

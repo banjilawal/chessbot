@@ -2,7 +2,7 @@ from typing import Generic
 
 from assurance.validation.specification import Specification, T
 from chess.board.board import MissingPlacementException, CapturedPieceMoveException
-from chess.exception.null_exception import NullChessPieceException, NullCoordinateStackException
+from chess.exception.null.null import NullChessPieceException, NullCoordinateStackException
 from chess.token.chess_piece import ChessPiece
 
 

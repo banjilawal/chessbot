@@ -11,7 +11,3 @@ class ChessException(Exception):
         if self.context:
             return f"{self.message} [Context: {self.context}]"
         return self.message
-
-class NegativeIdException(ChessException):
-    """Exception raised when an id is negative"""
-    default_message = "Id cannot be negative"

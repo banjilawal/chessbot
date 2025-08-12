@@ -4,7 +4,7 @@ from typing import List, Optional, TYPE_CHECKING
 from assurance.validation.chess_piece_specification import ChessPieceSpecification
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from assurance.validation.validation_exception import CoordinateValidationException, ChessPieceValidationException
-from chess.exception.exception import ChessException
+from chess.exception.negative_id_exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.creator.team_placement_manager import PlacementException
 from chess.geometry.coordinate.coordinate import Coordinate, Delta

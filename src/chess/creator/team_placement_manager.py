@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.arena.arena import Arena
-from chess.exception.exception import ChessException
+from chess.exception.negative_id_exception import ChessException
 from chess.config.placement_chart import PlacementChart
 from chess.token.chess_piece import ChessPiece
 
