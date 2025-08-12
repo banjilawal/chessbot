@@ -28,7 +28,33 @@ class ChessBoard:
     _id: int
     _squares: List[List[Square]]
 
+    """
+    ChessBoard is responsible for managing the movement of ChessPieces on the board. Squares and 
+    ChessPieces are data-holding objects referenced by a Coordinate. The class
+    - Maintain the relationship between a ChessPiece and Square.
+    - Performs bounds checking.. ChessBoard does not know directly about a ChessPiece. All
+    
+
+    Attributes:
+        _idw (int): id of ChessBoard.
+        _squares (List[List[Square]]): 8x8 array of Square objects representing the chess board.
+    """
+
     def __init__(self, board_id: int, squares: List[List[Square]]):
+        method = "ChessBoard.__init__()"
+
+        """
+        Creates a Board instance
+
+        Args:
+            board_id (int): Unique identifier for the ChessBoard.
+            squares (List[List[Square]]): 2D list of Square objects representing the chess
+
+        Raise:
+            IdValidationException: If id fails validation checks for non-null and positive.
+            NullException: If squares is null
+        """
+
         self._id = board_id
         self._squares = squares
 
@@ -55,23 +81,55 @@ class ChessBoard:
         index: Coordinate = Coordinate(0, 0),
         delta: Delta = Delta(column_delta=1, row_delta=1)
      ) -> SquareIterator:
+
+        method = "ChessBoard.iterator"
+
         """
-        Returns p SquareIterator for traversing the chess_board.
+        Safely creates an iterator for the squares on the ChessBoard.
 
         Args:
+            squares (List[List[Square]]): 2D list of Square objects to iterate through.
             index: The starting coordinate for the iteration.
             delta: The direction of the iteration.
+            
+        Returns:
+            SquareIterator: An iterator instance for traversing the board.
+            
+        Raises:
+            CoordinateValidationException: If index fails at least one specification message
+            NullDeltaException: If delta is None.
         """
+
         return SquareIterator(self._squares, index, delta)
 
     def occupied_squares(self) -> List[Square]:
+        method = "ChessBoard.occupied_squares"
+
         return [square for row in self._squares for square in row if square.occupant is not None]
 
     def empty_squares(self) -> List[Square]:
+        method = "ChessBoard.empty_squares"
+
         return [square for row in self._squares for square in row if square.occupant is None]
 
 
     def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
+        method = "ChessBoard.find_square_by_coordinate"
+
+        """" 
+        Finds a square on the ChessBoard by its coordinate. If coordinate is neither not null
+        or its columns are rows are out of bounds 
+        
+        Args:
+            coordinate (Coordinate): The coordinate of the square to find.      
+            
+        Returns:    
+            Optional[Square]: The Square object if found, otherwise None.
+            
+        Raises: 
+            CoordinateValidationException: If coordinate is fails any validation checks.
+        """
+
         if 0 <= coordinate.row < len(self._squares) and 0 <= coordinate.column < len(self._squares[0]):
             return self._squares[coordinate.row][coordinate.column]
         return None

@@ -1,5 +1,6 @@
-from chess.exception.exception import ChessException, NullChessObjectException, NullDeltaException
+from chess.exception.exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
+from chess.exception.null_exception import NullException, NullDeltaException
 from chess.geometry.coordinate.delta import Delta
 
 
@@ -23,8 +24,8 @@ class Coordinate:
     _column: int
 
     """
-    Coordinate is a tuple of the row, and column indices of the 2x2 array which makes up a ChessBoard.
-    All fields are immutable.
+    Coordinate is a tuple of the row, and column indices of the 2x2 array which makes up a
+    ChessBoard. All fields are immutable.
     
     Attributes:
         _row (int): index of row array position.
@@ -48,11 +49,11 @@ class Coordinate:
         """
 
         if row is None:
-            raise NullChessObjectException(
+            raise NullException(
                 f"{method}: row cannot be null. Coordinate instantiation failed"
             )
         if column is None:
-            raise NullChessObjectException(
+            raise NullException(
                 f"{method}: column cannot be null. Coordinate instantiation failed"
             )
 

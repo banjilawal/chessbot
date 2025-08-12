@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/validation/chess_piece_specification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validation/rank_specification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validation/walk_specification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/coordinate_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/coordinate_specification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/id_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/id_specification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validatio_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/validation_exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/specification.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/occupation_status.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +288,7 @@
       <workItem from="1754751191536" duration="38546000" />
       <workItem from="1754798156010" duration="61221000" />
       <workItem from="1754877671637" duration="19157000" />
-      <workItem from="1754969960971" duration="11979000" />
+      <workItem from="1754969960971" duration="13831000" />
     </task>
     <servers />
   </component>

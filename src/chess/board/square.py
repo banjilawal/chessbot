@@ -2,8 +2,8 @@ from typing import Optional, TYPE_CHECKING
 
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from assurance.validation.id_specification import IdSpecification
-from assurance.validation.obsolete.obsolete_id_validator import ObsoleteIdValidator
 from assurance.validation.validation_exception import IdValidationException, CoordinateValidationException
+
 from chess.exception.null_exception import NullNameException
 from chess.geometry.coordinate.coordinate import Coordinate
 
