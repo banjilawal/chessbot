@@ -1,3 +1,6 @@
+from typing import Optional
+
+from chess.board.board import ChessBoard
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.walk.bishop_walk import BishopWalk
 from chess.walk.castle_walk import CastleWalk
@@ -13,7 +16,11 @@ class QueenWalk(Walk):
     """
 
     @staticmethod
-    def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+    def is_walkable(
+        chess_piece: ChessPiece,
+        destination: Coordinate,
+        chess_board: Optional[ChessBoard] = None
+    ) -> bool:
         # Queen movement combines Rook and Bishop movement.
         # Return true if chess_piece wants to move either way.
 

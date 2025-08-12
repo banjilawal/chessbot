@@ -25,5 +25,5 @@ class NullCoordinateStackException(NullException):
 class NullSquareException(NullException):
     default_message = f"Square {NullException.default_message}"
 
-class NullBoardException(NullException):
-    default_message = f"Square {NullException.default_message}"
+class NullChessBoardExcepton(NullException):
+    default_message = f"ChessBoard {NullException.default_message}"

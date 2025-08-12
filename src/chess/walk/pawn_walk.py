@@ -1,5 +1,10 @@
-from chess.board.board import UninitializedChessPieceMoveExccption
-from chess.exception.exception import NullCoordinateException, NullChessPieceException, NullCoordinateStackException
+from typing import Optional
+
+from assurance.validation.chess_piece_specification import ChessPieceSpecification
+from assurance.validation.coordinate_specification import CoordinateSpecification
+from assurance.validation.validation_exception import ChessPieceValidationException, CoordinateValidationException
+from chess.board.board import ChessBoard
+from chess.exception.null_exception import NullChessBoardExcepton
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.line.diagonal import Diagonal
 from chess.geometry.line.vertical import Vertical
@@ -25,7 +30,11 @@ class PawnWalk(Walk):
     """
 
     @staticmethod
-    def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+    def is_walkable(
+        chess_piece: ChessPiece,
+        destination: Coordinate,
+        chess_board: Optional[ChessBoard] = None
+    ) -> bool:
         method="PawnWalk.is_walkable"
 
         """
@@ -34,6 +43,49 @@ class PawnWalk(Walk):
             - Pawn attacking
         """
 
+        if chess_board is None:
+            raise NullChessBoardExcepton(f"{method} {NullChessBoardExcepton.default_message}")
+
+        origin = chess_piece.coordinate_stack.current_coordinate()
+
+        row_diff = destination.row - origin.row
+        column_diff = abs(destination.column - origin.column)
+
+        black_pawn_attack_squares = [
+            chess_board.find_square_by_coordinate(Coordinate(origin.row + 1, origin.column - 1)),
+            chess_board.find_square_by_coordinate(Coordinate(origin.row + 1, origin.column + 1))
+        ]
+
+        white_pawn_attack_squares = [
+            chess_board.find_square_by_coordinate(Coordinate(origin.row - 1, origin.column - 1)),
+            chess_board.find_square_by_coordinate(Coordinate(origin.row - 1, origin.column + 1))
+        ]
+
+        if column_diff > 1:
+            raise PawnWalkException(
+                f"{method} {chess_piece.name} cannot walk to {destination} "
+                f"the destination is more than one column away from origin {origin}"
+            )
+        if abs(row_diff) > 2:
+            raise PawnWalkException(
+                f"{method} {chess_piece.name} cannot walk to {destination} "
+                f"the destination is more than two rows away from origin {origin}"
+            )
+        if row_diff == 2 and chess_piece.coordinate_stack.size() > 1:
+            raise PawnWalkException(
+                f"{method} {chess_piece.name} cannot walk to {destination} "
+                f"the destination is two rows away from origin {origin} "
+                f"but the pawn has already moved"
+            )
+        if (row_diff == 1 and column_diff == 1 and
+                chess_piece.team.color == "BLACK" and
+                destination not in black_pawn_attack_coords):
+
+            raise PawnWalkException(
+                f"{method} {chess_piece.name} cannot walk to {destination} "
+                f"the destination is one row and one column away from origin {origin} "
+                f"this is not a legal pawn attack"
+            )
         quadrant = chess_piece.team.home_quadrant
         delta = quadrant.delta
         print(f"Pawn {chess_piece.name} quadrant:")
@@ -150,22 +202,15 @@ class PawnWalk(Walk):
                 pawn and destination.
         """
 
-        if destination is None:
-            raise NullCoordinateException(f"{method} {NullCoordinateException.default_message}")
-        if chess_piece is None:
-            raise NullChessPieceException(f"{method} {NullChessPieceException.default_message}")
-        if chess_piece.coordinate_stack is None:
-            raise NullCoordinateStackException(f"{method} {NullCoordinateStackException.default_message}")
-
-        origin = chess_piece.coordinate_stack.current_coordinate()
-        if origin is None or chess_piece.coordinate_stack.size() == 0:
-            raise UninitializedChessPieceMoveExccption(UninitializedChessPieceMoveExccption.default_message)
-
-        if not Vertical.is_vertical(origin, destination):
-            raise UnsatisfiedPawnWalkPreConditionException(
-                f"{method} Pawn {chess_piece.name} cannot advance to non-vertical destination"
+        if not CoordinateSpecification.is_satisfied_by(destination):
+            raise CoordinateValidationException(
+                f"{method} {CoordinateValidationException.default_message}"
             )
 
+        if not ChessPieceSpecification.is_satisfied_by(chess_piece):
+            raise ChessPieceValidationException(
+                f"{method} {ChessPieceValidationException.default_message}"
+            )
         return True
 
 

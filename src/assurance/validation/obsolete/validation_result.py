@@ -1,7 +1,4 @@
-from enum import Enum, auto
-from typing import Optional, T, Generic, TypeVar
-
-from assurance.validation.validation_exception import ValidationException
+from typing import TypeVar
 
 T = TypeVar('T')
 

@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assurance/validation/rank_validation_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/coordinate_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/coordinate_specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/validation_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/validation_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/validation_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/validation_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/null_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/queen_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/queen_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/walk.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,43 +51,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.arena_builder.executor": "Run",
-    "Python.board_controller_builder.executor": "Run",
-    "Python.chess_board_builder (1).executor": "Run",
-    "Python.chess_board_builder.executor": "Run",
-    "Python.chess_piece_builder.executor": "Run",
-    "Python.coordinate_specification.executor": "Debug",
-    "Python.driver.executor": "Run",
-    "Python.motion_controller_builder.executor": "Run",
-    "Python.motion_controller_factory (1).executor": "Run",
-    "Python.motion_controller_factory.executor": "Run",
-    "Python.owner_builder.executor": "Run",
-    "Python.owner_factory.executor": "Run",
-    "Python.rank_builder.executor": "Run",
-    "Python.rank_factory.executor": "Run",
-    "Python.square_repo_builder.executor": "Run",
-    "Python.square_service_builder.executor": "Run",
-    "Python.team_builder.executor": "Run",
-    "Python.team_factory (1).executor": "Run",
-    "Python.team_factory.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validation",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.arena_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.board_controller_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chess_board_builder (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chess_board_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chess_piece_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coordinate_specification.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.driver.executor&quot;: &quot;Run&quot;,
+    &quot;Python.motion_controller_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.motion_controller_factory (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.motion_controller_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.owner_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.owner_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rank_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rank_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.square_repo_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.square_service_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_factory (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_factory.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/assurance/validation&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings sdk-home="$USER_HOME$/AppData/Local/Programs/Python/Python313/python.exe">
@@ -100,11 +110,11 @@
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\engine\analyze" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assurance/validation/obsolete" />
+      <recent name="$PROJECT_DIR$/src/assurance/validation" />
       <recent name="$PROJECT_DIR$/src/chess/exception" />
+      <recent name="$PROJECT_DIR$/src/assurance/validation/obsolete" />
       <recent name="$PROJECT_DIR$/src/chess/common/exception" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\owner" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess" />
     </key>
   </component>
   <component name="RunManager" selected="Python.coordinate_specification">
@@ -283,7 +293,8 @@
       <workItem from="1754751191536" duration="38546000" />
       <workItem from="1754798156010" duration="61221000" />
       <workItem from="1754877671637" duration="19157000" />
-      <workItem from="1754969960971" duration="16810000" />
+      <workItem from="1754969960971" duration="22804000" />
+      <workItem from="1755005192125" duration="2704000" />
     </task>
     <servers />
   </component>
