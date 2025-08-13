@@ -1,4 +1,4 @@
-from chess.exception.negative_id_exception import NullChessObjectException
+from chess.exception.null.null import NullException
 
 
 class Delta:
@@ -30,11 +30,11 @@ class Delta:
         """
 
         if row_delta is None:
-            raise NullChessObjectException(
+            raise NullException(
                 f"{method}: row_delta cannot be null. Delta instantiation failed"
             )
         if column_delta is None:
-            raise NullChessObjectException(
+            raise NullException(
                 f"{method}: column_delta cannot be null. Delta instantiation failed"
             )
 
@@ -83,7 +83,7 @@ class Delta:
         """
 
         if scalar is None:
-            raise NullChessObjectException(
+            raise NullException(
                 f"{method}: cannot be executed. "
                 f"Cannot multiply Delta object {self.__str__} "
                 f"by null scalar"

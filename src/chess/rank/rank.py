@@ -9,7 +9,6 @@ class Rank(ABC):
     _name: str
     _letter: str
     _walk: Walk
-    # _explorer: Explorer
     _capture_value: int
     _number_per_team: int
     _territories: List[Quadrant]
@@ -64,11 +63,6 @@ class Rank(ABC):
     @property
     def walk(self) -> Walk:
         return self._walk
-    #
-    #
-    # @property
-    # def explorer(self) -> Explorer:
-    #     return self._explorer
 
 
     def __eq__(self, other):

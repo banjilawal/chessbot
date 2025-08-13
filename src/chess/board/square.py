@@ -3,8 +3,8 @@ from typing import Optional, TYPE_CHECKING
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from assurance.validation.id_specification import IdSpecification
 from assurance.validation.validation_exception import IdValidationException, CoordinateValidationException
+from chess.exception.null.name_null import NullNameException
 
-from chess.exception.null import NullNameException
 from chess.geometry.coordinate.coordinate import Coordinate
 
 if TYPE_CHECKING:
@@ -48,7 +48,7 @@ class Square:
         if name is None:
             raise NullNameException(NullNameException.default_message)
 
-        if not IdSpecification.is_satisfied_by(id):
+        if not IdSpecification.is_satisfied_by(square_id):
             raise IdValidationException(IdValidationException.default_message)
 
         if not CoordinateSpecification.is_satisfied_by(coordinate):

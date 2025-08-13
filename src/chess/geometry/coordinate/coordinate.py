@@ -1,21 +1,10 @@
 from chess.exception.negative_id_exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.null import NullException, NullDeltaException
+from chess.exception.null.delta_null import NullDeltaException
+from chess.exception.null.null import NullException
 from chess.geometry.coordinate.delta import Delta
 
 
-class CoordinateException(ChessException):
-    default_message = "Invalid Coordinate state"
-
-class RowOutOfBoundsException(CoordinateException):
-    default_message = (
-        f"The coordinate row is outside ChessBoard's row range of 0 to {ROW_SIZE - 1} inclusive."
-    )
-
-class ColumnOutOfBoundsException(CoordinateException):
-    default_message = (
-        f"The coordinate colum is outside ChessBoard's row range of 0 to {ROW_SIZE - 1} inclusive."
-    )
 
 
 

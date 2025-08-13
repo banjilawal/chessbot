@@ -1,8 +1,11 @@
-from typing import Generic
+from typing import Generic, cast
 
 from assurance.validation.specification import Specification, T
-from chess.board.board import MissingPlacementException, CapturedPieceMoveException
-from chess.exception.null import NullChessPieceException, NullCoordinateStackException
+from assurance.validation.validation_exception import ChessPieceValidationException
+from chess.exception.move.empty_stack_chess_piece import EmptyStackChessPieceMoveException
+from chess.exception.move.move import CapturedPieceMoveException
+from chess.exception.null.coordinate_stack_null import NullCoordinateStackException
+from chess.exception.null.null import NullException
 from chess.token.chess_piece import ChessPiece
 
 
@@ -10,6 +13,12 @@ class ChessPieceSpecification(Specification):
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> bool:
         pass
+
+class PromotionSpecification(ChessPieceSpecification):
+    @staticmethod
+    def is_satisfied_by(t: Generic[T]) -> bool:
+        pass
+
 
 class MoveSpecification(ChessPieceSpecification):
 
@@ -22,30 +31,46 @@ class MoveSpecification(ChessPieceSpecification):
         Raises exceptions if the chess piece is null, not a ChessPieceSpecification, has no coordinate
         """
 
-        if t is None:
-            raise NullChessPieceException(f"{method} {NullChessPieceException.default_message}")
+        try:
+            if t is None:
+                print("t was null")
+                raise NullException(
+                    f"{method} NullException.default_message"
+                )
 
-        if not isinstance(t, ChessPieceSpecification):
-            raise TypeError(f"Expected a ChessPieceSpecification, got {type(t).__name__}")
+            if not isinstance(t, ChessPiece):
+                print("t is not a ChessPiece")
+                raise TypeError(f"{method} Expected a Coordinate, got {type(t).__name__}")
 
-        chess_piece = ChessPiece(t)
-        # Implement specific validation logic for chess piece movement here
+            chess_piece = cast(ChessPiece, t)
 
-        if chess_piece.coordinate_stack is None:
-            raise NullCoordinateStackException(f"{method} {NullCoordinateStackException.default_message}")
+            if chess_piece.coordinate_stack is None:
+                print(f"{chess_piece.name} has a null stack")
+                raise NullCoordinateStackException(
+                    f"{method} {NullCoordinateStackException.default_message}"
+                )
 
-        if chess_piece.coordinate_stack.is_empty():
-            raise MissingPlacementException(
-                f"{method} {MissingPlacementException.default_message}"
-            )
+            if chess_piece.coordinate_stack.is_empty():
+                print(f"{chess_piece.name}  coordinate stack is empty")
+                raise EmptyStackChessPieceMoveException(
+                    f"{method} {EmptyStackChessPieceMoveException.default_message}"
+                )
 
-        if chess_piece.captor is not None:
-            raise CapturedPieceMoveException(f"{method} {CapturedPieceMoveException.default_message}")
+            if chess_piece.captor is not None:
+                print(f"{chess_piece.name} cannot move captured by {chess_piece.captor.name}")
+                raise CapturedPieceMoveException(
+                    f"{method} {CapturedPieceMoveException.default_message}"
+                )
 
-        return True
+            return True
 
-class PromotionSpecification(ChessPieceSpecification):
-    @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> bool:
-        pass
-
+        except (
+            TypeError,
+            NullException,
+            CapturedPieceMoveException,
+            NullCoordinateStackException,
+            EmptyStackChessPieceMoveException,
+        ) as e:
+            print("Unknown exception")
+            raise ChessPieceValidationException(
+                f"{method} ChessPieceValidationException.default_message: {str(e)}") from e

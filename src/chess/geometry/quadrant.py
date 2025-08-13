@@ -18,11 +18,11 @@ class Quadrant(Enum):
         obj._row_id = row_id
         return obj
 
-    N = (Delta(column_delta=0, row_delta=1), auto(), "north", 1, 0)
+    N = (Delta(column_delta=0, row_delta=1), auto(), "north", -1, 0)
     NE = (Delta(column_delta=1, row_delta=1), auto(), "northeast")
     E = (Delta(column_delta=1, row_delta=0), auto(), "east")
     SE = (Delta(column_delta=1, row_delta=-1), auto(), "southeast")
-    S = (Delta(column_delta=0, row_delta=-1), auto(), "south", -1, BOARD_DIMENSION - 1)
+    S = (Delta(column_delta=0, row_delta=-1), auto(), "south", 1, BOARD_DIMENSION - 1)
     SW = (Delta(column_delta=-1, row_delta=-1), auto(), "southwest")
     W = (Delta(column_delta=-1, row_delta=0), auto(), "west")
     NW = (Delta(column_delta=-1, row_delta=1), auto(), "northwest")

@@ -3,8 +3,10 @@ from typing import Generic, cast
 from assurance.validation.specification import Specification, T
 from assurance.validation.validation_exception import CoordinateValidationException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.null import NullCoordinateException
-from chess.geometry.coordinate.coordinate import Coordinate, RowOutOfBoundsException, ColumnOutOfBoundsException
+from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
+from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
+from chess.exception.null.coordinate_null import NullCoordinateException
+from chess.geometry.coordinate.coordinate import Coordinate
 
 
 class CoordinateSpecification(Specification):

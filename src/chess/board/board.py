@@ -190,15 +190,16 @@ class ChessBoard:
             destination is not on the chessboard, or if the destination square is occupied by a friend.
         """
 
-        if not ChessPieceSpecification.is_satisfied_by(chess_piece):
-            raise ChessPieceValidationException(
-                f"{method}: {ChessPieceValidationException.default_message}"
-            )
-
-        if not CoordinateSpecification.is_satisfied_by(destination):
-            raise CoordinateValidationException(
-                f"{method}: {CoordinateValidationException.default_message}"
-            )
+        # print(f"Validating move for {chess_piece.name} to {destination}")
+        # if not ChessPieceSpecification.is_satisfied_by(chess_piece):
+        #     raise ChessPieceValidationException(
+        #         f"{method}: {ChessPieceValidationException.default_message}"
+        #     )
+        #
+        # if not CoordinateSpecification.is_satisfied_by(destination):
+        #     raise CoordinateValidationException(
+        #         f"{method}: {CoordinateValidationException.default_message}"
+        #     )
 
         destination_square = self.find_square_by_coordinate(destination)
         target_occupant = destination_square.occupant

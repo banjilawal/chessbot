@@ -2,7 +2,8 @@ from typing import List
 
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
-from chess.geometry.coordinate.coordinate import CartesianDistance, Coordinate
+from chess.geometry.coordinate.cartesian_distance import CartesianDistance
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.obstruction import Obstruction
 from chess.token.chess_piece import ChessPiece
 

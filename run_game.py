@@ -1,3 +1,8 @@
+import pygame.time
+
+from chess.common.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT
+from chess.creator.entity.builder.arena_builder import ArenaBuilder
+from chess.screen import GameDisplay
 from config.logging_setup import init_logging
 
 
@@ -8,7 +13,29 @@ def main():
 
     try:
         logger.info("Starting arena initialization")
-        # arena = build_game()
+        arena = ArenaBuilder.build()
+        print(arena.chess_board)
+        visualizer = GameDisplay(
+            chess_board=arena.chess_board,
+            cell_px=CELL_PX,
+            border_px=BORDER_PX
+        )
+
+        clock = pygame.time.Clock()
+        frame_count = 0
+
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    visualizer.handle_mouse_down(event)
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    visualizer.handle_mouse_up(event)
+                elif event.type == pygame.MOUSEMOTION:
+                    visualizer.handle_mouse_motion(event)
+            visualizer.update_display()
         # launch_game(arena)
 
     except Exception as e:

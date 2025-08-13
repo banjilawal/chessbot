@@ -1,9 +1,12 @@
-from typing import List
+from typing import List, TYPE_CHECKING
 
-from chess.arena.arena import Arena
+
 from chess.exception.negative_id_exception import ChessException
 from chess.config.placement_chart import PlacementChart
 from chess.token.chess_piece import ChessPiece
+
+if TYPE_CHECKING:
+    from chess.arena.arena import Arena
 
 class PlacementException(ChessException):
     default_message = "Placemen failed"
@@ -11,7 +14,7 @@ class PlacementException(ChessException):
 class TeamPlacementManager:
 
     @staticmethod
-    def place_teams(arena: Arena):
+    def place_teams(arena: 'Arena'):
         method = "TeamPlacementManager.place_teams"
 
         chess_pieces: List[ChessPiece] = []

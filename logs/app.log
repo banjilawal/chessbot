@@ -1,3 +1,159 @@
 2025-07-31 02:59:17 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
 2025-07-31 02:59:17 - INFO     - run_game.py:10 (main) - Starting game initialization
 2025-07-31 02:59:17 - INFO     - run_game.py:18 (main) - Game session ended
+2025-08-12 17:27:16 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 17:27:16 - INFO     - run_game.py:10 (main) - Starting arena initialization
+2025-08-12 17:27:16 - INFO     - run_game.py:18 (main) - Game session ended
+2025-08-12 17:28:28 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 17:28:28 - INFO     - run_game.py:11 (main) - Starting arena initialization
+2025-08-12 17:28:28 - INFO     - run_game.py:20 (main) - Game session ended
+2025-08-12 17:34:37 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 17:34:37 - INFO     - run_game.py:13 (main) - Starting arena initialization
+2025-08-12 17:34:37 - INFO     - run_game.py:29 (main) - Game session ended
+2025-08-12 17:34:56 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 17:34:56 - INFO     - run_game.py:13 (main) - Starting arena initialization
+2025-08-12 17:34:56 - INFO     - run_game.py:29 (main) - Game session ended
+2025-08-12 17:45:27 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 17:45:27 - INFO     - run_game.py:16 (main) - Starting arena initialization
+2025-08-12 17:45:27 - CRITICAL - run_game.py:39 (main) - Game failed: video system not initialized
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 32, in main
+    for event in pygame.event.get():
+                 ^^^^^^^^^^^^^^^^^^
+pygame.error: video system not initialized
+2025-08-12 17:45:27 - INFO     - run_game.py:42 (main) - Game session ended
+2025-08-12 18:02:37 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 18:02:37 - INFO     - run_game.py:16 (main) - Starting arena initialization
+2025-08-12 18:02:37 - CRITICAL - run_game.py:39 (main) - Game failed: GameDisplay.__init__() got an unexpected keyword argument 'screen_width'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 19, in main
+    visualizer = GameDisplay(
+                 ^^^^^^^^^^^^
+TypeError: GameDisplay.__init__() got an unexpected keyword argument 'screen_width'
+2025-08-12 18:02:37 - INFO     - run_game.py:42 (main) - Game session ended
+2025-08-12 18:20:09 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 18:20:09 - INFO     - run_game.py:16 (main) - Starting arena initialization
+2025-08-12 18:20:09 - CRITICAL - run_game.py:37 (main) - Game failed: 'GameDisplay' object has no attribute '_cell_px'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 19, in main
+    visualizer = GameDisplay(
+                 ^^^^^^^^^^^^
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 26, in __init__
+    _screen_width = COLUMN_SIZE * self._cell_px + self._border_px * 2
+                                  ^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute '_cell_px'
+2025-08-12 18:20:09 - INFO     - run_game.py:40 (main) - Game session ended
+2025-08-12 18:50:01 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 18:50:01 - INFO     - run_game.py:16 (main) - Starting arena initialization
+2025-08-12 18:50:01 - CRITICAL - run_game.py:37 (main) - Game failed: GameDisplay.__init__() got an unexpected keyword argument 'chess_board'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 19, in main
+    visualizer = GameDisplay(
+                 ^^^^^^^^^^^^
+TypeError: GameDisplay.__init__() got an unexpected keyword argument 'chess_board'
+2025-08-12 18:50:01 - INFO     - run_game.py:40 (main) - Game session ended
+2025-08-12 18:50:25 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 18:50:25 - INFO     - run_game.py:16 (main) - Starting arena initialization
+2025-08-12 18:50:25 - CRITICAL - run_game.py:37 (main) - Game failed: GameDisplay.__init__() got an unexpected keyword argument 'chess_board'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 19, in main
+    visualizer = GameDisplay(
+                 ^^^^^^^^^^^^
+TypeError: GameDisplay.__init__() got an unexpected keyword argument 'chess_board'
+2025-08-12 18:50:25 - INFO     - run_game.py:40 (main) - Game session ended
+2025-08-12 18:51:45 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 18:51:45 - INFO     - run_game.py:16 (main) - Starting arena initialization
+2025-08-12 18:53:49 - INFO     - run_game.py:40 (main) - Game session ended
+2025-08-12 18:54:52 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 18:54:52 - INFO     - run_game.py:16 (main) - Starting arena initialization
+2025-08-12 18:55:50 - INFO     - run_game.py:40 (main) - Game session ended
+2025-08-12 18:58:14 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 18:58:14 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:01:49 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:01:49 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:01:49 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:41:49 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:41:49 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:41:49 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:41:50 - CRITICAL - run_game.py:36 (main) - Game failed: 'tuple' object has no attribute 'value'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 32, in main
+    visualizer.update_display()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 114, in update_display
+    self.draw_teams()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 76, in draw_teams
+    self.draw_chess_piece(square.occupant)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 100, in draw_chess_piece
+    pygame.draw.rect(self.screen, KNIGHT_COLOR.value, chess_piece_shape)
+                                  ^^^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'value'
+2025-08-12 19:41:50 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:42:34 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:42:34 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:42:34 - CRITICAL - run_game.py:36 (main) - Game failed: 'tuple' object has no attribute 'value'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 32, in main
+    visualizer.update_display()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 114, in update_display
+    self.draw_teams()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 76, in draw_teams
+    self.draw_chess_piece(square.occupant)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 104, in draw_chess_piece
+    pygame.draw.rect(self.screen, BISHOP_COLOR.value, chess_piece_shape)
+                                  ^^^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'value'
+2025-08-12 19:42:34 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:42:49 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:42:49 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:42:49 - CRITICAL - run_game.py:36 (main) - Game failed: 'tuple' object has no attribute 'value'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 32, in main
+    visualizer.update_display()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 114, in update_display
+    self.draw_teams()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 76, in draw_teams
+    self.draw_chess_piece(square.occupant)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 96, in draw_chess_piece
+    pygame.draw.rect(self.screen, KING_COLOR.value, chess_piece_shape)
+                                  ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'value'
+2025-08-12 19:42:49 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:42:59 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:42:59 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:43:00 - CRITICAL - run_game.py:36 (main) - Game failed: 'tuple' object has no attribute 'value'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 32, in main
+    visualizer.update_display()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 114, in update_display
+    self.draw_teams()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 76, in draw_teams
+    self.draw_chess_piece(square.occupant)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 106, in draw_chess_piece
+    pygame.draw.rect(self.screen, QUEEN_COLOR.value, chess_piece_shape)
+                                  ^^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'value'
+2025-08-12 19:43:00 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:43:10 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:43:10 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:43:11 - CRITICAL - run_game.py:36 (main) - Game failed: 'tuple' object has no attribute 'value'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 32, in main
+    visualizer.update_display()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 114, in update_display
+    self.draw_teams()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 76, in draw_teams
+    self.draw_chess_piece(square.occupant)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 98, in draw_chess_piece
+    pygame.draw.rect(self.screen, PAWN_COLOR.value, chess_piece_shape)
+                                  ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'value'
+2025-08-12 19:43:11 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:43:24 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:43:24 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:54:30 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 19:54:30 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 19:54:30 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 19:54:42 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 20:03:25 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 20:03:25 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 20:03:29 - INFO     - run_game.py:39 (main) - Game session ended

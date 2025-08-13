@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Optional
 
-from chess.board.board import ChessBoard
 from chess.exception.negative_id_exception import ChessException
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.token.chess_piece import ChessPiece
@@ -23,8 +21,7 @@ class Walk(ABC):
     @abstractmethod
     def is_walkable(
         chess_piece: ChessPiece,
-        destination: Coordinate,
-        chess_board: Optional[ChessBoard] = None
+        destination: Coordinate
     ) -> bool:
         method = "Walk.is_walkable"
 

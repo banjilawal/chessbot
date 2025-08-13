@@ -19,7 +19,6 @@ class QueenWalk(Walk):
     def is_walkable(
         chess_piece: ChessPiece,
         destination: Coordinate,
-        chess_board: Optional[ChessBoard] = None
     ) -> bool:
         # Queen movement combines Rook and Bishop movement.
         # Return true if chess_piece wants to move either way.

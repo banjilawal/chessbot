@@ -1,8 +1,8 @@
-rom typing import TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.line.diagonal import Diagonal
-from chess.geometry.line.vertical import Vertical
+from chess.geometry.coordinate.delta import Delta
+
 
 from chess.walk.walk import Walk
 from chess.token.chess_piece import ChessPiece
@@ -29,63 +29,31 @@ class PawnWalk(Walk):
 
     @staticmethod
     def can_advance(chess_piece: ChessPiece, destination: Coordinate) -> bool:
-        if not PawnWalk._satisfies_walk_preconditions(chess_piece, destination):
-            print(f"{chess_piece.name} does not satisfy walk preconditions to advance")
-            return False
-        if PawnWalk._number_of_advancing_steps(chess_piece, destination) == 0:
-            print(f"{chess_piece.name} cannot advance to {destination}")
-            return False
-        return True
+        origin = chess_piece.coordinate_stack.current_coordinate()
+        forward_step = chess_piece.team.home_quadrant.forward_step
+        print(f"quadrant for "
+              f"\n{chess_piece.name} "
+              f"\non team {chess_piece.team} is "
+              f"\n{chess_piece.team.home_quadrant}"
+          )
+        row_diff = destination.row - origin.row
+        column_diff  = destination.column - origin.column
+        print(f"Expecting 2 for row_diff got {row_diff} on forward stop {forward_step}")
+        print(f"Expecting 0 for column_diff got {column_diff} on forward stop {forward_step}")
 
+        # Allow 2-step move only on first move
+        if chess_piece.coordinate_stack.size() == 1 and row_diff == 2 * forward_step:
+            return True
+
+        return row_diff == forward_step and origin.column == destination.column
 
     @staticmethod
     def can_attack(pawn: ChessPiece, destination: Coordinate) -> bool:
-        if not PawnWalk._satisfies_walk_preconditions(pawn, destination):
-            print(f"{pawn.name} does not satisfy walk preconditions to advance")
-            return False
+        origin = pawn.coordinate_stack.current_coordinate()
+        delta = Delta(
+            column_delta=destination.column - origin.column,
+            row_delta=destination.row - origin.row
+        )
 
-        if Diagonal.is_diagonal(pawn.coordinate_stack.current_coordinate(), destination):
-            print(f"{pawn.name} is not diagonal from attack coordinate {destination}")
-            return False
+        return any(delta == q.delta for q in pawn.rank.territories)
 
-        if abs(destination.column - pawn.coordinate_stack.current_coordinate().column) != 1:
-            print(f"{pawn.name} is not one column away from attack coordinate {destination}")
-            return False
-        return True
-
-
-    @staticmethod
-    def _satisfies_walk_preconditions(chess_piece: ChessPiece, destination: Coordinate) -> bool:
-        if chess_piece is None:
-            print("Pawn is None cannot advance")
-            return False
-        from chess.rank.promotable.pawn_rank import PawnRank
-        if not isinstance(chess_piece.rank, PawnRank):
-            print("ChessPiece is not p chess_piece cannot advance")
-            return False
-
-        pawn = chess_piece
-
-        if pawn.coordinate_stack is None:
-            print("Pawn has no coordinate_stack cannot advance")
-            return False
-        if pawn.coordinate_stack.current_coordinate() is None or pawn.coordinate_stack.size() == 0:
-            print("Pawn is not on the obsolete_board cannot advance")
-            return False
-        if not Vertical.is_vertical(pawn.coordinate_stack.current_coordinate(), destination):
-            print("Pawn cannot advance to non-vertical destination")
-            return False
-        return True
-
-
-    @staticmethod
-    def _number_of_advancing_steps(pawn: ChessPiece, destination: Coordinate) -> int:
-        row_diff = destination.row - pawn.coordinate_stack.current_coordinate().row
-        if row_diff < 0:
-            return 0
-
-        if pawn.coordinate_stack.size() == 1:
-            return 2
-        if pawn.coordinate_stack.size() > 1:
-            return  1
-        return 0
