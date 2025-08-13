@@ -92,8 +92,21 @@ class GameDisplay:
                 pygame.draw.rect(self.screen, GameColor.BLACK.value, cell_rect, 1)
 
     def draw_teams(self):
+        dragged_state = None
+        if self.is_dragging and self.active_drags:
+            # there’s only one drag at a time
+            dragged_state = next(iter(self.active_drags.values()))
+
         for square in self.chess_board.occupied_squares():
-            self.draw_chess_piece(square.occupant)
+            piece = square.occupant
+            # Skip drawing the dragged piece at its old board position
+            if dragged_state and piece is dragged_state.chess_piece:
+                continue
+            self.draw_chess_piece(piece)
+
+        # Draw the dragged piece last, at its temporary coordinate
+        if dragged_state:
+            self.draw_chess_piece_at(dragged_state.chess_piece, dragged_state.current_coordinate)
 
     def draw_chess_piece(self, chess_piece: ChessPiece):
         king_color = KING_COLOR
@@ -163,6 +176,7 @@ class GameDisplay:
             mover_id = list(self.active_drags.keys())[0]
             placement_status = self.end_drag(mover_id)
             self.is_dragging = False
+            self.update_display()
             return placement_status
         return MousePlacementStatus.RELEASED
 
@@ -240,6 +254,31 @@ class GameDisplay:
         if not chess_piece.rank.walk.is_walkable(chess_piece, test_coordinate):
             return False
         return True
+
+    def draw_chess_piece_at(self, chess_piece: ChessPiece, coordinate: Coordinate):
+        rect = pygame.Rect(
+            coordinate.column * self.cell_px + self.border_px,
+            coordinate.row * self.cell_px + self.border_px,
+            self.cell_px - self.border_px,
+            self.cell_px - self.border_px
+        )
+        # pick color by rank (reuse your existing logic)
+        if isinstance(chess_piece.rank, KingRank):
+            pygame.draw.rect(self.screen, KING_COLOR, rect)
+        elif isinstance(chess_piece.rank, PawnRank):
+            pygame.draw.rect(self.screen, PAWN_COLOR, rect)
+        elif isinstance(chess_piece.rank, KnightRank):
+            pygame.draw.rect(self.screen, KNIGHT_COLOR, rect)
+        elif isinstance(chess_piece.rank, CastleRank):
+            pygame.draw.rect(self.screen, CASTLE_COLOR.value, rect)
+        elif isinstance(chess_piece.rank, BishopRank):
+            pygame.draw.rect(self.screen, BISHOP_COLOR, rect)
+        elif isinstance(chess_piece.rank, QueenRank):
+            pygame.draw.rect(self.screen, QUEEN_COLOR, rect)
+
+        text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.value)
+        text_rect = text_surface.get_rect(center=rect.center)
+        self.screen.blit(text_surface, text_rect)
 
     def update_display(self):
         self.draw_grid()

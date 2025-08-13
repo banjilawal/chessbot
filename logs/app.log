@@ -312,3 +312,28 @@ AttributeError: 'ChessBoard' object has no attribute 'move_entity'
 2025-08-13 02:59:56 - INFO     - run_game.py:46 (main) - Game session ended
 2025-08-13 03:00:02 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
 2025-08-13 03:00:02 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 03:10:55 - INFO     - run_game.py:46 (main) - Game session ended
+2025-08-13 03:11:15 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 03:11:15 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 03:11:18 - INFO     - run_game.py:46 (main) - Game session ended
+2025-08-13 03:11:33 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 03:11:33 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 03:11:46 - CRITICAL - run_game.py:43 (main) - Game failed: KnightRank Unreachable Destination coordinate
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 37, in main
+    visualizer.handle_mouse_motion(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 171, in handle_mouse_motion
+    self.update_drag(chess_piece_id, event.pos)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 228, in update_drag
+    if not self.is_position_valid_for_drag(drag_state.chess_piece, test_coord):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 254, in is_position_valid_for_drag
+    if not chess_piece.rank.walk.is_walkable(chess_piece, test_coordinate):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/griot/PycharmProjects/chessbot/src/chess/walk/king_walk.py", line 26, in is_walkable
+    raise KingWalkException(KnightWalkException.default_message)
+chess.walk.king_walk.KingWalkException: KnightRank Unreachable Destination coordinate
+2025-08-13 03:11:46 - INFO     - run_game.py:46 (main) - Game session ended
+2025-08-13 03:22:13 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 03:22:13 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 03:23:37 - INFO     - run_game.py:46 (main) - Game session ended
