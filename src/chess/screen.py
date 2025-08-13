@@ -1,5 +1,6 @@
 from curses.textpad import rectangle
-
+import os
+from typing import Dict
 import pygame
 
 from chess.board.board import ChessBoard
@@ -11,7 +12,6 @@ from chess.common.game_color import GameColor
 
 from dataclasses import dataclass, field
 
-import pygame
 from typing import TYPE_CHECKING, Optional, cast, OrderedDict
 
 from colorama.ansi import clear_line
@@ -240,12 +240,19 @@ class GameDisplay:
         if drag_state.current_coordinate == drag_state.original_coordinate:
             return MousePlacementStatus.RELEASED
 
-        if not self.chess_board.capture_square(drag_state.chess_piece, drag_state.current_coordinate):
-            # Reset to original
-            self.chess_board.capture_square(drag_state.chess_piece, drag_state.original_coordinate)
+        # Just call capture_square() once
+        success = self.chess_board.capture_square(
+            drag_state.chess_piece,
+            drag_state.current_coordinate
+        )
+
+        if not success:
+            self.chess_board.capture_square(
+                drag_state.chess_piece,
+                drag_state.original_coordinate
+            )
             return MousePlacementStatus.BLOCKED
 
-        self.chess_board.capture_square(drag_state.chess_piece, drag_state.current_coordinate)
         return MousePlacementStatus.PLACED
 
     def is_position_valid_for_drag(self, chess_piece: ChessPiece, test_coordinate: Coordinate) -> bool:

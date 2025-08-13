@@ -9,6 +9,10 @@ if TYPE_CHECKING:
     from chess.rank.rank import Rank
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
+    """"
+    
+    """
+
 
 class ChessPiece(Token):
     _id: int
