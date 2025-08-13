@@ -157,3 +157,158 @@ AttributeError: 'tuple' object has no attribute 'value'
 2025-08-12 20:03:25 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
 2025-08-12 20:03:25 - INFO     - run_game.py:15 (main) - Starting arena initialization
 2025-08-12 20:03:29 - INFO     - run_game.py:39 (main) - Game session ended
+2025-08-12 22:26:05 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 22:26:05 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 22:26:10 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'is_dragging'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 37, in main
+    visualizer.handle_mouse_motion(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 153, in handle_mouse_motion
+    if self.is_dragging and self.active_drags:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'is_dragging'
+2025-08-12 22:26:10 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:13:26 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:13:26 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:13:29 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'is_dragging'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 37, in main
+    visualizer.handle_mouse_motion(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 153, in handle_mouse_motion
+    if self.is_dragging and self.active_drags:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'is_dragging'
+2025-08-12 23:13:29 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:13:37 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:13:37 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:13:39 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'is_dragging'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 37, in main
+    visualizer.handle_mouse_motion(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 153, in handle_mouse_motion
+    if self.is_dragging and self.active_drags:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'is_dragging'
+2025-08-12 23:13:39 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:37:48 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:37:48 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:37:48 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'update_display'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 38, in main
+    visualizer.update_display()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'update_display'
+2025-08-12 23:37:48 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:38:35 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:38:35 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:38:36 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'is_dragging'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 37, in main
+    visualizer.handle_mouse_motion(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 153, in handle_mouse_motion
+    if self.is_dragging and self.active_drags:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'is_dragging'
+2025-08-12 23:38:36 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:41:21 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:41:21 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:41:23 - CRITICAL - run_game.py:42 (main) - Game failed: 'pygame.event.Event' object has no attribute 'position'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 33, in main
+    visualizer.handle_mouse_down(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 150, in handle_mouse_down
+    chess_piece = self.get_chess_piece_at_mouse_position(event.position)
+                                                         ^^^^^^^^^^^^^^
+AttributeError: 'pygame.event.Event' object has no attribute 'position'
+2025-08-12 23:41:23 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:42:01 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:42:01 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:42:04 - CRITICAL - run_game.py:42 (main) - Game failed: 'pygame.event.Event' object has no attribute 'coordinate'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 33, in main
+    visualizer.handle_mouse_down(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 150, in handle_mouse_down
+    chess_piece = self.get_chess_piece_at_mouse_position(event.coordinate)
+                                                         ^^^^^^^^^^^^^^^^
+AttributeError: 'pygame.event.Event' object has no attribute 'coordinate'
+2025-08-12 23:42:04 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:42:15 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:42:15 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:42:18 - CRITICAL - run_game.py:42 (main) - Game failed: 'pygame.event.Event' object has no attribute 'position'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 33, in main
+    visualizer.handle_mouse_down(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 150, in handle_mouse_down
+    chess_piece = self.get_chess_piece_at_mouse_position(event.position)
+                                                         ^^^^^^^^^^^^^^
+AttributeError: 'pygame.event.Event' object has no attribute 'position'
+2025-08-12 23:42:18 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:43:40 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:43:40 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:43:42 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'coordinate_at_mouse_positon'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 33, in main
+    visualizer.handle_mouse_down(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 150, in handle_mouse_down
+    chess_piece = self.get_chess_piece_at_mouse_position(event.pos)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 139, in get_chess_piece_at_mouse_position
+    coordinate = self.coordinate_at_mouse_positon(mouse_position)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'coordinate_at_mouse_positon'
+2025-08-12 23:43:42 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:44:31 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:44:31 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:44:33 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'start_drag'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 33, in main
+    visualizer.handle_mouse_down(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 152, in handle_mouse_down
+    self.start_drag(chess_piece, event.pos)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'start_drag'
+2025-08-12 23:44:33 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:45:39 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:45:39 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:46:21 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:46:30 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:46:30 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:46:32 - CRITICAL - run_game.py:42 (main) - Game failed: 'GameDisplay' object has no attribute 'is_position_valid_for_drag'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 37, in main
+    visualizer.handle_mouse_motion(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 158, in handle_mouse_motion
+    self.update_drag(mover_id, event.pos)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 213, in update_drag
+    if not self.is_position_valid_for_drag(drag_state.chess_piece, test_coord):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GameDisplay' object has no attribute 'is_position_valid_for_drag'
+2025-08-12 23:46:32 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-12 23:48:07 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-12 23:48:07 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-12 23:48:09 - CRITICAL - run_game.py:42 (main) - Game failed: 'ChessBoard' object has no attribute 'move_entity'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 35, in main
+    visualizer.handle_mouse_up(event)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 163, in handle_mouse_up
+    placement_status = self.end_drag(mover_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 230, in end_drag
+    self.chess_board.move_entity(drag_state.chess_piece, drag_state.original_coordinate)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ChessBoard' object has no attribute 'move_entity'
+2025-08-12 23:48:09 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-13 02:24:57 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 02:24:57 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 02:29:02 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-13 02:29:08 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 02:29:08 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 02:45:43 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-13 02:45:47 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 02:45:47 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 02:56:24 - INFO     - run_game.py:45 (main) - Game session ended
+2025-08-13 02:56:33 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 02:56:33 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 02:59:56 - INFO     - run_game.py:46 (main) - Game session ended
+2025-08-13 03:00:02 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 03:00:02 - INFO     - run_game.py:15 (main) - Starting arena initialization

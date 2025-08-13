@@ -211,6 +211,9 @@ class ChessBoard:
                 f" is empty calling ChessBoard._finalize_capture"
             )
             self._finalize_capture(chess_piece, destination_square)
+            print(
+                f""
+            )
             return
 
         if not chess_piece.is_enemy(target_occupant):
@@ -288,7 +291,13 @@ class ChessBoard:
         # then deleted it.
         # STORE the old coordinate FIRST before any modifications
         old_coordinate = captor.coordinate_stack.current_coordinate()
+        old_square = self.find_square_by_coordinate(old_coordinate)
 
+        print(
+            f"{method}: moving {captor.name} from "
+            f"{old_square.name}.coord=("f"{old_square.coordinate}) to "
+            f"{destination.name}=({destination.coordinate})"
+        )
         # Clear the old square
         if old_coordinate:
             old_square = self.find_square_by_coordinate(old_coordinate)
@@ -320,6 +329,9 @@ class ChessBoard:
             raise Exception(f"{method}: chess_piece coordinate stack not updated")
 
         # Method showing success.
+        print(
+            f"old_square: {old_square}\ncurrent_square: {destination}"
+        )
         print(f"{method}: capture complete")
 
 

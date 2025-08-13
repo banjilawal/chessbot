@@ -1,4 +1,12 @@
+from enum import auto, Enum
+
 from chess.common.game_color import GameColor
+
+class MousePlacementStatus(Enum):
+    PLACED = auto()
+    BLOCKED = auto()
+    RELEASED = auto()
+    INVALID = auto()
 
 BOARD_DIMENSION = 8
 ROW_SIZE = 8

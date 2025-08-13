@@ -36,6 +36,7 @@ def main():
                 elif event.type == pygame.MOUSEMOTION:
                     visualizer.handle_mouse_motion(event)
             visualizer.update_display()
+            clock.tick(60)
         # launch_game(arena)
 
     except Exception as e:
