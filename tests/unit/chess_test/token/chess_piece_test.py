@@ -45,9 +45,9 @@ class ChessPieceTest:
         pass
 
     def test_chess_piece_movement(self):
-        # Test code for chess piece movement
+        # Test code for chesstest piece movement
         pass
 
     def test_chess_piece_capture(self):
-        # Test code for chess piece capture
+        # Test code for chesstest piece capture
         pass

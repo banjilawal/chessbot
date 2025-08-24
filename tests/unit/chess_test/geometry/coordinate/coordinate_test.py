@@ -1,8 +1,10 @@
 import unittest
 
 import pytest
+import sys
+print("sys.path:", sys.path)
 
-from chess.common.config import ROW_SIZE, COLUMN_SIZE
+
 from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
 from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
 from chess.exception.null.coordinate_null import NullCoordinateException
@@ -18,7 +20,7 @@ class CoordinateTest(unittest.TestCase):
 
     def test_row_in_bounds(self):
         # Valid rows should construct a Coordinate without exceptions
-        for row in range(0, ROW_SIZE):
+        for row in range(0, 8):
             coord = Coordinate(row=row, column=0)
             self.assertEqual(coord.row, row)
 
@@ -30,7 +32,7 @@ class CoordinateTest(unittest.TestCase):
 
     def test_row_above_upper_bound_raises_exception(self):
         with self.assertRaises(RowOutOfBoundsException):
-            Coordinate(row=ROW_SIZE, column=0)
+            Coordinate(row=8, column=0)
 
 
     def test_null_column_raises_exception(self):
@@ -40,7 +42,7 @@ class CoordinateTest(unittest.TestCase):
 
     def test_column_in_bounds(self):
         # Tests all columns within bounds construct a Coordinate without exceptions
-        for column in range(0, ROW_SIZE):
+        for column in range(0, 8):
             coord = Coordinate(row=0, column=column)
             self.assertEqual(coord.column, column)
 
@@ -52,7 +54,7 @@ class CoordinateTest(unittest.TestCase):
 
     def test_column_above_upper_bound_raises_exception(self):
         with self.assertRaises(ColumnOutOfBoundsException):
-            Coordinate(row=0, column=COLUMN_SIZE)
+            Coordinate(row=0, column=8)
 
 
 if __name__ == '__main__':
