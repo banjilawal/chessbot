@@ -6,6 +6,8 @@ class Token(ABC):
     _name: str
 
     def __init__(self, token_id: int, name: str):
+
+
         if not token_id:
             raise ValueError("Cannot create p captor with an empty id.")
         if token_id < 0:

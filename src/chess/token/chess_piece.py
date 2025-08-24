@@ -31,6 +31,9 @@ class ChessPiece(Token):
         if rank is None:
             raise ValueError("Cannot create p captor with an null interfaces.")
 
+        if team is None:
+            raise ValueError("Cannot create a chess piece with a null team.")
+
         self._team = team
         self._rank = rank
         self._obstructions = []

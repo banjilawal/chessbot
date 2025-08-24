@@ -26,7 +26,6 @@ class IdSpecification(Specification):
                 true.
 
         Raises:
-
             IdNullException: if t is null
             TypeError: if t is not int
             
@@ -35,11 +34,10 @@ class IdSpecification(Specification):
                 (0, ROW_SIZE - 1) inclusive
 
             ColumnOutOfBoundsException: If coordinate.column is outside the range
-                (0, COLUMN_SIZE - 1) inclusive
-.
+                (0, COLUMN_SIZE - 1) inclusive.
+                
             CoordinateValidationException: Wraps any
                 (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
-
         """
 
         if t is None:
