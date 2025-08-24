@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chess"
+version = "0.0.1"
+description = "A simple chess engine with validation and geometry utilities"
+authors = [
+    { name = "Banji Lawal", email = "banji.k.lawal@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+
+# If you want to define dependencies later:
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["chess*"]
