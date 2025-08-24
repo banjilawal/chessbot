@@ -1,0 +1,8 @@
+README
+README.md
+pyproject.toml
+chessbot.egg-info/PKG-INFO
+chessbot.egg-info/SOURCES.txt
+chessbot.egg-info/dependency_links.txt
+chessbot.egg-info/requires.txt
+chessbot.egg-info/top_level.txt

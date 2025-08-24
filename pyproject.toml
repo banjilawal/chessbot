@@ -1,10 +1,15 @@
-# This is the pyproject.toml file for ChessBot.
-# It specifies the build system and project metadata.
+# Centralized build configuration for the ChessBot project. Supersedes:
+#   setup.py
+#   setup.cfg
+#   requirements.txt
+# See: https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
+
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
+# Project metadata
 name = "chessbot"
 version = "0.0.1"
 description = "ChessBot: A chess game that allows; People to play against each otheror the computer."
@@ -16,7 +21,9 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python"
 ]
-readme = {file = "README.md", content-type = "text/markdown"}
+
+# Pyproject automatically detects READM file format. Including mimetype is redundant.
+readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "BSD-3-Clause"}
 
@@ -35,11 +42,16 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Optional dependencies for testing.
 test = [
     "pytest >= 8.4.0",
     "pytest-mock >= 4.0.0"
 ]
 
+# Package discovery configuration. With tool.setuptools.packages.find dont have to
+# manually configure paths.
+#
+# See: https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["chess*"]
+include = ["chess*", "assurance*"]
