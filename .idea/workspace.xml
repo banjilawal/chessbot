@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess/geometry/coordinate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess/geometry/coordinate/coordinate_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate/column_out_of_bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coordinate/column_out_of_bounds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate/coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coordinate/coordinate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate/row_out_of_bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coordinate/row_out_of_bounds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/chess/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coordinate/null_column_exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/chess/geometry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coordinate/null_row_exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/chess/geometry/coordinate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/chess/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess/geometry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/chess/token/chess_piece_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess/token/chess_piece_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +291,7 @@
       <workItem from="1755099088454" duration="7903000" />
       <workItem from="1755124066600" duration="451000" />
       <workItem from="1756031543767" duration="14037000" />
-      <workItem from="1756055700930" duration="1043000" />
+      <workItem from="1756055700930" duration="3162000" />
     </task>
     <servers />
   </component>
