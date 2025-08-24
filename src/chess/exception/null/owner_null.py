@@ -2,4 +2,9 @@ from chess.exception.null.null import NullException
 
 
 class NullOwnerException(NullException):
-    default_message = f"Owner {NullException.default_message}"
+    default_message = f"Owner cannot be null"
+
+    def __init__(self, message=None):
+        if message is None:
+            message = self.default_message
+        super().__init__(message)

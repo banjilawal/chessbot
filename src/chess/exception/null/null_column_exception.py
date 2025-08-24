@@ -1,8 +1,8 @@
 from chess.exception.null.null import NullException
 
 
-class NullChessPieceException(NullException):
-    default_message = f"ChessPiece cannot be null"
+class NullColumnException(NullException):
+    default_message=f"Column cannot be null"
 
     def __init__(self, message=None):
         if message is None:

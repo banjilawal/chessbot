@@ -1,13 +1,13 @@
 class ChessPieceTest:
 
-    _id: int
-    _name: str
-    _team: 'Team'
-    _rank: 'Rank'
-    _captor: 'ChessPiece'
-    _status: MobilityStatus
-    _obstructions: List[Obstruction]
-    _coordinate_stack: CoordinateStack
+    # _id: int
+    # _name: str
+    # _team: 'Team'
+    # _rank: 'Rank'
+    # _captor: 'ChessPiece'
+    # _status: MobilityStatus
+    # _obstructions: List[Obstruction]
+    # _coordinate_stack: CoordinateStack
 
     def test_chess_piece_id_is_positive(self):
         # Test code for positive ID
@@ -45,9 +45,9 @@ class ChessPieceTest:
         pass
 
     def test_chess_piece_movement(self):
-        # Test code for chesstest piece movement
+        # Test code for chess_test piece movement
         pass
 
     def test_chess_piece_capture(self):
-        # Test code for chesstest piece capture
+        # Test code for chess_test piece capture
         pass

@@ -1,12 +1,9 @@
-from chess.exception.negative_id_exception import ChessException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
+from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
+from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
 from chess.exception.null.delta_null import NullDeltaException
 from chess.exception.null.null import NullException
 from chess.geometry.coordinate.delta import Delta
-
-
-
-
 
 class Coordinate:
     _row: int

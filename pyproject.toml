@@ -52,6 +52,11 @@ test = [
 # manually configure paths.
 #
 # See: https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["chess*", "assurance*"]
