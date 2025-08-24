@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/integration/chess/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/chess/token/chess_piece_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/chessbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/id_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/id_specification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/chess_piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/chess_piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/token.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/token.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,7 +297,7 @@
       <workItem from="1755073994940" duration="3842000" />
       <workItem from="1755099088454" duration="7903000" />
       <workItem from="1755124066600" duration="451000" />
-      <workItem from="1756031543767" duration="4246000" />
+      <workItem from="1756031543767" duration="7731000" />
     </task>
     <servers />
   </component>
