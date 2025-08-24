@@ -26,7 +26,7 @@ Tests if `ChessPiece` instance can reach a destination with constraints on motio
     Class CastleWalk {}
     Class PawnWalk {
       - can_advance(chess_piece: ChessPiece, destination: Coordinate): bool
-      - can_attack(chess_piece: ChessPiece, destination: Coordinate): bool
+      - can_attack(chess_piece: ChessPiece, desqtination: Coordinate): bool
     }
     
     Walk <-left- KingWalk

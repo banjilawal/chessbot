@@ -358,3 +358,18 @@ Traceback (most recent call last):
                                   ^^^^^^^^^^^^^^^^^^
 AttributeError: 'tuple' object has no attribute 'value'
 2025-08-13 04:40:12 - INFO     - run_game.py:46 (main) - Game session ended
+2025-08-13 18:50:38 - INFO     - logging_setup.py:48 (init_logging) - Logging system ready
+2025-08-13 18:50:38 - INFO     - run_game.py:15 (main) - Starting arena initialization
+2025-08-13 18:50:39 - CRITICAL - run_game.py:43 (main) - Game failed: 'tuple' object has no attribute 'value'
+Traceback (most recent call last):
+  File "/home/griot/PycharmProjects/chessbot/run_game.py", line 38, in main
+    visualizer.update_display()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 292, in update_display
+    self.draw_teams()
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 105, in draw_teams
+    self.draw_chess_piece(piece)
+  File "/home/griot/PycharmProjects/chessbot/src/chess/screen.py", line 134, in draw_chess_piece
+    pygame.draw.rect(self.screen, CASTLE_COLOR.value, chess_piece_shape)
+                                  ^^^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'value'
+2025-08-13 18:50:39 - INFO     - run_game.py:46 (main) - Game session ended
