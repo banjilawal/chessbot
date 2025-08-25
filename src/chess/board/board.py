@@ -2,7 +2,7 @@ import random
 from typing import List, Optional, TYPE_CHECKING
 
 from assurance.validation.coordinate_specification import CoordinateSpecification
-from assurance.validation.validation_exception import CoordinateValidationException
+from assurance.exception.validation.base_validationpy import CoordinateValidationException
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.board.square_iterator import SquareIterator
 from chess.board.square import Square

@@ -1,12 +1,12 @@
 from assurance.validation.obsolete.validation_result import ValidationResult
-from assurance.validation.validation_exception import ValidationException
+from assurance.exception.validation.base_validationpy import ValidationException
 
 
 class IdPositiveValidationFailed(ValidationException):
-    default_message = "Failed id is positive validation test"
+    DEFAULT_MESSAGE = "Failed id is positive validation test"
 
 class IdNotNullValidationFailed(ValidationException):
-    default_message = "Failed id exsts validation test"
+    DEFAULT_MESSAGE = "Failed id exsts validation test"
 
 class ObsoleteIdValidator:
 

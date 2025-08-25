@@ -1,9 +1,9 @@
 from chess.exception.null.null_exception import NullException
 
 
-class NullCartesianDistanceException(NullException):
-    ERROR_CODE = "NULL_CARTESIAN_DISTANCE_ERROR"
-    DEFAULT_MESSAGE = f"Cartesian distance cannot be null"
+class NullDistanceMagnitudeException(NullException):
+    ERROR_CODE = "NULL_DISTANCE_MAGNITUDE_ERROR"
+    DEFAULT_MESSAGE = f"DistanceMagnitude cannot be null"
 
 
     def __init__(self, message=None):

@@ -2,7 +2,7 @@ from typing import Optional, TYPE_CHECKING
 
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from assurance.validation.id_specification import IdSpecification
-from assurance.validation.validation_exception import IdValidationException, CoordinateValidationException
+from assurance.exception.validation.base_validationpy import IdValidationException, CoordinateValidationException
 from chess.exception.null.name_null import NullNameException
 
 from chess.geometry.coordinate.coordinate import Coordinate

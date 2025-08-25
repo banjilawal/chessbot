@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 from assurance.validation.obsolete.validation_result import ValidationResult
-from assurance.validation.validation_exception import ValidationException
+from assurance.exception.validation.base_validationpy import ValidationException
 from chess.token.mobility_status import MobilityStatus
 from chess.rank.promotable.king_rank import KingRank
 from chess.rank.promotable.pawn_rank import PawnRank
@@ -10,13 +10,13 @@ if TYPE_CHECKING:
     from chess.token.chess_piece import ChessPiece
 
 class ChessPieceNotNullValidationFailed(ValidationException):
-    default_message = "ChessPiece failed not null validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed not null validation test"
 class ChessPieceMovableValidationFailed(ValidationException):
-    default_message = "ChessPiece failed movable validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed movable validation test"
 class ChessPiecePromotableValidationFailed(ValidationException):
-    default_message = "ChessPiece failed promotable validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed promotable validation test"
 class ChessPieceOnBoardValidationFailed(ValidationException):
-    default_message = "ChessPiece failed on chess_board validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed on chess_board validation test"
 
 
 class ObsoleteChessPieceValidator:

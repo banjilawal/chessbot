@@ -1,8 +1,8 @@
 from typing import Generic, cast
 
+from assurance.exception.validation.coordinate_validation import CoordinateValidationException
 from assurance.result.base_result import Result
 from assurance.validation.specification import Specification, T
-from assurance.validation.validation_exception import CoordinateValidationException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
 from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException

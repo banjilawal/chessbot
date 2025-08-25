@@ -1,12 +1,12 @@
 from typing import Optional
 
 from assurance.validation.obsolete.validation_result import ValidationResult
-from assurance.validation.validation_exception import ValidationException
+from assurance.exception.validation.base_validationpy import ValidationException
 from chess.owner.owner import Player
 
 
 class PlayerNotNUllValidationFailed(ValidationException):
-    default_message = "Player failed not null validation test"
+    DEFAULT_MESSAGE = "Player failed not null validation test"
 
 class ObsoletePlayerValidator:
 

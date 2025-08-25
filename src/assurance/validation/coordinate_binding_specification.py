@@ -2,7 +2,7 @@ from typing import Generic, cast
 
 from assurance.validation.chess_piece_specification import ChessPieceSpecification
 from assurance.validation.specification import Specification
-from assurance.validation.validation_exception import ChessPieceValidationException
+from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from chess.board.coordinate_bind import CoordinateBinding
 
 

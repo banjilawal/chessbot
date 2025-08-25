@@ -8,13 +8,13 @@ from chess.exception.null.null_row_exception import NullRowException
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
-class CartesianDistance:
+class DistanceMagnitude:
     _p: Coordinate
     _q: Coordinate
-    _distance: int
+    _magnitude: int
 
     """
-    Gives the absolute value of the Euclidean distance between coordinates p and q.
+    Gives the sqaure of Euclidean distance between coordinates p and q.
     Useful in sorting coordinates by distance from some origin. All fields are immutable.
 
     Attributes:
@@ -67,7 +67,7 @@ class CartesianDistance:
 
         self._p = p
         self._q = q
-        self._distance = ((p.row - q.row) ** 2) + ((p.column - q.column) ** 2)
+        self._magnitude = ((p.row - q.row) ** 2) + ((p.column - q.column) ** 2)
 
 
     @property
@@ -81,5 +81,5 @@ class CartesianDistance:
 
 
     @property
-    def distance(self) -> int:
-        return self._distance
+    def magnitude(self) -> int:
+        return self._magnitude
