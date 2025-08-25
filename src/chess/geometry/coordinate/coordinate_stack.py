@@ -1,45 +1,69 @@
 from typing import Optional, List
 
-from chess.exception.base.negative_id_exception import ChessException
+from chess.exception.coordinate.NullCoordinatePushException import NullCoordinatePushException
+from chess.exception.coordinate.PopEmptyCoordinateStackException import PopEmptyCoordinateStackException
+from chess.exception.coordinate.duplicate_coordinate_push import DuplicateCoordinatePushException
+from chess.exception.coordinate.internal__stack_data_structure import InternalStackDataStructureException
+
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
-class PopEmptyCoordinateStackException(ChessException):
-    default_message = "Cannot pop from empty coordinate stack"
-
-class PushNullCoordinateException(ChessException):
-    default_message = "Cannot push p null coordinate on to te stack"
-
 class CoordinateStack:
-    _stack: List[Coordinate]
+    _items: List[Coordinate]
+    _current_coordinate: [Coordinate]
 
     def __init__(self):
-        self._stack = []
+        self._items = []
+        self._current_coordinate = self._items[-1] if self._items else None
+        
 
     @property
     def stack(self) -> List[Coordinate]:
-        return self._stack
+        return self._items
+    
+    
+    @property
+    def current_coordinate(self) -> Optional[Coordinate]:
+        return self._items[-1] if self._items else None
+
 
     def is_empty(self) -> bool:
-        return self.size() == 0 and self.current_coordinate() is None
+        return len(self._items) == 0
 
 
     def size(self) -> int:
-        return len(self._stack)
+        return len(self._items)
 
+    
+    def top_coord(self) -> Optional[Coordinate]:
+        return self._items[-1] if self._items else None
 
-    def current_coordinate(self) -> Optional[Coordinate]:
-        return self._stack[-1] if self._stack else None
-
-
+    
     def push_coordinate(self, coordinate):
         method_name = "CoordinateStack.push"
+        
+        if coordinate is None:
+            raise NullCoordinatePushException(
+                f"{method_name} - {NullCoordinatePushException.DEFAULT_MESSAGE}"
+            )
+        
+        if self._items is None:
+            raise InternalStackDataStructureException(
+                f"{method_name} - {InternalStackDataStructureException.ERROR_CODE}"
+            )
+        
+        if  self.current_coordinate == coordinate:
+            raise DuplicateCoordinatePushException(
+                f"{method_name} - Cannot push duplicate coordinate onto stack"
+            )
+        self._items.append(coordinate)
 
-        if self.current_coordinate() != coordinate:
-            self._stack.append(coordinate)
 
     def undo_push(self):
-        if self.size() == 0:
-            raise PopEmptyCoordinateStackException("Cannot pop from empty coordinate stack")
+        method_name = "CoordinateStack.undo_push"
 
-        self._stack.pop()
+        if len(self._items) == 0:
+            raise PopEmptyCoordinateStackException(
+                f"{method_name} - {PopEmptyCoordinateStackException.DEFAULT_MESSAGE}"
+            )
+        self._items.pop()

@@ -75,7 +75,7 @@ class GreedyDecisionEngine(DecisionEngine):
 
         for analysis in self._board_analysis.assessments:
             coordinate = analysis.obstructions[0].blocked_coordinate
-            origin = analysis.chess_piece.coordinate_stack.current_coordinate()
+            origin = analysis.chess_piece.coordinate_stack.current_coordinate
 
             if DistanceMagnitude(origin, coordinate).magnitude > max_distance:
                 best_report = analysis

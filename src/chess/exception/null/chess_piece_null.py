@@ -2,7 +2,7 @@ from chess.exception.null.null_exception import NullException
 
 
 class NullChessPieceException(NullException):
-    ERROR_CODE = "NULL_CHESSPIECE_ERROR"
+    ERROR_CODE = "NULL_CHESS_PIECE_ERROR"
     DEFAULT_MESSAGE = f"ChessPiece cannot be null"
 
 
