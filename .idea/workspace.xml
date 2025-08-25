@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/chess_piece_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/chess_piece_specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/obsolete_piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/obsolete/obsolete_piece_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/arena_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/arena_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/driver/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/driver/driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/scout/scout.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/scout/scout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/promotable/promotable_rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/promotable/promotable_rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/chess_piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/chess_piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/obstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/obstruction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/bishop_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/bishop_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/castle_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/castle_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/king_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/king_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/knight_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/knight_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/pawn_walk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/walk_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/walk_pkg_info.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -283,7 +304,7 @@
       <workItem from="1756055700930" duration="3506000" />
       <workItem from="1756059266189" duration="6409000" />
       <workItem from="1756069186702" duration="52780000" />
-      <workItem from="1756133122019" duration="8165000" />
+      <workItem from="1756133122019" duration="9180000" />
     </task>
     <servers />
   </component>
