@@ -7,7 +7,7 @@ from assurance.result.base_result import Result
 
 class ThrowHelper(Enum):
     @staticmethod
-    def throw_if_invalid(context: Any, result: Result, exception_factory: Callable[[], Exception]):
+    def throw_if_invalid(context: Any, result: Result, exception_factory: Callable[[], Exception] = None):
         if result.is_success():
             return
 

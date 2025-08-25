@@ -4,6 +4,7 @@ from pygame.draw import lines
 
 from assurance.error_handler import ErrorHandler
 from assurance.result.base_result import Result
+from assurance.throw_helper import ThrowHelper
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from chess import log
 from chess.geometry.coordinate.coordinate import Coordinate
@@ -18,11 +19,13 @@ class CoordinateBuilder(Enum):
         candidate = Coordinate(row, column)
         result = CoordinateSpecification.is_satisfied_by(candidate)
 
-        if result.is_failure():
-            log.error(f"Invalid coordinate: {result.exception}")
-            return Result(payload=None, exception=result.exception)
+        try:
+            result = CoordinateSpecification.is_satisfied_by(candidate)
+            ThrowHelper.throw_if_invalid(CoordinateBuilder, result)
+            return result
+        except Exception as e:
+            return Result(payload=None, exception=e)
 
-        return Result(payload=candidate, exception=None)
 
 def main():
     build_result = CoordinateBuilder.build(3, 4)
@@ -41,16 +44,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-class CoordinateBuilder:
-    @staticmethod
-    def build(row: int, column: int) -> TransactionResult[Coordinate]:
-        candidate = Coordinate(row, column)
-        result = CoordinateSpecification.is_satisfied_by(candidate)
-
-        if result.is_failure():
-            log.error(f"Invalid coordinate: {result.exception}")
-            return Result(payload=None, exception=result.exception)
-
-        return Result(payload=candidate, exception=None)
