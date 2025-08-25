@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assurance/throw_helper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/error_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/error_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/build_coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/build_coordinate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +297,7 @@
       <workItem from="1756031543767" duration="14037000" />
       <workItem from="1756055700930" duration="3506000" />
       <workItem from="1756059266189" duration="6409000" />
-      <workItem from="1756069186702" duration="21529000" />
+      <workItem from="1756069186702" duration="26994000" />
     </task>
     <servers />
   </component>

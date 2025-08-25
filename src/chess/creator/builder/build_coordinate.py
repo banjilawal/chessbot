@@ -1,5 +1,8 @@
+from enum import Enum
+
 from pygame.draw import lines
 
+from assurance.error_handler import ErrorHandler
 from assurance.result.base_result import Result
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from chess import log
@@ -8,7 +11,8 @@ from chess.geometry.coordinate.coordinate import Coordinate
 
 
 
-class CoordinateBuilder:
+class CoordinateBuilder(Enum):
+
     @staticmethod
     def build(row: int, column: int) -> Result[Coordinate]:
         candidate = Coordinate(row, column)
