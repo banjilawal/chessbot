@@ -109,10 +109,11 @@ q = Coordinate(2, 3)
 Best practice explictly state parameters so which is row and column.
 
 #### Delta Shifting
+
 ```python
 delta = Delta(row_delta=1, column_delta=-1)
 p = Coordinate(2, 3)
-r = p.shift(delta)
+r = p.shift_by_delta(delta)
 ```
 
 #### Scalar Multiplication

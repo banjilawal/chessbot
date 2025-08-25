@@ -52,7 +52,7 @@ class Coordinate:
         return f"Coordinate(row:{self._row} column:{self._column})"
 
 
-    def shift(self, delta: Delta) -> 'Coordinate':
+    def shift_by_delta(self, delta: Delta) -> 'Coordinate':
         method = "Coordinate.shift()"
 
         """

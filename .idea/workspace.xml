@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/creator/builder/distance_magnitude_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/build_coordinate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/build_coordinate.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +54,7 @@
     "Python.chess_board_builder.executor": "Run",
     "Python.chess_piece_builder.executor": "Run",
     "Python.coordinate_specification.executor": "Debug",
+    "Python.distance_magnitude_builder.executor": "Run",
     "Python.driver.executor": "Run",
     "Python.find_missiing_package_init.executor": "Run",
     "Python.motion_controller_builder.executor": "Run",
@@ -119,7 +116,7 @@
       <recent name="$PROJECT_DIR$/src/chess/exception/core" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.base_validationpy">
+  <component name="RunManager" selected="Python.distance_magnitude_builder">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,7 +186,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="find_missiing_package_init" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="distance_magnitude_builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -198,12 +195,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/creator/builder" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/find_missiing_package_init.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/creator/builder/distance_magnitude_builder.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -246,11 +243,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.distance_magnitude_builder" />
         <item itemvalue="Python.base_validationpy" />
         <item itemvalue="Python tests.Python tests in cartesian_distance_test.py" />
         <item itemvalue="Python.build_coordinate" />
         <item itemvalue="Python tests.Python tests in coordinate_test.py" />
-        <item itemvalue="Python.find_missiing_package_init" />
       </list>
     </recent_temporary>
   </component>
@@ -291,7 +288,7 @@
       <workItem from="1756031543767" duration="14037000" />
       <workItem from="1756055700930" duration="3506000" />
       <workItem from="1756059266189" duration="6409000" />
-      <workItem from="1756069186702" duration="42658000" />
+      <workItem from="1756069186702" duration="43141000" />
     </task>
     <servers />
   </component>
@@ -329,6 +326,7 @@
     <SUITE FILE_PATH="coverage/chessbot$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1755129037473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chessbot$motion_controller_factory__1_.coverage" NAME="motion_controller_factory (1) Coverage Results" MODIFIED="1754421232075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
     <SUITE FILE_PATH="coverage/chessbot$rank_builder.coverage" NAME="rank_builder Coverage Results" MODIFIED="1754792035045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$distance_magnitude_builder.coverage" NAME="distance_magnitude_builder Coverage Results" MODIFIED="1756122228457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
     <SUITE FILE_PATH="coverage/chessbot$board_controller_builder.coverage" NAME="board_controller_builder Coverage Results" MODIFIED="1754426532490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/service" />
     <SUITE FILE_PATH="coverage/chessbot$driver.coverage" NAME="driver Coverage Results" MODIFIED="1755033742497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/driver" />
     <SUITE FILE_PATH="coverage/chessbot$build_coordinate.coverage" NAME="build_coordinate Coverage Results" MODIFIED="1756102383732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />

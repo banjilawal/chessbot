@@ -33,37 +33,7 @@ class DistanceMagnitude:
         Args:
             p (Coordinate): One coordinate in the pair
             q (Coordinate): Other coordinate in the pair
-
-        Raise:
-            NullCoordinateException: If p or q are null.
-            RowOutOfRangeException: If p or q rows are out of bounds
-            ColumnOutOfRangeException: if p or q columns are out of bounds
         """
-        #
-        if p is None:
-            raise NullCoordinateException(f"{method} p {NullCoordinateException.DEFAULT_MESSAGE}")
-        if q is None:
-            raise NullCoordinateException(f"{method} q {NullCoordinateException.DEFAULT_MESSAGE}")
-
-        if p.row is None:
-            raise NullRowException(f"{method} p.row {NullRowException.DEFAULT_MESSAGE}")
-        if p.row < 0 or p.row >= ROW_SIZE:
-            raise RowOutOfBoundsException(f"{method} {p.row} {RowOutOfBoundsException.DEFAULT_MESSAGE}")
-
-        if p.column is None:
-            raise NullColumnException(f"{method} p.row {NullColumnException.DEFAULT_MESSAGE}")
-        if p.column < 0 or p.column >= COLUMN_SIZE:
-            raise ColumnOutOfBoundsException(f"{method} {p.column} {ColumnOutOfBoundsException.DEFAULT_MESSAGE}")
-
-        if q.row is None:
-            raise NullRowException(f"{method} q.row {NullRowException.DEFAULT_MESSAGE}")
-        if q.row < 0 or q.row >= ROW_SIZE:
-            raise RowOutOfBoundsException(f"{method} {q.row} {RowOutOfBoundsException.DEFAULT_MESSAGE}")
-
-        if q.column is None:
-            raise NullColumnException(f"{method} q.column {NullColumnException.DEFAULT_MESSAGE}")
-        if q.column < 0 or q.column >= COLUMN_SIZE:
-            raise ColumnOutOfBoundsException(f"{method} {q.column} {ColumnOutOfBoundsException.DEFAULT_MESSAGE}")
 
         self._p = p
         self._q = q
