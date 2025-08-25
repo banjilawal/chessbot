@@ -1,24 +1,32 @@
 from typing import Generic, cast
 
+from assurance.result.base_result import Result
 from assurance.validation.specification import Specification, T
 from assurance.validation.validation_exception import CoordinateValidationException
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
 from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
 from chess.exception.null.coordinate_null import NullCoordinateException
+from chess.exception.null.null_column_exception import NullColumnException
+from chess.exception.null.null_row_exception import NullRowException
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
 class CoordinateSpecification(Specification):
 
+    DEFAULT_MESSAGE = "CoordinateSpecification: Coordinate validation failed"
+
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> bool:
+    def is_satisfied_by(t: Generic[T]) -> Result[Coordinate]:
         method = "CoordinateSpecification.is_satisfied_by"
 
         """
         Validates a coordinate with chained exceptions for coordinate meeting specifications:
             - Not null
-            - Within the bounds of the chess chessboard
+            - row is not null
+            - row is within the bounds of the chess chessboard
+            - column is not null
+            - column is within the bounds of the chess chessboard
         If either validation fails their exception will be encapsulated in a CoordinateValidationException
             
         Args
@@ -47,7 +55,7 @@ class CoordinateSpecification(Specification):
         try:
             if t is None:
                 raise NullCoordinateException(
-                    f"{method} NullCoordinateException.default_message"
+                    f"{method} NullCoordinateException.DEFAULT_MESSAGE"
                 )
 
             if not isinstance(t, Coordinate):
@@ -55,20 +63,24 @@ class CoordinateSpecification(Specification):
 
             coordinate = cast(Coordinate, t)
 
+            if coordinate.row is None:
+                raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
+
             if coordinate.row < 0 or coordinate.row >= ROW_SIZE:
-                raise RowOutOfBoundsException(
-                    f"{method} {RowOutOfBoundsException.default_message}"
-                )
+                raise RowOutOfBoundsException(f"{method} {RowOutOfBoundsException.DEFAULT_MESSAGE}")
+
+            if coordinate.column is None:
+                raise NullCoordinateException(f"{method} {NullCoordinateException.DEFAULT_MESSAGE}")
 
             if coordinate.column < 0 or coordinate.column >= COLUMN_SIZE:
-                raise ColumnOutOfBoundsException(
-                    f"{method} {ColumnOutOfBoundsException.default_message}"
-                )
+                raise ColumnOutOfBoundsException(f"{method} {ColumnOutOfBoundsException.DEFAULT_MESSAGE}")
 
-            return True
+            return Result(payload=coordinate)
 
         except (
             NullCoordinateException, TypeError,
-            RowOutOfBoundsException, ColumnOutOfBoundsException) as e:
+            NullRowException, RowOutOfBoundsException,
+            NullColumnException, ColumnOutOfBoundsException) as e:
             raise CoordinateValidationException(
-                f"{method} CoordinateValidationException.default_message") from e
+                f"{method} CoordinateSpecification: Coordinate validation failed"
+            ) from e

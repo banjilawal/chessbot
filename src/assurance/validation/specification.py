@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, Optional
+from typing import Generic, TypeVar
+
+from assurance.result.base_result import Result
 
 T = TypeVar('T')
 
@@ -7,5 +9,16 @@ class Specification(ABC, Generic[T]):
 
     @staticmethod
     @abstractmethod
-    def is_satisfied_by(t: Generic[T]) -> bool:
+    def is_satisfied_by(t: Generic[T]) -> Result[T]:
+        """
+        Validates the input and returns a Result object.
+         On success: Result(payload=t)
+         On failure: Result(exception=...)
+         Args:
+             t (Generic[T]): The object to validate.
+
+         Returns:
+             Result[T]: A Result object containing the validated payload if the specification is satisfied,
+                         or an exception if it is not.
+         """
         pass

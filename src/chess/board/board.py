@@ -1,12 +1,8 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
-from assurance.validation.chess_piece_specification import ChessPieceSpecification
 from assurance.validation.coordinate_specification import CoordinateSpecification
-from assurance.validation.validation_exception import CoordinateValidationException, ChessPieceValidationException
-from chess.exception.negative_id_exception import ChessException
-from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.creator.team_placement_manager import PlacementException
+from assurance.validation.validation_exception import CoordinateValidationException
 from chess.geometry.coordinate.coordinate import Coordinate, Delta
 from chess.board.square_iterator import SquareIterator
 from chess.board.square import Square

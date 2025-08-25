@@ -5,7 +5,7 @@ from assurance.validation.validation_exception import ChessPieceValidationExcept
 from chess.exception.move.empty_stack_chess_piece import EmptyStackChessPieceMoveException
 from chess.exception.move.move import CapturedPieceMoveException
 from chess.exception.null.coordinate_stack_null import NullCoordinateStackException
-from chess.exception.null.null import NullException
+from chess.exception.null.null_exception import NullException
 from chess.token.chess_piece import ChessPiece
 
 

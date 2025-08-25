@@ -2,7 +2,8 @@ from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
 from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
 from chess.exception.null.delta_null import NullDeltaException
-from chess.exception.null.null import NullException
+from chess.exception.null.null_column_exception import NullColumnException
+from chess.exception.null.null_row_exception import NullRowException
 from chess.geometry.coordinate.delta import Delta
 
 class Coordinate:
@@ -20,34 +21,6 @@ class Coordinate:
 
     def __init__(self, row: int, column: int):
         method = "Coordinate.__init__()"
-
-        """
-        Creates a Coordinate instance
-
-        Args:
-            row (int): row index
-            column (int): column index
-
-        Raise:
-            NullChessObject: If row or column are null
-            RowOutOfBoundsException: If row is out of bounds of ROW_SIZE.
-            ColumnOutOfBoundsException: If column is out of bounds of COLUMN_SIZE.
-        """
-
-        if row is None:
-            raise NullException(
-                f"{method}: row cannot be null. Coordinate instantiation failed"
-            )
-        if column is None:
-            raise NullException(
-                f"{method}: column cannot be null. Coordinate instantiation failed"
-            )
-
-        if row < 0 or row >= ROW_SIZE:
-            raise RowOutOfBoundsException(RowOutOfBoundsException.default_message)
-        if column < 0 or column >= COLUMN_SIZE:
-            raise ColumnOutOfBoundsException(ColumnOutOfBoundsException.default_message)
-
         self._row = row
         self._column = column
 
