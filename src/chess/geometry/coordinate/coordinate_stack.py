@@ -18,7 +18,7 @@ class CoordinateStack:
         
 
     @property
-    def stack(self) -> List[Coordinate]:
+    def items(self) -> List[Coordinate]:
         return self._items
     
     
@@ -35,10 +35,6 @@ class CoordinateStack:
         return len(self._items)
 
     
-    def top_coord(self) -> Optional[Coordinate]:
-        return self._items[-1] if self._items else None
-
-    
     def push_coordinate(self, coordinate):
         method_name = "CoordinateStack.push"
         
@@ -53,8 +49,9 @@ class CoordinateStack:
             )
         
         if  self.current_coordinate == coordinate:
+            print(f"current_coord:{self.current_coordinate} vs new_coord:{coordinate}")
             raise DuplicateCoordinatePushException(
-                f"{method_name} - Cannot push duplicate coordinate onto stack"
+                f"{method_name} {DuplicateCoordinatePushException.DEFAULT_MESSAGE}"
             )
         self._items.append(coordinate)
 
@@ -67,3 +64,16 @@ class CoordinateStack:
                 f"{method_name} - {PopEmptyCoordinateStackException.DEFAULT_MESSAGE}"
             )
         self._items.pop()
+#
+#
+# def main():
+#     coordinate_stack = CoordinateStack()
+#     coordinate_stack.push_coordinate(Coordinate(1, 1))
+#     coordinate_stack.push_coordinate(Coordinate(1, 1))
+#     print(f"Current Coordinate: {coordinate_stack.current_coordinate}")
+#     coordinate_stack.undo_push()
+#     print(f"Current Coordinate after undo: {coordinate_stack.current_coordinate}")
+#
+#
+# if __name__ == '__main__':
+#     main()

@@ -2,43 +2,84 @@ import unittest
 
 import pytest
 
-from chess.exception.null.coordinate_stack_null import NullCoordinateStackException
+from chess.exception.coordinate.NullCoordinatePushException import NullCoordinatePushException
+from chess.exception.coordinate.duplicate_coordinate_push import DuplicateCoordinatePushException
+from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack, PopEmptyCoordinateStackException
 
 
 class CoordinateStackTest(unittest.TestCase):
 
-    def test_new_coordinate_stack_list_is_not_null(self):
-        coordinate_stack = CoordinateStack()
-        self.assertIsNotNone(coordinate_stack.stack)
+    def test_internal_data_structure_not_null(self):
+        self.assertIsNotNone(CoordinateStack().items)
+
 
     def test_new_coordinate_stack_is_empty(self):
         coordinate_stack = CoordinateStack()
-        self.assertTrue(coordinate_stack.is_empty())
+        self.assertTrue(len(CoordinateStack().items) == 0)
+
 
     def test_pop_empty_stack_raises_exception(self):
-        coordinate_stack = CoordinateStack()
         with pytest.raises(PopEmptyCoordinateStackException):
-            coordinate_stack.stack.pop()
+            CoordinateStack().undo_push()
 
 
-    def test_push_null_coordinate_raises_exception(self):
-        self.assertEqual(True, False)
+    def test_null_coordinate_push_raises_exception(self):
+        with pytest.raises(NullCoordinatePushException):
+            CoordinateStack().push_coordinate(None)
 
-    def pushing_duplicate_coordinate_raises_exception(self):
-        self.assertEqual(True, False)
 
-    def test_empty_stack_size_is_zero(self):
-        self.assertEqual(True, False)
+    def test_duplicate_coordinate_push_raises_exception(self):
+        coord = Coordinate(row=1, column=1)
+        coordinate_stack = CoordinateStack()
+        coordinate_stack.push_coordinate(coord)
 
-    def test_empty_stack_size_not_less_than_zero(self):
-        self.assertEqual(True, False)
+        with pytest.raises(DuplicateCoordinatePushException):
+            coordinate_stack.push_coordinate(coord)
 
-    def test_push_coordinate_increases_size(self):
-        self.assertEqual(True, False)
+    def test_pushing_coordinate_updates_current_coordinate(self):
+        coord1 = Coordinate(row=1, column=1)
+        coord2 = Coordinate(row=2, column=2)
 
-    def test_pop_coordinate_decreases_size(self):
-        self.assertEqual(True, False)
+        coordinate_stack = CoordinateStack()
+        coordinate_stack.push_coordinate(coord1)
+        self.assertEqual(coordinate_stack.current_coordinate, coord1)
+
+        coordinate_stack.push_coordinate(coord2)
+        self.assertEqual(coordinate_stack.current_coordinate, coord2)
+
+    def test_undo_push_updates_current_coordinate(self):
+        coord1 = Coordinate(row=1, column=1)
+        coord2 = Coordinate(row=2, column=2)
+
+        coordinate_stack = CoordinateStack()
+        coordinate_stack.push_coordinate(coord1)
+        coordinate_stack.push_coordinate(coord2)
+
+        coordinate_stack.undo_push()
+        self.assertEqual(coordinate_stack.current_coordinate, coord1)
+
+
+    def test_pushing_coordinate_increments_size(self):
+        coord1 = Coordinate(row=1, column=1)
+
+        coordinate_stack = CoordinateStack()
+        original_size = coordinate_stack.size()
+        self.assertEqual(coordinate_stack.size(), 0)
+
+        coordinate_stack.push_coordinate(coord1)
+        self.assertEqual(coordinate_stack.size(), original_size + 1)
+
+
+    def test_undo_push_decrements_size(self):
+
+        coordinate_stack = CoordinateStack()
+        coordinate_stack.push_coordinate(Coordinate(row=1, column=1))
+        size_before_undo = coordinate_stack.size()
+
+        coordinate_stack.undo_push()
+        self.assertEqual(coordinate_stack.size(), size_before_undo - 1)
+
 
 if __name__ == '__main__':
     unittest.main()

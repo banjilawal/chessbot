@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coordinate/coordinate_stack_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/null/chess_piece_null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null/chess_piece_null.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/walk/walk_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/walk_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coordinate/coordinate_stack_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coordinate/coordinate_stack_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +277,7 @@
       <workItem from="1756055700930" duration="3506000" />
       <workItem from="1756059266189" duration="6409000" />
       <workItem from="1756069186702" duration="52780000" />
-      <workItem from="1756133122019" duration="4094000" />
+      <workItem from="1756133122019" duration="6649000" />
     </task>
     <servers />
   </component>
