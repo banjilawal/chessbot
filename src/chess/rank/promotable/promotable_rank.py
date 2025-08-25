@@ -33,7 +33,7 @@ class PromotableRank(Rank):
     def promote(self, chess_piece: 'ChessPiece') -> Optional['ChessPiece']:
 
         enemy_back_row_index = chess_piece.team.enemy_back_row_index()
-        if chess_piece.coordinate_stack.current_coordinate().row != enemy_back_row_index():
+        if chess_piece.positions.current_coordinate().row != enemy_back_row_index():
             print(f"{chess_piece.get_name()} is not the enemy's home row. Cannot be promoted.")
             raise TypeError(f"{chess_piece.get_name()} is not on the enemy home row. Cannot be promoted.")
 
@@ -46,10 +46,10 @@ class PromotableRank(Rank):
             rank=QueenRank(),
             team=chess_piece.team
         )
-        stack = chess_piece.coordinate_stack.stack
+        stack = chess_piece.positions.stack
         while (len(stack)) > 0:
             entry = stack.pop()
-            promoted_chess_piece.coordinate_stack.push_coordinate(entry)
+            promoted_chess_piece.positions.push_coordinate(entry)
 
         return promoted_chess_piece
 

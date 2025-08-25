@@ -19,7 +19,7 @@ class BishopWalk(Walk):
         """
 
         if Diagonal.is_diagonal(
-            chess_piece.coordinate_stack.current_coordinate(),
+            chess_piece.positions.current_coordinate(),
             destination
         ):
             raise BishopWalkException(BishopWalkException.default_message)

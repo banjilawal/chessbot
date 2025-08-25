@@ -20,7 +20,7 @@ class CastleWalk(Walk):
         test if Castle can legally reach the destination.
         """
 
-        origin = chess_piece.coordinate_stack.current_coordinate()
+        origin = chess_piece.positions.current_coordinate()
 
         if (
             Vertical.is_vertical(origin, destination) or

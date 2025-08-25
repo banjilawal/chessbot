@@ -13,7 +13,7 @@ class Obstruction:
 
     def __init__(self, friend: 'ChessPiece'):
         self._friend_id = friend.id
-        self._blocked_coordinate = friend.coordinate_stack.current_coordinate()
+        self._blocked_coordinate = friend.positions.current_coordinate()
 
     @property
     def friend_id(self) -> int:

@@ -17,7 +17,7 @@ class KnightWalk(Walk):
         # Uses difference between the origin and destination rows and columns to
         # see if they form an L shaped motion.
 
-        origin = chess_piece.coordinate_stack.current_coordinate()
+        origin = chess_piece.positions.current_coordinate()
 
         row_diff = abs(origin.row - destination.row)
         col_diff = abs(origin.column - destination.column)

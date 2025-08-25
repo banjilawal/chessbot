@@ -254,7 +254,7 @@ class ChessBoard:
         """
 
         self.find_square_by_coordinate(
-            prisoner.coordinate_stack.current_coordinate()
+            prisoner.positions.current_coordinate
         ).occupant = None
 
         prisoner.captor = jailer
@@ -286,7 +286,7 @@ class ChessBoard:
         # because there is less code than if I got the coords first to find the square
         # then deleted it.
         # STORE the old coordinate FIRST before any modifications
-        old_coordinate = captor.coordinate_stack.current_coordinate()
+        old_coordinate = captor.positions.current_coordinate
         old_square = self.find_square_by_coordinate(old_coordinate)
 
         print(
@@ -301,7 +301,7 @@ class ChessBoard:
                 old_square.occupant = None
                 print(f"DEBUG: Cleared old square {old_square.name}")
         self.find_square_by_coordinate(
-            captor.coordinate_stack.current_coordinate()
+            captor.positions.current_coordinate
         ).occupant = None
 
         validated_destination = self.find_square_by_coordinate(destination.coordinate)
@@ -315,13 +315,13 @@ class ChessBoard:
 
         # Put the destination square's coordinates at the top of the captor's
         # coordinate stack.
-        captor.coordinate_stack.push_coordinate(validated_destination.coordinate)
+        captor.positions.push_coordinate(validated_destination.coordinate)
 
         # Checks to make sure everything worked correctly.
         # If there are inconsistencies, throw exceptions.
         if destination.occupant is not captor:
             raise Exception(f"{method}: data inconsistency square occupant not updated")
-        if captor.coordinate_stack.current_coordinate() is not destination.coordinate:
+        if captor.positions.current_coordinate() is not destination.coordinate:
             raise Exception(f"{method}: chess_piece coordinate stack not updated")
 
         # Method showing success.

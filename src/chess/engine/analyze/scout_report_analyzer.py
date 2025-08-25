@@ -23,7 +23,7 @@ class ScoutReportAnalyzer:
         self._scout_report = scout_report
 
         self._scout = scout_report.scout
-        self._scout_coordinate = scout_report.scout.coordinate_stack.current_coordinate()
+        self._scout_coordinate = scout_report.scout.positions.current_coordinate()
 
 
 

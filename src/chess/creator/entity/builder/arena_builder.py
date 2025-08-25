@@ -32,7 +32,7 @@ def main():
     print(arena.chess_board)
     for c in arena.white_owner.team.chess_pieces, arena.black_owner.team.chess_pieces:
         for p in c:
-            print(p, " current coord", p.coordinate_stack.current_coordinate(), p.coordinate_stack.size())
+            print(p, " current coord", p.positions.current_coordinate(), p.positions.size())
     #
     # teams = TeamFactory.assemble()
     # white_team_owner = teams[0].owner

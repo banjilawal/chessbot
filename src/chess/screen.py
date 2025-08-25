@@ -39,7 +39,7 @@ class DragState:
     def updated_position(self, new_coordinate: Coordinate):
         return DragState(
             chess_piece=self.chess_piece,
-            original_coordinate=self.chess_piece.coordinate_stack.current_coordinate(),
+            original_coordinate=self.chess_piece.positions.current_coordinate(),
             current_coordinate=new_coordinate,
             offset_x =self.offset_x,
             offset_y=self.offset_y
@@ -116,7 +116,7 @@ class GameDisplay:
         bishop_color = BISHOP_COLOR
         queen_color = QUEEN_COLOR
 
-        coordinate = chess_piece.coordinate_stack.current_coordinate()
+        coordinate = chess_piece.positions.current_coordinate()
         chess_piece_shape = pygame.Rect(
             coordinate.column * self.cell_px + self.border_px,
             coordinate.row * self.cell_px + self.border_px,
@@ -185,7 +185,7 @@ class GameDisplay:
         self.is_dragging = True
 
         # Calculate offset so the piece doesn't jump to mouse corner
-        coord = chess_piece.coordinate_stack.current_coordinate()
+        coord = chess_piece.positions.current_coordinate()
         piece_x = coord.column * self.cell_px + self.border_px
         piece_y = coord.row * self.cell_px + self.border_px
         offset_x = mouse_pos[0] - piece_x

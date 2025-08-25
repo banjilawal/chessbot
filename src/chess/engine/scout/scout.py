@@ -20,7 +20,7 @@ class Scout:
 
     def survey(self, chess_board: ChessBoard) -> ScoutReport:
         squares: List[Square] = []
-        origin = self._scout.coordinate_stack.current_coordinate()
+        origin = self._scout.positions.current_coordinate()
 
         for territory in self._scout.rank.territories:
             for square in chess_board.iterator(origin, territory.delta):

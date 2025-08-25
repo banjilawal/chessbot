@@ -17,7 +17,7 @@ class KingWalk(Walk):
         A king moves horizontally and diagonally like a Queen but only in radius of 1
         """
 
-        origin = chess_piece.coordinate_stack.current_coordinate()
+        origin = chess_piece.positions.current_coordinate()
 
         if not (
             abs(origin.row - destination.row) == 1 and

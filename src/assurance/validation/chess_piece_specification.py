@@ -44,13 +44,13 @@ class MoveSpecification(ChessPieceSpecification):
 
             chess_piece = cast(ChessPiece, t)
 
-            if chess_piece.coordinate_stack is None:
+            if chess_piece.positions is None:
                 print(f"{chess_piece.name} has a null stack")
                 raise NullCoordinateStackException(
                     f"{method} {NullCoordinateStackException.default_message}"
                 )
 
-            if chess_piece.coordinate_stack.is_empty():
+            if chess_piece.positions.is_empty():
                 print(f"{chess_piece.name}  coordinate stack is empty")
                 raise EmptyStackChessPieceMoveException(
                     f"{method} {EmptyStackChessPieceMoveException.default_message}"

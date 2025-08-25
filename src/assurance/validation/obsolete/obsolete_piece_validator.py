@@ -38,7 +38,7 @@ class ObsoleteChessPieceValidator:
                  ChessPieceMovableValidationFailed(test_report.validation_exception.message))
 
         testing_payload = test_report.payload
-        if testing_payload.coordinate_stack < 1 and testing_payload.status != MobilityStatus.FREE:
+        if testing_payload.positions < 1 and testing_payload.status != MobilityStatus.FREE:
             return ValidationResult.send_failed_valtidation_report(
                 ChessPieceMovableValidationFailed("ChessPiece failed movable validation test"))
         return ValidationResult.send_passed_validation_report(payload=chess_piece)
@@ -110,7 +110,7 @@ class ObsoleteChessPieceValidator:
             return ValidationResult.send_failed_valtidation_report(
                 ChessPieceOnBoardValidationFailed(not_movable_report.validation_exception.message))
 
-        if len(piece.coordinate_stack) != 0 :
+        if len(piece.positions) != 0 :
             return ValidationResult.send_failed_valtidation_report(
                 ChessPieceOnBoardValidationFailed("The chess captor is already on the chess_board"))
 

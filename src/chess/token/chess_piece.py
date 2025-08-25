@@ -22,7 +22,7 @@ class ChessPiece(Token):
     _captor: 'ChessPiece'
     _status: MobilityStatus
     _obstructions: List[Obstruction]
-    _coordinate_stack: CoordinateStack
+    _positions: CoordinateStack
 
 
     def __init__(self, token_id: int, name: str, rank: 'Rank', team: 'Team'):
@@ -39,7 +39,7 @@ class ChessPiece(Token):
         self._obstructions = []
         self._status = MobilityStatus.FREE
 
-        self._coordinate_stack = CoordinateStack()
+        self._positions = CoordinateStack()
         team.chess_pieces.append(self)
 
 
@@ -64,8 +64,8 @@ class ChessPiece(Token):
 
 
     @property
-    def coordinate_stack(self) -> CoordinateStack:
-        return self._coordinate_stack
+    def positions(self) -> CoordinateStack:
+        return self._positions
 
 
     @property
@@ -152,8 +152,8 @@ class ChessPiece(Token):
         return (
             f"ChessPiece[id:{self._id} "
             f"name:{self._name} "
-            f"stack_size:{self._coordinate_stack.size()} "
-            f"current_coordinate: {self._coordinate_stack.current_coordinate()} "
+            f"total_positions:{self._positions.size()} "
+            f"current_position: {self._positions.current_coordinate} "
             f"status:{self._status.name}"
         )
 

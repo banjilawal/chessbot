@@ -45,7 +45,7 @@ class GreedyDecisionEngine(DecisionEngine):
                 best_report = analysis
 
         if best_report is not None:
-            return best_report.enemies[0].coordinate_stack.current_coordinate()
+            return best_report.enemies[0].positions.current_coordinate()
         return best_report
 
 
@@ -57,7 +57,7 @@ class GreedyDecisionEngine(DecisionEngine):
         for analysis in self._board_analysis.assessments:
 
             square = analysis.vacant_squares[0]
-            origin = analysis.chess_piece.coordinate_stack.current_coordinate()
+            origin = analysis.chess_piece.positions.current_coordinate()
 
             if DistanceMagnitude(origin, square.coordinate).magnitude > max_distance:
                 best_report = analysis
@@ -75,7 +75,7 @@ class GreedyDecisionEngine(DecisionEngine):
 
         for analysis in self._board_analysis.assessments:
             coordinate = analysis.obstructions[0].blocked_coordinate
-            origin = analysis.chess_piece.coordinate_stack.current_coordinate
+            origin = analysis.chess_piece.positions.current_coordinate
 
             if DistanceMagnitude(origin, coordinate).magnitude > max_distance:
                 best_report = analysis

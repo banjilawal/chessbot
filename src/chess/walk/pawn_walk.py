@@ -29,7 +29,7 @@ class PawnWalk(Walk):
 
     @staticmethod
     def can_advance(chess_piece: ChessPiece, destination: Coordinate) -> bool:
-        origin = chess_piece.coordinate_stack.current_coordinate()
+        origin = chess_piece.positions.current_coordinate()
         forward_step = chess_piece.team.home_quadrant.forward_step
         print(f"quadrant for "
               f"\n{chess_piece.name} "
@@ -42,14 +42,14 @@ class PawnWalk(Walk):
         print(f"Expecting 0 for column_diff got {column_diff} on forward stop {forward_step}")
 
         # Allow 2-step move only on first move
-        if chess_piece.coordinate_stack.size() == 1 and row_diff == 2 * forward_step:
+        if chess_piece.positions.size() == 1 and row_diff == 2 * forward_step:
             return True
 
         return row_diff == forward_step and origin.column == destination.column
 
     @staticmethod
     def can_attack(pawn: ChessPiece, destination: Coordinate) -> bool:
-        origin = pawn.coordinate_stack.current_coordinate()
+        origin = pawn.positions.current_coordinate()
         delta = Offset(
             column_offset=destination.column - origin.column,
             row_offset=destination.row - origin.row
