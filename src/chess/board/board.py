@@ -3,7 +3,7 @@ from typing import List, Optional, TYPE_CHECKING
 
 from assurance.validation.coordinate_specification import CoordinateSpecification
 from assurance.exception.validation.base_validationpy import CoordinateValidationException
-from chess.geometry.coordinate.coordinate import Coordinate, Delta
+from chess.geometry.coordinate.coordinate import Coordinate, Offset
 from chess.board.square_iterator import SquareIterator
 from chess.board.square import Square
 
@@ -68,7 +68,7 @@ class ChessBoard:
     def iterator(
         self,
         index: Coordinate = Coordinate(0, 0),
-        delta: Delta = Delta(column_delta=1, row_delta=1)
+        delta: Offset = Offset(column_offset=1, row_offset=1)
      ) -> SquareIterator:
 
         method = "ChessBoard.iterator"

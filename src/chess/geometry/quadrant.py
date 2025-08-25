@@ -1,6 +1,6 @@
 
 
-from chess.geometry.coordinate.coordinate import Delta
+from chess.geometry.coordinate.coordinate import Offset
 from enum import Enum, auto
 from typing import Optional
 
@@ -18,17 +18,17 @@ class Quadrant(Enum):
         obj._row_id = row_id
         return obj
 
-    N = (Delta(column_delta=0, row_delta=1), auto(), "north", -1, 0)
-    NE = (Delta(column_delta=1, row_delta=1), auto(), "northeast")
-    E = (Delta(column_delta=1, row_delta=0), auto(), "east")
-    SE = (Delta(column_delta=1, row_delta=-1), auto(), "southeast")
-    S = (Delta(column_delta=0, row_delta=-1), auto(), "south", 1, BOARD_DIMENSION - 1)
-    SW = (Delta(column_delta=-1, row_delta=-1), auto(), "southwest")
-    W = (Delta(column_delta=-1, row_delta=0), auto(), "west")
-    NW = (Delta(column_delta=-1, row_delta=1), auto(), "northwest")
+    N = (Offset(column_offset=0, row_offset=1), auto(), "north", -1, 0)
+    NE = (Offset(column_offset=1, row_offset=1), auto(), "northeast")
+    E = (Offset(column_offset=1, row_offset=0), auto(), "east")
+    SE = (Offset(column_offset=1, row_offset=-1), auto(), "southeast")
+    S = (Offset(column_offset=0, row_offset=-1), auto(), "south", 1, BOARD_DIMENSION - 1)
+    SW = (Offset(column_offset=-1, row_offset=-1), auto(), "southwest")
+    W = (Offset(column_offset=-1, row_offset=0), auto(), "west")
+    NW = (Offset(column_offset=-1, row_offset=1), auto(), "northwest")
 
     @property
-    def delta(self) -> Delta:
+    def delta(self) -> Offset:
         return self._delta
 
     @property

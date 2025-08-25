@@ -4,16 +4,15 @@ import pytest
 
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
-from chess.exception.coordinate.negative_distance_metric import NegativeDistanceMetric
 from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
 from chess.exception.null.coordinate_null import NullCoordinateException
-from chess.exception.null.null_column_exception import NullColumnException
-from chess.exception.null.null_row_exception import NullRowException
+from chess.exception.null.null_column import NullColumnException
+from chess.exception.null.null_row import NullRowException
 from chess.geometry.coordinate.distance_magnitude import DistanceMagnitude
 from chess.geometry.coordinate.coordinate import Coordinate
 
 
-class CartesianDistanceTest(unittest.TestCase):
+class DistanceMagnitudeTest(unittest.TestCase):
 
     def test_null_p_coord_raises_exception(self):
         with pytest.raises(NullCoordinateException):

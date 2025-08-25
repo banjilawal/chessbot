@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.coordinate.delta import Delta
+from chess.geometry.coordinate.offset import Offset
 
 
 from chess.walk.walk import Walk
@@ -50,9 +50,9 @@ class PawnWalk(Walk):
     @staticmethod
     def can_attack(pawn: ChessPiece, destination: Coordinate) -> bool:
         origin = pawn.coordinate_stack.current_coordinate()
-        delta = Delta(
-            column_delta=destination.column - origin.column,
-            row_delta=destination.row - origin.row
+        delta = Offset(
+            column_offset=destination.column - origin.column,
+            row_offset=destination.row - origin.row
         )
 
         return any(delta == q.delta for q in pawn.rank.territories)

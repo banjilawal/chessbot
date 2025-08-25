@@ -1,7 +1,7 @@
 import traceback
 
 from chess.creator.entity.builder.arena_builder import ArenaBuilder
-from chess.geometry.coordinate.coordinate import Delta, Coordinate
+from chess.geometry.coordinate.coordinate import Offset, Coordinate
 
 
 def main():

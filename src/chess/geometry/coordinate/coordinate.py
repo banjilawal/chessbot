@@ -2,9 +2,9 @@ from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
 from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
 from chess.exception.null.delta_null import NullDeltaException
-from chess.exception.null.null_column_exception import NullColumnException
-from chess.exception.null.null_row_exception import NullRowException
-from chess.geometry.coordinate.delta import Delta
+from chess.exception.null.null_column import NullColumnException
+from chess.exception.null.null_row import NullRowException
+from chess.geometry.coordinate.offset import Offset
 
 class Coordinate:
     _row: int
@@ -52,7 +52,7 @@ class Coordinate:
         return f"Coordinate(row:{self._row} column:{self._column})"
 
 
-    def shift_by_delta(self, delta: Delta) -> 'Coordinate':
+    def shift_by_offset(self, offset: Offset) -> 'Coordinate':
         method = "Coordinate.shift()"
 
         """
@@ -68,13 +68,13 @@ class Coordinate:
             NullDeltaException: if delta is null.
         """
 
-        if delta is None:
+        if offset is None:
             raise NullDeltaException(f"{method} {NullDeltaException.default_message}")
 
         # Creating totally new values makes sure nothing
         # hinky happens creating the new shifted coordinate.
-        new_row = self._row + delta.row_delta
-        new_colum = self._column + delta.column_delta
+        new_row = self._row + offset.row_offset
+        new_colum = self._column + offset.column_offset
 
         return Coordinate(row=new_row, column=new_colum)
 

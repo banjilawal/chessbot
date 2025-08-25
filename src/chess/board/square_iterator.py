@@ -1,19 +1,19 @@
 from typing import List
 
-from chess.geometry.coordinate.coordinate import Coordinate, Delta
+from chess.geometry.coordinate.coordinate import Coordinate, Offset
 from chess.board.square import Square
 
 
 class SquareIterator:
     _squares: List[List[Square]]
     _index: Coordinate
-    _delta: Delta
+    _delta: Offset
 
     def __init__(
         self,
         squares: List[List[Square]],
         index: Coordinate = Coordinate(0, 0),
-        delta: Delta=Delta(column_delta=1, row_delta=1)
+        delta: Offset=Offset(column_offset=1, row_offset=1)
     ):
         self._squares = squares
         self._index = index
@@ -27,5 +27,5 @@ class SquareIterator:
             raise StopIteration
 
         next_square = self._squares[self._index.rows][self._index.columns]
-        self._index = self._index.shift_by_delta(self._delta)
+        self._index = self._index.shift_by_offset(self._delta)
         return next_square
