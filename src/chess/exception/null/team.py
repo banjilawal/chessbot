@@ -1,9 +1,9 @@
-from chess.exception.null.null_exception import NullException
+from chess.exception.null.base import NullException
 
 
-class NullSquareException(NullException):
-    ERROR_CODE = "NULL_SQUARE_ERROR"
-    DEFAULT_MESSAGE = f"Square cannot be null"
+class NullTeamException(NullException):
+    ERROR_CODE = "NULL_TEAM_ERROR"
+    DEFAULT_MESSAGE = f"Team cannot be null"
 
 
     def __init__(self, message=None):

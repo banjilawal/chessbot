@@ -3,12 +3,12 @@ import unittest
 import pytest
 
 from chess.common.config import KNIGHT_WALKING_RANGE, BOARD_DIMENSION
-from chess.exception.coordinate.offset_multiplication import OffsetMultiplicationResultException
-from chess.exception.coordinate.offset_multiplication_factor import OffsetMultiplicationFactorException
+from chess.exception.coordinate.offset_result import OffsetMultiplicationResultException
+from chess.exception.coordinate.multiplier import OffsetMultiplicationFactorException
 from chess.exception.coordinate.offset_range import OffsetRangeException
-from chess.exception.null.null_column_offset import NullColumnOffsetException
-from chess.exception.null.null_offset_scalar import NullOffsetMultiplicationFactorExcepetion
-from chess.exception.null.null_row_offset import NullRowOffsetException
+from chess.exception.null.column_offset import NullColumnOffsetException
+from chess.exception.null.offset_factor import NullOffSetFactor
+from chess.exception.null.row_offset import NullRowOffsetException
 from chess.geometry.coordinate.offset import Offset
 
 
@@ -59,7 +59,7 @@ class OffSetTest(unittest.TestCase):
 
     def test_null_multiplicaton_scalar_out_of_bounds_raises_exception(self):
         offset = Offset(row_offset=1, column_offset=1)
-        with pytest.raises(NullOffsetMultiplicationFactorExcepetion):
+        with pytest.raises(NullOffSetFactor):
             offset.__mul__(scalar=None)
 
     def test_multiplication_scalar_out_of_bounds_raises_exception(self):

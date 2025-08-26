@@ -1,5 +1,4 @@
-from chess.exception.base.root import ChessException
-
+from chess.exception.base import ChessException
 
 class CoordinateException(ChessException):
     ERROR_CODE = "COORDINATE_ERROR"

@@ -1,7 +1,7 @@
-from chess.exception.coordinate.coordinate_exception import CoordinateException
+from chess.exception.coordinate.base import CoordinateException
 
 
-class OffsetMultiplicationResultException(CoordinateException):
+class OffsetMultiplicationOverflowException(CoordinateException):
     ERROR_CODE = "OFFSET_MULTIPLICATION_ERROR"
     DEFAULT_MESSAGE = f"Offset scalar multiplication result outside board dimension"
 

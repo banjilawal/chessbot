@@ -2,8 +2,8 @@ from enum import Enum
 
 from assurance.result.base_result import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validation.coordinate_specification import CoordinateSpecification
-from chess.geometry.coordinate.coordinate import Coordinate
+from assurance.validation.coord import CoordinateSpecification
+from chess.geometry.coordinate.coord import Coordinate
 
 
 
@@ -12,11 +12,10 @@ class CoordinateBuilder(Enum):
 
     @staticmethod
     def build(row: int, column: int) -> Result[Coordinate]:
-        candidate = Coordinate(row, column)
-        result = CoordinateSpecification.is_satisfied_by(candidate)
-
         try:
+            candidate = Coordinate(row, column)
             result = CoordinateSpecification.is_satisfied_by(candidate)
+
             ThrowHelper.throw_if_invalid(CoordinateBuilder, result)
             return result
         except Exception as e:

@@ -1,20 +1,18 @@
 from typing import Generic, cast
 
-from assurance.exception.validation.coordinate_validation import CoordinateValidationException
+from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.exception.validation.distance_magnitude_validation import DistanceMagnitudeValidationException
-from assurance.result.base_result import Result
-from assurance.validation.coordinate_specification import CoordinateSpecification
+from assurance.result.base import Result
+from assurance.validation.coord import CoordinateSpecification
 from assurance.validation.specification import Specification, T
 from chess.exception.null.distance_magnitude_null import NullDistanceMagnitudeException
-from chess.geometry.coordinate.distance_magnitude import DistanceMagnitude
+from chess.geometry.coordinate.distance import ScalarDistance
 
 
 class DistanceMagnitudeSpecification(Specification):
 
-    DEFAULT_MESSAGE = "DistanceMagnitudeSpecification: DistanceMagnitude validation failed"
-
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[DistanceMagnitude]:
+    def is_satisfied_by(t: Generic[T]) -> Result[ScalarDistance]:
         method = "DistanceMagnitudeSpecification.is_satisfied_by"
 
         """
@@ -45,10 +43,10 @@ class DistanceMagnitudeSpecification(Specification):
                     f"{method} NullDistanceMagnitudeException.DEFAULT_MESSAGE"
 )
 
-            if not isinstance(t, DistanceMagnitude):
+            if not isinstance(t, ScalarDistance):
                 raise TypeError(f"{method} Expected a DistanceMagnitude, got {type(t).__name__}")
 
-            cartesian_distance = cast(DistanceMagnitude, t)
+            cartesian_distance = cast(ScalarDistance, t)
 
             p_coord_spec_result = CoordinateSpecification.is_satisfied_by(cartesian_distance.p)
             if not p_coord_spec_result.is_success():

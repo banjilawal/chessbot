@@ -1,18 +1,18 @@
 from enum import Enum
 
-from assurance.result.base_result import Result
+from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validation.distance_magnitude_specification import DistanceMagnitudeSpecification
+from assurance.validation.coord_distance_spec import DistanceMagnitudeSpecification
 
-from chess.geometry.coordinate.coordinate import Coordinate
-from chess.geometry.coordinate.distance_magnitude import DistanceMagnitude
+from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coordinate.distance import ScalarDistance
 
 
 class DistanceMagnitudeBuilder(Enum):
 
     @staticmethod
-    def build(p: Coordinate, q: Coordinate) -> Result[DistanceMagnitude]:
-        candidate =DistanceMagnitude(p, q)
+    def build(p: Coordinate, q: Coordinate) -> Result[ScalarDistance]:
+        candidate =ScalarDistance(p, q)
         result = DistanceMagnitudeSpecification.is_satisfied_by(candidate)
 
         try:

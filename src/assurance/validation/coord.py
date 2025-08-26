@@ -6,7 +6,7 @@ from assurance.validation.specification import Specification, T
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
 from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
-from chess.exception.null.coordinate_null import NullCoordinateException
+from chess.exception.null.coordinate import NullCoordinateException
 from chess.exception.null.null_column import NullColumnException
 from chess.exception.null.null_row import NullRowException
 from chess.geometry.coordinate.coordinate import Coordinate

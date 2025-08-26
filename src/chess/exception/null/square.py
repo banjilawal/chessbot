@@ -1,9 +1,9 @@
-from chess.exception.null.null_exception import NullException
+from chess.exception.null.base import NullException
 
 
-class NullOwnerException(NullException):
-    ERROR_CODE = "NULL_OWNER_ERROR"
-    DEFAULT_MESSAGE = f"Owner cannot be null"
+class NullSquareException(NullException):
+    ERROR_CODE = "NULL_SQUARE_ERROR"
+    DEFAULT_MESSAGE = f"Square cannot be null"
 
 
     def __init__(self, message=None):

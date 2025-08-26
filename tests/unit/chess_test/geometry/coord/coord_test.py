@@ -3,12 +3,12 @@ import unittest
 import pytest
 
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
-from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
-from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
-from chess.exception.null.null_column import NullColumnException
-from chess.exception.null.null_row import NullRowException
+from chess.exception.coordinate.column import ColumnOutOfBoundsException
+from chess.exception.coordinate.row import RowOutOfBoundsException
+from chess.exception.null.column import NullColumnException
+from chess.exception.null.row import NullRowException
 
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 
 
 class CoordinateTest(unittest.TestCase):

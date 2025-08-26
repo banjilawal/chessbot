@@ -1,9 +1,9 @@
-from chess.exception.null.null_exception import NullException
+from chess.exception.null.base import NullException
 
 
-class NullTeamException(NullException):
-    ERROR_CODE = "NULL_TEAM_ERROR"
-    DEFAULT_MESSAGE = f"Team cannot be null"
+class NullOwnerException(NullException):
+    ERROR_CODE = "NULL_OWNER_ERROR"
+    DEFAULT_MESSAGE = f"Owner cannot be null"
 
 
     def __init__(self, message=None):

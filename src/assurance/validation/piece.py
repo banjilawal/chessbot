@@ -4,9 +4,9 @@ from assurance.validation.specification import Specification, T
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from chess.exception.move.empty_stack_chess_piece import EmptyStackChessPieceMoveException
 from chess.exception.move.move import CapturedPieceMoveException
-from chess.exception.null.coordinate_stack_null import NullCoordinateStackException
+from chess.exception.null.coord_stack import NullCoordinateStackException
 from chess.exception.null.null_exception import NullException
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 
 class ChessPieceSpecification(Specification):
