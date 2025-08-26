@@ -9,6 +9,15 @@ from chess.geometry.vector.scalar import Scalar
 
 class VectorAlgebra:
 
+    """
+        Provides static methods for vector algebra operations.
+        Used to do safe algebraic operations on Vectors and Coordinates.
+        The addition and multiplication methods are used to create safe:
+
+            - SquareIterator
+            - Adding quadrant vectors to coordinates to see where a piece can move
+    """
+
     @staticmethod
     def convert_to_coordinate(vector: Vector) -> Coordinate:
         """Converts a vector to a coordinate."""
