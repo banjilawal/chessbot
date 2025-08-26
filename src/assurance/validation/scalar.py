@@ -6,7 +6,7 @@ from assurance.validation.base import Specification, T
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
 from chess.exception.null.scalar import NullScalarException
-from chess.exception.offset.mul import NegativeScalarException, ZeroScalarException, ScalarOutofBoundsException
+from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScalarException, ScalarAboveUpperBoundException
 from chess.geometry.vector.scalar import Scalar
 
 
@@ -39,12 +39,9 @@ class ScalarSpecification(Specification):
             
             NullNumberException: If scalar.value is null 
             
-            NegativeScalarException: If scalar.value is negative
+            NScalarBelowLowerBoundException: If scalar.value <= >
             
-            ZeroScalarException: If scalar.value is zero
-            
-            ScalarOutofBoundsException: If scalar.value is outside the range
-                (0, BOARD_DIMENSION - 1) inclusive
+            ScalarAboveUpperBoundException: If scalar.value >= BOARD_DIMENSION
 .
             ScalarValidationException: Wraps any preceding exceptions      
         """
@@ -52,34 +49,30 @@ class ScalarSpecification(Specification):
             if t is None:
                 raise NullScalarException(f"{method} NullScalarException.DEFAULT_MESSAGE")
 
-            if not isinstance(t, Scalar):
-                raise TypeError(f"{method} Expected a Scalar, got {type(t).__name__}")
 
             scalar = cast(Scalar, t)
 
             if scalar.value is None:
                 raise NullNumberException(f"{method} {NullNumberException.DEFAULT_MESSAGE}")
 
-            if scalar.value < 0:
-                raise NegativeScalarException(f"{method}: {NegativeScalarException.DEFAULT_MESSAGE}")
-
-            if scalar.value == 0:
-                raise ZeroScalarException(f"{method}: {ZeroScalarException.DEFAULT_MESSAGE}")
+            if scalar.value < -BOARD_DIMENSION:
+                raise ScalarBelowLowerBoundException(
+                    f"{method}: {ScalarBelowLowerBoundException.DEFAULT_MESSAGE}"
+                )
 
             if scalar.value >= BOARD_DIMENSION:
-                raise ScalarOutofBoundsException(
-                    f"{method}: {ScalarOutofBoundsException.DEFAULT_MESSAGE}"
+                raise ScalarAboveUpperBoundException(
+                    f"{method}: {ScalarAboveUpperBoundException.DEFAULT_MESSAGE}"
                 )
 
             return Result(payload=scalar)
 
         except (
-            TypeError,
-            NullScalarException,
-            NullNumberException,
-            NegativeScalarException,
-            ZeroScalarException,
-            ScalarOutofBoundsException,
+                TypeError,
+                NullScalarException,
+                NullNumberException,
+                ScalarBelowLowerBoundException,
+                ScalarAboveUpperBoundException,
         ) as e:
             raise ScalarValidationException(
                 f"{method} ScalarSpecification: Scalar validation failed"
@@ -87,29 +80,11 @@ class ScalarSpecification(Specification):
 
 
 # def main():
-#     result = ScalarSpecification.is_satisfied_by(Scalar(5))
+#     result = ScalarSpecification.is_satisfied_by(Scalar(3))
 #     if result.is_success():
-#         print(f"Valid Scalar: {result.payload}")
+#         print(f"Scalar is valid: {result.payload}")
 #     else:
-#         print(f"Validation failed: {result.exception}")
-#
-#     result = ScalarSpecification.is_satisfied_by(Scalar(-3))
-#     if result.is_success():
-#         print(f"Valid Scalar: {result.payload}")
-#     else:
-#         print(f"Validation failed: {result.exception}")
-#
-#     result = ScalarSpecification.is_satisfied_by(Scalar(0))
-#     if result.is_success():
-#         print(f"Valid Scalar: {result.payload}")
-#     else:
-#         print(f"Validation failed: {result.exception}")
-#
-#     result = ScalarSpecification.is_satisfied_by(Scalar(BOARD_DIMENSION))
-#     if result.is_success():
-#         print(f"Valid Scalar: {result.payload}")
-#     else:
-#         print(f"Validation failed: {result.exception}")
+#         print(f"Scalar is invalid: {result.exception}")
 #
 # if __name__ == "__main__":
 #     main()

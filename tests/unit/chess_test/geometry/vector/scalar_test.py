@@ -2,7 +2,7 @@ import unittest
 
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
-from chess.exception.offset.mul import ScalarOutofBoundsException
+from chess.exception.offset.mul import ScalarAboveUpperBoundException, ScalarBelowLowerBoundException
 from chess.geometry.vector.scalar import Scalar
 
 
@@ -12,16 +12,13 @@ class ScalarTest(unittest.TestCase):
         with self.assertRaises(NullNumberException):
             Scalar(value=None)
 
-    def test_negative_value_raises_exception(self):
-        with self.assertRaises(Exception):
-            Scalar(value=-1)
+    def test_value_less_than_lower_bound_raises_exception(self):
+        with self.assertRaises(ScalarBelowLowerBoundException):
+            Scalar(value=-BOARD_DIMENSION)
 
-    def test_zero_value_raises_exception(self):
-        with self.assertRaises(Exception):
-            Scalar(value=0)
 
     def test_value_greater_or_equal_board_dimension_raises_exception(self):
-        with self.assertRaises(ScalarOutofBoundsException):
+        with self.assertRaises(ScalarAboveUpperBoundException):
             Scalar(value=BOARD_DIMENSION)
 
     def test_valid_value_sets_correctly(self):

@@ -75,13 +75,13 @@ class VectorSpecification(Specification):
                     f"{method}: {XComponentNullException.DEFAULT_MESSAGE}"
                 )
 
-            if vector.x < 0 and vector.x < -KNIGHT_STEP_SIZE:
+            if vector.x < -KNIGHT_STEP_SIZE:
                 # print(f"x: {x} knight_step_size:{-KNIGHT_STEP_SIZE}")
                 raise XComponentBelowLowerBoundException(
                     f"{method}: {XComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
                 )
 
-            if vector.x >= 0 and vector.x > KNIGHT_STEP_SIZE:
+            if vector.x > KNIGHT_STEP_SIZE:
                 raise XComponentAboveUpperBoundException(
                     f"{method}: {XComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
                 )
@@ -91,11 +91,11 @@ class VectorSpecification(Specification):
                     f"{method} {YComponentNullException.DEFAULT_MESSAGE}"
                 )
 
-            if vector.y < 0 and vector.y < -KNIGHT_STEP_SIZE:
+            if vector.y < -KNIGHT_STEP_SIZE:
                 raise YComponentBelowLowerBoundException(
                     f"{method}: {YComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
                 )
-            if vector.y >= 0 and vector.y > KNIGHT_STEP_SIZE:
+            if vector.y > KNIGHT_STEP_SIZE:
                 raise YComponentAboveUpperBoundException(
                     f"{method}: {YComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
                 )
@@ -118,29 +118,12 @@ class VectorSpecification(Specification):
 
 
 def main():
-    result = VectorSpecification.is_satisfied_by(Vector(x=2, y=1))
-    if result.is_success():
-        vector = result.payload
-        print(
-            f"Vector is valid: "
-            f"delta_row={vector.x}, "
-            f"delta_column={Vector.delta_column}"
-        )
+    vector = Vector(x=2, y=1)
+    specification_result = VectorSpecification.is_satisfied_by(vector)
+    if specification_result.is_success():
+        print("Vector specification satisfied.")
     else:
-        print(f"Vector validation failed: {result.exception}")
-
-    result = VectorSpecification.is_satisfied_by(
-        Vector(KNIGHT_STEP_SIZE + 1, 1)
-    )
-    if result.is_success():
-        Vector = result.payload
-        print(
-            f"Vector is valid: "
-            f"delta_row={Vector.delta_row}, "
-            f"delta_column={Vector.delta_column}"
-        )
-    else:
-        print(f"Vector validation failed: {result.exception}")
+        print("Vector specification not satisfied.")
 
 if __name__ == "__main__":
     main()

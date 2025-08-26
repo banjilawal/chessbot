@@ -1,6 +1,6 @@
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
-from chess.exception.offset.mul import NegativeScalarException, ZeroScalarException, ScalarOutofBoundsException
+from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScalarException, ScalarAboveUpperBoundException
 
 
 class Scalar:
@@ -11,16 +11,18 @@ class Scalar:
         if value is None:
             raise NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
 
-        if value < 0:
-            raise NegativeScalarException(f"{method}: {NegativeScalarException.DEFAULT_MESSAGE}")
-
-        if value == 0:
-            raise ZeroScalarException(f"{method}: {ZeroScalarException.DEFAULT_MESSAGE}")
+        if value <= -BOARD_DIMENSION:
+            raise ScalarBelowLowerBoundException(f"{method}: {ScalarBelowLowerBoundException.DEFAULT_MESSAGE}")
 
         if value >= BOARD_DIMENSION:
-            raise ScalarOutofBoundsException(
-                f"{method}: scalar {ScalarOutofBoundsException.DEFAULT_MESSAGE}"
+            raise ScalarAboveUpperBoundException(
+                f"{method}: scalar {ScalarAboveUpperBoundException.DEFAULT_MESSAGE}"
             )
+        #
+        # if value == 0:
+        #     raise ZeroScalarException(f"{method}: {ZeroScalarException.DEFAULT_MESSAGE}")
+
+
         self._value = value
 
     @property

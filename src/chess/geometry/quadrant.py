@@ -1,51 +1,49 @@
 
-
-from chess.geometry.coordinate.coord import Offset
 from enum import Enum, auto
 from typing import Optional
 
 from chess.common.config import BOARD_DIMENSION
+from chess.geometry.vector.delta import Vector
+from chess.geometry.vector.scalar import Scalar
 
 
 class Quadrant(Enum):
-    def __new__(cls, delta, id_value, name, forward_step=None, row_id=None):
+    def __new__(cls, quad_id: int, vector: Vector, scalar: Scalar=Scalar(value=0), row: Optional[int]=None):
         obj = object.__new__(cls)
-        obj._value_ = delta
-        obj._delta = delta
-        obj._id = id_value
-        obj._name = name
-        obj._forward_step = forward_step
-        obj._row_id = row_id
+        obj._id = quad_id
+        obj._vector = vector
+        obj._scalar = scalar
+        obj._row = row
         return obj
 
-    N = (Offset(delta_column=0, row_offset=1), auto(), "north", -1, 0)
-    NE = (Offset(delta_column=1, row_offset=1), auto(), "northeast")
-    E = (Offset(delta_column=1, row_offset=0), auto(), "east")
-    SE = (Offset(delta_column=1, row_offset=-1), auto(), "southeast")
-    S = (Offset(delta_column=0, row_offset=-1), auto(), "south", 1, BOARD_DIMENSION - 1)
-    SW = (Offset(delta_column=-1, row_offset=-1), auto(), "southwest")
-    W = (Offset(delta_column=-1, row_offset=0), auto(), "west")
-    NW = (Offset(delta_column=-1, row_offset=1), auto(), "northwest")
+    N = (auto(), Vector(x=0, y=1), Scalar(value=-1), 0)
+    NE = (auto(), Vector(x=1, y=1))
+    E = (auto(), Vector(x=1, y=0))
+    SE = (auto(), Vector(x=1, y=-1))
+    S = (auto(), Vector(x=0, y=-1), Scalar(value=1), BOARD_DIMENSION - 1)
+    SW = (auto(), Vector(x=-1, y=-1))
+    W = (auto(), Vector(x=-1, y=0))
+    NW = (auto(), Vector(x=-1, y=1))
 
-    @property
-    def delta(self) -> Offset:
-        return self._delta
 
     @property
     def id(self) -> int:
         return self._id
 
-    @property
-    def name(self) -> str:
-        return self._name
 
     @property
-    def forward_step(self) -> Optional[int]:
-        return self._forward_step
+    def vector(self) -> Vector:
+        return self._vector
+
 
     @property
-    def row_id(self) -> Optional[int]:
-        return self._row_id
+    def scalar(self) -> Optional[Scalar]:
+        return self._scalar
+
+
+    @property
+    def row(self) -> Optional[int]:
+        return self._row
 
 
     def enemy_quadrant(self) -> Optional['Quadrant']:
@@ -53,14 +51,22 @@ class Quadrant(Enum):
             return Quadrant.S
         return Quadrant.N
 
+
     def __str__(self) -> str:
-        row_id_str = ""
-        if self in [Quadrant.N, Quadrant.S]:
-            row_id_str = f"self._row_id"
+        scalar_str = f", {self._scalar}" if self.scalar != Scalar(value=0) else f""
+        row_str = f", row={self._row}" if self._row is not None else ""
         return (
-            f"Quadrant[name:"
-            f"{self._name} "
-            f"row_id:{row_id_str}"
-            f"forward_step:{self._forward_step} "
-            f"]"
+            f"Quadrant[name:{self.name}, "
+            f"id:{self._id}, "
+            f"{self._vector}"
+            f"{scalar_str}"
+            f"{row_str}]"
         )
+
+
+def main():
+    for quadrant in Quadrant:
+        print(quadrant)
+
+if __name__ == "__main__":
+    main()
