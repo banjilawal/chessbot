@@ -2,7 +2,7 @@ from typing import List
 
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
-from chess.geometry.coordinate.scalar import Distance
+from chess.geometry.coordinate.euclid import EuclideanDistance
 from chess.geometry.coordinate.coord import Coordinate
 from chess.token.obstruction import Obstruction
 from chess.token.model import ChessPiece
@@ -52,7 +52,7 @@ class ScoutReportAnalyzer:
 
         vacant_squares.sort(
             reverse=True,
-            key=lambda vacancy: Distance(
+            key=lambda vacancy: EuclideanDistance(
                 self._scout_coordinate,
                 vacancy.coordinate
             ).magnitude
@@ -75,7 +75,7 @@ class ScoutReportAnalyzer:
 
         obstructions.sort(
             reverse=True,
-            key=lambda blocker: Distance(
+            key=lambda blocker: EuclideanDistance(
                 self._scout_coordinate, blocker.coordinate
             ).magnitude
         )

@@ -1,10 +1,13 @@
+from assurance.exception.validation.vector import VectorValidationException
+from assurance.validation.vector import VectorSpecification
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column import ColumnOutOfBoundsException
 from chess.exception.coordinate.row import RowOutOfBoundsException
-from chess.exception.null.offset import NullOffsetException
+from chess.exception.null.vector import NullVectorException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
-from chess.geometry.coordinate.offset import Offset
+from chess.geometry.vector.delta import Vector
+
 
 class Coordinate:
     _row: int
@@ -67,30 +70,31 @@ class Coordinate:
         return f"Coordinate(row:{self._row} column:{self._column})"
 
 
-    def shift_by_offset(self, offset: Offset) -> 'Coordinate':
+    def add_delta(self, delta: Vector) -> 'Coordinate':
         method = "Coordinate.shift()"
 
         """
         Creates a new Coordinate shifted by row + row_delta, colum + column_delta
 
         Args:
-            delta (Delta): vector added to coordinate's x, y values
+            vector (Delta): vector added to coordinate's x, y values
         
         Return:
             Coordinate
 
         Raise:
-            NullDeltaException: if delta is null.
+            NullDeltaException: if vector is null.
         """
 
-        if offset is None:
-            raise NullOffsetException(f"{method} {NullOffsetException.default_message}")
+        result = VectorSpecification.is_satisfied_by(delta)
+        if result.is_failure():
+            raise VectorValidationException(f"{method} {result.exception}")
 
         # Creating totally new values makes sure nothing
         # hinky happens creating the new shifted coordinate.
-        new_row = self._row + offset.delta_row
-        new_colum = self._column + offset.delta_column
+        row = self._row + delta.y
+        column= self._column + delta.x
 
-        return Coordinate(row=new_row, column=new_colum)
+        return Coordinate(row=row, column=column)
 
 

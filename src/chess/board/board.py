@@ -79,14 +79,14 @@ class ChessBoard:
         Args:
             squares (List[List[Square]]): 2D list of Square objects to iterate through.
             index: The starting coordinate for the iteration.
-            delta: The direction of the iteration.
+            vector: The direction of the iteration.
             
         Returns:
             SquareIterator: An iterator instance for traversing the chessboard.
             
         Raises:
             CoordinateValidationException: If index fails at least one specification message
-            NullDeltaException: If delta is None.
+            NullDeltaException: If vector is None.
         """
 
         return SquareIterator(self._squares, index, delta)

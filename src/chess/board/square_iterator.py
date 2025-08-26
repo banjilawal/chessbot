@@ -27,5 +27,5 @@ class SquareIterator:
             raise StopIteration
 
         next_square = self._squares[self._index.rows][self._index.columns]
-        self._index = self._index.shift_by_offset(self._delta)
+        self._index = self._index.add_delta(self._delta)
         return next_square

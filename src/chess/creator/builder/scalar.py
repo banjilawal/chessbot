@@ -2,17 +2,17 @@ from enum import Enum
 
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validation.scalar import DistanceMagnitudeSpecification
+from assurance.validation.euclid import DistanceMagnitudeSpecification
 
 from chess.geometry.coordinate.coord import Coordinate
-from chess.geometry.coordinate.scalar import Distance
+from chess.geometry.coordinate.euclid import EuclideanDistance
 
 
 class ScalarDistanceBuilder(Enum):
 
     @staticmethod
-    def build(p: Coordinate, q: Coordinate) -> Result[Distance]:
-        candidate =Distance(p, q)
+    def build(p: Coordinate, q: Coordinate) -> Result[EuclideanDistance]:
+        candidate =EuclideanDistance(p, q)
         result = DistanceMagnitudeSpecification.is_satisfied_by(candidate)
 
         try:

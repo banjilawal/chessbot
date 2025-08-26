@@ -1,9 +1,9 @@
 from chess.exception.null.base import NullException
 
 
-class NullOffSetFactor(NullException):
-    ERROR_CODE = "NULL_OFFSET_MULTIPLICATION_FACTOR_ERROR"
-    DEFAULT_MESSAGE = f"Offset multiplication factor cannot be null"
+class YComponentNullException(NullException):
+    ERROR_CODE = "VECTOR_Y_COMPONENT_NULL_ERROR"
+    DEFAULT_MESSAGE = f"Y component of vector cannot be null"
 
 
     def __init__(self, message=None):

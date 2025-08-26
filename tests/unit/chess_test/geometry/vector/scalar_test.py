@@ -1,0 +1,35 @@
+import unittest
+
+from chess.common.config import BOARD_DIMENSION
+from chess.exception.null.number import NullNumberException
+from chess.exception.offset.mul import ScalarOutofBoundsException
+from chess.geometry.vector.scalar import Scalar
+
+
+class ScalarTest(unittest.TestCase):
+
+    def test_null_value_raises_exception(self):
+        with self.assertRaises(NullNumberException):
+            Scalar(value=None)
+
+    def test_negative_value_raises_exception(self):
+        with self.assertRaises(Exception):
+            Scalar(value=-1)
+
+    def test_zero_value_raises_exception(self):
+        with self.assertRaises(Exception):
+            Scalar(value=0)
+
+    def test_value_greater_or_equal_board_dimension_raises_exception(self):
+        with self.assertRaises(ScalarOutofBoundsException):
+            Scalar(value=BOARD_DIMENSION)
+
+    def test_valid_value_sets_correctly(self):
+        for valid_value in range(1, BOARD_DIMENSION):
+            scalar = Scalar(value=valid_value)
+            # print(f"\nTesting scalar value: {scalar.value} expected={valid_value}")
+            self.assertEqual(scalar.value, valid_value)
+
+
+if __name__ == '__main__':
+    unittest.main()

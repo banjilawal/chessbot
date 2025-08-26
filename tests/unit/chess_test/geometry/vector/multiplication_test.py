@@ -3,29 +3,29 @@ import unittest
 import pytest
 
 from chess.common.config import BOARD_DIMENSION
-from chess.exception.null.offset_factor import NullOffSetFactor
-from chess.exception.offset.mul import NegativeMultiplicationException, ZeroMultiplicationException, \
-    MultiplierOutOfBoundsException, RowDeltaOverflowExceptioDn
-from chess.geometry.coordinate.offset import Offset
+from chess.exception.null.scalar import NullScalarException
+from chess.exception.offset.mul import NegativeScalarException, ZeroScalarException, \
+    ScalarOutofBoundsException, RowDeltaOverflowExceptioDn
+from chess.geometry.vector.delta import Offset
 
 
 class OffsetMultiplicationTest(unittest.TestCase):
 
     def test_null_multiplication_factor_raises_error(self):
-        with pytest.raises(NullOffSetFactor):
+        with pytest.raises(NullScalarException):
             Offset(delta_row=1, delta_column=1).__mul__(factor=None)
 
 
     def test_negative_multiplication_raises_error(self):
-        with pytest.raises(NegativeMultiplicationException):
+        with pytest.raises(NegativeScalarException):
             Offset(delta_row=1, delta_column=1).__mul__(factor=-1)
 
     def test_zero_multiplication_raises_error(self):
-        with pytest.raises(ZeroMultiplicationException):
+        with pytest.raises(ZeroScalarException):
             Offset(delta_row=1, delta_column=1).__mul__(factor=-0)
 
     def test_multiplication_factor_out_of_bounds_raises_error(self):
-        with pytest.raises(MultiplierOutOfBoundsException):
+        with pytest.raises(ScalarOutofBoundsException):
             Offset(delta_row=1, delta_column=1).__mul__(factor=BOARD_DIMENSION)
 
     def test_delta_row_result_out_of_bounds_raises_error(self):

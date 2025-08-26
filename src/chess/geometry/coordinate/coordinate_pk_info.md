@@ -113,7 +113,7 @@ Best practice explictly state parameters so which is row and column.
 ```python
 delta = Delta(row_delta=1, column_delta=-1)
 p = Coordinate(2, 3)
-r = p.shift_by_offset(delta)
+r = p.add_delta(delta)
 ```
 
 #### Scalar Multiplication

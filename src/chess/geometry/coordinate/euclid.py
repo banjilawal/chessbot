@@ -2,7 +2,7 @@
 from chess.geometry.coordinate.coord import Coordinate
 
 
-class Distance:
+class EuclideanDistance:
     _p: Coordinate
     _q: Coordinate
     _magnitude: int

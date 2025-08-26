@@ -1,9 +1,9 @@
 from chess.exception.null.base import NullException
 
 
-class NullScalarException(NullException):
-    ERROR_CODE = "NULL_SCALAR_ERROR"
-    DEFAULT_MESSAGE = f"Scalar cannot be null"
+class NullDistanceMagnitudeException(NullException):
+    ERROR_CODE = "NULL_DISTANCE_MAGNITUDE_ERROR"
+    DEFAULT_MESSAGE = f"DistanceMagnitude cannot be null"
 
 
     def __init__(self, message=None):

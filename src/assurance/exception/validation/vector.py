@@ -1,9 +1,9 @@
 from assurance.exception.validation.base import ValidationException
 
 
-class OffsetValidationException(ValidationException):
-    ERROR_CODE = "OFFSET_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Offset validation failed"
+class VectorValidationException(ValidationException):
+    ERROR_CODE = "VECTOR_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = f"Vector validation failed"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

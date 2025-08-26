@@ -1,7 +1,7 @@
 from chess.exception.offset.base import CoordinateOffsetException
 
 
-class NegativeMultiplicationException(CoordinateOffsetException):
+class NegativeScalarException(CoordinateOffsetException):
     ERROR_CODE = "NEGATIVE_OFFSET_MULTIPLICATION_FACTOR_ERROR"
     DEFAULT_MESSAGE = f"Offset multiplication factor cannot be negative."
 
@@ -13,7 +13,7 @@ class NegativeMultiplicationException(CoordinateOffsetException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class ZeroMultiplicationException(CoordinateOffsetException):
+class ZeroScalarException(CoordinateOffsetException):
     ERROR_CODE = "MULTIPLY_OFFSET_BY_ZERO_ERROR"
     DEFAULT_MESSAGE = f"Offset multiplication factor cannot be zero."
 
@@ -25,7 +25,7 @@ class ZeroMultiplicationException(CoordinateOffsetException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class MultiplierOutOfBoundsException(CoordinateOffsetException):
+class ScalarOutofBoundsException(CoordinateOffsetException):
     ERROR_CODE = "OFFSET_FACTOR_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = (
         f"Offset multiplication factor is outside "

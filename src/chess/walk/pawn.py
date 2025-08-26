@@ -1,7 +1,5 @@
-from typing import TYPE_CHECKING
-
 from chess.geometry.coordinate.coord import Coordinate
-from chess.geometry.coordinate.offset import Offset
+from chess.geometry.vector.delta import Offset
 
 
 from chess.walk.base import Walk

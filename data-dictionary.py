@@ -95,7 +95,7 @@ class Coordinate(BaseModel):
             Coordinate: A new Coordinate instance.
 
         Raises:
-            NullException: If the provided delta is null.
+            NullException: If the provided vector is null.
             ValidationError: If the new coordinate is out of bounds.
         """
         if delta is None:

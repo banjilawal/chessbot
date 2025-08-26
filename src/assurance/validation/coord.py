@@ -14,8 +14,6 @@ from chess.geometry.coordinate.coord import Coordinate
 
 class CoordinateSpecification(Specification):
 
-    DEFAULT_MESSAGE = "CoordinateSpecification: Coordinate validation failed"
-
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[Coordinate]:
         method = "CoordinateSpecification.is_satisfied_by"

@@ -1,9 +1,9 @@
 from chess.exception.null.base import NullException
 
 
-class NullColumnOffsetException(NullException):
-    ERROR_CODE = "NULL_COLUMN_OFFSET_ERROR"
-    DEFAULT_MESSAGE = f"Column offset cannot be null"
+class NullNumberException(NullException):
+    ERROR_CODE = "NULL_NUMBER_ERROR"
+    DEFAULT_MESSAGE = f"Number cannot be null"
 
 
     def __init__(self, message=None):

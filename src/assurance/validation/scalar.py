@@ -1,67 +1,115 @@
 from typing import Generic, cast
 
-from assurance.exception.validation.coord import CoordinateValidationException
-from assurance.exception.validation.scalar import DistanceValidationException
+from assurance.exception.validation.scalar import ScalarValidationException
 from assurance.result.base import Result
-from assurance.validation.coord import CoordinateSpecification
 from assurance.validation.base import Specification, T
-from chess.exception.null.scalar import NullDistanceMagnitudeException
-from chess.geometry.coordinate.scalar import Distance
+from chess.common.config import BOARD_DIMENSION
+from chess.exception.null.number import NullNumberException
+from chess.exception.null.scalar import NullScalarException
+from chess.exception.offset.mul import NegativeScalarException, ZeroScalarException, ScalarOutofBoundsException
+from chess.geometry.vector.scalar import Scalar
 
 
-class DistanceMagnitudeSpecification(Specification):
+class ScalarSpecification(Specification):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[Distance]:
-        method = "DistanceMagnitudeSpecification.is_satisfied_by"
+    def is_satisfied_by(t: Generic[T]) -> Result[Scalar]:
+        method = "ScalarSpecification.is_satisfied_by"
 
         """
-        Validates DistanceMagnitude between coordinates p and q:
+        Validates a scalar with chained exceptions for scalar meeting specifications:
             - Not null
-            - Coordinate p meets CoordinateSpecification
-            - Coordinate q meets CoordinateSpecification
-        If any validation fails their exception will be encapsulated in DistanceMagnitudeValidationException
+            - value is not null
+            - value is within the bounds of the chess chessboard
+            - column is not null
+            - column is within the bounds of the chess chessboard
+        If either validation fails their exception will be encapsulated in a 
+        ScalarValidationException
             
         Args
-            t (DistanceMagnitude): DistanceMagnitude to validate
+            t (Scalar): scalar to validate
             
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                        CoordinateValidationException otherwise.
+             Result[T]: A Result object containing the validated payload if the specification 
+             is satisfied, ScalarValidationException otherwise.
         
         Raises:
-            NullDistanceMagnitudeException: if t is null  
-            TypeError: if t is not Coordinate
+            NullScalarException: if t is null   
+            TypeError: if t is not Scalar
+            
+            NullNumberException: If scalar.value is null 
+            
+            NegativeScalarException: If scalar.value is negative
+            
+            ZeroScalarException: If scalar.value is zero
+            
+            ScalarOutofBoundsException: If scalar.value is outside the range
+                (0, BOARD_DIMENSION - 1) inclusive
 .
-            DistanceMagnitudeValidationException: Wraps any
-                (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
-                
+            ScalarValidationException: Wraps any preceding exceptions      
         """
         try:
             if t is None:
-                raise NullDistanceMagnitudeException(
-                    f"{method} NullDistanceMagnitudeException.DEFAULT_MESSAGE"
-)
+                raise NullScalarException(f"{method} NullScalarException.DEFAULT_MESSAGE")
 
-            if not isinstance(t, Distance):
-                raise TypeError(f"{method} Expected a DistanceMagnitude, got {type(t).__name__}")
+            if not isinstance(t, Scalar):
+                raise TypeError(f"{method} Expected a Scalar, got {type(t).__name__}")
 
-            cartesian_distance = cast(Distance, t)
+            scalar = cast(Scalar, t)
 
-            p_coord_spec_result = CoordinateSpecification.is_satisfied_by(cartesian_distance.p)
-            if not p_coord_spec_result.is_success():
-                raise p_coord_spec_result.exception
+            if scalar.value is None:
+                raise NullNumberException(f"{method} {NullNumberException.DEFAULT_MESSAGE}")
 
-            q_coord_spec_result = CoordinateSpecification.is_satisfied_by(cartesian_distance.q)
-            if not q_coord_spec_result.is_success():
-                raise q_coord_spec_result.exception
-            
-            return Result(payload=cartesian_distance)
-    
+            if scalar.value < 0:
+                raise NegativeScalarException(f"{method}: {NegativeScalarException.DEFAULT_MESSAGE}")
 
+            if scalar.value == 0:
+                raise ZeroScalarException(f"{method}: {ZeroScalarException.DEFAULT_MESSAGE}")
+
+            if scalar.value >= BOARD_DIMENSION:
+                raise ScalarOutofBoundsException(
+                    f"{method}: {ScalarOutofBoundsException.DEFAULT_MESSAGE}"
+                )
+
+            return Result(payload=scalar)
 
         except (
-            NullDistanceMagnitudeException, TypeError, CoordinateValidationException) as e:
-            raise DistanceValidationException(
-                f"{method} DistanceMagnitudeSpecification : validation failed"
+            TypeError,
+            NullScalarException,
+            NullNumberException,
+            NegativeScalarException,
+            ZeroScalarException,
+            ScalarOutofBoundsException,
+        ) as e:
+            raise ScalarValidationException(
+                f"{method} ScalarSpecification: Scalar validation failed"
             ) from e
+
+
+# def main():
+#     result = ScalarSpecification.is_satisfied_by(Scalar(5))
+#     if result.is_success():
+#         print(f"Valid Scalar: {result.payload}")
+#     else:
+#         print(f"Validation failed: {result.exception}")
+#
+#     result = ScalarSpecification.is_satisfied_by(Scalar(-3))
+#     if result.is_success():
+#         print(f"Valid Scalar: {result.payload}")
+#     else:
+#         print(f"Validation failed: {result.exception}")
+#
+#     result = ScalarSpecification.is_satisfied_by(Scalar(0))
+#     if result.is_success():
+#         print(f"Valid Scalar: {result.payload}")
+#     else:
+#         print(f"Validation failed: {result.exception}")
+#
+#     result = ScalarSpecification.is_satisfied_by(Scalar(BOARD_DIMENSION))
+#     if result.is_success():
+#         print(f"Valid Scalar: {result.payload}")
+#     else:
+#         print(f"Validation failed: {result.exception}")
+#
+# if __name__ == "__main__":
+#     main()
