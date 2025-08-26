@@ -9,14 +9,14 @@ from chess.exception.offset.row import RowOffsetSizeException
 from chess.exception.null.column_offset import NullColumnOffsetException
 from chess.exception.null.offset import NullOffsetException
 from chess.exception.null.row_offset import NullRowOffsetException
-from chess.geometry.coordinate.coord import Coordinate
+
 from chess.geometry.coordinate.offset import Offset
 
 
 class OffsetSpecification(Specification):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[Coordinate]:
+    def is_satisfied_by(t: Generic[T]) -> Result[Offset]:
         method = "OffsetSpecification.is_satisfied_by"
 
         """
@@ -93,3 +93,32 @@ class OffsetSpecification(Specification):
             raise OffsetValidationException(
                 f"{method} Offset validation failed"
             ) from e
+
+
+# def main():
+#     result = OffsetSpecification.is_satisfied_by(Offset(2, 1))
+#     if result.is_success():
+#         offset = result.payload
+#         print(
+#             f"Offset is valid: "
+#             f"delta_row={offset.delta_row}, "
+#             f"delta_column={offset.delta_column}"
+#         )
+#     else:
+#         print(f"Offset validation failed: {result.exception}")
+#
+#     result = OffsetSpecification.is_satisfied_by(
+#         Offset(KNIGHT_WALKING_RANGE + 1, 1)
+#     )
+#     if result.is_success():
+#         offset = result.payload
+#         print(
+#             f"Offset is valid: "
+#             f"delta_row={offset.delta_row}, "
+#             f"delta_column={offset.delta_column}"
+#         )
+#     else:
+#         print(f"Offset validation failed: {result.exception}")
+#
+# if __name__ == "__main__":
+#     main()
