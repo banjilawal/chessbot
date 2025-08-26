@@ -2,7 +2,7 @@ from typing import List, TYPE_CHECKING, Optional
 
 from chess.token.obstruction import Obstruction
 from chess.token.mobility_status import MobilityStatus
-from chess.geometry.coordinate.coord_stack import CoordinateStack
+from chess.geometry.coordinate.stack import CoordinateStack
 from chess.token.base import Token
 
 if TYPE_CHECKING:

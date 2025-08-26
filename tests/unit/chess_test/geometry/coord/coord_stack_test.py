@@ -5,7 +5,7 @@ import pytest
 from chess.exception.coordinate_stack.push_null import NullCoordinatePushException
 from chess.exception.coordinate_stack.push_duplicate import DuplicateCoordinatePushException
 from chess.geometry.coordinate.coord import Coordinate
-from chess.geometry.coordinate.coord_stack import CoordinateStack, PopEmptyCoordinateStackException
+from chess.geometry.coordinate.stack import CoordinateStack, PopEmptyCoordinateStackException
 
 
 class CoordinateStackTest(unittest.TestCase):

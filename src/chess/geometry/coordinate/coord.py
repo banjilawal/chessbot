@@ -3,7 +3,6 @@ from assurance.validation.vector import VectorSpecification
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column import ColumnOutOfBoundsException
 from chess.exception.coordinate.row import RowOutOfBoundsException
-from chess.exception.null.vector import NullVectorException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
 from chess.geometry.vector.delta import Vector

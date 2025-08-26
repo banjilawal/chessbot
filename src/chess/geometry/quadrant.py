@@ -8,7 +8,7 @@ from chess.geometry.vector.scalar import Scalar
 
 
 class Quadrant(Enum):
-    def __new__(cls, quad_id: int, vector: Vector, scalar: Scalar=Scalar(value=0), row: Optional[int]=None):
+    def __new__(cls, quad_id:int, vector: Vector, scalar: Scalar=Scalar(value=0), row: Optional[int]=None):
         obj = object.__new__(cls)
         obj._id = quad_id
         obj._vector = vector
@@ -54,7 +54,7 @@ class Quadrant(Enum):
 
     def __str__(self) -> str:
         scalar_str = f", {self._scalar}" if self.scalar != Scalar(value=0) else f""
-        row_str = f", row={self._row}" if self._row is not None else ""
+        row_str = f", row:{self._row}" if self._row is not None else ""
         return (
             f"Quadrant[name:{self.name}, "
             f"id:{self._id}, "

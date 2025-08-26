@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.arena.model import Arena
-from chess.geometry.coordinate.coord_stack import CoordinateStack
+from chess.geometry.coordinate.stack import CoordinateStack
 from chess.owner.base import Owner
 
 class Game:

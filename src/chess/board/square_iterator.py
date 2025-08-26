@@ -1,31 +1,30 @@
 from typing import List
 
-from chess.geometry.coordinate.coord import Coordinate, Offset
+from chess.geometry.coordinate.coord import Coordinate
 from chess.board.square import Square
+from chess.geometry.vector.algebra import VectorAlgebra
+from chess.geometry.vector.delta import Vector
 
 
 class SquareIterator:
+    _vector: Vector
     _squares: List[List[Square]]
-    _index: Coordinate
-    _delta: Offset
+    _coord: Coordinate
 
-    def __init__(
-        self,
-        squares: List[List[Square]],
-        index: Coordinate = Coordinate(0, 0),
-        delta: Offset=Offset(delta_column=1, row_offset=1)
-    ):
+    def __init__(self, vector: Vector, squares: List[List[Square]], coord: Coordinate = Coordinate(0, 0)):
+        self._vector = vector
         self._squares = squares
-        self._index = index
-        self._delta = delta
+        self._coord = coord
+
 
     def __iter__(self) -> 'SquareIterator':
         return self
 
+
     def __next__(self) -> Square:
-        if self._index.rows >= len(self._squares) or self._index.columns >= len(self._squares[0]):
+        if self._coord.row >= len(self._squares) or self._coord.column >= len(self._squares[0]):
             raise StopIteration
 
-        next_square = self._squares[self._index.rows][self._index.columns]
-        self._index = self._index.add_delta(self._delta)
+        next_square = self._squares[self._coord.row][self._coord.column]
+        self._coord = VectorAlgebra.add_vector_to_coordinate(self._coord, self._vector)
         return next_square

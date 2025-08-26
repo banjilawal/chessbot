@@ -12,7 +12,7 @@ from chess.exception.coordinate.row import RowOutOfBoundsException
 from chess.exception.coordinate_stack.mismatch import EmptyStackCurrentCoordinateValueMismatch
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.coord_stack import NullCoordinateStackException
-from chess.geometry.coordinate.coord_stack import CoordinateStack
+from chess.geometry.coordinate.stack import CoordinateStack
 
 
 class CoordinateStackSpecification(Specification):

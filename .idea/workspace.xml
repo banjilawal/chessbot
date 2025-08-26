@@ -345,7 +345,7 @@
       <workItem from="1756055700930" duration="3506000" />
       <workItem from="1756059266189" duration="6409000" />
       <workItem from="1756069186702" duration="52780000" />
-      <workItem from="1756133122019" duration="70494000" />
+      <workItem from="1756133122019" duration="71422000" />
     </task>
     <servers />
   </component>
@@ -386,7 +386,7 @@
     <SUITE FILE_PATH="coverage/chessbot$square_repo_builder.coverage" NAME="square_repo_builder Coverage Results" MODIFIED="1754373924517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/factory/builder" />
     <SUITE FILE_PATH="coverage/chessbot$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1755129037473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chessbot$motion_controller_factory__1_.coverage" NAME="motion_controller_factory (1) Coverage Results" MODIFIED="1754421232075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
-    <SUITE FILE_PATH="coverage/chessbot$quadrant.coverage" NAME="quadrant Coverage Results" MODIFIED="1756236098438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry" />
+    <SUITE FILE_PATH="coverage/chessbot$quadrant.coverage" NAME="quadrant Coverage Results" MODIFIED="1756236902548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry" />
     <SUITE FILE_PATH="coverage/chessbot$rank_builder.coverage" NAME="rank_builder Coverage Results" MODIFIED="1754792035045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$distance_magnitude_builder.coverage" NAME="distance_magnitude_builder Coverage Results" MODIFIED="1756122228457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
     <SUITE FILE_PATH="coverage/chessbot$board_controller_builder.coverage" NAME="board_controller_builder Coverage Results" MODIFIED="1754426532490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/service" />
