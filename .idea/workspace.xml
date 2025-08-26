@@ -5,29 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/offset/mul.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/offset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/offset/multiplication_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/offset/offset_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/exception/offset/offset_pkg_info.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/offset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/offset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/game_color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/color.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/config/team_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/team_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/column.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/offset/column.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/factor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/offset/factor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/negative.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/offset/negative.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/offset_range.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/overflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/offset/overflow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/row.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/offset/row.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/offset/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/factor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/negative.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/overflow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/zero.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/offset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/offset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team_repo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/offset_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/offset/offset_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/offset/offset_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +66,7 @@
     "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_multiplication_factor_out_of_bounds_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_factor_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_null_multiplication_factor_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_below_bounds_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_less_or_equal_to_knight_step_size.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_value_greater_than_knight_steps_raises_error.executor": "Run",
@@ -168,11 +154,11 @@
       <recent name="$PROJECT_DIR$/src/assurance/exception/validation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/rank" />
       <recent name="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/offset" />
       <recent name="$PROJECT_DIR$/src/chess/exception/offset" />
       <recent name="$PROJECT_DIR$/src/chess/exception" />
       <recent name="$PROJECT_DIR$/src/chess/exception/coordinate_stack" />
-      <recent name="$PROJECT_DIR$/src/assurance/exception/validation" />
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_less_or_equal_to_knight_step_size">
@@ -199,7 +185,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_delta_row_result_out_of_bounds_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -211,7 +197,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_delta_row_result_out_of_bounds_raises_error&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -247,22 +233,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_below_bounds_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_below_bounds_raises_error&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_less_or_equal_to_knight_step_size" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -279,13 +249,29 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_column_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_column_raises_exception&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_less_or_equal_to_knight_step_size" />
         <item itemvalue="Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_less_or_equal_to_knight_step_size" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error" />
         <item itemvalue="Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_below_bounds_raises_error" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_below_bounds_raises_error" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_delta_row_result_out_of_bounds_raises_error" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_column_raises_exception" />
       </list>
     </recent_temporary>
   </component>
@@ -327,7 +313,7 @@
       <workItem from="1756055700930" duration="3506000" />
       <workItem from="1756059266189" duration="6409000" />
       <workItem from="1756069186702" duration="52780000" />
-      <workItem from="1756133122019" duration="43551000" />
+      <workItem from="1756133122019" duration="51060000" />
     </task>
     <servers />
   </component>
@@ -338,11 +324,11 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/chess/owner/cybernetic_owner.py</url>
+          <url>file://$PROJECT_DIR$/src/chess/owner/cybernetic.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/chess/owner/owner.py</url>
+          <url>file://$PROJECT_DIR$/src/chess/owner/base.py</url>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -377,10 +363,10 @@
     <SUITE FILE_PATH="coverage/chessbot$owner_builder.coverage" NAME="owner_builder Coverage Results" MODIFIED="1754830988425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$chess_board_builder.coverage" NAME="chess_board_builder Coverage Results" MODIFIED="1754836419242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_builder.coverage" NAME="coord_stack Coverage Results" MODIFIED="1756181898853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756208829089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756216383025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_specification.coverage" NAME="coordinate_specification Coverage Results" MODIFIED="1756164098058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$chess_piece_builder.coverage" NAME="chess_piece_builder Coverage Results" MODIFIED="1754426158452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$offset.coverage" NAME="offset Coverage Results" MODIFIED="1756202696486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
+    <SUITE FILE_PATH="coverage/chessbot$offset.coverage" NAME="offset Coverage Results" MODIFIED="1756212974974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry/coordinate" />
     <SUITE FILE_PATH="coverage/chessbot$team_builder.coverage" NAME="team_builder Coverage Results" MODIFIED="1754840550112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$team_factory.coverage" NAME="team_factory Coverage Results" MODIFIED="1754842536324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
   </component>

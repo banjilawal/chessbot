@@ -44,7 +44,8 @@ class Offset:
                 f"{method}: {NullRowOffsetException.DEFAULT_MESSAGE}"
             )
 
-        if  delta_row < 0 and delta_row < -KNIGHT_STEP_SIZE + 1:
+        if  delta_row < 0 and delta_row < -(KNIGHT_STEP_SIZE):
+            print(f"delta_row: {delta_row} knight_step_size:{-(KNIGHT_STEP_SIZE)}")
             raise DeltaRowBelowSteppingBoundException(
                 f"{method}: {DeltaRowBelowSteppingBoundException.DEFAULT_MESSAGE}"
             )
@@ -145,4 +146,16 @@ class Offset:
 
 
     def __str__(self):
-        return f"Offset(delta_row={self._delta_row}, delta_column={self._delta_column})"
+        return (
+            f"Offset(delta_row={self._delta_row}, "
+            f"delta_column={self._delta_column})"
+        )
+
+def main():
+    offset = Offset(-3, 1)
+    print(offset)
+    # scaled_offset = offset * 3
+    # print(scaled_offset)
+
+if __name__ == "__main__":
+    main()
