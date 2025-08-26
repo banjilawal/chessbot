@@ -23,23 +23,17 @@ class IdSpecification(Specification):
         Args
             t (Coordinate): generic to be validated
 
-        Returns:
-            bool: True if if passes meets specifications. In testing only ever returns
-                true.
+         Returns:
+             Result[T]: A Result object containing the validated payload if the specification is satisfied,
+                        IdValidationException otherwise.
 
         Raises:
             IdNullException: if t is null
             TypeError: if t is not int
+            NegativeIdException: if t is negative   
             
-
-            RowOutOfBoundsException: If coordinate.row is outside the range 
-                (0, ROW_SIZE - 1) inclusive
-
-            ColumnOutOfBoundsException: If coordinate.column is outside the range
-                (0, COLUMN_SIZE - 1) inclusive.
-                
-            CoordinateValidationException: Wraps any
-                (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
+            IdValidationException: Wraps any
+                (IdNullException, TypeError, NegativeIdException)  
         """
         try:
             if t is None:

@@ -1,9 +1,9 @@
 from typing import Optional, List
 
-from chess.exception.coordinate.NullCoordinatePushException import NullCoordinatePushException
-from chess.exception.coordinate.PopEmptyCoordinateStackException import PopEmptyCoordinateStackException
-from chess.exception.coordinate.duplicate_coordinate_push import DuplicateCoordinatePushException
-from chess.exception.coordinate.internal__stack_data_structure import InternalStackDataStructureException
+from chess.exception.coordinate_stack.push_null import NullCoordinatePushException
+from chess.exception.coordinate_stack.pop_empty import PopEmptyCoordinateStackException
+from chess.exception.coordinate_stack.duplicate_push import DuplicateCoordinatePushException
+from chess.exception.coordinate_stack.internal_structure import InternalStackDataStructureException
 
 from chess.geometry.coordinate.coordinate import Coordinate
 

@@ -19,6 +19,6 @@ class Specification(ABC, Generic[T]):
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                         or an exception if it is not.
+                        ValidationException otherwise.
          """
         pass

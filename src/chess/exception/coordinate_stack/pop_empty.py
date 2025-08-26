@@ -1,7 +1,7 @@
-from chess.exception.coordinate.coordinate_exception import CoordinateException
+from chess.exception.coordinate_stack.coordinate_stack_exception import CoordinateStackException
 
 
-class PopEmptyCoordinateStackException(CoordinateException):
+class PopEmptyCoordinateStackException(CoordinateStackException):
     ERROR_CODE = "POP_EMPTY_COORDINATE_STACK_ERROR"
     DEFAULT_MESSAGE = "Cannot pop from empty coordinate stack"
 

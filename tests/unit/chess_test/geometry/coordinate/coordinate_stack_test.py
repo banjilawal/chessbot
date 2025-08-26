@@ -2,8 +2,8 @@ import unittest
 
 import pytest
 
-from chess.exception.coordinate.NullCoordinatePushException import NullCoordinatePushException
-from chess.exception.coordinate.duplicate_coordinate_push import DuplicateCoordinatePushException
+from chess.exception.coordinate_stack.push_null import NullCoordinatePushException
+from chess.exception.coordinate_stack.duplicate_push import DuplicateCoordinatePushException
 from chess.geometry.coordinate.coordinate import Coordinate
 from chess.geometry.coordinate.coordinate_stack import CoordinateStack, PopEmptyCoordinateStackException
 
@@ -79,6 +79,24 @@ class CoordinateStackTest(unittest.TestCase):
 
         coordinate_stack.undo_push()
         self.assertEqual(coordinate_stack.size(), size_before_undo - 1)
+
+
+    def test_is_empty_corresponds_to_zero_stack_size(self):
+        coordinate_stack = CoordinateStack()
+
+        self.assertTrue(coordinate_stack.is_empty() and coordinate_stack.size() == 0)
+
+    def test_is_empty_false_when_stack_has_items(self):
+        coordinate_stack = CoordinateStack()
+        coordinate_stack.push_coordinate(Coordinate(row=0, column=0))
+
+        self.assertTrue(not coordinate_stack.is_empty() and coordinate_stack.size() > 0)
+
+    def test_if_stack_Is_empty_then_current_coordinate_is_null(self):
+        coordinate_stack = CoordinateStack()
+        self.assertTrue(
+            coordinate_stack.is_empty() and coordinate_stack.current_coordinate is None
+        )
 
 
 if __name__ == '__main__':

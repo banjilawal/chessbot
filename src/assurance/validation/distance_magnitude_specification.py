@@ -27,16 +27,15 @@ class DistanceMagnitudeSpecification(Specification):
         Args
             t (DistanceMagnitude): DistanceMagnitude to validate
             
-        Returns:
-            bool: True if coordinate passes validation. In testing only ever returns
-                true. It throws an exception if any validation condition is not met.
+         Returns:
+             Result[T]: A Result object containing the validated payload if the specification is satisfied,
+                        CoordinateValidationException otherwise.
         
         Raises:
-            NullDistanceMagnitudeException: if t is null
-            
+            NullDistanceMagnitudeException: if t is null  
             TypeError: if t is not Coordinate
 .
-            CoordinateValidationException: Wraps any
+            DistanceMagnitudeValidationException: Wraps any
                 (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
                 
         """

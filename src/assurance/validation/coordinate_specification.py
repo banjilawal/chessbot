@@ -32,25 +32,23 @@ class CoordinateSpecification(Specification):
         Args
             t (Coordinate): coordinate to validate
             
-        Returns:
-            bool: True if coordinate passes validation. In testing only ever returns
-                true. It throws an exception if any validation condition is not met.
+         Returns:
+             Result[T]: A Result object containing the validated payload if the specification is satisfied,
+                        CoordinateValidationException otherwise.
         
         Raises:
 
-            NullCoordinateException: if t is null
-            
+            NullCoordinateException: if t is null   
             TypeError: if t is not Coordinate
             
             RowOutOfBoundsException: If coordinate.row is outside the range 
-                (0, ROW_SIZE - 1) inclusive
+                (0, ROW_SIZE - 1) inclusive   
                 
             ColumnOutOfBoundsException: If coordinate.column is outside the range
                 (0, COLUMN_SIZE - 1) inclusive
 .
             CoordinateValidationException: Wraps any
-                (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
-                
+                (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)      
         """
         try:
             if t is None:

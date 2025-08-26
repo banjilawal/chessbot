@@ -1,7 +1,7 @@
-from chess.exception.coordinate.coordinate_exception import CoordinateException
+from chess.exception.coordinate_stack.coordinate_stack_exception import CoordinateStackException
 
 
-class DuplicateCoordinatePushException(CoordinateException):
+class DuplicateCoordinatePushException(CoordinateStackException):
     ERROR_CODE = "DUPLICATE_COORDINATE_PUSH_STACK_ERROR"
     DEFAULT_MESSAGE = "Cannot push duplicate coordinate onto stack"
 

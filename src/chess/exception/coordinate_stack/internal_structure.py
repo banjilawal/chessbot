@@ -1,7 +1,7 @@
-from chess.exception.coordinate.coordinate_exception import CoordinateException
+from chess.exception.coordinate_stack.coordinate_stack_exception import CoordinateStackException
 
 
-class InternalStackDataStructureException(CoordinateException):
+class InternalStackDataStructureException(CoordinateStackException):
     ERROR_CODE = "INTERNAL_STACK_DATA_STRUCTURE_ERROR"
     DEFAULT_MESSAGE = "The internal stack data structure is corrupted, null or invalid"
 
