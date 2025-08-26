@@ -1,7 +1,8 @@
-from chess.exception.coordinate.base import CoordinateException
+
+from chess.exception.offset.base import CoordinateOffsetException
 
 
-class MultiplierOutOfBoundsException(CoordinateException):
+class MultiplierOutOfBoundsException(CoordinateOffsetException):
     ERROR_CODE = "OFFSET_FACTOR_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = f"Offset multiplication factor is outside the chessboard range of 1 to 7 inclusive."
 

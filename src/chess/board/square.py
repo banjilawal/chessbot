@@ -1,14 +1,14 @@
 from typing import Optional, TYPE_CHECKING
 
-from assurance.validation.coordinate_specification import CoordinateSpecification
-from assurance.validation.id_specification import IdSpecification
+from assurance.validation.coord import CoordinateSpecification
+from assurance.validation.id import IdSpecification
 from assurance.exception.validation.base_validationpy import IdValidationException, CoordinateValidationException
-from chess.exception.null.name_null import NullNameException
+from chess.exception.null.name import NullNameException
 
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
-    from chess.token.chess_piece import ChessPiece
+    from chess.token.piece import ChessPiece
 
 class Square:
     _id: int

@@ -1,4 +1,4 @@
-from assurance.exception.validation.base_validation import ValidationException
+from assurance.exception.validation.base import ValidationException
 
 
 class OffsetValidationException(ValidationException):

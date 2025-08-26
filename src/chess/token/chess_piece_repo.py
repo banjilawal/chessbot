@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 
 class ChessPieceRepo:

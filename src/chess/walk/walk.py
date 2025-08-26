@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
-from chess.exception.base.negative_id_exception import ChessException
-from chess.geometry.coordinate.coordinate import Coordinate
-from chess.token.chess_piece import ChessPiece
+from chess.exception.id import ChessException
+from chess.geometry.coordinate.coord import Coordinate
+from chess.token.piece import ChessPiece
 
 class WalkException(ChessException):
     default_message = "Unreachable Destination coordinate"

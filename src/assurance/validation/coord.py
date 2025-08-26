@@ -1,15 +1,15 @@
 from typing import Generic, cast
 
-from assurance.exception.validation.coordinate_validation import CoordinateValidationException
-from assurance.result.base_result import Result
-from assurance.validation.specification import Specification, T
+from assurance.exception.validation.coord import CoordinateValidationException
+from assurance.result.base import Result
+from assurance.validation.base import Specification, T
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
-from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
-from chess.exception.null.coordinate import NullCoordinateException
-from chess.exception.null.null_column import NullColumnException
-from chess.exception.null.null_row import NullRowException
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.exception.coordinate.column import ColumnOutOfBoundsException
+from chess.exception.coordinate.row import RowOutOfBoundsException
+from chess.exception.null.coord import NullCoordinateException
+from chess.exception.null.column import NullColumnException
+from chess.exception.null.row import NullRowException
+from chess.geometry.coordinate.coord import Coordinate
 
 
 class CoordinateSpecification(Specification):

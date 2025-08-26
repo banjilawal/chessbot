@@ -4,8 +4,8 @@ from chess.board.board import ChessBoard
 from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
-from chess.geometry.coordinate.distance_magnitude import DistanceMagnitude
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.scalar import Distance
+from chess.geometry.coordinate.coord import Coordinate
 from chess.owner.cybernetic_owner import CyberneticOwner
 
 
@@ -59,7 +59,7 @@ class GreedyDecisionEngine(DecisionEngine):
             square = analysis.vacant_squares[0]
             origin = analysis.chess_piece.positions.current_coordinate()
 
-            if DistanceMagnitude(origin, square.coordinate).magnitude > max_distance:
+            if Distance(origin, square.coordinate).magnitude > max_distance:
                 best_report = analysis
 
         if best_report is not None:
@@ -77,7 +77,7 @@ class GreedyDecisionEngine(DecisionEngine):
             coordinate = analysis.obstructions[0].blocked_coordinate
             origin = analysis.chess_piece.positions.current_coordinate
 
-            if DistanceMagnitude(origin, coordinate).magnitude > max_distance:
+            if Distance(origin, coordinate).magnitude > max_distance:
                 best_report = analysis
 
         if best_report is not None:

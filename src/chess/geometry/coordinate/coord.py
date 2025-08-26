@@ -1,9 +1,9 @@
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coordinate.column_out_of_bounds import ColumnOutOfBoundsException
-from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
-from chess.exception.null.delta_null import NullDeltaException
-from chess.exception.null.null_column import NullColumnException
-from chess.exception.null.null_row import NullRowException
+from chess.exception.coordinate.column import ColumnOutOfBoundsException
+from chess.exception.coordinate.row import RowOutOfBoundsException
+from chess.exception.null.offset import NullOffsetException
+from chess.exception.null.column import NullColumnException
+from chess.exception.null.row import NullRowException
 from chess.geometry.coordinate.offset import Offset
 
 class Coordinate:
@@ -21,6 +21,21 @@ class Coordinate:
 
     def __init__(self, row: int, column: int):
         method = "Coordinate.__init__()"
+
+        if row is None:
+            raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
+        if row < 0 or row >= ROW_SIZE:
+            raise RowOutOfBoundsException(
+                f"{method} Row value {row} is out of bounds. "
+                f"Must be between 0 and {ROW_SIZE - 1} inclusive."
+            )
+        if column is None:
+            raise NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}")
+        if column < 0 or column >= COLUMN_SIZE:
+            raise ColumnOutOfBoundsException(
+                f"{method} Column value {column} is out of bounds. "
+                f"Must be between 0 and {COLUMN_SIZE - 1} inclusive."
+            )
         self._row = row
         self._column = column
 
@@ -69,12 +84,12 @@ class Coordinate:
         """
 
         if offset is None:
-            raise NullDeltaException(f"{method} {NullDeltaException.default_message}")
+            raise NullOffsetException(f"{method} {NullOffsetException.default_message}")
 
         # Creating totally new values makes sure nothing
         # hinky happens creating the new shifted coordinate.
-        new_row = self._row + offset.row_offset
-        new_colum = self._column + offset.column_offset
+        new_row = self._row + offset.delta_row
+        new_colum = self._column + offset.delta_column
 
         return Coordinate(row=new_row, column=new_colum)
 

@@ -1,82 +1,95 @@
 from typing import Generic, cast
 
-from assurance.exception.validation.coord import CoordinateValidationException
+from assurance.exception.validation.offset import OffsetValidationException
 from assurance.result.base import Result
-from assurance.validation.specification import Specification, T
-from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coordinate.column import ColumnOutOfBoundsException
-from chess.exception.coordinate.row import RowOutOfBoundsException
-from chess.exception.null.coord import NullCoordinateException
-from chess.exception.null.null_column import NullColumnException
-from chess.exception.null.null_row import NullRowException
+from assurance.validation.base import Specification, T
+from chess.common.config import KNIGHT_WALKING_RANGE
+from chess.exception.offset.column import ColumnOffsetSizeException
+from chess.exception.offset.row import RowOffsetSizeException
+from chess.exception.null.column_offset import NullColumnOffsetException
+from chess.exception.null.offset import NullOffsetException
+from chess.exception.null.row_offset import NullRowOffsetException
 from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coordinate.offset import Offset
 
 
 class OffsetSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[Coordinate]:
-        method = "CoordinateSpecification.is_satisfied_by"
+        method = "OffsetSpecification.is_satisfied_by"
 
         """
-        Validates a coordinate with chained exceptions for coordinate meeting specifications:
+        Validates an Offset instance meets specifications:
             - Not null
-            - row is not null
-            - row is within the bounds of the chess chessboard
-            - column is not null
-            - column is within the bounds of the chess chessboard
-        If either validation fails their exception will be encapsulated in a CoordinateValidationException
+            - delta_row is not null
+            - delta_row is not greater than KNIGHT_WALKING_RANGE
+            - delta_column is not null
+            - delta_column is not greater than KNIGHT_WALKING_RANGE
+        If any validation fails their exception will be encapsulated in 
+        OffsetValidationException
             
         Args
-            t (Coordinate): coordinate to validate
+            t (Coordinate): offset to validate
             
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                        CoordinateValidationException otherwise.
+             Result[T]: A Result object containing the validated payload if 
+             specification is satisfied, OffsetValidationException otherwise.
         
         Raises:
 
-            NullCoordinateException: if t is null   
-            TypeError: if t is not Coordinate
+            NullOffsetException: if t is null   
+            TypeError: if t is not an Offset
             
-            RowOutOfBoundsException: If coordinate.row is outside the range 
-                (0, ROW_SIZE - 1) inclusive   
-                
-            ColumnOutOfBoundsException: If coordinate.column is outside the range
-                (0, COLUMN_SIZE - 1) inclusive
-.
-            CoordinateValidationException: Wraps any
-                (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)      
+            NullRowOffsetException: if offset.delta_row is null
+            RowOffsetSizeException: if 
+                abs(offset.delta_row) > KNIGHT_WALKING_RANGE
+            
+            NullColumnOffsetException: if offset.delta_column is null
+            ColumnOffsetSizeException: if 
+                abs(offset.delta_column) > KNIGHT_WALKING_RANGE
+            
+            OffsetValidationException: Wraps preceding exceptions:     
         """
         try:
             if t is None:
-                raise NullCoordinateException(
-                    f"{method} NullCoordinateException.DEFAULT_MESSAGE"
+                raise NullOffsetException(
+                    f"{method} NullOffSetException.DEFAULT_MESSAGE"
                 )
 
-            if not isinstance(t, Coordinate):
-                raise TypeError(f"{method} Expected a Coordinate, got {type(t).__name__}")
+            if not isinstance(t, Offset):
+                raise TypeError(f"{method} Expected an Offset, got {type(t).__name__}")
 
-            coordinate = cast(Coordinate, t)
+            offset = cast(Offset, t)
 
-            if coordinate.row is None:
-                raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
+            if offset.delta_row is None:
+                raise NullRowOffsetException(
+                    f"{method} {NullRowOffsetException.DEFAULT_MESSAGE}"
+                )
+            if abs(offset.delta_row) > KNIGHT_WALKING_RANGE:
+                raise RowOffsetSizeException(
+                    f"{method} {RowOffsetSizeException.DEFAULT_MESSAGE}"
+                )
 
-            if coordinate.row < 0 or coordinate.row >= ROW_SIZE:
-                raise RowOutOfBoundsException(f"{method} {RowOutOfBoundsException.DEFAULT_MESSAGE}")
+            if offset.delta_column is None:
+                raise NullColumnOffsetException(
+                    f"{method} {NullRowOffsetException.DEFAULT_MESSAGE}"
+                )
+            if abs(offset.delta_column) > KNIGHT_WALKING_RANGE:
+                raise ColumnOffsetSizeException(
+                    f"{method} {ColumnOffsetSizeException.DEFAULT_MESSAGE}"
+                )
 
-            if coordinate.column is None:
-                raise NullCoordinateException(f"{method} {NullCoordinateException.DEFAULT_MESSAGE}")
-
-            if coordinate.column < 0 or coordinate.column >= COLUMN_SIZE:
-                raise ColumnOutOfBoundsException(f"{method} {ColumnOutOfBoundsException.DEFAULT_MESSAGE}")
-
-            return Result(payload=coordinate)
+            return Result(payload=offset)
 
         except (
-            NullCoordinateException, TypeError,
-            NullRowException, RowOutOfBoundsException,
-            NullColumnException, ColumnOutOfBoundsException) as e:
-            raise CoordinateValidationException(
-                f"{method} CoordinateSpecification: Coordinate validation failed"
+            TypeError,
+            NullOffsetException,
+            NullRowOffsetException,
+            NullColumnOffsetException,
+            RowOffsetSizeException,
+            ColumnOffsetSizeException
+        ) as e:
+            raise OffsetValidationException(
+                f"{method} Offset validation failed"
             ) from e

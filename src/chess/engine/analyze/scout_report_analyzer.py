@@ -2,10 +2,10 @@ from typing import List
 
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
-from chess.geometry.coordinate.distance_magnitude import DistanceMagnitude
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.scalar import Distance
+from chess.geometry.coordinate.coord import Coordinate
 from chess.token.obstruction import Obstruction
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 from chess.engine.scout.scout_report import ScoutReport
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
@@ -52,7 +52,7 @@ class ScoutReportAnalyzer:
 
         vacant_squares.sort(
             reverse=True,
-            key=lambda vacancy: DistanceMagnitude(
+            key=lambda vacancy: Distance(
                 self._scout_coordinate,
                 vacancy.coordinate
             ).magnitude
@@ -75,7 +75,7 @@ class ScoutReportAnalyzer:
 
         obstructions.sort(
             reverse=True,
-            key=lambda blocker: DistanceMagnitude(
+            key=lambda blocker: Distance(
                 self._scout_coordinate, blocker.coordinate
             ).magnitude
         )

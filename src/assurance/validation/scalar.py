@@ -1,18 +1,18 @@
 from typing import Generic, cast
 
 from assurance.exception.validation.coord import CoordinateValidationException
-from assurance.exception.validation.distance_magnitude_validation import DistanceMagnitudeValidationException
+from assurance.exception.validation.scalar import DistanceValidationException
 from assurance.result.base import Result
 from assurance.validation.coord import CoordinateSpecification
-from assurance.validation.specification import Specification, T
-from chess.exception.null.distance_magnitude_null import NullDistanceMagnitudeException
-from chess.geometry.coordinate.distance import ScalarDistance
+from assurance.validation.base import Specification, T
+from chess.exception.null.scalar import NullDistanceMagnitudeException
+from chess.geometry.coordinate.scalar import Distance
 
 
 class DistanceMagnitudeSpecification(Specification):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[ScalarDistance]:
+    def is_satisfied_by(t: Generic[T]) -> Result[Distance]:
         method = "DistanceMagnitudeSpecification.is_satisfied_by"
 
         """
@@ -43,10 +43,10 @@ class DistanceMagnitudeSpecification(Specification):
                     f"{method} NullDistanceMagnitudeException.DEFAULT_MESSAGE"
 )
 
-            if not isinstance(t, ScalarDistance):
+            if not isinstance(t, Distance):
                 raise TypeError(f"{method} Expected a DistanceMagnitude, got {type(t).__name__}")
 
-            cartesian_distance = cast(ScalarDistance, t)
+            cartesian_distance = cast(Distance, t)
 
             p_coord_spec_result = CoordinateSpecification.is_satisfied_by(cartesian_distance.p)
             if not p_coord_spec_result.is_success():
@@ -62,6 +62,6 @@ class DistanceMagnitudeSpecification(Specification):
 
         except (
             NullDistanceMagnitudeException, TypeError, CoordinateValidationException) as e:
-            raise DistanceMagnitudeValidationException(
+            raise DistanceValidationException(
                 f"{method} DistanceMagnitudeSpecification : validation failed"
             ) from e

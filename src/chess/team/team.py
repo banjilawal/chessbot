@@ -7,7 +7,7 @@ from chess.token.mobility_status import MobilityStatus
 
 if TYPE_CHECKING:
     from chess.owner.owner import Owner
-    from chess.token.chess_piece import ChessPiece
+    from chess.token.piece import ChessPiece
 
 
 class Team:

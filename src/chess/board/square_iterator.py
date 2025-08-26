@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.geometry.coordinate.coordinate import Coordinate, Offset
+from chess.geometry.coordinate.coord import Coordinate, Offset
 from chess.board.square import Square
 
 
@@ -13,7 +13,7 @@ class SquareIterator:
         self,
         squares: List[List[Square]],
         index: Coordinate = Coordinate(0, 0),
-        delta: Offset=Offset(column_offset=1, row_offset=1)
+        delta: Offset=Offset(delta_column=1, row_offset=1)
     ):
         self._squares = squares
         self._index = index

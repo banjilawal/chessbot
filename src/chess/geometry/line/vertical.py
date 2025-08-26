@@ -1,4 +1,4 @@
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 
 
 class Vertical:

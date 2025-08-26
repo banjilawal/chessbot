@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Any, Callable
 
 from assurance.error_handler import ErrorHandler
-from assurance.result.base_result import Result
+from assurance.result.base import Result
 
 
 class ThrowHelper(Enum):

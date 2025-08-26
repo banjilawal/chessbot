@@ -1,11 +1,11 @@
 from typing import TYPE_CHECKING
 
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 from chess.geometry.coordinate.offset import Offset
 
 
 from chess.walk.walk import Walk
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 
 
@@ -51,7 +51,7 @@ class PawnWalk(Walk):
     def can_attack(pawn: ChessPiece, destination: Coordinate) -> bool:
         origin = pawn.positions.current_coordinate()
         delta = Offset(
-            column_offset=destination.column - origin.column,
+            delta_column=destination.column - origin.column,
             row_offset=destination.row - origin.row
         )
 

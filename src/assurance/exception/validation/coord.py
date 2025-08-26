@@ -1,5 +1,4 @@
-from assurance.exception.validation.base_validation import ValidationException
-from chess.exception.base.negative_id_exception import ChessException
+from assurance.exception.validation.base import ValidationException
 
 
 class CoordinateValidationException(ValidationException):

@@ -1,17 +1,17 @@
 from typing import Generic, cast
 
-from assurance.exception.validation.coordinate_stack_validation import CoordinateStackValidationException
+from assurance.exception.validation.coord_stack import CoordinateStackValidationException
 from assurance.exception.validation.coord import CoordinateValidationException
-from assurance.result.base_result import Result
+from assurance.result.base import Result
 from assurance.validation.coord import CoordinateSpecification
-from assurance.validation.specification import Specification, T
+from assurance.validation.base import Specification, T
 from chess.exception.coordinate_stack.conflict import IsEmptyStackResultConflictsWithSizeException
-from chess.exception.coordinate_stack.current_coordinate import CurrentCoordinateInconsistentStateException
+from chess.exception.coordinate_stack.current import CurrentCoordinateInconsistentStateException
 from chess.exception.coordinate_stack.internal_structure import InternalStackDataStructureException
-from chess.exception.coordinate.row_out_of_bounds import RowOutOfBoundsException
+from chess.exception.coordinate.row import RowOutOfBoundsException
 from chess.exception.coordinate_stack.mismatch import EmptyStackCurrentCoordinateValueMismatch
-from chess.exception.null.coordinate import NullCoordinateException
-from chess.exception.null.coordinate_stack_null import NullCoordinateStackException
+from chess.exception.null.coord import NullCoordinateException
+from chess.exception.null.coord_stack import NullCoordinateStackException
 from chess.geometry.coordinate.coord_stack import CoordinateStack
 
 

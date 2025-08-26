@@ -12,7 +12,7 @@ from chess.geometry.coordinate.scalar import Distance
 from chess.geometry.coordinate.coord import Coordinate
 
 
-class DistanceMagnitudeTest(unittest.TestCase):
+class DistanceTest(unittest.TestCase):
 
     def test_null_p_coord_raises_exception(self):
         with pytest.raises(NullCoordinateException):

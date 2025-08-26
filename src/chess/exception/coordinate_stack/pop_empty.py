@@ -1,4 +1,4 @@
-from chess.exception.coordinate_stack.coordinate_stack_exception import CoordinateStackException
+from chess.exception.coordinate_stack.coord_stack import CoordinateStackException
 
 
 class PopEmptyCoordinateStackException(CoordinateStackException):

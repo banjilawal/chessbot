@@ -2,7 +2,7 @@ from typing import Optional, List
 
 from chess.exception.coordinate_stack.push_null import NullCoordinatePushException
 from chess.exception.coordinate_stack.pop_empty import PopEmptyCoordinateStackException
-from chess.exception.coordinate_stack.duplicate_push import DuplicateCoordinatePushException
+from chess.exception.coordinate_stack.push_duplicate import DuplicateCoordinatePushException
 from chess.exception.coordinate_stack.internal_structure import InternalStackDataStructureException
 
 from chess.geometry.coordinate.coord import Coordinate

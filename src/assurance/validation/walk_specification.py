@@ -1,7 +1,7 @@
 from typing import Generic
 
-from assurance.result.base_result import Result
-from assurance.validation.specification import Specification, T
+from assurance.result.base import Result
+from assurance.validation.base import Specification, T
 from chess.walk.walk import Walk
 
 

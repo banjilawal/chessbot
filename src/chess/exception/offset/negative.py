@@ -1,7 +1,7 @@
-from chess.exception.coordinate.base import CoordinateException
+from chess.exception.offset.base import CoordinateOffsetException
 
 
-class NegativeMultiplierException(CoordinateException):
+class NegativeMultiplierException(CoordinateOffsetException):
     ERROR_CODE = "NEGATIVE_OFFSET_MULTIPLICATION_FACTOR_ERROR"
     DEFAULT_MESSAGE = f"Offset multiplication factor cannot be negative."
 

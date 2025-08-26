@@ -1,7 +1,7 @@
-from assurance.exception.validation.base_validation import ValidationException
+from assurance.exception.validation.base import ValidationException
 
 
-class DistanceMagnitudeValidationException(ValidationException):
+class DistanceValidationException(ValidationException):
     ERROR_CODE = "DISTANCE_MAGNITUDE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"DistanceMagnitude validation failed"
 

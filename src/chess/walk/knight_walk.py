@@ -1,6 +1,6 @@
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 from chess.walk.walk import Walk, WalkException
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 class KnightWalkException(WalkException):
     default_message = f"KnightRank {WalkException.default_message}"

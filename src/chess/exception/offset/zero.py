@@ -1,7 +1,7 @@
-from chess.exception.coordinate.base import CoordinateException
+from chess.exception.offset.base import CoordinateOffsetException
 
 
-class MultiplyByZeroException(CoordinateException):
+class MultiplyByZeroException(CoordinateOffsetException):
     ERROR_CODE = "MULTIPLY_OFFSET_BY_ZERO_ERROR"
     DEFAULT_MESSAGE = f"Offset multiplication factor cannot be zero."
 

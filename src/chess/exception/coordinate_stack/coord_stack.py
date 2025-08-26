@@ -1,4 +1,4 @@
-from chess.exception.base.root import ChessException
+from chess.exception.base import ChessException
 
 
 class CoordinateStackException(ChessException):

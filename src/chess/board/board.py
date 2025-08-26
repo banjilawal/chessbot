@@ -1,14 +1,14 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
-from assurance.validation.coordinate_specification import CoordinateSpecification
+from assurance.validation.coord import CoordinateSpecification
 from assurance.exception.validation.base_validationpy import CoordinateValidationException
-from chess.geometry.coordinate.coordinate import Coordinate, Offset
+from chess.geometry.coordinate.coord import Coordinate, Offset
 from chess.board.square_iterator import SquareIterator
 from chess.board.square import Square
 
 if TYPE_CHECKING:
-    from chess.token.chess_piece import ChessPiece
+    from chess.token.piece import ChessPiece
 
 
 
@@ -68,7 +68,7 @@ class ChessBoard:
     def iterator(
         self,
         index: Coordinate = Coordinate(0, 0),
-        delta: Offset = Offset(column_offset=1, row_offset=1)
+        delta: Offset = Offset(delta_column=1, row_offset=1)
      ) -> SquareIterator:
 
         method = "ChessBoard.iterator"

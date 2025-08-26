@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from chess.team.team import Team
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 from chess.token.chess_piece_repo import ChessPieceRepo
 
 

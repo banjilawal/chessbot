@@ -1,4 +1,4 @@
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 from chess.rank.rank import Rank
 
 from chess.team.team import Team

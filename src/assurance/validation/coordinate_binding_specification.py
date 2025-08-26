@@ -1,12 +1,12 @@
 from typing import Generic, cast
 
-from assurance.validation.chess_piece_specification import ChessPieceSpecification
-from assurance.validation.specification import Specification
+from assurance.validation.piece import ChessPieceSpecification
+from assurance.validation.base import Specification
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from chess.board.coordinate_bind import CoordinateBinding
 
 
-class CoordinateSBindiingpecification(Specification):
+class CoordinateSBindingSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> bool:

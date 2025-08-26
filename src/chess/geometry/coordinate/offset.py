@@ -1,15 +1,17 @@
 from chess.common.config import KNIGHT_WALKING_RANGE, BOARD_DIMENSION
-from chess.exception.coordinate.offset_multiplication import OffsetMultiplicationResultException
-from chess.exception.coordinate.offset_multiplication_factor import OffsetMultiplicationFactorException
-from chess.exception.coordinate.offset_range import OffsetRangeException
-from chess.exception.null.null_column_offset import NullColumnOffsetException
-from chess.exception.null.null_offset_scalar import NullOffsetMultiplicationFactorExcepetion
-from chess.exception.null.null_row_offset import NullRowOffsetException
+from chess.exception.offset.zero import MultiplyByZeroException
+from chess.exception.offset.negative import NegativeMultiplierException
+from chess.exception.offset.overflow import OffsetMultiplicationOverflowException
+from chess.exception.offset.factor import MultiplierOutOfBoundsException
+from chess.exception.offset.offset_range import OffsetRangeException
+from chess.exception.null.column_offset import NullColumnOffsetException
+from chess.exception.null.offset_factor import NullOffSetFactor
+from chess.exception.null.row_offset import NullRowOffsetException
 
 
 class Offset:
-    _row_offset: int
-    _column_offset: int
+    _delta_row: int
+    _delta_column: int
 
     """
     Offset is an immutable class is used for shifting a Coordinate by a offset. The
@@ -21,7 +23,7 @@ class Offset:
     """
 
 
-    def __init__(self, row_offset: int, column_offset: int):
+    def __init__(self, delta_row: int, delta_column: int):
         method = f"Offset__init__"
 
         """
@@ -35,29 +37,29 @@ class Offset:
             NollChessObjectException: if either row_offset or column_offset are null.
         """
 
-        if row_offset is None:
-            raise NullRowOffsetException(f"{method}: row_offset cannot be null")
-        if row_offset < -KNIGHT_WALKING_RANGE or row_offset > KNIGHT_WALKING_RANGE:
+        if delta_row is None:
+            raise NullRowOffsetException(f"{method}: delta_row cannot be null")
+        if abs(delta_row) > KNIGHT_WALKING_RANGE:
             raise OffsetRangeException(f"{method}: row_offset {OffsetRangeException.DEFAULT_MESSAGE}")
 
-        if column_offset is None:
+        if delta_column is None:
             raise NullColumnOffsetException(f"{method} {NullColumnOffsetException.DEFAULT_MESSAGE}")
-        if column_offset < -KNIGHT_WALKING_RANGE or column_offset > KNIGHT_WALKING_RANGE:
+        if delta_column < -KNIGHT_WALKING_RANGE or delta_column > KNIGHT_WALKING_RANGE:
             raise OffsetRangeException(f"{method}: column_offset {OffsetRangeException.DEFAULT_MESSAGE}")
 
 
-        self._row_offset = row_offset
-        self._column_offset = column_offset
+        self._row_delta = delta_row
+        self._delta_column = delta_column
 
 
     @property
-    def row_offset(self) -> int:
-        return self._row_offset
+    def delta_row(self) -> int:
+        return self._row_delta
 
 
     @property
-    def column_offset(self) -> int:
-        return self._column_offset
+    def delta_column(self) -> int:
+        return self._delta_column
 
 
     def __eq__(self, other):
@@ -69,12 +71,12 @@ class Offset:
             return False
 
         return (
-                self._column_offset == other.column_offset and
-                self._row_offset == other.row_offset
+            self._delta_column == other.delta_column and
+            self._row_delta == other.delta_row
         )
 
 
-    def __mul__(self, scalar: int) -> 'Offset':
+    def __mul__(self, factor: int) -> 'Offset':
         method = f"Offset.__mul__"
 
         """
@@ -90,28 +92,38 @@ class Offset:
             NollChessObjectException: If scalar is None
         """
 
-        if scalar is None:
-            raise NullOffsetMultiplicationFactorExcepetion(f"{method}: scalar cannot be null")
+        if factor is None:
+            raise NullOffSetFactor(f"{method}: scalar cannot be null")
 
-        if scalar < -BOARD_DIMENSION or scalar > BOARD_DIMENSION:
-            raise OffsetMultiplicationFactorException(
-                f"{method}: scalar {OffsetMultiplicationFactorException.DEFAULT_MESSAGE}"
+        if factor < 0:
+            raise NegativeMultiplierException(
+                f"{method}: {NegativeMultiplierException.DEFAULT_MESSAGE}"
             )
 
-        new_row_offset = self.row_offset * scalar
-        if new_row_offset <= -BOARD_DIMENSION or new_row_offset >= BOARD_DIMENSION:
-            raise OffsetMultiplicationResultException(
-                f"{method}: row_offset {OffsetMultiplicationResultException.DEFAULT_MESSAGE}"
+        if factor == 0:
+            raise MultiplyByZeroException(
+                f"{method}: {MultiplyByZeroException.DEFAULT_MESSAGE}"
             )
 
-        new_column_offset = self.column_offset * scalar
-        if new_column_offset <= -BOARD_DIMENSION or new_column_offset >= BOARD_DIMENSION:
-            raise OffsetMultiplicationResultException(
-                f"{method}: column_offset {OffsetMultiplicationResultException.DEFAULT_MESSAGE}"
+        if factor >= BOARD_DIMENSION:
+            raise MultiplierOutOfBoundsException(
+                f"{method}: scalar {MultiplierOutOfBoundsException.DEFAULT_MESSAGE}"
             )
 
-        return Offset(row_offset=new_row_offset, column_offset=new_column_offset)
+        new_row_offset = self.delta_row * factor
+        if abs(new_row_offset) >= BOARD_DIMENSION:
+            raise OffsetMultiplicationOverflowException(
+                f"{method}: row_offset {OffsetMultiplicationOverflowException.DEFAULT_MESSAGE}"
+            )
+
+        new_column_offset = self.delta_column * factor
+        if abs(new_column_offset) >= BOARD_DIMENSION:
+            raise OffsetMultiplicationOverflowException(
+                f"{method}: column_offset {OffsetMultiplicationOverflowException.DEFAULT_MESSAGE}"
+            )
+
+        return Offset(delta_row=new_row_offset, delta_column=new_column_offset)
 
 
     def __str__(self):
-        return f"Offset(row_offset={self._row_offset}, column_offset={self._column_offset})"
+        return f"Offset(row_offset={self._row_delta}, column_offset={self._delta_column})"

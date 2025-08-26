@@ -1,9 +1,9 @@
-from chess.exception.null.null_exception import NullException
+from chess.exception.null.base import NullException
 
 
-class NullDeltaException(NullException):
-    ERROR_CODE = "NULL_DELTA_ERROR"
-    DEFAULT_MESSAGE = f"Delta cannot be null"
+class NullOffsetException(NullException):
+    ERROR_CODE = "NULL_OFFSET_ERROR"
+    DEFAULT_MESSAGE = f"Offset cannot be null"
 
 
     def __init__(self, message=None):

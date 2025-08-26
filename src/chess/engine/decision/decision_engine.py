@@ -4,7 +4,7 @@ from typing import List, Optional, TYPE_CHECKING
 from chess.board.board import ChessBoard
 from chess.config.rank_config import RankConfig
 
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
     from chess.engine.analyze.board_analyzer import BoardAnalyzer

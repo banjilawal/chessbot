@@ -1,11 +1,11 @@
 from typing import Optional
 
 from chess.board.board import ChessBoard
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 from chess.walk.bishop_walk import BishopWalk
 from chess.walk.castle_walk import CastleWalk
 from chess.walk.walk import Walk, WalkException
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 class QueenWalkException(WalkException):
     default_message = f"QueenRank {WalkException.default_message}"

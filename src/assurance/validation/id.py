@@ -1,10 +1,10 @@
 from typing import Generic
 
-from assurance.exception.validation.id_validation import IdValidationException
-from assurance.result.base_result import Result
-from assurance.validation.specification import Specification, T
-from chess.exception.base.negative_id_exception import NegativeIdException
-from chess.exception.null.id_null import IdNullException
+from assurance.exception.validation.id import IdValidationException
+from assurance.result.base import Result
+from assurance.validation.base import Specification, T
+from chess.exception.id import NegativeIdException
+from chess.exception.null.id import IdNullException
 
 
 class IdSpecification(Specification):
@@ -52,3 +52,24 @@ class IdSpecification(Specification):
             raise IdValidationException(
                 f"{method} IdSpecification: Id validation failed"
             ) from e
+
+# def main():
+#     result = IdSpecification.is_satisfied_by(5)
+#     if result.is_success():
+#         print(f"Valid ID: {result.payload}")
+#     else:
+#         print(f"Validation failed: {result.exception}")
+#
+#     result = IdSpecification.is_satisfied_by(-3)
+#     if result.is_success():
+#         print(f"Valid ID: {result.payload}")
+#     else:
+#         print(f"Validation failed: {result.exception}")
+#     result = IdSpecification.is_satisfied_by(None)
+#     if result.is_success():
+#         print(f"Valid ID: {result.payload}")
+#     else:
+#         print(f"Validation failed: {result.exception}")
+#
+# if __name__ == "__main__":
+#     main()

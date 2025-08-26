@@ -1,8 +1,8 @@
 from chess.common.config import KNIGHT_WALKING_RANGE
-from chess.exception.coordinate.base import CoordinateException
+from chess.exception.offset.base import CoordinateOffsetException
 
 
-class ColumnOffsetSizeException(CoordinateException):
+class ColumnOffsetSizeException(CoordinateOffsetException):
     ERROR_CODE = "COLUMN_OFFSET_OUT_OF_BOUNDS"
     DEFAULT_MESSAGE = (
         f"Column offset must be within range "

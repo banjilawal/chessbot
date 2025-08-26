@@ -1,7 +1,7 @@
-from chess.exception.null.null_exception import NullException
+from chess.exception.null.base import NullException
 
 
-class NullOffsetMultiplicationFactorExcepetion(NullException):
+class NullOffSetFactor(NullException):
     ERROR_CODE = "NULL_OFFSET_MULTIPLICATION_FACTOR_ERROR"
     DEFAULT_MESSAGE = f"Offset multiplication factor cannot be null"
 

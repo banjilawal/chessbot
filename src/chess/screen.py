@@ -16,14 +16,14 @@ from typing import TYPE_CHECKING, Optional, cast, OrderedDict
 
 from colorama.ansi import clear_line
 
-from chess.geometry.coordinate.coordinate import Coordinate
+from chess.geometry.coordinate.coord import Coordinate
 from chess.rank.bishop_rank import BishopRank
 from chess.rank.castle_rank import CastleRank
 from chess.rank.knight_rank import KnightRank
 from chess.rank.promotable.king_rank import KingRank
 from chess.rank.promotable.pawn_rank import PawnRank
 from chess.rank.queen_rank import QueenRank
-from chess.token.chess_piece import ChessPiece
+from chess.token.piece import ChessPiece
 
 if TYPE_CHECKING:
     from chess.board.board import ChessBoard

@@ -1,5 +1,5 @@
-from chess.geometry.coordinate.coordinate import Coordinate
-from chess.token.chess_piece import ChessPiece
+from chess.geometry.coordinate.coord import Coordinate
+from chess.token.piece import ChessPiece
 from chess.team.team import Team
 
 

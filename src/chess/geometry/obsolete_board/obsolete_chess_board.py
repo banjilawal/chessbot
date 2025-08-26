@@ -9,9 +9,9 @@ from typing import List, Optional, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from chess.token.chess_piece import ChessPiece
+    from chess.token.piece import ChessPiece
     from chess.board.square import Square
-    from chess.geometry.coordinate.coordinate import Coordinate
+    from chess.geometry.coordinate.coord import Coordinate
 
 
 class ObsoleteChessBoard:

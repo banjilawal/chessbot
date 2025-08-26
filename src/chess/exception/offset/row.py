@@ -1,8 +1,8 @@
 from chess.common.config import KNIGHT_WALKING_RANGE
-from chess.exception.coordinate.base import CoordinateException
+from chess.exception.offset.base import CoordinateOffsetException
 
 
-class RowOffsetSizeException(CoordinateException):
+class RowOffsetSizeException(CoordinateOffsetException):
     ERROR_CODE = "ROW_OFFSET_OUT_OF_BOUNDS"
     DEFAULT_MESSAGE = (
         f"Row offset must be within range "
