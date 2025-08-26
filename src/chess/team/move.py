@@ -1,6 +1,6 @@
 from chess.geometry.coordinate.coord import Coordinate
-from chess.token.piece import ChessPiece
-from chess.team.team import Team
+from chess.token.model import ChessPiece
+from chess.team.model import Team
 
 
 class Move:

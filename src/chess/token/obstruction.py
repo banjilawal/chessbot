@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.model import ChessPiece
 
 
 class Obstruction:

@@ -1,10 +1,10 @@
 
-from chess.config.team_config import TeamConfig
+from chess.config.team import TeamConfig
 from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
-from chess.owner.owner import Owner
-from chess.team.team import Team
+from chess.owner.base import Owner
+from chess.team.model import Team
 
 
 class TeamBuilder:

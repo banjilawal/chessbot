@@ -6,7 +6,7 @@ from chess.exception.move.empty_stack_chess_piece import EmptyStackChessPieceMov
 from chess.exception.move.move import CapturedPieceMoveException
 from chess.exception.null.coord_stack import NullCoordinateStackException
 from chess.exception.null.base import NullException
-from chess.token.piece import ChessPiece
+from chess.token.model import ChessPiece
 
 
 class ChessPieceSpecification(Specification):

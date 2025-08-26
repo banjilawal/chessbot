@@ -2,7 +2,7 @@ from typing import List
 
 from chess.board.square import Square
 from chess.token.obstruction import Obstruction
-from chess.token.piece import ChessPiece
+from chess.token.model import ChessPiece
 
 
 class ScoutReportAnalysis:

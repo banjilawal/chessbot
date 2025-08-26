@@ -1,8 +1,8 @@
 from typing import List
 
 from chess.creator.entity.builder.rank_builder import RankBuilder
-from chess.rank.rank import Rank
-from chess.config.rank_config import RankConfig
+from chess.rank.base import Rank
+from chess.config.rank import RankConfig
 
 
 class RankFactory:

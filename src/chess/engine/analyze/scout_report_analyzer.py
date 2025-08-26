@@ -5,7 +5,7 @@ from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.scalar import Distance
 from chess.geometry.coordinate.coord import Coordinate
 from chess.token.obstruction import Obstruction
-from chess.token.piece import ChessPiece
+from chess.token.model import ChessPiece
 
 from chess.engine.scout.scout_report import ScoutReport
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis

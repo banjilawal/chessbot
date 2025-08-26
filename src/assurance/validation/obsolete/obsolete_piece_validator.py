@@ -3,11 +3,11 @@ from typing import TYPE_CHECKING
 from assurance.validation.obsolete.validation_result import ValidationResult
 from assurance.exception.validation.base_validationpy import ValidationException
 from chess.token.mobility_status import MobilityStatus
-from chess.rank.promotable.king_rank import KingRank
-from chess.rank.promotable.pawn_rank import PawnRank
+from chess.rank.king import KingRank
+from chess.rank.pawn import PawnRank
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.model import ChessPiece
 
 class ChessPieceNotNullValidationFailed(ValidationException):
     DEFAULT_MESSAGE = "ChessPiece failed not null validation test"

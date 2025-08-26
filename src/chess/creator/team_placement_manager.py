@@ -3,10 +3,10 @@ from typing import List, TYPE_CHECKING
 
 from chess.exception.id import ChessException
 from chess.config.placement_chart import PlacementChart
-from chess.token.piece import ChessPiece
+from chess.token.model import ChessPiece
 
 if TYPE_CHECKING:
-    from chess.arena.arena import Arena
+    from chess.arena.model import Arena
 
 class PlacementException(ChessException):
     default_message = "Placemen failed"

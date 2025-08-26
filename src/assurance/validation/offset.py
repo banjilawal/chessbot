@@ -3,9 +3,15 @@ from typing import Generic, cast
 from assurance.exception.validation.offset import OffsetValidationException
 from assurance.result.base import Result
 from assurance.validation.base import Specification, T
-from chess.common.config import KNIGHT_WALKING_RANGE
-from chess.exception.offset.column import ColumnOffsetSizeException
-from chess.exception.offset.row import RowOffsetSizeException
+from chess.common.config import KNIGHT_STEP_SIZE
+from chess.exception.offset.column import (
+    DeltaColumnBelowSteppingBoundException,
+    DeltaColumnAboveSteppingBoundException
+)
+from chess.exception.offset.row import (
+    DeltaRowBelowSteppingBoundException,
+    DeltaRowAboveSteppingBoundException
+)
 from chess.exception.null.column_offset import NullColumnOffsetException
 from chess.exception.null.offset import NullOffsetException
 from chess.exception.null.row_offset import NullRowOffsetException
@@ -42,6 +48,12 @@ class OffsetSpecification(Specification):
             TypeError: if t is not an Offset
             
             NullRowOffsetException: if offset.delta_row is null
+            NullColumnOffsetException: if offset.delta_column is null
+            
+            DeltaRowBelowSteppingBoundException: if 
+                -offset.delta_row < -KNIGHT_STEP_SIZE
+                
+            DeltaRowAboveSteppingBoundException: if
             RowOffsetSizeException: if 
                 abs(offset.delta_row) > KNIGHT_WALKING_RANGE
             
@@ -66,29 +78,39 @@ class OffsetSpecification(Specification):
                 raise NullRowOffsetException(
                     f"{method} {NullRowOffsetException.DEFAULT_MESSAGE}"
                 )
-            if abs(offset.delta_row) > KNIGHT_WALKING_RANGE:
-                raise RowOffsetSizeException(
-                    f"{method} {RowOffsetSizeException.DEFAULT_MESSAGE}"
+            if offset.delta_row < 0 and offset.delta_row < KNIGHT_STEP_SIZE:
+                raise DeltaRowBelowSteppingBoundException(
+                    f"{method} {DeltaRowBelowSteppingBoundException.DEFAULT_MESSAGE}"
+                )
+            if offset.delta_row >= 0 and offset.delta_row > KNIGHT_STEP_SIZE:
+                raise DeltaRowBelowSteppingBoundException(
+                    f"{method} {DeltaRowBelowSteppingBoundException.DEFAULT_MESSAGE}"
                 )
 
             if offset.delta_column is None:
                 raise NullColumnOffsetException(
                     f"{method} {NullRowOffsetException.DEFAULT_MESSAGE}"
                 )
-            if abs(offset.delta_column) > KNIGHT_WALKING_RANGE:
-                raise ColumnOffsetSizeException(
-                    f"{method} {ColumnOffsetSizeException.DEFAULT_MESSAGE}"
+            if offset.delta_column < 0 and offset.delta_column <  KNIGHT_STEP_SIZE:
+                raise DeltaColumnBelowSteppingBoundException(
+                    f"{method} {DeltaColumnBelowSteppingBoundException.DEFAULT_MESSAGE}"
+                )
+            if offset.delta_column >= 0 and offset.delta_column > KNIGHT_STEP_SIZE:
+                raise DeltaColumnAboveSteppingBoundException(
+                    f"{method} {DeltaColumnAboveSteppingBoundException.DEFAULT_MESSAGE}"
                 )
 
             return Result(payload=offset)
 
         except (
-            TypeError,
-            NullOffsetException,
-            NullRowOffsetException,
-            NullColumnOffsetException,
-            RowOffsetSizeException,
-            ColumnOffsetSizeException
+                TypeError,
+                NullOffsetException,
+                NullRowOffsetException,
+                NullColumnOffsetException,
+                DeltaRowBelowSteppingBoundException,
+                DeltaRowAboveSteppingBoundException,
+                DeltaColumnBelowSteppingBoundException,
+                DeltaColumnAboveSteppingBoundException,
         ) as e:
             raise OffsetValidationException(
                 f"{method} Offset validation failed"
@@ -108,7 +130,7 @@ class OffsetSpecification(Specification):
 #         print(f"Offset validation failed: {result.exception}")
 #
 #     result = OffsetSpecification.is_satisfied_by(
-#         Offset(KNIGHT_WALKING_RANGE + 1, 1)
+#         Offset(KNIGHT_STEP_SIZE + 1, 1)
 #     )
 #     if result.is_success():
 #         offset = result.payload

@@ -1,7 +1,7 @@
-from chess.token.piece import ChessPiece
-from chess.rank.rank import Rank
+from chess.token.model import ChessPiece
+from chess.rank.base import Rank
 
-from chess.team.team import Team
+from chess.team.model import Team
 
 
 class ChessPieceBuilder:

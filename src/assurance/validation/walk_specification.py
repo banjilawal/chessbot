@@ -2,7 +2,7 @@ from typing import Generic
 
 from assurance.result.base import Result
 from assurance.validation.base import Specification, T
-from chess.walk.walk import Walk
+from chess.walk.base import Walk
 
 
 class WalkSpecification(Specification):

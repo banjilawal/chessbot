@@ -3,7 +3,7 @@ from typing import List
 from chess.board.board import ChessBoard
 from chess.creator.emit import id_emitter
 from chess.engine.analyze.board_analysis import BoardAnalysis
-from chess.owner.cybernetic_owner import CyberneticOwner
+from chess.owner.cybernetic import CyberneticOwner
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
 from chess.engine.analyze.scout_report_analyzer import ScoutReportAnalyzer
 from chess.engine.scout.scout_master import ScoutMaster

@@ -1,5 +1,5 @@
 from chess.creator.entity.factory.team_factory import TeamFactory
-from chess.team.team_service import TeamService
+from chess.team.service import TeamService
 
 
 class TeamServiceBuilder:

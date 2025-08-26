@@ -1,29 +1,23 @@
-from curses.textpad import rectangle
-import os
-from typing import Dict
 import pygame
 
 from chess.board.board import ChessBoard
-from chess.common.config import COLUMN_SIZE, ROW_SIZE, PYGAME_CAPTION, PYGAME_FONT, PYGAME_FONT_SIZE, SCREEN_COLOR, \
-    CELL_COLOR, CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
+from chess.common.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
     BISHOP_COLOR, QUEEN_COLOR, MousePlacementStatus
-from chess.common.game_color import GameColor
+from chess.common.color import GameColor
 
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
-from typing import TYPE_CHECKING, Optional, cast, OrderedDict
-
-from colorama.ansi import clear_line
+from typing import TYPE_CHECKING, Optional
 
 from chess.geometry.coordinate.coord import Coordinate
-from chess.rank.bishop_rank import BishopRank
-from chess.rank.castle_rank import CastleRank
-from chess.rank.knight_rank import KnightRank
-from chess.rank.promotable.king_rank import KingRank
-from chess.rank.promotable.pawn_rank import PawnRank
-from chess.rank.queen_rank import QueenRank
-from chess.token.piece import ChessPiece
+from chess.rank.bishop import BishopRank
+from chess.rank.castle import CastleRank
+from chess.rank.knight import KnightRank
+from chess.rank.king import KingRank
+from chess.rank.pawn import PawnRank
+from chess.rank.queen import QueenRank
+from chess.token.model import ChessPiece
 
 if TYPE_CHECKING:
     from chess.board.board import ChessBoard

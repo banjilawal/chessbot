@@ -225,8 +225,8 @@ from abc import ABC, abstractmethod
 # Pydantic handles these automatically, but explicit type checking
 # can be useful for external tools.
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
-    from chess.rank.rank import Rank
+    from chess.token.model import ChessPiece
+    from chess.rank.base import Rank
     from chess.rank.walk import Walk
 
 # --- Constants for Chessboard Size ---

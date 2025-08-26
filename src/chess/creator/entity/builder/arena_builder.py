@@ -1,13 +1,13 @@
-from chess.arena.arena import Arena
+from chess.arena.model import Arena
 from chess.board.board import ChessBoard
-from chess.config.team_config import TeamConfig
+from chess.config.team import TeamConfig
 from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.owner_factory import OwnerFactory
 from chess.creator.entity.factory.team_factory import TeamFactory
 from chess.creator.team_placement_manager import TeamPlacementManager
-from chess.owner.owner import Owner
+from chess.owner.base import Owner
 
 
 class ArenaBuilder:

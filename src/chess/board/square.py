@@ -8,7 +8,7 @@ from chess.exception.null.name import NullNameException
 from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.model import ChessPiece
 
 class Square:
     _id: int

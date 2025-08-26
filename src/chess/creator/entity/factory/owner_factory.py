@@ -5,11 +5,11 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.config.team_config import TeamConfig
-from chess.owner.human_owner import HumanOwner
-from chess.owner.owner import Owner
+from chess.config.team import TeamConfig
+from chess.owner.human import HumanOwner
+from chess.owner.base import Owner
 from chess.randomize.name import RandomName
-from chess.team.team import Team
+from chess.team.model import Team
 
 
 class OwnerFactory:

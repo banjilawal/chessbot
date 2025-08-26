@@ -1,6 +1,6 @@
 from enum import auto, Enum
 
-from chess.common.game_color import GameColor
+from chess.common.color import GameColor
 
 class MousePlacementStatus(Enum):
     PLACED = auto()
@@ -12,7 +12,17 @@ BOARD_DIMENSION = 8
 ROW_SIZE = 8
 COLUMN_SIZE = 8
 
-KNIGHT_WALKING_RANGE = 3
+"""
+    This is the number of steps moves in either the x or y domain.
+    If a knight steps over two rows it must step one diagonal column 
+    This gives 3 toal rows traveled.
+    
+    On the other hand if it steps over two columns it must step one diagonal row
+    This also gives 3 total columns traveled.
+    
+    So KNIGHT_STEP_SIZE is 3
+"""
+KNIGHT_STEP_SIZE = 3
 
 CELL_PX = 80
 BORDER_PX = 2

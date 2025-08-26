@@ -2,7 +2,7 @@ from typing import Optional
 
 from assurance.validation.obsolete.validation_result import ValidationResult
 from assurance.exception.validation.base_validationpy import ValidationException
-from chess.owner.owner import Player
+from chess.owner.base import Player
 
 
 class PlayerNotNUllValidationFailed(ValidationException):

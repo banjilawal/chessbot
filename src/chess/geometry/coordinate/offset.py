@@ -1,12 +1,14 @@
-from chess.common.config import KNIGHT_WALKING_RANGE, BOARD_DIMENSION
-from chess.exception.offset.zero import MultiplyByZeroException
-from chess.exception.offset.negative import NegativeMultiplierException
-from chess.exception.offset.overflow import OffsetMultiplicationOverflowException
-from chess.exception.offset.factor import MultiplierOutOfBoundsException
-from chess.exception.offset.offset_range import OffsetRangeException
+from chess.common.config import BOARD_DIMENSION, KNIGHT_STEP_SIZE
 from chess.exception.null.column_offset import NullColumnOffsetException
-from chess.exception.null.offset_factor import NullOffSetFactor
 from chess.exception.null.row_offset import NullRowOffsetException
+from chess.exception.offset.column import DeltaColumnBelowSteppingBoundException, DeltaColumnAboveSteppingBoundException
+from chess.exception.offset.mul import NegativeMultiplicationException, ZeroMultiplicationException, \
+    MultiplierOutOfBoundsException, OffsetMultiplicationOverflowException, RowDeltaOverflowExceptioDn, \
+    ColumnDeltaOverflowExceptioDn
+from chess.exception.offset.row import DeltaRowAboveSteppingBoundException, DeltaRowBelowSteppingBoundException
+
+from chess.exception.null.offset_factor import NullOffSetFactor
+
 
 
 class Offset:
@@ -18,8 +20,8 @@ class Offset:
     Offset is just a vector added to a Coordinate vector. 
 
     Attributes:
-        _row_offset (int): Amount added to target coordinate's row
-        _column_offset (int): Amount added to target coordinate's column
+        _delta_row (int): Amount added to target coordinate's row
+        _delta_column (int): Amount added to target coordinate's column
     """
 
 
@@ -30,31 +32,48 @@ class Offset:
         Constructs a Offset instance.
         
         Args:
-            row_offset (int): value for _row_offset
-            column_offset (int): value fpr column_offset
+            delta_row (int): value for _delta_row
+            delta_column (int): value fpr delta_column
             
         Raises:
-            NollChessObjectException: if either row_offset or column_offset are null.
+            NollChessObjectException: if either delta_row or delta_column are null.
         """
 
         if delta_row is None:
-            raise NullRowOffsetException(f"{method}: delta_row cannot be null")
-        if abs(delta_row) > KNIGHT_WALKING_RANGE:
-            raise OffsetRangeException(f"{method}: row_offset {OffsetRangeException.DEFAULT_MESSAGE}")
+            raise NullRowOffsetException(
+                f"{method}: {NullRowOffsetException.DEFAULT_MESSAGE}"
+            )
+
+        if  delta_row < 0 and delta_row < -KNIGHT_STEP_SIZE + 1:
+            raise DeltaRowBelowSteppingBoundException(
+                f"{method}: {DeltaRowBelowSteppingBoundException.DEFAULT_MESSAGE}"
+            )
+        if delta_row >= 0 and delta_row > KNIGHT_STEP_SIZE:
+            raise DeltaRowAboveSteppingBoundException(
+                f"{method}: {DeltaRowAboveSteppingBoundException.DEFAULT_MESSAGE}"
+            )
 
         if delta_column is None:
-            raise NullColumnOffsetException(f"{method} {NullColumnOffsetException.DEFAULT_MESSAGE}")
-        if delta_column < -KNIGHT_WALKING_RANGE or delta_column > KNIGHT_WALKING_RANGE:
-            raise OffsetRangeException(f"{method}: column_offset {OffsetRangeException.DEFAULT_MESSAGE}")
+            raise NullColumnOffsetException(
+                f"{method} {NullColumnOffsetException.DEFAULT_MESSAGE}"
+            )
 
+        if  delta_column < 0 and delta_column < -KNIGHT_STEP_SIZE:
+            raise DeltaColumnBelowSteppingBoundException(
+                f"{method}: {DeltaColumnBelowSteppingBoundException.DEFAULT_MESSAGE}"
+            )
+        if delta_column >= 0 and delta_column > KNIGHT_STEP_SIZE:
+            raise DeltaColumnAboveSteppingBoundException(
+                f"{method}: {DeltaColumnAboveSteppingBoundException.DEFAULT_MESSAGE}"
+            )
 
-        self._row_delta = delta_row
+        self._delta_row = delta_row
         self._delta_column = delta_column
 
 
     @property
     def delta_row(self) -> int:
-        return self._row_delta
+        return self._delta_row
 
 
     @property
@@ -71,8 +90,8 @@ class Offset:
             return False
 
         return (
-            self._delta_column == other.delta_column and
-            self._row_delta == other.delta_row
+            self._delta_row == other.delta_row and 
+            self._delta_column == other.delta_column
         )
 
 
@@ -96,13 +115,13 @@ class Offset:
             raise NullOffSetFactor(f"{method}: scalar cannot be null")
 
         if factor < 0:
-            raise NegativeMultiplierException(
-                f"{method}: {NegativeMultiplierException.DEFAULT_MESSAGE}"
+            raise NegativeMultiplicationException(
+                f"{method}: {NegativeMultiplicationException.DEFAULT_MESSAGE}"
             )
 
         if factor == 0:
-            raise MultiplyByZeroException(
-                f"{method}: {MultiplyByZeroException.DEFAULT_MESSAGE}"
+            raise ZeroMultiplicationException(
+                f"{method}: {ZeroMultiplicationException.DEFAULT_MESSAGE}"
             )
 
         if factor >= BOARD_DIMENSION:
@@ -110,20 +129,20 @@ class Offset:
                 f"{method}: scalar {MultiplierOutOfBoundsException.DEFAULT_MESSAGE}"
             )
 
-        new_row_offset = self.delta_row * factor
-        if abs(new_row_offset) >= BOARD_DIMENSION:
-            raise OffsetMultiplicationOverflowException(
-                f"{method}: row_offset {OffsetMultiplicationOverflowException.DEFAULT_MESSAGE}"
+        new_delta_row = self.delta_row * factor
+        if abs(new_delta_row) >= BOARD_DIMENSION:
+            raise RowDeltaOverflowExceptioDn(
+                f"{method}: {RowDeltaOverflowExceptioDn.DEFAULT_MESSAGE}"
             )
 
-        new_column_offset = self.delta_column * factor
-        if abs(new_column_offset) >= BOARD_DIMENSION:
-            raise OffsetMultiplicationOverflowException(
-                f"{method}: column_offset {OffsetMultiplicationOverflowException.DEFAULT_MESSAGE}"
+        new_delta_column = self.delta_column * factor
+        if abs(new_delta_column) >= BOARD_DIMENSION:
+            raise ColumnDeltaOverflowExceptioDn(
+                f"{method}: {ColumnDeltaOverflowExceptioDn.DEFAULT_MESSAGE}"
             )
 
-        return Offset(delta_row=new_row_offset, delta_column=new_column_offset)
+        return Offset(delta_row=new_delta_row, delta_column=new_delta_column)
 
 
     def __str__(self):
-        return f"Offset(row_offset={self._row_delta}, column_offset={self._delta_column})"
+        return f"Offset(delta_row={self._delta_row}, delta_column={self._delta_column})"

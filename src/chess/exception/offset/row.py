@@ -1,13 +1,25 @@
-from chess.common.config import KNIGHT_WALKING_RANGE
+from chess.common.config import KNIGHT_STEP_SIZE
 from chess.exception.offset.base import CoordinateOffsetException
 
 
-class RowOffsetSizeException(CoordinateOffsetException):
-    ERROR_CODE = "ROW_OFFSET_OUT_OF_BOUNDS"
+class DeltaRowBelowSteppingBoundException(CoordinateOffsetException):
+    ERROR_CODE = "DELTA_ROW_BELOW_STEPPING_BOUND_ERROR"
     DEFAULT_MESSAGE = (
-        f"Row offset must be within range "
-        f"[{-KNIGHT_WALKING_RANGE}, {KNIGHT_WALKING_RANGE}] "
-        f"inclusive"
+        f"Offset.delta_row less than lower KNIGHT_STEP_SIZE bound of {-KNIGHT_STEP_SIZE}"
+    )
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
+
+class DeltaRowAboveSteppingBoundException(CoordinateOffsetException):
+    ERROR_CODE = "DELTA_ROW_ABOVE_STEPPING_BOUND_ERROR"
+    DEFAULT_MESSAGE = (
+        f"Offset.delta_row larger than upper KNIGHT_STEP_SIZE bound of {KNIGHT_STEP_SIZE}"
     )
 
     def __init__(self, message=None):

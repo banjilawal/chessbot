@@ -8,7 +8,7 @@ from chess.board.square_iterator import SquareIterator
 from chess.board.square import Square
 
 if TYPE_CHECKING:
-    from chess.token.piece import ChessPiece
+    from chess.token.model import ChessPiece
 
 
 

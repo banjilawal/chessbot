@@ -1,7 +1,7 @@
 from typing import Optional, List
 
 from chess.exception.id import ChessException
-from chess.team.team import Team
+from chess.team.model import Team
 
 
 class PopEmptyTeamStackException(ChessException):

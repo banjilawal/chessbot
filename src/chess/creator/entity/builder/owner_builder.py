@@ -1,12 +1,12 @@
 import random
 
-from chess.config.owner_config import OwnerConfig
+from chess.config.owner import OwnerConfig
 from chess.creator.emit import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine
-from chess.owner.cybernetic_owner import CyberneticOwner
-from chess.owner.human_owner import HumanOwner
-from chess.owner.owner import Owner
+from chess.owner.cybernetic import CyberneticOwner
+from chess.owner.human import HumanOwner
+from chess.owner.base import Owner
 from chess.randomize.name import RandomName
 
 
