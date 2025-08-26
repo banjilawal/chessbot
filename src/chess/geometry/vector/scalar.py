@@ -27,3 +27,21 @@ class Scalar:
     @property
     def value(self) -> int:
         return self._value
+
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if not isinstance(other, Scalar):
+            return False
+
+        return self._value == other.value
+
+
+    def __hash__(self):
+        return hash(self._value)
+
+
+    def __str__(self):
+        return f"Scalar(value={self._value})"

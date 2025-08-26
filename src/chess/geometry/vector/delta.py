@@ -1,11 +1,11 @@
 from chess.common.config import BOARD_DIMENSION, KNIGHT_STEP_SIZE
 from chess.exception.null.x_dim import XComponentNullException
 from chess.exception.null.y_dim import YComponentNullException
-from chess.exception.offset.column import YVectorBelowMinValueException, YVectorAboveMaxValueException
+from chess.exception.offset.column import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
 from chess.exception.offset.mul import NegativeScalarException, ZeroScalarException, \
     ScalarOutofBoundsException, OffsetMultiplicationOverflowException, RowDeltaOverflowExceptioDn, \
     ColumnDeltaOverflowExceptioDn
-from chess.exception.offset.row import XVectorAboveMaxValueException, XVectorBelowMinValueException
+from chess.exception.offset.row import XComponentAboveUpperBoundException, XComponentBelowLowerBoundException
 
 from chess.exception.null.scalar import NullScalarException
 
@@ -40,32 +40,32 @@ class Vector:
         """
 
         if x is None:
-            raise YComponentNullException(
-                f"{method}: {YComponentNullException.DEFAULT_MESSAGE}"
+            raise XComponentNullException(
+                f"{method}: {XComponentNullException.DEFAULT_MESSAGE}"
             )
 
         if  x < 0 and x < -(KNIGHT_STEP_SIZE):
             print(f"delta_row: {x} knight_step_size:{-(KNIGHT_STEP_SIZE)}")
-            raise XVectorBelowMinValueException(
-                f"{method}: {XVectorBelowMinValueException.DEFAULT_MESSAGE}"
+            raise XComponentBelowLowerBoundException(
+                f"{method}: {XComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
             )
         if x >= 0 and x > KNIGHT_STEP_SIZE:
-            raise XVectorAboveMaxValueException(
-                f"{method}: {XVectorAboveMaxValueException.DEFAULT_MESSAGE}"
+            raise XComponentAboveUpperBoundException(
+                f"{method}: {XComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
             )
 
         if y is None:
-            raise XComponentNullException(
-                f"{method} {XComponentNullException.DEFAULT_MESSAGE}"
+            raise YComponentNullException(
+                f"{method} {YComponentNullException.DEFAULT_MESSAGE}"
             )
 
         if  y < 0 and y < -KNIGHT_STEP_SIZE:
-            raise YVectorBelowMinValueException(
-                f"{method}: {YVectorBelowMinValueException.DEFAULT_MESSAGE}"
+            raise YComponentBelowLowerBoundException(
+                f"{method}: {YComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
             )
         if y >= 0 and y > KNIGHT_STEP_SIZE:
-            raise YVectorAboveMaxValueException(
-                f"{method}: {YVectorAboveMaxValueException.DEFAULT_MESSAGE}"
+            raise YComponentAboveUpperBoundException(
+                f"{method}: {YComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
             )
 
         self._x = x
@@ -143,10 +143,7 @@ class Vector:
 
 
     def __str__(self):
-        return (
-            f"Offset(delta_row={self._x}, "
-            f"delta_column={self._delta_column})"
-        )
+        return f"Vector(x={self._x}, y={self._y})"
 
 def main():
     offset = Offset(-3, 1)

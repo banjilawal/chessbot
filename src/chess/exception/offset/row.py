@@ -2,7 +2,7 @@ from chess.common.config import KNIGHT_STEP_SIZE
 from chess.exception.offset.base import CoordinateOffsetException
 
 
-class XVectorBelowMinValueException(CoordinateOffsetException):
+class XComponentBelowLowerBoundException(CoordinateOffsetException):
     ERROR_CODE = "DELTA_ROW_BELOW_STEPPING_BOUND_ERROR"
     DEFAULT_MESSAGE = (
         f"Offset.delta_row less than lower KNIGHT_STEP_SIZE bound of {-KNIGHT_STEP_SIZE}"
@@ -16,7 +16,7 @@ class XVectorBelowMinValueException(CoordinateOffsetException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class XVectorAboveMaxValueException(CoordinateOffsetException):
+class XComponentAboveUpperBoundException(CoordinateOffsetException):
     ERROR_CODE = "DELTA_ROW_ABOVE_STEPPING_BOUND_ERROR"
     DEFAULT_MESSAGE = (
         f"Offset.delta_row larger than upper KNIGHT_STEP_SIZE bound of {KNIGHT_STEP_SIZE}"

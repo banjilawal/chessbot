@@ -4,17 +4,12 @@ from assurance.exception.validation.vector import VectorValidationException
 from assurance.result.base import Result
 from assurance.validation.base import Specification, T
 from chess.common.config import KNIGHT_STEP_SIZE
-from chess.exception.Vector.column import (
-    YVectorBelowMinValueException,
-    YVectorAboveMaxValueException
-)
-from chess.exception.Vector.row import (
-    XVectorBelowMinValueException,
-    XVectorAboveMaxValueException
-)
+
 from chess.exception.null.x_dim import XComponentNullException
 from chess.exception.null.vector import NullVectorException
 from chess.exception.null.y_dim import YComponentNullException
+from chess.exception.offset.column import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
+from chess.exception.offset.row import XComponentBelowLowerBoundException, XComponentAboveUpperBoundException
 
 from chess.geometry.vector.delta import Vector
 
@@ -28,10 +23,12 @@ class VectorSpecification(Specification):
         """
         Validates an Vector instance meets specifications:
             - Not null
-            - delta_row is not null
-            - delta_row is not greater than KNIGHT_WALKING_RANGE
-            - delta_column is not null
-            - delta_column is not greater than KNIGHT_WALKING_RANGE
+            - x is not null
+            - x is not less than -KNIGHT_WALKING_RANGE
+            - x is not greater than KNIGHT_WALKING_RANGE
+            - y is not null
+            - y is not less than -KNIGHT_WALKING_RANGE
+            - y is not greater than KNIGHT_WALKING_RANGE
         If any validation fails their exception will be encapsulated in 
         VectorValidationException
             
@@ -44,22 +41,21 @@ class VectorSpecification(Specification):
         
         Raises:
 
-            NullVectorException: if t is null   
+            NullVectorException: if t is null 
+              
             TypeError: if t is not an Vector
             
-            NullRowVectorException: if Vector.delta_row is null
-            NullColumnVectorException: if Vector.delta_column is null
+            XComponentNullException: if Vector.x is null
             
-            DeltaRowBelowSteppingBoundException: if 
-                -Vector.delta_row < -KNIGHT_STEP_SIZE
-                
-            DeltaRowAboveSteppingBoundException: if
-            RowVectorSizeException: if 
-                abs(Vector.delta_row) > KNIGHT_WALKING_RANGE
+            XComponentBelowLowerBoundException: if -Vector.x < -KNIGHT_STEP_SIZE
+               
+            XComponentAboveUpperBoundException: if Vector.x > KNIGHT_STEP_SIZE
             
-            NullColumnVectorException: if Vector.delta_column is null
-            ColumnVectorSizeException: if 
-                abs(Vector.delta_column) > KNIGHT_WALKING_RANGE
+            XComponentNullException: if Vector.x is null
+            
+            YComponentBelowLowerBoundException: if -Vector.y < -KNIGHT_STEP_SIZE
+            
+            YComponentAboveUpperBoundException: if Vector.y > KNIGHT_STEP_SIZE
             
             VectorValidationException: Wraps preceding exceptions:     
         """
@@ -72,75 +68,79 @@ class VectorSpecification(Specification):
             if not isinstance(t, Vector):
                 raise TypeError(f"{method} Expected an Vector, got {type(t).__name__}")
 
-            Vector = cast(Vector, t)
+            vector = cast(Vector, t)
 
-            if Vector.delta_row is None:
+            if vector.x is None:
+                raise XComponentNullException(
+                    f"{method}: {XComponentNullException.DEFAULT_MESSAGE}"
+                )
+
+            if vector.x < 0 and vector.x < -KNIGHT_STEP_SIZE:
+                # print(f"x: {x} knight_step_size:{-KNIGHT_STEP_SIZE}")
+                raise XComponentBelowLowerBoundException(
+                    f"{method}: {XComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
+                )
+
+            if vector.x >= 0 and vector.x > KNIGHT_STEP_SIZE:
+                raise XComponentAboveUpperBoundException(
+                    f"{method}: {XComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
+                )
+
+            if vector.y is None:
                 raise YComponentNullException(
                     f"{method} {YComponentNullException.DEFAULT_MESSAGE}"
                 )
-            if Vector.delta_row < 0 and Vector.delta_row < KNIGHT_STEP_SIZE:
-                raise XVectorBelowMinValueException(
-                    f"{method} {XVectorBelowMinValueException.DEFAULT_MESSAGE}"
+
+            if vector.y < 0 and vector.y < -KNIGHT_STEP_SIZE:
+                raise YComponentBelowLowerBoundException(
+                    f"{method}: {YComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
                 )
-            if Vector.delta_row >= 0 and Vector.delta_row > KNIGHT_STEP_SIZE:
-                raise XVectorBelowMinValueException(
-                    f"{method} {XVectorBelowMinValueException.DEFAULT_MESSAGE}"
+            if vector.y >= 0 and vector.y > KNIGHT_STEP_SIZE:
+                raise YComponentAboveUpperBoundException(
+                    f"{method}: {YComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
                 )
 
-            if Vector.delta_column is None:
-                raise XComponentNullException(
-                    f"{method} {YComponentNullException.DEFAULT_MESSAGE}"
-                )
-            if Vector.delta_column < 0 and Vector.delta_column <  KNIGHT_STEP_SIZE:
-                raise YVectorBelowMinValueException(
-                    f"{method} {YVectorBelowMinValueException.DEFAULT_MESSAGE}"
-                )
-            if Vector.delta_column >= 0 and Vector.delta_column > KNIGHT_STEP_SIZE:
-                raise YVectorAboveMaxValueException(
-                    f"{method} {YVectorAboveMaxValueException.DEFAULT_MESSAGE}"
-                )
-
-            return Result(payload=Vector)
+            return Result(payload=vector)
 
         except (
-                TypeError,
-                NullVectorException,
-                YComponentNullException,
-                XComponentNullException,
-                XVectorBelowMinValueException,
-                XVectorAboveMaxValueException,
-                YVectorBelowMinValueException,
-                YVectorAboveMaxValueException,
+            TypeError,
+            NullVectorException,
+            YComponentNullException,
+            XComponentNullException,
+            YComponentBelowLowerBoundException,
+            YComponentAboveUpperBoundException,
+            XComponentBelowLowerBoundException,
+            XComponentAboveUpperBoundException
         ) as e:
             raise VectorValidationException(
                 f"{method} Vector validation failed"
             ) from e
 
 
-# def main():
-#     result = VectorSpecification.is_satisfied_by(Vector(2, 1))
-#     if result.is_success():
-#         Vector = result.payload
-#         print(
-#             f"Vector is valid: "
-#             f"delta_row={Vector.delta_row}, "
-#             f"delta_column={Vector.delta_column}"
-#         )
-#     else:
-#         print(f"Vector validation failed: {result.exception}")
-#
-#     result = VectorSpecification.is_satisfied_by(
-#         Vector(KNIGHT_STEP_SIZE + 1, 1)
-#     )
-#     if result.is_success():
-#         Vector = result.payload
-#         print(
-#             f"Vector is valid: "
-#             f"delta_row={Vector.delta_row}, "
-#             f"delta_column={Vector.delta_column}"
-#         )
-#     else:
-#         print(f"Vector validation failed: {result.exception}")
-#
-# if __name__ == "__main__":
-#     main()
+def main():
+    result = VectorSpecification.is_satisfied_by(Vector(x=2, y=1))
+    if result.is_success():
+        vector = result.payload
+        print(
+            f"Vector is valid: "
+            f"delta_row={vector.x}, "
+            f"delta_column={Vector.delta_column}"
+        )
+    else:
+        print(f"Vector validation failed: {result.exception}")
+
+    result = VectorSpecification.is_satisfied_by(
+        Vector(KNIGHT_STEP_SIZE + 1, 1)
+    )
+    if result.is_success():
+        Vector = result.payload
+        print(
+            f"Vector is valid: "
+            f"delta_row={Vector.delta_row}, "
+            f"delta_column={Vector.delta_column}"
+        )
+    else:
+        print(f"Vector validation failed: {result.exception}")
+
+if __name__ == "__main__":
+    main()
