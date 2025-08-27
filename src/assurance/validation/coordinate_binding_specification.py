@@ -67,4 +67,4 @@ class CoordinateSBindingSpecification(Specification):
                 NullCoordinateException, TypeError,
                 RowOutOfBoundsException, ColumnOutOfBoundsException) as e:
             raise CoordinateValidationException(
-                f"{method} CoordinateValidationException.default_message") from e
+                f"{method} {class_name}: {entity} validation failed") from e

@@ -10,8 +10,12 @@ from chess.token.model import ChessPiece
 
 
 class ChessPieceSpecification(Specification):
+
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> bool:
+        entity = "ChessPiece"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
         pass
 
 class PromotionSpecification(ChessPieceSpecification):
@@ -71,6 +75,6 @@ class MoveSpecification(ChessPieceSpecification):
             NullCoordinateStackException,
             EmptyStackChessPieceMoveException,
         ) as e:
-            print("Unknown exception")
             raise ChessPieceValidationException(
-                f"{method} ChessPieceValidationException.default_message: {str(e)}") from e
+                f"{method}: {ChessPieceValidationException.DEFAULT_MESSAGE}"
+            ) from e

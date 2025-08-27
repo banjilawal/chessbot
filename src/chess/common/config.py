@@ -2,27 +2,34 @@ from enum import auto, Enum
 
 from chess.common.color import GameColor
 
+ROW_SIZE = 8
+COLUMN_SIZE = 8
+BOARD_DIMENSION = 8
+MIN_NAME_LENGTH = 3
+
+"""
+    This is the number of steps moves in either the x or y domain.
+    If a knight steps over two rows it must step one diagonal column 
+    This gives 3 toal rows traveled.
+
+    On the other hand if it steps over two columns it must step one diagonal row
+    This also gives 3 total columns traveled.
+
+    So KNIGHT_STEP_SIZE is 3
+"""
+KNIGHT_STEP_SIZE = 3
+
 class MousePlacementStatus(Enum):
     PLACED = auto()
     BLOCKED = auto()
     RELEASED = auto()
     INVALID = auto()
 
-BOARD_DIMENSION = 8
-ROW_SIZE = 8
-COLUMN_SIZE = 8
 
-"""
-    This is the number of steps moves in either the x or y domain.
-    If a knight steps over two rows it must step one diagonal column 
-    This gives 3 toal rows traveled.
-    
-    On the other hand if it steps over two columns it must step one diagonal row
-    This also gives 3 total columns traveled.
-    
-    So KNIGHT_STEP_SIZE is 3
-"""
-KNIGHT_STEP_SIZE = 3
+
+
+
+
 
 CELL_PX = 80
 BORDER_PX = 2

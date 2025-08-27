@@ -14,7 +14,9 @@ class ScalarSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[Scalar]:
-        method = "ScalarSpecification.is_satisfied_by"
+        entity = "Scalar"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
 
         """
         Validates a scalar with chained exceptions for scalar meeting specifications:
@@ -75,7 +77,7 @@ class ScalarSpecification(Specification):
                 ScalarAboveUpperBoundException,
         ) as e:
             raise ScalarValidationException(
-                f"{method} ScalarSpecification: Scalar validation failed"
+                f"{method}: {ScalarValidationException.DEFAULT_MESSAGE}"
             ) from e
 
 

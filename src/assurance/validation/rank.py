@@ -9,4 +9,7 @@ class RankSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[Rank]:
+        entity = "Rank"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
         pass

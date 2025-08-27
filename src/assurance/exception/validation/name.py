@@ -1,9 +1,9 @@
 from assurance.exception.validation.base import ValidationException
 
 
-class SquareValidationException(ValidationException):
-    ERROR_CODE = "SQUARE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Square validation failed"
+class NameValidationException(ValidationException):
+    ERROR_CODE = "NAME_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = f"Name validation failed"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

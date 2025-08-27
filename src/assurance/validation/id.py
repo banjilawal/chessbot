@@ -1,4 +1,4 @@
-from typing import Generic
+from typing import Generic, cast
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.result.base import Result
@@ -11,7 +11,9 @@ class IdSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[int]:
-        method = "IdSpecification.is_satisfied_by"
+        entity = "Id"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
 
         """
         Validates an Id meets specifications:
@@ -42,15 +44,16 @@ class IdSpecification(Specification):
             if not isinstance(t, int):
                 raise TypeError(f"{method} Expected an integer, got {type(t).__name__}")
 
-            entity_id = int(t)
+            entity_id = cast(int, t)
+
             if entity_id < 0:
-                raise NegativeIdException("{method} NegativeIdException.default_message")
+                raise NegativeIdException(f"{method} {NegativeIdException.DEFAULT_MESSAGE}")
 
             return Result(payload=entity_id)
 
         except(IdNullException, TypeError, NegativeIdException) as e:
             raise IdValidationException(
-                f"{method} IdSpecification: Id validation failed"
+                f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
             ) from e
 
 # def main():

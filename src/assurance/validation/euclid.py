@@ -20,14 +20,15 @@ class DistanceMagnitudeSpecification(Specification):
             - Not null
             - Coordinate p meets CoordinateSpecification
             - Coordinate q meets CoordinateSpecification
-        If any validation fails their exception will be encapsulated in DistanceMagnitudeValidationException
+        If any validation fails their exception will be encapsulated in 
+            DistanceMagnitudeValidationException
             
         Args
             t (DistanceMagnitude): DistanceMagnitude to validate
             
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                        CoordinateValidationException otherwise.
+             Result[T]: A Result object containing the validated payload if the specification 
+                is satisfied, CoordinateValidationException otherwise.
         
         Raises:
             NullDistanceMagnitudeException: if t is null  
@@ -63,5 +64,5 @@ class DistanceMagnitudeSpecification(Specification):
         except (
             NullDistanceMagnitudeException, TypeError, CoordinateValidationException) as e:
             raise EuclideanDistanceValidationException(
-                f"{method} DistanceMagnitudeSpecification : validation failed"
+                f"{method}: {EuclideanDistanceValidationException.DEFAULT_MESSAGE}"
             ) from e

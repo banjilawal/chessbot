@@ -14,9 +14,13 @@ from chess.geometry.coordinate.coord import Coordinate
 
 class CoordinateSpecification(Specification):
 
+
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[Coordinate]:
-        method = "CoordinateSpecification.is_satisfied_by"
+        entity = "Coordinate"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
+
 
         """
         Validates a coordinate with chained exceptions for coordinate meeting specifications:
@@ -78,5 +82,5 @@ class CoordinateSpecification(Specification):
             NullRowException, RowOutOfBoundsException,
             NullColumnException, ColumnOutOfBoundsException) as e:
             raise CoordinateValidationException(
-                f"{method} CoordinateSpecification: Coordinate validation failed"
+                f"{method}: {CoordinateValidationException}"
             ) from e

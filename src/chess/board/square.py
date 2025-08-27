@@ -4,6 +4,7 @@ from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.validation.coord import CoordinateSpecification
 from assurance.validation.id import IdSpecification
+from assurance.validation.name import NameSpecification
 from chess.exception.null.name import NullNameException
 
 from chess.geometry.coordinate.coord import Coordinate
@@ -46,19 +47,27 @@ class Square:
             CoordinateValidationException: If coordinate is null, its row or colum are out of bounds
         """
 
-        if name is None:
-            raise NullNameException(NullNameException.DEFAULT_MESSAGE)
+        id_result = IdSpecification.is_satisfied_by(square_id)
+        if not id_result.is_success():
+            raise id_result.exception
+
+        name_result = NameSpecification.is_satisfied_by(name)
+        if not name_result.is_success():
+            raise name_result.exception
+
+        coord_result = CoordinateSpecification.is_satisfied_by(coordinate)
+        if not coord_result.is_success():
+            raise coord_result.exception
 
         if not IdSpecification.is_satisfied_by(square_id):
             raise IdValidationException(IdValidationException.DEFAULT_MESSAGE)
 
-        if not CoordinateSpecification.is_satisfied_by(coordinate):
-            raise CoordinateValidationException(CoordinateValidationException.DEFAULT_MESSAGE)
+        self._id = id_result.payload
+        self._name = name_result.payload
+        self._coordinate = coord_result.payload
 
-        self._id = square_id
-        self._name = name
         self._occupant = None
-        self._coordinate = coordinate
+
 
     @property
     def id(self) -> int:
@@ -90,6 +99,7 @@ class Square:
         if other is self: return True
         if other is None: return False
         if not isinstance(other, Square): return False
+
         return self._id == other.id
 
 
@@ -97,21 +107,10 @@ class Square:
 
 
     def __str__(self) -> str:
-        if self._occupant is not None:
-            return (
-                f"Square ID: {self._id}"
-                f", Name: {self._name}"
-                f", Occupied by: {self._occupant.name}"
-            )
+        occupant_str = f"" if self._occupant is None else f" occupant:{self._occupant.name}"
         return (
-            f"Square ID:{self._id} "
-            f"Name:{self._name} "
-            f"coordinate:{self._coordinate} "
+            f"Square:{self._id}"
+            f" Name:{self._name}"
+            f"coordinate:{self._coordinate}"
+            f"]"
         )
-
-
-    def __repr__(self) -> str:
-        occupant_repr = repr(self._occupant) if self._occupant else "None"
-        return (f"Square(id={self._id}, name='{self._name}', "
-                f"coordinate={repr(self._coordinate)}, "
-                f"occupant={occupant_repr})")

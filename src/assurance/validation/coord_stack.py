@@ -20,7 +20,9 @@ class CoordinateStackSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[CoordinateStack]:
-        method = "CoordinateSpecification.is_satisfied_by"
+        entity = "CoordinateStack"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
 
         """
         Validates a new CoordinateStack meets specifications:
@@ -115,7 +117,7 @@ class CoordinateStackSpecification(Specification):
             CurrentCoordinateInconsistentStateException
         ) as e:
             raise CoordinateStackValidationException(
-                f"{method} CoordinateStack validation failed"
+                f"{method}: {CoordinateStackValidationException.DEFAULT_MESSAGE}"
             ) from e
 #
 #

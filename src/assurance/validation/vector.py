@@ -18,7 +18,9 @@ class VectorSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[Vector]:
-        method = "VectorSpecification.is_satisfied_by"
+        entity = "Vector"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
 
         """
         Validates an Vector instance meets specifications:
@@ -113,7 +115,7 @@ class VectorSpecification(Specification):
             XComponentAboveUpperBoundException
         ) as e:
             raise VectorValidationException(
-                f"{method} Vector validation failed"
+                f"{method}: f{VectorValidationException.DEFAULT_MESSAGE}"
             ) from e
 
 
