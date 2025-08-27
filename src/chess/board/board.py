@@ -1,11 +1,10 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
+from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.validation.coord import CoordinateSpecification
-from assurance.exception.validation.base_validationpy import CoordinateValidationException
-from chess.geometry.coordinate.coord import Coordinate, Offset
-from chess.board.square_iterator import SquareIterator
 from chess.board.square import Square
+from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
     from chess.token.model import ChessPiece
@@ -64,32 +63,32 @@ class ChessBoard:
         if not isinstance(other, ChessBoard): return False
         return self._id == other.id
 
-
-    def iterator(
-        self,
-        index: Coordinate = Coordinate(0, 0),
-        delta: Offset = Offset(delta_column=1, row_offset=1)
-     ) -> SquareIterator:
-
-        method = "ChessBoard.iterator"
-
-        """
-        Safely creates an iterator for the squares on the ChessBoard.
-
-        Args:
-            squares (List[List[Square]]): 2D list of Square objects to iterate through.
-            index: The starting coordinate for the iteration.
-            vector: The direction of the iteration.
-            
-        Returns:
-            SquareIterator: An iterator instance for traversing the chessboard.
-            
-        Raises:
-            CoordinateValidationException: If index fails at least one specification message
-            NullDeltaException: If vector is None.
-        """
-
-        return SquareIterator(self._squares, index, delta)
+    #
+    # def iterator(
+    #     self,
+    #     index: Coordinate = Coordinate(0, 0),
+    #     delta: Offset = Offset(delta_column=1, row_offset=1)
+    #  ) -> SquareIterator:
+    #
+    #     method = "ChessBoard.iterator"
+    #
+    #     """
+    #     Safely creates an iterator for the squares on the ChessBoard.
+    #
+    #     Args:
+    #         squares (List[List[Square]]): 2D list of Square objects to iterate through.
+    #         index: The starting coordinate for the iteration.
+    #         vector: The direction of the iteration.
+    #
+    #     Returns:
+    #         SquareIterator: An iterator instance for traversing the chessboard.
+    #
+    #     Raises:
+    #         CoordinateValidationException: If index fails at least one specification message
+    #         NullDeltaException: If vector is None.
+    #     """
+    #
+    #     return SquareIterator(self._squares, index, delta)
 
     def occupied_squares(self) -> List[Square]:
         method = "ChessBoard.occupied_squares"
@@ -120,7 +119,7 @@ class ChessBoard:
         """
 
         if not CoordinateSpecification.is_satisfied_by(coordinate):
-            raise CoordinateValidationException(CoordinateValidationException.default_message)
+            raise CoordinateValidationException(CoordinateValidationException.DEFAULT_MESSAGE)
         return self._squares[coordinate.row][coordinate.column]
 
 
@@ -321,7 +320,7 @@ class ChessBoard:
         # If there are inconsistencies, throw exceptions.
         if destination.occupant is not captor:
             raise Exception(f"{method}: data inconsistency square occupant not updated")
-        if captor.positions.current_coordinate() is not destination.coordinate:
+        if captor.positions.current_coordinate is not destination.coordinate:
             raise Exception(f"{method}: chess_piece coordinate stack not updated")
 
         # Method showing success.

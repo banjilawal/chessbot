@@ -65,6 +65,7 @@ class VectorAlgebra:
         v = vector_validation_result.payload
 
         candidate = Vector(v.x  * s.value, y=v.y * s.value)
+
         candidate_validation_result = VectorSpecification.is_satisfied_by(candidate)
         if not candidate_validation_result.is_success:
             raise candidate_validation_result.exception
@@ -89,6 +90,7 @@ class VectorAlgebra:
         v = vector_validation_result.payload
 
         candidate = Coordinate(row=c.row + v.y, column=c.column + v.x)
+        # print("vector", v, "candidate:", candidate)
         candidate_validation_result = CoordinateSpecification.is_satisfied_by(candidate)
         if not candidate_validation_result.is_success:
             raise candidate_validation_result.exception

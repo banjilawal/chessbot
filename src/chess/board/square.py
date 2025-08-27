@@ -1,8 +1,9 @@
 from typing import Optional, TYPE_CHECKING
 
+from assurance.exception.validation.coord import CoordinateValidationException
+from assurance.exception.validation.id import IdValidationException
 from assurance.validation.coord import CoordinateSpecification
 from assurance.validation.id import IdSpecification
-from assurance.exception.validation.base_validationpy import IdValidationException, CoordinateValidationException
 from chess.exception.null.name import NullNameException
 
 from chess.geometry.coordinate.coord import Coordinate
@@ -46,13 +47,13 @@ class Square:
         """
 
         if name is None:
-            raise NullNameException(NullNameException.default_message)
+            raise NullNameException(NullNameException.DEFAULT_MESSAGE)
 
         if not IdSpecification.is_satisfied_by(square_id):
-            raise IdValidationException(IdValidationException.default_message)
+            raise IdValidationException(IdValidationException.DEFAULT_MESSAGE)
 
         if not CoordinateSpecification.is_satisfied_by(coordinate):
-            raise CoordinateValidationException(CoordinateValidationException.default_message)
+            raise CoordinateValidationException(CoordinateValidationException.DEFAULT_MESSAGE)
 
         self._id = square_id
         self._name = name
