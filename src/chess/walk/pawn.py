@@ -9,7 +9,7 @@ from chess.token.model import ChessPiece
 
 class PawnWalk(Walk):
     """
-    Consolidated chess_piece movement validation with specialized static methods
+    Consolidated chess_piece movement validators with specialized static methods
     for different movement types.
     """
 

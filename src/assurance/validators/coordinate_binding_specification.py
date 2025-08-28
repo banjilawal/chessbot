@@ -1,15 +1,15 @@
 from typing import Generic, cast
 
-from assurance.validation.piece import ChessPieceSpecification
-from assurance.validation.base import Specification
+from assurance.validators.piece import ChessPieceValidator
+from assurance.validators.base import Validator
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from chess.board.coordinate_bind import CoordinateBinding
 
 
-class CoordinateSBindingSpecification(Specification):
+class CoordinateSBindingValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> bool:
+    def validate(t: Generic[T]) -> bool:
         method = "CoordinateBindingSpecification.is_satisfied_by"
 
         """
@@ -18,7 +18,7 @@ class CoordinateSBindingSpecification(Specification):
             - chess_piece.coordinate_stack.current_coordinate() == square.coordinate
             - chess_piece_previous_square.occupant == null
             
-        If any validation fails their exception will be encapsulated in a CoordinateBindingValidationException
+        If any validators fails their exception will be encapsulated in a CoordinateBindingValidationException
 
         Args
             t (CoordinateBinding): coordinate_binding to validate
@@ -55,7 +55,7 @@ class CoordinateSBindingSpecification(Specification):
 
             coordinate_binding = cast(CoordinateBinding, t)
 
-            if not ChessPieceSpecification.is_satisfied_by(coordinate_binding.chess_piece):
+            if not ChessPieceValidator.validate(coordinate_binding.chess_piece):
                 raise ChessPieceValidationException(
                     f"{method} {ChessPieceValidationException.default_message}"
                 )
@@ -67,4 +67,4 @@ class CoordinateSBindingSpecification(Specification):
                 NullCoordinateException, TypeError,
                 RowOutOfBoundsException, ColumnOutOfBoundsException) as e:
             raise CoordinateValidationException(
-                f"{method} {class_name}: {entity} validation failed") from e
+                f"{method} {class_name}: {entity} validators failed") from e

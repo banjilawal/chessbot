@@ -1,6 +1,6 @@
-from assurance.validation.coord import CoordinateSpecification
-from assurance.validation.scalar import ScalarSpecification
-from assurance.validation.vector import VectorSpecification
+from assurance.validators.coord import CoordinateValidator
+from assurance.validators.scalar import ScalarValidator
+from assurance.validators.vector import VectorValidator
 from chess.creator.builder.coord import CoordinateBuilder
 from chess.geometry.coordinate.coord import Coordinate
 from chess.geometry.vector.delta import Vector
@@ -22,7 +22,7 @@ class VectorAlgebra:
     def convert_to_coordinate(vector: Vector) -> Coordinate:
         """Converts a vector to a coordinate."""
 
-        vector_validation_result = VectorSpecification.is_satisfied_by(vector)
+        vector_validation_result = VectorValidator.validate(vector)
         if not vector_validation_result.is_success:
             raise vector_validation_result.exception
 
@@ -33,13 +33,13 @@ class VectorAlgebra:
     @staticmethod
     def convert_to_vector(coordinate: Coordinate) -> Vector:
 
-        coord_validation_result = CoordinateSpecification.is_satisfied_by(coordinate)
+        coord_validation_result = CoordinateValidator.validate(coordinate)
         if not coord_validation_result.is_success:
             raise coord_validation_result.exception
 
         c = coord_validation_result.payload
 
-        vector_validation_result = VectorSpecification.is_satisfied_by(Vector(x=c.column, y=c.row))
+        vector_validation_result = VectorValidator.validate(Vector(x=c.column, y=c.row))
         if not vector_validation_result.is_success:
             raise vector_validation_result.exception
 
@@ -52,13 +52,13 @@ class VectorAlgebra:
     @staticmethod
     def scalar_multiply(vector: Vector, scalar: Scalar) -> Vector:
 
-        scalar_validation_result = ScalarSpecification.is_satisfied_by(scalar)
+        scalar_validation_result = ScalarValidator.validate(scalar)
         if not scalar_validation_result.is_success:
             raise scalar_validation_result.exception
 
         s = scalar_validation_result.payload
 
-        vector_validation_result = VectorSpecification.is_satisfied_by(vector)
+        vector_validation_result = VectorValidator.validate(vector)
         if not vector_validation_result.is_success:
             raise vector_validation_result.exception
 
@@ -66,7 +66,7 @@ class VectorAlgebra:
 
         candidate = Vector(v.x  * s.value, y=v.y * s.value)
 
-        candidate_validation_result = VectorSpecification.is_satisfied_by(candidate)
+        candidate_validation_result = VectorValidator.validate(candidate)
         if not candidate_validation_result.is_success:
             raise candidate_validation_result.exception
 
@@ -77,13 +77,13 @@ class VectorAlgebra:
     def add_vector_to_coordinate(coordinate: Coordinate, vector: Vector) -> Coordinate:
         """Adds a vector to a coordinate."""
 
-        coord_validation_result = CoordinateSpecification.is_satisfied_by(coordinate)
+        coord_validation_result = CoordinateValidator.validate(coordinate)
         if not coord_validation_result.is_success:
             raise coord_validation_result.exception
 
         c = coord_validation_result.payload
 
-        vector_validation_result = VectorSpecification.is_satisfied_by(vector)
+        vector_validation_result = VectorValidator.validate(vector)
         if not vector_validation_result.is_success:
             raise vector_validation_result.exception
 
@@ -91,7 +91,7 @@ class VectorAlgebra:
 
         candidate = Coordinate(row=c.row + v.y, column=c.column + v.x)
         # print("vector", v, "candidate:", candidate)
-        candidate_validation_result = CoordinateSpecification.is_satisfied_by(candidate)
+        candidate_validation_result = CoordinateValidator.validate(candidate)
         if not candidate_validation_result.is_success:
             raise candidate_validation_result.exception
 

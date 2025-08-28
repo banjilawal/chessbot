@@ -1,7 +1,7 @@
 from typing import Generic, cast
 
 from assurance.exception.validation.piece import ChessPieceValidationException
-from assurance.validation.base import Specification, T
+from assurance.validators.base import Validator, T
 from chess.exception.move.empty_stack_chess_piece import EmptyStackChessPieceMoveException
 from chess.exception.move.move import CapturedPieceMoveException
 from chess.exception.null.coord_stack import NullCoordinateStackException
@@ -9,25 +9,25 @@ from chess.exception.null.base import NullException
 from chess.token.model import ChessPiece
 
 
-class ChessPieceSpecification(Specification):
+class ChessPieceValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> bool:
+    def validate(t: Generic[T]) -> bool:
         entity = "ChessPiece"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
         pass
 
-class PromotionSpecification(ChessPieceSpecification):
+class PromotionSpecification(ChessPieceValidator):
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> bool:
+    def validate(t: Generic[T]) -> bool:
         pass
 
 
-class MoveSpecification(ChessPieceSpecification):
+class MoveSpecification(ChessPieceValidator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> bool:
+    def validate(t: Generic[T]) -> bool:
         method = "ChessPieceMoveSpecification.is_satisfied_by"
 
         """

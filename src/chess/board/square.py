@@ -1,7 +1,7 @@
 from typing import Optional, TYPE_CHECKING
 
-from assurance.validation.id import IdSpecification
-from assurance.validation.name import NameSpecification
+from assurance.validators.id import IdValidator
+from assurance.validators.name import NameValidator
 
 if TYPE_CHECKING:
     from chess.geometry.coordinate.coord import Coordinate
@@ -37,17 +37,17 @@ class Square:
             coordinate (Coordinate): coordinate of the square on the ChessBoard
 
         Raise:
-            NameValidationException: If name is name fails any validation checks
-            IdValidationException: If square_id fails any validation checks
-            CoordinateValidationException: If coordinate fails any validation checks
+            NameValidationException: If name is name fails any validators checks
+            IdValidationException: If square_id fails any validators checks
+            CoordinateValidationException: If coordinate fails any validators checks
         """
 
 
-        id_result = IdSpecification.is_satisfied_by(square_id)
+        id_result = IdValidator.validate(square_id)
         if not id_result.is_success():
             raise id_result.exception
 
-        name_result = NameSpecification.is_satisfied_by(name)
+        name_result = NameValidator.validate(name)
         if not name_result.is_success():
             raise name_result.exception
         #

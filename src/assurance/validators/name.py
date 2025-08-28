@@ -2,16 +2,16 @@ from typing import Generic, cast
 
 from assurance.exception.validation.name import NameValidationException
 from assurance.result.base import Result
-from assurance.validation.base import Specification, T
+from assurance.validators.base import Validator, T
 from chess.common.config import MIN_NAME_LENGTH
 from chess.exception.name import NameLengthException, BlankNameException
 from chess.exception.null.name import NullNameException
 
 
-class NameSpecification(Specification):
+class NameValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[str]:
+    def validate(t: Generic[T]) -> Result[str]:
         entity = "Name"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
@@ -22,7 +22,7 @@ class NameSpecification(Specification):
             - Not blank (only white space)
             - Not shorter than MIN_NAME_LENGTH
             
-        Any validation error will have be encapsulated in a NameValidationException
+        Any validators error will have be encapsulated in a NameValidationException
 
         Args
             t (Coordinate): generic to be validated

@@ -2,7 +2,7 @@ from typing import cast, Generic
 
 from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.result.base import Result
-from assurance.validation.base import Specification, T
+from assurance.validators.base import Validator, T
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column import ColumnOutOfBoundsException
 from chess.exception.coordinate.row import RowOutOfBoundsException
@@ -15,10 +15,10 @@ from chess.geometry.coordinate.coord import Coordinate
 
 
 
-class CoordinateSpecification(Specification):
+class CoordinateValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[Coordinate]:
+    def validate(t: Generic[T]) -> Result[Coordinate]:
         entity = "Coordinate"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
@@ -31,7 +31,7 @@ class CoordinateSpecification(Specification):
             - row is within the bounds of the chess chessboard
             - column is not null
             - column is within the bounds of the chess chessboard
-        If either validation fails their exception will be encapsulated in a CoordinateValidationException
+        If either validators fails their exception will be encapsulated in a CoordinateValidationException
             
         Args
             t (Coordinate): coordinate to validate

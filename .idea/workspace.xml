@@ -5,37 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/board/square_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/id_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/coord.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/euclid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/euclid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validation/vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validation/vector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/board_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/data-dictionary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/coordinate_binding_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/euclid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/euclid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/obsolete/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/obsolete_id_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/obsolete/obsolete_id_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/obsolete_piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/obsolete/obsolete_piece_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/player_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/obsolete/player_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/square_repo_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/obsolete/square_repo_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/validation_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/obsolete/validation_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/obsolete/validation_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/obsolete/validation_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/scalar.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/scalar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/vector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validation/walk_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/walk_specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/coord_stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/scalar.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/scalar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate/negative_distance_metric.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coordinate/euclid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/vector/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/column.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/vector/y_dim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/mul.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/vector/scalar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/offset_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/vector/offset_pkg_info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/offset/row.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/vector/x_dim.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coord.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_pk_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coordinate_pk_info.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/euclid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/euclid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/vector/algebra.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/vector/algebra.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/geometry/vector/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/vector/delta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_stack_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_stack_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/scalar_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/euclid_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/vector_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/vector_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/pawn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -357,7 +358,7 @@
       <workItem from="1756133122019" duration="104182000" />
       <workItem from="1756288075382" duration="15877000" />
       <workItem from="1756325465885" duration="12265000" />
-      <workItem from="1756382876041" duration="386000" />
+      <workItem from="1756382876041" duration="3959000" />
     </task>
     <servers />
   </component>
@@ -380,7 +381,7 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/validation/euclid.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validators/euclid.py</url>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

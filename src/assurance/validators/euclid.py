@@ -3,16 +3,16 @@ from typing import Generic, cast
 from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.exception.validation.euclid import EuclideanDistanceValidationException
 from assurance.result.base import Result
-from assurance.validation.coord import CoordinateSpecification
-from assurance.validation.base import Specification, T
+from assurance.validators.coord import CoordinateValidator
+from assurance.validators.base import Validator, T
 from chess.exception.null.euclid import NullDistanceException
 from chess.geometry.coordinate.euclid import Distance
 
 
-class DistanceSpecification(Specification):
+class DistanceValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[Distance]:
+    def validate(t: Generic[T]) -> Result[Distance]:
         entity = "Distance"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
@@ -22,7 +22,7 @@ class DistanceSpecification(Specification):
             - Not null
             - Coordinate p meets CoordinateSpecification
             - Coordinate q meets CoordinateSpecification
-        If any validation fails their exception will be encapsulated in 
+        If any validators fails their exception will be encapsulated in 
             DistanceValidationException
             
         Args
@@ -51,11 +51,11 @@ class DistanceSpecification(Specification):
 
             cartesian_distance = cast(Distance, t)
 
-            p_coord_spec_result = CoordinateSpecification.is_satisfied_by(cartesian_distance.p)
+            p_coord_spec_result = CoordinateValidator.validate(cartesian_distance.p)
             if not p_coord_spec_result.is_success():
                 raise p_coord_spec_result.exception
 
-            q_coord_spec_result = CoordinateSpecification.is_satisfied_by(cartesian_distance.q)
+            q_coord_spec_result = CoordinateValidator.validate(cartesian_distance.q)
             if not q_coord_spec_result.is_success():
                 raise q_coord_spec_result.exception
             

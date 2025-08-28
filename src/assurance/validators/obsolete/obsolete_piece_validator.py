@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from assurance.validation.obsolete.validation_result import ValidationResult
+from assurance.validators.obsolete.validation_result import ValidationResult
 from assurance.exception.validation.base_validationpy import ValidationException
 from chess.token.mobility_status import MobilityStatus
 from chess.rank.king import KingRank
@@ -10,13 +10,13 @@ if TYPE_CHECKING:
     from chess.token.model import ChessPiece
 
 class ChessPieceNotNullValidationFailed(ValidationException):
-    DEFAULT_MESSAGE = "ChessPiece failed not null validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed not null validators test"
 class ChessPieceMovableValidationFailed(ValidationException):
-    DEFAULT_MESSAGE = "ChessPiece failed movable validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed movable validators test"
 class ChessPiecePromotableValidationFailed(ValidationException):
-    DEFAULT_MESSAGE = "ChessPiece failed promotable validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed promotable validators test"
 class ChessPieceOnBoardValidationFailed(ValidationException):
-    DEFAULT_MESSAGE = "ChessPiece failed on chess_board validation test"
+    DEFAULT_MESSAGE = "ChessPiece failed on chess_board validators test"
 
 
 class ObsoleteChessPieceValidator:
@@ -25,7 +25,7 @@ class ObsoleteChessPieceValidator:
     def not_null_test(chess_piece: ChessPiece) -> ValidationResult[ChessPiece]:
         if chess_piece is None:
             return ValidationResult.send_failed_valtidation_report(
-                ChessPieceNotNullValidationFailed("ChessPiece failed not null validation test"))
+                ChessPieceNotNullValidationFailed("ChessPiece failed not null validators test"))
         return ValidationResult.send_passed_validation_report(payload=chess_piece)
 
 
@@ -40,7 +40,7 @@ class ObsoleteChessPieceValidator:
         testing_payload = test_report.payload
         if testing_payload.positions < 1 and testing_payload.status != MobilityStatus.FREE:
             return ValidationResult.send_failed_valtidation_report(
-                ChessPieceMovableValidationFailed("ChessPiece failed movable validation test"))
+                ChessPieceMovableValidationFailed("ChessPiece failed movable validators test"))
         return ValidationResult.send_passed_validation_report(payload=chess_piece)
 
 
@@ -55,7 +55,7 @@ class ObsoleteChessPieceValidator:
         testing_payload = test_report.payload
         if testing_payload.rank_tag.rank not in [KingRank, PawnRank]:
             return ValidationResult.send_failed_valtidation_report(
-                ChessPiecePromotableValidationFailed("ChessPiece not king or captor. failed promotable validation test")
+                ChessPiecePromotableValidationFailed("ChessPiece not king or captor. failed promotable validators test")
             )
 
         if testing_payload.current_coordinate().row != testing_payload.player.home_quadrant.enemy_quadrant():

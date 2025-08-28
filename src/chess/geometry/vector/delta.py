@@ -13,10 +13,12 @@ class Vector:
     """
     Offset is an immutable class is used for shifting a Coordinate by a vector. The
     Offset is just a vector added to a Coordinate vector. 
+    Moved responsibilty for coordinate_vendo algerba from Vector to Coordinate, the testing and verification is 
+    simpler. This leaves Vector a pure data class used for transforming a Coordinate.
 
     Attributes:
-        _delta_row (int): Amount added to target coordinate's row
-        _delta_column (int): Amount added to target coordinate's column
+        _x (int): Amount added to target coordinate's row
+        _y (int): Amount added to target coordinate's column
     """
 
 

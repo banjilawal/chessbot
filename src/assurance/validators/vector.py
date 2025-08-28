@@ -2,7 +2,7 @@ from typing import Generic, cast
 
 from assurance.exception.validation.vector import VectorValidationException
 from assurance.result.base import Result
-from assurance.validation.base import Specification, T
+from assurance.validators.base import Validator, T
 from chess.common.config import KNIGHT_STEP_SIZE
 
 from chess.exception.null.x_dim import XComponentNullException
@@ -14,10 +14,10 @@ from chess.exception.vector.x_dim import XComponentBelowLowerBoundException, XCo
 from chess.geometry.vector.delta import Vector
 
 
-class VectorSpecification(Specification):
+class VectorValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[Vector]:
+    def validate(t: Generic[T]) -> Result[Vector]:
         entity = "Vector"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
@@ -31,7 +31,7 @@ class VectorSpecification(Specification):
             - y is not null
             - y is not less than -KNIGHT_WALKING_RANGE
             - y is not greater than KNIGHT_WALKING_RANGE
-        If any validation fails their exception will be encapsulated in 
+        If any validators fails their exception will be encapsulated in 
         VectorValidationException
             
         Args
@@ -121,7 +121,7 @@ class VectorSpecification(Specification):
 
 def main():
     vector = Vector(x=2, y=1)
-    specification_result = VectorSpecification.is_satisfied_by(vector)
+    specification_result = VectorValidator.validate(vector)
     if specification_result.is_success():
         print("Vector specification satisfied.")
     else:

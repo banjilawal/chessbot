@@ -2,4 +2,4 @@ from chess.exception.id import ChessException
 
 
 class ValidationException(ChessException):
-    default_message = "The validation failed."
+    default_message = "The validators failed."

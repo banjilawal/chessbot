@@ -2,7 +2,7 @@ from typing import Generic, cast
 
 from assurance.exception.validation.scalar import ScalarValidationException
 from assurance.result.base import Result
-from assurance.validation.base import Specification, T
+from assurance.validators.base import Validator, T
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
 from chess.exception.null.scalar import NullScalarException
@@ -10,10 +10,10 @@ from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScala
 from chess.geometry.vector.scalar import Scalar
 
 
-class ScalarSpecification(Specification):
+class ScalarValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[Scalar]:
+    def validate(t: Generic[T]) -> Result[Scalar]:
         entity = "Scalar"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
@@ -25,7 +25,7 @@ class ScalarSpecification(Specification):
             - value is within the bounds of the chess chessboard
             - column is not null
             - column is within the bounds of the chess chessboard
-        If either validation fails their exception will be encapsulated in a 
+        If either validators fails their exception will be encapsulated in a 
         ScalarValidationException
             
         Args

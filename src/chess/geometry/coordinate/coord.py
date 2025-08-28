@@ -1,6 +1,6 @@
 
-# from assurance.validation.coord import CoordinateSpecification
-from assurance.validation.vector import VectorSpecification
+# from assurance.validators.coord import CoordinateSpecification
+from assurance.validators.vector import VectorValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column import ColumnOutOfBoundsException
 from chess.exception.coordinate.row import RowOutOfBoundsException
@@ -83,11 +83,11 @@ class Coordinate:
             Coordinate
 
         Raise:
-            VectorValidationException: if vector fails validation.
+            VectorValidationException: if vector fails validators.
             CoordinateValidationException: if 
         """
 
-        result = VectorSpecification.is_satisfied_by(vector)
+        result = VectorValidator.validate(vector)
         if result.is_failure():
             raise result.exception
 

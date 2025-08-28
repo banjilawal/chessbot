@@ -3,8 +3,8 @@ from typing import Generic, cast
 from assurance.exception.validation.coord_stack import CoordinateStackValidationException
 from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.result.base import Result
-from assurance.validation.coord import CoordinateSpecification
-from assurance.validation.base import Specification, T
+from assurance.validators.coord import CoordinateValidator
+from assurance.validators.base import Validator, T
 from chess.exception.coordinate_stack.conflict import IsEmptyStackResultConflictsWithSizeException
 from chess.exception.coordinate_stack.current import CurrentCoordinateInconsistentStateException
 from chess.exception.coordinate_stack.internal_structure import InternalStackDataStructureException
@@ -15,11 +15,11 @@ from chess.exception.null.coord_stack import NullCoordinateStackException
 from chess.geometry.coordinate.stack import CoordinateStack
 
 
-class CoordinateStackSpecification(Specification):
+class CoordinateStackValidator(Validator):
 
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[CoordinateStack]:
+    def validate(t: Generic[T]) -> Result[CoordinateStack]:
         entity = "CoordinateStack"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
@@ -35,7 +35,7 @@ class CoordinateStackSpecification(Specification):
             
         Do not test for pushing or popping coordinates here. They might change state unexpectedly.
         Those operations are tested in their own unit tests.
-        If any validation check fails their exception will be encapsulated in a 
+        If any validators check fails their exception will be encapsulated in a 
         CoordinateStackValidationException
             
         Args
@@ -100,7 +100,7 @@ class CoordinateStackSpecification(Specification):
 
             current_coord = coords.current_coordinate
             if (current_coord is not None and
-                    CoordinateSpecification.is_satisfied_by(current_coord).is_failure()):
+                    CoordinateValidator.validate(current_coord).is_failure()):
                 raise CurrentCoordinateInconsistentStateException(
                     f"{method} {CurrentCoordinateInconsistentStateException.DEFAULT_MESSAGE}"
                 )

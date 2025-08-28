@@ -5,11 +5,11 @@ from assurance.result.base import Result
 
 T = TypeVar('T')
 
-class Specification(ABC, Generic[T]):
+class Validator(ABC, Generic[T]):
 
     @staticmethod
     @abstractmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[T]:
+    def validate(t: Generic[T]) -> Result[T]:
         """
         Validates the input and returns a Result object.
          On success: Result(payload=t)

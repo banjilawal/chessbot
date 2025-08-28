@@ -2,7 +2,7 @@ import random
 from typing import List, Optional, TYPE_CHECKING
 
 from assurance.exception.validation.coord import CoordinateValidationException
-from assurance.validation.coord import CoordinateSpecification
+from assurance.validators.coord import CoordinateValidator
 from chess.board.square import Square
 from chess.geometry.coordinate.coord import Coordinate
 
@@ -39,7 +39,7 @@ class ChessBoard:
             squares (List[List[Square]]): 2D list of Square objects representing the chess
 
         Raise:
-            IdValidationException: If id fails validation checks for non-null and positive.
+            IdValidationException: If id fails validators checks for non-null and positive.
             NullException: If squares is null
         """
 
@@ -115,10 +115,10 @@ class ChessBoard:
             Optional[Square]: The Square object if found, otherwise None.
             
         Raises: 
-            CoordinateValidationException: If coordinate is fails any validation checks.
+            CoordinateValidationException: If coordinate is fails any validators checks.
         """
 
-        if not CoordinateSpecification.is_satisfied_by(coordinate):
+        if not CoordinateValidator.validate(coordinate):
             raise CoordinateValidationException(CoordinateValidationException.DEFAULT_MESSAGE)
         return self._squares[coordinate.row][coordinate.column]
 
@@ -160,7 +160,7 @@ class ChessBoard:
             Optional[ChessPiece] The ChessPiece if found at the coordinate otherwise None.
 
         Raises: 
-            CoordinateValidationException: If coordinate is fails any validation checks.
+            CoordinateValidationException: If coordinate is fails any validators checks.
         """
 
         return  self.find_square_by_coordinate(coordinate).occupant

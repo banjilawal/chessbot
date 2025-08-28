@@ -2,15 +2,15 @@ from typing import Generic, cast
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.result.base import Result
-from assurance.validation.base import Specification, T
+from assurance.validators.base import Validator, T
 from chess.exception.id import NegativeIdException
 from chess.exception.null.id import IdNullException
 
 
-class IdSpecification(Specification):
+class IdValidator(Validator):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[int]:
+    def validate(t: Generic[T]) -> Result[int]:
         entity = "Id"
         class_name = f"{entity}Specification"
         method = f"{class_name}.is_satisfied_by"
@@ -20,7 +20,7 @@ class IdSpecification(Specification):
             - Not null
             - Not 0 or negative (is positive)
             
-        Any validation error will have be encapsulated in a IdValidationException
+        Any validators error will have be encapsulated in a IdValidationException
 
         Args
             t (Coordinate): generic to be validated
