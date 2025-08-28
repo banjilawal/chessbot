@@ -1,9 +1,9 @@
 from chess.exception.base import ChessException
 
 
-class CoordinateOffsetException(ChessException):
-    ERROR_CODE = "COORDINATE_OFFSET_ERROR"
-    DEFAULT_MESSAGE = f"Coordinate offset operation threw an exception"
+class VectorException(ChessException):
+    ERROR_CODE = "VECTOR_ERROR"
+    DEFAULT_MESSAGE = f"Vector raised an exception"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

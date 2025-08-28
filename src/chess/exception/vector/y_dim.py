@@ -1,8 +1,8 @@
 from chess.common.config import KNIGHT_STEP_SIZE
-from chess.exception.offset.base import CoordinateOffsetException
+from chess.exception.vector.base import VectorException
 
 
-class YComponentBelowLowerBoundException(CoordinateOffsetException):
+class YComponentBelowLowerBoundException(VectorException):
     ERROR_CODE = "DELTA_COLUMN_BELOW_STEPPING_BOUND_ERROR"
     DEFAULT_MESSAGE = (
         f"Offset.delta_column less than lower KNIGHT_STEP_SIZE "
@@ -17,7 +17,7 @@ class YComponentBelowLowerBoundException(CoordinateOffsetException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class YComponentAboveUpperBoundException(CoordinateOffsetException):
+class YComponentAboveUpperBoundException(VectorException):
     ERROR_CODE = "DELTA_COLUMN_ABOVE_STEPPING_BOUND_ERROR"
     DEFAULT_MESSAGE = (
         f"Offset.delta_column larger than upper KNIGHT_STEP_SIZE "

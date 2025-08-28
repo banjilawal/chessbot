@@ -1,21 +1,16 @@
 from typing import Optional, TYPE_CHECKING
 
-from assurance.exception.validation.coord import CoordinateValidationException
-from assurance.exception.validation.id import IdValidationException
-from assurance.validation.coord import CoordinateSpecification
 from assurance.validation.id import IdSpecification
 from assurance.validation.name import NameSpecification
-from chess.exception.null.name import NullNameException
-
-from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
+    from chess.geometry.coordinate.coord import Coordinate
     from chess.token.model import ChessPiece
 
 class Square:
     _id: int
     _name: str
-    _coordinate: Coordinate
+    _coordinate: 'Coordinate'
     _occupant: Optional['ChessPiece']
 
     """
@@ -30,7 +25,7 @@ class Square:
         _occupant (ChessPiece): The ChessPiece occupying the square, if any.
     """
 
-    def __init__(self, square_id: int, name: str, coordinate: Coordinate):
+    def __init__(self, square_id: int, name: str, coordinate: 'Coordinate'):
         method = "Square.__init__()"
 
         """
@@ -42,10 +37,11 @@ class Square:
             coordinate (Coordinate): coordinate of the square on the ChessBoard
 
         Raise:
-            NullNameException: If name is null
-            IdValidationException: If id fails validation checks for non-null and positive.
-            CoordinateValidationException: If coordinate is null, its row or colum are out of bounds
+            NameValidationException: If name is name fails any validation checks
+            IdValidationException: If square_id fails any validation checks
+            CoordinateValidationException: If coordinate fails any validation checks
         """
+
 
         id_result = IdSpecification.is_satisfied_by(square_id)
         if not id_result.is_success():
@@ -54,17 +50,17 @@ class Square:
         name_result = NameSpecification.is_satisfied_by(name)
         if not name_result.is_success():
             raise name_result.exception
-
-        coord_result = CoordinateSpecification.is_satisfied_by(coordinate)
-        if not coord_result.is_success():
-            raise coord_result.exception
-
-        if not IdSpecification.is_satisfied_by(square_id):
-            raise IdValidationException(IdValidationException.DEFAULT_MESSAGE)
+        #
+        # coord_result = CoordinateSpecification.is_satisfied_by(coordinate)
+        # if not coord_result.is_success():
+        #     raise coord_result.exception
+        #
+        # if not IdSpecification.is_satisfied_by(square_id):
+        #     raise IdValidationException(IdValidationException.DEFAULT_MESSAGE)
 
         self._id = id_result.payload
         self._name = name_result.payload
-        self._coordinate = coord_result.payload
+        # self._coordinate = coord_result.payload
 
         self._occupant = None
 
@@ -80,7 +76,7 @@ class Square:
 
 
     @property
-    def coordinate(self) -> Coordinate:
+    def coordinate(self) -> 'Coordinate':
         return self._coordinate
 
 
@@ -90,9 +86,9 @@ class Square:
 
 
     @occupant.setter
-    def occupant(self, chess_piece: Optional['ChessPiece']):
+    def occupant(self, piece: Optional['ChessPiece']):
         method = f"Square.occupant"
-        self._occupant = chess_piece
+        self._occupant = piece
 
 
     def __eq__(self, other):

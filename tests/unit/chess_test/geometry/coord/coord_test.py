@@ -14,7 +14,7 @@ from chess.geometry.coordinate.coord import Coordinate
 class CoordinateTest(unittest.TestCase):
 
     def test_null_row_raises_exception(self):
-        with pytest.raises(NullRowException):
+        with self.assertRaises(NullRowException):
             Coordinate(row=None, column=0)
 
 
@@ -36,7 +36,7 @@ class CoordinateTest(unittest.TestCase):
 
 
     def test_null_column_raises_exception(self):
-        with pytest.raises(NullColumnException):
+        with self.assertRaises(NullColumnException):
             Coordinate(row=0, column=None)
 
 

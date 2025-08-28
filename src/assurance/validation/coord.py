@@ -1,4 +1,4 @@
-from typing import Generic, cast
+from typing import cast, Generic
 
 from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.result.base import Result
@@ -12,8 +12,10 @@ from chess.exception.null.row import NullRowException
 from chess.geometry.coordinate.coord import Coordinate
 
 
-class CoordinateSpecification(Specification):
 
+
+
+class CoordinateSpecification(Specification):
 
     @staticmethod
     def is_satisfied_by(t: Generic[T]) -> Result[Coordinate]:
@@ -82,5 +84,5 @@ class CoordinateSpecification(Specification):
             NullRowException, RowOutOfBoundsException,
             NullColumnException, ColumnOutOfBoundsException) as e:
             raise CoordinateValidationException(
-                f"{method}: {CoordinateValidationException}"
+                f"{method}: {CoordinateValidationException.DEFAULT_MESSAGE}"
             ) from e

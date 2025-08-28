@@ -32,7 +32,7 @@ class VectorTest(unittest.TestCase):
         # print()
         for x in range(-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE + 1):
             vector = Vector(x=x, y=0)
-            # print(f"Testing delta_row: {vector.delta_row} expected={delta_row}")
+            # print(f"Testing delta_row: {distance_test.delta_row} expected={delta_row}")
             self.assertEqual(vector.x, x)
 
 
@@ -55,7 +55,7 @@ class VectorTest(unittest.TestCase):
         # print()
         for y in range(-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE + 1):
             vector = Vector(x=0, y=y)
-            # print(f"Testing delta_row: {vector.delta_row} expected={delta_row}")
+            # print(f"Testing delta_row: {distance_test.delta_row} expected={delta_row}")
             self.assertEqual(vector.y, y)
 
 

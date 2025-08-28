@@ -53,7 +53,7 @@ class NameSpecification(Specification):
             if len(name) < MIN_NAME_LENGTH:
                 raise NameLengthException("{method} NameLengthException.default_message")
 
-            if name.isspace():
+            if name.strip():
                 raise BlankNameException(f"{method}: {BlankNameException.DEFAULT_MESSAGE}")
 
             return Result(payload=name)

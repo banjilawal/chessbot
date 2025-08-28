@@ -12,6 +12,7 @@ class BlankNameException(ChessException):
     def __str__(self):
         return f"[{self.ERROR_CODE}] {self.message}"
 
+
 class NameLengthException(ChessException):
     ERROR_CODE = "NAME_LENGTH_ERROR"
     DEFAULT_MESSAGE = "Name is below the minimum length"

@@ -1,4 +1,5 @@
-from assurance.exception.validation.vector import VectorValidationException
+
+# from assurance.validation.coord import CoordinateSpecification
 from assurance.validation.vector import VectorSpecification
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coordinate.column import ColumnOutOfBoundsException
@@ -69,31 +70,35 @@ class Coordinate:
         return f"Coordinate(row:{self._row} column:{self._column})"
 
 
-    def add_delta(self, delta: Vector) -> 'Coordinate':
-        method = "Coordinate.shift()"
+    def add_vector(self, vector: Vector) -> 'Coordinate':
+        method = "add_vector"
 
         """
-        Creates a new Coordinate shifted by row + row_delta, colum + column_delta
+        Returns the coordinate: Coordinate( self._row + vectory.y, self._column + vector.x)
 
         Args:
-            vector (Delta): vector added to coordinate's x, y values
+            vector (Vector): vector added to coordinate's x, y values
         
         Return:
             Coordinate
 
         Raise:
-            NullDeltaException: if vector is null.
+            VectorValidationException: if vector fails validation.
+            CoordinateValidationException: if 
         """
 
-        result = VectorSpecification.is_satisfied_by(delta)
+        result = VectorSpecification.is_satisfied_by(vector)
         if result.is_failure():
-            raise VectorValidationException(f"{method} {result.exception}")
+            raise result.exception
 
-        # Creating totally new values makes sure nothing
-        # hinky happens creating the new shifted coordinate.
-        row = self._row + delta.y
-        column= self._column + delta.x
-
-        return Coordinate(row=row, column=column)
+        v = result.payload
+        return Coordinate(row = self._row + v.y, column = self._column + v.x)
+        # candidate = Coordinate(row = self._row + v.y, column = self._column + v.x)
+        #
+        # result = CoordinateSpecification.is_satisfied_by(Coordinate(candidate))
+        # if not result.is_success():
+        #     raise result.exception
+        #
+        # return result.payload
 
 

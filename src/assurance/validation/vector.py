@@ -8,8 +8,8 @@ from chess.common.config import KNIGHT_STEP_SIZE
 from chess.exception.null.x_dim import XComponentNullException
 from chess.exception.null.vector import NullVectorException
 from chess.exception.null.y_dim import YComponentNullException
-from chess.exception.offset.column import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
-from chess.exception.offset.row import XComponentBelowLowerBoundException, XComponentAboveUpperBoundException
+from chess.exception.vector.y_dim import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
+from chess.exception.vector.x_dim import XComponentBelowLowerBoundException, XComponentAboveUpperBoundException
 
 from chess.geometry.vector.delta import Vector
 

@@ -15,17 +15,16 @@ class CoordinateStackTest(unittest.TestCase):
 
 
     def test_new_coordinate_stack_is_empty(self):
-        coordinate_stack = CoordinateStack()
         self.assertTrue(len(CoordinateStack().items) == 0)
 
 
     def test_pop_empty_stack_raises_exception(self):
-        with pytest.raises(PopEmptyCoordinateStackException):
+        with self.assertRaises(PopEmptyCoordinateStackException):
             CoordinateStack().undo_push()
 
 
     def test_null_coordinate_push_raises_exception(self):
-        with pytest.raises(NullCoordinatePushException):
+        with self.assertRaises(NullCoordinatePushException):
             CoordinateStack().push_coordinate(None)
 
 
@@ -34,7 +33,7 @@ class CoordinateStackTest(unittest.TestCase):
         coordinate_stack = CoordinateStack()
         coordinate_stack.push_coordinate(coord)
 
-        with pytest.raises(DuplicateCoordinatePushException):
+        with self.assertRaises(DuplicateCoordinatePushException):
             coordinate_stack.push_coordinate(coord)
 
     def test_pushing_coordinate_updates_current_coordinate(self):

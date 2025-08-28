@@ -1,7 +1,7 @@
 from typing import Generic, cast
 
+from assurance.exception.validation.piece import ChessPieceValidationException
 from assurance.validation.base import Specification, T
-from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from chess.exception.move.empty_stack_chess_piece import EmptyStackChessPieceMoveException
 from chess.exception.move.move import CapturedPieceMoveException
 from chess.exception.null.coord_stack import NullCoordinateStackException
@@ -51,7 +51,7 @@ class MoveSpecification(ChessPieceSpecification):
             if chess_piece.positions is None:
                 print(f"{chess_piece.name} has a null stack")
                 raise NullCoordinateStackException(
-                    f"{method} {NullCoordinateStackException.default_message}"
+                    f"{method} {NullCoordinateStackException.DEFAULT_MESSAGE}"
                 )
 
             if chess_piece.positions.is_empty():

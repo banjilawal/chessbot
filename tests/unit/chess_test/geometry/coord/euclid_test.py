@@ -8,35 +8,35 @@ from chess.exception.coordinate.row import RowOutOfBoundsException
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
-from chess.geometry.coordinate.euclid import EuclideanDistance
+from chess.geometry.coordinate.euclid import Distance
 from chess.geometry.coordinate.coord import Coordinate
 
 
-class DistanceTest(unittest.TestCase):
+class EuclidDistanceTest(unittest.TestCase):
 
     def test_null_p_coord_raises_exception(self):
-        with pytest.raises(NullCoordinateException):
-           EuclideanDistance(p=None, q=Coordinate(row=0, column=0))
+        with self.assertRaises(NullCoordinateException):
+           Distance(p=None, q=Coordinate(row=0, column=0))
 
 
     def test_null_p_row_raises_exception(self):
-        with pytest.raises(NullRowException):
-           EuclideanDistance(p=Coordinate(row=None, column=0), q=Coordinate(row=0, column=0))
+        with self.assertRaises(NullRowException):
+           Distance(p=Coordinate(row=None, column=0), q=Coordinate(row=0, column=0))
 
 
     def  test_p_row_below_lower_bounds_raises_exception(self):
         with self.assertRaises(RowOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=-1, column=0), q=Coordinate(row=0, column=0))
+            Distance(p=Coordinate(row=-1, column=0), q=Coordinate(row=0, column=0))
 
 
     def  test_p_row_above_upper_bounds_raises_exception(self):
         with self.assertRaises(RowOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=ROW_SIZE, column=0), q=Coordinate(row=0, column=0))
+            Distance(p=Coordinate(row=ROW_SIZE, column=0), q=Coordinate(row=0, column=0))
 
     def test_p_row_in_bounds(self):
         # Valid rows should construct a Coordinate without exceptions
         for row in range(0, ROW_SIZE):
-            cartesian_distance = EuclideanDistance(
+            cartesian_distance = Distance(
                 p=Coordinate(row=row, column=0),
                 q=Coordinate(row=0, column=0)
             )
@@ -44,23 +44,23 @@ class DistanceTest(unittest.TestCase):
 
 
     def test_null_p_column_raises_exception(self):
-        with pytest.raises(NullColumnException):
-           EuclideanDistance(p=Coordinate(row=0, column=None), q=Coordinate(row=0, column=0))
+        with self.assertRaises(NullColumnException):
+           Distance(p=Coordinate(row=0, column=None), q=Coordinate(row=0, column=0))
 
 
     def test_p_column_below_lower_bounds_raises_exception(self):
         with self.assertRaises(ColumnOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=0, column=-1), q=Coordinate(row=0, column=0))
+            Distance(p=Coordinate(row=0, column=-1), q=Coordinate(row=0, column=0))
 
     def test_p_column_above_upper_bounds_raises_exception(self):
         with self.assertRaises(ColumnOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=0, column=COLUMN_SIZE), q=Coordinate(row=0, column=0))
+            Distance(p=Coordinate(row=0, column=COLUMN_SIZE), q=Coordinate(row=0, column=0))
 
 
     def test_p_column_in_bounds(self):
         # Valid rows should construct a Coordinate without exceptions
         for col in range(0, COLUMN_SIZE):
-            cartesian_distance = EuclideanDistance(
+            cartesian_distance = Distance(
                 p=Coordinate(row=0, column=col),
                 q=Coordinate(row=0, column=0)
             )
@@ -68,29 +68,29 @@ class DistanceTest(unittest.TestCase):
 
 
     def test_null_q_coord_raises_exception(self):
-        with pytest.raises(NullCoordinateException):
-            EuclideanDistance(p=Coordinate(row=0, column=0), q=None)
+        with self.assertRaises(NullCoordinateException):
+            Distance(p=Coordinate(row=0, column=0), q=None)
 
 
     def test_null_q_row_raises_exception(self):
-        with pytest.raises(NullRowException):
-            EuclideanDistance(p=Coordinate(row=0, column=0), q=Coordinate(row=None, column=0))
+        with self.assertRaises(NullRowException):
+            Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=None, column=0))
 
 
     def test_q_row_below_lower_bounds_raises_exception(self):
         with self.assertRaises(RowOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=0, column=0), q=Coordinate(row=-1, column=0))
+            Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=-1, column=0))
 
 
     def test_q_row_above_upper_bounds_raises_exception(self):
         with self.assertRaises(RowOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=0, column=0), q=Coordinate(row=ROW_SIZE, column=0))
+            Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=ROW_SIZE, column=0))
 
 
     def test_q_row_in_bounds(self):
         # Valid rows should construct a Coordinate without exceptions
         for row in range(0, ROW_SIZE):
-            cartesian_distance = EuclideanDistance(
+            cartesian_distance = Distance(
                 p=Coordinate(row=0, column=0),
                 q=Coordinate(row=row, column=0)
             )
@@ -98,22 +98,22 @@ class DistanceTest(unittest.TestCase):
 
 
     def test_null_q_column_raises_exception(self):
-        with pytest.raises(NullColumnException):
-            EuclideanDistance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=None))
+        with self.assertRaises(NullColumnException):
+            Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=None))
 
 
     def test_q_column_below_lower_bounds_raises_exception(self):
         with self.assertRaises(ColumnOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=-1))
+            Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=-1))
 
     def test_q_column_above_upper_bounds_raises_exception(self):
         with self.assertRaises(ColumnOutOfBoundsException):
-            EuclideanDistance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=COLUMN_SIZE))
+            Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=COLUMN_SIZE))
 
 
     def test_q_column_in_bounds(self):
         for col in range(0, COLUMN_SIZE):
-            cartesian_distance = EuclideanDistance(
+            cartesian_distance = Distance(
                 p=Coordinate(row=0, column=0),
                 q=Coordinate(row=0, column=col)
             )

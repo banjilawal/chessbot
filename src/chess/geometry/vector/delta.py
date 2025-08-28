@@ -1,10 +1,9 @@
+
 from chess.common.config import KNIGHT_STEP_SIZE
 from chess.exception.null.x_dim import XComponentNullException
 from chess.exception.null.y_dim import YComponentNullException
-from chess.exception.offset.column import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
-from chess.exception.offset.row import XComponentAboveUpperBoundException, XComponentBelowLowerBoundException
-
-
+from chess.exception.vector.x_dim import XComponentBelowLowerBoundException, XComponentAboveUpperBoundException
+from chess.exception.vector.y_dim import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
 
 
 class Vector:
@@ -12,7 +11,7 @@ class Vector:
     _y: int
 
     """
-    Offset is an immutable class is used for shifting a Coordinate by a offset. The
+    Offset is an immutable class is used for shifting a Coordinate by a vector. The
     Offset is just a vector added to a Coordinate vector. 
 
     Attributes:
@@ -87,6 +86,26 @@ class Vector:
             return False
 
         return self._x == other.x and self._y == other.y
+
+    #
+    # def add_to_coordinate(self, coord: Coordinate) -> Coordinate:
+    #     validation_result = CoordinateSpecification.is_satisfied_by(coord)
+    #     if not validation_result.is_success():
+    #         raise validation_result.exception
+    #
+    #     c  = validation_result.payload
+    #
+    #     row = c.row + self.y
+    #     column = c.column + self.x
+    #
+    #     validation_result = CoordinateSpecification.is_satisfied_by(
+    #         Coordinate(row=row, column=column)
+    #     )
+    #     if not validation_result.is_success():
+    #         raise validation_result.exception
+    #
+    #     return validation_result.payload
+
 
 
     def __str__(self):

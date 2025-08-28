@@ -5,49 +5,51 @@ from assurance.exception.validation.euclid import EuclideanDistanceValidationExc
 from assurance.result.base import Result
 from assurance.validation.coord import CoordinateSpecification
 from assurance.validation.base import Specification, T
-from chess.exception.null.euclid import NullDistanceMagnitudeException
-from chess.geometry.coordinate.euclid import EuclideanDistance
+from chess.exception.null.euclid import NullDistanceException
+from chess.geometry.coordinate.euclid import Distance
 
 
-class DistanceMagnitudeSpecification(Specification):
+class DistanceSpecification(Specification):
 
     @staticmethod
-    def is_satisfied_by(t: Generic[T]) -> Result[EuclideanDistance]:
-        method = "DistanceMagnitudeSpecification.is_satisfied_by"
+    def is_satisfied_by(t: Generic[T]) -> Result[Distance]:
+        entity = "Distance"
+        class_name = f"{entity}Specification"
+        method = f"{class_name}.is_satisfied_by"
 
         """
-        Validates DistanceMagnitude between coordinates p and q:
+        Validates Distance between coordinates p and q:
             - Not null
             - Coordinate p meets CoordinateSpecification
             - Coordinate q meets CoordinateSpecification
         If any validation fails their exception will be encapsulated in 
-            DistanceMagnitudeValidationException
+            DistanceValidationException
             
         Args
-            t (DistanceMagnitude): DistanceMagnitude to validate
+            t (Distance): Distance to validate
             
          Returns:
              Result[T]: A Result object containing the validated payload if the specification 
                 is satisfied, CoordinateValidationException otherwise.
         
         Raises:
-            NullDistanceMagnitudeException: if t is null  
+            NullDistanceException: if t is null  
             TypeError: if t is not Coordinate
 .
-            DistanceMagnitudeValidationException: Wraps any
+            DistanceValidationException: Wraps any
                 (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
                 
         """
         try:
             if t is None:
-                raise NullDistanceMagnitudeException(
-                    f"{method} NullDistanceMagnitudeException.DEFAULT_MESSAGE"
+                raise NullDistanceException(
+                    f"{method} NullDistanceException.DEFAULT_MESSAGE"
 )
 
-            if not isinstance(t, EuclideanDistance):
-                raise TypeError(f"{method} Expected a DistanceMagnitude, got {type(t).__name__}")
+            if not isinstance(t, Distance):
+                raise TypeError(f"{method} Expected a Distance, got {type(t).__name__}")
 
-            cartesian_distance = cast(EuclideanDistance, t)
+            cartesian_distance = cast(Distance, t)
 
             p_coord_spec_result = CoordinateSpecification.is_satisfied_by(cartesian_distance.p)
             if not p_coord_spec_result.is_success():
@@ -62,7 +64,7 @@ class DistanceMagnitudeSpecification(Specification):
 
 
         except (
-            NullDistanceMagnitudeException, TypeError, CoordinateValidationException) as e:
+            NullDistanceException, TypeError, CoordinateValidationException) as e:
             raise EuclideanDistanceValidationException(
                 f"{method}: {EuclideanDistanceValidationException.DEFAULT_MESSAGE}"
             ) from e
