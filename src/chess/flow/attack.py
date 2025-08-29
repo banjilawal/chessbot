@@ -1,12 +1,18 @@
+from abc import ABC
+
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.square import SquareValidationException
 from assurance.validators.piece import PieceValidator
 from assurance.validators.square import SquareValidator
 from chess.board.square import Square
+from chess.flow.base import Flow
 from chess.token.model import Piece
 
 
-class CaptureFlow:
+class CaptureFlow(Flow, ABC):
+
+    @staticmethod
+    def
 
     @staticmethod
     def enter_flow(piece: Piece, square: Square):

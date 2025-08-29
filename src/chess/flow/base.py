@@ -1,11 +1,11 @@
-from abc import ABC, abstractmethod
-from typing import TypeVar, Generic
+from abc import abstractmethod, ABC
 
-T = TypeVar('T')
+from chess.request.base import Request
 
-class Flow(ABC, Generic[T]):
+
+class Flow(ABC):
 
     @staticmethod
     @abstractmethod
-    def enter(client: Generic[T], resource: Generic[T]):
+    def enter(request: Request):
         pass

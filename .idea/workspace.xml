@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/flow/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/exception/validation/request/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/exception/validation/request/attack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/exception/validation/request/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/exception/validation/request/occupy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/exception/validation/request/promote.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/result/grant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validators/request/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validators/request/attack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validators/request/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validators/request/occupy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validators/request/promote.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/request/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/request/attack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/request/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/attack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/model.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +149,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/exception/piece",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validators",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -158,18 +175,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validators" />
+      <recent name="$PROJECT_DIR$/src/assurance/exception/validation/request" />
       <recent name="$PROJECT_DIR$/src/chess/exception/piece" />
       <recent name="$PROJECT_DIR$/src/chess/state/checks" />
       <recent name="$PROJECT_DIR$/src/chess/exception/state" />
-      <recent name="$PROJECT_DIR$/src/chess/flow/check" />
-      <recent name="$PROJECT_DIR$/src/chess/exception/flow" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/chess/state/checks" />
+      <recent name="$PROJECT_DIR$/src/chess/exception" />
       <recent name="$PROJECT_DIR$/src/chess" />
+      <recent name="$PROJECT_DIR$/src/chess/state/checks" />
       <recent name="$PROJECT_DIR$/src/chess/flow" />
       <recent name="$PROJECT_DIR$/src/assurance/exception/validation" />
-      <recent name="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector" />
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Python tests in id_test.py">
@@ -328,7 +345,7 @@
       <workItem from="1756288075382" duration="15877000" />
       <workItem from="1756325465885" duration="12265000" />
       <workItem from="1756382876041" duration="18608000" />
-      <workItem from="1756418002735" duration="15753000" />
+      <workItem from="1756418002735" duration="20363000" />
     </task>
     <servers />
   </component>

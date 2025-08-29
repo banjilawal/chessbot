@@ -2,8 +2,8 @@ from chess.exception.null.base import NullException
 
 
 class NNullPieceException(NullException):
-    ERROR_CODE = "NULL_CHESS_PIECE_ERROR"
-    DEFAULT_MESSAGE = f"ChessPiece cannot be null"
+    ERROR_CODE = "NULL_PIECE_ERROR"
+    DEFAULT_MESSAGE = f"Chess piece cannot be null"
 
 
     def __init__(self, message=None):
