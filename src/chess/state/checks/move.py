@@ -2,8 +2,7 @@ from typing import Generic, TypeVar
 
 from assurance.result.base import Result
 from assurance.validators.piece import PieceValidator
-from chess.exception.piece.base import PieceCoordinateException
-from chess.exception.piece.dead import DeadPieceMovingException
+from chess.exception.piece import PrisonerEscapeException
 from chess.exception.state.piece import MovableStateException
 
 from chess.state.checks.base import StateCheck
@@ -29,13 +28,13 @@ class MovableState(StateCheck):
                 raise PieceCoordinateException(f"{method}: {PieceCoordinateException.DEFAULT_MESSAGE}")
 
             if isinstance(piece, Combatant) and piece.killer is not None:
-                raise DeadPieceMovingException(f"{method}: {DeadPieceMovingException.DEFAULT_MESSAGE}")
+                raise PrisonerEscapeException(f"{method}: {PrisonerEscapeException.DEFAULT_MESSAGE}")
 
             return Result(piece)
 
         except (
-            PieceCoordinateException,
-            PieceCoordinateException,
-            DeadPieceMovingException
+                PieceCoordinateException,
+                PieceCoordinateException,
+                PrisonerEscapeException
         ) as e:
             raise MovableStateException(f"{method}: {MovableStateException.DEFAULT_MESSAGE}") from e

@@ -29,11 +29,3 @@ class Request(Generic[T]):
         return self._resource
 
 
-    def __eq__(self, other):
-        if other is self:
-            return True
-        if other is None:
-            return False
-        if not isinstance(other, Request):
-            return False
-        return self.id == other.id

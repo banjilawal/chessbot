@@ -8,7 +8,6 @@ from assurance.validators.base import Validator, T
 from chess.exception.coordinate_stack.conflict import IsEmptyStackResultConflictsWithSizeException
 from chess.exception.coordinate_stack.current import CurrentCoordinateInconsistentStateException
 from chess.exception.coordinate_stack.internal_structure import InternalStackDataStructureException
-from chess.exception.coordinate.row import RowOutOfBoundsException
 from chess.exception.coordinate_stack.mismatch import EmptyStackCurrentCoordinateValueMismatch
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.coord_stack import NullCoordinateStackException

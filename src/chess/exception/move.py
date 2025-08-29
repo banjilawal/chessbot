@@ -13,10 +13,3 @@ class MoveException(ChessException):
 
     def __str__(self):
         return f"[{self.ERROR_CODE}] {self.message}"
-
-
-
-
-
-class CapturedPieceMoveException(MoveException):
-    default_message = f"Cannot move ChessPiece that has been captured by an enemy"

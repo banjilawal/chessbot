@@ -1,80 +1,73 @@
+from typing import Generic, cast
 
-from assurance.exception.validation.request.base import RequestValidationException
+from assurance.exception.validation.id import IdValidationException
+from assurance.exception.validation.piece import PieceValidationException
+from assurance.exception.validation.request import RequestValidationException, AttackRequestValidationException
+from assurance.exception.validation.square import SquareValidationException
+from assurance.result.base import Result
+from assurance.validators.id import IdValidator
+from assurance.validators.piece import PieceValidator
+from assurance.validators.request.base import RequestValidator
+from assurance.validators.square import SquareValidator
+from chess.exception.null.request import NullAttackRequestException
+from chess.request.attack import AttackRequest
 
 
-class AttackRequestValidationException(RequestValidationException):
-    ERROR_CODE = "ATTACK_REQUEST_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"AttackRequest validation failed"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-class PieceValidator(Validator):
+class AttackRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Piece]:
-        entity = "Piece"
+    def validate(t: Generic[T]) -> Result[AttackRequest]:
+        entity = "AttackRequest"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
-        Validates a square with chained exceptions for square meeting specifications:
+        Validates an AttackRequest meets specifications:
             - Not null
-            - id fails validation
-            - name fails validation
-            - coordinate fails validation
-        If validators fails their exception will be encapsulated in a SquareValidationException
-
-        Args
-            t (Square): square to validate
+            - id does not validation
+            - client is a valid chess piece
+            - resource is a valid square
+        If a condition is not met an AttackRequestValidationException will be thrown.
+        
+        Argument:
+            t (AttackRequest): attackRequest to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                SquareValidationException otherwise.
+                AttackRequestValidationException otherwise.
 
         Raises:
             TypeError: if t is not Square
-            NullSquareException: if t is null   
+            NullAttackRequestException: if t is null   
 
             IdValidationException: if invalid id
-            NameValidationException: if invalid name
-            CoordinateValidationException: if invalid coordinate
+            PieceValidationException: if t.client fails validation
+            SquareValidationException: if it.resource fails validation
 
-            SquareValidationException: Wraps any preceding exceptions      
+            AttackRequestValidationException: Wraps any preceding exceptions      
         """
         try:
             if t is None:
-                raise NullSquareException(
-                    f"{method} {NullSquareException.DEFAULT_MESSAGE}"
-                )
+                raise NullAttackRequestException(f"{method} {NullAttackRequestException.DEFAULT_MESSAGE}" )
 
-            if not isinstance(t, Square):
-                raise TypeError(f"{method} Expected a Square, got {type(t).__name__}")
+            if not isinstance(t, AttackRequest):
+                raise TypeError(f"{method} Expected an AttackRequest, got {type(t).__name__}")
 
-            square = cast(Square, t)
+            attack_request = cast(AttackRequest, t)
 
-            id_result = IdValidator.validate(square.id)
+            id_result = IdValidator.validate(attack_request.id)
             if not id_result.is_success():
-                raise IdValidationException(
-                    f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
-                )
+                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-            name_result = NameValidator.validate(square.name)
-            if not name_result.is_success():
-                raise NameValidationException(
-                    f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
-                )
+            piece_result = PieceValidator.validate(attack_request.client)
+            if not piece_result.is_success():
+                raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}")
 
-            coord_result = CoordinateValidator.validate(square.coordinate)
-            if not coord_result.is_success():
-                raise CoordinateValidationException(
-                    f"{method}: {CoordinateValidationException.DEFAULT_MESSAGE}"
-                )
+            square_result = SquareValidator.validate(attack_request.resource)
+            if not square_result.is_success():
+                raise SquareValidationException(f"{method}: {SquareValidationException.DEFAULT_MESSAGE}")
 
-            return Result(payload=square)
+            return Result(payload=attack_request)
 
         except (
             TypeError,

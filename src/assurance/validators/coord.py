@@ -4,8 +4,8 @@ from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coordinate.column import ColumnOutOfBoundsException
-from chess.exception.coordinate.row import RowOutOfBoundsException
+from chess.exception.coord import ColumnOutOfBoundsException
+from chess.exception.coord import RowOutOfBoundsException
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException

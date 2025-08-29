@@ -1,8 +1,7 @@
 from typing import Generic, TypeVar
 
 from assurance.result.base import Result
-from assurance.validators.piece import PieceValidator
-from chess.exception.piece.dead import DeadPieceAttackingException
+from chess.exception.piece import AttackingPrisonerException
 from chess.exception.state.piece import MovableStateException
 
 from chess.state.checks.base import StateCheck
@@ -25,15 +24,15 @@ class AttackerState(StateCheck):
             piece = state_check.payload
 
             if isinstance(piece, Combatant) and piece.killer is not None:
-                raise DeadPieceAttackingException(
-                    f"{method}: {DeadPieceAttackingException.DEFAULT_MESSAGE}"
+                raise AttackingPrisonerException(
+                    f"{method}: {AttackingPrisonerException.DEFAULT_MESSAGE}"
                 )
 
 
             return Result(piece)
         except (
-            MovableStateException,
-            DeadPieceAttackingException
+                MovableStateException,
+                AttackingPrisonerException
         ) as e:
             raise MovableStateException(f"{method}: {MovableStateException.DEFAULT_MESSAGE}") from e
 

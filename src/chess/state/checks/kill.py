@@ -1,13 +1,12 @@
 from typing import Generic, TypeVar
 
 from assurance.result.base import Result
-from chess.exception.piece.dead import DeadPieceAttackingException
-from chess.exception.piece.king import KingKillingException
+
 from chess.exception.state.piece import MovableStateException
 
 from chess.state.checks.base import StateCheck
 from chess.state.checks.move import MovableState
-from chess.token.model import Piece, Combatant, King
+from chess.token.model import Piece, King
 
 T = TypeVar('T')
 

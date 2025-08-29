@@ -1,14 +1,101 @@
+from typing import Generic, TypeVar, cast
 
-from assurance.exception.validation.request.base import RequestValidationException
+from assurance.exception.validation.id import IdValidationException
+from assurance.exception.validation.piece import PieceValidationException
+from assurance.exception.validation.request import OccupationRequestValidationException
+from assurance.exception.validation.square import SquareValidationException
+from assurance.result.base import Result
+from assurance.validators.id import IdValidator
+from assurance.validators.piece import PieceValidator
+from assurance.validators.request.base import RequestValidator
+from assurance.validators.square import SquareValidator
+from chess.exception.null.request import NullOccupationRequestException
+from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
+from chess.exception.piece import AttackingKingException
+from chess.request.occupy import OccupationRequest
+from chess.token.model import King
 
+T = TypeVar('T')
 
-class OccupationRequestValidationException(RequestValidationException):
-    ERROR_CODE = "OCCUPATION_REQUEST_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"OccupationRequest validation failed"
+class OccupationRequestValidator(RequestValidator):
 
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
+    @staticmethod
+    def validate(t: Generic[T]) -> Result[OccupationRequest]:
+        entity = "OccupationRequest"
+        class_name = f"{entity}Validator"
+        method = f"{class_name}.validate"
 
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
+        """
+        Validates an OccupationRequest meets specifications:
+            - Not null
+            - id does not validation
+            - client is a valid chess piece
+            - resource is a valid square
+        If a condition is not met an OccupationRequestValidationException will be thrown.
+
+        Argument:
+            t (OccupationRequest): occupationRequest to validate
+
+         Returns:
+             Result[T]: A Result object containing the validated payload if the specification is satisfied,
+                OccupationRequestValidationException otherwise.
+
+        Raises:
+            TypeError: if t is not Square
+            NullOccupationRequestException: if t is null   
+
+            IdValidationException: if invalid id
+            PieceValidationException: if t.client fails validation
+            SquareValidationException: if it.resource fails validation
+            
+            OccupiedBySelfException: if client already occupies the square
+            AttackingKingException: if the target square is occupied by an enemy king
+            FriendlyOccupantException: if the target square is occupied by a friendly
+
+            OccupationRequestValidationException: Wraps any preceding exceptions      
+        """
+        try:
+            if t is None:
+                raise NullOccupationRequestException(f"{method} {NullOccupationRequestException.DEFAULT_MESSAGE}")
+
+            if not isinstance(t, OccupationRequest):
+                raise TypeError(f"{method} Expected an OccupationRequest, got {type(t).__name__}")
+
+            occupation_request = cast(OccupationRequest, t)
+
+            id_result = IdValidator.validate(occupation_request.id)
+            if not id_result.is_success():
+                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+
+            piece_result = PieceValidator.validate(occupation_request.client)
+            if not piece_result.is_success():
+                raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}")
+
+            square_result = SquareValidator.validate(occupation_request.resource)
+            if not square_result.is_success():
+                raise SquareValidationException(f"{method}: {SquareValidationException.DEFAULT_MESSAGE}")
+
+            piece = piece_result.payload
+            target_square = square_result.payload
+
+            if target_square.coordinate == piece.coordinate:
+                raise OccupiedBySelfException(f"{method}: {OccupiedBySelfException.DEFAULT_MESSAGE}")
+
+            occupant = target_square.occupant
+            if occupant is not None and not piece.is_enemy(occupant):
+                raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
+
+            if occupant is not None and isinstance(occupant, King):
+                raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
+
+            return Result(payload=occupation_request)
+
+        except (
+                TypeError,
+                PieceValidationException,
+                SquareValidationException,
+                NullOccupationRequestException
+        ) as e:
+            raise OccupationRequestValidationException(
+                f"{method}: {OccupationRequestValidationException.DEFAULT_MESSAGE}"
+            ) from e
