@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/flow/base.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -326,7 +328,7 @@
       <workItem from="1756288075382" duration="15877000" />
       <workItem from="1756325465885" duration="12265000" />
       <workItem from="1756382876041" duration="18608000" />
-      <workItem from="1756418002735" duration="14940000" />
+      <workItem from="1756418002735" duration="15753000" />
     </task>
     <servers />
   </component>
