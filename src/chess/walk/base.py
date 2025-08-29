@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 from chess.exception.id import ChessException
 from chess.geometry.coordinate.coord import Coordinate
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 class WalkException(ChessException):
     default_message = "Unreachable Destination coordinate"
@@ -20,7 +20,7 @@ class Walk(ABC):
     @staticmethod
     @abstractmethod
     def is_walkable(
-        chess_piece: ChessPiece,
+        chess_piece: Piece,
         destination: Coordinate
     ) -> bool:
         method = "Walk.is_walkable"

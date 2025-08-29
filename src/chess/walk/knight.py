@@ -1,6 +1,6 @@
 from chess.geometry.coordinate.coord import Coordinate
 from chess.walk.base import Walk, WalkException
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 class KnightWalkException(WalkException):
     default_message = f"KnightRank {WalkException.default_message}"
@@ -12,7 +12,7 @@ class KnightWalk(Walk):
 
 
     @staticmethod
-    def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+    def is_walkable(chess_piece: Piece, destination: Coordinate) -> bool:
 
         # Uses difference between the origin and destination rows and columns to
         # see if they form an L shaped motion.

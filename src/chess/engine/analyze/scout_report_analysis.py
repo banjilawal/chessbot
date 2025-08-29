@@ -2,13 +2,13 @@ from typing import List
 
 from chess.board.square import Square
 from chess.token.obstruction import Obstruction
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 
 class ScoutReportAnalysis:
     _id: int
-    _chess_piece: ChessPiece
-    _enemies: List[ChessPiece]
+    _chess_piece: Piece
+    _enemies: List[Piece]
     _vacant_squares: List[Square]
     _obstructions: List[Obstruction]
 
@@ -17,12 +17,12 @@ class ScoutReportAnalysis:
     _enemy_count: int
 
     def __init__(self,
-         analysis_id: int,
-         chess_piece: ChessPiece,
-         enemies: List[ChessPiece],
-         vacant_squares: List[Square],
-         obstructions: List[Obstruction]
-    ):
+                 analysis_id: int,
+                 chess_piece: Piece,
+                 enemies: List[Piece],
+                 vacant_squares: List[Square],
+                 obstructions: List[Obstruction]
+                 ):
         self._id = analysis_id
         self._chess_piece = chess_piece
         self._enemies = enemies
@@ -38,11 +38,11 @@ class ScoutReportAnalysis:
         return self._id
 
     @property
-    def chess_piece(self) -> ChessPiece:
+    def chess_piece(self) -> Piece:
         return self._chess_piece
 
     @property
-    def enemies(self) -> List[ChessPiece]:
+    def enemies(self) -> List[Piece]:
         return self._enemies
 
     @property

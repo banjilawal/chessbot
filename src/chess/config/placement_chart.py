@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 from chess.config.team import TeamConfig
 from chess.config.rank import RankConfig
 
@@ -73,7 +73,7 @@ class PlacementChart(Enum):
     def team_config(self) -> TeamConfig:
         return self._team_config
 
-    def map_chess_piece_to_square_name(self, chess_piece: ChessPiece) -> Optional[str]:
+    def map_chess_piece_to_square_name(self, chess_piece: Piece) -> Optional[str]:
         # print("inside map", captor.name.upper(),
         #       "against", self.chess_piece_name.upper()
         # )

@@ -5,7 +5,7 @@ from chess.geometry.coordinate.coord import Coordinate
 from chess.walk.bishop import BishopWalk
 from chess.walk.castle import CastleWalk
 from chess.walk.base import Walk, WalkException
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 class QueenWalkException(WalkException):
     default_message = f"QueenRank {WalkException.default_message}"
@@ -17,7 +17,7 @@ class QueenWalk(Walk):
 
     @staticmethod
     def is_walkable(
-        chess_piece: ChessPiece,
+        chess_piece: Piece,
         destination: Coordinate,
     ) -> bool:
         # Queen movement combines Rook and Bishop movement.

@@ -1,80 +1,88 @@
-from typing import Generic, cast
+from typing import cast, Generic
 
-from assurance.exception.validation.piece import ChessPieceValidationException
+from assurance.exception.validation.coord import CoordinateValidationException
+from assurance.exception.validation.id import IdValidationException
+from assurance.exception.validation.name import NameValidationException
+from assurance.exception.validation.square import SquareValidationException
+from assurance.result.base import Result
 from assurance.validators.base import Validator, T
-from chess.exception.move.empty_stack_chess_piece import EmptyStackChessPieceMoveException
-from chess.exception.move.move import CapturedPieceMoveException
-from chess.exception.null.coord_stack import NullCoordinateStackException
-from chess.exception.null.base import NullException
-from chess.token.model import ChessPiece
+from assurance.validators.coord import CoordinateValidator
+from assurance.validators.id import IdValidator
+from assurance.validators.name import NameValidator
+from chess.board.square import Square
+from chess.exception.null.square import NullSquareException
 
-
-class ChessPieceValidator(Validator):
-
-    @staticmethod
-    def validate(t: Generic[T]) -> bool:
-        entity = "ChessPiece"
-        class_name = f"{entity}Specification"
-        method = f"{class_name}.is_satisfied_by"
-        pass
-
-class PromotionSpecification(ChessPieceValidator):
-    @staticmethod
-    def validate(t: Generic[T]) -> bool:
-        pass
-
-
-class MoveSpecification(ChessPieceValidator):
+class PieceValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> bool:
-        method = "ChessPieceMoveSpecification.is_satisfied_by"
+    def validate(t: Generic[T]) -> Result[Piece]:
+        entity = "Piece"
+        class_name = f"{entity}Validator"
+        method = f"{class_name}.validate"
 
         """
-        Validates that the provided chess piece can be moved according to the rules of chess.
-        Raises exceptions if the chess piece is null, not a ChessPieceSpecification, has no coordinate
-        """
+        Validates a square with chained exceptions for square meeting specifications:
+            - Not null
+            - id fails validation
+            - name fails validation
+            - coordinate fails validation
+        If validators fails their exception will be encapsulated in a SquareValidationException
 
+        Args
+            t (Square): square to validate
+
+         Returns:
+             Result[T]: A Result object containing the validated payload if the specification is satisfied,
+                SquareValidationException otherwise.
+
+        Raises:
+            TypeError: if t is not Square
+            NullSquareException: if t is null   
+
+            IdValidationException: if invalid id
+            NameValidationException: if invalid name
+            CoordinateValidationException: if invalid coordinate
+
+            SquareValidationException: Wraps any preceding exceptions      
+        """
         try:
             if t is None:
-                print("t was null")
-                raise NullException(
-                    f"{method} NullException.default_message"
+                raise NullSquareException(
+                    f"{method} {NullSquareException.DEFAULT_MESSAGE}"
                 )
 
-            if not isinstance(t, ChessPiece):
-                print("t is not a ChessPiece")
-                raise TypeError(f"{method} Expected a Coordinate, got {type(t).__name__}")
+            if not isinstance(t, Square):
+                raise TypeError(f"{method} Expected a Square, got {type(t).__name__}")
 
-            chess_piece = cast(ChessPiece, t)
+            square = cast(Square, t)
 
-            if chess_piece.positions is None:
-                print(f"{chess_piece.name} has a null stack")
-                raise NullCoordinateStackException(
-                    f"{method} {NullCoordinateStackException.DEFAULT_MESSAGE}"
+            id_result = IdValidator.validate(square.id)
+            if not id_result.is_success():
+                raise IdValidationException(
+                    f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
                 )
 
-            if chess_piece.positions.is_empty():
-                print(f"{chess_piece.name}  coordinate stack is empty")
-                raise EmptyStackChessPieceMoveException(
-                    f"{method} {EmptyStackChessPieceMoveException.default_message}"
+            name_result = NameValidator.validate(square.name)
+            if not name_result.is_success():
+                raise NameValidationException(
+                    f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
                 )
 
-            if chess_piece.captor is not None:
-                print(f"{chess_piece.name} cannot move captured by {chess_piece.captor.name}")
-                raise CapturedPieceMoveException(
-                    f"{method} {CapturedPieceMoveException.default_message}"
+            coord_result = CoordinateValidator.validate(square.coordinate)
+            if not coord_result.is_success():
+                raise CoordinateValidationException(
+                    f"{method}: {CoordinateValidationException.DEFAULT_MESSAGE}"
                 )
 
-            return True
+            return Result(payload=square)
 
         except (
             TypeError,
-            NullException,
-            CapturedPieceMoveException,
-            NullCoordinateStackException,
-            EmptyStackChessPieceMoveException,
+            NullSquareException,
+            IdValidationException,
+            NameValidationException,
+            CoordinateValidationException
         ) as e:
-            raise ChessPieceValidationException(
-                f"{method}: {ChessPieceValidationException.DEFAULT_MESSAGE}"
+            raise SquareValidationException(
+                f"{method}: {SquareValidationException.DEFAULT_MESSAGE}"
             ) from e

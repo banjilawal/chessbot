@@ -35,7 +35,7 @@ class CoordinateStackValidator(Validator):
             
         Do not test for pushing or popping coordinates here. They might change state unexpectedly.
         Those operations are tested in their own unit tests.
-        If any validators check fails their exception will be encapsulated in a 
+        If any validators state fails their exception will be encapsulated in a 
         CoordinateStackValidationException
             
         Args
@@ -100,7 +100,7 @@ class CoordinateStackValidator(Validator):
 
             current_coord = coords.current_coordinate
             if (current_coord is not None and
-                    CoordinateValidator.validate(current_coord).is_failure()):
+                    not CoordinateValidator.validate(current_coord).is_success()):
                 raise CurrentCoordinateInconsistentStateException(
                     f"{method} {CurrentCoordinateInconsistentStateException.DEFAULT_MESSAGE}"
                 )

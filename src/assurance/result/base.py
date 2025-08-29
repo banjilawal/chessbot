@@ -23,9 +23,6 @@ class Result(Generic[T]):
     def exception(self) -> Optional[Exception]:
         return self._exception
 
+
     def is_success(self) -> bool:
         return self._exception is None
-
-
-    def is_failure(self) -> bool:
-        return self._exception is not None

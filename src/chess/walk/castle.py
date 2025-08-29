@@ -3,7 +3,7 @@ from chess.geometry.coordinate.coord import Coordinate
 from chess.geometry.line.horizontal import Horizontal
 from chess.geometry.line.vertical import Vertical
 from chess.walk.base import Walk, WalkException
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 class CastleWalkException(WalkException):
     default_message = f"CastleRank {WalkException.default_message}"
@@ -14,7 +14,7 @@ class CastleWalk(Walk):
     """
 
     @staticmethod
-    def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+    def is_walkable(chess_piece: Piece, destination: Coordinate) -> bool:
         """
         Uses chess.geometry.line.Vertical and chess.geometry.line.Horizontal to
         test if Castle can legally reach the destination.

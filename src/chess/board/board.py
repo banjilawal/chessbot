@@ -7,7 +7,7 @@ from chess.board.square import Square
 from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
-    from chess.token.model import ChessPiece
+    from chess.token.model import Piece
 
 
 
@@ -147,7 +147,7 @@ class ChessBoard:
         return None
 
 
-    def find_chess_piece(self, coordinate: Coordinate) -> Optional['ChessPiece']:
+    def find_chess_piece(self, coordinate: Coordinate) -> Optional['Piece']:
         method = f"ChessBoard.find_chess_piece"
 
         """" 
@@ -167,7 +167,7 @@ class ChessBoard:
 
 
 
-    def capture_square(self, chess_piece: 'ChessPiece', destination: Coordinate):
+    def capture_square(self, chess_piece: 'Piece', destination: Coordinate):
         method = f"ChessBoard.capture_square"
 
         """
@@ -235,7 +235,7 @@ class ChessBoard:
             # self._capture_helper(captor, destination, target_occupant)
 
 
-    def _imprison_occupant(self, jailer: 'ChessPiece', prisoner: 'ChessPiece'):
+    def _imprison_occupant(self, jailer: 'Piece', prisoner: 'Piece'):
         method = f"ChessBoard._imprison_occupant"
 
         """        
@@ -263,7 +263,7 @@ class ChessBoard:
     Private methods
     """
 
-    def _finalize_capture(self, captor: 'ChessPiece', destination: Square):
+    def _finalize_capture(self, captor: 'Piece', destination: Square):
         method = f"ChessBoard._finalize_capture"
 
         """
@@ -330,7 +330,7 @@ class ChessBoard:
         print(f"{method}: capture complete")
 
 
-    def random_chess_piece(self) -> Optional['ChessPiece']:
+    def random_chess_piece(self) -> Optional['Piece']:
         """"
         Used for testing purposes.
         """

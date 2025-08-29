@@ -1,13 +1,13 @@
 from chess.board.square import Square
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 
 class CoordinateBinding:
     _square: Square
-    _chess_piece: ChessPiece
+    _chess_piece: Piece
 
 
-    def __init__(self, square: Square, chess_piece: ChessPiece):
+    def __init__(self, square: Square, chess_piece: Piece):
         self._square = square
         self._chess_piece = chess_piece
 
@@ -16,5 +16,5 @@ class CoordinateBinding:
         return self._square
 
     @property
-    def chess_piece(self) -> ChessPiece:
+    def chess_piece(self) -> Piece:
         return self._chess_piece

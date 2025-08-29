@@ -9,13 +9,13 @@ from typing import List, Optional, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from chess.token.model import ChessPiece
+    from chess.token.model import Piece
     from chess.board.square import Square
     from chess.geometry.coordinate.coord import Coordinate
 
 
 class ObsoleteChessBoard:
-    _chess_pieces: List['ChessPiece']
+    _chess_pieces: List['Piece']
     _grid: List[List['Square']]
 
 
@@ -25,7 +25,7 @@ class ObsoleteChessBoard:
 
 
     @property
-    def chess_pieces(self) -> List['ChessPiece']:
+    def chess_pieces(self) -> List['Piece']:
         return self._chess_pieces
 
 
@@ -33,7 +33,7 @@ class ObsoleteChessBoard:
     def grid(self) -> List[List['Square']]:
         return self._grid
 
-    def find_chess_piece(self, coordinate: 'Coordinate') -> Optional['ChessPiece']:
+    def find_chess_piece(self, coordinate: 'Coordinate') -> Optional['Piece']:
         return self._grid[coordinate.row][coordinate.column].occupant
 
 

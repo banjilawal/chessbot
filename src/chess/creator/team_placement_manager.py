@@ -3,7 +3,7 @@ from typing import List, TYPE_CHECKING
 
 from chess.exception.id import ChessException
 from chess.config.placement_chart import PlacementChart
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 if TYPE_CHECKING:
     from chess.arena.model import Arena
@@ -17,9 +17,9 @@ class TeamPlacementManager:
     def place_teams(arena: 'Arena'):
         method = "TeamPlacementManager.place_teams"
 
-        chess_pieces: List[ChessPiece] = []
-        chess_pieces.extend(arena.white_owner.team.chess_pieces)
-        chess_pieces.extend(arena.black_owner.team.chess_pieces)
+        chess_pieces: List[Piece] = []
+        chess_pieces.extend(arena.white_owner.team.pieces)
+        chess_pieces.extend(arena.black_owner.team.pieces)
 
         for chess_piece in chess_pieces:
                 # .black_owner.team.chess_pieces):

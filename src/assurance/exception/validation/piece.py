@@ -1,9 +1,9 @@
 from assurance.exception.validation.base import ValidationException
 
 
-class ChessPieceValidationException(ValidationException):
-    ERROR_CODE = "CHESS_PIECE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"ChessPiece validation failed"
+class PieceValidationException(ValidationException):
+    ERROR_CODE = "PIECE_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = f"Piece validation failed"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

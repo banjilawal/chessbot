@@ -3,18 +3,18 @@ from typing import List
 from chess.board.board import ChessBoard
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 from chess.engine.scout.scout_report import ScoutReport
 
 
 class Scout:
-    _scout: ChessPiece
+    _scout: Piece
 
-    def __init__(self, scout: ChessPiece):
+    def __init__(self, scout: Piece):
         self._scout = scout
 
     @property
-    def scout(self) -> ChessPiece:
+    def scout(self) -> Piece:
         return self._scout
 
 

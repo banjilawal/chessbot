@@ -7,7 +7,7 @@ from chess.token.mobility_status import MobilityStatus
 
 if TYPE_CHECKING:
     from chess.owner.base import Owner
-    from chess.token.model import ChessPiece
+    from chess.token.model import Piece
 
 
 class Team:
@@ -18,7 +18,7 @@ class Team:
     _back_row_index: int
     _pawn_row_index: int
     _home_quadrant: Quadrant
-    _chess_pieces: List['ChessPiece']
+    _pieces: List['Piece']
 
     def __init__(
         self,
@@ -36,7 +36,7 @@ class Team:
         self._back_row_index = back_row_index
         self._pawn_row_index = pawn_row_index
         self._home_quadrant = home_quadrant
-        self._chess_pieces = []
+        self._pieces = []
 
 
         if owner is not None and self != owner.team_stack.current_team():
@@ -83,8 +83,8 @@ class Team:
 
 
     @property
-    def chess_pieces(self) -> List['ChessPiece']:
-        return self._chess_pieces
+    def pieces(self) -> List['Piece']:
+        return self._pieces
 
 
     @owner.setter
@@ -96,24 +96,24 @@ class Team:
         self._owner = owner
 
 
-    def free_chess_pieces(self) -> List['ChessPiece']:
-        matches: List['ChessPiece'] = []
+    def free_pieces(self) -> List['Piece']:
+        matches: List['Piece'] = []
 
-        for chess_piece in self._chess_pieces:
-            if chess_piece.status == MobilityStatus.FREE and chess_piece not in matches:
-                matches.append(chess_piece)
+        for piece in self._pieces:
+            if piece.status == MobilityStatus.FREE and piece not in matches:
+                matches.append(piece)
         return matches
 
 
-    def blocked_chess_pieces(self) -> List['ChessPiece']:
-        matches: List['ChessPiece'] = []
+    def blocked_pieces(self) -> List['Piece']:
+        matches: List['Piece'] = []
 
-        for chess_piece in self._chess_pieces:
+        for piece in self._pieces:
             if (
-                chess_piece.status == MobilityStatus.BLOCKED_FROM_MOVING and
-                chess_piece not in matches
+                piece.status == MobilityStatus.BLOCKED_FROM_MOVING and
+                piece not in matches
             ):
-                matches.append(chess_piece)
+                matches.append(piece)
         return matches
 
 
@@ -131,15 +131,15 @@ class Team:
         return hash(self.id)
 
 
-    def find_chess_piece(self, piece_id: int):
-        for piece in self._chess_pieces:
+    def find_piece(self, piece_id: int):
+        for piece in self._pieces:
             if piece.id == piece_id:
                 return piece
         return None
 
 
-    def find_chess_piece_name(self, name):
-        for piece in self._chess_pieces:
+    def find_piece_name(self, name):
+        for piece in self._pieces:
             if name.upper() == piece.name.upper():
                 return piece
         return None

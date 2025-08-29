@@ -5,13 +5,13 @@ from assurance.validators.name import NameValidator
 
 if TYPE_CHECKING:
     from chess.geometry.coordinate.coord import Coordinate
-    from chess.token.model import ChessPiece
+    from chess.token.model import Piece
 
 class Square:
     _id: int
     _name: str
     _coordinate: 'Coordinate'
-    _occupant: Optional['ChessPiece']
+    _occupant: Optional['Piece']
 
     """
     Square is a data-holding object that can store a ChessPiece. Ideally would have no public setters.
@@ -81,12 +81,12 @@ class Square:
 
 
     @property
-    def occupant(self) -> Optional['ChessPiece']:
+    def occupant(self) -> Optional['Piece']:
         return self._occupant
 
 
     @occupant.setter
-    def occupant(self, piece: Optional['ChessPiece']):
+    def occupant(self, piece: Optional['Piece']):
         method = f"Square.occupant"
         self._occupant = piece
 

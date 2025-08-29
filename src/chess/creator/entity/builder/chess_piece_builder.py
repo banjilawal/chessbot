@@ -1,4 +1,4 @@
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 from chess.rank.base import Rank
 
 from chess.team.model import Team
@@ -14,7 +14,7 @@ class ChessPieceBuilder:
         if rank.letter == "K" or rank.letter == "Q":
             name = team.letter.capitalize() + rank.letter.capitalize()
 
-        return ChessPiece(
+        return Piece(
             token_id=token_id,
             name=name,
             rank=rank,

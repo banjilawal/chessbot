@@ -78,7 +78,7 @@ class Coordinate(BaseModel):
         # @validator('*', pre=True)
         # def check_bounds(cls, v):
         #     # Example of re-raising for 'row' field
-        #     # You would need a more complex check to see which field failed.
+        #     # You would need a more complex state to see which field failed.
         #     # This is often not needed as Pydantic's errors are clear.
         #     if 'row' in cls.__fields__ and not (0 <= v < ROW_SIZE):
         #         raise RowOutOfBoundsException()
@@ -151,7 +151,7 @@ class ScoutReport(BaseModel):
 
     Attributes:
         id (UUID): A unique identifier for the report.
-        scout (ChessPiece): The chess piece that performed the survey.
+        scout (Piece): The chess piece that performed the survey.
         locations (List[Coordinate]): A list of coordinates representing the piece's legal moves.
     """
     id: UUID = Field(default_factory=uuid4)
@@ -168,7 +168,7 @@ class Scout(BaseModel):
 
     Attributes:
         id (int): A unique identifier for the scout instance.
-        chess_piece (ChessPiece): The chess piece the scout is observing.
+        chess_piece (Piece): The chess piece the scout is observing.
     """
     id: int = Field(..., gt=0)
     chess_piece: ChessPiece
@@ -225,7 +225,7 @@ from abc import ABC, abstractmethod
 # Pydantic handles these automatically, but explicit type checking
 # can be useful for external tools.
 if TYPE_CHECKING:
-    from chess.token.model import ChessPiece
+    from chess.token.model import Piece
     from chess.rank.base import Rank
     from chess.rank.walk import Walk
 
@@ -316,11 +316,11 @@ class ChessPiece(BaseModel):
     rank: Rank
     color: Literal['white', 'black'] = Field(...)
     coordinate_stack: CoordinateStack
-    captor: Optional['ChessPiece'] = None
+    captor: Optional['Piece'] = None
     move_count: int = Field(..., ge=0)
     has_moved: bool = Field(...)
     is_captured: bool = Field(...)
-    obstructions: List['ChessPiece'] = Field(default_factory=list)
+    obstructions: List['Piece'] = Field(default_factory=list)
     valid_moves: List[Coordinate] = Field(default_factory=list)
 
     class Config:

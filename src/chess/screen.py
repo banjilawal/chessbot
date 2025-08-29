@@ -17,14 +17,14 @@ from chess.rank.knight import KnightRank
 from chess.rank.king import KingRank
 from chess.rank.pawn import PawnRank
 from chess.rank.queen import QueenRank
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 if TYPE_CHECKING:
     from chess.board.board import ChessBoard
 
 @dataclass(frozen=True)
 class DragState:
-    chess_piece: ChessPiece
+    chess_piece: Piece
     original_coordinate: Coordinate
     current_coordinate: Coordinate
     offset_x: int = 0
@@ -102,7 +102,7 @@ class GameDisplay:
         if dragged_state:
             self.draw_chess_piece_at(dragged_state.chess_piece, dragged_state.current_coordinate)
 
-    def draw_chess_piece(self, chess_piece: ChessPiece):
+    def draw_chess_piece(self, chess_piece: Piece):
         king_color = KING_COLOR
         pawn_color = PAWN_COLOR
         knight_color = KNIGHT_COLOR
@@ -135,7 +135,7 @@ class GameDisplay:
         text_rectangle = text_surface.get_rect(center=chess_piece_shape.center)
         self.screen.blit(text_surface, text_rectangle)
 
-    def get_chess_piece_at_mouse_position(self, mouse_position: tuple) -> Optional[ChessPiece]:
+    def get_chess_piece_at_mouse_position(self, mouse_position: tuple) -> Optional[Piece]:
 
         if mouse_position is None:
             print(
@@ -174,7 +174,7 @@ class GameDisplay:
             return placement_status
         return MousePlacementStatus.RELEASED
 
-    def start_drag(self, chess_piece: ChessPiece, mouse_pos: tuple[int, int]) -> None:
+    def start_drag(self, chess_piece: Piece, mouse_pos: tuple[int, int]) -> None:
         """Begin dragging a chess piece."""
         self.is_dragging = True
 
@@ -249,14 +249,14 @@ class GameDisplay:
 
         return MousePlacementStatus.PLACED
 
-    def is_position_valid_for_drag(self, chess_piece: ChessPiece, test_coordinate: Coordinate) -> bool:
-        """Combined check for visual dragging"""
+    def is_position_valid_for_drag(self, chess_piece: Piece, test_coordinate: Coordinate) -> bool:
+        """Combined state for visual dragging"""
         # 1. Check board's official position (for static entities)
         if not chess_piece.rank.walk.is_walkable(chess_piece, test_coordinate):
             return False
         return True
 
-    def draw_chess_piece_at(self, chess_piece: ChessPiece, coordinate: Coordinate):
+    def draw_chess_piece_at(self, chess_piece: Piece, coordinate: Coordinate):
         rect = pygame.Rect(
             coordinate.column * self.cell_px + self.border_px,
             coordinate.row * self.cell_px + self.border_px,

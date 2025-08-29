@@ -5,7 +5,7 @@ from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.euclid import Distance
 from chess.geometry.coordinate.coord import Coordinate
 from chess.token.obstruction import Obstruction
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 from chess.engine.scout.scout_report import ScoutReport
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
@@ -13,7 +13,7 @@ from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
 
 class ScoutReportAnalyzer:
     _id: int
-    _scout: ChessPiece
+    _scout: Piece
     _scout_report: ScoutReport
     _scout_coordinate: Coordinate
 
@@ -82,8 +82,8 @@ class ScoutReportAnalyzer:
         return obstructions
 
 
-    def _sort_enemies(self) -> List[ChessPiece]:
-        enemies: List[ChessPiece] = []
+    def _sort_enemies(self) -> List[Piece]:
+        enemies: List[Piece] = []
 
         for square in self._scout_report.squares:
             occupant = square.occupant

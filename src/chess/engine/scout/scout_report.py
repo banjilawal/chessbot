@@ -1,15 +1,15 @@
 from typing import List
 
 from chess.board.square import Square
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 
 class ScoutReport:
     _id: int
-    _scout: ChessPiece
+    _scout: Piece
     _squares: List[Square]
 
-    def __init__(self, scout_report_id: int, scout: ChessPiece, squares: List[Square]):
+    def __init__(self, scout_report_id: int, scout: Piece, squares: List[Square]):
         self._scout = scout
         self._squares = squares
         self._id = scout_report_id
@@ -19,7 +19,7 @@ class ScoutReport:
         return self._id
 
     @property
-    def scout(self) -> ChessPiece:
+    def scout(self) -> Piece:
         return self._scout
 
     @property

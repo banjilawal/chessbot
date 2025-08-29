@@ -6,7 +6,7 @@ from chess.rank.base import Rank
 from chess.walk.base import Walk
 
 if TYPE_CHECKING:
-    from chess.token.model import ChessPiece
+    from chess.token.model import Piece
 
 
 class PromotableRank(Rank):
@@ -30,7 +30,7 @@ class PromotableRank(Rank):
         )
 
 
-    def promote(self, chess_piece: 'ChessPiece') -> Optional['ChessPiece']:
+    def promote(self, chess_piece: 'Piece') -> Optional['Piece']:
 
         enemy_back_row_index = chess_piece.team.enemy_back_row_index()
         if chess_piece.positions.current_coordinate().row != enemy_back_row_index():
@@ -40,7 +40,7 @@ class PromotableRank(Rank):
         # if isinstance(self.rank, QueenRank) and self._previous_rank is not None:
         #     raise TypeError(f"{captor.name} is already promoted.")
 
-        promoted_chess_piece = ChessPiece(
+        promoted_chess_piece = Piece(
             token_id=chess_piece.get_id(),
             name=chess_piece.get_name(),
             rank=QueenRank(),

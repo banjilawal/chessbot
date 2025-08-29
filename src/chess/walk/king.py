@@ -1,7 +1,7 @@
 from chess.geometry.coordinate.coord import Coordinate
 from chess.walk.knight import KnightWalkException
 from chess.walk.base import Walk, WalkException
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 
 class KingWalkException(WalkException):
     default_message = f"KingRank {WalkException.default_message}"
@@ -12,7 +12,7 @@ class KingWalk(Walk):
     """
 
     @staticmethod
-    def is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
+    def is_walkable(chess_piece: Piece, destination: Coordinate) -> bool:
         """
         A king moves horizontally and diagonally like a Queen but only in radius of 1
         """

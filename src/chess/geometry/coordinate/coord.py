@@ -88,7 +88,7 @@ class Coordinate:
         """
 
         result = VectorValidator.validate(vector)
-        if result.is_failure():
+        if not result.is_success():
             raise result.exception
 
         v = result.payload

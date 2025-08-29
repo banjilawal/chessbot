@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from chess.team.model import Team
-from chess.token.model import ChessPiece
+from chess.token.model import Piece
 from chess.token.repo import ChessPieceRepo
 
 
@@ -16,13 +16,13 @@ class ChessPieceService:
         return self._repo.__len__()
 
 
-    def add_chess_piece(self, chess_piece: ChessPiece):
+    def add_chess_piece(self, chess_piece: Piece):
         self._repo.add(chess_piece)
 
 
-    def find_chess_piece_by_id(self, chess_piece_id: int) -> Optional[ChessPiece]:
+    def find_chess_piece_by_id(self, chess_piece_id: int) -> Optional[Piece]:
         return self._repo.find(chess_piece_id)
 
 
-    def find_by_team(self, team: Team) -> List[ChessPiece]:
+    def find_by_team(self, team: Team) -> List[Piece]:
         return self._repo.filter_by_team(team)
