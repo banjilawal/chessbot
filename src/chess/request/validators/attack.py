@@ -2,13 +2,13 @@ from typing import Generic, cast
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
-from assurance.exception.validation.request import RequestValidationException, AttackRequestValidationException
+from assurance.exception.validation.request import AttackRequestValidationException
 from assurance.exception.validation.square import SquareValidationException
 from assurance.result.base import Result
 from assurance.result.permission import PermissionResult
 
 from assurance.validators.piece import PieceValidator
-from assurance.validators.request.base import RequestValidator
+from chess.request.validators.base import RequestValidator
 from assurance.validators.square import SquareValidator
 from chess.exception.null.request import NullAttackRequestException
 from chess.request.attack import AttackRequest

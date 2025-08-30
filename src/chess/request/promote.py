@@ -23,10 +23,9 @@ class PromotionRequest(Request):
         return cast(self._client, QueenRank)
 
     def __eq__(self, other):
-        if other is self:
-            return True
-        if other is None:
+
+        if not super().__eq__(other):
             return False
-        if not isinstance(other, PromotionRequest):
-            return False
-        return self.id == other.id
+
+        if isinstance(other, PromotionRequest):
+            return self._id == other.id

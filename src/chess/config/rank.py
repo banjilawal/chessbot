@@ -10,14 +10,14 @@ class RankConfig(Enum):
         cls,
         name: str,
         letter,
-        number_per_player: int,
+        number_per_team: int,
         capture_value: int,
         territories: List[Quadrant]
     ):
         obj = object.__new__(cls)
         obj._value_ = name
         obj._letter = letter
-        obj._number_per_player = number_per_player
+        obj._number_per_team = number_per_team
         obj._capture_value = capture_value
         obj._territories = territories
         return obj
@@ -49,8 +49,8 @@ class RankConfig(Enum):
         return self._letter
 
     @property
-    def number_per_player(self) -> int:
-        return self._number_per_player
+    def number_per_team(self) -> int:
+        return self._number_per_team
 
     @property
     def capture_value(self) -> int:

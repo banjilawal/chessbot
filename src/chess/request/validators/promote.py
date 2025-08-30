@@ -7,8 +7,8 @@ from assurance.exception.validation.request import PromotionRequestValidationExc
 from assurance.result.permission import PermissionResult
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
-from assurance.validators.request.base import RequestValidator
-from chess.common.permission import Permission
+from chess.request.validators.base import RequestValidator
+from chess.common.grant import Permission
 from chess.exception.null.request import NullPromotionRequestException
 from chess.exception.piece import DoublePromotionException
 from chess.exception.rank import UnPromotableRankException, PromotionRowException
@@ -83,7 +83,7 @@ class PromotionRequestValidator(RequestValidator):
 
             return PermissionResult(
                 request=promotion_request,
-                permission=Permission.GRANT_PROMOTION_PERMISSION
+                permission=Permission.GRANT_PROMOTION
             )
 
         except (

@@ -29,10 +29,8 @@ class AttackRequest(Request):
 
 
     def __eq__(self, other):
-        if other is self:
-            return True
-        if other is None:
+        if not super().__eq__(other):
             return False
-        if not isinstance(other, AttackRequest):
-            return False
-        return self.id == other.id
+
+        if isinstance(other, AttackRequest):
+            return self._id == other.id

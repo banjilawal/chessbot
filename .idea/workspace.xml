@@ -5,8 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/flow/promotion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/flow/exit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/flow/occupy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/request/exit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/request/validators/exit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/token/model/combatant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/exception/validation/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/validators/attack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/validators/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/validators/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/promote.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/validators/promote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/grant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/config/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/rank_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/rank_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/null/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/attack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/promotion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/promotion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/attack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/promote.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/promote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/success/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/validators/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/attack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/kill.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/move.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/flow/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/state/flow/permission/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/obstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/obstruction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +169,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/flow",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -159,18 +195,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/chess/exception" />
+      <recent name="$PROJECT_DIR$/src/chess/flow" />
+      <recent name="$PROJECT_DIR$/src/assurance/validators/request" />
       <recent name="$PROJECT_DIR$/src/chess/request" />
+      <recent name="$PROJECT_DIR$/src/chess/exception" />
       <recent name="$PROJECT_DIR$/src/assurance/validators" />
-      <recent name="$PROJECT_DIR$/src/assurance/exception/validation/request" />
-      <recent name="$PROJECT_DIR$/src/chess/exception/piece" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/token/model" />
+      <recent name="$PROJECT_DIR$/src/chess/request" />
       <recent name="$PROJECT_DIR$/src/assurance/exception/validation" />
       <recent name="$PROJECT_DIR$/src/chess/exception" />
       <recent name="$PROJECT_DIR$/src/chess" />
-      <recent name="$PROJECT_DIR$/src/chess/state/checks" />
-      <recent name="$PROJECT_DIR$/src/chess/flow" />
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Python tests in id_test.py">
@@ -329,7 +365,8 @@
       <workItem from="1756288075382" duration="15877000" />
       <workItem from="1756325465885" duration="12265000" />
       <workItem from="1756382876041" duration="18608000" />
-      <workItem from="1756418002735" duration="40369000" />
+      <workItem from="1756418002735" duration="45509000" />
+      <workItem from="1756523278510" duration="25569000" />
     </task>
     <servers />
   </component>

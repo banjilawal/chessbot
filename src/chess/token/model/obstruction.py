@@ -8,17 +8,20 @@ if TYPE_CHECKING:
 
 class Obstruction:
     _friend_id: int
-    _blocked_coordinate:Coordinate
+    _blocked_position:Coordinate
 
 
     def __init__(self, friend: 'Piece'):
         self._friend_id = friend.id
-        self._blocked_coordinate = friend.positions.current_coordinate()
+        self._blocked_position = friend.current_coordinate
+
 
     @property
     def friend_id(self) -> int:
         return self._friend_id
 
+
     @property
-    def blocked_coordinate(self) -> Coordinate:
-        return self._blocked_coordinate
+    def blocked_position(self) -> Coordinate:
+        return self._blocked_position
+

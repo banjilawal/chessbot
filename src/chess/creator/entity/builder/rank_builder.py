@@ -16,7 +16,7 @@ class RankBuilder:
             return KingRank(
                 name=config.name,
                 letter=config.letter,
-                number_per_team=config.number_per_player,
+                number_per_team=config.number_per_team,
                 territories=config.territories,
                 capture_value=config.capture_value
             )
@@ -24,7 +24,7 @@ class RankBuilder:
             return PawnRank(
                 name=config.name,
                 letter=config.letter,
-                number_per_team=config.number_per_player,
+                number_per_team=config.number_per_team,
                 territories=config.territories,
                 capture_value=config.capture_value
             )
@@ -32,7 +32,7 @@ class RankBuilder:
             return KnightRank(
                 name=config.name,
                 letter=config.letter,
-                number_per_team=config.number_per_player,
+                number_per_team=config.number_per_team,
                 territories=config.territories,
                 capture_value=config.capture_value
             )
@@ -40,7 +40,7 @@ class RankBuilder:
             return BishopRank(
                 name=config.name,
                 letter=config.letter,
-                number_per_team=config.number_per_player,
+                number_per_team=config.number_per_team,
                 territories=config.territories,
                 capture_value=config.capture_value
             )
@@ -48,7 +48,7 @@ class RankBuilder:
             return CastleRank(
                 name=config.name,
                 letter=config.letter,
-                number_per_team=config.number_per_player,
+                number_per_team=config.number_per_team,
                 territories=config.territories,
                 capture_value=config.capture_value
             )
@@ -56,7 +56,7 @@ class RankBuilder:
             return QueenRank(
                 name=config.name,
                 letter=config.letter,
-                number_per_team=config.number_per_player,
+                number_per_team=config.number_per_team,
                 territories=config.territories,
                 capture_value=config.capture_value
             )

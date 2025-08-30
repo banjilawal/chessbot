@@ -4,19 +4,17 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import OccupationRequestValidationException
 from assurance.exception.validation.square import SquareValidationException
-from assurance.result.base import Result
-from assurance.result.permission import OccupationPermissionResult, AttackPermissionResult, PermissionResult
+from assurance.result.permission import PermissionResult
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
-from assurance.validators.request.base import RequestValidator
+from chess.request.validators.base import RequestValidator
 from assurance.validators.square import SquareValidator
-from chess.common.permission import Permission
-from chess.creator.emit import id_emitter
+from chess.common.grant import Permission
 from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
 from chess.exception.piece import AttackingKingException
 from chess.request.occupy import OccupationRequest
-from chess.token.model import King
+from chess.token.model.king import King
 
 T = TypeVar('T')
 
@@ -88,18 +86,22 @@ class OccupationRequestValidator(RequestValidator):
             if occupant is None:
                 return PermissionResult(
                     request=occupation_request,
-                    permission=Permission.GRANT_OCCUPATION_PERMISSION
+                    permission=Permission.GRANT_OCCUPATION
                 )
 
             if occupant is not None and not piece.is_enemy(occupant):
-                raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
+                return PermissionResult(
+                    request=occupation_request,
+                    permission=Permission.MARK_OBSTRUCTION
+                )
+                # raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
 
             if occupant is not None and isinstance(occupant, King):
                 raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
 
             return PermissionResult(
                 request=occupation_request,
-                permission=Permission.GRANT_ATTACK_PERMISSION
+                permission=Permission.GRANT_ATTACK
             )
 
         except (

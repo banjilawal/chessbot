@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.board.square import Square
-from chess.token.obstruction import Obstruction
+from chess.token.model.obstruction import Obstruction
 from chess.token.model import Piece
 
 

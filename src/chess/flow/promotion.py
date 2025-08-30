@@ -1,7 +1,6 @@
-from abc import ABC
 from typing import cast
 
-from assurance.validators.request.promote import PromotionRequestValidator
+from chess.request.validators import PromotionRequestValidator
 from chess.config.rank import RankConfig
 from chess.flow.base import Flow
 from chess.rank.queen import QueenRank, PromotedQueen
@@ -10,19 +9,20 @@ from chess.token.model import Piece
 from chess.walk.queen import QueenWalk
 
 
-class PromotionFlow(Flow, ABC):
+class PromotionFlow(Flow):
 
     @staticmethod
-    def enter_flow(request: PromotionRequest):
+    def enter(request: PromotionRequest):
         permission_result = PromotionRequestValidator.validate(request)
         if not permission_result.is_success():
             raise permission_result.exception
 
-        client = cast(permission_result.request.client, Piece)
-        rank = cast(permission_result.request.resource, QueenRank)
+        client = cast(Piece, permission_result.request.client)
+        rank = cast(QueenRank, permission_result.request.resource)
+
 
         promoted_queen = PromotedQueen(
-            old_rank=client.rank,
+            old_rank=client.rank.name,
             name=RankConfig.QUEEN.name,
             letter=RankConfig.QUEEN.letter,
             capture_value=RankConfig.QUEEN.capture_value,

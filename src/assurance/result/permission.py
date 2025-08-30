@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import Optional
 
-from chess.common.permission import Permission
+from chess.common.grant import Permission
 from chess.request.attack import AttackRequest
 from chess.request.base import Request
 from chess.request.occupy import OccupationRequest
@@ -25,18 +25,13 @@ class PermissionResult(ABC):
 
 
     @property
-    def id(self) -> id:
-        return self._id
-
-
-    @property
     def request(self) -> Optional[Request]:
         return self._request
 
 
     @property
     def permission(self) -> Optional[Permission]:
-        return self._permisison
+        return self._permission
 
 
     @property

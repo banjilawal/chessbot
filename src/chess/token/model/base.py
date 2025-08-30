@@ -8,11 +8,10 @@ from assurance.exception.validation.team import TeamValidationException
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from assurance.validators.rank import RankValidator
-from assurance.validators.square import SquareValidator
 from assurance.validators.team import TeamValidator
-from chess.board.square import Square
+from chess.geometry.coordinate.coord import Coordinate
 from chess.team.model import Team
-from chess.token.obstruction import Obstruction
+from chess.token.model.obstruction import Obstruction
 from chess.token.mobility_status import MobilityStatus
 from chess.geometry.coordinate.stack import CoordinateStack
 
@@ -31,6 +30,7 @@ class Piece(ABC):
     _team: 'Team'
     _rank: 'Rank'
     _captor: 'Piece'
+    _current_position: Coordinate
     _status: MobilityStatus
     _obstructions: List[Obstruction]
     _positions: CoordinateStack
@@ -70,6 +70,8 @@ class Piece(ABC):
         self._positions = CoordinateStack()
         team_result.payload.pieces.append(self)
 
+        self._current_position = self._positions.current_coordinate
+
 
     @property
     def id(self) -> int:
@@ -102,6 +104,11 @@ class Piece(ABC):
 
 
     @property
+    def current_position(self) -> Optional[Coordinate]:
+        return self._positions.current_coordinate
+
+
+    @property
     def obstructions(self) -> List[Obstruction]:
         return self._obstructions
 
@@ -115,17 +122,15 @@ class Piece(ABC):
             return False
         return self._id == other.id
 
+
     def __hash__(self):
         return hash(self._id)
 
-    #
-    #
-    # def get_id(self):
-    #     return self._id
-    #
-    #
-    # def get_name(self):
-    #     return self._name
+
+    def is_enemy(self, piece: 'Piece'):
+        if piece is None:
+            raise Exception("Cannot run is_enemy() state on a null captor.")
+        return self._team != piece.team
 
 
     def add_obstruction(self, obstructor: 'Piece'):
@@ -145,75 +150,6 @@ class Piece(ABC):
         self._obstructions.clear()
 
 
-    # @status.setter
-    # def status(self, status: MobilityStatus):
-    #     if self._status != status:
-    #         self._status = status
-    #
-
-    # @captor.setter
-    # def captor(self, captor: 'Piece'):
-    #     if captor is None:
-    #         raise Exception("Captor cannot be null,")
-    #     if captor.status != MobilityStatus.FREE:
-    #         raise Exception("Captor must be free. Capture failed")
-    #     if not self.is_enemy(captor):
-    #         raise Exception("Captor cannot be from the same team as the piece to be captured.")
-    #     if  captor is self:
-    #         raise Exception("Cannot capture self.")
-    #     if self._status != MobilityStatus.FREE:
-    #         raise Exception("Cannot capture a piece that is already captured.")
-    #
-    #     self._captor = captor
-    #     self._status = MobilityStatus.PRISONER
-
-
-    def run_square_entry_process(self, square: Square) -> None:
-
-        result = SquareValidator.validate(square)
-        if not result.is_success():
-            raise result.exception
-
-        target = result.payload
-        target_occupant = target.occupant
-
-        if target_occupant is None:
-            self.occupy_square(square)
-
-        if not self.is_enemy(target_occupant):
-            self.add_obstruction(target_occupant)
-
-        self.capture_enemy(target_occupant)
-
-    def enter_capture_flow(self):
-        pass
-
-    # def capture_prisoner(self, enemy: 'ChessPiece'):
-    #     if enemy is None:
-    #         raise Exception("Cannot capture p nonexistent enemy")
-    #     if enemy.team == self._team:
-    #         raise Exception("Illegal capture of friendly")
-    #     if enemy.captor is not None:
-    #         raise Exception("Double capture is not allowed")
-    #     if enemy is self:
-    #         raise Exception("Cannot capture self")
-    #
-    #     enemy.captor = self
-    #     enemy.status = MobilityStatus.PRISONER
-
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-
-        if isinstance(other, Piece):
-            return  self._id == other.id
-        return False
-
-
-    def __hash__(self):
-        return super().__hash__() ^ hash(())
-
-
     def __str__(self):
         return (
             f"ChessPiece[id:{self._id} "
@@ -222,30 +158,5 @@ class Piece(ABC):
             f"current_position: {self._positions.current_coordinate} "
             f"status:{self._status.name}"
         )
-
-
-    def is_enemy(self, piece: 'Piece'):
-        if piece is None:
-            raise Exception("Cannot run is_enemy() state on a null captor.")
-        return self._team != piece.team
-
-
-class King('ChessPiece'):
-
-    def __init__(self, token_id: int, name: str, rank: 'Rank', team: 'Team'):
-        super().__init__(token_id, name, rank, team)
-
-
-class Combatant('ChessPiece'):
-    _killer: Optional['Piece']
-
-    def __init__(self, token_id: int, name: str, rank: 'Rank', team: 'Team'):
-        super().__init__(token_id, name, rank, team)
-
-        self._killer = None
-
-    @property
-    def killer(self) -> Optional['Piece']:
-        return self._killer
 
 

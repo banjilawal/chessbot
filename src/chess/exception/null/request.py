@@ -1,6 +1,21 @@
+from chess.exception.null.base import NullException
+
+
 class NullRequestException(NullException):
     ERROR_CODE = "NULL_REQUEST_ERROR"
     DEFAULT_MESSAGE = f"Request cannot be null"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
+
+class NullExitRequestException(NullException):
+    ERROR_CODE = "NULL_EXIT_REQUEST_ERROR"
+    DEFAULT_MESSAGE = f"ExitRequest cannot be null"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

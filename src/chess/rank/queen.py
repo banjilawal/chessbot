@@ -29,7 +29,7 @@ class QueenRank(Rank):
         )
 
 class PromotedQueen(QueenRank):
-    _old_rank: Optional[PromotableRank]
+    _old_rank: Optional[str]
 
     def __init__(
         self,
@@ -39,14 +39,14 @@ class PromotedQueen(QueenRank):
         number_per_team: int,
         territories: List[Quadrant],
         walk=QueenWalk(),
-        old_rank: Optional[PromotableRank] = None
+        old_rank: Optional[str] = None
     ):
         super().__init__(name, letter, capture_value, number_per_team, territories, walk)
         _old_rank: old_rank
 
 
     @property
-    def old_rank(self) -> Optional[PromotableRank]:
+    def old_rank(self) -> Optional[str]:
         return self._old_rank
 
 

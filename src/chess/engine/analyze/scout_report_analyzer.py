@@ -4,7 +4,7 @@ from chess.board.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.euclid import Distance
 from chess.geometry.coordinate.coord import Coordinate
-from chess.token.obstruction import Obstruction
+from chess.token.model.obstruction import Obstruction
 from chess.token.model import Piece
 
 from chess.engine.scout.scout_report import ScoutReport
