@@ -9,19 +9,16 @@ from chess.request.promote import PromotionRequest
 
 
 class PermissionResult(ABC):
-    _id: int
     _request: Request
     _permission: Optional[Permission]
     _exception: Optional[Exception]
 
     def __init__(
         self,
-        result_id: int,
         request: Request,
         permission: Optional[Permission] = None,
         exception: Optional[Exception] = None
     ):
-        self._id = result_id
         self._request = request
         self._permission = permission
         self._exception = exception
@@ -49,39 +46,6 @@ class PermissionResult(ABC):
 
     def is_success(self) -> bool:
         return self._exception is None
-
-
-class AttackPermissionResult(PermissionResult):
-    def __init__(
-        self,
-        result_id: int,
-        request: AttackRequest,
-        permission: Optional[Permission] = None,
-        exception: Optional[Exception] = None
-    ):
-        super().__init__(result_id, request, permission, exception)
-
-
-class OccupationPermissionResult(PermissionResult):
-    def __init__(
-        self,
-        result_id: int,
-        request: OccupationRequest,
-        permission: Optional[Permission] = None,
-        exception: Optional[Exception] = None
-    ):
-        super().__init__(result_id, request, permission, exception)
-
-
-class PromotionPermissionResult(PermissionResult):
-    def __init__(
-        self,
-        result_id: int,
-        request: PromotionRequest,
-        permission: Optional[Permission] = None,
-        exception: Optional[Exception] = None
-    ):
-        super().__init__(result_id, request, permission, exception)
 
 
 

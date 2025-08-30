@@ -3,11 +3,12 @@ from typing import Generic, TypeVar, cast
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import PromotionRequestValidationException
-from assurance.exception.validation.square import SquareValidationException
-from assurance.result.base import Result
+
+from assurance.result.permission import PermissionResult
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from assurance.validators.request.base import RequestValidator
+from chess.common.permission import Permission
 from chess.exception.null.request import NullPromotionRequestException
 from chess.exception.piece import DoublePromotionException
 from chess.exception.rank import UnPromotableRankException, PromotionRowException
@@ -19,7 +20,7 @@ T = TypeVar('T')
 class PromotionRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[PromotionRequest]:
+    def validate(t: Generic[T]) -> PermissionResult:
         entity = "PromotionRequest"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -80,7 +81,10 @@ class PromotionRequestValidator(RequestValidator):
             if current_row != piece.team.enemy_back_row_index():
                 raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
-            return Result(payload=promotion_request)
+            return PermissionResult(
+                request=promotion_request,
+                permission=Permission.GRANT_PROMOTION_PERMISSION
+            )
 
         except (
             TypeError,

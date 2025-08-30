@@ -5,10 +5,13 @@ from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import OccupationRequestValidationException
 from assurance.exception.validation.square import SquareValidationException
 from assurance.result.base import Result
+from assurance.result.permission import OccupationPermissionResult, AttackPermissionResult, PermissionResult
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from assurance.validators.request.base import RequestValidator
 from assurance.validators.square import SquareValidator
+from chess.common.permission import Permission
+from chess.creator.emit import id_emitter
 from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
 from chess.exception.piece import AttackingKingException
@@ -20,7 +23,7 @@ T = TypeVar('T')
 class OccupationRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[OccupationRequest]:
+    def validate(t: Generic[T]) -> PermissionResult:
         entity = "OccupationRequest"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -82,13 +85,22 @@ class OccupationRequestValidator(RequestValidator):
                 raise OccupiedBySelfException(f"{method}: {OccupiedBySelfException.DEFAULT_MESSAGE}")
 
             occupant = target_square.occupant
+            if occupant is None:
+                return PermissionResult(
+                    request=occupation_request,
+                    permission=Permission.GRANT_OCCUPATION_PERMISSION
+                )
+
             if occupant is not None and not piece.is_enemy(occupant):
                 raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
 
             if occupant is not None and isinstance(occupant, King):
                 raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
 
-            return Result(payload=occupation_request)
+            return PermissionResult(
+                request=occupation_request,
+                permission=Permission.GRANT_ATTACK_PERMISSION
+            )
 
         except (
                 TypeError,

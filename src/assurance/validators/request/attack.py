@@ -5,7 +5,8 @@ from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import RequestValidationException, AttackRequestValidationException
 from assurance.exception.validation.square import SquareValidationException
 from assurance.result.base import Result
-from assurance.validators.id import IdValidator
+from assurance.result.permission import PermissionResult
+
 from assurance.validators.piece import PieceValidator
 from assurance.validators.request.base import RequestValidator
 from assurance.validators.square import SquareValidator
@@ -16,7 +17,7 @@ from chess.request.attack import AttackRequest
 class AttackRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[AttackRequest]:
+    def validate(t: Generic[T]) -> PermissionResult:
         entity = "AttackRequest"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"

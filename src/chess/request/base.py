@@ -9,7 +9,7 @@ class Request(Generic[T]):
     _resource: Generic[T]
 
     def __init__(self, request_id: int, client: Generic[T], resource: Generic[T]):
-        self.id = id
+        self.id = request_id
         self._client = client
         self._resource = resource
 
