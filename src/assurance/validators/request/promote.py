@@ -9,6 +9,8 @@ from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from assurance.validators.request.base import RequestValidator
 from chess.exception.null.request import NullPromotionRequestException
+from chess.exception.piece import DoublePromotionException
+from chess.exception.rank import UnPromotableRankException, PromotionRowException
 from chess.rank.promote import PromotableRank
 from chess.request.promote import PromotionRequest
 
@@ -43,6 +45,10 @@ class PromotionRequestValidator(RequestValidator):
 
             IdValidationException: if invalid id
             PieceValidationException: if t.client fails validation
+            
+            PromotionRowException: if piece is not on its enemy's rank row
+            DoublePromotionException: if the piece has already been promoted
+            UnPromotableRankException: if the piece's rank is not Pawn or King
 
             PromotionRequestValidationException: Wraps any preceding exceptions      
         """
@@ -65,19 +71,24 @@ class PromotionRequestValidator(RequestValidator):
 
             piece = piece_result.payload
             if not isinstance(piece.rank, PromotableRank):
-                raise Exception()
+                raise UnPromotableRankException(f"{method}: {UnPromotableRankException.DEFAULT_MESSAGE}")
+
+            if piece.rank.previous_rank is not None:
+                raise DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
 
             current_row = piece.current_coordinate.row
-            if current_row != piece.team.enemy_back_row_index()
-                raise Exception()
+            if current_row != piece.team.enemy_back_row_index():
+                raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
             return Result(payload=promotion_request)
 
         except (
-                TypeError,
-                PieceValidationException,
-                SquareValidationException,
-                NullPromotionRequestException
+            TypeError,
+            PieceValidationException,
+            NullPromotionRequestException,
+            PromotionRowException,
+            DoublePromotionException,
+            UnPromotableRankException
         ) as e:
             raise PromotionRequestValidationException(
                 f"{method}: {PromotionRequestValidationException.DEFAULT_MESSAGE}"

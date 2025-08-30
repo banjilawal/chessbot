@@ -10,12 +10,14 @@ if TYPE_CHECKING:
 
 
 class PromotableRank(Rank):
+    _previous_rank: Optional[Rank]
 
     def __init__(
         self,
         name: str,
         letter: str,
         capture_value:
+
         int, number_per_team: int,
         territories: List[Quadrant],
         walk:Optional[Walk] = None,
@@ -28,7 +30,11 @@ class PromotableRank(Rank):
             number_per_team=number_per_team,
             territories=territories
         )
+        _previous_rank = None
 
+    @property
+    def previous_rank(self) -> Optional[Rank]:
+        return self._previous_rank
 
     def promote(self, chess_piece: 'Piece') -> Optional['Piece']:
 

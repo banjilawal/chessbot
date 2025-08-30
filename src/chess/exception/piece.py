@@ -86,6 +86,12 @@ class AttackingFriendlyException(PieceException):
 
 
 class DoublePromotionException(PieceException):
+
+    """
+    Only a piece can be doubly promoted. DoublePromotionException is a PieceException
+    not a RankException.
+    """
+
     ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
     DEFAULT_MESSAGE = "Piece is already promoted. It cannot be promoted again"
 

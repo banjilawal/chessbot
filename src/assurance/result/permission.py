@@ -1,0 +1,88 @@
+from abc import ABC
+from typing import Optional
+
+from chess.common.permission import Permission
+from chess.request.attack import AttackRequest
+from chess.request.base import Request
+from chess.request.occupy import OccupationRequest
+from chess.request.promote import PromotionRequest
+
+
+class PermissionResult(ABC):
+    _id: int
+    _request: Request
+    _permission: Optional[Permission]
+    _exception: Optional[Exception]
+
+    def __init__(
+        self,
+        result_id: int,
+        request: Request,
+        permission: Optional[Permission] = None,
+        exception: Optional[Exception] = None
+    ):
+        self._id = result_id
+        self._request = request
+        self._permission = permission
+        self._exception = exception
+
+
+    @property
+    def id(self) -> id:
+        return self._id
+
+
+    @property
+    def request(self) -> Optional[Request]:
+        return self._request
+
+
+    @property
+    def permission(self) -> Optional[Permission]:
+        return self._permisison
+
+
+    @property
+    def exception(self) -> Optional[Exception]:
+        return self._exception
+
+
+    def is_success(self) -> bool:
+        return self._exception is None
+
+
+class AttackPermissionResult(PermissionResult):
+    def __init__(
+        self,
+        result_id: int,
+        request: AttackRequest,
+        permission: Optional[Permission] = None,
+        exception: Optional[Exception] = None
+    ):
+        super().__init__(result_id, request, permission, exception)
+
+
+class OccupationPermissionResult(PermissionResult):
+    def __init__(
+        self,
+        result_id: int,
+        request: OccupationRequest,
+        permission: Optional[Permission] = None,
+        exception: Optional[Exception] = None
+    ):
+        super().__init__(result_id, request, permission, exception)
+
+
+class PromotionPermissionResult(PermissionResult):
+    def __init__(
+        self,
+        result_id: int,
+        request: PromotionRequest,
+        permission: Optional[Permission] = None,
+        exception: Optional[Exception] = None
+    ):
+        super().__init__(result_id, request, permission, exception)
+
+
+
+

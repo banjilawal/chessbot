@@ -5,34 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/occupy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/request/promote.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/state/flow/permission/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/exception/rank.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/occupy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/request/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/exception/validation/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/request/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/request/occupy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/request/promote.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord_stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/request/attack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/request/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/request/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result/grant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result/permission.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validators/request/promote.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/request/promote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coord.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/dist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/dist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/move.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/exception/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/coord.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/request/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/attack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/request/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/state/checks/attack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/kill.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/state/checks/kill.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/state/checks/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/state/checks/move.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/euclid_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/euclid_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/promote.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/promote.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +333,7 @@
       <workItem from="1756288075382" duration="15877000" />
       <workItem from="1756325465885" duration="12265000" />
       <workItem from="1756382876041" duration="18608000" />
-      <workItem from="1756418002735" duration="31511000" />
+      <workItem from="1756418002735" duration="37085000" />
     </task>
     <servers />
   </component>
