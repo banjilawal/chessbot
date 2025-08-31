@@ -1,26 +1,24 @@
 from abc import ABC
 from typing import Optional
 
-from chess.common.grant import Permission
-from chess.request.attack import AttackRequest
+from chess.common.permit import Event
 from chess.request.base import Request
-from chess.request.occupy import OccupationRequest
-from chess.request.promote import PromotionRequest
 
 
-class PermissionResult(ABC):
+
+class RequestOutcome(ABC):
     _request: Request
-    _permission: Optional[Permission]
+    _event: Optional[Event]
     _exception: Optional[Exception]
 
     def __init__(
         self,
         request: Request,
-        permission: Optional[Permission] = None,
+        event: Optional[Event] = None,
         exception: Optional[Exception] = None
     ):
         self._request = request
-        self._permission = permission
+        self._event = event
         self._exception = exception
 
 
@@ -30,8 +28,8 @@ class PermissionResult(ABC):
 
 
     @property
-    def permission(self) -> Optional[Permission]:
-        return self._permission
+    def event(self) -> Optional[Event]:
+        return self._event
 
 
     @property
@@ -40,7 +38,7 @@ class PermissionResult(ABC):
 
 
     def is_success(self) -> bool:
-        return self._exception is None
+        return self._exception is None and self._event is not None
 
 
 

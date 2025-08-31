@@ -3,8 +3,8 @@ from typing import Generic, cast
 from assurance.exception.validation.name import NameValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
-from chess.common.config import MIN_NAME_LENGTH
-from chess.exception.name import NameLengthException, BlankNameException
+from chess.common.config import MIN_NAME_LENGTH, MAX_NAME_LENGTH
+from chess.exception.name import NameTooShortException, BlankNameException, NameTooLongException
 from chess.exception.null.name import NullNameException
 
 
@@ -13,33 +13,30 @@ class NameValidator(Validator):
     @staticmethod
     def validate(t: Generic[T]) -> Result[str]:
         entity = "Name"
-        class_name = f"{entity}Specification"
-        method = f"{class_name}.is_satisfied_by"
+        class_name = f"{entity}Validator"
+        method = f"{class_name}.validate"
 
         """
         Validates an Name meets specifications:
             - Not null
             - Not blank (only white space)
-            - Not shorter than MIN_NAME_LENGTH
-            
-        Any validators error will have be encapsulated in a NameValidationException
+            - Not shorter than MIN_NAME_LENGTH     
+        Any unmet specifications raise exceptions wrapped in a NameValidationException
 
         Args
-            t (Coordinate): generic to be validated
+            t (str): generic to be validated
 
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification is 
+             Result[T]: A Result object containing the validated payload if the Validator is 
                 satisfied, NameValidationException otherwise.
 
         Raises:
+            ypeError: if t is not int
             NullNameException: if t is null
-            TypeError: if t is not int
             BlankNameException: if t only contains white space.
-            NameLengthException: if t is shorter than MIN_NAME_LENGTH
-              
+            NameTooShortException: if t is shorter than MIN_NAME_LENGTH
             
-            NameValidationException: Wraps any
-                (NullNameException, TypeError, NameLengthException)  
+            NameValidationException: Wraps any preceding exception 
         """
         try:
             if t is None:
@@ -50,11 +47,14 @@ class NameValidator(Validator):
 
             name = cast(str, t)
 
-            if len(name) < MIN_NAME_LENGTH:
-                raise NameLengthException("{method} NameLengthException.default_message")
-
-            if name.strip():
+            if not name.strip():
                 raise BlankNameException(f"{method}: {BlankNameException.DEFAULT_MESSAGE}")
+
+            if len(name) < MIN_NAME_LENGTH:
+                raise NameTooShortException(f"{method}: {NameTooShortException.DEFAULT_MESSAGE}")
+
+            if len(name) > MAX_NAME_LENGTH:
+                raise NameTooLongException(f"{method}: {NameTooLongException.DEFAULT_MESSAGE}")
 
             return Result(payload=name)
 
@@ -62,25 +62,26 @@ class NameValidator(Validator):
             TypeError,
             NullNameException,
             BlankNameException,
-            NameLengthException
+            NameTooShortException,
+            NameTooLongException
         ) as e:
             raise NameValidationException(
                 f"{method} {NameValidationException.DEFAULT_MESSAGE}"
             ) from e
 
 # def main():
-#     result = NameSpecification.is_satisfied_by(5)
+#     result = NameValidator.validate(5)
 #     if result.is_success():
 #         print(f"Valid Name: {result.payload}")
 #     else:
 #         print(f"Validation failed: {result.exception}")
 #
-#     result = NameSpecification.is_satisfied_by(-3)
+#     result = NameValidator.validate(-3)
 #     if result.is_success():
 #         print(f"Valid Name: {result.payload}")
 #     else:
 #         print(f"Validation failed: {result.exception}")
-#     result = NameSpecification.is_satisfied_by(None)
+#     result = NameValidator.validate(None)
 #     if result.is_success():
 #         print(f"Valid Name: {result.payload}")
 #     else:

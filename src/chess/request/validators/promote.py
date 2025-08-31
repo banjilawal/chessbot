@@ -4,11 +4,11 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import PromotionRequestValidationException
 
-from assurance.result.permission import PermissionResult
+from assurance.result.event import RequestOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from chess.request.validators.base import RequestValidator
-from chess.common.grant import Permission
+from chess.common.permit import Event
 from chess.exception.null.request import NullPromotionRequestException
 from chess.exception.piece import DoublePromotionException
 from chess.exception.rank import UnPromotableRankException, PromotionRowException
@@ -20,7 +20,7 @@ T = TypeVar('T')
 class PromotionRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> PermissionResult:
+    def validate(t: Generic[T]) -> RequestOutcome:
         entity = "PromotionRequest"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -81,9 +81,9 @@ class PromotionRequestValidator(RequestValidator):
             if current_row != piece.team.enemy_back_row_index():
                 raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
-            return PermissionResult(
+            return RequestOutcome(
                 request=promotion_request,
-                permission=Permission.GRANT_PROMOTION
+                event=Event.PROMOTION
             )
 
         except (

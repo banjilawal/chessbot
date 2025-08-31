@@ -1,7 +1,10 @@
 from typing import Optional, TYPE_CHECKING
 
+from assurance.exception.validation.piece import PieceValidationException
+from assurance.validators.coord import CoordinateValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
+from assurance.validators.piece import PieceValidator
 
 if TYPE_CHECKING:
     from chess.geometry.coordinate.coord import Coordinate
@@ -43,24 +46,21 @@ class Square:
         """
 
 
-        id_result = IdValidator.validate(square_id)
-        if not id_result.is_success():
-            raise id_result.exception
+        id_validation = IdValidator.validate(square_id)
+        if not id_validation.is_success():
+            raise id_validation.exception
 
-        name_result = NameValidator.validate(name)
-        if not name_result.is_success():
-            raise name_result.exception
-        #
-        # coord_result = CoordinateSpecification.is_satisfied_by(coordinate)
-        # if not coord_result.is_success():
-        #     raise coord_result.exception
-        #
-        # if not IdSpecification.is_satisfied_by(square_id):
-        #     raise IdValidationException(IdValidationException.DEFAULT_MESSAGE)
+        name_validation = NameValidator.validate(name)
+        if not name_validation.is_success():
+            raise name_validation.exception
 
-        self._id = id_result.payload
-        self._name = name_result.payload
-        # self._coordinate = coord_result.payload
+        coord_validation = CoordinateValidator.validate(coordinate)
+        if not coord_validation.is_success():
+            raise coord_validation.exception
+
+        self._id = id_validation.payload
+        self._name = name_validation.payload
+        self._coordinate = coord_validation.payload
 
         self._occupant = None
 

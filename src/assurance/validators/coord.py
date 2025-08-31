@@ -12,9 +12,6 @@ from chess.exception.null.row import NullRowException
 from chess.geometry.coordinate.coord import Coordinate
 
 
-
-
-
 class CoordinateValidator(Validator):
 
     @staticmethod

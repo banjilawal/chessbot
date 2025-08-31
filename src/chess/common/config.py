@@ -6,11 +6,12 @@ ROW_SIZE = 8
 COLUMN_SIZE = 8
 BOARD_DIMENSION = 8
 MIN_NAME_LENGTH = 3
+MAX_NAME_LENGTH = 40
 
 """
     This is the number of steps moves in either the x or y domain.
     If a knight steps over two rows it must step one diagonal column 
-    This gives 3 toal rows traveled.
+    This gives 3 total rows traveled.
 
     On the other hand if it steps over two columns it must step one diagonal row
     This also gives 3 total columns traveled.

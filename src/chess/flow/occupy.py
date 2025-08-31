@@ -2,7 +2,7 @@ from typing import cast
 
 from chess.board.board import ChessBoard
 from chess.board.square import Square
-from chess.common.grant import Permission
+from chess.common.permit import Event
 from chess.exception.permission import AttackPermissionInconsistencyException, \
     MarkObstructionPermissionInconsistencyException
 from chess.flow.base import Flow
@@ -28,17 +28,17 @@ class OccupationFlow(Flow):
 
         enemy = None
 
-        permission = validation.permission
+        permission = validation.event
 
-        if permission == Permission.MARK_OBSTRUCTION:
+        if permission == Event.MARK_OBSTRUCTION:
             OccupationFlow._obstruction_stream(piece, target_square)
             return
 
-        if permission == Permission.GRANT_ATTACK:
+        if permission == Event.ATTACK:
             enemy = OccupationFlow._attack_stream(piece, target_square)
 
         target_square.occupant = piece
-        source_square.occupant = No
+        source_square.occupant = None
 
 
     @staticmethod
@@ -52,7 +52,6 @@ class OccupationFlow(Flow):
                 f"{MarkObstructionPermissionInconsistencyException.DEFAULT_MESSAGE}"
             )
         piece.add_obstruction(blocking_occupant)
-
 
 
     @staticmethod

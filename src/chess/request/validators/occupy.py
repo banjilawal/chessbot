@@ -4,12 +4,12 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import OccupationRequestValidationException
 from assurance.exception.validation.square import SquareValidationException
-from assurance.result.permission import PermissionResult
+from assurance.result.event import RequestOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from chess.request.validators.base import RequestValidator
 from assurance.validators.square import SquareValidator
-from chess.common.grant import Permission
+from chess.common.permit import Event
 from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
 from chess.exception.piece import AttackingKingException
@@ -21,7 +21,7 @@ T = TypeVar('T')
 class OccupationRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> PermissionResult:
+    def validate(t: Generic[T]) -> RequestOutcome:
         entity = "OccupationRequest"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -84,24 +84,24 @@ class OccupationRequestValidator(RequestValidator):
 
             occupant = target_square.occupant
             if occupant is None:
-                return PermissionResult(
+                return RequestOutcome(
                     request=occupation_request,
-                    permission=Permission.GRANT_OCCUPATION
+                    event=Event.OCCUPATION
                 )
 
             if occupant is not None and not piece.is_enemy(occupant):
-                return PermissionResult(
+                return RequestOutcome(
                     request=occupation_request,
-                    permission=Permission.MARK_OBSTRUCTION
+                    event=Event.MARK_OBSTRUCTION
                 )
                 # raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
 
             if occupant is not None and isinstance(occupant, King):
                 raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
 
-            return PermissionResult(
+            return RequestOutcome(
                 request=occupation_request,
-                permission=Permission.GRANT_ATTACK
+                event=Event.ATTACK
             )
 
         except (

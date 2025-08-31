@@ -4,11 +4,11 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import ExitRequestValidationException
 
-from assurance.result.permission import PermissionResult
+from assurance.result.event import RequestOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from chess.request.validators.base import RequestValidator
-from chess.common.grant import Permission
+from chess.common.permit import Event
 from chess.exception.null.request import NullExitRequestException
 from chess.request.exit import ExitRequest
 
@@ -17,7 +17,7 @@ T = TypeVar('T')
 class ExitRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> PermissionResult:
+    def validate(t: Generic[T]) -> RequestOutcome:
         entity = "ExitRequest"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -62,7 +62,7 @@ class ExitRequestValidator(RequestValidator):
             if not piece_result.is_success():
                 raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}")
 
-            return PermissionResult(request=exit_request, permission=Permission.GRANT_EXIT_PERMISSION)
+            return RequestOutcome(request=exit_request, event=Event.GRANT_EXIT_PERMISSION)
 
         except (
             TypeError,
