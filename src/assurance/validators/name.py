@@ -43,7 +43,7 @@ class NameValidator(Validator):
                 raise NullNameException(f"{method} {NullNameException.DEFAULT_MESSAGE}")
 
             if not isinstance(t, str):
-                raise TypeError(f"{method} Expected an integer, got {type(t).__name__}")
+                raise TypeError(f"{method} Expected an str, got {type(t).__name__}")
 
             name = cast(str, t)
 

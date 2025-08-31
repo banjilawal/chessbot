@@ -2,8 +2,8 @@
 # from assurance.validators.coord import CoordinateSpecification
 from assurance.validators.vector import VectorValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coord import ColumnOutOfBoundsException
-from chess.exception.coord import RowOutOfBoundsException
+from chess.exception.coord import ColumnBelowBoundsException
+from chess.exception.coord import RowBelowBoundsException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
 from chess.geometry.vector.delta import Vector
@@ -28,14 +28,14 @@ class Coordinate:
         if row is None:
             raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
         if row < 0 or row >= ROW_SIZE:
-            raise RowOutOfBoundsException(
+            raise RowBelowBoundsException(
                 f"{method} Row value {row} is out of bounds. "
                 f"Must be between 0 and {ROW_SIZE - 1} inclusive."
             )
         if column is None:
             raise NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}")
         if column < 0 or column >= COLUMN_SIZE:
-            raise ColumnOutOfBoundsException(
+            raise ColumnBelowBoundsException(
                 f"{method} Column value {column} is out of bounds. "
                 f"Must be between 0 and {COLUMN_SIZE - 1} inclusive."
             )

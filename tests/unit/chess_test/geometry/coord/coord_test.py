@@ -3,8 +3,8 @@ import unittest
 import pytest
 
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
-from chess.exception.coord import ColumnOutOfBoundsException
-from chess.exception.coord import RowOutOfBoundsException
+from chess.exception.coord import ColumnBelowBoundsException
+from chess.exception.coord import RowBelowBoundsException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
 
@@ -26,12 +26,12 @@ class CoordinateTest(unittest.TestCase):
 
 
     def test_row_below_lower_bound_raises_exception(self):
-        with self.assertRaises(RowOutOfBoundsException):
+        with self.assertRaises(RowBelowBoundsException):
             Coordinate(row=-1, column=0)
 
 
     def test_row_above_upper_bound_raises_exception(self):
-        with self.assertRaises(RowOutOfBoundsException):
+        with self.assertRaises(RowBelowBoundsException):
             Coordinate(row=ROW_SIZE, column=0)
 
 
@@ -48,12 +48,12 @@ class CoordinateTest(unittest.TestCase):
 
 
     def test_column_below_lower_bound_raises_exception(self):
-        with self.assertRaises(ColumnOutOfBoundsException):
+        with self.assertRaises(ColumnBelowBoundsException):
             Coordinate(row=0, column=-1)
 
 
     def test_column_above_upper_bound_raises_exception(self):
-        with self.assertRaises(ColumnOutOfBoundsException):
+        with self.assertRaises(ColumnBelowBoundsException):
             Coordinate(row=0, column=COLUMN_SIZE)
 
 

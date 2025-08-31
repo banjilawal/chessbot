@@ -3,8 +3,8 @@ from typing import cast
 from chess.board.board import ChessBoard
 from chess.board.square import Square
 from chess.common.permit import Event
-from chess.exception.permission import AttackPermissionInconsistencyException, \
-    MarkObstructionPermissionInconsistencyException
+from chess.exception.event import AttackPermissionInconsistencyException, \
+    InconsistentMarkObstructionException
 from chess.flow.base import Flow
 from chess.request.occupy import OccupationRequest
 from chess.request.validators.occupy import OccupationRequestValidator
@@ -47,9 +47,9 @@ class OccupationFlow(Flow):
         blocking_occupant = blocked_square.occupant
 
         if blocking_occupant is None or not piece.is_enemy(blocking_occupant):
-            raise MarkObstructionPermissionInconsistencyException(
+            raise InconsistentMarkObstructionException(
                 f"{method}: "
-                f"{MarkObstructionPermissionInconsistencyException.DEFAULT_MESSAGE}"
+                f"{InconsistentMarkObstructionException.DEFAULT_MESSAGE}"
             )
         piece.add_obstruction(blocking_occupant)
 

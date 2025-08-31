@@ -3,8 +3,8 @@ import unittest
 import pytest
 
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coord import ColumnOutOfBoundsException
-from chess.exception.coord import RowOutOfBoundsException
+from chess.exception.coord import ColumnBelowBoundsException
+from chess.exception.coord import RowBelowBoundsException
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
@@ -25,12 +25,12 @@ class EuclidDistanceTest(unittest.TestCase):
 
 
     def  test_p_row_below_lower_bounds_raises_exception(self):
-        with self.assertRaises(RowOutOfBoundsException):
+        with self.assertRaises(RowBelowBoundsException):
             Distance(p=Coordinate(row=-1, column=0), q=Coordinate(row=0, column=0))
 
 
     def  test_p_row_above_upper_bounds_raises_exception(self):
-        with self.assertRaises(RowOutOfBoundsException):
+        with self.assertRaises(RowBelowBoundsException):
             Distance(p=Coordinate(row=ROW_SIZE, column=0), q=Coordinate(row=0, column=0))
 
     def test_p_row_in_bounds(self):
@@ -49,11 +49,11 @@ class EuclidDistanceTest(unittest.TestCase):
 
 
     def test_p_column_below_lower_bounds_raises_exception(self):
-        with self.assertRaises(ColumnOutOfBoundsException):
+        with self.assertRaises(ColumnBelowBoundsException):
             Distance(p=Coordinate(row=0, column=-1), q=Coordinate(row=0, column=0))
 
     def test_p_column_above_upper_bounds_raises_exception(self):
-        with self.assertRaises(ColumnOutOfBoundsException):
+        with self.assertRaises(ColumnBelowBoundsException):
             Distance(p=Coordinate(row=0, column=COLUMN_SIZE), q=Coordinate(row=0, column=0))
 
 
@@ -78,12 +78,12 @@ class EuclidDistanceTest(unittest.TestCase):
 
 
     def test_q_row_below_lower_bounds_raises_exception(self):
-        with self.assertRaises(RowOutOfBoundsException):
+        with self.assertRaises(RowBelowBoundsException):
             Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=-1, column=0))
 
 
     def test_q_row_above_upper_bounds_raises_exception(self):
-        with self.assertRaises(RowOutOfBoundsException):
+        with self.assertRaises(RowBelowBoundsException):
             Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=ROW_SIZE, column=0))
 
 
@@ -103,11 +103,11 @@ class EuclidDistanceTest(unittest.TestCase):
 
 
     def test_q_column_below_lower_bounds_raises_exception(self):
-        with self.assertRaises(ColumnOutOfBoundsException):
+        with self.assertRaises(ColumnBelowBoundsException):
             Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=-1))
 
     def test_q_column_above_upper_bounds_raises_exception(self):
-        with self.assertRaises(ColumnOutOfBoundsException):
+        with self.assertRaises(ColumnBelowBoundsException):
             Distance(p=Coordinate(row=0, column=0), q=Coordinate(row=0, column=COLUMN_SIZE))
 
 

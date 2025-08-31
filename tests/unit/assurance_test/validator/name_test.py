@@ -13,6 +13,13 @@ class NameValidatorTest(unittest.TestCase):
             NameValidator.validate(None)
         self.assertIsInstance(ctx.exception.__cause__, NullNameException)
 
+
+    def test_cast_to_str_failure_raises_exception(self):
+        with self.assertRaises(NameValidationException) as ctx:
+            NameValidator.validate(1)
+        self.assertIsInstance(ctx.exception.__cause__, TypeError)
+
+
     def test_blank_name_raises_exception(self):
         with self.assertRaises(NameValidationException) as ctx:
             NameValidator.validate(" ")
@@ -23,10 +30,13 @@ class NameValidatorTest(unittest.TestCase):
             NameValidator.validate("a")
         self.assertIsInstance(ctx.exception.__cause__, NameTooShortException)
 
+
     def test_name_too_long_raises_exception(self):
+        name =
         with self.assertRaises(NameValidationException) as ctx:
             NameValidator.validate("abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
         self.assertIsInstance(ctx.exception.__cause__, NameTooLongException)
+
 
     def test_valid_name_returns_result(self):
         result = NameValidator.validate("A-1")
