@@ -14,10 +14,10 @@ class Result(Generic[T]):
     ):
         method = "Result.__init_"
 
-        # if payload is None and exception is None:
-        #     raise EmptyResultConstructorException(
-        #         f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}"
-        #     )
+        if payload is None and exception is None:
+            raise EmptyResultConstructorException(
+                f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}"
+            )
 
         if  not (payload is None or exception is None):
             raise ResultPayloadConflictException(

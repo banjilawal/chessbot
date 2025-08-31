@@ -1,13 +1,20 @@
 import unittest
 from unittest.mock import Mock
 
+from assurance.exception.empty.result import EmptyResultConstructorException
 from assurance.exception.result import ResultPayloadConflictException
 from assurance.result.base import Result
 
 
 class ResultTest(unittest.TestCase):
 
-    def test_construct_result_with_payload_and_exception_raise_error(self):
+
+    def test_construct_result_with_params_rasies_error(self):
+
+        with self.assertRaises(EmptyResultConstructorException):
+            Result(payload=None, exception=None)
+
+    def test_construct_result_with_payload_and_exception_raises_error(self):
         mock_payload = Mock()
         mock_exception = Mock()
 
