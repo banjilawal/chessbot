@@ -14,7 +14,8 @@ from chess.geometry.coordinate.coord import Coordinate
 
 class CoordinateValidatorTest(unittest.TestCase):
 
-    def make_valid_mock_coordinate(self, row=0, column=0):
+    @staticmethod
+    def make_valid_mock_coordinate(row=0, column=0):
         coord = create_autospec(Coordinate, instance=True)
         coord.row = row
         coord.column = column

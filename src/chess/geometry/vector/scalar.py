@@ -1,6 +1,6 @@
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
-from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScalarException, ScalarAboveUpperBoundException
+from chess.exception.vector.scalar import ScalarBelowLowerBoundException, ScalarAboveUpperBoundException
 
 
 class Scalar:

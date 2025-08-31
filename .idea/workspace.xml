@@ -7,7 +7,9 @@
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/vector/scalar.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/vector/scalar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/walk/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/walk/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/board/square_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/board/square_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,9 +80,18 @@
     "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_null_name_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result.executor": "Run",
     "Python tests.Python tests for unit.chess_test.board.square.SquareUnitTest.test_square_with_null_id_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_constructed_if_all_validations_pass.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_failed_coordinate_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_id.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_name.executor": "Run",
     "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_blank_name_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_id_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_name_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.test_set_occupant_raises_error_on_not_piece.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_above_upper_bound_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_below_lower_bound_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_in_bounds.executor": "Run",
@@ -230,7 +241,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_validation_payload_equals_input_param" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -242,11 +253,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_validation_payload_equals_input_param&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_cast_to_int_failure_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -258,11 +269,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.assurance_test.validator.id_test.IdValidatorTest.test_cast_to_int_failure_raises_exception&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -274,11 +285,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in coord_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -290,8 +301,8 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests in square_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -313,10 +324,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests in square_test.py" />
-        <item itemvalue="Python tests.Python tests in coord_test.py" />
-        <item itemvalue="Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception" />
-        <item itemvalue="Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_validation_payload_equals_input_param" />
-        <item itemvalue="Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_cast_to_int_failure_raises_exception" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece" />
       </list>
     </recent_temporary>
   </component>
@@ -364,7 +375,8 @@
       <workItem from="1756382876041" duration="18608000" />
       <workItem from="1756418002735" duration="45509000" />
       <workItem from="1756523278510" duration="26841000" />
-      <workItem from="1756645261789" duration="23970000" />
+      <workItem from="1756645261789" duration="24677000" />
+      <workItem from="1756677849849" duration="3061000" />
     </task>
     <servers />
   </component>
@@ -394,9 +406,9 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/chessbot$id.coverage" NAME="id Coverage Results" MODIFIED="1756182204086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
-    <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_specification.coverage" NAME="coordinate_stack_specification Coverage Results" MODIFIED="1756175864375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$owner_factory.coverage" NAME="owner_factory Coverage Results" MODIFIED="1754856094798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
+    <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_specification.coverage" NAME="coordinate_stack_specification Coverage Results" MODIFIED="1756175864375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
+    <SUITE FILE_PATH="coverage/chessbot$id.coverage" NAME="id Coverage Results" MODIFIED="1756182204086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$vector.coverage" NAME="vector Coverage Results" MODIFIED="1756234334595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$team_factory__1_.coverage" NAME="team_factory (1) Coverage Results" MODIFIED="1754422569684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack.coverage" NAME="coordinate_stack Coverage Results" MODIFIED="1756161091714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry/coordinate" />
@@ -422,7 +434,7 @@
     <SUITE FILE_PATH="coverage/chessbot$owner_builder.coverage" NAME="owner_builder Coverage Results" MODIFIED="1754830988425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$chess_board_builder.coverage" NAME="chess_board_builder Coverage Results" MODIFIED="1754836419242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_builder.coverage" NAME="coord_stack Coverage Results" MODIFIED="1756181898853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756670682196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756680848890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_specification.coverage" NAME="coordinate_specification Coverage Results" MODIFIED="1756164098058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$square_iterator.coverage" NAME="square_iterator Coverage Results" MODIFIED="1756301098162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/board" />
     <SUITE FILE_PATH="coverage/chessbot$chess_piece_builder.coverage" NAME="chess_piece_builder Coverage Results" MODIFIED="1754426158452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />

@@ -1,6 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 
-from assurance.exception.validation.piece import PieceValidationException
+
 from assurance.validators.coord import CoordinateValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
@@ -8,7 +8,7 @@ from assurance.validators.name import NameValidator
 
 if TYPE_CHECKING:
     from chess.geometry.coordinate.coord import Coordinate
-    from chess.token.model import Piece
+    from chess.token.model.base import Piece
 
 class Square:
     _id: int
@@ -88,6 +88,11 @@ class Square:
     @occupant.setter
     def occupant(self, piece: Optional['Piece']):
         method = f"Square.occupant"
+
+        from chess.token.model.base import Piece
+        if piece is not None and not isinstance(piece, Piece):
+            raise TypeError(f"{method}: Expected a Piece, got {type(piece).__name__}")
+
         self._occupant = piece
 
 

@@ -1,8 +1,14 @@
 from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
 
 from chess.exception.id import ChessException
 from chess.geometry.coordinate.coord import Coordinate
-from chess.token.model import Piece
+
+
+
+if TYPE_CHECKING:
+    from chess.token.model.base import Piece
+
 
 class WalkException(ChessException):
     default_message = "Unreachable Destination coordinate"
@@ -20,7 +26,7 @@ class Walk(ABC):
     @staticmethod
     @abstractmethod
     def is_walkable(
-        chess_piece: Piece,
+        chess_piece: 'Piece',
         destination: Coordinate
     ) -> bool:
         method = "Walk.is_walkable"
