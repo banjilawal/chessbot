@@ -1,6 +1,7 @@
 from abc import ABC
 from typing import Optional
 
+from assurance.exception.empty.result import EmptyEventOutcomeConstructorException
 from assurance.exception.event import ConflictingEventStateException
 from chess.common.permit import Event
 from chess.exception.null.request import NullRequestException
@@ -23,6 +24,11 @@ class RequestOutcome(ABC):
 
         if request is None:
             raise NullRequestException(f"{method}: {NullRequestException.DEFAULT_MESSAGE}")
+
+        if event is None and exception is None:
+            raise EmptyEventOutcomeConstructorException(
+                f"{method}: {EmptyEventOutcomeConstructorException.DEFAULT_MESSAGE}"
+            )
 
         if event is not None and exception is not None:
             raise ConflictingEventStateException(

@@ -1,6 +1,7 @@
 
 from typing import Optional, TypeVar, Generic
 
+from assurance.exception.empty.result import EmptyResultConstructorException
 from assurance.exception.result import ResultPayloadConflictException
 
 T = TypeVar('T')
@@ -12,7 +13,13 @@ class Result(Generic[T]):
         exception: Optional[Exception] = None
     ):
         method = "Result.__init_"
-        if payload is not None and exception is not None:
+
+        # if payload is None and exception is None:
+        #     raise EmptyResultConstructorException(
+        #         f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}"
+        #     )
+
+        if  not (payload is None or exception is None):
             raise ResultPayloadConflictException(
                 f"{method}: {ResultPayloadConflictException.DEFAULT_MESSAGE}"
             )

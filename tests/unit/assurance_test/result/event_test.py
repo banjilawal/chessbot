@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
+from assurance.exception.empty.result import EmptyEventOutcomeConstructorException
 from assurance.exception.event import ConflictingEventStateException
 from assurance.result.event import RequestOutcome
 from chess.exception.null.request import NullRequestException
@@ -8,21 +9,17 @@ from chess.exception.null.request import NullRequestException
 
 class RequestOutcomeTest(unittest.TestCase):
 
-    def test_construct_request_outcome_with_event_and_exception_raise_error(self):
-        mock_request = Mock()
+    def test_construct_request_outcome_with_null_request_raises_error(self):
         mock_event = Mock()
-        mock_exception = Mock()
-
-        with self.assertRaises(ConflictingEventStateException):
-            RequestOutcome(request=mock_request, event=mock_event, exception=mock_exception)
-
-
-    def test_construct_request_outcome_with_null_request_raise_error(self):
-        mock_event = Mock()
-        mock_exception = Mock()
 
         with self.assertRaises(NullRequestException):
-            RequestOutcome(request=None, event=mock_event, exception=mock_exception)
+            RequestOutcome(request=None, event=mock_event, exception=None)
+
+    def test_construct_request_outcome_with_null_event_null_exception_raises_error(self):
+        mock_request = Mock()
+
+        with self.assertRaises(EmptyEventOutcomeConstructorException):
+            RequestOutcome(request=mock_request, event=None, exception=None)
 
 
     def test_construct_request_outcome_with_event_only_succeeds(self):
