@@ -32,9 +32,9 @@ class NameValidatorTest(unittest.TestCase):
 
 
     def test_name_too_long_raises_exception(self):
-        name =
+        long_name = "x" * 41
         with self.assertRaises(NameValidationException) as ctx:
-            NameValidator.validate("abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+            NameValidator.validate(long_name)
         self.assertIsInstance(ctx.exception.__cause__, NameTooLongException)
 
 

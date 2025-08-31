@@ -4,7 +4,7 @@ from assurance.exception.validation.piece import PieceValidationException
 from assurance.validators.coord import CoordinateValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-from assurance.validators.piece import PieceValidator
+
 
 if TYPE_CHECKING:
     from chess.geometry.coordinate.coord import Coordinate

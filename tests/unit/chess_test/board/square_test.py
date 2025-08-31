@@ -1,36 +1,26 @@
 import unittest
+from unittest.mock import patch, Mock
 
-
+from assurance.exception.validation.id import IdValidationException
 from chess.board.square import Square
-from chess.geometry.coordinate.coord import Coordinate
+
 
 
 class SquareUnitTest(unittest.TestCase):
 
-    def test_square_with_null_id_raises_error(self):
-        with self.assertRaises(Exception):
-            Square(square_id=None, name="name", coordinate=Coordinate(0,0))
+    @patch('assurance.validators.coord.CoordinateValidator.validate')
+    @patch('assurance.validators.name.NameValidator.validate')
+    @patch('assurance.validators.id.IdValidator.validate')
+    def test_square_raises_on_failed_id(self, mock_coord_validate, mock_name_validate, mock_id_validate):
 
+        mock_id_validate.return_value.is_success.return_value = False
+        mock_id_validate.return_value.exception = IdValidationException("Invalid ID")
 
-    def test_square_with_negative_id_raises_error(self):
-        with self.assertRaises(Exception):
-            Square(square_id=-1, name="name", coordinate=Coordinate(0,0))
+        mock_name_validate.return_value.is_success.return_value = True
+        mock_coord_validate.return_value.is_success.return_value = True
 
-
-    def test_square_with_null_name_raises_error(self):
-        with self.assertRaises(Exception):
-            Square(square_id=1, name=None, coordinate=Coordinate(0,0))
-
-
-    def test_square_with_blank_name_raises_error(self):
-        with self.assertRaises(Exception):
-            Square(square_id=-1, name=" ", coordinate=Coordinate(0,0))
-
-
-    def test_square_with_name_below_min_length_raises_error(self):
-        with self.assertRaises(Exception):
-            Square(square_id=-1, name="a", coordinate=Coordinate(0,0))
-
+        with self.assertRaises(IdValidationException):
+            Square(square_id=1, name="A1", coordinate=Mock())
 
 
 if __name__ == '__main__':
