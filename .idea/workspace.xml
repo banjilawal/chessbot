@@ -5,26 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/id_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/result_tes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/exception/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/exception/event.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/result/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/obsolete/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/exception/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/obsolete/obsolete_id_validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/obsolete/obsolete_piece_validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/obsolete/player_validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/obsolete/square_repo_validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/obsolete/validation_exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/obsolete/validation_result.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/exit.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/flow/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/occupy.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Unit Test" />
         <option value="Python Script" />
+        <option value="Python Unit Test" />
       </list>
     </option>
   </component>
@@ -66,6 +56,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.Python tests for unit.assurance_test.result.event.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.result_tes.Result.test_payload_and_exception_conflict_raises.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_negative_id_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_null_id_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_valid_id_returns_result.executor": "Run",
@@ -117,6 +113,7 @@
     "Python tests.Python tests in multiplication_test.py.executor": "Run",
     "Python tests.Python tests in name_test.py.executor": "Run",
     "Python tests.Python tests in offset_test.py.executor": "Run",
+    "Python tests.Python tests in result_tes.py.executor": "Run",
     "Python tests.Python tests in scalar_test.py.executor": "Run",
     "Python tests.Python tests in square_test.py.executor": "Run",
     "Python tests.Python tests in vector_test.py.executor": "Run",
@@ -161,7 +158,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/tests/unit/assurance_test/result",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -187,11 +184,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/unit/assurance_test/result" />
+      <recent name="$PROJECT_DIR$/src/assurance/exception" />
       <recent name="$PROJECT_DIR$/src/chess/flow" />
       <recent name="$PROJECT_DIR$/src/assurance/validators/request" />
       <recent name="$PROJECT_DIR$/src/chess/request" />
-      <recent name="$PROJECT_DIR$/src/chess/exception" />
-      <recent name="$PROJECT_DIR$/src/assurance/validators" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/token/model" />
@@ -201,7 +198,7 @@
       <recent name="$PROJECT_DIR$/src/chess" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in name_test.py">
+  <component name="RunManager" selected="Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -225,7 +222,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_blank_name_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -237,11 +234,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.assurance_test.validator.name_test.NameValidatorTest.test_blank_name_raises_exception&quot;" />
+      <option name="_new_target" value="&quot;unit.assurance_test.result.event_test.RequestOutcomeTest&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -253,11 +250,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception&quot;" />
+      <option name="_new_target" value="&quot;unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_short_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -269,11 +266,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_short_raises_exception&quot;" />
+      <option name="_new_target" value="&quot;unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -285,11 +282,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result&quot;" />
+      <option name="_new_target" value="&quot;unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in name_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in result_tes.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -301,17 +298,17 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/unit/assurance_test/result/result_tes.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests in name_test.py" />
-        <item itemvalue="Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception" />
-        <item itemvalue="Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result" />
-        <item itemvalue="Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_short_raises_exception" />
-        <item itemvalue="Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_blank_name_raises_exception" />
+        <item itemvalue="Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds" />
+        <item itemvalue="Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error" />
+        <item itemvalue="Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest" />
+        <item itemvalue="Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error" />
+        <item itemvalue="Python tests.Python tests in result_tes.py" />
       </list>
     </recent_temporary>
   </component>
@@ -359,7 +356,7 @@
       <workItem from="1756382876041" duration="18608000" />
       <workItem from="1756418002735" duration="45509000" />
       <workItem from="1756523278510" duration="26841000" />
-      <workItem from="1756645261789" duration="5506000" />
+      <workItem from="1756645261789" duration="9269000" />
     </task>
     <servers />
   </component>
@@ -417,7 +414,7 @@
     <SUITE FILE_PATH="coverage/chessbot$owner_builder.coverage" NAME="owner_builder Coverage Results" MODIFIED="1754830988425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$chess_board_builder.coverage" NAME="chess_board_builder Coverage Results" MODIFIED="1754836419242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_builder.coverage" NAME="coord_stack Coverage Results" MODIFIED="1756181898853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756651589818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756655956383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_specification.coverage" NAME="coordinate_specification Coverage Results" MODIFIED="1756164098058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$square_iterator.coverage" NAME="square_iterator Coverage Results" MODIFIED="1756301098162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/board" />
     <SUITE FILE_PATH="coverage/chessbot$chess_piece_builder.coverage" NAME="chess_piece_builder Coverage Results" MODIFIED="1754426158452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />

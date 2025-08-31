@@ -1,7 +1,7 @@
 from assurance.exception.base import AssuranceException
 
 
-class ConflictingPermissionStateException(AssuranceException):
+class ConflictingEventStateException(AssuranceException):
     ERROR_CODE = "PERMISSION_CONSTRUCTION_ERROR"
     DEFAULT_MESSAGE = f"Cannot construct a Permission object with both PERMISSION and exception params not null"
 

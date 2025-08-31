@@ -23,7 +23,7 @@ class OccupationFlow(Flow):
 
         piece = cast(Piece, validation.request.client)
 
-        source_square = board.find_square_by_coordinate(piece.positions.current_position)
+        source_square = board.find_square_by_coordinate(piece.current_position)
         target_square = cast(Square, request.resource)
 
         enemy = None

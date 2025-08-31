@@ -6,11 +6,11 @@ T = TypeVar('T')
 
 class Request(Generic[T]):
     _id: int
-    _client: Generic[T]
-    _resource: Generic[T]
+    _client: T
+    _resource: Optional[T]
 
 
-    def __init__(self, request_id: int, client: Generic[T], resource: Optional[Generic[T]]=None):
+    def __init__(self, request_id: int, client: T, resource: Optional[T]=None):
         self._id = request_id
         self._client = client
         self._resource = resource
@@ -22,12 +22,12 @@ class Request(Generic[T]):
 
 
     @property
-    def client(self) -> Generic[T]:
+    def client(self) -> T:
         return self._client
 
 
     @property
-    def resource(self) -> Optional[Generic[T]]:
+    def resource(self) -> Optional[T]:
         return self._resource
 
 
