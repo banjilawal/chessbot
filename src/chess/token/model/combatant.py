@@ -1,6 +1,6 @@
 from typing import Optional
 
-from chess.exception.piece import PrisonerReleaseException
+from chess.exception.piece import PrisonerReleaseException, NullCaptorException
 from chess.rank.base import Rank
 from chess.team.model import Team
 from chess.token.model.base import Piece
@@ -23,7 +23,10 @@ class CombatantPiece(Piece):
     def captor(self, captor: Piece):
         method = "Captor.@setter.captor"
 
-        if captor is not None:
+        if captor is None:
+            raise NullCaptorException(f"{method}: {NullCaptorException.DEFAULT_MESSAGE}")
+
+        if self._captor is not None:
             raise PrisonerReleaseException(f"{method}: {PrisonerReleaseException.DEFAULT_MESSAGE}")
 
         self._captor = captor

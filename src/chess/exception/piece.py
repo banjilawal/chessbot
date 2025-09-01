@@ -77,6 +77,25 @@ class PrisonerReleaseException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
+"""
+Prevents Combatant.captor to null
+"""
+class NullCaptorException(PieceException):
+    """
+    Cannot set Combatant.captor to null
+    """
+
+    ERROR_CODE = "CAPTURED_PIECE_ESCAPE_ERROR"
+    DEFAULT_MESSAGE = "A captured piece cannot move"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
+
 class AttackingNullPieceException(PieceException):
     ERROR_CODE = "ATTACKING_NULL_PIECE_ERROR"
     DEFAULT_MESSAGE = "Cannot capture a null"
@@ -126,6 +145,7 @@ class AttackingFriendlyException(PieceException):
 
 
 class DoublePromotionException(PieceException):
+
     """
     Only a piece can be doubly promoted. DoublePromotionException is a PieceException
     not a RankException.

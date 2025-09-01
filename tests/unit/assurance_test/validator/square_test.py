@@ -70,8 +70,5 @@ class SquareValidatorTest(unittest.TestCase):
         self.assertEqual(validation.payload, square)
 
 
-
-
-
 if __name__ == '__main__':
     unittest.main()

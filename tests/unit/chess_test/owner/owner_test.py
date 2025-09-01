@@ -4,17 +4,26 @@ from unittest.mock import create_autospec, patch
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from chess.owner.base import Owner
+from chess.team.stack import TeamHistory
 
 
 class OwnerTest(unittest.TestCase):
 
     @staticmethod
     def valid_mock_owner(owner_id=1, name="owner"):
-        owner = create_autospec(Owner, instance=True)
-        owner.id = owner_id
-        owner.name = name
+        mock_owner = create_autospec(Owner, instance=True)
+        mock_team_history = create_autospec(TeamHistory, instance=True)
 
-        return owner
+        mock_team_history.is_empty.return_value = True
+        mock_team_history.size.return_value = 0
+        mock_team_history.items = []
+        mock_team_history.current_team = None
+
+        mock_owner.id = 1
+        mock_owner.name = "Valid Owner"
+        mock_owner.team_history = mock_team_history
+
+        return mock_owner
 
 
     @patch('assurance.validators.name.NameValidator.validate')

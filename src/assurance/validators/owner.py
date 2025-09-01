@@ -3,11 +3,13 @@ from typing import cast, Generic
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.owner import OwnerValidationException
+from assurance.exception.validation.team import TeamHistoryValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-from assurance.validators.team_hist import TeamStackValidator
+from assurance.validators.team_hist import TeamHistoryValidator
+
 from chess.exception.null.owner import NullOwnerException
 from chess.owner.base import Owner
 
@@ -66,7 +68,7 @@ class OwnerValidator(Validator):
 
             # If t is null no point continuing
             if t is None:
-                raise NullOwnerException(f"{method} NullOwnerException.DEFAULT_MESSAGE")
+                raise NullOwnerException(f"{method} {NullOwnerException.DEFAULT_MESSAGE}")
 
             # If cannot cast from t to Owner need to break
             if not isinstance(t, Owner):
@@ -83,7 +85,7 @@ class OwnerValidator(Validator):
             if not name_validation.is_success():
                 raise name_validation.exception
 
-            team_history_validation = TeamStackValidator.validate(owner.team_history)
+            team_history_validation = TeamHistoryValidator.validate(owner.team_history)
             if not team_history_validation.is_success():
                 raise team_history_validation.exception
 
@@ -95,7 +97,7 @@ class OwnerValidator(Validator):
             NullOwnerException,
             IdValidationException,
             NameValidationException,
-            TeamStackValidationException
+            TeamHistoryValidationException
         ) as e:
             raise OwnerValidationException(
                 f"{method}: {OwnerValidationException.DEFAULT_MESSAGE}"

@@ -1,6 +1,7 @@
 from typing import Generic, cast
 
-
+from assurance.exception.validation.team import TeamHistoryValidationException
+from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.team import TeamValidator
 from chess.exception.null.team_stack import NullTeamHistory
@@ -10,7 +11,7 @@ from chess.exception.team_hist import CurrentTeamException
 from chess.team.stack import TeamHistory
 
 
-class TeamStackValidator(Validator):
+class TeamHistoryValidator(Validator):
 
     @staticmethod
     def validate(t: Generic[T]) -> Result[TeamHistory]:
@@ -75,21 +76,21 @@ class TeamStackValidator(Validator):
 
             current_team = teams.current_team
 
-            if (current_team is not None and
-                    not TeamValidator.validate(current_team).is_success()):
-                raise CurrentTeamException(
-                    f"{method} {CurrentTeamException.DEFAULT_MESSAGE}"
-                )
+            if (
+                current_team is not None and
+                not TeamValidator.validate(current_team).is_success()
+            ):
+                raise CurrentTeamException(f"{method} {CurrentTeamException.DEFAULT_MESSAGE}")
 
             return Result(payload=teams)
 
         except (
-                TypeError,
-                NullTeamHistory,
-                StackSizeConflictException,
-                CurrentTeamException
+            TypeError,
+            NullTeamHistory,
+            StackSizeConflictException,
+            CurrentTeamException
         ) as e:
-            raise TeamStackValidationException(
-                f"{method}: {TeamStackValidationException.DEFAULT_MESSAGE}"
+            raise TeamHistoryValidationException(
+                f"{method}: {TeamHistoryValidationException.DEFAULT_MESSAGE}"
             ) from e
 #
