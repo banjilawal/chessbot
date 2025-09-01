@@ -5,27 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/exception/validation/team_stack.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validators/owner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validators/team_stack.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/coord_stack.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/null/team_stack.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/team_stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validators/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord_stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/conflict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/coord_stack.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/current.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/internal_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/mismatch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/pop_empty.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/push_duplicate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/coordinate_stack/push_null.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/null/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null/coord_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/team_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/team_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coord_stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/owner/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/owner/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/stack.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -396,7 +381,7 @@
       <workItem from="1756418002735" duration="45509000" />
       <workItem from="1756523278510" duration="26841000" />
       <workItem from="1756645261789" duration="24677000" />
-      <workItem from="1756677849849" duration="14337000" />
+      <workItem from="1756677849849" duration="17621000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,10 @@
 from typing import Optional, List
 
-from chess.exception.stack import PushingNullEntityException, CorruptedStackException, DuplicatePushException
+from chess.exception.stack import (
+    PushingNullEntityException,
+    CorruptedStackException,
+    DuplicatePushException
+)
 from chess.team.model import Team
 
 

@@ -4,29 +4,27 @@ from assurance.exception.validation.coord_stack import CoordinateStackValidation
 from assurance.result.base import Result
 from assurance.validators.coord import CoordinateValidator
 from assurance.validators.base import Validator, T
-from chess.exception.coordinate_stack.conflict import IsEmptyStackResultConflictsWithSizeException
-from chess.exception.coordinate_stack.current import CurrentCoordinateInconsistentStateException
-from chess.exception.stack import CorruptedStackException
-from chess.exception.coordinate_stack.mismatch import EmptyStackCurrentCoordinateValueMismatch
-from chess.exception.null.coord import NullCoordinateException
+from chess.exception.coord_stack import InconsistentCurrentCoordinateException
+
+from chess.exception.stack import CorruptedStackException, StackSizeConflictException
+
 from chess.exception.null.coord_stack import NullCoordinateStackException
 from chess.geometry.coordinate.stack import CoordinateStack
 
 
 class CoordinateStackValidator(Validator):
 
-
     @staticmethod
     def validate(t: Generic[T]) -> Result[CoordinateStack]:
         entity = "CoordinateStack"
-        class_name = f"{entity}Specification"
-        method = f"{class_name}.is_satisfied_by"
+        class_name = f"{entity}Validator"
+        method = f"{class_name}.validate"
 
         """
-        Validates a new CoordinateStack meets specifications:
+        Validates a new CoordinateStack meets requirements:
             - Not null
             - CoordinateStack.items is not null
-            - CoordinateStack.current_coordinate is either null or meets CoordinateSpecification
+            - CoordinateStack.current_coordinate is either null or meets CoordinateValidator
             - if CoordinateStack.is_empty() is True then current_coordinate.size == 0
             - if CoordinateStack.is_empty() is False then current_coordinate is not null
             - If CoordinateStack.is_empty() then current_coordinate is null
@@ -40,7 +38,7 @@ class CoordinateStackValidator(Validator):
             t (CoordinateStack): coordinate_stack to validate
             
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification is satisfied,
+             Result[T]: A Result object containing the validated payload if the validator is satisfied,
                         CoordinateStackValidationException otherwise.
         
         Raises:
@@ -59,7 +57,7 @@ class CoordinateStackValidator(Validator):
             InternalStackDataStructureException: If CoordinateStack.items is null
             
             CurrentCoordinateInconsistentStateException`: If current_coordinate
-                does not meet CoordinateSpecification
+                does not meet CoordinateValidator
 .
             CoordinateStackValidationException: Wraps any
                 (preceding exceptions)
@@ -77,42 +75,36 @@ class CoordinateStackValidator(Validator):
             coords  = cast(CoordinateStack, t)
 
             if coords.size() > 0 and coords.is_empty():
-                raise IsEmptyStackResultConflictsWithSizeException(
-                    f"{method} {IsEmptyStackResultConflictsWithSizeException.DEFAULT_MESSAGE}"
-                )
+                raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")
 
             if coords.is_empty() and coords.current_coordinate is not None:
-                raise EmptyStackCurrentCoordinateValueMismatch(
-                    f"{method} Stack is empty but current_coordinate is not null. "
+                raise InconsistentCurrentCoordinateException(
+                    f"{method}: {InconsistentCurrentCoordinateException.DEFAULT_MESSAGE}"
                 )
 
             if coords.current_coordinate is None and not coords.is_empty():
-                raise EmptyStackCurrentCoordinateValueMismatch(
-                    f"{method} current_coordinate is null but stack is not empty. "
+                raise InconsistentCurrentCoordinateException(
+                    f"{method} {InconsistentCurrentCoordinateException.DEFAULT_MESSAGE}"
                 )
 
             if coords.items is None:
-                raise CorruptedStackException(
-                    f"{method} {CorruptedStackException.DEFAULT_MESSAGE}"
-                )
+                raise CorruptedStackException(f"{method} {CorruptedStackException.DEFAULT_MESSAGE}")
 
             current_coord = coords.current_coordinate
+
             if (current_coord is not None and
                     not CoordinateValidator.validate(current_coord).is_success()):
-                raise CurrentCoordinateInconsistentStateException(
-                    f"{method} {CurrentCoordinateInconsistentStateException.DEFAULT_MESSAGE}"
+                raise InconsistentCurrentCoordinateException(
+                    f"{method} {InconsistentCurrentCoordinateException.DEFAULT_MESSAGE}"
                 )
-
 
             return Result(payload=coords)
 
         except (
-                TypeError,
-                NullCoordinateException,
-                IsEmptyStackResultConflictsWithSizeException,
-                EmptyStackCurrentCoordinateValueMismatch,
-                CorruptedStackException,
-                CurrentCoordinateInconsistentStateException
+            TypeError,
+            NullCoordinateStackException,
+            StackSizeConflictException,
+            InconsistentCurrentCoordinateException
         ) as e:
             raise CoordinateStackValidationException(
                 f"{method}: {CoordinateStackValidationException.DEFAULT_MESSAGE}"
@@ -121,11 +113,11 @@ class CoordinateStackValidator(Validator):
 #
 # def main():
 #     coordinate_stack = CoordinateStack()
-#     specification_result = CoordinateStackSpecification.is_satisfied_by(coordinate_stack)
-#     if specification_result.is_success():
-#         print("CoordinateStack specification satisfied.")
+#     validator_result = CoordinateStackValidatorvalidate(coordinate_stack)
+#     if validator_result.is_success():
+#         print("CoordinateStack validator satisfied.")
 #     else:
-#         print("CoordinateStack specification not satisfied.")
+#         print("CoordinateStack validator not satisfied.")
 #
 #
 # if __name__ == "__main__":

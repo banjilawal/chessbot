@@ -1,27 +1,17 @@
-from typing import cast, Generic
+from typing import Generic, cast
 
 from assurance.exception.validation.team_stack import TeamStackValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
+from assurance.validators.team import TeamValidator
 from chess.exception.null.team_stack import NullTeamStackException
+
+from chess.exception.stack import CorruptedStackException, StackSizeConflictException
+from chess.exception.team_stack import InconsistentCurrentTeamException
 from chess.team.stack import TeamStack
 
 
 class TeamStackValidator(Validator):
-    """
-    Validates a TeamStack used in a domain module meets requirements:
-        - Is not null.
-        - Only Team instances can be added to the stack.
-        - Teams cannot be popped from the stack
-        - An empty team stack returns null
-        - A nonempty stack returns a validated Team
-    Unmet requirements will raise a TeamStackValidationException
-
-    For performance and single source of truth TeamStackValidator has:
-        - No fields
-        - only static method validate
-    subclasses must implement validate.
-    """
 
     @staticmethod
     def validate(t: Generic[T]) -> Result[TeamStack]:
@@ -30,83 +20,81 @@ class TeamStackValidator(Validator):
         method = f"{class_name}.validate"
 
         """
-        Validates a teamStack meets domain requirements:
+        Validates a new TeamStack meets requirements:
             - Not null
-            - row is not null
-            - column is not null
-            - row is within the bounds of the chess chessboard
-            - column is within the bounds of the chess chessboard
-        Any failed requirement raise an exception wrapped in a TeamStackValidationException
-            
+            - TeamStack.items is not null
+            - TeamStack.current_team is either null or meets TeamValidator
+            - if TeamStack.is_empty() is True then current_team.size == 0
+            - if TeamStack.is_empty() is False then current_team is not null
+            - If TeamStack.is_empty() then current_team is null
+
+        Do not test for pushing or popping teams here. They might change state unexpectedly.
+        Those operations are tested in their own unit tests.
+        If any validators state fails their exception will be encapsulated in a 
+        TeamStackValidationException
+
         Args
-            t (TeamStack): teamStack to validate
-            
+            t (TeamStack): team_stack to validate
+
          Returns:
-             Result[T]: A Result object containing the validated payload if all domain requirements 
-             are satisfied. TeamStackValidationException otherwise.
-        
+             Result[T]: A Result object containing the validated payload if the validator is satisfied,
+                    TeamStackValidationException otherwise.
+
         Raises:
+            NullTeamStackException: if t is null
             TypeError: if t is not TeamStack
-            NullTeamStackException: if t is null   
 
-            RowBelowBoundsException: If teamStack.row < 0
-            RowAboveBoundsException: If teamStack.row >= ROW_SIZE
-                
-            ColumnBelowBoundsException: If teamStack.column < 0
-            ColumnAboveBoundsException: If teamStack.column>= ROW_SIZE
-                
-            TeamStackValidationException: Wraps any preceding exception     
+            InternalStackDataStructureException: If TeamStack.items is null
+
+            InconsistentCurrentTeamException`: If current_team
+                does not meet TeamValidator
+.
+            TeamStackValidationException: Wraps any
+                (preceding exceptions)
+
         """
-
         try:
-            """
-            Tests are chained in this specific order for a reason.
-            """
-
-            # If t is null no point continuing
             if t is None:
-                raise NullTeamStackException(f"{method} NullTeamStackException.DEFAULT_MESSAGE")
+                raise NullTeamStackException(f"{method} {NullTeamStackException.DEFAULT_MESSAGE}")
 
-            # If cannot cast from t to TeamStack need to break
             if not isinstance(t, TeamStack):
                 raise TypeError(f"{method} Expected a TeamStack, got {type(t).__name__}")
 
-            # cast and run checks for the fields
-            team_stack = cast(TeamStack, t)
+            teams = cast(TeamStack, t)
 
-            if team_stack.is_empty() and team:
-                raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
+            if teams.size() > 0 and teams.is_empty():
+                raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")
 
-            if teamStack.row < 0:
-                raise RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
+            if teams.is_empty() and teams.current_team is not None:
+                raise InconsistentCurrentTeamException(
+                    f"{method}: {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
+                )
 
-            if teamStack.row >= ROW_SIZE:
-                raise RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
+            if teams.current_team is None and not teams.is_empty():
+                raise InconsistentCurrentTeamException(
+                    f"{method} {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
+                )
 
-            if teamStack.column is None:
-                raise NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}")
+            if teams.items is None:
+                raise CorruptedStackException(f"{method} {CorruptedStackException.DEFAULT_MESSAGE}")
 
-            if teamStack.column < 0:
-                raise ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
+            current_team = teams.current_team
 
-            if teamStack.column >= COLUMN_SIZE:
-                raise ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
+            if (current_team is not None and
+                    not TeamValidator.validate(current_team).is_success()):
+                raise InconsistentCurrentTeamException(
+                    f"{method} {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
+                )
 
-            # Return the result if checks passed
-            return Result(payload=teamStack)
+            return Result(payload=teams)
 
         except (
-            TypeError,
-            NullTeamStackException,
-
-            NullRowException,
-            RowBelowBoundsException,
-            RowAboveBoundsException,
-
-            NullColumnException,
-            ColumnBelowBoundsException,
-            ColumnAboveBoundsException
+                TypeError,
+                NullTeamStackException,
+                StackSizeConflictException,
+                InconsistentCurrentTeamException
         ) as e:
             raise TeamStackValidationException(
                 f"{method}: {TeamStackValidationException.DEFAULT_MESSAGE}"
             ) from e
+#
