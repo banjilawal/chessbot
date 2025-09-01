@@ -109,7 +109,5 @@ class CoordinateValidatorTest(unittest.TestCase):
         self.assertEqual(result.payload, mock_coordinate)
 
 
-
-
 if __name__ == '__main__':
     unittest.main()

@@ -1,13 +1,12 @@
 from typing import Generic, cast
 
-from assurance.exception.validation.team_stack import TeamStackValidationException
-from assurance.result.base import Result
+
 from assurance.validators.base import Validator, T
 from assurance.validators.team import TeamValidator
-from chess.exception.null.team_stack import NullTeamStackException
+from chess.exception.null.team_stack import NullTeamHistory
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
-from chess.exception.team_stack import InconsistentCurrentTeamException
+from chess.exception.team_hist import CurrentTeamException
 from chess.team.stack import TeamHistory
 
 
@@ -51,7 +50,7 @@ class TeamStackValidator(Validator):
         """
         try:
             if t is None:
-                raise NullTeamStackException(f"{method} {NullTeamStackException.DEFAULT_MESSAGE}")
+                raise NullTeamHistory(f"{method} {NullTeamHistory.DEFAULT_MESSAGE}")
 
             if not isinstance(t, TeamHistory):
                 raise TypeError(f"{method} Expected a TeamStack, got {type(t).__name__}")
@@ -62,13 +61,13 @@ class TeamStackValidator(Validator):
                 raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")
 
             if teams.is_empty() and teams.current_team is not None:
-                raise InconsistentCurrentTeamException(
-                    f"{method}: {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
+                raise CurrentTeamException(
+                    f"{method}: {CurrentTeamException.DEFAULT_MESSAGE}"
                 )
 
             if teams.current_team is None and not teams.is_empty():
-                raise InconsistentCurrentTeamException(
-                    f"{method} {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
+                raise CurrentTeamException(
+                    f"{method} {CurrentTeamException.DEFAULT_MESSAGE}"
                 )
 
             if teams.items is None:
@@ -78,17 +77,17 @@ class TeamStackValidator(Validator):
 
             if (current_team is not None and
                     not TeamValidator.validate(current_team).is_success()):
-                raise InconsistentCurrentTeamException(
-                    f"{method} {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
+                raise CurrentTeamException(
+                    f"{method} {CurrentTeamException.DEFAULT_MESSAGE}"
                 )
 
             return Result(payload=teams)
 
         except (
-            TypeError,
-            NullTeamStackException,
-            StackSizeConflictException,
-            InconsistentCurrentTeamException
+                TypeError,
+                NullTeamHistory,
+                StackSizeConflictException,
+                CurrentTeamException
         ) as e:
             raise TeamStackValidationException(
                 f"{method}: {TeamStackValidationException.DEFAULT_MESSAGE}"

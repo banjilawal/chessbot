@@ -14,7 +14,7 @@ from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
 from chess.exception.piece import AttackingKingException
 from chess.request.occupy import OccupationRequest
-from chess.token.model.king import King
+from chess.token.model.king import KingPiece
 
 T = TypeVar('T')
 
@@ -96,7 +96,7 @@ class OccupationRequestValidator(RequestValidator):
                 )
                 # raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
 
-            if occupant is not None and isinstance(occupant, King):
+            if occupant is not None and isinstance(occupant, KingPiece):
                 raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
 
             return RequestOutcome(

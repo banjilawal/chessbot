@@ -1,7 +1,7 @@
 from chess.token.model.base import Piece
 
 
-class King(Piece):
+class KingPiece(Piece):
     def __init__(self, token_id: int, name: str, rank: 'Rank', team: 'Team'):
         super().__init__(token_id, name, rank, team)
 
@@ -10,5 +10,5 @@ class King(Piece):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, King):
+        if isinstance(other, KingPiece):
             return self.id == other.id

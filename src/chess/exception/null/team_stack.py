@@ -1,9 +1,9 @@
 from chess.exception.null.base import NullException
 
 
-class NullTeamStackException(NullException):
-    ERROR_CODE = "NULL_TEAM_STACK_ERROR"
-    DEFAULT_MESSAGE = f"TeamStack cannot be null"
+class NullTeamHistory(NullException):
+    ERROR_CODE = "NULL_TEAM_HISTORY_ERROR"
+    DEFAULT_MESSAGE = f"TeamHistory cannot be null"
 
 
     def __init__(self, message=None):

@@ -1,11 +1,12 @@
 from typing import Optional
 
+from chess.exception.piece import PrisonerReleaseException
 from chess.rank.base import Rank
 from chess.team.model import Team
 from chess.token.model.base import Piece
 
 
-class Combatant(Piece):
+class CombatantPiece(Piece):
     _captor: Optional[Piece]
 
     def __init__(self, token_id: int, name: str, rank: 'Rank', team: 'Team'):
@@ -20,6 +21,11 @@ class Combatant(Piece):
 
     @captor.setter
     def captor(self, captor: Piece):
+        method = "Captor.@setter.captor"
+
+        if captor is not None:
+            raise PrisonerReleaseException(f"{method}: {PrisonerReleaseException.DEFAULT_MESSAGE}")
+
         self._captor = captor
 
 
@@ -27,5 +33,5 @@ class Combatant(Piece):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, Combatant):
+        if isinstance(other, CombatantPiece):
             return self.id == other.id

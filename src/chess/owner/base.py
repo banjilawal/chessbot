@@ -1,5 +1,8 @@
 from abc import ABC
-from typing import Optional, List
+from typing import Optional, cast
+
+from assurance.validators.id import IdValidator
+from assurance.validators.name import NameValidator
 from chess.team.model import Team
 from chess.team.stack import TeamHistory
 
@@ -11,8 +14,17 @@ class Owner(ABC):
     _team_history: TeamHistory
 
     def __init__(self, owner_id: int, name: str):
-        self._id = owner_id
-        self._name = name
+
+        id_validation = IdValidator.validate(owner_id)
+        if not id_validation.is_success():
+            raise id_validation.exception
+
+        name_validation = NameValidator.validate(name)
+        if not name_validation.is_success():
+            raise name_validation.exception
+
+        self._id = cast(id_validation.payload.id, int)
+        self._name = cast(name_validation.payload.name, str)
         self._team_history =TeamHistory()
 
         self._current_team = self._team_history.current_team

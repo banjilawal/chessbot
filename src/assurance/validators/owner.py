@@ -3,12 +3,11 @@ from typing import cast, Generic
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.owner import OwnerValidationException
-from assurance.exception.validation.team_stack import TeamStackValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-from assurance.validators.team_stack import TeamStackValidator
+from assurance.validators.team_hist import TeamStackValidator
 from chess.exception.null.owner import NullOwnerException
 from chess.owner.base import Owner
 

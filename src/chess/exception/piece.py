@@ -1,7 +1,13 @@
 from chess.exception.base import ChessException
 
-
+"""
+Super class for Piece exceptions
+"""
 class PieceException(ChessException):
+    """
+    Super class for exceptions raised by Piece objects
+    """
+
     ERROR_CODE = "PIECE_ERROR"
     DEFAULT_MESSAGE = "Piece raised an exception"
 
@@ -13,7 +19,15 @@ class PieceException(ChessException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
+"""
+Exception for handling a piece which does not have a coordinate
+"""
 class PieceCoordinateException(PieceException):
+    """
+    If a piece does not have a coordinate until its place on the chess board. This exception prevents
+    chess pieces not on the board from moving.
+    """
+
     ERROR_CODE = "PIECE_NO_COORDINATE_ERROR"
     DEFAULT_MESSAGE = "Piece is not on the board. it has no coordinate"
 
@@ -25,9 +39,35 @@ class PieceCoordinateException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
+"""
+Raised if attempting to move a captured piece
+"""
 class PrisonerEscapeException(PieceException):
+    """
+    Combatant pieces with attacker field not null cannot be moved. Attempts to move
+    a captured combatant will raise this exception. KingPiece cannot be captured.
+    """
+
     ERROR_CODE = "CAPTURED_PIECE_ESCAPE_ERROR"
     DEFAULT_MESSAGE = "A captured piece cannot move"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
+
+"""
+Attempting to change captor piece to null if its not null
+"""
+class PrisonerReleaseException(PieceException):
+    """
+    Combatant.captor field can only be set once. This exception is raised if an attempt
+    """
+    ERROR_CODE = "CAPTURED_PIECE_RELEASE_ERROR"
+    DEFAULT_MESSAGE = "Cannot change CombatantPiece.captor from not null to null"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -86,7 +126,6 @@ class AttackingFriendlyException(PieceException):
 
 
 class DoublePromotionException(PieceException):
-
     """
     Only a piece can be doubly promoted. DoublePromotionException is a PieceException
     not a RankException.

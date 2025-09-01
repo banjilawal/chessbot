@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/exception/validation/team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/team_stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/owner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/team_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/team_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/team_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/team_hist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/team/stack_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/team/history_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +135,7 @@
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pop_empty_stack_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_increments_size.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_updates_current_team.executor": "Run",
     "Python tests.Python tests in cartesian_distance_test.py.executor": "Run",
@@ -231,7 +236,7 @@
       <recent name="$PROJECT_DIR$/src/chess" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack">
+  <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -255,7 +260,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.team.history_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -267,11 +272,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.team.history_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.team.history_test.TeamStackTest.test_new_team_stack_is_empty" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -283,11 +288,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.team.history_test.TeamStackTest.test_new_team_stack_is_empty&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.team.history_test.TeamStackTest.test_null_team_push_raises_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -299,11 +304,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.team.history_test.TeamStackTest.test_null_team_push_raises_exception&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.team.history_test.TeamStackTest.test_popping_items_does_not_mutate_stack" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -315,11 +320,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.team.history_test.TeamStackTest.test_popping_items_does_not_mutate_stack&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in stack_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in history_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -331,17 +336,17 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/unit/chess_test/team/stack_test.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/unit/chess_test/team/history_test.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack" />
-        <item itemvalue="Python tests.Python tests in stack_test.py" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception" />
+        <item itemvalue="Python tests.Python tests in history_test.py" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.team.history_test.TeamStackTest.test_popping_items_does_not_mutate_stack" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.team.history_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.team.history_test.TeamStackTest.test_new_team_stack_is_empty" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.team.history_test.TeamStackTest.test_null_team_push_raises_exception" />
       </list>
     </recent_temporary>
   </component>
@@ -390,7 +395,7 @@
       <workItem from="1756418002735" duration="45509000" />
       <workItem from="1756523278510" duration="26841000" />
       <workItem from="1756645261789" duration="24677000" />
-      <workItem from="1756677849849" duration="23363000" />
+      <workItem from="1756677849849" duration="27508000" />
     </task>
     <servers />
   </component>
@@ -403,10 +408,6 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/chess/owner/cybernetic.py</url>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/chess/owner/base.py</url>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/config/logging_setup.py</url>
@@ -448,7 +449,7 @@
     <SUITE FILE_PATH="coverage/chessbot$owner_builder.coverage" NAME="owner_builder Coverage Results" MODIFIED="1754830988425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$chess_board_builder.coverage" NAME="chess_board_builder Coverage Results" MODIFIED="1754836419242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_builder.coverage" NAME="coord_stack Coverage Results" MODIFIED="1756181898853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756722211243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756724047285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_specification.coverage" NAME="coordinate_specification Coverage Results" MODIFIED="1756164098058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$square_iterator.coverage" NAME="square_iterator Coverage Results" MODIFIED="1756301098162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/board" />
     <SUITE FILE_PATH="coverage/chessbot$chess_piece_builder.coverage" NAME="chess_piece_builder Coverage Results" MODIFIED="1754426158452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />

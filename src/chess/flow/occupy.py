@@ -9,7 +9,7 @@ from chess.flow.base import Flow
 from chess.request.occupy import OccupationRequest
 from chess.request.validators.occupy import OccupationRequestValidator
 from chess.token.model.base import Piece
-from chess.token.model.combatant import Combatant
+from chess.token.model.combatant import CombatantPiece
 
 
 class OccupationFlow(Flow):
@@ -55,7 +55,7 @@ class OccupationFlow(Flow):
 
 
     @staticmethod
-    def _attack_stream(piece: Piece, target_square: Square) -> Combatant:
+    def _attack_stream(piece: Piece, target_square: Square) -> CombatantPiece:
         method = "OccupationFlow._attack_stream"
         if target_square.occupant is None:
             raise AttackPermissionInconsistencyException(
