@@ -21,47 +21,34 @@ class CoordinateStackValidator(Validator):
         method = f"{class_name}.validate"
 
         """
-        Validates a new CoordinateStack meets requirements:
+        Validates a CoordinateStack meets requirements:
             - Not null
             - CoordinateStack.items is not null
-            - CoordinateStack.current_coordinate is either null or meets CoordinateValidator
+            - CoordinateStack.current_coordinate is null if the stack is empty, otherwise is a validated Coordinate
             - if CoordinateStack.is_empty() is True then current_coordinate.size == 0
             - if CoordinateStack.is_empty() is False then current_coordinate is not null
             - If CoordinateStack.is_empty() then current_coordinate is null
-            
-        Do not test for pushing or popping coordinates here. They might change state unexpectedly.
-        Those operations are tested in their own unit tests.
-        If any validators state fails their exception will be encapsulated in a 
-        CoordinateStackValidationException
-            
+        Any failed requirement raise an exception wrapped in a CoordinateStackValidationException      
+
+        Validation tests do not change state so pushes and pops are:
+            - Tested in unit tests
+            - Piece life-cycles and flows.
+
         Args
             t (CoordinateStack): coordinate_stack to validate
-            
+
          Returns:
-             Result[T]: A Result object containing the validated payload if the validator is satisfied,
-                        CoordinateStackValidationException otherwise.
-        
+             Result[T]: Result instance containing a validated coordinate_stack as payload if validations 
+             are satisfied, CoordinateStackValidationException otherwise.
+
         Raises:
-            NullCoordinateStackException: if t is null
             TypeError: if t is not CoordinateStack
-            
-            RowOutOfBoundsException: If coordinate.row is outside the range 
-                (0, ROW_SIZE - 1) inclusive
-                
-            IsEmptyStackResultConflictsWithSizeException: If CoordinateStack.is_empty()
-                result conflicts with size()
-                
-            EmptyStackCurrentCoordinateValueMismatch: If CoordinateStack.is_empty()
-                result conflicts with current_coordinate value
-                
+            NullCoordinateStackException: if t is null
+
             InternalStackDataStructureException: If CoordinateStack.items is null
-            
-            CurrentCoordinateInconsistentStateException`: If current_coordinate
-                does not meet CoordinateValidator
-.
-            CoordinateStackValidationException: Wraps any
-                (preceding exceptions)
-                
+            InconsistentCurrentCoordinateException: If current_coordinate does not meet CoordinateValidator
+
+            CoordinateStackValidationException: Wraps any preceding exceptions
         """
         try:
             if t is None:

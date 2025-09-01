@@ -20,38 +20,34 @@ class TeamStackValidator(Validator):
         method = f"{class_name}.validate"
 
         """
-        Validates a new TeamStack meets requirements:
+        Validates a TeamStack meets requirements:
             - Not null
             - TeamStack.items is not null
-            - TeamStack.current_team is either null or meets TeamValidator
+            - TeamStack.current_team is null if the stack is empty, otherwise is a validated Team
             - if TeamStack.is_empty() is True then current_team.size == 0
             - if TeamStack.is_empty() is False then current_team is not null
             - If TeamStack.is_empty() then current_team is null
-
-        Do not test for pushing or popping teams here. They might change state unexpectedly.
-        Those operations are tested in their own unit tests.
-        If any validators state fails their exception will be encapsulated in a 
-        TeamStackValidationException
+          Any failed requirement raise an exception wrapped in a TeamStackValidationException      
+            
+        Validation tests do not change state so pushes and pops are:
+            - Tested in unit tests
+            - Owner life-cycles and flows.
 
         Args
             t (TeamStack): team_stack to validate
 
          Returns:
-             Result[T]: A Result object containing the validated payload if the validator is satisfied,
-                    TeamStackValidationException otherwise.
+             Result[T]: Result instance containing a validated team_stack as payload if validations are satisfied,
+             TeamStackValidationException otherwise.
 
         Raises:
-            NullTeamStackException: if t is null
             TypeError: if t is not TeamStack
+            NullTeamStackException: if t is null
 
             InternalStackDataStructureException: If TeamStack.items is null
+            InconsistentCurrentTeamException: If current_team does not meet TeamValidator
 
-            InconsistentCurrentTeamException`: If current_team
-                does not meet TeamValidator
-.
-            TeamStackValidationException: Wraps any
-                (preceding exceptions)
-
+            TeamStackValidationException: Wraps any preceding exceptions
         """
         try:
             if t is None:
@@ -89,10 +85,10 @@ class TeamStackValidator(Validator):
             return Result(payload=teams)
 
         except (
-                TypeError,
-                NullTeamStackException,
-                StackSizeConflictException,
-                InconsistentCurrentTeamException
+            TypeError,
+            NullTeamStackException,
+            StackSizeConflictException,
+            InconsistentCurrentTeamException
         ) as e:
             raise TeamStackValidationException(
                 f"{method}: {TeamStackValidationException.DEFAULT_MESSAGE}"

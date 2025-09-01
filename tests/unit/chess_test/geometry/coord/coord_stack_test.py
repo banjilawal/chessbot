@@ -1,11 +1,8 @@
 import unittest
 
-import pytest
-
-from chess.exception.coordinate_stack.push_null import NullCoordinatePushException
-from chess.exception.coordinate_stack.push_duplicate import DuplicateCoordinatePushException
+from chess.exception.stack import PopEmptyStackException, PushingNullEntityException, DuplicatePushException
 from chess.geometry.coordinate.coord import Coordinate
-from chess.geometry.coordinate.stack import CoordinateStack, PopEmptyCoordinateStackException
+from chess.geometry.coordinate.stack import CoordinateStack
 
 
 class CoordinateStackTest(unittest.TestCase):
@@ -19,12 +16,12 @@ class CoordinateStackTest(unittest.TestCase):
 
 
     def test_pop_empty_stack_raises_exception(self):
-        with self.assertRaises(PopEmptyCoordinateStackException):
+        with self.assertRaises(PopEmptyStackException):
             CoordinateStack().undo_push()
 
 
     def test_null_coordinate_push_raises_exception(self):
-        with self.assertRaises(NullCoordinatePushException):
+        with self.assertRaises(PushingNullEntityException):
             CoordinateStack().push_coordinate(None)
 
 
@@ -33,7 +30,7 @@ class CoordinateStackTest(unittest.TestCase):
         coordinate_stack = CoordinateStack()
         coordinate_stack.push_coordinate(coord)
 
-        with self.assertRaises(DuplicateCoordinatePushException):
+        with self.assertRaises(DuplicatePushException):
             coordinate_stack.push_coordinate(coord)
 
     def test_pushing_coordinate_updates_current_coordinate(self):

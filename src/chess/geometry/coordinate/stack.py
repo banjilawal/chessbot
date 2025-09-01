@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from typing import Optional, List
 
 from chess.exception.stack import (
@@ -19,8 +20,8 @@ class CoordinateStack:
         
 
     @property
-    def items(self) -> List[Coordinate]:
-        return self._items
+    def items(self) -> Sequence[Coordinate]:
+        return self._items.copy()
     
     
     @property

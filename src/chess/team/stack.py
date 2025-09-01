@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from typing import Optional, List
 
 from chess.exception.stack import (
@@ -16,19 +17,24 @@ class TeamStack:
         self._items = []
         self._current_team = self._items[-1] if self._items else None
 
+
     @property
-    def items(self) -> List[Team]:
+    def items(self) -> Sequence[Team]:
         return self._items.copy()
+
 
     @property
     def current_team(self) -> Optional[Team]:
         return self._items[-1] if self._items else None
 
+
     def is_empty(self) -> bool:
         return len(self._items) == 0
 
+
     def size(self) -> int:
         return len(self._items)
+
 
     def push_team(self, team):
         method = "TeamStack.push_team"
