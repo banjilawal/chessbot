@@ -1,18 +1,21 @@
 from abc import ABC
 from typing import Optional, List
 from chess.team.model import Team
-from chess.team.stack import TeamStack
+from chess.team.stack import TeamHistory
 
 
 class Owner(ABC):
     _id: int
     _name: str
-    _team_stack: TeamStack
+    _current_team: Optional[Team]
+    _team_history: TeamHistory
 
     def __init__(self, owner_id: int, name: str):
         self._id = owner_id
         self._name = name
-        self._team_stack =TeamStack()
+        self._team_history =TeamHistory()
+
+        self._current_team = self._team_history.current_team
 
 
     @property
@@ -26,12 +29,13 @@ class Owner(ABC):
 
 
     @property
-    def team_stack(self) -> TeamStack:
-        return self._team_stack
+    def team_history(self) -> TeamHistory:
+        return self._team_history
+
 
     @property
-    def team(self) -> Optional[Team]:
-        return self._team_stack.current_team()
+    def current_team(self) -> Optional[Team]:
+        return self._team_history.current_team
 
 
     @name.setter
@@ -50,11 +54,15 @@ class Owner(ABC):
 
 
     def __str__(self):
-        current_team = self._team_stack.current_team()
-        current_team_str = f"current_team:{current_team.id}, {current_team.color}" if (
-            current_team) else "current_team:None"
+        history_size = self.team_history.size()
+        team_size_str = f"total games:{history_size}" if history_size > 0 else ""
+
+        current_team_str = "" if self._current_team is None else \
+            f" curren_team:[{self._current_team.id}, {self._current_team.color}"
         return (
-            f"Player[id:{self._id} "
-            f"name:{self._name} {current_team_str} "
-            f"teams owned {self._team_stack.size()}]"
+            f"Owner[id:{self._id}"
+            f" name:{self._name}"
+            f"{current_team_str}"
+            f"{team_size_str }"
+            f"]"
         )

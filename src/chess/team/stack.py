@@ -9,7 +9,7 @@ from chess.exception.stack import (
 from chess.team.model import Team
 
 
-class TeamStack:
+class TeamHistory:
     _items: List[Team]
     _current_team: [Team]
 
@@ -20,6 +20,11 @@ class TeamStack:
 
     @property
     def items(self) -> Sequence[Team]:
+        """
+        Returns a read-only view of the stack's contents. The returned sequence is safe to
+        iterate and index, but mutating it will not affect the original stack.
+        """
+
         return self._items.copy()
 
 

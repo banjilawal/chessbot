@@ -39,8 +39,8 @@ class Team:
         self._pieces = []
 
 
-        if owner is not None and self != owner.team_stack.current_team():
-            owner.team_stack.push_team(self)
+        if owner is not None and self != owner.team_history.current_team():
+            owner.team_history.push_team(self)
         self._owner = owner
 
         #
@@ -91,8 +91,8 @@ class Team:
     def owner(self, owner: 'Owner'):
         if owner == self.owner:
             raise ValueError("Cannot set owner to the same owner.")
-        if owner is not None and self != owner.team_stack.current_team():
-            owner.team_stack.push_team(self)
+        if owner is not None and self != owner.team_history.current_team():
+            owner.team_history.push_team(self)
         self._owner = owner
 
 

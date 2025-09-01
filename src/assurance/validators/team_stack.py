@@ -8,13 +8,13 @@ from chess.exception.null.team_stack import NullTeamStackException
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
 from chess.exception.team_stack import InconsistentCurrentTeamException
-from chess.team.stack import TeamStack
+from chess.team.stack import TeamHistory
 
 
 class TeamStackValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[TeamStack]:
+    def validate(t: Generic[T]) -> Result[TeamHistory]:
         entity = "TeamStack"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -53,10 +53,10 @@ class TeamStackValidator(Validator):
             if t is None:
                 raise NullTeamStackException(f"{method} {NullTeamStackException.DEFAULT_MESSAGE}")
 
-            if not isinstance(t, TeamStack):
+            if not isinstance(t, TeamHistory):
                 raise TypeError(f"{method} Expected a TeamStack, got {type(t).__name__}")
 
-            teams = cast(TeamStack, t)
+            teams = cast(TeamHistory, t)
 
             if teams.size() > 0 and teams.is_empty():
                 raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")

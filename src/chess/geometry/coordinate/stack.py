@@ -21,6 +21,11 @@ class CoordinateStack:
 
     @property
     def items(self) -> Sequence[Coordinate]:
+        """
+        Returns a read-only view of the stack's contents. The returned sequence is safe to
+        iterate and index, but mutating it will not affect the original stack.
+        """
+
         return self._items.copy()
     
     

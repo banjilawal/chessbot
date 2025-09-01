@@ -1,8 +1,15 @@
 from typing import cast, Generic
 
-
+from assurance.exception.validation.id import IdValidationException
+from assurance.exception.validation.name import NameValidationException
+from assurance.exception.validation.owner import OwnerValidationException
+from assurance.exception.validation.team_stack import TeamStackValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
+from assurance.validators.id import IdValidator
+from assurance.validators.name import NameValidator
+from assurance.validators.team_stack import TeamStackValidator
+from chess.exception.null.owner import NullOwnerException
 from chess.owner.base import Owner
 
 
@@ -28,10 +35,9 @@ class OwnerValidator(Validator):
         """
         Validates a owner meets domain requirements:
             - Not null
-            - row is not null
-            - column is not null
-            - row is within the bounds of the chess chessboard
-            - column is within the bounds of the chess chessboard
+            - valid id
+            - valid name
+            - Owner.team_history meets validation requirements
         Any failed requirement raise an exception wrapped in a OwnerValidationException
             
         Args
@@ -61,9 +67,7 @@ class OwnerValidator(Validator):
 
             # If t is null no point continuing
             if t is None:
-                raise NullOwnerException(
-                    f"{method} NullOwnerException.DEFAULT_MESSAGE"
-                )
+                raise NullOwnerException(f"{method} NullOwnerException.DEFAULT_MESSAGE")
 
             # If cannot cast from t to Owner need to break
             if not isinstance(t, Owner):
@@ -72,23 +76,17 @@ class OwnerValidator(Validator):
             # cast and run checks for the fields
             owner = cast(Owner, t)
 
-            if owner.row is None:
-                raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
+            id_validation = IdValidator.validate(owner.id)
+            if not id_validation.is_success():
+                raise id_validation.exception
 
-            if owner.row < 0:
-                raise RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
+            name_validation = NameValidator.validate(owner.name)
+            if not name_validation.is_success():
+                raise name_validation.exception
 
-            if owner.row >= ROW_SIZE:
-                raise RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
-
-            if owner.column is None:
-                raise NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}")
-
-            if owner.column < 0:
-                raise ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
-
-            if owner.column >= COLUMN_SIZE:
-                raise ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
+            team_history_validation = TeamStackValidator.validate(owner.team_history)
+            if not team_history_validation.is_success():
+                raise team_history_validation.exception
 
             # Return the result if checks passed
             return Result(payload=owner)
@@ -96,14 +94,9 @@ class OwnerValidator(Validator):
         except (
             TypeError,
             NullOwnerException,
-
-            NullRowException,
-            RowBelowBoundsException,
-            RowAboveBoundsException,
-
-            NullColumnException,
-            ColumnBelowBoundsException,
-            ColumnAboveBoundsException
+            IdValidationException,
+            NameValidationException,
+            TeamStackValidationException
         ) as e:
             raise OwnerValidationException(
                 f"{method}: {OwnerValidationException.DEFAULT_MESSAGE}"
