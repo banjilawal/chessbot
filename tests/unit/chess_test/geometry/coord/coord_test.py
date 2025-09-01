@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import create_autospec
 
 import pytest
 
@@ -12,6 +13,15 @@ from chess.geometry.coordinate.coord import Coordinate
 
 
 class CoordinateTest(unittest.TestCase):
+
+    @staticmethod
+    def valid_mock_coordinate(row=0, column=0):
+        coord = create_autospec(Coordinate, instance=True)
+        coord.row = row
+        coord.column = column
+
+        return coord
+
 
     def test_null_row_raises_exception(self):
         with self.assertRaises(NullRowException):

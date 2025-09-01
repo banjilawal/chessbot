@@ -7,10 +7,22 @@ from assurance.exception.validation.name import NameValidationException
 from chess.board.square import Square
 from chess.geometry.coordinate.coord import Coordinate
 from chess.token.model.base import Piece
-from unit.assurance_test.validator.coord_test import CoordinateValidatorTest
+from unit.chess_test.geometry.coord.coord_test import CoordinateTest
 
 
-class SquareUnitTest(unittest.TestCase):
+class SquareTest(unittest.TestCase):
+
+    @staticmethod
+    def valid_mock_square(
+        square_id=1,
+        name="A-1",
+        coordinate=CoordinateTest.valid_mock_coordinate()
+    ):
+        square = create_autospec(Square, instance=True)
+        square.id=square_id
+        square.name=name
+        square.coordinate=coordinate
+        return square
 
     @patch('assurance.validators.coord.CoordinateValidator.validate')
     @patch('assurance.validators.name.NameValidator.validate')
@@ -117,7 +129,7 @@ class SquareUnitTest(unittest.TestCase):
 
 
     def test_set_occupant_passes_on_piece_not_null(self):
-        mock_coordinate=CoordinateValidatorTest.make_valid_mock_coordinate()
+        mock_coordinate=CoordinateTest.valid_mock_coordinate()
         mock_piece = create_autospec(Piece, instance=True)
 
         square = Square(square_id=1, name="A-2", coordinate=mock_coordinate)
