@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from chess.common.color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.owner.base import Owner
+from chess.owner.model import Owner
 from chess.team.model import Team
 
 

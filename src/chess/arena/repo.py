@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from chess.arena.model import Arena
 from chess.board.board import ChessBoard
-from chess.owner.base import Owner
+from chess.owner.model import Owner
 
 
 class ArenaRepo:

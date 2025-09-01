@@ -9,7 +9,7 @@ from chess.exception.coord_stack import InconsistentCurrentCoordinateException
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
 
 from chess.exception.null.coord_stack import NullCoordinateStackException
-from chess.geometry.coordinate.stack import CoordinateStack
+from chess.token.model.coord import CoordinateStack
 
 
 class CoordinateStackValidator(Validator):

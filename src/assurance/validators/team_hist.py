@@ -8,7 +8,7 @@ from chess.exception.null.team_stack import NullTeamHistory
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
 from chess.exception.team_hist import CurrentTeamException
-from chess.team.stack import TeamHistory
+from chess.owner.team import TeamHistory
 
 
 class TeamHistoryValidator(Validator):

@@ -1,12 +1,14 @@
-from typing import List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING, cast
 
+from assurance.validators.id import IdValidator
 from chess.common.color import GameColor
 from chess.geometry.quadrant import Quadrant
 
-from chess.token.mobility_status import MobilityStatus
+from chess.token.model.mobility_status import MobilityStatus
+from chess.token.model.combatant import CombatantPiece
 
 if TYPE_CHECKING:
-    from chess.owner.base import Owner
+    from chess.owner.model import Owner
     from chess.token.model import Piece
 
 
@@ -30,6 +32,11 @@ class Team:
         home_quadrant: Quadrant,
         owner: 'Owner'
     ):
+
+        id_validation = IdValidator.validate(team_id)
+        if not id_validation.is_success():
+            raise id_validation.exception
+
         self._id = team_id
         self._letter = letter
         self._color = team_color
@@ -100,8 +107,23 @@ class Team:
         matches: List['Piece'] = []
 
         for piece in self._pieces:
-            if piece.status == MobilityStatus.FREE and piece not in matches:
-                matches.append(piece)
+            if isinstance(piece, CombatantPiece):
+                combatant = cast(piece, CombatantPiece)
+                if combatant.captor in None:
+                    matches.append(combatant)
+
+        return matches
+
+
+    def captured_pieces(self) -> List['Piece']:
+        matches: List['Piece'] = []
+
+        for piece in self._pieces:
+            if isinstance(piece, CombatantPiece):
+                combatant = cast(piece, CombatantPiece)
+                if combatant.captor is not None:
+                    matches.append(combatant)
+
         return matches
 
 

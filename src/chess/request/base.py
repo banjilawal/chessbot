@@ -1,4 +1,3 @@
-from itertools import filterfalse
 from typing import Generic, TypeVar, Optional
 
 T = TypeVar('T')

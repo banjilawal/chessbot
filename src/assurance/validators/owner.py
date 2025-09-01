@@ -11,7 +11,7 @@ from assurance.validators.name import NameValidator
 from assurance.validators.team_hist import TeamHistoryValidator
 
 from chess.exception.null.owner import NullOwnerException
-from chess.owner.base import Owner
+from chess.owner.model import Owner
 
 
 class OwnerValidator(Validator):

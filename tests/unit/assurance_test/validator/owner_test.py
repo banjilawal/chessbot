@@ -6,7 +6,7 @@ from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.owner import OwnerValidationException
 from assurance.validators.owner import OwnerValidator
 from chess.exception.null.owner import NullOwnerException
-from chess.owner.base import Owner
+from chess.owner.model import Owner
 from unit.chess_test.owner.owner_test import OwnerTest
 
 

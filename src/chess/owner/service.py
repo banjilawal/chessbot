@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from chess.owner.base import Owner
+from chess.owner.model import Owner
 from chess.owner.repo import OwnerRepo
 
 

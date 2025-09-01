@@ -12,8 +12,8 @@ from assurance.validators.team import TeamValidator
 from chess.geometry.coordinate.coord import Coordinate
 from chess.team.model import Team
 from chess.token.model.obstruction import Obstruction
-from chess.token.mobility_status import MobilityStatus
-from chess.geometry.coordinate.stack import CoordinateStack
+from chess.token.model.mobility_status import MobilityStatus
+from chess.token.model.coord import CoordinateStack
 
 if TYPE_CHECKING:
     from chess.rank.base import Rank

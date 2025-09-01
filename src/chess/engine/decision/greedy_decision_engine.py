@@ -6,7 +6,7 @@ from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
 from chess.geometry.coordinate.euclid import Distance
 from chess.geometry.coordinate.coord import Coordinate
-from chess.owner.cybernetic import CyberneticOwner
+from chess.owner.model import CyberneticOwner
 
 
 class GreedyDecisionEngine(DecisionEngine):

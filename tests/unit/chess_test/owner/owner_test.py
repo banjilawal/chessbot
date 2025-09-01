@@ -3,8 +3,8 @@ from unittest.mock import create_autospec, patch
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from chess.owner.base import Owner
-from chess.team.stack import TeamHistory
+from chess.owner.model import Owner
+from chess.owner.team import TeamHistory
 
 
 class OwnerTest(unittest.TestCase):

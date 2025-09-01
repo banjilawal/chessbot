@@ -1,8 +1,8 @@
 from typing import List
 
 from chess.arena.model import Arena
-from chess.geometry.coordinate.stack import CoordinateStack
-from chess.owner.base import Owner
+from chess.token.model.coord import CoordinateStack
+from chess.owner.model import Owner
 
 class Game:
     _id: int

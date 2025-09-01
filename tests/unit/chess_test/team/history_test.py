@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import create_autospec
 
-from chess.exception.stack import PopEmptyStackException, PushingNullEntityException, DuplicatePushException
+from chess.exception.stack import PushingNullEntityException, DuplicatePushException
 from chess.team.model import Team
-from chess.team.stack import TeamHistory
+from chess.owner.team import TeamHistory
 
 
 class TeamStackTest(unittest.TestCase):

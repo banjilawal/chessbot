@@ -7,7 +7,7 @@ from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.owner_factory import OwnerFactory
 from chess.creator.entity.factory.team_factory import TeamFactory
 from chess.creator.team_placement_manager import TeamPlacementManager
-from chess.owner.base import Owner
+from chess.owner.model import Owner
 
 
 class ArenaBuilder:

@@ -1,8 +1,8 @@
 from typing import List, Optional
 
-from chess.owner.cybernetic import CyberneticOwner
-from chess.owner.human import HumanOwner
-from chess.owner.base import Owner
+from chess.owner.model import CyberneticOwner
+from chess.owner.model import HumanOwner
+from chess.owner.model import Owner
 
 
 class OwnerRepo:

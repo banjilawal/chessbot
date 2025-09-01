@@ -6,8 +6,8 @@ from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
 from chess.config.team import TeamConfig
-from chess.owner.human import HumanOwner
-from chess.owner.base import Owner
+from chess.owner.model import HumanOwner
+from chess.owner.model import Owner
 from chess.randomize.name import RandomName
 from chess.team.model import Team
 

@@ -3,7 +3,7 @@ from enum import Enum
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.coord_stack import CoordinateStackValidator
-from chess.geometry.coordinate.stack import CoordinateStack
+from chess.token.model.coord import CoordinateStack
 
 
 class CoordinateStackBuilder(Enum):

@@ -8,7 +8,7 @@ from chess.geometry.coordinate.coord import Coordinate
 
 if TYPE_CHECKING:
     from chess.engine.analyze.board_analyzer import BoardAnalyzer
-    from chess.owner.cybernetic import CyberneticOwner
+    from chess.owner.model import CyberneticOwner
 
 
 class DecisionEngine(ABC):
