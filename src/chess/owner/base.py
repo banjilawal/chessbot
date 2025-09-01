@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import Optional, List
 from chess.team.model import Team
-from chess.team.team_stack import TeamStack
+from chess.team.stack import TeamStack
 
 
 class Owner(ABC):

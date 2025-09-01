@@ -1,13 +1,12 @@
 from typing import Generic, cast
 
 from assurance.exception.validation.coord_stack import CoordinateStackValidationException
-from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.result.base import Result
 from assurance.validators.coord import CoordinateValidator
 from assurance.validators.base import Validator, T
 from chess.exception.coordinate_stack.conflict import IsEmptyStackResultConflictsWithSizeException
 from chess.exception.coordinate_stack.current import CurrentCoordinateInconsistentStateException
-from chess.exception.coordinate_stack.internal_structure import InternalStackDataStructureException
+from chess.exception.stack import CorruptedStackException
 from chess.exception.coordinate_stack.mismatch import EmptyStackCurrentCoordinateValueMismatch
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.coord_stack import NullCoordinateStackException
@@ -93,8 +92,8 @@ class CoordinateStackValidator(Validator):
                 )
 
             if coords.items is None:
-                raise InternalStackDataStructureException(
-                    f"{method} {InternalStackDataStructureException.DEFAULT_MESSAGE}"
+                raise CorruptedStackException(
+                    f"{method} {CorruptedStackException.DEFAULT_MESSAGE}"
                 )
 
             current_coord = coords.current_coordinate
@@ -108,12 +107,12 @@ class CoordinateStackValidator(Validator):
             return Result(payload=coords)
 
         except (
-            TypeError,
-            NullCoordinateException,
-            IsEmptyStackResultConflictsWithSizeException,
-            EmptyStackCurrentCoordinateValueMismatch,
-            InternalStackDataStructureException,
-            CurrentCoordinateInconsistentStateException
+                TypeError,
+                NullCoordinateException,
+                IsEmptyStackResultConflictsWithSizeException,
+                EmptyStackCurrentCoordinateValueMismatch,
+                CorruptedStackException,
+                CurrentCoordinateInconsistentStateException
         ) as e:
             raise CoordinateStackValidationException(
                 f"{method}: {CoordinateStackValidationException.DEFAULT_MESSAGE}"
