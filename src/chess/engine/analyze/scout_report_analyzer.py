@@ -4,7 +4,7 @@ from chess.board.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coordinate.euclid import Distance
 from chess.geometry.coordinate.coord import Coordinate
-from chess.token.model.obstruction import Obstruction
+from chess.token.model.map import Record
 from chess.token.model import Piece
 
 from chess.engine.scout.scout_report import ScoutReport
@@ -60,14 +60,14 @@ class ScoutReportAnalyzer:
         return vacant_squares
 
 
-    def _sort_obstructions(self) -> List[Obstruction]:
-        obstructions: List[Obstruction] = []
+    def _sort_obstructions(self) -> List[Record]:
+        obstructions: List[Record] = []
 
         for square in self._scout_report.squares:
             occupant = square.occupant
 
             if occupant is not None and not self._scout.is_enemy(occupant):
-                obstruction = Obstruction(occupant)
+                obstruction = Record(occupant)
                 if obstruction not in obstructions:
                     obstructions.append(obstruction)
             else:

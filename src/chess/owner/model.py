@@ -3,6 +3,7 @@ from typing import Optional, cast
 
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
+from chess.engine.decision.decision_engine import DecisionEngine
 from chess.team.model import Team
 from chess.owner.team import TeamHistory
 

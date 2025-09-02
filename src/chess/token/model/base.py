@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import List, TYPE_CHECKING, Optional
+from typing import List, TYPE_CHECKING, Optional, cast
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
@@ -9,9 +9,11 @@ from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from assurance.validators.rank import RankValidator
 from assurance.validators.team import TeamValidator
+from chess.exception.null.piece import NNullPieceException
+from chess.exception.piece import MappingSelfException
 from chess.geometry.coordinate.coord import Coordinate
 from chess.team.model import Team
-from chess.token.model.obstruction import Obstruction
+from chess.token.model.map import Record, ObservationChart
 from chess.token.model.mobility_status import MobilityStatus
 from chess.token.model.coord import CoordinateStack
 
@@ -32,44 +34,48 @@ class Piece(ABC):
     _captor: 'Piece'
     _current_position: Coordinate
     _status: MobilityStatus
-    _obstructions: List[Obstruction]
+    _observations: ObservationChart
     _positions: CoordinateStack
 
 
     def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
         method = "Piece.__init__"
 
-        id_result = IdValidator.validate(piece_id)
-        if not id_result.is_success():
+        id_validation = IdValidator.validate(piece_id)
+        if not id_validation.is_success():
             raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-        name_result = NameValidator.validate(name)
-        if not name_result.is_success():
+        name_validation = NameValidator.validate(name)
+        if not name_validation.is_success():
             raise NameValidationException(
                 f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
             )
 
-        rank_result = RankValidator.validate(rank)
-        if not rank_result.is_success():
+        rank_validation = RankValidator.validate(rank)
+        if not rank_validation.is_success():
             raise RankValidationException(f"{method}: {RankValidationException.DEFAULT_MESSAGE}")
 
-        team_result = TeamValidator.validate(team)
-        if not team_result.is_success():
+        team_validation = TeamValidator.validate(team)
+        if not team_validation.is_success():
             raise TeamValidationException(
                 f"{method}: {TeamValidationException.DEFAULT_MESSAGE}"
             )
+        team = cast(team_validation.payload, Team)
 
-        self._id = id_result.payload
-        self._name = name_result.payload
-        self._rank = rank_result.payload
-        self._team = team_result.payload
 
-        self._obstructions = []
+
+        self._id = cast(id_validation.payload, int)
+        self._name = cast(name_validation.payload, str)
+        self._rank = cast(rank_validation.payload, Rank)
+
+        if self not in team.pieces:
+            team.pieces.append(self)
+        self._team = team
+
         self._status = MobilityStatus.FREE
 
+        self._observations = ObservationChart()
         self._positions = CoordinateStack()
-        team_result.payload.pieces.append(self)
-
         self._current_position = self._positions.current_coordinate
 
 
@@ -109,8 +115,8 @@ class Piece(ABC):
 
 
     @property
-    def obstructions(self) -> List[Obstruction]:
-        return self._obstructions
+    def observations(self) -> ObservationChart:
+        return self._observations
 
 
     def __eq__(self, other):
@@ -133,21 +139,15 @@ class Piece(ABC):
         return self._team != piece.team
 
 
-    def add_obstruction(self, obstructor: 'Piece'):
-        if obstructor is None:
-            raise Exception("Cannot add null obstruction.")
-        if obstructor.status != MobilityStatus.PRISONER:
-            raise Exception("A prisoner is not on the chessboard it cannot be blocking")
-        if obstructor is self:
-            raise Exception("Cannot block self.")
+    def add_observation(self, piece: 'Piece'):
+        method = "Piece.add_observation"
 
-        if obstructor not in self._obstructions:
-            self._obstructions.append(Obstruction(obstructor))
-        print("Obstruction added")
+        if piece is None:
+            raise NNullPieceException(f"{method}: {NNullPieceException.DEFAULT_MESSAGE}")
+        if piece is self:
+            raise MappingSelfException(f"{method}: {MappingSelfException.DEFAULT_MESSAGE}")
 
-
-    def reset_obstruction_list(self):
-        self._obstructions.clear()
+        self._observations.add_record(Record(piece))
 
 
     def __str__(self):
@@ -158,5 +158,8 @@ class Piece(ABC):
             f"current_position: {self._positions.current_coordinate} "
             f"status:{self._status.name}"
         )
+
+
+
 
 

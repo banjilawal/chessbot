@@ -1,54 +1,48 @@
 from typing import List, TYPE_CHECKING, cast
 
 from assurance.validators.id import IdValidator
+from assurance.validators.owner import OwnerValidator
 from chess.common.color import GameColor
+from chess.config.team import TeamConfig
 from chess.geometry.quadrant import Quadrant
+from chess.team.piece import PieceList
+from chess.token.model.combatant import CombatantPiece
 
 from chess.token.model.mobility_status import MobilityStatus
-from chess.token.model.combatant import CombatantPiece
+
 
 if TYPE_CHECKING:
     from chess.owner.model import Owner
-    from chess.token.model import Piece
+    from chess.token.model.base import Piece
 
 
 class Team:
     _id: int
-    _letter: str
     _owner: 'Owner'
-    _color: GameColor
-    _back_row_index: int
-    _pawn_row_index: int
-    _home_quadrant: Quadrant
-    _pieces: List['Piece']
+    _conf: TeamConfig
+    _pieces: List[Piece]
 
-    def __init__(
-        self,
-        team_id: int,
-        letter: str,
-        team_color: GameColor,
-        back_row_index: int,
-        pawn_row_index: int,
-        home_quadrant: Quadrant,
-        owner: 'Owner'
-    ):
+    def __init__(self, team_id: int, owner: 'Owner', conf: TeamConfig):
+        method = "Team.__init__"
 
         id_validation = IdValidator.validate(team_id)
         if not id_validation.is_success():
             raise id_validation.exception
+        team_id = cast(id_validation.payload, int)
+
+        owner_validation = OwnerValidator.validate(owner)
+        if not owner_validation.is_success():
+            raise owner_validation.exception
+        owner = cast(owner_validation.payload, Owner)
+
+        if owner is not None and self not in owner.team_history:
+            owner.team_history.push_team(self)
 
         self._id = team_id
-        self._letter = letter
-        self._color = team_color
-        self._back_row_index = back_row_index
-        self._pawn_row_index = pawn_row_index
-        self._home_quadrant = home_quadrant
-        self._pieces = []
-
-
-        if owner is not None and self != owner.team_history.current_team():
-            owner.team_history.push_team(self)
         self._owner = owner
+        self._conf = conf
+        self._pieces = PieceList()
+
 
         #
         # print("Team owner is", owner.id) if owner is not None else print("Team owner is None")
@@ -60,47 +54,20 @@ class Team:
 
 
     @property
-    def letter(self) -> str:
-        return self._letter
-
-
-    @property
     def owner(self) -> 'Owner':
         return self._owner
 
 
     @property
-    def color(self) -> GameColor:
-        return self._color
+    def conf(self) -> TeamConfig:
+        return self._conf
 
 
     @property
-    def back_rank_index(self) -> int:
-        return self._back_row_index
-
-
-    @property
-    def pawn_rank_index(self) -> int:
-        return self._pawn_row_index
-
-
-    @property
-    def home_quadrant(self) -> Quadrant:
-        return self._home_quadrant
-
-
-    @property
-    def pieces(self) -> List['Piece']:
+    def pieces(self) -> PieceList:
         return self._pieces
 
 
-    @owner.setter
-    def owner(self, owner: 'Owner'):
-        if owner == self.owner:
-            raise ValueError("Cannot set owner to the same owner.")
-        if owner is not None and self != owner.team_history.current_team():
-            owner.team_history.push_team(self)
-        self._owner = owner
 
 
     def free_pieces(self) -> List['Piece']:
