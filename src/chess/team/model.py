@@ -2,9 +2,7 @@ from typing import List, TYPE_CHECKING, cast
 
 from assurance.validators.id import IdValidator
 from assurance.validators.owner import OwnerValidator
-from chess.common.color import GameColor
 from chess.config.team import TeamConfig
-from chess.geometry.quadrant import Quadrant
 from chess.team.piece import PieceList
 from chess.token.model.combatant import CombatantPiece
 

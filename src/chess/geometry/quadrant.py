@@ -8,19 +8,18 @@ from chess.geometry.vector.scalar import Scalar
 
 
 class Quadrant(Enum):
-    def __new__(cls, quad_id:int, vector: Vector, scalar: Scalar=Scalar(value=0), row: Optional[int]=None):
+    def __new__(cls, quad_id:int, vector: Vector):
         obj = object.__new__(cls)
         obj._id = quad_id
         obj._vector = vector
-        obj._scalar = scalar
-        obj._row = row
+
         return obj
 
-    N = (auto(), Vector(x=0, y=1), Scalar(value=-1), 0)
+    N = (auto(), Vector(x=0, y=1))
     NE = (auto(), Vector(x=1, y=1))
     E = (auto(), Vector(x=1, y=0))
     SE = (auto(), Vector(x=1, y=-1))
-    S = (auto(), Vector(x=0, y=-1), Scalar(value=1), BOARD_DIMENSION - 1)
+    S = (auto(), Vector(x=0, y=-1))
     SW = (auto(), Vector(x=-1, y=-1))
     W = (auto(), Vector(x=-1, y=0))
     NW = (auto(), Vector(x=-1, y=1))
@@ -36,32 +35,8 @@ class Quadrant(Enum):
         return self._vector
 
 
-    @property
-    def scalar(self) -> Optional[Scalar]:
-        return self._scalar
-
-
-    @property
-    def row(self) -> Optional[int]:
-        return self._row
-
-
-    def enemy_quadrant(self) -> Optional['Quadrant']:
-        if self == Quadrant.N:
-            return Quadrant.S
-        return Quadrant.N
-
-
     def __str__(self) -> str:
-        scalar_str = f", {self._scalar}" if self.scalar != Scalar(value=0) else f""
-        row_str = f", row:{self._row}" if self._row is not None else ""
-        return (
-            f"Quadrant[name:{self.name}, "
-            f"id:{self._id}, "
-            f"{self._vector}"
-            f"{scalar_str}"
-            f"{row_str}]"
-        )
+        return f"Quadrant[ id:{self._id} name:{self.name} {self._vector}"
 
 
 def main():

@@ -1,22 +1,24 @@
 from enum import Enum
 
 from chess.common.color import GameColor
+from chess.common.config import BOARD_DIMENSION, ROW_SIZE
 from chess.geometry.quadrant import Quadrant
-from chess.geometry.vector.delta import Vector
+from chess.geometry.vector.scalar import Scalar
 
 
 class TeamConfig(Enum):
 
-    def __new__(cls, game_color: GameColor, advancing_step: Vector, home_quadrant: Quadrant):
+    def __new__(cls, game_color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant):
         obj = object.__new__(cls)
         obj._game_color = game_color
+        obj._rank_row = rank_row
         obj._advancing_step = advancing_step
         obj._quadrant = home_quadrant
 
         return obj
 
-    WHITE = (GameColor.WHITE, Vector(x=0, y=1), Quadrant.N)
-    BLACK = (GameColor.BLACK, Vector(x=0, y=-1), Quadrant.S)
+    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N)
+    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S)
 
 
     @property
@@ -30,14 +32,8 @@ class TeamConfig(Enum):
 
 
     @property
-    def rank_row(self) -> int:
-        return self._quadrant.row
-
-
-    @property
-    def pawn_row(self) -> int:
-        return self._quadrant.row + self._advancing_step.y
-
+    def advancing_step(self) -> Scalar:
+        return self._advancing_step
 
     @property
     def home_quadrant(self) -> Quadrant:
@@ -45,17 +41,28 @@ class TeamConfig(Enum):
 
 
     @property
+    def rank_row(self) -> int:
+        return self._rank_row
+
+
+    @property
+    def pawn_row(self) -> int:
+        return self._rank_row + self._advancing_step.value
+
+
+    @property
     def enemy_quadrant(self) -> Quadrant:
-        return self._quadrant.enemy_quadrant()
+        return Quadrant.S if self == Quadrant.N else Quadrant.N
+
 
     def __str__(self) -> str:
         return (
-            f"Quadrant[name:{self.name}, "
             f"color:{self._game_color.name}, "
             f"advancing_step:{self._advancing_step} "
             f"rank_row:{self.rank_row} "
-            f"pawn_row{self.pawn_row}]"
+            f"pawn_row:{self.pawn_row}]"
         )
+
 
 def main():
     conf = TeamConfig.WHITE
