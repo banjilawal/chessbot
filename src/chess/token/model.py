@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Optional, cast
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from assurance.exception.validation.rank.rank_validation_exception import RankValidationException
+
 from assurance.exception.validation.team import SideValidationException
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
@@ -13,9 +13,10 @@ from chess.exception.null.piece import NullPieceException
 from chess.exception.piece import MappingSelfException, PrisonerReleaseException, NullCaptorException
 from chess.geometry.coord import Coordinate
 from chess.team.model import Side
+from chess.token.coord import CoordinateStack
 from chess.token.encounter import Encounter, EncounterLog
 
-from chess.token.model.coord
+
 if TYPE_CHECKING:
     from chess.rank.base import Rank
     # from assurance.validators.rank import RankValidator
@@ -35,7 +36,7 @@ class Piece(ABC):
     _current_position: Coordinate
     # _status: MobilityStatus
     _observations: EncounterLog
-    _positions:
+    _positions: CoordinateStack
 
 
     def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
