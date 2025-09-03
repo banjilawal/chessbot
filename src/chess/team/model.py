@@ -3,12 +3,11 @@ from typing import List, TYPE_CHECKING, cast, Sequence, Optional
 from assurance.validators.id import IdValidator
 from assurance.validators.owner import CompertitorValidator
 from chess.config.team import SideProfile
-from chess.token.model.combatant import CombatantPiece
 
 
 if TYPE_CHECKING:
     from chess.competitor.model import Competitor
-    from chess.token.model.base import Piece
+    from chess.token.model import Piece
 
 
 class Side:

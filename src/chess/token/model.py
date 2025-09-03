@@ -13,7 +13,7 @@ from chess.exception.null.piece import NullPieceException
 from chess.exception.piece import MappingSelfException
 from chess.geometry.coord import Coordinate
 from chess.team.model import Side
-from chess.token.model.map import Record, ObservationChart
+from chess.token.encounter import Encounter, EncounterLog
 from chess.token.model.mobility_status import MobilityStatus
 from chess.token.model.coord import CoordinateStack
 
@@ -29,16 +29,16 @@ if TYPE_CHECKING:
 class Piece(ABC):
     _id: int
     _name: str
-    _team: 'Side'
+    _side: 'Side'
     _rank: 'Rank'
     _captor: 'Piece'
     _current_position: Coordinate
     _status: MobilityStatus
-    _observations: ObservationChart
+    _observations: EncounterLog
     _positions: CoordinateStack
 
 
-    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Side'):
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
         method = "Piece.__init__"
 
         id_validation = IdValidator.validate(piece_id)
@@ -55,24 +55,24 @@ class Piece(ABC):
         if not rank_validation.is_success():
             raise RankValidationException(f"{method}: {RankValidationException.DEFAULT_MESSAGE}")
 
-        team_validation = TeamValidator.validate(team)
+        team_validation = TeamValidator.validate(side)
         if not team_validation.is_success():
             raise TeamValidationException(
                 f"{method}: {TeamValidationException.DEFAULT_MESSAGE}"
             )
-        team = cast(team_validation.payload, Side)
+        side = cast(team_validation.payload, Side)
 
         self._id = cast(id_validation.payload, int)
         self._name = cast(name_validation.payload, str)
         self._rank = cast(rank_validation.payload, Rank)
 
-        if self not in team.pieces:
-            team.pieces.append(self)
-        self._team = team
+        if self not in side.pieces:
+            side.pieces.append(self)
+        self._side = side
 
         self._status = MobilityStatus.FREE
 
-        self._observations = ObservationChart()
+        self._observations = EncounterLog()
         self._positions = CoordinateStack()
         self._current_position = self._positions.current_coordinate
 
@@ -88,8 +88,8 @@ class Piece(ABC):
 
 
     @property
-    def team(self) -> 'Side':
-        return self._team
+    def side(self) -> 'Side':
+        return self._side
 
 
     @property
@@ -113,7 +113,7 @@ class Piece(ABC):
 
 
     @property
-    def observations(self) -> ObservationChart:
+    def observations(self) -> EncounterLog:
         return self._observations
 
 
@@ -134,7 +134,7 @@ class Piece(ABC):
     def is_enemy(self, piece: 'Piece'):
         if piece is None:
             raise Exception("Cannot run is_enemy() state on a null captor.")
-        return self._team != piece.team
+        return self._side != piece.side
 
 
     def add_observation(self, piece: 'Piece'):
@@ -145,7 +145,7 @@ class Piece(ABC):
         if piece is self:
             raise MappingSelfException(f"{method}: {MappingSelfException.DEFAULT_MESSAGE}")
 
-        self._observations.add_record(Record(piece))
+        self._observations.add_encounter(Encounter(piece))
 
 
     def __str__(self):
@@ -159,5 +159,37 @@ class Piece(ABC):
 
 
 
+class CombatantPiece(Piece):
+    _captor: Optional[Piece]
+
+    def __init__(self, token_id: int, name: str, rank: 'Rank', side: 'Side'):
+        super().__init__(token_id, name, rank, side)
+        self._captor = None
+
+
+    @property
+    def captor(self) -> Optional[Piece]:
+        return self._captor
+
+
+    @captor.setter
+    def captor(self, captor: Piece):
+        method = "Captor.@setter.captor"
+
+        if captor is None:
+            raise NullCaptorException(f"{method}: {NullCaptorException.DEFAULT_MESSAGE}")
+
+        if self._captor is not None:
+            raise PrisonerReleaseException(f"{method}: {PrisonerReleaseException.DEFAULT_MESSAGE}")
+
+        self._captor = captor
+
+
+    def __eq__(self, other):
+        if not super().__eq__(other):
+            return False
+
+        if isinstance(other, CombatantPiece):
+            return self.id == other.id
 
 

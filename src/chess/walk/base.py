@@ -7,7 +7,7 @@ from chess.geometry.coord import Coordinate
 
 
 if TYPE_CHECKING:
-    from chess.token.model.base import Piece
+    from chess.token.model import Piece
 
 
 class Walk(ABC):

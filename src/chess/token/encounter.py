@@ -7,19 +7,19 @@ if TYPE_CHECKING:
     from chess.token.model import Piece
 
 
-class Record:
-    _team_id: int
+class Encounter:
+    _side_id: int
     _piece_id: int
     _piece_name: str
-    _rank_id: int
+    _rank_value: int
     _location: Coordinate
 
 
     def __init__(self, piece: 'Piece'):
         self._piece_id = piece.id
         self._piece_name = piece.name
-        self._rank_id = piece.rank.id
-        self._team_id = piece.team.id
+        self._rank_value = piece.rank.value
+        self._side_id = piece.side.id
         self._location = piece.current_coordinate
 
 
@@ -48,19 +48,19 @@ class Record:
         return self._location
 
 
-class ObservationChart:
-    _items: List[Record]
+class EncounterLog:
+    _items: List[Encounter]
 
     def __init__(self):
         self._items = []
 
 
     @property
-    def items(self) -> List[Record]:
+    def items(self) -> List[Encounter]:
         return self._items
 
 
-    def add_record(self, record: Record):
+    def add_encounter(self, record: Encounter):
         method = "RecordList.add_record"
 
         if record is None:

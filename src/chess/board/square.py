@@ -8,7 +8,7 @@ from assurance.validators.name import NameValidator
 
 if TYPE_CHECKING:
     from chess.geometry.coord import Coordinate
-    from chess.token.model.base import Piece
+    from chess.token.model import Piece
 
 class Square:
     _id: int
@@ -89,7 +89,7 @@ class Square:
     def occupant(self, piece: Optional['Piece']):
         method = f"Square.occupant"
 
-        from chess.token.model.base import Piece
+        from chess.token.model import Piece
         if piece is not None and not isinstance(piece, Piece):
             raise TypeError(f"{method}: Expected a Piece, got {type(piece).__name__}")
 

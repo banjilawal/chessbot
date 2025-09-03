@@ -4,7 +4,7 @@ from typing import List
 from chess.board.board import ChessBoard
 from chess.geometry.coord import Coordinate
 from chess.geometry.quadrant import Quadrant
-from chess.token.model.base import Piece
+from chess.token.model import Piece
 
 
 class Rank(ABC):

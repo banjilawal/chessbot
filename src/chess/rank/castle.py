@@ -10,7 +10,7 @@ from chess.geometry.path import Path, Line
 from chess.rank.base import Rank
 from chess.geometry.quadrant import Quadrant
 from chess.request.occupy import OccupationRequest
-from chess.token.model.base import Piece
+from chess.token.model import Piece
 
 
 class CastleRank(Rank):

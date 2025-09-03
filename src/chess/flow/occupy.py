@@ -5,14 +5,12 @@ from chess.board.square import Square
 from chess.common.permit import Event
 from chess.exception.event import AttackPermissionInconsistencyException, \
     InconsistentMarkObstructionException
-from chess.exception.null.piece import NullPieceException
 from chess.exception.piece import AttackingKingException, AttackingNullPieceException
 from chess.flow.base import Flow
 from chess.request.occupy import OccupationRequest
 from chess.request.validators.occupy import OccupationRequestValidator
-from chess.token.model.base import Piece
-from chess.token.model.combatant import CombatantPiece
-from chess.token.model.map import Record
+from chess.token.model import Piece
+from chess.token.encounter import Encounter
 
 
 class OccupationFlow(Flow):
@@ -54,7 +52,7 @@ class OccupationFlow(Flow):
                 f"{method}: "
                 f"{InconsistentMarkObstructionException.DEFAULT_MESSAGE}"
             )
-        piece.observations.add_record(Record(blocking_occupant))
+        piece.observations.add_encounter(Encounter(blocking_occupant))
 
 
     @staticmethod

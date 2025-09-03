@@ -5,7 +5,7 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from chess.rank.base import Rank
 from chess.team.model import Side
-from chess.token.model.base import Piece
+from chess.token.model import Piece
 
 
 
@@ -23,7 +23,7 @@ class PieceTest(unittest.TestCase):
         piece.id = piece_id
         piece.name = name
         piece.rank = mock_rank
-        piece.team = mock_team
+        piece.side = mock_team
 
         return piece
 

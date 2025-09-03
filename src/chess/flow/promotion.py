@@ -5,7 +5,7 @@ from chess.config.rank import RankConfig
 from chess.flow.base import Flow
 from chess.rank.queen import QueenRank, PromotedQueen
 from chess.request.promote import PromotionRequest
-from chess.token.model.base import Piece
+from chess.token.model import Piece
 
 
 class PromotionFlow(Flow):
@@ -29,4 +29,4 @@ class PromotionFlow(Flow):
             territories=RankConfig.QUEEN.territories,
         )
 
-        piece = Piece(piece_id=client.id, name=client.name, team=client.team, rank=promoted_queen)
+        piece = Piece(piece_id=client.id, name=client.name, side=client.side, rank=promoted_queen)

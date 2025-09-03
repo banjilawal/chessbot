@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.board.square import Square
-from chess.token.model.map import Record
+from chess.token.encounter import Encounter
 from chess.token.model import Piece
 
 
@@ -10,7 +10,7 @@ class ScoutReportAnalysis:
     _chess_piece: Piece
     _enemies: List[Piece]
     _vacant_squares: List[Square]
-    _obstructions: List[Record]
+    _obstructions: List[Encounter]
 
     _obstruction_count: int
     _vacancy_count: int
@@ -21,7 +21,7 @@ class ScoutReportAnalysis:
                  chess_piece: Piece,
                  enemies: List[Piece],
                  vacant_squares: List[Square],
-                 obstructions: List[Record]
+                 obstructions: List[Encounter]
                  ):
         self._id = analysis_id
         self._chess_piece = chess_piece
@@ -50,7 +50,7 @@ class ScoutReportAnalysis:
         return self._vacant_squares
 
     @property
-    def obstructions(self) -> List[Record]:
+    def obstructions(self) -> List[Encounter]:
         return self._obstructions
 
     @property

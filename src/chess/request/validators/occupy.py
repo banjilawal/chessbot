@@ -14,7 +14,6 @@ from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
 from chess.exception.piece import AttackingKingException
 from chess.request.occupy import OccupationRequest
-from chess.token.model.king import KingPiece
 
 T = TypeVar('T')
 

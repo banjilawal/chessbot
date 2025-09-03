@@ -30,7 +30,7 @@ class ChessPieceRepo:
         matches: List[Piece] = []
 
         for chess_piece in self._chess_pieces:
-            if chess_piece.team.controller.id == owner_id and chess_piece not in matches:
+            if chess_piece.side.controller.id == owner_id and chess_piece not in matches:
                 matches.append(chess_piece)
         return matches
 

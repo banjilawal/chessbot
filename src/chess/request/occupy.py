@@ -2,7 +2,7 @@ from typing import cast
 
 from chess.board.square import Square
 from chess.request.base import Request
-from chess.token.model.base import Piece
+from chess.token.model import Piece
 
 
 class OccupationRequest(Request):
