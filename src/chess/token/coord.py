@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from typing import List, Optional
 
 from chess.exception.stack import CorruptedStackException, PushingNullEntityException, DuplicatePushException, \
@@ -14,8 +15,8 @@ class CoordinateStack:
         self._current_coordinate = self._items[-1] if self._items else None
 
     @property
-    def items(self) -> list[Coordinate]:
-        return self._items
+    def items(self) -> Sequence[Coordinate]:
+        return self._items.copy()
 
     @property
     def current_coordinate(self) -> Optional[Coordinate]:

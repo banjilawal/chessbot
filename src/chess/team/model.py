@@ -18,19 +18,21 @@ class Side:
 
     def __init__(self, team_id: int, controller: 'Competitor', profile: SideProfile):
         method = "Team.__init__"
-
+        #
         id_validation = IdValidator.validate(team_id)
         if not id_validation.is_success():
             raise id_validation.exception
         team_id = cast(id_validation.payload, int)
-
+        #
         competitor_validation = CompetitorValidator.validate(controller)
         if not competitor_validation.is_success():
             raise competitor_validation.exception
-        controller = cast(competitor_validation.payload, Competitor)
+        #
+        from chess.competitor.model import Competitor
+        controller = cast(Competitor, competitor_validation.payload)
 
-        if controller is not None and self not in controller.sides_played:
-            controller.sides_played.push_team(self)
+        if self not in controller.sides_played.items:
+            controller.sides_played.push_side(self)
 
         self._id = team_id
         self._controller = controller

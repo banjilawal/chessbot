@@ -16,7 +16,6 @@ from assurance.validators.id import IdValidator
 
 if TYPE_CHECKING:
     from chess.team.model import Side
-    from chess.competitor.model import Competitor, HumanCompetitor, CyberneticCompetitor
 
 
 class SideValidator(Validator):
@@ -54,6 +53,7 @@ class SideValidator(Validator):
             if t is None:
                 raise NullSideException(f"{method} {NullSideException.DEFAULT_MESSAGE}")
 
+            from chess.team.model import Side
             if not isinstance(t, Side):
                 raise TypeError(f"{method} Expected a Side, got {type(t).__name__}")
 
@@ -66,7 +66,9 @@ class SideValidator(Validator):
             from assurance.validators.competitor import CompetitorValidator
             competitor_validation = CompetitorValidator.validate(side.controller)
             if not competitor_validation.is_success():
-                raise CompetitorValidationException(f"{method}: {CompetitorValidationException.DEFAULT_MESSAGE}")
+                raise CompetitorValidationException(
+                    f"{method}: {CompetitorValidationException.DEFAULT_MESSAGE}"
+                )
 
             return Result(payload=side)
 
@@ -84,6 +86,8 @@ def main():
 
     from chess.competitor.model import HumanCompetitor
     person = HumanCompetitor(1, "person")
+
+    from chess.team.model import Side
     side = Side(team_id=1, controller=person, profile=SideProfile.BLACK)
 
 

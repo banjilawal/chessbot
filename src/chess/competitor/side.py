@@ -14,8 +14,8 @@ if TYPE_CHECKING:
 
 
 class SideRecord:
-    _items: List['Side']
-    _current_side: ['Side']
+    _items: list['Side']
+    _current_side: 'Side'
 
     def __init__(self):
         self._items = []
@@ -23,13 +23,13 @@ class SideRecord:
 
 
     @property
-    def items(self) -> Sequence['Side']:
+    def items(self) -> list['Side']:
         """
         Returns a read-only view of the stack's contents. The returned sequence is safe to
         iterate and index, but mutating it will not affect the original stack.
         """
 
-        return self._items.copy()
+        return self._items
 
 
     @property
@@ -45,20 +45,24 @@ class SideRecord:
         return len(self._items)
 
 
-    def push_team(self, team):
+    def find_side_by_id(self, id: int) -> Optional['Side']:
+        for side in self._items:
+            if side.id == id:
+                return side
+        return None
+
+
+    def push_side(self, side: 'Side'):
         method = "TeamStack.push_team"
 
-        if team is None:
+        if side is None:
             raise PushingNullEntityException(f"{method}: {PushingNullEntityException.DEFAULT_MESSAGE}")
-
-        if not isinstance(team, Side):
-            raise TypeError(f"{method}: Expected a Team got {type(team).__name__}")
 
         if self._items is None:
             raise CorruptedStackException(f"{method}: {CorruptedStackException.DEFAULT_MESSAGE}")
 
-        if self.current_side == team:
+        if self.current_side == side:
             raise DuplicatePushException(f"{method} {DuplicatePushException.DEFAULT_MESSAGE}")
 
-        self._items.append(team)
+        self._items.append(side)
 

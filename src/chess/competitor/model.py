@@ -3,12 +3,13 @@ from typing import Optional, cast, TYPE_CHECKING
 
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-from chess.engine.decision.decision_engine import DecisionEngine
+
 
 from chess.competitor.side import SideRecord
 
 if TYPE_CHECKING:
     from chess.team.model import Side
+    from chess.engine.decision.decision_engine import DecisionEngine
 
 
 class Competitor(ABC):
@@ -27,8 +28,8 @@ class Competitor(ABC):
         if not name_validation.is_success():
             raise name_validation.exception
 
-        self._id = cast(id_validation.payload.id, int)
-        self._name = cast(name_validation.payload.name, str)
+        self._id = cast(int, id_validation.payload)
+        self._name = cast(str, name_validation.payload)
         self._sides_played = SideRecord()
 
         self._current_side = self._sides_played.current_side
@@ -100,21 +101,21 @@ class HumanCompetitor(Competitor):
 
 
 class CyberneticCompetitor(Competitor):
-    _decision_engine: DecisionEngine
+    # _decision_engine: DecisionEngine
 
     def __init__(
             self,
             competitor_id: int,
             name: str,
-            decision_engine: DecisionEngine,
+            # decision_engine: DecisionEngine,
     ):
         super().__init__(competitor_id, name)
-        self._decision_engine = decision_engine
-
-
-    @property
-    def decision_engine(self) -> DecisionEngine:
-        return self._decision_engine
+    #     self._decision_engine = decision_engine
+    #
+    #
+    # @property
+    # def decision_engine(self) -> DecisionEngine:
+    #     return self._decision_engine
 
 
     def __eq__(self, other):

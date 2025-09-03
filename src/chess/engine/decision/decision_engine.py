@@ -19,7 +19,7 @@ class DecisionEngine(ABC):
     def __init__(self, engine_id:int, analyzer: 'BoardAnalyzer'):
         self._id = engine_id
         self._board_analyzer = analyzer
-        self._max_capture_value = RankProfile.QUEEN.capture_value
+        self._max_capture_value = RankProfile.QUEEN.value
 
 
     @property
