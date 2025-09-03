@@ -4,21 +4,21 @@ from typing import TYPE_CHECKING, Optional, cast
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.rank.rank_validation_exception import RankValidationException
-from assurance.exception.validation.team import TeamValidationException
+from assurance.exception.validation.team import SideValidationException
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-from assurance.validators.rank import RankValidator
-from assurance.validators.side import TeamValidator
+
+from assurance.validators.side import SideValidator
 from chess.exception.null.piece import NullPieceException
-from chess.exception.piece import MappingSelfException
+from chess.exception.piece import MappingSelfException, PrisonerReleaseException, NullCaptorException
 from chess.geometry.coord import Coordinate
 from chess.team.model import Side
 from chess.token.encounter import Encounter, EncounterLog
-from chess.token.model.mobility_status import MobilityStatus
-from chess.token.model.coord import CoordinateStack
 
+from chess.token.model.coord
 if TYPE_CHECKING:
     from chess.rank.base import Rank
+    # from assurance.validators.rank import RankValidator
     # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
     """"
@@ -33,9 +33,9 @@ class Piece(ABC):
     _rank: 'Rank'
     _captor: 'Piece'
     _current_position: Coordinate
-    _status: MobilityStatus
+    # _status: MobilityStatus
     _observations: EncounterLog
-    _positions: CoordinateStack
+    _positions:
 
 
     def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
@@ -51,26 +51,26 @@ class Piece(ABC):
                 f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
             )
 
-        rank_validation = RankValidator.validate(rank)
-        if not rank_validation.is_success():
-            raise RankValidationException(f"{method}: {RankValidationException.DEFAULT_MESSAGE}")
+        # rank_validation = RankValidator.validate(rank)
+        # if not rank_validation.is_success():
+        #     raise RankValidationException(f"{method}: {RankValidationException.DEFAULT_MESSAGE}")
 
-        team_validation = TeamValidator.validate(side)
+        team_validation = SideValidator.validate(side)
         if not team_validation.is_success():
-            raise TeamValidationException(
-                f"{method}: {TeamValidationException.DEFAULT_MESSAGE}"
+            raise SideValidationException(
+                f"{method}: {SideValidationException.DEFAULT_MESSAGE}"
             )
         side = cast(team_validation.payload, Side)
 
         self._id = cast(id_validation.payload, int)
         self._name = cast(name_validation.payload, str)
-        self._rank = cast(rank_validation.payload, Rank)
+        # self._rank = cast(rank_validation.payload, Rank)
 
         if self not in side.pieces:
             side.pieces.append(self)
         self._side = side
 
-        self._status = MobilityStatus.FREE
+        # self._status = MobilityStatus.FREE
 
         self._observations = EncounterLog()
         self._positions = CoordinateStack()
@@ -97,9 +97,9 @@ class Piece(ABC):
         return self._rank
 
 
-    @property
-    def status(self) -> MobilityStatus:
-        return self._status
+    # @property
+    # def status(self) -> MobilityStatus:
+    #     return self._status
 
 
     @property

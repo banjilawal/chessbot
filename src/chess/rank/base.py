@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.geometry.coord import Coordinate
 from chess.geometry.quadrant import Quadrant
 from chess.token.model import Piece
@@ -62,7 +62,7 @@ class Rank(ABC):
 
 
     @abstractmethod
-    def walk(self, piece: Piece, coordinate: Coordinate, board: ChessBoard):
+    def walk(self, piece: Piece, coordinate: Coordinate, board: Board):
         """
         Validates a ChessPiece can reach a destination with its movement constraints. Must be instantiated by
         Walk implementors.

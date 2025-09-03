@@ -3,9 +3,9 @@ from unittest.mock import create_autospec, patch
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from assurance.exception.validation.owner import OwnerValidationException
-from assurance.validators.owner import CompertitorValidator
-from chess.exception.null.owner import NullOwnerException
+from assurance.exception.validation.competitor import CompetitorValidationException
+from assurance.validators.competitor import CompetitorValidator
+from chess.exception.null.owner import NullCompetitorException
 from chess.competitor.model import Competitor
 from unit.chess_test.owner.owner_test import OwnerTest
 
@@ -13,15 +13,15 @@ from unit.chess_test.owner.owner_test import OwnerTest
 class OwnerValidatorTest(unittest.TestCase):
     
     def test_null_owner_raises_exception(self):
-        with self.assertRaises(OwnerValidationException) as ctx:
-            CompertitorValidator.validate(None)
+        with self.assertRaises(CompetitorValidationException) as ctx:
+            CompetitorValidator.validate(None)
 
-        self.assertIsInstance(ctx.exception.__cause__, NullOwnerException)
+        self.assertIsInstance(ctx.exception.__cause__, NullCompetitorException)
 
 
     def test_cast_to_owner_failure_raises_exception(self):
-        with self.assertRaises(OwnerValidationException) as ctx:
-            CompertitorValidator.validate(1)
+        with self.assertRaises(CompetitorValidationException) as ctx:
+            CompetitorValidator.validate(1)
 
         self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
@@ -31,8 +31,8 @@ class OwnerValidatorTest(unittest.TestCase):
         mock_owner.id=-1
         mock_owner._name= "competitor"
 
-        with self.assertRaises(OwnerValidationException) as ctx:
-            CompertitorValidator.validate(mock_owner)
+        with self.assertRaises(CompetitorValidationException) as ctx:
+            CompetitorValidator.validate(mock_owner)
 
         self.assertIsInstance(ctx.exception.__cause__, IdValidationException)
 
@@ -42,15 +42,15 @@ class OwnerValidatorTest(unittest.TestCase):
         mock_owner.id=1
         mock_owner._name="A"
 
-        with self.assertRaises(OwnerValidationException) as ctx:
-            CompertitorValidator.validate(mock_owner)
+        with self.assertRaises(CompetitorValidationException) as ctx:
+            CompetitorValidator.validate(mock_owner)
 
         self.assertIsInstance(ctx.exception.__cause__, NameValidationException)
 
 
     def test_owner_validator_payload_equals_valid_owner(self):
         owner = OwnerTest.valid_mock_owner()
-        validation = CompertitorValidator.validate(owner)
+        validation = CompetitorValidator.validate(owner)
         self.assertEqual(validation.payload, owner)
 
 

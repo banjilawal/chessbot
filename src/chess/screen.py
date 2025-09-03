@@ -1,6 +1,6 @@
 import pygame
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.common.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
     BISHOP_COLOR, QUEEN_COLOR, MousePlacementStatus
 from chess.common.color import GameColor
@@ -11,16 +11,16 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Optional
 
 from chess.geometry.coord import Coordinate
-from chess.rank.bishop import BishopRank
-from chess.rank.castle import CastleRank
-from chess.rank.knight import KnightRank
-from chess.rank.king import KingRank
-from chess.rank.pawn import PawnRank
-from chess.rank.queen import QueenRank
+from chess.rank.bishop import Bishop
+from chess.rank.castle import Castle
+from chess.rank.knight import Knight
+from chess.rank.king import King
+from chess.rank.pawn import Pawn
+from chess.rank.queen import Queen
 from chess.token.model import Piece
 
 if TYPE_CHECKING:
-    from chess.board.board import ChessBoard
+    from chess.board.board import Board
 
 @dataclass(frozen=True)
 class DragState:
@@ -42,7 +42,7 @@ class DragState:
 
 @dataclass
 class GameDisplay:
-    chess_board: 'ChessBoard'
+    chess_board: 'Board'
     cell_px: int = CELL_PX
     border_px: int = BORDER_PX
     screen_width: int = SCREEN_WIDTH
@@ -118,17 +118,17 @@ class GameDisplay:
             self.cell_px - self.border_px
         )
 
-        if isinstance(chess_piece.rank, KingRank):
+        if isinstance(chess_piece.rank, King):
             pygame.draw.rect(self.screen, KING_COLOR, chess_piece_shape)
-        if isinstance(chess_piece.rank, PawnRank):
+        if isinstance(chess_piece.rank, Pawn):
             pygame.draw.rect(self.screen, PAWN_COLOR, chess_piece_shape)
-        if isinstance(chess_piece.rank, KnightRank):
+        if isinstance(chess_piece.rank, Knight):
             pygame.draw.rect(self.screen, KNIGHT_COLOR, chess_piece_shape)
-        if isinstance(chess_piece.rank, CastleRank):
+        if isinstance(chess_piece.rank, Castle):
             pygame.draw.rect(self.screen, CASTLE_COLOR.value, chess_piece_shape)
-        if isinstance(chess_piece.rank, BishopRank):
+        if isinstance(chess_piece.rank, Bishop):
             pygame.draw.rect(self.screen, BISHOP_COLOR, chess_piece_shape)
-        if isinstance(chess_piece.rank, QueenRank):
+        if isinstance(chess_piece.rank, Queen):
             pygame.draw.rect(self.screen, QUEEN_COLOR, chess_piece_shape)
 
         text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.value)
@@ -264,17 +264,17 @@ class GameDisplay:
             self.cell_px - self.border_px
         )
         # pick color by rank (reuse your existing logic)
-        if isinstance(chess_piece.rank, KingRank):
+        if isinstance(chess_piece.rank, King):
             pygame.draw.rect(self.screen, KING_COLOR, rect)
-        elif isinstance(chess_piece.rank, PawnRank):
+        elif isinstance(chess_piece.rank, Pawn):
             pygame.draw.rect(self.screen, PAWN_COLOR, rect)
-        elif isinstance(chess_piece.rank, KnightRank):
+        elif isinstance(chess_piece.rank, Knight):
             pygame.draw.rect(self.screen, KNIGHT_COLOR, rect)
-        elif isinstance(chess_piece.rank, CastleRank):
+        elif isinstance(chess_piece.rank, Castle):
             pygame.draw.rect(self.screen, CASTLE_COLOR.value, rect)
-        elif isinstance(chess_piece.rank, BishopRank):
+        elif isinstance(chess_piece.rank, Bishop):
             pygame.draw.rect(self.screen, BISHOP_COLOR, rect)
-        elif isinstance(chess_piece.rank, QueenRank):
+        elif isinstance(chess_piece.rank, Queen):
             pygame.draw.rect(self.screen, QUEEN_COLOR, rect)
 
         text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.value)

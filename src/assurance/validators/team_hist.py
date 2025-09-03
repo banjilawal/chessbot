@@ -1,9 +1,9 @@
-from typing import Generic, cast
+from typing import Generic, cast, TYPE_CHECKING
 
 from assurance.exception.validation.team import TeamHistoryValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
-from assurance.validators.side import TeamValidator
+from assurance.validators.side import SideValidator
 from chess.exception.null.team_stack import NullTeamHistory
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
@@ -11,7 +11,8 @@ from chess.exception.team_hist import CurrentTeamException
 from chess.competitor.side import SideRecord
 
 
-class TeamHistoryValidator(Validator):
+
+class SideRecordValidator(Validator):
 
     @staticmethod
     def validate(t: Generic[T]) -> Result[SideRecord]:
@@ -78,7 +79,7 @@ class TeamHistoryValidator(Validator):
 
             if (
                 current_team is not None and
-                not TeamValidator.validate(current_team).is_success()
+                not SideValidator.validate(current_team).is_success()
             ):
                 raise CurrentTeamException(f"{method} {CurrentTeamException.DEFAULT_MESSAGE}")
 

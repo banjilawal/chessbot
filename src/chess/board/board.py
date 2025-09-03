@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 
 
 
-class ChessBoard:
+class Board:
     _id: int
     _squares: List[List[Square]]
 
@@ -60,7 +60,7 @@ class ChessBoard:
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if not isinstance(other, ChessBoard): return False
+        if not isinstance(other, Board): return False
         return self._id == other.id
 
     #

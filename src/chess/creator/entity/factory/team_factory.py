@@ -5,7 +5,7 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.config.team import SideProfile
+from chess.config.game import SideProfile
 from chess.team.model import Side
 
 

@@ -20,18 +20,18 @@ class OwnerBuilder:
                 board_analyzer=BoardAnalyzer()
             )
             return CyberneticCompetitor(
-                owner_id=owner_id,
+                competitor_id=owner_id,
                 name=RandomName.cybernaut_name(),
                 decision_engine=decision_engine
             )
         else:
-            return HumanCompetitor(owner_id=owner_id, name=RandomName.person_name())
+            return HumanCompetitor(competitor_id=owner_id, name=RandomName.person_name())
 
 
 def main():
 
     owner = OwnerBuilder.build(id_emitter.owner_id)
-    print(owner, owner.team_history.size())
+    print(owner, owner.sides_played.size())
 
 if __name__ == "__main__":
     main()

@@ -1,20 +1,20 @@
 from typing import List, TYPE_CHECKING, cast, Sequence, Optional
 
 from assurance.validators.id import IdValidator
-from assurance.validators.owner import CompertitorValidator
-from chess.config.team import SideProfile
+from assurance.validators.competitor import CompetitorValidator
+from chess.config.game import SideProfile
 
 
 if TYPE_CHECKING:
     from chess.competitor.model import Competitor
-    from chess.token.model import Piece
+    from chess.token.model import Piece, CombatantPiece
 
 
 class Side:
     _id: int
     _controller: 'Competitor'
     _profile: SideProfile
-    _pieces: list[Piece]
+    _pieces: list['Piece']
 
     def __init__(self, team_id: int, controller: 'Competitor', profile: SideProfile):
         method = "Team.__init__"
@@ -24,13 +24,13 @@ class Side:
             raise id_validation.exception
         team_id = cast(id_validation.payload, int)
 
-        competitor_validation = CompertitorValidator.validate(controller)
+        competitor_validation = CompetitorValidator.validate(controller)
         if not competitor_validation.is_success():
             raise competitor_validation.exception
         controller = cast(competitor_validation.payload, Competitor)
 
-        if controller is not None and self not in controller.team_history:
-            controller.team_history.push_team(self)
+        if controller is not None and self not in controller.sides_played:
+            controller.sides_played.push_team(self)
 
         self._id = team_id
         self._controller = controller
@@ -54,7 +54,7 @@ class Side:
 
 
     @property
-    def pieces(self) -> Sequence[Piece]:
+    def pieces(self) -> Sequence['Piece']:
         """
         Returns a read-only view of the stack's contents. The returned sequence is safe to
         iterate and index, but mutating it will not affect the original stack.
@@ -63,10 +63,12 @@ class Side:
         return self._pieces.copy()
 
 
-    def free_pieces(self) -> List[Piece]:
+    def free_pieces(self) -> List['Piece']:
         matches: List['Piece'] = []
 
         for piece in self._pieces:
+
+            from chess.token.model import Piece, CombatantPiece
             if isinstance(piece, CombatantPiece):
                 combatant = cast(piece, CombatantPiece)
                 if combatant.captor in None:
@@ -79,6 +81,8 @@ class Side:
         matches: List['Piece'] = []
 
         for piece in self._pieces:
+
+            from chess.token.model import Piece, CombatantPiece
             if isinstance(piece, CombatantPiece):
                 combatant = cast(piece, CombatantPiece)
                 if combatant.captor is not None:
@@ -87,7 +91,7 @@ class Side:
         return matches
 
 
-    def find_piece(self, piece_id: int) -> Optional[Piece]:
+    def find_piece(self, piece_id: int) -> Optional['Piece']:
         for piece in self._pieces:
             if piece.id == piece_id:
                 return piece

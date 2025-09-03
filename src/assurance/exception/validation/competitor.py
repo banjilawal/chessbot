@@ -1,7 +1,7 @@
 from assurance.exception.validation.base import ValidationException
 
 
-class OwnerValidationException(ValidationException):
+class CompetitorValidationException(ValidationException):
     ERROR_CODE = "OWNER_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Owner validation failed"
 

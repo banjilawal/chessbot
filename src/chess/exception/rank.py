@@ -49,7 +49,7 @@ class PawnRankException(RankException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class KingRankException(RankException):
+class KingException(RankException):
     ERROR_CODE = "KING_RANK_ERROR"
     DEFAULT_MESSAGE = "KingRank raised an exception"
 
@@ -61,7 +61,7 @@ class KingRankException(RankException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class KnightRankException(RankException):
+class KnightException(RankException):
     ERROR_CODE = "KNIGHT_RANK_ERROR"
     DEFAULT_MESSAGE = "KnightRank raised an exception"
 
@@ -73,7 +73,7 @@ class KnightRankException(RankException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class BishopRankException(RankException):
+class BishopException(RankException):
     ERROR_CODE = "BISHOP_RANK_ERROR"
     DEFAULT_MESSAGE = "BishopRank raised an exception"
 
@@ -85,7 +85,7 @@ class BishopRankException(RankException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class CastleRankException(RankException):
+class CastleException(RankException):
     ERROR_CODE = "CASTLE_RANK_ERROR"
     DEFAULT_MESSAGE = "CastleRank raised an exception"
 

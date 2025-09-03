@@ -1,22 +1,25 @@
 from abc import ABC
-from typing import Optional, cast
+from typing import Optional, cast, TYPE_CHECKING
 
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from chess.engine.decision.decision_engine import DecisionEngine
-from chess.team.model import Side
+
 from chess.competitor.side import SideRecord
+
+if TYPE_CHECKING:
+    from chess.team.model import Side
 
 
 class Competitor(ABC):
     _id: int
     _name: str
-    _current_team: Optional[Side]
+    _current_side: Optional['Side']
     _sides_played: SideRecord
 
-    def __init__(self, owner_id: int, name: str):
+    def __init__(self, competitor_id: int, name: str):
 
-        id_validation = IdValidator.validate(owner_id)
+        id_validation = IdValidator.validate(competitor_id)
         if not id_validation.is_success():
             raise id_validation.exception
 
@@ -28,7 +31,7 @@ class Competitor(ABC):
         self._name = cast(name_validation.payload.name, str)
         self._sides_played = SideRecord()
 
-        self._current_team = self._sides_played.current_side
+        self._current_side = self._sides_played.current_side
 
 
     @property
@@ -42,12 +45,12 @@ class Competitor(ABC):
 
 
     @property
-    def team_history(self) -> SideRecord:
+    def sides_played(self) -> SideRecord:
         return self._sides_played
 
 
     @property
-    def current_team(self) -> Optional[Side]:
+    def current_side(self) -> Optional['Side']:
         return self._sides_played.current_side
 
 
@@ -67,24 +70,24 @@ class Competitor(ABC):
 
 
     def __str__(self):
-        history_size = self.team_history.size()
-        team_size_str = f"total games:{history_size}" if history_size > 0 else ""
+        total_games = self.sides_played.size()
+        total_games_str = f"total games:{total_games}" if total_games > 0 else ""
 
-        current_team_str = "" if self._current_team is None else \
-            f" curren_team:[{self._current_team.id}, {self._current_team.color}"
+        current_side = "" if self._current_side is None else \
+            f" curren_team:[{self._current_side.id}, {self._current_side.profile.color}"
         return (
             f"Owner[id:{self._id}"
             f" name:{self._name}"
-            f"{current_team_str}"
-            f"{team_size_str }"
+            f"{current_side}"
+            f"{total_games_str}"
             f"]"
         )
 
 
 class HumanCompetitor(Competitor):
 
-    def __init__(self, owner_id: int, name: str):
-        super().__init__(owner_id, name)
+    def __init__(self, competitor_id: int, name: str):
+        super().__init__(competitor_id, name)
 
 
     def __eq__(self, other):
@@ -101,11 +104,11 @@ class CyberneticCompetitor(Competitor):
 
     def __init__(
             self,
-            owner_id: int,
+            competitor_id: int,
             name: str,
             decision_engine: DecisionEngine,
     ):
-        super().__init__(owner_id, name)
+        super().__init__(competitor_id, name)
         self._decision_engine = decision_engine
 
 

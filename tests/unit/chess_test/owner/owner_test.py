@@ -21,7 +21,7 @@ class OwnerTest(unittest.TestCase):
 
         mock_owner.id = 1
         mock_owner.name = "Valid Owner"
-        mock_owner.team_history = mock_team_history
+        mock_owner.sides_played = mock_team_history
 
         return mock_owner
 
@@ -39,7 +39,7 @@ class OwnerTest(unittest.TestCase):
         mock_name_validate.return_value.is_success.return_value = True
 
         with self.assertRaises(IdValidationException):
-            Competitor(owner_id=-1, name="competitor")
+            Competitor(competitor_id=-1, name="competitor")
 
 
     @patch('assurance.validators.name.NameValidator.validate')
@@ -55,7 +55,7 @@ class OwnerTest(unittest.TestCase):
         mock_name_validate.return_value.exception = NameValidationException("Invalid name")
 
         with self.assertRaises(NameValidationException):
-            Competitor(owner_id=1, name="a1")
+            Competitor(competitor_id=1, name="a1")
 
 
     @patch('assurance.validators.name.NameValidator.validate')
@@ -68,7 +68,7 @@ class OwnerTest(unittest.TestCase):
         mock_id_validate.return_value.is_success.return_value = True
         mock_name_validate.return_value.is_success.return_value = True
 
-        Competitor(owner_id=1, name="competitor")
+        Competitor(competitor_id=1, name="competitor")
 
 
 if __name__ == "__main__":

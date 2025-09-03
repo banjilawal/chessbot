@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from chess.arena.model import Arena
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.competitor.model import Competitor
 
 
@@ -37,7 +37,7 @@ class ArenaRepo:
         return matches
 
 
-    def arenas_by_chess_board(self, chess_board: ChessBoard) -> List[Arena]:
+    def arenas_by_chess_board(self, chess_board: Board) -> List[Arena]:
         matches: List[Arena] = []
 
         for arena in self._arenas:

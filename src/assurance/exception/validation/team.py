@@ -1,7 +1,7 @@
 from assurance.exception.validation.base import ValidationException
 
 
-class TeamValidationException(ValidationException):
+class SideValidationException(ValidationException):
     ERROR_CODE = "TEAM_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Team validation failed"
 

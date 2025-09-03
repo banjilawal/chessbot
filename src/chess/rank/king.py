@@ -1,6 +1,7 @@
 from typing import List
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
+from chess.exception.rank import KingException
 from chess.exception.walk import KingWalkException
 from chess.flow.occupy import OccupationFlow
 from chess.geometry.coord import Coordinate
@@ -11,20 +12,23 @@ from chess.request.occupy import OccupationRequest
 from chess.token.model import Piece
 
 
-class KingRank(PromotedQueen):
+class King(PromotedQueen):
 
     def __init__(self, name: str, letter: str, value: int, per_team: int, territories: List[Quadrant]):
         super().__init__(name=name, letter=letter, value=value, territories=territories, per_team=per_team)
 
 
-    def walk(self, piece: Piece, destination: Coordinate, board: ChessBoard):
-        method = "KingRank.walk"
+    def walk(self, piece: Piece, destination: Coordinate, board: Board):
+        method = "King.walk"
 
-        if not Path(piece.current_position, destination).line == Line.KING:
-            raise KingWalkException(f"{method}: {KingWalkException.DEFAULT_MESSAGE}")
+        try:
+            if not Path(piece.current_position, destination).line == Line.KING:
+                raise KingWalkException(f"{method}: {KingWalkException.DEFAULT_MESSAGE}")
 
-        square = board.find_square_by_coordinate(destination)
-        OccupationFlow.enter(
-            board=board,
-            request=OccupationRequest(request_id=id_emitter.request_id, piece=piece, square=square)
-        )
+            square = board.find_square_by_coordinate(destination)
+            OccupationFlow.enter(
+                board=board,
+                request=OccupationRequest(request_id=id_emitter.request_id, piece=piece, square=square)
+            )
+        except KingWalkException as e:
+            raise KingException(f"{method}: {KingException.DEFAULT_MESSAGE}") from e

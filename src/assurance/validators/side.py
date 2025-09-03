@@ -1,73 +1,91 @@
-from typing import cast, Generic
-
+from typing import cast, Generic, TYPE_CHECKING
 
 from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.owner import OwnerValidationException
+from assurance.exception.validation.team import SideValidationException
+from assurance.exception.validation.competitor import CompetitorValidationException
 
-from assurance.exception.validation.team import TeamValidationException
+from chess.config.game import SideProfile
+
+from chess.exception.null.team import NullSideException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.id import IdValidator
-from assurance.validators.owner import CompertitorValidator
-
-from chess.exception.null.team import NullTeamException
-from chess.team.model import Side
 
 
-class TeamValidator(Validator):
+
+
+if TYPE_CHECKING:
+    from chess.team.model import Side
+    from chess.competitor.model import Competitor, HumanCompetitor, CyberneticCompetitor
+
+
+class SideValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Side]:
-        entity = "Team"
+    def validate(t: Generic[T]) -> Result['Side']:
+        entity = "Side"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
-        Validates a team with chained exceptions for team meeting specifications:
+        Validates a side with chained exceptions for side meeting specifications:
             - Not null
             - id passes validation checks
             - competitor passes validation checks
-        An unmet requirements raise an exception which encapsulated in a TeamValidationException
+        An unmet requirements raise an exception which encapsulated in a SideValidationException
 
         Args
-            t (Team): team to validate
+            t (Side): side to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
-            TeamValidationException otherwise.
+            SideValidationException otherwise.
 
         Raises:
-            TypeError: if t is not Team
-            NullTeamException: if t is null   
+            TypeError: if t is not Side
+            NullSideException: if t is null   
 
             IdValidationException: if invalid id
-            OwnerValidationException: if invalid competitor
+            CompetitorValidationException: if invalid competitor
 
-            TeamValidationException: Wraps any preceding exceptions      
+            SideValidationException: Wraps any preceding exceptions      
         """
         try:
             if t is None:
-                raise NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
+                raise NullSideException(f"{method} {NullSideException.DEFAULT_MESSAGE}")
 
             if not isinstance(t, Side):
-                raise TypeError(f"{method} Expected a Team, got {type(t).__name__}")
+                raise TypeError(f"{method} Expected a Side, got {type(t).__name__}")
 
-            team = cast(Side, t)
+            side = cast(Side, t)
 
-            id_validation = IdValidator.validate(team.id)
+            id_validation = IdValidator.validate(side.id)
             if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-            owner_validation = CompertitorValidator.validate(team.controller)
-            if not owner_validation.is_success():
-                raise OwnerValidationException(f"{method}: {OwnerValidationException.DEFAULT_MESSAGE}")
+            from assurance.validators.competitor import CompetitorValidator
+            competitor_validation = CompetitorValidator.validate(side.controller)
+            if not competitor_validation.is_success():
+                raise CompetitorValidationException(f"{method}: {CompetitorValidationException.DEFAULT_MESSAGE}")
 
-            return Result(payload=team)
+            return Result(payload=side)
 
         except (
-            TypeError,
-            NullTeamException,
-            IdValidationException,
-            OwnerValidationException
+                TypeError,
+                NullSideException,
+                IdValidationException,
+                CompetitorValidationException
         ) as e:
-            raise TeamValidationException(f"{method}: {TeamValidationException.DEFAULT_MESSAGE}") from e
+            raise SideValidationException(f"{method}: {SideValidationException.DEFAULT_MESSAGE}") from e
+
+
+
+def main():
+
+    from chess.competitor.model import HumanCompetitor
+    person = HumanCompetitor(1, "person")
+    side = Side(team_id=1, controller=person, profile=SideProfile.BLACK)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.creator.emit import id_emitter
 from chess.exception.rank import PawnRankException
 from chess.exception.walk import PawnWalkException
@@ -13,14 +13,14 @@ from chess.request.occupy import OccupationRequest
 from chess.token.model import Piece
 
 
-class PawnRank(PromotedQueen):
+class Pawn(PromotedQueen):
 
     def __init__(self, name: str, letter: str, value: int, per_team: int, territories: List[Quadrant]):
         super().__init__(name=name, letter=letter, value=value, territories=territories, per_team=per_team)
 
 
-    def walk(self, piece: Piece, destination: Coordinate, board: ChessBoard):
-        method = "PawnRank.walk"
+    def walk(self, piece: Piece, destination: Coordinate, board: Board):
+        method = "Pawn.walk"
 
         try:
             if not (
@@ -39,15 +39,16 @@ class PawnRank(PromotedQueen):
             raise PawnRankException(f"{method}: {PawnRankException.DEFAULT_MESSAGE}") from e
 
 
-
-    def _is_opening(self, piece: Piece, destination: Coordinate):
+    @staticmethod
+    def _is_opening(piece: Piece, destination: Coordinate):
         return piece.positions.size() == 1 and Path(piece.current_position, destination).line == Line.PAWN_OPENING
 
 
+    @staticmethod
     def _is_advance(self, piece: Piece, destination: Coordinate):
         return piece.positions.size() >= 1 and Path(piece.current_position, destination).line == Line.PAWN_ADVANCE
 
-
+    @staticmethod
     def _is_attack(self, piece: Piece, destination: Coordinate):
         return piece.positions.size() >= 1 and Path(piece.current_position, destination).line == Line.PAWN_ATTACK
 

@@ -1,7 +1,7 @@
 from chess.exception.null.base import NullException
 
 
-class NullTeamException(NullException):
+class NullSideException(NullException):
     ERROR_CODE = "NULL_TEAM_ERROR"
     DEFAULT_MESSAGE = f"Team cannot be null"
 

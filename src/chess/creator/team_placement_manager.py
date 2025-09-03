@@ -2,7 +2,7 @@ from typing import List, TYPE_CHECKING
 
 
 from chess.exception.id import ChessException
-from chess.config.placement_chart import PlacementChart
+from chess.config.placement import PlacementChart
 from chess.token.model import Piece
 
 if TYPE_CHECKING:
@@ -26,7 +26,7 @@ class TeamPlacementManager:
             # print("placing", captor.name)
             for placement in PlacementChart:
                 # print("checking placement", placement.value[0])
-                square_name = placement.map_chess_piece_to_square_name(chess_piece)
+                square_name = placement.find_placement_by_piece(chess_piece)
                 # print("expecting square named", square_name)
                 if square_name is not None:
                     square = arena.chess_board.find_square_by_name(square_name)

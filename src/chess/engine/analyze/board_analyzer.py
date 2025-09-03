@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.creator.emit import id_emitter
 from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.competitor.model import CyberneticCompetitor
@@ -12,7 +12,7 @@ from chess.engine.scout.scout_master import ScoutMaster
 class BoardAnalyzer:
 
     @staticmethod
-    def issue_analysis(owner: CyberneticCompetitor, chess_board: ChessBoard) -> BoardAnalysis:
+    def issue_analysis(owner: CyberneticCompetitor, chess_board: Board) -> BoardAnalysis:
         enemy_reports_count = 0
         vacancy_reports_count = 0
         obstruction_reports_count = 0

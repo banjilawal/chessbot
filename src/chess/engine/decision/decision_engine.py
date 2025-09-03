@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING
 
-from chess.board.board import ChessBoard
-from chess.config.rank import RankConfig
+from chess.board.board import Board
+from chess.config.rank import RankProfile
 
 from chess.geometry.coord import Coordinate
 
@@ -19,7 +19,7 @@ class DecisionEngine(ABC):
     def __init__(self, engine_id:int, analyzer: 'BoardAnalyzer'):
         self._id = engine_id
         self._board_analyzer = analyzer
-        self._max_capture_value = RankConfig.QUEEN.capture_value
+        self._max_capture_value = RankProfile.QUEEN.capture_value
 
 
     @property
@@ -43,7 +43,7 @@ class DecisionEngine(ABC):
     def decide_destination(
             self,
             cybernaut: 'CyberneticCompetitor',
-            chess_board: ChessBoard
+            chess_board: Board
     ) -> Optional[Coordinate]:
         pass
 

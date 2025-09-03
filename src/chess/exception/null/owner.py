@@ -1,7 +1,7 @@
 from chess.exception.null.base import NullException
 
 
-class NullOwnerException(NullException):
+class NullCompetitorException(NullException):
     ERROR_CODE = "NULL_OWNER_ERROR"
     DEFAULT_MESSAGE = f"Owner cannot be null"
 

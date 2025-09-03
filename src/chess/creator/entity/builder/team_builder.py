@@ -1,5 +1,5 @@
 
-from chess.config.team import SideProfile
+from chess.config.game import SideProfile
 from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder

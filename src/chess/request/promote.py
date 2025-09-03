@@ -1,13 +1,13 @@
 from typing import cast
 
-from chess.rank.queen import QueenRank
+from chess.rank.queen import Queen
 from chess.request.base import Request
 from chess.token.model import Piece
 
 
 class PromotionRequest(Request):
 
-    def __init__(self, request_id: int, piece: Piece, rank: QueenRank = QueenRank()):
+    def __init__(self, request_id: int, piece: Piece, rank: Queen = Queen()):
         super().__init__(request_id=request_id, client=piece, resource=rank)
 
 
@@ -22,8 +22,8 @@ class PromotionRequest(Request):
 
 
     @property
-    def rank(self) -> QueenRank:
-        return cast(self._client, QueenRank)
+    def rank(self) -> Queen:
+        return cast(self._client, Queen)
 
 
     def __eq__(self, other):

@@ -1,17 +1,21 @@
 from collections.abc import Sequence
 from typing import Optional, List
 
+from typing_extensions import TYPE_CHECKING
+
 from chess.exception.stack import (
     PushingNullEntityException,
     CorruptedStackException,
     DuplicatePushException
 )
-from chess.team.model import Side
+
+if TYPE_CHECKING:
+    from chess.team.model import Side
 
 
 class SideRecord:
-    _items: List[Side]
-    _current_side: [Side]
+    _items: List['Side']
+    _current_side: ['Side']
 
     def __init__(self):
         self._items = []
@@ -19,7 +23,7 @@ class SideRecord:
 
 
     @property
-    def items(self) -> Sequence[Side]:
+    def items(self) -> Sequence['Side']:
         """
         Returns a read-only view of the stack's contents. The returned sequence is safe to
         iterate and index, but mutating it will not affect the original stack.
@@ -29,7 +33,7 @@ class SideRecord:
 
 
     @property
-    def current_side(self) -> Optional[Side]:
+    def current_side(self) -> Optional['Side']:
         return self._items[-1] if self._items else None
 
 

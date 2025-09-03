@@ -1,6 +1,6 @@
 from typing import cast
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.board.square import Square
 from chess.common.permit import Event
 from chess.exception.event import AttackPermissionInconsistencyException, \
@@ -16,7 +16,7 @@ from chess.token.encounter import Encounter
 class OccupationFlow(Flow):
 
     @staticmethod
-    def enter(request: OccupationRequest, board: ChessBoard):
+    def enter(request: OccupationRequest, board: Board):
 
         validation = OccupationRequestValidator.validate(request)
         if not validation.is_success():

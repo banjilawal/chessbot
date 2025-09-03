@@ -1,4 +1,4 @@
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.competitor.model import CyberneticCompetitor
 from chess.competitor.model import Competitor
 from chess.team.move import Move
@@ -8,9 +8,9 @@ class Arena:
     _id: int
     _white_owner: Competitor
     _black_owner: Competitor
-    _chess_board: ChessBoard
+    _chess_board: Board
 
-    def __init__(self, arena_id: int, white_owner: Competitor, black_owner: Competitor, chess_board: ChessBoard):
+    def __init__(self, arena_id: int, white_owner: Competitor, black_owner: Competitor, chess_board: Board):
         self._id = arena_id
         self._white_owner = white_owner
         self._black_owner = black_owner
@@ -32,7 +32,7 @@ class Arena:
 
 
     @property
-    def chess_board(self) -> ChessBoard:
+    def chess_board(self) -> Board:
         return self._chess_board
 
 

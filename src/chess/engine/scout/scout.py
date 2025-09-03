@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
 from chess.token.model import Piece
@@ -18,7 +18,7 @@ class Scout:
         return self._scout
 
 
-    def survey(self, chess_board: ChessBoard) -> ScoutReport:
+    def survey(self, chess_board: Board) -> ScoutReport:
         squares: List[Square] = []
         origin = self._scout.positions.current_coordinate()
 

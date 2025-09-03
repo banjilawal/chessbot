@@ -65,8 +65,9 @@ class SideProfile(Enum):
 
 
 def main():
-    conf = SideProfile.WHITE
-    print(conf)
+
+    for profile in SideProfile:
+        print(profile)
 
 
 if __name__ == "__main__":

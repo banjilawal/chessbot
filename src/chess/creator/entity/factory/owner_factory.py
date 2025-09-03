@@ -5,7 +5,7 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.config.team import SideProfile
+from chess.config.game import SideProfile
 from chess.competitor.model import HumanCompetitor
 from chess.competitor.model import Competitor
 from chess.randomize.name import RandomName
@@ -18,8 +18,8 @@ class OwnerFactory:
     def assemble() -> List[Competitor]:
         owners: List[Competitor] = []
 
-        wo = HumanCompetitor(owner_id=id_emitter.owner_id, name=RandomName.person_name())
-        bo = HumanCompetitor(owner_id=id_emitter.owner_id, name=RandomName.person_name())
+        wo = HumanCompetitor(competitor_id=id_emitter.owner_id, name=RandomName.person_name())
+        bo = HumanCompetitor(competitor_id=id_emitter.owner_id, name=RandomName.person_name())
 
         wt = TeamBuilder.build(wo, SideProfile.WHITE)
         bt = TeamBuilder.build(bo, SideProfile.BLACK)

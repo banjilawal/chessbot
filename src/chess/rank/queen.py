@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.creator.emit import id_emitter
 from chess.exception.rank import QueenRankException
 from chess.exception.walk import QueenWalkException
@@ -13,14 +13,14 @@ from chess.request.occupy import OccupationRequest
 from chess.token.model import Piece
 
 
-class QueenRank(Rank):
+class Queen(Rank):
 
     def __init__(self, name: str, letter: str, value: int, per_team: int, territories: List[Quadrant]):
         super().__init__(name=name, letter=letter, value=value, territories=territories, per_team=per_team)
 
 
-    def walk(self, piece: Piece, destination: Coordinate, board: ChessBoard):
-        method = "QueenRank.walk"
+    def walk(self, piece: Piece, destination: Coordinate, board: Board):
+        method = "Queen.walk"
 
         try:
             if not Path(piece.current_position, destination).line == Line.QUEEN:
@@ -34,7 +34,7 @@ class QueenRank(Rank):
         except QueenWalkException as e:
             raise QueenRankException(f"{method}: {QueenRankException.DEFAULT_MESSAGE}") from e
 
-class PromotedQueen(QueenRank):
+class PromotedQueen(Queen):
     _old_rank: Optional[str]
 
     def __init__(

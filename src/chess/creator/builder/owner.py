@@ -2,20 +2,20 @@ from enum import Enum
 
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validators.owner import CompertitorValidator
+from assurance.validators.competitor import CompetitorValidator
 from chess.geometry.coord import Coordinate
 from chess.competitor.model import Competitor
 
 
-class OwnerBuilder(Enum):
+class CompetitorBuilder(Enum):
 
     @staticmethod
     def build(owner_id:int, name: str, coordinate: Coordinate ) -> Result[Competitor]:
         try:
-            candidate = Competitor(owner_id=owner_id, name=name)
-            validation = CompertitorValidator.validate(candidate)
+            candidate = Competitor(competitor_id=owner_id, name=name)
+            validation = CompetitorValidator.validate(candidate)
 
-            ThrowHelper.throw_if_invalid(OwnerBuilder, validation)
+            ThrowHelper.throw_if_invalid(CompetitorBuilder, validation)
             return validation
         except Exception as e:
             return Result(payload=None, exception=e)

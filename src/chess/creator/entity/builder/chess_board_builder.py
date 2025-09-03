@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.board.board import ChessBoard
+from chess.board.board import Board
 from chess.board.square import Square
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.creator.emit import id_emitter
@@ -11,7 +11,7 @@ class ChessBoardBuilder:
 
 
     @staticmethod
-    def build(chess_board_id:int) -> ChessBoard:
+    def build(chess_board_id:int) -> Board:
 
         squares: List[List[Square]] = []
 
@@ -28,7 +28,7 @@ class ChessBoardBuilder:
                 row_squares.append(square)
                 ascii_value += 1
             squares.append(row_squares)
-        return ChessBoard(board_id=chess_board_id, squares=squares)
+        return Board(board_id=chess_board_id, squares=squares)
 
 
 def main():
