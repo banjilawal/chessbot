@@ -80,7 +80,7 @@ class PromotionRequestValidator(RequestValidator):
                 raise DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
 
             current_row = piece.current_coordinate.row
-            if current_row != piece.team.conf.enemy_home().rank_row :
+            if current_row != piece.team.profile.enemy_home().rank_row :
                 raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
             return RequestOutcome(

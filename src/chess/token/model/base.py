@@ -8,11 +8,11 @@ from assurance.exception.validation.team import TeamValidationException
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from assurance.validators.rank import RankValidator
-from assurance.validators.team import TeamValidator
+from assurance.validators.side import TeamValidator
 from chess.exception.null.piece import NullPieceException
 from chess.exception.piece import MappingSelfException
 from chess.geometry.coord import Coordinate
-from chess.team.model import Team
+from chess.team.model import Side
 from chess.token.model.map import Record, ObservationChart
 from chess.token.model.mobility_status import MobilityStatus
 from chess.token.model.coord import CoordinateStack
@@ -29,7 +29,7 @@ if TYPE_CHECKING:
 class Piece(ABC):
     _id: int
     _name: str
-    _team: 'Team'
+    _team: 'Side'
     _rank: 'Rank'
     _captor: 'Piece'
     _current_position: Coordinate
@@ -38,7 +38,7 @@ class Piece(ABC):
     _positions: CoordinateStack
 
 
-    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Side'):
         method = "Piece.__init__"
 
         id_validation = IdValidator.validate(piece_id)
@@ -60,7 +60,7 @@ class Piece(ABC):
             raise TeamValidationException(
                 f"{method}: {TeamValidationException.DEFAULT_MESSAGE}"
             )
-        team = cast(team_validation.payload, Team)
+        team = cast(team_validation.payload, Side)
 
         self._id = cast(id_validation.payload, int)
         self._name = cast(name_validation.payload, str)
@@ -88,7 +88,7 @@ class Piece(ABC):
 
 
     @property
-    def team(self) -> 'Team':
+    def team(self) -> 'Side':
         return self._team
 
 

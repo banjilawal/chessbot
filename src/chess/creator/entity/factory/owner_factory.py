@@ -5,24 +5,24 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.config.team import TeamConfig
-from chess.owner.model import HumanOwner
-from chess.owner.model import Owner
+from chess.config.team import SideProfile
+from chess.competitor.model import HumanCompetitor
+from chess.competitor.model import Competitor
 from chess.randomize.name import RandomName
-from chess.team.model import Team
+from chess.team.model import Side
 
 
 class OwnerFactory:
 
     @staticmethod
-    def assemble() -> List[Owner]:
-        owners: List[Owner] = []
+    def assemble() -> List[Competitor]:
+        owners: List[Competitor] = []
 
-        wo = HumanOwner(owner_id=id_emitter.owner_id, name=RandomName.person_name())
-        bo = HumanOwner(owner_id=id_emitter.owner_id, name=RandomName.person_name())
+        wo = HumanCompetitor(owner_id=id_emitter.owner_id, name=RandomName.person_name())
+        bo = HumanCompetitor(owner_id=id_emitter.owner_id, name=RandomName.person_name())
 
-        wt = TeamBuilder.build(wo, TeamConfig.WHITE)
-        bt = TeamBuilder.build(bo, TeamConfig.BLACK)
+        wt = TeamBuilder.build(wo, SideProfile.WHITE)
+        bt = TeamBuilder.build(bo, SideProfile.BLACK)
 
         ranks = RankFactory.assemble()
         for team in [wt, bt]:

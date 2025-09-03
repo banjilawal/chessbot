@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chess.team.model import Team
+from chess.team.model import Side
 from chess.token.model import Piece
 from chess.token.repo import ChessPieceRepo
 
@@ -24,5 +24,5 @@ class ChessPieceService:
         return self._repo.find(chess_piece_id)
 
 
-    def find_by_team(self, team: Team) -> List[Piece]:
+    def find_by_team(self, team: Side) -> List[Piece]:
         return self._repo.filter_by_team(team)

@@ -2,12 +2,12 @@ from typing import List
 
 from chess.arena.model import Arena
 from chess.token.model.coord import CoordinateStack
-from chess.owner.model import Owner
+from chess.competitor.model import Competitor
 
 class Game:
     _id: int
     _arena: Arena
-    _winner: Owner
+    _winner: Competitor
     _game_Log: List[CoordinateStack]
 
     def __init__(self, match_id: int, arena: Arena):
@@ -25,7 +25,7 @@ class Game:
         return self._arena
 
     @property
-    def winner(self) -> Owner:
+    def winner(self) -> Competitor:
         return self._winner
 
     @property

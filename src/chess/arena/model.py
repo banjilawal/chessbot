@@ -1,16 +1,16 @@
 from chess.board.board import ChessBoard
-from chess.owner.model import CyberneticOwner
-from chess.owner.model import Owner
+from chess.competitor.model import CyberneticCompetitor
+from chess.competitor.model import Competitor
 from chess.team.move import Move
 
 
 class Arena:
     _id: int
-    _white_owner: Owner
-    _black_owner: Owner
+    _white_owner: Competitor
+    _black_owner: Competitor
     _chess_board: ChessBoard
 
-    def __init__(self, arena_id: int, white_owner: Owner, black_owner: Owner, chess_board: ChessBoard):
+    def __init__(self, arena_id: int, white_owner: Competitor, black_owner: Competitor, chess_board: ChessBoard):
         self._id = arena_id
         self._white_owner = white_owner
         self._black_owner = black_owner
@@ -22,12 +22,12 @@ class Arena:
 
 
     @property
-    def white_owner(self) -> Owner:
+    def white_owner(self) -> Competitor:
         return self._white_owner
 
 
     @property
-    def black_owner(self) -> Owner:
+    def black_owner(self) -> Competitor:
         return self._black_owner
 
 
@@ -40,7 +40,7 @@ class Arena:
         self._board.capture_square(move.team_member, move.destination)
 
 
-    def survey_board(self, cybernaut: CyberneticOwner):
+    def survey_board(self, cybernaut: CyberneticCompetitor):
         cybernaut.engine._scout_master.send_scouts(cybernaut, self._chess_board)
 
 

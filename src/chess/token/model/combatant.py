@@ -2,14 +2,14 @@ from typing import Optional
 
 from chess.exception.piece import PrisonerReleaseException, NullCaptorException
 from chess.rank.base import Rank
-from chess.team.model import Team
+from chess.team.model import Side
 from chess.token.model.base import Piece
 
 
 class CombatantPiece(Piece):
     _captor: Optional[Piece]
 
-    def __init__(self, token_id: int, name: str, rank: 'Rank', team: 'Team'):
+    def __init__(self, token_id: int, name: str, rank: 'Rank', team: 'Side'):
         super().__init__(token_id, name, rank, team)
         self._captor = None
 

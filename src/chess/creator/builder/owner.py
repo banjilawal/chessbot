@@ -2,18 +2,18 @@ from enum import Enum
 
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validators.owner import OwnerValidator
+from assurance.validators.owner import CompertitorValidator
 from chess.geometry.coord import Coordinate
-from chess.owner.model import Owner
+from chess.competitor.model import Competitor
 
 
 class OwnerBuilder(Enum):
 
     @staticmethod
-    def build(owner_id:int, name: str, coordinate: Coordinate ) -> Result[Owner]:
+    def build(owner_id:int, name: str, coordinate: Coordinate ) -> Result[Competitor]:
         try:
-            candidate = Owner(owner_id=owner_id, name=name)
-            validation = OwnerValidator.validate(candidate)
+            candidate = Competitor(owner_id=owner_id, name=name)
+            validation = CompertitorValidator.validate(candidate)
 
             ThrowHelper.throw_if_invalid(OwnerBuilder, validation)
             return validation

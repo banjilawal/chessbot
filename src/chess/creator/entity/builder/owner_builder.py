@@ -4,28 +4,28 @@ from chess.config.owner import OwnerConfig
 from chess.creator.emit import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine
-from chess.owner.model import CyberneticOwner
-from chess.owner.model import HumanOwner
-from chess.owner.model import Owner
+from chess.competitor.model import CyberneticCompetitor
+from chess.competitor.model import HumanCompetitor
+from chess.competitor.model import Competitor
 from chess.randomize.name import RandomName
 
 
 class OwnerBuilder:
 
     @staticmethod
-    def build(owner_id: int) -> Owner:
+    def build(owner_id: int) -> Competitor:
         if random.random() < 0.46:
             decision_engine = GreedyDecisionEngine(
                 engine_id=owner_id,
                 board_analyzer=BoardAnalyzer()
             )
-            return CyberneticOwner(
+            return CyberneticCompetitor(
                 owner_id=owner_id,
                 name=RandomName.cybernaut_name(),
                 decision_engine=decision_engine
             )
         else:
-            return HumanOwner(owner_id=owner_id, name=RandomName.person_name())
+            return HumanCompetitor(owner_id=owner_id, name=RandomName.person_name())
 
 
 def main():

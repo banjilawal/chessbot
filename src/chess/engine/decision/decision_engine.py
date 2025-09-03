@@ -8,7 +8,7 @@ from chess.geometry.coord import Coordinate
 
 if TYPE_CHECKING:
     from chess.engine.analyze.board_analyzer import BoardAnalyzer
-    from chess.owner.model import CyberneticOwner
+    from chess.competitor.model import CyberneticCompetitor
 
 
 class DecisionEngine(ABC):
@@ -42,7 +42,7 @@ class DecisionEngine(ABC):
     @abstractmethod
     def decide_destination(
             self,
-            cybernaut: 'CyberneticOwner',
+            cybernaut: 'CyberneticCompetitor',
             chess_board: ChessBoard
     ) -> Optional[Coordinate]:
         pass

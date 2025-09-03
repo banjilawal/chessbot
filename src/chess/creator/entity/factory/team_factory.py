@@ -5,17 +5,17 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.config.team import TeamConfig
-from chess.team.model import Team
+from chess.config.team import SideProfile
+from chess.team.model import Side
 
 
 class TeamFactory:
 
     @staticmethod
-    def assemble() -> List[Team]:
-        teams: List[Team] = []
+    def assemble() -> List[Side]:
+        teams: List[Side] = []
 
-        for team_config in TeamConfig:
+        for team_config in SideProfile:
             # print(team_config)
             team = TeamBuilder.build(OwnerBuilder.build(id_emitter.owner_id), team_config)
             teams.append(team)

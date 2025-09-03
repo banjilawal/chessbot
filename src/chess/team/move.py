@@ -1,20 +1,20 @@
 from chess.geometry.coord import Coordinate
-from chess.team.model import Team
+from chess.team.model import Side
 from chess.token.model.base import Piece
 
 
 class Move:
-    _team: Team
+    _team: Side
     _destination: Coordinate
 
-    def __init__(self, team: Team, team_member: Piece, destination: Coordinate):
+    def __init__(self, team: Side, team_member: Piece, destination: Coordinate):
         self._team = team
         self._team_member = team_member
         self._destination = destination
 
 
     @property
-    def team(self) -> Team:
+    def team(self) -> Side:
         return self._team
 
 

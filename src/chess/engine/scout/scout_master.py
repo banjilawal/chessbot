@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.board.board import ChessBoard
-from chess.owner.model import CyberneticOwner
+from chess.competitor.model import CyberneticCompetitor
 from chess.engine.scout.scout import Scout
 from chess.engine.scout.scout_report import ScoutReport
 
@@ -9,7 +9,7 @@ from chess.engine.scout.scout_report import ScoutReport
 class ScoutMaster:
 
     @staticmethod
-    def send_scouts(cybernetic_owner: CyberneticOwner, chess_board: ChessBoard) -> List[ScoutReport]:
+    def send_scouts(cybernetic_owner: CyberneticCompetitor, chess_board: ChessBoard) -> List[ScoutReport]:
         scout_reports: List[ScoutReport] = []
 
         for chess_piece in cybernetic_owner.team.free_pieces():

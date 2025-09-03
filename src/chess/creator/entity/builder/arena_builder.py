@@ -1,13 +1,13 @@
 from chess.arena.model import Arena
 from chess.board.board import ChessBoard
-from chess.config.team import TeamConfig
+from chess.config.team import SideProfile
 from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.owner_factory import OwnerFactory
 from chess.creator.entity.factory.team_factory import TeamFactory
 from chess.creator.team_placement_manager import TeamPlacementManager
-from chess.owner.model import Owner
+from chess.competitor.model import Competitor
 
 
 class ArenaBuilder:
@@ -35,8 +35,8 @@ def main():
             print(p, " current coord", p.positions.current_coordinate(), p.positions.size())
     #
     # teams = TeamFactory.assemble()
-    # white_team_owner = teams[0].owner
-    # black_team_owner = teams[1].owner
+    # white_team_owner = teams[0].competitor
+    # black_team_owner = teams[1].competitor
     #
     #
     # arena = Arena(
@@ -45,10 +45,10 @@ def main():
     # TeamPlacementManager.place_teams(arena)
     # return  arena
     #
-    # print("white team owner", arena.white_owner,
+    # print("white team competitor", arena.white_owner,
     #       "\nwhite chess pieces:", len(arena.white_owner.team.chess_pieces))
     #
-    # print("\nblack team owner", arena.black_owner,
+    # print("\nblack team competitor", arena.black_owner,
     #       "\nblack chess pieces:", len(arena.black_owner.team.chess_pieces))
 
 

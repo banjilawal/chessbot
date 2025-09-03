@@ -3,21 +3,21 @@ from unittest.mock import create_autospec, patch
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from chess.owner.model import Owner
-from chess.owner.team import TeamHistory
+from chess.competitor.model import Competitor
+from chess.competitor.side import SideRecord
 
 
 class OwnerTest(unittest.TestCase):
 
     @staticmethod
-    def valid_mock_owner(owner_id=1, name="owner"):
-        mock_owner = create_autospec(Owner, instance=True)
-        mock_team_history = create_autospec(TeamHistory, instance=True)
+    def valid_mock_owner(owner_id=1, name="competitor"):
+        mock_owner = create_autospec(Competitor, instance=True)
+        mock_team_history = create_autospec(SideRecord, instance=True)
 
         mock_team_history.is_empty.return_value = True
         mock_team_history.size.return_value = 0
         mock_team_history.items = []
-        mock_team_history.current_team = None
+        mock_team_history.current_side = None
 
         mock_owner.id = 1
         mock_owner.name = "Valid Owner"
@@ -39,7 +39,7 @@ class OwnerTest(unittest.TestCase):
         mock_name_validate.return_value.is_success.return_value = True
 
         with self.assertRaises(IdValidationException):
-            Owner(owner_id=-1, name="owner")
+            Competitor(owner_id=-1, name="competitor")
 
 
     @patch('assurance.validators.name.NameValidator.validate')
@@ -55,7 +55,7 @@ class OwnerTest(unittest.TestCase):
         mock_name_validate.return_value.exception = NameValidationException("Invalid name")
 
         with self.assertRaises(NameValidationException):
-            Owner(owner_id=1, name="a1")
+            Competitor(owner_id=1, name="a1")
 
 
     @patch('assurance.validators.name.NameValidator.validate')
@@ -68,7 +68,7 @@ class OwnerTest(unittest.TestCase):
         mock_id_validate.return_value.is_success.return_value = True
         mock_name_validate.return_value.is_success.return_value = True
 
-        Owner(owner_id=1, name="owner")
+        Competitor(owner_id=1, name="competitor")
 
 
 if __name__ == "__main__":

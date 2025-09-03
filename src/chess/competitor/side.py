@@ -6,20 +6,20 @@ from chess.exception.stack import (
     CorruptedStackException,
     DuplicatePushException
 )
-from chess.team.model import Team
+from chess.team.model import Side
 
 
-class TeamHistory:
-    _items: List[Team]
-    _current_team: [Team]
+class SideRecord:
+    _items: List[Side]
+    _current_side: [Side]
 
     def __init__(self):
         self._items = []
-        self._current_team = self._items[-1] if self._items else None
+        self._current_side = self._items[-1] if self._items else None
 
 
     @property
-    def items(self) -> Sequence[Team]:
+    def items(self) -> Sequence[Side]:
         """
         Returns a read-only view of the stack's contents. The returned sequence is safe to
         iterate and index, but mutating it will not affect the original stack.
@@ -29,7 +29,7 @@ class TeamHistory:
 
 
     @property
-    def current_team(self) -> Optional[Team]:
+    def current_side(self) -> Optional[Side]:
         return self._items[-1] if self._items else None
 
 
@@ -47,13 +47,13 @@ class TeamHistory:
         if team is None:
             raise PushingNullEntityException(f"{method}: {PushingNullEntityException.DEFAULT_MESSAGE}")
 
-        if not isinstance(team, Team):
+        if not isinstance(team, Side):
             raise TypeError(f"{method}: Expected a Team got {type(team).__name__}")
 
         if self._items is None:
             raise CorruptedStackException(f"{method}: {CorruptedStackException.DEFAULT_MESSAGE}")
 
-        if self.current_team == team:
+        if self.current_side == team:
             raise DuplicatePushException(f"{method} {DuplicatePushException.DEFAULT_MESSAGE}")
 
         self._items.append(team)

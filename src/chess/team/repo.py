@@ -2,12 +2,12 @@ from typing import List, Optional
 
 from chess.common.color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.owner.model import Owner
-from chess.team.model import Team
+from chess.competitor.model import Competitor
+from chess.team.model import Side
 
 
 class TeamRepo:
-    _teams: List[Team]
+    _teams: List[Side]
 
     def __init__(self,):
         self._teams = []
@@ -17,29 +17,29 @@ class TeamRepo:
         return len(self._teams)
 
 
-    def add(self, team: Team):
+    def add(self, team: Side):
         if team not in self._teams and team is not None:
             self._teams.append(team)
 
 
-    def team_by_id(self, team_id: int) -> Optional[Team]:
+    def team_by_id(self, team_id: int) -> Optional[Side]:
         for team in self._teams:
             if team.id == team_id:
                 return team
         return None
 
 
-    def teams_by_owner(self, owner: Owner) -> List[Team]:
-        matches: List[Team] = []
+    def teams_by_owner(self, owner: Competitor) -> List[Side]:
+        matches: List[Side] = []
 
         for team in self._teams:
-            if team.owner == owner and team not in matches:
+            if team.controller == owner and team not in matches:
                 matches.append(team)
         return matches
 
 
-    def teams_by_color(self, color: GameColor) -> List[Team]:
-        matches: List[Team] = []
+    def teams_by_color(self, color: GameColor) -> List[Side]:
+        matches: List[Side] = []
 
         for team in self._teams:
             if team.color == color and team not in matches:
@@ -47,8 +47,8 @@ class TeamRepo:
         return matches
 
 
-    def teams_by_quadrant(self, quadrant: Quadrant) -> List[Team]:
-        matches: List[Team] = []
+    def teams_by_quadrant(self, quadrant: Quadrant) -> List[Side]:
+        matches: List[Side] = []
 
         for team in self._teams:
             if team.home_quadrant == quadrant and team not in matches:

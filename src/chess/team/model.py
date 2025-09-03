@@ -1,23 +1,23 @@
 from typing import List, TYPE_CHECKING, cast, Sequence, Optional
 
 from assurance.validators.id import IdValidator
-from assurance.validators.owner import OwnerValidator
-from chess.config.team import TeamConfig
+from assurance.validators.owner import CompertitorValidator
+from chess.config.team import SideProfile
 from chess.token.model.combatant import CombatantPiece
 
 
 if TYPE_CHECKING:
-    from chess.owner.model import Owner
+    from chess.competitor.model import Competitor
     from chess.token.model.base import Piece
 
 
-class Team:
+class Side:
     _id: int
-    _owner: 'Owner'
-    _conf: TeamConfig
+    _controller: 'Competitor'
+    _profile: SideProfile
     _pieces: list[Piece]
 
-    def __init__(self, team_id: int, owner: 'Owner', conf: TeamConfig):
+    def __init__(self, team_id: int, controller: 'Competitor', profile: SideProfile):
         method = "Team.__init__"
 
         id_validation = IdValidator.validate(team_id)
@@ -25,17 +25,17 @@ class Team:
             raise id_validation.exception
         team_id = cast(id_validation.payload, int)
 
-        owner_validation = OwnerValidator.validate(owner)
-        if not owner_validation.is_success():
-            raise owner_validation.exception
-        owner = cast(owner_validation.payload, Owner)
+        competitor_validation = CompertitorValidator.validate(controller)
+        if not competitor_validation.is_success():
+            raise competitor_validation.exception
+        controller = cast(competitor_validation.payload, Competitor)
 
-        if owner is not None and self not in owner.team_history:
-            owner.team_history.push_team(self)
+        if controller is not None and self not in controller.team_history:
+            controller.team_history.push_team(self)
 
         self._id = team_id
-        self._owner = owner
-        self._conf = conf
+        self._controller = controller
+        self._profile = profile
         self._pieces = []
 
 
@@ -45,13 +45,13 @@ class Team:
 
 
     @property
-    def owner(self) -> 'Owner':
-        return self._owner
+    def controller(self) -> 'Competitor':
+        return self._controller
 
 
     @property
-    def conf(self) -> TeamConfig:
-        return self._conf
+    def profile(self) -> SideProfile:
+        return self._profile
 
 
     @property
@@ -107,7 +107,7 @@ class Team:
             return True
         if other is None:
             return False
-        if not isinstance(other, Team):
+        if not isinstance(other, Side):
             return False
         return self.id == other.id
 
@@ -117,4 +117,4 @@ class Team:
 
 
     def __str__(self):
-        return f"Team[id:{self._id} owner:{self._owner.name} {self._conf}"
+        return f"Team[id:{self._id} competitor:{self._controller.name} {self._profile}"

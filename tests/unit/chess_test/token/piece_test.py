@@ -4,7 +4,7 @@ from unittest.mock import create_autospec, patch
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from chess.rank.base import Rank
-from chess.team.model import Team
+from chess.team.model import Side
 from chess.token.model.base import Piece
 
 
@@ -17,7 +17,7 @@ class PieceTest(unittest.TestCase):
         name="piece"
     ):
         piece = create_autospec(Piece, instance=True)
-        mock_team = create_autospec(Team, instance=True)
+        mock_team = create_autospec(Side, instance=True)
         mock_rank = create_autospec(Rank, instance=True)
 
         piece.id = piece_id

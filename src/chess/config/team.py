@@ -6,7 +6,7 @@ from chess.geometry.quadrant import Quadrant
 from chess.geometry.scalar import Scalar
 
 
-class TeamConfig(Enum):
+class SideProfile(Enum):
 
     def __new__(cls, game_color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant):
         obj = object.__new__(cls)
@@ -51,8 +51,8 @@ class TeamConfig(Enum):
 
 
     @property
-    def enemy_config(self) -> 'TeamConfig':
-        return TeamConfig.BLACK if self == TeamConfig.WHITE else TeamConfig.WHITE
+    def enemy_config(self) -> 'SideProfile':
+        return SideProfile.BLACK if self == SideProfile.WHITE else SideProfile.WHITE
 
 
     def __str__(self) -> str:
@@ -65,7 +65,7 @@ class TeamConfig(Enum):
 
 
 def main():
-    conf = TeamConfig.WHITE
+    conf = SideProfile.WHITE
     print(conf)
 
 

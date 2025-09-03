@@ -11,10 +11,10 @@ from assurance.validators.name import NameValidator
 from assurance.validators.team_hist import TeamHistoryValidator
 
 from chess.exception.null.owner import NullOwnerException
-from chess.owner.model import Owner
+from chess.competitor.model import Competitor
 
 
-class OwnerValidator(Validator):
+class CompertitorValidator(Validator):
     """
     Validates an Owner used in a domain module meets requirements:
         - Is not null.
@@ -28,13 +28,13 @@ class OwnerValidator(Validator):
     """
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Owner]:
+    def validate(t: Generic[T]) -> Result[Competitor]:
         entity = "Owner"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
-        Validates a owner meets domain requirements:
+        Validates a competitor meets domain requirements:
             - Not null
             - valid id
             - valid name
@@ -42,7 +42,7 @@ class OwnerValidator(Validator):
         Any failed requirement raise an exception wrapped in a OwnerValidationException
             
         Args
-            t (Owner): owner to validate
+            t (Owner): competitor to validate
             
          Returns:
              Result[T]: A Result object containing the validated payload if all domain requirements 
@@ -52,11 +52,11 @@ class OwnerValidator(Validator):
             TypeError: if t is not Owner
             NullOwnerException: if t is null   
 
-            RowBelowBoundsException: If owner.row < 0
-            RowAboveBoundsException: If owner.row >= ROW_SIZE
+            RowBelowBoundsException: If competitor.row < 0
+            RowAboveBoundsException: If competitor.row >= ROW_SIZE
                 
-            ColumnBelowBoundsException: If owner.column < 0
-            ColumnAboveBoundsException: If owner.column>= ROW_SIZE
+            ColumnBelowBoundsException: If competitor.column < 0
+            ColumnAboveBoundsException: If competitor.column>= ROW_SIZE
                 
             OwnerValidationException: Wraps any preceding exception     
         """
@@ -71,11 +71,11 @@ class OwnerValidator(Validator):
                 raise NullOwnerException(f"{method} {NullOwnerException.DEFAULT_MESSAGE}")
 
             # If cannot cast from t to Owner need to break
-            if not isinstance(t, Owner):
+            if not isinstance(t, Competitor):
                 raise TypeError(f"{method} Expected a Owner, got {type(t).__name__}")
 
             # cast and run checks for the fields
-            owner = cast(Owner, t)
+            owner = cast(Competitor, t)
 
             id_validation = IdValidator.validate(owner.id)
             if not id_validation.is_success():

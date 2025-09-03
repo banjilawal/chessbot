@@ -3,7 +3,7 @@ from typing import Optional, List
 from chess.arena.model import Arena
 from chess.arena.repo import ArenaRepo
 from chess.board.board import ChessBoard
-from chess.owner.model import Owner
+from chess.competitor.model import Competitor
 
 
 class ArenaService:
@@ -21,7 +21,7 @@ class ArenaService:
         return self._repo.arena_by_id(arena_id)
 
 
-    def filter_arenas_by_team_owner(self, owner: Owner) -> List[Arena]:
+    def filter_arenas_by_team_owner(self, owner: Competitor) -> List[Arena]:
         return self._repo.arenas_by_team_owner(owner)
 
 

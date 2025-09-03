@@ -2,9 +2,9 @@ from typing import List, Optional
 
 from chess.common.color import GameColor
 from chess.geometry.quadrant import Quadrant
-from chess.owner.model import Owner
+from chess.competitor.model import Competitor
 from chess.team.repo import TeamRepo
-from chess.team.model import Team
+from chess.team.model import Side
 
 # if TYPE_CHECKING:
 #     from chess.team.square.team import Team
@@ -21,21 +21,21 @@ class TeamService:
         return self._repo.__len__()
 
 
-    def add_team(self, team: Team):
+    def add_team(self, team: Side):
         self._repo.add(team)
 
 
-    def find_team_by_id(self, team_id: int) -> Optional[Team]:
+    def find_team_by_id(self, team_id: int) -> Optional[Side]:
         return self._repo.team_by_id(team_id)
 
 
-    def filter_teams_by_owner(self, owner: Owner) -> List[Team]:
+    def filter_teams_by_owner(self, owner: Competitor) -> List[Side]:
         return self._repo.teams_by_owner(owner)
 
 
-    def filter_teams_by_color(self, color: GameColor) -> List[Team]:
+    def filter_teams_by_color(self, color: GameColor) -> List[Side]:
         return self._repo.teams_by_color(color)
 
 
-    def filter_teams_by_quadrant(self, quadrant: Quadrant) -> List[Team]:
+    def filter_teams_by_quadrant(self, quadrant: Quadrant) -> List[Side]:
         return self._repo.teams_by_quadrant(quadrant)

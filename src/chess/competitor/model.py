@@ -4,15 +4,15 @@ from typing import Optional, cast
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from chess.engine.decision.decision_engine import DecisionEngine
-from chess.team.model import Team
-from chess.owner.team import TeamHistory
+from chess.team.model import Side
+from chess.competitor.side import SideRecord
 
 
-class Owner(ABC):
+class Competitor(ABC):
     _id: int
     _name: str
-    _current_team: Optional[Team]
-    _team_history: TeamHistory
+    _current_team: Optional[Side]
+    _sides_played: SideRecord
 
     def __init__(self, owner_id: int, name: str):
 
@@ -26,9 +26,9 @@ class Owner(ABC):
 
         self._id = cast(id_validation.payload.id, int)
         self._name = cast(name_validation.payload.name, str)
-        self._team_history =TeamHistory()
+        self._sides_played = SideRecord()
 
-        self._current_team = self._team_history.current_team
+        self._current_team = self._sides_played.current_side
 
 
     @property
@@ -42,13 +42,13 @@ class Owner(ABC):
 
 
     @property
-    def team_history(self) -> TeamHistory:
-        return self._team_history
+    def team_history(self) -> SideRecord:
+        return self._sides_played
 
 
     @property
-    def current_team(self) -> Optional[Team]:
-        return self._team_history.current_team
+    def current_team(self) -> Optional[Side]:
+        return self._sides_played.current_side
 
 
     @name.setter
@@ -61,7 +61,7 @@ class Owner(ABC):
             return True
         if other is None:
             return False
-        if not isinstance(other, Owner):
+        if not isinstance(other, Competitor):
             return False
         return self.id == other.id
 
@@ -81,7 +81,7 @@ class Owner(ABC):
         )
 
 
-class HumanOwner(Owner):
+class HumanCompetitor(Competitor):
 
     def __init__(self, owner_id: int, name: str):
         super().__init__(owner_id, name)
@@ -91,12 +91,12 @@ class HumanOwner(Owner):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, HumanOwner):
+        if isinstance(other, HumanCompetitor):
             return self.id == other.id
         return False
 
 
-class CyberneticOwner(Owner):
+class CyberneticCompetitor(Competitor):
     _decision_engine: DecisionEngine
 
     def __init__(
@@ -118,7 +118,7 @@ class CyberneticOwner(Owner):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, CyberneticOwner):
+        if isinstance(other, CyberneticCompetitor):
             return self._id == other.id
         return False
 

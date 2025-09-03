@@ -1,14 +1,14 @@
 from chess.token.model import Piece
 from chess.rank.base import Rank
 
-from chess.team.model import Team
+from chess.team.model import Side
 
 
 class ChessPieceBuilder:
 
 
     @staticmethod
-    def build(token_id: int, team_rank_member_id: int, rank: Rank, team: Team):
+    def build(token_id: int, team_rank_member_id: int, rank: Rank, team: Side):
 
         name = team.letter.capitalize() + rank.letter.capitalize() + str(team_rank_member_id)
         if rank.letter == "K" or rank.letter == "Q":

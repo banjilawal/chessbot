@@ -1,25 +1,25 @@
 
-from chess.config.team import TeamConfig
+from chess.config.team import SideProfile
 from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
-from chess.owner.model import Owner
-from chess.team.model import Team
+from chess.competitor.model import Competitor
+from chess.team.model import Side
 
 
 class TeamBuilder:
 
     @staticmethod
-    def build(owner: Owner, config: TeamConfig) -> Team:
+    def build(owner: Competitor, config: SideProfile) -> Side:
        print("build team got config", config)
-       team = Team(
+       team = Side(
            team_id=id_emitter.team_id,
            letter=config.letter,
            team_color=config.game_color,
            back_row_index=config.back_rank_index,
            pawn_row_index=config.pawn_rank_index,
            home_quadrant=config.quadrant,
-           owner=owner
+           controller=owner
        )
        return team
 
@@ -29,18 +29,18 @@ class TeamBuilder:
 # def main():
 #     teams: list[Team] = []
 #     for config in TeamConfig:
-#         owner = OwnerBuilder.build(id_emitter.owner_id)
-#         team = TeamBuilder.build(owner, config)
+#         competitor = OwnerBuilder.build(id_emitter.owner_id)
+#         team = TeamBuilder.build(competitor, config)
 #         print(team)
 #         if team not in teams:
 #             teams.append(team)
 #     print(len(teams))
 #
-#     old_owwer = teams[0].owner
-#     teams[0].owner = None
+#     old_owwer = teams[0].competitor
+#     teams[0].competitor = None
 #     print(teams[0])
 #
-#     teams[0].owner = OwnerBuilder.build(id_emitter.owner_id)
+#     teams[0].competitor = OwnerBuilder.build(id_emitter.owner_id)
 #     print(teams[0])
 #
 #     team = TeamBuilder.build(old_owwer, TeamConfig.WHITE)

@@ -3,18 +3,18 @@ from typing import Generic, cast
 from assurance.exception.validation.team import TeamHistoryValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
-from assurance.validators.team import TeamValidator
+from assurance.validators.side import TeamValidator
 from chess.exception.null.team_stack import NullTeamHistory
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
 from chess.exception.team_hist import CurrentTeamException
-from chess.owner.team import TeamHistory
+from chess.competitor.side import SideRecord
 
 
 class TeamHistoryValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[TeamHistory]:
+    def validate(t: Generic[T]) -> Result[SideRecord]:
         entity = "TeamStack"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -53,20 +53,20 @@ class TeamHistoryValidator(Validator):
             if t is None:
                 raise NullTeamHistory(f"{method} {NullTeamHistory.DEFAULT_MESSAGE}")
 
-            if not isinstance(t, TeamHistory):
+            if not isinstance(t, SideRecord):
                 raise TypeError(f"{method} Expected a TeamStack, got {type(t).__name__}")
 
-            teams = cast(TeamHistory, t)
+            teams = cast(SideRecord, t)
 
             if teams.size() > 0 and teams.is_empty():
                 raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")
 
-            if teams.is_empty() and teams.current_team is not None:
+            if teams.is_empty() and teams.current_side is not None:
                 raise CurrentTeamException(
                     f"{method}: {CurrentTeamException.DEFAULT_MESSAGE}"
                 )
 
-            if teams.current_team is None and not teams.is_empty():
+            if teams.current_side is None and not teams.is_empty():
                 raise CurrentTeamException(
                     f"{method} {CurrentTeamException.DEFAULT_MESSAGE}"
                 )
@@ -74,7 +74,7 @@ class TeamHistoryValidator(Validator):
             if teams.items is None:
                 raise CorruptedStackException(f"{method} {CorruptedStackException.DEFAULT_MESSAGE}")
 
-            current_team = teams.current_team
+            current_team = teams.current_side
 
             if (
                 current_team is not None and
