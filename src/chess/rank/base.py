@@ -63,6 +63,23 @@ class Rank(ABC):
 
     @abstractmethod
     def walk(self, piece: Piece, coordinate: Coordinate, board: ChessBoard):
+        """
+        Validates a ChessPiece can reach a destination with its movement constraints. Must be instantiated by
+        Walk implementors.
+
+        Args:
+            piece (ChessPiece): Source of truth for origin of motion
+            destination (Coordinate): terminus of ChessPiece movement
+
+        Returns:
+            True if the move from origin to destination fits ChessRank movement rule.
+
+        Raise:
+            NullChessPieceException: If piece is null.
+            NullCoordinateException: If destination is null.
+            CoordinateException: If destination properties are invalid.
+        """
+
         pass
 
 
