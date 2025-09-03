@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING, List
 
 from chess.exception.null.record import NullRecordException
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 
 if TYPE_CHECKING:
     from chess.token.model import Piece

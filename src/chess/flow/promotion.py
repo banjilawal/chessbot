@@ -5,8 +5,7 @@ from chess.config.rank import RankConfig
 from chess.flow.base import Flow
 from chess.rank.queen import QueenRank, PromotedQueen
 from chess.request.promote import PromotionRequest
-from chess.token.model import Piece
-from chess.walk.queen import QueenWalk
+from chess.token.model.base import Piece
 
 
 class PromotionFlow(Flow):
@@ -25,10 +24,9 @@ class PromotionFlow(Flow):
             old_rank=client.rank.name,
             name=RankConfig.QUEEN.name,
             letter=RankConfig.QUEEN.letter,
-            capture_value=RankConfig.QUEEN.capture_value,
-            number_per_team=1,
+            value=RankConfig.QUEEN.capture_value,
+            per_team=1,
             territories=RankConfig.QUEEN.territories,
-            walk=QueenWalk(),
         )
 
         piece = Piece(piece_id=client.id, name=client.name, team=client.team, rank=promoted_queen)

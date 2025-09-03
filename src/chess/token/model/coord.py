@@ -7,7 +7,7 @@ from chess.exception.stack import (
     DuplicatePushException,
     PopEmptyStackException
 )
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 
 
 class CoordinateStack:

@@ -1,4 +1,4 @@
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 from chess.team.model import Team
 from chess.token.model.base import Piece
 

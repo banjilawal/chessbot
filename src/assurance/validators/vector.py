@@ -11,7 +11,7 @@ from chess.exception.null.y_dim import YComponentNullException
 from chess.exception.vector.y_dim import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
 from chess.exception.vector.x_dim import XComponentBelowLowerBoundException, XComponentAboveUpperBoundException
 
-from chess.geometry.vector.delta import Vector
+from chess.geometry.delta import Vector
 
 
 class VectorValidator(Validator):

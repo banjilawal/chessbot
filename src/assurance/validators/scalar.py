@@ -6,8 +6,8 @@ from assurance.validators.base import Validator, T
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
 from chess.exception.null.scalar import NullScalarException
-from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScalarException, ScalarAboveUpperBoundException
-from chess.geometry.vector.scalar import Scalar
+from chess.exception.vector.scalar import ScalarBelowLowerBoundException, ScalarAboveUpperBoundException
+from chess.geometry.scalar import Scalar
 
 
 class ScalarValidator(Validator):
@@ -70,11 +70,11 @@ class ScalarValidator(Validator):
             return Result(payload=scalar)
 
         except (
-                TypeError,
-                NullScalarException,
-                NullNumberException,
-                ScalarBelowLowerBoundException,
-                ScalarAboveUpperBoundException,
+            TypeError,
+            NullScalarException,
+            NullNumberException,
+            ScalarBelowLowerBoundException,
+            ScalarAboveUpperBoundException,
         ) as e:
             raise ScalarValidationException(
                 f"{method}: {ScalarValidationException.DEFAULT_MESSAGE}"

@@ -4,7 +4,7 @@ from typing import List, Optional, TYPE_CHECKING
 from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.validators.coord import CoordinateValidator
 from chess.board.square import Square
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 
 if TYPE_CHECKING:
     from chess.token.model import Piece

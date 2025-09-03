@@ -1,10 +1,7 @@
 
 from enum import Enum, auto
-from typing import Optional
 
-from chess.common.config import BOARD_DIMENSION
-from chess.geometry.vector.delta import Vector
-from chess.geometry.vector.scalar import Scalar
+from chess.geometry.delta import Vector
 
 
 class Quadrant(Enum):

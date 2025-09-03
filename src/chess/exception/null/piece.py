@@ -1,7 +1,7 @@
 from chess.exception.null.base import NullException
 
 
-class NNullPieceException(NullException):
+class NullPieceException(NullException):
     ERROR_CODE = "NULL_PIECE_ERROR"
     DEFAULT_MESSAGE = f"Chess piece cannot be null"
 

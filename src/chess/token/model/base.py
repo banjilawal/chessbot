@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import List, TYPE_CHECKING, Optional, cast
+from typing import TYPE_CHECKING, Optional, cast
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
@@ -9,9 +9,9 @@ from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from assurance.validators.rank import RankValidator
 from assurance.validators.team import TeamValidator
-from chess.exception.null.piece import NNullPieceException
+from chess.exception.null.piece import NullPieceException
 from chess.exception.piece import MappingSelfException
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 from chess.team.model import Team
 from chess.token.model.map import Record, ObservationChart
 from chess.token.model.mobility_status import MobilityStatus
@@ -61,8 +61,6 @@ class Piece(ABC):
                 f"{method}: {TeamValidationException.DEFAULT_MESSAGE}"
             )
         team = cast(team_validation.payload, Team)
-
-
 
         self._id = cast(id_validation.payload, int)
         self._name = cast(name_validation.payload, str)
@@ -143,7 +141,7 @@ class Piece(ABC):
         method = "Piece.add_observation"
 
         if piece is None:
-            raise NNullPieceException(f"{method}: {NNullPieceException.DEFAULT_MESSAGE}")
+            raise NullPieceException(f"{method}: {NullPieceException.DEFAULT_MESSAGE}")
         if piece is self:
             raise MappingSelfException(f"{method}: {MappingSelfException.DEFAULT_MESSAGE}")
 

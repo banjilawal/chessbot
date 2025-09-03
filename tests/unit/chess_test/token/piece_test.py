@@ -3,7 +3,6 @@ from unittest.mock import create_autospec, patch
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from chess.geometry.coordinate.coord import Coordinate
 from chess.rank.base import Rank
 from chess.team.model import Team
 from chess.token.model.base import Piece

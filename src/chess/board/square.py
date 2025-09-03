@@ -7,7 +7,7 @@ from assurance.validators.name import NameValidator
 
 
 if TYPE_CHECKING:
-    from chess.geometry.coordinate.coord import Coordinate
+    from chess.geometry.coord import Coordinate
     from chess.token.model.base import Piece
 
 class Square:

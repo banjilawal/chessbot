@@ -1,12 +1,9 @@
-from typing import List, TYPE_CHECKING, cast
+from typing import List, TYPE_CHECKING, cast, Sequence, Optional
 
 from assurance.validators.id import IdValidator
 from assurance.validators.owner import OwnerValidator
 from chess.config.team import TeamConfig
-from chess.team.piece import PieceList
 from chess.token.model.combatant import CombatantPiece
-
-from chess.token.model.mobility_status import MobilityStatus
 
 
 if TYPE_CHECKING:
@@ -18,7 +15,7 @@ class Team:
     _id: int
     _owner: 'Owner'
     _conf: TeamConfig
-    _pieces: List[Piece]
+    _pieces: list[Piece]
 
     def __init__(self, team_id: int, owner: 'Owner', conf: TeamConfig):
         method = "Team.__init__"
@@ -39,11 +36,7 @@ class Team:
         self._id = team_id
         self._owner = owner
         self._conf = conf
-        self._pieces = PieceList()
-
-
-        #
-        # print("Team owner is", owner.id) if owner is not None else print("Team owner is None")
+        self._pieces = []
 
 
     @property
@@ -62,13 +55,16 @@ class Team:
 
 
     @property
-    def pieces(self) -> PieceList:
-        return self._pieces
+    def pieces(self) -> Sequence[Piece]:
+        """
+        Returns a read-only view of the stack's contents. The returned sequence is safe to
+        iterate and index, but mutating it will not affect the original stack.
+        """
+
+        return self._pieces.copy()
 
 
-
-
-    def free_pieces(self) -> List['Piece']:
+    def free_pieces(self) -> List[Piece]:
         matches: List['Piece'] = []
 
         for piece in self._pieces:
@@ -92,16 +88,18 @@ class Team:
         return matches
 
 
-    def blocked_pieces(self) -> List['Piece']:
-        matches: List['Piece'] = []
-
+    def find_piece(self, piece_id: int) -> Optional[Piece]:
         for piece in self._pieces:
-            if (
-                piece.status == MobilityStatus.BLOCKED_FROM_MOVING and
-                piece not in matches
-            ):
-                matches.append(piece)
-        return matches
+            if piece.id == piece_id:
+                return piece
+        return None
+
+
+    def find_piece_name(self, name):
+        for piece in self._pieces:
+            if name.upper() == piece.name.upper():
+                return piece
+        return None
 
 
     def __eq__(self, other):
@@ -118,33 +116,5 @@ class Team:
         return hash(self.id)
 
 
-    def find_piece(self, piece_id: int):
-        for piece in self._pieces:
-            if piece.id == piece_id:
-                return piece
-        return None
-
-
-    def find_piece_name(self, name):
-        for piece in self._pieces:
-            if name.upper() == piece.name.upper():
-                return piece
-        return None
-
-
-    def enemy_back_row_index(self):
-        if self.back_rank_index == 0:
-            return 7
-        else:
-            return 0
-
-
     def __str__(self):
-        return (
-            f"owner name: {self._owner} "
-            f"Team id:{self._id} "
-            f"color:{self._color}  "
-            f"rank_row:{self._back_row_index} "
-            f"pawn_row:{self._pawn_row_index} "
-            f"home:{self._home_quadrant}]"
-        )
+        return f"Team[id:{self._id} owner:{self._owner.name} {self._conf}"

@@ -7,12 +7,12 @@ from assurance.exception.validation.request import PromotionRequestValidationExc
 from assurance.result.event import RequestOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
+from chess.rank.queen import PromotedQueen
 from chess.request.validators.base import RequestValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullPromotionRequestException
 from chess.exception.piece import DoublePromotionException
 from chess.exception.rank import UnPromotableRankException, PromotionRowException
-from chess.rank.promote import PromotableRank
 from chess.request.promote import PromotionRequest
 
 T = TypeVar('T')
@@ -71,14 +71,16 @@ class PromotionRequestValidator(RequestValidator):
                 raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}")
 
             piece = piece_result.payload
-            if not isinstance(piece.rank, PromotableRank):
+            if not isinstance(piece.rank, PromotedQueen):
                 raise UnPromotableRankException(f"{method}: {UnPromotableRankException.DEFAULT_MESSAGE}")
 
-            if piece.rank.previous_rank is not None:
+            promotable = cast(piece, PromotedQueen)
+
+            if promotable.rank.previous_rank is not None:
                 raise DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
 
             current_row = piece.current_coordinate.row
-            if current_row != piece.team.enemy_back_row_index():
+            if current_row != piece.team.conf.enemy_home().rank_row :
                 raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
             return RequestOutcome(

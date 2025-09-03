@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock, create_autospec
+from unittest.mock import create_autospec
 
 from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.validators.coord import CoordinateValidator
@@ -13,7 +13,7 @@ from chess.exception.coord import (
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.row import NullRowException
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 from unit.chess_test.geometry.coord.coord_test import CoordinateTest
 
 

@@ -64,20 +64,20 @@ class OccupationRequestValidator(RequestValidator):
 
             occupation_request = cast(OccupationRequest, t)
 
-            id_result = IdValidator.validate(occupation_request.id)
-            if not id_result.is_success():
+            id_validation = IdValidator.validate(occupation_request.id)
+            if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-            piece_result = PieceValidator.validate(occupation_request.client)
-            if not piece_result.is_success():
+            piece_validation = PieceValidator.validate(occupation_request.client)
+            if not piece_validation.is_success():
                 raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}")
 
-            square_result = SquareValidator.validate(occupation_request.resource)
-            if not square_result.is_success():
+            square_validation = SquareValidator.validate(occupation_request.resource)
+            if not square_validation.is_success():
                 raise SquareValidationException(f"{method}: {SquareValidationException.DEFAULT_MESSAGE}")
 
-            piece = piece_result.payload
-            target_square = square_result.payload
+            piece = piece_validation.payload
+            target_square = square_validation.payload
 
             if target_square.coordinate == piece.coordinate:
                 raise OccupiedBySelfException(f"{method}: {OccupiedBySelfException.DEFAULT_MESSAGE}")
@@ -105,10 +105,10 @@ class OccupationRequestValidator(RequestValidator):
             )
 
         except (
-                TypeError,
-                PieceValidationException,
-                SquareValidationException,
-                NullOccupationRequestException
+            TypeError,
+            PieceValidationException,
+            SquareValidationException,
+            NullOccupationRequestException
         ) as e:
             raise OccupationRequestValidationException(
                 f"{method}: {OccupationRequestValidationException.DEFAULT_MESSAGE}"

@@ -4,7 +4,7 @@ from chess.board.board import ChessBoard
 from chess.board.square import Square
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.creator.emit import id_emitter
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 
 
 class ChessBoardBuilder:

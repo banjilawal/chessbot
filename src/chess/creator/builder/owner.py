@@ -2,22 +2,21 @@ from enum import Enum
 
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validators.coord import CoordinateValidator
+from assurance.validators.owner import OwnerValidator
 from chess.geometry.coord import Coordinate
+from chess.owner.model import Owner
 
 
-
-
-class CoordinateBuilder(Enum):
+class OwnerBuilder(Enum):
 
     @staticmethod
-    def build(row: int, column: int) -> Result[Coordinate]:
+    def build(owner_id:int, name: str, coordinate: Coordinate ) -> Result[Owner]:
         try:
-            candidate = Coordinate(row, column)
-            result = CoordinateValidator.validate(candidate)
+            candidate = Owner(owner_id=owner_id, name=name)
+            validation = OwnerValidator.validate(candidate)
 
-            ThrowHelper.throw_if_invalid(CoordinateBuilder, result)
-            return result
+            ThrowHelper.throw_if_invalid(OwnerBuilder, validation)
+            return validation
         except Exception as e:
             return Result(payload=None, exception=e)
 

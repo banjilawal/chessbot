@@ -2,10 +2,8 @@ from typing import List
 
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
-from chess.geometry.coordinate.euclid import Distance
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 from chess.token.model.map import Record
-from chess.token.model import Piece
 
 from chess.engine.scout.scout_report import ScoutReport
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
@@ -94,7 +92,7 @@ class ScoutReportAnalyzer:
 
         enemies.sort(
             reverse=True,
-            key=lambda chess_piece: chess_piece.rank.capture_value
+            key=lambda chess_piece: chess_piece.rank.value
         )
         return enemies
 

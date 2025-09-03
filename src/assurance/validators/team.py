@@ -1,16 +1,16 @@
 from typing import cast, Generic
 
-from assurance.exception.validation.coord import CoordinateValidationException
+
 from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.name import NameValidationException
-from assurance.exception.validation.square import SquareValidationException
+from assurance.exception.validation.owner import OwnerValidationException
+
+from assurance.exception.validation.team import TeamValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
-from assurance.validators.coord import CoordinateValidator
 from assurance.validators.id import IdValidator
-from assurance.validators.name import NameValidator
-from chess.board.square import Square
-from chess.exception.null.square import NullSquareException
+from assurance.validators.owner import OwnerValidator
+
+from chess.exception.null.team import NullTeamException
 from chess.team.model import Team
 
 
@@ -23,68 +23,51 @@ class TeamValidator(Validator):
         method = f"{class_name}.validate"
 
         """
-        Validates a square with chained exceptions for square meeting specifications:
+        Validates a team with chained exceptions for team meeting specifications:
             - Not null
-            - id fails validation
-            - name fails validation
-            - coordinate fails validation
-        If validators fails their exception will be encapsulated in a SquareValidationException
+            - id passes validation checks
+            - owner passes validation checks
+        An unmet requirements raise an exception which encapsulated in a TeamValidationException
 
         Args
-            t (Square): square to validate
+            t (Team): team to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                SquareValidationException otherwise.
+            TeamValidationException otherwise.
 
         Raises:
-            TypeError: if t is not Square
-            NullSquareException: if t is null   
+            TypeError: if t is not Team
+            NullTeamException: if t is null   
 
             IdValidationException: if invalid id
-            NameValidationException: if invalid name
-            CoordinateValidationException: if invalid coordinate
+            OwnerValidationException: if invalid owner
 
-            SquareValidationException: Wraps any preceding exceptions      
+            TeamValidationException: Wraps any preceding exceptions      
         """
         try:
             if t is None:
-                raise NullSquareException(
-                    f"{method} {NullSquareException.DEFAULT_MESSAGE}"
-                )
+                raise NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
 
-            if not isinstance(t, Square):
-                raise TypeError(f"{method} Expected a Square, got {type(t).__name__}")
+            if not isinstance(t, Team):
+                raise TypeError(f"{method} Expected a Team, got {type(t).__name__}")
 
-            square = cast(Square, t)
+            team = cast(Team, t)
 
-            id_result = IdValidator.validate(square.id)
-            if not id_result.is_success():
-                raise IdValidationException(
-                    f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
-                )
+            id_validation = IdValidator.validate(team.id)
+            if not id_validation.is_success():
+                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-            name_result = NameValidator.validate(square.name)
-            if not name_result.is_success():
-                raise NameValidationException(
-                    f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
-                )
+            owner_validation = OwnerValidator.validate(team.owner)
+            if not owner_validation.is_success():
+                raise OwnerValidationException(f"{method}: {OwnerValidationException.DEFAULT_MESSAGE}")
 
-            coord_result = CoordinateValidator.validate(square.coordinate)
-            if not coord_result.is_success():
-                raise CoordinateValidationException(
-                    f"{method}: {CoordinateValidationException.DEFAULT_MESSAGE}"
-                )
-
-            return Result(payload=square)
+            return Result(payload=team)
 
         except (
             TypeError,
-            NullSquareException,
+            NullTeamException,
             IdValidationException,
-            NameValidationException,
-            CoordinateValidationException
+            OwnerValidationException
         ) as e:
-            raise SquareValidationException(
-                f"{method}: {SquareValidationException.DEFAULT_MESSAGE}"
-            ) from e
+            raise TeamValidationException(f"{method}: {TeamValidationException.DEFAULT_MESSAGE}") from e

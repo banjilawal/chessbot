@@ -5,7 +5,7 @@ from assurance.exception.validation.coord import CoordinateValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from chess.board.square import Square
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 from chess.token.model.base import Piece
 from unit.chess_test.geometry.coord.coord_test import CoordinateTest
 

@@ -6,7 +6,7 @@ from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.scalar import NullScalarException
 from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScalarException, \
     ScalarAboveUpperBoundException, RowDeltaOverflowExceptioDn
-from chess.geometry.vector.delta import Offset
+from chess.geometry.delta import Offset
 
 
 class OffsetMultiplicationTest(unittest.TestCase):

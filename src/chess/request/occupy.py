@@ -1,3 +1,5 @@
+from typing import cast
+
 from chess.board.square import Square
 from chess.request.base import Request
 from chess.token.model.base import Piece
@@ -6,7 +8,7 @@ from chess.token.model.base import Piece
 class OccupationRequest(Request):
 
     def __init__(self, request_id: int, piece: Piece, square: Square):
-        super().__init__(request_id=request_id, client=piece, resource=square)
+        super().__init__(request_id=request_id, client=piece, resource=Square)
 
 
     @property
@@ -16,12 +18,12 @@ class OccupationRequest(Request):
 
     @property
     def piece(self):
-        return self._client
+        return cast(self._client, Piece)
 
 
     @property
     def square(self):
-        return self._resource
+        return cast(self._resource, Square)
 
 
     def __eq__(self, other):

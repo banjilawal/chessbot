@@ -1,11 +1,11 @@
-from typing import List, Optional
+from typing import Optional
 
 from chess.board.board import ChessBoard
 from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
-from chess.geometry.coordinate.euclid import Distance
-from chess.geometry.coordinate.coord import Coordinate
+
+from chess.geometry.coord import Coordinate
 from chess.owner.model import CyberneticOwner
 
 
@@ -39,7 +39,7 @@ class GreedyDecisionEngine(DecisionEngine):
         min_capture_diff = self.max_capture_value
 
         for analysis in self._board_analysis.assessments:
-            current_capture_value = analysis.enemies[0].rank.capture_value
+            current_capture_value = analysis.enemies[0].rank.value
 
             if self._max_capture_value - current_capture_value < min_capture_diff:
                 best_report = analysis

@@ -10,7 +10,7 @@ from dataclasses import dataclass
 
 from typing import TYPE_CHECKING, Optional
 
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 from chess.rank.bishop import BishopRank
 from chess.rank.castle import CastleRank
 from chess.rank.knight import KnightRank

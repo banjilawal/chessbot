@@ -1,12 +1,14 @@
+from typing import cast
 
-# from assurance.validators.coord import CoordinateSpecification
+from assurance.validators.scalar import ScalarValidator
 from assurance.validators.vector import VectorValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord import ColumnBelowBoundsException
 from chess.exception.coord import RowBelowBoundsException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
-from chess.geometry.vector.delta import Vector
+from chess.geometry.delta import Vector
+from chess.geometry.scalar import Scalar
 
 
 class Coordinate:
@@ -70,6 +72,17 @@ class Coordinate:
         return f"Coordinate(row:{self._row} column:{self._column})"
 
 
+    def scalar_product(self, scalar: Scalar):
+        method = "scalar_product"
+
+        validation = ScalarValidator.validate(scalar)
+        if not validation.is_success():
+            raise validation.exception
+
+        c = cast(validation.payload, Scalar)
+        return Coordinate(row=self._row * c.value, column = self._column * c.value)
+
+
     def add_vector(self, vector: Vector) -> 'Coordinate':
         method = "add_vector"
 
@@ -87,18 +100,10 @@ class Coordinate:
             CoordinateValidationException: if 
         """
 
-        result = VectorValidator.validate(vector)
-        if not result.is_success():
-            raise result.exception
+        validation = VectorValidator.validate(vector)
+        if not validation.is_success():
+            raise validation.exception
 
-        v = result.payload
+        v = cast(validation.payload, Vector)
         return Coordinate(row = self._row + v.y, column = self._column + v.x)
-        # candidate = Coordinate(row = self._row + v.y, column = self._column + v.x)
-        #
-        # result = CoordinateSpecification.is_satisfied_by(Coordinate(candidate))
-        # if not result.is_success():
-        #     raise result.exception
-        #
-        # return result.payload
-
 

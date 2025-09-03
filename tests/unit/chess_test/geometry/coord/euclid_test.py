@@ -1,15 +1,13 @@
 import unittest
 
-import pytest
-
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord import ColumnBelowBoundsException
 from chess.exception.coord import RowBelowBoundsException
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
-from chess.geometry.coordinate.euclid import Distance
-from chess.geometry.coordinate.coord import Coordinate
+
+from chess.geometry.coord import Coordinate
 
 
 class EuclidDistanceTest(unittest.TestCase):

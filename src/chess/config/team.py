@@ -1,9 +1,9 @@
 from enum import Enum
 
 from chess.common.color import GameColor
-from chess.common.config import BOARD_DIMENSION, ROW_SIZE
+from chess.common.config import ROW_SIZE
 from chess.geometry.quadrant import Quadrant
-from chess.geometry.vector.scalar import Scalar
+from chess.geometry.scalar import Scalar
 
 
 class TeamConfig(Enum):
@@ -13,7 +13,7 @@ class TeamConfig(Enum):
         obj._game_color = game_color
         obj._rank_row = rank_row
         obj._advancing_step = advancing_step
-        obj._quadrant = home_quadrant
+        obj._home_quadrant = home_quadrant
 
         return obj
 
@@ -37,7 +37,7 @@ class TeamConfig(Enum):
 
     @property
     def home_quadrant(self) -> Quadrant:
-        return self._quadrant
+        return self.home_quadrant
 
 
     @property
@@ -51,8 +51,8 @@ class TeamConfig(Enum):
 
 
     @property
-    def enemy_quadrant(self) -> Quadrant:
-        return Quadrant.S if self == Quadrant.N else Quadrant.N
+    def enemy_config(self) -> 'TeamConfig':
+        return TeamConfig.BLACK if self == TeamConfig.WHITE else TeamConfig.WHITE
 
 
     def __str__(self) -> str:

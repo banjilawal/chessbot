@@ -2,16 +2,12 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 from chess.exception.id import ChessException
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 
 
 
 if TYPE_CHECKING:
     from chess.token.model.base import Piece
-
-
-class WalkException(ChessException):
-    default_message = "Unreachable Destination coordinate"
 
 
 class Walk(ABC):
@@ -26,8 +22,9 @@ class Walk(ABC):
     @staticmethod
     @abstractmethod
     def is_walkable(
-        chess_piece: 'Piece',
-        destination: Coordinate
+        piece: 'Piece',
+        destination: Coordinate,
+        board: ChessException
     ) -> bool:
         method = "Walk.is_walkable"
 
@@ -36,14 +33,14 @@ class Walk(ABC):
         Walk implementors.
 
         Args:
-            chess_piece (ChessPiece): Source of truth for origin of motion
+            piece (ChessPiece): Source of truth for origin of motion
             destination (Coordinate): terminus of ChessPiece movement
 
         Returns:
             True if the move from origin to destination fits ChessRank movement rule.
 
         Raise:
-            NullChessPieceException: If chess_piece is null.
+            NullChessPieceException: If piece is null.
             NullCoordinateException: If destination is null.
             CoordinateException: If destination properties are invalid.
         """

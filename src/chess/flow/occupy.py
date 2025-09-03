@@ -5,11 +5,14 @@ from chess.board.square import Square
 from chess.common.permit import Event
 from chess.exception.event import AttackPermissionInconsistencyException, \
     InconsistentMarkObstructionException
+from chess.exception.null.piece import NullPieceException
+from chess.exception.piece import AttackingKingException, AttackingNullPieceException
 from chess.flow.base import Flow
 from chess.request.occupy import OccupationRequest
 from chess.request.validators.occupy import OccupationRequestValidator
 from chess.token.model.base import Piece
 from chess.token.model.combatant import CombatantPiece
+from chess.token.model.map import Record
 
 
 class OccupationFlow(Flow):
@@ -51,17 +54,32 @@ class OccupationFlow(Flow):
                 f"{method}: "
                 f"{InconsistentMarkObstructionException.DEFAULT_MESSAGE}"
             )
-        piece.add_obstruction(blocking_occupant)
+        piece.observations.add_record(Record(blocking_occupant))
 
 
     @staticmethod
     def _attack_stream(piece: Piece, target_square: Square) -> CombatantPiece:
         method = "OccupationFlow._attack_stream"
-        if target_square.occupant is None:
+
+        try:
+            prisoner = target_square.occupant
+
+            if prisoner is None:
+                raise AttackingNullPieceException(
+                    f"{method}: {AttackingNullPieceException.DEFAULT_MESSAGE}"
+                )
+
+            if not isinstance(prisoner, CombatantPiece):
+                raise AttackingKingException(
+                    f"{method}: {AttackingKingException.DEFAULT_MESSAGE}"
+                )
+
+            prisoner.captor = piece
+            return prisoner
+
+        except (AttackingNullPieceException, AttackingKingException) as e:
             raise AttackPermissionInconsistencyException(
                 f"{method}: {AttackPermissionInconsistencyException.DEFAULT_MESSAGE}"
-            )
-        target_square.occupant.captor = piece
-        return target_square.occupant
+            ) from e
 
 

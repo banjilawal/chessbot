@@ -1,15 +1,13 @@
 import unittest
 from unittest.mock import create_autospec
 
-import pytest
-
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
 from chess.exception.coord import ColumnBelowBoundsException
 from chess.exception.coord import RowBelowBoundsException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
 
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 
 
 class CoordinateTest(unittest.TestCase):

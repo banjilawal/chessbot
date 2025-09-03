@@ -2,22 +2,21 @@ from enum import Enum
 
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validators.coord import CoordinateValidator
+from assurance.validators.square import SquareValidator
+from chess.board.square import Square
 from chess.geometry.coord import Coordinate
 
 
-
-
-class CoordinateBuilder(Enum):
+class SquareBuilder(Enum):
 
     @staticmethod
-    def build(row: int, column: int) -> Result[Coordinate]:
+    def build(square_id:int, name: str, coordinate: Coordinate ) -> Result[Square]:
         try:
-            candidate = Coordinate(row, column)
-            result = CoordinateValidator.validate(candidate)
+            candidate = Square(square_id=square_id, name=name, coordinate=coordinate)
+            validation = SquareValidator.validate(candidate)
 
-            ThrowHelper.throw_if_invalid(CoordinateBuilder, result)
-            return result
+            ThrowHelper.throw_if_invalid(SquareBuilder, validation)
+            return validation
         except Exception as e:
             return Result(payload=None, exception=e)
 

@@ -2,10 +2,9 @@ from enum import Enum
 
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validators.euclid import DistanceValidator
 
-from chess.geometry.coordinate.coord import Coordinate
-from chess.geometry.coordinate.euclid import Distance
+
+from chess.geometry.coord import Coordinate
 
 
 class ScalarDistanceBuilder(Enum):

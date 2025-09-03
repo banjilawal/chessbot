@@ -1,6 +1,4 @@
-from enum import Enum, auto
-
-from assurance.result import Result
+from assurance.result.base import Result
 
 
 class TransactionReport:

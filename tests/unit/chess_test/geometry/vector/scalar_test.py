@@ -3,7 +3,7 @@ import unittest
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
 from chess.exception.offset.mul import ScalarAboveUpperBoundException, ScalarBelowLowerBoundException
-from chess.geometry.vector.scalar import Scalar
+from chess.geometry.scalar import Scalar
 
 
 class ScalarTest(unittest.TestCase):

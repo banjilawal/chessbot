@@ -12,7 +12,7 @@ from chess.exception.coord import (
 from chess.exception.null.coord import NullCoordinateException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
-from chess.geometry.coordinate.coord import Coordinate
+from chess.geometry.coord import Coordinate
 
 
 class CoordinateValidator(Validator):

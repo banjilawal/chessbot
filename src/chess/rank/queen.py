@@ -1,32 +1,38 @@
 from typing import List, Optional
 
+from chess.board.board import ChessBoard
+from chess.creator.emit import id_emitter
+from chess.exception.rank import QueenRankException
+from chess.exception.walk import QueenWalkException
+from chess.flow.occupy import OccupationFlow
+from chess.geometry.coord import Coordinate
+from chess.geometry.path import Path, Line
 from chess.geometry.quadrant import Quadrant
 from chess.rank.base import Rank
-from chess.rank.promote import PromotableRank
-from chess.walk.queen import QueenWalk
+from chess.request.occupy import OccupationRequest
+from chess.token.model.base import Piece
 
 
 class QueenRank(Rank):
 
-    def __init__(
-        self,
-        name: str,
-        letter: str,
-        capture_value:
-        int, number_per_team: int,
-        territories: List[Quadrant],
-        walk=QueenWalk()
-        # explorer=QueenExplorer()
-    ):
-        super().__init__(
-            name=name,
-            letter=letter,
-            walk=walk,
-            # explorer=explorer,
-            capture_value=capture_value,
-            territories=territories,
-            number_per_team=number_per_team
-        )
+    def __init__(self, name: str, letter: str, value: int, per_team: int, territories: List[Quadrant]):
+        super().__init__(name=name, letter=letter, value=value, territories=territories, per_team=per_team)
+
+
+    def walk(self, piece: Piece, destination: Coordinate, board: ChessBoard):
+        method = "QueenRank.walk"
+
+        try:
+            if not Path(piece.current_position, destination).line == Line.QUEEN:
+                raise QueenWalkException(f"{method}: {QueenWalkException.DEFAULT_MESSAGE}")
+
+            square = board.find_square_by_coordinate(destination)
+            OccupationFlow.enter(
+                board=board,
+                request=OccupationRequest(request_id=id_emitter.request_id, piece=piece, square=square)
+            )
+        except QueenWalkException as e:
+            raise QueenRankException(f"{method}: {QueenRankException.DEFAULT_MESSAGE}") from e
 
 class PromotedQueen(QueenRank):
     _old_rank: Optional[str]
@@ -35,13 +41,12 @@ class PromotedQueen(QueenRank):
         self,
         name: str,
         letter: str,
-        capture_value:int,
-        number_per_team: int,
+        value:int,
+        per_team: int,
         territories: List[Quadrant],
-        walk=QueenWalk(),
         old_rank: Optional[str] = None
     ):
-        super().__init__(name, letter, capture_value, number_per_team, territories, walk)
+        super().__init__(name=name, letter=letter, value=value, per_team=per_team, territories=territories)
         _old_rank: old_rank
 
 
