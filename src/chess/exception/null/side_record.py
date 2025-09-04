@@ -1,7 +1,11 @@
 from chess.exception.null.base import NullException
 
 
-class NullTeamHistory(NullException):
+class NullSideRecordException(NullException):
+    """
+    Raised if a Competitor's sides_played property is null.
+    """
+
     ERROR_CODE = "NULL_TEAM_HISTORY_ERROR"
     DEFAULT_MESSAGE = f"TeamHistory cannot be null"
 

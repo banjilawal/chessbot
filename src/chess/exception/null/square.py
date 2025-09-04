@@ -2,6 +2,10 @@ from chess.exception.null.base import NullException
 
 
 class NullSquareException(NullException):
+    """
+    Raised if a square is null.
+    """
+
     ERROR_CODE = "NULL_SQUARE_ERROR"
     DEFAULT_MESSAGE = f"Square cannot be null"
 

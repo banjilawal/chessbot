@@ -2,6 +2,10 @@ from chess.exception.null.base import NullException
 
 
 class NullRowException(NullException):
+    """
+    Raised if a row is null. A coordinate cannot be created if the row is null
+    """
+
     ERROR_CODE = "NULL_ROW_ERROR"
     DEFAULT_MESSAGE = f"Row cannot be null"
 

@@ -1,9 +1,14 @@
 from chess.exception.null.base import NullException
 
 
-class NullRecordException(NullException):
-    ERROR_CODE = "NULL_OBSTRUCTION_RECORD_ERROR"
-    DEFAULT_MESSAGE = f"ObstructionRecord cannot be null"
+class NullEncounterException(NullException):
+    """
+    NullEncounterException is raised when attempts to put null into a piece's
+    encounter records.
+    """
+
+    ERROR_CODE = "NULL_ENCOUNTER_ERROR"
+    DEFAULT_MESSAGE = f"Encounter cannot be null"
 
 
     def __init__(self, message=None):

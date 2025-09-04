@@ -1,9 +1,14 @@
 from chess.exception.null.base import NullException
 
 
-class NullChessBoardException(NullException):
-    ERROR_CODE = "NULL_CHESSBOARD_ERROR"
-    DEFAULT_MESSAGE = f"ChessBoard cannot be null"
+class NullBoardException(NullException):
+
+    """
+    Raised if the chess board is null
+    """
+
+    ERROR_CODE = "NULL_BOARD_ERROR"
+    DEFAULT_MESSAGE = f"Board cannot be null"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

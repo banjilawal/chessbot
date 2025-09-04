@@ -4,7 +4,7 @@ from assurance.exception.validation.team import TeamHistoryValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.side import SideValidator
-from chess.exception.null.team_stack import NullTeamHistory
+from chess.exception.null.side_record import NullSideRecordException
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
 from chess.exception.team_hist import CurrentTeamException
@@ -52,7 +52,7 @@ class SideRecordValidator(Validator):
         """
         try:
             if t is None:
-                raise NullTeamHistory(f"{method} {NullTeamHistory.DEFAULT_MESSAGE}")
+                raise NullSideRecordException(f"{method} {NullSideRecordException.DEFAULT_MESSAGE}")
 
             if not isinstance(t, SideRecord):
                 raise TypeError(f"{method} Expected a TeamStack, got {type(t).__name__}")
@@ -86,10 +86,10 @@ class SideRecordValidator(Validator):
             return Result(payload=teams)
 
         except (
-            TypeError,
-            NullTeamHistory,
-            StackSizeConflictException,
-            CurrentTeamException
+                TypeError,
+                NullSideRecordException,
+                StackSizeConflictException,
+                CurrentTeamException
         ) as e:
             raise TeamHistoryValidationException(
                 f"{method}: {TeamHistoryValidationException.DEFAULT_MESSAGE}"

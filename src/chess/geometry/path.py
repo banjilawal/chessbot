@@ -151,11 +151,11 @@ class Path:
 
 
     def _is_bishop(self):
-        return  (not self.is_vertical() and not self.is_horizontal()) and self.is_diagonal()
+        return  not (self.is_vertical() or self.is_horizontal()) and self.is_diagonal()
 
 
     def is_castle(self):
-        return (self.is_vertical() or self.is_horizontal()) and not self.is_diagonal()
+        return not self.is_diagonal and (self.is_vertical() or self.is_horizontal())
 
 
     def is_queen(self):

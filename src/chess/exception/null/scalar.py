@@ -2,6 +2,10 @@ from chess.exception.null.base import NullException
 
 
 class NullScalarException(NullException):
+    """
+    Raised if an required Scalar is null.
+    """
+
     ERROR_CODE = "NULL_SCALAR_ERROR"
     DEFAULT_MESSAGE = f"Scalar cannot be null"
 

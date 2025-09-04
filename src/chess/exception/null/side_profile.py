@@ -2,6 +2,10 @@ from chess.exception.null.base import NullException
 
 
 class NullSideProfileException(NullException):
+    """
+    Raised if a null SideProfile is passed to Side.__init__.
+    """
+
     ERROR_CODE = "NULL_SIDE_PROFILE_ERROR"
     DEFAULT_MESSAGE = f"SideProfile cannot be null"
 

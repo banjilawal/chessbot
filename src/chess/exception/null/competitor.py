@@ -2,8 +2,12 @@ from chess.exception.null.base import NullException
 
 
 class NullCompetitorException(NullException):
-    ERROR_CODE = "NULL_OWNER_ERROR"
-    DEFAULT_MESSAGE = f"Owner cannot be null"
+    """
+    Raised if a competitor is null.
+    """
+
+    ERROR_CODE = "NULL_COMPETITOR_ERROR"
+    DEFAULT_MESSAGE = f"Competitor cannot be null"
 
 
     def __init__(self, message=None):

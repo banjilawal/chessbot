@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, List
 
-from chess.exception.null.record import NullRecordException
+from chess.exception.null.record import NullEncounterException
 from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
@@ -67,7 +67,7 @@ class EncounterLog:
         method = "RecordList.add_record"
 
         if record is None:
-            raise NullRecordException(f"{method}:{NullRecordException.DEFAULT_MESSAGE}")
+            raise NullEncounterException(f"{method}:{NullEncounterException.DEFAULT_MESSAGE}")
 
         if record not in self._items:
             self._items.append(record)

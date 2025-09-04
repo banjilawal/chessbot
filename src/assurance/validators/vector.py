@@ -5,9 +5,9 @@ from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import KNIGHT_STEP_SIZE
 
-from chess.exception.null.x_dim import XComponentNullException
+
 from chess.exception.null.vector import NullVectorException
-from chess.exception.null.y_dim import YComponentNullException
+
 from chess.exception.vector.y_dim import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
 from chess.exception.vector.x_dim import XComponentBelowLowerBoundException, XComponentAboveUpperBoundException
 
@@ -47,13 +47,13 @@ class VectorValidator(Validator):
               
             TypeError: if t is not an Vector
             
-            XComponentNullException: if Vector.x is null
+            NullXDimensionException: if Vector.x is null
             
             XComponentBelowLowerBoundException: if -Vector.x < -KNIGHT_STEP_SIZE
                
             XComponentAboveUpperBoundException: if Vector.x > KNIGHT_STEP_SIZE
             
-            XComponentNullException: if Vector.x is null
+            NullXDimensionException: if Vector.x is null
             
             YComponentBelowLowerBoundException: if -Vector.y < -KNIGHT_STEP_SIZE
             

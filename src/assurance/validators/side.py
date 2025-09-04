@@ -8,7 +8,7 @@ from chess.competitor.model import Competitor
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
 
-from chess.exception.null.team import NullSideException
+from chess.exception.null.side import NullSideException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.id import IdValidator

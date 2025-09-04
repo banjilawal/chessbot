@@ -2,6 +2,10 @@ from chess.exception.null.base import NullException
 
 
 class NullNameException(NullException):
+    """
+    Raised if an entity's name is null
+    """
+
     ERROR_CODE = "NULL_NAME_ERROR"
     DEFAULT_MESSAGE = f"Name cannot be null"
 
