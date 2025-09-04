@@ -1,23 +1,28 @@
-from enum import Enum
+from enum import Enum, auto
 from typing import List, Optional
 
 from chess.geometry.quadrant import Quadrant
 from chess.rank.base import Rank
 
+# class Quadrant(Enum):
+#     def __new__(cls, quad_id:int, vector: Vector):
+#         obj = object.__new__(cls)
+#         obj._id = quad_id
+#         obj._vector = vector
+#
+#         return obj
+#
+#     N = (auto(), Vector(x=0, y=1))
+
 
 class RankProfile(Enum):
-    def __new__(
-        cls,
-        letter,
-        number_per_team: int,
-        capture_value: int,
-        territories: List[Quadrant]
-    ):
+    def __new__(cls, letter: str, per_side: int, value: int, territories: List[Quadrant]):
         obj = object.__new__(cls)
         obj._letter = letter
-        obj._per_team = number_per_team
-        obj._value = capture_value
+        obj._per_side = per_side
+        obj._value = value
         obj._territories = territories
+
         return obj
 
     PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
@@ -27,9 +32,9 @@ class RankProfile(Enum):
         "K", 1, 0,
         [ Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
     )
-    KNIGHT = ( "N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
+    KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
     QUEEN = (
-        "Queen", "Q", 1, 9,
+        "Q", 1, 9,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
     )
 
@@ -38,11 +43,11 @@ class RankProfile(Enum):
         return self._letter
 
     @property
-    def number_per_team(self) -> int:
-        return self._per_team
+    def per_side(self) -> int:
+        return self._per_side
 
     @property
-    def capture_value(self) -> int:
+    def value(self) -> int:
         return self._value
 
     @property
@@ -52,21 +57,21 @@ class RankProfile(Enum):
 
     def __str__(self) -> str:
         return (
-            f"letter:{self._letter}, "
-            f"per_team:{self._per_team} "
+            f"Rank["
+            f"{self._letter} "
+            f"per_team:{self._per_side} "
             f"value:{self._value} "
-            f"side:{self._side}"
-            f"[{self._quadrants_str()}]"
+            f"quadrants:({self._quadrants_str()})"
             f"] "
         )
 
 
     def _quadrants_str(self) -> str:
-        names = f"["
+        names = f""
         for quadrant in self._territories:
-            names += f"quadrant.name "
+            names += f"{quadrant.name},"
 
-        return names.strip() + f"]"
+        return names.strip(", ") + f""
 
 
     @staticmethod
@@ -80,7 +85,7 @@ class RankProfile(Enum):
         return None
 
 
-def main(self):
+def main():
     for profile in RankProfile:
         print(profile)
 

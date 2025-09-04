@@ -10,10 +10,10 @@ from chess.randomize.name import RandomName
 
 class DecisionMode(Enum):
     def __new__(
-            cls,
-            name: str,
-            decision_engine: Optional[DecisionEngine] = None,
-            board_analyzer: Optional[BoardAnalyzer] = None
+        cls,
+        name: str,
+        decision_engine: Optional[DecisionEngine] = None,
+        board_analyzer: Optional[BoardAnalyzer] = None
     ):
         obj = object.__new__(cls)
         obj._decision_engine = decision_engine

@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import Optional
 
+from chess.rank.base import Rank
 from chess.token.model import Piece
 from chess.config.game import SideProfile
 from chess.config.rank import RankProfile
@@ -70,21 +71,35 @@ class PlacementChart(Enum):
         return self._rank
 
     @property
-    def team(self) -> SideProfile:
+    def side(self) -> SideProfile:
         return self._side
 
 
     def __str__(self) -> str:
         return (
-            f"piece:{self._piece_name}, "
-            f"square:{self._square_name} "
-            f"rank:{self._rank} "
-            f"side:{self._side}]"
+            f"Placement[{self._piece_name} = square:{self._square_name}]"
         )
 
 
-    @staticmethod
-    def find_placement_by_piece(self, piece: Piece) -> Optional['PlacementChart']:
+    def filter_by_side(side_name: str) -> ['PlacementChart']:
+        matches = []
+
+        for placement in PlacementChart:
+            if placement.side.name.upper() == side_name.upper():
+                matches.append(placement)
+        return matches
+
+
+    def filter_by_rank(rank_name: str) -> ['PlacementChart']:
+        matches = []
+
+        for placement in PlacementChart:
+            if placement.rank.name.upper() == rank_name.upper():
+                matches.append(placement)
+        return matches
+
+
+    def find_placement_by_piece(piece: Piece) -> Optional['PlacementChart']:
 
         for placement in PlacementChart:
             if placement.piece_name.upper() == piece.name.upper():
@@ -93,7 +108,10 @@ class PlacementChart(Enum):
 
 
 def main():
-    for placement in PlacementChart:
+    # for placement in PlacementChart:
+    #     print(placement)
+
+    for placement in PlacementChart.filter_by_side(side_name="white"):
         print(placement)
 
 
