@@ -26,14 +26,15 @@ class CoordException(ChessException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Raised if a row is below zero. Domain specific alternative to ArrayIndexOutOfBoundsException
-"""
+
 class RowBelowBoundsException(CoordException):
+    """
+    If row < 0 RowBelowBoundsException is raised. Domain specific alternative
+    to ArrayIndexOutOfBoundsException
+    """
+
     ERROR_CODE = "ROW_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = (
-        f"The coordinate row is below lower bound of zero"
-    )
+    DEFAULT_MESSAGE = f"Coord.row < 0. This outside the dimension of the board"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -43,15 +44,13 @@ class RowBelowBoundsException(CoordException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Raised if a row is equal or greater than ROW_SIZE. Domain specific alternative 
-to ArrayIndexOutOfBoundsException
-"""
 class RowAboveBoundsException(CoordException):
+    """
+    If a row >= ROW_SIZE RowAboveBoundsException is raised.
+    """
+
     ERROR_CODE = "ROW_ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = (
-        f"The coordinate row is above upper bound of {ROW_SIZE-1}"
-    )
+    DEFAULT_MESSAGE = f"Coord.row > {ROW_SIZE-1}. This outside the dimension of the board"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -61,15 +60,13 @@ class RowAboveBoundsException(CoordException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Raised if a column is below zero. Domain specific alternative to ArrayIndexOutOfBoundsException
-"""
 class ColumnBelowBoundsException(CoordException):
+    """
+    If Coord.column < 0 ColumnBelowBoundsException is raised.
+    """
+
     ERROR_CODE = "COLUMN_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = (
-        f"The coordinate colum is below lower bound of zero"
-        f" inclusive."
-    )
+    DEFAULT_MESSAGE = f"Coordinate.column < 0. This outside the dimension of the board"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -80,16 +77,13 @@ class ColumnBelowBoundsException(CoordException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Raised if a row is equal or greater than ROW_SIZE. Domain specific alternative 
-to ArrayIndexOutOfBoundsException
-"""
 class ColumnAboveBoundsException(CoordException):
-    ERROR_CODE = "COLUMN_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = (
-        f"The coordinate colum is above upped bound {COLUMN_SIZE-1}"
-        f" inclusive."
-    )
+    """
+    If Coord.column > DIMENSION ColumnAboveBoundsException is raised.
+    """
+
+    ERROR_CODE = "COLUMN_ABOVE_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = f"Coord.column > {COLUMN_SIZE-1}. This outside the dimension of the board"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
