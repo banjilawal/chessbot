@@ -7,7 +7,7 @@ from assurance.validators.side import SideValidator
 from chess.exception.null.side_record import NullSideRecordException
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException
-from chess.exception.team_hist import CurrentTeamException
+from chess.exception.sides_played import CurrentTeamException
 from chess.competitor.side import SideRecord
 
 

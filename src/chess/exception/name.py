@@ -1,9 +1,11 @@
 from chess.exception.base import ChessException
 
-"""
-Name with only white space raises this exception
-"""
+
 class BlankNameException(ChessException):
+    """
+    Name with only white space raises BlankNameException
+    """
+
     ERROR_CODE = "BLANK_NAME_ERROR"
     DEFAULT_MESSAGE = "Name cannot be white space only"
 
@@ -15,10 +17,12 @@ class BlankNameException(ChessException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Name is shorter than 3 characters raises this exception.
-"""
 class NameTooShortException(ChessException):
+    """
+    Name below the minimum length raises NameTooShortException. See documentation or
+    chess.common.config for MIN_NAME_LENGTH.
+    """
+
     ERROR_CODE = "SHORT_NAME_ERROR"
     DEFAULT_MESSAGE = "Name is below the minimum length"
 
@@ -30,12 +34,11 @@ class NameTooShortException(ChessException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Name is longer than 40 characters this exception is thrown.
-"""
+
 class NameTooLongException(ChessException):
     """
-    Name is longer than 40 characters this exception is thrown.
+    Name is longer than MAX_NAME_LENGTH raises NameTooLongException. See documentation
+    pr chess.common.config for MAX_NAME_LENGTH
     """
 
     ERROR_CODE = "LONG_NAME_ERROR"
