@@ -19,13 +19,10 @@ class PieceException(ChessException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Exception for handling a piece which does not have a coord
-"""
-class PieceCoordinateException(PieceException):
+class PieceCoordException(PieceException):
     """
-    If a piece does not have a coord until its place on the chess board. This exception prevents
-    chess pieces not on the board from moving.
+    PieceCoordException gets thrown if a piece with an empty coordinate stack attempts to move.
+    If piece.positions.is_empty == True then the piece is not on the board so it cannot be moved.
     """
 
     ERROR_CODE = "PIECE_NO_COORDINATE_ERROR"
@@ -39,13 +36,10 @@ class PieceCoordinateException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Raised if attempting to move a captured piece
-"""
 class PrisonerEscapeException(PieceException):
     """
     Combatant pieces with attacker field not null cannot be moved. Attempts to move
-    a captured combatant will raise this exception. KingPiece cannot be captured.
+    a captured combatant will raise this exception. This only applies to combatant pieces
     """
 
     ERROR_CODE = "CAPTURED_PIECE_ESCAPE_ERROR"
@@ -59,13 +53,13 @@ class PrisonerEscapeException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Attempting to change captor piece to null if its not null
-"""
+
 class PrisonerReleaseException(PieceException):
     """
-    Combatant.captor field can only be set once. This exception is raised if an attempt
+    Combatant.captor field can only be set once. PrisonerReleaseException is thrown when an attempt to change
+    combatant_piece.captor != null to combatant_piece.captor = None
     """
+
     ERROR_CODE = "CAPTURED_PIECE_RELEASE_ERROR"
     DEFAULT_MESSAGE = "Cannot change CombatantPiece.captor from not null to null"
 
@@ -77,12 +71,13 @@ class PrisonerReleaseException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-"""
-Prevents Combatant.captor to null
-"""
+
 class NullCaptorException(PieceException):
     """
-    Cannot set Combatant.captor to null
+    If the captor field has not been set its already null. I really want to prevent nulls being passed to
+    Combatant.captor. This is for consistency. I don't just want an if that returns to caller when
+    Combatant.captor == None and the caller tries to send null again. I want an exception to catch it. The
+    exception name needs improvement.
     """
 
     ERROR_CODE = "CAPTURED_PIECE_ESCAPE_ERROR"
@@ -97,8 +92,14 @@ class NullCaptorException(PieceException):
 
 
 class AttackingNullPieceException(PieceException):
+    """
+    The Prisoner/Captor exceptions prevent domain logic violations on the captured side. Attacking
+    exceptions constrain attacks. AttackingNullPieceException is raised if a piece attacks something
+    which does not exist.
+    """
+
     ERROR_CODE = "ATTACKING_NULL_PIECE_ERROR"
-    DEFAULT_MESSAGE = "Cannot capture a null"
+    DEFAULT_MESSAGE = "Cannot capture a a piece that does not exist"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -109,6 +110,10 @@ class AttackingNullPieceException(PieceException):
 
 
 class AttackingPrisonerException(PieceException):
+    """
+    AttackingPrisonerException is raised when a captured piece is attacked again."
+    """
+
     ERROR_CODE = "ATTACKING_CAPTURED_PIECE_ERROR"
     DEFAULT_MESSAGE = "Cannot capture a piece already captured"
 
@@ -121,6 +126,11 @@ class AttackingPrisonerException(PieceException):
 
 
 class AttackingKingException(PieceException):
+    """
+    Kings cannot be captured. KingPiece does not have a captor field. AttackingKingException is
+    raised when a KingPiece is attacked. KingPieces can only be checked or checkmated.
+    """
+
     ERROR_CODE = "ATTACKING_KING_EXCEPTION"
     DEFAULT_MESSAGE = "Cannot capture a king"
 
@@ -133,6 +143,10 @@ class AttackingKingException(PieceException):
 
 
 class AttackingFriendlyException(PieceException):
+    """
+    Friendly pieces on the same side cannot attack each other. AttackingFriendlyException is
+    raised when a friendly is attacked.
+    """
     ERROR_CODE = "ATTACKING_FRIENDLY_ERROR"
     DEFAULT_MESSAGE = "Cannot attack a friendly"
 
@@ -145,14 +159,13 @@ class AttackingFriendlyException(PieceException):
 
 
 class DoublePromotionException(PieceException):
-
     """
-    Only a piece can be doubly promoted. DoublePromotionException is a PieceException
-    not a RankException.
+    If a piece with rank in [Pawn, King] has been promoted to Queen, DoublePromotionException
+    is raised if there is a second attempt to promote the chess piece.
     """
 
     ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
-    DEFAULT_MESSAGE = "Piece is already promoted. It cannot be promoted again"
+    DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -162,7 +175,28 @@ class DoublePromotionException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
+class SelfEncounterException(PieceException):
+    """
+    Prevents the piece from adding itself to the list of encounters.
+    """
+
+    ERROR_CODE = "SELF_ENCOUNTER_ERROR"
+    DEFAULT_MESSAGE = "Piece cannot create an Encounter entry on itself"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"{self.message}"
+
+
 class KingCheckStateException(PieceException):
+    """
+    This really should not be an exception. Its really supposed to be a warning to the king
+    when its in check. This exception should never be thrown but its messages can be handy.
+    """
+
     ERROR_CODE = "KING_CHECK_STATE"
     DEFAULT_MESSAGE = "A dead piece cannot attack"
 
@@ -173,7 +207,14 @@ class KingCheckStateException(PieceException):
     def __str__(self):
         return f"[{self.ERROR_CODE}] {self.message}"
 
+
 class KingCheckMateStateException(PieceException):
+    """
+    This really should not be an exception. Its really supposed to be a warning to indicate the
+    game is over because the king is checkmated. This exception should never be thrown but its
+    messages can be handy.
+    """
+
     ERROR_CODE = "KING_CHECKMATE_STATE"
     DEFAULT_MESSAGE = "King checkmated"
 
@@ -185,13 +226,3 @@ class KingCheckMateStateException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class MappingSelfException(PieceException):
-    ERROR_CODE = "MAPPING_SELF_ERROR"
-    DEFAULT_MESSAGE = "You cannot add yourself to the map"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"{self.message}"

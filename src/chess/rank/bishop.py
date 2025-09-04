@@ -3,7 +3,7 @@ from typing import List
 from chess.board.board import Board
 from chess.config.rank import RankProfile
 from chess.creator.emit import id_emitter
-from chess.exception.piece import PieceCoordinateException
+from chess.exception.piece import PieceCoordException
 from chess.exception.rank import BishopException
 from chess.exception.walk import BishopWalkException
 from chess.flow.occupy import OccupationFlow
@@ -34,7 +34,7 @@ class Bishop(Rank):
 
         try:
             if piece.current_position is None:
-                raise PieceCoordinateException(f"{method}: {PieceCoordinateException.DEFAULT_MESSAGE}")
+                raise PieceCoordException(f"{method}: {PieceCoordException.DEFAULT_MESSAGE}")
 
             path = Path(piece.current_position, destination)
             if not path.is_diagonal():
