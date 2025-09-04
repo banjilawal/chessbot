@@ -10,7 +10,7 @@ from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from assurance.validators.team_hist import SideRecordValidator
 
-from chess.exception.null.owner import NullCompetitorException
+from chess.exception.null.competitor import NullCompetitorException
 
 if TYPE_CHECKING:
     from chess.competitor.model import Competitor

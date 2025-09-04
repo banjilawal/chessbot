@@ -1,7 +1,6 @@
 from enum import Enum
 from typing import Optional
 
-from chess.rank.base import Rank
 from chess.token.model import Piece
 from chess.config.game import SideProfile
 from chess.config.rank import RankProfile

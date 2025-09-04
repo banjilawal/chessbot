@@ -28,6 +28,7 @@ class Path:
 
     def __init__(self, u: Coordinate, v: Coordinate):
         method = "Path.__init__"
+
         u_validation = CoordinateValidator.validate(u)
         if not u_validation.is_success():
             raise u_validation.exception

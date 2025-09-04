@@ -1,14 +1,19 @@
 import unittest
 
+from assurance.exception.validation.scalar import ScalarValidationException
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
-from chess.exception.offset.mul import ScalarAboveUpperBoundException, ScalarBelowLowerBoundException
+
+
+from chess.exception.null.scalar import NullScalarException
+from chess.exception.vector.scalar import ScalarBelowLowerBoundException, ScalarAboveUpperBoundException
 from chess.geometry.scalar import Scalar
 
 
 class ScalarTest(unittest.TestCase):
 
     def test_null_value_raises_exception(self):
+
         with self.assertRaises(NullNumberException):
             Scalar(value=None)
 

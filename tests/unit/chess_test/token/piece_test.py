@@ -40,8 +40,11 @@ class PieceTest(unittest.TestCase):
 
         mock_name_validate.return_value.is_success.return_value = True
 
+        mock_rank = create_autospec(Rank, instance=True)
+        mock_side = create_autospec(Side, instance=True)
+
         with self.assertRaises(IdValidationException):
-            Piece(piece_id=-1, name="piece")
+            Piece(piece_id=-1, name="piece", side=mock_side, rank=mock_rank)
 
 
     @patch('assurance.validators.name.NameValidator.validate')

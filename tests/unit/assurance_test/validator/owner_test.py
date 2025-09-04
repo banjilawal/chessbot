@@ -5,53 +5,53 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.competitor import CompetitorValidationException
 from assurance.validators.competitor import CompetitorValidator
-from chess.exception.null.owner import NullCompetitorException
+from chess.exception.null.competitor import NullCompetitorException
 from chess.competitor.model import Competitor
-from unit.chess_test.owner.owner_test import OwnerTest
+from unit.chess_test.competitor.competitor_test import CompetitorTest
 
 
-class OwnerValidatorTest(unittest.TestCase):
+class CompetitorValidatorTest(unittest.TestCase):
     
-    def test_null_owner_raises_exception(self):
+    def test_null_competitor_raises_exception(self):
         with self.assertRaises(CompetitorValidationException) as ctx:
             CompetitorValidator.validate(None)
 
         self.assertIsInstance(ctx.exception.__cause__, NullCompetitorException)
 
 
-    def test_cast_to_owner_failure_raises_exception(self):
+    def test_cast_to_competitor_failure_raises_exception(self):
         with self.assertRaises(CompetitorValidationException) as ctx:
             CompetitorValidator.validate(1)
 
         self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
 
-    def test_owner_validator_failed_id_validation_raises_exception(self):
-        mock_owner = create_autospec(Competitor, instance=True)
-        mock_owner.id=-1
-        mock_owner._name= "competitor"
+    def test_competitor_validator_failed_id_validation_raises_exception(self):
+        mock_competitor = create_autospec(Competitor, instance=True)
+        mock_competitor.id=-1
+        mock_competitor._name= "competitor"
 
         with self.assertRaises(CompetitorValidationException) as ctx:
-            CompetitorValidator.validate(mock_owner)
+            CompetitorValidator.validate(mock_competitor)
 
         self.assertIsInstance(ctx.exception.__cause__, IdValidationException)
 
 
-    def test_owner_validator_failed_name_validation_raises_exception(self):
-        mock_owner = create_autospec(Competitor, instance=True)
-        mock_owner.id=1
-        mock_owner._name="A"
+    def test_competitor_validator_failed_name_validation_raises_exception(self):
+        mock_competitor = create_autospec(Competitor, instance=True)
+        mock_competitor.id=1
+        mock_competitor._name="A"
 
         with self.assertRaises(CompetitorValidationException) as ctx:
-            CompetitorValidator.validate(mock_owner)
+            CompetitorValidator.validate(mock_competitor)
 
         self.assertIsInstance(ctx.exception.__cause__, NameValidationException)
 
 
-    def test_owner_validator_payload_equals_valid_owner(self):
-        owner = OwnerTest.valid_mock_owner()
-        validation = CompetitorValidator.validate(owner)
-        self.assertEqual(validation.payload, owner)
+    def test_competitor_validator_payload_equals_valid_competitor(self):
+        competitor = CompetitorTest.valid_mock_competitor()
+        validation = CompetitorValidator.validate(competitor)
+        self.assertEqual(validation.payload, competitor)
 
 
 if __name__ == '__main__':

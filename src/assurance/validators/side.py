@@ -5,6 +5,7 @@ from assurance.exception.validation.team import SideValidationException
 from assurance.exception.validation.competitor import CompetitorValidationException
 
 from chess.config.game import SideProfile
+from chess.exception.null.side_profile import NullSideProfileException
 
 from chess.exception.null.team import NullSideException
 from assurance.result.base import Result
@@ -70,13 +71,17 @@ class SideValidator(Validator):
                     f"{method}: {CompetitorValidationException.DEFAULT_MESSAGE}"
                 )
 
+            if side.profile is None:
+                raise NullSideProfileException(f"{method}: {NullSideProfileException.DEFAULT_MESSAGE}")
+
             return Result(payload=side)
 
         except (
-                TypeError,
-                NullSideException,
-                IdValidationException,
-                CompetitorValidationException
+            TypeError,
+            NullSideException,
+            IdValidationException,
+            NullSideProfileException,
+            CompetitorValidationException
         ) as e:
             raise SideValidationException(f"{method}: {SideValidationException.DEFAULT_MESSAGE}") from e
 

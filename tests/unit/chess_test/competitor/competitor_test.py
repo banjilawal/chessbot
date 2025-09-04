@@ -5,30 +5,31 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from chess.competitor.model import Competitor
 from chess.competitor.side import SideRecord
+from chess.config.game import SideProfile
 
 
-class OwnerTest(unittest.TestCase):
+class CompetitorTest(unittest.TestCase):
 
     @staticmethod
-    def valid_mock_owner(owner_id=1, name="competitor"):
-        mock_owner = create_autospec(Competitor, instance=True)
-        mock_team_history = create_autospec(SideRecord, instance=True)
+    def valid_mock_competitor(competitor_id=1, name="competitor"):
+        competitor = create_autospec(Competitor, instance=True)
+        sides_played = create_autospec(SideRecord, instance=True)
 
-        mock_team_history.is_empty.return_value = True
-        mock_team_history.size.return_value = 0
-        mock_team_history.items = []
-        mock_team_history.current_side = None
+        sides_played.is_empty.return_value = True
+        sides_played.size.return_value = 0
+        sides_played.items = []
+        sides_played.current_side = None
 
-        mock_owner.id = 1
-        mock_owner.name = "Valid Owner"
-        mock_owner.sides_played = mock_team_history
+        competitor.id = 1
+        competitor.name = "Valid Competitor"
+        competitor.sides_played = sides_played
 
-        return mock_owner
+        return competitor
 
 
     @patch('assurance.validators.name.NameValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
-    def test_owner_failed_id_validation_raises_error(
+    def test_competitor_failed_id_validation_raises_error(
         self,
         mock_name_validate,
         mock_id_validate
@@ -44,7 +45,7 @@ class OwnerTest(unittest.TestCase):
 
     @patch('assurance.validators.name.NameValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
-    def test_owner_failed_name_validation_raises_error(
+    def test_competitor_failed_name_validation_raises_error(
         self,
         mock_name_validate,
         mock_id_validate
@@ -60,7 +61,7 @@ class OwnerTest(unittest.TestCase):
 
     @patch('assurance.validators.name.NameValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
-    def test_owner_constructed_if_params_are_valid(
+    def test_competitor_constructed_if_params_are_valid(
         self,
         mock_name_validate,
         mock_id_validate

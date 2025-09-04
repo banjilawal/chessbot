@@ -3,7 +3,7 @@ from typing import List, TYPE_CHECKING, cast, Sequence, Optional
 from assurance.validators.id import IdValidator
 from assurance.validators.competitor import CompetitorValidator
 from chess.config.game import SideProfile
-
+from chess.exception.null.side_profile import NullSideProfileException
 
 if TYPE_CHECKING:
     from chess.competitor.model import Competitor
@@ -18,18 +18,23 @@ class Side:
 
     def __init__(self, team_id: int, controller: 'Competitor', profile: SideProfile):
         method = "Team.__init__"
-        #
+
+        if profile is None:
+            raise NullSideProfileException(f"{method}: {NullSideProfileException.DEFAULT_MESSAGE}")
+
         id_validation = IdValidator.validate(team_id)
         if not id_validation.is_success():
             raise id_validation.exception
         team_id = cast(id_validation.payload, int)
-        #
+
         competitor_validation = CompetitorValidator.validate(controller)
         if not competitor_validation.is_success():
             raise competitor_validation.exception
-        #
+
         from chess.competitor.model import Competitor
         controller = cast(Competitor, competitor_validation.payload)
+
+
 
         if self not in controller.sides_played.items:
             controller.sides_played.push_side(self)
