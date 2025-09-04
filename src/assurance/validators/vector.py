@@ -8,9 +8,6 @@ from chess.common.config import KNIGHT_STEP_SIZE
 
 from chess.exception.null.vector import NullVectorException
 
-from chess.exception.vector.y_dim import YComponentBelowLowerBoundException, YComponentAboveUpperBoundException
-from chess.exception.vector.x_dim import XComponentBelowLowerBoundException, XComponentAboveUpperBoundException
-
 from chess.geometry.delta import Vector
 
 
@@ -49,7 +46,7 @@ class VectorValidator(Validator):
             
             NullXDimensionException: if Vector.x is null
             
-            XComponentBelowLowerBoundException: if -Vector.x < -KNIGHT_STEP_SIZE
+            XBelowLowerBoundException: if -Vector.x < -KNIGHT_STEP_SIZE
                
             XComponentAboveUpperBoundException: if Vector.x > KNIGHT_STEP_SIZE
             

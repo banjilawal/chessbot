@@ -1,4 +1,4 @@
-from chess.exception.vector.base import VectorException
+from chess.exception.vector.vector import VectorException
 
 
 class ScalarBelowLowerBoundException(VectorException):

@@ -2,6 +2,11 @@ from chess.exception.base import ChessException
 
 
 class BuilderException(ChessException):
+    """
+    Exceptions raised by chess.creator.builder classes have common behavior. Similar conditions might raise
+    exceptions when building entities. During builds ValidatorExceptions are likely. Exceptions thrown during
+    entity builds should be wrapped in the BuilderException corresponding to the Builder's name.
+    """
     ERROR_CODE = "BUILDER_ERROR"
     DEFAULT_MESSAGE = "Builder raised exception"
 
@@ -14,6 +19,10 @@ class BuilderException(ChessException):
 
 
 class CoordBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when CoordBuilder runs.
+    """
+
     ERROR_CODE = "COORD_BUILDER_ERROR"
     DEFAULT_MESSAGE = "CoordBuilder raised exception"
 
@@ -26,6 +35,10 @@ class CoordBuilderException(BuilderException):
 
 
 class SquareBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when SquareBuilder runs.
+    """
+
     ERROR_CODE = "COMPETITOR_BUILDER_ERROR"
     DEFAULT_MESSAGE = "CompetitorBuilder raised exception"
 
@@ -38,6 +51,10 @@ class SquareBuilderException(BuilderException):
 
 
 class VectorBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when vectorBuilder runs.
+    """
+
     ERROR_CODE = "VECTOR_BUILDER_ERROR"
     DEFAULT_MESSAGE = "VectorBuilder raised exception"
 
@@ -50,6 +67,10 @@ class VectorBuilderException(BuilderException):
 
 
 class ScalarBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when ScalarBuilder runs.
+    """
+
     ERROR_CODE = "SCALAR_BUILDER_ERROR"
     DEFAULT_MESSAGE = "ScalarBuilder raised exception"
 
@@ -62,6 +83,10 @@ class ScalarBuilderException(BuilderException):
 
 
 class PieceBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when PieceBuilder runs.
+    """
+
     ERROR_CODE = "PIECE_BUILDER_ERROR"
     DEFAULT_MESSAGE = "PieceBuilder raised exception"
 
