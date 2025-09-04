@@ -77,11 +77,11 @@ class SideRecordValidator(Validator):
 
             current_team = teams.current_side
 
-            if (
-                current_team is not None and
-                not SideValidator.validate(current_team).is_success()
-            ):
-                raise CurrentTeamException(f"{method} {CurrentTeamException.DEFAULT_MESSAGE}")
+            # if (
+            #     current_team is not None and
+            #     not SideValidator.validate(current_team).is_success()
+            # ):
+            #     raise CurrentTeamException(f"{method} {CurrentTeamException.DEFAULT_MESSAGE}")
 
             return Result(payload=teams)
 

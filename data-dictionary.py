@@ -37,8 +37,8 @@ class Delta(BaseModel):
     Represents a vector for shifting coordinates.
 
     Attributes:
-        row_delta (int): The amount to add to a coordinate's row.
-        column_delta (int): The amount to add to a coordinate's column.
+        row_delta (int): The amount to add to a coord's row.
+        column_delta (int): The amount to add to a coord's column.
     """
     row_delta: int = Field(...)
     column_delta: int = Field(...)
@@ -61,7 +61,7 @@ class Delta(BaseModel):
 
 class Coordinate(BaseModel):
     """
-    Represents an immutable coordinate on a chessboard.
+    Represents an immutable coord on a chessboard.
 
     Attributes:
         row (int): The 0-based row index.
@@ -84,19 +84,19 @@ class Coordinate(BaseModel):
         #         raise RowOutOfBoundsException()
         #     return v
 
-    def shift(self, delta: Delta) -> 'Coordinate':
+    def shift(self, delta: Delta) -> 'Coord':
         """
-        Creates a new Coordinate shifted by a given Delta.
+        Creates a new Coord shifted by a given Delta.
 
         Args:
             delta (Delta): A vector for the shift.
 
         Returns:
-            Coordinate: A new Coordinate instance.
+            Coordinate: A new Coord instance.
 
         Raises:
             NullException: If the provided vector is null.
-            ValidationError: If the new coordinate is out of bounds.
+            ValidationError: If the new coord is out of bounds.
         """
         if delta is None:
             raise NullException("Delta cannot be null.")
@@ -105,7 +105,7 @@ class Coordinate(BaseModel):
         new_column = self.column + delta.column_delta
 
         # Pydantic's automatic validators will raise an error if the new
-        # coordinate is outside the defined bounds.
+        # coord is outside the defined bounds.
         return Coordinate(row=new_row, column=new_column)
 
 
@@ -114,8 +114,8 @@ class CartesianDistance(BaseModel):
     Calculates the squared Euclidean distance between two coordinates.
 
     Attributes:
-        p (Coordinate): The first coordinate.
-        q (Coordinate): The second coordinate.
+        p (Coordinate): The first coord.
+        q (Coordinate): The second coord.
         distance (int): The squared Euclidean distance, calculated automatically.
     """
     p: Coordinate
@@ -249,7 +249,7 @@ class Delta(BaseModel):
 
 class Coordinate(BaseModel):
     """
-    Represents an immutable coordinate on a chessboard with bounds checking.
+    Represents an immutable coord on a chessboard with bounds checking.
     """
     row: int = Field(..., ge=0, lt=ROW_SIZE)
     column: int = Field(..., ge=0, lt=COLUMN_SIZE)
@@ -287,7 +287,7 @@ class CoordinateStack(BaseModel):
     class Config:
         frozen = True
 
-    def push_coordinate(self, coordinate: Coordinate) -> 'CoordinateStack':
+    def push_coordinate(self, coordinate: Coordinate) -> 'CoordStack':
         new_stack = self._stack + [coordinate]
         return CoordinateStack(_stack=new_stack)
 

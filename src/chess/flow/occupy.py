@@ -9,7 +9,7 @@ from chess.exception.piece import AttackingKingException, AttackingNullPieceExce
 from chess.flow.base import Flow
 from chess.request.occupy import OccupationRequest
 from chess.request.validators.occupy import OccupationRequestValidator
-from chess.token.model import Piece
+from chess.token.model import Piece, CombatantPiece
 from chess.token.encounter import Encounter
 
 
@@ -24,7 +24,7 @@ class OccupationFlow(Flow):
 
         piece = cast(Piece, validation.request.client)
 
-        source_square = board.find_square_by_coordinate(piece.current_position)
+        source_square = board.find_square_by_coord(piece.current_position)
         target_square = cast(Square, request.resource)
 
         enemy = None
@@ -52,7 +52,7 @@ class OccupationFlow(Flow):
                 f"{method}: "
                 f"{InconsistentMarkObstructionException.DEFAULT_MESSAGE}"
             )
-        piece.observations.add_encounter(Encounter(blocking_occupant))
+        piece.encounters.add_encounter(Encounter(blocking_occupant))
 
 
     @staticmethod

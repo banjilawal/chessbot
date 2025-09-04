@@ -9,18 +9,20 @@ from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 
 from assurance.validators.side import SideValidator
+from chess.creator.builder.side import SideBuilder
+from chess.creator.emit import id_emitter
 from chess.exception.null.piece import NullPieceException
 from chess.exception.piece import MappingSelfException, PrisonerReleaseException, NullCaptorException
-from chess.geometry.coord import Coordinate
-from chess.team.model import Side
-from chess.token.coord import CoordinateStack
+from chess.geometry.coord import Coord
+
+from chess.side.model import Side
+from chess.token.coord import CoordStack
 from chess.token.encounter import Encounter, EncounterLog
 
 
 if TYPE_CHECKING:
     from chess.rank.base import Rank
     # from assurance.validators.rank import RankValidator
-    # from chess.geometry.coordinate.coordinate_stack import CoordinateStack
 
     """"
     
@@ -33,10 +35,10 @@ class Piece(ABC):
     _side: 'Side'
     _rank: 'Rank'
     _captor: 'Piece'
-    _current_position: Coordinate
+    _current_position: Coord
     # _status: MobilityStatus
-    _observations: EncounterLog
-    _positions: CoordinateStack
+    _encounters: EncounterLog
+    _positions: CoordStack
 
 
     def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
@@ -56,27 +58,27 @@ class Piece(ABC):
         # if not rank_validation.is_success():
         #     raise RankValidationException(f"{method}: {RankValidationException.DEFAULT_MESSAGE}")
 
-        team_validation = SideValidator.validate(side)
-        if not team_validation.is_success():
-            raise SideValidationException(
-                f"{method}: {SideValidationException.DEFAULT_MESSAGE}"
-            )
-        side = cast(team_validation.payload, Side)
+        side_validation = SideValidator.validate(side)
+        if not side_validation.is_success():
+            raise SideValidationException(f"{method}: {SideValidationException.DEFAULT_MESSAGE}")
 
-        self._id = cast(id_validation.payload, int)
-        self._name = cast(name_validation.payload, str)
-        # self._rank = cast(rank_validation.payload, Rank)
+        side = cast(Side, side_validation.payload)
 
-        if self not in side.pieces:
-            side.pieces.append(self)
+        self._id = cast(int, id_validation.payload)
+        self._name = cast(str, name_validation.payload)
+        self._rank = rank #cast(rank_validation.payload, Rank)
+
+
         self._side = side
 
         # self._status = MobilityStatus.FREE
 
-        self._observations = EncounterLog()
-        self._positions = CoordinateStack()
-        self._current_position = self._positions.current_coordinate
+        self._encounters = EncounterLog()
+        self._positions = CoordStack()
+        self._current_position = self._positions.current_coord
 
+        if self not in side.pieces:
+            side.pieces.append(self)
 
     @property
     def id(self) -> int:
@@ -104,18 +106,18 @@ class Piece(ABC):
 
 
     @property
-    def positions(self) -> CoordinateStack:
+    def positions(self) -> CoordStack:
         return self._positions
 
 
     @property
-    def current_position(self) -> Optional[Coordinate]:
-        return self._positions.current_coordinate
+    def current_position(self) -> Optional[Coord]:
+        return self._positions.current_coord
 
 
     @property
-    def observations(self) -> EncounterLog:
-        return self._observations
+    def encounters(self) -> EncounterLog:
+        return self._encounters
 
 
     def __eq__(self, other):
@@ -138,7 +140,7 @@ class Piece(ABC):
         return self._side != piece.side
 
 
-    def add_observation(self, piece: 'Piece'):
+    def record_encounter(self, piece: 'Piece'):
         method = "Piece.add_observation"
 
         if piece is None:
@@ -146,25 +148,40 @@ class Piece(ABC):
         if piece is self:
             raise MappingSelfException(f"{method}: {MappingSelfException.DEFAULT_MESSAGE}")
 
-        self._observations.add_encounter(Encounter(piece))
+        self._encounters.add_encounter(Encounter(piece))
 
 
     def __str__(self):
         return (
-            f"ChessPiece[id:{self._id} "
+            f"Piece[id:{self._id} "
             f"name:{self._name} "
-            f"total_positions:{self._positions.size()} "
-            f"current_position: {self._positions.current_coordinate} "
-            f"status:{self._status.name}"
+            f"rank:{self._rank.name} "
+            f"side:{self._side.profile.name} "
+            f"position:{self._positions.current_coord} "
+            f"moves:{self._positions.size()}]"
         )
+
+
+class KingPiece(Piece):
+
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
+        super().__init__(piece_id, name, rank, side)
+
+
+    def __eq__(self, other):
+        if not super().__eq__(other):
+            return False
+
+        if isinstance(other, KingPiece):
+            return self.id == other.id
 
 
 
 class CombatantPiece(Piece):
     _captor: Optional[Piece]
 
-    def __init__(self, token_id: int, name: str, rank: 'Rank', side: 'Side'):
-        super().__init__(token_id, name, rank, side)
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
+        super().__init__(piece_id, name, rank, side)
         self._captor = None
 
 
@@ -192,5 +209,16 @@ class CombatantPiece(Piece):
 
         if isinstance(other, CombatantPiece):
             return self.id == other.id
+
+
+
+def main():
+    from chess.rank.pawn import Pawn
+    piece = CombatantPiece(piece_id=id_emitter.piece_id, name="BB-1", side=SideBuilder.build().payload, rank=Pawn())
+    print(piece)
+
+
+if __name__ == "__main__":
+    main()
 
 

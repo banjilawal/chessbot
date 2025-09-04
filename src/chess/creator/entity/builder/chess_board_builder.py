@@ -4,7 +4,7 @@ from chess.board.board import Board
 from chess.board.square import Square
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.creator.emit import id_emitter
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 
 
 class ChessBoardBuilder:
@@ -21,7 +21,7 @@ class ChessBoardBuilder:
 
             for j in range(COLUMN_SIZE):
                 name = chr(ascii_value) + str(i + 1)
-                coordinate = Coordinate(row=i, column=j)
+                coordinate = Coord(row=i, column=j)
 
                 square = Square(id_emitter.square_id, name, coordinate)
 

@@ -2,7 +2,7 @@ from typing import List
 
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 from chess.token.encounter import Encounter
 
 from chess.engine.scout.scout_report import ScoutReport
@@ -13,7 +13,7 @@ class ScoutReportAnalyzer:
     _id: int
     _scout: Piece
     _scout_report: ScoutReport
-    _scout_coordinate: Coordinate
+    _scout_coordinate: Coord
 
 
     def __init__(self, analyzer_id: int, scout_report: ScoutReport):
@@ -21,7 +21,7 @@ class ScoutReportAnalyzer:
         self._scout_report = scout_report
 
         self._scout = scout_report.scout
-        self._scout_coordinate = scout_report.scout.positions.current_coordinate()
+        self._scout_coordinate = scout_report.scout.positions.current_coord()
 
 
 
@@ -52,7 +52,7 @@ class ScoutReportAnalyzer:
             reverse=True,
             key=lambda vacancy: Distance(
                 self._scout_coordinate,
-                vacancy.coordinate
+                vacancy.coord
             ).magnitude
         )
         return vacant_squares
@@ -74,7 +74,7 @@ class ScoutReportAnalyzer:
         obstructions.sort(
             reverse=True,
             key=lambda blocker: Distance(
-                self._scout_coordinate, blocker.coordinate
+                self._scout_coordinate, blocker.coord
             ).magnitude
         )
         return obstructions

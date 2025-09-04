@@ -7,6 +7,8 @@ from assurance.exception.validation.square import SquareValidationException
 from assurance.result.event import RequestOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
+from chess.board.square import Square
+from chess.creator.emit import id_emitter
 from chess.request.validators.base import RequestValidator
 from assurance.validators.square import SquareValidator
 from chess.common.permit import Event
@@ -14,6 +16,7 @@ from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
 from chess.exception.piece import AttackingKingException
 from chess.request.occupy import OccupationRequest
+from chess.token.model import KingPiece, Piece
 
 T = TypeVar('T')
 
@@ -55,6 +58,7 @@ class OccupationRequestValidator(RequestValidator):
             OccupationRequestValidationException: Wraps any preceding exceptions      
         """
         try:
+            outcome_id = id_emitter.outcome_id
             if t is None:
                 raise NullOccupationRequestException(f"{method} {NullOccupationRequestException.DEFAULT_MESSAGE}")
 
@@ -75,21 +79,23 @@ class OccupationRequestValidator(RequestValidator):
             if not square_validation.is_success():
                 raise SquareValidationException(f"{method}: {SquareValidationException.DEFAULT_MESSAGE}")
 
-            piece = piece_validation.payload
-            target_square = square_validation.payload
+            piece = cast(Piece, piece_validation.payload)
+            target_square = cast(Square, square_validation.payload)
 
-            if target_square.coordinate == piece.coordinate:
+            if target_square.coord == piece.current_position:
                 raise OccupiedBySelfException(f"{method}: {OccupiedBySelfException.DEFAULT_MESSAGE}")
 
             occupant = target_square.occupant
             if occupant is None:
                 return RequestOutcome(
+                    outcome_id=outcome_id,
                     request=occupation_request,
                     event=Event.OCCUPATION
                 )
 
             if occupant is not None and not piece.is_enemy(occupant):
                 return RequestOutcome(
+                    outcome_id=outcome_id,
                     request=occupation_request,
                     event=Event.MARK_OBSTRUCTION
                 )
@@ -98,10 +104,7 @@ class OccupationRequestValidator(RequestValidator):
             if occupant is not None and isinstance(occupant, KingPiece):
                 raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
 
-            return RequestOutcome(
-                request=occupation_request,
-                event=Event.ATTACK
-            )
+            return RequestOutcome(outcome_id=outcome_id, request=occupation_request,event=Event.ATTACK)
 
         except (
             TypeError,

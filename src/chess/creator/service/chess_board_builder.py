@@ -1,7 +1,7 @@
 # from typing import List
 #
 # from chess.creator.emit import id_emitter
-# from chess.geometry.coordinate.coordinate import Coordinate
+# from chess.geometry.coord.coord import Coord
 # from chess.chessboard.square import Square
 # from chess.chessboard.chessboard import ChessBoard
 # from chess.common.config import ROW_SIZE, COLUMN_SIZE
@@ -20,8 +20,8 @@
 #
 #             for j in range(COLUMN_SIZE):
 #                 name = chr(ascii_value) + str(i + 1)
-#                 coordinate = Coordinate(row=i, column=j)
-#                 square = Square(id_emitter.square_id, name, coordinate)
+#                 coord = Coord(row=i, column=j)
+#                 square = Square(id_emitter.square_id, name, coord)
 #                 row_squares.append(square)
 #                 ascii_value += 1
 #             squares.append(row_squares)

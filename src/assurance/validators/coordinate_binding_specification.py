@@ -15,7 +15,7 @@ class CoordinateSBindingValidator(Validator):
         """
         Validates a CoordinateBinding meets specifications:
             - square.occupant == chess_piece
-            - chess_piece.coordinate_stack.current_coordinate() == square.coordinate
+            - chess_piece.coordinate_stack.current_coordinate() == square.coord
             - chess_piece_previous_square.occupant == null
             
         If any validators fails their exception will be encapsulated in a CoordinateBindingValidationException
@@ -30,17 +30,17 @@ class CoordinateSBindingValidator(Validator):
 
         Raises:
 
-            NullCoordinateException: if t is null
+            NullCoordException: if t is null
 
-            TypeError: if t is not Coordinate
+            TypeError: if t is not Coord
 
-            RowOutOfBoundsException: If coordinate.row is outside the range 
+            RowOutOfBoundsException: If coord.row is outside the range 
                 (0, ROW_SIZE - 1) inclusive
 
-            ColumnOutOfBoundsException: If coordinate.column is outside the range
+            ColumnOutOfBoundsException: If coord.column is outside the range
                 (0, COLUMN_SIZE - 1) inclusive
 .
-            CoordinateValidationException: Wraps any
+            CoordValidationException: Wraps any
                 (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
 
         """

@@ -5,7 +5,7 @@ from chess.geometry.quadrant import Quadrant
 from chess.rank.base import Rank
 
 # class Quadrant(Enum):
-#     def __new__(cls, quad_id:int, vector: Vector):
+#     def __new__(cls, quad_id:int, vector:Vector):
 #         obj = object.__new__(cls)
 #         obj._id = quad_id
 #         obj._vector = vector
@@ -16,12 +16,12 @@ from chess.rank.base import Rank
 
 
 class RankProfile(Enum):
-    def __new__(cls, letter: str, per_side: int, value: int, territories: List[Quadrant]):
+    def __new__(cls, letter:str, per_side:int, value:int, quadrants:List[Quadrant]):
         obj = object.__new__(cls)
         obj._letter = letter
         obj._per_side = per_side
         obj._value = value
-        obj._territories = territories
+        obj._quadrants = quadrants
 
         return obj
 
@@ -42,17 +42,20 @@ class RankProfile(Enum):
     def letter(self) -> str:
         return self._letter
 
+
     @property
     def per_side(self) -> int:
         return self._per_side
+
 
     @property
     def value(self) -> int:
         return self._value
 
+
     @property
-    def territories(self) -> List[Quadrant]:
-        return self._territories
+    def quadrants(self) -> List[Quadrant]:
+        return self._quadrants
 
 
     def __str__(self) -> str:
@@ -61,25 +64,21 @@ class RankProfile(Enum):
             f"{self._letter} "
             f"per_team:{self._per_side} "
             f"value:{self._value} "
-            f"quadrants:({self._quadrants_str()})"
+            f"quadrants:({len(self.quadrants_str())})"
             f"] "
         )
 
 
-    def _quadrants_str(self) -> str:
-        names = f""
-        for quadrant in self._territories:
-            names += f"{quadrant.name},"
-
-        return names.strip(", ") + f""
+    def quadrants_str(self) -> str:
+        return " ".join(q.name for q in self._quadrants)
 
 
     @staticmethod
-    def find_profile_by_rank(rank: Rank) -> Optional['RankProfile']:
-        print(f"Looking for config with name: {rank.name}")
+    def find_profile_by_rank(rank:Rank) -> Optional['RankProfile']:
+        print(f"Looking for config with name:{rank.name}")
 
         for profile in RankProfile:
-            print(f"Checking config: {profile.value}")
+            print(f"Checking config:{profile.value}")
             if profile.name.upper() == rank.name.upper():
                 return profile
         return None

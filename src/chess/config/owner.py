@@ -5,7 +5,7 @@ from chess.creator.emit import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
 from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine
-from chess.randomize.name import RandomName
+from chess.randomize.competitor import RandomName
 
 
 class DecisionMode(Enum):
@@ -22,7 +22,7 @@ class DecisionMode(Enum):
 
     HUMAN = (None, None, None,)
     MACHINE = (
-        RandomName.cybernaut_name(),
+        RandomName.cybernaut(),
         GreedyDecisionEngine(engine_id=id_emitter.engine_id),
         BoardAnalyzer()
     )

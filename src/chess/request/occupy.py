@@ -7,8 +7,8 @@ from chess.token.model import Piece
 
 class OccupationRequest(Request):
 
-    def __init__(self, request_id: int, piece: Piece, square: Square):
-        super().__init__(request_id=request_id, client=piece, resource=Square)
+    def __init__(self, req_id: int, piece: Piece, square: Square):
+        super().__init__(req_id=req_id, client=piece, resource=square)
 
 
     @property

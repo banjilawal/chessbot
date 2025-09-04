@@ -6,7 +6,7 @@ from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
 from chess.config.game import SideProfile
-from chess.team.model import Side
+from chess.side.model import Side
 
 
 class TeamFactory:
@@ -17,7 +17,7 @@ class TeamFactory:
 
         for team_config in SideProfile:
             # print(team_config)
-            team = TeamBuilder.build(OwnerBuilder.build(id_emitter.owner_id), team_config)
+            team = TeamBuilder.build(OwnerBuilder.build(id_emitter.person_id), team_config)
             teams.append(team)
 
         ranks = RankFactory.assemble()
@@ -26,9 +26,9 @@ class TeamFactory:
 
         for team in teams:
             for rank in ranks:
-                for i in range(rank.per_team):
+                for i in range(rank.per_side):
                     chess_piece = ChessPieceBuilder.build(
-                        token_id=id_emitter.token_id,
+                        token_id=id_emitter.piece_id,
                         team_rank_member_id=(i + 1),
                         rank=rank,
                         team=team
@@ -44,8 +44,8 @@ def main():
     for team in teams:
         print(team)
 
-    # for team in teams:
-    #     for captor in team.chess_pieces:
+    # for side in teams:
+    #     for captor in side.chess_pieces:
     #         print(captor)
 
             # for placement in PlacementChart:

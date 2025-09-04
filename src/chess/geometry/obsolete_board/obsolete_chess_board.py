@@ -11,7 +11,7 @@ from typing import List, Optional, TYPE_CHECKING
 if TYPE_CHECKING:
     from chess.token.model import Piece
     from chess.board.square import Square
-    from chess.geometry.coord import Coordinate
+    from chess.geometry.coord import Coord
 
 
 class ObsoleteChessBoard:
@@ -33,15 +33,15 @@ class ObsoleteChessBoard:
     def grid(self) -> List[List['Square']]:
         return self._grid
 
-    def find_chess_piece(self, coordinate: 'Coordinate') -> Optional['Piece']:
+    def find_chess_piece(self, coordinate: 'Coord') -> Optional['Piece']:
         return self._grid[coordinate.row][coordinate.column].occupant
 
 
-    def find_square(self, coordinate: 'Coordinate') -> Optional['Square']:
+    def find_square(self, coordinate: 'Coord') -> Optional['Square']:
         return self.grid[coordinate.row][coordinate.column]
 
 
-    def empty_squares(self) -> List['Square']:
+    def empty_squares(self) -> list['Square']:
         empty_squares = []
         for square in self._grid:
             if square.occupant is None and square not in empty_squares:
@@ -60,19 +60,19 @@ class ObsoleteChessBoard:
         return occupied_squares
 
     #
-    #    def capture_square(self, captor: ChessPiece, coordinate: Coordinate):
+    #    def capture_square(self, captor: ChessPiece, coord: Coord):
     #         if captor is None:
     #             raise ValueError("Captor cannot be null. Aborting capture process.")
     #             # return None
-    #         if not self.coordinate_is_valid(coordinate):
+    #         if not self.coordinate_is_valid(coord):
     #             raise ValueError("The destination coord is out of range. Aborting capture process.")
     #             # return None
     #
     #         turn_record = None
     #         capture_record = None
-    #         square = self._grid[coordinate.row][coordinate.column]
+    #         square = self._grid[coord.row][coord.column]
     #         current_occupant = square.occupant
-    #         print("The square at ", coordinate, " is ", square, " it contains ", current_occupant)
+    #         print("The square at ", coord, " is ", square, " it contains ", current_occupant)
     #         if current_occupant is not None and not captor.is_enemy(current_occupant):
     #             print("A friendly is occupying the square. Aborting capture process.")
     #             return None
@@ -81,7 +81,7 @@ class ObsoleteChessBoard:
     #         print("The current occupant is an enemy on ")
     #         prisoner = current_occupant
     #         square.occupant = None
-    #         prisoner.coordinate = None
+    #         prisoner.coord = None
     #
     #         captor = captor
     #         # prisoner = self.remove_piece_from_board(current_occupant.id)
@@ -100,10 +100,10 @@ class ObsoleteChessBoard:
     #         print("The current occupant is None. The captor is free to move to the destination square.")
     #         print(f"Square {square} has occupant {current_occupant} and captor {captor} is free to move to the destination square.")
     #         square.occupant = captor
-    #         captor.coordinate = square.coordinate
+    #         captor.coord = square.coord
     #
     #
-    # def capture_square(self, captor: 'ChessPiece', destination: 'Coordinate'):
+    # def capture_square(self, captor: 'ChessPiece', destination: 'Coord'):
     #     method = "ObsoleteChessBoard.capture_square"
     #
     #     # 3. Get the squares
@@ -115,14 +115,14 @@ class ObsoleteChessBoard:
 
 
 
-    # def coordinate_is_valid(self, coordinate: Coordinate):
-    #     if coordinate is None:
+    # def coordinate_is_valid(self, coord: Coord):
+    #     if coord is None:
     #         print("A null coord is not valid")
     #         return False
-    #     print("chekcing coord ", coordinate, " for validity.")
-    #     if coordinate.row < 0 or coordinate.row >= len(self._grid):
+    #     print("chekcing coord ", coord, " for validity.")
+    #     if coord.row < 0 or coord.row >= len(self._grid):
     #         raise ValueError("The coord is not valid. Its row is out of range")
-    #     if coordinate.column < 0 or coordinate.column >= len(self._grid[0]):
+    #     if coord.column < 0 or coord.column >= len(self._grid[0]):
     #         print("The coord is not valid. Its column is out of range")
     #         return False
     #     return True

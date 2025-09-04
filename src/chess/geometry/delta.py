@@ -11,14 +11,14 @@ class Vector:
     _y: int
 
     """
-    Offset is an immutable class is used for shifting a Coordinate by a vector. The
-    Offset is just a vector added to a Coordinate vector. 
-    Moved responsibilty for coordinate_vendo algerba from Vector to Coordinate, the testing and verification is 
-    simpler. This leaves Vector a pure data class used for transforming a Coordinate.
+    Offset is an immutable class is used for shifting a Coord by a vector. The
+    Offset is just a vector added to a Coord vector. 
+    Moved responsibilty for coordinate_vendo algerba from Vector to Coord, the testing and verification is 
+    simpler. This leaves Vector a pure data class used for transforming a Coord.
 
     Attributes:
-        _x (int): Amount added to target coordinate's row
-        _y (int): Amount added to target coordinate's column
+        _x (int): Amount added to target coord's row
+        _y (int): Amount added to target coord's column
     """
 
 
@@ -96,7 +96,7 @@ class Vector:
 
 
     #
-    # def add_to_coordinate(self, coord: Coordinate) -> Coordinate:
+    # def add_to_coordinate(self, coord: Coord) -> Coord:
     #     validation_result = CoordinateSpecification.is_satisfied_by(coord)
     #     if not validation_result.is_success():
     #         raise validation_result.exception
@@ -107,7 +107,7 @@ class Vector:
     #     column = c.column + self.x
     #
     #     validation_result = CoordinateSpecification.is_satisfied_by(
-    #         Coordinate(row=row, column=column)
+    #         Coord(row=row, column=column)
     #     )
     #     if not validation_result.is_success():
     #         raise validation_result.exception

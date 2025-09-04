@@ -4,13 +4,13 @@ from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
 
 
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 
 
 class ScalarDistanceBuilder(Enum):
 
     @staticmethod
-    def build(p: Coordinate, q: Coordinate) -> Result[Distance]:
+    def build(p: Coord, q: Coord) -> Result[Distance]:
         candidate = Distance(p, q)
         result = DistanceValidator.validate(candidate)
 
@@ -23,8 +23,8 @@ class ScalarDistanceBuilder(Enum):
 
 #
 # def main():
-#     p = Coordinate(0, 7)
-#     q = Coordinate(2, 6)
+#     p = Coord(0, 7)
+#     q = Coord(2, 6)
 #     build_result = DistanceMagnitudeBuilder.build(p, q)
 #     if build_result.is_success():
 #         distance_magnitude = build_result.payload

@@ -100,16 +100,16 @@ is_walkable(chess_piece: ChessPiece, destination: Coordinate) -> bool:
 
 ## Usage Examples
 
-### `ChessPiece` Validating `Coordinate` is Reachable Before Executing Walk
+### `ChessPiece` Validating `Coord` is Reachable Before Executing Walk
 ```python
 destination = Coordinate(2, 3)
-origin = chess_piece.positions.current_coordinate
+origin = chess_piece.positions.current_coord
 
 if not chess_piece.rank.is_walkable(chess_piece, destination):
     raise DestinationUnreachableException(
         f"ChessPiece {chess_piece.name} "
         f"cannot reach {destination} "
-        f"from its current coordinate {origin}"
+        f"from its current coord {origin}"
     )
 chess_board.capture_square(chess_piece, destination)
 ```

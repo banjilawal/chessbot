@@ -20,11 +20,11 @@ class Scout:
 
     def survey(self, chess_board: Board) -> ScoutReport:
         squares: List[Square] = []
-        origin = self._scout.positions.current_coordinate()
+        origin = self._scout.positions.current_coord()
 
-        for territory in self._scout.rank.territories:
+        for territory in self._scout.rank.quadrants:
             for square in chess_board.iterator(origin, territory.delta):
-                if not self._scout.rank.walk.is_walkable(self._scout, square.coordinate):
+                if not self._scout.rank.walk.is_walkable(self._scout, square.coord):
                     break
                 if square.occupant is not None and square not in squares:
                     squares.append(square)

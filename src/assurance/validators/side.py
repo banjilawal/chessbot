@@ -3,6 +3,7 @@ from typing import cast, Generic, TYPE_CHECKING
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.team import SideValidationException
 from assurance.exception.validation.competitor import CompetitorValidationException
+from chess.competitor.model import Competitor
 
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
@@ -11,12 +12,10 @@ from chess.exception.null.team import NullSideException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.id import IdValidator
-
-
-
+from chess.exception.stack import BrokenRelationshipException
 
 if TYPE_CHECKING:
-    from chess.team.model import Side
+    from chess.side.model import Side
 
 
 class SideValidator(Validator):
@@ -54,11 +53,14 @@ class SideValidator(Validator):
             if t is None:
                 raise NullSideException(f"{method} {NullSideException.DEFAULT_MESSAGE}")
 
-            from chess.team.model import Side
+            from chess.side.model import Side
             if not isinstance(t, Side):
                 raise TypeError(f"{method} Expected a Side, got {type(t).__name__}")
 
             side = cast(Side, t)
+
+            if side.profile is None:
+                raise NullSideProfileException(f"{method}: {NullSideProfileException.DEFAULT_MESSAGE}")
 
             id_validation = IdValidator.validate(side.id)
             if not id_validation.is_success():
@@ -70,9 +72,11 @@ class SideValidator(Validator):
                 raise CompetitorValidationException(
                     f"{method}: {CompetitorValidationException.DEFAULT_MESSAGE}"
                 )
+            competitor = cast(Competitor, competitor_validation.payload)
 
-            if side.profile is None:
-                raise NullSideProfileException(f"{method}: {NullSideProfileException.DEFAULT_MESSAGE}")
+            if side not in competitor.sides_played.items:
+
+                raise BrokenRelationshipException(f"{method}: {BrokenRelationshipException.DEFAULT_MESSAGE}")
 
             return Result(payload=side)
 
@@ -92,8 +96,8 @@ def main():
     from chess.competitor.model import HumanCompetitor
     person = HumanCompetitor(1, "person")
 
-    from chess.team.model import Side
-    side = Side(team_id=1, controller=person, profile=SideProfile.BLACK)
+    from chess.side.model import Side
+    side = Side(side_id=1, controller=person, profile=SideProfile.BLACK)
 
 
 if __name__ == "__main__":

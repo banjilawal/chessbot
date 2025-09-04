@@ -9,8 +9,8 @@ class Request(Generic[T]):
     _resource: Optional[T]
 
 
-    def __init__(self, request_id: int, client: T, resource: Optional[T]=None):
-        self._id = request_id
+    def __init__(self, req_id: int, client: T, resource: Optional[T]=None):
+        self._id = req_id
         self._client = client
         self._resource = resource
 

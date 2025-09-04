@@ -1,20 +1,20 @@
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, cast
 
-
-from assurance.validators.coord import CoordinateValidator
+from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-
+from chess.creator.emit import id_emitter
+from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
-    from chess.geometry.coord import Coordinate
+    # from chess.geometry.coord import Coord
     from chess.token.model import Piece
 
 class Square:
-    _id: int
-    _name: str
-    _coordinate: 'Coordinate'
-    _occupant: Optional['Piece']
+    _id:int
+    _name:str
+    _coord:Coord
+    _occupant:Optional['Piece']
 
     """
     Square is a data-holding object that can store a ChessPiece. Ideally would have no public setters.
@@ -22,27 +22,27 @@ class Square:
     All fields are immutable.
 
     Attributes:
-        _id (int): unique identifier for the square.
-        _name (str): Name of square in Chess notation (e.g. "A1", "B2").
-        _coordinate (Coordinate): Coordinate of the square on the ChessBoard.
-        _occupant (ChessPiece): The ChessPiece occupying the square, if any.
+        _id (int):unique identifier for the square.
+        _name (str):Name of square in Chess notation (e.g. "A1", "B2").
+        _coord (Coord):Coord of the square on the ChessBoard.
+        _occupant (ChessPiece):The ChessPiece occupying the square, if any.
     """
 
-    def __init__(self, square_id: int, name: str, coordinate: 'Coordinate'):
-        method = "Square.__init__()"
+    def __init__(self, square_id:int, name:str, coord:Coord):
+        method = "Square.__init__"
 
         """
         Creates a Square instance
 
         Args:
-            square_id (int): id of the square, unique across the ChessBoard.
-            name (str): name of the square in Chess notation (e.g. "A1", "B2").
-            coordinate (Coordinate): coordinate of the square on the ChessBoard
+            square_id (int):id of the square, unique across the ChessBoard.
+            name (str):name of the square in Chess notation (e.g. "A1", "B2").
+            coord (Coord):coord of the square on the ChessBoard
 
         Raise:
-            NameValidationException: If name is name fails any validators checks
-            IdValidationException: If square_id fails any validators checks
-            CoordinateValidationException: If coordinate fails any validators checks
+            NameValidationException:If name is name fails any validators checks
+            IdValidationException:If square_id fails any validators checks
+            CoordValidationException:If coord fails any validators checks
         """
 
 
@@ -54,13 +54,13 @@ class Square:
         if not name_validation.is_success():
             raise name_validation.exception
 
-        coord_validation = CoordinateValidator.validate(coordinate)
+        coord_validation = CoordValidator.validate(coord)
         if not coord_validation.is_success():
             raise coord_validation.exception
 
-        self._id = id_validation.payload
-        self._name = name_validation.payload
-        self._coordinate = coord_validation.payload
+        self._id = cast(int, id_validation.payload)
+        self._name = cast(str, name_validation.payload)
+        self._coord = cast(Coord, coord_validation.payload)
 
         self._occupant = None
 
@@ -76,8 +76,8 @@ class Square:
 
 
     @property
-    def coordinate(self) -> 'Coordinate':
-        return self._coordinate
+    def coord(self) -> Coord:
+        return self._coord
 
 
     @property
@@ -86,32 +86,38 @@ class Square:
 
 
     @occupant.setter
-    def occupant(self, piece: Optional['Piece']):
+    def occupant(self, piece:Optional['Piece']):
         method = f"Square.occupant"
 
         from chess.token.model import Piece
         if piece is not None and not isinstance(piece, Piece):
-            raise TypeError(f"{method}: Expected a Piece, got {type(piece).__name__}")
+            raise TypeError(f"{method}:Expected a Piece, got {type(piece).__name__}")
 
         self._occupant = piece
 
 
     def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if not isinstance(other, Square): return False
+        if other is self:return True
+        if other is None:return False
+        if not isinstance(other, Square):return False
 
         return self._id == other.id
 
 
-    def __hash__(self): return hash(self._id)
+    def __hash__(self):return hash(self._id)
 
 
     def __str__(self) -> str:
         occupant_str = f"" if self._occupant is None else f" occupant:{self._occupant.name}"
-        return (
-            f"Square:{self._id}"
-            f" Name:{self._name}"
-            f"coordinate:{self._coordinate}"
-            f"]"
-        )
+        return f"Square:[{self._id} {self._name} {self._coord}{occupant_str}]"
+
+
+
+def main():
+
+    square = Square(square_id=id_emitter.square_id, name="A1", coord=Coord(row=0, column=0))
+    print(square)
+
+
+if __name__ == "__main__":
+    main()

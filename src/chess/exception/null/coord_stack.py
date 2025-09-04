@@ -1,7 +1,7 @@
 from chess.exception.null.base import NullException
 
 
-class NullCoordinateStackException(NullException):
+class NullCoordStackException(NullException):
     ERROR_CODE = "NULL_COORDINATE_STACK_ERROR"
     DEFAULT_MESSAGE = f"CoordinateStack cannot be null"
 

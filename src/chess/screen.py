@@ -10,7 +10,7 @@ from dataclasses import dataclass
 
 from typing import TYPE_CHECKING, Optional
 
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 from chess.rank.bishop import Bishop
 from chess.rank.castle import Castle
 from chess.rank.knight import Knight
@@ -25,15 +25,15 @@ if TYPE_CHECKING:
 @dataclass(frozen=True)
 class DragState:
     chess_piece: Piece
-    original_coordinate: Coordinate
-    current_coordinate: Coordinate
+    original_coordinate: Coord
+    current_coordinate: Coord
     offset_x: int = 0
     offset_y: int = 0
 
-    def updated_position(self, new_coordinate: Coordinate):
+    def updated_position(self, new_coordinate: Coord):
         return DragState(
             chess_piece=self.chess_piece,
-            original_coordinate=self.chess_piece.positions.current_coordinate(),
+            original_coordinate=self.chess_piece.positions.current_coord(),
             current_coordinate=new_coordinate,
             offset_x =self.offset_x,
             offset_y=self.offset_y
@@ -98,7 +98,7 @@ class GameDisplay:
                 continue
             self.draw_chess_piece(piece)
 
-        # Draw the dragged piece last, at its temporary coordinate
+        # Draw the dragged piece last, at its temporary coord
         if dragged_state:
             self.draw_chess_piece_at(dragged_state.chess_piece, dragged_state.current_coordinate)
 
@@ -110,7 +110,7 @@ class GameDisplay:
         bishop_color = BISHOP_COLOR
         queen_color = QUEEN_COLOR
 
-        coordinate = chess_piece.positions.current_coordinate()
+        coordinate = chess_piece.positions.current_coord()
         chess_piece_shape = pygame.Rect(
             coordinate.column * self.cell_px + self.border_px,
             coordinate.row * self.cell_px + self.border_px,
@@ -179,7 +179,7 @@ class GameDisplay:
         self.is_dragging = True
 
         # Calculate vector so the piece doesn't jump to mouse corner
-        coord = chess_piece.positions.current_coordinate()
+        coord = chess_piece.positions.current_coord()
         piece_x = coord.column * self.cell_px + self.border_px
         piece_y = coord.row * self.cell_px + self.border_px
         offset_x = mouse_pos[0] - piece_x
@@ -198,11 +198,11 @@ class GameDisplay:
         # self.active_drags: dict[int, DragState] = {}
         # self.is_dragging = False
 
-    def coordinate_at_mouse_position(self, mouse_pos: tuple[int, int]) -> Optional[Coordinate]:
+    def coordinate_at_mouse_position(self, mouse_pos: tuple[int, int]) -> Optional[Coord]:
         col = (mouse_pos[0] - self.border_px) // self.cell_px
         row = (mouse_pos[1] - self.border_px) // self.cell_px
         if 0 <= col < 8 and 0 <= row < 8:
-            return Coordinate(row=row, column=col)
+            return Coord(row=row, column=col)
         return None
 
     def update_drag(self, chess_piece_id: int, mouse_position: tuple[int, int]) -> None:
@@ -218,7 +218,7 @@ class GameDisplay:
         proposed_col = max(0, min(proposed_col, 7))
         proposed_row = max(0, min(proposed_row, 7))
 
-        test_coord = Coordinate(row=proposed_row, column=proposed_col)
+        test_coord = Coord(row=proposed_row, column=proposed_col)
         if not self.is_position_valid_for_drag(drag_state.chess_piece, test_coord):
             return
 
@@ -249,14 +249,14 @@ class GameDisplay:
 
         return MousePlacementStatus.PLACED
 
-    def is_position_valid_for_drag(self, chess_piece: Piece, test_coordinate: Coordinate) -> bool:
+    def is_position_valid_for_drag(self, chess_piece: Piece, test_coordinate: Coord) -> bool:
         """Combined state for visual dragging"""
         # 1. Check board's official position (for static entities)
         if not chess_piece.rank.walk.is_walkable(chess_piece, test_coordinate):
             return False
         return True
 
-    def draw_chess_piece_at(self, chess_piece: Piece, coordinate: Coordinate):
+    def draw_chess_piece_at(self, chess_piece: Piece, coordinate: Coord):
         rect = pygame.Rect(
             coordinate.column * self.cell_px + self.border_px,
             coordinate.row * self.cell_px + self.border_px,

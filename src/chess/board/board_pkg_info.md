@@ -70,7 +70,7 @@ Immutable chess board position
 ```
 
 ```python
- # Multiplies row and column by scalar to get new Coordinate
+ # Multiplies row and column by scalar to get new Coord
  __mult__(scalar: int) -> Coordinate: 
 ```
 

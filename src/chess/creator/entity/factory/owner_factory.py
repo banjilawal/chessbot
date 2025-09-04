@@ -8,8 +8,8 @@ from chess.creator.entity.factory.rank_factory import RankFactory
 from chess.config.game import SideProfile
 from chess.competitor.model import HumanCompetitor
 from chess.competitor.model import Competitor
-from chess.randomize.name import RandomName
-from chess.team.model import Side
+from chess.randomize.competitor import RandomName
+from chess.side.model import Side
 
 
 class OwnerFactory:
@@ -18,8 +18,8 @@ class OwnerFactory:
     def assemble() -> List[Competitor]:
         owners: List[Competitor] = []
 
-        wo = HumanCompetitor(competitor_id=id_emitter.owner_id, name=RandomName.person_name())
-        bo = HumanCompetitor(competitor_id=id_emitter.owner_id, name=RandomName.person_name())
+        wo = HumanCompetitor(competitor_id=id_emitter.person_id, name=RandomName.person())
+        bo = HumanCompetitor(competitor_id=id_emitter.person_id, name=RandomName.person())
 
         wt = TeamBuilder.build(wo, SideProfile.WHITE)
         bt = TeamBuilder.build(bo, SideProfile.BLACK)
@@ -27,9 +27,9 @@ class OwnerFactory:
         ranks = RankFactory.assemble()
         for team in [wt, bt]:
             for rank in ranks:
-                for i in range(rank.per_team):
+                for i in range(rank.per_side):
                     chess_piece = ChessPieceBuilder.build(
-                        token_id=id_emitter.token_id,
+                        token_id=id_emitter.piece_id,
                         team_rank_member_id=(i + 1),
                         rank=rank,
                         team=team
@@ -42,21 +42,21 @@ class OwnerFactory:
         #
         # for team_config in TeamConfig:
         #     # print(team_config)
-        #     team = TeamBuilder.build(OwnerBuilder.build(id_emitter.owner_id), team_config)
-        #     teams.append(team)
+        #     side = TeamBuilder.build(OwnerBuilder.build(id_emitter.competitor_id), team_config)
+        #     teams.append(side)
         #
         #
         # # for rank in ranks:
         # #     print(rank)
         #
-        # for team in teams:
+        # for side in teams:
         #     for rank in ranks:
         #         for i in range(rank.number_per_team):
         #             captor = ChessPieceBuilder.build(
-        #                 token_id=id_emitter.token_id,
+        #                 piece_id=id_emitter.piece_id,
         #                 team_rank_member_id=(i + 1),
         #                 rank=rank,
-        #                 team=team
+        #                 side=side
         #             )
         #             # print(captor)
         # return teams
@@ -69,8 +69,8 @@ def main():
     for owner in owners:
         print(owner, ",", len(owner.team.pieces))
 
-    # for team in teams:
-    #     for captor in team.chess_pieces:
+    # for side in teams:
+    #     for captor in side.chess_pieces:
     #         print(captor)
 
             # for placement in PlacementChart:

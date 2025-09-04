@@ -16,48 +16,48 @@ class RankBuilder:
             return King(
                 name=config.name,
                 letter=config.letter,
-                per_team=config.number_per_team,
-                territories=config.territories,
+                per_side=config.number_per_team,
+                quadrants=config.quadrants,
                 value=config.capture_value
             )
         if config is RankProfile.PAWN:
             return Pawn(
                 name=config.name,
                 letter=config.letter,
-                per_team=config.number_per_team,
-                territories=config.territories,
+                per_side=config.number_per_team,
+                quadrants=config.quadrants,
                 value=config.capture_value
             )
         if config is RankProfile.KNIGHT:
             return Knight(
                 name=config.name,
                 letter=config.letter,
-                per_team=config.number_per_team,
-                territories=config.territories,
+                per_side=config.number_per_team,
+                quadrants=config.quadrants,
                 value=config.capture_value
             )
         if config is RankProfile.BISHOP:
             return Bishop(
                 name=config.name,
                 letter=config.letter,
-                per_team=config.number_per_team,
-                territories=config.territories,
+                per_side=config.number_per_team,
+                quadrants=config.quadrants,
                 value=config.capture_value
             )
         if config is RankProfile.CASTLE:
             return Castle(
                 name=config.name,
                 letter=config.letter,
-                per_team=config.number_per_team,
-                territories=config.territories,
+                per_side=config.number_per_team,
+                quadrants=config.quadrants,
                 value=config.capture_value
             )
         if config is RankProfile.QUEEN:
             return Queen(
                 name=config.name,
                 letter=config.letter,
-                per_team=config.number_per_team,
-                territories=config.territories,
+                per_side=config.number_per_team,
+                quadrants=config.quadrants,
                 value=config.capture_value
             )
         raise ValueError(f"Invalid rank config: {config}")

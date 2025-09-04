@@ -20,16 +20,16 @@ class PieceException(ChessException):
 
 
 """
-Exception for handling a piece which does not have a coordinate
+Exception for handling a piece which does not have a coord
 """
 class PieceCoordinateException(PieceException):
     """
-    If a piece does not have a coordinate until its place on the chess board. This exception prevents
+    If a piece does not have a coord until its place on the chess board. This exception prevents
     chess pieces not on the board from moving.
     """
 
     ERROR_CODE = "PIECE_NO_COORDINATE_ERROR"
-    DEFAULT_MESSAGE = "Piece is not on the board. it has no coordinate"
+    DEFAULT_MESSAGE = "Piece is not on the board. it has no coord"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

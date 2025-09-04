@@ -5,7 +5,7 @@ from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
 
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 from chess.competitor.model import CyberneticCompetitor
 
 
@@ -17,12 +17,12 @@ class GreedyDecisionEngine(DecisionEngine):
         self._board_analysis = None
 
 
-    def decide_destination(self, cybernaut: CyberneticCompetitor, chess_board: Board) -> Optional[Coordinate]:
+    def decide_destination(self, cybernaut: CyberneticCompetitor, chess_board: Board) -> Optional[Coord]:
         self._board_analysis = self.board_analyzer.issue_analysis(cybernaut, chess_board)
         return self._decision_helper()
 
 
-    def _decision_helper(self) -> Optional[Coordinate]:
+    def _decision_helper(self) -> Optional[Coord]:
 
         if self._board_analysis.enemy_report_count > 0:
             return self._select_best_capture_report()
@@ -34,7 +34,7 @@ class GreedyDecisionEngine(DecisionEngine):
             return None
 
 
-    def _select_best_capture_report(self) -> Optional[Coordinate]:
+    def _select_best_capture_report(self) -> Optional[Coord]:
         best_report = None
         min_capture_diff = self.max_capture_value
 
@@ -45,11 +45,11 @@ class GreedyDecisionEngine(DecisionEngine):
                 best_report = analysis
 
         if best_report is not None:
-            return best_report.enemies[0].positions.current_coordinate()
+            return best_report.enemies[0].positions.current_coord()
         return best_report
 
 
-    def _select_furthest_vacant_square_report(self) -> Optional[Coordinate]:
+    def _select_furthest_vacant_square_report(self) -> Optional[Coord]:
 
         max_distance = 0
         best_report = None
@@ -57,25 +57,25 @@ class GreedyDecisionEngine(DecisionEngine):
         for analysis in self._board_analysis.assessments:
 
             square = analysis.vacant_squares[0]
-            origin = analysis.chess_piece.positions.current_coordinate()
+            origin = analysis.chess_piece.positions.current_coord()
 
-            if Distance(origin, square.coordinate).magnitude > max_distance:
+            if Distance(origin, square.coord).magnitude > max_distance:
                 best_report = analysis
 
         if best_report is not None:
-            return best_report.vacant_squares[0].coordinate
+            return best_report.vacant_squares[0].coord
         return best_report
 
 
     @staticmethod
-    def _select_best_obstruction_report(self) -> Optional[Coordinate]:
+    def _select_best_obstruction_report(self) -> Optional[Coord]:
 
         max_distance = 0
         best_report = None
 
         for analysis in self._board_analysis.assessments:
             coordinate = analysis.obstructions[0].blocked_coordinate
-            origin = analysis.chess_piece.positions.current_coordinate
+            origin = analysis.chess_piece.positions.current_coord
 
             if Distance(origin, coordinate).magnitude > max_distance:
                 best_report = analysis

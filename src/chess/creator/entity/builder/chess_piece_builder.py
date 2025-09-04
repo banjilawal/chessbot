@@ -1,7 +1,7 @@
 from chess.token.model import Piece
 from chess.rank.base import Rank
 
-from chess.team.model import Side
+from chess.side.model import Side
 
 
 class ChessPieceBuilder:
@@ -24,8 +24,8 @@ class ChessPieceBuilder:
 #
 # def main():
 #     motion = RankBuilder.build(RankConfig.BISHOP)
-#     team = TeamBuilder.build(TeamConfig.WHITE)
-#     captor = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, rank=motion, team=team)
+#     side = TeamBuilder.build(TeamConfig.WHITE)
+#     captor = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, rank=motion, side=side)
 #     print(captor)
 #
 # if __name__ == "__main__":

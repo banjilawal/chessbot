@@ -1,19 +1,19 @@
 import unittest
 from unittest.mock import patch
 
-from assurance.exception.validation.coord import CoordinateValidationException
-from unit.chess_test.geometry.coord.coord_test import CoordinateTest
+from assurance.exception.validation.coord import CoordValidationException
+from unit.chess_test.geometry.coord_test import CoordTest
 
 
 class PathTest(unittest):
 
 
-    @patch('assurance.validators.coord.CoordinateValidator.validate')
+    @patch('assurance.validators.coord.CoordValidator.validate')
     def test_invalid_u_coord_raises_error(self, mock_coord_validation):
         mock_coord_validation.return_value.is_success.return_value = False
-        mock_coord_validation.return_value.exception = CoordinateValidationException("Invalid ID")
+        mock_coord_validation.return_value.exception = CoordValidationException("Invalid ID")
 
-        v = CoordinateTest.valid_mock_coordinate()
+        v = CoordTest.valid_mock_coord()
 
 
 if __name__ == "__main__":

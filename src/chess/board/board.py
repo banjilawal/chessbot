@@ -1,10 +1,10 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
-from assurance.exception.validation.coord import CoordinateValidationException
-from assurance.validators.coord import CoordinateValidator
+from assurance.exception.validation.coord import CoordValidationException
+from assurance.validators.coord import CoordValidator
 from chess.board.square import Square
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
     from chess.token.model import Piece
@@ -18,7 +18,7 @@ class Board:
 
     """
     ChessBoard is responsible for managing the movement of ChessPieces on the chessboard. Squares and 
-    ChessPieces are data-holding objects referenced by a Coordinate. The class
+    ChessPieces are data-holding objects referenced by a Coord. The class
     - Maintain the relationship between a ChessPiece and Square.
     - Performs bounds checking.. ChessBoard does not know directly about a ChessPiece. All
     
@@ -66,7 +66,7 @@ class Board:
     #
     # def iterator(
     #     self,
-    #     index: Coordinate = Coordinate(0, 0),
+    #     index: Coord = Coord(0, 0),
     #     delta: Offset = Offset(delta_column=1, row_offset=1)
     #  ) -> SquareIterator:
     #
@@ -77,14 +77,14 @@ class Board:
     #
     #     Args:
     #         squares (List[List[Square]]): 2D list of Square objects to iterate through.
-    #         index: The starting coordinate for the iteration.
+    #         index: The starting coord for the iteration.
     #         vector: The direction of the iteration.
     #
     #     Returns:
     #         SquareIterator: An iterator instance for traversing the chessboard.
     #
     #     Raises:
-    #         CoordinateValidationException: If index fails at least one specification message
+    #         CoordValidationException: If index fails at least one specification message
     #         NullDeltaException: If vector is None.
     #     """
     #
@@ -101,25 +101,25 @@ class Board:
         return [square for row in self._squares for square in row if square.occupant is None]
 
 
-    def find_square_by_coordinate(self, coordinate: Coordinate) -> Optional[Square]:
+    def find_square_by_coord(self, coordinate: Coord) -> Optional[Square]:
         method = "ChessBoard.find_square_by_coordinate"
 
         """" 
-        Finds a square on the ChessBoard by its coordinate. If coordinate is neither not null
+        Finds a square on the ChessBoard by its coord. If coord is neither not null
         or its columns are rows are out of bounds 
         
         Args:
-            coordinate (Coordinate): The coordinate of the square to find.      
+            coord (Coord): The coord of the square to find.      
             
         Returns:    
             Optional[Square]: The Square object if found, otherwise None.
             
         Raises: 
-            CoordinateValidationException: If coordinate is fails any validators checks.
+            CoordValidationException: If coord is fails any validators checks.
         """
 
-        if not CoordinateValidator.validate(coordinate):
-            raise CoordinateValidationException(CoordinateValidationException.DEFAULT_MESSAGE)
+        if not CoordValidator.validate(coordinate):
+            raise CoordValidationException(CoordValidationException.DEFAULT_MESSAGE)
         return self._squares[coordinate.row][coordinate.column]
 
 
@@ -147,27 +147,27 @@ class Board:
         return None
 
 
-    def find_chess_piece(self, coordinate: Coordinate) -> Optional['Piece']:
+    def find_chess_piece(self, coordinate: Coord) -> Optional['Piece']:
         method = f"ChessBoard.find_chess_piece"
 
         """" 
-        Finds a ChessPiece if it exists at the Coordinate. 
+        Finds a ChessPiece if it exists at the Coord. 
 
         Args:
-            coordinate (Coordinate): The coordinate of the ChessPiece to find.      
+            coord (Coord): The coord of the ChessPiece to find.      
 
         Returns:    
-            Optional[ChessPiece] The ChessPiece if found at the coordinate otherwise None.
+            Optional[ChessPiece] The ChessPiece if found at the coord otherwise None.
 
         Raises: 
-            CoordinateValidationException: If coordinate is fails any validators checks.
+            CoordValidationException: If coord is fails any validators checks.
         """
 
-        return  self.find_square_by_coordinate(coordinate).occupant
+        return  self.find_square_by_coord(coordinate).occupant
 
 
 
-    def capture_square(self, chess_piece: 'Piece', destination: Coordinate):
+    def capture_square(self, chess_piece: 'Piece', destination: Coord):
         method = f"ChessBoard.capture_square"
 
         """
@@ -178,7 +178,7 @@ class Board:
         If the occupant is an enemy, it captures the occupant and finalizes the capture.
         Args:
             chess_piece (ChessPiece): The ChessPiece that is attempting to capture a square.
-            destination (Coordinate): The Coordinate of the destination square.
+            destination (Coord): The Coord of the destination square.
             
         Raises:
             Exception: If chess_piece is None, if chess_piece is not on the chessboard, if
@@ -192,11 +192,11 @@ class Board:
         #     )
         #
         # if not CoordinateSpecification.is_satisfied_by(destination):
-        #     raise CoordinateValidationException(
-        #         f"{method}: {CoordinateValidationException.default_message}"
+        #     raise CoordValidationException(
+        #         f"{method}: {CoordValidationException.default_message}"
         #     )
 
-        destination_square = self.find_square_by_coordinate(destination)
+        destination_square = self.find_square_by_coord(destination)
         target_occupant = destination_square.occupant
 
         if target_occupant is None:
@@ -252,8 +252,8 @@ class Board:
             
         """
 
-        self.find_square_by_coordinate(
-            prisoner.positions.current_coordinate
+        self.find_square_by_coord(
+            prisoner.positions.current_coord
         ).occupant = None
 
         prisoner.captor = jailer
@@ -284,26 +284,26 @@ class Board:
         # Remove the captor from their old square. I think its easier to understand
         # because there is less code than if I got the coords first to find the square
         # then deleted it.
-        # STORE the old coordinate FIRST before any modifications
-        old_coordinate = captor.positions.current_coordinate
-        old_square = self.find_square_by_coordinate(old_coordinate)
+        # STORE the old coord FIRST before any modifications
+        old_coordinate = captor.positions.current_coord
+        old_square = self.find_square_by_coord(old_coordinate)
 
         print(
             f"{method}: moving {captor.name} from "
-            f"{old_square.name}.coord=("f"{old_square.coordinate}) to "
-            f"{destination.name}=({destination.coordinate})"
+            f"{old_square.name}.coord=("f"{old_square.coord}) to "
+            f"{destination.name}=({destination.coord})"
         )
         # Clear the old square
         if old_coordinate:
-            old_square = self.find_square_by_coordinate(old_coordinate)
+            old_square = self.find_square_by_coord(old_coordinate)
             if old_square:
                 old_square.occupant = None
                 print(f"DEBUG: Cleared old square {old_square.name}")
-        self.find_square_by_coordinate(
-            captor.positions.current_coordinate
+        self.find_square_by_coord(
+            captor.positions.current_coord
         ).occupant = None
 
-        validated_destination = self.find_square_by_coordinate(destination.coordinate)
+        validated_destination = self.find_square_by_coord(destination.coord)
 
         # Set the Square side of the relationship
         validated_destination.occupant = captor
@@ -313,15 +313,15 @@ class Board:
 
 
         # Put the destination square's coordinates at the top of the captor's
-        # coordinate stack.
-        captor.positions.push_coordinate(validated_destination.coordinate)
+        # coord stack.
+        captor.positions.push_coord(validated_destination.coord)
 
         # Checks to make sure everything worked correctly.
         # If there are inconsistencies, throw exceptions.
         if destination.occupant is not captor:
             raise Exception(f"{method}: data inconsistency square occupant not updated")
-        if captor.positions.current_coordinate is not destination.coordinate:
-            raise Exception(f"{method}: chess_piece coordinate stack not updated")
+        if captor.positions.current_coord is not destination.coord:
+            raise Exception(f"{method}: chess_piece coord stack not updated")
 
         # Method showing success.
         print(

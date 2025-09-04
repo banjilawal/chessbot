@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 from chess.board.square import Square
 from chess.geometry.delta import Vector
 
@@ -9,7 +9,7 @@ from chess.geometry.delta import Vector
 class SquareIterator:
     _vector: Vector
     _squares: List[List[Square]]
-    _coord: Coordinate
+    _coord: Coord
     _col_vector: Vector
     _row_vector: Vector
     _square: Square
@@ -18,7 +18,7 @@ class SquareIterator:
     _current_row: int
     _current_column: int
 
-    def __init__(self, vector: Vector, squares: List[List[Square]], coord: Coordinate(0, 0)):
+    def __init__(self, vector: Vector, squares: List[List[Square]], coord: Coord(0, 0)):
         self._vector = vector
         self._squares = squares
         self._coord = coord
@@ -89,7 +89,7 @@ def main():
     vector = Vector(x=3, y=1)
     chess_board = ChessBoardBuilder.build(chess_board_id=1)
     squares = chess_board.squares
-    coord = chess_board.squares[0][0].coordinate
+    coord = chess_board.squares[0][0].coord
 
     square_iterator = SquareIterator(vector=vector, squares=squares, coord=coord)
 

@@ -1,36 +1,39 @@
 from typing import TYPE_CHECKING, List
 
 from chess.exception.null.record import NullRecordException
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
     from chess.token.model import Piece
 
 
 class Encounter:
-    _side_id: int
-    _piece_id: int
-    _piece_name: str
-    _rank_value: int
-    _location: Coordinate
+    _side_id:int
+    _piece_id:int
+    _piece_name:str
+    _rank_value:int
+    _rank_name:str
+    _location:Coord
 
 
-    def __init__(self, piece: 'Piece'):
+    def __init__(self, piece:'Piece'):
         self._piece_id = piece.id
         self._piece_name = piece.name
         self._rank_value = piece.rank.value
+        self._rank_name = piece.rank.name
         self._side_id = piece.side.id
-        self._location = piece.current_coordinate
+        self._location = piece.current_coord
 
 
     @property
-    def team_id(self):
-        return self.team_id
+    def side_id(self):
+        return self.side_id
 
 
     @property
-    def rank_id(self):
-        return self.team_id
+    def rank_value(self):
+        return self._rank_value
+    
 
 
     @property
@@ -44,12 +47,12 @@ class Encounter:
 
 
     @property
-    def piece_location(self) -> Coordinate:
+    def piece_location(self) -> Coord:
         return self._location
 
 
 class EncounterLog:
-    _items: List[Encounter]
+    _items:List[Encounter]
 
     def __init__(self):
         self._items = []
@@ -60,11 +63,11 @@ class EncounterLog:
         return self._items
 
 
-    def add_encounter(self, record: Encounter):
+    def add_encounter(self, record:Encounter):
         method = "RecordList.add_record"
 
         if record is None:
-            raise NullRecordException(f"{method}: {NullRecordException.DEFAULT_MESSAGE}")
+            raise NullRecordException(f"{method}:{NullRecordException.DEFAULT_MESSAGE}")
 
         if record not in self._items:
             self._items.append(record)

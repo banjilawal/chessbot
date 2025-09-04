@@ -11,12 +11,12 @@ from chess.geometry.delta import Vector
 from chess.geometry.scalar import Scalar
 
 
-class Coordinate:
+class Coord:
     _row: int
     _column: int
 
     """
-    Coordinate is a tuple of the row, and column indices of the 2x2 array which makes up a
+    Coord is a tuple of the row, and column indices of the 2x2 array which makes up a
     ChessBoard. All fields are immutable.
     
     Attributes:
@@ -25,7 +25,7 @@ class Coordinate:
     """
 
     def __init__(self, row: int, column: int):
-        method = "Coordinate.__init__()"
+        method = "Coord.__init__()"
 
         if row is None:
             raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
@@ -59,7 +59,7 @@ class Coordinate:
             return True
         if other is None:
             return False
-        if not isinstance(other, Coordinate):
+        if not isinstance(other, Coord):
             return False
         return self._row == other.row and self._column == other.column
 
@@ -69,7 +69,7 @@ class Coordinate:
 
 
     def __str__(self):
-        return f"Coordinate(row:{self._row} column:{self._column})"
+        return f"Coord(row:{self._row} column:{self._column})"
 
 
     def scalar_product(self, scalar: Scalar):
@@ -80,24 +80,24 @@ class Coordinate:
             raise validation.exception
 
         c = cast(validation.payload, Scalar)
-        return Coordinate(row=self._row * c.value, column = self._column * c.value)
+        return Coord(row=self._row * c.value, column =self._column * c.value)
 
 
-    def add_vector(self, vector: Vector) -> 'Coordinate':
+    def add_vector(self, vector: Vector) -> 'Coord':
         method = "add_vector"
 
         """
-        Returns the coordinate: Coordinate( self._row + vectory.y, self._column + vector.x)
+        Returns the coord: Coord( self._row + vectory.y, self._column + vector.x)
 
         Args:
-            vector (Vector): vector added to coordinate's x, y values
+            vector (Vector): vector added to coord's x, y values
         
         Return:
-            Coordinate
+            Coord
 
         Raise:
             VectorValidationException: if vector fails validators.
-            CoordinateValidationException: if 
+            CoordValidationException: if 
         """
 
         validation = VectorValidator.validate(vector)
@@ -105,5 +105,5 @@ class Coordinate:
             raise validation.exception
 
         v = cast(validation.payload, Vector)
-        return Coordinate(row = self._row + v.y, column = self._column + v.x)
+        return Coord(row =self._row + v.y, column =self._column + v.x)
 

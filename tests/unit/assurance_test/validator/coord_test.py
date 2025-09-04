@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import create_autospec
 
-from assurance.exception.validation.coord import CoordinateValidationException
-from assurance.validators.coord import CoordinateValidator
+from assurance.exception.validation.coord import CoordValidationException
+from assurance.validators.coord import CoordValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord import (
     RowBelowBoundsException,
@@ -11,102 +11,102 @@ from chess.exception.coord import (
     ColumnAboveBoundsException
 )
 from chess.exception.null.column import NullColumnException
-from chess.exception.null.coord import NullCoordinateException
+from chess.exception.null.coord import NullCoordException
 from chess.exception.null.row import NullRowException
-from chess.geometry.coord import Coordinate
-from unit.chess_test.geometry.coord.coord_test import CoordinateTest
+from chess.geometry.coord import Coord
 
 
-class CoordinateValidatorTest(unittest.TestCase):
+
+class CoordValidatorTest(unittest.TestCase):
 
 
-    def test_null_coordinate_raises_exception(self):
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(None)
+    def test_null_coord_raises_exception(self):
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(None)
 
-        self.assertIsInstance(ctx.exception.__cause__, NullCoordinateException)
+        self.assertIsInstance(ctx.exception.__cause__, NullCoordException)
 
 
-    def test_cast_to_coordinate_failure_raises_exception(self):
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(1)
+    def test_cast_to_coord_failure_raises_exception(self):
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(1)
 
         self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
 
     def test_null_row_raises_exception(self):
-        # Create a mock Coordinate with row = None
-        mock_coordinate = create_autospec(Coordinate, instance=True)
-        mock_coordinate.row = None
-        mock_coordinate.column = 0  # valid column
+        # Create a mock Coord with row = None
+        mock_coord = create_autospec(Coord, instance=True)
+        mock_coord.row = None
+        mock_coord.column = 0  # valid column
 
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(mock_coordinate)
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(mock_coord)
 
         self.assertIsInstance(ctx.exception.__cause__, NullRowException)
 
     def test_row_below_bound_raises_exception(self):
 
-        # Create a mock Coordinate with row = None
-        mock_coordinate = create_autospec(Coordinate, instance=True)
-        mock_coordinate.row = -1
-        mock_coordinate.column = 0  # valid column
+        # Create a mock Coord with row = None
+        mock_coord = create_autospec(Coord, instance=True)
+        mock_coord.row = -1
+        mock_coord.column = 0  # valid column
 
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(mock_coordinate)
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(mock_coord)
 
         self.assertIsInstance(ctx.exception.__cause__, RowBelowBoundsException)
 
     def test_row_above_or_equals_bound_raises_exception(self):
-        # Create a mock Coordinate with row = None
-        mock_coordinate = create_autospec(Coordinate, instance=True)
-        mock_coordinate.row = ROW_SIZE
-        mock_coordinate.column = 0  # valid column
+        # Create a mock Coord with row = None
+        mock_coord = create_autospec(Coord, instance=True)
+        mock_coord.row = ROW_SIZE
+        mock_coord.column = 0  # valid column
 
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(mock_coordinate)
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(mock_coord)
 
         self.assertIsInstance(ctx.exception.__cause__, RowAboveBoundsException)
 
 
     def test_null_column_raises_exception(self):
-        # Create a mock Coordinate with row = None
-        mock_coordinate = create_autospec(Coordinate, instance=True)
-        mock_coordinate.row = 0
-        mock_coordinate.column = None
+        # Create a mock Coord with row = None
+        mock_coord = create_autospec(Coord, instance=True)
+        mock_coord.row = 0
+        mock_coord.column = None
 
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(mock_coordinate)
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(mock_coord)
 
         self.assertIsInstance(ctx.exception.__cause__, NullColumnException)
 
     def test_column_below_bound_raises_exception(self):
-        # Create a mock Coordinate with row = None
-        mock_coordinate = create_autospec(Coordinate, instance=True)
-        mock_coordinate.row = 0
-        mock_coordinate.column = -1
+        # Create a mock Coord with row = None
+        mock_coord = create_autospec(Coord, instance=True)
+        mock_coord.row = 0
+        mock_coord.column = -1
 
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(mock_coordinate)
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(mock_coord)
 
         self.assertIsInstance(ctx.exception.__cause__, ColumnBelowBoundsException)
 
     def test_column_above_bound_raises_exception(self):
-        # Create a mock Coordinate with row = None
-        mock_coordinate = create_autospec(Coordinate, instance=True)
-        mock_coordinate.row = 0
-        mock_coordinate.column = COLUMN_SIZE
+        # Create a mock Coord with row = None
+        mock_coord = create_autospec(Coord, instance=True)
+        mock_coord.row = 0
+        mock_coord.column = COLUMN_SIZE
 
-        with self.assertRaises(CoordinateValidationException) as ctx:
-            CoordinateValidator.validate(mock_coordinate)
+        with self.assertRaises(CoordValidationException) as ctx:
+            CoordValidator.validate(mock_coord)
 
         self.assertIsInstance(ctx.exception.__cause__, ColumnAboveBoundsException)
 
 
     def test_validation_payload_equals_input_param(self):
-        mock_coordinate = CoordinateTest.valid_mock_coordinate(3, 4)
-        result = CoordinateValidator.validate(mock_coordinate)
-        self.assertEqual(result.payload, mock_coordinate)
+        mock_coord = CoordValidataorTest.valid_mock_coord(3, 4)
+        result = CoordValidator.validate(mock_coord)
+        self.assertEqual(result.payload, mock_coord)
 
 
 if __name__ == '__main__':

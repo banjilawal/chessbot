@@ -21,19 +21,19 @@ class VectorBuilder(Enum):
 
 
 # def main():
-#     build_result = CoordinateBuilder.build(3, 4)
+#     build_result = CoordBuilder.build(3, 4)
 #     if build_result.is_success():
-#         coordinate = build_result.payload
-#         print(f"Successfully built coordinate: {coordinate}")
+#         coord = build_result.payload
+#         print(f"Successfully built coord: {coord}")
 #     else:
-#         print(f"Failed to build coordinate: {build_result.exception}")
+#         print(f"Failed to build coord: {build_result.exception}")
 #
-#     build_result = CoordinateBuilder.build(-1,  4)
+#     build_result = CoordBuilder.build(-1,  4)
 #     if build_result.is_success():
-#         coordinate = build_result.payload
-#         print(f"Successfully built coordinate: {coordinate}")
+#         coord = build_result.payload
+#         print(f"Successfully built coord: {coord}")
 #     else:
-#         print(f"Failed to build coordinate: {build_result.exception}")
+#         print(f"Failed to build coord: {build_result.exception}")
 #
 # if __name__ == "__main__":
 #     main()

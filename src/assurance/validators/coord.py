@@ -1,6 +1,6 @@
 from typing import cast, Generic
 
-from assurance.exception.validation.coord import CoordinateValidationException
+from assurance.exception.validation.coord import CoordValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
@@ -9,58 +9,58 @@ from chess.exception.coord import (
     ColumnBelowBoundsException, ColumnAboveBoundsException
 )
 
-from chess.exception.null.coord import NullCoordinateException
+from chess.exception.null.coord import NullCoordException
 from chess.exception.null.column import NullColumnException
 from chess.exception.null.row import NullRowException
-from chess.geometry.coord import Coordinate
+from chess.geometry.coord import Coord
 
 
-class CoordinateValidator(Validator):
+class CoordValidator(Validator):
     """
-    Validates a Coordinate used in a domain module meets requirements:
+    Validates a Coord used in a domain module meets requirements:
         - Is not null.
         - Its fields meet the specifications for the domain.
-    Unmet requirements will raise a CoordinateValidationException
+    Unmet requirements will raise a CoordValidationException
 
-    For performance and single source of truth CoordinateValidator has:
+    For performance and single source of truth CoordValidator has:
         - No fields
         - only static method validate
     subclasses must implement validate.
     """
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Coordinate]:
-        entity = "Coordinate"
+    def validate(t: Generic[T]) -> Result[Coord]:
+        entity = "Coord"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
-        Validates a coordinate meets domain requirements:
+        Validates a coord meets domain requirements:
             - Not null
             - row is not null
             - column is not null
             - row is within the bounds of the chess chessboard
             - column is within the bounds of the chess chessboard
-        Any failed requirement raise an exception wrapped in a CoordinateValidationException
+        Any failed requirement raise an exception wrapped in a CoordValidationException
             
         Args
-            t (Coordinate): coordinate to validate
+            t (Coord): coord to validate
             
          Returns:
              Result[T]: A Result object containing the validated payload if all domain requirements 
-             are satisfied. CoordinateValidationException otherwise.
+             are satisfied. CoordValidationException otherwise.
         
         Raises:
-            TypeError: if t is not Coordinate
-            NullCoordinateException: if t is null   
+            TypeError: if t is not Coord
+            NullCoordException: if t is null   
 
-            RowBelowBoundsException: If coordinate.row < 0
-            RowAboveBoundsException: If coordinate.row >= ROW_SIZE
+            RowBelowBoundsException: If coord.row < 0
+            RowAboveBoundsException: If coord.row >= ROW_SIZE
                 
-            ColumnBelowBoundsException: If coordinate.column < 0
-            ColumnAboveBoundsException: If coordinate.column>= ROW_SIZE
+            ColumnBelowBoundsException: If coord.column < 0
+            ColumnAboveBoundsException: If coord.column>= ROW_SIZE
                 
-            CoordinateValidationException: Wraps any preceding exception     
+            CoordValidationException: Wraps any preceding exception     
         """
 
         try:
@@ -70,16 +70,16 @@ class CoordinateValidator(Validator):
 
             # If t is null no point continuing
             if t is None:
-                raise NullCoordinateException(
-                    f"{method} NullCoordinateException.DEFAULT_MESSAGE"
+                raise NullCoordException(
+                    f"{method} NullCoordException.DEFAULT_MESSAGE"
                 )
 
-            # If cannot cast from t to Coordinate need to break
-            if not isinstance(t, Coordinate):
-                raise TypeError(f"{method} Expected a Coordinate, got {type(t).__name__}")
+            # If cannot cast from t to Coord need to break
+            if not isinstance(t, Coord):
+                raise TypeError(f"{method} Expected a Coord, got {type(t).__name__}")
 
             # cast and run checks for the fields
-            coordinate = cast(Coordinate, t)
+            coordinate = cast(Coord, t)
 
             if coordinate.row is None:
                 raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
@@ -103,17 +103,17 @@ class CoordinateValidator(Validator):
             return Result(payload=coordinate)
 
         except (
-            TypeError,
-            NullCoordinateException,
+                TypeError,
+                NullCoordException,
 
-            NullRowException,
-            RowBelowBoundsException,
-            RowAboveBoundsException,
+                NullRowException,
+                RowBelowBoundsException,
+                RowAboveBoundsException,
 
-            NullColumnException,
-            ColumnBelowBoundsException,
-            ColumnAboveBoundsException
+                NullColumnException,
+                ColumnBelowBoundsException,
+                ColumnAboveBoundsException
         ) as e:
-            raise CoordinateValidationException(
-                f"{method}: {CoordinateValidationException.DEFAULT_MESSAGE}"
+            raise CoordValidationException(
+                f"{method}: {CoordValidationException.DEFAULT_MESSAGE}"
             ) from e

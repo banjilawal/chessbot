@@ -6,7 +6,7 @@ ROW_SIZE = 8
 COLUMN_SIZE = 8
 
 BOARD_DIMENSION = 8
-MIN_NAME_LENGTH = 3
+MIN_NAME_LENGTH = 2
 MAX_NAME_LENGTH = 40
 
 
@@ -28,11 +28,6 @@ class MousePlacementStatus(Enum):
     BLOCKED = auto()
     RELEASED = auto()
     INVALID = auto()
-
-
-
-
-
 
 
 CELL_PX = 80

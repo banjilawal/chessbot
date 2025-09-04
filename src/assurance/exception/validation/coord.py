@@ -1,7 +1,7 @@
 from assurance.exception.validation.base import ValidationException
 
 
-class CoordinateValidationException(ValidationException):
+class CoordValidationException(ValidationException):
     ERROR_CODE = "COORDINATE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Coordinate validation failed"
 

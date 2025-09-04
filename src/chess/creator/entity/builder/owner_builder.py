@@ -7,7 +7,7 @@ from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine
 from chess.competitor.model import CyberneticCompetitor
 from chess.competitor.model import HumanCompetitor
 from chess.competitor.model import Competitor
-from chess.randomize.name import RandomName
+from chess.randomize.competitor import RandomName
 
 
 class OwnerBuilder:
@@ -21,16 +21,16 @@ class OwnerBuilder:
             )
             return CyberneticCompetitor(
                 competitor_id=owner_id,
-                name=RandomName.cybernaut_name(),
+                name=RandomName.cybernaut(),
                 decision_engine=decision_engine
             )
         else:
-            return HumanCompetitor(competitor_id=owner_id, name=RandomName.person_name())
+            return HumanCompetitor(competitor_id=owner_id, name=RandomName.person())
 
 
 def main():
 
-    owner = OwnerBuilder.build(id_emitter.owner_id)
+    owner = OwnerBuilder.build(id_emitter.person_id)
     print(owner, owner.sides_played.size())
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chess.team.model import Side
+from chess.side.model import Side
 from chess.token.model import Piece
 from chess.token.repo import ChessPieceRepo
 

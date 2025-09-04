@@ -62,7 +62,7 @@ class DuplicatePushException(StackException):
 
 class PushingNullEntityException(StackException):
     ERROR_CODE = "PUSHING_NULL_STACK_ERROR"
-    DEFAULT_MESSAGE = "Cannot push a null coordinate onto the stack"
+    DEFAULT_MESSAGE = "Cannot push a null coord onto the stack"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

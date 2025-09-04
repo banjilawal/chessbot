@@ -1,12 +1,12 @@
 from typing import cast, Generic
 
-from assurance.exception.validation.coord import CoordinateValidationException
+from assurance.exception.validation.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.square import SquareValidationException
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
-from assurance.validators.coord import CoordinateValidator
+from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from chess.board.square import Square
@@ -27,7 +27,7 @@ class SquareValidator(Validator):
             - Not null
             - id fails validation
             - name fails validation
-            - coordinate fails validation
+            - coord fails validation
         If validators fails their exception will be encapsulated in a SquareValidationException
             
         Args
@@ -43,7 +43,7 @@ class SquareValidator(Validator):
             
             IdValidationException: if invalid id
             NameValidationException: if invalid name
-            CoordinateValidationException: if invalid coordinate
+            CoordValidationException: if invalid coord
 
             SquareValidationException: Wraps any preceding exceptions      
         """
@@ -71,20 +71,20 @@ class SquareValidator(Validator):
                 )
 
 
-            coord_result = CoordinateValidator.validate(square.coordinate)
+            coord_result = CoordValidator.validate(square.coord)
             if not coord_result.is_success():
-                raise CoordinateValidationException(
-                    f"{method}: {CoordinateValidationException.DEFAULT_MESSAGE}"
+                raise CoordValidationException(
+                    f"{method}: {CoordValidationException.DEFAULT_MESSAGE}"
                 )
 
             return Result(payload=square)
 
         except (
-            TypeError,
-            NullSquareException,
-            IdValidationException,
-            NameValidationException,
-            CoordinateValidationException
+                TypeError,
+                NullSquareException,
+                IdValidationException,
+                NameValidationException,
+                CoordValidationException
         ) as e:
             raise SquareValidationException(
                 f"{method}: {SquareValidationException.DEFAULT_MESSAGE}"

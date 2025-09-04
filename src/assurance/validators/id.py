@@ -23,7 +23,7 @@ class IdValidator(Validator):
         Any validators error will have be encapsulated in a IdValidationException
 
         Args
-            t (Coordinate): generic to be validated
+            t (Coord): generic to be validated
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
@@ -51,10 +51,8 @@ class IdValidator(Validator):
 
             return Result(payload=entity_id)
 
-        except(IdNullException, TypeError, NegativeIdException) as e:
-            raise IdValidationException(
-                f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
-            ) from e
+        except(TypeError, IdNullException, NegativeIdException) as e:
+            raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}") from e
 
 # def main():
 #     result = IdSpecification.is_satisfied_by(5)

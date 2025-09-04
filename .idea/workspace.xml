@@ -5,12 +5,115 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/competitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/creator/builder/piece.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/creator/builder/side.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/side_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/side/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/data-dictionary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/exception/validation/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/exception/validation/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/exception/validation/coord_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coord_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/side.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/side.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/team_hist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/team_hist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/board_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square_iterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square_iterator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/convert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/convert.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/competitor/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/competitor/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/competitor/side.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/competitor/side.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/config/owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/owner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/config/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/coord_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/competitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/scalar.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/scalar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/builder/vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/builder/vector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/emit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/emit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/arena_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/arena_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/chess_board_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/chess_board_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/chess_piece_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/chess_piece_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/owner_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/owner_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/rank_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/rank_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/team_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/team_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/factory/owner_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/factory/owner_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/factory/team_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/factory/team_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/service/chess_board_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/service/chess_board_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/service/obsololete_arena_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/service/obsololete_arena_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/service/team_service_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/service/team_service_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/driver/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/driver/driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/decision_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/decision/decision_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/scout/scout.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/scout/scout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/coord_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/dist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/dist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/null/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/null/coord_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null/coord_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/piece.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/exception/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/team/side_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/team/side_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/team_hist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/team_hist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/promotion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/promotion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/coordinate_pk_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/coordinate_pk_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/delta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/obsolete_board/obsolete_chess_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/obsolete_board/obsolete_chess_board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/path.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/path.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/geometry/uml_images/coordinate_pkg_class_relationship_diagram.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/uml_images/coordinate_pkg_class_relationship_diagram.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/randomize/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/randomize/competitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/bishop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/bishop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/castle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/castle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/knight.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/knight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/pawn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/walk_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/walk_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/promote.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/promote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/request/validators/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/request/validators/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team_pkg_info.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/team_pkg_info.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/encounter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/encounter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/square_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/square_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/board/square_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/board/square_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_stack_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord_stack_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord/euclid_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/euclid_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/path_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/path_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/multiplication_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/multiplication_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/scalar_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/scalar_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/vector_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/rank/bishop_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/rank/bishop_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/team/history_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/side/history_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/team/side_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/side/side_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/token/piece_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/token/piece_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +187,13 @@
     "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_id_validation_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_name_validation_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_payload_equals_valid_owner.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_cast_to_side_failure_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_null_side_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_failed_competitor_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_null_profile_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_competitor_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_id_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_payload_equals_valid_side.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_id_validation_raises_error.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_nme_validation_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_failed_coordinate_validation_raises_exception.executor": "Run",
@@ -141,10 +251,13 @@
     "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_constructed_if_params_are_valid.executor": "Run",
     "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_id_validation_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_name_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_invalid_destination_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_side_is_controller_current_side.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_duplicate_team_push_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_if_stack_Is_empty_then_current_team_is_null.executor": "Run",
@@ -159,6 +272,7 @@
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_updates_current_team.executor": "Run",
     "Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_constructed_if_params_are_valid.executor": "Run",
     "Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_failed_id_validation_raises_error.executor": "Run",
+    "Python tests.Python tests in bishop_test.py.executor": "Run",
     "Python tests.Python tests in cartesian_distance_test.py.executor": "Run",
     "Python tests.Python tests in competitor_test.py.executor": "Run",
     "Python tests.Python tests in coord_stack_test.py.executor": "Run",
@@ -183,9 +297,12 @@
     "Python.arena_builder.executor": "Run",
     "Python.board_controller_builder.executor": "Run",
     "Python.build_coordinate.executor": "Run",
+    "Python.castle.executor": "Run",
     "Python.chess_board_builder (1).executor": "Run",
     "Python.chess_board_builder.executor": "Run",
     "Python.chess_piece_builder.executor": "Run",
+    "Python.competitor.executor": "Run",
+    "Python.coord.executor": "Run",
     "Python.coord_stack.executor": "Run",
     "Python.coordinate_builder.executor": "Run",
     "Python.coordinate_specification.executor": "Run",
@@ -197,6 +314,7 @@
     "Python.find_missiing_package_init.executor": "Run",
     "Python.game.executor": "Run",
     "Python.id.executor": "Run",
+    "Python.model.executor": "Run",
     "Python.motion_controller_builder.executor": "Run",
     "Python.motion_controller_factory (1).executor": "Run",
     "Python.motion_controller_factory.executor": "Run",
@@ -204,6 +322,8 @@
     "Python.offset.executor": "Run",
     "Python.owner_builder.executor": "Run",
     "Python.owner_factory.executor": "Run",
+    "Python.path.executor": "Run",
+    "Python.piece.executor": "Run",
     "Python.placement.executor": "Run",
     "Python.quadrant.executor": "Run",
     "Python.rank.executor": "Run",
@@ -212,6 +332,8 @@
     "Python.run_game.executor": "Run",
     "Python.scalar.executor": "Run",
     "Python.side.executor": "Run",
+    "Python.square (1).executor": "Run",
+    "Python.square.executor": "Run",
     "Python.square_iterator.executor": "Run",
     "Python.square_repo_builder.executor": "Run",
     "Python.square_service_builder.executor": "Run",
@@ -226,7 +348,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/creator/builder",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -252,21 +374,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/creator/builder" />
+      <recent name="$PROJECT_DIR$/tests/unit/assurance_test/validator" />
       <recent name="$PROJECT_DIR$/src/chess/exception" />
       <recent name="$PROJECT_DIR$/src/chess/exception/null" />
-      <recent name="$PROJECT_DIR$/src/chess/creator/builder" />
       <recent name="$PROJECT_DIR$/tests/unit/chess_test/token" />
-      <recent name="$PROJECT_DIR$/tests/unit/chess_test/team" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/unit/chess_test/geometry" />
       <recent name="$PROJECT_DIR$/src/chess/token" />
       <recent name="$PROJECT_DIR$/src/chess/geometry" />
       <recent name="$PROJECT_DIR$/src/chess/token/model" />
       <recent name="$PROJECT_DIR$/src/chess/owner" />
-      <recent name="$PROJECT_DIR$/src/chess/team" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side">
+  <component name="RunManager" selected="Python.piece">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -282,6 +404,121 @@
       <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="castle" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/rank" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/castle.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/token" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/token/model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="piece" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/creator/builder" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/creator/builder/piece.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="square (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/board" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/board/square.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="square" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/creator/builder" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/creator/builder/square.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -306,109 +543,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.competitor.competitor_test.CompetitorTest" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.competitor.competitor_test.CompetitorTest&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests in side_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/unit/chess_test/team/side_test.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error" />
-        <item itemvalue="Python tests.Python tests in side_test.py" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error" />
+        <item itemvalue="Python.piece" />
+        <item itemvalue="Python.model" />
+        <item itemvalue="Python.square (1)" />
+        <item itemvalue="Python.square" />
+        <item itemvalue="Python.castle" />
       </list>
     </recent_temporary>
   </component>
@@ -464,6 +605,7 @@
       <workItem from="1756884575630" duration="7000" />
       <workItem from="1756905233694" duration="21797000" />
       <workItem from="1756934620753" duration="5119000" />
+      <workItem from="1756980828155" duration="16915000" />
     </task>
     <servers />
   </component>
@@ -485,45 +627,53 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/chessbot$game.coverage" NAME="game Coverage Results" MODIFIED="1756925814283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />
-    <SUITE FILE_PATH="coverage/chessbot$id.coverage" NAME="id Coverage Results" MODIFIED="1756182204086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_specification.coverage" NAME="coordinate_stack_specification Coverage Results" MODIFIED="1756175864375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$owner_factory.coverage" NAME="owner_factory Coverage Results" MODIFIED="1754856094798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
+    <SUITE FILE_PATH="coverage/chessbot$game.coverage" NAME="game Coverage Results" MODIFIED="1756925814283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />
+    <SUITE FILE_PATH="coverage/chessbot$square__1_.coverage" NAME="square (1) Coverage Results" MODIFIED="1756996071141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/board" />
+    <SUITE FILE_PATH="coverage/chessbot$validation_exception.coverage" NAME="validation_exception Coverage Results" MODIFIED="1756118963737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/exception/validation" />
+    <SUITE FILE_PATH="coverage/chessbot$motion_controller_builder.coverage" NAME="motion_controller_builder Coverage Results" MODIFIED="1754426174289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$name.coverage" NAME="name Coverage Results" MODIFIED="1756305816296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/exception/validation" />
+    <SUITE FILE_PATH="coverage/chessbot$rank_factory.coverage" NAME="rank_factory Coverage Results" MODIFIED="1754840763918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
+    <SUITE FILE_PATH="coverage/chessbot$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1755129037473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/chessbot$motion_controller_factory__1_.coverage" NAME="motion_controller_factory (1) Coverage Results" MODIFIED="1754421232075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
+    <SUITE FILE_PATH="coverage/chessbot$distance_magnitude_builder.coverage" NAME="distance_magnitude_builder Coverage Results" MODIFIED="1756122228457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$board_controller_builder.coverage" NAME="board_controller_builder Coverage Results" MODIFIED="1754426532490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/service" />
+    <SUITE FILE_PATH="coverage/chessbot$piece.coverage" NAME="piece Coverage Results" MODIFIED="1756998676440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$driver.coverage" NAME="driver Coverage Results" MODIFIED="1755033742497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/driver" />
+    <SUITE FILE_PATH="coverage/chessbot$build_coordinate.coverage" NAME="coord Coverage Results" MODIFIED="1756181819091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$chess_board_builder__1_.coverage" NAME="chess_board_builder (1) Coverage Results" MODIFIED="1754782312388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/service" />
+    <SUITE FILE_PATH="coverage/chessbot$coord.coverage" NAME="coord Coverage Results" MODIFIED="1756982322285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$castle.coverage" NAME="castle Coverage Results" MODIFIED="1756993854980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/rank" />
+    <SUITE FILE_PATH="coverage/chessbot$scalar.coverage" NAME="scalar Coverage Results" MODIFIED="1756234443080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
+    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756980846154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chessbot$team.coverage" NAME="team Coverage Results" MODIFIED="1756857674436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />
+    <SUITE FILE_PATH="coverage/chessbot$side.coverage" NAME="side Coverage Results" MODIFIED="1756983970595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$path.coverage" NAME="path Coverage Results" MODIFIED="1756971927927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry" />
+    <SUITE FILE_PATH="coverage/chessbot$chess_piece_builder.coverage" NAME="chess_piece_builder Coverage Results" MODIFIED="1754426158452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$offset.coverage" NAME="offset Coverage Results" MODIFIED="1756212974974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry/coordinate" />
+    <SUITE FILE_PATH="coverage/chessbot$team_factory.coverage" NAME="team_factory Coverage Results" MODIFIED="1754842536324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
+    <SUITE FILE_PATH="coverage/chessbot$id.coverage" NAME="id Coverage Results" MODIFIED="1756182204086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$vector.coverage" NAME="vector Coverage Results" MODIFIED="1756234334595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$placement.coverage" NAME="placement Coverage Results" MODIFIED="1756945561943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />
     <SUITE FILE_PATH="coverage/chessbot$team_factory__1_.coverage" NAME="team_factory (1) Coverage Results" MODIFIED="1754422569684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack.coverage" NAME="coordinate_stack Coverage Results" MODIFIED="1756161091714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry/coordinate" />
     <SUITE FILE_PATH="coverage/chessbot$find_missiing_package_init.coverage" NAME="find_missiing_package_init Coverage Results" MODIFIED="1756061729275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chessbot$motion_controller_factory.coverage" NAME="motion_controller_factory Coverage Results" MODIFIED="1754426205076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
-    <SUITE FILE_PATH="coverage/chessbot$validation_exception.coverage" NAME="validation_exception Coverage Results" MODIFIED="1756118963737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/exception/validation" />
-    <SUITE FILE_PATH="coverage/chessbot$motion_controller_builder.coverage" NAME="motion_controller_builder Coverage Results" MODIFIED="1754426174289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$name.coverage" NAME="name Coverage Results" MODIFIED="1756305816296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/exception/validation" />
+    <SUITE FILE_PATH="coverage/chessbot$model.coverage" NAME="model Coverage Results" MODIFIED="1756997198179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/token" />
     <SUITE FILE_PATH="coverage/chessbot$arena_builder.coverage" NAME="arena_builder Coverage Results" MODIFIED="1754907179134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$rank_factory.coverage" NAME="rank_factory Coverage Results" MODIFIED="1754840763918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
     <SUITE FILE_PATH="coverage/chessbot$square_repo_builder.coverage" NAME="square_repo_builder Coverage Results" MODIFIED="1754373924517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/factory/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1755129037473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/chessbot$motion_controller_factory__1_.coverage" NAME="motion_controller_factory (1) Coverage Results" MODIFIED="1754421232075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
+    <SUITE FILE_PATH="coverage/chessbot$square.coverage" NAME="square Coverage Results" MODIFIED="1756995759244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
     <SUITE FILE_PATH="coverage/chessbot$rank.coverage" NAME="rank Coverage Results" MODIFIED="1756945582709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />
     <SUITE FILE_PATH="coverage/chessbot$quadrant.coverage" NAME="quadrant Coverage Results" MODIFIED="1756943365873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry" />
     <SUITE FILE_PATH="coverage/chessbot$rank_builder.coverage" NAME="rank_builder Coverage Results" MODIFIED="1754792035045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$distance_magnitude_builder.coverage" NAME="distance_magnitude_builder Coverage Results" MODIFIED="1756122228457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$board_controller_builder.coverage" NAME="board_controller_builder Coverage Results" MODIFIED="1754426532490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/service" />
-    <SUITE FILE_PATH="coverage/chessbot$driver.coverage" NAME="driver Coverage Results" MODIFIED="1755033742497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/driver" />
-    <SUITE FILE_PATH="coverage/chessbot$build_coordinate.coverage" NAME="coord Coverage Results" MODIFIED="1756181819091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$chess_board_builder__1_.coverage" NAME="chess_board_builder (1) Coverage Results" MODIFIED="1754782312388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/service" />
+    <SUITE FILE_PATH="coverage/chessbot$competitor.coverage" NAME="competitor Coverage Results" MODIFIED="1756982199645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
     <SUITE FILE_PATH="coverage/chessbot$square_service_builder.coverage" NAME="square_service_builder Coverage Results" MODIFIED="1754426503062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/service" />
-    <SUITE FILE_PATH="coverage/chessbot$scalar.coverage" NAME="scalar Coverage Results" MODIFIED="1756234443080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$owner_builder.coverage" NAME="owner_builder Coverage Results" MODIFIED="1754830988425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$chess_board_builder.coverage" NAME="chess_board_builder Coverage Results" MODIFIED="1754836419242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_builder.coverage" NAME="coord_stack Coverage Results" MODIFIED="1756181898853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756954833393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/chessbot$team.coverage" NAME="team Coverage Results" MODIFIED="1756857674436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />
-    <SUITE FILE_PATH="coverage/chessbot$side.coverage" NAME="side Coverage Results" MODIFIED="1756942537506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validators" />
-    <SUITE FILE_PATH="coverage/chessbot$coordinate_specification.coverage" NAME="coordinate_specification Coverage Results" MODIFIED="1756164098058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$square_iterator.coverage" NAME="square_iterator Coverage Results" MODIFIED="1756301098162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/board" />
-    <SUITE FILE_PATH="coverage/chessbot$chess_piece_builder.coverage" NAME="chess_piece_builder Coverage Results" MODIFIED="1754426158452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$offset.coverage" NAME="offset Coverage Results" MODIFIED="1756212974974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry/coordinate" />
+    <SUITE FILE_PATH="coverage/chessbot$coordinate_specification.coverage" NAME="coordinate_specification Coverage Results" MODIFIED="1756164098058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$team_builder.coverage" NAME="team_builder Coverage Results" MODIFIED="1754840550112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$team_factory.coverage" NAME="team_factory Coverage Results" MODIFIED="1754842536324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
   </component>
 </project>

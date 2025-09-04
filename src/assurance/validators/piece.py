@@ -1,16 +1,24 @@
 from typing import cast, Generic
 
-from assurance.exception.validation.coord import CoordinateValidationException
+from assurance.exception.validation.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from assurance.exception.validation.square import SquareValidationException
+from assurance.exception.validation.piece import PieceValidationException
+
 from assurance.result.base import Result
 from assurance.validators.base import Validator, T
-from assurance.validators.coord import CoordinateValidator
+from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-from chess.board.square import Square
+from chess.creator.builder.competitor import CompetitorBuilder
+from chess.creator.builder.side import SideBuilder
+from chess.creator.emit import id_emitter
+
+from chess.exception.null.piece import NullPieceException
 from chess.exception.null.square import NullSquareException
+from chess.randomize.competitor import RandomName
+from chess.token.model import Piece
+
 
 class PieceValidator(Validator):
 
@@ -25,7 +33,7 @@ class PieceValidator(Validator):
             - Not null
             - id fails validation
             - name fails validation
-            - coordinate fails validation
+            - coord fails validation
         If validators fails their exception will be encapsulated in a SquareValidationException
 
         Args
@@ -41,48 +49,46 @@ class PieceValidator(Validator):
 
             IdValidationException: if invalid id
             NameValidationException: if invalid name
-            CoordinateValidationException: if invalid coordinate
+            CoordValidationException: if invalid coord
 
             SquareValidationException: Wraps any preceding exceptions      
         """
         try:
             if t is None:
-                raise NullSquareException(
-                    f"{method} {NullSquareException.DEFAULT_MESSAGE}"
+                raise NullPieceException(
+                    f"{method} {NullPieceException.DEFAULT_MESSAGE}"
                 )
 
-            if not isinstance(t, Square):
+            if not isinstance(t, Piece):
                 raise TypeError(f"{method} Expected a Square, got {type(t).__name__}")
 
-            square = cast(Square, t)
+            piece= cast(Piece, t)
 
-            id_result = IdValidator.validate(square.id)
+            id_result = IdValidator.validate(piece.id)
             if not id_result.is_success():
-                raise IdValidationException(
-                    f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
-                )
+                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-            name_result = NameValidator.validate(square.name)
+            name_result = NameValidator.validate(piece.name)
             if not name_result.is_success():
-                raise NameValidationException(
-                    f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
-                )
+                raise NameValidationException(f"{method}: {NameValidationException.DEFAULT_MESSAGE}")
 
-            coord_result = CoordinateValidator.validate(square.coordinate)
-            if not coord_result.is_success():
-                raise CoordinateValidationException(
-                    f"{method}: {CoordinateValidationException.DEFAULT_MESSAGE}"
-                )
+            # coord_validation = CoordValidator.validate(piece.current_position)
+            # if not coord_validation.is_success():
+            #     raise CoordValidationException(f"{method}: {CoordValidationException.DEFAULT_MESSAGE}")
 
-            return Result(payload=square)
+            return Result(payload=piece)
 
         except (
-            TypeError,
-            NullSquareException,
-            IdValidationException,
-            NameValidationException,
-            CoordinateValidationException
+                TypeError,
+                NullPieceException,
+                IdValidationException,
+                NameValidationException,
+                # CoordValidationException
         ) as e:
-            raise SquareValidationException(
-                f"{method}: {SquareValidationException.DEFAULT_MESSAGE}"
-            ) from e
+            raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}") from e
+
+
+
+def main():
+    person = CompetitorBuilder.build(competitor_id=id_emitter.person_id, name=RandomName.person())
+    side = SideBuilder.build()

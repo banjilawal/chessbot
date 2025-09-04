@@ -1,17 +1,17 @@
 from typing import cast
 
-from assurance.validators.coord import CoordinateValidator
+from assurance.validators.coord import CoordValidator
 from assurance.validators.vector import VectorValidator
-from chess.creator.builder.coord import CoordinateBuilder
-from chess.geometry.coord import Coordinate
+from chess.creator.builder.coord import CoordBuilder
+from chess.geometry.coord import Coord
 from chess.geometry.delta import Vector
 
 
 class Convert:
 
     @staticmethod
-    def vector_to_coordinate(vector: Vector) -> Coordinate:
-        """Converts a vector to a coordinate."""
+    def vector_to_coordinate(vector: Vector) -> Coord:
+        """Converts a vector to a coord."""
 
         validation_result = VectorValidator.validate(vector)
         if not validation_result.is_success:
@@ -19,20 +19,20 @@ class Convert:
 
         v = cast(validation_result.payload, Vector)
 
-        return CoordinateBuilder.build(row=v.y, column=v.x).payload
+        return CoordBuilder.build(row=v.y, column=v.x).payload
 
 
     @staticmethod
-    def coordinate_to_vector(coordinate: Coordinate) -> Vector:
-        """Converts a coordinate to a vector."""
+    def coordinate_to_vector(coordinate: Coord) -> Vector:
+        """Converts a coord to a vector."""
 
-        validation_result = CoordinateValidator.validate(coordinate)
+        validation_result = CoordValidator.validate(coordinate)
         if not validation_result.is_success:
             raise validation_result.exception
 
-        c = cast(validation_result.payload, Coordinate)
+        c = cast(validation_result.payload, Coord)
 
-        return CoordinateBuilder.build(row=v.y, column=v.x).payload
+        return CoordBuilder.build(row=v.y, column=v.x).payload
 
 
 

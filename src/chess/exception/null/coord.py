@@ -1,7 +1,7 @@
 from chess.exception.null.base import NullException
 
 
-class NullCoordinateException(NullException):
+class NullCoordException(NullException):
     ERROR_CODE = "NULL_COORDINATE_ERROR"
     DEFAULT_MESSAGE = f"Coordinate cannot be null"
 

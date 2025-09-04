@@ -1,7 +1,7 @@
 from chess.board.board import Board
 from chess.competitor.model import CyberneticCompetitor
 from chess.competitor.model import Competitor
-from chess.team.move import Move
+from chess.side.move import Move
 
 
 class Arena:

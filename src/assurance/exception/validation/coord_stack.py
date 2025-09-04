@@ -1,7 +1,7 @@
 from assurance.exception.validation.base import ValidationException
 
 
-class CoordinateStackValidationException(ValidationException):
+class CoordStackValidationException(ValidationException):
     ERROR_CODE = "COORDINATE_STACK_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"CoordinateStack validation failed"
 

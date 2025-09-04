@@ -10,12 +10,14 @@ from chess.request.base import Request
 
 
 class RequestOutcome(ABC):
+    _id:int
     _request: Request
     _event: Optional[Event]
     _exception: Optional[Exception]
 
     def __init__(
         self,
+        outcome_id:int,
         request: Request,
         event: Optional[Event] = None,
         exception: Optional[Exception] = None
@@ -35,9 +37,15 @@ class RequestOutcome(ABC):
                f"{method}: {ConflictingEventStateException.DEFAULT_MESSAGE}"
             )
 
+        self._id = outcome_id
         self._request = request
         self._event = event
         self._exception = exception
+
+
+    @property
+    def id(self):
+        return self._id
 
 
     @property

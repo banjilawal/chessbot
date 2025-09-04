@@ -8,7 +8,7 @@ from assurance.validators.name import NameValidator
 from chess.competitor.side import SideRecord
 
 if TYPE_CHECKING:
-    from chess.team.model import Side
+    from chess.side.model import Side
     from chess.engine.decision.decision_engine import DecisionEngine
 
 

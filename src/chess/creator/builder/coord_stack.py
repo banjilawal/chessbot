@@ -2,7 +2,7 @@ from enum import Enum
 
 from assurance.result.base import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validators.coord_stack import CoordinateStackValidator
+from assurance.validators.coord_stack import CoordStackValidator
 from chess.token.model.coord import CoordinateStack
 
 
@@ -12,7 +12,7 @@ class CoordinateStackBuilder(Enum):
     def build() -> Result[CoordinateStack]:
         try:
             candidate = CoordinateStack()
-            result = CoordinateStackValidator.validate(candidate)
+            result = CoordStackValidator.validate(candidate)
 
             ThrowHelper.throw_if_invalid(CoordinateStackBuilder, result)
             return result

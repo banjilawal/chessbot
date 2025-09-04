@@ -1,7 +1,7 @@
-from chess.exception.coord import CoordinateException
+from chess.exception.coord import CoordException
 
 
-class NegativeDistanceMetric(CoordinateException):
+class NegativeDistanceMetric(CoordException):
     ERROR_CODE = "NEGATIVE_DISTANCE_METRIC_ERROR"
     DEFAULT_MESSAGE = f"Unexpected negative distance metric error"
 

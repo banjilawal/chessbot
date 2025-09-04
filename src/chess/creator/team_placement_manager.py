@@ -22,7 +22,7 @@ class TeamPlacementManager:
         chess_pieces.extend(arena.black_owner.team.pieces)
 
         for chess_piece in chess_pieces:
-                # .black_owner.team.chess_pieces):
+                # .black_owner.side.chess_pieces):
             # print("placing", captor.name)
             for placement in PlacementChart:
                 # print("checking placement", placement.value[0])
@@ -32,7 +32,7 @@ class TeamPlacementManager:
                     square = arena.chess_board.find_square_by_name(square_name)
                     # print("found square", square)
                     square.occupant = chess_piece
-                    chess_piece.positions.push_coordinate(square.coordinate)
+                    chess_piece.positions.push_coord(square.coord)
                     # print(square)
 
 
