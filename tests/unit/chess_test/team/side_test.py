@@ -3,14 +3,15 @@ from unittest.mock import create_autospec, patch
 
 from assurance.exception.validation.competitor import CompetitorValidationException
 from assurance.exception.validation.id import IdValidationException
+from chess.competitor.model import Competitor
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
+from chess.exception.stack import BrokenRelationshipException
 from chess.team.model import Side
 from unit.chess_test.competitor.competitor_test import CompetitorTest
 
 
 class SideTest(unittest.TestCase):
-
 
     @staticmethod
     def valid_mock_side(side_id=1, side_profile=SideProfile.BLACK):
@@ -23,7 +24,6 @@ class SideTest(unittest.TestCase):
         mock_side.controlller = CompetitorTest.valid_mock_competitor()
 
         return mock_side
-
 
 
     @patch('assurance.validators.competitor.CompetitorValidator.validate')
@@ -75,17 +75,43 @@ class SideTest(unittest.TestCase):
             Side(team_id=1, controller=mock_competitor, profile=None)
 
 
+    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.id.IdValidator.validate')
+    def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
+        mock_id_validation.return_value.is_success.return_value = True
+        mock_competitor_validation.return_value.is_success.return_value = True
+
+        # Fake sides_played collection that doesn't actually add the side
+        class FakeSidesPlayed:
+            def __init__(self):
+                self.items = []
+            def push_side(self, side):
+                pass  # do nothing
+
+        class FakeController:
+            def __init__(self):
+                self.sides_played = FakeSidesPlayed()
+
+        fake_controller = FakeController()
+
+        with self.assertRaises(BrokenRelationshipException):
+            Side(team_id=1, controller=fake_controller, profile=SideProfile.BLACK)
+
 
     @patch('assurance.validators.competitor.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = True
-        mock_competitor_validation.return_value.is_success.return_value = True
+        mock_id_validation.return_value.payload = 1
 
-        mock_competitor = CompetitorTest.valid_mock_competitor()
+
+        competitor = Competitor(competitor_id=1, name="competitor")
+        mock_competitor_validation.return_value.is_success.return_value = True
+        mock_competitor_validation.return_value.payload = competitor
 
         for profile in SideProfile:
-            Side(team_id=1, controller=mock_competitor, profile=profile)
+            side = Side(team_id=1, controller=competitor, profile=profile)
+            assert side in competitor.sides_played.items
 
 
 if __name__ == "__main__":

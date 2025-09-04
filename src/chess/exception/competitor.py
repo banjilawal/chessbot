@@ -1,0 +1,36 @@
+from chess.exception.base import ChessException
+
+"""
+Super class for Piece exceptions
+"""
+class CompetitorException(ChessException):
+    """
+    Super class for exceptions raised by Piece objects
+    """
+
+    ERROR_CODE = "COMPETITOR_ERROR"
+    DEFAULT_MESSAGE = "Competitor raised an exception"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
+
+
+class SideRecordException(ChessException):
+    """
+    Super class for exceptions raised by Piece objects
+    """
+
+    ERROR_CODE = "COMPETITOR_ERROR"
+    DEFAULT_MESSAGE = "Competitor raised an exception"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"

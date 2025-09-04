@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/path_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit/chess_test/rank/bishop_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/exception/competitor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/competitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/competitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/side.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/side.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/config/placement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/placement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/null/owner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null/competitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/geometry/path.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/geometry/path.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/competitor/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/competitor/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/owner_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/owner_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/scalar_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/scalar_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/vector_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector/vector_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/owner/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/competitor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/owner/owner_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/competitor/competitor_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/team/team_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/team/side_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/token/piece_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/token/piece_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/team/side_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/team/side_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,8 +141,10 @@
     "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_constructed_if_params_are_valid.executor": "Run",
     "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_id_validation_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_name_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_duplicate_team_push_raises_exception.executor": "Run",
     "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_if_stack_Is_empty_then_current_team_is_null.executor": "Run",
@@ -235,7 +226,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/exception/null",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/exception",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -262,9 +253,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/exception" />
+      <recent name="$PROJECT_DIR$/src/chess/exception/null" />
       <recent name="$PROJECT_DIR$/src/chess/creator/builder" />
       <recent name="$PROJECT_DIR$/tests/unit/chess_test/token" />
-      <recent name="$PROJECT_DIR$/src/chess/exception/null" />
       <recent name="$PROJECT_DIR$/tests/unit/chess_test/team" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -331,6 +322,22 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -347,7 +354,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -359,7 +366,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error&quot;" />
+      <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -377,22 +384,6 @@
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests in competitor_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/unit/chess_test/competitor/competitor_test.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests in side_test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -414,10 +405,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error" />
         <item itemvalue="Python tests.Python tests in side_test.py" />
-        <item itemvalue="Python tests.Python tests in competitor_test.py" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error" />
+        <item itemvalue="Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error" />
       </list>
     </recent_temporary>
   </component>
@@ -525,7 +516,7 @@
     <SUITE FILE_PATH="coverage/chessbot$owner_builder.coverage" NAME="owner_builder Coverage Results" MODIFIED="1754830988425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$chess_board_builder.coverage" NAME="chess_board_builder Coverage Results" MODIFIED="1754836419242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_builder.coverage" NAME="coord_stack Coverage Results" MODIFIED="1756181898853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/builder" />
-    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756951222058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chessbot$.coverage" NAME=" Coverage Results" MODIFIED="1756954833393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chessbot$team.coverage" NAME="team Coverage Results" MODIFIED="1756857674436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />
     <SUITE FILE_PATH="coverage/chessbot$side.coverage" NAME="side Coverage Results" MODIFIED="1756942537506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validators" />
     <SUITE FILE_PATH="coverage/chessbot$coordinate_specification.coverage" NAME="coordinate_specification Coverage Results" MODIFIED="1756164098058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />

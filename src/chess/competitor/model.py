@@ -36,6 +36,10 @@ class Competitor(ABC):
 
 
     @property
+    def sides_played(self) -> SideRecord:
+        return self._sides_played
+
+    @property
     def id(self) -> int:
         return self._id
 

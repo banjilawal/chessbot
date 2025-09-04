@@ -4,6 +4,7 @@ from assurance.validators.id import IdValidator
 from assurance.validators.competitor import CompetitorValidator
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
+from chess.exception.stack import BrokenRelationshipException
 
 if TYPE_CHECKING:
     from chess.competitor.model import Competitor
@@ -34,15 +35,17 @@ class Side:
         from chess.competitor.model import Competitor
         controller = cast(Competitor, competitor_validation.payload)
 
+        self._id = team_id
+        self._controller = controller
+        self._profile = profile
+        self._pieces = []
 
 
         if self not in controller.sides_played.items:
             controller.sides_played.push_side(self)
 
-        self._id = team_id
-        self._controller = controller
-        self._profile = profile
-        self._pieces = []
+        if self not in controller.sides_played.items:
+            raise BrokenRelationshipException(f"{method}: {BrokenRelationshipException.DEFAULT_MESSAGE}")
 
 
     @property
@@ -119,11 +122,11 @@ class Side:
             return False
         if not isinstance(other, Side):
             return False
-        return self.id == other.id
+        return self._id == other.id
 
 
     def __hash__(self):
-        return hash(self.id)
+        return hash(self._id)
 
 
     def __str__(self):
