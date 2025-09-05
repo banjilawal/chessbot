@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/null/text.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/side.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/exception/text.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/exception/vector/scalar.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/vector/scalar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/bishop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/bishop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/competitor/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/competitor/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/side/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/side/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model.py" afterDir="false" />
     </list>
@@ -495,7 +489,7 @@
       <workItem from="1756980828155" duration="17735000" />
       <workItem from="1757015062943" duration="13160000" />
       <workItem from="1757034919692" duration="1499000" />
-      <workItem from="1757049928159" duration="13577000" />
+      <workItem from="1757049928159" duration="20558000" />
     </task>
     <servers />
   </component>

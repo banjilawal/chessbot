@@ -1,11 +1,17 @@
 from abc import ABC
 from typing import Optional, cast, TYPE_CHECKING
 
+from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 
 
 from chess.competitor.side import SideRecord
+from chess.exception.null.piece import NullPieceException
+from chess.exception.piece import PieceCoordNullException, PrisonerEscapeException, AlreadyAtDestinationException
+from chess.exception.side import ConflictingSideException, AddPieceException
+from chess.geometry.coord import Coord
+from chess.token.model import Piece, CombatantPiece
 
 if TYPE_CHECKING:
     from chess.side.model import Side
@@ -87,6 +93,45 @@ class Competitor(ABC):
             f"{total_games_str}"
             f"]"
         )
+
+
+
+    def move_piece(self, piece_name:str, destination:Coord):
+        method = "Competitor.move_piece"
+
+        try:
+            validation = NameValidator.validate(piece_name)
+            if not validation.is_success():
+                raise validation.exception
+
+            result = self._current_side.find_piece_by_name(piece_name)
+            if not result.is_success():
+                raise result.exception
+
+            piece = cast(Piece, result.payload)
+
+            # if piece is None:
+            #     raise PieceNotFoundException(
+            #         f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at index {array_index}"
+            #     )
+
+            if piece.current_position is None:
+                raise PieceCoordNullException(f"{method}: {PieceCoordNullException.DEFAULT_MESSAGE}")
+
+            if isinstance(piece, CombatantPiece) and piece.captor is not None:
+                raise PrisonerEscapeException(f"{method}: Cannot move {piece.name} it has been captured.")
+
+            validation = CoordValidator.validate(destination)
+            if not validation.is_success():
+                raise validation.exception
+
+            if piece.current_position == destination:
+                raise AlreadyAtDestinationException(f"{method}: {AlreadyAtDestinationException.DEFAULT_MESSAGE}")
+
+            piece.rank.walk(piece=piece, destination=destination)
+
+        except (NullPieceException, ConflictingSideException) as e:
+            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
 
 
 class HumanCompetitor(Competitor):

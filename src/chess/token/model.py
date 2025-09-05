@@ -32,6 +32,7 @@ class Piece(ABC):
     _side: 'Side'
     _rank: 'Rank'
     _captor: 'Piece'
+    _jersey: int
     _current_position: Coord
     # _status: MobilityStatus
     _encounters: EncounterLog
@@ -65,7 +66,7 @@ class Piece(ABC):
         self._name = cast(str, name_validation.payload)
         self._rank = rank #cast(rank_validation.payload, Rank)
 
-
+        self._jersey = len(side.pieces)
         self._side = side
 
         # self._status = MobilityStatus.FREE
@@ -75,7 +76,7 @@ class Piece(ABC):
         self._current_position = self._positions.current_coord
 
         if self not in side.pieces:
-            side.pieces.append(self)
+            side.add_piece(self)
 
     @property
     def id(self) -> int:
@@ -85,6 +86,11 @@ class Piece(ABC):
     @property
     def name(self) -> str:
         return self._name
+
+
+    @property
+    def jersey(self) -> int:
+        return self._jersey
 
 
     @property

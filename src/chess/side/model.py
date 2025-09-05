@@ -1,3 +1,4 @@
+from logging import exception
 from typing import List, TYPE_CHECKING, cast, Sequence, Optional
 
 from assurance.exception.validation.coord import CoordValidationException
@@ -7,6 +8,7 @@ from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.competitor import CompetitorValidator
 from chess.config.game import SideProfile
+from chess.exception.null.number import NullNumberException
 from chess.exception.null.piece import NullPieceException
 from chess.exception.null.side_profile import NullSideProfileException
 from chess.exception.null.text import NullStringException
@@ -27,6 +29,7 @@ class Side:
     _controller:'Competitor'
     _profile:SideProfile
     _pieces:list['Piece']
+    _hostages:list['Piece']
 
     def __init__(self, side_id:int, controller:'Competitor', profile:SideProfile):
         method = "Team.__init__"
@@ -103,6 +106,7 @@ class Side:
 
         for piece in self._pieces:
 
+
             from chess.token.model import Piece, CombatantPiece
             if isinstance(piece, CombatantPiece):
                 combatant = cast(piece, CombatantPiece)
@@ -112,33 +116,37 @@ class Side:
         return matches
 
 
-    def find_piece_by_index(self, array_index:int) -> Result['Piece']:
-        method = "Side.find_piece_by_array_index"
+    def find_piece_by_jersey(self, jersey:int) -> Result:
+        method = "Side.find_piece_by_jersey"
 
         """
-        Find a piece at the array index. 
+        Find a piece with the jersey. 
 
         Args:
-           array_index (int): There are 16 chess pieces per side. array_index_range = [0,15]
+           jersey (int): There are 16 chess pieces per side. jersey_range = [0,15]
 
         Returns:
-            Piece: If the piece at the array index
+            Result: If the piece with jersey is found 
 
         Raises:
-             ArrayIndexOutOfBoundsException
+             NullNumberException
+             PieceNotFountException
         """
         try:
-            if array_index < 0 or array_index >= len(self._pieces):
-                raise IndexError(f"{method}: {array_index} is outside the range [0, {len(self._pieces)}]")
+            if jersey is None:
+                raise NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
 
-            result = self._pieces[array_index]
-            if result is None:
-                raise PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at {array_index}")
+            for piece in self._pieces:
+                if piece.jersey == jersey:
+                    return Result(payload=piece)
+            return Result(
+                exception=PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE}")
+            )
 
-            return Result(payload=result)
+        except (NullStringException, BlankStringException, PieceNotFoundException) as e:
+            raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
 
-        except IndexError as e:
-            raise SideSearchException(f"{method}: {SideSearchException.DEFAULT_MESSAGE}")
+
 
 
 
@@ -172,7 +180,7 @@ class Side:
             raise SideSearchException(f"{method}: {SideSearchException.DEFAULT_MESSAGE}")
 
 
-    def find_piece_by_name(self, name:str) -> Optional['Piece']:
+    def find_piece_by_name(self, name:str) -> Result:
         method = "Side.find_piece_by_name"
 
         """
@@ -198,14 +206,16 @@ class Side:
 
             for piece in self._pieces:
                 if piece.name.upper() == name.upper():
-                    return piece
-            return None
+                    return Result(payload=piece)
+            return Result(
+                exception=PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE}")
+            )
 
-        except (NullStringException, BlankStringException) as e:
+        except (NullStringException, BlankStringException, PieceNotFoundException) as e:
             raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
 
 
-    def find_piece_coord(self, coord:Coord) -> Optional['Piece']:
+    def find_piece_coord(self, coord:Coord) -> Result:
         method = "Side.find_piece_by_coord"
 
         """
@@ -229,9 +239,11 @@ class Side:
 
             for piece in self._pieces:
                 if piece.current_position == coord:
-                    return piece
-            return None
-
+                    return Result(payload=piece)
+            return Result(
+                exception=PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE}")
+            )
+        
         except CoordValidationException as e:
             raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
 
@@ -264,39 +276,6 @@ class Side:
         except (NullPieceException, ConflictingSideException) as e:
             raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
 
-
-    def move_piece(self, array_index:int, destination:Coord):
-        method = "Side.move_piece"
-
-        try:
-            result = self.find_piece_by_index(array_index)
-            if not result.is_success():
-                raise result.exception
-
-            piece = cast(Piece, result.payload)
-
-            # if piece is None:
-            #     raise PieceNotFoundException(
-            #         f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at index {array_index}"
-            #     )
-
-            if piece.current_position is None:
-                raise PieceCoordNullException(f"{method}: {PieceCoordNullException.DEFAULT_MESSAGE}")
-
-            if isinstance(piece, CombatantPiece) and piece.captor is not None:
-                raise PrisonerEscapeException(f"{method}: Cannot move {piece.name} it has been captured.")
-
-            validation = CoordValidator.validate(destination)
-            if not validation.is_success():
-                raise validation.exception
-
-            if piece.current_position == destination:
-                raise AlreadyAtDestinationException(f"{method}: {AlreadyAtDestinationException.DEFAULT_MESSAGE}")
-
-            piece.rank.walk(piece=piece, destination=destination)
-
-        except (NullPieceException, ConflictingSideException) as e:
-            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
 
 
     def __eq__(self, other):
