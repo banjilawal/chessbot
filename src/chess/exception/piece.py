@@ -19,14 +19,30 @@ class PieceException(ChessException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class PieceCoordException(PieceException):
+class PieceCoordNullException(PieceException):
     """
-    PieceCoordException gets thrown if a piece with an empty coordinate stack attempts to move.
+    PieceCoordNullException gets thrown if a piece with an empty coordinate stack attempts to move.
     If piece.positions.is_empty == True then the piece is not on the board so it cannot be moved.
     """
 
     ERROR_CODE = "PIECE_NO_COORDINATE_ERROR"
-    DEFAULT_MESSAGE = "Piece is not on the board. it has no coord"
+    DEFAULT_MESSAGE = "Piece is not on the board. Cannot move a piece with len(piece.positions) == 0"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
+
+class AlreadyAtDestinationException(PieceException):
+    """
+    If a piece's destination is its current position raise AlreadyAtDestination.
+    """
+
+    ERROR_CODE = "ALREADY_AT_DESTINATION_ERROR"
+    DEFAULT_MESSAGE = "Piece is already at the destination."
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -39,11 +55,11 @@ class PieceCoordException(PieceException):
 class PrisonerEscapeException(PieceException):
     """
     Combatant pieces with attacker field not null cannot be moved. Attempts to move
-    a captured combatant will raise this exception. This only applies to combatant pieces
+    a captured combatant raises PrisonerEscapeException. This only applies to combatant pieces
     """
 
-    ERROR_CODE = "CAPTURED_PIECE_ESCAPE_ERROR"
-    DEFAULT_MESSAGE = "A captured piece cannot move"
+    ERROR_CODE = "MOVING_CAPTURED_PIECE_ERROR"
+    DEFAULT_MESSAGE = "Cannot move a captured piece"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -53,15 +69,14 @@ class PrisonerEscapeException(PieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-
 class PrisonerReleaseException(PieceException):
     """
     Combatant.captor field can only be set once. PrisonerReleaseException is thrown when an attempt to change
     combatant_piece.captor != null to combatant_piece.captor = None
     """
 
-    ERROR_CODE = "CAPTURED_PIECE_RELEASE_ERROR"
-    DEFAULT_MESSAGE = "Cannot change CombatantPiece.captor from not null to null"
+    ERROR_CODE = "RELEASING_CAPTURED_PIECE_ERROR"
+    DEFAULT_MESSAGE = "Cannot change CombatantPiece.captor to null once it has been set to an enemy piece"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

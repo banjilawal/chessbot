@@ -12,7 +12,7 @@ from assurance.validators.side import SideValidator
 from chess.creator.builder.side import SideBuilder
 from chess.creator.emit import id_emitter
 from chess.exception.null.piece import NullPieceException
-from chess.exception.piece import MappingSelfException, PrisonerReleaseException, NullCaptorException
+from chess.exception.piece import PrisonerReleaseException, NullCaptorException
 from chess.geometry.coord import Coord
 
 from chess.side.model import Side
@@ -24,9 +24,6 @@ if TYPE_CHECKING:
     from chess.rank.base import Rank
     # from assurance.validators.rank import RankValidator
 
-    """"
-    
-    """
 
 
 class Piece(ABC):

@@ -1,10 +1,21 @@
 from typing import List, TYPE_CHECKING, cast, Sequence, Optional
 
+from assurance.exception.validation.coord import CoordValidationException
+from assurance.exception.validation.id import IdValidationException
+from assurance.result.base import Result
+from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.competitor import CompetitorValidator
 from chess.config.game import SideProfile
+from chess.exception.null.piece import NullPieceException
 from chess.exception.null.side_profile import NullSideProfileException
+from chess.exception.null.text import NullStringException
+from chess.exception.piece import PrisonerEscapeException, PieceCoordNullException, AlreadyAtDestinationException
+from chess.exception.search import PieceNotFoundException
+from chess.exception.side import SideSearchException, SideException, ConflictingSideException, AddPieceException
 from chess.exception.stack import BrokenRelationshipException
+from chess.exception.text import BlankStringException
+from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
     from chess.competitor.model import Competitor
@@ -21,7 +32,7 @@ class Side:
         method = "Team.__init__"
 
         if profile is None:
-            raise NullSideProfileException(f"{method}:{NullSideProfileException.DEFAULT_MESSAGE}")
+            raise NullSideProfileException(f"{method}: {NullSideProfileException.DEFAULT_MESSAGE}")
 
         id_validation = IdValidator.validate(side_id)
         if not id_validation.is_success():
@@ -64,13 +75,13 @@ class Side:
 
 
     @property
-    def pieces(self) -> list['Piece']:
+    def pieces(self) -> Sequence['Piece']:
         """
         Returns a read-only view of the stack's contents. The returned sequence is safe to
         iterate and index, but mutating it will not affect the original stack.
         """
 
-        return self._pieces
+        return self._pieces.copy()
 
 
     def free_pieces(self) -> List['Piece']:
@@ -101,18 +112,191 @@ class Side:
         return matches
 
 
-    def find_piece(self, piece_id:int) -> Optional['Piece']:
-        for piece in self._pieces:
-            if piece.id == piece_id:
-                return piece
-        return None
+    def find_piece_by_index(self, array_index:int) -> Result['Piece']:
+        method = "Side.find_piece_by_array_index"
+
+        """
+        Find a piece at the array index. 
+
+        Args:
+           array_index (int): There are 16 chess pieces per side. array_index_range = [0,15]
+
+        Returns:
+            Piece: If the piece at the array index
+
+        Raises:
+             ArrayIndexOutOfBoundsException
+        """
+        try:
+            if array_index < 0 or array_index >= len(self._pieces):
+                raise IndexError(f"{method}: {array_index} is outside the range [0, {len(self._pieces)}]")
+
+            result = self._pieces[array_index]
+            if result is None:
+                raise PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at {array_index}")
+
+            return Result(payload=result)
+
+        except IndexError as e:
+            raise SideSearchException(f"{method}: {SideSearchException.DEFAULT_MESSAGE}")
 
 
-    def find_piece_name(self, name):
-        for piece in self._pieces:
-            if name.upper() == piece.name.upper():
-                return piece
-        return None
+
+    def find_piece_by_id(self, piece_id:int) -> Optional['Piece']:
+        method = "Side.find_piece_by_id"
+
+        """
+        Find a piece whose id matches
+
+        Args:
+           id (int): a valid id
+
+        Returns:
+            Piece: If a piece's id matches the target
+            None: If no matches are found.
+
+        Raises:
+             IdValidationException 
+        """
+        try:
+            validation = IdValidator.validate(id)
+            if not validation.is_success():
+                raise validation.exception
+
+            for piece in self._pieces:
+                if piece.id == piece_id:
+                    return piece
+            return None
+
+        except IdValidationException as e:
+            raise SideSearchException(f"{method}: {SideSearchException.DEFAULT_MESSAGE}")
+
+
+    def find_piece_by_name(self, name:str) -> Optional['Piece']:
+        method = "Side.find_piece_by_name"
+
+        """
+        Find a piece with the name
+
+        Args:
+           name (str): a nonnull string
+
+        Returns:
+            Piece: If a piece's current_position matches coord
+            None: If no matches are found.
+
+        Raises:
+             NullStringException: if name is null.
+             BlankStringException: if name is a empty string
+        """
+        try:
+            if name is None:
+                raise NullStringException(f"{method}: {NullStringException.DEFAULT_MESSAGE}")
+
+            if len(name) == 0 or not name.strip():
+                raise BlankStringException(f"{method}: {BlankStringException.DEFAULT_MESSAGE}")
+
+            for piece in self._pieces:
+                if piece.name.upper() == name.upper():
+                    return piece
+            return None
+
+        except (NullStringException, BlankStringException) as e:
+            raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
+
+
+    def find_piece_coord(self, coord:Coord) -> Optional['Piece']:
+        method = "Side.find_piece_by_coord"
+
+        """
+        Find a piece whose current position matches coord. If none of 
+        the side's pieces are at the coordinate returns None.
+        
+        Args:
+            coord (Coord): validated Coord used for search
+            
+        Returns:
+            Piece: If a piece's current_position matches coord
+            None: If no matches are found.
+            
+        Raises:
+             CoordValidationException: if coord fails sanity checks.
+        """
+        try:
+            validation = CoordValidator.validate(coord)
+            if not validation.is_success():
+                raise validation.exception
+
+            for piece in self._pieces:
+                if piece.current_position == coord:
+                    return piece
+            return None
+
+        except CoordValidationException as e:
+            raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
+
+
+    def add_piece(self, piece: Piece):
+        method = "Side.add_piece"
+
+        """
+        A newly constructed piece uses Side.add_piece to add itself to the side. self.pieces returns
+        a read-only copy of the list. This is the only mutator that can directly access the array.
+
+        Args:
+            piece (Piece): validated piece added to the side
+
+        Returns:
+
+        Raises:
+             ConflictingSideException: if piece.side does not match the side instance
+        """
+        try:
+            if piece is None:
+                raise NullPieceException(f"{method} cannot add a null piece to the side")
+
+            if not piece.side == self:
+                raise ConflictingSideException(f"{method}: {ConflictingSideException.DEFAULT_MESSAGE}")
+
+            if piece not in self._pieces:
+                  self._pieces.append(piece)
+
+        except (NullPieceException, ConflictingSideException) as e:
+            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
+
+
+    def move_piece(self, array_index:int, destination:Coord):
+        method = "Side.move_piece"
+
+        try:
+            result = self.find_piece_by_index(array_index)
+            if not result.is_success():
+                raise result.exception
+
+            piece = cast(Piece, result.payload)
+
+            # if piece is None:
+            #     raise PieceNotFoundException(
+            #         f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at index {array_index}"
+            #     )
+
+            if piece.current_position is None:
+                raise PieceCoordNullException(f"{method}: {PieceCoordNullException.DEFAULT_MESSAGE}")
+
+            if isinstance(piece, CombatantPiece) and piece.captor is not None:
+                raise PrisonerEscapeException(f"{method}: Cannot move {piece.name} it has been captured.")
+
+            validation = CoordValidator.validate(destination)
+            if not validation.is_success():
+                raise validation.exception
+
+            if piece.current_position == destination:
+                raise AlreadyAtDestinationException(f"{method}: {AlreadyAtDestinationException.DEFAULT_MESSAGE}")
+
+            piece.rank.walk(piece=piece, destination=destination)
+
+        except (NullPieceException, ConflictingSideException) as e:
+            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
 
 
     def __eq__(self, other):
