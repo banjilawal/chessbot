@@ -4,6 +4,8 @@ from typing import List, Optional, TYPE_CHECKING
 from assurance.exception.validation.coord import CoordValidationException
 from assurance.validators.coord import CoordValidator
 from chess.board.square import Square
+from chess.exception.null.piece import NullPieceException
+from chess.exception.search import PieceNotFoundException
 from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
@@ -14,6 +16,7 @@ if TYPE_CHECKING:
 
 class Board:
     _id: int
+    _pieces: [Piece]
     _squares: List[List[Square]]
 
     """
@@ -24,12 +27,13 @@ class Board:
     
 
     Attributes:
-        _idw (int): id of ChessBoard.
+        _id (int): id of ChessBoard.
+        _pieces (List[Piece]): pieces on the board
         _squares (List[List[Square]]): 8x8 array of Square objects representing the chess chessboard.
     """
 
     def __init__(self, board_id: int, squares: List[List[Square]]):
-        method = "ChessBoard.__init__()"
+        method = f"{self.__class__.__name__}.__ini__"
 
         """
         Creates a Board instance
@@ -46,6 +50,8 @@ class Board:
         self._id = board_id
         self._squares = squares
 
+        self._pieces = []
+
 
     @property
     def id(self) -> int:
@@ -55,6 +61,11 @@ class Board:
     @property
     def squares(self) -> List[List[Square]]:
         return self._squares
+
+
+    @property
+    def pieces(self) -> [Piece]:
+        return self._pieces
 
 
     def __eq__(self, other):
@@ -91,18 +102,18 @@ class Board:
     #     return SquareIterator(self._squares, index, delta)
 
     def occupied_squares(self) -> List[Square]:
-        method = "ChessBoard.occupied_squares"
+        method = f"{self.__class__.__name__}.occupied_squares"
 
         return [square for row in self._squares for square in row if square.occupant is not None]
 
     def empty_squares(self) -> List[Square]:
-        method = "ChessBoard.empty_squares"
+        method = f"{self.__class__.__name__}.empty_squares"
 
         return [square for row in self._squares for square in row if square.occupant is None]
 
 
     def find_square_by_coord(self, coordinate: Coord) -> Optional[Square]:
-        method = "ChessBoard.find_square_by_coordinate"
+        method = f"{self.__class__.__name__}find_square_by_coordinate"
 
         """" 
         Finds a square on the ChessBoard by its coord. If coord is neither not null
@@ -124,6 +135,7 @@ class Board:
 
 
     def find_square_by_name(self, name: str) -> Optional[Square]:
+        method = f"{self.__class__.__name__}.find_square_by_name"
         if name is None:
             raise Exception(f"Cannot find a square with a null name")
 
@@ -134,6 +146,8 @@ class Board:
         return None
 
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
+        method = f"{self.__class__.__name__}.find_square_by_id"
+
         if square_id is None:
             raise Exception(f"Cannot find a square with a null id")
 
@@ -145,6 +159,23 @@ class Board:
                 if current_square.id == square_id:
                     return current_square
         return None
+
+    def remove_captured_piece(self, piece: Piece):
+        method = f"{self.__class__.__name__}.remove_captured_piece"
+        try:
+            if piece is None:
+                raise NullPieceException(f"{method}: {NullPieceException.DEFAULT_MESSAGE}")
+
+            if piece not in self._pieces:
+                raise PieceNotFoundException
+
+            if
+
+        except (
+            NullPieceException,
+            PieceNotFoundException
+        ) as e:
+            raise e
 
 
     def find_chess_piece(self, coordinate: Coord) -> Optional['Piece']:

@@ -3,9 +3,9 @@ from typing import cast
 from chess.board.board import Board
 from chess.board.square import Square
 from chess.common.permit import Event
-from chess.exception.event import AttackPermissionInconsistencyException, \
-    InconsistentMarkObstructionException
-from chess.exception.piece import AttackingKingException, AttackingNullPieceException
+from chess.exception.event import AttackEventInconsistencyException, \
+    CorruptRecordEventException
+from chess.exception.null.piece import NullPieceException
 from chess.exception.side import RemoveCombatantException
 from chess.flow.base import Flow
 from chess.request.occupy import OccupationRequest
@@ -30,13 +30,13 @@ class OccupationFlow(Flow):
 
         enemy = None
 
-        permission = validation.event
+        event = validation.event
 
-        if permission == Event.MARK_OBSTRUCTION:
-            OccupationFlow._obstruction_stream(piece, target_square)
+        if event == Event.RECORD_ENCOUNTER:
+            OccupationFlow.record_stream(piece, target_square)
             return
 
-        if permission == Event.ATTACK:
+        if event == Event.ATTACK:
             enemy = OccupationFlow._attack_stream(piece, target_square)
 
         target_square.occupant = piece
@@ -44,49 +44,63 @@ class OccupationFlow(Flow):
 
 
     @staticmethod
-    def _obstruction_stream(piece: Piece, blocked_square: Square):
-        method = "OccupationFlow._obstruction_stream"
-        blocking_occupant = blocked_square.occupant
+    def record_stream(piece: Piece, blocked_square: Square):
+        method = "OccupationFlow._encounter_stream"
+        try:
+            blocking_occupant = blocked_square.occupant
 
-        if blocking_occupant is None or not piece.is_enemy(blocking_occupant):
-            raise InconsistentMarkObstructionException(
-                f"{method}: "
-                f"{InconsistentMarkObstructionException.DEFAULT_MESSAGE}"
+            if blocking_occupant is None:
+                raise NullPieceException(
+                    f"{method}: {NullPieceException.DEFAULT_MESSAGE}"
+                )
+
+            if piece.is_enemy(blocking_occupant):
+                raise CorruptRecordEventException(
+                    f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}"
+                )
+
+            piece.encounters.add_encounter(Encounter(blocking_occupant))
+        except (NullPieceException, ) as e:
+            raise CorruptRecordEventException(
+                f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}"
             )
-        piece.encounters.add_encounter(Encounter(blocking_occupant))
-
 
     @staticmethod
     def _attack_stream(piece: Piece, target_square: Square) -> CombatantPiece:
         method = "OccupationFlow._attack_stream"
 
         try:
-            prisoner = target_square.occupant
-
-            if prisoner is None:
+            hostage_candidate = target_square.occupant
+            if hostage_candidate is None:
                 raise AttackingNullPieceException(
                     f"{method}: {AttackingNullPieceException.DEFAULT_MESSAGE}"
                 )
 
-            if not isinstance(prisoner, CombatantPiece):
+            if not isinstance(hostage_candidate, CombatantPiece):
                 raise AttackingKingException(
                     f"{method}: {AttackingKingException.DEFAULT_MESSAGE}"
                 )
 
-            prisoner.captor = piece
-            enemy_side = prisoner.side
-            result = enemy_side.remove_captured_combatant(prisoner)
-            if not result.is_success():
-                raise result.exception
+            hostage_candidate.captor = piece
+            enemy_side = hostage_candidate.side
+            removal_result = enemy_side.remove_captured_combatant(hostage_candidate)
+            if not removal_result.is_success():
+                raise removal_result.exception
 
-            hostage = cast(CombatantPiece, result.payload)
+            hostage = cast(CombatantPiece, removal_result.payload)
             piece.side.add_hostage(hostage)
+
+            if hostag
 
             return hostage
 
-        except (AttackingNullPieceException, AttackingKingException, RemoveCombatantException) as e:
-            raise AttackPermissionInconsistencyException(
-                f"{method}: {AttackPermissionInconsistencyException.DEFAULT_MESSAGE}"
+        except (
+            AttackingNullPieceException,
+            AttackingKingException,
+            RemoveCombatantException
+        ) as e:
+            raise AttackEventInconsistencyException(
+                f"{method}: {AttackEventInconsistencyException.DEFAULT_MESSAGE}"
             ) from e
 
 

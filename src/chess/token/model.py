@@ -12,7 +12,7 @@ from assurance.validators.side import SideValidator
 from chess.creator.builder.side import SideBuilder
 from chess.creator.emit import id_emitter
 from chess.exception.null.piece import NullPieceException
-from chess.exception.piece import PrisonerReleaseException, NullCaptorException
+from chess.exception.piece import PrisonerReleaseException, SetCaptorNullException
 from chess.geometry.coord import Coord
 
 from chess.side.model import Side
@@ -137,10 +137,16 @@ class Piece(ABC):
         return hash(self._id)
 
 
-    def is_enemy(self, piece: 'Piece'):
-        if piece is None:
-            raise Exception("Cannot run is_enemy() state on a null captor.")
-        return self._side != piece.side
+    def is_enemy(self, piece: 'Piece') -> bool:
+        method = f"{self.__class__.__name__}.is_enemy"
+        try:
+            if piece is None:
+                raise NullPieceException(f"{method}: {NullPieceException.DEFAULT_MESSAGE}")
+
+            return self._side != piece.side
+        except NullPieceException as e:
+            raise e
+
 
 
     def record_encounter(self, piece: 'Piece'):
@@ -198,7 +204,7 @@ class CombatantPiece(Piece):
         method = "Captor.@setter.captor"
 
         if captor is None:
-            raise NullCaptorException(f"{method}: {NullCaptorException.DEFAULT_MESSAGE}")
+            raise SetCaptorNullException(f"{method}: {SetCaptorNullException.DEFAULT_MESSAGE}")
 
         if self._captor is not None:
             raise PrisonerReleaseException(f"{method}: {PrisonerReleaseException.DEFAULT_MESSAGE}")

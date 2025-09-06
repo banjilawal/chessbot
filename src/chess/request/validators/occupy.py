@@ -97,7 +97,7 @@ class OccupationRequestValidator(RequestValidator):
                 return RequestOutcome(
                     outcome_id=outcome_id,
                     request=occupation_request,
-                    event=Event.MARK_OBSTRUCTION
+                    event=Event.RECORD_ENCOUNTER
                 )
                 # raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
 

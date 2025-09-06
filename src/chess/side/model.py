@@ -295,7 +295,9 @@ class Side:
             NullPieceException,
             ConflictingSideException
         ) as e:
-            raise RemoveCombatantException(f"{method:}: {RemoveCombatantException.DEFAULT_MESSAGE}") from e
+            raise RemoveCombatantException(
+                f"{method:}: {RemoveCombatantException.DEFAULT_MESSAGE}"
+            ) from e
 
 
     def add_hostage(self, enemy: CombatantPiece):

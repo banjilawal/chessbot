@@ -55,3 +55,22 @@ class NullKingPiece(NullPieceException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
+class NullHostagePiece(NullPieceException):
+    """
+    A method will raise NullHostageException when it's expecting either:
+        - A processed and validated hostage.
+        - A hostage candidate
+    If the method gets null instead of either of those it raises a NullHostageException
+    """
+
+    ERROR_CODE = "NULL_HOSTAGE_ERROR"
+    DEFAULT_MESSAGE = f"Hostage cannot be null"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
+
