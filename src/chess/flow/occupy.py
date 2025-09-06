@@ -6,6 +6,7 @@ from chess.common.permit import Event
 from chess.exception.event import AttackPermissionInconsistencyException, \
     InconsistentMarkObstructionException
 from chess.exception.piece import AttackingKingException, AttackingNullPieceException
+from chess.exception.side import RemoveCombatantException
 from chess.flow.base import Flow
 from chess.request.occupy import OccupationRequest
 from chess.request.validators.occupy import OccupationRequestValidator
@@ -73,9 +74,17 @@ class OccupationFlow(Flow):
                 )
 
             prisoner.captor = piece
-            return prisoner
+            enemy_side = prisoner.side
+            result = enemy_side.remove_captured_combatant(prisoner)
+            if not result.is_success():
+                raise result.exception
 
-        except (AttackingNullPieceException, AttackingKingException) as e:
+            hostage = cast(CombatantPiece, result.payload)
+            piece.side.add_hostage(hostage)
+
+            return hostage
+
+        except (AttackingNullPieceException, AttackingKingException, RemoveCombatantException) as e:
             raise AttackPermissionInconsistencyException(
                 f"{method}: {AttackPermissionInconsistencyException.DEFAULT_MESSAGE}"
             ) from e
