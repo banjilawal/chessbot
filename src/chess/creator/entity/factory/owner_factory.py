@@ -67,7 +67,7 @@ class OwnerFactory:
 def main():
     owners = OwnerFactory.assemble()
     for owner in owners:
-        print(owner, ",", len(owner.team.pieces))
+        print(owner, ",", len(owner.team.roster))
 
     # for side in teams:
     #     for captor in side.chess_pieces:

@@ -30,7 +30,7 @@ class ArenaBuilder:
 def main():
     arena = ArenaBuilder.build()
     print(arena.chess_board)
-    for c in arena.white_owner.team.pieces, arena.black_owner.team.pieces:
+    for c in arena.white_owner.team.roster, arena.black_owner.team.roster:
         for p in c:
             print(p, " current coord", p.positions.current_coord(), p.positions.size())
     #

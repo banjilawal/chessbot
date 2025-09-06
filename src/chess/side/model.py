@@ -7,6 +7,7 @@ from assurance.result.base import Result
 from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.competitor import CompetitorValidator
+from assurance.validators.piece import PieceValidator
 from chess.config.game import SideProfile
 from chess.exception.null.number import NullNumberException
 from chess.exception.null.piece import NullPieceException
@@ -14,7 +15,8 @@ from chess.exception.null.side_profile import NullSideProfileException
 from chess.exception.null.text import NullStringException
 from chess.exception.piece import PrisonerEscapeException, PieceCoordNullException, AlreadyAtDestinationException
 from chess.exception.search import PieceNotFoundException
-from chess.exception.side import SideSearchException, SideException, ConflictingSideException, AddPieceException
+from chess.exception.side import SideSearchException, SideException, ConflictingSideException, AddPieceException, \
+    RemoveCombatantException
 from chess.exception.stack import BrokenRelationshipException
 from chess.exception.text import BlankStringException
 from chess.geometry.coord import Coord
@@ -28,7 +30,7 @@ class Side:
     _id:int
     _controller:'Competitor'
     _profile:SideProfile
-    _pieces:list['Piece']
+    _roster:list['Piece']
     _hostages:list['Piece']
 
     def __init__(self, side_id:int, controller:'Competitor', profile:SideProfile):
@@ -40,6 +42,7 @@ class Side:
         id_validation = IdValidator.validate(side_id)
         if not id_validation.is_success():
             raise id_validation.exception
+
         side_id = cast(int, id_validation.payload)
 
         competitor_validation = CompetitorValidator.validate(controller)
@@ -52,7 +55,7 @@ class Side:
         self._id = side_id
         self._controller = controller
         self._profile = profile
-        self._pieces = []
+        self._roster = []
 
 
         if self not in controller.sides_played.items:
@@ -78,45 +81,26 @@ class Side:
 
 
     @property
-    def pieces(self) -> Sequence['Piece']:
+    def roster(self) -> Sequence['Piece']:
         """
-        Returns a read-only view of the stack's contents. The returned sequence is safe to
-        iterate and index, but mutating it will not affect the original stack.
+        Returns a read-only view of the side's roster. The returned sequence is safe to
+        iterate and index, but mutating it will not affect the original roster.
         """
 
-        return self._pieces.copy()
+        return self._roster.copy()
 
 
-    def free_pieces(self) -> List['Piece']:
-        matches:List['Piece'] = []
+    @property
+    def hostages(self) -> Sequence['Piece']:
+        """
+        Returns a read-only view of the side's rostages. The returned sequence is safe to
+        iterate and index, but mutating it will not affect the original hostage list.
+        """
 
-        for piece in self._pieces:
-
-            from chess.token.model import Piece, CombatantPiece
-            if isinstance(piece, CombatantPiece):
-                combatant = cast(piece, CombatantPiece)
-                if combatant.captor in None:
-                    matches.append(combatant)
-
-        return matches
+        return self._hostages.copy()
 
 
-    def captured_pieces(self) -> List['Piece']:
-        matches:List['Piece'] = []
-
-        for piece in self._pieces:
-
-
-            from chess.token.model import Piece, CombatantPiece
-            if isinstance(piece, CombatantPiece):
-                combatant = cast(piece, CombatantPiece)
-                if combatant.captor is not None:
-                    matches.append(combatant)
-
-        return matches
-
-
-    def find_piece_by_jersey(self, jersey:int) -> Result:
+    def find_piece_by_jersey(self, jersey:int) -> Result['Piece']:
         method = "Side.find_piece_by_jersey"
 
         """
@@ -136,7 +120,7 @@ class Side:
             if jersey is None:
                 raise NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
 
-            for piece in self._pieces:
+            for piece in self._roster:
                 if piece.jersey == jersey:
                     return Result(payload=piece)
             return Result(
@@ -147,10 +131,7 @@ class Side:
             raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
 
 
-
-
-
-    def find_piece_by_id(self, piece_id:int) -> Optional['Piece']:
+    def find_piece_by_id(self, piece_id: int) -> Result['Piece']:
         method = "Side.find_piece_by_id"
 
         """
@@ -171,16 +152,17 @@ class Side:
             if not validation.is_success():
                 raise validation.exception
 
-            for piece in self._pieces:
-                if piece.id == piece_id:
-                    return piece
-            return None
+            for piece in self._roster:
+                return Result(payload=piece)
+            return Result(
+                exception=PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE}")
+            )
 
-        except IdValidationException as e:
+        except (IdValidationException, PieceNotFoundException) as e:
             raise SideSearchException(f"{method}: {SideSearchException.DEFAULT_MESSAGE}")
 
 
-    def find_piece_by_name(self, name:str) -> Result:
+    def find_piece_by_name(self, name: str) -> Result['Piece']:
         method = "Side.find_piece_by_name"
 
         """
@@ -204,7 +186,7 @@ class Side:
             if len(name) == 0 or not name.strip():
                 raise BlankStringException(f"{method}: {BlankStringException.DEFAULT_MESSAGE}")
 
-            for piece in self._pieces:
+            for piece in self._roster:
                 if piece.name.upper() == name.upper():
                     return Result(payload=piece)
             return Result(
@@ -215,7 +197,7 @@ class Side:
             raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
 
 
-    def find_piece_coord(self, coord:Coord) -> Result:
+    def find_piece_by_coord(self, coord: Coord) -> Result['Piece']:
         method = "Side.find_piece_by_coord"
 
         """
@@ -237,7 +219,7 @@ class Side:
             if not validation.is_success():
                 raise validation.exception
 
-            for piece in self._pieces:
+            for piece in self._roster:
                 if piece.current_position == coord:
                     return Result(payload=piece)
             return Result(
@@ -248,20 +230,19 @@ class Side:
             raise SideSearchException(f"{method} {SideException.DEFAULT_MESSAGE}") from e
 
 
-    def add_piece(self, piece: Piece):
-        method = "Side.add_piece"
+    def add_to_roster(self, piece: Piece):
+        method = "Side.add_to_roster"
 
         """
-        A newly constructed piece uses Side.add_piece to add itself to the side. self.pieces returns
+        A newly constructed piece uses Side.add_piece to add itself to the side's roster. Side.roster returns
         a read-only copy of the list. This is the only mutator that can directly access the array.
 
         Args:
-            piece (Piece): validated piece added to the side
-
-        Returns:
+            piece (Piece): validated piece added to the side's roster
 
         Raises:
-             ConflictingSideException: if piece.side does not match the side instance
+            NullPieceException: if the piece is null
+            ConflictingSideException: if piece.side does not match the side instance
         """
         try:
             if piece is None:
@@ -270,11 +251,104 @@ class Side:
             if not piece.side == self:
                 raise ConflictingSideException(f"{method}: {ConflictingSideException.DEFAULT_MESSAGE}")
 
-            if piece not in self._pieces:
-                  self._pieces.append(piece)
+            if piece not in self._roster:
+                  self._roster.append(piece)
 
         except (NullPieceException, ConflictingSideException) as e:
-            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
+            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
+
+
+    def remove_captured_combatant(self, combatant: CombatantPiece) -> Result[CombatantPiece]:
+        method = "Side.remove_captured_combatant"
+
+        """
+        Removes a captured piece from the roster
+
+        Args:
+            combatant (CombatantPiece): captured piece to remove from the roster
+
+        Raises:
+            TypeError: if the validated piece cannot be cast to CombatantPiece 
+            PieceValidationException: If the piece fails sanity checks
+            ConflictingSideException: If the piece is not on the correct side
+
+            RemoveCombatantException wraps any preceding exception 
+        """
+        try:
+            validation = self._validate_combatant(combatant)
+            if not validation.is_success():
+                raise validation.exception
+
+            if not combatant.side == self:
+                raise ConflictingSideException(f"{method}: {ConflictingSideException.DEFAULT_MESSAGE}")
+
+            if combatant.captor is not None:
+                raise Exception()
+
+            if combatant not in self._roster:
+                raise Exception()
+
+            self._roster.remove(combatant)
+            return Result(payload=combatant)
+        except (
+            TypeError,
+            NullPieceException,
+            ConflictingSideException
+        ) as e:
+            raise RemoveCombatantException(f"{method:}: {RemoveCombatantException.DEFAULT_MESSAGE}") from e
+
+
+    def add_hostage(self, enemy: CombatantPiece):
+        method = "Side.add_hostage"
+
+        """
+        A newly constructed piece uses Side.add_piece to add itself to the side's roster. Side.roster returns
+        a read-only copy of the list. This is the only mutator that can directly access the array.
+
+        Args:
+            enemy (CombatantPiece): enemy to put in hostage list
+
+        Raises:
+            TypeError: if the validated piece cannot be cast to CombatantPiece 
+            PieceValidationException: If the piece fails sanity checks
+            ConflictingSideException: If the piece is not on the correct side
+
+            RemoveCombatantException wraps any preceding exception 
+        """
+        try:
+            validation = self._validate_combatant(combatant=enemy)
+            if not validation.is_success():
+                raise validation.exception
+
+            if enemy.side == self:
+                raise ConflictingSideException(f"{method}: {ConflictingSideException.DEFAULT_MESSAGE}")
+
+            if enemy.captor is None:
+                raise Exception()
+
+            if not enemy.captor.side == self:
+                raise Exception()
+
+            if enemy in self._hostages:
+                raise Exception()
+
+            self._hostages.append(enemy)
+
+        except (NullPieceException, ConflictingSideException) as e:
+            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
+
+
+    def _validate_combatant(self, combatant: CombatantPiece) -> Result[CombatantPiece]:
+        method = "Side._validate_combatant"
+
+        validation = PieceValidator.validate(combatant)
+        if not validation.is_success():
+            return Result(exception=validation.exception)
+
+        if not isinstance(validation.payload, CombatantPiece):
+            return Result(exception=TypeError(f"{method} Expected a CombatantPiece, got {type(t).__name__}"))
+
+        return Result(payload=combatant)
 
 
 

@@ -66,7 +66,7 @@ class Piece(ABC):
         self._name = cast(str, name_validation.payload)
         self._rank = rank #cast(rank_validation.payload, Rank)
 
-        self._jersey = len(side.pieces)
+        self._jersey = len(side.roster)
         self._side = side
 
         # self._status = MobilityStatus.FREE
@@ -75,8 +75,8 @@ class Piece(ABC):
         self._positions = CoordStack()
         self._current_position = self._positions.current_coord
 
-        if self not in side.pieces:
-            side.add_piece(self)
+        if self not in side.roster:
+            side.add_to_roster(self)
 
     @property
     def id(self) -> int:

@@ -18,8 +18,8 @@ class TeamPlacementManager:
         method = "TeamPlacementManager.place_teams"
 
         chess_pieces: List[Piece] = []
-        chess_pieces.extend(arena.white_owner.team.pieces)
-        chess_pieces.extend(arena.black_owner.team.pieces)
+        chess_pieces.extend(arena.white_owner.team.roster)
+        chess_pieces.extend(arena.black_owner.team.roster)
 
         for chess_piece in chess_pieces:
                 # .black_owner.side.chess_pieces):
