@@ -2,16 +2,20 @@ import random
 from typing import List, Optional, TYPE_CHECKING
 
 from assurance.exception.validation.coord import CoordValidationException
+from assurance.exception.validation.hostage import HostageValidationException
+from assurance.result.base import Result
 from assurance.validators.coord import CoordValidator
+from assurance.validators.hostage import HostageValidator
+from assurance.validators.name import NameValidator
+from assurance.validators.piece import PieceValidator
 from chess.board.square import Square
+from chess.exception.board import RemovePieceFromBoardException, IncompleteBoardTransactionException
 from chess.exception.null.piece import NullPieceException
-from chess.exception.search import PieceNotFoundException
+from chess.exception.search import PieceNotFoundException, SquareNotFoundException
 from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
-    from chess.token.model import Piece
-
-
+    from chess.token.model import Piece, CombatantPiece
 
 
 class Board:
@@ -59,8 +63,9 @@ class Board:
 
 
     @property
-    def squares(self) -> List[List[Square]]:
-        return self._squares
+    def squares(self) -> List[Square]:
+        """Flatten the 2D board into a 1D list of squares for efficient searching."""
+        return [square for row in self._squares for square in row]
 
 
     @property
@@ -104,15 +109,19 @@ class Board:
     def occupied_squares(self) -> List[Square]:
         method = f"{self.__class__.__name__}.occupied_squares"
 
+        """Returns the occupied squares"""
+
         return [square for row in self._squares for square in row if square.occupant is not None]
 
     def empty_squares(self) -> List[Square]:
         method = f"{self.__class__.__name__}.empty_squares"
 
+        """Returns the list of empty squares"""
+
         return [square for row in self._squares for square in row if square.occupant is None]
 
 
-    def find_square_by_coord(self, coordinate: Coord) -> Optional[Square]:
+    def find_square_by_coord(self, coord: Coord) -> Optional[Square]:
         method = f"{self.__class__.__name__}find_square_by_coordinate"
 
         """" 
@@ -129,30 +138,48 @@ class Board:
             CoordValidationException: If coord is fails any validators checks.
         """
 
-        if not CoordValidator.validate(coordinate):
-            raise CoordValidationException(CoordValidationException.DEFAULT_MESSAGE)
-        return self._squares[coordinate.row][coordinate.column]
+        try:
+            validation = CoordValidator.validate(coord)
+            if not validation.is_success():
+                raise validation.exception
+
+            square = next((s for s in self.squares if s.coord == coord), None)
+            return square
+        except validation.e as e:
+            raise e
 
 
-    def find_square_by_name(self, name: str) -> Optional[Square]:
+    def find_square_by_name(self, name: str) -> Result[Square]:
         method = f"{self.__class__.__name__}.find_square_by_name"
-        if name is None:
-            raise Exception(f"Cannot find a square with a null name")
 
-        for row in self._squares:
-            for current_square in row:
-                if current_square.name.upper() == name.upper():
-                    return current_square
-        return None
+        """" 
+        Finds a square by its name. 
+
+        Args:
+            name (str):      
+
+        Returns:    
+            Optional[Square]: The Square object if found, otherwise None.
+
+        Raises: 
+            NameValidationException: If name is fails any validators checks.
+        """
+
+        try:
+            validation = NameValidator.validate(name)
+            if not validation.is_success():
+                raise validation.exception
+
+            square = next((s for s in self.squares if s.name.upper() == name.upper()), None)
+
+            return square
+        except SquareNotFoundException as e:
+            raise e
 
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
         method = f"{self.__class__.__name__}.find_square_by_id"
 
-        if square_id is None:
-            raise Exception(f"Cannot find a square with a null id")
 
-        if square_id < 0:
-            raise Exception(f"find_square_by_id: square_id {square_id} is negative")
 
         for row in self._squares:
             for current_square in row:
@@ -160,25 +187,53 @@ class Board:
                     return current_square
         return None
 
-    def remove_captured_piece(self, piece: Piece):
+    def remove_captured_piece(self, hostage: CombatantPiece):
         method = f"{self.__class__.__name__}.remove_captured_piece"
+
+        """
+        Remove a captured piece from the board after it has been:
+            - Processed by the captor
+            - Removed from its' team's roster
+            - Added to its' enemy's hostages
+            
+        Args:
+            hostage (CombatantPiece): captured CombatantPiece to remove from the board
+            
+        Returns:
+        
+        Raises:
+            HostageValidationException: if the hostage fails sanity checks
+            PieceNotFoundException: if the hostage does not exist on the board
+            IncompleteBoardTransactionException: If hostage is still on the board after is was removed.
+            
+            RemovePieceFromBoardException wraps any preceding exception
+        """
         try:
-            if piece is None:
-                raise NullPieceException(f"{method}: {NullPieceException.DEFAULT_MESSAGE}")
+            validation = HostageValidator.validate(hostage)
+            if not validation.is_success():
+                raise validation.exception
 
-            if piece not in self._pieces:
-                raise PieceNotFoundException
+            if hostage not in self._pieces:
+                raise PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE}")
 
-            if
+            self._pieces.remove(hostage)
+
+            if hostage in self._pieces:
+                raise IncompleteBoardTransactionException(
+                    f"{method}: {IncompleteBoardTransactionException.DEFAULT_MESSAGE}"
+                )
 
         except (
-            NullPieceException,
-            PieceNotFoundException
+            PieceNotFoundException,
+            HostageValidationException,
+            IncompleteBoardTransactionException
         ) as e:
-            raise e
+            raise RemovePieceFromBoardException(
+                f"{method}: {RemovePieceFromBoardException.DEFAULT_MESSAGE}"
+            )
 
 
-    def find_chess_piece(self, coordinate: Coord) -> Optional['Piece']:
+    def find_piece_by_coord(self, coord: Coord) -> Result['Piece']:
         method = f"ChessBoard.find_chess_piece"
 
         """" 
@@ -188,13 +243,29 @@ class Board:
             coord (Coord): The coord of the ChessPiece to find.      
 
         Returns:    
-            Optional[ChessPiece] The ChessPiece if found at the coord otherwise None.
+            Result[Piece]: with payload != NULL if piece is found. Otherwise the Result contains 
+            any exception raised.
 
         Raises: 
-            CoordValidationException: If coord is fails any validators checks.
+            CoordValidationException: If coord fails sanity checks.
+            PieceNotFoundException: If no piece is at the coord.
         """
 
-        return  self.find_square_by_coord(coordinate).occupant
+        try:
+            validation = CoordValidator.validate(coord)
+            if not validation.is_success():
+                raise validation.exception
+
+            # A valida coord will have a square.
+            piece = self.find_square_by_coord(coord).occupant
+
+            if piece is None:
+                raise PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE}")
+
+            return Result(payload=piece)
+
+        except PieceNotFoundException as e:
+            raise e
 
 
 

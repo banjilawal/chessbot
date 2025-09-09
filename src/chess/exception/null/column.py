@@ -3,7 +3,7 @@ from chess.exception.null.base import NullException
 
 class NullColumnException(NullException):
     """
-    Raised if a column is null. A coordinate cannot be created if the column is null
+    Raised if a column is null. A coord cannot be created if the column is null
     """
 
     ERROR_CODE = "NULL_COLUMN_ERROR"

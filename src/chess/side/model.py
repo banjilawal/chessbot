@@ -202,7 +202,7 @@ class Side:
 
         """
         Find a piece whose current position matches coord. If none of 
-        the side's pieces are at the coordinate returns None.
+        the side's pieces are at the coord returns None.
         
         Args:
             coord (Coord): validated Coord used for search
@@ -265,7 +265,7 @@ class Side:
         Removes a captured piece from the roster
 
         Args:
-            combatant (CombatantPiece): captured piece to remove from the roster
+            hostage (CombatantPiece): captured piece to remove from the roster
 
         Raises:
             TypeError: if the validated piece cannot be cast to CombatantPiece 

@@ -9,13 +9,13 @@ from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
-from chess.request.validators.base import RequestValidator
+from chess.system.validators.base import RequestValidator
 from assurance.validators.square import SquareValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
 from chess.exception.piece import AttackingKingException
-from chess.request.occupy import OccupationRequest
+from chess.system.send import OccupationRequest
 from chess.token.model import KingPiece, Piece
 
 T = TypeVar('T')

@@ -5,7 +5,7 @@ from assurance.exception.empty.result import EmptyEventOutcomeConstructorExcepti
 from assurance.exception.event import ConflictingEventStateException
 from chess.common.permit import Event
 from chess.exception.null.request import NullRequestException
-from chess.request.base import Request
+from chess.system.request import Request
 
 
 

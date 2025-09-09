@@ -72,7 +72,7 @@ class RemoveCombatantException(SideException):
     """
 
     ERROR_CODE = "REMOVE_CAPTURED_COMBATANT_ERROR"
-    DEFAULT_MESSAGE = "Could not remove the captured combatant from the roster"
+    DEFAULT_MESSAGE = "Could not remove the captured hostage from the roster"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

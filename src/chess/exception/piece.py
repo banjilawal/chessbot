@@ -21,7 +21,7 @@ class PieceException(ChessException):
 
 class PieceCoordNullException(PieceException):
     """
-    PieceCoordNullException gets thrown if a piece with an empty coordinate stack attempts to move.
+    PieceCoordNullException gets thrown if a piece with an empty coord stack attempts to move.
     If piece.positions.is_empty == True then the piece is not on the board so it cannot be moved.
     """
 
@@ -55,7 +55,7 @@ class AlreadyAtDestinationException(PieceException):
 class PrisonerEscapeException(PieceException):
     """
     Combatant pieces with attacker field not null cannot be moved. Attempts to move
-    a captured combatant raises PrisonerEscapeException. This only applies to combatant pieces
+    a captured hostage raises PrisonerEscapeException. This only applies to hostage pieces
     """
 
     ERROR_CODE = "MOVING_CAPTURED_PIECE_ERROR"

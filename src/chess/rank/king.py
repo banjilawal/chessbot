@@ -9,7 +9,7 @@ from chess.geometry.coord import Coord
 from chess.geometry.path import Line, Path
 from chess.geometry.quadrant import Quadrant
 from chess.rank.queen import PromotedQueen
-from chess.request.occupy import OccupationRequest
+from chess.system.send import OccupationRequest
 from chess.token.model import Piece
 
 

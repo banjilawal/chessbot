@@ -3,7 +3,7 @@ from chess.exception.null.base import NullException
 
 class NullRequestException(NullException):
     """
-    Raised if a request is null. Each Request class will have a corresponding NullException. Best practice
+    Raised if a system is null. Each Request class will have a corresponding NullException. Best practice
     is raise one of NUllRequest subclasses when possible.
     """
 

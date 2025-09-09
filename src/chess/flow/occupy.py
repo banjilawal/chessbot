@@ -8,8 +8,8 @@ from chess.exception.event import AttackEventInconsistencyException, \
 from chess.exception.null.piece import NullPieceException
 from chess.exception.side import RemoveCombatantException
 from chess.flow.base import Flow
-from chess.request.occupy import OccupationRequest
-from chess.request.validators.occupy import OccupationRequestValidator
+from chess.system.send import OccupationRequest
+from chess.system.validators.occupy import OccupationRequestValidator
 from chess.token.model import Piece, CombatantPiece
 from chess.token.encounter import Encounter
 
@@ -82,17 +82,21 @@ class OccupationFlow(Flow):
                 )
 
             hostage_candidate.captor = piece
-            enemy_side = hostage_candidate.side
-            removal_result = enemy_side.remove_captured_combatant(hostage_candidate)
+            loosing_side = hostage_candidate.side
+
+            removal_result = loosing_side.remove_captured_combatant(hostage_candidate)
             if not removal_result.is_success():
                 raise removal_result.exception
 
             hostage = cast(CombatantPiece, removal_result.payload)
-            piece.side.add_hostage(hostage)
 
-            if hostag
+            winning_side = piece.side
+            addition_result = winning_side.add_hostage(hostage)
+            if not addition_result.is_success():
+                raise addition_result.exception
 
-            return hostage
+            board.remove_captured_piece(hostage)
+
 
         except (
             AttackingNullPieceException,

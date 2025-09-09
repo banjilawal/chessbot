@@ -8,12 +8,12 @@ from assurance.result.event import RequestOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from chess.rank.queen import PromotedQueen
-from chess.request.validators.base import RequestValidator
+from chess.system.validators.base import RequestValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullPromotionRequestException
 from chess.exception.piece import DoublePromotionException
 from chess.exception.rank import UnPromotableRankException, PromotionRowException
-from chess.request.promote import PromotionRequest
+
 
 T = TypeVar('T')
 

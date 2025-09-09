@@ -3,8 +3,8 @@ from typing import cast
 from chess.config.rank import RankProfile
 from chess.flow.base import Flow
 from chess.rank.queen import Queen, PromotedQueen
-from chess.request.promote import PromotionRequest
-from chess.request.validators.promote import PromotionRequestValidator
+
+from chess.system.validators.promote import PromotionRequestValidator
 from chess.token.model import Piece
 
 

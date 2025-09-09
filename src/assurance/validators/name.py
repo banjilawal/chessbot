@@ -31,7 +31,7 @@ class NameValidator(Validator):
                 satisfied, NameValidationException otherwise.
 
         Raises:
-            ypeError: if t is not int
+            TypeError: if t is not int
             NullNameException: if t is null
             BlankNameException: if t only contains white space.
             NameTooShortException: if t is shorter than MIN_NAME_LENGTH

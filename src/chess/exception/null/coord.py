@@ -3,7 +3,7 @@ from chess.exception.null.base import NullException
 
 class NullCoordException(NullException):
     """
-    Raised if a coordinate is null
+    Raised if a coord is null
     """
 
     ERROR_CODE = "NULL_COORDINATE_ERROR"

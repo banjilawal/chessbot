@@ -42,7 +42,7 @@ class RosterRemovalException(HostageException):
     """
 
     ERROR_CODE = "ROSTER_REMOVAL_ERROR"
-    DEFAULT_MESSAGE = "The captured combatant has not been removed from the roster"
+    DEFAULT_MESSAGE = "The captured hostage has not been removed from the roster"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -72,7 +72,7 @@ class HostageAdditionException(HostageException):
 class PrisonerEscapeException(HostageException):
     """
     Combatant hostages with attacker field not null cannot be moved. Attempts to move
-    a captured combatant raises PrisonerEscapeException. This only applies to combatant hostages
+    a captured hostage raises PrisonerEscapeException. This only applies to hostage hostages
     """
 
     ERROR_CODE = "MOVING_CAPTURED_HOSTAGE_ERROR"
