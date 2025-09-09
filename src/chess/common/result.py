@@ -39,13 +39,14 @@ class Result(Generic[T]):
 
 
     def is_success(self) -> bool:
-        return self._exception is None
+        return self._exception is None and self._payload is not None
 
 
 
-class QueryResult(Result):
+class SearchResult(Result):
 
     def is_not_found(self) -> bool:
+        """"""
         return not (self._exception is None and self._payload is None)
 
 
