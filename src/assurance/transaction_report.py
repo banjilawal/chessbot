@@ -1,4 +1,4 @@
-from assurance.result.base import Result
+from chess.common.result import Result
 
 
 class TransactionReport:

@@ -7,6 +7,16 @@
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/result/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/result/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/system.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/null/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/null/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/flow/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/flow/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/competitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/competitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/command.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/send.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/send.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validators/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validators/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validators/occupy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validators/occupy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validators/promote.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validators/promote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -477,7 +487,7 @@
       <workItem from="1757139262900" duration="19470000" />
       <workItem from="1757194772879" duration="12177000" />
       <workItem from="1757367740469" duration="4536000" />
-      <workItem from="1757377273813" duration="5932000" />
+      <workItem from="1757377273813" duration="8784000" />
     </task>
     <servers />
   </component>

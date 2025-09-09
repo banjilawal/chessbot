@@ -7,7 +7,7 @@ from chess.token.model import Piece
 T = TypeVar('T')
 
 
-class Request(Generic[T]):
+class Command(Generic[T]):
     _id: int
     _client: T
     _resource: Optional[T]
@@ -39,12 +39,12 @@ class Request(Generic[T]):
             return True
         if other is None:
             return False
-        if not isinstance(other, Request):
+        if not isinstance(other, Command):
             return False
         return self._id == other.id
 
 
-class OccupationRequest(Request):
+class OccupySquare(Command):
 
     def __init__(self, req_id: int, piece: Piece, square: Square):
         super().__init__(req_id=req_id, client=piece, resource=square)
@@ -68,11 +68,11 @@ class OccupationRequest(Request):
     def __eq__(self, other):
         if not super().__eq__(other):
             return False
-        if isinstance(other, OccupationRequest):
+        if isinstance(other, OccupySquare):
             return self._id == other.id
 
 
-class PromotionRequest(Request):
+class Promote(Command):
 
     def __init__(self, req_id: int, piece: Piece, rank: Queen = Queen()):
         super().__init__(req_id=req_id, client=piece, resource=rank)
@@ -98,5 +98,5 @@ class PromotionRequest(Request):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, PromotionRequest):
+        if isinstance(other, Promote):
             return self._id == other.id

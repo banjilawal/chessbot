@@ -4,7 +4,7 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import PromotionRequestValidationException
 
-from assurance.result.event import RequestOutcome
+from assurance.result.event import CommandOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from chess.rank.queen import PromotedQueen
@@ -20,13 +20,13 @@ T = TypeVar('T')
 class PromotionRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> RequestOutcome:
-        entity = "PromotionRequest"
+    def validate(t: Generic[T]) -> CommandOutcome:
+        entity = "Promote"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
-        Validates an PromotionRequest meets specifications:
+        Validates an Promote meets specifications:
             - Not null
             - id does not validation
             - client is a valid chess piece
@@ -34,7 +34,7 @@ class PromotionRequestValidator(RequestValidator):
         If a condition is not met an PromotionRequestValidationException will be thrown.
 
         Argument:
-            t (PromotionRequest): PromotionRequest to validate
+            t (Promote): Promote to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
@@ -58,7 +58,7 @@ class PromotionRequestValidator(RequestValidator):
                 raise NullPromotionRequestException(f"{method} {NullPromotionRequestException.DEFAULT_MESSAGE}")
 
             if not isinstance(t, PromotionRequest):
-                raise TypeError(f"{method} Expected an PromotionRequest, got {type(t).__name__}")
+                raise TypeError(f"{method} Expected an Promote, got {type(t).__name__}")
 
             promotion_request = cast(PromotionRequest, t)
 
@@ -83,7 +83,7 @@ class PromotionRequestValidator(RequestValidator):
             if current_row != piece.team.profile.enemy_home().rank_row :
                 raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
-            return RequestOutcome(
+            return CommandOutcome(
                 request=promotion_request,
                 event=Event.PROMOTION
             )

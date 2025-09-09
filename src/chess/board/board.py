@@ -1,16 +1,13 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
-from assurance.exception.validation.coord import CoordValidationException
 from assurance.exception.validation.hostage import HostageValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.coord import CoordValidator
 from assurance.validators.hostage import HostageValidator
 from assurance.validators.name import NameValidator
-from assurance.validators.piece import PieceValidator
 from chess.board.square import Square
 from chess.exception.board import RemovePieceFromBoardException, IncompleteBoardTransactionException
-from chess.exception.null.piece import NullPieceException
 from chess.exception.search import PieceNotFoundException, SquareNotFoundException
 from chess.geometry.coord import Coord
 

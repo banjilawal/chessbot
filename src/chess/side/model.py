@@ -1,9 +1,8 @@
-from logging import exception
-from typing import List, TYPE_CHECKING, cast, Sequence, Optional
+from typing import TYPE_CHECKING, cast, Sequence
 
 from assurance.exception.validation.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.competitor import CompetitorValidator
@@ -13,7 +12,6 @@ from chess.exception.null.number import NullNumberException
 from chess.exception.null.piece import NullPieceException
 from chess.exception.null.side_profile import NullSideProfileException
 from chess.exception.null.text import NullStringException
-from chess.exception.piece import PrisonerEscapeException, PieceCoordNullException, AlreadyAtDestinationException
 from chess.exception.search import PieceNotFoundException
 from chess.exception.side import SideSearchException, SideException, ConflictingSideException, AddPieceException, \
     RemoveCombatantException

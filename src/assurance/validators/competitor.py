@@ -4,7 +4,7 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.competitor import CompetitorValidationException
 from assurance.exception.validation.team import TeamHistoryValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator

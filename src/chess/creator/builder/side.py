@@ -1,6 +1,6 @@
 from enum import Enum
 
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.side import SideValidator
 from chess.competitor.model import Competitor

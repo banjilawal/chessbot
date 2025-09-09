@@ -1,9 +1,8 @@
 from typing import cast, Generic
 
 from assurance.exception.validation.hostage import HostageValidationException
-from assurance.exception.validation.piece import PieceValidationException
 
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.piece import PieceValidator
 

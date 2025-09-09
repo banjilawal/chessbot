@@ -1,5 +1,5 @@
-from chess.system.request import Request
+from chess.system.command import Command
 
 class Notification:
     _message: str
-    _request: Request
+    _request: Command

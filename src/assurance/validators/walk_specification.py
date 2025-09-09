@@ -1,6 +1,6 @@
 from typing import Generic
 
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
 
 

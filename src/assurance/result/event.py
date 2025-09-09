@@ -6,12 +6,25 @@ from assurance.exception.empty.result import EmptyEventOutcomeConstructorExcepti
 from assurance.exception.event import ConflictingEventStateException
 from chess.common.permit import Event
 from chess.exception.null.request import NullRequestException
-from chess.system.request import Request
+from chess.system.command import Command
 
 
-class RequestOutcome(ABC):
+
+
+class CommandOutcome(ABC):
+    """
+    The outcome of mutators any operations that change state
+
+    Use factory methods to create instances:
+    - CommandOutcome.success()
+    - CommandOutcome.failed()
+    - CommandOutcome.rolled_back()
+
+    Direct constructor usage is not recommended.
+    """
+
     _id:int
-    _request: Request
+    _command: Command
     _event: Optional[Event]
     _exception: Optional[Exception]
     _was_rolled_back: bool
@@ -19,12 +32,14 @@ class RequestOutcome(ABC):
     def __init__(
         self,
         outcome_id:int,
-        request: Request,
+        request: Command,
         event: Optional[Event] = None,
         exception: Optional[Exception] = None,
         was_rolled_back: bool = False
     ):
-        method = "RequestOutcome.__init__"
+        method = "CommandOutcome.__init__"
+
+        """INTERNAL: Use factory methods instead of direct constructor."""
 
         if request is None:
             raise NullRequestException(f"{method}: {NullRequestException.DEFAULT_MESSAGE}")
@@ -40,7 +55,7 @@ class RequestOutcome(ABC):
             )
 
         self._id = outcome_id
-        self._request = request
+        self._command = request
         self._event = event
         self._exception = exception
         self._was_rolled_back = was_rolled_back
@@ -52,8 +67,8 @@ class RequestOutcome(ABC):
 
 
     @property
-    def request(self) -> Optional[Request]:
-        return self._request
+    def request(self) -> Optional[Command]:
+        return self._command
 
 
     @property
@@ -100,7 +115,7 @@ class RequestOutcome(ABC):
 
 
     @classmethod
-    def success(cls, outcome_id: int, request: Request, event: Event) -> 'RequestOutcome':
+    def success(cls, outcome_id: int, request: Command, event: Event) -> 'CommandOutcome':
         method = f"{cls.__class__.__name__}.success"
         """Create a successful outcome"""
 
@@ -109,12 +124,12 @@ class RequestOutcome(ABC):
             request=request,
             event=event,
             exception=None,
-            rolled_back=False
+            was_rolled_back=False
         )
 
 
     @classmethod
-    def proceessing(cls, outcome_id: int, request: Request) -> 'RequestOutcome':
+    def processing(cls, outcome_id: int, request: Command) -> 'CommandOutcome':
         method = f"{cls.__class__.__name__}.processing"
 
         """Create a processing outcome"""
@@ -123,12 +138,12 @@ class RequestOutcome(ABC):
             request=request,
             event=None,
             exception=None,
-            rolled_back=False
+            was_rolled_back=False
         )
 
 
     @classmethod
-    def failed(cls, outcome_id: int, request: Request, exception: Exception) -> 'RequestOutcome':
+    def failed(cls, outcome_id: int, request: Command, exception: Exception) -> 'CommandOutcome':
         method = f"{cls.__class__.__name__}.failed"
         """Create a failed outcome"""
 
@@ -137,12 +152,12 @@ class RequestOutcome(ABC):
             request=request,
             event=None,
             exception=exception,
-            rolled_back=False
+            was_rolled_back=False
         )
 
 
     @classmethod
-    def roll_back(cls, outcome_id: int, request: Request, event: Event) -> 'RequestOutcome':
+    def roll_back(cls, outcome_id: int, request: Command, event: Event) -> 'CommandOutcome':
         method = f"{cls.__class__.__name__}.rolled_back"
         """Create a rolled back outcome"""
 
@@ -151,7 +166,7 @@ class RequestOutcome(ABC):
             request=request,
             event=event,
             exception=None,
-            rolled_back=True
+            was_rolled_back=True
         )
 
 

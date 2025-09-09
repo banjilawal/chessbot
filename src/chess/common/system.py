@@ -1,3 +1,3 @@
-from chess.system.request import Request
+from chess.system.command import Command
 
 

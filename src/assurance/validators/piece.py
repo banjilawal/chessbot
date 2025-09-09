@@ -1,13 +1,11 @@
 from typing import cast, Generic
 
-from assurance.exception.validation.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.piece import PieceValidationException
 
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
-from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from chess.creator.builder.competitor import CompetitorBuilder
@@ -15,7 +13,6 @@ from chess.creator.builder.side import SideBuilder
 from chess.creator.emit import id_emitter
 
 from chess.exception.null.piece import NullPieceException
-from chess.exception.null.square import NullSquareException
 from chess.randomize.competitor import RandomName
 from chess.token.model import Piece
 

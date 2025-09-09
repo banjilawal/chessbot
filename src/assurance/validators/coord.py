@@ -1,7 +1,7 @@
 from typing import cast, Generic
 
 from assurance.exception.validation.coord import CoordValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord import (

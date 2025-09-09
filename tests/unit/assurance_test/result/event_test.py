@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 from assurance.exception.empty.result import EmptyEventOutcomeConstructorException
 from assurance.exception.event import ConflictingEventStateException
-from assurance.result.event import RequestOutcome
+from assurance.result.event import CommandOutcome
 from chess.exception.null.request import NullRequestException
 
 
@@ -13,20 +13,20 @@ class RequestOutcomeTest(unittest.TestCase):
         mock_event = Mock()
 
         with self.assertRaises(NullRequestException):
-            RequestOutcome(request=None, event=mock_event, exception=None)
+            CommandOutcome(request=None, event=mock_event, exception=None)
 
     def test_construct_request_outcome_with_null_event_null_exception_raises_error(self):
         mock_request = Mock()
 
         with self.assertRaises(EmptyEventOutcomeConstructorException):
-            RequestOutcome(request=mock_request, event=None, exception=None)
+            CommandOutcome(request=mock_request, event=None, exception=None)
 
 
     def test_construct_request_outcome_with_event_only_succeeds(self):
         mock_request = Mock()
         mock_event = Mock()
 
-        request_outcome = RequestOutcome(request=mock_request, event=mock_event, exception=None)
+        request_outcome = CommandOutcome(request=mock_request, event=mock_event, exception=None)
 
         self.assertEqual(request_outcome._event, mock_event)
         self.assertIsNone(request_outcome._exception, None)
@@ -35,7 +35,7 @@ class RequestOutcomeTest(unittest.TestCase):
         mock_request = Mock()
         mock_exception = Mock()
 
-        request_outcome = RequestOutcome(request=mock_request, event=None, exception=mock_exception)
+        request_outcome = CommandOutcome(request=mock_request, event=None, exception=mock_exception)
 
         self.assertIsNone(request_outcome._event, None)
         self.assertEqual(request_outcome._exception, mock_exception)

@@ -1,7 +1,7 @@
 from typing import Generic, cast
 
 from assurance.exception.validation.coord_stack import CoordStackValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.coord import CoordValidator
 from assurance.validators.base import Validator, T
 from chess.exception.coord_stack import InconsistentCurrentCoordinateException

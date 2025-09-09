@@ -1,6 +1,6 @@
 from enum import Enum
 
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.coord import CoordValidator
 from chess.geometry.coord import Coord

@@ -4,7 +4,7 @@ from assurance.exception.validation.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.square import SquareValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.coord import CoordValidator
 from assurance.validators.id import IdValidator

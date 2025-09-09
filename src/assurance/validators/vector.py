@@ -1,7 +1,7 @@
 from typing import Generic, cast
 
 from assurance.exception.validation.vector import VectorValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import KNIGHT_STEP_SIZE
 

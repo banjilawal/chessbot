@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from assurance.result.base import Result
+from chess.common.result import Result
 
 T = TypeVar('T')
 

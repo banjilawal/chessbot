@@ -2,7 +2,7 @@ from enum import Enum
 from typing import cast
 
 from assurance.exception.validation.piece import PieceValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.piece import PieceValidator
 from chess.creator.builder.side import SideBuilder

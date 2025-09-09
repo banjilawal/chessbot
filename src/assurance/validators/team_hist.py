@@ -1,9 +1,8 @@
-from typing import Generic, cast, TYPE_CHECKING
+from typing import Generic, cast
 
 from assurance.exception.validation.team import TeamHistoryValidationException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
-from assurance.validators.side import SideValidator
 from chess.exception.null.side_record import NullSideRecordException
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException

@@ -9,7 +9,7 @@ from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
 
 from chess.exception.null.side import NullSideException
-from assurance.result.base import Result
+from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from assurance.validators.id import IdValidator
 from chess.exception.stack import BrokenRelationshipException

@@ -4,7 +4,7 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.piece import PieceValidationException
 from assurance.exception.validation.request import OccupationRequestValidationException
 from assurance.exception.validation.square import SquareValidationException
-from assurance.result.event import RequestOutcome
+from assurance.result.event import CommandOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
 from chess.board.square import Square
@@ -23,13 +23,13 @@ T = TypeVar('T')
 class OccupationRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> RequestOutcome:
-        entity = "OccupationRequest"
+    def validate(t: Generic[T]) -> CommandOutcome:
+        entity = "OccupySquare"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
-        Validates an OccupationRequest meets specifications:
+        Validates an OccupySquare meets specifications:
             - Not null
             - id does not validation
             - client is a valid chess piece
@@ -37,7 +37,7 @@ class OccupationRequestValidator(RequestValidator):
         If a condition is not met an OccupationRequestValidationException will be thrown.
 
         Argument:
-            t (OccupationRequest): occupationRequest to validate
+            t (OccupySquare): occupationRequest to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
@@ -63,7 +63,7 @@ class OccupationRequestValidator(RequestValidator):
                 raise NullOccupationRequestException(f"{method} {NullOccupationRequestException.DEFAULT_MESSAGE}")
 
             if not isinstance(t, OccupationRequest):
-                raise TypeError(f"{method} Expected an OccupationRequest, got {type(t).__name__}")
+                raise TypeError(f"{method} Expected an OccupySquare, got {type(t).__name__}")
 
             occupation_request = cast(OccupationRequest, t)
 
@@ -87,14 +87,14 @@ class OccupationRequestValidator(RequestValidator):
 
             occupant = target_square.occupant
             if occupant is None:
-                return RequestOutcome(
+                return CommandOutcome(
                     outcome_id=outcome_id,
                     request=occupation_request,
                     event=Event.OCCUPATION
                 )
 
             if occupant is not None and not piece.is_enemy(occupant):
-                return RequestOutcome(
+                return CommandOutcome(
                     outcome_id=outcome_id,
                     request=occupation_request,
                     event=Event.RECORD_ENCOUNTER
@@ -104,7 +104,7 @@ class OccupationRequestValidator(RequestValidator):
             if occupant is not None and isinstance(occupant, KingPiece):
                 raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
 
-            return RequestOutcome(outcome_id=outcome_id, request=occupation_request,event=Event.ATTACK)
+            return CommandOutcome(outcome_id=outcome_id, request=occupation_request, event=Event.ATTACK)
 
         except (
             TypeError,
