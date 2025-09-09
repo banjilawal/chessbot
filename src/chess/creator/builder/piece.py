@@ -7,8 +7,8 @@ from assurance.throw_helper import ThrowHelper
 from assurance.validators.piece import PieceValidator
 from chess.creator.builder.side import SideBuilder
 from chess.creator.emit import id_emitter
-from chess.rank.base import Rank
-from chess.rank.bishop import Bishop
+from chess.rank.rank import Rank
+from chess.rank.bishop_rank import Bishop
 
 from chess.token.model import Piece
 

@@ -8,7 +8,7 @@ from chess.exception.rank import BishopException
 from chess.exception.walk import BishopWalkException
 from chess.geometry.coord import Coord
 from chess.geometry.quadrant import Quadrant
-from chess.rank.bishop import Bishop
+from chess.rank.bishop_rank import Bishop
 from chess.side.model import Side
 from chess.token.model import Piece
 from unit.chess_test.side.side_test import SideTest

@@ -21,7 +21,7 @@ from chess.token.encounter import Encounter, EncounterLog
 
 
 if TYPE_CHECKING:
-    from chess.rank.base import Rank
+    from chess.rank.rank import Rank
     # from assurance.validators.rank import RankValidator
 
 
@@ -222,7 +222,7 @@ class CombatantPiece(Piece):
 
 
 def main():
-    from chess.rank.pawn import Pawn
+    from chess.rank.pawn_rank import Pawn
     piece = CombatantPiece(piece_id=id_emitter.piece_id, name="BB-1", side=SideBuilder.build().payload, rank=Pawn())
     print(piece)
 

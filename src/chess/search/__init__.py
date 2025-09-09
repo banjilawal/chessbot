@@ -1,5 +1,5 @@
 from .piece_search import PieceSearch
-from .square_search import SquareSearch
-from .team_search import TeamSearch
+from .square_serch import SquareSearch
+from .side_search import  SideSearch
 
-__all__ = ['PieceSearch', 'SquareSearch', 'TeamSearch']
+__all__ = ['PieceSearch', 'SquareSearch', 'SideSearch']

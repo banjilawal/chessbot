@@ -2,7 +2,7 @@ from typing import cast
 
 from chess.config.rank import RankProfile
 from chess.flow.base import Flow
-from chess.rank.queen import Queen, PromotedQueen
+from chess.rank.queen_rank import Queen, PromotedQueen
 
 from chess.system.validators.promote import PromotionRequestValidator
 from chess.token.model import Piece

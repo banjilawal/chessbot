@@ -1,7 +1,7 @@
 from typing import Generic, TypeVar, Optional, cast
 
 from chess.board.square import Square
-from chess.rank.queen import Queen
+from chess.rank.queen_rank import Queen
 from chess.token.model import Piece
 
 T = TypeVar('T')

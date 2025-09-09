@@ -7,7 +7,7 @@ from assurance.exception.validation.request import PromotionRequestValidationExc
 from assurance.result.event import CommandOutcome
 from assurance.validators.id import IdValidator
 from assurance.validators.piece import PieceValidator
-from chess.rank.queen import PromotedQueen
+from chess.rank.queen_rank import PromotedQueen
 from chess.system.validators.base import RequestValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullPromotionRequestException

@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.creator.entity.builder.rank_builder import RankBuilder
-from chess.rank.base import Rank
+from chess.rank.rank import Rank
 from chess.config.rank import RankProfile
 
 

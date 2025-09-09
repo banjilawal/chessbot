@@ -9,7 +9,7 @@ from chess.flow.occupy import OccupationFlow
 from chess.geometry.coord import Coord
 from chess.geometry.path import Path, Line
 from chess.geometry.quadrant import Quadrant
-from chess.rank.base import Rank
+from chess.rank.rank import Rank
 from chess.system.send import OccupationRequest
 from chess.token.model import Piece
 
@@ -42,25 +42,7 @@ class Queen(Rank):
         except QueenWalkException as e:
             raise QueenRankException(f"{method}: {QueenRankException.DEFAULT_MESSAGE}") from e
 
-class PromotedQueen(Queen):
-    _old_rank: Optional[str]
 
-    def __init__(
-        self,
-        name: str,
-        letter: str,
-        value:int,
-        per_side: int,
-        quadrants: List[Quadrant],
-        old_rank: Optional[str] = None
-    ):
-        super().__init__(name=name, letter=letter, value=value, per_side=per_side, quadrants=quadrants)
-        _old_rank: old_rank
-
-
-    @property
-    def old_rank(self) -> Optional[str]:
-        return self._old_rank
 
 
 

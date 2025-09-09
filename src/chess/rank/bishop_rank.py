@@ -10,7 +10,7 @@ from chess.flow.occupy import OccupationFlow
 
 from chess.geometry.coord import Coord
 from chess.geometry.path import Path, Line
-from chess.rank.base import Rank
+from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 from chess.system.send import OccupationRequest
 from chess.token.model import Piece

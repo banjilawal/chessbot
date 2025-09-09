@@ -226,7 +226,7 @@ from abc import ABC, abstractmethod
 # can be useful for external tools.
 if TYPE_CHECKING:
     from chess.token.model import Piece
-    from chess.rank.base import Rank
+    from chess.rank.rank import Rank
     from chess.rank.walk import Walk
 
 # --- Constants for Chessboard Size ---

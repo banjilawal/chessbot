@@ -8,13 +8,13 @@ from chess.exception.walk import CastleWalkException
 from chess.flow.occupy import OccupationFlow
 from chess.geometry.coord import Coord
 from chess.geometry.path import Path, Line
-from chess.rank.base import Rank
+from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 from chess.system.send import OccupationRequest
 from chess.token.model import Piece
 
 
-class Castle(Rank):
+class Rook(Rank):
 
     def __init__(
         self,
@@ -28,7 +28,7 @@ class Castle(Rank):
 
 
     def walk(self, piece: Piece, destination: Coord, board: Board):
-        method = "Castle.walk"
+        method = "Rook.walk"
         try:
             path = Path(piece.current_position, destination)
             if not path.line == Line.CASTLE:
@@ -44,7 +44,7 @@ class Castle(Rank):
 
 
 def main():
-    print(Castle())
+    print(Rook())
 
 
 if __name__ == "__main__":

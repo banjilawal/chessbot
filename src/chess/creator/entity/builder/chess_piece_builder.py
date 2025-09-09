@@ -1,5 +1,5 @@
 from chess.token.model import Piece
-from chess.rank.base import Rank
+from chess.rank.rank import Rank
 
 from chess.side.model import Side
 

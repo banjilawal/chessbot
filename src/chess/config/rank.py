@@ -2,7 +2,7 @@ from enum import Enum, auto
 from typing import List, Optional
 
 from chess.geometry.quadrant import Quadrant
-from chess.rank.base import Rank
+from chess.rank.rank import Rank
 
 # class Quadrant(Enum):
 #     def __new__(cls, quad_id:int, vector:Vector):

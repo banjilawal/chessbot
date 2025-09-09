@@ -1,10 +1,10 @@
-from chess.rank.bishop import Bishop
-from chess.rank.castle import Castle
-from chess.rank.king import King
-from chess.rank.knight import Knight
-from chess.rank.pawn import Pawn
+from chess.rank.bishop_rank import Bishop
+from chess.rank.rook_rank import Rook
+from chess.rank.king_rank import King
+from chess.rank.knight_rank import Knight
+from chess.rank.pawn_rank import Pawn
 from chess.config.rank import RankProfile
-from chess.rank.queen import Queen
+from chess.rank.queen_rank import Queen
 
 
 class RankBuilder:
@@ -45,7 +45,7 @@ class RankBuilder:
                 value=config.capture_value
             )
         if config is RankProfile.CASTLE:
-            return Castle(
+            return Rook(
                 name=config.name,
                 letter=config.letter,
                 per_side=config.number_per_team,

@@ -11,12 +11,12 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Optional
 
 from chess.geometry.coord import Coord
-from chess.rank.bishop import Bishop
-from chess.rank.castle import Castle
-from chess.rank.knight import Knight
-from chess.rank.king import King
-from chess.rank.pawn import Pawn
-from chess.rank.queen import Queen
+from chess.rank.bishop_rank import Bishop
+from chess.rank.rook_rank import Rook
+from chess.rank.knight_rank import Knight
+from chess.rank.king_rank import King
+from chess.rank.pawn_rank import Pawn
+from chess.rank.queen_rank import Queen
 from chess.token.model import Piece
 
 if TYPE_CHECKING:
@@ -124,7 +124,7 @@ class GameDisplay:
             pygame.draw.rect(self.screen, PAWN_COLOR, chess_piece_shape)
         if isinstance(chess_piece.rank, Knight):
             pygame.draw.rect(self.screen, KNIGHT_COLOR, chess_piece_shape)
-        if isinstance(chess_piece.rank, Castle):
+        if isinstance(chess_piece.rank, Rook):
             pygame.draw.rect(self.screen, CASTLE_COLOR.value, chess_piece_shape)
         if isinstance(chess_piece.rank, Bishop):
             pygame.draw.rect(self.screen, BISHOP_COLOR, chess_piece_shape)
@@ -270,7 +270,7 @@ class GameDisplay:
             pygame.draw.rect(self.screen, PAWN_COLOR, rect)
         elif isinstance(chess_piece.rank, Knight):
             pygame.draw.rect(self.screen, KNIGHT_COLOR, rect)
-        elif isinstance(chess_piece.rank, Castle):
+        elif isinstance(chess_piece.rank, Rook):
             pygame.draw.rect(self.screen, CASTLE_COLOR.value, rect)
         elif isinstance(chess_piece.rank, Bishop):
             pygame.draw.rect(self.screen, BISHOP_COLOR, rect)

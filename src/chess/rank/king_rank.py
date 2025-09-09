@@ -8,7 +8,7 @@ from chess.flow.occupy import OccupationFlow
 from chess.geometry.coord import Coord
 from chess.geometry.path import Line, Path
 from chess.geometry.quadrant import Quadrant
-from chess.rank.queen import PromotedQueen
+from chess.rank.queen_rank import PromotedQueen
 from chess.system.send import OccupationRequest
 from chess.token.model import Piece
 
