@@ -1,5 +1,5 @@
 """
-Token Package - Chess Token Data Objects
+Piece Package - Chess Piece Data Objects
 
 PURPOSE:
     Contains core chess piece classes and coordinate utilities.
@@ -18,9 +18,9 @@ CONVENIENCE ALIASES:
     CoordHistory: Alias for CoordStack (more descriptive)
 
 USAGE:
-    >>> from chess.piece import CombatantPiece, KingPiecee, CoordStack
-    >>> white_pawn_9 = CombatantPiece(piece_id=9, name="WP1", rank=pawn, team=white_team)
-    >>> white_king = KingPiece(piece_id=2, name="WK", rank=king, team=white_team)
+    >>> from chess.piece import CombatantPiece, KingPiece, CoordStack
+    >>> white_pawn_9 = CombatantPiece(piece_id=9, name="WP1", validation=pawn, team=white_team)
+    >>> white_king = KingPiece(piece_id=2, name="WK", validation=king, team=white_team)
     >>>
 
 VERSION: 1.0.0
@@ -36,6 +36,7 @@ from .combatant_piece import CombatantPiece
 from .king_piece import KingPiece
 from .coord_stack import CoordStack
 from .encounter import Encounter
+from .validator import PieceValidator
 
 # Aliases
 Positions = CoordStack
@@ -43,7 +44,7 @@ Positions = CoordStack
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "token_package"
+__package_name__ = "piece_package"
 
 # Optional: Package-level constants
 MAX_PIECES_PER_TEAM = 16
@@ -65,6 +66,10 @@ __all__ = [
     "CombatantPiece",
     "KingPiece",
     "CoordStack",
+    "PieceValidator",
+
+    # Aliases
+    "Positions",
 
     # Package metadata and utilities
     "__version__",

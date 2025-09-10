@@ -1,6 +1,6 @@
 class DoublePromotionException(PieceException):
     """
-    If a piece with rank in [Pawn, King] has been promoted to Queen, DoublePromotionException
+    If a piece with validation in [Pawn, King] has been promoted to Queen, DoublePromotionException
     is raised if there is a second attempt to promote the chess piece.
     """
 

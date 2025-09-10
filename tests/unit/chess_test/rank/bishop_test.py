@@ -1,6 +1,6 @@
 import unittest
 
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 from chess.config.game import SideProfile
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
 
@@ -18,7 +18,7 @@ class BishopTest(unittest.TestCase):
 
     def test_invalid_destination_raises_error(self):
         rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
-        side = Side(1, Competitor(1, "coosmof"), SideProfile.BLACK)
+        side = Side(1, Commander(1, "coosmof"), SideProfile.BLACK)
         piece = Piece(1, "BB-1", rank, side)
         piece.positions.push_coord(Coord(0, 0))
         board = ChessBoardBuilder.build(1)
@@ -31,7 +31,7 @@ class BishopTest(unittest.TestCase):
     def test_valid_destination_passes(self):
         rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
         board = ChessBoardBuilder.build(1)
-        side = Side(1, Competitor(1, "competitor"), SideProfile.BLACK)
+        side = Side(1, Commander(1, "commander"), SideProfile.BLACK)
 
         piece = Piece(1, "BB-1", rank, side)
         piece.positions.push_coord(Coord(0, 0))

@@ -1,9 +1,9 @@
 from typing import Generic, cast
 
 from assurance.exception.validation.coord_stack import CoordStackValidationException
-from chess.common.result import Result
-from assurance.validators.coord import CoordValidator
-from assurance.validators.base import Validator, T
+from chess.result import Result
+from chess.geometry.validator.coord_validator import CoordValidator
+from chess.common.validator import Validator, T
 from chess.exception.coord_stack import InconsistentCurrentCoordinateException
 
 from chess.exception.stack import CorruptedStackException, StackSizeConflictException

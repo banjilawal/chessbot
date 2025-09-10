@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import create_autospec
 
-from assurance.exception.validation.coord import CoordValidationException
-from assurance.validators.coord import CoordValidator
+from chess.geometry.exception.coord import CoordValidationException
+from chess.geometry.validator.coord_validator import CoordValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import (
     RowBelowBoundsException,

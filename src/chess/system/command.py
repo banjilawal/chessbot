@@ -1,6 +1,6 @@
 from typing import Generic, TypeVar, Optional, cast
 
-from chess.board.square import Square
+from chess.square import Square
 from chess.rank.queen_rank import Queen
 from chess.piece.piece import Piece
 

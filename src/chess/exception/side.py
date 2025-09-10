@@ -19,7 +19,7 @@ class SideException(ChessException):
 
 class SideSearchException(SideException):
     """
-    If a search parameter fails validation or sanity checks a SideSearchException is raised.
+    If a search parameter fails validator or sanity checks a SideSearchException is raised.
     """
 
     ERROR_CODE = "SIDE_SEARCH_ERROR"
@@ -35,12 +35,12 @@ class SideSearchException(SideException):
 
 class ConflictingSideException(SideException):
     """
-    If a piece that's already on one side (piece.side == not None) tries joining
+    If a piece that's already on one team (piece.team == not None) tries joining
     another ConflictingSideException is raised.
     """
 
     ERROR_CODE = "CONFLICTING_SIDE_ERROR"
-    DEFAULT_MESSAGE = "piece is on a different side. Cannot join this one"
+    DEFAULT_MESSAGE = "piece is on a different team. Cannot join this one"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -52,7 +52,7 @@ class ConflictingSideException(SideException):
 
 class AddPieceException(SideException):
     """
-    Raised if piece could not be added to the side's roster
+    Raised if piece could not be added to the team's roster
     """
 
     ERROR_CODE = "ADD_PIECE_ERROR"

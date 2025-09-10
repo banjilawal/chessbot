@@ -1,9 +1,9 @@
-from assurance.validators.coord import CoordValidator
+from chess.geometry.validator.coord_validator import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from chess.board.board import Board
-from chess.board.square import Square
-from chess.common.result import SearchResult
+from chess.square import Square
+from chess.result import SearchResult
 from chess.geometry.coord import Coord
 
 

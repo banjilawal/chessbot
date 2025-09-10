@@ -6,7 +6,7 @@ from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.competitor import CompetitorValidationException
 from assurance.validators.competitor import CompetitorValidator
 from chess.exception.null.competitor import NullCompetitorException
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 from unit.chess_test.competitor.competitor_test import CompetitorTest
 
 
@@ -27,9 +27,9 @@ class CompetitorValidatorTest(unittest.TestCase):
 
 
     def test_competitor_validator_failed_id_validation_raises_exception(self):
-        mock_competitor = create_autospec(Competitor, instance=True)
+        mock_competitor = create_autospec(Commander, instance=True)
         mock_competitor.id=-1
-        mock_competitor._name= "competitor"
+        mock_competitor._name= "commander"
 
         with self.assertRaises(CompetitorValidationException) as ctx:
             CompetitorValidator.validate(mock_competitor)
@@ -38,7 +38,7 @@ class CompetitorValidatorTest(unittest.TestCase):
 
 
     def test_competitor_validator_failed_name_validation_raises_exception(self):
-        mock_competitor = create_autospec(Competitor, instance=True)
+        mock_competitor = create_autospec(Commander, instance=True)
         mock_competitor.id=1
         mock_competitor._name="A"
 

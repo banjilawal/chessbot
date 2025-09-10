@@ -1,12 +1,12 @@
 from typing import cast
 
-from assurance.validators.scalar import ScalarValidator
-from assurance.validators.vector import VectorValidator
+from chess.geometry.validator.scalar_validator import ScalarValidator
+from chess.geometry.validator.vector_validator import VectorValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 
 
-from .vector import Vector
-from .scalar import Scalar
+from chess.geometry.vector import Vector
+from chess.geometry.scalar import Scalar
 
 
 class Coord:

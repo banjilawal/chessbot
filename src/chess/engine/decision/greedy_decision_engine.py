@@ -6,7 +6,7 @@ from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
 
 from chess.geometry.coord import Coord
-from chess.competitor.model import CyberneticCompetitor
+from chess.competitor.commander import CyberneticCommander
 
 
 class GreedyDecisionEngine(DecisionEngine):
@@ -17,7 +17,7 @@ class GreedyDecisionEngine(DecisionEngine):
         self._board_analysis = None
 
 
-    def decide_destination(self, cybernaut: CyberneticCompetitor, chess_board: Board) -> Optional[Coord]:
+    def decide_destination(self, cybernaut: CyberneticCommander, chess_board: Board) -> Optional[Coord]:
         self._board_analysis = self.board_analyzer.issue_analysis(cybernaut, chess_board)
         return self._decision_helper()
 

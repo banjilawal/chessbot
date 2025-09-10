@@ -1,7 +1,7 @@
 from typing import Generic
 
-from chess.common.result import Result
-from assurance.validators.base import Validator, T
+from chess.result import Result
+from chess.common.validator import Validator, T
 
 
 class WalkValidator(Validator):

@@ -21,8 +21,8 @@ class TeamFactory:
             teams.append(team)
 
         ranks = RankFactory.assemble()
-        # for rank in ranks:
-        #     print(rank)
+        # for validation in ranks:
+        #     print(validation)
 
         for team in teams:
             for rank in ranks:
@@ -44,8 +44,8 @@ def main():
     for team in teams:
         print(team)
 
-    # for side in teams:
-    #     for captor in side.chess_pieces:
+    # for team in teams:
+    #     for captor in team.chess_pieces:
     #         print(captor)
 
             # for placement in PlacementChart:

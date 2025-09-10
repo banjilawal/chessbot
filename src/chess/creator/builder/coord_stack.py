@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.common.result import Result
+from chess.result import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.coord_stack import CoordStackValidator
 from chess.piece.piece.coord import CoordinateStack

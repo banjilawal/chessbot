@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Any, Callable
 
 from assurance.error_handler import ErrorHandler
-from chess.common.result import Result
+from chess.result import Result
 
 
 class ThrowHelper(Enum):

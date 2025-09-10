@@ -1,8 +1,8 @@
 from enum import Enum
 
-from chess.common.result import Result
+from chess.result import Result
 from assurance.throw_helper import ThrowHelper
-from assurance.validators.coord import CoordValidator
+from chess.geometry.validator.coord_validator import CoordValidator
 from chess.geometry.coord import Coord
 
 

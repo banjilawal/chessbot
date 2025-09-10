@@ -6,7 +6,7 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.team import SideValidationException
 from assurance.validators.side import SideValidator
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
 from chess.exception.null.side import NullSideException
@@ -57,7 +57,7 @@ class SideValidatorTest(unittest.TestCase):
         mock_side.id=1
 
 
-        mock_side.competitor=Competitor(1, "competitor")
+        mock_side.competitor=Commander(1, "commander")
         mock_side.profile = None
 
         with self.assertRaises(SideValidationException) as ctx:
@@ -67,7 +67,7 @@ class SideValidatorTest(unittest.TestCase):
 
 
     def test_side_validator_payload_equals_valid_side(self):
-        side = Side(1, Competitor(1, "competitor"), SideProfile.BLACK)
+        side = Side(1, Commander(1, "commander"), SideProfile.BLACK)
         validation = SideValidator.validate(side)
         self.assertEqual(validation.payload, side)
 

@@ -3,7 +3,7 @@ from unittest.mock import create_autospec, patch
 
 from assurance.exception.validation.competitor import CompetitorValidationException
 from assurance.exception.validation.id import IdValidationException
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
 from chess.exception.stack import BrokenRelationshipException
@@ -26,7 +26,7 @@ class SideTest(unittest.TestCase):
         return mock_side
 
 
-    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.commander.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = False
@@ -39,31 +39,31 @@ class SideTest(unittest.TestCase):
             Side(side_id=None, controller=mock_competitor, profile=SideProfile.BLACK)
 
 
-    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.commander.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = True
 
         mock_competitor_validation.return_value.is_success.return_value = False
-        mock_competitor_validation.return_value.exception = CompetitorValidationException("Invalid competitor")
+        mock_competitor_validation.return_value.exception = CompetitorValidationException("Invalid commander")
 
         with self.assertRaises(CompetitorValidationException):
             Side(side_id=1, controller=None, profile=SideProfile.BLACK)
 
 
-    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.commander.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = True
 
         mock_competitor_validation.return_value.is_success.return_value = False
-        mock_competitor_validation.return_value.exception = CompetitorValidationException("Invalid competitor")
+        mock_competitor_validation.return_value.exception = CompetitorValidationException("Invalid commander")
 
         with self.assertRaises(CompetitorValidationException):
             Side(side_id=1, controller=None, profile=SideProfile.BLACK)
 
 
-    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.commander.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = True
@@ -75,13 +75,13 @@ class SideTest(unittest.TestCase):
             Side(side_id=1, controller=mock_competitor, profile=None)
 
 
-    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.commander.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = True
         mock_competitor_validation.return_value.is_success.return_value = True
 
-        # Fake sides_played collection that doesn't actually add the side
+        # Fake sides_played collection that doesn't actually add the team
         class FakeSidesPlayed:
             def __init__(self):
                 self.items = []
@@ -98,14 +98,14 @@ class SideTest(unittest.TestCase):
             Side(side_id=1, controller=fake_controller, profile=SideProfile.BLACK)
 
 
-    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.commander.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = True
         mock_id_validation.return_value.payload = 1
 
 
-        competitor = Competitor(competitor_id=1, name="competitor")
+        competitor = Commander(competitor_id=1, name="commander")
         mock_competitor_validation.return_value.is_success.return_value = True
         mock_competitor_validation.return_value.payload = competitor
 
@@ -114,14 +114,14 @@ class SideTest(unittest.TestCase):
             assert side in competitor.sides_played.items
 
 
-    @patch('assurance.validators.competitor.CompetitorValidator.validate')
+    @patch('assurance.validators.commander.CompetitorValidator.validate')
     @patch('assurance.validators.id.IdValidator.validate')
     def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
         mock_id_validation.return_value.is_success.return_value = True
         mock_id_validation.return_value.payload = 1
 
 
-        competitor = Competitor(competitor_id=1, name="competitor")
+        competitor = Commander(competitor_id=1, name="commander")
         mock_competitor_validation.return_value.is_success.return_value = True
         mock_competitor_validation.return_value.payload = competitor
 

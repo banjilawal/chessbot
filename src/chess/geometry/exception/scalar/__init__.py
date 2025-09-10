@@ -1,9 +1,16 @@
+"""
+geometry.exception.scalar Package -
 
+Pu
+"""
+
+from .zero_scalar import ZeroScalarException
 from .scalar_null import NullScalarException
 from .scalar_below_bounds import ScalarBelowLowerBoundException
 from .scalar_above_bounds import ScalarAboveUpperBoundException
 
 
+ZeroScalar = ZeroScalarException
 NullScalar = NullScalarException
 ScalarBelowBounds = ScalarBelowLowerBoundException
 ScalarAboveBounds= ScalarAboveUpperBoundException
@@ -28,11 +35,13 @@ def package_info() -> dict:
 
 __all__ = [
     # Core Packages
+    "ZeroScalarException",
     "NullScalarException",
     "ScalarBelowLowerBoundException",
     "ScalarAboveUpperBoundException",
 
     # Aliases
+    "ZeroScalar",
     "NullScalar",
     "ScalarBelowBounds",
     "ScalarAboveBounds",

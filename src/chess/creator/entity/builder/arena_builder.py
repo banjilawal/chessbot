@@ -7,7 +7,7 @@ from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.owner_factory import OwnerFactory
 from chess.creator.entity.factory.team_factory import TeamFactory
 from chess.creator.team_placement_manager import TeamPlacementManager
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 
 
 class ArenaBuilder:
@@ -35,8 +35,8 @@ def main():
             print(p, " current coord", p.positions.current_coord(), p.positions.size())
     #
     # teams = TeamFactory.assemble()
-    # white_team_owner = teams[0].competitor
-    # black_team_owner = teams[1].competitor
+    # white_team_owner = teams[0].commander
+    # black_team_owner = teams[1].commander
     #
     #
     # arena = Arena(
@@ -45,15 +45,15 @@ def main():
     # TeamPlacementManager.place_teams(arena)
     # return  arena
     #
-    # print("white side competitor", arena.white_owner,
-    #       "\nwhite chess pieces:", len(arena.white_owner.side.chess_pieces))
+    # print("white team commander", arena.white_owner,
+    #       "\nwhite chess pieces:", len(arena.white_owner.team.chess_pieces))
     #
-    # print("\nblack side competitor", arena.black_owner,
-    #       "\nblack chess pieces:", len(arena.black_owner.side.chess_pieces))
+    # print("\nblack team commander", arena.black_owner,
+    #       "\nblack chess pieces:", len(arena.black_owner.team.chess_pieces))
 
 
     #
-    # for captor in arena.white_owner.side.chess_pieces:
+    # for captor in arena.white_owner.team.chess_pieces:
     #     print(captor, " current coord", captor.coordinate_stack.current_coordinate())
 
     # TeamPlacementManager.place_teams(arena)
@@ -62,7 +62,7 @@ def main():
     # for square in arena.chess_board.occupied_squares():
     #     print(square, " occupied by", square.occupant.name)
 
-    # for captor in arena.white_owner.side.chess_pieces:
+    # for captor in arena.white_owner.team.chess_pieces:
     #     print(captor, " current coord", captor.coordinate_stack.current_coordinate())
     # for square in arena.chess_board.squares:
     #     print(square)

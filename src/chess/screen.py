@@ -263,7 +263,7 @@ class GameDisplay:
             self.cell_px - self.border_px,
             self.cell_px - self.border_px
         )
-        # pick color by rank (reuse your existing logic)
+        # pick color by validation (reuse your existing logic)
         if isinstance(chess_piece.rank, King):
             pygame.draw.rect(self.screen, KING_COLOR, rect)
         elif isinstance(chess_piece.rank, Pawn):

@@ -3,14 +3,14 @@ from typing import cast, Generic, TYPE_CHECKING
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.team import SideValidationException
 from assurance.exception.validation.competitor import CompetitorValidationException
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
 
 from chess.exception.null.side import NullSideException
-from chess.common.result import Result
-from assurance.validators.base import Validator, T
+from chess.result import Result
+from chess.common.validator import Validator, T
 from assurance.validators.id import IdValidator
 from chess.exception.stack import BrokenRelationshipException
 
@@ -27,14 +27,14 @@ class SideValidator(Validator):
         method = f"{class_name}.validate"
 
         """
-        Validates a side with chained exceptions for side meeting specifications:
+        Validates a team with chained exceptions for team meeting specifications:
             - Not null
-            - id passes validation checks
-            - competitor passes validation checks
+            - id passes validator checks
+            - commander passes validator checks
         An unmet requirements raise an exception which encapsulated in a SideValidationException
 
         Args
-            t (Side): side to validate
+            t (Side): team to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
@@ -45,7 +45,7 @@ class SideValidator(Validator):
             NullSideException: if t is null   
 
             IdValidationException: if invalid id
-            CompetitorValidationException: if invalid competitor
+            CompetitorValidationException: if invalid commander
 
             SideValidationException: Wraps any preceding exceptions      
         """
@@ -72,7 +72,7 @@ class SideValidator(Validator):
                 raise CompetitorValidationException(
                     f"{method}: {CompetitorValidationException.DEFAULT_MESSAGE}"
                 )
-            competitor = cast(Competitor, competitor_validation.payload)
+            competitor = cast(Commander, competitor_validation.payload)
 
             if side not in competitor.sides_played.items:
 
@@ -93,8 +93,8 @@ class SideValidator(Validator):
 
 def main():
 
-    from chess.competitor.model import HumanCompetitor
-    person = HumanCompetitor(1, "person")
+    from chess.competitor.commander import HumanCommander
+    person = HumanCommander(1, "person")
 
     from chess.side.team import Side
     side = Side(side_id=1, controller=person, profile=SideProfile.BLACK)

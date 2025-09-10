@@ -2,9 +2,9 @@ from typing import cast, Generic
 
 from assurance.exception.validation.hostage import HostageValidationException
 
-from chess.common.result import Result
-from assurance.validators.base import Validator, T
-from assurance.validators.piece import PieceValidator
+from chess.result import Result
+from chess.common.validator import Validator, T
+from chess.piece.validator import PieceValidator
 
 from chess.creator.builder.competitor import CompetitorBuilder
 from chess.creator.builder.side import SideBuilder
@@ -43,7 +43,7 @@ class HostageValidator(Validator):
             PieceValidationException: t is not a valid piece
             TypeError: if t is not CombatantPiece
             HostageCaptorNullException: if the captor field is null
-            RosterRemovalException: if the captive is still on its side's roster
+            RosterRemovalException: if the captive is still on its team's roster
             HostageAdditionException: if the captive has not been added to its enemy's hostage list
             
             HostageValidationException: Wraps any preceding exceptions      

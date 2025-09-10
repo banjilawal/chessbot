@@ -1,19 +1,19 @@
 from enum import Enum
 
-from chess.common.result import Result
+from chess.result import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.competitor import CompetitorValidator
 from chess.creator.emit import id_emitter
-from chess.competitor.model import Competitor, HumanCompetitor
+from chess.competitor.commander import Commander, HumanCommander
 from chess.randomize.competitor import RandomName
 
 
 class CompetitorBuilder(Enum):
 
     @staticmethod
-    def build(competitor_id:int=id_emitter.person_id, name:str="person") -> Result[Competitor]:
+    def build(competitor_id:int=id_emitter.person_id, name:str="person") -> Result[Commander]:
         try:
-            candidate = HumanCompetitor(competitor_id=competitor_id, name=name)
+            candidate = HumanCommander(competitor_id=competitor_id, name=name)
             validation = CompetitorValidator.validate(candidate)
 
             ThrowHelper.throw_if_invalid(CompetitorBuilder, validation)

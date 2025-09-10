@@ -1,4 +1,4 @@
-from chess.common.result import Result
+from chess.result import Result
 
 
 class TransactionReport:

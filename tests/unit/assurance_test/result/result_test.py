@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 from assurance.exception.empty.result import EmptyResultConstructorException
 from assurance.exception.result import ResultPayloadConflictException
-from chess.common.result import Result
+from chess.result import Result
 
 
 class ResultTest(unittest.TestCase):

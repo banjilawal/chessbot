@@ -13,17 +13,17 @@ CORE CLASSES:
     RookException: Wrapper for exceptions raised by Rook methods
     QueenException: Wrapper for exceptions raised by Queen methods
     PromotionRowException: Raised if class whose parent is not QueenPromotable tries getting promoted
-    UnPromotableException: Raised if a QueenPromotable class tries to get promoted outside its enemy's rank row
-
-
+    UnPromotableException: Raised if a QueenPromotable class tries to get promoted outside its enemy's validation row
 
 USAGE:
-    >>> from rankexception_pkg import QueenException
+    >>> from rank_exception_pkg import QueenException
     >>> raise QueenException(f"{method}: {QueenException.DEFAULT_MESSAGE}")
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
+
+from . import validation
 
 from .bishop_exception import BishopException
 from .king_exception import KingException

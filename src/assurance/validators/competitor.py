@@ -4,8 +4,8 @@ from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from assurance.exception.validation.competitor import CompetitorValidationException
 from assurance.exception.validation.team import TeamHistoryValidationException
-from chess.common.result import Result
-from assurance.validators.base import Validator, T
+from chess.result import Result
+from chess.common.validator import Validator, T
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
 from assurance.validators.team_hist import SideRecordValidator
@@ -13,12 +13,12 @@ from assurance.validators.team_hist import SideRecordValidator
 from chess.exception.null.competitor import NullCompetitorException
 
 if TYPE_CHECKING:
-    from chess.competitor.model import Competitor
+    from chess.competitor.commander import Commander
 
 
 class CompetitorValidator(Validator):
     """
-    Validates an Competitor used in a domain module meets requirements:
+    Validates an Commander used in a domain module meets requirements:
         - Is not null.
         - Its fields meet the specifications for the domain.
     Unmet requirements will raise a CompetitorValidationException
@@ -30,35 +30,35 @@ class CompetitorValidator(Validator):
     """
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result['Competitor']:
-        entity = "Competitor"
+    def validate(t: Generic[T]) -> Result['Commander']:
+        entity = "Commander"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
-        Validates a competitor meets domain requirements:
+        Validates a commander meets domain requirements:
             - Not null
             - valid id
             - valid name
-            - Competitor.team_history meets validation requirements
+            - Commander.team_history meets validator requirements
         Any failed requirement raise an exception wrapped in a CompetitorValidationException
             
         Args
-            t (Competitor): competitor to validate
+            t (Commander): commander to validate
             
          Returns:
              Result[T]: A Result object containing the validated payload if all domain requirements 
              are satisfied. CompetitorValidationException otherwise.
         
         Raises:
-            TypeError: if t is not Competitor
+            TypeError: if t is not Commander
             NullCompetitorException: if t is null   
 
-            RowBelowBoundsException: If competitor.row < 0
-            RowAboveBoundsException: If competitor.row >= ROW_SIZE
+            RowBelowBoundsException: If commander.row < 0
+            RowAboveBoundsException: If commander.row >= ROW_SIZE
                 
-            ColumnBelowBoundsException: If competitor.column < 0
-            ColumnAboveBoundsException: If competitor.column>= ROW_SIZE
+            ColumnBelowBoundsException: If commander.column < 0
+            ColumnAboveBoundsException: If commander.column>= ROW_SIZE
                 
             CompetitorValidationException: Wraps any preceding exception     
         """
@@ -72,14 +72,14 @@ class CompetitorValidator(Validator):
             if t is None:
                 raise NullCompetitorException(f"{method} {NullCompetitorException.DEFAULT_MESSAGE}")
 
-            # If cannot cast from t to Competitor need to break
-            from chess.competitor.model import Competitor
-            if not isinstance(t, Competitor):
-                raise TypeError(f"{method} Expected a Competitor, got {type(t).__name__}")
+            # If cannot cast from t to Commander need to break
+            from chess.competitor.commander import Commander
+            if not isinstance(t, Commander):
+                raise TypeError(f"{method} Expected a Commander, got {type(t).__name__}")
 
             # cast and run checks for the fields
-            from chess.competitor.model import Competitor
-            competitor = cast(Competitor, t)
+            from chess.competitor.commander import Commander
+            competitor = cast(Commander, t)
 
             id_validation = IdValidator.validate(competitor.id)
             if not id_validation.is_success():

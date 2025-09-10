@@ -1,9 +1,9 @@
 from enum import Enum
 
-from chess.common.result import Result
+from chess.result import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.side import SideValidator
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 from chess.config.game import SideProfile
 from chess.creator.builder.competitor import CompetitorBuilder
 from chess.creator.emit import id_emitter
@@ -13,7 +13,7 @@ from chess.side.team import Side
 class SideBuilder(Enum):
 
     @staticmethod
-    def build(side_id:int=id_emitter.side_id, controller:Competitor=CompetitorBuilder.build().payload, profile:SideProfile=SideProfile.WHITE) -> Result[Side]:
+    def build(side_id:int=id_emitter.side_id, controller:Commander=CompetitorBuilder.build().payload, profile:SideProfile=SideProfile.WHITE) -> Result[Side]:
         try:
             candidate = Side(side_id=side_id, controller=controller, profile=profile)
             validation = SideValidator.validate(candidate)

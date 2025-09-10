@@ -1,7 +1,7 @@
 # from abc import ABC
 #
-# from assurance.exception.validation.piece import PieceValidationException
-# from assurance.exception.validation.square import SquareValidationException
+# from assurance.exception.validator.piece import PieceValidationException
+# from assurance.exception.validator.square import SquareValidationException
 # from assurance.validators.piece import PieceValidator
 # from assurance.validators.square import SquareValidator
 # from chess.board.square import Square

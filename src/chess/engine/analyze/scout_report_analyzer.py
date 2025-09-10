@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.board.square import Square
+from chess.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coord import Coord
 from chess.piece.encounter import Encounter

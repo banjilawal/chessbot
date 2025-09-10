@@ -1,12 +1,14 @@
 from typing import List
 
-from assurance.validators.coord import CoordValidator
-from assurance.validators.name import NameValidator
-from chess.common.result import SearchResult
+from chess.geometry.validator.coord_validator import CoordValidator
+
 from chess.geometry.coord import Coord
-from chess.search.side_search import SideSearch
+
 from chess.side.team import Side
 from chess.piece.piece import Piece
+
+from .search_result import SearchResult
+from .side_search import SideSearch
 
 
 class PieceSearch:

@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.board.square import Square
+from chess.square import Square
 from chess.piece.piece import Piece
 
 

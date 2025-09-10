@@ -2,12 +2,12 @@ from typing import List
 
 from chess.arena.model import Arena
 from chess.piece.piece.coord import CoordinateStack
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 
 class Game:
     _id: int
     _arena: Arena
-    _winner: Competitor
+    _winner: Commander
     _game_Log: List[CoordinateStack]
 
     def __init__(self, match_id: int, arena: Arena):
@@ -25,7 +25,7 @@ class Game:
         return self._arena
 
     @property
-    def winner(self) -> Competitor:
+    def winner(self) -> Commander:
         return self._winner
 
     @property

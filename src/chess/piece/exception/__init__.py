@@ -12,6 +12,7 @@ EXCEPTIONS:
     PrisonerReleaseException: Error releasing prisoner
     PieceCoordNullException: Piece coordinate is null
     SetCaptorNullException: Setting null captor
+    PieceValidationException:raised if PieceValidation fails
 
 SUBPAKAGES:
     null: Null reference exceptions (NullPieceException, etc.)
@@ -37,6 +38,7 @@ from .prisoner_escape import PrisonerEscapeException
 from .prisoner_release import PrisonerReleaseException
 from .piece_coord_null import PieceCoordNullException
 from .set_captor_null import SetCaptorNullException
+from .invalid_piece import PieceValidationException
 
 
 AlreadyAtDestination = AlreadyAtDestinationException
@@ -45,6 +47,7 @@ DoublePromotion = DoublePromotionException
 PrisonerEscape = PrisonerEscapeException
 PrisonerRelease = PrisonerReleaseException
 SetCaptorNull = SetCaptorNullException
+InvalidPiece = PieceValidationException
 
 
 # Package metadata (organic to __init__.py)
@@ -76,6 +79,15 @@ __all__ = [
     "PrisonerReleaseException",
     "PieceCoordNullException",
     "SetCaptorNullException",
+    "PieceValidationException",
+
+    # Aliases
+    "AlreadyAtDestination",
+    "EncounteringSelf",
+    "DoublePromotion",
+    "PrisonerEscape",
+    "PrisonerRelease",
+    "SetCaptorNull",
 
     # Package metadata and utilities
     "__version__",

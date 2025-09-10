@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import create_autospec
 
-from assurance.exception.validation.coord import CoordValidationException
+from chess.geometry.exception.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from assurance.exception.validation.square import SquareValidationException
+from chess.square.exception.invalid import SquareValidationException
 from assurance.validators.square import SquareValidator
-from chess.board.square import Square
-from chess.exception.null.square import NullSquareException
+from chess.square import Square
+from chess.square.exception.null import NullSquareException
 from unit.chess_test.board.square_test import SquareTest
 from unit.chess_test.geometry.coord_test import CoordTest
 

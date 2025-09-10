@@ -3,7 +3,7 @@ from chess.exception.null.base import NullException
 
 class NullCompetitorException(NullException):
     """
-    Raised if a competitor is null.
+    Raised if a commander is null.
     """
 
     ERROR_CODE = "NULL_COMPETITOR_ERROR"

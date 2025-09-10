@@ -9,7 +9,7 @@ class CompetitorException(ChessException):
     """
 
     ERROR_CODE = "COMPETITOR_ERROR"
-    DEFAULT_MESSAGE = "Competitor raised an exception"
+    DEFAULT_MESSAGE = "Commander raised an exception"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -26,7 +26,7 @@ class SideRecordException(ChessException):
     """
 
     ERROR_CODE = "COMPETITOR_ERROR"
-    DEFAULT_MESSAGE = "Competitor raised an exception"
+    DEFAULT_MESSAGE = "Commander raised an exception"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

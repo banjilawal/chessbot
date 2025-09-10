@@ -1,7 +1,7 @@
 from typing import cast
 
 from chess.board.board import Board
-from chess.board.square import Square
+from chess.square import Square
 from chess.common.permit import Event
 from chess.exception.event import AttackEventInconsistencyException, \
     CorruptRecordEventException

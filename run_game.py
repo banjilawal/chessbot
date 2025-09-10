@@ -1,6 +1,5 @@
 import pygame.time
 
-from chess.common.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT
 from chess.creator.entity.builder.arena_builder import ArenaBuilder
 from chess.screen import GameDisplay
 from config.logging_setup import init_logging

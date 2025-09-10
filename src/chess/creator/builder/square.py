@@ -1,10 +1,10 @@
 from enum import Enum
 from typing import cast
 
-from chess.common.result import Result
+from chess.result import Result
 from assurance.throw_helper import ThrowHelper
 from assurance.validators.square import SquareValidator
-from chess.board.square import Square
+from chess.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coord import Coord
 

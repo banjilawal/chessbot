@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from chess.arena.model import Arena
 from chess.board.board import Board
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 
 
 class ArenaRepo:
@@ -28,7 +28,7 @@ class ArenaRepo:
         return None
 
 
-    def arenas_by_team_owner(self, owner: Competitor) -> List[Arena]:
+    def arenas_by_team_owner(self, owner: Commander) -> List[Arena]:
         matches: List[Arena] = []
 
         for arena in self._arenas:

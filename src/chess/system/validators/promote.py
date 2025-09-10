@@ -1,12 +1,12 @@
 from typing import Generic, TypeVar, cast
 
 from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.piece import PieceValidationException
+from chess.piece.exception.invalid_piece import PieceValidationException
 from assurance.exception.validation.request import PromotionRequestValidationException
 
 from assurance.result.event import CommandOutcome
 from assurance.validators.id import IdValidator
-from assurance.validators.piece import PieceValidator
+from chess.piece.validator import PieceValidator
 from chess.rank.queen_rank import PromotedQueen
 from chess.system.validators.base import RequestValidator
 from chess.common.permit import Event
@@ -28,7 +28,7 @@ class PromotionRequestValidator(RequestValidator):
         """
         Validates an Promote meets specifications:
             - Not null
-            - id does not validation
+            - id does not validator
             - client is a valid chess piece
             - resource is a valid square
         If a condition is not met an PromotionRequestValidationException will be thrown.
@@ -45,11 +45,11 @@ class PromotionRequestValidator(RequestValidator):
             NullPromotionRequestException: if t is null   
 
             IdValidationException: if invalid id
-            PieceValidationException: if t.client fails validation
+            PieceValidationException: if t.client fails validator
             
-            PromotionRowException: if piece is not on its enemy's rank row
+            PromotionRowException: if piece is not on its enemy's validation row
             DoublePromotionException: if the piece has already been promoted
-            UnPromotableRankException: if the piece's rank is not Pawn or King
+            UnPromotableRankException: if the piece's validation is not Pawn or King
 
             PromotionRequestValidationException: Wraps any preceding exceptions      
         """

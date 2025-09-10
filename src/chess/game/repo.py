@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from chess.arena.model import Arena
 from chess.game.model import Game
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 
 
 class GameRepo:
@@ -24,7 +24,7 @@ class GameRepo:
         return None
 
 
-    def filter_by_winner(self, winner: Competitor) -> List[Game]:
+    def filter_by_winner(self, winner: Commander) -> List[Game]:
         matches: List[Game] = []
 
         for game in self._games:

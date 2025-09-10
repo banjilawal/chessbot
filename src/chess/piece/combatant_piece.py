@@ -1,4 +1,5 @@
 from typing import Optional
+from .piece import Piece
 
 
 class CombatantPiece(Piece):
@@ -38,8 +39,8 @@ class CombatantPiece(Piece):
 #
 #
 # def main():
-#     from chess.rank.pawn_rank import Pawn
-#     piece = CombatantPiece(piece_id=id_emitter.piece_id, name="BB-1", side=SideBuilder.build().payload, rank=Pawn())
+#     from chess.validation.pawn_rank import Pawn
+#     piece = CombatantPiece(piece_id=id_emitter.piece_id, name="BB-1", team=SideBuilder.build().payload, validation=Pawn())
 #     print(piece)
 #
 #

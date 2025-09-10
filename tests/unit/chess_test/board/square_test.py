@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import patch, Mock, create_autospec
 
-from assurance.exception.validation.coord import CoordValidationException
+from chess.geometry.exception.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from chess.board.square import Square
+from chess.square import Square
 from chess.geometry.coord import Coord
 from chess.piece.piece import Piece
 from unit.chess_test.geometry.coord_test import CoordTest

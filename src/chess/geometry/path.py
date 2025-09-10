@@ -1,7 +1,7 @@
 
 from typing import cast
 
-from assurance.validators.coord import CoordValidator
+from chess.geometry.validator.coord_validator import CoordValidator
 from .coord import Coord
 from .line import Line
 

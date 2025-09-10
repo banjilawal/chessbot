@@ -19,8 +19,8 @@ CONVENIENCE ALIASES:
 
 USAGE:
     >>> from chess.piece import CombatantPiece, KingPiecee, CoordHistory
-    >>> piece = Combatant(piece_id=1, name="Pawn-A", rank=pawn_rank, team=white_team)
-    >>> king = King(piece_id=2, name="White-King", rank=king_rank, team=white_team)
+    >>> piece = Combatant(piece_id=1, name="Pawn-A", validation=pawn_rank, team=white_team)
+    >>> king = King(piece_id=2, name="White-King", validation=king_rank, team=white_team)
     >>> history = CoordHistory()
 
 VERSION: 1.0.0
@@ -38,6 +38,9 @@ from .coord_exception import CoordException
 from .rank_exception import RankException
 from .board_exception import BoardException
 from .vector_exception import VectorException
+from .scalar_exception import ScalarException
+from .search import SearchException
+from .square_exception import SquareException
 
 
 # Package metadata (organic to __init__.py)

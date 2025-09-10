@@ -1,19 +1,19 @@
 from typing import Generic, TypeVar, cast
 
 from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.piece import PieceValidationException
+from chess.piece.exception.invalid_piece import PieceValidationException
 from assurance.exception.validation.request import OccupationRequestValidationException
-from assurance.exception.validation.square import SquareValidationException
+from chess.square.exception.invalid import SquareValidationException
 from assurance.result.event import CommandOutcome
 from assurance.validators.id import IdValidator
-from assurance.validators.piece import PieceValidator
-from chess.board.square import Square
+from chess.piece.validator import PieceValidator
+from chess.square import Square
 from chess.creator.emit import id_emitter
 from chess.system.validators.base import RequestValidator
 from assurance.validators.square import SquareValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullOccupationRequestException
-from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
+from chess.exception.occupy import OccupiedBySelfException
 from chess.exception.exception import AttackingKingException
 from chess.system.send import OccupationRequest
 from chess.piece.piece import KingPiece, Piece
@@ -31,7 +31,7 @@ class OccupationRequestValidator(RequestValidator):
         """
         Validates an OccupySquare meets specifications:
             - Not null
-            - id does not validation
+            - id does not validator
             - client is a valid chess piece
             - resource is a valid square
         If a condition is not met an OccupationRequestValidationException will be thrown.
@@ -48,8 +48,8 @@ class OccupationRequestValidator(RequestValidator):
             NullOccupationRequestException: if t is null   
 
             IdValidationException: if invalid id
-            PieceValidationException: if t.client fails validation
-            SquareValidationException: if it.resource fails validation
+            PieceValidationException: if t.client fails validator
+            SquareValidationException: if it.resource fails validator
             
             OccupiedBySelfException: if client already occupies the square
             AttackingKingException: if the target square is occupied by an enemy king

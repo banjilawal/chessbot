@@ -125,7 +125,7 @@ class NullCaptorException(HostageException):
 
 class AttackingNullHostageException(HostageException):
     """
-    The Prisoner/Captor exceptions prevent domain logic violations on the captured side. Attacking
+    The Prisoner/Captor exceptions prevent domain logic violations on the captured team. Attacking
     exceptions constrain attacks. AttackingNullHostageException is raised if a hostage attacks something
     which does not exist.
     """
@@ -176,7 +176,7 @@ class AttackingKingException(HostageException):
 
 class AttackingFriendlyException(HostageException):
     """
-    Friendly hostages on the same side cannot attack each other. AttackingFriendlyException is
+    Friendly hostages on the same team cannot attack each other. AttackingFriendlyException is
     raised when a friendly is attacked.
     """
     ERROR_CODE = "ATTACKING_FRIENDLY_ERROR"
@@ -192,7 +192,7 @@ class AttackingFriendlyException(HostageException):
 
 class DoublePromotionException(HostageException):
     """
-    If a hostage with rank in [Pawn, King] has been promoted to Queen, DoublePromotionException
+    If a hostage with validation in [Pawn, King] has been promoted to Queen, DoublePromotionException
     is raised if there is a second attempt to promote the chess hostage.
     """
 

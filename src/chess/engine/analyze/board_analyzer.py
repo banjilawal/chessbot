@@ -3,7 +3,7 @@ from typing import List
 from chess.board.board import Board
 from chess.creator.emit import id_emitter
 from chess.engine.analyze.board_analysis import BoardAnalysis
-from chess.competitor.model import CyberneticCompetitor
+from chess.competitor.commander import CyberneticCommander
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
 from chess.engine.analyze.scout_report_analyzer import ScoutReportAnalyzer
 from chess.engine.scout.scout_master import ScoutMaster
@@ -12,7 +12,7 @@ from chess.engine.scout.scout_master import ScoutMaster
 class BoardAnalyzer:
 
     @staticmethod
-    def issue_analysis(owner: CyberneticCompetitor, chess_board: Board) -> BoardAnalysis:
+    def issue_analysis(owner: CyberneticCommander, chess_board: Board) -> BoardAnalysis:
         enemy_reports_count = 0
         vacancy_reports_count = 0
         obstruction_reports_count = 0

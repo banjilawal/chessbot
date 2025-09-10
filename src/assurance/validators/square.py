@@ -1,16 +1,16 @@
 from typing import cast, Generic
 
-from assurance.exception.validation.coord import CoordValidationException
+from chess.geometry.exception.coord import CoordValidationException
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
-from assurance.exception.validation.square import SquareValidationException
-from chess.common.result import Result
-from assurance.validators.base import Validator, T
-from assurance.validators.coord import CoordValidator
+from chess.square.exception.invalid import SquareValidationException
+from chess.result import Result
+from chess.common.validator import Validator, T
+from chess.geometry.validator.coord_validator import CoordValidator
 from assurance.validators.id import IdValidator
 from assurance.validators.name import NameValidator
-from chess.board.square import Square
-from chess.exception.null.square import NullSquareException
+from chess.square import Square
+from chess.square.exception.null import NullSquareException
 
 
 class SquareValidator(Validator):
@@ -25,9 +25,9 @@ class SquareValidator(Validator):
         """
         Validates a square with chained exceptions for square meeting specifications:
             - Not null
-            - id fails validation
-            - name fails validation
-            - coord fails validation
+            - id fails validator
+            - name fails validator
+            - coord fails validator
         If validators fails their exception will be encapsulated in a SquareValidationException
             
         Args

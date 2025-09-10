@@ -2,7 +2,7 @@ from typing import Optional, List
 
 from chess.game.model import Game
 from chess.game.repo import GameRepo
-from chess.competitor.model import Competitor
+from chess.competitor.commander import Commander
 
 
 class GameService:
@@ -18,5 +18,5 @@ class GameService:
     def find_game_by_id(self, game_id: int) -> Optional[Game]:
         return self._repo.find(game_id)
 
-    def find_games_by_winner(self, winner: Competitor) -> List[Game]:
+    def find_games_by_winner(self, winner: Commander) -> List[Game]:
         return self._repo.filter_by_winner(winner)

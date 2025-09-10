@@ -15,7 +15,7 @@ class TeamHistoryException(ChessException):
 
 class CurrentTeamException(TeamHistoryException):
     ERROR_CODE = "CURRENT_TEAM_STATE_ERROR"
-    DEFAULT_MESSAGE = "TeamStack's current side is in an inconsistent state"
+    DEFAULT_MESSAGE = "TeamStack's current team is in an inconsistent state"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

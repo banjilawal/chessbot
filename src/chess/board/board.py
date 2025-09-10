@@ -2,11 +2,11 @@ import random
 from typing import List, Optional, TYPE_CHECKING
 
 from assurance.exception.validation.hostage import HostageValidationException
-from chess.common.result import Result
-from assurance.validators.coord import CoordValidator
+from chess.result import Result
+from chess.geometry.validator.coord_validator import CoordValidator
 from assurance.validators.hostage import HostageValidator
 from assurance.validators.name import NameValidator
-from chess.board.square import Square
+from chess.square import Square
 from chess.exception.board_exception import RemovePieceFromBoardException, IncompleteBoardTransactionException
 from chess.exception.search import PieceNotFoundException, SquareNotFoundException
 from chess.geometry.coord import Coord
@@ -203,7 +203,7 @@ class Board:
             PieceNotFoundException: if the hostage does not exist on the board
             IncompleteBoardTransactionException: If hostage is still on the board after is was removed.
             
-            RemovePieceFromBoardException wraps any preceding exception
+            FailedPieceRemovalException wraps any preceding exception
         """
         try:
             validation = HostageValidator.validate(hostage)
@@ -404,7 +404,7 @@ class Board:
 
         validated_destination = self.find_square_by_coord(destination.coord)
 
-        # Set the Square side of the relationship
+        # Set the Square team of the relationship
         validated_destination.occupant = captor
 
 

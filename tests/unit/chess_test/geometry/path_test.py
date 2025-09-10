@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from assurance.exception.validation.coord import CoordValidationException
+from chess.geometry.exception.coord import CoordValidationException
 from unit.chess_test.geometry.coord_test import CoordTest
 
 

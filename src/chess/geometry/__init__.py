@@ -28,6 +28,10 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
+# Include subpackages
+from . import exception
+from . import validator
+
 # Core geometry classes
 from .coord import Coord
 from .vector import Vector
@@ -36,9 +40,6 @@ from .line import Line
 from .path import Path
 from .quadrant import Quadrant
 
-
-# Make exception subpackage available
-from . import exception
 
 # Package metadata
 __version__ = "1.0.0"

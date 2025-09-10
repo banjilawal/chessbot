@@ -19,7 +19,7 @@ from chess.piece.encounter import Encounter, EncounterLog
 
 if TYPE_CHECKING:
     from chess.rank.rank import Rank
-    # from assurance.validators.rank import RankValidator
+    # from assurance.validators.validation import RankValidator
 
 
 
@@ -49,7 +49,7 @@ class Piece(ABC):
                 f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
             )
 
-        # rank_validation = RankValidator.validate(rank)
+        # rank_validation = RankValidator.validate(validation)
         # if not rank_validation.is_success():
         #     raise RankValidationException(f"{method}: {RankValidationException.DEFAULT_MESSAGE}")
 
@@ -161,8 +161,8 @@ class Piece(ABC):
         return (
             f"Piece[id:{self._id} "
             f"name:{self._name} "
-            f"rank:{self._rank.name} "
-            f"side:{self._side.profile.name} "
+            f"validation:{self._rank.name} "
+            f"team:{self._side.profile.name} "
             f"position:{self._positions.current_coord} "
             f"moves:{self._positions.size()}]"
         )

@@ -21,7 +21,7 @@ class AttackException(PieceException):
 
 class AttackingNullAttackException(AttackException):
     """
-    The Prisoner/Captor exceptions prevent domain logic violations on the captured side. Attacking
+    The Prisoner/Captor exceptions prevent domain logic violations on the captured team. Attacking
     exceptions constrain attacks. AttackingNullAttackException is raised if a piece attacks something
     which does not exist.
     """
@@ -72,7 +72,7 @@ class AttackingKingException(AttackException):
 
 class AttackingFriendlyException(AttackException):
     """
-    Friendly pieces on the same side cannot attack each other. AttackingFriendlyException is
+    Friendly pieces on the same team cannot attack each other. AttackingFriendlyException is
     raised when a friendly is attacked.
     """
     ERROR_CODE = "ATTACKING_FRIENDLY_ERROR"
