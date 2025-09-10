@@ -11,8 +11,8 @@ from chess.rank.queen_rank import PromotedQueen
 from chess.system.validators.base import RequestValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullPromotionRequestException
-from chess.exception.piece import DoublePromotionException
-from chess.exception.rank import UnPromotableRankException, PromotionRowException
+from chess.exception.exception import DoublePromotionException
+from chess.exception.rank_exception import UnPromotableRankException, PromotionRowException
 
 
 T = TypeVar('T')

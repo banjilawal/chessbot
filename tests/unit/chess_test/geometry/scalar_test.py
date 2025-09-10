@@ -1,11 +1,8 @@
 import unittest
 
-from assurance.exception.validation.scalar import ScalarValidationException
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
 
-
-from chess.exception.null.scalar import NullScalarException
 from chess.exception.vector.scalar import ScalarBelowLowerBoundException, ScalarAboveUpperBoundException
 from chess.geometry.scalar import Scalar
 

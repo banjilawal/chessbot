@@ -1,4 +1,4 @@
-from chess.exception.coord import CoordException
+from chess.exception.coord_exception import CoordException
 
 
 class NegativeDistanceMetric(CoordException):

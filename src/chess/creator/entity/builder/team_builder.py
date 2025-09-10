@@ -4,7 +4,7 @@ from chess.creator.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.competitor.model import Competitor
-from chess.side.model import Side
+from chess.side.team import Side
 
 
 class TeamBuilder:

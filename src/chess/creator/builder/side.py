@@ -7,7 +7,7 @@ from chess.competitor.model import Competitor
 from chess.config.game import SideProfile
 from chess.creator.builder.competitor import CompetitorBuilder
 from chess.creator.emit import id_emitter
-from chess.side.model import Side
+from chess.side.team import Side
 
 
 class SideBuilder(Enum):

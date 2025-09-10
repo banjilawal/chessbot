@@ -10,7 +10,7 @@ from chess.creator.emit import id_emitter
 from chess.rank.rank import Rank
 from chess.rank.bishop_rank import Bishop
 
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 
 class PieceBuilder(Enum):

@@ -3,7 +3,7 @@ from typing import List
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
 from chess.geometry.coord import Coord
 from chess.board.square import Square
-from chess.geometry.delta import Vector
+from chess.geometry.vector import Vector
 
 
 class SquareIterator:

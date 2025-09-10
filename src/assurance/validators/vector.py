@@ -6,9 +6,9 @@ from assurance.validators.base import Validator, T
 from chess.common.config import KNIGHT_STEP_SIZE
 
 
-from chess.exception.null.vector import NullVectorException
+from chess.geometry.exception.vector.null_vector import NullVectorException
 
-from chess.geometry.delta import Vector
+from chess.geometry.vector import Vector
 
 
 class VectorValidator(Validator):
@@ -46,7 +46,7 @@ class VectorValidator(Validator):
             
             NullXDimensionException: if Vector.x is null
             
-            XBelowLowerBoundException: if -Vector.x < -KNIGHT_STEP_SIZE
+            XBelowBoundsException: if -Vector.x < -KNIGHT_STEP_SIZE
                
             XComponentAboveUpperBoundException: if Vector.x > KNIGHT_STEP_SIZE
             

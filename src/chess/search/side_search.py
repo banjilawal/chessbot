@@ -2,8 +2,8 @@ from assurance.validators.coord import CoordValidator
 from assurance.validators.name import NameValidator
 from chess.common.result import SearchResult
 from chess.geometry.coord import Coord
-from chess.side.model import Side
-from chess.token.model import Piece
+from chess.side.team import Side
+from chess.piece.piece import Piece
 
 
 class SideSearch:

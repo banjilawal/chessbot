@@ -4,13 +4,13 @@ from chess.competitor.model import Competitor
 from chess.config.game import SideProfile
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
 
-from chess.exception.rank import BishopException
+from chess.exception.rank_exception import BishopException
 from chess.exception.walk import BishopWalkException
 from chess.geometry.coord import Coord
 from chess.geometry.quadrant import Quadrant
 from chess.rank.bishop_rank import Bishop
-from chess.side.model import Side
-from chess.token.model import Piece
+from chess.side.team import Side
+from chess.piece.piece import Piece
 from unit.chess_test.side.side_test import SideTest
 
 

@@ -3,7 +3,7 @@ from typing import List, Optional
 from chess.common.color import GameColor
 from chess.geometry.quadrant import Quadrant
 from chess.competitor.model import Competitor
-from chess.side.model import Side
+from chess.side.team import Side
 
 
 class TeamRepo:

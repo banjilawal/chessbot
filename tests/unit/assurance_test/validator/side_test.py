@@ -10,7 +10,7 @@ from chess.competitor.model import Competitor
 from chess.config.game import SideProfile
 from chess.exception.null.side_profile import NullSideProfileException
 from chess.exception.null.side import NullSideException
-from chess.side.model import Side
+from chess.side.team import Side
 from unit.chess_test.competitor.competitor_test import CompetitorTest
 from unit.chess_test.side.side_test import SideTest
 

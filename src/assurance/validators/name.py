@@ -4,8 +4,8 @@ from assurance.exception.validation.name import NameValidationException
 from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import MIN_NAME_LENGTH, MAX_NAME_LENGTH
-from chess.exception.name import NameTooShortException, BlankNameException, NameTooLongException
-from chess.exception.null.name import NullNameException
+from chess.exception.name.blank_name import NameTooShortException, BlankNameException, NameTooLongException
+from chess.exception.name.null_name import NullNameException
 
 
 class NameValidator(Validator):

@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.board.square import Square
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 
 class ScoutReport:

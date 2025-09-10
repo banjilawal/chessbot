@@ -2,7 +2,7 @@ import unittest
 
 from chess.exception.stack import PopEmptyStackException, PushingNullEntityException, DuplicatePushException
 from chess.geometry.coord import Coord
-from chess.token.model.coord import CoordinateStack
+from chess.piece.piece.coord import CoordinateStack
 
 
 class CoordinateStackTest(unittest.TestCase):

@@ -4,8 +4,8 @@ from unittest.mock import create_autospec, patch
 from assurance.exception.validation.id import IdValidationException
 from assurance.exception.validation.name import NameValidationException
 from chess.rank.rank import Rank
-from chess.side.model import Side
-from chess.token.model import Piece
+from chess.side.team import Side
+from chess.piece.piece import Piece
 
 
 

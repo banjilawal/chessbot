@@ -16,7 +16,8 @@
 Provides geometric primitives for chess board coordinates:
 - `Coordinate`: Represents board positions (row, column)
 - `Delta`: Vector for coordinate transformations
-- `CartesianDistance`: Measures distances between coordinates
+- `Scalar`: Magnitude
+- `Path`: Two coordinates joined by a line
 
 ## Design Principles
  - Immutability: Thread-safe operations

@@ -3,7 +3,7 @@ from typing import List
 from chess.board.square import Square
 from chess.creator.emit import id_emitter
 from chess.geometry.coord import Coord
-from chess.token.encounter import Encounter
+from chess.piece.encounter import Encounter
 
 from chess.engine.scout.scout_report import ScoutReport
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis

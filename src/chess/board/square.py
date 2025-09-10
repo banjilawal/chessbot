@@ -8,7 +8,7 @@ from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
     # from chess.geometry.coord import Coord
-    from chess.token.model import Piece
+    from chess.piece.piece import Piece
 
 class Square:
     _id:int
@@ -89,7 +89,7 @@ class Square:
     def occupant(self, piece:Optional['Piece']):
         method = f"Square.occupant"
 
-        from chess.token.model import Piece
+        from chess.piece.piece import Piece
         if piece is not None and not isinstance(piece, Piece):
             raise TypeError(f"{method}:Expected a Piece, got {type(piece).__name__}")
 

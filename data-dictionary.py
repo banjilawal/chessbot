@@ -34,7 +34,7 @@ COLUMN_SIZE = 8
 
 class Delta(BaseModel):
     """
-    Represents a vector for shifting coordinates.
+    Represents a null-pkg for shifting coordinates.
 
     Attributes:
         row_delta (int): The amount to add to a coord's row.
@@ -48,7 +48,7 @@ class Delta(BaseModel):
 
     def __mul__(self, scalar: int) -> 'Delta':
         """
-        Multiplies the Delta vector by a scalar value.
+        Multiplies the Delta null-pkg by a scalar value.
         """
         if scalar is None:
             raise NullException("Scalar cannot be null for multiplication.")
@@ -89,13 +89,13 @@ class Coordinate(BaseModel):
         Creates a new Coord shifted by a given Delta.
 
         Args:
-            delta (Delta): A vector for the shift.
+            delta (Delta): A null-pkg for the shift.
 
         Returns:
             Coordinate: A new Coord instance.
 
         Raises:
-            NullException: If the provided vector is null.
+            NullException: If the provided null-pkg is null.
             ValidationError: If the new coord is out of bounds.
         """
         if delta is None:
@@ -225,7 +225,7 @@ from abc import ABC, abstractmethod
 # Pydantic handles these automatically, but explicit type checking
 # can be useful for external tools.
 if TYPE_CHECKING:
-    from chess.token.model import Piece
+    from chess.piece.piece import Piece
     from chess.rank.rank import Rank
     from chess.rank.walk import Walk
 
@@ -238,7 +238,7 @@ COLUMN_SIZE = 8
 
 class Delta(BaseModel):
     """
-    Represents an immutable vector for shifting coordinates.
+    Represents an immutable null-pkg for shifting coordinates.
     """
     row_delta: int = Field(...)
     column_delta: int = Field(...)

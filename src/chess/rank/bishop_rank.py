@@ -3,8 +3,8 @@ from typing import List
 from chess.board.board import Board
 from chess.config.rank import RankProfile
 from chess.creator.emit import id_emitter
-from chess.exception.piece import PieceCoordNullException
-from chess.exception.rank import BishopException
+from chess.exception.exception import PieceCoordNullException
+from chess.exception.rank_exception import BishopException
 from chess.exception.walk import BishopWalkException
 from chess.flow.occupy import OccupationFlow
 
@@ -13,7 +13,7 @@ from chess.geometry.path import Path, Line
 from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 from chess.system.send import OccupationRequest
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 
 class Bishop(Rank):

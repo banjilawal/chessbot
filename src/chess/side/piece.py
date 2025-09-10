@@ -1,7 +1,7 @@
 from typing import List, Sequence
 
 from chess.exception.stack import PushingNullEntityException, CorruptedStackException
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 
 class PieceList:

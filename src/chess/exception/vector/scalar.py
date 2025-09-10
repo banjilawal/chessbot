@@ -1,16 +1,7 @@
-from chess.exception.base import ChessException
+from chess.exception.chess_exception import ChessException
 
 
-class ScalarException(ChessException):
-    ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
-    DEFAULT_MESSAGE = f"Scalar is below lower bound"
 
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
 
 
 class ScalarBelowLowerBoundException(ScalarException):
@@ -25,16 +16,7 @@ class ScalarBelowLowerBoundException(ScalarException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class ScalarAboveUpperBoundException(ScalarException):
-    ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
-    DEFAULT_MESSAGE = f"Scalar is above upper bound"
 
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
 
 
 class ZeroScalarException(ScalarException):

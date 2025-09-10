@@ -6,7 +6,7 @@
 # from assurance.validators.square import SquareValidator
 # from chess.board.square import Square
 # from chess.flow.base import Flow
-# from chess.token.model import Piece
+# from chess.piece.model import Piece
 #
 #
 # class CaptureFlow(Flow, ABC):

@@ -2,7 +2,7 @@ import unittest
 
 from assurance.exception.validation.id import IdValidationException
 from assurance.validators.id import IdValidator
-from chess.exception.id import NegativeIdException
+from chess.exception.id.negative_id import NegativeIdException
 from chess.exception.null.id import IdNullException
 
 

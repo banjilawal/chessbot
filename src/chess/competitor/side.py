@@ -10,7 +10,7 @@ from chess.exception.stack import (
 )
 
 if TYPE_CHECKING:
-    from chess.side.model import Side
+    from chess.side.team import Side
 
 
 class SideRecord:

@@ -4,14 +4,14 @@ from assurance.validators.coord import CoordValidator
 from assurance.validators.vector import VectorValidator
 from chess.creator.builder.coord import CoordBuilder
 from chess.geometry.coord import Coord
-from chess.geometry.delta import Vector
+from chess.geometry.vector import Vector
 
 
 class Convert:
 
     @staticmethod
     def vector_to_coordinate(vector: Vector) -> Coord:
-        """Converts a vector to a coord."""
+        """Converts a null-pkg to a coord."""
 
         validation_result = VectorValidator.validate(vector)
         if not validation_result.is_success:
@@ -24,7 +24,7 @@ class Convert:
 
     @staticmethod
     def coordinate_to_vector(coordinate: Coord) -> Vector:
-        """Converts a coord to a vector."""
+        """Converts a coord to a null-pkg."""
 
         validation_result = CoordValidator.validate(coordinate)
         if not validation_result.is_success:

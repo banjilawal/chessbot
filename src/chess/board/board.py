@@ -7,12 +7,12 @@ from assurance.validators.coord import CoordValidator
 from assurance.validators.hostage import HostageValidator
 from assurance.validators.name import NameValidator
 from chess.board.square import Square
-from chess.exception.board import RemovePieceFromBoardException, IncompleteBoardTransactionException
+from chess.exception.board_exception import RemovePieceFromBoardException, IncompleteBoardTransactionException
 from chess.exception.search import PieceNotFoundException, SquareNotFoundException
 from chess.geometry.coord import Coord
 
 if TYPE_CHECKING:
-    from chess.token.model import Piece, CombatantPiece
+    from chess.piece.piece import Piece, CombatantPiece
 
 
 class Board:
@@ -91,14 +91,14 @@ class Board:
     #     Args:
     #         squares (List[List[Square]]): 2D list of Square objects to iterate through.
     #         index: The starting coord for the iteration.
-    #         vector: The direction of the iteration.
+    #         null-pkg: The direction of the iteration.
     #
     #     Returns:
     #         SquareIterator: An iterator instance for traversing the chessboard.
     #
     #     Raises:
     #         CoordValidationException: If index fails at least one specification message
-    #         NullDeltaException: If vector is None.
+    #         NullDeltaException: If null-pkg is None.
     #     """
     #
     #     return SquareIterator(self._squares, index, delta)

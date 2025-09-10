@@ -4,14 +4,14 @@ from assurance.exception.validation.coord import CoordValidationException
 from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coord import (
+from chess.exception.coord_exception import (
     RowBelowBoundsException, RowAboveBoundsException,
     ColumnBelowBoundsException, ColumnAboveBoundsException
 )
 
-from chess.exception.null.coord import NullCoordException
-from chess.exception.null.column import NullColumnException
-from chess.exception.null.row import NullRowException
+from chess.geometry.exception.coord.coord_null import NullCoordException
+from chess.geometry.exception.coord.column_null import NullColumnException
+from chess.geometry.exception.coord.row_null import NullRowException
 from chess.geometry.coord import Coord
 
 

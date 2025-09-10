@@ -5,13 +5,13 @@ from chess.board.square import Square
 from chess.common.permit import Event
 from chess.exception.event import AttackEventInconsistencyException, \
     CorruptRecordEventException
-from chess.exception.null.piece import NullPieceException
+from chess.piece.exception.null.null_piece import NullPieceException
 from chess.exception.side import RemoveCombatantException
 from chess.flow.base import Flow
 from chess.system.send import OccupationRequest
 from chess.system.validators.occupy import OccupationRequestValidator
-from chess.token.model import Piece, CombatantPiece
-from chess.token.encounter import Encounter
+from chess.piece.piece import Piece, CombatantPiece
+from chess.piece.encounter import Encounter
 
 
 class OccupationFlow(Flow):

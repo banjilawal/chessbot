@@ -9,7 +9,7 @@ from chess.config.game import SideProfile
 from chess.competitor.model import HumanCompetitor
 from chess.competitor.model import Competitor
 from chess.randomize.competitor import RandomName
-from chess.side.model import Side
+from chess.side.team import Side
 
 
 class OwnerFactory:

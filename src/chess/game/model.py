@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.arena.model import Arena
-from chess.token.model.coord import CoordinateStack
+from chess.piece.piece.coord import CoordinateStack
 from chess.competitor.model import Competitor
 
 class Game:

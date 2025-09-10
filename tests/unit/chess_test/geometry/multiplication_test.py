@@ -3,10 +3,10 @@ import unittest
 import pytest
 
 from chess.common.config import BOARD_DIMENSION
-from chess.exception.null.scalar import NullScalarException
+from chess.geometry.exception.scalar.scalar_null import NullScalarException
 from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScalarException, \
     ScalarAboveUpperBoundException, RowDeltaOverflowExceptioDn
-from chess.geometry.delta import Offset
+from chess.geometry.vector import Offset
 
 
 class OffsetMultiplicationTest(unittest.TestCase):

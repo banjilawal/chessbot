@@ -5,10 +5,10 @@ from chess.geometry.quadrant import Quadrant
 from chess.rank.rank import Rank
 
 # class Quadrant(Enum):
-#     def __new__(cls, quad_id:int, vector:Vector):
+#     def __new__(cls, quad_id:int, null-pkg:Vector):
 #         obj = object.__new__(cls)
 #         obj._id = quad_id
-#         obj._vector = vector
+#         obj._vector = null-pkg
 #
 #         return obj
 #

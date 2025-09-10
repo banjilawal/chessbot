@@ -1,4 +1,4 @@
-from chess.exception.base import ChessException
+from chess.exception.chess_exception import ChessException
 
 class StackException(ChessException):
     ERROR_CODE = "STACK_ERROR"

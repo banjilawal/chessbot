@@ -17,7 +17,7 @@ from chess.rank.knight_rank import Knight
 from chess.rank.king_rank import King
 from chess.rank.pawn_rank import Pawn
 from chess.rank.queen_rank import Queen
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 if TYPE_CHECKING:
     from chess.board.board import Board
@@ -178,7 +178,7 @@ class GameDisplay:
         """Begin dragging a chess piece."""
         self.is_dragging = True
 
-        # Calculate vector so the piece doesn't jump to mouse corner
+        # Calculate null-pkg so the piece doesn't jump to mouse corner
         coord = chess_piece.positions.current_coord()
         piece_x = coord.column * self.cell_px + self.border_px
         piece_y = coord.row * self.cell_px + self.border_px

@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import create_autospec
 
 from chess.exception.stack import PushingNullEntityException, DuplicatePushException
-from chess.side.model import Side
+from chess.side.team import Side
 from chess.competitor.side import SideRecord
 
 

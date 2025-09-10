@@ -3,7 +3,7 @@ from typing import List
 from chess.board.board import Board
 from chess.config.rank import RankProfile
 from chess.creator.emit import id_emitter
-from chess.exception.rank import KnightException
+from chess.exception.rank_exception import KnightException
 from chess.exception.walk import KnightWalkException
 from chess.flow.occupy import OccupationFlow
 from chess.geometry.coord import Coord
@@ -11,7 +11,7 @@ from chess.geometry.path import Line, Path
 from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
 from chess.system.send import OccupationRequest
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 
 class Knight(Rank):

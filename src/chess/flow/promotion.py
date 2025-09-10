@@ -5,7 +5,7 @@ from chess.flow.base import Flow
 from chess.rank.queen_rank import Queen, PromotedQueen
 
 from chess.system.validators.promote import PromotionRequestValidator
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 
 class PromotionFlow(Flow):

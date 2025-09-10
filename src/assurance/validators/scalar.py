@@ -5,7 +5,7 @@ from chess.common.result import Result
 from assurance.validators.base import Validator, T
 from chess.common.config import BOARD_DIMENSION
 from chess.exception.null.number import NullNumberException
-from chess.exception.null.scalar import NullScalarException
+from chess.geometry.exception.scalar.scalar_null import NullScalarException
 from chess.exception.vector.scalar import ScalarBelowLowerBoundException, ScalarAboveUpperBoundException
 from chess.geometry.scalar import Scalar
 

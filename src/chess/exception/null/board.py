@@ -1,4 +1,4 @@
-from chess.exception.base import ChessException
+from chess.exception.chess_exception import ChessException
 from chess.exception.null.base import NullException
 
 

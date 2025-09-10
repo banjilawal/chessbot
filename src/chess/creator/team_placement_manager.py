@@ -1,9 +1,9 @@
 from typing import List, TYPE_CHECKING
 
 
-from chess.exception.id import ChessException
+from chess.exception.id.negative_id import ChessException
 from chess.config.placement import PlacementChart
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 if TYPE_CHECKING:
     from chess.arena.model import Arena

@@ -7,15 +7,14 @@ from assurance.validators.name import NameValidator
 
 
 from chess.competitor.side import SideRecord
-from chess.exception.null.piece import NullPieceException
-from chess.exception.piece import PieceCoordNullException, PrisonerEscapeException, AlreadyAtDestinationException
+from chess.piece.exception.null.null_piece import NullPieceException
+from chess.exception.exception import PieceCoordNullException, PrisonerEscapeException, AlreadyAtDestinationException
 from chess.exception.side import ConflictingSideException, AddPieceException
 from chess.geometry.coord import Coord
-from chess.token.model import Piece, CombatantPiece
+from chess.piece.piece import Piece, CombatantPiece
 
 if TYPE_CHECKING:
-    from chess.side.model import Side
-    from chess.engine.decision.decision_engine import DecisionEngine
+    from chess.side.team import Side
 
 
 class Competitor(ABC):

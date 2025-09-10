@@ -3,12 +3,10 @@ from typing import cast
 from assurance.validators.scalar import ScalarValidator
 from assurance.validators.vector import VectorValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coord import ColumnBelowBoundsException
-from chess.exception.coord import RowBelowBoundsException
-from chess.exception.null.column import NullColumnException
-from chess.exception.null.row import NullRowException
-from chess.geometry.delta import Vector
-from chess.geometry.scalar import Scalar
+
+
+from .vector import Vector
+from .scalar import Scalar
 
 
 class Coord:
@@ -87,16 +85,16 @@ class Coord:
         method = "add_vector"
 
         """
-        Returns the coord: Coord( self._row + vectory.y, self._column + vector.x)
+        Returns the coord: Coord( self._row + vectory.y, self._column + null-pkg.x)
 
         Args:
-            vector (Vector): vector added to coord's x, y values
+            null-pkg (Vector): null-pkg added to coord's x, y values
         
         Return:
             Coord
 
         Raise:
-            VectorValidationException: if vector fails validators.
+            VectorValidationException: if null-pkg fails validators.
             CoordValidationException: if 
         """
 

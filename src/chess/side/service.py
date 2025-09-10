@@ -4,7 +4,7 @@ from chess.common.color import GameColor
 from chess.geometry.quadrant import Quadrant
 from chess.competitor.model import Competitor
 from chess.side.repo import TeamRepo
-from chess.side.model import Side
+from chess.side.team import Side
 
 # if TYPE_CHECKING:
 #     from chess.side.square.side import Team

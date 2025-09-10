@@ -2,10 +2,10 @@ import unittest
 from unittest.mock import create_autospec
 
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
-from chess.exception.coord import ColumnBelowBoundsException
-from chess.exception.coord import RowBelowBoundsException
-from chess.exception.null.column import NullColumnException
-from chess.exception.null.row import NullRowException
+from chess.exception.coord_exception import ColumnBelowBoundsException
+from chess.exception.coord_exception import RowBelowBoundsException
+from chess.geometry.exception.coord.column_null import NullColumnException
+from chess.geometry.exception.coord.row_null import NullRowException
 
 from chess.geometry.coord import Coord
 

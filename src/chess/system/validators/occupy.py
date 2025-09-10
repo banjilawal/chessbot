@@ -14,9 +14,9 @@ from assurance.validators.square import SquareValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException, FriendlyOccupantException
-from chess.exception.piece import AttackingKingException
+from chess.exception.exception import AttackingKingException
 from chess.system.send import OccupationRequest
-from chess.token.model import KingPiece, Piece
+from chess.piece.piece import KingPiece, Piece
 
 T = TypeVar('T')
 

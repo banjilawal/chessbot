@@ -1,10 +1,10 @@
 import unittest
 
 from chess.common.config import KNIGHT_STEP_SIZE
-from chess.exception.null.vector import NullXDimensionException
+from chess.geometry.exception.vector.null_vector import NullXDimensionException
 
 from chess.exception.vector.x_dim
-from chess.geometry.delta import Vector
+from chess.geometry.vector import Vector
 
 
 class VectorTest(unittest.TestCase):

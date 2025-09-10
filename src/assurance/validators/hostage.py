@@ -12,7 +12,7 @@ from chess.creator.emit import id_emitter
 from chess.exception.hostage import HostageCaptorNullException, RosterRemovalException, HostageAdditionException
 
 from chess.randomize.competitor import RandomName
-from chess.token.model import CombatantPiece
+from chess.piece.piece import CombatantPiece
 
 
 class HostageValidator(Validator):

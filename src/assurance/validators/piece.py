@@ -12,9 +12,9 @@ from chess.creator.builder.competitor import CompetitorBuilder
 from chess.creator.builder.side import SideBuilder
 from chess.creator.emit import id_emitter
 
-from chess.exception.null.piece import NullPieceException
+from chess.piece.exception.null.null_piece import NullPieceException
 from chess.randomize.competitor import RandomName
-from chess.token.model import Piece
+from chess.piece.piece import Piece
 
 
 class PieceValidator(Validator):

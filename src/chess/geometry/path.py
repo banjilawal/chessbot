@@ -1,24 +1,9 @@
-from enum import Enum, auto
+
 from typing import cast
 
 from assurance.validators.coord import CoordValidator
-from chess.geometry.coord import Coord
-
-
-class Line(Enum):
-    VERTICAL = auto(),
-    DIAGONAL = auto(),
-    HORIZONTAL = auto(),
-    KING = auto()
-    KNIGHT = auto()
-    BISHOP = auto ()
-    CASTLE = auto()
-    QUEEN = auto()
-    PAWN_OPENING = auto()
-    PAWN_ADVANCE = auto()
-    PAWN_ATTACK = auto()
-    CURVILINEAR = auto()
-
+from .coord import Coord
+from .line import Line
 
 class Path:
     _u: Coord

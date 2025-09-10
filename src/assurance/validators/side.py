@@ -15,7 +15,7 @@ from assurance.validators.id import IdValidator
 from chess.exception.stack import BrokenRelationshipException
 
 if TYPE_CHECKING:
-    from chess.side.model import Side
+    from chess.side.team import Side
 
 
 class SideValidator(Validator):
@@ -53,7 +53,7 @@ class SideValidator(Validator):
             if t is None:
                 raise NullSideException(f"{method} {NullSideException.DEFAULT_MESSAGE}")
 
-            from chess.side.model import Side
+            from chess.side.team import Side
             if not isinstance(t, Side):
                 raise TypeError(f"{method} Expected a Side, got {type(t).__name__}")
 
@@ -96,7 +96,7 @@ def main():
     from chess.competitor.model import HumanCompetitor
     person = HumanCompetitor(1, "person")
 
-    from chess.side.model import Side
+    from chess.side.team import Side
     side = Side(side_id=1, controller=person, profile=SideProfile.BLACK)
 
 

@@ -1,4 +1,4 @@
-from chess.exception.base import ChessException
+from chess.exception.chess_exception import ChessException
 
 """
 Thrown if square does not contain a friendly and Event.RECORD_ENCOUNTER event was in the outcome 
