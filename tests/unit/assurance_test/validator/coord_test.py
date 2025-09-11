@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import create_autospec
 
 from chess.geometry.exception.coord import CoordValidationException
-from chess.geometry.validator.coord_validator import CoordValidator
+from chess.coord import CoordValidator
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import (
     RowBelowBoundsException,
@@ -10,10 +10,10 @@ from chess.exception.coord_exception import (
     ColumnBelowBoundsException,
     ColumnAboveBoundsException
 )
-from chess.geometry.exception.coord.column_null import NullColumnException
-from chess.geometry.exception.coord.coord_null import NullCoordException
-from chess.geometry.exception.coord.row_null import NullRowException
-from chess.geometry.coord import Coord
+from chess.coord.exception import NullColumnException
+from chess.coord.exception import NullCoordException
+from chess.coord.exception import NullRowException
+from chess.coord import Coord
 
 
 

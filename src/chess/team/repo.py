@@ -33,7 +33,7 @@ class TeamRepo:
         matches: List[Side] = []
 
         for team in self._teams:
-            if team.controller == owner and team not in matches:
+            if team.commander == owner and team not in matches:
                 matches.append(team)
         return matches
 

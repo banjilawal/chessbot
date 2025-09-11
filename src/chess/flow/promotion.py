@@ -1,8 +1,8 @@
 from typing import cast
 
-from chess.config.rank import RankProfile
+from chess.rank.profile import RankProfile
 from chess.flow.base import Flow
-from chess.rank.queen_rank import Queen, PromotedQueen
+from chess.rank.queen import Queen, PromotedQueen
 
 from chess.system.validators.promote import PromotionRequestValidator
 from chess.piece.piece import Piece
@@ -29,4 +29,4 @@ class PromotionFlow(Flow):
             quadrants=RankProfile.QUEEN.quadrants,
         )
 
-        piece = Piece(piece_id=client.id, name=client.name, side=client.side, rank=promoted_queen)
+        piece = Piece(piece_id=client.id, name=client.name, team=client.team, rank=promoted_queen)

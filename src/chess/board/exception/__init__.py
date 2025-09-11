@@ -5,8 +5,7 @@ PURPOSE:
     Exceptions raised by Board
 
 CORE CLASSES:
-
-CONVENIENCE ALIASES:
+:
 
 
 USAGE:
@@ -25,16 +24,25 @@ from .null_board import NullBoardException
 from .incomplete_transaction import IncompleteBoardTransactionException
 from .piece_removal import FailedPieceRemovalException
 
-# Aliases
-NullBoard = NullBoardException
-FailedPieceRemoval = FailedPieceRemovalException
-IncompleteBoardTransaction = IncompleteBoardTransactionException
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "board_exception_pkg"
+__package_name__ = "chess.board.exception"
 
+
+# Export control - only what belongs in public API
+__all__ = [
+    # Core classes
+    "NullBoardException",
+    "FailedPieceRemovalException",
+    "IncompleteBoardTransactionException",
+
+    # Package metadata and utilities
+    "__version__",
+    "__author__",
+    "package_info"
+]
 
 # Organic utility function for package info
 def package_info() -> dict:
@@ -45,23 +53,3 @@ def package_info() -> dict:
         "author": __author__,
         "exports": __all__
     }
-
-
-# Export control - only what belongs in public API
-__all__ = [
-    # Core classes
-    "NullBoardException",
-    "FailedPieceRemovalException",
-    "IncompleteBoardTransactionException",
-
-    # Aliases
-    "NullBoard",
-    "FailedPieceRemoval",
-    "IncompleteBoardTransaction",
-
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info"
-]
-

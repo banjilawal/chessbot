@@ -1,42 +1,40 @@
 import unittest
-from unittest.mock import create_autospec, patch
+from unittest.mock import create_autospec
 
-from assurance.exception.validation.competitor import CompetitorValidationException
-from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.name import NameValidationException
-from assurance.exception.validation.team import SideValidationException
-from assurance.validators.side import SideValidator
+from chess.commander.exception.invalid_commander import CommanderValidationException
+from assurance.exception.invalid_id import IdValidationException
+from chess.team.exception.invalid_team import TeamValidationException
+from chess.team.team_validator import TeamValidator
 from chess.competitor.commander import Commander
-from chess.config.game import SideProfile
-from chess.exception.null.side_profile import NullSideProfileException
-from chess.exception.null.side import NullSideException
+from chess.team.team_profile import TeamProfile
+from chess.team.exception.null_team_profile import NullTeamProfileException
+from chess.team.exception.null_team import NullTeamException
 from chess.side.team import Side
 from unit.chess_test.competitor.competitor_test import CompetitorTest
-from unit.chess_test.side.side_test import SideTest
 
 
 class SideValidatorTest(unittest.TestCase):
     
     def test_null_side_raises_exception(self):
-        with self.assertRaises(SideValidationException) as ctx:
-            SideValidator.validate(None)
-        self.assertIsInstance(ctx.exception.__cause__, NullSideException)
+        with self.assertRaises(TeamValidationException) as ctx:
+            TeamValidator.validate(None)
+        self.assertIsInstance(ctx.exception.__cause__, NullTeamException)
 
 
     def test_cast_to_side_failure_raises_exception(self):
-        with self.assertRaises(SideValidationException) as ctx:
-            SideValidator.validate(1)
+        with self.assertRaises(TeamValidationException) as ctx:
+            TeamValidator.validate(1)
         self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
 
     def test_failed_id_validation_raises_exception(self):
         mock_side = create_autospec(Side, instance=True)
         mock_side.id=-1
-        mock_side.profile = SideProfile.BLACK
+        mock_side.profile = TeamProfile.BLACK
         mock_side.competitor= CompetitorTest.valid_mock_competitor()
 
-        with self.assertRaises(SideValidationException) as ctx:
-            SideValidator.validate(mock_side)
+        with self.assertRaises(TeamValidationException) as ctx:
+            TeamValidator.validate(mock_side)
         self.assertIsInstance(ctx.exception.__cause__, IdValidationException)
 
 
@@ -44,12 +42,12 @@ class SideValidatorTest(unittest.TestCase):
         mock_side = create_autospec(Side, instance=True)
         mock_side.id=1
         mock_side.competitor=None
-        mock_side.profile = SideProfile.BLACK
+        mock_side.profile = TeamProfile.BLACK
 
-        with self.assertRaises(SideValidationException) as ctx:
-            SideValidator.validate(mock_side)
+        with self.assertRaises(TeamValidationException) as ctx:
+            TeamValidator.validate(mock_side)
 
-        self.assertIsInstance(ctx.exception.__cause__, CompetitorValidationException)
+        self.assertIsInstance(ctx.exception.__cause__, CommanderValidationException)
 
 
     def test_side_null_profile_raises_exception(self):
@@ -60,15 +58,15 @@ class SideValidatorTest(unittest.TestCase):
         mock_side.competitor=Commander(1, "commander")
         mock_side.profile = None
 
-        with self.assertRaises(SideValidationException) as ctx:
-            SideValidator.validate(mock_side)
+        with self.assertRaises(TeamValidationException) as ctx:
+            TeamValidator.validate(mock_side)
         #
-        self.assertIsInstance(ctx.exception.__cause__, NullSideProfileException)
+        self.assertIsInstance(ctx.exception.__cause__, NullTeamProfileException)
 
 
     def test_side_validator_payload_equals_valid_side(self):
-        side = Side(1, Commander(1, "commander"), SideProfile.BLACK)
-        validation = SideValidator.validate(side)
+        side = Side(1, Commander(1, "commander"), TeamProfile.BLACK)
+        validation = TeamValidator.validate(side)
         self.assertEqual(validation.payload, side)
 
 

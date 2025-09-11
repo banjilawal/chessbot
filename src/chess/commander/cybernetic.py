@@ -1,14 +1,16 @@
+from chess.commander import Commander
 
-class CyberneticCompetitor(Competitor):
+
+class CyberneticCommander(Commander):
     # _decision_engine: DecisionEngine
 
     def __init__(
             self,
-            competitor_id: int,
+            commander_id: int,
             name: str,
             # decision_engine: DecisionEngine,
     ):
-        super().__init__(competitor_id, name)
+        super().__init__(commander_id, name)
     #     self._decision_engine = decision_engine
     #
     #
@@ -21,7 +23,7 @@ class CyberneticCompetitor(Competitor):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, CyberneticCompetitor):
+        if isinstance(other, CyberneticCommander):
             return self._id == other.id
         return False
 

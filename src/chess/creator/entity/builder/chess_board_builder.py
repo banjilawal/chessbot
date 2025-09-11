@@ -3,8 +3,8 @@ from typing import List
 from chess.board.board import Board
 from chess.square import Square
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
-from chess.creator.emit import id_emitter
-from chess.geometry.coord import Coord
+from chess.common.emit import id_emitter
+from chess.coord import Coord
 
 
 class ChessBoardBuilder:

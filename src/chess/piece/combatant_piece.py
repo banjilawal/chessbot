@@ -5,8 +5,8 @@ from .piece import Piece
 class CombatantPiece(Piece):
     _captor: Optional[Piece]
 
-    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
-        super().__init__(piece_id, name, rank, side)
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
+        super().__init__(piece_id, name, rank, team)
         self._captor = None
 
 
@@ -40,7 +40,7 @@ class CombatantPiece(Piece):
 #
 # def main():
 #     from chess.validation.pawn_rank import Pawn
-#     piece = CombatantPiece(piece_id=id_emitter.piece_id, name="BB-1", team=SideBuilder.build().payload, validation=Pawn())
+#     piece = CombatantPiece(piece_id=id_emitter.piece_id, name="BB-1", team=TeamBuilder.build().payload, validation=Pawn())
 #     print(piece)
 #
 #

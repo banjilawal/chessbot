@@ -1,3 +1,5 @@
+from chess.exception import RankException
+
 class BishopException(RankException):
     ERROR_CODE = "BISHOP_RANK_ERROR"
     DEFAULT_MESSAGE = "BishopRank raised an exception"

@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import create_autospec
 
-from chess.exception.stack import PushingNullEntityException, DuplicatePushException
+from chess.exception.stack_exception import PushingNullEntityException, DuplicatePushException
 from chess.side.team import Side
 from chess.competitor.side import SideRecord
 
@@ -35,10 +35,10 @@ class TeamStackTest(unittest.TestCase):
 
         team_stack = SideRecord()
         team_stack.push_side(a_team)
-        self.assertEqual(team_stack.current_side, a_team)
+        self.assertEqual(team_stack.current_team, a_team)
 
         team_stack.push_side(b_team)
-        self.assertEqual(team_stack.current_side, b_team)
+        self.assertEqual(team_stack.current_team, b_team)
 
 
     def test_popping_items_does_not_mutate_stack(self):
@@ -50,7 +50,7 @@ class TeamStackTest(unittest.TestCase):
 
         self.assertEqual(popped_team, team)
         self.assertEqual(team_stack.size(), 1)
-        self.assertEqual(team_stack.current_side, team)
+        self.assertEqual(team_stack.current_team, team)
 
 
     def test_pushing_team_increments_size(self):
@@ -79,7 +79,7 @@ class TeamStackTest(unittest.TestCase):
 
     def test_if_stack_Is_empty_then_current_team_is_null(self):
         team_stack = SideRecord()
-        self.assertTrue(team_stack.is_empty() and team_stack.current_side is None)
+        self.assertTrue(team_stack.is_empty() and team_stack.current_team is None)
 
 
 if __name__ == '__main__':

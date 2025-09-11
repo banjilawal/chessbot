@@ -1,24 +1,23 @@
 import unittest
 
 from chess.competitor.commander import Commander
-from chess.config.game import SideProfile
+from chess.team.team_profile import TeamProfile
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
 
 from chess.exception.rank_exception import BishopException
 from chess.exception.walk import BishopWalkException
-from chess.geometry.coord import Coord
+from chess.coord import Coord
 from chess.geometry.quadrant import Quadrant
-from chess.rank.bishop_rank import Bishop
+from chess.rank.bishop import Bishop
 from chess.side.team import Side
 from chess.piece.piece import Piece
-from unit.chess_test.side.side_test import SideTest
 
 
 class BishopTest(unittest.TestCase):
 
     def test_invalid_destination_raises_error(self):
         rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
-        side = Side(1, Commander(1, "coosmof"), SideProfile.BLACK)
+        side = Side(1, Commander(1, "coosmof"), TeamProfile.BLACK)
         piece = Piece(1, "BB-1", rank, side)
         piece.positions.push_coord(Coord(0, 0))
         board = ChessBoardBuilder.build(1)
@@ -31,7 +30,7 @@ class BishopTest(unittest.TestCase):
     def test_valid_destination_passes(self):
         rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
         board = ChessBoardBuilder.build(1)
-        side = Side(1, Commander(1, "commander"), SideProfile.BLACK)
+        side = Side(1, Commander(1, "commander"), TeamProfile.BLACK)
 
         piece = Piece(1, "BB-1", rank, side)
         piece.positions.push_coord(Coord(0, 0))

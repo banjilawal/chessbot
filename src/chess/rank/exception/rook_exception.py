@@ -1,3 +1,5 @@
+from chess.exception import RankException
+
 class RookException(RankException):
     ERROR_CODE = "CASTLE_RANK_ERROR"
     DEFAULT_MESSAGE = "CastleRank raised an exception"

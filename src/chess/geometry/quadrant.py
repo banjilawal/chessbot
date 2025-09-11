@@ -1,7 +1,7 @@
 
 from enum import Enum, auto
 
-from chess.geometry.vector import Vector
+from chess.vector import Vector
 
 
 class Quadrant(Enum):

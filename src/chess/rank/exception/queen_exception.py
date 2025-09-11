@@ -1,3 +1,5 @@
+from chess.exception import RankException
+
 class QueenException(RankException):
     ERROR_CODE = "QUEEN_RANK_ERROR"
     DEFAULT_MESSAGE = "QuenRank raised an exception"

@@ -6,7 +6,7 @@ from chess.common.permit import Event
 from chess.exception.event import AttackEventInconsistencyException, \
     CorruptRecordEventException
 from chess.piece.exception.null.null_piece import NullPieceException
-from chess.exception.side import RemoveCombatantException
+from chess.exception.team_exception import RemoveCombatantException
 from chess.flow.base import Flow
 from chess.system.send import OccupationRequest
 from chess.system.validators.occupy import OccupationRequestValidator
@@ -82,7 +82,7 @@ class OccupationFlow(Flow):
                 )
 
             hostage_candidate.captor = piece
-            loosing_side = hostage_candidate.side
+            loosing_side = hostage_candidate.team
 
             removal_result = loosing_side.remove_captured_combatant(hostage_candidate)
             if not removal_result.is_success():
@@ -90,7 +90,7 @@ class OccupationFlow(Flow):
 
             hostage = cast(CombatantPiece, removal_result.payload)
 
-            winning_side = piece.side
+            winning_side = piece.team
             addition_result = winning_side.add_hostage(hostage)
             if not addition_result.is_success():
                 raise addition_result.exception

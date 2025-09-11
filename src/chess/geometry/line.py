@@ -1,6 +1,5 @@
 from enum import auto, Enum
 
-
 class Line(Enum):
     VERTICAL = auto(),
     DIAGONAL = auto(),

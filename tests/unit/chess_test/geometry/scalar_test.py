@@ -1,10 +1,10 @@
 import unittest
 
 from chess.common.config import BOARD_DIMENSION
-from chess.exception.null.number import NullNumberException
+from chess.exception.null.number_null_exception import NullNumberException
 
 from chess.exception.vector.scalar import ScalarBelowLowerBoundException, ScalarAboveUpperBoundException
-from chess.geometry.scalar import Scalar
+from chess.scalar import Scalar
 
 
 class ScalarTest(unittest.TestCase):

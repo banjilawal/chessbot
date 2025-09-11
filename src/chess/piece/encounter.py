@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING, List
 
-from chess.exception.null.record import NullEncounterException
-from chess.geometry.coord import Coord
+from chess.piece.exception.null.null_encounter import NullEncounterException
+from chess.coord import Coord
 
 if TYPE_CHECKING:
     from chess.piece.piece import Piece
@@ -21,7 +21,7 @@ class Encounter:
         self._piece_name = piece.name
         self._rank_value = piece.rank.value
         self._rank_name = piece.rank.name
-        self._side_id = piece.side.id
+        self._side_id = piece.team.id
         self._location = piece.current_coord
 
 

@@ -1,8 +1,8 @@
 """
-Commander Package
+chess.commander Package
 
 PURPOSE:
-    Competotrs who play a team
+    Commaners who play a team
 
 CORE CLASSES:
     Commander
@@ -17,22 +17,36 @@ VERSION: 1.0.0
 AUTHOR: Banji L
 """
 
+from .exception import *
 
 from .commander import Commander
-from .human import HumanCompetitor
-from .cybernetic import CyberneticCompetitor
-
-Human = HumanCompetitor
-Machine = CyberneticCompetitor
-
-
-
-# Class Aliases
+from .human import HumanCommander
+from .cybernetic import CyberneticCommander
+from .teams_commanded import TeamsCommanded
+from .commander_type import CommanderType
+from .commander_validator import CommanderValidator
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "competitor_pkg"
+__package_name__ = "chess.commander"
 
+__all__ = [
+    # Core classes
+    "Commander",
+    "HumanCommander",
+    "CyberneticCommander",
+    "TeamsCommanded",
+    "CommanderType",
+    "CommanderValidator",
+
+    # Subpackages
+    *exception.__all__,
+    "exception",
+
+    "__version__",
+    "__author__",
+    "package_info"
+]
 
 # Organic utility function for package info
 def package_info() -> dict:
@@ -43,19 +57,3 @@ def package_info() -> dict:
         "author": __author__,
         "exports": __all__
     }
-
-
-__all__ = [
-    # Core Packages
-    "Commander",
-    "HumanCompetitor",
-    "CyberneticCompetitor",
-
-    # Aliases
-    "Human",
-    "Machine",
-
-    "__version__",
-    "__author__",
-    "package_info"
-]

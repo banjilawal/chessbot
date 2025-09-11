@@ -1,3 +1,5 @@
+from chess.exception import RankException
+
 class KingException(RankException):
     ERROR_CODE = "KING_RANK_ERROR"
     DEFAULT_MESSAGE = "KingRank raised an exception"

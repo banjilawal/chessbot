@@ -7,34 +7,47 @@ PURPOSE:
 CORE CLASSES:
     PieceSearch
     SquareSearch
-    SideSearch
+    TeamSearch
     SearchResult
 
 USAGE:
     >>> from chess.search import PieceSerach, SearchResult
-    >>> search_result = PieceSearch.by_name("BN2", [white_team, black_team])
-    >>> if search_result.is_success():
-    >>>     return cast(Piece, search_result.payload)
+    >>> search_result = BoardSearch.piece_by_name("BN2", [white_team, black_team])
+    >>> if query_result.is_success():
+    >>>     return cast(Piece, query_result.payload)
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
 # Include search exceptions
-from . import exception
+from .exception import *
 
 # Core search classes
-from .piece_search import PieceSearch
-from .square_serch import SquareSearch
-from .side_search import  SideSearch
-from .search_result import SearchResult
+from .board_search import BoardSearch
+from .team_search import  TeamSearch
+from .query_result import SearchResult
 
 # Class Aliases
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "search_pkg"
+__package_name__ = "chess.search"
 
+__all__ = [
+    # Core classes
+    "BoardSearch",
+    "TeamSearch",
+    "SearchResult",
+
+    # Subpackages
+    *exception.__all__,
+    "exception",
+
+    "__version__",
+    "__author__",
+    "package_info"
+]
 
 # Organic utility function for package info
 def package_info() -> dict:
@@ -45,18 +58,3 @@ def package_info() -> dict:
         "author": __author__,
         "exports": __all__
     }
-
-
-__all__ = [
-    # Core Packages
-    "PieceSearch",
-    "SquareSearch",
-    "SideSearch",
-    "SearchResult",
-
-    # Aliases
-
-    "__version__",
-    "__author__",
-    "package_info"
-]

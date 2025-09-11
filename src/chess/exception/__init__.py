@@ -29,18 +29,26 @@ AUTHOR: Banji Lawal
 
 # Core package imports
 
-from . import id
-from . import name
+from .id import *
+from .name import *
+from .null import *
 
 
+from .chess_exception import ChessException
 from .vector_exception import VectorException
 from .coord_exception import CoordException
 from .rank_exception import RankException
 from .board_exception import BoardException
 from .vector_exception import VectorException
 from .scalar_exception import ScalarException
-from .search import SearchException
 from .square_exception import SquareException
+from .piece_exception import PieceException
+from .team_exception import TeamException
+from .commander_exception import CommanderException
+from .flow_exception import FlowException
+
+from .search import SearchException
+from .blank_string_exception import BlankStringException
 
 
 # Package metadata (organic to __init__.py)
@@ -64,11 +72,19 @@ __all__ = [
     # Core classes
     "ChessException",
     "CoordException",
-    "PieceExeption",
+    "PieceException",
     "BoardException",
     "TeamException",
     "SquareException",
-    "NegativeIdException",
+    "CommanderException",
+
+    # Subpackages
+    *id.__all__,
+    "id",
+
+    *name.__all__,
+    "name",
+
 
     # Package metadata and utilities
     "__version__",

@@ -4,10 +4,10 @@ from unittest.mock import create_autospec
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
 from chess.exception.coord_exception import ColumnBelowBoundsException
 from chess.exception.coord_exception import RowBelowBoundsException
-from chess.geometry.exception.coord.column_null import NullColumnException
-from chess.geometry.exception.coord.row_null import NullRowException
+from chess.coord.exception import NullColumnException
+from chess.coord.exception import NullRowException
 
-from chess.geometry.coord import Coord
+from chess.coord import Coord
 
 
 class CoordTest(unittest.TestCase):

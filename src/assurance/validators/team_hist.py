@@ -1,11 +1,11 @@
 from typing import Generic, cast
 
-from assurance.exception.validation.team import TeamHistoryValidationException
+from chess.team.exception.invalid_team import TeamHistoryValidationException
 from chess.result import Result
 from chess.common.validator import Validator, T
 from chess.exception.null.side_record import NullSideRecordException
 
-from chess.exception.stack import CorruptedStackException, StackSizeConflictException
+from chess.exception.stack_exception import CorruptedStackException, StackSizeConflictException
 from chess.exception.sides_played import CurrentTeamException
 from chess.competitor.side import SideRecord
 
@@ -61,12 +61,12 @@ class SideRecordValidator(Validator):
             if teams.size() > 0 and teams.is_empty():
                 raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")
 
-            if teams.is_empty() and teams.current_side is not None:
+            if teams.is_empty() and teams.current_team is not None:
                 raise CurrentTeamException(
                     f"{method}: {CurrentTeamException.DEFAULT_MESSAGE}"
                 )
 
-            if teams.current_side is None and not teams.is_empty():
+            if teams.current_team is None and not teams.is_empty():
                 raise CurrentTeamException(
                     f"{method} {CurrentTeamException.DEFAULT_MESSAGE}"
                 )
@@ -74,11 +74,11 @@ class SideRecordValidator(Validator):
             if teams.items is None:
                 raise CorruptedStackException(f"{method} {CorruptedStackException.DEFAULT_MESSAGE}")
 
-            current_team = teams.current_side
+            current_team = teams.current_team
 
             # if (
             #     current_team is not None and
-            #     not SideValidator.validate(current_team).is_success()
+            #     not TeamValidator.validate(current_team).is_success()
             # ):
             #     raise CurrentTeamException(f"{method} {CurrentTeamException.DEFAULT_MESSAGE}")
 

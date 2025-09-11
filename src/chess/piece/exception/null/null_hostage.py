@@ -1,6 +1,3 @@
-from chess.exception.null.base import NullException
-
-
 class NullHostagePieceException(NullPieceException):
     """
     Raised if a piece is null. Parent class for:

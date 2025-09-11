@@ -10,13 +10,13 @@ from dataclasses import dataclass
 
 from typing import TYPE_CHECKING, Optional
 
-from chess.geometry.coord import Coord
-from chess.rank.bishop_rank import Bishop
-from chess.rank.rook_rank import Rook
-from chess.rank.knight_rank import Knight
-from chess.rank.king_rank import King
-from chess.rank.pawn_rank import Pawn
-from chess.rank.queen_rank import Queen
+from chess.coord import Coord
+from chess.rank.bishop import Bishop
+from chess.rank.rook import Rook
+from chess.rank.knight import Knight
+from chess.rank.king import King
+from chess.rank.pawn import Pawn
+from chess.rank.queen import Queen
 from chess.piece.piece import Piece
 
 if TYPE_CHECKING:

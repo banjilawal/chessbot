@@ -1,4 +1,4 @@
-from chess.geometry.coord import Coord
+from chess.coord import Coord
 from chess.side.team import Side
 from chess.piece.piece import Piece
 

@@ -1,6 +1,6 @@
 from .chess_exception import ChessException
 
-class Square(ChessException):
+class SquareException(ChessException):
     ERROR_CODE = "SQUARE_ERROR"
     DEFAULT_MESSAGE = f"Square exception was raised"
 

@@ -1,8 +1,7 @@
 
 from typing import cast
 
-from chess.geometry.validator.coord_validator import CoordValidator
-from .coord import Coord
+from chess.coord import Coord, CoordValidator
 from .line import Line
 
 class Path:

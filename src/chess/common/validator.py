@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from chess.result import Result
 
 T = TypeVar('T')
 

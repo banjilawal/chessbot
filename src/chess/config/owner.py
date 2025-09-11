@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from chess.creator.emit import id_emitter
+from chess.common.emit import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
 from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine

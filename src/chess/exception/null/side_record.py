@@ -1,4 +1,4 @@
-from chess.exception.null.base import NullException
+from chess.exception.null_exception import NullException
 
 
 class NullSideRecordException(NullException):

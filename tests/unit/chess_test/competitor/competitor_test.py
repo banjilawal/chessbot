@@ -1,11 +1,10 @@
 import unittest
 from unittest.mock import create_autospec, patch
 
-from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.name import NameValidationException
+from assurance.exception.invalid_id import IdValidationException
+from assurance.exception.invalid_name import NameValidationException
 from chess.competitor.commander import Commander
 from chess.competitor.side import SideRecord
-from chess.config.game import SideProfile
 
 
 class CompetitorTest(unittest.TestCase):
@@ -18,11 +17,11 @@ class CompetitorTest(unittest.TestCase):
         sides_played.is_empty.return_value = True
         sides_played.size.return_value = 0
         sides_played.items = []
-        sides_played.current_side = None
+        sides_played.current_team = None
 
         competitor.id = 1
         competitor.name = "Valid Commander"
-        competitor.sides_played = sides_played
+        competitor.teams_played = sides_played
 
         return competitor
 

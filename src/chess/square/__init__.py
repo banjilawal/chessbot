@@ -1,33 +1,65 @@
+# chess/square/__init__.py
+
 """
-Square Package
+A package providing core classes for managing chess board squares.
 
-PURPOSE:
-    Squares are occupied by Piece
+## PURPOSE
+This package provides foundational objects for the chess board. It defines the `Square` class,
+which serves as a data container for storing a piece's location, and a `SquareValidator` to ensure
+the integrity of square objects.
 
-CORE CLASSES:
-    Square
+## CORE CLASSES
+* `Square`: A data-holding object representing a single square on a chessboard.
+* `SquareValidator`: A class that validates the data and integrity of a `Square` object.
 
-USAGE:
-    >>> from chess.square import Square
-    >>> square = Square(square_id=1, name="B2", coord=coord)
-    >>> square.occupant = piece
-    >>>
+## USAGE
+To use this package, import the desired classes and perform square-related operations.
+
+>>> from chess.square import Square, SquareValidator
+>>> from chess.coord import Coord
+>>> from chess.piece import Piece
+>>>
+>>> coord = Coord(row=2, column=1)
+>>> piece = Piece(piece_id=1, name="Pawn", rank="Pawn")
+>>>
+>>> # Create a new square and assign a piece
+>>> square = Square(square_id=1, name="B2", coord=coord)
+>>> square.occupant = piece
+>>>
+>>> # Validate the square
+>>> validation = SquareValidator.validate(square)
+---
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
 # subpackages
+from .exception import *
 
 # class
 from .square import Square
-
-# Class Aliases
+from .square_validator import SquareValidator
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "square_pkg"
+__package_name__ = "chess.square"
 
+
+__all__ = [
+    # Core Packages
+    "Square",
+    "SquareValidator",
+
+    # Subpackages
+    *exception.__all__,
+    "exception",
+
+    # Package metadata and utilities
+    "__version__",
+    "__author__",
+    "package_info"
+]
 
 # Organic utility function for package info
 def package_info() -> dict:
@@ -40,13 +72,4 @@ def package_info() -> dict:
     }
 
 
-__all__ = [
-    # Core Packages
-    "Square",
-
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info"
-]
 

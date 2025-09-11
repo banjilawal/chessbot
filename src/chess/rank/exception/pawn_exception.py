@@ -1,8 +1,4 @@
-
-
-
-
-
+from chess.exception import RankException
 
 class PawnException(RankException):
     ERROR_CODE = "PAWN_RANK_ERROR"

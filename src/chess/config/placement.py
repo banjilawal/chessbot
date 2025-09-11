@@ -2,8 +2,8 @@ from enum import Enum
 from typing import Optional
 
 from chess.piece.piece import Piece
-from chess.config.game import SideProfile
-from chess.config.rank import RankProfile
+from chess.team.team_profile import TeamProfile
+from chess.rank.profile import RankProfile
 
 
 class PlacementChart(Enum):
@@ -12,7 +12,7 @@ class PlacementChart(Enum):
             piece_name: str,
             square_name: str,
             rank: RankProfile,
-            side: SideProfile
+            side: TeamProfile
     ):
         obj = object.__new__(cls)
         obj._piece_name= piece_name
@@ -21,41 +21,41 @@ class PlacementChart(Enum):
         obj._side = side
         return obj
 
-    WHITE_KING_CASTLE = ("WC1", "A8", RankProfile.CASTLE, SideProfile.WHITE)
-    WHITE_KING_KNIGHT = ("WN1", "B8", RankProfile.KNIGHT, SideProfile.WHITE)
-    WHITE_KING_BISHOP = ("WB1", "C8", RankProfile.BISHOP, SideProfile.WHITE)
-    WHITE_KING = ("WK", "D8", RankProfile.KING, SideProfile.WHITE)
-    WHITE_QUEEN = ("WQ", "E8", RankProfile.QUEEN, SideProfile.WHITE)
-    WHITE_QUEEN_BISHOP = ("WB2", "F8", RankProfile.BISHOP, SideProfile.WHITE)
-    WHITE_QUEEN_KNIGHT = ("WN2", "G8", RankProfile.KNIGHT, SideProfile.WHITE)
-    WHITE_QUEEN_CASTLE = ("WC2", "H8", RankProfile.CASTLE, SideProfile.WHITE)
+    WHITE_KING_CASTLE = ("WC1", "A8", RankProfile.CASTLE, TeamProfile.WHITE)
+    WHITE_KING_KNIGHT = ("WN1", "B8", RankProfile.KNIGHT, TeamProfile.WHITE)
+    WHITE_KING_BISHOP = ("WB1", "C8", RankProfile.BISHOP, TeamProfile.WHITE)
+    WHITE_KING = ("WK", "D8", RankProfile.KING, TeamProfile.WHITE)
+    WHITE_QUEEN = ("WQ", "E8", RankProfile.QUEEN, TeamProfile.WHITE)
+    WHITE_QUEEN_BISHOP = ("WB2", "F8", RankProfile.BISHOP, TeamProfile.WHITE)
+    WHITE_QUEEN_KNIGHT = ("WN2", "G8", RankProfile.KNIGHT, TeamProfile.WHITE)
+    WHITE_QUEEN_CASTLE = ("WC2", "H8", RankProfile.CASTLE, TeamProfile.WHITE)
 
-    WHITE_PAWN_1 = ("WP1", "A7", RankProfile.PAWN, SideProfile.WHITE)
-    WHITE_PAWN_2 = ("WP2", "B7", RankProfile.PAWN, SideProfile.WHITE)
-    WHITE_PAWN_3 = ("WP3", "C7", RankProfile.PAWN, SideProfile.WHITE)
-    WHITE_PAWN_4 = ("WP4", "D7", RankProfile.PAWN, SideProfile.WHITE)
-    WHITE_PAWN_5 = ("WP5", "E7", RankProfile.PAWN, SideProfile.WHITE)
-    WHITE_PAWN_6 = ("WP6", "F7", RankProfile.PAWN, SideProfile.WHITE)
-    WHITE_PAWN_7 = ("WP7", "G7", RankProfile.PAWN, SideProfile.WHITE)
-    WHITE_PAWN_8 = ("WP8", "H7", RankProfile.PAWN, SideProfile.WHITE)
+    WHITE_PAWN_1 = ("WP1", "A7", RankProfile.PAWN, TeamProfile.WHITE)
+    WHITE_PAWN_2 = ("WP2", "B7", RankProfile.PAWN, TeamProfile.WHITE)
+    WHITE_PAWN_3 = ("WP3", "C7", RankProfile.PAWN, TeamProfile.WHITE)
+    WHITE_PAWN_4 = ("WP4", "D7", RankProfile.PAWN, TeamProfile.WHITE)
+    WHITE_PAWN_5 = ("WP5", "E7", RankProfile.PAWN, TeamProfile.WHITE)
+    WHITE_PAWN_6 = ("WP6", "F7", RankProfile.PAWN, TeamProfile.WHITE)
+    WHITE_PAWN_7 = ("WP7", "G7", RankProfile.PAWN, TeamProfile.WHITE)
+    WHITE_PAWN_8 = ("WP8", "H7", RankProfile.PAWN, TeamProfile.WHITE)
 
-    BLACK_KING_CASTLE = ("BC1", "A1", RankProfile.CASTLE, SideProfile.BLACK)
-    BLACK_KING_KNIGHT = ("BN1", "B1", RankProfile.KNIGHT, SideProfile.BLACK)
-    BLACK_KING_BISHOP = ("BB1", "C1", RankProfile.BISHOP, SideProfile.BLACK)
-    BLACK_KING = ("BK", "D1", RankProfile.KING, SideProfile.BLACK)
-    BLACK_QUEEN = ("BQ", "E1", RankProfile.QUEEN, SideProfile.BLACK)
-    BLACK_QUEEN_BISHOP = ("BB2", "F1", RankProfile.BISHOP, SideProfile.BLACK)
-    BLACK_QUEEN_KNIGHT = ("BN2", "G1", RankProfile.KNIGHT, SideProfile.BLACK)
-    BLACK_QUEEN_CASTLE = ("BC2", "H1", RankProfile.CASTLE, SideProfile.BLACK)
+    BLACK_KING_CASTLE = ("BC1", "A1", RankProfile.CASTLE, TeamProfile.BLACK)
+    BLACK_KING_KNIGHT = ("BN1", "B1", RankProfile.KNIGHT, TeamProfile.BLACK)
+    BLACK_KING_BISHOP = ("BB1", "C1", RankProfile.BISHOP, TeamProfile.BLACK)
+    BLACK_KING = ("BK", "D1", RankProfile.KING, TeamProfile.BLACK)
+    BLACK_QUEEN = ("BQ", "E1", RankProfile.QUEEN, TeamProfile.BLACK)
+    BLACK_QUEEN_BISHOP = ("BB2", "F1", RankProfile.BISHOP, TeamProfile.BLACK)
+    BLACK_QUEEN_KNIGHT = ("BN2", "G1", RankProfile.KNIGHT, TeamProfile.BLACK)
+    BLACK_QUEEN_CASTLE = ("BC2", "H1", RankProfile.CASTLE, TeamProfile.BLACK)
 
-    BLACK_PAWN_1 = ("BP1", "A2", RankProfile.PAWN, SideProfile.BLACK)
-    BLACK_PAWN_2 = ("BP2", "B2", RankProfile.PAWN, SideProfile.BLACK)
-    BLACK_PAWN_3 = ("BP3", "C2", RankProfile.PAWN, SideProfile.BLACK)
-    BLACK_PAWN_4 = ("BP4", "D2", RankProfile.PAWN, SideProfile.BLACK)
-    BLACK_PAWN_5 = ("BP5", "E2", RankProfile.PAWN, SideProfile.BLACK)
-    BLACK_PAWN_6 = ("BP6", "F2", RankProfile.PAWN, SideProfile.BLACK)
-    BLACK_PAWN_7 = ("BP7", "G2", RankProfile.PAWN, SideProfile.BLACK)
-    BLACK_PAWN_8 = ("BP8", "H2", RankProfile.PAWN, SideProfile.BLACK)
+    BLACK_PAWN_1 = ("BP1", "A2", RankProfile.PAWN, TeamProfile.BLACK)
+    BLACK_PAWN_2 = ("BP2", "B2", RankProfile.PAWN, TeamProfile.BLACK)
+    BLACK_PAWN_3 = ("BP3", "C2", RankProfile.PAWN, TeamProfile.BLACK)
+    BLACK_PAWN_4 = ("BP4", "D2", RankProfile.PAWN, TeamProfile.BLACK)
+    BLACK_PAWN_5 = ("BP5", "E2", RankProfile.PAWN, TeamProfile.BLACK)
+    BLACK_PAWN_6 = ("BP6", "F2", RankProfile.PAWN, TeamProfile.BLACK)
+    BLACK_PAWN_7 = ("BP7", "G2", RankProfile.PAWN, TeamProfile.BLACK)
+    BLACK_PAWN_8 = ("BP8", "H2", RankProfile.PAWN, TeamProfile.BLACK)
 
     @property
     def piece_name(self) -> str:
@@ -70,7 +70,7 @@ class PlacementChart(Enum):
         return self._rank
 
     @property
-    def side(self) -> SideProfile:
+    def side(self) -> TeamProfile:
         return self._side
 
 

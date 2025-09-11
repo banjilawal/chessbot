@@ -1,4 +1,4 @@
-from assurance.exception.validation.base import ValidationException
+from assurance.exception.validation_exception import ValidationException
 
 
 class PieceValidationException(ValidationException):

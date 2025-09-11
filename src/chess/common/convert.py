@@ -1,10 +1,10 @@
 from typing import cast
 
-from chess.geometry.validator.coord_validator import CoordValidator
-from chess.geometry.validator.vector_validator import VectorValidator
-from chess.creator.builder.coord import CoordBuilder
-from chess.geometry.coord import Coord
-from chess.geometry.vector import Vector
+from chess.coord import CoordValidator
+from chess.vector.vector_validator import VectorValidator
+from chess.builder import CoordBuilder
+from chess.coord import Coord
+from chess.vector import Vector
 
 
 class Convert:

@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
 
 from chess.board.board import Board
-from chess.geometry.coord import Coord
+from chess.coord import Coord
 from chess.geometry.quadrant import Quadrant
 from chess.piece.piece import Piece
 

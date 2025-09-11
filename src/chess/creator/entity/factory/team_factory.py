@@ -1,11 +1,11 @@
 from typing import List
 
-from chess.creator.emit import id_emitter
+from chess.common.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.config.game import SideProfile
+from chess.team.team_profile import TeamProfile
 from chess.side.team import Side
 
 
@@ -15,7 +15,7 @@ class TeamFactory:
     def assemble() -> List[Side]:
         teams: List[Side] = []
 
-        for team_config in SideProfile:
+        for team_config in TeamProfile:
             # print(team_config)
             team = TeamBuilder.build(OwnerBuilder.build(id_emitter.person_id), team_config)
             teams.append(team)

@@ -1,7 +1,6 @@
 import random
 
-from chess.config.owner import OwnerConfig
-from chess.creator.emit import id_emitter
+from chess.common.emit import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine
 from chess.competitor.commander import CyberneticCommander
@@ -31,7 +30,7 @@ class OwnerBuilder:
 def main():
 
     owner = OwnerBuilder.build(id_emitter.person_id)
-    print(owner, owner.sides_played.size())
+    print(owner, owner.teams_played.size())
 
 if __name__ == "__main__":
     main()

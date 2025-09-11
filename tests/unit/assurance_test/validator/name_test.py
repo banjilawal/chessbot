@@ -1,9 +1,9 @@
 import unittest
 
-from assurance.exception.validation.name import NameValidationException
-from assurance.validators.name import NameValidator
-from chess.exception.name.blank_name import BlankNameException, NameTooShortException, NameTooLongException
-from chess.exception.name.null_name import NullNameException
+from assurance.exception.invalid_name import NameValidationException
+from assurance.validators.name_validator import NameValidator
+from chess.exception.name.blank_name_exception import BlankNameException, NameTooShortException, NameTooLongException
+from chess.exception.name.null_name_exception import NullNameException
 
 
 class NameValidatorTest(unittest.TestCase):

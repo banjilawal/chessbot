@@ -1,6 +1,6 @@
 class KingPiece(Piece):
 
-    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Side'):
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Team'):
         super().__init__(piece_id, name, rank, side)
 
 

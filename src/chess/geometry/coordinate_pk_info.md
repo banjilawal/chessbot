@@ -14,8 +14,9 @@
 
 ## 📌 Purpose
 Provides geometric primitives for chess board coordinates:
-- `Coordinate`: Represents board positions (row, column)
-- `Delta`: Vector for coordinate transformations
+- `Coord`: Represents board positions (row, column)
+- `CoordStack`: Stack of coords visited in a tour
+- `Vector`: Vector for coordinate transformations
 - `Scalar`: Magnitude
 - `Path`: Two coordinates joined by a line
 

@@ -1,16 +1,16 @@
 from typing import cast, Generic
 
-from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.name import NameValidationException
+from assurance.exception.invalid_id import IdValidationException
+from assurance.exception.invalid_name import NameValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
 
 from chess.result import Result
 from chess.common.validator import Validator, T
-from assurance.validators.id import IdValidator
-from assurance.validators.name import NameValidator
-from chess.creator.builder.competitor import CompetitorBuilder
-from chess.creator.builder.side import SideBuilder
-from chess.creator.emit import id_emitter
+from assurance.validators.id_validator import IdValidator
+from assurance.validators.name_validator import NameValidator
+from chess.builder import CommanderBuilder
+from chess.builder import TeamBuilder
+from chess.common.emit import id_emitter
 
 from chess.piece.exception.null.null_piece import NullPieceException
 from chess.randomize.competitor import RandomName
@@ -87,5 +87,5 @@ class PieceValidator(Validator):
 
 
 def main():
-    person = CompetitorBuilder.build(competitor_id=id_emitter.person_id, name=RandomName.person())
-    side = SideBuilder.build()
+    person = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
+    side = TeamBuilder.build()

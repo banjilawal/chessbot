@@ -1,31 +1,27 @@
 from abc import ABC
 from typing import Optional, cast, TYPE_CHECKING
 
-from chess.geometry.validator.coord_validator import CoordValidator
-from assurance.validators.id import IdValidator
-from assurance.validators.name import NameValidator
+from chess.coord import CoordValidator
+from assurance import IdValidator, NameValidator
+from chess.team import Team
+from chess.piece import Piece
+from chess.commander import TeamsCommanded
 
 
-from chess.competitor.side import SideRecord
-from chess.piece.exception.null.null_piece import NullPieceException
-from chess.exception.exception import PieceCoordNullException, PrisonerEscapeException, AlreadyAtDestinationException
-from chess.exception.side import ConflictingSideException, AddPieceException
-from chess.geometry.coord import Coord
-from chess.piece.piece import Piece, CombatantPiece
 
 if TYPE_CHECKING:
-    from chess.side.team import Side
+    pass
 
 
 class Commander(ABC):
     _id: int
     _name: str
-    _current_side: Optional['Side']
-    _sides_played: SideRecord
+    _current_team: Optional['Team']
+    _teams_played: TeamsCommanded
 
-    def __init__(self, competitor_id: int, name: str):
+    def __init__(self, commander_id: int, name: str):
 
-        id_validation = IdValidator.validate(competitor_id)
+        id_validation = IdValidator.validate(commander_id)
         if not id_validation.is_success():
             raise id_validation.exception
 
@@ -35,14 +31,14 @@ class Commander(ABC):
 
         self._id = cast(int, id_validation.payload)
         self._name = cast(str, name_validation.payload)
-        self._sides_played = SideRecord()
+        self._teams_played = TeamsCommanded()
 
-        self._current_side = self._sides_played.current_side
+        self._current_team = self._teams_played.current_team
 
 
     @property
-    def sides_played(self) -> SideRecord:
-        return self._sides_played
+    def teams_played(self) -> TeamsCommanded:
+        return self._teams_played
 
     @property
     def id(self) -> int:
@@ -55,13 +51,8 @@ class Commander(ABC):
 
 
     @property
-    def sides_played(self) -> SideRecord:
-        return self._sides_played
-
-
-    @property
-    def current_side(self) -> Optional['Side']:
-        return self._sides_played.current_side
+    def current_team(self) -> Optional['Team']:
+        return self._teams_played.current_team
 
 
     @name.setter
@@ -80,11 +71,11 @@ class Commander(ABC):
 
 
     def __str__(self):
-        total_games = self.sides_played.size()
+        total_games = self.teams_played.size()
         total_games_str = f"total games:{total_games}" if total_games > 0 else ""
 
-        current_side = "" if self._current_side is None else \
-            f" curren_team:[{self._current_side.id}, {self._current_side.profile.color}"
+        current_side = "" if self._current_team is None else \
+            f" curren_team:[{self._current_team.id}, {self._current_team.profile.color}"
         return (
             f"Owner[id:{self._id}"
             f" name:{self._name}"
@@ -92,7 +83,6 @@ class Commander(ABC):
             f"{total_games_str}"
             f"]"
         )
-
 
 
     def move_piece(self, piece_name:str, destination:Coord):
@@ -103,7 +93,7 @@ class Commander(ABC):
             if not validation.is_success():
                 raise validation.exception
 
-            result = self._current_side.find_piece_by_name(piece_name)
+            result = self._current_team.find_piece_by_name(piece_name)
             if not result.is_success():
                 raise result.exception
 
@@ -129,50 +119,5 @@ class Commander(ABC):
 
             piece.rank.walk(piece=piece, destination=destination)
 
-        except (NullPieceException, ConflictingSideException) as e:
+        except (NullPieceException, ConflictingTeamException) as e:
             raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
-
-
-class HumanCommander(Commander):
-
-    def __init__(self, competitor_id: int, name: str):
-        super().__init__(competitor_id, name)
-
-
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-
-        if isinstance(other, HumanCommander):
-            return self.id == other.id
-        return False
-
-
-class CyberneticCommander(Commander):
-    # _decision_engine: DecisionEngine
-
-    def __init__(
-            self,
-            competitor_id: int,
-            name: str,
-            # decision_engine: DecisionEngine,
-    ):
-        super().__init__(competitor_id, name)
-    #     self._decision_engine = decision_engine
-    #
-    #
-    # @property
-    # def decision_engine(self) -> DecisionEngine:
-    #     return self._decision_engine
-
-
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-
-        if isinstance(other, CyberneticCommander):
-            return self._id == other.id
-        return False
-
-    def __str__(self):
-        return f"{super().__str__()} engine:{self.decision_engine.__class__.__name__.title()}"

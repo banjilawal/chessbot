@@ -1,15 +1,14 @@
 import random
 from typing import List, Optional, TYPE_CHECKING
 
-from assurance.exception.validation.hostage import HostageValidationException
+from assurance.exception.invalid_hostage import HostageValidationException
 from chess.result import Result
-from chess.geometry.validator.coord_validator import CoordValidator
-from assurance.validators.hostage import HostageValidator
-from assurance.validators.name import NameValidator
+from chess.coord import CoordValidator
+from assurance.validators.hostage_validator import HostageValidator
 from chess.square import Square
 from chess.exception.board_exception import RemovePieceFromBoardException, IncompleteBoardTransactionException
-from chess.exception.search import PieceNotFoundException, SquareNotFoundException
-from chess.geometry.coord import Coord
+from chess.exception.search import PieceNotFoundException
+from chess.coord import Coord
 
 if TYPE_CHECKING:
     from chess.piece.piece import Piece, CombatantPiece
@@ -121,19 +120,7 @@ class Board:
     def find_square_by_coord(self, coord: Coord) -> Optional[Square]:
         method = f"{self.__class__.__name__}find_square_by_coordinate"
 
-        """" 
-        Finds a square on the ChessBoard by its coord. If coord is neither not null
-        or its columns are rows are out of bounds 
-        
-        Args:
-            coord (Coord): The coord of the square to find.      
-            
-        Returns:    
-            Optional[Square]: The Square object if found, otherwise None.
-            
-        Raises: 
-            CoordValidationException: If coord is fails any validators checks.
-        """
+
 
         try:
             validation = CoordValidator.validate(coord)
@@ -146,32 +133,7 @@ class Board:
             raise e
 
 
-    def find_square_by_name(self, name: str) -> Result[Square]:
-        method = f"{self.__class__.__name__}.find_square_by_name"
 
-        """" 
-        Finds a square by its name. 
-
-        Args:
-            name (str):      
-
-        Returns:    
-            Optional[Square]: The Square object if found, otherwise None.
-
-        Raises: 
-            NameValidationException: If name is fails any validators checks.
-        """
-
-        try:
-            validation = NameValidator.validate(name)
-            if not validation.is_success():
-                raise validation.exception
-
-            square = next((s for s in self.squares if s.name.upper() == name.upper()), None)
-
-            return square
-        except SquareNotFoundException as e:
-            raise e
 
     def find_square_by_id(self, square_id: int) -> Optional[Square]:
         method = f"{self.__class__.__name__}.find_square_by_id"

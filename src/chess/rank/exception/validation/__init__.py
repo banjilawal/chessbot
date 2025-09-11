@@ -1,85 +1,78 @@
+# chess/rank/exception/validation
+
 """
-Rank Validation Exception - Exceptions raised by RankValidators
+A package providing a structured hierarchy of exceptions for piece rank validation.
 
-PURPOSE:
-    Rank validators throw the same sort of exceptions have the same source and naming scheme. Organzing them
-    in their own validation exception pacakge is easier to manage.
+## PURPOSE
+This package defines specific validation exceptions for each type of chess piece. By using a consistent naming
+scheme, all piece rank validators provide a clean and predictable way to handle validation failures. The exceptions
+are designed to pinpoint the exact piece type that caused the error, allowing for targeted error handling.
 
+## CORE CLASSES
+* `RankValidationException`: The base class for all rank validation exceptions.
+* `BishopValidationException`: Raised when a bishop fails its validation checks.
+* `KingValidationException`: Raised when a king fails its validation checks.
+* `KnightValidationException`: Raised when a knight fails its validation checks.
+* `PawnValidationException`: Raised when a pawn fails its validation checks.
+* `RookValidationException`: Raised when a rook fails its validation checks.
+* `QueenValidationException`: Raised when a queen fails its validation checks.
 
-CORE CLASSES:
-    RankValidationExce[tion: Super class of RankValidation exceptions
-    BishopValidationException: Wrapper for exceptions raised by Bishop validaor
-    KingValidationException: Wrapper for exceptions raised by King validaor
-    KnightValidationException: Wrapper for exceptions raised by Knightmethods
-    PawnValidationException: Wrapper for exceptions raised by Pawn validaor
-    RookValidationException: Wrapper for exceptions raised by Rook validaor
-    QueenValidationException: Wrapper for exceptions raised by Queen validaor
+## USAGE
+These exceptions are typically raised by a validator method and can be caught to handle invalid piece configurations
+ gracefully.
 
+>>> from chess.rank.exception.validation import KingValidationException
+>>>
+>>> def validate_king_move(king_piece, destination_coord):
+...     # ... validation logic ...
+...     if not is_valid_king_move:
+...         raise KingValidationException("Invalid move for a king.")
+...
+>>> try:
+...     validate_king_move(my_king, new_coord)
+... except KingValidationException as e:
+...     print(f"Validation Error: {e}")
 
-USAGE:
-    >>> from chess.rank.exception.validation
-    >>> raise QueenValidationException(f"{method}: {QueenValidationException.DEFAULT_MESSAGE}")
-
+---
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-from .invalid_rank import RankValidationException
+# Core exception imports
 from .invalid_king import KingValidationException
-from .invalid_pawn import PawnValidationException
 from .invalid_knight import KnightValidationException
-from .invalid_bishop import BishopValidationException
+from .invalid_pawn import PawnValidationException
 from .invalid_rook import RookValidationException
 from .invalid_queen import QueenValidationException
+from .invalid_bishop import BishopValidationException
 
-
-InvalidRank = RankValidationException
-InvalidKing = KingValidationException
-InvalidPawn = PawnValidationException
-InvalidKnight = KnightValidationException
-InvalidBishop = BishopValidationException
-InvalidRook = RookValidationException
-InvalidQueen = QueenValidationException
-
-
-# Package metadata (organic to __init__.py)
+# Package metadata
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "rank_exception_package"
+__package_name__ = "chess.rank.exception.validation"
 
+# Public API
+__all__ = [
+    # Core exceptions (alphabetical for clarity)
+    "BishopValidationException",
+    "KingValidationException",
+    "KnightValidationException",
+    "PawnValidationException",
+    "QueenValidationException",
+    "RookValidationException",
 
-# Organic utility function for package info
+    # Package metadata and utilities
+    "__version__",
+    "__author__",
+    "package_info",
+]
+
+# Organic utility function
 def package_info() -> dict:
     """Return basic package information."""
     return {
         "name": __package_name__,
         "version": __version__,
         "author": __author__,
-        "exports": __all__
+        "exports": __all__,
     }
-
-# Export control - only what belongs in public API
-__all__ = [
-    # Core classes
-    "RankValidationException",
-    "KingValidationException",
-    "PawnValidationException",
-    "KnightValidationException",
-    "BishopValidationException",
-    "RookValidationException",
-    "QueenValidationException",
-    
-    # Aliases
-    "InvalidRank",
-    "InvalidKing",
-    "InvalidPawn",
-    "InvalidKnight",
-    "InvalidBishop",
-    "InvalidRook",
-    "InvalidQueen",
-
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info"
-]

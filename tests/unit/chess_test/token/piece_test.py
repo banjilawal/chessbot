@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import create_autospec, patch
 
-from assurance.exception.validation.id import IdValidationException
-from assurance.exception.validation.name import NameValidationException
+from assurance.exception.invalid_id import IdValidationException
+from assurance.exception.invalid_name import NameValidationException
 from chess.rank.rank import Rank
 from chess.side.team import Side
 from chess.piece.piece import Piece
@@ -23,7 +23,7 @@ class PieceTest(unittest.TestCase):
         piece.id = piece_id
         piece.name = name
         piece.rank = mock_rank
-        piece.side = mock_team
+        piece.team = mock_team
 
         return piece
 
@@ -44,7 +44,7 @@ class PieceTest(unittest.TestCase):
         mock_side = create_autospec(Side, instance=True)
 
         with self.assertRaises(IdValidationException):
-            Piece(piece_id=-1, name="piece", side=mock_side, rank=mock_rank)
+            Piece(piece_id=-1, name="piece", team=mock_side, rank=mock_rank)
 
 
     @patch('assurance.validators.name.NameValidator.validate')

@@ -1,9 +1,9 @@
 from typing import List
 
 from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
-from chess.geometry.coord import Coord
+from chess.coord import Coord
 from chess.square import Square
-from chess.geometry.vector import Vector
+from chess.vector import Vector
 
 
 class SquareIterator:

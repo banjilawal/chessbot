@@ -15,7 +15,7 @@ class CoordException(ChessException):
         - ColumnBelowBoundsException
         - ColumnAboveBoundsException
     """
-    ERROR_CODE = "COORDINATE_ERROR"
+    ERROR_CODE = "COORD_ERROR"
     DEFAULT_MESSAGE = f"Invalid Coord state threw an exception"
 
     def __init__(self, message=None):

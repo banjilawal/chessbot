@@ -19,20 +19,36 @@ AUTHOR: Banji Lawal
 """
 
 # Subpackage imports
-from . import exception
+from .exception import *
 
-# Core package imports
+# Core class
 from .board import Board
 from .square_iterator import SquareIterator
 
-# Aliases
-Iterator = SquareIterator
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "board_pkg"
+__package_name__ = "chess.board"
 
+
+
+
+
+# Export control - only what belongs in public API
+__all__ = [
+    # Core classes
+    "Board",
+    "SquareIterator",
+
+    *exception.__all__,
+    "exception",
+
+    # Package metadata and utilities
+    "__version__",
+    "__author__",
+    "package_info",
+]
 
 # Organic utility function for package info
 def package_info() -> dict:
@@ -43,20 +59,4 @@ def package_info() -> dict:
         "author": __author__,
         "exports": __all__
     }
-
-
-# Export control - only what belongs in public API
-__all__ = [
-    # Core classes
-    "Board",
-    "SquareIterator",
-
-    # Aliases
-    "Iterator",
-
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info",
-]
 

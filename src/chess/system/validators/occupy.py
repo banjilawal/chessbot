@@ -1,20 +1,20 @@
 from typing import Generic, TypeVar, cast
 
-from assurance.exception.validation.id import IdValidationException
+from assurance.exception.invalid_id import IdValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
-from assurance.exception.validation.request import OccupationRequestValidationException
-from chess.square.exception.invalid import SquareValidationException
+from assurance.exception.invalid_request import OccupationRequestValidationException
+from chess.square.exception.invalid_square import SquareValidationException
 from assurance.result.event import CommandOutcome
-from assurance.validators.id import IdValidator
+from assurance.validators.id_validator import IdValidator
 from chess.piece.validator import PieceValidator
 from chess.square import Square
-from chess.creator.emit import id_emitter
+from chess.common.emit import id_emitter
 from chess.system.validators.base import RequestValidator
-from assurance.validators.square import SquareValidator
+from chess.square.square_validator import SquareValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullOccupationRequestException
 from chess.exception.occupy import OccupiedBySelfException
-from chess.exception.exception import AttackingKingException
+from chess.exception.piece_exception import AttackingKingException
 from chess.system.send import OccupationRequest
 from chess.piece.piece import KingPiece, Piece
 

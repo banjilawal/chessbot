@@ -1,17 +1,17 @@
 from typing import Generic, TypeVar, cast
 
-from assurance.exception.validation.id import IdValidationException
+from assurance.exception.invalid_id import IdValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
-from assurance.exception.validation.request import PromotionRequestValidationException
+from assurance.exception.invalid_request import PromotionRequestValidationException
 
 from assurance.result.event import CommandOutcome
-from assurance.validators.id import IdValidator
+from assurance.validators.id_validator import IdValidator
 from chess.piece.validator import PieceValidator
-from chess.rank.queen_rank import PromotedQueen
+from chess.rank.queen import PromotedQueen
 from chess.system.validators.base import RequestValidator
 from chess.common.permit import Event
 from chess.exception.null.request import NullPromotionRequestException
-from chess.exception.exception import DoublePromotionException
+from chess.exception.piece_exception import DoublePromotionException
 from chess.exception.rank_exception import UnPromotableRankException, PromotionRowException
 
 

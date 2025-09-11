@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING
 
 from chess.board.board import Board
-from chess.config.rank import RankProfile
+from chess.rank.profile import RankProfile
 
-from chess.geometry.coord import Coord
+from chess.coord import Coord
 
 if TYPE_CHECKING:
     from chess.engine.analyze.board_analyzer import BoardAnalyzer

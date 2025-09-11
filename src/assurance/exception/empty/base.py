@@ -1,4 +1,4 @@
-from assurance.exception.base import AssuranceException
+from assurance.exception.assurance_exception import AssuranceException
 
 
 class EmptyConstructorException(AssuranceException):

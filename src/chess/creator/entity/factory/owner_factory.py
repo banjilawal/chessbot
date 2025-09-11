@@ -1,15 +1,13 @@
 from typing import List
 
-from chess.creator.emit import id_emitter
+from chess.common.emit import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
-from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.config.game import SideProfile
+from chess.team.team_profile import TeamProfile
 from chess.competitor.commander import HumanCommander
 from chess.competitor.commander import Commander
 from chess.randomize.competitor import RandomName
-from chess.side.team import Side
 
 
 class OwnerFactory:
@@ -21,8 +19,8 @@ class OwnerFactory:
         wo = HumanCommander(competitor_id=id_emitter.person_id, name=RandomName.person())
         bo = HumanCommander(competitor_id=id_emitter.person_id, name=RandomName.person())
 
-        wt = TeamBuilder.build(wo, SideProfile.WHITE)
-        bt = TeamBuilder.build(bo, SideProfile.BLACK)
+        wt = TeamBuilder.build(wo, TeamProfile.WHITE)
+        bt = TeamBuilder.build(bo, TeamProfile.BLACK)
 
         ranks = RankFactory.assemble()
         for team in [wt, bt]:
@@ -42,7 +40,7 @@ class OwnerFactory:
         #
         # for team_config in TeamConfig:
         #     # print(team_config)
-        #     team = TeamBuilder.build(OwnerBuilder.build(id_emitter.competitor_id), team_config)
+        #     team = TeamBuilder.build(OwnerBuilder.build(id_emitter.commander_id), team_config)
         #     teams.append(team)
         #
         #

@@ -9,8 +9,8 @@ CORE CLASSES:
     SqaureNotFoundException: Raised when a sqaure is not found by SquareSearch
 
 USAGE:
-    >>> from chess.search import PieceSearch    >>> from chess.search.exception import PieceNotFoundException
-    >>> result = PieceSearch.by_id(1, [white_team, black_team)
+    >>> from chess.search import BoardSearch    >>> from chess.search.exception import PieceNotFoundException
+    >>> result = BoardSearch.piece_by_ide(1, [white_team, black_team)
     >>> if result.is_not_found():
     >>>    raise PieceNotFoundException(f"{PieceNotFoundException.DEFAULT_MESSAGE}")
 
@@ -20,18 +20,22 @@ AUTHOR: Banji Lawal
 """
 
 # Core search.exception classes
-
 from .piece_not_found import PieceNotFoundException
 from .square_not_found import SquareNotFoundException
 
-# Class Aliases
-PieceNotFound = PieceNotFoundException
-SquareNotFound = SquareNotFoundException
-
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "search_exception_pkg"
+__package_name__ = "chess.square.exception"
 
+__all__ = [
+    # Core Packages
+    "PieceNotFoundException",
+    "SquareNotFoundException",
+
+    "__version__",
+    "__author__",
+    "package_info"
+]
 
 # Organic utility function for package info
 def package_info() -> dict:
@@ -42,18 +46,3 @@ def package_info() -> dict:
         "author": __author__,
         "exports": __all__
     }
-
-
-__all__ = [
-    # Core Packages
-    "PieceNotFoundException",
-    "SquareNotFoundException",
-
-    # Aliases
-    "PieceNotFound",
-    "SquareNotFound",
-
-    "__version__",
-    "__author__",
-    "package_info"
-]

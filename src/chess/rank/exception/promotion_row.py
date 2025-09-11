@@ -1,3 +1,5 @@
+from chess.exception import RankException
+
 class PromotionRowException(RankException):
     ERROR_CODE = "PROMOTION_ROW_ERROR"
     DEFAULT_MESSAGE = "Incorrect row for validation promotion"

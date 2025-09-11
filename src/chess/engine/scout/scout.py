@@ -2,7 +2,7 @@ from typing import List
 
 from chess.board.board import Board
 from chess.square import Square
-from chess.creator.emit import id_emitter
+from chess.common.emit import id_emitter
 from chess.piece.piece import Piece
 from chess.engine.scout.scout_report import ScoutReport
 

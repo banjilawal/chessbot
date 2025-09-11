@@ -28,9 +28,10 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-from . import null
+# Import subpackages
+from .null import *
 
-# Import other exceptions (not null ones)
+# Core classes
 from .already_at_destinaiton import AlreadyAtDestinationException
 from .self_encounter import EncounteringSelfException
 from .double_promotion import DoublePromotionException
@@ -40,35 +41,11 @@ from .piece_coord_null import PieceCoordNullException
 from .set_captor_null import SetCaptorNullException
 from .invalid_piece import PieceValidationException
 
-
-AlreadyAtDestination = AlreadyAtDestinationException
-EncounteringSelf = EncounteringSelfException
-DoublePromotion = DoublePromotionException
-PrisonerEscape = PrisonerEscapeException
-PrisonerRelease = PrisonerReleaseException
-SetCaptorNull = SetCaptorNullException
-InvalidPiece = PieceValidationException
-
-
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "null_piece_pkg"
+__package_name__ = "piece.exception"
 
-
-# Organic utility function for package info
-def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        "name": __package_name__,
-        "version": __version__,
-        "author": __author__,
-        "exports": __all__
-    }
-
-
-# Make null subpackage available without importing its contents
-from . import null
 
 __all__ = [
     # Core exceptions
@@ -81,16 +58,23 @@ __all__ = [
     "SetCaptorNullException",
     "PieceValidationException",
 
-    # Aliases
-    "AlreadyAtDestination",
-    "EncounteringSelf",
-    "DoublePromotion",
-    "PrisonerEscape",
-    "PrisonerRelease",
-    "SetCaptorNull",
+    *null.__all__,
+
+    # Subpackages
+    "null",
 
     # Package metadata and utilities
     "__version__",
     "__author__",
     "package_info"
 ]
+
+# Organic utility function for package info
+def package_info() -> dict:
+    """Return basic package information."""
+    return {
+        "name": __package_name__,
+        "version": __version__,
+        "author": __author__,
+        "exports": __all__
+    }

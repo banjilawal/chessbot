@@ -2,7 +2,7 @@ from typing import List
 
 from chess.creator.entity.builder.rank_builder import RankBuilder
 from chess.rank.rank import Rank
-from chess.config.rank import RankProfile
+from chess.rank.profile import RankProfile
 
 
 class RankFactory:

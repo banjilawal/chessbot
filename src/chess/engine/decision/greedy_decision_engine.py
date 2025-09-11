@@ -5,7 +5,7 @@ from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.decision_engine import DecisionEngine
 
-from chess.geometry.coord import Coord
+from chess.coord import Coord
 from chess.competitor.commander import CyberneticCommander
 
 

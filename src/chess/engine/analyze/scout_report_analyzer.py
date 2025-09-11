@@ -1,8 +1,8 @@
 from typing import List
 
 from chess.square import Square
-from chess.creator.emit import id_emitter
-from chess.geometry.coord import Coord
+from chess.common.emit import id_emitter
+from chess.coord import Coord
 from chess.piece.encounter import Encounter
 
 from chess.engine.scout.scout_report import ScoutReport

@@ -1,4 +1,4 @@
-from chess.exception.id.negative_id import ChessException
+from chess.exception.id.negative_id_exception import ChessException
 
 
 class SquareException(ChessException):

@@ -1,3 +1,5 @@
+from chess.exception import RankException
+
 class UnPromotableException(RankException):
     ERROR_CODE = "UNPROMOTABLE_RANK_PROMOTION_ERROR"
     DEFAULT_MESSAGE = "Rank is not promotable"

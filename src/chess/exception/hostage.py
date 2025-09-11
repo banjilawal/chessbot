@@ -1,5 +1,5 @@
 from chess.exception.chess_exception import ChessException
-from chess.exception.exception import PieceException
+from chess.exception.piece_exception import PieceException
 
 """
 Super class for Hostage exceptions

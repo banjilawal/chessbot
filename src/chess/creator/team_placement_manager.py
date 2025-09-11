@@ -1,7 +1,7 @@
 from typing import List, TYPE_CHECKING
 
 
-from chess.exception.id.negative_id import ChessException
+from chess.exception.id.negative_id_exception import ChessException
 from chess.config.placement import PlacementChart
 from chess.piece.piece import Piece
 

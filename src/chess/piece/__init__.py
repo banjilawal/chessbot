@@ -1,3 +1,5 @@
+# chess/piece/__init__.py
+
 """
 Piece Package - Chess Piece Data Objects
 
@@ -26,28 +28,45 @@ USAGE:
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
+from sys import exception
 
 # Subpackage imports
-from . import exception
+from .exception import *
 
 # Core package imports
 from .piece import Piece
 from .combatant_piece import CombatantPiece
 from .king_piece import KingPiece
-from .coord_stack import CoordStack
 from .encounter import Encounter
 from .validator import PieceValidator
-
-# Aliases
-Positions = CoordStack
+from .encounter_log import EncounterLog
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "piece_package"
+__package_name__ = "piece"
 
-# Optional: Package-level constants
-MAX_PIECES_PER_TEAM = 16
+
+# Export control - only what belongs in public API
+__all__ = [
+    # Core classes
+    "Piece",
+    "CombatantPiece",
+    "KingPiece",
+    "PieceValidator",
+    "Encounter",
+    "EncounterLog",
+
+    *exception.__all__,
+
+    # Subpackages
+    "exception",
+
+    # Package metadata and utilities
+    "__version__",
+    "__author__",
+    "package_info"
+]
 
 # Organic utility function for package info
 def package_info() -> dict:
@@ -58,21 +77,3 @@ def package_info() -> dict:
         "author": __author__,
         "exports": __all__
     }
-
-# Export control - only what belongs in public API
-__all__ = [
-    # Core classes
-    "Piece",
-    "CombatantPiece",
-    "KingPiece",
-    "CoordStack",
-    "PieceValidator",
-
-    # Aliases
-    "Positions",
-
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info",
-]
