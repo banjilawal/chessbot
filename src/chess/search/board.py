@@ -1,7 +1,11 @@
+from sys import exception
+
 from chess.coord import CoordValidator
 
-from chess.coord import Coord
-
+from chess.board import Board
+from chess.square import Square, SquareValidator
+from chess.coord import Coord, CoordValidator
+from chess.common import IdValidator, NameValidator
 from .query_result import SearchResult
 from .team import TeamSearch
 
@@ -14,10 +18,13 @@ class BoardSearch:
     def piece_by_id(piece_id: int, board: Board) -> SearchResult['Piece']:
         """Find a piece by ID across all board"""
         try:
-            for side in board:
-                piece_result = TeamSearch.by_id(piece_id, side)
-                if piece_result.is_success():
-                    return piece_result
+            id_validation= IdValidator.validate(piece_id)
+            if not id_validation.is_success():
+                return SearchResult(exception=id_validation.exception)
+
+            piece = next((piece for piece in board.pieces if piece.id == piece_id), None)
+            if piece is not None:
+                return SearchResult(payload=piece)
 
             # Return empty search result
             return  SearchResult()
@@ -34,13 +41,13 @@ class BoardSearch:
             if not validation.is_success():
                 return SearchResult(exception=validation.exception)
 
-            for side in board:
-                piece_result = TeamSearch.by_name(piece_name, side)
-                if piece_result.is_success():
-                    return piece_result
+            piece = next((piece for piece in board.pieces if piece.id == piece_id), None)
+            if piece is not None:
+                return SearchResult(payload=piece)
 
             # Return empty search result
             return  SearchResult()
+
 
         except Exception as e:
             return SearchResult(exception=e)
@@ -55,11 +62,9 @@ class BoardSearch:
             if not validation.is_success():
                 return SearchResult(exception=validation.exception)
 
-            # Search all board
-            for side in board:
-                piece_result = TeamSearch.by_coord(coord, side)
-                if piece_result.is_success():
-                    return piece_result
+            piece = next((piece for piece in board.pieces if piece.current_position == coord), None)
+            if piece is not None:
+                return SearchResult(payload=piece)
 
             # Return empty search result
             return  SearchResult()
