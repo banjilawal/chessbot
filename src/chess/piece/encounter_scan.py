@@ -25,6 +25,9 @@ class EncounterScan:
             self._items.append(record)
 
 
+    def find_encounter
+
+
     def reset(self):
         self._items.clear()
 

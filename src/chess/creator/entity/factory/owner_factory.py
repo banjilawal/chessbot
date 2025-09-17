@@ -27,7 +27,7 @@ class OwnerFactory:
             for rank in ranks:
                 for i in range(rank.per_side):
                     chess_piece = ChessPieceBuilder.build(
-                        token_id=id_emitter.piece_id,
+                        token_id=id_emitter.id,
                         team_rank_member_id=(i + 1),
                         rank=rank,
                         team=team

@@ -1,6 +1,10 @@
 from typing import cast
 
-from chess.operation.occupation import OccupationDirectiveValidator, InvalidOccupationDirectiveException, OccupationException
+from chess.operation.occupation import (
+    OccupationDirectiveValidator,
+    InvalidOccupationDirectiveException,
+    EmptyBoardSearchException
+)
 from chess.piece import Piece, Encounter, NullPieceException
 from chess.square import Square
 from chess.board import Board
@@ -30,7 +34,7 @@ class OccupationExecutor(Executor):
             raise search_result.exception
 
         if search_result.is_not_found():
-            raise OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+            raise EmptyBoardSearchException(f"{method}: {EmptyBoardSearchException.DEFAULT_MESSAGE}")
         source_square = cast(Square, search_result.payload)
 
 
@@ -48,8 +52,8 @@ class OccupationExecutor(Executor):
 
 
         if target_occupant is not None and not piece.is_enemy(target_occupant):
-            OccupationExecutor._record_encounter(piece, target_square)
-            return
+            return OccupationExecutor._record_encounter(piece, target_square)
+
 
         if target_occupant is not None and piece.is_enemy(target_occupant):
             OccupationExecutor._attack_enemy(piece, target_square)
@@ -90,14 +94,8 @@ class OccupationExecutor(Executor):
         """
 
         """During an occupation operation the a square occupied by a friendly is handled differently 
-        than a `ScanOperation.
-        
-        
+        than a `ScanOperation.        
         """
-
-
-
-
 
         try:
             blocking_occupant = blocked_square.occupant
@@ -157,4 +155,49 @@ class OccupationExecutor(Executor):
                 f"{method}: {AttackEventInconsistencyException.DEFAULT_MESSAGE}"
             ) from e
 
+    @staticmethod
+    def _leave_old_square(piece: Piece, destination: Square):
+        method = "OccupationExecutor._finalize_occupation"
 
+        """
+        A destination occupied by a friendly is handled differently during an occupation operation than a
+        scan operation. The difference is the conditions which raise exceptions. The friendly occupant is
+        not provided directly to avoid mixing two args of the same type.
+
+        Args
+            `piece` (Piece): Records the encounter with a friendly at  `blocked_square`
+            `blocked_square` (Square): The blocking friendly is extracted from here
+
+         Returns:
+             Result[T]: A Result object containing the validated payload if the Validator is 
+                satisfied, NameValidationException otherwise.
+
+        Raises:
+            TypeError: if t is not int
+            NullNameException: if t is null
+            BlankNameException: if t only contains white space.
+            ShortNameException: if t is shorter than MIN_NAME_LENGTH
+
+            NameValidationException: Wraps any preceding team_exception 
+        """
+
+        """During an occupation operation the a square occupied by a friendly is handled differently 
+        than a `ScanOperation.
+
+
+        """
+
+        try:
+            blocking_occupant = blocked_square.occupant
+
+            if blocking_occupant is None:
+                raise NullPieceException(f"{method}: {NullPieceException.DEFAULT_MESSAGE}")
+
+            if piece.is_enemy(blocking_occupant):
+                raise CorruptRecordEventException(f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}")
+
+            piece.encounters.add_encounter(Encounter(blocking_occupant))
+        except (NullPieceException,) as e:
+            raise CorruptRecordEventException(
+                f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}"
+            )

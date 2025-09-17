@@ -59,3 +59,13 @@ class NullCombatantPieceException(OccupationException):
     DEFAULT_MESSAGE = f"CombatantPiece cannot be null"
 
 
+class EmptyBoardSearchException(OccupationException):
+    """
+    Board searches during an occupation should not fai. If they do there is an inconsistency in the board
+    """
+
+    ERROR_CODE = "BOARD_SEARCH_ERROR"
+    DEFAULT_MESSAGE = f"Unexpected empty square search result"
+
+
+

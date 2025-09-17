@@ -11,7 +11,7 @@ class TeamBuilder:
     def build(owner: Commander, config: TeamProfile) -> Side:
        print("build team got config", config)
        team = Side(
-           side_id=id_emitter.side_id,
+           side_id=id_emitter.team_id,
            letter=config.letter,
            team_color=config.game_color,
            back_row_index=config.back_rank_index,
