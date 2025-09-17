@@ -7,14 +7,31 @@ from chess.piece.piece import Piece
 T = TypeVar('T')
 
 
-class Action(Generic[T]):
+class Directive(Generic[T]):
+    """A data-holding object representing an`actor`'s intent to perform a
+    state changing operation  on a `target`. An `Action` can change state of:
+
+    The Directive is handled by an Executor who carry out the directive
+
+    * Its `actor` who initiates and performs the activity
+    * The `target` which the action is performed upon.
+
+    ## Possible State Changes:
+    - If the actor wants to change its state then target is a resource `actor` needs.
+    - If `actor` wants to change `target` state then the `actor' state might not be affected
+
+    Attributes:
+        _id (`int`): A unique identifier for an `action`.
+        _actor (`T`): The entity performing the state-changing activity
+        _target (`T`): The `target` can either
+    """
     _id: int
     _actor: T
     _target: Optional[T]
 
 
-    def __init__(self, action_id: int, actor: T, target: Optional[T]=None):
-        self._id = action_id
+    def __init__(self, directive_id: int, actor: T, target: Optional[T]=None):
+        self._id = directive_id
         self._actor = actor
         self._target = target
 

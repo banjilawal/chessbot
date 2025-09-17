@@ -20,11 +20,11 @@ class NullRequestException(NullException):
 
 class NullOccupationRequestException(NullRequestException):
     """
-    Raised if an OccupySquare is null.
+    Raised if an OOccupationDirective is null.
     """
 
     ERROR_CODE = "NULL_OCCUPATION_REQUEST_ERROR"
-    DEFAULT_MESSAGE = f"OccupySquare cannot be null"
+    DEFAULT_MESSAGE = f"OOccupationDirective cannot be null"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

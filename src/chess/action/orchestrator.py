@@ -2,7 +2,7 @@ from abc import abstractmethod, ABC
 from typing import Optional
 
 from chess.board.board import Board
-from chess.action.action import Action
+from chess.action.directive import Action
 
 
 class TransactionOrchestrator(ABC):

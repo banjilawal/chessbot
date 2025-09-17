@@ -1,6 +1,8 @@
 from typing import cast
 
+from chess.action import Directive, Executor, ExecutionContext, OccupationExecutionException
 from chess.board.board import Board
+from chess.search import BoardSearch
 from chess.square import Square
 from chess.common.permit import Event
 from chess.action.occupation_exception import AttackEventInconsistencyException, \
@@ -13,31 +15,74 @@ from chess.action.validators.occupy import OccupationRequestValidator
 from chess.piece.piece import Piece, CombatantPiece
 from chess.piece.encounter import Encounter
 
+class OOccupationDirective(Directive):
 
-class OccupationTransaction(TransactionOrchestrator):
+    def __init__(self, directive_id: int, actor: Piece, target: Square):
+        super().__init__(directive_id=directive_id, actor=actor, target=target)
+
+    @property
+    def id(self):
+        return self._id
+
+    @property
+    def piece(self):
+        return cast(Piece, self.target)
+
+    @property
+    def square(self):
+        return cast(self._target, Square)
+
+    def __eq__(self, other):
+        if not super().__eq__(other):
+            return False
+        if isinstance(other, OOccupationDirective):
+            return self._id == other.id
+
+
+class OccupationExecutor(Executor):
 
     @staticmethod
-    def enter(request: OccupationRequest, board: Board):
+    def execute_directive(directive: Directive, context: ExecutionContext):
+        method = "OccupationExecutor.execute-directive"
 
-        validation = OccupationRequestValidator.validate(request)
-        if not validation.is_success():
-            return validation.exception
+        occupy_directive = cast('OccupyDirective', directive)
+        piece = cast(Piece, occupy_directive.actor)
 
-        piece = cast(Piece, validation.request.actor)
+        board = cast(Board, context.board)
+        target_square = cast(Square, occupy_directive.target)
 
-        source_square = board.find_square_by_coord(piece.current_position)
-        target_square = cast(Square, request.target)
+        search_result = BoardSearch.square_by_coord(piece.current_position)
+        if search_result.exception is not None:
+            raise search_result.exception
 
-        enemy = None
+        if search_result.is_not_found():
+            raise OccupationExecutionException(f"{method}: {OccupationExecutionException.DEFAULT_MESSAGE}")
+        source_square = cast(Square, search_result.payload)
 
-        event = validation.event
 
-        if event == Event.RECORD_ENCOUNTER:
-            OccupationTransaction.record_stream(piece, target_square)
+        # validation = OccupationRequestValidator.validate(request)
+        # if not validation.is_success():
+        #     return validation.exception
+        #
+        # piece = cast(Piece, validation.request.actor)
+        #
+        # source_square = board.find_square_by_coord(piece.current_position)
+        # target_square = cast(Square, request.target)
+
+
+        target_occupant = target_square.occupant
+
+
+        if target_occupant is not None and not piece.is_enemy(target_occupant):
+            OccupationExecutor.record_stream(piece, target_square)
             return
 
-        if event == Event.ATTACK:
-            enemy = OccupationTransaction._attack_stream(piece, target_square)
+        if target_occupant is not None and piece.is_enemy(target_occupant):
+            OccupationExecutor._attack_stream(piece, target_square)
+        #
+        #
+        # if event == Event.ATTACK:
+        #     enemy = OccupationExecutor._attack_stream(piece, target_square)
 
         target_square.occupant = piece
         source_square.occupant = None
@@ -45,7 +90,7 @@ class OccupationTransaction(TransactionOrchestrator):
 
     @staticmethod
     def record_stream(piece: Piece, blocked_square: Square):
-        method = "OccupationTransaction._encounter_stream"
+        method = "OccupationExecutor._encounter_stream"
         try:
             blocking_occupant = blocked_square.occupant
 
@@ -65,9 +110,10 @@ class OccupationTransaction(TransactionOrchestrator):
                 f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}"
             )
 
+
     @staticmethod
     def _attack_stream(piece: Piece, target_square: Square) -> CombatantPiece:
-        method = "OccupationTransaction._attack_stream"
+        method = "OccupationExecutor._attack_stream"
 
         try:
             hostage_candidate = target_square.occupant

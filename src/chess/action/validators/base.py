@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from chess.action.outcome import ActionOutcome
+from chess.action.result import OperationResult
 
 T = TypeVar('T')
 
@@ -10,5 +10,5 @@ class RequestValidator(ABC):
 
     @staticmethod
     @abstractmethod
-    def validate(t: Generic[T]) -> ActionOutcome:
+    def validate(t: Generic[T]) -> OperationResult:
         pass

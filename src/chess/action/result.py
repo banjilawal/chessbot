@@ -5,25 +5,25 @@ from assurance.exception.empty.result import EmptyEventOutcomeConstructorExcepti
 from assurance.exception.event import ConflictingEventStateException
 from chess.common.permit import Event
 from chess.action.null_occupation_request import NullRequestException
-from chess.action.action import Action
+from chess.action.directive import Action
 
 
 
 
-class ActionOutcome(ABC):
+class OperationResult(ABC):
     """
-    The outcome of mutators any operations that change state
+    Result of an operation that changes an entity' state.
 
     Use factory methods to create instances:
-    - ActionOutcome.success()
-    - ActionOutcome.failed()
-    - ActionOutcome.rolled_back()
+    - OperationResult.success()
+    - OperationResult.failed()
+    - OperationResult.rolled_back()
 
     Direct constructor usage is not recommended.
     """
 
-    _id:int
-    _command: Action
+    _id: int
+    _action: Action
     _event: Optional[Event]
     _exception: Optional[Exception]
     _was_rolled_back: bool
@@ -36,7 +36,7 @@ class ActionOutcome(ABC):
         exception: Optional[Exception] = None,
         was_rolled_back: bool = False
     ):
-        method = "ActionOutcome.__init__"
+        method = "OperationResult.__init__"
 
         """INTERNAL: Use factory methods instead of direct constructor."""
 
@@ -54,7 +54,7 @@ class ActionOutcome(ABC):
             )
 
         self._id = outcome_id
-        self._command = request
+        self._action = request
         self._event = event
         self._exception = exception
         self._was_rolled_back = was_rolled_back
@@ -67,7 +67,7 @@ class ActionOutcome(ABC):
 
     @property
     def request(self) -> Optional[Action]:
-        return self._command
+        return self._action
 
 
     @property
@@ -114,7 +114,7 @@ class ActionOutcome(ABC):
 
 
     @classmethod
-    def success(cls, outcome_id: int, request: Action, event: Event) -> 'ActionOutcome':
+    def success(cls, outcome_id: int, request: Action, event: Event) -> 'OperationResult':
         method = f"{cls.__class__.__name__}.success"
         """Create a successful outcome"""
 
@@ -128,7 +128,7 @@ class ActionOutcome(ABC):
 
 
     @classmethod
-    def processing(cls, outcome_id: int, request: Action) -> 'ActionOutcome':
+    def processing(cls, outcome_id: int, request: Action) -> 'OperationResult':
         method = f"{cls.__class__.__name__}.processing"
 
         """Create a processing outcome"""
@@ -142,7 +142,7 @@ class ActionOutcome(ABC):
 
 
     @classmethod
-    def failed(cls, outcome_id: int, request: Action, exception: Exception) -> 'ActionOutcome':
+    def failed(cls, outcome_id: int, request: Action, exception: Exception) -> 'OperationResult':
         method = f"{cls.__class__.__name__}.failed"
         """Create a failed outcome"""
 
@@ -156,7 +156,7 @@ class ActionOutcome(ABC):
 
 
     @classmethod
-    def roll_back(cls, outcome_id: int, request: Action, event: Event) -> 'ActionOutcome':
+    def roll_back(cls, outcome_id: int, request: Action, event: Event) -> 'OperationResult':
         method = f"{cls.__class__.__name__}.rolled_back"
         """Create a rolled back outcome"""
 

@@ -1,4 +1,4 @@
-from chess.action.action import Action
+from chess.action.directive import Action
 
 class Notification:
     _message: str

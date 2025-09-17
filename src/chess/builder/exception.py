@@ -113,7 +113,7 @@ class CommanderBuilderException(BuilderException):
     CommanderBuilder exceptions.
     """
     ERROR_CODE = "COMMANDER_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "CommanderBuilder raised team_exception"
+    DEFAULT_MESSAGE = "CommanderBuilder raised an exception"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

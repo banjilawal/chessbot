@@ -4,7 +4,7 @@ from assurance.exception.invalid_id import IdValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
 from assurance.exception.invalid_request import PromotionRequestValidationException
 
-from chess.action.outcome import ActionOutcome
+from chess.action.result import OperationResult
 from chess.common.id_validator import IdValidator
 from chess.piece.validator import PieceValidator
 from chess.rank.queen import PromotedQueen
@@ -20,7 +20,7 @@ T = TypeVar('T')
 class PromotionRequestValidator(RequestValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> ActionOutcome:
+    def validate(t: Generic[T]) -> OperationResult:
         entity = "Promote"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -83,7 +83,7 @@ class PromotionRequestValidator(RequestValidator):
             if current_row != piece.team.profile.enemy_home().rank_row :
                 raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
-            return ActionOutcome(
+            return OperationResult(
                 request=promotion_request,
                 event=Event.PROMOTION
             )
