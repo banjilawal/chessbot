@@ -3,7 +3,7 @@ from chess.coord import CoordValidator
 from chess.coord import Coord
 
 from .query_result import SearchResult
-from .team_search import TeamSearch
+from .team import TeamSearch
 
 
 class BoardSearch:

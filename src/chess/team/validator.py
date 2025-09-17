@@ -1,7 +1,9 @@
 from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
-from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
-from chess.team import Team, NullTeamException, TeamValidationException
+from chess.common import Result, Validator, IdValidator, IdValidationException
+from chess.search import CommanderSearch
+from chess.exception import BrokenRelationshipException
+from chess.team import Team, NullTeamException, NullTeamProfileException, TeamValidationException
 from chess.commander import Commander, CommanderValidator, CommanderValidationException
 
 T = TypeVar('T')
@@ -54,14 +56,13 @@ class TeamValidator(Validator):
             if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-            from chess.commander.commander_validator import CommanderValidator
+
             commander_validation = CommanderValidator.validate(team.commander)
             if not commander_validation.is_success():
-                raise CommanderValidationException(
-                    f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}"
-                )
+                raise CommanderValidationException(f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}")
+
             commander = cast(Commander, commander_validation.payload)
-            CommanderSearch.
+            CommanderSearch.for_team(team, commander)
 
             if team not in commander.teams.items:
 
@@ -79,15 +80,15 @@ class TeamValidator(Validator):
             raise TeamValidationException(f"{method}: {TeamValidationException.DEFAULT_MESSAGE}") from e
 
 
-
-def main():
-
-    from chess.commander.commander import HumanCommander
-    person = HumanCommander(1, "person")
-
-    from chess.team import Team
-    team = Team(team_id=1, controller=person, profile=TeamProfile.BLACK)
-
-
-if __name__ == "__main__":
-    main()
+#
+# def main():
+#
+#     from chess.commander.commander import HumanCommander
+#     person = HumanCommander(1, "person")
+#
+#     from chess.team import Team
+#     team = Team(team_id=1, controller=person, profile=TeamProfile.BLACK)
+#
+#
+# if __name__ == "__main__":
+#     main()

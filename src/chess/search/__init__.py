@@ -36,8 +36,9 @@ AUTHOR: Banji Lawal
 """
 
 # Core search classes
-from .board_search import BoardSearch
-from .team_search import  TeamSearch
+from .board import BoardSearch
+from .team import  TeamSearch
+from .commander import CommanderSearch
 from .query_result import SearchResult
 
 from .search_exception import (
@@ -54,7 +55,8 @@ __all__ = [
     # Core classes
     "BoardSearch",
     "TeamSearch",
-    "SearchResult",
+    'CommanderSearch',
+    'SearchResult',
 
     "SearchException",
     "PieceNotFoundException",
