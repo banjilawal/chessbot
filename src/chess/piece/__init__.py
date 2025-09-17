@@ -25,21 +25,67 @@ USAGE:
     >>> white_king = KingPiece(piece_id=2, name="WK", validation=king, team=white_team)
     >>>
 
+Piece Exception Package - All Piece-Related Exceptions
+
+PURPOSE:
+    Contains all exceptions related to piece operations and state.Contains exceptions raised when a Piece object is
+    null or improperly referenced during chess operations.
+
+EXCEPTIONS:
+    AlreadyAtDestinationException: Move to current position
+    EncounteringSelfException: Piece encounters itself
+    DoublePromotionException: Multiple promotion attempts
+    PrisonerEscapeException: Captured piece tries to move
+    PrisonerReleaseException: Error releasing prisoner
+    PieceCoordNullException: Piece coordinate is null
+    SetCaptorNullException: Setting null captor
+    PieceValidationException:raised if PieceValidation fails
+    NullPieceException: Abstract base class for null piece exceptions.
+    NullHostagePieceException: Raised when a team tries to add a null hostage piece to its roster.
+    NullCombatantPieceException: Raised when a team tries to remove a captured member but the captor is null.
+    NullKingPieceException: Raised when a king piece reference is null.
+
+
+USAGE:
+    >>> from chess.piece.team_exception import PieceCoordNullException
+    >>> from chess.piece.team_exception.null import NullPieceException
+
+    >>> if piece.current_position is None:
+    >>>     raise PieceCoordNullException("Piece coordinate is null")
+    >>> from chess.piece.team_exception.null import NullPieceException
+    >>> raise NullPieceException(f"{NullPieceException.DEFAULT_MESSAGE}")
+
+___
+
+
+VERSION: 1.0.0
+AUTHOR: Banji Lawal
+
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 from sys import exception
 
-# Subpackage imports
-from .exception import *
+from .exception import (
+    AlreadyAtDestinationException,
+    EncounteringSelfException,
+    DoublePromotionException,
+    PrisonerEscapeException,
+    PrisonerReleaseException,
+    PieceCoordNullException,
+    SetCaptorNullException,
+    PieceValidationException,
+    NullHostagePieceException,
+    NullKingPieceException,
+    NullCombatantPieceException,
+    NullEncounterException
+)
 
 # Core package imports
 from .piece import Piece
-from .combatant_piece import CombatantPiece
-from .king_piece import KingPiece
 from .encounter import Encounter
 from .validator import PieceValidator
-from .encounter_log import EncounterLog
+from .encounter_scan import EncounterScan
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
@@ -55,7 +101,20 @@ __all__ = [
     "KingPiece",
     "PieceValidator",
     "Encounter",
-    "EncounterLog",
+    "EncounterScan",
+    "AlreadyAtDestinationException",
+    "EncounteringSelfException",
+    "DoublePromotionException",
+    "PrisonerEscapeException",
+    "PrisonerReleaseException",
+    "PieceCoordNullException",
+    "SetCaptorNullException",
+    "PieceValidationException",
+    "NullPieceException",
+    "NullKingPieceException",
+    "NullHostagePieceException",
+    "NullCombatantPieceException",
+    "NullEncounterException",
 
     *exception.__all__,
 

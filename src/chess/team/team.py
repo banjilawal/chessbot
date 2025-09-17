@@ -1,17 +1,20 @@
-from typing import TYPE_CHECKING, cast, Sequence
+from typing import TypeVar, cast, Sequence, TYPE_CHECKING
 
 from chess.piece import Piece
+from chess.common import IdValidator
+from chess.search import SearchResult
+from chess.commander import Commander, CommanderValidator
 from chess.team import TeamProfile, NullTeamProfileException
-from chess.commander import Commander,CommanderValidator
-from chess.exception import NullNumberException, NullStringException
-from assurance import IdValidator
+from chess.exception import (
+    NullNumberException, NullStringException, IdValidationException, BrokenRelationshipException
+)
 
 class Team:
     _id:int
     _commander: 'Commander'
-    _profile:TeamProfile
-    _roster:list['Piece']
-    _hostages:list['Piece']
+    _profile: TeamProfile
+    _roster: list['Piece']
+    _hostages: list['Piece']
 
     def __init__(self, team_id: int, commander: 'Commander', profile: TeamProfile):
         method = "Team.__init__"
@@ -33,10 +36,10 @@ class Team:
         self._roster = []
 
 
-        if self not in commander.teams_played.items:
-            commander.teams_played.push_side(self)
+        if self not in commander.teams.items:
+            commander.teams.push_side(self)
 
-        if self not in commander.teams_played.items:
+        if self not in commander.teams.items:
             raise BrokenRelationshipException(f"{method}:{BrokenRelationshipException.DEFAULT_MESSAGE}")
 
 
@@ -106,7 +109,7 @@ class Team:
             return SearchResult(exception=e)
 
 
-    def find(self, piece_id: int) -> Result['Piece']:
+    def find(self, piece_id: int) -> SearchResult'Piece']:
         method = "Team.find_piece_by_id"
 
         """
@@ -126,6 +129,8 @@ class Team:
             validation = IdValidator.validate(id)
             if not validation.is_success():
                 raise validation.exception
+
+
 
             for piece in self._roster:
                 return Result(payload=piece)
@@ -217,7 +222,7 @@ class Team:
 
         Raises:
             NullPieceException: if the piece is null
-            ConflictingTeamException: if piece.team does not match the team instance
+            InvalidTeamAssignmentException: if piece.team does not match the team instance
         """
         try:
             if piece is None:
@@ -245,9 +250,9 @@ class Team:
         Raises:
             TypeError: if the validated piece cannot be cast to CombatantPiece 
             PieceValidationException: If the piece fails sanity checks
-            ConflictingTeamException: If the piece is not on the correct team
+            InvalidTeamAssignmentException: If the piece is not on the correct team
 
-            RemoveCombatantException wraps any preceding exception 
+            RemoveCombatantException wraps any preceding team_exception 
         """
         try:
             validation = self._validate_combatant(combatant)
@@ -288,9 +293,9 @@ class Team:
         Raises:
             TypeError: if the validated piece cannot be cast to CombatantPiece 
             PieceValidationException: If the piece fails sanity checks
-            ConflictingTeamException: If the piece is not on the correct team
+            InvalidTeamAssignmentException: If the piece is not on the correct team
 
-            RemoveCombatantException wraps any preceding exception 
+            RemoveCombatantException wraps any preceding team_exception 
         """
         try:
             validation = self._validate_combatant(combatant=enemy)

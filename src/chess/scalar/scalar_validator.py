@@ -25,7 +25,7 @@ class ScalarValidator(Validator):
             - value is within the bounds of the chess chessboard
             - column is not null
             - column is within the bounds of the chess chessboard
-        If either validators fails their exception will be encapsulated in a 
+        If either validators fails their team_exception will be encapsulated in a 
         ScalarValidationException
             
         Args
@@ -86,7 +86,7 @@ class ScalarValidator(Validator):
 #     if result.is_success():
 #         print(f"Scalar is valid: {result.payload}")
 #     else:
-#         print(f"Scalar is invalid: {result.exception}")
+#         print(f"Scalar is invalid: {result.team_exception}")
 #
 # if __name__ == "__main__":
 #     main()

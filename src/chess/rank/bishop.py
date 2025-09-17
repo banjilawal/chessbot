@@ -1,16 +1,15 @@
 from chess.board.board import Board
 from chess.rank.profile import RankProfile
 from chess.common.emit import id_emitter
-from chess.exception.piece_exception import PieceCoordNullException
-from chess.exception.rank_exception import BishopException
-from chess.exception.walk import BishopWalkException
-from chess.flow.occupy import OccupationFlow
+
+
+from chess.action.types import OccupationFlow
 
 from chess.coord import Coord
 from chess.geometry.path import Path
 from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
-from chess.system.send import OccupationRequest
+from chess.action.send import OccupationRequest
 from chess.piece.piece import Piece
 
 

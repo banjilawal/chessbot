@@ -25,7 +25,7 @@ To use this package, import the desired classes and perform scalar-related opera
 >>>
 >>> # Validating the candidate
 >>> if not validation.is_success():
->>>     raise validation.exception
+>>>     raise validation.team_exception
 >>> scalar = cast(Scalar, validation.payload)
 >>>
 >>> # Use the scalar to transform a vector
@@ -33,6 +33,38 @@ To use this package, import the desired classes and perform scalar-related opera
 >>> v = u.scalar_product(scalar)
 >>> print(v.x, v.y)
 6, 8
+
+
+## SCALAR EXCEPTONS
+This package defines specific exceptions for issues encountered when working with scalar values. This granular approach helps developers to quickly diagnose and resolve problems such as a null scalar, or a value falling outside of a defined range.
+
+## CORE EXCEPTIONS
+* `NullScalarException`: Raised when a required scalar value is unexpectedly `None`.
+* `ScalarBelowBoundsException`: Raised when a scalar's value is below its minimum allowed value.
+* `ScalarAboveUpperBoundException`: Raised when a scalar's value is above its maximum allowed value.
+* `ScalarValidationException`: A general team_exception raised when a scalar value fails to meet its validation criteria.
+
+### EXCEPTION USAGE EXCEPTIONS
+These exceptions can be imported and raised from within the scalar-related code to enforce data integrity.
+
+>>> from chess.scalar.team_exception import NullScalarException, ScalarAboveBoundsException
+>>> from chess.scalar import Scalar
+>>>
+>>> try:
+...     # This will raise a NullScalarException
+...     my_scalar = None
+...     if my_scalar is None:
+...         raise NullScalarException("Scalar cannot be null.")
+... except NullScalarException as e:
+...     print(f"Error: {e}")
+...
+>>> try:
+...     # This will raise a ScalarAboveUpperBoundException
+...
+...     from chess.common import ROW_SIZE
+...     my_scalar = Scalar(value=(ROW_SIZE + 1))
+... except ScalarAboveBoundsException as e:
+...     print(f"Error: {e}")
 
 ---
 VERSION: 1.0.0
@@ -56,9 +88,7 @@ __all__ = [
     "Scalar",
     "ScalarValidator",
 
-    # Subpackage
     *exception.__all__,
-    "exception",
 
     # Package metadata and utilities
     "__version__",

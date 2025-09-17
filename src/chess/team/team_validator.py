@@ -1,17 +1,17 @@
 from typing import cast, Generic, TYPE_CHECKING
 
 from assurance.exception.invalid_id import IdValidationException
-from chess.team.exception.invalid_team import TeamValidationException
+from chess.team.team_exception.invalid_team import TeamValidationException
 from chess.commander.exception.invalid_commander import CommanderValidationException
 from chess.competitor.commander import Commander
 
 from chess.team.team_profile import TeamProfile
-from chess.team.exception.null_team_profile import NullTeamProfileException
+from chess.team.team_exception.null_team_profile import NullTeamProfileException
 
-from chess.team.exception.null_team import NullTeamException
+from chess.team.team_exception.null_team import NullTeamException
 from chess.result import Result
 from chess.common.validator import Validator, T
-from assurance.validators.id_validator import IdValidator
+from chess.common.id_validator import IdValidator
 from chess.exception.stack_exception import BrokenRelationshipException
 
 if TYPE_CHECKING:
@@ -31,7 +31,7 @@ class TeamValidator(Validator):
             - Not null
             - id passes validator checks
             - commander passes validator checks
-        An unmet requirements raise an exception which encapsulated in a TeamValidationException
+        An unmet requirements raise an team_exception which encapsulated in a TeamValidationException
 
         Args
             t (Team): team to validate
@@ -74,7 +74,7 @@ class TeamValidator(Validator):
                 )
             competitor = cast(Commander, competitor_validation.payload)
 
-            if side not in competitor.teams_played.items:
+            if side not in competitor.teams.items:
 
                 raise BrokenRelationshipException(f"{method}: {BrokenRelationshipException.DEFAULT_MESSAGE}")
 

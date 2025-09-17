@@ -1,15 +1,3 @@
-from chess.board.board import Board
-from chess.rank.profile import RankProfile
-from chess.common.emit import id_emitter
-from chess.exception.rank_exception import QueenRankException
-from chess.exception.walk import QueenWalkException
-from chess.flow.occupy import OccupationFlow
-from chess.coord import Coord
-from chess.geometry.path import Path, Line
-from chess.geometry.quadrant import Quadrant
-from chess.rank.rank import Rank
-from chess.system.send import OccupationRequest
-from chess.piece.piece import Piece
 
 
 class Queen(Rank):

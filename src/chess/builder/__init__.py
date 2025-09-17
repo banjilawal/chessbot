@@ -2,12 +2,18 @@
 chess.builder Package
 
 PURPOSE:
-    Validated enty builder
+    Validated entity builder
 
 CORE CLASSES:
     Commander
     HumanCommander
-    CyberneticCompettor
+    CyberneticCompetitor
+
+    CommanderBuilderException
+    CoordBuilderException
+    PieceBuilderException
+    ScalarBuilderException
+    VectorBuilderException
 
 USAGE:
     >>>
@@ -26,7 +32,8 @@ from .piece_builder import PieceBuilder
 from .scalar_builder import ScalarBuilder
 from .square_builder import SquareBuilder
 from .team_builder import TeamBuilder
-from vector_builder import VectorBuilder
+from .vector_builder import VectorBuilder
+from .build_result import BuildResult
 
 
 __version__ = "1.0.0"
@@ -35,11 +42,16 @@ __package_name__ = "chess.builder"
 
 __all__ = [
     # Core classes
+    "CommanderBuilder",
+    "CoordBuilder",
+    "CoordinateStackBuilder",
+    "PieceBuilder",
+    "ScalarBuilder",
+    "SquareBuilder",
+    "TeamBuilder",
+    "VectorBuilder",
 
-
-    # Subpackages
     *exception.__all__,
-    "exception",
 
     "__version__",
     "__author__",

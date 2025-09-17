@@ -1,7 +1,7 @@
 
 from chess.common import KNIGHT_STEP_SIZE
 from chess.vector import (
-    XComponentNullException, YComponentNullException,
+    NullXComponentException, NullYComponentException,
     VectorAboveBoundsException, VectorBelowBoundsException
 )
 
@@ -12,16 +12,14 @@ class Vector:
     _y: int
 
     """
-    Offset is an immutable class is used for shifting a Coord by a null-pkg. The
-    Offset is just a null-pkg added to a Coord null-pkg. 
-    Moved responsibilty for coordinate_vendo algerba from Vector to Coord, the testing and verification is 
-    simpler. This leaves Vector a pure data class used for transforming a Coord.
+    Offset is an immutable class is used for shifting a Coord by a null-pkg. The Offset is just a null-pkg 
+    added to a Coord null-pkg. Moved responsibility for coordinate_vector algebra from Vector to Coord, the 
+    testing and verification is simpler. This leaves Vector a pure data class used for transforming a Coord.
 
     Attributes:
         _x (int): Amount added to target coord's row
         _y (int): Amount added to target coord's column
     """
-
 
     def __init__(self, x: int, y: int):
         method = f"Offset__init__"
@@ -38,7 +36,7 @@ class Vector:
         """
 
         if x is None:
-            raise XComponentNullException(f"{method}: {XComponentNullException.DEFAULT_MESSAGE}")
+            raise NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
 
         if  x < -KNIGHT_STEP_SIZE or y < KNIGHT_STEP_SIZE:
             raise VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
@@ -47,7 +45,7 @@ class Vector:
             raise VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
 
         if y is None:
-            raise YComponentNullException(f"{method} {YComponentNullException.DEFAULT_MESSAGE}")
+            raise NullYComponentException(f"{method} {NullYComponentException.DEFAULT_MESSAGE}")
 
         self._x = x
         self._y = y
@@ -83,7 +81,7 @@ class Vector:
     # def add_to_coordinate(self, coord: Coord) -> Coord:
     #     validation_result = CoordinateSpecification.is_satisfied_by(coord)
     #     if not validation_result.is_success():
-    #         raise validation_result.exception
+    #         raise validation_result.team_exception
     #
     #     c  = validation_result.payload
     #
@@ -94,7 +92,7 @@ class Vector:
     #         Coord(row=row, column=column)
     #     )
     #     if not validation_result.is_success():
-    #         raise validation_result.exception
+    #         raise validation_result.team_exception
     #
     #     return validation_result.payload
 

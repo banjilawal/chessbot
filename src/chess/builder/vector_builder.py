@@ -26,14 +26,14 @@ class VectorBuilder(Enum):
 #         coord = build_result.payload
 #         print(f"Successfully built coord: {coord}")
 #     else:
-#         print(f"Failed to build coord: {build_result.exception}")
+#         print(f"Failed to build coord: {build_result.team_exception}")
 #
 #     build_result = CoordBuilder.build(-1,  4)
 #     if build_result.is_success():
 #         coord = build_result.payload
 #         print(f"Successfully built coord: {coord}")
 #     else:
-#         print(f"Failed to build coord: {build_result.exception}")
+#         print(f"Failed to build coord: {build_result.team_exception}")
 #
 # if __name__ == "__main__":
 #     main()

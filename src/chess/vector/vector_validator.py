@@ -1,9 +1,8 @@
 from typing import Generic, cast
 
-
-from chess.vector.exception.null_vector import NullVectorException
-
-from chess.vector import Vector
+from chess.common import Result, Validator, KNIGHT_STEP_SIZE
+from chess.vector import Vector, NullVectorException, NullXComponentException, NullYComponentException, \
+    VectorBelowBoundsException, VectorAboveBoundsException, VectorValidationException
 
 
 class VectorValidator(Validator):
@@ -23,7 +22,7 @@ class VectorValidator(Validator):
             - y is not null
             - y is not less than -KNIGHT_WALKING_RANGE
             - y is not greater than KNIGHT_WALKING_RANGE
-        If any validators fails their exception will be encapsulated in 
+        If any validators fails their team_exception will be encapsulated in 
         VectorValidationException
             
         Args
@@ -39,17 +38,15 @@ class VectorValidator(Validator):
               
             TypeError: if t is not an Vector
             
-            XComponentNullException: if Vector.x is null
+            NullXComponentException: if Vector.x is null
             
-            VectorBelowBoundsException: if -Vector.x < -KNIGHT_STEP_SIZE
+            VectorBelowBoundsException: if -Vector.x < -KNIGHT_STEP_SIZE or -Vector.y < -KNIGHT_STEP_SIZE
                
-            XComponentAboveUpperBoundException: if Vector.x > KNIGHT_STEP_SIZE
+            VectorAboveBoundException: if Vector.x > KNIGHT_STEP_SIZE or Vector.y > KNIGHT_STEP_SIZE
             
-            XComponentNullException: if Vector.x is null
+            NullXComponentException: if Vector.x is null
             
-            YComponentBelowLowerBoundException: if -Vector.y < -KNIGHT_STEP_SIZE
-            
-            YComponentAboveUpperBoundException: if Vector.y > KNIGHT_STEP_SIZE
+            NullYComponentException: if Vector.x is null
             
             VectorValidationException: Wraps preceding exceptions:     
         """
@@ -65,46 +62,33 @@ class VectorValidator(Validator):
             vector = cast(Vector, t)
 
             if vector.x is None:
-                raise XComponentNullException(
-                    f"{method}: {XComponentNullException.DEFAULT_MESSAGE}"
-                )
+                raise NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
 
             if vector.x < -KNIGHT_STEP_SIZE:
                 # print(f"x: {x} knight_step_size:{-KNIGHT_STEP_SIZE}")
-                raise XComponentBelowLowerBoundException(
-                    f"{method}: {XComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
-                )
+                raise VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
 
             if vector.x > KNIGHT_STEP_SIZE:
-                raise XComponentAboveUpperBoundException(
-                    f"{method}: {XComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
-                )
+                raise VectorAboveBoundsException( f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}" )
 
             if vector.y is None:
-                raise YComponentNullException(
-                    f"{method} {YComponentNullException.DEFAULT_MESSAGE}"
-                )
+                raise NullYComponentException(f"{method} {NullYComponentException.DEFAULT_MESSAGE}")
 
             if vector.y < -KNIGHT_STEP_SIZE:
-                raise YComponentBelowLowerBoundException(
-                    f"{method}: {YComponentBelowLowerBoundException.DEFAULT_MESSAGE}"
-                )
+                raise VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                                                 )
             if vector.y > KNIGHT_STEP_SIZE:
-                raise YComponentAboveUpperBoundException(
-                    f"{method}: {YComponentAboveUpperBoundException.DEFAULT_MESSAGE}"
-                )
+                raise VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}" )
 
             return Result(payload=vector)
 
         except (
-            TypeError,
-            NullVectorException,
-            YComponentNullException,
-            XComponentNullException,
-            YComponentBelowLowerBoundException,
-            YComponentAboveUpperBoundException,
-            XComponentBelowLowerBoundException,
-            XComponentAboveUpperBoundException
+                TypeError,
+                NullVectorException,
+                NullYComponentException,
+                NullXComponentException,
+                VectorBelowBoundsException,
+                VectorAboveBoundsException
         ) as e:
             raise VectorValidationException(
                 f"{method}: f{VectorValidationException.DEFAULT_MESSAGE}"

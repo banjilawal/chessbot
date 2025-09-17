@@ -5,7 +5,7 @@ from chess.coord import CoordValidator
 from assurance import IdValidator, NameValidator
 from chess.team import Team
 from chess.piece import Piece
-from chess.commander import TeamsCommanded
+from chess.commander import TeamList
 
 
 
@@ -16,8 +16,9 @@ if TYPE_CHECKING:
 class Commander(ABC):
     _id: int
     _name: str
+    _teams: TeamList
     _current_team: Optional['Team']
-    _teams_played: TeamsCommanded
+
 
     def __init__(self, commander_id: int, name: str):
 
@@ -31,14 +32,10 @@ class Commander(ABC):
 
         self._id = cast(int, id_validation.payload)
         self._name = cast(str, name_validation.payload)
-        self._teams_played = TeamsCommanded()
+        self._teams = TeamList()
 
-        self._current_team = self._teams_played.current_team
+        self._current_team = self._teams.current_team
 
-
-    @property
-    def teams_played(self) -> TeamsCommanded:
-        return self._teams_played
 
     @property
     def id(self) -> int:
@@ -51,8 +48,13 @@ class Commander(ABC):
 
 
     @property
+    def teams(self) -> TeamList:
+        return self._teams
+
+
+    @property
     def current_team(self) -> Optional['Team']:
-        return self._teams_played.current_team
+        return self._teams.current_team
 
 
     @name.setter
@@ -71,7 +73,7 @@ class Commander(ABC):
 
 
     def __str__(self):
-        total_games = self.teams_played.size()
+        total_games = self.teams.size()
         total_games_str = f"total games:{total_games}" if total_games > 0 else ""
 
         current_side = "" if self._current_team is None else \

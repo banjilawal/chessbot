@@ -3,10 +3,10 @@ from typing import Optional, cast
 
 from chess.rank import Rank
 from chess.coord import Coord, CoordStack
-from chess.exception.hostage import SelfEncounterException
-from chess.piece import Encounter, EncounterLog, PieceValidator
+from chess.exception import ChessException, IdValidationException, NameValidationException
+from chess.piece import Encounter, EncounterScan, PieceValidator
 from chess.team import Team, TeamValidator, TeamValidationException
-from assurance import IdValidator, NameValidator, IdValidationException, NameValidationException
+
 
 
 class Piece(ABC):
@@ -23,7 +23,7 @@ class Piece(ABC):
         _rank (Rank): The rank that defines the piece's movement strategy.
         _roster_number (int): The piece's number on its team's roster.
         _current_position (Optional[Coord]): The current coordinate of the piece on the board.
-        _encounters (EncounterLog): A log of encounters with other pieces.
+        _encounters (EncounterScan): A log of encounters with other pieces.
         _positions (CoordStack): A stack of the piece's historical coordinates.
     """
 
@@ -34,7 +34,7 @@ class Piece(ABC):
     _captor: 'Piece'
     _roster_number: int
     _current_position: Coord
-    _encounters: EncounterLog
+    _encounters: EncounterScan
     _positions: CoordStack
 
     def __init__(self, piece_id: int, name: str, rank: Rank, team: Team):
@@ -77,7 +77,7 @@ class Piece(ABC):
         self._roster_number = len(team.roster) + 1
         self._team = team
 
-        self._encounters = EncounterLog()
+        self._encounters = EncounterScan()
         self._positions = CoordStack()
         self._current_position = self._positions.current_coord
 
@@ -128,7 +128,7 @@ class Piece(ABC):
 
 
     @property
-    def encounters(self) -> EncounterLog:
+    def encounters(self) -> EncounterScan:
         """A log of encounters with other pieces."""
         return self._encounters
 
@@ -201,4 +201,54 @@ class Piece(ABC):
             f"position:{self._positions.current_coord} "
             f"moves:{self._positions.size()}]"
         )
+
+
+class KingPiece(Piece):
+
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Team'):
+        super().__init__(piece_id, name, rank, side)
+
+
+    def __eq__(self, other):
+        if not super().__eq__(other):
+            return False
+
+        if isinstance(other, KingPiece):
+            return self.id == other.id
+
+
+class CombatantPiece(Piece):
+    _captor: Optional[Piece]
+
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
+        super().__init__(piece_id, name, rank, team)
+        self._captor = None
+
+
+    @property
+    def captor(self) -> Optional[Piece]:
+        return self._captor
+
+
+    @captor.setter
+    def captor(self, captor: Piece):
+        method = "Captor.@setter.captor"
+
+        if captor is None:
+            raise SetCaptorNullException(f"{method}: {SetCaptorNullException.DEFAULT_MESSAGE}")
+
+        if self._captor is not None:
+            raise PrisonerReleaseException(f"{method}: {PrisonerReleaseException.DEFAULT_MESSAGE}")
+
+        self._captor = captor
+
+
+    def __eq__(self, other):
+        if not super().__eq__(other):
+            return False
+
+        if isinstance(other, CombatantPiece):
+            return self.id == other.id
+
+
 

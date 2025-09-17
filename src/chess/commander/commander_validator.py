@@ -1,9 +1,9 @@
 from typing import cast, Generic, TYPE_CHECKING
 
-from chess.common import Result
+from chess.commander.exception import TeamListException
+from chess.common import Result, Validator, IdValidator, NameValidator
+from chess.exception import NameValidationException, IdValidationException
 from chess.commander import Commander, NullCommanderException, CommanderValidationException
-
-if TYPE_CHECKING:
 
 
 class CommanderValidator(Validator):
@@ -20,7 +20,7 @@ class CommanderValidator(Validator):
     """
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result['Commander']:
+    def validate(t: Generic[T]) -> Result[Commander]:
         entity = "Commander"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
@@ -31,7 +31,7 @@ class CommanderValidator(Validator):
             - valid id
             - valid name
             - Commander.team_history meets validator requirements
-        Any failed requirement raise an exception wrapped in a CommanderValidationException
+        Any failed requirement raise an team_exception wrapped in a CommanderValidationException
             
         Args
             t (Commander): commander to validate
@@ -50,7 +50,7 @@ class CommanderValidator(Validator):
             ColumnBelowBoundsException: If commander.column < 0
             ColumnAboveBoundsException: If commander.column>= ROW_SIZE
                 
-            CommanderValidationException: Wraps any preceding exception     
+            CommanderValidationException: Wraps any preceding team_exception     
         """
 
         try:
@@ -63,35 +63,35 @@ class CommanderValidator(Validator):
                 raise NullCommanderException(f"{method} {NullCommanderException.DEFAULT_MESSAGE}")
 
             # If cannot cast from t to Commander need to break
-            from chess.competitor.commander import Commander
+            from chess.commander import Commander
             if not isinstance(t, Commander):
                 raise TypeError(f"{method} Expected a Commander, got {type(t).__name__}")
 
             # cast and run checks for the fields
-            from chess.competitor.commander import Commander
-            competitor = cast(Commander, t)
+            from chess.commander import Commander
+            commander = cast(Commander, t)
 
-            id_validation = IdValidator.validate(competitor.id)
+            id_validation = IdValidator.validate(commander.id)
             if not id_validation.is_success():
                 raise id_validation.exception
 
-            name_validation = NameValidator.validate(competitor.name)
+            name_validation = NameValidator.validate(commander.name)
             if not name_validation.is_success():
                 raise name_validation.exception
 
-            team_history_validation = SideRecordValidator.validate(competitor.teams_played)
-            if not team_history_validation.is_success():
-                raise team_history_validation.exception
+            # team_history_validation = TeamListValidator.validate(commander.teams)
+            # if not team_history_validation.is_success():
+            #     raise team_history_validation.exception
 
             # Return the result if checks passed
-            return Result(payload=competitor)
+            return Result(payload=commander)
 
         except (
                 TypeError,
                 NullCommanderException,
                 IdValidationException,
                 NameValidationException,
-                TeamHistoryValidationException
+                TeamListException
         ) as e:
             raise CommanderValidationException(
                 f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}"

@@ -41,8 +41,9 @@ __all__ = [
     "Board",
     "SquareIterator",
 
-    *exception.__all__,
-    "exception",
+    "NullBoardException",
+    "FailedPieceRemovalException",
+    "IncompleteBoardTransactionException",
 
     # Package metadata and utilities
     "__version__",

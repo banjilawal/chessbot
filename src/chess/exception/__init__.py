@@ -1,5 +1,5 @@
 """
-Texception Package - Project wide exceptions
+Chessexception Package - Project wide exceptions
 
 PURPOSE:
     Contains core exceptions for entities. .
@@ -11,50 +11,35 @@ CORE CLASSES:
     KingPiece: Concrete king piece with special rules
     CoordStack: Coordinate history and management utility
 
-CONVENIENCE ALIASES:
-    BasePiece: Alias for Piece abstract class
-    Combatant: Alias for CombatantPiece (shorter, cleaner)
-    King: Alias for KingPiece (more intuitive)
-    CoordHistory: Alias for CoordStack (more descriptive)
+Purpose:
+    Name exceptions are thrown during validation. More granular than regular string checks
+
+Class:
+    BlankNameException
+    NullNameException
+    ShortNameException
+    LongNameException
+    IdNullException: Id's cannot be null
+    NegativeIdException: Ids must be positive
 
 USAGE:
-    >>> from chess.piece import CombatantPiece, KingPiecee, CoordHistory
-    >>> piece = Combatant(piece_id=1, name="Pawn-A", validation=pawn_rank, team=white_team)
-    >>> king = King(piece_id=2, name="White-King", validation=king_rank, team=white_team)
-    >>> history = CoordHistory()
+    >>> from chess.exception import NullNameException
+    >>> name = None
+    >>> if name is None:
+    >>>   raise NullNameException("Name cannot be null")
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-# Core package imports
-
-from .id import *
-from .name import *
-from .null import *
-
-
-from .chess_exception import ChessException
-from .vector_exception import VectorException
-from .coord_exception import CoordException
-from .rank_exception import RankException
-from .board_exception import BoardException
-from .vector_exception import VectorException
-from .scalar_exception import ScalarException
-from .square_exception import SquareException
-from .piece_exception import PieceException
-from .team_exception import TeamException
-from .commander_exception import CommanderException
-from .flow_exception import FlowException
-
-from .search import SearchException
-from .blank_string_exception import BlankStringException
+from .chess_exception import  *
+from .collection_exception import *
 
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "exception_package"
+__package_name__ = "chess.exception"
 
 
 # Organic utility function for package info
@@ -69,21 +54,8 @@ def package_info() -> dict:
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    "ChessException",
-    "CoordException",
-    "PieceException",
-    "BoardException",
-    "TeamException",
-    "SquareException",
-    "CommanderException",
-
-    # Subpackages
-    *id.__all__,
-    "id",
-
-    *name.__all__,
-    "name",
+    *chess_exception.__all__,
+    *collection_exception.__all__,
 
 
     # Package metadata and utilities

@@ -1,21 +1,24 @@
 from enum import Enum
+from chess.builder import CommanderBuilder
+from chess.team import Team, TeamProfile, TeamValidator
+from chess.commander import Commander
+from chess.common import Result
+from assurance import ThrowHelper
 
-from chess.result import Result
-from assurance.throw_helper import ThrowHelper
-from chess.team.team_validator import TeamValidator
-from chess.competitor.commander import Commander
-from chess.team.team_profile import TeamProfile
-from chess.builder.commander_builder import CommanderBuilder
-from chess.common.emit import id_emitter
-from chess.side.team import Side
 
 
 class TeamBuilder(Enum):
 
     @staticmethod
-    def build(side_id:int=id_emitter.side_id, controller:Commander=CommanderBuilder.build().payload, profile:TeamProfile=TeamProfile.WHITE) -> Result[Side]:
+    def build(
+        team_id:int=1,
+        commander:Commander=CommanderBuilder.build().payload,
+        profile:TeamProfile=TeamProfile.WHITE
+    ) -> Result[Team]:
+        method = "TeamBuilder.build"
+
         try:
-            candidate = Side(side_id=side_id, controller=controller, profile=profile)
+            candidate = Team()
             validation = TeamValidator.validate(candidate)
 
             ThrowHelper.throw_if_invalid(TeamBuilder, validation)

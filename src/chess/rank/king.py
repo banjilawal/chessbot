@@ -1,14 +1,8 @@
 from chess.board.board import Board
 from chess.rank.profile import RankProfile
-from chess.exception.rank_exception import KingException
-from chess.exception.walk import KingWalkException
-from chess.flow.occupy import OccupationFlow
-from chess.coord import Coord
-from chess.geometry.path import Line, Path
-from chess.geometry.quadrant import Quadrant
-from chess.rank.queen import PromotedQueen
-from chess.system.send import OccupationRequest
-from chess.piece.piece import Piece
+
+
+
 
 
 class King(PromotedQueen):

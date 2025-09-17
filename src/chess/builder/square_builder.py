@@ -1,12 +1,7 @@
 from enum import Enum
 from typing import cast
 
-from chess.result import Result
-from assurance.throw_helper import ThrowHelper
-from chess.square.square_validator import SquareValidator
-from chess.square import Square
-from chess.common.emit import id_emitter
-from chess.coord import Coord
+
 
 
 class SquareBuilder(Enum):

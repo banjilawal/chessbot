@@ -9,6 +9,14 @@ CORE CLASSES:
     HumanCommander
     CyberneticCompettor
 
+PURPOSE:
+    Contains core commander team_exception classes and coordinate utilities.
+
+
+COMMANDER EXCEPTIONS CLASSES:
+    NullCommanderException
+    CommandervalidationException
+
 USAGE:
     >>>
     >>>
@@ -17,12 +25,15 @@ VERSION: 1.0.0
 AUTHOR: Banji L
 """
 
-from .exception import *
+from .exception import (
+    NullCommanderException,
+    CommanderValidationException
+)
 
 from .commander import Commander
 from .human import HumanCommander
 from .cybernetic import CyberneticCommander
-from .teams_commanded import TeamsCommanded
+from .team_list import TeamList
 from .commander_type import CommanderType
 from .commander_validator import CommanderValidator
 
@@ -35,13 +46,13 @@ __all__ = [
     "Commander",
     "HumanCommander",
     "CyberneticCommander",
-    "TeamsCommanded",
+    "TeamList",
     "CommanderType",
     "CommanderValidator",
 
-    # Subpackages
-    *exception.__all__,
-    "exception",
+    "NullCommanderException",
+    "CommanderValidationException",
+
 
     "__version__",
     "__author__",

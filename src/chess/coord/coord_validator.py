@@ -9,9 +9,9 @@ from chess.exception.coord_exception import (
     ColumnBelowBoundsException, ColumnAboveBoundsException
 )
 
-from chess.coord.exception.null.coord_null import NullCoordException
-from chess.coord.exception.null.col_null import NullColumnException
-from chess.coord.exception.null.row_null import NullRowException
+from chess.coord.coord_exception.null.coord_null import NullCoordException
+from chess.coord.coord_exception.null.col_null import NullColumnException
+from chess.coord.coord_exception.null.row_null import NullRowException
 from chess.coord import Coord
 
 
@@ -41,7 +41,7 @@ class CoordValidator(Validator):
             - column is not null
             - row is within the bounds of the chess chessboard
             - column is within the bounds of the chess chessboard
-        Any failed requirement raise an exception wrapped in a CoordValidationException
+        Any failed requirement raise an team_exception wrapped in a CoordValidationException
             
         Args
             t (Coord): coord to validate
@@ -60,7 +60,7 @@ class CoordValidator(Validator):
             ColumnBelowBoundsException: If coord.column < 0
             ColumnAboveBoundsException: If coord.column>= ROW_SIZE
                 
-            CoordValidationException: Wraps any preceding exception     
+            CoordValidationException: Wraps any preceding team_exception     
         """
 
         try:

@@ -30,7 +30,7 @@ class OwnerBuilder:
 def main():
 
     owner = OwnerBuilder.build(id_emitter.person_id)
-    print(owner, owner.teams_played.size())
+    print(owner, owner.teams.size())
 
 if __name__ == "__main__":
     main()

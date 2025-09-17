@@ -7,7 +7,7 @@ PURPOSE:
 CORE CLASSES:
     Coord:
     Coord_Stack:
-    CoordValidator:
+    CoordValidator
 
 USAGE:
     >>> from chess.geometry.coord import Coord, CoordStack, CoordValidator
@@ -17,18 +17,42 @@ USAGE:
     >>> coord_stack.push_coord(coord)
     >>> validation = CoordValidator.validate(coord)
 
+
+EXCEPTIONS:
+    Immutable (row, column) coordinate tuple for board positions
+
+EXCEPTION CLASSES:
+    NullCoordException
+    CoordValidationException
+    NullCoordException
+    NullRowException
+    NullColumnException
+    NullCoordStackException
+
+USAGE:
+    >>> from chess.geometry.coord.team_exception import CoordValidationException
+    >>> raise CoordValidationException("Invalid coord")
+
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-# Include subpackages
-from .exception import *
 
 # Core geometry classes
 from .coord import Coord
-from .coord_stack import CoordStack
+from chess.piece.coord_stack import CoordStack
 from .coord_validator import CoordValidator
-from .coord_stack_validator import CoordStackValidator
+from chess.piece.coord_stack_validator import CoordStackValidator
+
+from .exception import (
+    CoordException,
+    ColumnAboveBoundsException,
+    ColumnBelowBoundsException,
+    CoordValidationException,
+    CoordStackValidationException,
+    RowAboveBoundsException,
+    RowBelowBoundsException
+)
 
 # Package metadata
 __version__ = "1.0.0"
@@ -42,9 +66,16 @@ __all__ = [
     "CoordValidator",
     "CoordStackValidator",
 
-    # Subpackage
-    *exception.__all__,
-    "exception",
+    "RowBelowBoundsException",
+    "RowAboveBoundsException",
+    "ColumnBelowBoundsException",
+    "ColumnAboveBoundsException",
+    "CoordValidationException",
+    "CoordStackValidationException",
+    "NullCoordException",
+    "NullRowException",
+    "NullColumnException",
+    "NullCoordStackException",
 
     # Package metadata and utilities
     "__version__",

@@ -165,7 +165,7 @@ class Board:
             PieceNotFoundException: if the hostage does not exist on the board
             IncompleteBoardTransactionException: If hostage is still on the board after is was removed.
             
-            FailedPieceRemovalException wraps any preceding exception
+            FailedPieceRemovalException wraps any preceding team_exception
         """
         try:
             validation = HostageValidator.validate(hostage)
@@ -203,7 +203,7 @@ class Board:
 
         Returns:    
             Result[Piece]: with payload != NULL if piece is found. Otherwise the Result contains 
-            any exception raised.
+            any team_exception raised.
 
         Raises: 
             CoordValidationException: If coord fails sanity checks.

@@ -35,7 +35,11 @@ AUTHOR: Banji Lawal
 """
 
 # subpackages
-from .exception import *
+from .exception import (
+    SquareException,
+    NullSquareException,
+    SquareValidationException
+)
 
 # class
 from .square import Square
@@ -51,9 +55,9 @@ __all__ = [
     "Square",
     "SquareValidator",
 
-    # Subpackages
-    *exception.__all__,
-    "exception",
+    "SquareException",
+    "NullSquareException",
+    "SquareValidationException",
 
     # Package metadata and utilities
     "__version__",

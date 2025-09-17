@@ -2,7 +2,7 @@ from enum import Enum
 
 from chess.result import Result
 from assurance.throw_helper import ThrowHelper
-from chess.coord.coord_stack_validator import CoordStackValidator
+from chess.piece.coord_stack_validator import CoordStackValidator
 from chess.piece.piece.coord import CoordinateStack
 
 

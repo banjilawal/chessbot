@@ -16,19 +16,35 @@ USAGE:
     >>> if query_result.is_success():
     >>>     return cast(Piece, query_result.payload)
 
+
+SEARCH EXCEPTIONS:
+    Exceptions raised by Search entities
+
+EXCEPTION CLASSES:
+    PieceNotFoundException: Raised when a piece is not found by PieceSearch
+    SqaureNotFoundException: Raised when a sqaure is not found by SquareSearch
+
+USAGE:
+    >>> from chess.search import BoardSearch    >>> from chess.search.team_exception import PieceNotFoundException
+    >>> result = BoardSearch.piece_by_ide(1, [white_team, black_team)
+    >>> if result.is_not_found():
+    >>>    raise PieceNotFoundException(f"{PieceNotFoundException.DEFAULT_MESSAGE}")
+
+
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
-
-# Include search exceptions
-from .exception import *
 
 # Core search classes
 from .board_search import BoardSearch
 from .team_search import  TeamSearch
 from .query_result import SearchResult
 
-# Class Aliases
+from .search_exception import (
+    SearchException,
+    PieceNotFoundException,
+    SquareNotFoundException
+)
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
@@ -40,9 +56,9 @@ __all__ = [
     "TeamSearch",
     "SearchResult",
 
-    # Subpackages
-    *exception.__all__,
-    "exception",
+    "SearchException",
+    "PieceNotFoundException",
+    "SquareNotFoundException",
 
     "__version__",
     "__author__",

@@ -1,20 +1,8 @@
 from typing import cast, Generic
 
-from assurance.exception.invalid_id import IdValidationException
-from assurance.exception.invalid_name import NameValidationException
-from chess.piece.exception.invalid_piece import PieceValidationException
-
-from chess.result import Result
-from chess.common.validator import Validator, T
-from assurance.validators.id_validator import IdValidator
-from assurance.validators.name_validator import NameValidator
-from chess.builder import CommanderBuilder
-from chess.builder import TeamBuilder
-from chess.common.emit import id_emitter
-
-from chess.piece.exception.null.null_piece import NullPieceException
-from chess.randomize.competitor import RandomName
-from chess.piece.piece import Piece
+from chess.piece import Piece, NullPieceException,
+from chess.common import Validator, Result
+from chess.exception import
 
 
 class PieceValidator(Validator):
@@ -31,7 +19,7 @@ class PieceValidator(Validator):
             - id fails validator
             - name fails validator
             - coord fails validator
-        If validators fails their exception will be encapsulated in a SquareValidationException
+        If validators fails their team_exception will be encapsulated in a SquareValidationException
 
         Args
             t (Square): square to validate

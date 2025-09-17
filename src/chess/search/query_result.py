@@ -1,3 +1,5 @@
+from chess.common import Result
+
 class SearchResult(Result):
 
     def is_not_found(self) -> bool:

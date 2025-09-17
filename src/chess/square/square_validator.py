@@ -28,7 +28,7 @@ class SquareValidator(Validator):
             TypeError: If the input `t` is not an instance of `Square`.
             NullSquareException: If the input `t` is `None`.
             SquareValidationException: If the square fails any internal validation checks. This 
-                exception wraps the original validation-specific exception (e.g., `IdValidationException`).
+                team_exception wraps the original validation-specific team_exception (e.g., `IdValidationException`).
         """
         try:
             if t is None:

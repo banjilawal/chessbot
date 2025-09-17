@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, List
 
-from chess.piece.exception.null.null_encounter import NullEncounterException
+from chess.piece import NullEncounterException
 from chess.coord import Coord
 
 if TYPE_CHECKING:
@@ -51,30 +51,6 @@ class Encounter:
         return self._location
 
 
-class EncounterLog:
-    _items:List[Encounter]
-
-    def __init__(self):
-        self._items = []
-
-
-    @property
-    def items(self) -> List[Encounter]:
-        return self._items
-
-
-    def add_encounter(self, record:Encounter):
-        method = "RecordList.add_record"
-
-        if record is None:
-            raise NullEncounterException(f"{method}:{NullEncounterException.DEFAULT_MESSAGE}")
-
-        if record not in self._items:
-            self._items.append(record)
-
-
-    def reset(self):
-        self._items.clear()
 
 
 

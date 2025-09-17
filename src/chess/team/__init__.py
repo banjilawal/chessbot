@@ -19,20 +19,65 @@ To use this package, import the desired classes and perform team-related operati
 >>> # Create a new team and roster
 >>> team = Team(team_id=1, commander=white_team_commander, profile=TeamProfile.WHITE)
 >>> validation = TeamValidator.validate(team)
+
+## TEAM EXCEPTIONS
+This package defines specific exceptions for issues encountered when interacting with `Team` objects.
+The exceptions are designed to pinpoint the exact nature of an error, such as a null reference, a
+failed operation, or an invalid configuration. This granular approach helps developers to quickly diagnose
+and resolve team-related issues.
+
+### CORE EXCEPTIONS
+* `NullTeamException`: Raised when a `Team` reference is unexpectedly `None`.
+* `AddPieceException`: Raised when an attempt to add a piece to a team fails, for example, if the team is full.
+* `TeamValidationException`: Raised when a `Team` fails to meet its validation criteria.
+* `RemoveCombatantException`: Raised when a piece cannot be removed from a team, for example, if the piece is not present.
+* `InvalidTeamAssignmentException`: Raised when a `Team`'s properties conflict with another `Team`'s, such as having the same ID.
+
+### EXCEPTION USAGE EXAMPLES
+These exceptions can be imported and raised from within the team-related code to enforce data integrity.
+
+#>>> from chess.team.team_exception import NullTeamException
+>>>
+>>> def check_team(team):
+...     if team is None:
+...         raise NullTeamException("Error: No team exists.")
+...
+>>> check_team(None)
+Traceback (most recent call last):
+    ...
+NullTeamException: Error: No team exists.
+---
+
+A use case for the `AddPieceException`.
+>#>> from chess.team.team_exception import AddPieceException
+>>>
+>>> def add_piece(team, piece):
+...     if is piece.team.commander not team.commander:
+...         raise AddPieceException("The piece is not on this team. Adding piece failed")
+Traceback (most recent call last):
+    ...
+AddPieceException: The piece is not on this team. Adding piece faile.
+
 ---
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-# Subpackages
-from .exception import *
-
 # Core classes
 from .team import Team
-from .team_roster import TeamRoster
 from .team_profile import TeamProfile
 from .team_validator import TeamValidator
+
+from .exception import  (
+    TeamException,
+    AddPieceException,
+    InvalidTeamAssignmentException,
+    TeamValidationException,
+    NullTeamException,
+    NullTeamProfileException,
+    RemoveCombatantException
+)
 
 # Metadata
 __version__ = "1.0.0"
@@ -49,9 +94,12 @@ __all__ = [
     "TeamValidator",
     "TeamProfile",
 
-    # Subpackages
-    *exception.__all__,
-    "exception",
+    "NullTeamException",
+    "AddPieceException",
+    "TeamValidationException",
+    "RemoveCombatantException",
+    "InvalidTeamAssignmentException",
+    "NullTeamProfileException",
 
     # Package metadata and utilities
     "__version__",

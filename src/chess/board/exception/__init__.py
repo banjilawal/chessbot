@@ -20,23 +20,18 @@ AUTHOR: Banji Lawal
 
 
 # Core package imports
-from .null_board import NullBoardException
-from .incomplete_transaction import IncompleteBoardTransactionException
-from .piece_removal import FailedPieceRemovalException
-
+from chess.board.board_exception import NullBoardException
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.board.exception"
+__package_name__ = "chess.board.team_exception"
 
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    "NullBoardException",
-    "FailedPieceRemovalException",
-    "IncompleteBoardTransactionException",
+
 
     # Package metadata and utilities
     "__version__",

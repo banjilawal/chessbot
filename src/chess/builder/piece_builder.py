@@ -1,38 +1,59 @@
 from enum import Enum
 from typing import cast
 
-from chess.piece.exception.invalid_piece import PieceValidationException
-from chess.result import Result
-from assurance.throw_helper import ThrowHelper
-from chess.piece.validator import PieceValidator
-from chess.builder.team_builder import TeamBuilder
-from chess.common.emit import id_emitter
-from chess.rank.rank import Rank
-from chess.rank.bishop import Bishop
-
-from chess.piece.piece import Piece
+from chess.rank import Rank
+from assurance import ThrowHelper
+from chess.builder import BuildResult, PieceBuilderException
+from chess.exception import RelationshipException
+from chess.common import IdValidator, NameValidator, Result
+from chess.piece import Piece, PieceValidator
+from chess.team import Team, TeamValidator, InvalidTeamAssignmentException
 
 
 class PieceBuilder(Enum):
 
     @staticmethod
-    def build(piece_id:int=id_emitter.piece_id, name:str="BN-1", rank:Rank=Bishop(), side=TeamBuilder.build().payload) -> Result[Piece]:
+    def build(piece_id: int, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
+
         method = "PieceBuilder.build"
         try:
-            # print(piece_id," ", team, " ", validation, " ", name)
-            candidate = Piece(piece_id=piece_id, name=name, rank=rank, team=side)
-            validation = PieceValidator.validate(candidate)
-            if not validation.is_success():
-                ThrowHelper.throw_if_invalid(PieceBuilder, validation)
+            id_validation = IdValidator.validate(piece_id)
+            if not id_validation.is_success():
+                ThrowHelper.throw_if_invalid(PieceBuilder, id_validation)
+            piece_id = cast(int, id_validation.payload)
 
-            piece = cast(Piece, validation.payload)
+            name_validation = NameValidator.validate(name)
+            if not name_validation.is_success():
+                ThrowHelper.throw_if_invalid(PieceBuilder, name_validation)
+            name = cast(str, name_validation.payload)
+
+            team_validation = TeamValidator.validate(team)
+            if not team_validation.is_success():
+                ThrowHelper.throw_if_invalid(PieceBuilder, team_validation)
+            team = cast(Team, team_validation.payload)
+
+            piece_validation = PieceValidator.validate(Piece(piece_id=piece_id, name=name, rank=rank, team=team))
+            if not piece_validation.is_success():
+                ThrowHelper.throw_if_invalid(PieceBuilder, piece_validation)
+            piece = cast(Piece, piece_validation.payload)
+
+            if not piece.team == team:
+                ThrowHelper.throw_if_invalid(
+                    PieceBuilder,
+                    InvalidTeamAssignmentException(InvalidTeamAssignmentException.DEFAULT_MESSAGE)
+                )
+
+            if piece not in team.roster:
+                team.add_to_roster(piece)
+
+            if piece not in team.roster:
+                ThrowHelper.throw_if_invalid(
+                    PieceBuilder,
+                    RelationshipException(RelationshipException.DEFAULT_MESSAGE)
+                )
+
             return Result(payload=piece)
-
-        except PieceValidationException as e:
-            raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}") from e
-
-        except Exception as e:
-            return Result(payload=None, exception=e)
+        except
 
 
 def main():
