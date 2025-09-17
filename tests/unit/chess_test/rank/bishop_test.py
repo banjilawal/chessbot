@@ -1,16 +1,5 @@
 import unittest
 
-from chess.competitor.commander import Commander
-from chess.team.team_profile import TeamProfile
-from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
-
-from chess.exception.rank_exception import BishopException
-from chess.exception.walk import BishopWalkException
-from chess.coord import Coord
-from chess.geometry.quadrant import Quadrant
-from chess.rank.bishop import Bishop
-from chess.side.team import Side
-from chess.piece.piece import Piece
 
 
 class BishopTest(unittest.TestCase):

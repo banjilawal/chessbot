@@ -1,18 +1,15 @@
 from typing import cast, Generic
 
-from assurance.exception.invalid_hostage import HostageValidationException
 
-from chess.result import Result
-from chess.common.validator import Validator, T
-from chess.piece.validator import PieceValidator
 
-from chess.builder import CommanderBuilder
-from chess.builder import TeamBuilder
+
+from chess.common import Validator
+from chess.piece import  PieceValidator
 from chess.common.emit import id_emitter
-from chess.exception.hostage import HostageCaptorNullException, RosterRemovalException, HostageAdditionException
+from chess.exception import HostageCaptorNullException, RosterRemovalException, HostageAdditionException
 
 from chess.randomize.competitor import RandomName
-from chess.piece.piece import CombatantPiece
+from chess.piece import CombatantPiece
 
 
 class HostageValidator(Validator):
@@ -30,7 +27,7 @@ class HostageValidator(Validator):
             - The captor field is not null
             - The hostage is not on its team roster
             - The hostage is not its enemy's list of prisoners
-        Any failed requirement raise an exception wrapped in a HostageValidationException
+        Any failed requirement raise an team_exception wrapped in a HostageValidationException
 
         Args
             t (CombatantPiece): coord to validate

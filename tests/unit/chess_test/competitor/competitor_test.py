@@ -21,7 +21,7 @@ class CompetitorTest(unittest.TestCase):
 
         competitor.id = 1
         competitor.name = "Valid Commander"
-        competitor.teams_played = sides_played
+        competitor.teams = sides_played
 
         return competitor
 

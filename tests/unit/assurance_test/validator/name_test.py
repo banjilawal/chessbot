@@ -1,9 +1,8 @@
 import unittest
 
-from assurance.exception.invalid_name import NameValidationException
-from assurance.validators.name_validator import NameValidator
-from chess.exception.name.blank_name_exception import BlankNameException, NameTooShortException, NameTooLongException
-from chess.exception.name.null_name_exception import NullNameException
+
+from chess.common.name_validator import NameValidator
+from chess.exception import LongNameException, ShortNameException, BlankNameException
 
 
 class NameValidatorTest(unittest.TestCase):
@@ -28,14 +27,14 @@ class NameValidatorTest(unittest.TestCase):
     def test_name_too_short_raises_exception(self):
         with self.assertRaises(NameValidationException) as ctx:
             NameValidator.validate("a")
-        self.assertIsInstance(ctx.exception.__cause__, NameTooShortException)
+        self.assertIsInstance(ctx.exception.__cause__, ShortNameException)
 
 
     def test_name_too_long_raises_exception(self):
         long_name = "x" * 41
         with self.assertRaises(NameValidationException) as ctx:
             NameValidator.validate(long_name)
-        self.assertIsInstance(ctx.exception.__cause__, NameTooLongException)
+        self.assertIsInstance(ctx.exception.__cause__, LongNameException)
 
 
     def test_valid_name_returns_result(self):

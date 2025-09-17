@@ -3,9 +3,9 @@ import unittest
 from chess.common.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import ColumnBelowBoundsException
 from chess.exception.coord_exception import RowBelowBoundsException
-from chess.coord.exception import NullCoordException
-from chess.coord.exception import NullColumnException
-from chess.coord.exception import NullRowException
+from chess.coord.coord_exception import NullCoordException
+from chess.coord.coord_exception import NullColumnException
+from chess.coord.coord_exception import NullRowException
 
 from chess.coord import Coord
 

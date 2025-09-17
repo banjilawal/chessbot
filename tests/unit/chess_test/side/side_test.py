@@ -5,7 +5,7 @@ from chess.commander.exception.invalid_commander import CommanderValidationExcep
 from assurance.exception.invalid_id import IdValidationException
 from chess.competitor.commander import Commander
 from chess.team.team_profile import TeamProfile
-from chess.team.exception.null_team_profile import NullTeamProfileException
+from chess.team.team_exception.null_team_profile import NullTeamProfileException
 from chess.exception.stack_exception import BrokenRelationshipException
 from chess.side.team import Side
 from unit.chess_test.competitor.competitor_test import CompetitorTest
@@ -111,7 +111,7 @@ class SideTest(unittest.TestCase):
 
         for profile in TeamProfile:
             side = Side(side_id=1, controller=competitor, profile=profile)
-            assert side in competitor.teams_played.items
+            assert side in competitor.teams.items
 
 
     @patch('assurance.validators.commander.CommanderValidator.validate')

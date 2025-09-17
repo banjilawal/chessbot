@@ -1,12 +1,37 @@
+"""
+
+## ASSURANCE EXCEPTION
+A package providing a structured hierarchy of exceptions for the `assurance` project.
+
+This package defines a base `AssuranceException` from which all other custom
+exceptions in the project should inherit. This allows for a clean and
+consistent way to handle exceptions across different modules and layers
+of the application.
+
+The package includes specific validation exceptions for common data types,
+such as `RankValidationException` and `IdValidationException`, promoting
+predictable error handling and clear communication of validation failures.
+"""
+
+
 import logging
 
-from .exception import *
 from .validators import *
 
 from .throw_helper import ThrowHelper
 from .error_handler import ErrorHandler
 from .deployment_mode import Deployment
 from .transaction_report import TransactionReport
+
+from .exception import (
+    AssuranceException,
+    ConflictingEventStateException,
+    EmptyConstructorException,
+    EmptyResultConstructorException,
+    EmptyEventOutcomeConstructorException,
+
+)
+
 
 log = logging.getLogger("chessbot")
 
@@ -23,13 +48,16 @@ __all__ = [
     "ErrorHandler",
     "Deployment",
     "TransactionReport",
+    "AssuranceException",
+    "ConflictingEventStateException",
+    "EmptyConstructorException",
+    "EmptyResultConstructorException",
+    "EmptyEventOutcomeConstructorException",
+    "HostageValidator",
+    "IdValidator",
+    "NameValidator",
 
-    # Subpackages
-    *exception.__all__,
-    "exception",
 
-    *validators.__all__,
-    "validators",
 
 
     # Package metadata and utilities

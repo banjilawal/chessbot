@@ -30,7 +30,7 @@ class ActionOutcome(ABC):
 
     def __init__(
         self,
-        outcome_id:int,
+        outcome_id: int,
         request: Action,
         event: Optional[Event] = None,
         exception: Optional[Exception] = None,

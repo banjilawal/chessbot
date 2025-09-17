@@ -4,8 +4,8 @@ from unittest.mock import create_autospec
 from chess.common.config import COLUMN_SIZE, ROW_SIZE
 from chess.exception.coord_exception import ColumnBelowBoundsException
 from chess.exception.coord_exception import RowBelowBoundsException
-from chess.coord.exception import NullColumnException
-from chess.coord.exception import NullRowException
+from chess.coord.coord_exception import NullColumnException
+from chess.coord.coord_exception import NullRowException
 
 from chess.coord import Coord
 

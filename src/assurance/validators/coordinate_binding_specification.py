@@ -18,13 +18,13 @@ class CoordinateSBindingValidator(Validator):
             - chess_piece.coordinate_stack.current_coordinate() == square.coord
             - chess_piece_previous_square.occupant == null
             
-        If any validators fails their exception will be encapsulated in a CoordinateBindingValidationException
+        If any validators fails their team_exception will be encapsulated in a CoordinateBindingValidationException
 
         Args
             t (CoordinateBinding): coordinate_binding to validate
 
         Returns:
-            bool: True if coordinate_binding satisfies the specifications. Otherwise throws an exception
+            bool: True if coordinate_binding satisfies the specifications. Otherwise throws an team_exception
                 returning always true is not standard practice. It simplifies testing and eliminates 
                 distractions. 
 

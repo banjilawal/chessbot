@@ -3,7 +3,7 @@ import unittest
 import pytest
 
 from chess.common.config import BOARD_DIMENSION
-from chess.scalar.exception.null_scalar import NullScalarException
+from chess.scalar.exception import NullScalarException
 from chess.exception.offset.mul import ScalarBelowLowerBoundException, ZeroScalarException, \
     ScalarAboveUpperBoundException, RowDeltaOverflowExceptioDn
 from chess.vector import Offset

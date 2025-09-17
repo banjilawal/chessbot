@@ -1,4 +1,5 @@
 from enum import Enum, auto
+import logging
 
 
 class Deployment(Enum):
@@ -6,7 +7,10 @@ class Deployment(Enum):
     PRODUCTION = auto()
 
     def handle_error(self, error: Exception):
-        if self == Deployment.DEBU:
+        logger = logging.getLogger("AppLog")
+
+        if self == Deployment.DEBUG:
+            logger.exception("[EXCEPTION]", exec_info=error)
             raise RuntimeError(error)
         else:
-            print("[WARNING]", error)
+            logger.warning(f"[WARNING]: {str(error)}")

@@ -1,8 +1,7 @@
 
 
 from .hostage_validator import HostageValidator
-from .id_validator import IdValidator
-from .name_validator import NameValidator
+from chess.common.name_validator import NameValidator
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"

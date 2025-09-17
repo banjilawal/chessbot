@@ -1,12 +1,12 @@
 from typing import Generic, cast
 
-from chess.team.exception.invalid_team import TeamHistoryValidationException
+from chess.team.team_exception.invalid_team import TeamHistoryValidationException
 from chess.result import Result
 from chess.common.validator import Validator, T
 from chess.exception.null.side_record import NullSideRecordException
 
 from chess.exception.stack_exception import CorruptedStackException, StackSizeConflictException
-from chess.exception.sides_played import CurrentTeamException
+from chess.commander.team_history_exception import CurrentTeamException
 from chess.competitor.side import SideRecord
 
 
@@ -27,7 +27,7 @@ class SideRecordValidator(Validator):
             - if TeamStack.is_empty() is True then current_team.size == 0
             - if TeamStack.is_empty() is False then current_team is not null
             - If TeamStack.is_empty() then current_team is null
-          Any failed requirement raise an exception wrapped in a TeamStackValidationException      
+          Any failed requirement raise an team_exception wrapped in a TeamStackValidationException      
             
         Validation tests do not change state so pushes and pops are:
             - Tested in unit tests
