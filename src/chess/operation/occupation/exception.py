@@ -3,9 +3,12 @@ from chess.operation import ExecutionException
 
 __all__ = [
     'OccupationException',
-    'OccupationValidationException',
-    'NullOccupationDirectiveException'
-
+    'InvalidOccupationDirectiveException',
+    'NullOccupationDirectiveException',
+    'AutoOccupationException',
+    'HostageValidationException',
+    'NullHostagePieceException',
+    'InvalidOccupationDirectiveException'
 ]
 
 class OccupationException(ExecutionException):
@@ -22,7 +25,7 @@ class NullOccupationDirectiveException(NullException):
     DEFAULT_MESSAGE = "OccupationDirective cannot be null"
 
 
-class OccupationValidationException(ValidationException):
+class InvalidOccupationDirectiveException(ValidationException):
     """OccupationDirective validation failure."""
 
     ERROR_CODE = "OCCUPATION_DIRECTIVE_VALIDATION_ERROR"

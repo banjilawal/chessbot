@@ -44,7 +44,7 @@ class TeamList:
         return len(self._items)
 
 
-    def find_side_by_id(self, id: int) -> Optional['Team']:
+    def find_by_id(self, id: int) -> Optional['Team']:
         for side in self._items:
             if side.id == id:
                 return side

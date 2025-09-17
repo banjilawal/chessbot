@@ -1,10 +1,16 @@
 from typing import Generic, TypeVar, cast
 
-from chess.common import Validator, Result, IdValidator, NameValidator, IdValidationException, NameValidationException
 
-from chess.square import Square, SquareValidator, SquareValidationException
 from chess.piece import Piece, PieceValidator, PieceValidationException
-from chess.operation.occupation import OccupationDirective, NullOccupationDirectiveException
+from chess.square import Square, SquareValidator, SquareValidationException
+from chess.common import Validator, Result, IdValidator, IdValidationException
+from chess.operation.occupation import (
+    OccupationDirective,
+    NullOccupationDirectiveException,
+    AutoOccupationException,
+    InvalidOccupationDirectiveException
+)
+
 
 
 T = TypeVar('T')
@@ -23,14 +29,14 @@ class OccupationDirectiveValidator(Validator):
             - `id` does not fail validator
             - `actor` is a valid chess piece
             - `target` is a valid square
-        Any validation failure raises an `OccupationDirectiveException`.
+        Any validation failure raises an `InvalidOccupationDirectiveException`.
 
         Argument:
             `t` (`OccupationDirective`): `occupationDirective `to validate
 
          Returns:
              `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
-                `OccupationDirectiveException` otherwise.
+                `InvalidOccupationDirectiveException` otherwise.
 
         Raises:
             `TypeError`: if `t` is not OperationDirective
@@ -43,7 +49,7 @@ class OccupationDirectiveValidator(Validator):
             `AutoOccupationException`: if target already occupies the square
             `KingAttackException`: if the target square is occupied by an enemy king
 
-            `OccupationDirectiveException`: Wraps any preceding exceptions      
+            `InvalidOccupationDirectiveException`: Wraps any preceding exceptions      
         """
         try:
             if t is None:
@@ -72,7 +78,7 @@ class OccupationDirectiveValidator(Validator):
             square = cast(Square, directive.target)
 
             if square.coord == piece.current_position:
-                raise AutoOccupationException(f"{method}: {OccupiedBySelfException.DEFAULT_MESSAGE}")
+                raise AutoOccupationException(f"{method}: {AutoOccupationException.DEFAULT_MESSAGE}")
             
             return Result(payload=directive)
 
@@ -84,6 +90,6 @@ class OccupationDirectiveValidator(Validator):
             SquareValidationException,
             NullOccupationDirectiveException
         ) as e:
-            raise OccupationDirectiveException(
-                f"{method}: {OccupationDirectiveException.DEFAULT_MESSAGE}"
+            raise InvalidOccupationDirectiveException(
+                f"{method}: {InvalidOccupationDirectiveException.DEFAULT_MESSAGE}"
             ) from e

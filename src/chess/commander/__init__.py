@@ -35,7 +35,7 @@ from .human import HumanCommander
 from .cybernetic import CyberneticCommander
 from .team_list import TeamList
 from .commander_type import CommanderType
-from .commander_validator import CommanderValidator
+from .validator import CommanderValidator
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"

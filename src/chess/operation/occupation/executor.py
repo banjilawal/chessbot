@@ -1,6 +1,6 @@
 from typing import cast
 
-from chess.operation.occupation import OccupationDirectiveValidator, OccupationValidationException, OccupationException
+from chess.operation.occupation import OccupationDirectiveValidator, InvalidOccupationDirectiveException, OccupationException
 from chess.piece import Piece, Encounter, NullPieceException
 from chess.square import Square
 from chess.board import Board

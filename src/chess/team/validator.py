@@ -62,7 +62,7 @@ class TeamValidator(Validator):
                 raise CommanderValidationException(f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}")
 
             commander = cast(Commander, commander_validation.payload)
-            CommanderSearch.for_team(team, commander)
+            CommanderSearch.for_team(team.id, commander)
 
             if team not in commander.teams.items:
 
@@ -71,11 +71,11 @@ class TeamValidator(Validator):
             return Result(payload=team)
 
         except (
-                TypeError,
-                NullTeamException,
-                IdValidationException,
-                NullTeamProfileException,
-                CommanderValidationException
+            TypeError,
+            NullTeamException,
+            IdValidationException,
+            NullTeamProfileException,
+            CommanderValidationException
         ) as e:
             raise TeamValidationException(f"{method}: {TeamValidationException.DEFAULT_MESSAGE}") from e
 
