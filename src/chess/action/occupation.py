@@ -1,6 +1,6 @@
 from typing import cast
 
-from chess.action import Directive, Executor, ExecutionContext, OccupationExecutionException
+from chess.action import Directive, Executor, ExecutionContext, OccupationExecutionException, OperationResult
 from chess.board.board import Board
 from chess.search import BoardSearch
 from chess.square import Square
@@ -11,7 +11,7 @@ from chess.piece.exception.null.null_piece import NullPieceException
 from chess.exception.team_exception import RemoveCombatantException
 from chess.action.orchestrator import TransactionOrchestrator
 from chess.action.send import OccupationRequest
-from chess.action.validators.occupy import OccupationRequestValidator
+from chess.action.validators.occupy import OccupationDirectiveValidator
 from chess.piece.piece import Piece, CombatantPiece
 from chess.piece.encounter import Encounter
 
@@ -42,7 +42,7 @@ class OOccupationDirective(Directive):
 class OccupationExecutor(Executor):
 
     @staticmethod
-    def execute_directive(directive: Directive, context: ExecutionContext):
+    def execute_directive(directive: Directive, context: ExecutionContext) -> OperationResult:
         method = "OccupationExecutor.execute-directive"
 
         occupy_directive = cast('OccupyDirective', directive)
@@ -60,7 +60,7 @@ class OccupationExecutor(Executor):
         source_square = cast(Square, search_result.payload)
 
 
-        # validation = OccupationRequestValidator.validate(request)
+        # validation = OccupationDirectiveValidator.validate(request)
         # if not validation.is_success():
         #     return validation.exception
         #
@@ -74,11 +74,11 @@ class OccupationExecutor(Executor):
 
 
         if target_occupant is not None and not piece.is_enemy(target_occupant):
-            OccupationExecutor.record_stream(piece, target_square)
+            OccupationExecutor._record_encounter(piece, target_square)
             return
 
         if target_occupant is not None and piece.is_enemy(target_occupant):
-            OccupationExecutor._attack_stream(piece, target_square)
+            OccupationExecutor._attack_enemy(piece, target_square)
         #
         #
         # if event == Event.ATTACK:
@@ -86,23 +86,53 @@ class OccupationExecutor(Executor):
 
         target_square.occupant = piece
         source_square.occupant = None
+        return OperationResult(id_emitter.)
 
 
     @staticmethod
-    def record_stream(piece: Piece, blocked_square: Square):
-        method = "OccupationExecutor._encounter_stream"
+    def _record_encounter(piece: Piece, blocked_square: Square):
+        method = "OccupationExecutor._record_encounter"
+
+        """
+        A destination occupied by a friendly is handled differently during an occupation operation than a
+        scan operation. The difference is the conditions which raise exceptions. The friendly occupant is
+        not provided directly to avoid mixing two args of the same type.
+
+        Args
+            `piece` (Piece): Records the encounter with a friendly at  `blocked_square`
+            `blocked_square` (Square): The blocking friendly is extracted from here
+
+         Returns:
+             Result[T]: A Result object containing the validated payload if the Validator is 
+                satisfied, NameValidationException otherwise.
+
+        Raises:
+            TypeError: if t is not int
+            NullNameException: if t is null
+            BlankNameException: if t only contains white space.
+            ShortNameException: if t is shorter than MIN_NAME_LENGTH
+
+            NameValidationException: Wraps any preceding team_exception 
+        """
+
+        """During an occupation operation the a square occupied by a friendly is handled differently 
+        than a `ScanOperation.
+        
+        
+        """
+
+
+
+
+
         try:
             blocking_occupant = blocked_square.occupant
 
             if blocking_occupant is None:
-                raise NullPieceException(
-                    f"{method}: {NullPieceException.DEFAULT_MESSAGE}"
-                )
+                raise NullPieceException(f"{method}: {NullPieceException.DEFAULT_MESSAGE}")
 
             if piece.is_enemy(blocking_occupant):
-                raise CorruptRecordEventException(
-                    f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}"
-                )
+                raise CorruptRecordEventException(f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}")
 
             piece.encounters.add_encounter(Encounter(blocking_occupant))
         except (NullPieceException, ) as e:
@@ -112,7 +142,7 @@ class OccupationExecutor(Executor):
 
 
     @staticmethod
-    def _attack_stream(piece: Piece, target_square: Square) -> CombatantPiece:
+    def _attack_enemy(piece: Piece, target_square: Square) -> CombatantPiece:
         method = "OccupationExecutor._attack_stream"
 
         try:

@@ -1,6 +1,6 @@
 
 from chess.team.team_profile import TeamProfile
-from chess.common.emit import id_emitter
+from chess.common.emitter import id_emitter
 from chess.competitor.commander import Commander
 from chess.side.team import Side
 

@@ -30,8 +30,8 @@ class OperationResult(ABC):
 
     def __init__(
         self,
-        outcome_id: int,
-        request: Action,
+        op_result_id: int,
+        directive: Directive,
         event: Optional[Event] = None,
         exception: Optional[Exception] = None,
         was_rolled_back: bool = False
@@ -53,7 +53,7 @@ class OperationResult(ABC):
                f"{method}: {ConflictingEventStateException.DEFAULT_MESSAGE}"
             )
 
-        self._id = outcome_id
+        self._id = op_result_id
         self._action = request
         self._event = event
         self._exception = exception
@@ -119,7 +119,7 @@ class OperationResult(ABC):
         """Create a successful outcome"""
 
         return cls(
-            outcome_id=outcome_id,
+            op_result_id=outcome_id,
             request=request,
             event=event,
             exception=None,
@@ -133,7 +133,7 @@ class OperationResult(ABC):
 
         """Create a processing outcome"""
         return cls(
-            outcome_id=outcome_id,
+            op_result_id=outcome_id,
             request=request,
             event=None,
             exception=None,
@@ -147,7 +147,7 @@ class OperationResult(ABC):
         """Create a failed outcome"""
 
         return cls(
-            outcome_id=outcome_id,
+            op_result_id=outcome_id,
             request=request,
             event=None,
             exception=exception,
@@ -161,7 +161,7 @@ class OperationResult(ABC):
         """Create a rolled back outcome"""
 
         return cls(
-            outcome_id=outcome_id,
+            op_result_id=outcome_id,
             request=request,
             event=event,
             exception=None,

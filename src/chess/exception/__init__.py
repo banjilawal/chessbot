@@ -15,18 +15,12 @@ Purpose:
     Name exceptions are thrown during validation. More granular than regular string checks
 
 Class:
-    BlankNameException
-    NullNameException
-    ShortNameException
-    LongNameException
-    IdNullException: Id's cannot be null
-    NegativeIdException: Ids must be positive
 
 USAGE:
-    >>> from chess.exception import NullNameException
-    >>> name = None
-    >>> if name is None:
-    >>>   raise NullNameException("Name cannot be null")
+    >>> from chess.exception import NullNumberException
+    >>> number = None
+    >>> if number is None:
+    >>>   raise NullNumberException("Name cannot be null")
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
@@ -56,7 +50,6 @@ def package_info() -> dict:
 __all__ = [
     *chess_exception.__all__,
     *collection_exception.__all__,
-
 
     # Package metadata and utilities
     "__version__",

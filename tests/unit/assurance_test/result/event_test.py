@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import Mock
 
 from assurance.exception.empty.result import EmptyEventOutcomeConstructorException
-from chess.action.result import OperationResult
+from chess.action.op_result import OperationResult
 from chess.action.null_occupation_request import NullRequestException
 
 

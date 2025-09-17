@@ -1,6 +1,6 @@
 import random
 
-from chess.common.emit import id_emitter
+from chess.common.emitter import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
 from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine
 from chess.competitor.commander import CyberneticCommander

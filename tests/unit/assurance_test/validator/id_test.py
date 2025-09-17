@@ -1,7 +1,7 @@
 import unittest
 
 from assurance.exception.invalid_id import IdValidationException
-from chess.common.id_validator import IdValidator
+from chess.common.id.validator import IdValidator
 from chess.exception.id.negative_id_exception import NegativeIdException
 from chess.exception.null.id import IdNullException
 

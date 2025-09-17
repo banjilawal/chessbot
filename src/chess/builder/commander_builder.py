@@ -1,7 +1,7 @@
 from enum import Enum
 
 from chess.common import Result
-from chess.common.emit import IdEmitter
+from chess.common.emitter import IdEmitter
 from chess.builder import CommanderBuilderException
 
 from chess.commander import (

@@ -1,117 +1,87 @@
 from typing import Generic, TypeVar, cast
 
-from assurance.exception.invalid_id import IdValidationException
-from chess.piece.exception.invalid_piece import PieceValidationException
-from assurance.exception.invalid_request import OccupationRequestValidationException
-from chess.square.exception import SquareValidationException
-from chess.action.result import OperationResult
-from chess.common.id_validator import IdValidator
-from chess.piece.validator import PieceValidator
-from chess.square import Square
-from chess.common.emit import id_emitter
-from chess.action.validators.base import RequestValidator
-from chess.square.square_validator import SquareValidator
-from chess.common.permit import Event
-from chess.action.null_occupation_request import NullOccupationRequestException
-from chess.exception.occupation.occupy import OccupiedBySelfException
-from chess.exception.piece_exception import AttackingKingException
-from chess.action.send import OccupationRequest
-from chess.piece.piece import KingPiece, Piece
+from chess.common import IdValidator, NameValidator
+from chess.
+from chess.square import SquareValidator, SquareValidationException
+
 
 T = TypeVar('T')
 
-class OccupationRequestValidator(RequestValidator):
+class OccupationDirectiveValidator(DirectiveValidator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> OperationResult:
-        entity = "OOccupationDirective"
+    def validate(t: Generic[T]) -> Result[OperationDirective]:
+        entity = "OccupationDirective"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"
 
         """
         Validates an OOccupationDirective meets specifications:
             - Not null
-            - id does not validator
-            - actor is a valid chess piece
-            - target is a valid square
-        If a condition is not met an OccupationRequestValidationException will be thrown.
+            - `id` does not fail validator
+            - `actor` is a valid chess piece
+            - `target` is a valid square
+        Any validation failure raises an `OccupationDirectiveException`.
 
         Argument:
-            t (OOccupationDirective): occupationRequest to validate
+            `t` (`OccupationDirective`): `occupationDirective `to validate
 
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                OccupationRequestValidationException otherwise.
+             `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
+                `OccupationDirectiveException` otherwise.
 
         Raises:
-            TypeError: if t is not Square
-            NullOccupationRequestException: if t is null   
+            `TypeError`: if `t` is not OperationDirective
+            `NullOccupationDirectiveException`: if `t` is null   
 
-            IdValidationException: if invalid id
-            PieceValidationException: if t.actor fails validator
-            SquareValidationException: if it.target fails validator
+            `IdValidationException`: if invalid `id`
+            `PieceValidationException`: if `actor` fails validator
+            `SquareValidationException`: if `target` fails validator
             
-            OccupiedBySelfException: if actor already occupies the square
-            AttackingKingException: if the target square is occupied by an enemy king
-            FriendlyOccupantException: if the target square is occupied by a friendly
+            `AutoOccupationException`: if target already occupies the square
+            `KingAttackException`: if the target square is occupied by an enemy king
 
-            OccupationRequestValidationException: Wraps any preceding exceptions      
+            `OccupationDirectiveException`: Wraps any preceding exceptions      
         """
         try:
-            outcome_id = id_emitter.outcome_id
             if t is None:
-                raise NullOccupationRequestException(f"{method} {NullOccupationRequestException.DEFAULT_MESSAGE}")
+                raise NullOccupationDirectiveException(
+                    f"{method}: {NullOccupationDirectiveException.DEFAULT_MESSAGE}"
+                )
 
-            if not isinstance(t, OccupationRequest):
-                raise TypeError(f"{method} Expected an OOccupationDirective, got {type(t).__name__}")
+            if not isinstance(t, OccupationDirective):
+                raise TypeError(f"{method} Expected an OccupationDirective, got {type(t).__name__}")
 
-            occupation_request = cast(OccupationRequest, t)
+            directive = cast(OccupationDirective, t)
 
-            id_validation = IdValidator.validate(occupation_request.id)
+            id_validation = IdValidator.validate(directive.id)
             if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+            directive_id = cast(int, directive.id)
 
-            piece_validation = PieceValidator.validate(occupation_request.actor)
+            piece_validation = PieceValidator.validate(directive.actor)
             if not piece_validation.is_success():
                 raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}")
+            piece = cast(Piece, directive.actor)
 
-            square_validation = SquareValidator.validate(occupation_request.target)
+            square_validation = SquareValidator.validate(directive.target)
             if not square_validation.is_success():
                 raise SquareValidationException(f"{method}: {SquareValidationException.DEFAULT_MESSAGE}")
+            square = cast(Square, directive.target)
 
-            piece = cast(Piece, piece_validation.payload)
-            target_square = cast(Square, square_validation.payload)
+            if square.coord == piece.current_position:
+                raise AutoOccupationException(f"{method}: {OccupiedBySelfException.DEFAULT_MESSAGE}")
+            
+            return Result(payload=directive)
 
-            if target_square.coord == piece.current_position:
-                raise OccupiedBySelfException(f"{method}: {OccupiedBySelfException.DEFAULT_MESSAGE}")
-
-            occupant = target_square.occupant
-            if occupant is None:
-                return OperationResult(
-                    outcome_id=outcome_id,
-                    request=occupation_request,
-                    event=Event.OCCUPATION
-                )
-
-            if occupant is not None and not piece.is_enemy(occupant):
-                return OperationResult(
-                    outcome_id=outcome_id,
-                    request=occupation_request,
-                    event=Event.RECORD_ENCOUNTER
-                )
-                # raise FriendlyOccupantException(f"{method}: {FriendlyOccupantException.DEFAULT_MESSAGE}")
-
-            if occupant is not None and isinstance(occupant, KingPiece):
-                raise AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
-
-            return OperationResult(outcome_id=outcome_id, request=occupation_request, event=Event.ATTACK)
 
         except (
             TypeError,
+            IdValidationException,
             PieceValidationException,
             SquareValidationException,
-            NullOccupationRequestException
+            NullOccupationDirectiveException
         ) as e:
-            raise OccupationRequestValidationException(
-                f"{method}: {OccupationRequestValidationException.DEFAULT_MESSAGE}"
+            raise OccupationDirectiveException(
+                f"{method}: {OccupationDirectiveException.DEFAULT_MESSAGE}"
             ) from e

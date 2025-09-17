@@ -1,6 +1,6 @@
 from chess.board.board import Board
 from chess.rank.profile import RankProfile
-from chess.common.emit import id_emitter
+from chess.common.emitter import id_emitter
 
 
 from chess.action.types import OccupationFlow

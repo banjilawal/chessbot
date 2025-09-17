@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.common.emit import id_emitter
+from chess.common.emitter import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder

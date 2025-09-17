@@ -22,6 +22,8 @@ AUTHOR: Banji Lawal
 
 
 # Import constants
+from .id import *
+from .name import *
 from .config import *
 
 
@@ -31,10 +33,8 @@ from .result import Result
 from .color import GameColor
 from .validator import Validator
 from .mouse import MousePlacementStatus
-from .emit import emit, IdEmitter
+from .emitter import IdEmitter
 
-from .id_validator import IdValidator
-from .name_validator import NameValidator
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
@@ -49,10 +49,10 @@ __all__ = [
     'GameColor',
     'Validator',
     'MousePlacementStatus',
-    'emit',
-    'IdValidator',
-    'NameValidator',
+    'IdEmitter',
 
+    *id.__all__,
+    *name.__all__,
     *config.__all__,
 
     # Package metadata and utilities

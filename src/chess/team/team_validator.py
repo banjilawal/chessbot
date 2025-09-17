@@ -11,7 +11,7 @@ from chess.team.team_exception.null_team_profile import NullTeamProfileException
 from chess.team.team_exception.null_team import NullTeamException
 from chess.result import Result
 from chess.common.validator import Validator, T
-from chess.common.id_validator import IdValidator
+from chess.common.id.validator import IdValidator
 from chess.exception.stack_exception import BrokenRelationshipException
 
 if TYPE_CHECKING:

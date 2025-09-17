@@ -100,4 +100,4 @@ class IdEmitter:
         self._outcome_id += 1
         return self._outcome_id
 
-emit = IdEmitter()
+IdEmitter()

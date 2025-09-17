@@ -1,23 +1,37 @@
-# Exceptions raised during activities
-from .exception import *
+# src/chess/common/__init__.py
+"""
+## PURPOSE:
+    Id validation
 
-from .directive import Directive
-from .executor import Executor
-from .op_result import OperationResult
-from .context import ExecutionContext
+## CORE CLASSES:
+* `IdValidator`
+* `IdNullException`
+* `NegativeIdException`
+* `IdValidationException`
+
+
+USAGE:
+    >>>
+    >>>
+
+VERSION: 1.0.0
+AUTHOR: Banji Lawal
+"""
+
+
+from .exception import *
+from .validator import IdValidator
+
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.action'
+__package_name__ = 'chess.common.id'
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'Directive',
-    'Executor',
-    'ExecutionContext',
-    'OperationResult',
+    'IdValidator',
 
     *exception.__all__,
 
