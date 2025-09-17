@@ -76,7 +76,7 @@ from .exception import *
 
 # Core  classes
 from .scalar import Scalar
-from .scalar_validator import ScalarValidator
+from .validation import ScalarValidator
 
 # Package metadata
 __version__ = "1.0.0"

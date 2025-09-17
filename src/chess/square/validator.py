@@ -1,9 +1,10 @@
 from typing import cast, Generic, TypeVar
 
-from chess.common import Result, Validator
+
 from chess.coord import CoordValidator, CoordValidationException
 from chess.square import Square, NullSquareException, SquareValidationException
-from assurance import IdValidator, NameValidator, IdValidationException, NameValidationException
+from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
+
 
 T = TypeVar('T')
 

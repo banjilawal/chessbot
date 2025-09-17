@@ -1,4 +1,14 @@
-from chess.exception import ChessException, ValidationException, NullException, NameValidationException
+from chess.exception import ChessException, ValidationException, NullException
+
+__all__ = [
+    'PieceException',
+    'DoublePromotionException',
+    'PieceValidationException',
+
+    'NullPieceException',
+    'NullEncounterException',
+    'NullKingPieceException',
+]
 
 """
 Super class for Piece exceptions
@@ -37,14 +47,7 @@ class PieceValidationException(ValidationException):
     DEFAULT_MESSAGE = f"Piece validation failed"
 
 
-class PieceCoordNullException(PieceException):
-    """
-    PieceCoordNullException gets thrown if a piece with an empty coord stack attempts to move.
-    If piece.positions.is_empty == True then the piece is not on the board so it cannot be moved.
-    """
 
-    ERROR_CODE = "PIECE_NO_COORDINATE_ERROR"
-    DEFAULT_MESSAGE = "Piece is not on the board. Cannot move a piece with len(piece.positions) == 0"
 
 class PrisonerEscapeException(PieceException):
     """
@@ -79,13 +82,7 @@ class NullPieceException(NullException):
     DEFAULT_MESSAGE = f"Piece cannot be null"
 
 
-class NullCombatantPieceException(NullPieceException):
-    """
-    Raised if a CombatantPiece is null. Raise NullCombatant instead of NullPieceException
-    """
 
-    ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
-    DEFAULT_MESSAGE = f"CombatantPiece cannot be null"
 
 
 class NullEncounterException(NullException):
@@ -97,18 +94,6 @@ class NullEncounterException(NullException):
     ERROR_CODE = "NULL_ENCOUNTER_ERROR"
     DEFAULT_MESSAGE = f"Encounter cannot be null"
 
-
-class NullHostagePieceException(NullPieceException):
-    """
-    Raised if a piece is null. Parent class for:
-        - NullCombatantPieceException
-        - NullKingException
-    Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
-    Do not throw NullPieceException. Use a finegrained subclass of NullPieceException.
-    """
-
-    ERROR_CODE = "NULL_PIECE_ERROR"
-    DEFAULT_MESSAGE = f"Piece cannot be null"
 
 
 class NullKingPieceException(NullPieceException):

@@ -3,9 +3,15 @@ from typing import Optional, cast
 
 from chess.rank import Rank
 from chess.coord import Coord, CoordStack
-from chess.exception import ChessException, IdValidationException, NameValidationException
+from chess.common import IdValidator, NameValidator, NameValidationException, IdValidationException
 from chess.piece import Encounter, EncounterScan, PieceValidator
 from chess.team import Team, TeamValidator, TeamValidationException
+
+__all__ = [
+    'Piece',
+    'KingPiece',
+    'CombatantPiece'
+]
 
 
 

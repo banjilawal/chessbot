@@ -4,7 +4,7 @@ Geometry Package - Spatial Relationships in 2D Plane
 
 PURPOSE:
     Provides classes for spatial relationships, coordinates, vectors, and paths
-    in a 2D chess board coordinate action.
+    in a 2D chess board coordinate operation.
 
 CORE CLASSES:
     Line: Different types of edges

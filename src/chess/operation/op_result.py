@@ -4,8 +4,8 @@ from typing import Optional
 from assurance.exception.empty.result import EmptyEventOutcomeConstructorException
 from assurance.exception.event import ConflictingEventStateException
 from chess.common.permit import Event
-from chess.action.null_occupation_request import NullRequestException
-from chess.action.directive import Action
+from chess.operation.null_occupation_request import NullRequestException
+from chess.operation.directive import Action
 
 
 

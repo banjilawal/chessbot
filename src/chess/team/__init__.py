@@ -66,8 +66,8 @@ AUTHOR: Banji Lawal
 
 # Core classes
 from .team import Team
-from .team_profile import TeamProfile
-from .team_validator import TeamValidator
+from .profile import TeamProfile
+from .validator import TeamValidator
 
 from .exception import  (
     TeamException,

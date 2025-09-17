@@ -1,9 +1,9 @@
-from typing import cast, Generic
+from typing import cast, Generic, TypeVar
 
-from chess.piece import Piece, NullPieceException,
-from chess.common import Validator, Result
-from chess.exception import
+from chess.piece import Piece, NullPieceException, PieceValidationException
+from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
 
+T = TypeVar('T')
 
 class PieceValidator(Validator):
 
@@ -72,8 +72,8 @@ class PieceValidator(Validator):
         ) as e:
             raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}") from e
 
-
-
-def main():
-    person = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
-    side = TeamBuilder.build()
+#
+#
+# def main():
+#     person = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
+#     side = TeamBuilder.build()

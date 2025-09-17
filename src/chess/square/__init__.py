@@ -43,7 +43,7 @@ from .exception import (
 
 # class
 from .square import Square
-from .square_validator import SquareValidator
+from .validator import SquareValidator
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"

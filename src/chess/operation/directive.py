@@ -14,14 +14,14 @@ class Directive(Generic[T]):
     The Directive is handled by an Executor who carry out the directive
 
     * Its `actor` who initiates and performs the activity
-    * The `target` which the action is performed upon.
+    * The `target` which the operation is performed upon.
 
     ## Possible State Changes:
     - If the actor wants to change its state then target is a resource `actor` needs.
     - If `actor` wants to change `target` state then the `actor' state might not be affected
 
     Attributes:
-        _id (`int`): A unique identifier for an `action`.
+        _id (`int`): A unique identifier for an `operation`.
         _actor (`T`): The entity performing the state-changing activity
         _target (`T`): The `target` can either
     """

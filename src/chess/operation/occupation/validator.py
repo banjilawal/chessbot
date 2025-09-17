@@ -1,16 +1,18 @@
 from typing import Generic, TypeVar, cast
 
-from chess.common import IdValidator, NameValidator
-from chess.
-from chess.square import SquareValidator, SquareValidationException
+from chess.common import Validator, Result, IdValidator, NameValidator, IdValidationException, NameValidationException
+
+from chess.square import Square, SquareValidator, SquareValidationException
+from chess.piece import Piece, PieceValidator, PieceValidationException
+from chess.operation.occupation import OccupationDirective, NullOccupationDirectiveException
 
 
 T = TypeVar('T')
 
-class OccupationDirectiveValidator(DirectiveValidator):
+class OccupationDirectiveValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[OperationDirective]:
+    def validate(t: Generic[T]) -> Result[OccupationDirective]:
         entity = "OccupationDirective"
         class_name = f"{entity}Validator"
         method = f"{class_name}.validate"

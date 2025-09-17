@@ -5,12 +5,12 @@
 # # from chess.validation.base import Rank
 #
 #
-from typing import Generic
+from typing import Generic, TypeVar
 
 from chess.common.validator import Validator
 from chess.common import Result
 from chess.rank import Rank
-
+T = TypeVar('T')
 
 class RankValidator(Validator):
 

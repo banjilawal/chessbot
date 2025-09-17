@@ -1,42 +1,12 @@
 from typing import cast
 
-from chess.action import Directive, Executor, ExecutionContext, OccupationExecutionException, OperationResult
-from chess.board.board import Board
-from chess.search import BoardSearch
+from chess.operation.occupation import OccupationDirectiveValidator, OccupationValidationException, OccupationException
+from chess.piece import Piece, Encounter, NullPieceException
 from chess.square import Square
-from chess.common.permit import Event
-from chess.action.occupation_exception import AttackEventInconsistencyException, \
-    CorruptRecordEventException
-from chess.piece.exception.null.null_piece import NullPieceException
-from chess.exception.team_exception import RemoveCombatantException
-from chess.action.orchestrator import TransactionOrchestrator
-from chess.action.send import OccupationRequest
-from chess.action.validators.occupy import OccupationDirectiveValidator
-from chess.piece.piece import Piece, CombatantPiece
-from chess.piece.encounter import Encounter
+from chess.board import Board
+from chess.search import BoardSearch
+from chess.operation import Executor, Directive, ExecutionContext, OperationResult
 
-class OOccupationDirective(Directive):
-
-    def __init__(self, directive_id: int, actor: Piece, target: Square):
-        super().__init__(directive_id=directive_id, actor=actor, target=target)
-
-    @property
-    def id(self):
-        return self._id
-
-    @property
-    def piece(self):
-        return cast(Piece, self.target)
-
-    @property
-    def square(self):
-        return cast(self._target, Square)
-
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-        if isinstance(other, OOccupationDirective):
-            return self._id == other.id
 
 
 class OccupationExecutor(Executor):
@@ -44,6 +14,10 @@ class OccupationExecutor(Executor):
     @staticmethod
     def execute_directive(directive: Directive, context: ExecutionContext) -> OperationResult:
         method = "OccupationExecutor.execute-directive"
+
+        validation = OccupationDirectiveValidator.validate(directive)
+        if not validation.is_success():
+            return OperationResult(op_result_id=id_emitter.op_result_id, exception=validation.exception)
 
         occupy_directive = cast('OccupyDirective', directive)
         piece = cast(Piece, occupy_directive.actor)
@@ -56,7 +30,7 @@ class OccupationExecutor(Executor):
             raise search_result.exception
 
         if search_result.is_not_found():
-            raise OccupationExecutionException(f"{method}: {OccupationExecutionException.DEFAULT_MESSAGE}")
+            raise OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
         source_square = cast(Square, search_result.payload)
 
 

@@ -4,13 +4,13 @@ from assurance.exception.invalid_id import IdValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
 from assurance.exception.invalid_request import PromotionRequestValidationException
 
-from chess.action.op_result import OperationResult
+from chess.operation.op_result import OperationResult
 from chess.common.id.validator import IdValidator
 from chess.piece.validator import PieceValidator
 from chess.rank.queen import PromotedQueen
-from chess.action.validators.base import RequestValidator
+from chess.operation.validators.base import RequestValidator
 from chess.common.permit import Event
-from chess.action.null_occupation_request import NullPromotionRequestException
+from chess.operation.null_occupation_request import NullPromotionRequestException
 from chess.exception.piece_exception import DoublePromotionException
 from chess.exception.rank_exception import UnPromotableRankException, PromotionRowException
 

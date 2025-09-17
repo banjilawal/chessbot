@@ -1,10 +1,10 @@
 from typing import cast
 
 from chess.rank.profile import RankProfile
-from chess.action.orchestrator import TransactionOrchestrator
+from chess.operation.orchestrator import TransactionOrchestrator
 from chess.rank.queen import Queen, PromotedQueen
 
-from chess.action.validators.promote import PromotionRequestValidator
+from chess.operation.validators.promote import PromotionRequestValidator
 from chess.piece.piece import Piece
 
 class PromotionException(RankException):

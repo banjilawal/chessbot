@@ -14,12 +14,6 @@ class AttackRequestValidationException(RequestValidationException):
 
 
 
-class OccupationRequestValidationException(RequestValidationException):
-    ERROR_CODE = "OCCUPATION_REQUEST_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"OccupationRequest validation failed"
-
-
-
 class PromotionRequestValidationException(RequestValidationException):
     ERROR_CODE = "PROMOTION_REQUEST_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"PromotionRequest validation failed"
@@ -32,9 +26,7 @@ class ExitRequestValidationException(RequestValidationException):
 
 
 
-class HostageValidationException(ValidationException):
-    ERROR_CODE = "HOSTAGE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Hostage validation failed"
+
 
 
 

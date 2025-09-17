@@ -3,13 +3,13 @@ from chess.rank.profile import RankProfile
 from chess.common.emitter import id_emitter
 
 
-from chess.action.types import OccupationFlow
+from chess.operation.types import OccupationFlow
 
 from chess.coord import Coord
 from chess.geometry.path import Path
 from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
-from chess.action.send import OccupationRequest
+from chess.operation.send import OccupationRequest
 from chess.piece.piece import Piece
 
 

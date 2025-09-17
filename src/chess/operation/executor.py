@@ -1,9 +1,9 @@
 from abc import abstractmethod, ABC
 
-from chess.action import Directive, ExecutionContext, OperationResult
+from chess.operation import Directive, ExecutionContext, OperationResult
 
 class Executor(ABC):
-    """Base class for action execution handlers"""
+    """Base class for operation execution handlers"""
 
     @staticmethod
     @abstractmethod

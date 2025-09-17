@@ -1,23 +1,14 @@
-# chess/piece/__init__.py
+# chess/operation/occupation/__init__.py
 
 """
-Piece Package - Chess Piece Data Objects
-
 PURPOSE:
-    Contains core chess piece classes and coordinate utilities.
-    Provides the fundamental data structures for game pieces.
+    Performs operations for occupying a square
 
 CORE CLASSES:
-    Piece: Abstract base class for all chess pieces
-    CombatantPiece: Concrete piece that can be captured
-    KingPiece: Concrete king piece with special rules
-    CoordStack: Coordinate history and management utility
+* `OccupationDirective`
+* `OccupationDirectiveValidator`
+* `OccupationExecutor`
 
-CONVENIENCE ALIASES:
-    BasePiece: Alias for Piece abstract class
-    Combatant: Alias for CombatantPiece (shorter, cleaner)
-    King: Alias for KingPiece (more intuitive)
-    CoordHistory: Alias for CoordStack (more descriptive)
 
 USAGE:
     >>> from chess.piece import CombatantPiece, KingPiece, CoordStack
@@ -25,7 +16,7 @@ USAGE:
     >>> white_king = KingPiece(piece_id=2, name="WK", validation=king, team=white_team)
     >>>
 
-Piece Exception Package - All Piece-Related Exceptions
+## Occupation Exception Classes
 
 PURPOSE:
     Contains all exceptions related to piece operations and state.Contains exceptions raised when a Piece object is
@@ -66,45 +57,26 @@ AUTHOR: Banji Lawal
 """
 
 from .exception import *
-
-from .piece import *
-from .encounter import Encounter
-from .validator import PieceValidator
-from .encounter_scan import EncounterScan
+from .directive import OccupationDirective
+from .executor import OccupationExecutor
+from .validator import OccupationDirectiveValidator
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "piece"
+__package_name__ = "chess.operation.occupation"
 
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    "Piece",
-    "CombatantPiece",
-    "KingPiece",
-    "PieceValidator",
-    "Encounter",
-    "EncounterScan",
-    "AlreadyAtDestinationException",
-    "EncounteringSelfException",
-    "DoublePromotionException",
-    "PrisonerEscapeException",
-    "PrisonerReleaseException",
-    "PieceCoordNullException",
-    "SetCaptorNullException",
-    "PieceValidationException",
-    "NullPieceException",
-    "NullKingPieceException",
-    "NullHostagePieceException",
-    "NullCombatantPieceException",
-    "NullEncounterException",
+    'OccupationDirective',
+    'OccupationExecutor',
+    'OccupationDirectiveValidator',
 
+    # Exception classes
     *exception.__all__,
 
-    # Subpackages
-    "exception",
 
     # Package metadata and utilities
     "__version__",

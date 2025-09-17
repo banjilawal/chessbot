@@ -1,22 +1,10 @@
-from typing import cast, Generic, TYPE_CHECKING
+from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
-from assurance.exception.invalid_id import IdValidationException
-from chess.team.team_exception.invalid_team import TeamValidationException
-from chess.commander.exception.invalid_commander import CommanderValidationException
-from chess.competitor.commander import Commander
+from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
+from chess.team import Team, NullTeamException, TeamValidationException
+from chess.commander import Commander, CommanderValidator, CommanderValidationException
 
-from chess.team.team_profile import TeamProfile
-from chess.team.team_exception.null_team_profile import NullTeamProfileException
-
-from chess.team.team_exception.null_team import NullTeamException
-from chess.result import Result
-from chess.common.validator import Validator, T
-from chess.common.id.validator import IdValidator
-from chess.exception.stack_exception import BrokenRelationshipException
-
-if TYPE_CHECKING:
-    from chess.side.team import Side
-
+T = TypeVar('T')
 
 class TeamValidator(Validator):
 
@@ -53,32 +41,33 @@ class TeamValidator(Validator):
             if t is None:
                 raise NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
 
-            from chess.side.team import Side
-            if not isinstance(t, Side):
+            from chess.team import Team
+            if not isinstance(t, Team):
                 raise TypeError(f"{method} Expected a Team, got {type(t).__name__}")
 
-            side = cast(Side, t)
+            team = cast(Team, t)
 
-            if side.profile is None:
+            if team.profile is None:
                 raise NullTeamProfileException(f"{method}: {NullTeamProfileException.DEFAULT_MESSAGE}")
 
-            id_validation = IdValidator.validate(side.id)
+            id_validation = IdValidator.validate(team.id)
             if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
             from chess.commander.commander_validator import CommanderValidator
-            competitor_validation = CommanderValidator.validate(side.commander)
-            if not competitor_validation.is_success():
+            commander_validation = CommanderValidator.validate(team.commander)
+            if not commander_validation.is_success():
                 raise CommanderValidationException(
                     f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}"
                 )
-            competitor = cast(Commander, competitor_validation.payload)
+            commander = cast(Commander, commander_validation.payload)
+            CommanderSearch.
 
-            if side not in competitor.teams.items:
+            if team not in commander.teams.items:
 
                 raise BrokenRelationshipException(f"{method}: {BrokenRelationshipException.DEFAULT_MESSAGE}")
 
-            return Result(payload=side)
+            return Result(payload=team)
 
         except (
                 TypeError,
@@ -93,11 +82,11 @@ class TeamValidator(Validator):
 
 def main():
 
-    from chess.competitor.commander import HumanCommander
+    from chess.commander.commander import HumanCommander
     person = HumanCommander(1, "person")
 
-    from chess.side.team import Side
-    side = Side(side_id=1, controller=person, profile=TeamProfile.BLACK)
+    from chess.team import Team
+    team = Team(team_id=1, controller=person, profile=TeamProfile.BLACK)
 
 
 if __name__ == "__main__":
