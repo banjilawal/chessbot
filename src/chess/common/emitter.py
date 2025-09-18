@@ -1,4 +1,9 @@
+__all__ = [
+    'id_emitter'
+]
+
 class IdEmitter:
+
     def __init__(self):
         self._person_id = 0
         self._cybernaut_id = 0
@@ -14,7 +19,9 @@ class IdEmitter:
         self._engine_id = 0
         self._occupy_id = 0
         self._promote_id = 0
-        self._outcome_id = 0
+        self._op_result_id = 0
+        self._directive_id = 0
+
 
 
     @property
@@ -96,8 +103,14 @@ class IdEmitter:
 
 
     @property
-    def outcome_id(self) -> int:
-        self._outcome_id += 1
-        return self._outcome_id
+    def op_result_id(self) -> int:
+        self._op_result_id += 1
+        return self._op_result_id
 
-IdEmitter()
+
+    @property
+    def directive_id(self) -> int:
+        self._directive_id += 1
+        return self._directive_id
+
+id_emitter = IdEmitter()

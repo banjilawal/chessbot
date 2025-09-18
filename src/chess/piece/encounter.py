@@ -6,7 +6,6 @@ from chess.coord import Coord
 if TYPE_CHECKING:
     from chess.piece.piece import Piece
 
-
 class Encounter:
     _id: int
     _name: str
@@ -44,15 +43,19 @@ class Encounter:
     def rank_value(self):
         return self._rank_value
 
+    @property
+    def coord(self) -> Coord:
+        return self._coord
 
     def __eq__(self, other):
+        """We have to use the coord because the id """
         if other is self:
             return True
         if other is None:
             return False
         if not isinstance('Encounter', other):
             return False
-        return self._id == other.id and self.name == other.name and self._coord == other.coord
+        return self._id == other.id and self._coord == other.coord
 
 
     def __str__(self):
@@ -63,15 +66,7 @@ class Encounter:
             f"value:{self._rank_value} "
             f"coord:{self._coord}"
         )
-    
 
-
-
-
-
-    @property
-    def coord(self) -> Coord:
-        return self._coord
 
 
 

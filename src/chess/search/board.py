@@ -41,13 +41,12 @@ class BoardSearch:
             if not validation.is_success():
                 return SearchResult(exception=validation.exception)
 
-            piece = next((piece for piece in board.pieces if piece.id == piece_id), None)
+            piece = next((piece for piece in board.pieces if piece.name.upper() == piece_name.upper()), None)
             if piece is not None:
                 return SearchResult(payload=piece)
 
             # Return empty search result
             return  SearchResult()
-
 
         except Exception as e:
             return SearchResult(exception=e)

@@ -3,9 +3,9 @@ from typing import Optional
 
 from assurance.exception.empty.result import EmptyEventOutcomeConstructorException
 from assurance.exception.event import ConflictingEventStateException
-from chess.common.permit import Event
+
 from chess.operation.null_occupation_request import NullRequestException
-from chess.operation.directive import Action
+from chess.operation import Directive
 
 
 
@@ -23,8 +23,7 @@ class OperationResult(ABC):
     """
 
     _id: int
-    _action: Action
-    _event: Optional[Event]
+    _directive: Directive
     _exception: Optional[Exception]
     _was_rolled_back: bool
 
@@ -32,7 +31,6 @@ class OperationResult(ABC):
         self,
         op_result_id: int,
         directive: Directive,
-        event: Optional[Event] = None,
         exception: Optional[Exception] = None,
         was_rolled_back: bool = False
     ):
@@ -54,7 +52,7 @@ class OperationResult(ABC):
             )
 
         self._id = op_result_id
-        self._action = request
+        self._directive = request
         self._event = event
         self._exception = exception
         self._was_rolled_back = was_rolled_back
@@ -67,7 +65,7 @@ class OperationResult(ABC):
 
     @property
     def request(self) -> Optional[Action]:
-        return self._action
+        return self._directive
 
 
     @property

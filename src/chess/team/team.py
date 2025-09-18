@@ -109,7 +109,7 @@ class Team:
             return SearchResult(exception=e)
 
 
-    def find(self, piece_id: int) -> SearchResult'Piece']:
+    def find(self, piece_id: int) -> SearchResult['Piece']:
         method = "Team.find_piece_by_id"
 
         """
@@ -237,100 +237,6 @@ class Team:
         except (NullPieceException, ConflictingTeamException) as e:
             raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
 
-
-    def remove_captured_combatant(self, combatant: CombatantPiece) -> Result[CombatantPiece]:
-        method = "Team.remove_captured_combatant"
-
-        """
-        Removes a captured piece from the roster
-
-        Args:
-            hostage (CombatantPiece): captured piece to remove from the roster
-
-        Raises:
-            TypeError: if the validated piece cannot be cast to CombatantPiece 
-            PieceValidationException: If the piece fails sanity checks
-            InvalidTeamAssignmentException: If the piece is not on the correct team
-
-            RemoveCombatantException wraps any preceding team_exception 
-        """
-        try:
-            validation = self._validate_combatant(combatant)
-            if not validation.is_success():
-                raise validation.exception
-
-            if not combatant.team == self:
-                raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")
-
-            if combatant.captor is not None:
-                raise Exception()
-
-            if combatant not in self._roster:
-                raise Exception()
-
-            self._roster.remove(combatant)
-            return Result(payload=combatant)
-        except (
-                TypeError,
-                NullPieceException,
-                ConflictingTeamException
-        ) as e:
-            raise RemoveCombatantException(
-                f"{method:}: {RemoveCombatantException.DEFAULT_MESSAGE}"
-            ) from e
-
-
-    def add_hostage(self, enemy: CombatantPiece):
-        method = "Team.add_hostage"
-
-        """
-        A newly constructed piece uses Team.add_piece to add itself to the team's roster. Team.roster returns
-        a read-only copy of the list. This is the only mutator that can directly access the array.
-
-        Args:
-            enemy (CombatantPiece): enemy to put in hostage list
-
-        Raises:
-            TypeError: if the validated piece cannot be cast to CombatantPiece 
-            PieceValidationException: If the piece fails sanity checks
-            InvalidTeamAssignmentException: If the piece is not on the correct team
-
-            RemoveCombatantException wraps any preceding team_exception 
-        """
-        try:
-            validation = self._validate_combatant(combatant=enemy)
-            if not validation.is_success():
-                raise validation.exception
-
-            if enemy.team == self:
-                raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")
-
-            if enemy.captor is None:
-                raise Exception()
-
-            if not enemy.captor.team == self:
-                raise Exception()
-
-            if enemy in self._hostages:
-                raise Exception()
-
-            self._hostages.append(enemy)
-
-        except (NullPieceException, ConflictingTeamException) as e:
-            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
-
-
-    def _validate_combatant(self, combatant: CombatantPiece) -> Result[CombatantPiece]:
-        method = "Team._validate_combatant"
-
-        validation = PieceValidator.validate(combatant)
-        if not validation.is_success():
-            return Result(exception=validation.exception)
-
-        if not isinstance(validation.payload, CombatantPiece):
-            return Result(exception=TypeError(f"{method} Expected a CombatantPiece, got {type(t).__name__}"))
-
-        return Result(payload=combatant)
 
 
 

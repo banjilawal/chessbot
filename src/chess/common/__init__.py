@@ -25,6 +25,7 @@ AUTHOR: Banji Lawal
 from .id import *
 from .name import *
 from .config import *
+from .emitter import *
 
 
 # Core package imports
@@ -33,7 +34,7 @@ from .result import Result
 from .color import GameColor
 from .validator import Validator
 from .mouse import MousePlacementStatus
-from .emitter import IdEmitter
+
 
 
 # Package metadata (organic to __init__.py)
@@ -49,10 +50,10 @@ __all__ = [
     'GameColor',
     'Validator',
     'MousePlacementStatus',
-    'IdEmitter',
 
     *id.__all__,
     *name.__all__,
+    *emitter.__all__,
     *config.__all__,
 
     # Package metadata and utilities

@@ -1,8 +1,5 @@
-from typing import Generic, TypeVar, Optional, cast
+from typing import Generic, TypeVar, Optional
 
-from chess.square import Square
-from chess.rank.queen import Queen
-from chess.piece.piece import Piece
 
 T = TypeVar('T')
 
@@ -12,6 +9,7 @@ class Directive(Generic[T]):
     state changing operation  on a `target`. An `Action` can change state of:
 
     The Directive is handled by an Executor who carry out the directive
+    It is used for doing rollback
 
     * Its `actor` who initiates and performs the activity
     * The `target` which the operation is performed upon.
@@ -56,64 +54,6 @@ class Directive(Generic[T]):
             return True
         if other is None:
             return False
-        if not isinstance(other, Action):
+        if not isinstance(other, Directive):
             return False
-        return self._id == other.id
-
-
-class OccupySquare(Action):
-
-    def __init__(self, action_id: int, piece: Piece, square: Square):
-        super().__init__(action_id=action_id, actor=piece, target=square)
-
-
-    @property
-    def id(self):
-        return self._id
-
-
-    @property
-    def piece(self):
-        return cast(self._actor, Piece)
-
-
-    @property
-    def square(self):
-        return cast(self._target, Square)
-
-
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-        if isinstance(other, OccupySquare):
-            return self._id == other.id
-
-
-class Promote(Action):
-
-    def __init__(self, action_id: int, piece: Piece, rank: Queen = Queen()):
-        super().__init__(action_id=action_id, actor=piece, target=rank)
-
-
-    @property
-    def id(self):
-        return self._id
-
-
-    @property
-    def piece(self) -> Piece:
-        return cast(self._actor, Piece)
-
-
-    @property
-    def rank(self) -> Queen:
-        return cast(self._actor, Queen)
-
-
-    def __eq__(self, other):
-
-        if not super().__eq__(other):
-            return False
-
-        if isinstance(other, Promote):
-            return self._id == other.id
+        return self._id == other.id == other.id
