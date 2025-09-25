@@ -28,7 +28,7 @@ from .exception import *
 from .commander_builder import CommanderBuilder
 from .coord_builder import CoordBuilder
 from .coord_stack_builder import CoordinateStackBuilder
-from .piece_builder import PieceBuilder
+from chess.piece.builder import PieceBuilder
 from .scalar_builder import ScalarBuilder
 from .square_builder import SquareBuilder
 from .team_builder import TeamBuilder

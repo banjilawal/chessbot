@@ -69,6 +69,7 @@ from .exception import *
 
 from .piece import *
 from .encounter import Encounter
+from .builder import PieceBuilder
 from .validator import PieceValidator
 from .encounter_scan import EncounterScan
 
@@ -87,19 +88,7 @@ __all__ = [
     "PieceValidator",
     "Encounter",
     "EncounterScan",
-    "AlreadyAtDestinationException",
-    "EncounteringSelfException",
-    "DoublePromotionException",
-    "PrisonerEscapeException",
-    "PrisonerReleaseException",
-    "PieceCoordNullException",
-    "SetCaptorNullException",
-    "PieceValidationException",
-    "NullPieceException",
-    "NullKingPieceException",
-    "NullHostagePieceException",
-    "NullCombatantPieceException",
-    "NullEncounterException",
+    "PieceBuilder",
 
     *exception.__all__,
 

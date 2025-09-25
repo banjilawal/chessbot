@@ -16,6 +16,7 @@ class PieceBuilder(Enum):
     def build(piece_id: int, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
 
         method = "PieceBuilder.build"
+
         try:
             id_validation = IdValidator.validate(piece_id)
             if not id_validation.is_success():
@@ -52,8 +53,9 @@ class PieceBuilder(Enum):
                     RelationshipException(RelationshipException.DEFAULT_MESSAGE)
                 )
 
-            return Result(payload=piece)
-        except
+            return BuildResult(payload=piece)
+        except Exception as e:
+            raise PieceBuilderException(f"{method}: {PieceBuilderException}")
 
 
 def main():
