@@ -1,12 +1,14 @@
-from chess import CollectionException
-from chess.exception import ChessException, NullException, ValidationException, BuilderException
+from chess.exception import (
+    ChessException, NullException, ValidationException, BuilderException, CollectionException
+)
 
 __all__ = [
     'CommanderException',
     'NullCommanderException',
     'CommanderBuilderException',
     'CommanderValidationException',
-
+    'NullCommanderBuilderException',
+    'InvalidCommanderAssignmentException',
     'TeamListException',
     'TeamListValidationException'
 ]
@@ -60,8 +62,14 @@ class CommanderValidationException(ValidationException):
     DEFAULT_MESSAGE = f"Commander validation failed"
 
 
+class InvalidCommanderAssignmentException(CommanderException):
+    """
+    If a team already attached to a commander (team.commander == not None) tries being assigned a
+    different commander, `InvalidCommanderAssignmentException` is raised.
+    """
 
-
+    ERROR_CODE = "INVALID_COMMANDER_ASSIGNMENT_ERROR"
+    DEFAULT_MESSAGE = "Team is already assigned to a commander."
 
 
 class TeamListException(CollectionException):

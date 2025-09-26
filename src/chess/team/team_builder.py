@@ -1,11 +1,10 @@
 from enum import Enum
 
-from chess.team import Team, TeamProfile, NullTeamProfileException
-from chess.commander import Commander, CommanderValidator
+from chess.team import Team, TeamProfile, NullTeamProfileException, TeamBuilderException
+from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
 from chess.common import IdValidator, BuildResult
 from chess.exception import RelationshipException
 from assurance import ThrowHelper
-
 
 
 class TeamBuilder(Enum):
@@ -38,7 +37,7 @@ class TeamBuilder(Enum):
 
 
     @staticmethod
-    def build(team_id: int,commander: Commander,profile: TeamProfile) -> BuildResult[Team]:
+    def build(team_id: int, commander: Commander, profile: TeamProfile) -> BuildResult[Team]:
         """
         Constructs a new `Team` instance with comprehensive validation.
 
@@ -114,8 +113,16 @@ class TeamBuilder(Enum):
                 ThrowHelper.throw_if_invalid(TeamBuilder, commander_validation.exception)
 
             team = Team(team_id=team_id, commander=commander, profile=profile)
+
+            if team.commander != commander:
+                ThrowHelper.throw_if_invalid(
+                    TeamBuilder,
+                    InvalidCommanderAssignmentException(InvalidCommanderAssignmentException.DEFAULT_MESSAGE)
+                )
+
             if team not in commander.teams:
-                commander.add_team(team)
+                commander.teams.add_team(team)
+
 
             if team not in commander.teams:
                 ThrowHelper.throw_if_invalid(
@@ -133,17 +140,17 @@ class TeamBuilder(Enum):
 # def main():
 #     build_result = TeamBuilder.build()
 #     if build_result.is_success():
-#         side = build_result.payload
-#         print(f"Successfully built side: {side}")
+#         team = build_result.payload
+#         print(f"Successfully built team: {team}")
 #     else:
-#         print(f"Failed to build side: {build_result.exception}")
+#         print(f"Failed to build team: {build_result.exception}")
 #
 #     build_result = TeamBuilder.build(-1)
 #     if build_result.is_success():
-#         side = build_result.payload
-#         print(f"Successfully built side: {side}")
+#         team = build_result.payload
+#         print(f"Successfully built team: {team}")
 #     else:
-#         print(f"Failed to build side: {build_result.exception}")
+#         print(f"Failed to build team: {build_result.exception}")
 #
 # if __name__ == "__main__":
 #     main()

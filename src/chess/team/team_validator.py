@@ -10,6 +10,15 @@ from chess.commander import Commander, CommanderValidator, CommanderValidationEx
 T = TypeVar('T')
 
 class TeamValidator(Validator):
+    """
+    Validates existing `Team` instances that are passed around the system.
+
+    While `TeamBuilder` ensures valid Teams are created, `TeamValidator`
+    checks `Team` instances that already exist - whether they came from
+    deserialization, external sources, or need re-validation after modifications.
+
+    Use `TeamBuilder` for construction, `TeamValidator` for verification.
+    """
 
     @staticmethod
     def validate(t: Generic[T]) -> Result['Team']:

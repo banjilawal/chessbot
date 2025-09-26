@@ -76,4 +76,4 @@ class PieceValidator(Validator):
 #
 # def main():
 #     person = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
-#     side = TeamBuilder.build()
+#     team = TeamBuilder.build()

@@ -21,22 +21,16 @@ class PieceBuilder(Enum):
             id_validation = IdValidator.validate(piece_id)
             if not id_validation.is_success():
                 ThrowHelper.throw_if_invalid(PieceBuilder, id_validation)
-            piece_id = cast(int, id_validation.payload)
 
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
                 ThrowHelper.throw_if_invalid(PieceBuilder, name_validation)
-            name = cast(str, name_validation.payload)
 
             team_validation = TeamValidator.validate(team)
             if not team_validation.is_success():
                 ThrowHelper.throw_if_invalid(PieceBuilder, team_validation)
-            team = cast(Team, team_validation.payload)
 
-            piece_validation = PieceValidator.validate(Piece(piece_id=piece_id, name=name, rank=rank, team=team))
-            if not piece_validation.is_success():
-                ThrowHelper.throw_if_invalid(PieceBuilder, piece_validation)
-            piece = cast(Piece, piece_validation.payload)
+            piece = Piece(piece_id=piece_id, name=name, rank=rank, team=team)
 
             if not piece.team == team:
                 ThrowHelper.throw_if_invalid(

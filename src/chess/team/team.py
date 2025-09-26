@@ -35,7 +35,7 @@ class Team:
 
 
         if self not in commander.teams.items:
-            commander.teams.push_side(self)
+            commander.teams.add_team(self)
 
         if self not in commander.teams.items:
             raise BrokenRelationshipException(f"{method}:{BrokenRelationshipException.DEFAULT_MESSAGE}")

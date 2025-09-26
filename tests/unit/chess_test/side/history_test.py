@@ -18,33 +18,33 @@ class TeamStackTest(unittest.TestCase):
 
     def test_null_team_push_raises_exception(self):
         with self.assertRaises(PushingNullEntityException):
-            SideRecord().push_side(None)
+            SideRecord().add_team(None)
 
 
     def test_duplicate_team_push_raises_exception(self):
         team = create_autospec(Side, instance=True)
         team_stack = SideRecord()
-        team_stack.push_side(team)
+        team_stack.add_team(team)
 
         with self.assertRaises(DuplicatePushException):
-            team_stack.push_side(team)
+            team_stack.add_team(team)
 
     def test_pushing_team_updates_current_team(self):
         a_team = create_autospec(Side, instance=True)
         b_team = create_autospec(Side, instance=True)
 
         team_stack = SideRecord()
-        team_stack.push_side(a_team)
+        team_stack.add_team(a_team)
         self.assertEqual(team_stack.current_team, a_team)
 
-        team_stack.push_side(b_team)
+        team_stack.add_team(b_team)
         self.assertEqual(team_stack.current_team, b_team)
 
 
     def test_popping_items_does_not_mutate_stack(self):
         team = create_autospec(Side, instance=True)
         team_stack = SideRecord()
-        team_stack.push_side(team)
+        team_stack.add_team(team)
 
         popped_team = list(team_stack.items).pop()
 
@@ -60,7 +60,7 @@ class TeamStackTest(unittest.TestCase):
         original_size = team_stack.size()
         self.assertEqual(team_stack.size(), 0)
 
-        team_stack.push_side(mock_team)
+        team_stack.add_team(mock_team)
         self.assertEqual(team_stack.size(), original_size + 1)
 
 
@@ -72,7 +72,7 @@ class TeamStackTest(unittest.TestCase):
     def test_is_empty_false_when_stack_has_items(self):
         mock_team = create_autospec(Side, instance=True)
         team_stack = SideRecord()
-        team_stack.push_side(mock_team)
+        team_stack.add_team(mock_team)
 
         self.assertTrue(not team_stack.is_empty() and team_stack.size() > 0)
 

@@ -1,6 +1,7 @@
 from typing import Optional
 
 from typing_extensions import TYPE_CHECKING
+from chess.team import Team
 
 from chess.exception.stack_exception import (
     PushingNullEntityException,
@@ -8,17 +9,17 @@ from chess.exception.stack_exception import (
     DuplicatePushException
 )
 
-if TYPE_CHECKING:
-    pass
+# if TYPE_CHECKING:
+#     pass
 
 
 class TeamList:
-    _items: list['Team']
-    _current_side: 'Team'
+    _items: list[Team]
+    _current_team: Team
 
     def __init__(self):
         self._items = []
-        self._current_side = self._items[-1] if self._items else None
+        self._current_team = self._items[-1] if self._items else None
 
 
     @property
@@ -51,17 +52,17 @@ class TeamList:
         return None
 
 
-    def push_side(self, side: 'Team'):
-        method = "TeamStack.push_team"
+    def add_team(self, team: Team):
+        method = "TeamList.add_team"
 
-        if side is None:
+        if team is None:
             raise PushingNullEntityException(f"{method}: {PushingNullEntityException.DEFAULT_MESSAGE}")
 
         if self._items is None:
             raise CorruptedStackException(f"{method}: {CorruptedStackException.DEFAULT_MESSAGE}")
 
-        if self.current_team == side:
+        if self.current_team == team:
             raise DuplicatePushException(f"{method} {DuplicatePushException.DEFAULT_MESSAGE}")
 
-        self._items.append(side)
+        self._items.append(team)
 
