@@ -2,6 +2,8 @@ from chess.exception import ChessException, NullException, ValidationException, 
 
 __all__ = [
     'VectorException',
+    'VectorBuilderException',
+    'NullVectorBuilderException',
     'NullVectorException',
     'VectorAboveBoundsException',
     'VectorBelowBoundsException',

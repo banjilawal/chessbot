@@ -3,10 +3,10 @@ from typing import cast
 
 from chess.rank import Rank
 from assurance import ThrowHelper
-from chess.builder import BuildResult, PieceBuilderException
+
 from chess.exception import RelationshipException
-from chess.common import IdValidator, NameValidator, Result
-from chess.piece import Piece, PieceValidator
+from chess.common import IdValidator, NameValidator, BuildResult
+from chess.piece import Piece, PieceValidator, PieceBuilderException
 from chess.team import Team, TeamValidator, InvalidTeamAssignmentException
 
 
@@ -58,20 +58,20 @@ class PieceBuilder(Enum):
             raise PieceBuilderException(f"{method}: {PieceBuilderException}")
 
 
-def main():
-    build_result = PieceBuilder.build()
-    if build_result.is_success():
-        piece = build_result.payload
-        print(f"Successfully built piece: {piece}")
-    else:
-        print(f"Failed to build piece: {build_result.exception}")
-    #
-    build_result = PieceBuilder.build(1, None)
-    if build_result.is_success():
-        piece = build_result.payload
-        print(f"Successfully built piece: {piece}")
-    else:
-        print(f"Failed to build piece: {build_result.exception}")
-
-if __name__ == "__main__":
-    main()
+# def main():
+#     build_result = PieceBuilder.build()
+#     if build_result.is_success():
+#         piece = build_result.payload
+#         print(f"Successfully built piece: {piece}")
+#     else:
+#         print(f"Failed to build piece: {build_result.exception}")
+#     #
+#     build_result = PieceBuilder.build(1, None)
+#     if build_result.is_success():
+#         piece = build_result.payload
+#         print(f"Successfully built piece: {piece}")
+#     else:
+#         print(f"Failed to build piece: {build_result.exception}")
+#
+# if __name__ == "__main__":
+#     main()

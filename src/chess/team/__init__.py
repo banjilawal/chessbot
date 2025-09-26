@@ -36,7 +36,7 @@ and resolve team-related issues.
 ### EXCEPTION USAGE EXAMPLES
 These exceptions can be imported and raised from within the team-related code to enforce data integrity.
 
-#>>> from chess.team.team_exception import NullTeamException
+>>> from chess.team import NullTeamException
 >>>
 >>> def check_team(team):
 ...     if team is None:

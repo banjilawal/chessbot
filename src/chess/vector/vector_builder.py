@@ -1,22 +1,65 @@
 from enum import Enum
+from typing import cast
 
-from chess.common import BuildResult
+from chess.common import BuildResult, KNIGHT_STEP_SIZE
 from assurance.throw_helper import ThrowHelper
-from chess.vector import Vector, VectorValidator
+from chess.vector import (
+    Vector, VectorValidator, VectorBelowBoundsException, VectorAboveBoundsException,
+    NullXComponentException, NullYComponentException, VectorBuilderException
+)
+
 
 
 class VectorBuilder(Enum):
 
     @staticmethod
     def build(x: int, y: int) -> BuildResult[Vector]:
-        try:
-            candidate = Vector(x=x, y=y)
-            validation = VectorValidator.validate(candidate)
 
-            ThrowHelper.throw_if_invalid(VectorBuilder, validation)
-            return validation
+        method = "VectorBuilder.build"
+
+        try:
+            if x is None:
+                ThrowHelper.throw_if_invalid(
+                    VectorBuilder,
+                    NullXComponentException(NullXComponentException.DEFAULT_MESSAGE)
+                )
+            if x < -KNIGHT_STEP_SIZE:
+                ThrowHelper.throw_if_invalid(
+                    VectorBuilder,
+                    VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
+                )
+            if x > KNIGHT_STEP_SIZE:
+                ThrowHelper.throw_if_invalid(
+                    VectorBuilder,
+                    VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
+                )
+
+
+            if y is None:
+                ThrowHelper.throw_if_invalid(
+                    VectorBuilder,
+                    NullYComponentException(NullYComponentException.DEFAULT_MESSAGE)
+                )
+            if y < -KNIGHT_STEP_SIZE:
+                ThrowHelper.throw_if_invalid(
+                    VectorBuilder,
+                    VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
+                )
+            if y > KNIGHT_STEP_SIZE:
+                ThrowHelper.throw_if_invalid(
+                    VectorBuilder,
+                    VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
+                )
+
+            validation = VectorValidator.validate(Vector(x=x, y=y))
+            if not validation.is_success():
+                ThrowHelper.throw_if_invalid(VectorBuilder, validation.exception)
+
+            vector = cast(Vector, validation.payload)
+            return BuildResult(payload=vector)
+
         except Exception as e:
-            return BuildResult(payload=None, exception=e)
+            raise VectorBuilderException(f"{method}: {VectorBuilderException.DEFAULT_MESSAGE}")
 
 
 # def main():

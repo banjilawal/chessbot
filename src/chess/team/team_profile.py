@@ -8,7 +8,13 @@ from chess.scalar import Scalar
 
 class TeamProfile(Enum):
 
-    def __new__(cls, game_color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant):
+    def __new__(
+        cls,
+        game_color: GameColor,
+        rank_row: int,
+        advancing_step: Scalar,
+        home_quadrant: Quadrant
+    ):
         obj = object.__new__(cls)
         obj._game_color = game_color
         obj._rank_row = rank_row
@@ -64,11 +70,11 @@ class TeamProfile(Enum):
         )
 
 
-def main():
-
-    for profile in TeamProfile:
-        print(profile)
-
-
-if __name__ == "__main__":
-    main()
+# def main():
+#
+#     for profile in TeamProfile:
+#         print(profile)
+#
+#
+# if __name__ == "__main__":
+#     main()

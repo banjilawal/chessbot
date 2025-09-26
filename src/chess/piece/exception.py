@@ -1,10 +1,11 @@
-from chess.exception import ChessException, ValidationException, NullException
+from chess.exception import ChessException, ValidationException, NullException, BuilderException
 
 __all__ = [
     'PieceException',
     'DoublePromotionException',
     'PieceValidationException',
-
+    'PieceBuilderException',
+    'NullPieceBuilderException',
     'NullPieceException',
     'NullEncounterException',
     'NullKingPieceException',

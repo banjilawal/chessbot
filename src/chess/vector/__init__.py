@@ -23,7 +23,7 @@ To use this package, import the desired classes and perform operations.
 >>> # Validator.validate returns a Result
 >>> validation = VectorValidator.validate(candidate)
 >>> if not validation.is_success():
->>>     raise validation.team_exception
+>>>     raise validation.exception
 >>> # On success always cast the payload to its type.
 >>> vector = cast(Vector, validation.payload)
 
