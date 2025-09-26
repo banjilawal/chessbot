@@ -4,7 +4,7 @@ from unittest.mock import create_autospec, patch
 from chess.commander.exception.invalid_commander import CommanderValidationException
 from assurance.exception.invalid_id import IdValidationException
 from chess.competitor.commander import Commander
-from chess.team.profile import TeamProfile
+from chess.team.team_profile import TeamProfile
 from chess.team.team_exception.null_team_profile import NullTeamProfileException
 from chess.exception.stack_exception import BrokenRelationshipException
 from chess.side.team import Side

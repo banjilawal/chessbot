@@ -35,15 +35,12 @@ AUTHOR: Banji Lawal
 """
 
 # subpackages
-from .exception import (
-    SquareException,
-    NullSquareException,
-    SquareValidationException
-)
+from .exception import *
 
 # class
 from .square import Square
-from .validator import SquareValidator
+from .square_builder import SquareBuilder
+from .square_validator import SquareValidator
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
@@ -54,10 +51,9 @@ __all__ = [
     # Core Packages
     "Square",
     "SquareValidator",
+    'SquareBuilder',
 
-    "SquareException",
-    "NullSquareException",
-    "SquareValidationException",
+    *exception.__all__,
 
     # Package metadata and utilities
     "__version__",

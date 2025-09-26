@@ -2,8 +2,7 @@ from enum import Enum
 
 from chess.common import BuildResult
 from assurance.throw_helper import ThrowHelper
-from chess.vector.vector_validator import VectorValidator
-from chess.vector import Vector
+from chess.vector import Vector, VectorValidator
 
 
 class VectorBuilder(Enum):

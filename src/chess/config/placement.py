@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 
 from chess.piece.piece import Piece
-from chess.team.profile import TeamProfile
+from chess.team.team_profile import TeamProfile
 from chess.rank.profile import RankProfile
 
 

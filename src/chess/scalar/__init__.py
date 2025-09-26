@@ -47,8 +47,7 @@ This package defines specific exceptions for issues encountered when working wit
 ### EXCEPTION USAGE EXCEPTIONS
 These exceptions can be imported and raised from within the scalar-related code to enforce data integrity.
 
->>> from chess.scalar.team_exception import NullScalarException, ScalarAboveBoundsException
->>> from chess.scalar import Scalar
+>>> from chess.scalar Scalar, NullScalarException, ScalarAboveBoundsException
 >>>
 >>> try:
 ...     # This will raise a NullScalarException

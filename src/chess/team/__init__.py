@@ -64,42 +64,32 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
+from .exception import *
+
 # Core classes
 from .team import Team
-from .profile import TeamProfile
-from .validator import TeamValidator
+from .team_profile import TeamProfile
+from .team_builder import TeamBuilder
+from .team_validator import TeamValidator
 
-from .exception import  (
-    TeamException,
-    AddPieceException,
-    InvalidTeamAssignmentException,
-    TeamValidationException,
-    NullTeamException,
-    NullTeamProfileException,
-    RemoveCombatantException
-)
 
 # Metadata
-__version__ = "1.0.0"
-__author__ = "Banji Lawal"
-__package_name__ = "chess.team"
+__version__ = '1.0.0'
+__author__ = 'Banji Lawal'
+__package_name__ = 'chess.team'
 
 # Optional: Package-level constants
 ROSTER_SIZE = 16
 
 __all__ = [
     # Core classes
-    "Team",
-    "TeamRoster",
-    "TeamValidator",
-    "TeamProfile",
+    'Team',
+    'TeamValidator',
+    'TeamProfile',
+    'TeamBuilder',
 
-    "NullTeamException",
-    "AddPieceException",
-    "TeamValidationException",
-    "RemoveCombatantException",
-    "InvalidTeamAssignmentException",
-    "NullTeamProfileException",
+    *exception.__all__,
+
 
     # Package metadata and utilities
     "__version__",

@@ -4,7 +4,7 @@ from chess.common.emitter import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.team.profile import TeamProfile
+from chess.team.team_profile import TeamProfile
 from chess.competitor.commander import HumanCommander
 from chess.competitor.commander import Commander
 from chess.randomize.competitor import RandomName

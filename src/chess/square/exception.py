@@ -1,5 +1,13 @@
 from chess.exception import ChessException, NullException, ValidationException
 
+__all__ = [
+    'SquareException',
+    'NullSquareException',
+    'SquareValidationException',
+    'SquareBuilderException',
+    'NullSquareBuilderException'
+]
+
 class SquareException(ChessException):
     ERROR_CODE = "SQUARE_ERROR"
     DEFAULT_MESSAGE = f"Square exception was raised"
