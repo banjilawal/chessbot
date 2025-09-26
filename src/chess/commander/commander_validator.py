@@ -93,6 +93,10 @@ class CommanderValidator(Validator):
                 NameValidationException,
                 TeamListException
         ) as e:
-            raise CommanderValidationException(
-                f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}"
-            ) from e
+            raise CommanderValidationException(f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}") from e
+
+
+        # This block catches any unexpected exceptions
+        # You might want to log the error here before re-raising
+        except Exception as e:
+            raise CommanderValidationException(f"An unexpected error occurred during validation: {e}") from e

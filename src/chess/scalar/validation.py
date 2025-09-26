@@ -11,42 +11,50 @@ from chess.scalar import(
 T = TypeVar('T')
 
 class ScalarValidator(Validator):
+    """
+    Validates existing `Scalar` instances that are passed around the system.
 
+    While `ScalarBuilder` ensures valid Scalars are created, `ScalarValidator`
+    checks `Scalar` instances that already exist - whether they came from
+    deserialization, external sources, or need re-validation after modifications.
+
+    Usage:
+        ```python
+        # Validate an existing scalar
+        scalar_validation = ScalarValidator.validate(candidate)    
+        if not scalar_validation.is_success():
+            raise scalar_validation.exception
+        scalar = cast(Scalar, scalar_validation.payload)
+        ```
+
+    Use `ScalarBuilder` for construction, `ScalarValidator` for verification.
+    """
+    
     @staticmethod
     def validate(t: Generic[T]) -> Result[Scalar]:
-        entity = "Scalar"
-        class_name = f"{entity}Specification"
-        method = f"{class_name}.is_satisfied_by"
-
         """
-        Validates a scalar with chained exceptions for scalar meeting specifications:
-            - Not null
-            - value is not null
-            - value is within the bounds of the chess chessboard
-            - column is not null
-            - column is within the bounds of the chess chessboard
-        If either validators fails their team_exception will be encapsulated in a 
-        ScalarValidationException
+        Validates that an existing `Scalar` instance meets specifications.
+        This method performs a series of checks on a Scalar instance, ensuring it is not null and that 
+        its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised 
+        as a `ScalarValidationException`, providing a clean and consistent error-handling experience.
             
         Args
-            t (Scalar): scalar to validate
-            
+            `t` (`Scalar`): `Scalar` instance to validate
+
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification 
-             is satisfied, ScalarValidationException otherwise.
+            `Result`[`Scalar`]: A `Resul`t object containing the validated payload if the specification is satisfied,
+            `ScalarValidationException` otherwise.
         
         Raises:
-            NullScalarException: if t is null   
-            TypeError: if t is not Scalar
-            
-            NullNumberException: If scalar.value is null 
-            
-            NScalarBelowLowerBoundException: If scalar.value < 0
-            
-            ScalarAboveBoundsException: If scalar.value >= BOARD_DIMENSION
-            
-            ScalarValidationException: Wraps any preceding exceptions      
+            `NullScalarException`: if `t` is null   
+            `TypeError`: if `t` is not Scalar
+            `NullNumberException`: If `scalar.value` is null   
+            `ScalarBelowLowerBoundException`: If `scalar.value` < 0
+            `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
+            `ScalarValidationException`: Wraps any preceding exceptions      
         """
+        method = "ScalarValidator.validate"
+        
         try:
             if t is None:
                 raise NullScalarException(f"{method} NullScalarException.DEFAULT_MESSAGE")
@@ -76,9 +84,12 @@ class ScalarValidator(Validator):
             ScalarBelowBoundsException,
             ScalarAboveBoundsException,
         ) as e:
-            raise ScalarValidationException(
-                f"{method}: {ScalarValidationException.DEFAULT_MESSAGE}"
-            ) from e
+            raise ScalarValidationException(f"{method}: {ScalarValidationException.DEFAULT_MESSAGE}") from e
+
+        # This block catches any unexpected exceptions
+        # You might want to log the error here before re-raising
+        except Exception as e:
+            raise ScalarValidationException(f"An unexpected error occurred during validation: {e}") from e
 
 
 # def main():

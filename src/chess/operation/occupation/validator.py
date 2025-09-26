@@ -93,3 +93,9 @@ class OccupationDirectiveValidator(Validator):
             raise InvalidOccupationDirectiveException(
                 f"{method}: {InvalidOccupationDirectiveException.DEFAULT_MESSAGE}"
             ) from e
+
+        # This block catches any unexpected exceptions
+        # You might want to log the error here before re-raising
+        except Exception as e:
+            raise InvalidOccupationDirectiveException(f"An unexpected error occurred during validation: {e}") from e
+

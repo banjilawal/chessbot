@@ -12,11 +12,20 @@ T = TypeVar('T')
 
 class VectorValidator(Validator):
     """
-    Validates existing Vector instances that are passed around the system.
+    Validates existing `Vector` instances that are passed around the system.
 
-    While VectorBuilder ensures valid Vectors are created, VectorValidator
-    checks Vector instances that already exist - whether they came from
+    While `VectorBuilder` ensures valid Vectors are created, `VectorValidator`
+    checks `Vector` instances that already exist - whether they came from
     deserialization, external sources, or need re-validation after modifications.
+    
+    Usage:
+        ```python
+        # Validate an existing vector
+        vector_validation = VectorValidator.validate(candidate)    
+        if not vector_validation.is_success():
+            raise vector_validation.exception
+        vector = cast(Vector, vector_validation.payload)
+        ```
 
     Use VectorBuilder for construction, VectorValidator for verification.
     """
@@ -24,11 +33,11 @@ class VectorValidator(Validator):
     @staticmethod
     def validate(t: Generic[T]) -> Result[Vector]:
         """
-          Validates that an existing Vector instance meets all specifications.
+          Validates that an existing `Vector` instance meets all specifications.
 
-          Performs comprehensive validation on a Vector instance that already exists,
+          Performs comprehensive validation on a `Vector` instance that already exists,
           checking type safety, null values, and component bounds. Unlike VectorBuilder
-          which creates new valid Vectors, this validator verifies existing Vector
+          which creates new valid Vectors, this validator verifies existing `Vector`
           instances from external sources, deserialization, or after modifications.
 
           Args:
@@ -108,6 +117,11 @@ class VectorValidator(Validator):
                 VectorAboveBoundsException
         ) as e:
             raise VectorValidationException(f"{method}: f{VectorValidationException.DEFAULT_MESSAGE}") from e
+
+        # This block catches any unexpected exceptions
+        # You might want to log the error here before re-raising
+        except Exception as e:
+            raise VectorValidationException(f"An unexpected error occurred during validation: {e}") from e
 #
 #
 # def main():

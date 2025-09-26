@@ -2,10 +2,10 @@ from crypt import methods
 from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
 from chess.common import Result, Validator, IdValidator, IdValidationException
-from chess.search import CommanderSearch
-from chess.exception import BrokenRelationshipException
+from chess.exception import RelationshipException
 from chess.team import Team, NullTeamException, NullTeamProfileException, TeamValidationException
-from chess.commander import Commander, CommanderValidator, CommanderValidationException
+from chess.commander import Commander, CommanderValidator, CommanderValidationException, \
+    InvalidCommanderAssignmentException
 
 T = TypeVar('T')
 
@@ -16,6 +16,15 @@ class TeamValidator(Validator):
     While `TeamBuilder` ensures valid Teams are created, `TeamValidator`
     checks `Team` instances that already exist - whether they came from
     deserialization, external sources, or need re-validation after modifications.
+    
+    Usage:
+        ```python
+        # Validate an existing team
+        team_validation = TeamValidator.validate(candidate)    
+        if not team_validation.is_success():
+            raise team_validation.exception
+        team = cast(Team, team_validation.payload)
+        ```
 
     Use `TeamBuilder` for construction, `TeamValidator` for verification.
     """
@@ -23,10 +32,12 @@ class TeamValidator(Validator):
     @staticmethod
     def validate(t: Generic[T]) -> Result['Team']:
         """
-         Validates that an existing Team instance meets specifications:
-            - Not null
-            - `id` passes validator checks
-            - `commander` passes validator checks
+        Validates that an existing `Team` instance meets all specifications.
+
+        Performs comprehensive validation on a `Team` instance that already exists,
+        checking type safety, null values, and component bounds. Unlike `TeamBuilder`
+        which creates new valid Teams, this validator verifies existing `Team`
+        instances from external sources, deserialization, or after modifications.
 
         Args
             `t` (`Team`): `Team` instance to validate
@@ -41,7 +52,8 @@ class TeamValidator(Validator):
             `IdValidationException`: if `id` fails validation checks
             `CommanderValidationException`: if `commander` fails validation checks
             `NullTeamProfileException`: if `profile` is null
-            `BrokenRelationshipException`: if the bidirectional relationship between Team and Commander is broken
+            `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
+            `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
             `TeamValidationException`: Wraps any preceding exceptions
         """
         method = "TeamValidator.validate"
@@ -68,10 +80,13 @@ class TeamValidator(Validator):
                 raise CommanderValidationException(f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}")
 
             commander = cast(Commander, commander_validation.payload)
-            CommanderSearch.for_team(team.id, commander)
+            if team.commander != commander:
+                raise InvalidCommanderAssignmentException(
+                    f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"
+                )
 
             if team not in commander.teams.items:
-                raise BrokenRelationshipException(f"{method}: {BrokenRelationshipException.DEFAULT_MESSAGE}")
+                raise RelationshipException(f"{method}: {RelationshipException.DEFAULT_MESSAGE}")
 
             return Result(payload=team)
 
@@ -80,10 +95,16 @@ class TeamValidator(Validator):
             NullTeamException,
             IdValidationException,
             NullTeamProfileException,
-            CommanderValidationException
+            CommanderValidationException,
+            InvalidCommanderAssignmentException,
+            RelationshipException
         ) as e:
             raise TeamValidationException(f"{method}: {TeamValidationException.DEFAULT_MESSAGE}") from e
 
+        # This block catches any unexpected exceptions
+        # You might want to log the error here before re-raising
+        except Exception as e:
+            raise TeamValidationException(f"An unexpected error occurred during validation: {e}") from e
 
 #
 # def main():

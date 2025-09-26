@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/team_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/team_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/side/history_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/side/history_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -24,9 +24,10 @@ class TeamBuilder(Enum):
     Usage:
         ```python
         # Safe team creation with validation
-        result = TeamBuilder.build(x=2, y=1)
-        if result.is_success():
-            team = result.payload
+        build_result = TeamBuilder.build(team_id=1, commander=black_commander, profile=TeamProfile.BLACK)
+
+        if build_result.is_success():
+            team = build_result.payload
         ```
 
     See Also:

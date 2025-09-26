@@ -4,7 +4,7 @@ from typing import cast
 from chess.common import BuildResult, KNIGHT_STEP_SIZE
 from assurance.throw_helper import ThrowHelper
 from chess.vector import (
-    Vector, VectorValidator, VectorBelowBoundsException, VectorAboveBoundsException,
+    Vector, VectorBelowBoundsException, VectorAboveBoundsException,
     NullXComponentException, NullYComponentException, VectorBuilderException
 )
 
@@ -27,9 +27,9 @@ class VectorBuilder(Enum):
     Usage:
         ```python
         # Safe vector creation with validation
-        result = VectorBuilder.build(x=2, y=1)
-        if result.is_success():
-            vector = result.payload
+        build_result = VectorBuilder.build(x=2, y=1)
+        if build_result.is_success():
+            vector = build_result.payload
         ```
 
     See Also:
