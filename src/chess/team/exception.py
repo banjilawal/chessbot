@@ -1,9 +1,11 @@
-from chess.exception import ChessException, NullException, ValidationException
+from chess.exception import ChessException, NullException, ValidationException, BuilderException
 
 __all__ = [
     'TeamException',
     'AddPieceException',
     'InvalidTeamAssignmentException',
+    'TeamBuilderException',
+    'NulTeamBuilderException',
     'TeamValidationException',
     'NullTeamException',
     'NullTeamProfileException'
@@ -16,6 +18,24 @@ class TeamException(ChessException):
 
     ERROR_CODE = "SIDE_ERROR"
     DEFAULT_MESSAGE = "Team raised an team_exception"
+    
+    
+class TeamBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when teamBuilder runs.
+    """
+
+    ERROR_CODE = "TEAM_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "TeamBuilder raised an exception"
+
+
+class NulTeamBuilderException(NullException):
+    """
+    Raised if a TeamBuilder is null.
+    """
+
+    ERROR_CODE = "NULL_TEAM_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "TeamBuilder cannot be null"
 
 
 class AddPieceException(TeamException):

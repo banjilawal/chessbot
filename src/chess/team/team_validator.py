@@ -1,3 +1,4 @@
+from crypt import methods
 from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
 from chess.common import Result, Validator, IdValidator, IdValidationException
@@ -12,33 +13,30 @@ class TeamValidator(Validator):
 
     @staticmethod
     def validate(t: Generic[T]) -> Result['Team']:
-        entity = "Team"
-        class_name = f"{entity}Validator"
-        method = f"{class_name}.validate"
-
         """
-        Validates a team with chained exceptions for team meeting specifications:
+         Validates that an existing Team instance meets specifications:
             - Not null
-            - id passes validator checks
-            - commander passes validator checks
-        An unmet requirements raise an team_exception which encapsulated in a TeamValidationException
+            - `id` passes validator checks
+            - `commander` passes validator checks
 
         Args
-            t (Team): team to validate
+            `t` (`Team`): `Team` instance to validate
 
          Returns:
-             Result[T]: A Result object containing the validated payload if the specification is satisfied,
-            TeamValidationException otherwise.
+            `Result`[`Team`]: A `Resul`t object containing the validated payload if the specification is satisfied,
+            `TeamValidationException` otherwise.
 
         Raises:
-            TypeError: if t is not Team
-            NullTeamException: if t is null   
-
-            IdValidationException: if invalid id
-            CommanderValidationException: if invalid commander
-
-            TeamValidationException: Wraps any preceding exceptions      
+            `TypeError`: if `t` is not a Team` object
+            `NullTeamException`: if `t` is null
+            `IdValidationException`: if `id` fails validation checks
+            `CommanderValidationException`: if `commander` fails validation checks
+            `NullTeamProfileException`: if `profile` is null
+            `BrokenRelationshipException`: if the bidirectional relationship between Team and Commander is broken
+            `TeamValidationException`: Wraps any preceding exceptions
         """
+        method = "TeamValidator.validate"
+
         try:
             if t is None:
                 raise NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
@@ -56,7 +54,6 @@ class TeamValidator(Validator):
             if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-
             commander_validation = CommanderValidator.validate(team.commander)
             if not commander_validation.is_success():
                 raise CommanderValidationException(f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}")
@@ -65,7 +62,6 @@ class TeamValidator(Validator):
             CommanderSearch.for_team(team.id, commander)
 
             if team not in commander.teams.items:
-
                 raise BrokenRelationshipException(f"{method}: {BrokenRelationshipException.DEFAULT_MESSAGE}")
 
             return Result(payload=team)

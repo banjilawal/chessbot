@@ -1,7 +1,7 @@
 from typing import TypeVar, cast, Sequence, TYPE_CHECKING
 
 from chess.piece import Piece
-from chess.common import IdValidator, IdValidationException,
+from chess.common import IdValidator, IdValidationException
 from chess.search import SearchResult
 from chess.commander import Commander, CommanderValidator
 from chess.team import TeamProfile, NullTeamProfileException

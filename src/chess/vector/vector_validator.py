@@ -24,33 +24,47 @@ class VectorValidator(Validator):
     @staticmethod
     def validate(t: Generic[T]) -> Result[Vector]:
         """
-        Validates an existing `Vector` instance meets specifications:
-            - Not null
-            - `x` is not null
-            - `x` is not less than -KNIGHT_WALKING_RANGE
-            - `x` is not greater than KNIGHT_WALKING_RANGE
-            - `y` is not null
-            - `y` is not less than -KNIGHT_WALKING_RANGE
-            - `y` is not greater than KNIGHT_WALKING_RANGE
-            
-        Args
-            `t` (`Vector`): Existing `Vector` instance to validate
-            
-         Returns:
-             `Result`[`Vector`]: A `Result` object containing the validated payload if
-             specification is satisfied, `VectorValidationException` otherwise.
-        
-        Raises:
-            NullVectorException: if t is null
-            TypeError: if t is not a Vector
-            NullXComponentException: if Vector.x is null
-            VectorBelowBoundsException: if -Vector.x < -KNIGHT_STEP_SIZE or -Vector.y < -KNIGHT_STEP_SIZE
-            VectorAboveBoundException: if Vector.x > KNIGHT_STEP_SIZE or Vector.y > KNIGHT_STEP_SIZE
-            NullXComponentException: if Vector.x is null
-            NullYComponentException: if Vector.x is null
-            
-            VectorValidationException: Wraps preceding exceptions:     
-        """
+          Validates that an existing Vector instance meets all specifications.
+
+          Performs comprehensive validation on a Vector instance that already exists,
+          checking type safety, null values, and component bounds. Unlike VectorBuilder
+          which creates new valid Vectors, this validator verifies existing Vector
+          instances from external sources, deserialization, or after modifications.
+
+          Args:
+              t (Generic[T]): The object to validate, expected to be a Vector instance.
+                            Must not be None and must be within component bounds
+                            [-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE].
+
+          Returns:
+              Result[Vector]: A Result containing either:
+                  - On success: The validated Vector instance in the payload
+                  - On failure: Error information and exception details
+
+          Raises:
+              VectorValidationException: Wraps any specification violations including:
+                  - NullVectorException: if input is None
+                  - TypeError: if input is not a Vector instance
+                  - NullXComponentException: if Vector.x is None
+                  - NullYComponentException: if Vector.y is None
+                  - VectorBelowBoundsException: if x or y < -KNIGHT_STEP_SIZE
+                  - VectorAboveBoundsException: if x or y > KNIGHT_STEP_SIZE
+
+          Note:
+              Use VectorBuilder for creating new Vectors with validation,
+              use VectorValidator for verifying existing Vector instances.
+
+          Example:
+              ```python
+              # Validate an existing vector
+              result = VectorValidator.validate(some_vector)
+              if result.is_success():
+                  validated_vector = result.payload
+              else:
+                  # Handle validation failure
+                  pass
+              ```
+          """
         method = "VectorValidator.validate"
 
         try:

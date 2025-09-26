@@ -12,16 +12,16 @@ from chess.vector import (
 
 class VectorBuilder(Enum):
     """
-    Builder class responsible for safely constructing Vector instances.
+    Builder class responsible for safely constructing `Vector` instances.
 
-    VectorBuilder ensures that Vector objects are always created successfully by
+    `VectorBuilder` ensures that `Vector` objects are always created successfully by
     performing comprehensive validation checks during construction. This separates
-    the responsibility of building from validating - VectorBuilder focuses on
-    creation while VectorValidator is used for validating existing Vector instances
+    the responsibility of building from validating - `VectorBuilder` focuses on
+    creation while `VectorValidator` is used for validating existing `Vector` instances
     that are passed around the system.
 
     The builder runs through all validation checks individually to guarantee that
-    any Vector instance it produces meets all required specifications before
+    any `Vector` instance it produces meets all required specifications before
     construction completes.
 
     Usage:
@@ -33,47 +33,47 @@ class VectorBuilder(Enum):
         ```
 
     See Also:
-        VectorValidator: Used for validating existing Vector instances
-        Vector: The data structure being constructed
-        BuildResult: Return type containing the built Vector or error information
+        `VectorValidator`: Used for validating existing `Vector` instances
+        `Vector`: The data structure being constructed
+        `BuildResult`: Return type containing the built `Vector` or error information
     """
 
     @staticmethod
     def build(x: int, y: int) -> BuildResult[Vector]:
         """
-        Constructs a new Vector instance with comprehensive validation.
+        Constructs a new `Vector` instance with comprehensive validation.
 
-        Performs individual validation checks on each component to ensure the 
-        resulting Vector meets all specifications. The method validates bounds, 
-        null checks, and uses VectorValidator for final instance validation 
-        before returning a successfully constructed Vector.
+        Performs individual validation checks on each component to ensure the
+        resulting `Vector` meets all specifications. The method validates bounds,
+        null checks, and uses `VectorValidator` for final instance validation
+        before returning a successfully constructed `Vector`.
 
-        This method guarantees that if a BuildResult with a successful status 
-        is returned, the contained Vector is valid and ready for use.
+        This method guarantees that if a `BuildResult` with a successful status
+        is returned, the contained `Vector` is valid and ready for use.
 
         Args:
-            x (int): The x-component of the vector. Must not be None and must 
+            x (int): The x-component of the vector. Must not be None and must
                     be within [-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE] bounds.
-            y (int): The y-component of the vector. Must not be None and must 
+            y (int): The y-component of the vector. Must not be None and must
                     be within [-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE] bounds.
 
         Returns:
-            BuildResult[Vector]: A BuildResult containing either:
-                - On success: A valid Vector instance in the payload
+            BuildResult[Vector]: A `BuildResult` containing either:
+                - On success: A valid `Vector` instance in the payload
                 - On failure: Error information and exception details
 
         Raises:
-            VectorBuilderException: Wraps any underlying validation failures 
+            VectorBuilderException: Wraps any underlying validation failures
                 that occur during the construction process. This includes:
-                - NullXComponentException: if x is None
-                - NullYComponentException: if y is None  
-                - VectorBelowBoundsException: if x or y < -KNIGHT_STEP_SIZE
-                - VectorAboveBoundsException: if x or y > KNIGHT_STEP_SIZE
-                - Any validation errors from VectorValidator
+                - `NullXComponentException`: if x is None
+                - `NullYComponentException`: if y is None
+                - `VectorBelowBoundsException`: if x or y < -KNIGHT_STEP_SIZE
+                - `VectorAboveBoundsException`: if x or y > KNIGHT_STEP_SIZE
+                - Any validation errors from `VectorValidator`
 
         Note:
-            The builder performs validation at construction time, while 
-            VectorValidator is used for validating Vector instances that 
+            The builder performs validation at construction time, while
+            `VectorValidator` is used for validating `Vector` instances that
             are passed around after creation. This separation of concerns 
             makes the validation responsibilities clearer.
 
@@ -127,11 +127,7 @@ class VectorBuilder(Enum):
                     VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
                 )
 
-            validation = VectorValidator.validate(Vector(x=x, y=y))
-            if not validation.is_success():
-                ThrowHelper.throw_if_invalid(VectorBuilder, validation.exception)
-
-            vector = cast(Vector, validation.payload)
+            vector = Vector(x=x, y=y)
             return BuildResult(payload=vector)
 
         except Exception as e:
