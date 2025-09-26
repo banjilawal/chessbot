@@ -25,16 +25,14 @@ AUTHOR: Banji L
 
 from .exception import *
 
-from .commander_builder import CommanderBuilder
-from .coord_builder import CoordBuilder
-from .coord_stack_builder import CoordinateStackBuilder
-from chess.piece.builder import PieceBuilder
-from .scalar_builder import ScalarBuilder
-from .square_builder import SquareBuilder
-from .team_builder import TeamBuilder
-from .vector_builder import VectorBuilder
-from .build_result import BuildResult
-
+from chess.commander.commander_builder import CommanderBuilder
+from chess.coord.coord_builder import CoordBuilder
+from chess.piece.coord_stack_builder import CoordinateStackBuilder
+from chess.piece.piece_builder import PieceBuilder
+from chess.scalar.scalar_builder import ScalarBuilder
+from chess.square.square_builder import SquareBuilder
+from chess.team.team_builder import TeamBuilder
+from chess.vector.vector_builder import VectorBuilder
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"

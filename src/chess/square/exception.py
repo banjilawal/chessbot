@@ -40,3 +40,21 @@ class SquareValidationException(ValidationException):
 
     def __str__(self):
         return f"[{self.ERROR_CODE}] {self.message}"
+
+
+class SquareBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when SquareBuilder runs.
+    """
+
+    ERROR_CODE = "SQUARE_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "SquareBuilder raised an exception"
+
+
+class NullSquareBuilderException(NullException):
+    """
+    Raised if a SquareBuilder is null.
+    """
+
+    ERROR_CODE = "NULL_SQUARE_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "SquareBuilder cannot be null"

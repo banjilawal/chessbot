@@ -69,9 +69,11 @@ from .exception import *
 
 from .piece import *
 from .encounter import Encounter
-from .builder import PieceBuilder
-from .validator import PieceValidator
+from .piece_builder import PieceBuilder
+from .piece_validator import PieceValidator
 from .encounter_scan import EncounterScan
+from .coord_stack_validator import CoordStackValidator
+from .coord_stack_builder import CoordinateStackBuilder
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"

@@ -42,14 +42,13 @@ AUTHOR: Banji Lawal
 from .coord import Coord
 from chess.piece.coord_stack import CoordStack
 from .coord_validator import CoordValidator
-from chess.piece.coord_stack_validator import CoordStackValidator
+from .coord_builder import CoordBuilder
 
 from .exception import (
     CoordException,
     ColumnAboveBoundsException,
     ColumnBelowBoundsException,
     CoordValidationException,
-    CoordStackValidationException,
     RowAboveBoundsException,
     RowBelowBoundsException
 )

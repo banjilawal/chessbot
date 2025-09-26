@@ -22,6 +22,23 @@ class PieceException(ChessException):
     DEFAULT_MESSAGE = "Piece raised an team_exception"
 
 
+class PieceBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when PieceBuilder runs.
+    """
+
+    ERROR_CODE = "PIECE_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "PieceBuilder raised an exception"
+
+class NullPieceBuilderException(NullException):
+    """
+    Raised if a CoordBuilder is null.
+    """
+
+    ERROR_CODE = "NULL_PIECE_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "PieceBuilder cannot be null"
+
+
 
 class DoublePromotionException(PieceException):
     """
@@ -45,6 +62,19 @@ class AlreadyAtDestinationException(PieceException):
 class PieceValidationException(ValidationException):
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Piece validation failed"
+
+
+class CoordStackValidationException(ValidationException):
+    ERROR_CODE = "COORDINATE_STACK_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = f"CoordinateStack validation failed"
+
+    def __init__(self, message=None):
+        self.message = message or self.DEFAULT_MESSAGE
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.ERROR_CODE}] {self.message}"
+
 
 
 

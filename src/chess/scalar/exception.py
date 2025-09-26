@@ -1,8 +1,10 @@
-from chess.exception import ChessException, NullException, ValidationException
+from chess.exception import ChessException, NullException, ValidationException, BuilderException
 
 __all__ = [
     'ScalarException',
     'NullScalarException',
+    'ScalarBuilderException',
+    'NullScalarBuilderException',
     'ScalarValidationException',
     'ScalarBelowBoundsException',
     'ScalarAboveBoundsException'
@@ -26,6 +28,24 @@ class NullScalarException(NullException):
 
     ERROR_CODE = "NULL_SCALAR_ERROR"
     DEFAULT_MESSAGE = f"Scalar cannot be null"
+
+
+class ScalarBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when ScalarBuilder runs.
+    """
+
+    ERROR_CODE = "SCALAR_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "ScalarBuilder  raised an exception"
+
+
+class NullScalarBuilderException(NullException):
+    """
+    Raised if a ScalarBuilder is null.
+    """
+
+    ERROR_CODE = "NULL_SCALAR_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "ScalarBuilder cannot be null"
 
 
     def __init__(self, message=None):

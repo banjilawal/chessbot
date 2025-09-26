@@ -1,4 +1,4 @@
-from chess.exception import ChessException, NullException, ValidationException
+from chess.exception import ChessException, NullException, ValidationException, BuilderException
 
 __all__ = [
     'VectorException',
@@ -19,6 +19,24 @@ class VectorException(ChessException):
 
     ERROR_CODE = "VECTOR_ERROR"
     DEFAULT_MESSAGE = f"Vector raised an team_exception"
+
+
+class VectorBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when vectorBuilder runs.
+    """
+
+    ERROR_CODE = "VECTOR_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "VectorBuilder  raised an exception"
+
+
+class NullVectorBuilderException(NullException):
+    """
+    Raised if a VectorBuilder is null.
+    """
+
+    ERROR_CODE = "NULL_VECTOR_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "VectorBuilder cannot be null"
 
 
 class VectorValidationException(ValidationException):

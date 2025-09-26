@@ -5,7 +5,8 @@ __all__ = [
     'NullStringException',
     'BlankStringException',
     'NullNumberException',
-    'ValidationException'
+    'ValidationException',
+    'BuilderException'
 ]
 
 class ChessException(Exception):
@@ -85,4 +86,14 @@ class NullStringException(NullException):
 
     ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
     DEFAULT_MESSAGE = f"Cannot search by a null string"
+
+
+class BuilderException(ChessException):
+    """
+    Exceptions raised by chess.creator.builder classes have common behavior. Similar conditions might raise
+    exceptions when building entities. During builds ValidatorExceptions are likely. Exceptions thrown during
+    entity builds should be wrapped in the BuilderException corresponding to the Builder's name.
+    """
+    ERROR_CODE = "BUILDER_ERROR"
+    DEFAULT_MESSAGE = "Builder  raised an exception"
 

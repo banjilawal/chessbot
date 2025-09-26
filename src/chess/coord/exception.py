@@ -1,6 +1,6 @@
-from chess.exception import ChessException, NullException
+from chess.exception import ChessException, NullException, ValidationException, Builder
 from chess.common import ROW_SIZE, COLUMN_SIZE
-from assurance.exception import ValidationException
+
 
 """
 Super class for Coord related exceptions
@@ -71,16 +71,22 @@ class CoordValidationException(ValidationException):
         return f"[{self.ERROR_CODE}] {self.message}"
 
 
-class CoordStackValidationException(ValidationException):
-    ERROR_CODE = "COORDINATE_STACK_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"CoordinateStack validation failed"
+class CoordBuilderException(BuilderException):
+    """
+    Wrapper for exceptions raised when CoordBuilder runs.
+    """
 
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
+    ERROR_CODE = "COORD_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "CoordBuilder raised an exception"
 
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
+
+class NullCoordBuilderException(NullException):
+    """
+    Raised if a CoordBuilder is null.
+    """
+
+    ERROR_CODE = "NULL_COORD_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "CoordBuilder cannot be null"
 
 
 class RowAboveBoundsException(CoordException):

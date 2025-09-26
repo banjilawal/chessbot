@@ -28,9 +28,11 @@ from .config import *
 from .emitter import *
 
 
+from .result import Result
+from .build_result import BuildResult
+
 # Core package imports
 from .permit import Event
-from .result import Result
 from .color import GameColor
 from .validator import Validator
 from .mouse import MousePlacementStatus
