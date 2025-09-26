@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.result import Result
+from chess.common import BuildResult
 from assurance.throw_helper import ThrowHelper
 from chess.vector.vector_validator import VectorValidator
 from chess.vector import Vector
@@ -9,7 +9,7 @@ from chess.vector import Vector
 class VectorBuilder(Enum):
 
     @staticmethod
-    def build(x: int, y: int) -> Result[Vector]:
+    def build(x: int, y: int) -> BuildResult[Vector]:
         try:
             candidate = Vector(x=x, y=y)
             validation = VectorValidator.validate(candidate)
@@ -17,7 +17,7 @@ class VectorBuilder(Enum):
             ThrowHelper.throw_if_invalid(VectorBuilder, validation)
             return validation
         except Exception as e:
-            return Result(payload=None, exception=e)
+            return BuildResult(payload=None, exception=e)
 
 
 # def main():

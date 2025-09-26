@@ -1,9 +1,10 @@
 from chess import CollectionException
-from chess.exception import ChessException, NullException, ValidationException
+from chess.exception import ChessException, NullException, ValidationException, BuilderException
 
 __all__ = [
     'CommanderException',
     'NullCommanderException',
+    'CommanderBuilderException',
     'CommanderValidationException',
 
     'TeamListException',

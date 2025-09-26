@@ -25,17 +25,15 @@ VERSION: 1.0.0
 AUTHOR: Banji L
 """
 
-from .exception import (
-    NullCommanderException,
-    CommanderValidationException
-)
+from .exception import *
 
 from .commander import Commander
-from .human import HumanCommander
-from .cybernetic import CyberneticCommander
+from .human_commander import HumanCommander
+from .cybernetic_commander import CyberneticCommander
 from .team_list import TeamList
 from .commander_type import CommanderType
-from .validator import CommanderValidator
+from .commander_validator import CommanderValidator
+from .commander_builder import CommanderBuilder
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
@@ -43,15 +41,15 @@ __package_name__ = "chess.commander"
 
 __all__ = [
     # Core classes
-    "Commander",
-    "HumanCommander",
-    "CyberneticCommander",
-    "TeamList",
-    "CommanderType",
-    "CommanderValidator",
+    'Commander',
+    'HumanCommander',
+    'CyberneticCommander',
+    'TeamList',
+    'CommanderType',
+    'CommanderValidator',
+    'CommanderBuilder',
 
-    "NullCommanderException",
-    "CommanderValidationException",
+    *exception.__all__,
 
 
     "__version__",

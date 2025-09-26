@@ -4,7 +4,7 @@ from unittest.mock import create_autospec
 from assurance.exception.invalid_id import IdValidationException
 from assurance.exception.invalid_name import NameValidationException
 from chess.commander.exception.invalid_commander import CommanderValidationException
-from chess.commander.validator import CommanderValidator
+from chess.commander.commander_validator import CommanderValidator
 from chess.commander.exception import NullCommanderException
 from chess.competitor.commander import Commander
 from unit.chess_test.competitor.competitor_test import CompetitorTest

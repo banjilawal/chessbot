@@ -74,6 +74,7 @@ from .exception import  *
 
 # Core Vector classes
 from .vector import Vector
+from .vector_builder import VectorBuilder
 from .vector_validator import VectorValidator
 
 
@@ -85,6 +86,7 @@ __package_name__ = 'chess.vector'
 __all__ = [
     # Core classes
     'Vector',
+    'VectorBuilder',
     'VectorValidator',
 
     *exception.__all__,

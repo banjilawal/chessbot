@@ -2,7 +2,7 @@ from enum import Enum
 
 from chess.common import Result
 from chess.common.emitter import IdEmitter
-from chess.builder import CommanderBuilderException
+
 
 from chess.commander import (
     Commander, HumanCommander, CyberneticCommander,
