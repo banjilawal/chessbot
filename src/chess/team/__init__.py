@@ -53,7 +53,7 @@ A use case for the `AddPieceException`.
 >>>
 >>> def add_piece(team, piece):
 ...     if is piece.team.commander not team.commander:
-...         raise AddPieceException("The piece is not on this team. Adding piece failed")
+...         raise QUotaFullException("The piece is not on this team. Adding piece failed")
 Traceback (most recent call last):
     ...
 AddPieceException: The piece is not on this team. Adding piece faile.

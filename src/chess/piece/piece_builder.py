@@ -7,6 +7,7 @@ from chess.exception import RelationshipException
 from chess.common import IdValidator, NameValidator, BuildResult
 from chess.piece import Piece, KingPiece, CombatantPiece, PieceBuilderException
 from chess.team import Team, TeamValidator, InvalidTeamAssignmentException
+from chess.team.exception import RankQuotaFullException
 
 
 class PieceBuilder(Enum):
@@ -40,7 +41,57 @@ class PieceBuilder(Enum):
 
     @staticmethod
     def build(piece_id: int, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
+        """
+        Constructs a new `Piece` instance with comprehensive validation.
 
+        Performs individual validation checks on each component to ensure the 
+        resulting `Piece` meets all specifications. The method validates bounds, 
+        null checks, and uses `PieceValidator` for final instance validation 
+        before returning a successfully constructed `Piece`.
+
+        This method guarantees that if a `BuildResult` with a successful status 
+        is returned, the contained `Piece` is valid and ready for use.
+
+        Args:
+           `piece_id`(`int`): The unique id for the piece. Must pass `IdValidator` checks.
+            `name`(`Name`): The human or cybernetic moving pieces in `Piece.roster`. The name
+                must not be None and must pass `NameValidator` checks.must pass `NameValidator` checks.
+            `rank`(`Rank`): The rank which determines how the piece moves and its capture value.
+             `team`(`Team`): Specifies if the piece is white or black.
+
+        Returns:
+            BuildResult[Piece]: A `BuildResult` containing either:
+                - On success: A valid `Piece` instance in the payload
+                - On failure: Error information and exception details
+
+        Raises:
+
+                that occur during the construction process. This includes:
+            `IdValidationException`: if `piece_id` fails validation checks
+            `NameValidationException`: if `name` fails validation checks
+            `RankValidationException`: if `rank` fails validation checks
+            `TeamValidationException`: if `team` fails validation checks
+            `InvalidTeamAssignmentException`: If `piece.team` is different from `team` parameter
+            `RankQuotaFullException`: If the `team` has no empty slots for the `piece.rank`
+            `RankQuotaFullException`: If `piece.team` is equal to `team` parameter
+                but `team.roster` still does not have the piece
+            PieceBuilderException: Wraps any underlying validation failures
+
+        Note:
+            The builder performs validation at construction time, while 
+            `PieceValidator` is used for validating `Piece` instances that 
+            are passed around after creation. 
+            This separation of concerns makes the validation responsibilities clearer.
+
+        Example:
+            ```python
+            # Valid piece creation
+            build_outcome = PieceBuilder.build(value=1)
+            if not build_outcome.is_success():
+                return BuildResult(exception=build_outcome.exception)
+            return BuildResult(payload=build_outcome.payload)
+            ```
+        """
         method = "PieceBuilder.build"
 
         try:
@@ -60,7 +111,6 @@ class PieceBuilder(Enum):
             if not team_validation.is_success():
                 ThrowHelper.throw_if_invalid(PieceBuilder, team_validation)
 
-
             piece = None
             if isinstance(rank, King):
                 piece = KingPiece(piece_id=piece_id, name=name, rank=rank, team=team)
@@ -71,8 +121,13 @@ class PieceBuilder(Enum):
                     PieceBuilder,
                     InvalidTeamAssignmentException(InvalidTeamAssignmentException.DEFAULT_MESSAGE)
                 )
-
-            if piece not in team.roster:
+            if piece.team == team and team.rank_tally(piece.rank) >= piece.rank.quota:
+                ThrowHelper.throw_if_invalid(
+                    PieceBuilder,
+                    RankQuotaFullException(RankQuotaFullException.DEFAULT_MESSAGE)
+                )
+                
+            if not piece.team == team and team.rank_tally(piece.rank) < piece.rank.quota:
                 team.add_to_roster(piece)
 
             if piece not in team.roster:

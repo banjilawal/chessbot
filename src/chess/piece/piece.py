@@ -70,11 +70,11 @@ class Piece(ABC):
                 f"Piece.__init__: {NameValidationException.DEFAULT_MESSAGE}"
             )
 
-        side_validation = TeamValidator.validate(team)
-        if not side_validation.is_success():
+        team_validation = TeamValidator.validate(team)
+        if not team_validation.is_success():
             raise TeamValidationException(f"Piece.__init__: {TeamValidationException.DEFAULT_MESSAGE}")
 
-        team = cast(Team, side_validation.payload)
+        team = cast(Team, team_validation.payload)
 
         self._id = cast(int, id_validation.payload)
         self._name = cast(str, name_validation.payload)
