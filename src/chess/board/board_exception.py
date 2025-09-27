@@ -27,7 +27,7 @@ class IncompleteBoardTransactionException(ChessException):
 
 class RemovePieceFromBoardException(ChessException):
     ERROR_CODE = "REMOVE_FROM_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Removing captured piece from the board failed"
+    DEFAULT_MESSAGE = "Removing captured discovery from the board failed"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -66,7 +66,7 @@ class IncompleteBoardTransactionException(ChessException):
 
 class FailedPieceRemovalException(ChessException):
     ERROR_CODE = "REMOVE_FROM_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Removing captured piece from the board failed"
+    DEFAULT_MESSAGE = "Removing captured discovery from the board failed"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

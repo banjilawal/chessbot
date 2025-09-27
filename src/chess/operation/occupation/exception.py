@@ -39,7 +39,7 @@ class HostageValidationException(OccupationException):
 
 class NullHostagePieceException(OccupationException):
     """
-    Raised if a piece is null. Parent class for:
+    Raised if a discovery is null. Parent class for:
         - NullCombatantPieceException
         - NullKingException
     Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.

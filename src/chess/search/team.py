@@ -2,7 +2,8 @@
 from chess.team import Team
 from chess.piece.piece import Piece
 from chess.search import SearchResult
-from assurance import IdValidator, NameValidator
+from chess.rank import Rank, RankValidator
+from chess.common import IdValidator, NameValidator
 
 class TeamSearch:
     """Static search methods within a single team"""
@@ -10,7 +11,7 @@ class TeamSearch:
     @staticmethod
     def by_id(piece_id: int, team: 'Team') -> SearchResult['Piece']:
         method = "TeamSearch.by_id"
-        """Find a piece by ID within a specific team"""
+        """Find a discovery by ID within a specific team"""
 
         try:
             validation = IdValidator.validate(piece_id)
@@ -31,7 +32,7 @@ class TeamSearch:
     @staticmethod
     def by_name(name: str, team: 'Team') -> SearchResult['Piece']:
         method = "TeamSearch.by_coord"
-        """Find a piece by name within a specific team"""
+        """Find a discovery by name within a specific team"""
 
         try:
             validation = NameValidator.validate(name)
@@ -54,7 +55,7 @@ class TeamSearch:
         method = f"TeamSearch.by_roster"
 
         """
-        Find a piece with the `roster_number`. 
+        Find a discovery with the `roster_number`. 
 
         Args:
            `roster_number` (`int`): There are 16 chess pieces per team. jersey_range = [0,15]
@@ -71,12 +72,32 @@ class TeamSearch:
             if not validation.is_success():
                 raise validation.exception
 
-            piece = next((member for member in team.roster if member.roster_number == roster_number), None)
+            piece = next(
+                (member for member in team.roster if member.roster_number == roster_number),
+                None
+            )
             if piece is not None:
                 return SearchResult(payload=piece)
 
             # returns empty search result
             return SearchResult()
+
+        except Exception as e:
+            return SearchResult(exception=e)
+
+
+    @staticmethod
+    def by_rank(rank: Rank, team: 'Team') -> SearchResult[list['Piece']]:
+        method = "TeamSearch.by_rank"
+        """Find a discovery by ID within a specific team"""
+
+        try:
+            validation = RankValidator.validate(rank)
+            if not validation.is_success():
+                raise validation.exception
+
+            matches = [piece for piece in team.roster if piece.rank == rank]
+            return SearchResult(payload=matches)
 
         except Exception as e:
             return SearchResult(exception=e)

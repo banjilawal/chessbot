@@ -1,29 +1,30 @@
 from chess.commander import Commander
+from chess.engine import DecisionEngine
 
 
-class CyberneticCommander(Commander):
-    # _decision_engine: DecisionEngine
+class Bot(Commander):
+    _engine: DecisionEngine
 
     def __init__(
             self,
             commander_id: int,
             name: str,
-            # decision_engine: DecisionEngine,
+            engine: DecisionEngine,
     ):
         super().__init__(commander_id, name)
-    #     self._decision_engine = decision_engine
-    #
-    #
-    # @property
-    # def decision_engine(self) -> DecisionEngine:
-    #     return self._decision_engine
+        self._engine = engine
+
+
+    @property
+    def engine(self) -> DecisionEngine:
+        return self._engine
 
 
     def __eq__(self, other):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, CyberneticCommander):
+        if isinstance(other, Bot):
             return self._id == other.id
         return False
 

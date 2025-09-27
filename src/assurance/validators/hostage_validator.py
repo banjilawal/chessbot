@@ -22,7 +22,7 @@ class HostageValidator(Validator):
 
         """
         Validates a hostage meets domain requirements:
-            - is a validated piece
+            - is a validated discovery
             - is a Combatant instance
             - The captor field is not null
             - The hostage is not on its team roster
@@ -37,7 +37,7 @@ class HostageValidator(Validator):
              are satisfied. HostageValidationException otherwise.
 
         Raises:
-            PieceValidationException: t is not a valid piece
+            PieceValidationException: t is not a valid discovery
             TypeError: if t is not CombatantPiece
             HostageCaptorNullException: if the captor field is null
             RosterRemovalException: if the captive is still on its team's roster

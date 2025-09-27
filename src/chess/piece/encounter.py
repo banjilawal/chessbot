@@ -1,6 +1,5 @@
 from typing import TYPE_CHECKING, List
 
-from chess.piece import NullEncounterException
 from chess.coord import Coord
 
 if TYPE_CHECKING:
@@ -10,18 +9,18 @@ class Encounter:
     _id: int
     _name: str
     _team_id: int
-    _rank_value: int
+    _ransom: int
     _rank_name: str
     _coord: Coord
 
 
-    def __init__(self, piece:'Piece'):
-        self._id = piece.id
-        self._name = piece.name
-        self._rank_value = piece.rank.ransom
-        self._rank_name = piece.rank.name
-        self._team_id = piece.team.id
-        self._coord = piece.current_position
+    def __init__(self, discovery: 'Piece'):
+        self._id = discovery.id
+        self._name = discovery.name
+        self._ransom = discovery.rank.ransom
+        self._rank_name = discovery.rank.name
+        self._team_id = discovery.team.id
+        self._coord = discovery.current_position
 
     @property
     def id(self) -> int:
@@ -40,8 +39,8 @@ class Encounter:
         return self._rank_name
 
     @property
-    def rank_value(self):
-        return self._rank_value
+    def ransom(self):
+        return self._ransom
 
     @property
     def coord(self) -> Coord:
@@ -63,7 +62,7 @@ class Encounter:
             f"Encounter[id:{self._id} "
             f"name:{self._name} "
             f"rank:{self._rank_name} "
-            f"value:{self._rank_value} "
+            f"value:{self._ransom} "
             f"coord:{self._coord}"
         )
 

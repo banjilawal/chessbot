@@ -7,8 +7,8 @@ PURPOSE:
 
 CORE CLASSES:
     PieceException: Supe class for exceptons raiedby Piece classes
-    CombatantPiece: Concrete piece that can be captured
-    KingPiece: Concrete king piece with special rules
+    CombatantPiece: Concrete discovery that can be captured
+    KingPiece: Concrete king discovery with special rules
     CoordStack: Coordinate history and management utility
 
 Purpose:

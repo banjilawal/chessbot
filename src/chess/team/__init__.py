@@ -28,9 +28,9 @@ and resolve team-related issues.
 
 ### CORE EXCEPTIONS
 * `NullTeamException`: Raised when a `Team` reference is unexpectedly `None`.
-* `AddPieceException`: Raised when an attempt to add a piece to a team fails, for example, if the team is full.
+* `AddPieceException`: Raised when an attempt to add a discovery to a team fails, for example, if the team is full.
 * `TeamValidationException`: Raised when a `Team` fails to meet its validation criteria.
-* `RemoveCombatantException`: Raised when a piece cannot be removed from a team, for example, if the piece is not present.
+* `RemoveCombatantException`: Raised when a discovery cannot be removed from a team, for example, if the discovery is not present.
 * `InvalidTeamAssignmentException`: Raised when a `Team`'s properties conflict with another `Team`'s, such as having the same ID.
 
 ### EXCEPTION USAGE EXAMPLES
@@ -51,12 +51,12 @@ NullTeamException: Error: No team exists.
 A use case for the `AddPieceException`.
 >#>> from chess.team.team_exception import AddPieceException
 >>>
->>> def add_piece(team, piece):
-...     if is piece.team.commander not team.commander:
-...         raise QUotaFullException("The piece is not on this team. Adding piece failed")
+>>> def add_piece(team, discovery):
+...     if is discovery.team.commander not team.commander:
+...         raise QUotaFullException("The discovery is not on this team. Adding discovery failed")
 Traceback (most recent call last):
     ...
-AddPieceException: The piece is not on this team. Adding piece faile.
+AddPieceException: The discovery is not on this team. Adding discovery faile.
 
 ---
 

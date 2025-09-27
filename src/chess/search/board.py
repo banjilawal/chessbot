@@ -6,7 +6,7 @@ from chess.board import Board
 from chess.square import Square, SquareValidator
 from chess.coord import Coord, CoordValidator
 from chess.common import IdValidator, NameValidator
-from .query_result import SearchResult
+from .search_result import SearchResult
 from .team import TeamSearch
 
 
@@ -16,7 +16,7 @@ class BoardSearch:
 
     @staticmethod
     def piece_by_id(piece_id: int, board: Board) -> SearchResult['Piece']:
-        """Find a piece by ID across all board"""
+        """Find a discovery by ID across all board"""
         try:
             id_validation= IdValidator.validate(piece_id)
             if not id_validation.is_success():
@@ -35,13 +35,16 @@ class BoardSearch:
 
     @staticmethod
     def piece_by_name(piece_name: str, board: Board) -> SearchResult['Piece']:
-        """Find a piece by name across all board"""
+        """Find a discovery by name across all board"""
         try:
             validation = NameValidator.validate(piece_name)
             if not validation.is_success():
                 return SearchResult(exception=validation.exception)
 
-            piece = next((piece for piece in board.pieces if piece.name.upper() == piece_name.upper()), None)
+            piece = next(
+                (piece for piece in board.pieces if piece.name.upper() == piece_name.upper()),
+                None
+            )
             if piece is not None:
                 return SearchResult(payload=piece)
 
@@ -54,14 +57,17 @@ class BoardSearch:
 
     @staticmethod
     def piece_by_coord(coord: Coord, board: Board) -> SearchResult['Piece']:
-        """Find a piece by coordinate across all board"""
+        """Find a discovery by coordinate across all board"""
         try:
             # Validate input
             validation = CoordValidator.validate(coord)
             if not validation.is_success():
                 return SearchResult(exception=validation.exception)
 
-            piece = next((piece for piece in board.pieces if piece.current_position == coord), None)
+            piece = next(
+                (piece for piece in board.pieces if piece.current_position == coord),
+                None
+            )
             if piece is not None:
                 return SearchResult(payload=piece)
 

@@ -2,7 +2,7 @@ import random
 
 from chess.common.emitter import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
-from chess.engine.decision.greedy_decision_engine import GreedyDecisionEngine
+from chess.engine.greedy_decision_engine import GreedyDecisionEngine
 from chess.competitor.commander import CyberneticCommander
 from chess.competitor.commander import HumanCommander
 from chess.competitor.commander import Commander

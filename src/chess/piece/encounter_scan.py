@@ -12,10 +12,17 @@ class EncounterScan:
 
     @property
     def items(self) -> List[Encounter]:
-        return self._items
+        return self._items.copy()
 
 
-    def add_encounter(self, record:Encounter):
+    def find_by_piece_id(self, piece_id: int) -> Encounter | None:
+        for encounter in self._items:
+            if encounter.id == piece_id:
+                return encounter
+        return None
+
+
+    def add_encounter(self, record: Encounter):
         method = "RecordList.add_record"
 
         if record is None:
@@ -23,9 +30,6 @@ class EncounterScan:
 
         if record not in self._items:
             self._items.append(record)
-
-
-    def find_encounter
 
 
     def reset(self):

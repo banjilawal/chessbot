@@ -1,16 +1,16 @@
-# chess/piece/__init__.py
+# chess/discovery/__init__.py
 
 """
 Piece Package - Chess Piece Data Objects
 
 PURPOSE:
-    Contains core chess piece classes and coordinate utilities.
+    Contains core chess discovery classes and coordinate utilities.
     Provides the fundamental data structures for game pieces.
 
 CORE CLASSES:
     Piece: Abstract base class for all chess pieces
-    CombatantPiece: Concrete piece that can be captured
-    KingPiece: Concrete king piece with special rules
+    CombatantPiece: Concrete discovery that can be captured
+    KingPiece: Concrete king discovery with special rules
     CoordStack: Coordinate history and management utility
 
 CONVENIENCE ALIASES:
@@ -21,7 +21,7 @@ CONVENIENCE ALIASES:
 
 USAGE:
     >>> from chess.rank import Pawn, King
-    >>> from chess.piece import CombatantPiece, KingPiece
+    >>> from chess.discovery import CombatantPiece, KingPiece
     >>> white_pawn_9 = CombatantPiece(piece_id=9, name='WP1', rank=Pawn(), team=white_team)
     >>> white_king = KingPiece(piece_id=2, name='WK', rank, team=white_team)
     >>>
@@ -29,31 +29,31 @@ USAGE:
 Piece Exception Package - All Piece-Related Exceptions
 
 PURPOSE:
-    Contains all exceptions related to piece operations and state.Contains exceptions raised when a Piece object is
+    Contains all exceptions related to discovery operations and state.Contains exceptions raised when a Piece object is
     null or improperly referenced during chess operations.
 
 EXCEPTIONS:
     AlreadyAtDestinationException: Move to current position
     EncounteringSelfException: Piece encounters itself
     DoublePromotionException: Multiple promotion attempts
-    PrisonerEscapeException: Captured piece tries to move
+    PrisonerEscapeException: Captured discovery tries to move
     PrisonerReleaseException: Error releasing prisoner
     PieceCoordNullException: Piece coordinate is null
     SetCaptorNullException: Setting null captor
     PieceValidationException:raised if PieceValidation fails
-    NullPieceException: Abstract base class for null piece exceptions.
-    NullHostagePieceException: Raised when a team tries to add a null hostage piece to its roster.
+    NullPieceException: Abstract base class for null discovery exceptions.
+    NullHostagePieceException: Raised when a team tries to add a null hostage discovery to its roster.
     NullCombatantPieceException: Raised when a team tries to remove a captured member but the captor is null.
-    NullKingPieceException: Raised when a king piece reference is null.
+    NullKingPieceException: Raised when a king discovery reference is null.
 
 
 USAGE:
-    >>> from chess.piece.team_exception import PieceCoordNullException
-    >>> from chess.piece.team_exception.null import NullPieceException
+    >>> from chess.discovery.team_exception import PieceCoordNullException
+    >>> from chess.discovery.team_exception.null import NullPieceException
 
-    >>> if piece.current_position is None:
+    >>> if discovery.current_position is None:
     >>>     raise PieceCoordNullException('Piece coordinate is null')
-    >>> from chess.piece.team_exception.null import NullPieceException
+    >>> from chess.discovery.team_exception.null import NullPieceException
     >>> raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
 ___
@@ -80,7 +80,7 @@ from .coord_stack_builder import CoordinateStackBuilder
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'piece'
+__package_name__ = 'discovery'
 
 
 # Export control - only what belongs in public API

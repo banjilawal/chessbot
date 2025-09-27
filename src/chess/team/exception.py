@@ -37,23 +37,23 @@ class NulTeamBuilderException(NullException):
 
 class AddPieceException(TeamException):
     """
-    Raised if piece could not be added to the team's roster
+    Raised if discovery could not be added to the team's roster
     """
     ERROR_CODE = "ADD_PIECE_ERROR"
-    DEFAULT_MESSAGE = "Could not add the piece, an team_exception was raised"
+    DEFAULT_MESSAGE = "Could not add the discovery, an team_exception was raised"
 
 
 class RankQuotaFullException(TeamException):
     """
-    Raised if the team has not empty slots for the piece's rank.
+    Raised if the team has not empty slots for the discovery's rank.
     """
     ERROR_CODE = "RANK_QUOTA_FULL_ERROR"
-    DEFAULT_MESSAGE = "The team has no empty slots for the piece's rank"
+    DEFAULT_MESSAGE = "The team has no empty slots for the discovery's rank"
 
 
 class InvalidTeamAssignmentException(TeamException):
     """
-    If a piece that's already on one team (piece.team == not None) tries joining
+    If a discovery that's already on one team (discovery.team == not None) tries joining
     another InvalidTeamAssignmentException is raised.
     """
     ERROR_CODE = "INVALID_TEAM_ASSIGNMENT_ERROR"

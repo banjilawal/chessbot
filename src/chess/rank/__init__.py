@@ -1,16 +1,16 @@
 # chess/rank/__init__.py
 
 """
-A package providing an immutable hierarchy for chess piece movement.
+A package providing an immutable hierarchy for chess discovery movement.
 
 ## PURPOSE
-This package encapsulates the movement logic for each type of chess piece. By decoupling a piece's movement
+This package encapsulates the movement logic for each type of chess discovery. By decoupling a discovery's movement
 from its core identity, this design ensures that the movement logic is scalable and easy to maintain. Each
 `Rank` class represents a distinct movement strategy (e.g., `Bishop`, `Knight`, `Queen`) and is designed
 to be immutable once assigned.
 
 ## CORE CLASSES
-* `Rank`: The base class for all piece rank strategies.
+* `Rank`: The base class for all discovery rank strategies.
 * `Bishop`: Provides movement validation for a bishop.
 * `King`: Provides movement validation for a king.
 * `Knight`: Provides movement validation for a knight.
@@ -20,12 +20,12 @@ to be immutable once assigned.
 * `PromotedQueen`: A specialized rank for a promoted queen's movement.
 
 ## USAGE
-The `Rank` classes are primarily used to validate a piece's movement at runtime. A `Piece` object holds a
+The `Rank` classes are primarily used to validate a discovery's movement at runtime. A `Piece` object holds a
 reference to its `Rank`, and delegates movement validation to it using the `walk()` method. This allows
 for a clean and simple interface for a chess board's logic.
 
 >>> from chess.rank import Knight
->>> from chess.piece import Piece
+>>> from chess.discovery import Piece
 >>> from chess.coord import Coord
 >>>
 >>> knight_rank = Knight()
@@ -33,16 +33,16 @@ for a clean and simple interface for a chess board's logic.
 >>> destination = Coord(4, 3)
 >>>
 >>> # Validate the move using the Piece's rank
->>> is_valid = knight_piece.rank.walk(piece=knight_piece, destination=destination)
+>>> is_valid = knight_piece.rank.walk(discovery=knight_piece, destination=destination)
 >>> print(is_valid.is_success())
 True
 
 ---
 
 ## RANK PURPOSE
-This package defines specific exceptions for issues encountered during a piece's movement or promotion
+This package defines specific exceptions for issues encountered during a discovery's movement or promotion
 validation. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
-exact nature of the error, such as an invalid move for a specific piece type. Each team_exception acts as a
+exact nature of the error, such as an invalid move for a specific discovery type. Each team_exception acts as a
 wrapper for underlying errors, providing a clean and consistent API for handling movement-related failures.
 
 ###CORE RANK EXCEPTIONS

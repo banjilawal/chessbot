@@ -87,7 +87,7 @@ class KingCheckStateException(PieceException):
     """
 
     ERROR_CODE = "KING_CHECK_STATE"
-    DEFAULT_MESSAGE = "A dead piece cannot attack"
+    DEFAULT_MESSAGE = "A dead discovery cannot attack"
 
 
 class KingCheckMateStateException(PieceException):

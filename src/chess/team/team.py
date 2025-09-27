@@ -89,13 +89,13 @@ class Team:
         method = f"{self.__class__.__name__}.find_by_roster"
 
         """
-        Find a piece with the roster_number. 
+        Find a discovery with the roster_number. 
 
         Args:
            roster_number (int): There are 16 chess pieces per team. jersey_range = [0,15]
 
         Returns:
-            SearchResult: If the piece with jersey is found 
+            SearchResult: If the discovery with jersey is found 
 
         Raises:
              NullNumberException
@@ -120,13 +120,13 @@ class Team:
         method = "Team.find_piece_by_id"
 
         """
-        Find a piece whose id matches
+        Find a discovery whose id matches
 
         Args:
            id (int): a valid id
 
         Returns:
-            Piece: If a piece's id matches the target
+            Piece: If a discovery's id matches the target
             None: If no matches are found.
 
         Raises:
@@ -153,13 +153,13 @@ class Team:
         method = "Team.find_piece_by_name"
 
         """
-        Find a piece with the name
+        Find a discovery with the name
 
         Args:
            name (str): a nonnull string
 
         Returns:
-            Piece: If a piece's current_position matches coord
+            Piece: If a discovery's current_position matches coord
             None: If no matches are found.
 
         Raises:
@@ -188,14 +188,14 @@ class Team:
         method = "Team.find_piece_by_coord"
 
         """
-        Find a piece whose current position matches coord. If none of 
+        Find a discovery whose current position matches coord. If none of 
         the team's pieces are at the coord returns None.
         
         Args:
             coord (Coord): validated Coord used for search
             
         Returns:
-            Piece: If a piece's current_position matches coord
+            Piece: If a discovery's current_position matches coord
             None: If no matches are found.
             
         Raises:
@@ -221,19 +221,19 @@ class Team:
         method = "Team.add_to_roster"
 
         """
-        A newly constructed piece uses Team.add_piece to add itself to the team's roster. Team.roster returns
+        A newly constructed discovery uses Team.add_piece to add itself to the team's roster. Team.roster returns
         a read-only copy of the list. This is the only mutator that can directly access the array.
 
         Args:
-            piece (Piece): validated piece added to the team's roster
+            discovery (Piece): validated discovery added to the team's roster
 
         Raises:
-            NullPieceException: if the piece is null
-            InvalidTeamAssignmentException: if piece.team does not match the team instance
+            NullPieceException: if the discovery is null
+            InvalidTeamAssignmentException: if discovery.team does not match the team instance
         """
         try:
             if piece is None:
-                raise NullPieceException(f"{method} cannot add a null piece to the team")
+                raise NullPieceException(f"{method} cannot add a null discovery to the team")
 
             if not piece.team == self:
                 raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")

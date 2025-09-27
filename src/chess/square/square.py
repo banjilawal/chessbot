@@ -15,7 +15,7 @@ class Square:
         _id (int): A unique identifier for the square.
         _name (str): The name of the square in chess notation (e.g., "A1", "B2").
         _coord (Coord): The coordinate of the square on the chessboard.
-        _occupant (Optional[Piece]): The piece occupying the square, if any.
+        _occupant (Optional[Piece]): The discovery occupying the square, if any.
     """
 
     def __init__(self, square_id: int, name: str, coord: Coord):
@@ -70,7 +70,7 @@ class Square:
 
     @property
     def occupant(self) -> Optional[Piece]:
-        """The piece occupying the square, if any."""
+        """The discovery occupying the square, if any."""
         return self._occupant
 
 
@@ -78,10 +78,10 @@ class Square:
     def occupant(self, piece: Optional[Piece]):
         method = "Square.occupant"
 
-        """Sets the piece occupying the square.
+        """Sets the discovery occupying the square.
 
         Args:
-            piece (Optional[Piece]): The piece to place on the square, or None to clear it.
+            discovery (Optional[Piece]): The discovery to place on the square, or None to clear it.
 
         Raises:
             TypeError: If the provided object is not a `Piece` or `None`.

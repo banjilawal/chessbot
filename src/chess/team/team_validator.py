@@ -109,8 +109,8 @@ class TeamValidator(Validator):
 #
 # def main():
 #
-#     from chess.commander.commander import HumanCommander
-#     person = HumanCommander(1, "person")
+#     from chess.commander.commander import Human
+#     person = Human(1, "person")
 #
 #     from chess.team import Team
 #     team = Team(team_id=1, controller=person, profile=TeamProfile.BLACK)

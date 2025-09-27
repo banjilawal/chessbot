@@ -74,7 +74,7 @@ class Rank(ABC):
             True if the move from origin to destination fits ChessRank movement rule.
 
         Raise:
-            NullChessPieceException:If piece is null.
+            NullChessPieceException:If discovery is null.
             NullCoordException:If destination is null.
             CoordException:If destination properties are invalid.
         """

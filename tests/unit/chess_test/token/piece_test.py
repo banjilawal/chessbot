@@ -14,7 +14,7 @@ class PieceTest(unittest.TestCase):
     @staticmethod
     def valid_mock_piece(
         piece_id=1,
-        name="piece"
+        name="discovery"
     ):
         piece = create_autospec(Piece, instance=True)
         mock_team = create_autospec(Side, instance=True)
@@ -44,7 +44,7 @@ class PieceTest(unittest.TestCase):
         mock_side = create_autospec(Side, instance=True)
 
         with self.assertRaises(IdValidationException):
-            Piece(piece_id=-1, name="piece", team=mock_side, rank=mock_rank)
+            Piece(piece_id=-1, name="discovery", team=mock_side, rank=mock_rank)
 
 
     @patch('assurance.validators.name.NameValidator.validate')
@@ -73,7 +73,7 @@ class PieceTest(unittest.TestCase):
         mock_id_validate.return_value.is_success.return_value = True
         mock_name_validate.return_value.is_success.return_value = True
 
-        Piece(piece_id=1, name="piece")
+        Piece(piece_id=1, name="discovery")
 
 
 if __name__ == "__main__":

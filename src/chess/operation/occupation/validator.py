@@ -27,7 +27,7 @@ class OccupationDirectiveValidator(Validator):
         Validates an OOccupationDirective meets specifications:
             - Not null
             - `id` does not fail validator
-            - `actor` is a valid chess piece
+            - `actor` is a valid chess discovery
             - `target` is a valid square
         Any validation failure raises an `InvalidOccupationDirectiveException`.
 

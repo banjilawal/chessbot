@@ -54,9 +54,9 @@ class OccupationExecutor(Executor):
         # if not validation.is_success():
         #     return validation.exception
         #
-        # piece = cast(Piece, validation.request.actor)
+        # discovery = cast(Piece, validation.request.actor)
         #
-        # source_square = board.find_square_by_coord(piece.current_position)
+        # source_square = board.find_square_by_coord(discovery.current_position)
         # target_square = cast(Square, request.target)
 
 
@@ -72,7 +72,7 @@ class OccupationExecutor(Executor):
         #
         #
         # if event == Event.ATTACK:
-        #     enemy = OccupationExecutor._attack_stream(piece, target_square)
+        #     enemy = OccupationExecutor._attack_stream(discovery, target_square)
 
         target_square.occupant = piece
         source_square.occupant = None
@@ -113,7 +113,7 @@ class OccupationExecutor(Executor):
         not provided directly to avoid mixing two args of the same type.
 
         Args
-            `piece` (Piece): Records the encounter with a friendly at  `blocked_square`
+            `discovery` (Piece): Records the encounter with a friendly at  `blocked_square`
             `blocked_square` (Square): The blocking friendly is extracted from here
 
          Returns:

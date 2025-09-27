@@ -6,7 +6,7 @@ from chess.coord import Coord
 from chess.common import IdValidator, NameValidator
 from chess.piece import Piece, PieceValidator, Encounter
 
-from .query_result import SearchResult
+from .search_result import SearchResult
 from .team import TeamSearch
 
 
@@ -26,7 +26,7 @@ class EncounterSearch:
     def by_id(piece_id: int, piece: Piece) -> SearchResult['Encounter']:
         method = "EncounterSearch.by_id"
 
-        """Find a encounter by the piece aid"""
+        """Find a encounter by the discovery aid"""
         try:
             id_validation = IdValidator.validate(piece_id)
             if not id_validation.is_success():
@@ -51,7 +51,7 @@ class EncounterSearch:
     def by_name(piece_name: str, piece: Piece) -> SearchResult['Encounter']:
         method = "EncounterSearch.by_name"
 
-        """Find an encounter by the piece's name"""
+        """Find an encounter by the discovery's name"""
 
         try:
             name_validation = NameValidator.validate(piece_name)

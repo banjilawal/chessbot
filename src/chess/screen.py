@@ -93,12 +93,12 @@ class GameDisplay:
 
         for square in self.chess_board.occupied_squares():
             piece = square.occupant
-            # Skip drawing the dragged piece at its old board position
+            # Skip drawing the dragged discovery at its old board position
             if dragged_state and piece is dragged_state.chess_piece:
                 continue
             self.draw_chess_piece(piece)
 
-        # Draw the dragged piece last, at its temporary coord
+        # Draw the dragged discovery last, at its temporary coord
         if dragged_state:
             self.draw_chess_piece_at(dragged_state.chess_piece, dragged_state.current_coordinate)
 
@@ -175,10 +175,10 @@ class GameDisplay:
         return MousePlacementStatus.RELEASED
 
     def start_drag(self, chess_piece: Piece, mouse_pos: tuple[int, int]) -> None:
-        """Begin dragging a chess piece."""
+        """Begin dragging a chess discovery."""
         self.is_dragging = True
 
-        # Calculate null-pkg so the piece doesn't jump to mouse corner
+        # Calculate null-pkg so the discovery doesn't jump to mouse corner
         coord = chess_piece.positions.current_coord()
         piece_x = coord.column * self.cell_px + self.border_px
         piece_y = coord.row * self.cell_px + self.border_px

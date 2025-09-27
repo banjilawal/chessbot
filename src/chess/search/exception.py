@@ -23,11 +23,11 @@ class SearchException(ChessException):
 
 class PieceNotFoundException(SearchException):
     """
-    Raised if a piece was not found in a search
+    Raised if a discovery was not found in a search
     """
 
     ERROR_CODE = "PIECE_NOT_FOUND_ERROR"
-    DEFAULT_MESSAGE = "The search did not find a piece"
+    DEFAULT_MESSAGE = "The search did not find a discovery"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE

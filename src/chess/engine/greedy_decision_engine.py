@@ -3,7 +3,7 @@ from typing import Optional
 from chess.board.board import Board
 from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
-from chess.engine.decision.decision_engine import DecisionEngine
+from chess.engine.decision_engine import DecisionEngine
 
 from chess.coord import Coord
 from chess.competitor.commander import CyberneticCommander

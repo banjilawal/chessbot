@@ -1,16 +1,16 @@
 
 from chess.commander import Commander, CommanderValidator
-from chess.piece.piece import Piece
+from chess.team import Team
 from chess.search import SearchResult
-from assurance import IdValidator, NameValidator
+from chess.common import IdValidator
 
 class CommanderSearch:
     """Static search methods within a single commander"""
 
     @staticmethod
-    def for_team(team_id: int, commander: 'Commander') -> SearchResult['Piece']:
+    def for_team(team_id: int, commander: 'Commander') -> SearchResult['Team']:
         method = "CommanderSearch.for_team"
-        """Find a piece by ID within a specific commander"""
+        """Find a discovery by ID within a specific commander"""
 
         try:
             id_validation = IdValidator.validate(team_id)
@@ -21,7 +21,7 @@ class CommanderSearch:
             if not commander_validation.is_success():
                 raise commander_validation.exception
 
-            team = next((team for team in commander.teams if team.id == team_id), None)
+            team = next((team for team in commander.teams.items if team.id == team_id), None)
             if team is not None:
                 return SearchResult(payload=team)
 

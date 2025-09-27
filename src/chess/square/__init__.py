@@ -5,7 +5,7 @@ A package providing core classes for managing chess board squares.
 
 ## PURPOSE
 This package provides foundational objects for the chess board. It defines the `Square` class,
-which serves as a data container for storing a piece's location, and a `SquareValidator` to ensure
+which serves as a data container for storing a discovery's location, and a `SquareValidator` to ensure
 the integrity of square objects.
 
 ## CORE CLASSES
@@ -17,14 +17,14 @@ To use this package, import the desired classes and perform square-related opera
 
 >>> from chess.square import Square, SquareValidator
 >>> from chess.coord import Coord
->>> from chess.piece import Piece
+>>> from chess.discovery import Piece
 >>>
 >>> coord = Coord(row=2, column=1)
->>> piece = Piece(piece_id=1, name="Pawn", rank="Pawn")
+>>> discovery = Piece(piece_id=1, name="Pawn", rank="Pawn")
 >>>
->>> # Create a new square and assign a piece
+>>> # Create a new square and assign a discovery
 >>> square = Square(square_id=1, name="B2", coord=coord)
->>> square.occupant = piece
+>>> square.occupant = discovery
 >>>
 >>> # Validate the square
 >>> validation = SquareValidator.validate(square)

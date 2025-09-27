@@ -151,8 +151,8 @@ class ScoutReport(BaseModel):
 
     Attributes:
         id (UUID): A unique identifier for the report.
-        scout (Piece): The chess piece that performed the survey.
-        locations (List[Coordinate]): A list of coordinates representing the piece's legal moves.
+        scout (Piece): The chess discovery that performed the survey.
+        locations (List[Coordinate]): A list of coordinates representing the discovery's legal moves.
     """
     id: UUID = Field(default_factory=uuid4)
     scout: ChessPiece
@@ -168,7 +168,7 @@ class Scout(BaseModel):
 
     Attributes:
         id (int): A unique identifier for the scout instance.
-        chess_piece (Piece): The chess piece the scout is observing.
+        chess_piece (Piece): The chess discovery the scout is observing.
     """
     id: int = Field(..., gt=0)
     chess_piece: ChessPiece
@@ -309,7 +309,7 @@ class Rank(BaseModel):
 
 class ChessPiece(BaseModel):
     """
-    Represents an immutable chess piece and its current state.
+    Represents an immutable chess discovery and its current state.
     """
     id: int = Field(..., gt=0)
     name: str = Field(...)

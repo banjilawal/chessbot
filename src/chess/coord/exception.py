@@ -140,7 +140,7 @@ class RowBelowBoundsException(CoordException):
 
     class NullCoordStackException(NullException):
         """
-        Raised if a piece's CoordStack (Piece.positions) is null.
+        Raised if a discovery's CoordStack (Piece.positions) is null.
         """
 
         ERROR_CODE = "NULL_COORD_STACK_ERROR"

@@ -150,7 +150,7 @@ class Board:
         method = f"{self.__class__.__name__}.remove_captured_piece"
 
         """
-        Remove a captured piece from the board after it has been:
+        Remove a captured discovery from the board after it has been:
             - Processed by the captor
             - Removed from its' team's roster
             - Added to its' enemy's hostages
@@ -202,12 +202,12 @@ class Board:
             coord (Coord): The coord of the ChessPiece to find.      
 
         Returns:    
-            Result[Piece]: with payload != NULL if piece is found. Otherwise the Result contains 
+            Result[Piece]: with payload != NULL if discovery is found. Otherwise the Result contains 
             any team_exception raised.
 
         Raises: 
             CoordValidationException: If coord fails sanity checks.
-            PieceNotFoundException: If no piece is at the coord.
+            PieceNotFoundException: If no discovery is at the coord.
         """
 
         try:
@@ -403,7 +403,7 @@ class Board:
         """
         Provides a string representation of the chessboard, showing pieces or square names.
 
-        If a square is occupied, it shows the chess piece's name.
+        If a square is occupied, it shows the chess discovery's name.
         If a square is vacant, it shows the square's name in brackets.
         """
         string = ""
@@ -412,7 +412,7 @@ class Board:
             row_str_parts = []
             for square in row:
                 if square.occupant is not None:
-                    # Display the piece's name if the square is occupied.
+                    # Display the discovery's name if the square is occupied.
                     row_str_parts.append(f"[{square.occupant.name}]")
                 else:
                     # Display the square's name in brackets if it's empty.

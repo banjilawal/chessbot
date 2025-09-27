@@ -1,6 +1,6 @@
 from chess.commander import Commander
 
-class HumanCommander(Commander):
+class Human(Commander):
 
     def __init__(self, competitor_id: int, name: str):
         super().__init__(competitor_id, name)
@@ -10,6 +10,6 @@ class HumanCommander(Commander):
         if not super().__eq__(other):
             return False
 
-        if isinstance(other, HumanCommander):
+        if isinstance(other, Human):
             return self.id == other.id
         return False

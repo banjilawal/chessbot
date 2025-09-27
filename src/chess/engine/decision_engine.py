@@ -1,14 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING
 
-from chess.board.board import Board
-from chess.rank.rank_spec import RankSpec
-
+from chess.board import Board
+from chess.rank import RankSpec
 from chess.coord import Coord
 
-if TYPE_CHECKING:
-    from chess.engine.analyze.board_analyzer import BoardAnalyzer
-    from chess.competitor.commander import CyberneticCommander
 
 
 class DecisionEngine(ABC):
@@ -42,7 +38,7 @@ class DecisionEngine(ABC):
     @abstractmethod
     def decide_destination(
             self,
-            cybernaut: 'CyberneticCommander',
+            cybernaut: 'Bot',
             chess_board: Board
     ) -> Optional[Coord]:
         pass

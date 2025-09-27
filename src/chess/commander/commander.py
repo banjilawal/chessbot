@@ -101,7 +101,7 @@ class Commander(ABC):
 
             piece = cast(Piece, result.payload)
 
-            # if piece is None:
+            # if discovery is None:
             #     raise PieceNotFoundException(
             #         f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at index {array_index}"
             #     )
