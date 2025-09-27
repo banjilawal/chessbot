@@ -1,11 +1,11 @@
 from enum import Enum
 
-from chess.rank import Rank
+from chess.rank import Rank, King, RankValidator
 from assurance import ThrowHelper
 
 from chess.exception import RelationshipException
 from chess.common import IdValidator, NameValidator, BuildResult
-from chess.piece import Piece, PieceType, PieceBuilderException
+from chess.piece import Piece, KingPiece, CombatantPiece, PieceBuilderException
 from chess.team import Team, TeamValidator, InvalidTeamAssignmentException
 
 
@@ -52,6 +52,10 @@ class PieceBuilder(Enum):
             if not name_validation.is_success():
                 ThrowHelper.throw_if_invalid(PieceBuilder, name_validation)
 
+            rank_validation = RankValidator.validate(rank)
+            if not rank_validation.is_success():
+                ThrowHelper.throw_if_invalid(PieceBuilder, rank_validation)
+
             team_validation = TeamValidator.validate(team)
             if not team_validation.is_success():
                 ThrowHelper.throw_if_invalid(PieceBuilder, team_validation)
@@ -59,8 +63,7 @@ class PieceBuilder(Enum):
 
             piece = None
             if isinstance(rank, King):
-                piece = KingPiece((piece_id=piece_id, name=name, rank=rank, team=team))
-
+                piece = KingPiece(piece_id=piece_id, name=name, rank=rank, team=team)
             piece = CombatantPiece(piece_id=piece_id, name=name, rank=rank, team=team)
 
             if not piece.team == team:

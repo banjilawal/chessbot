@@ -2,6 +2,7 @@ from typing import TypeVar, cast, Sequence, TYPE_CHECKING
 
 from chess.piece import Piece
 from chess.common import IdValidator, IdValidationException
+from chess.rank import Rank
 from chess.search import SearchResult
 from chess.commander import Commander, CommanderValidator
 from chess.team import TeamProfile, NullTeamProfileException
@@ -74,6 +75,14 @@ class Team:
         """
 
         return self._hostages.copy()
+
+
+    def rank_tally(self, rank:Rank) -> int:
+        tally = 0
+        for piece in self._roster:
+            if piece.rank == rank:
+                tally += 1
+        return tally
 
 
     def find_by_roster_number(self, roster_number: int) -> SearchResult['Piece']:

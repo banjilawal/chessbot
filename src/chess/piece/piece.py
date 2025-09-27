@@ -44,8 +44,6 @@ class Piece(ABC):
     _positions: CoordStack
 
     def __init__(self, piece_id: int, name: str, rank: Rank, team: Team):
-        method = ("Piece.__init__"
-                  "")
         """Initializes a Piece instance.
 
         Args:
@@ -59,6 +57,8 @@ class Piece(ABC):
             NameValidationException: If `name` fails validation checks.
             TeamValidationException: If `team` fails validation checks.
         """
+
+        method = "Piece.__init__"
 
         id_validation = IdValidator.validate(piece_id)
         if not id_validation.is_success():
@@ -211,8 +211,8 @@ class Piece(ABC):
 
 class KingPiece(Piece):
 
-    def __init__(self, piece_id: int, name: str, rank: 'Rank', side: 'Team'):
-        super().__init__(piece_id, name, rank, side)
+    def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
+        super().__init__(piece_id, name, rank, team)
 
 
     def __eq__(self, other):
