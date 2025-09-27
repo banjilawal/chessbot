@@ -5,7 +5,7 @@ PURPOSE:
     Separates search responsibilites from state mamangement, and data holding object.
 
 CORE CLASSES:
-    EncounterSearch
+    PieceSearch
     SquareSearch
     TeamSearch
     SearchResult
@@ -21,7 +21,7 @@ SEARCH EXCEPTIONS:
     Exceptions raised by Search entities
 
 EXCEPTION CLASSES:
-    PieceNotFoundException: Raised when a discovery is not found by EncounterSearch
+    PieceNotFoundException: Raised when a discovery is not found by PieceSearch
     SqaureNotFoundException: Raised when a sqaure is not found by SquareSearch
 
 USAGE:

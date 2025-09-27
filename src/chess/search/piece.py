@@ -10,21 +10,21 @@ from .search_result import SearchResult
 from .team import TeamSearch
 
 
-class EncounterSearch:
+class PieceSearch:
     """Static search methods for Piece entities"""
 
     class Encounter:
         _team_id: int
         _piece_id: int
         _piece_name: str
-        _rank_value: int
+        _ransom: int
         _rank_name: str
         _location: Coord
 
 
     @staticmethod
-    def by_id(piece_id: int, piece: Piece) -> SearchResult['Encounter']:
-        method = "EncounterSearch.by_id"
+    def encounter_id(piece_id: int, piece: Piece) -> SearchResult['Encounter']:
+        method = "PieceSearch.by_id"
 
         """Find a encounter by the discovery aid"""
         try:
@@ -48,8 +48,8 @@ class EncounterSearch:
 
 
     @staticmethod
-    def by_name(piece_name: str, piece: Piece) -> SearchResult['Encounter']:
-        method = "EncounterSearch.by_name"
+    def encounter_name(piece_name: str, piece: Piece) -> SearchResult['Encounter']:
+        method = "PieceSearch.by_name"
 
         """Find an encounter by the discovery's name"""
 
@@ -73,8 +73,8 @@ class EncounterSearch:
             return SearchResult(exception=e)
 
     @staticmethod
-    def by_coord(coord: Coord, piece: Piece) -> SearchResult['Encounter']:
-        method = "EncounterSearch.by_coord"
+    def encounter_by_coord(coord: Coord, piece: Piece) -> SearchResult['Encounter']:
+        method = "PieceSearch.by_coord"
 
         """Find an encounter by a coord"""
 

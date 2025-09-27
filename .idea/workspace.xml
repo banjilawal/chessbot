@@ -5,29 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/chessbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/commander_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/commander_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/cybernetic_commander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/decision_mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/decision_mode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/human_commander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/human.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/config/decision_mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/decision_mode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/owner_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/owner_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/decision_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/decision_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/decision/greedy_decision_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/greedy_decision_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/commander/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/search/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/search/commander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/commander.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/search/encounter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/encounter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/search/query_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/search_result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/search/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/team.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/search/encounter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/piece.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,6 +219,7 @@
     "Python.owner_builder.executor": "Run",
     "Python.owner_factory.executor": "Run",
     "Python.path.executor": "Run",
+    "Python.piece (1).executor": "Run",
     "Python.piece.executor": "Run",
     "Python.placement.executor": "Run",
     "Python.quadrant.executor": "Run",
@@ -303,7 +285,7 @@
       <recent name="$PROJECT_DIR$/src/chess/common/name" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.team">
+  <component name="RunManager" selected="Python.piece (1)">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -319,6 +301,29 @@
       <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="piece (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/search" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/search/piece.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -430,10 +435,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.piece (1)" />
         <item itemvalue="Python.team" />
         <item itemvalue="Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes" />
         <item itemvalue="Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_invalid_destination_raises_error" />
-        <item itemvalue="Python.piece" />
         <item itemvalue="Python.piece" />
       </list>
     </recent_temporary>
@@ -513,7 +518,7 @@
       <workItem from="1758855460006" duration="653000" />
       <workItem from="1758857921588" duration="688000" />
       <workItem from="1758883157211" duration="7552000" />
-      <workItem from="1758956378016" duration="5096000" />
+      <workItem from="1758956378016" duration="11841000" />
     </task>
     <servers />
   </component>
