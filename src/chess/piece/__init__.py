@@ -1,16 +1,18 @@
 # chess/piece/__init__.py
 
 """
+# `chess.piece` Package
+
 ## Purpose
 Provides the fundamental data structures for game pieces and entities owned by a game piece.
 
 ## Core Classes
-* `Piece`: Abstract base class for all chess pieces
-* `CombatantPiece`: Concrete piece that can be captured
-* `KingPiece`: Concrete king piece with special rules
-* `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-* `Encounter`: A record of an item discovered by a `Piece` during a scan or move.
-* `EncounterScan`: A data-holding object representing a single scan of a chess piece's surroundings.
+    * `Piece`: Abstract base class for all chess pieces
+    * `CombatantPiece`: Concrete piece that can be captured
+    * `KingPiece`: Concrete king piece with special rules
+    * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
+    * `Encounter`: A record of an item discovered by a `Piece` during a scan or move.
+    * `EncounterScan`: A data-holding object representing a single scan of a chess piece's surroundings.
 
 ## Usage
 ```python
@@ -24,52 +26,52 @@ white_king = KingPiece(piece_id=2, name='WK', rank=King(), team=white_team)
 ## EXCEPTIONS
 These are not all the exceptions related to `Piece` in the application. `chess.piece` package only has exceptions
 organic to:
-* `Piece` and its subclases.
-* `CoordStack`.
-* `Encounter` and `EncounterScan`
+    * `Piece` and its subclases.
+    * `Encounter` and `EncounterScan`
+    * `CoordStack`.
 
 All exceptions in `chess.piece` package have static fields:
-- `ERROR_CODE`: Useful when parsing logs for an exception. Error codes are in caps with a "_ERROR" suffix
-- `DFAULT_MESSAGE`: A sentence describing the exception. Use an exception's `DEFAULT_MESSAGE` for consistency
-    across the application.
+    - `ERROR_CODE`: Useful when parsing logs for an exception. Error codes are in caps with a "_ERROR" suffix
+    - `DFAULT_MESSAGE`: A sentence describing the exception.
+Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
 
-### Piece Exceptions
-- `PieceException`: Super class of exceptions raised by `Piece`. Use more granular exceptions
-    that provide more specific information.
-- `NullPieceException`: The parent is `NullException`. `NullPieceException` is the parent of
-    all exceptions related to null pieces. Use more granular null exceptions that provide
-    more specific information about the subclass instance that is null.
-- `NullKingPieceException`: Raised when a `kingPiece` reference is null
-- `NullCombatantPieceException`: Raised when a `CombatantPiece` is null.
-- `DoublePromotionException`: Raised if there is an attempt to promote a king or pawn that has alreay
-    been promoted.
+### EXCEPTIONS
+    * `PieceException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
+        more specific information.
+    * `NullPieceException`: The parent is `NullException`. `NullPieceException` is the parent of all exceptions
+        related to null pieces. Use more granular null exceptions that provide mmore specific information about the
+        subclass instance that is null.
+    * `NullKingPieceException`: Raised when a `kingPiece` reference is null
+    * `NullCombatantPieceException`: Raised when a `CombatantPiece` is null.
+    * `DoublePromotionException`: Raised if there is an attempt to promote a king or pawn that has already been
+        promoted.
 
-### Piece Validation Execeptions
-- `PieceValidationException`: Raised if an existing `Piece` object fails validation checks.
-- `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
+#### PIECE VALIDATION EXCEPTIONS
+    * `PieceValidationException`: Raised if an existing `Piece` object fails validation checks.
+    * `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
 
-### Piece Building Exceptions
-- `PieceBuilderException`: Raised if there is an error during when a `PieceBuilder` is creating a
-    new `Piece` instance.
-- `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is pased as a parameter.
+#### PIECE BUILDING EXCEPTIONS
+    * `PieceBuilderException`: Raised if there is an error during when a `PieceBuilder` is creating a new `Piece`
+        instance.
+    * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
 
-### Encounter Exceptions
-- `EncounterException`: Super class of exceptions raised by `Encounter`. Use more granular exceptions
-    that provide more specific information.
-- `NullEncounterException`: The parent is `NullValueException`. `NullEncounterException` is the parent of
-    all exceptions related to null encounters. Use more granular null exceptions that provide
-    more specific information about the subclass instance that is null.
-- `EncounterValidationException`: Raised if an existing `Encounter` object fails validation checks.
-- `NullEncounterValidatorException`: Raised if a null `EncounterValidator` is passed as a parameter.
-- `EncounterBuilderException`: Raised if there is an error during when `EncounterBuilder` is creating
-    a new `Encounter` instance.
-- `NullEncounterBuilderException`: Raised if there is null `EncounterBuilder` is passed as a parameter.
-- `AutoeEncounterException`: Raised if a `Piece` object tries to create an encouter record about itself.
+#### ENCOUNTER EXCEPTIONS
+    * `EncounterException`: Super class of exceptions raised by `Encounter`. Use more granular exceptions that provide
+        more specific information.
+    * `NullEncounterException`: The parent is `NullValueException`. `NullEncounterException` is the parent of all
+        exceptions related to null encounters. Use more granular null exceptions that provide more specific information
+        about the subclass instance that is null.
+    * `EncounterValidationException`: Raised if an existing `Encounter` object fails validation checks.
+    * `NullEncounterValidatorException`: Raised if a null `EncounterValidator` is passed as a parameter.
+    * `EncounterBuilderException`: Raised if there is an error during when `EncounterBuilder` is creating a new `Encounter`
+        instance.
+    * `NullEncounterBuilderException`: Raised if there is null `EncounterBuilder` is passed as a parameter.
+    * `AutoEncounterException`: Raised if a `Piece` object tries to create an encounter record about itself.
 
-### CoordStack Exceptions
-- `CoordStackException`: Super class of exceptions raised by `CoordStack`.
-- `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validation.`
-- `NullCoordStackException`: Raised if a null `CoordStackException` is passed as a parameter.
+### COORDSTACK EXCEPTIONS
+    * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
+    * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validation.
+    * `NullCoordStackException`: Raised if a null `CoordStackException` is passed as a parameter.
 
 
 null or improperly referenced during chess operations.
@@ -84,7 +86,7 @@ SetCaptorNullException: Setting null captor
 These examples show recommended workflows with `Piece` exceptions.
 
 ```python
-from chess.piece import NullPieceException, AutoEncounterException
+from chess.piece import CombatantPiece, Encounter, NullPieceException, AutoEncounterException
 
 build_outcome = PieceBuilder.build(
     piece_id=id_emitter.piece_id,
@@ -161,8 +163,5 @@ def package_info() -> dict:
         'author': __author__,
         'exports': __all__
     }
-
-
-# chess/piece/__init__.py
 
 
