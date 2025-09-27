@@ -1,8 +1,6 @@
 # chess/square/__init__.py
 
 """
-A package providing core classes for managing chess board squares.
-
 ## PURPOSE
 This package provides foundational objects for the chess board. It defines the `Square` class,
 which serves as a data container for storing a discovery's location, and a `SquareValidator` to ensure
@@ -17,15 +15,15 @@ To use this package, import the desired classes and perform square-related opera
 
 >>> from chess.square import Square, SquareValidator
 >>> from chess.coord import Coord
->>> from chess.discovery import Piece
+>>> from chess.piece import Piece
 >>>
+>>>
+>>> # Build a new Square at Coord(2, 1)
 >>> coord = Coord(row=2, column=1)
->>> discovery = Piece(piece_id=1, name="Pawn", rank="Pawn")
->>>
->>> # Create a new square and assign a discovery
->>> square = Square(square_id=1, name="B2", coord=coord)
->>> square.occupant = discovery
->>>
+>>> build_outcome = SquareBuilder.build(square_id=1, name="B2", coord=coord)
+>>> if not build_outcome.is_success():
+>>>    raise build_outcome.exception
+>>> square = cast(Square, build_outcome.payload)
 >>> # Validate the square
 >>> validation = SquareValidator.validate(square)
 ---

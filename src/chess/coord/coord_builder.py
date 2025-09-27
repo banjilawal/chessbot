@@ -12,21 +12,88 @@ from chess.coord import (
 
 
 class CoordBuilder(Enum):
+    """
+    Builder class responsible for safely constructing `Coord` instances.
+    
+    `CoordBuilder` ensures that `Coord` objects are always created successfully by
+    performing comprehensive validation checks during construction. This separates
+    the responsibility of building from validating - `CoordBuilder` focuses on
+    creation while `CoordValidator` is used for validating existing `Coord` instances
+    that are passed around the system.
+    
+    The builder runs through all validation checks individually to guarantee that
+    any `Coord` instance it produces meets all required specifications before
+    construction completes.
+    
+    Usage:
+        ```python
+        # Safe construction of a Coord instance if and only if the parameters meet specs
+        build_outcome = CoordBuilder.build(row=1, column=1)
+        if not build_outcome.is_success():
+            raise build_outcome.exception
+        coord = cast(Coord, build_outcome.payload)
+        ```
+    
+    See Also:
+        `CoordValidator`: Used for validating existing `Coord` instances
+        `Coord`: The data structure being constructed
+        `BuildResult`: Return type containing the built `Coord` or error information
+    """
 
     @staticmethod
     def build(row: int, column: int) -> BuildResult[Coord]:
+        """
+        Constructs a new `Coord` instance with comprehensive checks on the parameters and states during the
+        build process.
 
+        Performs individual validation checks on each component to ensure the resulting `Coord` meets all
+        specifications. If all checks are passed, a `Coord` instance will be returned. It is not necessary
+        to perform any additional validation checks on the returned `Coord` instance. This method guarantees
+        if a `BuildResult` with a successful status is returned, the contained `Coord` is valid and ready for
+        use.
+
+        Args:
+            `row` (int): The row index on `Board` where `Coord` is located. Must not be Nll
+                and must `Board` dimension bounds.
+            `column` (int): The column index on `Board` where `Coord` is located. Must not be Nll
+                and must `Board` dimension bounds.
+
+        Returns:
+            BuildResult[Coord]: A `BuildResult` containing either:
+                - On success: A valid `Coord` instance in the payload
+                - On failure: Error information and exception details
+
+        Raises:
+            CoordBuilderException: Wraps any underlying validation failures
+                that occur during the construction process. This includes:
+                - `NullRowException`: if `row` is null
+                - `RowBelowBoundsException`: if `row` < 0
+                - `RowAboveBoundsException`: if `row` >= `ROW_SIZE`
+                - `NullColumnException`: if `column` is null
+                - `ColumnBelowBoundsException`: if `column` < 0
+                - `ColumnAboveBoundsException`: if `column` >= `ROW_SIZE`
+
+        Note:
+            The builder performs runs through all the checks on parameters and state to guarantee only
+            a valid `Coord` is created, while `CoordValidator` is used for validating `Coord` instances that
+            are passed around after creation. This separation of concerns makes the validation and building
+            independent of each other and simplifies maintenance.
+
+        Example:
+            ```python
+            from typing import cast
+            from chess.coord import Coord, CoordBuilder
+            
+            # Creates a valid coord
+            build_outcome = CoordBuilder.build(x=2, y=1)
+            
+            if not build_outcome.is_success():
+                raise build_outcome.exception # <--- Skips this because x and y are valid
+            u = cast(Coord, build_outcome.payload) # <-- executes this line
+            ```
+        """
         method = "CoordBuilder.build"
         try:
-
-            # If cannot cast from t to Coord need to break
-            if not isinstance(t, Coord):
-                raise TypeError(f"{method} Expected a Coord, got {type(t).__name__}")
-
-            # cast and run checks for the fields
-            coordinate = cast(Coord, t)
-
-
             if row is None:
                 ThrowHelper.throw_if_invalid(
                     CoordBuilder,

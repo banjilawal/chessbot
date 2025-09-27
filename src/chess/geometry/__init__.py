@@ -1,7 +1,6 @@
+# src/chess/geometry/__init__.py
+
 """
-Geometry Package - Spatial Relationships in 2D Plane
-
-
 PURPOSE:
     Provides classes for spatial relationships, coordinates, vectors, and paths
     in a 2D chess board coordinate operation.

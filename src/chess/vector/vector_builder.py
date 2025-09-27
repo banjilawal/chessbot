@@ -25,12 +25,13 @@ class VectorBuilder(Enum):
 
     Usage:
         ```python
-        # Safe vector creation with validation
-        build_result = VectorBuilder.build(x=2, y=1)
-        if build_result.is_success():
-            vector = build_result.payload
+        # Safe construction of a Vector instance if and only if the parameters meet specs
+        build_outcome = VectorBuilder.build(x=2, y=1)
+        if not build_outcome.is_success():
+            raise build_outcome.exception
+        vector = build_outcome.payload
         ```
-
+        
     See Also:
         `VectorValidator`: Used for validating existing `Vector` instances
         `Vector`: The data structure being constructed
@@ -71,23 +72,22 @@ class VectorBuilder(Enum):
                 - Any validation errors from `VectorValidator`
 
         Note:
-            The builder performs validation at construction time, while
-            `VectorValidator` is used for validating `Vector` instances that
-            are passed around after creation. This separation of concerns 
-            makes the validation responsibilities clearer.
+            The builder performs runs through all the checks on parameters and state to guarantee only
+            a valid Vector is created, while `VectorValidator` is used for validating `Vector` instances that
+            are passed around after creation. This separation of concerns makes the validation and building
+            independent of each other and simplifies maintenance.
 
         Example:
             ```python
-            # Valid vector creation
-            result = VectorBuilder.build(2, 1)
-            if result.is_success():
-                vector = result.payload  # Guaranteed valid Vector
+            from typing import cast
+            from chess.vector import Vector, VectorBuilder
 
-            # Invalid bounds - will fail gracefully
-            result = VectorBuilder.build(10, 5)  # Outside KNIGHT_STEP_SIZE
-            if not result.is_success():
-                # Handle construction failure
-                pass
+            # Creates a valid vector
+            build_outcome = VectorBuilder.build(x=2, y=1)
+
+            if not build_outcome.is_success():
+                raise build_outcome.exception # <--- Skips this because x and y are valid
+            u = cast(Vector, build_outcome.payload) # <-- executes this line
             ```
         """
         method = "VectorBuilder.build"
@@ -134,19 +134,19 @@ class VectorBuilder(Enum):
 
 
 # def main():
-#     build_result = CoordBuilder.build(3, 4)
-#     if build_result.is_success():
-#         coord = build_result.payload
+#     build_outcome = CoordBuilder.build(3, 4)
+#     if build_outcome.is_success():
+#         coord = build_outcome.payload
 #         print(f"Successfully built coord: {coord}")
 #     else:
-#         print(f"Failed to build coord: {build_result.team_exception}")
+#         print(f"Failed to build coord: {build_outcome.team_exception}")
 #
-#     build_result = CoordBuilder.build(-1,  4)
-#     if build_result.is_success():
-#         coord = build_result.payload
+#     build_outcome = CoordBuilder.build(-1,  4)
+#     if build_outcome.is_success():
+#         coord = build_outcome.payload
 #         print(f"Successfully built coord: {coord}")
 #     else:
-#         print(f"Failed to build coord: {build_result.team_exception}")
+#         print(f"Failed to build coord: {build_outcome.team_exception}")
 #
 # if __name__ == "__main__":
 #     main()

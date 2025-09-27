@@ -17,52 +17,74 @@ from chess.coord import Coord
 
 class CoordValidator(Validator):
     """
-    Validates a Coord used in a domain module meets requirements:
-        - Is not null.
-        - Its fields meet the specifications for the domain.
-    Unmet requirements will raise a CoordValidationException
-
-    For performance and single source of truth CoordValidator has:
+    Validates existing `Coord` instances that are passed around the system. While `CoordBuilder` ensures 
+    valid Coords are created, `CoordValidator` checks `Coord` instances that already exist - whether they
+    came from deserialization, external sources, or need re-validation after modifications. For performance and 
+    single source of truth CoordValidator has:
         - No fields
-        - only static method validate
-    subclasses must implement validate.
+        - only static method validate  
+          
+    Usage:
+        ```python
+        from typing import cast
+        from chess.Coord import Coord, CoordValidator
+        
+        # Validate an existing Coord
+        Coord_validation = CoordValidator.validate(candidate)    
+        if not Coord_validation.is_success():
+            raise Coord_validation.exception
+            
+        # Cast the payload to a Coord instance to make sure it will work correctly and to avoid type or 
+        # null errors that might be difficult to detect.
+        Coord = cast(Coord, Coord_validation.payload)
+        ```
+    
+    Use `CoordBuilder` for construction, `CoordValidator` for verification.
     """
 
     @staticmethod
     def validate(t: Generic[T]) -> Result[Coord]:
-        entity = "Coord"
-        class_name = f"{entity}Validator"
-        method = f"{class_name}.validate"
-
         """
-        Validates a coord meets domain requirements:
-            - Not null
-            - row is not null
-            - column is not null
-            - row is within the bounds of the chess chessboard
-            - column is within the bounds of the chess chessboard
-        Any failed requirement raise an team_exception wrapped in a CoordValidationException
-            
-        Args
-            t (Coord): coord to validate
-            
-         Returns:
-             Result[T]: A Result object containing the validated payload if all domain requirements 
-             are satisfied. CoordValidationException otherwise.
-        
+        Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validation
+        on a `Coord` instance that already exists, checking type safety, null values, and component bounds. 
+        Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies existing `Coord` 
+        instances from external sources, deserialization, or after modifications.
+
+        Args:
+        t (Generic[T]): The object to validate, expected to be a Coord instance.
+
+        Returns:
+        Result[Coord]: A Result containing either:
+            - On success: The validated Coord instance in the payload
+            - On failure: Error information and exception details
+
         Raises:
-            TypeError: if t is not Coord
-            NullCoordException: if t is null   
+        CoordValidationException: Wraps any specification violations including:
+            - NullCoordException: if input is None
+            - TypeError: if input is not a Coord instance
+            - NullXComponentException: if Coord.x is None
+            - RowBelowBoundsException: If coord.row < 0
+            - RowAboveBoundsException: If coord.row >= ROW_SIZE    
+            - ColumnBelowBoundsException: If coord.column < 0
+            - ColumnAboveBoundsException: If coord.column>= ROW_SIZE
+              
+        Note:
+        *   Use CoordBuilder for creating new Coords with validation,
+        *   use CoordValidator for verifying existing Coord instances.
+        
+        Example:
+        ```python
+        from typing import cast
+        from chess.Coord import Coord, CoordValidator
 
-            RowBelowBoundsException: If coord.row < 0
-            RowAboveBoundsException: If coord.row >= ROW_SIZE
-                
-            ColumnBelowBoundsException: If coord.column < 0
-            ColumnAboveBoundsException: If coord.column>= ROW_SIZE
-                
-            CoordValidationException: Wraps any preceding team_exception     
+        validation = CoordValidator.validate(candidate)
+        if validation.is_success():
+            raise validation.exception
+        Coord = cast(Coord, validation.payload)
+        ```
         """
-
+        
+        method = "CoordValidator.validate"
         try:
             """
             Tests are chained in this specific order for a reason.
@@ -103,16 +125,16 @@ class CoordValidator(Validator):
             return Result(payload=coordinate)
 
         except (
-                TypeError,
-                NullCoordException,
+            TypeError,
+            NullCoordException,
 
-                NullRowException,
-                RowBelowBoundsException,
-                RowAboveBoundsException,
+            NullRowException,
+            RowBelowBoundsException,
+            RowAboveBoundsException,
 
-                NullColumnException,
-                ColumnBelowBoundsException,
-                ColumnAboveBoundsException
+            NullColumnException,
+            ColumnBelowBoundsException,
+            ColumnAboveBoundsException
         ) as e:
             raise CoordValidationException(
                 f"{method}: {CoordValidationException.DEFAULT_MESSAGE}"

@@ -7,6 +7,7 @@ __all__ = [
     'PieceBuilderException',
     'EncounterBuilderException',
     'AlreadyAtDestinationException',
+    'NullCoordStackException',
     'CoordStackValidationException',
     'PrisonerEscapeException',
     'PrisonerReleaseException',
@@ -77,6 +78,14 @@ class AlreadyAtDestinationException(PieceException):
 class PieceValidationException(ValidationException):
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Piece validation failed"
+
+
+class NullCoordStackException(NullException):
+    """
+    Raised if a discovery's CoordStack (Piece.positions) is null.
+    """
+    ERROR_CODE = "NULL_COORD_STACK_ERROR"
+    DEFAULT_MESSAGE = f"CoordStack cannot be null"
 
 
 class CoordStackValidationException(ValidationException):

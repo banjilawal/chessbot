@@ -39,7 +39,7 @@ True
 
 ---
 
-## RANK PURPOSE
+## PURPOSE
 This package defines specific exceptions for issues encountered during a discovery's movement or promotion
 validation. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
 exact nature of the error, such as an invalid move for a specific discovery type. Each team_exception acts as a
