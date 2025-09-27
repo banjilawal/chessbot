@@ -65,8 +65,8 @@ class PieceBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-
-                that occur during the construction process. This includes:
+           PieceBuilderException: Wraps any underlying validation failures
+           that occur during the construction process. This includes:
             `IdValidationException`: if `piece_id` fails validation checks
             `NameValidationException`: if `name` fails validation checks
             `RankValidationException`: if `rank` fails validation checks
@@ -75,7 +75,7 @@ class PieceBuilder(Enum):
             `RankQuotaFullException`: If the `team` has no empty slots for the `piece.rank`
             `RankQuotaFullException`: If `piece.team` is equal to `team` parameter
                 but `team.roster` still does not have the piece
-            PieceBuilderException: Wraps any underlying validation failures
+
 
         Note:
             The builder performs validation at construction time, while 
