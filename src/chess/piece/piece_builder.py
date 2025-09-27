@@ -140,7 +140,7 @@ class PieceBuilder(Enum):
 
             return BuildResult(payload=piece)
         except Exception as e:
-            raise PieceBuilderException(f"{method}: {PieceBuilderException}")
+            raise PieceBuilderException(f"{method}: {PieceBuilderException.DEFAULT_MESSAGE}")
 
 
 # def main():
