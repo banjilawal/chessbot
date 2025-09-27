@@ -1,5 +1,5 @@
 from chess.board.board import Board
-from chess.rank.profile import RankProfile
+from chess.rank import PromotedQueen, RankSpec
 
 
 
@@ -7,15 +7,8 @@ from chess.rank.profile import RankProfile
 
 class King(PromotedQueen):
 
-    def __init__(
-        self,
-        name:str=RankProfile.KING.name,
-        letter:str=RankProfile.KING.letter,
-        value:int=RankProfile.KING.value,
-        per_side:int=RankProfile.KING.per_side,
-        quadrants:[Quadrant]=RankProfile.KING.quadrants
-    ):
-        super().__init__(name=name, letter=letter, value=value, quadrants=quadrants, per_side=per_side)
+    def __init__(self, spec: RankSpec=RankSpec.KING):
+        super().__init__(spec=spec)
 
 
     def walk(self, piece: Piece, destination: Coord, board: Board):

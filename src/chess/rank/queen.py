@@ -1,16 +1,15 @@
-
+from chess.rank import Rank, RankSpec
 
 class Queen(Rank):
 
-    def __init__(
-        self,
-        name:str=RankProfile.QUEEN.name,
-        letter:str=RankProfile.QUEEN.letter,
-        value:int=RankProfile.QUEEN.value,
-        per_side:int=RankProfile.QUEEN.per_side,
-        quadrants:[Quadrant]=RankProfile.QUEEN.quadrants
-    ):
-        super().__init__(name=name, letter=letter, value=value, quadrants=quadrants, per_side=per_side)
+    def __init__(self, spec: RankSpec=RankSpec.QUEEN):
+        super().__init__(
+            name=spec.name,
+            letter=spec.letter,
+            ransom=spec.ransom,
+            quadrants=spec.quadrants,
+            quota=spec.quota
+        )
 
 
     def walk(self, piece: Piece, destination: Coord, board: Board):

@@ -15,22 +15,25 @@ This package contains the foundational objects for representing and validating s
 ## USAGE
 To use this package, import the desired classes and perform scalar-related operations.
 
->>> from chess.scalar import Scalar, ScalarValidator
+>>> from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
+>>> from typing import cast
+>>> from chess.common import BuildResult
 >>> from chess.vector import Vector
 >>>
 >>> # Create a scalar instance
->>> scalar = None
->>> candidate = Scalar(value=2)
->>> validation = ScalarValidator.validate(candidate)
+>>> build_outcome = ScalarBuilder.build(value=1)
+>>> if not build_outcome.is_success():
+>>>     raise build_outcome.exception
+>>> validation = ScalarValidator.validate(build_outcome.payload)
 >>>
 >>> # Validating the candidate
 >>> if not validation.is_success():
->>>     raise validation.team_exception
->>> scalar = cast(Scalar, validation.payload)
+>>>     raise validation.exception
+>>> c = cast(Scalar, validation.payload)
 >>>
 >>> # Use the scalar to transform a vector
 >>> u = Vector(x=3, y=4)
->>> v = u.scalar_product(scalar)
+>>> v = u.scalar_product(c)
 >>> print(v.x, v.y)
 6, 8
 
@@ -47,15 +50,15 @@ This package defines specific exceptions for issues encountered when working wit
 ### EXCEPTION USAGE EXCEPTIONS
 These exceptions can be imported and raised from within the scalar-related code to enforce data integrity.
 
->>> from chess.scalar Scalar, NullScalarException, ScalarAboveBoundsException
+>>> from chess.scalar import Scalar, NullScalarException, ScalarAboveBoundsException
 >>>
 >>> try:
 ...     # This will raise a NullScalarException
 ...     my_scalar = None
 ...     if my_scalar is None:
-...         raise NullScalarException("Scalar cannot be null.")
+...         raise NullScalarException('Scalar cannot be null.')
 ... except NullScalarException as e:
-...     print(f"Error: {e}")
+...     print(f'Error: {e}')
 ...
 >>> try:
 ...     # This will raise a ScalarAboveUpperBoundException
@@ -63,7 +66,7 @@ These exceptions can be imported and raised from within the scalar-related code 
 ...     from chess.common import ROW_SIZE
 ...     my_scalar = Scalar(value=(ROW_SIZE + 1))
 ... except ScalarAboveBoundsException as e:
-...     print(f"Error: {e}")
+...     print(f'Error: {e}')
 
 ---
 VERSION: 1.0.0
@@ -75,32 +78,34 @@ from .exception import *
 
 # Core  classes
 from .scalar import Scalar
-from .validation import ScalarValidator
+from .scalar_builder import ScalarBuilder
+from .scalar_validator import ScalarValidator
 
 # Package metadata
-__version__ = "1.0.0"
-__author__ = "Banji Lawal"
-__package_name__ = "chess.scalar"
+__version__ = '1.0.0'
+__author__ = 'Banji Lawal'
+__package_name__ = 'chess.scalar'
 
 __all__ = [
     # Core classes
-    "Scalar",
-    "ScalarValidator",
+    'Scalar',
+    'ScalarBuilder',
+    'ScalarValidator',
 
     *exception.__all__,
 
     # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info"
+    '__version__',
+    '__author__',
+    'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
+    '''Return basic package information.'''
     return {
-        "name": __package_name__,
-        "version": __version__,
-        "author": __author__,
-        "exports": __all__
+        'name': __package_name__,
+        'version': __version__,
+        'author': __author__,
+        'exports': __all__
     }

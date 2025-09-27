@@ -76,7 +76,7 @@ class Coord:
             raise validation.exception
 
         c = cast(validation.payload, Scalar)
-        return Coord(row=self._row * c.value, column =self._column * c.value)
+        return Coord(row=self._row * c.ransom, column =self._column * c.ransom)
 
 
     def add_vector(self, vector: Vector) -> 'Coord':

@@ -1,5 +1,4 @@
 from enum import Enum
-from typing import cast
 
 from chess.common import BuildResult, KNIGHT_STEP_SIZE
 from assurance.throw_helper import ThrowHelper

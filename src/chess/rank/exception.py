@@ -1,9 +1,12 @@
-from chess.exception import ChessException
+from chess.exception import ChessException, NullException, ValidationException
 
 __all__ = [
 
     # Super class for exceptions occurring with Rank responsibilities
     'RankException',
+    'NullRankException',
+    'UnRecognizedConcreteRankException',
+    'RankValidationException',
 
     # Exceptions for invalid moves
     'KingMovingException',
@@ -24,96 +27,45 @@ __all__ = [
 
 class RankException(ChessException):
     ERROR_CODE = "RANK_ERROR"
-    DEFAULT_MESSAGE = "Rank raised an team_exception"
+    DEFAULT_MESSAGE = "Rank raised an exception"
 
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
+class NullRankException(NullException):
+    ERROR_CODE = "NULL_RANK_ERROR"
+    DEFAULT_MESSAGE = "Rank cannot be null"
 
 
-class BishopMovingException(RankException):
-    ERROR_CODE = "BISHOP_MOVING_ERROR"
-    DEFAULT_MESSAGE = "Invalid bishop move"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
-class KingMovingException(RankException):
-    ERROR_CODE = "KING_MOVING_ERROR"
-    DEFAULT_MESSAGE = "Invalid king move"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
-
-class KnightMovingException(RankException):
-    DEFAULT_MESSAGE = "Invalid knight move"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
-
-class PawnMovingException(RankException):
-    ERROR_CODE = "PAWN_MOVING_ERROR"
-    DEFAULT_MESSAGE = "Invalid pawn move"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
-
-class QueenMovingException(RankException):
-    ERROR_CODE = "QUEEN_MOVING_ERROR"
-    DEFAULT_MESSAGE = "Invalid queen move"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
-
-class RookMovingException(RankException):
-    ERROR_CODE = "ROOK_MOVING_ERROR"
-    DEFAULT_MESSAGE = "Invalid rook move"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
+class UnRecognizedConcreteRankException(ValidationException):
+    ERROR_CODE = "UNRECOGNIZED_CONCRETE_RANK_ERROR"
+    DEFAULT_MESSAGE = "This concrete subclass of Rank is not recognized"
 
 class RankValidationException(ValidationException):
     ERROR_CODE = "RANK_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Rank validation failed"
 
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
+class BishopMovingException(RankException):
+    ERROR_CODE = "BISHOP_MOVING_ERROR"
+    DEFAULT_MESSAGE = "Invalid bishop move"
 
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
+class KingMovingException(RankException):
+    ERROR_CODE = "KING_MOVING_ERROR"
+    DEFAULT_MESSAGE = "Invalid king move"
+
+class KnightMovingException(RankException):
+    ERROR_CODE = "KNIGHT_MOVING_ERROR"
+    DEFAULT_MESSAGE = "Invalid knight move"
+
+class PawnMovingException(RankException):
+    ERROR_CODE = "PAWN_MOVING_ERROR"
+    DEFAULT_MESSAGE = "Invalid pawn move"
+
+class QueenMovingException(RankException):
+    ERROR_CODE = "QUEEN_MOVING_ERROR"
+    DEFAULT_MESSAGE = "Invalid queen move"
+
+class RookMovingException(RankException):
+    ERROR_CODE = "ROOK_MOVING_ERROR"
+    DEFAULT_MESSAGE = "Invalid rook move"
+
 
 
 class BishopValidationException(ValidationException):

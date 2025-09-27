@@ -1,5 +1,5 @@
 from chess.board.board import Board
-from chess.rank.profile import RankProfile
+from chess.rank.rank_spec import RankSpec
 from chess.common.emitter import id_emitter
 
 
@@ -7,23 +7,21 @@ from chess.operation.types import OccupationFlow
 
 from chess.coord import Coord
 from chess.geometry.path import Path
-from chess.rank.rank import Rank
-from chess.geometry.quadrant import Quadrant
-from chess.operation.send import OccupationRequest
+from chess.rank import Rank, RankSpec
+
 from chess.piece.piece import Piece
 
 
 class Bishop(Rank):
 
-    def __init__(
-        self,
-        name:str=RankProfile.BISHOP.name,
-        letter:str=RankProfile.BISHOP.letter,
-        value:int=RankProfile.BISHOP.value,
-        per_side:int=RankProfile.BISHOP.per_side,
-        quadrants:[Quadrant]=RankProfile.BISHOP.quadrants
-    ):
-        super().__init__(name=name, letter=letter, value=value, quadrants=quadrants, per_side=per_side)
+    def __init__(self, spec: RankSpec=RankSpec.BISHOP):
+        super().__init__(
+            name=spec.name,
+            letter=spec.letter,
+            ransom=spec.ransom,
+            quadrants=spec.quadrants,
+            quota=spec.quota
+        )
 
 
     def walk(self, piece: Piece, destination: Coord, board: Board):

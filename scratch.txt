@@ -1,0 +1,50 @@
+
+    @staticmethod
+    def _validate_knight_spec(candidate: Knight) -> Result[Knight]:
+        if not (
+            candidate.quota == RankSpec.KNIGHT.quota and
+            candidate.ransom == RankSpec.KNIGHT.ransom and
+            candidate.quadrants == RankSpec.KNIGHT.quadrants and
+            candidate.name.upper() == RankSpec.KNIGHT.name.upper() and
+            candidate.letter.upper() == RankSpec.KNIGHT.letter.upper()
+        ):
+            return Result(
+                exception=KnightValidationException(
+                    f"RankValidator.validate: {KnightValidationException.DEFAULT_MESSAGE}"
+                )
+            )
+        return Result(payload=cast(Knight, candidate))
+
+
+    @staticmethod
+    def _validate_rook_spec(candidate: Rook) -> Result[Rook]:
+        if not (
+                candidate.quota == RankSpec.ROOK.quota and
+                candidate.ransom == RankSpec.ROOK.ransom and
+                candidate.quadrants == RankSpec.ROOK.quadrants and
+                candidate.name.upper() == RankSpec.ROOK.name.upper() and
+                candidate.letter.upper() == RankSpec.ROOK.letter.upper()
+        ):
+            return Result(
+                exception=RookValidationException(
+                    f"RankValidator.validate: {RookValidationException.DEFAULT_MESSAGE}"
+                )
+            )
+        return Result(payload=cast(Rook, candidate))
+
+
+    @staticmethod
+    def _validate_queen_spec(candidate: Queen) -> Result[Queen]:
+        if not (
+                candidate.quota == RankSpec.QUEEN.quota and
+                candidate.ransom == RankSpec.QUEEN.ransom and
+                candidate.quadrants == RankSpec.QUEEN.quadrants and
+                candidate.name.upper() == RankSpec.QUEEN.name.upper() and
+                candidate.letter.upper() == RankSpec.QUEEN.letter.upper()
+        ):
+            return Result(
+                exception=QueenValidationException(
+                    f"RankValidator.validate: {QueenValidationException.DEFAULT_MESSAGE}"
+                )
+            )
+        return Result(payload=cast(Queen, candidate))

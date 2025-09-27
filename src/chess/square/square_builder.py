@@ -1,5 +1,4 @@
 from enum import Enum
-from typing import cast
 
 from chess.coord import Coord, CoordValidator
 from assurance import ThrowHelper
@@ -74,8 +73,8 @@ class SquareBuilder(Enum):
         Note:
             The builder performs validation at construction time, while 
             `SquareValidator` is used for validating `Square` instances that 
-            are passed around after creation. This separation of concerns 
-            makes the validation responsibilities clearer.
+            are passed around after creation.
+            This separation of concerns makes the validation responsibilities clearer.
 
         Example:
             ```python

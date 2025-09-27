@@ -1,24 +1,23 @@
-from chess.rank import Rank, RankProfile
+from chess.rank import Rank, RankSpec
 
 
 class Rook(Rank):
 
-    def __init__(
-        self,
-        name:str=RankProfile.CASTLE.name,
-        letter:str=RankProfile.CASTLE.letter,
-        value:int=RankProfile.CASTLE.value,
-        per_side:int=RankProfile.CASTLE.per_side,
-        quadrants:[Quadrant]=RankProfile.CASTLE.quadrants
-    ):
-        super().__init__(name=name, letter=letter, value=value, quadrants=quadrants, per_side=per_side)
+    def __init__(self, spec: RankSpec=RankSpec.BISHOP):
+        super().__init__(
+            name=spec.name,
+            letter=spec.letter,
+            ransom=spec.ransom,
+            quadrants=spec.quadrants,
+            quota=spec.quota
+        )
 
 
     def walk(self, piece: Piece, destination: Coord, board: Board):
         method = "Rook.walk"
         try:
             path = Path(piece.current_position, destination)
-            if not path.line == Line.CASTLE:
+            if not path.line == Line.ROOK:
                 raise CastleWalkException(f"{method}: {CastleWalkException.DEFAULT_MESSAGE}")
 
             square = board.find_square_by_coord(destination)

@@ -69,17 +69,17 @@ wrapper for underlying errors, providing a clean and consistent API for handling
 These exceptions are typically raised within a `Rank` class's movement methods and can be caught to handle
 invalid moves gracefully.
 
->>> from chess.rank.team_exception import PawnException
->>>
->>> def move_pawn(start_pos, end_pos):
-...     # ... some validation logic
-...     if not is_valid_pawn_move:
-...         raise PawnException('Pawn cannot move in this way.')
-...
->>> try:
-...     move_pawn(start_coord, end_coord)
-... except PawnException as e:
-...     print(f'Invalid Pawn Move: {e}')
+# >>> from chess.rank import PawnException
+# >>>
+# >>> def move_pawn(start_pos, end_pos):
+# ...     # ... some validation logic
+# ...     if not is_valid_pawn_move:
+# ...         raise PawnException('Pawn cannot move in this way.')
+# ...
+# >>> try:
+# ...     move_pawn(start_coord, end_coord)
+# ... except PawnException as e:
+# ...     print(f'Invalid Pawn Move: {e}')
 
 ---
 
@@ -93,14 +93,17 @@ from .exception import *
 
 # Core Rank classes
 from .rank import Rank
-from .bishop import Bishop
-from .rook import Rook  # Note: Usually called 'Rook' in chess
+
+
 from .king import King
-from .knight import Knight
 from .pawn import Pawn
+from .bishop import Bishop
+from .knight import Knight
+from .rook import Rook
 from .queen import Queen
 from .promote import PromotedQueen
-from .profile import RankProfile
+from .rank_spec import RankSpec
+from .rank_validator import RankValidator
 
 
 # Package metadata (organic to __init__.py)
@@ -112,13 +115,14 @@ __package_name__ = 'chess.rank'
 __all__ = [
     # Core classes
     'Rank',
+    'King',
+    'Pawn',
     'Bishop',
     'Knight',
-    'Pawn',
     'Rook',
-    'King',
     'Queen',
-    'RankProfile',
+    'RankSpec',
+    'RankValidator',
 
     *exception.__all__,
 

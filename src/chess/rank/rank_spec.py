@@ -15,24 +15,26 @@ from chess.rank.rank import Rank
 #     N = (auto(), Vector(x=0, y=1))
 
 
-class RankProfile(Enum):
-    def __new__(cls, letter:str, per_side:int, value:int, quadrants:List[Quadrant]):
+class RankSpec(Enum):
+    def __new__(cls, letter:str, quota:int, ransom:int, quadrants:List[Quadrant]):
         obj = object.__new__(cls)
         obj._letter = letter
-        obj._per_side = per_side
-        obj._value = value
+        obj._quota = quota
+        obj._ransom = ransom
         obj._quadrants = quadrants
 
         return obj
 
     PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
     BISHOP = ("B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
-    CASTLE = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
+    ROOK = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
+    KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
+
     KING =(
         "K", 1, 0,
         [ Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
     )
-    KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
+
     QUEEN = (
         "Q", 1, 9,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
@@ -44,13 +46,13 @@ class RankProfile(Enum):
 
 
     @property
-    def per_side(self) -> int:
-        return self._per_side
+    def quota(self) -> int:
+        return self._quota
 
 
     @property
-    def value(self) -> int:
-        return self._value
+    def ransom(self) -> int:
+        return self._ransom
 
 
     @property
@@ -62,8 +64,8 @@ class RankProfile(Enum):
         return (
             f"Rank["
             f"{self._letter} "
-            f"per_team:{self._per_side} "
-            f"value:{self._value} "
+            f"per_team:{self._quota} "
+            f"value:{self._ransom} "
             f"quadrants:({len(self.quadrants_str())})"
             f"] "
         )
@@ -74,19 +76,19 @@ class RankProfile(Enum):
 
 
     @staticmethod
-    def find_profile_by_rank(rank:Rank) -> Optional['RankProfile']:
+    def find_speck_by_rank(rank: Rank) -> Optional['RankSpec']:
         print(f"Looking for config with name:{rank.name}")
 
-        for profile in RankProfile:
-            print(f"Checking config:{profile.value}")
-            if profile.name.upper() == rank.name.upper():
-                return profile
+        for spec in RankSpec:
+            print(f"Checking config:{spec.ransom}")
+            if spec.name.upper() == rank.name.upper():
+                return spec
         return None
 
 
 def main():
-    for profile in RankProfile:
-        print(profile)
+    for spec in RankSpec:
+        print(spec)
 
 
 if __name__ == "__main__":

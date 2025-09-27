@@ -39,7 +39,7 @@ class GreedyDecisionEngine(DecisionEngine):
         min_capture_diff = self.max_capture_value
 
         for analysis in self._board_analysis.assessments:
-            current_capture_value = analysis.enemies[0].rank.value
+            current_capture_value = analysis.enemies[0].rank.ransom
 
             if self._max_capture_value - current_capture_value < min_capture_diff:
                 best_report = analysis

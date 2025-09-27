@@ -9,35 +9,32 @@ class PieceValidator(Validator):
 
     @staticmethod
     def validate(t: Generic[T]) -> Result[Piece]:
-        entity = "Piece"
-        class_name = f"{entity}Validator"
-        method = f"{class_name}.validate"
-
         """
-        Validates a square with chained exceptions for square meeting specifications:
+        Validates a piece with chained exceptions for piece meeting specifications:
             - Not null
             - id fails validator
             - name fails validator
             - coord fails validator
-        If validators fails their team_exception will be encapsulated in a SquareValidationException
+        If validator fails their team_exception will be encapsulated in a PieceValidationException
 
         Args
-            t (Square): square to validate
+            t (Piece): piece to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                SquareValidationException otherwise.
+                PieceValidationException otherwise.
 
         Raises:
-            TypeError: if t is not Square
-            NullSquareException: if t is null   
+            TypeError: if t is not Piece
+            NullPieceException: if t is null   
 
             IdValidationException: if invalid id
             NameValidationException: if invalid name
             CoordValidationException: if invalid coord
 
-            SquareValidationException: Wraps any preceding exceptions      
+            PieceValidationException: Wraps any preceding exceptions      
         """
+        method = "Piece.validate"
         try:
             if t is None:
                 raise NullPieceException(
@@ -45,7 +42,7 @@ class PieceValidator(Validator):
                 )
 
             if not isinstance(t, Piece):
-                raise TypeError(f"{method} Expected a Square, got {type(t).__name__}")
+                raise TypeError(f"{method} Expected a Piece, got {type(t).__name__}")
 
             piece= cast(Piece, t)
 
@@ -68,7 +65,6 @@ class PieceValidator(Validator):
                 NullPieceException,
                 IdValidationException,
                 NameValidationException,
-                # CoordValidationException
         ) as e:
             raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}") from e
 

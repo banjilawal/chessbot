@@ -20,9 +20,10 @@ CONVENIENCE ALIASES:
     CoordHistory: Alias for CoordStack (more descriptive)
 
 USAGE:
-    >>> from chess.piece import CombatantPiece, KingPiece, CoordStack
-    >>> white_pawn_9 = CombatantPiece(piece_id=9, name="WP1", validation=pawn, team=white_team)
-    >>> white_king = KingPiece(piece_id=2, name="WK", validation=king, team=white_team)
+    >>> from chess.rank import Pawn, King
+    >>> from chess.piece import CombatantPiece, KingPiece
+    >>> white_pawn_9 = CombatantPiece(piece_id=9, name='WP1', rank=Pawn(), team=white_team)
+    >>> white_king = KingPiece(piece_id=2, name='WK', rank, team=white_team)
     >>>
 
 Piece Exception Package - All Piece-Related Exceptions
@@ -51,9 +52,9 @@ USAGE:
     >>> from chess.piece.team_exception.null import NullPieceException
 
     >>> if piece.current_position is None:
-    >>>     raise PieceCoordNullException("Piece coordinate is null")
+    >>>     raise PieceCoordNullException('Piece coordinate is null')
     >>> from chess.piece.team_exception.null import NullPieceException
-    >>> raise NullPieceException(f"{NullPieceException.DEFAULT_MESSAGE}")
+    >>> raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
 ___
 
@@ -69,6 +70,7 @@ from .exception import *
 
 from .piece import *
 from .encounter import Encounter
+from .piece_type import PieceType
 from .piece_builder import PieceBuilder
 from .piece_validator import PieceValidator
 from .encounter_scan import EncounterScan
@@ -76,39 +78,40 @@ from .coord_stack_validator import CoordStackValidator
 from .coord_stack_builder import CoordinateStackBuilder
 
 # Package metadata (organic to __init__.py)
-__version__ = "1.0.0"
-__author__ = "Banji Lawal"
-__package_name__ = "piece"
+__version__ = '1.0.0'
+__author__ = 'Banji Lawal'
+__package_name__ = 'piece'
 
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    "Piece",
-    "CombatantPiece",
-    "KingPiece",
-    "PieceValidator",
-    "Encounter",
-    "EncounterScan",
-    "PieceBuilder",
+    'Piece',
+    'KingPiece',
+    'CombatantPiece',
+    'PieceBuilder',
+    'PieceValidator',
+    'Encounter',
+    'EncounterScan',
+    'PieceBuilder',
 
     *exception.__all__,
 
     # Subpackages
-    "exception",
+    'exception',
 
     # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info"
+    '__version__',
+    '__author__',
+    'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
+    '''Return basic package information.'''
     return {
-        "name": __package_name__,
-        "version": __version__,
-        "author": __author__,
-        "exports": __all__
+        'name': __package_name__,
+        'version': __version__,
+        'author': __author__,
+        'exports': __all__
     }

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING
 
 from chess.board.board import Board
-from chess.rank.profile import RankProfile
+from chess.rank.rank_spec import RankSpec
 
 from chess.coord import Coord
 
@@ -19,7 +19,7 @@ class DecisionEngine(ABC):
     def __init__(self, engine_id:int, analyzer: 'BoardAnalyzer'):
         self._id = engine_id
         self._board_analyzer = analyzer
-        self._max_capture_value = RankProfile.QUEEN.value
+        self._max_capture_value = RankSpec.QUEEN.ransom
 
 
     @property

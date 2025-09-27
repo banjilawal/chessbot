@@ -1,16 +1,9 @@
-
+from chess.rank import PromotedQueen, RankSpec
 
 class Pawn(PromotedQueen):
 
-    def __init__(
-        self,
-        name:str=RankProfile.PAWN.name,
-        letter:str=RankProfile.PAWN.letter,
-        value:int=RankProfile.PAWN.value,
-        per_side:int=RankProfile.PAWN.per_side,
-        quadrants:[Quadrant]=RankProfile.PAWN.quadrants
-    ):
-        super().__init__(name=name, letter=letter, value=value, quadrants=quadrants, per_side=per_side)
+    def __init__(self, spec: RankSpec=RankSpec.PAWN):
+        super().__init__(spec=spec)
 
 
     def walk(self, piece: Piece, destination: Coord, board: Board):

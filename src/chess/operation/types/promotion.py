@@ -1,6 +1,6 @@
 from typing import cast
 
-from chess.rank.profile import RankProfile
+from chess.rank.rank_spec import RankSpec
 from chess.operation.orchestrator import TransactionOrchestrator
 from chess.rank.queen import Queen, PromotedQueen
 
@@ -32,11 +32,11 @@ class PromotionTransaction(TransactionOrchestrator):
 
         promoted_queen = PromotedQueen(
             old_rank=client.rank.name,
-            name=RankProfile.QUEEN.name,
-            letter=RankProfile.QUEEN.letter,
-            value=RankProfile.QUEEN.value,
-            per_side=RankProfile.QUEEN.per_side,
-            quadrants=RankProfile.QUEEN.quadrants,
+            name=RankSpec.QUEEN.name,
+            letter=RankSpec.QUEEN.letter,
+            value=RankSpec.QUEEN.ransom,
+            per_side=RankSpec.QUEEN.quota,
+            quadrants=RankSpec.QUEEN.quadrants,
         )
 
         piece = Piece(piece_id=client.id, name=client.name, team=client.team, rank=promoted_queen)

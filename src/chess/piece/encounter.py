@@ -18,7 +18,7 @@ class Encounter:
     def __init__(self, piece:'Piece'):
         self._id = piece.id
         self._name = piece.name
-        self._rank_value = piece.rank.value
+        self._rank_value = piece.rank.ransom
         self._rank_name = piece.rank.name
         self._team_id = piece.team.id
         self._coord = piece.current_position

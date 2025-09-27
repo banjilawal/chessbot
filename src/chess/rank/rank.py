@@ -9,15 +9,15 @@ from chess.piece.piece import Piece
 class Rank(ABC):
     _name:str
     _letter:str
-    _value:int
-    _per_side:int
+    _ransom:int
+    _quota:int
     _quadrants:list[Quadrant]
 
-    def __init__(self, name:str, letter:str, value:int, per_side:int, quadrants:list[Quadrant]):
+    def __init__(self, name:str, letter:str, ransom:int, quota:int, quadrants:list[Quadrant]):
         self._name = name
         self._letter = letter
-        self._value = value
-        self._per_side = per_side
+        self._ransom = ransom
+        self._quota = quota
         self._quadrants = quadrants
 
 
@@ -32,8 +32,8 @@ class Rank(ABC):
 
 
     @property
-    def value(self) -> int:
-        return self._value
+    def ransom(self) -> int:
+        return self._ransom
 
 
     @property
@@ -42,8 +42,8 @@ class Rank(ABC):
 
 
     @property
-    def per_side(self) -> int:
-        return self._per_side
+    def quota(self) -> int:
+        return self._quota
 
 
     def __eq__(self, other):
@@ -86,7 +86,7 @@ class Rank(ABC):
         return (
             f"{self._name} "
             f"{self._letter} "
-            f"value:{self.value} "
-            f"per_side:{self._per_side} "
+            f"value:{self.ransom} "
+            f"per_side:{self._quota} "
             f"quadrants:{len(self._quadrants)}")
 

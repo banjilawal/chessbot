@@ -2,7 +2,7 @@ from typing import List
 
 from chess.creator.entity.builder.rank_builder import RankBuilder
 from chess.rank.rank import Rank
-from chess.rank.profile import RankProfile
+from chess.rank.rank_spec import RankSpec
 
 
 class RankFactory:
@@ -11,7 +11,7 @@ class RankFactory:
     def  assemble() -> List[Rank]:
         ranks: List[Rank] = []
 
-        for rank_config in RankProfile:
+        for rank_config in RankSpec:
             ranks.append(RankBuilder.build(rank_config))
         return ranks
 #

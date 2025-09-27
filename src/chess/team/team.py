@@ -38,7 +38,7 @@ class Team:
             commander.teams.add_team(self)
 
         if self not in commander.teams.items:
-            raise BrokenRelationshipException(f"{method}:{BrokenRelationshipException.DEFAULT_MESSAGE}")
+            raise RelationshipException(f"{method}:{RelationshipException.DEFAULT_MESSAGE}")
 
 
     @property

@@ -1,16 +1,42 @@
 from enum import Enum
-from typing import cast
 
 from chess.rank import Rank
 from assurance import ThrowHelper
 
 from chess.exception import RelationshipException
 from chess.common import IdValidator, NameValidator, BuildResult
-from chess.piece import Piece, PieceValidator, PieceBuilderException
+from chess.piece import Piece, PieceType, PieceBuilderException
 from chess.team import Team, TeamValidator, InvalidTeamAssignmentException
 
 
 class PieceBuilder(Enum):
+    """
+    Builder class responsible for safely constructing `Piece` instances.
+    
+    `PieceBuilder` ensures that `Piece` objects are always created successfully by
+    performing comprehensive validation checks during construction. This separates
+    the responsibility of building from validating - `PieceBuilder` focuses on
+    creation while `PieceValidator` is used for validating existing `Piece` instances
+    that are passed around the system.
+    
+    The builder runs through all validation checks individually to guarantee that
+    any `Piece` instance it produces meets all required specifications before
+    construction completes.
+    
+    Usage:
+        ```python
+        # Safe piece creation with validation
+        build_outcome = PieceBuilder.build(piece_id=id_emitter.piece_id, name="WN2", rank=Knight(), team=white_team)
+        if not build_outcome.is_success():
+            raise build_outcome.exception
+        piece = build_outcome.payload
+        ```
+    
+    See Also:
+        `PieceValidator`: Used for validating existing `Piece` instances
+        `Piece`: The data structure being constructed
+        `BuildResult`: Return type containing the built `Piece` or error information
+    """
 
     @staticmethod
     def build(piece_id: int, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
@@ -30,7 +56,12 @@ class PieceBuilder(Enum):
             if not team_validation.is_success():
                 ThrowHelper.throw_if_invalid(PieceBuilder, team_validation)
 
-            piece = Piece(piece_id=piece_id, name=name, rank=rank, team=team)
+
+            piece = None
+            if isinstance(rank, King):
+                piece = KingPiece((piece_id=piece_id, name=name, rank=rank, team=team))
+
+            piece = CombatantPiece(piece_id=piece_id, name=name, rank=rank, team=team)
 
             if not piece.team == team:
                 ThrowHelper.throw_if_invalid(
@@ -53,19 +84,19 @@ class PieceBuilder(Enum):
 
 
 # def main():
-#     build_result = PieceBuilder.build()
-#     if build_result.is_success():
-#         piece = build_result.payload
+#     build_outcome = PieceBuilder.build()
+#     if build_outcome.is_success():
+#         piece = build_outcome.payload
 #         print(f"Successfully built piece: {piece}")
 #     else:
-#         print(f"Failed to build piece: {build_result.exception}")
+#         print(f"Failed to build piece: {build_outcome.exception}")
 #     #
-#     build_result = PieceBuilder.build(1, None)
-#     if build_result.is_success():
-#         piece = build_result.payload
+#     build_outcome = PieceBuilder.build(1, None)
+#     if build_outcome.is_success():
+#         piece = build_outcome.payload
 #         print(f"Successfully built piece: {piece}")
 #     else:
-#         print(f"Failed to build piece: {build_result.exception}")
+#         print(f"Failed to build piece: {build_outcome.exception}")
 #
 # if __name__ == "__main__":
 #     main()

@@ -1,25 +1,15 @@
 from typing import Optional, List
-
-from chess.geometry.quadrant import Quadrant
-from chess.rank.queen import Queen
+from chess.rank import Queen, RankSpec
 
 
 class PromotedQueen(Queen):
-    _old_rank: Optional[str]
+    _base_rank: Optional[str]
 
-    def __init__(
-        self,
-        name: str,
-        letter: str,
-        value:int,
-        per_side: int,
-        quadrants: List[Quadrant],
-        old_rank: Optional[str] = None
-    ):
-        super().__init__(name=name, letter=letter, value=value, per_side=per_side, quadrants=quadrants)
-        _old_rank: old_rank
+    def __init__(self, spec: RankSpec):
+        super().__init__(spec=spec)
+        _base_rank = spec.name
 
 
     @property
-    def old_rank(self) -> Optional[str]:
-        return self._old_rank
+    def base_rank(self) -> Optional[str]:
+        return self._base_rank

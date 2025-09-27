@@ -125,7 +125,7 @@ class GameDisplay:
         if isinstance(chess_piece.rank, Knight):
             pygame.draw.rect(self.screen, KNIGHT_COLOR, chess_piece_shape)
         if isinstance(chess_piece.rank, Rook):
-            pygame.draw.rect(self.screen, CASTLE_COLOR.value, chess_piece_shape)
+            pygame.draw.rect(self.screen, CASTLE_COLOR.ransom, chess_piece_shape)
         if isinstance(chess_piece.rank, Bishop):
             pygame.draw.rect(self.screen, BISHOP_COLOR, chess_piece_shape)
         if isinstance(chess_piece.rank, Queen):
@@ -271,7 +271,7 @@ class GameDisplay:
         elif isinstance(chess_piece.rank, Knight):
             pygame.draw.rect(self.screen, KNIGHT_COLOR, rect)
         elif isinstance(chess_piece.rank, Rook):
-            pygame.draw.rect(self.screen, CASTLE_COLOR.value, rect)
+            pygame.draw.rect(self.screen, CASTLE_COLOR.ransom, rect)
         elif isinstance(chess_piece.rank, Bishop):
             pygame.draw.rect(self.screen, BISHOP_COLOR, rect)
         elif isinstance(chess_piece.rank, Queen):
