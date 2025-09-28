@@ -19,7 +19,7 @@ class Piece(ABC):
     """An abstract base class representing a single chess discovery.
 
     A `Piece` is a fundamental game entity that has an identity, belongs to a `Team`, and has a `Rank` that
-    defines its movement logic. It tracks its position on the board and records encounters with other pieces.
+    defines its movement logic. It tracks its position on the board and records discoveries with other pieces.
     The class is designed to be immutable with respect to its core properties (`id`, `name`, `rank`, `team`).
 
     Attributes:
@@ -29,7 +29,7 @@ class Piece(ABC):
         _rank (Rank): The rank that defines the discovery's movement strategy.
         _roster_number (int): The discovery's number on its team's roster.
         _current_position (Optional[Coord]): The current coordinate of the discovery on the board.
-        _encounters (Discoveries): A log of encounters with other pieces.
+        _discoveries (Discoveries): A log of discoveries with other pieces.
         _positions (CoordStack): A stack of the discovery's historical coordinates.
     """
 
@@ -40,7 +40,7 @@ class Piece(ABC):
     _captor: 'Piece'
     _roster_number: int
     _current_position: Coord
-    _encounters: Discoveries
+    _discoveries: Discoveries
     _positions: CoordStack
 
     def __init__(self, piece_id: int, name: str, rank: Rank, team: Team):
@@ -83,7 +83,7 @@ class Piece(ABC):
         self._roster_number = len(team.roster) + 1
         self._team = team
 
-        self._encounters = Discoveries()
+        self._discoveries = Discoveries()
         self._positions = CoordStack()
         self._current_position = self._positions.current_coord
 
@@ -105,38 +105,38 @@ class Piece(ABC):
 
     @property
     def roster_number(self) -> int:
-        """The discovery's number on its team's roster."""
+        """The piece's number on its team's roster."""
         return self._roster_number
 
 
     @property
     def team(self) -> 'Team':
-        """The team the discovery belongs to."""
+        """The team the piece belongs to."""
         return self._team
 
 
     @property
     def rank(self) -> 'Rank':
-        """The rank that defines the discovery's movement strategy."""
+        """The rank that defines the piece's movement strategy."""
         return self._rank
 
 
     @property
     def positions(self) -> CoordStack:
-        """A stack of the discovery's historical coordinates."""
+        """A stack of the piece's historical coordinates."""
         return self._positions
 
 
     @property
     def current_position(self) -> Optional[Coord]:
-        """The current coordinate of the discovery."""
+        """The current coordinate of the piece."""
         return self._positions.current_coord
 
 
     @property
-    def encounters(self) -> Discoveries:
-        """A log of encounters with other pieces."""
-        return self._encounters
+    def discoveries(self) -> Discoveries:
+        """A log of items the piece discovered when the piece is scanning the board or moving."""
+        return self._discoveries
 
 
     def __eq__(self, other: object) -> bool:
@@ -154,19 +154,20 @@ class Piece(ABC):
 
 
     def is_enemy(self, piece: 'Piece') -> bool:
-        method = "Piece.is_enemy"
-
-        """Checks if another discovery belongs to an opposing team.
+        """
+        Checks if another piece belongs to an opposing team.
 
         Args:
-            discovery (Piece): The other discovery to compare.
-
+            piece (Piece): The other piece to compare.
+        
         Returns:
-            bool: `True` if the discovery belongs to a different team, otherwise `False`.
-
+            bool: `True` if the piece belongs to a different team, otherwise `False`.
+        
         Raises:
             NullPieceException: If the provided discovery is `None`.
         """
+        method = "Piece.is_enemy"
+
         validation = PieceValidator.validate(piece)
         if not validation.is_success():
             raise validation.exception
@@ -174,37 +175,30 @@ class Piece(ABC):
         return self._team != piece.team
 
 
-    def record_encounter(self, piece: 'Piece'):
-        """Records an encounter with another discovery.
+    def record_discovery(self, piece: 'Piece'):
+        """
+        Records a piece discovered when scanning or moving on the board.
 
         Args:
-            discovery (Piece): The discovery that this discovery has encountered.
+            piece (Piece): The item that this piece has found.
 
         Raises:
-            NullPieceException: If the provided discovery is `None`.
-            SelfEncounterException: If the discovery encounters itself.
+            NullPieceException: If the found piece is `None`.
+            AutoDiscoveryException: If the piece wants tries to record a discovery of itself.
         """
-        method = "Piece.record_encounter"
+        method = "Piece.record_discovery"
+        
         try:
             build_outcome = DiscoveryBuilder.build(observer=self, discovery=piece)
             if not build_outcome.is_success():
                 raise build_outcome.exception
-            encounter = build_outcome.payload
+            discovery = build_outcome.payload
 
-            if encounter not in self._encounters.scan:
-                self._encounters.add_encounter(encounter)
+            if discovery not in self._discoveries:
+                self._discoveries.record_discovery(discovery)
 
         except Exception as e:
-
-
-        validation = PieceValidator.validate(piece)
-        if not validation.is_success():
-            raise validation.exception
-
-        if piece is self:
-            raise AutoDiscoveryException(f"{method}: {AutoDiscoveryException.DEFAULT_MESSAGE}")
-
-        self._encounters.add_encounter(Discovery(piece))
+            raise e
 
 
     def __str__(self) -> str:

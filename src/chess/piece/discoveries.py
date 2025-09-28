@@ -10,6 +10,30 @@ from chess.piece import Discovery, NullDiscoveryException
 
 
 class Discoveries:
+    """
+    A collection class for managing `Discovery` records.
+
+    `Discoveries` encapsulates the list of `Discovery` objects observed by a `Piece`.
+    It ensures safe recording (no duplicates, no nulls) and provides search and filter
+    operations over the stored discoveries. This separation allows discovery management
+    to evolve independently of the `Piece` itself, while keeping the `Piece` interface clean.
+
+    Each discovery represents a snapshot of another piece found during play (through
+    scanning, moving, or occupation attempts). By aggregating them, `Discoveries`
+    provides both simple access (all discoveries) and targeted lookups (by id, name,
+    coordinate, rank, or ransom).
+
+    Attributes:
+        _items (List[Discovery]): Internal list storing the recorded discoveries.
+            Exposed externally only through safe, immutable accessors.
+
+    Notes:
+        - Validation of ids, names, coordinates, and ranks is delegated to their
+          respective validators (`IdValidator`, `NameValidator`, `CoordValidator`,
+          `RankValidator`).
+        - Each method returns a `SearchResult` to provide consistent success/empty/error handling.
+        - The collection enforces uniqueness and immutability at the discovery level.
+    """
     _items: List[Discovery]
 
     def __init__(self):
