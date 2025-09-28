@@ -11,8 +11,6 @@ from chess.operation.occupation import (
     InvalidOccupationDirectiveException
 )
 
-
-
 T = TypeVar('T')
 
 class OccupationDirectiveValidator(Validator):
@@ -63,7 +61,6 @@ class OccupationDirectiveValidator(Validator):
             id_validation = IdValidator.validate(directive.id)
             if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
-            directive_id = cast(int, directive.id)
 
             piece_validation = PieceValidator.validate(directive.actor)
             if not piece_validation.is_success():
@@ -85,7 +82,8 @@ class OccupationDirectiveValidator(Validator):
             IdValidationException,
             PieceValidationException,
             SquareValidationException,
-            NullOccupationDirectiveException
+            NullOccupationDirectiveException,
+            AutoOccupationException
         ) as e:
             raise InvalidOccupationDirectiveException(
                 f"{method}: {InvalidOccupationDirectiveException.DEFAULT_MESSAGE}"

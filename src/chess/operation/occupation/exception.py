@@ -1,5 +1,5 @@
 from chess.exception import  ValidationException, NullException
-from chess.operation import ExecutionException
+from chess.operation import OperationExecutorException
 
 __all__ = [
     'OccupationException',
@@ -9,10 +9,10 @@ __all__ = [
     'HostageValidationException',
     'NullHostagePieceException',
     'InvalidOccupationDirectiveException',
-    'EmptyBoardSearchException',
+    'FatalBoardSearchException',
 ]
 
-class OccupationException(ExecutionException):
+class OccupationException(OperationExecutorException):
     ERROR_CODE = "OCCUPATION_EXECUTION_ERROR"
     DEFAULT_MESSAGE = "An exception was raised while executing the square occupation"
 
@@ -60,10 +60,10 @@ class NullCombatantPieceException(OccupationException):
     DEFAULT_MESSAGE = f"CombatantPiece cannot be null"
 
 
-class EmptyBoardSearchException(OccupationException):
+class FatalBoardSearchException(OccupationException):
     """
     Board searches during an occupation should not fai. If they do there is an inconsistency in the board
     """
 
-    ERROR_CODE = "BOARD_SEARCH_ERROR"
-    DEFAULT_MESSAGE = f"Unexpected empty square search result"
+    ERROR_CODE = "FATAL_BOARD_SEARCH_ERROR"
+    DEFAULT_MESSAGE = f"BoardSearch failed to find a square; this should not happen."

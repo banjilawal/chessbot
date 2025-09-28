@@ -59,7 +59,7 @@ AUTHOR: Banji Lawal
 from .exception import *
 from .attack_exceptions import *
 
-from .directive import OccupationDirective
+from .directive import *
 from .executor import OccupationExecutor
 from .validator import OccupationDirectiveValidator
 
@@ -72,13 +72,12 @@ __package_name__ = "chess.operation.occupation"
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'OccupationDirective',
     'OccupationExecutor',
     'OccupationDirectiveValidator',
 
     # Exception classes
     *exception.__all__,
-
+    *directive.__all__,
     *attack_exceptions.__all__,
 
 

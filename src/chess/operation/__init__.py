@@ -2,7 +2,7 @@
 from .exception import *
 
 from .directive import Directive
-from .executor import Executor
+from .operation_executor import OperationExecutor
 from .op_result import OperationResult
 from .context import ExecutionContext
 
@@ -15,7 +15,7 @@ __package_name__ = 'chess.operation'
 __all__ = [
     # Core classes
     'Directive',
-    'Executor',
+    'OperationExecutor',
     'ExecutionContext',
     'OperationResult',
 

@@ -7,7 +7,7 @@
 #  └── operation/
 #      ├── occupation/
 #      │   ├── __init__.py
-#      │   ├── executor.py
+#      │   ├── operation_executor.py
 #      │   ├── validator.py
 #      │   ├── directive.py
 #      │   ├── exception.py
@@ -15,20 +15,20 @@
 #      │
 #      ├── promotion/
 #      │   ├── __init__.py
-#      │   ├── executor.py
+#      │   ├── operation_executor.py
 #      │   ├── validator.py
 #      │   ├── directive.py
 #      │   └── exception.py
 #      │
 #      ├── castling/
 #      │   ├── __init__.py
-#      │   ├── executor.py
+#      │   ├── operation_executor.py
 #      │   ├── validator.py
 #      │   └── exception.py
 #      │
 #      └── subject/
 #          ├── __init__.py
-#          ├── executor.py
+#          ├── operation_executor.py
 #          ├── validator.py
 #          ├── directive.py
 #          └── exception.py

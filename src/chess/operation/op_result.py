@@ -10,7 +10,7 @@ from chess.operation import Directive
 
 
 
-class OperationResult(ABC):
+class OperationResult:
     """
     Result of an operation that changes an entity' state.
 
@@ -29,31 +29,16 @@ class OperationResult(ABC):
 
     def __init__(
         self,
-        op_result_id: int,
+        result_id: int,
         directive: Directive,
         exception: Optional[Exception] = None,
         was_rolled_back: bool = False
     ):
+        """INTERNAL: Use factory methods instead of direct constructor."""
         method = "OperationResult.__init__"
 
-        """INTERNAL: Use factory methods instead of direct constructor."""
-
-        if request is None:
-            raise NullRequestException(f"{method}: {NullRequestException.DEFAULT_MESSAGE}")
-
-        if event is None and exception is None:
-            raise EmptyEventOutcomeConstructorException(
-                f"{method}: {EmptyEventOutcomeConstructorException.DEFAULT_MESSAGE}"
-            )
-
-        if event is not None and exception is not None:
-            raise ConflictingEventStateException(
-               f"{method}: {ConflictingEventStateException.DEFAULT_MESSAGE}"
-            )
-
-        self._id = op_result_id
-        self._directive = request
-        self._event = event
+        self._id = result_id
+        self._directive = directive
         self._exception = exception
         self._was_rolled_back = was_rolled_back
 
@@ -62,32 +47,23 @@ class OperationResult(ABC):
     def id(self):
         return self._id
 
-
     @property
-    def request(self) -> Optional[Action]:
+    def directive(self) -> Optional[Directive]:
         return self._directive
-
-
-    @property
-    def event(self) -> Optional[Event]:
-        return self._event
-
 
     @property
     def exception(self) -> Optional[Exception]:
         return self._exception
 
-
     @property
     def was_rolled_back(self) -> bool:
         return self._was_rolled_back
-
 
     def is_success(self) -> bool:
         method = f"{self.__class__.__name__}.is_success"
         """True if operation success condition was true after the state change"""
 
-        return self._exception is None and not (self._event is None and self._was_rolled_back)
+        return self._exception is None and not self._was_rolled_back
 
 
     def is_processing(self) -> bool:
@@ -102,13 +78,6 @@ class OperationResult(ABC):
         """True if raised an team_exception before the state changed"""
 
         return not (self._exception  is None and self._was_rolled_back)
-
-
-    def is_rolled_back(self) -> bool:
-        method = f"{self.__class__.__name__}.is_rolled_back"
-
-        """True if operation completed the success condition was not met so the operation was rolled back"""
-        return self._was_rolled_back
 
 
     @classmethod

@@ -7,7 +7,8 @@ __all__ = [
     'NullNumberException',
     'ValidationException',
     'BuilderException',
-    'RollbackException'
+    'RollbackException',
+    'OperationExecutorException'
 ]
 
 class ChessException(Exception):

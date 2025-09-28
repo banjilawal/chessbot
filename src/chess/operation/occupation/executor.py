@@ -29,7 +29,7 @@ from chess.square import Square
 from chess.board import Board
 from chess.search import BoardSearch
 from chess.piece import Piece, KingPiece, CombatantPiece, Discovery, NullPieceException
-from chess.operation import Executor, Directive, ExecutionContext, OperationResult
+from chess.operation import OperationExecutor, Directive, ExecutionContext, OperationResult
 
 from chess.operation.occupation.directive import OccupationDirective, ScanDirective, AttackDirective
 from chess.operation.occupation.attack_exceptions import *
@@ -37,7 +37,7 @@ from chess.operation.occupation.exception import *
 from chess.operation.occupation import (
     OccupationDirectiveValidator,
     InvalidOccupationDirectiveException,
-    EmptyBoardSearchException,
+    FatalBoardSearchException,
     OccupationDirective,
     OccupationException,
 
@@ -57,24 +57,20 @@ from chess.operation.occupation import (
     BoardPieceRemovalRollbackException,
     SquareOccupationRollbackException,
     SourceSquareRollbackException,
-PositionUpdateRollbackException,
+    PositionUpdateRollbackException,
 )
 
 
-class OccupationExecutor(Executor):
+class OccupationExecutor(OperationExecutor):
 
     @staticmethod
-    def execute_directive(directive: Directive, context: ExecutionContext) -> OperationResult:
+    def execute_directive(directive: OccupationDirective, context: ExecutionContext) -> OperationResult:
         method = "OccupationExecutor.execute_directive"
         op_result_id = id_emitter.op_result_id
 
         validation = OccupationDirectiveValidator.validate(directive)
         if not validation.is_success():
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=directive,
-                exception=validation.exception
-            )
+            return OperationResult(op_result_id, directive, validation.exception)
 
         board = cast(Board, context.board)
 
@@ -88,9 +84,9 @@ class OccupationExecutor(Executor):
 
         if search_result.is_not_found():
             return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=EmptyBoardSearchException(f"{method}: {EmptyBoardSearchException.DEFAULT_MESSAGE}")
+                op_result_id,
+                original_directive,
+                FatalBoardSearchException(f"{method}: {FatalBoardSearchException.DEFAULT_MESSAGE}")
             )
         source_square = cast(Square, search_result.payload)
 

@@ -6,9 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/emitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/emitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/directive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/directive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/exception/chess_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/exception/chess_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/directive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/directive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/operation_executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/op_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/op_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/types/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/types/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/types/attack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/types/promotion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/promotion/promotion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/types/success/__init__.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,11 +289,11 @@
       <recent name="$PROJECT_DIR$/src/chess/common/name" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\operation\promotion" />
       <recent name="$PROJECT_DIR$/src/chess/engine" />
       <recent name="$PROJECT_DIR$/src/chess/piece" />
       <recent name="$PROJECT_DIR$/src/chess/operation/occupation" />
       <recent name="$PROJECT_DIR$/src/chess/common/id" />
-      <recent name="$PROJECT_DIR$/src/chess/common/name" />
     </key>
   </component>
   <component name="RunManager" selected="Python.piece (1)">
