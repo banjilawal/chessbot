@@ -9,7 +9,7 @@ __all__ = [
     'HostageValidationException',
     'NullHostagePieceException',
     'InvalidOccupationDirectiveException',
-    'FatalBoardSearchException',
+    'OccupationSearchException',
 ]
 
 class OccupationException(OperationExecutorException):
@@ -60,10 +60,10 @@ class NullCombatantPieceException(OccupationException):
     DEFAULT_MESSAGE = f"CombatantPiece cannot be null"
 
 
-class FatalBoardSearchException(OccupationException):
+class OccupationSearchException(OccupationException):
     """
     Board searches during an occupation should not fai. If they do there is an inconsistency in the board
     """
 
-    ERROR_CODE = "FATAL_BOARD_SEARCH_ERROR"
-    DEFAULT_MESSAGE = f"BoardSearch failed to find a square; this should not happen."
+    ERROR_CODE = "OCCUPATION_SEARCH_ERROR"
+    DEFAULT_MESSAGE = f"BoardSearch failed to find a square; this should not happen in an occupation operation"

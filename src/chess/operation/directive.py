@@ -1,10 +1,11 @@
 from typing import Generic, TypeVar, Optional
 
 
-T = TypeVar('T')
+A = TypeVar('A') # Actor Type
+R = TypeVar('R') # Resource Type
 
 
-class Directive(Generic[T]):
+class Directive(Generic[A, R]):
     """
     A data-holding object representing an`actor`'s intent to perform a
     state changing operation  on a `target`. An `Action` can change state of:
@@ -25,13 +26,13 @@ class Directive(Generic[T]):
         _target (`T`): The `target` can either
     """
     _id: int
-    _actor: T
-    _target: Optional[T]
+    _actor: A
+    _resource: Optional[R]
 
-    def __init__(self, directive_id: int, actor: T, target: Optional[T]=None):
+    def __init__(self, directive_id: int, actor: A, resource: Optional[R]=None):
         self._id = directive_id
         self._actor = actor
-        self._target = target
+        self._resource = resource
 
 
     @property
@@ -40,13 +41,13 @@ class Directive(Generic[T]):
 
 
     @property
-    def actor(self) -> T:
+    def actor(self) -> A:
         return self._actor
 
 
     @property
-    def target(self) -> Optional[T]:
-        return self._target
+    def resource(self) -> Optional[R]:
+        return self._resource
 
 
     def __eq__(self, other):

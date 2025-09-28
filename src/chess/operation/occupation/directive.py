@@ -15,7 +15,7 @@ __all__ = [
 class OccupationDirective(Directive):
 
     def __init__(self, occupation_id: int, actor: Piece, target_square: Square):
-        super().__init__(directive_id=occupation_id, actor=actor, target=target_square)
+        super().__init__(directive_id=occupation_id, actor=actor, resource=target_square)
 
     @property
     def id(self) -> int:
@@ -23,11 +23,11 @@ class OccupationDirective(Directive):
 
     @property
     def piece(self) -> Piece:
-        return cast(Piece, self.target)
+        return cast(Piece, self.actor)
 
     @property
     def square(self) -> Square:
-        return cast(self._target, Square)
+        return cast(Square, self.resource)
 
     def __eq__(self, other):
         if super().__eq__(other):

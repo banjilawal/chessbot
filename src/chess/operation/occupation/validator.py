@@ -67,10 +67,10 @@ class OccupationDirectiveValidator(Validator):
                 raise PieceValidationException(f"{method}: {PieceValidationException.DEFAULT_MESSAGE}")
             piece = cast(Piece, directive.actor)
 
-            square_validation = SquareValidator.validate(directive.target)
+            square_validation = SquareValidator.validate(directive.resource)
             if not square_validation.is_success():
                 raise SquareValidationException(f"{method}: {SquareValidationException.DEFAULT_MESSAGE}")
-            square = cast(Square, directive.target)
+            square = cast(Square, directive.resource)
 
             if square.coord == piece.current_position:
                 raise AutoOccupationException(f"{method}: {AutoOccupationException.DEFAULT_MESSAGE}")

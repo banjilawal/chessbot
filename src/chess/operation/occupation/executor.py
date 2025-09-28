@@ -37,7 +37,7 @@ from chess.operation.occupation.exception import *
 from chess.operation.occupation import (
     OccupationDirectiveValidator,
     InvalidOccupationDirectiveException,
-    FatalBoardSearchException,
+    OccupationSearchException,
     OccupationDirective,
     OccupationException,
 
@@ -61,7 +61,7 @@ from chess.operation.occupation import (
 )
 
 
-class OccupationExecutor(OperationExecutor):
+class OccupationExecutor(OperationExecutor[OccupationDirective]):
 
     @staticmethod
     def execute_directive(directive: OccupationDirective, context: ExecutionContext) -> OperationResult:
@@ -73,10 +73,8 @@ class OccupationExecutor(OperationExecutor):
             return OperationResult(op_result_id, directive, validation.exception)
 
         board = cast(Board, context.board)
-
-        original_directive = cast(OccupationDirective, directive)
-        piece = cast(Piece, original_directive.actor)
-        target_square = cast(Square, original_directive.target)
+        piece = cast(Piece, directive.actor)
+        target_square = cast(Square, directive.resource)
 
         search_result = BoardSearch.square_by_coord(coord=piece.current_position, board=board)
         if search_result.exception is not None:
@@ -86,7 +84,7 @@ class OccupationExecutor(OperationExecutor):
             return OperationResult(
                 op_result_id,
                 original_directive,
-                FatalBoardSearchException(f"{method}: {FatalBoardSearchException.DEFAULT_MESSAGE}")
+                OccupationSearchException(f"{method}: {OccupationSearchException.DEFAULT_MESSAGE}")
             )
         source_square = cast(Square, search_result.payload)
 
@@ -118,7 +116,7 @@ class OccupationExecutor(OperationExecutor):
             scan_directive = ScanDirective(
                 occupation_id=original_directive.id,
                 actor=original_directive.actor,
-                target_square=original_directive.target,
+                target_square=original_directive.resource,
                 subject=target_occupant,
                 scan_id=id_emitter.scan_id
             )
@@ -269,7 +267,7 @@ class OccupationExecutor(OperationExecutor):
         try:
             observer = cast(Piece, scan_directive.piece)
             subject = cast(Piece, scan_directive.subject)
-            target_square = cast(Square, scan_directive.target)
+            target_square = cast(Square, scan_directive.resource)
 
             build_outcome = DiscoveryBuilder.build(observer=observer, subject=subject)
             if not build_outcome.is_success():
