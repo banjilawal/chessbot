@@ -39,12 +39,12 @@ class AttackException(OccupationException):
 
 class UnexpectedNullEnemyException(AttackException):
     DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
-    DEFAULT_MESSAGE = "Target piece is unexpectedly null during capture; this should not happen."
+    DEFAULT_MESSAGE = "Target observer is unexpectedly null during capture; this should not happen."
 
 
 class FriendlyFireException(AttackException):
     DEFAULT_CODE = "FRIENDLY_FIRE"
-    DEFAULT_MESSAGE = "Attempted to attack a friendly piece; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to attack a friendly observer; this should not happen."
 
 
 class AttackOnEmptySquareException(AttackException):
@@ -54,27 +54,27 @@ class AttackOnEmptySquareException(AttackException):
 
 class EnemyNotOnBoardException(AttackException):
     DEFAULT_CODE = "ENEMY_NOT_ON_BOARD"
-    DEFAULT_MESSAGE = "Attempted to capture a piece not present on the board; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a observer not present on the board; this should not happen."
 
 
 class NonCombatantTargetException(AttackException):
     DEFAULT_CODE = "NON_COMBATANT_TARGET"
-    DEFAULT_MESSAGE = "Attempted to capture a non-combatant piece; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a non-combatant observer; this should not happen."
 
 
 class KingTargetException(AttackException):
     DEFAULT_CODE = "KING_TARGET"
-    DEFAULT_MESSAGE = "Attempted to capture a King piece; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a King observer; this should not happen."
 
 
 class AlreadyCapturedException(AttackException):
     DEFAULT_CODE = "ALREADY_CAPTURED"
-    DEFAULT_MESSAGE = "Attempted to capture a piece that already has a captor; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a observer that already has a captor; this should not happen."
 
 
 class MissingFromRosterException(AttackException):
     DEFAULT_CODE = "MISSING_FROM_ROSTER"
-    DEFAULT_MESSAGE = "Expected piece not found in its team's roster; this should not happen."
+    DEFAULT_MESSAGE = "Expected observer not found in its team's roster; this should not happen."
 
 
 class HostageTransferConflictException(AttackException):
@@ -86,17 +86,17 @@ class HostageTransferConflictException(AttackException):
 
 class RosterRemovalRollbackException(AttackException, RollbackException):
     DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to remove piece from enemy roster after assigning captor; rollback performed."
+    DEFAULT_MESSAGE = "Failed to remove observer from enemy roster after assigning captor; rollback performed."
 
 
 class HostageAdditionRollbackException(AttackException, RollbackException):
     DEFAULT_CODE = "HOSTAGE_ADDITION_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to add captured piece to captor's hostage list; rollback performed."
+    DEFAULT_MESSAGE = "Failed to add captured observer to captor's hostage list; rollback performed."
 
 
 class BoardPieceRemovalRollbackException(AttackException, RollbackException):
     DEFAULT_CODE = "BOARD_REMOVAL_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to remove captured piece from board; rollback performed."
+    DEFAULT_MESSAGE = "Failed to remove captured observer from board; rollback performed."
 
 
 class SquareOccupationRollbackException(AttackException, RollbackException):
@@ -111,4 +111,4 @@ class SourceSquareRollbackException(AttackException, RollbackException):
 
 class PositionUpdateRollbackException(AttackException, RollbackException):
     DEFAULT_CODE = "POSITION_UPDATE_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to update piece's position history after move; rollback executed."
+    DEFAULT_MESSAGE = "Failed to update observer's position history after move; rollback executed."

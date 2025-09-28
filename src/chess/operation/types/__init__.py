@@ -1,6 +1,6 @@
 # 2. Domain-Specific Operations
 #
-# Each operation type (occupation, promotion, castling, discovery, etc.) gets its own subpackage.
+# Each operation type (occupation, promotion, castling, subject, etc.) gets its own subpackage.
 # Inside, you can have:
 #
 # chess/
@@ -26,7 +26,7 @@
 #      │   ├── validator.py
 #      │   └── exception.py
 #      │
-#      └── discovery/
+#      └── subject/
 #          ├── __init__.py
 #          ├── executor.py
 #          ├── validator.py

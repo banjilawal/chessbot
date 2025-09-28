@@ -1,12 +1,12 @@
 # from abc import ABC
 #
-# from assurance.team_exception.validator.discovery import PieceValidationException
+# from assurance.team_exception.validator.subject import PieceValidationException
 # from assurance.team_exception.validator.square import SquareValidationException
-# from assurance.validators.discovery import PieceValidator
+# from assurance.validators.subject import PieceValidator
 # from assurance.validators.square import SquareValidator
 # from chess.board.square import Square
 # from chess.types.base import TransactionOrchestrator
-# from chess.discovery.model import Piece
+# from chess.subject.model import Piece
 #
 #
 # class CaptureFlow(TransactionOrchestrator, ABC):
@@ -15,10 +15,10 @@
 #     def
 #
 #     @staticmethod
-#     def enter_flow(discovery: Piece, square: Square):
+#     def enter_flow(subject: Piece, square: Square):
 #         method = "CaptureFlow.enter_flow"
 #
-#         piece_result = PieceValidator.validate(discovery)
+#         piece_result = PieceValidator.validate(subject)
 #         if not piece_result.is_success():
 #             raise PieceValidationException(
 #                 f"{method}: {PieceValidationException.DEFAULT_MESSAGE}"

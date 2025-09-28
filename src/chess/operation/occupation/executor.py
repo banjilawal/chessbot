@@ -62,8 +62,7 @@ class OccupationExecutor(Executor):
 
     @staticmethod
     def execute_directive(directive: Directive, context: ExecutionContext) -> OperationResult:
-        method = "OccupationExecutor.execute-directive"
-
+        method = "OccupationExecutor.execute_directive"
         op_result_id = id_emitter.op_result_id
 
         validation = OccupationDirectiveValidator.validate(directive)
@@ -74,20 +73,20 @@ class OccupationExecutor(Executor):
                 exception=validation.exception
             )
 
-        occupation_directive = cast(OccupationDirective, directive)
-        piece = cast(Piece, occupation_directive.actor)
-
         board = cast(Board, context.board)
-        target_square = cast(Square, occupation_directive.target)
 
-        search_result = BoardSearch.square_by_coord(piece.current_position)
+        original_directive = cast(OccupationDirective, directive)
+        piece = cast(Piece, original_directive.actor)
+        target_square = cast(Square, original_directive.target)
+
+        search_result = BoardSearch.square_by_coord(coord=piece.current_position, board=board)
         if search_result.exception is not None:
             raise search_result.exception
 
         if search_result.is_not_found():
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=EmptyBoardSearchException(f"{method}: {EmptyBoardSearchException.DEFAULT_MESSAGE}")
             )
         source_square = cast(Square, search_result.payload)
@@ -97,17 +96,29 @@ class OccupationExecutor(Executor):
         # if not validation.is_success():
         #     return validation.exception
         #
-        # discovery = cast(Piece, validation.request.actor)
+        # subject = cast(Piece, validation.request.actor)
         #
-        # source_square = board.find_square_by_coord(discovery.current_position)
+        # source_square = board.find_square_by_coord(subject.current_position)
         # target_square = cast(Square, request.target)
 
-
+        if target_square.occupant is None:
+            return OccupationExecutor._occupy_empty_square(
+                op_result_id=op_result_id,
+                piece=piece,
+                source_square=source_square,
+                target_square=target_square,
+                original_directive=original_directive,
+                directive=directive
+            )
         target_occupant = target_square.occupant
 
-
         if target_occupant is not None and not piece.is_enemy(target_occupant):
-            return OccupationExecutor._record_discovery(op_result_id, occupation_directive, piece, target_square)
+            return OccupationExecutor._record_discovery(
+                op_result_id=op_result_id,
+                observer=piece,
+                original_directive=original_directive,
+                blocked_square=target_square
+            )
 
 
         if target_occupant is not None and piece.is_enemy(target_occupant):
@@ -115,7 +126,7 @@ class OccupationExecutor(Executor):
         #
         #
         # if event == Event.ATTACK:
-        #     enemy = OccupationExecutor._attack_stream(discovery, target_square)
+        #     enemy = OccupationExecutor._attack_stream(subject, target_square)
 
         target_square.occupant = piece
         source_square.occupant = None
@@ -139,13 +150,82 @@ class OccupationExecutor(Executor):
         )
         return OperationResult(op_result_id=op_result_id, directive=success_directive)
 
+    @staticmethod
+    def _occupy_empty_square(
+        op_result_id: int,
+        piece: Piece,
+        source_square: Square,
+        target_square: Square,
+        original_directive: OccupationDirective,
+        directive: Directive
+    ) -> OperationResult:
+        method = "OccupationExecutor._occupy_empty_square"
+
+        if isinstance(piece, KingPiece):
+            if piece.team.profile.is_in_check(board=source_square.board):
+                return OperationResult(
+                    op_result_id=op_result_id,
+                    directive=original_directive,
+                    exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
+                    was_rolled_back=True
+                )
+
+        target_square.occupant = piece
+        if not target_square.occupant == piece:
+            # Rollback all changes
+            target_square.occupant = None
+
+            # Send the result indicating rollback
+            return OperationResult(
+                op_result_id=op_result_id,
+                directive=original_directive,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
+                was_rolled_back=True
+            )
+
+        source_square.occupant = None
+        if source_square.occupant == piece:
+            # Rollback all changes
+            target_square.occupant = None
+            source_square.occupant = piece
+
+            # Send the result indicating rollback
+            return OperationResult(
+                op_result_id=op_result_id,
+                directive=original_directive,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
+                was_rolled_back=True
+            )
+
+        piece.positions.push_coord(target_square.coord)
+        if not piece.current_position == target_square.coord:
+            # Rollback all changes
+            target_square.occupant = None
+            source_square.occupant = piece
+            piece.positions.undo_push()
+
+            # Send the result indicating rollback
+            return OperationResult(
+                op_result_id=op_result_id,
+                directive=directive,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
+                was_rolled_back=True
+            )
+
+        success_directive = OccupationDirective(
+            directive_id=id_emitter.directive_id,
+            actor=piece,
+            target=target_square
+        )
+        return OperationResult(op_result_id=op_result_id, directive=success_directive)
+
 
     @staticmethod
     def _record_discovery(
         op_result_id :int,
-        piece: Piece,
+        observer: Piece,
         blocked_square: Square,
-        occupation_directive: OccupationDirective
+        original_directive: OccupationDirective
     ) -> OperationResult:
         """
         A destination occupied by a friendly is handled differently during an occupation operation than a
@@ -153,7 +233,7 @@ class OccupationExecutor(Executor):
         not provided directly to avoid mixing two args of the same type.
 
         Args
-            `discovery` (Piece): Records the encounter with a friendly at  `blocked_square`
+            `subject` (Piece): Records the encounter with a friendly at  `blocked_square`
             `blocked_square` (Square): The blocking friendly is extracted from here
 
          Returns:
@@ -179,32 +259,42 @@ class OccupationExecutor(Executor):
             if blocking_occupant is None:
                 return OperationResult(
                     op_result_id=op_result_id,
-                    directive=occupation_directive,
+                    directive=original_directive,
                     exception=NullPieceException(f"{method}: {NullPieceException.DEFAULT_MESSAGE}")
                 )
 
-            if piece.is_enemy(blocking_occupant):
+            if observer.is_enemy(blocking_occupant):
                 return OperationResult(
                     op_result_id=op_result_id,
-                    directive=occupation_directive,
+                    directive=original_directive,
                     exception=CorruptRecordEventException(f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}")
                 )
 
-            encounter = Discovery(blocking_occupant)
-            if encounter not in piece.encounters:
-                piece.add_encounter(encounter)
-
-            if encounter not in piece.encounters:
+            build_outcome = DiscoveryBuilder.build(observer=observer, subject=blocking_occupant)
+            if not build_outcome.is_success():
                 return OperationResult(
                     op_result_id=op_result_id,
-                    directive=occupation_directive,
+                    directive=original_directive,
+                    exception=build_outcome.exception
+                )
+
+            discovery = cast(Discovery, build_outcome.payload)
+            search_result = PieceSearch.encounter_id(piece)
+
+            if discovery not in observer.discoveries:
+                observer.add_encounter(encounter)
+
+            if encounter not in observer.encounters:
+                return OperationResult(
+                    op_result_id=op_result_id,
+                    directive=original_directive,
                     exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
                     was_rolled_back=True
                 )
 
             success_directive = OccupationDirective(
-                actor=piece,
-                target=occupation_directive.square,
+                actor=observer,
+                target=original_directive.square,
                 directive_id=id_emitter.directive_id
             )
             return OperationResult(op_result_id=op_result_id, directive=success_directive)
@@ -217,15 +307,17 @@ class OccupationExecutor(Executor):
         source_square: Square,
         target_square: Square,
         board: Board,
-        occupation_directive: OccupationDirective
+        original_directive: OccupationDirective
     ) -> OperationResult:
 
         method = "OccupationExecutor._attack_enemy"
         enemy = target_square.occupant
 
         if enemy is None:
-            return OperationResult(op_result_id, occupation_directive,
-                UnexpectedNullEnemyException(
+            return OperationResult(
+                op_result_id=op_result_id,
+                directive=original_directive,
+                exception=UnexpectedNullEnemyException(
                     f"{method}: {UnexpectedNullEnemyException.DEFAULT_MESSAGE}"
                 )
             )
@@ -234,7 +326,7 @@ class OccupationExecutor(Executor):
         if not piece.is_enemy(enemy):
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=FriendlyFireException(
                     f"{method}: {FriendlyFireException.DEFAULT_MESSAGE}"
                 )
@@ -243,7 +335,7 @@ class OccupationExecutor(Executor):
         if enemy.positions.is_empty():
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=AttackOnEmptySquareException(
                     f"{method}: {AttackOnEmptySquareException.DEFAULT_MESSAGE}"
                 )
@@ -252,7 +344,7 @@ class OccupationExecutor(Executor):
         if enemy not in board.pieces:
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=EnemyNotOnBoardException(
                     f"{method}: {EnemyNotOnBoardException.DEFAULT_MESSAGE}"
                 )
@@ -261,7 +353,7 @@ class OccupationExecutor(Executor):
         if not isinstance(enemy, CombatantPiece):
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=KingTargetException(
                     f"{method}: {KingTargetException.DEFAULT_MESSAGE}"
                 )
@@ -270,7 +362,7 @@ class OccupationExecutor(Executor):
         if enemy.captor is not None:
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=AlreadyCapturedException(
                     f"{method}: {AlreadyCapturedException.DEFAULT_MESSAGE}"
                 )
@@ -280,7 +372,7 @@ class OccupationExecutor(Executor):
         if enemy not in enemy_team.roster:
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=MissingFromRosterException(
                     f"{method}: {MissingFromRosterException.DEFAULT_MESSAGE}"
                 )
@@ -289,7 +381,7 @@ class OccupationExecutor(Executor):
         if enemy in piece.team.hostages:
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=HostageTransferConflictException(
                     f"{method}: {HostageTransferConflictException.DEFAULT_MESSAGE}"
                 )
@@ -305,7 +397,7 @@ class OccupationExecutor(Executor):
             # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=RosterRemovalRollbackException(
                     f"{method}: {RosterRemovalRollbackException.DEFAULT_MESSAGE}"
                 ),
@@ -321,7 +413,7 @@ class OccupationExecutor(Executor):
             # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=HostageAdditionRollbackException(
                     f"{method}: {HostageAdditionRollbackException.DEFAULT_MESSAGE}"
                 ),
@@ -338,7 +430,7 @@ class OccupationExecutor(Executor):
             # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=BoardPieceRemovalRollbackException(
                     f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"
                 ),
@@ -358,7 +450,7 @@ class OccupationExecutor(Executor):
             # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=SquareOccupationRollbackException(
                     f"{method}: {SquareOccupationRollbackException.DEFAULT_MESSAGE}"
                 ),
@@ -378,7 +470,7 @@ class OccupationExecutor(Executor):
             # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=SourceSquareRollbackException(
                     f"{method}: {SourceSquareRollbackException.DEFAULT_MESSAGE}"
                 ),
@@ -399,7 +491,7 @@ class OccupationExecutor(Executor):
             # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
-                directive=occupation_directive,
+                directive=original_directive,
                 exception=PositionUpdateRollbackException(
                     f"{method}: {PositionUpdateRollbackException.DEFAULT_MESSAGE}"
                 ),

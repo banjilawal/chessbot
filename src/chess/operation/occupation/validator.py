@@ -19,15 +19,11 @@ class OccupationDirectiveValidator(Validator):
 
     @staticmethod
     def validate(t: Generic[T]) -> Result[OccupationDirective]:
-        entity = "OccupationDirective"
-        class_name = f"{entity}Validator"
-        method = f"{class_name}.validate"
-
         """
-        Validates an OOccupationDirective meets specifications:
+        Validates an OccupationDirective meets specifications:
             - Not null
             - `id` does not fail validator
-            - `actor` is a valid chess discovery
+            - `actor` is a valid chess subject
             - `target` is a valid square
         Any validation failure raises an `InvalidOccupationDirectiveException`.
 
@@ -40,17 +36,19 @@ class OccupationDirectiveValidator(Validator):
 
         Raises:
             `TypeError`: if `t` is not OperationDirective
-            `NullOccupationDirectiveException`: if `t` is null   
+            `NullOccupationDirectiveException`: if `t` is null
 
             `IdValidationException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
             `SquareValidationException`: if `target` fails validator
-            
+
             `AutoOccupationException`: if target already occupies the square
             `KingAttackException`: if the target square is occupied by an enemy king
 
-            `InvalidOccupationDirectiveException`: Wraps any preceding exceptions      
+            `InvalidOccupationDirectiveException`: Wraps any preceding exceptions
         """
+        method = "OccupationDirective.validate"
+
         try:
             if t is None:
                 raise NullOccupationDirectiveException(
@@ -81,7 +79,6 @@ class OccupationDirectiveValidator(Validator):
                 raise AutoOccupationException(f"{method}: {AutoOccupationException.DEFAULT_MESSAGE}")
             
             return Result(payload=directive)
-
 
         except (
             TypeError,
