@@ -8,7 +8,8 @@ __all__ = [
     'AutoOccupationException',
     'HostageValidationException',
     'NullHostagePieceException',
-    'InvalidOccupationDirectiveException'
+    'InvalidOccupationDirectiveException',
+    'UnexpectedNullEnemyException'
 ]
 
 class OccupationException(ExecutionException):
@@ -66,6 +67,3 @@ class EmptyBoardSearchException(OccupationException):
 
     ERROR_CODE = "BOARD_SEARCH_ERROR"
     DEFAULT_MESSAGE = f"Unexpected empty square search result"
-
-
-

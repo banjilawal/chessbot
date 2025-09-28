@@ -64,7 +64,7 @@ class OccupationExecutor(Executor):
 
 
         if target_occupant is not None and not piece.is_enemy(target_occupant):
-            return OccupationExecutor._record_encounter(op_result_id, occupation_directive, piece, target_square)
+            return OccupationExecutor._record_discovery(op_result_id, occupation_directive, piece, target_square)
 
 
         if target_occupant is not None and piece.is_enemy(target_occupant):
@@ -98,15 +98,12 @@ class OccupationExecutor(Executor):
 
 
     @staticmethod
-    def _record_encounter(
+    def _record_discovery(
         op_result_id :int,
         piece: Piece,
         blocked_square: Square,
         occupation_directive: OccupationDirective
     ) -> OperationResult:
-
-        method = "OccupationExecutor._record_encounter"
-
         """
         A destination occupied by a friendly is handled differently during an occupation operation than a
         scan operation. The difference is the conditions which raise exceptions. The friendly occupant is
@@ -127,11 +124,11 @@ class OccupationExecutor(Executor):
             ShortNameException: if t is shorter than MIN_NAME_LENGTH
 
             NameValidationException: Wraps any preceding team_exception 
-        """
 
-        """During an occupation operation the a square occupied by a friendly is handled differently 
+        During an occupation operation the a square occupied by a friendly is handled differently
         than a `ScanOperation.        
         """
+        method = "OccupationExecutor._record_encounter"
 
         try:
             blocking_occupant = blocked_square.occupant
@@ -185,7 +182,7 @@ class OccupationExecutor(Executor):
         enemy = target_square.occupant
         if enemy is None:
             return OperationResult(op_result_id, occupation_directive,
-                AttackingNullPieceException(f"{method}: {AttackingNullPieceException.DEFAULT_MESSAGE}")
+                UnexpectedNullEnemyException(f"{method}: {UnexpectedNullEnemyException.DEFAULT_MESSAGE}")
             )
 
 
@@ -193,35 +190,35 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+                exception=FriendlyFireException(f"{method}: {FriendlyFireException.DEFAULT_MESSAGE}")
             )
 
         if enemy.positions.is_empty():
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+                exception=AttackOnEmptySquareException(f"{method}: {AttackOnEmptySquareException.DEFAULT_MESSAGE}")
             )
 
         if enemy not in board.pieces:
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+                exception=OEnemyNotOnBoardException(f"{method}: {EnemyNotOnBoardException.DEFAULT_MESSAGE}")
             )
 
         if not isinstance(enemy, CombatantPiece):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=AttackingKingException(f"{method}: {AttackingKingException.DEFAULT_MESSAGE}")
+                exception=KingTargetException(f"{method}: {KingTargetException.DEFAULT_MESSAGE}")
             )
 
         if enemy.captor is not None:
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+                exception=AlreadyCapturedException(f"{method}: {AlreadyCapturedException.DEFAULT_MESSAGE}")
             )
 
         enemy_team = enemy.team
@@ -229,14 +226,14 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+                exception=MissingFromRosterException(f"{method}: {MissingFromRosterException.DEFAULT_MESSAGE}")
             )
 
         if enemy in piece.team.hostages:
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+                exception=HostageTransferConflictException(f"{method}: {HostageTransferConflictException.DEFAULT_MESSAGE}")
             )
 
         enemy.captor = piece
@@ -247,7 +244,7 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=RosterRemovalException(f"{method}: {RosterRemovalException.DEFAULT_MESSAGE}"),
+                exception=RosterRemovalRollbackException(f"{method}: {RosterRemovalRollbackException.DEFAULT_MESSAGE}"),
                 was_rolled_back=True
             )
 
@@ -258,7 +255,7 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=HostageAdditionException(f"{method}: {HostageAdditionException.DEFAULT_MESSAGE}"),
+                exception=HostageAdditionRollbackException(f"{method}: {HostageAdditionRollbackException.DEFAULT_MESSAGE}"),
                 was_rolled_back=True
             )
 
@@ -270,7 +267,7 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=BoardPieceRemovalException(f"{method}: {BoardPieceRemovalException.DEFAULT_MESSAGE}"),
+                exception=BoardPieceRemovalRollbackException(f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"),
                 was_rolled_back=True
             )
 
@@ -285,7 +282,7 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=SquareOccupationException(f"{method}: {SquareOccupationException.DEFAULT_MESSAGE}"),
+                exception=SquareOccupationRollbackException(f"{method}: {SquareOccupationRollbackException.DEFAULT_MESSAGE}"),
                 was_rolled_back=True
             )
 
@@ -300,7 +297,7 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=SquareVacationException(f"{method}: {SquareVacationException.DEFAULT_MESSAGE}"),
+                exception=SourceSquareRollbackException(f"{method}: {SourceSquareRollbackException.DEFAULT_MESSAGE}"),
                 was_rolled_back=True
             )
 
@@ -316,7 +313,7 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=PositionUpdateException(f"{method}: {PositionUpdateException.DEFAULT_MESSAGE}}"),
+                exception=PositionUpdateRollbackException(f"{method}: {PositionUpdateRollbackException.DEFAULT_MESSAGE}}"),
                 was_rolled_back=True
             )
 

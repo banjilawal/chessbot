@@ -13,10 +13,11 @@ from .team import TeamSearch
 class BoardSearch:
     """Static search methods for Piece entities"""
 
-
     @staticmethod
     def piece_by_id(piece_id: int, board: Board) -> SearchResult['Piece']:
         """Find a discovery by ID across all board"""
+        method = "BoardSearch.piece_by_id"
+
         try:
             id_validation= IdValidator.validate(piece_id)
             if not id_validation.is_success():
@@ -36,6 +37,8 @@ class BoardSearch:
     @staticmethod
     def piece_by_name(piece_name: str, board: Board) -> SearchResult['Piece']:
         """Find a discovery by name across all board"""
+        method = "BoardSearch.piece_by_name"
+
         try:
             validation = NameValidator.validate(piece_name)
             if not validation.is_success():
@@ -58,6 +61,8 @@ class BoardSearch:
     @staticmethod
     def piece_by_coord(coord: Coord, board: Board) -> SearchResult['Piece']:
         """Find a discovery by coordinate across all board"""
+        method = "BoardSearch.piece_by_coord"
+
         try:
             # Validate input
             validation = CoordValidator.validate(coord)
@@ -80,8 +85,8 @@ class BoardSearch:
 
     @staticmethod
     def square_by_id(square_id: int, board: 'Board') -> SearchResult['Square']:
-        method = "BoardSearch.square_by_id"
         """Find a square by id"""
+        method = "BoardSearch.square_by_id"
 
         try:
             validation = IdValidator.validate(square_id)
@@ -96,10 +101,8 @@ class BoardSearch:
         except Exception as e:
             return SearchResult(exception=e)
 
-
-    def square_by_name(self, name: str, board: Board) -> Result[Square]:
-        method = f"BoardSearch.square_by_name"
-
+    @staticmethod
+    def square_by_name(name: str, board: Board) -> SearchResult[Square]:
         """" 
         Finds a square by its name. 
 
@@ -112,6 +115,7 @@ class BoardSearch:
         Raises: 
             NameValidationException: If name is fails any validators checks.
         """
+        method = f"BoardSearch.square_by_name"
 
         try:
             validation = NameValidator.validate(name)
@@ -131,9 +135,7 @@ class BoardSearch:
 
     @staticmethod
     def square_by_coord(coord: Coord, board: 'Board') ->  SearchResult['Square']:
-        method = f"BoardSearch.square_by_coord"
-
-        """" 
+        """"
         Finds a square on the ChessBoard by coord.
 
         Args:
@@ -145,6 +147,7 @@ class BoardSearch:
         Raises: 
             CoordValidationException: If coord is fails any validators checks.
         """
+        method = f"BoardSearch.square_by_coord"
 
         try:
             validation = CoordValidator.validate(coord)

@@ -15,6 +15,34 @@ class Team:
     _roster: list['Piece']
     _hostages: list['Piece']
 
+
+    def add_to_roster(self, piece: Piece):
+        method = "Team.add_to_roster"
+
+        """
+        A newly constructed discovery uses Team.add_piece to add itself to the team's roster. Team.roster returns
+        a read-only copy of the list. This is the only mutator that can directly access the array.
+
+        Args:
+            discovery (Piece): validated discovery added to the team's roster
+
+        Raises:
+            NullPieceException: if the discovery is null
+            InvalidTeamAssignmentException: if discovery.team does not match the team instance
+        """
+        try:
+            if piece is None:
+                raise NullPieceException(f"{method} cannot add a null discovery to the team")
+
+            if not piece.team == self:
+                raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")
+
+            if piece not in self._roster:
+                  self._roster.append(piece)
+
+        except (NullPieceException, ConflictingTeamException) as e:
+            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
+
     def __init__(self, team_id: int, commander: 'Commander', profile: TeamProfile):
         method = "Team.__init__"
 
@@ -217,32 +245,7 @@ class Team:
             raise TeamSearchException(f"{method} {TeamException.DEFAULT_MESSAGE}") from e
 
 
-    def add_to_roster(self, piece: Piece):
-        method = "Team.add_to_roster"
 
-        """
-        A newly constructed discovery uses Team.add_piece to add itself to the team's roster. Team.roster returns
-        a read-only copy of the list. This is the only mutator that can directly access the array.
-
-        Args:
-            discovery (Piece): validated discovery added to the team's roster
-
-        Raises:
-            NullPieceException: if the discovery is null
-            InvalidTeamAssignmentException: if discovery.team does not match the team instance
-        """
-        try:
-            if piece is None:
-                raise NullPieceException(f"{method} cannot add a null discovery to the team")
-
-            if not piece.team == self:
-                raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")
-
-            if piece not in self._roster:
-                  self._roster.append(piece)
-
-        except (NullPieceException, ConflictingTeamException) as e:
-            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
 
 
 

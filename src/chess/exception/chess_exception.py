@@ -6,7 +6,8 @@ __all__ = [
     'BlankStringException',
     'NullNumberException',
     'ValidationException',
-    'BuilderException'
+    'BuilderException',
+    'RollbackException'
 ]
 
 class ChessException(Exception):
@@ -96,4 +97,21 @@ class BuilderException(ChessException):
     """
     ERROR_CODE = "BUILDER_ERROR"
     DEFAULT_MESSAGE = "Builder  raised an exception"
+
+
+class RollbackException(ChessException):
+    """
+    Base class for rollback-related errors in the chess engine.
+
+    PURPOSE:
+        Raised when an operation (piece move, capture, board update, etc.)
+        is reverted due to inconsistency or failed validation.
+
+    ATTRIBUTES:
+        code (str): Short machine-readable error code for logging / testing.
+        message (str): Human-readable default message.
+    """
+    DEFAULT_CODE = "ROLLBACK"
+    DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
+
 
