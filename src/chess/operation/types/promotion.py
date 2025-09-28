@@ -4,7 +4,7 @@ from chess.rank.rank_spec import RankSpec
 from chess.operation.orchestrator import TransactionOrchestrator
 from chess.rank.queen import Queen, PromotedQueen
 
-from chess.operation.validators.promote import PromotionRequestValidator
+from chess.operation.promotion.promote import PromotionRequestValidator
 from chess.piece.piece import Piece
 
 class PromotionException(RankException):

@@ -60,8 +60,8 @@ from .exception import *
 from .attack_exceptions import *
 
 from .directive import OccupationDirective
-from .occupation_executor import OccupationExecutor
-from .occupation_directive_validator import OccupationDirectiveValidator
+from .executor import OccupationExecutor
+from .validator import OccupationDirectiveValidator
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
