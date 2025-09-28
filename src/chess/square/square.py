@@ -1,4 +1,4 @@
-from typing import Optional, TYPE_CHECKING, cast
+from typing import Optional, cast
 
 from chess.piece import Piece
 from chess.coord import Coord, CoordValidator

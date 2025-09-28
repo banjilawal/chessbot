@@ -9,7 +9,7 @@ __all__ = [
     'HostageValidationException',
     'NullHostagePieceException',
     'InvalidOccupationDirectiveException',
-    'UnexpectedNullEnemyException'
+    'EmptyBoardSearchException',
 ]
 
 class OccupationException(ExecutionException):

@@ -1,3 +1,26 @@
+"""
+Module: occupation_executor
+Author: Banji Lawal
+Created: 2025-09-28
+Purpose:
+    Implements the OccupationExecutor class, which handles executing occupation
+    directives in the chess engine. This includes moving pieces, capturing enemies,
+    and coordinating rollback logic in case of inconsistencies or failed operations.
+
+Contents:
+    - OccupationExecutor: Main class responsible for executing occupation directives.
+    - _attack_enemy: Static method for processing attacks on enemy pieces.
+    - _record_discovery: Static method for handling discoveries on occupied squares.
+    - Other helper functions for executing occupation directives safely.
+
+Notes:
+    This module is part of the chess.operation.occupation package.
+    Exceptions raised during execution are defined in attack_exceptions.py and exception.py.
+"""
+
+
+
+
 from typing import cast
 
 from chess.common import id_emitter
@@ -11,7 +34,7 @@ from chess.operation import Executor, Directive, ExecutionContext, OperationResu
 from chess.operation.occupation import (
     OccupationDirectiveValidator,
     InvalidOccupationDirectiveException,
-    # EmptyBoardSearchException,
+    EmptyBoardSearchException,
     OccupationDirective,
     OccupationException,
 
@@ -33,9 +56,6 @@ from chess.operation.occupation import (
     SourceSquareRollbackException,
 PositionUpdateRollbackException,
 )
-
-
-
 
 
 class OccupationExecutor(Executor):
@@ -381,7 +401,7 @@ class OccupationExecutor(Executor):
                 op_result_id=op_result_id,
                 directive=occupation_directive,
                 exception=PositionUpdateRollbackException(
-                    f"{method}: {PositionUpdateRollbackException.DEFAULT_MESSAGE}}"
+                    f"{method}: {PositionUpdateRollbackException.DEFAULT_MESSAGE}"
                 ),
                 was_rolled_back=True
             )

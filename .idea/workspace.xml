@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/occupation_executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/occupation_directive_validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -517,7 +520,7 @@
       <workItem from="1758857921588" duration="688000" />
       <workItem from="1758883157211" duration="7552000" />
       <workItem from="1758956378016" duration="11841000" />
-      <workItem from="1759038118524" duration="12179000" />
+      <workItem from="1759038118524" duration="14419000" />
     </task>
     <servers />
   </component>
