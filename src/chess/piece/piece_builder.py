@@ -14,16 +14,14 @@ from chess.team.exception import RankQuotaFullException
 class PieceBuilder(Enum):
     """
     Builder class responsible for safely constructing `Piece` instances.
-    
-    `EncounterBuilder` ensures that `Piece` objects are always created successfully by
-    performing comprehensive validation checks during construction. This separates
-    the responsibility of building from validating - `EncounterBuilder` focuses on
-    creation while `PieceValidator` is used for validating existing `Piece` instances
-    that are passed around the system.
-    
-    The builder runs through all validation checks individually to guarantee that
-    any `Piece` instance it produces meets all required specifications before
-    construction completes.
+
+    `PieceBuilder` ensures that `Piece` objects are always created successfully by performing comprehensive validation
+     checks during construction. This separates the responsibility of building from validating - `PieceBuilder` 
+     focuses on creation while `PieceValidator` is used for validating existing `Piece` instances that are passed 
+     around the system.
+
+    The builder runs through all validation checks individually to guarantee that any `Piece` instance it produces 
+    meets all required specifications before construction completes
     
     Usage:
         ```python
@@ -35,23 +33,21 @@ class PieceBuilder(Enum):
         ```
     
     See Also:
-        `PieceValidator`: Used for validating existing `Piece` instances
         `Piece`: The data structure being constructed
+        `PieceValidator`: Used for validating existing `Piece` instances
         `BuildResult`: Return type containing the built `Piece` or error information
     """
 
     @staticmethod
     def build(piece_id: int, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
         """
-        Constructs a new `Piece` instance with comprehensive validation.
+        Constructs a new `Piece` instance with comprehensive checks on the parameters and states during the
+        build process.
 
-        Performs individual validation checks on each component to ensure the 
-        resulting `Piece` meets all specifications. The method validates bounds, 
-        null checks, and uses `PieceValidator` for final instance validation 
-        before returning a successfully constructed `Piece`.
-
-        This method guarantees that if a `BuildResult` with a successful status 
-        is returned, the contained `Piece` is valid and ready for use.
+        Performs individual validation checks on each component to ensure the resulting `Piece` meets all 
+        specifications. If all checks are passed, a `Piece` instance will be returned. It is not necessary to perform 
+        any additional validation checks on the returned `Piece` instance. This method guarantees if a `BuildResult` 
+        with a successful status is returned, the contained `Piece` is valid and ready for use.
 
         Args:
            `piece_id`(`int`): The unique id for the discovery. Must pass `IdValidator` checks.
@@ -66,23 +62,22 @@ class PieceBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-           PieceBuilderException: Wraps any underlying validation failures
-           that occur during the construction process. This includes:
-            `IdValidationException`: if `piece_id` fails validation checks
-            `NameValidationException`: if `name` fails validation checks
-            `RankValidationException`: if `rank` fails validation checks
-            `TeamValidationException`: if `team` fails validation checks
-            `InvalidTeamAssignmentException`: If `discovery.team` is different from `team` parameter
-            `RankQuotaFullException`: If the `team` has no empty slots for the `discovery.rank`
-            `RankQuotaFullException`: If `discovery.team` is equal to `team` parameter
-                but `team.roster` still does not have the discovery
-
+           PieceBuilderException: Wraps any underlying validation failures that occur during the construction process.
+           This includes:
+                * `IdValidationException`: if `piece_id` fails validation checks
+                * `NameValidationException`: if `name` fails validation checks
+                * `RankValidationException`: if `rank` fails validation checks
+                * `TeamValidationException`: if `team` fails validation checks
+                * `InvalidTeamAssignmentException`: If `discovery.team` is different from `team` parameter
+                * `RankQuotaFullException`: If the `team` has no empty slots for the `discovery.rank`
+                * `RankQuotaFullException`: If `discovery.team` is equal to `team` parameter but `team.roster` still does
+                    not have the discovery
 
         Note:
-            The builder performs validation at construction time, while 
-            `PieceValidator` is used for validating `Piece` instances that 
-            are passed around after creation. 
-            This separation of concerns makes the validation responsibilities clearer.
+            The builder runs through all the checks on parameters and state to guarantee only a valid `Piece` is 
+            created, while `PieceValidator` is used for validating `Piece` instances that are passed around after 
+            creation. This separation of concerns makes the validation and building independent of each other and 
+            simplifies maintenance.
 
         Example:
             ```python

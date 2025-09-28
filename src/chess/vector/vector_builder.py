@@ -13,15 +13,13 @@ class VectorBuilder(Enum):
     """
     Builder class responsible for safely constructing `Vector` instances.
 
-    `VectorBuilder` ensures that `Vector` objects are always created successfully by
-    performing comprehensive validation checks during construction. This separates
-    the responsibility of building from validating - `VectorBuilder` focuses on
-    creation while `VectorValidator` is used for validating existing `Vector` instances
-    that are passed around the system.
+    `VectorBuilder` ensures that `Vector` objects are always created successfully by performing comprehensive validation
+     checks during construction. This separates the responsibility of building from validating - `VectorBuilder`
+     focuses on creation while `VectorValidator` is used for validating existing `Vector` instances that are passed
+     around the system.
 
-    The builder runs through all validation checks individually to guarantee that
-    any `Vector` instance it produces meets all required specifications before
-    construction completes.
+    The builder runs through all validation checks individually to guarantee that any `Vector` instance it produces
+    meets all required specifications before construction completes.
 
     Usage:
         ```python
@@ -33,29 +31,27 @@ class VectorBuilder(Enum):
         ```
         
     See Also:
-        `VectorValidator`: Used for validating existing `Vector` instances
         `Vector`: The data structure being constructed
+        `VectorValidator`: Used for validating existing `Vector` instances
         `BuildResult`: Return type containing the built `Vector` or error information
     """
 
     @staticmethod
     def build(x: int, y: int) -> BuildResult[Vector]:
         """
-        Constructs a new `Vector` instance with comprehensive validation.
+        Constructs a new `Vector` instance with comprehensive checks on the parameters and states during the
+        build process.
 
-        Performs individual validation checks on each component to ensure the
-        resulting `Vector` meets all specifications. The method validates bounds,
-        null checks, and uses `VectorValidator` for final instance validation
-        before returning a successfully constructed `Vector`.
-
-        This method guarantees that if a `BuildResult` with a successful status
-        is returned, the contained `Vector` is valid and ready for use.
+        Performs individual validation checks on each component to ensure the resulting `Vector` meets all 
+        specifications. If all checks are passed, a `Vector` instance will be returned. It is not necessary to perform 
+        any additional validation checks on the returned `Vector` instance. This method guarantees if a `BuildResult` 
+        with a successful status is returned, the contained `Vector` is valid and ready for use.
 
         Args:
-            x (int): The x-component of the vector. Must not be None and must
-                    be within [-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE] bounds.
-            y (int): The y-component of the vector. Must not be None and must
-                    be within [-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE] bounds.
+            `x` (`int`): The x-component of the vector. Must not be None and must be within 
+                [`-KNIGHT_STEP_SIZE`, `KNIGHT_STEP_SIZE ] bounds.
+            `y` (`int`): The y-component of the vector. Must not be None and must be within 
+            [   -KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE] bounds.
 
         Returns:
             BuildResult[Vector]: A `BuildResult` containing either:
@@ -63,19 +59,19 @@ class VectorBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-            VectorBuilderException: Wraps any underlying validation failures
-                that occur during the construction process. This includes:
-                - `NullXComponentException`: if x is None
-                - `NullYComponentException`: if y is None
-                - `VectorBelowBoundsException`: if x or y < -KNIGHT_STEP_SIZE
-                - `VectorAboveBoundsException`: if x or y > KNIGHT_STEP_SIZE
-                - Any validation errors from `VectorValidator`
+            `VectorBuilderException`: Wraps any underlying validation failures that occur during the construction
+            process. This includes:
+                * `NullXComponentException`: if x is None
+                * `NullYComponentException`: if y is None
+                * `VectorBelowBoundsException`: if x or y < -KNIGHT_STEP_SIZE
+                * `VectorAboveBoundsException`: if x or y > KNIGHT_STEP_SIZE
+                * Any validation errors from `VectorValidator`
 
         Note:
-            The builder performs runs through all the checks on parameters and state to guarantee only
-            a valid Vector is created, while `VectorValidator` is used for validating `Vector` instances that
-            are passed around after creation. This separation of concerns makes the validation and building
-            independent of each other and simplifies maintenance.
+            The builder runs through all the checks on parameters and state to guarantee only a valid `Vector` is 
+            created, while `VectorValidator` is used for validating `Vector` instances that are passed around after 
+            creation. This separation of concerns makes the validation and building independent of each other and 
+            simplifies maintenance.
 
         Example:
             ```python
@@ -134,19 +130,19 @@ class VectorBuilder(Enum):
 
 
 # def main():
-#     build_outcome = CoordBuilder.build(3, 4)
+#     build_outcome = VectorBuilder.build(3, 4)
 #     if build_outcome.is_success():
-#         coord = build_outcome.payload
-#         print(f"Successfully built coord: {coord}")
+#         vector = build_outcome.payload
+#         print(f"Successfully built vector: {vector}")
 #     else:
-#         print(f"Failed to build coord: {build_outcome.team_exception}")
+#         print(f"Failed to build vector: {build_outcome.team_exception}")
 #
-#     build_outcome = CoordBuilder.build(-1,  4)
+#     build_outcome = VectorBuilder.build(-1,  4)
 #     if build_outcome.is_success():
-#         coord = build_outcome.payload
-#         print(f"Successfully built coord: {coord}")
+#         vector = build_outcome.payload
+#         print(f"Successfully built vector: {vector}")
 #     else:
-#         print(f"Failed to build coord: {build_outcome.team_exception}")
+#         print(f"Failed to build vector: {build_outcome.team_exception}")
 #
 # if __name__ == "__main__":
 #     main()

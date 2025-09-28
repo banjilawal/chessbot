@@ -15,15 +15,13 @@ class ScalarBuilder(Enum):
     """
     Builder class responsible for safely constructing `Scalar` instances.
 
-    `ScalarBuilder` ensures that `Scalar` objects are always created successfully by
-    performing comprehensive validation checks during construction. This separates
-    the responsibility of building from validating - `ScalarBuilder` focuses on
-    creation while `ScalarValidator` is used for validating existing `Scalar` instances
-    that are passed around the system.
+    `ScalarBuilder` ensures that `Scalar` objects are always created successfully by performing comprehensive validation
+     checks during construction. This separates the responsibility of building from validating - `ScalarBuilder` 
+     focuses on creation while `ScalarValidator` is used for validating existing `Scalar` instances that are passed 
+     around the system.
 
-    The builder runs through all validation checks individually to guarantee that
-    any `Scalar` instance it produces meets all required specifications before
-    construction completes.
+    The builder runs through all validation checks individually to guarantee that any `Scalar` instance it produces 
+    meets all required specifications before construction completes
 
     Usage:
         ```python
@@ -36,23 +34,21 @@ class ScalarBuilder(Enum):
         ```
 
     See Also:
-        `ScalarValidator`: Used for validating existing `Scalar` instances
         `Scalar`: The data structure being constructed
+        `ScalarValidator`: Used for validating existing `Scalar` instances
         `BuildResult`: Return type containing the built `Scalar` or error information
     """
     
     @staticmethod
     def build(value: int) -> BuildResult[Scalar]:
         """
-        Constructs a new `Scalar` instance with comprehensive validation.
+        Constructs a new `Scalar` instance with comprehensive checks on the parameters and states during the
+        build process.
 
-        Performs individual validation checks on each component to ensure the 
-        resulting `Scalar` meets all specifications. The method validates bounds, 
-        null checks, and uses `ScalarValidator` for final instance validation 
-        before returning a successfully constructed `Scalar`.
-
-        This method guarantees that if a `BuildResult` with a successful status 
-        is returned, the contained `Scalar` is valid and ready for use.
+        Performs individual validation checks on each component to ensure the resulting `Scalar` meets all 
+        specifications. If all checks are passed, a `Scalar` instance will be returned. It is not necessary to perform 
+        any additional validation checks on the returned `Scalar` instance. This method guarantees if a `BuildResult` 
+        with a successful status is returned, the contained `Scalar` is valid and ready for use.
 
         Args:
            `scalar_id`(`int`): The unique id for the scalar. Must pass `IdValidator` checks.
@@ -67,20 +63,20 @@ class ScalarBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-            ScalarBuilderException: Wraps any underlying validation failures 
-                that occur during the construction process. This includes:
-            `NullScalarException`: if `t` is null   
-            `TypeError`: if `t` is not Scalar
-            `NullNumberException`: If `scalar.value` is null   
-            `ScalarBelowLowerBoundException`: If `scalar.value` < 0
-            `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
-            `ScalarValidationException`: Wraps any preceding exceptions    
+            `ScalarBuilderException`: Wraps any underlying validation failures that occur during the construction
+            process. This includes:
+                * `NullScalarException`: if `t` is null
+                * `TypeError`: if `t` is not Scalar
+                * `NullNumberException`: If `scalar.value` is null
+                * `ScalarBelowLowerBoundException`: If `scalar.value` < 0
+                * `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
+                * `ScalarValidationException`: Wraps any preceding exceptions
 
         Note:
-            The builder performs validation at construction time, while 
-            `ScalarValidator` is used for validating `Scalar` instances that 
-            are passed around after creation. 
-            This separation of concerns makes the validation responsibilities clearer.
+            The builder runs through all the checks on parameters and state to guarantee only a valid `Scalar` is 
+            created, while `ScalarValidator` is used for validating `Scalar` instances that are passed around after 
+            creation. This separation of concerns makes the validation and building independent of each other and 
+            simplifies maintenance.
 
         Example:
             ```python

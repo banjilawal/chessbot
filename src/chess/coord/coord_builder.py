@@ -15,15 +15,12 @@ class CoordBuilder(Enum):
     """
     Builder class responsible for safely constructing `Coord` instances.
     
-    `CoordBuilder` ensures that `Coord` objects are always created successfully by
-    performing comprehensive validation checks during construction. This separates
-    the responsibility of building from validating - `CoordBuilder` focuses on
-    creation while `CoordValidator` is used for validating existing `Coord` instances
-    that are passed around the system.
+    `CoordBuilder` ensures that `Coord` objects are always created successfully by performing comprehensive validation
+    checks during construction. This separates the responsibility of building from validating `CoordBuilder` focuses on
+    creation while `CoordValidator` is used for validating existing `Coord` instances that are passed around the system.
     
-    The builder runs through all validation checks individually to guarantee that
-    any `Coord` instance it produces meets all required specifications before
-    construction completes.
+    The builder runs through all validation checks individually to guarantee that any `Coord` instance it produces meets
+    all required specifications before construction completes.
     
     Usage:
         ```python
@@ -35,8 +32,8 @@ class CoordBuilder(Enum):
         ```
     
     See Also:
+        `Coord`: Fundamental data structure for representing coordinates on a chessboard.
         `CoordValidator`: Used for validating existing `Coord` instances
-        `Coord`: The data structure being constructed
         `BuildResult`: Return type containing the built `Coord` or error information
     """
 
@@ -47,10 +44,9 @@ class CoordBuilder(Enum):
         build process.
 
         Performs individual validation checks on each component to ensure the resulting `Coord` meets all
-        specifications. If all checks are passed, a `Coord` instance will be returned. It is not necessary
-        to perform any additional validation checks on the returned `Coord` instance. This method guarantees
-        if a `BuildResult` with a successful status is returned, the contained `Coord` is valid and ready for
-        use.
+        specifications. If all checks are passed, a `Coord` instance will be returned. It is not necessary to perform
+        any additional validation checks on the returned `Coord` instance. This method guarantees if a `BuildResult`
+        with a successful status is returned, the contained `Coord` is valid and ready for use.
 
         Args:
             `row` (int): The row index on `Board` where `Coord` is located. Must not be Nll
@@ -64,20 +60,20 @@ class CoordBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-            CoordBuilderException: Wraps any underlying validation failures
-                that occur during the construction process. This includes:
-                - `NullRowException`: if `row` is null
-                - `RowBelowBoundsException`: if `row` < 0
-                - `RowAboveBoundsException`: if `row` >= `ROW_SIZE`
-                - `NullColumnException`: if `column` is null
-                - `ColumnBelowBoundsException`: if `column` < 0
-                - `ColumnAboveBoundsException`: if `column` >= `ROW_SIZE`
+            `CoordBuilderException`: Wraps any underlying validation failures that occur during the construction process.
+            This includes:
+                * `NullRowException`: if `row` is null
+                * `RowBelowBoundsException`: if `row` < 0
+                * `RowAboveBoundsException`: if `row` >= `ROW_SIZE`
+                * `NullColumnException`: if `column` is null
+                * `ColumnBelowBoundsException`: if `column` < 0
+                * `ColumnAboveBoundsException`: if `column` >= `ROW_SIZE`
 
         Note:
-            The builder performs runs through all the checks on parameters and state to guarantee only
-            a valid `Coord` is created, while `CoordValidator` is used for validating `Coord` instances that
-            are passed around after creation. This separation of concerns makes the validation and building
-            independent of each other and simplifies maintenance.
+            The builder runs through all the checks on parameters and state to guarantee only a valid `Coord` is
+            created, while `CoordValidator` is used for validating `Coord` instances that are passed around after
+            creation. This separation of concerns makes the validation and building independent of each other and
+            simplifies maintenance.
 
         Example:
             ```python

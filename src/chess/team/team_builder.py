@@ -11,15 +11,13 @@ class TeamBuilder(Enum):
     """
     Builder class responsible for safely constructing `Team` instances.
 
-    `TeamBuilder` ensures that `Team` objects are always created successfully by
-    performing comprehensive validation checks during construction. This separates
-    the responsibility of building from validating - `TeamBuilder` focuses on
-    creation while `TeamValidator` is used for validating existing `Team` instances
-    that are passed around the system.
+    `TeamBuilder` ensures that `Team` objects are always created successfully by performing comprehensive validation
+     checks during construction. This separates the responsibility of building from validating - `TeamBuilder` 
+     focuses on creation while `TeamValidator` is used for validating existing `Team` instances that are passed 
+     around the system.
 
-    The builder runs through all validation checks individually to guarantee that
-    any `Team` instance it produces meets all required specifications before
-    construction completes.
+    The builder runs through all validation checks individually to guarantee that any `Team` instance it produces 
+    meets all required specifications before construction completes
 
     Usage:
         ```python
@@ -31,8 +29,8 @@ class TeamBuilder(Enum):
         ```
 
     See Also:
-        `TeamValidator`: Used for validating existing `Team` instances
         `Team`: The data structure being constructed
+        `TeamValidator`: Used for validating existing `Team` instances
         `BuildResult`: Return type containing the built `Team` or error information
     """
 
@@ -40,15 +38,13 @@ class TeamBuilder(Enum):
     @staticmethod
     def build(team_id: int, commander: Commander, profile: TeamProfile) -> BuildResult[Team]:
         """
-        Constructs a new `Team` instance with comprehensive validation.
+        Constructs a new `Team` instance with comprehensive checks on the parameters and states during the
+        build process.
 
-        Performs individual validation checks on each component to ensure the 
-        resulting `Team` meets all specifications. The method validates bounds, 
-        null checks, and uses `TeamValidator` for final instance validation 
-        before returning a successfully constructed `Team`.
-
-        This method guarantees that if a `BuildResult` with a successful status 
-        is returned, the contained `Team` is valid and ready for use.
+        Performs individual validation checks on each component to ensure the resulting `Team` meets all 
+        specifications. If all checks are passed, a `Team` instance will be returned. It is not necessary to perform 
+        any additional validation checks on the returned `Team` instance. This method guarantees if a `BuildResult` 
+        with a successful status is returned, the contained `Team` is valid and ready for use.
 
         Args:
            `team_id`(`int`): The unique id for the team. Must pass `IdValidator` checks.
@@ -63,20 +59,19 @@ class TeamBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-            TeamBuilderException: Wraps any underlying validation failures 
-                that occur during the construction process. This includes:
-                - `IdValidationException`: if `id` fails validation checks`
-                - `CommanderValidationException`: if `commander` fails validation checks
-                - `NullTeamProfileException`: if `profile` is None
-                - `TypeError`: if `profile` is not a `TeamProfile` instance
-                - `RelationshipException`: if the bidirectional relationship between
-                    `Team` and `Commander` is broken
+            `TeamBuilderException`: Wraps any underlying validation failures that occur during the construction process.
+            This includes:
+                * `IdValidationException`: if `id` fails validation checks`
+                * `CommanderValidationException`: if `commander` fails validation checks
+                * `NullTeamProfileException`: if `profile` is None
+                * `TypeError`: if `profile` is not a `TeamProfile` instance
+                * `RelationshipException`: if the bidirectional relationship between `Team` and `Commander` is broken
 
         Note:
-            The builder performs validation at construction time, while 
-            `TeamValidator` is used for validating `Team` instances that 
-            are passed around after creation. This separation of concerns 
-            makes the validation responsibilities clearer.
+            The builder runs through all the checks on parameters and state to guarantee only a valid `Team` is 
+            created, while `TeamValidator` is used for validating `Team` instances that are passed around after 
+            creation. This separation of concerns makes the validation and building independent of each other and 
+            simplifies maintenance.
 
         Example:
             ```python

@@ -12,15 +12,13 @@ class SquareBuilder(Enum):
     """
     Builder class responsible for safely constructing `Square` instances.
 
-    `SquareBuilder` ensures that `Square` objects are always created successfully by
-    performing comprehensive validation checks during construction. This separates
-    the responsibility of building from validating - `SquareBuilder` focuses on
-    creation while `SquareValidator` is used for validating existing `Square` instances
-    that are passed around the system.
+    `SquareBuilder` ensures that `Square` objects are always created successfully by performing comprehensive validation
+     checks during construction. This separates the responsibility of building from validating - `SquareBuilder` 
+     focuses on creation while `SquareValidator` is used for validating existing `Square` instances that are passed 
+     around the system.
 
-    The builder runs through all validation checks individually to guarantee that
-    any `Square` instance it produces meets all required specifications before
-    construction completes.
+    The builder runs through all validation checks individually to guarantee that any `Square` instance it produces 
+    meets all required specifications before construction completes
 
     Usage:
         ```python
@@ -32,23 +30,21 @@ class SquareBuilder(Enum):
         ```
 
     See Also:
-        `SquareValidator`: Used for validating existing `Square` instances
         `Square`: The data structure being constructed
+        `SquareValidator`: Used for validating existing `Square` instances
         `BuildResult`: Return type containing the built `Square` or error information
     """
     
     @staticmethod
     def build(square_id:int, name: str, coord: Coord) -> BuildResult[Square]:
         """
-        Constructs a new `Square` instance with comprehensive validation.
+        Constructs a new `Square` instance with comprehensive checks on the parameters and states during the
+        build process.
 
-        Performs individual validation checks on each component to ensure the 
-        resulting `Square` meets all specifications. The method validates bounds, 
-        null checks, and uses `SquareValidator` for final instance validation 
-        before returning a successfully constructed `Square`.
-
-        This method guarantees that if a `BuildResult` with a successful status 
-        is returned, the contained `Square` is valid and ready for use.
+        Performs individual validation checks on each component to ensure the resulting `Square` meets all 
+        specifications. If all checks are passed, a `Square` instance will be returned. It is not necessary to perform 
+        any additional validation checks on the returned `Square` instance. This method guarantees if a `BuildResult` 
+        with a successful status is returned, the contained `Square` is valid and ready for use.
 
         Args:
            `square_id`(`int`): The unique id for the square. Must pass `IdValidator` checks.
@@ -63,25 +59,25 @@ class SquareBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-            SquareBuilderException: Wraps any underlying validation failures 
-                that occur during the construction process. This includes:
-                - `IdValidationException`: if `id` fails validation checks`
-                - `NameValidationException`: if `name` fails validation checks
-                - `CoordValidationException`: if `coord` fails validation checks
-                - `SquareBuilderException`: for any other construction failures
+            `SquareBuilderException`: Wraps any underlying validation failures that occur during the construction
+             process. This includes:
+                * `IdValidationException`: if `id` fails validation checks`
+                * `NameValidationException`: if `name` fails validation checks
+                * `CoordValidationException`: if `coord` fails validation checks
+                * `SquareBuilderException`: for any other construction failures
 
         Note:
-            The builder performs validation at construction time, while 
-            `SquareValidator` is used for validating `Square` instances that 
-            are passed around after creation.
-            This separation of concerns makes the validation responsibilities clearer.
+            The builder runs through all the checks on parameters and state to guarantee only a valid `Square` is 
+            created, while `SquareValidator` is used for validating `Square` instances that are passed around after 
+            creation. This separation of concerns makes the validation and building independent of each other and 
+            simplifies maintenance.
 
         Example:
             ```python
             # Valid square creation
             result = SquareBuilder.build(square_id=1, name=black-name, profile=black_square_profile)
             if result.is_success():
-                square = cast(Square, result.payload)  # Guaranteed valid Square
+                square = cast(Square, result.payload) # Guaranteed valid Square
 
             # Null name will fail gracefully
             result = SquareBuilder.build(square_id=1, name=None, profile=black_square_profile)
