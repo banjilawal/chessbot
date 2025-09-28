@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.square import Square
-from chess.piece.encounter import Encounter
+from chess.piece.discovery import Discovery
 from chess.piece.piece import Piece
 
 
@@ -10,7 +10,7 @@ class ScoutReportAnalysis:
     _chess_piece: Piece
     _enemies: List[Piece]
     _vacant_squares: List[Square]
-    _obstructions: List[Encounter]
+    _obstructions: List[Discovery]
 
     _obstruction_count: int
     _vacancy_count: int
@@ -21,7 +21,7 @@ class ScoutReportAnalysis:
                  chess_piece: Piece,
                  enemies: List[Piece],
                  vacant_squares: List[Square],
-                 obstructions: List[Encounter]
+                 obstructions: List[Discovery]
                  ):
         self._id = analysis_id
         self._chess_piece = chess_piece
@@ -50,7 +50,7 @@ class ScoutReportAnalysis:
         return self._vacant_squares
 
     @property
-    def obstructions(self) -> List[Encounter]:
+    def obstructions(self) -> List[Discovery]:
         return self._obstructions
 
     @property

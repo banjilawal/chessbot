@@ -5,16 +5,16 @@ __all__ = [
     'DoublePromotionException',
     'PieceValidationException',
     'PieceBuilderException',
-    'EncounterBuilderException',
+    'DiscoveryBuilderException',
     'AlreadyAtDestinationException',
     'NullCoordStackException',
     'CoordStackValidationException',
     'PrisonerEscapeException',
     'PrisonerReleaseException',
     'NullPieceBuilderException',
-    'AutoEncounterException',
+    'AutoDiscoveryException',
     'NullPieceException',
-    'NullEncounterException',
+    'NullDiscoveryException',
     'NullKingPieceException',
 ]
 
@@ -37,12 +37,12 @@ class PieceBuilderException(BuilderException):
     DEFAULT_MESSAGE = "PieceBuilder raised an exception"
 
 
-class EncounterBuilderException(BuilderException):
+class DiscoveryBuilderException(BuilderException):
     """
-    Wrapper for exceptions raised when EncounterBuilder runs.
+    Wrapper for exceptions raised when DiscoveryBuilder runs.
     """
-    ERROR_CODE = "ENCOUNTER_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "EncounterBuilder raised an exception"
+    ERROR_CODE = "DISCOVERY_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "DiscoveryBuilder raised an exception"
 
 
 class NullPieceBuilderException(NullException):
@@ -50,12 +50,12 @@ class NullPieceBuilderException(NullException):
     Raised if a CoordBuilder is null.
     """
     ERROR_CODE = "NULL_PIECE_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "EncounterBuilder cannot be null"
+    DEFAULT_MESSAGE = "DiscoveryBuilder cannot be null"
 
 
-class AutoEncounterException(PieceException):
-    ERROR_CODE = "AUTO_ENCOUNTER_ERROR"
-    DEFAULT_MESSAGE = "Piece cannot encounter itself"
+class AutoDiscoveryException(PieceException):
+    ERROR_CODE = "AUTO_DISCOVERY_ERROR"
+    DEFAULT_MESSAGE = "Piece cannot discovery itself"
 
 
 class DoublePromotionException(PieceException):
@@ -124,13 +124,12 @@ class NullPieceException(NullException):
     DEFAULT_MESSAGE = f"Piece cannot be null"
 
 
-class NullEncounterException(NullException):
+class NullDiscoveryException(NullException):
     """
-    NullEncounterException is raised when attempts to put null into a discovery's
-    encounter records.
+    NullDiscoveryException is raised when a discovery cannot be null.
     """
-    ERROR_CODE = "NULL_ENCOUNTER_ERROR"
-    DEFAULT_MESSAGE = f"Encounter cannot be null"
+    ERROR_CODE = "NULL_DISCOVERY_ERROR"
+    DEFAULT_MESSAGE = f"Discovery cannot be null"
 
 
 class NullKingPieceException(NullPieceException):

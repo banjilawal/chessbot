@@ -5,7 +5,7 @@ from chess.coord import Coord
 if TYPE_CHECKING:
     from chess.piece.piece import Piece
 
-class Encounter:
+class Discovery:
     _id: int
     _name: str
     _team_id: int
@@ -13,14 +13,13 @@ class Encounter:
     _rank_name: str
     _coord: Coord
 
-
-    def __init__(self, discovery: 'Piece'):
-        self._id = discovery.id
-        self._name = discovery.name
-        self._ransom = discovery.rank.ransom
-        self._rank_name = discovery.rank.name
-        self._team_id = discovery.team.id
-        self._coord = discovery.current_position
+    def __init__(self, piece: 'Piece'):
+        self._id = piece.id
+        self._name = piece.name
+        self._ransom = piece.rank.ransom
+        self._rank_name = piece.rank.name
+        self._team_id = piece.team.id
+        self._coord = piece.current_position
 
     @property
     def id(self) -> int:
@@ -52,17 +51,17 @@ class Encounter:
             return True
         if other is None:
             return False
-        if not isinstance('Encounter', other):
+        if not isinstance('Discovery', other):
             return False
         return self._id == other.id and self._coord == other.coord
 
 
     def __str__(self):
         return (
-            f"Encounter[id:{self._id} "
+            f"Discovery[id:{self._id} "
             f"name:{self._name} "
             f"rank:{self._rank_name} "
-            f"value:{self._ransom} "
+            f"ransom:{self._ransom} "
             f"coord:{self._coord}"
         )
 

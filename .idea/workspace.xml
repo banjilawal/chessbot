@@ -7,14 +7,16 @@
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/commander/commander_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/commander_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/common/emitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/emitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/coord_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/coord_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/commander/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/encounter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discovery.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/encounter_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/encounter_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/scalar/scalar_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/scalar_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/square_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/square_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/team_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/vector/vector_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/vector_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/encounter_scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discoveries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/search/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/piece.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,11 +1,10 @@
 from abc import ABC
 from typing import Optional, cast
 
-from chess.piece.encounter_builder import EncounterBuilder
 from chess.rank import Rank
-from chess.coord import Coord, CoordStack
+from chess.coord import Coord
 from chess.common import IdValidator, NameValidator, NameValidationException, IdValidationException
-from chess.piece import Encounter, EncounterScan, PieceValidator, AutoEncounterException
+from chess.piece import CoordStack, Discovery, DiscoveryBuilder, Discoveries, PieceValidator, AutoDiscoveryException
 from chess.team import Team, TeamValidator, TeamValidationException
 
 __all__ = [
@@ -30,7 +29,7 @@ class Piece(ABC):
         _rank (Rank): The rank that defines the discovery's movement strategy.
         _roster_number (int): The discovery's number on its team's roster.
         _current_position (Optional[Coord]): The current coordinate of the discovery on the board.
-        _encounters (EncounterScan): A log of encounters with other pieces.
+        _encounters (Discoveries): A log of encounters with other pieces.
         _positions (CoordStack): A stack of the discovery's historical coordinates.
     """
 
@@ -41,7 +40,7 @@ class Piece(ABC):
     _captor: 'Piece'
     _roster_number: int
     _current_position: Coord
-    _encounters: EncounterScan
+    _encounters: Discoveries
     _positions: CoordStack
 
     def __init__(self, piece_id: int, name: str, rank: Rank, team: Team):
@@ -84,7 +83,7 @@ class Piece(ABC):
         self._roster_number = len(team.roster) + 1
         self._team = team
 
-        self._encounters = EncounterScan()
+        self._encounters = Discoveries()
         self._positions = CoordStack()
         self._current_position = self._positions.current_coord
 
@@ -135,7 +134,7 @@ class Piece(ABC):
 
 
     @property
-    def encounters(self) -> EncounterScan:
+    def encounters(self) -> Discoveries:
         """A log of encounters with other pieces."""
         return self._encounters
 
@@ -187,7 +186,7 @@ class Piece(ABC):
         """
         method = "Piece.record_encounter"
         try:
-            build_outcome = EncounterBuilder.build(observer=self, discovery=piece)
+            build_outcome = DiscoveryBuilder.build(observer=self, discovery=piece)
             if not build_outcome.is_success():
                 raise build_outcome.exception
             encounter = build_outcome.payload
@@ -203,9 +202,9 @@ class Piece(ABC):
             raise validation.exception
 
         if piece is self:
-            raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
+            raise AutoDiscoveryException(f"{method}: {AutoDiscoveryException.DEFAULT_MESSAGE}")
 
-        self._encounters.add_encounter(Encounter(piece))
+        self._encounters.add_encounter(Discovery(piece))
 
 
     def __str__(self) -> str:

@@ -7,7 +7,7 @@ from chess.operation.occupation import (
     InvalidOccupationDirectiveException,
     EmptyBoardSearchException, OccupationDirective, OccupationException
 )
-from chess.piece import Piece, Encounter, NullPieceException
+from chess.piece import Piece, Discovery, NullPieceException
 from chess.square import Square
 from chess.board import Board
 from chess.search import BoardSearch
@@ -150,7 +150,7 @@ class OccupationExecutor(Executor):
                     exception=CorruptRecordEventException(f"{method}: {CorruptRecordEventException.DEFAULT_MESSAGE}")
                 )
 
-            encounter = Encounter(blocking_occupant)
+            encounter = Discovery(blocking_occupant)
             if encounter not in piece.encounters:
                 piece.add_encounter(encounter)
 

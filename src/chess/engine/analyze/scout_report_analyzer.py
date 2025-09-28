@@ -3,7 +3,7 @@ from typing import List
 from chess.square import Square
 from chess.common.emitter import id_emitter
 from chess.coord import Coord
-from chess.piece.encounter import Encounter
+from chess.piece.discovery import Discovery
 
 from chess.engine.scout.scout_report import ScoutReport
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis
@@ -58,14 +58,14 @@ class ScoutReportAnalyzer:
         return vacant_squares
 
 
-    def _sort_obstructions(self) -> List[Encounter]:
-        obstructions: List[Encounter] = []
+    def _sort_obstructions(self) -> List[Discovery]:
+        obstructions: List[Discovery] = []
 
         for square in self._scout_report.squares:
             occupant = square.occupant
 
             if occupant is not None and not self._scout.is_enemy(occupant):
-                obstruction = Encounter(occupant)
+                obstruction = Discovery(occupant)
                 if obstruction not in obstructions:
                     obstructions.append(obstruction)
             else:

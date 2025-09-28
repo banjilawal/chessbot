@@ -13,16 +13,33 @@ __all__ = [
     'TeamListValidationException'
 ]
 
-"""
-Super class for Commander exceptions and TeamList exceptions
-"""
-
 class CommanderException(ChessException):
     """
     Super class for exceptions raised by Piece objects
     """
     ERROR_CODE = "COMMANDER_ERROR"
     DEFAULT_MESSAGE = "Commander raised an team_exception"
+
+
+class NullCommanderException(NullException):
+    """
+    Raised if a commander is null.
+    """
+    ERROR_CODE = "NULL_COMMANDER_ERROR"
+    DEFAULT_MESSAGE = f"Commander cannot be null"
+
+
+class CommanderValidationException(ValidationException):
+    ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = f"Commander validation failed"
+
+
+class NullCommanderValidatorException(NullException):
+    """
+    Raised if a CommanderBuilder is null.
+    """
+    ERROR_CODE = "NULL_COMMANDER_VALIDATOR_ERROR"
+    DEFAULT_MESSAGE = "CommanderValidator cannot be null"
 
 
 class CommanderBuilderException(BuilderException):
@@ -39,19 +56,6 @@ class NullCommanderBuilderException(NullException):
     """
     ERROR_CODE = "NULL_COMMANDER_BUILDER_ERROR"
     DEFAULT_MESSAGE = "CommanderBuilder cannot be null"
-
-
-class NullCommanderException(NullException):
-    """
-    Raised if a commander is null.
-    """
-    ERROR_CODE = "NULL_COMMANDER_ERROR"
-    DEFAULT_MESSAGE = f"Commander cannot be null"
-
-
-class CommanderValidationException(ValidationException):
-    ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Commander validation failed"
 
 
 class InvalidCommanderAssignmentException(CommanderException):

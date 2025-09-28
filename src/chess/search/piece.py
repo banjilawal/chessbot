@@ -4,7 +4,7 @@ from chess.coord import CoordValidator
 
 from chess.coord import Coord
 from chess.common import IdValidator, NameValidator
-from chess.piece import Piece, PieceValidator, Encounter
+from chess.piece import Piece, PieceValidator, Discovery
 
 from .search_result import SearchResult
 from .team import TeamSearch
@@ -13,17 +13,8 @@ from .team import TeamSearch
 class PieceSearch:
     """Static search methods for Piece entities"""
 
-    class Encounter:
-        _team_id: int
-        _piece_id: int
-        _piece_name: str
-        _ransom: int
-        _rank_name: str
-        _location: Coord
-
-
     @staticmethod
-    def encounter_id(piece_id: int, piece: Piece) -> SearchResult['Encounter']:
+    def encounter_id(piece_id: int, piece: Piece) -> SearchResult['Discovery']:
         method = "PieceSearch.by_id"
 
         """Find a encounter by the discovery aid"""
@@ -48,7 +39,7 @@ class PieceSearch:
 
 
     @staticmethod
-    def encounter_name(piece_name: str, piece: Piece) -> SearchResult['Encounter']:
+    def encounter_name(piece_name: str, piece: Piece) -> SearchResult['Discovery']:
         method = "PieceSearch.by_name"
 
         """Find an encounter by the discovery's name"""
@@ -73,7 +64,7 @@ class PieceSearch:
             return SearchResult(exception=e)
 
     @staticmethod
-    def encounter_by_coord(coord: Coord, piece: Piece) -> SearchResult['Encounter']:
+    def encounter_by_coord(coord: Coord, piece: Piece) -> SearchResult['Discovery']:
         method = "PieceSearch.by_coord"
 
         """Find an encounter by a coord"""

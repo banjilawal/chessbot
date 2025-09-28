@@ -118,10 +118,12 @@ AUTHOR: Banji Lawal
 from .exception import *
 
 from .piece import *
-from .encounter import Encounter
+from .discovery import Discovery
+from .coord_stack import CoordStack
 from .piece_builder import PieceBuilder
 from .piece_validator import PieceValidator
-from .encounter_scan import EncounterScan
+from .discoveries import Discoveries
+from .discovery_builder import DiscoveryBuilder
 from .coord_stack_validator import CoordStackValidator
 from .coord_stack_builder import CoordinateStackBuilder
 
@@ -139,8 +141,8 @@ __all__ = [
     'CombatantPiece',
     'PieceBuilder',
     'PieceValidator',
-    'Encounter',
-    'EncounterScan',
+    'Discovery',
+    'Discoveries',
     'PieceBuilder',
 
     *exception.__all__,
