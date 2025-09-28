@@ -116,7 +116,7 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
             scan_directive = ScanDirective(
                 occupation_id=original_directive.id,
                 actor=original_directive.actor,
-                target_square=original_directive.resource,
+                destination_square=original_directive.resource,
                 subject=target_occupant,
                 scan_id=id_emitter.scan_id
             )
@@ -292,7 +292,7 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
 
             success_directive = ScanDirective(
                 actor=observer,
-                target_square=target_square,
+                destination_square=target_square,
                 subject=subject,
                 occupation_id=id_emitter.directive_id,
                 scan_id=id_emitter.scan_id

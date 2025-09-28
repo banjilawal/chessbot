@@ -12,22 +12,18 @@ __all__ = [
 ]
 
 
-class OccupationDirective(Directive):
+class OccupationDirective(Directive[Piece,Square]):
 
-    def __init__(self, occupation_id: int, actor: Piece, target_square: Square):
-        super().__init__(directive_id=occupation_id, actor=actor, resource=target_square)
-
-    @property
-    def id(self) -> int:
-        return self._id
+    def __init__(self, occupation_id: int, actor: Piece, destination_square: Square):
+        super().__init__(directive_id=occupation_id, actor=actor, resource=destination_square)
 
     @property
     def piece(self) -> Piece:
-        return cast(Piece, self.actor)
+        return self.actor
 
     @property
-    def square(self) -> Square:
-        return cast(Square, self.resource)
+    def destination_squarw(self) -> Square:
+        return self.resource
 
     def __eq__(self, other):
         if super().__eq__(other):
@@ -46,11 +42,11 @@ class AttackDirective(OccupationDirective):
         occupation_id: int,
         actor: Piece,
         enemy: CombatantPiece,
-        target_square: Square,
+        destination_square: Square,
         board: Board,
         attack_id: int
     ):
-        super().__init__(occupation_id=occupation_id, actor=actor, target_square=target_sqaure)
+        super().__init__(occupation_id=occupation_id, actor=actor, destination_square=destination_square)
         self._enemy = enemy
         self._board = board
         self._attack_id = attack_id
@@ -83,8 +79,15 @@ class ScanDirective(OccupationDirective):
     _subject: Piece
     _scan_id: int
 
-    def __init__(self, occupation_id: int, actor: Piece, target_square: Square, subject: Piece, scan_id: int):
-        super().__init__(occupation_id=occupation_id, actor=actor, target_sqaure=target_sqaure)
+    def __init__(
+        self,
+        occupation_id: int,
+        actor: Piece,
+        destination_square: Square,
+        subject: Piece,
+        scan_id: int
+    ):
+        super().__init__(occupation_id=occupation_id, actor=actor, destination_square=destination_square)
         self._subject = subject
         self._scan_id = scan_id
 
@@ -97,9 +100,10 @@ class ScanDirective(OccupationDirective):
         return self._scan_id
 
     def __eq__(self, other):
-        if not super().__eq__(other):
+        if super().__eq__(other):
             if isinstance(other, ScanDirective):
-                return (self._scan_id == other.scan_id and
-                        self._subject.id == other.subject.id
-                        )
+                return (
+                    self._scan_id == other.scan_id and
+                    self._subject.id == other.subject.id
+                )
         return False
