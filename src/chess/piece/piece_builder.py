@@ -25,11 +25,11 @@ class PieceBuilder(Enum):
     
     Usage:
         ```python
-        # Safe discovery creation with validation
+        # Safe piece creation with validation
         build_outcome = EncounterBuilder.build(piece_id=id_emitter.piece_id, name="WN2", rank=Knight(), team=white_team)
         if not build_outcome.is_success():
             raise build_outcome.exception
-        discovery = build_outcome.payload
+        piece = build_outcome.payload
         ```
     
     See Also:
@@ -50,11 +50,10 @@ class PieceBuilder(Enum):
         with a successful status is returned, the contained `Piece` is valid and ready for use.
 
         Args:
-           `piece_id`(`int`): The unique id for the discovery. Must pass `IdValidator` checks.
-            `name`(`Name`): The human or cybernetic moving pieces in `Piece.roster`. The name
-                must not be None and must pass `NameValidator` checks.must pass `NameValidator` checks.
-            `rank`(`Rank`): The rank which determines how the discovery moves and its capture value.
-             `team`(`Team`): Specifies if the discovery is white or black.
+            `piece_id`(`int`): The unique id for the piece. Must pass `IdValidator` checks.
+            `name`(`Name`): Must pass `NameValidator` checks.
+            `rank`(`Rank`): The `rank` which determines how the piece moves and its capture value.
+            `team`(`Team`): Specifies if the `piece` is white or black.
 
         Returns:
             BuildResult[Piece]: A `BuildResult` containing either:
@@ -68,20 +67,20 @@ class PieceBuilder(Enum):
                 * `NameValidationException`: if `name` fails validation checks
                 * `RankValidationException`: if `rank` fails validation checks
                 * `TeamValidationException`: if `team` fails validation checks
-                * `InvalidTeamAssignmentException`: If `discovery.team` is different from `team` parameter
-                * `RankQuotaFullException`: If the `team` has no empty slots for the `discovery.rank`
-                * `RankQuotaFullException`: If `discovery.team` is equal to `team` parameter but `team.roster` still does
-                    not have the discovery
+                * `InvalidTeamAssignmentException`: If `piece.team` is different from `team` parameter
+                * `RankQuotaFullException`: If the `team` has no empty slots for the `piece.rank`
+                * `RankQuotaFullException`: If `piece.team` is equal to `team` parameter but `team.roster` still does
+                    not have the piece
 
         Note:
             The builder runs through all the checks on parameters and state to guarantee only a valid `Piece` is 
             created, while `PieceValidator` is used for validating `Piece` instances that are passed around after 
-            creation. This separation of concerns makes the validation and building independent of each other and 
+            creating. This separation of concerns makes the validation and building independent of each other and
             simplifies maintenance.
 
         Example:
             ```python
-            # Valid discovery creation
+            # Valid piece creation
             build_outcome = EncounterBuilder.build(value=1)
             if not build_outcome.is_success():
                 return BuildResult(exception=build_outcome.exception)
@@ -141,17 +140,17 @@ class PieceBuilder(Enum):
 # def main():
 #     build_outcome = EncounterBuilder.build()
 #     if build_outcome.is_success():
-#         discovery = build_outcome.payload
-#         print(f"Successfully built discovery: {discovery}")
+#         piece = build_outcome.payload
+#         print(f"Successfully built piece: {piece}")
 #     else:
-#         print(f"Failed to build discovery: {build_outcome.exception}")
+#         print(f"Failed to build piece: {build_outcome.exception}")
 #     #
 #     build_outcome = EncounterBuilder.build(1, None)
 #     if build_outcome.is_success():
-#         discovery = build_outcome.payload
-#         print(f"Successfully built discovery: {discovery}")
+#         piece = build_outcome.payload
+#         print(f"Successfully built piece: {piece}")
 #     else:
-#         print(f"Failed to build discovery: {build_outcome.exception}")
+#         print(f"Failed to build piece: {build_outcome.exception}")
 #
 # if __name__ == "__main__":
 #     main()

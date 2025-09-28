@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/commander/commander_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/commander_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/common/emitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/common/emitter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/coord/coord_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/coord_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/encounter_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/encounter_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/scalar/scalar_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/scalar_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/square/square_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/square_builder.py" afterDir="false" />

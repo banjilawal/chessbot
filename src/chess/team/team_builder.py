@@ -13,7 +13,7 @@ class TeamBuilder(Enum):
 
     `TeamBuilder` ensures that `Team` objects are always created successfully by performing comprehensive validation
      checks during construction. This separates the responsibility of building from validating - `TeamBuilder` 
-     focuses on creation while `TeamValidator` is used for validating existing `Team` instances that are passed 
+     focuses on creating while `TeamValidator` is used for validating existing `Team` instances that are passed
      around the system.
 
     The builder runs through all validation checks individually to guarantee that any `Team` instance it produces 
@@ -41,16 +41,16 @@ class TeamBuilder(Enum):
         Constructs a new `Team` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `Team` meets all 
-        specifications. If all checks are passed, a `Team` instance will be returned. It is not necessary to perform 
-        any additional validation checks on the returned `Team` instance. This method guarantees if a `BuildResult` 
-        with a successful status is returned, the contained `Team` is valid and ready for use.
+        Performs individual validation checks on each component to ensure the resulting `Team` meets all specifications.
+        If all checks are passed, a `Team` instance will be returned. It is not necessary to perform any additional
+        validation checks on the returned `Team` instance. This method guarantees if a `BuildResult` with a successful
+        status is returned, the contained `Team` is valid and ready for use.
 
         Args:
            `team_id`(`int`): The unique id for the team. Must pass `IdValidator` checks.
-            `commander`(`Commander`): The human or cybernetic moving pieces in `Team.roster`. The commander
-                must not be None and must pass `CommanderValidator` checks.must pass `CommanderValidator` checks.
-            `profile`(`TeamProfile`): The profile defining team attributes and behaviors. Must not be None and be
+           `commander`(`Commander`): The human or cybernetic moving pieces in `Team.roster`. The commander must pass
+                `CommanderValidator` checks.must pass `CommanderValidator` checks.
+           `profile`(`TeamProfile`): The profile defining team attributes and behaviors. Must not be None and be
                 an instance of `TeamProfile`.
 
         Returns:

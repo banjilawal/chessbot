@@ -12,7 +12,7 @@ class EncounterBuilder(Enum):
 
     `EncounterBuilder` ensures that `Encounter` objects are always created successfully by performing comprehensive validation
      checks during construction. This separates the responsibility of building from validating - `EncounterBuilder` 
-     focuses on creation while `EncounterValidator` is used for validating existing `Encounter` instances that are passed 
+     focuses on creating while `EncounterValidator` is used for validating existing `Encounter` instances that are passed
      around the system.
 
     The builder runs through all validation checks individually to guarantee that any `Encounter` instance it produces 
@@ -47,7 +47,7 @@ class EncounterBuilder(Enum):
 
         Args:
            `observer`(`Piece`): The piece that is doing a scan, or executing a move.
-           `discovery`(`Piece`): The static piece discovered in a square.
+           `discovery`(`Piece`): The static piece the `observer` finds in a `square`.
 
         Returns:
             BuildResult[Encounter]: A `BuildResult` containing either:

@@ -15,7 +15,7 @@ class VectorBuilder(Enum):
 
     `VectorBuilder` ensures that `Vector` objects are always created successfully by performing comprehensive validation
      checks during construction. This separates the responsibility of building from validating - `VectorBuilder`
-     focuses on creation while `VectorValidator` is used for validating existing `Vector` instances that are passed
+     focuses on creating while `VectorValidator` is used for validating existing `Vector` instances that are passed
      around the system.
 
     The builder runs through all validation checks individually to guarantee that any `Vector` instance it produces

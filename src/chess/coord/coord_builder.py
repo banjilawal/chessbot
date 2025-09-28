@@ -89,6 +89,7 @@ class CoordBuilder(Enum):
             ```
         """
         method = "CoordBuilder.build"
+
         try:
             if row is None:
                 ThrowHelper.throw_if_invalid(

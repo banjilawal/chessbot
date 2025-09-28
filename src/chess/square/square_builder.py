@@ -47,11 +47,9 @@ class SquareBuilder(Enum):
         with a successful status is returned, the contained `Square` is valid and ready for use.
 
         Args:
-           `square_id`(`int`): The unique id for the square. Must pass `IdValidator` checks.
-            `name`(`Name`): The human or cybernetic moving pieces in `Square.roster`. The name
-                must not be None and must pass `NameValidator` checks.must pass `NameValidator` checks.
-            `profile`(`SquareProfile`): The profile defining square attributes and behaviors. Must not be None and be
-                an instance of `SquareProfile`.
+            `piece_id` (`int`): The unique id for the piece. Must pass `IdValidator` checks.
+            `name` (`Name`): Must pass `NameValidator` checks.
+            `coord` (`Coord`): Where `Square` is located on a `Board`. Must pass `CoordValidator` checks.
 
         Returns:
             BuildResult[Square]: A `BuildResult` containing either:
@@ -87,6 +85,7 @@ class SquareBuilder(Enum):
             ```
         """
         method = "SquareBuilder.build"
+
         try:
             id_validation = IdValidator.validate(square_id)
             if not id_validation.is_success():
@@ -99,9 +98,8 @@ class SquareBuilder(Enum):
             coord_result = CoordValidator.validate(coord)
             if not coord_result.is_success():
                 ThrowHelper.throw_if_invalid(SquareBuilder, coord_result.exception)
-                
-            square = Square(square_id=square_id, name=name, coord=coord)
-            return BuildResult(payload=square)
+
+            return BuildResult(payload=Square(square_id=square_id, name=name, coord=coord))
 
         except Exception as e:
             raise SquareBuilderException(f"{method}: {SquareBuilderException.DEFAULT_MESSAGE}")

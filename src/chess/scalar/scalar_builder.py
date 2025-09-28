@@ -17,7 +17,7 @@ class ScalarBuilder(Enum):
 
     `ScalarBuilder` ensures that `Scalar` objects are always created successfully by performing comprehensive validation
      checks during construction. This separates the responsibility of building from validating - `ScalarBuilder` 
-     focuses on creation while `ScalarValidator` is used for validating existing `Scalar` instances that are passed 
+     focuses on creating while `ScalarValidator` is used for validating existing `Scalar` instances that are passed
      around the system.
 
     The builder runs through all validation checks individually to guarantee that any `Scalar` instance it produces 

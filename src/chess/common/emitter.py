@@ -6,7 +6,7 @@ class IdEmitter:
 
     def __init__(self):
         self._person_id = 0
-        self._cybernaut_id = 0
+        self._bot_id = 0
         self._square_id = 0
         self._piece_id = 0
         self._side_id = 0
@@ -31,9 +31,9 @@ class IdEmitter:
 
 
     @property
-    def cybernaut_id(self) -> int:
-        self._cybernaut_id += 1
-        return self._cybernaut_id
+    def bot_id(self) -> int:
+        self._bot_id += 1
+        return self._bot_id
 
 
     @property
