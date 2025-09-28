@@ -11,10 +11,10 @@ CORE CLASSES:
 
 
 USAGE:
-    >>> from chess.discovery import CombatantPiece, KingPiece, CoordStack
-    >>> white_pawn_9 = CombatantPiece(piece_id=9, name="WP1", validation=pawn, team=white_team)
-    >>> white_king = KingPiece(piece_id=2, name="WK", validation=king, team=white_team)
-    >>>
+    # >>> from chess.discovery import CombatantPiece, KingPiece, CoordStack
+    # >>> white_pawn_9 = CombatantPiece(piece_id=9, name="WP1", validation=pawn, team=white_team)
+    # >>> white_king = KingPiece(piece_id=2, name="WK", validation=king, team=white_team)
+    # >>>
 
 ## Occupation Exception Classes
 
@@ -38,13 +38,13 @@ EXCEPTIONS:
 
 
 USAGE:
-    >>> from chess.discovery.team_exception import PieceCoordNullException
-    >>> from chess.discovery.team_exception.null import NullPieceException
-
-    >>> if discovery.current_position is None:
-    >>>     raise PieceCoordNullException("Piece coordinate is null")
-    >>> from chess.discovery.team_exception.null import NullPieceException
-    >>> raise NullPieceException(f"{NullPieceException.DEFAULT_MESSAGE}")
+    # >>> from chess.discovery.team_exception import PieceCoordNullException
+    # >>> from chess.discovery.team_exception.null import NullPieceException
+    #
+    # >>> if discovery.current_position is None:
+    # >>>     raise PieceCoordNullException("Piece coordinate is null")
+    # >>> from chess.discovery.team_exception.null import NullPieceException
+    # >>> raise NullPieceException(f"{NullPieceException.DEFAULT_MESSAGE}")
 
 ___
 
@@ -57,6 +57,8 @@ AUTHOR: Banji Lawal
 """
 
 from .exception import *
+from .attack_exceptions import *
+
 from .directive import OccupationDirective
 from .executor import OccupationExecutor
 from .validator import OccupationDirectiveValidator
@@ -76,6 +78,8 @@ __all__ = [
 
     # Exception classes
     *exception.__all__,
+
+    *attack_exceptions.__all__,
 
 
     # Package metadata and utilities

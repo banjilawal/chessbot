@@ -1,17 +1,40 @@
 from typing import cast
 
 from chess.common import id_emitter
-from chess.exception.hostage.hostage import RosterRemovalException
-from chess.operation.occupation import (
-    OccupationDirectiveValidator,
-    InvalidOccupationDirectiveException,
-    EmptyBoardSearchException, OccupationDirective, OccupationException
-)
-from chess.piece import Piece, Discovery, NullPieceException
+
 from chess.square import Square
 from chess.board import Board
 from chess.search import BoardSearch
+from chess.piece import Piece, KingPiece, CombatantPiece, Discovery, NullPieceException
 from chess.operation import Executor, Directive, ExecutionContext, OperationResult
+
+from chess.operation.occupation import (
+    OccupationDirectiveValidator,
+    InvalidOccupationDirectiveException,
+    # EmptyBoardSearchException,
+    OccupationDirective,
+    OccupationException,
+
+    UnexpectedNullEnemyException,
+    FriendlyFireException,
+    AttackOnEmptySquareException,
+    EnemyNotOnBoardException,
+    NonCombatantTargetException,
+    KingTargetException,
+    AlreadyCapturedException,
+    MissingFromRosterException,
+    HostageTransferConflictException,
+
+        # Rollback attack errors (dual inheritance)
+    RosterRemovalRollbackException,
+    HostageAdditionRollbackException,
+    BoardPieceRemovalRollbackException,
+    SquareOccupationRollbackException,
+    SourceSquareRollbackException,
+PositionUpdateRollbackException,
+)
+
+
 
 
 
@@ -178,11 +201,13 @@ class OccupationExecutor(Executor):
     ) -> OperationResult:
 
         method = "OccupationExecutor._attack_enemy"
-
         enemy = target_square.occupant
+
         if enemy is None:
             return OperationResult(op_result_id, occupation_directive,
-                UnexpectedNullEnemyException(f"{method}: {UnexpectedNullEnemyException.DEFAULT_MESSAGE}")
+                UnexpectedNullEnemyException(
+                    f"{method}: {UnexpectedNullEnemyException.DEFAULT_MESSAGE}"
+                )
             )
 
 
@@ -190,35 +215,45 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=FriendlyFireException(f"{method}: {FriendlyFireException.DEFAULT_MESSAGE}")
+                exception=FriendlyFireException(
+                    f"{method}: {FriendlyFireException.DEFAULT_MESSAGE}"
+                )
             )
 
         if enemy.positions.is_empty():
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=AttackOnEmptySquareException(f"{method}: {AttackOnEmptySquareException.DEFAULT_MESSAGE}")
+                exception=AttackOnEmptySquareException(
+                    f"{method}: {AttackOnEmptySquareException.DEFAULT_MESSAGE}"
+                )
             )
 
         if enemy not in board.pieces:
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=OEnemyNotOnBoardException(f"{method}: {EnemyNotOnBoardException.DEFAULT_MESSAGE}")
+                exception=EnemyNotOnBoardException(
+                    f"{method}: {EnemyNotOnBoardException.DEFAULT_MESSAGE}"
+                )
             )
 
         if not isinstance(enemy, CombatantPiece):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=KingTargetException(f"{method}: {KingTargetException.DEFAULT_MESSAGE}")
+                exception=KingTargetException(
+                    f"{method}: {KingTargetException.DEFAULT_MESSAGE}"
+                )
             )
 
         if enemy.captor is not None:
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=AlreadyCapturedException(f"{method}: {AlreadyCapturedException.DEFAULT_MESSAGE}")
+                exception=AlreadyCapturedException(
+                    f"{method}: {AlreadyCapturedException.DEFAULT_MESSAGE}"
+                )
             )
 
         enemy_team = enemy.team
@@ -226,83 +261,113 @@ class OccupationExecutor(Executor):
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=MissingFromRosterException(f"{method}: {MissingFromRosterException.DEFAULT_MESSAGE}")
+                exception=MissingFromRosterException(
+                    f"{method}: {MissingFromRosterException.DEFAULT_MESSAGE}"
+                )
             )
 
         if enemy in piece.team.hostages:
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=HostageTransferConflictException(f"{method}: {HostageTransferConflictException.DEFAULT_MESSAGE}")
+                exception=HostageTransferConflictException(
+                    f"{method}: {HostageTransferConflictException.DEFAULT_MESSAGE}"
+                )
             )
 
         enemy.captor = piece
         enemy_team.roster.remove(enemy)
 
         if enemy in enemy_team.roster:
+            # Rollback all changes
             enemy.captor = None
+
+            # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=RosterRemovalRollbackException(f"{method}: {RosterRemovalRollbackException.DEFAULT_MESSAGE}"),
+                exception=RosterRemovalRollbackException(
+                    f"{method}: {RosterRemovalRollbackException.DEFAULT_MESSAGE}"
+                ),
                 was_rolled_back=True
             )
 
         piece.team.hostages.append(enemy)
         if enemy not in piece.team.hostages:
+            # Rollback all changes
             enemy.captor = None
             enemy_team.roster.append(enemy)
+
+            # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=HostageAdditionRollbackException(f"{method}: {HostageAdditionRollbackException.DEFAULT_MESSAGE}"),
+                exception=HostageAdditionRollbackException(
+                    f"{method}: {HostageAdditionRollbackException.DEFAULT_MESSAGE}"
+                ),
                 was_rolled_back=True
             )
 
         board.pieces.remove(enemy)
         if enemy in board.pieces:
+            # Rollback all changes
             enemy.captor = None
             enemy_team.roster.append(enemy)
             piece.team.hostages.remove(enemy)
+
+            # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=BoardPieceRemovalRollbackException(f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"),
+                exception=BoardPieceRemovalRollbackException(
+                    f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"
+                ),
                 was_rolled_back=True
             )
 
 
         target_square.occupant = piece
         if not target_square.occupant == piece:
+            # Rollback all changes
             enemy.captor = None
             enemy_team.roster.append(enemy)
             piece.team.hostages.remove(enemy)
             board.pieces.append(enemy)
             target_square.occupant = enemy
+
+            # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=SquareOccupationRollbackException(f"{method}: {SquareOccupationRollbackException.DEFAULT_MESSAGE}"),
+                exception=SquareOccupationRollbackException(
+                    f"{method}: {SquareOccupationRollbackException.DEFAULT_MESSAGE}"
+                ),
                 was_rolled_back=True
             )
 
         source_square.occupant = None
         if source_square.occupant == piece:
+            # Rollback all changes
             enemy.captor = None
             enemy_team.roster.append(enemy)
             piece.team.hostages.remove(enemy)
             board.pieces.append(enemy)
             target_square.occupant = enemy
             source_square.enemy = piece
+
+            # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=SourceSquareRollbackException(f"{method}: {SourceSquareRollbackException.DEFAULT_MESSAGE}"),
+                exception=SourceSquareRollbackException(
+                    f"{method}: {SourceSquareRollbackException.DEFAULT_MESSAGE}"
+                ),
                 was_rolled_back=True
             )
 
         piece.positions.push_coord(target_square.coord)
         if not target_square.coord == piece.current_position:
+            # Rollback all changes
             enemy.captor = None
             enemy_team.roster.append(enemy)
             piece.team.hostages.remove(enemy)
@@ -310,10 +375,14 @@ class OccupationExecutor(Executor):
             target_square.occupant = enemy
             source_square.enemy = piece
             piece.positions.undo_push()
+
+            # Send the result indicating rollback
             return OperationResult(
                 op_result_id=op_result_id,
                 directive=occupation_directive,
-                exception=PositionUpdateRollbackException(f"{method}: {PositionUpdateRollbackException.DEFAULT_MESSAGE}}"),
+                exception=PositionUpdateRollbackException(
+                    f"{method}: {PositionUpdateRollbackException.DEFAULT_MESSAGE}}"
+                ),
                 was_rolled_back=True
             )
 
