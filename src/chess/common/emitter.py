@@ -22,7 +22,25 @@ class IdEmitter:
         self._op_result_id = 0
         self._directive_id = 0
 
+        self._occupation_id = 0
+        self._scan_id = 0
+        self._attack_id = 0
 
+
+    @property
+    def occupation_id(self) -> int:
+        self._occupation_id += 1
+        return self._occupation_id
+
+    @property
+    def scan_id(self) -> int:
+        self._scan_id += 1
+        return self._scan_id
+
+    @property
+    def attack_id(self) -> int:
+        self._attack_id += 1
+        return self._attack_id
 
     @property
     def person_id(self) -> int:
