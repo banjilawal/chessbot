@@ -398,7 +398,6 @@ class Board:
         return  random.choice(self.occupied_squares()).occupant
 
 
-
     def __str__(self) -> str:
         """
         Provides a string representation of the chessboard, showing pieces or square names.
