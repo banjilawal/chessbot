@@ -70,7 +70,7 @@ class InvalidCommanderAssignmentException(CommanderException):
 class TeamListException(CollectionException):
     """Team list specific errors."""
     ERROR_CODE = "TEAM_LIST_ERROR"
-    DEFAULT_MESSAGE = "Team list operation failed"
+    DEFAULT_MESSAGE = "Team list transaction failed"
 
 
 class TeamListValidationException(ValidationException):

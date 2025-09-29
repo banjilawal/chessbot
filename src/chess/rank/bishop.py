@@ -3,7 +3,7 @@ from chess.rank.rank_spec import RankSpec
 from chess.common.emitter import id_emitter
 
 
-from chess.operation.types import OccupationFlow
+from chess.transaction.types import OccupationFlow
 
 from chess.coord import Coord
 from chess.geometry.path import Path

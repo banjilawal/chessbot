@@ -13,7 +13,7 @@ the integrity of square objects.
 ## USAGE
 To use this package, import the desired classes and perform square-related operations.
 
->>> from chess.destination_square import Square, SquareValidator
+>>> from chess.subject import Square, SquareValidator
 >>> from chess.coord import Coord
 >>> from chess.piece import Piece
 >>>

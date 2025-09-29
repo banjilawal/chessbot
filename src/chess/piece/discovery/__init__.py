@@ -1,4 +1,4 @@
-# chess/piece/__init__.py
+# chess/piece/discovery/__init__.py
 
 """
 # `chess.piece` Package
@@ -11,8 +11,8 @@ Provides the fundamental data structures for game pieces and entities owned by a
     * `CombatantPiece`: Concrete piece that can be captured
     * `KingPiece`: Concrete king piece with special rules
     * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-    * `Encounter`: A record of an item discovered by a `Piece` during a scan or move.
-    * `EncounterScan`: A data-holding object representing a single scan of a chess piece's surroundings.
+    * `Discovery`: A record of an item discovered by a `Piece` during a scan or move.
+    * `DiscoveryScan`: A data-holding object representing a single scan of a chess piece's surroundings.
 
 ## Usage
 ```python
@@ -27,6 +27,7 @@ white_king = KingPiece(piece_id=2, name='WK', rank=King(), team=white_team)
 These are not all the exceptions related to `Piece` in the application. `chess.piece` package only has exceptions
 organic to:
     * `Piece` and its subclases.
+    * `Discovery` and `DiscoveryScan`
     * `CoordStack`.
 
 All exceptions in `chess.piece` package have static fields:
@@ -54,26 +55,25 @@ Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
         instance.
     * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
 
+#### DISCOVERY EXCEPTIONS
+    * `DiscoveryException`: Super class of exceptions raised by `Discovery`. Use more granular exceptions that provide
+        more specific information.
+    * `NullDiscoveryException`: The parent is `NullValueException`. `NullDiscoveryException` is the parent of all
+        exceptions related to null discoverys. Use more granular null exceptions that provide more specific information
+        about the subclass instance that is null.
+    * `DiscoveryValidationException`: Raised if an existing `Discovery` object fails validation checks.
+    * `NullDiscoveryValidatorException`: Raised if a null `DiscoveryValidator` is passed as a parameter.
+    * `DiscoveryBuilderException`: Raised if there is an error during when `DiscoveryBuilder` is creating a new `Discovery`
+        instance.
+    * `NullDiscoveryBuilderException`: Raised if there is null `DiscoveryBuilder` is passed as a parameter.
+    * `AutoDiscoveryException`: Raised if a `Piece` object tries to create an discovery record about itself.
 
-### COORDSTACK EXCEPTIONS
-    * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
-    * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validation.
-    * `NullCoordStackException`: Raised if a null `CoordStackException` is passed as a parameter.
-
-
-null or improperly referenced during chess operations.
-AlreadyAtDestinationException: Move to current position
-
-PrisonerEscapeException: Captured piece tries to move
-PrisonerReleaseException: Error releasing prisoner
-PieceCoordNullException: Piece coordinate is null
-SetCaptorNullException: Setting null captor
 
 ### PIECE EXCEPTION USAGE EXAMPLES
 These examples show recommended workflows with `Piece` exceptions.
 
 ```python
-from chess.piece import CombatantPiece, Encounter, NullPieceException, AutoEncounterException
+from chess.piece import CombatantPiece, Discovery, NullPieceException, AutoDiscoveryException
 
 build_outcome = PieceBuilder.build(
     piece_id=id_emitter.piece_id,
@@ -91,11 +91,11 @@ black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 if black_bishop_2 is None:
     raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
-def create_encounter(observer: Piece, discovery: Piece) -> Encounter:
-    method = "create_encounter"
+def create_discovery(observer: Piece, discovery: Piece) -> Discovery:
+    method = "create_discovery"
     if observer == discovery:
-        raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
-    return Encounter(discovery=discovery)
+        raise AutoDiscoveryException(f"{method}: {AutoDiscoveryException.DEFAULT_MESSAGE}")
+    return Discovery(discovery=discovery)
 ```
 
 VERSION: 1.0.0
@@ -103,32 +103,24 @@ AUTHOR: Banji Lawal
 """
 
 from .exception import *
-from .discovery import *
 
-from .piece import *
-from .coord_stack import CoordStack
-from .builder import PieceBuilder
-from .validator import PieceValidator
-from .coord_stack_validator import CoordStackValidator
-
+from .discovery import Discovery
+from .discoveries import Discoveries
+from .builder import DiscoveryBuilder
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.piece'
+__package_name__ = 'chess.piece.discovery'
 
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'Piece',
-    'KingPiece',
-    'CombatantPiece',
-    'PieceBuilder',
-    'PieceValidator',
-    'PieceBuilder',
+    'Discovery',
+    'Discoveries',
+    'DiscoveryBuilder',
 
-    *exception.__all__,
     *exception.__all__,
 
     # Subpackages

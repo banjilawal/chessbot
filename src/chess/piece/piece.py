@@ -214,7 +214,7 @@ class Piece(ABC):
         method = "Piece.record_discovery"
         
         try:
-            build_outcome = DiscoveryBuilder.build(observer=self, discovery=piece)
+            build_outcome = DiscoveryBuilder.build(observer=self, subject=piece)
             if not build_outcome.is_success():
                 raise build_outcome.exception
             discovery = build_outcome.payload
@@ -239,9 +239,34 @@ class Piece(ABC):
 
 
 class KingPiece(Piece):
+    """A concrete subclass representing a king piece."""
+    _is_checked: bool
+    _is_checkmated: bool
 
     def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
         super().__init__(piece_id, name, rank, team)
+        self._is_checked = False
+        self._is_checkmated = False
+
+
+    @property
+    def is_checked(self) -> bool:
+        return self._is_checked
+
+    @property
+    def is_checkmated(self) -> bool:
+        return self._is_checkmated
+
+    @is_checked.setter
+    def is_checked(self, is_checked: bool):
+        self._is_checked = is_checked
+
+    @is_checkmated.setter
+    def is_checkmated(self, is_checkmated: bool):
+        if self._is_checked:
+            self._is_checkmated = is_checkmated
+        else:
+            raise Exception("Cannot set checkmated status if not checked")
 
 
     def __eq__(self, other):

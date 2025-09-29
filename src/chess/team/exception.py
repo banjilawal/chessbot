@@ -3,7 +3,7 @@ from chess.exception import ChessException, NullException, ValidationException, 
 __all__ = [
     'TeamException',
     'RankQuotaFullException',
-    'InvalidTeamAssignmentException',
+    'ConflictingTeamAssignmentException',
     'TeamBuilderException',
     'NulTeamBuilderException',
     'TeamValidationException',
@@ -51,12 +51,12 @@ class RankQuotaFullException(TeamException):
     DEFAULT_MESSAGE = "The team has no empty slots for the discovery's rank"
 
 
-class InvalidTeamAssignmentException(TeamException):
+class ConflictingTeamAssignmentException(TeamException):
     """
     If a discovery that's already on one team (discovery.team == not None) tries joining
     another InvalidTeamAssignmentException is raised.
     """
-    ERROR_CODE = "INVALID_TEAM_ASSIGNMENT_ERROR"
+    ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR"
     DEFAULT_MESSAGE = "Piece is already assigned to a team."
 
 

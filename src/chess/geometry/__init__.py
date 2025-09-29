@@ -3,7 +3,7 @@
 """
 PURPOSE:
     Provides classes for spatial relationships, coordinates, vectors, and paths
-    in a 2D chess board coordinate operation.
+    in a 2D chess board coordinate transaction.
 
 CORE CLASSES:
     Line: Different types of edges

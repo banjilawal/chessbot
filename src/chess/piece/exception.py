@@ -3,18 +3,15 @@ from chess.exception import ChessException, ValidationException, NullException, 
 __all__ = [
     'PieceException',
     'DoublePromotionException',
-    'PieceValidationException',
+    'InvalidPieceException',
     'PieceBuilderException',
-    'DiscoveryBuilderException',
     'AlreadyAtDestinationException',
     'NullCoordStackException',
     'CoordStackValidationException',
     'PrisonerEscapeException',
     'PrisonerReleaseException',
     'NullPieceBuilderException',
-    'AutoDiscoveryException',
     'NullPieceException',
-    'NullDiscoveryException',
     'NullKingPieceException',
 ]
 
@@ -37,15 +34,7 @@ class PieceBuilderException(BuilderException):
     DEFAULT_MESSAGE = "PieceBuilder raised an exception"
 
 
-class DiscoveryBuilderException(BuilderException):
-    """
-    Wrapper for exceptions raised when DiscoveryBuilder runs.
-    """
-    ERROR_CODE = "DISCOVERY_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "DiscoveryBuilder raised an exception"
-
-
-class NullPieceBuilderException(NullException):
+class NullPieceBuilderException(PieceException, NullException):
     """
     Raised if a CoordBuilder is null.
     """
@@ -53,9 +42,10 @@ class NullPieceBuilderException(NullException):
     DEFAULT_MESSAGE = "DiscoveryBuilder cannot be null"
 
 
-class AutoDiscoveryException(PieceException):
-    ERROR_CODE = "AUTO_DISCOVERY_ERROR"
-    DEFAULT_MESSAGE = "Piece cannot discovery itself"
+class UnregisteredTeamMemberException(PieceException):
+    """Raised if a piece has its team set but the piece is not on the roster"""
+    ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"
+    DEFAULT_MESSAGE = "The piece has team but is not listed on the roster."
 
 
 class DoublePromotionException(PieceException):
@@ -75,7 +65,7 @@ class AlreadyAtDestinationException(PieceException):
     DEFAULT_MESSAGE = "Piece is already at the destination."
 
 
-class PieceValidationException(ValidationException):
+class InvalidPieceException(PieceException, ValidationException):
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Piece validation failed"
 
@@ -122,14 +112,6 @@ class NullPieceException(NullException):
     """
     ERROR_CODE = "NULL_PIECE_ERROR"
     DEFAULT_MESSAGE = f"Piece cannot be null"
-
-
-class NullDiscoveryException(NullException):
-    """
-    NullDiscoveryException is raised when a discovery cannot be null.
-    """
-    ERROR_CODE = "NULL_DISCOVERY_ERROR"
-    DEFAULT_MESSAGE = f"Discovery cannot be null"
 
 
 class NullKingPieceException(NullPieceException):

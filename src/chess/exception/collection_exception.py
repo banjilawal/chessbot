@@ -33,7 +33,7 @@ __all__ = [
 class CollectionException(ChessException):
     """Base exception for all collection-related errors."""
     ERROR_CODE = "COLLECTION_ERROR"
-    DEFAULT_MESSAGE = "Collection operation failed"
+    DEFAULT_MESSAGE = "Collection transaction failed"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -75,7 +75,7 @@ class CollectionSizeConflictException(CollectionException):
 class CoordStackException(CollectionException):
     """Base exception for stack operations."""
     ERROR_CODE = "STACK_ERROR"
-    DEFAULT_MESSAGE = "Stack operation failed"
+    DEFAULT_MESSAGE = "Stack transaction failed"
 
 
 class PopEmptyStackException(CoordStackException):
@@ -107,12 +107,12 @@ class InconsistentCurrentCoordException(CoordStackException):
 class GameListException(CollectionException):
     """Game list specific errors."""
     ERROR_CODE = "GAME_LIST_ERROR"
-    DEFAULT_MESSAGE = "Game list operation failed"
+    DEFAULT_MESSAGE = "Game list transaction failed"
 
 class EncounterLogException(CollectionException):
     """Encounter log specific errors."""
     ERROR_CODE = "ENCOUNTER_LOG_ERROR"
-    DEFAULT_MESSAGE = "Encounter log operation failed"
+    DEFAULT_MESSAGE = "Encounter log transaction failed"
 
 class NullEncounterException(EncounterLogException):
     ERROR_CODE = "NULL_ENCOUNTER_ERROR"

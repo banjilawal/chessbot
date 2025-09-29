@@ -105,7 +105,7 @@ class RollbackException(ChessException):
     Base class for rollback-related errors in the chess engine.
 
     PURPOSE:
-        Raised when an operation (piece move, capture, board update, etc.)
+        Raised when an transaction (piece move, capture, board update, etc.)
         is reverted due to inconsistency or failed validation.
 
     ATTRIBUTES:
