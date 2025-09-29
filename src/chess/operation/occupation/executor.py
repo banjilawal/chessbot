@@ -28,8 +28,9 @@ from chess.square import Square
 from chess.board import Board
 from chess.search import BoardSearch
 from chess.piece import Piece, KingPiece, CombatantPiece, Discovery, DiscoveryBuilder
-from chess.operation import OperationExecutor, ExecutionContext, OperationResult
+from chess.operation import OperationExecutor, ExecutionContext, OperationResult, CaptureContext
 
+from chess.operation import AttackValidator
 from chess.operation.occupation.directive import OccupationDirective, ScanDirective, AttackDirective
 from chess.operation.occupation.attack_exceptions import *
 from chess.operation.occupation.exception import *
@@ -105,57 +106,24 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
             )
 
 
-        if attacker.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
-            return OccupationExecutor._attack_enemy(
-                op_result_id=op_result_id,
-                directive=AttackDirective(
-                    actor=directive.piece,
-                    enemy=destination_occupant,
-                    occupation_id=directive.id,
-                    attack_id=id_emitter.attack_id,
-                    source_square=source_square,
-                    destination_square=directive.destination_square
-                )
-            )
-
-
-        if target_occupant is not None and not piece.is_enemy(target_occupant):
-            return OccupationExecutor._run_scan(
-                op_result_id=op_result_id,
-                observer=piece,
-                original_directive=original_directive,
-                blocked_square=target_square
-            )
-
-
-        if target_occupant is not None and piece.is_enemy(target_occupant):
-            OccupationExecutor._attack_enemy(directive, piece, target_square)
-        #
-        #
-        # if event == Event.ATTACK:
-        #     enemy = OccupationExecutor._attack_stream(subject, target_square)
-
-        target_square.occupant = piece
-        source_square.occupant = None
-        piece.positions.push_coord(target_square.coord)
-
-        if piece.current_position == target_square.coord and not source_square.occupant == piece:
-            piece.positions.undo_push()
-            target_square.occupant = None
-            source_square.occupant = piece
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
-                was_rolled_back=True
-            )
-
-        success_directive = OccupationDirective(
-            occupation_id=id_emitter.directive_id,
-            actor=piece,
-            target=target_square
+        attack_validation = AttackValidator.validate(
+            CaptureContext(piece=directive.piece, enemy=destination_occupant, board=context.board)
         )
-        return OperationResult(result_id=op_result_id, directive=success_directive)
+        enemy_combatant = cast(CombatantPiece, attack_validation.payload.enemy)
+
+        if not attack_validation.is_success():
+            return OperationResult(op_result_id, directive, attack_validation.exception)
+
+        return OccupationExecutor._attack_enemy(
+            op_result_id=op_result_id,
+            directive=AttackDirective(
+                actor=directive.piece,
+                enemy=enemy_combatant,
+                occupation_id=directive.id,
+                attack_id=id_emitter.attack_id,
+                source_square=source_square,
+                destination_square=directive.destination_square
+            )
 
 
     @staticmethod
@@ -293,83 +261,9 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
     def _attack_enemy(op_result_id: int, directive: AttackDirective) -> OperationResult:
 
         method = "OccupationExecutor._attack_enemy"
-        enemy = target_square.occupant
 
-        if enemy is None:
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=UnexpectedNullEnemyException(
-                    f"{method}: {UnexpectedNullEnemyException.DEFAULT_MESSAGE}"
-                )
-            )
+        directive.enemy.captor = directive.piece
 
-
-        if not piece.is_enemy(enemy):
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=FriendlyFireException(
-                    f"{method}: {FriendlyFireException.DEFAULT_MESSAGE}"
-                )
-            )
-
-        if enemy.positions.is_empty():
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=AttackOnEmptySquareException(
-                    f"{method}: {AttackOnEmptySquareException.DEFAULT_MESSAGE}"
-                )
-            )
-
-        if enemy not in board.pieces:
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=EnemyNotOnBoardException(
-                    f"{method}: {EnemyNotOnBoardException.DEFAULT_MESSAGE}"
-                )
-            )
-
-        if not isinstance(enemy, CombatantPiece):
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=KingTargetException(
-                    f"{method}: {KingTargetException.DEFAULT_MESSAGE}"
-                )
-            )
-
-        if enemy.captor is not None:
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=AlreadyCapturedException(
-                    f"{method}: {AlreadyCapturedException.DEFAULT_MESSAGE}"
-                )
-            )
-
-        enemy_team = enemy.team
-        if enemy not in enemy_team.roster:
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=MissingFromRosterException(
-                    f"{method}: {MissingFromRosterException.DEFAULT_MESSAGE}"
-                )
-            )
-
-        if enemy in piece.team.hostages:
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=HostageTransferConflictException(
-                    f"{method}: {HostageTransferConflictException.DEFAULT_MESSAGE}"
-                )
-            )
-
-        enemy.captor = piece
         enemy_team.roster.remove(enemy)
 
         if enemy in enemy_team.roster:

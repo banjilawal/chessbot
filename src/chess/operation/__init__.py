@@ -5,6 +5,7 @@ from .context import  *
 from .directive import Directive
 from .operation_executor import OperationExecutor
 from .result import OperationResult
+from .attack_validator import AttackValidator
 
 
 # Package metadata (organic to __init__.py)
@@ -19,6 +20,8 @@ __all__ = [
     'OperationExecutor',
     'ExecutionContext',
     'OperationResult',
+    'AttackValidator',
+
 
     *context.__all__,
     *exception.__all__,
