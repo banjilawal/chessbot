@@ -8,7 +8,7 @@ T = TypeVar('T')
 class PieceValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Piece]:
+    def validate(t: Piece) -> Result[Piece]:
         """
         Validates a discovery with chained exceptions for discovery meeting specifications:
             - Not null

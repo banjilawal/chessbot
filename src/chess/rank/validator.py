@@ -24,7 +24,7 @@ T = TypeVar('T')
 class RankValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Rank]:
+    def validate(t: Rank) -> Result[Rank]:
         method = "Rank.validate"
         try:
             if t is None:

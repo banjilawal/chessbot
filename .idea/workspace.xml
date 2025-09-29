@@ -5,8 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/operation/occupation/attack_validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/commander/commander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/commander.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/config/placement.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/config/placement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/team_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/team_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/factory/owner_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/factory/owner_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/factory/team_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/factory/team_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/null_occupation_request.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/directive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/directive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/occupation/executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/occupation_exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/op_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/orchestrator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/promotion/promote.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/promotion/promote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/operation/validators/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/operation/validators/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/coord_stack_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/coord_stack_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/scalar_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/scalar_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/search/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/search/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/search/search_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/search/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/square_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/square_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/vector_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/vector_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/side_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/side_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/square_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/square_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/side/side_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/side/side_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +294,7 @@
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

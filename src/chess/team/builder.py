@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.team import Team, TeamProfile, NullTeamProfileException, TeamBuilderException
+from chess.team import Team, TeamSchema, NullTeamSchemaException, TeamBuilderException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
 from chess.common import IdValidator, BuildResult
 from chess.exception import RelationshipException
@@ -36,7 +36,7 @@ class TeamBuilder(Enum):
 
 
     @staticmethod
-    def build(team_id: int, commander: Commander, profile: TeamProfile) -> BuildResult[Team]:
+    def build(team_id: int, commander: Commander, profile: TeamSchema) -> BuildResult[Team]:
         """
         Constructs a new `Team` instance with comprehensive checks on the parameters and states during the
         build process.
@@ -92,9 +92,9 @@ class TeamBuilder(Enum):
         try:
             if profile is None:
                 ThrowHelper.throw_if_invalid(
-                    TeamBuilder, NullTeamProfileException(NullTeamProfileException.DEFAULT_MESSAGE)
+                    TeamBuilder, NullTeamSchemaException(NullTeamSchemaException.DEFAULT_MESSAGE)
                 )
-            if not isinstance(profile, TeamProfile):
+            if not isinstance(profile, TeamSchema):
                 ThrowHelper.throw_if_invalid(
                     TeamBuilder, TypeError(f"{method} Expected a TeamProfile, got {type(profile).__name__}")
                 )
@@ -108,7 +108,7 @@ class TeamBuilder(Enum):
             if not commander_validation.is_success():
                 ThrowHelper.throw_if_invalid(TeamBuilder, commander_validation.exception)
 
-            team = Team(team_id=team_id, commander=commander, profile=profile)
+            team = Team(team_id=team_id, commander=commander, schema=profile)
 
             if team.commander != commander:
                 ThrowHelper.throw_if_invalid(

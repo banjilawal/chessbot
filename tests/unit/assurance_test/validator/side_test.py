@@ -4,9 +4,9 @@ from unittest.mock import create_autospec
 from chess.commander.exception.invalid_commander import CommanderValidationException
 from assurance.exception.invalid_id import IdValidationException
 from chess.team.team_exception.invalid_team import TeamValidationException
-from chess.team.team_validator import TeamValidator
+from chess.team.validator import TeamValidator
 from chess.competitor.commander import Commander
-from chess.team.team_profile import TeamProfile
+from chess.team.schema import TeamSchema
 from chess.team.team_exception.null_team_profile import NullTeamProfileException
 from chess.team.team_exception.null_team import NullTeamException
 from chess.side.team import Side
@@ -30,7 +30,7 @@ class SideValidatorTest(unittest.TestCase):
     def test_failed_id_validation_raises_exception(self):
         mock_side = create_autospec(Side, instance=True)
         mock_side.id=-1
-        mock_side.profile = TeamProfile.BLACK
+        mock_side.scheme = TeamSchema.BLACK
         mock_side.competitor= CompetitorTest.valid_mock_competitor()
 
         with self.assertRaises(TeamValidationException) as ctx:
@@ -42,7 +42,7 @@ class SideValidatorTest(unittest.TestCase):
         mock_side = create_autospec(Side, instance=True)
         mock_side.id=1
         mock_side.competitor=None
-        mock_side.profile = TeamProfile.BLACK
+        mock_side.scheme = TeamSchema.BLACK
 
         with self.assertRaises(TeamValidationException) as ctx:
             TeamValidator.validate(mock_side)
@@ -56,7 +56,7 @@ class SideValidatorTest(unittest.TestCase):
 
 
         mock_side.competitor=Commander(1, "commander")
-        mock_side.profile = None
+        mock_side.scheme = None
 
         with self.assertRaises(TeamValidationException) as ctx:
             TeamValidator.validate(mock_side)
@@ -65,7 +65,7 @@ class SideValidatorTest(unittest.TestCase):
 
 
     def test_side_validator_payload_equals_valid_side(self):
-        side = Side(1, Commander(1, "commander"), TeamProfile.BLACK)
+        side = Side(1, Commander(1, "commander"), TeamSchema.BLACK)
         validation = TeamValidator.validate(side)
         self.assertEqual(validation.payload, side)
 

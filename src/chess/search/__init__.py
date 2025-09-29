@@ -13,8 +13,8 @@ CORE CLASSES:
 USAGE:
     >>> from chess.search import PieceSerach, SearchResult
     >>> search_result = BoardSearch.piece_by_name("BN2", [white_team, black_team])
-    >>> if search_result.is_success():
-    >>>     return cast(Piece, search_result.payload)
+    >>> if result.is_success():
+    >>>     return cast(Piece, result.payload)
 
 
 SEARCH EXCEPTIONS:
@@ -39,7 +39,7 @@ AUTHOR: Banji Lawal
 from .board import BoardSearch
 from .team import  TeamSearch
 from .commander import CommanderSearch
-from .search_result import SearchResult
+from .result import SearchResult
 
 from .search_exception import (
     SearchException,

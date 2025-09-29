@@ -6,7 +6,7 @@ from chess.geometry.quadrant import Quadrant
 from chess.scalar import Scalar
 
 
-class TeamProfile(Enum):
+class TeamSchema(Enum):
 
     def __new__(
         cls,
@@ -57,8 +57,8 @@ class TeamProfile(Enum):
 
 
     @property
-    def enemy_config(self) -> 'TeamProfile':
-        return TeamProfile.BLACK if self == TeamProfile.WHITE else TeamProfile.WHITE
+    def enemy_config(self) -> 'TeamSchema':
+        return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
 
 
     def __str__(self) -> str:

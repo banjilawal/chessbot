@@ -31,7 +31,7 @@ class VectorValidator(Validator):
     """
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Vector]:
+    def validate(t: Vector) -> Result[Vector]:
         """
           Validates that an existing `Vector` instance meets all specifications.
 

@@ -1,9 +1,9 @@
-from crypt import methods
+
 from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
 from chess.common import Result, Validator, IdValidator, IdValidationException
 from chess.exception import RelationshipException
-from chess.team import Team, NullTeamException, NullTeamProfileException, TeamValidationException
+from chess.team import Team, NullTeamException, NullTeamSchemaException, TeamValidationException
 from chess.commander import Commander, CommanderValidator, CommanderValidationException, \
     InvalidCommanderAssignmentException
 
@@ -30,7 +30,7 @@ class TeamValidator(Validator):
     """
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result['Team']:
+    def validate(t: Team) -> Result['Team']:
         """
         Validates that an existing `Team` instance meets all specifications.
 
@@ -68,8 +68,8 @@ class TeamValidator(Validator):
 
             team = cast(Team, t)
 
-            if team.profile is None:
-                raise NullTeamProfileException(f"{method}: {NullTeamProfileException.DEFAULT_MESSAGE}")
+            if team.scheme is None:
+                raise NullTeamSchemaException(f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}")
 
             id_validation = IdValidator.validate(team.id)
             if not id_validation.is_success():
@@ -91,13 +91,13 @@ class TeamValidator(Validator):
             return Result(payload=team)
 
         except (
-            TypeError,
-            NullTeamException,
-            IdValidationException,
-            NullTeamProfileException,
-            CommanderValidationException,
-            InvalidCommanderAssignmentException,
-            RelationshipException
+                TypeError,
+                NullTeamException,
+                IdValidationException,
+                NullTeamSchemaException,
+                CommanderValidationException,
+                InvalidCommanderAssignmentException,
+                RelationshipException
         ) as e:
             raise TeamValidationException(f"{method}: {TeamValidationException.DEFAULT_MESSAGE}") from e
 

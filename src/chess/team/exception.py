@@ -8,7 +8,7 @@ __all__ = [
     'NulTeamBuilderException',
     'TeamValidationException',
     'NullTeamException',
-    'NullTeamProfileException'
+    'NullTeamSchemaException'
 ]
 
 class TeamException(ChessException):
@@ -70,7 +70,7 @@ class NullTeamException(NullException):
     DEFAULT_MESSAGE = f"Team cannot be null"
 
 
-class NullTeamProfileException(NullException):
+class NullTeamSchemaException(NullException):
     """
     Raised if a null TeamProfile is passed to Team.__init__.
     """

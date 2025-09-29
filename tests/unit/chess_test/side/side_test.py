@@ -4,7 +4,7 @@ from unittest.mock import create_autospec, patch
 from chess.commander.exception.invalid_commander import CommanderValidationException
 from assurance.exception.invalid_id import IdValidationException
 from chess.competitor.commander import Commander
-from chess.team.team_profile import TeamProfile
+from chess.team.schema import TeamSchema
 from chess.team.team_exception.null_team_profile import NullTeamProfileException
 from chess.exception.stack_exception import BrokenRelationshipException
 from chess.side.team import Side
@@ -14,7 +14,7 @@ from unit.chess_test.competitor.competitor_test import CompetitorTest
 class SideTest(unittest.TestCase):
 
     @staticmethod
-    def valid_mock_side(side_id=1, side_profile=TeamProfile.BLACK):
+    def valid_mock_side(side_id=1, side_profile=TeamSchema.BLACK):
         mock_side = create_autospec(Side, instance=True)
 
         # pieces.is_empty.return_value = True
@@ -36,7 +36,7 @@ class SideTest(unittest.TestCase):
         mock_competitor = CompetitorTest.valid_mock_competitor()
 
         with self.assertRaises(IdValidationException):
-            Side(side_id=None, controller=mock_competitor, profile=TeamProfile.BLACK)
+            Side(side_id=None, controller=mock_competitor, profile=TeamSchema.BLACK)
 
 
     @patch('assurance.validators.commander.CommanderValidator.validate')
@@ -48,7 +48,7 @@ class SideTest(unittest.TestCase):
         mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
 
         with self.assertRaises(CommanderValidationException):
-            Side(side_id=1, controller=None, profile=TeamProfile.BLACK)
+            Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
     @patch('assurance.validators.commander.CommanderValidator.validate')
@@ -60,7 +60,7 @@ class SideTest(unittest.TestCase):
         mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
 
         with self.assertRaises(CommanderValidationException):
-            Side(side_id=1, controller=None, profile=TeamProfile.BLACK)
+            Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
     @patch('assurance.validators.commander.CommanderValidator.validate')
@@ -95,7 +95,7 @@ class SideTest(unittest.TestCase):
         fake_controller = FakeController()
 
         with self.assertRaises(BrokenRelationshipException):
-            Side(side_id=1, controller=fake_controller, profile=TeamProfile.BLACK)
+            Side(side_id=1, controller=fake_controller, profile=TeamSchema.BLACK)
 
 
     @patch('assurance.validators.commander.CommanderValidator.validate')
@@ -109,7 +109,7 @@ class SideTest(unittest.TestCase):
         mock_competitor_validation.return_value.is_success.return_value = True
         mock_competitor_validation.return_value.payload = competitor
 
-        for profile in TeamProfile:
+        for profile in TeamSchema:
             side = Side(side_id=1, controller=competitor, profile=profile)
             assert side in competitor.teams.items
 
@@ -125,7 +125,7 @@ class SideTest(unittest.TestCase):
         mock_competitor_validation.return_value.is_success.return_value = True
         mock_competitor_validation.return_value.payload = competitor
 
-        side = Side(side_id=1, controller=competitor, profile=TeamProfile.BLACK)
+        side = Side(side_id=1, controller=competitor, profile=TeamSchema.BLACK)
 
         self.assertIs(side, competitor.current_team)
 

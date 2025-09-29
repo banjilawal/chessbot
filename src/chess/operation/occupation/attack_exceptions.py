@@ -5,14 +5,7 @@ __all__ = [
 
     # Specific attack errors (no rollback)
     'UnexpectedNullEnemyException',
-    'FriendlyFireException',
-    'AttackOnEmptySquareException',
-    'EnemyNotOnBoardException',
-    'NonCombatantTargetException',
-    'KingTargetException',
-    'AlreadyCapturedException',
-    'MissingFromRosterException',
-    'HostageTransferConflictException',
+
 
     # Rollback attack errors (dual inheritance)
     'RosterRemovalRollbackException',
@@ -42,44 +35,7 @@ class UnexpectedNullEnemyException(AttackException):
     DEFAULT_MESSAGE = "Target observer is unexpectedly null during capture; this should not happen."
 
 
-class FriendlyFireException(AttackException):
-    DEFAULT_CODE = "FRIENDLY_FIRE"
-    DEFAULT_MESSAGE = "Attempted to attack a friendly observer; this should not happen."
 
-
-class AttackOnEmptySquareException(AttackException):
-    DEFAULT_CODE = "ATTACK_ON_EMPTY_SQUARE"
-    DEFAULT_MESSAGE = "Attempted to attack an empty square; this should not happen."
-
-
-class EnemyNotOnBoardException(AttackException):
-    DEFAULT_CODE = "ENEMY_NOT_ON_BOARD"
-    DEFAULT_MESSAGE = "Attempted to capture a observer not present on the board; this should not happen."
-
-
-class NonCombatantTargetException(AttackException):
-    DEFAULT_CODE = "NON_COMBATANT_TARGET"
-    DEFAULT_MESSAGE = "Attempted to capture a non-combatant observer; this should not happen."
-
-
-class KingTargetException(AttackException):
-    DEFAULT_CODE = "KING_TARGET"
-    DEFAULT_MESSAGE = "Attempted to capture a King observer; this should not happen."
-
-
-class AlreadyCapturedException(AttackException):
-    DEFAULT_CODE = "ALREADY_CAPTURED"
-    DEFAULT_MESSAGE = "Attempted to capture a observer that already has a captor; this should not happen."
-
-
-class MissingFromRosterException(AttackException):
-    DEFAULT_CODE = "MISSING_FROM_ROSTER"
-    DEFAULT_MESSAGE = "Expected observer not found in its team's roster; this should not happen."
-
-
-class HostageTransferConflictException(AttackException):
-    DEFAULT_CODE = "HOSTAGE_TRANSFER_CONFLICT"
-    DEFAULT_MESSAGE = "Piece already recorded in captor's hostage list; this should not happen."
 
 
 # --- Rollback Attack Errors (Dual Inheritance) ---

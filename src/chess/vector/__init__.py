@@ -74,8 +74,8 @@ from .exception import  *
 
 # Core Vector classes
 from .vector import Vector
-from .vector_builder import VectorBuilder
-from .vector_validator import VectorValidator
+from .builder import VectorBuilder
+from .validator import VectorValidator
 
 
 # Package metadata

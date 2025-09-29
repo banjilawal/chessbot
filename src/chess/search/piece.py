@@ -6,7 +6,7 @@ from chess.coord import Coord
 from chess.common import IdValidator, NameValidator
 from chess.piece import Piece, PieceValidator, Discovery
 
-from .search_result import SearchResult
+from .result import SearchResult
 from .team import TeamSearch
 
 

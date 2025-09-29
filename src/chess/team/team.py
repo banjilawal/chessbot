@@ -5,49 +5,21 @@ from chess.common import IdValidator, IdValidationException
 from chess.rank import Rank
 from chess.search import SearchResult
 from chess.commander import Commander, CommanderValidator
-from chess.team import TeamProfile, NullTeamProfileException
+from chess.team import TeamSchema, NullTeamSchemaException
 
 
 class Team:
     _id:int
     _commander: 'Commander'
-    _profile: TeamProfile
+    _schema: TeamSchema
     _roster: list['Piece']
     _hostages: list['Piece']
 
-
-    def add_to_roster(self, piece: Piece):
-        method = "Team.add_to_roster"
-
-        """
-        A newly constructed discovery uses Team.add_piece to add itself to the team's roster. Team.roster returns
-        a read-only copy of the list. This is the only mutator that can directly access the array.
-
-        Args:
-            discovery (Piece): validated discovery added to the team's roster
-
-        Raises:
-            NullPieceException: if the discovery is null
-            InvalidTeamAssignmentException: if discovery.team does not match the team instance
-        """
-        try:
-            if piece is None:
-                raise NullPieceException(f"{method} cannot add a null discovery to the team")
-
-            if not piece.team == self:
-                raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")
-
-            if piece not in self._roster:
-                  self._roster.append(piece)
-
-        except (NullPieceException, ConflictingTeamException) as e:
-            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
-
-    def __init__(self, team_id: int, commander: 'Commander', profile: TeamProfile):
+    def __init__(self, team_id: int, commander: 'Commander', schema: TeamSchema):
         method = "Team.__init__"
 
-        if profile is None:
-            raise NullTeamProfileException(f"{method}: {NullTeamProfileException.DEFAULT_MESSAGE}")
+        if schema is None:
+            raise NullTeamSchemaException(f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}")
 
         id_validation = IdValidator.validate(team_id)
         if not id_validation.is_success():
@@ -59,7 +31,7 @@ class Team:
 
         self._id = cast(int, id_validation.payload)
         self._commander = cast(Commander, commander_validation.payload)
-        self._profile = profile
+        self._schema = schema
         self._roster = []
 
 
@@ -81,8 +53,8 @@ class Team:
 
 
     @property
-    def profile(self) -> TeamProfile:
-        return self._profile
+    def scheme(self) -> TeamSchema:
+        return self._schema
 
 
     @property
@@ -111,6 +83,34 @@ class Team:
             if piece.rank == rank:
                 tally += 1
         return tally
+
+
+    def add_to_roster(self, piece: Piece):
+        method = "Team.add_to_roster"
+
+        """
+        A newly constructed discovery uses Team.add_piece to add itself to the team's roster. Team.roster returns
+        a read-only copy of the list. This is the only mutator that can directly access the array.
+
+        Args:
+            discovery (Piece): validated discovery added to the team's roster
+
+        Raises:
+            NullPieceException: if the discovery is null
+            InvalidTeamAssignmentException: if discovery.team does not match the team instance
+        """
+        try:
+            if piece is None:
+                raise NullPieceException(f"{method} cannot add a null discovery to the team")
+
+            if not piece.team == self:
+                raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")
+
+            if piece not in self._roster:
+                self._roster.append(piece)
+
+        except (NullPieceException, ConflictingTeamException) as e:
+            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}") from e
 
 
     def find_by_roster_number(self, roster_number: int) -> SearchResult['Piece']:
@@ -265,4 +265,4 @@ class Team:
 
 
     def __str__(self):
-        return f"Team[id:{self._id} commander:{self._commander.name} {self._profile}"
+        return f"Team[id:{self._id} commander:{self._commander.name} {self._schema}"

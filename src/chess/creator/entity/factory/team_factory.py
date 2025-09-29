@@ -5,7 +5,7 @@ from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.owner_builder import OwnerBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.team.team_profile import TeamProfile
+from chess.team.schema import TeamSchema
 from chess.side.team import Side
 
 
@@ -15,7 +15,7 @@ class TeamFactory:
     def assemble() -> List[Side]:
         teams: List[Side] = []
 
-        for team_config in TeamProfile:
+        for team_config in TeamSchema:
             # print(team_config)
             team = TeamBuilder.build(OwnerBuilder.build(id_emitter.person_id), team_config)
             teams.append(team)

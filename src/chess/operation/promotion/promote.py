@@ -4,7 +4,7 @@ from assurance.exception.invalid_id import IdValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
 from assurance.exception.invalid_request import PromotionRequestValidationException
 
-from chess.operation.op_result import OperationResult
+from chess.operation.result import OperationResult
 from chess.common.id.validator import IdValidator
 from chess.piece.piece_validator import PieceValidator
 from chess.rank.queen import PromotedQueen
@@ -80,7 +80,7 @@ class PromotionRequestValidator(RequestValidator):
                 raise DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
 
             current_row = piece.current_coordinate.row
-            if current_row != piece.team.profile.enemy_home().rank_row :
+            if current_row != piece.team.scheme.enemy_home().rank_row :
                 raise PromotionRowException(f"{method}: {PromotionRowException.DEFAULT_MESSAGE}")
 
             return OperationResult(

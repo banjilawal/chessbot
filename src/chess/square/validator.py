@@ -29,7 +29,7 @@ class SquareValidator(Validator):
     """
     
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Square]:
+    def validate(t: Square) -> Result[Square]:
         """
         Validates that an existing `Square` instance meets specifications.
         This method performs a series of checks on a Square instance, ensuring it is not null and that 

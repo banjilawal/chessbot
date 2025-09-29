@@ -31,7 +31,7 @@ class ScalarValidator(Validator):
     """
     
     @staticmethod
-    def validate(t: Generic[T]) -> Result[Scalar]:
+    def validate(t: Scalar) -> Result[Scalar]:
         """
         Validates that an existing `Scalar` instance meets specifications.
         This method performs a series of checks on a Scalar instance, ensuring it is not null and that 

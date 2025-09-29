@@ -103,7 +103,7 @@ from .rook import Rook
 from .queen import Queen
 from .promote import PromotedQueen
 from .rank_spec import RankSpec
-from .rank_validator import RankValidator
+from .validator import RankValidator
 
 
 # Package metadata (organic to __init__.py)

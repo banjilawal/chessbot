@@ -6,7 +6,7 @@ from chess.board import Board
 from chess.square import Square, SquareValidator
 from chess.coord import Coord, CoordValidator
 from chess.common import IdValidator, NameValidator
-from .search_result import SearchResult
+from .result import SearchResult
 from .team import TeamSearch
 
 

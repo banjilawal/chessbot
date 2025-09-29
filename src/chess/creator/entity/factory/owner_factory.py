@@ -4,7 +4,7 @@ from chess.common.emitter import id_emitter
 from chess.creator.entity.builder.chess_piece_builder import ChessPieceBuilder
 from chess.creator.entity.builder.team_builder import TeamBuilder
 from chess.creator.entity.factory.rank_factory import RankFactory
-from chess.team.team_profile import TeamProfile
+from chess.team.schema import TeamSchema
 from chess.competitor.commander import HumanCommander
 from chess.competitor.commander import Commander
 from chess.randomize.competitor import RandomName
@@ -19,8 +19,8 @@ class OwnerFactory:
         wo = HumanCommander(competitor_id=id_emitter.person_id, name=RandomName.person())
         bo = HumanCommander(competitor_id=id_emitter.person_id, name=RandomName.person())
 
-        wt = TeamBuilder.build(wo, TeamProfile.WHITE)
-        bt = TeamBuilder.build(bo, TeamProfile.BLACK)
+        wt = TeamBuilder.build(wo, TeamSchema.WHITE)
+        bt = TeamBuilder.build(bo, TeamSchema.BLACK)
 
         ranks = RankFactory.assemble()
         for team in [wt, bt]:

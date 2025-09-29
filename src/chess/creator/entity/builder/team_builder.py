@@ -1,5 +1,5 @@
 
-from chess.team.team_profile import TeamProfile
+from chess.team.schema import TeamSchema
 from chess.common.emitter import id_emitter
 from chess.competitor.commander import Commander
 from chess.side.team import Side
@@ -8,7 +8,7 @@ from chess.side.team import Side
 class TeamBuilder:
 
     @staticmethod
-    def build(owner: Commander, config: TeamProfile) -> Side:
+    def build(owner: Commander, config: TeamSchema) -> Side:
        print("build team got config", config)
        team = Side(
            side_id=id_emitter.team_id,

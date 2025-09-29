@@ -78,8 +78,8 @@ from .exception import *
 
 # Core  classes
 from .scalar import Scalar
-from .scalar_builder import ScalarBuilder
-from .scalar_validator import ScalarValidator
+from .builder import ScalarBuilder
+from .validator import ScalarValidator
 
 # Package metadata
 __version__ = '1.0.0'

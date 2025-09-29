@@ -15,9 +15,9 @@ This package contains the foundational objects and logic for representing and ma
 ## USAGE
 To use this package, import the desired classes and perform team-related operations.
 
->>> from chess.team import Team, TeamProfile, TeamValidator
+>>> from chess.team import Team, TeamSchema, TeamValidator
 >>> # Create a new team and roster
->>> team = Team(team_id=1, commander=white_team_commander, profile=TeamProfile.WHITE)
+>>> team = Team(team_id=1, commander=white_team_commander, schema=TeamSchema.WHITE)
 >>> validation = TeamValidator.validate(team)
 
 ## TEAM EXCEPTIONS
@@ -68,9 +68,9 @@ from .exception import *
 
 # Core classes
 from .team import Team
-from .team_profile import TeamProfile
-from .team_builder import TeamBuilder
-from .team_validator import TeamValidator
+from .schema import TeamSchema
+from .builder import TeamBuilder
+from .validator import TeamValidator
 
 
 # Metadata
@@ -85,7 +85,7 @@ __all__ = [
     # Core classes
     'Team',
     'TeamValidator',
-    'TeamProfile',
+    'TeamSchema',
     'TeamBuilder',
 
     *exception.__all__,

@@ -1,10 +1,11 @@
 # Exceptions raised during activities
 from .exception import *
+from .context import  *
 
 from .directive import Directive
 from .operation_executor import OperationExecutor
-from .op_result import OperationResult
-from .context import ExecutionContext
+from .result import OperationResult
+
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
@@ -19,6 +20,7 @@ __all__ = [
     'ExecutionContext',
     'OperationResult',
 
+    *context.__all__,
     *exception.__all__,
 
     # Package metadata and utilities

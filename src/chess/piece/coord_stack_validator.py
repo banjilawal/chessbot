@@ -15,11 +15,7 @@ from chess.piece.piece.coord import CoordinateStack
 class CoordStackValidator(Validator):
 
     @staticmethod
-    def validate(t: Generic[T]) -> Result[CoordinateStack]:
-        entity = "CoordStack"
-        class_name = f"{entity}Validator"
-        method = f"{class_name}.validate"
-
+    def validate(t: CoordValidator) -> Result[CoordinateStack]:
         """
         Validates a CoordStack meets requirements:
             - Not null
@@ -50,6 +46,8 @@ class CoordStackValidator(Validator):
 
             CoordStackValidationException: Wraps any preceding exceptions
         """
+        method = "CoordinateStackValidator.validate"
+
         try:
             if t is None:
                 raise NullCoordStackException(

@@ -5,7 +5,7 @@ from chess.geometry.exception.coord import CoordValidationException
 from assurance.exception.invalid_id import IdValidationException
 from assurance.exception.invalid_name import NameValidationException
 from chess.square.exception import SquareValidationException
-from chess.square.square_validator import SquareValidator
+from chess.square.validator import SquareValidator
 from chess.square import Square
 from chess.square.exception.null_square import NullSquareException
 from unit.chess_test.board.square_test import SquareTest

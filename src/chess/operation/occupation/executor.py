@@ -1,24 +1,23 @@
 """
-Module: occupation_executor
+Module: executor
 Author: Banji Lawal
 Created: 2025-09-28
+
 Purpose:
-    Implements the OccupationExecutor class, which handles executing occupation
+    Implements the `OccupationExecutor` class, which handles executing occupation
     directives in the chess engine. This includes moving pieces, capturing enemies,
     and coordinating rollback logic in case of inconsistencies or failed operations.
 
 Contents:
-    - OccupationExecutor: Main class responsible for executing occupation directives.
-    - _attack_enemy: Static method for processing attacks on enemy pieces.
-    - _record_discovery: Static method for handling discoveries on occupied squares.
-    - Other helper functions for executing occupation directives safely.
+    - `OccupationExecutor:` Main class responsible for executing occupation directives.
+    - `_attack_enemy`: Static method for processing attacks on enemy pieces.
+    - `_run_scan`: Static method for handling discoveries on occupied squares.
+    - `_switch_squares`: Static method the transferring a piece to a different `Square`.
 
 Notes:
     This module is part of the chess.operation.occupation package.
     Exceptions raised during execution are defined in attack_exceptions.py and exception.py.
 """
-
-
 
 
 from typing import cast
@@ -28,8 +27,8 @@ from chess.common import id_emitter
 from chess.square import Square
 from chess.board import Board
 from chess.search import BoardSearch
-from chess.piece import Piece, KingPiece, CombatantPiece, Discovery, NullPieceException
-from chess.operation import OperationExecutor, Directive, ExecutionContext, OperationResult
+from chess.piece import Piece, KingPiece, CombatantPiece, Discovery, DiscoveryBuilder
+from chess.operation import OperationExecutor, ExecutionContext, OperationResult
 
 from chess.operation.occupation.directive import OccupationDirective, ScanDirective, AttackDirective
 from chess.operation.occupation.attack_exceptions import *
@@ -72,55 +71,52 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
         if not validation.is_success():
             return OperationResult(op_result_id, directive, validation.exception)
 
-        board = cast(Board, context.board)
-        piece = cast(Piece, directive.actor)
-        target_square = cast(Square, directive.resource)
 
-        search_result = BoardSearch.square_by_coord(coord=piece.current_position, board=board)
+        search_result = BoardSearch.square_by_coord(coord=directive.piece.current_position, board=context.board)
         if search_result.exception is not None:
-            raise search_result.exception
+            return OperationResult(op_result_id, directive, search_result.exception)
 
         if search_result.is_not_found():
             return OperationResult(
                 op_result_id,
-                original_directive,
+                directive,
                 OccupationSearchException(f"{method}: {OccupationSearchException.DEFAULT_MESSAGE}")
             )
         source_square = cast(Square, search_result.payload)
 
+        if directive.destination_square.occupant is None:
+            return OccupationExecutor._switch_squares(op_result_id, directive, source_square)
 
-        # validation = OccupationDirectiveValidator.validate(request)
-        # if not validation.is_success():
-        #     return validation.exception
-        #
-        # subject = cast(Piece, validation.request.actor)
-        #
-        # source_square = board.find_square_by_coord(subject.current_position)
-        # target_square = cast(Square, request.target)
+        attacker = directive.piece
+        destination_occupant = directive.destination_square.occupant
 
-        if target_square.occupant is None:
-            OccupationException._occuppy_
-            return OccupationExecutor._occupy_empty_square(
+        if not attacker.is_enemy(destination_occupant) or (
+            attacker.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
+        ):
+            return OccupationExecutor._run_scan(
                 op_result_id=op_result_id,
-                piece=piece,
-                source_square=source_square,
-                target_square=target_square,
-                original_directive=original_directive,
-                directive=directive
+                directive=ScanDirective(
+                    actor=directive.piece,
+                    occupation_id=directive.id,
+                    scan_id=id_emitter.scan_id,
+                    subject=destination_occupant,
+                    destination_square=directive.destination_square
+                )
             )
 
-        target_occupant = target_square.occupant
 
-
-        if not piece.is_enemy(target_occupant):
-            scan_directive = ScanDirective(
-                occupation_id=original_directive.id,
-                actor=original_directive.actor,
-                destination_square=original_directive.resource,
-                subject=target_occupant,
-                scan_id=id_emitter.scan_id
+        if attacker.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
+            return OccupationExecutor._attack_enemy(
+                op_result_id=op_result_id,
+                directive=AttackDirective(
+                    actor=directive.piece,
+                    enemy=destination_occupant,
+                    occupation_id=directive.id,
+                    attack_id=id_emitter.attack_id,
+                    source_square=source_square,
+                    destination_square=directive.destination_square
+                )
             )
-            return OccupationExecutor._run_scan(op_result_id=op_result_id, scan_directive=scan_directive)
 
 
         if target_occupant is not None and not piece.is_enemy(target_occupant):
@@ -159,156 +155,142 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
             actor=piece,
             target=target_square
         )
-        return OperationResult(op_result_id=op_result_id, directive=success_directive)
+        return OperationResult(result_id=op_result_id, directive=success_directive)
+
 
     @staticmethod
-    def _occupy_empty_square(
-        op_result_id: int,
-        piece: Piece,
-        source_square: Square,
-        target_square: Square,
-        original_directive: OccupationDirective,
-        directive: Directive
-    ) -> OperationResult:
-        method = "OccupationExecutor._occupy_empty_square"
+    def _switch_squares(op_result_id: int, directive: OccupationDirective, source_square: Square) -> OperationResult:
+        """
+        Transfers `Piece` occupying`source_square` to `directive.destination_square` leaving `source_square` empty.
+        `OccupationExecutor.execute_directive` is the single entry point to `_switch_squares`. Before `_switch_squares`
+        was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
+        `directive.destination_square` contained either
+            * A friendly piece blocking `actor` from `destination_square`
+            * An enemy king. Kings cannot be captured, only checked or checkmated.
 
-        if isinstance(piece, KingPiece):
-            if piece.team.profile.is_in_check(board=source_square.board):
-                return OperationResult(
-                    op_result_id=op_result_id,
-                    directive=original_directive,
-                    exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
-                    was_rolled_back=True
-                )
+        Args:
+            - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
+            - `directive` (`OccupationDirective`): The `OccupationDirective` to be executed.
+            - `source_square` (`Square`): The `Square` occupied by `actor`.
 
-        target_square.occupant = piece
-        if not target_square.occupant == piece:
+        Returns:
+        `OccupationResult` containing:
+            - On success: A new `OccupationDirective` with the updated squares and `piece`.
+            - On failure: The original `OccupationDirective`or verifying any rollbacks succeeded and the exception
+                describing the failure.
+
+        Raises:
+        Errors raised will be about data and state inconsistencies OccupationException: Wraps any errors including:
+            -
+
+        Note:
+        *   If the transaction fails, `OperationResult.was_rolled_back = True`
+        """
+        method = "OccupationExecutor._switch_squares"
+
+        directive.destination_square.occupant = directive.piece
+        if not directive.destination_square.occupant == directive.piece:
             # Rollback all changes
-            target_square.occupant = None
+            directive.destination_square.occupant = None
 
             # Send the result indicating rollback
             return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
+                result_id=op_result_id,
+                directive=directive,
+                was_rolled_back=True,
                 exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
-                was_rolled_back=True
             )
 
         source_square.occupant = None
-        if source_square.occupant == piece:
+        if source_square.occupant == directive.piece:
             # Rollback all changes
-            target_square.occupant = None
-            source_square.occupant = piece
+            source_square.occupant = directive.piece
+            directive.destination_square.occupant = None
 
             # Send the result indicating rollback
             return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
-                was_rolled_back=True
-            )
-
-        piece.positions.push_coord(target_square.coord)
-        if not piece.current_position == target_square.coord:
-            # Rollback all changes
-            target_square.occupant = None
-            source_square.occupant = piece
-            piece.positions.undo_push()
-
-            # Send the result indicating rollback
-            return OperationResult(
-                op_result_id=op_result_id,
+                result_id=op_result_id,
                 directive=directive,
-                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
-                was_rolled_back=True
+                was_rolled_back=True,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
             )
 
-        success_directive = OccupationDirective(
-            occupation_id=id_emitter.directive_id,
-            actor=piece,
-            target=target_square
+        directive.piece.positions.push_coord(directive.destination_square.coord)
+        if not directive.piece.current_position == directive.destination_square.coord:
+            # Rollback all changes
+            directive.piece.positions.undo_push()
+            source_square.occupant = directive.piece
+            directive.destination_square.occupant = None
+
+            # Send the result indicating rollback
+            return OperationResult(
+                result_id=op_result_id,
+                directive=directive,
+                was_rolled_back=True,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
+            )
+
+        return OperationResult(
+            result_id=op_result_id,
+            directive=OccupationDirective(id_emitter.occupation_id, directive.piece, directive.destination_square)
         )
-        return OperationResult(op_result_id=op_result_id, directive=success_directive)
 
 
     @staticmethod
-    def _run_scan(
-        op_result_id :int,
-        # observer: Piece,
-        # blocked_square: Square,
-        scan_directive: ScanDirective
-    ) -> OperationResult:
+    def _run_scan(op_result_id :int, directive: ScanDirective) -> OperationResult:
         """
-        A destination occupied by a friendly is handled differently during an occupation operation than a
-        scan operation. The difference is the conditions which raise exceptions. The friendly occupant is
-        not provided directly to avoid mixing two args of the same type.
+        Creates a new `Discovery` object for directive.observer which is blocked from moving to
+        `destination_square` by `directive.subject`. The subject is either a friendly piece or an enemy `KingPiece`.
+        `OccupationExecutor.execute_directive` is the single entry point to `_run_scan`. Validations, exception chains
+        confirmed parameters ar are correct. No additional sanity checks are needed.
 
         Args
-            `subject` (Piece): Records the encounter with a friendly at  `blocked_square`
-            `blocked_square` (Square): The blocking friendly is extracted from here
+            - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
+            - `directive` (`ScanDirective`): The `ScanDirective` to execute.
 
-         Returns:
-             Result[T]: A Result object containing the validated payload if the Validator is 
-                satisfied, NameValidationException otherwise.
+        Returns:
+        `OccupationResult` containing:
+            - On success: A new `ScanDirective` object that containing updated `observer`. Observer will have
+                a new `Discovery` instance inside `observer.discoveries`.
+            - On failure: The original `ScanDirective` for verifying any rollbacks succeeded and the exception
+                describing the failure.
 
         Raises:
-            TypeError: if t is not int
-            NullNameException: if t is null
-            BlankNameException: if t only contains white space.
-            ShortNameException: if t is shorter than MIN_NAME_LENGTH
-
-            NameValidationException: Wraps any preceding team_exception 
-
-        During an occupation operation the a square occupied by a friendly is handled differently
-        than a `ScanOperation.        
+        Errors raised will be about data and state inconsistencies OccupationException: Wraps any errors including:
+            -
+        Note:
         """
         method = "OccupationExecutor._run_scan"
 
-        try:
-            observer = cast(Piece, scan_directive.piece)
-            subject = cast(Piece, scan_directive.subject)
-            target_square = cast(Square, scan_directive.resource)
+        build_outcome = DiscoveryBuilder.build(observer=directive.observer, subject=directive.subject)
+        if not build_outcome.is_success():
+            return OperationResult(op_result_id, directive, exception=build_outcome.exception)
 
-            build_outcome = DiscoveryBuilder.build(observer=observer, subject=subject)
-            if not build_outcome.is_success():
-                return OperationResult(
-                    op_result_id=op_result_id,
-                    directive=scan_directive,
-                    exception=build_outcome.exception
-                )
+        discovery = cast(Discovery, build_outcome.payload)
+        if discovery not in directive.observer.discoveries.items:
+            directive.observer.discoveries.record_discovery(discovery=discovery)
 
-            discovery = cast(Discovery, build_outcome.payload)
-            if discovery not in observer.discoveries.items:
-                observer.discoveries.record_discovery(discovery=discovery)
-
-            if discovery not in observer.discoveries.items:
-                return OperationResult(
-                    # There is nothing to actually do so there is no rollback because the discovery was not added
-                    op_result_id=op_result_id,
-                    directive=scan_directive,
-                    exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
-                    was_rolled_back=True
-                )
-
-            success_directive = ScanDirective(
-                actor=observer,
-                destination_square=target_square,
-                subject=subject,
-                occupation_id=id_emitter.directive_id,
-                scan_id=id_emitter.scan_id
+        if discovery not in directive.observer.discoveries.items:
+            return OperationResult(
+                # There is nothing to actually do so there is no rollback because the discovery was not added
+                result_id=op_result_id,
+                directive=directive,
+                was_rolled_back=True,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
             )
-        return OperationResult(op_result_id=op_result_id, directive=success_directive)
+
+        success_directive = ScanDirective(
+            actor=directive.piece,
+            subject=directive.subject,
+            occupation_id=directive.id,
+            scan_id=id_emitter.scan_id,
+            destination_square=directive.destination_square
+        )
+        return OperationResult(result_id=op_result_id, directive=success_directive)
 
 
     @staticmethod
-    def _attack_enemy(
-        op_result_id: int,
-        piece: Piece,
-        source_square: Square,
-        target_square: Square,
-        board: Board,
-        attack_directive: AttackDirective
-    ) -> OperationResult:
+    def _attack_enemy(op_result_id: int, directive: AttackDirective) -> OperationResult:
 
         method = "OccupationExecutor._attack_enemy"
         enemy = target_square.occupant
@@ -508,3 +490,7 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
             op_result_id=id_emitter.op_result_id,
             directive=success_directive,
         )
+
+
+    @staticmethod
+    def validate_enemy(piece: Piece, enemy: CombatantPiece) -> Result[CombatatntPiece]:
