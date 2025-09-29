@@ -18,10 +18,6 @@ class OccupationDirective(Directive[Piece,Square]):
         super().__init__(directive_id=occupation_id, actor=actor, resource=destination_square)
 
     @property
-    def piece(self) -> Piece:
-        return self.actor
-
-    @property
     def destination_square(self) -> Square:
         return self.resource
 
@@ -31,26 +27,33 @@ class OccupationDirective(Directive[Piece,Square]):
                 return self._id == other.id
         return False
 
+
 # --- AttackDirective Subclass ---
 class AttackDirective(OccupationDirective):
     _attack_id: int
+    _board: Board
     _enemy: CombatantPiece
-    _source_square: Square
-
+    _actor_square: Square
 
     def __init__(
         self,
+        board: Board,
         attack_id: int,
         occupation_id: int,
         actor: Piece,
         enemy: CombatantPiece,
-        source_square: Square,
+        actor_square: Square,
         destination_square: Square
     ):
         super().__init__(occupation_id=occupation_id, actor=actor, destination_square=destination_square)
+        self._board = board
         self._enemy = enemy
         self._attack_id = attack_id
-        self._source_square = source_square
+        self._actor_square = actor_square
+
+    @property
+    def board(self) -> Board:
+        return self._board
 
     @property
     def attack_id(self) -> int:
@@ -63,8 +66,8 @@ class AttackDirective(OccupationDirective):
 
 
     @property
-    def source_square(self) -> Square:
-        return self._source_square
+    def actor_square(self) -> Square:
+        return self._actor_square
 
 
     def __eq__(self, other):
@@ -102,7 +105,6 @@ class ScanDirective(OccupationDirective):
     @property
     def subject(self) -> Piece:
         return self._subject
-
 
     def __eq__(self, other):
         if super().__eq__(other):

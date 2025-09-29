@@ -31,7 +31,7 @@ from chess.piece import Piece, KingPiece, CombatantPiece, Discovery, DiscoveryBu
 from chess.operation import OperationExecutor, ExecutionContext, OperationResult, CaptureContext
 
 from chess.operation import AttackValidator
-from chess.operation.occupation.directive import OccupationDirective, ScanDirective, AttackDirective
+from chess.operation.occupation import OccupationDirective, ScanDirective, AttackDirective
 from chess.operation.occupation.attack_exceptions import *
 from chess.operation.occupation.exception import *
 from chess.operation.occupation import (
@@ -72,8 +72,7 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
         if not validation.is_success():
             return OperationResult(op_result_id, directive, validation.exception)
 
-
-        search_result = BoardSearch.square_by_coord(coord=directive.piece.current_position, board=context.board)
+        search_result = BoardSearch.square_by_coord(coord=directive.actor.current_position, board=context.board)
         if search_result.exception is not None:
             return OperationResult(op_result_id, directive, search_result.exception)
 
@@ -83,21 +82,20 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
                 directive,
                 OccupationSearchException(f"{method}: {OccupationSearchException.DEFAULT_MESSAGE}")
             )
-        source_square = cast(Square, search_result.payload)
+        actor_square = cast(Square, search_result.payload)
 
         if directive.destination_square.occupant is None:
-            return OccupationExecutor._switch_squares(op_result_id, directive, source_square)
+            return OccupationExecutor._switch_squares(op_result_id, directive, actor_square)
 
-        attacker = directive.piece
+        actor = directive.actor
         destination_occupant = directive.destination_square.occupant
-
-        if not attacker.is_enemy(destination_occupant) or (
-            attacker.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
+        if not actor.is_enemy(destination_occupant) or (
+            actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
         ):
             return OccupationExecutor._run_scan(
                 op_result_id=op_result_id,
                 directive=ScanDirective(
-                    actor=directive.piece,
+                    actor=directive.actor,
                     occupation_id=directive.id,
                     scan_id=id_emitter.scan_id,
                     subject=destination_occupant,
@@ -107,29 +105,29 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
 
 
         attack_validation = AttackValidator.validate(
-            CaptureContext(piece=directive.piece, enemy=destination_occupant, board=context.board)
+            CaptureContext(piece=directive.actor, enemy=destination_occupant, board=context.board)
         )
-        enemy_combatant = cast(CombatantPiece, attack_validation.payload.enemy)
-
         if not attack_validation.is_success():
             return OperationResult(op_result_id, directive, attack_validation.exception)
 
+        enemy_combatant = cast(CombatantPiece, attack_validation.payload.enemy)
         return OccupationExecutor._attack_enemy(
             op_result_id=op_result_id,
             directive=AttackDirective(
-                actor=directive.piece,
+                board=context.board,
+                actor=directive.actor,
                 enemy=enemy_combatant,
                 occupation_id=directive.id,
                 attack_id=id_emitter.attack_id,
-                source_square=source_square,
+                actor_square=actor_square,
                 destination_square=directive.destination_square
             )
 
 
     @staticmethod
-    def _switch_squares(op_result_id: int, directive: OccupationDirective, source_square: Square) -> OperationResult:
+    def _switch_squares(op_result_id: int, directive: OccupationDirective, actor_square: Square) -> OperationResult:
         """
-        Transfers `Piece` occupying`source_square` to `directive.destination_square` leaving `source_square` empty.
+        Transfers `Piece` occupying`actor_square` to `directive.destination_square` leaving `actor_square` empty.
         `OccupationExecutor.execute_directive` is the single entry point to `_switch_squares`. Before `_switch_squares`
         was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
         `directive.destination_square` contained either
@@ -139,7 +137,7 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
         Args:
             - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
             - `directive` (`OccupationDirective`): The `OccupationDirective` to be executed.
-            - `source_square` (`Square`): The `Square` occupied by `actor`.
+            - `actor_square` (`Square`): The `Square` occupied by `actor`.
 
         Returns:
         `OccupationResult` containing:
@@ -156,9 +154,9 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
         """
         method = "OccupationExecutor._switch_squares"
 
-        directive.destination_square.occupant = directive.piece
-        if not directive.destination_square.occupant == directive.piece:
-            # Rollback all changes
+        directive.destination_square.occupant = directive.actor
+        if not directive.destination_square.occupant == directive.actor:
+            # Rollback all changes in reverse order
             directive.destination_square.occupant = None
 
             # Send the result indicating rollback
@@ -169,10 +167,10 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
                 exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
             )
 
-        source_square.occupant = None
-        if source_square.occupant == directive.piece:
-            # Rollback all changes
-            source_square.occupant = directive.piece
+        actor_square.occupant = None
+        if actor_square.occupant == directive.actor:
+            # Rollback all changes in reverse order
+            actor_square.occupant = directive.actor
             directive.destination_square.occupant = None
 
             # Send the result indicating rollback
@@ -183,11 +181,11 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
                 exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
             )
 
-        directive.piece.positions.push_coord(directive.destination_square.coord)
-        if not directive.piece.current_position == directive.destination_square.coord:
-            # Rollback all changes
-            directive.piece.positions.undo_push()
-            source_square.occupant = directive.piece
+        directive.actor.positions.push_coord(directive.destination_square.coord)
+        if not directive.actor.current_position == directive.destination_square.coord:
+            # Rollback all changes in reverse order
+            directive.actor.positions.undo_push()
+            actor_square.occupant = directive.actor
             directive.destination_square.occupant = None
 
             # Send the result indicating rollback
@@ -200,7 +198,7 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
 
         return OperationResult(
             result_id=op_result_id,
-            directive=OccupationDirective(id_emitter.occupation_id, directive.piece, directive.destination_square)
+            directive=OccupationDirective(id_emitter.occupation_id, directive.actor, directive.destination_square)
         )
 
 
@@ -263,128 +261,81 @@ class OccupationExecutor(OperationExecutor[OccupationDirective]):
         method = "OccupationExecutor._attack_enemy"
 
         directive.enemy.captor = directive.piece
-
-        enemy_team.roster.remove(enemy)
-
-        if enemy in enemy_team.roster:
-            # Rollback all changes
-            enemy.captor = None
+        if directive.enemy.captor != directive.piece:
+            # Rollback all changes in reverse order
+            directive.enemy.captor = None
 
             # Send the result indicating rollback
             return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
+                result_id=op_result_id,
+                directive=directive,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}"),
+                was_rolled_back=True
+            )
+
+        directive.enemy.team.roster.remove(directive.enemy)
+        if directive.enemy in directive.enemy.team.roster:
+            # Rollback all changes in reverse order
+            directive.enemy.captor = None
+
+            # Send the result indicating rollback
+            return OperationResult(
+                result_id=op_result_id,
+                directive=directive,
+                was_rolled_back=True,
                 exception=RosterRemovalRollbackException(
                     f"{method}: {RosterRemovalRollbackException.DEFAULT_MESSAGE}"
-                ),
-                was_rolled_back=True
+                )
             )
 
-        piece.team.hostages.append(enemy)
-        if enemy not in piece.team.hostages:
-            # Rollback all changes
-            enemy.captor = None
-            enemy_team.roster.append(enemy)
+        directive.piece.team.hostages.append(directive.enemy)
+        if directive.enemy not in directive.piece.team.hostages:
+            # Rollback all changes in reverse order
+            directive.enemy.team.add_to_roster(directive.enemy)
+            directive.enemy.captor = None
 
             # Send the result indicating rollback
             return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
+                result_id=op_result_id,
+                directive=directive,
+                was_rolled_back=True,
                 exception=HostageAdditionRollbackException(
                     f"{method}: {HostageAdditionRollbackException.DEFAULT_MESSAGE}"
-                ),
-                was_rolled_back=True
+                )
             )
 
-        board.pieces.remove(enemy)
-        if enemy in board.pieces:
-            # Rollback all changes
-            enemy.captor = None
-            enemy_team.roster.append(enemy)
-            piece.team.hostages.remove(enemy)
+        directive.destination_square.occupant = None
+        if directive.destination_square.occupant is not None:
+            # Rollback all changes in reverse order
+            directive.piece.team.hostages.remove(directive.enemy)
+            directive.enemy.team.add_to_roster(directive.enemy)
+            directive.enemy.captor = None
 
             # Send the result indicating rollback
             return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
+                result_id=op_result_id,
+                directive=directive,
+                was_rolled_back=True,
+                exception=OccupationException(f"{method}: {OccupationException.DEFAULT_MESSAGE}")
+            )
+
+        directive.board.pieces.remove(directive.enemy)
+        if directive.enemy in directive.board.pieces:
+            # Rollback all changes in reverse order
+            directive.destination_square.occupant = directive.enemy
+            directive.piece.team.hostages.remove(directive.enemy)
+            directive.enemy.team.add_to_roster(directive.enemy)
+            directive.enemy.captor = None
+
+            # Send the result indicating rollback
+            return OperationResult(
+                result_id=op_result_id,
+                directive=directive,
+                was_rolled_back=True,
                 exception=BoardPieceRemovalRollbackException(
                     f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"
-                ),
-                was_rolled_back=True
+                )
             )
 
+        return OccupationExecutor._switch_squares(op_result_id, directive, directive.actor_square)
 
-        target_square.occupant = piece
-        if not target_square.occupant == piece:
-            # Rollback all changes
-            enemy.captor = None
-            enemy_team.roster.append(enemy)
-            piece.team.hostages.remove(enemy)
-            board.pieces.append(enemy)
-            target_square.occupant = enemy
-
-            # Send the result indicating rollback
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=SquareOccupationRollbackException(
-                    f"{method}: {SquareOccupationRollbackException.DEFAULT_MESSAGE}"
-                ),
-                was_rolled_back=True
-            )
-
-        source_square.occupant = None
-        if source_square.occupant == piece:
-            # Rollback all changes
-            enemy.captor = None
-            enemy_team.roster.append(enemy)
-            piece.team.hostages.remove(enemy)
-            board.pieces.append(enemy)
-            target_square.occupant = enemy
-            source_square.enemy = piece
-
-            # Send the result indicating rollback
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=SourceSquareRollbackException(
-                    f"{method}: {SourceSquareRollbackException.DEFAULT_MESSAGE}"
-                ),
-                was_rolled_back=True
-            )
-
-        piece.positions.push_coord(target_square.coord)
-        if not target_square.coord == piece.current_position:
-            # Rollback all changes
-            enemy.captor = None
-            enemy_team.roster.append(enemy)
-            piece.team.hostages.remove(enemy)
-            board.pieces.append(enemy)
-            target_square.occupant = enemy
-            source_square.enemy = piece
-            piece.positions.undo_push()
-
-            # Send the result indicating rollback
-            return OperationResult(
-                op_result_id=op_result_id,
-                directive=original_directive,
-                exception=PositionUpdateRollbackException(
-                    f"{method}: {PositionUpdateRollbackException.DEFAULT_MESSAGE}"
-                ),
-                was_rolled_back=True
-            )
-
-        success_directive = OccupationDirective(
-            occupation_id=id_emitter.directive_id,
-            actor=piece,
-            target=target_square
-        )
-
-        return OperationResult(
-            op_result_id=id_emitter.op_result_id,
-            directive=success_directive,
-        )
-
-
-    @staticmethod
-    def validate_enemy(piece: Piece, enemy: CombatantPiece) -> Result[CombatatntPiece]:
