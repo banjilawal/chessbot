@@ -47,7 +47,7 @@ class SquareBuilder(Enum):
         with a successful status is returned, the contained `Square` is valid and ready for use.
 
         Args:
-            `piece_id` (`int`): The unique id for the piece. Must pass `IdValidator` checks.
+            `discovery_id` (`int`): The unique id for the piece. Must pass `IdValidator` checks.
             `name` (`Name`): Must pass `NameValidator` checks.
             `coord` (`Coord`): Where `Square` is located on a `Board`. Must pass `CoordValidator` checks.
 

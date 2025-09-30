@@ -13,21 +13,21 @@ CORE CLASSES:
 USAGE:
     >>> from chess.search import PieceSerach, SearchResult
     >>> search_result = BoardSearch.piece_by_name("BN2", [white_team, black_team])
-    >>> if result.is_success():
-    >>>     return cast(Piece, result.payload)
+    >>> if search_result.is_success():
+    >>>     return cast(Piece, search_result.payload)
 
 
 SEARCH EXCEPTIONS:
     Exceptions raised by Search entities
 
 EXCEPTION CLASSES:
-    PieceNotFoundException: Raised when a discovery is not found by PieceSearch
+    PieceNotFoundException: Raised when a discover is not found by PieceSearch
     SqaureNotFoundException: Raised when a sqaure is not found by SquareSearch
 
 USAGE:
     >>> from chess.search import BoardSearch    >>> from chess.search.team_exception import PieceNotFoundException
     >>> result = BoardSearch.piece_by_ide(1, [white_team, black_team)
-    >>> if result.is_not_found():
+    >>> if search_result.is_not_found():
     >>>    raise PieceNotFoundException(f"{PieceNotFoundException.DEFAULT_MESSAGE}")
 
 
@@ -36,16 +36,10 @@ AUTHOR: Banji Lawal
 """
 
 # Core search classes
-from .board import BoardSearch
-from .team import  TeamSearch
+from chess.board.search import BoardSearch
+from chess.team.search import  TeamSearch
 from .commander import CommanderSearch
-from .result import SearchResult
-
-from .search_exception import (
-    SearchException,
-    PieceNotFoundException,
-    SquareNotFoundException
-)
+from chess.common.result.search import SearchResult
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"

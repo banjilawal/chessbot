@@ -4,7 +4,7 @@ from enum import Enum
 from assurance import ThrowHelper
 from chess.common import BuildResult
 from chess.piece import Piece, Discovery, PieceValidator, AutoDiscoveryException, DiscoveryBuilderException
-from chess.piece.discovery import CircularDiscoveryException
+from chess.piece.discover import CircularDiscoveryException
 
 
 class DiscoveryBuilder(Enum):
@@ -21,11 +21,11 @@ class DiscoveryBuilder(Enum):
     
     Usage:
         ```python
-        # Safe discovery creation with validation
-        build_outcome = DiscoveryBuilder.build(observer=bishop, discovery=pawn))
+        # Safe discover creation with validation
+        build_outcome = DiscoveryBuilder.build(observer=bishop, discover=pawn))
         if not build_outcome.is_success():
             raise build_outcome.exception
-        discovery = build_outcome.payload
+        discover = build_outcome.payload
         ```
     
     See Also:
@@ -48,7 +48,7 @@ class DiscoveryBuilder(Enum):
 
         Args:
            `observer`(`Piece`): The piece that is doing a scan, or executing a move.
-           `discovery`(`Piece`): The static piece the `observer` finds in a `square`.
+           `discover`(`Piece`): The static piece the `observer` finds in a `square`.
 
         Returns:
             BuildResult[Discovery]: A `BuildResult` containing either:
@@ -58,8 +58,8 @@ class DiscoveryBuilder(Enum):
         Raises:
            `DiscoveryBuilderException`: Wraps any underlying validation failures that occur during the construction 
             process. This includes:
-                * `PieceValidationException`: if `observer` or `discovery` fails validation checks
-                * `AutoDiscoveryException`: if `observer` and `discovery` are the same.
+                * `PieceValidationException`: if `observer` or `discover` fails validation checks
+                * `AutoDiscoveryException`: if `observer` and `discover` are the same.
 
         Note:
             The builder runs through all the checks on parameters and state to guarantee only a valid `Discovery` is 
@@ -69,7 +69,7 @@ class DiscoveryBuilder(Enum):
 
         Example:
             ```python
-            # Valid discovery creation
+            # Valid discover creation
             build_outcome = DiscoveryBuilder.build(value=1)
             if not build_outcome.is_success():
                 return BuildResult(exception=build_outcome.exception)

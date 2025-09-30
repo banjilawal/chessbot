@@ -5,7 +5,7 @@ __all__ = [
     'DoublePromotionException',
     'InvalidPieceException',
     'PieceBuilderException',
-    'AlreadyAtDestinationException',
+    'DoubleCoordPushException',
     'NullCoordStackException',
     'CoordStackValidationException',
     'PrisonerEscapeException',
@@ -50,37 +50,19 @@ class UnregisteredTeamMemberException(PieceException):
 
 class DoublePromotionException(PieceException):
     """
-    If a discovery with validation in [Pawn, King] has been promoted to Queen, DoublePromotionException
-    is raised if there is a second attempt to promote the chess discovery.
+    If a discover with validation in [Pawn, King] has been promoted to Queen, DoublePromotionException
+    is raised if there is a second attempt to promote the chess discover.
     """
     ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
     DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again"
 
 
-class AlreadyAtDestinationException(PieceException):
-    """
-    If a discovery's destination is its current position raise AlreadyAtDestination.
-    """
-    ERROR_CODE = "ALREADY_AT_DESTINATION_ERROR"
-    DEFAULT_MESSAGE = "Piece is already at the destination."
+
 
 
 class InvalidPieceException(PieceException, ValidationException):
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Piece validation failed"
-
-
-class NullCoordStackException(NullException):
-    """
-    Raised if a discovery's CoordStack (Piece.positions) is null.
-    """
-    ERROR_CODE = "NULL_COORD_STACK_ERROR"
-    DEFAULT_MESSAGE = f"CoordStack cannot be null"
-
-
-class CoordStackValidationException(ValidationException):
-    ERROR_CODE = "COORDINATE_STACK_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"CoordinateStack validation failed"
 
 
 class PrisonerEscapeException(PieceException):
@@ -89,7 +71,7 @@ class PrisonerEscapeException(PieceException):
     a captured hostage raises PrisonerEscapeException. This only applies to hostage pieces
     """
     ERROR_CODE = "MOVING_CAPTURED_PIECE_ERROR"
-    DEFAULT_MESSAGE = "A captured discovery cannot be moved on the board"
+    DEFAULT_MESSAGE = "A captured discover cannot be moved on the board"
 
 
 class PrisonerReleaseException(PieceException):
@@ -98,13 +80,13 @@ class PrisonerReleaseException(PieceException):
     combatant_piece.captor != null to combatant_piece.captor = None
     """
     ERROR_CODE = "RELEASING_CAPTURED_PIECE_ERROR"
-    DEFAULT_MESSAGE = "Cannot change CombatantPiece.captor to null once it has been set to an enemy discovery"
+    DEFAULT_MESSAGE = "Cannot change CombatantPiece.captor to null once it has been set to an enemy discover"
 
 
 # === NULL PIECE RELATED EXCEPTIONS ===
-class NullPieceException(NullException):
+class NullPieceException(PieceException, NullException):
     """
-    Raised if a discovery is null. Parent class for:
+    Raised if a discover is null. Parent class for:
         - NullCombatantPieceException
         - NullKingException
     Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.

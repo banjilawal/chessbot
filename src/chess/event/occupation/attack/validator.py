@@ -2,7 +2,7 @@ from typing import Generic, TypeVar, cast
 
 
 from chess.piece import Piece, PieceValidator, InvalidPieceException
-from chess.square import Square, SquareValidator, SquareValidationException
+from chess.square import Square, SquareValidator, InvalidSqaureException
 from chess.common import Validator, Result, IdValidator, IdValidationException
 from chess.event.occupation import (
     AttackEvent,
@@ -38,7 +38,7 @@ class AttackEvent(Validator):
 
             `IdValidationException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
-            `SquareValidationException`: if `target` fails validator
+            `InvalidSquareException`: if `target` fails validator
 
             `AutoOccupationException`: if target already occupies the square
             `KingAttackException`: if the target square is occupied by an enemy king
@@ -68,7 +68,7 @@ class AttackEvent(Validator):
 
             destination_square_validation = SquareValidator.validate(event.destination_square)
             if not destination_square_validation.is_success():
-                raise SquareValidationException(f"{method}: {SquareValidationException.DEFAULT_MESSAGE}")
+                raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 
             if event.destination_square.coord == event.actor.current_position:
                 raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
@@ -79,7 +79,7 @@ class AttackEvent(Validator):
                 TypeError,
                 IdValidationException,
                 InvalidPieceException,
-                SquareValidationException,
+                InvalidSqaureException,
                 NullAttackEventException,
                 CircularOccupationException
         ) as e:

@@ -14,10 +14,10 @@ class Discoveries:
 
     `Discoveries` encapsulates the list of `Discovery` objects observed by a `Piece`.
     It ensures safe recording (no duplicates, no nulls) and provides search and filter
-    operations over the stored discoveries. This separation allows discovery management
+    operations over the stored discoveries. This separation allows discover management
     to evolve independently of the `Piece` itself, while keeping the `Piece` interface clean.
 
-    Each discovery represents a snapshot of another piece found during play (through
+    Each discover represents a snapshot of another piece found during play (through
     scanning, moving, or occupation attempts). By aggregating them, `Discoveries`
     provides both simple access (all discoveries) and targeted lookups (by id, name,
     coordinate, rank, or ransom).
@@ -31,7 +31,7 @@ class Discoveries:
           respective validators (`IdValidator`, `NameValidator`, `CoordValidator`,
           `RankValidator`).
         - Each method returns a `SearchResult` to provide consistent success/empty/error handling.
-        - The collection enforces uniqueness and immutability at the discovery level.
+        - The collection enforces uniqueness and immutability at the discover level.
     """
     _items: List[Discovery]
 
@@ -62,7 +62,7 @@ class Discoveries:
 
 
     def find_by_id(self, piece_id: int) -> SearchResult[Discovery]:
-        """Find a discovery by the id"""
+        """Find a discover by the id"""
         method = "Discoveries.find_by_id"
 
         try:
@@ -81,7 +81,7 @@ class Discoveries:
 
 
     def find_by_piece_name(self, piece_name: str) -> SearchResult[Discovery]:
-        """Find a discovery by the name"""
+        """Find a discover by the name"""
         method = "Discoveries.find_by_piece_name"
 
         try:
@@ -103,7 +103,7 @@ class Discoveries:
 
 
     def find_by_coord(self, coord: Coord) -> SearchResult[Discovery]:
-        """Find a discovery by the coord"""
+        """Find a discover by the coord"""
         method = "Discoveries.find_by_coord"
 
         try:

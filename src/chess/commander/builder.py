@@ -120,7 +120,7 @@ class CommanderBuilder(Enum):
                 return BuildResult(payload=Bot(commander_id=commander_id, name=name, engine=engine))
 
             # If no engine is provided and all the checks are passed, a Human commander is returned
-            return BuildResult(payload=Human(competitor_id=commander_id, name=name))
+            return BuildResult(payload=Human(person_id=commander_id, name=name))
 
 
         except Exception as e:

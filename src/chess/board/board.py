@@ -150,7 +150,7 @@ class Board:
         method = f"{self.__class__.__name__}.remove_captured_piece"
 
         """
-        Remove a captured discovery from the board after it has been:
+        Remove a captured discover from the board after it has been:
             - Processed by the captor
             - Removed from its' team's roster
             - Added to its' enemy's hostages
@@ -165,7 +165,7 @@ class Board:
             PieceNotFoundException: if the hostage does not exist on the board
             IncompleteBoardTransactionException: If hostage is still on the board after is was removed.
             
-            FailedPieceRemovalException wraps any preceding team_exception
+            BoardPieceRemovalFailedException wraps any preceding team_exception
         """
         try:
             validation = HostageValidator.validate(hostage)
@@ -202,12 +202,12 @@ class Board:
             coord (Coord): The coord of the ChessPiece to find.      
 
         Returns:    
-            Result[Piece]: with payload != NULL if discovery is found. Otherwise the Result contains 
+            Result[Piece]: with payload != NULL if discover is found. Otherwise the Result contains 
             any team_exception raised.
 
         Raises: 
             CoordValidationException: If coord fails sanity checks.
-            PieceNotFoundException: If no discovery is at the coord.
+            PieceNotFoundException: If no discover is at the coord.
         """
 
         try:
@@ -402,7 +402,7 @@ class Board:
         """
         Provides a string representation of the chessboard, showing pieces or square names.
 
-        If a square is occupied, it shows the chess discovery's name.
+        If a square is occupied, it shows the chess discover's name.
         If a square is vacant, it shows the square's name in brackets.
         """
         string = ""
@@ -411,7 +411,7 @@ class Board:
             row_str_parts = []
             for square in row:
                 if square.occupant is not None:
-                    # Display the discovery's name if the square is occupied.
+                    # Display the discover's name if the square is occupied.
                     row_str_parts.append(f"[{square.occupant.name}]")
                 else:
                     # Display the square's name in brackets if it's empty.

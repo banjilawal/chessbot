@@ -92,7 +92,7 @@ class Coord:
             Coord
 
         Raise:
-            VectorValidationException: if null-pkg fails validators.
+            InvalidVectorException: if null-pkg fails validators.
             CoordValidationException: if 
         """
 

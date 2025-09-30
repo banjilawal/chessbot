@@ -1,4 +1,4 @@
-from typing import cast, Generic, TypeVar
+from typing import cast, TypeVar
 
 from chess.piece import Piece, NullPieceException, InvalidPieceException
 from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
@@ -10,7 +10,7 @@ class PieceValidator(Validator):
     @staticmethod
     def validate(t: Piece) -> Result[Piece]:
         """
-        Validates a discovery with chained exceptions for discovery meeting specifications:
+        Validates a discover with chained exceptions for discover meeting specifications:
             - Not null
             - id fails validator
             - name fails validator
@@ -18,7 +18,7 @@ class PieceValidator(Validator):
         If validator fails their team_exception will be encapsulated in a PieceValidationException
 
         Args
-            t (Piece): discovery to validate
+            t (Piece): discover to validate
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
@@ -54,7 +54,7 @@ class PieceValidator(Validator):
             if not name_result.is_success():
                 raise NameValidationException(f"{method}: {NameValidationException.DEFAULT_MESSAGE}")
 
-            # coord_validation = CoordValidator.validate(discovery.current_position)
+            # coord_validation = CoordValidator.validate(discover.current_position)
             # if not coord_validation.is_success():
             #     raise CoordValidationException(f"{method}: {CoordValidationException.DEFAULT_MESSAGE}")
 

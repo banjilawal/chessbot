@@ -76,8 +76,8 @@ AUTHOR: Banji Lawal
 from .exception import *
 
 from .coord import Coord
-from .coord_builder import CoordBuilder
-from .coord_validator import CoordValidator
+from .builder import CoordBuilder
+from .validator import CoordValidator
 
 
 # Package metadata

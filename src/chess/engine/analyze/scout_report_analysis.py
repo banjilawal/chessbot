@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.square import Square
-from chess.piece.discovery import Discovery
+from chess.piece.discover import Discovery
 from chess.piece.piece import Piece
 
 

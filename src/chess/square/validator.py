@@ -2,7 +2,7 @@ from typing import cast, Generic, TypeVar
 
 
 from chess.coord import CoordValidator, CoordValidationException
-from chess.square import Square, NullSquareException, SquareValidationException
+from chess.square import Square, NullSquareException, InvalidSqaureException
 from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
 
 
@@ -34,14 +34,14 @@ class SquareValidator(Validator):
         Validates that an existing `Square` instance meets specifications.
         This method performs a series of checks on a Square instance, ensuring it is not null and that 
         its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised 
-        as a `SquareValidationException`, providing a clean and consistent error-handling experience.
+        as a `InvalidSquareException`, providing a clean and consistent error-handling experience.
 
         Args
             `t` (`Square`): `Square` instance to validate
 
          Returns:
             `Result`[`Square`]: A `Resul`t object containing the validated payload if the specification is satisfied,
-            `SquareValidationException` otherwise.
+            `InvalidSquareException` otherwise.
 
         Raises:
             `TypeError`: If the input `t` is not an instance of `Square`.
@@ -49,7 +49,7 @@ class SquareValidator(Validator):
             `IdValidationException`: If the `id` attribute of the square fails validation checks.
             `NameValidationException`: If the `name` attribute of the square fails validation checks.
             `CoordValidationException`: If the `coord` attribute of the square fails validation checks.
-            `SquareValidationException`: Wraps any preceding exceptions
+            `InvalidSquareException`: Wraps any preceding exceptions
         """
         method = "SquareValidator.validate"
         
@@ -83,9 +83,9 @@ class SquareValidator(Validator):
             NameValidationException,
             CoordValidationException
         ) as e:
-            raise SquareValidationException("Square failed validation.") from e
+            raise InvalidSqaureException("Square failed validation.") from e
 
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising
         except Exception as e:
-            raise SquareValidationException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidSqaureException(f"An unexpected error occurred during validation: {e}") from e

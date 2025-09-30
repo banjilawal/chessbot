@@ -40,7 +40,7 @@ class AttackValidator(Validator):
 
             `IdValidationException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
-            `SquareValidationException`: if `target` fails validator
+            `InvalidSquareException`: if `target` fails validator
 
             `AutoOccupationException`: if target already occupies the square
             `KingAttackException`: if the target square is occupied by an enemy king

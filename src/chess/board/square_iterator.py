@@ -1,6 +1,6 @@
 from typing import List
 
-from chess.creator.entity.builder.chess_board_builder import ChessBoardBuilder
+from chess.board.builder import ChessBoardBuilder
 from chess.coord import Coord
 from chess.square import Square
 from chess.vector import Vector

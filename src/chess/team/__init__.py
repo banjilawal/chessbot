@@ -28,9 +28,9 @@ and resolve team-related issues.
 
 ### CORE EXCEPTIONS
 * `NullTeamException`: Raised when a `Team` reference is unexpectedly `None`.
-* `AddPieceException`: Raised when an attempt to add a discovery to a team fails, for example, if the team is full.
-* `TeamValidationException`: Raised when a `Team` fails to meet its validation criteria.
-* `RemoveCombatantException`: Raised when a discovery cannot be removed from a team, for example, if the discovery is not present.
+* `AddTeamMemberException`: Raised when an attempt to add a discover to a team fails, for example, if the team is full.
+* `InvalidTeamException`: Raised when a `Team` fails to meet its validation criteria.
+* `RemoveCombatantException`: Raised when a discover cannot be removed from a team, for example, if the discover is not present.
 * `InvalidTeamAssignmentException`: Raised when a `Team`'s properties conflict with another `Team`'s, such as having the same ID.
 
 ### EXCEPTION USAGE EXAMPLES
@@ -48,15 +48,15 @@ Traceback (most recent call last):
 NullTeamException: Error: No team exists.
 ---
 
-A use case for the `AddPieceException`.
->#>> from chess.team.team_exception import AddPieceException
+A use case for the `AddTeamMemberException`.
+>#>> from chess.team.team_exception import AddTeamMemberException
 >>>
->>> def add_piece(team, discovery):
-...     if is discovery.team.commander not team.commander:
-...         raise QUotaFullException("The discovery is not on this team. Adding discovery failed")
+>>> def add_piece(team, discover):
+...     if is discover.team.commander not team.commander:
+...         raise QUotaFullException("The discover is not on this team. Adding discover failed")
 Traceback (most recent call last):
     ...
-AddPieceException: The discovery is not on this team. Adding discovery faile.
+AddTeamMemberException: The discover is not on this team. Adding discover faile.
 
 ---
 
@@ -68,6 +68,7 @@ from .exception import *
 
 # Core classes
 from .team import Team
+from .search import TeamSearch
 from .schema import TeamSchema
 from .builder import TeamBuilder
 from .validator import TeamValidator

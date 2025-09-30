@@ -5,12 +5,33 @@ from chess.search import SearchResult
 from chess.common import IdValidator
 
 class CommanderSearch:
-    """Static search methods within a single commander"""
+    """
+    Static methods for entities and operations that need to search a Board for pieces, squares, coords, etc.
+    Provides consistent search interface and return types across all search operations.
+    Validates input parameters before searching to ensure safe operations.
+    Returns SearchResult objects encapsulating either the found entity or error information.
+
+    Usage:
+        ```python
+        from chess.board import Board, BoardSearch
+        from chess.piece import Piece
+        ```
+
+    Note:
+        DO NOT USE ANY OTHER METHODS TO SEARCH A BOARD. USE ONLY THE METHODS IN THIS CLASS.
+
+    See Also:
+        `Board`: The board being searched
+        `Piece`: The piece being searched for
+        `Square`: The square being searched for
+        `Coord`: The coordinate being searched for
+        `SearchResult`: The return type for all search operations
+    """
 
     @staticmethod
     def for_team(team_id: int, commander: 'Commander') -> SearchResult['Team']:
         method = "CommanderSearch.for_team"
-        """Find a discovery by ID within a specific commander"""
+        """Find a discover by ID within a specific commander"""
 
         try:
             id_validation = IdValidator.validate(team_id)

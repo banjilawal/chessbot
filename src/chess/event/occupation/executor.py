@@ -27,6 +27,8 @@ from chess.common import id_emitter
 from chess.square import Square
 from chess.search import BoardSearch
 from chess.piece import KingPiece, CombatantPiece, Discovery, DiscoveryBuilder
+from chess.team import AddEnemyHostageRolledBackException
+from chess.team.exception import RemoveTeamMemberRolledBackException
 from chess.transaction import Transaction, ExecutionContext, TransactionResult, CaptureContext
 
 from chess.transaction import AttackValidator
@@ -229,7 +231,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
 
         if discovery not in directive.observer.discoveries.items:
             return TransactionResult(
-                # There is nothing to actually do so there is no rollback because the discovery was not added
+                # There is nothing to actually do so there is no rollback because the discover was not added
                 result_id=op_result_id,
                 event=directive,
                 was_rolled_back=True,
@@ -274,8 +276,8 @@ class OccupationTransaction(Transaction[OccupationEvent]):
                 result_id=op_result_id,
                 event=directive,
                 was_rolled_back=True,
-                exception=RosterRemovalRollbackException(
-                    f"{method}: {RosterRemovalRollbackException.DEFAULT_MESSAGE}"
+                exception=RemoveTeamMemberRolledBackException(
+                    f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
                 )
             )
 
@@ -290,8 +292,8 @@ class OccupationTransaction(Transaction[OccupationEvent]):
                 result_id=op_result_id,
                 event=directive,
                 was_rolled_back=True,
-                exception=HostageAdditionRollbackException(
-                    f"{method}: {HostageAdditionRollbackException.DEFAULT_MESSAGE}"
+                exception=AddEnemyHostageRolledBackException(
+                    f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
                 )
             )
 

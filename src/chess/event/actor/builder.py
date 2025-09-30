@@ -68,10 +68,10 @@ class ActorBuilder(Enum):
                 * `IdValidationException`: if `actor_id` fails validation checks
                 * `NameValidationException`: if `name` fails validation checks
                 * `RankValidationException`: if `rank` fails validation checks
-                * `TeamValidationException`: if `team` fails validation checks
+                * `InvalidTeamException`: if `team` fails validation checks
                 * `InvalidTeamAssignmentException`: If `actor.team` is different from `team` parameter
-                * `RankQuotaFullException`: If the `team` has no empty slots for the `actor.rank`
-                * `RankQuotaFullException`: If `actor.team` is equal to `team` parameter but `team.roster` still does
+                * `FullRankQuotaException`: If the `team` has no empty slots for the `actor.rank`
+                * `FullRankQuotaException`: If `actor.team` is equal to `team` parameter but `team.roster` still does
                     not have the actor
 
         Note:

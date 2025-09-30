@@ -13,6 +13,11 @@ if TYPE_CHECKING:
     pass
 
 
+__all__ = [
+    'Commander',
+    'Human',
+    'Bot'
+]
 class Commander(ABC):
     _id: int
     _name: str
@@ -101,7 +106,7 @@ class Commander(ABC):
 
             piece = cast(Piece, result.payload)
 
-            # if discovery is None:
+            # if discover is None:
             #     raise PieceNotFoundException(
             #         f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at index {array_index}"
             #     )
@@ -123,3 +128,40 @@ class Commander(ABC):
 
         except (NullPieceException, ConflictingTeamException) as e:
             raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
+
+
+class Human(Commander):
+
+    def __init__(self, person_id: int, name: str):
+        super().__init__(person_id, name)
+
+    def __eq__(self, other):
+        if not super().__eq__(other):
+            return False
+        if isinstance(other, Human):
+            return self.id == other.id
+        return False
+
+
+class Bot(Commander):
+    _engine: DecisionEngine
+
+    def __init__(self, bot_id: int,name: str,engine: DecisionEngine):
+        super().__init__(bot_id, name)
+        self._engine = engine
+
+    @property
+    def engine(self) -> DecisionEngine:
+        return self._engine
+
+
+    def __eq__(self, other):
+        if not super().__eq__(other):
+            return False
+
+        if isinstance(other, Bot):
+            return self._id == other.id
+        return False
+
+    def __str__(self):
+        return f"{super().__str__()} engine:{self._engine.__class__.__name__.title()}"

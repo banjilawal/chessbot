@@ -3,8 +3,8 @@ from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
 from chess.common import Result, Validator, IdValidator, IdValidationException
 from chess.exception import RelationshipException
-from chess.team import Team, NullTeamException, NullTeamSchemaException, TeamValidationException
-from chess.commander import Commander, CommanderValidator, CommanderValidationException, \
+from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
+from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \
     InvalidCommanderAssignmentException
 
 T = TypeVar('T')
@@ -44,17 +44,17 @@ class TeamValidator(Validator):
 
          Returns:
             `Result`[`Team`]: A `Resul`t object containing the validated payload if the specification is satisfied,
-            `TeamValidationException` otherwise.
+            `InvalidTeamException` otherwise.
 
         Raises:
             `TypeError`: if `t` is not a Team` object
             `NullTeamException`: if `t` is null
             `IdValidationException`: if `id` fails validation checks
-            `CommanderValidationException`: if `commander` fails validation checks
+            `InvalidCommanderException`: if `commander` fails validation checks
             `NullTeamProfileException`: if `profile` is null
             `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
             `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
-            `TeamValidationException`: Wraps any preceding exceptions
+            `InvalidTeamException`: Wraps any preceding exceptions
         """
         method = "TeamValidator.validate"
 
@@ -77,7 +77,7 @@ class TeamValidator(Validator):
 
             commander_validation = CommanderValidator.validate(team.commander)
             if not commander_validation.is_success():
-                raise CommanderValidationException(f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}")
+                raise InvalidCommanderException(f"{method}: {InvalidCommanderException.DEFAULT_MESSAGE}")
 
             commander = cast(Commander, commander_validation.payload)
             if team.commander != commander:
@@ -95,16 +95,16 @@ class TeamValidator(Validator):
                 NullTeamException,
                 IdValidationException,
                 NullTeamSchemaException,
-                CommanderValidationException,
+                InvalidCommanderException,
                 InvalidCommanderAssignmentException,
                 RelationshipException
         ) as e:
-            raise TeamValidationException(f"{method}: {TeamValidationException.DEFAULT_MESSAGE}") from e
+            raise InvalidTeamException(f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising
         except Exception as e:
-            raise TeamValidationException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidTeamException(f"An unexpected error occurred during validation: {e}") from e
 
 #
 # def main():

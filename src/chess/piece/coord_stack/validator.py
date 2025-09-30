@@ -1,16 +1,15 @@
 from typing import Generic, cast
 
-from chess.coord.coord_exception import CoordStackValidationException
-from chess.result import Result
+
 from chess.coord import CoordValidator
-from chess.common.validator import Validator, T
-from chess.exception.coord_stack import InconsistentCurrentCoordException
+from chess.piece import CoordStack, CoordStackValidationException, NullCoordStackException
+from chess.common import Validator, Result,ResultPayloadConflictException
+from chess.exception import InconsistentCurrentCoordException
 
-from chess.exception.stack_exception import CorruptedStackException, StackSizeConflictException
 
-from chess.coord.coord_exception.null.null_coord_stack import NullCoordStackException
-from chess.piece.piece.coord import CoordinateStack
-
+__all__ = [
+    'CoordStackValidator'
+]
 
 class CoordStackValidator(Validator):
 
@@ -54,10 +53,10 @@ class CoordStackValidator(Validator):
                     f"{method} {NullCoordStackException.DEFAULT_MESSAGE}"
                 )
 
-            if not isinstance(t, CoordinateStack):
+            if not isinstance(t, CoordStack):
                 raise TypeError(f"{method} Expected a CoordStack, got {type(t).__name__}")
 
-            coords  = cast(CoordinateStack, t)
+            coords  = cast(CoordStack, t)
 
             if coords.size() > 0 and coords.is_empty():
                 raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")

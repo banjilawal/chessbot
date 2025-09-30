@@ -26,14 +26,11 @@ AUTHOR: Banji L
 """
 
 from .exception import *
+from .commander import *
 
-from .commander import Commander
-from .human import Human
-from .bot import Bot
 from .team_list import TeamList
-from .commander_type import CommanderType
-from .commander_validator import CommanderValidator
-from .commander_builder import CommanderBuilder
+from .validator import CommanderValidator
+from .builder import CommanderBuilder
 
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
@@ -41,14 +38,11 @@ __package_name__ = 'chess.commander'
 
 __all__ = [
     # Core classes
-    'Commander',
-    'Human',
-    'Bot',
     'TeamList',
-    'CommanderType',
     'CommanderValidator',
     'CommanderBuilder',
 
+    *commander.__all__,
     *exception.__all__,
 
 

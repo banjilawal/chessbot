@@ -51,7 +51,7 @@ class OwnerFactory:
         #     for validation in ranks:
         #         for i in range(validation.number_per_team):
         #             captor = ChessPieceBuilder.build(
-        #                 piece_id=id_emitter.piece_id,
+        #                 discovery_id=id_emitter.discovery_id,
         #                 team_rank_member_id=(i + 1),
         #                 validation=validation,
         #                 team=team

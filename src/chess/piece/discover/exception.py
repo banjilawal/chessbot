@@ -20,7 +20,7 @@ class DiscoveryException(ChessException):
 
 class NullDiscoveryException(DiscoveryException, NullException):
     """
-    NullDiscoveryException is raised when a discovery cannot be null.
+    NullDiscoveryException is raised when a discover cannot be null.
     """
     ERROR_CODE = "NULL_DISCOVERY_ERROR"
     DEFAULT_MESSAGE = f"Discovery cannot be null"

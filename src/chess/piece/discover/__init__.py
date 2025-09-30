@@ -1,4 +1,4 @@
-# chess/piece/discovery/__init__.py
+# chess/piece/discover/__init__.py
 
 """
 # `chess.piece` Package
@@ -19,8 +19,8 @@ Provides the fundamental data structures for game pieces and entities owned by a
 from chess.rank import Pawn, King
 from chess.piece import CombatantPiece, KingPiece
 
-white_pawn_9 = CombatantPiece(piece_id=9, name='WP1', rank=Pawn(), team=white_team)
-white_king = KingPiece(piece_id=2, name='WK', rank=King(), team=white_team)
+white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', rank=Pawn(), team=white_team)
+white_king = KingPiece(discovery_id=2, name='WK', rank=King(), team=white_team)
 ```
 
 ## EXCEPTIONS
@@ -66,7 +66,7 @@ Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
     * `DiscoveryBuilderException`: Raised if there is an error during when `DiscoveryBuilder` is creating a new `Discovery`
         instance.
     * `NullDiscoveryBuilderException`: Raised if there is null `DiscoveryBuilder` is passed as a parameter.
-    * `AutoDiscoveryException`: Raised if a `Piece` object tries to create an discovery record about itself.
+    * `AutoDiscoveryException`: Raised if a `Piece` object tries to create an discover record about itself.
 
 
 ### PIECE EXCEPTION USAGE EXAMPLES
@@ -76,7 +76,7 @@ These examples show recommended workflows with `Piece` exceptions.
 from chess.piece import CombatantPiece, Discovery, NullPieceException, AutoDiscoveryException
 
 build_outcome = PieceBuilder.build(
-    piece_id=id_emitter.piece_id,
+    discovery_id=id_emitter.discovery_id,
     name='BB2',
     rank=Bishop(),
     team=black_team
@@ -91,11 +91,11 @@ black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 if black_bishop_2 is None:
     raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
-def create_discovery(observer: Piece, discovery: Piece) -> Discovery:
+def create_discovery(observer: Piece, discover: Piece) -> Discovery:
     method = "create_discovery"
-    if observer == discovery:
+    if observer == discover:
         raise AutoDiscoveryException(f"{method}: {AutoDiscoveryException.DEFAULT_MESSAGE}")
-    return Discovery(discovery=discovery)
+    return Discovery(discover=discover)
 ```
 
 VERSION: 1.0.0
@@ -111,7 +111,7 @@ from .builder import DiscoveryBuilder
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.piece.discovery'
+__package_name__ = 'chess.piece.discover'
 
 
 # Export control - only what belongs in public API

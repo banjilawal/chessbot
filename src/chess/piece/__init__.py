@@ -19,15 +19,18 @@ Provides the fundamental data structures for game pieces and entities owned by a
 from chess.rank import Pawn, King
 from chess.piece import CombatantPiece, KingPiece
 
-white_pawn_9 = CombatantPiece(piece_id=9, name='WP1', rank=Pawn(), team=white_team)
-white_king = KingPiece(piece_id=2, name='WK', rank=King(), team=white_team)
+white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', rank=Pawn(), team=white_team)
+white_king = KingPiece(discovery_id=2, name='WK', rank=King(), team=white_team)
 ```
+## SUBPACKAGES
+    * `chess.piece.exception`: Exceptions raised by `Piece` and its subclasses.
+    * `chess.piece.coord_stack`: Data structures and utilities for storing history of `Piece` object's positions.
+    * `chess.piece.discover`: Data structures and utilities for managing discoveries made by `Piece` objects.
 
 ## EXCEPTIONS
 These are not all the exceptions related to `Piece` in the application. `chess.piece` package only has exceptions
 organic to:
-    * `Piece` and its subclases.
-    * `CoordStack`.
+    * `Piece` and its subclases..
 
 All exceptions in `chess.piece` package have static fields:
     - `ERROR_CODE`: Useful when parsing logs for an exception. Error codes are in caps with a "_ERROR" suffix
@@ -55,14 +58,8 @@ Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
     * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
 
 
-### COORDSTACK EXCEPTIONS
-    * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
-    * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validation.
-    * `NullCoordStackException`: Raised if a null `CoordStackException` is passed as a parameter.
-
-
 null or improperly referenced during chess operations.
-AlreadyAtDestinationException: Move to current position
+DoubleCoordPushException: Move to current position
 
 PrisonerEscapeException: Captured piece tries to move
 PrisonerReleaseException: Error releasing prisoner
@@ -76,7 +73,7 @@ These examples show recommended workflows with `Piece` exceptions.
 from chess.piece import CombatantPiece, Encounter, NullPieceException, AutoEncounterException
 
 build_outcome = PieceBuilder.build(
-    piece_id=id_emitter.piece_id,
+    discovery_id=id_emitter.discovery_id,
     name='BB2',
     rank=Bishop(),
     team=black_team
@@ -91,11 +88,11 @@ black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 if black_bishop_2 is None:
     raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
-def create_encounter(observer: Piece, discovery: Piece) -> Encounter:
+def create_encounter(observer: Piece, discover: Piece) -> Encounter:
     method = "create_encounter"
-    if observer == discovery:
+    if observer == discover:
         raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
-    return Encounter(discovery=discovery)
+    return Encounter(discover=discover)
 ```
 
 VERSION: 1.0.0
@@ -103,13 +100,11 @@ AUTHOR: Banji Lawal
 """
 
 from .exception import *
-from .discovery import *
-
+from .discover import *
+from .coord_stack import *
 from .piece import *
-from .coord_stack import CoordStack
 from .builder import PieceBuilder
 from .validator import PieceValidator
-from .coord_stack_validator import CoordStackValidator
 
 
 # Package metadata (organic to __init__.py)
@@ -128,11 +123,11 @@ __all__ = [
     'PieceValidator',
     'PieceBuilder',
 
+    *discover.__all__,
     *exception.__all__,
-    *exception.__all__,
+    *coord_stack.__all__,
 
-    # Subpackages
-    'exception',
+
 
     # Package metadata and utilities
     '__version__',

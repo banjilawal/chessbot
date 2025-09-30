@@ -3,7 +3,7 @@ from typing import Generic, TypeVar, cast
 
 from chess.piece import Piece, PieceValidator, InvalidPieceException, CircularDiscoveryException, KingPiece, \
     CombatantPiece
-from chess.square import Square, SquareValidator, SquareValidationException
+from chess.square import Square, SquareValidator, InvalidSqaureException
 from chess.common import Validator, Result, IdValidator, IdValidationException
 from chess.event.occupation import (
     Piece,
@@ -39,7 +39,7 @@ class ActorValidator(Validator):
 
             `IdValidationException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
-            `SquareValidationException`: if `target` fails validator
+            `InvalidSquareException`: if `target` fails validator
 
             `AutoOccupationException`: if target already occupies the square
             `KingAttackException`: if the target square is occupied by an enemy king

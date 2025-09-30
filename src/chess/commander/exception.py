@@ -6,7 +6,7 @@ __all__ = [
     'CommanderException',
     'NullCommanderException',
     'CommanderBuilderException',
-    'CommanderValidationException',
+    'InvalidCommanderException',
     'NullCommanderBuilderException',
     'InvalidCommanderAssignmentException',
     'TeamListException',
@@ -15,7 +15,8 @@ __all__ = [
 
 class CommanderException(ChessException):
     """
-    Super class for exceptions raised by Piece objects
+    Super class for exceptions raised by Commander objects. DO NOT USE DIRECTLY. Subclasses give more useful debugging
+    messages.
     """
     ERROR_CODE = "COMMANDER_ERROR"
     DEFAULT_MESSAGE = "Commander raised an team_exception"
@@ -29,17 +30,10 @@ class NullCommanderException(NullException):
     DEFAULT_MESSAGE = f"Commander cannot be null"
 
 
-class CommanderValidationException(ValidationException):
+class InvalidCommanderException(ValidationException):
     ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Commander validation failed"
+    DEFAULT_MESSAGE = "Commander validation failed"
 
-
-class NullCommanderValidatorException(NullException):
-    """
-    Raised if a CommanderBuilder is null.
-    """
-    ERROR_CODE = "NULL_COMMANDER_VALIDATOR_ERROR"
-    DEFAULT_MESSAGE = "CommanderValidator cannot be null"
 
 
 class CommanderBuilderException(BuilderException):

@@ -30,7 +30,7 @@ from chess.rank import Rank
 from chess.coord import Coord
 from chess.common import IdValidator, NameValidator, NameValidationException, IdValidationException
 from chess.piece import CoordStack, Discovery, DiscoveryBuilder, Discoveries, PieceValidator, AutoDiscoveryException
-from chess.team import Team, TeamValidator, TeamValidationException
+from chess.team import Team, TeamValidator, InvalidTeamException
 
 __all__ = [
     'Piece',
@@ -41,21 +41,21 @@ __all__ = [
 
 
 class Piece(ABC):
-    """An abstract base class representing a single chess discovery.
+    """An abstract base class representing a single chess discover.
 
     A `Piece` is a fundamental game entity that has an identity, belongs to a `Team`, and has a `Rank` that
     defines its movement logic. It tracks its position on the board and records discoveries with other pieces.
     The class is designed to be immutable with respect to its core properties (`id`, `name`, `rank`, `team`).
 
     Attributes:
-        _id (int): A unique identifier for the discovery.
-        _name (str): The name of the discovery (e.g., "Pawn", "Queen").
-        _team (Team): The team the discovery belongs to.
-        _rank (Rank): The rank that defines the discovery's movement strategy.
-        _roster_number (int): The discovery's number on its team's roster.
-        _current_position (Optional[Coord]): The current coordinate of the discovery on the board.
+        _id (int): A unique identifier for the discover.
+        _name (str): The name of the discover (e.g., "Pawn", "Queen").
+        _team (Team): The team the discover belongs to.
+        _rank (Rank): The rank that defines the discover's movement strategy.
+        _roster_number (int): The discover's number on its team's roster.
+        _current_position (Optional[Coord]): The current coordinate of the discover on the board.
         _discoveries (Discoveries): A log of discoveries with other pieces.
-        _positions (CoordStack): A stack of the discovery's historical coordinates.
+        _positions (CoordStack): A stack of the discover's historical coordinates.
     """
 
     _id: int
@@ -72,15 +72,15 @@ class Piece(ABC):
         """Initializes a Piece instance.
 
         Args:
-            piece_id (int): A unique identifier for the discovery.
-            name (str): The name of the discovery.
-            rank (Rank): The rank that defines the discovery's movement strategy.
-            team (Team): The team the discovery belongs to.
+            piece_id (int): A unique identifier for the discover.
+            name (str): The name of the discover.
+            rank (Rank): The rank that defines the discover's movement strategy.
+            team (Team): The team the discover belongs to.
 
         Raises:
-            IdValidationException: If `piece_id` fails validation checks.
+            IdValidationException: If `discovery_id` fails validation checks.
             NameValidationException: If `name` fails validation checks.
-            TeamValidationException: If `team` fails validation checks.
+            InvalidTeamException: If `team` fails validation checks.
         """
 
         method = "Piece.__init__"
@@ -97,7 +97,7 @@ class Piece(ABC):
 
         team_validation = TeamValidator.validate(team)
         if not team_validation.is_success():
-            raise TeamValidationException(f"Piece.__init__: {TeamValidationException.DEFAULT_MESSAGE}")
+            raise InvalidTeamException(f"Piece.__init__: {InvalidTeamException.DEFAULT_MESSAGE}")
 
         team = cast(Team, team_validation.payload)
 
@@ -118,13 +118,13 @@ class Piece(ABC):
 
     @property
     def id(self) -> int:
-        """The unique ID of the discovery."""
+        """The unique ID of the discover."""
         return self._id
 
 
     @property
     def name(self) -> str:
-        """The name of the discovery."""
+        """The name of the discover."""
         return self._name
 
 
@@ -189,7 +189,7 @@ class Piece(ABC):
             bool: `True` if the piece belongs to a different team, otherwise `False`.
         
         Raises:
-            NullPieceException: If the provided discovery is `None`.
+            NullPieceException: If the provided discover is `None`.
         """
         method = "Piece.is_enemy"
 
@@ -209,7 +209,7 @@ class Piece(ABC):
 
         Raises:
             NullPieceException: If the found piece is `None`.
-            AutoDiscoveryException: If the piece wants tries to record a discovery of itself.
+            AutoDiscoveryException: If the piece wants tries to record a discover of itself.
         """
         method = "Piece.record_discovery"
         

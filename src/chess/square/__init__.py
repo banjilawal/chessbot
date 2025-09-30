@@ -3,7 +3,7 @@
 """
 ## PURPOSE
 This package provides foundational objects for the chess board. It defines the `Square` class,
-which serves as a data container for storing a discovery's location, and a `SquareValidator` to ensure
+which serves as a data container for storing a discover's location, and a `SquareValidator` to ensure
 the integrity of square objects.
 
 ## CORE CLASSES

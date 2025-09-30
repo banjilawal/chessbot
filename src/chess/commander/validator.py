@@ -3,7 +3,7 @@ from typing import cast, Generic, TYPE_CHECKING
 from chess.commander.exception import TeamListException
 from chess.common import Result, Validator, IdValidator, NameValidator
 from chess.exception import NameValidationException, IdValidationException
-from chess.commander import Commander, NullCommanderException, CommanderValidationException
+from chess.commander import Commander, NullCommanderException, InvalidCommanderException
 
 
 class CommanderValidator(Validator):
@@ -11,7 +11,7 @@ class CommanderValidator(Validator):
     Validates an Commander used in a domain module meets requirements:
         - Is not null.
         - Its fields meet the specifications for the domain.
-    Unmet requirements will raise a CommanderValidationException
+    Unmet requirements will raise a InvalidCommanderException
 
     For performance and single source of truth CommanderValidator has:
         - No fields
@@ -31,14 +31,14 @@ class CommanderValidator(Validator):
             - valid id
             - valid name
             - Commander.team_history meets validator requirements
-        Any failed requirement raise an team_exception wrapped in a CommanderValidationException
+        Any failed requirement raise an team_exception wrapped in a InvalidCommanderException
             
         Args
             t (Commander): commander to validate
             
          Returns:
              Result[T]: A Result object containing the validated payload if all domain requirements 
-             are satisfied. CommanderValidationException otherwise.
+             are satisfied. InvalidCommanderException otherwise.
         
         Raises:
             TypeError: if t is not Commander
@@ -50,7 +50,7 @@ class CommanderValidator(Validator):
             ColumnBelowBoundsException: If commander.column < 0
             ColumnAboveBoundsException: If commander.column>= ROW_SIZE
                 
-            CommanderValidationException: Wraps any preceding team_exception     
+            InvalidCommanderException: Wraps any preceding team_exception     
         """
 
         try:
@@ -93,10 +93,10 @@ class CommanderValidator(Validator):
                 NameValidationException,
                 TeamListException
         ) as e:
-            raise CommanderValidationException(f"{method}: {CommanderValidationException.DEFAULT_MESSAGE}") from e
+            raise InvalidCommanderException(f"{method}: {InvalidCommanderException.DEFAULT_MESSAGE}") from e
 
 
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising
         except Exception as e:
-            raise CommanderValidationException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidCommanderException(f"An unexpected error occurred during validation: {e}") from e

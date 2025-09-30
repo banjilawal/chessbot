@@ -72,10 +72,10 @@ class ScanEventBuilder(Enum):
                 * `IdValidationException`: if `scanEvent_id` fails validation checks
                 * `NameValidationException`: if `name` fails validation checks
                 * `RankValidationException`: if `rank` fails validation checks
-                * `TeamValidationException`: if `team` fails validation checks
+                * `InvalidTeamException`: if `team` fails validation checks
                 * `InvalidTeamAssignmentException`: If `scanEvent.team` is different from `team` parameter
-                * `RankQuotaFullException`: If the `team` has no empty slots for the `scanEvent.rank`
-                * `RankQuotaFullException`: If `scanEvent.team` is equal to `team` parameter but `team.roster` still does
+                * `FullRankQuotaException`: If the `team` has no empty slots for the `scanEvent.rank`
+                * `FullRankQuotaException`: If `scanEvent.team` is equal to `team` parameter but `team.roster` still does
                     not have the scanEvent
 
         Note:

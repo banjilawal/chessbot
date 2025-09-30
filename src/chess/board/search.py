@@ -1,21 +1,37 @@
-from sys import exception
-
-from chess.coord import CoordValidator
-
 from chess.board import Board
-from chess.square import Square, SquareValidator
+from chess.square import Square
 from chess.coord import Coord, CoordValidator
 from chess.common import IdValidator, NameValidator
-from .result import SearchResult
-from .team import TeamSearch
+from chess.common.result.search import SearchResult
 
 
 class BoardSearch:
-    """Static search methods for Piece entities"""
+    """
+    Static methods for entities and operations that need to search a Board for pieces, squares, coords, etc.
+    Provides consistent search interface and return types across all search operations.
+    Validates input parameters before searching to ensure safe operations.
+    Returns SearchResult objects encapsulating either the found entity or error information.
+
+    Usage:
+        ```python
+        from chess.board import Board, BoardSearch
+        from chess.piece import Piece
+        ```
+
+    Note:
+        DO NOT USE ANY OTHER METHODS TO SEARCH A BOARD. USE ONLY THE METHODS IN THIS CLASS.
+
+    See Also:
+        `Board`: The board being searched
+        `Piece`: The piece being searched for
+        `Square`: The square being searched for
+        `Coord`: The coordinate being searched for
+        `SearchResult`: The return type for all search operations
+    """
 
     @staticmethod
     def piece_by_id(piece_id: int, board: Board) -> SearchResult['Piece']:
-        """Find a discovery by ID across all board"""
+        """Find a discover by ID across all board"""
         method = "BoardSearch.piece_by_id"
 
         try:
@@ -36,7 +52,7 @@ class BoardSearch:
 
     @staticmethod
     def piece_by_name(piece_name: str, board: Board) -> SearchResult['Piece']:
-        """Find a discovery by name across all board"""
+        """Find a discover by name across all board"""
         method = "BoardSearch.piece_by_name"
 
         try:
@@ -60,7 +76,7 @@ class BoardSearch:
 
     @staticmethod
     def piece_by_coord(coord: Coord, board: Board) -> SearchResult['Piece']:
-        """Find a discovery by coordinate across all board"""
+        """Find a discover by coordinate across all board"""
         method = "BoardSearch.piece_by_coord"
 
         try:

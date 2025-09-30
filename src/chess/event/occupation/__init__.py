@@ -12,8 +12,8 @@ CORE CLASSES:
 
 USAGE:
     # >>> from chess.subject import CombatantPiece, KingPiece, CoordStack
-    # >>> white_pawn_9 = CombatantPiece(piece_id=9, name="WP1", validation=pawn, team=white_team)
-    # >>> white_king = KingPiece(piece_id=2, name="WK", validation=king, team=white_team)
+    # >>> white_pawn_9 = CombatantPiece(discovery_id=9, name="WP1", validation=pawn, team=white_team)
+    # >>> white_king = KingPiece(discovery_id=2, name="WK", validation=king, team=white_team)
     # >>>
 
 ## Occupation Exception Classes
@@ -23,7 +23,7 @@ PURPOSE:
     null or improperly referenced during chess operations.
 
 EXCEPTIONS:
-    AlreadyAtDestinationException: Move to current position
+    DoubleCoordPushException: Move to current position
     EncounteringSelfException: Piece encounters itself
     DoublePromotionException: Multiple promotion attempts
     PrisonerEscapeException: Captured subject tries to move

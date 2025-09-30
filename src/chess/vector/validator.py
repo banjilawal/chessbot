@@ -5,7 +5,7 @@ from chess.vector import (
     Vector, NullVectorException,
     NullXComponentException, NullYComponentException,
     VectorBelowBoundsException, VectorAboveBoundsException,
-    VectorValidationException
+    InvalidVectorException
 )
 
 T = TypeVar('T')
@@ -51,7 +51,7 @@ class VectorValidator(Validator):
                   - On failure: Error information and exception details
 
           Raises:
-              VectorValidationException: Wraps any specification violations including:
+              InvalidVectorException: Wraps any specification violations including:
                   - NullVectorException: if input is None
                   - TypeError: if input is not a Vector instance
                   - NullXComponentException: if Vector.x is None
@@ -116,12 +116,12 @@ class VectorValidator(Validator):
                 VectorBelowBoundsException,
                 VectorAboveBoundsException
         ) as e:
-            raise VectorValidationException(f"{method}: f{VectorValidationException.DEFAULT_MESSAGE}") from e
+            raise InvalidVectorException(f"{method}: f{InvalidVectorException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising
         except Exception as e:
-            raise VectorValidationException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidVectorException(f"An unexpected error occurred during validation: {e}") from e
 #
 #
 # def main():

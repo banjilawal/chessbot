@@ -1,15 +1,5 @@
 from enum import Enum
 
-from chess.piece.exception import UnregisteredTeamMemberException
-from chess.rank import Rank, King, RankValidator
-from assurance import ThrowHelper
-
-from chess.exception import RelationshipException
-from chess.common import IdValidator, NameValidator, BuildResult
-from chess.piece import Piece, KingPiece, CombatantPiece, PieceBuilderException
-from chess.search import TeamSearch
-from chess.team import Team, TeamValidator, ConflictingTeamAssignmentException
-from chess.team.exception import RankQuotaFullException
 
 
 class PieceBuilder(Enum):
@@ -27,7 +17,7 @@ class PieceBuilder(Enum):
     Usage:
         ```python
         # Safe piece creation with validation
-        build_outcome = EncounterBuilder.build(piece_id=id_emitter.piece_id, name="WN2", rank=Knight(), team=white_team)
+        build_outcome = EncounterBuilder.build(discovery_id=id_emitter.discovery_id, name="WN2", rank=Knight(), team=white_team)
         if not build_outcome.is_success():
             raise build_outcome.exception
         piece = build_outcome.payload
@@ -51,7 +41,7 @@ class PieceBuilder(Enum):
         with a successful status is returned, the contained `Piece` is valid and ready for use.
 
         Args:
-            `piece_id`(`int`): The unique id for the piece. Must pass `IdValidator` checks.
+            `discovery_id`(`int`): The unique id for the piece. Must pass `IdValidator` checks.
             `name`(`Name`): Must pass `NameValidator` checks.
             `rank`(`Rank`): The `rank` which determines how the piece moves and its capture value.
             `team`(`Team`): Specifies if the `piece` is white or black.
@@ -64,13 +54,13 @@ class PieceBuilder(Enum):
         Raises:
            PieceBuilderException: Wraps any underlying validation failures that occur during the construction process.
            This includes:
-                * `IdValidationException`: if `piece_id` fails validation checks
+                * `IdValidationException`: if `discovery_id` fails validation checks
                 * `NameValidationException`: if `name` fails validation checks
                 * `RankValidationException`: if `rank` fails validation checks
-                * `TeamValidationException`: if `team` fails validation checks
+                * `InvalidTeamException`: if `team` fails validation checks
                 * `InvalidTeamAssignmentException`: If `piece.team` is different from `team` parameter
-                * `RankQuotaFullException`: If the `team` has no empty slots for the `piece.rank`
-                * `RankQuotaFullException`: If `piece.team` is equal to `team` parameter but `team.roster` still does
+                * `FullRankQuotaException`: If the `team` has no empty slots for the `piece.rank`
+                * `FullRankQuotaException`: If `piece.team` is equal to `team` parameter but `team.roster` still does
                     not have the piece
 
         Note:
@@ -110,7 +100,7 @@ class PieceBuilder(Enum):
             if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
                 ThrowHelper.throw_if_invalid(
                     PieceBuilder,
-                    RankQuotaFullException(RankQuotaFullException.DEFAULT_MESSAGE)
+                    FullRankQuotaException(FullRankQuotaException.DEFAULT_MESSAGE)
                 )
 
             piece = None

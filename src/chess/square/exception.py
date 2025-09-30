@@ -1,68 +1,45 @@
-from chess.exception import ChessException, NullException, ValidationException
+from chess.exception import ChessException, BuilderException, NullException, ValidationException
 
 __all__ = [
     'SquareException',
+
+    # === SQUARE VALIDATION EXCEPTIONS ===
     'NullSquareException',
-    'SquareValidationException',
-    'SquareBuilderException',
-    'NullSquareBuilderException'
+    'InvalidSquareException',
+
+    # === SQUARE BUILDER EXCEPTIONS ===
+    'SquareBuilderException'
 ]
 
 class SquareException(ChessException):
+    """
+    Super class of all exceptions a Vector object raises. Do not use directly. Subclasses give details useful 
+    for debugging. This class exists primarily to allow catching all vector exceptions
+    """
     ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_MESSAGE = f"Square exception was raised"
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
+    DEFAULT_MESSAGE = "Square raised an exception"
 
 
-class NullSquareException(NullException):
-    """
-    Raised if a square is null.
-    """
-
+# === SQUARE VALIDATION EXCEPTIONS ===
+class NullSquareException(SquareException, NullException):
+    """Raised if an entity, method, or operation requires a Square but gets null instead."""
     ERROR_CODE = "NULL_SQUARE_ERROR"
     DEFAULT_MESSAGE = f"Square cannot be null"
 
-
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
-
-class SquareValidationException(ValidationException):
+class InvalidSquareException(SquareException, ValidationException):
+    """
+    Raised by VectorValidator if square fails sanity checks. Exists primarily to catch all exceptions raised
+    validating an existing vector
+    """
     ERROR_CODE = "SQUARE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Square validation failed"
 
-    def __init__(self, message=None):
-        self.message = message or self.DEFAULT_MESSAGE
-        super().__init__(self.message)
-
-    def __str__(self):
-        return f"[{self.ERROR_CODE}] {self.message}"
-
-
-class SquareBuilderException(BuilderException):
+    
+# === SQUARE BUILDER EXCEPTIONS ===
+class SquareBuilderException(SquareException, BuilderException):
     """
-    Wrapper for exceptions raised when SquareBuilder runs.
+    Raised when VectorBuilder encounters an error while building a vector. Exists primarily to catch all exceptions
+    raised building a new vector
     """
-
     ERROR_CODE = "SQUARE_BUILDER_ERROR"
     DEFAULT_MESSAGE = "SquareBuilder raised an exception"
-
-
-class NullSquareBuilderException(NullException):
-    """
-    Raised if a SquareBuilder is null.
-    """
-
-    ERROR_CODE = "NULL_SQUARE_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "SquareBuilder cannot be null"
