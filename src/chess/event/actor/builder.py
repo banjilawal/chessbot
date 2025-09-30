@@ -1,11 +1,13 @@
 from enum import Enum
 
 from assurance import ThrowHelper
-from chess.common import IdValidator
-from chess.event.occupation.scan import Actor
-from chess.piece import CombatantPiece
+from chess.common import BuildResult
+from chess.event.actor import ActorPlacementRequiredException, CapturedActorCannotActException, \
+    RequiredActorNotFoundException
+from chess.piece import Piece, PieceValidator, CombatantPiece
 from chess.piece.exception import UnregisteredTeamMemberException
 from chess.team import NullTeamException
+from chess.transaction import ExecutionContext
 
 
 class ActorBuilder(Enum):
@@ -98,10 +100,10 @@ class ActorBuilder(Enum):
             if actor not in context.board.pieces:
                 ThrowHelper.throw_if_invalid(
                     ActorBuilder,
-                    RequiredActorNotFoundException(RequiredActorNotFOundException.DEFAULT_MESSAGE)
+                    RequiredActorNotFoundException(RequiredActorNotFoundException.DEFAULT_MESSAGE)
                 )
 
-            if actor.current_position is None or actor.postions.is_empty():
+            if actor.current_position is None or actor.positions.is_empty():
                 ThrowHelper.throw_if_invalid(
                     ActorBuilder,
                     ActorPlacementRequiredException(ActorPlacementRequiredException.DEFAULT_MESSAGE)

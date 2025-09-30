@@ -1,8 +1,11 @@
 from enum import Enum
 
+from chess.search import BoardSearch
+from chess.square import Square
 from assurance import ThrowHelper
-from chess.common import IdValidator
-from chess.event.occupation.scan import ScanEvent
+from chess.event import ActorBuilder, ScanEvent, ExecutionContext, ScanEventBuilderException
+from chess.common import IdValidator, BuildResult
+from chess.piece import Piece, CircularDiscoveryException
 
 
 class ScanEventBuilder(Enum):
@@ -35,7 +38,13 @@ class ScanEventBuilder(Enum):
 class ScanEventBuilder(Enum):
 
     @staticmethod
-    def build(event_id: int,  observer: Piece, subject: Piece, context: ExecutionContext) -> BuildResult[ScanEvent]:
+    def build(
+        event_id: int,
+        observer: Piece,
+        subject: Piece,
+        destination_square: Square,
+        context: ExecutionContext
+    ) -> BuildResult[ScanEvent]:
 
         """
         Constructs a new `ScanEvent` instance with comprehensive checks on the parameters and states during the
@@ -91,48 +100,33 @@ class ScanEventBuilder(Enum):
             if not id_validation.is_success():
                 ThrowHelper.throw_if_invalid(ScanEventBuilder, id_validation)
 
-            observer_validation = PieceValidator.validate(observer)
-            if not observer_validation.is_success():
-                ThrowHelper.throw_if_invalid(ScanEventBuilder, observer_validation)
+            observer_build_result = ActorBuilder.build(observer, context)
+            if not observer_build_result.is_success():
+                ThrowHelper.throw_if_invalid(ScanEventBuilder, observer_build_result.exception)
 
-            if observer not in context.board.pieces:
+            subject_build_result = ActorBuilder.build(subject, context)
+            if not subject_build_result.is_success():
+                ThrowHelper.throw_if_invalid(ScanEventBuilder, subject_build_result.exception)
+
+            search_result = BoardSearch.square_by_coord(coord=observer.current_position, board=context.board)
+            if not search_result.payload == destination_square:
                 ThrowHelper.throw_if_invalid(ScanEventBuilder, )
 
-            rank_validation = RankValidator.validate(rank)
-            if not rank_validation.is_success():
-                ThrowHelper.throw_if_invalid(ScanEventBuilder, rank_validation)
-
-            team_validation = TeamValidator.validate(team)
-            if not team_validation.is_success():
-                ThrowHelper.throw_if_invalid(ScanEventBuilder, team_validation)
-
-            if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
+            if observer == subject:
                 ThrowHelper.throw_if_invalid(
                     ScanEventBuilder,
-                    RankQuotaFullException(RankQuotaFullException.DEFAULT_MESSAGE)
+                    CircularDiscoveryException(CircularDiscoveryException.DEFAULT_MESSAGE)
                 )
 
-            scanEvent = None
-            if isinstance(rank, King):
-                scanEvent = KingScanEvent(scanEvent_id=scanEvent_id, name=name, rank=rank, team=team)
-            scanEvent = CombatantScanEvent(scanEvent_id=scanEvent_id, name=name, rank=rank, team=team)
 
-            if not scanEvent.team == team:
-                ThrowHelper.throw_if_invalid(
-                    ScanEventBuilder,
-                    InvalidTeamAssignmentException(InvalidTeamAssignmentException.DEFAULT_MESSAGE)
+            return BuildResult(payload=ScanEvent(
+                event_id=event_id,
+                observer=observer,
+                subject=subject,
+                destination_square=destination_square
                 )
+            )
 
-            if not scanEvent.team == team:
-                team.add_to_roster(scanEvent)
-
-            if scanEvent not in team.roster:
-                ThrowHelper.throw_if_invalid(
-                    ScanEventBuilder,
-                    RelationshipException(RelationshipException.DEFAULT_MESSAGE)
-                )
-
-            return BuildResult(payload=scanEvent)
         except Exception as e:
             raise ScanEventBuilderException(f"{method}: {ScanEventBuilderException.DEFAULT_MESSAGE}")
 
