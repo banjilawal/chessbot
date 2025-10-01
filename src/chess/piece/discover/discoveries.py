@@ -1,11 +1,12 @@
 from typing import List
 
 from assurance import ThrowHelper
-from chess.common import IdValidator, NameValidator
+
 from chess.exception import NullNumberException
 from chess.rank import Rank, RankValidator
-from chess.search import SearchResult
 from chess.coord import Coord, CoordValidator
+from chess.piece import Discovery, NullDiscoveryException
+from chess.common import IdValidator, NameValidator, SearchResult
 
 
 class Discoveries:

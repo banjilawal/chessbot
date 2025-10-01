@@ -1,16 +1,10 @@
-from chess.common.result import ErrorContradictsPayloadException
+from chess.common import EmptyResultConstructorException,  ErrorContradictsPayloadException
 from typing import Optional, TypeVar, Generic
 
 
 T = TypeVar('T')
 
 class BuildResult(Generic[T]):
-
-    _payload: Optional[T]
-    _exception: Optional[Exception]
-
-    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-
     """
     BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
     same structure as Result but is used specifically in the context of building entities. It can hold either.

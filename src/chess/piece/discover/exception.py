@@ -6,7 +6,8 @@ __all__ = [
     'NullDiscoveryException',
     'DiscoveryBuilderException',
     'CircularDiscoveryException',
-    'DuplicateDiscoveryException',
+    'AddingValidDiscoveryFailedException',
+    'AddDuplicateDiscoveryException',
     'AddNullDiscoveryException',
     
 # === DISCOVERY EXCEPTIONS WITH ROLLBACK===
@@ -59,7 +60,13 @@ class CircularDiscoveryException(DiscoveryException):
     DEFAULT_MESSAGE = "An observer cannot discover itself"
 
 
-class DuplicateDiscoveryException(DiscoveryException):
+class AddingValidDiscoveryFailedException(DiscoveryException):
+    """Raised if a  could not be added to the team's roster"""
+    ERROR_CODE = "ADDING_DISCOVERY_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Adding a validated discovery failed"
+
+
+class AddDuplicateDiscoveryException(DiscoveryException):
     """Raised if an observer tries adding a discovery twice."""
     ERROR_CODE = "ADD_DUPLICATE_DISCOVERY_ERROR"
     DEFAULT_MESSAGE = "The discovery has already been added to the list"

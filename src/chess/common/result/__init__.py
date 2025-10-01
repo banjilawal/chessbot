@@ -42,8 +42,9 @@ AUTHOR: Banji Lawal
 
 from .exception import *
 
-from .result import *
+from .result import Result
 from .build import BuildResult
+from .search import SearchResult
 from .transaction import TransactionResult
 
 
@@ -54,10 +55,11 @@ __package_name__ = 'chess.common.result'
 
 # Export control - only what belongs in public API
 __all__ = [
+    'Result',
     'BuildResult',
+    'SearchResult',
     'TransactionResult',
 
-    *result.__all__,
     *exception.__all__,
 
     '__version__',

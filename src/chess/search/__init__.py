@@ -27,7 +27,7 @@ EXCEPTION CLASSES:
 USAGE:
     >>> from chess.search import BoardSearch    >>> from chess.search.team_exception import PieceNotFoundException
     >>> result = BoardSearch.piece_by_ide(1, [white_team, black_team)
-    >>> if search_result.is_not_found():
+    >>> if search_result.is_empty():
     >>>    raise PieceNotFoundException(f"{PieceNotFoundException.DEFAULT_MESSAGE}")
 
 

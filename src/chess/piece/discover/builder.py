@@ -3,7 +3,8 @@ from enum import Enum
 
 from assurance import ThrowHelper
 from chess.common import BuildResult
-from chess.piece import Piece, Discovery, PieceValidator, AutoDiscoveryException, DiscoveryBuilderException
+from chess.piece import Piece, Discovery, PieceValidator, AutoDiscoveryException, DiscoveryBuilderException, \
+    AddDuplicateDiscoveryException
 from chess.piece.discover import CircularDiscoveryException
 
 
@@ -92,7 +93,13 @@ class DiscoveryBuilder(Enum):
                     DiscoveryBuilder,
                     CircularDiscoveryException(CircularDiscoveryException.DEFAULT_MESSAGE)
                 )
-                
+
+            search_result = observer.discoveries.find_by_id(subject.id)
+            if not search_result.is_empty():
+                ThrowHelper.throw_if_invalid(
+                    DiscoveryBuilder,
+                    AddDuplicateDiscoveryException(AddDuplicateDiscoveryException.DEFAULT_MESSAGE)
+                )
             return BuildResult(payload=Discovery(piece=cast(Piece, subject)))
 
         except Exception as e:

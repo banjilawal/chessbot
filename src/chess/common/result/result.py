@@ -1,13 +1,10 @@
 
 from typing import Optional, TypeVar, Generic
 
+from chess.common import EmptyResultConstructorException, ErrorContradictsPayloadException
 
 T = TypeVar('T')
 
-__all__ = [
-    'Result',
-    'SearchResult'
-]
 
 class Result(Generic[T]):
     """
@@ -43,9 +40,10 @@ class Result(Generic[T]):
 
         # Raise an exception if both payload and exception are provided
         if not (payload is None and exception is None):
-            raise ResultPayloadConflictException(
-                f"{method}: {ResultPayloadConflictException.DEFAULT_MESSAGE}"
+            raise ErrorContradictsPayloadException(
+                f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}"
             )
+
         self._payload = payload
         self._exception = exception
 
@@ -61,19 +59,7 @@ class Result(Generic[T]):
         return self._exception is None and self._payload is not None
 
 
-class SearchResult(Result):
-
-    def is_not_found(self) -> bool:
-        """"""
-        return not (self._exception is None and self._payload is None)
-
-    def __str__(self):
-        if self.is_success():
-            return f"Result(SUCCESS: {self._payload})"
-        elif self.is_not_found():
-            return "Result(NOT_FOUND)"
-        else:
-            return f"Result(FAILURE: {self._exception}"
+c
 
 
 

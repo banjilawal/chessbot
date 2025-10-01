@@ -69,7 +69,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
         if search_result.exception is not None:
             return TransactionResult(op_result_id, event, search_result.exception)
 
-        if search_result.is_not_found():
+        if search_result.is_empty():
             return TransactionResult(
                 op_result_id,
                 event,
