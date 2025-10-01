@@ -1,8 +1,16 @@
-# chess/transaction/occupation/__init__.py
+# chess/event/occupation/__init__.py
 
 """
+# `chess.event.occupation` Package
+
 PURPOSE:
-    Performs operations for occupying a square
+    Manages `Piece` movement on the `Board`. After a `Piece.rank` authorizes traveling to a `Square`
+    `Rank.walk` initiates an `OccupationEvent`. The package provides a common interface for handling
+        - Safe event creation
+        - Event validation
+        - Event execution
+        - Rolling back events
+        - Defining exceptions organic to `Event` instances.
 
 CORE CLASSES:
 * `OccupationDirective`
@@ -56,12 +64,19 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-from .exception import *
-from chess.event.occupation.attack.attack_exceptions import *
-
-from .event import *
-from .executor import OccupationTransaction
+from .scan import *
+from .attack import *
+from .event import OccupationEvent
+from .builder import OccupationEventBuilder
 from .validator import OccupationEventValidator
+from .executor import OccupationTransaction
+
+# from .exception import *
+# from chess.event.occupation.attack.attack_exceptions import *
+#
+# from .event import *
+# from .executor import OccupationTransaction
+# from .validator import OccupationEventValidator
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
@@ -72,13 +87,15 @@ __package_name__ = "chess.transaction.occupation"
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
+    'OccupationEvent',
+    'OccupationEventBuilder',
     'OccupationTransaction',
     'OccupationEventValidator',
 
     # Exception classes
     *exception.__all__,
-    *directive.__all__,
-    *attack_exceptions.__all__,
+    *scan.__all__,
+    *attack.__all__,
 
 
     # Package metadata and utilities

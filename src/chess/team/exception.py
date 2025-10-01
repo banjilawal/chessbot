@@ -1,4 +1,7 @@
-from chess.exception import ChessException, NullException, ValidationException, BuilderException, RollbackException
+from chess.exception import (
+    ChessException, SearchException, NullException,
+    ValidationException, BuilderException, RollbackException
+)
 
 __all__ = [
     'TeamException',

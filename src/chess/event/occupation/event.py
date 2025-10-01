@@ -12,8 +12,8 @@ class OccupationEvent(Event[Piece,Square]):
     def subject(self) -> Square:
         return self.resource
 
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-        if isinstance(other, OccupationEvent):
-            return self._id == other.id
+    def __eq__(self, other) -> bool:
+        if super().__eq__(other):
+            if isinstance(other, OccupationEvent):
+                return self._id == other.id
+        return False

@@ -8,7 +8,7 @@ __all__ = [
     'ValidationException',
     'BuilderException',
     'RollbackException',
-    'OperationExecutorException'
+    'SearchException'
 ]
 
 class ChessException(Exception):
@@ -114,5 +114,21 @@ class RollbackException(ChessException):
     """
     DEFAULT_CODE = "ROLLBACK"
     DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
+
+
+class SearchException(ChessException):
+    """
+    Base class for search errors in the chess engine.
+
+    PURPOSE:
+        Raised search raises an exception. Is a wrapper for other exceptions
+        that occur during search.
+    ATTRIBUTES:
+        code (str): Short machine-readable error code for logging / testing.
+        message (str): Human-readable default message.
+    """
+    DEFAULT_CODE = "SEARCH_ERROR"
+    DEFAULT_MESSAGE = "An error was raised during a search."
+
 
 

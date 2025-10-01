@@ -241,7 +241,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/event",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/event/actor",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -267,18 +267,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\actor" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece\discovery" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\scan" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\attack" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\operation\occupation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\actor" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece\discovery" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\attack" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\operation" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\operation\promotion" />
     </key>
   </component>
   <component name="RunManager" selected="Python.piece (1)">
@@ -516,7 +516,7 @@
       <workItem from="1758883157211" duration="7552000" />
       <workItem from="1758956378016" duration="11841000" />
       <workItem from="1759038118524" duration="14419000" />
-      <workItem from="1759167128495" duration="18648000" />
+      <workItem from="1759167128495" duration="23286000" />
     </task>
     <servers />
   </component>

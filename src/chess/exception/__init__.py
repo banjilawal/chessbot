@@ -1,15 +1,12 @@
 """
-Chessexception Package - Project wide exceptions
+`chess.exception` Pacakage
 
 PURPOSE:
-    Contains core exceptions for entities. .
+    Contains core exceptions for the project
 
 
 CORE CLASSES:
-    PieceException: Supe class for exceptons raiedby Piece classes
-    CombatantPiece: Concrete discover that can be captured
-    KingPiece: Concrete king discover with special rules
-    CoordStack: Coordinate history and management utility
+
 
 Purpose:
     Name exceptions are thrown during validation. More granular than regular string checks
@@ -26,7 +23,7 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-from .chess_exception import  *
+from .exception import  *
 from .collection_exception import *
 
 
@@ -48,7 +45,7 @@ def package_info() -> dict:
 
 # Export control - only what belongs in public API
 __all__ = [
-    *chess_exception.__all__,
+    *exception.__all__,
     *collection_exception.__all__,
 
     # Package metadata and utilities

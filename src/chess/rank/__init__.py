@@ -1,7 +1,8 @@
 # chess/rank/__init__.py
 
 """
-A package providing an immutable hierarchy for chess discover movement.
+# `chess.rank` Package
+
 
 ## PURPOSE
 This package encapsulates the movement logic for each type of chess discover. By decoupling a discover's movement
@@ -24,17 +25,17 @@ The `Rank` classes are primarily used to validate a discover's movement at runti
 reference to its `Rank`, and delegates movement validation to it using the `walk()` method. This allows
 for a clean and simple interface for a chess board's logic.
 
->>> from chess.rank import Knight
->>> from chess.discover import Piece
->>> from chess.coord import Coord
->>>
->>> knight_rank = Knight()
->>> knight_piece = Piece(rank=knight_rank, coord=Coord(2, 2))
->>> destination = Coord(4, 3)
->>>
->>> # Validate the move using the Piece's rank
->>> is_valid = knight_piece.rank.walk(discover=knight_piece, destination=destination)
->>> print(is_valid.is_success())
+# >>> from chess.rank import Knight
+# >>> from chess.discover import Piece
+# >>> from chess.coord import Coord
+# >>>
+# >>> knight_rank = Knight()
+# >>> knight_piece = Piece(rank=knight_rank, coord=Coord(2, 2))
+# >>> destination = Coord(4, 3)
+# >>>
+# >>> # Validate the move using the Piece's rank
+# >>> is_valid = knight_piece.rank.walk(discover=knight_piece, destination=destination)
+# >>> print(is_valid.is_success())
 True
 
 ---
@@ -134,7 +135,7 @@ __all__ = [
 
 # Organic utility function for package info
 def package_info() -> dict:
-    '''Return basic package information.'''
+    """Return basic package information."""
     return {
         'name': __package_name__,
         'version': __version__,

@@ -1,4 +1,4 @@
-from chess.exception.chess_exception import ChessException
+from chess.exception.exception import ChessException
 
 """
 Super class for Piece exceptions
