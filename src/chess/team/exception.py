@@ -1,4 +1,4 @@
-from chess.exception import ChessException, NullException, ValidationException, BuilderException
+from chess.exception import ChessException, NullException, ValidationException, BuilderException, RollbackException
 
 __all__ = [
     'TeamException',
@@ -13,25 +13,29 @@ __all__ = [
     'NullTeamSchemaException',
 
 # === TEAM MEMBER EXCEPTIONS ===
+    'TeamRosterException',
     'AddTeamMemberException',
     'AddEnemyToRosterException',
     'RemoveTeamMemberException',
     'FullRankQuotaException',
 
 # === TEAM MEMBER EXCEPTIONS WITH ROLLBACK ===
+    'TeamRosterRollBackException',
     'AddEnemyHostageRolledBackException',
     'AddTeamMemberRolledBackException',
     'RemoveTeamMemberRolledBackException',
     'FullRankQuotaRolledBackException',
 
 # === HOSTAGE EXCEPTIONS ===
+    'TeamHostageListException',
     'InvalidFriendlyHostageException',
     'AddEnemyHostageException',
-    'EnemyKingHostageException',
+    'AddEnemyKingHostageException',
     'HostageRemovalException',
 
 # === HOSTAGE EXCEPTIONS WITH ROLLBACK ===
-    'InvalidFriendlyHostageRolledBAckException',
+    'TeamHostageListRolledBackException',
+    'InvalidFriendlyHostageRolledBackException',
     'AddEnemyToRosterRolledBackException',
     'EnemyKingHostageRolledBackException',
     'HostageRemovalRolledBackException',
@@ -89,28 +93,34 @@ class NullTeamSchemaException(TeamException, NullException):
     DEFAULT_MESSAGE = f"TeamProfile cannot be null"
 
 
-# === TEAM MEMBER EXCEPTIONS ===
-class AddTeamMemberException(TeamException):
+# === TEAM MEMBER LIST EXCEPTIONS ===
+class TeamRosterException(TeamException):
+    """Raised for errors on team's roster"""
+    ERROR_CODE = "TEAM_ROSTER_ERROR"
+    DEFAULT_MESSAGE = "Team roster raised an exception"
+
+
+class AddTeamMemberException(TeamRosterException):
     """Raised if piece could not be added to the team's roster"""
     ERROR_CODE = "ADD_TEAM_MEMBER_ERROR"
     DEFAULT_MESSAGE = "Could not add piece to team's roster"
 
-class AddEnemyToRosterException(TeamException):
+class AddEnemyToRosterException(TeamRosterException):
     """Attempting to add an enemy to the team's roster raises an error"""
     ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR"
     DEFAULT_MESSAGE = "An enemy piece cannot be added to the team's roster"
 
-class RemoveTeamMemberException(TeamException):
+class RemoveTeamMemberException(TeamRosterException):
     """Raised if piece could not be removed from the team's roster"""
     ERROR_CODE = "REMOVE_TEAM_MEMBER_ERROR"
     DEFAULT_MESSAGE = "Could not remove a piece to team's roster"
 
-class FullRankQuotaException(TeamException):
+class FullRankQuotaException(TeamRosterException):
     """Raised if the team has not empty slots for the piece's rank."""
     ERROR_CODE = "FULL_RANK_QUOTA_ERROR"
     DEFAULT_MESSAGE = "The team has no empty slots for the piece's rank"
 
-class ConflictingTeamAssignmentException(TeamException):
+class ConflictingTeamAssignmentException(TeamRosterException):
     """
     If a piece that's already on one team (piece.team == not None) tries joining
     another InvalidTeamAssignmentException is raised.
@@ -119,8 +129,13 @@ class ConflictingTeamAssignmentException(TeamException):
     DEFAULT_MESSAGE = "Piece is already assigned to a team."
 
 
-# === TEAM MEMBER EXCEPTIONS WITH ROLLBACK ===
-class AddTeamMemberRolledBackException(TeamRollBackException):
+# === TEAM MEMBER LIST  EXCEPTIONS WITH ROLLBACK ===
+class TeamRosterRollBackException(TeamRosterException, RollbackException):
+    """Raised for errors on team's roster that are raised after rollback."""
+    ERROR_CODE = "TEAM_ROSTER_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = "Team roster raised an exception. Transaction rollback performed."
+
+class AddTeamMemberRolledBackException(TeamRosterRollBackException):
     """
     Raised if a  transaction failed to add a piece could to the team's roster; then the
     transaction was rolled back before raising this exception.
@@ -130,7 +145,7 @@ class AddTeamMemberRolledBackException(TeamRollBackException):
         "Adding piece to team's roster failed. Transaction rollback performed."
     )
 
-class AddEnemyToRosterRolledBackException(TeamRollBackException):
+class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
     """
     Raised if a transaction attempted to add an enemy to the team's roster.
     The transaction was rolled back before raising this exception.
@@ -141,7 +156,7 @@ class AddEnemyToRosterRolledBackException(TeamRollBackException):
        "rollback performed."
     )
 
-class RemoveTeamMemberRolledBackException(TeamRollBackException):
+class RemoveTeamMemberRolledBackException(TeamRosterRollBackException):
     """
     Raised if a  transaction failed to remove a piece from the team's roster. The
     transaction was rolled back before raising this exception.
@@ -151,7 +166,7 @@ class RemoveTeamMemberRolledBackException(TeamRollBackException):
         "Could not remove a piece from the team's roster. Transaction rollback performed."
     )
 
-class FullRankQuotaRolledBackException(TeamRollBackException):
+class FullRankQuotaRolledBackException(TeamRosterRollBackException):
     """
     Raised if a transaction failed could not add a piece because there were no empty slots
     for the piece's rank. The transaction was rolled back before raising this exception.
@@ -161,7 +176,7 @@ class FullRankQuotaRolledBackException(TeamRollBackException):
         "The team has no empty slots for the piece's rank. Transaction rollback performed."
     )
 
-class ConflictingTeamAssignmentRolledBackException(TeamRollBackException):
+class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
     """
     Raised if a transaction tries to assign a piece to a different team's roster.
     The transaction was rolled back before raising this exception.
@@ -171,18 +186,23 @@ class ConflictingTeamAssignmentRolledBackException(TeamRollBackException):
         "Piece is already assigned to a team. Transaction rollback performed."
     )
 
-# === HOSTAGE EXCEPTIONS ===
-class InvalidFriendlyHostageException(TeamException):
+# === HOSTAGE LIST EXCEPTIONS ===
+class TeamHostageListException(TeamException):
+    """Raised on errors with team's hostage list"""
+    ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
+    DEFAULT_MESSAGE = "Team hostage list raised an exception"
+
+class InvalidFriendlyHostageException(TeamHostageListException):
     """Attempting to a friendly to the hostage list raises an error"""
     ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR"
     DEFAULT_MESSAGE = "A friendly piece cannot be added to the team's hostage list"
 
-class AddEnemyHostageException(TeamException):
+class AddEnemyHostageException(TeamHostageListException):
     """Raised if a piece could not be added to the team's hostage list"""
     ERROR_CODE = "ADD_ENEMY_HOSTAGE_ERROR"
     DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list"
 
-class EnemyKingHostageException(TeamException):
+class AddEnemyKingHostageException(TeamHostageListException):
     """Attempting to an enemy king to the hostage list raises an error"""
     ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR"
     DEFAULT_MESSAGE = (
@@ -190,14 +210,24 @@ class EnemyKingHostageException(TeamException):
         "be checked or checkmated"
     )
 
-class HostageRemovalException(TeamException):
+class HostageRemovalException(TeamHostageListException):
     """Attempting to remove an enemy from the hostage list raises an error"""
     ERROR_CODE = "HOSTAGE_REMOVAL_ERROR"
     DEFAULT_MESSAGE = "An enemy piece cannot be removed from the team's hostage list"
 
 
-# === HOSTAGE EXCEPTIONS WITH ROLLBACK ===
-class InvalidFriendlyHostageRolledBAckException(TeamRollBackException):
+# === HOSTAGE LIST EXCEPTIONS WITH ROLLBACK ===
+class TeamHostageListRolledBackException(TeamHostageListException, RollbackException):
+    """
+    Raised on transactions that raise hostage list errors. Exception is raised after
+    the transaction is rolled back.
+    """
+    ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = (
+        "Team hostage list raised an exception. Transaction rollback performed."
+    )
+
+class InvalidFriendlyHostageRolledBackException(TeamHostageListRolledBackException):
     """
     Raised if a transaction attempts to add a friendly piece to the team's hostage list.
     The transaction was rolled back before raising this exception.
@@ -205,7 +235,7 @@ class InvalidFriendlyHostageRolledBAckException(TeamRollBackException):
     ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = "A friendly piece cannot be added to the team's hostage list"
 
-class AddEnemyHostageRolledBackException(TeamRollBackException):
+class AddEnemyHostageRolledBackException(TeamHostageListRolledBackException):
     """
     Raised if a transaction could not add an enemy piece to the team's hostage list.
     The transaction was rolled back before raising this exception.
@@ -214,7 +244,7 @@ class AddEnemyHostageRolledBackException(TeamRollBackException):
     DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list"
 
 
-class EnemyKingHostageRolledBackException(TeamRollBackException):
+class EnemyKingHostageRolledBackException(TeamHostageListRolledBackException):
     """
     Raised if a transaction attempted adding an enemy king to the team's hostage list.
     The transaction was rolled back before raising this exception.
@@ -225,7 +255,7 @@ class EnemyKingHostageRolledBackException(TeamRollBackException):
         "be checked or checkmated"
     )
 
-class HostageRemovalRolledBackException(TeamRollBackException):
+class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
     """
     Raised if a transaction attempted removing an enemy from the hostage list.
     The transaction was rolled back before raising this exception.

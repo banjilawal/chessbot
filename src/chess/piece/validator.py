@@ -1,7 +1,10 @@
 from typing import cast, TypeVar
 
-from chess.piece import Piece, NullPieceException, InvalidPieceException
+from chess.exception.hostage.hostage import KingCheckMateStateException
+from chess.piece import Piece, NullPieceException, InvalidPieceException, UnregisteredTeamMemberException, \
+    CombatantPiece, HostageActivityException, KingPiece
 from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
+from chess.team import NullTeamException
 
 T = TypeVar('T')
 
@@ -35,11 +38,10 @@ class PieceValidator(Validator):
             PieceValidationException: Wraps any preceding exceptions      
         """
         method = "Piece.validate"
+
         try:
             if t is None:
-                raise NullPieceException(
-                    f"{method} {NullPieceException.DEFAULT_MESSAGE}"
-                )
+                raise NullPieceException(f"{method} {NullPieceException.DEFAULT_MESSAGE}")
 
             if not isinstance(t, Piece):
                 raise TypeError(f"{method} Expected a Piece, got {type(t).__name__}")
@@ -48,11 +50,37 @@ class PieceValidator(Validator):
 
             id_result = IdValidator.validate(piece.id)
             if not id_result.is_success():
-                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+                raise IdValidationException(
+                    f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
+                )
 
             name_result = NameValidator.validate(piece.name)
             if not name_result.is_success():
-                raise NameValidationException(f"{method}: {NameValidationException.DEFAULT_MESSAGE}")
+                raise NameValidationException(
+                    f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
+                )
+
+            if isinstance(piece, CombatantPiece) and piece.captor is not None:
+                raise HostageActivityException(
+                    f"{method}: {HostageActivityException.DEFAULT_MESSAGE}"
+                )
+
+            if isinstance(piece, KingPiece) and piece.is_checkmated:
+                raise KingCheckMateStateException(
+                    f"{method}: {KingCheckMateStateException.DEFAULT_MESSAGE}"
+                )
+
+            if piece.team is None:
+                raise NullTeamException(
+                    f"{method}: {NullTeamException.DEFAULT_MESSAGE}"
+                )
+
+            team = piece.team
+            if piece not in team.roster:
+                raise UnregisteredTeamMemberException(
+                    f"{method}: {UnregisteredTeamMemberException.DEFAULT_MESSAGE}"
+                )
+
 
             # coord_validation = CoordValidator.validate(discover.current_position)
             # if not coord_validation.is_success():
@@ -61,10 +89,13 @@ class PieceValidator(Validator):
             return Result(payload=piece)
 
         except (
-                TypeError,
-                NullPieceException,
-                IdValidationException,
-                NameValidationException,
+            TypeError,
+            NullPieceException,
+            IdValidationException,
+            NameValidationException,
+            HostageActivityException,
+            NullTeamException,
+            UnregisteredTeamMemberException,
         ) as e:
             raise InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}") from e
 

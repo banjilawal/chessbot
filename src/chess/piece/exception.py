@@ -35,8 +35,10 @@ __all__ = [
     'UnsetCaptureRolledBackException',
 
 # === ATTACKING PIECE EXCEPTIONS ===
-    'AttackerException',
-    'PrisonerCannotAttackException'
+    'HostageActivityException',
+    'HostageCannotAttackException',
+    'HostageCannotMoveException',
+    'HostageCannotScanException'
 ]
 
 class PieceException(ChessException):
@@ -231,20 +233,35 @@ class UnsetCaptureRolledBackException(RollBackCaptureException):
 
 
 # === ATTACKING PIECE EXCEPTIONS ===
-class AttackerException(PieceException):
+class HostageActivityException(PieceException):
     """
     Several exceptions can be raised during capture operations. This class is the parent of
     exceptions an attacking piece can raised. Do not use directly. Subclasses give details
     useful for debugging.
     """
-    ERROR_CODE = "ATTACKER_ERROR"
-    DEFAULT_MESSAGE = "Attacker raised and exception"
+    ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"
+    DEFAULT_MESSAGE = "Hostage piece cannot move, scan, or attack."
 
-class PrisonerCannotAttackException(AttackerException):
+
+class HostageCannotAttackException(HostageActivityException):
     """
     Raised if a captured piece tries to attack.
     """
-    ERROR_CODE = "PRISONER_CANNOT_ATTACK_ERROR"
+    ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
     DEFAULT_MESSAGE = "Captured piece cannot attack."
+
+class HostageCannotMoveException(HostageActivityException):
+    """
+    Raised if a captured piece tries to move.
+    """
+    ERROR_CODE = "HOSTAGE_CANNOT_MOVE_ERROR"
+    DEFAULT_MESSAGE = "Captured piece cannot move."
+
+class HostageCannotScanException(HostageActivityException):
+    """
+    Raised if a captured piece tries to scan a square.
+    """
+    ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
+    DEFAULT_MESSAGE = "Captured piece cannot scan a sqaure."
 
 

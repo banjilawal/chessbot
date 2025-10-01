@@ -66,6 +66,10 @@ class ActorValidator:
                     f"{method}: {CheckMatedKingActivityException.DEFAULT_MESSAGE}"
                 )
 
+            team = piece.team
+
+
+
             return Result(payload=piece)
 
         except (
