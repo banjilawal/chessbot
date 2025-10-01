@@ -1,15 +1,11 @@
+
+from chess.piece import Piece
+from chess.coord import Coord
+from chess.geometry import Path
+from chess.rank import Rank, RankSpec
 from chess.board.board import Board
-from chess.rank.rank_spec import RankSpec
 from chess.common.emitter import id_emitter
 
-
-from chess.transaction.types import OccupationFlow
-
-from chess.coord import Coord
-from chess.geometry.path import Path
-from chess.rank import Rank, RankSpec
-
-from chess.piece.piece import Piece
 
 
 class Bishop(Rank):
@@ -26,7 +22,6 @@ class Bishop(Rank):
 
     def walk(self, piece: Piece, destination: Coord, board: Board):
         method = "Bishop.walk"
-
         try:
             if piece.current_position is None:
                 raise PieceCoordNullException(f"{method}: {PieceCoordNullException.DEFAULT_MESSAGE}")

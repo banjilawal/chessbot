@@ -45,7 +45,7 @@ This package defines specific exceptions for issues encountered when working wit
 * `NullScalarException`: Raised when a required scalar value is unexpectedly `None`.
 * `ScalarBelowBoundsException`: Raised when a scalar's value is below its minimum allowed value.
 * `ScalarAboveUpperBoundException`: Raised when a scalar's value is above its maximum allowed value.
-* `ScalarValidationException`: A general team_exception raised when a scalar value fails to meet its validation criteria.
+* `InvalidScalarException`: A general team_exception raised when a scalar value fails to meet its validation criteria.
 
 ### EXCEPTION USAGE EXCEPTIONS
 These exceptions can be imported and raised from within the scalar-related code to enforce data integrity.

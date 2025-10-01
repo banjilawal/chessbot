@@ -2,48 +2,61 @@ from chess.exception import ChessException, NullException, ValidationException, 
 
 __all__ = [
     'ScalarException',
+    
+# === SCALAR VALIDATION EXCEPTIONS ===
     'NullScalarException',
+    'InvalidScalarException',
+    
+# === SCALAR BUILDER EXCEPTIONS ===
     'ScalarBuilderException',
-    'NullScalarBuilderException',
-    'ScalarValidationException',
+
+# === SCALAR BOUNDS EXCEPTIONS ===
     'ScalarBelowBoundsException',
     'ScalarAboveBoundsException'
 ]
 
 class ScalarException(ChessException):
+    """
+    Super class of all exceptions a Scalar object raises. Do not use directly. Subclasses 
+    give details useful for debugging. This class exists primarily to allow catching all 
+    Scalar exceptions.
+    """
     ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
-    DEFAULT_MESSAGE = f"Scalar is below lower bound"
+    DEFAULT_MESSAGE = "Scalar is below lower bound"
+    
 
+# === SCALAR VALIDATION EXCEPTIONS ===
 class NullScalarException(ScalarException, NullException):
-    """Raised if an required Scalar is null."""
+    """Raised if an entity, method, or operation requires a scalar but gets null instead."""
     ERROR_CODE = "NULL_SCALAR_ERROR"
-    DEFAULT_MESSAGE = f"Scalar cannot be null"
+    DEFAULT_MESSAGE = "Scalar cannot be null."
 
-
-class ScalarValidationException(ScalarException, ValidationException):
+class InvalidScalarException(ScalarException, ValidationException):
+    """
+    Raised by ScalarValidator if Scalar fails sanity checks. Exists primarily to catch all
+    exceptions raised validating an existing scalar
+    """
     ERROR_CODE = "SCALAR_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Scalar validation failed"
+    DEFAULT_MESSAGE = "Scalar validation failed."
 
 
+# === SCALAR BUILDER EXCEPTIONS ===
 class ScalarBuilderException(ScalarException, BuilderException):
-    """Wrapper for exceptions raised when ScalarBuilder runs."""
+    """
+    Raised when ScalarBuilder encounters an error building a scalar. Exists primarily
+    to catch all exceptions raised creating a new scalar.
+    """
     ERROR_CODE = "SCALAR_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "ScalarBuilder raised an exception"
+    DEFAULT_MESSAGE = "ScalarBuilder raised an exception."
 
 
-class NullScalarBuilderException(ScalarException, NullException):
-    """Raised if a ScalarBuilder is null."""
-    ERROR_CODE = "NULL_SCALAR_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "ScalarBuilder cannot be null"
-
-
+# === SCALAR BOUNDS EXCEPTIONS ===
 class ScalarBelowBoundsException(ScalarException):
     """Raised if a scalar is below its < -KNIGHT_STEP_SIZE"""
     ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
-    DEFAULT_MESSAGE = "Scalar cannot be less than -KNIGHT_STEP_SIZE"
-
+    DEFAULT_MESSAGE = "Scalar cannot be less than -KNIGHT_STEP_SIZE."
 
 class ScalarAboveBoundsException(ScalarException):
     """Raised if a scalar is above its > KNIGHT_STEP_SIZE"""
     ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
-    DEFAULT_MESSAGE = "Scalar cannot be greater than KNIGHT_STEP_SIZE"
+    DEFAULT_MESSAGE = "Scalar cannot be greater than KNIGHT_STEP_SIZE."

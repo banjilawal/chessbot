@@ -3,43 +3,44 @@ from chess.exception import ChessException, BuilderException, NullException, Val
 __all__ = [
     'SquareException',
 
-    # === SQUARE VALIDATION EXCEPTIONS ===
+# === SQUARE VALIDATION EXCEPTIONS ===
     'NullSquareException',
     'InvalidSquareException',
 
-    # === SQUARE BUILDER EXCEPTIONS ===
+# === SQUARE BUILDER EXCEPTIONS ===
     'SquareBuilderException'
 ]
 
 class SquareException(ChessException):
     """
-    Super class of all exceptions a Vector object raises. Do not use directly. Subclasses give details useful 
-    for debugging. This class exists primarily to allow catching all vector exceptions
+    Super class of all exceptions a Square object raises. Do not use directly. Subclasses 
+    give details useful for debugging. This class exists primarily to allow catching all 
+    square exceptions.
     """
     ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square raised an exception"
+    DEFAULT_MESSAGE = "Square raised an exception."
 
 
 # === SQUARE VALIDATION EXCEPTIONS ===
 class NullSquareException(SquareException, NullException):
     """Raised if an entity, method, or operation requires a Square but gets null instead."""
     ERROR_CODE = "NULL_SQUARE_ERROR"
-    DEFAULT_MESSAGE = f"Square cannot be null"
+    DEFAULT_MESSAGE = "Square cannot be null."
 
 class InvalidSquareException(SquareException, ValidationException):
     """
-    Raised by VectorValidator if square fails sanity checks. Exists primarily to catch all exceptions raised
-    validating an existing vector
+    Raised by SquareValidator if square fails sanity checks. Exists primarily to catch 
+    all exceptions raised validating an existing square
     """
     ERROR_CODE = "SQUARE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Square validation failed"
+    DEFAULT_MESSAGE = "Square validation failed"
 
     
 # === SQUARE BUILDER EXCEPTIONS ===
 class SquareBuilderException(SquareException, BuilderException):
     """
-    Raised when VectorBuilder encounters an error while building a vector. Exists primarily to catch all exceptions
-    raised building a new vector
+    Raised when SquareBuilder encounters an error building a square. Exists primarily
+    to catch all exceptions raised creating a new square
     """
     ERROR_CODE = "SQUARE_BUILDER_ERROR"
     DEFAULT_MESSAGE = "SquareBuilder raised an exception"

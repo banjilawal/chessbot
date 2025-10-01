@@ -57,12 +57,12 @@ wrapper for underlying errors, providing a clean and consistent API for handling
 * `QueenMovingException`
 
 #### Rank Validation Exceptions
-* `BishopValidationException`
-* `KingValidationException`
-* `KnightValidationException`
-* `PawnValidationException`
-* `RookValidationException`
-* `QueenValidationException`
+* `InvalidBishopException`
+* `InvalidKingException`
+* `InvalidKnightException`
+* `InvalidPawnException`
+* `InvalidRookException`
+* `InvalidQueenException`
 
 
 ### EXAMPLE EXCEPTION USAGES

@@ -125,8 +125,8 @@ class TeamSearch:
     @staticmethod
     def by_roster_number(roster_number: int, team: Team) -> SearchResult['Piece']:
         """
-        Find a piece with the `roster_number`.  Roster numbers are unique within a team. Not unique across teams.
-        There are 16 chess pieces per team. jersey_range = [0,15]
+        Find a piece with the `roster_number`. Roster numbers are unique within a team. Not unique
+        across teams. There are 16 chess pieces per team. jersey_range = [0,15]
 
         Args:
           `roster_number` (`int`): Between 0 and 15 inclusive
@@ -215,9 +215,13 @@ class TeamSearch:
         """Find a piece by ID within a specific team"""
 
         try:
-            validation = RankValidator.validate(rank)
-            if not validation.is_success():
-                raise validation.exception
+            rank_validation = RankValidator.validate(rank)
+            if not rank_validation.is_success():
+                return SearchResult(exception=rank_validation.exception)
+
+            team_validation = TeamValidator.validate(team)
+            if not team_validation.is_success():
+                return SearchResult(exception=team_validation.exception)
 
             matches = [piece for piece in team.roster if piece.rank == rank]
             return SearchResult(payload=matches)

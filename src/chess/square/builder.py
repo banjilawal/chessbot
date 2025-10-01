@@ -1,11 +1,9 @@
 from enum import Enum
 
-from chess.coord import Coord, CoordValidator
 from assurance import ThrowHelper
-from chess.common import BuildResult, IdValidator, NameValidator
+from chess.coord import Coord, CoordValidator
 from chess.square import Square, SquareBuilderException
-
-
+from chess.common import BuildResult, IdValidator, NameValidator
 
 
 class SquareBuilder(Enum):
@@ -36,7 +34,7 @@ class SquareBuilder(Enum):
     """
     
     @staticmethod
-    def build(square_id:int, name: str, coord: Coord) -> BuildResult[Square]:
+    def build(square_id: int, name: str, coord: Coord) -> BuildResult[Square]:
         """
         Constructs a new `Square` instance with comprehensive checks on the parameters and states during the
         build process.

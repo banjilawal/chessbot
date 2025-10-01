@@ -11,10 +11,10 @@ CORE CLASSES:
     SearchResult
 
 USAGE:
-    >>> from chess.search import PieceSerach, SearchResult
-    >>> search_result = BoardSearch.piece_by_name("BN2", [white_team, black_team])
-    >>> if search_result.is_success():
-    >>>     return cast(Piece, search_result.payload)
+    # >>> from chess.search import PieceSerach, SearchResult
+    # >>> search_result = BoardSearch.piece_by_name("BN2", [white_team, black_team])
+    # >>> if search_result.is_success():
+    # >>>     return cast(Piece, search_result.payload)
 
 
 SEARCH EXCEPTIONS:

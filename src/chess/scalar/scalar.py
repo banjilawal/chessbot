@@ -13,18 +13,17 @@ class Scalar:
     """
 
     def __init__(self, value: int):
-        method = "Scalar.__init__"
-
-        """Creates a Scalar instance.
+        """
+        Creates a Scalar instance. Should not be used directly. Use ScalarBuilder.
 
         Args:
             value (int): The numeric value of the scalar.
-
         Raises:
             NullNumberException: If the provided value is `None`.
             ScalarBelowBoundsException: If the value is below the lower boundary.
             ScalarAboveBoundsException: If the value is at or above the upper boundary.
         """
+        method = "Scalar.__init__"
 
         if value is None:
             raise NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
@@ -33,15 +32,13 @@ class Scalar:
             raise ScalarBelowBoundsException(f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}")
 
         if value >= BOARD_DIMENSION:
-            raise ScalarAboveBoundsException(f"{method}: scalar {ScalarAboveBoundsException.DEFAULT_MESSAGE}")
+            raise ScalarAboveBoundsException(f"{method}: {ScalarAboveBoundsException.DEFAULT_MESSAGE}")
 
         self._value = value
-
 
     @property
     def value(self) -> int:
         return self._value
-
 
     def __eq__(self, other):
         if other is self:
@@ -53,10 +50,8 @@ class Scalar:
 
         return self._value == other.value
 
-
     def __hash__(self):
         return hash(self._value)
-
 
     def __str__(self):
         return f"Scalar(value={self._value})"

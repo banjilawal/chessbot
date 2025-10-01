@@ -3,49 +3,51 @@ from chess.exception import ChessException, NullException, ValidationException, 
 __all__ = [
     'TeamException',
     'TeamRollBackException',
-    # === TEAM VALIDATION EXCEPTIONS ===
+
+# === TEAM VALIDATION EXCEPTIONS ===
     'NullTeamException',
     'InvalidTeamException',
 
-    # === TEAM BUILDER EXCEPTIONS ===
+# === TEAM BUILDER EXCEPTIONS ===
     'TeamBuilderException',
     'NullTeamSchemaException',
 
-    # === TEAM MEMBER EXCEPTIONS ===
+# === TEAM MEMBER EXCEPTIONS ===
     'AddTeamMemberException',
     'AddEnemyToRosterException',
     'RemoveTeamMemberException',
     'FullRankQuotaException',
 
-    # === TEAM MEMBER EXCEPTIONS WITH ROLLBACK ===
+# === TEAM MEMBER EXCEPTIONS WITH ROLLBACK ===
     'AddEnemyHostageRolledBackException',
     'AddTeamMemberRolledBackException',
     'RemoveTeamMemberRolledBackException',
     'FullRankQuotaRolledBackException',
 
-    # === HOSTAGE EXCEPTIONS ===
+# === HOSTAGE EXCEPTIONS ===
     'InvalidFriendlyHostageException',
     'AddEnemyHostageException',
     'EnemyKingHostageException',
     'HostageRemovalException',
 
-    # === HOSTAGE EXCEPTIONS WITH ROLLBACK ===
+# === HOSTAGE EXCEPTIONS WITH ROLLBACK ===
     'InvalidFriendlyHostageRolledBAckException',
     'AddEnemyToRosterRolledBackException',
     'EnemyKingHostageRolledBackException',
     'HostageRemovalRolledBackException',
 
-    # === SEARCH EXCEPTIONS ===
+# === SEARCH EXCEPTIONS ===
     'RosterNumberOutOfBoundsException'
 ]
 
 class TeamException(ChessException):
     """
-    Super class of all exceptions a Team object raises. Do not use directly. Subclasses give details useful 
-    for debugging. This class exists primarily to allow catching all team exceptions
+    Super class of all exceptions a Team object raises. Do not use directly. Subclasses give
+    details useful for debugging. This class exists primarily to allow catching all team
+    exceptions.
     """
     ERROR_CODE = "TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team raised an exception"
+    DEFAULT_MESSAGE = "Team raised an exception."
 
 class TeamRollBackException(TeamException):
     """
@@ -63,8 +65,8 @@ class NullTeamException(TeamException, NullException):
 
 class InvalidTeamException(TeamException, ValidationException):
     """
-    Raised by TeamValidator if team fails sanity checks. Exists primarily to catch all exceptions raised
-    validating an existing team
+    Raised by TeamValidator if team fails sanity checks. Exists primarily to catch all
+    exceptions raised validating an existing team
     """
     ERROR_CODE = "TEAM_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Team validation failed"
@@ -73,8 +75,8 @@ class InvalidTeamException(TeamException, ValidationException):
 # === TEAM BUILDER EXCEPTIONS ===
 class TeamBuilderException(TeamException, BuilderException):
     """
-    Raised when TeamBuilder encounters an error while building a team. Exists primarily to catch all exceptions
-    raised building a new team
+    Raised when TeamBuilder encounters an error while building a team. Exists primarily to
+    catch all exceptions raised building a new team
     """
     ERROR_CODE = "TEAM_BUILDER_ERROR"
     DEFAULT_MESSAGE = "TeamBuilder raised an exception"

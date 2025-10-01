@@ -71,7 +71,7 @@ class ScanEventBuilder(Enum):
            This includes:
                 * `IdValidationException`: if `scanEvent_id` fails validation checks
                 * `NameValidationException`: if `name` fails validation checks
-                * `RankValidationException`: if `rank` fails validation checks
+                * `InvalidRankException`: if `rank` fails validation checks
                 * `InvalidTeamException`: if `team` fails validation checks
                 * `InvalidTeamAssignmentException`: If `scanEvent.team` is different from `team` parameter
                 * `FullRankQuotaException`: If the `team` has no empty slots for the `scanEvent.rank`

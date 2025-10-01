@@ -5,7 +5,7 @@ from chess.common import Result, Validator, BOARD_DIMENSION
 
 from chess.scalar import(
     Scalar, NullScalarException, ScalarBelowBoundsException,
-    ScalarAboveBoundsException, ScalarValidationException
+    ScalarAboveBoundsException, InvalidScalarException
 )
 
 T = TypeVar('T')
@@ -36,14 +36,14 @@ class ScalarValidator(Validator):
         Validates that an existing `Scalar` instance meets specifications.
         This method performs a series of checks on a Scalar instance, ensuring it is not null and that 
         its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised 
-        as a `ScalarValidationException`, providing a clean and consistent error-handling experience.
+        as a `InvalidScalarException`, providing a clean and consistent error-handling experience.
             
         Args
             `t` (`Scalar`): `Scalar` instance to validate
 
          Returns:
             `Result`[`Scalar`]: A `Resul`t object containing the validated payload if the specification is satisfied,
-            `ScalarValidationException` otherwise.
+            `InvalidScalarException` otherwise.
         
         Raises:
             `NullScalarException`: if `t` is null   
@@ -51,7 +51,7 @@ class ScalarValidator(Validator):
             `NullNumberException`: If `scalar.value` is null   
             `ScalarBelowLowerBoundException`: If `scalar.value` < 0
             `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
-            `ScalarValidationException`: Wraps any preceding exceptions      
+            `InvalidScalarException`: Wraps any preceding exceptions
         """
         method = "ScalarValidator.validate"
         
@@ -84,12 +84,12 @@ class ScalarValidator(Validator):
             ScalarBelowBoundsException,
             ScalarAboveBoundsException,
         ) as e:
-            raise ScalarValidationException(f"{method}: {ScalarValidationException.DEFAULT_MESSAGE}") from e
+            raise InvalidScalarException(f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising
         except Exception as e:
-            raise ScalarValidationException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidScalarException(f"An unexpected error occurred during validation: {e}") from e
 
 
 # def main():

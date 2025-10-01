@@ -70,7 +70,7 @@ class ScalarBuilder(Enum):
                 * `NullNumberException`: If `scalar.value` is null
                 * `ScalarBelowLowerBoundException`: If `scalar.value` < 0
                 * `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
-                * `ScalarValidationException`: Wraps any preceding exceptions
+                * `InvalidScalarException`: Wraps any preceding exceptions
 
         Note:
             The builder runs through all the checks on parameters and state to guarantee only a valid `Scalar` is 

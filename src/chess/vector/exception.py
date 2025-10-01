@@ -17,7 +17,6 @@ __all__ = [
     # === VECTOR BOUNDS EXCEPTIONS ===
     'NullXComponentException',
     'NullYComponentException',
-
 ]
 
 class VectorException(ChessException):

@@ -12,11 +12,11 @@ from chess.common import Result
 from chess.common.validator import Validator
 from chess.rank import (
     Rank, King, Pawn, Knight, Bishop, Rook, Queen, RankSpec,
-    KingValidationException, PawnValidationException,
-    KnightValidationException, BishopValidationException,
-    RookValidationException, QueenValidationException,
-    NullRankException, RankValidationException,
-    UnRecognizedConcreteRankException, KingValidationException
+    InvalidKingException, InvalidPawnException,
+    InvalidKnightException, InvalidBishopException,
+    InvalidRookException, InvalidQueenException,
+    NullRankException, InvalidRankException,
+    UnRecognizedConcreteRankException, InvalidKingException
 )
 
 T = TypeVar('T')
@@ -57,12 +57,12 @@ class RankValidator(Validator):
                 NullRankException,
                 UnRecognizedConcreteRankException,
         ) as e:
-            raise RankValidationException(f"{method}: {RankValidationException.DEFAULT_MESSAGE}") from e
+            raise InvalidRankException(f"{method}: {InvalidRankException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising
         except Exception as e:
-            raise RankValidationException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidRankException(f"An unexpected error occurred during validation: {e}") from e
 
 
     @staticmethod
@@ -75,8 +75,8 @@ class RankValidator(Validator):
             candidate.letter.upper() == RankSpec.KING.letter.upper()
         ):
             return Result(
-                exception=KingValidationException(
-                    f"RankValidator.validate: {KingValidationException.DEFAULT_MESSAGE}"
+                exception=InvalidKingException(
+                    f"RankValidator.validate: {InvalidKingException.DEFAULT_MESSAGE}"
                 )
             )
         return Result(payload=cast(King, candidate))
@@ -92,12 +92,11 @@ class RankValidator(Validator):
                 candidate.letter.upper() == RankSpec.PAWN.letter.upper()
         ):
             return Result(
-                exception=PawnValidationException(
-                    f"RankValidator.validate: {PawnValidationException.DEFAULT_MESSAGE}"
+                exception=InvalidPawnException(
+                    f"RankValidator.validate: {InvalidPawnException.DEFAULT_MESSAGE}"
                 )
             )
         return Result(payload=cast(Pawn, candidate))
-
 
     @staticmethod
     def _validate_bishop_spec(candidate: Bishop) -> Result[Bishop]:
@@ -109,8 +108,8 @@ class RankValidator(Validator):
                 candidate.letter.upper() == RankSpec.BISHOP.letter.upper()
         ):
             return Result(
-                exception=BishopValidationException(
-                    f"RankValidator.validate: {BishopValidationException.DEFAULT_MESSAGE}"
+                exception=InvalidBishopException(
+                    f"RankValidator.validate: {InvalidBishopException.DEFAULT_MESSAGE}"
                 )
             )
         return Result(payload=cast(Bishop, candidate))
@@ -126,8 +125,8 @@ class RankValidator(Validator):
                 candidate.letter.upper() == RankSpec.KNIGHT.letter.upper()
         ):
             return Result(
-                exception=KnightValidationException(
-                    f"RankValidator.validate: {KnightValidationException.DEFAULT_MESSAGE}"
+                exception=InvalidKnightException(
+                    f"RankValidator.validate: {InvalidKnightException.DEFAULT_MESSAGE}"
                 )
             )
         return Result(payload=cast(Knight, candidate))
@@ -143,8 +142,8 @@ class RankValidator(Validator):
                 candidate.letter.upper() == RankSpec.ROOK.letter.upper()
         ):
             return Result(
-                exception=RookValidationException(
-                    f"RankValidator.validate: {RookValidationException.DEFAULT_MESSAGE}"
+                exception=InvalidRookException(
+                    f"RankValidator.validate: {InvalidRookException.DEFAULT_MESSAGE}"
                 )
             )
         return Result(payload=cast(Rook, candidate))
@@ -160,8 +159,8 @@ class RankValidator(Validator):
                 candidate.letter.upper() == RankSpec.QUEEN.letter.upper()
         ):
             return Result(
-                exception=QueenValidationException(
-                    f"RankValidator.validate: {QueenValidationException.DEFAULT_MESSAGE}"
+                exception=InvalidQueenException(
+                    f"RankValidator.validate: {InvalidQueenException.DEFAULT_MESSAGE}"
                 )
             )
         return Result(payload=cast(Queen, candidate))

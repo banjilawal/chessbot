@@ -32,7 +32,11 @@ __all__ = [
     'CaptureFriendRolledBackException',
     'KingCaptureRolledBackException',
     'DoubleCaptureRolledBackException',
-    'UnsetCaptureRolledBackException'
+    'UnsetCaptureRolledBackException',
+
+# === ATTACKING PIECE EXCEPTIONS ===
+    'AttackerException',
+    'PrisonerCannotAttackException'
 ]
 
 class PieceException(ChessException):
@@ -226,6 +230,19 @@ class UnsetCaptureRolledBackException(RollBackCaptureException):
     )
 
 
+# === ATTACKING PIECE EXCEPTIONS ===
+class AttackerException(PieceException):
+    """
+    Several exceptions can be raised during capture operations. This class is the parent of
+    exceptions an attacking piece can raised. Do not use directly. Subclasses give details
+    useful for debugging.
+    """
+    ERROR_CODE = "ATTACKER_ERROR"
+    DEFAULT_MESSAGE = "Attacker raised and exception"
 
-
-
+class PrisonerCannotAttackException(AttackerException):
+    """
+    Raised if a captured piece tries to attack.
+    """
+    ERROR_CODE = "PRISONER_CANNOT_ATTACK_ERROR"
+    DEFAULT_MESSAGE = "Captured piece cannot attack."
