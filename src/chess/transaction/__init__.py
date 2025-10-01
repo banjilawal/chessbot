@@ -1,6 +1,6 @@
 # Exceptions raised during activities
 from .exception import *
-from .context import  *
+from chess.common.context import  *
 
 from .event import Event
 from .transaction import Transaction

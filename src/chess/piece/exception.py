@@ -246,3 +246,5 @@ class PrisonerCannotAttackException(AttackerException):
     """
     ERROR_CODE = "PRISONER_CANNOT_ATTACK_ERROR"
     DEFAULT_MESSAGE = "Captured piece cannot attack."
+
+

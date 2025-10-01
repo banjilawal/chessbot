@@ -21,6 +21,8 @@ AUTHOR: Banji Lawal
 
 from .id import *
 from .name import *
+from .actor import *
+from .context import *
 from .result import *
 from .config import *
 from .emitter import *
@@ -34,9 +36,11 @@ __package_name__ = 'chess.common'
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
+    'ExecutionContext',
 
     *id.__all__,
     *name.__all__,
+    *actor.__all__,
     *result.__all__,
     *emitter.__all__,
     *config.__all__,

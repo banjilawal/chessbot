@@ -6,10 +6,6 @@ from chess.commander import Commander
 from chess.piece import Piece
 from chess.team import Team
 
-__all__ = [
-    'ExecutionContext',
-    'CaptureContext',
-]
 
 class ExecutionContext:
     """Container for execution dependencies"""
@@ -85,28 +81,3 @@ class ExecutionContext:
 # # Usage:
 # context = ExecutionContext(board=current_board, teams=all_teams)
 # outcome = executor.execute_directive(directive, context.to_dict())
-
-
-class CaptureContext:
-    """Container validating an enemy for capturing"""
-    _piece: Piece
-    _enemy: Piece
-    _board: Optional[Board]
-
-    def __init__(self, piece: Piece, enemy: Piece, board: Optional[Board]=None):
-        self._piece = piece
-        self._enemy = enemy
-        self._board = board
-
-    @property
-    def piece(self) -> Piece:
-        return self._piece
-
-    @property
-    def enemy(self) -> Piece:
-        return self._enemy
-
-
-    @property
-    def board(self) -> Optional[Board]:
-        return self._board

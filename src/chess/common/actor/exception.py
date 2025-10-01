@@ -1,40 +1,18 @@
+from chess.exception import RollbackException
+from chess.piece import PieceException, InvalidPieceException
+
 __all__ = [
-    'PieceException',
-    'PieceRollBackException',
+    'ActorException',
+    'ActorRollBackException',
 
-# === PIECE VALIDATION EXCEPTIONS ===
-    'InvalidPieceException',
-    'UnregisteredTeamMemberException',
+# === ACTOR VALIDATION EXCEPTIONS ===
+    'InvalidActorException',
+    'ActorNotOnBoardException',
 
-# === NULL PIECE EXCEPTIONS ===
-    'NullPieceException',
-    'NullKingException',
-    'NullCombatantException',
-
-# === PIECE BUILDER EXCEPTIONS ===
-    'PieceBuilderException',
-
-# === PIECE PROMOTION EXCEPTIONS ===
-    'DoublePromotionException',
-    'DoublePromotionRolledBackException',
-
-# === PIECE CAPTURE EXCEPTIONS ===
-    'CapturePieceException',
-    'CaptureFriendException',
-    'KingCaptureException',
-    'DoubleCaptureException',
-    'UnsetCaptureException',
-
-# === PIECE CAPTURE EXCEPTIONS WITH ROLLBACK ===
-    'RollBackCaptureException',
-    'CaptureFriendRolledBackException',
-    'KingCaptureRolledBackException',
-    'DoubleCaptureRolledBackException',
-    'UnsetCaptureRolledBackException',
-
-# === ATTACKING PIECE EXCEPTIONS ===
-    'AttackerException',
-    'PrisonerCannotAttackException'
+# === ACTOR ACTIVITY EXCEPTIONS ===
+    'CapturedActorCannotAttackException',
+    'CapturedActorCannotMoveException',
+    'CheckMatedKingActivityException'
 ]
 
 class ActorException(PieceException):
@@ -44,7 +22,7 @@ class ActorException(PieceException):
     all piece exceptions
     """
     ERROR_CODE = "ACTOR_ERROR"
-    DEFAULT_MESSAGE = "Actor raised an exception"
+    DEFAULT_MESSAGE = "Actor raised an exception. Piece cannot act."
 
 class ActorRollBackException(ActorException, RollbackException):
     """
@@ -58,35 +36,50 @@ class ActorRollBackException(ActorException, RollbackException):
     DEFAULT_MESSAGE = "Actor raised an exception. Transaction rolled back"
 
 
+# === ACTOR VALIDATION EXCEPTIONS ===
+class InvalidActorException(ActorException, InvalidPieceException):
+    """
+    Raised by ActorValidator if piece fails any conditions for acting on the board.
+    Exists primarily to catch all exceptions raised validating an existing piece
+    """
+    ERROR_CODE = "ACTOR_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Piece did not meet condition to act in the game."
+
 class ActorNotOnBoardException(ActorException):
     """
-    Any inconsistencies a piece introduces into a transaction need to be rolled back.
-    This is the super class of a piece mutator operations, methods, or fields that raise
-    errors. Do not use directly. Subclasses give details useful for debugging. This class
-    exists primarily to allow catching all Piece exceptions that happen when a failed
-    transaction must be rolled back.
+    A piece that has not been placed on the board cannot move, scan, capture or be captured
     """
     ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
     DEFAULT_MESSAGE = "Actor is not on the board. Piece cannot act"
 
+
+# === ACTOR ACTIVITY EXCEPTIONS ===
 class CapturedActorCannotAttackException(ActorException):
     """
-    Any inconsistencies a piece introduces into a transaction need to be rolled back.
-    This is the super class of a piece mutator operations, methods, or fields that raise
-    errors. Do not use directly. Subclasses give details useful for debugging. This class
-    exists primarily to allow catching all Piece exceptions that happen when a failed
-    transaction must be rolled back.
+    A captured piece cannot attack.
     """
     ERROR_CODE = "CAPTURED_ACTOR_CANNOT_ATTACK_ERROR"
     DEFAULT_MESSAGE = "Actor has been captured. Captured piece cannot attack."
 
 class CapturedActorCannotMoveException(ActorException):
     """
-    Any inconsistencies a piece introduces into a transaction need to be rolled back.
-    This is the super class of a piece mutator operations, methods, or fields that raise
-    errors. Do not use directly. Subclasses give details useful for debugging. This class
-    exists primarily to allow catching all Piece exceptions that happen when a failed
-    transaction must be rolled back.
+    A captured piece cannot move.
     """
     ERROR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_ERROR"
     DEFAULT_MESSAGE = "A captured actor cannot move to a square."
+
+class CapturedActorCannotScanException(ActorException):
+    """
+    A captured piece cannot scan.
+    """
+    ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
+    DEFAULT_MESSAGE = "A captured actor cannot scan a square."
+
+class CheckMatedKingActivityException(ActorException):
+    """
+    A checkmated king cannot act. The game should end once a king is checkmated
+    """
+    ERROR_CODE = "CHECKMATED_KING_ACTIVITY_ERROR"
+    DEFAULT_MESSAGE = (
+        "A checkmated king cannot do anything. The game ends when a king is checkmated."
+    )
