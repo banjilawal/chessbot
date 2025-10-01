@@ -179,6 +179,14 @@ class UnsetCaptureException(CapturePieceException):
     )
 
 
+class CircularCaptureException(CapturePieceException):
+    """
+    Raised if a piece tries to capture itself.
+    """
+    ERROR_CODE = "CIRCULAR_CAPTURE_ERROR"
+    DEFAULT_MESSAGE = "Piece cannot capture itself"
+
+
 # === PIECE CAPTURE EXCEPTIONS WITH ROLLBACK ===
 class RollBackCaptureException(CapturePieceException, RollbackException):
     """
@@ -230,6 +238,15 @@ class UnsetCaptureRolledBackException(RollBackCaptureException):
         "Cannot set a prisoner's captor to null. A captured piece cannot be freed. "
         "Transaction rollback performed."
     )
+
+
+class CircularCaptureRolledBackException(CapturePieceException):
+    """
+    Raised if a transaction attempts to set a piece as its own captor. The transaction was
+    rolled back before raising this exception.
+    """
+    ERROR_CODE = "CIRCULAR_CAPTURE_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = "Piece cannot capture itself. Transaction rolled back."
 
 
 # === ATTACKING PIECE EXCEPTIONS ===

@@ -1,7 +1,7 @@
 from chess.exception import ChessException, ValidationException, NullException
 
 __all__ = [
-    'OperationException',
+    'TransactionException',
     'EventException',
     'DirectiveException',
     'InvalidDirectiveException',
@@ -18,7 +18,7 @@ __all__ = [
     'AutoCaptureException',
 
 
-    'NullOperationException',
+    'NullTransactionException',
     'NullEventException',
     'NullDirectiveException',
     'NullDirectiveException',
@@ -27,54 +27,20 @@ __all__ = [
 
 ]
 
-class OperationException(ChessException):
-    ERROR_CODE = "OPERATION_ERROR"
-    DEFAULT_MESSAGE = "Operation raised an error"
-
-class EventException(OperationException):
-    ERROR_CODE = "OPERATION_EXECUTOR_ERROR"
-    DEFAULT_MESSAGE = "OperationExecutor raised an error"
-
-class DirectiveException(OperationException):
-    ERROR_CODE = "DIRECTIVE_ERROR"
-    DEFAULT_MESSAGE = "Directive raised an error"
-
-class InvalidDirectiveException(ValidationException):
-    ERROR_CODE = "INVALID_DIRECTIVE_ERROR"
-    DEFAULT_MESSAGE = "Directive validation failed"
+class TransactionException(ChessException):
+    ERROR_CODE = "TRANSACTION_ERROR"
+    DEFAULT_MESSAGE = "Transaction raised an error"
 
 
 
-class NullOperationException(NullException):
-    ERROR_CODE = "NULL_OPERATION_ERROR"
-    DEFAULT_MESSAGE = "Operation cannot be null"
-
-class NullEventException(EventException, NullOperationException):
-    ERROR_CODE = "NULL_OPERATION_EXECUTOR_ERROR"
-    DEFAULT_MESSAGE = "OperationExecutor cannot be null"
-
-class NullDirectiveException(NullOperationException):
-    ERROR_CODE = "NULL_DIRECTIVE_ERROR"
-    DEFAULT_MESSAGE = "Directive cannot be null"
-
-class NullDirectiveValidatorException(NullOperationException):
-    ERROR_CODE = "NULL_DIRECTIVE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Directive validation failed"
+class NullTransactionException(NullException):
+    ERROR_CODE = "NULL_TRANSACTION_ERROR"
+    DEFAULT_MESSAGE = "Transaction cannot be null"
 
 
 
 
-class CaptureContextException(OperationException):
-    ERROR_CODE = "CAPTURE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "CaptureContext raised an error"
 
-class InvalidCaptureContextException(ValidationException):
-    ERROR_CODE = "CAPTURE_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "CaptureContext validation failed. Cannot attack"
-
-class NullCaptureContextException(NullOperationException):
-    ERROR_CODE = "NULL_CAPTURE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "CaptureContext cannot be null"
 
 
 class AutoCaptureException(CaptureContextException):

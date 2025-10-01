@@ -17,11 +17,10 @@ class ScanEventException(OccupationEventException):
     ERROR_CODE = "SCAN_EVENT_ERROR"
     DEFAULT_MESSAGE = "ScanEvent failed validation"
 
-
-class ScanEventBuilderException(ScanEventException):
-    """Raised when a ScanEventBuilder fails to build a ScanEvent."""
-    ERROR_CODE = "SCAN_EVENT_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "ScanEventBuilder failed to create a ScanEvent"
+class NullScanEventException(ScanEventException, NullException):
+    """Raised by methods, entities, and models that require a ScanEvent but receive a null."""
+    ERROR_CODE = "NULL_EVENT_ERROR"
+    DEFAULT_MESSAGE = "ScanEvent cannot be null"
 
 
 class InvalidScanEventException(ScanEventException, ValidationException):
@@ -30,10 +29,10 @@ class InvalidScanEventException(ScanEventException, ValidationException):
     DEFAULT_MESSAGE = "ScanEvent failed validation"
 
 
-class NullScanEventException(ScanEventException, NullException):
-    """Raised by methods, entities, and models that require a ScanEvent but receive a null."""
-    ERROR_CODE = "NULL_EVENT_ERROR"
-    DEFAULT_MESSAGE = "ScanEvent cannot be null"
+class ScanEventBuilderException(ScanEventException):
+    """Raised when a ScanEventBuilder fails to build a ScanEvent."""
+    ERROR_CODE = "SCAN_EVENT_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "ScanEventBuilder failed to create a ScanEvent"
 
 
 class InvalidScanSubjectException(ScanEventException, InvalidPieceException):

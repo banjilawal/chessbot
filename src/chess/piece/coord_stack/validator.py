@@ -3,7 +3,7 @@ from typing import Generic, cast
 
 from chess.coord import CoordValidator
 from chess.piece import CoordStack, CoordStackValidationException, NullCoordStackException
-from chess.common import Validator, Result,ResultPayloadConflictException
+from chess.common import Validator, Result,ErrorContradictsPayloadException
 from chess.exception import InconsistentCurrentCoordException
 
 

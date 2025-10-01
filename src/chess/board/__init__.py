@@ -1,4 +1,5 @@
 # src/chess/board/__init__.py
+
 """
 # `chess.board` Package
 
@@ -50,6 +51,7 @@ __package_name__ = 'chess.board'
 __all__ = [
     # Core classes
     'Board',
+    'BoardSearch',
     'SquareIterator',
 
     *exception.__all__,

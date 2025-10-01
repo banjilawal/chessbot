@@ -63,6 +63,7 @@ AUTHOR: Banji Lawal
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
+from .exception import *
 
 from .scan import *
 from .attack import *

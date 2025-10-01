@@ -1,4 +1,5 @@
 # src/chess/common/result__init__.py
+
 """
 # `chess.common.result` Package
 
@@ -10,6 +11,7 @@ Objects representing outcomes of operations.
     - `Result`: Base class for operation results.
     - `SearchResult`: Specialized result for search operations.
     - `BuildResult`: Specialized result for build operations.
+    - `TransactionResult`: Specialized result for transaction operations.
 
 ### USAGE EXAMPLES
 These examples show recommended workflows with `Result` and `BuildResult`.
@@ -30,6 +32,8 @@ def add(x, y) -> Result[int]:
 
 # Example of a failed build operation
 
+```python
+
 ```
 ---
 VERSION: 1.0.0
@@ -37,8 +41,10 @@ AUTHOR: Banji Lawal
 """
 
 from .exception import *
+
 from .result import *
 from .build import BuildResult
+from .transaction import TransactionResult
 
 
 # Package metadata (organic to __init__.py)
@@ -49,6 +55,8 @@ __package_name__ = 'chess.common.result'
 # Export control - only what belongs in public API
 __all__ = [
     'BuildResult',
+    'TransactionResult',
+
     *result.__all__,
     *exception.__all__,
 

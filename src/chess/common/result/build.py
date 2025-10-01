@@ -1,10 +1,16 @@
-from chess.common.result import ResultPayloadConflictException, EmptyResultConstructorException
+from chess.common.result import ErrorContradictsPayloadException
 from typing import Optional, TypeVar, Generic
 
 
 T = TypeVar('T')
 
 class BuildResult(Generic[T]):
+
+    _payload: Optional[T]
+    _exception: Optional[Exception]
+
+    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
+
     """
     BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
     same structure as Result but is used specifically in the context of building entities. It can hold either.
@@ -22,6 +28,8 @@ class BuildResult(Generic[T]):
         is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
     """
 
+    _payload: Optional[T]
+    _exception: Optional[Exception]
 
     def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
         """
@@ -39,7 +47,7 @@ class BuildResult(Generic[T]):
             raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}")
 
         if  not (payload is None or exception is None):
-            raise ResultPayloadConflictException(f"{method}: {ResultPayloadConflictException.DEFAULT_MESSAGE}")
+            raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}")
 
         self._payload = payload
         self._exception = exception

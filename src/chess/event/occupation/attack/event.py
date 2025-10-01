@@ -42,5 +42,5 @@ class AttackEvent(OccupationEvent):
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, AttackEvent):
-                return self._actor.id == other.actor.id and self._enemy.id == other.enemy.id
+                return self._id == other.id
         return False

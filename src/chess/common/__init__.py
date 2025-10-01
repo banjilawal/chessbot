@@ -3,18 +3,19 @@
 """
 Common Package - Objects used frequently and globally accross packages
 
-PURPOSE:
+## PURPOSE:
     Contains commonly used objects and utilites
 
-CORE CLASSES:
+## CORE CLASSES:
     Event, Result, GameColor, MousePlacementStatus
 
-CONVENIENCE ALIASES:
-    MousePlacement: Alias for MousePlacementStatus
 
-USAGE:
-    >>>
-    >>>
+## USAGE EXAMPLES
+
+## EXCEPTIONS
+
+###
+
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal

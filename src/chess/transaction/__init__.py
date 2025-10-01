@@ -4,7 +4,7 @@ from chess.common.context import  *
 
 from .event import Event
 from .transaction import Transaction
-from .result import TransactionResult
+from chess.common.result.transaction import TransactionResult
 from .attack_validator import AttackValidator
 
 

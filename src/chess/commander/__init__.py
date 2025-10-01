@@ -1,15 +1,15 @@
 """
-chess.commander Package
+# `chess.commander` Package
 
-PURPOSE:
+## PURPOSE
     Commaners who play a team
 
-CORE CLASSES:
+## CORE CLASSES
     Commander
     Human
     CyberneticCompettor
 
-PURPOSE:
+## PURPOSE
     Contains core commander team_exception classes and coordinate utilities.
 
 

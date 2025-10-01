@@ -16,7 +16,7 @@ Contents:
 
 Notes:
     This module is part of the chess.transaction.occupation package.
-    Exceptions raised during execution are defined in attack_exceptions.py and exception.py.
+    Exceptions raised during execution are defined in exception.py and exception.py.
 """
 
 

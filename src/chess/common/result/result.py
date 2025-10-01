@@ -29,11 +29,10 @@ class Result(Generic[T]):
         is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
    """
 
-    def __init__(
-        self,
-        payload: Optional[T] = None,
-        exception: Optional[Exception] = None
-    ):
+    _payload: Optional[T]
+    _exception: Optional[Exception]
+
+    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
         method = "Result.__init_"
 
         # Raise an exception if neither payload nor exception is provided

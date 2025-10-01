@@ -1,17 +1,20 @@
 from enum import Enum
+from typing import cast
 
 from assurance import ThrowHelper
+from chess.board import BoardSearch
+from chess.exception import SearchException
 from chess.square import Square, SquareValidator
 from chess.common import BuildResult, ExecutionContext, IdValidator
 from chess.piece import Piece, KingPiece, CombatantPiece, PieceValidator
 from chess.event import (
-    OccupationEvent, ScanEvent, AttackEvent, CircularOccupationEvent, OccupationEventBuilderException
+    OccupationEvent, ScanEvent, AttackEvent, CircularOccupationException, OccupationEventBuilderException
 )
 
 
 class OccupationEventBuilder(Enum):
     """
-    Builder class responsible for safely constructing `OccupationEvent` instances.
+    Responsible for safely constructing `OccupationEvent` instances.
 
     `OccupationEventBuilder` ensures that `OccupationEvent` objects are always created successfully by performing comprehensive validation
      checks during construction. This separates the responsibility of building from validating - `OccupationEventBuilder` 
@@ -23,11 +26,6 @@ class OccupationEventBuilder(Enum):
     
     Usage:
         ```python
-        # Safe occupationEvent creation with validation
-        build_outcome = OccupationEventBuilder.build(event_id=id_emitter.event_id, actor="WN2", square=Knight(), context=white_context)
-        if not build_outcome.is_success():
-            raise build_outcome.exception
-        occupationEvent = build_outcome.payload
         ```
     
     See Also:
@@ -78,11 +76,6 @@ class OccupationEventBuilder(Enum):
 
         Example:
             ```python
-            # Valid occupationEvent creation
-            build_outcome = OccupationEventBuilder.build(value=1)
-            if not build_outcome.is_success():
-                return BuildResult(exception=build_outcome.exception)
-            return BuildResult(payload=build_outcome.payload)
             ```
         """
         method = "OccupationEventBuilder.build"
@@ -111,44 +104,42 @@ class OccupationEventBuilder(Enum):
                 )
 
             destination_occupant = destination_square.occupant
-
             if destination_occupant is None:
                 return BuildResult(payload=OccupationEvent(
-                        event_id=event_id, actor=actor, square=destination_square, context=context
+                        event_id=event_id, actor=actor, destination_square=destination_square
                     )
                 )
 
             if not actor.is_enemy(destination_occupant) or (
                 actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
             ):
-                return BuilderResult(payload=ScanEvent(
-                    event_id=event_id, observer=actor, subject=destination_occupant, destination_square=destination_square, context=context
+                return BuildResult(payload=ScanEvent(
+                    event_id=event_id,
+                    actor=actor,
+                    subject=destination_occupant,
+                    destination_square=destination_square
                     )
                 )
+
+            board_search_result = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
+            if not board_search_result.is_success():
+                return BuildResult(exception=SearchException(
+                    "Search did not find the square. This should not happen."
+                    )
+                )
+
+            actor_square = cast(Square, board_search_result.payload)
 
             if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
-                return BuilderResult(payload=AttackEvent(
-                    event_id=event_id, actor=actor, subject=destination_occupant, destination_square=destination_square, context=context
-                    )
+                return BuildResult(payload=AttackEvent(
+                    event_id=event_id,
+                    actor=actor,
+                    enemy=destination_occupant,
+                    actor_square=actor_square,
+                    destination_square=destination_square,
+                    board=context.board
                 )
+            )
+
         except Exception as e:
             raise OccupationEventBuilderException(f"{method}: {OccupationEventBuilderException.DEFAULT_MESSAGE}")
-
-
-# def main():
-#     build_outcome = OccupationEventBuilder.build()
-#     if build_outcome.is_success():
-#         occupationEvent = build_outcome.payload
-#         print(f"Successfully built occupationEvent: {occupationEvent}")
-#     else:
-#         print(f"Failed to build occupationEvent: {build_outcome.exception}")
-#     #
-#     build_outcome = OccupationEventBuilder.build(1, None)
-#     if build_outcome.is_success():
-#         occupationEvent = build_outcome.payload
-#         print(f"Successfully built occupationEvent: {occupationEvent}")
-#     else:
-#         print(f"Failed to build occupationEvent: {build_outcome.exception}")
-#
-# if __actor__ == "__main__":
-#     main()
