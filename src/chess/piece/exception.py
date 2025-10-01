@@ -37,9 +37,9 @@ __all__ = [
 
 class PieceException(ChessException):
     """
-    Super class of all exceptions a Board object raises. Do not use directly. Subclasses
+    Super class of all exceptions a Piece object raises. Do not use directly. Subclasses
     give details useful for debugging. This class exists primarily to allow catching
-    all board exceptions
+    all piece exceptions
     """
     ERROR_CODE = "PIECE_ERROR"
     DEFAULT_MESSAGE = "Piece raised an exception"
@@ -59,8 +59,8 @@ class PieceRollBackException(PieceException, RollbackException):
 # === PIECE VALIDATION EXCEPTIONS ===
 class InvalidPieceException(PieceException, ValidationException):
     """
-    Raised by PieceValidator if board fails sanity checks. Exists primarily to catch all
-    exceptions raised validating an existing board
+    Raised by PieceValidator if piece fails sanity checks. Exists primarily to catch all
+    exceptions raised validating an existing piece
     """
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Piece validation failed."
@@ -100,8 +100,8 @@ class NullCombatantException(NullPieceException):
 # === PIECE BUILDER EXCEPTIONS ===
 class PieceBuilderException(PieceException, BuilderException):
     """
-    Raised when BoardBuilder encounters an error while building a team. Exists primarily to
-    catch all exceptions raised building a new board
+    Raised when PieceBuilder encounters an error while building a team. Exists primarily to
+    catch all exceptions raised building a new piece
     """
     ERROR_CODE = "PIECE_BUILDER_ERROR"
     DEFAULT_MESSAGE = "PieceBuilder raised an exception."
