@@ -1,15 +1,8 @@
 from typing import Generic, TypeVar, cast
 
-
-from chess.piece import Piece, PieceValidator, InvalidPieceException
-from chess.square import Square, SquareValidator, InvalidSqaureException
-from chess.common import Validator, Result, IdValidator, IdValidationException
-from chess.event.occupation import (
-    OccupationEvent,
-    NullOccupationEventException,
-    CircularOccupationException,
-    InvalidOccupationEventException
-)
+from chess.event import OccupationEvent
+from chess.piece import Piece, PieceValidator, Cir
+from chess.common import Validator, IdValidator, ActorValidator, Result
 
 T = TypeVar('T')
 
@@ -62,13 +55,13 @@ class OccupationEventValidator(Validator):
             if not id_validation.is_success():
                 raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 
-            actor_validation = PieceValidator.validate(event.actor)
+            actor_validation = ActorValidator.validate(event.actor)
             if not actor_validation.is_success():
-                raise InvalidPieceException(f"{method}: actor validation failed")
+                raise InvalidActorException(f"{method}: {InvalidActorException.DEFAULT_MESSAGE}")
 
             destination_square_validation = SquareValidator.validate(event.subject)
             if not destination_square_validation.is_success():
-                raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
+                raise InvalidSquareException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 
             if event.subject.coord == event.actor.current_position:
                 raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")

@@ -1,14 +1,18 @@
 from typing import Generic, TypeVar, cast
 
+from chess.piece import Piece, CombatantPiece, KingPiece, PieceValidator, InvalidPieceException
+from chess.common import Result, ExecutionContext
+from chess.common.actor.exception import (
+    CapturedActorCannotActException, ActorPlacementRequiredException,
+    CheckMatedKingActivityException, InvalidActorException, ActorNotOnBoardException
+)
 
-from chess.transaction import ExecutionContext
 
-T = TypeVar('T')
 
-class ActorValidator(Validator):
+class ActorValidator:
 
     @staticmethod
-    def validate(t: Piece, context: ExecutionContext) -> Result[Piece]:
+    def validate(piece: Piece, context: ExecutionContext) -> Result[Piece]:
         """
         Validates an Piece meets specifications:
             - Not null
@@ -40,20 +44,16 @@ class ActorValidator(Validator):
         method = "ActorValidator.validate"
 
         try:
-            validation = PieceValidator(t)
+            validation = PieceValidator.validate(piece)
             if not validation.is_success():
                 raise validation.exception
 
-            piece = cast(Piece, t)
-
             if piece not in context.board:
-                raise ActorNotOnBoardException(
-                    f"{method}: {ActorNotOnBoardException.DEFAULT_MESSAGE}"
-                )
+                raise ActorNotOnBoardException(f"{method}: {ActorNotOnBoardException.DEFAULT_MESSAGE}")
 
             if piece.positions.is_empty() or piece.current_position is None:
-                raise ActorNotOnBoardException(
-                    f"{method}: {ActorNotOnBoardException.DEFAULT_MESSAGE}"
+                raise ActorPlacementRequiredException(
+                    f"{method}: {ActorPlacementRequiredException.DEFAULT_MESSAGE}"
                 )
 
             if isinstance(piece, CombatantPiece) and piece.captor is not None:
@@ -71,10 +71,7 @@ class ActorValidator(Validator):
         except (
             InvalidPieceException,
             ActorNotOnBoardException,
-            CapturedActorCannotActException,
-            CapturedActorCannotScanException,
-            CapturedActorCannotMoveException,
-            CapturedActorCannotAttackException
+            CapturedActorCannotActException
         ) as e:
             raise InvalidActorException( f"{method}: {InvalidActorException.DEFAULT_MESSAGE}") from e
 

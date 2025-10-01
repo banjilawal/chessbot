@@ -1,4 +1,5 @@
 # src/chess/common/__init__.py
+
 """
 Common Package - Objects used frequently and globally accross packages
 
@@ -26,6 +27,7 @@ from .context import *
 from .result import *
 from .config import *
 from .emitter import *
+from .validator import Validator
 
 
 # Package metadata (organic to __init__.py)
@@ -37,6 +39,7 @@ __package_name__ = 'chess.common'
 __all__ = [
     # Core classes
     'ExecutionContext',
+    'Validator',
 
     *id.__all__,
     *name.__all__,
@@ -53,7 +56,7 @@ __all__ = [
 
 # Organic utility function for package info
 def package_info() -> dict:
-    '''Return basic package information.'''
+    """Return basic package information."""
     return {
         'name': __package_name__,
         'version': __version__,

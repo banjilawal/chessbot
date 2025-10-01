@@ -1,5 +1,3 @@
-
-
 from chess.piece import Piece
 from chess.square import Square
 from chess.transaction import Event
@@ -15,7 +13,7 @@ class OccupationEvent(Event[Piece,Square]):
         return self.resource
 
     def __eq__(self, other):
-        if super().__eq__(other):
-            if isinstance(other, OccupationEvent):
-                return self._id == other.id
-        return False
+        if not super().__eq__(other):
+            return False
+        if isinstance(other, OccupationEvent):
+            return self._id == other.id

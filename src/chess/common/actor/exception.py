@@ -8,11 +8,19 @@ __all__ = [
 # === ACTOR VALIDATION EXCEPTIONS ===
     'InvalidActorException',
     'ActorNotOnBoardException',
+    'ActorPlacementRequiredException',
 
 # === ACTOR ACTIVITY EXCEPTIONS ===
+    'CapturedActorCannotActException',
     'CapturedActorCannotAttackException',
     'CapturedActorCannotMoveException',
-    'CheckMatedKingActivityException'
+    'CheckMatedKingActivityException',
+
+# === SUBJECT ACTIVITY EXCEPTIONS ===
+    'SubjectException',
+    'InvalidSubjectException',
+    'SubjectNotOnBoardException',
+    'SubjectPlacementRequiredException'
 ]
 
 class ActorException(PieceException):
@@ -52,8 +60,22 @@ class ActorNotOnBoardException(ActorException):
     ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
     DEFAULT_MESSAGE = "Actor is not on the board. Piece cannot act"
 
+class ActorPlacementRequiredException(ActorException):
+    """Raised when a potential actor has not been placed on the board."""
+    ERROR_CODE = "ACTOR_PLACEMENT_REQUIRED_ERROR"
+    DEFAULT_MESSAGE = (
+        "Required actor has an empty position stack. It as not been placed on the board. Event cannot be executed."
+    )
+
 
 # === ACTOR ACTIVITY EXCEPTIONS ===
+class CapturedActorCannotActException(ActorException):
+    """
+    A captured piece cannot actt.
+    """
+    ERROR_CODE = "CAPTURED_ACTOR_CANNOT_ACT_ERROR"
+    DEFAULT_MESSAGE = "Actor has been captured. Captured piece cannot act."
+
 class CapturedActorCannotAttackException(ActorException):
     """
     A captured piece cannot attack.
@@ -82,4 +104,35 @@ class CheckMatedKingActivityException(ActorException):
     ERROR_CODE = "CHECKMATED_KING_ACTIVITY_ERROR"
     DEFAULT_MESSAGE = (
         "A checkmated king cannot do anything. The game ends when a king is checkmated."
+    )
+
+
+# === SUBJECT EXCEPTIONS ===
+class SubjectException(PieceException):
+    """
+    SubjectException classes are raised on a piece acted upon. They are raised on the same errors as ActorException,
+    Using SubjectException makes tracing which side of the interaction is raising an error easier.
+    """
+    ERROR_CODE = "SUBJECT_ERROR"
+    DEFAULT_MESSAGE = "A potential subject piece raised an exception"
+
+
+class InvalidSubjectException(SubjectException, InvalidPieceException):
+    """Raised if a required subject fails validation."""
+    ERROR_CODE = "SUBJECT_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Required subject failed validation. Actor cannot fire event onto subject"
+
+
+class SubjectNotOnBoardException(SubjectException):
+    """Raised when a required subject is not found on the  board."""
+    ERROR_CODE = "SUBJECT_NOT_ON_BOARD_ERROR"
+    DEFAULT_MESSAGE = "Required subject was not found on the board. Actor cannot fire event onto subject"
+
+
+class SubjectPlacementRequiredException(SubjectException):
+    """Raised when a required subject has not been placed on the board."""
+    ERROR_CODE = "SUBJECT_PLACEMENT_REQUIRED_ERROR"
+    DEFAULT_MESSAGE = (
+        "Required subject has an empty position stack. It as not been placed on the board. Actor cannot"
+        "fire event onto subject."
     )
