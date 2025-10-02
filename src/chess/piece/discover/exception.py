@@ -55,9 +55,9 @@ class DiscoveryBuilderException(DiscoveryException, BuilderException):
 
 
 class CircularDiscoveryException(DiscoveryException):
-    """Raised if an observer scans itself."""
+    """Raised if an actor scans itself."""
     ERROR_CODE = "OBSERVER_CIRCULAR_SCAN_ERROR"
-    DEFAULT_MESSAGE = "An observer cannot discover itself"
+    DEFAULT_MESSAGE = "An actor cannot discover itself"
 
 
 class AddingValidDiscoveryFailedException(DiscoveryException):
@@ -67,12 +67,12 @@ class AddingValidDiscoveryFailedException(DiscoveryException):
 
 
 class AddDuplicateDiscoveryException(DiscoveryException):
-    """Raised if an observer tries adding a discovery twice."""
+    """Raised if an actor tries adding a discovery twice."""
     ERROR_CODE = "ADD_DUPLICATE_DISCOVERY_ERROR"
     DEFAULT_MESSAGE = "The discovery has already been added to the list"
     
 class AddNullDiscoveryException(DiscoveryException):
-    """Raised if an observer tries adding a null or empty discovery to its list"""
+    """Raised if an actor tries adding a null or empty discovery to its list"""
     ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR"
     DEFAULT_MESSAGE = "Cannot add a null discovery to the list"
 
@@ -91,16 +91,16 @@ class DiscoveryRollBackException(DiscoveryException, RollbackException):
 
 class CircularDiscoveryRolledBackException(DiscoveryException):
     """
-    Raised if an observer scans itself during an ACID transaction. The 
+    Raised if an actor scans itself during an ACID transaction. The
     transaction was rolled back before raising this exception.
     """
     ERROR_CODE = "OBSERVER_CIRCULAR_SCAN_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "An observer cannot discover itself. Transaction rolled back."
+    DEFAULT_MESSAGE = "An actor cannot discover itself. Transaction rolled back."
 
 
 class DuplicateDiscoveryRolledBackException(DiscoveryException):
     """
-    Raised if a transaction attempts adding a discovery twice to an observer. The 
+    Raised if a transaction attempts adding a discovery twice to an actor. The
     transaction was rolled back before raising this exception.
     """
     ERROR_CODE = "ADD_DUPLICATE_DISCOVERY_ERROR_ROLLED_BACK"
@@ -112,7 +112,7 @@ class DuplicateDiscoveryRolledBackException(DiscoveryException):
 class AddNullDiscoveryRolledBackException(DiscoveryException):
     """
     Raised if a transaction attempts adding a null or empty discovery to an
-    observer's list. The transaction was rolled back before raising this exception.
+    actor's list. The transaction was rolled back before raising this exception.
     """
     ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = "Cannot add a null discovery to the list. Transaction rolled back."

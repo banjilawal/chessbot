@@ -2,10 +2,6 @@ from chess.exception import ChessException, ValidationException, NullException
 
 __all__ = [
     'TransactionException',
-    'EventException',
-    'DirectiveException',
-    'InvalidDirectiveException',
-    'InvalidCaptureContextException',
 
     'FriendlyFireException',
     'AttackOnEmptySquareException',
@@ -19,10 +15,7 @@ __all__ = [
 
 
     'NullTransactionException',
-    'NullEventException',
-    'NullDirectiveException',
-    'NullDirectiveException',
-    'NullCaptureContextException',
+
 
 
 ]
@@ -33,7 +26,7 @@ class TransactionException(ChessException):
 
 
 
-class NullTransactionException(NullException):
+class NullTransactionException(TransactionException, NullException):
     ERROR_CODE = "NULL_TRANSACTION_ERROR"
     DEFAULT_MESSAGE = "Transaction cannot be null"
 
@@ -50,7 +43,7 @@ class AutoCaptureException(CaptureContextException):
 
 class FriendlyFireException(CaptureContextException):
     DEFAULT_CODE = "FRIENDLY_FIRE"
-    DEFAULT_MESSAGE = "Attempted to attack a friendly observer; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to attack a friendly actor; this should not happen."
 
 
 class AttackOnEmptySquareException(CaptureContextException):
@@ -60,27 +53,27 @@ class AttackOnEmptySquareException(CaptureContextException):
 
 class EnemyNotOnBoardException(CaptureContextException):
     DEFAULT_CODE = "ENEMY_NOT_ON_BOARD"
-    DEFAULT_MESSAGE = "Attempted to capture a observer not present on the board; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a actor not present on the board; this should not happen."
 
 
 class NonCombatantTargetException(CaptureContextException):
     DEFAULT_CODE = "NON_COMBATANT_TARGET"
-    DEFAULT_MESSAGE = "Attempted to capture a non-combatant observer; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a non-combatant actor; this should not happen."
 
 
 class KingTargetException(CaptureContextException):
     DEFAULT_CODE = "KING_TARGET"
-    DEFAULT_MESSAGE = "Attempted to capture a King observer; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a King actor; this should not happen."
 
 
 class AlreadyCapturedException(CaptureContextException):
     DEFAULT_CODE = "ALREADY_CAPTURED"
-    DEFAULT_MESSAGE = "Attempted to capture a observer that already has a captor; this should not happen."
+    DEFAULT_MESSAGE = "Attempted to capture a actor that already has a captor; this should not happen."
 
 
 class MissingFromRosterException(CaptureContextException):
     DEFAULT_CODE = "MISSING_FROM_ROSTER"
-    DEFAULT_MESSAGE = "Expected observer not found in its team's roster; this should not happen."
+    DEFAULT_MESSAGE = "Expected actor not found in its team's roster; this should not happen."
 
 
 class HostageTransferConflictException(CaptureContextException):

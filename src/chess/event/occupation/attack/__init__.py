@@ -59,17 +59,21 @@ AUTHOR: Banji Lawal
 
 from .exception import *
 from .event import AttackEvent
+from .builder import AttackBuilder
+from .validator import AttackEventValidator
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.transaction.occupation.attack"
+__package_name__ = "chess.event.occupation.attack"
 
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
     'AttackEvent',
+    'AttackEventBuilder',
+    'AttackEventValidator',
 
     # Exception classes
     *exception.__all__,

@@ -1,22 +1,23 @@
 from typing import Generic, TypeVar, cast
 
-
-from chess.piece import Piece, PieceValidator, InvalidPieceException, CircularDiscoveryException
-from chess.square import Square, SquareValidator, InvalidSqaureException
-from chess.common import Validator, Result, IdValidator, IdValidationException
+from chess.board import BoardSearch
+from chess.event import AttackEvent
+from chess.event.occupation.scan.exception import ScanTargetSquareMismatchEventException
+from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
+from chess.common import ExecutionContext, Result, IdValidator, IdValidationException
 from chess.event.occupation import (
     ScanEvent,
     NullScanEventException,
-    CircularOccupationException,
     InvalidScanEventException
 )
+from chess.square import InvalidSquareException
 
 T = TypeVar('T')
 
-class ScanEventValidator(Validator):
+class AttackEventValidator:
 
     @staticmethod
-    def validate(t: ScanEvent) -> Result[ScanEvent]:
+    def validate(t: AttackEvent, context: ExecutionContext) -> Result[ScanEvent]:
         """
         Validates an ScanEvent meets specifications:
             - Not null
@@ -62,14 +63,29 @@ class ScanEventValidator(Validator):
 
             actor_validation = PieceValidator.validate(event.actor)
             if not actor_validation.is_success():
-                raise InvalidActorException(f"{method}: {InvalidActorException.DEFAULT_MESSAGE}")
+                raise InvalidPieceException(f"{method}: ScanEvent actor failed validation")
 
-            subject_validation = SquareValidator.validate(event.subject)
+            subject_validation = PieceValidator.validate(event.subject)
             if not subject_validation.is_success():
-                raise InvalidSubjectException(f"{method}: {InvalidActorException.DEFAULT_MESSAGE}")
+                raise InvalidPieceException(f"{method}: ScanEvent subject failed validation")
 
             if event.actor == event.subject:
                 raise CircularDiscoveryException(f"{method}: {CircularDiscoveryException.DEFAULT_MESSAGE}")
+
+            destination_search = BoardSearch.square_by_coord(
+                coord=event.subject.current_position,
+                board=context.board
+            )
+            if destination_search.payload == event.destination_square:
+                raise ScanTargetSquareMismatchEventException(
+                    f"{method}: {ScanTargetSquareMismatchEventException.DEFAULT_MESSAGE}"
+                )
+            
+            actor = event.actor
+            subject = event.subject
+            if actor.is_enemy(subject) and isinstance(subject, CombatantPiece):
+                raise ScanSubjectException(f"{method}: {ScanSubjectException.DEFAULT_MESSAGE}")
+                
             
             return Result(payload=event)
 
@@ -77,10 +93,10 @@ class ScanEventValidator(Validator):
                 TypeError,
                 IdValidationException,
                 NullScanEventException,
-                InvalidActorException,
-                InvalidSubjectException,
+                InvalidPieceException,
+                CircularOccupationException,
         ) as e:
-            raise InvalidScanEventException( f"{method}: {InvalidScanEventException.DEFAULT_MESSAGE}") from e
+            raise InvalidScanEventException(f"{method}: {InvalidScanEventException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising

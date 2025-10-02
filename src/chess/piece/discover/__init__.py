@@ -91,9 +91,9 @@ black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 if black_bishop_2 is None:
     raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
-def create_discovery(observer: Piece, discover: Piece) -> Discovery:
+def create_discovery(actor: Piece, discover: Piece) -> Discovery:
     method = "create_discovery"
-    if observer == discover:
+    if actor == discover:
         raise AutoDiscoveryException(f"{method}: {AutoDiscoveryException.DEFAULT_MESSAGE}")
     return Discovery(discover=discover)
 ```

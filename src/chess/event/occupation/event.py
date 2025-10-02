@@ -12,6 +12,10 @@ class OccupationEvent(Event[Piece,Square]):
     def subject(self) -> Square:
         return self.resource
 
+    @property
+    def destination_square(self) -> Square:
+        return self.resource
+
     def __eq__(self, other) -> bool:
         if super().__eq__(other):
             if isinstance(other, OccupationEvent):

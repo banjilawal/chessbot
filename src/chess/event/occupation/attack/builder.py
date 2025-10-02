@@ -8,7 +8,7 @@ from chess.common import IdValidator, BuildResult, ExecutionContext
 from chess.piece import Piece, CircularDiscoveryException
 
 
-class ScanEventBuilder(Enum):
+class AttackEventBuilder(Enum):
     """
     Builder class responsible for safely constructing `ScanEvent` instances.
 

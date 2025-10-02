@@ -142,4 +142,6 @@ class OccupationEventBuilder(Enum):
             )
 
         except Exception as e:
-            raise OccupationEventBuilderException(f"{method}: {OccupationEventBuilderException.DEFAULT_MESSAGE}")
+            raise (OccupationEventBuilderException
+                   (f"{method}: {OccupationEventBuilderException.DEFAULT_MESSAGE}")
+            )

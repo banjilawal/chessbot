@@ -1,3 +1,4 @@
+from chess.exception import RollbackException
 from chess.event.occupation import OccupationEventException
 
 __all__ = [
@@ -32,27 +33,30 @@ class AttackEventException(OccupationEventException):
 
 class UnexpectedNullEnemyException(AttackEventException):
     DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
-    DEFAULT_MESSAGE = "Target observer is unexpectedly null during capture; this should not happen."
+    DEFAULT_MESSAGE = "Target actor is unexpectedly null during capture; this should not happen."
 
 
 
 
 
 # --- Rollback Attack Errors (Dual Inheritance) ---
+class SetCaptorRollBackException(AttackEventException, RollbackException):
+    DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = "Setting captor failed. Transaction rolled back performed."
 
 class RosterRemovalRollbackException(AttackEventException, RollbackException):
     DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to remove observer from enemy roster after assigning captor; rollback performed."
+    DEFAULT_MESSAGE = "Failed to remove actor from enemy roster after assigning captor; rollback performed."
 
 
 class HostageAdditionRollbackException(AttackEventException, RollbackException):
     DEFAULT_CODE = "HOSTAGE_ADDITION_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to add captured observer to captor's hostage list; rollback performed."
+    DEFAULT_MESSAGE = "Failed to add captured actor to captor's hostage list; rollback performed."
 
 
 class BoardPieceRemovalRollbackException(AttackEventException, RollbackException):
     DEFAULT_CODE = "BOARD_REMOVAL_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to remove captured observer from board; rollback performed."
+    DEFAULT_MESSAGE = "Failed to remove captured actor from board; rollback performed."
 
 
 class SquareOccupationRollbackException(AttackEventException, RollbackException):
@@ -67,4 +71,4 @@ class SourceSquareRollbackException(AttackEventException, RollbackException):
 
 class PositionUpdateRollbackException(AttackEventException, RollbackException):
     DEFAULT_CODE = "POSITION_UPDATE_ROLLBACK"
-    DEFAULT_MESSAGE = "Failed to update observer's position history after move; rollback executed."
+    DEFAULT_MESSAGE = "Failed to update actor's position history after move; rollback executed."

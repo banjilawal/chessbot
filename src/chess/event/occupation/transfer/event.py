@@ -3,33 +3,20 @@ from chess.square import Square
 from chess.piece import Piece, CombatantPiece
 from chess.event.occupation import OccupationEvent
 
-class AttackEvent(OccupationEvent):
-    _board: Board
+class TransferEvent(OccupationEvent):
     _actor_square: Square
-    _enemy: CombatantPiece
 
 
     def __init__(
         self,
         event_id: int,
-        board: Board,
         actor: Piece,
-        enemy: CombatantPiece,
         actor_square: Square,
         destination_square: Square
     ):
         super().__init__(event_id=event_id, actor=actor, destination_square=destination_square)
-        self._board = board
-        self._enemy = enemy
         self._actor_square = actor_square
 
-    @property
-    def board(self) -> Board:
-        return self._board
-
-    @property
-    def enemy(self) -> CombatantPiece:
-        return self._enemy
 
     @property
     def actor_square(self) -> Square:
@@ -41,6 +28,6 @@ class AttackEvent(OccupationEvent):
 
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, AttackEvent):
+            if isinstance(other, TransferEvent):
                 return self._id == other.id
         return False

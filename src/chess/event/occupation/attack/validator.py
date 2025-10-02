@@ -13,7 +13,7 @@ from chess.event.occupation import (
 
 T = TypeVar('T')
 
-class AttackEvent(Validator):
+class AttackEventValidator:
 
     @staticmethod
     def validate(t: AttackEvent) -> Result[AttackEvent]:
