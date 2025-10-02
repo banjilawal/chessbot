@@ -114,25 +114,25 @@ class SubjectException(PieceException):
     Using SubjectException makes tracing which side of the interaction is raising an error easier.
     """
     ERROR_CODE = "SUBJECT_ERROR"
-    DEFAULT_MESSAGE = "A potential subject piece raised an exception"
+    DEFAULT_MESSAGE = "A potential enemy piece raised an exception"
 
 
 class InvalidSubjectException(SubjectException, InvalidPieceException):
-    """Raised if a required subject fails validation."""
+    """Raised if a required enemy fails validation."""
     ERROR_CODE = "SUBJECT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Required subject failed validation. Actor cannot fire event onto subject"
+    DEFAULT_MESSAGE = "Required enemy failed validation. Actor cannot fire event onto enemy"
 
 
 class SubjectNotOnBoardException(SubjectException):
-    """Raised when a required subject is not found on the  board."""
+    """Raised when a required enemy is not found on the  board."""
     ERROR_CODE = "SUBJECT_NOT_ON_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Required subject was not found on the board. Actor cannot fire event onto subject"
+    DEFAULT_MESSAGE = "Required enemy was not found on the board. Actor cannot fire event onto enemy"
 
 
 class SubjectPlacementRequiredException(SubjectException):
-    """Raised when a required subject has not been placed on the board."""
+    """Raised when a required enemy has not been placed on the board."""
     ERROR_CODE = "SUBJECT_PLACEMENT_REQUIRED_ERROR"
     DEFAULT_MESSAGE = (
-        "Required subject has an empty position stack. It as not been placed on the board. Actor cannot"
-        "fire event onto subject."
+        "Required enemy has an empty position stack. It as not been placed on the board. Actor cannot"
+        "fire event onto enemy."
     )

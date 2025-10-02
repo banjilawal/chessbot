@@ -22,12 +22,12 @@ class AttackException(PieceException):
 class AttackingNullAttackException(AttackException):
     """
     The Prisoner/Captor exceptions prevent domain logic violations on the captured team. Attacking
-    exceptions constrain attacks. AttackingNullAttackException is raised if a subject attacks something
+    exceptions constrain attacks. AttackingNullAttackException is raised if a enemy attacks something
     which does not exist.
     """
 
     ERROR_CODE = "ATTACKING_NULL_PIECE_ERROR"
-    DEFAULT_MESSAGE = "Cannot capture a a subject that does not exist"
+    DEFAULT_MESSAGE = "Cannot capture a a enemy that does not exist"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -39,7 +39,7 @@ class AttackingNullAttackException(AttackException):
 
 class AttackingHostageException(AttackException):
     """
-    Attacking a captured subject raises AttackingHostageException
+    Attacking a captured enemy raises AttackingHostageException
     """
 
     ERROR_CODE = "ATTACKING_HOSTAGE_ERROR"

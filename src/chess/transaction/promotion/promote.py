@@ -29,7 +29,7 @@ class PromotionRequestValidator(RequestValidator):
         Validates an Promote meets specifications:
             - Not null
             - id does not validator
-            - actor is a valid chess subject
+            - actor is a valid chess enemy
             - target is a valid square
         If a condition is not met an PromotionRequestValidationException will be thrown.
 
@@ -47,9 +47,9 @@ class PromotionRequestValidator(RequestValidator):
             IdValidationException: if invalid id
             PieceValidationException: if t.actor fails validator
             
-            PromotionRowException: if subject is not on its enemy's validation row
-            DoublePromotionException: if the subject has already been promoted
-            UnPromotableRankException: if the subject's validation is not Pawn or King
+            PromotionRowException: if enemy is not on its enemy's validation row
+            DoublePromotionException: if the enemy has already been promoted
+            UnPromotableRankException: if the enemy's validation is not Pawn or King
 
             PromotionRequestValidationException: Wraps any preceding exceptions      
         """

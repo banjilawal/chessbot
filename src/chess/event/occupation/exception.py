@@ -55,6 +55,7 @@ __all__ = [
     'InvalidOccupationEventException',
     'NullOccupationEventException',
     'CircularOccupationException',
+    'TargetSquareMismatchException',
 
     # === OccupationEvent BUILDER EXCEPTIONS ===
     'OccupationEventBuilderException'
@@ -84,6 +85,13 @@ class CircularOccupationException(OccupationEventException):
     ERROR_CODE = "CIRCULAR_OCCUPATION_ERROR"
     DEFAULT_MESSAGE = "Piece is already occupying the destination square"
 
+class TargetSquareMismatchException(OccupationEventException):
+    """
+    Raised if a target's square does not match. destination_square
+    """
+    ERROR_CODE = "TARGET_SQUARE_MISMATCH_ERROR"
+    DEFAULT_MESSAGE = "Target piece is at a different square from expected."
+
 
 # === OccupationEvent BUILDER EXCEPTIONS ===
 class OccupationEventBuilderException(OccupationEventException, BuilderException):
@@ -100,7 +108,7 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #
 # class NullHostagePieceEventException(OccupationEventException):
 #     """
-#     Raised if a subject is null. Parent class for:
+#     Raised if a enemy is null. Parent class for:
 #         - NullCombatantPieceException
 #         - NullKingException
 #     Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.

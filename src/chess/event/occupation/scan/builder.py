@@ -56,8 +56,8 @@ class ScanEventBuilder(Enum):
         Args:
             `event_id`(`int`): The unique id for the scanEvent. Must pass `IdValidator` checks.
             `actor`(`Piece`): Initiates scan after successful validation`.
-            `subject`(`Piece`): The `Piece` scanned by `actor`.
-            `context`(`ExecutionContext`): `context.board` verifies `actor` and `subject` are on the board.
+            `enemy`(`Piece`): The `Piece` scanned by `actor`.
+            `context`(`ExecutionContext`): `context.board` verifies `actor` and `enemy` are on the board.
 
         Returns:
             BuildResult[ScanEvent]: A `BuildResult` containing either:
@@ -105,7 +105,7 @@ class ScanEventBuilder(Enum):
 
             subject_validation = PieceValidator.validate(subject)
             if not subject_validation.is_success():
-                raise InvalidPieceException(f"{method}: ScanEvent subject failed validation")
+                raise InvalidPieceException(f"{method}: ScanEvent enemy failed validation")
 
             if actor == subject:
                 ThrowHelper.throw_if_invalid(
@@ -123,8 +123,6 @@ class ScanEventBuilder(Enum):
                 )
 
 
-
-
             return BuildResult(payload=ScanEvent(
                 event_id=event_id,
                 actor=actor,
@@ -134,8 +132,6 @@ class ScanEventBuilder(Enum):
             )
 
         except Exception as e:
-            raise ScanEventBuilderException(f"{method}: {ScanEventBuilderException.DEFAULT_MESSAGE}")
-
-
+            raise ScanEventBuilderException(f"{method}: {e}") from e
 
             

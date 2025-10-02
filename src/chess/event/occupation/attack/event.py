@@ -12,20 +12,14 @@ class AttackEvent(OccupationEvent):
     def __init__(
         self,
         event_id: int,
-        board: Board,
         actor: Piece,
         enemy: CombatantPiece,
         actor_square: Square,
         destination_square: Square
     ):
         super().__init__(event_id=event_id, actor=actor, destination_square=destination_square)
-        self._board = board
         self._enemy = enemy
         self._actor_square = actor_square
-
-    @property
-    def board(self) -> Board:
-        return self._board
 
     @property
     def enemy(self) -> CombatantPiece:

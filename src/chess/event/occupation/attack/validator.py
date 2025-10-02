@@ -21,7 +21,7 @@ class AttackEventValidator:
         Validates an AttackEvent meets specifications:
             - Not null
             - `id` does not fail validator
-            - `actor` is a valid chess subject
+            - `actor` is a valid chess enemy
             - `target` is a valid square
         Any validation failure raises an `InvalidAttackEventException`.
 

@@ -1,5 +1,4 @@
 from chess.event import OccupationEventException
-from chess.piece import InvalidPieceException
 from chess.transaction import TransactionException, NullTransactionException
 from chess.exception import NullException, ValidationException, BuilderException
 
@@ -69,14 +68,9 @@ class ScanSubjectException(ScanEventException):
     Raised if an Scan target is not a friendly or enemy king.
     """
     ERROR_CODE = "SCAN_SUBJECT_ERROR"
-    DEFAULT_MESSAGE = "Scan subject must be a friendly or enemy king"
+    DEFAULT_MESSAGE = "Scan enemy must be a friendly or enemy king"
     
-class ScanTargetSquareMismatchEventException(ScanEventException):
-    """
-    Raised if a Scan target's square does not match. ScanEvent.destination_square
-    """
-    ERROR_CODE = "SCAN_TARGET_SQUARE_MISMATCH_ERROR"
-    DEFAULT_MESSAGE = "Scan subject must be a friendly or enemy king"
+
 
 
 

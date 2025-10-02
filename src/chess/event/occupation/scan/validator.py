@@ -2,7 +2,7 @@ from typing import Generic, TypeVar, cast
 
 from chess.board import BoardSearch
 from chess.event import AttackEvent
-from chess.event.occupation.scan.exception import ScanTargetSquareMismatchEventException
+from chess.event.occupation.scan.exception import TargetSquareMismatchException
 from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
 from chess.common import ExecutionContext, Result, IdValidator, IdValidationException
 from chess.event.occupation import (
@@ -22,7 +22,7 @@ class AttackEventValidator:
         Validates an ScanEvent meets specifications:
             - Not null
             - `id` does not fail validator
-            - `actor` is a valid chess subject
+            - `actor` is a valid chess enemy
             - `target` is a valid square
         Any validation failure raises an `InvalidScanEventException`.
 
@@ -67,7 +67,7 @@ class AttackEventValidator:
 
             subject_validation = PieceValidator.validate(event.subject)
             if not subject_validation.is_success():
-                raise InvalidPieceException(f"{method}: ScanEvent subject failed validation")
+                raise InvalidPieceException(f"{method}: ScanEvent enemy failed validation")
 
             if event.actor == event.subject:
                 raise CircularDiscoveryException(f"{method}: {CircularDiscoveryException.DEFAULT_MESSAGE}")
@@ -77,8 +77,8 @@ class AttackEventValidator:
                 board=context.board
             )
             if destination_search.payload == event.destination_square:
-                raise ScanTargetSquareMismatchEventException(
-                    f"{method}: {ScanTargetSquareMismatchEventException.DEFAULT_MESSAGE}"
+                raise TargetSquareMismatchException(
+                    f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
                 )
             
             actor = event.actor
@@ -101,5 +101,5 @@ class AttackEventValidator:
         # This block catches any unexpected exceptions
         # You might want to log the error here before re-raising
         except Exception as e:
-            raise InvalidScanEventException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidScanEventException(f"{method}: {e}") from e
 

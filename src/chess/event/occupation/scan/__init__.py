@@ -7,7 +7,7 @@
 Executes a `ScanTransaction` after `ScanEvent` is validated
 
 ## CORE CLASSES:
-    * `ScanEvent`: Provides information about an `actor` scanning a `subject` `Piece`.
+    * `ScanEvent`: Provides information about an `actor` scanning a `enemy` `Piece`.
     * `ScanEventBuilder`: Builds a new `ScanEvent`.
     * `ScanEventValidator`: Validates an existing `ScanEvent`.
     * `ScanTransaction`: Performs the scan operation for the observing `Piece`
@@ -23,7 +23,7 @@ Gives granular information about errors that occur during scan operations.
     * `ScanEventException`: Superclass for all scan event exceptions. Subclasses give better debugging information
     * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validation fails
     * `NullScanEventException`: Raised by methods, entities, and models that require a ScanEvent but receive a null
-    * `OccupationOccupationScanSubjectException`: Raised if a subject of a scan is invalid.
+    * `OccupationOccupationScanSubjectException`: Raised if a enemy of a scan is invalid.
     * `ObserverCircularScanException`: Raised if an actor scans itself.
 
 ### EXCEPTION USAGE:
