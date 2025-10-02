@@ -17,19 +17,9 @@ Notes:
 
 from typing import cast
 
-from chess.board import FailedPieceRemovalRolledBackException
-from chess.common import id_emitter
-from chess.event import AttackEvent, OccupationTransaction, TransferEvent
-from chess.event.occupation.attack.exception import EmptyDestinationSquareRolledBackException
-from chess.event.occupation.exchange.transaction import TransferTransaction
-
-from chess.square import Square
-from chess.search import BoardSearch
-from chess.piece import KingPiece, CombatantPiece, Discovery, DiscoveryBuilder
-from chess.team import AddEnemyHostageRolledBackException
-from chess.team.exception import RemoveTeamMemberRolledBackException
-from chess.transaction import Transaction, ExecutionContext, TransactionResult, CaptureContext
-
+from chess.common import ExecutionContext, TransactionResult
+from chess.event import AttackEvent, OccupationTransaction
+from chess.event.occupation.attack.exception import SetCaptorRolledBackException
 
 
 class AttackTransaction(OccupationTransaction[AttackEvent]):
@@ -51,8 +41,8 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
             return TransactionResult(
                 event=event,
                 was_rolled_back=True,
-                exception=SetCaptorRollBackException(
-                    f"{method}: {SetCaptorRollBackException.DEFAULT_MESSAGE}"
+                exception=SetCaptorRolledBackException(
+                    f"{method}: {SetCaptorRolledBackException.DEFAULT_MESSAGE}"
                 )
             )
 

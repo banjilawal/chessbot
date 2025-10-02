@@ -3,9 +3,9 @@ from enum import Enum
 from chess.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
-from chess.event import ScanEvent, ScanEventBuilderException
+from chess.event import ScanEvent, ScanEventBuilderException, TargetSquareMismatchException
 from chess.common import IdValidator, BuildResult, ExecutionContext
-from chess.piece import Piece, CircularDiscoveryException
+from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidPieceException
 
 
 class ScanEventBuilder(Enum):
@@ -117,8 +117,8 @@ class ScanEventBuilder(Enum):
             if not search_result.payload == destination_square:
                 ThrowHelper.throw_if_invalid(
                     ScanEventBuilder,
-                    ScanTargetSquareMismatchEventException(
-                        f"{method}: {ScanTargetSquareMismatchEventException.DEFAULT_MESSAGE}"
+                    TargetSquareMismatchException(
+                        f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
                     )
                 )
 

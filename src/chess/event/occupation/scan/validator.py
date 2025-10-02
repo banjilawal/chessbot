@@ -1,8 +1,8 @@
 from typing import Generic, TypeVar, cast
 
 from chess.board import BoardSearch
-from chess.event import AttackEvent
-from chess.event.occupation.scan.exception import TargetSquareMismatchException
+from chess.event import AttackEvent, CircularOccupationException
+from chess.event.occupation.scan.exception import TargetSquareMismatchException, ScanSubjectException
 from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
 from chess.common import ExecutionContext, Result, IdValidator, IdValidationException
 from chess.event.occupation import (

@@ -1,10 +1,12 @@
 from enum import Enum
+from typing import cast
 
+from chess.exception import SearchException
 from chess.piece.exception import CircularCaptureException
 from chess.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
-from chess.event import AttackEvent, AttackEventBuilderException
+from chess.event import AttackEvent, AttackEventBuilderException, TargetSquareMismatchException
 from chess.common import IdValidator, BuildResult, ExecutionContext
 from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidPieceException, CombatantPiece, \
     CaptureFriendException, KingCaptureException
@@ -143,7 +145,6 @@ class AttackEventBuilder(Enum):
                     AttackEventBuilder,
                     KingCaptureException(KingCaptureException.DEFAULT_MESSAGE)
                 )
-
 
             return BuildResult(payload=AttackEvent(
                 event_id=event_id,

@@ -2,6 +2,22 @@ from chess.exception import RollbackException
 from chess.event.occupation import OccupationEventException
 
 __all__ = [
+    #=== SCAN_TRANSACTION EXCEPTIONS ===
+    'ScanTransactionException',
+    'NullScanTransactionException',
+
+    #=== SCAN_EVENT EXCEPTIONS ===
+    'ScanEventException',
+    'InvalidScanEventException',
+    'NullScanEventException',
+
+    #=== SCAN_EVENT BUILDER EXCEPTIONS ===
+    'ScanEventBuilderException',
+    'ScanSubjectException',
+]
+
+
+__all__ = [
     'AttackEventException',
 
     # Specific attack errors (no rollback)
@@ -17,7 +33,18 @@ __all__ = [
     'PositionUpdateRollbackException',
 ]
 
+#=== SCAN TRANSACTION EXCEPTIONS ===
+class ScanTransactionException(TransactionException):
+    """
+    Wraps any ScanEventExceptions or other errors raised during
+    the scan's lifecycle.
+    """
+    ERROR_CODE = "SCAN_TRANSACTION_ERROR"
+    DEFAULT_MESSAGE = "ScanTransaction raised an error."
 
+
+
+#=== SCAN_EVENT EXCEPTIONS ===
 class AttackEventException(OccupationEventException):
     """
     Base class for exceptions raised during attack/capture operations.
@@ -29,8 +56,28 @@ class AttackEventException(OccupationEventException):
     DEFAULT_CODE = "ATTACK_ERROR"
     DEFAULT_MESSAGE = "An error occurred during an attack or capture transaction."
 
-# --- Specific Attack Errors (No Rollback) ---
 
+
+#=== ATTACK_EVENT VALIDATION EXCEPTIONS ===
+class NullAttackEventException(AttackEventException, NullException):
+    """Raised by methods, entities, and models that require a AttackEvent but receive a null."""
+    ERROR_CODE = "NULL_EVENT_ERROR"
+    DEFAULT_MESSAGE = "AttackEvent cannot be null"
+
+class InvalidAttackEventException(AttackEventException, ValidationException):
+    """Raised by AttackEventValidators if validation fails."""
+    ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "AttackEvent failed validation"
+
+
+#=== ATTACK_EVENT BUILDER EXCEPTIONS ===
+class AttackEventBuilderException(AttackEventException, BuilderException):
+    """Raised when a AttackEventBuilder fails to build a AttackEvent."""
+    ERROR_CODE = "ATTACK_EVENT_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "AttackEventBuilder failed to create a AttackEvent"
+
+
+#=== ATTACK_EVENT BUILDER EXCEPTIONS ===
 class UnexpectedNullEnemyException(AttackEventException):
     DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
     DEFAULT_MESSAGE = "Target actor is unexpectedly null during capture; this should not happen."

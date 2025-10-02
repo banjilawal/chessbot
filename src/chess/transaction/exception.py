@@ -20,9 +20,7 @@ __all__ = [
 
 ]
 
-class TransactionException(ChessException):
-    ERROR_CODE = "TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "Transaction raised an error"
+
 
 
 

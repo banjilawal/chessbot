@@ -59,7 +59,7 @@ AUTHOR: Banji Lawal
 
 from .exception import *
 from .event import AttackEvent
-from .builder import AttackBuilder
+from .builder import AttackEventBuilder
 from .validator import AttackEventValidator
 
 # Package metadata (organic to __init__.py)

@@ -1,22 +1,32 @@
 # chess/event/occupation/__init__.py
 
 """
-# `chess.event.occupation` Package
+Module: `chess.event.occupation`
+Author: Banji Lawal
+Created: 2025-10-01
+Updated: 2025-10-02
 
-PURPOSE:
-    Manages `Piece` movement on the `Board`. After a `Piece.rank` authorizes traveling to a `Square`
-    `Rank.walk` initiates an `OccupationEvent`. The package provides a common interface for handling
-        - Safe event creation
-        - Event validation
-        - Event execution
-        - Rolling back events
-        - Defining exceptions organic to `Event` instances.
+# Purpose
+Manages `Piece` movement and state changes on the `Board`. Provides a unified interface for event creation, validation,
+execution, and rollback for occupation-related operations (move, scan, attack, exchange)
 
-CORE CLASSES:
-* `OccupationDirective`
-* `OccupationDirectiveValidator`
-* `OccupationExecutor`
+# EXPORTS
+This package exposes core classes and all exceptions from its sub-modules:
+- `OccupationEvent`
+- `OccupationTransaction`
+- `OccupationEventValidator`
+- `OccupationEventBuilder`
+- All exceptions from `exception`, `scan`, `attack`, and `exchange` sub-packages.
 
+# SUB-PACKAGES
+- `.exception`: Defines all custom exceptions for occupation operations.
+- `.scan`: Logic for recording occupied squares in a piece's path.
+- `.attack`: Logic for capturing.
+- `.exchange`: Logic for transferring a piece to another empty square.
+
+# NOTES
+DO NOT reference sub-modules directly. Import all core classes and exceptions
+from this package level (e.g., `from chess.event.occupation import OccupationEvent`).
 
 USAGE:
     # >>> from chess.enemy import CombatantPiece, KingPiece, CoordStack
@@ -53,15 +63,8 @@ USAGE:
     # >>>     raise PieceCoordNullException("Piece coordinate is null")
     # >>> from chess.enemy.team_exception.null import NullPieceException
     # >>> raise NullPieceException(f"{NullPieceException.DEFAULT_MESSAGE}")
-
 ___
 
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 from .exception import *
 
