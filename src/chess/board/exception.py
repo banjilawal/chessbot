@@ -15,8 +15,8 @@ __all__ = [
     'BoardPieceRemovalFailedException',
 
     # === PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ===
-    'BoardPieceAdditionFailedRolledBAckException',
-    'BoardPieceRemovalFailedRolledException',
+    'FailedPieceAdditionRolledBackException',
+    'FailedPieceRemovalRolledBackException',
 
 ]
 
@@ -72,7 +72,7 @@ class BoardPieceRemovalFailedException(BoardException):
     DEFAULT_MESSAGE = "Board failed to remove the piece"
 
 # === PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ===
-class BoardPieceAdditionFailedRolledBAckException(BoardRollBackException):
+class FailedPieceAdditionRolledBackException(BoardRollBackException):
     """
     Raised if a transaction failed to add a piece to the board.The transaction was
     rolled back before raising this exception.
@@ -83,7 +83,7 @@ class BoardPieceAdditionFailedRolledBAckException(BoardRollBackException):
         "Could not remove a piece from the board. Transaction rollback performed."
     )
 
-class BoardPieceRemovalFailedRolledException(BoardRollBackException):
+class FailedPieceRemovalRolledBackException(BoardRollBackException):
     """
     Raised if a  transaction failed to remove a piece from the board's list of pieces.
     The transaction was rolled back before raising this exception.

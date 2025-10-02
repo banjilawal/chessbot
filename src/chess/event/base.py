@@ -28,26 +28,29 @@ class Event(Generic[A, R]):
     _id: int
     _actor: A
     _resource: Optional[R]
+    _parent: Optional['Event']
 
-    def __init__(self, event_id: int, actor: A, resource: Optional[R]=None):
+    def __init__(self, event_id: int, actor: A, resource: Optional[R]=None, parent: Optional['Event']=None):
         self._id = event_id
         self._actor = actor
+        self._parent = parent
         self._resource = resource
-
 
     @property
     def id(self) -> int:
         return self._id
 
-
     @property
     def actor(self) -> A:
         return self._actor
 
-
     @property
     def resource(self) -> Optional[R]:
         return self._resource
+
+    @property
+    def parent(self) -> Optional['Event']:
+        return self._parent
 
 
     def __eq__(self, other):

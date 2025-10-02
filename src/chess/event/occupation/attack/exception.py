@@ -40,9 +40,15 @@ class UnexpectedNullEnemyException(AttackEventException):
 
 
 # --- Rollback Attack Errors (Dual Inheritance) ---
-class SetCaptorRollBackException(AttackEventException, RollbackException):
+class SetCaptorRolledBackException(AttackEventException, RollbackException):
     DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = "Setting captor failed. Transaction rolled back performed."
+
+
+class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
+    DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = "Setting captor failed. Transaction rolled back performed."
+
 
 class RosterRemovalRollbackException(AttackEventException, RollbackException):
     DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"

@@ -21,7 +21,6 @@ from chess.board import FailedPieceRemovalRolledBackException
 from chess.common import id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent
 from chess.event.occupation.attack.exception import EmptyDestinationSquareRolledBackException
-from chess.event.occupation.exchange.transaction import TransferTransaction
 
 from chess.square import Square
 from chess.search import BoardSearch
@@ -53,10 +52,10 @@ from chess.event.occupation import (
 )
 
 
-class AttackTransaction(OccupationTransaction[AttackEvent]):
+class TransferTransaction(OccupationTransaction[TransferEvent]):
 
     @staticmethod
-    def execute(event: AttackEvent, context: ExecutionContext) -> TransactionResult:
+    def execute(event: TransferEvent, context: ExecutionContext) -> TransactionResult:
         method = "AttackTransaction.execute"
 
         validation = AttackEventValidation.validate(event, context)
@@ -146,7 +145,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
             event_id=id_emitter.attack_id,
             actor_square=event.actor_square
         )
-        return TransferTransaction.execute(transfer_event, context)
+        return Transfer
         event.subject.occupant = None
         if event.subject.occupant is not None:
             # Rollback all changes in reverse order

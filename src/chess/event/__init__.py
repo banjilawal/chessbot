@@ -54,6 +54,7 @@ AUTHOR: Banji Lawal
 
 from .exception import *
 from .occupation import *
+from .base import Event
 
 
 # Package metadata (organic to __init__.py)
@@ -64,6 +65,7 @@ __package_name__ = 'chess.event'
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
+    'Event',
 
     *exception.__all__,
     *occupation.__all__,

@@ -5,8 +5,8 @@ from chess.transaction import Event
 
 class OccupationEvent(Event[Piece,Square]):
 
-    def __init__(self, event_id: int, actor: Piece, destination_square: Square):
-        super().__init__(event_id=event_id, actor=actor, resource=destination_square)
+    def __init__(self, event_id: int, actor: Piece, destination_square: Square, parent: Event=None):
+        super().__init__(event_id=event_id, actor=actor, resource=destination_square, parent=parent)
 
     @property
     def subject(self) -> Square:

@@ -1,7 +1,7 @@
-# chess/event/occupation/__init__.py
+# chess/event/occupation/exchange/__init__.py
 
 """
-# `chess.event.occupation` Package
+# `chess.event.occupation.attack` Package
 
 PURPOSE:
     Manages `Piece` movement on the `Board`. After a `Piece.rank` authorizes traveling to a `Square`
@@ -12,17 +12,14 @@ PURPOSE:
         - Rolling back events
         - Defining exceptions organic to `Event` instances.
 
-CORE CLASSES:
+##CORE CLASSES:
 * `OccupationDirective`
 * `OccupationDirectiveValidator`
 * `OccupationExecutor`
 
 
-USAGE:
-    # >>> from chess.subject import CombatantPiece, KingPiece, CoordStack
-    # >>> white_pawn_9 = CombatantPiece(discovery_id=9, name="WP1", validation=pawn, team=white_team)
-    # >>> white_king = KingPiece(discovery_id=2, name="WK", validation=king, team=white_team)
-    # >>>
+## USAGE
+
 
 ## Occupation Exception Classes
 
@@ -56,49 +53,26 @@ USAGE:
 
 ___
 
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
-
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
+
 from .exception import *
-
-from .scan import *
-from .attack import *
-from .exchange import *
-from .event import OccupationEvent
-from .builder import OccupationEventBuilder
-from .validator import OccupationEventValidator
-from .executor import OccupationTransaction
-
-# from .exception import *
-# from chess.event.occupation.attack.attack_exceptions import *
-#
-# from .event import *
-# from .executor import OccupationTransaction
-# from .validator import OccupationEventValidator
+from .event import TransferEvent
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.transaction.occupation"
+__package_name__ = "chess.event.occupation.exchange"
 
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'OccupationEvent',
-    'OccupationEventBuilder',
-    'OccupationTransaction',
-    'OccupationEventValidator',
+    'TransferEvent',
 
     # Exception classes
     *exception.__all__,
-    *scan.__all__,
-    *attack.__all__,
-    *exchange.__all__,
 
 
     # Package metadata and utilities
