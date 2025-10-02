@@ -1,7 +1,7 @@
 from typing import Generic, TypeVar, cast
 
 from chess.event import OccupationEvent
-from chess.piece import Piece, PieceValidator, Cir
+from chess.piece import Piece, PieceValidator
 from chess.common import Validator, IdValidator, ActorValidator, Result
 
 T = TypeVar('T')

@@ -1,20 +1,26 @@
-from chess.board import Board
+from typing import Optional
+
 from chess.square import Square
-from chess.piece import Piece, CombatantPiece
-from chess.event.occupation import OccupationEvent
+from chess.piece import Piece
+from chess.event import Event, OccupationEvent
 
 class TransferEvent(OccupationEvent):
     _actor_square: Square
-
 
     def __init__(
         self,
         event_id: int,
         actor: Piece,
         actor_square: Square,
-        destination_square: Square
+        destination_square: Square,
+        parent: Optional[Event]=None
     ):
-        super().__init__(event_id=event_id, actor=actor, destination_square=destination_square)
+        super().__init__(
+            actor=actor,
+            parent=parent,
+            event_id=event_id,
+            destination_square=destination_square
+        )
         self._actor_square = actor_square
 
 

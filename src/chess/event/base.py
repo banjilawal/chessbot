@@ -2,6 +2,7 @@
 Module: chess.event.base
 Author: Banji Lawal
 Created: 2025-10-01
+Version: 1.0.0
 
 # Purpose
 Data-holding object representing an`actor`'s intent to perform a state-changing operation with a `resource`.

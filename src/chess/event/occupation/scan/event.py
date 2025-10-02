@@ -1,12 +1,26 @@
+from typing import Optional
+
 from chess.piece import Piece
 from chess.square import Square
-from  chess.event.occupation import OccupationEvent
+from chess.event import Event, OccupationEvent
 
 class ScanEvent(OccupationEvent):
     _subject: Piece
 
-    def __init__(self, event_id: int, actor: Piece, subject: Piece, destination_square: Square):
-        super().__init__(event_id=event_id, actor=actor, destination_square=destination_square)
+    def __init__(
+        self,
+        event_id: int,
+        actor: Piece,
+        subject: Piece,
+        destination_square: Square,
+        parent: Optional[Event] = None
+    ):
+        super().__init__(
+            actor=actor,
+            parent=parent,
+            event_id=event_id,
+            destination_square=destination_square
+        )
         self._subject = subject
 
     @property

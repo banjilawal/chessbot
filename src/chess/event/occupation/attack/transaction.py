@@ -1,7 +1,8 @@
-"""
-Module: transaction
+""""
+Module: chess.event.occupation.attack.transaction
 Author: Banji Lawal
 Created: 2025-10-01
+Version: 1.0.0
 
 Purpose:
     Implements the `AttackTransaction` class, responsible for capturing an enemy `CombatantPiece`
@@ -10,16 +11,18 @@ Contents:
     - `AttackTransaction:` Class responsible for AttackTransaction lifecycle.
 
 Notes:
-    This module is part of the chess.event.occupation.attack package.
-    Exceptions raised during execution are defined in exception.py.
 """
 
 
 from typing import cast
 
-from chess.common import ExecutionContext, TransactionResult
-from chess.event import AttackEvent, OccupationTransaction
-from chess.event.occupation.attack.exception import SetCaptorRolledBackException
+from chess.board import FailedPieceRemovalRolledBackException
+from chess.common import ExecutionContext, TransactionResult, id_emitter
+from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
+from chess.event.occupation.attack.exception import SetCaptorRolledBackException, \
+    EmptyDestinationSquareRolledBackException
+from chess.event.occupation.exchange.transaction import TransferTransaction
+from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 
 class AttackTransaction(OccupationTransaction[AttackEvent]):
@@ -28,7 +31,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
     def execute(event: AttackEvent, context: ExecutionContext) -> TransactionResult:
         method = "AttackTransaction.execute"
 
-        validation = AttackEventValidation.validate(event, context)
+        validation = AttackEventValidator.validate(event)
         if not validation.is_success():
             return TransactionResult(event, validation.exception)
 
@@ -75,7 +78,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
                 )
             )
 
-        event.board.pieces.remove(event.enemy)
+        context.board.pieces.remove(event.enemy)
         if event.enemy in event.board.pieces:
             # Rollback all changes in reverse order
             event.actor.team.hostages.remove(event.enemy)
@@ -94,7 +97,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
         event.destination_square.occupant = None
         if not event.destination_square.occupant is None:
             # Rollback all changes in reverse order
-            event.board.pieces.add(event.destination_square.occupant)
+            context.board.pieces.add(event.destination_square.occupant)
             event.actor.team.hostages.remove(event.enemy)
             event.enemy.team.add_to_roster(event.enemy)
             event.enemy.captor = None
@@ -109,7 +112,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
             )
 
         transfer_event = TransferEvent(
-            # parent=event,
+            parent=event,
             actor=event.actor,
             event_id=id_emitter.attack_id,
             actor_square=event.actor_square
