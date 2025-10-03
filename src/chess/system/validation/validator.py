@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
+from chess.system import ValidationResult
+
 
 T = TypeVar('T')
 
@@ -21,7 +23,7 @@ class Validator(ABC, Generic[T]):
 
     @staticmethod
     @abstractmethod
-    def validate(t: Generic[T]) -> Result[T]:
+    def validate(t: Generic[T]) -> ValidationResult[T]:
         """
         Validates an object passed to a function or declared in a module meets domain requirements.
 

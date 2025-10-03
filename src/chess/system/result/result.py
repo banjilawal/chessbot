@@ -61,7 +61,4 @@ class Result(Generic[T]):
         return self._exception is None and self._payload is not None
 
 
-c
-
-
 

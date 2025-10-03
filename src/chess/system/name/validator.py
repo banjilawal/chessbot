@@ -1,11 +1,10 @@
 from typing import Generic, cast
 
-from chess.exception import (
-    LongNameException, ShortNameException, BlankNameException, NullNameException, NameValidationException
-)
-from chess.system import Validator, MIN_NAME_LENGTH, MAX_NAME_LENGTH, Result
 
-from chess.system.config import MIN_NAME_LENGTH, MAX_NAME_LENGTH
+from chess.system import (
+    MIN_NAME_LENGTH, MAX_NAME_LENGTH, Validator, Result, LongNameException,
+    ShortNameException, BlankNameException, NullNameException
+)
 
 
 

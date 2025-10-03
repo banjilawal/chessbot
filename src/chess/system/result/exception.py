@@ -3,7 +3,7 @@ Result exceptions are about `Result` construction not the contents of the result
 raised by `Builder` objects.
 """
 
-from chess.exception import ChessException
+from chess.system import ChessException
 
 __all__ = [
     'ResultException',

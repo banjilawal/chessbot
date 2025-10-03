@@ -30,6 +30,8 @@ ___
 
 from .exception import *
 from .validator import Validator
+from .result import ValidationResult
+
 
 
 # Package metadata (organic to __init__.py)
@@ -41,6 +43,7 @@ __package_name__ = 'chess.system.validation'
 __all__ = [
     # Core classes
     'Validator',
+    'ValidationResult',
     *exception.__all__,
 
 
