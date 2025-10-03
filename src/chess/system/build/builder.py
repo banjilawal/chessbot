@@ -5,9 +5,9 @@ from chess.system import BuildResult
 
 T = TypeVar('T')
 
-class Builder(ABC):
+class Builder(ABC, Generic[T]):
 
     @classmethod
     @abstractmethod
-    def build(cls) -> BuildResult:
+    def build(cls) -> BuildResult[T]:
         pass

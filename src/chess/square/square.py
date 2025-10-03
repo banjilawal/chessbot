@@ -29,7 +29,7 @@ class Square:
 
         Raises:
             InvalidIdException: If `square_id` fails validation checks.
-            NameValidationException: If `name` fails validation checks.
+            InvalidNameException: If `name` fails validation checks.
             CoordValidationException: If `coord` fails validation checks.
         """
         id_validation = IdValidator.validate(square_id)

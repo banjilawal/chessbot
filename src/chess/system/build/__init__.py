@@ -8,7 +8,8 @@ version: 1.0.0
 
 
 # PURPOSE
-Builder super class and exceptions.
+The preferred way to build objects in the system. A `Builder` centralizes all the safety checks leaving constructors
+clean.
 
  ACID transactions are a functional requirement for the chess game. The `Transaction` class rolls back actors
  and resources if there is a data inconsistency a `RollBackException` is raised after `actor` and `resource` are
@@ -31,9 +32,7 @@ ___
 ---
 
 # BEST PRACTICES
-* Use `Event` objects to represent intents.
-* Use `Transaction` objects to manage the lifecycle of events.
-* Use `EventBuilder`. An `EventBuilder` is responsible for creating `Event` objects that will not generate
+* Use a builder
 """
 
 from .exception import *

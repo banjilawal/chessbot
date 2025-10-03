@@ -3,7 +3,7 @@ from typing import cast, TypeVar
 from chess.exception.hostage.hostage import KingCheckMateStateException
 from chess.piece import Piece, NullPieceException, InvalidPieceException, UnregisteredTeamMemberException, \
     CombatantPiece, HostageActivityException, KingPiece
-from chess.system import Result, Validator, IdValidator, NameValidator, InvalidIdException, NameValidationException
+from chess.system import Result, Validator, IdValidator, NameValidator, InvalidIdException, InvalidNameException
 from chess.team import NullTeamException
 
 T = TypeVar('T')
@@ -32,7 +32,7 @@ class PieceValidator(Validator):
             NullPieceException: if t is null   
 
             InvalidIdException: if invalid id
-            NameValidationException: if invalid name
+            InvalidNameException: if invalid name
             CoordValidationException: if invalid coord
 
             PieceValidationException: Wraps any preceding exceptions      
@@ -56,8 +56,8 @@ class PieceValidator(Validator):
 
             name_result = NameValidator.validate(piece.name)
             if not name_result.is_success():
-                raise NameValidationException(
-                    f"{method}: {NameValidationException.DEFAULT_MESSAGE}"
+                raise InvalidNameException(
+                    f"{method}: {InvalidNameException.DEFAULT_MESSAGE}"
                 )
 
             if isinstance(piece, CombatantPiece) and piece.captor is not None:
@@ -92,7 +92,7 @@ class PieceValidator(Validator):
                 TypeError,
                 NullPieceException,
                 InvalidIdException,
-                NameValidationException,
+                InvalidNameException,
                 HostageActivityException,
                 NullTeamException,
                 UnregisteredTeamMemberException,

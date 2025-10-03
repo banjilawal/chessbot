@@ -5,7 +5,6 @@ __all__ = [
     'NullStringException',
     'BlankStringException',
     'NullNumberException',
-    'ValidationException',
     'RollbackException',
     'SearchException'
 ]

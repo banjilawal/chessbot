@@ -12,9 +12,8 @@ Validation super clas and exceptions.
 
 
  # EXPORTS
-This package exposes core classes and all exceptions from its sub-modules:
     - `Validator`: The base class for `validation` objects.
-    - All exceptions from `exception` package.
+    - `ValidationException`: The base class for `validation` exceptions.
 
 # SUB-PACKAGES
     - `.exception`: Defines all custom exceptions for occupation operations.

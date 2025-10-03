@@ -40,8 +40,8 @@ class BoardBuilder:
         `BuildResult`: Return type containing the built `Board` or exception information
     """
 
-    @staticmethod
-    def build() -> BuildResult[Board]:
+    @classmethod
+    def build(cls) -> BuildResult[Board]:
         """
         Constructs a new `Board` instance with comprehensive checks on the parameters and states during the
         build process.
@@ -95,7 +95,7 @@ class BoardBuilder:
                     row_squares.append(square)
                     ascii_value += 1
                 squares.append(row_squares)
-            return BuildResult(payload=Board(board_id=board_id, squares=squares))
+            return BuildResult(payload=Board(squares=squares))
 
         except InvalidIdException as e:
             raise BoardBuilderException(f"{method}: {BoardBuilderException.DEFAULT_MESSAGE}") from e
@@ -103,7 +103,7 @@ class BoardBuilder:
 
 
 def main():
-    board = BoardBuilder.build(id_emitter.board_id)
+    board = BoardBuilder.build()
     print(board)
 
 if __name__ == "__main__":

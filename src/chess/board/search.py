@@ -132,7 +132,7 @@ class BoardSearch:
             SearchResult[Square]: The Square object if found, otherwise None.
 
         Raises: 
-            NameValidationException: If name is fails any validators checks.
+            InvalidNameException: If name is fails any validators checks.
         """
         method = f"BoardSearch.square_by_name"
 

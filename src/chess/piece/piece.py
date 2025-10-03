@@ -28,7 +28,7 @@ from typing import Optional, cast
 
 from chess.rank import Rank
 from chess.coord import Coord
-from chess.system import IdValidator, NameValidator, NameValidationException, InvalidIdException
+from chess.system import IdValidator, NameValidator, InvalidNameException, InvalidIdException
 from chess.piece import CoordStack, Discovery, DiscoveryBuilder, Discoveries, PieceValidator, AutoDiscoveryException
 from chess.team import Team, TeamValidator, InvalidTeamException
 
@@ -79,7 +79,7 @@ class Piece(ABC):
 
         Raises:
             InvalidIdException: If `discovery_id` fails validation checks.
-            NameValidationException: If `name` fails validation checks.
+            InvalidNameException: If `name` fails validation checks.
             InvalidTeamException: If `team` fails validation checks.
         """
 
@@ -91,8 +91,8 @@ class Piece(ABC):
 
         name_validation = NameValidator.validate(name)
         if not name_validation.is_success():
-            raise NameValidationException(
-                f"Piece.__init__: {NameValidationException.DEFAULT_MESSAGE}"
+            raise InvalidNameException(
+                f"Piece.__init__: {InvalidNameException.DEFAULT_MESSAGE}"
             )
 
         team_validation = TeamValidator.validate(team)

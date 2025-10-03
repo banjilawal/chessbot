@@ -22,14 +22,14 @@ class NameValidator(Validator):
             - Not null
             - Not blank (only white space)
             - Not shorter than MIN_NAME_LENGTH     
-        Any unmet specifications raise exceptions wrapped in a NameValidationException
+        Any unmet specifications raise exceptions wrapped in a InvalidNameException
 
         Args
             t (str): generic to be validated
 
          Returns:
              Result[T]: A Result object containing the validated payload if the Validator is 
-                satisfied, NameValidationException otherwise.
+                satisfied, InvalidNameException otherwise.
 
         Raises:
             TypeError: if t is not int
@@ -37,7 +37,7 @@ class NameValidator(Validator):
             BlankNameException: if t only contains white space.
             ShortNameException: if t is shorter than MIN_NAME_LENGTH
             
-            NameValidationException: Wraps any preceding team_exception 
+            InvalidNameException: Wraps any preceding team_exception 
         """
         try:
             if t is None:

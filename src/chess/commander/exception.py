@@ -5,7 +5,7 @@ from chess.exception import (
 __all__ = [
     'CommanderException',
     'NullCommanderException',
-    'CommanderBuilderException',
+    'CommanderBuildFailedException',
     'InvalidCommanderException',
     'NullCommanderBuilderException',
     'InvalidCommanderAssignmentException',
@@ -22,7 +22,7 @@ class CommanderException(ChessException):
     DEFAULT_MESSAGE = "Commander raised an team_exception"
 
 
-class NullCommanderException(NullException):
+class NullCommanderException(CommanderException, NullException):
     """
     Raised if a commander is null.
     """
@@ -35,8 +35,7 @@ class InvalidCommanderException(ValidationException):
     DEFAULT_MESSAGE = "Commander validation failed"
 
 
-
-class CommanderBuilderException(BuilderException):
+class CommanderBuildFailedException(CommanderException, FaileBuildexception):
     """
     CommanderBuilder exceptions.
     """

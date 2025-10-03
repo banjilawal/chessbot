@@ -1,9 +1,10 @@
 from enum import Enum
+from typing import Optional
 
 from assurance import ThrowHelper
 from chess.system import BuildResult, IdValidator, NameValidator
 
-from chess.commander import Commander, Human, Bot, CommanderBuilderException
+from chess.commander import Commander, Human, Bot, CommanderBuildFailedException
 from chess.engine import DecisionEngine
 
 
@@ -49,7 +50,7 @@ class CommanderBuilder(Enum):
     """
     
     @staticmethod
-    def build( commander_id: int, name: str,  engine: DecisionEngine = None) -> BuildResult[Commander]:
+    def build( name: str,  engine: Optional[DecisionEngine] = None) -> BuildResult[Commander]:
         """
         Constructs a new `Commander` instance with comprehensive checks on the parameters and states during the
         build process.
@@ -74,10 +75,10 @@ class CommanderBuilder(Enum):
                 - On failure: Error information and exception details
 
         Raises:
-            `CommanderBuilderException`: Wraps any underlying validation failures that occur during the construction process.
+            `CommanderBuildFailedException`: Wraps any underlying validation failures that occur during the construction process.
             This includes:
                 * `InvalidIdException`: if `commander_id` fails validation checks.
-                * `NameValidationException`: if `name` fails validation checks.
+                * `InvalidNameException`: if `name` fails validation checks.
                 * `EngineValidationException`: If `engine` is not null and fails validation checks.
 
         Note:
@@ -102,29 +103,37 @@ class CommanderBuilder(Enum):
         method = "CommanderBuilder.build"
 
         try:
-            id_validation = IdValidator.validate(commander_id)
-            if not id_validation.is_success():
-                ThrowHelper.throw_if_invalid(CommanderBuilder, id_validation.exception)
+            # id_validation = IdValidator.validate(commander_id)
+            # if not id_validation.is_success():
+            #     ThrowHelper.throw_if_invalid(CommanderBuilder, id_validation.exception)
+
 
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
                 ThrowHelper.throw_if_invalid(CommanderBuilder, name_validation.exception)
+                raise name_validation.exception
 
             if engine is not None and not isinstance(engine, DecisionEngine):
-                ThrowHelper.throw_if_invalid(
-                    CommanderBuilder,
-                    TypeError(f"Expected a Decision, but got {type(engine).__name__}.")
-                )
+                error  = TypeError(f"Expected a Decision, but got {type(engine).__name__}.")
+                ThrowHelper.throw_if_invalid(CommanderBuilder, error)
+                raise error
 
             if engine is not None and isinstance(engine, DecisionEngine):
-                return BuildResult(payload=Bot(commander_id=commander_id, name=name, engine=engine))
+                return BuildResult(payload=Bot( name=name, engine=engine))
 
             # If no engine is provided and all the checks are passed, a Human commander is returned
-            return BuildResult(payload=Human(person_id=commander_id, name=name))
+            return BuildResult(payload=Human(name=name))
+
+        except (
+            TypeError,
+            InvalidNameException
+        ) as e:
+            raise (f"{method}: {e}") from e
 
 
-        except Exception as e:
-            return BuildResult(payload=None, exception=e)
+            except Exception as e:
+            raise AttackEventBuilderException(
+                f"{method}: Unexpected exception ({type(e).__name__}): {e}" ) from e
 #
 #
 # def main():

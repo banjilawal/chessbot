@@ -12,7 +12,7 @@
 * `LongNameException`
 * `ShortNameException`
 * `BlankNameException`
-* `NameValidationException`
+* `InvalidNameException`
 
 USAGE:
     >>>
