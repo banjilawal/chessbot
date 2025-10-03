@@ -1,15 +1,16 @@
-from typing import Generic, TypeVar, cast
+from typing import Generic, TypeVar, cast, Optional
 
-from chess.event import OccupationEvent
+from chess.event import OccupationEvent, EventValidator
+
+
 from chess.piece import Piece, PieceValidator
-from chess.common import Validator, IdValidator, ActorValidator, Result
+from chess.common import Validator, IdValidator, ActorValidator, Result, ExecutionContext
 
-T = TypeVar('T')
 
-class OccupationEventValidator(Validator):
+class OccupationEventValidator(EventValidator[OccupationEvent]):
 
-    @staticmethod
-    def validate(t: OccupationEvent) -> Result[OccupationEvent]:
+    @classmethod
+    def validate(cls, t: OccupationEvent, context: Optional[ExecutionContext]) -> Result[OccupationEvent]:
         """
         Validates an OccupationEvent meets specifications:
             - Not null
@@ -29,7 +30,7 @@ class OccupationEventValidator(Validator):
             `TypeError`: if `t` is not OperationEvent
             `NullOccupationEventException`: if `t` is null
 
-            `IdValidationException`: if invalid `id`
+            `InvalidIdException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
             `InvalidSquareException`: if `target` fails validator
 

@@ -4,7 +4,7 @@ from chess.coord import Coord
 from chess.square import Square
 from assurance import ThrowHelper
 from chess.board import Board, BoardBuilderException
-from chess.common import id_emitter, BuildResult, IdValidator, IdValidationException, BOARD_DIMENSION
+from chess.common import id_emitter, BuildResult, IdValidator, InvalidIdException, BOARD_DIMENSION
 
 
 
@@ -102,7 +102,7 @@ class BoardBuilder:
                 squares.append(row_squares)
             return BuildResult(payload=Board(board_id=board_id, squares=squares))
 
-        except IdValidationException as e:
+        except InvalidIdException as e:
             raise BoardBuilderException(f"{method}: {BoardBuilderException.DEFAULT_MESSAGE}") from e
 
 

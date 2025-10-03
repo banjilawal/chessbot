@@ -3,7 +3,7 @@ from typing import cast, Generic, TypeVar
 
 from chess.coord import CoordValidator, CoordValidationException
 from chess.square import Square, NullSquareException, InvalidSqaureException
-from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
+from chess.common import Result, Validator, IdValidator, NameValidator, InvalidIdException, NameValidationException
 
 
 T = TypeVar('T')
@@ -46,7 +46,7 @@ class SquareValidator(Validator):
         Raises:
             `TypeError`: If the input `t` is not an instance of `Square`.
             `NullSquareException`: If the input `t` is `None`.
-            `IdValidationException`: If the `id` attribute of the square fails validation checks.
+            `InvalidIdException`: If the `id` attribute of the square fails validation checks.
             `NameValidationException`: If the `name` attribute of the square fails validation checks.
             `CoordValidationException`: If the `coord` attribute of the square fails validation checks.
             `InvalidSquareException`: Wraps any preceding exceptions
@@ -77,11 +77,11 @@ class SquareValidator(Validator):
             return Result(payload=square)
 
         except (
-            TypeError,
-            NullSquareException,
-            IdValidationException,
-            NameValidationException,
-            CoordValidationException
+                TypeError,
+                NullSquareException,
+                InvalidIdException,
+                NameValidationException,
+                CoordValidationException
         ) as e:
             raise InvalidSqaureException("Square failed validation.") from e
 

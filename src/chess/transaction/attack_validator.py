@@ -38,7 +38,7 @@ class AttackValidator(Validator):
             `TypeError`: if `t` is not OperationDirective
             `NullOccupationDirectiveException`: if `t` is null
 
-            `IdValidationException`: if invalid `id`
+            `InvalidIdException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
             `InvalidSquareException`: if `target` fails validator
 

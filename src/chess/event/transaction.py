@@ -17,7 +17,7 @@ class State(Enum):
 class Transaction(ABC, Generic[T]):
     """Base class for transaction execution handlers"""
 
-    @staticmethod
+    @classmethod
     @abstractmethod
-    def execute(event: T, context: ExecutionContext) -> TransactionResult:
+    def execute(cls, event: T, context: ExecutionContext) -> TransactionResult:
         pass

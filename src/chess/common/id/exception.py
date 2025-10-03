@@ -3,10 +3,10 @@ from chess.exception import ChessException, ValidationException, NullException
 __all__ = [
     'IdNullException',
     'NegativeIdException',
-    'IdValidationException'
+    'InvalidIdException'
 ]
 
-class IdValidationException(ValidationException):
+class InvalidIdException(ValidationException):
     ERROR_CODE = "ID_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Id Validation failed"
 

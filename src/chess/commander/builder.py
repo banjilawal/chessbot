@@ -76,7 +76,7 @@ class CommanderBuilder(Enum):
         Raises:
             `CommanderBuilderException`: Wraps any underlying validation failures that occur during the construction process.
             This includes:
-                * `IdValidationException`: if `commander_id` fails validation checks.
+                * `InvalidIdException`: if `commander_id` fails validation checks.
                 * `NameValidationException`: if `name` fails validation checks.
                 * `EngineValidationException`: If `engine` is not null and fails validation checks.
 

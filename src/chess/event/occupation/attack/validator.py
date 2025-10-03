@@ -1,9 +1,9 @@
 from typing import Generic, TypeVar, cast
 
-
+from chess.event import EventValidator
 from chess.piece import Piece, PieceValidator, InvalidPieceException
 from chess.square import Square, SquareValidator, InvalidSqaureException
-from chess.common import Validator, Result, IdValidator, IdValidationException
+from chess.common import Validator, Result, IdValidator, InvalidIdException
 from chess.event.occupation import (
     AttackEvent,
     NullAttackEventException,
@@ -13,10 +13,10 @@ from chess.event.occupation import (
 
 T = TypeVar('T')
 
-class AttackEventValidator:
+class AttackEventValidator(EventValidator[A], Generic[T]):
 
     @staticmethod
-    def validate(t: AttackEvent) -> Result[AttackEvent]:
+    def validate(t: AttackEvent, ) -> Result[AttackEvent]:
         """
         Validates an AttackEvent meets specifications:
             - Not null
@@ -36,7 +36,7 @@ class AttackEventValidator:
             `TypeError`: if `t` is not OperationEvent
             `NullAttackEventException`: if `t` is null
 
-            `IdValidationException`: if invalid `id`
+            `InvalidIdException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
             `InvalidSquareException`: if `target` fails validator
 
@@ -60,7 +60,7 @@ class AttackEventValidator:
 
             id_validation = IdValidator.validate(event.id)
             if not id_validation.is_success():
-                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+                raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
 
             actor_validation = PieceValidator.validate(event.actor)
             if not actor_validation.is_success():
@@ -77,7 +77,7 @@ class AttackEventValidator:
 
         except (
                 TypeError,
-                IdValidationException,
+                InvalidIdException,
                 InvalidPieceException,
                 InvalidSqaureException,
                 NullAttackEventException,

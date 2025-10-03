@@ -67,7 +67,7 @@ class ScanEventBuilder(Enum):
         Raises:
            ScanEventBuilderException: Wraps any underlying validation failures that occur during the construction process.
            This includes:
-                * `IdValidationException`: if `scanEvent_id` fails validation checks
+                * `InvalidIdException`: if `scanEvent_id` fails validation checks
                 * `NameValidationException`: if `name` fails validation checks
                 * `InvalidRankException`: if `rank` fails validation checks
                 * `InvalidTeamException`: if `team` fails validation checks

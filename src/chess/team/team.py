@@ -1,7 +1,7 @@
 from typing import TypeVar, cast, Sequence, TYPE_CHECKING
 
 from chess.piece import Piece
-from chess.common import IdValidator, IdValidationException
+from chess.common import IdValidator, InvalidIdException
 from chess.rank import Rank
 from chess.search import SearchResult
 from chess.commander import Commander, CommanderValidator
@@ -158,7 +158,7 @@ class Team:
             None: If no matches are found.
 
         Raises:
-             IdValidationException 
+             InvalidIdException 
         """
         try:
             validation = IdValidator.validate(id)
@@ -173,7 +173,7 @@ class Team:
                 exception=PieceNotFoundException(f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE}")
             )
 
-        except (IdValidationException, PieceNotFoundException) as e:
+        except (InvalidIdException, PieceNotFoundException) as e:
             raise TeamSearchException(f"{method}: {TeamSearchException.DEFAULT_MESSAGE}")
 
 

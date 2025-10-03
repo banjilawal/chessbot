@@ -43,7 +43,7 @@ class Board:
             squares (List[List[Square]]): 2D list of Square objects representing the chess
 
         Raise:
-            IdValidationException: If id fails validators checks for non-null and positive.
+            InvalidIdException: If id fails validators checks for non-null and positive.
             NullException: If squares is null
         """
 

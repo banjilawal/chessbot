@@ -71,7 +71,7 @@ class TransferEventBuilder(Enum):
         Raises:
            AttackEventBuilderException: Wraps any underlying validation failures that occur during the construction process.
            This includes:
-                * `IdValidationException`: if `attackEvent_id` fails validation checks
+                * `InvalidIdException`: if `attackEvent_id` fails validation checks
                 * `NameValidationException`: if `name` fails validation checks
                 * `InvalidRankException`: if `rank` fails validation checks
                 * `InvalidTeamException`: if `team` fails validation checks

@@ -1,7 +1,7 @@
 
 from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
-from chess.common import Result, Validator, IdValidator, IdValidationException
+from chess.common import Result, Validator, IdValidator, InvalidIdException
 from chess.exception import RelationshipException
 from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \
@@ -49,7 +49,7 @@ class TeamValidator(Validator):
         Raises:
             `TypeError`: if `t` is not a Team` object
             `NullTeamException`: if `t` is null
-            `IdValidationException`: if `id` fails validation checks
+            `InvalidIdException`: if `id` fails validation checks
             `InvalidCommanderException`: if `commander` fails validation checks
             `NullTeamProfileException`: if `profile` is null
             `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
@@ -73,7 +73,7 @@ class TeamValidator(Validator):
 
             id_validation = IdValidator.validate(team.id)
             if not id_validation.is_success():
-                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+                raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
 
             commander_validation = CommanderValidator.validate(team.commander)
             if not commander_validation.is_success():
@@ -93,7 +93,7 @@ class TeamValidator(Validator):
         except (
                 TypeError,
                 NullTeamException,
-                IdValidationException,
+                InvalidIdException,
                 NullTeamSchemaException,
                 InvalidCommanderException,
                 InvalidCommanderAssignmentException,

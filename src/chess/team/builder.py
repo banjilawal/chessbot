@@ -61,7 +61,7 @@ class TeamBuilder(Enum):
         Raises:
             `TeamBuilderException`: Wraps any underlying validation failures that occur during the construction process.
             This includes:
-                * `IdValidationException`: if `id` fails validation checks`
+                * `InvalidIdException`: if `id` fails validation checks`
                 * `InvalidCommanderException`: if `commander` fails validation checks
                 * `NullTeamProfileException`: if `profile` is None
                 * `TypeError`: if `profile` is not a `TeamProfile` instance

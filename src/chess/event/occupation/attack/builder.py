@@ -1,6 +1,14 @@
 from enum import Enum
 from typing import cast
 
+from assurance import ThrowHelper
+from chess.board import BoardSearch
+from chess.common import IdValidator, BuildResult, InvalidIdException
+from chess.event import TargetSquareMismatchException, AttackEvent
+from chess.event.occupation.attack.exception import AttackEventBuilderException
+from chess.event.occupation.exception import ActorSquareNotFoundException
+from chess.piece import PieceValidator, InvalidPieceException, CombatantPiece
+from chess.piece.exception import CircularCaptureException, CaptureFriendException, KingCaptureException
 
 
 class AttackEventBuilder(Enum):
@@ -61,7 +69,7 @@ class AttackEventBuilder(Enum):
         Raises:
            AttackEventBuilderException: Wraps any underlying validation failures that occur during the construction process.
            This includes:
-                * `IdValidationException`: if `attackEvent_id` fails validation checks
+                * `InvalidIdException`: if `attackEvent_id` fails validation checks
                 * `NameValidationException`: if `name` fails validation checks
                 * `InvalidRankException`: if `rank` fails validation checks
                 * `InvalidTeamException`: if `team` fails validation checks
@@ -125,7 +133,8 @@ class AttackEventBuilder(Enum):
             if not actor_square_search.is_success():
                 ThrowHelper.throw_if_invalid(
                     AttackEventBuilder,
-                    SearchException(f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                    ActorSquareNotFoundException(
+                        f"{method}: {ActorSquareNotFoundException.DEFAULT_MESSAGE}")
                 )
             actor_square = actor_square_search.payload
 
@@ -150,8 +159,22 @@ class AttackEventBuilder(Enum):
                 )
             )
 
-        except Exception as e:
+        except (
+            InvalidIdException,
+            InvalidPieceException,
+            CircularCaptureException,
+            TargetSquareMismatchException,
+            CaptureFriendException,
+            KingCaptureException,
+            ActorSquareNotFoundException
+        ) as e:
             raise AttackEventBuilderException(f"{method}: {e}") from e
+
+        # Catch any unexpected errors with details about type and message
+        except Exception as e:
+            raise AttackEventBuilderException(
+                f"{method}: Unexpected error ({type(e).__name__}): {e}"
+            ) from e
 
 
 

@@ -32,7 +32,7 @@ class ActorValidator:
             `TypeError`: if `t` is not OperationEvent
             `NullPieceException`: if `t` is null
 
-            `IdValidationException`: if invalid `id`
+            `InvalidIdException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
             `InvalidSquareException`: if `target` fails validator
 

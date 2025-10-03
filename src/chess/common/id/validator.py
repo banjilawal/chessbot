@@ -1,7 +1,7 @@
 from typing import Generic, cast
 
 from chess.common import Result, Validator
-from chess.common.id.exception import IdNullException, NegativeIdException, IdValidationException
+from chess.common.id.exception import IdNullException, NegativeIdException, InvalidIdException
 
 
 
@@ -18,21 +18,21 @@ class IdValidator(Validator):
             - Not null
             - Not 0 or negative (is positive)
             
-        Any validators error will have be encapsulated in a IdValidationException
+        Any validators error will have be encapsulated in a InvalidIdException
 
         Args
             t (Coord): generic to be validated
 
          Returns:
              Result[T]: A Result object containing the validated payload if the specification is satisfied,
-                        IdValidationException otherwise.
+                        InvalidIdException otherwise.
 
         Raises:
             IdNullException: if t is null
             TypeError: if t is not int
             NegativeIdException: if t is negative   
             
-            IdValidationException: Wraps any
+            InvalidIdException: Wraps any
                 (IdNullException, TypeError, NegativeIdException)  
         """
         try:
@@ -50,7 +50,7 @@ class IdValidator(Validator):
             return Result(payload=entity_id)
 
         except(TypeError, IdNullException, NegativeIdException) as e:
-            raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}") from e
+            raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}") from e
 
 # def main():
 #     result = IdSpecification.is_satisfied_by(5)

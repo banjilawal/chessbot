@@ -59,7 +59,7 @@ class OccupationEventBuilder(Enum):
         Raises:
            OccupationEventBuilderException: Wraps any underlying validation failures that occur during the construction process.
            This includes:
-                * `IdValidationException`: if `event_id` fails validation checks
+                * `InvalidIdException`: if `event_id` fails validation checks
                 * `ActorValidationException`: if `actor` fails validation checks
                 * `InvalidSquareException`: if `square` fails validation checks
                 * `InvalidContextException`: if `context` fails validation checks

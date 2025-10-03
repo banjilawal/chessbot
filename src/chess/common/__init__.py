@@ -25,6 +25,7 @@ from .id import *
 from .name import *
 from .actor import *
 from .context import *
+from .utils import *
 from .result import *
 from .config import *
 from .emitter import *
@@ -44,6 +45,7 @@ __all__ = [
 
     *id.__all__,
     *name.__all__,
+    *utils.__all__,
     *actor.__all__,
     *result.__all__,
     *emitter.__all__,

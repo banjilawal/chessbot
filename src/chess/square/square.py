@@ -28,7 +28,7 @@ class Square:
             coord (Coord): The coordinate of the square.
 
         Raises:
-            IdValidationException: If `square_id` fails validation checks.
+            InvalidIdException: If `square_id` fails validation checks.
             NameValidationException: If `name` fails validation checks.
             CoordValidationException: If `coord` fails validation checks.
         """

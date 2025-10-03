@@ -3,7 +3,7 @@ from typing import cast, TypeVar
 from chess.exception.hostage.hostage import KingCheckMateStateException
 from chess.piece import Piece, NullPieceException, InvalidPieceException, UnregisteredTeamMemberException, \
     CombatantPiece, HostageActivityException, KingPiece
-from chess.common import Result, Validator, IdValidator, NameValidator, IdValidationException, NameValidationException
+from chess.common import Result, Validator, IdValidator, NameValidator, InvalidIdException, NameValidationException
 from chess.team import NullTeamException
 
 T = TypeVar('T')
@@ -31,7 +31,7 @@ class PieceValidator(Validator):
             TypeError: if t is not Piece
             NullPieceException: if t is null   
 
-            IdValidationException: if invalid id
+            InvalidIdException: if invalid id
             NameValidationException: if invalid name
             CoordValidationException: if invalid coord
 
@@ -50,8 +50,8 @@ class PieceValidator(Validator):
 
             id_result = IdValidator.validate(piece.id)
             if not id_result.is_success():
-                raise IdValidationException(
-                    f"{method}: {IdValidationException.DEFAULT_MESSAGE}"
+                raise InvalidIdException(
+                    f"{method}: {InvalidIdException.DEFAULT_MESSAGE}"
                 )
 
             name_result = NameValidator.validate(piece.name)
@@ -89,13 +89,13 @@ class PieceValidator(Validator):
             return Result(payload=piece)
 
         except (
-            TypeError,
-            NullPieceException,
-            IdValidationException,
-            NameValidationException,
-            HostageActivityException,
-            NullTeamException,
-            UnregisteredTeamMemberException,
+                TypeError,
+                NullPieceException,
+                InvalidIdException,
+                NameValidationException,
+                HostageActivityException,
+                NullTeamException,
+                UnregisteredTeamMemberException,
         ) as e:
             raise InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}") from e
 

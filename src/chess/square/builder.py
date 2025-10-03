@@ -57,7 +57,7 @@ class SquareBuilder(Enum):
         Raises:
             `SquareBuilderException`: Wraps any underlying validation failures that occur during the construction
              process. This includes:
-                * `IdValidationException`: if `id` fails validation checks`
+                * `InvalidIdException`: if `id` fails validation checks`
                 * `NameValidationException`: if `name` fails validation checks
                 * `CoordValidationException`: if `coord` fails validation checks
                 * `SquareBuilderException`: for any other construction failures

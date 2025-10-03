@@ -138,7 +138,7 @@ class TeamSearch:
                   - On not found: An empty `SearchResult` (payload is None, exception is None)
                   - On failure: Error information and exception details
         Raises:
-            `IdValidationException`
+            `InvalidIdException`
             `InvalidTeamException`
         """
         method = "TeamSearch.by_roster"

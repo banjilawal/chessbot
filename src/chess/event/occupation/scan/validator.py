@@ -4,7 +4,7 @@ from chess.board import BoardSearch
 from chess.event import AttackEvent, CircularOccupationException
 from chess.event.occupation.scan.exception import TargetSquareMismatchException, ScanSubjectException
 from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
-from chess.common import ExecutionContext, Result, IdValidator, IdValidationException
+from chess.common import ExecutionContext, Result, IdValidator, InvalidIdException
 from chess.event.occupation import (
     ScanEvent,
     NullScanEventException,
@@ -37,7 +37,7 @@ class AttackEventValidator(EventValidator):
             `TypeError`: if `t` is not OperationEvent
             `NullScanEventException`: if `t` is null
 
-            `IdValidationException`: if invalid `id`
+            `InvalidIdException`: if invalid `id`
             `PieceValidationException`: if `actor` fails validator
             `InvalidSquareException`: if `target` fails validator
 
@@ -59,7 +59,7 @@ class AttackEventValidator(EventValidator):
 
             id_validation = IdValidator.validate(event.id)
             if not id_validation.is_success():
-                raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+                raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
 
             actor_validation = PieceValidator.validate(event.actor)
             if not actor_validation.is_success():
@@ -91,7 +91,7 @@ class AttackEventValidator(EventValidator):
 
         except (
                 TypeError,
-                IdValidationException,
+                InvalidIdException,
                 NullScanEventException,
                 InvalidPieceException,
                 CircularOccupationException,

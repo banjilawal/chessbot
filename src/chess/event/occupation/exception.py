@@ -92,6 +92,12 @@ class TargetSquareMismatchException(OccupationEventException):
     ERROR_CODE = "TARGET_SQUARE_MISMATCH_ERROR"
     DEFAULT_MESSAGE = "Target piece is at a different square from expected."
 
+class ActorSquareNotFoundException(OccupationEventException):
+    ERROR_CODE = "ACTOR_SQUARE_NOT_FOUND_ERROR"
+    DEFAULT_MESSAGE = (
+        "The validated actor with a current could not find its square in BoardSearch"
+    )
+
 
 # === OccupationEvent BUILDER EXCEPTIONS ===
 class OccupationEventBuilderException(OccupationEventException, BuilderException):

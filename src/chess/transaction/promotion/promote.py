@@ -44,7 +44,7 @@ class PromotionRequestValidator(RequestValidator):
             TypeError: if t is not Square
             NullPromotionRequestException: if t is null   
 
-            IdValidationException: if invalid id
+            InvalidIdException: if invalid id
             PieceValidationException: if t.actor fails validator
             
             PromotionRowException: if enemy is not on its enemy's validation row

@@ -7,7 +7,7 @@
 * `IdValidator`
 * `IdNullException`
 * `NegativeIdException`
-* `IdValidationException`
+* `InvalidIdException`
 
 
 USAGE:
