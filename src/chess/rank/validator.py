@@ -8,8 +8,8 @@
 from typing import Generic, TypeVar, cast
 
 
-from chess.common import Result
-from chess.common.validator import Validator
+from chess.system import Result
+from chess.system.validator import Validator
 from chess.rank import (
     Rank, King, Pawn, Knight, Bishop, Rook, Queen, RankSpec,
     InvalidKingException, InvalidPawnException,

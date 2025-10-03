@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, Optional
 
-from chess.common import ExecutionContext, Result
+from chess.system import ExecutionContext, Result
 from chess.event import Event
 
 T = TypeVar('T', bound=Event)

@@ -31,7 +31,7 @@ To use this package, import the desired classes and perform operations.
 ## EXCEPTION CLASSES
 This package defines a collection of specific exceptions for issues encountered when
 working with `Vector` instances. The primary goal is to provide a clean and
-consistent way to handle common vector-related errors, such as null values or
+consistent way to handle system vector-related errors, such as null values or
 out-of-bounds components. This granular approach helps developers quickly
 diagnose and resolve issues by pinpointing the exact nature of the problem.
 

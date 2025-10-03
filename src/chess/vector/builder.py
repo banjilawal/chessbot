@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.common import BuildResult, KNIGHT_STEP_SIZE
+from chess.system import BuildResult, KNIGHT_STEP_SIZE
 from assurance.throw_helper import ThrowHelper
 from chess.vector import (
     Vector, VectorBelowBoundsException, VectorAboveBoundsException,

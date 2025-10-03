@@ -1,4 +1,4 @@
-# src/chess/common/__init__.py
+# src/chess/system/__init__.py
 
 """
 Common Package - Objects used frequently and globally accross packages
@@ -35,7 +35,7 @@ from .validator import Validator
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.common'
+__package_name__ = 'chess.system'
 
 # Export control - only what belongs in public API
 __all__ = [

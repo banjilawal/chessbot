@@ -2,7 +2,7 @@ from typing import cast
 from enum import Enum
 
 from assurance import ThrowHelper
-from chess.common import BuildResult
+from chess.system import BuildResult
 from chess.piece import Piece, Discovery, PieceValidator, AutoDiscoveryException, DiscoveryBuilderException, \
     AddDuplicateDiscoveryException
 from chess.piece.discover import CircularDiscoveryException

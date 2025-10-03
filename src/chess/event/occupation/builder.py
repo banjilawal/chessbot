@@ -5,7 +5,7 @@ from assurance import ThrowHelper
 from chess.board import BoardSearch
 from chess.exception import SearchException
 from chess.square import Square, SquareValidator
-from chess.common import BuildResult, ExecutionContext, IdValidator
+from chess.system import BuildResult, ExecutionContext, IdValidator
 from chess.piece import Piece, KingPiece, CombatantPiece, PieceValidator
 from chess.event import (
     OccupationEvent, ScanEvent, AttackEvent, CircularOccupationException, OccupationEventBuilderException

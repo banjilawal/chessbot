@@ -4,7 +4,7 @@ from chess.board import BoardSearch
 from chess.event import AttackEvent, CircularOccupationException
 from chess.event.occupation.scan.exception import TargetSquareMismatchException, ScanSubjectException
 from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
-from chess.common import ExecutionContext, Result, IdValidator, InvalidIdException
+from chess.system import ExecutionContext, Result, IdValidator, InvalidIdException
 from chess.event.occupation import (
     ScanEvent,
     NullScanEventException,

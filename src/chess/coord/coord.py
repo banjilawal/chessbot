@@ -3,7 +3,7 @@ from typing import cast
 from . import (
     NullColumnException, NullRowException, RowBelowBoundsException,
     ColumnBelowBoundsException, )
-from chess.common import ROW_SIZE, COLUMN_SIZE
+from chess.system import ROW_SIZE, COLUMN_SIZE
 from chess.vector import Vector
 from chess.scalar import Scalar, ScalarValidator
 

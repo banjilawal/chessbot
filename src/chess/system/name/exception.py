@@ -31,7 +31,7 @@ class BlankNameException(ChessException):
 class ShortNameException(ChessException):
     """
     Name below the minimum length raises ShortNameException. See documentation or
-    chess.common.config for MIN_NAME_LENGTH.
+    chess.system.config for MIN_NAME_LENGTH.
     """
 
     ERROR_CODE = "SHORT_NAME_ERROR"
@@ -41,7 +41,7 @@ class ShortNameException(ChessException):
 class LongNameException(ChessException):
     """
     Name is longer than MAX_NAME_LENGTH raises LongNameException. See documentation
-    pr chess.common.config for MAX_NAME_LENGTH
+    pr chess.system.config for MAX_NAME_LENGTH
     """
 
     ERROR_CODE = "LONG_NAME_ERROR"

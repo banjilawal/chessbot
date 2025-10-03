@@ -17,7 +17,7 @@ To use this package, import the desired classes and perform scalar-related opera
 
 >>> from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
 >>> from typing import cast
->>> from chess.common import BuildResult
+>>> from chess.system import BuildResult
 >>> from chess.vector import Vector
 >>>
 >>> # Create a scalar instance
@@ -63,7 +63,7 @@ These exceptions can be imported and raised from within the scalar-related code 
 >>> try:
 ...     # This will raise a ScalarAboveUpperBoundException
 ...
-...     from chess.common import ROW_SIZE
+...     from chess.system import ROW_SIZE
 ...     my_scalar = Scalar(value=(ROW_SIZE + 1))
 ... except ScalarAboveBoundsException as e:
 ...     print(f'Error: {e}')

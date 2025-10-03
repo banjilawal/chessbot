@@ -3,7 +3,7 @@ from typing import cast
 
 from assurance import ThrowHelper
 from chess.board import BoardSearch
-from chess.common import IdValidator, BuildResult, InvalidIdException
+from chess.system import IdValidator, BuildResult, InvalidIdException
 from chess.event import TargetSquareMismatchException, AttackEvent
 from chess.event.occupation.attack.exception import AttackEventBuilderException
 from chess.event.occupation.exception import ActorSquareNotFoundException

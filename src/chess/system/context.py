@@ -4,6 +4,8 @@ from chess.arena.model import Arena
 from chess.board import Board
 from chess.commander import Commander
 from chess.piece import Piece
+from chess.rank import Rank
+from chess.square import Square
 from chess.team import Team
 
 
@@ -76,6 +78,24 @@ class ExecutionContext:
             # 'game_state': self.game_state,
             'turn': self.turn
         }
+
+class SearchContext:
+    _piece_id: Optional[int]
+    _square_id: Optional[int]
+    _team_id: Optional[int]
+    _commander_id: Optional[int]
+
+    _piece_nane: Optional[str]
+    _square_nane: Optional[str]
+    _team_nane: Optional[str]
+    _commander_nane: Optional[str]
+    _rank_name: Optional[str]
+
+    _rank: Optional[Rank]
+    _team: Optional[Team]
+    _piece: Optional[Piece]
+    _square: Optional[Square]
+    _commander: Optional[Commander]
 
 #
 # # Usage:

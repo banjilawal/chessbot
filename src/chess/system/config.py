@@ -1,4 +1,4 @@
-from chess.common import GameColor
+from chess.system import GameColor
 
 __all__ = [
     'ROW_SIZE',

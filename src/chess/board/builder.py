@@ -4,7 +4,7 @@ from chess.coord import Coord
 from chess.square import Square
 from assurance import ThrowHelper
 from chess.board import Board, BoardBuilderException
-from chess.common import id_emitter, BuildResult, IdValidator, InvalidIdException, BOARD_DIMENSION
+from chess.system import id_emitter, BuildResult, IdValidator, InvalidIdException, BOARD_DIMENSION
 
 
 
@@ -23,7 +23,7 @@ class BoardBuilder:
     Usage:
         ```python
         from typing import cast
-        from chess.common import BuildResult
+        from chess.system import BuildResult
         from chess.board import Board, BoardBuilder, BoardBuilderException
         
         # Safe board creation
@@ -41,7 +41,7 @@ class BoardBuilder:
     """
 
     @staticmethod
-    def build(board_id:int) -> BuildResult[Board]:
+    def build() -> BuildResult[Board]:
         """
         Constructs a new `Board` instance with comprehensive checks on the parameters and states during the
         build process.
@@ -82,11 +82,6 @@ class BoardBuilder:
         method = "BoardBuilder.build"
         
         try:
-            id_validation = IdValidator.validate(board_id)
-            if not id_validation.is_success():
-                ThrowHelper.throw_if_invalid(BoardBuilder, id_validation.exception)
-                return BuildResult(exception=id_validation.exception)
-            
             squares: List[List[Square]] = []
             for i in range(BOARD_DIMENSION):
                 row_squares: List[Square] = []

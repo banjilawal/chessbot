@@ -1,7 +1,7 @@
 from enum import Enum
 
 from assurance import ThrowHelper
-from chess.common import ROW_SIZE, COLUMN_SIZE, BuildResult
+from chess.system import ROW_SIZE, COLUMN_SIZE, BuildResult
 from chess.coord import (
     Coord,
     NullRowException, NullColumnException,

@@ -1,7 +1,7 @@
-# src/chess/common/result__init__.py
+# src/chess/system/result__init__.py
 
 """
-# `chess.common.result` Package
+# `chess.system.result` Package
 
 ## PURPOSE
     Defines standardized result objects for operations within the chess application.
@@ -17,7 +17,7 @@ Objects representing outcomes of operations.
 These examples show recommended workflows with `Result` and `BuildResult`.
 ---
 ```python
-from chess.common.result import Result, BuildResult
+from chess.system.result import Result, BuildResult
 
 # Example of a successful operation
 def add(x, y) -> Result[int]:
@@ -51,7 +51,7 @@ from .transaction import TransactionResult
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.common.result'
+__package_name__ = 'chess.system.result'
 
 # Export control - only what belongs in public API
 __all__ = [

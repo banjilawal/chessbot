@@ -18,7 +18,7 @@ Notes:
 from typing import cast
 
 from chess.piece import Discovery, DiscoveryBuilder
-from chess.common import ExecutionContext, TransactionResult
+from chess.system import ExecutionContext, TransactionResult
 from chess.piece.discover.exception import AddingValidDiscoveryFailedException
 from chess.event import (
     ScanEvent, OccupationTransaction, ScanTransactionException, OccupationEventException, ScanEventValidator

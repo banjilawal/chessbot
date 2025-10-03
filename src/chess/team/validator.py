@@ -1,7 +1,7 @@
 
 from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
-from chess.common import Result, Validator, IdValidator, InvalidIdException
+from chess.system import Result, Validator, IdValidator, InvalidIdException
 from chess.exception import RelationshipException
 from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \

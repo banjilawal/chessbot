@@ -1,7 +1,7 @@
 from typing import cast, Generic, TypeVar
 
 from chess.exception import NullNumberException
-from chess.common import Result, Validator, BOARD_DIMENSION
+from chess.system import Result, Validator, BOARD_DIMENSION
 
 from chess.scalar import(
     Scalar, NullScalarException, ScalarBelowBoundsException,

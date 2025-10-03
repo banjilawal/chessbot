@@ -4,7 +4,7 @@ from abc import abstractmethod, ABC
 from typing import Generic, TypeVar
 
 from chess.event import Event
-from chess.common import ExecutionContext, TransactionResult
+from chess.system import ExecutionContext, TransactionResult
 
 T = TypeVar('T', bound=Event)
 

@@ -1,5 +1,5 @@
 
-from chess.common import BOARD_DIMENSION
+from chess.system import BOARD_DIMENSION
 from chess.exception import NullNumberException
 from chess.scalar import ScalarBelowBoundsException, ScalarAboveBoundsException
 

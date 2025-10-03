@@ -3,7 +3,7 @@ from typing import cast, Generic, TypeVar
 
 from chess.coord import CoordValidator, CoordValidationException
 from chess.square import Square, NullSquareException, InvalidSqaureException
-from chess.common import Result, Validator, IdValidator, NameValidator, InvalidIdException, NameValidationException
+from chess.system import Result, Validator, IdValidator, NameValidator, InvalidIdException, NameValidationException
 
 
 T = TypeVar('T')

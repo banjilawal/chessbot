@@ -1,7 +1,7 @@
 
 from typing import Optional, TypeVar, Generic
 
-from chess.common import EmptyResultConstructorException, ErrorContradictsPayloadException
+from chess.system import EmptyResultConstructorException, ErrorContradictsPayloadException
 
 T = TypeVar('T')
 

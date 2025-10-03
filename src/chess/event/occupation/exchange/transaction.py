@@ -18,7 +18,7 @@ Notes:
 from typing import cast
 
 from chess.board import FailedPieceRemovalRolledBackException
-from chess.common import id_emitter
+from chess.system import id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, TransferEventValidator
 from chess.event.occupation.attack.exception import EmptyDestinationSquareRolledBackException
 

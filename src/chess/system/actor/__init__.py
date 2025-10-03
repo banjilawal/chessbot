@@ -1,14 +1,15 @@
-# src/chess/common/__init__.py
+# src/chess/system/actor/__init__.py
 """
-## PURPOSE:
-    Id validation
+Common Package - Objects used frequently and globally accross packages
 
-## CORE CLASSES:
-* `IdValidator`
-* `IdNullException`
-* `NegativeIdException`
-* `InvalidIdException`
+PURPOSE:
+    Contains commonly used objects and utilites
 
+CORE CLASSES:
+    Event, Result, GameColor, MousePlacementStatus
+
+CONVENIENCE ALIASES:
+    MousePlacement: Alias for MousePlacementStatus
 
 USAGE:
     >>>
@@ -19,18 +20,18 @@ AUTHOR: Banji Lawal
 """
 
 from .exception import *
-from .validator import IdValidator
+from .validator import ActorValidator
 
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.common.id'
+__package_name__ = 'chess.system.actor'
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'IdValidator',
+    'ActorValidator',
 
     *exception.__all__,
 
@@ -49,3 +50,4 @@ def package_info() -> dict:
         'author': __author__,
         'exports': __all__
     }
+

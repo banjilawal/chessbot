@@ -3,6 +3,8 @@ from typing import List, Optional, TYPE_CHECKING
 
 from assurance.exception.invalid_hostage import HostageValidationException
 from chess.result import Result
+
+from chess.system import auto_id
 from chess.coord import CoordValidator
 from assurance.validators.hostage_validator import HostageValidator
 from chess.square import Square
@@ -13,12 +15,8 @@ from chess.coord import Coord
 if TYPE_CHECKING:
     from chess.piece.piece import Piece, CombatantPiece
 
-
+@auto_id
 class Board:
-    _id: int
-    _pieces: [Piece]
-    _squares: List[List[Square]]
-
     """
     ChessBoard is responsible for managing the movement of ChessPieces on the chessboard. Squares and 
     ChessPieces are data-holding objects referenced by a Coord. The class
@@ -31,10 +29,10 @@ class Board:
         _pieces (List[Piece]): pieces on the board
         _squares (List[List[Square]]): 8x8 array of Square objects representing the chess chessboard.
     """
+    _pieces: [Piece]
+    _squares: List[List[Square]]
 
-    def __init__(self, board_id: int, squares: List[List[Square]]):
-        method = f"{self.__class__.__name__}.__ini__"
-
+    def __init__(self, squares: List[List[Square]]):
         """
         Creates a Board instance
 
@@ -46,16 +44,9 @@ class Board:
             InvalidIdException: If id fails validators checks for non-null and positive.
             NullException: If squares is null
         """
-
-        self._id = board_id
+        method = f"{self.__class__.__name__}.__ini__"
         self._squares = squares
-
         self._pieces = []
-
-
-    @property
-    def id(self) -> int:
-        return self._id
 
 
     @property

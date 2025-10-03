@@ -1,4 +1,4 @@
-from chess.common import ROW_SIZE, COLUMN_SIZE
+from chess.system import ROW_SIZE, COLUMN_SIZE
 from chess.exception import ChessException, NullException, ValidationException, BuilderException
 
 __all__ = [

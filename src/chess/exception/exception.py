@@ -92,7 +92,7 @@ class NullStringException(NullException):
 
 class BuilderException(ChessException):
     """
-    Exceptions raised by chess.creator.builder classes have common behavior. Similar conditions might raise
+    Exceptions raised by chess.creator.builder classes have system behavior. Similar conditions might raise
     exceptions when building entities. During builds ValidatorExceptions are likely. Exceptions thrown during
     entity builds should be wrapped in the BuilderException corresponding to the Builder's name.
     """

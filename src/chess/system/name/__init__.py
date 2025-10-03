@@ -1,15 +1,18 @@
-# src/chess/common/actor/__init__.py
+# src/chess/system/__init__.py
 """
-Common Package - Objects used frequently and globally accross packages
+## PURPOSE:
+    Name validation 
 
-PURPOSE:
-    Contains commonly used objects and utilites
-
-CORE CLASSES:
-    Event, Result, GameColor, MousePlacementStatus
-
-CONVENIENCE ALIASES:
-    MousePlacement: Alias for MousePlacementStatus
+## CORE CLASSES:
+* `NameValidator`
+* `NameNullException`
+* `NegativeNameException`
+* `NameValnameationException`
+* `NullNameException`
+* `LongNameException`
+* `ShortNameException`
+* `BlankNameException`
+* `NameValidationException`
 
 USAGE:
     >>>
@@ -19,19 +22,20 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
+
 from .exception import *
-from .validator import ActorValidator
+from .validator import NameValidator
 
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.common.actor'
+__package_name__ = 'chess.system.name'
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'ActorValidator',
+    'NameValidator',
 
     *exception.__all__,
 
@@ -50,4 +54,3 @@ def package_info() -> dict:
         'author': __author__,
         'exports': __all__
     }
-

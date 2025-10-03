@@ -1,9 +1,9 @@
 import pygame
 
 from chess.board.board import Board
-from chess.common.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
+from chess.system.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
     BISHOP_COLOR, QUEEN_COLOR, MousePlacementStatus
-from chess.common.color import GameColor
+from chess.system.color import GameColor
 
 
 from dataclasses import dataclass

@@ -3,7 +3,7 @@ from typing import cast, TypeVar
 from chess.exception.hostage.hostage import KingCheckMateStateException
 from chess.piece import Piece, NullPieceException, InvalidPieceException, UnregisteredTeamMemberException, \
     CombatantPiece, HostageActivityException, KingPiece
-from chess.common import Result, Validator, IdValidator, NameValidator, InvalidIdException, NameValidationException
+from chess.system import Result, Validator, IdValidator, NameValidator, InvalidIdException, NameValidationException
 from chess.team import NullTeamException
 
 T = TypeVar('T')

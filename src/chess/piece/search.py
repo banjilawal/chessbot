@@ -1,7 +1,7 @@
 
 from chess.coord import Coord, CoordValidator
 from chess.piece import Piece, PieceValidator, Discovery
-from chess.common import SearchResult, IdValidator, NameValidator
+from chess.system import SearchResult, IdValidator, NameValidator
 
 class PieceSearch:
     """

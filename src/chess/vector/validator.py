@@ -1,6 +1,6 @@
 from typing import Generic, cast, TypeVar
 
-from chess.common import Result, Validator, KNIGHT_STEP_SIZE
+from chess.system import Result, Validator, KNIGHT_STEP_SIZE
 from chess.vector import (
     Vector, NullVectorException,
     NullXComponentException, NullYComponentException,

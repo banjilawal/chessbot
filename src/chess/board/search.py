@@ -1,8 +1,8 @@
 from chess.board import Board
 from chess.square import Square
 from chess.coord import Coord, CoordValidator
-from chess.common import IdValidator, NameValidator
-from chess.common.result.search import SearchResult
+from chess.system import IdValidator, NameValidator
+from chess.system.result.search import SearchResult
 
 
 class BoardSearch:
@@ -28,6 +28,9 @@ class BoardSearch:
         `Coord`: The coordinate being searched for
         `SearchResult`: The return type for all search operations
     """
+    _piece_id: Optional[int]
+    _square_id: Optional[int]
+    _piece_name: str
 
     @staticmethod
     def piece_by_id(piece_id: int, board: Board) -> SearchResult['Piece']:

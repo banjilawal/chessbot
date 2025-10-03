@@ -2,7 +2,7 @@ from enum import Enum
 
 from chess.team import Team, TeamSchema, NullTeamSchemaException, TeamBuilderException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
-from chess.common import IdValidator, BuildResult
+from chess.system import IdValidator, BuildResult
 from chess.exception import RelationshipException
 from assurance import ThrowHelper
 

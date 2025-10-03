@@ -1,5 +1,5 @@
 
-from chess.common import KNIGHT_STEP_SIZE
+from chess.system import KNIGHT_STEP_SIZE
 from chess.vector import (
     NullXComponentException, NullYComponentException,
     VectorAboveBoundsException, VectorBelowBoundsException

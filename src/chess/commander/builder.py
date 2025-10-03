@@ -1,7 +1,7 @@
 from enum import Enum
 
 from assurance import ThrowHelper
-from chess.common import BuildResult, IdValidator, NameValidator
+from chess.system import BuildResult, IdValidator, NameValidator
 
 from chess.commander import Commander, Human, Bot, CommanderBuilderException
 from chess.engine import DecisionEngine

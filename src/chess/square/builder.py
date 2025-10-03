@@ -3,7 +3,7 @@ from enum import Enum
 from assurance import ThrowHelper
 from chess.coord import Coord, CoordValidator
 from chess.square import Square, SquareBuilderException
-from chess.common import BuildResult, IdValidator, NameValidator
+from chess.system import BuildResult, IdValidator, NameValidator
 
 
 class SquareBuilder(Enum):

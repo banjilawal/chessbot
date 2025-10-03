@@ -1,6 +1,6 @@
 
 from chess.team.schema import TeamSchema
-from chess.common.emitter import id_emitter
+from chess.system.emitter import id_emitter
 from chess.competitor.commander import Commander
 from chess.side.team import Side
 

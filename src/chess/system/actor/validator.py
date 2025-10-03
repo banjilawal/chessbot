@@ -1,8 +1,8 @@
 from typing import Generic, TypeVar, cast
 
 from chess.piece import Piece, CombatantPiece, KingPiece, PieceValidator, InvalidPieceException
-from chess.common import Result, ExecutionContext
-from chess.common.actor.exception import (
+from chess.system import Result, ExecutionContext
+from chess.system.actor.exception import (
     CapturedActorCannotActException, ActorPlacementRequiredException,
     CheckMatedKingActivityException, InvalidActorException, ActorNotOnBoardException
 )

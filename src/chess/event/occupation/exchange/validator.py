@@ -3,7 +3,7 @@ from typing import Generic, TypeVar, cast
 from chess.event import TransferEvent
 from chess.piece import Piece, PieceValidator, InvalidPieceException
 from chess.square import Square, SquareValidator, InvalidSqaureException
-from chess.common import Validator, Result, IdValidator, InvalidIdException
+from chess.system import Validator, Result, IdValidator, InvalidIdException
 from chess.event.occupation import (
     AttackEvent,
     NullAttackEventException,

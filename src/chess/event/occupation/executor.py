@@ -22,7 +22,7 @@ Notes:
 
 from typing import cast
 
-from chess.common import id_emitter
+from chess.system import id_emitter
 
 from chess.square import Square
 from chess.search import BoardSearch

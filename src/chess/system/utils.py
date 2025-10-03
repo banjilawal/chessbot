@@ -1,4 +1,4 @@
-# File: chess/common/id_utils.py
+# File: chess/system/id_utils.py
 from itertools import count
 from threading import Lock
 from typing import Type, TypeVar

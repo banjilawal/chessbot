@@ -1,7 +1,7 @@
 from typing import Generic, TypeVar, cast
 
 from chess.board import NullBoardException
-from chess.common import Result, Validator
+from chess.system import Result, Validator
 from chess.transaction import CaptureContext
 from chess.piece import  PieceValidator, InvalidPieceException, CombatantPiece
 

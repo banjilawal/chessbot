@@ -1,7 +1,7 @@
 from typing import Generic, cast
 
-from chess.common import Result, Validator
-from chess.common.id.exception import IdNullException, NegativeIdException, InvalidIdException
+from chess.system import Result, Validator
+from chess.system.id.exception import IdNullException, NegativeIdException, InvalidIdException
 
 
 

@@ -1,7 +1,7 @@
 from typing import TypeVar, cast, Sequence, TYPE_CHECKING
 
 from chess.piece import Piece
-from chess.common import IdValidator, InvalidIdException
+from chess.system import IdValidator, InvalidIdException
 from chess.rank import Rank
 from chess.search import SearchResult
 from chess.commander import Commander, CommanderValidator

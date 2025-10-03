@@ -6,7 +6,7 @@ from chess.exception import NullNumberException
 from chess.rank import Rank, RankValidator
 from chess.coord import Coord, CoordValidator
 from chess.piece import Discovery, NullDiscoveryException
-from chess.common import IdValidator, NameValidator, SearchResult
+from chess.system import IdValidator, NameValidator, SearchResult
 
 
 class Discoveries:

@@ -1,7 +1,7 @@
 from enum import Enum
 
-from chess.common.color import GameColor
-from chess.common.config import ROW_SIZE
+from chess.system.color import GameColor
+from chess.system.config import ROW_SIZE
 from chess.geometry.quadrant import Quadrant
 from chess.scalar import Scalar
 

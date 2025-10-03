@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chess.common.color import GameColor
+from chess.system.color import GameColor
 from chess.geometry.quadrant import Quadrant
 from chess.competitor.commander import Commander
 from chess.side.repo import TeamRepo

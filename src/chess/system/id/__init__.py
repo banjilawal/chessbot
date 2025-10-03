@@ -1,18 +1,14 @@
-# src/chess/common/__init__.py
+# src/chess/system/__init__.py
 """
 ## PURPOSE:
-    Name validation 
+    Id validation
 
 ## CORE CLASSES:
-* `NameValidator`
-* `NameNullException`
-* `NegativeNameException`
-* `NameValnameationException`
-* `NullNameException`
-* `LongNameException`
-* `ShortNameException`
-* `BlankNameException`
-* `NameValidationException`
+* `IdValidator`
+* `IdNullException`
+* `NegativeIdException`
+* `InvalidIdException`
+
 
 USAGE:
     >>>
@@ -22,20 +18,19 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-
 from .exception import *
-from .validator import NameValidator
+from .validator import IdValidator
 
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.common.name'
+__package_name__ = 'chess.system.id'
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'NameValidator',
+    'IdValidator',
 
     *exception.__all__,
 

@@ -1,4 +1,4 @@
-from chess.common import EmptyResultConstructorException,  ErrorContradictsPayloadException
+from chess.system import EmptyResultConstructorException,  ErrorContradictsPayloadException
 from typing import Optional, TypeVar, Generic
 
 

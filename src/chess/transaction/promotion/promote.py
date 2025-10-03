@@ -4,12 +4,12 @@ from assurance.exception.invalid_id import IdValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
 from assurance.exception.invalid_request import PromotionRequestValidationException
 
-from chess.common.result.transaction import TransactionResult
-from chess.common.id.validator import IdValidator
+from chess.system.result.transaction import TransactionResult
+from chess.system.id.validator import IdValidator
 from chess.piece.validator import PieceValidator
 from chess.rank.queen import PromotedQueen
 from chess.transaction.validators.base import RequestValidator
-from chess.common.permit import Event
+from chess.system.permit import Event
 from chess.transaction.null_occupation_request import NullPromotionRequestException
 from chess.exception.piece_exception import DoublePromotionException
 from chess.exception.rank_exception import UnPromotableRankException, PromotionRowException

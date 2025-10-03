@@ -28,7 +28,7 @@ from typing import Optional, cast
 
 from chess.rank import Rank
 from chess.coord import Coord
-from chess.common import IdValidator, NameValidator, NameValidationException, InvalidIdException
+from chess.system import IdValidator, NameValidator, NameValidationException, InvalidIdException
 from chess.piece import CoordStack, Discovery, DiscoveryBuilder, Discoveries, PieceValidator, AutoDiscoveryException
 from chess.team import Team, TeamValidator, InvalidTeamException
 

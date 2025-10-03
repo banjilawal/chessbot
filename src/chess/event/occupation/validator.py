@@ -4,7 +4,7 @@ from chess.event import OccupationEvent, EventValidator
 
 
 from chess.piece import Piece, PieceValidator
-from chess.common import Validator, IdValidator, ActorValidator, Result, ExecutionContext
+from chess.system import Validator, IdValidator, ActorValidator, Result, ExecutionContext
 
 
 class OccupationEventValidator(EventValidator[OccupationEvent]):

@@ -3,7 +3,7 @@ from chess.team import Team, TeamValidator
 from chess.piece.piece import Piece
 from chess.search import SearchResult
 from chess.rank import Rank, RankValidator
-from chess.common import IdValidator, NameValidator
+from chess.system import IdValidator, NameValidator
 
 class TeamSearch:
     """

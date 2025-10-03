@@ -4,7 +4,7 @@ from chess.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
 from chess.event import ScanEvent, ScanEventBuilderException, TargetSquareMismatchException
-from chess.common import IdValidator, BuildResult, ExecutionContext
+from chess.system import IdValidator, BuildResult, ExecutionContext
 from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidPieceException
 
 

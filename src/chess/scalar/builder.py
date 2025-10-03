@@ -2,7 +2,7 @@ from enum import Enum
 
 from assurance import ThrowHelper
 from chess.exception import NullNumberException
-from chess.common import BuildResult, BOARD_DIMENSION
+from chess.system import BuildResult, BOARD_DIMENSION
 
 from chess.scalar import (
     Scalar, ScalarAboveBoundsException,
