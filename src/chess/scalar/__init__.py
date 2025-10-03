@@ -1,7 +1,10 @@
-# chess/scalar/__init__.py
+## chess/scalar/__init__.py
 
 """
-A package providing core classes and utilities for scalar values.
+Module: `chess.scalar`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 ## PURPOSE
 This package contains the foundational objects for representing and validating scalar values. These values
@@ -69,8 +72,6 @@ These exceptions can be imported and raised from within the scalar-related code 
 ...     print(f'Error: {e}')
 
 ---
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 # Include subpackages

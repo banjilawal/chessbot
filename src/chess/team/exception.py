@@ -1,7 +1,5 @@
-from chess.exception import (
-    ChessException, SearchException, NullException,
-    ValidationException, BuilderException, RollbackException
-)
+from chess.board import FailedPieceRemovalRolledBackException
+from chess.system import ChessException, SearchException, NullException, ValidationException, FailedBuildException, RollbackException
 
 __all__ = [
     'TeamException',
@@ -28,6 +26,7 @@ __all__ = [
     'AddTeamMemberRolledBackException',
     'RemoveTeamMemberRolledBackException',
     'FullRankQuotaRolledBackException',
+    'ConflictingTeamAssignmentException',
 
 # === HOSTAGE EXCEPTIONS ===
     'TeamHostageListException',

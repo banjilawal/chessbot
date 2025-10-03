@@ -1,7 +1,10 @@
-# src/chess/event/occupation/scan/__init__.py__init__.py
+# chess/event/occupation/scan/__init__.py
 
 """
-# `chess.event.occupation.scan` Package
+Module: `chess.event.occupation.scan`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 ## PURPOSE:
 Executes a `ScanTransaction` after `ScanEvent` is validated

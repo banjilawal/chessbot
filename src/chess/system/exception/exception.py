@@ -104,19 +104,7 @@ class RollbackException(ChessException):
     DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
 
 
-class SearchException(ChessException):
-    """
-    Base class for search errors in the chess engine.
 
-    PURPOSE:
-        Raised search raises an exception. Is a wrapper for other exceptions
-        that occur during search.
-    ATTRIBUTES:
-        code (str): Short machine-readable exception code for logging / testing.
-        message (str): Human-readable default message.
-    """
-    DEFAULT_CODE = "SEARCH_ERROR"
-    DEFAULT_MESSAGE = "An exception was raised during a search."
 
 
 

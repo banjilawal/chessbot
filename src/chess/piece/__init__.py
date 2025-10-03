@@ -1,7 +1,10 @@
 # chess/piece/__init__.py
 
 """
-# `chess.piece` Package
+Module: `chess.piece`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 ## Purpose
 Provides the fundamental data structures for game pieces and entities owned by a game piece.
@@ -94,9 +97,6 @@ def create_encounter(actor: Piece, discover: Piece) -> Encounter:
         raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
     return Encounter(discover=discover)
 ```
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import *

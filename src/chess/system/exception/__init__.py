@@ -1,11 +1,10 @@
 # chess/system/exception/__init__.py
 
 """
-Module: exception
+Module: chess.system.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
-
 
 # PURPOSE
 High level exceptions inherited by subclasses in the system.

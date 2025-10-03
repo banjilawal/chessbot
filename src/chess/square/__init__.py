@@ -1,6 +1,11 @@
 # chess/square/__init__.py
 
 """
+Module: `chess.square`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
 ## PURPOSE
 This package provides foundational objects for the chess board. It defines the `Square` class,
 which serves as a data container for storing a discover's location, and a `SquareValidator` to ensure
@@ -27,9 +32,6 @@ To use this package, import the desired classes and perform square-related opera
 >>> # Validate the square
 >>> validation = SquareValidator.validate(square)
 ---
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 # subpackages

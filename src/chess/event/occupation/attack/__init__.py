@@ -1,7 +1,10 @@
-# chess/event/occupation/attack/__init__.py
+# chess/event/occupation/attack__init__.py
 
 """
-# `chess.event.occupation.attack` Package
+Module: `chess.event.occupation.attack`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 PURPOSE:
     Manages `Piece` movement on the `Board`. After a `Piece.rank` authorizes traveling to a `Square`
@@ -53,8 +56,6 @@ USAGE:
 
 ___
 
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import *

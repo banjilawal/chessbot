@@ -1,6 +1,11 @@
-# chess/vector/__init__py
+# chess/vector/__init__.py
 
 """
+Module: `chess.vector`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
 A package providing core classes for vector-based operations.
 
 ## PURPOSE
@@ -66,8 +71,6 @@ Classes, modules and functions that require a not-null `Vector` raise `NullVecto
 `NullVectorException` on itself.
 
 ---
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import  *

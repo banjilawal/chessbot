@@ -1,8 +1,10 @@
 # chess/rank/__init__.py
 
 """
-# `chess.rank` Package
-
+Module: `chess.rank`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 ## PURPOSE
 This package encapsulates the movement logic for each type of chess discover. By decoupling a discover's movement
@@ -83,9 +85,6 @@ invalid moves gracefully.
 # ...     print(f'Invalid Pawn Move: {e}')
 
 ---
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 

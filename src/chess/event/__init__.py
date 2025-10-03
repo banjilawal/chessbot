@@ -1,11 +1,10 @@
 # chess/event/__init__.py
 
 """
-Module: chess.event
+Module: `chess.event`
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
-
 
 # PURPOSE
 A package providing an immutable hierarchy for events and transactions manging event lifecycle. An event is

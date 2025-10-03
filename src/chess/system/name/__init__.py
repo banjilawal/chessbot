@@ -1,6 +1,12 @@
-# src/chess/system/__init__.py
+# chess/system/name/__init__.py
+
 """
-## PURPOSE:
+Module: chess.system.name
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
+# PURPOSE
     Name validation 
 
 ## CORE CLASSES:
@@ -17,9 +23,6 @@
 USAGE:
     >>>
     >>>
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 

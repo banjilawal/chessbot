@@ -1,10 +1,13 @@
-# src/chess/system/result__init__.py
+# chess/system/result/__init__.py
 
 """
-# `chess.system.result` Package
+Module: chess.system.result
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
-## PURPOSE
-    Defines standardized result objects for operations within the chess application.
+# PURPOSE
+Defines standardized result objects for operations within the chess application.
 Objects representing outcomes of operations.
 
 ## CORE CLASSES
@@ -36,15 +39,10 @@ def add(x, y) -> Result[int]:
 
 ```
 ---
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import *
-
 from .result import Result
-from chess.system.build.result import BuildResult
-from .search import SearchResult
 from .transaction import TransactionResult
 
 
@@ -56,8 +54,6 @@ __package_name__ = 'chess.system.result'
 # Export control - only what belongs in public API
 __all__ = [
     'Result',
-    'BuildResult',
-    'SearchResult',
     'TransactionResult',
 
     *exception.__all__,

@@ -1,18 +1,20 @@
-# chess/system/validation/__init__.py
+# chess/system/search/__init__.py
 
 """
-Module: chess.system.validation
+Module: chess.system.search
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
 # PURPOSE
-Validation super class and exceptions.
+Super class for `Search` objects and their
 
 
  # EXPORTS
-    - `Validator`: The base class for `validation` objects.
-    - `ValidationException`: The base class for `validation` exceptions.
+    - `Search`: The base class for `Search` objects.
+    - `SearchResult`: Data class returned by `Search` instances
+    - `SearchContext`: Abstract super class for `SearchContext` objects.
+    - All exceptions in the `exception` subpackage
 
 # SUB-PACKAGES
     - `.exception`: Defines all custom exceptions for occupation operations.
@@ -23,26 +25,28 @@ ___
 ```python
 ```
 ---
-
-# BEST PRACTICES
-* Do not use `ValidationException` directly use the appropriate `ValidationException` subclass.
 """
 
 from .exception import *
-from .validator import Validator
+
+from .search import Search
+from .result import SearchResult
+from .context import SearchContext
 
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.system.validation'
+__package_name__ = 'chess.system.search'
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'Validator',
-    *exception.__all__,
+    'Search',
+    'SearchResult',
+    'SearchContext',
 
+    *exception.__all__,
 
     # Package metadata and utilities
     '__version__',

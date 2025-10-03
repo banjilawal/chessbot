@@ -2,7 +2,7 @@ from chess.board import Board
 from chess.square import Square
 from chess.coord import Coord, CoordValidator
 from chess.system import IdValidator, NameValidator
-from chess.system.result.search import SearchResult
+from chess.system.search.result import SearchResult
 
 
 class BoardSearch:

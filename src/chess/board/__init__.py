@@ -1,7 +1,7 @@
 # chess/board/__init__.py
 
 """
-Module: chess.board
+Module: `chess.board`
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

@@ -1,6 +1,11 @@
-# chess/team/__init__py
+# chess/team/__init__.py
 
 """
+Module: `chess.team`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
 A package providing core classes and utilities for managing chess teams.
 
 ## PURPOSE
@@ -59,9 +64,6 @@ Traceback (most recent call last):
 AddTeamMemberException: The discover is not on this team. Adding discover faile.
 
 ---
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import *

@@ -5,6 +5,8 @@ from chess.system import EmptyResultConstructorException, ErrorContradictsPayloa
 
 T = TypeVar('T')
 
+__all__ = ['Result']
+
 
 class Result(Generic[T]):
     """

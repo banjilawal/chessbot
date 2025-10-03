@@ -1,6 +1,11 @@
-# src/chess/geometry/__init__.py
+# chess/geometry/__init__.py
 
 """
+Module: `chess.event.geometry`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
 PURPOSE:
     Provides classes for spatial relationships, coordinates, vectors, and paths
     in a 2D chess board coordinate transaction.
@@ -19,9 +24,6 @@ USAGE:
     >>> path = Path(u=Coord(0,0), v=Coord(0,5))
     >>> path.line = Line.VERTICAL
     >>> return path.is_vertical()
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 # Core geometry classes

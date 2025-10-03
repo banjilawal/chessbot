@@ -1,7 +1,11 @@
 # chess/piece/discover/__init__.py
 
 """
-# `chess.piece` Package
+Module: `chess.piece.discover`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
 
 ## Purpose
 Provides the fundamental data structures for game pieces and entities owned by a game piece.
@@ -97,9 +101,6 @@ def create_discovery(actor: Piece, discover: Piece) -> Discovery:
         raise AutoDiscoveryException(f"{method}: {AutoDiscoveryException.DEFAULT_MESSAGE}")
     return Discovery(discover=discover)
 ```
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import *

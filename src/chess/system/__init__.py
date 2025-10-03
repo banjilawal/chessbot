@@ -1,6 +1,11 @@
-# src/chess/system/__init__.py
+# chess/system/__init__.py
 
 """
+Module: `chess.system`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
 Common Package - Objects used frequently and globally accross packages
 
 ## PURPOSE:
@@ -15,10 +20,6 @@ Common Package - Objects used frequently and globally accross packages
 ## EXCEPTIONS
 
 ###
-
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .id import *
@@ -28,8 +29,11 @@ from .context import *
 from .utils import *
 from .result import *
 from .config import *
+from .search import *
 from .emitter import *
-from chess.system.validation.validator import Validator
+from .build import *
+from .exception import *
+from .validation import *
 
 
 # Package metadata (organic to __init__.py)
@@ -41,13 +45,16 @@ __package_name__ = 'chess.system'
 __all__ = [
     # Core classes
     'ExecutionContext',
-    'Validator',
 
     *id.__all__,
     *name.__all__,
     *utils.__all__,
     *actor.__all__,
     *result.__all__,
+    *search.__all__,
+    *build.__all__,
+    *validation.__all__,
+    *exception.__all__,
     *emitter.__all__,
     *config.__all__,
 

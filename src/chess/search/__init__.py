@@ -39,7 +39,7 @@ AUTHOR: Banji Lawal
 from chess.board.search import BoardSearch
 from chess.team.search import  TeamSearch
 from .commander import CommanderSearch
-from chess.system.result.search import SearchResult
+from chess.system.search.result import SearchResult
 
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"

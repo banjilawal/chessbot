@@ -1,7 +1,10 @@
-# chess/event/occupation/exchange/__init__.py
+# chess/event/occupation/exchange__init__.py
 
 """
-# `chess.event.occupation.attack` Package
+Module: `chess.event.occupation.exchange`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 PURPOSE:
     Manages `Piece` movement on the `Board`. After a `Piece.rank` authorizes traveling to a `Square`

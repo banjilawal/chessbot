@@ -1,7 +1,10 @@
-# src/chess/coord/__init__.py
+# chess/board/coord__init__.py
 
 """
-# `chess.coord` Package
+Module: `chess.coord`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 ## Purpose
 Provides immutable `(row, column)` coordinate tuples for board positions, with builders and validators for safe
@@ -68,9 +71,6 @@ if coord is None:
     raise NullCoordException(NullCoordException.DEFAULT_MESSAGE)
 coord.positions.push_coord(coord)
 ```
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import *

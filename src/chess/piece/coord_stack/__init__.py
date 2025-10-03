@@ -1,7 +1,10 @@
 # chess/piece/coord_stack/__init__.py
 
 """
-# `chess.piece.coord_stack` Package
+Module: `chess.piece.coord_stack`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
 
 ## Purpose
 Provides the data structures and utilities for storing history of `Piece` object's positions.
@@ -28,9 +31,6 @@ These examples show recommended workflows with `CoordStack` exceptions.
 ```python
 from chess.piece import CoordStack, NullCoordStackException, CoordStackValidationException
 ```
-
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
 """
 
 from .exception import *
