@@ -1,8 +1,10 @@
-from abc import abstractmethod, ABC
+
 from enum import Enum, auto
+from abc import abstractmethod, ABC
 from typing import Generic, TypeVar
 
-from chess.transaction import Event, ExecutionContext, TransactionResult
+from chess.event import Event
+from chess.common import ExecutionContext, TransactionResult
 
 T = TypeVar('T', bound=Event)
 

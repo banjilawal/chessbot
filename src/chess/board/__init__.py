@@ -1,46 +1,51 @@
-# src/chess/board/__init__.py
+# chess/board/__init__.py
 
 """
-# `chess.board` Package
+Module: chess.board
+Author: Banji Lawal
+Created: 2025-10-01
+version: 1.0.0
 
-## PURPOSE:
-    Board related classes
+# Purpose
+Provides board for game play. The package keeps track of pieces and provides addressing for `Square` objects
+which a `Piece` instance can reside.
 
-## CORE CLASSES
-    * `Board`:
-    * `SquareIterator`:
+# EXPORTS
+This package exposes core classes and all exceptions from its sub-modules:
+    - `Board`
+    - `BoardBuilder`
+    - `BoarSearch`
+    - `SquareIterator`
+    - `OccupationTransaction`
+    - `OccupationEventValidator`
+    - `OccupationEventBuilder`
+    - All exceptions from `exception` sub-packages.
 
-### USAGE EXAMPLES
-    These examples show recommended workflows with `chess.board` classes.
+# SUB-PACKAGES
+    - `.exception`: Defines all custom exceptions for `Board` operations.
 
-```python
-from chess.board import Board, SquareIterator
-```
-___
 
-## EXCEPTIONS
-raised by chess.board classes are defined in the chess.board.exception subpackage.
-
-### EXCEPTION USAGE EXAMPLES
-These examples show recommended workflows with `chess.board` exceptions.
+USAGE EXAMPLES:
 ---
 ```python
 ```
-___
-#
 
-VERSION: 1.0.0
-AUTHOR: Banji Lawal
+# BEST PRACTICES
+
+# NOTES
+DO NOT reference sub-modules directly. Import all core classes and exceptions
+from this package level (e.g., `from chess.event.occupation import OccupationEvent`). See EXAMPLE USAGE section
+for best practices.
 """
 
-# Subpackage imports
-from .exception import *
-
-# Core class
-from .exception import *
 from .board import Board
 from .search import BoardSearch
 from .square_iterator import SquareIterator
+
+# Subpackage imports
+
+# Module Imports
+from .exception import *
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'

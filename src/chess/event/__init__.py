@@ -16,39 +16,21 @@ A package providing an immutable hierarchy for events and transactions manging e
  and resources if there is a data inconsistency a `RollBackException` is raised after `actor` and `resource` are
  restored to their last good state.
 
-# CORE CLASSES
-    * `Event`: The base class for all events.
-    * `Transaction`: Super class for all transactions.
+ # EXPORTS
+This package exposes core classes and all exceptions from its sub-modules:
+    - `Event`: The base class for all events.
+    - `Transaction`: Super class for all transactions.
+    - All exceptions from `exception`, `scan`, `attack`, and `exchange` sub-packages.
 
 # SUB-PACKAGES
-    * `occupation`: Provides events and transactions for moving and capturing pieces.
-    * `promotion`: Provides events and transactions for promoting kings and pawns.
-    * `castling`: Provides events and transactions for castling.
+    - `.exception`: Defines all custom exceptions for occupation operations.
+    - `.occupation`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
-# USAGE
-The `Rank` classes are primarily used to validate a discover's movement at runtime. A `Piece` object holds a
-reference to its `Rank`, and delegates movement validation to it using the `walk()` method. This allows
-for a clean and simple interface for a chess board's logic.
 
+# USAGE EXAMPLES
+___
 ```python
-from chess.square import Square
-from chess.common import id_emitter
-from chess.event import ScanEventBuilder, ScanTransaction
-
-build_result = ScanEventBuilder(
-    event_id=id_emitter.scan_id,
-    actor=white_pawn_1,
-    subject=white_bishop_2,
-    destination_square=square,
-    context=context
-)
-if not build_result.is_success():
-    raise build_result.exception
-scan_event = build_result.payload
-transaction_result = ScanTransaction(event=scan_event, context=context)
-
-if not transaction_result.is_success():
-    raise transaction_result.exception
+```
 ---
 
 # BEST PRACTICES
@@ -60,29 +42,15 @@ if not transaction_result.is_success():
 * Only do mutation operations after building and validating succeed.
 * ONly do rollback operations at each mutation step.
 * Use `RollBackException` versions so callers can verify the rollback was performed correctly.
-
-# CORE EVENT EXCEPTIONS
-The higher level `chess.event` package provides a common interface for handling all event-related errors.
-They should not be used directly. Their subclasses provide more granular information useful for debugging.
-
-    * `EventException`: The base team_exception for all event-related errors.
-    * `NullEventException`: Raised if an event is null.
-    * `InvalidEventException`: Raised if an event is invalid.
-    * `EventBuilderException`: Raised if an event builder fails.
-    * `TransactionException`: Raised if a transaction fails.
-
-## EXAMPLE EXCEPTION USAGES
-These exceptions are typically raised within a `Rank` class's movement methods and can be caught to handle
-invalid moves gracefully.
-___
-```python
-```
----
 """
 
-from .exception import *
-from .occupation import *
 from .base import Event
+
+# Subclass Imports
+from .occupation import *
+
+# Module Imports
+from .exception import *
 
 
 

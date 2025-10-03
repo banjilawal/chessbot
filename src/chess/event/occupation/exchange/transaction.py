@@ -19,7 +19,7 @@ from typing import cast
 
 from chess.board import FailedPieceRemovalRolledBackException
 from chess.common import id_emitter
-from chess.event import AttackEvent, OccupationTransaction, TransferEvent
+from chess.event import AttackEvent, OccupationTransaction, TransferEvent, TransferEventValidator
 from chess.event.occupation.attack.exception import EmptyDestinationSquareRolledBackException
 
 from chess.square import Square
@@ -58,7 +58,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
     def execute(event: TransferEvent, context: ExecutionContext) -> TransactionResult:
         method = "AttackTransaction.execute"
 
-        validation = AttackEventValidation.validate(event, context)
+        validation = TransferEventValidator.validate(event)
         if not validation.is_success():
             return TransactionResult(event, validation.exception)
 

@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/event/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/event/occupation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/occupation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/event/occupation/exchange/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/event/occupation/exchange/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/transaction/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/transaction.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -241,7 +254,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/event",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/event/occupation/exchange",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -267,18 +280,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\exchange" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\actor" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece\discovery" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\scan" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\common\result" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\actor" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece\discovery" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\attack" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event" />
     </key>
   </component>
   <component name="RunManager" selected="Python.piece (1)">
@@ -518,6 +531,7 @@
       <workItem from="1759038118524" duration="14419000" />
       <workItem from="1759167128495" duration="23286000" />
       <workItem from="1759337650798" duration="16049000" />
+      <workItem from="1759451820835" duration="2961000" />
     </task>
     <servers />
   </component>
@@ -530,6 +544,11 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/config/logging_setup.py</url>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/chess/event/__init__.py</url>
+          <line>45</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

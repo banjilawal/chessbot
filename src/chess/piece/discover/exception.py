@@ -11,15 +11,12 @@ __all__ = [
     'AddNullDiscoveryException',
     
 # === DISCOVERY EXCEPTIONS WITH ROLLBACK===
-    'DiscoveryRollBackException',
+    'DiscoveryRolledBackException',
     'CircularDiscoveryRolledBackException',
     'DuplicateDiscoveryRolledBackException',
     'AddNullDiscoveryRolledBackException'
 ]
 
-"""
-Super class for Discovery exceptions
-"""
 class DiscoveryException(ChessException):
     """
     Super class of all exceptions a Board object raises. Do not use directly. Subclasses
@@ -77,7 +74,7 @@ class AddNullDiscoveryException(DiscoveryException):
     DEFAULT_MESSAGE = "Cannot add a null discovery to the list"
 
 # === DISCOVERY EXCEPTIONS WITH ROLLBACK===
-class DiscoveryRollBackException(DiscoveryException, RollbackException):
+class DiscoveryRolledBackException(DiscoveryException, RollbackException):
     """
     Any inconsistencies a discovery introduces into a transaction need to be rolled back.
     This is the super class of a discovery mutator operations, methods, or fields that raise
@@ -118,7 +115,7 @@ class AddNullDiscoveryRolledBackException(DiscoveryException):
     DEFAULT_MESSAGE = "Cannot add a null discovery to the list. Transaction rolled back."
     
     
-class DIscoveryRollBackException(DiscoveryException, RollbackException):
+class DiscoveryRolledBackException(DiscoveryException, RollbackException):
     """
     RollBackCapture exceptions should be raised in ACID transactions where a capture can
     raise an error. Do not use directly. Subclasses give details useful for debugging.
@@ -126,7 +123,7 @@ class DIscoveryRollBackException(DiscoveryException, RollbackException):
     ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = "Capture raised an error. "
 
-class CaptureFriendRolledBackException(DIscoveryRollBackException):
+class CaptureFriendRolledBackException(DiscoveryRolledBackException):
     """
     Raised if a transaction attempts capturing a friend. The transaction
     was rolled back before raising this exception.
@@ -136,7 +133,7 @@ class CaptureFriendRolledBackException(DIscoveryRollBackException):
         "Cannot capture a friend. Transaction rollback performed."
     )
 
-class KingCaptureRolledBackException(DIscoveryRollBackException):
+class KingCaptureRolledBackException(DiscoveryRolledBackException):
     """
     Raised if a transaction attempts capturing an enemy. Kings can only be checked or
     checkmated. 
@@ -147,7 +144,7 @@ class KingCaptureRolledBackException(DIscoveryRollBackException):
         "Transaction rollback performed."
     )
 
-class DoubleCaptureRolledBackException(DIscoveryRollBackException):
+class DoubleCaptureRolledBackException(DiscoveryRolledBackException):
     """
     Raised if a transaction attempts capturing an enemy combatant that is already
     a prisoner. The transaction was rolled back before raising this exception.
@@ -158,7 +155,7 @@ class DoubleCaptureRolledBackException(DIscoveryRollBackException):
         "rollback performed."
     )
 
-class UnsetCaptureRolledBackException(DIscoveryRollBackException):
+class UnsetCaptureRolledBackException(DiscoveryRolledBackException):
     """
     Raised if a transaction attempts setting prisoner's captor field null.
     The transaction was rolled back before raising this exception.

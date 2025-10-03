@@ -3,7 +3,7 @@ from .exception import *
 from chess.common.context import  *
 
 from chess.event.base import Event
-from .transaction import Transaction
+from chess.event.transaction import Transaction
 from chess.common.result.transaction import TransactionResult
 from .attack_validator import AttackValidator
 

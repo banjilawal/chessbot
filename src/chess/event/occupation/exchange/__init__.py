@@ -59,6 +59,11 @@ AUTHOR: Banji Lawal
 
 from .exception import *
 from .event import TransferEvent
+from .builder import TransferEventBuilder
+from .transaction import TransferTransaction
+from .validator import TransferEventValidator
+
+
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
