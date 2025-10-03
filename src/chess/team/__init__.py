@@ -22,7 +22,7 @@ To use this package, import the desired classes and perform team-related operati
 
 ## TEAM EXCEPTIONS
 This package defines specific exceptions for issues encountered when interacting with `Team` objects.
-The exceptions are designed to pinpoint the exact nature of an error, such as a null reference, a
+The exceptions are designed to pinpoint the exact nature of an exception, such as a null reference, a
 failed transaction, or an invalid configuration. This granular approach helps developers to quickly diagnose
 and resolve team-related issues.
 

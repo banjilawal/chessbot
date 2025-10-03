@@ -1,7 +1,7 @@
 from enum import Enum
 
 from chess.system import BuildResult, KNIGHT_STEP_SIZE
-from assurance.throw_helper import ThrowHelper
+from chess.system.error.throw_helper import ThrowHelper
 from chess.vector import (
     Vector, VectorBelowBoundsException, VectorAboveBoundsException,
     NullXComponentException, NullYComponentException, VectorBuilderException
@@ -18,7 +18,7 @@ class VectorBuilder(Enum):
      focuses on creating while `VectorValidator` is used for validating existing `Vector` instances that are passed
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `Vector` instance it produces
+    The build runs through all validation checks individually to guarantee that any `Vector` instance it produces
     meets all required specifications before construction completes.
 
     Usage:
@@ -33,7 +33,7 @@ class VectorBuilder(Enum):
     See Also:
         `Vector`: The data structure being constructed
         `VectorValidator`: Used for validating existing `Vector` instances
-        `BuildResult`: Return type containing the built `Vector` or error information
+        `BuildResult`: Return type containing the built `Vector` or exception information
     """
 
     @staticmethod
@@ -68,7 +68,7 @@ class VectorBuilder(Enum):
                 * Any validation errors from `VectorValidator`
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Vector` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `Vector` is
             created, while `VectorValidator` is used for validating `Vector` instances that are passed around after 
             creation. This separation of concerns makes the validation and building independent of each other and 
             simplifies maintenance.

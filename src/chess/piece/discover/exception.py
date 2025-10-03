@@ -44,7 +44,7 @@ class NullDiscoveryException(DiscoveryException, NullException):
 
 class DiscoveryBuilderException(DiscoveryException, BuilderException):
     """
-    Raised when BoardBuilder encounters an error while building a team. Exists primarily to
+    Raised when BoardBuilder encounters an exception while building a team. Exists primarily to
     catch all exceptions raised building a new board
     """
     ERROR_CODE = "DISCOVERY_BUILDER_ERROR"
@@ -118,10 +118,10 @@ class AddNullDiscoveryRolledBackException(DiscoveryException):
 class DiscoveryRolledBackException(DiscoveryException, RollbackException):
     """
     RollBackCapture exceptions should be raised in ACID transactions where a capture can
-    raise an error. Do not use directly. Subclasses give details useful for debugging.
+    raise an exception. Do not use directly. Subclasses give details useful for debugging.
     """
     ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Capture raised an error. "
+    DEFAULT_MESSAGE = "Capture raised an exception. "
 
 class CaptureFriendRolledBackException(DiscoveryRolledBackException):
     """

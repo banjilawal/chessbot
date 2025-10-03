@@ -118,7 +118,7 @@ class AttackValidator(Validator):
             ) from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the error here before re-raising
+        # You might want to log the exception here before re-raising
         except Exception as e:
             raise InvalidCaptureContextException(f"An unexpected error occurred during validation: {e}") from e
 

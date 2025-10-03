@@ -15,7 +15,7 @@ class CommanderBuilder(Enum):
     checks during construction. This separates the responsibility of building from validating `CommanderBuilder` focuses on
     creating while `CommanderValidator` is used for validating existing `Commander` instances that are passed around the system.
     
-    The builder runs through all validation checks individually to guarantee that any `Commander` instance it produces meets
+    The build runs through all validation checks individually to guarantee that any `Commander` instance it produces meets
     all required specifications before construction completes.
 
     `Commander` is an abstract class. `CommanderBuilder` instantiates either `Human` or `Bot` objects.
@@ -45,7 +45,7 @@ class CommanderBuilder(Enum):
     See Also:
         `Commander`: Fundamental data structure for representing commanderinates on a chessboard.
         `CommanderValidator`: Used for validating existing `Commander` instances
-        `BuildResult`: Return type containing the built `Commander` or error information
+        `BuildResult`: Return type containing the built `Commander` or exception information
     """
     
     @staticmethod
@@ -81,7 +81,7 @@ class CommanderBuilder(Enum):
                 * `EngineValidationException`: If `engine` is not null and fails validation checks.
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Commander` is
+            The build runs through all the checks on parameters and state to guarantee only a valid `Commander` is
             created, while `CommanderValidator` is used for validating `Commander` instances that are passed around after
             creation. This separation of concerns makes the validation and building independent of each other and
             simplifies maintenance.

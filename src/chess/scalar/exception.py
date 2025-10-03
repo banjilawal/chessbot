@@ -43,7 +43,7 @@ class InvalidScalarException(ScalarException, ValidationException):
 # === SCALAR BUILDER EXCEPTIONS ===
 class ScalarBuilderException(ScalarException, BuilderException):
     """
-    Raised when ScalarBuilder encounters an error building a scalar. Exists primarily
+    Raised when ScalarBuilder encounters an exception building a scalar. Exists primarily
     to catch all exceptions raised creating a new scalar.
     """
     ERROR_CODE = "SCALAR_BUILDER_ERROR"

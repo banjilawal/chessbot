@@ -11,7 +11,7 @@ class PieceBuilder(Enum):
      focuses on creation while `PieceValidator` is used for validating existing `Piece` instances that are passed 
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `Piece` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `Piece` instance it produces
     meets all required specifications before construction completes
     
     Usage:
@@ -26,7 +26,7 @@ class PieceBuilder(Enum):
     See Also:
         `Piece`: The data structure being constructed
         `PieceValidator`: Used for validating existing `Piece` instances
-        `BuildResult`: Return type containing the built `Piece` or error information
+        `BuildResult`: Return type containing the built `Piece` or exception information
     """
 
     @staticmethod
@@ -64,7 +64,7 @@ class PieceBuilder(Enum):
                     not have the piece
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Piece` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `Piece` is
             created, while `PieceValidator` is used for validating `Piece` instances that are passed around after 
             creating. This separation of concerns makes the validation and building independent of each other and
             simplifies maintenance.

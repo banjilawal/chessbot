@@ -111,7 +111,7 @@ class CheckMatedKingActivityException(ActorException):
 class SubjectException(PieceException):
     """
     SubjectException classes are raised on a piece acted upon. They are raised on the same errors as ActorException,
-    Using SubjectException makes tracing which side of the interaction is raising an error easier.
+    Using SubjectException makes tracing which side of the interaction is raising an exception easier.
     """
     ERROR_CODE = "SUBJECT_ERROR"
     DEFAULT_MESSAGE = "A potential enemy piece raised an exception"

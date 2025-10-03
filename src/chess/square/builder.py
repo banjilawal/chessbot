@@ -15,7 +15,7 @@ class SquareBuilder(Enum):
      focuses on creation while `SquareValidator` is used for validating existing `Square` instances that are passed 
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `Square` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `Square` instance it produces
     meets all required specifications before construction completes
 
     Usage:
@@ -30,7 +30,7 @@ class SquareBuilder(Enum):
     See Also:
         `Square`: The data structure being constructed
         `SquareValidator`: Used for validating existing `Square` instances
-        `BuildResult`: Return type containing the built `Square` or error information
+        `BuildResult`: Return type containing the built `Square` or exception information
     """
     
     @staticmethod
@@ -63,7 +63,7 @@ class SquareBuilder(Enum):
                 * `SquareBuilderException`: for any other construction failures
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Square` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `Square` is
             created, while `SquareValidator` is used for validating `Square` instances that are passed around after 
             creation. This separation of concerns makes the validation and building independent of each other and 
             simplifies maintenance.

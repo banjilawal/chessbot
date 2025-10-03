@@ -10,7 +10,7 @@ class PieceSearch:
 
     PieceSearch provides consistent search interface and return types across all search operations.
     Validates input parameters before searching to ensure safe operations.Returns SearchResult objects
-    encapsulating either the found entity or error information.
+    encapsulating either the found entity or exception information.
 
     Usage:
         ```python

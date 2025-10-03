@@ -16,7 +16,7 @@ class TeamBuilder(Enum):
      focuses on creating while `TeamValidator` is used for validating existing `Team` instances that are passed
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `Team` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `Team` instance it produces
     meets all required specifications before construction completes
 
     Usage:
@@ -31,7 +31,7 @@ class TeamBuilder(Enum):
     See Also:
         `Team`: The data structure being constructed
         `TeamValidator`: Used for validating existing `Team` instances
-        `BuildResult`: Return type containing the built `Team` or error information
+        `BuildResult`: Return type containing the built `Team` or exception information
     """
 
 
@@ -68,7 +68,7 @@ class TeamBuilder(Enum):
                 * `RelationshipException`: if the bidirectional relationship between `Team` and `Commander` is broken
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Team` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `Team` is
             created, while `TeamValidator` is used for validating `Team` instances that are passed around after 
             creation. This separation of concerns makes the validation and building independent of each other and 
             simplifies maintenance.

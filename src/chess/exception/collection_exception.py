@@ -123,7 +123,7 @@ class NullEncounterException(EncounterLogException):
 class RelationshipException(ChessException):
     """Base exception for relationship consistency errors."""
     ERROR_CODE = "RELATIONSHIP_ERROR"
-    DEFAULT_MESSAGE = "Relationship consistency error"
+    DEFAULT_MESSAGE = "Relationship consistency exception"
 
 class BrokenRelationshipException(RelationshipException):
     ERROR_CODE = "BROKEN_RELATIONSHIP_ERROR"

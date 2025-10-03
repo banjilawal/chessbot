@@ -17,7 +17,7 @@ class BoardBuilder:
      focuses on creating while `BoardValidator` is used for validating existing `Board` instances that are passed
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `Board` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `Board` instance it produces
     meets all required specifications before construction completes
 
     Usage:
@@ -37,7 +37,7 @@ class BoardBuilder:
     See Also:
         `Board`: The data structure being constructed
         `BoardValidator`: Used for validating existing `Board` instances
-        `BuildResult`: Return type containing the built `Board` or error information
+        `BuildResult`: Return type containing the built `Board` or exception information
     """
 
     @staticmethod
@@ -65,7 +65,7 @@ class BoardBuilder:
                 * `InvalidIdException``: if `board_id` `IdValidator.validate` returns an exception
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Board` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `Board` is
             created, while `BoardValidator` is used for validating `Board` instances that are passed around after 
             creation. This separation of concerns makes the validation and building independent of each other and 
             simplifies maintenance.

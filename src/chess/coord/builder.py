@@ -19,7 +19,7 @@ class CoordBuilder(Enum):
     checks during construction. This separates the responsibility of building from validating `CoordBuilder` focuses on
     creation while `CoordValidator` is used for validating existing `Coord` instances that are passed around the system.
     
-    The builder runs through all validation checks individually to guarantee that any `Coord` instance it produces meets
+    The build runs through all validation checks individually to guarantee that any `Coord` instance it produces meets
     all required specifications before construction completes.
     
     Usage:
@@ -34,7 +34,7 @@ class CoordBuilder(Enum):
     See Also:
         `Coord`: Fundamental data structure for representing coordinates on a chessboard.
         `CoordValidator`: Used for validating existing `Coord` instances
-        `BuildResult`: Return type containing the built `Coord` or error information
+        `BuildResult`: Return type containing the built `Coord` or exception information
     """
 
     @staticmethod
@@ -70,7 +70,7 @@ class CoordBuilder(Enum):
                 * `ColumnAboveBoundsException`: if `column` >= `ROW_SIZE`
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Coord` is
+            The build runs through all the checks on parameters and state to guarantee only a valid `Coord` is
             created, while `CoordValidator` is used for validating `Coord` instances that are passed around after
             creation. This separation of concerns makes the validation and building independent of each other and
             simplifies maintenance.

@@ -39,7 +39,7 @@ class InvalidSquareException(SquareException, ValidationException):
 # === SQUARE BUILDER EXCEPTIONS ===
 class SquareBuilderException(SquareException, BuilderException):
     """
-    Raised when SquareBuilder encounters an error building a square. Exists primarily
+    Raised when SquareBuilder encounters an exception building a square. Exists primarily
     to catch all exceptions raised creating a new square
     """
     ERROR_CODE = "SQUARE_BUILDER_ERROR"

@@ -9,7 +9,7 @@ class BuildResult(Generic[T]):
     BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
     same structure as Result but is used specifically in the context of building entities. It can hold either.
     a payload of type T or an Exception, but not both. If the build operation is successful, the payload will
-    contain the built object. If the build operation fails, the exception will contain the error that
+    contain the built object. If the build operation fails, the exception will contain the exception that
     occurred during the build process.
 
     BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate a result.

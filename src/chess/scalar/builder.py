@@ -20,7 +20,7 @@ class ScalarBuilder(Enum):
      focuses on creating while `ScalarValidator` is used for validating existing `Scalar` instances that are passed
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `Scalar` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `Scalar` instance it produces
     meets all required specifications before construction completes
 
     Usage:
@@ -36,7 +36,7 @@ class ScalarBuilder(Enum):
     See Also:
         `Scalar`: The data structure being constructed
         `ScalarValidator`: Used for validating existing `Scalar` instances
-        `BuildResult`: Return type containing the built `Scalar` or error information
+        `BuildResult`: Return type containing the built `Scalar` or exception information
     """
     
     @staticmethod
@@ -73,7 +73,7 @@ class ScalarBuilder(Enum):
                 * `InvalidScalarException`: Wraps any preceding exceptions
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Scalar` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `Scalar` is
             created, while `ScalarValidator` is used for validating `Scalar` instances that are passed around after 
             creation. This separation of concerns makes the validation and building independent of each other and 
             simplifies maintenance.

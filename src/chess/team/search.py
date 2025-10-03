@@ -9,7 +9,7 @@ class TeamSearch:
     """
     Static methods for entities and operations that need to search a Team for pieces and ranks. Provides consistent
     search interface and return types across all search operations. Validates input parameters before searching to
-    ensure safe operations. Returns SearchResult objects encapsulating either the found entity or error information.
+    ensure safe operations. Returns SearchResult objects encapsulating either the found entity or exception information.
 
     Usage:
     ```python

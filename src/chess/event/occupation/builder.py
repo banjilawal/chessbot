@@ -21,7 +21,7 @@ class OccupationEventBuilder(Enum):
      focuses on creation while `OccupationEventValidator` is used for validating existing `OccupationEvent` instances that are passed 
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `OccupationEvent` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `OccupationEvent` instance it produces
     meets all required specifications before construction completes
     
     Usage:
@@ -31,7 +31,7 @@ class OccupationEventBuilder(Enum):
     See Also:
         `OccupationEvent`: The data structure being constructed
         `OccupationEventValidator`: Used for validating existing `OccupationEvent` instances
-        `BuildResult`: Return type containing the built `OccupationEvent` or error information
+        `BuildResult`: Return type containing the built `OccupationEvent` or exception information
     """
 
     @staticmethod
@@ -69,7 +69,7 @@ class OccupationEventBuilder(Enum):
                     not have the occupationEvent
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `OccupationEvent` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `OccupationEvent` is
             created, while `OccupationEventValidator` is used for validating `OccupationEvent` instances that are passed around after 
             creating. This separation of concerns makes the validation and building independent of each other and
             simplifies maintenance.

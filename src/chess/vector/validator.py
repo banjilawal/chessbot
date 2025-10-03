@@ -119,9 +119,9 @@ class VectorValidator(Validator):
             raise InvalidVectorException(f"{method}: f{InvalidVectorException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the error here before re-raising
+        # You might want to log the exception here before re-raising
         except Exception as e:
-            raise InvalidVectorException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidVectorException(f"An unexpected exception occurred during validation: {e}") from e
 #
 #
 # def main():

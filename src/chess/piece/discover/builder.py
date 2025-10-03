@@ -17,7 +17,7 @@ class DiscoveryBuilder(Enum):
     focuses on creating while `DiscoveryValidator` is used for validating existing `Discovery` instances that are passed
     around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `Discovery` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `Discovery` instance it produces
     meets all required specifications before construction completes
     
     Usage:
@@ -32,7 +32,7 @@ class DiscoveryBuilder(Enum):
     See Also:
         `Discovery`: The data structure being constructed
         `DiscoveryValidator`: Used for validating existing `Discovery` instances
-        `BuildResult`: Return type containing the built `Discovery` or error information
+        `BuildResult`: Return type containing the built `Discovery` or exception information
     """
 
     @staticmethod
@@ -63,7 +63,7 @@ class DiscoveryBuilder(Enum):
                 * `AutoDiscoveryException`: if `actor` and `discover` are the same.
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `Discovery` is 
+            The build runs through all the checks on parameters and state to guarantee only a valid `Discovery` is
             created, while `DiscoveryValidator` is used for validating `Discovery` instances that are passed around after 
             creation. This separation of concerns makes the validation and building independent of each other and 
             simplifies maintenance.

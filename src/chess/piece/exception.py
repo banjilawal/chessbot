@@ -106,7 +106,7 @@ class NullCombatantException(NullPieceException):
 # === PIECE BUILDER EXCEPTIONS ===
 class PieceBuilderException(PieceException, BuilderException):
     """
-    Raised when PieceBuilder encounters an error while building a team. Exists primarily to
+    Raised when PieceBuilder encounters an exception while building a team. Exists primarily to
     catch all exceptions raised building a new piece
     """
     ERROR_CODE = "PIECE_BUILDER_ERROR"
@@ -171,7 +171,7 @@ class DoubleCaptureException(CapturePieceException):
 
 class UnsetCaptureException(CapturePieceException):
     """
-    If piece.captor is not null. Attempting to change it raises this error
+    If piece.captor is not null. Attempting to change it raises this exception
     """
     ERROR_CODE = "UNSET_CAPTOR_ERROR"
     DEFAULT_MESSAGE =(
@@ -191,10 +191,10 @@ class CircularCaptureException(CapturePieceException):
 class RollBackCaptureException(CapturePieceException, RollbackException):
     """
     RollBackCapture exceptions should be raised in ACID transactions where a capture can
-    raise an error. Do not use directly. Subclasses give details useful for debugging.
+    raise an exception. Do not use directly. Subclasses give details useful for debugging.
     """
     ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Capture raised an error. Transaction rolled back."
+    DEFAULT_MESSAGE = "Capture raised an exception. Transaction rolled back."
 
 class CaptureFriendRolledBackException(RollBackCaptureException):
     """

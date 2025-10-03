@@ -40,7 +40,7 @@ class ScanTransactionException(TransactionException):
     the scan's lifecycle.
     """
     ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "ScanTransaction raised an error."
+    DEFAULT_MESSAGE = "ScanTransaction raised an exception."
 
 
 
@@ -50,11 +50,11 @@ class AttackEventException(OccupationEventException):
     Base class for exceptions raised during attack/capture operations.
 
     PURPOSE:
-        Used when an error occurs in the course of an attack or capture
+        Used when an exception occurs in the course of an attack or capture
         (e.g., invalid target, rollback during capture, inconsistent board state).
     """
     DEFAULT_CODE = "ATTACK_ERROR"
-    DEFAULT_MESSAGE = "An error occurred during an attack or capture transaction."
+    DEFAULT_MESSAGE = "An exception occurred during an attack or capture transaction."
 
 
 

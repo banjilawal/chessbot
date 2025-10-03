@@ -45,7 +45,7 @@ diagnose and resolve issues by pinpointing the exact nature of the problem.
 ## EXAMPLE EXCEPTION USAGE
 These exceptions can be imported and raised within vector-related code to enforce
 data integrity. They allow calling code to use specific `try...except` blocks
-to handle different error conditions gracefully. For example:
+to handle different exception conditions gracefully. For example:
 
 # >>> from chess.vector.team_exception import XComponentNullException, VectorBelowBoundsException
 >>> from chess.vector import Vector

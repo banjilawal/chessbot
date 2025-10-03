@@ -31,7 +31,7 @@ class Discoveries:
         - Validation of ids, names, coordinates, and ranks is delegated to their
           respective validators (`IdValidator`, `NameValidator`, `CoordValidator`,
           `RankValidator`).
-        - Each method returns a `SearchResult` to provide consistent success/empty/error handling.
+        - Each method returns a `SearchResult` to provide consistent success/empty/exception handling.
         - The collection enforces uniqueness and immutability at the discover level.
     """
     _items: List[Discovery]

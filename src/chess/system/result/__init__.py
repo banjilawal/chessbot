@@ -43,7 +43,7 @@ AUTHOR: Banji Lawal
 from .exception import *
 
 from .result import Result
-from .build import BuildResult
+from chess.system.build.result import BuildResult
 from .search import SearchResult
 from .transaction import TransactionResult
 

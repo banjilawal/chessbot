@@ -17,7 +17,7 @@ class ScanEventBuilder(Enum):
      focuses on creation while `ScanEventValidator` is used for validating existing `ScanEvent` instances that are passed 
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `ScanEvent` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `ScanEvent` instance it produces
     meets all required specifications before construction completes
     
     Usage:
@@ -32,7 +32,7 @@ class ScanEventBuilder(Enum):
     See Also:
         `ScanEvent`: The data structure being constructed
         `ScanEventValidator`: Used for validating existing `ScanEvent` instances
-        `BuildResult`: Return type containing the built `ScanEvent` or error information
+        `BuildResult`: Return type containing the built `ScanEvent` or exception information
     """
 
     @staticmethod
@@ -77,7 +77,7 @@ class ScanEventBuilder(Enum):
                     not have the scanEvent
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `ScanEvent` is
+            The build runs through all the checks on parameters and state to guarantee only a valid `ScanEvent` is
             created, while `ScanEventValidator` is used for validating `ScanEvent` instances that are passed around after
             creating. This separation of concerns makes the validation and building independent of each other and
             simplifies maintenance.

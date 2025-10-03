@@ -102,7 +102,7 @@ class TeamValidator(Validator):
             raise InvalidTeamException(f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the error here before re-raising
+        # You might want to log the exception here before re-raising
         except Exception as e:
             raise InvalidTeamException(f"An unexpected error occurred during validation: {e}") from e
 

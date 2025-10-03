@@ -82,7 +82,7 @@ class InvalidTeamException(TeamException, ValidationException):
 # === TEAM BUILDER EXCEPTIONS ===
 class TeamBuilderException(TeamException, BuilderException):
     """
-    Raised when TeamBuilder encounters an error while building a team. Exists primarily to
+    Raised when TeamBuilder encounters an exception while building a team. Exists primarily to
     catch all exceptions raised building a new team
     """
     ERROR_CODE = "TEAM_BUILDER_ERROR"
@@ -109,7 +109,7 @@ class AddTeamMemberException(TeamRosterException):
     DEFAULT_MESSAGE = "Could not add piece to team's roster"
 
 class AddEnemyToRosterException(TeamRosterException):
-    """Attempting to add an enemy to the team's roster raises an error"""
+    """Attempting to add an enemy to the team's roster raises an exception"""
     ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR"
     DEFAULT_MESSAGE = "An enemy piece cannot be added to the team's roster"
 
@@ -196,7 +196,7 @@ class TeamHostageListException(TeamException):
     DEFAULT_MESSAGE = "Team hostage list raised an exception"
 
 class InvalidFriendlyHostageException(TeamHostageListException):
-    """Attempting to a friendly to the hostage list raises an error"""
+    """Attempting to a friendly to the hostage list raises an exception"""
     ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR"
     DEFAULT_MESSAGE = "A friendly piece cannot be added to the team's hostage list"
 
@@ -206,7 +206,7 @@ class AddEnemyHostageException(TeamHostageListException):
     DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list"
 
 class AddEnemyKingHostageException(TeamHostageListException):
-    """Attempting to an enemy king to the hostage list raises an error"""
+    """Attempting to an enemy king to the hostage list raises an exception"""
     ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR"
     DEFAULT_MESSAGE = (
         "An enemy king cannot be added to the team's hostage list. Kings can only "
@@ -214,7 +214,7 @@ class AddEnemyKingHostageException(TeamHostageListException):
     )
 
 class HostageRemovalException(TeamHostageListException):
-    """Attempting to remove an enemy from the hostage list raises an error"""
+    """Attempting to remove an enemy from the hostage list raises an exception"""
     ERROR_CODE = "HOSTAGE_REMOVAL_ERROR"
     DEFAULT_MESSAGE = "An enemy piece cannot be removed from the team's hostage list"
 
@@ -268,7 +268,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
 
 # === SEARCH EXCEPTIONS ===
 class RosterNumberOutOfBoundsException(TeamException, SearchException):
-    """Attempting to search for a roster number < 1 or > team_size raises an error"""
+    """Attempting to search for a roster number < 1 or > team_size raises an exception"""
     ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Roster numbers are in the range [1, team_size]. Search failed"
     

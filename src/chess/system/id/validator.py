@@ -18,7 +18,7 @@ class IdValidator(Validator):
             - Not null
             - Not 0 or negative (is positive)
             
-        Any validators error will have be encapsulated in a InvalidIdException
+        Any validators exception will have be encapsulated in a InvalidIdException
 
         Args
             t (Coord): generic to be validated

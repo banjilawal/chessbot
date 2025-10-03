@@ -56,6 +56,6 @@ class ScanTransaction(OccupationTransaction[ScanEvent]):
             raise ScanTransactionException(f"{method}: {e.message}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the error here before re-raising
+        # You might want to log the exception here before re-raising
         except Exception as e:
             raise ScanTransactionException(f"{method}: {e}") from e

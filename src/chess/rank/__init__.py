@@ -43,7 +43,7 @@ True
 ## PURPOSE
 This package defines specific exceptions for issues encountered during a discover's movement or promotion
 validation. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
-exact nature of the error, such as an invalid move for a specific discover type. Each team_exception acts as a
+exact nature of the exception, such as an invalid move for a specific discover type. Each team_exception acts as a
 wrapper for underlying errors, providing a clean and consistent API for handling movement-related failures.
 
 ###CORE RANK EXCEPTIONS

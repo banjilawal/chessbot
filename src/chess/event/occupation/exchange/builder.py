@@ -21,7 +21,7 @@ class TransferEventBuilder(Enum):
      focuses on creation while `AttackEventValidator` is used for validating existing `AttackEvent` instances that are passed 
      around the system.
 
-    The builder runs through all validation checks individually to guarantee that any `AttackEvent` instance it produces 
+    The build runs through all validation checks individually to guarantee that any `AttackEvent` instance it produces
     meets all required specifications before construction completes
     
     Usage:
@@ -36,7 +36,7 @@ class TransferEventBuilder(Enum):
     See Also:
         `AttackEvent`: The data structure being constructed
         `AttackEventValidator`: Used for validating existing `AttackEvent` instances
-        `BuildResult`: Return type containing the built `AttackEvent` or error information
+        `BuildResult`: Return type containing the built `AttackEvent` or exception information
     """
 
     @staticmethod
@@ -81,7 +81,7 @@ class TransferEventBuilder(Enum):
                     not have the attackEvent
 
         Note:
-            The builder runs through all the checks on parameters and state to guarantee only a valid `AttackEvent` is
+            The build runs through all the checks on parameters and state to guarantee only a valid `AttackEvent` is
             created, while `AttackEventValidator` is used for validating `AttackEvent` instances that are passed around after
             creating. This separation of concerns makes the validation and building independent of each other and
             simplifies maintenance.

@@ -42,7 +42,7 @@ class EventException(ChessException):
         Only use in the finally statement of a try-except block.
     """
     ERROR_CODE = "EVENT_ERROR"
-    DEFAULT_MESSAGE = "Event raised an error."
+    DEFAULT_MESSAGE = "Event raised an exception."
 
 class NullEventException(EventException, NullException):
     """
@@ -82,4 +82,4 @@ class TransactionException(ChessException):
     give details useful for debugging. Class exists primarily for catching all transaction exceptions.
     """
     ERROR_CODE = "TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "Transaction raised an error."
+    DEFAULT_MESSAGE = "Transaction raised an exception."

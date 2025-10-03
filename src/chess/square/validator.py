@@ -34,7 +34,7 @@ class SquareValidator(Validator):
         Validates that an existing `Square` instance meets specifications.
         This method performs a series of checks on a Square instance, ensuring it is not null and that 
         its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised 
-        as a `InvalidSquareException`, providing a clean and consistent error-handling experience.
+        as a `InvalidSquareException`, providing a clean and consistent exception-handling experience.
 
         Args
             `t` (`Square`): `Square` instance to validate
@@ -86,6 +86,6 @@ class SquareValidator(Validator):
             raise InvalidSqaureException("Square failed validation.") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the error here before re-raising
+        # You might want to log the exception here before re-raising
         except Exception as e:
-            raise InvalidSqaureException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidSqaureException(f"An unexpected exception occurred during validation: {e}") from e

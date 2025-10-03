@@ -2,7 +2,7 @@ from chess.exception.id.negative_id_exception import ChessException
 
 
 class SquareException(ChessException):
-    default_message = "An error occurred in p chess square"
+    default_message = "An exception occurred in p chess square"
 
 
 

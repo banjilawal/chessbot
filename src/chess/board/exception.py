@@ -53,7 +53,7 @@ class InvalidBoardException(BoardException, ValidationException):
 # === BOARD BUILDER EXCEPTIONS ===
 class BoardBuilderException(BoardException, BuilderException):
     """
-    Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all 
+    Raised when BoardBuilder encounters an exception while building a team. Exists primarily to catch all
     exceptions raised build a new board
     """
     ERROR_CODE = "BOARD_BUILDER_ERROR"

@@ -99,7 +99,7 @@ class AttackEventValidator(EventValidator):
             raise InvalidScanEventException(f"{method}: {InvalidScanEventException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the error here before re-raising
+        # You might want to log the exception here before re-raising
         except Exception as e:
             raise InvalidScanEventException(f"{method}: {e}") from e
 
