@@ -2,7 +2,7 @@ from typing import cast, Generic
 
 from chess.geometry.exception.coord import CoordValidationException
 from chess.result import Result
-from chess.system.validator import Validator, T
+from chess.system.validation.validator import Validator, T
 from chess.system.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import (
     RowBelowBoundsException, RowAboveBoundsException,

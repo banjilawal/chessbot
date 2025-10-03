@@ -5,14 +5,14 @@
 # # from chess.validation.base import Rank
 #
 #
-from typing import Generic, TypeVar, cast
+from typing import TypeVar, cast
 
 
 from chess.system import Result
-from chess.system.validator import Validator
+from chess.system.validation.validator import Validator
 from chess.rank import (
     Rank, King, Pawn, Knight, Bishop, Rook, Queen, RankSpec,
-    InvalidKingException, InvalidPawnException,
+    InvalidPawnException,
     InvalidKnightException, InvalidBishopException,
     InvalidRookException, InvalidQueenException,
     NullRankException, InvalidRankException,

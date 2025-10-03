@@ -5,7 +5,6 @@ __all__ = [
     'NullStringException',
     'BlankStringException',
     'NullNumberException',
-    'ValidationException',
     'BuilderException',
     'RollbackException',
     'SearchException'
@@ -51,13 +50,6 @@ class NullException(ChessException):
     """
     ERROR_CODE = "NULL_ERROR"
     DEFAULT_MESSAGE = "cannot be null"
-
-
-# === TOP LEVEL VALIDATION EXCEPTION ===
-
-class ValidationException(ChessException):
-    ERROR_CODE = "VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Validation failed"
 
 
 

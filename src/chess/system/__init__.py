@@ -29,7 +29,7 @@ from .utils import *
 from .result import *
 from .config import *
 from .emitter import *
-from .validator import Validator
+from chess.system.validation.validator import Validator
 
 
 # Package metadata (organic to __init__.py)
