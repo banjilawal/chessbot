@@ -19,6 +19,7 @@ A package providing an immutable hierarchy for events and transactions manging e
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
     - `Event`: The base class for all events.
+    - `EventValidator`: The base class for all event validators.
     - `Transaction`: Super class for all transactions.
     - All exceptions from `exception`, `scan`, `attack`, and `exchange` sub-packages.
 
@@ -45,6 +46,7 @@ ___
 """
 
 from .base import Event
+from .validator import EventValidator
 
 # Subclass Imports
 from .occupation import *

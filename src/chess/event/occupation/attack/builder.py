@@ -1,15 +1,6 @@
 from enum import Enum
 from typing import cast
 
-from chess.exception import SearchException
-from chess.piece.exception import CircularCaptureException
-from chess.search import BoardSearch
-from chess.square import Square
-from assurance import ThrowHelper
-from chess.event import AttackEvent, AttackEventBuilderException, TargetSquareMismatchException
-from chess.common import IdValidator, BuildResult, ExecutionContext
-from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidPieceException, CombatantPiece, \
-    CaptureFriendException, KingCaptureException
 
 
 class AttackEventBuilder(Enum):
@@ -47,7 +38,6 @@ class AttackEventBuilder(Enum):
         destination_square: Square,
         context: ExecutionContext
     ) -> BuildResult[AttackEvent]:
-
         """
         Constructs a new `AttackEvent` instance with comprehensive checks on the parameters and states during the
         build process.
@@ -102,7 +92,6 @@ class AttackEventBuilder(Enum):
             if not id_validation.is_success():
                 ThrowHelper.throw_if_invalid(AttackEventBuilder, id_validation)
 
-
             actor_validation = PieceValidator.validate(actor)
             if not actor_validation.is_success():
                 raise InvalidPieceException(f"{method}: AttackEvent actor failed validation")
@@ -117,8 +106,11 @@ class AttackEventBuilder(Enum):
                     CircularCaptureException(CircularCaptureException.DEFAULT_MESSAGE)
                 )
 
-            search_result = BoardSearch.square_by_coord(coord=enemy.current_position, board=context.board)
-            if not search_result.payload == destination_square:
+            enemy_square_search = BoardSearch.square_by_coord(
+                board=context.board,
+                coord=enemy.current_position
+            )
+            if not enemy_square_search.payload == destination_square:
                 ThrowHelper.throw_if_invalid(
                     AttackEventBuilder,
                     TargetSquareMismatchException(
@@ -126,13 +118,16 @@ class AttackEventBuilder(Enum):
                     )
                 )
 
-            search = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
-            if not search.is_success():
+            actor_square_search = BoardSearch.square_by_coord(
+                board = context.board,
+                coord=actor.current_position
+            )
+            if not actor_square_search.is_success():
                 ThrowHelper.throw_if_invalid(
                     AttackEventBuilder,
                     SearchException(f"{method}: {SearchException.DEFAULT_MESSAGE}")
                 )
-            actor_square = cast(Square, search.payload)
+            actor_square = actor_square_search.payload
 
             if not actor.is_enemy(enemy):
                 ThrowHelper.throw_if_invalid(
@@ -147,9 +142,9 @@ class AttackEventBuilder(Enum):
                 )
 
             return BuildResult(payload=AttackEvent(
-                event_id=event_id,
                 actor=actor,
                 enemy=enemy,
+                event_id=event_id,
                 actor_square=actor_square,
                 destination_square=destination_square
                 )

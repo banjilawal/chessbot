@@ -14,7 +14,7 @@ from chess.square import InvalidSquareException
 
 T = TypeVar('T')
 
-class AttackEventValidator:
+class AttackEventValidator(EventValidator):
 
     @staticmethod
     def validate(t: AttackEvent, context: ExecutionContext) -> Result[ScanEvent]:
