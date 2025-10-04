@@ -82,21 +82,21 @@ class DiscoveryBuilder(Enum):
         try:
             observer_validation = PieceValidator.validate(observer)
             if not observer_validation.is_success():
-                ThrowHelper.throw_if_invalid(DiscoveryBuilder, observer_validation)
+                ThrowHelper.propagate_error(DiscoveryBuilder, observer_validation)
                 
             subject_validation = PieceValidator.validate(subject)
             if not subject_validation.is_success():
-                ThrowHelper.throw_if_invalid(DiscoveryBuilder, subject_validation)
+                ThrowHelper.propagate_error(DiscoveryBuilder, subject_validation)
                 
             if observer == subject:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     DiscoveryBuilder,
                     CircularDiscoveryException(CircularDiscoveryException.DEFAULT_MESSAGE)
                 )
 
             search_result = observer.discoveries.find_by_id(subject.id)
             if not search_result.is_empty():
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     DiscoveryBuilder,
                     AddDuplicateDiscoveryException(AddDuplicateDiscoveryException.DEFAULT_MESSAGE)
                 )

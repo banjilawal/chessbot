@@ -1,24 +1,24 @@
-from enum import Enum
+
 from typing import Any, Callable
 
-from assurance.error_handler import ErrorHandler
-from chess.result import Result
+from chess.system.err.handler import ErrorHandler
 
 
-class InstructionRecorder(Enum):
-    @staticmethod
-    def throw_if_invalid(context: Any, result: Result, exception_factory: Callable[[], Exception] = None):
+
+class ErrorPropagator:
+    @classmethod
+    def propagate_error(context: Any, result: Result, exception_factory: Callable[[], Exception] = None):
         if result.is_success():
             return
 
         if exception_factory is None:
-            exception_factory = InstructionRecorder._default_exception_factory
+            exception_factory = ErrorPropagator._default_exception_factory
 
         ErrorHandler.log_and_raise(context, exception_factory())
 
         # if not result.is_success():
         #     ErrorHandler.log_and_raise(context, exception_factory)
 
-    @staticmethod
+    @classmethod
     def _default_exception_factory() -> Exception:
         return ValueError("Validation failed")

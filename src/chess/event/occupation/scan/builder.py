@@ -96,7 +96,7 @@ class ScanEventBuilder(Enum):
         try:
             id_validation = IdValidator.validate(event_id)
             if not id_validation.is_success():
-                ThrowHelper.throw_if_invalid(ScanEventBuilder, id_validation)
+                ThrowHelper.propagate_error(ScanEventBuilder, id_validation)
 
 
             actor_validation = PieceValidator.validate(actor)
@@ -108,14 +108,14 @@ class ScanEventBuilder(Enum):
                 raise InvalidPieceException(f"{method}: ScanEvent enemy failed validate")
 
             if actor == subject:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     ScanEventBuilder,
                     CircularDiscoveryException(CircularDiscoveryException.DEFAULT_MESSAGE)
                 )
 
             search_result = BoardSearch.square_by_coord(coord=subject.current_position, board=context.board)
             if not search_result.payload == destination_square:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     ScanEventBuilder,
                     TargetSquareMismatchException(
                         f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"

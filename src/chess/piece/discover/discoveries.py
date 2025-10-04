@@ -53,7 +53,7 @@ class Discoveries:
         method = "Discoveries.record_discovery"
 
         if discovery is None:
-            ThrowHelper.throw_if_invalid(
+            ThrowHelper.propagate_error(
                 Discoveries,
                 NullDiscoveryException(f"{method}:{NullDiscoveryException.DEFAULT_MESSAGE}")
             )

@@ -91,17 +91,17 @@ class ScalarBuilder(Enum):
 
         try:
             if value is None:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     ScalarBuilder, 
                     NullNumberException(NullNumberException.DEFAULT_MESSAGE)
                 )
             if value < -BOARD_DIMENSION:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     ScalarBuilder, 
                     ScalarBelowBoundsException(ScalarBelowBoundsException.DEFAULT_MESSAGE)
                 )
             if value > BOARD_DIMENSION:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     ScalarBuilder, 
                     ScalarAboveBoundsException(ScalarAboveBoundsException.DEFAULT_MESSAGE)
             )

@@ -92,34 +92,34 @@ class CoordBuilder(Enum):
 
         try:
             if row is None:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     CoordBuilder,
                     NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
                 )
             if row < 0:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     CoordBuilder,
                     RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
                 )
             if row >= ROW_SIZE:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     CoordBuilder,
                     RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
                 )
 
 
             if column is None:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     CoordBuilder,
                     NullColumnException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
                 )
             if column < 0:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     CoordBuilder,
                     ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
                 )
             if column >= COLUMN_SIZE:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     CoordBuilder,
                     ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
                 )

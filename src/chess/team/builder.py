@@ -91,27 +91,27 @@ class TeamBuilder(Enum):
 
         try:
             if profile is None:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     TeamBuilder, NullTeamSchemaException(NullTeamSchemaException.DEFAULT_MESSAGE)
                 )
             if not isinstance(profile, TeamSchema):
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     TeamBuilder, TypeError(f"{method} Expected a TeamProfile, got {type(profile).__name__}")
                 )
 
             id_validation = IdValidator.validate(team_id)
             if not id_validation.is_success():
-                ThrowHelper.throw_if_invalid(TeamBuilder, id_validation.exception)
+                ThrowHelper.propagate_error(TeamBuilder, id_validation.exception)
 
 
             commander_validation = CommanderValidator.validate(commander)
             if not commander_validation.is_success():
-                ThrowHelper.throw_if_invalid(TeamBuilder, commander_validation.exception)
+                ThrowHelper.propagate_error(TeamBuilder, commander_validation.exception)
 
             team = Team(team_id=team_id, commander=commander, schema=profile)
 
             if team.commander != commander:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     TeamBuilder,
                     InvalidCommanderAssignmentException(InvalidCommanderAssignmentException.DEFAULT_MESSAGE)
                 )
@@ -121,7 +121,7 @@ class TeamBuilder(Enum):
 
 
             if team not in commander.teams:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     TeamBuilder,
                     RelationshipException(RelationshipException.DEFAULT_MESSAGE)
                 )

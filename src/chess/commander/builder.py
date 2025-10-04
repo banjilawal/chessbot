@@ -105,17 +105,17 @@ class CommanderBuilder(Enum):
         try:
             # id_validation = IdValidator.validate(commander_id)
             # if not id_validation.is_success():
-            #     InstructionRecorder.throw_if_invalid(CommanderBuilder, id_validation.err)
+            #     ErrorPropagator.throw_if_invalid(CommanderBuilder, id_validation.err)
 
 
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
-                ThrowHelper.throw_if_invalid(CommanderBuilder, name_validation.exception)
+                ThrowHelper.propagate_error(CommanderBuilder, name_validation.exception)
                 raise name_validation.exception
 
             if engine is not None and not isinstance(engine, DecisionEngine):
                 error  = TypeError(f"Expected a Decision, but got {type(engine).__name__}.")
-                ThrowHelper.throw_if_invalid(CommanderBuilder, error)
+                ThrowHelper.propagate_error(CommanderBuilder, error)
                 raise error
 
             if engine is not None and isinstance(engine, DecisionEngine):

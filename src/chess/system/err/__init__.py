@@ -7,14 +7,15 @@ Created: 2025-10-03
 version: 1.0.0
 
 # PURPOSE
-High level exceptions inherited by subclasses in the system.
-
+High level exceptions inherited by subclasses in the system. Utilities for centralizing
+clean error handling and logging
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
     - `ChessException`: The base class exceptions in the application.
-    - `NullException`:`
-    - `InstructionRecorder`: Coordinates centralized err logging
+    - `NullException`: Super class for all null exceptions.
+    - `ErrorHandler`: Logs the errors
+    - `ErrorPropagator`: Coordinates re-raising and logging errors
 
 
 
@@ -29,7 +30,8 @@ ___
 """
 
 from .exception import *
-from .throw_helper import InstructionRecorder
+from handler import ErrorHandler
+from .propagator import ErrorPropagator
 
 
 # Package metadata (organic to __init__.py)
@@ -40,7 +42,9 @@ __package_name__ = 'chess.system.err'
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'InstructionRecorder',
+    'ErrorHandler',
+    'ErrorPropagator',
+
     *exception.__all__,
 
 

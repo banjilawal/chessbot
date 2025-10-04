@@ -98,7 +98,7 @@ class AttackEventBuilder(Enum):
         try:
             id_validation = IdValidator.validate(event_id)
             if not id_validation.is_success():
-                ThrowHelper.throw_if_invalid(AttackEventBuilder, id_validation)
+                ThrowHelper.propagate_error(AttackEventBuilder, id_validation)
 
             actor_validation = PieceValidator.validate(actor)
             if not actor_validation.is_success():
@@ -109,7 +109,7 @@ class AttackEventBuilder(Enum):
                 raise InvalidPieceException(f"{method}: AttackEvent enemy failed validate")
 
             if actor == enemy:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     AttackEventBuilder,
                     CircularCaptureException(CircularCaptureException.DEFAULT_MESSAGE)
                 )
@@ -119,7 +119,7 @@ class AttackEventBuilder(Enum):
                 coord=enemy.current_position
             )
             if not enemy_square_search.payload == destination_square:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     AttackEventBuilder,
                     TargetSquareMismatchException(
                         f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
@@ -131,7 +131,7 @@ class AttackEventBuilder(Enum):
                 coord=actor.current_position
             )
             if not actor_square_search.is_success():
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     AttackEventBuilder,
                     ActorSquareNotFoundException(
                         f"{method}: {ActorSquareNotFoundException.DEFAULT_MESSAGE}")
@@ -139,13 +139,13 @@ class AttackEventBuilder(Enum):
             actor_square = actor_square_search.payload
 
             if not actor.is_enemy(enemy):
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     AttackEventBuilder,
                     CaptureFriendException(CaptureFriendException.DEFAULT_MESSAGE)
                 )
 
             if not isinstance(enemy, CombatantPiece):
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     AttackEventBuilder,
                     KingCaptureException(KingCaptureException.DEFAULT_MESSAGE)
                 )

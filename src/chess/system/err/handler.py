@@ -10,7 +10,7 @@ T = TypeVar('T')
 class ErrorHandler(Enum):
     """
     Making ErrorHandler an enum for future extensibilit assures only one instance exists.
-    Decorator-based error handler that logs errors with minimal context
+    Decorator-based err handler that logs errors with minimal context
     """
 
     @staticmethod
@@ -81,16 +81,16 @@ class ErrorHandler(Enum):
     #
     #     return wrapper
     #
-    # def _log_error(self, error: Exception, func: Callable, instance: Any = None):
-    #     """Extracts only class/method name and error details"""
+    # def _log_error(self, err: Exception, func: Callable, instance: Any = None):
+    #     """Extracts only class/method name and err details"""
     #     class_name = instance.__class__.__name__ if instance else "Module"
     #     method_name = func.__name__
     #
-    #     self.logger.error(
+    #     self.logger.err(
     #         "[%s.%s] %s: %s",
     #         class_name,
     #         method_name,
-    #         error.__class__.__name__,  # Error type only
-    #         str(error)                 # Error message only
-    #         # No stacktrace, no context - error object is source of truth
+    #         err.__class__.__name__,  # Error type only
+    #         str(err)                 # Error message only
+    #         # No stacktrace, no context - err object is source of truth
     #     )

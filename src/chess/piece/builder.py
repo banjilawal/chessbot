@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.system import BuildResult, NameValidator, InstructionRecorder
+from chess.system import BuildResult, NameValidator, ErrorPropagator
 
 from chess.rank import Rank, King, RankValidator
 from chess.piece import Piece, KingPiece, CombatantPiece, UnregisteredTeamMemberException
@@ -44,22 +44,22 @@ class PieceBuilder(Enum):
         try:
             # id_validation = IdValidator.validate(piece_id)
             # if not id_validation.is_success():
-            #     InstructionRecorder.throw_if_invalid(PieceBuilder, id_validation)
+            #     ErrorPropagator.throw_if_invalid(PieceBuilder, id_validation)
 
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
-                InstructionRecorder.throw_if_invalid(PieceBuilder, name_validation)
+                ErrorPropagator.propagate_error(PieceBuilder, name_validation)
 
             rank_validation = RankValidator.validate(rank)
             if not rank_validation.is_success():
-                InstructionRecorder.throw_if_invalid(PieceBuilder, rank_validation)
+                ErrorPropagator.propagate_error(PieceBuilder, rank_validation)
 
             team_validation = TeamValidator.validate(team)
             if not team_validation.is_success():
-                InstructionRecorder.throw_if_invalid(PieceBuilder, team_validation)
+                ErrorPropagator.propagate_error(PieceBuilder, team_validation)
 
             if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
-                InstructionRecorder.throw_if_invalid(
+                ErrorPropagator.propagate_error(
                     PieceBuilder,
                     FullRankQuotaException(FullRankQuotaException.DEFAULT_MESSAGE)
                 )
@@ -70,7 +70,7 @@ class PieceBuilder(Enum):
             piece = CombatantPiece(piece_id=piece_id, name=name, rank=rank, team=team)
 
             if not piece.team == team:
-                InstructionRecorder.throw_if_invalid(
+                ErrorPropagator.propagate_error(
                     PieceBuilder,
                     ConflictingTeamAssignmentException(ConflictingTeamAssignmentException.DEFAULT_MESSAGE)
                 )
@@ -79,7 +79,7 @@ class PieceBuilder(Enum):
                 team.add_to_roster(piece)
 
             if piece not in team.roster:
-                InstructionRecorder.throw_if_invalid(
+                ErrorPropagator.propagate_error(
                     PieceBuilder,
                     UnregisteredTeamMemberException(UnregisteredTeamMemberException.DEFAULT_MESSAGE)
                 )

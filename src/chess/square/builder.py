@@ -87,15 +87,15 @@ class SquareBuilder(Enum):
         try:
             id_validation = IdValidator.validate(square_id)
             if not id_validation.is_success():
-                ThrowHelper.throw_if_invalid(SquareBuilder, id_validation.exception)
+                ThrowHelper.propagate_error(SquareBuilder, id_validation.exception)
                 
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
-                ThrowHelper.throw_if_invalid(SquareBuilder, name_validation.exception)
+                ThrowHelper.propagate_error(SquareBuilder, name_validation.exception)
                 
             coord_result = CoordValidator.validate(coord)
             if not coord_result.is_success():
-                ThrowHelper.throw_if_invalid(SquareBuilder, coord_result.exception)
+                ThrowHelper.propagate_error(SquareBuilder, coord_result.exception)
 
             return BuildResult(payload=Square(square_id=square_id, name=name, coord=coord))
 

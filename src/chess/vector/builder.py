@@ -90,34 +90,34 @@ class VectorBuilder(Enum):
 
         try:
             if x is None:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     VectorBuilder,
                     NullXComponentException(NullXComponentException.DEFAULT_MESSAGE)
                 )
             if x < -KNIGHT_STEP_SIZE:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     VectorBuilder,
                     VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
                 )
             if x > KNIGHT_STEP_SIZE:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     VectorBuilder,
                     VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
                 )
 
 
             if y is None:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     VectorBuilder,
                     NullYComponentException(NullYComponentException.DEFAULT_MESSAGE)
                 )
             if y < -KNIGHT_STEP_SIZE:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     VectorBuilder,
                     VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
                 )
             if y > KNIGHT_STEP_SIZE:
-                ThrowHelper.throw_if_invalid(
+                ThrowHelper.propagate_error(
                     VectorBuilder,
                     VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
                 )
