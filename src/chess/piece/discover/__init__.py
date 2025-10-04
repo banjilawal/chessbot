@@ -55,7 +55,7 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
     * `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-    * `PieceBuilderException`: Raised if there is an err during when a `PieceBuilder` is creating a new `Piece`
+    * `PieceBuildFailedException`: Raised if there is an error during when a `PieceBuilder` is creating a new `Piece`
         instance.
     * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
 
@@ -67,7 +67,7 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
         about the subclass instance that is null.
     * `DiscoveryValidationException`: Raised if an existing `Discovery` object fails validate checks.
     * `NullDiscoveryValidatorException`: Raised if a null `DiscoveryValidator` is passed as a parameter.
-    * `DiscoveryBuilderException`: Raised if there is an err during when `DiscoveryBuilder` is creating a new `Discovery`
+    * `DiscoveryBuilderException`: Raised if there is an error during when `DiscoveryBuilder` is creating a new `Discovery`
         instance.
     * `NullDiscoveryBuilderException`: Raised if there is null `DiscoveryBuilder` is passed as a parameter.
     * `AutoDiscoveryException`: Raised if a `Piece` object tries to create an discover record about itself.

@@ -69,7 +69,7 @@ __all__ = [
 
 class OccupationEventException(EventException):
     ERROR_CODE = "OCCUPATION_EXECUTION_ERROR"
-    DEFAULT_MESSAGE = "An err was raised while executing the square occupation"
+    DEFAULT_MESSAGE = "An error was raised while executing the square occupation"
 
 # === OccupationEvent VALIDATION EXCEPTIONS ===
 class NullOccupationEventException(OccupationEventException, NullException):
@@ -101,7 +101,7 @@ class ActorSquareNotFoundException(OccupationEventException):
 
 # === OccupationEvent BUILDER EXCEPTIONS ===
 class OccupationEventBuilderException(OccupationEventException, BuilderException):
-    ERROR_CODE = "OCCUPATION_EVENT_BUILDER_ERROR"
+    ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "OccupationEventBuilder failed to create an OccupationEvent."
 
 #

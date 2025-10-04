@@ -2,11 +2,11 @@ from enum import Enum
 
 from assurance import ThrowHelper
 from chess.coord import Coord, CoordValidator
-from chess.square import Square, SquareBuilderException
-from chess.system import BuildResult, IdValidator, NameValidator
+from chess.square import Square, SquareBuildFailed
+from chess.system import BuildResult, IdValidator, NameValidator, Builder
 
 
-class SquareBuilder(Enum):
+class SquareBuilder(Builder[[Square]]):
     """
     Builder class responsible for safely constructing `Square` instances.
 
@@ -30,11 +30,11 @@ class SquareBuilder(Enum):
     See Also:
         `Square`: The data structure being constructed
         `SquareValidator`: Used for validating existing `Square` instances
-        `BuildResult`: Return type containing the built `Square` or err information
+        `BuildResult`: Return type containing the built `Square` or error information
     """
     
-    @staticmethod
-    def build(square_id: int, name: str, coord: Coord) -> BuildResult[Square]:
+    @classmethod
+    def build(cls, name: str, coord: Coord) -> BuildResult[Square]:
         """
         Constructs a new `Square` instance with comprehensive checks on the parameters and states during the
         build process.
@@ -52,15 +52,15 @@ class SquareBuilder(Enum):
         Returns:
             BuildResult[Square]: A `BuildResult` containing either:
                 - On success: A valid `Square` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
-            `SquareBuilderException`: Wraps any underlying validate failures that occur during the construction
+            `SquareBuildFailed`: Wraps any underlying validate failures that occur during the construction
              process. This includes:
                 * `InvalidIdException`: if `id` fails validate checks`
                 * `InvalidNameException`: if `name` fails validate checks
-                * `CoordValidationException`: if `coord` fails validate checks
-                * `SquareBuilderException`: for any other construction failures
+                * `InvalidCoordException`: if `coord` fails validate checks
+                * `SquareBuildFailed`: for any other construction failures
 
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `Square` is
@@ -100,7 +100,7 @@ class SquareBuilder(Enum):
             return BuildResult(payload=Square(square_id=square_id, name=name, coord=coord))
 
         except Exception as e:
-            raise SquareBuilderException(f"{method}: {SquareBuilderException.DEFAULT_MESSAGE}")
+            raise SquareBuildFailed(f"{method}: {SquareBuildFailed.DEFAULT_MESSAGE}")
 
 
 # def main():

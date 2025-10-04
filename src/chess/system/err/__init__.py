@@ -15,7 +15,7 @@ This package exposes core classes and all exceptions from its sub-modules:
     - `ChessException`: The base class exceptions in the application.
     - `NullException`: Super class for all null exceptions.
     - `ErrorHandler`: Logs the errors
-    - `ErrorPropagator`: Coordinates re-raising and logging errors
+    - `RaiserLogger`: Coordinates re-raising and logging errors
 
 
 
@@ -31,7 +31,8 @@ ___
 
 from .exception import *
 from handler import ErrorHandler
-from .propagator import ErrorPropagator
+from throw_helper import RaiserLogger
+from .propagator import RaiserLogger
 
 
 # Package metadata (organic to __init__.py)
@@ -42,8 +43,9 @@ __package_name__ = 'chess.system.err'
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
+    'RaiserLogger',
     'ErrorHandler',
-    'ErrorPropagator',
+    'RaiserLogger',
 
     *exception.__all__,
 

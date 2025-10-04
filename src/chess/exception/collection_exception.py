@@ -31,7 +31,7 @@ __all__ = [
 ]
 
 class CollectionException(ChessException):
-    """Base err for all collection-related errors."""
+    """Base error for all collection-related errors."""
     ERROR_CODE = "COLLECTION_ERROR"
     DEFAULT_MESSAGE = "Collection transaction failed"
 
@@ -73,7 +73,7 @@ class CollectionSizeConflictException(CollectionException):
 # === STACK-SPECIFIC EXCEPTIONS ===
 
 class CoordStackException(CollectionException):
-    """Base err for stack operations."""
+    """Base error for stack operations."""
     ERROR_CODE = "STACK_ERROR"
     DEFAULT_MESSAGE = "Stack transaction failed"
 
@@ -121,7 +121,7 @@ class NullEncounterException(EncounterLogException):
 # === RELATIONSHIP EXCEPTIONS ===
 
 class RelationshipException(ChessException):
-    """Base err for relationship consistency errors."""
+    """Base error for relationship consistency errors."""
     ERROR_CODE = "RELATIONSHIP_ERROR"
     DEFAULT_MESSAGE = "Relationship consistency err"
 

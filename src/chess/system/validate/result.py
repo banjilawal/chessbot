@@ -18,7 +18,7 @@ class ValidationResult(Result[Generic[T]]):
 
     Attributes:
         _payload (Optional[T]): The payload of the result, if successful.
-        _exception (Optional[Exception]): The err of the result, if failed.
+        _exception (Optional[Exception]): The error of the result, if failed.
 
     Methods:
         is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).

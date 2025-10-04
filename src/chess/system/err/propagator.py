@@ -1,25 +1,25 @@
 
-from typing import Any, Callable
-
+from typing import Any, Callable, Optional
 from chess.system import ErrorHandler, Result
 
 
 
-class ErrorPropagator:
+class RaiserLogger:
     
-    @classmethod
-    def propagate_error(cls, context: Any, result: Result, exception_factory: Callable[[], Exception] = None):
-        if result.is_success():
+    @staticmethod
+    def propagate_error(context: Any, result: Optional[Result]=None, exception_factory: Callable[[], Exception]=None):
+        if result is not None and result.is_success():
             return
 
         if exception_factory is None:
-            exception_factory = ErrorPropagator._default_exception_factory(result.exception)
+            exception_factory = RaiserLogger._default_exception_factory
 
-        ErrorHandler.log_and_raise(context, exception_factory())
+        ErrorHandler.log_and_raise(context, exception_factory)
+
 
         # if not result.is_success():
         #     ErrorHandler.log_and_raise(context, exception_factory)
 
-    @classmethod
-    def _default_exception_factory(cls, exception: Exception) -> Exception:
-        return exception
+    @staticmethod
+    def _default_exception_factory(cls) -> Exception:
+        return ValueError("There was an error propagating the error.")

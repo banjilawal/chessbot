@@ -48,7 +48,7 @@ class VectorValidator(Validator):
           Returns:
               Result[Vector]: A Result containing either:
                   - On success: The validated Vector instance in the payload
-                  - On failure: Error information and err details
+                  - On failure: Error information and error details
 
           Raises:
               InvalidVectorException: Wraps any specification violations including:
@@ -119,9 +119,9 @@ class VectorValidator(Validator):
             raise InvalidVectorException(f"{method}: f{InvalidVectorException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the err here before re-raising
+        # You might want to log the error here before re-raising
         except Exception as e:
-            raise InvalidVectorException(f"An unexpected err occurred during validate: {e}") from e
+            raise InvalidVectorException(f"An unexpected error occurred during validate: {e}") from e
 #
 #
 # def main():

@@ -33,7 +33,7 @@ class VectorBuilder(Enum):
     See Also:
         `Vector`: The data structure being constructed
         `VectorValidator`: Used for validating existing `Vector` instances
-        `BuildResult`: Return type containing the built `Vector` or err information
+        `BuildResult`: Return type containing the built `Vector` or error information
     """
 
     @staticmethod
@@ -56,7 +56,7 @@ class VectorBuilder(Enum):
         Returns:
             BuildResult[Vector]: A `BuildResult` containing either:
                 - On success: A valid `Vector` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
             `VectorBuilderException`: Wraps any underlying validate failures that occur during the construction

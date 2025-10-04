@@ -30,10 +30,10 @@ class EmptyResultConstructorException(ResultConstructorException):
 
 
 class ErrorContradictsPayloadException(ResultConstructorException):
-    """Raised if both payload and err params are not null when constructing a Result object"""
+    """Raised if both payload and error params are not null when constructing a Result object"""
     ERROR_CODE = "ERROR_CONFLICTS_PAYLOAD_IN_RESULT_CONSTRUCTOR"
     DEFAULT_MESSAGE = (
-        "A Result cannot have both its payload and err set. Construct with either payload or err"
+        "A Result cannot have both its payload and error set. Construct with either payload or err"
     )
 
 

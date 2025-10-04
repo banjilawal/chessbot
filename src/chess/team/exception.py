@@ -81,11 +81,11 @@ class InvalidTeamException(TeamException, ValidationException):
 # === TEAM BUILDER EXCEPTIONS ===
 class TeamBuilderException(TeamException, BuilderException):
     """
-    Raised when TeamBuilder encounters an err while building a team. Exists primarily to
+    Raised when TeamBuilder encounters an error while building a team. Exists primarily to
     catch all exceptions raised building a new team
     """
-    ERROR_CODE = "TEAM_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "TeamBuilder raised an err"
+    ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Team build failed."
 
 class NullTeamSchemaException(TeamException, NullException):
     """

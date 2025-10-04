@@ -227,7 +227,7 @@ class Team:
             None: If no matches are found.
             
         Raises:
-             CoordValidationException: if coord fails sanity checks.
+             InvalidCoordException: if coord fails sanity checks.
         """
         try:
             validation = CoordValidator.validate(coord)

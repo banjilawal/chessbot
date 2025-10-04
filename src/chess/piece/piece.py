@@ -17,7 +17,7 @@ Contents:
 
 Notes:
     This module is part of the chess.piece package. Validation exceptions are defined
-    in PieceValidator and related err classes. Piece objects are designed to be
+    in PieceValidator and related error classes. Piece objects are designed to be
     immutable in their core properties.
 """
 

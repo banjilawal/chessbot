@@ -47,11 +47,11 @@ class InvalidVectorException(VectorException, ValidationException):
 # === VECTOR BUILDER EXCEPTIONS ===
 class VectorBuilderException(VectorException, BuilderException):
     """
-    Raised when VectorBuilder encounters an err while building a team. Exists primarily to catch all exceptions
+    Raised when VectorBuilder encounters an error while building a team. Exists primarily to catch all exceptions
     raised build a new vector
     """
-    ERROR_CODE = "VECTOR_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "VectorBuilder raised an err"
+    ERROR_CODE = "VECTOR_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Vector build failed."
 
 
 # === NULL COMPONENT EXCEPTIONS ===

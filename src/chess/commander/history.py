@@ -13,14 +13,13 @@ from chess.exception.stack_exception import (
 #     pass
 
 
-class TeamList:
-    _items: list[Team]
+class CommandHistory:
+    _teams: list[Team]
     _current_team: Team
 
     def __init__(self):
-        self._items = []
-        self._current_team = self._items[-1] if self._items else None
-
+        self._teams = []
+        self._current_team = self._teams[-1] if self._teams else None
 
     @property
     def items(self) -> list['Team']:
@@ -29,40 +28,40 @@ class TeamList:
         iterate and index, but mutating it will not affect the original stack.
         """
 
-        return self._items
+        return self._teams
 
 
     @property
     def current_team(self) -> Optional['Team']:
-        return self._items[-1] if self._items else None
+        return self._teams[-1] if self._teams else None
 
 
     def is_empty(self) -> bool:
-        return len(self._items) == 0
+        return len(self._teams) == 0
 
 
     def size(self) -> int:
-        return len(self._items)
+        return len(self._teams)
 
 
     def find_by_id(self, id: int) -> Optional['Team']:
-        for side in self._items:
+        for side in self._teams:
             if side.id == id:
                 return side
         return None
 
 
     def add_team(self, team: Team):
-        method = "TeamList.add_team"
+        method = "CommandHistory.add_team"
 
         if team is None:
             raise PushingNullEntityException(f"{method}: {PushingNullEntityException.DEFAULT_MESSAGE}")
 
-        if self._items is None:
+        if self._teams is None:
             raise CorruptedStackException(f"{method}: {CorruptedStackException.DEFAULT_MESSAGE}")
 
         if self.current_team == team:
             raise DuplicatePushException(f"{method} {DuplicatePushException.DEFAULT_MESSAGE}")
 
-        self._items.append(team)
+        self._teams.append(team)
 

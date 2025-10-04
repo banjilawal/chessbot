@@ -30,7 +30,7 @@ USAGE:
 from .exception import *
 from .commander import *
 
-from .team_list import TeamList
+from .history import CommandHistory
 from .validator import CommanderValidator
 from .builder import CommanderBuilder
 
@@ -40,7 +40,7 @@ __package_name__ = 'chess.commander'
 
 __all__ = [
     # Core classes
-    'TeamList',
+    'CommandHistory',
     'CommanderValidator',
     'CommanderBuilder',
 

@@ -35,7 +35,7 @@ class AttackEventBuilder(Enum):
     See Also:
         `AttackEvent`: The data structure being constructed
         `AttackEventValidator`: Used for validating existing `AttackEvent` instances
-        `BuildResult`: Return type containing the built `AttackEvent` or err information
+        `BuildResult`: Return type containing the built `AttackEvent` or error information
     """
 
     @staticmethod
@@ -64,7 +64,7 @@ class AttackEventBuilder(Enum):
         Returns:
             BuildResult[AttackEvent]: A `BuildResult` containing either:
                 - On success: A valid `AttackEvent` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
            AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
@@ -173,7 +173,7 @@ class AttackEventBuilder(Enum):
         # Catch any unexpected errors with details about type and message
         except Exception as e:
             raise AttackEventBuilderException(
-                f"{method}: Unexpected err ({type(e).__name__}): {e}"
+                f"{method}: Unexpected error ({type(e).__name__}): {e}"
             ) from e
 
 

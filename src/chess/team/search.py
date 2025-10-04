@@ -9,7 +9,7 @@ class TeamSearch:
     """
     Static methods for entities and operations that need to search a Team for pieces and ranks. Provides consistent
     search interface and return types across all search operations. Validates input parameters before searching to
-    ensure safe operations. Returns SearchResult objects encapsulating either the found entity or err information.
+    ensure safe operations. Returns SearchResult objects encapsulating either the found entity or error information.
 
     Usage:
     ```python
@@ -51,8 +51,8 @@ class TeamSearch:
         Returns:
               SearchResult[Team]: A `SearchResult` containing either:
                   - On success: The validated Team instance in the payload
-                  - On not found: An empty `SearchResult` (payload is None, err is None)
-                  - On failure: Error information and err details
+                  - On not found: An empty `SearchResult` (payload is None, error is None)
+                  - On failure: Error information and error details
         Raises:
             `InvalidIdException`
             `InvalidTeamException`
@@ -93,8 +93,8 @@ class TeamSearch:
         Returns:
               SearchResult[Team]: A `SearchResult` containing either:
                   - On success: The validated Team instance in the payload
-                  - On not found: An empty `SearchResult` (payload is None, err is None)
-                  - On failure: Error information and err details
+                  - On not found: An empty `SearchResult` (payload is None, error is None)
+                  - On failure: Error information and error details
         Raises:
             `InvalidNameException`
             `InvalidTeamException`
@@ -135,8 +135,8 @@ class TeamSearch:
         Returns:
               SearchResult[Team]: A `SearchResult` containing either:
                   - On success: The validated Team instance in the payload
-                  - On not found: An empty `SearchResult` (payload is None, err is None)
-                  - On failure: Error information and err details
+                  - On not found: An empty `SearchResult` (payload is None, error is None)
+                  - On failure: Error information and error details
         Raises:
             `InvalidIdException`
             `InvalidTeamException`
@@ -180,8 +180,8 @@ class TeamSearch:
         Returns:
               SearchResult[Team]: A `SearchResult` containing either:
                   - On success: The validated Team instance in the payload
-                  - On not found: An empty `SearchResult` (payload is None, err is None)
-                  - On failure: Error information and err details
+                  - On not found: An empty `SearchResult` (payload is None, error is None)
+                  - On failure: Error information and error details
         Raises:
             `InvalidNameException`
             `InvalidTeamException`

@@ -33,7 +33,7 @@ class PieceValidator(Validator):
 
             InvalidIdException: if invalid id
             InvalidNameException: if invalid name
-            CoordValidationException: if invalid coord
+            InvalidCoordException: if invalid coord
 
             PieceValidationException: Wraps any preceding exceptions      
         """
@@ -84,7 +84,7 @@ class PieceValidator(Validator):
 
             # coord_validation = CoordValidator.validate(discover.current_position)
             # if not coord_validation.is_success():
-            #     raise CoordValidationException(f"{method}: {CoordValidationException.DEFAULT_MESSAGE}")
+            #     raise InvalidCoordException(f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}")
 
             return Result(payload=piece)
 
@@ -100,7 +100,7 @@ class PieceValidator(Validator):
             raise InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the err here before re-raising
+        # You might want to log the error here before re-raising
         except Exception as e:
             raise InvalidPieceException(f"An unexpected error occurred during validation: {e}") from e
 

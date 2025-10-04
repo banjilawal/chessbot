@@ -9,5 +9,5 @@ class Builder(ABC, Generic[T]):
 
     @classmethod
     @abstractmethod
-    def build(cls) -> BuildResult[T]:
+    def build(cls, *args, **kwargs) -> BuildResult[T]:
         pass

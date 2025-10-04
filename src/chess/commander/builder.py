@@ -1,125 +1,63 @@
-from enum import Enum
+# chess/commander/builder.py
+
+"""
+Module: `chess.commander.builder`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
+Contains: CommanderBuilder
+Responsibilities: Create concrete subclasses of `Commander`
+"""
+
 from typing import Optional
 
-from assurance import ThrowHelper
-from chess.system import BuildResult, IdValidator, NameValidator
-
+from chess.system import RaiserLogger, NameValidator, InvalidNameException, BuildResult, Builder
 from chess.commander import Commander, Human, Bot, CommanderBuildFailedException
 from chess.engine import DecisionEngine
 
 
-class CommanderBuilder(Enum):
+class CommanderBuilder(Builder[Commander]):
     """
-    Builder class responsible for safely constructing `Commander` instances.
-    
-    `CommanderBuilder` ensures that `Commander` objects are always created successfully by performing comprehensive validate
-    checks during construction. This separates the responsibility of building from validating `CommanderBuilder` focuses on
-    creating while `CommanderValidator` is used for validating existing `Commander` instances that are passed around the system.
-    
-    The build runs through all validate checks individually to guarantee that any `Commander` instance it produces meets
-    all required specifications before construction completes.
-
-    `Commander` is an abstract class. `CommanderBuilder` instantiates either `Human` or `Bot` objects.
-    
-    Usage:
-        ```python
-        from typing import cast
-        from chess.commander Bot, Human, CommanderBuilder
-
-        # Safe creation of a human commander
-        build_outcome = CommanderBuilder.build(commander=id_emitter.human_id, name="Tunji")
-        if not build_outcome.is_success():
-            raise build_outcome.err
-        person = cast(Human, build_outcome.payload) # <-- Always cast to the concrete type of the commander
-
-        # Safe creation of an automated commander. An automated commander must be given an engine for deciding
-        # how to play
-        from chess.engine GreedyDecisionEngine,
-        greedy_decision_engine = GreedyDecisionEngine()
-
-        build_outcome = CommanderBuilder(commander=id_emitter.bot_id, name="cyb-a73", engine=greedy_decision_engine)
-        if not build_outcome.is_success():
-            raise build_outcome.err
-        cybernaut = cast(Bot, build_outcome.payload)
-        ```
-    
-    See Also:
-        `Commander`: Fundamental data structure for representing commanderinates on a chessboard.
-        `CommanderValidator`: Used for validating existing `Commander` instances
-        `BuildResult`: Return type containing the built `Commander` or err information
+    Responsible for safely constructing `Commander` instances.
     """
     
-    @staticmethod
-    def build( name: str,  engine: Optional[DecisionEngine] = None) -> BuildResult[Commander]:
+    @classmethod
+    def build(cls, name: str, engine: Optional[DecisionEngine]=None) -> BuildResult[Commander]:
         """
-        Constructs a new `Commander` instance with comprehensive checks on the parameters and states during the
-        build process.
-
-        Performs individual validate checks on each component to ensure the resulting `Commander` meets all
-        specifications. If all checks are passed, a `Commander` instance will be returned. It is not necessary to perform
-        any additional validate checks on the returned `Commander` instance. This method guarantees if a `BuildResult`
-        with a successful status is returned, the contained `Commander` is valid and ready for use.
-
-        By default, `CommanderBuilder` will create a `Human` instance. If an `engine` is provided, a `Bot`
-        instance will be created. `CommanderBuilder.build` returns a `Commander` instance that needs casting to either
-        a `Human` or `Bot` class before use.
+        Constructs a new `Commander` that works correctly.
 
         Args:
-            `commander_id` (int): The unique id for the commander. Must pass `IdValidator` checks.
-            `name` (`Name`): Must pass `NameValidator` checks.
+            `name` (`str`): Must pass `NameValidator` checks.
             `engine` (DecisionEngine): The engine used to determine how to play.`
 
         Returns:
-            BuildResult[Commander]: A `BuildResult` containing either:
-                - On success: A valid `Commander` instance in the payload
-                - On failure: Error information and err details
+        BuildResult[Commander]: A `BuildResult` containing either:
+            - On success: A valid `Commander` instance in the payload
+            - On failure: Error information and error details
 
         Raises:
-            `CommanderBuildFailedException`: Wraps any underlying validate failures that occur during the construction process.
-            This includes:
-                * `InvalidIdException`: if `commander_id` fails validate checks.
-                * `InvalidNameException`: if `name` fails validate checks.
-                * `EngineValidationException`: If `engine` is not null and fails validate checks.
-
-        Note:
-            The build runs through all the checks on parameters and state to guarantee only a valid `Commander` is
-            created, while `CommanderValidator` is used for validating `Commander` instances that are passed around after
-            creation. This separation of concerns makes the validate and building independent of each other and
-            simplifies maintenance.
-
-        Example:
-            ```python
-            from typing import cast
-            from chess.commander import Human, CommanderBuilder
-
-            build_outcome = CommanderBuilder.build(commander_id=1, name="Richard")
-            
-            if not build_outcome.is_success():
-                raise build_outcome.err # <--- Skips this because id and name are valid.
-
-            person = cast(HUman, build_outcome.payload) # <-- executes this line
-            ```
+        `CommanderBuildFailedException`: Wraps any exceptions raised build. These are:
+            * `InvalidIdException`: if `commander_id` fails validate checks.
+            * `InvalidNameException`: if `name` fails validate checks.
+            * `EngineValidationException`: If `engine` is not null and fails validate checks.
         """
         method = "CommanderBuilder.build"
 
         try:
             # id_validation = IdValidator.validate(commander_id)
             # if not id_validation.is_success():
-            #     ErrorPropagator.throw_if_invalid(CommanderBuilder, id_validation.err)
-
-
+            #     RaiserLogger.throw_if_invalid(CommanderBuilder, id_validation.err)
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
-                ThrowHelper.propagate_error(CommanderBuilder, name_validation.exception)
-                raise name_validation.exception
+                RaiserLogger.propagate_error(CommanderBuilder, name_validation.exception)
 
             if engine is not None and not isinstance(engine, DecisionEngine):
                 error  = TypeError(f"Expected a Decision, but got {type(engine).__name__}.")
-                ThrowHelper.propagate_error(CommanderBuilder, error)
-                raise error
+                RaiserLogger.propagate_error(CommanderBuilder, error)
 
             if engine is not None and isinstance(engine, DecisionEngine):
-                return BuildResult(payload=Bot( name=name, engine=engine))
+                return BuildResult(payload=Bot(name=name, engine=engine))
 
             # If no engine is provided and all the checks are passed, a Human commander is returned
             return BuildResult(payload=Human(name=name))
@@ -128,12 +66,13 @@ class CommanderBuilder(Enum):
             TypeError,
             InvalidNameException
         ) as e:
-            raise (f"{method}: {e}") from e
+            raise CommanderBuildFailedException(f"{method}: {e}") from e
 
-
-            except Exception as e:
-            raise AttackEventBuilderException(
-                f"{method}: Unexpected err ({type(e).__name__}): {e}" ) from e
+        # Catch any unexpected errors with details about type and message
+        except Exception as e:
+            raise CommanderBuildFailedException(
+                f"{method}: Unexpected error ({type(e).__name__}): {e}"
+            ) from e
 #
 #
 # def main():

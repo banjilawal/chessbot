@@ -287,7 +287,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
         """
         Creates a new `Discovery` object for event.actor which is blocked from moving to
         `destination_square` by `event.enemy`. The enemy is either a friendly piece or an enemy `KingPiece`.
-        `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, err chains
+        `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, error chains
         confirmed parameters ar are correct. No additional sanity checks are needed.
 
         Args

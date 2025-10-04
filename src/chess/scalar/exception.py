@@ -8,7 +8,7 @@ __all__ = [
     'InvalidScalarException',
     
 # === SCALAR BUILDER EXCEPTIONS ===
-    'ScalarBuilderException',
+    'ScalarBuildFailed',
 
 # === SCALAR BOUNDS EXCEPTIONS ===
     'ScalarBelowBoundsException',
@@ -32,22 +32,19 @@ class NullScalarException(ScalarException, NullException):
     DEFAULT_MESSAGE = "Scalar cannot be null."
 
 class InvalidScalarException(ScalarException, ValidationException):
-    """
-    Raised by ScalarValidator if Scalar fails sanity checks. Exists primarily to catch all
-    exceptions raised validating an existing scalar
-    """
+    """Raised by ScalaValidators if client fails validation."""
     ERROR_CODE = "SCALAR_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Scalar validate failed."
 
 
 # === SCALAR BUILDER EXCEPTIONS ===
-class ScalarBuilderException(ScalarException, BuilderException):
+class ScalarBuildFailed(ScalarException, BuilderException):
     """
-    Raised when ScalarBuilder encounters an err building a scalar. Exists primarily
-    to catch all exceptions raised creating a new scalar.
+    Indicates Scalar could not be built. Wraps and re-raises errors that occurred
+    during build.
     """
-    ERROR_CODE = "SCALAR_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "ScalarBuilder raised an err."
+    ERROR_CODE = "SCALAR_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Scalar  build failed."
 
 
 # === SCALAR BOUNDS EXCEPTIONS ===

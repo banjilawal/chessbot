@@ -80,7 +80,7 @@ class ActorValidator:
             raise InvalidActorException( f"{method}: {InvalidActorException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the err here before re-raising
+        # You might want to log the error here before re-raising
         except Exception as e:
             raise InvalidActorException(f"An unexpected error occurred during validate: {e}") from e
 

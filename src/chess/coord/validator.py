@@ -56,10 +56,10 @@ class CoordValidator(Validator):
         Returns:
         Result[Coord]: A Result containing either:
             - On success: The validated Coord instance in the payload
-            - On failure: Error information and err details
+            - On failure: Error information and error details
 
         Raises:
-        CoordValidationException: Wraps any specification violations including:
+        InvalidCoordException: Wraps any specification violations including:
             - NullCoordException: if input is None
             - TypeError: if input is not a Coord instance
             - NullXComponentException: if Coord.x is None
@@ -136,6 +136,10 @@ class CoordValidator(Validator):
             ColumnBelowBoundsException,
             ColumnAboveBoundsException
         ) as e:
+            raise CoordValidationException(f"{method}: {e}") from e
+
+        # Catch any unexpected errors with details about type and message
+        except Exception as e:
             raise CoordValidationException(
-                f"{method}: {CoordValidationException.DEFAULT_MESSAGE}"
+                f"{method}: Unexpected error ({type(e).__name__}): {e}"
             ) from e

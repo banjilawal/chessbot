@@ -44,7 +44,7 @@ For consistency across the application.
 ### LIST OF EXCEPTIONS:
     * `CoordException`: Superclass for Coord-related exceptions
     * `NullCoordException`: Raised if a coordinate is null
-    * `CoordValidationException`: Raised if coordinate validate fails
+    * `InvalidCoordException`: Raised if coordinate validate fails
     * `NullCoordValidatorException`: Raised if a CoordValidator is null
     * `CoordBuilderException`: Wrapper for exceptions raised by CoordBuilder
     * `NullCoordBuilderException`: Raised if a CoordBuilder is null
@@ -88,6 +88,7 @@ __package_name__ = 'chess.coord'
 __all__ = [
     # Core classes
     'Coord',
+    'CoordBuilder',
     'CoordException',
     'CoordValidator',
 

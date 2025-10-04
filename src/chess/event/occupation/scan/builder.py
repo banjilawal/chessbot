@@ -32,7 +32,7 @@ class ScanEventBuilder(Enum):
     See Also:
         `ScanEvent`: The data structure being constructed
         `ScanEventValidator`: Used for validating existing `ScanEvent` instances
-        `BuildResult`: Return type containing the built `ScanEvent` or err information
+        `BuildResult`: Return type containing the built `ScanEvent` or error information
     """
 
     @staticmethod
@@ -62,7 +62,7 @@ class ScanEventBuilder(Enum):
         Returns:
             BuildResult[ScanEvent]: A `BuildResult` containing either:
                 - On success: A valid `ScanEvent` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
            ScanEventBuilderException: Wraps any underlying validate failures that occur during the construction process.

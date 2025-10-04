@@ -1,10 +1,11 @@
 from typing import Optional
 
+from chess.system import Result
 from chess.transaction import Event
 
 class TransactionResult:
     """
-    Result of an transaction that changes an entity's state.
+    Result of a transaction that changes an entity's state.
 
     Use factory methods to create instances:
     - TransactionResult.success()

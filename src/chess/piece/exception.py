@@ -14,7 +14,7 @@ __all__ = [
     'NullCombatantException',
 
 # === PIECE BUILDER EXCEPTIONS ===
-    'PieceBuilderException',
+    'PieceBuildFailedException',
 
 # === PIECE PROMOTION EXCEPTIONS ===
     'DoublePromotionException',
@@ -64,10 +64,7 @@ class PieceRollBackException(PieceException, RollbackException):
 
 # === PIECE VALIDATION EXCEPTIONS ===
 class InvalidPieceException(PieceException, ValidationException):
-    """
-    Raised by PieceValidator if piece fails sanity checks. Exists primarily to catch all
-    exceptions raised validating an existing piece
-    """
+    """Raised by PieceValidators if client fails validation."""
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Piece validate failed."
 
@@ -104,13 +101,13 @@ class NullCombatantException(NullPieceException):
 
 
 # === PIECE BUILDER EXCEPTIONS ===
-class PieceBuilderException(PieceException, BuilderException):
+class PieceBuildFailedException(PieceException, BuilderException):
     """
-    Raised when PieceBuilder encounters an err while building a team. Exists primarily to
-    catch all exceptions raised building a new piece
+    Indicates Coord could not be built. Wraps and re-raises errors that occurred
+    during build.
     """
-    ERROR_CODE = "PIECE_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "PieceBuilder raised an err."
+    ERROR_CODE = "PIECE_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Piece  build failed.."
 
 
 # === PIECE PROMOTION EXCEPTIONS ===

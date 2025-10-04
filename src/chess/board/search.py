@@ -10,7 +10,7 @@ class BoardSearch:
     Static methods for entities and operations that need to search a Board for pieces, squares, coords, etc.
     Provides consistent search interface and return types across all search operations.
     Validates input parameters before searching to ensure safe operations.
-    Returns SearchResult objects encapsulating either the found entity or err information.
+    Returns SearchResult objects encapsulating either the found entity or error information.
 
     Usage:
         ```python
@@ -164,7 +164,7 @@ class BoardSearch:
             SearchResult[Square]: The Square object if found, otherwise None.
 
         Raises: 
-            CoordValidationException: If coord is fails any validators checks.
+            InvalidCoordException: If coord is fails any validators checks.
         """
         method = f"BoardSearch.square_by_coord"
 

@@ -31,7 +31,7 @@ class OccupationEventBuilder(Enum):
     See Also:
         `OccupationEvent`: The data structure being constructed
         `OccupationEventValidator`: Used for validating existing `OccupationEvent` instances
-        `BuildResult`: Return type containing the built `OccupationEvent` or err information
+        `BuildResult`: Return type containing the built `OccupationEvent` or error information
     """
 
     @staticmethod
@@ -54,7 +54,7 @@ class OccupationEventBuilder(Enum):
         Returns:
             BuildResult[OccupationEvent]: A `BuildResult` containing either:
                 - On success: A valid `OccupationEvent` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
            OccupationEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
@@ -95,7 +95,7 @@ class OccupationEventBuilder(Enum):
 
             # context_validation = ContextValidator.validate(context)
             # if not context_validation.is_success():
-            #     ErrorPropagator.throw_if_invalid(OccupationEventBuilder, context_validation)
+            #     RaiserLogger.throw_if_invalid(OccupationEventBuilder, context_validation)
 
             if destination_square.coord == actor.current_position:
                 ThrowHelper.propagate_error(

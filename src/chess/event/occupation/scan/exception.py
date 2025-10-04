@@ -39,7 +39,7 @@ class NullScanTransactionException(NullTransactionException):
 class ScanEventException(OccupationEventException):
     """
     Superclass for all scan event exceptions. DO NOT USE DIRECTLY. Subclasses
-    give more specific err messages useful for debugging.
+    give more specific error messages useful for debugging.
     """
     ERROR_CODE = "SCAN_EVENT_ERROR"
     DEFAULT_MESSAGE = "ScanEvent failed validate"
@@ -60,7 +60,7 @@ class InvalidScanEventException(ScanEventException, ValidationException):
 #=== SCAN_EVENT BUILDER EXCEPTIONS ===
 class ScanEventBuilderException(ScanEventException, BuilderException):
     """Raised when a ScanEventBuilder fails to build a ScanEvent."""
-    ERROR_CODE = "SCAN_EVENT_BUILDER_ERROR"
+    ERROR_CODE = "SCAN_EVENT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "ScanEventBuilder failed to create a ScanEvent"
 
 class ScanSubjectException(ScanEventException):

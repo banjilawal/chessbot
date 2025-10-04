@@ -10,7 +10,7 @@ class PieceSearch:
 
     PieceSearch provides consistent search interface and return types across all search operations.
     Validates input parameters before searching to ensure safe operations.Returns SearchResult objects
-    encapsulating either the found entity or err information.
+    encapsulating either the found entity or error information.
 
     Usage:
         ```python
@@ -41,8 +41,8 @@ class PieceSearch:
         Returns:
               SearchResult[Discovery]: A `SearchResult` containing either:
                   - On success: The validated Team instance in the payload
-                  - On not found: An empty `SearchResult` (payload is None, err is None)
-                  - On failure: Error information and err details
+                  - On not found: An empty `SearchResult` (payload is None, error is None)
+                  - On failure: Error information and error details
         Raises:
             `InvalidIdException`
             `InvalidPieceException`
@@ -83,8 +83,8 @@ class PieceSearch:
         Returns:
               SearchResult[Discovery]: A `SearchResult` containing either:
                   - On success: The validated Team instance in the payload
-                  - On not found: An empty `SearchResult` (payload is None, err is None)
-                  - On failure: Error information and err details
+                  - On not found: An empty `SearchResult` (payload is None, error is None)
+                  - On failure: Error information and error details
         Raises:
             `InvalidNameException`
             `InvalidPieceException`
@@ -126,8 +126,8 @@ class PieceSearch:
         Returns:
               SearchResult[Team]: A `SearchResult` containing either:
                   - On success: The validated Team instance in the payload
-                  - On not found: An empty `SearchResult` (payload is None, err is None)
-                  - On failure: Error information and err details
+                  - On not found: An empty `SearchResult` (payload is None, error is None)
+                  - On failure: Error information and error details
         Raises:
             `InvalidIdException`
             `InvalidTeamException`

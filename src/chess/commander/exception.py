@@ -1,15 +1,20 @@
-from chess.exception import (
-    ChessException, NullException, ValidationException, BuilderException, CollectionException
+from chess.system.err import (
+    ChessException, NullException, ValidationException, FailedBuildException, CollectionException
 )
 
 __all__ = [
     'CommanderException',
+
+# === COMMANDER VALIDATION EXCEPTIONS ===
     'NullCommanderException',
-    'CommanderBuildFailedException',
     'InvalidCommanderException',
-    'NullCommanderBuilderException',
+
+# === COMMANDER BUILD EXCEPTIONS ===
+    'CommanderBuildFailedException',
+
+# === COMMANDER HISTORY EXCEPTIONS ===
+    'CommanderHistoryException',
     'InvalidCommanderAssignmentException',
-    'TeamListException',
     'TeamListValidationException'
 ]
 
@@ -21,7 +26,7 @@ class CommanderException(ChessException):
     ERROR_CODE = "COMMANDER_ERROR"
     DEFAULT_MESSAGE = "Commander raised an team_exception"
 
-
+# === COMMANDER VALIDATION EXCEPTIONS ===
 class NullCommanderException(CommanderException, NullException):
     """
     Raised if a commander is null.
@@ -29,43 +34,57 @@ class NullCommanderException(CommanderException, NullException):
     ERROR_CODE = "NULL_COMMANDER_ERROR"
     DEFAULT_MESSAGE = f"Commander cannot be null"
 
-
-class InvalidCommanderException(ValidationException):
+class InvalidCommanderException(CommanderException, ValidationException):
     ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Commander validate failed"
 
-
-class CommanderBuildFailedException(CommanderException, FaileBuildexception):
+# === COMMANDER BUILD EXCEPTIONS ===
+class CommanderBuildFailedException(CommanderException, FailedBuildException):
     """
     CommanderBuilder exceptions.
     """
-    ERROR_CODE = "COMMANDER_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "CommanderBuilder raised an err"
+    ERROR_CODE = "COMMANDER_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Commander build failed."
 
+# === COMMANDER HISTORY EXCEPTIONS ===
+class CommanderHistoryException(CommanderException):
+    """Team list specific errors."""
+    ERROR_CODE = "COMMANDER_HISTORY_ERROR"
+    DEFAULT_MESSAGE = "CommanderHistory raised an exception."
 
-class NullCommanderBuilderException(NullException):
-    """
-    Raised if a CommanderBuilder is null.
-    """
-    ERROR_CODE = "NULL_COMMANDER_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "CommanderBuilder cannot be null"
+class AddNewTeamException(TeamRosterException):
+    """Raised if a new team could not be added to commandHistory"""
+    ERROR_CODE = "ADD_NEW_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Could not add a new team to CommandHistory."
 
+class RemoveNewTeamException(TeamRosterException):
+    """Raised an undo push_team commandHistory"""
+    ERROR_CODE = "REMOVE_NEW_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Could not remove the new team from CommandHistory."
 
-class InvalidCommanderAssignmentException(CommanderException):
+class AddEnemyToRosterException(TeamRosterException):
+    """Attempting to add an enemy to the team's roster raises an err"""
+    ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR"
+    DEFAULT_MESSAGE = "An enemy piece cannot be added to the team's roster"
+
+class CannotRemoveOldTeamException(TeamRosterException):
+    """Raised if an attempt is made to remove an old team from CommandHistory"""
+    ERROR_CODE = "REMOVE_OLD_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Removing old teams from CommandHistory is not allowed."
+
+class InvalidCommanderAssignmentException(CommanderHistoryException):
     """
     If a team already attached to a commander (team.commander == not None) tries being assigned a
     different commander, `InvalidCommanderAssignmentException` is raised.
     """
     ERROR_CODE = "INVALID_COMMANDER_ASSIGNMENT_ERROR"
-    DEFAULT_MESSAGE = "Team is already assigned to a commander."
+    DEFAULT_MESSAGE = "Team is already assigned to a different commander."
 
 
-class TeamListException(CollectionException):
-    """Team list specific errors."""
-    ERROR_CODE = "TEAM_LIST_ERROR"
-    DEFAULT_MESSAGE = "Team list transaction failed"
 
 
-class TeamListValidationException(ValidationException):
-    ERROR_CODE = "TEAM_LIST_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"TeamList validate failed"
+class InconsistentCommandHistoryException(CommanderHistoryException, InconsistencyException):
+    ERROR_CODE = "INCONSISTENT_COMMANDER_HISTORY_ERROR"
+    DEFAULT_MESSAGE = (
+        "CommanderHistory is an inconsistent state. Data might be corrupt."
+    )

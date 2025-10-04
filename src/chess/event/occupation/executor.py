@@ -200,7 +200,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
         """
         Creates a new `Discovery` object for directive.actor which is blocked from moving to
         `destination_square` by `directive.enemy`. The enemy is either a friendly piece or an enemy `KingPiece`.
-        `OccupationExecutor.execute_directive` is the single entry point to `_run_scan`. Validations, err chains
+        `OccupationExecutor.execute_directive` is the single entry point to `_run_scan`. Validations, error chains
         confirmed parameters ar are correct. No additional sanity checks are needed.
 
         Args

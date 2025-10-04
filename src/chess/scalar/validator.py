@@ -87,9 +87,9 @@ class ScalarValidator(Validator):
             raise InvalidScalarException(f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the err here before re-raising
+        # You might want to log the error here before re-raising
         except Exception as e:
-            raise InvalidScalarException(f"An unexpected err occurred during validate: {e}") from e
+            raise InvalidScalarException(f"An unexpected error occurred during validate: {e}") from e
 
 
 # def main():

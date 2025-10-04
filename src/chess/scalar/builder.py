@@ -6,7 +6,7 @@ from chess.system import BuildResult, BOARD_DIMENSION
 
 from chess.scalar import (
     Scalar, ScalarAboveBoundsException,
-    ScalarBelowBoundsException, ScalarBuilderException
+    ScalarBelowBoundsException, ScalarBuildFailed
 )
 
 
@@ -36,7 +36,7 @@ class ScalarBuilder(Enum):
     See Also:
         `Scalar`: The data structure being constructed
         `ScalarValidator`: Used for validating existing `Scalar` instances
-        `BuildResult`: Return type containing the built `Scalar` or err information
+        `BuildResult`: Return type containing the built `Scalar` or error information
     """
     
     @staticmethod
@@ -60,10 +60,10 @@ class ScalarBuilder(Enum):
         Returns:
             BuildResult[Scalar]: A `BuildResult` containing either:
                 - On success: A valid `Scalar` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
-            `ScalarBuilderException`: Wraps any underlying validate failures that occur during the construction
+            `ScalarBuildFailed`: Wraps any underlying validate failures that occur during the construction
             process. This includes:
                 * `NullScalarException`: if `t` is null
                 * `TypeError`: if `t` is not Scalar
@@ -108,4 +108,4 @@ class ScalarBuilder(Enum):
                 
             return BuildResult(payload=Scalar(value=value))
         except Exception as e:
-            raise ScalarBuilderException(f"{method}: {ScalarBuilderException.DEFAULT_MESSAGE}") from e
+            raise ScalarBuildFailed(f"{method}: {ScalarBuildFailed.DEFAULT_MESSAGE}") from e

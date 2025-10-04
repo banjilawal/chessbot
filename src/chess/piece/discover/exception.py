@@ -44,11 +44,11 @@ class NullDiscoveryException(DiscoveryException, NullException):
 
 class DiscoveryBuilderException(DiscoveryException, BuilderException):
     """
-    Raised when BoardBuilder encounters an err while building a team. Exists primarily to
+    Raised when BoardBuilder encounters an error while building a team. Exists primarily to
     catch all exceptions raised building a new board
     """
-    ERROR_CODE = "DISCOVERY_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "DiscoveryBuilder raised an err"
+    ERROR_CODE = "DISCOVERY_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Discovery build failed."
 
 
 class CircularDiscoveryException(DiscoveryException):

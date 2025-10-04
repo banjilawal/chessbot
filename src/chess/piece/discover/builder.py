@@ -32,7 +32,7 @@ class DiscoveryBuilder(Enum):
     See Also:
         `Discovery`: The data structure being constructed
         `DiscoveryValidator`: Used for validating existing `Discovery` instances
-        `BuildResult`: Return type containing the built `Discovery` or err information
+        `BuildResult`: Return type containing the built `Discovery` or error information
     """
 
     @staticmethod
@@ -54,7 +54,7 @@ class DiscoveryBuilder(Enum):
         Returns:
             BuildResult[Discovery]: A `BuildResult` containing either:
                 - On success: A valid `Discovery` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
            `DiscoveryBuilderException`: Wraps any underlying validate failures that occur during the construction

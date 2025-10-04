@@ -1,83 +1,44 @@
+# chess/board/builder.py
+
+"""
+Module: `chess.board.builder`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
+Contains: BoardBuilder
+Responsibilities: Create `Board` instances
+"""
+
 from typing import List
 
-from chess.coord import Coord
+
 from chess.square import Square
-from assurance import ThrowHelper
-from chess.board import Board, BoardBuilderException
-from chess.system import id_emitter, BuildResult, IdValidator, InvalidIdException, BOARD_DIMENSION
+from chess.board import Board, BoardBuildFailedException
+from chess.system import  BOARD_DIMENSION, Builder, BuildResult
 
 
 
-class BoardBuilder:
+class BoardBuilder(Builder[Board]):
     """
-    Builder class responsible for safely constructing `Board` instances.
-
-    `BoardBuilder` ensures that `Board` objects are always created successfully by performing comprehensive validate
-     checks during construction. This separates the responsibility of building from validating - `BoardBuilder` 
-     focuses on creating while `BoardValidator` is used for validating existing `Board` instances that are passed
-     around the system.
-
-    The build runs through all validate checks individually to guarantee that any `Board` instance it produces
-    meets all required specifications before construction completes
-
-    Usage:
-        ```python
-        from typing import cast
-        from chess.system import BuildResult
-        from chess.board import Board, BoardBuilder, BoardBuilderException
-        
-        # Safe board creation
-        build_result = BoardBuilder.build(board_id=id_emitter.board_id)
-
-        if not build_result.is_success():
-            raise build_result.err
-        board = cast(Board, build_result.payload)
-        ```
-
-    See Also:
-        `Board`: The data structure being constructed
-        `BoardValidator`: Used for validating existing `Board` instances
-        `BuildResult`: Return type containing the built `Board` or err information
+    Responsible for safely constructing `Board` instances.
     """
 
     @classmethod
     def build(cls) -> BuildResult[Board]:
         """
-        Constructs a new `Board` instance with comprehensive checks on the parameters and states during the
-        build process.
-
-        Performs individual validate checks on each component to ensure the resulting `Board` meets all
-        specifications. If all checks are passed, a `Board` instance will be returned. It is not necessary to perform 
-        any additional validate checks on the returned `Board` instance. This method guarantees if a `BuildResult`
-        with a successful status is returned, the contained `Board` is valid and ready for use.
+        Constructs a new `Board` that works correctly.
 
         Args:
-           `board_id`(`int`): The unique id for the board. Must pass `IdValidator` checks.
+            None
 
         Returns:
-            BuildResult[Board]: A `BuildResult` containing either:
+            `BuildResult`[`Board`]: A `BuildResult` containing either:
                 - On success: A valid `Board` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
-            `BoardBuilderException`: Wraps any underlying validate failures that occur during the construction
-            process. This includes:
-                * `InvalidIdException``: if `board_id` `IdValidator.validate` returns an err
-
-        Note:
-            The build runs through all the checks on parameters and state to guarantee only a valid `Board` is
-            created, while `BoardValidator` is used for validating `Board` instances that are passed around after 
-            creation. This separation of concerns makes the validate and building independent of each other and
-            simplifies maintenance.
-
-        Example:
-            ```python
-            # Valid board creation
-            build_outcome = BoardBuilder.build(value=1)
-            if not build_outcome.is_success():
-                return BuildResult(err=build_outcome.err)
-            board = cast(Board, build_outcome.payload)
-            ```
+            `BoardBuildFailedException`:`: Wraps any exceptions raised build. These are:
         """
         method = "BoardBuilder.build"
         
@@ -89,24 +50,15 @@ class BoardBuilder:
     
                 for j in range(BOARD_DIMENSION):
                     name = chr(ascii_value) + str(i + 1)
-                    coord = Coord(row=i, column=j)
-                    square = Square(id_emitter.square_id, name, coord)
+                    board = Board(row=i, column=j)
+                    square = Square(name, board)
     
                     row_squares.append(square)
                     ascii_value += 1
                 squares.append(row_squares)
             return BuildResult(payload=Board(squares=squares))
 
-        except InvalidIdException as e:
-            raise BoardBuilderException(f"{method}: {BoardBuilderException.DEFAULT_MESSAGE}") from e
-
-
-
-def main():
-    board = BoardBuilder.build()
-    print(board)
-
-if __name__ == "__main__":
-    main()
+        except Exception as e:
+            raise BoardBuildFailedException(f"{method}: {e}") from e
 
 

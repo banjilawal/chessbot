@@ -10,11 +10,11 @@ T = TypeVar('T')
 class ErrorHandler(Enum):
     """
     Making ErrorHandler an enum for future extensibilit assures only one instance exists.
-    Decorator-based err handler that logs errors with minimal context
+    Decorator-based error handler that logs errors with minimal context
     """
 
-    @classmethod
-    def get_logger_for(cls, context: Any) -> logging.Logger:
+    @staticmethod
+    def get_logger_for(context: Any) -> logging.Logger:
         """
         Returns a logger named after the context's class or module.
         Prioritizes class name, falls back to module name if needed.
@@ -36,8 +36,8 @@ class ErrorHandler(Enum):
 
         return logging.getLogger(module_name)
 
-    @classmethod
-    def log_and_raise(cls, context: Any, exception: Exception, logger: Logger = logging.Logger) -> None:
+    @staticmethod
+    def log_and_raise(context: Any, exception: Exception, logger: Logger = logging.Logger) -> None:
         """
         After getting the right logger log the exception then re-raise it.
         """
@@ -52,8 +52,8 @@ class ErrorHandler(Enum):
         )
         raise exception
 
-    @classmethod
-    def wrap(cls, func: Callable[..., T], logger: logging.Logger) -> Callable[..., T]:
+    @staticmethod
+    def wrap(func: Callable[..., T], logger: logging.Logger) -> Callable[..., T]:
         @wraps(func)
         def wrapper(*args, **kwargs) -> T:
             try:
@@ -87,7 +87,7 @@ class ErrorHandler(Enum):
     #     return wrapper
     #
     # def _log_error(self, err: Exception, func: Callable, instance: Any = None):
-    #     """Extracts only class/method name and err details"""
+    #     """Extracts only class/method name and error details"""
     #     class_name = instance.__class__.__name__ if instance else "Module"
     #     method_name = func.__name__
     #
@@ -97,5 +97,5 @@ class ErrorHandler(Enum):
     #         method_name,
     #         err.__class__.__name__,  # Error type only
     #         str(err)                 # Error message only
-    #         # No stacktrace, no context - err object is source of truth
+    #         # No stacktrace, no context - error object is source of truth
     #     )

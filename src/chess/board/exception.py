@@ -8,7 +8,7 @@ __all__ = [
     'NullBoardException',
 
     # === BOARD BUILDER EXCEPTIONS ===
-    'BoardBuilderException',
+    'BoardBuildFailedException',
     
     # === PIECE ADDITION/REMOVAL EXCEPTIONS ===
     'BoardPieceAdditionFailedException',
@@ -17,7 +17,6 @@ __all__ = [
     # === PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ===
     'FailedPieceAdditionRolledBackException',
     'FailedPieceRemovalRolledBackException',
-
 ]
 
 class BoardException(ChessException):
@@ -51,13 +50,13 @@ class InvalidBoardException(BoardException, ValidationException):
     DEFAULT_MESSAGE = f"Board validation failed"
     
 # === BOARD BUILDER EXCEPTIONS ===
-class BoardBuilderException(BoardException, BuilderException):
+class BoardBuildFailedException(BoardException, BuilderException):
     """
-    Raised when BoardBuilder encounters an err while building a team. Exists primarily to catch all
+    Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all
     exceptions raised build a new board
     """
-    ERROR_CODE = "BOARD_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "BoardBuilder raised an err. Board creation failed."
+    ERROR_CODE = "BOARD_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Board build failed."
     
 
 # === PIECE ADDITION/REMOVAL EXCEPTIONS ===

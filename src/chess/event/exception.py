@@ -70,7 +70,7 @@ class EventBuilderException(EventException, BuilderException):
     Notes:
         Only use in the finally statement of a try-except block.
     """
-    ERROR_CODE = "EVENT_BUILDER_ERROR"
+    ERROR_CODE = "EVENT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "EventBuilder validate failed."
 
 

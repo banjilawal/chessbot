@@ -31,7 +31,7 @@ class TeamBuilder(Enum):
     See Also:
         `Team`: The data structure being constructed
         `TeamValidator`: Used for validating existing `Team` instances
-        `BuildResult`: Return type containing the built `Team` or err information
+        `BuildResult`: Return type containing the built `Team` or error information
     """
 
 
@@ -56,7 +56,7 @@ class TeamBuilder(Enum):
         Returns:
             BuildResult[Team]: A `BuildResult` containing either:
                 - On success: A valid `Team` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
             `TeamBuilderException`: Wraps any underlying validate failures that occur during the construction process.

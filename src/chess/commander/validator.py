@@ -1,6 +1,6 @@
 from typing import cast, Generic, TYPE_CHECKING
 
-from chess.commander.exception import TeamListException
+from chess.commander.exception import CommanderHistoryException
 from chess.system import Result, Validator, IdValidator, NameValidator
 from chess.exception import NameValidationException, IdValidationException
 from chess.commander import Commander, NullCommanderException, InvalidCommanderException
@@ -91,12 +91,12 @@ class CommanderValidator(Validator):
                 NullCommanderException,
                 IdValidationException,
                 NameValidationException,
-                TeamListException
+                CommanderHistoryException
         ) as e:
             raise InvalidCommanderException(f"{method}: {InvalidCommanderException.DEFAULT_MESSAGE}") from e
 
 
         # This block catches any unexpected exceptions
-        # You might want to log the err here before re-raising
+        # You might want to log the error here before re-raising
         except Exception as e:
-            raise InvalidCommanderException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidCommanderException(f"{method}: {e}") from e

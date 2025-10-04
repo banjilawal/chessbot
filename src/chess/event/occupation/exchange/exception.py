@@ -50,11 +50,11 @@ class AttackEventException(OccupationEventException):
     Base class for exceptions raised during attack/capture operations.
 
     PURPOSE:
-        Used when an err occurs in the course of an attack or capture
+        Used when an error occurs in the course of an attack or capture
         (e.g., invalid target, rollback during capture, inconsistent board state).
     """
     DEFAULT_CODE = "ATTACK_ERROR"
-    DEFAULT_MESSAGE = "An err occurred during an attack or capture transaction."
+    DEFAULT_MESSAGE = "An error occurred during an attack or capture transaction."
 
 
 
@@ -65,15 +65,18 @@ class NullAttackEventException(AttackEventException, NullException):
     DEFAULT_MESSAGE = "AttackEvent cannot be null"
 
 class InvalidAttackEventException(AttackEventException, ValidationException):
-    """Raised by AttackEventValidators if validate fails."""
+    """Raised by ExchangeValidators if client fails validation."""
     ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "AttackEvent failed validate"
 
 
 #=== ATTACK_EVENT BUILDER EXCEPTIONS ===
 class AttackEventBuilderException(AttackEventException, BuilderException):
-    """Raised when a AttackEventBuilder fails to build a AttackEvent."""
-    ERROR_CODE = "ATTACK_EVENT_BUILDER_ERROR"
+    """
+    Indicates Coord could not be built. Wraps and re-raises errors that occurred
+    during build.
+    """
+    ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "AttackEventBuilder failed to create a AttackEvent"
 
 

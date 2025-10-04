@@ -87,7 +87,7 @@ class Board:
     #         SquareIterator: An iterator instance for traversing the chessboard.
     #
     #     Raises:
-    #         CoordValidationException: If index fails at least one specification message
+    #         InvalidCoordException: If index fails at least one specification message
     #         NullDeltaException: If null-pkg is None.
     #     """
     #
@@ -197,7 +197,7 @@ class Board:
             any team_exception raised.
 
         Raises: 
-            CoordValidationException: If coord fails sanity checks.
+            InvalidCoordException: If coord fails sanity checks.
             PieceNotFoundException: If no discover is at the coord.
         """
 
@@ -244,8 +244,8 @@ class Board:
         #     )
         #
         # if not CoordinateSpecification.is_satisfied_by(destination):
-        #     raise CoordValidationException(
-        #         f"{method}: {CoordValidationException.default_message}"
+        #     raise InvalidCoordException(
+        #         f"{method}: {InvalidCoordException.default_message}"
         #     )
 
         destination_square = self.find_square_by_coord(destination)

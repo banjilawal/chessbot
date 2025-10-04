@@ -34,11 +34,11 @@ class NullBuilderException(BuilderException, NullException):
 
 class FailedBuildException(BuilderException):
     """
-    Raised when PieceBuilder encounters an err while building a team. Exists primarily to
+    Raised when PieceBuilder encounters an error while building a team. Exists primarily to
     catch all exceptions raised building a new piece
     """
     ERROR_CODE = "BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Build failed."
+    DEFAULT_MESSAGE = " build failed."
 
 
 

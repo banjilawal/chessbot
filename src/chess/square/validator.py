@@ -1,7 +1,7 @@
 from typing import cast, Generic, TypeVar
 
 
-from chess.coord import CoordValidator, CoordValidationException
+from chess.coord import CoordValidator, InvalidCoordException
 from chess.square import Square, NullSquareException, InvalidSqaureException
 from chess.system import ValidationResult, Validator, IdValidator, NameValidator, InvalidIdException, InvalidNameException
 
@@ -48,7 +48,7 @@ class SquareValidator(Validator):
             `NullSquareException`: If the input `t` is `None`.
             `InvalidIdException`: If the `id` attribute of the square fails validate checks.
             `InvalidNameException`: If the `name` attribute of the square fails validate checks.
-            `CoordValidationException`: If the `coord` attribute of the square fails validate checks.
+            `InvalidCoordException`: If the `coord` attribute of the square fails validate checks.
             `InvalidSquareException`: Wraps any preceding exceptions
         """
         method = "SquareValidator.validate"
@@ -81,11 +81,11 @@ class SquareValidator(Validator):
                 NullSquareException,
                 InvalidIdException,
                 InvalidNameException,
-                CoordValidationException
+                InvalidCoordException
         ) as e:
             raise InvalidSqaureException("Square failed validate.") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the err here before re-raising
+        # You might want to log the error here before re-raising
         except Exception as e:
-            raise InvalidSqaureException(f"An unexpected err occurred during validate: {e}") from e
+            raise InvalidSqaureException(f"An unexpected error occurred during validate: {e}") from e

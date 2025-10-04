@@ -36,7 +36,7 @@ class TransferEventBuilder(Enum):
     See Also:
         `AttackEvent`: The data structure being constructed
         `AttackEventValidator`: Used for validating existing `AttackEvent` instances
-        `BuildResult`: Return type containing the built `AttackEvent` or err information
+        `BuildResult`: Return type containing the built `AttackEvent` or error information
     """
 
     @staticmethod
@@ -66,7 +66,7 @@ class TransferEventBuilder(Enum):
         Returns:
             BuildResult[AttackEvent]: A `BuildResult` containing either:
                 - On success: A valid `AttackEvent` instance in the payload
-                - On failure: Error information and err details
+                - On failure: Error information and error details
 
         Raises:
            AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.

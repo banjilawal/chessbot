@@ -5,7 +5,7 @@ from chess.coord import CoordValidator
 from assurance import IdValidator, NameValidator
 from chess.team import Team
 from chess.piece import Piece
-from chess.commander import TeamList
+from chess.commander import CommandHistory
 
 
 
@@ -21,7 +21,7 @@ __all__ = [
 class Commander(ABC):
     _id: int
     _name: str
-    _teams: TeamList
+    _teams: CommandHistory
     _current_team: Optional['Team']
 
 
@@ -37,7 +37,7 @@ class Commander(ABC):
 
         self._id = cast(int, id_validation.payload)
         self._name = cast(str, name_validation.payload)
-        self._teams = TeamList()
+        self._teams = CommandHistory()
 
         self._current_team = self._teams.current_team
 
@@ -53,7 +53,7 @@ class Commander(ABC):
 
 
     @property
-    def teams(self) -> TeamList:
+    def teams(self) -> CommandHistory:
         return self._teams
 
 

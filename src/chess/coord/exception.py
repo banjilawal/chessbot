@@ -3,13 +3,11 @@ from chess.exception import ChessException, NullException, ValidationException, 
 
 __all__ = [
     'CoordException',
+
     'NullCoordException',
+    'InvalidCoordException',
 
-    'CoordValidationException',
-    'NullCoordValidatorException',
-
-    'CoordBuilderException',
-    'NullCoordBuilderException',
+    'CoordBuildFailed',
 
     'NullRowException',
     'RowBelowBoundsException',
@@ -20,9 +18,6 @@ __all__ = [
     'ColumnBelowBoundsException',
 ]
 
-"""
-Super class for Coord related exceptions
-"""
 class CoordException(ChessException):
     """
     Super class for Coord related exceptions.
@@ -30,47 +25,31 @@ class CoordException(ChessException):
     ERROR_CODE = "COORD_ERROR"
     DEFAULT_MESSAGE = f"Invalid Coord state threw an err"
 
-
-class NullCoordException(NullException):
-    """
-    Raised if a coord is null
-    """
-    ERROR_CODE = "NULL_COORDINATE_ERROR"
-    DEFAULT_MESSAGE = f"Coordinate cannot be null"
+class NullCoordException(CoordException, NullException):
+    """Raised by methods, entities, and models that require a Coord but receive a null."""
+    ERROR_CODE = "NULL_COORD_ERROR"
+    DEFAULT_MESSAGE = "Coord cannot be null"
 
 
-class CoordValidationException(ValidationException):
+class InvalidCoordException(CoordException, ValidationException):
+    """Raised by CoordValidator if client fails validation."""
     ERROR_CODE = "COORD_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Coord validation failed"
+    DEFAULT_MESSAGE = "Coord validation failed"
 
-
-class NullCoordValidatorException(ValidationException):
-    ERROR_CODE = "NULL_COORD_VALIDATOR_ERROR"
-    DEFAULT_MESSAGE = f"CoordValidator cannot be null"
-
-
-class CoordBuilderException(BuilderException):
+class CoordBuildFailed(CoordException, BuilderException):
     """
-    Wrapper for exceptions raised when CoordBuilder runs.
+    Indicates Coord could not be built. Wraps and re-raises
+    errors that occurred during creation.
     """
-    ERROR_CODE = "COORD_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "CoordBuilder raised an err"
-
-
-class NullCoordBuilderException(NullException):
-    """
-    Raised if a CoordBuilder is null.
-    """
-    ERROR_CODE = "NULL_COORD_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "CoordBuilder cannot be null"
-
+    ERROR_CODE = "COORD_BUILD_FAILED"
+    DEFAULT_MESSAGE = "Coord build failed."
 
 class NullRowException(NullException):
     """
     Raised if a row is null. A coord cannot be created if the row is null
     """
     ERROR_CODE = "NULL_ROW_ERROR"
-    DEFAULT_MESSAGE = f"Row cannot be null"
+    DEFAULT_MESSAGE = "Row cannot be null"
 
 
 class RowBelowBoundsException(CoordException):
@@ -95,7 +74,7 @@ class NullColumnException(NullException):
     Raised if a column is null. A coord cannot be created if the column is null
     """
     ERROR_CODE = "NULL_COLUMN_ERROR"
-    DEFAULT_MESSAGE = f"Column cannot be null"
+    DEFAULT_MESSAGE = "Column cannot be null"
 
 
 class ColumnBelowBoundsException(CoordException):
