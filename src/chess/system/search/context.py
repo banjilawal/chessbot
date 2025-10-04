@@ -1,5 +1,7 @@
 from abc import ABC
 
+from chess.system import Context
 
-class SearchContext(ABC):
+
+class SearchContext(Context, ABC):
     pass

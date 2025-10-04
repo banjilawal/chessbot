@@ -1,16 +1,21 @@
+from abc import ABC
 from typing import List, Optional
 
-from chess.arena.model import Arena
-from chess.board import Board
-from chess.commander import Commander
-from chess.piece import Piece
-from chess.rank import Rank
-from chess.square import Square
 from chess.team import Team
+from chess.board import Board
+from chess.piece import Piece
+from chess.arena.model import Arena
+from chess.commander import Commander
+
+from chess.system import Context
 
 
-class ExecutionContext:
+class ExecutionContext(Context):
     """Container for execution dependencies"""
+
+    # # Usage:
+    # context = ExecutionContext(board=current_board, teams=all_teams)
+    # outcome = executor.execute_directive(directive, context.to_dict())
 
     _actor: Optional[Piece]
     _enemy: Optional[Piece]
@@ -45,11 +50,9 @@ class ExecutionContext:
     def actor(self) -> Optional[Piece]:
         return self._actor
 
-
     @property
     def enemy(self) -> Optional[Piece]:
         return self._enemy
-
 
     @property
     def arena(self) -> Optional[Arena]:
@@ -67,7 +70,6 @@ class ExecutionContext:
     def commanders(self) -> Optional[List[Commander]]:
         return self._commanders
 
-
     def to_dict(self) -> dict:
         """Convert to dictionary for backward compatibility"""
         return {
@@ -80,6 +82,4 @@ class ExecutionContext:
         }
 
 #
-# # Usage:
-# context = ExecutionContext(board=current_board, teams=all_teams)
-# outcome = executor.execute_directive(directive, context.to_dict())
+

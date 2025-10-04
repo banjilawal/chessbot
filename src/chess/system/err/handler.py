@@ -13,12 +13,13 @@ class ErrorHandler(Enum):
     Decorator-based err handler that logs errors with minimal context
     """
 
-    @staticmethod
-    def get_logger_for(context: Any) -> logging.Logger:
+    @classmethod
+    def get_logger_for(cls, context: Any) -> logging.Logger:
         """
         Returns a logger named after the context's class or module.
         Prioritizes class name, falls back to module name if needed.
         """
+
         # If it's a class, use its name
         if inspect.isclass(context):
             return logging.getLogger(context.__name__)
@@ -35,8 +36,12 @@ class ErrorHandler(Enum):
 
         return logging.getLogger(module_name)
 
-    @staticmethod
-    def log_and_raise(context: Any, exception: Exception, logger: Logger = logging.Logger) -> None:
+    @classmethod
+    def log_and_raise(cls, context: Any, exception: Exception, logger: Logger = logging.Logger) -> None:
+        """
+        After getting the right logger log the exception then re-raise it.
+        """
+
         logger = ErrorHandler.get_logger_for(context)
         logger.error(
             "[%s] %s: %s",
@@ -47,8 +52,8 @@ class ErrorHandler(Enum):
         )
         raise exception
 
-    @staticmethod
-    def wrap(func: Callable[..., T], logger: logging.Logger) -> Callable[..., T]:
+    @classmethod
+    def wrap(cls, func: Callable[..., T], logger: logging.Logger) -> Callable[..., T]:
         @wraps(func)
         def wrapper(*args, **kwargs) -> T:
             try:
