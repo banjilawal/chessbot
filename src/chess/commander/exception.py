@@ -1,3 +1,4 @@
+from chess.system import InconsistentCollectionException
 from chess.system.err import (
     ChessException, NullException, ValidationException, FailedBuildException, CollectionException
 )
@@ -52,6 +53,12 @@ class CommanderHistoryException(CommanderException):
     ERROR_CODE = "COMMANDER_HISTORY_ERROR"
     DEFAULT_MESSAGE = "CommanderHistory raised an exception."
 
+class InconsistentCommandHistoryException(CommanderHistoryException, InconsistentCollectionException):
+    ERROR_CODE = "INCONSISTENT_COMMANDER_HISTORY_ERROR"
+    DEFAULT_MESSAGE = (
+        "CommanderHistory is an inconsistent state. Data might be corrupt."
+    )
+
 class AddNewTeamException(TeamRosterException):
     """Raised if a new team could not be added to commandHistory"""
     ERROR_CODE = "ADD_NEW_TEAM_ERROR"
@@ -83,8 +90,3 @@ class InvalidCommanderAssignmentException(CommanderHistoryException):
 
 
 
-class InconsistentCommandHistoryException(CommanderHistoryException, InconsistencyException):
-    ERROR_CODE = "INCONSISTENT_COMMANDER_HISTORY_ERROR"
-    DEFAULT_MESSAGE = (
-        "CommanderHistory is an inconsistent state. Data might be corrupt."
-    )
