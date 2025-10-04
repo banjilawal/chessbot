@@ -54,7 +54,6 @@ class InconsistencyException(ChessException):
     ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
     DEFAULT_MESSAGE = "A data inconsistency was detected"
 
-
 class InconsistentCollectionException(InconsistencyException):
     """
     Raised if a collection's state is inconsistent or its data corrupted
@@ -93,7 +92,6 @@ class BlankStringException(ChessException):
     """
     Raised if search parameter is a blank or empty string
     """
-
     ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
     DEFAULT_MESSAGE = f"Cannot search by an empty or blank string"
 
