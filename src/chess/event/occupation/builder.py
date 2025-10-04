@@ -16,12 +16,12 @@ class OccupationEventBuilder(Enum):
     """
     Responsible for safely constructing `OccupationEvent` instances.
 
-    `OccupationEventBuilder` ensures that `OccupationEvent` objects are always created successfully by performing comprehensive validation
+    `OccupationEventBuilder` ensures that `OccupationEvent` objects are always created successfully by performing comprehensive validate
      checks during construction. This separates the responsibility of building from validating - `OccupationEventBuilder` 
      focuses on creation while `OccupationEventValidator` is used for validating existing `OccupationEvent` instances that are passed 
      around the system.
 
-    The build runs through all validation checks individually to guarantee that any `OccupationEvent` instance it produces
+    The build runs through all validate checks individually to guarantee that any `OccupationEvent` instance it produces
     meets all required specifications before construction completes
     
     Usage:
@@ -31,7 +31,7 @@ class OccupationEventBuilder(Enum):
     See Also:
         `OccupationEvent`: The data structure being constructed
         `OccupationEventValidator`: Used for validating existing `OccupationEvent` instances
-        `BuildResult`: Return type containing the built `OccupationEvent` or exception information
+        `BuildResult`: Return type containing the built `OccupationEvent` or err information
     """
 
     @staticmethod
@@ -40,9 +40,9 @@ class OccupationEventBuilder(Enum):
         Constructs a new `OccupationEvent` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `OccupationEvent` meets all 
+        Performs individual validate checks on each component to ensure the resulting `OccupationEvent` meets all
         specifications. If all checks are passed, a `OccupationEvent` instance will be returned. It is not necessary to perform 
-        any additional validation checks on the returned `OccupationEvent` instance. This method guarantees if a `BuildResult` 
+        any additional validate checks on the returned `OccupationEvent` instance. This method guarantees if a `BuildResult`
         with a successful status is returned, the contained `OccupationEvent` is valid and ready for use.
 
         Args:
@@ -54,15 +54,15 @@ class OccupationEventBuilder(Enum):
         Returns:
             BuildResult[OccupationEvent]: A `BuildResult` containing either:
                 - On success: A valid `OccupationEvent` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-           OccupationEventBuilderException: Wraps any underlying validation failures that occur during the construction process.
+           OccupationEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
            This includes:
-                * `InvalidIdException`: if `event_id` fails validation checks
-                * `ActorValidationException`: if `actor` fails validation checks
-                * `InvalidSquareException`: if `square` fails validation checks
-                * `InvalidContextException`: if `context` fails validation checks
+                * `InvalidIdException`: if `event_id` fails validate checks
+                * `ActorValidationException`: if `actor` fails validate checks
+                * `InvalidSquareException`: if `square` fails validate checks
+                * `InvalidContextException`: if `context` fails validate checks
                 * `InvalidContextAssignmentException`: If `occupationEvent.context` is different from `context` parameter
                 * `FullSquareQuotaException`: If the `context` has no empty slots for the `occupationEvent.square`
                 * `FullSquareQuotaException`: If `occupationEvent.context` is equal to `context` parameter but `context.roster` still does
@@ -71,7 +71,7 @@ class OccupationEventBuilder(Enum):
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `OccupationEvent` is
             created, while `OccupationEventValidator` is used for validating `OccupationEvent` instances that are passed around after 
-            creating. This separation of concerns makes the validation and building independent of each other and
+            creating. This separation of concerns makes the validate and building independent of each other and
             simplifies maintenance.
 
         Example:
@@ -95,7 +95,7 @@ class OccupationEventBuilder(Enum):
 
             # context_validation = ContextValidator.validate(context)
             # if not context_validation.is_success():
-            #     ThrowHelper.throw_if_invalid(OccupationEventBuilder, context_validation)
+            #     InstructionRecorder.throw_if_invalid(OccupationEventBuilder, context_validation)
 
             if destination_square.coord == actor.current_position:
                 ThrowHelper.throw_if_invalid(

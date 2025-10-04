@@ -11,7 +11,7 @@ Contents:
 
 Notes:
     This module is part of the chess.event.occupation.attack package.
-    Exceptions raised during execution are defined in exception.py.
+    Exceptions raised during execution are defined in err.py.
 """
 
 
@@ -222,7 +222,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
         Returns:
         `OccupationResult` containing:
             - On success: A new `OccupationEvent` with the updated squares and `piece`.
-            - On failure: The original `OccupationEvent`or verifying any rollbacks succeeded and the exception
+            - On failure: The original `OccupationEvent`or verifying any rollbacks succeeded and the err
                 describing the failure.
 
         Raises:
@@ -287,7 +287,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
         """
         Creates a new `Discovery` object for event.actor which is blocked from moving to
         `destination_square` by `event.enemy`. The enemy is either a friendly piece or an enemy `KingPiece`.
-        `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, exception chains
+        `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, err chains
         confirmed parameters ar are correct. No additional sanity checks are needed.
 
         Args
@@ -298,7 +298,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
         `OccupationResult` containing:
             - On success: A new `ScanEvent` object that containing updated `actor`. Observer will have
                 a new `Discovery` instance inside `actor.discoveries`.
-            - On failure: The original `ScanEvent` for verifying any rollbacks succeeded and the exception
+            - On failure: The original `ScanEvent` for verifying any rollbacks succeeded and the err
                 describing the failure.
 
         Raises:

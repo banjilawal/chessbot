@@ -15,7 +15,7 @@ destination coordinate.
 
 ### CORE CLASSES
 * `Vector`: An immutable class representing a two-dimensional offset.
-* `VectorValidator`: Provides validation for `Vector` objects to ensure data integrity.
+* `VectorValidator`: Provides validate for `Vector` objects to ensure data integrity.
 
 ### USAGE
 To use this package, import the desired classes and perform operations.
@@ -26,11 +26,11 @@ To use this package, import the desired classes and perform operations.
 >>> candidate = Vector(x=2, y=1)
 >>>
 >>> # Validator.validate returns a Result
->>> validation = VectorValidator.validate(candidate)
->>> if not validation.is_success():
->>>     raise validation.exception
+>>> validate = VectorValidator.validate(candidate)
+>>> if not validate.is_success():
+>>>     raise validate.err
 >>> # On success always cast the payload to its type.
->>> vector = cast(Vector, validation.payload)
+>>> vector = cast(Vector, validate.payload)
 
 
 ## EXCEPTION CLASSES
@@ -50,7 +50,7 @@ diagnose and resolve issues by pinpointing the exact nature of the problem.
 ## EXAMPLE EXCEPTION USAGE
 These exceptions can be imported and raised within vector-related code to enforce
 data integrity. They allow calling code to use specific `try...except` blocks
-to handle different exception conditions gracefully. For example:
+to handle different err conditions gracefully. For example:
 
 # >>> from chess.vector.team_exception import XComponentNullException, VectorBelowBoundsException
 >>> from chess.vector import Vector

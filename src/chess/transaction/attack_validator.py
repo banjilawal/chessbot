@@ -25,7 +25,7 @@ class AttackValidator(Validator):
             - `id` does not fail validator
             - `actor` is a valid chess enemy
             - `target` is a valid square
-        Any validation failure raises an `InvalidOccupationDirectiveException`.
+        Any validate failure raises an `InvalidOccupationDirectiveException`.
 
         Argument:
             `t` (`OccupationDirective`): `occupationDirective `to validate
@@ -118,7 +118,7 @@ class AttackValidator(Validator):
             ) from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidCaptureContextException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidCaptureContextException(f"An unexpected error occurred during validate: {e}") from e
 

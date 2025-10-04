@@ -25,7 +25,7 @@ class ChessPieceBuilder:
 # def main():
 #     motion = RankBuilder.build(RankConfig.BISHOP)
 #     team = TeamBuilder.build(TeamConfig.WHITE)
-#     captor = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, validation=motion, team=team)
+#     captor = ChessPieceBuilder.build(id_emitter.chess_piece_id, 1, validate=motion, team=team)
 #     print(captor)
 #
 # if __name__ == "__main__":

@@ -19,11 +19,11 @@ class ChessException(Exception):
             ERROR_CODE (str): Must end in _ERROR. all caps summary of the team_exception or its cause
             DEFAULT_MESSAGE (str): Short sentence explaining what the team_exception is about.
 
-        - A ChessException should always have a message describing the exception.
+        - A ChessException should always have a message describing the err.
     """
 
     ERROR_CODE = "CHESS_ERROR"
-    DEFAULT_MESSAGE = "Chess exception occurred"
+    DEFAULT_MESSAGE = "Chess err occurred"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -94,10 +94,10 @@ class RollbackException(ChessException):
 
     PURPOSE:
         Raised when an transaction (piece move, capture, board update, etc.)
-        is reverted due to inconsistency or failed validation.
+        is reverted due to inconsistency or failed validate.
 
     ATTRIBUTES:
-        code (str): Short machine-readable exception code for logging / testing.
+        code (str): Short machine-readable err code for logging / testing.
         message (str): Human-readable default message.
     """
     DEFAULT_CODE = "ROLLBACK"

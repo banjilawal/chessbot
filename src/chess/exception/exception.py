@@ -20,11 +20,11 @@ class ChessException(Exception):
             ERROR_CODE (str): Must end in _ERROR. all caps summary of the team_exception or its cause
             DEFAULT_MESSAGE (str): Short sentence explaining what the team_exception is about.
 
-        - A ChessException should always have a message describing the exception.
+        - A ChessException should always have a message describing the err.
     """
 
     ERROR_CODE = "CHESS_ERROR"
-    DEFAULT_MESSAGE = "Chess exception occurred"
+    DEFAULT_MESSAGE = "Chess err occurred"
 
     def __init__(self, message=None):
         self.message = message or self.DEFAULT_MESSAGE
@@ -89,7 +89,7 @@ class BuilderException(ChessException):
     entity builds should be wrapped in the BuilderException corresponding to the Builder's name.
     """
     ERROR_CODE = "BUILDER_ERROR"
-    DEFAULT_MESSAGE = "Builder  raised an exception"
+    DEFAULT_MESSAGE = "Builder  raised an err"
 
 
 class RollbackException(ChessException):
@@ -98,10 +98,10 @@ class RollbackException(ChessException):
 
     PURPOSE:
         Raised when an transaction (piece move, capture, board update, etc.)
-        is reverted due to inconsistency or failed validation.
+        is reverted due to inconsistency or failed validate.
 
     ATTRIBUTES:
-        code (str): Short machine-readable exception code for logging / testing.
+        code (str): Short machine-readable err code for logging / testing.
         message (str): Human-readable default message.
     """
     DEFAULT_CODE = "ROLLBACK"
@@ -113,14 +113,14 @@ class SearchException(ChessException):
     Base class for search errors in the chess engine.
 
     PURPOSE:
-        Raised search raises an exception. Is a wrapper for other exceptions
+        Raised search raises an err. Is a wrapper for other exceptions
         that occur during search.
     ATTRIBUTES:
-        code (str): Short machine-readable exception code for logging / testing.
+        code (str): Short machine-readable err code for logging / testing.
         message (str): Human-readable default message.
     """
     DEFAULT_CODE = "SEARCH_ERROR"
-    DEFAULT_MESSAGE = "An exception was raised during a search."
+    DEFAULT_MESSAGE = "An err was raised during a search."
 
 
 

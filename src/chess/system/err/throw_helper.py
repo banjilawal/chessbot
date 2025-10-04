@@ -5,14 +5,14 @@ from assurance.error_handler import ErrorHandler
 from chess.result import Result
 
 
-class ThrowHelper(Enum):
+class InstructionRecorder(Enum):
     @staticmethod
     def throw_if_invalid(context: Any, result: Result, exception_factory: Callable[[], Exception] = None):
         if result.is_success():
             return
 
         if exception_factory is None:
-            exception_factory = ThrowHelper._default_exception_factory
+            exception_factory = InstructionRecorder._default_exception_factory
 
         ErrorHandler.log_and_raise(context, exception_factory())
 

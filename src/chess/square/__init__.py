@@ -27,10 +27,10 @@ To use this package, import the desired classes and perform square-related opera
 >>> coord = Coord(row=2, column=1)
 >>> build_outcome = SquareBuilder.build(square_id=1, name="B2", coord=coord)
 >>> if not build_outcome.is_success():
->>>    raise build_outcome.exception
+>>>    raise build_outcome.err
 >>> square = cast(Square, build_outcome.payload)
 >>> # Validate the square
->>> validation = SquareValidator.validate(square)
+>>> validate = SquareValidator.validate(square)
 ---
 """
 

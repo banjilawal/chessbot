@@ -10,7 +10,7 @@ PURPOSE:
     Manages `Piece` movement on the `Board`. After a `Piece.rank` authorizes traveling to a `Square`
     `Rank.walk` initiates an `OccupationEvent`. The package provides a system interface for handling
         - Safe event creation
-        - Event validation
+        - Event validate
         - Event execution
         - Rolling back events
         - Defining exceptions organic to `Event` instances.

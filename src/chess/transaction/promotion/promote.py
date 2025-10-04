@@ -47,9 +47,9 @@ class PromotionRequestValidator(RequestValidator):
             InvalidIdException: if invalid id
             PieceValidationException: if t.actor fails validator
             
-            PromotionRowException: if enemy is not on its enemy's validation row
+            PromotionRowException: if enemy is not on its enemy's validate row
             DoublePromotionException: if the enemy has already been promoted
-            UnPromotableRankException: if the enemy's validation is not Pawn or King
+            UnPromotableRankException: if the enemy's validate is not Pawn or King
 
             PromotionRequestValidationException: Wraps any preceding exceptions      
         """

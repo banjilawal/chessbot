@@ -24,7 +24,7 @@ from chess.event.occupation import ScanEvent, ScanTransaction
 ## EXCEPTIONS:
 Gives granular information about errors that occur during scan operations.
     * `ScanEventException`: Superclass for all scan event exceptions. Subclasses give better debugging information
-    * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validation fails
+    * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
     * `NullScanEventException`: Raised by methods, entities, and models that require a ScanEvent but receive a null
     * `OccupationOccupationScanSubjectException`: Raised if a enemy of a scan is invalid.
     * `ObserverCircularScanException`: Raised if an actor scans itself.

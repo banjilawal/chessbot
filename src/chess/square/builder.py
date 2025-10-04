@@ -10,12 +10,12 @@ class SquareBuilder(Enum):
     """
     Builder class responsible for safely constructing `Square` instances.
 
-    `SquareBuilder` ensures that `Square` objects are always created successfully by performing comprehensive validation
+    `SquareBuilder` ensures that `Square` objects are always created successfully by performing comprehensive validate
      checks during construction. This separates the responsibility of building from validating - `SquareBuilder` 
      focuses on creation while `SquareValidator` is used for validating existing `Square` instances that are passed 
      around the system.
 
-    The build runs through all validation checks individually to guarantee that any `Square` instance it produces
+    The build runs through all validate checks individually to guarantee that any `Square` instance it produces
     meets all required specifications before construction completes
 
     Usage:
@@ -30,7 +30,7 @@ class SquareBuilder(Enum):
     See Also:
         `Square`: The data structure being constructed
         `SquareValidator`: Used for validating existing `Square` instances
-        `BuildResult`: Return type containing the built `Square` or exception information
+        `BuildResult`: Return type containing the built `Square` or err information
     """
     
     @staticmethod
@@ -39,9 +39,9 @@ class SquareBuilder(Enum):
         Constructs a new `Square` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `Square` meets all 
+        Performs individual validate checks on each component to ensure the resulting `Square` meets all
         specifications. If all checks are passed, a `Square` instance will be returned. It is not necessary to perform 
-        any additional validation checks on the returned `Square` instance. This method guarantees if a `BuildResult` 
+        any additional validate checks on the returned `Square` instance. This method guarantees if a `BuildResult`
         with a successful status is returned, the contained `Square` is valid and ready for use.
 
         Args:
@@ -52,20 +52,20 @@ class SquareBuilder(Enum):
         Returns:
             BuildResult[Square]: A `BuildResult` containing either:
                 - On success: A valid `Square` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-            `SquareBuilderException`: Wraps any underlying validation failures that occur during the construction
+            `SquareBuilderException`: Wraps any underlying validate failures that occur during the construction
              process. This includes:
-                * `InvalidIdException`: if `id` fails validation checks`
-                * `InvalidNameException`: if `name` fails validation checks
-                * `CoordValidationException`: if `coord` fails validation checks
+                * `InvalidIdException`: if `id` fails validate checks`
+                * `InvalidNameException`: if `name` fails validate checks
+                * `CoordValidationException`: if `coord` fails validate checks
                 * `SquareBuilderException`: for any other construction failures
 
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `Square` is
             created, while `SquareValidator` is used for validating `Square` instances that are passed around after 
-            creation. This separation of concerns makes the validation and building independent of each other and 
+            creation. This separation of concerns makes the validate and building independent of each other and
             simplifies maintenance.
 
         Example:
@@ -109,14 +109,14 @@ class SquareBuilder(Enum):
 #         square = cast(Square, build_result.payload)
 #         print(f"Successfully built square: {square}")
 #     else:
-#         print(f"Failed to build square: {build_result.exception}")
+#         print(f"Failed to build square: {build_result.err}")
 #
 #     build_result = SquareBuilder.build(square_id=-1, name="", coordinate=Coord(0, 0))
 #     if build_result.is_success():
 #         square = cast(Square, build_result.payload)
 #         print(f"Successfully built square: {square}")
 #     else:
-#         print(f"Failed to build square: {build_result.exception}")
+#         print(f"Failed to build square: {build_result.err}")
 #
 # if __name__ == "__main__":
 #     main()

@@ -10,25 +10,25 @@
 #      │   ├── transaction.py
 #      │   ├── validator.py
 #      │   ├── base.py
-#      │   ├── exception.py
-#      │   └── exception.py
+#      │   ├── err.py
+#      │   └── err.py
 #      │
 #      ├── promotion/
 #      │   ├── __init__.py
 #      │   ├── transaction.py
 #      │   ├── validator.py
 #      │   ├── base.py
-#      │   └── exception.py
+#      │   └── err.py
 #      │
 #      ├── castling/
 #      │   ├── __init__.py
 #      │   ├── transaction.py
 #      │   ├── validator.py
-#      │   └── exception.py
+#      │   └── err.py
 #      │
 #      └── enemy/
 #          ├── __init__.py
 #          ├── transaction.py
 #          ├── validator.py
 #          ├── base.py
-#          └── exception.py
+#          └── err.py

@@ -14,17 +14,17 @@ to be immutable once assigned.
 
 ## CORE CLASSES
 * `Rank`: The base class for all discover rank strategies.
-* `Bishop`: Provides movement validation for a bishop.
-* `King`: Provides movement validation for a king.
-* `Knight`: Provides movement validation for a knight.
-* `Pawn`: Provides movement validation for a pawn.
-* `Rook`: Provides movement validation for a rook.
-* `Queen`: Provides movement validation for a queen.
+* `Bishop`: Provides movement validate for a bishop.
+* `King`: Provides movement validate for a king.
+* `Knight`: Provides movement validate for a knight.
+* `Pawn`: Provides movement validate for a pawn.
+* `Rook`: Provides movement validate for a rook.
+* `Queen`: Provides movement validate for a queen.
 * `PromotedQueen`: A specialized rank for a promoted queen's movement.
 
 ## USAGE
 The `Rank` classes are primarily used to validate a discover's movement at runtime. A `Piece` object holds a
-reference to its `Rank`, and delegates movement validation to it using the `walk()` method. This allows
+reference to its `Rank`, and delegates movement validate to it using the `walk()` method. This allows
 for a clean and simple interface for a chess board's logic.
 
 # >>> from chess.rank import Knight
@@ -44,8 +44,8 @@ True
 
 ## PURPOSE
 This package defines specific exceptions for issues encountered during a discover's movement or promotion
-validation. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
-exact nature of the exception, such as an invalid move for a specific discover type. Each team_exception acts as a
+validate. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
+exact nature of the err, such as an invalid move for a specific discover type. Each team_exception acts as a
 wrapper for underlying errors, providing a clean and consistent API for handling movement-related failures.
 
 ###CORE RANK EXCEPTIONS
@@ -75,7 +75,7 @@ invalid moves gracefully.
 # >>> from chess.rank import PawnException
 # >>>
 # >>> def move_pawn(start_pos, end_pos):
-# ...     # ... some validation logic
+# ...     # ... some validate logic
 # ...     if not is_valid_pawn_move:
 # ...         raise PawnException('Pawn cannot move in this way.')
 # ...

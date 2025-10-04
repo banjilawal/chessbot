@@ -26,13 +26,13 @@ To use this package, import the desired classes and perform scalar-related opera
 >>> # Create a scalar instance
 >>> build_outcome = ScalarBuilder.build(value=1)
 >>> if not build_outcome.is_success():
->>>     raise build_outcome.exception
->>> validation = ScalarValidator.validate(build_outcome.payload)
+>>>     raise build_outcome.err
+>>> validate = ScalarValidator.validate(build_outcome.payload)
 >>>
 >>> # Validating the candidate
->>> if not validation.is_success():
->>>     raise validation.exception
->>> c = cast(Scalar, validation.payload)
+>>> if not validate.is_success():
+>>>     raise validate.err
+>>> c = cast(Scalar, validate.payload)
 >>>
 >>> # Use the scalar to transform a vector
 >>> u = Vector(x=3, y=4)
@@ -48,7 +48,7 @@ This package defines specific exceptions for issues encountered when working wit
 * `NullScalarException`: Raised when a required scalar value is unexpectedly `None`.
 * `ScalarBelowBoundsException`: Raised when a scalar's value is below its minimum allowed value.
 * `ScalarAboveUpperBoundException`: Raised when a scalar's value is above its maximum allowed value.
-* `InvalidScalarException`: A general team_exception raised when a scalar value fails to meet its validation criteria.
+* `InvalidScalarException`: A general team_exception raised when a scalar value fails to meet its validate criteria.
 
 ### EXCEPTION USAGE EXCEPTIONS
 These exceptions can be imported and raised from within the scalar-related code to enforce data integrity.

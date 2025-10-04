@@ -26,14 +26,14 @@ class BoardException(ChessException):
     for debugging. This class exists primarily to allow catching all board exceptions
     """
     ERROR_CODE = "BOARD_ERROR"
-    DEFAULT_MESSAGE = "Board raised an exception"
+    DEFAULT_MESSAGE = "Board raised an err"
 
 class BoardRollBackException(BoardException):
     """
     Super class for exceptions that require a rollback to maintain board integrity.
     """
     ERROR_CODE = "BOARD_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Board raised an exception. Transaction rollback performed."
+    DEFAULT_MESSAGE = "Board raised an err. Transaction rollback performed."
 
 
 # === BOARD VALIDATION EXCEPTIONS ===
@@ -53,11 +53,11 @@ class InvalidBoardException(BoardException, ValidationException):
 # === BOARD BUILDER EXCEPTIONS ===
 class BoardBuilderException(BoardException, BuilderException):
     """
-    Raised when BoardBuilder encounters an exception while building a team. Exists primarily to catch all
+    Raised when BoardBuilder encounters an err while building a team. Exists primarily to catch all
     exceptions raised build a new board
     """
     ERROR_CODE = "BOARD_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "BoardBuilder raised an exception. Board creation failed."
+    DEFAULT_MESSAGE = "BoardBuilder raised an err. Board creation failed."
     
 
 # === PIECE ADDITION/REMOVAL EXCEPTIONS ===
@@ -75,7 +75,7 @@ class BoardPieceRemovalFailedException(BoardException):
 class FailedPieceAdditionRolledBackException(BoardRollBackException):
     """
     Raised if a transaction failed to add a piece to the board.The transaction was
-    rolled back before raising this exception.
+    rolled back before raising this err.
     """
     """Raised if the board fails to remove a piece from itself"""
     ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR_ROLLED_BACK"
@@ -86,7 +86,7 @@ class FailedPieceAdditionRolledBackException(BoardRollBackException):
 class FailedPieceRemovalRolledBackException(BoardRollBackException):
     """
     Raised if a  transaction failed to remove a piece from the board's list of pieces.
-    The transaction was rolled back before raising this exception.
+    The transaction was rolled back before raising this err.
     """
     ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (

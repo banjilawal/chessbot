@@ -13,12 +13,12 @@ class VectorBuilder(Enum):
     """
     Builder class responsible for safely constructing `Vector` instances.
 
-    `VectorBuilder` ensures that `Vector` objects are always created successfully by performing comprehensive validation
+    `VectorBuilder` ensures that `Vector` objects are always created successfully by performing comprehensive validate
      checks during construction. This separates the responsibility of building from validating - `VectorBuilder`
      focuses on creating while `VectorValidator` is used for validating existing `Vector` instances that are passed
      around the system.
 
-    The build runs through all validation checks individually to guarantee that any `Vector` instance it produces
+    The build runs through all validate checks individually to guarantee that any `Vector` instance it produces
     meets all required specifications before construction completes.
 
     Usage:
@@ -26,14 +26,14 @@ class VectorBuilder(Enum):
         # Safe construction of a Vector instance if and only if the parameters meet specs
         build_outcome = VectorBuilder.build(x=2, y=1)
         if not build_outcome.is_success():
-            raise build_outcome.exception
+            raise build_outcome.err
         vector = build_outcome.payload
         ```
         
     See Also:
         `Vector`: The data structure being constructed
         `VectorValidator`: Used for validating existing `Vector` instances
-        `BuildResult`: Return type containing the built `Vector` or exception information
+        `BuildResult`: Return type containing the built `Vector` or err information
     """
 
     @staticmethod
@@ -42,9 +42,9 @@ class VectorBuilder(Enum):
         Constructs a new `Vector` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `Vector` meets all 
+        Performs individual validate checks on each component to ensure the resulting `Vector` meets all
         specifications. If all checks are passed, a `Vector` instance will be returned. It is not necessary to perform 
-        any additional validation checks on the returned `Vector` instance. This method guarantees if a `BuildResult` 
+        any additional validate checks on the returned `Vector` instance. This method guarantees if a `BuildResult`
         with a successful status is returned, the contained `Vector` is valid and ready for use.
 
         Args:
@@ -56,21 +56,21 @@ class VectorBuilder(Enum):
         Returns:
             BuildResult[Vector]: A `BuildResult` containing either:
                 - On success: A valid `Vector` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-            `VectorBuilderException`: Wraps any underlying validation failures that occur during the construction
+            `VectorBuilderException`: Wraps any underlying validate failures that occur during the construction
             process. This includes:
                 * `NullXComponentException`: if x is None
                 * `NullYComponentException`: if y is None
                 * `VectorBelowBoundsException`: if x or y < -KNIGHT_STEP_SIZE
                 * `VectorAboveBoundsException`: if x or y > KNIGHT_STEP_SIZE
-                * Any validation errors from `VectorValidator`
+                * Any validate errors from `VectorValidator`
 
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `Vector` is
             created, while `VectorValidator` is used for validating `Vector` instances that are passed around after 
-            creation. This separation of concerns makes the validation and building independent of each other and 
+            creation. This separation of concerns makes the validate and building independent of each other and
             simplifies maintenance.
 
         Example:
@@ -82,7 +82,7 @@ class VectorBuilder(Enum):
             build_outcome = VectorBuilder.build(x=2, y=1)
 
             if not build_outcome.is_success():
-                raise build_outcome.exception # <--- Skips this because x and y are valid
+                raise build_outcome.err # <--- Skips this because x and y are valid
             u = cast(Vector, build_outcome.payload) # <-- executes this line
             ```
         """

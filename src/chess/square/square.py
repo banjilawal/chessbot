@@ -28,9 +28,9 @@ class Square:
             coord (Coord): The coordinate of the square.
 
         Raises:
-            InvalidIdException: If `square_id` fails validation checks.
-            InvalidNameException: If `name` fails validation checks.
-            CoordValidationException: If `coord` fails validation checks.
+            InvalidIdException: If `square_id` fails validate checks.
+            InvalidNameException: If `name` fails validate checks.
+            CoordValidationException: If `coord` fails validate checks.
         """
         id_validation = IdValidator.validate(square_id)
         if not id_validation.is_success():

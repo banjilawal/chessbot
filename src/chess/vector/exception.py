@@ -25,7 +25,7 @@ class VectorException(ChessException):
     for debugging. This class exists primarily to allow catching all vector exceptions
     """
     ERROR_CODE = "VECTOR_ERROR"
-    DEFAULT_MESSAGE = "Vector raised an exception"
+    DEFAULT_MESSAGE = "Vector raised an err"
 
 
 # === VECTOR VALIDATION EXCEPTIONS ===
@@ -47,11 +47,11 @@ class InvalidVectorException(VectorException, ValidationException):
 # === VECTOR BUILDER EXCEPTIONS ===
 class VectorBuilderException(VectorException, BuilderException):
     """
-    Raised when VectorBuilder encounters an exception while building a team. Exists primarily to catch all exceptions
+    Raised when VectorBuilder encounters an err while building a team. Exists primarily to catch all exceptions
     raised build a new vector
     """
     ERROR_CODE = "VECTOR_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "VectorBuilder raised an exception"
+    DEFAULT_MESSAGE = "VectorBuilder raised an err"
 
 
 # === NULL COMPONENT EXCEPTIONS ===
@@ -72,7 +72,7 @@ class VectorAboveBoundsException(VectorException):
     """
     Iterating across coordinates to examine squares chess pieces can explore their with a step no
     larger than the knight's number of rows o squares covered in a move. If a vector's x value is
-    larger than KNIGHT SIZE raise this exception
+    larger than KNIGHT SIZE raise this err
     """
     ERROR_CODE = "VECTOR_ABOVE_BOUNDS"
     DEFAULT_MESSAGE = "Vector above bounds"
@@ -82,7 +82,7 @@ class VectorBelowBoundsException(VectorException):
     """
     Iterating across coordinates to examine squares chess pieces can explore their with a step no
     larger than the knight's number of rows o squares covered in a move. If a vector's x value is
-    larger than KNIGHT SIZE raise this exception
+    larger than KNIGHT SIZE raise this err
     """
     ERROR_CODE = "VECTOR_BELOW_BOUNDS_EXCEPTION"
     DEFAULT_MESSAGE =  "Vector is below bounds"

@@ -26,7 +26,7 @@ white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', rank=Pawn(), team=whit
 white_king = KingPiece(discovery_id=2, name='WK', rank=King(), team=white_team)
 ```
 ## SUBPACKAGES
-    * `chess.piece.exception`: Exceptions raised by `Piece` and its subclasses.
+    * `chess.piece.err`: Exceptions raised by `Piece` and its subclasses.
     * `chess.piece.coord_stack`: Data structures and utilities for storing history of `Piece` object's positions.
     * `chess.piece.discover`: Data structures and utilities for managing discoveries made by `Piece` objects.
 
@@ -36,9 +36,9 @@ organic to:
     * `Piece` and its subclases..
 
 All exceptions in `chess.piece` package have static fields:
-    - `ERROR_CODE`: Useful when parsing logs for an exception. Error codes are in caps with a "_ERROR" suffix
-    - `DFAULT_MESSAGE`: A sentence describing the exception.
-Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
+    - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
+    - `DFAULT_MESSAGE`: A sentence describing the err.
+Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
 ### EXCEPTIONS
     * `PieceException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
@@ -52,11 +52,11 @@ Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
         promoted.
 
 #### PIECE VALIDATION EXCEPTIONS
-    * `PieceValidationException`: Raised if an existing `Piece` object fails validation checks.
+    * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
     * `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-    * `PieceBuilderException`: Raised if there is an exception during when a `PieceBuilder` is creating a new `Piece`
+    * `PieceBuilderException`: Raised if there is an err during when a `PieceBuilder` is creating a new `Piece`
         instance.
     * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
 
@@ -83,7 +83,7 @@ build_outcome = PieceBuilder.build(
 )
 
 if not build_outcome.is_success():
-    raise build_outcome.exception
+    raise build_outcome.err
 
 # Its best practice to cast the result to the expected type.
 black_bishop_2 = cast(CombatantPiece, build_outcome.payload)

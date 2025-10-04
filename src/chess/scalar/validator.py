@@ -16,14 +16,14 @@ class ScalarValidator(Validator):
 
     While `ScalarBuilder` ensures valid Scalars are created, `ScalarValidator`
     checks `Scalar` instances that already exist - whether they came from
-    deserialization, external sources, or need re-validation after modifications.
+    deserialization, external sources, or need re-validate after modifications.
 
     Usage:
         ```python
         # Validate an existing scalar
         scalar_validation = ScalarValidator.validate(candidate)    
         if not scalar_validation.is_success():
-            raise scalar_validation.exception
+            raise scalar_validation.err
         scalar = cast(Scalar, scalar_validation.payload)
         ```
 
@@ -36,7 +36,7 @@ class ScalarValidator(Validator):
         Validates that an existing `Scalar` instance meets specifications.
         This method performs a series of checks on a Scalar instance, ensuring it is not null and that 
         its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised 
-        as a `InvalidScalarException`, providing a clean and consistent exception-handling experience.
+        as a `InvalidScalarException`, providing a clean and consistent err-handling experience.
             
         Args
             `t` (`Scalar`): `Scalar` instance to validate
@@ -87,9 +87,9 @@ class ScalarValidator(Validator):
             raise InvalidScalarException(f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidScalarException(f"An unexpected exception occurred during validation: {e}") from e
+            raise InvalidScalarException(f"An unexpected err occurred during validate: {e}") from e
 
 
 # def main():

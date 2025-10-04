@@ -1,5 +1,5 @@
 """
-`chess.exception` Pacakage
+`chess.err` Pacakage
 
 PURPOSE:
     Contains core exceptions for the project
@@ -9,12 +9,12 @@ CORE CLASSES:
 
 
 Purpose:
-    Name exceptions are thrown during validation. More granular than regular string checks
+    Name exceptions are thrown during validate. More granular than regular string checks
 
 Class:
 
 USAGE:
-    >>> from chess.exception import NullNumberException
+    >>> from chess.err import NullNumberException
     >>> number = None
     >>> if number is None:
     >>>   raise NullNumberException("Name cannot be null")
@@ -30,7 +30,7 @@ from .collection_exception import *
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.exception"
+__package_name__ = "chess.err"
 
 
 # Organic utility function for package info

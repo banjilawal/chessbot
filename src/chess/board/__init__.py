@@ -19,10 +19,10 @@ This package exposes core classes and all exceptions from its sub-modules:
     - `OccupationTransaction`
     - `OccupationEventValidator`
     - `OccupationEventBuilder`
-    - All exceptions from `exception` sub-packages.
+    - All exceptions from `err` sub-packages.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for `Board` operations.
+    - `.err`: Defines all custom exceptions for `Board` operations.
 
 
 USAGE EXAMPLES:

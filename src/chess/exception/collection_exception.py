@@ -1,4 +1,4 @@
-# chess/collection/exception.py
+# chess/collection/err.py
 from chess.exception import ChessException
 
 # Export all exceptions
@@ -31,7 +31,7 @@ __all__ = [
 ]
 
 class CollectionException(ChessException):
-    """Base exception for all collection-related errors."""
+    """Base err for all collection-related errors."""
     ERROR_CODE = "COLLECTION_ERROR"
     DEFAULT_MESSAGE = "Collection transaction failed"
 
@@ -73,7 +73,7 @@ class CollectionSizeConflictException(CollectionException):
 # === STACK-SPECIFIC EXCEPTIONS ===
 
 class CoordStackException(CollectionException):
-    """Base exception for stack operations."""
+    """Base err for stack operations."""
     ERROR_CODE = "STACK_ERROR"
     DEFAULT_MESSAGE = "Stack transaction failed"
 
@@ -121,9 +121,9 @@ class NullEncounterException(EncounterLogException):
 # === RELATIONSHIP EXCEPTIONS ===
 
 class RelationshipException(ChessException):
-    """Base exception for relationship consistency errors."""
+    """Base err for relationship consistency errors."""
     ERROR_CODE = "RELATIONSHIP_ERROR"
-    DEFAULT_MESSAGE = "Relationship consistency exception"
+    DEFAULT_MESSAGE = "Relationship consistency err"
 
 class BrokenRelationshipException(RelationshipException):
     ERROR_CODE = "BROKEN_RELATIONSHIP_ERROR"

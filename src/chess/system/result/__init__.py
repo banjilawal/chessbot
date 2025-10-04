@@ -25,12 +25,12 @@ from chess.system.result import Result, BuildResult
 # Example of a successful operation
 def add(x, y) -> Result[int]:
     if x is None:
-        return Result(exception=ValueError("x cannot be None"))
+        return Result(err=ValueError("x cannot be None"))
     if y is None:
-        return Result(exception=ValueError("x cannot be None"))
+        return Result(err=ValueError("x cannot be None"))
 
     if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
-        return Result(exception=TypeError(Value"parameters must be numbers"))
+        return Result(err=TypeError(Value"parameters must be numbers"))
     return Result(payload=(x + y))
 
 # Example of a failed build operation

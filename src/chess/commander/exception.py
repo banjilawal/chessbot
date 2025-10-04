@@ -32,7 +32,7 @@ class NullCommanderException(CommanderException, NullException):
 
 class InvalidCommanderException(ValidationException):
     ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Commander validation failed"
+    DEFAULT_MESSAGE = "Commander validate failed"
 
 
 class CommanderBuildFailedException(CommanderException, FaileBuildexception):
@@ -40,7 +40,7 @@ class CommanderBuildFailedException(CommanderException, FaileBuildexception):
     CommanderBuilder exceptions.
     """
     ERROR_CODE = "COMMANDER_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "CommanderBuilder raised an exception"
+    DEFAULT_MESSAGE = "CommanderBuilder raised an err"
 
 
 class NullCommanderBuilderException(NullException):
@@ -68,4 +68,4 @@ class TeamListException(CollectionException):
 
 class TeamListValidationException(ValidationException):
     ERROR_CODE = "TEAM_LIST_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"TeamList validation failed"
+    DEFAULT_MESSAGE = f"TeamList validate failed"

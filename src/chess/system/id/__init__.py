@@ -1,7 +1,7 @@
 # src/chess/system/__init__.py
 """
 ## PURPOSE:
-    Id validation
+    Id validate
 
 ## CORE CLASSES:
 * `IdValidator`

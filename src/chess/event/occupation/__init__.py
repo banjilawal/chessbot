@@ -8,7 +8,7 @@ Updated: 2025-10-02
 Version: 1.0.1
 
 # Purpose
-Manages `Piece` movement and state changes on the `Board`. Provides a unified interface for event creation, validation,
+Manages `Piece` movement and state changes on the `Board`. Provides a unified interface for event creation, validate,
 execution, and rollback for occupation-related operations (move, scan, attack, exchange)
 
 # EXPORTS
@@ -17,10 +17,10 @@ This package exposes core classes and all exceptions from its sub-modules:
     - `OccupationTransaction`
     - `OccupationEventValidator`
     - `OccupationEventBuilder`
-    - All exceptions from `exception`, `scan`, `attack`, and `exchange` sub-packages.
+    - All exceptions from `err`, `scan`, `attack`, and `exchange` sub-packages.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
+    - `.err`: Defines all custom exceptions for occupation operations.
     - `.scan`: Logic for recording occupied squares in a piece's path.
     - `.attack`: Logic for capturing.
     - `.exchange`: Logic for transferring a piece to another empty square.
@@ -31,8 +31,8 @@ from this package level (e.g., `from chess.event.occupation import OccupationEve
 
 USAGE:
     # >>> from chess.enemy import CombatantPiece, KingPiece, CoordStack
-    # >>> white_pawn_9 = CombatantPiece(discovery_id=9, name="WP1", validation=pawn, team=white_team)
-    # >>> white_king = KingPiece(discovery_id=2, name="WK", validation=king, team=white_team)
+    # >>> white_pawn_9 = CombatantPiece(discovery_id=9, name="WP1", validate=pawn, team=white_team)
+    # >>> white_king = KingPiece(discovery_id=2, name="WK", validate=king, team=white_team)
     # >>>
 
 ## Occupation Exception Classes
@@ -78,7 +78,7 @@ from .builder import OccupationEventBuilder
 from .validator import OccupationEventValidator
 from .executor import OccupationTransaction
 
-# from .exception import *
+# from .err import *
 # from chess.event.occupation.attack.attack_exceptions import *
 #
 # from .event import *

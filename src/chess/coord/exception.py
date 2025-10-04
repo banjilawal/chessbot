@@ -28,7 +28,7 @@ class CoordException(ChessException):
     Super class for Coord related exceptions.
     """
     ERROR_CODE = "COORD_ERROR"
-    DEFAULT_MESSAGE = f"Invalid Coord state threw an exception"
+    DEFAULT_MESSAGE = f"Invalid Coord state threw an err"
 
 
 class NullCoordException(NullException):
@@ -54,7 +54,7 @@ class CoordBuilderException(BuilderException):
     Wrapper for exceptions raised when CoordBuilder runs.
     """
     ERROR_CODE = "COORD_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "CoordBuilder raised an exception"
+    DEFAULT_MESSAGE = "CoordBuilder raised an err"
 
 
 class NullCoordBuilderException(NullException):

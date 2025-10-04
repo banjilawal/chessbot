@@ -19,7 +19,7 @@ class ActorValidator:
             - `id` does not fail validator
             - `actor` is a valid chess enemy
             - `target` is a valid square
-        Any validation failure raises an `InvalidPieceException`.
+        Any validate failure raises an `InvalidPieceException`.
 
         Argument:
             `t` (`Piece`): `piece `to validate
@@ -80,7 +80,7 @@ class ActorValidator:
             raise InvalidActorException( f"{method}: {InvalidActorException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidActorException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidActorException(f"An unexpected error occurred during validate: {e}") from e
 

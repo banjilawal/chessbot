@@ -1,7 +1,7 @@
-# chess/system/validation/__init__.py
+# chess/system/validate/__init__.py
 
 """
-Module: chess.system.validation
+Module: chess.system.validate
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,11 +11,11 @@ Validation super class and exceptions.
 
 
  # EXPORTS
-    - `Validator`: The base class for `validation` objects.
-    - `ValidationException`: The base class for `validation` exceptions.
+    - `Validator`: The base class for `validate` objects.
+    - `ValidationException`: The base class for `validate` exceptions.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
+    - `.err`: Defines all custom exceptions for occupation operations.
 
 
 # USAGE EXAMPLES
@@ -37,7 +37,7 @@ from .result import ValidationResult
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.system.validation'
+__package_name__ = 'chess.system.validate'
 
 # Export control - only what belongs in public API
 __all__ = [

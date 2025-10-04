@@ -8,7 +8,7 @@ version: 1.0.0
 
 ## Purpose
 Provides immutable `(row, column)` coordinate tuples for board positions, with builders and validators for safe
-creation and validation.
+creation and validate.
 
 ## Core Classes
     - `Coord`: Immutable `(row, column)` coordinate object.
@@ -22,7 +22,7 @@ from chess.coord import Coord, CoordBuilder
 
 build_outcome = CoordBuilder.build(row=0, column=7)
 if not build_outcome.is_success():
-    raise build_outcome.exception
+    raise build_outcome.err
 
 # Always cast the payload to the desired type before using it
 coord = cast(Coord, build_outcome.payload)
@@ -37,14 +37,14 @@ organic to:
     * `CoordValidator`
 
 All exceptions in `chess.coord` package have static fields:
-    - `ERROR_CODE`: Useful when parsing logs for an exception. Error codes are in caps with a "_ERROR" suffix
-    - `DFAULT_MESSAGE`: A sentence describing the exception. Use an exception's `DEFAULT_MESSAGE`
+    - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
+    - `DFAULT_MESSAGE`: A sentence describing the err. Use an err's `DEFAULT_MESSAGE`
 For consistency across the application.
 
 ### LIST OF EXCEPTIONS:
     * `CoordException`: Superclass for Coord-related exceptions
     * `NullCoordException`: Raised if a coordinate is null
-    * `CoordValidationException`: Raised if coordinate validation fails
+    * `CoordValidationException`: Raised if coordinate validate fails
     * `NullCoordValidatorException`: Raised if a CoordValidator is null
     * `CoordBuilderException`: Wrapper for exceptions raised by CoordBuilder
     * `NullCoordBuilderException`: Raised if a CoordBuilder is null
@@ -63,7 +63,7 @@ from chess.coord import Coord, NullCoordException, NullRowException
 
 build_outcome = CoordBuilder.build(1, "BK", King(), black_team)
 if not build_outcome.is_success():
-    raise build_outcome.exception
+    raise build_outcome.err
 coord = cast(KingCoord, build_outcome.payload)
 
 coord = None

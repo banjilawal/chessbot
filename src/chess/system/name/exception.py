@@ -8,7 +8,7 @@ __all__ = [
     'InvalidNameException',
 ]
 
-from chess.system.exception.exception import BlankStringException
+from chess.system.err.exception import BlankStringException
 
 
 class InvalidNameException(ValidationException):

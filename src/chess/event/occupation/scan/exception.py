@@ -24,7 +24,7 @@ class ScanTransactionException(TransactionException):
     the scan's lifecycle.
     """
     ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "ScanTransaction raised an exception."
+    DEFAULT_MESSAGE = "ScanTransaction raised an err."
 
 class NullScanTransactionException(NullTransactionException):
     """
@@ -39,10 +39,10 @@ class NullScanTransactionException(NullTransactionException):
 class ScanEventException(OccupationEventException):
     """
     Superclass for all scan event exceptions. DO NOT USE DIRECTLY. Subclasses
-    give more specific exception messages useful for debugging.
+    give more specific err messages useful for debugging.
     """
     ERROR_CODE = "SCAN_EVENT_ERROR"
-    DEFAULT_MESSAGE = "ScanEvent failed validation"
+    DEFAULT_MESSAGE = "ScanEvent failed validate"
 
 
 #=== SCAN_EVENT VALIDATION EXCEPTIONS ===
@@ -52,9 +52,9 @@ class NullScanEventException(ScanEventException, NullException):
     DEFAULT_MESSAGE = "ScanEvent cannot be null"
 
 class InvalidScanEventException(ScanEventException, ValidationException):
-    """Raised by ScanEventValidators if validation fails."""
+    """Raised by ScanEventValidators if validate fails."""
     ERROR_CODE = "SCAN_EVENT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "ScanEvent failed validation"
+    DEFAULT_MESSAGE = "ScanEvent failed validate"
 
 
 #=== SCAN_EVENT BUILDER EXCEPTIONS ===

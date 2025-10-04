@@ -23,7 +23,7 @@ class AttackEventValidator(EventValidator[A], Generic[T]):
             - `id` does not fail validator
             - `actor` is a valid chess enemy
             - `target` is a valid square
-        Any validation failure raises an `InvalidAttackEventException`.
+        Any validate failure raises an `InvalidAttackEventException`.
 
         Argument:
             `t` (`AttackEvent`): `attackEvent `to validate
@@ -64,7 +64,7 @@ class AttackEventValidator(EventValidator[A], Generic[T]):
 
             actor_validation = PieceValidator.validate(event.actor)
             if not actor_validation.is_success():
-                raise InvalidPieceException(f"{method}: actor validation failed")
+                raise InvalidPieceException(f"{method}: actor validate failed")
 
             destination_square_validation = SquareValidator.validate(event.destination_square)
             if not destination_square_validation.is_success():
@@ -88,7 +88,7 @@ class AttackEventValidator(EventValidator[A], Generic[T]):
             ) from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidAttackEventException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidAttackEventException(f"An unexpected error occurred during validate: {e}") from e
 

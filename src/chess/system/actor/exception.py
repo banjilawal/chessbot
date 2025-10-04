@@ -30,7 +30,7 @@ class ActorException(PieceException):
     all piece exceptions
     """
     ERROR_CODE = "ACTOR_ERROR"
-    DEFAULT_MESSAGE = "Actor raised an exception. Piece cannot act."
+    DEFAULT_MESSAGE = "Actor raised an err. Piece cannot act."
 
 class ActorRollBackException(ActorException, RollbackException):
     """
@@ -41,7 +41,7 @@ class ActorRollBackException(ActorException, RollbackException):
     transaction must be rolled back.
     """
     ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Actor raised an exception. Transaction rolled back"
+    DEFAULT_MESSAGE = "Actor raised an err. Transaction rolled back"
 
 
 # === ACTOR VALIDATION EXCEPTIONS ===
@@ -111,16 +111,16 @@ class CheckMatedKingActivityException(ActorException):
 class SubjectException(PieceException):
     """
     SubjectException classes are raised on a piece acted upon. They are raised on the same errors as ActorException,
-    Using SubjectException makes tracing which side of the interaction is raising an exception easier.
+    Using SubjectException makes tracing which side of the interaction is raising an err easier.
     """
     ERROR_CODE = "SUBJECT_ERROR"
-    DEFAULT_MESSAGE = "A potential enemy piece raised an exception"
+    DEFAULT_MESSAGE = "A potential enemy piece raised an err"
 
 
 class InvalidSubjectException(SubjectException, InvalidPieceException):
-    """Raised if a required enemy fails validation."""
+    """Raised if a required enemy fails validate."""
     ERROR_CODE = "SUBJECT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Required enemy failed validation. Actor cannot fire event onto enemy"
+    DEFAULT_MESSAGE = "Required enemy failed validate. Actor cannot fire event onto enemy"
 
 
 class SubjectNotOnBoardException(SubjectException):

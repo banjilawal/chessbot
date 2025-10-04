@@ -15,27 +15,27 @@ class AttackEventBuilder(Enum):
     """
     Builder class responsible for safely constructing `AttackEvent` instances.
 
-    `AttackEventBuilder` ensures that `AttackEvent` objects are always created successfully by performing comprehensive validation
+    `AttackEventBuilder` ensures that `AttackEvent` objects are always created successfully by performing comprehensive validate
      checks during construction. This separates the responsibility of building from validating - `AttackEventBuilder` 
      focuses on creation while `AttackEventValidator` is used for validating existing `AttackEvent` instances that are passed 
      around the system.
 
-    The build runs through all validation checks individually to guarantee that any `AttackEvent` instance it produces
+    The build runs through all validate checks individually to guarantee that any `AttackEvent` instance it produces
     meets all required specifications before construction completes
     
     Usage:
         ```python
-        # Safe attackEvent creation with validation
+        # Safe attackEvent creation with validate
         build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, name="WN2", rank=Knight(), team=white_team)
         if not build_outcome.is_success():
-            raise build_outcome.exception
+            raise build_outcome.err
         attackEvent = build_outcome.payload
         ```
     
     See Also:
         `AttackEvent`: The data structure being constructed
         `AttackEventValidator`: Used for validating existing `AttackEvent` instances
-        `BuildResult`: Return type containing the built `AttackEvent` or exception information
+        `BuildResult`: Return type containing the built `AttackEvent` or err information
     """
 
     @staticmethod
@@ -50,29 +50,29 @@ class AttackEventBuilder(Enum):
         Constructs a new `AttackEvent` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `AttackEvent` meets all
+        Performs individual validate checks on each component to ensure the resulting `AttackEvent` meets all
         specifications. If all checks are passed, a `AttackEvent` instance will be returned. It is not necessary to perform
-        any additional validation checks on the returned `AttackEvent` instance. This method guarantees if a `BuildResult`
+        any additional validate checks on the returned `AttackEvent` instance. This method guarantees if a `BuildResult`
         with a successful status is returned, the contained `AttackEvent` is valid and ready for use.
 
         Args:
             `event_id`(`int`): The unique id for the attackEvent. Must pass `IdValidator` checks.
-            `actor`(`Piece`): Initiates attack after successful validation`.
+            `actor`(`Piece`): Initiates attack after successful validate`.
             `enemy`(`Piece`): The `Piece` attackned by `actor`.
             `context`(`ExecutionContext`): `context.board` verifies `actor` and `enemy` are on the board.
 
         Returns:
             BuildResult[AttackEvent]: A `BuildResult` containing either:
                 - On success: A valid `AttackEvent` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-           AttackEventBuilderException: Wraps any underlying validation failures that occur during the construction process.
+           AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
            This includes:
-                * `InvalidIdException`: if `attackEvent_id` fails validation checks
-                * `InvalidNameException`: if `name` fails validation checks
-                * `InvalidRankException`: if `rank` fails validation checks
-                * `InvalidTeamException`: if `team` fails validation checks
+                * `InvalidIdException`: if `attackEvent_id` fails validate checks
+                * `InvalidNameException`: if `name` fails validate checks
+                * `InvalidRankException`: if `rank` fails validate checks
+                * `InvalidTeamException`: if `team` fails validate checks
                 * `InvalidTeamAssignmentException`: If `attackEvent.team` is different from `team` parameter
                 * `FullRankQuotaException`: If the `team` has no empty slots for the `attackEvent.rank`
                 * `FullRankQuotaException`: If `attackEvent.team` is equal to `team` parameter but `team.roster` still does
@@ -81,7 +81,7 @@ class AttackEventBuilder(Enum):
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `AttackEvent` is
             created, while `AttackEventValidator` is used for validating `AttackEvent` instances that are passed around after
-            creating. This separation of concerns makes the validation and building independent of each other and
+            creating. This separation of concerns makes the validate and building independent of each other and
             simplifies maintenance.
 
         Example:
@@ -89,7 +89,7 @@ class AttackEventBuilder(Enum):
             # Valid attackEvent creation
             build_outcome = AttackEventBuilder.build(value=1)
             if not build_outcome.is_success():
-                return BuildResult(exception=build_outcome.exception)
+                return BuildResult(err=build_outcome.err)
             return BuildResult(payload=build_outcome.payload)
             ```
         """
@@ -102,11 +102,11 @@ class AttackEventBuilder(Enum):
 
             actor_validation = PieceValidator.validate(actor)
             if not actor_validation.is_success():
-                raise InvalidPieceException(f"{method}: AttackEvent actor failed validation")
+                raise InvalidPieceException(f"{method}: AttackEvent actor failed validate")
 
             enemy_validation = PieceValidator.validate(enemy)
             if not enemy_validation.is_success():
-                raise InvalidPieceException(f"{method}: AttackEvent enemy failed validation")
+                raise InvalidPieceException(f"{method}: AttackEvent enemy failed validate")
 
             if actor == enemy:
                 ThrowHelper.throw_if_invalid(
@@ -173,7 +173,7 @@ class AttackEventBuilder(Enum):
         # Catch any unexpected errors with details about type and message
         except Exception as e:
             raise AttackEventBuilderException(
-                f"{method}: Unexpected exception ({type(e).__name__}): {e}"
+                f"{method}: Unexpected err ({type(e).__name__}): {e}"
             ) from e
 
 

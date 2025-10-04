@@ -15,14 +15,14 @@ class TeamValidator(Validator):
 
     While `TeamBuilder` ensures valid Teams are created, `TeamValidator`
     checks `Team` instances that already exist - whether they came from
-    deserialization, external sources, or need re-validation after modifications.
+    deserialization, external sources, or need re-validate after modifications.
     
     Usage:
         ```python
         # Validate an existing team
         team_validation = TeamValidator.validate(candidate)    
         if not team_validation.is_success():
-            raise team_validation.exception
+            raise team_validation.err
         team = cast(Team, team_validation.payload)
         ```
 
@@ -34,7 +34,7 @@ class TeamValidator(Validator):
         """
         Validates that an existing `Team` instance meets all specifications.
 
-        Performs comprehensive validation on a `Team` instance that already exists,
+        Performs comprehensive validate on a `Team` instance that already exists,
         checking type safety, null values, and component bounds. Unlike `TeamBuilder`
         which creates new valid Teams, this validator verifies existing `Team`
         instances from external sources, deserialization, or after modifications.
@@ -49,8 +49,8 @@ class TeamValidator(Validator):
         Raises:
             `TypeError`: if `t` is not a Team` object
             `NullTeamException`: if `t` is null
-            `InvalidIdException`: if `id` fails validation checks
-            `InvalidCommanderException`: if `commander` fails validation checks
+            `InvalidIdException`: if `id` fails validate checks
+            `InvalidCommanderException`: if `commander` fails validate checks
             `NullTeamProfileException`: if `profile` is null
             `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
             `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
@@ -102,9 +102,9 @@ class TeamValidator(Validator):
             raise InvalidTeamException(f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidTeamException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidTeamException(f"An unexpected error occurred during validate: {e}") from e
 
 #
 # def main():

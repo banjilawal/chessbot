@@ -17,7 +17,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
             - `id` does not fail validator
             - `actor` is a valid chess enemy
             - `target` is a valid square
-        Any validation failure raises an `InvalidOccupationEventException`.
+        Any validate failure raises an `InvalidOccupationEventException`.
 
         Argument:
             `t` (`OccupationEvent`): `occupationEvent `to validate
@@ -82,7 +82,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
             ) from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidOccupationEventException(f"An unexpected error occurred during validation: {e}") from e
+            raise InvalidOccupationEventException(f"An unexpected error occurred during validate: {e}") from e
 

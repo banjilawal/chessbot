@@ -192,7 +192,7 @@ class AttackingFriendlyException(HostageException):
 
 class DoublePromotionException(HostageException):
     """
-    If a hostage with validation in [Pawn, King] has been promoted to Queen, DoublePromotionException
+    If a hostage with validate in [Pawn, King] has been promoted to Queen, DoublePromotionException
     is raised if there is a second attempt to promote the chess hostage.
     """
 

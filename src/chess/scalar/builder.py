@@ -15,12 +15,12 @@ class ScalarBuilder(Enum):
     """
     Builder class responsible for safely constructing `Scalar` instances.
 
-    `ScalarBuilder` ensures that `Scalar` objects are always created successfully by performing comprehensive validation
+    `ScalarBuilder` ensures that `Scalar` objects are always created successfully by performing comprehensive validate
      checks during construction. This separates the responsibility of building from validating - `ScalarBuilder` 
      focuses on creating while `ScalarValidator` is used for validating existing `Scalar` instances that are passed
      around the system.
 
-    The build runs through all validation checks individually to guarantee that any `Scalar` instance it produces
+    The build runs through all validate checks individually to guarantee that any `Scalar` instance it produces
     meets all required specifications before construction completes
 
     Usage:
@@ -29,14 +29,14 @@ class ScalarBuilder(Enum):
         build_result = ScalarBuilder.build(value=1))
         
         if not build_result.is_success():
-            raise build_result.exception
+            raise build_result.err
         scalar = build_result.payload
         ```
 
     See Also:
         `Scalar`: The data structure being constructed
         `ScalarValidator`: Used for validating existing `Scalar` instances
-        `BuildResult`: Return type containing the built `Scalar` or exception information
+        `BuildResult`: Return type containing the built `Scalar` or err information
     """
     
     @staticmethod
@@ -45,9 +45,9 @@ class ScalarBuilder(Enum):
         Constructs a new `Scalar` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `Scalar` meets all 
+        Performs individual validate checks on each component to ensure the resulting `Scalar` meets all
         specifications. If all checks are passed, a `Scalar` instance will be returned. It is not necessary to perform 
-        any additional validation checks on the returned `Scalar` instance. This method guarantees if a `BuildResult` 
+        any additional validate checks on the returned `Scalar` instance. This method guarantees if a `BuildResult`
         with a successful status is returned, the contained `Scalar` is valid and ready for use.
 
         Args:
@@ -60,10 +60,10 @@ class ScalarBuilder(Enum):
         Returns:
             BuildResult[Scalar]: A `BuildResult` containing either:
                 - On success: A valid `Scalar` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-            `ScalarBuilderException`: Wraps any underlying validation failures that occur during the construction
+            `ScalarBuilderException`: Wraps any underlying validate failures that occur during the construction
             process. This includes:
                 * `NullScalarException`: if `t` is null
                 * `TypeError`: if `t` is not Scalar
@@ -75,7 +75,7 @@ class ScalarBuilder(Enum):
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `Scalar` is
             created, while `ScalarValidator` is used for validating `Scalar` instances that are passed around after 
-            creation. This separation of concerns makes the validation and building independent of each other and 
+            creation. This separation of concerns makes the validate and building independent of each other and
             simplifies maintenance.
 
         Example:
@@ -83,7 +83,7 @@ class ScalarBuilder(Enum):
             # Valid scalar creation
             build_outcome = ScalarBuilder.build(value=1)
             if not build_outcome.is_success():
-                return BuildResult(exception=build_outcome.exception)
+                return BuildResult(err=build_outcome.err)
             return BuildResult(payload=build_outcome.payload)
             ```
         """    

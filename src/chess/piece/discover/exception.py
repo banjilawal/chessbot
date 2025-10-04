@@ -24,7 +24,7 @@ class DiscoveryException(ChessException):
     all board exceptions
     """
     ERROR_CODE = "DISCOVERY_ERROR"
-    DEFAULT_MESSAGE = "Discovery instance raised an exception"
+    DEFAULT_MESSAGE = "Discovery instance raised an err"
     
 class InvalidDiscoveryException(DiscoveryException, ValidationException):
     """
@@ -32,7 +32,7 @@ class InvalidDiscoveryException(DiscoveryException, ValidationException):
     exceptions raised validating an existing board
     """
     ERROR_CODE = "DISCOVERY_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Discovery validation failed."
+    DEFAULT_MESSAGE = "Discovery validate failed."
 
 class NullDiscoveryException(DiscoveryException, NullException):
     """
@@ -44,11 +44,11 @@ class NullDiscoveryException(DiscoveryException, NullException):
 
 class DiscoveryBuilderException(DiscoveryException, BuilderException):
     """
-    Raised when BoardBuilder encounters an exception while building a team. Exists primarily to
+    Raised when BoardBuilder encounters an err while building a team. Exists primarily to
     catch all exceptions raised building a new board
     """
     ERROR_CODE = "DISCOVERY_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "DiscoveryBuilder raised an exception"
+    DEFAULT_MESSAGE = "DiscoveryBuilder raised an err"
 
 
 class CircularDiscoveryException(DiscoveryException):
@@ -83,13 +83,13 @@ class DiscoveryRolledBackException(DiscoveryException, RollbackException):
     transaction must be rolled back.
     """
     ERROR_CODE = "DISCOVERY_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Discovery raised an exception. Transaction rolled back"
+    DEFAULT_MESSAGE = "Discovery raised an err. Transaction rolled back"
 
 
 class CircularDiscoveryRolledBackException(DiscoveryException):
     """
     Raised if an actor scans itself during an ACID transaction. The
-    transaction was rolled back before raising this exception.
+    transaction was rolled back before raising this err.
     """
     ERROR_CODE = "OBSERVER_CIRCULAR_SCAN_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = "An actor cannot discover itself. Transaction rolled back."
@@ -98,7 +98,7 @@ class CircularDiscoveryRolledBackException(DiscoveryException):
 class DuplicateDiscoveryRolledBackException(DiscoveryException):
     """
     Raised if a transaction attempts adding a discovery twice to an actor. The
-    transaction was rolled back before raising this exception.
+    transaction was rolled back before raising this err.
     """
     ERROR_CODE = "ADD_DUPLICATE_DISCOVERY_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -109,7 +109,7 @@ class DuplicateDiscoveryRolledBackException(DiscoveryException):
 class AddNullDiscoveryRolledBackException(DiscoveryException):
     """
     Raised if a transaction attempts adding a null or empty discovery to an
-    actor's list. The transaction was rolled back before raising this exception.
+    actor's list. The transaction was rolled back before raising this err.
     """
     ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = "Cannot add a null discovery to the list. Transaction rolled back."
@@ -118,15 +118,15 @@ class AddNullDiscoveryRolledBackException(DiscoveryException):
 class DiscoveryRolledBackException(DiscoveryException, RollbackException):
     """
     RollBackCapture exceptions should be raised in ACID transactions where a capture can
-    raise an exception. Do not use directly. Subclasses give details useful for debugging.
+    raise an err. Do not use directly. Subclasses give details useful for debugging.
     """
     ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Capture raised an exception. "
+    DEFAULT_MESSAGE = "Capture raised an err. "
 
 class CaptureFriendRolledBackException(DiscoveryRolledBackException):
     """
     Raised if a transaction attempts capturing a friend. The transaction
-    was rolled back before raising this exception.
+    was rolled back before raising this err.
     """
     ERROR_CODE = "FRIEND_CAPTURE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -147,7 +147,7 @@ class KingCaptureRolledBackException(DiscoveryRolledBackException):
 class DoubleCaptureRolledBackException(DiscoveryRolledBackException):
     """
     Raised if a transaction attempts capturing an enemy combatant that is already
-    a prisoner. The transaction was rolled back before raising this exception.
+    a prisoner. The transaction was rolled back before raising this err.
     """
     ERROR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -158,7 +158,7 @@ class DoubleCaptureRolledBackException(DiscoveryRolledBackException):
 class UnsetCaptureRolledBackException(DiscoveryRolledBackException):
     """
     Raised if a transaction attempts setting prisoner's captor field null.
-    The transaction was rolled back before raising this exception.
+    The transaction was rolled back before raising this err.
     """
     ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (

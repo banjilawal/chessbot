@@ -11,14 +11,14 @@ class SearchException(ChessException):
     Base class for search errors in the chess engine.
 
     PURPOSE:
-        Raised search raises an exception. Is a wrapper for other exceptions
+        Raised search raises an err. Is a wrapper for other exceptions
         that occur during search.
     ATTRIBUTES:
-        code (str): Short machine-readable exception code for logging / testing.
+        code (str): Short machine-readable err code for logging / testing.
         message (str): Human-readable default message.
     """
     DEFAULT_CODE = "SEARCH_ERROR"
-    DEFAULT_MESSAGE = "Search raised an exception."
+    DEFAULT_MESSAGE = "Search raised an err."
 
 
 class SearchParamException(SearchException):

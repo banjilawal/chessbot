@@ -30,7 +30,7 @@ __all__ = [
 
 class RankException(ChessException):
     ERROR_CODE = "RANK_ERROR"
-    DEFAULT_MESSAGE = "Rank raised an exception"
+    DEFAULT_MESSAGE = "Rank raised an err"
 
 # === RANK VALIDATION EXCEPTIONS ===
 class NullRankException(RankException, NullException):
@@ -39,7 +39,7 @@ class NullRankException(RankException, NullException):
 
 class InvalidRankException(RankException, ValidationException):
     ERROR_CODE = "RANK_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Rank validation failed"
+    DEFAULT_MESSAGE = f"Rank validate failed"
 
 class UnRecognizedConcreteRankException(RankException):
     ERROR_CODE = "UNRECOGNIZED_CONCRETE_RANK_ERROR"
@@ -49,27 +49,27 @@ class UnRecognizedConcreteRankException(RankException):
 # === RANK SUBCLASS VALIDATION EXCEPTIONS ===
 class InvalidKingException(InvalidRankException):
     ERROR_CODE = "KING_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "King validation failed."
+    DEFAULT_MESSAGE = "King validate failed."
 
 class InvalidPawnException(InvalidRankException):
     ERROR_CODE = "PAWN_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Pawn validation failed."
+    DEFAULT_MESSAGE = "Pawn validate failed."
 
 class InvalidKnightException(InvalidRankException):
     ERROR_CODE = "KNIGHT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Knight validation failed."
+    DEFAULT_MESSAGE = "Knight validate failed."
 
 class InvalidBishopException(InvalidRankException):
     ERROR_CODE = "BISHOP_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Bishop validation failed."
+    DEFAULT_MESSAGE = "Bishop validate failed."
 
 class InvalidRookException(InvalidRankException):
     ERROR_CODE = "ROOK_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Rook validation failed."
+    DEFAULT_MESSAGE = "Rook validate failed."
 
 class InvalidQueenException(InvalidRankException):
     ERROR_CODE = "QUEEN_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Queen validation failed."
+    DEFAULT_MESSAGE = "Queen validate failed."
 
 
 # === RANK MOVING EXCEPTIONS ===

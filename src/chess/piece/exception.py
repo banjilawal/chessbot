@@ -48,7 +48,7 @@ class PieceException(ChessException):
     all piece exceptions
     """
     ERROR_CODE = "PIECE_ERROR"
-    DEFAULT_MESSAGE = "Piece raised an exception"
+    DEFAULT_MESSAGE = "Piece raised an err"
 
 class PieceRollBackException(PieceException, RollbackException):
     """
@@ -59,7 +59,7 @@ class PieceRollBackException(PieceException, RollbackException):
     transaction must be rolled back.
     """
     ERROR_CODE = "PIECE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Piece raised an exception"
+    DEFAULT_MESSAGE = "Piece raised an err"
 
 
 # === PIECE VALIDATION EXCEPTIONS ===
@@ -69,7 +69,7 @@ class InvalidPieceException(PieceException, ValidationException):
     exceptions raised validating an existing piece
     """
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Piece validation failed."
+    DEFAULT_MESSAGE = "Piece validate failed."
 
 class UnregisteredTeamMemberException(PieceException):
     """Raised if a piece has its team set but the piece is not on the roster"""
@@ -106,11 +106,11 @@ class NullCombatantException(NullPieceException):
 # === PIECE BUILDER EXCEPTIONS ===
 class PieceBuilderException(PieceException, BuilderException):
     """
-    Raised when PieceBuilder encounters an exception while building a team. Exists primarily to
+    Raised when PieceBuilder encounters an err while building a team. Exists primarily to
     catch all exceptions raised building a new piece
     """
     ERROR_CODE = "PIECE_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "PieceBuilder raised an exception."
+    DEFAULT_MESSAGE = "PieceBuilder raised an err."
 
 
 # === PIECE PROMOTION EXCEPTIONS ===
@@ -126,7 +126,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
     """
     Raised if a transaction attempts promoting a piece already elevated to Queen rank.
     Only pieces with Pawn or King rank can be promoted.  The transaction was rolled
-    back before raising this exception.
+    back before raising this err.
     """
     ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -143,7 +143,7 @@ class CapturePieceException(PieceException):
     give details useful for debugging.
     """
     ERROR_CODE = "PIECE_CAPTURE_ERROR"
-    DEFAULT_MESSAGE = "Piece capture attempt raised and exception"
+    DEFAULT_MESSAGE = "Piece capture attempt raised and err"
 
 class CaptureFriendException(CapturePieceException):
     """
@@ -171,7 +171,7 @@ class DoubleCaptureException(CapturePieceException):
 
 class UnsetCaptureException(CapturePieceException):
     """
-    If piece.captor is not null. Attempting to change it raises this exception
+    If piece.captor is not null. Attempting to change it raises this err
     """
     ERROR_CODE = "UNSET_CAPTOR_ERROR"
     DEFAULT_MESSAGE =(
@@ -191,15 +191,15 @@ class CircularCaptureException(CapturePieceException):
 class RollBackCaptureException(CapturePieceException, RollbackException):
     """
     RollBackCapture exceptions should be raised in ACID transactions where a capture can
-    raise an exception. Do not use directly. Subclasses give details useful for debugging.
+    raise an err. Do not use directly. Subclasses give details useful for debugging.
     """
     ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Capture raised an exception. Transaction rolled back."
+    DEFAULT_MESSAGE = "Capture raised an err. Transaction rolled back."
 
 class CaptureFriendRolledBackException(RollBackCaptureException):
     """
     Raised if a transaction attempts capturing a friend. The transaction
-    was rolled back before raising this exception.
+    was rolled back before raising this err.
     """
     ERROR_CODE = "FRIEND_CAPTURE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -209,7 +209,7 @@ class CaptureFriendRolledBackException(RollBackCaptureException):
 class KingCaptureRolledBackException(RollBackCaptureException):
     """
     Raised if a transaction attempts capturing an enemy. Kings can only be checked or
-    checkmated. The transaction was rolled back before raising this exception.
+    checkmated. The transaction was rolled back before raising this err.
     """
     ERROR_CODE = "KING_CAPTURE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -220,7 +220,7 @@ class KingCaptureRolledBackException(RollBackCaptureException):
 class DoubleCaptureRolledBackException(RollBackCaptureException):
     """
     Raised if a transaction attempts capturing an enemy combatant that is already
-    a prisoner. The transaction was rolled back before raising this exception.
+    a prisoner. The transaction was rolled back before raising this err.
     """
     ERROR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -231,7 +231,7 @@ class DoubleCaptureRolledBackException(RollBackCaptureException):
 class UnsetCaptureRolledBackException(RollBackCaptureException):
     """
     Raised if a transaction attempts setting prisoner's captor field null.
-    The transaction was rolled back before raising this exception.
+    The transaction was rolled back before raising this err.
     """
     ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -243,7 +243,7 @@ class UnsetCaptureRolledBackException(RollBackCaptureException):
 class CircularCaptureRolledBackException(CapturePieceException):
     """
     Raised if a transaction attempts to set a piece as its own captor. The transaction was
-    rolled back before raising this exception.
+    rolled back before raising this err.
     """
     ERROR_CODE = "CIRCULAR_CAPTURE_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = "Piece cannot capture itself. Transaction rolled back."

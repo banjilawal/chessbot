@@ -35,9 +35,9 @@ organic to:
     * `CoordStack`.
 
 All exceptions in `chess.piece` package have static fields:
-    - `ERROR_CODE`: Useful when parsing logs for an exception. Error codes are in caps with a "_ERROR" suffix
-    - `DFAULT_MESSAGE`: A sentence describing the exception.
-Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
+    - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
+    - `DFAULT_MESSAGE`: A sentence describing the err.
+Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
 ### EXCEPTIONS
     * `PieceException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
@@ -51,11 +51,11 @@ Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
         promoted.
 
 #### PIECE VALIDATION EXCEPTIONS
-    * `PieceValidationException`: Raised if an existing `Piece` object fails validation checks.
+    * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
     * `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-    * `PieceBuilderException`: Raised if there is an exception during when a `PieceBuilder` is creating a new `Piece`
+    * `PieceBuilderException`: Raised if there is an err during when a `PieceBuilder` is creating a new `Piece`
         instance.
     * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
 
@@ -65,9 +65,9 @@ Use an exception's `DEFAULT_MESSAGE` For consistency across the application.
     * `NullDiscoveryException`: The parent is `NullValueException`. `NullDiscoveryException` is the parent of all
         exceptions related to null discoverys. Use more granular null exceptions that provide more specific information
         about the subclass instance that is null.
-    * `DiscoveryValidationException`: Raised if an existing `Discovery` object fails validation checks.
+    * `DiscoveryValidationException`: Raised if an existing `Discovery` object fails validate checks.
     * `NullDiscoveryValidatorException`: Raised if a null `DiscoveryValidator` is passed as a parameter.
-    * `DiscoveryBuilderException`: Raised if there is an exception during when `DiscoveryBuilder` is creating a new `Discovery`
+    * `DiscoveryBuilderException`: Raised if there is an err during when `DiscoveryBuilder` is creating a new `Discovery`
         instance.
     * `NullDiscoveryBuilderException`: Raised if there is null `DiscoveryBuilder` is passed as a parameter.
     * `AutoDiscoveryException`: Raised if a `Piece` object tries to create an discover record about itself.
@@ -87,7 +87,7 @@ build_outcome = PieceBuilder.build(
 )
 
 if not build_outcome.is_success():
-    raise build_outcome.exception
+    raise build_outcome.err
 
 # Its best practice to cast the result to the expected type.
 black_bishop_2 = cast(CombatantPiece, build_outcome.payload)

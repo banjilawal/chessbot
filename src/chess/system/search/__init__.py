@@ -14,10 +14,10 @@ Super class for `Search` objects and their
     - `Search`: The base class for `Search` objects.
     - `SearchResult`: Data class returned by `Search` instances
     - `SearchContext`: Abstract super class for `SearchContext` objects.
-    - All exceptions in the `exception` subpackage
+    - All exceptions in the `err` subpackage
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
+    - `.err`: Defines all custom exceptions for occupation operations.
 
 
 # USAGE EXAMPLES

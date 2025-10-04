@@ -69,7 +69,7 @@ __all__ = [
 
 class OccupationEventException(EventException):
     ERROR_CODE = "OCCUPATION_EXECUTION_ERROR"
-    DEFAULT_MESSAGE = "An exception was raised while executing the square occupation"
+    DEFAULT_MESSAGE = "An err was raised while executing the square occupation"
 
 # === OccupationEvent VALIDATION EXCEPTIONS ===
 class NullOccupationEventException(OccupationEventException, NullException):
@@ -77,9 +77,9 @@ class NullOccupationEventException(OccupationEventException, NullException):
     DEFAULT_MESSAGE = "OccupationEvent cannot be null"
 
 class InvalidOccupationEventException(OccupationEventException, ValidationException):
-    """OccupationEvent validation failure."""
+    """OccupationEvent validate failure."""
     ERROR_CODE = "OCCUPATION_EVENT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "OccupationEvent failed validation"
+    DEFAULT_MESSAGE = "OccupationEvent failed validate"
 
 class CircularOccupationException(OccupationEventException):
     ERROR_CODE = "CIRCULAR_OCCUPATION_ERROR"
@@ -109,7 +109,7 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #
 # class HostageValidationEventException(OccupationEventException):
 #     ERROR_CODE = "HOSTAGE_VALIDATION_ERROR"
-#     DEFAULT_MESSAGE = f"Hostage validation failed"
+#     DEFAULT_MESSAGE = f"Hostage validate failed"
 #
 #
 # class NullHostagePieceEventException(OccupationEventException):

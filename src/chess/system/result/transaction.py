@@ -74,7 +74,7 @@ class TransactionResult:
     #         op_result_id=outcome_id,
     #         request=request,
     #         event=event,
-    #         exception=None,
+    #         err=None,
     #         was_rolled_back=False
     #     )
     #
@@ -88,13 +88,13 @@ class TransactionResult:
     #         op_result_id=outcome_id,
     #         request=request,
     #         event=None,
-    #         exception=None,
+    #         err=None,
     #         was_rolled_back=False
     #     )
     #
     #
     # @classmethod
-    # def failed(cls, outcome_id: int, request: Action, exception: Exception) -> 'TransactionResult':
+    # def failed(cls, outcome_id: int, request: Action, err: Exception) -> 'TransactionResult':
     #     method = f"{cls.__class__.__name__}.failed"
     #     """Create a failed outcome"""
     #
@@ -102,7 +102,7 @@ class TransactionResult:
     #         op_result_id=outcome_id,
     #         request=request,
     #         event=None,
-    #         exception=exception,
+    #         err=err,
     #         was_rolled_back=False
     #     )
     #
@@ -116,7 +116,7 @@ class TransactionResult:
     #         op_result_id=outcome_id,
     #         request=request,
     #         event=event,
-    #         exception=None,
+    #         err=None,
     #         was_rolled_back=True
     #     )
 

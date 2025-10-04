@@ -16,7 +16,7 @@ Contents:
 
 Notes:
     This module is part of the chess.transaction.occupation package.
-    Exceptions raised during execution are defined in exception.py and exception.py.
+    Exceptions raised during execution are defined in err.py and err.py.
 """
 
 
@@ -135,7 +135,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
         Returns:
         `OccupationResult` containing:
             - On success: A new `OccupationDirective` with the updated squares and `piece`.
-            - On failure: The original `OccupationDirective`or verifying any rollbacks succeeded and the exception
+            - On failure: The original `OccupationDirective`or verifying any rollbacks succeeded and the err
                 describing the failure.
 
         Raises:
@@ -200,7 +200,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
         """
         Creates a new `Discovery` object for directive.actor which is blocked from moving to
         `destination_square` by `directive.enemy`. The enemy is either a friendly piece or an enemy `KingPiece`.
-        `OccupationExecutor.execute_directive` is the single entry point to `_run_scan`. Validations, exception chains
+        `OccupationExecutor.execute_directive` is the single entry point to `_run_scan`. Validations, err chains
         confirmed parameters ar are correct. No additional sanity checks are needed.
 
         Args
@@ -211,7 +211,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
         `OccupationResult` containing:
             - On success: A new `ScanDirective` object that containing updated `actor`. Observer will have
                 a new `Discovery` instance inside `actor.discoveries`.
-            - On failure: The original `ScanDirective` for verifying any rollbacks succeeded and the exception
+            - On failure: The original `ScanDirective` for verifying any rollbacks succeeded and the err
                 describing the failure.
 
         Raises:

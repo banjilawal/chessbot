@@ -1,5 +1,5 @@
 """
-Module: chess.event.exception
+Module: chess.event.err
 Author: Banji Lawal
 Created: 2025-10-01
 
@@ -42,7 +42,7 @@ class EventException(ChessException):
         Only use in the finally statement of a try-except block.
     """
     ERROR_CODE = "EVENT_ERROR"
-    DEFAULT_MESSAGE = "Event raised an exception."
+    DEFAULT_MESSAGE = "Event raised an err."
 
 class NullEventException(EventException, NullException):
     """
@@ -60,7 +60,7 @@ class InvalidEventException(EventException, ValidationException):
         Only use in the finally statement of a try-except block.
     """
     ERROR_CODE = "INVALID_EVENT_ERROR"
-    DEFAULT_MESSAGE = "Event validation failed."
+    DEFAULT_MESSAGE = "Event validate failed."
 
 class EventBuilderException(EventException, BuilderException):
     """
@@ -71,7 +71,7 @@ class EventBuilderException(EventException, BuilderException):
         Only use in the finally statement of a try-except block.
     """
     ERROR_CODE = "EVENT_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "EventBuilder validation failed."
+    DEFAULT_MESSAGE = "EventBuilder validate failed."
 
 
  #=== TRANSACTION EXCEPTIONS ===
@@ -82,4 +82,4 @@ class TransactionException(ChessException):
     give details useful for debugging. Class exists primarily for catching all transaction exceptions.
     """
     ERROR_CODE = "TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "Transaction raised an exception."
+    DEFAULT_MESSAGE = "Transaction raised an err."

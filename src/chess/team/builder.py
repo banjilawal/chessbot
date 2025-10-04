@@ -11,17 +11,17 @@ class TeamBuilder(Enum):
     """
     Builder class responsible for safely constructing `Team` instances.
 
-    `TeamBuilder` ensures that `Team` objects are always created successfully by performing comprehensive validation
+    `TeamBuilder` ensures that `Team` objects are always created successfully by performing comprehensive validate
      checks during construction. This separates the responsibility of building from validating - `TeamBuilder` 
      focuses on creating while `TeamValidator` is used for validating existing `Team` instances that are passed
      around the system.
 
-    The build runs through all validation checks individually to guarantee that any `Team` instance it produces
+    The build runs through all validate checks individually to guarantee that any `Team` instance it produces
     meets all required specifications before construction completes
 
     Usage:
         ```python
-        # Safe team creation with validation
+        # Safe team creation with validate
         build_result = TeamBuilder.build(team_id=1, commander=black_commander, profile=TeamProfile.BLACK)
 
         if build_result.is_success():
@@ -31,7 +31,7 @@ class TeamBuilder(Enum):
     See Also:
         `Team`: The data structure being constructed
         `TeamValidator`: Used for validating existing `Team` instances
-        `BuildResult`: Return type containing the built `Team` or exception information
+        `BuildResult`: Return type containing the built `Team` or err information
     """
 
 
@@ -41,9 +41,9 @@ class TeamBuilder(Enum):
         Constructs a new `Team` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `Team` meets all specifications.
+        Performs individual validate checks on each component to ensure the resulting `Team` meets all specifications.
         If all checks are passed, a `Team` instance will be returned. It is not necessary to perform any additional
-        validation checks on the returned `Team` instance. This method guarantees if a `BuildResult` with a successful
+        validate checks on the returned `Team` instance. This method guarantees if a `BuildResult` with a successful
         status is returned, the contained `Team` is valid and ready for use.
 
         Args:
@@ -56,13 +56,13 @@ class TeamBuilder(Enum):
         Returns:
             BuildResult[Team]: A `BuildResult` containing either:
                 - On success: A valid `Team` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-            `TeamBuilderException`: Wraps any underlying validation failures that occur during the construction process.
+            `TeamBuilderException`: Wraps any underlying validate failures that occur during the construction process.
             This includes:
-                * `InvalidIdException`: if `id` fails validation checks`
-                * `InvalidCommanderException`: if `commander` fails validation checks
+                * `InvalidIdException`: if `id` fails validate checks`
+                * `InvalidCommanderException`: if `commander` fails validate checks
                 * `NullTeamProfileException`: if `profile` is None
                 * `TypeError`: if `profile` is not a `TeamProfile` instance
                 * `RelationshipException`: if the bidirectional relationship between `Team` and `Commander` is broken
@@ -70,7 +70,7 @@ class TeamBuilder(Enum):
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `Team` is
             created, while `TeamValidator` is used for validating `Team` instances that are passed around after 
-            creation. This separation of concerns makes the validation and building independent of each other and 
+            creation. This separation of concerns makes the validate and building independent of each other and
             simplifies maintenance.
 
         Example:
@@ -139,14 +139,14 @@ class TeamBuilder(Enum):
 #         team = build_result.payload
 #         print(f"Successfully built team: {team}")
 #     else:
-#         print(f"Failed to build team: {build_result.exception}")
+#         print(f"Failed to build team: {build_result.err}")
 #
 #     build_result = TeamBuilder.build(-1)
 #     if build_result.is_success():
 #         team = build_result.payload
 #         print(f"Successfully built team: {team}")
 #     else:
-#         print(f"Failed to build team: {build_result.exception}")
+#         print(f"Failed to build team: {build_result.err}")
 #
 # if __name__ == "__main__":
 #     main()

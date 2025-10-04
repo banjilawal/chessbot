@@ -15,11 +15,11 @@ class CoordBuilder(Enum):
     """
     Builder class responsible for safely constructing `Coord` instances.
     
-    `CoordBuilder` ensures that `Coord` objects are always created successfully by performing comprehensive validation
+    `CoordBuilder` ensures that `Coord` objects are always created successfully by performing comprehensive validate
     checks during construction. This separates the responsibility of building from validating `CoordBuilder` focuses on
     creation while `CoordValidator` is used for validating existing `Coord` instances that are passed around the system.
     
-    The build runs through all validation checks individually to guarantee that any `Coord` instance it produces meets
+    The build runs through all validate checks individually to guarantee that any `Coord` instance it produces meets
     all required specifications before construction completes.
     
     Usage:
@@ -27,14 +27,14 @@ class CoordBuilder(Enum):
         # Safe construction of a Coord instance if and only if the parameters meet specs
         build_outcome = CoordBuilder.build(row=1, column=1)
         if not build_outcome.is_success():
-            raise build_outcome.exception
+            raise build_outcome.err
         coord = cast(Coord, build_outcome.payload)
         ```
     
     See Also:
         `Coord`: Fundamental data structure for representing coordinates on a chessboard.
         `CoordValidator`: Used for validating existing `Coord` instances
-        `BuildResult`: Return type containing the built `Coord` or exception information
+        `BuildResult`: Return type containing the built `Coord` or err information
     """
 
     @staticmethod
@@ -43,9 +43,9 @@ class CoordBuilder(Enum):
         Constructs a new `Coord` instance with comprehensive checks on the parameters and states during the
         build process.
 
-        Performs individual validation checks on each component to ensure the resulting `Coord` meets all
+        Performs individual validate checks on each component to ensure the resulting `Coord` meets all
         specifications. If all checks are passed, a `Coord` instance will be returned. It is not necessary to perform
-        any additional validation checks on the returned `Coord` instance. This method guarantees if a `BuildResult`
+        any additional validate checks on the returned `Coord` instance. This method guarantees if a `BuildResult`
         with a successful status is returned, the contained `Coord` is valid and ready for use.
 
         Args:
@@ -57,10 +57,10 @@ class CoordBuilder(Enum):
         Returns:
             BuildResult[Coord]: A `BuildResult` containing either:
                 - On success: A valid `Coord` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-            `CoordBuilderException`: Wraps any underlying validation failures that occur during the construction process.
+            `CoordBuilderException`: Wraps any underlying validate failures that occur during the construction process.
             This includes:
                 * `NullRowException`: if `row` is null
                 * `RowBelowBoundsException`: if `row` < 0
@@ -72,7 +72,7 @@ class CoordBuilder(Enum):
         Note:
             The build runs through all the checks on parameters and state to guarantee only a valid `Coord` is
             created, while `CoordValidator` is used for validating `Coord` instances that are passed around after
-            creation. This separation of concerns makes the validation and building independent of each other and
+            creation. This separation of concerns makes the validate and building independent of each other and
             simplifies maintenance.
 
         Example:
@@ -84,7 +84,7 @@ class CoordBuilder(Enum):
             build_outcome = CoordBuilder.build(x=2, y=1)
             
             if not build_outcome.is_success():
-                raise build_outcome.exception # <--- Skips this because x and y are valid
+                raise build_outcome.err # <--- Skips this because x and y are valid
             u = cast(Coord, build_outcome.payload) # <-- executes this line
             ```
         """

@@ -81,7 +81,7 @@ class CommanderValidator(Validator):
 
             # team_history_validation = TeamListValidator.validate(commander.teams)
             # if not team_history_validation.is_success():
-            #     raise team_history_validation.exception
+            #     raise team_history_validation.err
 
             # Return the result if checks passed
             return Result(payload=commander)
@@ -97,6 +97,6 @@ class CommanderValidator(Validator):
 
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
             raise InvalidCommanderException(f"An unexpected error occurred during validation: {e}") from e

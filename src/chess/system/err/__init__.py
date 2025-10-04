@@ -1,7 +1,7 @@
-# chess/system/exception/__init__.py
+# chess/system/err/__init__.py
 
 """
-Module: chess.system.exception
+Module: chess.system.err
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -14,7 +14,7 @@ High level exceptions inherited by subclasses in the system.
 This package exposes core classes and all exceptions from its sub-modules:
     - `ChessException`: The base class exceptions in the application.
     - `NullException`:`
-    - `ThrowHelper`: Coordinates centralized exception logging
+    - `InstructionRecorder`: Coordinates centralized err logging
 
 
 
@@ -29,18 +29,18 @@ ___
 """
 
 from .exception import *
-from .throw_helper import ThrowHelper
+from .throw_helper import InstructionRecorder
 
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.system.exception'
+__package_name__ = 'chess.system.err'
 
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    'ThrowHelper',
+    'InstructionRecorder',
     *exception.__all__,
 
 

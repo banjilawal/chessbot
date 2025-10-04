@@ -24,7 +24,7 @@ class AttackEventValidator(EventValidator):
             - `id` does not fail validator
             - `actor` is a valid chess enemy
             - `target` is a valid square
-        Any validation failure raises an `InvalidScanEventException`.
+        Any validate failure raises an `InvalidScanEventException`.
 
         Argument:
             `t` (`ScanEvent`): `scanEvent `to validate
@@ -63,11 +63,11 @@ class AttackEventValidator(EventValidator):
 
             actor_validation = PieceValidator.validate(event.actor)
             if not actor_validation.is_success():
-                raise InvalidPieceException(f"{method}: ScanEvent actor failed validation")
+                raise InvalidPieceException(f"{method}: ScanEvent actor failed validate")
 
             subject_validation = PieceValidator.validate(event.subject)
             if not subject_validation.is_success():
-                raise InvalidPieceException(f"{method}: ScanEvent enemy failed validation")
+                raise InvalidPieceException(f"{method}: ScanEvent enemy failed validate")
 
             if event.actor == event.subject:
                 raise CircularDiscoveryException(f"{method}: {CircularDiscoveryException.DEFAULT_MESSAGE}")
@@ -99,7 +99,7 @@ class AttackEventValidator(EventValidator):
             raise InvalidScanEventException(f"{method}: {InvalidScanEventException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
             raise InvalidScanEventException(f"{method}: {e}") from e
 

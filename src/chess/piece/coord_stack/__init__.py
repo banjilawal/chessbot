@@ -22,7 +22,7 @@ Provides the data structures and utilities for storing history of `Piece` object
 ## EXCEPTIONS
     * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
     * `DoubleCoordPushException`: Raised when a `Coord` at the top of the stack is pushed again.
-    * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validation.
+    * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validate.
     * `NullCoordStackException`: Raised if a null `CoordStackException` is passed as a parameter.
 
 ### EXCEPTION USAGE EXAMPLES

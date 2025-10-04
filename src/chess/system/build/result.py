@@ -9,14 +9,14 @@ class BuildResult(Generic[T]):
     BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
     same structure as Result but is used specifically in the context of building entities. It can hold either.
     a payload of type T or an Exception, but not both. If the build operation is successful, the payload will
-    contain the built object. If the build operation fails, the exception will contain the exception that
+    contain the built object. If the build operation fails, the err will contain the err that
     occurred during the build process.
 
     BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate a result.
 
     Attributes:
         _payload (Optional[T]): The payload of the result, if successful.
-        _exception (Optional[Exception]): The exception of the result, if failed.
+        _exception (Optional[Exception]): The err of the result, if failed.
 
     Methods:
         is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
@@ -30,10 +30,10 @@ class BuildResult(Generic[T]):
         Initializes a BuildResult object.
         Args:
             payload (Optional[T]): The payload of the result, if successful.
-            exception (Optional[Exception]): The exception of the result, if failed.
+            exception (Optional[Exception]): The err of the result, if failed.
         Raises:
-            EmptyResultConstructorException: If neither payload nor exception is provided.
-            ResultPayloadConflictException: If both payload and exception are provided.
+            EmptyResultConstructorException: If neither payload nor err is provided.
+            ResultPayloadConflictException: If both payload and err are provided.
         """
         method = "Result.__init_"
 

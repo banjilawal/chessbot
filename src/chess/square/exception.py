@@ -18,7 +18,7 @@ class SquareException(ChessException):
     square exceptions.
     """
     ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square raised an exception."
+    DEFAULT_MESSAGE = "Square raised an err."
 
 
 # === SQUARE VALIDATION EXCEPTIONS ===
@@ -33,14 +33,14 @@ class InvalidSquareException(SquareException, ValidationException):
     all exceptions raised validating an existing square
     """
     ERROR_CODE = "SQUARE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Square validation failed"
+    DEFAULT_MESSAGE = "Square validate failed"
 
     
 # === SQUARE BUILDER EXCEPTIONS ===
 class SquareBuilderException(SquareException, BuilderException):
     """
-    Raised when SquareBuilder encounters an exception building a square. Exists primarily
+    Raised when SquareBuilder encounters an err building a square. Exists primarily
     to catch all exceptions raised creating a new square
     """
     ERROR_CODE = "SQUARE_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "SquareBuilder raised an exception"
+    DEFAULT_MESSAGE = "SquareBuilder raised an err"

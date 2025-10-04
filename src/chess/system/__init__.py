@@ -32,8 +32,8 @@ from .config import *
 from .search import *
 from .emitter import *
 from .build import *
-from .exception import *
-from .validation import *
+from .err import *
+from .validate import *
 
 
 # Package metadata (organic to __init__.py)
@@ -53,7 +53,7 @@ __all__ = [
     *result.__all__,
     *search.__all__,
     *build.__all__,
-    *validation.__all__,
+    *validate.__all__,
     *exception.__all__,
     *emitter.__all__,
     *config.__all__,

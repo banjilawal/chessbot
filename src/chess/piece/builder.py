@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.system import BuildResult, NameValidator, ThrowHelper
+from chess.system import BuildResult, NameValidator, InstructionRecorder
 
 from chess.rank import Rank, King, RankValidator
 from chess.piece import Piece, KingPiece, CombatantPiece, UnregisteredTeamMemberException
@@ -26,14 +26,14 @@ class PieceBuilder(Enum):
         Returns:
             BuildResult[Piece]: A `BuildResult` containing either:
                 - On success: A valid `Piece` instance in the payload
-                - On failure: Error information and exception details
+                - On failure: Error information and err details
 
         Raises:
-           PieceBuilderException: Wraps any underlying validation failures that occur during the construction process.
+           PieceBuilderException: Wraps any underlying validate failures that occur during the construction process.
            This includes:
-                * `InvalidNameException`: if `name` fails validation checks
-                * `InvalidRankException`: if `rank` fails validation checks
-                * `InvalidTeamException`: if `team` fails validation checks
+                * `InvalidNameException`: if `name` fails validate checks
+                * `InvalidRankException`: if `rank` fails validate checks
+                * `InvalidTeamException`: if `team` fails validate checks
                 * `InvalidTeamAssignmentException`: If `piece.team` is different from `team` parameter
                 * `FullRankQuotaException`: If the `team` has no empty slots for the `piece.rank`
                 * `FullRankQuotaException`: If `piece.team` is equal to `team` parameter but `team.roster` still does
@@ -44,22 +44,22 @@ class PieceBuilder(Enum):
         try:
             # id_validation = IdValidator.validate(piece_id)
             # if not id_validation.is_success():
-            #     ThrowHelper.throw_if_invalid(PieceBuilder, id_validation)
+            #     InstructionRecorder.throw_if_invalid(PieceBuilder, id_validation)
 
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
-                ThrowHelper.throw_if_invalid(PieceBuilder, name_validation)
+                InstructionRecorder.throw_if_invalid(PieceBuilder, name_validation)
 
             rank_validation = RankValidator.validate(rank)
             if not rank_validation.is_success():
-                ThrowHelper.throw_if_invalid(PieceBuilder, rank_validation)
+                InstructionRecorder.throw_if_invalid(PieceBuilder, rank_validation)
 
             team_validation = TeamValidator.validate(team)
             if not team_validation.is_success():
-                ThrowHelper.throw_if_invalid(PieceBuilder, team_validation)
+                InstructionRecorder.throw_if_invalid(PieceBuilder, team_validation)
 
             if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
-                ThrowHelper.throw_if_invalid(
+                InstructionRecorder.throw_if_invalid(
                     PieceBuilder,
                     FullRankQuotaException(FullRankQuotaException.DEFAULT_MESSAGE)
                 )
@@ -70,7 +70,7 @@ class PieceBuilder(Enum):
             piece = CombatantPiece(piece_id=piece_id, name=name, rank=rank, team=team)
 
             if not piece.team == team:
-                ThrowHelper.throw_if_invalid(
+                InstructionRecorder.throw_if_invalid(
                     PieceBuilder,
                     ConflictingTeamAssignmentException(ConflictingTeamAssignmentException.DEFAULT_MESSAGE)
                 )
@@ -79,7 +79,7 @@ class PieceBuilder(Enum):
                 team.add_to_roster(piece)
 
             if piece not in team.roster:
-                ThrowHelper.throw_if_invalid(
+                InstructionRecorder.throw_if_invalid(
                     PieceBuilder,
                     UnregisteredTeamMemberException(UnregisteredTeamMemberException.DEFAULT_MESSAGE)
                 )
@@ -96,14 +96,14 @@ class PieceBuilder(Enum):
 #         piece = build_outcome.payload
 #         print(f"Successfully built piece: {piece}")
 #     else:
-#         print(f"Failed to build piece: {build_outcome.exception}")
+#         print(f"Failed to build piece: {build_outcome.err}")
 #     #
 #     build_outcome = PieceBuilder.build(1, None)
 #     if build_outcome.is_success():
 #         piece = build_outcome.payload
 #         print(f"Successfully built piece: {piece}")
 #     else:
-#         print(f"Failed to build piece: {build_outcome.exception}")
+#         print(f"Failed to build piece: {build_outcome.err}")
 #
 # if __name__ == "__main__":
 #     main()

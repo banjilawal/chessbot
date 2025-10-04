@@ -22,7 +22,7 @@ class Result(Generic[T]):
 
     Attributes:
         _payload (Optional[T]): The payload of the result, if successful.
-        _exception (Optional[Exception]): The exception of the result, if failed.
+        _exception (Optional[Exception]): The err of the result, if failed.
 
     Methods:
         is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
@@ -34,13 +34,13 @@ class Result(Generic[T]):
     def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
         method = "Result.__init_"
 
-        # Raise an exception if neither payload nor exception is provided
+        # Raise an err if neither payload nor err is provided
         if payload is None and exception is None:
             raise EmptyResultConstructorException(
                 f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}"
             )
 
-        # Raise an exception if both payload and exception are provided
+        # Raise an err if both payload and err are provided
         if not (payload is None and exception is None):
             raise ErrorContradictsPayloadException(
                 f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}"

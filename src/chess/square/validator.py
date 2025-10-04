@@ -3,7 +3,7 @@ from typing import cast, Generic, TypeVar
 
 from chess.coord import CoordValidator, CoordValidationException
 from chess.square import Square, NullSquareException, InvalidSqaureException
-from chess.system import Result, Validator, IdValidator, NameValidator, InvalidIdException, InvalidNameException
+from chess.system import ValidationResult, Validator, IdValidator, NameValidator, InvalidIdException, InvalidNameException
 
 
 T = TypeVar('T')
@@ -14,14 +14,14 @@ class SquareValidator(Validator):
 
     While `SquareBuilder` ensures valid Squares are created, `SquareValidator`
     checks `Square` instances that already exist - whether they came from
-    deserialization, external sources, or need re-validation after modifications.
+    deserialization, external sources, or need re-validate after modifications.
 
     Usage:
         ```python
         # Validate an existing square
         square_validation = SquareValidator.validate(candidate)
         if not square_validation.is_success():
-            raise square_validation.exception
+            raise square_validation.err
         square = cast(Square, square_validation.payload)
         ```
 
@@ -29,12 +29,12 @@ class SquareValidator(Validator):
     """
     
     @staticmethod
-    def validate(t: Square) -> Result[Square]:
+    def validate(t: Square) -> ValidationResult[Square]:
         """
         Validates that an existing `Square` instance meets specifications.
         This method performs a series of checks on a Square instance, ensuring it is not null and that 
         its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised 
-        as a `InvalidSquareException`, providing a clean and consistent exception-handling experience.
+        as a `InvalidSquareException`, providing a clean and consistent err-handling experience.
 
         Args
             `t` (`Square`): `Square` instance to validate
@@ -46,9 +46,9 @@ class SquareValidator(Validator):
         Raises:
             `TypeError`: If the input `t` is not an instance of `Square`.
             `NullSquareException`: If the input `t` is `None`.
-            `InvalidIdException`: If the `id` attribute of the square fails validation checks.
-            `InvalidNameException`: If the `name` attribute of the square fails validation checks.
-            `CoordValidationException`: If the `coord` attribute of the square fails validation checks.
+            `InvalidIdException`: If the `id` attribute of the square fails validate checks.
+            `InvalidNameException`: If the `name` attribute of the square fails validate checks.
+            `CoordValidationException`: If the `coord` attribute of the square fails validate checks.
             `InvalidSquareException`: Wraps any preceding exceptions
         """
         method = "SquareValidator.validate"
@@ -83,9 +83,9 @@ class SquareValidator(Validator):
                 InvalidNameException,
                 CoordValidationException
         ) as e:
-            raise InvalidSqaureException("Square failed validation.") from e
+            raise InvalidSqaureException("Square failed validate.") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidSqaureException(f"An unexpected exception occurred during validation: {e}") from e
+            raise InvalidSqaureException(f"An unexpected err occurred during validate: {e}") from e

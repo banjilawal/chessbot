@@ -21,8 +21,8 @@ class TeamFactory:
             teams.append(team)
 
         ranks = RankFactory.assemble()
-        # for validation in ranks:
-        #     print(validation)
+        # for validate in ranks:
+        #     print(validate)
 
         for team in teams:
             for rank in ranks:

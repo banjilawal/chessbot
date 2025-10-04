@@ -18,10 +18,10 @@ clean.
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
     - `Builder`: The base class for `Build` objects.
-    - All exceptions from `exception` package.
+    - All exceptions from `err` package.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
+    - `.err`: Defines all custom exceptions for occupation operations.
     - `.occupation`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 

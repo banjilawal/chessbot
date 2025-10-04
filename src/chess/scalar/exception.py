@@ -37,17 +37,17 @@ class InvalidScalarException(ScalarException, ValidationException):
     exceptions raised validating an existing scalar
     """
     ERROR_CODE = "SCALAR_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Scalar validation failed."
+    DEFAULT_MESSAGE = "Scalar validate failed."
 
 
 # === SCALAR BUILDER EXCEPTIONS ===
 class ScalarBuilderException(ScalarException, BuilderException):
     """
-    Raised when ScalarBuilder encounters an exception building a scalar. Exists primarily
+    Raised when ScalarBuilder encounters an err building a scalar. Exists primarily
     to catch all exceptions raised creating a new scalar.
     """
     ERROR_CODE = "SCALAR_BUILDER_ERROR"
-    DEFAULT_MESSAGE = "ScalarBuilder raised an exception."
+    DEFAULT_MESSAGE = "ScalarBuilder raised an err."
 
 
 # === SCALAR BOUNDS EXCEPTIONS ===

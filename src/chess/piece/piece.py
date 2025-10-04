@@ -13,11 +13,11 @@ Contents:
     - CombatantPiece: Concrete subclass representing a piece capable of capturing others.
     - CoordStack, Discovery, Discoveries: Supporting classes for tracking piece positions
       and discoveries.
-    - Validators and exceptions related to piece creation and validation.
+    - Validators and exceptions related to piece creation and validate.
 
 Notes:
     This module is part of the chess.piece package. Validation exceptions are defined
-    in PieceValidator and related exception classes. Piece objects are designed to be
+    in PieceValidator and related err classes. Piece objects are designed to be
     immutable in their core properties.
 """
 
@@ -78,9 +78,9 @@ class Piece(ABC):
             team (Team): The team the discover belongs to.
 
         Raises:
-            InvalidIdException: If `discovery_id` fails validation checks.
-            InvalidNameException: If `name` fails validation checks.
-            InvalidTeamException: If `team` fails validation checks.
+            InvalidIdException: If `discovery_id` fails validate checks.
+            InvalidNameException: If `name` fails validate checks.
+            InvalidTeamException: If `team` fails validate checks.
         """
 
         method = "Piece.__init__"

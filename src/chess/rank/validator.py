@@ -2,14 +2,14 @@
 #
 # from assurance.result.base import Result
 # # from assurance.validators.base import Validator, T
-# # from chess.validation.base import Rank
+# # from chess.validate.base import Rank
 #
 #
 from typing import TypeVar, cast
 
 
 from chess.system import Result
-from chess.system.validation.validator import Validator
+from chess.system.validate.validator import Validator
 from chess.rank import (
     Rank, King, Pawn, Knight, Bishop, Rook, Queen, RankSpec,
     InvalidPawnException,
@@ -60,7 +60,7 @@ class RankValidator(Validator):
             raise InvalidRankException(f"{method}: {InvalidRankException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
             raise InvalidRankException(f"An unexpected error occurred during validation: {e}") from e
 

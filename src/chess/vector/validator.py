@@ -16,14 +16,14 @@ class VectorValidator(Validator):
 
     While `VectorBuilder` ensures valid Vectors are created, `VectorValidator`
     checks `Vector` instances that already exist - whether they came from
-    deserialization, external sources, or need re-validation after modifications.
+    deserialization, external sources, or need re-validate after modifications.
     
     Usage:
         ```python
         # Validate an existing vector
         vector_validation = VectorValidator.validate(candidate)    
         if not vector_validation.is_success():
-            raise vector_validation.exception
+            raise vector_validation.err
         vector = cast(Vector, vector_validation.payload)
         ```
 
@@ -35,7 +35,7 @@ class VectorValidator(Validator):
         """
           Validates that an existing `Vector` instance meets all specifications.
 
-          Performs comprehensive validation on a `Vector` instance that already exists,
+          Performs comprehensive validate on a `Vector` instance that already exists,
           checking type safety, null values, and component bounds. Unlike VectorBuilder
           which creates new valid Vectors, this validator verifies existing `Vector`
           instances from external sources, deserialization, or after modifications.
@@ -48,7 +48,7 @@ class VectorValidator(Validator):
           Returns:
               Result[Vector]: A Result containing either:
                   - On success: The validated Vector instance in the payload
-                  - On failure: Error information and exception details
+                  - On failure: Error information and err details
 
           Raises:
               InvalidVectorException: Wraps any specification violations including:
@@ -60,7 +60,7 @@ class VectorValidator(Validator):
                   - VectorAboveBoundsException: if x or y > KNIGHT_STEP_SIZE
 
           Note:
-              Use VectorBuilder for creating new Vectors with validation,
+              Use VectorBuilder for creating new Vectors with validate,
               use VectorValidator for verifying existing Vector instances.
 
           Example:
@@ -70,7 +70,7 @@ class VectorValidator(Validator):
               if result.is_success():
                   validated_vector = result.payload
               else:
-                  # Handle validation failure
+                  # Handle validate failure
                   pass
               ```
           """
@@ -119,9 +119,9 @@ class VectorValidator(Validator):
             raise InvalidVectorException(f"{method}: f{InvalidVectorException.DEFAULT_MESSAGE}") from e
 
         # This block catches any unexpected exceptions
-        # You might want to log the exception here before re-raising
+        # You might want to log the err here before re-raising
         except Exception as e:
-            raise InvalidVectorException(f"An unexpected exception occurred during validation: {e}") from e
+            raise InvalidVectorException(f"An unexpected err occurred during validate: {e}") from e
 #
 #
 # def main():

@@ -44,16 +44,16 @@ class OwnerFactory:
         #     teams.append(team)
         #
         #
-        # # for validation in ranks:
-        # #     print(validation)
+        # # for validate in ranks:
+        # #     print(validate)
         #
         # for team in teams:
-        #     for validation in ranks:
-        #         for i in range(validation.number_per_team):
+        #     for validate in ranks:
+        #         for i in range(validate.number_per_team):
         #             captor = ChessPieceBuilder.build(
         #                 discovery_id=id_emitter.discovery_id,
         #                 team_rank_member_id=(i + 1),
-        #                 validation=validation,
+        #                 validate=validate,
         #                 team=team
         #             )
         #             # print(captor)

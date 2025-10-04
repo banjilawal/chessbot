@@ -2,7 +2,7 @@ from typing import cast, Generic
 
 from chess.geometry.exception.coord import CoordValidationException
 from chess.result import Result
-from chess.system.validation.validator import Validator, T
+from chess.system.validate.validator import Validator, T
 from chess.system.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import (
     RowBelowBoundsException, RowAboveBoundsException,
@@ -19,7 +19,7 @@ class CoordValidator(Validator):
     """
     Validates existing `Coord` instances that are passed around the system. While `CoordBuilder` ensures 
     valid Coords are created, `CoordValidator` checks `Coord` instances that already exist - whether they
-    came from deserialization, external sources, or need re-validation after modifications. For performance and 
+    came from deserialization, external sources, or need re-validate after modifications. For performance and
     single source of truth CoordValidator has:
         - No fields
         - only static method validate  
@@ -32,7 +32,7 @@ class CoordValidator(Validator):
         # Validate an existing Coord
         Coord_validation = CoordValidator.validate(candidate)    
         if not Coord_validation.is_success():
-            raise Coord_validation.exception
+            raise Coord_validation.err
             
         # Cast the payload to a Coord instance to make sure it will work correctly and to avoid type or 
         # null errors that might be difficult to detect.
@@ -45,7 +45,7 @@ class CoordValidator(Validator):
     @staticmethod
     def validate(t: Generic[T]) -> Result[Coord]:
         """
-        Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validation
+        Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validate
         on a `Coord` instance that already exists, checking type safety, null values, and component bounds. 
         Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies existing `Coord` 
         instances from external sources, deserialization, or after modifications.
@@ -56,7 +56,7 @@ class CoordValidator(Validator):
         Returns:
         Result[Coord]: A Result containing either:
             - On success: The validated Coord instance in the payload
-            - On failure: Error information and exception details
+            - On failure: Error information and err details
 
         Raises:
         CoordValidationException: Wraps any specification violations including:
@@ -69,7 +69,7 @@ class CoordValidator(Validator):
             - ColumnAboveBoundsException: If coord.column>= ROW_SIZE
               
         Note:
-        *   Use CoordBuilder for creating new Coords with validation,
+        *   Use CoordBuilder for creating new Coords with validate,
         *   use CoordValidator for verifying existing Coord instances.
         
         Example:
@@ -77,10 +77,10 @@ class CoordValidator(Validator):
         from typing import cast
         from chess.Coord import Coord, CoordValidator
 
-        validation = CoordValidator.validate(candidate)
-        if validation.is_success():
-            raise validation.exception
-        Coord = cast(Coord, validation.payload)
+        validate = CoordValidator.validate(candidate)
+        if validate.is_success():
+            raise validate.err
+        Coord = cast(Coord, validate.payload)
         ```
         """
         
