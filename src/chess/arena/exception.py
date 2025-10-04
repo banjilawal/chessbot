@@ -26,21 +26,26 @@ __all__ = [
 ]
 
 class ArenaException(ChessException):
+    """
+    Super class exceptions Class object raises organically. Do not use directly. Subclasses give
+    details useful for debugging. ClassException exists primarily to allow catching all class
+    exceptions.
+    """
     ERROR_CODE = "ARENA_ERROR"
     DEFAULT_MESSAGE = "Arena raised an exception."
 
 
 # === ARENA VALIDATION EXCEPTIONS ===
 class NullArenaException(ArenaException, NullException):
-    """Raised if an entity, method, or operation requires a arena but gets null instead."""
+    """Raised if an entity, method, or operation requires an arena but gets null instead."""
     ERROR_CODE = "NULL_ARENA_ERROR"
     DEFAULT_MESSAGE = "Arena cannot be null"
 
 
 class InvalidArenaException(ArenaException, ValidationException):
     """
-    Raised by ArenaValidator if arena fails sanity checks. Exists primarily to catch all exceptions raised
-    validating an existing arena
+    Raised by ArenaValidator if arena fails sanity checks. Exists primarily to
+    catch all exceptions raised validating an existing arena
     """
     ERROR_CODE = "ARENA_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Arena validation failed"
@@ -49,8 +54,8 @@ class InvalidArenaException(ArenaException, ValidationException):
 # === ARENA BUILD EXCEPTIONS ===
 class ArenaBuildFailedException(ArenaException, BuildFailedException):
     """
-    Raised when ArenaBuilder encounters an error while building a team. Exists primarily to catch all
-    exceptions raised build a new arena
+    Raised when ArenaBuilder crashed while building a new arena. Exists
+    primarily to catch all exceptions raised creating arenas.
     """
     ERROR_CODE = "ARENA_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Arena build failed."
