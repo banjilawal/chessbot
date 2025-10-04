@@ -1,25 +1,53 @@
-from chess.board.board import Board
-from chess.competitor.commander import CyberneticCommander
-from chess.competitor.commander import Commander
-from chess.side.move import Move
+# chess/arena/arena.py
+
+"""
+Module: `chess.arena.arena`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+Responsibilities: <SENTENCE_ABOUT_RESPONSIBILITIES>
+Contains:
+ - `Arena`
+"""
+
+from chess.system import auto_id
+from chess.board import Board
+from chess.commander import Commander
 
 
+@auto_id
 class Arena:
+    """
+    <WHAT_CLASS_DOES>.
+
+    Attributes:
+        `_attribute` (`data_type`): <sentence_if_necessary>
+    """
+
     _id: int
     _white_owner: Commander
     _black_owner: Commander
     _chess_board: Board
 
-    def __init__(self, arena_id: int, white_owner: Commander, black_owner: Commander, chess_board: Board):
-        self._id = arena_id
+    def __init__(self, white_owner: Commander, black_owner: Commander, chess_board: Board):
+        """
+        <METHOD_ACTION>
+
+        Args:
+            `param` (`DataType`): <sentence_if_necessary>
+
+        Returns:
+
+        Raise:
+        <`ClassException` wraps any exceptions raised. These are:
+            * `ExceptionName`: If <condition_raising>
+        """
+        method = "method_name"
+
         self._white_owner = white_owner
         self._black_owner = black_owner
         self._chess_board = chess_board
-
-    @property
-    def id(self) -> int:
-        return self._id
-
 
     @property
     def white_owner(self) -> Commander:

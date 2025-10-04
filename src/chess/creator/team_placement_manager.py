@@ -6,7 +6,7 @@ from chess.config.placement import PlacementChart
 from chess.piece.piece import Piece
 
 if TYPE_CHECKING:
-    from chess.arena.model import Arena
+    from chess.arena.arena import Arena
 
 class PlacementException(ChessException):
     default_message = "Placemen failed"

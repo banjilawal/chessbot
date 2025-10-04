@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chess.arena.model import Arena
+from chess.arena.arena import Arena
 from chess.game.model import Game
 from chess.competitor.commander import Commander
 

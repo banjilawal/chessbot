@@ -1,46 +1,57 @@
-# chess/board/builder.py
+# chess/arena/builder.py
 
 """
-Module: `chess.board.builder`
+Module: `chess.arena.builder`
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-10-04
 version: 1.0.0
 
-Contains: BoardBuilder
-Responsibilities: Create `Board` instances
+Responsibilities: Create `Arena` instances
+Contains:
+    ArenadBuilder
 """
 
 from typing import List
 
+from chess.arena import Arena
+from chess.system import Builder, BuildResult
+from chess.board import Board, BoardValidator
+from chess.commander import Commander, CommnderValidator
 
-from chess.square import Square
-from chess.board import Board, BoardBuildFailedException
-from chess.system import  BOARD_DIMENSION, Builder, BuildResult
 
 
-
-class BoardBuilder(Builder[Board]):
+class ArenaBuilder(Builder[Arena]):
     """
-    Responsible for safely constructing `Board` instances.
+    Responsible for safely constructing `Arena` instances.
     """
 
     @classmethod
-    def build(cls) -> BuildResult[Board]:
+    def build(
+        cls,
+        white_commander: Commander,
+        black_commander: Commander,
+        board: Board
+    ) -> BuildResult[Arena]:
         """
-        Constructs a new `Board` that works correctly.
+        Constructs a new `Arena` that works correctly.
 
         Args:
-            None
+            - `white_commander`: White Commander
+            - `black_commander`: Black Commander
+            - `board`: Board
 
         Returns:
             `BuildResult`[`Board`]: A `BuildResult` containing either:
-                - On success: A valid `Board` instance in the payload
+                - On success: A valid `Arena` instance in the payload
                 - On failure: Error information and error details
 
         Raises:
-            `BoardBuildFailedException`:`: Wraps any exceptions raised build. These are:
+        `ArenaBuildFailedException` wraps any exceptions raised build. These are:
+            * `InvalidCommanderException`: If a `white_commander` or `black_commander` fails validation.
+            * `InvalidBoardException`: If a `board` fails validation.
+
         """
-        method = "BoardBuilder.build"
+        method = "ArenaBuilder.build"
         
         try:
             squares: List[List[Square]] = []

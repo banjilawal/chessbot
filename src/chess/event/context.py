@@ -4,7 +4,7 @@ from typing import List, Optional
 from chess.team import Team
 from chess.board import Board
 from chess.piece import Piece
-from chess.arena.model import Arena
+from chess.arena.arena import Arena
 from chess.commander import Commander
 
 from chess.system import Context

@@ -23,7 +23,7 @@ This package exposes core classes and all exceptions from its sub-modules:
     - All exceptions from `err`, `scan`, `attack`, and `exchange` sub-packages.
 
 # SUB-PACKAGES
-    - `.err`: Defines all custom exceptions for occupation operations.
+    - `.exception`: Defines all custom exceptions for occupation operations.
     - `.occupation`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 

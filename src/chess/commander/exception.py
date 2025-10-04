@@ -1,7 +1,20 @@
+# chess.commander.exception
+
+"""
+Module: `chess.commander.exception`
+Author: Banji Lawal
+Created: 2025-09-27
+Updated: 2025-10-04
+version: 1.0.0
+Responsibilities: Holds exceptions organic to `Commander` objects
+
+Contains: See the list of exception in the __alL__ list following
+"""
+
 from chess.system import(
     ChessException,
     NullException,
-    FailedBuildException,
+    BuildFailedException,
     ValidationException,
     InconsistentCollectionException
 )
@@ -47,7 +60,7 @@ class InvalidCommanderException(CommanderException, ValidationException):
     DEFAULT_MESSAGE = "Commander validate failed"
 
 # === COMMANDER BUILD EXCEPTIONS ===
-class CommanderBuildFailedException(CommanderException, FailedBuildException):
+class CommanderBuildFailedException(CommanderException, BuildFailedException):
     """
     Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all
     exceptions raised build a new board

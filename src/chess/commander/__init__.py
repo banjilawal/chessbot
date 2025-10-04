@@ -4,27 +4,36 @@
 Module: `chess.commander`
 Author: Banji Lawal
 Created: 2025-10-03
+Updated: 2025-10-04
 version: 1.0.0
 
-## PURPOSE
-    Commaners who play a team
+# PURPOSE
+Controls a `Team` instance by issuing movement commands to a `piece` in `Team.roster`.
+ on the team.Commanders who play a team
 
-## CORE CLASSES
-    Commander
-    Human
-    CyberneticCompettor
+ # EXPORTS
+This package exposes core classes and all exceptions from its sub-modules:
+    - `Commander`: Abstract class.
+    - `Human`: Concrete `subclass` of `Commander` people use.
+    - `Bot`: Concrete `subclass` of `Commander` that uses a `DecisionEngine`.
+    - `CommanderBuilder`: Builds new instances of `Commander`.
+    - `CommanderValidator`: Performs validation and sanity checks on existing
+            `Commander` instances. before they are used.
+    - All exceptions from `exception` package.
 
-## PURPOSE
-    Contains core commander team_exception classes and coordinate utilities.
+# SUB-PACKAGES
+    - `.exception`: Defines all custom exceptions for occupation operations.
 
+# HOW TO IMPORT
+DO NOT reference submodules directly. Import all core classes and exceptions from this
+`commander` package level. (e.g., `from chess.commander import CommanderValidator`). See USAGE
+EXAMPLES section.
 
-COMMANDER EXCEPTIONS CLASSES:
-    NullCommanderException
-    CommandervalidationException
-
-USAGE:
-    >>>
-    >>>
+# USAGE EXAMPLES
+___
+```python
+```
+---
 """
 
 from .exception import *

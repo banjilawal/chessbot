@@ -1,5 +1,5 @@
 from chess.board import FailedPieceRemovalRolledBackException
-from chess.system import ChessException, SearchException, NullException, ValidationException, FailedBuildException, RollbackException
+from chess.system import ChessException, SearchException, NullException, ValidationException, BuildFailedException, RollbackException
 
 __all__ = [
     'TeamException',

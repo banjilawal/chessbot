@@ -1,4 +1,4 @@
-from chess.arena.model import Arena
+from chess.arena.arena import Arena
 from chess.system.emitter import id_emitter
 from chess.board.builder import ChessBoardBuilder
 from chess.creator.entity.factory.owner_factory import OwnerFactory

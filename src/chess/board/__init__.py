@@ -1,7 +1,7 @@
 # chess/board/__init__.py
 
 """
-Module: `chess.board`
+Module: chess.board
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -12,30 +12,23 @@ which a `Piece` instance can reside.
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-    - `Board`
-    - `BoardBuilder`
-    - `BoarSearch`
-    - `SquareIterator`
-    - `OccupationTransaction`
-    - `OccupationEventValidator`
-    - `OccupationEventBuilder`
-    - All exceptions from `err` sub-packages.
+    - `Board`:
+    - `BoardBuilder`:
+    - `BoarSearch`:
+    - `SquareIterator`:
+    - All exceptions from `exception` sub-packages.
 
 # SUB-PACKAGES
-    - `.err`: Defines all custom exceptions for `Board` operations.
+    - `.exception`: Defines all custom exceptions for `Board` operations.
 
+# HOW TO IMPORT
+DO NOT reference submodules directly. Import all core classes and exceptions from this `board` package level
+(e.g., `from chess.board import InvalidBoardException`). See USAGE EXAMPLES section
 
 USAGE EXAMPLES:
 ---
 ```python
 ```
-
-# BEST PRACTICES
-
-# NOTES
-DO NOT reference sub-modules directly. Import all core classes and exceptions
-from this package level (e.g., `from chess.event.occupation import OccupationEvent`). See EXAMPLE USAGE section
-for best practices.
 """
 
 from .board import Board
@@ -76,4 +69,3 @@ def package_info() -> dict:
         'author': __author__,
         'exports': __all__
     }
-

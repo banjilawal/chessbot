@@ -20,7 +20,7 @@ This package exposes core classes and all exceptions from its sub-modules:
     - All exceptions from `err`, `scan`, `attack`, and `exchange` sub-packages.
 
 # SUB-PACKAGES
-    - `.err`: Defines all custom exceptions for occupation operations.
+    - `.exception`: Defines all custom exceptions for occupation operations.
     - `.scan`: Logic for recording occupied squares in a piece's path.
     - `.attack`: Logic for capturing.
     - `.exchange`: Logic for transferring a piece to another empty square.

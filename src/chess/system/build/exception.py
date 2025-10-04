@@ -3,7 +3,7 @@ from chess.exception import ChessException, NullException
 __all__ = [
     'BuilderException',
     'NullBuilderException',
-    'FailedBuildException'
+    'BuildFailedException'
 ]
 
 
@@ -32,7 +32,7 @@ class NullBuilderException(BuilderException, NullException):
     ERROR_CODE = "NULL_ERROR"
     DEFAULT_MESSAGE = "Builder cannot be null"
 
-class FailedBuildException(BuilderException):
+class BuildFailedException(BuilderException):
     """
     Raised when PieceBuilder encounters an error while building a team. Exists primarily to
     catch all exceptions raised building a new piece

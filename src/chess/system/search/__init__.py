@@ -17,7 +17,7 @@ Super class for `Search` objects and their
     - All exceptions in the `err` subpackage
 
 # SUB-PACKAGES
-    - `.err`: Defines all custom exceptions for occupation operations.
+    - `.exception`: Defines all custom exceptions for occupation operations.
 
 
 # USAGE EXAMPLES
