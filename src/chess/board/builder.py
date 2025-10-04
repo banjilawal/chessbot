@@ -6,8 +6,10 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
-Contains: BoardBuilder
 Responsibilities: Create `Board` instances
+
+Contains:
+    * `BoardBuilder`
 """
 
 from typing import List

@@ -6,8 +6,9 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Contains: BoardSearch
 Responsibilities: Interface for complex search operations with validation
+Contains:
+    * BoardSearch
 """
 
 from chess.board import Board

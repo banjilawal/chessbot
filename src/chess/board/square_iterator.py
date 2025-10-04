@@ -1,3 +1,18 @@
+# chess/board/board/square_iterator.py
+
+"""
+Module: `chess.board.square_iterator`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+Responsibilities: Loops through each `Square` in path of pieces that can travel an arbitrary number of squares
+    during a move.
+
+Contains:
+ * `SquareIterator`
+"""
+
 from typing import List
 
 from chess.board.builder import ChessBoardBuilder
@@ -7,6 +22,14 @@ from chess.vector import Vector
 
 
 class SquareIterator:
+    """
+    Loops through each `Square` in path of pieces that can travel an arbitrary number of squares
+    during a move. Ranks which use a `SquareIterator` are: Bishop`, `Queen`, `Castle`, `PromotedKing`
+    and `PromotePawn`.
+
+    Attributes:
+        `_attribute` (`data_type`): <sentence_if_necessary>
+    """
     _vector: Vector
     _squares: List[List[Square]]
     _coord: Coord
@@ -36,6 +59,20 @@ class SquareIterator:
 
 
     def _col_has_next(self) -> bool:
+        """
+        <METHOD_ACTION>
+
+        Args:
+            `param` (`DataType`): <sentence_if_necessary>
+
+        Returns:
+
+        Raise:
+        <`ClassException` wraps any exceptions raised. These are:
+            * `ExceptionName`: If <condition_raising>
+        """
+        method = "SquareIterator._col_has_next"
+
         # print(f"\t\tENTERED _col_has_next() with column={self._current_column}")
 
         if self._current_column <= len(self._squares[0])-1:
@@ -47,6 +84,20 @@ class SquareIterator:
 
 
     def _row_has_next(self) -> bool:
+        """
+        <METHOD_ACTION>
+
+        Args:
+            `param` (`DataType`): <sentence_if_necessary>
+
+        Returns:
+
+        Raise:
+        <`ClassException` wraps any exceptions raised. These are:
+            * `ExceptionName`: If <condition_raising>
+        """
+        method = "SquareIterator._row_has_next"
+
         print(f"ENTERED _row_has_next() with row={self._current_row}")
 
         if self._current_row < len(self._squares)-1:
@@ -63,6 +114,20 @@ class SquareIterator:
             return False
 
     def _has_next(self) -> bool:
+        """
+        <METHOD_ACTION>
+
+        Args:
+            `param` (`DataType`): <sentence_if_necessary>
+
+        Returns:
+
+        Raise:
+        <`ClassException` wraps any exceptions raised. These are:
+            * `ExceptionName`: If <condition_raising>
+        """
+        method = "SquareIterator.has_next"
+
         if not self._col_has_next():
             if not self._row_has_next():
                 return False
@@ -74,6 +139,20 @@ class SquareIterator:
 
 
     def __next__(self) -> Square:
+        """
+        <METHOD_ACTION>
+
+        Args:
+            `param` (`DataType`): <sentence_if_necessary>
+
+        Returns:
+
+        Raise:
+        <`ClassException` wraps any exceptions raised. These are:
+            * `ExceptionName`: If <condition_raising>
+        """
+        method = "SquareIterator.__next__"
+
         if not self._has_next():
             raise StopIteration
 

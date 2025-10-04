@@ -7,8 +7,9 @@ Created: 2025-10-04
 version: 1.0.0
 
 Responsibilities: Contains squares pieces live in. Mapping `Square` to `Piece` with Coord
+
 Contains:
- - `EntityOne`
+ - `Board`
 
 """
 
@@ -34,7 +35,6 @@ class Board:
     """
     THe realm where game play happens. Provides mapping of `Square` to `Piece` with Coord.
     Keeps track of pieces and the squares hey can occupy.
-    
 
     Attributes:
         _pieces (List[Piece]): pieces on the board
