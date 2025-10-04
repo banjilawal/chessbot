@@ -16,7 +16,7 @@ __all__ = [
     'InvalidRookException',
     'InvalidQueenException',
 
-# === RANK BUILDER EXCEPTIONS ===
+# === RANK BUILD EXCEPTIONS ===
 
 # === RANK MOVING EXCEPTIONS ===
     'MovingException',
@@ -30,7 +30,7 @@ __all__ = [
 
 class RankException(ChessException):
     ERROR_CODE = "RANK_ERROR"
-    DEFAULT_MESSAGE = "Rank raised an err"
+    DEFAULT_MESSAGE = "Rank raised an exception."
 
 # === RANK VALIDATION EXCEPTIONS ===
 class NullRankException(RankException, NullException):

@@ -13,7 +13,7 @@ __all__ = [
     'NullKingException',
     'NullCombatantException',
 
-# === PIECE BUILDER EXCEPTIONS ===
+# === PIECE BUILD EXCEPTIONS ===
     'PieceBuildFailedException',
 
 # === PIECE PROMOTION EXCEPTIONS ===
@@ -48,7 +48,7 @@ class PieceException(ChessException):
     all piece exceptions
     """
     ERROR_CODE = "PIECE_ERROR"
-    DEFAULT_MESSAGE = "Piece raised an err"
+    DEFAULT_MESSAGE = "Piece raised an exception."
 
 class PieceRollBackException(PieceException, RollbackException):
     """
@@ -59,7 +59,7 @@ class PieceRollBackException(PieceException, RollbackException):
     transaction must be rolled back.
     """
     ERROR_CODE = "PIECE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Piece raised an err"
+    DEFAULT_MESSAGE = "Piece raised an exception."
 
 
 # === PIECE VALIDATION EXCEPTIONS ===
@@ -100,7 +100,7 @@ class NullCombatantException(NullPieceException):
     DEFAULT_MESSAGE = "CombatantPiece cannot be null."
 
 
-# === PIECE BUILDER EXCEPTIONS ===
+# === PIECE BUILD EXCEPTIONS ===
 class PieceBuildFailedException(PieceException, BuilderException):
     """
     Indicates Coord could not be built. Wraps and re-raises errors that occurred
@@ -191,7 +191,7 @@ class RollBackCaptureException(CapturePieceException, RollbackException):
     raise an err. Do not use directly. Subclasses give details useful for debugging.
     """
     ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Capture raised an err. Transaction rolled back."
+    DEFAULT_MESSAGE = "Capture raised an exception. Transaction rolled back."
 
 class CaptureFriendRolledBackException(RollBackCaptureException):
     """

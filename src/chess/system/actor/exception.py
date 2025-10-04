@@ -30,7 +30,7 @@ class ActorException(PieceException):
     all piece exceptions
     """
     ERROR_CODE = "ACTOR_ERROR"
-    DEFAULT_MESSAGE = "Actor raised an err. Piece cannot act."
+    DEFAULT_MESSAGE = "Actor raised an exception. Piece cannot act."
 
 class ActorRollBackException(ActorException, RollbackException):
     """
@@ -41,7 +41,7 @@ class ActorRollBackException(ActorException, RollbackException):
     transaction must be rolled back.
     """
     ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Actor raised an err. Transaction rolled back"
+    DEFAULT_MESSAGE = "Actor raised an exception. Transaction rolled back"
 
 
 # === ACTOR VALIDATION EXCEPTIONS ===
@@ -114,7 +114,7 @@ class SubjectException(PieceException):
     Using SubjectException makes tracing which side of the interaction is raising an error easier.
     """
     ERROR_CODE = "SUBJECT_ERROR"
-    DEFAULT_MESSAGE = "A potential enemy piece raised an err"
+    DEFAULT_MESSAGE = "A potential enemy piece raised an exception."
 
 
 class InvalidSubjectException(SubjectException, InvalidPieceException):

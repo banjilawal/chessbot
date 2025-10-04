@@ -7,7 +7,7 @@ __all__ = [
     'NullVectorException',
     'InvalidVectorException',
 
-    # === VECTOR BUILDER EXCEPTIONS ===
+    # === VECTOR BUILD EXCEPTIONS ===
     'VectorBuilderException',
 
     # === NULL COMPONENT EXCEPTIONS ===
@@ -25,7 +25,7 @@ class VectorException(ChessException):
     for debugging. This class exists primarily to allow catching all vector exceptions
     """
     ERROR_CODE = "VECTOR_ERROR"
-    DEFAULT_MESSAGE = "Vector raised an err"
+    DEFAULT_MESSAGE = "Vector raised an exception."
 
 
 # === VECTOR VALIDATION EXCEPTIONS ===
@@ -44,7 +44,7 @@ class InvalidVectorException(VectorException, ValidationException):
     DEFAULT_MESSAGE = f"Vector validation failed"
 
 
-# === VECTOR BUILDER EXCEPTIONS ===
+# === VECTOR BUILD EXCEPTIONS ===
 class VectorBuilderException(VectorException, BuilderException):
     """
     Raised when VectorBuilder encounters an error while building a team. Exists primarily to catch all exceptions

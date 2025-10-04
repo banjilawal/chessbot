@@ -24,7 +24,7 @@ class DiscoveryException(ChessException):
     all board exceptions
     """
     ERROR_CODE = "DISCOVERY_ERROR"
-    DEFAULT_MESSAGE = "Discovery instance raised an err"
+    DEFAULT_MESSAGE = "Discovery instance raised an exception."
     
 class InvalidDiscoveryException(DiscoveryException, ValidationException):
     """
@@ -83,7 +83,7 @@ class DiscoveryRolledBackException(DiscoveryException, RollbackException):
     transaction must be rolled back.
     """
     ERROR_CODE = "DISCOVERY_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Discovery raised an err. Transaction rolled back"
+    DEFAULT_MESSAGE = "Discovery raised an exception. Transaction rolled back"
 
 
 class CircularDiscoveryRolledBackException(DiscoveryException):
@@ -121,7 +121,7 @@ class DiscoveryRolledBackException(DiscoveryException, RollbackException):
     raise an err. Do not use directly. Subclasses give details useful for debugging.
     """
     ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Capture raised an err. "
+    DEFAULT_MESSAGE = "Capture raised an exception. "
 
 class CaptureFriendRolledBackException(DiscoveryRolledBackException):
     """

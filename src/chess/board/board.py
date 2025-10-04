@@ -1,3 +1,17 @@
+# chess/board/board.py
+
+"""
+Module: `chess.board.board`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+Responsibilities: Contains squares pieces live in. Mapping `Square` to `Piece` with Coord
+Contains:
+ - `EntityOne`
+
+"""
+
 import random
 from typing import List, Optional, TYPE_CHECKING
 
@@ -18,14 +32,11 @@ if TYPE_CHECKING:
 @auto_id
 class Board:
     """
-    ChessBoard is responsible for managing the movement of ChessPieces on the chessboard. Squares and 
-    ChessPieces are data-holding objects referenced by a Coord. The class
-    - Maintain the relationship between a ChessPiece and Square.
-    - Performs bounds checking.. ChessBoard does not know directly about a ChessPiece. All
+    THe realm where game play happens. Provides mapping of `Square` to `Piece` with Coord.
+    Keeps track of pieces and the squares hey can occupy.
     
 
     Attributes:
-        _id (int): id of ChessBoard.
         _pieces (List[Piece]): pieces on the board
         _squares (List[List[Square]]): 8x8 array of Square objects representing the chess chessboard.
     """
@@ -37,7 +48,6 @@ class Board:
         Creates a Board instance
 
         Args:
-            board_id (int): Unique identifier for the ChessBoard.
             squares (List[List[Square]]): 2D list of Square objects representing the chess
 
         Raise:
@@ -154,7 +164,7 @@ class Board:
         Raises:
             HostageValidationException: if the hostage fails sanity checks
             PieceNotFoundException: if the hostage does not exist on the board
-            IncompleteBoardTransactionException: If hostage is still on the board after is was removed.
+            InconsistentBoardException: If hostage is still on the board after is was removed.
             
             BoardPieceRemovalFailedException wraps any preceding team_exception
         """

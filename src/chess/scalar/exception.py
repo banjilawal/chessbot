@@ -7,7 +7,7 @@ __all__ = [
     'NullScalarException',
     'InvalidScalarException',
     
-# === SCALAR BUILDER EXCEPTIONS ===
+# === SCALAR BUILD EXCEPTIONS ===
     'ScalarBuildFailed',
 
 # === SCALAR BOUNDS EXCEPTIONS ===
@@ -37,7 +37,7 @@ class InvalidScalarException(ScalarException, ValidationException):
     DEFAULT_MESSAGE = "Scalar validate failed."
 
 
-# === SCALAR BUILDER EXCEPTIONS ===
+# === SCALAR BUILD EXCEPTIONS ===
 class ScalarBuildFailed(ScalarException, BuilderException):
     """
     Indicates Scalar could not be built. Wraps and re-raises errors that occurred

@@ -15,13 +15,13 @@ __all__ = [
 class ResultException(ChessException):
     """Base class for all Result exceptions"""
     ERROR_CODE = "RESULT_ERROR"
-    DEFAULT_MESSAGE = "Result raised an err."
+    DEFAULT_MESSAGE = "Result raised an exception."
 
 
 class ResultConstructorException(ResultException):
     """Base class for all Result exceptions"""
     ERROR_CODE = "RESULT_CONSTRUCTOR_ERROR"
-    DEFAULT_MESSAGE = "Invalid constructor params raised an err."
+    DEFAULT_MESSAGE = "Invalid constructor params raised an exception."
 
 
 class EmptyResultConstructorException(ResultConstructorException):

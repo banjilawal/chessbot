@@ -1,4 +1,15 @@
-from chess.exception import ChessException, NullException, BuilderException, ValidationException
+# chess/board/exception.py
+
+"""
+Module: `chess.board.exception`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+Responsibilities: Holds exceptions organic to `Board` objects
+Contains: See the list of exception in the __alL__ list following
+"""
+
+from chess.system import ChessException, NullException, BuilderException, ValidationException
 
 __all__ = [
     'BoardException',
@@ -7,7 +18,7 @@ __all__ = [
     # === BOARD VALIDATION EXCEPTIONS ===
     'NullBoardException',
 
-    # === BOARD BUILDER EXCEPTIONS ===
+    # === BOARD BUILD EXCEPTIONS ===
     'BoardBuildFailedException',
     
     # === PIECE ADDITION/REMOVAL EXCEPTIONS ===
@@ -19,20 +30,23 @@ __all__ = [
     'FailedPieceRemovalRolledBackException',
 ]
 
+from chess.system import InconsistentCollectionException
+
+
 class BoardException(ChessException):
     """
     Super class of all exceptions a Board object raises. Do not use directly. Subclasses give details useful
     for debugging. This class exists primarily to allow catching all board exceptions
     """
     ERROR_CODE = "BOARD_ERROR"
-    DEFAULT_MESSAGE = "Board raised an err"
+    DEFAULT_MESSAGE = "Board raised an exception."
 
 class BoardRollBackException(BoardException):
     """
     Super class for exceptions that require a rollback to maintain board integrity.
     """
     ERROR_CODE = "BOARD_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Board raised an err. Transaction rollback performed."
+    DEFAULT_MESSAGE = "Board raised an exception. Transaction rollback performed."
 
 
 # === BOARD VALIDATION EXCEPTIONS ===
@@ -49,7 +63,7 @@ class InvalidBoardException(BoardException, ValidationException):
     ERROR_CODE = "BOARD_VALIDATION_ERROR"
     DEFAULT_MESSAGE = f"Board validation failed"
     
-# === BOARD BUILDER EXCEPTIONS ===
+# === BOARD BUILD EXCEPTIONS ===
 class BoardBuildFailedException(BoardException, BuilderException):
     """
     Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all
@@ -92,7 +106,7 @@ class FailedPieceRemovalRolledBackException(BoardRollBackException):
         "Could not remove a piece from the board. Transaction rollback performed."
     )
 
-
-class IncompleteBoardTransactionException(BoardException):
-    ERROR_CODE = "BOARD_TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "The board is an inconsistent state. Transaction failed."
+class InconsistentBoardException(BoardException, InconsistentCollectionException):
+    """Raised if a board fails any collection consistency checks"""
+    ERROR_CODE = "INCONSISTENT_BOARD_ERROR"
+    DEFAULT_MESSAGE = "The board is an inconsistent state. data might be corrupted."

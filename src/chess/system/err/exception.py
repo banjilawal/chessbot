@@ -68,16 +68,7 @@ class InconsistentCollectionException(InconsistencyException):
 # === NULL/EMPTY EXCEPTIONS ===
 class NullException(ChessException):
     """
-    Methods and classes that do not accept null parameters will raise a NullException.
-    Every class in the application should have a NullException. Giving each class a unique null
-    helps trace errors and failures.
-
-    Attributes:
-        message (str): A message describing the team_exception is required.
-
-        Static Fields:
-            ERROR_CODE (str): Error code useful in log tracing
-            DEFAULT_MESSAGE (Str): Short explanation of why the team_exception was raised
+    Raised if an entity, method, or operation requires not null but gets null instead.
     """
     ERROR_CODE = "NULL_ERROR"
     DEFAULT_MESSAGE = "cannot be null"
@@ -93,7 +84,7 @@ class NullNumberException(NullException):
 
 class NullStringException(NullException):
     """
-    Raised if search parameter is a null string
+    Raised if an entity, method, or operation requires a string but gets null instead.
     """
     ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
     DEFAULT_MESSAGE = f"Cannot search by a null string"

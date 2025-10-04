@@ -9,7 +9,7 @@ __all__ = [
     'NullTeamException',
     'InvalidTeamException',
 
-# === TEAM BUILDER EXCEPTIONS ===
+# === TEAM BUILD EXCEPTIONS ===
     'TeamBuilderException',
     'NullTeamSchemaException',
 
@@ -53,7 +53,7 @@ class TeamException(ChessException):
     exceptions.
     """
     ERROR_CODE = "TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team raised an err."
+    DEFAULT_MESSAGE = "Team raised an exception."
 
 class TeamRollBackException(TeamException):
     """
@@ -61,7 +61,7 @@ class TeamRollBackException(TeamException):
     """
     pass
     ERROR_CODE = "TEAM_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Team raised an err. Transaction rollback performed."
+    DEFAULT_MESSAGE = "Team raised an exception. Transaction rollback performed."
 
 # === TEAM VALIDATION EXCEPTIONS ===
 class NullTeamException(TeamException, NullException):
@@ -78,7 +78,7 @@ class InvalidTeamException(TeamException, ValidationException):
     DEFAULT_MESSAGE = f"Team validation failed"
     
 
-# === TEAM BUILDER EXCEPTIONS ===
+# === TEAM BUILD EXCEPTIONS ===
 class TeamBuilderException(TeamException, BuilderException):
     """
     Raised when TeamBuilder encounters an error while building a team. Exists primarily to
@@ -99,7 +99,7 @@ class NullTeamSchemaException(TeamException, NullException):
 class TeamRosterException(TeamException):
     """Raised for errors on team's roster"""
     ERROR_CODE = "TEAM_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Team roster raised an err"
+    DEFAULT_MESSAGE = "Team roster raised an exception."
 
 
 class AddTeamMemberException(TeamRosterException):
@@ -135,7 +135,7 @@ class ConflictingTeamAssignmentException(TeamRosterException):
 class TeamRosterRollBackException(TeamRosterException, RollbackException):
     """Raised for errors on team's roster that are raised after rollback."""
     ERROR_CODE = "TEAM_ROSTER_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Team roster raised an err. Transaction rollback performed."
+    DEFAULT_MESSAGE = "Team roster raised an exception. Transaction rollback performed."
 
 class AddTeamMemberRolledBackException(TeamRosterRollBackException):
     """
@@ -192,7 +192,7 @@ class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
 class TeamHostageListException(TeamException):
     """Raised on errors with team's hostage list"""
     ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
-    DEFAULT_MESSAGE = "Team hostage list raised an err"
+    DEFAULT_MESSAGE = "Team hostage list raised an exception."
 
 class InvalidFriendlyHostageException(TeamHostageListException):
     """Attempting to a friendly to the hostage list raises an err"""
@@ -226,7 +226,7 @@ class TeamHostageListRolledBackException(TeamHostageListException, RollbackExcep
     """
     ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
-        "Team hostage list raised an err. Transaction rollback performed."
+        "Team hostage list raised an exception. Transaction rollback performed."
     )
 
 class InvalidFriendlyHostageRolledBackException(TeamHostageListRolledBackException):

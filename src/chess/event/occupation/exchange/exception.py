@@ -11,7 +11,7 @@ __all__ = [
     'InvalidScanEventException',
     'NullScanEventException',
 
-    #=== SCAN_EVENT BUILDER EXCEPTIONS ===
+    #=== SCAN_EVENT BUILD EXCEPTIONS ===
     'ScanEventBuilderException',
     'ScanSubjectException',
 ]
@@ -40,7 +40,7 @@ class ScanTransactionException(TransactionException):
     the scan's lifecycle.
     """
     ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "ScanTransaction raised an err."
+    DEFAULT_MESSAGE = "ScanTransaction raised an exception."
 
 
 
@@ -70,7 +70,7 @@ class InvalidAttackEventException(AttackEventException, ValidationException):
     DEFAULT_MESSAGE = "AttackEvent failed validate"
 
 
-#=== ATTACK_EVENT BUILDER EXCEPTIONS ===
+#=== ATTACK_EVENT BUILD EXCEPTIONS ===
 class AttackEventBuilderException(AttackEventException, BuilderException):
     """
     Indicates Coord could not be built. Wraps and re-raises errors that occurred
@@ -80,7 +80,7 @@ class AttackEventBuilderException(AttackEventException, BuilderException):
     DEFAULT_MESSAGE = "AttackEventBuilder failed to create a AttackEvent"
 
 
-#=== ATTACK_EVENT BUILDER EXCEPTIONS ===
+#=== ATTACK_EVENT BUILD EXCEPTIONS ===
 class UnexpectedNullEnemyException(AttackEventException):
     DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
     DEFAULT_MESSAGE = "Target actor is unexpectedly null during capture; this should not happen."

@@ -14,7 +14,7 @@ class BuilderException(ChessException):
     entity builds should be wrapped in the BuilderException corresponding to the Builder's name.
     """
     ERROR_CODE = "BUILDER_ERROR"
-    DEFAULT_MESSAGE = "Builder  raised an err"
+    DEFAULT_MESSAGE = "Builder  raised an exception."
 
 class NullBuilderException(BuilderException, NullException):
     """

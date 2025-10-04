@@ -1,3 +1,15 @@
+# chess/board/search.py
+
+"""
+Module: `chess.board.search`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+Contains: BoardSearch
+Responsibilities: Interface for complex search operations with validation
+"""
+
 from chess.board import Board
 from chess.square import Square
 from chess.coord import Coord, CoordValidator

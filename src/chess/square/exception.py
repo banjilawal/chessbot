@@ -7,7 +7,7 @@ __all__ = [
     'NullSquareException',
     'InvalidSquareException',
 
-# === SQUARE BUILDER EXCEPTIONS ===
+# === SQUARE BUILD EXCEPTIONS ===
     'SquareBuildFailed'
 ]
 
@@ -18,7 +18,7 @@ class SquareException(ChessException):
     square exceptions.
     """
     ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square raised an err."
+    DEFAULT_MESSAGE = "Square raised an exception."
 
 
 # === SQUARE VALIDATION EXCEPTIONS ===
@@ -36,7 +36,7 @@ class InvalidSquareException(SquareException, ValidationException):
     DEFAULT_MESSAGE = "Square validate failed"
 
     
-# === SQUARE BUILDER EXCEPTIONS ===
+# === SQUARE BUILD EXCEPTIONS ===
 class SquareBuildFailed(SquareException, BuilderException):
     """
     Raised when SquareBuilder encounters an error building a square. Exists primarily

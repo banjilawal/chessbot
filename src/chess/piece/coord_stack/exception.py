@@ -15,7 +15,7 @@ class CoordStackException(ChessException):
     Super class for exceptions raised by CoordStack objects
     """
     ERROR_CODE = "COORD_STACK_ERROR"
-    DEFAULT_MESSAGE = "CoordStack raised an err"
+    DEFAULT_MESSAGE = "CoordStack raised an exception."
 
 
 class DoubleCoordPushException(CoordStackException):

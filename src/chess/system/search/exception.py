@@ -18,7 +18,7 @@ class SearchException(ChessException):
         message (str): Human-readable default message.
     """
     DEFAULT_CODE = "SEARCH_ERROR"
-    DEFAULT_MESSAGE = "Search raised an err."
+    DEFAULT_MESSAGE = "Search raised an exception."
 
 
 class SearchParamException(SearchException):

@@ -12,7 +12,7 @@ __all__ = [
     'InvalidScanEventException',
     'NullScanEventException',
 
-#=== SCAN_EVENT BUILDER EXCEPTIONS ===
+#=== SCAN_EVENT BUILD EXCEPTIONS ===
     'ScanEventBuilderException',
     'ScanSubjectException',
 ]
@@ -24,7 +24,7 @@ class ScanTransactionException(TransactionException):
     the scan's lifecycle.
     """
     ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "ScanTransaction raised an err."
+    DEFAULT_MESSAGE = "ScanTransaction raised an exception."
 
 class NullScanTransactionException(NullTransactionException):
     """
@@ -57,7 +57,7 @@ class InvalidScanEventException(ScanEventException, ValidationException):
     DEFAULT_MESSAGE = "ScanEvent failed validate"
 
 
-#=== SCAN_EVENT BUILDER EXCEPTIONS ===
+#=== SCAN_EVENT BUILD EXCEPTIONS ===
 class ScanEventBuilderException(ScanEventException, BuilderException):
     """Raised when a ScanEventBuilder fails to build a ScanEvent."""
     ERROR_CODE = "SCAN_EVENT_BUILD_FAILED_ERROR"

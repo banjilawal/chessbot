@@ -57,7 +57,7 @@ __all__ = [
     'CircularOccupationException',
     'TargetSquareMismatchException',
 
-    # === OccupationEvent BUILDER EXCEPTIONS ===
+    # === OccupationEvent BUILD EXCEPTIONS ===
     'OccupationEventBuilderException'
     
     
@@ -99,7 +99,7 @@ class ActorSquareNotFoundException(OccupationEventException):
     )
 
 
-# === OccupationEvent BUILDER EXCEPTIONS ===
+# === OccupationEvent BUILD EXCEPTIONS ===
 class OccupationEventBuilderException(OccupationEventException, BuilderException):
     ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "OccupationEventBuilder failed to create an OccupationEvent."
