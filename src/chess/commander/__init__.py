@@ -38,6 +38,9 @@ ___
 
 from .exception import *
 from .commander import *
+from .human import Human
+from .bot import Bot
+from .history import CommandHistory
 
 from .history import CommandHistory
 from .validator import CommanderValidator
@@ -49,6 +52,9 @@ __package_name__ = 'chess.commander'
 
 __all__ = [
     # Core classes
+    'Bot',
+    'Human',
+    'Commander',
     'CommandHistory',
     'CommanderValidator',
     'CommanderBuilder',

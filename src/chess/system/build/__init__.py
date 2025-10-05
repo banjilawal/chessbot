@@ -18,7 +18,7 @@ clean.
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
     - `Builder`: The base class for `Build` objects.
-    - All exceptions from `err` package.
+    - All exceptions from `exception` package.
 
 # SUB-PACKAGES
     - `.exception`: Defines all custom exceptions for occupation operations.

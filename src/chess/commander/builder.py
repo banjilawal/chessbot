@@ -4,10 +4,13 @@
 Module: `chess.commander.builder`
 Author: Banji Lawal
 Created: 2025-10-03
+Updated: 2025-10-04
 version: 1.0.0
 
-Contains: CommanderBuilder
 Responsibilities: Create concrete subclasses of `Commander`
+
+Contains:
+    * `CommanderBuilder`
 """
 
 from typing import Optional

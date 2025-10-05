@@ -3,49 +3,42 @@ from typing import Optional, cast, TYPE_CHECKING
 
 from chess.coord import CoordValidator
 from assurance import IdValidator, NameValidator
+from chess.system import auto_id
 from chess.team import Team
 from chess.piece import Piece
 from chess.commander import CommandHistory
 
-
-
 if TYPE_CHECKING:
     pass
 
-
-__all__ = [
-    'Commander',
-    'Human',
-    'Bot'
-]
+@auto_id
 class Commander(ABC):
-    _id: int
     _name: str
     _teams: CommandHistory
     _current_team: Optional['Team']
 
 
-    def __init__(self, commander_id: int, name: str):
+    def __init__(self, name: str):
 
-        id_validation = IdValidator.validate(commander_id)
-        if not id_validation.is_success():
-            raise id_validation.exception
+        # id_validation = IdValidator.validate(commander_id)
+        # if not id_validation.is_success():
+        #     raise id_validation.exception
 
         name_validation = NameValidator.validate(name)
         if not name_validation.is_success():
             raise name_validation.exception
 
-        self._id = cast(int, id_validation.payload)
+        # self._id = cast(int, id_validation.payload)
         self._name = cast(str, name_validation.payload)
         self._teams = CommandHistory()
 
         self._current_team = self._teams.current_team
-
-
-    @property
-    def id(self) -> int:
-        return self._id
-
+    #
+    #
+    # @property
+    # def id(self) -> int:
+    #     return self._id
+    #
 
     @property
     def name(self) -> str:
@@ -128,40 +121,3 @@ class Commander(ABC):
 
         except (NullPieceException, ConflictingTeamException) as e:
             raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
-
-
-class Human(Commander):
-
-    def __init__(self, person_id: int, name: str):
-        super().__init__(person_id, name)
-
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-        if isinstance(other, Human):
-            return self.id == other.id
-        return False
-
-
-class Bot(Commander):
-    _engine: DecisionEngine
-
-    def __init__(self, bot_id: int,name: str,engine: DecisionEngine):
-        super().__init__(bot_id, name)
-        self._engine = engine
-
-    @property
-    def engine(self) -> DecisionEngine:
-        return self._engine
-
-
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-
-        if isinstance(other, Bot):
-            return self._id == other.id
-        return False
-
-    def __str__(self):
-        return f"{super().__str__()} engine:{self._engine.__class__.__name__.title()}"

@@ -14,7 +14,7 @@ to move the `Team` members on the `Board`
 This package exposes core classes and all exceptions from its sub-modules:
     - `Arena`
     - `ArenaBuilder`
-    - All exceptions from `err` sub-packages.
+    - All exceptions from `exception` sub-packages.
 
 # SUB-PACKAGES
     - `.exception`: Defines all custom exceptions for `Arena` operations.

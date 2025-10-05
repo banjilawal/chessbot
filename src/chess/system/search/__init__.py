@@ -7,14 +7,13 @@ Created: 2025-10-03
 version: 1.0.0
 
 # PURPOSE
-Super class for `Search` objects and their
-
+Super class for `Search` objects and their components.
 
  # EXPORTS
     - `Search`: The base class for `Search` objects.
     - `SearchResult`: Data class returned by `Search` instances
     - `SearchContext`: Abstract super class for `SearchContext` objects.
-    - All exceptions in the `err` subpackage
+    - All exceptions in the `exception` subpackage
 
 # SUB-PACKAGES
     - `.exception`: Defines all custom exceptions for occupation operations.
