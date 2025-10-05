@@ -116,15 +116,15 @@ from its use or inability to use it.
 
 ## Who this Document is For
 <a name="intended-audience"></a>
+
 ### Intended Audience
 * Developers who want to use the `ChesBo` API
 * People interested in seeing all the cool shit you can do with `Python`.
 * People who would like to fund further development on this project.
 
 <a name="scope"></a>
-### Scope
-The manual
-1. Covers the purpose of ChessBot.
+### What this Manual Covers
+1. The purpose of ChessBot.
 2. How we can communicate the purpose by things it can do (features).
 3. Howe we show that it does what it says it does (functional and nonfunctional requirements).
 4. Design principles that will guide how the parts of the software will be put together.
@@ -362,7 +362,29 @@ A user can play on any platform.
 
 <a name="design-principles)
 ## Design Principles
-The fundamental technical requirement to satisfy user contracts is high speed, high reliabilty, low data usage and 
+The fundamental technical requirement to satisfy user contracts are
+* High speed
+* High reliability
+* Low data usage
+* Low bugs 
+* No crashes.
+* Correctness
+
+#### Actions Which Produce the Technical Requirement
+1. **Separating Concerns:** Easier bug tracking isolating components to speed up development.
+2. **Low Coupling:** Components that depend on each other for satisfying their separated concerns must be
+  loosely coupled.
+3. **High Cohesion:** Between components that are doing related things or fulfilling a task.
+4. **Single Responsibility:** There must be one source of truth for an operation or data source.
+
+#### How the Development Actions Help Deliver a Product that Meets Requirement
+* They make it easier to ensure effectiveness of each component with metrics.
+* They make it easier to ensure reliability and consistency with unit tests.
+
+### About Unit Tests
+Every class will be unit tested on its fields and methods.
+
+
 low bugs. These are easier to meet when an application is modular. And there is high cohesion within modules, low
 coupling within and between modules.
 

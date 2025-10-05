@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/chessbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessbot_api_architecture_guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/chessbot_api_architecture_guide.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/data-dictionary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/__init__.template" beforeDir="false" afterPath="$PROJECT_DIR$/docs/__init__.template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/class_module.template." beforeDir="false" afterPath="$PROJECT_DIR$/docs/class_module.template." afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/exception_module.template" beforeDir="false" afterPath="$PROJECT_DIR$/docs/exception_module.template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validators/hostage_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/hostage_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/op_resplver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/op_resplver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/id_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/id_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/euclid_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/euclid_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/multiplication_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/multiplication_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/scalar_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/scalar_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -550,6 +530,7 @@
       <workItem from="1759600575414" duration="32241000" />
       <workItem from="1759642520716" duration="10747000" />
       <workItem from="1759669966022" duration="3485000" />
+      <workItem from="1759678807534" duration="4513000" />
     </task>
     <servers />
   </component>
