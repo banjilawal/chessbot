@@ -8,9 +8,9 @@ exceptions in the project should inherit. This allows for a clean and
 consistent way to handle exceptions across different modules and layers
 of the application.
 
-The package includes specific validation exceptions for common data types,
-such as `RankValidationException` and `IdValidationException`, promoting
-predictable error handling and clear communication of validation failures.
+The package includes specific validate exceptions for system data types,
+such as `RankValidationException` and `InvalidIdException`, promoting
+predictable error handling and clear communication of validate failures.
 """
 
 
@@ -18,8 +18,7 @@ import logging
 
 from .validators import *
 
-from .throw_helper import ThrowHelper
-from .error_handler import ErrorHandler
+from chess.system.err.handler import ErrorHandler
 from .deployment_mode import Deployment
 from .transaction_report import TransactionReport
 
@@ -36,7 +35,7 @@ __package_name__ = "assurance"
 # Export control - only what belongs in public API
 __all__ = [
     # Core classes
-    "ThrowHelper",
+    "RaiserLogger",
     "ErrorHandler",
     "Deployment",
     "TransactionReport",

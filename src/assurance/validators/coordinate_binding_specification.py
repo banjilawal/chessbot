@@ -1,7 +1,7 @@
 from typing import Generic, cast
 
 from chess.piece.validator import ChessPieceValidator
-from chess.common.validator import Validator
+from chess.system.validate.validator import Validator
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from chess.board.coordinate_bind import CoordinateBinding
 
@@ -40,7 +40,7 @@ class CoordinateSBindingValidator(Validator):
             ColumnOutOfBoundsException: If coord.column is outside the range
                 (0, COLUMN_SIZE - 1) inclusive
 .
-            CoordValidationException: Wraps any
+            InvalidCoordException: Wraps any
                 (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
 
         """

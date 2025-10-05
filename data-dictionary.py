@@ -297,7 +297,7 @@ class CoordinateStack(BaseModel):
 
 class Rank(BaseModel):
     """
-    An immutable data model for a ChessPiece's validation, defining its identity.
+    An immutable data model for a ChessPiece's validate, defining its identity.
     """
     rank_name: str = Field(...)
     capture_value: int = Field(..., ge=0)

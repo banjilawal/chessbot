@@ -1,6 +1,6 @@
 import unittest
 
-from chess.common.config import ROW_SIZE, COLUMN_SIZE
+from chess.system.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import ColumnBelowBoundsException
 from chess.exception.coord_exception import RowBelowBoundsException
 from chess.coord.coord_exception import NullCoordException

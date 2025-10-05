@@ -1,6 +1,6 @@
 import unittest
 
-from chess.common.config import BOARD_DIMENSION
+from chess.system.config import BOARD_DIMENSION
 from chess.exception.null.number_null_exception import NullNumberException
 
 from chess.exception.vector.scalar import ScalarBelowLowerBoundException, ScalarAboveUpperBoundException

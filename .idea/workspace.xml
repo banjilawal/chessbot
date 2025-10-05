@@ -5,18 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/chessbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/event/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/event/occupation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/occupation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/event/occupation/exchange/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/event/occupation/exchange/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/occupation/exchange/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/transaction/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/transaction/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessbot_api_architecture_guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/chessbot_api_architecture_guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/data-dictionary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/__init__.template" beforeDir="false" afterPath="$PROJECT_DIR$/docs/__init__.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/class_module.template." beforeDir="false" afterPath="$PROJECT_DIR$/docs/class_module.template." afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/exception_module.template" beforeDir="false" afterPath="$PROJECT_DIR$/docs/exception_module.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/hostage_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validators/hostage_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/op_resplver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/op_resplver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/coord_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/id_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/id_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/name_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/coord_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/euclid_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/euclid_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/multiplication_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/multiplication_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/scalar_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/scalar_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/geometry/vector_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,216 +65,216 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.Python tests for unit.assurance_test.result.event.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_only_succeeds.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_event_null_exception_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raise_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.result_tes.Result.test_payload_and_exception_conflict_raises.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.result.result_tes.ResultTest.test_construct_result_with_params_rasies_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_above_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_below_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_column_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_row_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_row_above_or_equals_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_validation_payload_equals_input_param.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_cast_to_int_failure_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_negative_id_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_null_id_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_valid_id_returns_result.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_blank_name_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_cast_to_str_failure_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_short_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_null_name_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_cast_to_owner_failure_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_null_owner_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_id_validation_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_name_validation_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_payload_equals_valid_owner.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_cast_to_side_failure_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_null_side_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_failed_competitor_validation_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_null_profile_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_competitor_validation_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_id_validation_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_payload_equals_valid_side.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_id_validation_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_nme_validation_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_failed_coordinate_validation_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_payload_equals_valid_square.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square.SquareUnitTest.test_square_with_null_id_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_constructed_if_all_validations_pass.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_failed_coordinate_validation_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_id.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_name.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_blank_name_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_id_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_name_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.board.square_test.test_set_occupant_raises_error_on_not_piece.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_above_upper_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_below_lower_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_in_bounds.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_column_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_row_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_above_upper_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_below_lower_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_in_bounds.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_delta_row_result_out_of_bounds_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_multiplication_factor_out_of_bounds_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_factor_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_null_multiplication_factor_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_zero_multiplication_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_below_bounds_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_less_or_equal_to_knight_step_size.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_value_greater_than_knight_steps_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_above_bounds_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_below_bounds_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_less_or_equal_to_knight_step_size.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_column_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_row_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coordinate.coordinate_stack_test.CoordinateStackTest.test_pushing_coordinate_updates_current_coordinate.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_result_of_bounds_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_scalar_out_of_bounds_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_null_multiplicaton_scalar_out_of_bounds_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.test_multiplication_result_of_bounds_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_null_value_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_valid_value_sets_correctly.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_greater_or_equal_board_dimension_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_less_than_lower_bound_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_constructed_if_params_are_valid.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_id_validation_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_name_validation_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_constructed_if_params_are_valid.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_failed_name_validation_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_constructed_if_params_are_valid.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_id_validation_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_name_validation_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_invalid_destination_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_side_is_controller_current_side.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_duplicate_team_push_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_if_stack_Is_empty_then_current_team_is_null.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_internal_data_structure_not_null.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_false_when_stack_has_items.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pop_empty_stack_raises_exception.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_increments_size.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_updates_current_team.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_constructed_if_params_are_valid.executor": "Run",
-    "Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_failed_id_validation_raises_error.executor": "Run",
-    "Python tests.Python tests in bishop_test.py.executor": "Run",
-    "Python tests.Python tests in cartesian_distance_test.py.executor": "Run",
-    "Python tests.Python tests in competitor_test.py.executor": "Run",
-    "Python tests.Python tests in coord_stack_test.py.executor": "Run",
-    "Python tests.Python tests in coord_test.py.executor": "Run",
-    "Python tests.Python tests in coordinate_stack_test.py.executor": "Run",
-    "Python tests.Python tests in coordinate_test.py.executor": "Run",
-    "Python tests.Python tests in event_test.py.executor": "Run",
-    "Python tests.Python tests in id_test.py (1).executor": "Run",
-    "Python tests.Python tests in id_test.py.executor": "Run",
-    "Python tests.Python tests in multiplication_test.py.executor": "Run",
-    "Python tests.Python tests in name_test.py.executor": "Run",
-    "Python tests.Python tests in offset_test.py.executor": "Run",
-    "Python tests.Python tests in owner_test.py (1).executor": "Run",
-    "Python tests.Python tests in owner_test.py.executor": "Run",
-    "Python tests.Python tests in result_tes.py.executor": "Run",
-    "Python tests.Python tests in scalar_test.py.executor": "Run",
-    "Python tests.Python tests in side_test.py.executor": "Run",
-    "Python tests.Python tests in square_test.py (1).executor": "Run",
-    "Python tests.Python tests in square_test.py.executor": "Run",
-    "Python tests.Python tests in stack_test.py.executor": "Run",
-    "Python tests.Python tests in vector_test.py.executor": "Run",
-    "Python.arena_builder.executor": "Run",
-    "Python.board_controller_builder.executor": "Run",
-    "Python.build_coordinate.executor": "Run",
-    "Python.castle.executor": "Run",
-    "Python.chess_board_builder (1).executor": "Run",
-    "Python.chess_board_builder.executor": "Run",
-    "Python.chess_piece_builder.executor": "Run",
-    "Python.competitor.executor": "Run",
-    "Python.coord.executor": "Run",
-    "Python.coord_stack.executor": "Run",
-    "Python.coordinate_builder.executor": "Run",
-    "Python.coordinate_specification.executor": "Run",
-    "Python.coordinate_stack.executor": "Run",
-    "Python.coordinate_stack_builder.executor": "Run",
-    "Python.coordinate_stack_specification.executor": "Run",
-    "Python.distance_magnitude_builder.executor": "Run",
-    "Python.driver.executor": "Run",
-    "Python.find_missiing_package_init.executor": "Run",
-    "Python.game.executor": "Run",
-    "Python.id.executor": "Run",
-    "Python.model (1).executor": "Debug",
-    "Python.model.executor": "Run",
-    "Python.motion_controller_builder.executor": "Run",
-    "Python.motion_controller_factory (1).executor": "Run",
-    "Python.motion_controller_factory.executor": "Run",
-    "Python.name.executor": "ConcurrencyExecutor",
-    "Python.offset.executor": "Run",
-    "Python.owner_builder.executor": "Run",
-    "Python.owner_factory.executor": "Run",
-    "Python.path.executor": "Run",
-    "Python.piece (1).executor": "Run",
-    "Python.piece.executor": "Run",
-    "Python.placement.executor": "Run",
-    "Python.quadrant.executor": "Run",
-    "Python.rank.executor": "Run",
-    "Python.rank_builder.executor": "Run",
-    "Python.rank_factory.executor": "Run",
-    "Python.run_game.executor": "Run",
-    "Python.scalar.executor": "Run",
-    "Python.side.executor": "Run",
-    "Python.square (1).executor": "Run",
-    "Python.square.executor": "Run",
-    "Python.square_iterator.executor": "Run",
-    "Python.square_repo_builder.executor": "Run",
-    "Python.square_service_builder.executor": "Run",
-    "Python.team.executor": "Run",
-    "Python.team_builder.executor": "Run",
-    "Python.team_factory (1).executor": "Run",
-    "Python.team_factory.executor": "Run",
-    "Python.validation_exception.executor": "Run",
-    "Python.vector.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/chess/event/occupation/exchange",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_only_succeeds.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_event_null_exception_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raise_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.result_tes.Result.test_payload_and_exception_conflict_raises.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.result.result_tes.ResultTest.test_construct_result_with_params_rasies_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_above_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_below_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_column_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_row_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_row_above_or_equals_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_validation_payload_equals_input_param.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_cast_to_int_failure_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_negative_id_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_null_id_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_valid_id_returns_result.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_blank_name_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_cast_to_str_failure_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_short_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_null_name_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_cast_to_owner_failure_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_null_owner_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_id_validation_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_name_validation_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_payload_equals_valid_owner.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_cast_to_side_failure_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_null_side_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_failed_competitor_validation_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_null_profile_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_competitor_validation_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_id_validation_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_payload_equals_valid_side.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_nme_validation_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_failed_coordinate_validation_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_payload_equals_valid_square.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square.SquareUnitTest.test_square_with_null_id_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_constructed_if_all_validations_pass.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_failed_coordinate_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_id.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_name.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_blank_name_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_id_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_name_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.board.square_test.test_set_occupant_raises_error_on_not_piece.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_above_upper_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_below_lower_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_in_bounds.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_column_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_row_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_above_upper_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_below_lower_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_in_bounds.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_delta_row_result_out_of_bounds_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_multiplication_factor_out_of_bounds_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_factor_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_null_multiplication_factor_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_zero_multiplication_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_below_bounds_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_less_or_equal_to_knight_step_size.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_value_greater_than_knight_steps_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_above_bounds_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_below_bounds_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_less_or_equal_to_knight_step_size.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_column_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_row_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.coordinate_stack_test.CoordinateStackTest.test_pushing_coordinate_updates_current_coordinate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_result_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_scalar_out_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_null_multiplicaton_scalar_out_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.test_multiplication_result_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_null_value_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_valid_value_sets_correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_greater_or_equal_board_dimension_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_less_than_lower_bound_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_name_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_failed_name_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_name_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_invalid_destination_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_side_is_controller_current_side.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_duplicate_team_push_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_if_stack_Is_empty_then_current_team_is_null.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_internal_data_structure_not_null.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_false_when_stack_has_items.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pop_empty_stack_raises_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_increments_size.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_updates_current_team.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in bishop_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in cartesian_distance_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in competitor_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in coord_stack_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in coord_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in coordinate_stack_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in coordinate_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in event_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in id_test.py (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in id_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in multiplication_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in name_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in offset_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in owner_test.py (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in owner_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in result_tes.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in scalar_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in side_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in square_test.py (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in square_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in stack_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in vector_test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.arena_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.board_controller_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.build_coordinate.executor&quot;: &quot;Run&quot;,
+    &quot;Python.castle.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chess_board_builder (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chess_board_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chess_piece_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.competitor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coord.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coord_stack.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coordinate_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coordinate_specification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coordinate_stack.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coordinate_stack_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.coordinate_stack_specification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.distance_magnitude_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.driver.executor&quot;: &quot;Run&quot;,
+    &quot;Python.find_missiing_package_init.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.id.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python.model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.motion_controller_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.motion_controller_factory (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.motion_controller_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.name.executor&quot;: &quot;ConcurrencyExecutor&quot;,
+    &quot;Python.offset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.owner_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.owner_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.path.executor&quot;: &quot;Run&quot;,
+    &quot;Python.piece (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.piece.executor&quot;: &quot;Run&quot;,
+    &quot;Python.placement.executor&quot;: &quot;Run&quot;,
+    &quot;Python.quadrant.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rank.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rank_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rank_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scalar.executor&quot;: &quot;Run&quot;,
+    &quot;Python.side.executor&quot;: &quot;Run&quot;,
+    &quot;Python.square (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.square.executor&quot;: &quot;Run&quot;,
+    &quot;Python.square_iterator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.square_repo_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.square_service_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.team.executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_builder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_factory (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.team_factory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.validation_exception.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vector.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/chess/commander&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings sdk-home="$USER_HOME$/AppData/Local/Programs/Python/Python313/python.exe">
@@ -280,18 +290,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\exchange" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\actor" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece\discovery" />
+      <recent name="$PROJECT_DIR$/src/chess/commander" />
+      <recent name="$PROJECT_DIR$/src/chess/arena" />
+      <recent name="$PROJECT_DIR$/src/chess/event" />
+      <recent name="$PROJECT_DIR$/src/chess/system/validation" />
+      <recent name="$PROJECT_DIR$/src/chess/team" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\common\result" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\actor" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\piece\discovery" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\chess\event\occupation\attack" />
+      <recent name="$PROJECT_DIR$/src/chess/system/context" />
+      <recent name="$PROJECT_DIR$/src/chess/system/err" />
+      <recent name="$PROJECT_DIR$/src/chess/system/search" />
+      <recent name="$PROJECT_DIR$/src/chess/system/validation" />
+      <recent name="$PROJECT_DIR$/src/chess/system/build" />
     </key>
   </component>
   <component name="RunManager" selected="Python.piece (1)">
@@ -455,8 +465,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.428" />
+        <option value="bundled-python-sdk-80e8e15d2b92-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.428" />
       </set>
     </attachedChunks>
   </component>
@@ -532,11 +542,30 @@
       <workItem from="1759167128495" duration="23286000" />
       <workItem from="1759337650798" duration="16049000" />
       <workItem from="1759451820835" duration="2961000" />
+      <workItem from="1759475587952" duration="1141000" />
+      <workItem from="1759478760303" duration="7786000" />
+      <workItem from="1759495470281" duration="5188000" />
+      <workItem from="1759513041398" duration="45570000" />
+      <workItem from="1759596000172" duration="7000" />
+      <workItem from="1759600575414" duration="32241000" />
+      <workItem from="1759642520716" duration="10747000" />
+      <workItem from="1759669966022" duration="3485000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -544,11 +573,6 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/config/logging_setup.py</url>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/chess/event/__init__.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

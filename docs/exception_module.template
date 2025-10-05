@@ -5,8 +5,10 @@ Module: `exception.module.path`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
-Responsibilities: Holds exceptions organic to `Board` objects
-Contains: See the list of exception in the __alL__ list following
+Responsibilities: Holds exceptions organic to `<Class>` objects
+
+Contains:
+See the list of exception in the `__alL__` list following
 """
 
 __all__ = [
@@ -28,8 +30,8 @@ __all__ = [
 
 class ClassException(ChessException):
     """
-    Super class exceptions Class object raises organically. Do not use directly. Subclasses give
-    details useful for debugging. ClassException exists primarily to allow catching all class
+    Super class of exceptions organic to `<Class>` objects. DO NOT USE DIRECTLY. Subclasses give
+    details useful for debugging. `<ClassException>` exists primarily to allow catching all `<Class>`
     exceptions.
     """
     ERROR_CODE = "TEAM_ERROR"
@@ -54,6 +56,7 @@ class ClassInconsistencyException(ClassException, InconsistencyException):
     ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
     DEFAULT_MESSAGE = "A data inconsistency was detected"
 
+    # === COLLECTION_CLASS EXCEPTONS ===
 class InconsistentCollectionException(InconsistencyException):
     """
     Raised if a collection's state is inconsistent or its data corrupted
@@ -66,8 +69,8 @@ class InconsistentCollectionException(InconsistencyException):
 # === CLASS BUILD EXCEPTIONS ===
 class ClassFailedBuildException(ClassName, FailedBuildException):
     """
-    Raised when ClassBuilder encounters an error building a class_name. Exists primarily to
-    catch all exceptions raised creating a new class_name.
+    Raised when ArenaBuilder crashed while building a new arena. Exists
+    primarily to catch all exceptions raised creating arenas.
     """
     ERROR_CODE = "BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = " build failed."

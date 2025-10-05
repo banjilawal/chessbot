@@ -3,7 +3,7 @@ from unittest.mock import create_autospec
 
 from chess.geometry.exception.coord import CoordValidationException
 from chess.coord import CoordValidator
-from chess.common.config import ROW_SIZE, COLUMN_SIZE
+from chess.system.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import (
     RowBelowBoundsException,
     RowAboveBoundsException,
