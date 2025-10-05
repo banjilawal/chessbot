@@ -7,14 +7,15 @@ Created: 2025-10-03
 version: 1.0.0
 
 # PURPOSE
-Defines standardized result objects for operations within the chess application.
-Objects representing outcomes of operations.
+Interface for data-holding objects which represent outcome of operations that produce one of two
+results only.
+    * Success: A payload is returned
+    * Failure: An exception is raised
 
-## CORE CLASSES
-    - `Result`: Base class for operation results.
-    - `SearchResult`: Specialized result for search operations.
-    - `BuildResult`: Specialized result for build operations.
-    - `TransactionResult`: Specialized result for transaction operations.
+# EXPORTS
+This package exposes core classes and all exceptions from its sub-modules:
+    - `Result`: Abstract super class.
+    - All exceptions from `exception` package.
 
 ### USAGE EXAMPLES
 These examples show recommended workflows with `Result` and `BuildResult`.

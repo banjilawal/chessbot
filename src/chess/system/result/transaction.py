@@ -1,3 +1,28 @@
+# src/chess/event/result.py
+
+"""
+Module: `chess.event.result`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+Responsibilities: <SENTENCE_ABOUT_RESPONSIBILITIES>
+
+Contains:
+ * `EntityOne`
+"""
+
+class EntityOne:
+    """
+    <WHAT_CLASS_DOES>.
+
+    Attributes: [
+        <No attributes. Implementors declare their own.>
+    OR
+        * `_attribute` (`data_type`): <sentence_if_necessary>
+    ]
+    """
+
 from typing import Optional
 
 from chess.system import Result

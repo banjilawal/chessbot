@@ -1,3 +1,18 @@
+# src/chess/system/result.py
+
+"""
+Module: `chess.system.result.result`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+Responsibilities: Interface for operation results that can have either a
+    data payload or an exception only.
+
+Contains:
+ * `Result`
+"""
+
 
 from typing import Optional, TypeVar, Generic
 
@@ -10,22 +25,14 @@ __all__ = ['Result']
 
 class Result(Generic[T]):
     """
-    A Result object encapsulates the outcome of methods and operations that return an object. Different from
-    TransactionResult which assures an existing object's state changed correctly without causing inconsistencies.
-
-    USAGE:
-        Result is used with
-        - Validation of existing objects.
-        - Objects returned by accessors and query methods.
-        - Operations that return an object, but may fail due to business logic or other reasons.
-        - Methods that may fail due to external factors (e.g., network issues, file I
+    Abstract super class  for data-holding objects which represent outcome of
+    operations that produce one of two results only.
+        * Success: A payload is returned
+        * Failure: An exception is raised
 
     Attributes:
-        _payload (Optional[T]): The payload of the result, if successful.
-        _exception (Optional[Exception]): The error of the result, if failed.
-
-    Methods:
-        is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
+        `_payload` (`Optional`[`T`]): The payload of the result, if the operation called.
+        `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
    """
 
     _payload: Optional[T]
