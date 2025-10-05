@@ -10,6 +10,9 @@ version: 1.0.0
 Contains implementations of optimization algorithms that search the graph of pieces on
 the current `Board` to find the best move.
 
+ NOTES:
+   Reviewinng what is going to happen with graohing the board and fin the best path there will just be one DecisionEngine
+   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for a Bot.
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:

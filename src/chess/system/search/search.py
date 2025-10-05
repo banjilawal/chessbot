@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: AWT implement by entities "owning" relationships for unified
+ Provides: AWT implement by entities "owning" relationships for unified
   search by collection attributes with validated params.
 
 Contains:

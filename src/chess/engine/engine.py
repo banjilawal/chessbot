@@ -1,3 +1,25 @@
+# chess/engine/engine.py
+
+"""
+Module: `chess.engine.engine`
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+Provides:
+Interface to implement pluggable optimization algorithms during a turn or the duration of the game.
+
+Contains:
+ * `DecisionEngine`
+
+
+ NOTES:
+   Reviewinng what is going to happen with graohing the board and fin the best path there will just be one DecisionEngine
+   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for a Bot.
+"""
+
+
+
 from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING
 
@@ -8,6 +30,12 @@ from chess.coord import Coord
 
 
 class DecisionEngine(ABC):
+  """
+  Interface implemented by selectors of optimization engines for `BotCommander`.
+
+  Attributes:
+  No attributes. Implementors declare their own.
+  """
   _id: int
   _max_capture_value: int
   _board_analyzer: 'BoardAnalyzer'

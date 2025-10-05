@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
-Responsibilities: Create `Board` instances
+ Provides: Create `Board` instances
 
 Contains:
   * `BoardBuilder`

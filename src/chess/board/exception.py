@@ -5,7 +5,7 @@ Module: `chess.board.exception`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
-Responsibilities: Holds exceptions organic to `Board` objects
+ Provides: Holds exceptions organic to `Board` objects
 
 Contains:
 See the list of exception in the __alL__ list following

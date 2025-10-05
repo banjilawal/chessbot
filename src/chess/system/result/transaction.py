@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: <SENTENCE_ABOUT_RESPONSIBILITIES>
+ Provides: <SENTENCE_ABOUT_RESPONSIBILITIES>
 
 Contains:
  * `EntityOne`

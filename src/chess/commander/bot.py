@@ -6,19 +6,18 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: Automated player that uses a `DecisionEngine` for picking optimal
+ Provides: Automated player that uses a `DecisionEngine` for picking optimal
   move during a turn.
 
 Contains:
  * `Bot`
 """
 
-from abc import ABC
-from typing import Optional, cast, TYPE_CHECKING
+
 
 from chess.system import auto_id
 from chess.commander import Commander
-
+from chess.engine import DecisionEngine
 
 @auto_id
 class Bot(Commander):
@@ -33,8 +32,8 @@ class Bot(Commander):
 
   _engine: DecisionEngine
 
-  def __init__(self, bot_id: int,name: str,engine: DecisionEngine):
-    super().__init__(bot_id, name)
+  def __init__(self, name: str,engine: DecisionEngine):
+    super().__init__(name)
     self._engine = engine
 
   @property

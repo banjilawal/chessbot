@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 
 Contains: CoordBuilder
-Responsibilities: Create `Coord` instances 
+ Provides: Create `Coord` instances 
 """
 
 from chess.system import Builder, BuildResult, ROW_SIZE, COLUMN_SIZE, BuildResult, RaiserLogger, RaiserLogger

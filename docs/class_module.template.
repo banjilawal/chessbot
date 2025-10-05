@@ -6,7 +6,8 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: <SENTENCE_ABOUT_RESPONSIBILITIES>
+Provides:
+<SENTENCE_OR_PARAGRAPH_ABOUT_WHAT_THINGS_MODULE_PROVIDE>
 
 Contains:
  * `EntityOne`

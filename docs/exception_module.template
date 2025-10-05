@@ -5,7 +5,7 @@ Module: `exception.module.path`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
-Responsibilities: Holds exceptions organic to `<Class>` objects
+ Provides: Holds exceptions organic to `<Class>` objects
 
 Contains:
 See the list of exception in the `__alL__` list following

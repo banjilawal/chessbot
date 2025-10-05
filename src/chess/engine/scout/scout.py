@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-05
 version: 1.0.0
 
-Responsibilities: Generates a `ScoutReport` about enemy pieces it discovers it can capture.
+ Provides: Generates a `ScoutReport` about enemy pieces it discovers it can capture.
 
 Contains:
  * `Scout`

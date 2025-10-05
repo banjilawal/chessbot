@@ -7,7 +7,7 @@ Created: 2025-10-03
 Updated: 2025-10-04
 version: 1.0.0
 
-Responsibilities: Create concrete subclasses of `Commander`
+ Provides: Create concrete subclasses of `Commander`
 
 Contains:
   * `CommanderBuilder`

@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: Dictionary of datasets and their attributes for searching
+ Provides: Dictionary of datasets and their attributes for searching
   collections owned by an entity.
 
 Contains:

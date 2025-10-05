@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: Contains squares pieces live in. Mapping `Square` to `Piece` with Coord
+ Provides: Contains squares pieces live in. Mapping `Square` to `Piece` with Coord
 
 Contains:
  - `Board`

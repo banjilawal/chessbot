@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: Loops through each `Square` in path of pieces that can travel an arbitrary number of squares
+ Provides: Loops through each `Square` in path of pieces that can travel an arbitrary number of squares
   during a move.
 
 Contains:

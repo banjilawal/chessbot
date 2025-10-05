@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: Interface for complex search operations with validation
+ Provides: Interface for complex search operations with validation
 Contains:
   * BoardSearch
 """

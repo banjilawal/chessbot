@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
-Responsibilities: Interface for operation results that can have either a
-  data payload or an exception only.
+ Provides:
+ Interface for operation results that can have either a data payload or an exception only.
 
 Contains:
  * `Result`
