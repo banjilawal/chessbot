@@ -7,16 +7,16 @@ from chess.search import SearchResult
 
 
 class OperationResolver(Enum):
-    @staticmethod
-    def resolve(outcome: Union[Result, BuildResult, SearchResult], logger: logging.Logger) -> Union[Any, Exception]:
-        """
-        Logs the outcome and returns the payload or err.
-        """
+  @staticmethod
+  def resolve(outcome: Union[Result, BuildResult, SearchResult], logger: logging.Logger) -> Union[Any, Exception]:
+    """
+    Logs the outcome and returns the payload or err.
+    """
 
-        if outcome.is_success():
-            logger.info("✅ Success: %s", getattr(outcome, 'payload', None))
-            return getattr(outcome, 'payload', None)
+    if outcome.is_success():
+      logger.info("✅ Success: %s", getattr(outcome, 'payload', None))
+      return getattr(outcome, 'payload', None)
 
-        exception = outcome.exception or ValueError("Unknown failure")
-        logger.error("❌ Failure: %s", str(exception), exc_info=exception)
-        return exception
+    exception = outcome.exception or ValueError("Unknown failure")
+    logger.error("❌ Failure: %s", str(exception), exc_info=exception)
+    return exception

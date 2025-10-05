@@ -17,14 +17,14 @@ A package providing an immutable hierarchy for events and transactions manging e
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-    - `Event`: The base class for all events.
-    - `EventValidator`: The base class for all event validators.
-    - `Transaction`: Super class for all transactions.
-    - All exceptions from `err`, `scan`, `attack`, and `exchange` sub-packages.
+  - `Event`: The base class for all events.
+  - `EventValidator`: The base class for all event validators.
+  - `Transaction`: Super class for all transactions.
+  - All exceptions from `err`, `scan`, `attack`, and `exchange` sub-packages.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
-    - `.occupation`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
+  - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.occupation`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 
 # USAGE EXAMPLES
@@ -37,7 +37,7 @@ ___
 * Use `Event` objects to represent intents.
 * Use `Transaction` objects to manage the lifecycle of events.
 * Use `EventBuilder`. An `EventBuilder` is responsible for creating `Event` objects that will not generate
-    errors and avoid expensive rollbacks.
+  errors and avoid expensive rollbacks.
 * Use `EventValidator` objects to ensure a `Transaction`'s `event` param has passed sanity checks.
 * Only do mutation operations after building and validating succeed.
 * ONly do rollback operations at each mutation step.
@@ -62,25 +62,25 @@ __package_name__ = 'chess.event'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'Event',
+  # Core classes
+  'Event',
 
-    *exception.__all__,
-    *occupation.__all__,
+  *exception.__all__,
+  *occupation.__all__,
 
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

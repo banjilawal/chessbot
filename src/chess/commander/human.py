@@ -8,16 +8,16 @@ from chess.piece import Piece
 from chess.commander import CommandHistory
 
 if TYPE_CHECKING:
-    pass
+  pass
 
 class Human(Commander):
 
-    def __init__(self, name: str):
-        super().__init__(name)
+  def __init__(self, name: str):
+    super().__init__(name)
 
-    def __eq__(self, other):
-        if not super().__eq__(other):
-            return False
-        if isinstance(other, Human):
-            return self.id == other.id
-        return False
+  def __eq__(self, other):
+    if not super().__eq__(other):
+      return False
+    if isinstance(other, Human):
+      return self.id == other.id
+    return False

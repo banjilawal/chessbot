@@ -11,11 +11,11 @@ Parent class of `Context` entities.
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-    - `Context`: The base class for `Context` objects.
-    - All exceptions from `exception` package.
+  - `Context`: The base class for `Context` objects.
+  - All exceptions from `exception` package.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.exception`: Defines all custom exceptions for occupation operations.
 
 # USAGE EXAMPLES
 ___
@@ -38,23 +38,23 @@ __package_name__ = 'chess.system.context'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'Context',
-    *exception.__all__,
+  # Core classes
+  'Context',
+  *exception.__all__,
 
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

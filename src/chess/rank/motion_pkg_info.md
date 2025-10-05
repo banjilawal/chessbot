@@ -6,18 +6,18 @@ The `motion` package provides the foundational logic and structures needed to de
 
 ## 📚 Table of Contents
 
-1. [🌐 Conceptual Layers](#-conceptual-layers)  
-   - [1. Orientation](#1-orientation)  
-   - [2. Walks](#2-walks)  
-   - [3. Rules](#3-rules)  
-   - [4. Strategy](#4-strategy)  
-   - [5. Quadrant / Geometry](#5-quadrant--geometry)  
-2. [🧱 Dependencies and Flow](#-dependencies-and-flow)  
-3. [✅ Design Principles](#-design-principles)  
-4. [🔧 Example Use Case](#-example-use-case)  
-5. [🧭 Naming Clarification](#-naming-clarification)  
-6. [📁 Recommended Directory Layout](#-recommended-directory-layout)  
-7. [📌 Next Steps](#-next-steps)  
+1. [🌐 Conceptual Layers](#-conceptual-layers) 
+  - [1. Orientation](#1-orientation) 
+  - [2. Walks](#2-walks) 
+  - [3. Rules](#3-rules) 
+  - [4. Strategy](#4-strategy) 
+  - [5. Quadrant / Geometry](#5-quadrant--geometry) 
+2. [🧱 Dependencies and Flow](#-dependencies-and-flow) 
+3. [✅ Design Principles](#-design-principles) 
+4. [🔧 Example Use Case](#-example-use-case) 
+5. [🧭 Naming Clarification](#-naming-clarification) 
+6. [📁 Recommended Directory Layout](#-recommended-directory-layout) 
+7. [📌 Next Steps](#-next-steps) 
 
 ---
 
@@ -62,9 +62,9 @@ The `motion` package provides the foundational logic and structures needed to de
 ### 4. Strategy
 - Combines walk patterns and rule checks to determine legal destinations.
 - Used by the `Rank` class to generate valid moves based on:
-  - Current position
-  - Board state
-  - Team orientation (e.g., forward = north for white, south for black)
+ - Current position
+ - Board state
+ - Team orientation (e.g., forward = north for white, south for black)
 
 **Examples:**
 - `movement_strategy.py`
@@ -84,7 +84,7 @@ The `motion` package provides the foundational logic and structures needed to de
 
 ```plaintext
 Piece
-  └── delegates movement logic to → Rank
-      └── uses → MovementStrategy
+ └── delegates movement logic to → Rank
+    └── uses → MovementStrategy
           ├── applies → Rules
           └── queries → Walks and Orientations

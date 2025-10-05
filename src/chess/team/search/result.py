@@ -4,15 +4,15 @@ from typing import Optional, TypeVar, Generic
 T = TypeVar('T')
 
 class SearchResult:
-    _payload: Optional[T]
-    _exception: Optional[Exception]
+  _payload: Optional[T]
+  _exception: Optional[Exception]
 
-    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-        method = "SearchResult.__init_"
-        self._payload = payload
-        self._exception = exception
+  def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
+    method = "SearchResult.__init_"
+    self._payload = payload
+    self._exception = exception
 
-    @property
+   @property
     def payload(self) -> Optional[T]:
         return self._payload
 

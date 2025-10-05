@@ -4,15 +4,15 @@ Author: Banji Lawal
 Created: 2025-10-01
 
 Purpose:
-    Implements the `ScanTransaction` class, responsible for managing the creation and recording of
-    a `Discovery` inside a `Square` by an actor.
+  Implements the `ScanTransaction` class, responsible for managing the creation and recording of
+  a `Discovery` inside a `Square` by an actor.
 
 Contents:
-    - `ScanTransaction:` Main class responsible for executing occupation directives.
+  - `ScanTransaction:` Main class responsible for executing occupation directives.
 
 Notes:
-    This module is part of the chess.event.occupation.scan package.
-    Exceptions raised during execution are defined in err.py and err.py.
+  This module is part of the chess.event.occupation.scan package.
+  Exceptions raised during execution are defined in err.py and err.py.
 """
 
 from typing import cast
@@ -21,41 +21,41 @@ from chess.piece import Discovery, DiscoveryBuilder
 from chess.system import ExecutionContext, TransactionResult
 from chess.piece.discover.exception import AddingValidDiscoveryFailedException
 from chess.event import (
-    ScanEvent, OccupationTransaction, ScanTransactionException, OccupationEventException, ScanEventValidator
+  ScanEvent, OccupationTransaction, ScanTransactionException, OccupationEventException, ScanEventValidator
 )
 
 class ScanTransaction(OccupationTransaction[ScanEvent]):
 
-    @staticmethod
-    def execute(event: ScanEvent, context: ExecutionContext) -> TransactionResult:
-        method = "ScanTransaction.execute"
+  @staticmethod
+  def execute(event: ScanEvent, context: ExecutionContext) -> TransactionResult:
+    method = "ScanTransaction.execute"
 
-        try:
-            validation = ScanEventValidator.validate(event, context)
-            if not validation.is_success():
-                return TransactionResult(event, exception=validation.exception)
+    try:
+      validation = ScanEventValidator.validate(event, context)
+      if not validation.is_success():
+        return TransactionResult(event, exception=validation.exception)
 
-            build_result = DiscoveryBuilder.build(observer=event.observer, subject=event.subject)
-            if not build_result.is_success():
-                return TransactionResult(event, exception=build_result.exception)
+      build_result = DiscoveryBuilder.build(observer=event.observer, subject=event.subject)
+      if not build_result.is_success():
+        return TransactionResult(event, exception=build_result.exception)
 
-            discovery = cast(Discovery, build_result.payload)
-            if discovery not in event.observer.discoveries:
-                event.observer.discoveries.record_discovery(discovery=discovery)
+      discovery = cast(Discovery, build_result.payload)
+      if discovery not in event.observer.discoveries:
+        event.observer.discoveries.record_discovery(discovery=discovery)
 
-            if discovery not in event.observer.discoveries.items:
-                return TransactionResult(
-                    event=event,
-                    exception=AddingValidDiscoveryFailedException(
-                        f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"
-                    )
-                )
+      if discovery not in event.observer.discoveries.items:
+        return TransactionResult(
+          event=event,
+          exception=AddingValidDiscoveryFailedException(
+            f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"
+          )
+        )
 
-            return TransactionResult(event=event)
-        except ScanTransactionException as e:
-            raise ScanTransactionException(f"{method}: {e.message}") from e
+      return TransactionResult(event=event)
+    except ScanTransactionException as e:
+      raise ScanTransactionException(f"{method}: {e.message}") from e
 
-        # This block catches any unexpected exceptions
-        # You might want to log the error here before re-raising
-        except Exception as e:
-            raise ScanTransactionException(f"{method}: {e}") from e
+    # This block catches any unexpected exceptions
+    # You might want to log the error here before re-raising
+    except Exception as e:
+      raise ScanTransactionException(f"{method}: {e}") from e

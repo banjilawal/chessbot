@@ -8,7 +8,7 @@ version: 1.0.0
 
 Responsibilities: Create `Arena` instances
 Contains:
-    ArenadBuilder
+  ArenadBuilder
 """
 
 from typing import List
@@ -21,55 +21,55 @@ from chess.commander import Commander, CommnderValidator
 
 
 class ArenaBuilder(Builder[Arena]):
+  """
+  Responsible for safely constructing `Arena` instances.
+  """
+
+  @classmethod
+  def build(
+    cls,
+    white_commander: Commander,
+    black_commander: Commander,
+    board: Board
+  ) -> BuildResult[Arena]:
     """
-    Responsible for safely constructing `Arena` instances.
+    Constructs a new `Arena` that works correctly.
+
+    Args:
+      - `white_commander`: White Commander
+      - `black_commander`: Black Commander
+      - `board`: Board
+
+    Returns:
+      `BuildResult`[`Board`]: A `BuildResult` containing either:
+        - On success: A valid `Arena` instance in the payload
+        - On failure: Error information and error details
+
+    Raises:
+    `ArenaBuildFailedException` wraps any exceptions raised build. These are:
+      * `InvalidCommanderException`: If a `white_commander` or `black_commander` fails validation.
+      * `InvalidBoardException`: If a `board` fails validation.
+
     """
+    method = "ArenaBuilder.build"
 
-    @classmethod
-    def build(
-        cls,
-        white_commander: Commander,
-        black_commander: Commander,
-        board: Board
-    ) -> BuildResult[Arena]:
-        """
-        Constructs a new `Arena` that works correctly.
+    try:
+      squares: List[List[Square]] = []
+      for i in range(BOARD_DIMENSION):
+        row_squares: List[Square] = []
+        ascii_value = ord('A')
 
-        Args:
-            - `white_commander`: White Commander
-            - `black_commander`: Black Commander
-            - `board`: Board
+        for j in range(BOARD_DIMENSION):
+          name = chr(ascii_value) + str(i + 1)
+          board = Board(row=i, column=j)
+          square = Square(name, board)
 
-        Returns:
-            `BuildResult`[`Board`]: A `BuildResult` containing either:
-                - On success: A valid `Arena` instance in the payload
-                - On failure: Error information and error details
+          row_squares.append(square)
+          ascii_value += 1
+        squares.append(row_squares)
+      return BuildResult(payload=Board(squares=squares))
 
-        Raises:
-        `ArenaBuildFailedException` wraps any exceptions raised build. These are:
-            * `InvalidCommanderException`: If a `white_commander` or `black_commander` fails validation.
-            * `InvalidBoardException`: If a `board` fails validation.
-
-        """
-        method = "ArenaBuilder.build"
-        
-        try:
-            squares: List[List[Square]] = []
-            for i in range(BOARD_DIMENSION):
-                row_squares: List[Square] = []
-                ascii_value = ord('A')
-    
-                for j in range(BOARD_DIMENSION):
-                    name = chr(ascii_value) + str(i + 1)
-                    board = Board(row=i, column=j)
-                    square = Square(name, board)
-    
-                    row_squares.append(square)
-                    ascii_value += 1
-                squares.append(row_squares)
-            return BuildResult(payload=Board(squares=squares))
-
-        except Exception as e:
-            raise BoardBuildFailedException(f"{method}: {e}") from e
+    except Exception as e:
+      raise BoardBuildFailedException(f"{method}: {e}") from e
 
 

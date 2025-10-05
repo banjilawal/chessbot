@@ -6,23 +6,23 @@ from chess.piece.repo import ChessPieceRepo
 
 
 class ChessPieceService:
-    _repo: ChessPieceRepo
+  _repo: ChessPieceRepo
 
-    def __init__(self, repo: ChessPieceRepo):
-        self._repo = repo
-
-
-    def size(self) -> int:
-        return self._repo.__len__()
+  def __init__(self, repo: ChessPieceRepo):
+    self._repo = repo
 
 
-    def add_chess_piece(self, chess_piece: Piece):
-        self._repo.add(chess_piece)
+  def size(self) -> int:
+    return self._repo.__len__()
 
 
-    def find_chess_piece_by_id(self, chess_piece_id: int) -> Optional[Piece]:
-        return self._repo.find(chess_piece_id)
+  def add_chess_piece(self, chess_piece: Piece):
+    self._repo.add(chess_piece)
 
 
-    def find_by_team(self, team: Side) -> List[Piece]:
-        return self._repo.filter_by_team(team)
+  def find_chess_piece_by_id(self, chess_piece_id: int) -> Optional[Piece]:
+    return self._repo.find(chess_piece_id)
+
+
+  def find_by_team(self, team: Side) -> List[Piece]:
+    return self._repo.filter_by_team(team)

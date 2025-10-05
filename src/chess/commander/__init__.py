@@ -13,16 +13,16 @@ Controls a `Team` instance by issuing movement commands to a `piece` in `Team.ro
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-    - `Commander`: Abstract class.
-    - `Human`: Concrete `subclass` of `Commander` people use.
-    - `Bot`: Concrete `subclass` of `Commander` that uses a `DecisionEngine`.
-    - `CommanderBuilder`: Builds new instances of `Commander`.
-    - `CommanderValidator`: Performs validation and sanity checks on existing
-            `Commander` instances. before they are used.
-    - All exceptions from `exception` package.
+  - `Commander`: Abstract class.
+  - `Human`: Concrete `subclass` of `Commander` people use.
+  - `Bot`: Concrete `subclass` of `Commander` that uses a `DecisionEngine`.
+  - `CommanderBuilder`: Builds new instances of `Commander`.
+  - `CommanderValidator`: Performs validation and sanity checks on existing
+      `Commander` instances. before they are used.
+  - All exceptions from `exception` package.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.exception`: Defines all custom exceptions for occupation operations.
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
@@ -51,29 +51,29 @@ __author__ = 'Banji Lawal'
 __package_name__ = 'chess.commander'
 
 __all__ = [
-    # Core classes
-    'Bot',
-    'Human',
-    'Commander',
-    'CommandHistory',
-    'CommanderValidator',
-    'CommanderBuilder',
+  # Core classes
+  'Bot',
+  'Human',
+  'Commander',
+  'CommandHistory',
+  'CommanderValidator',
+  'CommanderBuilder',
 
-    *commander.__all__,
-    *exception.__all__,
+  *commander.__all__,
+  *exception.__all__,
 
 
-    '__version__',
-    '__author__',
-    'package_info'
+  '__version__',
+  '__author__',
+  'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

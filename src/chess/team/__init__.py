@@ -14,7 +14,7 @@ This package contains the foundational objects and logic for representing and ma
 ## CORE CLASSES
 * `Team`: A class representing a chess team.
 * `TeamProfile`: A class that stores descriptive information for a team, such as its name and ID.
-        Neccessary for constructing a team
+    Neccessary for constructing a team
 * `TeamValidator`: A class that provides validate and sanity checks for a team's configuration.
 
 ## USAGE
@@ -44,12 +44,12 @@ These exceptions can be imported and raised from within the team-related code to
 >>> from chess.team import NullTeamException
 >>>
 >>> def check_team(team):
-...     if team is None:
-...         raise NullTeamException("Error: No team exists.")
+...   if team is None:
+...     raise NullTeamException("Error: No team exists.")
 ...
 >>> check_team(None)
 Traceback (most recent call last):
-    ...
+  ...
 NullTeamException: Error: No team exists.
 ---
 
@@ -57,10 +57,10 @@ A use case for the `AddTeamMemberException`.
 >#>> from chess.team.team_exception import AddTeamMemberException
 >>>
 >>> def add_piece(team, discover):
-...     if is discover.team.commander not team.commander:
-...         raise QUotaFullException("The discover is not on this team. Adding discover failed")
+...   if is discover.team.commander not team.commander:
+...     raise QUotaFullException("The discover is not on this team. Adding discover failed")
 Traceback (most recent call last):
-    ...
+  ...
 AddTeamMemberException: The discover is not on this team. Adding discover faile.
 
 ---
@@ -85,29 +85,29 @@ __package_name__ = 'chess.team'
 ROSTER_SIZE = 16
 
 __all__ = [
-    # Core classes
-    'Team',
-    'TeamValidator',
-    'TeamSchema',
-    'TeamBuilder',
+  # Core classes
+  'Team',
+  'TeamValidator',
+  'TeamSchema',
+  'TeamBuilder',
 
-    *exception.__all__,
+  *exception.__all__,
 
 
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info",
+  # Package metadata and utilities
+  "__version__",
+  "__author__",
+  "package_info",
 ]
 
 # Utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        "name": __package_name__,
-        "version": __version__,
-        "author": __author__,
-        "exports": __all__,
-    }
+  """Return basic package information."""
+  return {
+    "name": __package_name__,
+    "version": __version__,
+    "author": __author__,
+    "exports": __all__,
+  }
 
 

@@ -13,122 +13,122 @@ from unit.chess_test.competitor.competitor_test import CompetitorTest
 
 class SideTest(unittest.TestCase):
 
-    @staticmethod
-    def valid_mock_side(side_id=1, side_profile=TeamSchema.BLACK):
-        mock_side = create_autospec(Side, instance=True)
+  @staticmethod
+  def valid_mock_side(side_id=1, side_profile=TeamSchema.BLACK):
+    mock_side = create_autospec(Side, instance=True)
 
-        # pieces.is_empty.return_value = True
-        # pieces.size.return_value = 0
-        # pieces.items = []
-        mock_side.id = 1
-        mock_side.controlller = CompetitorTest.valid_mock_competitor()
+    # pieces.is_empty.return_value = True
+    # pieces.size.return_value = 0
+    # pieces.items = []
+    mock_side.id = 1
+    mock_side.controlller = CompetitorTest.valid_mock_competitor()
 
-        return mock_side
-
-
-    @patch('assurance.validators.commander.CommanderValidator.validate')
-    @patch('assurance.validators.id.IdValidator.validate')
-    def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
-        mock_id_validation.return_value.is_success.return_value = False
-        mock_id_validation.return_value.exception = IdValidationException("Invalid name")
-
-        mock_competitor_validation.return_value.is_success.return_value = True
-        mock_competitor = CompetitorTest.valid_mock_competitor()
-
-        with self.assertRaises(IdValidationException):
-            Side(side_id=None, controller=mock_competitor, profile=TeamSchema.BLACK)
+    return mock_side
 
 
-    @patch('assurance.validators.commander.CommanderValidator.validate')
-    @patch('assurance.validators.id.IdValidator.validate')
-    def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
-        mock_id_validation.return_value.is_success.return_value = True
+  @patch('assurance.validators.commander.CommanderValidator.validate')
+  @patch('assurance.validators.id.IdValidator.validate')
+  def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
+    mock_id_validation.return_value.is_success.return_value = False
+    mock_id_validation.return_value.exception = IdValidationException("Invalid name")
 
-        mock_competitor_validation.return_value.is_success.return_value = False
-        mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
+    mock_competitor_validation.return_value.is_success.return_value = True
+    mock_competitor = CompetitorTest.valid_mock_competitor()
 
-        with self.assertRaises(CommanderValidationException):
-            Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
-
-
-    @patch('assurance.validators.commander.CommanderValidator.validate')
-    @patch('assurance.validators.id.IdValidator.validate')
-    def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
-        mock_id_validation.return_value.is_success.return_value = True
-
-        mock_competitor_validation.return_value.is_success.return_value = False
-        mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
-
-        with self.assertRaises(CommanderValidationException):
-            Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
+    with self.assertRaises(IdValidationException):
+      Side(side_id=None, controller=mock_competitor, profile=TeamSchema.BLACK)
 
 
-    @patch('assurance.validators.commander.CommanderValidator.validate')
-    @patch('assurance.validators.id.IdValidator.validate')
-    def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
-        mock_id_validation.return_value.is_success.return_value = True
-        mock_competitor_validation.return_value.is_success.return_value = True
+  @patch('assurance.validators.commander.CommanderValidator.validate')
+  @patch('assurance.validators.id.IdValidator.validate')
+  def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
+    mock_id_validation.return_value.is_success.return_value = True
 
-        mock_competitor = CompetitorTest.valid_mock_competitor()
+    mock_competitor_validation.return_value.is_success.return_value = False
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
 
-        with self.assertRaises(NullTeamProfileException):
-            Side(side_id=1, controller=mock_competitor, profile=None)
-
-
-    @patch('assurance.validators.commander.CommanderValidator.validate')
-    @patch('assurance.validators.id.IdValidator.validate')
-    def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
-        mock_id_validation.return_value.is_success.return_value = True
-        mock_competitor_validation.return_value.is_success.return_value = True
-
-        # Fake sides_played collection that doesn't actually add the team
-        class FakeSidesPlayed:
-            def __init__(self):
-                self.items = []
-            def push_side(self, side):
-                pass  # do nothing
-
-        class FakeController:
-            def __init__(self):
-                self.sides_played = FakeSidesPlayed()
-
-        fake_controller = FakeController()
-
-        with self.assertRaises(BrokenRelationshipException):
-            Side(side_id=1, controller=fake_controller, profile=TeamSchema.BLACK)
+    with self.assertRaises(CommanderValidationException):
+      Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-    @patch('assurance.validators.commander.CommanderValidator.validate')
-    @patch('assurance.validators.id.IdValidator.validate')
-    def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
-        mock_id_validation.return_value.is_success.return_value = True
-        mock_id_validation.return_value.payload = 1
+  @patch('assurance.validators.commander.CommanderValidator.validate')
+  @patch('assurance.validators.id.IdValidator.validate')
+  def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
+    mock_id_validation.return_value.is_success.return_value = True
+
+    mock_competitor_validation.return_value.is_success.return_value = False
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
+
+    with self.assertRaises(CommanderValidationException):
+      Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-        competitor = Commander(competitor_id=1, name="commander")
-        mock_competitor_validation.return_value.is_success.return_value = True
-        mock_competitor_validation.return_value.payload = competitor
+  @patch('assurance.validators.commander.CommanderValidator.validate')
+  @patch('assurance.validators.id.IdValidator.validate')
+  def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
+    mock_id_validation.return_value.is_success.return_value = True
+    mock_competitor_validation.return_value.is_success.return_value = True
 
-        for profile in TeamSchema:
-            side = Side(side_id=1, controller=competitor, profile=profile)
-            assert side in competitor.teams.items
+    mock_competitor = CompetitorTest.valid_mock_competitor()
 
-
-    @patch('assurance.validators.commander.CommanderValidator.validate')
-    @patch('assurance.validators.id.IdValidator.validate')
-    def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
-        mock_id_validation.return_value.is_success.return_value = True
-        mock_id_validation.return_value.payload = 1
+    with self.assertRaises(NullTeamProfileException):
+      Side(side_id=1, controller=mock_competitor, profile=None)
 
 
-        competitor = Commander(competitor_id=1, name="commander")
-        mock_competitor_validation.return_value.is_success.return_value = True
-        mock_competitor_validation.return_value.payload = competitor
+  @patch('assurance.validators.commander.CommanderValidator.validate')
+  @patch('assurance.validators.id.IdValidator.validate')
+  def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
+    mock_id_validation.return_value.is_success.return_value = True
+    mock_competitor_validation.return_value.is_success.return_value = True
 
-        side = Side(side_id=1, controller=competitor, profile=TeamSchema.BLACK)
+    # Fake sides_played collection that doesn't actually add the team
+    class FakeSidesPlayed:
+      def __init__(self):
+        self.items = []
+      def push_side(self, side):
+        pass # do nothing
 
-        self.assertIs(side, competitor.current_team)
+    class FakeController:
+      def __init__(self):
+        self.sides_played = FakeSidesPlayed()
+
+    fake_controller = FakeController()
+
+    with self.assertRaises(BrokenRelationshipException):
+      Side(side_id=1, controller=fake_controller, profile=TeamSchema.BLACK)
+
+
+  @patch('assurance.validators.commander.CommanderValidator.validate')
+  @patch('assurance.validators.id.IdValidator.validate')
+  def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
+    mock_id_validation.return_value.is_success.return_value = True
+    mock_id_validation.return_value.payload = 1
+
+
+    competitor = Commander(competitor_id=1, name="commander")
+    mock_competitor_validation.return_value.is_success.return_value = True
+    mock_competitor_validation.return_value.payload = competitor
+
+    for profile in TeamSchema:
+      side = Side(side_id=1, controller=competitor, profile=profile)
+      assert side in competitor.teams.items
+
+
+  @patch('assurance.validators.commander.CommanderValidator.validate')
+  @patch('assurance.validators.id.IdValidator.validate')
+  def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
+    mock_id_validation.return_value.is_success.return_value = True
+    mock_id_validation.return_value.payload = 1
+
+
+    competitor = Commander(competitor_id=1, name="commander")
+    mock_competitor_validation.return_value.is_success.return_value = True
+    mock_competitor_validation.return_value.payload = competitor
+
+    side = Side(side_id=1, controller=competitor, profile=TeamSchema.BLACK)
+
+    self.assertIs(side, competitor.current_team)
 
 
 if __name__ == "__main__":
-    unittest.main()
+  unittest.main()

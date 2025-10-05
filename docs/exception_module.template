@@ -12,91 +12,91 @@ See the list of exception in the `__alL__` list following
 """
 
 __all__ = [
-    'ClassException',
-    # === CLASS VALIDATION EXCEPTIONS ===
-    'NullClassException',
-    'InvalidClassException',
-    'ClassInconsistencyException',
+  'ClassException',
+  # === CLASS VALIDATION EXCEPTIONS ===
+  'NullClassException',
+  'InvalidClassException',
+  'ClassInconsistencyException',
 
-    # === CLASS BUILD EXCEPTIONS ===
-    'ClassFailedBuildException',
+  # === CLASS BUILD EXCEPTIONS ===
+  'ClassFailedBuildException',
 
-    # === COLLECTION_CLASS EXCEPTONS ===
-    'CollectionClassException',
-    'AddItemException',
-    'RemoveItemException',
-    'InconsistentCollectionNameException'
+  # === COLLECTION_CLASS EXCEPTONS ===
+  'CollectionClassException',
+  'AddItemException',
+  'RemoveItemException',
+  'InconsistentCollectionNameException'
 ]
 
 class ClassException(ChessException):
-    """
-    Super class of exceptions organic to `<Class>` objects. DO NOT USE DIRECTLY. Subclasses give
-    details useful for debugging. `<ClassException>` exists primarily to allow catching all `<Class>`
-    exceptions.
-    """
-    ERROR_CODE = "TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team raised an exception."
+  """
+  Super class of exceptions organic to `<Class>` objects. DO NOT USE DIRECTLY. Subclasses give
+  details useful for debugging. `<ClassException>` exists primarily to allow catching all `<Class>`
+  exceptions.
+  """
+  ERROR_CODE = "TEAM_ERROR"
+  DEFAULT_MESSAGE = "Team raised an exception."
 
 # === CLASS VALIDATION EXCEPTIONS ===
 class NullClassException(ClassException, NullException):
-    """Raised if an entity, method, or operation requires a team but gets null instead."""
-    pass
+  """Raised if an entity, method, or operation requires a team but gets null instead."""
+  pass
 
 class InvalidClassException(ClassException, ValidationException):
-    """
-    Raised by ClassValidator if <class_name> fails sanity checks. Exists to catch all
-    exceptions raised validating an existing <class_name>team
-    """
-    pass
+  """
+  Raised by ClassValidator if <class_name> fails sanity checks. Exists to catch all
+  exceptions raised validating an existing <class_name>team
+  """
+  pass
 
 class ClassInconsistencyException(ClassException, InconsistencyException):
-    """
-    Raised if a data inconsistency is detected
-    """
-    ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "A data inconsistency was detected"
+  """
+  Raised if a data inconsistency is detected
+  """
+  ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
+  DEFAULT_MESSAGE = "A data inconsistency was detected"
 
-    # === COLLECTION_CLASS EXCEPTONS ===
+  # === COLLECTION_CLASS EXCEPTONS ===
 class InconsistentCollectionException(InconsistencyException):
-    """
-    Raised if a collection's state is inconsistent or its data corrupted
-    """
-    ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
-    DEFAULT_MESSAGE = (
-        "Collection is an inconsistent state. Data might be corrupted"
-    )
+  """
+  Raised if a collection's state is inconsistent or its data corrupted
+  """
+  ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
+  DEFAULT_MESSAGE = (
+    "Collection is an inconsistent state. Data might be corrupted"
+  )
 
 # === CLASS BUILD EXCEPTIONS ===
 class ClassFailedBuildException(ClassName, FailedBuildException):
-    """
-    Raised when ArenaBuilder crashed while building a new arena. Exists
-    primarily to catch all exceptions raised creating arenas.
-    """
-    ERROR_CODE = "BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = " build failed."
+  """
+  Raised when ArenaBuilder crashed while building a new arena. Exists
+  primarily to catch all exceptions raised creating arenas.
+  """
+  ERROR_CODE = "BUILD_FAILED_ERROR"
+  DEFAULT_MESSAGE = " build failed."
 
 
 # === COLLECTION_CLASS EXCEPTONS ===
 class CollectionClassException(ClassException):
-    """Raised for errors on team' collection"""
-    ERROR_CODE = "COLLECTION_NAME_ERROR"
-    DEFAULT_MESSAGE = "Collection raised an exception."
+  """Raised for errors on team' collection"""
+  ERROR_CODE = "COLLECTION_NAME_ERROR"
+  DEFAULT_MESSAGE = "Collection raised an exception."
 
 class AddItemException(CollectionClassException):
-    """
-    Raised if and could not be added to collection
-    """
-    pass
+  """
+  Raised if and could not be added to collection
+  """
+  pass
 
 class RemoveItemException(CollectionClassException):
-    """
-    Raised if removing an existing item could not be removed from the collection
-    """
-    pass
+  """
+  Raised if removing an existing item could not be removed from the collection
+  """
+  pass
 
 class InconsistentCollectionNameException(ClassException, InconsistentCollectionException):
-    """
-    Raised if a collection fails any collection consistency checks
-    """
-    ERROR_CODE = "INCONSISTENT_COLLECTION_NAME_ERROR"
-    DEFAULT_MESSAGE = "The collection_name is an inconsistent state. data might be corrupted."
+  """
+  Raised if a collection fails any collection consistency checks
+  """
+  ERROR_CODE = "INCONSISTENT_COLLECTION_NAME_ERROR"
+  DEFAULT_MESSAGE = "The collection_name is an inconsistent state. data might be corrupted."

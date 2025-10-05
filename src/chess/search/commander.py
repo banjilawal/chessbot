@@ -5,51 +5,51 @@ from chess.search import SearchResult
 from chess.system import IdValidator
 
 class CommanderSearch:
-    """
-    Static methods for entities and operations that need to search a Board for pieces, squares, coords, etc.
-    Provides consistent search interface and return types across all search operations.
-    Validates input parameters before searching to ensure safe operations.
-    Returns SearchResult objects encapsulating either the found entity or error information.
+  """
+  Static methods for entities and operations that need to search a Board for pieces, squares, coords, etc.
+  Provides consistent search interface and return types across all search operations.
+  Validates input parameters before searching to ensure safe operations.
+  Returns SearchResult objects encapsulating either the found entity or error information.
 
-    Usage:
-        ```python
-        from chess.board import Board, BoardSearch
-        from chess.piece import Piece
-        ```
+  Usage:
+    ```python
+    from chess.board import Board, BoardSearch
+    from chess.piece import Piece
+    ```
 
-    Note:
-        DO NOT USE ANY OTHER METHODS TO SEARCH A BOARD. USE ONLY THE METHODS IN THIS CLASS.
+  Note:
+    DO NOT USE ANY OTHER METHODS TO SEARCH A BOARD. USE ONLY THE METHODS IN THIS CLASS.
 
-    See Also:
-        `Board`: The board being searched
-        `Piece`: The piece being searched for
-        `Square`: The square being searched for
-        `Coord`: The coordinate being searched for
-        `SearchResult`: The return type for all search operations
-    """
+  See Also:
+    `Board`: The board being searched
+    `Piece`: The piece being searched for
+    `Square`: The square being searched for
+    `Coord`: The coordinate being searched for
+    `SearchResult`: The return type for all search operations
+  """
 
-    @staticmethod
-    def for_team(team_id: int, commander: 'Commander') -> SearchResult['Team']:
-        method = "CommanderSearch.for_team"
-        """Find a discover by ID within a specific commander"""
+  @staticmethod
+  def for_team(team_id: int, commander: 'Commander') -> SearchResult['Team']:
+    method = "CommanderSearch.for_team"
+    """Find a discover by ID within a specific commander"""
 
-        try:
-            id_validation = IdValidator.validate(team_id)
-            if not id_validation.is_success():
-                raise id_validation.exception
+    try:
+      id_validation = IdValidator.validate(team_id)
+      if not id_validation.is_success():
+        raise id_validation.exception
 
-            commander_validation = CommanderValidator.validate(commander)
-            if not commander_validation.is_success():
-                raise commander_validation.exception
+      commander_validation = CommanderValidator.validate(commander)
+      if not commander_validation.is_success():
+        raise commander_validation.exception
 
-            team = next((team for team in commander.teams.items if team.id == team_id), None)
-            if team is not None:
-                return SearchResult(payload=team)
+      team = next((team for team in commander.teams.items if team.id == team_id), None)
+      if team is not None:
+        return SearchResult(payload=team)
 
-            # returns empty search result
-            return SearchResult()
+      # returns empty search result
+      return SearchResult()
 
-        except Exception as e:
-            return SearchResult(exception=e)
+    except Exception as e:
+      return SearchResult(exception=e)
 
 

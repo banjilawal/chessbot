@@ -7,35 +7,35 @@ from chess.side.repo import TeamRepo
 from chess.side.team import Side
 
 # if TYPE_CHECKING:
-#     from chess.team.square.team import Team
+#   from chess.team.square.team import Team
 
 
 class TeamService:
-    _repo: TeamRepo
+  _repo: TeamRepo
 
-    def __init__(self, team_repo: TeamRepo):
-        self._repo = team_repo
-
-
-    def size(self) -> int:
-        return self._repo.__len__()
+  def __init__(self, team_repo: TeamRepo):
+    self._repo = team_repo
 
 
-    def add_team(self, team: Side):
-        self._repo.add(team)
+  def size(self) -> int:
+    return self._repo.__len__()
 
 
-    def find_team_by_id(self, team_id: int) -> Optional[Side]:
-        return self._repo.team_by_id(team_id)
+  def add_team(self, team: Side):
+    self._repo.add(team)
 
 
-    def filter_teams_by_owner(self, owner: Commander) -> List[Side]:
-        return self._repo.teams_by_owner(owner)
+  def find_team_by_id(self, team_id: int) -> Optional[Side]:
+    return self._repo.team_by_id(team_id)
 
 
-    def filter_teams_by_color(self, color: GameColor) -> List[Side]:
-        return self._repo.teams_by_color(color)
+  def filter_teams_by_owner(self, owner: Commander) -> List[Side]:
+    return self._repo.teams_by_owner(owner)
 
 
-    def filter_teams_by_quadrant(self, quadrant: Quadrant) -> List[Side]:
-        return self._repo.teams_by_quadrant(quadrant)
+  def filter_teams_by_color(self, color: GameColor) -> List[Side]:
+    return self._repo.teams_by_color(color)
+
+
+  def filter_teams_by_quadrant(self, quadrant: Quadrant) -> List[Side]:
+    return self._repo.teams_by_quadrant(quadrant)

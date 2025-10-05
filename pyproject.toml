@@ -1,7 +1,7 @@
 # Centralized build configuration for the ChessBot project. Supersedes:
-#   setup.py
-#   setup.cfg
-#   requirements.txt
+#  setup.py
+#  setup.cfg
+#  requirements.txt
 # See: https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
 
 [build-system]
@@ -14,12 +14,12 @@ name = "chessbot"
 version = "0.0.1"
 description = "ChessBot: A chess game that allows; People to play against each otheror the computer."
 authors = [
-    { name = "Banji Lawal", email = "banji.k.lawal@gmail.com" }
+  { name = "Banji Lawal", email = "banji.k.lawal@gmail.com" }
 ]
 keywords = ["chess", "chess api", "chess engine", "chess bot"]
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python"
+ "Development Status :: 4 - Beta",
+ "Programming Language :: Python"
 ]
 
 # Pyproject automatically detects READM file format. Including mimetype is redundant.
@@ -28,24 +28,24 @@ requires-python = ">=3.9"
 license = {text = "BSD-3-Clause"}
 
 dependencies = [
-    "colorama >= 0.4.6",
-    "iniconfig >= 2.1.0",
-    "packaging >= 25.0",
-    "pluggy >= 1.6.0",
-    "pygame >= 2.6.1",
-    "Pygments >= 2.19.1",
-    "wheel >= 0.45.1",
-    "setuptools >= 80.9.0",
-    "typing_extensions >= 4.14.1",
-    "build >= 1.3.0",
-    "pydantic >= 2.11.7"
+  "colorama >= 0.4.6",
+  "iniconfig >= 2.1.0",
+  "packaging >= 25.0",
+  "pluggy >= 1.6.0",
+  "pygame >= 2.6.1",
+  "Pygments >= 2.19.1",
+  "wheel >= 0.45.1",
+  "setuptools >= 80.9.0",
+  "typing_extensions >= 4.14.1",
+  "build >= 1.3.0",
+  "pydantic >= 2.11.7"
 ]
 
 [project.optional-dependencies]
 # Optional dependencies for testing.
 test = [
-    "pytest >= 8.4.0",
-    "pytest-mock >= 4.0.0"
+  "pytest >= 8.4.0",
+  "pytest-mock >= 4.0.0"
 ]
 
 # Package discovery configuration. With tool.setuptools.packages.find dont have to

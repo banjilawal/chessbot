@@ -4,5 +4,5 @@ from pygame.pixelcopy import surface_to_array
 
 
 class PlayerOrder(Enum):
-    FIRST = auto()
-    SECOND = auto()
+  FIRST = auto()
+  SECOND = auto()

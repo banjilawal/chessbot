@@ -5,11 +5,11 @@
 - [Design Principles](#design-principles)
 - [Class Relationship Diagram](#class-relationship-diagram)
 - [🧩 Classes](#-classes)
-  - [Coordinate](#coordinate)
-  - [Delta](#delta)
-  - [CartesianDistance](#cartesiandistance)
+ - [Coordinate](#coordinate)
+ - [Delta](#delta)
+ - [CartesianDistance](#cartesiandistance)
 - [Usage Examples](#usage-examples)
-  - [Basic Operations](#basic-operations)
+ - [Basic Operations](#basic-operations)
 - [Class Exceptions](#class-exceptions)
 
 ## 📌 Purpose
@@ -31,21 +31,21 @@ Provides geometric primitives for chess board coordinates:
 @startuml 
 title Coordinate Package Class Relationships
 class Coordinate {
-  + row: int
-  + column: int
-  + shift(delta: Delta): Coordinate
+ + row: int
+ + column: int
+ + shift(delta: Delta): Coordinate
 }
 
 class Delta {
-  + row_delta: int
-  + column_delta: int
-  + __mul__(scalar: int): Delta
+ + row_delta: int
+ + column_delta: int
+ + __mul__(scalar: int): Delta
 }
 
 class CartesianDistance {
-  + p: Coordinate
-  + q: Coordinate
-  + distance: int
+ + p: Coordinate
+ + q: Coordinate
+ + distance: int
 }
 
 Coordinate "1" *-- "1" Delta : uses for transformation
@@ -84,7 +84,7 @@ Immutable chess board position
 ```python
 class Delta(row_delta: int, column_delta: int) -> Coordinate:
 ```
-Immutable transformation vector used  with `Coordinate.shift()`
+Immutable transformation vector used with `Coordinate.shift()`
 
 #### Attributes
  - row_delta (int): Row component

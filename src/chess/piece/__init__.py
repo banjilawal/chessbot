@@ -10,12 +10,12 @@ version: 1.0.0
 Provides the fundamental data structures for game pieces and entities owned by a game piece.
 
 ## Core Classes
-    * `Piece`: Abstract base class for all chess pieces
-    * `CombatantPiece`: Concrete piece that can be captured
-    * `KingPiece`: Concrete king piece with special rules
-    * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-    * `Encounter`: A record of an item discovered by a `Piece` during a scan or move.
-    * `EncounterScan`: A data-holding object representing a single scan of a chess piece's surroundings.
+  * `Piece`: Abstract base class for all chess pieces
+  * `CombatantPiece`: Concrete piece that can be captured
+  * `KingPiece`: Concrete king piece with special rules
+  * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
+  * `Encounter`: A record of an item discovered by a `Piece` during a scan or move.
+  * `EncounterScan`: A data-holding object representing a single scan of a chess piece's surroundings.
 
 ## Usage
 ```python
@@ -26,39 +26,39 @@ white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', rank=Pawn(), team=whit
 white_king = KingPiece(discovery_id=2, name='WK', rank=King(), team=white_team)
 ```
 ## SUBPACKAGES
-    * `chess.piece.err`: Exceptions raised by `Piece` and its subclasses.
-    * `chess.piece.coord_stack`: Data structures and utilities for storing history of `Piece` object's positions.
-    * `chess.piece.discover`: Data structures and utilities for managing discoveries made by `Piece` objects.
+  * `chess.piece.err`: Exceptions raised by `Piece` and its subclasses.
+  * `chess.piece.coord_stack`: Data structures and utilities for storing history of `Piece` object's positions.
+  * `chess.piece.discover`: Data structures and utilities for managing discoveries made by `Piece` objects.
 
 ## EXCEPTIONS
 These are not all the exceptions related to `Piece` in the application. `chess.piece` package only has exceptions
 organic to:
-    * `Piece` and its subclases..
+  * `Piece` and its subclases..
 
 All exceptions in `chess.piece` package have static fields:
-    - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
-    - `DFAULT_MESSAGE`: A sentence describing the err.
+  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
+  - `DFAULT_MESSAGE`: A sentence describing the err.
 Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
 ### EXCEPTIONS
-    * `PieceException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
-        more specific information.
-    * `NullPieceException`: The parent is `NullException`. `NullPieceException` is the parent of all exceptions
-        related to null pieces. Use more granular null exceptions that provide mmore specific information about the
-        subclass instance that is null.
-    * `NullKingPieceException`: Raised when a `kingPiece` reference is null
-    * `NullCombatantPieceException`: Raised when a `CombatantPiece` is null.
-    * `DoublePromotionException`: Raised if there is an attempt to promote a king or pawn that has already been
-        promoted.
+  * `PieceException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
+    more specific information.
+  * `NullPieceException`: The parent is `NullException`. `NullPieceException` is the parent of all exceptions
+    related to null pieces. Use more granular null exceptions that provide mmore specific information about the
+    subclass instance that is null.
+  * `NullKingPieceException`: Raised when a `kingPiece` reference is null
+  * `NullCombatantPieceException`: Raised when a `CombatantPiece` is null.
+  * `DoublePromotionException`: Raised if there is an attempt to promote a king or pawn that has already been
+    promoted.
 
 #### PIECE VALIDATION EXCEPTIONS
-    * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
-    * `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
+  * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
+  * `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-    * `PieceBuildFailedException`: Raised if there is an error during when a `PieceBuilder` is creating a new `Piece`
-        instance.
-    * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
+  * `PieceBuildFailedException`: Raised if there is an error during when a `PieceBuilder` is creating a new `Piece`
+    instance.
+  * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
 
 
 null or improperly referenced during chess operations.
@@ -76,26 +76,26 @@ These examples show recommended workflows with `Piece` exceptions.
 from chess.piece import CombatantPiece, Encounter, NullPieceException, AutoEncounterException
 
 build_outcome = PieceBuilder.build(
-    discovery_id=id_emitter.discovery_id,
-    name='BB2',
-    rank=Bishop(),
-    team=black_team
+  discovery_id=id_emitter.discovery_id,
+  name='BB2',
+  rank=Bishop(),
+  team=black_team
 )
 
 if not build_outcome.is_success():
-    raise build_outcome.err
+  raise build_outcome.err
 
 # Its best practice to cast the result to the expected type.
 black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 
 if black_bishop_2 is None:
-    raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
+  raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
 def create_encounter(actor: Piece, discover: Piece) -> Encounter:
-    method = "create_encounter"
-    if actor == discover:
-        raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
-    return Encounter(discover=discover)
+  method = "create_encounter"
+  if actor == discover:
+    raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
+  return Encounter(discover=discover)
 ```
 """
 
@@ -115,34 +115,34 @@ __package_name__ = 'chess.piece'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'Piece',
-    'KingPiece',
-    'CombatantPiece',
-    'PieceBuilder',
-    'PieceValidator',
-    'PieceBuilder',
+  # Core classes
+  'Piece',
+  'KingPiece',
+  'CombatantPiece',
+  'PieceBuilder',
+  'PieceValidator',
+  'PieceBuilder',
 
-    *discover.__all__,
-    *exception.__all__,
-    *coord_stack.__all__,
+  *discover.__all__,
+  *exception.__all__,
+  *coord_stack.__all__,
 
 
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info'
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }
 
 

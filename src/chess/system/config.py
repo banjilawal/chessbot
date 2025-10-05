@@ -1,21 +1,21 @@
 from chess.system import GameColor
 
 __all__ = [
-    'ROW_SIZE',
-    'COLUMN_SIZE',
-    'BOARD_DIMENSION',
-    'MIN_NAME_LENGTH',
-    'MAX_NAME_LENGTH',
-    'KNIGHT_STEP_SIZE',
-    'CELL_PX',
-    'BORDER_PX',
-    'SCREEN_COLOR',
-    'SCREEN_WIDTH',
-    'SCREEN_HEIGHT',
-    'PYGAME_CAPTION',
-    'PYGAME_FONT',
-    'PYGAME_FONT_SIZE',
-    'OPPOSITE_CELL_COLOR'
+  'ROW_SIZE',
+  'COLUMN_SIZE',
+  'BOARD_DIMENSION',
+  'MIN_NAME_LENGTH',
+  'MAX_NAME_LENGTH',
+  'KNIGHT_STEP_SIZE',
+  'CELL_PX',
+  'BORDER_PX',
+  'SCREEN_COLOR',
+  'SCREEN_WIDTH',
+  'SCREEN_HEIGHT',
+  'PYGAME_CAPTION',
+  'PYGAME_FONT',
+  'PYGAME_FONT_SIZE',
+  'OPPOSITE_CELL_COLOR'
 ]
 
 ROW_SIZE = 8
@@ -28,15 +28,15 @@ MAX_NAME_LENGTH = 40
 
 
 """
-    This is the number of steps moves in eit
-    her the x or y domain.
-    If a knight steps over two rows it must step one diagonal column 
-    This gives 3 total rows traveled.
+  This is the number of steps moves in eit
+  her the x or y domain.
+  If a knight steps over two rows it must step one diagonal column 
+  This gives 3 total rows traveled.
 
-    On the other hand if it steps over two columns it must step one diagonal row
-    This also gives 3 total columns traveled.
+  On the other hand if it steps over two columns it must step one diagonal row
+  This also gives 3 total columns traveled.
 
-    So KNIGHT_STEP_SIZE is 3
+  So KNIGHT_STEP_SIZE is 3
 """
 KNIGHT_STEP_SIZE = 3
 

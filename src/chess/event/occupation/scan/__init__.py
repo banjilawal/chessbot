@@ -10,10 +10,10 @@ version: 1.0.0
 Executes a `ScanTransaction` after `ScanEvent` is validated
 
 ## CORE CLASSES:
-    * `ScanEvent`: Provides information about an `actor` scanning a `enemy` `Piece`.
-    * `ScanEventBuilder`: Builds a new `ScanEvent`.
-    * `ScanEventValidator`: Validates an existing `ScanEvent`.
-    * `ScanTransaction`: Performs the scan operation for the observing `Piece`
+  * `ScanEvent`: Provides information about an `actor` scanning a `enemy` `Piece`.
+  * `ScanEventBuilder`: Builds a new `ScanEvent`.
+  * `ScanEventValidator`: Validates an existing `ScanEvent`.
+  * `ScanTransaction`: Performs the scan operation for the observing `Piece`
 
 USAGE:
 ```python
@@ -23,11 +23,11 @@ from chess.event.occupation import ScanEvent, ScanTransaction
 
 ## EXCEPTIONS:
 Gives granular information about errors that occur during scan operations.
-    * `ScanEventException`: Superclass for all scan event exceptions. Subclasses give better debugging information
-    * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
-    * `NullScanEventException`: Raised by methods, entities, and models that require a ScanEvent but receive a null
-    * `OccupationOccupationScanSubjectException`: Raised if a enemy of a scan is invalid.
-    * `ObserverCircularScanException`: Raised if an actor scans itself.
+  * `ScanEventException`: Superclass for all scan event exceptions. Subclasses give better debugging information
+  * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
+  * `NullScanEventException`: Raised by methods, entities, and models that require a ScanEvent but receive a null
+  * `OccupationOccupationScanSubjectException`: Raised if a enemy of a scan is invalid.
+  * `ObserverCircularScanException`: Raised if an actor scans itself.
 
 ### EXCEPTION USAGE:
 ```python
@@ -52,28 +52,28 @@ __package_name__ = "chess.event.occupation.scan"
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'ScanEvent',
-    'ScanEventBuilder',
-    'ScanEventValidator',
-    'ScanTransaction',
+  # Core classes
+  'ScanEvent',
+  'ScanEventBuilder',
+  'ScanEventValidator',
+  'ScanTransaction',
 
-    # Exception classes
-    *exception.__all__,
+  # Exception classes
+  *exception.__all__,
 
 
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info"
+  # Package metadata and utilities
+  "__version__",
+  "__author__",
+  "package_info"
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        "name": __package_name__,
-        "version": __version__,
-        "author": __author__,
-        "exports": __all__
-    }
+  """Return basic package information."""
+  return {
+    "name": __package_name__,
+    "version": __version__,
+    "author": __author__,
+    "exports": __all__
+  }

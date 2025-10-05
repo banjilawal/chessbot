@@ -11,9 +11,9 @@ Provides immutable `(row, column)` coordinate tuples for board positions, with b
 creation and validate.
 
 ## Core Classes
-    - `Coord`: Immutable `(row, column)` coordinate object.
-    - `CoordBuilder`: Safely constructs validated `Coord` instances.
-    - `CoordValidator`: Validates existing `Coord` instances.
+  - `Coord`: Immutable `(row, column)` coordinate object.
+  - `CoordBuilder`: Safely constructs validated `Coord` instances.
+  - `CoordValidator`: Validates existing `Coord` instances.
 
 ## Usage
 ```python
@@ -22,7 +22,7 @@ from chess.coord import Coord, CoordBuilder
 
 build_outcome = CoordBuilder.build(row=0, column=7)
 if not build_outcome.is_success():
-    raise build_outcome.err
+  raise build_outcome.err
 
 # Always cast the payload to the desired type before using it
 coord = cast(Coord, build_outcome.payload)
@@ -32,28 +32,28 @@ print(coord)
 ## COORD EXCEPTIONS
 These are not all the exceptions related to `Coord` in the application. `chess.coord` package only has exceptions
 organic to:
-    * `Coord`
-    * `CoordBuilder`
-    * `CoordValidator`
+  * `Coord`
+  * `CoordBuilder`
+  * `CoordValidator`
 
 All exceptions in `chess.coord` package have static fields:
-    - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
-    - `DFAULT_MESSAGE`: A sentence describing the err. Use an err's `DEFAULT_MESSAGE`
+  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
+  - `DFAULT_MESSAGE`: A sentence describing the err. Use an err's `DEFAULT_MESSAGE`
 For consistency across the application.
 
 ### LIST OF EXCEPTIONS:
-    * `CoordException`: Superclass for Coord-related exceptions
-    * `NullCoordException`: Raised if a coordinate is null
-    * `InvalidCoordException`: Raised if coordinate validate fails
-    * `NullCoordValidatorException`: Raised if a CoordValidator is null
-    * `CoordBuilderException`: Wrapper for exceptions raised by CoordBuilder
-    * `NullCoordBuilderException`: Raised if a CoordBuilder is null
-    * `NullRowException`: Raised if a row is null (Coord cannot be created)
-    * `RowBelowBoundsException`: Raised if row < 0
-    * `RowAboveBoundsException`: Raised if row >= ROW_SIZE
-    * `NullColumnException`: Raised if a column is null (Coord cannot be created)
-    * `ColumnBelowBoundsException`: Raised if column < 0
-    * `ColumnAboveBoundsException`: Raised if column >= COLUMN_SIZE
+  * `CoordException`: Superclass for Coord-related exceptions
+  * `NullCoordException`: Raised if a coordinate is null
+  * `InvalidCoordException`: Raised if coordinate validate fails
+  * `NullCoordValidatorException`: Raised if a CoordValidator is null
+  * `CoordBuilderException`: Wrapper for exceptions raised by CoordBuilder
+  * `NullCoordBuilderException`: Raised if a CoordBuilder is null
+  * `NullRowException`: Raised if a row is null (Coord cannot be created)
+  * `RowBelowBoundsException`: Raised if row < 0
+  * `RowAboveBoundsException`: Raised if row >= ROW_SIZE
+  * `NullColumnException`: Raised if a column is null (Coord cannot be created)
+  * `ColumnBelowBoundsException`: Raised if column < 0
+  * `ColumnAboveBoundsException`: Raised if column >= COLUMN_SIZE
 
 ### COORD EXCEPTION USAGE EXAMPLES
 These examples show recommended workflows with `Coord` exceptions.
@@ -63,12 +63,12 @@ from chess.coord import Coord, NullCoordException, NullRowException
 
 build_outcome = CoordBuilder.build(1, "BK", King(), black_team)
 if not build_outcome.is_success():
-    raise build_outcome.err
+  raise build_outcome.err
 coord = cast(KingCoord, build_outcome.payload)
 
 coord = None
 if coord is None:
-    raise NullCoordException(NullCoordException.DEFAULT_MESSAGE)
+  raise NullCoordException(NullCoordException.DEFAULT_MESSAGE)
 coord.positions.push_coord(coord)
 ```
 """
@@ -86,26 +86,26 @@ __author__ = 'Banji Lawal'
 __package_name__ = 'chess.coord'
 
 __all__ = [
-    # Core classes
-    'Coord',
-    'CoordBuilder',
-    'CoordException',
-    'CoordValidator',
+  # Core classes
+  'Coord',
+  'CoordBuilder',
+  'CoordException',
+  'CoordValidator',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info'
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

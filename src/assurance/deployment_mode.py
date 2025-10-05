@@ -3,14 +3,14 @@ import logging
 
 
 class Deployment(Enum):
-    DEBUG = auto()
-    PRODUCTION = auto()
+  DEBUG = auto()
+  PRODUCTION = auto()
 
-    def handle_error(self, error: Exception):
-        logger = logging.getLogger("AppLog")
+  def handle_error(self, error: Exception):
+    logger = logging.getLogger("AppLog")
 
-        if self == Deployment.DEBUG:
-            logger.exception("[EXCEPTION]", exec_info=error)
-            raise RuntimeError(error)
-        else:
-            logger.warning(f"[WARNING]: {str(error)}")
+    if self == Deployment.DEBUG:
+      logger.exception("[EXCEPTION]", exec_info=error)
+      raise RuntimeError(error)
+    else:
+      logger.warning(f"[WARNING]: {str(error)}")

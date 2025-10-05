@@ -18,58 +18,58 @@ from chess.commander import Commander
 
 @auto_id
 class Arena:
+  """
+  <WHAT_CLASS_DOES>.
+
+  Attributes:
+    `_attribute` (`data_type`): <sentence_if_necessary>
+  """
+
+  _id: int
+  _white_owner: Commander
+  _black_owner: Commander
+  _chess_board: Board
+
+  def __init__(self, white_owner: Commander, black_owner: Commander, chess_board: Board):
     """
-    <WHAT_CLASS_DOES>.
+    <METHOD_ACTION>
 
-    Attributes:
-        `_attribute` (`data_type`): <sentence_if_necessary>
+    Args:
+      `param` (`DataType`): <sentence_if_necessary>
+
+    Returns:
+
+    Raise:
+    <`ClassException` wraps any exceptions raised. These are:
+      * `ExceptionName`: If <condition_raising>
     """
+    method = "method_name"
 
-    _id: int
-    _white_owner: Commander
-    _black_owner: Commander
-    _chess_board: Board
+    self._white_owner = white_owner
+    self._black_owner = black_owner
+    self._chess_board = chess_board
 
-    def __init__(self, white_owner: Commander, black_owner: Commander, chess_board: Board):
-        """
-        <METHOD_ACTION>
-
-        Args:
-            `param` (`DataType`): <sentence_if_necessary>
-
-        Returns:
-
-        Raise:
-        <`ClassException` wraps any exceptions raised. These are:
-            * `ExceptionName`: If <condition_raising>
-        """
-        method = "method_name"
-
-        self._white_owner = white_owner
-        self._black_owner = black_owner
-        self._chess_board = chess_board
-
-    @property
-    def white_owner(self) -> Commander:
-        return self._white_owner
+  @property
+  def white_owner(self) -> Commander:
+    return self._white_owner
 
 
-    @property
-    def black_owner(self) -> Commander:
-        return self._black_owner
+  @property
+  def black_owner(self) -> Commander:
+    return self._black_owner
 
 
-    @property
-    def chess_board(self) -> Board:
-        return self._chess_board
+  @property
+  def chess_board(self) -> Board:
+    return self._chess_board
 
 
-    def execute_move(self, move: Move):
-        self._board.capture_square(move.team_member, move.destination)
+  def execute_move(self, move: Move):
+    self._board.capture_square(move.team_member, move.destination)
 
 
-    def survey_board(self, cybernaut: CyberneticCommander):
-        cybernaut.engine._scout_master.send_scouts(cybernaut, self._chess_board)
+  def survey_board(self, cybernaut: CyberneticCommander):
+    cybernaut.engine._scout_master.send_scouts(cybernaut, self._chess_board)
 
 
 

@@ -3,17 +3,17 @@
 Common Package - Objects used frequently and globally accross packages
 
 PURPOSE:
-    Contains commonly used objects and utilites
+  Contains commonly used objects and utilites
 
 CORE CLASSES:
-    Event, Result, GameColor, MousePlacementStatus
+  Event, Result, GameColor, MousePlacementStatus
 
 CONVENIENCE ALIASES:
-    MousePlacement: Alias for MousePlacementStatus
+  MousePlacement: Alias for MousePlacementStatus
 
 USAGE:
-    >>>
-    >>>
+  >>>
+  >>>
 
 VERSION: 1.0.0
 AUTHOR: Banji Lawal
@@ -30,24 +30,24 @@ __package_name__ = 'chess.system.actor'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'ActorValidator',
+  # Core classes
+  'ActorValidator',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    '''Return basic package information.'''
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  '''Return basic package information.'''
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }
 

@@ -8,140 +8,140 @@ from chess.square import Square, SquareValidator
 from chess.system import BuildResult, ExecutionContext, IdValidator
 from chess.piece import Piece, KingPiece, CombatantPiece, PieceValidator
 from chess.event import (
-    OccupationEvent, ScanEvent, AttackEvent, CircularOccupationException, OccupationEventBuilderException
+  OccupationEvent, ScanEvent, AttackEvent, CircularOccupationException, OccupationEventBuilderException
 )
 
 
 class OccupationEventBuilder(Enum):
+  """
+  Responsible for safely constructing `OccupationEvent` instances.
+
+  `OccupationEventBuilder` ensures that `OccupationEvent` objects are always created successfully by performing comprehensive validate
+   checks during construction. This separates the responsibility of building from validating - `OccupationEventBuilder`
+   focuses on creation while `OccupationEventValidator` is used for validating existing `OccupationEvent` instances that are passed
+   around the system.
+
+  The build runs through all validate checks individually to guarantee that any `OccupationEvent` instance it produces
+  meets all required specifications before construction completes
+
+  Usage:
+    ```python
+    ```
+
+  See Also:
+    `OccupationEvent`: The data structure being constructed
+    `OccupationEventValidator`: Used for validating existing `OccupationEvent` instances
+    `BuildResult`: Return type containing the built `OccupationEvent` or error information
+  """
+
+  @staticmethod
+  def build(event_id: int, actor: Piece, destination_square: Square, context: ExecutionContext) -> BuildResult:
     """
-    Responsible for safely constructing `OccupationEvent` instances.
+    Constructs a new `OccupationEvent` instance with comprehensive checks on the parameters and states during the
+    build process.
 
-    `OccupationEventBuilder` ensures that `OccupationEvent` objects are always created successfully by performing comprehensive validate
-     checks during construction. This separates the responsibility of building from validating - `OccupationEventBuilder` 
-     focuses on creation while `OccupationEventValidator` is used for validating existing `OccupationEvent` instances that are passed 
-     around the system.
+    Performs individual validate checks on each component to ensure the resulting `OccupationEvent` meets all
+    specifications. If all checks are passed, a `OccupationEvent` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `OccupationEvent` instance. This method guarantees if a `BuildResult`
+    with a successful status is returned, the contained `OccupationEvent` is valid and ready for use.
 
-    The build runs through all validate checks individually to guarantee that any `OccupationEvent` instance it produces
-    meets all required specifications before construction completes
-    
-    Usage:
-        ```python
-        ```
-    
-    See Also:
-        `OccupationEvent`: The data structure being constructed
-        `OccupationEventValidator`: Used for validating existing `OccupationEvent` instances
-        `BuildResult`: Return type containing the built `OccupationEvent` or error information
+    Args:
+      `event_id` (`int`): The unique id for the occupationEvent. Must pass `IdValidator` checks.
+      `actor` (`Piece`): Must pass `PieceValidator` checks.
+      `destination_`square` (`Square`): The `square` which determines how the occupationEvent moves and its capture value.
+      `context` (`ExecutionContext`): Specifies if the `occupationEvent` is white or black.
+
+    Returns:
+      BuildResult[OccupationEvent]: A `BuildResult` containing either:
+        - On success: A valid `OccupationEvent` instance in the payload
+        - On failure: Error information and error details
+
+    Raises:
+      OccupationEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
+      This includes:
+        * `InvalidIdException`: if `event_id` fails validate checks
+        * `ActorValidationException`: if `actor` fails validate checks
+        * `InvalidSquareException`: if `square` fails validate checks
+        * `InvalidContextException`: if `context` fails validate checks
+        * `InvalidContextAssignmentException`: If `occupationEvent.context` is different from `context` parameter
+        * `FullSquareQuotaException`: If the `context` has no empty slots for the `occupationEvent.square`
+        * `FullSquareQuotaException`: If `occupationEvent.context` is equal to `context` parameter but `context.roster` still does
+          not have the occupationEvent
+
+    Note:
+      The build runs through all the checks on parameters and state to guarantee only a valid `OccupationEvent` is
+      created, while `OccupationEventValidator` is used for validating `OccupationEvent` instances that are passed around after
+      creating. This separation of concerns makes the validate and building independent of each other and
+      simplifies maintenance.
+
+    Example:
+      ```python
+      ```
     """
+    method = "OccupationEventBuilder.build"
 
-    @staticmethod
-    def build(event_id: int, actor: Piece, destination_square: Square, context: ExecutionContext) -> BuildResult:
-        """
-        Constructs a new `OccupationEvent` instance with comprehensive checks on the parameters and states during the
-        build process.
+    try:
+      id_validation = IdValidator.validate(event_id)
+      if not id_validation.is_success():
+        ThrowHelper.propagate_error(OccupationEventBuilder, id_validation.exception)
 
-        Performs individual validate checks on each component to ensure the resulting `OccupationEvent` meets all
-        specifications. If all checks are passed, a `OccupationEvent` instance will be returned. It is not necessary to perform 
-        any additional validate checks on the returned `OccupationEvent` instance. This method guarantees if a `BuildResult`
-        with a successful status is returned, the contained `OccupationEvent` is valid and ready for use.
+      actor_validation = PieceValidator.validate(actor)
+      if not actor_validation.is_success():
+        ThrowHelper.propagate_error(OccupationEventBuilder, actor_validation.exception)
 
-        Args:
-            `event_id` (`int`): The unique id for the occupationEvent. Must pass `IdValidator` checks.
-            `actor` (`Piece`): Must pass `PieceValidator` checks.
-            `destination_`square` (`Square`): The `square` which determines how the occupationEvent moves and its capture value.
-            `context` (`ExecutionContext`): Specifies if the `occupationEvent` is white or black.
+      square_validation = SquareValidator.validate(destination_square)
+      if not square_validation.is_success():
+        ThrowHelper.propagate_error(OccupationEventBuilder, square_validation.exception)
 
-        Returns:
-            BuildResult[OccupationEvent]: A `BuildResult` containing either:
-                - On success: A valid `OccupationEvent` instance in the payload
-                - On failure: Error information and error details
+      # context_validation = ContextValidator.validate(context)
+      # if not context_validation.is_success():
+      #   RaiserLogger.throw_if_invalid(OccupationEventBuilder, context_validation)
 
-        Raises:
-           OccupationEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
-           This includes:
-                * `InvalidIdException`: if `event_id` fails validate checks
-                * `ActorValidationException`: if `actor` fails validate checks
-                * `InvalidSquareException`: if `square` fails validate checks
-                * `InvalidContextException`: if `context` fails validate checks
-                * `InvalidContextAssignmentException`: If `occupationEvent.context` is different from `context` parameter
-                * `FullSquareQuotaException`: If the `context` has no empty slots for the `occupationEvent.square`
-                * `FullSquareQuotaException`: If `occupationEvent.context` is equal to `context` parameter but `context.roster` still does
-                    not have the occupationEvent
+      if destination_square.coord == actor.current_position:
+        ThrowHelper.propagate_error(
+          OccupationEventBuilder,
+          CircularOccupationException(CircularOccupationException.DEFAULT_MESSAGE)
+        )
 
-        Note:
-            The build runs through all the checks on parameters and state to guarantee only a valid `OccupationEvent` is
-            created, while `OccupationEventValidator` is used for validating `OccupationEvent` instances that are passed around after 
-            creating. This separation of concerns makes the validate and building independent of each other and
-            simplifies maintenance.
+      destination_occupant = destination_square.occupant
+      if destination_occupant is None:
+        return BuildResult(payload=OccupationEvent(
+            event_id=event_id, actor=actor, destination_square=destination_square
+          )
+        )
 
-        Example:
-            ```python
-            ```
-        """
-        method = "OccupationEventBuilder.build"
+      if not actor.is_enemy(destination_occupant) or (
+        actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
+      ):
+        return BuildResult(payload=ScanEvent(
+          event_id=event_id,
+          actor=actor,
+          subject=destination_occupant,
+          destination_square=destination_square
+          )
+        )
 
-        try:
-            id_validation = IdValidator.validate(event_id)
-            if not id_validation.is_success():
-                ThrowHelper.propagate_error(OccupationEventBuilder, id_validation.exception)
+      board_search_result = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
+      if not board_search_result.is_success():
+        return BuildResult(exception=SearchException(
+          "Search did not find the square. This should not happen."
+          )
+        )
 
-            actor_validation = PieceValidator.validate(actor)
-            if not actor_validation.is_success():
-                ThrowHelper.propagate_error(OccupationEventBuilder, actor_validation.exception)
+      actor_square = cast(Square, board_search_result.payload)
 
-            square_validation = SquareValidator.validate(destination_square)
-            if not square_validation.is_success():
-                ThrowHelper.propagate_error(OccupationEventBuilder, square_validation.exception)
+      if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
+        return BuildResult(payload=AttackEvent(
+          event_id=event_id,
+          actor=actor,
+          enemy=destination_occupant,
+          actor_square=actor_square,
+          destination_square=destination_square,
+          board=context.board
+        )
+      )
 
-            # context_validation = ContextValidator.validate(context)
-            # if not context_validation.is_success():
-            #     RaiserLogger.throw_if_invalid(OccupationEventBuilder, context_validation)
-
-            if destination_square.coord == actor.current_position:
-                ThrowHelper.propagate_error(
-                    OccupationEventBuilder,
-                    CircularOccupationException(CircularOccupationException.DEFAULT_MESSAGE)
-                )
-
-            destination_occupant = destination_square.occupant
-            if destination_occupant is None:
-                return BuildResult(payload=OccupationEvent(
-                        event_id=event_id, actor=actor, destination_square=destination_square
-                    )
-                )
-
-            if not actor.is_enemy(destination_occupant) or (
-                actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
-            ):
-                return BuildResult(payload=ScanEvent(
-                    event_id=event_id,
-                    actor=actor,
-                    subject=destination_occupant,
-                    destination_square=destination_square
-                    )
-                )
-
-            board_search_result = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
-            if not board_search_result.is_success():
-                return BuildResult(exception=SearchException(
-                    "Search did not find the square. This should not happen."
-                    )
-                )
-
-            actor_square = cast(Square, board_search_result.payload)
-
-            if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
-                return BuildResult(payload=AttackEvent(
-                    event_id=event_id,
-                    actor=actor,
-                    enemy=destination_occupant,
-                    actor_square=actor_square,
-                    destination_square=destination_square,
-                    board=context.board
-                )
-            )
-
-        except Exception as e:
-            raise (OccupationEventBuilderException
-                   (f"{method}: {OccupationEventBuilderException.DEFAULT_MESSAGE}")
-            )
+    except Exception as e:
+      raise (OccupationEventBuilderException
+          (f"{method}: {OccupationEventBuilderException.DEFAULT_MESSAGE}")
+      )

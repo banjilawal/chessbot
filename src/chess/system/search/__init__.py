@@ -10,13 +10,13 @@ version: 1.0.0
 Super class for `Search` objects and their components.
 
  # EXPORTS
-    - `Search`: The base class for `Search` objects.
-    - `SearchResult`: Data class returned by `Search` instances
-    - `SearchContext`: Abstract super class for `SearchContext` objects.
-    - All exceptions in the `exception` subpackage
+  - `Search`: The base class for `Search` objects.
+  - `SearchResult`: Data class returned by `Search` instances
+  - `SearchContext`: Abstract super class for `SearchContext` objects.
+  - All exceptions in the `exception` subpackage
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.exception`: Defines all custom exceptions for occupation operations.
 
 
 # USAGE EXAMPLES
@@ -40,25 +40,25 @@ __package_name__ = 'chess.system.search'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'Search',
-    'SearchResult',
-    'SearchContext',
+  # Core classes
+  'Search',
+  'SearchResult',
+  'SearchContext',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports':__all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports':__all__
+  }

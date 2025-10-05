@@ -27,7 +27,7 @@ To use this package, import the desired classes and perform square-related opera
 >>> coord = Coord(row=2, column=1)
 >>> build_outcome = SquareBuilder.build(square_id=1, name="B2", coord=coord)
 >>> if not build_outcome.is_success():
->>>    raise build_outcome.err
+>>>  raise build_outcome.err
 >>> square = cast(Square, build_outcome.payload)
 >>> # Validate the square
 >>> validate = SquareValidator.validate(square)
@@ -48,28 +48,28 @@ __package_name__ = "chess.square"
 
 
 __all__ = [
-    # Core Packages
-    "Square",
-    "SquareValidator",
-    'SquareBuilder',
+  # Core Packages
+  "Square",
+  "SquareValidator",
+  'SquareBuilder',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    "__version__",
-    "__author__",
-    "package_info"
+  # Package metadata and utilities
+  "__version__",
+  "__author__",
+  "package_info"
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        "name": __package_name__,
-        "version": __version__,
-        "author": __author__,
-        "exports": __all__
-    }
+  """Return basic package information."""
+  return {
+    "name": __package_name__,
+    "version": __version__,
+    "author": __author__,
+    "exports": __all__
+  }
 
 
 

@@ -26,12 +26,12 @@ To use this package, import the desired classes and perform scalar-related opera
 >>> # Create a scalar instance
 >>> build_outcome = ScalarBuilder.build(value=1)
 >>> if not build_outcome.is_success():
->>>     raise build_outcome.err
+>>>   raise build_outcome.err
 >>> validate = ScalarValidator.validate(build_outcome.payload)
 >>>
 >>> # Validating the candidate
 >>> if not validate.is_success():
->>>     raise validate.err
+>>>   raise validate.err
 >>> c = cast(Scalar, validate.payload)
 >>>
 >>> # Use the scalar to transform a vector
@@ -56,20 +56,20 @@ These exceptions can be imported and raised from within the scalar-related code 
 >>> from chess.scalar import Scalar, NullScalarException, ScalarAboveBoundsException
 >>>
 >>> try:
-...     # This will raise a NullScalarException
-...     my_scalar = None
-...     if my_scalar is None:
-...         raise NullScalarException('Scalar cannot be null.')
+...   # This will raise a NullScalarException
+...   my_scalar = None
+...   if my_scalar is None:
+...     raise NullScalarException('Scalar cannot be null.')
 ... except NullScalarException as e:
-...     print(f'Error: {e}')
+...   print(f'Error: {e}')
 ...
 >>> try:
-...     # This will raise a ScalarAboveUpperBoundException
+...   # This will raise a ScalarAboveUpperBoundException
 ...
-...     from chess.system import ROW_SIZE
-...     my_scalar = Scalar(value=(ROW_SIZE + 1))
+...   from chess.system import ROW_SIZE
+...   my_scalar = Scalar(value=(ROW_SIZE + 1))
 ... except ScalarAboveBoundsException as e:
-...     print(f'Error: {e}')
+...   print(f'Error: {e}')
 
 ---
 """
@@ -77,7 +77,7 @@ These exceptions can be imported and raised from within the scalar-related code 
 # Include subpackages
 from .exception import *
 
-# Core  classes
+# Core classes
 from .scalar import Scalar
 from .builder import ScalarBuilder
 from .validator import ScalarValidator
@@ -88,25 +88,25 @@ __author__ = 'Banji Lawal'
 __package_name__ = 'chess.scalar'
 
 __all__ = [
-    # Core classes
-    'Scalar',
-    'ScalarBuilder',
-    'ScalarValidator',
+  # Core classes
+  'Scalar',
+  'ScalarBuilder',
+  'ScalarValidator',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info'
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    '''Return basic package information.'''
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  '''Return basic package information.'''
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

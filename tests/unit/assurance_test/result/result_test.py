@@ -7,33 +7,33 @@ from assurance.exception.empty.result import EmptyResultConstructorException
 class ResultTest(unittest.TestCase):
 
 
-    def test_construct_result_with_params_rasies_error(self):
+  def test_construct_result_with_params_rasies_error(self):
 
-        with self.assertRaises(EmptyResultConstructorException):
-            Result(payload=None, exception=None)
+    with self.assertRaises(EmptyResultConstructorException):
+      Result(payload=None, exception=None)
 
-    def test_construct_result_with_payload_and_exception_raises_error(self):
-        mock_payload = Mock()
-        mock_exception = Mock()
+  def test_construct_result_with_payload_and_exception_raises_error(self):
+    mock_payload = Mock()
+    mock_exception = Mock()
 
-        with self.assertRaises(ResultPayloadConflictException):
-            Result(payload=mock_payload, exception=mock_exception)
+    with self.assertRaises(ResultPayloadConflictException):
+      Result(payload=mock_payload, exception=mock_exception)
 
 
-    def test_construct_result_with_payload_only_succeeds(self):
-        mock_payload = Mock()
-        result = Result(payload=mock_payload, exception=None)
+  def test_construct_result_with_payload_only_succeeds(self):
+    mock_payload = Mock()
+    result = Result(payload=mock_payload, exception=None)
 
-        self.assertEqual(result._payload, mock_payload)
-        self.assertIsNone(result._exception)
+    self.assertEqual(result._payload, mock_payload)
+    self.assertIsNone(result._exception)
 
-    def test_construct_result_with_exception_only_succeeds(self):
-        mock_exception = Mock()
-        result = Result(payload=None, exception=mock_exception)
+  def test_construct_result_with_exception_only_succeeds(self):
+    mock_exception = Mock()
+    result = Result(payload=None, exception=mock_exception)
 
-        self.assertIsNone(result._payload, None)
-        self.assertEqual(result._exception, mock_exception)
+    self.assertIsNone(result._payload, None)
+    self.assertEqual(result._exception, mock_exception)
 
 
 if __name__ == '__main__':
-    unittest.main()
+  unittest.main()

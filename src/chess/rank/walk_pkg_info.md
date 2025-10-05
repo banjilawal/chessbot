@@ -12,23 +12,23 @@ Tests if `ChessPiece` instance can reach a destination with constraints on motio
 
 ## Class Relationship Diagram
 ```plantuml
-    @startuml
-    title Relationships Between Classes Implementing Walk Interface
-    
-    Interface Walk {
-      + is_walkable(chess_piece: ChessPiece, destination: Coordinate): bool
-    }
-    
-    Class KingWalk {}
-    Class QueenWalk {}
-    Class KnightWalk {}
-    Class BishopWalk {}
-    Class CastleWalk {}
-    Class PawnWalk {
-      - can_advance(chess_piece: ChessPiece, destination: Coordinate): bool
-      - can_attack(chess_piece: ChessPiece, desqtination: Coordinate): bool
-    }
-    
+  @startuml
+  title Relationships Between Classes Implementing Walk Interface
+  
+  Interface Walk {
+   + is_walkable(chess_piece: ChessPiece, destination: Coordinate): bool
+  }
+  
+  Class KingWalk {}
+  Class QueenWalk {}
+  Class KnightWalk {}
+  Class BishopWalk {}
+  Class CastleWalk {}
+  Class PawnWalk {
+   - can_advance(chess_piece: ChessPiece, destination: Coordinate): bool
+   - can_attack(chess_piece: ChessPiece, desqtination: Coordinate): bool
+  }
+   
     Walk <-left- KingWalk
     Walk <-right- QueenWalk
     

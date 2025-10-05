@@ -17,11 +17,11 @@ Every `Rank` subclass (e.g., `PawnRank`, `KnightRank`) implements:
 
 ```ts
 abstract class Rank {
-  readonly rank_name: string;
+ readonly rank_name: string;
 
-  constructor(rank_name: string) {
-    this.rank_name = rank_name;
-  }
+ constructor(rank_name: string) {
+  this.rank_name = rank_name;
+ }
 
-  abstract isValidMove(from: Coordinate, to: Coordinate, piece: ChessPiece, board: Board): boolean;
+ abstract isValidMove(from: Coordinate, to: Coordinate, piece: ChessPiece, board: Board): boolean;
 }

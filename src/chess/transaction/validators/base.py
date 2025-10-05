@@ -8,7 +8,7 @@ T = TypeVar('T')
 class RequestValidator(ABC):
 
 
-    @staticmethod
-    @abstractmethod
-    def validate(t: Generic[T]) -> TransactionResult:
-        pass
+  @staticmethod
+  @abstractmethod
+  def validate(t: Generic[T]) -> TransactionResult:
+    pass

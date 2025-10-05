@@ -9,7 +9,7 @@ C = TypeVar("C", bound='SearchContext')
 
 class Search(ABC, Generic[T,C]):
 
-    @classmethod
-    @abstractmethod
-    def search(cls, context: C) -> SearchResult[T]:
-        pass
+  @classmethod
+  @abstractmethod
+  def search(cls, context: C) -> SearchResult[T]:
+    pass

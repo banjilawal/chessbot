@@ -1,6 +1,6 @@
 # ChessBot
 
-ChessBot is a Python-based chess engine and interactive game environment designed with a strong emphasis on **clean architecture**, **modularity**, and **extensibility**.  
+ChessBot is a Python-based chess engine and interactive game environment designed with a strong emphasis on **clean architecture**, **modularity**, and **extensibility**. 
 It separates **movement logic**, **piece/rank definitions**, and **board management**, enabling both human-vs-human and AI-vs-human gameplay.
 
 ---
@@ -20,27 +20,27 @@ The design is built around **layered responsibilities**:
 
 ### **Core Entities**
 - **`ChessPiece`**
-  - Holds unique piece ID, immutable `rank`, and `position_history`.
-  - Maintains `captured` state.
-  - Enforces that the `rank` matches its piece type at construction.
-  - Implements capture handling through a `captor` reference.
+ - Holds unique piece ID, immutable `rank`, and `position_history`.
+ - Maintains `captured` state.
+ - Enforces that the `rank` matches its piece type at construction.
+ - Implements capture handling through a `captor` reference.
 
 - **`Rank`**
-  - Encapsulates movement rules via `MovementStrategy`.
-  - Includes methods like `path_to_coordinate_exists()` and `line_fits_definition()`.
-  - Special ranks (e.g., `Pawn`, `King`) implement `RankPromotable` for promotions.
+ - Encapsulates movement rules via `MovementStrategy`.
+ - Includes methods like `path_to_coordinate_exists()` and `line_fits_definition()`.
+ - Special ranks (e.g., `Pawn`, `King`) implement `RankPromotable` for promotions.
 
 - **`Board`**
-  - Stores and manages `Square` objects, each holding coordinates and optional `ChessPiece`.
-  - Performs **bounds checking** and manages piece movement/capture.
-  - Does not contain game logic — purely spatial awareness.
+ - Stores and manages `Square` objects, each holding coordinates and optional `ChessPiece`.
+ - Performs **bounds checking** and manages piece movement/capture.
+ - Does not contain game logic — purely spatial awareness.
 
 - **`Player`**
-  - Identified by ID, name, and `Team`.
-  - Team handles prisoners (captured enemy pieces).
+ - Identified by ID, name, and `Team`.
+ - Team handles prisoners (captured enemy pieces).
 
 - **`CaptureRecord`**
-  - Records the prisoner, captor, and capture square for game history.
+ - Records the prisoner, captor, and capture square for game history.
 
 ---
 
@@ -67,15 +67,15 @@ The `DestinationSelector` rates legal moves:
 
 ## ✅ Validation & Transactions
 - **Move Validation**
-  - Prevents friendly fire (cannot capture your own pieces).
-  - Ensures destination is within rank’s movement definition.
-  - Verifies path clearance for sliding pieces (rook, bishop, queen).
-  - Confirms legality before updating `position_history`.
+ - Prevents friendly fire (cannot capture your own pieces).
+ - Ensures destination is within rank’s movement definition.
+ - Verifies path clearance for sliding pieces (rook, bishop, queen).
+ - Confirms legality before updating `position_history`.
 
 - **Transaction Management**
-  - Every move is wrapped in a transaction-like structure for safe rollback.
-  - `TransactionResult` stores method name, outcome, and error details.
-  - Supports a one-move-per-player undo system.
+ - Every move is wrapped in a transaction-like structure for safe rollback.
+ - `TransactionResult` stores method name, outcome, and error details.
+ - Supports a one-move-per-player undo system.
 
 ---
 

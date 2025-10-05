@@ -7,7 +7,7 @@ T = TypeVar('T')
 
 class Builder(ABC, Generic[T]):
 
-    @classmethod
-    @abstractmethod
-    def build(cls, *args, **kwargs) -> BuildResult[T]:
-        pass
+  @classmethod
+  @abstractmethod
+  def build(cls, *args, **kwargs) -> BuildResult[T]:
+    pass

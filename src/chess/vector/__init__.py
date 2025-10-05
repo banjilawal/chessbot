@@ -28,7 +28,7 @@ To use this package, import the desired classes and perform operations.
 >>> # Validator.validate returns a Result
 >>> validate = VectorValidator.validate(candidate)
 >>> if not validate.is_success():
->>>     raise validate.err
+>>>   raise validate.err
 >>> # On success always cast the payload to its type.
 >>> vector = cast(Vector, validate.payload)
 
@@ -56,16 +56,16 @@ to handle different error conditions gracefully. For example:
 >>> from chess.vector import Vector
 >>>
 >>> try:
-...     # This will raise a VectorBelowBoundsException
-...     vector = Vector(x=-100, y=3)
+...   # This will raise a VectorBelowBoundsException
+...   vector = Vector(x=-100, y=3)
 ... except VectorBelowBoundsException as e:
-...     print(f'Error: {e}')
+...   print(f'Error: {e}')
 ...
 >>> try:
-...     # This will raise an XComponentNullException
-...     vector = Vector(x=None, y=3)
+...   # This will raise an XComponentNullException
+...   vector = Vector(x=None, y=3)
 ... except NullXComponentException as e:
-...     print(f'Error: {e}')
+...   print(f'Error: {e}')
 
 Classes, modules and functions that require a not-null `Vector` raise `NullVectorException`. A `Vector` cannot raise
 `NullVectorException` on itself.
@@ -73,7 +73,7 @@ Classes, modules and functions that require a not-null `Vector` raise `NullVecto
 ---
 """
 
-from .exception import  *
+from .exception import *
 
 # Core Vector classes
 from .vector import Vector
@@ -87,26 +87,26 @@ __author__ = 'Banji Lawal'
 __package_name__ = 'chess.vector'
 
 __all__ = [
-    # Core classes
-    'Vector',
-    'VectorBuilder',
-    'VectorValidator',
+  # Core classes
+  'Vector',
+  'VectorBuilder',
+  'VectorValidator',
 
-    *exception.__all__,
+  *exception.__all__,
 
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info'
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    '''Return basic package information.'''
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  '''Return basic package information.'''
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

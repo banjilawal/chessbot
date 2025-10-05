@@ -11,10 +11,10 @@ The `Team` class represents one side in the chess game, responsible for tracking
 ```python
 @dataclass(frozen=True)
 class Team:
-    color: GameColor
-    starting_row: int
-    advancement_direction: int  # +1 or -1
-    goal_row: int
-    # piece_registry is mutable but not None
-    # Maps rank_name + number → ChessPiece or None if captured
-    piece_registry: dict[str, Optional[ChessPiece]]
+  color: GameColor
+  starting_row: int
+  advancement_direction: int # +1 or -1
+  goal_row: int
+  # piece_registry is mutable but not None
+  # Maps rank_name + number → ChessPiece or None if captured
+  piece_registry: dict[str, Optional[ChessPiece]]

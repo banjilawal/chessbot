@@ -11,32 +11,32 @@ from typing import TypeVar, cast
 from chess.system import Result
 from chess.system.validate.validator import Validator
 from chess.rank import (
-    Rank, King, Pawn, Knight, Bishop, Rook, Queen, RankSpec,
-    InvalidPawnException,
-    InvalidKnightException, InvalidBishopException,
-    InvalidRookException, InvalidQueenException,
-    NullRankException, InvalidRankException,
-    UnRecognizedConcreteRankException, InvalidKingException
+  Rank, King, Pawn, Knight, Bishop, Rook, Queen, RankSpec,
+  InvalidPawnException,
+  InvalidKnightException, InvalidBishopException,
+  InvalidRookException, InvalidQueenException,
+  NullRankException, InvalidRankException,
+  UnRecognizedConcreteRankException, InvalidKingException
 )
 
 T = TypeVar('T')
 
 class RankValidator(Validator):
 
-    @staticmethod
-    def validate(t: Rank) -> Result[Rank]:
-        method = "Rank.validate"
-        try:
-            if t is None:
-                raise NullRankException(
-                    f"{method} {NullRankException.DEFAULT_MESSAGE}"
-                )
+  @staticmethod
+  def validate(t: Rank) -> Result[Rank]:
+    method = "Rank.validate"
+    try:
+      if t is None:
+        raise NullRankException(
+          f"{method} {NullRankException.DEFAULT_MESSAGE}"
+        )
 
-            if not isinstance(t, (King, Pawn, Knight, Bishop, Rook, Queen)):
-                raise TypeError(f"{method} Expected a Rank subclass, got {type(t).__name__}")
+      if not isinstance(t, (King, Pawn, Knight, Bishop, Rook, Queen)):
+        raise TypeError(f"{method} Expected a Rank subclass, got {type(t).__name__}")
 
-            if isinstance(t, King):
-                return RankValidator._validate_king_spec(cast(King, t))
+      if isinstance(t, King):
+             return RankValidator._validate_king_spec(cast(King, t))
             elif isinstance(t, Pawn):
                 return RankValidator._validate_pawn_spec(cast(Pawn, t))
             elif isinstance(t, Knight):

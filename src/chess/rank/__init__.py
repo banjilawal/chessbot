@@ -75,14 +75,14 @@ invalid moves gracefully.
 # >>> from chess.rank import PawnException
 # >>>
 # >>> def move_pawn(start_pos, end_pos):
-# ...     # ... some validate logic
-# ...     if not is_valid_pawn_move:
-# ...         raise PawnException('Pawn cannot move in this way.')
+# ...   # ... some validate logic
+# ...   if not is_valid_pawn_move:
+# ...     raise PawnException('Pawn cannot move in this way.')
 # ...
 # >>> try:
-# ...     move_pawn(start_coord, end_coord)
+# ...   move_pawn(start_coord, end_coord)
 # ... except PawnException as e:
-# ...     print(f'Invalid Pawn Move: {e}')
+# ...   print(f'Invalid Pawn Move: {e}')
 
 ---
 """
@@ -113,31 +113,31 @@ __package_name__ = 'chess.rank'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'Rank',
-    'King',
-    'Pawn',
-    'Bishop',
-    'Knight',
-    'Rook',
-    'Queen',
-    'RankSpec',
-    'RankValidator',
+  # Core classes
+  'Rank',
+  'King',
+  'Pawn',
+  'Bishop',
+  'Knight',
+  'Rook',
+  'Queen',
+  'RankSpec',
+  'RankValidator',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

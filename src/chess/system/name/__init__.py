@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 
 # PURPOSE
-    Name validate
+  Name validate
 
 ## CORE CLASSES:
 * `NameValidator`
@@ -21,8 +21,8 @@ version: 1.0.0
 * `InvalidNameException`
 
 USAGE:
-    >>>
-    >>>
+  >>>
+  >>>
 """
 
 
@@ -37,23 +37,23 @@ __package_name__ = 'chess.system.name'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'NameValidator',
+  # Core classes
+  'NameValidator',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    '''Return basic package information.'''
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  '''Return basic package information.'''
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

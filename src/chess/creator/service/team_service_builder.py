@@ -4,7 +4,7 @@ from chess.side.service import TeamService
 
 class TeamServiceBuilder:
 
-    @staticmethod
-    def assemble() -> TeamService:
-        teams = TeamFactory.assemble()
-        return TeamService(teams)
+  @staticmethod
+  def assemble() -> TeamService:
+    teams = TeamFactory.assemble()
+    return TeamService(teams)

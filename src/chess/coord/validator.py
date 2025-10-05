@@ -5,8 +5,8 @@ from chess.result import Result
 from chess.system.validate.validator import Validator, T
 from chess.system.config import ROW_SIZE, COLUMN_SIZE
 from chess.exception.coord_exception import (
-    RowBelowBoundsException, RowAboveBoundsException,
-    ColumnBelowBoundsException, ColumnAboveBoundsException
+  RowBelowBoundsException, RowAboveBoundsException,
+  ColumnBelowBoundsException, ColumnAboveBoundsException
 )
 
 from chess.coord.coord_exception.null.coord_null import NullCoordException
@@ -16,130 +16,130 @@ from chess.coord import Coord
 
 
 class CoordValidator(Validator):
+  """
+  Validates existing `Coord` instances that are passed around the system. While `CoordBuilder` ensures
+  valid Coords are created, `CoordValidator` checks `Coord` instances that already exist - whether they
+  came from deserialization, external sources, or need re-validate after modifications. For performance and
+  single source of truth CoordValidator has:
+    - No fields
+    - only static method validate
+
+  Usage:
+    ```python
+    from typing import cast
+    from chess.Coord import Coord, CoordValidator
+
+    # Validate an existing Coord
+    Coord_validation = CoordValidator.validate(candidate)
+    if not Coord_validation.is_success():
+      raise Coord_validation.err
+
+    # Cast the payload to a Coord instance to make sure it will work correctly and to avoid type or
+    # null errors that might be difficult to detect.
+    Coord = cast(Coord, Coord_validation.payload)
+    ```
+
+  Use `CoordBuilder` for construction, `CoordValidator` for verification.
+  """
+
+  @staticmethod
+  def validate(t: Generic[T]) -> Result[Coord]:
     """
-    Validates existing `Coord` instances that are passed around the system. While `CoordBuilder` ensures 
-    valid Coords are created, `CoordValidator` checks `Coord` instances that already exist - whether they
-    came from deserialization, external sources, or need re-validate after modifications. For performance and
-    single source of truth CoordValidator has:
-        - No fields
-        - only static method validate  
-          
-    Usage:
-        ```python
-        from typing import cast
-        from chess.Coord import Coord, CoordValidator
-        
-        # Validate an existing Coord
-        Coord_validation = CoordValidator.validate(candidate)    
-        if not Coord_validation.is_success():
-            raise Coord_validation.err
-            
-        # Cast the payload to a Coord instance to make sure it will work correctly and to avoid type or 
-        # null errors that might be difficult to detect.
-        Coord = cast(Coord, Coord_validation.payload)
-        ```
-    
-    Use `CoordBuilder` for construction, `CoordValidator` for verification.
+    Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validate
+    on a `Coord` instance that already exists, checking type safety, null values, and component bounds.
+    Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies existing `Coord`
+    instances from external sources, deserialization, or after modifications.
+
+    Args:
+    t (Generic[T]): The object to validate, expected to be a Coord instance.
+
+    Returns:
+    Result[Coord]: A Result containing either:
+      - On success: The validated Coord instance in the payload
+      - On failure: Error information and error details
+
+    Raises:
+    InvalidCoordException: Wraps any specification violations including:
+      - NullCoordException: if input is None
+      - TypeError: if input is not a Coord instance
+      - NullXComponentException: if Coord.x is None
+      - RowBelowBoundsException: If coord.row < 0
+      - RowAboveBoundsException: If coord.row >= ROW_SIZE
+      - ColumnBelowBoundsException: If coord.column < 0
+      - ColumnAboveBoundsException: If coord.column>= ROW_SIZE
+
+    Note:
+    *  Use CoordBuilder for creating new Coords with validate,
+    *  use CoordValidator for verifying existing Coord instances.
+
+    Example:
+    ```python
+    from typing import cast
+    from chess.Coord import Coord, CoordValidator
+
+    validate = CoordValidator.validate(candidate)
+    if validate.is_success():
+      raise validate.err
+    Coord = cast(Coord, validate.payload)
+    ```
     """
 
-    @staticmethod
-    def validate(t: Generic[T]) -> Result[Coord]:
-        """
-        Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validate
-        on a `Coord` instance that already exists, checking type safety, null values, and component bounds. 
-        Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies existing `Coord` 
-        instances from external sources, deserialization, or after modifications.
+    method = "CoordValidator.validate"
+    try:
+      """
+      Tests are chained in this specific order for a reason.
+      """
 
-        Args:
-        t (Generic[T]): The object to validate, expected to be a Coord instance.
+      # If t is null no point continuing
+      if t is None:
+        raise NullCoordException(
+          f"{method} NullCoordException.DEFAULT_MESSAGE"
+        )
 
-        Returns:
-        Result[Coord]: A Result containing either:
-            - On success: The validated Coord instance in the payload
-            - On failure: Error information and error details
+      # If cannot cast from t to Coord need to break
+      if not isinstance(t, Coord):
+        raise TypeError(f"{method} Expected a Coord, got {type(t).__name__}")
 
-        Raises:
-        InvalidCoordException: Wraps any specification violations including:
-            - NullCoordException: if input is None
-            - TypeError: if input is not a Coord instance
-            - NullXComponentException: if Coord.x is None
-            - RowBelowBoundsException: If coord.row < 0
-            - RowAboveBoundsException: If coord.row >= ROW_SIZE    
-            - ColumnBelowBoundsException: If coord.column < 0
-            - ColumnAboveBoundsException: If coord.column>= ROW_SIZE
-              
-        Note:
-        *   Use CoordBuilder for creating new Coords with validate,
-        *   use CoordValidator for verifying existing Coord instances.
-        
-        Example:
-        ```python
-        from typing import cast
-        from chess.Coord import Coord, CoordValidator
+      # cast and run checks for the fields
+      coordinate = cast(Coord, t)
 
-        validate = CoordValidator.validate(candidate)
-        if validate.is_success():
-            raise validate.err
-        Coord = cast(Coord, validate.payload)
-        ```
-        """
-        
-        method = "CoordValidator.validate"
-        try:
-            """
-            Tests are chained in this specific order for a reason.
-            """
+      if coordinate.row is None:
+        raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
 
-            # If t is null no point continuing
-            if t is None:
-                raise NullCoordException(
-                    f"{method} NullCoordException.DEFAULT_MESSAGE"
-                )
+      if coordinate.row < 0:
+        raise RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
 
-            # If cannot cast from t to Coord need to break
-            if not isinstance(t, Coord):
-                raise TypeError(f"{method} Expected a Coord, got {type(t).__name__}")
+      if coordinate.row >= ROW_SIZE:
+        raise RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
 
-            # cast and run checks for the fields
-            coordinate = cast(Coord, t)
+      if coordinate.column is None:
+        raise NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}")
 
-            if coordinate.row is None:
-                raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
+      if coordinate.column < 0:
+        raise ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
 
-            if coordinate.row < 0:
-                raise RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
+      if coordinate.column >= COLUMN_SIZE:
+        raise ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
 
-            if coordinate.row >= ROW_SIZE:
-                raise RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
+      # Return the result if checks passed
+      return Result(payload=coordinate)
 
-            if coordinate.column is None:
-                raise NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}")
+    except (
+      TypeError,
+      NullCoordException,
 
-            if coordinate.column < 0:
-                raise ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
+      NullRowException,
+      RowBelowBoundsException,
+      RowAboveBoundsException,
 
-            if coordinate.column >= COLUMN_SIZE:
-                raise ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
+      NullColumnException,
+      ColumnBelowBoundsException,
+      ColumnAboveBoundsException
+    ) as e:
+      raise CoordValidationException(f"{method}: {e}") from e
 
-            # Return the result if checks passed
-            return Result(payload=coordinate)
-
-        except (
-            TypeError,
-            NullCoordException,
-
-            NullRowException,
-            RowBelowBoundsException,
-            RowAboveBoundsException,
-
-            NullColumnException,
-            ColumnBelowBoundsException,
-            ColumnAboveBoundsException
-        ) as e:
-            raise CoordValidationException(f"{method}: {e}") from e
-
-        # Catch any unexpected errors with details about type and message
-        except Exception as e:
-            raise CoordValidationException(
-                f"{method}: Unexpected error ({type(e).__name__}): {e}"
-            ) from e
+    # Catch any unexpected errors with details about type and message
+    except Exception as e:
+      raise CoordValidationException(
+        f"{method}: Unexpected error ({type(e).__name__}): {e}"
+      ) from e

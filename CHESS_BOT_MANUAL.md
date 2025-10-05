@@ -12,9 +12,9 @@ It supports both human players and AI-controlled opponents, with a strong focus 
 3. **Turns**: Players alternate moves. Each player can move one piece per turn.
 4. **Capturing**: Move your piece onto a square occupied by an opponent's piece to capture it.
 5. **Special Rules**:
-   - **Pawn Promotion**: Pawns reaching the opponent’s back rank can be promoted.
-   - **Castling**: Move the king two squares toward a rook, which then moves to the square next to the king.
-   - **En Passant**: Capture a pawn that has just moved two squares forward as if it had only moved one.
+  - **Pawn Promotion**: Pawns reaching the opponent’s back rank can be promoted.
+  - **Castling**: Move the king two squares toward a rook, which then moves to the square next to the king.
+  - **En Passant**: Capture a pawn that has just moved two squares forward as if it had only moved one.
 
 ---
 

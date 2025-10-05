@@ -10,8 +10,8 @@ version: 1.0.0
 Provides the data structures and utilities for storing history of `Piece` object's positions.
 
 ## Classes
-    * `CoordStack`: Coordinate history and management utility. Only the last `Coord` can be removed in a turn.
-    * `CoordStackValidator`: Integrity checks for an existing `CoordStack`.
+  * `CoordStack`: Coordinate history and management utility. Only the last `Coord` can be removed in a turn.
+  * `CoordStackValidator`: Integrity checks for an existing `CoordStack`.
 
 
 ## Usage
@@ -20,10 +20,10 @@ Provides the data structures and utilities for storing history of `Piece` object
 ```
 
 ## EXCEPTIONS
-    * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
-    * `DoubleCoordPushException`: Raised when a `Coord` at the top of the stack is pushed again.
-    * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validate.
-    * `NullCoordStackException`: Raised if a null `CoordStackException` is passed as a parameter.
+  * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
+  * `DoubleCoordPushException`: Raised when a `Coord` at the top of the stack is pushed again.
+  * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validate.
+  * `NullCoordStackException`: Raised if a null `CoordStackException` is passed as a parameter.
 
 ### EXCEPTION USAGE EXAMPLES
 These examples show recommended workflows with `CoordStack` exceptions.
@@ -46,26 +46,26 @@ __package_name__ = 'chess.piece.coord_stack'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'CoordStack',
-    'CoordStackValidator',
+  # Core classes
+  'CoordStack',
+  'CoordStackValidator',
 
-    *exception.__all__,
+  *exception.__all__,
 
 
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info'
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info'
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

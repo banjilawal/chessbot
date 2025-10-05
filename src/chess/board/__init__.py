@@ -12,14 +12,14 @@ which a `Piece` instance can reside.
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-    - `Board`:
-    - `BoardBuilder`:
-    - `BoarSearch`:
-    - `SquareIterator`:
-    - All exceptions from `exception` sub-packages.
+  - `Board`:
+  - `BoardBuilder`:
+  - `BoarSearch`:
+  - `SquareIterator`:
+  - All exceptions from `exception` sub-packages.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for `Board` operations.
+  - `.exception`: Defines all custom exceptions for `Board` operations.
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this `board` package level
@@ -47,25 +47,25 @@ __package_name__ = 'chess.board'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'Board',
-    'BoardSearch',
-    'SquareIterator',
+  # Core classes
+  'Board',
+  'BoardSearch',
+  'SquareIterator',
 
-    *exception.__all__,
+  *exception.__all__,
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

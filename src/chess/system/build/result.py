@@ -1,64 +1,64 @@
-from chess.system import EmptyResultConstructorException,  ErrorContradictsPayloadException
+from chess.system import EmptyResultConstructorException, ErrorContradictsPayloadException
 from typing import Optional, TypeVar, Generic
 
 
 T = TypeVar('T')
 
 class BuildResult(Generic[T]):
+  """
+  BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
+  same structure as Result but is used specifically in the context of building entities. It can hold either.
+  a payload of type T or an Exception, but not both. If the build operation is successful, the payload will
+  contain the built object. If the build operation fails, the error will contain the error that
+  occurred during the build process.
+
+  BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate a result.
+
+  Attributes:
+    _payload (Optional[T]): The payload of the result, if successful.
+    _exception (Optional[Exception]): The error of the result, if failed.
+
+  Methods:
+    is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
+  """
+
+  _payload: Optional[T]
+  _exception: Optional[Exception]
+
+  def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
     """
-    BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
-    same structure as Result but is used specifically in the context of building entities. It can hold either.
-    a payload of type T or an Exception, but not both. If the build operation is successful, the payload will
-    contain the built object. If the build operation fails, the error will contain the error that
-    occurred during the build process.
-
-    BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate a result.
-
-    Attributes:
-        _payload (Optional[T]): The payload of the result, if successful.
-        _exception (Optional[Exception]): The error of the result, if failed.
-
-    Methods:
-        is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
+    Initializes a BuildResult object.
+    Args:
+      payload (Optional[T]): The payload of the result, if successful.
+      exception (Optional[Exception]): The error of the result, if failed.
+    Raises:
+      EmptyResultConstructorException: If neither payload nor error is provided.
+      ResultPayloadConflictException: If both payload and error are provided.
     """
+    method = "Result.__init_"
 
-    _payload: Optional[T]
-    _exception: Optional[Exception]
+    if payload is None and exception is None:
+      raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}")
 
-    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-        """
-        Initializes a BuildResult object.
-        Args:
-            payload (Optional[T]): The payload of the result, if successful.
-            exception (Optional[Exception]): The error of the result, if failed.
-        Raises:
-            EmptyResultConstructorException: If neither payload nor error is provided.
-            ResultPayloadConflictException: If both payload and error are provided.
-        """
-        method = "Result.__init_"
+    if not (payload is None or exception is None):
+      raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}")
 
-        if payload is None and exception is None:
-            raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}")
-
-        if  not (payload is None or exception is None):
-            raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}")
-
-        self._payload = payload
-        self._exception = exception
+    self._payload = payload
+    self._exception = exception
 
 
-    @property
-    def payload(self) -> Optional[T]:
-        return self._payload
+  @property
+  def payload(self) -> Optional[T]:
+    return self._payload
 
 
-    @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
+  @property
+  def exception(self) -> Optional[Exception]:
+    return self._exception
 
 
-    def is_success(self) -> bool:
-        return self._exception is None and self._payload is not None
+  def is_success(self) -> bool:
+    return self._exception is None and self._payload is not None
 
 
 

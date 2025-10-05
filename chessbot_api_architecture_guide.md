@@ -12,103 +12,103 @@ inaccuracies, errors, or omissions in any data or information provided through t
 from its use or inability to use it.
 
 ## Table of Contents
-1. [Introduction](#introduction)  
-   - [Purpose of ChessBot](#purpose-of-chessbot)  
-   - [Intended Audience](#intended-audience)  
-   - [Scope](#scope)
+1. [Introduction](#introduction) 
+  - [Purpose of ChessBot](#purpose-of-chessbot) 
+  - [Intended Audience](#intended-audience) 
+  - [Scope](#scope)
 2. [Features, Use Cases and Requirements](#features-and-their-use-cases)
-     - [Easy to Learn A Lot about Chess Feature](#easy-to-learn-alot-about-chess)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
-     - [Intuitive and Easy to Use Feature](#intutive-and-easy-to-use)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
-     - [Can Play On Anything Feature](#can-play-on-anything)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
-     - [Can Play Anywhere Feature](#can-play-anywhere)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
-     - [Can Play Against a Person or Machine Feature](#can-play-against-person-or-machine)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
-     - [Resume Where You Left Off Feature](#resume-where-you-left-off)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
-     - [Review Previous Games Feature](#resume-previous-games)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
-     - [Data Portability Feature](#data-portability)
-       - [Use Cases](#easy-to-learn-use-cases)
-       - [Diagrams](#easy-to-learn-use-case-diagrams)
-       - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-       - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Easy to Learn A Lot about Chess Feature](#easy-to-learn-alot-about-chess)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Intuitive and Easy to Use Feature](#intutive-and-easy-to-use)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Can Play On Anything Feature](#can-play-on-anything)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Can Play Anywhere Feature](#can-play-anywhere)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Can Play Against a Person or Machine Feature](#can-play-against-person-or-machine)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Resume Where You Left Off Feature](#resume-where-you-left-off)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Review Previous Games Feature](#resume-previous-games)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+   - [Data Portability Feature](#data-portability)
+    - [Use Cases](#easy-to-learn-use-cases)
+    - [Diagrams](#easy-to-learn-use-case-diagrams)
+    - [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    - [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
 3. [Requirements](#requirements)
-       - [Functional Requirements](#functional-requirements)
-         - [Game Runs Until Player Quits Requirement](#game-runs-until-player-quits)
-           - [Policies Satisfying Game Runs Until Player Quits Requirement](#policies-satisfying-run-until-player-quits)
-         - [Game Has 99.5% Reliability Requirement](#game-has-995-percent-reliability)
-           - [Policies Satisfying 99.5% Reliability Requirement](#policies-satisfying-995-percent-reliability)
-         - [Game Automatically Resumes On Startup Requirement](#game-automatically-resumes-on-startup)
-           - [Policies Satisfying Resumption on Startup Requirement](#policies-satisfying-game-resumes-on-startup)
-         - [Game Behaves Consistently Requirement](#game-behaves-consistently-requirement)
-            - [Policies Satisfying Consistent Behavior Requirement](#policies-satisfying-game-behaves-consistently)
-          - [No Data is Lost Requirement](#no-data-is-lost-requirement)
-           - [Policies Satisfying No Data Loss Requirement](#policies-satisfying-no-data-is-lost)
-       - [Non-Functional Requirements][#non-functional-requirements]
-         - [Fast Feedback Response Requirement](#fast-feedback)
-           - [Policies Satisfying Fast Response Requirement](#policies-satisfying-fast-feedback)
-         - [What You See is What it IS Requirement](#wysiwii)
-           - [Policies Satisfying Fast Response Requirement](#policies-satisfying-wysiwii)
-         - [Usability for Hearing, Colorblind Visually Impaired People Requirement](#usability)
-          - [Policies Satisfying Fast Response Requirement](#policies-satisfying-usability)
-         - [Looks Nice Requirement](#looks-nice)
-          - [Policies Satisfying Fast Response Requirement](#policies-satisfying-looks-nice)
+    - [Functional Requirements](#functional-requirements)
+     - [Game Runs Until Player Quits Requirement](#game-runs-until-player-quits)
+      - [Policies Satisfying Game Runs Until Player Quits Requirement](#policies-satisfying-run-until-player-quits)
+     - [Game Has 99.5% Reliability Requirement](#game-has-995-percent-reliability)
+      - [Policies Satisfying 99.5% Reliability Requirement](#policies-satisfying-995-percent-reliability)
+     - [Game Automatically Resumes On Startup Requirement](#game-automatically-resumes-on-startup)
+      - [Policies Satisfying Resumption on Startup Requirement](#policies-satisfying-game-resumes-on-startup)
+     - [Game Behaves Consistently Requirement](#game-behaves-consistently-requirement)
+      - [Policies Satisfying Consistent Behavior Requirement](#policies-satisfying-game-behaves-consistently)
+     - [No Data is Lost Requirement](#no-data-is-lost-requirement)
+      - [Policies Satisfying No Data Loss Requirement](#policies-satisfying-no-data-is-lost)
+    - [Non-Functional Requirements][#non-functional-requirements]
+     - [Fast Feedback Response Requirement](#fast-feedback)
+      - [Policies Satisfying Fast Response Requirement](#policies-satisfying-fast-feedback)
+     - [What You See is What it IS Requirement](#wysiwii)
+      - [Policies Satisfying Fast Response Requirement](#policies-satisfying-wysiwii)
+     - [Usability for Hearing, Colorblind Visually Impaired People Requirement](#usability)
+     - [Policies Satisfying Fast Response Requirement](#policies-satisfying-usability)
+     - [Looks Nice Requirement](#looks-nice)
+     - [Policies Satisfying Fast Response Requirement](#policies-satisfying-looks-nice)
 4. [Design Principles](#design-principles)
-5. [Architecture Overview](#architecture-overview)  
-   - [Core Principles](#core-principles)  
-   - [System Layers](#system-layers)  
-6. [Core Patterns](#core-patterns)  
-   - [Builders](#builders)  
-   - [Validators](#validators)  
-   - [Results](#results)
-   - [Search](#search)
-   - [Exceptions](#exceptions)  
-   - [Transactions](#transactions)  
-   - [Events](#events)  
-7. [Core Entities](#core-entities)  
-   - [Board](#board)  
-   - [ChessPiece](#chesspiece)  
-   - [Rank](#rank)  
-   - [Player & Team](#player--team)  
-   - [CaptureRecord](#capturerecord)  
-8. [Movement Strategies](#movement-strategies)  
-   - [Motion Definitions](#motion-definitions)  
-   - [Strategies](#strategies)  
-9. [Validation & Transaction Flow](#validation--transaction-flow)  
-   - [Validation Rules](#validation-rules)  
-   - [Transaction Lifecycle](#transaction-lifecycle)
-10. [AI & Decision Engines](#ai--decision-engines)  
-   - [DestinationSelector](#destinationselector)  
-   - [Engines](#engines)  
-11. [Pygame UI](#pygame-ui)  
-12. [API Reference](#api-reference)  
-13. [Examples](#examples)  
-14. [Roadmap](#roadmap)  
+5. [Architecture Overview](#architecture-overview) 
+  - [Core Principles](#core-principles) 
+  - [System Layers](#system-layers) 
+6. [Core Patterns](#core-patterns) 
+  - [Builders](#builders) 
+  - [Validators](#validators) 
+  - [Results](#results)
+  - [Search](#search)
+  - [Exceptions](#exceptions) 
+  - [Transactions](#transactions) 
+  - [Events](#events) 
+7. [Core Entities](#core-entities) 
+  - [Board](#board) 
+  - [ChessPiece](#chesspiece) 
+  - [Rank](#rank) 
+  - [Player & Team](#player--team) 
+  - [CaptureRecord](#capturerecord) 
+8. [Movement Strategies](#movement-strategies) 
+  - [Motion Definitions](#motion-definitions) 
+  - [Strategies](#strategies) 
+9. [Validation & Transaction Flow](#validation--transaction-flow) 
+  - [Validation Rules](#validation-rules) 
+  - [Transaction Lifecycle](#transaction-lifecycle)
+10. [AI & Decision Engines](#ai--decision-engines) 
+  - [DestinationSelector](#destinationselector) 
+  - [Engines](#engines) 
+11. [Pygame UI](#pygame-ui) 
+12. [API Reference](#api-reference) 
+13. [Examples](#examples) 
+14. [Roadmap](#roadmap) 
 15. [Appendix](#appendix)
 16. [Index](#index)
 
@@ -130,9 +130,9 @@ from its use or inability to use it.
 4. Design principles that will guide how the parts of the software will be put together.
 5. The architecture that flows from the design principles.
 6. Roles software components have to so the architecture has strong foundations to assure requirement contracts
-    are ment.
+  are ment.
 7. Organization and structuring of software that provides concrete entities that carry out roles specified
-    by design principles.
+  by design principles.
 8. The interface for building applications with `ChessBot`.
 
 ## Introduction
@@ -292,73 +292,73 @@ A user can play on any platform.
 <a name="can-play-against-person-or-machine"></a>
 ### [Can Play Against a Person or Machine Feature]
 (#easy-to-learn-use-cases)
-        ##### [Use Cases]
+    ##### [Use Cases]
 (#easy-to-learn-use-case-diagrams)
-        ##### [Diagrams]
+    ##### [Diagrams]
 (#easy-to-learn-functional-requirements)
-        ##### [Implied Functional Requirements]
+    ##### [Implied Functional Requirements]
 (#easy-to-learn-non-functional-requirements)
-        ##### [Implied Nonfunctional Requirements]
+    ##### [Implied Nonfunctional Requirements]
 <a name="resume-where-you-left-off"></a>
 #### [Resume Where You Left Off]
 (#easy-to-learn-use-cases)
-        ##### [Use Cases]
+    ##### [Use Cases]
 (#easy-to-learn-use-case-diagrams)
-        ##### [Diagrams]
+    ##### [Diagrams]
 (#easy-to-learn-functional-requirements)
-        ##### [Implied Functional Requirements]
+    ##### [Implied Functional Requirements]
 (#easy-to-learn-non-functional-requirements)
-        ##### [Implied Nonfunctional Requirements]
+    ##### [Implied Nonfunctional Requirements]
 <a name="resume-previous-games"></a>
 #### [Review Previous Games]
 (#easy-to-learn-use-cases)
-        ##### [Use Cases]
+    ##### [Use Cases]
 (#easy-to-learn-use-case-diagrams)
-        ##### [Diagrams]
+    ##### [Diagrams]
 (#easy-to-learn-functional-requirements)
-        ##### [Implied Functional Requirements]
+    ##### [Implied Functional Requirements]
 (#easy-to-learn-non-functional-requirements)
-        ##### [Implied Nonfunctional Requirements]
+    ##### [Implied Nonfunctional Requirements]
 <a name="data-portability"></a>
 ### [Data Portability]
-        ##### [Use Cases](#easy-to-learn-use-cases)
-        ##### [Diagrams](#easy-to-learn-use-case-diagrams)
-        ##### [Implied Functional Requirements](#easy-to-learn-functional-requirements)
-        ##### [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
+    ##### [Use Cases](#easy-to-learn-use-cases)
+    ##### [Diagrams](#easy-to-learn-use-case-diagrams)
+    ##### [Implied Functional Requirements](#easy-to-learn-functional-requirements)
+    ##### [Implied Nonfunctional Requirements](#easy-to-learn-non-functional-requirements)
 <a name="requirements"></a>
 ### [Requirements]
 (#functional-requirements)
-     #### [Functional Requirements]
+   #### [Functional Requirements]
 (#game-runs-until-player-quits)
-       ##### [Game Runs Until Player Quits]
+    ##### [Game Runs Until Player Quits]
 (#policies-satisfying-run-until-player-quits)
-         ###### [Policies Satisfying Game Runs Until Player Quits Requirement]
-       ##### [Game Has 99.5% Reliability](#game-has-995-percent-reliability)
+     ###### [Policies Satisfying Game Runs Until Player Quits Requirement]
+    ##### [Game Has 99.5% Reliability](#game-has-995-percent-reliability)
 (#policies-satisfying-995-percent-reliability)
-         ######  [Policies Satisfying 99.5% Reliability Requirement]
+     ###### [Policies Satisfying 99.5% Reliability Requirement]
 (#game-automatically-resumes-on-startup)
-       ##### [Game Automatically Resumes On Startup]
+    ##### [Game Automatically Resumes On Startup]
 (#policies-satisfying-game-resumes-on-startup)
-         ######  [Policies Satisfying Resumption on Startup Requirement]
+     ###### [Policies Satisfying Resumption on Startup Requirement]
 (#game-behaves-consistently-requirement)
-       ##### [Game Behaves Consistently]
-         ######  [Policies Satisfying Consistent Behavior Requirement]
+    ##### [Game Behaves Consistently]
+     ###### [Policies Satisfying Consistent Behavior Requirement]
 (#no-data-is-lost-requirement)
-       ##### [No Data is Lost]
+    ##### [No Data is Lost]
 (#policies-satisfying-no-data-is-lost)
-         ######  [Policies Satisfying No Data Loss Requirement]
+     ###### [Policies Satisfying No Data Loss Requirement]
 <a name="non-functional-requirements)
-####  [Non-Functional Requirements]
-       ##### [Fast Feedback Response](#fast-feedback)
-         ######  [Policies Satisfying Fast Response Requirement](#policies-satisfying-fast-feedback)
-       ##### [What You See is What it IS](#wysiwii)
-         ######  [Policies Satisfying Fast Response Requirement](#policies-satisfying-wysiwii)
-       ##### [Usability for Hearing, Colorblind Visually Impaired People](#usability)
-         ######  [Policies Satisfying Fast Response Requirement](#policies-satisfying-usability)
-       ##### [Looks Nice](#looks-nice)
-         ######  [Policies Satisfying Fast Response Requirement](#policies-satisfying-looks-nice)
-       ##### [Multiplayer Chat](#multiplayer-chat)
-         ######  [Policies Satisfying Fast Response Requirement](#policies-satisfying-multiplayer-chat)
+#### [Non-Functional Requirements]
+    ##### [Fast Feedback Response](#fast-feedback)
+     ###### [Policies Satisfying Fast Response Requirement](#policies-satisfying-fast-feedback)
+    ##### [What You See is What it IS](#wysiwii)
+     ###### [Policies Satisfying Fast Response Requirement](#policies-satisfying-wysiwii)
+    ##### [Usability for Hearing, Colorblind Visually Impaired People](#usability)
+     ###### [Policies Satisfying Fast Response Requirement](#policies-satisfying-usability)
+    ##### [Looks Nice](#looks-nice)
+     ###### [Policies Satisfying Fast Response Requirement](#policies-satisfying-looks-nice)
+    ##### [Multiplayer Chat](#multiplayer-chat)
+     ###### [Policies Satisfying Fast Response Requirement](#policies-satisfying-multiplayer-chat)
 
 <a name="design-principles)
 ## Design Principles
@@ -373,7 +373,7 @@ The fundamental technical requirement to satisfy user contracts are
 #### Actions Which Produce the Technical Requirement
 1. **Separating Concerns:** Easier bug tracking isolating components to speed up development.
 2. **Low Coupling:** Components that depend on each other for satisfying their separated concerns must be
-  loosely coupled.
+ loosely coupled.
 3. **High Cohesion:** Between components that are doing related things or fulfilling a task.
 4. **Single Responsibility:** There must be one source of truth for an operation or data source.
 
@@ -441,11 +441,11 @@ holding state.
 ```mermaid
 %% System Layer Overview
 graph TD
-    Entities --> Services
-    Services --> UI
-    Services --> AI
-    UI --> Entities
-    AI --> Entities
+  Entities --> Services
+  Services --> UI
+  Services --> AI
+  UI --> Entities
+  AI --> Entities
 ```
 ---
 
@@ -455,15 +455,15 @@ graph TD
 Builder are responsible for safely creating entities. They perform comprehensive validation checks during construction
 ensuring consistent patterns. Separating object creation provides a consistent workflow, flexibility, separates concerns. 
 
-A builder runs through  validation checks sequentially. If a check fails an `Exception` specific to that failure condition
+A builder runs through validation checks sequentially. If a check fails an `Exception` specific to that failure condition
 is wrapped inside an `EntityBuildFailedException`. This speeds debugging and provides a single source of truth for an
 object's build history.
 
 
-        Performs individual validation checks on each component to ensure the resulting `Piece` meets all
-        specifications. If all checks are passed, a `Piece` instance will be returned. It is not necessary to perform
-        any additional validation checks on the returned `Piece` instance. This method guarantees if a `BuildResult`
-        with a successful status is returned, the contained `Piece` is valid and ready for use.
+    Performs individual validation checks on each component to ensure the resulting `Piece` meets all
+    specifications. If all checks are passed, a `Piece` instance will be returned. It is not necessary to perform
+    any additional validation checks on the returned `Piece` instance. This method guarantees if a `BuildResult`
+    with a successful status is returned, the contained `Piece` is valid and ready for use.
 
 1. Encapsulate complex logic with dependent entity validators
 2. Simplify code.
@@ -474,10 +474,10 @@ object's build history.
 A `Builder` ensure objects are created correctly or not at all. An `Validator` ensures existing objects passes around
 the system passed sanity checks.
 
-            The build runs through all the checks on parameters and state to guarantee only a valid `Piece` is
-            created, while `PieceValidator` is used for validating `Piece` instances that are passed around after
-            creating. This separation of concerns makes the validation and building independent of each other and
-            simplifies maintenance.
+      The build runs through all the checks on parameters and state to guarantee only a valid `Piece` is
+      created, while `PieceValidator` is used for validating `Piece` instances that are passed around after
+      creating. This separation of concerns makes the validation and building independent of each other and
+      simplifies maintenance.
 
 ### Recommended Builder Workflow
 ```python
@@ -486,7 +486,7 @@ from chess.rank import Knight
 from chess.piece import CombatantPiece, PieceBuilder
 build_result = PieceBuilder.build(name="WN2", rank=Knight(), team=white_team)
 if not build_result.is_success():
-   raise build_result.exception
+  raise build_result.exception
 
 piece = cast(CombatantPiece, build_result.payload)
 ```
@@ -494,10 +494,10 @@ piece = cast(CombatantPiece, build_result.payload)
 ```mermaid
 %% Builder Flow Example
 sequenceDiagram
-    User->>CommanderBuilder: Request new Commander
-    CommanderBuilder->>IdValidator: Validate ID
-    CommanderBuilder->>NameValidator: Validate Name
-    CommanderBuilder-->>User: Return BuildResult with Commander
+  User->>CommanderBuilder: Request new Commander
+  CommanderBuilder->>IdValidator: Validate ID
+  CommanderBuilder->>NameValidator: Validate Name
+  CommanderBuilder-->>User: Return BuildResult with Commander
 ```
 
 ### See Also:
@@ -510,8 +510,8 @@ sequenceDiagram
 ```mermaid
 %% Validator Flow Example
 sequenceDiagram
-    Event->>AttackEventValidator: Validate event legality
-    AttackEventValidator-->>Event: Return ValidationResult
+  Event->>AttackEventValidator: Validate event legality
+  AttackEventValidator-->>Event: Return ValidationResult
 ```
 
 ### Results
@@ -532,7 +532,7 @@ produce one of two results only.
 - `chess.system.result
 
 ##### Importing `Result` Class
-Do not import the terminal package. This will be messy and difficult to keep track of. Each  
+Do not import the terminal package. This will be messy and difficult to keep track of. Each 
 
 ##### Fields
  * `_payload` (`Optional`[`T`]): The payload of the result, if the operation called.
@@ -557,7 +557,7 @@ Do not import the terminal package. This will be messy and difficult to keep tra
 2. `ValidationResult`
 3. `TransactionResult`
 
-####  UML Hierarchy Diagram
+#### UML Hierarchy Diagram
 
 ##### SEE ALSO
 `ValidationResult`, `TransactionResult`, `BuildResult`, `SearchResult`, `Transaction`, `Event`,
@@ -616,13 +616,13 @@ from chess.system import ChessException
 
 # Create the subclass
 class RollbackFailedException(ChessException):
-   ERROR_CODE = "ROLLBACK_FAILED_ERROR"
-   DEFAULT_MESSAGE = "Rollback failed."
+  ERROR_CODE = "ROLLBACK_FAILED_ERROR"
+  DEFAULT_MESSAGE = "Rollback failed."
 
 # Using the custom exception
 def handle_fault(rolled_back_data, original_data):
-    if not rolled_back_data == original_data:
-       raise RollbackFailedException(RollbackFailedException.DEFAULT_MESSAGE)
+  if not rolled_back_data == original_data:
+    raise RollbackFailedException(RollbackFailedException.DEFAULT_MESSAGE)
 ```
 ---
 Note the default message is used when creating an exception instance, not the error code. The error code
@@ -634,10 +634,10 @@ is used in searching the logs.
 ```mermaid
 %% Simple Transaction Flow
 sequenceDiagram
-    Player->>AttackTransaction: Execute AttackEvent
-    AttackTransaction->>Board: Remove enemy piece
-    AttackTransaction->>Player: Add enemy to hostages
-    AttackTransaction-->>Player: Return TransactionResult
+  Player->>AttackTransaction: Execute AttackEvent
+  AttackTransaction->>Board: Remove enemy piece
+  AttackTransaction->>Player: Add enemy to hostages
+  AttackTransaction-->>Player: Return TransactionResult
 ```
 
 ### Events
@@ -652,9 +652,9 @@ sequenceDiagram
 ```mermaid
 %% Board-Entity Interaction
 sequenceDiagram
-    Board->>Square: Query occupant
-    Square-->>Board: Return ChessPiece / None
-    Board->>ChessPiece: Move piece / capture
+  Board->>Square: Query occupant
+  Square-->>Board: Return ChessPiece / None
+  Board->>ChessPiece: Move piece / capture
 ```
 
 ### ChessPiece
@@ -663,12 +663,12 @@ sequenceDiagram
 ```mermaid
 %% ChessPiece Class Overview
 classDiagram
-    ChessPiece <|-- Pawn
-    ChessPiece <|-- Rook
-    ChessPiece <|-- Bishop
-    ChessPiece <|-- Knight
-    ChessPiece <|-- Queen
-    ChessPiece <|-- King
+  ChessPiece <|-- Pawn
+  ChessPiece <|-- Rook
+  ChessPiece <|-- Bishop
+  ChessPiece <|-- Knight
+  ChessPiece <|-- Queen
+  ChessPiece <|-- King
 ```
 
 ### Rank
@@ -692,10 +692,10 @@ classDiagram
 ```mermaid
 %% Example: Pawn Movement Decision
 sequenceDiagram
-    Pawn->>Board: Request legal moves
-    Board->>MovementStrategy: Evaluate move definitions
-    MovementStrategy-->>Board: Return valid moves
-    Board-->>Pawn: Confirm moves
+  Pawn->>Board: Request legal moves
+  Board->>MovementStrategy: Evaluate move definitions
+  MovementStrategy-->>Board: Return valid moves
+  Board-->>Pawn: Confirm moves
 ```
 
 ---
@@ -710,11 +710,11 @@ sequenceDiagram
 ```mermaid
 %% Move Validation + Transaction
 sequenceDiagram
-    Player->>Board: Attempt move
-    Board->>Validator: Check legality
-    Validator-->>Board: Valid / Invalid
-    Board->>Transaction: Commit or rollback
-    Transaction-->>Player: Return result
+  Player->>Board: Attempt move
+  Board->>Validator: Check legality
+  Validator-->>Board: Valid / Invalid
+  Board->>Transaction: Commit or rollback
+  Transaction-->>Player: Return result
 ```
 
 ---
@@ -738,11 +738,11 @@ sequenceDiagram
 ```mermaid
 %% AI Decision Flow
 sequenceDiagram
-    AI->>Board: Query piece positions
-    Board-->>AI: Provide state
-    AI->>DestinationSelector: Rate destinations
-    DestinationSelector-->>AI: Return best move
-    AI->>Player: Execute move
+  AI->>Board: Query piece positions
+  Board-->>AI: Provide state
+  AI->>DestinationSelector: Rate destinations
+  DestinationSelector-->>AI: Return best move
+  AI->>Player: Execute move
 ```
 
 ---
@@ -753,10 +753,10 @@ sequenceDiagram
 ```mermaid
 %% UI Interaction Flow
 sequenceDiagram
-    Player->>UI: Drag piece
-    UI->>Board: Request move validation
-    Board-->>UI: Valid / Invalid
-    UI-->>Player: Update piece position
+  Player->>UI: Drag piece
+  UI->>Board: Request move validation
+  Board-->>UI: Valid / Invalid
+  UI-->>Player: Update piece position
 ```
 
 ---

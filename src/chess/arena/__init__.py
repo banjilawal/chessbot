@@ -12,12 +12,12 @@ to move the `Team` members on the `Board`
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-    - `Arena`
-    - `ArenaBuilder`
-    - All exceptions from `exception` sub-packages.
+  - `Arena`
+  - `ArenaBuilder`
+  - All exceptions from `exception` sub-packages.
 
 # SUB-PACKAGES
-    - `.exception`: Defines all custom exceptions for `Arena` operations.
+  - `.exception`: Defines all custom exceptions for `Arena` operations.
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this `arena` package level
@@ -42,24 +42,24 @@ __package_name__ = 'chess.arena'
 
 # Export control - only what belongs in public API
 __all__ = [
-    # Core classes
-    'Arena',
-    'ArenaBuilder',
-    *exception.__all__,
+  # Core classes
+  'Arena',
+  'ArenaBuilder',
+  *exception.__all__,
 
 
-    # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+  # Package metadata and utilities
+  '__version__',
+  '__author__',
+  'package_info',
 ]
 
 # Organic utility function for package info
 def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
+  """Return basic package information."""
+  return {
+    'name': __package_name__,
+    'version': __version__,
+    'author': __author__,
+    'exports': __all__
+  }

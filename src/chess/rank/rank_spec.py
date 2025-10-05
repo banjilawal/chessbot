@@ -6,40 +6,40 @@ from chess.geometry.quadrant import Quadrant
 
 
 # class Quadrant(Enum):
-#     def __new__(cls, quad_id:int, null-pkg:Vector):
-#         obj = object.__new__(cls)
-#         obj._id = quad_id
-#         obj._vector = null-pkg
+#   def __new__(cls, quad_id:int, null-pkg:Vector):
+#     obj = object.__new__(cls)
+#     obj._id = quad_id
+#     obj._vector = null-pkg
 #
-#         return obj
+#     return obj
 #
-#     N = (auto(), Vector(x=0, y=1))
+#   N = (auto(), Vector(x=0, y=1))
 
 
 class RankSpec(Enum):
-    def __new__(cls, letter:str, quota:int, ransom:int, quadrants:List[Quadrant]):
-        obj = object.__new__(cls)
-        obj._letter = letter
-        obj._quota = quota
-        obj._ransom = ransom
-        obj._quadrants = quadrants
+  def __new__(cls, letter:str, quota:int, ransom:int, quadrants:List[Quadrant]):
+    obj = object.__new__(cls)
+    obj._letter = letter
+    obj._quota = quota
+    obj._ransom = ransom
+    obj._quadrants = quadrants
 
-        return obj
+    return obj
 
-    PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
-    BISHOP = ("B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
-    ROOK = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
-    KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
+  PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
+  BISHOP = ("B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
+  ROOK = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
+  KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
 
-    KING =(
-        "K", 1, 0,
-        [ Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
-    )
+  KING =(
+    "K", 1, 0,
+    [ Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
+  )
 
-    QUEEN = (
-        "Q", 1, 9,
-        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
-    )
+  QUEEN = (
+    "Q", 1, 9,
+    [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
+   )
 
     @property
     def letter(self) -> str:

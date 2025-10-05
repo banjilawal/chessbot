@@ -4,64 +4,64 @@ from typing_extensions import TYPE_CHECKING
 from chess.team import Team
 
 from chess.exception.stack_exception import (
-    PushingNullEntityException,
-    CorruptedStackException,
-    DuplicatePushException
+  PushingNullEntityException,
+  CorruptedStackException,
+  DuplicatePushException
 )
 
 # if TYPE_CHECKING:
-#     pass
+#   pass
 
 
 class CommandHistory:
-    _teams: list[Team]
-    _current_team: Team
+  _teams: list[Team]
+  _current_team: Team
 
-    def __init__(self):
-        self._teams = []
-        self._current_team = self._teams[-1] if self._teams else None
+  def __init__(self):
+    self._teams = []
+    self._current_team = self._teams[-1] if self._teams else None
 
-    @property
-    def items(self) -> list['Team']:
-        """
-        Returns a read-only view of the stack's contents. The returned sequence is safe to
-        iterate and index, but mutating it will not affect the original stack.
-        """
+  @property
+  def items(self) -> list['Team']:
+    """
+    Returns a read-only view of the stack's contents. The returned sequence is safe to
+    iterate and index, but mutating it will not affect the original stack.
+    """
 
-        return self._teams
-
-
-    @property
-    def current_team(self) -> Optional['Team']:
-        return self._teams[-1] if self._teams else None
+    return self._teams
 
 
-    def is_empty(self) -> bool:
-        return len(self._teams) == 0
+  @property
+  def current_team(self) -> Optional['Team']:
+    return self._teams[-1] if self._teams else None
 
 
-    def size(self) -> int:
-        return len(self._teams)
+  def is_empty(self) -> bool:
+    return len(self._teams) == 0
 
 
-    def find_by_id(self, id: int) -> Optional['Team']:
-        for side in self._teams:
-            if side.id == id:
-                return side
-        return None
+  def size(self) -> int:
+    return len(self._teams)
 
 
-    def add_team(self, team: Team):
-        method = "CommandHistory.add_team"
+  def find_by_id(self, id: int) -> Optional['Team']:
+    for side in self._teams:
+      if side.id == id:
+        return side
+    return None
 
-        if team is None:
-            raise PushingNullEntityException(f"{method}: {PushingNullEntityException.DEFAULT_MESSAGE}")
 
-        if self._teams is None:
-            raise CorruptedStackException(f"{method}: {CorruptedStackException.DEFAULT_MESSAGE}")
+  def add_team(self, team: Team):
+    method = "CommandHistory.add_team"
 
-        if self.current_team == team:
-            raise DuplicatePushException(f"{method} {DuplicatePushException.DEFAULT_MESSAGE}")
+    if team is None:
+      raise PushingNullEntityException(f"{method}: {PushingNullEntityException.DEFAULT_MESSAGE}")
 
-        self._teams.append(team)
+    if self._teams is None:
+      raise CorruptedStackException(f"{method}: {CorruptedStackException.DEFAULT_MESSAGE}")
+
+    if self.current_team == team:
+      raise DuplicatePushException(f"{method} {DuplicatePushException.DEFAULT_MESSAGE}")
+
+    self._teams.append(team)
 

@@ -13,44 +13,44 @@ Contains:
 """
 
 class EntityOne:
-    """
-    <WHAT_CLASS_DOES>.
+  """
+  <WHAT_CLASS_DOES>.
 
-    Attributes: [
-        <No attributes. Implementors declare their own.>
+  Attributes: [
+    <No attributes. Implementors declare their own.>
+  OR
+    * `_attribute` (`data_type`): <sentence_if_necessary>
+  ]
+  """
+
+  def method_name(param: DataType):
+    """
+    <METHOD_ACTION>
+
+    Args:
+      `param` (`DataType`): <sentence_if_necessary>
+
+    Returns:
+      `<DataType>`
+
+    Raises: [
+      No exceptions.
     OR
-        * `_attribute` (`data_type`): <sentence_if_necessary>
+      No exceptions. Subclasses raise exceptions.
+    OR
+      <`ClassException` wraps any exceptions raised. These are:
+        * `ExceptionName`: If <condition_raising>
     ]
     """
+    method = "method_name"
 
-    def method_name(param: DataType):
-        """
-        <METHOD_ACTION>
+    try:
+      <try_catch_body>
+    except Excption as e:
+      raise ClassException(f"method: {e}") from e
 
-        Args:
-            `param` (`DataType`): <sentence_if_necessary>
-
-        Returns:
-            `<DataType>`
-
-        Raises: [
-            No exceptions.
-        OR
-            No exceptions. Subclasses raise exceptions.
-        OR
-            <`ClassException` wraps any exceptions raised. These are:
-                * `ExceptionName`: If <condition_raising>
-        ]
-        """
-        method = "method_name"
-
-        try:
-            <try_catch_body>
-        except Excption as e:
-            raise ClassException(f"method: {e}") from e
-
-        # Catch any unexpected errors with details about type and message
-        except Exception as e:
-        raise ClassException(
-            f"{method}: Unexpected error ({type(e).__name__}): {e}"
-        ) from e
+    # Catch any unexpected errors with details about type and message
+    except Exception as e:
+    raise ClassException(
+      f"{method}: Unexpected error ({type(e).__name__}): {e}"
+    ) from e
