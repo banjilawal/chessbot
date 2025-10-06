@@ -1,18 +1,17 @@
-# chess/board/board.py
+# src/chess/piece/event/event.py
 
 """
-Module: `chess.board.board`
+Module: `chess.piece.event.event`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 Provides:
-<SENTENCE_OR_PARAGRAPH_ABOUT_WHAT_THINGS_MODULE_PROVIDE>
+Concrete subclass of `Event`.
 
 Contains:
- * `EntityOne`
+ * `OccupationEvent`
 """
-from lib2to3.fixes.fix_input import context
 
 
 class EntityOne:
@@ -26,20 +25,27 @@ from chess.piece import Piece, OccupationContext
 
 class OccupationEvent(Event[Piece,Square]):
   """
-  <WHAT_CLASS_DOES>.
+  Details for executing an `OccupationTransaction`.
 
-  Attributes: [
-    <No attributes. Implementors declare their own.>
-  OR
-    * `_attribute` (`data_type`): <sentence_if_necessary>
-  ]
+  Attributes:
+    * `_actor` (`Piece`)
+    * `_parent` (`Event`)
+    * `_resource` (`Square`)
+    * `_context` (`OccupationContext`)
   """
+
   _actor: Piece
   _parent: Event
   _resource: Square
   _context: OccupationContext
 
-  def __init__(self, actor: Piece, destination_square: Square, parent: Optional[Event]=None):
+  def __init__(
+      self,
+      actor: Piece,
+      destination_square: Square,
+      context: OccupationContext,
+      parent: Optional[Event]=None
+  ):
     """
     Constructor for OccupationEvent
 
@@ -50,15 +56,10 @@ class OccupationEvent(Event[Piece,Square]):
       * `context` (`OccupationContext`):
     """
     super().__init__(actor=actor, resource=destination_square, parent=parent, context=context)
-    _actor = actor
-    _parent = parent
-    _resource = destination_square
 
   @property
   def destination_square(self) -> Square:
     return self.resource
-
-
 
   def __eq__(self, other) -> bool:
     if super().__eq__(other):

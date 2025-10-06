@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 
 Provides:
-Data dependencies an `actor` and `resource` need to execute a `Transaction`.
+Implementation of `Context` interface
 
 Contains:
  * `ExecutionContext`
@@ -18,8 +18,7 @@ from chess.system import Context
 
 class ExecutionContext(ABC, Context):
   """
-  Abstract Data Type of execution dependencies an `Event` passes to
-  a `Transaction`.
+  Super class of dependencies an `Event` passes to a `Transaction`.
 
   Attributes:
     No attributes. Subclasses declare their own.

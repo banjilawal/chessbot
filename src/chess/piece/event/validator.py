@@ -1,10 +1,4 @@
-from typing import Generic, TypeVar, cast, Optional
 
-from chess.event import OccupationEvent, EventValidator
-
-
-from chess.piece import Piece, PieceValidator
-from chess.system import Validator, IdValidator, ActorValidator, Result, ExecutionContext
 
 
 class OccupationEventValidator(EventValidator[OccupationEvent]):

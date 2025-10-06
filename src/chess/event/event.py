@@ -14,6 +14,7 @@ Data-holding object representing an`actor`'s intent to perform a state-changing 
 from typing import Generic, TypeVar, Optional
 
 from chess.event import ExecutionContext
+from chess.system import auto_id
 
 A = TypeVar('A') # Actor Type
 R = TypeVar('R') # Resource Type
@@ -21,12 +22,13 @@ R = TypeVar('R') # Resource Type
 @auto_id
 class Event(Generic[A, R]):
   """
+  Super class of all events.
 
   Attributes:
-    _id (`int`): A unique identifier.
-    _actor (`A`): The entity requesting the event.
-    _resource (`R`): entity being manipulated by the `actor`.
-    _parent (`Event`): The parent event of this event.
+    * `_actor` (`A`): The entity requesting the event.
+    * `_resource` (`R`): entity being manipulated by the `actor`.
+    * `_parent` (`Event`): The parent event of this event.
+    * `_context` (`ExecutionContext`): Context of the `Event`.
   """
 
   _actor: A
@@ -36,11 +38,10 @@ class Event(Generic[A, R]):
 
   def __init__(
     self,
-    event_id: int,
     actor: A,
+    context: ExecutionContext,
     resource: Optional[R]=None,
     parent: Optional['Event']=None,
-    context: Optional[ExecutionContext]=None
   ):
     self._actor = actor
     self._parent = parent
@@ -58,6 +59,11 @@ class Event(Generic[A, R]):
   @property
   def parent(self) -> Optional['Event']:
     return self._parent
+
+  @property
+  def context(self) -> ExecutionContext:
+    return self._context
+
 
   def __eq__(self, other):
     if other is self:

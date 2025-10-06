@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 
 Provides:
-ExecutionContext included with an `OccupationEvent`
+Concrete subclass of `ExecutionContext`.
 
 Contains:
  * `OccupationContext`
@@ -22,8 +22,8 @@ from chess.event import ExecutionContext
 
 class OccupationContext(ExecutionContext):
   """
-  Additional dependencies an `OccupationEvent` passes to an `OccupationTransaction`
-  apart from the `actor` and `resource`.
+  Additional dependencies an `OccupationEvent` passes to an
+  `OccupationTransaction` apart from the `actor` and `resource`.
 
   Attributes:
     `_board (`Board)`:

@@ -1,22 +1,16 @@
+# src/chess/piece/event/transaction.py
+
 """
-Module: executor
+Module: chess.piece.event.transaction
 Author: Banji Lawal
 Created: 2025-09-28
 
-Purpose:
-  Implements the `OccupationExecutor` class, which handles executing event
-  directives in the chess engine. This includes moving pieces, capturing enemies,
-  and coordinating rollback logic in case of inconsistencies or failed operations.
-
-Contents:
-  - `OccupationExecutor:` Main class responsible for executing event directives.
-  - `_attack_enemy`: Static method for processing attacks on enemy pieces.
-  - `_run_scan`: Static method for handling discoveries on occupied squares.
-  - `_switch_squares`: Static method the transferring a piece to a different `Square`.
-
-Notes:
-  This module is part of the chess.transaction.event package.
-  Exceptions raised during execution are defined in err.py and err.py.
+# SCOPE:
+# THEME:
+# PURPOSE:
+# DEPENDENCIES:
+# CONTAINS:
+ * `OccupationTransaction`
 """
 
 
@@ -44,7 +38,17 @@ from chess.piece.event import (
 
 
 class OccupationTransaction(Transaction[OccupationEvent]):
+  """
+  Implements the `OccupationExecutor` class, which handles executing event
+  directives in the chess engine. This includes moving pieces, capturing enemies,
+  and coordinating rollback logic in case of inconsistencies or failed operations.
 
+  Attributes:
+    * `OccupationExecutor:` Main class responsible for executing event directives.
+    * `_attack_enemy`: Static method for processing attacks on enemy pieces.
+    * `_run_scan`: Static method for handling discoveries on occupied squares.
+    * `_switch_squares`: Static method the transferring a piece to a different `Square`.
+  """
   @staticmethod
   def execute(event: OccupationEvent, context: ExecutionContext) -> TransactionResult:
     method = "OccupationExecutor.execute_directive"

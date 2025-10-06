@@ -48,10 +48,9 @@ ___
 from .exception import *
 
 from .event import Event
-from .context import ExecutionContext
 from .transaction import Transaction
+from .context import ExecutionContext
 from .validator import EventValidator
-
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'

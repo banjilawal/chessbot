@@ -6,15 +6,47 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
-Contains: SquareBuilder
- Provides: Create `Square` instances 
+SCOPE:
+-----
+This module is strictly limited to constructing `Piece` instances safely.
+
+**It does not** contain logic or rules for creating `OccupationEvent` or
+`OccupationTransaction`. Those are handled by `OccupationEventBuilder` before
+execution,`OccupationTransaction` during execution.
+
+**It does not** ensure existing `Piece` instances are valid. That is done
+by the `PieceValidator`.
+
+THEME:
+-----
+**Integrity, Consistency, Validation.** The module's design centers on a separating
+complexities of the build process into a utility from the `Piece` constructor.
+
+PURPOSE:
+-------
+To execute validated `OccupationEvent` directives by orchestrating the necessary
+state changes across the board, pieces, and teams. It serves as the **engine
+layer responsible for persistent state modification** based on accepted moves.
+
+DEPENDENCIES:
+------------
+This module requires components from various sub-systems:
+* `chess.rank`: Movement strategy (`Rank`)
+* `chess.square`: Location data structure (`Square`)
+* `chess.search`: Board lookup utilities (`BoardSearch`)
+* `chess.piece`: Piece subtypes (`KingPiece`, `CombatantPiece`, etc.)
+* `chess.team`: Roster management, exception handling
+* `chess.transaction`: Base transaction and context types
+
+CONTAINS:
+--------
+ * `PieceBuilder`: The builder of `Piece` instances.
 """
+
 from chess.system import Builder, BuildResult, NameValidator, RaiserLogger
-
-from chess.rank import Rank, King, RankValidator
-from chess.piece import Piece, KingPiece, CombatantPiece, UnregisteredTeamMemberException
-from chess.team import Team, TeamValidator, FullRankQuotaException, ConflictingTeamAssignmentException
-
+from chess.piece import Piece, PieceBuildFailedException
+from chess.rank import Rank, RankValidator
+from chess.team import Team, TeamValidator
 
 class PieceBuilder(Builder[Piece]):
   """
@@ -55,15 +87,15 @@ class PieceBuilder(Builder[Piece]):
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        RaiserLogger.propagate_error(PieceBuilder, name_validation)
+        RaiserLogger.propagate_error(PieceBuilder, name_validation.exception)
 
       rank_validation = RankValidator.validate(rank)
       if not rank_validation.is_success():
-        RaiserLogger.propagate_error(PieceBuilder, rank_validation)
+        RaiserLogger.propagate_error(PieceBuilder, rank_validation.exception)
 
       team_validation = TeamValidator.validate(team)
       if not team_validation.is_success():
-        RaiserLogger.propagate_error(PieceBuilder, team_validation)
+        RaiserLogger.propagate_error(PieceBuilder, team_validation.exception)
 
       if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
         RaiserLogger.propagate_error(

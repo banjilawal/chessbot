@@ -16,17 +16,14 @@ Contains:
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
 
+from chess.system import SearchContext
 from chess.system.search import SearchResult
 
-
-M = TypeVar('M')
-D = TypeVar('D')
-F = TypeVar('F')
 T = TypeVar('T')
-C = TypeVar("C", bound='SearchContext')
 
 
-class Search(ABC, Generic[M, D, F, T,C]):
+
+class Search(ABC, Generic[T]):
   """
   implement by entities "owning" relationships for unified search
   by collection attributes with validated params.
@@ -37,7 +34,7 @@ class Search(ABC, Generic[M, D, F, T,C]):
 
   @classmethod
   @abstractmethod
-  def search(cls, collection_master: M, data_set: D, filter: F, context: C) -> SearchResult['T']:
+  def search(cls,  context: SearchContext, *args, **kwargs) -> SearchResult['T']:
     """
     Validates provided filter. Returns first match.
 

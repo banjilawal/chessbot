@@ -5,9 +5,13 @@ Module: `exception.module.path`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
-Provides: Holds exceptions organic to `<Class>` objects
 
-Contains:
+# SCOPE:
+# THEME:
+# PURPOSE:
+Exceptions organic to `<Class>` objects.
+# DEPENDENCIES:
+# CONTAINS:
 See the list of exception in the `__alL__` list following
 """
 
