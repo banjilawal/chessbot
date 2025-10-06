@@ -7,8 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 
 Provides:
-Data dependencies a `piece` and its `resource` need to execute a
-`Transaction`.
+ExecutionContext included with an `OccupationEvent`
 
 Contains:
  * `OccupationContext`
@@ -24,17 +23,18 @@ from chess.event import ExecutionContext
 class OccupationContext(ExecutionContext):
   """
   Additional dependencies an `OccupationEvent` passes to an `OccupationTransaction`
+  apart from the `actor` and `resource`.
 
   Attributes:
     `_board (`Board)`:
-    `_destination_occupant (`Board`):
+    `_destination_occupant (`Piece`):
   """
 
   _board: Optional[Board]
   _destination_occupant: Optional[Piece]
 
   # # Usage:
-  # context = ExecutionContext(board=current_board, teams=all_teams)
+  # context = OcContext(board=board, teams=all_teams)
   # outcome = executor.execute_directive(directive, context.to_dict())
 
   def __init__(self, destination_occupant: Optional[Piece]=None, board: Optional[Board]=None):
