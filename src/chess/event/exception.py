@@ -12,25 +12,28 @@ Contents:
   - `EventException:` Super class of all exceptions an event object raises.
   - `NullEventException:` Raised by methods, entities, and models that require an event but receive a null.
   - `InvalidEventException:` Super class of exceptions raised EventValidators raise if a client fails sanity checking.
-  - `EventBuilderException:` Super class of exceptions raised when An EventBuilder runs into problems creating an event.
+  - `EventBuildFailedException:` Super class of exceptions raised when An EventBuilder runs into problems creating an event.
   - `TransactionException:` Super class of all exceptions a Transaction instances raise..
 
 Notes:
   DO NOT USE THESE EXCEPTIONS DIRECTLY. Limited use in the finally statement of a try-except block.
 """
 
-from chess.exception import ChessException, ValidationException, NullException, BuilderException
+from chess.exception import ChessException, NullException, BuilderException
 
 __all__ = [
   #=== AN EVENT EXCEPTIONS ===
   'EventException',
   'NullEventException',
   'InvalidEventException',
-  'EventBuilderException',
+  'EventBuildFailedException',
   
   #=== TRANSACTION EXCEPTIONS ===
   'TransactionException'
 ]
+
+from chess.system import ChessException, ValidationException, BuildFailedException, NullException,
+
 
 #=== AN EVENT EXCEPTIONS ===
 class EventException(ChessException):
@@ -60,9 +63,9 @@ class InvalidEventException(EventException, ValidationException):
     Only use in the finally statement of a try-except block.
   """
   ERROR_CODE = "INVALID_EVENT_ERROR"
-  DEFAULT_MESSAGE = "Event validate failed."
+  DEFAULT_MESSAGE = "Event validation failed."
 
-class EventBuilderException(EventException, BuilderException):
+class EventBuildFailedException(EventException, BuilderException):
   """
   Super class of exceptions raised when An EventBuilder runs into problems creating an event. Each EventBuilder
   subclass has a corresponding InvalidEventException subclass, making debugging and maintenance easier.
@@ -71,7 +74,7 @@ class EventBuilderException(EventException, BuilderException):
     Only use in the finally statement of a try-except block.
   """
   ERROR_CODE = "EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "EventBuilder validate failed."
+  DEFAULT_MESSAGE = "EventBuilder validation failed."
 
 
  #=== TRANSACTION EXCEPTIONS ===

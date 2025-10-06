@@ -32,7 +32,7 @@ class InvalidDiscoveryException(DiscoveryException, ValidationException):
   exceptions raised validating an existing board
   """
   ERROR_CODE = "DISCOVERY_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Discovery validate failed."
+  DEFAULT_MESSAGE = "Discovery validation failed."
 
 class NullDiscoveryException(DiscoveryException, NullException):
   """

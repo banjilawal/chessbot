@@ -67,7 +67,7 @@ class NullAttackEventException(AttackEventException, NullException):
 class InvalidAttackEventException(AttackEventException, ValidationException):
   """Raised by AttackEventValidators if client fails validation."""
   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "AttackEvent failed validate"
+  DEFAULT_MESSAGE = "AttackEvent validation failed."
 
 
 #=== ATTACK_EVENT BUILD EXCEPTIONS ===
@@ -81,9 +81,6 @@ class AttackEventBuilderException(AttackEventException, BuilderException):
 class UnexpectedNullEnemyException(AttackEventException):
   DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
   DEFAULT_MESSAGE = "Target actor is unexpectedly null during capture; this should not happen."
-
-
-
 
 
 # --- Rollback Attack Errors (Dual Inheritance) ---

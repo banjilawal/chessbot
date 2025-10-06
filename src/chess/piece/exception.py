@@ -66,7 +66,7 @@ class PieceRollBackException(PieceException, RollbackException):
 class InvalidPieceException(PieceException, ValidationException):
   """Raised by PieceValidators if client fails validation."""
   ERROR_CODE = "PIECE_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Piece validate failed."
+  DEFAULT_MESSAGE = "Piece validation failed."
 
 class UnregisteredTeamMemberException(PieceException):
   """Raised if a piece has its team set but the piece is not on the roster"""

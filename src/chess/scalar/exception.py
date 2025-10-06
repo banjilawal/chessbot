@@ -34,7 +34,7 @@ class NullScalarException(ScalarException, NullException):
 class InvalidScalarException(ScalarException, ValidationException):
   """Raised by ScalaValidators if client fails validation."""
   ERROR_CODE = "SCALAR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Scalar validate failed."
+  DEFAULT_MESSAGE = "Scalar validation failed."
 
 
 # === SCALAR BUILD EXCEPTIONS ===

@@ -49,27 +49,27 @@ class UnRecognizedConcreteRankException(RankException):
 # === RANK SUBCLASS VALIDATION EXCEPTIONS ===
 class InvalidKingException(InvalidRankException):
   ERROR_CODE = "KING_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "King validate failed."
+  DEFAULT_MESSAGE = "King validation failed."
 
 class InvalidPawnException(InvalidRankException):
   ERROR_CODE = "PAWN_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Pawn validate failed."
+  DEFAULT_MESSAGE = "Pawn validation failed."
 
 class InvalidKnightException(InvalidRankException):
   ERROR_CODE = "KNIGHT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Knight validate failed."
+  DEFAULT_MESSAGE = "Knight validation failed."
 
 class InvalidBishopException(InvalidRankException):
   ERROR_CODE = "BISHOP_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Bishop validate failed."
+  DEFAULT_MESSAGE = "Bishop validation failed."
 
 class InvalidRookException(InvalidRankException):
   ERROR_CODE = "ROOK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Rook validate failed."
+  DEFAULT_MESSAGE = "Rook validation failed."
 
 class InvalidQueenException(InvalidRankException):
   ERROR_CODE = "QUEEN_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Queen validate failed."
+  DEFAULT_MESSAGE = "Queen validation failed."
 
 
 # === RANK MOVING EXCEPTIONS ===

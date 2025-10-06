@@ -21,7 +21,7 @@ __all__ = [
   # === CLASS BUILD EXCEPTIONS ===
   'ClassFailedBuildException',
 
-  # === COLLECTION_CLASS EXCEPTONS ===
+  # === COLLECTION_CLASS EXCEPTIONS ===
   'CollectionClassException',
   'AddItemException',
   'RemoveItemException',
@@ -56,7 +56,7 @@ class ClassInconsistencyException(ClassException, InconsistencyException):
   ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
   DEFAULT_MESSAGE = "A data inconsistency was detected"
 
-  # === COLLECTION_CLASS EXCEPTONS ===
+  # === COLLECTION_CLASS EXCEPTIONS ===
 class InconsistentCollectionException(InconsistencyException):
   """
   Raised if a collection's state is inconsistent or its data corrupted
@@ -76,7 +76,7 @@ class ClassFailedBuildException(ClassName, FailedBuildException):
   DEFAULT_MESSAGE = " build failed."
 
 
-# === COLLECTION_CLASS EXCEPTONS ===
+# === COLLECTION_CLASS EXCEPTIONS ===
 class CollectionClassException(ClassException):
   """Raised for errors on team' collection"""
   ERROR_CODE = "COLLECTION_NAME_ERROR"

@@ -22,7 +22,7 @@ __all__ = [
   # === ARENA BUILD EXCEPTIONS ===
   'ArenaBuildFailedException',
 
-  # === COLLECTION_ARENA EXCEPTONS ===
+  # === COLLECTION_ARENA EXCEPTIONS ===
 ]
 
 class ArenaException(ChessException):
