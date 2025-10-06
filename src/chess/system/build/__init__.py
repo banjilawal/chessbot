@@ -21,8 +21,8 @@ This package exposes core classes and all exceptions from its sub-modules:
   - All exceptions from `exception` package.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for occupation operations.
-  - `.occupation`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
+  - `.exception`: Defines all custom exceptions for event operations.
+  - `.event`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 
 # USAGE EXAMPLES

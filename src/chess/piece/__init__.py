@@ -99,10 +99,12 @@ def create_encounter(actor: Piece, discover: Piece) -> Encounter:
 ```
 """
 
+from .piece import *
+from .event import *
 from .exception import *
 from .discover import *
 from .coord_stack import *
-from .piece import *
+
 from .builder import PieceBuilder
 from .validator import PieceValidator
 
@@ -116,13 +118,14 @@ __package_name__ = 'chess.piece'
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  'Piece',
-  'KingPiece',
-  'CombatantPiece',
-  'PieceBuilder',
-  'PieceValidator',
-  'PieceBuilder',
-
+  # 'Piece',
+  # 'KingPiece',
+  # 'CombatantPiece',
+  # 'PieceBuilder',
+  # 'PieceValidator',
+  # 'PieceBuilder',
+  *piece.__all__,
+  *event.__all__,
   *discover.__all__,
   *exception.__all__,
   *coord_stack.__all__,

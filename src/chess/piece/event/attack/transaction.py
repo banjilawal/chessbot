@@ -1,5 +1,5 @@
 """"
-Module: chess.event.occupation.attack.transaction
+Module: chess.event.event.attack.transaction
 Author: Banji Lawal
 Created: 2025-10-01
 Version: 1.0.0
@@ -13,15 +13,12 @@ Contents:
 Notes:
 """
 
-
-from typing import cast
-
 from chess.board import FailedPieceRemovalRolledBackException
 from chess.system import ExecutionContext, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
-from chess.event.occupation.attack.exception import SetCaptorRolledBackException, \
+from chess.piece.event.attack.exception import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
-from chess.event.occupation.exchange.transaction import TransferTransaction
+from chess.piece.event.exchange.transaction import TransferTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 

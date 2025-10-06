@@ -1,5 +1,5 @@
 from chess.exception import RollbackException
-from chess.event.occupation import OccupationEventException
+from chess.piece.event import OccupationEventException
 
 __all__ = [
   #=== SCAN_TRANSACTION EXCEPTIONS ===

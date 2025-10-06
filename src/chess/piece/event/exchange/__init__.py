@@ -1,7 +1,7 @@
-# chess/event/occupation/attack__init__.py
+# chess/event/event/exchange__init__.py
 
 """
-Module: `chess.event.occupation.attack`
+Module: `chess.event.event.exchange`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -56,25 +56,28 @@ USAGE:
 
 ___
 
+VERSION: 1.0.0
+AUTHOR: Banji Lawal
 """
 
 from .exception import *
-from .event import AttackEvent
-from .builder import AttackEventBuilder
-from .validator import AttackEventValidator
+from .event import TransferEvent
+from .builder import TransferEventBuilder
+from .transaction import TransferTransaction
+from .validator import TransferEventValidator
+
+
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.event.occupation.attack"
+__package_name__ = "chess.event.event.exchange"
 
 
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  'AttackEvent',
-  'AttackEventBuilder',
-  'AttackEventValidator',
+  'TransferEvent',
 
   # Exception classes
   *exception.__all__,

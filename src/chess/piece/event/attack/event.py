@@ -4,7 +4,7 @@ from chess.board import Board
 from chess.event import Event
 from chess.square import Square
 from chess.piece import Piece, CombatantPiece
-from chess.event.occupation import OccupationEvent
+from chess.piece.event import OccupationEvent
 
 class AttackEvent(OccupationEvent):
   _board: Board

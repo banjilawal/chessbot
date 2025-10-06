@@ -13,9 +13,7 @@ from chess.system import Builder, BuildResult, NameValidator, RaiserLogger
 
 from chess.rank import Rank, King, RankValidator
 from chess.piece import Piece, KingPiece, CombatantPiece, UnregisteredTeamMemberException
-from chess.team import(
-  Team, TeamValidator, TeamSearch, FullRankQuotaException, ConflictingTeamAssignmentException
-)
+from chess.team import Team, TeamValidator, FullRankQuotaException, ConflictingTeamAssignmentException
 
 
 class PieceBuilder(Builder[Piece]):
@@ -75,8 +73,9 @@ class PieceBuilder(Builder[Piece]):
 
       piece = None
       if isinstance(rank, King):
-        piece = KingPiece(piece_id=piece_id, name=name, rank=rank, team=team)
-      piece = CombatantPiece(piece_id=piece_id, name=name, rank=rank, team=team)
+        piece = KingPiece(name=name, rank=rank, team=team)
+      else:
+        piece = CombatantPiece(name=name, rank=rank, team=team)
 
       if not piece.team == team:
         RaiserLogger.propagate_error(
@@ -95,7 +94,7 @@ class PieceBuilder(Builder[Piece]):
 
       return BuildResult(payload=piece)
     except Exception as e:
-      raise PieceBuilderException(f"{method}: {e}") for
+      raise PieceBuilderException(f"{method}: {e}") for e
 
 
 

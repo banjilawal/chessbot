@@ -1,7 +1,7 @@
-# chess/event/occupation/scan/__init__.py
+# chess/event/event/scan/__init__.py
 
 """
-Module: `chess.event.occupation.scan`
+Module: `chess.event.event.scan`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -17,7 +17,7 @@ Executes a `ScanTransaction` after `ScanEvent` is validated
 
 USAGE:
 ```python
-from chess.event.occupation import ScanEvent, ScanTransaction
+from chess.event.event import ScanEvent, ScanTransaction
 ```
 ---
 
@@ -41,13 +41,12 @@ AUTHOR: Banji Lawal
 from .exception import *
 from .event import ScanEvent
 from .builder import ScanEventBuilder
-from .validator import ScanEventValidator
 from .transaction import ScanTransaction
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.event.occupation.scan"
+__package_name__ = "chess.event.event.scan"
 
 
 # Export control - only what belongs in public API

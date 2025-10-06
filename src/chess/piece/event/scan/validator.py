@@ -1,16 +1,15 @@
-from typing import Generic, TypeVar, cast
+from typing import TypeVar, cast
 
 from chess.board import BoardSearch
 from chess.event import AttackEvent, CircularOccupationException
-from chess.event.occupation.scan.exception import TargetSquareMismatchException, ScanSubjectException
+from chess.piece.event.scan.exception import TargetSquareMismatchException, ScanSubjectException
 from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
 from chess.system import ExecutionContext, Result, IdValidator, InvalidIdException
-from chess.event.occupation import (
+from chess.piece.event import (
   ScanEvent,
   NullScanEventException,
   InvalidScanEventException
 )
-from chess.square import InvalidSquareException
 
 T = TypeVar('T')
 

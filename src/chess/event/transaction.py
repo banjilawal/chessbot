@@ -3,8 +3,7 @@ from enum import Enum, auto
 from abc import abstractmethod, ABC
 from typing import Generic, TypeVar
 
-from chess.event import Event
-from chess.system import ExecutionContext, TransactionResult
+from chess.event import Event, ExecutionContext, TransactionResult
 
 T = TypeVar('T', bound=Event)
 

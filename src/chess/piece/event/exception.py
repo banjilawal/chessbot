@@ -69,7 +69,7 @@ __all__ = [
 
 class OccupationEventException(EventException):
   ERROR_CODE = "OCCUPATION_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "An error was raised while executing the square occupation"
+  DEFAULT_MESSAGE = "An error was raised while executing the square event"
 
 # === OccupationEvent VALIDATION EXCEPTIONS ===
 class NullOccupationEventException(OccupationEventException, NullException):
@@ -136,8 +136,8 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #
 # class OccupationSearchEventException(OccupationEventException):
 #   """
-#   Board searches during an occupation should not fai. If they do there is an inconsistency in the board
+#   Board searches during an event should not fai. If they do there is an inconsistency in the board
 #   """
 #
 #   ERROR_CODE = "OCCUPATION_SEARCH_ERROR"
-#   DEFAULT_MESSAGE = f"BoardSearch failed to find a square; this should not happen in an occupation operation"
+#   DEFAULT_MESSAGE = f"BoardSearch failed to find a square; this should not happen in an event operation"

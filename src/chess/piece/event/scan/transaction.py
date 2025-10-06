@@ -8,10 +8,10 @@ Purpose:
   a `Discovery` inside a `Square` by an actor.
 
 Contents:
-  - `ScanTransaction:` Main class responsible for executing occupation directives.
+  - `ScanTransaction:` Main class responsible for executing event directives.
 
 Notes:
-  This module is part of the chess.event.occupation.scan package.
+  This module is part of the chess.event.event.scan package.
   Exceptions raised during execution are defined in err.py and err.py.
 """
 

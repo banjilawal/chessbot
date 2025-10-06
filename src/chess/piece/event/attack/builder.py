@@ -1,12 +1,11 @@
 from enum import Enum
-from typing import cast
 
 from assurance import ThrowHelper
 from chess.board import BoardSearch
 from chess.system import IdValidator, BuildResult, InvalidIdException
 from chess.event import TargetSquareMismatchException, AttackEvent
-from chess.event.occupation.attack.exception import AttackEventBuilderException
-from chess.event.occupation.exception import ActorSquareNotFoundException
+from chess.piece.event.attack.exception import AttackEventBuilderException
+from chess.piece.event.exception import ActorSquareNotFoundException
 from chess.piece import PieceValidator, InvalidPieceException, CombatantPiece
 from chess.piece.exception import CircularCaptureException, CaptureFriendException, KingCaptureException
 

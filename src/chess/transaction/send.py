@@ -1,4 +1,4 @@
-from chess.event.base import Action
+from chess.event.event import Action
 
 class Notification:
   _message: str

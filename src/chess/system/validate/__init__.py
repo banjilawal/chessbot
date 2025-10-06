@@ -15,7 +15,7 @@ Validation super class and exceptions.
   - `ValidationException`: The base class for `validate` exceptions.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.exception`: Defines all custom exceptions for event operations.
 
 
 # USAGE EXAMPLES

@@ -25,25 +25,7 @@ class EntityOne:
   """
 
   def method_name(param: DataType):
-    """
-    <METHOD_ACTION>
 
-    Args:
-      `param` (`DataType`): <sentence_if_necessary>
-
-    Returns:
-      `<DataType>`
-
-    Raises: [
-      No exceptions.
-    OR
-      No exceptions. Subclasses raise exceptions.
-    OR
-      <`ClassException` wraps any exceptions raised. These are:
-        * `ExceptionName`: If <condition_raising>
-    ]
-    """
-    method = "method_name"
 
     try:
       <try_catch_body>

@@ -4,18 +4,18 @@ Author: Banji Lawal
 Created: 2025-09-28
 
 Purpose:
-  Implements the `OccupationExecutor` class, which handles executing occupation
+  Implements the `OccupationExecutor` class, which handles executing event
   directives in the chess engine. This includes moving pieces, capturing enemies,
   and coordinating rollback logic in case of inconsistencies or failed operations.
 
 Contents:
-  - `OccupationExecutor:` Main class responsible for executing occupation directives.
+  - `OccupationExecutor:` Main class responsible for executing event directives.
   - `_attack_enemy`: Static method for processing attacks on enemy pieces.
   - `_run_scan`: Static method for handling discoveries on occupied squares.
   - `_switch_squares`: Static method the transferring a piece to a different `Square`.
 
 Notes:
-  This module is part of the chess.transaction.occupation package.
+  This module is part of the chess.transaction.event package.
   Exceptions raised during execution are defined in err.py and err.py.
 """
 
@@ -32,24 +32,13 @@ from chess.team.exception import RemoveTeamMemberRolledBackException
 from chess.transaction import Transaction, ExecutionContext, TransactionResult, CaptureContext
 
 from chess.transaction import AttackValidator
-from chess.event.occupation import (
+from chess.piece.event import (
   OccupationEventValidator,
   OccupationSearchEventException,
   OccupationEvent,
   OccupationEventException,
 
-  FriendlyFireException,
-  AttackOnEmptySquareException,
-  EnemyNotOnBoardException,
-  NonCombatantTargetException,
-  KingTargetException,
-  AlreadyCapturedException,
-  MissingFromRosterException,
-  HostageTransferConflictException,
-
     # Rollback attack errors (dual inheritance)
-  RosterRemovalRollbackException,
-  HostageAdditionRollbackException,
   BoardPieceRemovalRollbackException,
 )
 

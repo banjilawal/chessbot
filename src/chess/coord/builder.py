@@ -10,7 +10,7 @@ Contains: CoordBuilder
  Provides: Create `Coord` instances 
 """
 
-from chess.system import Builder, BuildResult, ROW_SIZE, COLUMN_SIZE, BuildResult, RaiserLogger, RaiserLogger
+from chess.system import Builder, ROW_SIZE, COLUMN_SIZE, BuildResult, RaiserLogger, RaiserLogger
 from chess.coord import (
   Coord,
   NullRowException,
@@ -27,8 +27,8 @@ class CoordBuilder(Builder[Coord]):
   Responsible for safely constructing `Coord` instances.
   """
 
-  @staticmethod
-  def build(row: int, column: int) -> BuildResult[Coord]:
+  @classmethod
+  def build(cls, row: int, column: int) -> BuildResult[Coord]:
     """
     Constructs a new `Coord` that works correctly.
 

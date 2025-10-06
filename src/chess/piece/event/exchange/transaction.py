@@ -10,7 +10,7 @@ Contents:
   - `AttackTransaction:` Class responsible for AttackTransaction lifecycle.
 
 Notes:
-  This module is part of the chess.event.occupation.attack package.
+  This module is part of the chess.event.event.attack package.
   Exceptions raised during execution are defined in err.py.
 """
 
@@ -20,35 +20,22 @@ from typing import cast
 from chess.board import FailedPieceRemovalRolledBackException
 from chess.system import id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, TransferEventValidator
-from chess.event.occupation.attack.exception import EmptyDestinationSquareRolledBackException
+from chess.piece.event.attack.exception import EmptyDestinationSquareRolledBackException
 
 from chess.square import Square
 from chess.search import BoardSearch
-from chess.piece import KingPiece, CombatantPiece, Discovery, DiscoveryBuilder
+from chess.piece import CombatantPiece, Discovery, DiscoveryBuilder
 from chess.team import AddEnemyHostageRolledBackException
 from chess.team.exception import RemoveTeamMemberRolledBackException
-from chess.transaction import Transaction, ExecutionContext, TransactionResult, CaptureContext
+from chess.transaction import ExecutionContext, TransactionResult, CaptureContext
 
 from chess.transaction import AttackValidator
-from chess.event.occupation import (
-  OccupationEventValidator,
-  OccupationSearchEventException,
+from chess.piece.event import (
+    OccupationSearchEventException,
   OccupationEvent,
   OccupationEventException,
 
-  FriendlyFireException,
-  AttackOnEmptySquareException,
-  EnemyNotOnBoardException,
-  NonCombatantTargetException,
-  KingTargetException,
-  AlreadyCapturedException,
-  MissingFromRosterException,
-  HostageTransferConflictException,
-
     # Rollback attack errors (dual inheritance)
-  RosterRemovalRollbackException,
-  HostageAdditionRollbackException,
-  BoardPieceRemovalRollbackException,
 )
 
 

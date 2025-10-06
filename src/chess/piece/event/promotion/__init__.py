@@ -21,7 +21,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - All exceptions from `exception` package.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.exception`: Defines all custom exceptions for event operations.
   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 # HOW TO IMPORT
@@ -39,9 +39,6 @@ ___
 """
 
 from .exception import *
-from .builder import Builder
-from .result import BuildResult
-
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'

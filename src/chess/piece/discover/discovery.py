@@ -13,7 +13,7 @@ class Discovery:
   It captures the essential identifying information about the discovered piece without holding a direct
   reference, ensuring immutability and safe storage within search logs or decision-making structures.
 
-  `Discovery` objects are used to record what a piece has observed during scanning, moving, or occupation
+  `Discovery` objects are used to record what a piece has observed during scanning, moving, or event
   attempts. They provide enough detail (identity, team, rank, ransom value, and position) for evaluation
   by search and decision engines, while remaining lightweight and detached from the full `Piece` object.
 

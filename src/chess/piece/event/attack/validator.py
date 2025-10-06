@@ -1,10 +1,10 @@
 from typing import Generic, TypeVar, cast
 
-from chess.event import TransferEvent
-from chess.piece import Piece, PieceValidator, InvalidPieceException
-from chess.square import Square, SquareValidator, InvalidSqaureException
-from chess.system import Validator, Result, IdValidator, InvalidIdException
-from chess.event.occupation import (
+from chess.event import EventValidator
+from chess.piece import PieceValidator, InvalidPieceException
+from chess.square import SquareValidator, InvalidSqaureException
+from chess.system import Result, IdValidator, InvalidIdException
+from chess.piece.event import (
   AttackEvent,
   NullAttackEventException,
   CircularOccupationException,
@@ -13,10 +13,10 @@ from chess.event.occupation import (
 
 T = TypeVar('T')
 
-class TransferEventValidator:
+class AttackEventValidator(EventValidator[A], Generic[T]):
 
   @staticmethod
-  def validate(t: TransferEvent, context: Event) -> Result[TransferEvent]:
+  def validate(t: AttackEvent, ) -> Result[AttackEvent]:
     """
     Validates an AttackEvent meets specifications:
       - Not null
@@ -72,7 +72,7 @@ class TransferEventValidator:
 
       if event.destination_square.coord == event.actor.current_position:
         raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
-      
+
       return Result(payload=event)
 
     except (

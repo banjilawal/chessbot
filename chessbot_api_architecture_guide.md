@@ -450,8 +450,15 @@ graph TD
 ---
 
 ## Core Patterns
-## Builders
+The patterns are the responsibilities classes can have
+1. Building
+2. Validation
+3. Data holding
+4. Service request (Event)
+5. Service provider (Transaction)
+6. Service response (Transacti)
 
+### Build Service Provider
 Builder are responsible for safely creating entities. They perform comprehensive validation checks during construction
 ensuring consistent patterns. Separating object creation provides a consistent workflow, flexibility, separates concerns. 
 
@@ -469,6 +476,16 @@ object's build history.
 2. Simplify code.
 3. Reduce boiler plate
 4. Single source of truth for building errors by wrapping
+
+### Validation Service Provider
+*(placeholder for Validators explanation)*
+
+```mermaid
+%% Validator Flow Example
+sequenceDiagram
+  Event->>AttackEventValidator: Validate event legality
+  AttackEventValidator-->>Event: Return ValidationResult
+```
 
 ### Builders versus Validators
 A `Builder` ensure objects are created correctly or not at all. An `Validator` ensures existing objects passes around
@@ -504,15 +521,24 @@ sequenceDiagram
  - `Validator`: Used for validating existing objects
  - `BuildResult[`T`]`: Return type containing the built `T` or exception information
 
-### Validators
-*(placeholder for Validators explanation)*
 
-```mermaid
-%% Validator Flow Example
-sequenceDiagram
-  Event->>AttackEventValidator: Validate event legality
-  AttackEventValidator-->>Event: Return ValidationResult
-```
+#### Transaction Service Request (`Event`) The 
+  A data-holding object representing an`actor`'s intent to perform a state-changing operation with a
+  `resource`. An `Event` is passed to a `Transaction` instance that fires and manages the event lifecycle.
+  During the event lifecycle the `actor` manipulates the `resource`.
+
+# PURPOSE
+A package providing an immutable hierarchy for events and transactions manging event lifecycle. An event is
+ an object representing an intent to perform a state-changing operation with a resource by an actor.
+ Each event lifecycle is managed by a `Transaction` instance.
+
+ ACID transactions are a functional requirement for the chess game. The `Transaction` class rolls back actors
+ and resources if there is a data inconsistency a `RollBackException` is raised after `actor` and `resource` are
+ restored to their last good state.
+
+# Notes:
+  DO NOT USE THESE EXCEPTIONS DIRECTLY. Limited use in the finally statement of a try-except block.
+
 
 ### Results
 Operations and methods that return data raise exceptions if inputs break business rules or 

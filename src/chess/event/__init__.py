@@ -23,8 +23,8 @@ This package exposes core classes and all exceptions from its sub-modules:
   - All exceptions from `err`, `scan`, `attack`, and `exchange` sub-packages.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for occupation operations.
-  - `.occupation`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
+  - `.exception`: Defines all custom exceptions for event operations.
+  - `.event`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 
 # USAGE EXAMPLES
@@ -44,15 +44,13 @@ ___
 * Use `RollBackException` versions so callers can verify the rollback was performed correctly.
 """
 
-from .base import Event
-from .validator import EventValidator
 
-# Subclass Imports
-from .occupation import *
-
-# Module Imports
 from .exception import *
 
+from .event import Event
+from .context import ExecutionContext
+from .transaction import Transaction
+from .validator import EventValidator
 
 
 # Package metadata (organic to __init__.py)
@@ -64,9 +62,11 @@ __package_name__ = 'chess.event'
 __all__ = [
   # Core classes
   'Event',
+  'Transaction',
+  'EventValidator',
+  'ExecutionContext',
 
   *exception.__all__,
-  *occupation.__all__,
 
 
   # Package metadata and utilities

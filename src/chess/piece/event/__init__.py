@@ -1,33 +1,35 @@
-# chess/event/occupation/__init__.py
+# chess/piece/event/__init__.py
 
 """
-Module: `chess.event.occupation`
+Module: `chess.piece.event`
 Author: Banji Lawal
-Created: 2025-10-01
-Updated: 2025-10-02
+Created: 2025-10-06
 Version: 1.0.1
 
 # Purpose
 Manages `Piece` movement and state changes on the `Board`. Provides a unified interface for event creation, validate,
-execution, and rollback for occupation-related operations (move, scan, attack, exchange)
+execution, and rollback for event-related operations (move, scan, attack, exchange)
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `OccupationEvent`
+  - `OccupationContext`
   - `OccupationTransaction`
   - `OccupationEventValidator`
   - `OccupationEventBuilder`
-  - All exceptions from `err`, `scan`, `attack`, and `exchange` sub-packages.
+  - All exports from `scan`, `attack`, `promotion`, and `exchange` packages.
+  - All exceptions from `er`, `scan`, `attack`, and `exchange` sub-packages.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for occupation operations.
-  - `.scan`: Logic for recording occupied squares in a piece's path.
   - `.attack`: Logic for capturing.
+  - `.promotion`: Logic for promoting kings and pawns.
+  - `.exception`: Defines all custom exceptions for event operations.
+  - `.scan`: Logic for recording occupied squares in a piece's path.
   - `.exchange`: Logic for transferring a piece to another empty square.
 
 # NOTES
-DO NOT reference sub-modules directly. Import all core classes and exceptions
-from this package level (e.g., `from chess.event.occupation import OccupationEvent`).
+DO NOT reference subpackages or submodules directly. Import all subpackages and submodules from the
+`piece` level package.
 
 USAGE:
   # >>> from chess.enemy import CombatantPiece, KingPiece, CoordStack
@@ -68,28 +70,22 @@ ___
 
 """
 
-from .exception import *
-
 from .scan import *
 from .attack import *
 from .exchange import *
-from .event import OccupationEvent
-from .builder import OccupationEventBuilder
-from .validator import OccupationEventValidator
-from .executor import OccupationTransaction
+from .promotion import *
+from .exception import *
 
-# from .err import *
-# from chess.event.occupation.attack.attack_exceptions import *
-#
-# from .event import *
-# from .executor import OccupationTransaction
-# from .validator import OccupationEventValidator
+from .event import OccupationEvent
+from .context import OccupationContext
+from .builder import OccupationEventBuilder
+from .transaction import OccupationTransaction
+from .validator import OccupationEventValidator
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.transaction.occupation"
-
+__package_name__ = "chess.piece.event"
 
 # Export control - only what belongs in public API
 __all__ = [
@@ -99,12 +95,12 @@ __all__ = [
   'OccupationTransaction',
   'OccupationEventValidator',
 
-  # Exception classes
-  *exception.__all__,
   *scan.__all__,
   *attack.__all__,
   *exchange.__all__,
+  *promotion.__all__,
 
+  *exception.__all__,
 
   # Package metadata and utilities
   "__version__",

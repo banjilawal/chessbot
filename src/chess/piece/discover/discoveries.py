@@ -19,7 +19,7 @@ class Discoveries:
   to evolve independently of the `Piece` itself, while keeping the `Piece` interface clean.
 
   Each discover represents a snapshot of another piece found during play (through
-  scanning, moving, or occupation attempts). By aggregating them, `Discoveries`
+  scanning, moving, or event attempts). By aggregating them, `Discoveries`
   provides both simple access (all discoveries) and targeted lookups (by id, name,
   coordinate, rank, or ransom).
 

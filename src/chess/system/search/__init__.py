@@ -16,7 +16,7 @@ Super class for `Search` objects and their components.
   - All exceptions in the `exception` subpackage
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.exception`: Defines all custom exceptions for event operations.
 
 
 # USAGE EXAMPLES

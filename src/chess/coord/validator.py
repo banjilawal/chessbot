@@ -1,18 +1,6 @@
 from typing import cast, Generic
 
-from chess.geometry.exception.coord import CoordValidationException
-from chess.result import Result
-from chess.system.validate.validator import Validator, T
-from chess.system.config import ROW_SIZE, COLUMN_SIZE
-from chess.exception.coord_exception import (
-  RowBelowBoundsException, RowAboveBoundsException,
-  ColumnBelowBoundsException, ColumnAboveBoundsException
-)
-
-from chess.coord.coord_exception.null.coord_null import NullCoordException
-from chess.coord.coord_exception.null.col_null import NullColumnException
-from chess.coord.coord_exception.null.row_null import NullRowException
-from chess.coord import Coord
+from chess.system import Validator
 
 
 class CoordValidator(Validator):

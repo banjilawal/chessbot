@@ -1,15 +1,15 @@
 # 2. Domain-Specific Operations
 #
-# Each transaction type (occupation, promotion, castling, enemy, etc.) gets its own subpackage.
+# Each transaction type (event, promotion, castling, enemy, etc.) gets its own subpackage.
 # Inside, you can have:
 #
 # chess/
 # └── transaction/
-#   ├── occupation/
+#   ├── event/
 #   │  ├── __init__.py
 #   │  ├── transaction.py
 #   │  ├── validator.py
-#   │  ├── base.py
+#   │  ├── event.py
 #   │  ├── err.py
 #   │  └── err.py
 #   │
@@ -17,7 +17,7 @@
 #   │  ├── __init__.py
 #   │  ├── transaction.py
 #   │  ├── validator.py
-#   │  ├── base.py
+#   │  ├── event.py
 #   │  └── err.py
 #   │
 #   ├── castling/
@@ -30,5 +30,5 @@
 #     ├── __init__.py
 #     ├── transaction.py
 #     ├── validator.py
-#     ├── base.py
+#     ├── event.py
 #     └── err.py

@@ -9,22 +9,18 @@ Data-holding object representing an`actor`'s intent to perform a state-changing 
 
 # Contents:
   - `Event:` Super class of all events.
-
-# Notes:
-  DO NOT USE THESE EXCEPTIONS DIRECTLY. Limited use in the finally statement of a try-except block.
 """
 
 from typing import Generic, TypeVar, Optional
 
+from chess.event import ExecutionContext
 
 A = TypeVar('A') # Actor Type
 R = TypeVar('R') # Resource Type
 
+@auto_id
 class Event(Generic[A, R]):
   """
-  A data-holding object representing an`actor`'s intent to perform a state-changing operation with a
-  `resource`. An `Event` is passed to a `Transaction` instance that fires and manages the event lifecycle.
-  During the event lifecycle the `actor` manipulates the `resource`.
 
   Attributes:
     _id (`int`): A unique identifier.
@@ -33,27 +29,23 @@ class Event(Generic[A, R]):
     _parent (`Event`): The parent event of this event.
   """
 
-  _id: int
   _actor: A
   _resource: Optional[R]
   _parent: Optional['Event']
+  _context: ExecutionContext
 
   def __init__(
     self,
     event_id: int,
     actor: A,
     resource: Optional[R]=None,
-    parent: Optional['Event']=None
+    parent: Optional['Event']=None,
+    context: Optional[ExecutionContext]=None
   ):
-    self._id = event_id
     self._actor = actor
     self._parent = parent
     self._resource = resource
-
-
-  @property
-  def id(self) -> int:
-    return self._id
+    self.context = context
 
   @property
   def actor(self) -> A:
