@@ -64,7 +64,7 @@ from chess.system import ChessException
 __all__ = [
   'ResultException',
 
-  # === RESULT CONSTRUCTOR EXCEPTIONS ===
+#====================== RESULT CONSTRUCTOR EXCEPTIONS ======================# 
   'ResultConstructorException',
   'EmptyResultConstructorException',
   'ErrorContradictsPayloadException'

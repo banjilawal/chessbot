@@ -47,37 +47,37 @@ __all__ = [
   'PieceException',
   'PieceRollBackException',
 
-# === PIECE VALIDATION EXCEPTIONS ===
+#======================#  PIECE VALIDATION EXCEPTIONS ======================# 
   'InvalidPieceException',
   'UnregisteredTeamMemberException',
 
-# === NULL PIECE EXCEPTIONS ===
+#======================#  NULL PIECE EXCEPTIONS ======================# 
   'NullPieceException',
   'NullKingException',
   'NullCombatantException',
 
-# === PIECE BUILD EXCEPTIONS ===
+#======================#  PIECE BUILD EXCEPTIONS ======================# 
   'PieceBuildFailedException',
 
-# === PIECE PROMOTION EXCEPTIONS ===
+#======================#  PIECE PROMOTION EXCEPTIONS ======================# 
   'DoublePromotionException',
   'DoublePromotionRolledBackException',
 
-# === PIECE CAPTURE EXCEPTIONS ===
+#======================#  PIECE CAPTURE EXCEPTIONS ======================# 
   'CapturePieceException',
   'CaptureFriendException',
   'KingCaptureException',
   'DoubleCaptureException',
   'UnsetCaptureException',
 
-# === PIECE CAPTURE EXCEPTIONS WITH ROLLBACK ===
+#======================#  PIECE CAPTURE EXCEPTIONS WITH ROLLBACK ======================# 
   'RollBackCaptureException',
   'CaptureFriendRolledBackException',
   'KingCaptureRolledBackException',
   'DoubleCaptureRolledBackException',
   'UnsetCaptureRolledBackException',
 
-# === ATTACKING PIECE EXCEPTIONS ===
+#======================#  ATTACKING PIECE EXCEPTIONS ======================# 
   'HostageActivityException',
   'HostageCannotAttackException',
   'HostageCannotMoveException',
@@ -105,7 +105,7 @@ class PieceRollBackException(PieceException, RollbackException):
   DEFAULT_MESSAGE = "Piece raised an exception."
 
 
-# === PIECE VALIDATION EXCEPTIONS ===
+#======================#  PIECE VALIDATION EXCEPTIONS ======================# 
 class InvalidPieceException(PieceException, ValidationException):
   """Raised by PieceValidators if client fails validation."""
   ERROR_CODE = "PIECE_VALIDATION_ERROR"
@@ -117,7 +117,7 @@ class UnregisteredTeamMemberException(PieceException):
   DEFAULT_MESSAGE = "The piece has team but is not listed on the roster."
 
 
-# === NULL PIECE EXCEPTIONS ===
+#======================#  NULL PIECE EXCEPTIONS ======================# 
 class NullPieceException(PieceException, NullException):
   """
   Raised if an entity, method, or operation requires a piece but gets null instead.
@@ -143,7 +143,7 @@ class NullCombatantException(NullPieceException):
   DEFAULT_MESSAGE = "CombatantPiece cannot be null."
 
 
-# === PIECE BUILD EXCEPTIONS ===
+#======================#  PIECE BUILD EXCEPTIONS ======================# 
 class PieceBuildFailedException(PieceException, BuilderException):
   """
   Indicates Coord could not be built. Wraps and re-raises errors that occurred
@@ -153,7 +153,7 @@ class PieceBuildFailedException(PieceException, BuilderException):
   DEFAULT_MESSAGE = "Piece build failed.."
 
 
-# === PIECE PROMOTION EXCEPTIONS ===
+#======================#  PIECE PROMOTION EXCEPTIONS ======================# 
 class DoublePromotionException(PieceException):
   """
   Raised when attempting promoting a piece already elevated to Queen rank.
@@ -175,7 +175,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
   )
 
 
-# === PIECE CAPTURE EXCEPTIONS ===
+#======================#  PIECE CAPTURE EXCEPTIONS ======================# 
 class CapturePieceException(PieceException):
   """
   Several exceptions can be raised during capture operations. This class is the parent of
@@ -227,7 +227,7 @@ class CircularCaptureException(CapturePieceException):
   DEFAULT_MESSAGE = "Piece cannot capture itself"
 
 
-# === PIECE CAPTURE EXCEPTIONS WITH ROLLBACK ===
+#======================#  PIECE CAPTURE EXCEPTIONS WITH ROLLBACK ======================# 
 class RollBackCaptureException(CapturePieceException, RollbackException):
   """
   RollBackCapture exceptions should be raised in ACID transactions where a capture can
@@ -289,7 +289,7 @@ class CircularCaptureRolledBackException(CapturePieceException):
   DEFAULT_MESSAGE = "Piece cannot capture itself. Transaction rolled back."
 
 
-# === ATTACKING PIECE EXCEPTIONS ===
+#======================#  ATTACKING PIECE EXCEPTIONS ======================# 
 class HostageActivityException(PieceException):
   """
   Several exceptions can be raised during capture operations. This class is the parent of

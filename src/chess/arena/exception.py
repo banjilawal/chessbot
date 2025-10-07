@@ -58,14 +58,14 @@ from chess.system import ChessException, NullException, BuildFailedException, Va
 __all__ = [
   'ArenaException',
 
-  # === ARENA VALIDATION EXCEPTIONS ===
+#====================== ARENA VALIDATION EXCEPTIONS ======================# 
   'NullArenaException',
   'InvalidArenaException',
 
-  # === ARENA BUILD EXCEPTIONS ===
+#====================== ARENA BUILD EXCEPTIONS ======================# 
   'ArenaBuildFailedException',
 
-  # === COLLECTION_ARENA EXCEPTIONS ===
+#====================== COLLECTION_ARENA EXCEPTIONS ======================# 
 ]
 
 class ArenaException(ChessException):
@@ -78,7 +78,7 @@ class ArenaException(ChessException):
   DEFAULT_MESSAGE = "Arena raised an exception."
 
 
-# === ARENA VALIDATION EXCEPTIONS ===
+#======================#  ARENA VALIDATION EXCEPTIONS ======================# 
 class NullArenaException(ArenaException, NullException):
   """Raised if an entity, method, or operation requires an arena but gets null instead."""
   ERROR_CODE = "NULL_ARENA_ERROR"
@@ -94,7 +94,7 @@ class InvalidArenaException(ArenaException, ValidationException):
   DEFAULT_MESSAGE = "Arena validation failed"
 
 
-# === ARENA BUILD EXCEPTIONS ===
+#======================#  ARENA BUILD EXCEPTIONS ======================# 
 class ArenaBuildFailedException(ArenaException, BuildFailedException):
   """
   Raised when ArenaBuilder crashed while building a new arena. Exists

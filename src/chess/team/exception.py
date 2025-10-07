@@ -48,22 +48,22 @@ __all__ = [
   'TeamException',
   'TeamRollBackException',
 
-# === TEAM VALIDATION EXCEPTIONS ===
+#======================#  TEAM VALIDATION EXCEPTIONS ======================# 
   'NullTeamException',
   'InvalidTeamException',
 
-# === TEAM BUILD EXCEPTIONS ===
+#======================#  TEAM BUILD EXCEPTIONS ======================# 
   'TeamBuilderException',
   'NullTeamSchemaException',
 
-# === TEAM MEMBER EXCEPTIONS ===
+#======================#  TEAM MEMBER EXCEPTIONS ======================# 
   'TeamRosterException',
   'AddTeamMemberException',
   'AddEnemyToRosterException',
   'RemoveTeamMemberException',
   'FullRankQuotaException',
 
-# === TEAM MEMBER EXCEPTIONS WITH ROLLBACK ===
+#======================#  TEAM MEMBER EXCEPTIONS WITH ROLLBACK ======================# 
   'TeamRosterRollBackException',
   'AddEnemyHostageRolledBackException',
   'AddTeamMemberRolledBackException',
@@ -71,21 +71,21 @@ __all__ = [
   'FullRankQuotaRolledBackException',
   'ConflictingTeamAssignmentException',
 
-# === HOSTAGE EXCEPTIONS ===
+#======================#  HOSTAGE EXCEPTIONS ======================# 
   'TeamHostageListException',
   'InvalidFriendlyHostageException',
   'AddEnemyHostageException',
   'AddEnemyKingHostageException',
   'HostageRemovalException',
 
-# === HOSTAGE EXCEPTIONS WITH ROLLBACK ===
+#======================#  HOSTAGE EXCEPTIONS WITH ROLLBACK ======================# 
   'TeamHostageListRolledBackException',
   'InvalidFriendlyHostageRolledBackException',
   'AddEnemyToRosterRolledBackException',
   'EnemyKingHostageRolledBackException',
   'HostageRemovalRolledBackException',
 
-# === SEARCH EXCEPTIONS ===
+#======================#  SEARCH EXCEPTIONS ======================# 
   'RosterNumberOutOfBoundsException'
 ]
 
@@ -106,7 +106,7 @@ class TeamRollBackException(TeamException):
   ERROR_CODE = "TEAM_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Team raised an exception. Transaction rollback performed."
 
-# === TEAM VALIDATION EXCEPTIONS ===
+#======================#  TEAM VALIDATION EXCEPTIONS ======================# 
 class NullTeamException(TeamException, NullException):
   """Raised if an entity, method, or operation requires a team but gets null instead."""
   ERROR_CODE = "NULL_TEAM_ERROR"
@@ -121,7 +121,7 @@ class InvalidTeamException(TeamException, ValidationException):
   DEFAULT_MESSAGE = f"Team validation failed"
 
 
-# === TEAM BUILD EXCEPTIONS ===
+#======================#  TEAM BUILD EXCEPTIONS ======================# 
 class TeamBuilderException(TeamException, BuilderException):
   """
   Raised when TeamBuilder encounters an error while building a team. Exists primarily to
@@ -138,7 +138,7 @@ class NullTeamSchemaException(TeamException, NullException):
   DEFAULT_MESSAGE = f"TeamProfile cannot be null"
 
 
-# === TEAM MEMBER LIST EXCEPTIONS ===
+#======================#  TEAM MEMBER LIST EXCEPTIONS ======================# 
 class TeamRosterException(TeamException):
   """Raised for errors on team's roster"""
   ERROR_CODE = "TEAM_ROSTER_ERROR"
@@ -174,7 +174,7 @@ class ConflictingTeamAssignmentException(TeamRosterException):
   DEFAULT_MESSAGE = "Piece is already assigned to a team."
 
 
-# === TEAM MEMBER LIST EXCEPTIONS WITH ROLLBACK ===
+#======================#  TEAM MEMBER LIST EXCEPTIONS WITH ROLLBACK ======================# 
 class TeamRosterRollBackException(TeamRosterException, RollbackException):
   """Raised for errors on team's roster that are raised after rollback."""
   ERROR_CODE = "TEAM_ROSTER_ERROR_ROLLED_BACK"
@@ -231,7 +231,7 @@ class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
     "Piece is already assigned to a team. Transaction rollback performed."
   )
 
-# === HOSTAGE LIST EXCEPTIONS ===
+#======================#  HOSTAGE LIST EXCEPTIONS ======================# 
 class TeamHostageListException(TeamException):
   """Raised on errors with team's hostage list"""
   ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
@@ -261,7 +261,7 @@ class HostageRemovalException(TeamHostageListException):
   DEFAULT_MESSAGE = "An enemy piece cannot be removed from the team's hostage list"
 
 
-# === HOSTAGE LIST EXCEPTIONS WITH ROLLBACK ===
+#======================#  HOSTAGE LIST EXCEPTIONS WITH ROLLBACK ======================# 
 class TeamHostageListRolledBackException(TeamHostageListException, RollbackException):
   """
   Raised on transactions that raise hostage list errors. Exception is raised after
@@ -308,7 +308,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "An enemy piece cannot be removed from the team's hostage list"
 
-# === SEARCH EXCEPTIONS ===
+#======================#  SEARCH EXCEPTIONS ======================# 
 class RosterNumberOutOfBoundsException(TeamException, SearchException):
   """Attempting to search for a roster number < 1 or > team_size raises an err"""
   ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"

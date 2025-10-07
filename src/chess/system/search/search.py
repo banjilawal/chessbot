@@ -16,7 +16,7 @@ Contains:
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
 
-from chess.system import SearchContext, FilterContext, SearchResult, FilterResult
+from chess.system.search.context import SearchContext, SearchResult, FilterResult
 
 T = TypeVar('T')
 

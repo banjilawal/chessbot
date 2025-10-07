@@ -53,7 +53,7 @@ __all__ = [
   'AddDuplicateDiscoveryException',
   'AddNullDiscoveryException',
   
-# === DISCOVERY EXCEPTIONS WITH ROLLBACK===
+#======================#  DISCOVERY EXCEPTIONS WITH ROLLBACK===
   'DiscoveryRolledBackException',
   'CircularDiscoveryRolledBackException',
   'DuplicateDiscoveryRolledBackException',
@@ -116,7 +116,7 @@ class AddNullDiscoveryException(DiscoveryException):
   ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR"
   DEFAULT_MESSAGE = "Cannot add a null discovery to the list"
 
-# === DISCOVERY EXCEPTIONS WITH ROLLBACK===
+#======================#  DISCOVERY EXCEPTIONS WITH ROLLBACK===
 class DiscoveryRolledBackException(DiscoveryException, RollbackException):
   """
   Any inconsistencies a discovery introduces into a transaction need to be rolled back.

@@ -64,7 +64,7 @@ class AttackEventValidator(EventValidator[A], Generic[T]):
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: actor validate failed")
+        raise InvalidPieceException(f"{method}: actor validation failed.")
 
       destination_square_validation = SquareValidator.validate(event.destination_square)
       if not destination_square_validation.is_success():

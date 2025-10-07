@@ -27,21 +27,16 @@ ___
 """
 
 from .exception import *
-
-from .search import *
-from .result import *
 from .context import *
 
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.system.search'
+__package_name__ = 'chess.system.search.context'
 
 # Export control - only what belongs in public API
 __all__ = [
-  *search.__all__,
-  *result.__all__,
   *context.__all__,
   *exception.__all__,
 

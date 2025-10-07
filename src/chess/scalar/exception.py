@@ -46,14 +46,14 @@ from chess.exception import ChessException, NullException, ValidationException, 
 __all__ = [
   'ScalarException',
   
-# === SCALAR VALIDATION EXCEPTIONS ===
+#======================#  SCALAR VALIDATION EXCEPTIONS ======================# 
   'NullScalarException',
   'InvalidScalarException',
   
-# === SCALAR BUILD EXCEPTIONS ===
+#======================#  SCALAR BUILD EXCEPTIONS ======================# 
   'ScalarBuildFailed',
 
-# === SCALAR BOUNDS EXCEPTIONS ===
+#======================#  SCALAR BOUNDS EXCEPTIONS ======================# 
   'ScalarBelowBoundsException',
   'ScalarAboveBoundsException'
 ]
@@ -68,7 +68,7 @@ class ScalarException(ChessException):
   DEFAULT_MESSAGE = "Scalar is below lower bound"
   
 
-# === SCALAR VALIDATION EXCEPTIONS ===
+#======================#  SCALAR VALIDATION EXCEPTIONS ======================# 
 class NullScalarException(ScalarException, NullException):
   """Raised if an entity, method, or operation requires a scalar but gets null instead."""
   ERROR_CODE = "NULL_SCALAR_ERROR"
@@ -80,7 +80,7 @@ class InvalidScalarException(ScalarException, ValidationException):
   DEFAULT_MESSAGE = "Scalar validation failed."
 
 
-# === SCALAR BUILD EXCEPTIONS ===
+#======================#  SCALAR BUILD EXCEPTIONS ======================# 
 class ScalarBuildFailed(ScalarException, BuilderException):
   """
   Indicates Scalar could not be built. Wraps and re-raises errors that occurred
@@ -90,7 +90,7 @@ class ScalarBuildFailed(ScalarException, BuilderException):
   DEFAULT_MESSAGE = "Scalar build failed."
 
 
-# === SCALAR BOUNDS EXCEPTIONS ===
+#======================#  SCALAR BOUNDS EXCEPTIONS ======================# 
 class ScalarBelowBoundsException(ScalarException):
   """Raised if a scalar is below its < -KNIGHT_STEP_SIZE"""
   ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"

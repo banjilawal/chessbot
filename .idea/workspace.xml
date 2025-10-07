@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/coord_stack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/coord_stack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/context/filter_context.exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/context/seach_context.exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/commander/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/attack/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/attack/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/exchange/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/exchange/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/search/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/context/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +254,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/team/search",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/context",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -271,11 +280,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/context" />
+      <recent name="$PROJECT_DIR$/src/chess/system/search/context" />
       <recent name="$PROJECT_DIR$/src/chess/team/search" />
       <recent name="$PROJECT_DIR$/src/chess/piece/event" />
       <recent name="$PROJECT_DIR$/src/chess/commander" />
-      <recent name="$PROJECT_DIR$/src/chess/arena" />
-      <recent name="$PROJECT_DIR$/src/chess/event" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/team/search/context" />
@@ -542,7 +551,7 @@
       <workItem from="1759685976252" duration="175000" />
       <workItem from="1759686170219" duration="9706000" />
       <workItem from="1759708896314" duration="7206000" />
-      <workItem from="1759763190487" duration="40955000" />
+      <workItem from="1759763190487" duration="43308000" />
     </task>
     <servers />
   </component>

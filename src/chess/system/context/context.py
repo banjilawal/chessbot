@@ -29,7 +29,6 @@ class Context(ABC):
   def to_dict(self) -> dict:
     """
     Converts a roster's fields into a dictionary.
-
     Attributes:
       No attributes. Implementors declare their own.
     """

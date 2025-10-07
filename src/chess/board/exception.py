@@ -60,17 +60,17 @@ __all__ = [
   'BoardException',
   'BoardRollBackException',
 
-  # === BOARD VALIDATION EXCEPTIONS ===
+#====================== BOARD VALIDATION EXCEPTIONS ======================# 
   'NullBoardException',
 
-  # === BOARD BUILD EXCEPTIONS ===
+#====================== BOARD BUILD EXCEPTIONS ======================# 
   'BoardBuildFailedException',
 
-  # === PIECE ADDITION/REMOVAL EXCEPTIONS ===
+#====================== PIECE ADDITION/REMOVAL EXCEPTIONS ======================# 
   'BoardPieceAdditionFailedException',
   'BoardPieceRemovalFailedException',
 
-  # === PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ===
+#====================== PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ======================# 
   'FailedPieceAdditionRolledBackException',
   'FailedPieceRemovalRolledBackException',
 ]
@@ -94,7 +94,7 @@ class BoardRollBackException(BoardException):
   DEFAULT_MESSAGE = "Board raised an exception. Transaction rollback performed."
 
 
-# === BOARD VALIDATION EXCEPTIONS ===
+#======================#  BOARD VALIDATION EXCEPTIONS ======================# 
 class NullBoardException(BoardException, NullException):
   """Raised if an entity, method, or operation requires a board but gets null instead."""
   ERROR_CODE = "NULL_BOARD_ERROR"
@@ -108,7 +108,7 @@ class InvalidBoardException(BoardException, ValidationException):
   ERROR_CODE = "BOARD_VALIDATION_ERROR"
   DEFAULT_MESSAGE = f"Board validation failed"
 
-# === BOARD BUILD EXCEPTIONS ===
+#======================#  BOARD BUILD EXCEPTIONS ======================# 
 class BoardBuildFailedException(BoardException, BuilderException):
   """
   Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all
@@ -118,7 +118,7 @@ class BoardBuildFailedException(BoardException, BuilderException):
   DEFAULT_MESSAGE = "Board build failed."
 
 
-# === PIECE ADDITION/REMOVAL EXCEPTIONS ===
+#======================#  PIECE ADDITION/REMOVAL EXCEPTIONS ======================# 
 class BoardPieceAdditionFailedException(BoardException):
   """Raised if the board fails to remove a piece from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR"
@@ -129,7 +129,7 @@ class BoardPieceRemovalFailedException(BoardException):
   ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR"
   DEFAULT_MESSAGE = "Board failed to remove the piece"
 
-# === PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ===
+#======================#  PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ======================# 
 class FailedPieceAdditionRolledBackException(BoardRollBackException):
   """
   Raised if a transaction failed to add a piece to the board.The transaction was

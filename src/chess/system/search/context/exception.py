@@ -1,7 +1,7 @@
-# src/chess.coord.exception.py
+# src/chess.searchContext.exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.searchContext.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -9,21 +9,21 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **exception classes** that are specific to the
-creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
+creation, validation, and manipulation of **SearchContext objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
-falls to the `CoordValidator` and `CoordBuilder`processes.
+falls to the `SearchContextValidator` and `SearchContextBuilder`processes.
 
 THEME:
 -----
 **Comprehensive Domain Error Catalog.** The central theme is to provide a
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
-and the **affected domain** (e.g., `CoordException`). This enables precise error
+and the **affected domain** (e.g., `SearchContextException`). This enables precise error
 logging and handling throughout the system.
 
 PURPOSE:
 -------
-To serve as the **centralized error dictionary** for the `Coord` domain.
+To serve as the **centralized error dictionary** for the `SearchContext` domain.
 It abstracts underlying Python exceptions into domain-specific, custom error types
 to improve code clarity and facilitate robust error handling within the chess engine.
 
@@ -37,154 +37,135 @@ From `chess.system`:
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
-`NullCoordException`, `RowAboveBoundsException`).
+See the list of exceptions in the `__all__` list following (e.g., `SearchContextException`,
+`NullSearchContextException`, `RowAboveBoundsException`).
 """
 
 from chess.system import ChessException, NullException, BuildFailedException, ValidationException
 
 __all__ = [
-  'ContextException',
+  'SearchContextException',
+  'FilterContextException',
 
-# === CONTEXT VALIDATION EXCEPTIONS ===
-  'NullContextException',
-  'InvalidContextException',
+#======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
+  'NullSearchContextException',
+  'InvalidSearchContextException',
+  'SearchContextZeroParamCountException',
+  'SearchContextMaxParamCountException',
 
-# === CONTEXT BUILD EXCEPTIONS ===
-  'ContextBuildFailedException',
+#======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
+  'SearchContextBuildFailedException',
 
-# === CONTEXT HISTORY EXCEPTIONS ===
-  'ContextHistoryException',
-  'InconsistentCommandHistoryException',
-  'PushNewTeamException',
-  'UndoingPushTeamFailedException',
-  'InvalidContextAssignmentException'
+#======= FILTER_CONTEXT VALIDATION EXCEPTIONS =======#
+  'NullFilterContextException',
+  'InvalidFilterContextException',
+  'FilterContextZeroParamCountException',
+  'FilterContextMaxParamCountException',
+
+#======= FILTER_CONTEXT BUILD EXCEPTIONS =======#
+  'FilterContextBuildFailedException',
 ]
-
-class ContextException(ChessException):
-  """
-  Super class for exceptions raised by Context objects. DO NOT
-  USE DIRECTLY. Subclasses give more useful debugging messages.
-  """
-  ERROR_CODE = "CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "Context raised an team_exception"
-
-# === CONTEXT VALIDATION EXCEPTIONS ===
-class NullContextException(ContextException, NullException):
-  """
-  Raised if an entity, method, or operation requires a context but
-  gets null instead.
-  """
-  ERROR_CODE = "NULL_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = f"Context cannot be null"
-
-class InvalidContextException(ContextException, ValidationException):
-  """
-  Raised by BoardValidator if board fails sanity checks. Exists primarily to
-  catch all exceptions raised validating an existing board
-  """
-  ERROR_CODE = "CONTEXT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Context validate failed"
-
-# === CONTEXT BUILD EXCEPTIONS ===
-class ContextBuildFailedException(ContextException, BuildFailedException):
-  """
-  Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all
-  exceptions raised build a new board
-  """
-  ERROR_CODE = "CONTEXT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Context build failed."
-
-# === CONTEXT HISTORY EXCEPTIONS ===
-class ContextHistoryException(ContextException):
-  """Team list specific errors."""
-  ERROR_CODE = "CONTEXT_HISTORY_ERROR"
-  DEFAULT_MESSAGE = "ContextHistory raised an exception."
-
-class InconsistentCommandHistoryException(ContextHistoryException, InconsistentCollectionException):
-  ERROR_CODE = "INCONSISTENT_CONTEXT_HISTORY_ERROR"
-  DEFAULT_MESSAGE = (
-    "ContextHistory is an inconsistent state. Data might be corrupt."
-  )
-
-class PushNewTeamException(ContextHistoryException):
-  """Raised if a new team could not be pushed to commandHistory"""
-  ERROR_CODE = "PUSH_NEW_TEAM_ERROR"
-  DEFAULT_MESSAGE = "Could not push a new team to CommandHistory."
-
-class UndoingPushTeamFailedException(ContextHistoryException):
-  """Raised if removing the current team failed"""
-  ERROR_CODE = "UNDOING_PUSH_TEAM_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Could not undo the new team addition."
-
-class CannotRemoveOldTeamException(ContextHistoryException):
-  """Raised if an attempt is made to remove an old team from CommandHistory"""
-  ERROR_CODE = "REMOVE_OLD_TEAM_ERROR"
-  DEFAULT_MESSAGE = "Removing old teams from CommandHistory is not allowed."
-
-class InvalidContextAssignmentException(ContextHistoryException):
-  """
-  If a team already attached to a context (team.context == not None) tries being assigned a
-  different context, `InvalidContextAssignmentException` is raised.
-  """
-  ERROR_CODE = "INVALID_CONTEXT_ASSIGNMENT_ERROR"
-  DEFAULT_MESSAGE = "Team is already assigned to a different context."
-
-
-
-
-
-
-class ContextException(ChessException):
-  """
-  """
-  ERROR_CODE = "CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "Context raised an exception."
-
-
-class NullContextException(ChessException, NullException):
-  """
-  """
-  ERROR_CODE = "NULL_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "Context cannot be null."
-
 
 class SearchContextException(ContextException):
   """
+  Super class for exceptions raised by SearchContext objects. DO NOT
+  USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "SearchContext raised an exception."
+  DEFAULT_MESSAGE = "SearchContext raised an team_exception"
 
-  class SearchContextException(ContextException):
-    """
-    """
-    ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "SearchContext raised an exception."
-
-
-class NullSearchContextException(SearchContextException, NullContextException):
+#======================#  SEARCH_CONTEXT VALIDATION EXCEPTIONS ======================#
+class NullSearchContextException(SearchContextException, NullException):
   """
+  Raised if an entity, method, or operation requires a searchContext but
+  gets null instead.
   """
   ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "SearchContext cannot be null."
-  
-  
+  DEFAULT_MESSAGE = "SearchContext cannot be null"
+
+class InvalidSearchContextException(SearchContextException, ValidationException):
+  """
+  Raised by searchContextBValidator if searchContext fails sanity checks. Exists primarily to
+  catch all exceptions raised validating an existing searchContext
+  """
+  ERROR_CODE = "SEARCH_CONTEXT_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "SearchContext validation failed."
+
+
+class SearchContextZeroParamCountException(SearchContextException):
+  """
+  Raised if all SearchContext params are set null.
+  """
+  ERROR_CODE = "SEARCH_CONTEXT_ZERO_PARAM_ERROR"
+  DEFAULT_MESSAGE = "A SearchContext cannot have all params set null."
+
+class SearchContextMaxParamCountException(SearchContextException):
+  """
+  Raised if more than one SearchContext param is set null.
+  """
+  ERROR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
+  DEFAULT_MESSAGE = "A SearchContext cannot have more than one param set null."
+
+#======================#  SEARCH_CONTEXT BUILD EXCEPTIONS ======================#
+class SearchContextBuildFailedException(SearchContextException, BuildFailedException):
+  """
+  Raised when SearchContextBuilder encounters an error while building a team.
+  Exists primarily to catch all exceptions raised build a new searchContext
+  """
+  ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+  DEFAULT_MESSAGE = "SearchContext build failed."
+
+#=========================================================================#
+#======================= FILTER_CONTEXT EXCEPTIONS =======================#
+#=========================================================================#
+
 class FilterContextException(SearchContextException):
   """
+  Super class for exceptions raised by FilterContext objects. DO NOT
+  USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "FILTER_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "FilterContext raised an exception."
+  DEFAULT_MESSAGE = "FilterContext raised an team_exception"
 
-
-class NullFilterContextException(NullSearchContextException):
+#======================#  FILTER_CONTEXT VALIDATION EXCEPTIONS ======================#
+class NullFilterContextException(FilterContextException, NullException):
   """
+  Raised if an entity, method, or operation requires a filterContext but
+  gets null instead.
   """
-  ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "SearchContext cannot be null."
-  
+  ERROR_CODE = "NULL_FILTER_CONTEXT_ERROR"
+  DEFAULT_MESSAGE = "FilterContext cannot be null"
 
-class InvalidContextException(ContextException):
-  from chess.exception import RollbackException
-  from chess.piece.event import OccupationEventException
+class InvalidFilterContextException(FilterContextException, ValidationException):
+  """
+  Raised by filterContextBValidator if filterContext fails sanity checks. Exists primarily to
+  catch all exceptions raised validating an existing filterContext
+  """
+  ERROR_CODE = "FILTER_CONTEXT_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "FilterContext validation failed."
 
+
+class FilterContextZeroParamCountException(FilterContextException):
+  """
+  Raised if all FilterContext params are set null.
+  """
+  ERROR_CODE = "FILTER_CONTEXT_ZERO_PARAM_ERROR"
+  DEFAULT_MESSAGE = "A FilterContext cannot have all params set null."
+
+
+class FilterContextMaxParamCountException(FilterContextException):
+  """
+  Raised if more than one FilterContext param is set null.
+  """
+  ERROR_CODE = "FILTER_CONTEXT_MAX_PARAM_ERROR"
+  DEFAULT_MESSAGE = "A FilterContext cannot have more than one param set null."
+
+#======================#  FILTER_CONTEXT BUILD EXCEPTIONS ======================#
+class FilterContextBuildFailedException(FilterContextException, BuildFailedException):
+  """
+  Raised when FilterContextBuilder encounters an error while building a team.
+  Exists primarily to catch all exceptions raised build a new filterContext
+  """
+  ERROR_CODE = "FILTER_CONTEXT_BUILD_FAILED_ERROR"
+  DEFAULT_MESSAGE = "FilterContext build failed."
  

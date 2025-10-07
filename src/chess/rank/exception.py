@@ -46,12 +46,12 @@ from chess.exception import ChessException, NullException, ValidationException
 __all__ = [
   'RankException',
 
-# === RANK VALIDATION EXCEPTIONS ===
+#======================#  RANK VALIDATION EXCEPTIONS ======================# 
   'NullRankException',
   'InvalidRankException',
   'UnRecognizedConcreteRankException',
 
-# === RANK SUBCLASS VALIDATION EXCEPTIONS ===
+#======================#  RANK SUBCLASS VALIDATION EXCEPTIONS ======================# 
   'InvalidKingException',
   'InvalidPawnException',
   'InvalidKnightException',
@@ -59,9 +59,9 @@ __all__ = [
   'InvalidRookException',
   'InvalidQueenException',
 
-# === RANK BUILD EXCEPTIONS ===
+#======================#  RANK BUILD EXCEPTIONS ======================# 
 
-# === RANK MOVING EXCEPTIONS ===
+#======================#  RANK MOVING EXCEPTIONS ======================# 
   'MovingException',
   'KingMovingException',
   'PawnMovingException',
@@ -75,21 +75,21 @@ class RankException(ChessException):
   ERROR_CODE = "RANK_ERROR"
   DEFAULT_MESSAGE = "Rank raised an exception."
 
-# === RANK VALIDATION EXCEPTIONS ===
+#======================#  RANK VALIDATION EXCEPTIONS ======================# 
 class NullRankException(RankException, NullException):
   ERROR_CODE = "NULL_RANK_ERROR"
   DEFAULT_MESSAGE = "Rank cannot be null"
 
 class InvalidRankException(RankException, ValidationException):
   ERROR_CODE = "RANK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Rank validate failed"
+  DEFAULT_MESSAGE = f"Rank validation failed."
 
 class UnRecognizedConcreteRankException(RankException):
   ERROR_CODE = "UNRECOGNIZED_CONCRETE_RANK_ERROR"
   DEFAULT_MESSAGE = "This concrete subclass of Rank is not recognized"
 
 
-# === RANK SUBCLASS VALIDATION EXCEPTIONS ===
+#======================#  RANK SUBCLASS VALIDATION EXCEPTIONS ======================# 
 class InvalidKingException(InvalidRankException):
   ERROR_CODE = "KING_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "King validation failed."
@@ -115,7 +115,7 @@ class InvalidQueenException(InvalidRankException):
   DEFAULT_MESSAGE = "Queen validation failed."
 
 
-# === RANK MOVING EXCEPTIONS ===
+#======================#  RANK MOVING EXCEPTIONS ======================# 
 class MovingException(RankException):
   ERROR_CODE = "RANK_MOVING_ERROR"
   DEFAULT_MESSAGE = "Invalid move."

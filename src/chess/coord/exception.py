@@ -48,22 +48,22 @@ from chess.system import (
 __all__ = [
   'CoordException',
 
-  # === COORD VALIDATION EXCEPTIONS ===
+#====================== COORD VALIDATION EXCEPTIONS ======================# 
   'NullCoordException',
   'InvalidCoordException',
 
 
-  # === COORD_ROW VALIDATION EXCEPTIONS ===
+#====================== COORD_ROW VALIDATION EXCEPTIONS ======================# 
   'NullRowException',
   'RowBelowBoundsException',
   'RowAboveBoundsException',
 
-  # === COORD_COLUMN VALIDATION EXCEPTIONS ===
+#====================== COORD_COLUMN VALIDATION EXCEPTIONS ======================# 
   'NullColumnException',
   'ColumnAboveBoundsException',
   'ColumnBelowBoundsException',
 
-  # === COORD BUILD EXCEPTIONS ===
+#====================== COORD BUILD EXCEPTIONS ======================# 
   'CoordBuildFailedException'
 ]
 
@@ -74,7 +74,7 @@ class CoordException(ChessException):
   ERROR_CODE = "COORD_ERROR"
   DEFAULT_MESSAGE = f"Invalid Coord state threw an err"
 
-  # === COORD VALIDATION EXCEPTIONS ===
+#====================== COORD VALIDATION EXCEPTIONS ======================# 
 class NullCoordException(CoordException, NullException):
   """Raised by methods, entities, and models that require a Coord but receive a null."""
   ERROR_CODE = "NULL_COORD_ERROR"
@@ -86,7 +86,7 @@ class InvalidCoordException(CoordException, ValidationException):
   DEFAULT_MESSAGE = "Coord validation failed"
 
 
-  # === COORD_ROW VALIDATION EXCEPTIONS ===
+#====================== COORD_ROW VALIDATION EXCEPTIONS ======================# 
   class NullRowException(CoordException, NullException):
     """
     Raised if a row is null. A coord cannot be created if the row is null
@@ -110,7 +110,7 @@ class InvalidCoordException(CoordException, ValidationException):
     DEFAULT_MESSAGE = f"Coord.row > {ROW_SIZE - 1}. This outside the dimension of the board"
 
 
-  # === COORD_COLUMN VALIDATION EXCEPTIONS ===
+#====================== COORD_COLUMN VALIDATION EXCEPTIONS ======================# 
 class NullColumnException(NullException):
   """
   Raised if a column is null. A coord cannot be created if the column is null
@@ -135,7 +135,7 @@ class ColumnAboveBoundsException(CoordException):
   DEFAULT_MESSAGE = f"Coord.column > {COLUMN_SIZE - 1}. This outside the dimension of the board"
 
 
-  # === COORD BUILD EXCEPTIONS ===
+#====================== COORD BUILD EXCEPTIONS ======================# 
 class CoordBuildFailedException(CoordException, BuildFailedException):
   """
   Indicates Coord could not be built. Wraps and re-raises errors

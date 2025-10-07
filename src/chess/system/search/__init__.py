@@ -25,12 +25,13 @@ ___
 ```
 ---
 """
+from lib2to3.fixes.fix_input import context
 
 from .exception import *
 
-from .search import *
+from .search import Search
 from .result import *
-from .context import *
+from .search import *
 
 
 # Package metadata (organic to __init__.py)
@@ -40,7 +41,7 @@ __package_name__ = 'chess.system.search'
 
 # Export control - only what belongs in public API
 __all__ = [
-  *search.__all__,
+ 'Search',
   *result.__all__,
   *context.__all__,
   *exception.__all__,
