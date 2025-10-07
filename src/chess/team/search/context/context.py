@@ -26,10 +26,9 @@ from abc import ABC
 from typing import Optional
 
 from chess.rank import Rank
-from chess.system import SearchContext, FilterContext
+from chess.system import SearchContext,
 
-
-class TeamSearchContext(ABC, SearchContext):
+class TeamSearchContext(SearchContext):
   """
   ROLE:
   ----
@@ -75,7 +74,7 @@ def to_dict(self) -> dict:
   }
 
 
-class TeamFilterContext(ABC, FilterContext):
+class TeamFilterContext(FilterContext):
   """
   ROLE:
   ----
@@ -86,7 +85,6 @@ class TeamFilterContext(ABC, FilterContext):
   ATTRIBUTES:
   ----------
   """
-
   _rank: Optional[Rank]
   _min_capture_value: Optional[int]
   _max_capture_value: Optional[int]

@@ -44,7 +44,6 @@ __package_name__ = 'chess.system'
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  'ExecutionContext',
 
   *id.__all__,
   *name.__all__,

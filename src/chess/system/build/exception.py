@@ -46,7 +46,9 @@ from chess.exception import ChessException, NullException
 __all__ = [
   'BuilderException',
   'NullBuilderException',
-  'BuildFailedException'
+  'BuildFailedException',
+  'AllParamsSetNullException',
+  'MutuallyExclusiveParamsException'
 ]
 
 
@@ -71,6 +73,20 @@ class BuildFailedException(BuilderException):
   """
   ERROR_CODE = "BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "build failed."
+
+class AllParamsSetNullException(BuilderException):
+  """
+  Raised if all build params cannot be null.
+  """
+  ERROR_CODE = "ALL_PARAMS_SET_NULL_ERROR"
+  DEFAULT_MESSAGE = "Cannot have all params set null."
+
+class MutuallyExclusiveParamsException(BuilderException):
+  """
+  Raised if only one param cannot be null.
+  """
+  ERROR_CODE = "MUTUALLY_EXCLUSIVE_BUILD_PARAMS_ERROR"
+  DEFAULT_MESSAGE = "Cannot have more than one param set null."
 
 
 

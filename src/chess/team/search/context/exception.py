@@ -41,14 +41,9 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 `NullCoordException`, `RowAboveBoundsException`).
 """
 
-from chess.system.search import SearchContext
-
-
+from chess.system import SearchContextException
 
 
 class TeamSearchContextException(SearchContextException):
     ERROR_CODE = "TEAM_SEARCH_CONTEXT_ERROR"
     DEFAULT_ERROR_CODE = "TeamSearchContext raised an exception."
-
-
-class (SearchContext):
