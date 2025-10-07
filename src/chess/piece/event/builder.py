@@ -49,7 +49,7 @@ class OccupationEventBuilder(Enum):
       `event_id` (`int`): The unique id for the occupationEvent. Must pass `IdValidator` checks.
       `actor` (`Piece`): Must pass `PieceValidator` checks.
       `destination_`square` (`Square`): The `square` which determines how the occupationEvent moves and its capture value.
-      `context` (`ExecutionContext`): Specifies if the `occupationEvent` is white or black.
+      `roster` (`ExecutionContext`): Specifies if the `occupationEvent` is white or black.
 
     Returns:
       BuildResult[OccupationEvent]: A `BuildResult` containing either:
@@ -62,10 +62,10 @@ class OccupationEventBuilder(Enum):
         * `InvalidIdException`: if `event_id` fails validate checks
         * `ActorValidationException`: if `actor` fails validate checks
         * `InvalidSquareException`: if `square` fails validate checks
-        * `InvalidContextException`: if `context` fails validate checks
-        * `InvalidContextAssignmentException`: If `occupationEvent.context` is different from `context` parameter
-        * `FullSquareQuotaException`: If the `context` has no empty slots for the `occupationEvent.square`
-        * `FullSquareQuotaException`: If `occupationEvent.context` is equal to `context` parameter but `context.roster` still does
+        * `InvalidContextException`: if `roster` fails validate checks
+        * `InvalidContextAssignmentException`: If `occupationEvent.roster` is different from `roster` parameter
+        * `FullSquareQuotaException`: If the `roster` has no empty slots for the `occupationEvent.square`
+        * `FullSquareQuotaException`: If `occupationEvent.roster` is equal to `roster` parameter but `roster.roster` still does
           not have the occupationEvent
 
     Note:
@@ -93,7 +93,7 @@ class OccupationEventBuilder(Enum):
       if not square_validation.is_success():
         ThrowHelper.propagate_error(OccupationEventBuilder, square_validation.exception)
 
-      # context_validation = ContextValidator.validate(context)
+      # context_validation = ContextValidator.validate(roster)
       # if not context_validation.is_success():
       #   RaiserLogger.throw_if_invalid(OccupationEventBuilder, context_validation)
 

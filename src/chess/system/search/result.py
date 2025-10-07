@@ -12,9 +12,14 @@ Contains:
  * `SearchResult`
 """
 
-from typing import Optional, TypeVar, Generic
+from typing import Optional, TypeVar, Generic, List
 
 T = TypeVar('T')
+
+__all__ = [
+  'SearchResult',
+  'FilterResult'
+]
 
 class SearchResult:
   """
@@ -89,3 +94,19 @@ class SearchResult:
       return "Result(NOT_FOUND)"
     else:
       return f"Result(FAILURE: {self._exception}"
+
+
+class FilterResult(SearchResult):
+  """
+  """
+  _payload: Optional[List[T]]
+  _exception: Optional[Exception]
+
+  def __init__(self, payload: Optional[List[T]] = None, exception: Optional[Exception] = None):
+    super().__init__(payload, exception)
+    method = "SearchResult.__init_"
+
+
+
+
+

@@ -1,7 +1,7 @@
-# src/chess/event/context.py
+# src/chess/event/roster.py
 
 """
-Module: `chess.event.context`
+Module: `chess.event.roster`
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

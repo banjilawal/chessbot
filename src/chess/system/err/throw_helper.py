@@ -16,7 +16,7 @@ class RaiserLogger(Enum):
     ErrorHandler.log_and_raise(context, exception_factory())
 
     # if not result.is_success():
-    #   ErrorHandler.log_and_raise(context, exception_factory)
+    #   ErrorHandler.log_and_raise(roster, exception_factory)
 
   @staticmethod
   def _default_exception_factory() -> Exception:

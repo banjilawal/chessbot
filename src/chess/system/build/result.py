@@ -7,7 +7,7 @@ T = TypeVar('T')
 class BuildResult(Generic[T]):
   """
   BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
-  same structure as Result but is used specifically in the context of building entities. It can hold either.
+  same structure as Result but is used specifically in the roster of building entities. It can hold either.
   a payload of type T or an Exception, but not both. If the build operation is successful, the payload will
   contain the built object. If the build operation fails, the error will contain the error that
   occurred during the build process.

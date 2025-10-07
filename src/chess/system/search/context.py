@@ -1,7 +1,7 @@
-# /src/chess/system/search/context.py
+# /src/chess/system/search/roster.py
 
 """
-Module: `chess.system.search.context`
+Module: `chess.system.search.roster`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -18,6 +18,10 @@ from abc import ABC
 
 from chess.system import Context
 
+__all__ = [
+  'SearchContext',
+  'FilterContext'
+]
 
 class SearchContext(Context, ABC):
   """
@@ -27,5 +31,11 @@ class SearchContext(Context, ABC):
 
   Attributes:
     No attributes. Implementors declare their own.
+  """
+  pass
+
+
+class FilterContext(Context, ABC):
+  """
   """
   pass

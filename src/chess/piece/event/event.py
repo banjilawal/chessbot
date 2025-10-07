@@ -53,7 +53,7 @@ class OccupationEvent(Event[Piece,Square]):
       * `actor` (`Piece`):
       * `destination_square` (`Square`):
       * `parent` (`Event`):
-      * `context` (`OccupationContext`):
+      * `roster` (`OccupationContext`):
     """
     super().__init__(actor=actor, resource=destination_square, parent=parent, context=context)
 

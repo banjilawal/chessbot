@@ -8,11 +8,8 @@ version: 1.0.0
 
 
 # PURPOSE
-<WRITE_SENTENCE_ABOUT_PURPOSE_HERE>
 
-<WRITE_SINGLE_PARAGRAPH_HERE_IF_NECESSARY>
-
- # EXPORTS
+# EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `CLASS>ANE`: <LINE_ABOUT_CLASS_PURPOSE_HERE>.
   - All exceptions from `exception` package.
@@ -30,28 +27,18 @@ ___
 ```python
 ```
 ---
-
-# BEST PRACTICES
- 1. <BEST_PRACTICE_1>
 """
 
 from .exception import *
-from .builder import Builder
-from .result import BuildResult
-
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.system.build'
+__package_name__ = 'chess.package'
 
 # Export control - only what belongs in public API
 __all__ = [
-  # Core classes
-  'Builder',
-  'BuildResult',
   *exception.__all__,
-
 
   # Package metadata and utilities
   '__version__',

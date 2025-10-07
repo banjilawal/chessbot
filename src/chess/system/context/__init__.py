@@ -1,7 +1,7 @@
-# chess/system/context/__init__.py
+# chess/system/roster/__init__.py
 
 """
-Module: chess.system.context
+Module: chess.system.roster
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -34,7 +34,7 @@ from .context import Context
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.system.context'
+__package_name__ = 'chess.system.roster'
 
 # Export control - only what belongs in public API
 __all__ = [

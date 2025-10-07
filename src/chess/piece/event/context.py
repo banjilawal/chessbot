@@ -1,7 +1,7 @@
-# src/chess/piece/event/context.py
+# src/chess/piece/event/roster.py
 
 """
-Module: `chess.piece.event.context`
+Module: `chess.piece.event.roster`
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -34,8 +34,8 @@ class OccupationContext(ExecutionContext):
   _destination_occupant: Optional[Piece]
 
   # # Usage:
-  # context = OcContext(board=board, teams=all_teams)
-  # outcome = executor.execute_directive(directive, context.to_dict())
+  # roster = OcContext(board=board, teams=all_teams)
+  # outcome = executor.execute_directive(directive, roster.to_dict())
 
   def __init__(self, destination_occupant: Optional[Piece]=None, board: Optional[Board]=None):
     super().__init__()

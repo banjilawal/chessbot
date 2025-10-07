@@ -3,13 +3,14 @@ from typing import TypeVar, Generic
 
 from chess.system.search import SearchResult
 
+
 T = TypeVar('T')
 C = TypeVar("C", bound='SearchContext')
 
 
-class Search(ABC, Generic[T,C]):
+class TeamRosterSearch(Search):
 
   @classmethod
   @abstractmethod
-  def search(cls, context: C) -> SearchResult[T]:
-    pass
+  def search(cls, team: Team, context: RosterSearchContext) -> SearchResult[Piece]:
+    if context.piece_id not None:

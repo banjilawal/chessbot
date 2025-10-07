@@ -1,4 +1,4 @@
-# chess/system/search/search.py
+# chess/system/search/roster.py
 
 """
 Module: `chess.system.search.search`
@@ -16,12 +16,9 @@ Contains:
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
 
-from chess.system import SearchContext
-from chess.system.search import SearchResult
+from chess.system import SearchContext, FilterContext, SearchResult, FilterResult
 
 T = TypeVar('T')
-
-
 
 class Search(ABC, Generic[T]):
   """
@@ -34,20 +31,24 @@ class Search(ABC, Generic[T]):
 
   @classmethod
   @abstractmethod
-  def search(cls,  context: SearchContext, *args, **kwargs) -> SearchResult['T']:
+  def search(cls, search_context: SearchContext, *args, **kwargs) -> SearchResult[T]:
     """
     Validates provided filter. Returns first match.
-
     Args:
     - `collection_master` (`M`): The data owning entity.
     - `data_set` (`D`): The data collection searched.
     - `filter` (`F`): The search filter to hit,
     - `search_context` (`C`): List of data set attributes.
-
     Returns:
       `SearchResult[`T`]`
 
     Raise:
       No exceptions. Subclasses raise exceptions.
     """
+    pass
+
+
+  @classmethod
+  @abstractmethod
+  def filter(cls, filter_context: FilterContext, *args, **kwargs) -> FilterResult[T]:
     pass

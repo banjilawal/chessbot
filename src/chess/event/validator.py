@@ -31,7 +31,7 @@ class EventValidator(ABC, Generic[T]):
     Validates an object passed to a function or declared in a module meets domain requirements.
      Args:
        t (Generic[T]): The object to validate.
-       context (ExecutionContext): The context in which the object is being validated.
+       context (ExecutionContext): The roster in which the object is being validated.
      Returns:
        Result[T]: A Result object containing the validated payload if the specification is satisfied,
             ValidationException otherwise.

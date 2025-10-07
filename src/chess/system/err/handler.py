@@ -10,13 +10,13 @@ T = TypeVar('T')
 class ErrorHandler(Enum):
   """
   Making ErrorHandler an enum for future extensibilit assures only one instance exists.
-  Decorator-based error handler that logs errors with minimal context
+  Decorator-based error handler that logs errors with minimal roster
   """
 
   @staticmethod
   def get_logger_for(context: Any) -> logging.Logger:
     """
-    Returns a logger named after the context's class or module.
+    Returns a logger named after the roster's class or module.
     Prioritizes class name, falls back to module name if needed.
     """
 
@@ -97,5 +97,5 @@ class ErrorHandler(Enum):
   #     method_name,
   #     err.__class__.__name__, # Error type only
   #     str(err)         # Error message only
-  #     # No stacktrace, no context - error object is source of truth
+  #     # No stacktrace, no roster - error object is source of truth
   #   )

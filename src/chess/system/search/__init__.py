@@ -28,9 +28,9 @@ ___
 
 from .exception import *
 
-from .search import Search
-from .result import SearchResult
-from .context import SearchContext
+from .search import *
+from .result import *
+from .context import *
 
 
 # Package metadata (organic to __init__.py)
@@ -40,11 +40,9 @@ __package_name__ = 'chess.system.search'
 
 # Export control - only what belongs in public API
 __all__ = [
-  # Core classes
-  'Search',
-  'SearchResult',
-  'SearchContext',
-
+  *search.__all__,
+  *result.__all__,
+  *context.__all__,
   *exception.__all__,
 
   # Package metadata and utilities

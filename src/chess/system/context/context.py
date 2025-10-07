@@ -1,7 +1,7 @@
-# src/chess/system/context/context.py
+# src/chess/system/roster/roster.py
 
 """
-Module: `chess.system.context.context`
+Module: `chess.system.roster.roster`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -28,7 +28,7 @@ class Context(ABC):
   @abstractmethod
   def to_dict(self) -> dict:
     """
-    Converts a context's fields into a dictionary.
+    Converts a roster's fields into a dictionary.
 
     Attributes:
       No attributes. Implementors declare their own.

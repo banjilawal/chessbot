@@ -57,7 +57,7 @@ class ScanEventBuilder(Enum):
       `event_id`(`int`): The unique id for the scanEvent. Must pass `IdValidator` checks.
       `actor`(`Piece`): Initiates scan after successful validate`.
       `enemy`(`Piece`): The `Piece` scanned by `actor`.
-      `context`(`ExecutionContext`): `context.board` verifies `actor` and `enemy` are on the board.
+      `roster`(`ExecutionContext`): `roster.board` verifies `actor` and `enemy` are on the board.
 
     Returns:
       BuildResult[ScanEvent]: A `BuildResult` containing either:

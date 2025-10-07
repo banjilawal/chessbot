@@ -1,4 +1,4 @@
-# chess/board/search.py
+# chess/board/roster.py
 
 """
 Module: `chess.board.search`
