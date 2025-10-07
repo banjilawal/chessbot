@@ -16,10 +16,6 @@ from typing import Optional, TypeVar, Generic, List
 
 T = TypeVar('T')
 
-__all__ = [
-  'SearchResult',
-  'FilterResult'
-]
 
 class SearchResult:
   """
@@ -41,16 +37,16 @@ class SearchResult:
     Unlike a `Result` object `SearchResult` instances can have an empty constructor.
     Keeping with Liskovian principles `SearchResult` is not a subclass of `Result`.
   """
-  _payload: Optional[T]
+  _payload: Optional[List[T]]
   _exception: Optional[Exception]
 
-  def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
+  def __init__(self, payload: Optional[List[T]] = None, exception: Optional[Exception] = None):
     method = "SearchResult.__init_"
     self._payload = payload
     self._exception = exception
 
   @property
-  def payload(self) -> Optional[T]:
+  def payload(self) -> Optional[List[T]]:
     return self._payload
 
   @property
@@ -94,17 +90,6 @@ class SearchResult:
       return "Result(NOT_FOUND)"
     else:
       return f"Result(FAILURE: {self._exception}"
-
-
-class FilterResult(SearchResult):
-  """
-  """
-  _payload: Optional[List[T]]
-  _exception: Optional[Exception]
-
-  def __init__(self, payload: Optional[List[T]] = None, exception: Optional[Exception] = None):
-    super().__init__(payload, exception)
-    method = "SearchResult.__init_"
 
 
 

@@ -60,7 +60,7 @@ class ContextException(ChessException):
   USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "Context raised an team_exception"
+  DEFAULT_MESSAGE = "Context raised an exception"
 
 #======================#  CONTEXT VALIDATION EXCEPTIONS ======================# 
 class NullContextException(ContextException, NullException):

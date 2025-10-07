@@ -1,3 +1,28 @@
+# src/chess/piece/event/transaction
+"""
+Module: chess.piece.event.transaction
+Author: Banji Lawal
+Created: 2025-09-28
+
+# SCOPE:
+* The limits of the module, defined by what it does not do.
+* Where to look for related features this models does not provide because of its limitations.
+
+# THEME:
+* Highlight the core feature (thread-safety)
+* Explain the how-and-why of implementation choices.
+
+# PURPOSE:
+* Function and role in the system.
+* Why the module exists in the application architecture
+* What problem it fundamentally solves
+
+# DEPENDENCIES:
+
+# CONTAINS:
+ * `OccupationTransaction`
+"""
+
 from typing import TypeVar, cast, Sequence, TYPE_CHECKING
 
 from chess.piece import Piece
@@ -9,6 +34,22 @@ from chess.team import TeamSchema, NullTeamSchemaException
 
 
 class Team:
+  """
+  ROLE:
+  ----
+  RESPONSIBILITIES:
+  ----------------
+  PROVIDES:
+  --------
+  ATTRIBUTES:
+  ----------
+  [
+    <No attributes. Implementors declare their own.>
+  OR
+    * `_attribute` (`data_type`): <sentence_if_necessary>
+  ]
+  """
+
   _id:int
   _commander: 'Commander'
   _schema: TeamSchema
@@ -86,6 +127,16 @@ class Team:
 
 
   def add_to_roster(self, piece: Piece):
+    """
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
     method = "Team.add_to_roster"
 
     """
@@ -114,6 +165,16 @@ class Team:
 
 
   def find_by_roster_number(self, roster_number: int) -> SearchResult['Piece']:
+    """
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
     method = f"{self.__class__.__name__}.find_by_roster"
 
     """
@@ -145,6 +206,16 @@ class Team:
 
 
   def find(self, piece_id: int) -> SearchResult['Piece']:
+    """
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
     method = "Team.find_piece_by_id"
 
     """
@@ -178,6 +249,16 @@ class Team:
 
 
   def find_piece_by_name(self, name: str) -> Result['Piece']:
+    """
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
     method = "Team.find_piece_by_name"
 
     """

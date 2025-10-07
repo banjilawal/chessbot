@@ -23,7 +23,9 @@ Created: 2025-09-28
  * `OccupationTransaction`
 """
 
-class ClassName:
+from enum import auto, Enum
+
+class Datasource(Enum):
   """
   ROLE:
   ----
@@ -33,23 +35,6 @@ class ClassName:
   --------
   ATTRIBUTES:
   ----------
-  [
-    <No attributes. Implementors declare their own.>
-  OR
-    * `_attribute` (`data_type`): <sentence_if_necessary>
-  ]
   """
-
-  def method_name(param: DataType):
-    """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-
-    method = "ClassName.method_name"
+  ROSTER = auto(),
+  HOSTAGES = auto()

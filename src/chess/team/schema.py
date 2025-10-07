@@ -1,3 +1,28 @@
+# src/chess/piece/event/transaction
+"""
+Module: chess.piece.event.transaction
+Author: Banji Lawal
+Created: 2025-09-28
+
+# SCOPE:
+* The limits of the module, defined by what it does not do.
+* Where to look for related features this models does not provide because of its limitations.
+
+# THEME:
+* Highlight the core feature (thread-safety)
+* Explain the how-and-why of implementation choices.
+
+# PURPOSE:
+* Function and role in the system.
+* Why the module exists in the application architecture
+* What problem it fundamentally solves
+
+# DEPENDENCIES:
+
+# CONTAINS:
+ * `OccupationTransaction`
+"""
+
 from enum import Enum
 
 from chess.system.color import GameColor
@@ -7,6 +32,21 @@ from chess.scalar import Scalar
 
 
 class TeamSchema(Enum):
+  """
+  ROLE:
+  ----
+  RESPONSIBILITIES:
+  ----------------
+  PROVIDES:
+  --------
+  ATTRIBUTES:
+  ----------
+  [
+    <No attributes. Implementors declare their own.>
+  OR
+    * `_attribute` (`data_type`): <sentence_if_necessary>
+  ]
+  """
 
   def __new__(
     cls,

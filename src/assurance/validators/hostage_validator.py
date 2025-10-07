@@ -27,7 +27,7 @@ class HostageValidator(Validator):
       - The captor field is not null
       - The hostage is not on its team roster
       - The hostage is not its enemy's list of prisoners
-    Any failed requirement raise an team_exception wrapped in a HostageValidationException
+    Any failed requirement raise an exception wrapped in a HostageValidationException
 
     Args
       t (CombatantPiece): coord to validate

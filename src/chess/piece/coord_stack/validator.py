@@ -14,7 +14,7 @@ __all__ = [
 class CoordStackValidator(Validator):
 
   @staticmethod
-  def validate(t: CoordValidator) -> Result[CoordinateStack]:
+  def validate(t: CoordValidator) -> Result[CoordStack]:
     """
     Validates a CoordStack meets requirements:
       - Not null
@@ -23,7 +23,7 @@ class CoordStackValidator(Validator):
       - if CoordStack.is_empty() is True then current_coordinate.size == 0
       - if CoordStack.is_empty() is False then current_coordinate is not null
       - If CoordStack.is_empty() then current_coordinate is null
-    Any failed requirement raise an team_exception wrapped in a CoordStackValidationException
+    Any failed requirement raise an exception wrapped in a CoordStackValidationException
 
     Validation tests do not change state so pushes and pops are:
       - Tested in unit tests

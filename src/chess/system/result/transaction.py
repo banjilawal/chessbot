@@ -86,7 +86,7 @@ class TransactionResult:
   #
   # def is_failed(self) -> bool:
   #   method = f"{self.__class__.__name__}.is_failed"
-  #   """True if raised an team_exception before the state changed"""
+  #   """True if raised an exception before the state changed"""
   #
   #   return not (self._exception is None and self._was_rolled_back)
   #

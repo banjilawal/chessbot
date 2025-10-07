@@ -30,9 +30,9 @@ from lib2to3.fixes.fix_input import context
 from .exception import *
 
 
-from .result import *
 from .context import *
-from .search import Search
+from .search import *
+from .result import SearchResult
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
@@ -42,6 +42,7 @@ __package_name__ = 'chess.system.search'
 # Export control - only what belongs in public API
 __all__ = [
  'Search',
+ 'SearchResult',
   *result.__all__,
   *context.__all__,
   *exception.__all__,

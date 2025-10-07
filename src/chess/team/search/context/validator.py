@@ -30,10 +30,11 @@ from chess.exception import RelationshipException
 from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \
   InvalidCommanderAssignmentException
+from chess.team.search import PieceSearchContext
 
 T = TypeVar('T')
 
-class TeamValidator(Validator):
+class PieceSearchContextValidator(Validator):
   """
   ROLE:
   ----
@@ -43,11 +44,6 @@ class TeamValidator(Validator):
   --------
   ATTRIBUTES:
   ----------
-  [
-    <No attributes. Implementors declare their own.>
-  OR
-    * `_attribute` (`data_type`): <sentence_if_necessary>
-  ]
   """
   """
   Validates existing `Team` instances that are passed around the system.
@@ -69,17 +65,7 @@ class TeamValidator(Validator):
   """
 
   @staticmethod
-  def validate(t: Team) -> Result['Team']:
-    """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
+  def validate(t: PieceSearchContext) -> Result[PieceSearchContext]:
     """
     Validates that an existing `Team` instance meets all specifications.
 

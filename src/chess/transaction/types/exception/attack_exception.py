@@ -9,7 +9,7 @@ class AttackException(PieceException):
   """
 
   ERROR_CODE = "ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Attack raised an team_exception"
+  DEFAULT_MESSAGE = "Attack raised an exception"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE

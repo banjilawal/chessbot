@@ -111,6 +111,8 @@ class InvalidPieceException(PieceException, ValidationException):
   ERROR_CODE = "PIECE_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Piece validation failed."
 
+
+
 class UnregisteredTeamMemberException(PieceException):
   """Raised if a piece has its team set but the piece is not on the roster"""
   ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"

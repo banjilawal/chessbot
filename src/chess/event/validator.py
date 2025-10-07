@@ -15,7 +15,7 @@ class EventValidator(ABC, Generic[T]):
   Validates an entity being passed as parameter meets:
     - Is not null.
     - Its fields meet the specifications for the domain.
-  Unmet requirements raise an team_exception for their specific failure. Any validator failure
+  Unmet requirements raise an exception for their specific failure. Any validator failure
   is wrapped in a ValidationException.
 
   For performance and single source of truth Validator has:

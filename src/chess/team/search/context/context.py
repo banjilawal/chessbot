@@ -39,20 +39,37 @@ class PieceSearchContext(SearchContext):
   ATTRIBUTES:
   ----------
   """
-  _name: Optional[str]
-  _piece_id: Optional[int]
-  _roster_number: Optional[int]
+  _name: Optional[str] = None
+  _rank: Optional[Rank] = None
+  _ransom: Optional[int] = None,
+  _piece_id: Optional[int] = None
+  _roster_number: Optional[int] = None
 
   def __init__(
       self,
       name: Optional[str] = None,
+      rank: Optional[Rank] = None,
+      ransom: Optional[int] = None,
       piece_id: Optional[int]=None,
       roster_number: Optional[int]=None
   ):
     self._name = name
+    self._rank = rank
+    self._ransom = ransom
     self._piece_id = piece_id
     self._roster_number = roster_number
 
+@property
+def name(self) -> Optional[str]:
+  return self._name
+
+@property
+def rank(self) -> Optional[Rank]:
+  return self._rank
+
+@property
+def ransom(self) -> Optional[int]:
+  return self._ransom
 
 @property
 def piece_id(self) -> Optional[int]:
@@ -62,62 +79,13 @@ def piece_id(self) -> Optional[int]:
 def roster_number(self) -> Optional[int]:
   return self._roster_number
 
-@property
-def name(self) -> Optional[str]:
-  return self._name
+
 
 def to_dict(self) -> dict:
   return {
     "name": self._name,
+    "rank": self._rank,
+    "ransom": self._ransom,
     "piece_id": self._piece_id,
     "roster_number": self._roster_number,
   }
-
-
-class PieceFilterContext(FilterContext):
-  """
-  ROLE:
-  ----
-  RESPONSIBILITIES:
-  ----------------
-  PROVIDES:
-  --------
-  ATTRIBUTES:
-  ----------
-  """
-  _rank: Optional[Rank]
-  _min_capture_value: Optional[int]
-  _max_capture_value: Optional[int]
-
-
-  def __init__(
-      self,
-      rank: Optional[Rank]=None,
-      min_capture_value: Optional[int]=None,
-      max_capture_value: Optional[int]=None,
-  ):
-    self._rank = rank
-    self._min_capture_value = min_capture_value
-    self._max_capture_value = max_capture_value
-
-@property
-def rank(self) -> Optional[Rank]:
-  return self._rank
-
-@property
-def min_capture_value(self) -> Optional[int]:
-  return self.__min_capture_value
-
-@property
-def max_capture_value(self) -> Optional[int]:
-  return self.__max_capture_value
-
-def to_dict(self) -> dict:
-  return {
-    "rank": self._rank,
-    "min_capture_value": self._min_capture_value,
-    "max_capture_value": self._max_capture_value,
-  }
-
-
-

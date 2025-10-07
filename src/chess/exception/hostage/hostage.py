@@ -10,7 +10,7 @@ class HostageException(PieceException):
   """
 
   ERROR_CODE = "HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Hostage raised an team_exception"
+  DEFAULT_MESSAGE = "Hostage raised an exception"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE
@@ -108,7 +108,7 @@ class NullCaptorException(HostageException):
   """
   If the captor field has not been set its already null. I really want to prevent nulls being passed to
   Combatant.captor. This is for consistency. I don't just want an if that returns to caller when
-  Combatant.captor == None and the caller tries to send null again. I want an team_exception to catch it. The
+  Combatant.captor == None and the caller tries to send null again. I want an exception to catch it. The
   team_exception name needs improvement.
   """
 
@@ -225,7 +225,7 @@ class SelfEncounterException(HostageException):
 
 class KingCheckStateException(HostageException):
   """
-  This really should not be an team_exception. Its really supposed to be a warning to the king
+  This really should not be an exception. Its really supposed to be a warning to the king
   when its in check. This team_exception should never be thrown but its messages can be handy.
   """
 
@@ -242,7 +242,7 @@ class KingCheckStateException(HostageException):
 
 class KingCheckMateStateException(HostageException):
   """
-  This really should not be an team_exception. Its really supposed to be a warning to indicate the
+  This really should not be an exception. Its really supposed to be a warning to indicate the
   game is over because the king is checkmated. This team_exception should never be thrown but its
   messages can be handy.
   """

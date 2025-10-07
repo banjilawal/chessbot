@@ -40,6 +40,7 @@ CONTAINS:
 See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
 `NullCoordException`, `RowAboveBoundsException`).
 """
+
 """
 Result exceptions are about `Result` construction not the contents of the result. A `ResultException` is
 raised by `Builder` objects.

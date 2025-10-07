@@ -22,14 +22,18 @@ Created: 2025-09-28
 # CONTAINS:
  * ``
 """
-from sys import exception
+
+
 from typing import Optional
 
-from chess.rank import Rank, RankValidator
+from chess.rank import Rank, RankValidator, RankSpec
 from chess.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
-from chess.system import IdValidator, NameValidator, Builder, BuildResult, BuilderException, \
-    MutuallyExclusiveParamsException, AllParamsSetNullException, InvalidIdException, RaiserLogger
+from chess.system import (
+    IdValidator, NameValidator, Builder, BuildResult,
+    MutuallyExclusiveParamsException, AllParamsSetNullException, RaiserLogger
+)
 from chess.team.search.context.context import PieceSearchContext
+from chess.team.search import RansomOutOfBoundsException
 
 
 class PieceSearchContextBuilder(Builder[PieceSearchContext]):
@@ -44,13 +48,15 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
     ----------
     """
 
+    @classmethod
     def build (
         cls,
+        name: Optional[str],
+        rank: Optional[Rank],
+        ransom: Optional[int],
         piece_id: Optional[int],
         roster_number: Optional[int],
-        name: Optional[str],
-        rank: Optional[Rank]
-        ) -> BuildResult[PieceSearchContext]:
+    ) -> BuildResult[PieceSearchContext]:
         """
         Action:
         Parameters:
@@ -60,7 +66,7 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
         """
         method = "PieceSearchContextBuilder.build"
 
-        params = [piece_id, roster_number, name, rank]
+        params = [name, rank, ransom, piece_id, roster_number]
         param_count = sum(bool(p) for p in params)
 
         if param_count == 0:
@@ -94,4 +100,20 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
             if not name_validation.is_success():
                 RaiserLogger(PieceSearchContextBuilder, name_validation.exception)
                 return BuildResult(exception=name_validation.exception)
-            return TeamSearchContext(name=name)
+            return BuildResult(payload=PieceSearchContext(name=name))
+
+        if ransom is not None:
+            if ransom < RankSpec.KING.ransom or ransom > RankSpec.QUEEN.ransom:
+                err = RansomOutOfBoundsException(
+                    f"{method}: {RansomOutOfBoundsException.DEFAULT_MESSAGE}"
+                )
+                RaiserLogger(PieceSearchContextBuilder, err)
+                return BuildResult(exception=err)
+            return BuildResult(payload=PieceSearchContext(ransom=ransom))
+
+        if rank is not None:
+            rank_validation = RankValidator.validate(rank)
+            if not rank_validation.is_success():
+                RaiserLogger(PieceSearchContextBuilder, rank_validation.exception)
+                return BuildResult(exception=rank_validation.exception)
+            return BuildResult(payload=PieceSearchContext(rank=rank))

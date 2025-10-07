@@ -1,3 +1,34 @@
+# src/chess/team/search/__init__.py
+
+"""
+Module: chess.team.search
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+
+
+# PURPOSE
+Search
+
+# EXPORTS
+This package exposes core classes and all exceptions from its sub-modules:
+  - `CLASS>ANE`: <LINE_ABOUT_CLASS_PURPOSE_HERE>.
+  - All exceptions from `exception` package.
+
+# SUB-PACKAGES
+  - `.exception`: Defines all custom exceptions for occupation operations.
+  - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
+
+# HOW TO IMPORT
+DO NOT reference submodules directly. Import all core classes and exceptions from this `board` package level
+(e.g., `from chess.board import InvalidBoardException`). See USAGE EXAMPLES section
+
+# USAGE EXAMPLES
+___
+```python
+```
+---
+"""
 # chess/team/__init__.py
 
 """
@@ -70,7 +101,7 @@ from .exception import *
 
 # Core classes
 from .team import Team
-from .search import TeamSearch
+from .search import *
 from .schema import TeamSchema
 from .builder import TeamBuilder
 from .validator import TeamValidator
@@ -91,6 +122,7 @@ __all__ = [
   'TeamSchema',
   'TeamBuilder',
 
+  *search.__all__,
   *exception.__all__,
 
 

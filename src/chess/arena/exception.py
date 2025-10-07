@@ -41,7 +41,6 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 `NullCoordException`, `RowAboveBoundsException`).
 """
 
-# chess.arena.exception
 
 """
 Module: `chess.arena.exception`

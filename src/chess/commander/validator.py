@@ -31,7 +31,7 @@ class CommanderValidator(Validator):
       - valid id
       - valid name
       - Commander.team_history meets validator requirements
-    Any failed requirement raise an team_exception wrapped in a InvalidCommanderException
+    Any failed requirement raise an exception wrapped in a InvalidCommanderException
       
     Args
       t (Commander): commander to validate

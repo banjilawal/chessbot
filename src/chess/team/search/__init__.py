@@ -30,18 +30,33 @@ ___
 ---
 """
 
+
+from .context import *
+from .hostage import *
 from .roster import *
 from .exception import *
+
+from .search import TeamSearch
+from .data_source import Datasource
+
+
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.package'
+__package_name__ = 'chess.team.search'
 
 # Export control - only what belongs in public API
 __all__ = [
+  'TeamSearch',
+  'Datasource',
 
+  *roster.__all__,
+  *context.__all__,
+  *hostage.__all__,
   *exception.__all__,
+
+
 
   # Package metadata and utilities
   '__version__',

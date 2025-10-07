@@ -1,3 +1,28 @@
+# src/chess/piece/event/transaction
+"""
+Module: chess.piece.event.transaction
+Author: Banji Lawal
+Created: 2025-09-28
+
+# SCOPE:
+* The limits of the module, defined by what it does not do.
+* Where to look for related features this models does not provide because of its limitations.
+
+# THEME:
+* Highlight the core feature (thread-safety)
+* Explain the how-and-why of implementation choices.
+
+# PURPOSE:
+* Function and role in the system.
+* Why the module exists in the application architecture
+* What problem it fundamentally solves
+
+# DEPENDENCIES:
+
+# CONTAINS:
+ * `OccupationTransaction`
+"""
+
 # src/chess/system/roster/roster.py
 
 """
@@ -18,6 +43,21 @@ from abc import ABC, abstractmethod
 
 class Context(ABC):
   """
+  ROLE:
+  ----
+  RESPONSIBILITIES:
+  ----------------
+  PROVIDES:
+  --------
+  ATTRIBUTES:
+  ----------
+  [
+    <No attributes. Implementors declare their own.>
+  OR
+    * `_attribute` (`data_type`): <sentence_if_necessary>
+  ]
+  """
+  """
   Interface for defining optional dependencies an `Event` needs to execute a
   `Transaction`.
 
@@ -27,6 +67,18 @@ class Context(ABC):
 
   @abstractmethod
   def to_dict(self) -> dict:
+    """
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
+
+    method = "ClassName.method_name"
     """
     Converts a roster's fields into a dictionary.
     Attributes:

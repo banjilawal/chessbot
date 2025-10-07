@@ -86,7 +86,7 @@ class CommanderException(ChessException):
   give more useful debugging messages.
   """
   ERROR_CODE = "COMMANDER_ERROR"
-  DEFAULT_MESSAGE = "Commander raised an team_exception"
+  DEFAULT_MESSAGE = "Commander raised an exception"
 
 #======================#  COMMANDER VALIDATION EXCEPTIONS ======================# 
 class NullCommanderException(CommanderException, NullException):
