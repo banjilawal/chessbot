@@ -69,6 +69,15 @@ class TeamSearchContextBuilder(Builder[TeamSearchContext]):
             id_validation = IdValidator.validate(piece_id)
             if not id_validation.is_success():
                 raise id_validation.exception
-            return
+            return TeamSearchContext(piece_id=piece_id)
 
-        if
+        if roster_number is not None:
+            if roster_number < 1 or roster_number > 16:
+                raise Error("Roster number must be between 1 and 16.")
+            return TeamSearchContext(roster_number=roster_number)
+
+        if name is not None:
+            name_validation = NameValidator.validate(name)
+            if not name_validation.is_success():
+                raise name_validation.exception
+            return TeamSearchContext(name=name)

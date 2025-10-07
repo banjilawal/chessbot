@@ -23,11 +23,10 @@ Created: 2025-09-28
  * `OccupationTransaction`
 """
 from abc import ABC
-from enum import Enum, auto
 from typing import Optional
 
 from chess.rank import Rank
-from chess.system import SearchContext
+from chess.system import SearchContext, FilterContext
 
 
 class TeamSearchContext(ABC, SearchContext):
@@ -41,11 +40,9 @@ class TeamSearchContext(ABC, SearchContext):
   ATTRIBUTES:
   ----------
   """
-
   _name: Optional[str]
   _piece_id: Optional[int]
   _roster_number: Optional[int]
-
 
   def __init__(
       self,

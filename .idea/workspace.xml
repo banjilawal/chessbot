@@ -5,38 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/team/search/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/team/search/context/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/team/search/context/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/team/search/hostage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/team/search/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/team/search/roster/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/team/search/roster/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/search/context/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/__init__.template" beforeDir="false" afterPath="$PROJECT_DIR$/docs/__init__.template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/event/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/event/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/attack/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/attack/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/exchange/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/exchange/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/scan/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/scan/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/build/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/propagator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/propagator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/throw_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/throw_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/search/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/search/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/roster.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/context/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/search/roster/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/roster/context.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -572,7 +546,7 @@
       <workItem from="1759685976252" duration="175000" />
       <workItem from="1759686170219" duration="9706000" />
       <workItem from="1759708896314" duration="7206000" />
-      <workItem from="1759763190487" duration="34215000" />
+      <workItem from="1759763190487" duration="38044000" />
     </task>
     <servers />
   </component>

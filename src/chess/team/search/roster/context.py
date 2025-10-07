@@ -96,12 +96,3 @@ def to_dict(self) -> dict:
   }
 
 
-class RosterSearchContext(TeamSearchContext):
-  pass
-
-
-
-class HostageSearchContext(TeamSearchContext):
-  pass
-
-
