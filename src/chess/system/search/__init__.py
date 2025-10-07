@@ -29,10 +29,10 @@ from lib2to3.fixes.fix_input import context
 
 from .exception import *
 
-from .search import Search
-from .result import *
-from .search import *
 
+from .result import *
+from .context import *
+from .search import Search
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'

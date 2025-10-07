@@ -22,13 +22,13 @@ Created: 2025-09-28
 # CONTAINS:
  * `OccupationTransaction`
 """
-from abc import ABC
+
 from typing import Optional
 
 from chess.rank import Rank
-from chess.system import SearchContext,
+from chess.system import SearchContext, FilterContext
 
-class TeamSearchContext(SearchContext):
+class PieceSearchContext(SearchContext):
   """
   ROLE:
   ----
@@ -74,7 +74,7 @@ def to_dict(self) -> dict:
   }
 
 
-class TeamFilterContext(FilterContext):
+class PieceFilterContext(FilterContext):
   """
   ROLE:
   ----
