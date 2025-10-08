@@ -30,7 +30,7 @@ MAX_NAME_LENGTH = 40
 """
   This is the number of steps moves in eit
   her the x or y domain.
-  If a knight steps over two rows it must step one diagonal column 
+  If team knight steps over two rows it must step one diagonal column 
   This gives 3 total rows traveled.
 
   On the other hand if it steps over two columns it must step one diagonal row

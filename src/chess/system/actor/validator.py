@@ -17,20 +17,20 @@ class ActorValidator:
     Validates an Piece meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is a valid chess enemy
-      - `target` is a valid square
+      - `actor` is team valid chess enemy
+      - `target` is team valid square
     Any validate failure raises an `InvalidPieceException`.
 
     Argument:
-      `t` (`Piece`): `piece `to validate
+      `candidate` (`Piece`): `piece `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidPieceException` otherwise.
 
     Raises:
-      `TypeError`: if `t` is not OperationEvent
-      `NullPieceException`: if `t` is null
+      `TypeError`: if `candidate` is not OperationEvent
+      `NullPieceException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
       `PieceValidationException`: if `actor` fails validator

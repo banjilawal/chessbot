@@ -5,18 +5,18 @@ Created: 2025-10-01
 
 # Purpose
 Higher level exceptions raised by `Event` object and the `Transaction` classes managing `event` lifecycles.
-Each Event and Transaction subclass has a corresponding Exception subclass, making debugging and maintenance
+Each Event and Transaction subclass has team corresponding Exception subclass, making debugging and maintenance
 easier.
 
 Contents:
   - `EventException:` Super class of all exceptions an event object raises.
-  - `NullEventException:` Raised by methods, entities, and models that require an event but receive a null.
-  - `InvalidEventException:` Super class of exceptions raised EventValidators raise if a client fails sanity checking.
+  - `NullEventException:` Raised by methods, entities, and models that require an event but receive team null.
+  - `InvalidEventException:` Super class of exceptions raised EventValidators raise if team client fails sanity checking.
   - `EventBuildFailedException:` Super class of exceptions raised when An EventBuilder runs into problems creating an event.
-  - `TransactionException:` Super class of all exceptions a Transaction instances raise..
+  - `TransactionException:` Super class of all exceptions team Transaction instances raise..
 
 Notes:
-  DO NOT USE THESE EXCEPTIONS DIRECTLY. Limited use in the finally statement of a try-except block.
+  DO NOT USE THESE EXCEPTIONS DIRECTLY. Limited use in the finally statement of team try-except block.
 """
 # src/chess.coord.exception.py
 
@@ -35,7 +35,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -84,25 +84,25 @@ class EventException(ChessException):
   debugging and maintenance support.
 
   Notes:
-    Only use in the finally statement of a try-except block.
+    Only use in the finally statement of team try-except block.
   """
   ERROR_CODE = "EVENT_ERROR"
   DEFAULT_MESSAGE = "Event raised an exception."
 
 class NullEventException(EventException, NullException):
   """
-  Raised by methods, entities, and models that require an event but receive a null.
+  Raised by methods, entities, and models that require an event but receive team null.
   """
   ERROR_CODE = "NULL_EVENT_ERROR"
   DEFAULT_MESSAGE = "Event cannot be null."
 
 class InvalidEventException(EventException, ValidationException):
   """
-  Super class of exceptions raised EventValidators raise if a client fails sanity checking. Each EventValidator
-  subclass has a corresponding InvalidEventException subclass, making debugging and maintenance easier.
+  Super class of exceptions raised EventValidators raise if team client fails sanity checking. Each EventValidator
+  subclass has team corresponding InvalidEventException subclass, making debugging and maintenance easier.
 
   Notes:
-    Only use in the finally statement of a try-except block.
+    Only use in the finally statement of team try-except block.
   """
   ERROR_CODE = "INVALID_EVENT_ERROR"
   DEFAULT_MESSAGE = "Event validation failed."
@@ -110,10 +110,10 @@ class InvalidEventException(EventException, ValidationException):
 class EventBuildFailedException(EventException, BuilderException):
   """
   Super class of exceptions raised when An EventBuilder runs into problems creating an event. Each EventBuilder
-  subclass has a corresponding InvalidEventException subclass, making debugging and maintenance easier.
+  subclass has team corresponding InvalidEventException subclass, making debugging and maintenance easier.
 
   Notes:
-    Only use in the finally statement of a try-except block.
+    Only use in the finally statement of team try-except block.
   """
   ERROR_CODE = "EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "EventBuilder validation failed."
@@ -123,7 +123,7 @@ class EventBuildFailedException(EventException, BuilderException):
 
 class TransactionException(ChessException):
   """
-  Super class of all exceptions a Transaction instances raise. Do not use directly. Subclasses
+  Super class of all exceptions team Transaction instances raise. Do not use directly. Subclasses
   give details useful for debugging. Class exists primarily for catching all transaction exceptions.
   """
   ERROR_CODE = "TRANSACTION_ERROR"

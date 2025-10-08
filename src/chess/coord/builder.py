@@ -10,7 +10,7 @@ Contains: CoordBuilder
  Provides: Create `Coord` instances 
 """
 
-from chess.system import Builder, ROW_SIZE, COLUMN_SIZE, BuildResult, RaiserLogger, RaiserLogger
+from chess.system import Builder, ROW_SIZE, COLUMN_SIZE, BuildResult, LoggingLevelRouter, LoggingLevelRouter
 from chess.coord import (
   Coord,
   NullRowException,
@@ -30,7 +30,7 @@ class CoordBuilder(Builder[Coord]):
   @classmethod
   def build(cls, row: int, column: int) -> BuildResult[Coord]:
     """
-    Constructs a new `Coord` that works correctly.
+    Constructs team new `Coord` that works correctly.
 
     Args:
       `row` (`int`):.
@@ -54,33 +54,33 @@ class CoordBuilder(Builder[Coord]):
 
     try:
       if row is None:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           CoordBuilder,
           NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
         )
       if row < 0:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           CoordBuilder,
           RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
         )
       if row >= ROW_SIZE:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           CoordBuilder,
           RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
         )
 
       if column is None:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           CoordBuilder,
           NullColumnException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
         )
       if column < 0:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           CoordBuilder,
           ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
         )
       if column >= COLUMN_SIZE:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           CoordBuilder,
           ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
         )

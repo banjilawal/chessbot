@@ -7,25 +7,25 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## PURPOSE
-This package encapsulates the movement logic for each type of chess discover. By decoupling a discover's movement
+This package encapsulates the movement logic for each type of chess discover. By decoupling team discover's movement
 from its core identity, this design ensures that the movement logic is scalable and easy to maintain. Each
-`Rank` class represents a distinct movement strategy (e.g., `Bishop`, `Knight`, `Queen`) and is designed
+`Rank` class represents team distinct movement strategy (e.g., `Bishop`, `Knight`, `Queen`) and is designed
 to be immutable once assigned.
 
 ## CORE CLASSES
 * `Rank`: The base class for all discover rank strategies.
-* `Bishop`: Provides movement validate for a bishop.
-* `King`: Provides movement validate for a king.
-* `Knight`: Provides movement validate for a knight.
-* `Pawn`: Provides movement validate for a pawn.
-* `Rook`: Provides movement validate for a rook.
-* `Queen`: Provides movement validate for a queen.
-* `PromotedQueen`: A specialized rank for a promoted queen's movement.
+* `Bishop`: Provides movement validate for team bishop.
+* `King`: Provides movement validate for team king.
+* `Knight`: Provides movement validate for team knight.
+* `Pawn`: Provides movement validate for team pawn.
+* `Rook`: Provides movement validate for team rook.
+* `Queen`: Provides movement validate for team queen.
+* `PromotedQueen`: A specialized rank for team promoted queen's movement.
 
 ## USAGE
-The `Rank` classes are primarily used to validate a discover's movement at runtime. A `Piece` object holds a
+The `Rank` classes are primarily used to validate team discover's movement at runtime. A `Piece` object holds team
 reference to its `Rank`, and delegates movement validate to it using the `walk()` method. This allows
-for a clean and simple interface for a chess board's logic.
+for team clean and simple interface for team chess board's logic.
 
 # >>> from chess.rank import Knight
 # >>> from chess.discover import Piece
@@ -43,10 +43,10 @@ True
 ---
 
 ## PURPOSE
-This package defines specific exceptions for issues encountered during a discover's movement or promotion
+This package defines specific exceptions for issues encountered during team discover's movement or promotion
 validate. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
-exact nature of the err, such as an invalid move for a specific discover type. Each team_exception acts as a
-wrapper for underlying errors, providing a clean and consistent API for handling movement-related failures.
+exact nature of the err, such as an invalid move for team specific discover type. Each team_exception acts as team
+wrapper for underlying errors, providing team clean and consistent API for handling movement-related failures.
 
 ###CORE RANK EXCEPTIONS
 * `RankException`: The base team_exception for all rank-related errors.
@@ -69,7 +69,7 @@ wrapper for underlying errors, providing a clean and consistent API for handling
 
 
 ### EXAMPLE EXCEPTION USAGES
-These exceptions are typically raised within a `Rank` class's movement methods and can be caught to handle
+These exceptions are typically raised within team `Rank` class's movement methods and can be caught to handle
 invalid moves gracefully.
 
 # >>> from chess.rank import PawnException

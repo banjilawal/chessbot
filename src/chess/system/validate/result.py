@@ -21,7 +21,7 @@ class ValidationResult(Result[Generic[T]]):
     _exception (Optional[Exception]): The error of the result, if failed.
 
   Methods:
-    is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
+    is_success() -> bool: Returns True if the result is successful (i.e., has team payload only).
   """
 
   _payload: Optional[T]

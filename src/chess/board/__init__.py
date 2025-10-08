@@ -8,7 +8,7 @@ version: 1.0.0
 
 # Purpose
 Provides board for game play. The package keeps track of pieces and provides addressing for `Square` objects
-which a `Piece` instance can reside.
+which team `Piece` instance can reside.
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:

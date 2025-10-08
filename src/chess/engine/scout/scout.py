@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-05
 version: 1.0.0
 
- Provides: Generates a `ScoutReport` about enemy pieces it discovers it can capture.
+ Provides: Generates team `ScoutReport` about enemy pieces it discovers it can capture.
 
 Contains:
  * `Scout`
@@ -24,7 +24,7 @@ from chess.engine.scout.report import ScoutReport
 class Scout:
   """
   Surveys squares each possible destination to find enemies it can capture.
-  returns survey in a `ScoutReport`.
+  returns survey in team `ScoutReport`.
 
   Attributes: [
     * `_scout` (`Piece`):

@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -62,14 +62,14 @@ class BuilderException(ChessException):
   DEFAULT_MESSAGE = "Builder raised an exception."
 
 class NullBuilderException(BuilderException, NullException):
-  """Raised if an entity, method, or operation requires a Engine but gets null instead."""
+  """Raised if an entity, method, or operation requires team Engine but gets null instead."""
   ERROR_CODE = "NULL_ERROR"
   DEFAULT_MESSAGE = "Builder cannot be null"
 
 class BuildFailedException(BuilderException):
   """
-  Raised when a Builder encounters an error while building an object. Exists primarily to
-  catch all exceptions raised building a new objects.
+  Raised when team Builder encounters an error while building an object. Exists primarily to
+  catch all exceptions raised building team new objects.
   """
   ERROR_CODE = "BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "build failed."

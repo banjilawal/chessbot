@@ -43,10 +43,11 @@ from typing import TypeVar, Generic, List
 
 from chess.system.search import SearchContext, SearchResult
 
-T = TypeVar('T')
+A = TypeVar('A')
+S = TypeVar('S', bound=SearchContext)
+R = TypeVar('R')
 
-
-class Search(ABC, Generic[T]):
+class Search(ABC, Generic[A, S, R]):
   """
   ROLE:
   ----
@@ -72,28 +73,28 @@ class Search(ABC, Generic[T]):
 
   @classmethod
   @abstractmethod
-  def search(cls, search_context: SearchContext, *args, **kwargs) -> SearchResult[List[T]]:
-    """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    """
-    Validates provided filter. Returns first match.
-    Args:
-    - `collection_master` (`M`): The data owning entity.
-    - `data_set` (`D`): The data collection searched.
-    - `filter` (`F`): The search filter to hit,
-    - `search_context` (`C`): List of data set attributes.
-    Returns:
-      `SearchResult[`T`]`
-
-    Raise:
-      No exceptions. Subclasses raise exceptions.
-    """
-    pass
+  def search(cls, data_owner: A, search_context: S, *args, **kwargs) -> SearchResult[R]:
+      pass
+      """
+      Action:
+      Parameters:
+          * `param` (`DataType`):
+      Returns:
+          `DataType` or `Void`
+      Raises:
+      MethodNameException wraps
+          *
+      """
+      """
+      Validates provided filter. Returns first match.
+      Args:
+      - `collection_master` (`M`): The data owning entity.
+      - `data_set` (`D`): The data collection searched.
+      - `filter` (`F`): The search filter to hit,
+      - `search_context` (`C`): List of data set attributes.
+      Returns:
+        `SearchResult[`T`]`
+  
+      Raise:
+        No exceptions. Subclasses raise exceptions.
+      """

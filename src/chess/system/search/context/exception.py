@@ -15,7 +15,7 @@ falls to the `SearchContextValidator` and `SearchContextBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `SearchContextException`). This enables precise error
@@ -77,7 +77,7 @@ class SearchContextException(ContextException):
 #======================#  SEARCH_CONTEXT VALIDATION EXCEPTIONS ======================#
 class NullSearchContextException(SearchContextException, NullException):
   """
-  Raised if an entity, method, or operation requires a searchContext but
+  Raised if an entity, method, or operation requires team searchContext but
   gets null instead.
   """
   ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
@@ -109,8 +109,8 @@ class SearchContextMaxParamCountException(SearchContextException):
 #======================#  SEARCH_CONTEXT BUILD EXCEPTIONS ======================#
 class SearchContextBuildFailedException(SearchContextException, BuildFailedException):
   """
-  Raised when SearchContextBuilder encounters an error while building a team.
-  Exists primarily to catch all exceptions raised build a new searchContext
+  Raised when SearchContextBuilder encounters an error while building team team.
+  Exists primarily to catch all exceptions raised build team new searchContext
   """
   ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "SearchContext build failed."
@@ -130,7 +130,7 @@ class FilterContextException(SearchContextException):
 #======================#  FILTER_CONTEXT VALIDATION EXCEPTIONS ======================#
 class NullFilterContextException(FilterContextException, NullException):
   """
-  Raised if an entity, method, or operation requires a filterContext but
+  Raised if an entity, method, or operation requires team filterContext but
   gets null instead.
   """
   ERROR_CODE = "NULL_FILTER_CONTEXT_ERROR"
@@ -163,8 +163,8 @@ class FilterContextMaxParamCountException(FilterContextException):
 #======================#  FILTER_CONTEXT BUILD EXCEPTIONS ======================#
 class FilterContextBuildFailedException(FilterContextException, BuildFailedException):
   """
-  Raised when FilterContextBuilder encounters an error while building a team.
-  Exists primarily to catch all exceptions raised build a new filterContext
+  Raised when FilterContextBuilder encounters an error while building team team.
+  Exists primarily to catch all exceptions raised build team new filterContext
   """
   ERROR_CODE = "FILTER_CONTEXT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "FilterContext build failed."

@@ -29,23 +29,23 @@ class SquareValidator(Validator):
   """
 
   @staticmethod
-  def validate(t: Square) -> ValidationResult[Square]:
+  def validate(candidate: Square) -> ValidationResult[Square]:
     """
     Validates that an existing `Square` instance meets specifications.
-    This method performs a series of checks on a Square instance, ensuring it is not null and that
+    This method performs team series of checks on team Square instance, ensuring it is not null and that
     its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised
-    as a `InvalidSquareException`, providing a clean and consistent err-handling experience.
+    as team `InvalidSquareException`, providing team clean and consistent err-handling experience.
 
     Args
-      `t` (`Square`): `Square` instance to validate
+      `candidate` (`Square`): `Square` instance to validate
 
      Returns:
-      `Result`[`Square`]: A `Resul`t object containing the validated payload if the specification is satisfied,
+      `Result`[`Square`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
       `InvalidSquareException` otherwise.
 
     Raises:
-      `TypeError`: If the input `t` is not an instance of `Square`.
-      `NullSquareException`: If the input `t` is `None`.
+      `TypeError`: If the input `candidate` is not an instance of `Square`.
+      `NullSquareException`: If the input `candidate` is `None`.
       `InvalidIdException`: If the `id` attribute of the square fails validate checks.
       `InvalidNameException`: If the `name` attribute of the square fails validate checks.
       `InvalidCoordException`: If the `coord` attribute of the square fails validate checks.
@@ -54,13 +54,13 @@ class SquareValidator(Validator):
     method = "SquareValidator.validate"
 
     try:
-      if t is None:
+      if candidate is None:
         raise NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}")
 
-      if not isinstance(t, Square):
-        raise TypeError(f"Expected a Square, but got {type(t).__name__}.")
+      if not isinstance(candidate, Square):
+        raise TypeError(f"Expected team Square, but got {type(candidate).__name__}.")
 
-      square = cast(Square, t)
+      square = cast(Square, candidate)
 
       id_result = IdValidator.validate(square.id)
       if not id_result.is_success():

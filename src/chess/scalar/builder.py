@@ -42,13 +42,13 @@ class ScalarBuilder(Enum):
   @staticmethod
   def build(value: int) -> BuildResult[Scalar]:
     """
-    Constructs a new `Scalar` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `Scalar` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `Scalar` meets all
-    specifications. If all checks are passed, a `Scalar` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `Scalar` instance. This method guarantees if a `BuildResult`
-    with a successful status is returned, the contained `Scalar` is valid and ready for use.
+    specifications. If all checks are passed, team `Scalar` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `Scalar` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `Scalar` is valid and ready for use.
 
     Args:
       `scalar_id`(`int`): The unique id for the scalar. Must pass `IdValidator` checks.
@@ -65,15 +65,15 @@ class ScalarBuilder(Enum):
     Raises:
       `ScalarBuildFailed`: Wraps any underlying validate failures that occur during the construction
       process. This includes:
-        * `NullScalarException`: if `t` is null
-        * `TypeError`: if `t` is not Scalar
+        * `NullScalarException`: if `candidate` is null
+        * `TypeError`: if `candidate` is not Scalar
         * `NullNumberException`: If `scalar.value` is null
         * `ScalarBelowLowerBoundException`: If `scalar.value` < 0
         * `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
         * `InvalidScalarException`: Wraps any preceding exceptions
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only a valid `Scalar` is
+      The build runs through all the checks on parameters and state to guarantee only team valid `Scalar` is
       created, while `ScalarValidator` is used for validating `Scalar` instances that are passed around after
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -91,17 +91,17 @@ class ScalarBuilder(Enum):
 
     try:
       if value is None:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           ScalarBuilder,
           NullNumberException(NullNumberException.DEFAULT_MESSAGE)
         )
       if value < -BOARD_DIMENSION:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           ScalarBuilder,
           ScalarBelowBoundsException(ScalarBelowBoundsException.DEFAULT_MESSAGE)
         )
       if value > BOARD_DIMENSION:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           ScalarBuilder,
           ScalarAboveBoundsException(ScalarAboveBoundsException.DEFAULT_MESSAGE)
       )

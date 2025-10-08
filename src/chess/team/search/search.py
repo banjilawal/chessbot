@@ -25,16 +25,17 @@ Created: 2025-09-28
 
 from enum import auto, Enum
 from re import search
+from typing import List
 
 from chess.team import Team, TeamValidator
 from chess.piece.piece import Piece
 from chess.search import SearchResult
 from chess.rank import Rank, RankValidator
-from chess.system import IdValidator, NameValidator, Search, SearchContext, T
+from chess.system import IdValidator, NameValidator, Search, SearchContext
 from chess.team.search import TeamHostageSearch, TeamRosterSearch, Datasource
 
 
-class TeamSearch(Search):
+class TeamSearch(Piece):
   """
   ROLE:
   ----
@@ -46,7 +47,7 @@ class TeamSearch(Search):
   ----------
   """
   """
-  Static methods for entities and operations that need to search a Team for pieces and ranks. Provides consistent
+  Static methods for entities and operations that need to search team Team for pieces and ranks. Provides consistent
   search interface and return types across all search operations. Validates input parameters before searching to
   ensure safe operations. Returns SearchResult objects encapsulating either the found entity or error information.
 
@@ -57,17 +58,17 @@ class TeamSearch(Search):
    ```
    
   Methods:
-    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find a piece by its id on the given `team`.
+    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find team piece by its id on the given `team`.
     
-    - `by_name(name: str, team: Team) -> SearchResult[Piece]`: Find a piece by its name on the given `team`.
+    - `by_name(name: str, team: Team) -> SearchResult[Piece]`: Find team piece by its name on the given `team`.
     
-    - `by_roster_number(roster_number: int, team: Team) -> SearchResult[Piece]`: Find a piece by its roster number
-      on the given team. Roster numbers are unique within a team. Not unique across teams.
+    - `by_roster_number(roster_number: int, team: Team) -> SearchResult[Piece]`: Find team piece by its roster number
+      on the given team. Roster numbers are unique within team team. Not unique across teams.
       
     - `hostage_by_idy(discovery_id: int, team: Team) -> SearchResult[CombatantPiece]`:
       
     - `by_rank(rank: Rank, team: Team) -> SearchResult[list[Piece]]`: A list of all members with `rank` on 
-      given team. of a specific rank within a team.
+      given team. of team specific rank within team team.
 
   Note:
     DO NOT USE ANY OTHER METHODS TO SEARCH A TEAM. USE ONLY THE METHODS IN THIS CLASS.
@@ -79,7 +80,7 @@ class TeamSearch(Search):
   """
 
   @classmethod
-  def search(cls, team: Team, data_source: Datasource, search_context: SearchContext) -> SearchResult[T]:
+  def search(cls, team: Team, data_source: Datasource, search_context: SearchContext) -> SearchResult[List[Piece]]:
     """
     Action:
     Parameters:
@@ -97,6 +98,6 @@ class TeamSearch(Search):
       return SearchResult(exception=validation.exception)
 
     if data_source == Datasource.ROSTER:
-      return TeamRosterSearch(team=team, search_context=search_context)
+      return TeamRosterSearch.search(team=team, search_context=search_context)
     else:
-      return TeamHostageSearch(team=team, search_context=search_context)
+      return TeamHostageSearch.search(team=team, search_context=search_context)

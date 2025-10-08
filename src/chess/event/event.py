@@ -5,7 +5,7 @@ Created: 2025-10-01
 Version: 1.0.0
 
 # Purpose
-Data-holding object representing an`actor`'s intent to perform a state-changing operation with a `resource`.
+Data-holding object representing an`actor`'s intent to perform team state-changing operation with team `resource`.
 
 # Contents:
   - `Event:` Super class of all events.

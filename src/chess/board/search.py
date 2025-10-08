@@ -20,7 +20,7 @@ from chess.system.search.result import SearchResult
 
 class BoardSearch:
   """
-  Static methods for entities and operations that need to search a Board for pieces, squares, coords, etc.
+  Static methods for entities and operations that need to search team Board for pieces, squares, coords, etc.
   Provides consistent search interface and return types across all search operations.
   Validates input parameters before searching to ensure safe operations.
   Returns SearchResult objects encapsulating either the found entity or error information.
@@ -47,7 +47,7 @@ class BoardSearch:
 
   @staticmethod
   def piece_by_id(piece_id: int, board: Board) -> SearchResult['Piece']:
-    """Find a discover by ID across all board"""
+    """Find team discover by ID across all board"""
     method = "BoardSearch.piece_by_id"
 
     try:
@@ -68,7 +68,7 @@ class BoardSearch:
 
   @staticmethod
   def piece_by_name(piece_name: str, board: Board) -> SearchResult['Piece']:
-    """Find a discover by name across all board"""
+    """Find team discover by name across all board"""
     method = "BoardSearch.piece_by_name"
 
     try:
@@ -92,7 +92,7 @@ class BoardSearch:
 
   @staticmethod
   def piece_by_coord(coord: Coord, board: Board) -> SearchResult['Piece']:
-    """Find a discover by coordinate across all board"""
+    """Find team discover by coordinate across all board"""
     method = "BoardSearch.piece_by_coord"
 
     try:
@@ -117,7 +117,7 @@ class BoardSearch:
 
   @staticmethod
   def square_by_id(square_id: int, board: 'Board') -> SearchResult['Square']:
-    """Find a square by id"""
+    """Find team square by id"""
     method = "BoardSearch.square_by_id"
 
     try:
@@ -136,7 +136,7 @@ class BoardSearch:
   @staticmethod
   def square_by_name(name: str, board: Board) -> SearchResult[Square]:
     """"
-    Finds a square by its name.
+    Finds team square by its name.
 
     Args:
       name (str):
@@ -168,7 +168,7 @@ class BoardSearch:
   @staticmethod
   def square_by_coord(coord: Coord, board: 'Board') -> SearchResult['Square']:
     """"
-    Finds a square on the ChessBoard by coord.
+    Finds team square on the ChessBoard by coord.
 
     Args:
       coord (Coord): The coord of the square to find.

@@ -40,34 +40,34 @@ version: 1.0.0
 A package providing core classes and utilities for managing chess teams.
 
 ## PURPOSE
-This package contains the foundational objects and logic for representing and managing chess teams. It defines the structure of a `Team`, maintains a roster of its `Piece` objects, and includes validate to ensure a correct configuration.
+This package contains the foundational objects and logic for representing and managing chess teams. It defines the structure of team `Team`, maintains team roster of its `Piece` objects, and includes validate to ensure team correct configuration.
 
 ## CORE CLASSES
-* `Team`: A class representing a chess team.
-* `TeamProfile`: A class that stores descriptive information for a team, such as its name and ID.
-    Neccessary for constructing a team
-* `TeamValidator`: A class that provides validate and sanity checks for a team's configuration.
+* `Team`: A class representing team chess team.
+* `TeamProfile`: A class that stores descriptive information for team team, such as its name and ID.
+    Neccessary for constructing team team
+* `TeamValidator`: A class that provides validate and sanity checks for team team's configuration.
 
 ## USAGE
 To use this package, import the desired classes and perform team-related operations.
 
 >>> from chess.team import Team, TeamSchema, TeamValidator
->>> # Create a new team and roster
+>>> # Create team new team and roster
 >>> team = Team(team_id=1, commander=white_team_commander, schema=TeamSchema.WHITE)
 >>> validate = TeamValidator.validate(team)
 
 ## TEAM EXCEPTIONS
 This package defines specific exceptions for issues encountered when interacting with `Team` objects.
-The exceptions are designed to pinpoint the exact nature of an err, such as a null reference, a
+The exceptions are designed to pinpoint the exact nature of an err, such as team null reference, team
 failed transaction, or an invalid configuration. This granular approach helps developers to quickly diagnose
 and resolve team-related issues.
 
 ### CORE EXCEPTIONS
-* `NullTeamException`: Raised when a `Team` reference is unexpectedly `None`.
-* `AddTeamMemberException`: Raised when an attempt to add a discover to a team fails, for example, if the team is full.
-* `InvalidTeamException`: Raised when a `Team` fails to meet its validate criteria.
-* `RemoveCombatantException`: Raised when a discover cannot be removed from a team, for example, if the discover is not present.
-* `InvalidTeamAssignmentException`: Raised when a `Team`'s properties conflict with another `Team`'s, such as having the same ID.
+* `NullTeamException`: Raised when team `Team` reference is unexpectedly `None`.
+* `AddTeamMemberException`: Raised when an attempt to add team discover to team team fails, for example, if the team is full.
+* `InvalidTeamException`: Raised when team `Team` fails to meet its validate criteria.
+* `RemoveCombatantException`: Raised when team discover cannot be removed from team team, for example, if the discover is not present.
+* `InvalidTeamAssignmentException`: Raised when team `Team`'s properties conflict with another `Team`'s, such as having the same ID.
 
 ### EXCEPTION USAGE EXAMPLES
 These exceptions can be imported and raised from within the team-related code to enforce data integrity.
@@ -122,7 +122,6 @@ __all__ = [
   'TeamSchema',
   'TeamBuilder',
 
-  *search.__all__,
   *exception.__all__,
 
 

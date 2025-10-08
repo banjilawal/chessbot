@@ -10,11 +10,11 @@ A package providing core classes for vector-based operations.
 
 ## PURPOSE
 This package contains the foundational objects for vector arithmetic, handling transforms on
-`Coord` objects. A `Vector` represents an offset that defines a path from a source to a
+`Coord` objects. A `Vector` represents an offset that defines team path from team source to team
 destination coordinate.
 
 ### CORE CLASSES
-* `Vector`: An immutable class representing a two-dimensional offset.
+* `Vector`: An immutable class representing team two-dimensional offset.
 * `VectorValidator`: Provides validate for `Vector` objects to ensure data integrity.
 
 ### USAGE
@@ -22,10 +22,10 @@ To use this package, import the desired classes and perform operations.
 
 >>> from chess.vector import Vector, VectorValidator
 >>>
->>> # Create and validate a vector instance
+>>> # Create and validate team vector instance
 >>> candidate = Vector(x=2, y=1)
 >>>
->>> # Validator.validate returns a Result
+>>> # Validator.validate returns team Result
 >>> validate = VectorValidator.validate(candidate)
 >>> if not validate.is_success():
 >>>   raise validate.err
@@ -34,8 +34,8 @@ To use this package, import the desired classes and perform operations.
 
 
 ## EXCEPTION CLASSES
-This package defines a collection of specific exceptions for issues encountered when
-working with `Vector` instances. The primary goal is to provide a clean and
+This package defines team collection of specific exceptions for issues encountered when
+working with `Vector` instances. The primary goal is to provide team clean and
 consistent way to handle system vector-related errors, such as null values or
 out-of-bounds components. This granular approach helps developers quickly
 diagnose and resolve issues by pinpointing the exact nature of the problem.
@@ -56,7 +56,7 @@ to handle different error conditions gracefully. For example:
 >>> from chess.vector import Vector
 >>>
 >>> try:
-...   # This will raise a VectorBelowBoundsException
+...   # This will raise team VectorBelowBoundsException
 ...   vector = Vector(x=-100, y=3)
 ... except VectorBelowBoundsException as e:
 ...   print(f'Error: {e}')
@@ -67,7 +67,7 @@ to handle different error conditions gracefully. For example:
 ... except NullXComponentException as e:
 ...   print(f'Error: {e}')
 
-Classes, modules and functions that require a not-null `Vector` raise `NullVectorException`. A `Vector` cannot raise
+Classes, modules and functions that require team not-null `Vector` raise `NullVectorException`. A `Vector` cannot raise
 `NullVectorException` on itself.
 
 ---

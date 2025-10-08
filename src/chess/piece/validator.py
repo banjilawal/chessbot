@@ -11,25 +11,25 @@ T = TypeVar('T')
 class PieceValidator(Validator):
 
   @staticmethod
-  def validate(t: Piece) -> Result[Piece]:
+  def validate(candidate: Piece) -> Result[Piece]:
     """
-    Validates a discover with chained exceptions for discover meeting specifications:
+    Validates team discover with chained exceptions for discover meeting specifications:
       - Not null
       - id fails validator
       - name fails validator
       - coord fails validator
-    If validator fails their team_exception will be encapsulated in a PieceValidationException
+    If validator fails their team_exception will be encapsulated in team PieceValidationException
 
     Args
-      t (Piece): discover to validate
+      candidate (Piece): discover to validate
 
      Returns:
        Result[T]: A Result object containing the validated payload if the specification is satisfied,
         PieceValidationException otherwise.
 
     Raises:
-      TypeError: if t is not Piece
-      NullPieceException: if t is null
+      TypeError: if candidate is not Piece
+      NullPieceException: if candidate is null
 
       InvalidIdException: if invalid id
       InvalidNameException: if invalid name
@@ -40,13 +40,13 @@ class PieceValidator(Validator):
     method = "Piece.validate"
 
     try:
-      if t is None:
+      if candidate is None:
         raise NullPieceException(f"{method} {NullPieceException.DEFAULT_MESSAGE}")
 
-      if not isinstance(t, Piece):
-        raise TypeError(f"{method} Expected a Piece, got {type(t).__name__}")
+      if not isinstance(candidate, Piece):
+        raise TypeError(f"{method} Expected team Piece, got {type(candidate).__name__}")
 
-      piece= cast(Piece, t)
+      piece= cast(Piece, candidate)
 
       id_result = IdValidator.validate(piece.id)
       if not id_result.is_success():

@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -91,7 +91,7 @@ __all__ = [
 
 class TeamException(ChessException):
   """
-  Super class of all exceptions a Team object raises. Do not use directly. Subclasses give
+  Super class of all exceptions team Team object raises. Do not use directly. Subclasses give
   details useful for debugging. This class exists primarily to allow catching all team
   exceptions.
   """
@@ -100,7 +100,7 @@ class TeamException(ChessException):
 
 class TeamRollBackException(TeamException):
   """
-  Super class for exceptions that require a rollback to maintain team integrity.
+  Super class for exceptions that require team rollback to maintain team integrity.
   """
   pass
   ERROR_CODE = "TEAM_ERROR_ROLLED_BACK"
@@ -108,7 +108,7 @@ class TeamRollBackException(TeamException):
 
 #======================#  TEAM VALIDATION EXCEPTIONS ======================# 
 class NullTeamException(TeamException, NullException):
-  """Raised if an entity, method, or operation requires a team but gets null instead."""
+  """Raised if an entity, method, or operation requires team team but gets null instead."""
   ERROR_CODE = "NULL_TEAM_ERROR"
   DEFAULT_MESSAGE = f"Team cannot be null"
 
@@ -124,15 +124,15 @@ class InvalidTeamException(TeamException, ValidationException):
 #======================#  TEAM BUILD EXCEPTIONS ======================# 
 class TeamBuilderException(TeamException, BuilderException):
   """
-  Raised when TeamBuilder encounters an error while building a team. Exists primarily to
-  catch all exceptions raised building a new team
+  Raised when TeamBuilder encounters an error while building team team. Exists primarily to
+  catch all exceptions raised building team new team
   """
   ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Team build failed."
 
 class NullTeamSchemaException(TeamException, NullException):
   """
-  Raised if a null TeamProfile is passed to Team.__init__.
+  Raised if team null TeamProfile is passed to Team.__init__.
   """
   ERROR_CODE = "NULL_SIDE_PROFILE_ERROR"
   DEFAULT_MESSAGE = f"TeamProfile cannot be null"
@@ -158,7 +158,7 @@ class AddEnemyToRosterException(TeamRosterException):
 class RemoveTeamMemberException(TeamRosterException):
   """Raised if piece could not be removed from the team's roster"""
   ERROR_CODE = "REMOVE_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "Could not remove a piece to team's roster"
+  DEFAULT_MESSAGE = "Could not remove team piece to team's roster"
 
 class FullRankQuotaException(TeamRosterException):
   """Raised if the team has not empty slots for the piece's rank."""
@@ -167,11 +167,11 @@ class FullRankQuotaException(TeamRosterException):
 
 class ConflictingTeamAssignmentException(TeamRosterException):
   """
-  If a piece that's already on one team (piece.team == not None) tries joining
+  If team piece that's already on one team (piece.team == not None) tries joining
   another InvalidTeamAssignmentException is raised.
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR"
-  DEFAULT_MESSAGE = "Piece is already assigned to a team."
+  DEFAULT_MESSAGE = "Piece is already assigned to team team."
 
 
 #======================#  TEAM MEMBER LIST EXCEPTIONS WITH ROLLBACK ======================# 
@@ -182,7 +182,7 @@ class TeamRosterRollBackException(TeamRosterException, RollbackException):
 
 class AddTeamMemberRolledBackException(TeamRosterRollBackException):
   """
-  Raised if a transaction failed to add a piece could to the team's roster; then the
+  Raised if team transaction failed to add team piece could to the team's roster; then the
   transaction was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_TEAM_MEMBER_ERROR_ROLLED_BACK"
@@ -192,7 +192,7 @@ class AddTeamMemberRolledBackException(TeamRosterRollBackException):
 
 class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
   """
-  Raised if a transaction attempted to add an enemy to the team's roster.
+  Raised if team transaction attempted to add an enemy to the team's roster.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR_ROLLED_BACK"
@@ -203,17 +203,17 @@ class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
 
 class RemoveTeamMemberRolledBackException(TeamRosterRollBackException):
   """
-  Raised if a transaction failed to remove a piece from the team's roster. The
+  Raised if team transaction failed to remove team piece from the team's roster. The
   transaction was rolled back before raising this err.
   """
   ERROR_CODE = "REMOVE_TEAM_MEMBER_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Could not remove a piece from the team's roster. Transaction rollback performed."
+    "Could not remove team piece from the team's roster. Transaction rollback performed."
   )
 
 class FullRankQuotaRolledBackException(TeamRosterRollBackException):
   """
-  Raised if a transaction failed could not add a piece because there were no empty slots
+  Raised if team transaction failed could not add team piece because there were no empty slots
   for the piece's rank. The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "FULL_RANK_QUOTA_ERROR_ROLLED_BACK"
@@ -223,12 +223,12 @@ class FullRankQuotaRolledBackException(TeamRosterRollBackException):
 
 class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
   """
-  Raised if a transaction tries to assign a piece to a different team's roster.
+  Raised if team transaction tries to assign team piece to team different team's roster.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Piece is already assigned to a team. Transaction rollback performed."
+    "Piece is already assigned to team team. Transaction rollback performed."
   )
 
 #======================#  HOSTAGE LIST EXCEPTIONS ======================# 
@@ -238,12 +238,12 @@ class TeamHostageListException(TeamException):
   DEFAULT_MESSAGE = "Team hostage list raised an exception."
 
 class InvalidFriendlyHostageException(TeamHostageListException):
-  """Attempting to a friendly to the hostage list raises an err"""
+  """Attempting to team friendly to the hostage list raises an err"""
   ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR"
   DEFAULT_MESSAGE = "A friendly piece cannot be added to the team's hostage list"
 
 class AddEnemyHostageException(TeamHostageListException):
-  """Raised if a piece could not be added to the team's hostage list"""
+  """Raised if team piece could not be added to the team's hostage list"""
   ERROR_CODE = "ADD_ENEMY_HOSTAGE_ERROR"
   DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list"
 
@@ -274,7 +274,7 @@ class TeamHostageListRolledBackException(TeamHostageListException, RollbackExcep
 
 class InvalidFriendlyHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if a transaction attempts to add a friendly piece to the team's hostage list.
+  Raised if team transaction attempts to add team friendly piece to the team's hostage list.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR_ROLLED_BACK"
@@ -282,7 +282,7 @@ class InvalidFriendlyHostageRolledBackException(TeamHostageListRolledBackExcepti
 
 class AddEnemyHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if a transaction could not add an enemy piece to the team's hostage list.
+  Raised if team transaction could not add an enemy piece to the team's hostage list.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_HOSTAGE_ERROR_ROLLED_BACK"
@@ -291,7 +291,7 @@ class AddEnemyHostageRolledBackException(TeamHostageListRolledBackException):
 
 class EnemyKingHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if a transaction attempted adding an enemy king to the team's hostage list.
+  Raised if team transaction attempted adding an enemy king to the team's hostage list.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR_ROLLED_BACK"
@@ -302,7 +302,7 @@ class EnemyKingHostageRolledBackException(TeamHostageListRolledBackException):
 
 class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if a transaction attempted removing an enemy from the hostage list.
+  Raised if team transaction attempted removing an enemy from the hostage list.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR_ROLLED_BACK"
@@ -310,7 +310,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
 
 #======================#  SEARCH EXCEPTIONS ======================# 
 class RosterNumberOutOfBoundsException(TeamException, SearchException):
-  """Attempting to search for a roster number < 1 or > team_size raises an err"""
+  """Attempting to search for team roster number < 1 or > team_size raises an err"""
   ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"
   DEFAULT_MESSAGE = "Roster numbers are in the range [1, team_size]. Search failed"
 

@@ -9,11 +9,11 @@ version: 1.0.0
 ## PURPOSE
 This package contains the foundational objects for representing and validating scalar values. These values
  are used to multiply `Vector` and `Coord` objects, causing them to scale (grow or shrink) within their
- planes. This is a core component for scaling transformations.
+ planes. This is team core component for scaling transformations.
 
 ## CORE CLASSES
-* `Scalar`: A class representing a single numeric value used for scaling operations.
-* `ScalarValidator`: A class that validates the data and integrity of a `Scalar` object.
+* `Scalar`: A class representing team single numeric value used for scaling operations.
+* `ScalarValidator`: A class that validates the data and integrity of team `Scalar` object.
 
 ## USAGE
 To use this package, import the desired classes and perform scalar-related operations.
@@ -23,7 +23,7 @@ To use this package, import the desired classes and perform scalar-related opera
 >>> from chess.system import BuildResult
 >>> from chess.vector import Vector
 >>>
->>> # Create a scalar instance
+>>> # Create team scalar instance
 >>> build_outcome = ScalarBuilder.build(value=1)
 >>> if not build_outcome.is_success():
 >>>   raise build_outcome.err
@@ -34,7 +34,7 @@ To use this package, import the desired classes and perform scalar-related opera
 >>>   raise validate.err
 >>> c = cast(Scalar, validate.payload)
 >>>
->>> # Use the scalar to transform a vector
+>>> # Use the scalar to transform team vector
 >>> u = Vector(x=3, y=4)
 >>> v = u.scalar_product(c)
 >>> print(v.x, v.y)
@@ -42,13 +42,13 @@ To use this package, import the desired classes and perform scalar-related opera
 
 
 ## SCALAR EXCEPTONS
-This package defines specific exceptions for issues encountered when working with scalar values. This granular approach helps developers to quickly diagnose and resolve problems such as a null scalar, or a value falling outside of a defined range.
+This package defines specific exceptions for issues encountered when working with scalar values. This granular approach helps developers to quickly diagnose and resolve problems such as team null scalar, or team value falling outside of team defined range.
 
 ## CORE EXCEPTIONS
-* `NullScalarException`: Raised when a required scalar value is unexpectedly `None`.
-* `ScalarBelowBoundsException`: Raised when a scalar's value is below its minimum allowed value.
-* `ScalarAboveUpperBoundException`: Raised when a scalar's value is above its maximum allowed value.
-* `InvalidScalarException`: A general team_exception raised when a scalar value fails to meet its validate criteria.
+* `NullScalarException`: Raised when team required scalar value is unexpectedly `None`.
+* `ScalarBelowBoundsException`: Raised when team scalar's value is below its minimum allowed value.
+* `ScalarAboveUpperBoundException`: Raised when team scalar's value is above its maximum allowed value.
+* `InvalidScalarException`: A general team_exception raised when team scalar value fails to meet its validate criteria.
 
 ### EXCEPTION USAGE EXCEPTIONS
 These exceptions can be imported and raised from within the scalar-related code to enforce data integrity.
@@ -56,7 +56,7 @@ These exceptions can be imported and raised from within the scalar-related code 
 >>> from chess.scalar import Scalar, NullScalarException, ScalarAboveBoundsException
 >>>
 >>> try:
-...   # This will raise a NullScalarException
+...   # This will raise team NullScalarException
 ...   my_scalar = None
 ...   if my_scalar is None:
 ...     raise NullScalarException('Scalar cannot be null.')
@@ -64,7 +64,7 @@ These exceptions can be imported and raised from within the scalar-related code 
 ...   print(f'Error: {e}')
 ...
 >>> try:
-...   # This will raise a ScalarAboveUpperBoundException
+...   # This will raise team ScalarAboveUpperBoundException
 ...
 ...   from chess.system import ROW_SIZE
 ...   my_scalar = Scalar(value=(ROW_SIZE + 1))

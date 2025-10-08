@@ -15,7 +15,7 @@ falls to the `ContextValidator` and `ContextBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `ContextException`). This enables precise error
@@ -65,7 +65,7 @@ class ContextException(ChessException):
 #======================#  CONTEXT VALIDATION EXCEPTIONS ======================# 
 class NullContextException(ContextException, NullException):
   """
-  Raised if an entity, method, or operation requires a context but
+  Raised if an entity, method, or operation requires team context but
   gets null instead.
   """
   ERROR_CODE = "NULL_CONTEXT_ERROR"
@@ -82,8 +82,8 @@ class InvalidContextException(ContextException, ValidationException):
 #======================#  CONTEXT BUILD EXCEPTIONS ======================# 
 class ContextBuildFailedException(ContextException, BuildFailedException):
   """
-  Raised when ContextBuilder encounters an error while building a team.
-  Exists primarily to catch all exceptions raised build a new context
+  Raised when ContextBuilder encounters an error while building team team.
+  Exists primarily to catch all exceptions raised build team new context
   """
   ERROR_CODE = "CONTEXT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Context build failed."

@@ -81,7 +81,7 @@ class SideTest(unittest.TestCase):
     mock_id_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.is_success.return_value = True
 
-    # Fake sides_played collection that doesn't actually add the team
+    # Fake sides_played collection that doesn'candidate actually add the team
     class FakeSidesPlayed:
       def __init__(self):
         self.items = []

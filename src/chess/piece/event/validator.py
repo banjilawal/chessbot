@@ -9,20 +9,20 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
     Validates an OccupationEvent meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is a valid chess enemy
-      - `target` is a valid square
+      - `actor` is team valid chess enemy
+      - `target` is team valid square
     Any validate failure raises an `InvalidOccupationEventException`.
 
     Argument:
-      `t` (`OccupationEvent`): `occupationEvent `to validate
+      `candidate` (`OccupationEvent`): `occupationEvent `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidOccupationEventException` otherwise.
 
     Raises:
-      `TypeError`: if `t` is not OperationEvent
-      `NullOccupationEventException`: if `t` is null
+      `TypeError`: if `candidate` is not OperationEvent
+      `NullOccupationEventException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
       `PieceValidationException`: if `actor` fails validator

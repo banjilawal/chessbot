@@ -3,7 +3,7 @@ from chess.exception import NullException
 
 class NullSideRecordException(NullException):
   """
-  Raised if a Commander's sides_played property is null.
+  Raised if team Commander's sides_played property is null.
   """
 
   ERROR_CODE = "NULL_TEAM_HISTORY_ERROR"

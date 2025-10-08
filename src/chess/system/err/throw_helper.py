@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Any, Callable
 
-from chess.system import Result, ErrorHandler
+from chess.system import Result, LogWriter
 
 
 class RaiserLogger(Enum):
@@ -13,10 +13,10 @@ class RaiserLogger(Enum):
     if exception_factory is None:
       exception_factory = RaiserLogger._default_exception_factory
 
-    ErrorHandler.log_and_raise(context, exception_factory())
+    LogWriter.log_and_raise(context, exception_factory())
 
     # if not result.is_success():
-    #   ErrorHandler.log_and_raise(roster, exception_factory)
+    #   LogWriter.log_and_raise(roster, exception_factory)
 
   @staticmethod
   def _default_exception_factory() -> Exception:

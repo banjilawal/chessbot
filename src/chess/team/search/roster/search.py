@@ -32,7 +32,7 @@ from chess.system import Search, SearchResult
 from chess.team.search import PieceSearchContextValidator
 
 
-class TeamRosterSearch(Search):
+class TeamRosterSearch(Search[Team, Piece]):
 
   @classmethod
   def search(cls, team: Team, search_context: PieceSearchContext) -> SearchResult[List[Piece]]:
@@ -91,10 +91,10 @@ class TeamRosterSearch(Search):
       """
       IDs should be unique. Faster search would return the first match. An easy
       integrity check finds all the items with the same id. If there is more than
-      one raise a `DuplicateUniqueIdException`.
+      one raise team `DuplicateUniqueIdException`.
 
       Performance Impact:
-      The set of roster will never exceed 15 so this is not going to be a really
+      The set of roster will never exceed 15 so this is not going to be team really
       burdensome search.
       """
       method = "TeamRosterSearch._id_search"

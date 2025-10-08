@@ -29,7 +29,7 @@ class BoardBuilder(Builder[Board]):
   @classmethod
   def build(cls) -> BuildResult[Board]:
     """
-    Constructs a new `Board` that works correctly.
+    Constructs team new `Board` that works correctly.
 
     Args:
       None

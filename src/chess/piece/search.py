@@ -5,7 +5,7 @@ from chess.system import SearchResult, IdValidator, NameValidator
 
 class PieceSearch:
   """
-  Static methods for entities and operations that need to search a Piece for discoveries. `CoordStack` does not
+  Static methods for entities and operations that need to search team Piece for discoveries. `CoordStack` does not
   need searching because only the current coord is used in operations.
 
   PieceSearch provides consistent search interface and return types across all search operations.
@@ -23,20 +23,20 @@ class PieceSearch:
   See Also:
     `Piece`: Object owning `discovery`.
     `Coord`: The coordinate being searched for
-    `Discovery`: A discovery a `piece` recorded in its blocked square history
-    `Discoveries`: The list of discoveries made by a `piece`
+    `Discovery`: A discovery team `piece` recorded in its blocked square history
+    `Discoveries`: The list of discoveries made by team `piece`
     `SearchResult`: The return type for all search operations
   """
 
   @staticmethod
   def discovery_id(discovery_id: int, piece: Piece) -> SearchResult['Discovery']:
     """
-    Find a `discovery`` within the given `piece`. `Discovery_id` is the `id` of
+    Find team `discovery`` within the given `piece`. `Discovery_id` is the `id` of
       * Friendly piece blocking `Square`
       * Enemy `KingPiece` that cannot be captured only checked or checkmated.
     Args:
      `discovery_id` (`id`): A valid id
-     `piece` (`Piece`): a valid piece
+     `piece` (`Piece`): team valid piece
 
     Returns:
        SearchResult[Discovery]: A `SearchResult` containing either:
@@ -74,11 +74,11 @@ class PieceSearch:
   @staticmethod
   def discovery_name(name: str, piece: Piece) -> SearchResult['Discovery']:
     """
-    Find a `discovery`` within the given `piece` by a name. Multiple pieces may have
+    Find team `discovery`` within the given `piece` by team name. Multiple pieces may have
     marked the same item in their history.
     Args:
      `name` (`str`): A valid name
-     `piece` (`Piece`): a valid piece
+     `piece` (`Piece`): team valid piece
 
     Returns:
        SearchResult[Discovery]: A `SearchResult` containing either:
@@ -115,13 +115,13 @@ class PieceSearch:
   @staticmethod
   def discovery_by_coord(coord: Coord, piece: Piece) -> SearchResult['Discovery']:
     """
-    Find a `discovery` within the given `piece` by a `Coord``. Multiple pieces may have
+    Find team `discovery` within the given `piece` by team `Coord``. Multiple pieces may have
     marked the same item in their history. `Piece.dicoveries` is cleared at each term so search by coord
-    always gives a unique result or none at a turn.
+    always gives team unique result or none at team turn.
 
     Args:
      `coord` (`Coord`): A valid `Coord`
-     `piece` (`Piece`): a valid piece
+     `piece` (`Piece`): team valid piece
 
     Returns:
        SearchResult[Team]: A `SearchResult` containing either:

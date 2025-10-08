@@ -33,7 +33,7 @@ class ArenaBuilder(Builder[Arena]):
     board: Board
   ) -> BuildResult[Arena]:
     """
-    Constructs a new `Arena` that works correctly.
+    Constructs team new `Arena` that works correctly.
 
     Args:
       - `white_commander`: White Commander
@@ -47,8 +47,8 @@ class ArenaBuilder(Builder[Arena]):
 
     Raises:
     `ArenaBuildFailedException` wraps any exceptions raised build. These are:
-      * `InvalidCommanderException`: If a `white_commander` or `black_commander` fails validation.
-      * `InvalidBoardException`: If a `board` fails validation.
+      * `InvalidCommanderException`: If team `white_commander` or `black_commander` fails validation.
+      * `InvalidBoardException`: If team `board` fails validation.
 
     """
     method = "ArenaBuilder.build"

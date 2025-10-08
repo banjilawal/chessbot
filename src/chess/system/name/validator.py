@@ -11,7 +11,7 @@ from chess.system import (
 class NameValidator(Validator):
 
   @staticmethod
-  def validate(t: Generic[T]) -> Result[str]:
+  def validate(candidate: Generic[T]) -> Result[str]:
     entity = "Name"
     class_name = f"{entity}Validator"
     method = f"{class_name}.validate"
@@ -21,31 +21,31 @@ class NameValidator(Validator):
       - Not null
       - Not blank (only white space)
       - Not shorter than MIN_NAME_LENGTH   
-    Any unmet specifications raise exceptions wrapped in a InvalidNameException
+    Any unmet specifications raise exceptions wrapped in team InvalidNameException
 
     Args
-      t (str): generic to be validated
+      candidate (str): generic to be validated
 
      Returns:
        Result[T]: A Result object containing the validated payload if the Validator is 
         satisfied, InvalidNameException otherwise.
 
     Raises:
-      TypeError: if t is not int
-      NullNameException: if t is null
-      BlankNameException: if t only contains white space.
-      ShortNameException: if t is shorter than MIN_NAME_LENGTH
+      TypeError: if candidate is not int
+      NullNameException: if candidate is null
+      BlankNameException: if candidate only contains white space.
+      ShortNameException: if candidate is shorter than MIN_NAME_LENGTH
       
       InvalidNameException: Wraps any preceding team_exception 
     """
     try:
-      if t is None:
+      if candidate is None:
         raise NullNameException(f"{method} {NullNameException.DEFAULT_MESSAGE}")
 
-      if not isinstance(t, str):
-        raise TypeError(f"{method} Expected an str, got {type(t).__name__}")
+      if not isinstance(candidate, str):
+        raise TypeError(f"{method} Expected an str, got {type(candidate).__name__}")
 
-      name = cast(str, t)
+      name = cast(str, candidate)
 
       if not name.strip():
         raise BlankNameException(f"{method}: {BlankNameException.DEFAULT_MESSAGE}")

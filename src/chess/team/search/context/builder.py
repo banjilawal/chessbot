@@ -30,7 +30,7 @@ from chess.rank import Rank, RankValidator, RankSpec
 from chess.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
 from chess.system import (
     IdValidator, NameValidator, Builder, BuildResult,
-    MutuallyExclusiveParamsException, AllParamsSetNullException, RaiserLogger
+    MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
 from chess.team.search.context.context import PieceSearchContext
 from chess.team.search import RansomOutOfBoundsException
@@ -82,7 +82,7 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
         if piece_id is not None:
             id_validation = IdValidator.validate(piece_id)
             if not id_validation.is_success():
-                RaiserLogger(PieceSearchContextBuilder, id_validation.exception)
+                LoggingLevelRouter(PieceSearchContextBuilder, id_validation.exception)
                 return BuildResult(exception=id_validation.exception)
             return BuildResult(payload=PieceSearchContext(piece_id=id_validation.payload))
 
@@ -91,14 +91,14 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
                 err = RosterNumberOutOfBoundsException(
                     f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
                 )
-                RaiserLogger(PieceSearchContextBuilder, err)
+                LoggingLevelRouter(PieceSearchContextBuilder, err)
                 return BuildResult(exception=err)
             return BuildResult(payload=PieceSearchContext(roster_number=roster_number))
 
         if name is not None:
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
-                RaiserLogger(PieceSearchContextBuilder, name_validation.exception)
+                LoggingLevelRouter(PieceSearchContextBuilder, name_validation.exception)
                 return BuildResult(exception=name_validation.exception)
             return BuildResult(payload=PieceSearchContext(name=name))
 
@@ -107,13 +107,13 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
                 err = RansomOutOfBoundsException(
                     f"{method}: {RansomOutOfBoundsException.DEFAULT_MESSAGE}"
                 )
-                RaiserLogger(PieceSearchContextBuilder, err)
+                LoggingLevelRouter(PieceSearchContextBuilder, err)
                 return BuildResult(exception=err)
             return BuildResult(payload=PieceSearchContext(ransom=ransom))
 
         if rank is not None:
             rank_validation = RankValidator.validate(rank)
             if not rank_validation.is_success():
-                RaiserLogger(PieceSearchContextBuilder, rank_validation.exception)
+                LoggingLevelRouter(PieceSearchContextBuilder, rank_validation.exception)
                 return BuildResult(exception=rank_validation.exception)
             return BuildResult(payload=PieceSearchContext(rank=rank))

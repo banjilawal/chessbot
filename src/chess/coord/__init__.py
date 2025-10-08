@@ -37,21 +37,21 @@ organic to:
   * `CoordValidator`
 
 All exceptions in `chess.coord` package have static fields:
-  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
+  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with team "_ERROR" suffix
   - `DFAULT_MESSAGE`: A sentence describing the err. Use an err's `DEFAULT_MESSAGE`
 For consistency across the application.
 
 ### LIST OF EXCEPTIONS:
   * `CoordException`: Superclass for Coord-related exceptions
-  * `NullCoordException`: Raised if a coordinate is null
+  * `NullCoordException`: Raised if team coordinate is null
   * `InvalidCoordException`: Raised if coordinate validate fails
-  * `NullCoordValidatorException`: Raised if a CoordValidator is null
+  * `NullCoordValidatorException`: Raised if team CoordValidator is null
   * `CoordBuilderException`: Wrapper for exceptions raised by CoordBuilder
-  * `NullCoordBuilderException`: Raised if a CoordBuilder is null
-  * `NullRowException`: Raised if a row is null (Coord cannot be created)
+  * `NullCoordBuilderException`: Raised if team CoordBuilder is null
+  * `NullRowException`: Raised if team row is null (Coord cannot be created)
   * `RowBelowBoundsException`: Raised if row < 0
   * `RowAboveBoundsException`: Raised if row >= ROW_SIZE
-  * `NullColumnException`: Raised if a column is null (Coord cannot be created)
+  * `NullColumnException`: Raised if team column is null (Coord cannot be created)
   * `ColumnBelowBoundsException`: Raised if column < 0
   * `ColumnAboveBoundsException`: Raised if column >= COLUMN_SIZE
 

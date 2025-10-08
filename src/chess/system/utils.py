@@ -11,7 +11,7 @@ __all__ = [
 
 def auto_id(cls: Type[T]) -> Type[T]:
   """
-  Decorator that adds automatic ID generation to a class.
+  Decorator that adds automatic ID generation to team class.
   Each decorated class gets its own independent ID counter starting at 1.
   Thread-safe.
   """

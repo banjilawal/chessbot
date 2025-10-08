@@ -15,30 +15,30 @@ from chess.piece import CombatantPiece
 class HostageValidator(Validator):
 
   @staticmethod
-  def validate(t: Generic[T]) -> Result[CombatantPiece]:
+  def validate(candidate: Generic[T]) -> Result[CombatantPiece]:
     entity = "Hostage"
     class_name = f"{entity}Validator"
     method = f"{class_name}.validate"
 
     """
-    Validates a hostage meets domain requirements:
-      - is a validated discovery
-      - is a Combatant instance
+    Validates team hostage meets domain requirements:
+      - is team validated discovery
+      - is team Combatant instance
       - The captor field is not null
       - The hostage is not on its team roster
       - The hostage is not its enemy's list of prisoners
-    Any failed requirement raise an exception wrapped in a HostageValidationException
+    Any failed requirement raise an exception wrapped in team HostageValidationException
 
     Args
-      t (CombatantPiece): coord to validate
+      candidate (CombatantPiece): coord to validate
 
      Returns:
        Result[T]: A Result object containing the validated payload if all domain requirements 
        are satisfied. HostageValidationException otherwise.
 
     Raises:
-      PieceValidationException: t is not a valid discovery
-      TypeError: if t is not CombatantPiece
+      PieceValidationException: candidate is not team valid discovery
+      TypeError: if candidate is not CombatantPiece
       HostageCaptorNullException: if the captor field is null
       RosterRemovalException: if the captive is still on its team's roster
       HostageAdditionException: if the captive has not been added to its enemy's hostage list
@@ -47,14 +47,14 @@ class HostageValidator(Validator):
     """
 
     try:
-      validation = PieceValidator.validate(t)
+      validation = PieceValidator.validate(candidate)
       if not validation.is_success():
         raise validation.exception
 
-      if not isinstance(t, CombatantPiece):
-        raise TypeError(f"{method} Expected a CombatantPiece, got {type(t).__name__}")
+      if not isinstance(candidate, CombatantPiece):
+        raise TypeError(f"{method} Expected team CombatantPiece, got {type(candidate).__name__}")
 
-      hostage = cast(CombatantPiece, t)
+      hostage = cast(CombatantPiece, candidate)
 
       if hostage.captor is None:
         raise HostageCaptorNullException(f"{method}: {HostageCaptorNullException.DEFAULT_MESSAGE}")

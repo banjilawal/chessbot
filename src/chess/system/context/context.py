@@ -32,7 +32,7 @@ Created: 2025-10-04
 version: 1.0.0
 
 Provides:
-Interface to implement a `Context`
+Interface to implement team `Context`
 
 Contains:
  * `Context`
@@ -58,7 +58,7 @@ class Context(ABC):
   ]
   """
   """
-  Interface for defining optional dependencies an `Event` needs to execute a
+  Interface for defining optional dependencies an `Event` needs to execute team
   `Transaction`.
 
   Attributes:
@@ -80,7 +80,7 @@ class Context(ABC):
 
     method = "ClassName.method_name"
     """
-    Converts a roster's fields into a dictionary.
+    Converts team roster's fields into team dictionary.
     Attributes:
       No attributes. Implementors declare their own.
     """

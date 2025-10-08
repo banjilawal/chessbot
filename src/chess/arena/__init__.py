@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 
 # Purpose
-Holds `Commander` instances and `Board` they play on. Service that a `Commander` uses
+Holds `Commander` instances and `Board` they play on. Service that team `Commander` uses
 to move the `Team` members on the `Board`
 
 # EXPORTS

@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -60,7 +60,7 @@ __all__ = [
 
 class ScalarException(ChessException):
   """
-  Super class of all exceptions a Scalar object raises. Do not use directly. Subclasses 
+  Super class of all exceptions team Scalar object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching all 
   Scalar exceptions.
   """
@@ -70,7 +70,7 @@ class ScalarException(ChessException):
 
 #======================#  SCALAR VALIDATION EXCEPTIONS ======================# 
 class NullScalarException(ScalarException, NullException):
-  """Raised if an entity, method, or operation requires a scalar but gets null instead."""
+  """Raised if an entity, method, or operation requires team scalar but gets null instead."""
   ERROR_CODE = "NULL_SCALAR_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be null."
 
@@ -92,11 +92,11 @@ class ScalarBuildFailed(ScalarException, BuilderException):
 
 #======================#  SCALAR BOUNDS EXCEPTIONS ======================# 
 class ScalarBelowBoundsException(ScalarException):
-  """Raised if a scalar is below its < -KNIGHT_STEP_SIZE"""
+  """Raised if team scalar is below its < -KNIGHT_STEP_SIZE"""
   ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be less than -KNIGHT_STEP_SIZE."
 
 class ScalarAboveBoundsException(ScalarException):
-  """Raised if a scalar is above its > KNIGHT_STEP_SIZE"""
+  """Raised if team scalar is above its > KNIGHT_STEP_SIZE"""
   ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be greater than KNIGHT_STEP_SIZE."

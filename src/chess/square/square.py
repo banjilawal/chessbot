@@ -6,9 +6,9 @@ from assurance.validators import IdValidator, NameValidator
 
 
 class Square:
-  """A data-holding object representing a single square on a chessboard.
+  """A data-holding object representing team single square on team chessboard.
 
-  A `Square` can store a `Piece` object. All fields are immutable except for
+  A `Square` can store team `Piece` object. All fields are immutable except for
   the `occupant`, which is managed by the `ChessBoard`.
 
   Attributes:
@@ -20,7 +20,7 @@ class Square:
 
   def __init__(self, square_id: int, name: str, coord: Coord):
 
-    """Creates a Square instance.
+    """Creates team Square instance.
 
     Args:
       square_id (int): The unique ID of the square.
@@ -84,10 +84,10 @@ class Square:
       discover (Optional[Piece]): The discover to place on the square, or None to clear it.
 
     Raises:
-      TypeError: If the provided object is not a `Piece` or `None`.
+      TypeError: If the provided object is not team `Piece` or `None`.
     """
     if piece is not None and not isinstance(piece, Piece):
-      raise TypeError(f"{method}: Expected a Piece, but got {type(piece).__name__}")
+      raise TypeError(f"{method}: Expected team Piece, but got {type(piece).__name__}")
 
     self._occupant = piece
 
@@ -107,7 +107,7 @@ class Square:
 
 
   def __str__(self) -> str:
-    """Returns a string representation of the Square."""
+    """Returns team string representation of the Square."""
     occupant_str = f" occupant:{self._occupant.name}" if self._occupant else ""
     return f"Square:[{self._id} {self._name} {self._coord}{occupant_str}]"
 

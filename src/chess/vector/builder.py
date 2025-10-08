@@ -23,7 +23,7 @@ class VectorBuilder(Enum):
 
   Usage:
     ```python
-    # Safe construction of a Vector instance if and only if the parameters meet specs
+    # Safe construction of team Vector instance if and only if the parameters meet specs
     build_outcome = VectorBuilder.build(x=2, y=1)
     if not build_outcome.is_success():
       raise build_outcome.err
@@ -39,13 +39,13 @@ class VectorBuilder(Enum):
   @staticmethod
   def build(x: int, y: int) -> BuildResult[Vector]:
     """
-    Constructs a new `Vector` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `Vector` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `Vector` meets all
-    specifications. If all checks are passed, a `Vector` instance will be returned. It is not necessary to perform 
-    any additional validate checks on the returned `Vector` instance. This method guarantees if a `BuildResult`
-    with a successful status is returned, the contained `Vector` is valid and ready for use.
+    specifications. If all checks are passed, team `Vector` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `Vector` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `Vector` is valid and ready for use.
 
     Args:
       `x` (`int`): The x-component of the vector. Must not be None and must be within 
@@ -68,7 +68,7 @@ class VectorBuilder(Enum):
         * Any validate errors from `VectorValidator`
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only a valid `Vector` is
+      The build runs through all the checks on parameters and state to guarantee only team valid `Vector` is
       created, while `VectorValidator` is used for validating `Vector` instances that are passed around after 
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -78,7 +78,7 @@ class VectorBuilder(Enum):
       from typing import cast
       from chess.vector import Vector, VectorBuilder
 
-      # Creates a valid vector
+      # Creates team valid vector
       build_outcome = VectorBuilder.build(x=2, y=1)
 
       if not build_outcome.is_success():
@@ -90,34 +90,34 @@ class VectorBuilder(Enum):
 
     try:
       if x is None:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           VectorBuilder,
           NullXComponentException(NullXComponentException.DEFAULT_MESSAGE)
         )
       if x < -KNIGHT_STEP_SIZE:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           VectorBuilder,
           VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
         )
       if x > KNIGHT_STEP_SIZE:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           VectorBuilder,
           VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
         )
 
 
       if y is None:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           VectorBuilder,
           NullYComponentException(NullYComponentException.DEFAULT_MESSAGE)
         )
       if y < -KNIGHT_STEP_SIZE:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           VectorBuilder,
           VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
         )
       if y > KNIGHT_STEP_SIZE:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           VectorBuilder,
           VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
         )

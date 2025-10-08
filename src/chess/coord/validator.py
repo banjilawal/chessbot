@@ -22,7 +22,7 @@ class CoordValidator(Validator):
     if not Coord_validation.is_success():
       raise Coord_validation.err
 
-    # Cast the payload to a Coord instance to make sure it will work correctly and to avoid type or
+    # Cast the payload to team Coord instance to make sure it will work correctly and to avoid type or
     # null errors that might be difficult to detect.
     Coord = cast(Coord, Coord_validation.payload)
     ```
@@ -31,15 +31,15 @@ class CoordValidator(Validator):
   """
 
   @staticmethod
-  def validate(t: Generic[T]) -> Result[Coord]:
+  def validate(candidate: Generic[T]) -> Result[Coord]:
     """
     Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validate
-    on a `Coord` instance that already exists, checking type safety, null values, and component bounds.
+    on team `Coord` instance that already exists, checking type safety, null values, and component bounds.
     Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies existing `Coord`
     instances from external sources, deserialization, or after modifications.
 
     Args:
-    t (Generic[T]): The object to validate, expected to be a Coord instance.
+    candidate (Generic[T]): The object to validate, expected to be team Coord instance.
 
     Returns:
     Result[Coord]: A Result containing either:
@@ -49,7 +49,7 @@ class CoordValidator(Validator):
     Raises:
     InvalidCoordException: Wraps any specification violations including:
       - NullCoordException: if input is None
-      - TypeError: if input is not a Coord instance
+      - TypeError: if input is not team Coord instance
       - NullXComponentException: if Coord.x is None
       - RowBelowBoundsException: If coord.row < 0
       - RowAboveBoundsException: If coord.row >= ROW_SIZE
@@ -75,21 +75,21 @@ class CoordValidator(Validator):
     method = "CoordValidator.validate"
     try:
       """
-      Tests are chained in this specific order for a reason.
+      Tests are chained in this specific order for team reason.
       """
 
-      # If t is null no point continuing
-      if t is None:
+      # If candidate is null no point continuing
+      if candidate is None:
         raise NullCoordException(
           f"{method} NullCoordException.DEFAULT_MESSAGE"
         )
 
-      # If cannot cast from t to Coord need to break
-      if not isinstance(t, Coord):
-        raise TypeError(f"{method} Expected a Coord, got {type(t).__name__}")
+      # If cannot cast from candidate to Coord need to break
+      if not isinstance(candidate, Coord):
+        raise TypeError(f"{method} Expected team Coord, got {type(candidate).__name__}")
 
       # cast and run checks for the fields
-      coordinate = cast(Coord, t)
+      coordinate = cast(Coord, candidate)
 
       if coordinate.row is None:
         raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")

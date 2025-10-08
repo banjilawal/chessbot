@@ -7,7 +7,7 @@ Created: 2025-10-04
 version: 1.0.0
 
 Provides:
-Interface to implement pluggable optimization algorithms during a turn or the duration of the game.
+Interface to implement pluggable optimization algorithms during team turn or the duration of the game.
 
 Contains:
  * `DecisionEngine`
@@ -15,7 +15,7 @@ Contains:
 
  NOTES:
    Reviewinng what is going to happen with graohing the board and fin the best path there will just be one DecisionEngine
-   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for a Bot.
+   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team Bot.
 """
 
 

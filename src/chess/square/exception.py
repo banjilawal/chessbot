@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -56,7 +56,7 @@ __all__ = [
 
 class SquareException(ChessException):
   """
-  Super class of all exceptions a Square object raises. Do not use directly. Subclasses
+  Super class of all exceptions team Square object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching all
   square exceptions.
   """
@@ -66,7 +66,7 @@ class SquareException(ChessException):
 
 #======================#  SQUARE VALIDATION EXCEPTIONS ======================# 
 class NullSquareException(SquareException, NullException):
-  """Raised if an entity, method, or operation requires a Square but gets null instead."""
+  """Raised if an entity, method, or operation requires team Square but gets null instead."""
   ERROR_CODE = "NULL_SQUARE_ERROR"
   DEFAULT_MESSAGE = "Square cannot be null."
 
@@ -82,8 +82,8 @@ class InvalidSquareException(SquareException, ValidationException):
 #======================#  SQUARE BUILD EXCEPTIONS ======================# 
 class SquareBuildFailed(SquareException, BuilderException):
   """
-  Raised when SquareBuilder encounters an error building a square. Exists primarily
-  to catch all exceptions raised creating a new square
+  Raised when SquareBuilder encounters an error building team square. Exists primarily
+  to catch all exceptions raised creating team new square
   """
   ERROR_CODE = "SQUARE_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Square build failed."

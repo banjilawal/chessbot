@@ -8,9 +8,9 @@ Purpose:
   membership, rank, and board position, and manage interactions with other pieces.
 
 Contents:
-  - Piece: Abstract base class representing a chess piece with position and rank.
-  - KingPiece: Concrete subclass representing a king piece.
-  - CombatantPiece: Concrete subclass representing a piece capable of capturing others.
+  - Piece: Abstract base class representing team chess piece with position and rank.
+  - KingPiece: Concrete subclass representing team king piece.
+  - CombatantPiece: Concrete subclass representing team piece capable of capturing others.
   - CoordStack, Discovery, Discoveries: Supporting classes for tracking piece positions
    and discoveries.
   - Validators and exceptions related to piece creation and validate.
@@ -41,9 +41,9 @@ __all__ = [
 
 
 class Piece(ABC):
-  """An abstract base class representing a single chess discover.
+  """An abstract base class representing team single chess discover.
 
-  A `Piece` is a fundamental game entity that has an identity, belongs to a `Team`, and has a `Rank` that
+  A `Piece` is team fundamental game entity that has an identity, belongs to team `Team`, and has team `Rank` that
   defines its movement logic. It tracks its position on the board and records discoveries with other pieces.
   The class is designed to be immutable with respect to its core properties (`id`, `name`, `rank`, `team`).
 
@@ -69,7 +69,7 @@ class Piece(ABC):
   _positions: CoordStack
 
   def __init__(self, piece_id: int, name: str, rank: Rank, team: Team):
-    """Initializes a Piece instance.
+    """Initializes team Piece instance.
 
     Args:
       piece_id (int): A unique identifier for the discover.
@@ -186,7 +186,7 @@ class Piece(ABC):
       piece (Piece): The other piece to compare.
 
     Returns:
-      bool: `True` if the piece belongs to a different team, otherwise `False`.
+      bool: `True` if the piece belongs to team different team, otherwise `False`.
 
     Raises:
       NullPieceException: If the provided discover is `None`.
@@ -202,14 +202,14 @@ class Piece(ABC):
 
   def record_discovery(self, piece: 'Piece'):
     """
-    Records a piece discovered when scanning or moving on the board.
+    Records team piece discovered when scanning or moving on the board.
 
     Args:
       piece (Piece): The item that this piece has found.
 
     Raises:
       NullPieceException: If the found piece is `None`.
-      AutoDiscoveryException: If the piece wants tries to record a discover of itself.
+      AutoDiscoveryException: If the piece wants tries to record team discover of itself.
     """
     method = "Piece.record_discovery"
 
@@ -227,7 +227,7 @@ class Piece(ABC):
 
 
   def __str__(self) -> str:
-    """Returns a string representation of the Piece."""
+    """Returns team string representation of the Piece."""
     return (
       f"Piece[id:{self._id} "
       f"name:{self._name} "
@@ -239,7 +239,7 @@ class Piece(ABC):
 
 
 class KingPiece(Piece):
-  """A concrete subclass representing a king piece."""
+  """A concrete subclass representing team king piece."""
   _is_checked: bool
   _is_checkmated: bool
 

@@ -91,10 +91,10 @@ class TeamHostageSearch(Search):
       """
       IDs should be unique. Faster search would return the first match. An easy
       integrity check finds all the items with the same id. If there is more than
-      one raise a `DuplicateUniqueIdException`.
+      one raise team `DuplicateUniqueIdException`.
 
       Performance Impact:
-      The set of hostages will never exceed 15 so this is not going to be a really
+      The set of hostages will never exceed 15 so this is not going to be team really
       burdensome search.
       """
       method = "TeamHostageSearch._id_search"

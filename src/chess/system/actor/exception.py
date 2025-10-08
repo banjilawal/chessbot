@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -77,10 +77,10 @@ class ActorException(PieceException):
 
 class ActorRollBackException(ActorException, RollbackException):
   """
-  Any inconsistencies a piece introduces into a transaction need to be rolled back.
-  This is the super class of a piece mutator operations, methods, or fields that raise
+  Any inconsistencies team piece introduces into team transaction need to be rolled back.
+  This is the super class of team piece mutator operations, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
-  exists primarily to allow catching all Piece exceptions that happen when a failed
+  exists primarily to allow catching all Piece exceptions that happen when team failed
   transaction must be rolled back.
   """
   ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
@@ -104,7 +104,7 @@ class ActorNotOnBoardException(ActorException):
   DEFAULT_MESSAGE = "Actor is not on the board. Piece cannot act"
 
 class ActorPlacementRequiredException(ActorException):
-  """Raised when a potential actor has not been placed on the board."""
+  """Raised when team potential actor has not been placed on the board."""
   ERROR_CODE = "ACTOR_PLACEMENT_REQUIRED_ERROR"
   DEFAULT_MESSAGE = (
     "Required actor has an empty position stack. It as not been placed on the board. Event cannot be executed."
@@ -131,29 +131,29 @@ class CapturedActorCannotMoveException(ActorException):
   A captured piece cannot move.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_ERROR"
-  DEFAULT_MESSAGE = "A captured actor cannot move to a square."
+  DEFAULT_MESSAGE = "A captured actor cannot move to team square."
 
 class CapturedActorCannotScanException(ActorException):
   """
   A captured piece cannot scan.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "A captured actor cannot scan a square."
+  DEFAULT_MESSAGE = "A captured actor cannot scan team square."
 
 class CheckMatedKingActivityException(ActorException):
   """
-  A checkmated king cannot act. The game should end once a king is checkmated
+  A checkmated king cannot act. The game should end once team king is checkmated
   """
   ERROR_CODE = "CHECKMATED_KING_ACTIVITY_ERROR"
   DEFAULT_MESSAGE = (
-    "A checkmated king cannot do anything. The game ends when a king is checkmated."
+    "A checkmated king cannot do anything. The game ends when team king is checkmated."
   )
 
 
 #======================#  SUBJECT EXCEPTIONS ======================# 
 class SubjectException(PieceException):
   """
-  SubjectException classes are raised on a piece acted upon. They are raised on the same errors as ActorException,
+  SubjectException classes are raised on team piece acted upon. They are raised on the same errors as ActorException,
   Using SubjectException makes tracing which side of the interaction is raising an error easier.
   """
   ERROR_CODE = "SUBJECT_ERROR"
@@ -161,19 +161,19 @@ class SubjectException(PieceException):
 
 
 class InvalidSubjectException(SubjectException, InvalidPieceException):
-  """Raised if a required enemy fails validate."""
+  """Raised if team required enemy fails validate."""
   ERROR_CODE = "SUBJECT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Required enemy failed validate. Actor cannot fire event onto enemy"
 
 
 class SubjectNotOnBoardException(SubjectException):
-  """Raised when a required enemy is not found on the board."""
+  """Raised when team required enemy is not found on the board."""
   ERROR_CODE = "SUBJECT_NOT_ON_BOARD_ERROR"
   DEFAULT_MESSAGE = "Required enemy was not found on the board. Actor cannot fire event onto enemy"
 
 
 class SubjectPlacementRequiredException(SubjectException):
-  """Raised when a required enemy has not been placed on the board."""
+  """Raised when team required enemy has not been placed on the board."""
   ERROR_CODE = "SUBJECT_PLACEMENT_REQUIRED_ERROR"
   DEFAULT_MESSAGE = (
     "Required enemy has an empty position stack. It as not been placed on the board. Actor cannot"

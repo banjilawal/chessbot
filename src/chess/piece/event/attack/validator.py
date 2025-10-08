@@ -21,20 +21,20 @@ class AttackEventValidator(EventValidator[A], Generic[T]):
     Validates an AttackEvent meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is a valid chess enemy
-      - `target` is a valid square
+      - `actor` is team valid chess enemy
+      - `target` is team valid square
     Any validate failure raises an `InvalidAttackEventException`.
 
     Argument:
-      `t` (`AttackEvent`): `attackEvent `to validate
+      `candidate` (`AttackEvent`): `attackEvent `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidAttackEventException` otherwise.
 
     Raises:
-      `TypeError`: if `t` is not OperationEvent
-      `NullAttackEventException`: if `t` is null
+      `TypeError`: if `candidate` is not OperationEvent
+      `NullAttackEventException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
       `PieceValidationException`: if `actor` fails validator

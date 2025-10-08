@@ -7,8 +7,8 @@ Created: 2025-10-03
 version: 1.0.0
 
 PURPOSE:
-  Manages `Piece` movement on the `Board`. After a `Piece.rank` authorizes traveling to a `Square`
-  `Rank.walk` initiates an `OccupationEvent`. The package provides a system interface for handling
+  Manages `Piece` movement on the `Board`. After team `Piece.rank` authorizes traveling to team `Square`
+  `Rank.walk` initiates an `OccupationEvent`. The package provides team system interface for handling
     - Safe event creation
     - Event validate
     - Event execution
@@ -27,7 +27,7 @@ PURPOSE:
 ## Occupation Exception Classes
 
 PURPOSE:
-  Contains all exceptions related to enemy operations and state.Contains exceptions raised when a Piece object is
+  Contains all exceptions related to enemy operations and state.Contains exceptions raised when team Piece object is
   null or improperly referenced during chess operations.
 
 EXCEPTIONS:
@@ -40,9 +40,9 @@ EXCEPTIONS:
   SetCaptorNullException: Setting null captor
   PieceValidationException:raised if PieceValidation fails
   NullPieceException: Abstract base class for null enemy exceptions.
-  NullHostagePieceException: Raised when a team tries to add a null hostage enemy to its roster.
-  NullCombatantPieceException: Raised when a team tries to remove a captured member but the captor is null.
-  NullKingPieceException: Raised when a king enemy reference is null.
+  NullHostagePieceException: Raised when team team tries to add team null hostage enemy to its roster.
+  NullCombatantPieceException: Raised when team team tries to remove team captured member but the captor is null.
+  NullKingPieceException: Raised when team king enemy reference is null.
 
 
 USAGE:

@@ -14,31 +14,31 @@ __all__ = [
 class CoordStackValidator(Validator):
 
   @staticmethod
-  def validate(t: CoordValidator) -> Result[CoordStack]:
+  def validate(candidate: CoordValidator) -> Result[CoordStack]:
     """
-    Validates a CoordStack meets requirements:
+    Validates team CoordStack meets requirements:
       - Not null
       - CoordStack.items is not null
-      - CoordStack.current_coordinate is null if the stack is empty, otherwise is a validated Coord
+      - CoordStack.current_coordinate is null if the stack is empty, otherwise is team validated Coord
       - if CoordStack.is_empty() is True then current_coordinate.size == 0
       - if CoordStack.is_empty() is False then current_coordinate is not null
       - If CoordStack.is_empty() then current_coordinate is null
-    Any failed requirement raise an exception wrapped in a CoordStackValidationException
+    Any failed requirement raise an exception wrapped in team CoordStackValidationException
 
     Validation tests do not change state so pushes and pops are:
       - Tested in unit tests
       - Piece life-cycles and flows.
 
     Args
-      t (CoordStack): coordinate_stack to validate
+      candidate (CoordStack): coordinate_stack to validate
 
      Returns:
-       Result[T]: Result instance containing a validated coordinate_stack as payload if validations
+       Result[T]: Result instance containing team validated coordinate_stack as payload if validations
        are satisfied, CoordStackValidationException otherwise.
 
     Raises:
-      TypeError: if t is not CoordStack
-      NullCoordStackException: if t is null
+      TypeError: if candidate is not CoordStack
+      NullCoordStackException: if candidate is null
 
       InternalStackDataStructureException: If CoordStack.items is null
       InconsistentCurrentCoordException: If current_coordinate does not meet CoordValidator
@@ -48,15 +48,15 @@ class CoordStackValidator(Validator):
     method = "CoordinateStackValidator.validate"
 
     try:
-      if t is None:
+      if candidate is None:
         raise NullCoordStackException(
           f"{method} {NullCoordStackException.DEFAULT_MESSAGE}"
         )
 
-      if not isinstance(t, CoordStack):
-        raise TypeError(f"{method} Expected a CoordStack, got {type(t).__name__}")
+      if not isinstance(candidate, CoordStack):
+        raise TypeError(f"{method} Expected team CoordStack, got {type(candidate).__name__}")
 
-      coords = cast(CoordStack, t)
+      coords = cast(CoordStack, candidate)
 
       if coords.size() > 0 and coords.is_empty():
         raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")

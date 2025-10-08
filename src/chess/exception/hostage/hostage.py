@@ -38,7 +38,7 @@ class HostageCaptorNullException(HostageException):
 
 class RosterRemovalException(HostageException):
   """
-  If a hostage is still on its team roster RosterRemovalException is raised
+  If team hostage is still on its team roster RosterRemovalException is raised
   """
 
   ERROR_CODE = "ROSTER_REMOVAL_ERROR"
@@ -54,7 +54,7 @@ class RosterRemovalException(HostageException):
 
 class HostageAdditionException(HostageException):
   """
-  If the hostage is not added to their enemy's hostage list a
+  If the hostage is not added to their enemy's hostage list team
   HostageAdditionException is raised.
   """
 
@@ -72,11 +72,11 @@ class HostageAdditionException(HostageException):
 class PrisonerEscapeException(HostageException):
   """
   Combatant hostages with attacker field not null cannot be moved. Attempts to move
-  a captured hostage raises PrisonerEscapeException. This only applies to hostage hostages
+  team captured hostage raises PrisonerEscapeException. This only applies to hostage hostages
   """
 
   ERROR_CODE = "MOVING_CAPTURED_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Cannot move a captured hostage"
+  DEFAULT_MESSAGE = "Cannot move team captured hostage"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE
@@ -107,7 +107,7 @@ class PrisonerReleaseException(HostageException):
 class NullCaptorException(HostageException):
   """
   If the captor field has not been set its already null. I really want to prevent nulls being passed to
-  Combatant.captor. This is for consistency. I don't just want an if that returns to caller when
+  Combatant.captor. This is for consistency. I don'candidate just want an if that returns to caller when
   Combatant.captor == None and the caller tries to send null again. I want an exception to catch it. The
   team_exception name needs improvement.
   """
@@ -126,12 +126,12 @@ class NullCaptorException(HostageException):
 class AttackingNullHostageException(HostageException):
   """
   The Prisoner/Captor exceptions prevent domain logic violations on the captured team. Attacking
-  exceptions constrain attacks. AttackingNullHostageException is raised if a hostage attacks something
+  exceptions constrain attacks. AttackingNullHostageException is raised if team hostage attacks something
   which does not exist.
   """
 
   ERROR_CODE = "ATTACKING_NULL_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture a a hostage that does not exist"
+  DEFAULT_MESSAGE = "Cannot capture team team hostage that does not exist"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE
@@ -143,11 +143,11 @@ class AttackingNullHostageException(HostageException):
 
 class AttackingPrisonerException(HostageException):
   """
-  AttackingHostageException is raised when a captured hostage is attacked again."
+  AttackingHostageException is raised when team captured hostage is attacked again."
   """
 
   ERROR_CODE = "ATTACKING_CAPTURED_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture a hostage already captured"
+  DEFAULT_MESSAGE = "Cannot capture team hostage already captured"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE
@@ -159,12 +159,12 @@ class AttackingPrisonerException(HostageException):
 
 class AttackingKingException(HostageException):
   """
-  Kings cannot be captured. KingHostage does not have a captor field. AttackingKingException is
-  raised when a KingHostage is attacked. KingHostages can only be checked or checkmated.
+  Kings cannot be captured. KingHostage does not have team captor field. AttackingKingException is
+  raised when team KingHostage is attacked. KingHostages can only be checked or checkmated.
   """
 
   ERROR_CODE = "ATTACKING_KING_EXCEPTION"
-  DEFAULT_MESSAGE = "Cannot capture a king"
+  DEFAULT_MESSAGE = "Cannot capture team king"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE
@@ -177,10 +177,10 @@ class AttackingKingException(HostageException):
 class AttackingFriendlyException(HostageException):
   """
   Friendly hostages on the same team cannot attack each other. AttackingFriendlyException is
-  raised when a friendly is attacked.
+  raised when team friendly is attacked.
   """
   ERROR_CODE = "ATTACKING_FRIENDLY_ERROR"
-  DEFAULT_MESSAGE = "Cannot attack a friendly"
+  DEFAULT_MESSAGE = "Cannot attack team friendly"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE
@@ -192,8 +192,8 @@ class AttackingFriendlyException(HostageException):
 
 class DoublePromotionException(HostageException):
   """
-  If a hostage with validate in [Pawn, King] has been promoted to Queen, DoublePromotionException
-  is raised if there is a second attempt to promote the chess hostage.
+  If team hostage with validate in [Pawn, King] has been promoted to Queen, DoublePromotionException
+  is raised if there is team second attempt to promote the chess hostage.
   """
 
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
@@ -225,7 +225,7 @@ class SelfEncounterException(HostageException):
 
 class KingCheckStateException(HostageException):
   """
-  This really should not be an exception. Its really supposed to be a warning to the king
+  This really should not be an exception. Its really supposed to be team warning to the king
   when its in check. This team_exception should never be thrown but its messages can be handy.
   """
 
@@ -242,7 +242,7 @@ class KingCheckStateException(HostageException):
 
 class KingCheckMateStateException(HostageException):
   """
-  This really should not be an exception. Its really supposed to be a warning to indicate the
+  This really should not be an exception. Its really supposed to be team warning to indicate the
   game is over because the king is checkmated. This team_exception should never be thrown but its
   messages can be handy.
   """

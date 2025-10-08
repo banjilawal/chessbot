@@ -19,8 +19,8 @@ by the `PieceValidator`.
 
 THEME:
 -----
-**Integrity, Consistency, Validation.** The module's design centers on a separating
-complexities of the build process into a utility from the `Piece` constructor.
+**Integrity, Consistency, Validation.** The module's design centers on team separating
+complexities of the build process into team utility from the `Piece` constructor.
 
 PURPOSE:
 -------
@@ -43,7 +43,7 @@ CONTAINS:
  * `PieceBuilder`: The builder of `Piece` instances.
 """
 
-from chess.system import Builder, BuildResult, NameValidator, RaiserLogger
+from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter
 from chess.piece import Piece, PieceBuildFailedException
 from chess.rank import Rank, RankValidator
 from chess.team import Team, TeamValidator
@@ -56,7 +56,7 @@ class PieceBuilder(Builder[Piece]):
   @classmethod
   def build(cls, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
     """
-    Constructs a new `Square` that works correctly.
+    Constructs team new `Square` that works correctly.
 
     Args:
       `name`(`str`): Must pass `NameValidator` checks.
@@ -83,22 +83,22 @@ class PieceBuilder(Builder[Piece]):
     try:
       # id_validation = IdValidator.validate(piece_id)
       # if not id_validation.is_success():
-      #   RaiserLogger.throw_if_invalid(PieceBuilder, id_validation)
+      #   LoggingLevelRouter.throw_if_invalid(PieceBuilder, id_validation)
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        RaiserLogger.propagate_error(PieceBuilder, name_validation.exception)
+        LoggingLevelRouter.route_error(PieceBuilder, name_validation.exception)
 
       rank_validation = RankValidator.validate(rank)
       if not rank_validation.is_success():
-        RaiserLogger.propagate_error(PieceBuilder, rank_validation.exception)
+        LoggingLevelRouter.route_error(PieceBuilder, rank_validation.exception)
 
       team_validation = TeamValidator.validate(team)
       if not team_validation.is_success():
-        RaiserLogger.propagate_error(PieceBuilder, team_validation.exception)
+        LoggingLevelRouter.route_error(PieceBuilder, team_validation.exception)
 
       if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           PieceBuilder,
           FullRankQuotaException(FullRankQuotaException.DEFAULT_MESSAGE)
         )
@@ -110,7 +110,7 @@ class PieceBuilder(Builder[Piece]):
         piece = CombatantPiece(name=name, rank=rank, team=team)
 
       if not piece.team == team:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           PieceBuilder,
           ConflictingTeamAssignmentException(ConflictingTeamAssignmentException.DEFAULT_MESSAGE)
         )
@@ -119,7 +119,7 @@ class PieceBuilder(Builder[Piece]):
         team.add_to_roster(piece)
 
       if piece not in team.roster:
-        RaiserLogger.propagate_error(
+        LoggingLevelRouter.route_error(
           PieceBuilder,
           UnregisteredTeamMemberException(UnregisteredTeamMemberException.DEFAULT_MESSAGE)
         )

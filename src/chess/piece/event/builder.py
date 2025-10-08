@@ -37,13 +37,13 @@ class OccupationEventBuilder(Enum):
   @staticmethod
   def build(event_id: int, actor: Piece, destination_square: Square, context: ExecutionContext) -> BuildResult:
     """
-    Constructs a new `OccupationEvent` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `OccupationEvent` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `OccupationEvent` meets all
-    specifications. If all checks are passed, a `OccupationEvent` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `OccupationEvent` instance. This method guarantees if a `BuildResult`
-    with a successful status is returned, the contained `OccupationEvent` is valid and ready for use.
+    specifications. If all checks are passed, team `OccupationEvent` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `OccupationEvent` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `OccupationEvent` is valid and ready for use.
 
     Args:
       `event_id` (`int`): The unique id for the occupationEvent. Must pass `IdValidator` checks.
@@ -69,7 +69,7 @@ class OccupationEventBuilder(Enum):
           not have the occupationEvent
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only a valid `OccupationEvent` is
+      The build runs through all the checks on parameters and state to guarantee only team valid `OccupationEvent` is
       created, while `OccupationEventValidator` is used for validating `OccupationEvent` instances that are passed around after
       creating. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -83,22 +83,22 @@ class OccupationEventBuilder(Enum):
     try:
       id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
-        ThrowHelper.propagate_error(OccupationEventBuilder, id_validation.exception)
+        ThrowHelper.route_error(OccupationEventBuilder, id_validation.exception)
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        ThrowHelper.propagate_error(OccupationEventBuilder, actor_validation.exception)
+        ThrowHelper.route_error(OccupationEventBuilder, actor_validation.exception)
 
       square_validation = SquareValidator.validate(destination_square)
       if not square_validation.is_success():
-        ThrowHelper.propagate_error(OccupationEventBuilder, square_validation.exception)
+        ThrowHelper.route_error(OccupationEventBuilder, square_validation.exception)
 
       # context_validation = ContextValidator.validate(roster)
       # if not context_validation.is_success():
-      #   RaiserLogger.throw_if_invalid(OccupationEventBuilder, context_validation)
+      #   LoggingLevelRouter.throw_if_invalid(OccupationEventBuilder, context_validation)
 
       if destination_square.coord == actor.current_position:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           OccupationEventBuilder,
           CircularOccupationException(CircularOccupationException.DEFAULT_MESSAGE)
         )

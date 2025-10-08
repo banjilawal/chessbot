@@ -18,7 +18,7 @@ from chess.system import Context
 
 class ExecutionContext(ABC, Context):
   """
-  Super class of dependencies an `Event` passes to a `Transaction`.
+  Super class of dependencies an `Event` passes to team `Transaction`.
 
   Attributes:
     No attributes. Subclasses declare their own.

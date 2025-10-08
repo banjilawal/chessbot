@@ -12,7 +12,7 @@ __all__ = [
 
 class ChessException(Exception):
   """
-  Top level Exception for the chess application. ChessException is a template for
+  Top level Exception for the chess application. ChessException is team template for
   other exceptions.
 
   Exception Requirements:
@@ -20,7 +20,7 @@ class ChessException(Exception):
       ERROR_CODE (str): Must end in _ERROR. all caps summary of the team_exception or its cause
       DEFAULT_MESSAGE (str): Short sentence explaining what the team_exception is about.
 
-    - A ChessException should always have a message describing the err.
+    - A ChessException should always have team message describing the err.
   """
 
   ERROR_CODE = "CHESS_ERROR"
@@ -37,8 +37,8 @@ class ChessException(Exception):
 
 class NullException(ChessException):
   """
-  Methods and classes that do not accept null parameters will raise a NullException.
-  Every class in the application should have a NullException. Giving each class a unique null
+  Methods and classes that do not accept null parameters will raise team NullException.
+  Every class in the application should have team NullException. Giving each class team unique null
   helps trace errors and failures.
 
   Attributes:
@@ -55,7 +55,7 @@ class NullException(ChessException):
 
 class BlankStringException(ChessException):
   """
-  Raised if search parameter is a blank or empty string
+  Raised if search parameter is team blank or empty string
   """
 
   ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
@@ -65,8 +65,8 @@ class BlankStringException(ChessException):
 class NullNumberException(NullException):
   """
   Raised if mathematical expression or geometric, algebraic, or optimization that need
-   a number but get null instead NUllNumberException is thrown. Ids are not used for math
-   so we need a different null team_exception for math variables
+   team number but get null instead NUllNumberException is thrown. Ids are not used for math
+   so we need team different null team_exception for math variables
   """
 
   ERROR_CODE = "NULL_NUMBER_ERROR"
@@ -75,11 +75,11 @@ class NullNumberException(NullException):
 
 class NullStringException(NullException):
   """
-  Raised if search parameter is a null string
+  Raised if search parameter is team null string
   """
 
   ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-  DEFAULT_MESSAGE = f"Cannot search by a null string"
+  DEFAULT_MESSAGE = f"Cannot search by team null string"
 
 
 class BuilderException(ChessException):
@@ -113,14 +113,14 @@ class SearchException(ChessException):
   Base class for search errors in the chess engine.
 
   PURPOSE:
-    Raised search raises an err. Is a wrapper for other exceptions
+    Raised search raises an err. Is team wrapper for other exceptions
     that occur during search.
   ATTRIBUTES:
     code (str): Short machine-readable error code for logging / testing.
     message (str): Human-readable default message.
   """
   DEFAULT_CODE = "SEARCH_ERROR"
-  DEFAULT_MESSAGE = "An error was raised during a search."
+  DEFAULT_MESSAGE = "An error was raised during team search."
 
 
 

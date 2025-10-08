@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -80,7 +80,7 @@ from chess.system import InconsistentCollectionException
 
 class BoardException(ChessException):
   """
-  Super class of all exceptions a Board object raises. Do not use directly. Subclasses give details useful
+  Super class of all exceptions team Board object raises. Do not use directly. Subclasses give details useful
   for debugging. This class exists primarily to allow catching all board exceptions
   """
   ERROR_CODE = "BOARD_ERROR"
@@ -88,7 +88,7 @@ class BoardException(ChessException):
 
 class BoardRollBackException(BoardException):
   """
-  Super class for exceptions that require a rollback to maintain board integrity.
+  Super class for exceptions that require team rollback to maintain board integrity.
   """
   ERROR_CODE = "BOARD_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Board raised an exception. Transaction rollback performed."
@@ -96,7 +96,7 @@ class BoardRollBackException(BoardException):
 
 #======================#  BOARD VALIDATION EXCEPTIONS ======================# 
 class NullBoardException(BoardException, NullException):
-  """Raised if an entity, method, or operation requires a board but gets null instead."""
+  """Raised if an entity, method, or operation requires team board but gets null instead."""
   ERROR_CODE = "NULL_BOARD_ERROR"
   DEFAULT_MESSAGE = "Board cannot be null"
 
@@ -111,8 +111,8 @@ class InvalidBoardException(BoardException, ValidationException):
 #======================#  BOARD BUILD EXCEPTIONS ======================# 
 class BoardBuildFailedException(BoardException, BuilderException):
   """
-  Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all
-  exceptions raised build a new board
+  Raised when BoardBuilder encounters an error while building team team. Exists primarily to catch all
+  exceptions raised build team new board
   """
   ERROR_CODE = "BOARD_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Board build failed."
@@ -120,38 +120,38 @@ class BoardBuildFailedException(BoardException, BuilderException):
 
 #======================#  PIECE ADDITION/REMOVAL EXCEPTIONS ======================# 
 class BoardPieceAdditionFailedException(BoardException):
-  """Raised if the board fails to remove a piece from itself"""
+  """Raised if the board fails to remove team piece from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR"
   DEFAULT_MESSAGE = "Board failed to add the piece"
 
 class BoardPieceRemovalFailedException(BoardException):
-  """Raised if the board fails to remove a piece from itself"""
+  """Raised if the board fails to remove team piece from itself"""
   ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR"
   DEFAULT_MESSAGE = "Board failed to remove the piece"
 
 #======================#  PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK ======================# 
 class FailedPieceAdditionRolledBackException(BoardRollBackException):
   """
-  Raised if a transaction failed to add a piece to the board.The transaction was
+  Raised if team transaction failed to add team piece to the board.The transaction was
   rolled back before raising this err.
   """
-  """Raised if the board fails to remove a piece from itself"""
+  """Raised if the board fails to remove team piece from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Could not remove a piece from the board. Transaction rollback performed."
+    "Could not remove team piece from the board. Transaction rollback performed."
   )
 
 class FailedPieceRemovalRolledBackException(BoardRollBackException):
   """
-  Raised if a transaction failed to remove a piece from the board's list of pieces.
+  Raised if team transaction failed to remove team piece from the board's list of pieces.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Could not remove a piece from the board. Transaction rollback performed."
+    "Could not remove team piece from the board. Transaction rollback performed."
   )
 
 class InconsistentBoardException(BoardException, InconsistentCollectionException):
-  """Raised if a board fails any collection consistency checks"""
+  """Raised if team board fails any collection consistency checks"""
   ERROR_CODE = "INCONSISTENT_BOARD_ERROR"
   DEFAULT_MESSAGE = "The board is an inconsistent state. data might be corrupted."

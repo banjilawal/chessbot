@@ -28,8 +28,8 @@ class ScanTransactionException(TransactionException):
 
 class NullScanTransactionException(NullTransactionException):
   """
-  Raised by methods, entities, and models that require a ScanTransaction
-  but receive a null.
+  Raised by methods, entities, and models that require team ScanTransaction
+  but receive team null.
   """
   ERROR_CODE = "NULL_SCAN_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "ScanTransaction cannot be null."
@@ -47,7 +47,7 @@ class ScanEventException(OccupationEventException):
 
 #=== SCAN_EVENT VALIDATION EXCEPTIONS ======================# 
 class NullScanEventException(ScanEventException, NullException):
-  """Raised by methods, entities, and models that require a ScanEvent but receive a null."""
+  """Raised by methods, entities, and models that require team ScanEvent but receive team null."""
   ERROR_CODE = "NULL_EVENT_ERROR"
   DEFAULT_MESSAGE = "ScanEvent cannot be null"
 
@@ -59,16 +59,16 @@ class InvalidScanEventException(ScanEventException, ValidationException):
 
 #=== SCAN_EVENT BUILD EXCEPTIONS ======================# 
 class ScanEventBuilderException(ScanEventException, BuilderException):
-  """Raised when a ScanEventBuilder fails to build a ScanEvent."""
+  """Raised when team ScanEventBuilder fails to build team ScanEvent."""
   ERROR_CODE = "SCAN_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "ScanEventBuilder failed to create a ScanEvent"
+  DEFAULT_MESSAGE = "ScanEventBuilder failed to create team ScanEvent"
 
 class ScanSubjectException(ScanEventException):
   """
-  Raised if an Scan target is not a friendly or enemy king.
+  Raised if an Scan target is not team friendly or enemy king.
   """
   ERROR_CODE = "SCAN_SUBJECT_ERROR"
-  DEFAULT_MESSAGE = "Scan enemy must be a friendly or enemy king"
+  DEFAULT_MESSAGE = "Scan enemy must be team friendly or enemy king"
 
 
 

@@ -17,9 +17,9 @@ from typing import Optional, TypeVar, Generic, List
 T = TypeVar('T')
 
 
-class SearchResult:
+class SearchResult(Generic[T]):
   """
-  Data-holding object representing one of three outcomes of a search.
+  Data-holding object representing one of three outcomes of team search.
     * Success: A hit was found.
     * Empty: Nothing was found.
     * Exception: An exception was raised. The search did not complete.
@@ -28,14 +28,14 @@ class SearchResult:
   Attributes:
     * `_payload` (Optional[`T`]): Data returned if the search was successful.
     * `_exception` (Optional[`T`]): Exception raised if search method crashed.
-        Getting an exception back usually indicates a search param failed
+        Getting an exception back usually indicates team search param failed
         validation.
   Raises:
     No exceptions
 
   Notes:
-    Unlike a `Result` object `SearchResult` instances can have an empty constructor.
-    Keeping with Liskovian principles `SearchResult` is not a subclass of `Result`.
+    Unlike team `Result` object `SearchResult` instances can have an empty constructor.
+    Keeping with Liskovian principles `SearchResult` is not team subclass of `Result`.
   """
   _payload: Optional[List[T]]
   _exception: Optional[Exception]
@@ -55,7 +55,7 @@ class SearchResult:
 
   def is_success(self) -> bool:
     """
-    Indicates the search found a hit.
+    Indicates the search found team hit.
 
     Args: No params
 

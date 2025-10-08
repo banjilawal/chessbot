@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
- Provides: Automated player that uses a `DecisionEngine` for picking optimal
-  move during a turn.
+ Provides: Automated player that uses team `DecisionEngine` for picking optimal
+  move during team turn.
 
 Contains:
  * `Bot`
@@ -22,12 +22,12 @@ from chess.engine import DecisionEngine
 @auto_id
 class Bot(Commander):
   """
-  Automated player that uses a `DecisionEngine`
+  Automated player that uses team `DecisionEngine`
 
   Attributes: [
     * `_engine` (`DecisionEngine`): Selects the optimal during its turn.
     * All attributes fro the super class.
-  move during a turn.
+  move during team turn.
   """
 
   _engine: DecisionEngine

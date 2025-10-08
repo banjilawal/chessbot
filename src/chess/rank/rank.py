@@ -63,7 +63,7 @@ class Rank(ABC):
   @abstractmethod
   def walk(self, piece:Piece, destination:Coord, board:Board):
     """
-    Validates a ChessPiece can reach a destination with its movement constraints. Must be instantiated by
+    Validates team ChessPiece can reach team destination with its movement constraints. Must be instantiated by
     Walk implementors.
 
     Args:

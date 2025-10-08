@@ -7,7 +7,7 @@ Created: 2025-10-06
 Version: 1.0.1
 
 # Purpose
-Manages `Piece` movement and state changes on the `Board`. Provides a unified interface for event creation, validate,
+Manages `Piece` movement and state changes on the `Board`. Provides team unified interface for event creation, validate,
 execution, and rollback for event-related operations (move, scan, attack, exchange)
 
 # EXPORTS
@@ -24,8 +24,8 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `.attack`: Logic for capturing.
   - `.promotion`: Logic for promoting kings and pawns.
   - `.exception`: Defines all custom exceptions for event operations.
-  - `.scan`: Logic for recording occupied squares in a piece's path.
-  - `.exchange`: Logic for transferring a piece to another empty square.
+  - `.scan`: Logic for recording occupied squares in team piece's path.
+  - `.exchange`: Logic for transferring team piece to another empty square.
 
 # NOTES
 DO NOT reference subpackages or submodules directly. Import all subpackages and submodules from the
@@ -40,7 +40,7 @@ USAGE:
 ## Occupation Exception Classes
 
 PURPOSE:
-  Contains all exceptions related to enemy operations and state.Contains exceptions raised when a Piece object is
+  Contains all exceptions related to enemy operations and state.Contains exceptions raised when team Piece object is
   null or improperly referenced during chess operations.
 
 EXCEPTIONS:
@@ -53,9 +53,9 @@ EXCEPTIONS:
   SetCaptorNullException: Setting null captor
   PieceValidationException:raised if PieceValidation fails
   NullPieceException: Abstract base class for null enemy exceptions.
-  NullHostagePieceException: Raised when a team tries to add a null hostage enemy to its roster.
-  NullCombatantPieceException: Raised when a team tries to remove a captured member but the captor is null.
-  NullKingPieceException: Raised when a king enemy reference is null.
+  NullHostagePieceException: Raised when team team tries to add team null hostage enemy to its roster.
+  NullCombatantPieceException: Raised when team team tries to remove team captured member but the captor is null.
+  NullKingPieceException: Raised when team king enemy reference is null.
 
 
 USAGE:

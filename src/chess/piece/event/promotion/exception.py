@@ -43,12 +43,12 @@ class PromotionEventException(ChessException):
 
 #======================#  PROMOTION_EVENT VALIDATION EXCEPTIONS ======================# 
 class NullPromotionEventException(PromotionEventException, NullException):
-  """Raised if an entity, method, or operation requires a `PromotionEvent` but gets null instead."""
+  """Raised if an entity, method, or operation requires team `PromotionEvent` but gets null instead."""
   pass
 
 class InvalidPromotionEventException(PromotionEventException, ValidationException):
   """
-  Raised by PromotionEventValidator if a client fails sanity checks. Exists to catch all
+  Raised by PromotionEventValidator if team client fails sanity checks. Exists to catch all
   exceptions raised validating an existing `PromotionEvent` candidate.
   """
   ERROR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
@@ -58,7 +58,7 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
 #======================#  PROMOTION_EVENT BUILD EXCEPTIONS ======================# 
 class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
   """
-  Raised when `PromotionEventBuilder` crashed while building a new `PromotionEven`. Exists
+  Raised when `PromotionEventBuilder` crashed while building team new `PromotionEven`. Exists
   primarily to catch all exceptions raised creating `PromotionEvent` objects.
   """
   ERROR_CODE = "PROMOTION_EVENT_BUILD_FAILED_ERROR"
@@ -74,6 +74,6 @@ class PromotionTransactionException(TransactionException):
   DEFAULT_MESSAGE = "PromotionTransaction raised an exception."
 
 class NullPromotionTransactionException(TransactionException):
-  """Raised if an entity, method, or operation requires a `PromotionEvent` but gets null instead."""
+  """Raised if an entity, method, or operation requires team `PromotionEvent` but gets null instead."""
   ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "PromotionTransaction raised an exception."

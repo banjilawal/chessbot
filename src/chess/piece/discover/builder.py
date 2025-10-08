@@ -38,18 +38,18 @@ class DiscoveryBuilder(Enum):
   @staticmethod
   def build(observer: Piece, subject: Piece) -> BuildResult[Discovery]:
     """
-    Constructs a new `Discovery` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `Discovery` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `Discovery` meets all
-    specifications. If all checks are passed, a `Discovery` instance will be returned. It is not necessary to perform 
-    any additional validate checks on the returned `Discovery` instance. This method guarantees if a `BuildResult`
-    with a successful status is returned, the contained `Discovery` is valid and ready for use.
+    specifications. If all checks are passed, team `Discovery` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `Discovery` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `Discovery` is valid and ready for use.
 
 
     Args:
-      `actor`(`Piece`): The piece that is doing a scan, or executing a move.
-      `discover`(`Piece`): The static piece the `actor` finds in a `square`.
+      `actor`(`Piece`): The piece that is doing team scan, or executing team move.
+      `discover`(`Piece`): The static piece the `actor` finds in team `square`.
 
     Returns:
       BuildResult[Discovery]: A `BuildResult` containing either:
@@ -63,7 +63,7 @@ class DiscoveryBuilder(Enum):
         * `AutoDiscoveryException`: if `actor` and `discover` are the same.
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only a valid `Discovery` is
+      The build runs through all the checks on parameters and state to guarantee only team valid `Discovery` is
       created, while `DiscoveryValidator` is used for validating `Discovery` instances that are passed around after 
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -82,21 +82,21 @@ class DiscoveryBuilder(Enum):
     try:
       observer_validation = PieceValidator.validate(observer)
       if not observer_validation.is_success():
-        ThrowHelper.propagate_error(DiscoveryBuilder, observer_validation)
+        ThrowHelper.route_error(DiscoveryBuilder, observer_validation)
         
       subject_validation = PieceValidator.validate(subject)
       if not subject_validation.is_success():
-        ThrowHelper.propagate_error(DiscoveryBuilder, subject_validation)
+        ThrowHelper.route_error(DiscoveryBuilder, subject_validation)
         
       if observer == subject:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           DiscoveryBuilder,
           CircularDiscoveryException(CircularDiscoveryException.DEFAULT_MESSAGE)
         )
 
       search_result = observer.discoveries.find_by_id(subject.id)
       if not search_result.is_empty():
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           DiscoveryBuilder,
           AddDuplicateDiscoveryException(AddDuplicateDiscoveryException.DEFAULT_MESSAGE)
         )

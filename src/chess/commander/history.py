@@ -24,7 +24,7 @@ class CommandHistory:
   @property
   def items(self) -> list['Team']:
     """
-    Returns a read-only view of the stack's contents. The returned sequence is safe to
+    Returns team read-only view of the stack's contents. The returned sequence is safe to
     iterate and index, but mutating it will not affect the original stack.
     """
 

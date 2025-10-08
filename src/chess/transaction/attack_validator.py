@@ -18,25 +18,25 @@ T = TypeVar('T')
 class AttackValidator(Validator):
 
   @staticmethod
-  def validate(t: CaptureContext) -> Result[CaptureContext]:
+  def validate(candidate: CaptureContext) -> Result[CaptureContext]:
     """
     Validates an OccupationDirective meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is a valid chess enemy
-      - `target` is a valid square
+      - `actor` is team valid chess enemy
+      - `target` is team valid square
     Any validate failure raises an `InvalidOccupationDirectiveException`.
 
     Argument:
-      `t` (`OccupationDirective`): `occupationDirective `to validate
+      `candidate` (`OccupationDirective`): `occupationDirective `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidOccupationDirectiveException` otherwise.
 
     Raises:
-      `TypeError`: if `t` is not OperationDirective
-      `NullOccupationDirectiveException`: if `t` is null
+      `TypeError`: if `candidate` is not OperationDirective
+      `NullOccupationDirectiveException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
       `PieceValidationException`: if `actor` fails validator
@@ -50,15 +50,15 @@ class AttackValidator(Validator):
     method = "AttackValidator.validate"
 
     try:
-      if t is None:
+      if candidate is None:
         raise NullCaptureContextException(
           f"{method}: {NullCaptureContextException.DEFAULT_MESSAGE}"
         )
 
-      if not isinstance(t, CaptureContext):
-        raise TypeError(f"{method} Expected an CaptureContext, got {type(t).__name__}")
+      if not isinstance(candidate, CaptureContext):
+        raise TypeError(f"{method} Expected an CaptureContext, got {type(candidate).__name__}")
 
-      context = cast(CaptureContext, t)
+      context = cast(CaptureContext, candidate)
 
       if context.board is None:
         raise NullBoardException(f"{method}: {NullBoardException.DEFAULT_MESSAGE}")
@@ -69,7 +69,7 @@ class AttackValidator(Validator):
 
       enemy_validation = PieceValidator.validate(context.enemy)
       if not enemy_validation.is_success():
-        raise InvalidPieceException(f"{method}: the enemy is not a valid piece")
+        raise InvalidPieceException(f"{method}: the enemy is not team valid piece")
 
       if context.piece is context.enemy:
         raise AutoCaptureException(f"{method}: {AutoCaptureException.DEFAULT_MESSAGE}")

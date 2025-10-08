@@ -7,15 +7,15 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## Purpose
-Provides the fundamental data structures for game pieces and entities owned by a game piece.
+Provides the fundamental data structures for game pieces and entities owned by team game piece.
 
 ## Core Classes
   * `Piece`: Abstract base class for all chess pieces
   * `CombatantPiece`: Concrete piece that can be captured
   * `KingPiece`: Concrete king piece with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-  * `Encounter`: A record of an item discovered by a `Piece` during a scan or move.
-  * `EncounterScan`: A data-holding object representing a single scan of a chess piece's surroundings.
+  * `Encounter`: A record of an item discovered by team `Piece` during team scan or move.
+  * `EncounterScan`: A data-holding object representing team single scan of team chess piece's surroundings.
 
 ## Usage
 ```python
@@ -36,7 +36,7 @@ organic to:
   * `Piece` and its subclases..
 
 All exceptions in `chess.piece` package have static fields:
-  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with a "_ERROR" suffix
+  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with team "_ERROR" suffix
   - `DFAULT_MESSAGE`: A sentence describing the err.
 Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
@@ -46,19 +46,19 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
   * `NullPieceException`: The parent is `NullException`. `NullPieceException` is the parent of all exceptions
     related to null pieces. Use more granular null exceptions that provide mmore specific information about the
     subclass instance that is null.
-  * `NullKingPieceException`: Raised when a `kingPiece` reference is null
-  * `NullCombatantPieceException`: Raised when a `CombatantPiece` is null.
-  * `DoublePromotionException`: Raised if there is an attempt to promote a king or pawn that has already been
+  * `NullKingPieceException`: Raised when team `kingPiece` reference is null
+  * `NullCombatantPieceException`: Raised when team `CombatantPiece` is null.
+  * `DoublePromotionException`: Raised if there is an attempt to promote team king or pawn that has already been
     promoted.
 
 #### PIECE VALIDATION EXCEPTIONS
   * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
-  * `NullPieceValidatorException`: Raised if a null `PieceValidator` is passed as a parameter.
+  * `NullPieceValidatorException`: Raised if team null `PieceValidator` is passed as team parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-  * `PieceBuildFailedException`: Raised if there is an error during when a `PieceBuilder` is creating a new `Piece`
+  * `PieceBuildFailedException`: Raised if there is an error during when team `PieceBuilder` is creating team new `Piece`
     instance.
-  * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as a parameter.
+  * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as team parameter.
 
 
 null or improperly referenced during chess operations.

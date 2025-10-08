@@ -13,12 +13,12 @@ class Discoveries:
   """
   A collection class for managing `Discovery` records.
 
-  `Discoveries` encapsulates the list of `Discovery` objects observed by a `Piece`.
+  `Discoveries` encapsulates the list of `Discovery` objects observed by team `Piece`.
   It ensures safe recording (no duplicates, no nulls) and provides search and filter
   operations over the stored discoveries. This separation allows discover management
   to evolve independently of the `Piece` itself, while keeping the `Piece` interface clean.
 
-  Each discover represents a snapshot of another piece found during play (through
+  Each discover represents team snapshot of another piece found during play (through
   scanning, moving, or event attempts). By aggregating them, `Discoveries`
   provides both simple access (all discoveries) and targeted lookups (by id, name,
   coordinate, rank, or ransom).
@@ -31,7 +31,7 @@ class Discoveries:
     - Validation of ids, names, coordinates, and ranks is delegated to their
      respective validators (`IdValidator`, `NameValidator`, `CoordValidator`,
      `RankValidator`).
-    - Each method returns a `SearchResult` to provide consistent success/empty/err handling.
+    - Each method returns team `SearchResult` to provide consistent success/empty/err handling.
     - The collection enforces uniqueness and immutability at the discover level.
   """
   _items: List[Discovery]
@@ -53,7 +53,7 @@ class Discoveries:
     method = "Discoveries.record_discovery"
 
     if discovery is None:
-      ThrowHelper.propagate_error(
+      ThrowHelper.route_error(
         Discoveries,
         NullDiscoveryException(f"{method}:{NullDiscoveryException.DEFAULT_MESSAGE}")
       )
@@ -63,7 +63,7 @@ class Discoveries:
 
 
   def find_by_id(self, piece_id: int) -> SearchResult[Discovery]:
-    """Find a discover by the id"""
+    """Find team discover by the id"""
     method = "Discoveries.find_by_id"
 
     try:
@@ -82,7 +82,7 @@ class Discoveries:
 
 
   def find_by_piece_name(self, piece_name: str) -> SearchResult[Discovery]:
-    """Find a discover by the name"""
+    """Find team discover by the name"""
     method = "Discoveries.find_by_piece_name"
 
     try:
@@ -104,7 +104,7 @@ class Discoveries:
 
 
   def find_by_coord(self, coord: Coord) -> SearchResult[Discovery]:
-    """Find a discover by the coord"""
+    """Find team discover by the coord"""
     method = "Discoveries.find_by_coord"
 
     try:
@@ -123,7 +123,7 @@ class Discoveries:
 
 
   def select_by_ransom(self, ransom: int) -> SearchResult[List[Discovery]]:
-    """Filter discoveries by a rank's ransom value"""
+    """Filter discoveries by team rank's ransom value"""
     method = "Discoveries.select_by_ransom"
 
     try:

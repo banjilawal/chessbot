@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -129,15 +129,15 @@ class CircularOccupationException(OccupationEventException):
 
 class TargetSquareMismatchException(OccupationEventException):
   """
-  Raised if a target's square does not match. destination_square
+  Raised if team target's square does not match. destination_square
   """
   ERROR_CODE = "TARGET_SQUARE_MISMATCH_ERROR"
-  DEFAULT_MESSAGE = "Target piece is at a different square from expected."
+  DEFAULT_MESSAGE = "Target piece is at team different square from expected."
 
 class ActorSquareNotFoundException(OccupationEventException):
   ERROR_CODE = "ACTOR_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "The validated actor with a current could not find its square in BoardSearch"
+    "The validated actor with team current could not find its square in BoardSearch"
   )
 
 
@@ -156,11 +156,11 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #
 # class NullHostagePieceEventException(OccupationEventException):
 #   """
-#   Raised if a enemy is null. Parent class for:
+#   Raised if team enemy is null. Parent class for:
 #     - NullCombatantPieceException
 #     - NullKingException
 #   Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
-#   Do not throw NullPieceException. Use a finegrained subclass of NullPieceException.
+#   Do not throw NullPieceException. Use team finegrained subclass of NullPieceException.
 #   """
 #
 #   ERROR_CODE = "NULL_PIECE_ERROR"
@@ -169,7 +169,7 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #
 # class NullCombatantPieceEventException(OccupationEventException):
 #   """
-#   Raised if a CombatantPiece is null. Raise NullCombatant instead of NullPieceException
+#   Raised if team CombatantPiece is null. Raise NullCombatant instead of NullPieceException
 #   """
 #
 #   ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
@@ -182,4 +182,4 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #   """
 #
 #   ERROR_CODE = "OCCUPATION_SEARCH_ERROR"
-#   DEFAULT_MESSAGE = f"BoardSearch failed to find a square; this should not happen in an event operation"
+#   DEFAULT_MESSAGE = f"BoardSearch failed to find team square; this should not happen in an event operation"

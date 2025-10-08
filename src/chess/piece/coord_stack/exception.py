@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -63,7 +63,7 @@ class CoordStackException(ChessException):
 
 class DoubleCoordPushException(CoordStackException):
   """
-  Raised when a Coord at the top of the stack is pushed again. This is additional sanity check.
+  Raised when team Coord at the top of the stack is pushed again. This is additional sanity check.
   Piece should catch moving to the same Square before the stack is modified. important in OccupationEvent
   transactions
   """
@@ -72,9 +72,9 @@ class DoubleCoordPushException(CoordStackException):
 
 
 class NullCoordStackException(CoordStackException, NullException):
-  """Raised a CoordStack is null. A null CoordStack indicates a corrupted Piece state"""
+  """Raised team CoordStack is null. A null CoordStack indicates team corrupted Piece state"""
   ERROR_CODE = "NULL_COORD_STACK_ERROR"
-  DEFAULT_MESSAGE = f"CoordStack is null. This should never happen because Piece must always have a CoordStack"
+  DEFAULT_MESSAGE = f"CoordStack is null. This should never happen because Piece must always have team CoordStack"
 
 
 class CoordStackValidationException(CoordStackException, ValidationException):

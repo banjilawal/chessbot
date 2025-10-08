@@ -8,11 +8,11 @@ version: 1.0.0
 
 # PURPOSE
 A package providing an immutable hierarchy for events and transactions manging event lifecycle. An event is
- an object representing an intent to perform a state-changing operation with a resource by an actor.
- Each event lifecycle is managed by a `Transaction` instance.
+ an object representing an intent to perform team state-changing operation with team resource by an actor.
+ Each event lifecycle is managed by team `Transaction` instance.
 
- ACID transactions are a functional requirement for the chess game. The `Transaction` class rolls back actors
- and resources if there is a data inconsistency a `RollBackException` is raised after `actor` and `resource` are
+ ACID transactions are team functional requirement for the chess game. The `Transaction` class rolls back actors
+ and resources if there is team data inconsistency team `RollBackException` is raised after `actor` and `resource` are
  restored to their last good state.
 
  # EXPORTS
@@ -38,7 +38,7 @@ ___
 * Use `Transaction` objects to manage the lifecycle of events.
 * Use `EventBuilder`. An `EventBuilder` is responsible for creating `Event` objects that will not generate
   errors and avoid expensive rollbacks.
-* Use `EventValidator` objects to ensure a `Transaction`'s `event` param has passed sanity checks.
+* Use `EventValidator` objects to ensure team `Transaction`'s `event` param has passed sanity checks.
 * Only do mutation operations after building and validating succeed.
 * ONly do rollback operations at each mutation step.
 * Use `RollBackException` versions so callers can verify the rollback was performed correctly.

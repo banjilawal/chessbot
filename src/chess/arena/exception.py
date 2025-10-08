@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -96,7 +96,7 @@ class InvalidArenaException(ArenaException, ValidationException):
 #======================#  ARENA BUILD EXCEPTIONS ======================# 
 class ArenaBuildFailedException(ArenaException, BuildFailedException):
   """
-  Raised when ArenaBuilder crashed while building a new arena. Exists
+  Raised when ArenaBuilder crashed while building team new arena. Exists
   primarily to catch all exceptions raised creating arenas.
   """
   ERROR_CODE = "ARENA_BUILD_FAILED_ERROR"

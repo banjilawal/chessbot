@@ -36,18 +36,18 @@ class SquareBuilder(Builder[[Square]]):
   @classmethod
   def build(cls, name: str, coord: Coord) -> BuildResult[Square]:
     """
-    Constructs a new `Square` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `Square` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `Square` meets all
-    specifications. If all checks are passed, a `Square` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `Square` instance. This method guarantees if a `BuildResult`
-    with a successful status is returned, the contained `Square` is valid and ready for use.
+    specifications. If all checks are passed, team `Square` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `Square` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `Square` is valid and ready for use.
 
     Args:
       `discovery_id` (`int`): The unique id for the piece. Must pass `IdValidator` checks.
       `name` (`Name`): Must pass `NameValidator` checks.
-      `coord` (`Coord`): Where `Square` is located on a `Board`. Must pass `CoordValidator` checks.
+      `coord` (`Coord`): Where `Square` is located on team `Board`. Must pass `CoordValidator` checks.
 
     Returns:
       BuildResult[Square]: A `BuildResult` containing either:
@@ -63,7 +63,7 @@ class SquareBuilder(Builder[[Square]]):
         * `SquareBuildFailed`: for any other construction failures
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only a valid `Square` is
+      The build runs through all the checks on parameters and state to guarantee only team valid `Square` is
       created, while `SquareValidator` is used for validating `Square` instances that are passed around after
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -87,15 +87,15 @@ class SquareBuilder(Builder[[Square]]):
     try:
       id_validation = IdValidator.validate(square_id)
       if not id_validation.is_success():
-        ThrowHelper.propagate_error(SquareBuilder, id_validation.exception)
+        ThrowHelper.route_error(SquareBuilder, id_validation.exception)
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        ThrowHelper.propagate_error(SquareBuilder, name_validation.exception)
+        ThrowHelper.route_error(SquareBuilder, name_validation.exception)
 
       coord_result = CoordValidator.validate(coord)
       if not coord_result.is_success():
-        ThrowHelper.propagate_error(SquareBuilder, coord_result.exception)
+        ThrowHelper.route_error(SquareBuilder, coord_result.exception)
 
       return BuildResult(payload=Square(square_id=square_id, name=name, coord=coord))
 

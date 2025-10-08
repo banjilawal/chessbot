@@ -49,13 +49,13 @@ class TransferEventBuilder(Enum):
   ) -> BuildResult[AttackEvent]:
 
     """
-    Constructs a new `AttackEvent` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `AttackEvent` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `AttackEvent` meets all
-    specifications. If all checks are passed, a `AttackEvent` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `AttackEvent` instance. This method guarantees if a `BuildResult`
-    with a successful status is returned, the contained `AttackEvent` is valid and ready for use.
+    specifications. If all checks are passed, team `AttackEvent` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `AttackEvent` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `AttackEvent` is valid and ready for use.
 
     Args:
       `event_id`(`int`): The unique id for the attackEvent. Must pass `IdValidator` checks.
@@ -81,7 +81,7 @@ class TransferEventBuilder(Enum):
           not have the attackEvent
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only a valid `AttackEvent` is
+      The build runs through all the checks on parameters and state to guarantee only team valid `AttackEvent` is
       created, while `AttackEventValidator` is used for validating `AttackEvent` instances that are passed around after
       creating. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -100,7 +100,7 @@ class TransferEventBuilder(Enum):
     try:
       id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
-        ThrowHelper.propagate_error(AttackEventBuilder, id_validation)
+        ThrowHelper.route_error(AttackEventBuilder, id_validation)
 
 
       actor_validation = PieceValidator.validate(actor)
@@ -112,14 +112,14 @@ class TransferEventBuilder(Enum):
         raise InvalidPieceException(f"{method}: AttackEvent enemy failed validate")
 
       if actor == enemy:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           AttackEventBuilder,
           CircularCaptureException(CircularCaptureException.DEFAULT_MESSAGE)
         )
 
       search_result = BoardSearch.square_by_coord(coord=enemy.current_position, board=context.board)
       if not search_result.payload == destination_square:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           AttackEventBuilder,
           TargetSquareMismatchException(
             f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
@@ -128,20 +128,20 @@ class TransferEventBuilder(Enum):
 
       search = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
       if not search.is_success():
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           AttackEventBuilder,
           SearchException(f"{method}: {SearchException.DEFAULT_MESSAGE}")
         )
       actor_square = cast(Square, search.payload)
 
       if not actor.is_enemy(enemy):
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           AttackEventBuilder,
           CaptureFriendException(CaptureFriendException.DEFAULT_MESSAGE)
         )
 
       if not isinstance(enemy, CombatantPiece):
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           AttackEventBuilder,
           KingCaptureException(KingCaptureException.DEFAULT_MESSAGE)
         )

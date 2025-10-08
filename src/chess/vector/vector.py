@@ -12,9 +12,9 @@ class Vector:
   _y: int
 
   """
-  Offset is an immutable class is used for shifting a Coord by a null-pkg. The Offset is just a null-pkg 
-  added to a Coord null-pkg. Moved responsibility for coordinate_vector algebra from Vector to Coord, the 
-  testing and verification is simpler. This leaves Vector a pure data class used for transforming a Coord.
+  Offset is an immutable class is used for shifting team Coord by team null-pkg. The Offset is just team null-pkg 
+  added to team Coord null-pkg. Moved responsibility for coordinate_vector algebra from Vector to Coord, the 
+  testing and verification is simpler. This leaves Vector team pure data class used for transforming team Coord.
 
   Attributes:
     _x (int): Amount added to target coord's row
@@ -25,7 +25,7 @@ class Vector:
     method = f"Offset__init__"
 
     """
-    Constructs a Offset instance.
+    Constructs team Offset instance.
     
     Args:
       delta_row (int): value for _delta_row

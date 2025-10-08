@@ -65,25 +65,25 @@ class PieceSearchContextValidator(Validator):
   """
 
   @staticmethod
-  def validate(t: PieceSearchContext) -> Result[PieceSearchContext]:
+  def validate(candidate: PieceSearchContext) -> Result[PieceSearchContext]:
     """
     Validates that an existing `Team` instance meets all specifications.
 
-    Performs comprehensive validate on a `Team` instance that already exists,
+    Performs comprehensive validate on team `Team` instance that already exists,
     checking type safety, null values, and component bounds. Unlike `TeamBuilder`
     which creates new valid Teams, this validator verifies existing `Team`
     instances from external sources, deserialization, or after modifications.
 
     Args
-      `t` (`Team`): `Team` instance to validate
+      `candidate` (`Team`): `Team` instance to validate
 
      Returns:
-      `Result`[`Team`]: A `Resul`t object containing the validated payload if the specification is satisfied,
+      `Result`[`Team`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
       `InvalidTeamException` otherwise.
 
     Raises:
-      `TypeError`: if `t` is not a Team` object
-      `NullTeamException`: if `t` is null
+      `TypeError`: if `candidate` is not team Team` object
+      `NullTeamException`: if `candidate` is null
       `InvalidIdException`: if `id` fails validate checks
       `InvalidCommanderException`: if `commander` fails validate checks
       `NullTeamProfileException`: if `profile` is null
@@ -94,14 +94,14 @@ class PieceSearchContextValidator(Validator):
     method = "TeamValidator.validate"
 
     try:
-      if t is None:
+      if candidate is None:
         raise NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
 
       from chess.team import Team
-      if not isinstance(t, Team):
-        raise TypeError(f"{method} Expected a Team, got {type(t).__name__}")
+      if not isinstance(candidate, Team):
+        raise TypeError(f"{method} Expected team Team, got {type(candidate).__name__}")
 
-      team = cast(Team, t)
+      team = cast(Team, candidate)
 
       if team.scheme is None:
         raise NullTeamSchemaException(f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}")

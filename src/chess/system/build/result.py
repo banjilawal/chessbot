@@ -1,3 +1,28 @@
+# src/chess/piece/event/transaction
+"""
+Module: chess.piece.event.transaction
+Author: Banji Lawal
+Created: 2025-09-28
+
+# SCOPE:
+* The limits of the module, defined by what it does not do.
+* Where to look for related features this models does not provide because of its limitations.
+
+# THEME:
+* Highlight the core feature (thread-safety)
+* Explain the how-and-why of implementation choices.
+
+# PURPOSE:
+* Function and role in the system.
+* Why the module exists in the application architecture
+* What problem it fundamentally solves
+
+# DEPENDENCIES:
+
+# CONTAINS:
+ * `OccupationTransaction`
+"""
+
 from chess.system import EmptyResultConstructorException, ErrorContradictsPayloadException
 from typing import Optional, TypeVar, Generic
 
@@ -6,20 +31,35 @@ T = TypeVar('T')
 
 class BuildResult(Generic[T]):
   """
-  BuildResult is a generic class that encapsulates the outcome of Builder operation. BuildResult has the
+  ROLE:
+  ----
+  RESPONSIBILITIES:
+  ----------------
+  PROVIDES:
+  --------
+  ATTRIBUTES:
+  ----------
+  [
+    <No attributes. Implementors declare their own.>
+  OR
+    * `_attribute` (`data_type`): <sentence_if_necessary>
+  ]
+  """
+  """
+  BuildResult is team generic class that encapsulates the outcome of Builder operation. BuildResult has the
   same structure as Result but is used specifically in the roster of building entities. It can hold either.
-  a payload of type T or an Exception, but not both. If the build operation is successful, the payload will
+  team payload of type T or an Exception, but not both. If the build operation is successful, the payload will
   contain the built object. If the build operation fails, the error will contain the error that
   occurred during the build process.
 
-  BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate a result.
+  BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team result.
 
   Attributes:
     _payload (Optional[T]): The payload of the result, if successful.
     _exception (Optional[Exception]): The error of the result, if failed.
 
   Methods:
-    is_success() -> bool: Returns True if the result is successful (i.e., has a payload only).
+    is_success() -> bool: Returns True if the result is successful (i.e., has team payload only).
   """
 
   _payload: Optional[T]
@@ -27,7 +67,17 @@ class BuildResult(Generic[T]):
 
   def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
     """
-    Initializes a BuildResult object.
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
+    """
+    Initializes team BuildResult object.
     Args:
       payload (Optional[T]): The payload of the result, if successful.
       exception (Optional[Exception]): The error of the result, if failed.

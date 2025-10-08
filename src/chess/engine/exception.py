@@ -26,7 +26,7 @@ class NullEngineException(EngineException, NullException):
 
 class EngineBuildFailed(EngineException, BuildFailedException):
   """
-  Raised when `EngineBuilder` crashed while building a new object. Exists
+  Raised when `EngineBuilder` crashed while building team new object. Exists
   primarily to catch all exceptions raised creating engines.
   """
   ERROR_CODE = "ENGINE_BUILD_FAILED_ERROR"

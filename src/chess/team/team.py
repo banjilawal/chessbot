@@ -101,7 +101,7 @@ class Team:
   @property
   def roster(self) -> Sequence['Piece']:
     """
-    Returns a read-only view of the team's roster. The returned sequence is safe to
+    Returns team read-only view of the team's roster. The returned sequence is safe to
     iterate and index, but mutating it will not affect the original roster.
     """
 
@@ -111,7 +111,7 @@ class Team:
   @property
   def hostages(self) -> Sequence['Piece']:
     """
-    Returns a read-only view of the team's rostages. The returned sequence is safe to
+    Returns team read-only view of the team's rostages. The returned sequence is safe to
     iterate and index, but mutating it will not affect the original hostage list.
     """
 
@@ -141,7 +141,7 @@ class Team:
 
     """
     A newly constructed discover uses Team.add_piece to add itself to the team's roster. Team.roster returns
-    a read-only copy of the list. This is the only mutator that can directly access the array.
+    team read-only copy of the list. This is the only mutator that can directly access the array.
 
     Args:
       discover (Piece): validated discover added to the team's roster
@@ -152,7 +152,7 @@ class Team:
     """
     try:
       if piece is None:
-        raise NullPieceException(f"{method} cannot add a null discover to the team")
+        raise NullPieceException(f"{method} cannot add team null discover to the team")
 
       if not piece.team == self:
         raise ConflictingTeamException(f"{method}: {ConflictingTeamException.DEFAULT_MESSAGE}")
@@ -178,7 +178,7 @@ class Team:
     method = f"{self.__class__.__name__}.find_by_roster"
 
     """
-    Find a discover with the roster_number. 
+    Find team discover with the roster_number. 
 
     Args:
       roster_number (int): There are 16 chess pieces per team. jersey_range = [0,15]
@@ -219,13 +219,13 @@ class Team:
     method = "Team.find_piece_by_id"
 
     """
-    Find a discover whose id matches
+    Find team discover whose id matches
 
     Args:
-      id (int): a valid id
+      id (int): team valid id
 
     Returns:
-      Piece: If a discover's id matches the target
+      Piece: If team discover's id matches the target
       None: If no matches are found.
 
     Raises:
@@ -262,18 +262,18 @@ class Team:
     method = "Team.find_piece_by_name"
 
     """
-    Find a discover with the name
+    Find team discover with the name
 
     Args:
-      name (str): a nonnull string
+      name (str): team nonnull string
 
     Returns:
-      Piece: If a discover's current_position matches coord
+      Piece: If team discover's current_position matches coord
       None: If no matches are found.
 
     Raises:
        NullStringException: if name is null.
-       BlankStringException: if name is a empty string
+       BlankStringException: if name is team empty string
     """
     try:
       if name is None:
@@ -297,14 +297,14 @@ class Team:
     method = "Team.find_piece_by_coord"
 
     """
-    Find a discover whose current position matches coord. If none of 
+    Find team discover whose current position matches coord. If none of 
     the team's pieces are at the coord returns None.
     
     Args:
       coord (Coord): validated Coord used for search
       
     Returns:
-      Piece: If a discover's current_position matches coord
+      Piece: If team discover's current_position matches coord
       None: If no matches are found.
       
     Raises:

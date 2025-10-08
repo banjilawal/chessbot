@@ -15,7 +15,7 @@ Contains:
 
 from typing import Optional
 
-from chess.system import RaiserLogger, NameValidator, InvalidNameException, BuildResult, Builder
+from chess.system import LoggingLevelRouter, NameValidator, InvalidNameException, BuildResult, Builder
 from chess.commander import Commander, Human, Bot, CommanderBuildFailedException
 from chess.engine import DecisionEngine
 
@@ -28,7 +28,7 @@ class CommanderBuilder(Builder[Commander]):
   @classmethod
   def build(cls, name: str, engine: Optional[DecisionEngine]=None) -> BuildResult[Commander]:
     """
-    Constructs a new `Commander` that works correctly.
+    Constructs team new `Commander` that works correctly.
 
     Args:
       `name` (`str`): Must pass `NameValidator` checks.
@@ -50,19 +50,19 @@ class CommanderBuilder(Builder[Commander]):
     try:
       # id_validation = IdValidator.validate(commander_id)
       # if not id_validation.is_success():
-      #   RaiserLogger.throw_if_invalid(CommanderBuilder, id_validation.err)
+      #   LoggingLevelRouter.throw_if_invalid(CommanderBuilder, id_validation.err)
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        RaiserLogger.propagate_error(CommanderBuilder, name_validation.exception)
+        LoggingLevelRouter.route_error(CommanderBuilder, name_validation.exception)
 
       if engine is not None and not isinstance(engine, DecisionEngine):
-        error = TypeError(f"Expected a Decision, but got {type(engine).__name__}.")
-        RaiserLogger.propagate_error(CommanderBuilder, error)
+        error = TypeError(f"Expected team Decision, but got {type(engine).__name__}.")
+        LoggingLevelRouter.route_error(CommanderBuilder, error)
 
       if engine is not None and isinstance(engine, DecisionEngine):
         return BuildResult(payload=Bot(name=name, engine=engine))
 
-      # If no engine is provided and all the checks are passed, a Human commander is returned
+      # If no engine is provided and all the checks are passed, team Human commander is returned
       return BuildResult(payload=Human(name=name))
 
     except (

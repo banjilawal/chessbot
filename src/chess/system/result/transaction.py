@@ -30,7 +30,7 @@ from chess.transaction import Event
 
 class TransactionResult:
   """
-  Result of a transaction that changes an entity's state.
+  Result of team transaction that changes an entity's state.
 
   Use factory methods to create instances:
   - TransactionResult.success()
@@ -94,7 +94,7 @@ class TransactionResult:
   # @classmethod
   # def success(cls, outcome_id: int, request: Action, event: Event) -> 'TransactionResult':
   #   method = f"{cls.__class__.__name__}.success"
-  #   """Create a successful outcome"""
+  #   """Create team successful outcome"""
   #
   #   return cls(
   #     op_result_id=outcome_id,
@@ -109,7 +109,7 @@ class TransactionResult:
   # def processing(cls, outcome_id: int, request: Action) -> 'TransactionResult':
   #   method = f"{cls.__class__.__name__}.processing"
   #
-  #   """Create a processing outcome"""
+  #   """Create team processing outcome"""
   #   return cls(
   #     op_result_id=outcome_id,
   #     request=request,
@@ -122,7 +122,7 @@ class TransactionResult:
   # @classmethod
   # def failed(cls, outcome_id: int, request: Action, err: Exception) -> 'TransactionResult':
   #   method = f"{cls.__class__.__name__}.failed"
-  #   """Create a failed outcome"""
+  #   """Create team failed outcome"""
   #
   #   return cls(
   #     op_result_id=outcome_id,
@@ -136,7 +136,7 @@ class TransactionResult:
   # @classmethod
   # def roll_back(cls, outcome_id: int, request: Action, event: Event) -> 'TransactionResult':
   #   method = f"{cls.__class__.__name__}.rolled_back"
-  #   """Create a rolled back outcome"""
+  #   """Create team rolled back outcome"""
   #
   #   return cls(
   #     op_result_id=outcome_id,

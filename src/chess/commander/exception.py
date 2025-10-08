@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -90,7 +90,7 @@ class CommanderException(ChessException):
 
 #======================#  COMMANDER VALIDATION EXCEPTIONS ======================# 
 class NullCommanderException(CommanderException, NullException):
-  """Raised if an entity, method, or operation requires a commander but gets null instead."""
+  """Raised if an entity, method, or operation requires team commander but gets null instead."""
   ERROR_CODE = "NULL_COMMANDER_ERROR"
   DEFAULT_MESSAGE = f"Commander cannot be null"
 
@@ -105,8 +105,8 @@ class InvalidCommanderException(CommanderException, ValidationException):
 #======================#  COMMANDER BUILD EXCEPTIONS ======================# 
 class CommanderBuildFailedException(CommanderException, BuildFailedException):
   """
-  Raised when BoardBuilder encounters an error while building a team. Exists primarily to catch all
-  exceptions raised build a new board
+  Raised when BoardBuilder encounters an error while building team team. Exists primarily to catch all
+  exceptions raised build team new board
   """
   ERROR_CODE = "COMMANDER_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Commander build failed."
@@ -124,9 +124,9 @@ class InconsistentCommandHistoryException(CommanderHistoryException, Inconsisten
   )
 
 class PushNewTeamException(CommanderHistoryException):
-  """Raised if a new team could not be pushed to commandHistory"""
+  """Raised if team new team could not be pushed to commandHistory"""
   ERROR_CODE = "PUSH_NEW_TEAM_ERROR"
-  DEFAULT_MESSAGE = "Could not push a new team to CommandHistory."
+  DEFAULT_MESSAGE = "Could not push team new team to CommandHistory."
 
 class UndoingPushTeamFailedException(CommanderHistoryException):
   """Raised if removing the current team failed"""
@@ -140,11 +140,11 @@ class CannotRemoveOldTeamException(CommanderHistoryException):
 
 class InvalidCommanderAssignmentException(CommanderHistoryException):
   """
-  If a team already attached to a commander (team.commander == not None) tries being assigned a
+  If team team already attached to team commander (team.commander == not None) tries being assigned team
   different commander, `InvalidCommanderAssignmentException` is raised.
   """
   ERROR_CODE = "INVALID_COMMANDER_ASSIGNMENT_ERROR"
-  DEFAULT_MESSAGE = "Team is already assigned to a different commander."
+  DEFAULT_MESSAGE = "Team is already assigned to team different commander."
 
 
 

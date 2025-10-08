@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -71,7 +71,7 @@ class SearchParamException(SearchException):
 class ImpossibleFatalResultException(SearchException):
   """
   This is for sanity checking. Events and transactions need to ensure
-  an `actor` and the `resource` they need to run a `Transaction` exist
+  an `actor` and the `resource` they need to run team `Transaction` exist
   in the datapool in `SearchContext`. Validations and builds guarantee
   resources and actors exist in the game. If they are not found that
   indicates data inconsistency or nonexistent data pool.
@@ -79,7 +79,7 @@ class ImpossibleFatalResultException(SearchException):
   DEFAULT_CODE = "IMPOSSIBLE_FATAL_RESULT_ERROR"
   DEFAULT_MESSAGE = (
     "The search result should be impossible. The result "
-    "indicates a major data inconsistency or system error"
+    "indicates team major data inconsistency or system error"
   )
 
 

@@ -24,29 +24,29 @@ T = TypeVar('T')
 class RankValidator(Validator):
 
   @staticmethod
-  def validate(t: Rank) -> Result[Rank]:
+  def validate(candidate: Rank) -> Result[Rank]:
     method = "Rank.validate"
     try:
-      if t is None:
+      if candidate is None:
         raise NullRankException(
           f"{method} {NullRankException.DEFAULT_MESSAGE}"
         )
 
-      if not isinstance(t, (King, Pawn, Knight, Bishop, Rook, Queen)):
-        raise TypeError(f"{method} Expected a Rank subclass, got {type(t).__name__}")
+      if not isinstance(candidate, (King, Pawn, Knight, Bishop, Rook, Queen)):
+        raise TypeError(f"{method} Expected a Rank subclass, got {type(candidate).__name__}")
 
-      if isinstance(t, King):
-             return RankValidator._validate_king_spec(cast(King, t))
-            elif isinstance(t, Pawn):
-                return RankValidator._validate_pawn_spec(cast(Pawn, t))
-            elif isinstance(t, Knight):
-                return RankValidator._validate_knight_spec(cast(Knight, t))
-            elif isinstance(t, Bishop):
-                return RankValidator._validate_bishop_spec(cast(Bishop, t))
-            elif isinstance(t, Rook):
-                return RankValidator._validate_rook_spec(cast(Rook, t))
-            elif isinstance(t, Queen):
-                return RankValidator._validate_queen_spec(cast(Queen, t))
+      if isinstance(candidate, King):
+             return RankValidator._validate_king_spec(cast(King, candidate))
+            elif isinstance(candidate, Pawn):
+                return RankValidator._validate_pawn_spec(cast(Pawn, candidate))
+            elif isinstance(candidate, Knight):
+                return RankValidator._validate_knight_spec(cast(Knight, candidate))
+            elif isinstance(candidate, Bishop):
+                return RankValidator._validate_bishop_spec(cast(Bishop, candidate))
+            elif isinstance(candidate, Rook):
+                return RankValidator._validate_rook_spec(cast(Rook, candidate))
+            elif isinstance(candidate, Queen):
+                return RankValidator._validate_queen_spec(cast(Queen, candidate))
             else:
                 raise UnRecognizedConcreteRankException(
                     f"{method}: {UnRecognizedConcreteRankException.DEFAULT_MESSAGE}"

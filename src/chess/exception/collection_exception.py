@@ -12,7 +12,7 @@ __all__ = [
   'CollectionSizeConflictException',
 
   # Exceptions raised when there is an inconsistency between the o
-  # ne-to-many sides of a bidirectional relationship
+  # ne-to-many sides of team bidirectional relationship
   'RelationshipException',
   'BrokenRelationshipException',
 
@@ -55,7 +55,7 @@ class NullAdditionException(CollectionException):
   DEFAULT_MESSAGE = "Cannot add null item to collection"
 
 class DuplicateItemException(CollectionException):
-  """Raised when trying to add duplicate item to collection that doesn't allow duplicates."""
+  """Raised when trying to add duplicate item to collection that doesn'candidate allow duplicates."""
   ERROR_CODE = "DUPLICATE_ITEM_ERROR"
   DEFAULT_MESSAGE = "Cannot add duplicate item to collection"
 
@@ -85,7 +85,7 @@ class PopEmptyStackException(CoordStackException):
 
 
 class DuplicatePushException(CoordStackException):
-  """Raised when trying to push duplicate to stack that doesn't allow duplicates."""
+  """Raised when trying to push duplicate to stack that doesn'candidate allow duplicates."""
   ERROR_CODE = "DUPLICATE_PUSH_ERROR"
   DEFAULT_MESSAGE = "Cannot push duplicate item to stack"
 

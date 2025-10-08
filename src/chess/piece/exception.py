@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -86,7 +86,7 @@ __all__ = [
 
 class PieceException(ChessException):
   """
-  Super class of all exceptions a Piece object raises. Do not use directly. Subclasses
+  Super class of all exceptions team Piece object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
   all piece exceptions
   """
@@ -95,10 +95,10 @@ class PieceException(ChessException):
 
 class PieceRollBackException(PieceException, RollbackException):
   """
-  Any inconsistencies a piece introduces into a transaction need to be rolled back.
-  This is the super class of a piece mutator operations, methods, or fields that raise
+  Any inconsistencies team piece introduces into team transaction need to be rolled back.
+  This is the super class of team piece mutator operations, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
-  exists primarily to allow catching all Piece exceptions that happen when a failed
+  exists primarily to allow catching all Piece exceptions that happen when team failed
   transaction must be rolled back.
   """
   ERROR_CODE = "PIECE_ERROR_ROLLED_BACK"
@@ -114,7 +114,7 @@ class InvalidPieceException(PieceException, ValidationException):
 
 
 class UnregisteredTeamMemberException(PieceException):
-  """Raised if a piece has its team set but the piece is not on the roster"""
+  """Raised if team piece has its team set but the piece is not on the roster"""
   ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"
   DEFAULT_MESSAGE = "The piece has team but is not listed on the roster."
 
@@ -122,7 +122,7 @@ class UnregisteredTeamMemberException(PieceException):
 #======================#  NULL PIECE EXCEPTIONS ======================# 
 class NullPieceException(PieceException, NullException):
   """
-  Raised if an entity, method, or operation requires a piece but gets null instead.
+  Raised if an entity, method, or operation requires team piece but gets null instead.
   Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
   Do not throw NullPieceException. Raise NullKingPiece or NullCombatantPiece instead.
   they are more descriptive and better suited for debugging.
@@ -132,14 +132,14 @@ class NullPieceException(PieceException, NullException):
 
 class NullKingException(NullPieceException):
   """
-  Raised if a KingPiece is null. Raise NullCombatant instead of NullPieceException
+  Raised if team KingPiece is null. Raise NullCombatant instead of NullPieceException
   """
   ERROR_CODE = "NULL_KING_PIECE_ERROR"
   DEFAULT_MESSAGE = "KingPiece cannot be null."
 
 class NullCombatantException(NullPieceException):
   """
-  Raised if a CombatantPiece is null. Raise NullCombatant instead of NullPieceException
+  Raised if team CombatantPiece is null. Raise NullCombatant instead of NullPieceException
   """
   ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
   DEFAULT_MESSAGE = "CombatantPiece cannot be null."
@@ -158,7 +158,7 @@ class PieceBuildFailedException(PieceException, BuilderException):
 #======================#  PIECE PROMOTION EXCEPTIONS ======================# 
 class DoublePromotionException(PieceException):
   """
-  Raised when attempting promoting a piece already elevated to Queen rank.
+  Raised when attempting promoting team piece already elevated to Queen rank.
   Only pieces with Pawn or King rank can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
@@ -166,7 +166,7 @@ class DoublePromotionException(PieceException):
 
 class DoublePromotionRolledBackException(PieceRollBackException):
   """
-  Raised if a transaction attempts promoting a piece already elevated to Queen rank.
+  Raised if team transaction attempts promoting team piece already elevated to Queen rank.
   Only pieces with Pawn or King rank can be promoted. The transaction was rolled
   back before raising this err.
   """
@@ -181,7 +181,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
 class CapturePieceException(PieceException):
   """
   Several exceptions can be raised during capture operations. This class is the parent of
-  exceptions a piece can raise being captured or attacking. Do not use directly. Subclasses
+  exceptions team piece can raise being captured or attacking. Do not use directly. Subclasses
   give details useful for debugging.
   """
   ERROR_CODE = "PIECE_CAPTURE_ERROR"
@@ -189,14 +189,14 @@ class CapturePieceException(PieceException):
 
 class CaptureFriendException(CapturePieceException):
   """
-  Raised if a piece attempts to capture a friend.
+  Raised if team piece attempts to capture team friend.
   """
   ERROR_CODE = "FRIEND_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture a friend."
+  DEFAULT_MESSAGE = "Cannot capture team friend."
 
 class KingCaptureException(CapturePieceException):
   """
-  Raised if a piece attempts to capture an enemy king. Kings can only be checked or
+  Raised if team piece attempts to capture an enemy king. Kings can only be checked or
   checkmated.
   """
   ERROR_CODE = "KING_CAPTURE_ERROR"
@@ -206,10 +206,10 @@ class KingCaptureException(CapturePieceException):
 
 class DoubleCaptureException(CapturePieceException):
   """
-  Raised when a piece attempts to capture an enemy combatant that is already a prisoner
+  Raised when team piece attempts to capture an enemy combatant that is already team prisoner
   """
   ERROR_CODE = "DOUBLE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture a piece that is already a prisoner."
+  DEFAULT_MESSAGE = "Cannot capture team piece that is already team prisoner."
 
 class UnsetCaptureException(CapturePieceException):
   """
@@ -217,13 +217,13 @@ class UnsetCaptureException(CapturePieceException):
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR"
   DEFAULT_MESSAGE =(
-    "Cannot set a prisoner's captor to null. A captured piece cannot be freed."
+    "Cannot set team prisoner's captor to null. A captured piece cannot be freed."
   )
 
 
 class CircularCaptureException(CapturePieceException):
   """
-  Raised if a piece tries to capture itself.
+  Raised if team piece tries to capture itself.
   """
   ERROR_CODE = "CIRCULAR_CAPTURE_ERROR"
   DEFAULT_MESSAGE = "Piece cannot capture itself"
@@ -232,7 +232,7 @@ class CircularCaptureException(CapturePieceException):
 #======================#  PIECE CAPTURE EXCEPTIONS WITH ROLLBACK ======================# 
 class RollBackCaptureException(CapturePieceException, RollbackException):
   """
-  RollBackCapture exceptions should be raised in ACID transactions where a capture can
+  RollBackCapture exceptions should be raised in ACID transactions where team capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
   ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
@@ -240,17 +240,17 @@ class RollBackCaptureException(CapturePieceException, RollbackException):
 
 class CaptureFriendRolledBackException(RollBackCaptureException):
   """
-  Raised if a transaction attempts capturing a friend. The transaction
+  Raised if team transaction attempts capturing team friend. The transaction
   was rolled back before raising this err.
   """
   ERROR_CODE = "FRIEND_CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot capture a friend. Transaction rollback performed."
+    "Cannot capture team friend. Transaction rollback performed."
   )
 
 class KingCaptureRolledBackException(RollBackCaptureException):
   """
-  Raised if a transaction attempts capturing an enemy. Kings can only be checked or
+  Raised if team transaction attempts capturing an enemy. Kings can only be checked or
   checkmated. The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "KING_CAPTURE_ERROR_ROLLED_BACK"
@@ -261,30 +261,30 @@ class KingCaptureRolledBackException(RollBackCaptureException):
 
 class DoubleCaptureRolledBackException(RollBackCaptureException):
   """
-  Raised if a transaction attempts capturing an enemy combatant that is already
-  a prisoner. The transaction was rolled back before raising this err.
+  Raised if team transaction attempts capturing an enemy combatant that is already
+  team prisoner. The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot capture a piece that is already a prisoner. Transaction "
+    "Cannot capture team piece that is already team prisoner. Transaction "
     "rollback performed."
   )
 
 class UnsetCaptureRolledBackException(RollBackCaptureException):
   """
-  Raised if a transaction attempts setting prisoner's captor field null.
+  Raised if team transaction attempts setting prisoner's captor field null.
   The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot set a prisoner's captor to null. A captured piece cannot be freed. "
+    "Cannot set team prisoner's captor to null. A captured piece cannot be freed. "
     "Transaction rollback performed."
   )
 
 
 class CircularCaptureRolledBackException(CapturePieceException):
   """
-  Raised if a transaction attempts to set a piece as its own captor. The transaction was
+  Raised if team transaction attempts to set team piece as its own captor. The transaction was
   rolled back before raising this err.
   """
   ERROR_CODE = "CIRCULAR_CAPTURE_ERROR_ROLLED_BACK"
@@ -304,23 +304,23 @@ class HostageActivityException(PieceException):
 
 class HostageCannotAttackException(HostageActivityException):
   """
-  Raised if a captured piece tries to attack.
+  Raised if team captured piece tries to attack.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
   DEFAULT_MESSAGE = "Captured piece cannot attack."
 
 class HostageCannotMoveException(HostageActivityException):
   """
-  Raised if a captured piece tries to move.
+  Raised if team captured piece tries to move.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_MOVE_ERROR"
   DEFAULT_MESSAGE = "Captured piece cannot move."
 
 class HostageCannotScanException(HostageActivityException):
   """
-  Raised if a captured piece tries to scan a square.
+  Raised if team captured piece tries to scan team square.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot scan a sqaure."
+  DEFAULT_MESSAGE = "Captured piece cannot scan team sqaure."
 
 

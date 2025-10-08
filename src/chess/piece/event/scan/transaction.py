@@ -5,7 +5,7 @@ Created: 2025-10-01
 
 Purpose:
   Implements the `ScanTransaction` class, responsible for managing the creation and recording of
-  a `Discovery` inside a `Square` by an actor.
+  team `Discovery` inside team `Square` by an actor.
 
 Contents:
   - `ScanTransaction:` Main class responsible for executing event directives.

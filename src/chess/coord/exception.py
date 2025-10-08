@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -76,7 +76,7 @@ class CoordException(ChessException):
 
 #====================== COORD VALIDATION EXCEPTIONS ======================# 
 class NullCoordException(CoordException, NullException):
-  """Raised by methods, entities, and models that require a Coord but receive a null."""
+  """Raised by methods, entities, and models that require team Coord but receive team null."""
   ERROR_CODE = "NULL_COORD_ERROR"
   DEFAULT_MESSAGE = "Coord cannot be null"
 
@@ -89,7 +89,7 @@ class InvalidCoordException(CoordException, ValidationException):
 #====================== COORD_ROW VALIDATION EXCEPTIONS ======================# 
   class NullRowException(CoordException, NullException):
     """
-    Raised if a row is null. A coord cannot be created if the row is null
+    Raised if team row is null. A coord cannot be created if the row is null
     """
     ERROR_CODE = "NULL_ROW_ERROR"
     DEFAULT_MESSAGE = "Row cannot be null."
@@ -104,7 +104,7 @@ class InvalidCoordException(CoordException, ValidationException):
 
   class RowAboveBoundsException(CoordException):
     """
-    If a row >= ROW_SIZE RowAboveBoundsException is raised.
+    If team row >= ROW_SIZE RowAboveBoundsException is raised.
     """
     ERROR_CODE = "ROW_ABOVE_BOUNDS_ERROR"
     DEFAULT_MESSAGE = f"Coord.row > {ROW_SIZE - 1}. This outside the dimension of the board"
@@ -113,7 +113,7 @@ class InvalidCoordException(CoordException, ValidationException):
 #====================== COORD_COLUMN VALIDATION EXCEPTIONS ======================# 
 class NullColumnException(NullException):
   """
-  Raised if a column is null. A coord cannot be created if the column is null
+  Raised if team column is null. A coord cannot be created if the column is null
   """
   ERROR_CODE = "NULL_COLUMN_ERROR"
   DEFAULT_MESSAGE = "Column cannot be null"

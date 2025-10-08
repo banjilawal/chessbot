@@ -7,7 +7,7 @@ Created: 2025-10-04
 version: 1.0.0
 
  Provides: Loops through each `Square` in path of pieces that can travel an arbitrary number of squares
-  during a move.
+  during team move.
 
 Contains:
  * `SquareIterator`
@@ -24,7 +24,7 @@ from chess.vector import Vector
 class SquareIterator:
   """
   Loops through each `Square` in path of pieces that can travel an arbitrary number of squares
-  during a move. Ranks which use a `SquareIterator` are: Bishop`, `Queen`, `Castle`, `PromotedKing`
+  during team move. Ranks which use team `SquareIterator` are: Bishop`, `Queen`, `Castle`, `PromotedKing`
   and `PromotePawn`.
 
   Attributes:
@@ -73,7 +73,7 @@ class SquareIterator:
     """
     method = "SquareIterator._col_has_next"
 
-    # print(f"\t\tENTERED _col_has_next() with column={self._current_column}")
+    # print(f"\candidate\tENTERED _col_has_next() with column={self._current_column}")
 
     if self._current_column <= len(self._squares[0])-1:
       print(f"\t\tcolumn {self._current_column} <= {len(self._squares[0])-1} returning {True}")

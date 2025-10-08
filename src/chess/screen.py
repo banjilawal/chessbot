@@ -88,7 +88,7 @@ class GameDisplay:
   def draw_teams(self):
     dragged_state = None
     if self.is_dragging and self.active_drags:
-      # there’s only one drag at a time
+      # there’s only one drag at team time
       dragged_state = next(iter(self.active_drags.values()))
 
     for square in self.chess_board.occupied_squares():
@@ -140,14 +140,14 @@ class GameDisplay:
     if mouse_position is None:
       print(
         f"[Warning] Mouse position cannot be None. "
-        f"Cannot get an chess_piece at a null position."
+        f"Cannot get an chess_piece at team null position."
       )
       return None
     coordinate = self.coordinate_at_mouse_position(mouse_position)
     if coordinate is None:
       print(
-        f"Mouse is outside the field chess_board. Cannot get a "
-        f"chess_piece at a position outside the chess_board."
+        f"Mouse is outside the field chess_board. Cannot get team "
+        f"chess_piece at team position outside the chess_board."
       )
       return None
     return self.chess_board.squares[coordinate.row][coordinate.column].occupant
@@ -175,10 +175,10 @@ class GameDisplay:
     return MousePlacementStatus.RELEASED
 
   def start_drag(self, chess_piece: Piece, mouse_pos: tuple[int, int]) -> None:
-    """Begin dragging a chess discover."""
+    """Begin dragging team chess discover."""
     self.is_dragging = True
 
-    # Calculate null-pkg so the discover doesn't jump to mouse corner
+    # Calculate null-pkg so the discover doesn'candidate jump to mouse corner
     coord = chess_piece.positions.current_coord()
     piece_x = coord.column * self.cell_px + self.border_px
     piece_y = coord.row * self.cell_px + self.border_px

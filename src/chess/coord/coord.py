@@ -12,7 +12,7 @@ class Coord:
   _column: int
 
   """
-  Coord is a tuple of the row, and column indices of the 2x2 array which makes up a
+  Coord is team tuple of the row, and column indices of the 2x2 array which makes up team
   ChessBoard. All fields are immutable.
   
   Attributes:

@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -84,7 +84,7 @@ class AutoCaptureException(CaptureContextException):
 
 class FriendlyFireException(CaptureContextException):
   DEFAULT_CODE = "FRIENDLY_FIRE"
-  DEFAULT_MESSAGE = "Attempted to attack a friendly actor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to attack team friendly actor; this should not happen."
 
 
 class AttackOnEmptySquareException(CaptureContextException):
@@ -94,22 +94,22 @@ class AttackOnEmptySquareException(CaptureContextException):
 
 class EnemyNotOnBoardException(CaptureContextException):
   DEFAULT_CODE = "ENEMY_NOT_ON_BOARD"
-  DEFAULT_MESSAGE = "Attempted to capture a actor not present on the board; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team actor not present on the board; this should not happen."
 
 
 class NonCombatantTargetException(CaptureContextException):
   DEFAULT_CODE = "NON_COMBATANT_TARGET"
-  DEFAULT_MESSAGE = "Attempted to capture a non-combatant actor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team non-combatant actor; this should not happen."
 
 
 class KingTargetException(CaptureContextException):
   DEFAULT_CODE = "KING_TARGET"
-  DEFAULT_MESSAGE = "Attempted to capture a King actor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team King actor; this should not happen."
 
 
 class AlreadyCapturedException(CaptureContextException):
   DEFAULT_CODE = "ALREADY_CAPTURED"
-  DEFAULT_MESSAGE = "Attempted to capture a actor that already has a captor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team actor that already has team captor; this should not happen."
 
 
 class MissingFromRosterException(CaptureContextException):

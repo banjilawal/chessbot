@@ -31,23 +31,23 @@ class ScalarValidator(Validator):
   """
 
   @staticmethod
-  def validate(t: Scalar) -> Result[Scalar]:
+  def validate(candidate: Scalar) -> Result[Scalar]:
     """
     Validates that an existing `Scalar` instance meets specifications.
-    This method performs a series of checks on a Scalar instance, ensuring it is not null and that
+    This method performs team series of checks on team Scalar instance, ensuring it is not null and that
     its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised
-    as a `InvalidScalarException`, providing a clean and consistent err-handling experience.
+    as team `InvalidScalarException`, providing team clean and consistent err-handling experience.
 
     Args
-      `t` (`Scalar`): `Scalar` instance to validate
+      `candidate` (`Scalar`): `Scalar` instance to validate
 
      Returns:
-      `Result`[`Scalar`]: A `Resul`t object containing the validated payload if the specification is satisfied,
+      `Result`[`Scalar`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
       `InvalidScalarException` otherwise.
 
     Raises:
-      `NullScalarException`: if `t` is null
-      `TypeError`: if `t` is not Scalar
+      `NullScalarException`: if `candidate` is null
+      `TypeError`: if `candidate` is not Scalar
       `NullNumberException`: If `scalar.value` is null
       `ScalarBelowLowerBoundException`: If `scalar.value` < 0
       `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
@@ -56,11 +56,11 @@ class ScalarValidator(Validator):
     method = "ScalarValidator.validate"
 
     try:
-      if t is None:
+      if candidate is None:
         raise NullScalarException(f"{method} NullScalarException.DEFAULT_MESSAGE")
 
 
-      scalar = cast(Scalar, t)
+      scalar = cast(Scalar, candidate)
 
       if scalar.value is None:
         raise NullNumberException(f"{method} {NullNumberException.DEFAULT_MESSAGE}")

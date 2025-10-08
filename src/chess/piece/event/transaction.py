@@ -47,7 +47,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
     * `OccupationExecutor:` Main class responsible for executing event directives.
     * `_attack_enemy`: Static method for processing attacks on enemy pieces.
     * `_run_scan`: Static method for handling discoveries on occupied squares.
-    * `_switch_squares`: Static method the transferring a piece to a different `Square`.
+    * `_switch_squares`: Static method the transferring team piece to team different `Square`.
   """
   @staticmethod
   def execute(event: OccupationEvent, context: ExecutionContext) -> TransactionResult:
@@ -191,8 +191,8 @@ class OccupationTransaction(Transaction[OccupationEvent]):
   @staticmethod
   def _run_scan(op_result_id :int, directive: ScanDirective) -> TransactionResult:
     """
-    Creates a new `Discovery` object for directive.actor which is blocked from moving to
-    `destination_square` by `directive.enemy`. The enemy is either a friendly piece or an enemy `KingPiece`.
+    Creates team new `Discovery` object for directive.actor which is blocked from moving to
+    `destination_square` by `directive.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
     `OccupationExecutor.execute_directive` is the single entry point to `_run_scan`. Validations, error chains
     confirmed parameters ar are correct. No additional sanity checks are needed.
 
@@ -203,7 +203,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
     Returns:
     `OccupationResult` containing:
       - On success: A new `ScanDirective` object that containing updated `actor`. Observer will have
-        a new `Discovery` instance inside `actor.discoveries`.
+        team new `Discovery` instance inside `actor.discoveries`.
       - On failure: The original `ScanDirective` for verifying any rollbacks succeeded and the err
         describing the failure.
 

@@ -272,8 +272,8 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
   @staticmethod
   def _run_scan(op_result_id :int, event: ScanEvent) -> TransactionResult:
     """
-    Creates a new `Discovery` object for event.actor which is blocked from moving to
-    `destination_square` by `event.enemy`. The enemy is either a friendly piece or an enemy `KingPiece`.
+    Creates team new `Discovery` object for event.actor which is blocked from moving to
+    `destination_square` by `event.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
     `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, error chains
     confirmed parameters ar are correct. No additional sanity checks are needed.
 
@@ -284,7 +284,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
     Returns:
     `OccupationResult` containing:
       - On success: A new `ScanEvent` object that containing updated `actor`. Observer will have
-        a new `Discovery` instance inside `actor.discoveries`.
+        team new `Discovery` instance inside `actor.discoveries`.
       - On failure: The original `ScanEvent` for verifying any rollbacks succeeded and the err
         describing the failure.
 

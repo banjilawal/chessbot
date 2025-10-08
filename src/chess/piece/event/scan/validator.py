@@ -21,20 +21,20 @@ class AttackEventValidator(EventValidator):
     Validates an ScanEvent meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is a valid chess enemy
-      - `target` is a valid square
+      - `actor` is team valid chess enemy
+      - `target` is team valid square
     Any validate failure raises an `InvalidScanEventException`.
 
     Argument:
-      `t` (`ScanEvent`): `scanEvent `to validate
+      `candidate` (`ScanEvent`): `scanEvent `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidScanEventException` otherwise.
 
     Raises:
-      `TypeError`: if `t` is not OperationEvent
-      `NullScanEventException`: if `t` is null
+      `TypeError`: if `candidate` is not OperationEvent
+      `NullScanEventException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
       `PieceValidationException`: if `actor` fails validator

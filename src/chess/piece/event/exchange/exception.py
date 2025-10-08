@@ -60,7 +60,7 @@ class AttackEventException(OccupationEventException):
 
 #=== ATTACK_EVENT VALIDATION EXCEPTIONS ======================# 
 class NullAttackEventException(AttackEventException, NullException):
-  """Raised by methods, entities, and models that require a AttackEvent but receive a null."""
+  """Raised by methods, entities, and models that require team AttackEvent but receive team null."""
   ERROR_CODE = "NULL_EVENT_ERROR"
   DEFAULT_MESSAGE = "AttackEvent cannot be null"
 
@@ -77,7 +77,7 @@ class AttackEventBuilderException(AttackEventException, BuilderException):
   during build.
   """
   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "AttackEventBuilder failed to create a AttackEvent"
+  DEFAULT_MESSAGE = "AttackEventBuilder failed to create team AttackEvent"
 
 
 #=== ATTACK_EVENT BUILD EXCEPTIONS ======================# 

@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -64,7 +64,7 @@ __all__ = [
 
 class VectorException(ChessException):
   """
-  Super class of all exceptions a Vector object raises. Do not use directly. Subclasses give details useful
+  Super class of all exceptions team Vector object raises. Do not use directly. Subclasses give details useful
   for debugging. This class exists primarily to allow catching all vector exceptions
   """
   ERROR_CODE = "VECTOR_ERROR"
@@ -73,7 +73,7 @@ class VectorException(ChessException):
 
 #======================#  VECTOR VALIDATION EXCEPTIONS ======================# 
 class NullVectorException(VectorException, NullException):
-  """Raised if an entity, method, or operation requires a vector but gets null instead."""
+  """Raised if an entity, method, or operation requires team vector but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_ERROR"
   DEFAULT_MESSAGE = f"Vector cannot be null"
 
@@ -90,8 +90,8 @@ class InvalidVectorException(VectorException, ValidationException):
 #======================#  VECTOR BUILD EXCEPTIONS ======================# 
 class VectorBuilderException(VectorException, BuilderException):
   """
-  Raised when VectorBuilder encounters an error while building a team. Exists primarily to catch all exceptions
-  raised build a new vector
+  Raised when VectorBuilder encounters an error while building team team. Exists primarily to catch all exceptions
+  raised build team new vector
   """
   ERROR_CODE = "VECTOR_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Vector build failed."
@@ -99,13 +99,13 @@ class VectorBuilderException(VectorException, BuilderException):
 
 #======================#  NULL COMPONENT EXCEPTIONS ======================# 
 class NullXComponentException(VectorException, NullException):
-  """Raised if a vector's x dimension is null"""
+  """Raised if team vector's x dimension is null"""
   ERROR_CODE = "VECTOR_NULL_X_DIMENSION_ERROR"
   DEFAULT_MESSAGE = f"Vector's X-dimension cannot be null"
 
 
 class NullYComponentException(VectorException, NullException):
-  """Raised if a vector's y dimension is null"""
+  """Raised if team vector's y dimension is null"""
   ERROR_CODE = "VECTOR_NULL_Y_DIMENSION_ERROR"
   DEFAULT_MESSAGE = f"Vector's Y-dimension cannot be null"
 
@@ -113,8 +113,8 @@ class NullYComponentException(VectorException, NullException):
 #======================#  VECTOR BOUNDS EXCEPTIONS ======================# 
 class VectorAboveBoundsException(VectorException):
   """
-  Iterating across coordinates to examine squares chess pieces can explore their with a step no
-  larger than the knight's number of rows o squares covered in a move. If a vector's x value is
+  Iterating across coordinates to examine squares chess pieces can explore their with team step no
+  larger than the knight's number of rows o squares covered in team move. If team vector's x value is
   larger than KNIGHT SIZE raise this err
   """
   ERROR_CODE = "VECTOR_ABOVE_BOUNDS"
@@ -123,8 +123,8 @@ class VectorAboveBoundsException(VectorException):
 
 class VectorBelowBoundsException(VectorException):
   """
-  Iterating across coordinates to examine squares chess pieces can explore their with a step no
-  larger than the knight's number of rows o squares covered in a move. If a vector's x value is
+  Iterating across coordinates to examine squares chess pieces can explore their with team step no
+  larger than the knight's number of rows o squares covered in team move. If team vector's x value is
   larger than KNIGHT SIZE raise this err
   """
   ERROR_CODE = "VECTOR_BELOW_BOUNDS_EXCEPTION"

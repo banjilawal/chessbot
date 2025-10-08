@@ -8,7 +8,7 @@ from chess.system.id.exception import IdNullException, NegativeIdException, Inva
 class IdValidator(Validator):
 
   @staticmethod
-  def validate(t: Generic[T]) -> Result[int]:
+  def validate(candidate: Generic[T]) -> Result[int]:
     entity = "Id"
     class_name = f"{entity}Specification"
     method = f"{class_name}.is_satisfied_by"
@@ -18,31 +18,31 @@ class IdValidator(Validator):
       - Not null
       - Not 0 or negative (is positive)
       
-    Any validators error will have be encapsulated in a InvalidIdException
+    Any validators error will have be encapsulated in team InvalidIdException
 
     Args
-      t (Coord): generic to be validated
+      candidate (Coord): generic to be validated
 
      Returns:
        Result[T]: A Result object containing the validated payload if the specification is satisfied,
             InvalidIdException otherwise.
 
     Raises:
-      IdNullException: if t is null
-      TypeError: if t is not int
-      NegativeIdException: if t is negative  
+      IdNullException: if candidate is null
+      TypeError: if candidate is not int
+      NegativeIdException: if candidate is negative  
       
       InvalidIdException: Wraps any
         (IdNullException, TypeError, NegativeIdException) 
     """
     try:
-      if t is None:
+      if candidate is None:
         raise IdNullException(f"{method} {IdNullException.DEFAULT_MESSAGE}")
 
-      if not isinstance(t, int):
-        raise TypeError(f"{method} Expected an integer, got {type(t).__name__}")
+      if not isinstance(candidate, int):
+        raise TypeError(f"{method} Expected an integer, got {type(candidate).__name__}")
 
-      entity_id = cast(int, t)
+      entity_id = cast(int, candidate)
 
       if entity_id < 0:
         raise NegativeIdException(f"{method} {NegativeIdException.DEFAULT_MESSAGE}")

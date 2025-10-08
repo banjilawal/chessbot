@@ -1,10 +1,10 @@
 """
 
 ## ASSURANCE EXCEPTION
-A package providing a structured hierarchy of exceptions for the `assurance` project.
+A package providing team structured hierarchy of exceptions for the `assurance` project.
 
-This package defines a base `AssuranceException` from which all other custom
-exceptions in the project should inherit. This allows for a clean and
+This package defines team base `AssuranceException` from which all other custom
+exceptions in the project should inherit. This allows for team clean and
 consistent way to handle exceptions across different modules and layers
 of the application.
 
@@ -18,7 +18,7 @@ import logging
 
 from .validators import *
 
-from chess.system.err.handler import ErrorHandler
+from chess.system.err.logging.writer import LogWriter
 from .deployment_mode import Deployment
 from .transaction_report import TransactionReport
 
@@ -35,8 +35,8 @@ __package_name__ = "assurance"
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  "RaiserLogger",
-  "ErrorHandler",
+  "LoggingLevelRouter",
+  "LogWriter",
   "Deployment",
   "TransactionReport",
   "HostageValidator",

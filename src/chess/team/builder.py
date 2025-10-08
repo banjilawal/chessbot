@@ -38,12 +38,12 @@ class TeamBuilder(Enum):
   @staticmethod
   def build(team_id: int, commander: Commander, profile: TeamSchema) -> BuildResult[Team]:
     """
-    Constructs a new `Team` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `Team` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `Team` meets all specifications.
-    If all checks are passed, a `Team` instance will be returned. It is not necessary to perform any additional
-    validate checks on the returned `Team` instance. This method guarantees if a `BuildResult` with a successful
+    If all checks are passed, team `Team` instance will be returned. It is not necessary to perform any additional
+    validate checks on the returned `Team` instance. This method guarantees if team `BuildResult` with team successful
     status is returned, the contained `Team` is valid and ready for use.
 
     Args:
@@ -64,11 +64,11 @@ class TeamBuilder(Enum):
         * `InvalidIdException`: if `id` fails validate checks`
         * `InvalidCommanderException`: if `commander` fails validate checks
         * `NullTeamProfileException`: if `profile` is None
-        * `TypeError`: if `profile` is not a `TeamProfile` instance
+        * `TypeError`: if `profile` is not team `TeamProfile` instance
         * `RelationshipException`: if the bidirectional relationship between `Team` and `Commander` is broken
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only a valid `Team` is
+      The build runs through all the checks on parameters and state to guarantee only team valid `Team` is
       created, while `TeamValidator` is used for validating `Team` instances that are passed around after
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -91,27 +91,27 @@ class TeamBuilder(Enum):
 
     try:
       if profile is None:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           TeamBuilder, NullTeamSchemaException(NullTeamSchemaException.DEFAULT_MESSAGE)
         )
       if not isinstance(profile, TeamSchema):
-        ThrowHelper.propagate_error(
-          TeamBuilder, TypeError(f"{method} Expected a TeamProfile, got {type(profile).__name__}")
+        ThrowHelper.route_error(
+          TeamBuilder, TypeError(f"{method} Expected team TeamProfile, got {type(profile).__name__}")
         )
 
       id_validation = IdValidator.validate(team_id)
       if not id_validation.is_success():
-        ThrowHelper.propagate_error(TeamBuilder, id_validation.exception)
+        ThrowHelper.route_error(TeamBuilder, id_validation.exception)
 
 
       commander_validation = CommanderValidator.validate(commander)
       if not commander_validation.is_success():
-        ThrowHelper.propagate_error(TeamBuilder, commander_validation.exception)
+        ThrowHelper.route_error(TeamBuilder, commander_validation.exception)
 
       team = Team(team_id=team_id, commander=commander, schema=profile)
 
       if team.commander != commander:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           TeamBuilder,
           InvalidCommanderAssignmentException(InvalidCommanderAssignmentException.DEFAULT_MESSAGE)
         )
@@ -121,7 +121,7 @@ class TeamBuilder(Enum):
 
 
       if team not in commander.teams:
-        ThrowHelper.propagate_error(
+        ThrowHelper.route_error(
           TeamBuilder,
           RelationshipException(RelationshipException.DEFAULT_MESSAGE)
         )

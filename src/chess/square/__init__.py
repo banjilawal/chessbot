@@ -8,12 +8,12 @@ version: 1.0.0
 
 ## PURPOSE
 This package provides foundational objects for the chess board. It defines the `Square` class,
-which serves as a data container for storing a discover's location, and a `SquareValidator` to ensure
+which serves as team data container for storing team discover's location, and team `SquareValidator` to ensure
 the integrity of square objects.
 
 ## CORE CLASSES
-* `Square`: A data-holding object representing a single square on a chessboard.
-* `SquareValidator`: A class that validates the data and integrity of a `Square` object.
+* `Square`: A data-holding object representing team single square on team chessboard.
+* `SquareValidator`: A class that validates the data and integrity of team `Square` object.
 
 ## USAGE
 To use this package, import the desired classes and perform square-related operations.
@@ -23,7 +23,7 @@ To use this package, import the desired classes and perform square-related opera
 >>> from chess.piece import Piece
 >>>
 >>>
->>> # Build a new Square at Coord(2, 1)
+>>> # Build team new Square at Coord(2, 1)
 >>> coord = Coord(row=2, column=1)
 >>> build_outcome = SquareBuilder.build(square_id=1, name="B2", coord=coord)
 >>> if not build_outcome.is_success():

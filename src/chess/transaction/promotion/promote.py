@@ -29,23 +29,23 @@ class PromotionRequestValidator(RequestValidator):
     Validates an Promote meets specifications:
       - Not null
       - id does not validator
-      - actor is a valid chess enemy
-      - target is a valid square
-    If a condition is not met an PromotionRequestValidationException will be thrown.
+      - actor is team valid chess enemy
+      - target is team valid square
+    If team condition is not met an PromotionRequestValidationException will be thrown.
 
     Argument:
-      t (Promote): Promote to validate
+      candidate (Promote): Promote to validate
 
      Returns:
        Result[T]: A Result object containing the validated payload if the specification is satisfied,
         PromotionRequestValidationException otherwise.
 
     Raises:
-      TypeError: if t is not Square
-      NullPromotionRequestException: if t is null  
+      TypeError: if candidate is not Square
+      NullPromotionRequestException: if candidate is null  
 
       InvalidIdException: if invalid id
-      PieceValidationException: if t.actor fails validator
+      PieceValidationException: if candidate.actor fails validator
       
       PromotionRowException: if enemy is not on its enemy's validate row
       DoublePromotionException: if the enemy has already been promoted

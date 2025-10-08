@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide a
+**Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected domain** (e.g., `CoordException`). This enables precise error
@@ -73,7 +73,7 @@ class EmptyResultConstructorException(ResultConstructorException):
 
 
 class ErrorContradictsPayloadException(ResultConstructorException):
-  """Raised if both payload and error params are not null when constructing a Result object"""
+  """Raised if both payload and error params are not null when constructing team Result object"""
   ERROR_CODE = "ERROR_CONFLICTS_PAYLOAD_IN_RESULT_CONSTRUCTOR"
   DEFAULT_MESSAGE = (
     "A Result cannot have both its payload and error set. Construct with either payload or err"
