@@ -6,19 +6,30 @@ Created: 2025-10-08
 version: 1.0.0
 
 # SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
+-------
+**Limitation**: There is no guarantee properly created `Vector` objects released by the
+    module will satisfy client requirements. Clients are responsible for ensuring a `VectorBuilder`
+    product will not fail when used. Products from `VectorBuilder` --should-- satisfy
+    `VectorValidator` requirements.
+
+**Related Features**:
+    Authenticating existing vectors -> See VectorValidator, module[chess.vector.validator],
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
-* Building, Single responsibilities,
-* Explain the how-and-why of implementation choices.
+-------
+* Data assurance, error prevention
 
 # PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
+---------
+1. Central, single producer of authenticated `Vector` objects.
+2. Putting all the steps and logging into one place makes modules using `Vector` objects
+    cleaner and easier to follow.
+
+**Satisfies**: Reliability and performance contracts.
 
 # DEPENDENCIES:
+---------------
 From `chess.system`:
   * `BuildResult`, `Builder`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`
 
@@ -27,7 +38,40 @@ From `chess.vector`:
     `NullYComponentException`,`VectorBelowBoundsException`, `VectorAboveBoundsException`
 
 # CONTAINS:
+----------
  * `VectorBuilder`
+"""
+
+# src/chess/vector/validation.py
+"""
+Module: chess.vector.validator
+Author: Banji Lawal
+Created: 2025-10-08
+
+# SCOPE:
+**Limitation**: This module cannot prevent classes, processes or modules using `Vector`
+    instances that pass sanity checks will not fail when using the validated `Vector`.
+    Once client's processes might fail, experience data inconsistency or have other 
+    faults.
+
+**Related Features**:
+    Building vectors -> See VectorBuilder, module[chess.vector.builder], 
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+
+
+
+
+
+# DEPENDENCIES:
+From `chess.system`:
+  * `ValidationResult`, `Validator`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`
+
+From `chess.vector`:
+    `Vector`, `NullVectorException`, `InvalidVectorException`, `NullXComponentException`,
+    `NullYComponentException`, `VectorBelowBoundsException`, `VectorAboveBoundsException`
+
+# CONTAINS:
+ * `VectorValidator`
 """
 
 from chess.system import Builder, BuildResult, KNIGHT_STEP_SIZE, LoggingLevelRouter

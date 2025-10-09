@@ -9,39 +9,45 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **exception classes** that are specific to the
-creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
-falls to the `CoordValidator` and `CoordBuilder`processes.
+creation, validation, and manipulation of `Vector` objects.
+
+**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+`Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
-highly granular and hierarchical set of exceptions, ensuring that callers can
-catch and handle errors based on both the **type of failure** (e.g., `NullException`)
-and the **affected domain** (e.g., `CoordException`). This enables precise error
-logging and handling throughout the system.
+* Granular, targeted error reporting
+* Wrapping exceptions
+
+**Design Concepts**:
+  1. Each field and behavior in the `Vector` class has an exception specific to its possible
+      state, outcome, or behavior.
 
 PURPOSE:
 -------
-To serve as the **centralized error dictionary** for the `Coord` domain.
-It abstracts underlying Python exceptions into domain-specific, custom error types
-to improve code clarity and facilitate robust error handling within the chess engine.
+1. Centralized error dictionary for the `Vector` domain.
+2. Fast debugging using highly granular exception messages and naming to
+    find the source.
+3. Providing understandable, consistent information about failures originating from
+    the `Vector` domain.
+4. Providing a clear distinction between errors related to `Vector` instances and
+    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
 
 DEPENDENCIES:
 ------------
 Requires base exception classes and constants from the core system:
 From `chess.system`:
-  * Constants: `ROW_SIZE`, `COLUMN_SIZE`
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
-`NullCoordException`, `RowAboveBoundsException`).
+See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+`NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.exception import ChessException, NullException, ValidationException, BuilderException
+from chess.system import ChessException, NullException, ValidationException, BuildFailedException
+
 
 __all__ = [
   'VectorException',
@@ -51,7 +57,7 @@ __all__ = [
   'InvalidVectorException',
 
 #====================== VECTOR BUILD EXCEPTIONS ======================# 
-  'VectorBuilderException',
+  'VectorBuildFailedException',
 
 #====================== NULL COMPONENT EXCEPTIONS ======================# 
   'VectorAboveBoundsException',
@@ -64,8 +70,9 @@ __all__ = [
 
 class VectorException(ChessException):
   """
-  Super class of all exceptions team Vector object raises. Do not use directly. Subclasses give details useful
-  for debugging. This class exists primarily to allow catching all vector exceptions
+  Super class of exceptions organic to `Vector` objects. DO NOT USE DIRECTLY. Subclasses give
+  details useful for debugging. `VectorException` exists primarily to allow catching all `Vector`
+  exceptions.
   """
   ERROR_CODE = "VECTOR_ERROR"
   DEFAULT_MESSAGE = "Vector raised an exception."
@@ -88,10 +95,10 @@ class InvalidVectorException(VectorException, ValidationException):
 
 
 #======================#  VECTOR BUILD EXCEPTIONS ======================# 
-class VectorBuilderException(VectorException, BuilderException):
+class VectorBuildFailedException(VectorException, BuildFailedException):
   """
-  Raised when VectorBuilder encounters an error while building team team. Exists primarily to catch all exceptions
-  raised build team new vector
+  Raised when ArenaBuilder crashed while building a new arena. Exists
+  primarily to catch all exceptions raised creating arenas.
   """
   ERROR_CODE = "VECTOR_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Vector build failed."

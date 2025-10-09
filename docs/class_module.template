@@ -25,8 +25,8 @@ Created: 2025-09-28
 
 class ClassName:
   """
-  ROLE:
-  ----
+  # ROLE: <ONE_WORD: Validation, Messaging, Data holding, State flow (transactions), Events)
+
   RESPONSIBILITIES:
   ----------------
   PROVIDES:
