@@ -19,6 +19,17 @@ T = TypeVar('T')
 
 class SearchResult(Generic[T]):
   """
+  # ROLE: Message passing, Data access
+
+  # RESPONSIBILITIES:
+
+  # PROVIDES:
+    List of
+  # ATTRIBUTES:
+    * `_payload` (`List[T]`):
+    * `_exception` (`Exception`):
+  """
+  """
   Data-holding object representing one of three outcomes of team search.
     * Success: A hit was found.
     * Empty: Nothing was found.

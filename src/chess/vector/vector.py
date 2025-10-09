@@ -22,84 +22,40 @@ Created: 2025-09-28
 # CONTAINS:
  * ``
 """
-from chess.system import KNIGHT_STEP_SIZE
-from chess.vector import (
-  NullXComponentException, NullYComponentException,
-  VectorAboveBoundsException, VectorBelowBoundsException
-)
 
-from chess.scalar import Scalar
+
+from chess.system import Result
+from chess.coord import Coord, CoordValidator
+from chess.scalar import Scalar, ScalarValidator
+
 
 class Vector:
-    # """
-    # ROLE:
-    # ----
-    # RESPONSIBILITIES:
-    # ----------------
-    # PROVIDES:
-    # --------
-    # ATTRIBUTES:
-    # ----------
-    # """
+  """
+  # ROLE: Transformer
+
+  # RESPONSIBILITY:
+    Transforms `Coord`
+
+  # PROVIDES:
+  `Vector`
+
+  # ATTRIBUTES:
+    * `_x` (`int`): Amount added to `Coord.column`
+    * `_y` (`int`): Amount added to `Coord.row`
+  """
   _x: int
   _y: int
 
-  """
-  Offset is an immutable class is used for shifting team Coord by team null-pkg. The Offset is just team null-pkg 
-  added to team Coord null-pkg. Moved responsibility for coordinate_vector algebra from Vector to Coord, the 
-  testing and verification is simpler. This leaves Vector team pure data class used for transforming team Coord.
-
-  Attributes:
-    _x (int): Amount added to target coord's row
-    _y (int): Amount added to target coord's column
-  """
-
   def __init__(self, x: int, y: int):
-    method = f"Offset__init__"
-    """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    """
-    Constructs team Offset instance.
-    
-    Args:
-      delta_row (int): value for _delta_row
-      delta_column (int): value fpr delta_column
-      
-    Raises:
-      NollChessObjectException: if either delta_row or delta_column are null.
-    """
-
-    if x is None:
-      raise NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
-
-    if x < -KNIGHT_STEP_SIZE or y < KNIGHT_STEP_SIZE:
-      raise VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-
-    if x > KNIGHT_STEP_SIZE or y > KNIGHT_STEP_SIZE:
-      raise VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
-
-    if y is None:
-      raise NullYComponentException(f"{method} {NullYComponentException.DEFAULT_MESSAGE}")
-
     self._x = x
     self._y = y
 
-
   @property
-  def x(self) -> int:
+  def x(self):
     return self._x
 
-
   @property
-  def y(self) -> int:
+  def y(self):
     return self._y
 
 
@@ -114,42 +70,66 @@ class Vector:
     return self._x == other.x and self._y == other.y
 
 
-  def scalar_product(self, scalar: Scalar) -> 'Vector':
-      #   """
-      # Action:
-      # Parameters:
-      #     * `param` (`DataType`):
-      # Returns:
-      #     `DataType` or `Void`
-      # Raises:
-      # MethodNameException wraps
-      #     *
-      # """
-      """      
-      return Vector(x=self._x * scalar.value, y=self._y * scalar.value)
+  def __hash__(self):
+    return hash((self._x, self._y))
+
+
+  def scalar_product(self, scalar: Scalar) -> Result['Vector']:
+    """
+    Action:
+    Parameters:
+      * `scalar` (`Scalar`): A scalar
+
+    Returns:
+      Result[`Vector`]
+
+    Raises:
+      `InvalidScalarException`
+    """
+    method = "Vector.scalar_product"
+
+    try:
+      validation = ScalarValidator.validate(scalar)
+      if not validation.is_success():
+        return Result(exception=validation.exception)
+
+      return Result(payload=Vector(x=self._x  * scalar.value, y=self._y * scalar.value))
+    except Exception as e:
+      return Result(exception=e)
+
+  def add_to_coord(self, coord: Coord) -> Result[Coord]:
+    """
+    Action:
+      Transform a `Coord` by offsetting r
+    Parameters:
+      * `coord` (`Coord`): A Coord object
+
+    Returns:
+      Result[`Coord`]
+
+    Raises:
+      `InvalidCoordException`
+    """
+    method = "Vector.add_to_coord"
+
+    validation = CoordValidator.validate(coord)
+    try:
+      if not validation.is_success():
+        return Result(exception=validation.exception)
+
+      return Result(Coord(row=coord.row + self._y, column=coord.column + self._x))
+
+    except Exception as e:
+      return Result(exception=e)
+
+
+  def __str__(self):
+    return f"Vector(x={self._x}, y={self._y})"
+
+
+
+
+
+
+
   
-  
-  
-    #
-    # def add_to_coordinate(self, coord: Coord) -> Coord:
-    #   validation_result = CoordinateSpecification.is_satisfied_by(coord)
-    #   if not validation_result.is_success():
-    #     raise validation_result.team_exception
-    #
-    #   c = validation_result.payload
-    #
-    #   row = c.row + self.y
-    #   column = c.column + self.x
-    #
-    #   validation_result = CoordinateSpecification.is_satisfied_by(
-    #     Coord(row=row, column=column)
-    #   )
-    #   if not validation_result.is_success():
-    #     raise validation_result.team_exception
-    #
-    #   return validation_result.payload
-  
-  
-  
-    def __str__(self):
-      return f"Vector(x={self._x}, y={self._y})"
