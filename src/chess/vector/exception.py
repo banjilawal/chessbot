@@ -82,23 +82,23 @@ class VectorException(ChessException):
 class NullVectorException(VectorException, NullException):
   """Raised if an entity, method, or operation requires team vector but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_ERROR"
-  DEFAULT_MESSAGE = f"Vector cannot be null"
+  DEFAULT_MESSAGE = "Vector cannot be null"
 
 
 class InvalidVectorException(VectorException, ValidationException):
   """
-  Raised by VectorValidator if vector fails sanity checks. Exists primarily to catch all exceptions raised
-  validating an existing vector
+  Raised by VectorValidator if `Vector` fails sanity checks. Exists primarily to catch all
+  exceptions raised validating an existing `Vector`
   """
   ERROR_CODE = "VECTOR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Vector validation failed"
+  DEFAULT_MESSAGE = "Vector validation failed"
 
 
 #======================#  VECTOR BUILD EXCEPTIONS ======================# 
 class VectorBuildFailedException(VectorException, BuildFailedException):
   """
-  Raised when ArenaBuilder crashed while building a new arena. Exists
-  primarily to catch all exceptions raised creating arenas.
+  Raised when VectorBuilder crashed while building a new vector. Exists
+  primarily to catch all exceptions raised creating vectors.
   """
   ERROR_CODE = "VECTOR_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Vector build failed."
@@ -108,13 +108,13 @@ class VectorBuildFailedException(VectorException, BuildFailedException):
 class NullXComponentException(VectorException, NullException):
   """Raised if team vector's x dimension is null"""
   ERROR_CODE = "VECTOR_NULL_X_DIMENSION_ERROR"
-  DEFAULT_MESSAGE = f"Vector's X-dimension cannot be null"
+  DEFAULT_MESSAGE = "Vector's X-dimension cannot be null"
 
 
 class NullYComponentException(VectorException, NullException):
   """Raised if team vector's y dimension is null"""
   ERROR_CODE = "VECTOR_NULL_Y_DIMENSION_ERROR"
-  DEFAULT_MESSAGE = f"Vector's Y-dimension cannot be null"
+  DEFAULT_MESSAGE = "Vector's Y-dimension cannot be null"
 
 
 #======================#  VECTOR BOUNDS EXCEPTIONS ======================# 

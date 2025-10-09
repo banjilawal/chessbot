@@ -1,101 +1,87 @@
-# src/chess/piece/event/transaction
+# src/chess/team/validation.py
 """
-Module: chess.piece.event.transaction
+Module: chess.team.validator
 Author: Banji Lawal
-Created: 2025-09-28
+Created: 2025-10-08
 
 # SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
+-------
+**Limitation**: This module cannot prevent classes, processes or modules using `Team`
+    instances that pass sanity checks will not fail when using the validated `Team`.
+    Once client's processes might fail, experience data inconsistency or have other
+    faults.
+**Limitation**: Objects authenticated by `TeamValidator` might fail additional requirements
+    a client has for a `Team`. It is the client's responsibility to ensure the validated
+    `Team` passes and additional checks before deployment.
+
+**Related Features**:
+    Building teams -> See TeamBuilder, module[chess.team.builder],
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
-* Highlight the core feature (thread-safety)
-* Explain the how-and-why of implementation choices.
+-------
+* Data assurance, error detection, error prevention
 
 # PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
+---------
+1. Central, single source of truth for correctness of existing `Team` objects.
+2. Putting all the steps and logging into one place makes modules using `Team` objects
+    cleaner and easier to follow.
+
+**Satisfies**: Reliability and performance contracts.
 
 # DEPENDENCIES:
+---------------
+From `chess.system`:
+  * `ValidationResult`, `Validator`, `LoggingLevelRouter`
+
+From `chess.team`:
+    `Team`, `NullTeamException`, `InvalidTeamException`, `NullXComponentException`,
+    `NullYComponentException`, `TeamBelowBoundsException`, `TeamAboveBoundsException`
 
 # CONTAINS:
- * `OccupationTransaction`
+----------
+ * `TeamValidator`
 """
+from typing import cast
+from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
+from chess.team import Team, InvalidTeamException, NullTeamException, NullTeamSchemaException
+from chess.system import ValidationResult, Validator, LoggingLevelRouter, IdValidator
 
-from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
-from chess.system import Result, Validator, IdValidator, InvalidIdException
-from chess.exception import RelationshipException
-from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
-from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \
-  InvalidCommanderAssignmentException
-
-T = TypeVar('T')
-
-class TeamValidator(Validator):
+class TeamValidator(Validator[Team]):
   """
-  ROLE:
-  ----
-  RESPONSIBILITIES:
-  ----------------
-  PROVIDES:
-  --------
-  ATTRIBUTES:
-  ----------
-  [
-    <No attributes. Implementors declare their own.>
-  OR
-    * `_attribute` (`data_type`): <sentence_if_necessary>
-  ]
-  """
-  """
-  Validates existing `Team` instances that are passed around the system.
+  # ROLE: Validation
 
-  While `TeamBuilder` ensures valid Teams are created, `TeamValidator`
-  checks `Team` instances that already exist - whether they came from
-  deserialization, external sources, or need re-validate after modifications.
-  
-  Usage:
-    ```python
-    # Validate an existing team
-    team_validation = TeamValidator.validate(candidate)  
-    if not team_validation.is_success():
-      raise team_validation.err
-    team = cast(Team, team_validation.payload)
-    ```
+  # RESPONSIBILITIES:
+  1. Prevents using an existing Team` that will cause failures or introduce bugs if deployed.
+  2. Ensures clients receive only valid Teams for further processing.
+  3. Sending granular error report via `ValidationResult`.
 
-  Use `TeamBuilder` for construction, `TeamValidator` for verification.
+  # PROVIDES:
+    `ValidationResult`: Return type containing the built `Team` or error information.
+
+  # ATTRIBUTES:
+  None
   """
 
-  @staticmethod
-  def validate(candidate: Team) -> Result['Team']:
+  @classmethod
+  @LoggingLevelRouter.monitor()
+  def validate(cls, candidate: Team) -> ValidationResult[Team]:
     """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    """
-    Validates that an existing `Team` instance meets all specifications.
+    ACTION:
+      Ensure an existing `Team` object will not introduce bugs or failures.
 
-    Performs comprehensive validate on team `Team` instance that already exists,
-    checking type safety, null values, and component bounds. Unlike `TeamBuilder`
-    which creates new valid Teams, this validator verifies existing `Team`
-    instances from external sources, deserialization, or after modifications.
+    PARAMETERS:
+        * `candidate` (`Team`): The validation candidate.
 
-    Args
-      `candidate` (`Team`): `Team` instance to validate
+    RETURNS:
+    `ValidationResult[Team]`: A `ValidationResult` containing either:
+        `'payload'` - A `Team` instance that satisfies the specification.
+        `exception` - Details about which specification violation occurred.
 
-     Returns:
-      `Result`[`Team`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
-      `InvalidTeamException` otherwise.
-
-    Raises:
+    RAISES:
+    `InvalidTeamException`: Wraps any specification violations including:
       `TypeError`: if `candidate` is not team Team` object
       `NullTeamException`: if `candidate` is null
       `InvalidIdException`: if `id` fails validate checks
@@ -103,67 +89,48 @@ class TeamValidator(Validator):
       `NullTeamProfileException`: if `schema` is null
       `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
       `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
-      `InvalidTeamException`: Wraps any preceding exceptions
     """
     method = "TeamValidator.validate"
 
     try:
       if candidate is None:
-        raise NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=
+            NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}"
+        ))
 
       from chess.team import Team
       if not isinstance(candidate, Team):
-        raise TypeError(f"{method} Expected team Team, got {type(candidate).__name__}")
+        return ValidationResult(exception=TypeError(
+          f"{method} Expected team Team, got {type(candidate).__name__}"
+        ))
 
       team = cast(Team, candidate)
 
       if team.scheme is None:
-        raise NullTeamSchemaException(f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=NullTeamSchemaException(
+          f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}"
+        ))
 
       id_validation = IdValidator.validate(team.id)
       if not id_validation.is_success():
-        raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=id_validation.exception)
 
       commander_validation = CommanderValidator.validate(team.commander)
       if not commander_validation.is_success():
-        raise InvalidCommanderException(f"{method}: {InvalidCommanderException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=commander_validation.exception)
 
       commander = cast(Commander, commander_validation.payload)
       if team.commander != commander:
-        raise InvalidCommanderAssignmentException(
+        return ValidationResult(exception=InvalidCommanderAssignmentException(
           f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"
-        )
+        ))
 
       if team not in commander.teams.items:
-        raise RelationshipException(f"{method}: {RelationshipException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=RelationshipException(
+          f"{method}: {RelationshipException.DEFAULT_MESSAGE}"
+        ))
 
-      return Result(payload=team)
+      return ValidationResult(payload=team)
 
-    except (
-        TypeError,
-        NullTeamException,
-        InvalidIdException,
-        NullTeamSchemaException,
-        InvalidCommanderException,
-        InvalidCommanderAssignmentException,
-        RelationshipException
-    ) as e:
-      raise InvalidTeamException(f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}") from e
-
-    # This block catches any unexpected exceptions
-    # You might want to log the error here before re-raising
     except Exception as e:
-      raise InvalidTeamException(f"An unexpected error occurred during validate: {e}") from e
-
-#
-# def main():
-#
-#   from chess.commander.commander import Human
-#   person = Human(1, "person")
-#
-#   from chess.team import Team
-#   team = Team(team_id=1, controller=person, schema=TeamProfile.BLACK)
-#
-#
-# if __name__ == "__main__":
-#   main()
+      return ValidationResult(exception=InvalidTeamException(f"{method}: {e}"))

@@ -48,11 +48,10 @@ From `chess.commander`:
 """
 from enum import Enum
 
-from chess.team import Team, TeamSchema, NullTeamSchemaException, TeamBuilderException
+from chess.team import Team, TeamSchema, NullTeamSchemaException, TeamBuildFailedException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
-from chess.system import IdValidator, BuildResult
+from chess.system import IdValidator, BuildResult, Builder, LoggingLevelRouter
 from chess.exception import RelationshipException
-from assurance import ThrowHelper
 
 
 class TeamBuilder(Builder[Team]):
@@ -73,6 +72,7 @@ class TeamBuilder(Builder[Team]):
 
 
   @classmethod
+  @LoggingLevelRouter.monitor()
   def build(cls, commander: Commander, schema: TeamSchema) -> BuildResult[Team]:
     """
     ACTION:
@@ -98,62 +98,36 @@ class TeamBuilder(Builder[Team]):
 
     try:
       if schema is None:
-        ThrowHelper.log_and_raise_error(
-          TeamBuilder, NullTeamSchemaException(NullTeamSchemaException.DEFAULT_MESSAGE)
-        )
+        return BuildResult(exception=NullTeamSchemaException(NullTeamSchemaException.DEFAULT_MESSAGE)
+                            )
       if not isinstance(schema, TeamSchema):
-        ThrowHelper.log_and_raise_error(
-          TeamBuilder, TypeError(f"{method} Expected team TeamProfile, got {type(schema).__name__}")
-        )
+        return BuildResult(exception=TypeError(
+          f"{method} Expected team TeamProfile, got {type(schema).__name__}"
+        ))
 
-      id_validation = IdValidator.validate(team_id)
-      if not id_validation.is_success():
-        ThrowHelper.log_and_raise_error(TeamBuilder, id_validation.exception)
+      # id_validation = IdValidator.validate(team_id)
+      # if not id_validation.is_success():
+      #   ThrowHelper.log_and_raise_error(TeamBuilder, id_validation.exception)
 
 
       commander_validation = CommanderValidator.validate(commander)
       if not commander_validation.is_success():
-        ThrowHelper.log_and_raise_error(TeamBuilder, commander_validation.exception)
+        return BuildResult(exception=commander_validation.exception)
 
-      team = Team(team_id=team_id, commander=commander, schema=schema)
+      team = Team(commander=commander, schema=schema)
 
       if team.commander != commander:
-        ThrowHelper.log_and_raise_error(
-          TeamBuilder,
-          InvalidCommanderAssignmentException(InvalidCommanderAssignmentException.DEFAULT_MESSAGE)
-        )
+        return BuildResult(exception=InvalidCommanderAssignmentException(
+          InvalidCommanderAssignmentException.DEFAULT_MESSAGE
+        ))
 
       if team not in commander.teams:
         commander.teams.add_team(team)
 
-
       if team not in commander.teams:
-        ThrowHelper.log_and_raise_error(
-          TeamBuilder,
-          RelationshipException(RelationshipException.DEFAULT_MESSAGE)
-        )
-
+        return BuildResult(exception=RelationshipException(RelationshipException.DEFAULT_MESSAGE))
 
       return BuildResult(payload=team)
 
     except Exception as e:
-      raise TeamBuilderException(f"{method}: {TeamBuilderException.DEFAULT_MESSAGE}") from e
-
-#
-# def main():
-#   build_result = TeamBuilder.build()
-#   if build_result.is_success():
-#     team = build_result.payload
-#     print(f"Successfully built team: {team}")
-#   else:
-#     print(f"Failed to build team: {build_result.err}")
-#
-#   build_result = TeamBuilder.build(-1)
-#   if build_result.is_success():
-#     team = build_result.payload
-#     print(f"Successfully built team: {team}")
-#   else:
-#     print(f"Failed to build team: {build_result.err}")
-#
-# if __name__ == "__main__":
-#   main()
+      return BuildResult(exception=TeamBuildFailedException(f"{method}: {e}"))

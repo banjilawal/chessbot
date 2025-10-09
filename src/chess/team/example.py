@@ -66,7 +66,7 @@ Returns:
     - On failure: Error information and error details
 
 Raises:
-  `TeamBuilderException`: Wraps any underlying validate failures that occur during the construction process.
+  `TeamBuildFailedException`: Wraps any underlying validate failures that occur during the construction process.
   This includes:
     * `InvalidIdException`: if `id` fails validate checks`
     * `InvalidCommanderException`: if `commander` fails validate checks
@@ -93,4 +93,23 @@ Example:
     # Handle construction failure
     pass
   ```
+"""
+
+"""
+Validates existing `Team` instances that are passed around the system.
+
+While `TeamBuilder` ensures valid Teams are created, `TeamValidator`
+checks `Team` instances that already exist - whether they came from
+deserialization, external sources, or need re-validate after modifications.
+
+Usage:
+  ```python
+  # Validate an existing team
+  team_validation = TeamValidator.validate(candidate)  
+  if not team_validation.is_success():
+    raise team_validation.err
+  team = cast(Team, team_validation.payload)
+  ```
+
+Use `TeamBuilder` for construction, `TeamValidator` for verification.
 """

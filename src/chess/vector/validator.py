@@ -10,9 +10,9 @@ Created: 2025-10-08
     instances that pass sanity checks will not fail when using the validated `Vector`.
     Once client's processes might fail, experience data inconsistency or have other
     faults.
-    Objects authenticated by `VectorValidator` might fail additional requirements
-    a client has for a `Vector`. It is the client's responsibility to ensure the
-    validated `Vector` passes and additional checks before deployment.
+**Limitation**: Objects authenticated by `VectorValidator` might fail additional requirements
+    a client has for a `Vector`. It is the client's responsibility to ensure the validated
+    `Vector` passes and additional checks before deployment.
 
 **Related Features**:
     Building vectors -> See VectorBuilder, module[chess.vector.builder],

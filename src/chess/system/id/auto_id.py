@@ -88,23 +88,33 @@ class AutoId:
                 self._id = next(cls.id_counter)
             original_init(self, *args, **kwargs)
 
+        def get_id(self):
+            return self._id
+
+        def repr_func(obj):
+            return f"<{cls.__name__} id={obj.id}>"
+
         cls.__init__ = new_init
-        cls.id = property(lambda self: self._id)
+        cls.id = property(get_id)
+        cls.__repr__ = repr_func
 
-        if self.add_hash_eq:
-            if not hasattr(cls, "__eq__"):
-                def __eq__(self, other: object) -> bool:
-                    if other is self:
-                        return True
-                    if not isinstance(other, cls):
-                        return NotImplemented
-                    return self._id == other
-                cls.__eq__ = __eq__
+        return cls
+        # cls.id = property(lambda self: self._id)
 
-            if not hasattr(cls, "__hash__"):
-                cls.__hash__ = lambda self: hash(self._id)
-
-            if not hasattr(cls, "__repr__"):
-                cls.__repr__ = lambda self: f"<{cls.__name__}: id={self._id}>"
-
-            return cls
+        # if self.add_hash_eq:
+        #     if not hasattr(cls, "__eq__"):
+        #         def __eq__(self, other: object) -> bool:
+        #             if other is self:
+        #                 return True
+        #             if not isinstance(other, cls):
+        #                 return NotImplemented
+        #             return self._id == other
+        #         cls.__eq__ = __eq__
+        #
+        #     if not hasattr(cls, "__hash__"):
+        #         cls.__hash__ = lambda self: hash(self._id)
+        #
+        #     if not hasattr(cls, "__repr__"):
+        #         cls.__repr__ = lambda self: f"<{cls.__name__}: id={self._id}>"
+        #
+        #     return cls

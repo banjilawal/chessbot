@@ -56,7 +56,7 @@ from chess.exception import ValidationException, NullException, BuilderException
 #
 #
 #
-#   'TeamBuilderException',
+#   'TeamBuildFailedException',
 #   'NullTeamSchemaException',
 #
 # #====================== TEAM MEMBER EXCEPTIONS ======================# 
