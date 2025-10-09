@@ -1,4 +1,5 @@
 # src/chess/ square/builder.py
+
 """
 Module: chess. square.builder
 Author: Banji Lawal
@@ -7,11 +8,10 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation***: There is no guarantee properly created ` Square` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a ` SquareBuilder` product will not fail when used. Products
-    from ` SquareBuilder` --should-- satisfy ` SquareValidator` requirements.
-
-**Related Features**:
+***Limitation***: There is no guarantee properly created `Square` objects released by the module will satisfy 
+    client requirements. Clients are responsible for ensuring a `SquareBuilder` product will not fail when used. 
+    
+***Related Features***:
     Authenticating existing  squares -> See  SquareValidator, module[chess. square.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
@@ -25,9 +25,8 @@ version: 1.0.0
 
 # PURPOSE:
 ---------
-1. Central, single producer of authenticated ` Square` objects.
-2. Putting all the steps and logging into one place makes modules using ` Square`
-    objects cleaner and easier to follow.
+1. Central, single producer of authenticated `Square` objects.
+2. Putting all the steps and logging into one place makes modules using `Square` objects cleaner, easier to follow.
 
 ***Satisfies***: Reliability and performance contracts.
 

@@ -58,7 +58,7 @@ __all__ = [
   'AddDuplicateDiscoveryException',
   'AddNullDiscoveryException',
   
-#======================#  DISCOVERY EXCEPTIONS WITH ROLLBACK===
+#======================# DISCOVERY EXCEPTIONS WITH ROLLBACK===
   'DiscoveryRolledBackException',
   'CircularDiscoveryRolledBackException',
   'DuplicateDiscoveryRolledBackException',
@@ -121,7 +121,7 @@ class AddNullDiscoveryException(DiscoveryException):
   ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR"
   DEFAULT_MESSAGE = "Cannot add team null discovery to the list"
 
-#======================#  DISCOVERY EXCEPTIONS WITH ROLLBACK===
+#======================# DISCOVERY EXCEPTIONS WITH ROLLBACK===
 class DiscoveryRolledBackException(DiscoveryException, RollbackException):
   """
   Any inconsistencies team discovery introduces into team transaction need to be rolled back.

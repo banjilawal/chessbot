@@ -42,7 +42,7 @@ class CollectionException(ChessException):
   def __str__(self):
     return f"[{self.ERROR_CODE}] {self.message}"
 
-#======================#  GENERIC COLLECTION OPERATIONS ======================# 
+#======================# GENERIC COLLECTION OPERATIONS #======================#  
 
 class EmptyCollectionException(CollectionException):
   """Raised when trying to access items from an empty collection."""
@@ -70,7 +70,7 @@ class CollectionSizeConflictException(CollectionException):
   DEFAULT_MESSAGE = "Collection size methods return conflicting results"
 
 
-#======================#  STACK-SPECIFIC EXCEPTIONS ======================# 
+#======================# STACK-SPECIFIC EXCEPTIONS #======================#  
 
 class CoordStackException(CollectionException):
   """Base error for stack operations."""
@@ -101,7 +101,7 @@ class InconsistentCurrentCoordException(CoordStackException):
   DEFAULT_MESSAGE = "Current coordinate state is inconsistent"
 
 
-#======================#  SPECIFIC COLLECTION EXCEPTIONS ======================# 
+#======================# SPECIFIC COLLECTION EXCEPTIONS #======================#  
 
 
 class GameListException(CollectionException):
@@ -118,7 +118,7 @@ class NullEncounterException(EncounterLogException):
   ERROR_CODE = "NULL_ENCOUNTER_ERROR"
   DEFAULT_MESSAGE = "Cannot add null encounter to log"
 
-#======================#  RELATIONSHIP EXCEPTIONS ======================# 
+#======================# RELATIONSHIP EXCEPTIONS #======================#  
 
 class RelationshipException(ChessException):
   """Base error for relationship consistency errors."""

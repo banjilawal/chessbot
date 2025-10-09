@@ -112,20 +112,20 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 from chess.exception import ChessException, NullException, BuilderException
 
 __all__ = [
-  #=== AN EVENT EXCEPTIONS ======================# 
+  #=== AN EVENT EXCEPTIONS #======================#  
   'EventException',
   'NullEventException',
   'InvalidEventException',
   'EventBuildFailedException',
   
-  #=== TRANSACTION EXCEPTIONS ======================# 
+  #=== TRANSACTION EXCEPTIONS #======================#  
   'TransactionException'
 ]
 
 from chess.system import ChessException, ValidationException, BuildFailedException, NullException,
 
 
-#=== AN EVENT EXCEPTIONS ======================# 
+#=== AN EVENT EXCEPTIONS #======================#  
 class EventException(ChessException):
   """
   Super class of all exceptions an event object raises. DO NOT USE DIRECTLY. Subclasses provide better
@@ -167,7 +167,7 @@ class EventBuildFailedException(EventException, BuilderException):
   DEFAULT_MESSAGE = "EventBuilder validation failed."
 
 
- #=== TRANSACTION EXCEPTIONS ======================# 
+ #=== TRANSACTION EXCEPTIONS #======================#  
 
 class TransactionException(ChessException):
   """

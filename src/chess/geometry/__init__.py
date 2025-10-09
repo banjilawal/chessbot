@@ -5,28 +5,8 @@ Module: `chess.event.geometry`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
-
-PURPOSE:
-  Provides classes for spatial relationships, coordinates, vectors, and paths
-  in team 2D chess board coordinate transaction.
-
-CORE CLASSES:
-  Line: Different types of edges
-  Path: Directed path between two coordinates with line type classification
-  Quadrant: Board subdivision for spatial partitioning
-
-LINE TYPES (Line enum):
-  VERTICAL, DIAGONAL, HORIZONTAL, KING, KNIGHT, BISHOP, CASTLE, QUEEN,
-  PAWN_OPENING, PAWN_ADVANCE, PAWN_ATTACK, CURVILINEAR
-
-USAGE:
-  >>> from chess.geometry import Path, Line
-  >>> path = Path(u=Coord(0,0), v=Coord(0,5))
-  >>> path.line = Line.VERTICAL
-  >>> return path.is_vertical()
 """
 
-# Core geometry classes
 from .line import Line
 from .path import Path
 from .quadrant import Quadrant

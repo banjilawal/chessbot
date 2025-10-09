@@ -48,9 +48,9 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 
 __all__ = [
   'EngineException',
-#======================#  ENGINE VALIDATION EXCEPTIONS ======================# 
+#======================# ENGINE VALIDATION EXCEPTIONS #======================#  
   'NullEngineException',
-#======================#  ENGINE BUILD EXCEPTIONS ======================# 
+#======================# ENGINE BUILD EXCEPTIONS #======================#  
   'BuildFailedException'
 ]
 

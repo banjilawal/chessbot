@@ -33,7 +33,7 @@ class ChessException(Exception):
   def __str__(self):
     return f"{self.message}"
 
-#======================#  NULL SUPER CLASS EXCEPTION ======================# 
+#======================# NULL SUPER CLASS EXCEPTION #======================#  
 
 class NullException(ChessException):
   """

@@ -1,8 +1,9 @@
-# src/chess/piece/event/transaction
+# src/chess/team/schema/schema.py
+
 """
-Module: chess.piece.event.transaction
+Module: chess.team.schema.schema
 Author: Banji Lawal
-Created: 2025-09-28
+Created: 2025-10-09
 
 # SCOPE:
 * The limits of the module, defined by what it does not do.
@@ -24,16 +25,14 @@ Created: 2025-09-28
 """
 
 from enum import Enum
-
-from chess.system.color import GameColor
-from chess.system.config import ROW_SIZE
-from chess.geometry.quadrant import Quadrant
 from chess.scalar import Scalar
+from chess.geometry import Quadrant
+from chess.system import GameColor, ROW_SIZE
 
 
 class TeamSchema(Enum):
   """
-  ROLE:
+  ROLE: Schema
   ----
   RESPONSIBILITIES:
   ----------------

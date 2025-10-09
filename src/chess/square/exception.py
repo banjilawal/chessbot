@@ -51,11 +51,11 @@ from chess.exception import ChessException, BuilderException, NullException, Val
 __all__ = [
   'SquareException',
 
-#======================#  SQUARE VALIDATION EXCEPTIONS ======================# 
+#======================# SQUARE VALIDATION EXCEPTIONS #======================#  
   'NullSquareException',
   'InvalidSquareException',
 
-#======================#  SQUARE BUILD EXCEPTIONS ======================# 
+#======================# SQUARE BUILD EXCEPTIONS #======================#  
   'SquareBuildFailedException'
 ]
 
@@ -69,7 +69,7 @@ class SquareException(ChessException):
   DEFAULT_MESSAGE = "Square raised an exception."
 
 
-#======================#  SQUARE VALIDATION EXCEPTIONS ======================# 
+#======================# SQUARE VALIDATION EXCEPTIONS #======================#  
 class NullSquareException(SquareException, NullException):
   """Raised if an entity, method, or operation requires Square but gets null instead."""
   ERROR_CODE = "NULL_SQUARE_ERROR"
@@ -84,7 +84,7 @@ class InvalidSquareException(SquareException, ValidationException):
   DEFAULT_MESSAGE = "Square validation failed."
 
 
-#======================# SQUARE BUILD EXCEPTIONS ======================#
+#======================# SQUARE BUILD EXCEPTIONS #======================# 
 class SquareBuildFailedException(SquareException, BuilderException):
   """
   Raised when SquareBuilder encounters an error building a `Square`. Exists primarily

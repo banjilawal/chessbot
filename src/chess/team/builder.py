@@ -1,4 +1,5 @@
 # src/chess/team/builder.py
+
 """
 Module: chess.team.builder
 Author: Banji Lawal
@@ -7,9 +8,8 @@ version: 1.0.0
 
 # SCOPE:
 -------
-**Limitation**: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products 
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
+***Limitation***: There is no guarantee properly created `Team` objects released by the module will satisfy
+    client requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. 
 
 **Related Features**:
     Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
@@ -46,7 +46,7 @@ From `chess.commander`:
 ----------
  * `TeamBuilder`
 """
-from enum import Enum
+
 
 from chess.team import Team, TeamSchema, NullTeamSchemaException, TeamBuildFailedException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
@@ -105,9 +105,9 @@ class TeamBuilder(Builder[Team]):
           f"{method} Expected team TeamProfile, got {type(schema).__name__}"
         ))
 
-      # id_validation = IdValidator.validate(team_id)
-      # if not id_validation.is_success():
-      #   ThrowHelper.log_and_raise_error(TeamBuilder, id_validation.exception)
+      id_validation = IdValidator.validate(team_id)
+      if not id_validation.is_success():
+        ThrowHelper.log_and_raise_error(TeamBuilder, id_validation.exception)
 
 
       commander_validation = CommanderValidator.validate(commander)

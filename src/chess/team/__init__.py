@@ -1,18 +1,18 @@
-# src/chess/team/search/__init__.py
+# src/chess/team/__init__.py
 
 """
-Module: chess.team.search
+Module: chess.team
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
+
+from .schema import *
+from .search import *
 from .exception import *
 
-# Core classes
 from .team import Team
-from .search import *
-from .schema import TeamSchema
 from .builder import TeamBuilder
 from .validator import TeamValidator
 
@@ -25,15 +25,16 @@ __package_name__ = 'chess.team'
 # Optional: Package-level constants
 ROSTER_SIZE = 16
 
+# Public exports (API)
 __all__ = [
   # Core classes
   'Team',
   'TeamValidator',
-  'TeamSchema',
   'TeamBuilder',
 
+  *search.__all__,
+  *schema.__all__,
   *exception.__all__,
-
 
   # Package metadata and utilities
   "__version__",

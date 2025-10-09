@@ -74,7 +74,7 @@ class SearchContextException(ContextException):
   ERROR_CODE = "SEARCH_CONTEXT_ERROR"
   DEFAULT_MESSAGE = "SearchContext raised an exception"
 
-#======================#  SEARCH_CONTEXT VALIDATION EXCEPTIONS ======================#
+#======================# SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullSearchContextException(SearchContextException, NullException):
   """
   Raised if an entity, method, or operation requires team searchContext but
@@ -106,7 +106,7 @@ class SearchContextMaxParamCountException(SearchContextException):
   ERROR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
   DEFAULT_MESSAGE = "A SearchContext cannot have more than one param set null."
 
-#======================#  SEARCH_CONTEXT BUILD EXCEPTIONS ======================#
+#======================# SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class SearchContextBuildFailedException(SearchContextException, BuildFailedException):
   """
   Raised when SearchContextBuilder encounters an error while building team team.
@@ -127,7 +127,7 @@ class FilterContextException(SearchContextException):
   ERROR_CODE = "FILTER_CONTEXT_ERROR"
   DEFAULT_MESSAGE = "FilterContext raised an exception"
 
-#======================#  FILTER_CONTEXT VALIDATION EXCEPTIONS ======================#
+#======================# FILTER_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullFilterContextException(FilterContextException, NullException):
   """
   Raised if an entity, method, or operation requires team filterContext but
@@ -160,7 +160,7 @@ class FilterContextMaxParamCountException(FilterContextException):
   ERROR_CODE = "FILTER_CONTEXT_MAX_PARAM_ERROR"
   DEFAULT_MESSAGE = "A FilterContext cannot have more than one param set null."
 
-#======================#  FILTER_CONTEXT BUILD EXCEPTIONS ======================#
+#======================# FILTER_CONTEXT BUILD EXCEPTIONS #======================# 
 class FilterContextBuildFailedException(FilterContextException, BuildFailedException):
   """
   Raised when FilterContextBuilder encounters an error while building team team.

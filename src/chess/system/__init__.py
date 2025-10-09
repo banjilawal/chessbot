@@ -5,21 +5,6 @@ Module: `chess.system`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
-
-Common Package - Objects used frequently and globally accross packages
-
-## PURPOSE:
-  Contains commonly used objects and utilites
-
-## CORE CLASSES:
-  Event, Result, GameColor, MousePlacementStatus
-
-
-## USAGE EXAMPLES
-
-## EXCEPTIONS
-
-###
 """
 
 from .id import *
@@ -35,6 +20,8 @@ from .build import *
 from .err import *
 from .validate import *
 
+from .color import GameColor
+
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
@@ -44,6 +31,7 @@ __package_name__ = 'chess.system'
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
+  'GameColor',
 
   *id.__all__,
   *name.__all__,

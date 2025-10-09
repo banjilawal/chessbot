@@ -48,18 +48,18 @@ __all__ = [
   'ActorException',
   'ActorRollBackException',
 
-#======================#  ACTOR VALIDATION EXCEPTIONS ======================# 
+#======================# ACTOR VALIDATION EXCEPTIONS #======================#  
   'InvalidActorException',
   'ActorNotOnBoardException',
   'ActorPlacementRequiredException',
 
-#======================#  ACTOR ACTIVITY EXCEPTIONS ======================# 
+#======================# ACTOR ACTIVITY EXCEPTIONS #======================#  
   'CapturedActorCannotActException',
   'CapturedActorCannotAttackException',
   'CapturedActorCannotMoveException',
   'CheckMatedKingActivityException',
 
-#======================#  SUBJECT ACTIVITY EXCEPTIONS ======================# 
+#======================# SUBJECT ACTIVITY EXCEPTIONS #======================#  
   'SubjectException',
   'InvalidSubjectException',
   'SubjectNotOnBoardException',
@@ -87,7 +87,7 @@ class ActorRollBackException(ActorException, RollbackException):
   DEFAULT_MESSAGE = "Actor raised an exception. Transaction rolled back"
 
 
-#======================#  ACTOR VALIDATION EXCEPTIONS ======================# 
+#======================# ACTOR VALIDATION EXCEPTIONS #======================#  
 class InvalidActorException(ActorException, InvalidPieceException):
   """
   Raised by ActorValidator if piece fails any conditions for acting on the board.
@@ -111,7 +111,7 @@ class ActorPlacementRequiredException(ActorException):
   )
 
 
-#======================#  ACTOR ACTIVITY EXCEPTIONS ======================# 
+#======================# ACTOR ACTIVITY EXCEPTIONS #======================#  
 class CapturedActorCannotActException(ActorException):
   """
   A captured piece cannot actt.
@@ -150,7 +150,7 @@ class CheckMatedKingActivityException(ActorException):
   )
 
 
-#======================#  SUBJECT EXCEPTIONS ======================# 
+#======================# SUBJECT EXCEPTIONS #======================#  
 class SubjectException(PieceException):
   """
   SubjectException classes are raised on team piece acted upon. They are raised on the same errors as ActorException,

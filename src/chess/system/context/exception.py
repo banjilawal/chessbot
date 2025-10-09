@@ -46,11 +46,11 @@ from chess.system import ChessException, NullException, BuildFailedException, Va
 __all__ = [
   'ContextException',
 
-#======================#  CONTEXT VALIDATION EXCEPTIONS ======================# 
+#======================# CONTEXT VALIDATION EXCEPTIONS #======================#  
   'NullContextException',
   'InvalidContextException',
 
-#======================#  CONTEXT BUILD EXCEPTIONS ======================# 
+#======================# CONTEXT BUILD EXCEPTIONS #======================#  
   'ContextBuildFailedException',
 ]
 
@@ -62,7 +62,7 @@ class ContextException(ChessException):
   ERROR_CODE = "CONTEXT_ERROR"
   DEFAULT_MESSAGE = "Context raised an exception"
 
-#======================#  CONTEXT VALIDATION EXCEPTIONS ======================# 
+#======================# CONTEXT VALIDATION EXCEPTIONS #======================#  
 class NullContextException(ContextException, NullException):
   """
   Raised if an entity, method, or operation requires team context but
@@ -79,7 +79,7 @@ class InvalidContextException(ContextException, ValidationException):
   ERROR_CODE = "CONTEXT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Context validation failed."
 
-#======================#  CONTEXT BUILD EXCEPTIONS ======================# 
+#======================# CONTEXT BUILD EXCEPTIONS #======================#  
 class ContextBuildFailedException(ContextException, BuildFailedException):
   """
   Raised when ContextBuilder encounters an error while building team team.

@@ -50,21 +50,21 @@ from chess.transaction import TransactionException, NullTransactionException
 from chess.exception import NullException, ValidationException, BuilderException
 
 __all__ = [
-#=== SCAN_TRANSACTION EXCEPTIONS ======================# 
+#=== SCAN_TRANSACTION EXCEPTIONS #======================#  
   'ScanTransactionException',
   'NullScanTransactionException',
 
-#=== SCAN_EVENT EXCEPTIONS ======================# 
+#=== SCAN_EVENT EXCEPTIONS #======================#  
   'ScanEventException',
   'InvalidScanEventException',
   'NullScanEventException',
 
-#=== SCAN_EVENT BUILD EXCEPTIONS ======================# 
+#=== SCAN_EVENT BUILD EXCEPTIONS #======================#  
   'ScanEventBuilderException',
   'ScanSubjectException',
 ]
 
-#=== SCAN TRANSACTION EXCEPTIONS ======================# 
+#=== SCAN TRANSACTION EXCEPTIONS #======================#  
 class ScanTransactionException(TransactionException):
   """
   Wraps any ScanEventExceptions or other errors raised during
@@ -82,7 +82,7 @@ class NullScanTransactionException(NullTransactionException):
   DEFAULT_MESSAGE = "ScanTransaction cannot be null."
 
 
-#=== SCAN_EVENT EXCEPTIONS ======================# 
+#=== SCAN_EVENT EXCEPTIONS #======================#  
 class ScanEventException(OccupationEventException):
   """
   Superclass for all scan event exceptions. DO NOT USE DIRECTLY. Subclasses
@@ -92,7 +92,7 @@ class ScanEventException(OccupationEventException):
   DEFAULT_MESSAGE = "ScanEvent failed validate"
 
 
-#=== SCAN_EVENT VALIDATION EXCEPTIONS ======================# 
+#=== SCAN_EVENT VALIDATION EXCEPTIONS #======================#  
 class NullScanEventException(ScanEventException, NullException):
   """Raised by methods, entities, and models that require team ScanEvent but receive team null."""
   ERROR_CODE = "NULL_EVENT_ERROR"
@@ -104,7 +104,7 @@ class InvalidScanEventException(ScanEventException, ValidationException):
   DEFAULT_MESSAGE = "ScanEvent failed validate"
 
 
-#=== SCAN_EVENT BUILD EXCEPTIONS ======================# 
+#=== SCAN_EVENT BUILD EXCEPTIONS #======================#  
 class ScanEventBuilderException(ScanEventException, BuilderException):
   """Raised when team ScanEventBuilder fails to build team ScanEvent."""
   ERROR_CODE = "SCAN_EVENT_BUILD_FAILED_ERROR"

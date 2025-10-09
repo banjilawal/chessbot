@@ -50,7 +50,7 @@ from chess.exception import ValidationException, NullException, BuilderException
 #   'TeamException',
 #   'TeamRollBackException',
 #
-# #====================== TEAM VALIDATION EXCEPTIONS ======================# 
+# #====================== TEAM VALIDATION EXCEPTIONS #======================#  
 #   'NullTeamException',
 #   'InvalidTeamException',
 #
@@ -59,48 +59,48 @@ from chess.exception import ValidationException, NullException, BuilderException
 #   'TeamBuildFailedException',
 #   'NullTeamSchemaException',
 #
-# #====================== TEAM MEMBER EXCEPTIONS ======================# 
+# #====================== TEAM MEMBER EXCEPTIONS #======================#  
 #   'TeamRosterException',
 #   'AddTeamMemberException',
 #   'AddEnemyToRosterException',
 #   'RemoveTeamMemberException',
 #   'FullRankQuotaException',
 #
-# #====================== TEAM MEMBER EXCEPTIONS WITH ROLLBACK ======================# 
+# #====================== TEAM MEMBER EXCEPTIONS WITH ROLLBACK #======================#  
 #   'TeamRosterRollBackException',
 #   'AddEnemyHostageRolledBackException',
 #   'AddTeamMemberRolledBackException',
 #   'RemoveTeamMemberRolledBackException',
 #   'FullRankQuotaRolledBackException',
 #
-# #====================== HOSTAGE EXCEPTIONS ======================# 
+# #====================== HOSTAGE EXCEPTIONS #======================#  
 #   'TeamHostageListException',
 #   'InvalidFriendlyHostageException',
 #   'AddEnemyHostageException',
 #   'AddEnemyKingHostageException',
 #   'HostageRemovalException',
 #
-# #====================== HOSTAGE EXCEPTIONS WITH ROLLBACK ======================# 
+# #====================== HOSTAGE EXCEPTIONS WITH ROLLBACK #======================#  
 #   'TeamHostageListRolledBackException',
 #   'InvalidFriendlyHostageRolledBackException',
 #   'AddEnemyToRosterRolledBackException',
 #   'EnemyKingHostageRolledBackException',
 #   'HostageRemovalRolledBackException',
 #
-# #====================== SEARCH EXCEPTIONS ======================# 
+# #====================== SEARCH EXCEPTIONS #======================#  
 #   'RosterNumberOutOfBoundsException'
 # ]
 
 __all__ = [
   'OccupationEventException',
 
-#====================== OccupationEvent VALIDATION EXCEPTIONS ======================# 
+#====================== OccupationEvent VALIDATION EXCEPTIONS #======================#  
   'InvalidOccupationEventException',
   'NullOccupationEventException',
   'CircularOccupationException',
   'TargetSquareMismatchException',
 
-#====================== OccupationEvent BUILD EXCEPTIONS ======================# 
+#====================== OccupationEvent BUILD EXCEPTIONS #======================#  
   'OccupationEventBuilderException'
   
   # 'HostageValidationEventException',
@@ -113,7 +113,7 @@ class OccupationEventException(EventException):
   ERROR_CODE = "OCCUPATION_EXECUTION_ERROR"
   DEFAULT_MESSAGE = "An error was raised while executing the square event"
 
-#====================== OccupationEvent VALIDATION EXCEPTIONS ======================# 
+#====================== OccupationEvent VALIDATION EXCEPTIONS #======================#  
 class NullOccupationEventException(OccupationEventException, NullException):
   ERROR_CODE = "NULL_OCCUPATION_EXECUTION_ERROR"
   DEFAULT_MESSAGE = "OccupationEvent cannot be null"
@@ -141,7 +141,7 @@ class ActorSquareNotFoundException(OccupationEventException):
   )
 
 
-#====================== OccupationEvent BUILD EXCEPTIONS ======================# 
+#====================== OccupationEvent BUILD EXCEPTIONS #======================#  
 class OccupationEventBuilderException(OccupationEventException, BuilderException):
   ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "OccupationEventBuilder failed to create an OccupationEvent."

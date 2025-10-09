@@ -57,14 +57,14 @@ from chess.system import(
 __all__ = [
   'CommanderException',
 
-#======================#  COMMANDER VALIDATION EXCEPTIONS ======================# 
+#======================# COMMANDER VALIDATION EXCEPTIONS #======================#  
   'NullCommanderException',
   'InvalidCommanderException',
 
-#======================#  COMMANDER BUILD EXCEPTIONS ======================# 
+#======================# COMMANDER BUILD EXCEPTIONS #======================#  
   'CommanderBuildFailedException',
 
-#======================#  COMMANDER HISTORY EXCEPTIONS ======================# 
+#======================# COMMANDER HISTORY EXCEPTIONS #======================#  
   'CommanderHistoryException',
   'InconsistentCommandHistoryException',
   'PushNewTeamException',
@@ -80,7 +80,7 @@ class CommanderException(ChessException):
   ERROR_CODE = "COMMANDER_ERROR"
   DEFAULT_MESSAGE = "Commander raised an exception"
 
-#======================#  COMMANDER VALIDATION EXCEPTIONS ======================# 
+#======================# COMMANDER VALIDATION EXCEPTIONS #======================#  
 class NullCommanderException(CommanderException, NullException):
   """Raised if an entity, method, or operation requires team commander but gets null instead."""
   ERROR_CODE = "NULL_COMMANDER_ERROR"
@@ -94,7 +94,7 @@ class InvalidCommanderException(CommanderException, ValidationException):
   ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Commander validation failed."
 
-#======================#  COMMANDER BUILD EXCEPTIONS ======================# 
+#======================# COMMANDER BUILD EXCEPTIONS #======================#  
 class CommanderBuildFailedException(CommanderException, BuildFailedException):
   """
   Raised when BoardBuilder encounters an error while building team team. Exists primarily to catch all
@@ -103,7 +103,7 @@ class CommanderBuildFailedException(CommanderException, BuildFailedException):
   ERROR_CODE = "COMMANDER_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Commander build failed."
 
-#======================#  COMMANDER HISTORY EXCEPTIONS ======================# 
+#======================# COMMANDER HISTORY EXCEPTIONS #======================#  
 class CommanderHistoryException(CommanderException):
   """Team list specific errors."""
   ERROR_CODE = "COMMANDER_HISTORY_ERROR"

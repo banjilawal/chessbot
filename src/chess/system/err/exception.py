@@ -42,14 +42,14 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 """
 __all__ = [
   'ChessException',
-#======================#  ROLL_BACK EXCEPTIONS ======================# 
+#======================# ROLL_BACK EXCEPTIONS #======================#  
   'RollbackException',
 
-#======================#  INCONSISTENCY EXCEPTIONS ======================# 
+#======================# INCONSISTENCY EXCEPTIONS #======================#  
   'InconsistencyException',
   'InconsistentCollectionException',
 
-#======================#  NULL/EMPTY EXCEPTIONS ======================# 
+#======================# NULL/EMPTY EXCEPTIONS #======================#  
   'NullException',
   'NullNumberException',
   'NullStringException',
@@ -74,7 +74,7 @@ class ChessException(Exception):
     return f"{self.message}"
 
 
-#======================#  ROLL_BACK EXCEPTIONS ======================# 
+#======================# ROLL_BACK EXCEPTIONS #======================#  
 class RollbackException(ChessException):
   """
   Base class for rollback-related errors in the chess engine..
@@ -87,7 +87,7 @@ class RollbackFailedException(RollbackException):
   DEFAULT_MESSAGE = "Rollback failed."
 
 
-#======================#  INCONSISTENCY EXCEPTIONS ======================# 
+#======================# INCONSISTENCY EXCEPTIONS #======================#  
 class InconsistencyException(ChessException):
   """
   Raised if team data inconsistency is detected
@@ -105,7 +105,7 @@ class InconsistentCollectionException(InconsistencyException):
   )
 
 
-#======================#  NULL/EMPTY EXCEPTIONS ======================# 
+#======================# NULL/EMPTY EXCEPTIONS #======================#  
 class NullException(ChessException):
   """
   Raised if an entity, method, or operation requires not null but gets null instead.

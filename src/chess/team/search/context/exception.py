@@ -66,7 +66,7 @@ class PieceSearchContextException(ContextException):
     DEFAULT_MESSAGE = "PieceSearchContext raised an exception"
 
 
-# ======================#  SEARCH_CONTEXT VALIDATION EXCEPTIONS ======================#
+# #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullPieceSearchContextException(PieceSearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team pieceSearchContext but
@@ -101,7 +101,7 @@ class PieceSearchContextMaxParamCountException(PieceSearchContextException):
     DEFAULT_MESSAGE = "A PieceSearchContext cannot have more than one param set null."
 
 
-# ======================#  PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS ======================#
+# #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class PieceSearchContextBuildFailedException(PieceSearchContextException, BuildFailedException):
     """
     Raised when PieceSearchContextBuilder encounters an error while building team team.

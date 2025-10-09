@@ -7,11 +7,10 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation***: There is no guarantee properly created `Vector` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `VectorBuilder` product will not fail when used. Products
-    from `VectorBuilder` --should-- satisfy `VectorValidator` requirements.
+***Limitation***: There is no guarantee properly created `Vector` objects released by the module will satisfy
+    client requirements. Clients are responsible for ensuring a `VectorBuilder` product will not fail when used.
 
-**Related Features**:
+***Related Features***:
     Authenticating existing vectors -> See VectorValidator, module[chess.vector.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
@@ -26,7 +25,7 @@ version: 1.0.0
 # PURPOSE:
 ---------
 1. Central, single producer of authenticated `Vector` objects.
-2. Putting all the steps and logging into one place makes modules using `Vector` objects cleaner and easier to follow.
+2. Putting all the steps and logging into one place makes modules using `Vector` objects cleaner, easier to follow.
 
 ***Satisfies***: Reliability and performance contracts.
 

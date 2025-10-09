@@ -1,4 +1,5 @@
 # src/chess/vector/validation.py
+
 """
 Module: chess.vector.validator
 Author: Banji Lawal

@@ -52,18 +52,18 @@ from chess.system import ChessException, NullException, ValidationException, Bui
 __all__ = [
   'VectorException',
 
-#====================== VECTOR VALIDATION EXCEPTIONS ======================# 
+#====================== VECTOR VALIDATION EXCEPTIONS #======================#  
   'NullVectorException',
   'InvalidVectorException',
 
-#====================== VECTOR BUILD EXCEPTIONS ======================# 
+#====================== VECTOR BUILD EXCEPTIONS #======================#  
   'VectorBuildFailedException',
 
-#====================== NULL COMPONENT EXCEPTIONS ======================# 
+#====================== NULL COMPONENT EXCEPTIONS #======================#  
   'VectorAboveBoundsException',
   'VectorBelowBoundsException',
 
-#====================== VECTOR BOUNDS EXCEPTIONS ======================# 
+#====================== VECTOR BOUNDS EXCEPTIONS #======================#  
   'NullXComponentException',
   'NullYComponentException',
 ]
@@ -78,7 +78,7 @@ class VectorException(ChessException):
   DEFAULT_MESSAGE = "Vector raised an exception."
 
 
-#======================#  VECTOR VALIDATION EXCEPTIONS ======================# 
+#======================# VECTOR VALIDATION EXCEPTIONS #======================#  
 class NullVectorException(VectorException, NullException):
   """Raised if an entity, method, or operation requires team vector but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_ERROR"
@@ -94,7 +94,7 @@ class InvalidVectorException(VectorException, ValidationException):
   DEFAULT_MESSAGE = "Vector validation failed"
 
 
-#======================#  VECTOR BUILD EXCEPTIONS ======================# 
+#======================# VECTOR BUILD EXCEPTIONS #======================#  
 class VectorBuildFailedException(VectorException, BuildFailedException):
   """
   Raised when VectorBuilder crashed while building a new vector. Exists
@@ -104,7 +104,7 @@ class VectorBuildFailedException(VectorException, BuildFailedException):
   DEFAULT_MESSAGE = "Vector build failed."
 
 
-#======================#  NULL COMPONENT EXCEPTIONS ======================# 
+#======================# NULL COMPONENT EXCEPTIONS #======================#  
 class NullXComponentException(VectorException, NullException):
   """Raised if team vector's x dimension is null"""
   ERROR_CODE = "VECTOR_NULL_X_DIMENSION_ERROR"
@@ -117,7 +117,7 @@ class NullYComponentException(VectorException, NullException):
   DEFAULT_MESSAGE = "Vector's Y-dimension cannot be null"
 
 
-#======================#  VECTOR BOUNDS EXCEPTIONS ======================# 
+#======================# VECTOR BOUNDS EXCEPTIONS #======================#  
 class VectorAboveBoundsException(VectorException):
   """
   Iterating across coordinates to examine squares chess pieces can explore their with team step no

@@ -1,3 +1,44 @@
+# src/chess/system/config.py
+"""
+Module: chess.system.config
+Author: Banji Lawal
+Created: 2025-10-09
+
+# SCOPE:
+-------
+***Limitation***: This module cannot prevent classes, processes or modules using `Vector`
+    instances that pass sanity checks will not fail when using the validated `Vector`.
+    Once client's processes might fail, experience data inconsistency or have other
+    faults.
+    Objects authenticated by `VectorValidator` might fail additional requirements
+    a client has for a `Vector`. It is the client's responsibility to ensure the
+    validated `Vector` passes and additional checks before deployment.
+
+**Related Features**:
+    `Coord` -> See `Coord`, `CoordBuilder`, `CoordValidator`, module[chess.coord],
+    `Scalar` --> See `Scalar`, `ScalarValidator`, module[chess.vector],
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+
+# THEME:
+-------
+* Configuration
+
+# PURPOSE:
+---------
+1. Constants used in the application
+
+**Satisfies**: Consistency, Reliability.
+
+# DEPENDENCIES:
+---------------
+From `chess.system`:
+    `GameColor`
+
+# CONTAINS:
+----------
+ * `VectorValidator`
+"""
+
 from chess.system import GameColor
 
 __all__ = [
@@ -24,8 +65,6 @@ COLUMN_SIZE = 8
 BOARD_DIMENSION = 8
 MIN_NAME_LENGTH = 2
 MAX_NAME_LENGTH = 40
-
-
 
 """
   This is the number of steps moves in eit

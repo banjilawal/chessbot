@@ -52,14 +52,14 @@ from chess.system import ChessException, NullException, BuildFailedException, Va
 __all__ = [
   'PromotionEventException',
 
-#====================== PROMOTION_EVENT VALIDATION EXCEPTIONS ======================# 
+#====================== PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
   'NullPromotionEventException',
   'InvalidPromotionEventException',
 
-#====================== PROMOTION_EVENT BUILD EXCEPTIONS ======================# 
+#====================== PROMOTION_EVENT BUILD EXCEPTIONS #======================#  
   'PromotionEventBuildFailed',
 
-#====================== PROMOTION_TRANSACTION EXCEPTIONS ======================# 
+#====================== PROMOTION_TRANSACTION EXCEPTIONS #======================#  
   'PromotionTransactionException',
   'NullPromotionTransactionException',
 ]
@@ -74,7 +74,7 @@ class PromotionEventException(ChessException):
   DEFAULT_MESSAGE = "PromotionEvent raised an exception."
 
 
-#======================#  PROMOTION_EVENT VALIDATION EXCEPTIONS ======================# 
+#======================# PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
 class NullPromotionEventException(PromotionEventException, NullException):
   """Raised if an entity, method, or operation requires team `PromotionEvent` but gets null instead."""
   pass
@@ -88,7 +88,7 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
   DEFAULT_MESSAGE = "PromotionEvent validation failed."
 
 
-#======================#  PROMOTION_EVENT BUILD EXCEPTIONS ======================# 
+#======================# PROMOTION_EVENT BUILD EXCEPTIONS #======================#  
 class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
   """
   Raised when `PromotionEventBuilder` crashed while building team new `PromotionEven`. Exists
@@ -98,7 +98,7 @@ class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
   DEFAULT_MESSAGE = "PromotionEvent build failed."
 
 
-#======================#  PROMOTION_TRANSACTION EXCEPTIONS ======================# 
+#======================# PROMOTION_TRANSACTION EXCEPTIONS #======================#  
 class PromotionTransactionException(TransactionException):
   """
   Wraps any errors raised during the promotion's lifecycle.
