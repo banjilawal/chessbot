@@ -1,30 +1,60 @@
-# src/chess/piece/event/transaction
+# src/chess/vector/vector.py
 """
-Module: chess.piece.event.transaction
+Module: chess.vector.vector
 Author: Banji Lawal
-Created: 2025-09-28
+Created: 2025-10-08
 
 # SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
+-------
+**Limitation**: This module cannot prevent classes, processes or modules using `Vector`
+    instances that pass sanity checks will not fail when using the validated `Vector`.
+    Once client's processes might fail, experience data inconsistency or have other
+    faults.
+    Objects authenticated by `VectorValidator` might fail additional requirements
+    a client has for a `Vector`. It is the client's responsibility to ensure the
+    validated `Vector` passes and additional checks before deployment.
+
+**Related Features**:
+    `Coord` -> See `Coord`, `CoordBuilder`, `CoordValidator`, module[chess.coord],
+    `Scalar` --> See `Scalar`, `ScalarValidator`, module[chess.vector],
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
-* Highlight the core feature (thread-safety)
-* Explain the how-and-why of implementation choices.
+-------
+* Transform, geometry
 
 # PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
+---------
+1. Central, single source of truth for correctness of existing `Vector` objects.
+2. Putting all the steps and logging into one place makes modules using `Vector` objects
+    cleaner and easier to follow.
+
+**Satisfies**: Consistency contracts.
 
 # DEPENDENCIES:
+---------------
+From `chess.system`:
+  * `LoggingLevelRouter`
+From `chess.coord`:
+  * `Coord`, `CoordValidator`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`
+
+From `chess.scalar`:
+  * `Scalar`, `ScalarValidator`
+
+from `chess.board`
+  * `SquareIterator`
+
+From `chess.vector`:
+    `Vector`, `NullVectorException`, `InvalidVectorException`, `NullXComponentException`,
+    `NullYComponentException`, `VectorBelowBoundsException`, `VectorAboveBoundsException`
 
 # CONTAINS:
- * ``
+----------
+ * `VectorValidator`
 """
 
 
-from chess.system import Result
+from chess.system import Result, LoggingLevelRouter
 from chess.coord import Coord, CoordValidator
 from chess.scalar import Scalar, ScalarValidator
 
@@ -66,7 +96,6 @@ class Vector:
       return False
     if not isinstance(other, Vector):
       return False
-
     return self._x == other.x and self._y == other.y
 
 
@@ -74,6 +103,7 @@ class Vector:
     return hash((self._x, self._y))
 
 
+  @LoggingLevelRouter.monitor()
   def scalar_product(self, scalar: Scalar) -> Result['Vector']:
     """
     Action:
@@ -97,10 +127,13 @@ class Vector:
     except Exception as e:
       return Result(exception=e)
 
+
+  @LoggingLevelRouter.monitor()
   def add_to_coord(self, coord: Coord) -> Result[Coord]:
     """
     Action:
-      Transform a `Coord` by offsetting r
+      Transform a `Coord` by offsetting `Coord.row` and `Coord.column`.
+
     Parameters:
       * `coord` (`Coord`): A Coord object
 
