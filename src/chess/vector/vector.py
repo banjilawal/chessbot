@@ -1,4 +1,27 @@
+# src/chess/piece/event/transaction
+"""
+Module: chess.piece.event.transaction
+Author: Banji Lawal
+Created: 2025-09-28
 
+# SCOPE:
+* The limits of the module, defined by what it does not do.
+* Where to look for related features this models does not provide because of its limitations.
+
+# THEME:
+* Highlight the core feature (thread-safety)
+* Explain the how-and-why of implementation choices.
+
+# PURPOSE:
+* Function and role in the system.
+* Why the module exists in the application architecture
+* What problem it fundamentally solves
+
+# DEPENDENCIES:
+
+# CONTAINS:
+ * ``
+"""
 from chess.system import KNIGHT_STEP_SIZE
 from chess.vector import (
   NullXComponentException, NullYComponentException,
@@ -8,6 +31,16 @@ from chess.vector import (
 from chess.scalar import Scalar
 
 class Vector:
+    # """
+    # ROLE:
+    # ----
+    # RESPONSIBILITIES:
+    # ----------------
+    # PROVIDES:
+    # --------
+    # ATTRIBUTES:
+    # ----------
+    # """
   _x: int
   _y: int
 
@@ -23,7 +56,16 @@ class Vector:
 
   def __init__(self, x: int, y: int):
     method = f"Offset__init__"
-
+    """
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
     """
     Constructs team Offset instance.
     
@@ -73,30 +115,41 @@ class Vector:
 
 
   def scalar_product(self, scalar: Scalar) -> 'Vector':
-    return Vector(x=self._x * scalar.value, y=self._y * scalar.value)
-
-
-
-  #
-  # def add_to_coordinate(self, coord: Coord) -> Coord:
-  #   validation_result = CoordinateSpecification.is_satisfied_by(coord)
-  #   if not validation_result.is_success():
-  #     raise validation_result.team_exception
-  #
-  #   c = validation_result.payload
-  #
-  #   row = c.row + self.y
-  #   column = c.column + self.x
-  #
-  #   validation_result = CoordinateSpecification.is_satisfied_by(
-  #     Coord(row=row, column=column)
-  #   )
-  #   if not validation_result.is_success():
-  #     raise validation_result.team_exception
-  #
-  #   return validation_result.payload
-
-
-
-  def __str__(self):
-    return f"Vector(x={self._x}, y={self._y})"
+      #   """
+      # Action:
+      # Parameters:
+      #     * `param` (`DataType`):
+      # Returns:
+      #     `DataType` or `Void`
+      # Raises:
+      # MethodNameException wraps
+      #     *
+      # """
+      """      
+      return Vector(x=self._x * scalar.value, y=self._y * scalar.value)
+  
+  
+  
+    #
+    # def add_to_coordinate(self, coord: Coord) -> Coord:
+    #   validation_result = CoordinateSpecification.is_satisfied_by(coord)
+    #   if not validation_result.is_success():
+    #     raise validation_result.team_exception
+    #
+    #   c = validation_result.payload
+    #
+    #   row = c.row + self.y
+    #   column = c.column + self.x
+    #
+    #   validation_result = CoordinateSpecification.is_satisfied_by(
+    #     Coord(row=row, column=column)
+    #   )
+    #   if not validation_result.is_success():
+    #     raise validation_result.team_exception
+    #
+    #   return validation_result.payload
+  
+  
+  
+    def __str__(self):
+      return f"Vector(x={self._x}, y={self._y})"

@@ -1,3 +1,27 @@
+# src/chess/piece/event/transaction
+"""
+Module: chess.piece.event.transaction
+Author: Banji Lawal
+Created: 2025-09-28
+
+# SCOPE:
+* The limits of the module, defined by what it does not do.
+* Where to look for related features this models does not provide because of its limitations.
+
+# THEME:
+* Highlight the core feature (thread-safety)
+* Explain the how-and-why of implementation choices.
+
+# PURPOSE:
+* Function and role in the system.
+* Why the module exists in the application architecture
+* What problem it fundamentally solves
+
+# DEPENDENCIES:
+
+# CONTAINS:
+ * ``
+"""
 from enum import Enum
 
 from chess.team import Team, TeamSchema, NullTeamSchemaException, TeamBuilderException
@@ -8,6 +32,16 @@ from assurance import ThrowHelper
 
 
 class TeamBuilder(Enum):
+  #   """
+  #   ROLE:
+  #   ----
+  #   RESPONSIBILITIES:
+  #   ----------------
+  #   PROVIDES:
+  #   --------
+  #   ATTRIBUTES:
+  #   ----------
+  # """
   """
   Builder class responsible for safely constructing `Team` instances.
 
@@ -37,6 +71,16 @@ class TeamBuilder(Enum):
 
   @staticmethod
   def build(team_id: int, commander: Commander, profile: TeamSchema) -> BuildResult[Team]:
+    #   """
+    # Action:
+    # Parameters:
+    #     * `param` (`DataType`):
+    # Returns:
+    #     `DataType` or `Void`
+    # Raises:
+    # MethodNameException wraps
+    #     *
+    # """
     """
     Constructs team new `Team` instance with comprehensive checks on the parameters and states during the
     build process.

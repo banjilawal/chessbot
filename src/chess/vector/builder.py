@@ -1,148 +1,125 @@
-from enum import Enum
+# src/chess/vector/builder.py
+"""
+Module: chess.vector.builder
+Author: Banji Lawal
+Created: 2025-10-08
+version: 1.0.0
 
-from chess.system import BuildResult, KNIGHT_STEP_SIZE
-from chess.system.error.throw_helper import ThrowHelper
+# SCOPE:
+* The limits of the module, defined by what it does not do.
+* Where to look for related features this models does not provide because of its limitations.
+
+# THEME:
+* Building, Single responsibilities,
+* Explain the how-and-why of implementation choices.
+
+# PURPOSE:
+* Function and role in the system.
+* Why the module exists in the application architecture
+* What problem it fundamentally solves
+
+# DEPENDENCIES:
+From `chess.system`:
+  * `BuildResult`, `Builder`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`
+
+From `chess.vector`:
+    `Vector`, `VectorBuildFailedException`, `InvalidVectorException`, `NullXComponentException`,
+    `NullYComponentException`,`VectorBelowBoundsException`, `VectorAboveBoundsException`
+
+# CONTAINS:
+ * `VectorBuilder`
+"""
+
+from chess.system import Builder, BuildResult, KNIGHT_STEP_SIZE, LoggingLevelRouter
 from chess.vector import (
-  Vector, VectorBelowBoundsException, VectorAboveBoundsException,
-  NullXComponentException, NullYComponentException, VectorBuilderException
+    Vector, InvalidVectorException, NullXComponentException, NullYComponentException,
+    VectorBelowBoundsException, VectorAboveBoundsException
 )
 
-
-
-class VectorBuilder(Enum):
-  """
-  Builder class responsible for safely constructing `Vector` instances.
-
-  `VectorBuilder` ensures that `Vector` objects are always created successfully by performing comprehensive validate
-   checks during construction. This separates the responsibility of building from validating - `VectorBuilder`
-   focuses on creating while `VectorValidator` is used for validating existing `Vector` instances that are passed
-   around the system.
-
-  The build runs through all validate checks individually to guarantee that any `Vector` instance it produces
-  meets all required specifications before construction completes.
-
-  Usage:
-    ```python
-    # Safe construction of team Vector instance if and only if the parameters meet specs
-    build_outcome = VectorBuilder.build(x=2, y=1)
-    if not build_outcome.is_success():
-      raise build_outcome.err
-    vector = build_outcome.payload
-    ```
-    
-  See Also:
-    `Vector`: The data structure being constructed
-    `VectorValidator`: Used for validating existing `Vector` instances
-    `BuildResult`: Return type containing the built `Vector` or error information
-  """
-
-  @staticmethod
-  def build(x: int, y: int) -> BuildResult[Vector]:
+class VectorBuilder(Builder[Vector]):
     """
-    Constructs team new `Vector` instance with comprehensive checks on the parameters and states during the
-    build process.
+    # ROLE: Builder
 
-    Performs individual validate checks on each component to ensure the resulting `Vector` meets all
-    specifications. If all checks are passed, team `Vector` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `Vector` instance. This method guarantees if team `BuildResult`
-    with team successful status is returned, the contained `Vector` is valid and ready for use.
+    # RESPONSIBILITIES:
+    1. Process and validate parameters for creating `Vector` instances.
+    2. Create new `Vector` objects if parameters meet specifications.
+    2. Report errors and return `BuildResult` with error details.
 
-    Args:
-      `x` (`int`): The x-component of the vector. Must not be None and must be within 
-        [`-KNIGHT_STEP_SIZE`, `KNIGHT_STEP_SIZE ] bounds.
-      `y` (`int`): The y-component of the vector. Must not be None and must be within 
-      [  -KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE] bounds.
+    # PROVIDES:
+    `BuildResult`: Return type containing the built `Vector` or error information.
 
-    Returns:
-      BuildResult[Vector]: A `BuildResult` containing either:
-        - On success: A valid `Vector` instance in the payload
-        - On failure: Error information and error details
-
-    Raises:
-      `VectorBuilderException`: Wraps any underlying validate failures that occur during the construction
-      process. This includes:
-        * `NullXComponentException`: if x is None
-        * `NullYComponentException`: if y is None
-        * `VectorBelowBoundsException`: if x or y < -KNIGHT_STEP_SIZE
-        * `VectorAboveBoundsException`: if x or y > KNIGHT_STEP_SIZE
-        * Any validate errors from `VectorValidator`
-
-    Note:
-      The build runs through all the checks on parameters and state to guarantee only team valid `Vector` is
-      created, while `VectorValidator` is used for validating `Vector` instances that are passed around after 
-      creation. This separation of concerns makes the validate and building independent of each other and
-      simplifies maintenance.
-
-    Example:
-      ```python
-      from typing import cast
-      from chess.vector import Vector, VectorBuilder
-
-      # Creates team valid vector
-      build_outcome = VectorBuilder.build(x=2, y=1)
-
-      if not build_outcome.is_success():
-        raise build_outcome.err # <--- Skips this because x and y are valid
-      u = cast(Vector, build_outcome.payload) # <-- executes this line
-      ```
+    # ATTRIBUTES:
+    None
     """
-    method = "VectorBuilder.build"
 
-    try:
-      if x is None:
-        ThrowHelper.route_error(
-          VectorBuilder,
-          NullXComponentException(NullXComponentException.DEFAULT_MESSAGE)
-        )
-      if x < -KNIGHT_STEP_SIZE:
-        ThrowHelper.route_error(
-          VectorBuilder,
-          VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
-        )
-      if x > KNIGHT_STEP_SIZE:
-        ThrowHelper.route_error(
-          VectorBuilder,
-          VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
-        )
+    @classmethod
+    def build(cls, x: int, y: int) -> BuildResult[Vector]:
+        """
+        ACTION:
+        Create a `Vector` object if the parameters have correctness.
 
+        PARAMETERS:
+            * `x` (`int`): value in the x-plane
+            * `y` (`int`): value in the y-plane
 
-      if y is None:
-        ThrowHelper.route_error(
-          VectorBuilder,
-          NullYComponentException(NullYComponentException.DEFAULT_MESSAGE)
-        )
-      if y < -KNIGHT_STEP_SIZE:
-        ThrowHelper.route_error(
-          VectorBuilder,
-          VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
-        )
-      if y > KNIGHT_STEP_SIZE:
-        ThrowHelper.route_error(
-          VectorBuilder,
-          VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
-        )
+        RETURNS:
+        `BuildResult[Vector]`: A `BuildResult` containing either:
+            `'payload'` - A valid `Vector` instance in the payload
+            `exception` - Error information and error details
 
-      vector = Vector(x=x, y=y)
-      return BuildResult(payload=vector)
+        RAISES:
+        `VectorBuildFailedException`: Wraps any specification violations including:
+            * `NullXComponentException`: if `x` is None
+            * `NullYComponentException`: if `y` is None
+            * `VectorBelowBoundsException`: if `x` or `y` < -KNIGHT_STEP_SIZE
+            * `VectorAboveBoundsException`: if `x` or `y` > KNIGHT_STEP_SIZE
+        """
+        method = "VectorBuilder.build"
 
-    except Exception as e:
-      raise VectorBuilderException(f"{method}: {VectorBuilderException.DEFAULT_MESSAGE}")
+        try:
+            # Handle the x-component
+            if x is None:
+                ex = NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
+                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=ex)
 
+            if x < -KNIGHT_STEP_SIZE:
+                ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=ex)
 
-# def main():
-#   build_outcome = VectorBuilder.build(3, 4)
-#   if build_outcome.is_success():
-#     vector = build_outcome.payload
-#     print(f"Successfully built vector: {vector}")
-#   else:
-#     print(f"Failed to build vector: {build_outcome.team_exception}")
-#
-#   build_outcome = VectorBuilder.build(-1, 4)
-#   if build_outcome.is_success():
-#     vector = build_outcome.payload
-#     print(f"Successfully built vector: {vector}")
-#   else:
-#     print(f"Failed to build vector: {build_outcome.team_exception}")
-#
-# if __name__ == "__main__":
-#   main()
+            if x > KNIGHT_STEP_SIZE:
+                ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=ex)
+
+            # Handle the y-component
+            if y is None:
+                ex = NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
+                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=ex)
+
+            if y < -KNIGHT_STEP_SIZE:
+                ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=ex)
+
+            if y > KNIGHT_STEP_SIZE:
+                ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=ex)
+
+            return BuildResult(payload=Vector(x=x, y=y))
+
+        except (
+            NullXComponentException,
+            NullYComponentException,
+            VectorBelowBoundsException,
+            VectorAboveBoundsException
+        ) as e:
+            raise VectorBuildFailedException(f"{method}: {e}")
+
+        # This block catches any unexpected exceptions, logs and re
+        except Exception as e:
+            LoggingLevelRouter.route_error(context=VectorBuilder, exception=e)
+            raise VectorBuildFailedException(f"{method}: {e}")
