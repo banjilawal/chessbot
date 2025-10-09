@@ -45,8 +45,8 @@ From `chess.team`:
 """
 from typing import cast
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
-from chess.team import Team, InvalidTeamException, NullTeamException, NullTeamSchemaException
-from chess.system import ValidationResult, Validator, LoggingLevelRouter, IdValidator
+from chess.team import Team, InvalidTeamException, NullTeamException, NullTeamSchemaException, TeamSchemaValidator
+from chess.system import ValidationResult, Validator, LoggingLevelRouter, IdValidator, InconsistentCollectionException
 
 
 class TeamValidator(Validator[Team]):
@@ -106,10 +106,9 @@ class TeamValidator(Validator[Team]):
 
       team = cast(Team, candidate)
 
-      if team.scheme is None:
-        return ValidationResult(exception=NullTeamSchemaException(
-          f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}"
-        ))
+      schema_validation = TeamSchemaValidator.validate(team.schema)
+      if not schema_validation.is_success():
+        return ValidationResult(exception=schema_validation.exception)
 
       id_validation = IdValidator.validate(team.id)
       if not id_validation.is_success():
@@ -126,8 +125,8 @@ class TeamValidator(Validator[Team]):
         ))
 
       if team not in commander.teams.items:
-        return ValidationResult(exception=RelationshipException(
-          f"{method}: {RelationshipException.DEFAULT_MESSAGE}"
+        return ValidationResult(exception=InconsistentCollectionException(
+          f"{method}: [Team-Not-In-Commander-History] {InconsistentCollectionException.DEFAULT_MESSAGE}"
         ))
 
       return ValidationResult(payload=team)

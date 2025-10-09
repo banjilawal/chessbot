@@ -25,8 +25,7 @@ Created: 2025-09-28
 
 from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
-from chess.system import Result, Validator, IdValidator, InvalidIdException
-from chess.exception import RelationshipException
+from chess.system import Result, Validator, IdValidator, InvalidIdException, InconsistentCollectionException
 from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \
   InvalidCommanderAssignmentException
@@ -103,7 +102,7 @@ class PieceSearchContextValidator(Validator):
 
       team = cast(Team, candidate)
 
-      if team.scheme is None:
+      if team.schema is None:
         raise NullTeamSchemaException(f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}")
 
       id_validation = IdValidator.validate(team.id)
@@ -121,7 +120,9 @@ class PieceSearchContextValidator(Validator):
         )
 
       if team not in commander.teams.items:
-        raise RelationshipException(f"{method}: {RelationshipException.DEFAULT_MESSAGE}")
+        raise InconsistentCollectionException(
+          f"{method}: [Team-Not-In-Commander-History] {RelationshipException.DEFAULT_MESSAGE}"
+        )
 
       return Result(payload=team)
 
@@ -131,8 +132,8 @@ class PieceSearchContextValidator(Validator):
         InvalidIdException,
         NullTeamSchemaException,
         InvalidCommanderException,
+        InconsistentCollectionException,
         InvalidCommanderAssignmentException,
-        RelationshipException
     ) as e:
       raise InvalidTeamException(f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}") from e
 

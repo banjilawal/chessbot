@@ -50,30 +50,40 @@ from chess.exception import ChessException, ValidationException, NullException
 
 __all__ = [
   'CoordStackException',
-  'DoubleCoordPushException',
+
   'NullCoordStackException',
   'CoordStackValidationException'
 ]
 
+from chess.system import InconsistentCollectionException
+
 """
 Super class for Piece exceptions
 """
-class CoordStackException(ChessException):
+class CoordStackException(InconsistentCollectionException):
   """
   Super class for exceptions raised by CoordStack objects
   """
   ERROR_CODE = "COORD_STACK_ERROR"
   DEFAULT_MESSAGE = "CoordStack raised an exception."
+  
+  
+class CoordStakOperationException(CoordStackException):
+  pass
+  
+class CoordStackConsistencyException(CoordStackException, InconsistentCollectionException):
+  pass
 
 
-class DoubleCoordPushException(CoordStackException):
-  """
-  Raised when team Coord at the top of the stack is pushed again. This is additional sanity check.
-  Piece should catch moving to the same Square before the stack is modified. important in OccupationEvent
-  transactions
-  """
-  ERROR_CODE = "DOUBLE_COORD_PUSH_ERROR"
-  DEFAULT_MESSAGE = "Cannot push the same Coord twice. The Coord is already at the top of the stack"
+class PopEmptyStackException(CoordStackException):
+  """Raised when trying to pop from empty stack."""
+  ERROR_CODE = "POP_EMPTY_STACK_ERROR"
+  DEFAULT_MESSAGE = "Cannot pop from empty stack"
+
+class DuplicatePushException(CoordStackException):
+  """Raised when trying to push duplicate to stack that doesn'candidate allow duplicates."""
+  ERROR_CODE = "DUPLICATE_PUSH_ERROR"
+  DEFAULT_MESSAGE = "Cannot push duplicate item to stack"
 
 
 class NullCoordStackException(CoordStackException, NullException):
@@ -82,6 +92,23 @@ class NullCoordStackException(CoordStackException, NullException):
   DEFAULT_MESSAGE = f"CoordStack is null. This should never happen because Piece must always have team CoordStack"
 
 
-class CoordStackValidationException(CoordStackException, ValidationException):
+class CoordStackValidationException(CoordStackException):
   ERROR_CODE = "COORDINATE_STACK_VALIDATION_ERROR"
   DEFAULT_MESSAGE = f"CoordinateStack validation failed"
+
+
+
+
+
+
+
+
+class PushNullException(CoordStackException):
+  """Raised when trying to push null item to stack."""
+  ERROR_CODE = "PUSH_NULL_ERROR"
+  DEFAULT_MESSAGE = "Cannot push null item to stack"
+
+
+class InconsistentCurrentCoordException(CoordStackException):
+  ERROR_CODE = "INCONSISTENT_CURRENT_COORD_ERROR"
+  DEFAULT_MESSAGE = "Current coordinate state is inconsistent"

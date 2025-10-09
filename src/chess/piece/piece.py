@@ -232,7 +232,7 @@ class Piece(ABC):
       f"Piece[id:{self._id} "
       f"name:{self._name} "
       f"rank:{self._rank.name} "
-      f"team:{self._team.scheme.name} "
+      f"team:{self._team.schema.name} "
       f"position:{self._positions.current_coord} "
       f"moves:{self._positions.size()}]"
     )

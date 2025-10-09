@@ -56,12 +56,15 @@ __all__ = [
   'BlankStringException'
 ]
 
+from chess.system import ValidationException
+
+
 class ChessException(Exception):
   """
   Super class for application exceptions. do not use directly
   """
   ERROR_CODE = "CHESS_ERROR"
-  DEFAULT_MESSAGE = "Chess error occurred"
+  DEFAULT_MESSAGE = "Chess error occurred."
 
   # Only the super class needs the explict constructor
   def __init__(self, message=None):
@@ -88,21 +91,28 @@ class RollbackFailedException(RollbackException):
 
 
 #======================# INCONSISTENCY EXCEPTIONS #======================#  
-class InconsistencyException(ChessException):
+class InconsistencyException(ValidationException):
   """
   Raised if team data inconsistency is detected
   """
   ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
-  DEFAULT_MESSAGE = "A data inconsistency was detected"
+  DEFAULT_MESSAGE = "A data inconsistency was detected."
 
 class InconsistentCollectionException(InconsistencyException):
   """
-  Raised if team collection's state is inconsistent or its data corrupted
+  Raised if a collection's state is inconsistent or its data corrupted
   """
   ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
   DEFAULT_MESSAGE = (
-    "Collection is an inconsistent state. Data might be corrupted"
+    "Collection is an inconsistent state. Data might be corrupted".
   )
+
+  class CollectionOperationException(ValidationException):
+    """
+    Raised if an operation is not allowed in a collection
+    """
+    ERROR_CODE = "COLLECTION_OPERATION_ERROR"
+    DEFAULT_MESSAGE = ("Operation not allowed in the collection.")
 
 
 #======================# NULL/EMPTY EXCEPTIONS #======================#  

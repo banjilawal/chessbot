@@ -72,33 +72,7 @@ class CollectionSizeConflictException(CollectionException):
 
 #======================# STACK-SPECIFIC EXCEPTIONS #======================#  
 
-class CoordStackException(CollectionException):
-  """Base error for stack operations."""
-  ERROR_CODE = "STACK_ERROR"
-  DEFAULT_MESSAGE = "Stack transaction failed"
 
-
-class PopEmptyStackException(CoordStackException):
-  """Raised when trying to pop from empty stack."""
-  ERROR_CODE = "POP_EMPTY_STACK_ERROR"
-  DEFAULT_MESSAGE = "Cannot pop from empty stack"
-
-
-class DuplicatePushException(CoordStackException):
-  """Raised when trying to push duplicate to stack that doesn'candidate allow duplicates."""
-  ERROR_CODE = "DUPLICATE_PUSH_ERROR"
-  DEFAULT_MESSAGE = "Cannot push duplicate item to stack"
-
-
-class PushNullException(CoordStackException):
-  """Raised when trying to push null item to stack."""
-  ERROR_CODE = "PUSH_NULL_ERROR"
-  DEFAULT_MESSAGE = "Cannot push null item to stack"
-
-
-class InconsistentCurrentCoordException(CoordStackException):
-  ERROR_CODE = "INCONSISTENT_CURRENT_COORD_ERROR"
-  DEFAULT_MESSAGE = "Current coordinate state is inconsistent"
 
 
 #======================# SPECIFIC COLLECTION EXCEPTIONS #======================#  
@@ -120,12 +94,4 @@ class NullEncounterException(EncounterLogException):
 
 #======================# RELATIONSHIP EXCEPTIONS #======================#  
 
-class RelationshipException(ChessException):
-  """Base error for relationship consistency errors."""
-  ERROR_CODE = "RELATIONSHIP_ERROR"
-  DEFAULT_MESSAGE = "Relationship consistency err"
-
-class BrokenRelationshipException(RelationshipException):
-  ERROR_CODE = "BROKEN_RELATIONSHIP_ERROR"
-  DEFAULT_MESSAGE = "Broken bidirectional relationship detected"
 

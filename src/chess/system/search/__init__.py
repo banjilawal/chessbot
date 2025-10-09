@@ -7,10 +7,10 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-
-from .exception import *
-
-
 from .context import *
 from .search import *
+from .exception import *
+
 from .result import SearchResult
+from .builder import SearchResultBuilder
+

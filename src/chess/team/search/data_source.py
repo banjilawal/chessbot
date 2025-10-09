@@ -1,8 +1,8 @@
-# src/chess/piece/event/transaction
+# src/chess/team/search/data_source.py
 """
-Module: chess.piece.event.transaction
+Module: chess.team.search.DataSource
 Author: Banji Lawal
-Created: 2025-09-28
+Created: 2025-10-09
 
 # SCOPE:
 * The limits of the module, defined by what it does not do.

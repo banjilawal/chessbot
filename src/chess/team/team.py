@@ -95,7 +95,7 @@ class Team:
 
 
   @property
-  def scheme(self) -> TeamSchema:
+  def schema(self) -> TeamSchema:
     return self._schema
 
 

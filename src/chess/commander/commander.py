@@ -75,7 +75,7 @@ class Commander(ABC):
     total_games_str = f"total games:{total_games}" if total_games > 0 else ""
 
     current_side = "" if self._current_team is None else \
-      f" curren_team:[{self._current_team.id}, {self._current_team.scheme.color}"
+      f" curren_team:[{self._current_team.id}, {self._current_team.schema.color}"
     return (
       f"Owner[id:{self._id}"
       f" name:{self._name}"

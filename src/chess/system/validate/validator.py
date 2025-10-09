@@ -1,4 +1,5 @@
 # src/chess/piece/event/transaction
+
 """
 Module: chess.piece.event.transaction
 Author: Banji Lawal
@@ -9,15 +10,16 @@ Created: 2025-09-28
 * Where to look for related features this models does not provide because of its limitations.
 
 # THEME:
-* Highlight the core feature (thread-safety)
+* Loose coupling
 * Explain the how-and-why of implementation choices.
 
 # PURPOSE:
-* Function and role in the system.
+* Interface for implementing Validation
 * Why the module exists in the application architecture
 * What problem it fundamentally solves
 
 # DEPENDENCIES:
+
 
 # CONTAINS:
  * `OccupationTransaction`
@@ -34,7 +36,7 @@ T = TypeVar('T')
 """Super class for entity validators."""
 class Validator(ABC, Generic[T]):
   """
-  ROLE:
+  ROLE: Interface, Validation
   ----
   RESPONSIBILITIES:
   ----------------

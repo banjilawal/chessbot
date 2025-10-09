@@ -47,16 +47,14 @@ From `chess.commander`:
  * `TeamBuilder`
 """
 
-
-from chess.team import Team, TeamSchema, NullTeamSchemaException, TeamBuildFailedException
+from chess.team import Team, TeamSchema, TeamSchemaValidator, TeamBuildFailedException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
-from chess.system import IdValidator, BuildResult, Builder, LoggingLevelRouter
-from chess.exception import RelationshipException
+from chess.system import BuildResult, Builder, LoggingLevelRouter, InconsistentCollectionException
 
 
 class TeamBuilder(Builder[Team]):
   """
-  # ROLE: Builder
+  # ROLE: Builder implementation
 
   # RESPONSIBILITIES:
   1. Process and validate parameters for creating `Team` instances.
@@ -69,7 +67,6 @@ class TeamBuilder(Builder[Team]):
   # ATTRIBUTES:
   None
   """
-
 
   @classmethod
   @LoggingLevelRouter.monitor()
@@ -97,18 +94,9 @@ class TeamBuilder(Builder[Team]):
     method = "TeamBuilder.build"
 
     try:
-      if schema is None:
-        return BuildResult(exception=NullTeamSchemaException(NullTeamSchemaException.DEFAULT_MESSAGE)
-                            )
-      if not isinstance(schema, TeamSchema):
-        return BuildResult(exception=TypeError(
-          f"{method} Expected team TeamProfile, got {type(schema).__name__}"
-        ))
-
-      id_validation = IdValidator.validate(team_id)
-      if not id_validation.is_success():
-        ThrowHelper.log_and_raise_error(TeamBuilder, id_validation.exception)
-
+      schema_validation = TeamSchemaValidator.validate(schema)
+      if not schema_validation.is_success():
+        return BuildResult(exception=schema_validation.exception)
 
       commander_validation = CommanderValidator.validate(commander)
       if not commander_validation.is_success():
@@ -118,14 +106,18 @@ class TeamBuilder(Builder[Team]):
 
       if team.commander != commander:
         return BuildResult(exception=InvalidCommanderAssignmentException(
-          InvalidCommanderAssignmentException.DEFAULT_MESSAGE
-        ))
+          f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"
+          )
+        )
 
       if team not in commander.teams:
         commander.teams.add_team(team)
 
       if team not in commander.teams:
-        return BuildResult(exception=RelationshipException(RelationshipException.DEFAULT_MESSAGE))
+        return BuildResult(exception=InconsistentCollectionException(
+          f"{method}: [Team-Not-In-Commander-History] {InconsistentCollectionException.DEFAULT_MESSAGE}"
+          )
+        )
 
       return BuildResult(payload=team)
 
