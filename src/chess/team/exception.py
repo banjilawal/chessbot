@@ -11,8 +11,8 @@ SCOPE:
 This module is exclusively for defining all custom **exception classes** that are specific to the
 creation, validation, and manipulation of `Team` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
-`Team`, `TeamBuilder`, and `TeamValidator`
+***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
+    `Team`, `TeamBuilder`, and `TeamValidator`
 
 THEME:
 -----

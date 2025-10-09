@@ -7,7 +7,10 @@ version: 1.0.0
 
 # SCOPE:
 -------
-**Limitation**: There is no guarantee properly created `Team` objects released by the module will satisfy client
+***Limitation 1***: No validation, error checking is performed in `Team` class. Using the class directly instead of
+  its CRUD interfaces goes against recommended usage.
+
+***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
     requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
@@ -17,7 +20,7 @@ version: 1.0.0
 
 # THEME:
 -------
-* Data Holding, `PieceServer`
+* Data Holding, Coordination, Performance
 
 **Design Concepts**:
     Separating object creation from object usage.
@@ -25,10 +28,9 @@ version: 1.0.0
 
 # PURPOSE:
 ---------
-1. .
-2. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
+1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
 
-**Satisfies**: Reliability and performance contracts.
+***Satisfies***: Reliability and performance contracts.
 
 # DEPENDENCIES:
 ---------------
@@ -41,6 +43,9 @@ From `chess.team`:
 
 From `chess.commander`:
   `Commander`, `CommanderValidator`,
+
+From `chess.piece`:
+  `Piece`
 
 # CONTAINS:
 ----------
@@ -59,7 +64,7 @@ from chess.team import TeamSchema, NullTeamSchemaException
 @AutoId()
 class Team:
   """
-  # ROLE: Service
+  # ROLE: Service, Coordination
 
   # RESPONSIBILITIES:
   # PROVIDES:

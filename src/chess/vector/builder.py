@@ -7,7 +7,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-**Limitation**: There is no guarantee properly created `Vector` objects released by the module will satisfy client
+***Limitation***: There is no guarantee properly created `Vector` objects released by the module will satisfy client
     requirements. Clients are responsible for ensuring a `VectorBuilder` product will not fail when used. Products
     from `VectorBuilder` --should-- satisfy `VectorValidator` requirements.
 
@@ -19,7 +19,7 @@ version: 1.0.0
 -------
 * Data assurance, error prevention
 
-**Design Concepts**:
+***Design Concepts***:
     Separating object creation from object usage.
     Keeping constructors lightweight
 
@@ -28,7 +28,7 @@ version: 1.0.0
 1. Central, single producer of authenticated `Vector` objects.
 2. Putting all the steps and logging into one place makes modules using `Vector` objects cleaner and easier to follow.
 
-**Satisfies**: Reliability and performance contracts.
+***Satisfies***: Reliability and performance contracts.
 
 # DEPENDENCIES:
 ---------------

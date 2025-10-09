@@ -5,39 +5,9 @@ Module: `chess.square`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
-
-## PURPOSE
-This package provides foundational objects for the chess board. It defines the `Square` class,
-which serves as team data container for storing team discover's location, and team `SquareValidator` to ensure
-the integrity of square objects.
-
-## CORE CLASSES
-* `Square`: A data-holding object representing team single square on team chessboard.
-* `SquareValidator`: A class that validates the data and integrity of team `Square` object.
-
-## USAGE
-To use this package, import the desired classes and perform square-related operations.
-
->>> from chess.enemy import Square, SquareValidator
->>> from chess.coord import Coord
->>> from chess.piece import Piece
->>>
->>>
->>> # Build team new Square at Coord(2, 1)
->>> coord = Coord(row=2, column=1)
->>> build_outcome = SquareBuilder.build(square_id=1, name="B2", coord=coord)
->>> if not build_outcome.is_success():
->>>  raise build_outcome.err
->>> square = cast(Square, build_outcome.payload)
->>> # Validate the square
->>> validate = SquareValidator.validate(square)
----
 """
 
-# subpackages
 from .exception import *
-
-# class
 from .square import Square
 from .builder import SquareBuilder
 from .validator import SquareValidator
@@ -46,12 +16,11 @@ __version__ = "1.0.0"
 __author__ = "Banji Lawal"
 __package_name__ = "chess.square"
 
-
 __all__ = [
   # Core Packages
   "Square",
-  "SquareValidator",
   'SquareBuilder',
+  "SquareValidator",
 
   *exception.__all__,
 

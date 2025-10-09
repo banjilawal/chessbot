@@ -1,122 +1,113 @@
-from enum import Enum
+# src/chess/ square/builder.py
+"""
+Module: chess. square.builder
+Author: Banji Lawal
+Created: 2025-10-08
+version: 1.0.0
 
-from assurance import ThrowHelper
+# SCOPE:
+-------
+***Limitation***: There is no guarantee properly created ` Square` objects released by the module will satisfy client
+    requirements. Clients are responsible for ensuring a ` SquareBuilder` product will not fail when used. Products
+    from ` SquareBuilder` --should-- satisfy ` SquareValidator` requirements.
+
+**Related Features**:
+    Authenticating existing  squares -> See  SquareValidator, module[chess. square.validator],
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+
+# THEME:
+-------
+* Data assurance, error prevention
+
+***Design Concepts***:
+    Separating object creation from object usage.
+    Keeping constructors lightweight
+
+# PURPOSE:
+---------
+1. Central, single producer of authenticated ` Square` objects.
+2. Putting all the steps and logging into one place makes modules using ` Square`
+    objects cleaner and easier to follow.
+
+***Satisfies***: Reliability and performance contracts.
+
+# DEPENDENCIES:
+---------------
+From `chess.system`:
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `BuildFailedException`
+
+From `chess.coord`:
+    `Coord`, `CoordValidator`
+    
+From `chess.square`:
+  `Square`, `SquareBuildFailedException`
+
+# CONTAINS:
+----------
+ * ` SquareBuilder`
+"""
+
+
 from chess.coord import Coord, CoordValidator
-from chess.square import Square, SquareBuildFailed
-from chess.system import BuildResult, IdValidator, NameValidator, Builder
+from chess.square import Square, SquareBuildFailedException
+from chess.system import BuildResult, NameValidator, Builder, LoggingLevelRouter
 
 
 class SquareBuilder(Builder[[Square]]):
   """
-  Builder class responsible for safely constructing `Square` instances.
+  # ROLE: Builder
 
-  `SquareBuilder` ensures that `Square` objects are always created successfully by performing comprehensive validate
-   checks during construction. This separates the responsibility of building from validating - `SquareBuilder`
-   focuses on creation while `SquareValidator` is used for validating existing `Square` instances that are passed
-   around the system.
+  # RESPONSIBILITIES:
+  1. Process and validate parameters for creating ` Square` instances.
+  2. Create new ` Square` objects if parameters meet specifications.
+  2. Report errors and return `BuildResult` with error details.
 
-  The build runs through all validate checks individually to guarantee that any `Square` instance it produces
-  meets all required specifications before construction completes
+  # PROVIDES:
+  `BuildResult[Square]`: Return type containing the built ` Square` or error information.
 
-  Usage:
-    ```python
-    # Safe square creation
-    build_result = SquareBuilder.build(square_id=1, name="A-1", coordinate=Coord(0, 0))
-
-    if build_result.is_success():
-      square = build_result.payload
-    ```
-
-  See Also:
-    `Square`: The data structure being constructed
-    `SquareValidator`: Used for validating existing `Square` instances
-    `BuildResult`: Return type containing the built `Square` or error information
+  # ATTRIBUTES:
+  None
   """
-
+  
   @classmethod
+  @LoggingLevelRouter.monitor()
   def build(cls, name: str, coord: Coord) -> BuildResult[Square]:
     """
-    Constructs team new `Square` instance with comprehensive checks on the parameters and states during the
-    build process.
+    ACTION:
+    Create a ` Square` object if the parameters have correctness.
 
-    Performs individual validate checks on each component to ensure the resulting `Square` meets all
-    specifications. If all checks are passed, team `Square` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `Square` instance. This method guarantees if team `BuildResult`
-    with team successful status is returned, the contained `Square` is valid and ready for use.
+    PARAMETERS:
+        * `name` (`str`): unique within the board
+        * `coord` (`Coord`): row and column where `Square` is on the `Board`.
 
-    Args:
-      `discovery_id` (`int`): The unique id for the piece. Must pass `IdValidator` checks.
-      `name` (`Name`): Must pass `NameValidator` checks.
-      `coord` (`Coord`): Where `Square` is located on team `Board`. Must pass `CoordValidator` checks.
+    RETURNS:
+    `BuildResult[Square]`: A `BuildResult` containing either:
+        `'payload'` - A valid ` Square` instance in the payload
+        `exception` - Error information and error details
 
-    Returns:
-      BuildResult[Square]: A `BuildResult` containing either:
-        - On success: A valid `Square` instance in the payload
-        - On failure: Error information and error details
-
-    Raises:
-      `SquareBuildFailed`: Wraps any underlying validate failures that occur during the construction
-       process. This includes:
+    RAISES:
+    `SquareBuildFailedException`:  Wraps any specification violations including:
         * `InvalidIdException`: if `id` fails validate checks`
-        * `InvalidNameException`: if `name` fails validate checks
         * `InvalidCoordException`: if `coord` fails validate checks
-        * `SquareBuildFailed`: for any other construction failures
-
-    Note:
-      The build runs through all the checks on parameters and state to guarantee only team valid `Square` is
-      created, while `SquareValidator` is used for validating `Square` instances that are passed around after
-      creation. This separation of concerns makes the validate and building independent of each other and
-      simplifies maintenance.
-
-    Example:
-      ```python
-      # Valid square creation
-      result = SquareBuilder.build(square_id=1, name=black-name, schema=black_square_profile)
-      if result.is_success():
-        square = cast(Square, result.payload) # Guaranteed valid Square
-
-      # Null name will fail gracefully
-      result = SquareBuilder.build(square_id=1, name=None, schema=black_square_profile)
-      if not result.is_success():
-        # Handle construction failure
-        pass
-      ```
     """
     method = "SquareBuilder.build"
 
     try:
-      id_validation = IdValidator.validate(square_id)
-      if not id_validation.is_success():
-        ThrowHelper.log_and_raise_error(SquareBuilder, id_validation.exception)
+      # id_validation = IdValidator.validate(square_id)
+      # if not id_validation.is_success():
+      #   ThrowHelper.log_and_raise_error(SquareBuilder, id_validation.exception)
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        ThrowHelper.log_and_raise_error(SquareBuilder, name_validation.exception)
+        # ThrowHelper.log_and_raise_error(SquareBuilder, name_validation.exception)
+        return BuildResult(exception=name_validation.exception)
 
       coord_result = CoordValidator.validate(coord)
       if not coord_result.is_success():
-        ThrowHelper.log_and_raise_error(SquareBuilder, coord_result.exception)
+        # ThrowHelper.log_and_raise_error(SquareBuilder, coord_result.exception)
+        return BuildResult(exception=coord_result.exception)
 
-      return BuildResult(payload=Square(square_id=square_id, name=name, coord=coord))
+      return BuildResult(payload=Square(name=name, coord=coord))
 
     except Exception as e:
-      raise SquareBuildFailed(f"{method}: {SquareBuildFailed.DEFAULT_MESSAGE}")
-
-
-# def main():
-#   build_result = SquareBuilder.build(square_id=id_emitter.square_id, name="A3", coordinate=Coord(0, 0))
-#   if build_result.is_success():
-#     square = cast(Square, build_result.payload)
-#     print(f"Successfully built square: {square}")
-#   else:
-#     print(f"Failed to build square: {build_result.err}")
-#
-#   build_result = SquareBuilder.build(square_id=-1, name="", coordinate=Coord(0, 0))
-#   if build_result.is_success():
-#     square = cast(Square, build_result.payload)
-#     print(f"Successfully built square: {square}")
-#   else:
-#     print(f"Failed to build square: {build_result.err}")
-#
-# if __name__ == "__main__":
-#   main()
+      return BuildResult(exception=SquareBuildFailedException(f"{method}: {e}"))

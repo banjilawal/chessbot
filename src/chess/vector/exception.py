@@ -1,7 +1,7 @@
-# src/chess.coord.exception.py
+# src/chess/vector/exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.vector.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

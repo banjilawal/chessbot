@@ -6,11 +6,11 @@ Created: 2025-10-08
 
 # SCOPE:
 -------
-**Limitation**: This module cannot prevent classes, processes or modules using `Vector`
+***Limitation 1***: This module cannot prevent classes, processes or modules using `Vector`
     instances that pass sanity checks will not fail when using the validated `Vector`.
     Once client's processes might fail, experience data inconsistency or have other
     faults.
-**Limitation**: Objects authenticated by `VectorValidator` might fail additional requirements
+***Limitation 2***: Objects authenticated by `VectorValidator` might fail additional requirements
     a client has for a `Vector`. It is the client's responsibility to ensure the validated
     `Vector` passes and additional checks before deployment.
 
@@ -28,7 +28,7 @@ Created: 2025-10-08
 2. Putting all the steps and logging into one place makes modules using `Vector` objects
     cleaner and easier to follow.
 
-**Satisfies**: Reliability and performance contracts.
+***Satisfies***: Reliability and performance contracts.
 
 # DEPENDENCIES:
 ---------------
