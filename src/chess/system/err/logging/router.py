@@ -45,7 +45,7 @@ class LoggingLevelRouter:
   """
 
   @staticmethod
-  def route_error(
+  def log_and_raise_error(
       context: Any,
       result: Optional[Any]=None,
       exception: Optional[Exception]=None,
@@ -93,6 +93,7 @@ class LoggingLevelRouter:
     Works on instance/class methods or free functions.
     """
     def decorator(func: Callable[..., T]) -> Callable[..., T]:
+
       @wraps(func)
       def wrapper(*args: Any, **kwargs: Any) -> T:
         actual_context = context or (args[0] if args else func)
@@ -100,7 +101,9 @@ class LoggingLevelRouter:
         try:
           result = func(*args, **kwargs)
           LogWriter.log_info(actual_context, f"{method_name} succeeded")
+
         except Exception as e:
           LogWriter.log_error(actual_context, e)
           raise
+        return wrapper
     return decorator

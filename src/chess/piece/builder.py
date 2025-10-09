@@ -87,18 +87,18 @@ class PieceBuilder(Builder[Piece]):
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        LoggingLevelRouter.route_error(PieceBuilder, name_validation.exception)
+        LoggingLevelRouter.log_and_raise_error(PieceBuilder, name_validation.exception)
 
       rank_validation = RankValidator.validate(rank)
       if not rank_validation.is_success():
-        LoggingLevelRouter.route_error(PieceBuilder, rank_validation.exception)
+        LoggingLevelRouter.log_and_raise_error(PieceBuilder, rank_validation.exception)
 
       team_validation = TeamValidator.validate(team)
       if not team_validation.is_success():
-        LoggingLevelRouter.route_error(PieceBuilder, team_validation.exception)
+        LoggingLevelRouter.log_and_raise_error(PieceBuilder, team_validation.exception)
 
       if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           PieceBuilder,
           FullRankQuotaException(FullRankQuotaException.DEFAULT_MESSAGE)
         )
@@ -110,7 +110,7 @@ class PieceBuilder(Builder[Piece]):
         piece = CombatantPiece(name=name, rank=rank, team=team)
 
       if not piece.team == team:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           PieceBuilder,
           ConflictingTeamAssignmentException(ConflictingTeamAssignmentException.DEFAULT_MESSAGE)
         )
@@ -119,7 +119,7 @@ class PieceBuilder(Builder[Piece]):
         team.add_to_roster(piece)
 
       if piece not in team.roster:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           PieceBuilder,
           UnregisteredTeamMemberException(UnregisteredTeamMemberException.DEFAULT_MESSAGE)
         )

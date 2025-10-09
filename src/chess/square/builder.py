@@ -71,12 +71,12 @@ class SquareBuilder(Builder[[Square]]):
     Example:
       ```python
       # Valid square creation
-      result = SquareBuilder.build(square_id=1, name=black-name, profile=black_square_profile)
+      result = SquareBuilder.build(square_id=1, name=black-name, schema=black_square_profile)
       if result.is_success():
         square = cast(Square, result.payload) # Guaranteed valid Square
 
       # Null name will fail gracefully
-      result = SquareBuilder.build(square_id=1, name=None, profile=black_square_profile)
+      result = SquareBuilder.build(square_id=1, name=None, schema=black_square_profile)
       if not result.is_success():
         # Handle construction failure
         pass
@@ -87,15 +87,15 @@ class SquareBuilder(Builder[[Square]]):
     try:
       id_validation = IdValidator.validate(square_id)
       if not id_validation.is_success():
-        ThrowHelper.route_error(SquareBuilder, id_validation.exception)
+        ThrowHelper.log_and_raise_error(SquareBuilder, id_validation.exception)
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        ThrowHelper.route_error(SquareBuilder, name_validation.exception)
+        ThrowHelper.log_and_raise_error(SquareBuilder, name_validation.exception)
 
       coord_result = CoordValidator.validate(coord)
       if not coord_result.is_success():
-        ThrowHelper.route_error(SquareBuilder, coord_result.exception)
+        ThrowHelper.log_and_raise_error(SquareBuilder, coord_result.exception)
 
       return BuildResult(payload=Square(square_id=square_id, name=name, coord=coord))
 

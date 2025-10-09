@@ -29,62 +29,46 @@ from typing import Optional, TypeVar, Generic
 
 T = TypeVar('T')
 
+"""
+ROLE:
+----
+RESPONSIBILITIES:
+----------------
+PROVIDES:
+--------
+ATTRIBUTES:
+----------
+[
+  <No attributes. Implementors declare their own.>
+OR
+  * `_attribute` (`data_type`): <sentence_if_necessary>
+]
+"""
+"""
+BuildResult is team generic class that encapsulates the outcome of Builder operation. BuildResult has the
+same structure as Result but is used specifically in the roster of building entities. It can hold either.
+team payload of type T or an Exception, but not both. If the build operation is successful, the payload will
+contain the built object. If the build operation fails, the error will contain the error that
+occurred during the build process.
+
+BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team result.
+
+Attributes:
+  _payload (Optional[T]): The payload of the result, if successful.
+  _exception (Optional[Exception]): The error of the result, if failed.
+
+Methods:
+  is_success() -> bool: Returns True if the result is successful (i.e., has team payload only).
+"""
+
 class BuildResult(Generic[T]):
-  """
-  ROLE:
-  ----
-  RESPONSIBILITIES:
-  ----------------
-  PROVIDES:
-  --------
-  ATTRIBUTES:
-  ----------
-  [
-    <No attributes. Implementors declare their own.>
-  OR
-    * `_attribute` (`data_type`): <sentence_if_necessary>
-  ]
-  """
-  """
-  BuildResult is team generic class that encapsulates the outcome of Builder operation. BuildResult has the
-  same structure as Result but is used specifically in the roster of building entities. It can hold either.
-  team payload of type T or an Exception, but not both. If the build operation is successful, the payload will
-  contain the built object. If the build operation fails, the error will contain the error that
-  occurred during the build process.
 
-  BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team result.
-
-  Attributes:
-    _payload (Optional[T]): The payload of the result, if successful.
-    _exception (Optional[Exception]): The error of the result, if failed.
-
-  Methods:
-    is_success() -> bool: Returns True if the result is successful (i.e., has team payload only).
-  """
 
   _payload: Optional[T]
   _exception: Optional[Exception]
 
   def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-    """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    """
-    Initializes team BuildResult object.
-    Args:
-      payload (Optional[T]): The payload of the result, if successful.
-      exception (Optional[Exception]): The error of the result, if failed.
-    Raises:
-      EmptyResultConstructorException: If neither payload nor error is provided.
-      ResultPayloadConflictException: If both payload and error are provided.
-    """
+
     method = "Result.__init_"
 
     if payload is None and exception is None:
@@ -111,6 +95,24 @@ class BuildResult(Generic[T]):
     return self._exception is None and self._payload is not None
 
 
-
+    """
+    Action:
+    Parameters:
+        * `param` (`DataType`):
+    Returns:
+        `DataType` or `Void`
+    Raises:
+    MethodNameException wraps
+        *
+    """
+    """
+    Initializes team BuildResult object.
+    Args:
+      payload (Optional[T]): The payload of the result, if successful.
+      exception (Optional[Exception]): The error of the result, if failed.
+    Raises:
+      EmptyResultConstructorException: If neither payload nor error is provided.
+      ResultPayloadConflictException: If both payload and error are provided.
+    """
 
 

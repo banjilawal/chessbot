@@ -54,33 +54,33 @@ class CoordBuilder(Builder[Coord]):
 
     try:
       if row is None:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           CoordBuilder,
           NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
         )
       if row < 0:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           CoordBuilder,
           RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
         )
       if row >= ROW_SIZE:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           CoordBuilder,
           RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
         )
 
       if column is None:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           CoordBuilder,
           NullColumnException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
         )
       if column < 0:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           CoordBuilder,
           ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
         )
       if column >= COLUMN_SIZE:
-        LoggingLevelRouter.route_error(
+        LoggingLevelRouter.log_and_raise_error(
           CoordBuilder,
           ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
         )

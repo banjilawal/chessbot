@@ -8,4 +8,5 @@ version: 1.0.0
 """
 
 from .exception import *
+from .auto_id import AutoId
 from .validator import IdValidator

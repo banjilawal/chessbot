@@ -7,10 +7,9 @@ version: 1.0.0
 
 # SCOPE:
 -------
-**Limitation**: There is no guarantee properly created `Vector` objects released by the
-    module will satisfy client requirements. Clients are responsible for ensuring a `VectorBuilder`
-    product will not fail when used. Products from `VectorBuilder` --should-- satisfy
-    `VectorValidator` requirements.
+**Limitation**: There is no guarantee properly created `Vector` objects released by the module will satisfy client
+    requirements. Clients are responsible for ensuring a `VectorBuilder` product will not fail when used. Products
+    from `VectorBuilder` --should-- satisfy `VectorValidator` requirements.
 
 **Related Features**:
     Authenticating existing vectors -> See VectorValidator, module[chess.vector.validator],
@@ -20,63 +19,35 @@ version: 1.0.0
 -------
 * Data assurance, error prevention
 
+**Design Concepts**:
+    Separating object creation from object usage.
+    Keeping constructors lightweight
+
 # PURPOSE:
 ---------
 1. Central, single producer of authenticated `Vector` objects.
-2. Putting all the steps and logging into one place makes modules using `Vector` objects
-    cleaner and easier to follow.
+2. Putting all the steps and logging into one place makes modules using `Vector` objects cleaner and easier to follow.
 
 **Satisfies**: Reliability and performance contracts.
 
 # DEPENDENCIES:
 ---------------
 From `chess.system`:
-  * `BuildResult`, `Builder`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`
+    `BuildResult`, `Builder`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`, `ChessException`, `NullException`
+    `BuildFailedException`
 
 From `chess.vector`:
-    `Vector`, `VectorBuildFailedException`, `InvalidVectorException`, `NullXComponentException`,
-    `NullYComponentException`,`VectorBelowBoundsException`, `VectorAboveBoundsException`
+    `Vector`, `NullVectorException`, `VectorBuildFailedException`, `NullXComponentException`,
+    `NullYComponentException`, `VectorBelowBoundsException`, `VectorAboveBoundsException`
 
 # CONTAINS:
 ----------
  * `VectorBuilder`
 """
 
-# src/chess/vector/validation.py
-"""
-Module: chess.vector.validator
-Author: Banji Lawal
-Created: 2025-10-08
-
-# SCOPE:
-**Limitation**: This module cannot prevent classes, processes or modules using `Vector`
-    instances that pass sanity checks will not fail when using the validated `Vector`.
-    Once client's processes might fail, experience data inconsistency or have other 
-    faults.
-
-**Related Features**:
-    Building vectors -> See VectorBuilder, module[chess.vector.builder], 
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-
-
-
-
-# DEPENDENCIES:
-From `chess.system`:
-  * `ValidationResult`, `Validator`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`
-
-From `chess.vector`:
-    `Vector`, `NullVectorException`, `InvalidVectorException`, `NullXComponentException`,
-    `NullYComponentException`, `VectorBelowBoundsException`, `VectorAboveBoundsException`
-
-# CONTAINS:
- * `VectorValidator`
-"""
-
 from chess.system import Builder, BuildResult, KNIGHT_STEP_SIZE, LoggingLevelRouter
 from chess.vector import (
-    Vector, InvalidVectorException, NullXComponentException, NullYComponentException,
+    Vector, VectorBuildFailedException, NullXComponentException, NullYComponentException,
     VectorBelowBoundsException, VectorAboveBoundsException
 )
 
@@ -97,6 +68,7 @@ class VectorBuilder(Builder[Vector]):
     """
 
     @classmethod
+    @LoggingLevelRouter.monitor()
     def build(cls, x: int, y: int) -> BuildResult[Vector]:
         """
         ACTION:
@@ -123,47 +95,50 @@ class VectorBuilder(Builder[Vector]):
         try:
             # Handle the x-component
             if x is None:
-                ex = NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
-                return BuildResult(exception=ex)
+                # ex =
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=NullXComponentException(
+                    f"{method}: {NullXComponentException.DEFAULT_MESSAGE}"
+                ))
 
             if x < -KNIGHT_STEP_SIZE:
-                ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
-                return BuildResult(exception=ex)
+                # ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=VectorBelowBoundsException(
+                    f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                ))
 
             if x > KNIGHT_STEP_SIZE:
-                ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
-                return BuildResult(exception=ex)
+                # ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=VectorAboveBoundsException(
+                    f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                ))
 
             # Handle the y-component
             if y is None:
-                ex = NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
-                return BuildResult(exception=ex)
+                # ex = NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=NullYComponentException(
+                    f"{method}: {NullYComponentException.DEFAULT_MESSAGE}"
+                ))
 
             if y < -KNIGHT_STEP_SIZE:
-                ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
-                return BuildResult(exception=ex)
+                # ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=VectorBelowBoundsException(
+                    f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                ))
 
             if y > KNIGHT_STEP_SIZE:
                 ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorBuilder, exception=ex)
-                return BuildResult(exception=ex)
+                LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                return BuildResult(exception=VectorAboveBoundsException(
+                    f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                ))
 
             return BuildResult(payload=Vector(x=x, y=y))
 
-        except (
-            NullXComponentException,
-            NullYComponentException,
-            VectorBelowBoundsException,
-            VectorAboveBoundsException
-        ) as e:
-            raise VectorBuildFailedException(f"{method}: {e}")
-
-        # This block catches any unexpected exceptions, logs and re
+        # This block lets the monitor log and re-raise the error.
         except Exception as e:
-            LoggingLevelRouter.route_error(context=VectorBuilder, exception=e)
-            raise VectorBuildFailedException(f"{method}: {e}")
+            return BuildResult(exception=VectorBuildFailedException(f"{method}: {e}"))

@@ -69,6 +69,7 @@ class VectorValidator(Validator[Vector]):
     """
 
     @classmethod
+    @LoggingLevelRouter.monitor
     def validate(cls, candidate: Vector) -> ValidationResult[Vector]:
         """
         ACTION:
@@ -94,63 +95,72 @@ class VectorValidator(Validator[Vector]):
         try:
             # Handle the null case first
             if candidate is None:
-                ex = NullVectorException(f"{method}: {NullVectorException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
-                return ValidationResult(exception=ex)
+                # ex = NullVectorException(f"{method}: {NullVectorException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
+                return ValidationResult(exception=NullVectorException(
+                    f"{method}: {NullVectorException.DEFAULT_MESSAGE}"
+                ))
 
             # Abort if the candidate is not a Vector
             if not isinstance(candidate, Vector):
-                ex = TypeError(f"{method}: Expected an Vector, got {type(candidate).__name__}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
-                return ValidationResult(exception=ex)
+                # ex = TypeError(f"{method}: Expected an Vector, got {type(candidate).__name__}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
+                return ValidationResult(exception=TypeError(
+                    f"{method}: Expected an Vector, got {type(candidate).__name__}"
+                ))
 
             vector = cast(Vector, candidate)
 
             # Handle the x-component checks
             if vector.x is None:
-                ex = NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
-                return ValidationResult(exception=ex)
+                # ex = NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
+                return ValidationResult(exception=NullXComponentException(
+                    f"{method}: {NullXComponentException.DEFAULT_MESSAGE}"
+                ))
 
             if vector.x < -KNIGHT_STEP_SIZE:
                 ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
+                LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
                 return ValidationResult(exception=ex)
 
             if vector.x > KNIGHT_STEP_SIZE:
-                ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
-                return ValidationResult(exception=ex)
+                # ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
+                return ValidationResult(exception=VectorBelowBoundsException(
+                    f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                ))
 
             # Handle the y-component checks
             if vector.y is None:
-                ex = NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
-                return ValidationResult(exception=ex)
+                # ex = NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
+                return ValidationResult(exception=NullYComponentException(
+                    f"{method}: {NullYComponentException.DEFAULT_MESSAGE}"
+                ))
 
             if vector.y < -KNIGHT_STEP_SIZE:
-                ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
-                return ValidationResult(exception=ex)
+                # ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
+                return ValidationResult(exception=VectorBelowBoundsException(
+                    f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                ))
 
             if vector.y > KNIGHT_STEP_SIZE:
-                ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
-                LoggingLevelRouter.route_error(context=VectorValidator, exception=ex)
-                return ValidationResult(exception=ex)
+                # ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                # LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=ex)
+                return ValidationResult(exception=VectorAboveBoundsException(
+                    f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                ))
 
             return ValidationResult(payload=vector)
 
-        except (
-            TypeError,
-            NullVectorException,
-            NullXComponentException,
-            NullYComponentException,
-            VectorBelowBoundsException,
-            VectorAboveBoundsException
-        ) as e:
-            raise InvalidVectorException(f"{method}: {e}") from e
+        # This block lets the monitor log and re-raise the error.
+        except Exception as e:
+            return ValidationResult(exception=InvalidVectorException(f"{method}: {e}"))
+
 
         # This block catches any unexpected exceptions, logs and re-raises them.
-        except Exception as e:
-            LoggingLevelRouter.route_error(context=VectorValidator, exception=e)
-            raise InvalidVectorException(f"{method}: {e}") from e
+        # except Exception as e:
+        #     LoggingLevelRouter.log_and_raise_error(context=VectorValidator, exception=e)
+        #     raise InvalidVectorException(f"{method}: {e}") from e

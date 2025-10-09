@@ -86,7 +86,7 @@ class PieceSearchContextValidator(Validator):
       `NullTeamException`: if `candidate` is null
       `InvalidIdException`: if `id` fails validate checks
       `InvalidCommanderException`: if `commander` fails validate checks
-      `NullTeamProfileException`: if `profile` is null
+      `NullTeamProfileException`: if `schema` is null
       `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
       `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
       `InvalidTeamException`: Wraps any preceding exceptions
@@ -148,7 +148,7 @@ class PieceSearchContextValidator(Validator):
 #   person = Human(1, "person")
 #
 #   from chess.team import Team
-#   team = Team(team_id=1, controller=person, profile=TeamProfile.BLACK)
+#   team = Team(team_id=1, controller=person, schema=TeamProfile.BLACK)
 #
 #
 # if __name__ == "__main__":

@@ -53,11 +53,11 @@ class CommanderBuilder(Builder[Commander]):
       #   LoggingLevelRouter.throw_if_invalid(CommanderBuilder, id_validation.err)
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        LoggingLevelRouter.route_error(CommanderBuilder, name_validation.exception)
+        LoggingLevelRouter.log_and_raise_error(CommanderBuilder, name_validation.exception)
 
       if engine is not None and not isinstance(engine, DecisionEngine):
         error = TypeError(f"Expected team Decision, but got {type(engine).__name__}.")
-        LoggingLevelRouter.route_error(CommanderBuilder, error)
+        LoggingLevelRouter.log_and_raise_error(CommanderBuilder, error)
 
       if engine is not None and isinstance(engine, DecisionEngine):
         return BuildResult(payload=Bot(name=name, engine=engine))

@@ -54,7 +54,7 @@ class ScalarBuilder(Enum):
       `scalar_id`(`int`): The unique id for the scalar. Must pass `IdValidator` checks.
       `name`(`Name`): The human or cybernetic moving pieces in `Scalar.roster`. The name
         must not be None and must pass `NameValidator` checks.must pass `NameValidator` checks.
-      `profile`(`ScalarProfile`): The profile defining scalar attributes and behaviors. Must not be None and be
+      `schema`(`ScalarProfile`): The schema defining scalar attributes and behaviors. Must not be None and be
         an instance of `ScalarProfile`.
 
     Returns:
@@ -91,17 +91,17 @@ class ScalarBuilder(Enum):
 
     try:
       if value is None:
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           ScalarBuilder,
           NullNumberException(NullNumberException.DEFAULT_MESSAGE)
         )
       if value < -BOARD_DIMENSION:
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           ScalarBuilder,
           ScalarBelowBoundsException(ScalarBelowBoundsException.DEFAULT_MESSAGE)
         )
       if value > BOARD_DIMENSION:
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           ScalarBuilder,
           ScalarAboveBoundsException(ScalarAboveBoundsException.DEFAULT_MESSAGE)
       )

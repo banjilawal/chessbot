@@ -83,22 +83,22 @@ class OccupationEventBuilder(Enum):
     try:
       id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
-        ThrowHelper.route_error(OccupationEventBuilder, id_validation.exception)
+        ThrowHelper.log_and_raise_error(OccupationEventBuilder, id_validation.exception)
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        ThrowHelper.route_error(OccupationEventBuilder, actor_validation.exception)
+        ThrowHelper.log_and_raise_error(OccupationEventBuilder, actor_validation.exception)
 
       square_validation = SquareValidator.validate(destination_square)
       if not square_validation.is_success():
-        ThrowHelper.route_error(OccupationEventBuilder, square_validation.exception)
+        ThrowHelper.log_and_raise_error(OccupationEventBuilder, square_validation.exception)
 
       # context_validation = ContextValidator.validate(roster)
       # if not context_validation.is_success():
       #   LoggingLevelRouter.throw_if_invalid(OccupationEventBuilder, context_validation)
 
       if destination_square.coord == actor.current_position:
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           OccupationEventBuilder,
           CircularOccupationException(CircularOccupationException.DEFAULT_MESSAGE)
         )

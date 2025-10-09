@@ -1,49 +1,35 @@
-# <full_path>/__init__.py
+# chess/vector/__init__.py
 
 """
-Module: <full.module.path>
+Module: `chess.vector`
 Author: Banji Lawal
-Created: <yyy-mm-dd>
+Created: 2025-10-03
 version: 1.0.0
-
-
-# PURPOSE
-
-# EXPORTS
-This package exposes core classes and all exceptions from its sub-modules:
-  - `CLASS>ANE`: <LINE_ABOUT_CLASS_PURPOSE_HERE>.
-  - All exceptions from `exception` package.
-
-# SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for occupation operations.
-  - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
-
-# HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exceptions from this `board` package level
-(e.g., `from chess.board import InvalidBoardException`). See USAGE EXAMPLES section
-
-# USAGE EXAMPLES
-___
-```python
-```
----
 """
 
 from .exception import *
 
-# Package metadata (organic to __init__.py)
+from .vector import Vector
+from .builder import VectorBuilder
+from .validator import VectorValidator
+
+# Package metadata
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.package'
+__package_name__ = 'chess.vector'
 
-# Export control - only what belongs in public API
 __all__ = [
+  # Exported classes and utilities
+  'Vector',
+  'VectorBuilder',
+  'VectorValidator',
+
   *exception.__all__,
 
   # Package metadata and utilities
   '__version__',
   '__author__',
-  'package_info',
+  'package_info'
 ]
 
 # Organic utility function for package info

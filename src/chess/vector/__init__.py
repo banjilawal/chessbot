@@ -13,20 +13,18 @@ from .vector import Vector
 from .builder import VectorBuilder
 from .validator import VectorValidator
 
-
 # Package metadata
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
 __package_name__ = 'chess.vector'
 
 __all__ = [
-  # Core classes
+  # Exported classes and utilities
   'Vector',
   'VectorBuilder',
   'VectorValidator',
 
   *exception.__all__,
-
 
   # Package metadata and utilities
   '__version__',

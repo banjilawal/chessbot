@@ -3,22 +3,28 @@ from typing import Optional, cast
 from chess.piece import Piece
 from chess.coord import Coord, CoordValidator
 from assurance.validators import IdValidator, NameValidator
+from chess.system import auto_id
 
+"""A data-holding object representing team single square on team chessboard.
 
+A `Square` can store team `Piece` object. All fields are immutable except for
+the `occupant`, which is managed by the `ChessBoard`.
+
+Attributes:
+  _id (int): A unique identifier for the square.
+  _name (str): The name of the square in chess notation (e.g., "A1", "B2").
+  _coord (Coord): The coordinate of the square on the chessboard.
+  _occupant (Optional[Piece]): The discover occupying the square, if any.
+"""
+
+@auto_id
 class Square:
-  """A data-holding object representing team single square on team chessboard.
 
-  A `Square` can store team `Piece` object. All fields are immutable except for
-  the `occupant`, which is managed by the `ChessBoard`.
+  _name: str
+  _coord: Coord
 
-  Attributes:
-    _id (int): A unique identifier for the square.
-    _name (str): The name of the square in chess notation (e.g., "A1", "B2").
-    _coord (Coord): The coordinate of the square on the chessboard.
-    _occupant (Optional[Piece]): The discover occupying the square, if any.
-  """
 
-  def __init__(self, square_id: int, name: str, coord: Coord):
+  def __init__(self, name: str, coord: Coord):
 
     """Creates team Square instance.
 
@@ -113,11 +119,11 @@ class Square:
 
 
 
-def main():
-
-  square = Square(square_id=1, name="A1", coord=Coord(row=0, column=0))
-  print(square)
-
-
-if __name__ == "__main__":
-  main()
+# def main():
+#
+#   square = Square(square_id=1, name="A1", coord=Coord(row=0, column=0))
+#   print(square)
+#
+#
+# if __name__ == "__main__":
+#   main()

@@ -100,7 +100,7 @@ class TransferEventBuilder(Enum):
     try:
       id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
-        ThrowHelper.route_error(AttackEventBuilder, id_validation)
+        ThrowHelper.log_and_raise_error(AttackEventBuilder, id_validation)
 
 
       actor_validation = PieceValidator.validate(actor)
@@ -112,14 +112,14 @@ class TransferEventBuilder(Enum):
         raise InvalidPieceException(f"{method}: AttackEvent enemy failed validate")
 
       if actor == enemy:
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           CircularCaptureException(CircularCaptureException.DEFAULT_MESSAGE)
         )
 
       search_result = BoardSearch.square_by_coord(coord=enemy.current_position, board=context.board)
       if not search_result.payload == destination_square:
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           TargetSquareMismatchException(
             f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
@@ -128,20 +128,20 @@ class TransferEventBuilder(Enum):
 
       search = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
       if not search.is_success():
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           SearchException(f"{method}: {SearchException.DEFAULT_MESSAGE}")
         )
       actor_square = cast(Square, search.payload)
 
       if not actor.is_enemy(enemy):
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           CaptureFriendException(CaptureFriendException.DEFAULT_MESSAGE)
         )
 
       if not isinstance(enemy, CombatantPiece):
-        ThrowHelper.route_error(
+        ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           KingCaptureException(KingCaptureException.DEFAULT_MESSAGE)
         )

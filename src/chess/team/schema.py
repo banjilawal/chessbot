@@ -112,8 +112,8 @@ class TeamSchema(Enum):
 
 # def main():
 #
-#   for profile in TeamProfile:
-#     print(profile)
+#   for schema in TeamProfile:
+#     print(schema)
 #
 #
 # if __name__ == "__main__":
