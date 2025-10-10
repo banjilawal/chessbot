@@ -2,8 +2,8 @@
 from .exception import *
 from chess.system.context import *
 
-from chess.event.event import Event
-from chess.event.transaction import Transaction
+from chess.system.event.event import Event
+from chess.system.event.transaction import Transaction
 from chess.system.result.transaction import TransactionResult
 from .attack_validator import AttackValidator
 

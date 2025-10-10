@@ -47,10 +47,8 @@ ___
 
 from .exception import *
 
-from .event import Event
-from .transaction import Transaction
-from .context import ExecutionContext
-from .validator import EventValidator
+from chess.system.event.event import Event
+from chess.system.event.transaction import Transaction
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
