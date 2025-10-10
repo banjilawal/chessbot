@@ -1,3 +1,52 @@
+# src/chess/system/validate/result.py
+
+"""
+Module: chess.piece.system.validate.result
+Author: Banji Lawal
+Created: 2025-09-28
+Updated: 2025-10-10
+
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` integrity requirement.
+  2. A satisfaction of the `ChessBot` reliability requirement.
+
+# SECTION 2 - Scope:
+The module covers all domains in the `ChessBot` application.
+
+# SECTION 3 - Limitations:
+  1. The module is limited to the reporting validation results to clients.
+  2. The module does not provide any methods for dealing with the candidates which fail to meet correctness
+      requirements.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. A consistent interface aiding discoverability, understanding and simplicity.
+
+# SECTION 5- Features:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+  2. Ensuring validation results are communicated are sent to clients is an integrity feature.
+
+## 6 Feature Delivery Mechanism:
+  1. The features are implemented by a communication mechanism between a validation service and its client.
+
+# SECTION 7 - Dependencies:
+* From `chess.system.validation`:
+    `Validation`
+
+* From `chess.system.err.exception`:
+    `Result`
+
+* From Python `abc` Library:
+    `ABC`, `abstractmethod`
+
+* From Python `typing` Library:
+    `Generic`, `TypeVar`, `Optional`
+
+# SECTION 8- Contains:
+1. `ValidationResult`
+"""
 
 from typing import Optional, TypeVar, Generic
 from chess.system import Result
@@ -6,22 +55,17 @@ T = TypeVar("T")
 
 class ValidationResult(Result[Generic[T]]):
   """
-  A Result object encapsulates the outcome of methods and operations that return an object. Different from
-  TransactionResult which assures an existing object's state changed correctly without causing inconsistencies.
+  # ROLE: Messaging, Transport
 
-  USAGE:
-    Result is used with
-    - Validation of existing objects.
-    - Objects returned by accessors and query methods.
-    - Operations that return an object, but may fail due to business logic or other reasons.
-    - Methods that may fail due to external factors (e.g., network issues, file I
+  # RESPONSIBILITIES:
+  1. Send the results of a validation operation to originating client.
+  2. Ensure contents are immutable.
 
-  Attributes:
-    _payload (Optional[T]): The payload of the result, if successful.
-    _exception (Optional[Exception]): The error of the result, if failed.
+  # PROVIDES:
 
-  Methods:
-    is_success() -> bool: Returns True if the result is successful (i.e., has team payload only).
+  # ATTRIBUTES:
+    * `_payload` (`T`): Data if the verification was successful.
+    * `_exception` (`Exception`): Description of the condition which caused  verification failure.
   """
 
   _payload: Optional[T]
