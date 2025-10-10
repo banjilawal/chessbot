@@ -1,28 +1,44 @@
-# src/chess/piece/event/transaction
+# src/chess/system/validate/validator.py
 
 """
-Module: chess.piece.event.transaction
+Module: chess.piece.system.validate.validator
 Author: Banji Lawal
 Created: 2025-09-28
+Updated: 2025-10-10
 
-# SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
+# SECTION 1 - Purpose:
+This module satisfies `ChessBot` integrity requirement.
 
-# THEME:
-* Loose coupling
-* Explain the how-and-why of implementation choices.
+# SECTION 2 - Scope:
+The modules supports for the purpose stated in SECTION 1 for all domains in `ChessBot` application.
 
-# PURPOSE:
-* Interface for implementing Validation
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
+# SECTION 3 - Limitations:
+  1. The module does not provide any actionable code.
+  2. The module is limited to providing a framework for validating integrity of existing objects.
+  3. The module does not provide any enforceable polices on entities using the framework.
 
-# DEPENDENCIES:
+# SECTION 4 - Themes and Mechanisms:
+The major theme influencing the modules design are
+  1. separating entity responsibilities into from implementation details.
+  2. Loose coupling of modules while maintaining a unified, consistent interface for high cohesion among components
+    that have no direct relationship with each other.
+  3. A consistent interface and aids discoverability, understanding and simplicity.
 
+## 4. 1 Mechanism:
+    An interface clients can use for validating existing objects.
 
-# CONTAINS:
- * `OccupationTransaction`
+# SECTION 5 - Dependencies:
+From `chess.system.validation`:
+    `ValidationResult`
+
+From Python `abc` Library:
+  `ABC`, `abstractmethod`
+
+From Python `typing` Library:
+  `Generic`, `TypeVar`
+
+# SECTION 6 - Dependencies:
+ * `Validator`
 """
 
 from abc import ABC, abstractmethod

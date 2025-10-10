@@ -32,7 +32,7 @@ __all__ = [
   'TeamValidator',
   'TeamBuilder',
 
-  *search.__all__,
+  *roster_search.__all__,
   *schema.__all__,
   *exception.__all__,
 

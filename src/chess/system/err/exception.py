@@ -74,7 +74,7 @@ class ChessException(Exception):
   # Only the super class needs to declare team toString. Subclasses
   # will use this.
   def __str__(self):
-    return f"{self.message}"
+    return "{self.message}"
 
 
 #======================# ROLL_BACK EXCEPTIONS #======================#  
@@ -103,16 +103,14 @@ class InconsistentCollectionException(InconsistencyException):
   Raised if a collection's state is inconsistent or its data corrupted
   """
   ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
-  DEFAULT_MESSAGE = (
-    "Collection is an inconsistent state. Data might be corrupted".
-  )
+  DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."
 
   class CollectionOperationException(ValidationException):
     """
     Raised if an operation is not allowed in a collection
     """
     ERROR_CODE = "COLLECTION_OPERATION_ERROR"
-    DEFAULT_MESSAGE = ("Operation not allowed in the collection.")
+    DEFAULT_MESSAGE = "Operation not allowed in the collection."
 
 
 #======================# NULL/EMPTY EXCEPTIONS #======================#  
@@ -130,21 +128,21 @@ class NullNumberException(NullException):
    so we need team different null team_exception for math variables
   """
   ERROR_CODE = "NULL_NUMBER_ERROR"
-  DEFAULT_MESSAGE = f"Number cannot be null"
+  DEFAULT_MESSAGE = "Number cannot be null"
 
 class NullStringException(NullException):
   """
   Raised if an entity, method, or operation requires team string but gets null instead.
   """
   ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-  DEFAULT_MESSAGE = f"Cannot search by team null string"
+  DEFAULT_MESSAGE = "Cannot search by team null string"
 
 class BlankStringException(ChessException):
   """
   Raised if search parameter is team blank or empty string
   """
   ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
-  DEFAULT_MESSAGE = f"Cannot search by an empty or blank string"
+  DEFAULT_MESSAGE = "Cannot search by an empty or blank string"
 
 
 
