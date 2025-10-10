@@ -9,4 +9,3 @@ version: 1.0.0
 
 from .exception import *
 from .result import Result
-from .transaction import TransactionResult

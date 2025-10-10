@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/event/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/event/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/event.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,11 +279,11 @@
       <recent name="$PROJECT_DIR$/src/chess/team/search/hostage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/event" />
       <recent name="$PROJECT_DIR$/src/chess/team/sc" />
       <recent name="$PROJECT_DIR$/src/chess/team/search/roster" />
       <recent name="$PROJECT_DIR$/src/chess/system/search/context" />
       <recent name="$PROJECT_DIR$/src/chess/team/search/context" />
-      <recent name="$PROJECT_DIR$/src/chess/piece/event" />
     </key>
   </component>
   <component name="RunManager" selected="Python.__init__">
@@ -549,7 +550,7 @@
       <workItem from="1759938224105" duration="4890000" />
       <workItem from="1759949835984" duration="579000" />
       <workItem from="1760028797032" duration="7105000" />
-      <workItem from="1760043094425" duration="9501000" />
+      <workItem from="1760043094425" duration="9987000" />
     </task>
     <servers />
   </component>

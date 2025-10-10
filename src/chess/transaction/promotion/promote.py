@@ -4,7 +4,7 @@ from assurance.exception.invalid_id import IdValidationException
 from chess.piece.exception.invalid_piece import PieceValidationException
 from assurance.exception.invalid_request import PromotionRequestValidationException
 
-from chess.system.result.transaction import TransactionResult
+from chess.system.event.transaction.result import TransactionResult
 from chess.system.id.validator import IdValidator
 from chess.piece.validator import PieceValidator
 from chess.rank.queen import PromotedQueen

@@ -46,16 +46,9 @@ From `chess.commander`:
 ----------
  * `TeamBuilder`
 """
-from typing import Generic, TypeVar, Optional
-
-from chess.event import ExecutionContext
-from chess.system import auto_id
-
-A = TypeVar('A') # Actor Type
-R = TypeVar('R') # Resource Type
 
 
-class Event(Generic[A, R]):
+class State(Enum):
   """
   # ROLE: Builder implementation
 
@@ -70,55 +63,15 @@ class Event(Generic[A, R]):
   # ATTRIBUTES:
   None
   """
-  """
-  Super class of all events.
+  RUNNING = auto()
+  TIMED_OUT = auto()
+  ROLLED_BACK = auto()
+  SUCCESS = auto()
 
-  Attributes:
-    * `_actor` (`A`): The entity requesting the event.
-    * `_resource` (`R`): entity being manipulated by the `actor`.
-    * `_parent` (`Event`): The parent event of this event.
-    * `_context` (`ExecutionContext`): Context of the `Event`.
-  """
+class Transaction(ABC, Generic[T]):
+  """Base class for transaction execution handlers"""
 
-  _actor: A
-  _resource: Optional[R]
-  _parent: Optional['Event']
-  _context: ExecutionContext
-
-  def __init__(
-    self,
-    actor: A,
-    context: ExecutionContext,
-    resource: Optional[R]=None,
-    parent: Optional['Event']=None,
-  ):
-    self._actor = actor
-    self._parent = parent
-    self._resource = resource
-    self.context = context
-
-  @property
-  def actor(self) -> A:
-    return self._actor
-
-  @property
-  def resource(self) -> Optional[R]:
-    return self._resource
-
-  @property
-  def parent(self) -> Optional['Event']:
-    return self._parent
-
-  @property
-  def context(self) -> ExecutionContext:
-    return self._context
-
-
-  def __eq__(self, other):
-    if other is self:
-      return True
-    if other is None:
-      return False
-    if not isinstance(other, Event):
-      return False
-    return self._id == other.id == other.id
+  @classmethod
+  @abstractmethod
+  def execute(cls, event: T, context: ExecutionContext) -> TransactionResult:
+    pass

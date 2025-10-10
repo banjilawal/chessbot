@@ -111,62 +111,6 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 
 from chess.exception import ChessException, NullException, BuilderException
 
-__all__ = [
-  #=== AN EVENT EXCEPTIONS #======================#  
-  'EventException',
-  'NullEventException',
-  'InvalidEventException',
-  'EventBuildFailedException',
-  
-  #=== TRANSACTION EXCEPTIONS #======================#  
-  'TransactionException'
-]
-
-from chess.system import ChessException, ValidationException, BuildFailedException, NullException,
-
-
-#=== AN EVENT EXCEPTIONS #======================#  
-class EventException(ChessException):
-  """
-  Super class of all exceptions an event object raises. DO NOT USE DIRECTLY. Subclasses provide better
-  debugging and maintenance support.
-
-  Notes:
-    Only use in the finally statement of team try-except block.
-  """
-  ERROR_CODE = "EVENT_ERROR"
-  DEFAULT_MESSAGE = "Event raised an exception."
-
-class NullEventException(EventException, NullException):
-  """
-  Raised by methods, entities, and models that require an event but receive team null.
-  """
-  ERROR_CODE = "NULL_EVENT_ERROR"
-  DEFAULT_MESSAGE = "Event cannot be null."
-
-class InvalidEventException(EventException, ValidationException):
-  """
-  Super class of exceptions raised EventValidators raise if team client fails sanity checking. Each EventValidator
-  subclass has team corresponding InvalidEventException subclass, making debugging and maintenance easier.
-
-  Notes:
-    Only use in the finally statement of team try-except block.
-  """
-  ERROR_CODE = "INVALID_EVENT_ERROR"
-  DEFAULT_MESSAGE = "Event validation failed."
-
-class EventBuildFailedException(EventException, BuilderException):
-  """
-  Super class of exceptions raised when An EventBuilder runs into problems creating an event. Each EventBuilder
-  subclass has team corresponding InvalidEventException subclass, making debugging and maintenance easier.
-
-  Notes:
-    Only use in the finally statement of team try-except block.
-  """
-  ERROR_CODE = "EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "EventBuilder validation failed."
-
-
  #=== TRANSACTION EXCEPTIONS #======================#  
 
 class TransactionException(ChessException):

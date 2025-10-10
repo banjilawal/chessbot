@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from chess.system.result.transaction import TransactionResult
+from chess.system.event.transaction.result import TransactionResult
 
 T = TypeVar('T')
 

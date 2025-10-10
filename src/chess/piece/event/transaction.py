@@ -1,4 +1,4 @@
-# src/chess/piece/event/transaction.py
+# src/chess/piece/event/result.py
 
 """
 Module: chess.piece.event.transaction
