@@ -7,6 +7,6 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from .result import *
 from .exception import *
 from .validator import Validator
-from .result import ValidationResult
