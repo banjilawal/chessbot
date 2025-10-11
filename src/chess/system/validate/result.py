@@ -12,7 +12,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers all domains in the `ChessBot` application.
+The module covers clients and servers in the `ChessBot` validation domain.
 
 # SECTION 3 - Limitations:
   1. The module is limited to the reporting validation results to clients.
@@ -24,11 +24,11 @@ The major theme influencing the modules design are
   1. Single responsibility.
   2. A consistent interface aiding discoverability, understanding and simplicity.
 
-# SECTION 5- Features:
+# SECTION 5- Features Supporting Requirements:
   1. The ability to handle errors without crashing the application is a reliability feature.
   2. Ensuring validation results are communicated are sent to clients is an integrity feature.
 
-## 6 Feature Delivery Mechanism:
+# 6 Feature Delivery Mechanism:
   1. The features are implemented by a communication mechanism between a validation service and its client.
 
 # SECTION 7 - Dependencies:
@@ -55,21 +55,18 @@ T = TypeVar("T")
 
 class ValidationResult(Result[Generic[T]]):
   """
-  # ROLE: Messaging, Transport
+  # ROLE: Message passing, Data Transfer Object
 
   # RESPONSIBILITIES:
-  1. Send the results of a validation operation to originating client.
-  2. Ensure contents are immutable.
+  1. Carry the outcome a validation operation to originating client.
+  2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
 
   # PROVIDES:
+  1. A correctness verification or denial for the `Validation` service provider.
 
   # ATTRIBUTES:
-    * `_payload` (`T`): Data if the verification was successful.
-    * `_exception` (`Exception`): Description of the condition which caused  verification failure.
+    * See `Result` superclass for attributes.
   """
-
-  _payload: Optional[T]
-  _exception: Optional[Exception]
 
   def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
     super().__init__(payload=payload, exception=exception)

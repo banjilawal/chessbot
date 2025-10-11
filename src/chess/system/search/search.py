@@ -1,41 +1,48 @@
-# src/chess/piece/event/transaction
-"""
-Module: chess.piece.event.transaction
-Author: Banji Lawal
-Created: 2025-09-28
-
-# SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
-
-# THEME:
-* Highlight the core feature (thread-safety)
-* Explain the how-and-why of implementation choices.
-
-# PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
-
-# DEPENDENCIES:
-
-# CONTAINS:
- * `OccupationTransaction`
-"""
-
-# chess/system/search/roster.py
+# src/chess/system/search/search.py
 
 """
 Module: `chess.system.search.search`
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-09-28
+Updated: 2025-10-10
 version: 1.0.0
 
- Provides: AWT implement by entities "owning" relationships for unified
-  search by collection attributes with validated params.
+# SECTION 1 - Purpose:
+This module provides a satisfaction of the `ChessBot` performance requirement.
 
-Contains:
- * `Search`
+# SECTION 2 - Scope:
+The module covers search service providers.
+
+# SECTION 3 - Limitations:
+  1. The module is limited to search providers.  between data owners and information requesters.
+  2. The module does not provide any logic or directions on how the search providers implement their service.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Separating entity responsibilities into from implementation details.
+  2. Loose coupling of modules while maintaining a unified, consistent interface for high cohesion among components
+    that have no direct relationship with each other.
+  3. A consistent interface and aids discoverability, understanding and simplicity.
+
+# SECTION 5 - Features Supporting Requirements:
+1. Fast search
+
+# SECTION G - Feature Delivery Mechanism:
+The module provides an interface that can separate search responsibilities from data management responsibilities.
+
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `SearchContext`, `SearchResult`
+
+* From Python `abc` Library:
+    `ABC`, `abstractmethod`
+
+* From Python `typing` Library:
+    `Generic`, `TypeVar`
+
+# SECTION 8 - Contains:
+1. `Search`
 """
 
 from abc import ABC, abstractmethod

@@ -1,7 +1,7 @@
 # src/chess/system/validate/validator.py
 
 """
-Module: chess.piece.system.validate.validator
+Module: chess.system.validate.validator
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10
@@ -24,15 +24,15 @@ The major theme influencing the modules design are
     that have no direct relationship with each other.
   3. A consistent interface and aids discoverability, understanding and simplicity.
 
-# SECTION 5 - Features:
+# SECTION 5 - Features Supporting Requirements:
 1. No direct support for any user level features.
 2. Direct support for easy, fast, scalable enhancements.
 
-## SECTION G - Feature Delivery Mechanism:
+# SECTION G - Feature Delivery Mechanism:
 The module provides an interface individual entities can use to for solving their optimal verification sub-problems
  providing a global solution if implementations cover every verifiable component.
 
-# SECTION 5 - Dependencies:
+# SECTION 7 - Dependencies:
 * From `chess.system.validation`:
     `ValidationResult`
 
@@ -42,7 +42,7 @@ The module provides an interface individual entities can use to for solving thei
 * From Python `typing` Library:
     `Generic`, `TypeVar`
 
-# SECTION 6 - Dependencies:
+# SECTION 8 - Contains:
 1. `Validator`
 """
 

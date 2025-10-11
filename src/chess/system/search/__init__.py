@@ -12,5 +12,3 @@ from .search import *
 from .exception import *
 
 from .result import SearchResult
-from .builder import SearchResultBuilder
-

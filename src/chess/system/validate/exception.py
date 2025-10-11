@@ -24,11 +24,11 @@ The major theme influencing the modules design are
   2. Discoverability.
   3. Encapsulations.
 
-# SECTION 5- Features:
+# SECTION 5- Features Supporting Requirements:
   1. The ability to handle errors without crashing the application is a reliability feature.
   2. Ensuring validation results are communicated are sent to clients is an integrity feature.
 
-## SECTION 6 - Feature Delivery Mechanism:
+# SECTION 6 - Feature Delivery Mechanism:
   1. Verify existing entities meet minimum requirements for use in the system.
   2. A description of an error condition, boundary violation, experienced or caused by an entity in
       the validation domain.
@@ -47,8 +47,8 @@ from chess.system import ChessException
 
 class ValidationException(ChessException):
   """
-  Super class of all errors raised verifying correctness of existing entities. DO NOT USE DIRECTLY.
-  `ValidationException`. Create or use subclasses specific to a class.
+  Super class of all errors raised verifying correctness of existing entities. DO NOT USE DIRECTLY. Create or use
+  subclasses specific to a class.
   """
   ERROR_CODE = "VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Validation failed."
