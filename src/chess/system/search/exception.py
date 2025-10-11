@@ -66,7 +66,7 @@ class SearchException(ChessException):
 
 class SearchParamException(SearchException):
   """
-  This is different than failed validation checks. Might not be
+  This is different from failed validation checks. Might not be
   necessary.
   """
   DEFAULT_CODE = "SEARCH_PARAM_ERROR"
