@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/transaction/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/transaction/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/transaction/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/event/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/result/event_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/event/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -561,7 +551,7 @@
       <workItem from="1760028797032" duration="7105000" />
       <workItem from="1760043094425" duration="15118000" />
       <workItem from="1760120174603" duration="41305000" />
-      <workItem from="1760175963625" duration="8699000" />
+      <workItem from="1760175963625" duration="10920000" />
     </task>
     <servers />
   </component>

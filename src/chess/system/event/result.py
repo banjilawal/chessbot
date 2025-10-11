@@ -94,7 +94,7 @@ class TransactionResult(Result):
 
   @property
   def event_update(self) -> Event:
-    return cast(Event, self._event_update)
+    return cast(Event, self.payload)
 
 
   @property
@@ -102,10 +102,13 @@ class TransactionResult(Result):
     return self._transaction_state
 
   def is_success(self) -> bool:
-    method = f"{self.__class__.__name__}.is_success"
-    """True if transaction success condition was true after the state change"""
+    """"""
+    method = "TransactionResult.is_success"
 
-    return self.exception is None and not self._transaction_state == TransactionState.SUCCESS
+    return (
+      self.exception is None and
+      (self.payload is not None and self._transaction_state == TransactionState.SUCCESS)
+    )
 
 
   def is_failure(self) -> bool:
@@ -118,7 +121,11 @@ class TransactionResult(Result):
 
   def is_rolled_back(self) -> bool:
     """"""
-    return self._exception is not None and self._transaction_state == TransactionState.ROLLED_BACK
+    return self.exception is not None and self._transaction_state == TransactionState.ROLLED_BACK
+
+
+  def is_timed_out(self) -> bool:
+    return self.exception is not None and self._transaction_state == TransactionState.TIMED_OUT
 
   #
   # def is_processing(self) -> bool:
