@@ -8,24 +8,24 @@ version: 1.0.0
 
 SCOPE:
 -----
-This module is strictly limited to constructing `Piece` instances safely.
+This module is strictly limited to constructing `ValidationResult` instances safely.
 
 **It does not** contain logic or rules for creating `OccupationEvent` or
 `OccupationTransaction`. Those are handled by `OccupationEventBuilder` before
 execution,`OccupationTransaction` during execution.
 
-**It does not** ensure existing `Piece` instances are valid. That is done
-by the `PieceValidator`.
+**It does not** ensure existing `ValidationResult` instances are valid. That is done
+by the `ValidationResultValidator`.
 
 THEME:
 -----
 **Integrity, Consistency, Validation.** The module's design centers on team separating
-complexities of the build process into team utility from the `Piece` constructor.
+complexities of the build process into team utility from the `ValidationResult` constructor.
 
 PURPOSE:
 -------
 To execute validated `OccupationEvent` directives by orchestrating the necessary
-state changes across the board, pieces, and teams. It serves as the **engine
+state changes across the board, validationResults, and teams. It serves as the **engine
 layer responsible for persistent state modification** based on accepted moves.
 
 DEPENDENCIES:
@@ -34,13 +34,13 @@ This module requires components from various sub-systems:
 * `chess.rank`: Movement strategy (`Rank`)
 * `chess.square`: Location data structure (`Square`)
 * `chess.search`: Board lookup utilities (`BoardSearch`)
-* `chess.piece`: Piece subtypes (`KingPiece`, `CombatantPiece`, etc.)
+* `chess.validationResult`: ValidationResult subtypes (`KingValidationResult`, `CombatantValidationResult`, etc.)
 * `chess.team`: Roster management, exception handling
 * `chess.transaction`: Base transaction and roster types
 
 CONTAINS:
 --------
- * `PieceBuilder`: The builder of `Piece` instances.
+ * `ValidationResultBuilder`: The builder of `ValidationResult` instances.
 """
 
 from typing import TypeVar, Generic
@@ -58,7 +58,29 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
   @classmethod
   @LoggingLevelRouter.monitor
   def build(cls, payload: T, exception: Exception) -> BuildResult[ValidationResult]:
+    """
+    Constructs team new `Square` that works correctly.
 
+    Args:
+      `name`(`str`): Must pass `NameValidator` checks.
+      `rank`(`Rank`): The `rank` which determines how the validationResult moves and its capture value.
+      `team`(`Team`): Specifies if the `validationResult` is white or black.
+
+    Returns:
+    BuildResult[ValidationResult]: A `BuildResult` containing either:
+      - On success: A valid `ValidationResult` instance in the payload
+      - On failure: Error information and error details
+
+    Raises:
+    `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
+      * `InvalidNameException`: if `name` fails validate checks
+      * `InvalidRankException`: if `rank` fails validate checks
+      * `InvalidTeamException`: if `team` fails validate checks
+      * `InvalidTeamAssignmentException`: If `validationResult.team` is different from `team` parameter
+      * `FullRankQuotaException`: If the `team` has no empty slots for the `validationResult.rank`
+      * `FullRankQuotaException`: If `validationResult.team` is equal to `team` parameter but `team.roster` still does
+        not have the validationResult
+    """
     method = "TransactionResultBuilder.build"
 
     try:
@@ -80,45 +102,23 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
     except Exception as e:
       return ValidationResultBuildFailedException(f"{method}: {e}")
 
-    """
-    Constructs team new `Square` that works correctly.
 
-    Args:
-      `name`(`str`): Must pass `NameValidator` checks.
-      `rank`(`Rank`): The `rank` which determines how the piece moves and its capture value.
-      `team`(`Team`): Specifies if the `piece` is white or black.
-
-    Returns:
-    BuildResult[Piece]: A `BuildResult` containing either:
-      - On success: A valid `Piece` instance in the payload
-      - On failure: Error information and error details
-
-    Raises:
-    `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
-      * `InvalidNameException`: if `name` fails validate checks
-      * `InvalidRankException`: if `rank` fails validate checks
-      * `InvalidTeamException`: if `team` fails validate checks
-      * `InvalidTeamAssignmentException`: If `piece.team` is different from `team` parameter
-      * `FullRankQuotaException`: If the `team` has no empty slots for the `piece.rank`
-      * `FullRankQuotaException`: If `piece.team` is equal to `team` parameter but `team.roster` still does
-        not have the piece
-    """
 
 
 # def main():
-#   build_outcome = PieceBuilder.build()
+#   build_outcome = ValidationResultBuilder.build()
 #   if build_outcome.is_success():
-#     piece = build_outcome.payload
-#     print(f"Successfully built piece: {piece}")
+#     validationResult = build_outcome.payload
+#     print(f"Successfully built validationResult: {validationResult}")
 #   else:
-#     print(f"Failed to build piece: {build_outcome.err}")
+#     print(f"Failed to build validationResult: {build_outcome.err}")
 #   #
-#   build_outcome = PieceBuilder.build(1, None)
+#   build_outcome = ValidationResultBuilder.build(1, None)
 #   if build_outcome.is_success():
-#     piece = build_outcome.payload
-#     print(f"Successfully built piece: {piece}")
+#     validationResult = build_outcome.payload
+#     print(f"Successfully built validationResult: {validationResult}")
 #   else:
-#     print(f"Failed to build piece: {build_outcome.err}")
+#     print(f"Failed to build validationResult: {build_outcome.err}")
 #
 # if __name__ == "__main__":
 #   main()

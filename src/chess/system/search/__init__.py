@@ -9,6 +9,6 @@ version: 1.0.0
 
 from .context import *
 from .search import *
+from .result import *
 from .exception import *
 
-from .result import SearchResult

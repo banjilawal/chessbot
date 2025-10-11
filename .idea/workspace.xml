@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/system/validate/result/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/validate/result/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/search/result/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/search/result/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/search/result/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/result/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/search/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/result/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/result/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/result/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +251,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/validate/result",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/search",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -275,18 +277,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/search" />
       <recent name="$PROJECT_DIR$/src/chess/system/validate/result" />
       <recent name="$PROJECT_DIR$/src/chess/system/event/transaction/result" />
       <recent name="$PROJECT_DIR$/src/chess/system/event/context" />
       <recent name="$PROJECT_DIR$/src/chess/system/event/transaction" />
-      <recent name="$PROJECT_DIR$/src/chess/system/event" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/search/result" />
       <recent name="$PROJECT_DIR$/src/chess/system/validate/result" />
       <recent name="$PROJECT_DIR$/src/chess/system/event" />
       <recent name="$PROJECT_DIR$/src/chess/system/event/transaction/result" />
       <recent name="$PROJECT_DIR$/src/chess/system/event/exec" />
-      <recent name="$PROJECT_DIR$/src/chess/team/search" />
     </key>
   </component>
   <component name="RunManager" selected="Python.__init__">
@@ -555,7 +557,7 @@
       <workItem from="1760028797032" duration="7105000" />
       <workItem from="1760043094425" duration="15118000" />
       <workItem from="1760120174603" duration="41305000" />
-      <workItem from="1760175963625" duration="14715000" />
+      <workItem from="1760175963625" duration="16498000" />
     </task>
     <servers />
   </component>
