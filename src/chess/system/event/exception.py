@@ -1,57 +1,52 @@
-# src/chess.coord.exception.py
+# src/chess/system/event/exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.system.event.exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-10-09
 version: 1.0.0
 
-SCOPE:
------
-This module is exclusively for defining all custom **exception classes** that are specific to the
-creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
-falls to the `CoordValidator` and `CoordBuilder`processes.
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` integrity requirement.
+  2. A satisfaction of the `ChessBot` reliability requirement.
 
-THEME:
------
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
-highly granular and hierarchical set of exceptions, ensuring that callers can
-catch and handle errors based on both the **type of failure** (e.g., `NullException`)
-and the **affected domain** (e.g., `CoordException`). This enables precise error
-logging and handling throughout the system.
+# SECTION 2 - Scope:
+The module's only covers exceptions raised by `IdValidator`;
 
-PURPOSE:
--------
-To serve as the **centralized error dictionary** for the `Coord` domain.
-It abstracts underlying Python exceptions into domain-specific, custom error types
-to improve code clarity and facilitate robust error handling within the chess engine.
+# SECTION 3: Limitations
+  1. Does not provide logic for fixing the errors or causing the exception being raised.
+       `IdValidator` is responsible for the logic which raises these exceptions.
 
-DEPENDENCIES:
-------------
-Requires base exception classes and constants from the core system:
-From `chess.system`:
-  * Constants: `ROW_SIZE`, `COLUMN_SIZE`
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
-        `BuildFailedException`.
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. Discoverability.
+  3. Encapsulations.
 
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
-`NullCoordException`, `RowAboveBoundsException`).
+# SECTION 5- Features Supporting Requirements:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+
+
+# SECTION 6 - Feature Delivery Mechanism:
+1. Exceptions specific to verifying ids.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `ChessException`, `ContextException`, `ResultException`
+
+# SECTION 8 - Contains:
+See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
-from chess.system import ChessException, ValidationException, NullException, BuildFailedException
+from chess.system import ChessException, ResultException, ContextException
+
 
 __all__ = [
   'EventException',
-
-#======================# EVENT VALIDATION EXCEPTIONS #======================#
-  'NullEventException',
-  'InvalidEventException',
-
-  # ======================# EVENT BUILD EXCEPTIONS #======================#
-  'EventBuildFailedException'
+  'TransactionException',
+  'TransactionResultException',
+  'ExecutionContextException'
 ]
 
 
@@ -65,27 +60,31 @@ class EventException(ChessException):
   ERROR_CODE = "EVENT_ERROR"
   DEFAULT_MESSAGE = "Event raised an exception."
 
+class TransactionException(ChessException):
+  """
+  Super class of all exceptions `Transaction` object raises. Do not use directly. Subclasses give
+  details useful for debugging. This class exists primarily to allow catching all `Transaction`
+  exceptions.
+  """
+  ERROR_CODE = "TRANSACTION_ERROR"
+  DEFAULT_MESSAGE = "Transaction raised an exception."
+
 
 #======================# EVENT VALIDATION EXCEPTIONS #======================#
-class NullEventException(EventException, NullException):
-  """Raised if an entity, method, or operation requires `Event` but gets null instead."""
-  ERROR_CODE = "NULL_EVENT_ERROR"
-  DEFAULT_MESSAGE = "Event cannot be null"
-
-class InvalidEventException(EventException, ValidationException):
+class ExecutionContextException(ContextException):
   """
-  Raised by `EventValidator` if an object fails sanity checks. Exists primarily to catch all
-  exceptions raised validating an existing`Event`.
+  Super class of all exceptions `ExecutionContext` object raises. Do not use directly. Subclasses give
+  details useful for debugging. This class exists primarily to allow catching all `ExecutionContext`
+  exceptions.
   """
-  ERROR_CODE = "EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Event validation failed"
+  ERROR_CODE = "EXECUTION_CONTEXT_ERROR"
+  DEFAULT_MESSAGE = "ExecutionContext raised an exception."
 
-
-  # ======================# EVENT BUILD EXCEPTIONS #======================#  
-  class EventBuildFailedException(EventException, BuildFailedException):
-    """
-    Raised when EventBuilder crashed while building a new event. Exists
-    primarily to catch all exceptions raised creating events.
-    """
-    ERROR_CODE = "EVENT_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Event build failed."
+class TransactionResultException(ResultException):
+  """
+  Super class of all exceptions `TransactionResult` object raises. Do not use directly. Subclasses give
+  details useful for debugging. This class exists primarily to allow catching all `TransactionResult`
+  exceptions.
+  """
+  ERROR_CODE = "TRANSACTION_RESULT_ERROR"
+  DEFAULT_MESSAGE = "TransactionResult raised an exception."

@@ -47,26 +47,10 @@ From `chess.commander`:
  * `TeamBuilder`
 """
 
-class TeamBuilder(Builder[Team]):
-  """
-  # ROLE: Builder implementation
-
-  # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `Team` instances.
-  2. Create new `Team` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
-
-  # PROVIDES:
-  `BuildResult`: Return type containing the built `Team` or error information.
-
-  # ATTRIBUTES:
-  None
-  """
-
-
 from typing import Optional
 
 from chess.system import Result
+from chess.system.event.transaction import TransactionState
 from chess.transaction import Event
 
 class TransactionResult:
@@ -95,48 +79,61 @@ class TransactionResult:
   Direct constructor usage is not recommended.
   """
 
-  _event: Event
+  _event_update: Event
+  _transaction_state: TransactionState
   _exception: Optional[Exception]
-  _was_rolled_back: bool
 
   def __init__(
     self,
-    event: Event,
-    exception: Optional[Exception] = None,
-    was_rolled_back: bool = False
+    event_update: Event,
+    transaction_state: TransactionState,
+    exception: Optional[Exception] = None
   ):
     """INTERNAL: Use factory methods instead of direct constructor."""
     method = "TransactionResult.__init__"
 
-    self._event = event
+    self._event_update = event_update
     self._exception = exception
-    self._was_rolled_back = was_rolled_back
+    self._transaction_state = transaction_state
 
 
   @property
-  def event(self) -> Optional[Event]:
-    return self._event
+  def event_update(self) -> Optional[Event]:
+    return self._event_update
 
   @property
   def exception(self) -> Optional[Exception]:
     return self._exception
 
   @property
-  def was_rolled_back(self) -> bool:
-    return self._was_rolled_back
+  def transaction_state(self) -> Optional[TransactionState]:
+    return self._transaction_state
 
   def is_success(self) -> bool:
     method = f"{self.__class__.__name__}.is_success"
     """True if transaction success condition was true after the state change"""
 
-    return self._exception is None and not self._was_rolled_back
+    return self._exception is None and not self._transaction_state == TransactionState.SUCCESS
+
+
+  def is_failure(self) -> bool:
+    """"""
+    return (self._exception is not None and
+        self._transaction_state == TransactionState.FAILURE or
+        self._transaction_state == TransactionState.ROLLED_BACK
+    )
+
+
+  def is_rolled_back(self) -> bool:
+    """"""
+    return self._exception is not None and self._transaction_state == TransactionState.ROLLED_BACK
 
   #
   # def is_processing(self) -> bool:
   #   method = f"{self.__class__.__name__}.is_processing"
   #   """True if transaction still processing, has not changed state"""
   #
-  #   return self._event is None and self._exception is None and not self._was_rolled_back
+  #   return self._event_update is None and self._exception is None and not self._was_rolled_back
   #
   #
   # def is_failed(self) -> bool:

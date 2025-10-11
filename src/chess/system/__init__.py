@@ -11,6 +11,7 @@ from .id import *
 from .name import *
 from .actor import *
 from .context import *
+from .event import *
 from .utils import *
 from .result import *
 from .config import *
@@ -35,6 +36,7 @@ __all__ = [
 
   *id.__all__,
   *name.__all__,
+  *event.__all__,
   *utils.__all__,
   *actor.__all__,
   *result.__all__,

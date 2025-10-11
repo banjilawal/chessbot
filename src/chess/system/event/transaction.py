@@ -46,9 +46,13 @@ From `chess.commander`:
 ----------
  * `TeamBuilder`
 """
+from abc import ABC, abstractmethod
+from enum import auto
+
+from chess.system import Event, ExecutionContext, TransactionResult
 
 
-class State(Enum):
+class TransactionState:
   """
   # ROLE: Builder implementation
 
@@ -64,14 +68,39 @@ class State(Enum):
   None
   """
   RUNNING = auto()
+  SUCCESS = auto()
+  FAILURE = auto()
   TIMED_OUT = auto()
   ROLLED_BACK = auto()
-  SUCCESS = auto()
 
-class Transaction(ABC, Generic[T]):
+
+class Transaction(ABC):
   """Base class for transaction execution handlers"""
+  _event: Event
+  _state: TransactionState
+  _context: ExecutionContext
 
-  @classmethod
+
+  def __init__(self, event: Event, context: ExecutionContext):
+    self._event = event
+    self._context = context
+    self._state = TransactionState.RUNNING
+
+
+
+  @property
+  def event(self) -> Event:
+    return self._event
+
+  @property
+  def context(self) -> ExecutionContext:
+    return self._context
+
+  @property
+  def state(self) -> TransactionState:
+    return self._state
+
+
   @abstractmethod
-  def execute(cls, event: T, context: ExecutionContext) -> TransactionResult:
+  def execute(self) -> TransactionResult:
     pass

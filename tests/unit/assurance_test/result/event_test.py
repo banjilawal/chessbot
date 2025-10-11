@@ -27,7 +27,7 @@ class RequestOutcomeTest(unittest.TestCase):
 
     request_outcome = TransactionResult(request=mock_request, event=mock_event, exception=None)
 
-    self.assertEqual(request_outcome._event, mock_event)
+    self.assertEqual(request_outcome._event_update, mock_event)
     self.assertIsNone(request_outcome._exception, None)
 
   def test_construct_result_with_exception_only_succeeds(self):
@@ -36,7 +36,7 @@ class RequestOutcomeTest(unittest.TestCase):
 
     request_outcome = TransactionResult(request=mock_request, event=None, exception=mock_exception)
 
-    self.assertIsNone(request_outcome._event, None)
+    self.assertIsNone(request_outcome._event_update, None)
     self.assertEqual(request_outcome._exception, mock_exception)
 
 

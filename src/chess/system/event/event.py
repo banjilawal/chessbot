@@ -7,15 +7,23 @@ Created: 2025-08-11
 Updated: 2025-10-10
 
 # SECTION 1 - Purpose:
-1. This module provides a satisfaction of the `ChessBot` integrity requirement. The satisfaction covers
+1. This module provides a satisfaction of the `ChessBot` consistency requirement. The module supplies consistency
+      by providing a features for rollback activities.
     enforcement of regulations for unique IDs in the system.
-2. This module provides a satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module only covers the properties and behavior of an event during a stateful entity's lifecycle.
+The module only covers the basic properties and behavior objects in the `Event` domain.
 
 # SECTION 3 - Limitations:
-  1. This module is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
+  1. Do not use this module directly. A stateful entity is responsible for
+        * Having `Builders` which create subclasses for each state the entity has in its lifecycle.
+        * Having `Validators` that ensure a transition will be successful.
+  1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
+      `chess.system.event.transaction` is responsible for the `Event` lifecycle.
+  2. The module does not verify the correctness of data control or routing information it contains. Directly using the
+      module can breach data integrity, propagate inconsistencies or negatively impact performance. Use a
+        * `Builder` for the
+      DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `chess.system.id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
       For details about publishing IDs see the `AutoId` class in module `chess.system.id.auto_id`.
@@ -36,18 +44,19 @@ Major themes influencing the design include:
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
-    `Validator`, `NegativeIdException`, `IdNullException`, `InvalidIdException`
+    `ExecutionContext`,
 
 * From Python `typing` Library:
-    `cast`
+    `Generic`, `TypeVar`, `Optional`
 
 # SECTION 8 - Contains:
-1. `IdValidator`
+1. `Event`
 """
+
 from typing import Generic, TypeVar, Optional
 
-from chess.event import ExecutionContext
-from chess.system import auto_id
+from chess.system import ExecutionContext
+
 
 A = TypeVar('A') # Actor Type
 R = TypeVar('R') # Resource Type
@@ -55,21 +64,15 @@ R = TypeVar('R') # Resource Type
 
 class Event(Generic[A, R]):
   """
-  # ROLE: Builder implementation
+  # ROLE: State Management, Data Transport, Abstract Data Type
 
   # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `Team` instances.
-  2. Create new `Team` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
+  1. Transport data representing an entity's current state.
+  2. A store of current states of an entities whose states might change.
+  3. A reference for verifying success of a rollback transaction.
 
   # PROVIDES:
-  `BuildResult`: Return type containing the built `Team` or error information.
-
-  # ATTRIBUTES:
-  None
-  """
-  """
-  Super class of all events.
+  Information to execute a `Transaction` that could change the entity's state.
 
   Attributes:
     * `_actor` (`A`): The entity requesting the event.
@@ -93,7 +96,7 @@ class Event(Generic[A, R]):
     self._actor = actor
     self._parent = parent
     self._resource = resource
-    self.context = context
+    self._context = context
 
   @property
   def actor(self) -> A:
@@ -119,4 +122,4 @@ class Event(Generic[A, R]):
       return False
     if not isinstance(other, Event):
       return False
-    return self._id == other.id == other.id
+    return True
