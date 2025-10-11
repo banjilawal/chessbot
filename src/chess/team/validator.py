@@ -1,8 +1,10 @@
 # src/chess/team/validation.py
+
 """
 Module: chess.team.validator
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-09-11
+Updated: 2025-10-08
 
 # SCOPE:
 -------

@@ -1,47 +1,50 @@
-# src/chess.coord.exception.py
+# src/chess/system/name/exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.system.name.exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-09-17
+Updated: 2025-10-10
 version: 1.0.0
 
-SCOPE:
------
-This module is exclusively for defining all custom **exception classes** that are specific to the
-creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
-falls to the `CoordValidator` and `CoordBuilder`processes.
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` integrity requirement.
+  2. A satisfaction of the `ChessBot` reliability requirement.
 
-THEME:
------
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
-highly granular and hierarchical set of exceptions, ensuring that callers can
-catch and handle errors based on both the **type of failure** (e.g., `NullException`)
-and the **affected domain** (e.g., `CoordException`). This enables precise error
-logging and handling throughout the system.
+# SECTION 2 - Scope:
+The module's effects and actions cover exceptions raised by implementors of the `Validator` interface.
 
-PURPOSE:
--------
-To serve as the **centralized error dictionary** for the `Coord` domain.
-It abstracts underlying Python exceptions into domain-specific, custom error types
-to improve code clarity and facilitate robust error handling within the chess engine.
+# SECTION 3: Limitations
+  1. Does not provide granular, precise information pertinent to debugging. The module's
+      scope it too wide for that.
 
-DEPENDENCIES:
-------------
-Requires base exception classes and constants from the core system:
-From `chess.system`:
-  * Constants: `ROW_SIZE`, `COLUMN_SIZE`
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
-        `BuildFailedException`.
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. Discoverability.
+  3. Encapsulations.
 
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
-`NullCoordException`, `RowAboveBoundsException`).
+# SECTION 5- Features Supporting Requirements:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+  2. Ensuring validation results are communicated are sent to clients is an integrity feature.
+
+# SECTION 6 - Feature Delivery Mechanism:
+  1. Verify existing entities meet minimum requirements for use in the system.
+  2. A description of an error condition, boundary violation, experienced or caused by an entity in
+      the validation domain.
+  3. The root of a scalable, modular hierarchy for validation related exceptions.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `ChessException`
+
+# SECTION 8 - Contains:
+  * `ValidationException`
 """
 
-from chess.system import ChessException, NullException, ValidationException
+from chess.system import NullException, ValidationException, BlankStringException
+
 
 __all__ = [
   'NullNameException',
@@ -50,8 +53,6 @@ __all__ = [
   'BlankNameException',
   'InvalidNameException',
 ]
-
-from chess.system.err.exception import BlankStringException
 
 
 class InvalidNameException(ValidationException):
@@ -77,8 +78,7 @@ class ShortNameException(InvalidNameException):
 
 class LongNameException(InvalidNameException):
   """
-  Name is longer than MAX_NAME_LENGTH raises LongNameException. See documentation
-  pr chess.system.config for MAX_NAME_LENGTH
+  Name is longer than MAX_NAME_LENGTH raises LongNameException.
   """
   ERROR_CODE = "LONG_NAME_ERROR"
   DEFAULT_MESSAGE = "Name is above the maximum length"

@@ -3,7 +3,8 @@
 """
 Module: chess.team.builder
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-09-04
+Updated: 2025-10-08
 version: 1.0.0
 
 # SCOPE:

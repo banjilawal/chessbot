@@ -33,7 +33,7 @@ The module provides an interface individual entities can use to for solving thei
  providing a global solution if implementations cover every verifiable component.
 
 # SECTION 7 - Dependencies:
-* From `chess.system.validation`:
+* From `chess.system`:
     `ValidationResult`
 
 * From Python `abc` Library:
@@ -73,15 +73,15 @@ class Validator(ABC, Generic[T]):
   @abstractmethod
   def validate(cls, candidate: T) -> ValidationResult[T]:
     """
-    Action:
+    # Action:
     Ensures clients the candidate meets minimum system requirements for use in the system.
 
-    Parameters:
+    # Parameters:
         * `candidate` (`T`): The object to verify
-    Returns:
+    # Returns:
         `ValidationResult[T]`
 
-    Raises:
+    # Raises:
     `ValidationException`
     """
     pass
