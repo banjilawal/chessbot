@@ -1,55 +1,69 @@
-# src/chess/team/builder.py
+# src/chess/system/event/transaction.py
 
 """
-Module: chess.team.builder
+Module: chess.system.event.transaction
 Author: Banji Lawal
-Created: 2025-10-08
-version: 1.0.0
+Created: 2025-08-11
+Updated: 2025-10-10
 
-# SCOPE:
--------
-***Limitation***: There is no guarantee properly created `Team` objects released by the module will satisfy
-    client requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used.
+# SECTION 1 - Purpose:
+1. This module provides a satisfaction of the `ChessBot` consistency requirement. The module supplies consistency
+      by providing a features for rollback activities.
+    enforcement of regulations for unique IDs in the system.
 
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+# SECTION 2 - Scope:
+The module only covers the basic properties and behavior objects in the `Event` domain.
 
-# THEME:
--------
-* Data assurance, error prevention
+# SECTION 3 - Limitations:
+  1. Do not use this module directly. A stateful entity is responsible for
+        * Having `Builders` which create subclasses for each state the entity has in its lifecycle.
+        * Having `Validators` that ensure a transition will be successful.
+  1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
+      `chess.system.event.transaction` is responsible for the `Event` lifecycle.
+  2. The module does not verify the correctness of data control or routing information it contains. Directly using the
+      module can breach data integrity, propagate inconsistencies or negatively impact performance. Use a
+        * `Builder` for the
+      DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
+      `chess.system.id.auto_id` module.
+  1. The module is not responsible for supplying or publishing IDs that meet system requirements.
+      For details about publishing IDs see the `AutoId` class in module `chess.system.id.auto_id`.
 
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
+# SECTION 4 - Design Considerations and Themes:
+Major themes influencing the design include:
+1. Easy and fast debugging.
+2. Single responsibility, single source of truth.
 
-# PURPOSE:
----------
-1. Central, single producer of authenticated `Team` objects.
-2. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
+# SECTION 5 - Features Supporting Requirements:
+1. No direct support for any user level features.
+2. Direct support for reliability, verification, and integrity.
 
-**Satisfies**: Reliability and performance contracts.
+# SECTION G - Feature Delivery Mechanism:
+1. An exception for each requirement providing granular, accurate and precise error reporting.
+2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
+3. `IdValidator` can be used as component in more complex verifications.
 
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `ExecutionContext`,
 
-From `chess.team`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
+* From Python `typing` Library:
+    `Generic`, `TypeVar`, `Optional`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-# CONTAINS:
-----------
- * `TeamBuilder`
+# SECTION 8 - Contains:
+1. `Transaction`
 """
+
+
 from abc import ABC, abstractmethod
 from enum import auto
 
 from chess.system import Event, ExecutionContext, TransactionResult
+
+
+__all__ = [
+  'Transaction',
+  'TransactionState'
+]
 
 
 class TransactionState:

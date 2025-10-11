@@ -1,7 +1,7 @@
-# src/chess/system/validate/exception.py
+# src/chess/system/search/exception.py
 
 """
-Module: chess.system.validate.exception
+Module: chess.system.search.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -12,7 +12,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's effects and actions cover exceptions raised by implementors of the `Validator` interface.
+The module's effects and actions cover exceptions raised by implementors of the `Search` interface.
 
 # SECTION 3: Limitations
   1. Does not provide granular, precise information pertinent to debugging. The module's

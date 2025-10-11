@@ -1,59 +1,56 @@
-# src/chess/team/builder.py
+# src/chess/system/event/result.py
 
 """
-Module: chess.team.builder
+Module: `chess.system.event.result`
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-09-28
 version: 1.0.0
 
-# SCOPE:
--------
-***Limitation***: There is no guarantee properly created `Team` objects released by the module will satisfy
-    client requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used.
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` reliability requirement.
+  2. A satisfaction of the performance requirement.
 
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+# SECTION 2 - Scope:
+The module covers `Transaction` instances that emit a `TransactionResult` and consumers of the result.
 
-# THEME:
--------
-* Data assurance, error prevention
+# SECTION 3 - Limitations:
+  1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.
+  2. The module does not guarantee the accuracy or precision of data in the result.
 
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. A consistent interface aiding discoverability, understanding and simplicity.
 
-# PURPOSE:
----------
-1. Central, single producer of authenticated `Team` objects.
-2. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
+# SECTION 5 - Features Supporting Requirements:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+  2. Performance does not degrade under high search loads.
 
-**Satisfies**: Reliability and performance contracts.
+# 6 Feature Delivery Mechanism:
+  1. The module implements logic for carrying either an exception or result of a successful search. in the same
+      container. This improves resource.
+  2. Delivering an exception in the return instead of raising gives application higher reliability, uptimes and
+      survivability.
 
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `Result`
 
-From `chess.team`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
+* From Python `typing` Library:
+    `Generic`, `TypeVar`, `Optional`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-# CONTAINS:
-----------
- * `TeamBuilder`
+# SECTION 8 - Contains:
+1. `SearchResult`
 """
 
-from typing import Optional
 
-from chess.system import Result
-from chess.system.event.transaction import TransactionState
-from chess.transaction import Event
+from typing import Optional, cast
 
-class TransactionResult:
+from chess.system import Event, TransactionState, Result
+
+
+class TransactionResult(Result):
   """
   # ROLE: Builder implementation
 
@@ -89,21 +86,16 @@ class TransactionResult:
     transaction_state: TransactionState,
     exception: Optional[Exception] = None
   ):
+    super().__init__(payload=event_update, exception=exception)
     """INTERNAL: Use factory methods instead of direct constructor."""
     method = "TransactionResult.__init__"
-
-    self._event_update = event_update
-    self._exception = exception
     self._transaction_state = transaction_state
 
 
   @property
-  def event_update(self) -> Optional[Event]:
-    return self._event_update
+  def event_update(self) -> Event:
+    return cast(Event, self._event_update)
 
-  @property
-  def exception(self) -> Optional[Exception]:
-    return self._exception
 
   @property
   def transaction_state(self) -> Optional[TransactionState]:
@@ -113,12 +105,12 @@ class TransactionResult:
     method = f"{self.__class__.__name__}.is_success"
     """True if transaction success condition was true after the state change"""
 
-    return self._exception is None and not self._transaction_state == TransactionState.SUCCESS
+    return self.exception is None and not self._transaction_state == TransactionState.SUCCESS
 
 
   def is_failure(self) -> bool:
     """"""
-    return (self._exception is not None and
+    return (self.exception is not None and
         self._transaction_state == TransactionState.FAILURE or
         self._transaction_state == TransactionState.ROLLED_BACK
     )
