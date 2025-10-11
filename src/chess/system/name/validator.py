@@ -28,6 +28,7 @@ Major themes influencing the design include:
 # SECTION 5 - Features Supporting Requirements:
 1. No direct support for any user level features.
 2. Direct support for reliability, verification, and integrity.
+3. `NameValidator` can be used as component in more complex verifications.
 
 # SECTION G - Feature Delivery Mechanism:
 1. An exception for each requirement providing granular, accurate and precise error reporting.
@@ -39,7 +40,7 @@ Major themes influencing the design include:
     `NullNameException`, `Validator`,
 
 * From Python `typing` Library:
-    `Generic`, `cast`
+    `cast`
 
 # SECTION 8 - Contains:
 1. `NameValidator`
@@ -55,7 +56,18 @@ from chess.system import (
 
 
 class NameValidator(Validator[str]):
+  """
+  # ROLE: Validation, Integrity
 
+  # RESPONSIBILITIES:
+  Verify a candidate meets minimum naming regulations about length, and white space.
+
+  # PROVIDES:
+  A `ValidationResult` to clients.
+
+  # ATTRIBUTES:
+  No attributes.
+  """
 
   @classmethod
   @LoggingLevelRouter.monitor
@@ -84,7 +96,7 @@ class NameValidator(Validator[str]):
         * `ShortNameException`: if `candidate` is shorter than `MIN_NAME_LENGTH`.
         * `LongNameException`: if `candidate` is longer than `MAX_NAME_LENGTH`.
     """
-    method = "{NameValidator.validate"
+    method = "NameValidator.validate"
 
     try:
       if candidate is None:

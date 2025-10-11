@@ -1,52 +1,56 @@
-# src/chess/vector/builder.py
+# src/chess/system/id/auto_id.py
+
 """
-Module: chess.vector.builder
+Module: chess.system.id.auto_id
 Author: Banji Lawal
-Created: 2025-10-08
-version: 1.0.0
+Created: 2025-10-09
+Updated: 2025-10-10
 
-# SCOPE:
--------
-**Limitation**: There is no guarantee properly created `Vector` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `VectorBuilder` product will not fail when used. Products
-    from `VectorBuilder` --should-- satisfy `VectorValidator` requirements.
+# SECTION 1 - Purpose:
+1. This module provides a satisfaction of the `ChessBot` consistency requirement. The satisfaction covers
+    enforcement of regulations for unique IDs in the system.
 
-**Related Features**:
-    Authenticating existing vectors -> See VectorValidator, module[chess.vector.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+# SECTION 2 - Scope:
+The module only covers the generating and publishing IDs.
 
-# THEME:
--------
-* Data assurance, error prevention
+# SECTION 3 - Limitations:
+  1. This module is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
+      `chess.system.id.auto_id` module.
 
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
+# SECTION 4 - Design Considerations and Themes:
+Major themes influencing the design include:
+1. Speed
+2. Uniqueness.
+3. Scalability
 
-# PURPOSE:
----------
-1. Central, single producer of authenticated `Vector` objects.
-2. Putting all the steps and logging into one place makes modules using `Vector` objects cleaner and easier to follow.
 
-**Satisfies**: Reliability and performance contracts.
+# SECTION 5 - Features Supporting Requirements:
+1. No direct support for any user level features.
+2. Direct support for consistency.
+3. Cutting down on boilerplate manually generating a unique ID emitter for each class.
+4. Providing identification to entities that did not originally have that.
 
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`, `ChessException`, `NullException`
-    `BuildFailedException`
+# SECTION G - Feature Delivery Mechanism:
+1. Writing a class that has the same functionality as `AtomicLong` in `Java`.
+2. Making the class a decorator to leave existing code in the class alone.
 
-From `chess.vector`:
-    `Vector`, `NullVectorException`, `VectorBuildFailedException`, `NullXComponentException`,
-    `NullYComponentException`, `VectorBelowBoundsException`, `VectorAboveBoundsException`
+# SECTION 7 - Dependencies:
+* From Python `itertools` library:
+    `count`
 
-# CONTAINS:
-----------
- * `VectorBuilder`
+* From Python `threading` Library:
+    `Lock`
+
+* From Python `typing` Library:
+    `Type`, `TypeVar`
+
+# SECTION 8 - Contains:
+1. `AutoId
 """
+
 from itertools import count
 from threading import Lock
-from typing import Type, TypeVar, Callable
+from typing import Type, TypeVar
 
 T = TypeVar("T")
 
@@ -54,16 +58,12 @@ T = TypeVar("T")
 class AutoId:
     """
     # ROLE: Decorator
-    ------
-
 
     # RESPONSIBILITY:
-    ----------------
     1. Generate and issue unique, read-only thread safe IDs per class.
     2. Create counter starting at 1 for any class it decorates.
 
     # ATTRIBUTES:
-    ------------
     None
     """
 

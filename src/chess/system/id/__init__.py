@@ -1,9 +1,10 @@
-# <full_path>/__init__.py
+# src/chess/system/id/__init__.py
 
 """
-Module: <full.module.path>
+Module: chess.system.id
 Author: Banji Lawal
-Created: <yyy-mm-dd>
+Created: 2025-09-17
+Updated: 2025-10-10
 version: 1.0.0
 """
 

@@ -13,11 +13,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's effects and actions cover exceptions raised by implementors of the `Validator` interface.
+The module's only covers exceptions raised by `NameValidator`;
 
 # SECTION 3: Limitations
-  1. Does not provide granular, precise information pertinent to debugging. The module's
-      scope it too wide for that.
+  1. Does not provide logic for fixing the errors or causing the exception being raised.
+       `NameValidator` is responsible for the logic which raises these exceptions.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -27,35 +27,36 @@ The major theme influencing the modules design are
 
 # SECTION 5- Features Supporting Requirements:
   1. The ability to handle errors without crashing the application is a reliability feature.
-  2. Ensuring validation results are communicated are sent to clients is an integrity feature.
+
 
 # SECTION 6 - Feature Delivery Mechanism:
-  1. Verify existing entities meet minimum requirements for use in the system.
-  2. A description of an error condition, boundary violation, experienced or caused by an entity in
-      the validation domain.
-  3. The root of a scalable, modular hierarchy for validation related exceptions.
+1. Exceptions specific to verifying names.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
-    `ChessException`
+    `ValidationException`, `BlankStringException`, `NullException`
 
 # SECTION 8 - Contains:
-  * `ValidationException`
+See the list of exceptions in the `__all__` list following (e.g., `InvalidNameException`,`NullNameException`).
 """
 
 from chess.system import NullException, ValidationException, BlankStringException
 
 
 __all__ = [
-  'NullNameException',
-  'LongNameException',
-  'ShortNameException',
-  'BlankNameException',
   'InvalidNameException',
+  'BlankNameException',
+  'ShortNameException',
+  'LongNameException',
+  'NullNameException',
 ]
 
 
 class InvalidNameException(ValidationException):
+  """
+  Super class of exceptions raised by `NameValidator`. Subclasses give details useful for debugging. Exists primarily
+  to allow catching and wrapping all errors discovered validating names. DO NOT USE DIRECTLY.
+  """
   ERROR_CODE = "NAME_VALIDATION_ERROR"
   DEFAULT_MESSAGE = f"Name Validation failed"
 

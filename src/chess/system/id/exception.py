@@ -1,68 +1,75 @@
-# src/chess.coord.exception.py
+# src/chess/system/id/exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.system.id.exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-09-17
+Updated: 2025-10-10
 version: 1.0.0
 
-SCOPE:
------
-This module is exclusively for defining all custom **exception classes** that are specific to the
-creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
-falls to the `CoordValidator` and `CoordBuilder`processes.
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` integrity requirement.
+  2. A satisfaction of the `ChessBot` reliability requirement.
 
-THEME:
------
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
-highly granular and hierarchical set of exceptions, ensuring that callers can
-catch and handle errors based on both the **type of failure** (e.g., `NullException`)
-and the **affected domain** (e.g., `CoordException`). This enables precise error
-logging and handling throughout the system.
+# SECTION 2 - Scope:
+The module's only covers exceptions raised by `IdValidator`;
 
-PURPOSE:
--------
-To serve as the **centralized error dictionary** for the `Coord` domain.
-It abstracts underlying Python exceptions into domain-specific, custom error types
-to improve code clarity and facilitate robust error handling within the chess engine.
+# SECTION 3: Limitations
+  1. Does not provide logic for fixing the errors or causing the exception being raised.
+       `IdValidator` is responsible for the logic which raises these exceptions.
 
-DEPENDENCIES:
-------------
-Requires base exception classes and constants from the core system:
-From `chess.system`:
-  * Constants: `ROW_SIZE`, `COLUMN_SIZE`
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
-        `BuildFailedException`.
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. Discoverability.
+  3. Encapsulations.
 
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
-`NullCoordException`, `RowAboveBoundsException`).
+# SECTION 5- Features Supporting Requirements:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+
+
+# SECTION 6 - Feature Delivery Mechanism:
+1. Exceptions specific to verifying ids.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `ValidationException`, `NullException`
+
+# SECTION 8 - Contains:
+See the list of exceptions in the `__all__` list following (e.g., `InvalidIdException`,`IdNullException`).
 """
 
-from chess.exception import ChessException, ValidationException, NullException
+
+from chess.system import ValidationException, NullException
+
 
 __all__ = [
+  'InvalidIdException',
   'IdNullException',
-  'NegativeIdException',
-  'InvalidIdException'
+  'NegativeIdException'
 ]
 
 class InvalidIdException(ValidationException):
+  """
+  Super class of exceptions raised by `IdValidator`. Subclasses give details useful for
+  debugging. Exists primarily to allow catching and wrapping all errors discovered validating ids.
+  DO NOT USE DIRECTLY.
+  """
   ERROR_CODE = "ID_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Id Validation failed"
+  DEFAULT_MESSAGE = "Id Validation failed."
 
 class IdNullException(NullException):
   """
   Raised if an entity's id is null
   """
   ERROR_CODE = "NULL_ID_ERROR"
-  DEFAULT_MESSAGE = f"Id cannot be null"
+  DEFAULT_MESSAGE = "Id cannot be null."
 
 
-class NegativeIdException(ChessException):
+class NegativeIdException(InvalidIdException):
+  """Raised if an id is zero or less"""
   ERROR_CODE = "ID_IS_NEGATIVE"
-  DEFAULT_MESSAGE = "Id cannot be negative"
+  DEFAULT_MESSAGE = "Id cannot be negative."
 
 
