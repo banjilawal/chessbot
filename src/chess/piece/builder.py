@@ -43,10 +43,13 @@ CONTAINS:
  * `PieceBuilder`: The builder of `Piece` instances.
 """
 
-from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter
-from chess.piece import Piece, PieceBuildFailedException
-from chess.rank import Rank, RankValidator
-from chess.team import Team, TeamValidator
+from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext
+from chess.piece import Piece, PieceBuildFailedException, KingPiece, CombatantPiece, UnregisteredTeamMemberException
+from chess.rank import Rank, RankValidator, King
+from chess.team import(
+  Team, TeamValidator, TeamSearch, Datasource, FullRankQuotaException, ConflictingTeamAssignmentException
+)
+
 
 class PieceBuilder(Builder[Piece]):
   """
@@ -54,6 +57,7 @@ class PieceBuilder(Builder[Piece]):
   """
 
   @classmethod
+  @LoggingLevelRouter.monitor
   def build(cls, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
     """
     Constructs team new `Square` that works correctly.
@@ -87,20 +91,28 @@ class PieceBuilder(Builder[Piece]):
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        LoggingLevelRouter.log_and_raise_error(PieceBuilder, name_validation.exception)
+        return BuildResult(exception=name_validation.exception)
 
       rank_validation = RankValidator.validate(rank)
       if not rank_validation.is_success():
-        LoggingLevelRouter.log_and_raise_error(PieceBuilder, rank_validation.exception)
+        return BuildResult(exception=rank_validation.exception)
 
       team_validation = TeamValidator.validate(team)
       if not team_validation.is_success():
-        LoggingLevelRouter.log_and_raise_error(PieceBuilder, team_validation.exception)
+        return BuildResult(exception=team_validation.exception)
 
-      if len(TeamSearch.by_rank(rank, team).payload) >= rank.quota:
-        LoggingLevelRouter.log_and_raise_error(
-          PieceBuilder,
-          FullRankQuotaException(FullRankQuotaException.DEFAULT_MESSAGE)
+      search_result = TeamSearch.search(
+        team=team,
+        data_source=Datasource.ROSTER,
+        search_context=SearchContext(rank=rank)
+      )
+      if not search_result.is_success():
+        return BuildResult(exception=search_result.exception)
+
+      if len(search_result.payload) >= rank.quota:
+        return BuildResult(exception=FullRankQuotaException(
+          f"{method}: FullRankQuotaException.DEFAULT_MESSAGE"
+          )
         )
 
       piece = None
@@ -110,23 +122,24 @@ class PieceBuilder(Builder[Piece]):
         piece = CombatantPiece(name=name, rank=rank, team=team)
 
       if not piece.team == team:
-        LoggingLevelRouter.log_and_raise_error(
-          PieceBuilder,
-          ConflictingTeamAssignmentException(ConflictingTeamAssignmentException.DEFAULT_MESSAGE)
+        return BuildResult(exception=ConflictingTeamAssignmentException(
+          f"{method}: ConflictingTeamAssignmentException.DEFAULT_MESSAGE"
+          )
         )
 
       if not piece.team == team:
         team.add_to_roster(piece)
 
       if piece not in team.roster:
-        LoggingLevelRouter.log_and_raise_error(
-          PieceBuilder,
-          UnregisteredTeamMemberException(UnregisteredTeamMemberException.DEFAULT_MESSAGE)
+        return BuildResult(exception=UnregisteredTeamMemberException(
+          f"{method}: UnregisteredTeamMemberException.DEFAULT_MESSAGE"
+          )
         )
 
       return BuildResult(payload=piece)
+
     except Exception as e:
-      raise PieceBuilderException(f"{method}: {e}") for e
+      raise PieceBuildFailedException(f"{method}: {e}")
 
 
 
