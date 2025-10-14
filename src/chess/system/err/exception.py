@@ -182,14 +182,14 @@ class NullStringException(NullException):
   Raised if an entity, method, or operation requires team string but gets null instead.
   """
   ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-  DEFAULT_MESSAGE = "Cannot search by team null string"
+  DEFAULT_MESSAGE = "Cannot old_search by team null string"
 
 class BlankStringException(ChessException):
   """
-  Raised if search parameter is team blank or empty string
+  Raised if old_search parameter is team blank or empty string
   """
   ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
-  DEFAULT_MESSAGE = "Cannot search by an empty or blank string"
+  DEFAULT_MESSAGE = "Cannot old_search by an empty or blank string"
 
 
 

@@ -33,7 +33,7 @@ DEPENDENCIES:
 This module requires components from various sub-systems:
 * `chess.rank`: Movement strategy (`Rank`)
 * `chess.square`: Location data structure (`Square`)
-* `chess.search`: Board lookup utilities (`BoardSearch`)
+* `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.validationResult`: ValidationResult subtypes (`KingValidationResult`, `CombatantValidationResult`, etc.)
 * `chess.team`: Roster management, exception handling
 * `chess.transaction`: Base transaction and roster types

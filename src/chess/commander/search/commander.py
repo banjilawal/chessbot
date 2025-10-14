@@ -6,8 +6,8 @@ from chess.system import IdValidator
 
 class CommanderSearch:
   """
-  Static methods for entities and operations that need to search team Board for pieces, squares, coords, etc.
-  Provides consistent search interface and return types across all search operations.
+  Static methods for entities and operations that need to old_search team Board for pieces, squares, coords, etc.
+  Provides consistent old_search interface and return types across all old_search operations.
   Validates input parameters before searching to ensure safe operations.
   Returns SearchResult objects encapsulating either the found entity or error information.
 
@@ -25,7 +25,7 @@ class CommanderSearch:
     `Piece`: The piece being searched for
     `Square`: The square being searched for
     `Coord`: The coordinate being searched for
-    `SearchResult`: The return type for all search operations
+    `SearchResult`: The return type for all old_search operations
   """
 
   @staticmethod
@@ -46,7 +46,7 @@ class CommanderSearch:
       if team is not None:
         return SearchResult(payload=team)
 
-      # returns empty search result
+      # returns empty old_search result
       return SearchResult()
 
     except Exception as e:

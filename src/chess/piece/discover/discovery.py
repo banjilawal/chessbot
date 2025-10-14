@@ -11,11 +11,11 @@ class Discovery:
 
   A `Discovery` is created when team `Piece` detects another piece (friend or enemy) at team given `Square``.
   It captures the essential identifying information about the discovered piece without holding team direct
-  reference, ensuring immutability and safe storage within search logs or decision-making structures.
+  reference, ensuring immutability and safe storage within old_search logs or decision-making structures.
 
   `Discovery` objects are used to record what team piece has observed during scanning, moving, or event
   attempts. They provide enough detail (identity, team, rank, ransom value, and position) for evaluation
-  by search and decision engines, while remaining lightweight and detached from the full `Piece` object.
+  by old_search and decision engines, while remaining lightweight and detached from the full `Piece` object.
 
   Attributes:
     _id (int): The unique identifier of the discovered piece.

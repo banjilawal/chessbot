@@ -1,7 +1,7 @@
-# src/chess/system/search/search.py
+# src/chess/system/old_search/old_search.py
 
 """
-Module: `chess.system.search.search`
+Module: `chess.system.old_search.old_search`
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10
@@ -11,11 +11,11 @@ version: 1.0.0
 This module provides a satisfaction of the `ChessBot` performance requirement.
 
 # SECTION 2 - Scope:
-The module covers search service providers.
+The module covers old_search service providers.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to search providers.  between data owners and information requesters.
-  2. The module does not provide any logic or directions on how the search providers implement their service.
+  1. The module is limited to old_search providers.  between data owners and information requesters.
+  2. The module does not provide any logic or directions on how the old_search providers implement their service.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -25,10 +25,10 @@ The major theme influencing the modules design are
   3. A consistent interface and aids discoverability, understanding and simplicity.
 
 # SECTION 5 - Features Supporting Requirements:
-1. Fast search
+1. Fast old_search
 
 # SECTION G - Feature Delivery Mechanism:
-The module provides an interface that can separate search responsibilities from data management responsibilities.
+The module provides an interface that can separate old_search responsibilities from data management responsibilities.
 
 
 # SECTION 7 - Dependencies:
@@ -71,7 +71,7 @@ class Search(ABC, Generic[A, S, R]):
   ]
   """
   """
-  implement by entities "owning" relationships for unified search
+  implement by entities "owning" relationships for unified old_search
   by collection attributes with validated params.
 
   Attributes:
@@ -97,7 +97,7 @@ class Search(ABC, Generic[A, S, R]):
       Args:
       - `collection_master` (`M`): The data owning entity.
       - `data_set` (`D`): The data collection searched.
-      - `filter` (`F`): The search filter to hit,
+      - `filter` (`F`): The old_search filter to hit,
       - `search_context` (`C`): List of data set attributes.
       Returns:
         `SearchResult[`T`]`

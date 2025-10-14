@@ -78,7 +78,7 @@ class TeamHostageSearch(Search):
   """
   @classmethod
   def search(cls, team: Team, search_context: PieceSearchContext) -> SearchResult[List[Piece]]:
-      method = "TeamHostageSearch.search"
+      method = "DiscoverySearch.old_search"
 
       team_validation = TeamValidator.validate(team)
       if not team_validation.is_success():
@@ -109,13 +109,13 @@ class TeamHostageSearch(Search):
       """
       Does not guarantee uniqueness returns the first item which matches the given name.
       """
-      method = "TeamHostageSearch._name_search"
+      method = "DiscoverySearch._name_search"
 
       prisoner = next((hostage for hostage in team.hostages if hostage.name.upper() == name.upper()), None)
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty search result if no match ws found
+      # returns empty old_search result if no match ws found
       return SearchResult()
 
   @classmethod
@@ -131,21 +131,21 @@ class TeamHostageSearch(Search):
   @classmethod
   def _id_search(cls, team: Team, piece_id: int) -> SearchResult[List[Piece]]:
       """
-      IDs should be unique. Faster search would return the first match. An easy
+      IDs should be unique. Faster old_search would return the first match. An easy
       integrity check finds all the items with the same id. If there is more than
       one raise team `DuplicateUniqueIdException`.
 
       Performance Impact:
       The set of hostages will never exceed 15 so this is not going to be team really
-      burdensome search.
+      burdensome old_search.
       """
-      method = "TeamHostageSearch._id_search"
+      method = "DiscoverySearch._id_search"
 
       prisoner = next((hostage for hostage in team.hostages if hostage.id == piece_id), None)
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty search result if no match ws found
+      # returns empty old_search result if no match ws found
       return SearchResult()
 
   @classmethod
@@ -153,11 +153,11 @@ class TeamHostageSearch(Search):
       """
       Does not guarantee uniqueness returns the first item which matches the given id.
       """
-      method = "TeamHostageSearch._roster_number_search"
+      method = "DiscoverySearch._roster_number_search"
 
       prisoner = next((hostage for hostage in team.hostages if hostage.roster_number == roster_number), None)
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty search result if no match ws found
+      # returns empty old_search result if no match ws found
       return SearchResult()

@@ -9,7 +9,7 @@ Created: 2025-10-06
 This module provides a satisfaction of the `ChessBot` performance requirement.
 
 # SECTION 2 - Scope:
-The module covers search service providers, data owners and information requesters.
+The module covers old_search service providers, data owners and information requesters.
 
 # SECTION 3 - Limitations:
   1. The module does not provide any attributes or actionable code. Properties in a
@@ -27,7 +27,7 @@ The major theme influencing the modules design are
 
 
 # SECTION G - Feature Delivery Mechanism:
-The module provides a data structure for passing search for filtering the data owner's collection.
+The module provides a data structure for passing old_search for filtering the data owner's collection.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
@@ -49,10 +49,10 @@ class ExecutionContext(ABC, Context):
   # ROLE: Encapsulation
 
   # RESPONSIBILITIES:
-  1. Simplify the number of parameters and their possible combinations passed to a search method.
+  1. Simplify the number of parameters and their possible combinations passed to a old_search method.
 
   # PROVIDES:
-  1. A dictionary of options and specifications of what the search service returns.
+  1. A dictionary of options and specifications of what the old_search service returns.
 
   # ATTRIBUTES:
     * See `Context` superclass for attributes.

@@ -1,12 +1,12 @@
 # chess/board/roster.py
 
 """
-Module: `chess.board.search`
+Module: `chess.board.old_search`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
- Provides: Interface for complex search operations with validation
+ Provides: Interface for complex old_search operations with validation
 Contains:
   * BoardSearch
 """
@@ -20,8 +20,8 @@ from chess.system.search.result import SearchResult
 
 class BoardSearch:
   """
-  Static methods for entities and operations that need to search team Board for pieces, squares, coords, etc.
-  Provides consistent search interface and return types across all search operations.
+  Static methods for entities and operations that need to old_search team Board for pieces, squares, coords, etc.
+  Provides consistent old_search interface and return types across all old_search operations.
   Validates input parameters before searching to ensure safe operations.
   Returns SearchResult objects encapsulating either the found entity or error information.
 
@@ -39,7 +39,7 @@ class BoardSearch:
     `Piece`: The piece being searched for
     `Square`: The square being searched for
     `Coord`: The coordinate being searched for
-    `SearchResult`: The return type for all search operations
+    `SearchResult`: The return type for all old_search operations
   """
   _piece_id: Optional[int]
   _square_id: Optional[int]
@@ -59,7 +59,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty search result
+      # Return empty old_search result
       return SearchResult()
 
     except Exception as e:
@@ -83,7 +83,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty search result
+      # Return empty old_search result
       return SearchResult()
 
     except Exception as e:
@@ -108,7 +108,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty search result
+      # Return empty old_search result
       return SearchResult()
 
     except Exception as e:
@@ -158,7 +158,7 @@ class BoardSearch:
       if square is not None:
         return SearchResult(payload=square)
 
-      # returns empty search result
+      # returns empty old_search result
       return SearchResult()
 
     except Exception as e:
@@ -190,7 +190,7 @@ class BoardSearch:
       if square:
         return SearchResult(payload=square)
 
-      # Return empty search result
+      # Return empty old_search result
       return SearchResult()
 
     except Exception as e:

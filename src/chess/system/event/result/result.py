@@ -25,10 +25,10 @@ The major theme influencing the modules design are
 
 # SECTION 5 - Features Supporting Requirements:
   1. The ability to handle errors without crashing the application is a reliability feature.
-  2. Performance does not degrade under high search loads.
+  2. Performance does not degrade under high old_search loads.
 
 # 6 Feature Delivery Mechanism:
-  1. The module implements logic for carrying either an exception or result of a successful search. in the same
+  1. The module implements logic for carrying either an exception or result of a successful old_search. in the same
       container. This improves resource.
   2. Delivering an exception in the return instead of raising gives application higher reliability, uptimes and
       survivability.

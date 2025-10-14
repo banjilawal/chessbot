@@ -55,11 +55,11 @@ class NullException(ChessException):
 
 class BlankStringException(ChessException):
   """
-  Raised if search parameter is team blank or empty string
+  Raised if old_search parameter is team blank or empty string
   """
 
   ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
-  DEFAULT_MESSAGE = f"Cannot search by an empty or blank string"
+  DEFAULT_MESSAGE = f"Cannot old_search by an empty or blank string"
 
 
 class NullNumberException(NullException):
@@ -75,11 +75,11 @@ class NullNumberException(NullException):
 
 class NullStringException(NullException):
   """
-  Raised if search parameter is team null string
+  Raised if old_search parameter is team null string
   """
 
   ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-  DEFAULT_MESSAGE = f"Cannot search by team null string"
+  DEFAULT_MESSAGE = f"Cannot old_search by team null string"
 
 
 class BuilderException(ChessException):
@@ -110,17 +110,17 @@ class RollbackException(ChessException):
 
 class SearchException(ChessException):
   """
-  Base class for search errors in the chess engine.
+  Base class for old_search errors in the chess engine.
 
   PURPOSE:
-    Raised search raises an err. Is team wrapper for other exceptions
-    that occur during search.
+    Raised old_search raises an err. Is team wrapper for other exceptions
+    that occur during old_search.
   ATTRIBUTES:
     code (str): Short machine-readable error code for logging / testing.
     message (str): Human-readable default message.
   """
   DEFAULT_CODE = "SEARCH_ERROR"
-  DEFAULT_MESSAGE = "An error was raised during team search."
+  DEFAULT_MESSAGE = "An error was raised during team old_search."
 
 
 

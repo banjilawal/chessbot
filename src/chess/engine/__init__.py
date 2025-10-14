@@ -7,7 +7,7 @@ Created: 2025-10-05
 version: 1.0.0
 
 # PURPOSE
-Contains implementations of optimization algorithms that search the graph of pieces on
+Contains implementations of optimization algorithms that old_search the graph of pieces on
 the current `Board` to find the best move.
 
  NOTES:

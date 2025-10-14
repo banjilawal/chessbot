@@ -14,7 +14,7 @@ class Discoveries:
   A collection class for managing `Discovery` records.
 
   `Discoveries` encapsulates the list of `Discovery` objects observed by team `Piece`.
-  It ensures safe recording (no duplicates, no nulls) and provides search and filter
+  It ensures safe recording (no duplicates, no nulls) and provides old_search and filter
   operations over the stored discoveries. This separation allows discover management
   to evolve independently of the `Piece` itself, while keeping the `Piece` interface clean.
 
@@ -75,7 +75,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty search result
+      # returns empty old_search result
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)
@@ -97,7 +97,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty search result
+      # returns empty old_search result
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)
@@ -116,7 +116,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty search result
+      # returns empty old_search result
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)

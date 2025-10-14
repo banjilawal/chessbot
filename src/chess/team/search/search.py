@@ -73,8 +73,8 @@ class TeamSearch(Piece):
   ----------
   """
   """
-  Static methods for entities and operations that need to search team Team for pieces and ranks. Provides consistent
-  search interface and return types across all search operations. Validates input parameters before searching to
+  Static methods for entities and operations that need to old_search team Team for pieces and ranks. Provides consistent
+  old_search interface and return types across all old_search operations. Validates input parameters before searching to
   ensure safe operations. Returns SearchResult objects encapsulating either the found entity or error information.
 
   Usage:
@@ -102,7 +102,7 @@ class TeamSearch(Piece):
   See Also:
     `Team`: The team being searched
     `Piece`: The piece being searched for
-    `SearchResult`: The return type for all search operations
+    `SearchResult`: The return type for all old_search operations
   """
 
   @classmethod

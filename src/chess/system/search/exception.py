@@ -1,7 +1,7 @@
-# src/chess/system/search/exception.py
+# src/chess/system/old_search/exception.py
 
 """
-Module: chess.system.search.exception
+Module: chess.system.old_search.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -83,7 +83,7 @@ class ImpossibleFatalResultException(SearchException):
   """
   DEFAULT_CODE = "IMPOSSIBLE_FATAL_RESULT_ERROR"
   DEFAULT_MESSAGE = (
-    "The search result should be impossible. The result "
+    "The old_search result should be impossible. The result "
     "indicates team major data inconsistency or system error"
   )
 

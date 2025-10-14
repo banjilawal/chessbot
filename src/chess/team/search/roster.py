@@ -78,7 +78,7 @@ class TeamRosterSearch(Search[Team, Piece]):
   """
   @classmethod
   def search(cls, team: Team, search_context: PieceSearchContext) -> SearchResult[List[Piece]]:
-      method = "TeamRosterSearch.search"
+      method = "TeamRosterSearch.old_search"
 
       team_validation = TeamValidator.validate(team)
       if not team_validation.is_success():
@@ -115,7 +115,7 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty search result if no match ws found
+      # returns empty old_search result if no match ws found
       return SearchResult()
 
   @classmethod
@@ -131,13 +131,13 @@ class TeamRosterSearch(Search[Team, Piece]):
   @classmethod
   def _id_search(cls, team: Team, piece_id: int) -> SearchResult[List[Piece]]:
       """
-      IDs should be unique. Faster search would return the first match. An easy
+      IDs should be unique. Faster old_search would return the first match. An easy
       integrity check finds all the items with the same id. If there is more than
       one raise team `DuplicateUniqueIdException`.
 
       Performance Impact:
       The set of roster will never exceed 15 so this is not going to be team really
-      burdensome search.
+      burdensome old_search.
       """
       method = "TeamRosterSearch._id_search"
 
@@ -145,7 +145,7 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty search result if no match ws found
+      # returns empty old_search result if no match ws found
       return SearchResult()
 
   @classmethod
@@ -159,5 +159,5 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty search result if no match ws found
+      # returns empty old_search result if no match ws found
       return SearchResult()

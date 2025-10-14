@@ -311,7 +311,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
 
 #======================# SEARCH EXCEPTIONS #======================#  
 class RosterNumberOutOfBoundsException(TeamException, SearchException):
-  """Attempting to search for team roster number < 1 or > team_size raises an exception."""
+  """Attempting to old_search for team roster number < 1 or > team_size raises an exception."""
   ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"
   DEFAULT_MESSAGE = "Roster numbers are in the range [1, team_size]. Search failed."
 

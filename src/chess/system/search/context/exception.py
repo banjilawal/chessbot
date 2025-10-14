@@ -1,7 +1,7 @@
-# src/chess/system/search/context/exception.py
+# src/chess/system/old_search/context/exception.py
 
 """
-Module: chess.system.search.context.exception
+Module: chess.system.old_search.context.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
