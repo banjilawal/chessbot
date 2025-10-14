@@ -1,17 +1,13 @@
 from enum import Enum
 
-from assurance import ThrowHelper
-from chess.exception import NullNumberException
-from chess.system import BuildResult, BOARD_DIMENSION
 
-from chess.scalar import (
-  Scalar, ScalarAboveBoundsException,
-  ScalarBelowBoundsException, ScalarBuildFailed
-)
+from chess.system import BuildResult, BOARD_DIMENSION, NullNumberException, LoggingLevelRouter, Builder
+from chess.scalar import Scalar, ScalarAboveBoundsException, ScalarBelowBoundsException, ScalarBuildFailed
 
 
 
-class ScalarBuilder(Enum):
+
+class ScalarBuilder(Builder[Scalar]):
   """
   Builder class responsible for safely constructing `Scalar` instances.
 
@@ -111,21 +107,21 @@ class ScalarBuilder(Enum):
 
     try:
       if value is None:
-        ThrowHelper.log_and_raise_error(
-          ScalarBuilder,
-          NullNumberException(NullNumberException.DEFAULT_MESSAGE)
-        )
+        return BuildResult(exception=NullNumberException( f"{method}: {NullNumberException.DEFAULT_MESSAGE}"))
+
       if value < -BOARD_DIMENSION:
-        ThrowHelper.log_and_raise_error(
-          ScalarBuilder,
-          ScalarBelowBoundsException(ScalarBelowBoundsException.DEFAULT_MESSAGE)
+        return BuildResult(exception=ScalarBelowBoundsException(
+          f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}"
+          )
         )
+
       if value > BOARD_DIMENSION:
-        ThrowHelper.log_and_raise_error(
-          ScalarBuilder,
-          ScalarAboveBoundsException(ScalarAboveBoundsException.DEFAULT_MESSAGE)
+        return BuildResult(exception=ScalarAboveBoundsException(
+          f"{method}: {ScalarAboveBoundsException.DEFAULT_MESSAGE}"
+        )
       )
 
       return BuildResult(payload=Scalar(value=value))
+
     except Exception as e:
-      raise ScalarBuildFailed(f"{method}: {ScalarBuildFailed.DEFAULT_MESSAGE}") from e
+      return BuildResult(exception=ScalarBuildFailed(f"{method}: {e}"))
