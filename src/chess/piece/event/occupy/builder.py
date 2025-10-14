@@ -3,12 +3,12 @@ from typing import cast
 
 from chess.exception import SearchException
 from chess.piece.exception import CircularCaptureException
-from chess.search import BoardSearch
+from chess.commander.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
 from chess.event import AttackEvent, AttackEventBuilderException, TargetSquareMismatchException
 from chess.system import IdValidator, BuildResult, ExecutionContext
-from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidPieceException, CombatantPiece, \
+from chess.piece import Piece, PieceValidator, InvalidPieceException, CombatantPiece, \
   CaptureFriendException, KingCaptureException
 
 

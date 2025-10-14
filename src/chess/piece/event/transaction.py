@@ -19,7 +19,7 @@ from typing import cast
 from chess.system import id_emitter
 
 from chess.square import Square
-from chess.search import BoardSearch
+from chess.commander.search import BoardSearch
 from chess.piece import KingPiece, CombatantPiece, Discovery, DiscoveryBuilder
 from chess.team import AddEnemyHostageRolledBackException
 from chess.team.exception import RemoveTeamMemberRolledBackException
@@ -29,7 +29,7 @@ from chess.transaction import AttackValidator
 from chess.piece.event import (
   OccupationEventValidator,
   OccupationSearchEventException,
-  OccupationEvent,
+  TravelEvent,
   OccupationEventException,
 
     # Rollback attack errors (dual inheritance)
@@ -37,7 +37,7 @@ from chess.piece.event import (
 )
 
 
-class OccupationTransaction(Transaction[OccupationEvent]):
+class OccupationTransaction(Transaction[TravelEvent]):
   """
   Implements the `OccupationExecutor` class, which handles executing event
   directives in the chess engine. This includes moving pieces, capturing enemies,
@@ -50,7 +50,27 @@ class OccupationTransaction(Transaction[OccupationEvent]):
     * `_switch_squares`: Static method the transferring team piece to team different `Square`.
   """
   @staticmethod
-  def execute(event: OccupationEvent, context: ExecutionContext) -> TransactionResult:
+  def execute(event: TravelEvent, context: ExecutionContext) -> TransactionResult:
+    """
+    # ACTION:
+    Verify the `candidate` is a valid ID. The Application requires
+    1. Candidate is not null.
+    2. Is a positive integer.
+
+    # PARAMETERS:
+        * `candidate` (`int`): the id.
+
+    # RETURNS:
+    `ValidationResult[str]`: A `ValidationResult` containing either:
+        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
+        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+
+    # RAISES:
+    `InvalidIdException`: Wraps any specification violations including:
+        * `TypeError`: if candidate is not an `int`
+        * `IdNullException`: if candidate is null
+        * `NegativeIdException`: if candidate is negative `
+    """
     method = "OccupationExecutor.execute_directive"
     op_result_id = id_emitter.op_result_id
 
@@ -111,7 +131,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
 
 
   @staticmethod
-  def _switch_squares(op_result_id: int, directive: OccupationEvent, actor_square: Square) -> TransactionResult:
+  def _switch_squares(op_result_id: int, directive: TravelEvent, actor_square: Square) -> TransactionResult:
     """
     Transfers `Piece` occupying`actor_square` to `directive.destination_square` leaving `actor_square` empty.
     `OccupationExecutor.execute_directive` is the single entry point to `_switch_squares`. Before `_switch_squares`
@@ -184,7 +204,7 @@ class OccupationTransaction(Transaction[OccupationEvent]):
 
     return TransactionResult(
       result_id=op_result_id,
-      event=OccupationEvent(id_emitter.event_id, directive.actor, directive.subject)
+      event=TravelEvent(id_emitter.event_id, directive.actor, directive.subject)
     )
 
 

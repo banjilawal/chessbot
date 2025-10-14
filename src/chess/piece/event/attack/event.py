@@ -4,9 +4,9 @@ from chess.board import Board
 from chess.event import Event
 from chess.square import Square
 from chess.piece import Piece, CombatantPiece
-from chess.piece.event import OccupationEvent
+from chess.piece.event import TravelEvent
 
-class AttackEvent(OccupationEvent):
+class AttackEvent(TravelEvent):
   _board: Board
   _actor_square: Square
   _enemy: CombatantPiece

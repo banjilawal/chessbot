@@ -1,91 +1,123 @@
-from typing import cast, Generic, TypeVar
+# src/chess/square/validator.py
+
+"""
+Module: chess.square.validator
+Author: Banji Lawal
+Created: 2025-09-28
+Updated: 2025-10-10
+
+# SECTION 1 - Purpose:
+This module provides a satisfaction of the `ChessBot` integrity requirement.
+
+# SECTION 2 - Scope:
+The module covers minimum verification requirements of `Square` objects
+
+# SECTION 3 - Limitations:
+  1. This module cannot only be used on existing `Square` instances. Use `SquareBuilder` for construction.
+  2. A `Square` positively verified by the module may fail stricter requirements other components may have.
+
+# SECTION 4 - Design Considerations and Themes:
+  1. A `Square` must undergo sanity checking before use.
+  2. As a fundamental, ubiquitous item consolidating all `Square` sanity checking into one place avoids repetition
+      and inconsistent implementations.
+  3. Moving all the verification code into one place creates a highly cohesive component.
+  4. The component is loosely coupled to other entities even squares and can be used anywhere.
+  5. This module cuts down code, increases understanding an simplicity.
+
+# SECTION 5 - Features Supporting Requirements:
+1. Testability: Unit testing the module is easy.
+2. Maintainable: The component is easy to maintain.
+
+# SECTION G - Feature Delivery Mechanism:
+The order of sanity checks produces early failures. to the most granular
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `Validator`, `ValidationResult`, `NameValidator`, `LoggingLevelRouter`
+
+* From `chess.square`:
+    `Square`, `InvalidSquareException`
+
+* From `chess.coord`:
+    `Coord`, `CoordValidator`
+
+* From Python `abc` Library:
+    `ABC`, `abstractmethod`
+
+* From Python `typing` Library:
+    `Generic`, `TypeVar`
+
+# SECTION 8 - Contains:
+1. `SquareValidator`
+"""
 
 
-from chess.coord import CoordValidator, InvalidCoordException
-from chess.square import Square, NullSquareException, InvalidSqaureException
-from chess.system import ValidationResult, Validator, IdValidator, NameValidator, InvalidIdException, InvalidNameException
+from typing import Any, cast
+
+from chess.coord import CoordValidator
+from chess.square import Square, InvalidSquareException, NullSquareException
+from chess.system import Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
 
 
-T = TypeVar('T')
-
-class SquareValidator(Validator):
+class SquareValidator(Validator[Square]):
   """
-  Validates existing `Square` instances that are passed around the system.
+  # ROLE: Validation
 
-  While `SquareBuilder` ensures valid Squares are created, `SquareValidator`
-  checks `Square` instances that already exist - whether they came from
-  deserialization, external sources, or need re-validate after modifications.
+  # RESPONSIBILITIES:
+  1. Run sanity checks on a `candidate` to make sure its a valid `Square` before use.
+  2. Pass results of validation process to client.
 
-  Usage:
-    ```python
-    # Validate an existing square
-    square_validation = SquareValidator.validate(candidate)
-    if not square_validation.is_success():
-      raise square_validation.err
-    square = cast(Square, square_validation.payload)
-    ```
+  # PROVIDES:
+  `ValidationResult[Square]` containing either a verified `Square` or an `Exception`.
 
-  Use `SquareBuilder` for construction, `SquareValidator` for verification.
+  # ATTRIBUTES:
+  No attributes.
   """
 
-  @staticmethod
-  def validate(candidate: Square) -> ValidationResult[Square]:
+
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def validate(cls, candidate: Any) -> ValidationResult[Square]:
     """
-    Validates that an existing `Square` instance meets specifications.
-    This method performs team series of checks on team Square instance, ensuring it is not null and that
-    its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised
-    as team `InvalidSquareException`, providing team clean and consistent err-handling experience.
+    # Action:
+    Ensures clients the candidate meets minimum system requirements for use in the system.
 
-    Args
-      `candidate` (`Square`): `Square` instance to validate
+    # Parameters:
+      * `candidate` (`Any`): The object to verify
 
-     Returns:
-      `Result`[`Square`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
-      `InvalidSquareException` otherwise.
+    # Returns:
+      `ValidationResult[Square]`: A `ValidationResult` containing either:
+            `'payload'` - A `Square` instance that satisfies the specification.
+            `exception` - Details about which specification violation occurred.
 
-    Raises:
-      `TypeError`: If the input `candidate` is not an instance of `Square`.
-      `NullSquareException`: If the input `candidate` is `None`.
-      `InvalidIdException`: If the `id` attribute of the square fails validate checks.
-      `InvalidNameException`: If the `name` attribute of the square fails validate checks.
-      `InvalidCoordException`: If the `coord` attribute of the square fails validate checks.
-      `InvalidSquareException`: Wraps any preceding exceptions
+    # Raises:
+    No Exceptions are raised. Exceptions are returned to caller in `ValidationResult[Square]`
     """
+
     method = "SquareValidator.validate"
 
     try:
       if candidate is None:
-        raise NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}"))
 
       if not isinstance(candidate, Square):
-        raise TypeError(f"Expected team Square, but got {type(candidate).__name__}.")
+        return ValidationResult(exception=TypeError(f"Expected Square, but got {type(candidate).__name__}."))
 
       square = cast(Square, candidate)
 
-      id_result = IdValidator.validate(square.id)
-      if not id_result.is_success():
-        raise id_result.exception
+      id_validation = IdValidator.validate(square.id)
+      if not id_validation.is_success():
+        return ValidationResult(exception=id_validation.exception)
 
-      name_result = NameValidator.validate(square.name)
-      if not name_result.is_success():
-        raise name_result.exception
+      name_validation = NameValidator.validate(square.name)
+      if not name_validation.is_success():
+        return ValidationResult(exception=name_validation.exception)
 
-      coord_result = CoordValidator.validate(square.coord)
-      if not coord_result.is_success():
-        raise coord_result.exception
+      coord_validation = CoordValidator.validate(square.coord)
+      if not coord_validation.is_success():
+        raise coord_validation.exception
 
-      return Result(payload=square)
+      return ValidationResult(payload=square)
 
-    except (
-        TypeError,
-        NullSquareException,
-        InvalidIdException,
-        InvalidNameException,
-        InvalidCoordException
-    ) as e:
-      raise InvalidSqaureException("Square failed validate.") from e
-
-    # This block catches any unexpected exceptions
-    # You might want to log the error here before re-raising
     except Exception as e:
-      raise InvalidSqaureException(f"An unexpected error occurred during validate: {e}") from e
+      return ValidationResult(exception=InvalidSquareException(f"{method}: {e}"))

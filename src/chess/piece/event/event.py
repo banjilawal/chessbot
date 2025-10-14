@@ -10,7 +10,7 @@ Provides:
 Concrete subclass of `Event`.
 
 Contains:
- * `OccupationEvent`
+ * `TravelEvent`
 """
 
 
@@ -21,9 +21,9 @@ from typing import Optional
 
 from chess.square import Square
 from chess.event import Event
-from chess.piece import Piece, OccupationContext
+from chess.piece import Piece, TravelContext
 
-class OccupationEvent(Event[Piece,Square]):
+class TravelEvent(Event[Piece,Square]):
   """
   Details for executing an `OccupationTransaction`.
 
@@ -31,29 +31,29 @@ class OccupationEvent(Event[Piece,Square]):
     * `_actor` (`Piece`)
     * `_parent` (`Event`)
     * `_resource` (`Square`)
-    * `_context` (`OccupationContext`)
+    * `_context` (`TravelContext`)
   """
 
   _actor: Piece
   _parent: Event
   _resource: Square
-  _context: OccupationContext
+  _context: TravelContext
 
   def __init__(
       self,
       actor: Piece,
       destination_square: Square,
-      context: OccupationContext,
+      context: TravelContext,
       parent: Optional[Event]=None
   ):
     """
-    Constructor for OccupationEvent
+    Constructor for TravelEvent
 
     Attributes:
       * `actor` (`Piece`):
       * `destination_square` (`Square`):
       * `parent` (`Event`):
-      * `roster` (`OccupationContext`):
+      * `roster` (`TravelContext`):
     """
     super().__init__(actor=actor, resource=destination_square, parent=parent, context=context)
 
@@ -63,6 +63,6 @@ class OccupationEvent(Event[Piece,Square]):
 
   def __eq__(self, other) -> bool:
     if super().__eq__(other):
-      if isinstance(other, OccupationEvent):
+      if isinstance(other, TravelEvent):
         return self._id == other.id
     return False

@@ -6,7 +6,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
   @classmethod
   def validate(cls, t: OccupationEvent, context: Optional[ExecutionContext]) -> Result[OccupationEvent]:
     """
-    Validates an OccupationEvent meets specifications:
+    Validates an TravelEvent meets specifications:
       - Not null
       - `id` does not fail validator
       - `actor` is team valid chess enemy
@@ -14,7 +14,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
     Any validate failure raises an `InvalidOccupationEventException`.
 
     Argument:
-      `candidate` (`OccupationEvent`): `occupationEvent `to validate
+      `candidate` (`TravelEvent`): `occupationEvent `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
@@ -33,7 +33,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
 
       `InvalidOccupationEventException`: Wraps any preceding exceptions
     """
-    method = "OccupationEvent.validate"
+    method = "TravelEvent.validate"
 
     try:
       if t is None:
@@ -42,7 +42,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
         )
 
       if not isinstance(t, OccupationEvent):
-        raise TypeError(f"{method} Expected an OccupationEvent, got {type(t).__name__}")
+        raise TypeError(f"{method} Expected an TravelEvent, got {type(t).__name__}")
 
       event = cast(OccupationEvent, t)
 

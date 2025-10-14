@@ -1,6 +1,6 @@
 from enum import Enum
 
-from chess.search import BoardSearch
+from chess.commander.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
 from chess.event import ScanEvent, ScanEventBuilderException, TargetSquareMismatchException
@@ -43,6 +43,26 @@ class ScanEventBuilder(Enum):
     destination_square: Square,
     context: ExecutionContext
   ) -> BuildResult[ScanEvent]:
+    """
+    # ACTION:
+    Verify the `candidate` is a valid ID. The Application requires
+    1. Candidate is not null.
+    2. Is a positive integer.
+
+    # PARAMETERS:
+        * `candidate` (`int`): the id.
+
+    # RETURNS:
+    `ValidationResult[str]`: A `ValidationResult` containing either:
+        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
+        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+
+    # RAISES:
+    `InvalidIdException`: Wraps any specification violations including:
+        * `TypeError`: if candidate is not an `int`
+        * `IdNullException`: if candidate is null
+        * `NegativeIdException`: if candidate is negative `
+    """
 
     """
     Constructs team new `ScanEvent` instance with comprehensive checks on the parameters and states during the

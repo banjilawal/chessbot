@@ -94,13 +94,13 @@ from chess.exception import ValidationException, NullException, BuilderException
 __all__ = [
   'OccupationEventException',
 
-#====================== OccupationEvent VALIDATION EXCEPTIONS #======================#  
+#====================== TravelEvent VALIDATION EXCEPTIONS #======================#
   'InvalidOccupationEventException',
   'NullOccupationEventException',
   'CircularOccupationException',
   'TargetSquareMismatchException',
 
-#====================== OccupationEvent BUILD EXCEPTIONS #======================#  
+#====================== TravelEvent BUILD EXCEPTIONS #======================#
   'OccupationEventBuilderException'
   
   # 'HostageValidationEventException',
@@ -113,15 +113,15 @@ class OccupationEventException(EventException):
   ERROR_CODE = "OCCUPATION_EXECUTION_ERROR"
   DEFAULT_MESSAGE = "An error was raised while executing the square event"
 
-#====================== OccupationEvent VALIDATION EXCEPTIONS #======================#  
+#====================== TravelEvent VALIDATION EXCEPTIONS #======================#
 class NullOccupationEventException(OccupationEventException, NullException):
   ERROR_CODE = "NULL_OCCUPATION_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "OccupationEvent cannot be null"
+  DEFAULT_MESSAGE = "TravelEvent cannot be null"
 
 class InvalidOccupationEventException(OccupationEventException, ValidationException):
-  """OccupationEvent validate failure."""
+  """TravelEvent validate failure."""
   ERROR_CODE = "OCCUPATION_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "OccupationEvent failed validate"
+  DEFAULT_MESSAGE = "TravelEvent failed validate"
 
 class CircularOccupationException(OccupationEventException):
   ERROR_CODE = "CIRCULAR_OCCUPATION_ERROR"
@@ -141,10 +141,10 @@ class ActorSquareNotFoundException(OccupationEventException):
   )
 
 
-#====================== OccupationEvent BUILD EXCEPTIONS #======================#  
+#====================== TravelEvent BUILD EXCEPTIONS #======================#
 class OccupationEventBuilderException(OccupationEventException, BuilderException):
   ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "OccupationEventBuilder failed to create an OccupationEvent."
+  DEFAULT_MESSAGE = "OccupationEventBuilder failed to create an TravelEvent."
 
 #
 #

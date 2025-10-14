@@ -4,7 +4,7 @@ from chess.square import Square
 from chess.piece import Piece
 from chess.event import Event, OccupationEvent
 
-class TransferEvent(OccupationEvent):
+class TransferEvent(TravelEvent):
   _actor_square: Square
 
   def __init__(

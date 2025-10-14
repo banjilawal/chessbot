@@ -1,7 +1,7 @@
 
 from chess.commander import Commander, CommanderValidator
 from chess.team import Team
-from chess.search import SearchResult
+from chess.commander.search import SearchResult
 from chess.system import IdValidator
 
 class CommanderSearch:

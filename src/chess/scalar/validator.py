@@ -1,16 +1,14 @@
 from typing import cast, Generic, TypeVar
 
-from chess.exception import NullNumberException
-from chess.system import Result, Validator, BOARD_DIMENSION
+from chess.system import ValidationResult, Validator, BOARD_DIMENSION, LoggingLevelRouter, NullNumberException
 
-from chess.scalar import(
-  Scalar, NullScalarException, ScalarBelowBoundsException,
-  ScalarAboveBoundsException, InvalidScalarException
+from chess.scalar import (
+  Scalar, NullScalarException, ScalarBelowBoundsException, ScalarAboveBoundsException, InvalidScalarException
 )
 
 T = TypeVar('T')
 
-class ScalarValidator(Validator):
+class ScalarValidator(Validator[Generic[T]]):
   """
   Validates existing `Scalar` instances that are passed around the system.
 
@@ -30,8 +28,29 @@ class ScalarValidator(Validator):
   Use `ScalarBuilder` for construction, `ScalarValidator` for verification.
   """
 
-  @staticmethod
-  def validate(candidate: Scalar) -> Result[Scalar]:
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def validate(cls, candidate: T) -> ValidationResult[Scalar]:
+    """
+    # ACTION:
+    Verify the `candidate` is a valid ID. The Application requires
+    1. Candidate is not null.
+    2. Is a positive integer.
+
+    # PARAMETERS:
+        * `candidate` (`int`): the id.
+
+    # RETURNS:
+    `ValidationResult[str]`: A `ValidationResult` containing either:
+        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
+        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+
+    # RAISES:
+    `InvalidIdException`: Wraps any specification violations including:
+        * `TypeError`: if candidate is not an `int`
+        * `IdNullException`: if candidate is null
+        * `NegativeIdException`: if candidate is negative `
+    """
     """
     Validates that an existing `Scalar` instance meets specifications.
     This method performs team series of checks on team Scalar instance, ensuring it is not null and that
@@ -57,39 +76,35 @@ class ScalarValidator(Validator):
 
     try:
       if candidate is None:
-        raise NullScalarException(f"{method} NullScalarException.DEFAULT_MESSAGE")
+        return ValidationResult(exception=NullScalarException(f"{method} NullScalarException.DEFAULT_MESSAGE"))
+
+      if not isinstance(candidate, Scalar):
+        return ValidationResult(exception=TypeError(f"{method} Expected Scaler got `{type(candidate)}`"))
 
 
       scalar = cast(Scalar, candidate)
 
       if scalar.value is None:
-        raise NullNumberException(f"{method} {NullNumberException.DEFAULT_MESSAGE}")
+        return ValidationResult(NullNumberException(f"{method} Scalar value cannot be a null number"))
 
       if scalar.value < -BOARD_DIMENSION:
-        raise ScalarBelowBoundsException(
+        return ValidationResult(ScalarBelowBoundsException(
           f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}"
+          )
         )
 
       if scalar.value >= BOARD_DIMENSION:
-        raise ScalarAboveBoundsException(
+        return ValidationResult(exception=ScalarAboveBoundsException(
           f"{method}: {ScalarAboveBoundsException.DEFAULT_MESSAGE}"
+          )
         )
 
-      return Result(payload=scalar)
+      return ValidationResult(payload=scalar)
 
-    except (
-      TypeError,
-      NullScalarException,
-      NullNumberException,
-      ScalarBelowBoundsException,
-      ScalarAboveBoundsException,
-    ) as e:
-      raise InvalidScalarException(f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}") from e
-
+    except Exception as e:
+      return ValidationResult(InvalidScalarException(f"{method}: {e}"))
     # This block catches any unexpected exceptions
     # You might want to log the error here before re-raising
-    except Exception as e:
-      raise InvalidScalarException(f"An unexpected error occurred during validate: {e}") from e
 
 
 # def main():

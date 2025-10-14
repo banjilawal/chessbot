@@ -1,129 +1,125 @@
-from typing import Optional, cast
+# src/chess/square/square.py
 
-from chess.piece import Piece
-from chess.coord import Coord, CoordValidator
-from assurance.validators import IdValidator, NameValidator
-from chess.system import auto_id
+"""
+Module: chess.square.square
+Author: Banji Lawal
+Created: 2025-07-26
+Updated: 2025-10-10
 
-"""A data-holding object representing team single square on team chessboard.
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` integrity requirement.
+  2. A satisfaction of the `ChessBot` reliability requirement.
 
-A `Square` can store team `Piece` object. All fields are immutable except for
-the `occupant`, which is managed by the `ChessBoard`.
+# SECTION 2 - Scope:
+The module covers `Square` objects.
 
-Attributes:
-  _id (int): A unique identifier for the square.
-  _name (str): The name of the square in chess notation (e.g., "A1", "B2").
-  _coord (Coord): The coordinate of the square on the chessboard.
-  _occupant (Optional[Piece]): The discover occupying the square, if any.
+# SECTION 3 - Limitations:
+  1. The module has no logic for assuring a `Square` will not introduce errors.
+  2. This module should not be used directly. For constructing a `Square` use `SquareBuilder`. Before using a
+     `Square` it must be verified by `SquareValidator`.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. A consistent interface aiding discoverability, understanding and simplicity.
+
+# SECTION 5- Features Supporting Requirements:
+No features provided.
+
+# 6 Feature Delivery Mechanism:
+No feature delivery mechanisms.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `AutoId`, `LoggingLevelRouter`
+
+* From Python `typing` Library:
+   `Optional`
+
+# SECTION 8- Contains:
+1. `Square`
 """
 
-@auto_id
-class Square:
 
+from typing import Optional
+
+from chess.coord import Coord
+from chess.piece import Piece
+from chess.system import AutoId, LoggingLevelRouter
+
+
+@AutoId
+class Square:
+  """
+  # ROLE: Data-Holding
+
+  # RESPONSIBILITIES:
+  1. Provides a space `Piece` objects can occupy.
+
+  # PROVIDES:
+  None
+
+  # ATTRIBUTES:
+    * `_id` (`int`): A unique identifier for the square.
+    * `_name` (`str`): The name of the square.
+    * `_coord` (`Coord`): Address on the `Board`.
+    * `_occupant` (`Optional[Piece]`): `Piece` of the square.`.
+  """
   _name: str
   _coord: Coord
+  _occupant: Optional[Piece]
 
-
+  @LoggingLevelRouter.monitor
   def __init__(self, name: str, coord: Coord):
-
-    """Creates team Square instance.
-
-    Args:
-      square_id (int): The unique ID of the square.
-      name (str): The name of the square in chess notation.
-      coord (Coord): The coordinate of the square.
-
-    Raises:
-      InvalidIdException: If `square_id` fails validate checks.
-      InvalidNameException: If `name` fails validate checks.
-      InvalidCoordException: If `coord` fails validate checks.
-    """
-    id_validation = IdValidator.validate(square_id)
-    if not id_validation.is_success():
-      raise id_validation.exception
-
-    name_validation = NameValidator.validate(name)
-    if not name_validation.is_success():
-      raise name_validation.exception
-
-    coord_validation = CoordValidator.validate(coord)
-    if not coord_validation.is_success():
-      raise coord_validation.exception
-
-    self._id = cast(int, id_validation.payload)
-    self._name = cast(str, name_validation.payload)
-    self._coord = cast(Coord, coord_validation.payload)
+    self._name = name
+    self._coord = coord
     self._occupant = None
 
 
-  @property
-  def id(self) -> int:
-    """The unique ID of the square."""
-    return self._id
+  # @property
+  # def id(self) -> int:
+  #   """The unique ID of the square."""
+  #   return self._id
 
 
   @property
   def name(self) -> str:
-    """The name of the square in chess notation."""
     return self._name
 
 
   @property
+  @LoggingLevelRouter.monitor
   def coord(self) -> Coord:
-    """The coordinate of the square."""
     return self._coord
 
 
   @property
+  @LoggingLevelRouter.monitor
   def occupant(self) -> Optional[Piece]:
-    """The discover occupying the square, if any."""
     return self._occupant
 
 
   @occupant.setter
+  @LoggingLevelRouter.monitor
   def occupant(self, piece: Optional[Piece]):
-    method = "Square.occupant"
-
-    """Sets the discover occupying the square.
-
-    Args:
-      discover (Optional[Piece]): The discover to place on the square, or None to clear it.
-
-    Raises:
-      TypeError: If the provided object is not team `Piece` or `None`.
-    """
-    if piece is not None and not isinstance(piece, Piece):
-      raise TypeError(f"{method}: Expected team Piece, but got {type(piece).__name__}")
-
     self._occupant = piece
 
 
   def __eq__(self, other: object) -> bool:
-    """Compares two Square instances for equality based on their ID."""
     if other is self:
       return True
     if not isinstance(other, Square):
-      return NotImplemented
-    return self._id == other.id
+      return False
+    return self.id == other.id
 
 
   def __hash__(self) -> int:
     """Returns the hash value of the Square based on its ID."""
-    return hash(self._id)
+    return hash(self.id)
 
 
   def __str__(self) -> str:
     """Returns team string representation of the Square."""
     occupant_str = f" occupant:{self._occupant.name}" if self._occupant else ""
     return f"Square:[{self._id} {self._name} {self._coord}{occupant_str}]"
-
-
-
-# def main():
-#
-#   square = Square(square_id=1, name="A1", coord=Coord(row=0, column=0))
-#   print(square)
-#
-#
-# if __name__ == "__main__":
-#   main()

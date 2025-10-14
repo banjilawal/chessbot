@@ -1,3 +1,51 @@
+# src/chess/system/validate/validator.py
+
+"""
+Module: chess.system.validate.validator
+Author: Banji Lawal
+Created: 2025-08-27
+Updated: 2025-10-10
+
+# SECTION 1 - Purpose:
+1. This module provides a satisfaction of the `ChessBot` integrity requirement. The satisfaction covers
+    enforcement of the minimum naming regulations in the system.
+2. This module provides a satisfaction of the `ChessBot` reliability requirement.
+
+# SECTION 2 - Scope:
+The module covers name validation only.
+
+# SECTION 3 - Limitations:
+  1. The module does not provide permissible naming guidelines.
+  2. Names that are allowed by the module might not meet additional restrictions other modules, classes, or processes
+      have.
+
+# SECTION 4 - Design Considerations and Themes:
+Major themes influencing the design include:
+1. Easy and fast debugging.
+2. Single responsibility, single source of truth.
+
+
+# SECTION 5 - Features Supporting Requirements:
+1. No direct support for any user level features.
+2. Direct support for reliability, verification, and integrity.
+3. `NameValidator` can be used as component in more complex verifications.
+
+# SECTION G - Feature Delivery Mechanism:
+1. An exception for each requirement providing granular, accurate and precise error reporting.
+2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `MIN_NAME_LENGTH`, `MAX_NAME_LENGTH`, `LongNameException`, `ShortNameException`, `BlankNameException`
+    `NullNameException`, `Validator`,
+
+* From Python `typing` Library:
+    `cast`
+
+# SECTION 8 - Contains:
+1. `NameValidator`
+"""
+
 # src/chess/piece/event/transaction
 """
 Module: chess.piece.event.transaction
@@ -32,24 +80,42 @@ T = TypeVar('T')
 
 class Builder(ABC, Generic[T]):
   """
-  ROLE:
-  ----
-  RESPONSIBILITIES:
-  ----------------
-  PROVIDES:
-  --------
-  ATTRIBUTES:
-  ----------
-  [
-    <No attributes. Implementors declare their own.>
-  OR
-    * `_attribute` (`data_type`): <sentence_if_necessary>
-  ]
+  # ROLE: Message passing, Data Transfer Object
+
+  # RESPONSIBILITIES:
+  1. Carry the outcome a validation operation to originating client.
+  2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
+
+  # PROVIDES:
+  1. A correctness verification or denial for the `Validation` service provider.
+
+  # ATTRIBUTES:
+    * See `Result` superclass for attributes.
   """
 
   @classmethod
   @abstractmethod
   def build(cls, *args, **kwargs) -> BuildResult[T]:
+    """
+    # ACTION:
+    Verify the `candidate` is a valid ID. The Application requires
+    1. Candidate is not null.
+    2. Is a positive integer.
+
+    # PARAMETERS:
+        * `candidate` (`int`): the id.
+
+    # RETURNS:
+    `ValidationResult[str]`: A `ValidationResult` containing either:
+        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
+        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+
+    # RAISES:
+    `InvalidIdException`: Wraps any specification violations including:
+        * `TypeError`: if candidate is not an `int`
+        * `IdNullException`: if candidate is null
+        * `NegativeIdException`: if candidate is negative `
+    """
     """
     Action:
     Parameters:

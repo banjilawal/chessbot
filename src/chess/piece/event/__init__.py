@@ -8,24 +8,24 @@ Version: 1.0.1
 
 # Purpose
 Manages `Piece` movement and state changes on the `Board`. Provides team unified interface for event creation, validate,
-execution, and rollback for event-related operations (move, scan, attack, exchange)
+execution, and rollback for event-related operations (move, scan, attack, occupy)
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `OccupationEvent`
-  - `OccupationContext`
+  - `TravelEvent`
+  - `TravelContext`
   - `OccupationTransaction`
   - `OccupationEventValidator`
   - `OccupationEventBuilder`
-  - All exports from `scan`, `attack`, `promotion`, and `exchange` packages.
-  - All exceptions from `er`, `scan`, `attack`, and `exchange` sub-packages.
+  - All exports from `scan`, `attack`, `promote`, and `occupy` packages.
+  - All exceptions from `er`, `scan`, `attack`, and `occupy` sub-packages.
 
 # SUB-PACKAGES
   - `.attack`: Logic for capturing.
-  - `.promotion`: Logic for promoting kings and pawns.
+  - `.promote`: Logic for promoting kings and pawns.
   - `.exception`: Defines all custom exceptions for event operations.
   - `.scan`: Logic for recording occupied squares in team piece's path.
-  - `.exchange`: Logic for transferring team piece to another empty square.
+  - `.occupy`: Logic for transferring team piece to another empty square.
 
 # NOTES
 DO NOT reference subpackages or submodules directly. Import all subpackages and submodules from the
@@ -46,7 +46,7 @@ PURPOSE:
 EXCEPTIONS:
   DoubleCoordPushException: Move to current position
   EncounteringSelfException: Piece encounters itself
-  DoublePromotionException: Multiple promotion attempts
+  DoublePromotionException: Multiple promote attempts
   PrisonerEscapeException: Captured enemy tries to move
   PrisonerReleaseException: Error releasing prisoner
   PieceCoordNullException: Piece coordinate is null
@@ -72,12 +72,12 @@ ___
 
 from .scan import *
 from .attack import *
-from .exchange import *
-from .promotion import *
+from .occupy import *
+from .promote import *
 from .exception import *
 
-from .event import OccupationEvent
-from .context import OccupationContext
+from .event import TravelEvent
+from .context import TravelContext
 from .builder import OccupationEventBuilder
 from .transaction import OccupationTransaction
 from .validator import OccupationEventValidator
@@ -90,15 +90,15 @@ __package_name__ = "chess.piece.event"
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  'OccupationEvent',
+  'TravelEvent',
   'OccupationEventBuilder',
   'OccupationTransaction',
   'OccupationEventValidator',
 
   *scan.__all__,
   *attack.__all__,
-  *exchange.__all__,
-  *promotion.__all__,
+  *occupy.__all__,
+  *promote.__all__,
 
   *exception.__all__,
 

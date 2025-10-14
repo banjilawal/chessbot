@@ -18,7 +18,7 @@ from chess.system import ExecutionContext, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
 from chess.piece.event.attack.exception import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
-from chess.piece.event.exchange.transaction import TransferTransaction
+from chess.piece.event.occupy.transaction import TransferTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 

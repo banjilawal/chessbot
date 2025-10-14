@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-06
 
 # SECTION 1 - Purpose:
-This module provides a satisfaction of the  `ChessBot` performance requirement.
+This module provides a satisfaction of the `ChessBot` performance requirement.
 
 # SECTION 2 - Scope:
 The module covers search service providers, data owners and information requesters.

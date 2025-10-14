@@ -1,68 +1,63 @@
-# src/chess/ square/builder.py
+# src/chess/system/validate/squareBuilder.py
 
 """
-Module: chess. square.builder
+Module: chess.system.validate.squareBuilder
 Author: Banji Lawal
-Created: 2025-10-08
-version: 1.0.0
+Created: 2025-09-28
+Updated: 2025-10-10
 
-# SCOPE:
--------
-***Limitation***: There is no guarantee properly created `Square` objects released by the module will satisfy 
-    client requirements. Clients are responsible for ensuring a `SquareBuilder` product will not fail when used. 
-    
-***Related Features***:
-    Authenticating existing  squares -> See  SquareValidator, module[chess. square.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+# SECTION 1 - Purpose:
+This module provides a satisfaction of the `ChessBot` integrity requirement.
 
-# THEME:
--------
-* Data assurance, error prevention
+# SECTION 2 - Scope:
+The module covers Building `Square` objects which do not introduce inconsistencies to the data.
 
-***Design Concepts***:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
+# SECTION 3 - Limitations:
+  1. The module does not provide any actionable code.
+  2. The module is limited to providing a framework for validating integrity of existing objects.
+  3. The module does not provide any enforceable polices on entities using the framework.
 
-# PURPOSE:
----------
-1. Central, single producer of authenticated `Square` objects.
-2. Putting all the steps and logging into one place makes modules using `Square` objects cleaner, easier to follow.
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. separating entity responsibilities into from implementation details.
+  2. Loose coupling of modules while maintaining a unified, consistent interface for high cohesion among components
+    that have no direct relationship with each other.
+  3. A consistent interface and aids discoverability, understanding and simplicity.
 
-***Satisfies***: Reliability and performance contracts.
+# SECTION 5 - Features Supporting Requirements:
+None
 
-# DEPENDENCIES:
----------------
+# SECTION G - Feature Delivery Mechanism:
+None
+
+# SECTION 7 - Dependencies:
 From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `BuildFailedException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`
 
 From `chess.coord`:
     `Coord`, `CoordValidator`
-    
+
 From `chess.square`:
   `Square`, `SquareBuildFailedException`
 
-# CONTAINS:
-----------
- * ` SquareBuilder`
+# SECTION 8 - Contains:
+1. `SquareBuilder`
 """
 
 
-from chess.coord import Coord, CoordValidator
-from chess.square import Square, SquareBuildFailedException
-from chess.system import BuildResult, NameValidator, Builder, LoggingLevelRouter
 
 
-class SquareBuilder(Builder[[Square]]):
+class SquareBuilder(Builder[Square]):
   """
   # ROLE: Builder
 
   # RESPONSIBILITIES:
-  1. Process and validate parameters for creating ` Square` instances.
+  1. Process and validate parameters for creating `Square` instances.
   2. Create new ` Square` objects if parameters meet specifications.
   2. Report errors and return `BuildResult` with error details.
 
   # PROVIDES:
-  `BuildResult[Square]`: Return type containing the built ` Square` or error information.
+  `BuildResult[Square]`: Containing either a successfully built `Square` or an Exception.
 
   # ATTRIBUTES:
   None
@@ -72,38 +67,32 @@ class SquareBuilder(Builder[[Square]]):
   @LoggingLevelRouter.monitor()
   def build(cls, name: str, coord: Coord) -> BuildResult[Square]:
     """
-    ACTION:
-    Create a ` Square` object if the parameters have correctness.
+    # ACTION:
+    Create a `Square` object if parameters meet system specifications.
 
-    PARAMETERS:
-        * `name` (`str`): unique within the board
-        * `coord` (`Coord`): row and column where `Square` is on the `Board`.
+    # PARAMETERS:
+        * `name` (`str`):
+        * `coord` (`Coord`): Address on the `Board`
 
-    RETURNS:
-    `BuildResult[Square]`: A `BuildResult` containing either:
-        `'payload'` - A valid ` Square` instance in the payload
-        `exception` - Error information and error details
+    # RETURNS:
+    `BuildResult[Square]` containing: `Square` on success. `Exception` on failure.
 
-    RAISES:
-    `SquareBuildFailedException`:  Wraps any specification violations including:
-        * `InvalidIdException`: if `id` fails validate checks`
-        * `InvalidCoordException`: if `coord` fails validate checks
+    # Raises:
+    No Exceptions are raised. Exceptions are returned to caller in `BuildResult[Square]`
     """
     method = "SquareBuilder.build"
 
     try:
-      # id_validation = IdValidator.validate(square_id)
+      # id_validation = IdSquareBuilder.validate(square_id)
       # if not id_validation.is_success():
       #   ThrowHelper.log_and_raise_error(SquareBuilder, id_validation.exception)
 
-      name_validation = NameValidator.validate(name)
+      name_validation = NameSquareBuilder.validate(name)
       if not name_validation.is_success():
-        # ThrowHelper.log_and_raise_error(SquareBuilder, name_validation.exception)
         return BuildResult(exception=name_validation.exception)
 
-      coord_result = CoordValidator.validate(coord)
+      coord_result = CoordSquareBuilder.validate(coord)
       if not coord_result.is_success():
-        # ThrowHelper.log_and_raise_error(SquareBuilder, coord_result.exception)
         return BuildResult(exception=coord_result.exception)
 
       return BuildResult(payload=Square(name=name, coord=coord))

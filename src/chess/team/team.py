@@ -52,14 +52,13 @@ From `chess.piece`:
  * `Team`
 """
 
-from typing import TypeVar, cast, Sequence, TYPE_CHECKING
+from typing import Sequence
 
 from chess.piece import Piece
-from chess.system import IdValidator, InvalidIdException, AutoId
-from chess.rank import Rank
-from chess.search import SearchResult
-from chess.commander import Commander, CommanderValidator
-from chess.team import TeamSchema, NullTeamSchemaException
+from chess.system import AutoId
+from chess.commander import Commander
+from chess.team import TeamSchema
+
 
 @AutoId()
 class Team:

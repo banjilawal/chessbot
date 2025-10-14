@@ -99,3 +99,54 @@ Example:
 # >>> validate = SquareValidator.validate(square)
 # ---
 # """
+"""
+Validates existing `Square` instances that are passed around the system.
+
+While `SquareBuilder` ensures valid Squares are created, `SquareValidator`
+checks `Square` instances that already exist - whether they came from
+deserialization, external sources, or need re-validate after modifications.
+
+Usage:
+  ```python
+  # Validate an existing square
+  square_validation = SquareValidator.validate(candidate)
+  if not square_validation.is_success():
+    raise square_validation.err
+  square = cast(Square, square_validation.payload)
+  ```
+
+Use `SquareBuilder` for construction, `SquareValidator` for verification.
+"""
+"""
+Validates that an existing `Square` instance meets specifications.
+This method performs team series of checks on team Square instance, ensuring it is not null and that
+its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised
+as team `InvalidSquareException`, providing team clean and consistent err-handling experience.
+
+Args
+  `candidate` (`Square`): `Square` instance to validate
+
+ Returns:
+  `Result`[`Square`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
+  `InvalidSquareException` otherwise.
+
+Raises:
+  `TypeError`: If the input `candidate` is not an instance of `Square`.
+  `NullSquareException`: If the input `candidate` is `None`.
+  `InvalidIdException`: If the `id` attribute of the square fails validate checks.
+  `InvalidNameException`: If the `name` attribute of the square fails validate checks.
+  `InvalidCoordException`: If the `coord` attribute of the square fails validate checks.
+  `InvalidSquareException`: Wraps any preceding exceptions
+"""
+
+"""A data-holding object representing team single square on team chessboard.
+
+A `Square` can store team `Piece` object. All fields are immutable except for
+the `occupant`, which is managed by the `ChessBoard`.
+
+Attributes:
+  _id (int): A unique identifier for the square.
+  _name (str): The name of the square in chess notation (e.g., "A1", "B2").
+  _coord (Coord): The coordinate of the square on the chessboard.
+  _occupant (Optional[Piece]): The discover occupying the square, if any.
+"""

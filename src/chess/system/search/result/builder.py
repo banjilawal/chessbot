@@ -10,7 +10,7 @@ SCOPE:
 -----
 This module is strictly limited to constructing `SearchResult` instances safely.
 
-**It does not** contain logic or rules for creating `OccupationEvent` or
+**It does not** contain logic or rules for creating `TravelEvent` or
 `OccupationTransaction`. Those are handled by `OccupationEventBuilder` before
 execution,`OccupationTransaction` during execution.
 
@@ -24,7 +24,7 @@ complexities of the build process into team utility from the `SearchResult` cons
 
 PURPOSE:
 -------
-To execute validated `OccupationEvent` directives by orchestrating the necessary
+To execute validated `TravelEvent` directives by orchestrating the necessary
 state changes across the board, searchResults, and teams. It serves as the **engine
 layer responsible for persistent state modification** based on accepted moves.
 

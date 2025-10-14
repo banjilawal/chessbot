@@ -14,14 +14,14 @@ from chess.event import (
 
 class OccupationEventBuilder(Enum):
   """
-  Responsible for safely constructing `OccupationEvent` instances.
+  Responsible for safely constructing `TravelEvent` instances.
 
-  `OccupationEventBuilder` ensures that `OccupationEvent` objects are always created successfully by performing comprehensive validate
+  `OccupationEventBuilder` ensures that `TravelEvent` objects are always created successfully by performing comprehensive validate
    checks during construction. This separates the responsibility of building from validating - `OccupationEventBuilder`
-   focuses on creation while `OccupationEventValidator` is used for validating existing `OccupationEvent` instances that are passed
+   focuses on creation while `OccupationEventValidator` is used for validating existing `TravelEvent` instances that are passed
    around the system.
 
-  The build runs through all validate checks individually to guarantee that any `OccupationEvent` instance it produces
+  The build runs through all validate checks individually to guarantee that any `TravelEvent` instance it produces
   meets all required specifications before construction completes
 
   Usage:
@@ -29,21 +29,41 @@ class OccupationEventBuilder(Enum):
     ```
 
   See Also:
-    `OccupationEvent`: The data structure being constructed
-    `OccupationEventValidator`: Used for validating existing `OccupationEvent` instances
-    `BuildResult`: Return type containing the built `OccupationEvent` or error information
+    `TravelEvent`: The data structure being constructed
+    `OccupationEventValidator`: Used for validating existing `TravelEvent` instances
+    `BuildResult`: Return type containing the built `TravelEvent` or error information
   """
 
   @staticmethod
   def build(event_id: int, actor: Piece, destination_square: Square, context: ExecutionContext) -> BuildResult:
     """
-    Constructs team new `OccupationEvent` instance with comprehensive checks on the parameters and states during the
+    # ACTION:
+    Verify the `candidate` is a valid ID. The Application requires
+    1. Candidate is not null.
+    2. Is a positive integer.
+
+    # PARAMETERS:
+        * `candidate` (`int`): the id.
+
+    # RETURNS:
+    `ValidationResult[str]`: A `ValidationResult` containing either:
+        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
+        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+
+    # RAISES:
+    `InvalidIdException`: Wraps any specification violations including:
+        * `TypeError`: if candidate is not an `int`
+        * `IdNullException`: if candidate is null
+        * `NegativeIdException`: if candidate is negative `
+    """
+    """
+    Constructs team new `TravelEvent` instance with comprehensive checks on the parameters and states during the
     build process.
 
-    Performs individual validate checks on each component to ensure the resulting `OccupationEvent` meets all
-    specifications. If all checks are passed, team `OccupationEvent` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `OccupationEvent` instance. This method guarantees if team `BuildResult`
-    with team successful status is returned, the contained `OccupationEvent` is valid and ready for use.
+    Performs individual validate checks on each component to ensure the resulting `TravelEvent` meets all
+    specifications. If all checks are passed, team `TravelEvent` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `TravelEvent` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `TravelEvent` is valid and ready for use.
 
     Args:
       `event_id` (`int`): The unique id for the occupationEvent. Must pass `IdValidator` checks.
@@ -52,8 +72,8 @@ class OccupationEventBuilder(Enum):
       `roster` (`ExecutionContext`): Specifies if the `occupationEvent` is white or black.
 
     Returns:
-      BuildResult[OccupationEvent]: A `BuildResult` containing either:
-        - On success: A valid `OccupationEvent` instance in the payload
+      BuildResult[TravelEvent]: A `BuildResult` containing either:
+        - On success: A valid `TravelEvent` instance in the payload
         - On failure: Error information and error details
 
     Raises:
@@ -69,8 +89,8 @@ class OccupationEventBuilder(Enum):
           not have the occupationEvent
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only team valid `OccupationEvent` is
-      created, while `OccupationEventValidator` is used for validating `OccupationEvent` instances that are passed around after
+      The build runs through all the checks on parameters and state to guarantee only team valid `TravelEvent` is
+      created, while `OccupationEventValidator` is used for validating `TravelEvent` instances that are passed around after
       creating. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
 

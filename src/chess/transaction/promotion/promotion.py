@@ -9,7 +9,7 @@ from chess.piece.piece import Piece
 
 class PromotionException(RankException):
   ERROR_CODE = "RANK_PROMOTION_ERROR"
-  DEFAULT_MESSAGE = "Rank promotion team_exception"
+  DEFAULT_MESSAGE = "Rank promote team_exception"
 
   def __init__(self, message=None):
     self.message = message or self.DEFAULT_MESSAGE

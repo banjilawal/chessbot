@@ -45,7 +45,7 @@ From `chess.team`:
 ----------
  * `TeamValidator`
 """
-from typing import cast
+from typing import cast, Any
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
 from chess.team import Team, InvalidTeamException, NullTeamException, NullTeamSchemaException, TeamSchemaValidator
 from chess.system import ValidationResult, Validator, LoggingLevelRouter, IdValidator, InconsistentCollectionException
@@ -56,12 +56,11 @@ class TeamValidator(Validator[Team]):
   # ROLE: Validation
 
   # RESPONSIBILITIES:
-  1. Prevents using an existing Team` that will cause failures or introduce bugs if deployed.
-  2. Ensures clients receive only valid Teams for further processing.
-  3. Sending granular error report via `ValidationResult`.
+  1. Ensures clients receive only valid Teams for further processing.
+  2 Sending granular error report via `ValidationResult`.
 
   # PROVIDES:
-    `ValidationResult`: Return type containing the built `Team` or error information.
+    `ValidationResult[Team]`: Contains either a verified `Team` or an `Exception`.
 
   # ATTRIBUTES:
   None
@@ -69,13 +68,13 @@ class TeamValidator(Validator[Team]):
 
   @classmethod
   @LoggingLevelRouter.monitor()
-  def validate(cls, candidate: Team) -> ValidationResult[Team]:
+  def validate(cls, candidate: Any) -> ValidationResult[Team]:
     """
     ACTION:
       Ensure an existing `Team` object will not introduce bugs or failures.
 
     PARAMETERS:
-        * `candidate` (`Team`): The validation candidate.
+        * `candidate` (`Any`): The validation candidate.
 
     RETURNS:
     `ValidationResult[Team]`: A `ValidationResult` containing either:

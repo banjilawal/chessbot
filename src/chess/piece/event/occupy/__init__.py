@@ -1,14 +1,14 @@
 # chess/event/event/exchange__init__.py
 
 """
-Module: `chess.event.event.exchange`
+Module: `chess.event.event.occupy`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
 PURPOSE:
   Manages `Piece` movement on the `Board`. After team `Piece.rank` authorizes traveling to team `Square`
-  `Rank.walk` initiates an `OccupationEvent`. The package provides team system interface for handling
+  `Rank.walk` initiates an `TravelEvent`. The package provides team system interface for handling
     - Safe event creation
     - Event validate
     - Event execution
@@ -33,7 +33,7 @@ PURPOSE:
 EXCEPTIONS:
   DoubleCoordPushException: Move to current position
   EncounteringSelfException: Piece encounters itself
-  DoublePromotionException: Multiple promotion attempts
+  DoublePromotionException: Multiple promote attempts
   PrisonerEscapeException: Captured enemy tries to move
   PrisonerReleaseException: Error releasing prisoner
   PieceCoordNullException: Piece coordinate is null
@@ -71,7 +71,7 @@ from .validator import TransferEventValidator
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.event.event.exchange"
+__package_name__ = "chess.event.event.occupy"
 
 
 # Export control - only what belongs in public API

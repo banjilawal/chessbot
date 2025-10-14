@@ -1,6 +1,6 @@
 # 2. Domain-Specific Operations
 #
-# Each transaction type (event, promotion, castling, enemy, etc.) gets its own subpackage.
+# Each transaction type (event, promote, castling, enemy, etc.) gets its own subpackage.
 # Inside, you can have:
 #
 # chess/
@@ -13,7 +13,7 @@
 #   │  ├── err.py
 #   │  └── err.py
 #   │
-#   ├── promotion/
+#   ├── promote/
 #   │  ├── __init__.py
 #   │  ├── result.py
 #   │  ├── validator.py

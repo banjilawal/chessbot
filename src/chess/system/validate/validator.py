@@ -7,7 +7,7 @@ Created: 2025-09-28
 Updated: 2025-10-10
 
 # SECTION 1 - Purpose:
-This module provides a satisfaction of the  `ChessBot` integrity requirement.
+This module provides a satisfaction of the `ChessBot` integrity requirement.
 
 # SECTION 2 - Scope:
 The module covers all domains in the `ChessBot` application.
@@ -40,14 +40,14 @@ The module provides an interface individual entities can use to for solving thei
     `ABC`, `abstractmethod`
 
 * From Python `typing` Library:
-    `Generic`, `TypeVar`
+    `Generic`, `TypeVar`, `Any`
 
 # SECTION 8 - Contains:
 1. `Validator`
 """
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, Any
 
 from chess.system import ValidationResult
 
@@ -71,7 +71,7 @@ class Validator(ABC, Generic[T]):
 
   @classmethod
   @abstractmethod
-  def validate(cls, candidate: T) -> ValidationResult[T]:
+  def validate(cls, candidate: Any) -> ValidationResult[T]:
     """
     # Action:
     Ensures clients the candidate meets minimum system requirements for use in the system.

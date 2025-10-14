@@ -23,7 +23,7 @@ from chess.event import AttackEvent, OccupationTransaction, TransferEvent, Trans
 from chess.piece.event.attack.exception import EmptyDestinationSquareRolledBackException
 
 from chess.square import Square
-from chess.search import BoardSearch
+from chess.commander.search import BoardSearch
 from chess.piece import CombatantPiece, Discovery, DiscoveryBuilder
 from chess.team import AddEnemyHostageRolledBackException
 from chess.team.exception import RemoveTeamMemberRolledBackException
@@ -31,8 +31,8 @@ from chess.transaction import ExecutionContext, TransactionResult, CaptureContex
 
 from chess.transaction import AttackValidator
 from chess.piece.event import (
-    OccupationSearchEventException,
-  OccupationEvent,
+  OccupationSearchEventException,
+  TravelEvent,
   OccupationEventException,
 
     # Rollback attack errors (dual inheritance)
@@ -43,6 +43,26 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
 
   @staticmethod
   def execute(event: TransferEvent, context: ExecutionContext) -> TransactionResult:
+    """
+    # ACTION:
+    Verify the `candidate` is a valid ID. The Application requires
+    1. Candidate is not null.
+    2. Is a positive integer.
+
+    # PARAMETERS:
+        * `candidate` (`int`): the id.
+
+    # RETURNS:
+    `ValidationResult[str]`: A `ValidationResult` containing either:
+        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
+        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+
+    # RAISES:
+    `InvalidIdException`: Wraps any specification violations including:
+        * `TypeError`: if candidate is not an `int`
+        * `IdNullException`: if candidate is null
+        * `NegativeIdException`: if candidate is negative `
+    """
     method = "AttackTransaction.execute"
 
     validation = TransferEventValidator.validate(event)
@@ -192,7 +212,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
 
 
   @staticmethod
-  def _switch_squares(op_result_id: int, event: OccupationEvent, actor_square: Square) -> TransactionResult:
+  def _switch_squares(op_result_id: int, event: TravelEvent, actor_square: Square) -> TransactionResult:
     """
     Transfers `Piece` occupying`actor_square` to `event.destination_square` leaving `actor_square` empty.
     `OccupationExecutor.execute_event` is the single entry point to `_switch_squares`. Before `_switch_squares`
@@ -203,13 +223,13 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
 
     Args:
       - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
-      - `event` (`OccupationEvent`): The `OccupationEvent` to be executed.
+      - `event` (`TravelEvent`): The `TravelEvent` to be executed.
       - `actor_square` (`Square`): The `Square` occupied by `actor`.
 
     Returns:
     `OccupationResult` containing:
-      - On success: A new `OccupationEvent` with the updated squares and `piece`.
-      - On failure: The original `OccupationEvent`or verifying any rollbacks succeeded and the err
+      - On success: A new `TravelEvent` with the updated squares and `piece`.
+      - On failure: The original `TravelEvent`or verifying any rollbacks succeeded and the err
         describing the failure.
 
     Raises:
@@ -265,7 +285,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
 
     return TransactionResult(
       result_id=op_result_id,
-      event=OccupationEvent(id_emitter.event_id, event.actor, event.subject)
+      event=TravelEvent(id_emitter.event_id, event.actor, event.subject)
     )
 
 

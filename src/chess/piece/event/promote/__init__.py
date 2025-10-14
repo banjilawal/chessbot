@@ -1,7 +1,7 @@
-# src/chess/event/promotion/__init__.py
+# src/chess/event/promote/__init__.py
 
 """
-Module: chess.event.promotion
+Module: chess.event.promote
 Author: Banji Lawal
 Created: 2025-10-05
 version: 1.0.0
@@ -15,7 +15,7 @@ Objects and utilities responsible for the Promotion lifecycle.
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `PromotionEvent`: Information necessary to fire the transaction.
-  - `PromotionTransaction`: Runs the promotion lifecycle.
+  - `PromotionTransaction`: Runs the promote lifecycle.
   - `PromotionEventBuilder: Safely creates the `PromotionEvent`
   - `PromotionEventValidator`
   - All exceptions from `exception` package.
