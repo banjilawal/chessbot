@@ -77,7 +77,7 @@ class TravelContext(ExecutionContext):
   """
   """
   Additional dependencies an `TravelEvent` passes to an
-  `TravelTransaction` apart from the `actor` and `resource`.
+  `TravelEventBuilder` apart from the `actor` and `resource`.
 
   Attributes:
     `_board (`Board)`:

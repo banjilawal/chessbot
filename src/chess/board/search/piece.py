@@ -203,7 +203,7 @@ class BoardPieceSearch(Search[Board, Piece]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_coords(cls, matches: List[Piece], board: Board) -> SearchResult[List[Piece]]:
-        method = "BoardPieceSearch._resolve_matching_coords"
+        method = "BoardPiceSearch._resolve_matching_coords"
         target = matches.pop()
         misses = [piece for piece in matches if piece.current_position == target.current_position and (
                 piece.name.upper() != target.name.upper() or piece.id != target.id

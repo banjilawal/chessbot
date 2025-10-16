@@ -6,20 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/context/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/class_module.template" beforeDir="false" afterPath="$PROJECT_DIR$/docs/class_module.template" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/search/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/search.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/square.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/context/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/context/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/hostage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/hostage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/roster.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/roster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/search.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +248,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/board/search",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece/event",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -286,11 +274,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece/event" />
+      <recent name="$PROJECT_DIR$/src/chess/board/search" />
       <recent name="$PROJECT_DIR$/src/chess/system/transaction" />
       <recent name="$PROJECT_DIR$/src/chess/board" />
       <recent name="$PROJECT_DIR$/src/chess/piece" />
-      <recent name="$PROJECT_DIR$/src/chess/system/event" />
-      <recent name="$PROJECT_DIR$/src/chess/system/search" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/system/transaction" />
@@ -685,7 +673,7 @@
       <workItem from="1760217950439" duration="11669000" />
       <workItem from="1760449715620" duration="41282000" />
       <workItem from="1760575542838" duration="10790000" />
-      <workItem from="1760595207300" duration="7506000" />
+      <workItem from="1760595207300" duration="14577000" />
     </task>
     <servers />
   </component>

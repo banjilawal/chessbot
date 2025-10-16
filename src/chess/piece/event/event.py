@@ -24,7 +24,7 @@ from chess.system import Event, AutoId, LoggingLevelRouter
 @AutoId
 class TravelEvent(Event[Piece,Square]):
   """
-  Details for executing an `TravelTransaction`.
+  Details for executing an `TravelEventBuilder`.
 
   Attributes:
     * `_actor` (`Piece`)

@@ -92,49 +92,49 @@ from chess.exception import ValidationException, NullException, BuilderException
 # ]
 
 __all__ = [
-  'OccupationEventException',
+  'TravelEventException',
 
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
-  'InvalidOccupationEventException',
-  'NullOccupationEventException',
-  'CircularOccupationException',
+  'InvalidTravelEventException',
+  'NullTravelEventException',
+  'CircularTravelException',
   'TargetSquareMismatchException',
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
-  'OccupationEventBuilderException'
+  'TravelEventBuilderException'
   
   # 'HostageValidationEventException',
   # 'NullHostagePieceEventException',
-  # 'InvalidOccupationEventException',
-  # 'OccupationSearchEventException',
+  # 'InvalidTravelEventException',
+  # 'TravelSearchEventException',
 ]
 
-class OccupationEventException(EventException):
-  ERROR_CODE = "OCCUPATION_EXECUTION_ERROR"
+class TravelEventException(EventException):
+  ERROR_CODE = "TRAVEL_EXECUTION_ERROR"
   DEFAULT_MESSAGE = "An error was raised while executing the square event"
 
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
-class NullOccupationEventException(OccupationEventException, NullException):
-  ERROR_CODE = "NULL_OCCUPATION_EXECUTION_ERROR"
+class NullTravelEventException(TravelEventException, NullException):
+  ERROR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent cannot be null"
 
-class InvalidOccupationEventException(OccupationEventException, ValidationException):
+class InvalidTravelEventException(TravelEventException, ValidationException):
   """TravelEvent validate failure."""
-  ERROR_CODE = "OCCUPATION_EVENT_VALIDATION_ERROR"
+  ERROR_CODE = "TRAVEL_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent failed validate"
 
-class CircularOccupationException(OccupationEventException):
-  ERROR_CODE = "CIRCULAR_OCCUPATION_ERROR"
+class CircularTravelException(TravelEventException):
+  ERROR_CODE = "CIRCULAR_TRAVEL_ERROR"
   DEFAULT_MESSAGE = "Piece is already occupying the destination square"
 
-class TargetSquareMismatchException(OccupationEventException):
+class TargetSquareMismatchException(TravelEventException):
   """
   Raised if team target's square does not match. destination_square
   """
   ERROR_CODE = "TARGET_SQUARE_MISMATCH_ERROR"
   DEFAULT_MESSAGE = "Target piece is at team different square from expected."
 
-class ActorSquareNotFoundException(OccupationEventException):
+class ActorSquareNotFoundException(TravelEventException):
   ERROR_CODE = "ACTOR_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
     "The validated actor with team current could not find its square in BoardSearch"
@@ -142,19 +142,20 @@ class ActorSquareNotFoundException(OccupationEventException):
 
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
-class OccupationEventBuilderException(OccupationEventException, BuilderException):
-  ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "OccupationEventBuilder failed to create an TravelEvent."
+class TravelEventBuilderException(TravelEventException, BuilderException):
+  ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED_ERROR"
+  DEFAULT_MESSAGE = "TravelEventBuilder failed."
+
 
 #
 #
 #
-# class HostageValidationEventException(OccupationEventException):
+# class HostageValidationEventException(TravelEventException):
 #   ERROR_CODE = "HOSTAGE_VALIDATION_ERROR"
 #   DEFAULT_MESSAGE = f"Hostage validation failed."
 #
 #
-# class NullHostagePieceEventException(OccupationEventException):
+# class NullHostagePieceEventException(TravelEventException):
 #   """
 #   Raised if team enemy is null. Parent class for:
 #     - NullCombatantPieceException
@@ -167,7 +168,7 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #   DEFAULT_MESSAGE = f"Piece cannot be null"
 #
 #
-# class NullCombatantPieceEventException(OccupationEventException):
+# class NullCombatantPieceEventException(TravelEventException):
 #   """
 #   Raised if team CombatantPiece is null. Raise NullCombatant instead of NullPieceException
 #   """
@@ -176,10 +177,10 @@ class OccupationEventBuilderException(OccupationEventException, BuilderException
 #   DEFAULT_MESSAGE = f"CombatantPiece cannot be null"
 #
 #
-# class OccupationSearchEventException(OccupationEventException):
+# class TravelSearchEventException(TravelEventException):
 #   """
 #   Board searches during an event should not fai. If they do there is an inconsistency in the board
 #   """
 #
-#   ERROR_CODE = "OCCUPATION_SEARCH_ERROR"
+#   ERROR_CODE = "TRAVEL_SEARCH_ERROR"
 #   DEFAULT_MESSAGE = f"BoardSearch failed to find team square; this should not happen in an event operation"

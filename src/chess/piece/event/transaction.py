@@ -10,7 +10,7 @@ Created: 2025-09-28
 # PURPOSE:
 # DEPENDENCIES:
 # CONTAINS:
- * `TravelTransaction`
+ * `TravelEventBuilder`
 """
 
 
@@ -74,7 +74,7 @@ class TravelTransaction(Transaction[TravelEvent]):
         * `IdNullException`: if candidate is null
         * `NegativeIdException`: if candidate is negative `
     """
-    method = "TravelTransaction.execute"
+    method = "TravelEventBuilder.execute"
 
     event_validation = TravelEventValidator.validate(event)
     if not event_validation.is_success():

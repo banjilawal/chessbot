@@ -48,6 +48,8 @@ class ClassName:
     Returns:
         `DataType` or `Void`
     Raises:
+        `DataType` or `Void`
+    Raises:
     MethodNameException wraps
         *
     """

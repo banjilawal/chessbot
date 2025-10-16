@@ -14,7 +14,7 @@ execution, and rollback for event-related operations (move, scan, attack, occupy
 This package exposes core classes and all exceptions from its sub-modules:
   - `TravelEvent`
   - `TravelContext`
-  - `TravelTransaction`
+  - `TravelEventBuilder`
   - `OccupationEventValidator`
   - `OccupationEventBuilder`
   - All exports from `scan`, `attack`, `promote`, and `occupy` packages.

@@ -11,8 +11,8 @@ SCOPE:
 This module is strictly limited to constructing `ValidationResult` instances safely.
 
 **It does not** contain logic or rules for creating `TravelEvent` or
-`TravelTransaction`. Those are handled by `OccupationEventBuilder` before
-execution,`TravelTransaction` during execution.
+`TravelEventBuilder`. Those are handled by `OccupationEventBuilder` before
+execution,`TravelEventBuilder` during execution.
 
 **It does not** ensure existing `ValidationResult` instances are valid. That is done
 by the `ValidationResultValidator`.
