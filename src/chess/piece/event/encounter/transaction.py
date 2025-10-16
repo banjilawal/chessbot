@@ -11,7 +11,7 @@ Contents:
   - `ScanTransaction:` Main class responsible for executing event directives.
 
 Notes:
-  This module is part of the chess.event.event.scan package.
+  This module is part of the chess.event.event.encounter package.
   Exceptions raised during execution are defined in err.py and err.py.
 """
 

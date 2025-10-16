@@ -68,7 +68,7 @@ class DiscoveryBuilder(Enum):
 
 
     Args:
-      `actor`(`Piece`): The piece that is doing team scan, or executing team move.
+      `actor`(`Piece`): The piece that is doing team encounter, or executing team move.
       `discover`(`Piece`): The static piece the `actor` finds in team `square`.
 
     Returns:

@@ -345,7 +345,7 @@ class HostageActivityException(PieceException):
   useful for debugging.
   """
   ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"
-  DEFAULT_MESSAGE = "Hostage piece cannot move, scan, or attack."
+  DEFAULT_MESSAGE = "Hostage piece cannot move, encounter, or attack."
 
 
 class HostageCannotAttackException(HostageActivityException):
@@ -364,9 +364,9 @@ class HostageCannotMoveException(HostageActivityException):
 
 class HostageCannotScanException(HostageActivityException):
   """
-  Raised if team captured piece tries to scan team square.
+  Raised if team captured piece tries to encounter team square.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot scan team sqaure."
+  DEFAULT_MESSAGE = "Captured piece cannot encounter team sqaure."
 
 

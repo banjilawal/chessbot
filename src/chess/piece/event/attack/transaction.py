@@ -18,7 +18,7 @@ from chess.system import ExecutionContext, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
 from chess.piece.event.attack.exception import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
-from chess.piece.event.occupy.transaction import TransferTransaction
+from chess.piece.event.occupy.transaction import LogEncounterTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 
@@ -114,6 +114,6 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
       event_id=id_emitter.attack_id,
       actor_square=event.actor_square
     )
-    return TransferTransaction.execute(transfer_event, context)
+    return LogEncounterTransaction.execute(transfer_event, context)
 
 

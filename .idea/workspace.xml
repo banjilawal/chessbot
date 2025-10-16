@@ -6,8 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/class_module.template" beforeDir="false" afterPath="$PROJECT_DIR$/docs/class_module.template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/event/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/event/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/attack/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/occupy/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/occupy/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/occupy/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/occupy/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/occupy/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/occupy/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/scan/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/encounter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/scan/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/encounter/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/scan/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/encounter/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/scan/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/encounter/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/scan/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/encounter/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/scan/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/encounter/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/actor/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/actor/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/event/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/event/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/transaction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,6 +257,7 @@
     "Python.team_builder.executor": "Run",
     "Python.team_factory (1).executor": "Run",
     "Python.team_factory.executor": "Run",
+    "Python.transaction.executor": "Debug",
     "Python.validation_exception.executor": "Run",
     "Python.validator.executor": "Debug",
     "Python.vector.executor": "Run",
@@ -288,7 +308,7 @@
       <recent name="$PROJECT_DIR$/src/chess/piece/search" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.validator">
+  <component name="RunManager" selected="Python.transaction">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -473,7 +493,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="validator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="transaction" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -482,12 +502,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/square" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/piece/event/occupy" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/square/validator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/piece/event/occupy/transaction.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -519,20 +539,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="validator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/square" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/square/validator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -553,11 +580,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.transaction" />
         <item itemvalue="Python.validator" />
         <item itemvalue="Python.__init__" />
         <item itemvalue="Python.piece (1)" />
         <item itemvalue="Python.team" />
-        <item itemvalue="Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes" />
       </list>
     </recent_temporary>
   </component>
@@ -673,7 +700,7 @@
       <workItem from="1760217950439" duration="11669000" />
       <workItem from="1760449715620" duration="41282000" />
       <workItem from="1760575542838" duration="10790000" />
-      <workItem from="1760595207300" duration="14577000" />
+      <workItem from="1760595207300" duration="26311000" />
     </task>
     <servers />
   </component>

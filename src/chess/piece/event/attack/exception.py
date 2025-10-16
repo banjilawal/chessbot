@@ -85,7 +85,7 @@ __all__ = [
 class ScanTransactionException(TransactionException):
   """
   Wraps any ScanEventExceptions or other errors raised during
-  the scan's lifecycle.
+  the encounter's lifecycle.
   """
   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "ScanTransaction raised an exception."

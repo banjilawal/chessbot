@@ -98,7 +98,7 @@ class InvalidActorException(ActorException, InvalidPieceException):
 
 class ActorNotOnBoardException(ActorException):
   """
-  A piece that has not been placed on the board cannot move, scan, capture or be captured
+  A piece that has not been placed on the board cannot move, encounter, capture or be captured
   """
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
   DEFAULT_MESSAGE = "Actor is not on the board. Piece cannot act"
@@ -135,10 +135,10 @@ class CapturedActorCannotMoveException(ActorException):
 
 class CapturedActorCannotScanException(ActorException):
   """
-  A captured piece cannot scan.
+  A captured piece cannot encounter.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "A captured actor cannot scan team square."
+  DEFAULT_MESSAGE = "A captured actor cannot encounter team square."
 
 class CheckMatedKingActivityException(ActorException):
   """

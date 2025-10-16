@@ -39,7 +39,7 @@ from chess.piece.event import (
 )
 
 
-class TransferTransaction(OccupationTransaction[TransferEvent]):
+class LogEncounterTransaction(OccupationTransaction[TransferEvent]):
 
   @staticmethod
   def execute(event: TransferEvent, context: ExecutionContext) -> TransactionResult:
@@ -299,13 +299,13 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
 
     Args
       - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
-      - `event` (`ScanEvent`): The `ScanEvent` to execute.
+      - `event` (`EncounterEvent`): The `EncounterEvent` to execute.
 
     Returns:
     `OccupationResult` containing:
-      - On success: A new `ScanEvent` object that containing updated `actor`. Observer will have
+      - On success: A new `EncounterEvent` object that containing updated `actor`. Observer will have
         team new `Discovery` instance inside `actor.discoveries`.
-      - On failure: The original `ScanEvent` for verifying any rollbacks succeeded and the err
+      - On failure: The original `EncounterEvent` for verifying any rollbacks succeeded and the err
         describing the failure.
 
     Raises:

@@ -16,13 +16,14 @@ Contains:
 
 from typing import Optional
 
+from chess.board import Board
 from chess.square import Square
 from chess.piece import Piece, TravelContext
 from chess.system import Event, AutoId, LoggingLevelRouter
 
 
 @AutoId
-class TravelEvent(Event[Piece,Square]):
+class TravelEvent(Event[Piece,Square, Board]):
   """
   Details for executing an `TravelEventBuilder`.
 
@@ -36,13 +37,14 @@ class TravelEvent(Event[Piece,Square]):
   _actor: Piece
   _parent: Event
   _resource: Square
-  _context: TravelContext
+  _execution_environment: Board
 
   @LoggingLevelRouter.monitor
   def __init__(
       self,
       actor: Piece,
       destination_square: Square,
+      execution_environment: Board,
       parent: Optional[Event]=None
   ):
     """
@@ -55,11 +57,13 @@ class TravelEvent(Event[Piece,Square]):
       * `roster` (`TravelContext`):
     """
 
-    super().__init__(actor=actor, resource=destination_square, parent=parent, context=context)
+    super().__init__(actor=actor, resource=destination_square, parent=parent, execution_environment=execution_environment)
+
 
   @property
   def destination_square(self) -> Square:
     return self.resource
+
 
   def __eq__(self, other) -> bool:
     if not super().__eq__(other):

@@ -63,7 +63,7 @@ AUTHOR: Banji Lawal
 from .exception import *
 from .event import OccupationEvent
 from .builder import TransferEventBuilder
-from .transaction import TransferTransaction
+from .transaction import LogEncounterTransaction
 from .validator import TransferEventValidator
 
 

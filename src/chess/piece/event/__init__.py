@@ -8,7 +8,7 @@ Version: 1.0.1
 
 # Purpose
 Manages `Piece` movement and state changes on the `Board`. Provides team unified interface for event creation, validate,
-execution, and rollback for event-related operations (move, scan, attack, occupy)
+execution, and rollback for event-related operations (move, encounter, attack, occupy)
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
@@ -17,14 +17,14 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `TravelEventBuilder`
   - `OccupationEventValidator`
   - `OccupationEventBuilder`
-  - All exports from `scan`, `attack`, `promote`, and `occupy` packages.
-  - All exceptions from `er`, `scan`, `attack`, and `occupy` sub-packages.
+  - All exports from `encounter`, `attack`, `promote`, and `occupy` packages.
+  - All exceptions from `er`, `encounter`, `attack`, and `occupy` sub-packages.
 
 # SUB-PACKAGES
   - `.attack`: Logic for capturing.
   - `.promote`: Logic for promoting kings and pawns.
   - `.exception`: Defines all custom exceptions for event operations.
-  - `.scan`: Logic for recording occupied squares in team piece's path.
+  - `.encounter`: Logic for recording occupied squares in team piece's path.
   - `.occupy`: Logic for transferring team piece to another empty square.
 
 # NOTES
@@ -70,7 +70,7 @@ ___
 
 """
 
-from .scan import *
+from .encounter import *
 from .attack import *
 from .occupy import *
 from .promote import *
@@ -95,7 +95,7 @@ __all__ = [
   'TravelTransaction',
   'OccupationEventValidator',
 
-  *scan.__all__,
+  *encounter.__all__,
   *attack.__all__,
   *occupy.__all__,
   *promote.__all__,

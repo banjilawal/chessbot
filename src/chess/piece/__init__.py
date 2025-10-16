@@ -14,8 +14,8 @@ Provides the fundamental data structures for game pieces and entities owned by t
   * `CombatantPiece`: Concrete piece that can be captured
   * `KingPiece`: Concrete king piece with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-  * `Encounter`: A record of an item discovered by team `Piece` during team scan or move.
-  * `EncounterScan`: A data-holding object representing team single scan of team chess piece's surroundings.
+  * `Encounter`: A record of an item discovered by team `Piece` during team encounter or move.
+  * `EncounterScan`: A data-holding object representing team single encounter of team chess piece's surroundings.
 
 ## Usage
 ```python

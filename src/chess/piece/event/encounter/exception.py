@@ -109,7 +109,7 @@ __all__ = [
 class ScanTransactionException(TransactionException):
   """
   Wraps any ScanEventExceptions or other errors raised during
-  the scan's lifecycle.
+  the encounter's lifecycle.
   """
   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "ScanTransaction raised an exception."
@@ -126,30 +126,30 @@ class NullScanTransactionException(NullTransactionException):
 #=== SCAN_EVENT EXCEPTIONS #======================#  
 class ScanEventException(OccupationEventException):
   """
-  Superclass for all scan event exceptions. DO NOT USE DIRECTLY. Subclasses
+  Superclass for all encounter event exceptions. DO NOT USE DIRECTLY. Subclasses
   give more specific error messages useful for debugging.
   """
   ERROR_CODE = "SCAN_EVENT_ERROR"
-  DEFAULT_MESSAGE = "ScanEvent failed validate"
+  DEFAULT_MESSAGE = "EncounterEvent failed validate"
 
 
 #=== SCAN_EVENT VALIDATION EXCEPTIONS #======================#  
 class NullScanEventException(ScanEventException, NullException):
-  """Raised by methods, entities, and models that require team ScanEvent but receive team null."""
+  """Raised by methods, entities, and models that require team EncounterEvent but receive team null."""
   ERROR_CODE = "NULL_EVENT_ERROR"
-  DEFAULT_MESSAGE = "ScanEvent cannot be null"
+  DEFAULT_MESSAGE = "EncounterEvent cannot be null"
 
 class InvalidScanEventException(ScanEventException, ValidationException):
   """Raised by ScanEventValidators if validate fails."""
   ERROR_CODE = "SCAN_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "ScanEvent failed validate"
+  DEFAULT_MESSAGE = "EncounterEvent failed validate"
 
 
 #=== SCAN_EVENT BUILD EXCEPTIONS #======================#  
 class ScanEventBuilderException(ScanEventException, BuilderException):
-  """Raised when team ScanEventBuilder fails to build team ScanEvent."""
+  """Raised when team ScanEventBuilder fails to build team EncounterEvent."""
   ERROR_CODE = "SCAN_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "ScanEventBuilder failed to create team ScanEvent"
+  DEFAULT_MESSAGE = "ScanEventBuilder failed to create team EncounterEvent"
 
 class ScanSubjectException(ScanEventException):
   """

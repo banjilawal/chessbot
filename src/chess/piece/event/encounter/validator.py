@@ -2,11 +2,11 @@ from typing import TypeVar, cast
 
 from chess.board import BoardSearch
 from chess.event import AttackEvent, CircularOccupationException
-from chess.piece.event.scan.exception import TargetSquareMismatchException, ScanSubjectException
+from chess.piece.event.encounter.exception import TargetSquareMismatchException, ScanSubjectException
 from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
 from chess.system import ExecutionContext, Result, IdValidator, InvalidIdException
 from chess.piece.event import (
-  ScanEvent,
+  EncounterEvent,
   NullScanEventException,
   InvalidScanEventException
 )
@@ -16,7 +16,7 @@ T = TypeVar('T')
 class AttackEventValidator(EventValidator):
 
   @staticmethod
-  def validate(t: AttackEvent, context: ExecutionContext) -> Result[ScanEvent]:
+  def validate(t: AttackEvent, context: ExecutionContext) -> Result[EncounterEvent]:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -38,7 +38,7 @@ class AttackEventValidator(EventValidator):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Validates an ScanEvent meets specifications:
+    Validates an EncounterEvent meets specifications:
       - Not null
       - `id` does not fail validator
       - `actor` is team valid chess enemy
@@ -46,7 +46,7 @@ class AttackEventValidator(EventValidator):
     Any validate failure raises an `InvalidScanEventException`.
 
     Argument:
-      `candidate` (`ScanEvent`): `scanEvent `to validate
+      `candidate` (`EncounterEvent`): `scanEvent `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
@@ -65,16 +65,16 @@ class AttackEventValidator(EventValidator):
 
       `InvalidScanEventException`: Wraps any preceding exceptions
     """
-    method = "ScanEvent.validate"
+    method = "EncounterEvent.validate"
 
     try:
       if t is None:
         raise NullScanEventException(f"{method}: {NullScanEventException.DEFAULT_MESSAGE}")
 
-      if not isinstance(t, ScanEvent):
-        raise TypeError(f"{method} Expected an ScanEvent, got {type(t).__name__}")
+      if not isinstance(t, EncounterEvent):
+        raise TypeError(f"{method} Expected an EncounterEvent, got {type(t).__name__}")
 
-      event = cast(ScanEvent, t)
+      event = cast(EncounterEvent, t)
 
       id_validation = IdValidator.validate(event.id)
       if not id_validation.is_success():
@@ -82,11 +82,11 @@ class AttackEventValidator(EventValidator):
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: ScanEvent actor failed validate")
+        raise InvalidPieceException(f"{method}: EncounterEvent actor failed validate")
 
       subject_validation = PieceValidator.validate(event.subject)
       if not subject_validation.is_success():
-        raise InvalidPieceException(f"{method}: ScanEvent enemy failed validate")
+        raise InvalidPieceException(f"{method}: EncounterEvent enemy failed validate")
 
       if event.actor == event.subject:
         raise CircularDiscoveryException(f"{method}: {CircularDiscoveryException.DEFAULT_MESSAGE}")

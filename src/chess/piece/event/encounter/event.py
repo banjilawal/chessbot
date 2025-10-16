@@ -4,7 +4,7 @@ from chess.piece import Piece
 from chess.square import Square
 from chess.event import Event, OccupationEvent
 
-class ScanEvent(OccupationEvent):
+class EncounterEvent(OccupationEvent):
   _subject: Piece
 
   def __init__(
@@ -33,6 +33,6 @@ class ScanEvent(OccupationEvent):
 
   def __eq__(self, other):
     if super().__eq__(other):
-      if isinstance(other, ScanEvent):
+      if isinstance(other, EncounterEvent):
         return self._subject.id == other.subject.id
     return False

@@ -20,7 +20,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `Event`: The base class for all events.
   - `EventValidator`: The base class for all event validators.
   - `Transaction`: Super class for all transactions.
-  - All exceptions from `err`, `scan`, `attack`, and `occupy` sub-packages.
+  - All exceptions from `err`, `encounter`, `attack`, and `occupy` sub-packages.
 
 # SUB-PACKAGES
   - `.exception`: Defines all custom exceptions for event operations.

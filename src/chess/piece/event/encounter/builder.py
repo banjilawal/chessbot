@@ -10,14 +10,14 @@ from chess.piece import Piece, CircularDiscoveryException, PieceValidator, Inval
 
 class ScanEventBuilder(Enum):
   """
-  Builder class responsible for safely constructing `ScanEvent` instances.
+  Builder class responsible for safely constructing `EncounterEvent` instances.
 
-  `ScanEventBuilder` ensures that `ScanEvent` objects are always created successfully by performing comprehensive validate
+  `ScanEventBuilder` ensures that `EncounterEvent` objects are always created successfully by performing comprehensive validate
    checks during construction. This separates the responsibility of building from validating - `ScanEventBuilder`
-   focuses on creation while `ScanEventValidator` is used for validating existing `ScanEvent` instances that are passed
+   focuses on creation while `ScanEventValidator` is used for validating existing `EncounterEvent` instances that are passed
    around the system.
 
-  The build runs through all validate checks individually to guarantee that any `ScanEvent` instance it produces
+  The build runs through all validate checks individually to guarantee that any `EncounterEvent` instance it produces
   meets all required specifications before construction completes
 
   Usage:
@@ -30,9 +30,9 @@ class ScanEventBuilder(Enum):
     ```
 
   See Also:
-    `ScanEvent`: The data structure being constructed
-    `ScanEventValidator`: Used for validating existing `ScanEvent` instances
-    `BuildResult`: Return type containing the built `ScanEvent` or error information
+    `EncounterEvent`: The data structure being constructed
+    `ScanEventValidator`: Used for validating existing `EncounterEvent` instances
+    `BuildResult`: Return type containing the built `EncounterEvent` or error information
   """
 
   @staticmethod
@@ -65,23 +65,23 @@ class ScanEventBuilder(Enum):
     """
 
     """
-    Constructs team new `ScanEvent` instance with comprehensive checks on the parameters and states during the
+    Constructs team new `EncounterEvent` instance with comprehensive checks on the parameters and states during the
     build process.
 
-    Performs individual validate checks on each component to ensure the resulting `ScanEvent` meets all
-    specifications. If all checks are passed, team `ScanEvent` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `ScanEvent` instance. This method guarantees if team `BuildResult`
-    with team successful status is returned, the contained `ScanEvent` is valid and ready for use.
+    Performs individual validate checks on each component to ensure the resulting `EncounterEvent` meets all
+    specifications. If all checks are passed, team `EncounterEvent` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `EncounterEvent` instance. This method guarantees if team `BuildResult`
+    with team successful status is returned, the contained `EncounterEvent` is valid and ready for use.
 
     Args:
       `event_id`(`int`): The unique id for the scanEvent. Must pass `IdValidator` checks.
-      `actor`(`Piece`): Initiates scan after successful validate`.
+      `actor`(`Piece`): Initiates encounter after successful validate`.
       `enemy`(`Piece`): The `Piece` scanned by `actor`.
       `roster`(`ExecutionContext`): `roster.board` verifies `actor` and `enemy` are on the board.
 
     Returns:
-      BuildResult[ScanEvent]: A `BuildResult` containing either:
-        - On success: A valid `ScanEvent` instance in the payload
+      BuildResult[EncounterEvent]: A `BuildResult` containing either:
+        - On success: A valid `EncounterEvent` instance in the payload
         - On failure: Error information and error details
 
     Raises:
@@ -97,8 +97,8 @@ class ScanEventBuilder(Enum):
           not have the scanEvent
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only team valid `ScanEvent` is
-      created, while `ScanEventValidator` is used for validating `ScanEvent` instances that are passed around after
+      The build runs through all the checks on parameters and state to guarantee only team valid `EncounterEvent` is
+      created, while `ScanEventValidator` is used for validating `EncounterEvent` instances that are passed around after
       creating. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
 
@@ -121,11 +121,11 @@ class ScanEventBuilder(Enum):
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: ScanEvent actor failed validate")
+        raise InvalidPieceException(f"{method}: EncounterEvent actor failed validate")
 
       subject_validation = PieceValidator.validate(subject)
       if not subject_validation.is_success():
-        raise InvalidPieceException(f"{method}: ScanEvent enemy failed validate")
+        raise InvalidPieceException(f"{method}: EncounterEvent enemy failed validate")
 
       if actor == subject:
         ThrowHelper.log_and_raise_error(

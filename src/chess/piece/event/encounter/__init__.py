@@ -1,32 +1,32 @@
-# chess/event/event/scan/__init__.py
+# chess/event/event/encounter/__init__.py
 
 """
-Module: `chess.event.event.scan`
+Module: `chess.event.event.encounter`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
 ## PURPOSE:
-Executes team `ScanTransaction` after `ScanEvent` is validated
+Executes team `ScanTransaction` after `EncounterEvent` is validated
 
 ## CORE CLASSES:
-  * `ScanEvent`: Provides information about an `actor` scanning team `enemy` `Piece`.
-  * `ScanEventBuilder`: Builds team new `ScanEvent`.
-  * `ScanEventValidator`: Validates an existing `ScanEvent`.
-  * `ScanTransaction`: Performs the scan operation for the observing `Piece`
+  * `EncounterEvent`: Provides information about an `actor` scanning team `enemy` `Piece`.
+  * `ScanEventBuilder`: Builds team new `EncounterEvent`.
+  * `ScanEventValidator`: Validates an existing `EncounterEvent`.
+  * `ScanTransaction`: Performs the encounter operation for the observing `Piece`
 
 USAGE:
 ```python
-from chess.event.event import ScanEvent, ScanTransaction
+from chess.event.event import EncounterEvent, ScanTransaction
 ```
 ---
 
 ## EXCEPTIONS:
-Gives granular information about errors that occur during scan operations.
-  * `ScanEventException`: Superclass for all scan event exceptions. Subclasses give better debugging information
+Gives granular information about errors that occur during encounter operations.
+  * `ScanEventException`: Superclass for all encounter event exceptions. Subclasses give better debugging information
   * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
-  * `NullScanEventException`: Raised by methods, entities, and models that require team ScanEvent but receive team null
-  * `OccupationOccupationScanSubjectException`: Raised if team enemy of team scan is invalid.
+  * `NullScanEventException`: Raised by methods, entities, and models that require team EncounterEvent but receive team null
+  * `OccupationOccupationScanSubjectException`: Raised if team enemy of team encounter is invalid.
   * `ObserverCircularScanException`: Raised if an actor scans itself.
 
 ### EXCEPTION USAGE:
@@ -39,20 +39,20 @@ AUTHOR: Banji Lawal
 """
 
 from .exception import *
-from .event import ScanEvent
+from .event import EncounterEvent
 from .builder import ScanEventBuilder
 from .transaction import ScanTransaction
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.event.event.scan"
+__package_name__ = "chess.event.event.encounter"
 
 
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  'ScanEvent',
+  'EncounterEvent',
   'ScanEventBuilder',
   'ScanEventValidator',
   'ScanTransaction',

@@ -1,7 +1,8 @@
 from typing import Optional
 
+from chess.board import Board
 from chess.square import Square
-from chess.system import TransactionResult, AutoId, Event
+from chess.system import TransactionResult, AutoId, Event, LoggingLevelRouter
 from chess.piece import Piece, TravelEvent, TravelContext
 
 
@@ -13,25 +14,25 @@ class OccupationEvent(TravelEvent):
   _actor: Piece
   _parent: Event
   _resource: Square
+  _actor_square: Square
   _context: TravelContext
 
+  @AutoId
   @LoggingLevelRouter.monitor
   def __init__(
       self,
       actor: Piece,
+      actor_square: Square,
       destination_square: Square,
-      context: TravelContext,
+      execution_environment: Board,
       parent: Optional[Event]=None
-
-  def __init__(
-    self,
-    actor: Piece,
-    actor_square: Square,
-    destination_square: Square,
-    context: TravelContext,
-    parent: Optional[Event]=None
   ):
-    super().__init__(actor=actor, destination_squ=destination_square, parent=parent, context=context)
+    super().__init__(
+      actor=actor,
+      parent=parent,
+      destination_square=destination_square,
+      execution_environment=execution_environment
+    )
     self._actor_square = actor_square
 
 

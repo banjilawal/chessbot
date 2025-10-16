@@ -17,8 +17,9 @@ Created: 2025-09-28
 from typing import cast
 
 from chess.board import Board, BoardPieceSearch, BoardSearchContext, BoardSquareSearch
-from chess.piece import Piece, PieceValidator
+from chess.piece import Piece, PieceValidator, OccupationEvent
 from chess.piece.event.exception import ActorSquareNotFoundException
+from chess.rank import King
 from chess.system import Transaction, TransactionResult, TransactionState, LoggingLevelRouter, \
   SearchResult, Builder, BuildResult, InvalidIdException
 
@@ -121,6 +122,26 @@ class TravelEventBuilder(Builder[TravelEvent]):
       return BuildResult(exception=AutoTravelPieceException(
         f"{method}: {AutoTravelPieceException.DEFAULT_MESSAGE}"
       ))
+
+    destination_occupant = destination_square.occupant
+    if destination_occupant is None:
+      return BuildResult(payload=OccupationEvent(
+          actor=actor,
+          actor_square=actor_square,
+          destination_square=destination_square,
+          execution_environment=board
+        )
+      )
+
+    if isinstance(destination_occupant, King) or not actor.is_enemy(destination_occupant):
+      return BuildResult(payload=DiscoveryEvent(
+          actor=actor,
+          actor_square=actor_square,
+          destination_square=destination_square,
+          encountered_piece=destination_occupant,
+          execution_environment=board
+        )
+      )
 
     actor_square_search = BoardSearch.search(
       board=context.board,

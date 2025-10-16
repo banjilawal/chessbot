@@ -68,18 +68,14 @@ class Transaction(ABC, Generic[X]):
   _execution_environment: X
 
 
-  def __init__(self, event: Event, execution_environment: X):
+  def __init__(self, event: Event):
     self._event = event
     self._state = TransactionState.RUNNING
-    self._execution_environment = execution_environment
 
   @property
   def event(self) -> Event:
     return self._event
 
-  @property
-  def execution_environment(self) -> X:
-    return self._execution_environment
 
   @property
   def state(self) -> TransactionState:
