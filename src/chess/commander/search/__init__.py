@@ -5,7 +5,7 @@ PURPOSE:
   Separates old_search responsibilites from state mamangement, and data holding object.
 
 CORE CLASSES:
-  PieceSearch
+  BoardPieceSearch
   SquareSearch
   TeamSearch
   SearchResult
@@ -21,7 +21,7 @@ SEARCH EXCEPTIONS:
   Exceptions raised by Search entities
 
 EXCEPTION CLASSES:
-  PieceNotFoundException: Raised when team discover is not found by PieceSearch
+  PieceNotFoundException: Raised when team discover is not found by BoardPieceSearch
   SqaureNotFoundException: Raised when team sqaure is not found by SquareSearch
 
 USAGE:

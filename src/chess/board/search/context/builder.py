@@ -55,17 +55,18 @@ From `chess.piece`:
 
 from typing import Optional
 
+from chess.coord import Coord, CoordValidator
 from chess.rank import Rank, RankValidator, RankSpec
 from chess.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
 from chess.system import (
     IdValidator, NameValidator, Builder, BuildResult,
     MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
-from chess.team.search.context.context import PieceSearchContext
+from chess.team.search.context.context import BoardSearchContext
 from chess.team.search import RansomOutOfBoundsException
 
 
-class PieceSearchContextBuilder(Builder[PieceSearchContext]):
+class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     """
     # ROLE: Builder implementation
 
@@ -82,14 +83,8 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
     """
 
     @classmethod
-    def build (
-        cls,
-        name: Optional[str],
-        rank: Optional[Rank],
-        ransom: Optional[int],
-        piece_id: Optional[int],
-        roster_number: Optional[int],
-    ) -> BuildResult[PieceSearchContext]:
+    @LoggingLevelRouter.monitor
+    def build (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[BoardSearchContext]:
         """
         Action:
         Parameters:
@@ -97,56 +92,42 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
         Raises:
         MethodNameException wraps
         """
-        method = "PieceSearchContextBuilder.build"
+        method = "BoardSearchContextBuilder.build"
+        try:
+            params = [id, name, coord]
+            param_count = sum(bool(p) for p in params)
 
-        params = [name, rank, ransom, piece_id, roster_number]
-        param_count = sum(bool(p) for p in params)
-
-        if param_count == 0:
-            raise AllParamsSetNullException(
-                f"{method}: {AllParamsSetNullException.DEFAULT_MESSAGE}"
-            )
-
-        if param_count > 1:
-            raise MutuallyExclusiveParamsException(
-                f"{method}: {MutuallyExclusiveParamsException.DEFAULT_MESSAGE}"
-            )
-
-        if piece_id is not None:
-            id_validation = IdValidator.validate(piece_id)
-            if not id_validation.is_success():
-                LoggingLevelRouter(PieceSearchContextBuilder, id_validation.exception)
-                return BuildResult(exception=id_validation.exception)
-            return BuildResult(payload=PieceSearchContext(piece_id=id_validation.payload))
-
-        if roster_number is not None:
-            if roster_number < 1 or roster_number > ROSTER_SIZE:
-                err = RosterNumberOutOfBoundsException(
-                    f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
+            if param_count == 0:
+                return BuildResult(exception=AllParamsSetNullException(
+                        f"{method}: {AllParamsSetNullException.DEFAULT_MESSAGE}"
+                    )
                 )
-                LoggingLevelRouter(PieceSearchContextBuilder, err)
-                return BuildResult(exception=err)
-            return BuildResult(payload=PieceSearchContext(roster_number=roster_number))
 
-        if name is not None:
-            name_validation = NameValidator.validate(name)
-            if not name_validation.is_success():
-                LoggingLevelRouter(PieceSearchContextBuilder, name_validation.exception)
-                return BuildResult(exception=name_validation.exception)
-            return BuildResult(payload=PieceSearchContext(name=name))
-
-        if ransom is not None:
-            if ransom < RankSpec.KING.ransom or ransom > RankSpec.QUEEN.ransom:
-                err = RansomOutOfBoundsException(
-                    f"{method}: {RansomOutOfBoundsException.DEFAULT_MESSAGE}"
+            if param_count > 1:
+                return BuildResult(exception=MutuallyExclusiveParamsException(
+                    f"{method}: {MutuallyExclusiveParamsException.DEFAULT_MESSAGE}"
+                    )
                 )
-                LoggingLevelRouter(PieceSearchContextBuilder, err)
-                return BuildResult(exception=err)
-            return BuildResult(payload=PieceSearchContext(ransom=ransom))
 
-        if rank is not None:
-            rank_validation = RankValidator.validate(rank)
-            if not rank_validation.is_success():
-                LoggingLevelRouter(PieceSearchContextBuilder, rank_validation.exception)
-                return BuildResult(exception=rank_validation.exception)
-            return BuildResult(payload=PieceSearchContext(rank=rank))
+            if id is not None:
+                id_validation = IdValidator.validate(id)
+                if not id_validation.is_success():
+                    return BuildResult(exception=id_validation.exception)
+                return BuildResult(payload=BoardSearchContext(id=id_validation.payload))
+
+            if coord is not None:
+                coord_validation =CoordValidator.validate(coord)
+                if not coord_validation.is_success():
+                    return BuildResult(exception=RosterNumberOutOfBoundsException(
+                            f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                return BuildResult(payload=BoardSearchContext(coord=coord))
+
+            if name is not None:
+                name_validation = NameValidator.validate(name)
+                if not name_validation.is_success():
+                    return BuildResult(exception=name_validation.exception)
+                return BuildResult(payload=BoardSearchContext(name=name))
+        except Exception as e:
+            return BuildResult(exception=e)

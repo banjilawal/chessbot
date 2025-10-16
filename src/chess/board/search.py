@@ -1,4 +1,4 @@
-# chess/board/roster.py
+# chess/board/square.py
 
 """
 Module: `chess.board.old_search`

@@ -40,7 +40,7 @@ The module provides a data structure for passing old_search for filtering the da
 1. `ExecutionContext`
 """
 
-# src/chess/piece/event/roster.py
+# src/chess/piece/event/square.py
 
 """
 Module: `chess.piece.event.roster`

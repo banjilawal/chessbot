@@ -12,6 +12,6 @@ from .exception import *
 
 from .search import TeamSearch
 from .data_source import Datasource
-from .roster import TeamRosterSearch
-from .hostage import PieceSearch
+from .square import TeamRosterSearch
+from .piece import BoardPieceSearch
 

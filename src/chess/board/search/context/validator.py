@@ -62,7 +62,7 @@ from chess.team.search import PieceSearchContext
 
 T = TypeVar('T')
 
-class PieceSearchContextValidator(Validator):
+class BoardSearchContextValidator(Validator):
   """
   # ROLE: Builder implementation
 

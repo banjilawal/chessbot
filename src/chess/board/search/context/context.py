@@ -54,10 +54,10 @@ From `chess.piece`:
 
 from typing import Optional
 
-from chess.rank import Rank
-from chess.system import SearchContext, FilterContext
+from chess.coord import Coord
+from chess.system import SearchContext
 
-class PieceSearchContext(SearchContext):
+class BoardSearchContext(SearchContext):
   """
   # ROLE: Builder implementation
 
@@ -72,53 +72,38 @@ class PieceSearchContext(SearchContext):
   # ATTRIBUTES:
   None
   """
+
+  _id: Optional[int] = None
   _name: Optional[str] = None
-  _rank: Optional[Rank] = None
-  _ransom: Optional[int] = None,
-  _piece_id: Optional[int] = None
-  _roster_number: Optional[int] = None
+  _coord: Optional[Coord] = None
 
   def __init__(
       self,
+      id: Optional[int] = None,
       name: Optional[str] = None,
-      rank: Optional[Rank] = None,
-      ransom: Optional[int] = None,
-      piece_id: Optional[int]=None,
-      roster_number: Optional[int]=None
+      coord: Optional[Coord] = None,
   ):
+    self._id = id
     self._name = name
-    self._rank = rank
-    self._ransom = ransom
-    self._piece_id = piece_id
-    self._roster_number = roster_number
+    self._coord = coord
+
+@property
+def id(self) -> Optional[int]:
+  return self._id
 
 @property
 def name(self) -> Optional[str]:
   return self._name
 
-@property
-def rank(self) -> Optional[Rank]:
-  return self._rank
 
 @property
-def ransom(self) -> Optional[int]:
-  return self._ransom
-
-@property
-def piece_id(self) -> Optional[int]:
-  return self._piece_id
-
-@property
-def roster_number(self) -> Optional[int]:
-  return self._roster_number
-
+def coord(self) -> Optional[Coord]:
+  return self._coord
 
 
 def to_dict(self) -> dict:
   return {
+    "id": self._id,
     "name": self._name,
-    "rank": self._rank,
-    "ransom": self._ransom,
-    "piece_id": self._piece_id,
-    "roster_number": self._roster_number,
+    "coord": self._coord
   }

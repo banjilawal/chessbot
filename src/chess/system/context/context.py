@@ -23,7 +23,7 @@ Created: 2025-09-28
  * `TravelTransaction`
 """
 
-# src/chess/system/roster/roster.py
+# src/chess/system/roster/square.py
 
 """
 Module: `chess.system.roster.roster`

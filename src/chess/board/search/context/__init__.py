@@ -8,6 +8,6 @@ version: 1.0.0
 """
 
 from .exception import *
-from .context import PieceSearchContext
+from .context import BoardSearchContext
 from .builder import PieceSearchContextBuilder
-from .validator import PieceSearchContextValidator
+from .validator import BoardSearchContextValidator
