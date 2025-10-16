@@ -58,7 +58,7 @@ from typing import List
 from chess.rank import Rank
 from chess.piece import Piece, PieceValidator, Discovery
 from chess.system import Search, SearchResult, LoggingLevelRouter
-from chess.team import PieceSearchContext, PieceSearchContextValidator
+from chess.team import TeamSearchContext, PieceSearchContextValidator
 
 
 class DiscoverySearch(Search[Discovery]):
@@ -78,7 +78,7 @@ class DiscoverySearch(Search[Discovery]):
   """
   @classmethod
   @LoggingLevelRouter.monitor
-  def search(cls, piece: Piece, search_context: PieceSearchContext) -> SearchResult[List[Discovery]]:
+  def search(cls, piece: Piece, search_context: TeamSearchContext) -> SearchResult[List[Discovery]]:
       method = "DiscoverySearch.search"
 
       piece_validation = PieceValidator.validate(piece)

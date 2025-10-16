@@ -21,7 +21,7 @@
 #       for j in range(COLUMN_SIZE):
 #         name = chr(ascii_value) + str(i + 1)
 #         coord = Coord(row=i, column=j)
-#         square = Square(id_emitter.square_id, name, coord)
+#         square = Square(id_emitter.id, name, coord)
 #         row_squares.append(square)
 #         ascii_value += 1
 #       squares.append(row_squares)

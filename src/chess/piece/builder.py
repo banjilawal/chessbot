@@ -85,7 +85,7 @@ class PieceBuilder(Builder[Piece]):
     method = "PieceBuilder.build"
 
     try:
-      # id_validation = IdValidator.validate(piece_id)
+      # id_validation = IdValidator.validate(id)
       # if not id_validation.is_success():
       #   LoggingLevelRouter.throw_if_invalid(PieceBuilder, id_validation)
 

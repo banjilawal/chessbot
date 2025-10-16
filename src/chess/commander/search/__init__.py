@@ -7,7 +7,7 @@ PURPOSE:
 CORE CLASSES:
   BoardPieceSearch
   SquareSearch
-  TeamSearch
+  BoardSearch
   SearchResult
 
 USAGE:

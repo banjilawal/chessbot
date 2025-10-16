@@ -83,7 +83,7 @@ class SquareBuilder(Builder[Square]):
     method = "SquareBuilder.build"
 
     try:
-      # id_validation = IdSquareBuilder.validate(square_id)
+      # id_validation = IdSquareBuilder.validate(id)
       # if not id_validation.is_success():
       #   ThrowHelper.log_and_raise_error(SquareBuilder, id_validation.exception)
 

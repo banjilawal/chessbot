@@ -58,7 +58,7 @@ from chess.system import Result, Validator, IdValidator, InvalidIdException, Inc
 from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
 from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \
   InvalidCommanderAssignmentException
-from chess.team.search import PieceSearchContext
+from chess.team.search import TeamSearchContext
 
 T = TypeVar('T')
 
@@ -97,7 +97,7 @@ class BoardSearchContextValidator(Validator):
   """
 
   @staticmethod
-  def validate(candidate: PieceSearchContext) -> Result[PieceSearchContext]:
+  def validate(candidate: TeamSearchContext) -> Result[TeamSearchContext]:
     """
     Validates that an existing `Team` instance meets all specifications.
 

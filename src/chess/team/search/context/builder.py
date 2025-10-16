@@ -61,11 +61,11 @@ from chess.system import (
     IdValidator, NameValidator, Builder, BuildResult,
     MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
-from chess.team.search.context.context import PieceSearchContext
+from chess.team.search.context.context import TeamSearchContext
 from chess.team.search import RansomOutOfBoundsException
 
 
-class PieceSearchContextBuilder(Builder[PieceSearchContext]):
+class PieceSearchContextBuilder(Builder[TeamSearchContext]):
     """
     # ROLE: Builder implementation
 
@@ -89,7 +89,7 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
         ransom: Optional[int],
         piece_id: Optional[int],
         roster_number: Optional[int],
-    ) -> BuildResult[PieceSearchContext]:
+    ) -> BuildResult[TeamSearchContext]:
         """
         Action:
         Parameters:
@@ -117,7 +117,7 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
             if not id_validation.is_success():
                 LoggingLevelRouter(PieceSearchContextBuilder, id_validation.exception)
                 return BuildResult(exception=id_validation.exception)
-            return BuildResult(payload=PieceSearchContext(piece_id=id_validation.payload))
+            return BuildResult(payload=TeamSearchContext(piece_id=id_validation.payload))
 
         if roster_number is not None:
             if roster_number < 1 or roster_number > ROSTER_SIZE:
@@ -126,14 +126,14 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
                 )
                 LoggingLevelRouter(PieceSearchContextBuilder, err)
                 return BuildResult(exception=err)
-            return BuildResult(payload=PieceSearchContext(roster_number=roster_number))
+            return BuildResult(payload=TeamSearchContext(roster_number=roster_number))
 
         if name is not None:
             name_validation = NameValidator.validate(name)
             if not name_validation.is_success():
                 LoggingLevelRouter(PieceSearchContextBuilder, name_validation.exception)
                 return BuildResult(exception=name_validation.exception)
-            return BuildResult(payload=PieceSearchContext(name=name))
+            return BuildResult(payload=TeamSearchContext(name=name))
 
         if ransom is not None:
             if ransom < RankSpec.KING.ransom or ransom > RankSpec.QUEEN.ransom:
@@ -142,11 +142,11 @@ class PieceSearchContextBuilder(Builder[PieceSearchContext]):
                 )
                 LoggingLevelRouter(PieceSearchContextBuilder, err)
                 return BuildResult(exception=err)
-            return BuildResult(payload=PieceSearchContext(ransom=ransom))
+            return BuildResult(payload=TeamSearchContext(ransom=ransom))
 
         if rank is not None:
             rank_validation = RankValidator.validate(rank)
             if not rank_validation.is_success():
                 LoggingLevelRouter(PieceSearchContextBuilder, rank_validation.exception)
                 return BuildResult(exception=rank_validation.exception)
-            return BuildResult(payload=PieceSearchContext(rank=rank))
+            return BuildResult(payload=TeamSearchContext(rank=rank))

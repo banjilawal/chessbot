@@ -1,21 +1,21 @@
-# src/chess/team/team.py
+# src/chess/board/board.py
 """
-Module: chess.team.team
+Module: chess.board.board
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validation, error checking is performed in `Team` class. Using the class directly instead of
+***Limitation 1***: No validation, error checking is performed in `Board` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
+***Limitation 2***: There is no guarantee properly created `Board` objects released by the module will satisfy client
+    requirements. Clients are responsible for ensuring a `BoardBuilder` product will not fail when used. Products
+    from `BoardBuilder` --should-- satisfy `BoardValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
+    Authenticating existing boards -> See BoardValidator, module[chess.board.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -28,7 +28,7 @@ version: 1.0.0
 
 # PURPOSE:
 ---------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
+1. Putting all the steps and logging into one place makes modules using `Board` objects cleaner and easier to follow.
 
 ***Satisfies***: Reliability and performance contracts.
 
@@ -38,126 +38,198 @@ From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
     `IdValidator`, `NameValidator`
 
-From `chess.team`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
+From `chess.board`:
+    `Board`, `NullBoard`, `BoardBuildFailedException`, `BoardSchema`
 
 From `chess.commander`:
   `Commander`, `CommanderValidator`,
 
-From `chess.piece`:
-  `Piece`
+From `chess.square`:
+  `Square`
 
 # CONTAINS:
 ----------
- * `Team`
+ * `Board`
 """
-
 
 from typing import List
 
-from chess.piece import Piece
-from chess.team import Team, PieceSearchContext, TeamValidator
-from chess.system import Search, SearchResult
-from chess.team.search import PieceSearchContextValidator
+
+from chess.coord import Coord
+from chess.square import Square
+
+from chess.board import Board, BoardSearchContext, BoardSearchContextValidator
+from chess.system import (
+    Search, SearchResult, LoggingLevelRouter, SquareSearchNameCollisionException, SquareSearchCoordCollisionException, 
+    SquareSearchIdCollisionException
+)
 
 
-class TeamRosterSearch(Search[Team, Piece]):
-  """
-  # ROLE: Builder implementation
 
-  # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `Team` instances.
-  2. Create new `Team` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
+class BoardSquareSearch(Search[Board, Square]):
+    """
+    # ROLE: Builder implementation
+  
+    # RESPONSIBILITIES:
+    1. Process and validate parameters for creating `Board` instances.
+    2. Create new `Board` objects if parameters meet specifications.
+    2. Report errors and return `BuildResult` with error details.
+  
+    # PROVIDES:
+    `BuildResult`: Return type containing the built `Board` or error information.
+  
+    # ATTRIBUTES:
+    None
+    """
 
-  # PROVIDES:
-  `BuildResult`: Return type containing the built `Team` or error information.
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def search(cls, board: Board, search_context: BoardSearchContext) -> SearchResult[List[Square]]:
+        method = "BoardPieceSearch.old_search"
 
-  # ATTRIBUTES:
-  None
-  """
-  @classmethod
-  def search(cls, team: Team, search_context: PieceSearchContext) -> SearchResult[List[Piece]]:
-      method = "TeamRosterSearch.old_search"
+        # board_validation = BoardValidator.validate(board)
+        # if not board_validation.is_success():
+        #     return SearchResult(exception=board_validation.exception)
 
-      team_validation = TeamValidator.validate(team)
-      if not team_validation.is_success():
-        return SearchResult(exception=team_validation.exception)
+        search_context_validation = BoardSearchContextValidator.validate(search_context)
+        if not search_context_validation.is_success():
+            return SearchResult(exception=search_context_validation.exception)
 
-      search_context_validation = PieceSearchContextValidator.validate(search_context)
-      if not search_context_validation.is_success():
-        return SearchResult(exception=search_context_validation.exception)
+        if search_context.id is not None:
+            return BoardSquareSearch._id_search(board=board, id=search_context.id)
+
+        if search_context.name is not None:
+            return BoardSquareSearch._name_search(board=board, name=search_context.name)
+
+        if search_context.coord is not None:
+            return BoardSquareSearch._coord_search(board=board, ransom=search_context.coord)
 
 
-      if search_context.name is not None:
-        return TeamRosterSearch._name_search(team=team, name=search_context.name)
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _id_search(cls, board: Board, id: int) -> SearchResult[List[Square]]:
+        method = "BoardPieceSearch._id_search"
+        try:
+            matches = [square for square in board.squares if square.id == id]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return BoardSquareSearch._resolve_matching_ids(matches=matches, board=board)
+        except Exception as e:
+            return SearchResult(exception=e)
 
-      if search_context.rank is not None:
-        return TeamRosterSearch._rank_filter(team=team, rank=search_context.rank)
 
-      if search_context.ransom is not None:
-        return TeamRosterSearch._ransom_filter(team=team, ransom=search_context.ransom)
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _name_search(cls, board: Board, name: str) -> SearchResult[List[Square]]:
+        method = "BoardPieceSearch._name_search"
+        try:
+            matches = [square for square in board.squares if square.name.upper == name.upper()]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return BoardSquareSearch._resolve_matching_names(matches=matches, board=board)
+        except Exception as e:
+            return SearchResult(exception=e)
 
-      if search_context.piece_id is not None:
-        return TeamRosterSearch._id_search(team=team, piece_id=search_context.piece_id)
 
-      if search_context.roster_number is not None:
-        return TeamRosterSearch. _roster_number_search(team=team, roster_number=search_context.roster_number)
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _coord_search(cls, board: Board, coord: Coord) -> SearchResult[List[Square]]:
+        method = "BoardPieceSearch._coord_search"
+        try:
+            matches = [square for square in board.squares if square.coord == coord]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return BoardSquareSearch._resolve_matching_coords(matches=matches, board=board)
+        except Exception as e:
+            return SearchResult(exception=e)
 
-  @classmethod
-  def _name_search(cls, team: Team, name: str) -> SearchResult[List[Piece]]:
-      """
-      Does not guarantee uniqueness returns the first item which matches the given name.
-      """
-      method = "TeamRosterSearch._name_search"
 
-      piece = next((member for member in team.roster if member.name.upper() == name.upper()), None)
-      if piece is not None:
-          return SearchResult(payload=List[piece])
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _resolve_matching_ids(cls, matches: List[Square], board: Board) -> SearchResult[List[Square]]:
+        method = "BoardPieceSearch._resolve_matching_ids"
+        target = matches.pop()
+        misses = [square for square in matches if square.id == target.id and (
+                square.name.upper() != target.name.upper() or square.coord != target.coord
+            )
+        ]
+        if len(misses) == 0:
+            runs = len(matches) - 1
+            for square in board.squares:
+                if (
+                    square.id == target.id and
+                    square.name.upper() == target.name.upper() and
+                    square.coord == target.coord
+                ):
+                    board.squares.remove(square)
+                    matches.remove(square)
+            return SearchResult(payload=matches)
+        return SearchResult(exception=SquareSearchIdCollisionException(
+                f"{method}: {SquareSearchIdCollisionException.DEFAULT_MESSAGE}"
+            )
+        )
 
-      # returns empty old_search transaction if no match ws found
-      return SearchResult()
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _resolve_matching_names(cls, matches: List[Square], board: Board) -> SearchResult[List[Square]]:
+        method = "BoardPieceSearch._resolve_matching_names"
+        target = matches.pop()
+        misses = [square for square in matches if square.name.upper() == target.name.upper() and (
+                square.id != target.id or square.coord != target.coord
+            )
+        ]
+        if len(misses) == 0:
+            runs = len(matches) - 1
+            for square in board.squares:
+                if (
+                    square.id == target.id and
+                    square.name.upper() == target.name.upper() and
+                    square.coord == target.coord
+                ):
+                    board.squares.remove(square)
+                    matches.remove(square)
+            return SearchResult(payload=matches)
+        return SearchResult(exception=SquareSearchIdCollisionException(
+                f"{method}: {SquareSearchIdCollisionException.DEFAULT_MESSAGE}"
+            )
+        )
 
-  @classmethod
-  def _rank_filter(cls, team: Team, rank: Rank) -> SearchResult[List[Piece]]:
-      matches = [member for member in team.roster if member.rank == rank]
-      return SearchResult(payload=matches)
-
-  @classmethod
-  def _ransom_filter(cls, team: Team, ransom: int) -> SearchResult[List[Piece]]:
-      matches = [member for member in team.roster if member.rank.ransom == ransom]
-      return SearchResult(payload=matches)
-
-  @classmethod
-  def _id_search(cls, team: Team, piece_id: int) -> SearchResult[List[Piece]]:
-      """
-      IDs should be unique. Faster old_search would return the first match. An easy
-      integrity check finds all the items with the same id. If there is more than
-      one raise team `DuplicateUniqueIdException`.
-
-      Performance Impact:
-      The set of roster will never exceed 15 so this is not going to be team really
-      burdensome old_search.
-      """
-      method = "TeamRosterSearch._id_search"
-
-      piece = next((member for member in team.roster if member.id == piece_id), None)
-      if piece is not None:
-          return SearchResult(payload=List[piece])
-
-      # returns empty old_search transaction if no match ws found
-      return SearchResult()
-
-  @classmethod
-  def _roster_number_search(cls, team: Team, roster_number: int) -> SearchResult[List[Piece]]:
-      """
-      Does not guarantee uniqueness returns the first item which matches the given id.
-      """
-      method = "TeamRosterSearch._roster_number_search"
-
-      piece = next((member for member in team.roster if member.roster_number == roster_number), None)
-      if piece is not None:
-          return SearchResult(payload=List[piece])
-
-      # returns empty old_search transaction if no match ws found
-      return SearchResult()
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _resolve_matching_coords(cls, matches: List[Square], board: Board) -> SearchResult[List[Square]]:
+        method = "BoardPieceSearch._resolve_matching_coords"
+        target = matches.pop()
+        misses = [square for square in matches if square.coord == target.coord and (
+                square.name.upper() != target.name.upper() or square.id != target.id
+            )
+        ]
+        if len(misses) == 0:
+            runs = len(matches) - 1
+            for square in board.squares:
+                if (
+                    square.id == target.id and
+                    square.name.upper() == target.name.upper() and
+                    square.coord == target.coord
+                ):
+                    board.squares.remove(square)
+                    matches.remove(square)
+            return SearchResult(payload=matches)
+        return SearchResult(exception=SquareSearchIdCollisionException(
+                f"{method}: {SquareSearchIdCollisionException.DEFAULT_MESSAGE}"
+            )
+        )
+              
+          
+      
+      
+      
+    

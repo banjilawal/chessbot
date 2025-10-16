@@ -12,7 +12,7 @@ meets all required specifications before construction completes
 Usage:
   ```python
   # Safe square creation
-  build_result = SquareBuilder.build(square_id=1, name="A-1", coordinate=Coord(0, 0))
+  build_result = SquareBuilder.build(id=1, name="A-1", coordinate=Coord(0, 0))
 
   if build_result.is_success():
     square = build_result.payload
@@ -60,12 +60,12 @@ Note:
 Example:
   ```python
   # Valid square creation
-  transaction = SquareBuilder.build(square_id=1, name=black-name, schema=black_square_profile)
+  transaction = SquareBuilder.build(id=1, name=black-name, schema=black_square_profile)
   if transaction.is_success():
     square = cast(Square, transaction.payload) # Guaranteed valid Square
 
   # Null name will fail gracefully
-  transaction = SquareBuilder.build(square_id=1, name=None, schema=black_square_profile)
+  transaction = SquareBuilder.build(id=1, name=None, schema=black_square_profile)
   if not transaction.is_success():
     # Handle construction failure
     pass
@@ -91,7 +91,7 @@ Example:
 # >>>
 # >>> # Build team new Square at Coord(2, 1)
 # >>> coord = Coord(row=2, column=1)
-# >>> build_outcome = SquareBuilder.build(square_id=1, name="B2", coord=coord)
+# >>> build_outcome = SquareBuilder.build(id=1, name="B2", coord=coord)
 # >>> if not build_outcome.is_success():
 # >>>  raise build_outcome.err
 # >>> square = cast(Square, build_outcome.payload)

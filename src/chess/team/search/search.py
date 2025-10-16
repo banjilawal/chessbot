@@ -79,7 +79,7 @@ class TeamSearch(Piece):
 
   Usage:
   ```python
-    from chess.team import Team, TeamSearch
+    from chess.team import Team, BoardSearch
     from chess.piece import Piece
    ```
    

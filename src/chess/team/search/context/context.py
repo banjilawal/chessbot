@@ -55,9 +55,9 @@ From `chess.piece`:
 from typing import Optional
 
 from chess.rank import Rank
-from chess.system import SearchContext, FilterContext
+from chess.system import SearchContext
 
-class PieceSearchContext(SearchContext):
+class TeamSearchContext(SearchContext):
   """
   # ROLE: Builder implementation
 
@@ -119,6 +119,6 @@ def to_dict(self) -> dict:
     "name": self._name,
     "rank": self._rank,
     "ransom": self._ransom,
-    "piece_id": self._piece_id,
+    "id": self._piece_id,
     "roster_number": self._roster_number,
   }

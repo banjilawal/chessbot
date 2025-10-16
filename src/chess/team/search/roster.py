@@ -56,7 +56,7 @@ From `chess.piece`:
 from typing import List
 
 from chess.piece import Piece
-from chess.team import Team, PieceSearchContext, TeamValidator
+from chess.team import Team, TeamSearchContext, TeamValidator
 from chess.system import Search, SearchResult
 from chess.team.search import PieceSearchContextValidator
 
@@ -77,7 +77,7 @@ class TeamRosterSearch(Search[Team, Piece]):
   None
   """
   @classmethod
-  def search(cls, team: Team, search_context: PieceSearchContext) -> SearchResult[List[Piece]]:
+  def search(cls, team: Team, search_context: TeamSearchContext) -> SearchResult[List[Piece]]:
       method = "TeamRosterSearch.old_search"
 
       team_validation = TeamValidator.validate(team)
