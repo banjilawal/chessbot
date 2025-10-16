@@ -37,7 +37,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
       # Rollback all changes in reverse order
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -51,7 +51,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
       # Rollback all changes in reverse order
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -66,7 +66,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -82,7 +82,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -99,7 +99,7 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,

@@ -48,7 +48,6 @@ ___
 from .exception import *
 
 from chess.system.event.event import Event
-from chess.system.event.transaction import Transaction
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'

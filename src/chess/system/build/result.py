@@ -51,14 +51,14 @@ team payload of type T or an Exception, but not both. If the build operation is 
 contain the built object. If the build operation fails, the error will contain the error that
 occurred during the build process.
 
-BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team result.
+BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team transaction.
 
 Attributes:
-  _payload (Optional[T]): The payload of the result, if successful.
-  _exception (Optional[Exception]): The error of the result, if failed.
+  _payload (Optional[T]): The payload of the transaction, if successful.
+  _exception (Optional[Exception]): The error of the transaction, if failed.
 
 Methods:
-  is_success() -> bool: Returns True if the result is successful (i.e., has team payload only).
+  is_success() -> bool: Returns True if the transaction is successful (i.e., has team payload only).
 """
 
 class BuildResult(Generic[T]):
@@ -108,8 +108,8 @@ class BuildResult(Generic[T]):
     """
     Initializes team BuildResult object.
     Args:
-      payload (Optional[T]): The payload of the result, if successful.
-      exception (Optional[Exception]): The error of the result, if failed.
+      payload (Optional[T]): The payload of the transaction, if successful.
+      exception (Optional[Exception]): The error of the transaction, if failed.
     Raises:
       EmptyResultConstructorException: If neither payload nor error is provided.
       ResultPayloadConflictException: If both payload and error are provided.

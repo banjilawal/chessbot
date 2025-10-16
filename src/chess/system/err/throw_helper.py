@@ -15,7 +15,7 @@ class RaiserLogger(Enum):
 
     LogWriter.log_and_raise(context, exception_factory())
 
-    # if not result.is_success():
+    # if not transaction.is_success():
     #   LogWriter.log_and_raise(roster, exception_factory)
 
   @staticmethod

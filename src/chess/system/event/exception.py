@@ -39,14 +39,11 @@ The major theme influencing the modules design are
 See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
-from chess.system import ChessException, ResultException, ContextException
+from chess.system import ChessException
 
 
 __all__ = [
-  'EventException',
-  'TransactionException',
-  'TransactionResultException',
-  'ExecutionContextException'
+  'EventException'
 ]
 
 
@@ -59,32 +56,3 @@ class EventException(ChessException):
   """
   ERROR_CODE = "EVENT_ERROR"
   DEFAULT_MESSAGE = "Event raised an exception."
-
-class TransactionException(ChessException):
-  """
-  Super class of all exceptions `Transaction` object raises. Do not use directly. Subclasses give
-  details useful for debugging. This class exists primarily to allow catching all `Transaction`
-  exceptions.
-  """
-  ERROR_CODE = "TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "Transaction raised an exception."
-
-
-#======================# EVENT VALIDATION EXCEPTIONS #======================#
-class ExecutionContextException(ContextException):
-  """
-  Super class of all exceptions `ExecutionContext` object raises. Do not use directly. Subclasses give
-  details useful for debugging. This class exists primarily to allow catching all `ExecutionContext`
-  exceptions.
-  """
-  ERROR_CODE = "EXECUTION_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "ExecutionContext raised an exception."
-
-class TransactionResultException(ResultException):
-  """
-  Super class of all exceptions `TransactionResult` object raises. Do not use directly. Subclasses give
-  details useful for debugging. This class exists primarily to allow catching all `TransactionResult`
-  exceptions.
-  """
-  ERROR_CODE = "TRANSACTION_RESULT_ERROR"
-  DEFAULT_MESSAGE = "TransactionResult raised an exception."

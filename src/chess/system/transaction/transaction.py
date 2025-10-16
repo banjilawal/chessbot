@@ -55,49 +55,22 @@ Major themes influencing the design include:
 
 
 from abc import ABC, abstractmethod
-from enum import auto, Enum
+from typing import TypeVar
 
-from chess.system import Event, ExecutionContext, TransactionResult
+from chess.system import Event, TransactionResult
 
-
-__all__ = [
-  'Transaction',
-  'TransactionState'
-]
-
-
-class TransactionState(Enum):
-  """
-  # ROLE: Builder implementation
-
-  # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `Team` instances.
-  2. Create new `Team` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
-
-  # PROVIDES:
-  `BuildResult`: Return type containing the built `Team` or error information.
-
-  # ATTRIBUTES:
-  None
-  """
-  RUNNING = auto(),
-  SUCCESS = auto(),
-  FAILURE = auto(),
-  TIMED_OUT = auto(),
-  ROLLED_BACK = auto()
-
+X = TypeVar('X')
 
 class Transaction(ABC):
   """Base class for transaction execution handlers"""
   _event: Event
   _state: TransactionState
-  _context: ExecutionContext
+  _execution_environment: X
 
 
-  def __init__(self, event: Event, context: ExecutionContext):
+  def __init__(self, event: Event, execution_environment: X):
     self._event = event
-    self._context = context
+    self._execution_environment = execution_environment
     self._state = TransactionState.RUNNING
 
 
@@ -107,8 +80,8 @@ class Transaction(ABC):
     return self._event
 
   @property
-  def context(self) -> ExecutionContext:
-    return self._context
+  def execution_environment(self) -> X:
+    return self._execution_environment
 
   @property
   def state(self) -> TransactionState:

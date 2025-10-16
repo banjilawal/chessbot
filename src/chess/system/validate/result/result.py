@@ -1,7 +1,7 @@
-# src/chess/system/validate/result.py
+# src/chess/system/validate/transaction.py
 
 """
-Module: chess.piece.system.validate.result
+Module: chess.piece.system.validate.transaction
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10

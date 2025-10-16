@@ -74,7 +74,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       # Rollback all changes in reverse order
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -88,7 +88,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       # Rollback all changes in reverse order
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -103,7 +103,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -119,7 +119,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -136,7 +136,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -160,7 +160,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=event,
@@ -246,7 +246,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       # Rollback all changes in reverse order
       event.subject.occupant = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=event,
@@ -260,7 +260,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       actor_square.occupant = event.actor
       event.subject.occupant = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=event,
@@ -275,7 +275,7 @@ class TransferTransaction(OccupationTransaction[TransferEvent]):
       actor_square.occupant = event.actor
       event.subject.occupant = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=event,

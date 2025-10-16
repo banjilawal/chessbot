@@ -60,13 +60,13 @@ Note:
 Example:
   ```python
   # Valid square creation
-  result = SquareBuilder.build(square_id=1, name=black-name, schema=black_square_profile)
-  if result.is_success():
-    square = cast(Square, result.payload) # Guaranteed valid Square
+  transaction = SquareBuilder.build(square_id=1, name=black-name, schema=black_square_profile)
+  if transaction.is_success():
+    square = cast(Square, transaction.payload) # Guaranteed valid Square
 
   # Null name will fail gracefully
-  result = SquareBuilder.build(square_id=1, name=None, schema=black_square_profile)
-  if not result.is_success():
+  transaction = SquareBuilder.build(square_id=1, name=None, schema=black_square_profile)
+  if not transaction.is_success():
     # Handle construction failure
     pass
   ```

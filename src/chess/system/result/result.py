@@ -1,7 +1,7 @@
-# src/chess/system/result/result.py
+# src/chess/system/transaction/transaction.py
 
 """
-Module: `chess.system.old_search.result`
+Module: `chess.system.old_search.transaction`
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10
@@ -18,7 +18,7 @@ The module covers `Result` object in `ChessBot``.
 
 # SECTION 3 - Limitations:
   1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of data in the result.
+  2. The module does not guarantee the accuracy or precision of data in the transaction.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -81,21 +81,29 @@ class Result(Generic[T]):
   def exception(self) -> Optional[Exception]:
     return self._exception
 
+
   def is_success(self) -> bool:
-    """
-    # ACTION:
-    Confirm the data access or data  generation was successful.
-
-    # PARAMETERS:
-      No parameters
-
-    # RETURNS:
-      `bool`
-
-    RAISES:
-      No exception raised.
-    """
     return self._exception is None and self._payload is not None
+
+
+  def is_failure(self) -> bool:
+    return self._exception is not None
+
+  def is_empty(self) -> bool:
+    return self._payload is None and self._exception is None
+
+  @classmethod
+  def success(cls, payload: T) -> 'Result[T]':
+    return cls(payload=payload)
+
+  @classmethod
+  def failure(cls, exception: Exception) -> 'Result[T]':
+    return cls(exception=exception)
+
+  @classmethod
+  def empty(cls) -> 'Result[T]':
+    return cls()
+
 
 
 

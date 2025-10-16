@@ -42,7 +42,7 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 """
 
 """
-Result exceptions are about `Result` construction not the contents of the result. A `ResultException` is
+Result exceptions are about `Result` construction not the contents of the transaction. A `ResultException` is
 raised by `Builder` objects.
 """
 

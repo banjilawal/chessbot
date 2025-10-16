@@ -108,11 +108,11 @@ class ScalarValidator(Validator[Generic[T]]):
 
 
 # def main():
-#   result = ScalarSpecification.is_satisfied_by(Scalar(3))
-#   if result.is_success():
-#     print(f"Scalar is valid: {result.payload}")
+#   transaction = ScalarSpecification.is_satisfied_by(Scalar(3))
+#   if transaction.is_success():
+#     print(f"Scalar is valid: {transaction.payload}")
 #   else:
-#     print(f"Scalar is invalid: {result.team_exception}")
+#     print(f"Scalar is invalid: {transaction.team_exception}")
 #
 # if __name__ == "__main__":
 #   main()

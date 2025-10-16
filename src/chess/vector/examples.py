@@ -221,11 +221,11 @@ Example:
 # Example:
 # ```python
 # # Validate an existing vector
-# result = VectorValidator.validate(some_vector)
+# transaction = VectorValidator.validate(some_vector)
 
 
-# if result.is_success():
-#     validated_vector = result.payload
+# if transaction.is_success():
+#     validated_vector = transaction.payload
 # else:
 #     # Handle validate failure
 #     pass

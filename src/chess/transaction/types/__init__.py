@@ -7,7 +7,7 @@
 # └── transaction/
 #   ├── event/
 #   │  ├── __init__.py
-#   │  ├── result.py
+#   │  ├── transaction.py
 #   │  ├── validator.py
 #   │  ├── event.py
 #   │  ├── err.py
@@ -15,20 +15,20 @@
 #   │
 #   ├── promote/
 #   │  ├── __init__.py
-#   │  ├── result.py
+#   │  ├── transaction.py
 #   │  ├── validator.py
 #   │  ├── event.py
 #   │  └── err.py
 #   │
 #   ├── castling/
 #   │  ├── __init__.py
-#   │  ├── result.py
+#   │  ├── transaction.py
 #   │  ├── validator.py
 #   │  └── err.py
 #   │
 #   └── enemy/
 #     ├── __init__.py
-#     ├── result.py
+#     ├── transaction.py
 #     ├── validator.py
 #     ├── event.py
 #     └── err.py

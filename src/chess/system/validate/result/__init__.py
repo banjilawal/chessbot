@@ -1,4 +1,4 @@
-# chess/system/validate/result/__init__.py
+# chess/system/validate/transaction/__init__.py
 
 """
 Module: chess.system.validate

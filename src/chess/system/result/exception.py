@@ -1,7 +1,7 @@
-# src/chess/system/result/exception.py
+# src/chess/system/transaction/exception.py
 
 """
-Module: chess.system.result.exception
+Module: chess.system.transaction.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

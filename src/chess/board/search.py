@@ -59,7 +59,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty old_search result
+      # Return empty old_search transaction
       return SearchResult()
 
     except Exception as e:
@@ -83,7 +83,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty old_search result
+      # Return empty old_search transaction
       return SearchResult()
 
     except Exception as e:
@@ -108,7 +108,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty old_search result
+      # Return empty old_search transaction
       return SearchResult()
 
     except Exception as e:
@@ -158,7 +158,7 @@ class BoardSearch:
       if square is not None:
         return SearchResult(payload=square)
 
-      # returns empty old_search result
+      # returns empty old_search transaction
       return SearchResult()
 
     except Exception as e:
@@ -190,7 +190,7 @@ class BoardSearch:
       if square:
         return SearchResult(payload=square)
 
-      # Return empty old_search result
+      # Return empty old_search transaction
       return SearchResult()
 
     except Exception as e:

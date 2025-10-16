@@ -83,7 +83,7 @@ class ImpossibleFatalResultException(SearchException):
   """
   DEFAULT_CODE = "IMPOSSIBLE_FATAL_RESULT_ERROR"
   DEFAULT_MESSAGE = (
-    "The old_search result should be impossible. The result "
+    "The old_search transaction should be impossible. The transaction "
     "indicates team major data inconsistency or system error"
   )
 

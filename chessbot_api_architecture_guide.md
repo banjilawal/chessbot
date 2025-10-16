@@ -138,6 +138,9 @@ from its use or inability to use it.
 ## Introduction
 <a name="purpose-of-chessbot"></a>
 ### Purpose of ChessBot
+ChessBot A High Performance In-Memory Chess Engine Intelligent Agent with Transactional Move Orchestration
+, Centralize Validation and Reactive Notifications
+
 ChesBot's teaching engine helps a novice who might feel intimidated by chess into a a 
 confident, experienced player willing to take on everyone. ChessBot speeds up the learning curve
 with different engines of different complexities. For each person's experience.

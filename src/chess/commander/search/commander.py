@@ -46,7 +46,7 @@ class CommanderSearch:
       if team is not None:
         return SearchResult(payload=team)
 
-      # returns empty old_search result
+      # returns empty old_search transaction
       return SearchResult()
 
     except Exception as e:

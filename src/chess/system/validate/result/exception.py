@@ -1,7 +1,7 @@
-# src/chess/system/validate/result/exception.py
+# src/chess/system/validate/transaction/exception.py
 
 """
-Module: chess.system.validate.result.exception
+Module: chess.system.validate.transaction.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

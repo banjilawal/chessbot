@@ -115,7 +115,7 @@ class DiscoverySearch(Search[Discovery]):
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty old_search result if no match ws found
+      # returns empty old_search transaction if no match ws found
       return SearchResult()
 
   @classmethod
@@ -145,5 +145,5 @@ class DiscoverySearch(Search[Discovery]):
       if hit is not None:
           return SearchResult(payload=List[hit])
 
-      # returns empty old_search result if no match ws found
+      # returns empty old_search transaction if no match ws found
       return SearchResult()

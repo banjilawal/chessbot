@@ -115,7 +115,7 @@ class TeamHostageSearch(Search):
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty old_search result if no match ws found
+      # returns empty old_search transaction if no match ws found
       return SearchResult()
 
   @classmethod
@@ -145,7 +145,7 @@ class TeamHostageSearch(Search):
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty old_search result if no match ws found
+      # returns empty old_search transaction if no match ws found
       return SearchResult()
 
   @classmethod
@@ -159,5 +159,5 @@ class TeamHostageSearch(Search):
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty old_search result if no match ws found
+      # returns empty old_search transaction if no match ws found
       return SearchResult()

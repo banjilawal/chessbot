@@ -129,7 +129,7 @@ class CoordValidator(Validator):
       if coordinate.column >= COLUMN_SIZE:
         raise ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
 
-      # Return the result if checks passed
+      # Return the transaction if checks passed
       return Result(payload=coordinate)
 
     except (

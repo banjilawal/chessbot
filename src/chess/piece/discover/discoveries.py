@@ -75,7 +75,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty old_search result
+      # returns empty old_search transaction
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)
@@ -97,7 +97,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty old_search result
+      # returns empty old_search transaction
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)
@@ -116,7 +116,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty old_search result
+      # returns empty old_search transaction
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)

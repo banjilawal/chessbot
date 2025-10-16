@@ -1,4 +1,4 @@
-# src/chess/piece/event/result.py
+# src/chess/piece/event/transaction.py
 
 """
 Module: chess.piece.event.transaction
@@ -240,7 +240,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       # Rollback all changes in reverse order
       directive.subject.occupant = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
@@ -254,7 +254,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       actor_square.occupant = directive.actor
       directive.subject.occupant = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
@@ -269,7 +269,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       actor_square.occupant = directive.actor
       directive.subject.occupant = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
@@ -346,7 +346,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       # Rollback all changes in reverse order
       directive.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
@@ -359,7 +359,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       # Rollback all changes in reverse order
       directive.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
@@ -375,7 +375,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       directive.enemy.team.add_to_roster(directive.enemy)
       directive.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
@@ -392,7 +392,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       directive.enemy.team.add_to_roster(directive.enemy)
       directive.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
@@ -408,7 +408,7 @@ class TravelTransaction(Transaction[TravelEvent]):
       directive.enemy.team.add_to_roster(directive.enemy)
       directive.enemy.captor = None
 
-      # Send the result indicating rollback
+      # Send the transaction indicating rollback
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
