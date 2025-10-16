@@ -55,13 +55,13 @@ Major themes influencing the design include:
 
 
 from abc import ABC, abstractmethod
-from typing import TypeVar
+from typing import TypeVar, Generic
 
-from chess.system import Event, TransactionResult
+from chess.system import Event, TransactionResult, TransactionState
 
 X = TypeVar('X')
 
-class Transaction(ABC):
+class Transaction(ABC, Generic[X]):
   """Base class for transaction execution handlers"""
   _event: Event
   _state: TransactionState
@@ -70,10 +70,8 @@ class Transaction(ABC):
 
   def __init__(self, event: Event, execution_environment: X):
     self._event = event
-    self._execution_environment = execution_environment
     self._state = TransactionState.RUNNING
-
-
+    self._execution_environment = execution_environment
 
   @property
   def event(self) -> Event:

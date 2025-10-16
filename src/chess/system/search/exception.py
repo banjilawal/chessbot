@@ -51,7 +51,19 @@ from chess.system import ChessException
 __all__ = [
   'SearchException',
   'SearchParamException',
-  'ImpossibleFatalResultException'
+  'ImpossibleFatalResultException',
+
+#======================# SEARCH_COLLISION EXCEPTIONS #======================#
+  'SearchCollisionException',
+  'PieceSearchIdCollisionException',
+  'PieceSearchNameCollisionException',
+  'PieceSearchCoordCollisionException',
+
+  'SquareSearchIdCollisionException',
+  'SquareSearchNameCollisionException',
+  'SquareSearchCoordCollisionException',
+
+  'TeamSearchIdCollisionException'
 ]
 
 class SearchException(ChessException):
@@ -87,6 +99,57 @@ class ImpossibleFatalResultException(SearchException):
     "indicates team major data inconsistency or system error"
   )
 
+#======================# SEARCH_COLLISION EXCEPTIONS #======================#
+class SearchCollisionException(SearchException):
+  DEFAULT_CODE = "SEARCH_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one entity had a property that should be unique. There"
+    " may be a data inconsistency."
+  )
+
+class PieceSearchNameCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "PIECE_SEARCH_NAME_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Piece found with the same name. There may be a data inconsistency."
+)
+
+class PieceSearchIdCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "PIECE_SEARCH_ID_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Piece found with the same id. There may be a data inconsistency."
+  )
+
+class PieceSearchCoordCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "PIECE_SEARCH_COORD_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Piece found at the same coordinate. There may be a data inconsistency."
+  )
+
+
+class SquareSearchIdCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Square found with the same id. There may be a data inconsistency."
+  )
+
+
+class SquareSearchNameCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Square found with the same name. There may be a data collision"
+  )
+
+class SquareSearchCoordCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "SQUARE_SEARCH_COORD_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Square found at the same coordinate. There may be a data inconsistency."
+  )
+
+class TeamSearchIdCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Team found with the same name. There may be a data inconsistency."
+  )
 
 
 

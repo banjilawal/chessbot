@@ -47,7 +47,7 @@ The major theme influencing the modules design are
 
 from typing import Optional, cast
 
-from chess.system import Event, TransactionState, Result, RollbackException
+from chess.system import Event, Result, RollbackException, TransactionState
 
 
 class TransactionResult(Result):
@@ -107,14 +107,11 @@ class TransactionResult(Result):
       self._transaction_state == TransactionState.SUCCESS
     )
 
-
-
   def is_failure(self) -> bool:
     return (self.exception is not None and
         self._transaction_state == TransactionState.FAILURE or
         self._transaction_state == TransactionState.ROLLED_BACK
     )
-
 
   def is_rolled_back(self) -> bool:
     return self.exception is not None and self._transaction_state == TransactionState.ROLLED_BACK
@@ -122,7 +119,6 @@ class TransactionResult(Result):
 
   def is_timed_out(self) -> bool:
     return self.exception is not None and self._transaction_state == TransactionState.TIMED_OUT
-
 
   @classmethod
   def success(cls, event_update):
@@ -135,78 +131,3 @@ class TransactionResult(Result):
   @classmethod
   def rolled_back(cls, event_update: Event, exception: RollbackException):
     return cls(event_update, TransactionState.ROLLED_BACK, exception)
-
-  #
-  # def is_processing(self) -> bool:
-  #   method = f"{self.__class__.__name__}.is_processing"
-  #   """True if transaction still processing, has not changed state"""
-  #
-  #   return self._event_update is None and self._exception is None and not self._was_rolled_back
-  #
-  #
-  # def is_failed(self) -> bool:
-  #   method = f"{self.__class__.__name__}.is_failed"
-  #   """True if raised an exception before the state changed"""
-  #
-  #   return not (self._exception is None and self._was_rolled_back)
-  #
-  #
-  # @classmethod
-  # def success(cls, outcome_id: int, request: Action, event: Event) -> 'TransactionResult':
-  #   method = f"{cls.__class__.__name__}.success"
-  #   """Create team successful outcome"""
-  #
-  #   return cls(
-  #     op_result_id=outcome_id,
-  #     request=request,
-  #     event=event,
-  #     err=None,
-  #     was_rolled_back=False
-  #   )
-  #
-  #
-  # @classmethod
-  # def processing(cls, outcome_id: int, request: Action) -> 'TransactionResult':
-  #   method = f"{cls.__class__.__name__}.processing"
-  #
-  #   """Create team processing outcome"""
-  #   return cls(
-  #     op_result_id=outcome_id,
-  #     request=request,
-  #     event=None,
-  #     err=None,
-  #     was_rolled_back=False
-  #   )
-  #
-  #
-  # @classmethod
-  # def failed(cls, outcome_id: int, request: Action, err: Exception) -> 'TransactionResult':
-  #   method = f"{cls.__class__.__name__}.failed"
-  #   """Create team failed outcome"""
-  #
-  #   return cls(
-  #     op_result_id=outcome_id,
-  #     request=request,
-  #     event=None,
-  #     err=err,
-  #     was_rolled_back=False
-  #   )
-  #
-  #
-  # @classmethod
-  # def roll_back(cls, outcome_id: int, request: Action, event: Event) -> 'TransactionResult':
-  #   method = f"{cls.__class__.__name__}.rolled_back"
-  #   """Create team rolled back outcome"""
-  #
-  #   return cls(
-  #     op_result_id=outcome_id,
-  #     request=request,
-  #     event=event,
-  #     err=None,
-  #     was_rolled_back=True
-  #   )
-
-
-
-
-

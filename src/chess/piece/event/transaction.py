@@ -17,8 +17,7 @@ Created: 2025-09-28
 from typing import cast
 
 
-from chess.piece import TravelEvent, Piece, PieceValidator
-from chess.system import Transaction, TransactionResult, ExecutionContext, TransactionState, LoggingLevelRouter, \
+from chess.system import Transaction, TransactionResult, TransactionState, LoggingLevelRouter, \
   SearchResult
 
 from chess.square import Square
@@ -54,7 +53,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   """
   @classmethod
   @LoggingLevelRouter.monitor
-  def execute(cls, event: TravelEvent, context: ExecutionContext) -> TransactionResult:
+  def execute(cls, event: TravelEvent, execution_environment: Board) -> TransactionResult:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires

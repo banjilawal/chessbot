@@ -20,6 +20,7 @@ from .emitter import *
 from .build import *
 from .err import *
 from .validate import *
+from .transaction import *
 
 from .color import GameColor
 
@@ -46,6 +47,7 @@ __all__ = [
   *exception.__all__,
   *emitter.__all__,
   *config.__all__,
+  *transaction.__all__,
 
   # Package metadata and utilities
   '__version__',
