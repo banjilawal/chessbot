@@ -47,7 +47,7 @@ The major theme influencing the modules design are
 
 from typing import Optional, cast
 
-from chess.system import Event, TransactionState, Result
+from chess.system import Event, TransactionState, Result, RollbackException
 
 
 class TransactionResult(Result):
@@ -102,17 +102,14 @@ class TransactionResult(Result):
     return self._transaction_state
 
   def is_success(self) -> bool:
-    """"""
-    method = "TransactionResult.is_success"
-
     return (
-      self.exception is None and
-      (self.payload is not None and self._transaction_state == TransactionState.SUCCESS)
+      self.exception is None and self.payload is not None and
+      self._transaction_state == TransactionState.SUCCESS
     )
 
 
+
   def is_failure(self) -> bool:
-    """"""
     return (self.exception is not None and
         self._transaction_state == TransactionState.FAILURE or
         self._transaction_state == TransactionState.ROLLED_BACK
@@ -120,12 +117,24 @@ class TransactionResult(Result):
 
 
   def is_rolled_back(self) -> bool:
-    """"""
     return self.exception is not None and self._transaction_state == TransactionState.ROLLED_BACK
 
 
   def is_timed_out(self) -> bool:
     return self.exception is not None and self._transaction_state == TransactionState.TIMED_OUT
+
+
+  @classmethod
+  def success(cls, event_update):
+    return cls(event_update, TransactionState.SUCCESS)
+
+  @classmethod
+  def failed(cls, event_update: Event, exception: Exception):
+    return cls(event_update, TransactionState.FAILURE, exception)
+
+  @classmethod
+  def rolled_back(cls, event_update: Event, exception: RollbackException):
+    return cls(event_update, TransactionState.ROLLED_BACK, exception)
 
   #
   # def is_processing(self) -> bool:

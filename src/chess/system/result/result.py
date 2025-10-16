@@ -71,20 +71,16 @@ class Result(Generic[T]):
     self._payload = payload
     self._exception = exception
 
-
   @property
   def payload(self) -> Optional[T]:
     return self._payload
-
 
   @property
   def exception(self) -> Optional[Exception]:
     return self._exception
 
-
   def is_success(self) -> bool:
     return self._exception is None and self._payload is not None
-
 
   def is_failure(self) -> bool:
     return self._exception is not None

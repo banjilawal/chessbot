@@ -10,6 +10,8 @@ version: 1.0.0
 
 from .exception import *
 
+from .context import ExecutionContext
+
 from .state import TransactionState
 from .transaction import Transaction
 from .result import TransactionResult
