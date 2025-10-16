@@ -11,8 +11,8 @@ SCOPE:
 This module is strictly limited to constructing `SearchResult` instances safely.
 
 **It does not** contain logic or rules for creating `TravelEvent` or
-`OccupationTransaction`. Those are handled by `OccupationEventBuilder` before
-execution,`OccupationTransaction` during execution.
+`TravelTransaction`. Those are handled by `OccupationEventBuilder` before
+execution,`TravelTransaction` during execution.
 
 **It does not** ensure existing `SearchResult` instances are valid. That is done
 by the `SearchResultValidator`.

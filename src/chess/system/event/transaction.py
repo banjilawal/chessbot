@@ -55,7 +55,7 @@ Major themes influencing the design include:
 
 
 from abc import ABC, abstractmethod
-from enum import auto
+from enum import auto, Enum
 
 from chess.system import Event, ExecutionContext, TransactionResult
 
@@ -66,7 +66,7 @@ __all__ = [
 ]
 
 
-class TransactionState:
+class TransactionState(Enum):
   """
   # ROLE: Builder implementation
 
@@ -81,10 +81,10 @@ class TransactionState:
   # ATTRIBUTES:
   None
   """
-  RUNNING = auto()
-  SUCCESS = auto()
-  FAILURE = auto()
-  TIMED_OUT = auto()
+  RUNNING = auto(),
+  SUCCESS = auto(),
+  FAILURE = auto(),
+  TIMED_OUT = auto(),
   ROLLED_BACK = auto()
 
 

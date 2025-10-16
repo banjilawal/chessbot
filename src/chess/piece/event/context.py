@@ -59,7 +59,7 @@ from typing import Optional
 
 from chess.board import Board
 from chess.piece import Piece
-from chess.event import ExecutionContext
+from chess.system import ExecutionContext
 
 
 class TravelContext(ExecutionContext):
@@ -77,7 +77,7 @@ class TravelContext(ExecutionContext):
   """
   """
   Additional dependencies an `TravelEvent` passes to an
-  `OccupationTransaction` apart from the `actor` and `resource`.
+  `TravelTransaction` apart from the `actor` and `resource`.
 
   Attributes:
     `_board (`Board)`:

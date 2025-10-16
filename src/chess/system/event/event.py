@@ -78,25 +78,21 @@ class Event(Generic[A, R]):
     * `_actor` (`A`): The entity requesting the event.
     * `_resource` (`R`): entity being manipulated by the `actor`.
     * `_parent` (`Event`): The parent event of this event.
-    * `_context` (`ExecutionContext`): Context of the `Event`.
   """
 
   _actor: A
   _resource: Optional[R]
   _parent: Optional['Event']
-  _context: ExecutionContext
 
   def __init__(
     self,
     actor: A,
-    context: ExecutionContext,
     resource: Optional[R]=None,
     parent: Optional['Event']=None,
   ):
     self._actor = actor
     self._parent = parent
     self._resource = resource
-    self._context = context
 
   @property
   def actor(self) -> A:
@@ -109,10 +105,6 @@ class Event(Generic[A, R]):
   @property
   def parent(self) -> Optional['Event']:
     return self._parent
-
-  @property
-  def context(self) -> ExecutionContext:
-    return self._context
 
 
   def __eq__(self, other):

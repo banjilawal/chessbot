@@ -10,20 +10,23 @@ Created: 2025-09-28
 # PURPOSE:
 # DEPENDENCIES:
 # CONTAINS:
- * `OccupationTransaction`
+ * `TravelTransaction`
 """
 
 
 from typing import cast
 
-from chess.system import id_emitter
+
+from chess.piece import TravelEvent, Piece, PieceValidator
+from chess.system import Transaction, TransactionResult, ExecutionContext, TransactionState, LoggingLevelRouter, \
+  SearchResult
 
 from chess.square import Square
 from chess.commander.search import BoardSearch
-from chess.piece import KingPiece, CombatantPiece, Discovery, DiscoveryBuilder
-from chess.team import AddEnemyHostageRolledBackException
+
+from chess.team import AddEnemyHostageRolledBackException, Datasource
 from chess.team.exception import RemoveTeamMemberRolledBackException
-from chess.transaction import Transaction, ExecutionContext, TransactionResult, CaptureContext
+
 
 from chess.transaction import AttackValidator
 from chess.piece.event import (
@@ -37,7 +40,7 @@ from chess.piece.event import (
 )
 
 
-class OccupationTransaction(Transaction[TravelEvent]):
+class TravelTransaction(Transaction[TravelEvent]):
   """
   Implements the `OccupationExecutor` class, which handles executing event
   directives in the chess engine. This includes moving pieces, capturing enemies,
@@ -49,8 +52,9 @@ class OccupationTransaction(Transaction[TravelEvent]):
     * `_run_scan`: Static method for handling discoveries on occupied squares.
     * `_switch_squares`: Static method the transferring team piece to team different `Square`.
   """
-  @staticmethod
-  def execute(event: TravelEvent, context: ExecutionContext) -> TransactionResult:
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def execute(cls, event: TravelEvent, context: ExecutionContext) -> TransactionResult:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -71,14 +75,81 @@ class OccupationTransaction(Transaction[TravelEvent]):
         * `IdNullException`: if candidate is null
         * `NegativeIdException`: if candidate is negative `
     """
-    method = "OccupationExecutor.execute_directive"
-    op_result_id = id_emitter.op_result_id
+    method = "TravelTransaction.execute"
 
-    validation = OccupationEventValidator.validate(event)
-    if not validation.is_success():
-      return TransactionResult(op_result_id, event, validation.exception)
+    event_validation = TravelEventValidator.validate(event)
+    if not event_validation.is_success():
+      return TransactionResult(
+        event_update=event,
+        transaction_state=TransactionState.FAILURE,
+        exception=event_validation.exception
+      )
 
-    search_result = BoardSearch.square_by_coord(coord=event.actor.current_position, board=context.board)
+    actor_square_search = BoardSearch.search(
+      board=context.board,
+      data_source=BoardDatasource.SQUARE,
+      context=BoardSearchcontext(coord=event.actor.current_position)
+    )
+
+    if not actor_square_search.is_success():
+      return TransactionResult(
+        event_update=event,
+        transaction_state=TransactionState.FAILURE,
+        exception=actor_square_search.exception
+      )
+
+    destination_search = BoardSearch.search(
+      board=context.board,
+      data_source=BoardDatasource.SQUARE,
+      context=BoardSearchcontext(event.destination_square.id)
+    )
+    if not destination_search.is_success():
+      return TransactionResult(exception=EventResourceNotFoundExeception(
+          f"{method}: {DestinationSquareNotFoundException.DEFAULT_MESSAGE}"
+        # EventResourceNotFoundException
+        )
+      )
+
+    if len(destination_search.payload) > 1:
+      return TransactionResult(exception=DestinationSquareColiisonException(
+          f"{method}: {DestinationSquareCollisionException.DEFAULT_MESSAGE}"
+        )
+      )
+
+    destination_occupant = event.destination_square.occupant
+    actor_square = BoardSearch.search()
+
+    if destination_occupant is None:
+      build_result = OccupationEventBuilder.build(
+        parent=event,
+        actor=event.actor,
+        actor_square=actor_square,
+        destination_square=event.destination_square
+      )
+      if not build_result.is_success():
+        return TransactionResult(exception=build_result.exception)
+      return
+
+    if isinstance(destination_occupant.rank, King) or (not event.actor.is_enemy(destination_occupant):
+      build_result = ScanEventBuilder(
+
+      )
+      if not build_result.is_success():
+        return TransactionResult(exception=build_result.exception)
+      return OccupationTransacti()
+
+
+    )
+
+
+
+
+
+
+
+
+
+    TravelTransactionsearch_result = BoardSearch.square_by_coord(coord=event.actor.current_position, board=context.board)
     if search_result.exception is not None:
       return TransactionResult(op_result_id, event, search_result.exception)
 
@@ -91,14 +162,14 @@ class OccupationTransaction(Transaction[TravelEvent]):
     actor_square = cast(Square, search_result.payload)
 
     if event.subject.occupant is None:
-      return OccupationTransaction._switch_squares(op_result_id, event, actor_square)
+      return TravelTransaction._switch_squares(op_result_id, event, actor_square)
 
     actor = event.actor
     destination_occupant = event.subject.occupant
     if not actor.is_enemy(destination_occupant) or (
       actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
     ):
-      return OccupationTransaction._run_scan(
+      return TravelTransaction._run_scan(
         op_result_id=op_result_id,
         directive=ScanDirective(
           actor=event.actor,
@@ -117,7 +188,7 @@ class OccupationTransaction(Transaction[TravelEvent]):
       return TransactionResult(op_result_id, event, attack_validation.exception)
 
     enemy_combatant = cast(CombatantPiece, attack_validation.payload.enemy)
-    return OccupationTransaction._attack_enemy(
+    return TravelTransaction._attack_enemy(
       op_result_id=op_result_id,
       directive=AttackDirective(
         board=context.board,
@@ -129,12 +200,16 @@ class OccupationTransaction(Transaction[TravelEvent]):
         destination_square=event.subject
       )
 
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def _search_board_for_square(cls, square: Square, board: Board) -> SearchResult[List[Square]]:
 
-  @staticmethod
+
+  @staticmethod)
   def _switch_squares(op_result_id: int, directive: TravelEvent, actor_square: Square) -> TransactionResult:
     """
     Transfers `Piece` occupying`actor_square` to `directive.destination_square` leaving `actor_square` empty.
-    `OccupationExecutor.execute_directive` is the single entry point to `_switch_squares`. Before `_switch_squares`
+    `Traveltransaction.execute` is the single entry point to `_switch_squares`. Before `_switch_squares`
     was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
     `directive.destination_square` contained either
       * A friendly piece blocking `actor` from `destination_square`
@@ -213,7 +288,7 @@ class OccupationTransaction(Transaction[TravelEvent]):
     """
     Creates team new `Discovery` object for directive.actor which is blocked from moving to
     `destination_square` by `directive.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
-    `OccupationExecutor.execute_directive` is the single entry point to `_run_scan`. Validations, error chains
+    `Traveltransaction.execute` is the single entry point to `_run_scan`. Validations, error chains
     confirmed parameters ar are correct. No additional sanity checks are needed.
 
     Args
@@ -343,5 +418,5 @@ class OccupationTransaction(Transaction[TravelEvent]):
         )
       )
 
-    return OccupationTransaction._switch_squares(op_result_id, directive, directive.actor_square)
+    return TravelTransaction._switch_squares(op_result_id, directive, directive.actor_square)
 

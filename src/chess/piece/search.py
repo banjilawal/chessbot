@@ -55,14 +55,13 @@ From `chess.piece`:
 
 from typing import List
 
-from chess.piece import Piece, PieceValidator, Discovery
-from chess.piece import Piece, PieceSearchContext, PieceValidator
 from chess.rank import Rank
-from chess.system import Search, SearchResult
-from chess.piece.search import PieceSearchContextValidator
+from chess.piece import Piece, PieceValidator, Discovery
+from chess.system import Search, SearchResult, LoggingLevelRouter
+from chess.team import PieceSearchContext, PieceSearchContextValidator
 
 
-class DiscoverySearch(Search):
+class DiscoverySearch(Search[Discovery]):
   """
   # ROLE: Builder implementation
 
@@ -78,6 +77,7 @@ class DiscoverySearch(Search):
   None
   """
   @classmethod
+  @LoggingLevelRouter.monitor
   def search(cls, piece: Piece, search_context: PieceSearchContext) -> SearchResult[List[Discovery]]:
       method = "DiscoverySearch.search"
 
@@ -105,7 +105,7 @@ class DiscoverySearch(Search):
         return DiscoverySearch. _roster_number_search(piece=piece, roster_number=search_context.roster_number)
 
   @classmethod
-  def _name_search(cls, piece: Piece, name: str) -> SearchResult[List[Piece]]:
+  def _name_search(cls, piece: Piece, name: str) -> SearchResult[List[Discovery]]:
       """
       Does not guarantee uniqueness returns the first item which matches the given name.
       """

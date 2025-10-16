@@ -14,7 +14,7 @@ execution, and rollback for event-related operations (move, scan, attack, occupy
 This package exposes core classes and all exceptions from its sub-modules:
   - `TravelEvent`
   - `TravelContext`
-  - `OccupationTransaction`
+  - `TravelTransaction`
   - `OccupationEventValidator`
   - `OccupationEventBuilder`
   - All exports from `scan`, `attack`, `promote`, and `occupy` packages.
@@ -79,7 +79,7 @@ from .exception import *
 from .event import TravelEvent
 from .context import TravelContext
 from .builder import OccupationEventBuilder
-from .transaction import OccupationTransaction
+from .transaction import TravelTransaction
 from .validator import OccupationEventValidator
 
 # Package metadata (organic to __init__.py)
@@ -92,7 +92,7 @@ __all__ = [
   # Core classes
   'TravelEvent',
   'OccupationEventBuilder',
-  'OccupationTransaction',
+  'TravelTransaction',
   'OccupationEventValidator',
 
   *scan.__all__,
