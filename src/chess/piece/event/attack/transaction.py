@@ -14,18 +14,19 @@ Notes:
 """
 
 from chess.board import FailedPieceRemovalRolledBackException
+from chess.piece import TravelTransaction
 from chess.system import ExecutionContext, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
 from chess.piece.event.attack.exception import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
-from chess.piece.event.occupy.transaction import LogEncounterTransaction
+from chess.piece.event.occupation.transaction import OccupationTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 
-class AttackTransaction(OccupationTransaction[AttackEvent]):
+class AttackTransaction(TravelTransaction[AttackEvent]):
 
   @staticmethod
-  def execute(event: AttackEvent, context: ExecutionContext) -> TransactionResult:
+  def execute(event: AttackEvent) -> TransactionResult:
     method = "AttackTransaction.execute"
 
     validation = AttackEventValidator.validate(event)
@@ -114,6 +115,6 @@ class AttackTransaction(OccupationTransaction[AttackEvent]):
       event_id=id_emitter.attack_id,
       actor_square=event.actor_square
     )
-    return LogEncounterTransaction.execute(transfer_event, context)
+    return OccupationTransaction.execute(transfer_event, context)
 
 

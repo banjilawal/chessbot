@@ -109,7 +109,7 @@ class ObsoleteChessBoard:
   #   # 3. Get the squares
   #   square_to_leave = self.find_square(captor.current_coordinate())
   #   destination = self.find_square(destination)
-  #   destination.occupy(captor)
+  #   destination.occupation(captor)
   #   square_to_leave.leave(captor)
 
 

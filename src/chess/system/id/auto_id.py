@@ -67,7 +67,7 @@ class AutoId:
     None
     """
 
-    def __init__(self, start: int=1, add_hash_eq: bool=True):
+    def __init__(self, start: int = 1, add_hash_eq: bool = True) -> object:
         """
 
         """

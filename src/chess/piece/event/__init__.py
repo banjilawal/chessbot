@@ -8,7 +8,7 @@ Version: 1.0.1
 
 # Purpose
 Manages `Piece` movement and state changes on the `Board`. Provides team unified interface for event creation, validate,
-execution, and rollback for event-related operations (move, encounter, attack, occupy)
+execution, and rollback for event-related operations (move, encounter, attack, occupation)
 
 # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
@@ -17,15 +17,15 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `TravelEventBuilder`
   - `OccupationEventValidator`
   - `OccupationEventBuilder`
-  - All exports from `encounter`, `attack`, `promote`, and `occupy` packages.
-  - All exceptions from `er`, `encounter`, `attack`, and `occupy` sub-packages.
+  - All exports from `encounter`, `attack`, `promotion`, and `occupation` packages.
+  - All exceptions from `er`, `encounter`, `attack`, and `occupation` sub-packages.
 
 # SUB-PACKAGES
   - `.attack`: Logic for capturing.
-  - `.promote`: Logic for promoting kings and pawns.
+  - `.promotion`: Logic for promoting kings and pawns.
   - `.exception`: Defines all custom exceptions for event operations.
   - `.encounter`: Logic for recording occupied squares in team piece's path.
-  - `.occupy`: Logic for transferring team piece to another empty square.
+  - `.occupation`: Logic for transferring team piece to another empty square.
 
 # NOTES
 DO NOT reference subpackages or submodules directly. Import all subpackages and submodules from the
@@ -46,7 +46,7 @@ PURPOSE:
 EXCEPTIONS:
   DoubleCoordPushException: Move to current position
   EncounteringSelfException: Piece encounters itself
-  DoublePromotionException: Multiple promote attempts
+  DoublePromotionException: Multiple promotion attempts
   PrisonerEscapeException: Captured enemy tries to move
   PrisonerReleaseException: Error releasing prisoner
   PieceCoordNullException: Piece coordinate is null
@@ -72,8 +72,8 @@ ___
 
 from .encounter import *
 from .attack import *
-from .occupy import *
-from .promote import *
+from .occupation import *
+from .promotion import *
 from .exception import *
 
 from .event import TravelEvent
@@ -97,8 +97,8 @@ __all__ = [
 
   *encounter.__all__,
   *attack.__all__,
-  *occupy.__all__,
-  *promote.__all__,
+  *occupation.__all__,
+  *promotion.__all__,
 
   *exception.__all__,
 

@@ -48,7 +48,7 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
     subclass instance that is null.
   * `NullKingPieceException`: Raised when team `kingPiece` reference is null
   * `NullCombatantPieceException`: Raised when team `CombatantPiece` is null.
-  * `DoublePromotionException`: Raised if there is an attempt to promote team king or pawn that has already been
+  * `DoublePromotionException`: Raised if there is an attempt to promotion team king or pawn that has already been
     promoted.
 
 #### PIECE VALIDATION EXCEPTIONS

@@ -55,7 +55,7 @@ class Square:
   # ROLE: Data-Holding
 
   # RESPONSIBILITIES:
-  1. Provides a space `Piece` objects can occupy.
+  1. Provides a space `Piece` objects can occupation.
 
   # PROVIDES:
   None

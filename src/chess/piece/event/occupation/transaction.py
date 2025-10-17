@@ -39,10 +39,10 @@ from chess.piece.event import (
 )
 
 
-class LogEncounterTransaction(OccupationTransaction[TransferEvent]):
+class OccupationTransaction(OccupationTransaction[TransferEvent]):
 
   @staticmethod
-  def execute(event: TransferEvent, context: ExecutionContext) -> TransactionResult:
+  def execute(event: OccupationEvent) -> TransactionResult:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -214,11 +214,11 @@ class LogEncounterTransaction(OccupationTransaction[TransferEvent]):
   @staticmethod
   def _switch_squares(op_result_id: int, event: TravelEvent, actor_square: Square) -> TransactionResult:
     """
-    Transfers `Piece` occupying`actor_square` to `event.destination_square` leaving `actor_square` empty.
+    Transfers `Piece` occupying`actor_square` to `event.subject_square` leaving `actor_square` empty.
     `OccupationExecutor.execute_event` is the single entry point to `_switch_squares`. Before `_switch_squares`
     was called `execute_event`: validated the parameters, handled exceptions, and confirmed
-    `event.destination_square` contained either
-      * A friendly piece blocking `actor` from `destination_square`
+    `event.subject_square` contained either
+      * A friendly piece blocking `actor` from `subject_square`
       * An enemy king. Kings cannot be captured, only checked or checkmated.
 
     Args:
@@ -293,7 +293,7 @@ class LogEncounterTransaction(OccupationTransaction[TransferEvent]):
   def _run_scan(op_result_id :int, event: ScanEvent) -> TransactionResult:
     """
     Creates team new `Discovery` object for event.actor which is blocked from moving to
-    `destination_square` by `event.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
+    `subject_square` by `event.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
     `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, error chains
     confirmed parameters ar are correct. No additional sanity checks are needed.
 

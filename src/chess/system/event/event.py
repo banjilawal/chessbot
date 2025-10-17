@@ -62,8 +62,8 @@ A = TypeVar('A') # Actor Type
 R = TypeVar('R') # Resource Type
 X = TypeVar('X')
 
-@AutoId
-class Event(Generic[A, R]):
+
+class Event(Generic[A, R, X]):
   """
   # ROLE: State Management, Data Transport, Abstract Data Type
 
@@ -77,12 +77,13 @@ class Event(Generic[A, R]):
 
   Attributes:
     * `_actor` (`A`): The entity requesting the event.
-    * `_resource` (`R`): entity being manipulated by the `actor`.
+    * `__resource` (`R`): Component `actor` needs to change system state.
     * `_parent` (`Event`): The parent event of this event.
+    * `_execution_environment` (`X`): The domain `actor` and `resource` are in where the state change will happen
   """
-
+  id: int
   _actor: A
-  _resource: Optional[R]
+  __resource: Optional[R]
   _parent: Optional['Event']
   _execution_environment: X
 
@@ -95,7 +96,7 @@ class Event(Generic[A, R]):
   ):
     self._actor = actor
     self._parent = parent
-    self._resource = resource
+    self.__destination_square = resource
     self._execution_environment = execution_environment
 
   @property
@@ -104,7 +105,8 @@ class Event(Generic[A, R]):
 
   @property
   def resource(self) -> Optional[R]:
-    return self._resource
+    return self.__destination_square
+
 
   @property
   def parent(self) -> Optional['Event']:

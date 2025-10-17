@@ -41,9 +41,9 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 `NullCoordException`, `RowAboveBoundsException`).
 """
 
-from chess.event import EventException, EventBuilderException
-from chess.exception import ValidationException, NullException, BuilderException
 
+from chess.system import EventException, NullException, BuildFailedException, ValidationException, ResourceException, \
+  InconsistencyException
 
 #
 # __all__ = [
@@ -97,56 +97,105 @@ __all__ = [
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
   'InvalidTravelEventException',
   'NullTravelEventException',
-  'CircularTravelException',
-  'TargetSquareMismatchException',
+  'AutoTravelPieceException',
+  'TravelEventResourceNotFoundException',
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
-  'TravelEventBuilderException'
-  
-  # 'HostageValidationEventException',
-  # 'NullHostagePieceEventException',
-  # 'InvalidTravelEventException',
-  # 'TravelSearchEventException',
+  'TravelEventBuildFailedException',
+
+# ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
+  'TravelActorMovingException',
+  'ActorNotOnRosterCannotMoveException',
+  'ActorNotOnBoardCannotMoveException',
+  'CapturedActorCannotMoveException'
 ]
+
+
 
 class TravelEventException(EventException):
   ERROR_CODE = "TRAVEL_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "An error was raised while executing the square event"
+  DEFAULT_MESSAGE = "TravelEvent raised an exception."
 
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
 class NullTravelEventException(TravelEventException, NullException):
   ERROR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent cannot be null"
+  DEFAULT_MESSAGE = "TravelEvent cannot be null."
 
 class InvalidTravelEventException(TravelEventException, ValidationException):
-  """TravelEvent validate failure."""
   ERROR_CODE = "TRAVEL_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent failed validate"
 
-class CircularTravelException(TravelEventException):
-  ERROR_CODE = "CIRCULAR_TRAVEL_ERROR"
-  DEFAULT_MESSAGE = "Piece is already occupying the destination square"
-
-class TargetSquareMismatchException(TravelEventException):
-  """
-  Raised if team target's square does not match. destination_square
-  """
-  ERROR_CODE = "TARGET_SQUARE_MISMATCH_ERROR"
-  DEFAULT_MESSAGE = "Target piece is at team different square from expected."
-
-class ActorSquareNotFoundException(TravelEventException):
-  ERROR_CODE = "ACTOR_SQUARE_NOT_FOUND_ERROR"
+class TravelEventActorNotFoundException(TravelEventException, ResourceException):
+  ERROR_CODE = "TRAVEL_EVENT_ACTOR_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "The validated actor with team current could not find its square in BoardSearch"
+    "TravelEvent Actor (piece) was not found during the board search."
+  )
+
+class EventActorSquareNotFoundException(TravelEventException, InconsistencyException):
+  """
+  Raised if team target's square does not match. subject_square
+  """
+  ERROR_CODE = "EVENT_ACTOR_SQUARE_NOT_FOUND_ERROR"
+  DEFAULT_MESSAGE = (
+    "BoardSearch did not find a square occupied by TravelEvent actor. There may be a data inconsistency."
+  )
+
+class TravelEventResourceNotFoundException(TravelEventException, ResourceException):
+  ERROR_CODE = "TRAVEL_EVENT_RESOURCE_NOT_FOUND_ERROR"
+  DEFAULT_MESSAGE = (
+    "TravelEvent resource (the destination_square) was not found during the board search."
   )
 
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
-class TravelEventBuilderException(TravelEventException, BuilderException):
+class TravelEventBuildFailedException(TravelEventException, BuildFailedException):
+  """
+  Indicates TravelEvent could not be built. Wraps and re-raises errors that occurred
+  during build.
+  """
   ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "TravelEventBuilder failed."
+  DEFAULT_MESSAGE = "TravelEvent build failed."
+
+class OccupationEventBuildFailedException(TravelEventBuildFailedException):
+  """
+  Indicates OccupationEvent could not be built. Wraps and re-raises errors that occurred
+  during build.
+  """
+  ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
+  DEFAULT_MESSAGE = "OccupationEvent build failed."
 
 
+# ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
+class TravelActorMovingException(TravelEventException):
+  """
+  Indicates TravelEvent could not be built. Wraps and re-raises errors that occurred
+  during build.
+  """
+  ERROR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
+  DEFAULT_MESSAGE = "TravelEvent Actor raised a moving violation."
+
+class ActorNotOnRosterCannotMoveException(TravelActorMovingException):
+  """"""
+  ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
+  DEFAULT_MESSAGE = "TravelEvent Actor is not on their team's roster. Actor cannot travel."
+
+class ActorNotOnBoardCannotMoveException(TravelActorMovingException):
+  """"""
+  ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
+  DEFAULT_MESSAGE = (
+    "TravelEvent Actor is not on the board. It position history is empty. Actor cannot travel."
+  )
+
+class CapturedActorCannotMoveException(TravelActorMovingException):
+  """"""
+  ERROR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
+  DEFAULT_MESSAGE = "TravelEvent Actor has been captured by the enemy. Actor cannot travel."
+
+class AutoTravelPieceException(TravelActorMovingException):
+  ERROR_CODE = "AUTO_TRAVEL_ERROR"
+  DEFAULT_MESSAGE = (
+    "Piece is already at the destination. Cannot travel to a square you are already occupying"
+  )
 #
 #
 #

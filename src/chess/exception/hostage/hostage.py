@@ -193,7 +193,7 @@ class AttackingFriendlyException(HostageException):
 class DoublePromotionException(HostageException):
   """
   If team hostage with validate in [Pawn, King] has been promoted to Queen, DoublePromotionException
-  is raised if there is team second attempt to promote the chess hostage.
+  is raised if there is team second attempt to promotion the chess hostage.
   """
 
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"

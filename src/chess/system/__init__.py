@@ -19,6 +19,7 @@ from .search import *
 from .emitter import *
 from .build import *
 from .err import *
+from .logging import *
 from .validate import *
 from .transaction import *
 
@@ -44,7 +45,8 @@ __all__ = [
   *search.__all__,
   *build.__all__,
   *validate.__all__,
-  *exception.__all__,
+  *err.__all__,
+  *logging.__all__,
   *emitter.__all__,
   *config.__all__,
   *transaction.__all__,

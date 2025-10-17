@@ -28,7 +28,8 @@ from typing import Optional, cast
 
 from chess.rank import Rank
 from chess.coord import Coord
-from chess.system import IdValidator, NameValidator, InvalidNameException, InvalidIdException
+from chess.system import IdValidator, NameValidator, InvalidNameException, InvalidIdException, AutoId, \
+  LoggingLevelRouter
 from chess.piece import CoordStack, Discovery, DiscoveryBuilder, Discoveries, PieceValidator, AutoDiscoveryException
 from chess.team import Team, TeamValidator, InvalidTeamException
 
@@ -39,7 +40,7 @@ __all__ = [
 ]
 
 
-
+@AutoId
 class Piece(ABC):
   """An abstract base class representing team single chess discover.
 
@@ -58,17 +59,17 @@ class Piece(ABC):
     _positions (CoordStack): A stack of the discover's historical coordinates.
   """
 
-  _id: int
+  id: int
   _name: str
   _team: Team
   _rank: Rank
-  _captor: 'Piece'
   _roster_number: int
   _current_position: Coord
   _discoveries: Discoveries
   _positions: CoordStack
 
-  def __init__(self, piece_id: int, name: str, rank: Rank, team: Team):
+  @LoggingLevelRouter.monitor
+  def __init__(self, name: str, rank: Rank, team: Team):
     """Initializes team Piece instance.
 
     Args:
@@ -84,29 +85,33 @@ class Piece(ABC):
     """
 
     method = "Piece.__init__"
+    #
+    # id_validation = IdValidator.validate(piece_id)
+    # if not id_validation.is_success():
+    #   raise InvalidIdException(f"Piece.__init__: {InvalidIdException.DEFAULT_MESSAGE}")
+    #
+    # name_validation = NameValidator.validate(name)
+    # if not name_validation.is_success():
+    #   raise InvalidNameException(
+    #     f"Piece.__init__: {InvalidNameException.DEFAULT_MESSAGE}"
+    #   )
+    #
+    # team_validation = TeamValidator.validate(team)
+    # if not team_validation.is_success():
+    #   raise InvalidTeamException(f"Piece.__init__: {InvalidTeamException.DEFAULT_MESSAGE}")
+    #
+    # team = cast(Team, team_validation.payload)
 
-    id_validation = IdValidator.validate(piece_id)
-    if not id_validation.is_success():
-      raise InvalidIdException(f"Piece.__init__: {InvalidIdException.DEFAULT_MESSAGE}")
+    # self._id = cast(int, id_validation.payload)
+    # self._name = cast(str, name_validation.payload)
+    # self._rank = rank
+    #
+    # self._roster_number = len(team.roster) + 1
+    # self._team = team
 
-    name_validation = NameValidator.validate(name)
-    if not name_validation.is_success():
-      raise InvalidNameException(
-        f"Piece.__init__: {InvalidNameException.DEFAULT_MESSAGE}"
-      )
-
-    team_validation = TeamValidator.validate(team)
-    if not team_validation.is_success():
-      raise InvalidTeamException(f"Piece.__init__: {InvalidTeamException.DEFAULT_MESSAGE}")
-
-    team = cast(Team, team_validation.payload)
-
-    self._id = cast(int, id_validation.payload)
-    self._name = cast(str, name_validation.payload)
-    self._rank = rank
-
-    self._roster_number = len(team.roster) + 1
+    self._name = name
     self._team = team
+    self._rank = rank
 
     self._discoveries = Discoveries()
     self._positions = CoordStack()
@@ -116,51 +121,44 @@ class Piece(ABC):
       team.add_to_roster(self)
 
 
-  @property
-  def id(self) -> int:
-    """The unique ID of the discover."""
-    return self._id
+  # @property
+  # def id(self) -> int:
+  #   """The unique ID of the discover."""
+  #   return self._id
 
 
   @property
   def name(self) -> str:
-    """The name of the discover."""
     return self._name
 
 
   @property
   def roster_number(self) -> int:
-    """The piece's number on its team's roster."""
     return self._roster_number
 
 
   @property
   def team(self) -> 'Team':
-    """The team the piece belongs to."""
     return self._team
 
 
   @property
   def rank(self) -> 'Rank':
-    """The rank that defines the piece's movement strategy."""
     return self._rank
 
 
   @property
   def positions(self) -> CoordStack:
-    """A stack of the piece's historical coordinates."""
     return self._positions
 
 
   @property
   def current_position(self) -> Optional[Coord]:
-    """The current coordinate of the piece."""
     return self._positions.current_coord
 
 
   @property
   def discoveries(self) -> Discoveries:
-    """A log of items the piece discovered when the piece is scanning the board or moving."""
     return self._discoveries
 
 
@@ -170,7 +168,7 @@ class Piece(ABC):
       return True
     if not isinstance(other, Piece):
       return NotImplemented
-    return self._id == other.id
+    return self.id == other.id
 
 
   def __hash__(self) -> int:
@@ -192,11 +190,6 @@ class Piece(ABC):
       NullPieceException: If the provided discover is `None`.
     """
     method = "Piece.is_enemy"
-
-    validation = PieceValidator.validate(piece)
-    if not validation.is_success():
-      raise validation.exception
-
     return self._team != piece.team
 
 
@@ -243,8 +236,8 @@ class KingPiece(Piece):
   _is_checked: bool
   _is_checkmated: bool
 
-  def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
-    super().__init__(piece_id, name, rank, team)
+  def __init__(self,name: str, rank: 'Rank', team: 'Team'):
+    super().__init__(name, rank, team)
     self._is_checked = False
     self._is_checkmated = False
 
@@ -280,8 +273,8 @@ class KingPiece(Piece):
 class CombatantPiece(Piece):
   _captor: Optional[Piece]
 
-  def __init__(self, piece_id: int, name: str, rank: 'Rank', team: 'Team'):
-    super().__init__(piece_id, name, rank, team)
+  def __init__(self, name: str, rank: 'Rank', team: 'Team'):
+    super().__init__(name, rank, team)
     self._captor = None
 
 
@@ -292,14 +285,6 @@ class CombatantPiece(Piece):
 
   @captor.setter
   def captor(self, captor: Piece):
-    method = "Captor.@setter.captor"
-
-    if captor is None:
-      raise SetCaptorNullException(f"{method}: {SetCaptorNullException.DEFAULT_MESSAGE}")
-
-    if self._captor is not None:
-      raise PrisonerReleaseException(f"{method}: {PrisonerReleaseException.DEFAULT_MESSAGE}")
-
     self._captor = captor
 
 

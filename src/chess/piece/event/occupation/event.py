@@ -11,13 +11,6 @@ class OccupationEvent(TravelEvent):
   _actor_square: Square
 
 
-  _actor: Piece
-  _parent: Event
-  _resource: Square
-  _actor_square: Square
-  _context: TravelContext
-
-  @AutoId
   @LoggingLevelRouter.monitor
   def __init__(
       self,
@@ -44,5 +37,5 @@ class OccupationEvent(TravelEvent):
   def __eq__(self, other):
     if super().__eq__(other):
       if isinstance(other, OccupationEvent):
-        return self._id == other.id
+        return self.id == other.id
     return False

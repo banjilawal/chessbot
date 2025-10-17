@@ -39,6 +39,7 @@ The major theme influencing the modules design are
 See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
+
 # src/chess/vector/exception.py
 
 """
@@ -87,7 +88,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.exception import ChessException, ValidationException, NullException, BuilderException, RollbackException
+from chess.system import ChessException,  ValidationException, NullException, BuilderException, RollbackException
 
 __all__ = [
   'PieceException',

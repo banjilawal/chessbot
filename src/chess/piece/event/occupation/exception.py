@@ -129,7 +129,7 @@ class ScanTransactionException(TransactionException):
   the encounter's lifecycle.
   """
   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "ScanTransaction raised an exception."
+  DEFAULT_MESSAGE = "OccupationTransaction raised an exception."
 
 
 
@@ -206,7 +206,7 @@ class BoardPieceRemovalRollbackException(AttackEventException, RollbackException
 
 class SquareOccupationRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "SQUARE_OCCUPATION_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to occupy target square after capture; rollback executed."
+  DEFAULT_MESSAGE = "Failed to occupation target square after capture; rollback executed."
 
 
 class SourceSquareRollbackException(AttackEventException, RollbackException):

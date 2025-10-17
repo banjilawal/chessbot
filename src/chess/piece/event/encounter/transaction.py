@@ -4,11 +4,11 @@ Author: Banji Lawal
 Created: 2025-10-01
 
 Purpose:
-  Implements the `ScanTransaction` class, responsible for managing the creation and recording of
+  Implements the `OccupationTransaction` class, responsible for managing the creation and recording of
   team `Discovery` inside team `Square` by an actor.
 
 Contents:
-  - `ScanTransaction:` Main class responsible for executing event directives.
+  - `OccupationTransaction:` Main class responsible for executing event directives.
 
 Notes:
   This module is part of the chess.event.event.encounter package.
@@ -17,17 +17,17 @@ Notes:
 
 from typing import cast
 
-from chess.piece import Discovery, DiscoveryBuilder
+from chess.piece import Discovery, DiscoveryBuilder, EncounterEvent
 from chess.system import ExecutionContext, TransactionResult
 from chess.piece.discover.exception import AddingValidDiscoveryFailedException
 from chess.event import (
   ScanEvent, OccupationTransaction, ScanTransactionException, OccupationEventException, ScanEventValidator
 )
 
-class ScanTransaction(OccupationTransaction[ScanEvent]):
+class LogEncounterTransaction(OccupationTransaction[EncounterEvent]):
 
   @staticmethod
-  def execute(event: ScanEvent, context: ExecutionContext) -> TransactionResult:
+  def execute(event: EncounterEvent) -> TransactionResult:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -48,7 +48,7 @@ class ScanTransaction(OccupationTransaction[ScanEvent]):
         * `IdNullException`: if candidate is null
         * `NegativeIdException`: if candidate is negative `
     """
-    method = "ScanTransaction.execute"
+    method = "OccupationTransaction.execute"
 
     try:
       validation = ScanEventValidator.validate(event, context)

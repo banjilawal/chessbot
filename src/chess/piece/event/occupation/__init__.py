@@ -1,7 +1,7 @@
 # chess/event/event/exchange__init__.py
 
 """
-Module: `chess.event.event.occupy`
+Module: `chess.event.event.occupation`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -33,7 +33,7 @@ PURPOSE:
 EXCEPTIONS:
   DoubleCoordPushException: Move to current position
   EncounteringSelfException: Piece encounters itself
-  DoublePromotionException: Multiple promote attempts
+  DoublePromotionException: Multiple promotion attempts
   PrisonerEscapeException: Captured enemy tries to move
   PrisonerReleaseException: Error releasing prisoner
   PieceCoordNullException: Piece coordinate is null
@@ -63,7 +63,7 @@ AUTHOR: Banji Lawal
 from .exception import *
 from .event import OccupationEvent
 from .builder import TransferEventBuilder
-from .transaction import LogEncounterTransaction
+from .transaction import OccupationTransaction
 from .validator import TransferEventValidator
 
 
@@ -71,7 +71,7 @@ from .validator import TransferEventValidator
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.event.event.occupy"
+__package_name__ = "chess.event.event.occupation"
 
 
 # Export control - only what belongs in public API

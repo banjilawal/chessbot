@@ -142,7 +142,7 @@ class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
 #======================# PROMOTION_TRANSACTION EXCEPTIONS #======================#  
 class PromotionTransactionException(TransactionException):
   """
-  Wraps any errors raised during the promote's lifecycle.
+  Wraps any errors raised during the promotion's lifecycle.
   """
   ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "PromotionTransaction raised an exception."

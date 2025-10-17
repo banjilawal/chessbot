@@ -112,15 +112,15 @@ class ScanTransactionException(TransactionException):
   the encounter's lifecycle.
   """
   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "ScanTransaction raised an exception."
+  DEFAULT_MESSAGE = "OccupationTransaction raised an exception."
 
 class NullScanTransactionException(NullTransactionException):
   """
-  Raised by methods, entities, and models that require team ScanTransaction
+  Raised by methods, entities, and models that require team OccupationTransaction
   but receive team null.
   """
   ERROR_CODE = "NULL_SCAN_TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "ScanTransaction cannot be null."
+  DEFAULT_MESSAGE = "OccupationTransaction cannot be null."
 
 
 #=== SCAN_EVENT EXCEPTIONS #======================#  

@@ -89,8 +89,12 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 """
 __all__ = [
   'ChessException',
+
 #======================# ROLL_BACK EXCEPTIONS #======================#  
   'RollbackException',
+
+# ======================# STARVATION EXCEPTIONS #======================#
+  'ResourceException',
 
 #======================# INCONSISTENCY EXCEPTIONS #======================#  
   'InconsistencyException',
@@ -135,6 +139,12 @@ class RollbackException(ChessException):
 class RollbackFailedException(RollbackException):
   ERROR_CODE = "ROLLBACK_FAILED_ERROR"
   DEFAULT_MESSAGE = "Rollback failed."
+
+
+# ======================# STARVATION EXCEPTIONS #======================#
+class ResourceException(ChessException):
+  ERROR_CODE = "RESOURCE_ERROR"
+  DEFAULT_MESSAGE = "Resource raised an exception."
 
 
 #======================# INCONSISTENCY EXCEPTIONS #======================#  

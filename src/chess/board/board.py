@@ -34,7 +34,7 @@ if TYPE_CHECKING:
 class Board:
   """
   THe realm where game play happens. Provides mapping of `Square` to `Piece` with Coord.
-  Keeps track of pieces and the squares hey can occupy.
+  Keeps track of pieces and the squares hey can occupation.
 
   Attributes:
     _pieces (List[Piece]): pieces on the board

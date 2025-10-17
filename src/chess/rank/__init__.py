@@ -43,7 +43,7 @@ True
 ---
 
 ## PURPOSE
-This package defines specific exceptions for issues encountered during team discover's movement or promote
+This package defines specific exceptions for issues encountered during team discover's movement or promotion
 validate. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
 exact nature of the err, such as an invalid move for team specific discover type. Each team_exception acts as team
 wrapper for underlying errors, providing team clean and consistent API for handling movement-related failures.

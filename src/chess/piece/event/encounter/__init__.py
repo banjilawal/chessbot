@@ -7,17 +7,17 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## PURPOSE:
-Executes team `ScanTransaction` after `EncounterEvent` is validated
+Executes team `OccupationTransaction` after `EncounterEvent` is validated
 
 ## CORE CLASSES:
   * `EncounterEvent`: Provides information about an `actor` scanning team `enemy` `Piece`.
   * `ScanEventBuilder`: Builds team new `EncounterEvent`.
   * `ScanEventValidator`: Validates an existing `EncounterEvent`.
-  * `ScanTransaction`: Performs the encounter operation for the observing `Piece`
+  * `OccupationTransaction`: Performs the encounter operation for the observing `Piece`
 
 USAGE:
 ```python
-from chess.event.event import EncounterEvent, ScanTransaction
+from chess.event.event import EncounterEvent, OccupationTransaction
 ```
 ---
 
@@ -41,7 +41,7 @@ AUTHOR: Banji Lawal
 from .exception import *
 from .event import EncounterEvent
 from .builder import ScanEventBuilder
-from .transaction import ScanTransaction
+from .transaction import LogEncounterTransaction
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
@@ -55,7 +55,7 @@ __all__ = [
   'EncounterEvent',
   'ScanEventBuilder',
   'ScanEventValidator',
-  'ScanTransaction',
+  'LogEncounterTransaction',
 
   # Exception classes
   *exception.__all__,

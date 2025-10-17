@@ -22,22 +22,8 @@ from chess.piece import Piece, TravelContext
 from chess.system import Event, AutoId, LoggingLevelRouter
 
 
-@AutoId
+
 class TravelEvent(Event[Piece,Square, Board]):
-  """
-  Details for executing an `TravelEventBuilder`.
-
-  Attributes:
-    * `_actor` (`Piece`)
-    * `_parent` (`Event`)
-    * `_resource` (`Square`)
-    * `_context` (`TravelContext`)
-  """
-
-  _actor: Piece
-  _parent: Event
-  _resource: Square
-  _execution_environment: Board
 
   @LoggingLevelRouter.monitor
   def __init__(
@@ -47,17 +33,12 @@ class TravelEvent(Event[Piece,Square, Board]):
       execution_environment: Board,
       parent: Optional[Event]=None
   ):
-    """
-    Constructor for TravelEvent
-
-    Attributes:
-      * `actor` (`Piece`):
-      * `destination_square` (`Square`):
-      * `parent` (`Event`):
-      * `roster` (`TravelContext`):
-    """
-
-    super().__init__(actor=actor, resource=destination_square, parent=parent, execution_environment=execution_environment)
+    super().__init__(
+      actor=actor,
+      resource=destination_square,
+      parent=parent,
+      execution_environment=execution_environment
+    )
 
 
   @property
