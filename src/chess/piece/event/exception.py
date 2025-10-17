@@ -97,7 +97,8 @@ __all__ = [
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
   'InvalidTravelEventException',
   'NullTravelEventException',
-  'AutoTravelPieceException',
+  'TravelEventActorNotFoundException',
+  'EventActorSquareNotFoundException',
   'TravelEventResourceNotFoundException',
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
@@ -107,7 +108,8 @@ __all__ = [
   'TravelActorMovingException',
   'ActorNotOnRosterCannotMoveException',
   'ActorNotOnBoardCannotMoveException',
-  'CapturedActorCannotMoveException'
+  'CapturedActorCannotMoveException',
+  'AutoTravelPieceException',
 ]
 
 
