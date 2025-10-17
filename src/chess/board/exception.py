@@ -56,6 +56,7 @@ __all__ = [
   'NullBoardException',
   'BoardNullPieceCollectionException',
   'BoardNullSquareCollectionException',
+  'InvalidBoardException',
 
 #====================== BOARD BUILD EXCEPTIONS #======================#  
   'BoardBuildFailedException',
