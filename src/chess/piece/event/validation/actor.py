@@ -5,7 +5,7 @@ Module: chess.piece.event.transaction
 Author: Banji Lawal
 Created: 2025-09-28
 """
-
+from chess.board.validator import BoardValidator
 from chess.square import Square
 from chess.system import LoggingLevelRouter, ValidationResult, ActorValidator
 from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext
@@ -37,6 +37,10 @@ class TravelActorValidator(ActorValidator[Piece, Board, Square]):
     method = "TravelActorValidator.validate"
 
     try:
+      board_validation = BoardValidator.validate(board)
+      if board_validation.is_failure():
+        return ValidationResult(exception=board_validation.exception)
+
       #========= Actor Sanity Checks =========#
       piece_validation = PieceValidator.validate(actor)
       if piece_validation.is_failure():
