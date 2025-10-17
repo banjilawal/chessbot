@@ -25,7 +25,7 @@ complexities of the build process into team utility from the `Piece` constructor
 PURPOSE:
 -------
 To execute validated `TravelEvent` directives by orchestrating the necessary
-state changes across the board, pieces, and teams. It serves as the **engine
+state changes across the board_candidate, pieces, and teams. It serves as the **engine
 layer responsible for persistent state modification** based on accepted moves.
 
 DEPENDENCIES:

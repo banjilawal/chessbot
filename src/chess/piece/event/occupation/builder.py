@@ -59,9 +59,9 @@ class TransferEventBuilder(Enum):
 
     Args:
       `event_id`(`int`): The unique id for the attackEvent. Must pass `IdValidator` checks.
-      `actor`(`Piece`): Initiates attack after successful validate`.
-      `enemy`(`Piece`): The `Piece` attackned by `actor`.
-      `roster`(`ExecutionContext`): `roster.board` verifies `actor` and `enemy` are on the board.
+      `actor_candidate`(`Piece`): Initiates attack after successful validate`.
+      `enemy`(`Piece`): The `Piece` attackned by `actor_candidate`.
+      `roster`(`ExecutionContext`): `roster.board_candidate` verifies `actor_candidate` and `enemy` are on the board_candidate.
 
     Returns:
       BuildResult[AttackEvent]: A `BuildResult` containing either:
@@ -105,7 +105,7 @@ class TransferEventBuilder(Enum):
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: AttackEvent actor failed validate")
+        raise InvalidPieceException(f"{method}: AttackEvent actor_candidate failed validate")
 
       enemy_validation = PieceValidator.validate(enemy)
       if not enemy_validation.is_success():

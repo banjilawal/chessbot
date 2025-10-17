@@ -218,13 +218,13 @@ class OccupationTransaction(OccupationTransaction[TransferEvent]):
     `OccupationExecutor.execute_event` is the single entry point to `_switch_squares`. Before `_switch_squares`
     was called `execute_event`: validated the parameters, handled exceptions, and confirmed
     `event.subject_square` contained either
-      * A friendly piece blocking `actor` from `subject_square`
+      * A friendly piece blocking `actor_candidate` from `subject_square`
       * An enemy king. Kings cannot be captured, only checked or checkmated.
 
     Args:
       - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
       - `event` (`TravelEvent`): The `TravelEvent` to be executed.
-      - `actor_square` (`Square`): The `Square` occupied by `actor`.
+      - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
 
     Returns:
     `OccupationResult` containing:
@@ -292,7 +292,7 @@ class OccupationTransaction(OccupationTransaction[TransferEvent]):
   @staticmethod
   def _run_scan(op_result_id :int, event: ScanEvent) -> TransactionResult:
     """
-    Creates team new `Discovery` object for event.actor which is blocked from moving to
+    Creates team new `Discovery` object for event.actor_candidate which is blocked from moving to
     `subject_square` by `event.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
     `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, error chains
     confirmed parameters ar are correct. No additional sanity checks are needed.
@@ -303,8 +303,8 @@ class OccupationTransaction(OccupationTransaction[TransferEvent]):
 
     Returns:
     `OccupationResult` containing:
-      - On success: A new `EncounterEvent` object that containing updated `actor`. Observer will have
-        team new `Discovery` instance inside `actor.discoveries`.
+      - On success: A new `EncounterEvent` object that containing updated `actor_candidate`. Observer will have
+        team new `Discovery` instance inside `actor_candidate.discoveries`.
       - On failure: The original `EncounterEvent` for verifying any rollbacks succeeded and the err
         describing the failure.
 

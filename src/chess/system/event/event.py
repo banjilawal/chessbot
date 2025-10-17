@@ -77,9 +77,9 @@ class Event(Generic[A, R, X]):
 
   Attributes:
     * `_actor` (`A`): The entity requesting the event.
-    * `__resource` (`R`): Component `actor` needs to change system state.
+    * `__resource` (`R`): Component `actor_candidate` needs to change system state.
     * `_parent` (`Event`): The parent event of this event.
-    * `_execution_environment` (`X`): The domain `actor` and `resource` are in where the state change will happen
+    * `_execution_environment` (`X`): The domain `actor_candidate` and `resource` are in where the state change will happen
   """
   id: int
   _actor: A

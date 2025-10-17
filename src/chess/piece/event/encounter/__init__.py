@@ -10,7 +10,7 @@ version: 1.0.0
 Executes team `OccupationTransaction` after `EncounterEvent` is validated
 
 ## CORE CLASSES:
-  * `EncounterEvent`: Provides information about an `actor` scanning team `enemy` `Piece`.
+  * `EncounterEvent`: Provides information about an `actor_candidate` scanning team `enemy` `Piece`.
   * `ScanEventBuilder`: Builds team new `EncounterEvent`.
   * `ScanEventValidator`: Validates an existing `EncounterEvent`.
   * `OccupationTransaction`: Performs the encounter operation for the observing `Piece`
@@ -27,7 +27,7 @@ Gives granular information about errors that occur during encounter operations.
   * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
   * `NullEncounterEventException`: Raised by methods, entities, and models that require team EncounterEvent but receive team null
   * `OccupationOccupationScanSubjectException`: Raised if team enemy of team encounter is invalid.
-  * `ObserverCircularScanException`: Raised if an actor scans itself.
+  * `ObserverCircularScanException`: Raised if an actor_candidate scans itself.
 
 ### EXCEPTION USAGE:
 ```python

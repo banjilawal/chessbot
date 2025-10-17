@@ -8,11 +8,11 @@ version: 1.0.0
 
 # PURPOSE
 A package providing an immutable hierarchy for events and transactions manging event lifecycle. An event is
- an object representing an intent to perform team state-changing operation with team resource by an actor.
+ an object representing an intent to perform team state-changing operation with team resource by an actor_candidate.
  Each event lifecycle is managed by team `Transaction` instance.
 
  ACID transactions are team functional requirement for the chess game. The `Transaction` class rolls back actors
- and resources if there is team data inconsistency team `RollBackException` is raised after `actor` and `resource` are
+ and resources if there is team data inconsistency team `RollBackException` is raised after `actor_candidate` and `resource` are
  restored to their last good state.
 
  # EXPORTS

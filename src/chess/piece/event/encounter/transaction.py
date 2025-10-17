@@ -5,7 +5,7 @@ Created: 2025-10-01
 
 Purpose:
   Implements the `OccupationTransaction` class, responsible for managing the creation and recording of
-  team `Discovery` inside team `Square` by an actor.
+  team `Discovery` inside team `Square` by an actor_candidate.
 
 Contents:
   - `OccupationTransaction:` Main class responsible for executing event directives.

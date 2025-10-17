@@ -1,7 +1,7 @@
-# chess/board/board.py
+# chess/board_candidate/board_candidate.py
 
 """
-Module: `chess.board.board`
+Module: `chess.board_candidate.board_candidate`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -37,7 +37,7 @@ class Board:
   Keeps track of pieces and the squares hey can occupation.
 
   Attributes:
-    _pieces (List[Piece]): pieces on the board
+    _pieces (List[Piece]): pieces on the board_candidate
     _squares (List[List[Square]]): 8x8 array of Square objects representing the chess chessboard.
   """
   _pieces: [Piece]
@@ -61,7 +61,7 @@ class Board:
 
   @property
   def squares(self) -> List[Square]:
-    """Flatten the 2D board into team 1D list of squares for efficient searching."""
+    """Flatten the 2D board_candidate into team 1D list of squares for efficient searching."""
     return [square for row in self._squares for square in row]
 
 
@@ -151,20 +151,20 @@ class Board:
     method = f"{self.__class__.__name__}.remove_captured_piece"
 
     """
-    Remove team captured discover from the board after it has been:
+    Remove team captured discover from the board_candidate after it has been:
       - Processed by the captor
       - Removed from its' team's roster
       - Added to its' enemy's hostages
       
     Args:
-      hostage (CombatantPiece): captured CombatantPiece to remove from the board
+      hostage (CombatantPiece): captured CombatantPiece to remove from the board_candidate
       
     Returns:
     
     Raises:
       HostageValidationException: if the hostage fails sanity checks
-      PieceNotFoundException: if the hostage does not exist on the board
-      InconsistentBoardException: If hostage is still on the board after is was removed.
+      PieceNotFoundException: if the hostage does not exist on the board_candidate
+      InconsistentBoardException: If hostage is still on the board_candidate after is was removed.
       
       BoardPieceRemovalFailedException wraps any preceding team_exception
     """

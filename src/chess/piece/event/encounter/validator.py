@@ -36,7 +36,7 @@ class EncounterEventValidator(Validator[EncounterEvent]):
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: EncounterEvent actor failed validate")
+        raise InvalidPieceException(f"{method}: EncounterEvent actor_candidate failed validate")
 
       subject_validation = PieceValidator.validate(event.subject)
       if not subject_validation.is_success():
@@ -100,7 +100,7 @@ class EncounterEventValidator(Validator[EncounterEvent]):
     Validates an EncounterEvent meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is team valid chess enemy
+      - `actor_candidate` is team valid chess enemy
       - `target` is team valid square
     Any validate failure raises an `InvalidScanEventException`.
 
@@ -116,7 +116,7 @@ class EncounterEventValidator(Validator[EncounterEvent]):
       `NullEncounterEventException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
-      `PieceValidationException`: if `actor` fails validator
+      `PieceValidationException`: if `actor_candidate` fails validator
       `InvalidSquareException`: if `target` fails validator
 
       `AutoOccupationException`: if target already occupies the square

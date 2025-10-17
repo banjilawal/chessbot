@@ -1,7 +1,7 @@
-# chess/board/board/square_iterator.py
+# chess/board_candidate/board_candidate/square_iterator.py
 
 """
-Module: `chess.board.square_iterator`
+Module: `chess.board_candidate.square_iterator`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

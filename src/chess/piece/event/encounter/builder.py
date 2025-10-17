@@ -75,9 +75,9 @@ class ScanEventBuilder(Enum):
 
     Args:
       `event_id`(`int`): The unique id for the scanEvent. Must pass `IdValidator` checks.
-      `actor`(`Piece`): Initiates encounter after successful validate`.
-      `enemy`(`Piece`): The `Piece` scanned by `actor`.
-      `roster`(`ExecutionContext`): `roster.board` verifies `actor` and `enemy` are on the board.
+      `actor_candidate`(`Piece`): Initiates encounter after successful validate`.
+      `enemy`(`Piece`): The `Piece` scanned by `actor_candidate`.
+      `roster`(`ExecutionContext`): `roster.board_candidate` verifies `actor_candidate` and `enemy` are on the board_candidate.
 
     Returns:
       BuildResult[EncounterEvent]: A `BuildResult` containing either:
@@ -121,7 +121,7 @@ class ScanEventBuilder(Enum):
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: EncounterEvent actor failed validate")
+        raise InvalidPieceException(f"{method}: EncounterEvent actor_candidate failed validate")
 
       subject_validation = PieceValidator.validate(subject)
       if not subject_validation.is_success():

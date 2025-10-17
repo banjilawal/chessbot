@@ -84,7 +84,7 @@ class AutoCaptureException(CaptureContextException):
 
 class FriendlyFireException(CaptureContextException):
   DEFAULT_CODE = "FRIENDLY_FIRE"
-  DEFAULT_MESSAGE = "Attempted to attack team friendly actor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to attack team friendly actor_candidate; this should not happen."
 
 
 class AttackOnEmptySquareException(CaptureContextException):
@@ -94,27 +94,27 @@ class AttackOnEmptySquareException(CaptureContextException):
 
 class EnemyNotOnBoardException(CaptureContextException):
   DEFAULT_CODE = "ENEMY_NOT_ON_BOARD"
-  DEFAULT_MESSAGE = "Attempted to capture team actor not present on the board; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team actor_candidate not present on the board_candidate; this should not happen."
 
 
 class NonCombatantTargetException(CaptureContextException):
   DEFAULT_CODE = "NON_COMBATANT_TARGET"
-  DEFAULT_MESSAGE = "Attempted to capture team non-combatant actor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team non-combatant actor_candidate; this should not happen."
 
 
 class KingTargetException(CaptureContextException):
   DEFAULT_CODE = "KING_TARGET"
-  DEFAULT_MESSAGE = "Attempted to capture team King actor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team King actor_candidate; this should not happen."
 
 
 class AlreadyCapturedException(CaptureContextException):
   DEFAULT_CODE = "ALREADY_CAPTURED"
-  DEFAULT_MESSAGE = "Attempted to capture team actor that already has team captor; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team actor_candidate that already has team captor; this should not happen."
 
 
 class MissingFromRosterException(CaptureContextException):
   DEFAULT_CODE = "MISSING_FROM_ROSTER"
-  DEFAULT_MESSAGE = "Expected actor not found in its team's roster; this should not happen."
+  DEFAULT_MESSAGE = "Expected actor_candidate not found in its team's roster; this should not happen."
 
 
 class HostageTransferConflictException(CaptureContextException):

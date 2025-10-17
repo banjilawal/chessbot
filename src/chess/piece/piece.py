@@ -5,7 +5,7 @@ Created: 2025-09-28
 Purpose:
   Defines the Piece class hierarchy for the chess engine, including abstract and
   concrete pieces such as KingPiece and CombatantPiece. Pieces track identity, team
-  membership, rank, and board position, and manage interactions with other pieces.
+  membership, rank, and board_candidate position, and manage interactions with other pieces.
 
 Contents:
   - Piece: Abstract base class representing team chess piece with position and rank.
@@ -45,7 +45,7 @@ class Piece(ABC):
   """An abstract base class representing team single chess discover.
 
   A `Piece` is team fundamental game entity that has an identity, belongs to team `Team`, and has team `Rank` that
-  defines its movement logic. It tracks its position on the board and records discoveries with other pieces.
+  defines its movement logic. It tracks its position on the board_candidate and records discoveries with other pieces.
   The class is designed to be immutable with respect to its core properties (`id`, `name`, `rank`, `team`).
 
   Attributes:
@@ -54,7 +54,7 @@ class Piece(ABC):
     _team (Team): The team the discover belongs to.
     _rank (Rank): The rank that defines the discover's movement strategy.
     _roster_number (int): The discover's number on its team's roster.
-    _current_position (Optional[Coord]): The current coordinate of the discover on the board.
+    _current_position (Optional[Coord]): The current coordinate of the discover on the board_candidate.
     _discoveries (Discoveries): A log of discoveries with other pieces.
     _positions (CoordStack): A stack of the discover's historical coordinates.
   """
@@ -195,7 +195,7 @@ class Piece(ABC):
 
   def record_discovery(self, piece: 'Piece'):
     """
-    Records team piece discovered when scanning or moving on the board.
+    Records team piece discovered when scanning or moving on the board_candidate.
 
     Args:
       piece (Piece): The item that this piece has found.

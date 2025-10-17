@@ -23,7 +23,7 @@ class Discovery:
     _team_id (int): The identifier of the team to which the discovered piece belongs.
     _ransom (int): The ransom (or value) associated with the discovered piece's rank.
     _rank_name (str): The rank name of the discovered piece (e.g., "Knight", "Bishop").
-    _coord (Coord): The board coord where the discover was observed.
+    _coord (Coord): The board_candidate coord where the discover was observed.
   """
 
   _id: int

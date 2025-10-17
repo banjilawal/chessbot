@@ -13,7 +13,7 @@ class CommanderSearch:
 
   Usage:
     ```python
-    from chess.board import Board, BoardSearch
+    from chess.board_candidate import Board, BoardSearch
     from chess.piece import Piece
     ```
 
@@ -21,7 +21,7 @@ class CommanderSearch:
     DO NOT USE ANY OTHER METHODS TO SEARCH A BOARD. USE ONLY THE METHODS IN THIS CLASS.
 
   See Also:
-    `Board`: The board being searched
+    `Board`: The board_candidate being searched
     `Piece`: The piece being searched for
     `Square`: The square being searched for
     `Coord`: The coordinate being searched for

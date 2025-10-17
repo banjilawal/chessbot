@@ -68,7 +68,7 @@ __all__ = [
 
 class ActorException(PieceException):
   """
-  Super class of all exceptions an actor object can raise. Do not use directly. Subclasses
+  Super class of all exceptions an actor_candidate object can raise. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
   all piece exceptions
   """
@@ -90,7 +90,7 @@ class ActorRollBackException(ActorException, RollbackException):
 #======================# ACTOR VALIDATION EXCEPTIONS #======================#  
 class InvalidActorException(ActorException, InvalidPieceException):
   """
-  Raised by ActorValidator if piece fails any conditions for acting on the board.
+  Raised by ActorValidator if piece fails any conditions for acting on the board_candidate.
   Exists primarily to catch all exceptions raised validating an existing piece
   """
   ERROR_CODE = "ACTOR_VALIDATION_ERROR"
@@ -98,16 +98,16 @@ class InvalidActorException(ActorException, InvalidPieceException):
 
 class ActorNotOnBoardException(ActorException):
   """
-  A piece that has not been placed on the board cannot move, encounter, capture or be captured
+  A piece that has not been placed on the board_candidate cannot move, encounter, capture or be captured
   """
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
-  DEFAULT_MESSAGE = "Actor is not on the board. Piece cannot act"
+  DEFAULT_MESSAGE = "Actor is not on the board_candidate. Piece cannot act"
 
 class ActorPlacementRequiredException(ActorException):
-  """Raised when team potential actor has not been placed on the board."""
+  """Raised when team potential actor_candidate has not been placed on the board_candidate."""
   ERROR_CODE = "ACTOR_PLACEMENT_REQUIRED_ERROR"
   DEFAULT_MESSAGE = (
-    "Required actor has an empty position stack. It as not been placed on the board. Event cannot be executed."
+    "Required actor_candidate has an empty position stack. It as not been placed on the board_candidate. Event cannot be executed."
   )
 
 
@@ -131,14 +131,14 @@ class CapturedActorCannotMoveException(ActorException):
   A captured piece cannot move.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_ERROR"
-  DEFAULT_MESSAGE = "A captured actor cannot move to team square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot move to team square."
 
 class CapturedActorCannotScanException(ActorException):
   """
   A captured piece cannot encounter.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "A captured actor cannot encounter team square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot encounter team square."
 
 class CheckMatedKingActivityException(ActorException):
   """
@@ -167,15 +167,15 @@ class InvalidSubjectException(SubjectException, InvalidPieceException):
 
 
 class SubjectNotOnBoardException(SubjectException):
-  """Raised when team required enemy is not found on the board."""
+  """Raised when team required enemy is not found on the board_candidate."""
   ERROR_CODE = "SUBJECT_NOT_ON_BOARD_ERROR"
-  DEFAULT_MESSAGE = "Required enemy was not found on the board. Actor cannot fire event onto enemy"
+  DEFAULT_MESSAGE = "Required enemy was not found on the board_candidate. Actor cannot fire event onto enemy"
 
 
 class SubjectPlacementRequiredException(SubjectException):
-  """Raised when team required enemy has not been placed on the board."""
+  """Raised when team required enemy has not been placed on the board_candidate."""
   ERROR_CODE = "SUBJECT_PLACEMENT_REQUIRED_ERROR"
   DEFAULT_MESSAGE = (
-    "Required enemy has an empty position stack. It as not been placed on the board. Actor cannot"
+    "Required enemy has an empty position stack. It as not been placed on the board_candidate. Actor cannot"
     "fire event onto enemy."
   )

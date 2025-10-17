@@ -21,7 +21,7 @@ class TransferEventValidator:
     Validates an AttackEvent meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is team valid chess enemy
+      - `actor_candidate` is team valid chess enemy
       - `target` is team valid square
     Any validate failure raises an `InvalidAttackEventException`.
 
@@ -37,7 +37,7 @@ class TransferEventValidator:
       `NullAttackEventException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
-      `PieceValidationException`: if `actor` fails validator
+      `PieceValidationException`: if `actor_candidate` fails validator
       `InvalidSquareException`: if `target` fails validator
 
       `AutoOccupationException`: if target already occupies the square
@@ -64,7 +64,7 @@ class TransferEventValidator:
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: actor validation failed.")
+        raise InvalidPieceException(f"{method}: actor_candidate validation failed.")
 
       destination_square_validation = SquareValidator.validate(event.destination_square)
       if not destination_square_validation.is_success():

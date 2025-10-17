@@ -91,9 +91,9 @@ black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 if black_bishop_2 is None:
   raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
 
-def create_encounter(actor: Piece, discover: Piece) -> Encounter:
+def create_encounter(actor_candidate: Piece, discover: Piece) -> Encounter:
   method = "create_encounter"
-  if actor == discover:
+  if actor_candidate == discover:
     raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
   return Encounter(discover=discover)
 ```

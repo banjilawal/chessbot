@@ -99,7 +99,7 @@ class AttackEventException(OccupationEventException):
 
   PURPOSE:
     Used when an error occurs in the course of an attack or capture
-    (e.g., invalid target, rollback during capture, inconsistent board state).
+    (e.g., invalid target, rollback during capture, inconsistent board_candidate state).
   """
   DEFAULT_CODE = "ATTACK_ERROR"
   DEFAULT_MESSAGE = "An error occurred during an attack or capture transaction."
@@ -128,7 +128,7 @@ class AttackEventBuilderException(AttackEventException, BuilderException):
 #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#  
 class UnexpectedNullEnemyException(AttackEventException):
   DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
-  DEFAULT_MESSAGE = "Target actor is unexpectedly null during capture; this should not happen."
+  DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly null during capture; this should not happen."
 
 
 # --- Rollback Attack Errors (Dual Inheritance) ---
@@ -144,17 +144,17 @@ class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackEx
 
 class RosterRemovalRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to remove actor from enemy roster after assigning captor; rollback performed."
+  DEFAULT_MESSAGE = "Failed to remove actor_candidate from enemy roster after assigning captor; rollback performed."
 
 
 class HostageAdditionRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "HOSTAGE_ADDITION_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to add captured actor to captor's hostage list; rollback performed."
+  DEFAULT_MESSAGE = "Failed to add captured actor_candidate to captor's hostage list; rollback performed."
 
 
 class BoardPieceRemovalRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "BOARD_REMOVAL_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to remove captured actor from board; rollback performed."
+  DEFAULT_MESSAGE = "Failed to remove captured actor_candidate from board_candidate; rollback performed."
 
 
 class SquareOccupationRollbackException(AttackEventException, RollbackException):
@@ -169,4 +169,4 @@ class SourceSquareRollbackException(AttackEventException, RollbackException):
 
 class PositionUpdateRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "POSITION_UPDATE_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to update actor's position history after move; rollback executed."
+  DEFAULT_MESSAGE = "Failed to update actor_candidate's position history after move; rollback executed."

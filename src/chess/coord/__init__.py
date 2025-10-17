@@ -1,4 +1,4 @@
-# chess/board/coord__init__.py
+# chess/board_candidate/coord__init__.py
 
 """
 Module: `chess.coord`
@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## Purpose
-Provides immutable `(row, column)` coordinate tuples for board positions, with builders and validators for safe
+Provides immutable `(row, column)` coordinate tuples for board_candidate positions, with builders and validators for safe
 creation and validate.
 
 ## Core Classes

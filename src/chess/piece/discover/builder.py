@@ -23,7 +23,7 @@ class DiscoveryBuilder(Enum):
   Usage:
     ```python
     # Safe discover creation with validate
-    build_outcome = DiscoveryBuilder.build(actor=bishop, discover=pawn))
+    build_outcome = DiscoveryBuilder.build(actor_candidate=bishop, discover=pawn))
     if not build_outcome.is_success():
       raise build_outcome.err
     discover = build_outcome.payload
@@ -68,8 +68,8 @@ class DiscoveryBuilder(Enum):
 
 
     Args:
-      `actor`(`Piece`): The piece that is doing team encounter, or executing team move.
-      `discover`(`Piece`): The static piece the `actor` finds in team `square`.
+      `actor_candidate`(`Piece`): The piece that is doing team encounter, or executing team move.
+      `discover`(`Piece`): The static piece the `actor_candidate` finds in team `square`.
 
     Returns:
       BuildResult[Discovery]: A `BuildResult` containing either:
@@ -79,8 +79,8 @@ class DiscoveryBuilder(Enum):
     Raises:
       `DiscoveryBuilderException`: Wraps any underlying validate failures that occur during the construction
       process. This includes:
-        * `PieceValidationException`: if `actor` or `discover` fails validate checks
-        * `AutoDiscoveryException`: if `actor` and `discover` are the same.
+        * `PieceValidationException`: if `actor_candidate` or `discover` fails validate checks
+        * `AutoDiscoveryException`: if `actor_candidate` and `discover` are the same.
 
     Note:
       The build runs through all the checks on parameters and state to guarantee only team valid `Discovery` is

@@ -69,15 +69,15 @@ class DiscoveryException(ChessException):
   """
   Super class of all exceptions team Board object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
-  all board exceptions
+  all board_candidate exceptions
   """
   ERROR_CODE = "DISCOVERY_ERROR"
   DEFAULT_MESSAGE = "Discovery instance raised an exception."
   
 class InvalidDiscoveryException(DiscoveryException, ValidationException):
   """
-  Raised by DiscoveryValidator if board fails sanity checks. Exists primarily to catch all
-  exceptions raised validating an existing board
+  Raised by DiscoveryValidator if board_candidate fails sanity checks. Exists primarily to catch all
+  exceptions raised validating an existing board_candidate
   """
   ERROR_CODE = "DISCOVERY_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Discovery validation failed."
@@ -93,16 +93,16 @@ class NullDiscoveryException(DiscoveryException, NullException):
 class DiscoveryBuilderException(DiscoveryException, BuilderException):
   """
   Raised when BoardBuilder encounters an error while building team team. Exists primarily to
-  catch all exceptions raised building team new board
+  catch all exceptions raised building team new board_candidate
   """
   ERROR_CODE = "DISCOVERY_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Discovery build failed."
 
 
 class CircularDiscoveryException(DiscoveryException):
-  """Raised if an actor scans itself."""
+  """Raised if an actor_candidate scans itself."""
   ERROR_CODE = "OBSERVER_CIRCULAR_SCAN_ERROR"
-  DEFAULT_MESSAGE = "An actor cannot discover itself"
+  DEFAULT_MESSAGE = "An actor_candidate cannot discover itself"
 
 
 class AddingValidDiscoveryFailedException(DiscoveryException):
@@ -112,12 +112,12 @@ class AddingValidDiscoveryFailedException(DiscoveryException):
 
 
 class AddDuplicateDiscoveryException(DiscoveryException):
-  """Raised if an actor tries adding team discovery twice."""
+  """Raised if an actor_candidate tries adding team discovery twice."""
   ERROR_CODE = "ADD_DUPLICATE_DISCOVERY_ERROR"
   DEFAULT_MESSAGE = "The discovery has already been added to the list"
   
 class AddNullDiscoveryException(DiscoveryException):
-  """Raised if an actor tries adding team null or empty discovery to its list"""
+  """Raised if an actor_candidate tries adding team null or empty discovery to its list"""
   ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR"
   DEFAULT_MESSAGE = "Cannot add team null discovery to the list"
 
@@ -136,16 +136,16 @@ class DiscoveryRolledBackException(DiscoveryException, RollbackException):
 
 class CircularDiscoveryRolledBackException(DiscoveryException):
   """
-  Raised if an actor scans itself during an ACID transaction. The
+  Raised if an actor_candidate scans itself during an ACID transaction. The
   transaction was rolled back before raising this err.
   """
   ERROR_CODE = "OBSERVER_CIRCULAR_SCAN_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "An actor cannot discover itself. Transaction rolled back."
+  DEFAULT_MESSAGE = "An actor_candidate cannot discover itself. Transaction rolled back."
 
 
 class DuplicateDiscoveryRolledBackException(DiscoveryException):
   """
-  Raised if team transaction attempts adding team discovery twice to an actor. The
+  Raised if team transaction attempts adding team discovery twice to an actor_candidate. The
   transaction was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_DUPLICATE_DISCOVERY_ERROR_ROLLED_BACK"
@@ -157,7 +157,7 @@ class DuplicateDiscoveryRolledBackException(DiscoveryException):
 class AddNullDiscoveryRolledBackException(DiscoveryException):
   """
   Raised if team transaction attempts adding team null or empty discovery to an
-  actor's list. The transaction was rolled back before raising this err.
+  actor_candidate's list. The transaction was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Cannot add team null discovery to the list. Transaction rolled back."

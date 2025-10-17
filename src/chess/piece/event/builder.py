@@ -65,7 +65,7 @@ class TravelEventBuilder(Builder[TravelEvent]):
     method = "TravelEventBuilder.execute"
 
     try:
-      actor_validation = TravelActorValidator.validate(actor=actor, execution_resource=board)
+      actor_validation = TravelActorValidator.validate(actor_candidate=actor, execution_resource=board)
       if actor_validation.is_failure():
         return BuildResult(execption=actor_validation.exception)
       actor_square = actor_validation.payload

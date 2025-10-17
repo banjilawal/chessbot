@@ -9,7 +9,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
     Validates an TravelEvent meets specifications:
       - Not null
       - `id` does not fail validator
-      - `actor` is team valid chess enemy
+      - `actor_candidate` is team valid chess enemy
       - `target` is team valid square
     Any validate failure raises an `InvalidOccupationEventException`.
 
@@ -25,7 +25,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
       `NullOccupationEventException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
-      `PieceValidationException`: if `actor` fails validator
+      `PieceValidationException`: if `actor_candidate` fails validator
       `InvalidSquareException`: if `target` fails validator
 
       `AutoOccupationException`: if target already occupies the square

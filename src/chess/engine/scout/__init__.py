@@ -22,8 +22,8 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 # HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exceptions from this `board` package level
-(e.g., `from chess.board import InvalidBoardException`). See USAGE EXAMPLES section
+DO NOT reference submodules directly. Import all core classes and exceptions from this `board_candidate` package level
+(e.g., `from chess.board_candidate import InvalidBoardException`). See USAGE EXAMPLES section
 
 # USAGE EXAMPLES
 ___

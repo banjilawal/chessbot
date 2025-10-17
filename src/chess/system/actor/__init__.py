@@ -1,4 +1,4 @@
-# src/chess/system/actor/__init__.py
+# src/chess/system/actor_candidate/__init__.py
 """
 Common Package - Objects used frequently and globally accross packages
 
@@ -26,7 +26,7 @@ from .validator import ActorValidator
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.system.actor'
+__package_name__ = 'chess.system.actor_candidate'
 
 # Export control - only what belongs in public API
 __all__ = [

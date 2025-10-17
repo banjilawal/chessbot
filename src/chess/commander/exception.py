@@ -88,8 +88,8 @@ class NullCommanderException(CommanderException, NullException):
 
 class InvalidCommanderException(CommanderException, ValidationException):
   """
-  Raised by BoardValidator if board fails sanity checks. Exists primarily to catch all exceptions raised
-  validating an existing board
+  Raised by BoardValidator if board_candidate fails sanity checks. Exists primarily to catch all exceptions raised
+  validating an existing board_candidate
   """
   ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Commander validation failed."
@@ -98,7 +98,7 @@ class InvalidCommanderException(CommanderException, ValidationException):
 class CommanderBuildFailedException(CommanderException, BuildFailedException):
   """
   Raised when BoardBuilder encounters an error while building team team. Exists primarily to catch all
-  exceptions raised build team new board
+  exceptions raised build team new board_candidate
   """
   ERROR_CODE = "COMMANDER_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Commander build failed."

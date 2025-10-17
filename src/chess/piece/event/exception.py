@@ -131,7 +131,7 @@ class InvalidTravelEventException(TravelEventException, ValidationException):
 class TravelEventResourceNotFoundException(TravelEventException, ResourceException):
   ERROR_CODE = "TRAVEL_EVENT_RESOURCE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent resource (the destination_square) was not found during the board search."
+    "TravelEvent resource (the destination_square) was not found during the board_candidate search."
   )
 
 class AutoTravelPieceException(TravelEventException):
@@ -192,7 +192,7 @@ class OccupationEventBuildFailedException(TravelEventBuildFailedException):
 #
 # class TravelSearchEventException(TravelEventException):
 #   """
-#   Board searches during an event should not fai. If they do there is an inconsistency in the board
+#   Board searches during an event should not fai. If they do there is an inconsistency in the board_candidate
 #   """
 #
 #   ERROR_CODE = "TRAVEL_SEARCH_ERROR"
