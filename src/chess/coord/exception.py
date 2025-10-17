@@ -57,7 +57,6 @@ __all__ = [
   'NullCoordException',
   'InvalidCoordException',
 
-
 #====================== COORD_ROW VALIDATION EXCEPTIONS #======================#  
   'NullRowException',
   'RowBelowBoundsException',
@@ -92,27 +91,27 @@ class InvalidCoordException(CoordException, ValidationException):
 
 
 #====================== COORD_ROW VALIDATION EXCEPTIONS #======================#  
-  class NullRowException(CoordException, NullException):
-    """
-    Raised if team row is null. A coord cannot be created if the row is null
-    """
-    ERROR_CODE = "NULL_ROW_ERROR"
-    DEFAULT_MESSAGE = "Row cannot be null."
+class NullRowException(CoordException, NullException):
+  """
+  Raised if team row is null. A coord cannot be created if the row is null
+  """
+  ERROR_CODE = "NULL_ROW_ERROR"
+  DEFAULT_MESSAGE = "Row cannot be null."
 
-  class RowBelowBoundsException(CoordException):
-    """
-    If row < 0 RowBelowBoundsException is raised. Domain specific alternative
-    to ArrayIndexOutOfBoundsException
-    """
-    ERROR_CODE = "ROW_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = f"Coord.row < 0. This outside the dimension of the board"
+class RowBelowBoundsException(CoordException):
+  """
+  If row < 0 RowBelowBoundsException is raised. Domain specific alternative
+  to ArrayIndexOutOfBoundsException
+  """
+  ERROR_CODE = "ROW_BELOW_BOUNDS_ERROR"
+  DEFAULT_MESSAGE = f"Coord.row < 0. This outside the dimension of the board"
 
-  class RowAboveBoundsException(CoordException):
-    """
-    If team row >= ROW_SIZE RowAboveBoundsException is raised.
-    """
-    ERROR_CODE = "ROW_ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = f"Coord.row > {ROW_SIZE - 1}. This outside the dimension of the board"
+class RowAboveBoundsException(CoordException):
+  """
+  If team row >= ROW_SIZE RowAboveBoundsException is raised.
+  """
+  ERROR_CODE = "ROW_ABOVE_BOUNDS_ERROR"
+  DEFAULT_MESSAGE = f"Coord.row > {ROW_SIZE - 1}. This outside the dimension of the board"
 
 
 #====================== COORD_COLUMN VALIDATION EXCEPTIONS #======================#  
@@ -123,14 +122,12 @@ class NullColumnException(NullException):
   ERROR_CODE = "NULL_COLUMN_ERROR"
   DEFAULT_MESSAGE = "Column cannot be null"
 
-
 class ColumnBelowBoundsException(CoordException):
   """
   If Coord.column < 0 ColumnBelowBoundsException is raised.
   """
   ERROR_CODE = "COLUMN_BELOW_BOUNDS_ERROR"
   DEFAULT_MESSAGE = f"Coordinate.column < 0. This outside the dimension of the board"
-
 
 class ColumnAboveBoundsException(CoordException):
   """

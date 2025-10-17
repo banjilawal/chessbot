@@ -1,9 +1,15 @@
-from typing import cast, Generic
+from typing import cast, TypeVar
 
-from chess.system import Validator
+from chess.system import Validator, ValidationResult, LoggingLevelRouter, ROW_SIZE, COLUMN_SIZE
+from chess.coord import (
+  Coord, NullCoordException, NullRowException, RowBelowBoundsException, RowAboveBoundsException, NullColumnException,
+  ColumnBelowBoundsException, ColumnAboveBoundsException, InvalidCoordException
+)
 
 
-class CoordValidator(Validator):
+T = TypeVar('T')
+
+class CoordValidator(Validator[Coord]):
   """
   Validates existing `Coord` instances that are passed around the system. While `CoordBuilder` ensures
   valid Coords are created, `CoordValidator` checks `Coord` instances that already exist - whether they
@@ -30,8 +36,9 @@ class CoordValidator(Validator):
   Use `CoordBuilder` for construction, `CoordValidator` for verification.
   """
 
-  @staticmethod
-  def validate(candidate: Generic[T]) -> Result[Coord]:
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def validate(cls, candidate: T) -> ValidationResult[Coord]:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -100,54 +107,43 @@ class CoordValidator(Validator):
 
       # If candidate is null no point continuing
       if candidate is None:
-        raise NullCoordException(
-          f"{method} NullCoordException.DEFAULT_MESSAGE"
-        )
+        return ValidationResult(exception=NullCoordException(f"{method} NullCoordException.DEFAULT_MESSAGE"))
 
       # If cannot cast from candidate to Coord need to break
       if not isinstance(candidate, Coord):
-        raise TypeError(f"{method} Expected team Coord, got {type(candidate).__name__}")
+        return ValidationResult(exception=TypeError(f"{method} Expected team Coord, got {type(candidate).__name__}"))
 
       # cast and run checks for the fields
       coordinate = cast(Coord, candidate)
 
       if coordinate.row is None:
-        raise NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=NullRowException(f"{method} {NullRowException.DEFAULT_MESSAGE}"))
 
       if coordinate.row < 0:
-        raise RowBelowBoundsException(f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=RowBelowBoundsException(
+          f"{method} {RowBelowBoundsException.DEFAULT_MESSAGE}"
+        ))
 
       if coordinate.row >= ROW_SIZE:
-        raise RowAboveBoundsException(f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=RowAboveBoundsException(
+          f"{method} {RowAboveBoundsException.DEFAULT_MESSAGE}"
+        ))
 
       if coordinate.column is None:
-        raise NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=NullColumnException(f"{method} {NullColumnException.DEFAULT_MESSAGE}"))
 
       if coordinate.column < 0:
-        raise ColumnBelowBoundsException(f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=ColumnBelowBoundsException(
+          f"{method} {ColumnBelowBoundsException.DEFAULT_MESSAGE}"
+        ))
 
       if coordinate.column >= COLUMN_SIZE:
-        raise ColumnAboveBoundsException(f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=ColumnAboveBoundsException(
+          f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}"
+        ))
 
       # Return the transaction if checks passed
-      return Result(payload=coordinate)
+      return ValidationResult(payload=coordinate)
 
-    except (
-      TypeError,
-      NullCoordException,
-
-      NullRowException,
-      RowBelowBoundsException,
-      RowAboveBoundsException,
-
-      NullColumnException,
-      ColumnBelowBoundsException,
-      ColumnAboveBoundsException
-    ) as e:
-      raise CoordValidationException(f"{method}: {e}") from e
-
-    # Catch any unexpected errors with details about type and message
     except Exception as e:
-      raise CoordValidationException(
-        f"{method}: Unexpected error ({type(e).__name__}): {e}"
-      ) from e
+      return ValidationResult(exception=InvalidCoordException(f"{method}: {e}"))

@@ -1,9 +1,11 @@
-# src/chess/piece/event/transaction.py
+# src/chess/piece/event/validation/actor.py
 
 """
-Module: chess.piece.event.transaction
+Module: chess.piece.event.validation.actor
 Author: Banji Lawal
-Created: 2025-09-28
+Created: 2025-10-18
+Version: 1.0.0
+
 """
 from typing import TypeVar, cast
 
@@ -33,7 +35,21 @@ Attributes:
   * `_switch_squares`: Static method the transferring team piece to team different `Square`.
 """
 class TravelActorValidator(ActorValidator[Piece, Board, Square]):
-  """"""
+  """
+  # ROLE: Validator, Data Integrity
+
+  # RESPONSIBILITIES:
+  1. Ensure `TravelEvent` actor_candidate has a valid binding to the execution environment for `TravelEventBuilder`.
+  2. If binding requirements are not satisfied return the appropriate error to `TravelEventBuilder` in
+      `ValidationResult`.
+  3. Discover potential data integrity violations.
+
+  # PROVIDES:
+  `ValidationResult`: Return type containing the built `Team` or error information.
+
+  # ATTRIBUTES:
+  None
+  """
 
   @classmethod
   @LoggingLevelRouter.monitor
