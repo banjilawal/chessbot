@@ -1,7 +1,7 @@
-# chess/coord/builder.py
+# chess/coord/validation.py
 
 """
-Module: `chess.coord.builder`
+Module: `chess.coord.validation`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

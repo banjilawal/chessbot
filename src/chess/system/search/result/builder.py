@@ -1,7 +1,7 @@
-# chess/square/builder.py
+# chess/square/validation.py
 
 """
-Module: `chess.square.builder`
+Module: `chess.square.validation`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -40,7 +40,7 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * `SearchResultBuilder`: The builder of `SearchResult` instances.
+ * `SearchResultBuilder`: The validation of `SearchResult` instances.
 """
 
 from typing import TypeVar, Generic

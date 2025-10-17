@@ -98,7 +98,7 @@ __all__ = [
 #=== SCAN_EVENT EXCEPTIONS #======================#  
   'ScanEventException',
   'InvalidScanEventException',
-  'NullScanEventException',
+  'NullEncounterEventException',
 
 #=== SCAN_EVENT BUILD EXCEPTIONS #======================#  
   'ScanEventBuilderException',
@@ -134,7 +134,7 @@ class ScanEventException(OccupationEventException):
 
 
 #=== SCAN_EVENT VALIDATION EXCEPTIONS #======================#  
-class NullScanEventException(ScanEventException, NullException):
+class NullEncounterEventException(ScanEventException, NullException):
   """Raised by methods, entities, and models that require team EncounterEvent but receive team null."""
   ERROR_CODE = "NULL_EVENT_ERROR"
   DEFAULT_MESSAGE = "EncounterEvent cannot be null"

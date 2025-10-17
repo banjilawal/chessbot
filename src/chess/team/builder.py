@@ -1,7 +1,7 @@
-# src/chess/team/builder.py
+# src/chess/team/validation.py
 
 """
-Module: chess.team.builder
+Module: chess.team.validation
 Author: Banji Lawal
 Created: 2025-09-04
 Updated: 2025-10-08

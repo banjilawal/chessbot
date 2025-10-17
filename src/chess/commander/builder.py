@@ -1,7 +1,7 @@
-# chess/commander/builder.py
+# chess/commander/validation.py
 
 """
-Module: `chess.commander.builder`
+Module: `chess.commander.validation`
 Author: Banji Lawal
 Created: 2025-10-03
 Updated: 2025-10-04

@@ -1,7 +1,7 @@
-# chess/board/builder.py
+# chess/board/validation.py
 
 """
-Module: `chess.board.builder`
+Module: `chess.board.validation`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,6 +1,6 @@
-# src/chess/vector/builder.py
+# src/chess/vector/validation.py
 """
-Module: chess.vector.builder
+Module: chess.vector.validation
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0

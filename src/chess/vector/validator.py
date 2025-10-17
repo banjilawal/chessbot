@@ -16,7 +16,7 @@ Created: 2025-10-08
     `Vector` passes and additional checks before deployment.
 
 **Related Features**:
-    Building vectors -> See VectorBuilder, module[chess.vector.builder],
+    Building vectors -> See VectorBuilder, module[chess.vector.validation],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

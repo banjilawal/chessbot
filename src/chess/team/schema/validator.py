@@ -17,7 +17,7 @@ Created: 2025-10-08
     `TeamSchema` passes and additional checks before deployment.
 
 ***Related Features***:
-    Building teamSchemas -> See TeamSchemaBuilder, module[chess.teamSchema.builder],
+    Building teamSchemas -> See TeamSchemaBuilder, module[chess.teamSchema.validation],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

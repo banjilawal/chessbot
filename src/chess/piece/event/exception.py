@@ -127,25 +127,17 @@ class InvalidTravelEventException(TravelEventException, ValidationException):
   ERROR_CODE = "TRAVEL_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent failed validate"
 
-class TravelEventActorNotFoundException(TravelEventException, ResourceException):
-  ERROR_CODE = "TRAVEL_EVENT_ACTOR_NOT_FOUND_ERROR"
-  DEFAULT_MESSAGE = (
-    "TravelEvent Actor (piece) was not found during the board search."
-  )
-
-class EventActorSquareNotFoundException(TravelEventException, InconsistencyException):
-  """
-  Raised if team target's square does not match. subject_square
-  """
-  ERROR_CODE = "EVENT_ACTOR_SQUARE_NOT_FOUND_ERROR"
-  DEFAULT_MESSAGE = (
-    "BoardSearch did not find a square occupied by TravelEvent actor. There may be a data inconsistency."
-  )
 
 class TravelEventResourceNotFoundException(TravelEventException, ResourceException):
   ERROR_CODE = "TRAVEL_EVENT_RESOURCE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
     "TravelEvent resource (the destination_square) was not found during the board search."
+  )
+
+class AutoTravelPieceException(TravelEventException):
+  ERROR_CODE = "AUTO_TRAVEL_ERROR"
+  DEFAULT_MESSAGE = (
+    "Piece is already at the destination. Cannot travel to a square you are already occupying"
   )
 
 
@@ -167,37 +159,7 @@ class OccupationEventBuildFailedException(TravelEventBuildFailedException):
   DEFAULT_MESSAGE = "OccupationEvent build failed."
 
 
-# ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
-class TravelActorMovingException(TravelEventException):
-  """
-  Indicates TravelEvent could not be built. Wraps and re-raises errors that occurred
-  during build.
-  """
-  ERROR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent Actor raised a moving violation."
 
-class ActorNotOnRosterCannotMoveException(TravelActorMovingException):
-  """"""
-  ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent Actor is not on their team's roster. Actor cannot travel."
-
-class ActorNotOnBoardCannotMoveException(TravelActorMovingException):
-  """"""
-  ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
-  DEFAULT_MESSAGE = (
-    "TravelEvent Actor is not on the board. It position history is empty. Actor cannot travel."
-  )
-
-class CapturedActorCannotMoveException(TravelActorMovingException):
-  """"""
-  ERROR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent Actor has been captured by the enemy. Actor cannot travel."
-
-class AutoTravelPieceException(TravelActorMovingException):
-  ERROR_CODE = "AUTO_TRAVEL_ERROR"
-  DEFAULT_MESSAGE = (
-    "Piece is already at the destination. Cannot travel to a square you are already occupying"
-  )
 #
 #
 #

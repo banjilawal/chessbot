@@ -12,6 +12,7 @@ Created: 2025-09-28
 # CONTAINS:
  * `TravelEventBuilder`
 """
+from chess.piece.event.validation import TravelActorValidator
 from chess.rank import King
 from chess.square import Square, SquareValidator
 from chess.system import Builder, LoggingLevelRouter, BuildResult
@@ -37,6 +38,7 @@ class TravelEventBuilder(Builder[TravelEvent]):
     * `_run_scan`: Static method for handling discoveries on occupied squares.
     * `_switch_squares`: Static method the transferring team piece to team different `Square`.
   """
+
   @classmethod
   @LoggingLevelRouter.monitor
   def build(cls, actor: Piece, destination_square: Square, board: Board) -> BuildResult[TravelEvent]:
@@ -62,99 +64,105 @@ class TravelEventBuilder(Builder[TravelEvent]):
     """
     method = "TravelEventBuilder.execute"
 
-    #========= Actor Sanity Checks =========#
-    piece_validation = PieceValidator.validate(actor)
-    if piece_validation.is_failure():
-      return BuildResult(exception=piece_validation.exception)
+    try:
+      actor_validation = TravelActorValidator.validate(actor=actor, execution_resource=board)
+      if actor_validation.is_failure():
+        return BuildResult(execption=actor_validation.exception)
+      actor_square = actor_validation.payload
+      #========= Actor Sanity Checks =========#
+      piece_validation = PieceValidator.validate(actor)
+      if piece_validation.is_failure():
+        return BuildResult(exception=piece_validation.exception)
 
-    piece_search = BoardPieceSearch.search(board=board, search_context=BoardSearchContext(id=actor.id))
-    if piece_search.is_empty():
-      return BuildResult(exception=TravelEventActorNotFoundException(
-          f"{method}: {TravelEventActorNotFoundException.DEFAULT_MESSAGE}"
-      ))
+      piece_search = BoardPieceSearch.search(board=board, search_context=BoardSearchContext(id=actor.id))
+      if piece_search.is_empty():
+        return BuildResult(exception=TravelEventActorNotFoundException(
+            f"{method}: {TravelEventActorNotFoundException.DEFAULT_MESSAGE}"
+        ))
 
-    if piece_search.is_failure():
-      return BuildResult(exception=piece_search.exception)
+      if piece_search.is_failure():
+        return BuildResult(exception=piece_search.exception)
 
-    team = actor.team
-    if actor not in team.roster:
-      return BuildResult(exception=ActorNotOnRosterCannotMoveException(
-        f"{method}: {ActorNotOnRosterCannotMoveException.DEFAULT_MESSAGE}"
-      ))
+      team = actor.team
+      if actor not in team.roster:
+        return BuildResult(exception=ActorNotOnRosterCannotMoveException(
+          f"{method}: {ActorNotOnRosterCannotMoveException.DEFAULT_MESSAGE}"
+        ))
 
-    if actor.current_position is None or actor.positions.is_empty():
-      return BuildResult(exception=ActorNotOnBoardCannotMoveException(
-        f"{method}: {ActorNotOnBoardCannotMoveException.DEFAULT_MESSAGE}"
-      ))
+      if actor.current_position is None or actor.positions.is_empty():
+        return BuildResult(exception=ActorNotOnBoardCannotMoveException(
+          f"{method}: {ActorNotOnBoardCannotMoveException.DEFAULT_MESSAGE}"
+        ))
 
-    if isinstance(actor, CombatantPiece) and actor.captor is not None:
-      return BuildResult(exception=CapturedActorCannotMoveException(
-        f"{method}: {CapturedActorCannotMoveException.DEFAULT_MESSAGE}"
-      ))
+      if isinstance(actor, CombatantPiece) and actor.captor is not None:
+        return BuildResult(exception=CapturedActorCannotMoveException(
+          f"{method}: {CapturedActorCannotMoveException.DEFAULT_MESSAGE}"
+        ))
 
-    #========= Resource Sanity Checks =========#
-    square_validation = SquareValidator.validate(destination_square)
-    if square_validation.is_failure():
-      return BuildResult(exception=square_validation.exception)
+      #========= Resource Sanity Checks =========#
+      square_validation = SquareValidator.validate(destination_square)
+      if square_validation.is_failure():
+        return BuildResult(exception=square_validation.exception)
 
-    square_search = BoardSquareSearch.search(
-      board=board,
-      search_context=BoardSearchContext(coord=destination_square.coord))
-    if square_search.is_empty():
-      return BuildResult(exception=TravelEventResourceNotFoundException(
-         f"{method}: {TravelEventResourceNotFoundException.DEFAULT_MESSAGE}"
-      ))
+      square_search = BoardSquareSearch.search(
+        board=board,
+        search_context=BoardSearchContext(id=destination_square.id))
+      if square_search.is_empty():
+        return BuildResult(exception=TravelEventResourceNotFoundException(
+           f"{method}: {TravelEventResourceNotFoundException.DEFAULT_MESSAGE}"
+        ))
 
-    if square_search.is_failure():
-      return BuildResult(exception=square_search.exception)
+      if square_search.is_failure():
+        return BuildResult(exception=square_search.exception)
 
-    #========= Actor's Square Sanity Checks and  =========#
-    actor_square_search = BoardSquareSearch.search(
-      board=board,
-      search_context=BoardSearchContext(coord=actor.current_position)
-    )
-    if actor_square_search.is_empty():
-      return BuildResult(exception=EventActorSquareNotFoundException(
-        f"{method}: {EventActorSquareNotFoundException.DEFAULT_MESSAGE}"
-      ))
+      #========= Actor's Square Sanity Checks and  =========#
+      actor_square_search = BoardSquareSearch.search(
+        board=board,
+        search_context=BoardSearchContext(coord=actor.current_position)
+      )
 
-    if actor_square_search.is_failure():
-      return BuildResult(exception=actor_square_search.exception)
+      if actor_square_search.is_empty():
+        return BuildResult(exception=EventActorSquareNotFoundException(
+          f"{method}: {EventActorSquareNotFoundException.DEFAULT_MESSAGE}"
+        ))
 
-    actor_square = actor_square_search.payload[0]
+      if actor_square_search.is_failure():
+        return BuildResult(exception=actor_square_search.exception)
 
-    if actor_square == destination_square:
-      return BuildResult(exception=AutoTravelPieceException(
-        f"{method}: {AutoTravelPieceException.DEFAULT_MESSAGE}"
-      ))
+      actor_square = actor_square_search.payload[0]
 
-    destination_occupant = destination_square.occupant
+      if actor_square == destination_square:
+        return BuildResult(exception=AutoTravelPieceException(
+          f"{method}: {AutoTravelPieceException.DEFAULT_MESSAGE}"
+        ))
 
-    if destination_occupant is None:
-      return BuildResult(payload=OccupationEvent(
+      destination_occupant = destination_square.occupant
+
+      if destination_occupant is None:
+        return BuildResult(payload=OccupationEvent(
           actor=actor,
           actor_square=actor_square,
           destination_square=destination_square,
           execution_environment=board
-      ))
+        ))
 
-
-    if not actor.is_enemy(destination_occupant) or isinstance(destination_occupant.rank, King):
-      return BuildResult(payload=EncounterEvent(
+      if not actor.is_enemy(destination_occupant) or isinstance(destination_occupant.rank, King):
+        return BuildResult(payload=EncounterEvent(
           actor=actor,
           subject=destination_occupant,
           subject_square=destination_square,
           execution_environment=board
-        )
-      )
+        ))
 
-    return BuildResult(payload=AttackEvent(
+      return BuildResult(payload=AttackEvent(
         actor=actor,
         actor_square=actor_square,
         enemy_combatant=destination_occupant,
         destination_square=destination_square,
         execution_environment=board
-      )
-    )
+      ))
+    except Exception as e:
+        return BuildResult(exception=e)
+
 
 

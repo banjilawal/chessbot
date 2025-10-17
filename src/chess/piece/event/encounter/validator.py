@@ -4,72 +4,26 @@ from chess.board import BoardSearch
 from chess.event import AttackEvent, CircularOccupationException
 from chess.piece.event.encounter.exception import TargetSquareMismatchException, ScanSubjectException
 from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
-from chess.system import ExecutionContext, Result, IdValidator, InvalidIdException
-from chess.piece.event import (
+from chess.system import ExecutionContext, Result, IdValidator, InvalidIdException, Validator, LoggingLevelRouter
+from chess.piece import (
   EncounterEvent,
-  NullScanEventException,
+  NullEncounterEventException,
   InvalidScanEventException
 )
 
 T = TypeVar('T')
 
-class AttackEventValidator(EventValidator):
+class EncounterEventValidator(Validator[EncounterEvent]):
 
-  @staticmethod
-  def validate(t: AttackEvent, context: ExecutionContext) -> Result[EncounterEvent]:
-    """
-    # ACTION:
-    Verify the `candidate` is a valid ID. The Application requires
-    1. Candidate is not null.
-    2. Is a positive integer.
-
-    # PARAMETERS:
-        * `candidate` (`int`): the id.
-
-    # RETURNS:
-    `ValidationResult[str]`: A `ValidationResult` containing either:
-        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `exception` (`Exception`) - An exception detailing which naming rule was broken.
-
-    # RAISES:
-    `InvalidIdException`: Wraps any specification violations including:
-        * `TypeError`: if candidate is not an `int`
-        * `IdNullException`: if candidate is null
-        * `NegativeIdException`: if candidate is negative `
-    """
-    """
-    Validates an EncounterEvent meets specifications:
-      - Not null
-      - `id` does not fail validator
-      - `actor` is team valid chess enemy
-      - `target` is team valid square
-    Any validate failure raises an `InvalidScanEventException`.
-
-    Argument:
-      `candidate` (`EncounterEvent`): `scanEvent `to validate
-
-     Returns:
-       `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
-        `InvalidScanEventException` otherwise.
-
-    Raises:
-      `TypeError`: if `candidate` is not OperationEvent
-      `NullScanEventException`: if `candidate` is null
-
-      `InvalidIdException`: if invalid `id`
-      `PieceValidationException`: if `actor` fails validator
-      `InvalidSquareException`: if `target` fails validator
-
-      `AutoOccupationException`: if target already occupies the square
-      `KingAttackException`: if the target square is occupied by an enemy king
-
-      `InvalidScanEventException`: Wraps any preceding exceptions
-    """
-    method = "EncounterEvent.validate"
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def validate(cls, candidate: T) -> ValidationResult[EncounterEvent]:
+    """"""
+    method = "EncounterEventValidator.validate"
 
     try:
-      if t is None:
-        raise NullScanEventException(f"{method}: {NullScanEventException.DEFAULT_MESSAGE}")
+      if candidate is None:
+        return ValidationResult(exception=NullEncounterEventException(f"{method}: {NullEncounterEventException.DEFAULT_MESSAGE}")
 
       if not isinstance(t, EncounterEvent):
         raise TypeError(f"{method} Expected an EncounterEvent, got {type(t).__name__}")
@@ -109,11 +63,11 @@ class AttackEventValidator(EventValidator):
       return Result(payload=event)
 
     except (
-        TypeError,
-        InvalidIdException,
-        NullScanEventException,
-        InvalidPieceException,
-        CircularOccupationException,
+            TypeError,
+            InvalidIdException,
+            NullEncounterEventException,
+            InvalidPieceException,
+            CircularOccupationException,
     ) as e:
       raise InvalidScanEventException(f"{method}: {InvalidScanEventException.DEFAULT_MESSAGE}") from e
 
@@ -122,3 +76,51 @@ class AttackEventValidator(EventValidator):
     except Exception as e:
       raise InvalidScanEventException(f"{method}: {e}") from e
 
+    """
+    # ACTION:
+    Verify the `candidate` is a valid ID. The Application requires
+    1. Candidate is not null.
+    2. Is a positive integer.
+
+    # PARAMETERS:
+        * `candidate` (`int`): the id.
+
+    # RETURNS:
+    `ValidationResult[str]`: A `ValidationResult` containing either:
+        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
+        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+
+    # RAISES:
+    `InvalidIdException`: Wraps any specification violations including:
+        * `TypeError`: if candidate is not an `int`
+        * `IdNullException`: if candidate is null
+        * `NegativeIdException`: if candidate is negative `
+    """
+    """
+    Validates an EncounterEvent meets specifications:
+      - Not null
+      - `id` does not fail validator
+      - `actor` is team valid chess enemy
+      - `target` is team valid square
+    Any validate failure raises an `InvalidScanEventException`.
+
+    Argument:
+      `candidate` (`EncounterEvent`): `scanEvent `to validate
+
+     Returns:
+       `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
+        `InvalidScanEventException` otherwise.
+
+    Raises:
+      `TypeError`: if `candidate` is not OperationEvent
+      `NullEncounterEventException`: if `candidate` is null
+
+      `InvalidIdException`: if invalid `id`
+      `PieceValidationException`: if `actor` fails validator
+      `InvalidSquareException`: if `target` fails validator
+
+      `AutoOccupationException`: if target already occupies the square
+      `KingAttackException`: if the target square is occupied by an enemy king
+
+      `InvalidScanEventException`: Wraps any preceding exceptions
+    """

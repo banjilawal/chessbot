@@ -98,7 +98,7 @@ __all__ = [
   #=== SCAN_EVENT EXCEPTIONS #======================#  
   'ScanEventException',
   'InvalidScanEventException',
-  'NullScanEventException',
+  'NullEncounterEventException',
 
   #=== SCAN_EVENT BUILD EXCEPTIONS #======================#  
   'ScanEventBuilderException',

@@ -25,7 +25,7 @@ from chess.event.event import EncounterEvent, OccupationTransaction
 Gives granular information about errors that occur during encounter operations.
   * `ScanEventException`: Superclass for all encounter event exceptions. Subclasses give better debugging information
   * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
-  * `NullScanEventException`: Raised by methods, entities, and models that require team EncounterEvent but receive team null
+  * `NullEncounterEventException`: Raised by methods, entities, and models that require team EncounterEvent but receive team null
   * `OccupationOccupationScanSubjectException`: Raised if team enemy of team encounter is invalid.
   * `ObserverCircularScanException`: Raised if an actor scans itself.
 

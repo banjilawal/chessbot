@@ -1,7 +1,7 @@
-# chess/arena/builder.py
+# chess/arena/validation.py
 
 """
-Module: `chess.arena.builder`
+Module: `chess.arena.validation`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

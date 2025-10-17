@@ -17,7 +17,7 @@ Updated: 2025-10-08
     `Team` passes and additional checks before deployment.
 
 **Related Features**:
-    Building teams -> See TeamBuilder, module[chess.team.builder],
+    Building teams -> See TeamBuilder, module[chess.team.validation],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
