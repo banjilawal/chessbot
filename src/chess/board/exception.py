@@ -54,6 +54,8 @@ __all__ = [
 
 #====================== BOARD VALIDATION EXCEPTIONS #======================#  
   'NullBoardException',
+  'BoardNullPieceCollectionException',
+  'BoardNullSquareCollectionException',
 
 #====================== BOARD BUILD EXCEPTIONS #======================#  
   'BoardBuildFailedException',
@@ -92,6 +94,14 @@ class NullBoardException(BoardException, NullException):
   ERROR_CODE = "NULL_BOARD_ERROR"
   DEFAULT_MESSAGE = "Board cannot be null"
 
+class BoardNullPieceCollectionException(BoardException, NullException):
+  ERROR_CODE = "BOARD_NULL_PIECE_COLLECTION_ERROR"
+  DEFAULT_MESSAGE = "The board cannot have its pieces collection null. There may be a data inconsistency."
+
+class BoardNullSquareCollectionException(BoardException, NullException):
+  ERROR_CODE = "BOARD_NULL_SQUARE_COLLECTION_ERROR"
+  DEFAULT_MESSAGE = "The board cannot have its squares collection null. There may be a data inconsistency."
+
 class InvalidBoardException(BoardException, ValidationException):
   """
   Raised by BoardValidator if board fails sanity checks. Exists primarily to catch all exceptions raised
@@ -120,6 +130,8 @@ class BoardPieceRemovalFailedException(BoardException):
   """Raised if the board fails to remove team piece from itself"""
   ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR"
   DEFAULT_MESSAGE = "Board failed to remove the piece"
+
+
 
 #======================# PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#  
 class FailedPieceAdditionRolledBackException(BoardRollBackException):
