@@ -1,4 +1,4 @@
-# chess/coord/validation.py
+# chess/coord/validator.py
 
 """
 Module: `chess.coord.validation`

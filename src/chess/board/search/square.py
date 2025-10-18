@@ -1,6 +1,6 @@
-# src/chess/board_candidate/board_candidate.py
+# src/chess/board_validator/board_validator.py
 """
-Module: chess.board_candidate.board_candidate
+Module: chess.board_validator.board_validator
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -15,7 +15,7 @@ version: 1.0.0
     from `BoardBuilder` --should-- satisfy `BoardValidator` requirements.
 
 **Related Features**:
-    Authenticating existing boards -> See BoardValidator, module[chess.board_candidate.validator],
+    Authenticating existing boards -> See BoardValidator, module[chess.board_validator.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -38,7 +38,7 @@ From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
     `IdValidator`, `NameValidator`
 
-From `chess.board_candidate`:
+From `chess.board_validator`:
     `Board`, `NullBoard`, `BoardBuildFailedException`, `BoardSchema`
 
 From `chess.commander`:
@@ -87,7 +87,7 @@ class BoardSquareSearch(Search[Board, Square]):
     def search(cls, board: Board, search_context: BoardSearchContext) -> SearchResult[List[Square]]:
         method = "BoardPieceSearch.old_search"
 
-        # board_validation = BoardValidator.validate(board_candidate)
+        # board_validation = BoardValidator.validate(board_validator)
         # if not board_validation.is_success():
         #     return SearchResult(exception=board_validation.exception)
 

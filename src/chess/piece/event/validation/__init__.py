@@ -1,2 +1,1 @@
-from .exception import *
-from .actor import TravelActorValidator
+from .actor import *

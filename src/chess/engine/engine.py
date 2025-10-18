@@ -14,7 +14,7 @@ Contains:
 
 
  NOTES:
-   Reviewinng what is going to happen with graohing the board_candidate and fin the best path there will just be one DecisionEngine
+   Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one DecisionEngine
    actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team Bot.
 """
 

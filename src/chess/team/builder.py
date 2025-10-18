@@ -1,4 +1,4 @@
-# src/chess/team/validation.py
+# src/chess/team/validator.py
 
 """
 Module: chess.team.validation

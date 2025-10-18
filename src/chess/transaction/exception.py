@@ -94,7 +94,7 @@ class AttackOnEmptySquareException(CaptureContextException):
 
 class EnemyNotOnBoardException(CaptureContextException):
   DEFAULT_CODE = "ENEMY_NOT_ON_BOARD"
-  DEFAULT_MESSAGE = "Attempted to capture team actor_candidate not present on the board_candidate; this should not happen."
+  DEFAULT_MESSAGE = "Attempted to capture team actor_candidate not present on the board_validator; this should not happen."
 
 
 class NonCombatantTargetException(CaptureContextException):

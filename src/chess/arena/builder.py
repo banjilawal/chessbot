@@ -1,4 +1,4 @@
-# chess/arena/validation.py
+# chess/arena/validator.py
 
 """
 Module: `chess.arena.validation`
@@ -58,7 +58,7 @@ class ArenaBuilder(Builder[Arena]):
     Args:
       - `white_commander`: White Commander
       - `black_commander`: Black Commander
-      - `board_candidate`: Board
+      - `board_validator`: Board
 
     Returns:
       `BuildResult`[`Board`]: A `BuildResult` containing either:
@@ -68,7 +68,7 @@ class ArenaBuilder(Builder[Arena]):
     Raises:
     `ArenaBuildFailedException` wraps any exceptions raised build. These are:
       * `InvalidCommanderException`: If team `white_commander` or `black_commander` fails validation.
-      * `InvalidBoardException`: If team `board_candidate` fails validation.
+      * `InvalidBoardException`: If team `board_validator` fails validation.
 
     """
     method = "ArenaBuilder.build"

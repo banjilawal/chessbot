@@ -1,17 +1,88 @@
-from typing import cast, TypeVar
+# src/chess/piece/validator.py
 
-from chess.exception.hostage.hostage import KingCheckMateStateException
-from chess.piece import Piece, NullPieceException, InvalidPieceException, UnregisteredTeamMemberException, \
-  CombatantPiece, HostageActivityException, KingPiece
-from chess.system import Result, Validator, IdValidator, NameValidator, InvalidIdException, InvalidNameException
-from chess.team import NullTeamException
+"""
+Module: chess.piece.validator
+Author: Banji Lawal
+Created: 2025-09-28
+Updated: 2025-10-10
+
+# SECTION 1 - Application Requirements Satisfactions:
+This module provides a satisfaction of the `ChessBot` integrity requirement.
+
+# SECTION 2 - Module Scope:
+Validation service for `Piece` entities.
+
+# SECTION 3 - Module Limitations:
+  1. The module does not provide any actionable code.
+  2. The module is limited to providing a framework for validating integrity of existing objects.
+  3. The module does not provide any enforceable polices on entities using the framework.
+
+# SECTION 4 - Major Design Concerns:
+The major theme influencing the modules design are
+  1. separating entity responsibilities into from implementation details.
+  2. Loose coupling of modules while maintaining a unified, consistent interface for high cohesion among components
+    that have no direct relationship with each other.
+  3. A consistent interface and aids discoverability, understanding and simplicity.
+
+# SECTION 5 - User Facing Features Supporting Requirements:
+1. No direct support for any user level features.
+
+# SECTION 6 - Developer Features Supporting Requirements:
+1. Minimal implementation complexity.
+2. Direct support for easy, fast, scalable enhancements.
+
+# SECTION G - API Component Implementation:
+The module provides an interface individual entities can use to for solving their optimal verification sub-problems
+ providing a global solution if implementations cover every verifiable component.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `ValidationResult`, `Validator`
+
+* From Python `abc` Library:
+    `ABC`, `abstractmethod`
+
+* From Python `typing` Library:
+    `cast`, `TypeVar`, `Any`
+
+# SECTION 8 - Contains:
+1. `PieceValidator`
+"""
+
+from typing import cast, TypeVar, Any
+
+from chess.team import Team, RosterNumberOutOfBoundsException
+from chess.rank import Bishop, King, Pawn, Queen, Rook, knight
+from chess.system import IdValidator, NameValidator, LoggingLevelRouter, ValidationResult, Validator
+from chess.piece import (
+  NullPieceException, Piece, PieceMissingCoordStackException, PieceMissingDiscoveryListException,
+  PieceRankOutOfBoundsException, PieceRosterNumberIsNullException, PieceTeamFieldIsNullException,
+  UnregisteredTeamMemberException
+)
+
 
 T = TypeVar('T')
 
-class PieceValidator(Validator[Generic[T]]):
+class PieceValidator(Validator[Piece]):
+  """
+  # ROLE: Validation, Integrity, Consistency
 
-  @staticmethod
-  def validate(candidate: T) -> Result[Piece]:
+  # RESPONSIBILITIES:
+    1. Ensure an entity meets minimal requirements for being a valid `Piece` before its used in the
+        application.
+    2. Minimal data integrity checks on collections organic to `Piece` objects.
+    3. Minimal consistency check for `Piece`-`Team` binding.
+
+  # PROVIDES:
+  `ValidationResult`: Containing verified `Piece` or error information about requirement violations.
+
+  # ATTRIBUTES:
+    None
+  """
+
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def validate(cls, candidate: Any) -> ValidationResult[Piece]:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -19,114 +90,82 @@ class PieceValidator(Validator[Generic[T]]):
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the id.
+        * `candidate` (`Any`):
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
-        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+        `'payload'` (`Piece`) - An item satisfying minimal requirements for a `Piece` object used in the application.
+        `exception` (`Exception`) - An exception detailing which specification violation occurred.
 
     # RAISES:
-    `InvalidIdException`: Wraps any specification violations including:
-        * `TypeError`: if candidate is not an `int`
-        * `IdNullException`: if candidate is null
-        * `NegativeIdException`: if candidate is negative `
-    """
-    """
-    Validates team discover with chained exceptions for discover meeting specifications:
-      - Not null
-      - id fails validator
-      - name fails validator
-      - coord fails validator
-    If validator fails their team_exception will be encapsulated in team PieceValidationException
-
-    Args
-      candidate (Piece): discover to validate
-
-     Returns:
-       Result[T]: A Result object containing the validated payload if the specification is satisfied,
-        PieceValidationException otherwise.
-
-    Raises:
-      TypeError: if candidate is not Piece
-      NullPieceException: if candidate is null
-
-      InvalidIdException: if invalid id
-      InvalidNameException: if invalid name
-      InvalidCoordException: if invalid coord
-
-      PieceValidationException: Wraps any preceding exceptions
+    Nothing - All exceptions are caught and returned in the `ValidationResult`.
     """
     method = "Piece.validate"
 
     try:
+      # Prevents a null `Piece` being accepted as method argument.
       if candidate is None:
-        raise NullPieceException(f"{method} {NullPieceException.DEFAULT_MESSAGE}")
+        return ValidationResult(exception=NullPieceException(f"{method} {NullPieceException.DEFAULT_MESSAGE}"))
 
       if not isinstance(candidate, Piece):
-        raise TypeError(f"{method} Expected team Piece, got {type(candidate).__name__}")
+        return ValidationResult(exception=TypeError(f"{method} Expected team Piece, got {type(candidate).__name__}"))
 
-      piece= cast(Piece, candidate)
+      # For safety cast the candidate to a `Piece` instance.
+      piece = cast(Piece, candidate)
 
-      id_result = IdValidator.validate(piece.id)
-      if not id_result.is_success():
-        raise InvalidIdException(
-          f"{method}: {InvalidIdException.DEFAULT_MESSAGE}"
-        )
+      # With AutoId decorator, the ID check should never fail. It might not be necessary anymore.
+      id_validation = IdValidator.validate(piece.id)
+      if id_validation.is_failure():
+        return ValidationResult(exception=id_validation.exception)
 
-      name_result = NameValidator.validate(piece.name)
-      if not name_result.is_success():
-        raise InvalidNameException(
-          f"{method}: {InvalidNameException.DEFAULT_MESSAGE}"
-        )
+      # This is really minimal checking. `Piece` object names have format:
+      # [color_letter][rank_symbol]-[value_in_quota]
+      # Next step is use regexp to ensure the name fits the pattern and create a new exception for that.
+      name_validation = NameValidator.validate(piece.name)
+      if name_validation.is_failure():
+        return ValidationResult(exception=name_validation.exception)
 
-      if isinstance(piece, CombatantPiece) and piece.captor is not None:
-        raise HostageActivityException(
-          f"{method}: {HostageActivityException.DEFAULT_MESSAGE}"
-        )
-
-      if isinstance(piece, KingPiece) and piece.is_checkmated:
-        raise KingCheckMateStateException(
-          f"{method}: {KingCheckMateStateException.DEFAULT_MESSAGE}"
-        )
-
+      # A `Piece` instance must have its `team` field set. This immutable field should have been set during
+      # the build. If it's null there might be data loss or corruption.
       if piece.team is None:
-        raise NullTeamException(
-          f"{method}: {NullTeamException.DEFAULT_MESSAGE}"
-        )
+        return ValidationResult(exception=PieceTeamFieldIsNullException(
+          f"{method}: {PieceTeamFieldIsNullException.DEFAULT_MESSAGE}"
+        ))
 
-      team = piece.team
-      if piece not in team.roster:
-        raise UnregisteredTeamMemberException(
-          f"{method}: {UnregisteredTeamMemberException.DEFAULT_MESSAGE}"
-        )
+      if piece.roster_number is None:
+        return ValidationResult(exception=PieceRosterNumberIsNullException(
+          f"{method}: {PieceRosterNumberIsNullException.DEFAULT_MESSAGE}"
+        ))
 
+      if piece.roster_number < 1 or piece.roster_number > Team.MAX_ROSTER_SIZE:
+        return ValidationResult(exception=RosterNumberOutOfBoundsException(
+          f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
+        ))
 
-      # coord_validation = CoordValidator.validate(discover.current_position)
-      # if not coord_validation.is_success():
-      #   raise InvalidCoordException(f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}")
+      if not isinstance(piece.rank, [King, Queen, Bishop, knight, Rook, Pawn]):
+        return ValidationResult(exception=PieceRankOutOfBoundsException(
+          f"{method}: {PieceRankOutOfBoundsException.DEFAULT_MESSAGE}"
+        ))
 
-      return Result(payload=piece)
+      # This test will have to be removed because a valid piece that has been captured is taken of
+      # its team's roster and put on its enemy's hostage list.
+      # team = piece.team
+      # if piece not in team.roster:
+      #   return ValidationResult(exception=UnregisteredTeamMemberException(
+      #     f"{method}: {UnregisteredTeamMemberException.DEFAULT_MESSAGE}"
+      #   ))
 
-    except (
-        TypeError,
-        NullPieceException,
-        InvalidIdException,
-        InvalidNameException,
-        HostageActivityException,
-        NullTeamException,
-        UnregisteredTeamMemberException,
-    ) as e:
-      raise InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}") from e
+      if piece.positions is None:
+        return ValidationResult(exception=PieceMissingCoordStackException(
+          f"{method}: {PieceMissingCoordStackException.DEFAULT_MESSAGE}"
+        ))
 
-    # This block catches any unexpected exceptions
-    # You might want to log the error here before re-raising
+      if piece.discoveries is None:
+        return ValidationResult(exception=PieceMissingDiscoveryListException(
+          f"{method}: {PieceMissingDiscoveryListException.DEFAULT_MESSAGE}"
+        ))
+
+      return ValidationResult(payload=piece)
+
     except Exception as e:
-      raise InvalidPieceException(f"An unexpected error occurred during validation: {e}") from e
-
-
-#
-#
-# def main():
-#   person = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
-#   team = TeamBuilder.build()
+      return ValidationResult(exception=e)

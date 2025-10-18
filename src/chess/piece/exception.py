@@ -88,7 +88,8 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.system import ChessException,  ValidationException, NullException, BuilderException, RollbackException
+from chess.system import ChessException, InconsistencyException, ValidationException, NullException, BuilderException, \
+  RollbackException
 
 __all__ = [
   'PieceException',
@@ -96,7 +97,12 @@ __all__ = [
 
 #======================# PIECE VALIDATION EXCEPTIONS #======================#  
   'InvalidPieceException',
+  'PieceTeamFieldIsNullException',
+  'PieceMissingCoordStackException',
   'UnregisteredTeamMemberException',
+  'PieceRosterNumberIsNullException',
+  'PieceRankOutOfBoundsException',
+  'PieceMissingDiscoveryListException',
 
 #======================# NULL PIECE EXCEPTIONS #======================#  
   'NullPieceException',
@@ -158,13 +164,49 @@ class InvalidPieceException(PieceException, ValidationException):
   ERROR_CODE = "PIECE_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Piece validation failed."
 
+class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
+  """
+  Raised if `piece.team` is null. Might indicate a consistency or build problem because `Piece.team` should
+  never be null.
+  """
+  ERROR_CODE = "PIECE_TEAM_FIELD_NULL_ERROR"
+  DEFAULT_MESSAGE = "Piece.team field is null. It should never be null. There may be data inconsistency."
 
+class PieceMissingCoordStackException(PieceException, InconsistencyException):
+  """
+  Raised if `piece.positions` stack does not exist. If the `piece.positions == null there is data inconsistency
+  or loss.
+  """
+  ERROR_CODE = "PIECE_COORD_STACK_MISSING_ERROR"
+  DEFAULT_MESSAGE = "Piece.positions list is null. It should never be null. There may be data inconsistency or loss."
+
+class  PieceMissingDiscoveryListException(PieceException, InconsistencyException):
+  """
+  Raised if `piece.discovery` list does not exist. If the `piece.discoveries == null there is data inconsistency
+  or loss.
+  """
+  ERROR_CODE = "PIECE_DISCOVERY_LIST_MISSING_ERROR"
+  DEFAULT_MESSAGE = "Piece.discovery list is null. It should never be null. There may be data inconsistency or loss."
 
 class UnregisteredTeamMemberException(PieceException):
-  """Raised if team piece has its team set but the piece is not on the roster"""
+  """Raised if team piece has its team set but the piece is not on the roster."""
   ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "The piece has team but is not listed on the roster."
+  DEFAULT_MESSAGE = "The piece has assigned itself a team. but is not listed on that team's roster."
 
+class PieceRosterNumberIsNullException(PieceException, NullException):
+  """
+  Raised a piece's roster number is null. This should never happen. the invariant roster number
+  is set during build. If its null during validation there has been data loss or an inconsistency.
+  """
+  ERROR_CODE = "PIECE_NULL_ROSTER_NUMBER_ERROR"
+  DEFAULT_MESSAGE = "A `Piece` object cannot have a null roster number. There may be data inconsistency or loss."
+
+class PieceRankOutOfBoundsException(PieceException, NullException):
+  """
+  Raised a piece's rank is not a recognized chess rank
+  """
+  ERROR_CODE = "PIECE_RANK_OUT_OF_BOUNDS_ERROR"
+  DEFAULT_MESSAGE = "A `Piece` does not have a recognized chess rank."
 
 #======================# NULL PIECE EXCEPTIONS #======================#  
 class NullPieceException(PieceException, NullException):

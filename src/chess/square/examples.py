@@ -73,7 +73,7 @@ Example:
 """
 #
 # ## PURPOSE
-# This package provides foundational objects for the chess board_candidate. It defines the `Square` class,
+# This package provides foundational objects for the chess board_validator. It defines the `Square` class,
 # which serves as team data container for storing team discover's location, and team `SquareValidator` to ensure
 # the integrity of square objects.
 #

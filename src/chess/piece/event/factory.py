@@ -10,7 +10,7 @@ Created: 2025-09-28
 # PURPOSE:
 # DEPENDENCIES:
 # CONTAINS:
- * `TravelEventBuilder`
+ * `TravelEventFactory`
 """
 from chess.piece.event.validation import TravelActorValidator
 from chess.rank import King
@@ -26,7 +26,7 @@ from chess.piece import (
 )
 
 
-class TravelEventBuilder(Builder[TravelEvent]):
+class TravelEventFactory:
   """
   Implements the `OccupationExecutor` class, which handles executing event
   directives in the chess engine. This includes moving pieces, capturing enemies,
@@ -41,7 +41,7 @@ class TravelEventBuilder(Builder[TravelEvent]):
 
   @classmethod
   @LoggingLevelRouter.monitor
-  def build(cls, actor: Piece, destination_square: Square, board: Board) -> BuildResult[TravelEvent]:
+  def create(cls, actor: Piece, destination_square: Square, board: Board) -> BuildResult[TravelEvent]:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -62,42 +62,13 @@ class TravelEventBuilder(Builder[TravelEvent]):
         * `IdNullException`: if candidate is null
         * `NegativeIdException`: if candidate is negative `
     """
-    method = "TravelEventBuilder.execute"
+    method = "TravelEventFactory.execute"
 
     try:
       actor_validation = TravelActorValidator.validate(actor_candidate=actor, execution_resource=board)
       if actor_validation.is_failure():
         return BuildResult(execption=actor_validation.exception)
       actor_square = actor_validation.payload
-      #========= Actor Sanity Checks =========#
-      piece_validation = PieceValidator.validate(actor)
-      if piece_validation.is_failure():
-        return BuildResult(exception=piece_validation.exception)
-
-      piece_search = BoardPieceSearch.search(board=board, search_context=BoardSearchContext(id=actor.id))
-      if piece_search.is_empty():
-        return BuildResult(exception=TravelEventActorNotFoundException(
-            f"{method}: {TravelEventActorNotFoundException.DEFAULT_MESSAGE}"
-        ))
-
-      if piece_search.is_failure():
-        return BuildResult(exception=piece_search.exception)
-
-      team = actor.team
-      if actor not in team.roster:
-        return BuildResult(exception=ActorNotOnRosterCannotMoveException(
-          f"{method}: {ActorNotOnRosterCannotMoveException.DEFAULT_MESSAGE}"
-        ))
-
-      if actor.current_position is None or actor.positions.is_empty():
-        return BuildResult(exception=ActorNotOnBoardCannotMoveException(
-          f"{method}: {ActorNotOnBoardCannotMoveException.DEFAULT_MESSAGE}"
-        ))
-
-      if isinstance(actor, CombatantPiece) and actor.captor is not None:
-        return BuildResult(exception=CapturedActorCannotMoveException(
-          f"{method}: {CapturedActorCannotMoveException.DEFAULT_MESSAGE}"
-        ))
 
       #========= Resource Sanity Checks =========#
       square_validation = SquareValidator.validate(destination_square)

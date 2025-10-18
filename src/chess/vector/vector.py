@@ -41,7 +41,7 @@ From `chess.coord`:
 From `chess.scalar`:
   * `Scalar`, `ScalarValidator`
 
-from `chess.board_candidate`
+from `chess.board_validator`
   * `SquareIterator`
 
 From `chess.vector`:

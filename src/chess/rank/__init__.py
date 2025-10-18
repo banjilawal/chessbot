@@ -25,7 +25,7 @@ to be immutable once assigned.
 ## USAGE
 The `Rank` classes are primarily used to validate team discover's movement at runtime. A `Piece` object holds team
 reference to its `Rank`, and delegates movement validate to it using the `walk()` method. This allows
-for team clean and simple interface for team chess board_candidate's logic.
+for team clean and simple interface for team chess board_validator's logic.
 
 # >>> from chess.rank import Knight
 # >>> from chess.discover import Piece

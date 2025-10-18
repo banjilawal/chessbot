@@ -58,13 +58,9 @@ T = TypeVar('T')
 class Validator(ABC, Generic[T]):
   """
   # ROLE: Validation
-
   # RESPONSIBILITIES:
   An interface for implementing verification methods of an existing object.
-
-  # PROVIDES:
-
-
+  # PROVIDES: `ValidationResult[T]`
   # ATTRIBUTES:
   No attributes. Implementors declare their own.
   """
@@ -75,12 +71,10 @@ class Validator(ABC, Generic[T]):
     """
     # Action:
     Ensures clients the candidate meets minimum system requirements for use in the system.
-
     # Parameters:
         * `candidate` (`T`): The object to verify
     # Returns:
         `ValidationResult[T]`
-
     # Raises:
     `ValidationException`
     """

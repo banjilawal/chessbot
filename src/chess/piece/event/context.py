@@ -77,7 +77,7 @@ class TravelContext(ExecutionContext):
   """
   """
   Additional dependencies an `TravelEvent` passes to an
-  `TravelEventBuilder` apart from the `actor_candidate` and `resource`.
+  `TravelEventFactory` apart from the `actor_candidate` and `resource`.
 
   Attributes:
     `_board (`Board)`:
@@ -88,7 +88,7 @@ class TravelContext(ExecutionContext):
   _destination_occupant: Optional[Piece]
 
   # # Usage:
-  # roster = OcContext(board_candidate=board_candidate, teams=all_teams)
+  # roster = OcContext(board_validator=board_validator, teams=all_teams)
   # outcome = executor.execute_directive(directive, roster.to_dict())
 
   def __init__(self, destination_occupant: Optional[Piece]=None, board: Optional[Board]=None):

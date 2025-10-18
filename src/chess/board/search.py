@@ -1,7 +1,7 @@
-# chess/board_candidate/square.py
+# chess/board_validator/square.py
 
 """
-Module: `chess.board_candidate.old_search`
+Module: `chess.board_validator.old_search`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -27,7 +27,7 @@ class BoardSearch:
 
   Usage:
     ```python
-    from chess.board_candidate import Board, BoardSearch
+    from chess.board_validator import Board, BoardSearch
     from chess.piece import Piece
     ```
 
@@ -35,7 +35,7 @@ class BoardSearch:
     DO NOT USE ANY OTHER METHODS TO SEARCH A BOARD. USE ONLY THE METHODS IN THIS CLASS.
 
   See Also:
-    `Board`: The board_candidate being searched
+    `Board`: The board_validator being searched
     `Piece`: The piece being searched for
     `Square`: The square being searched for
     `Coord`: The coordinate being searched for
@@ -47,7 +47,7 @@ class BoardSearch:
 
   @staticmethod
   def piece_by_id(piece_id: int, board: Board) -> SearchResult['Piece']:
-    """Find team discover by ID across all board_candidate"""
+    """Find team discover by ID across all board_validator"""
     method = "BoardSearch.piece_by_id"
 
     try:
@@ -68,7 +68,7 @@ class BoardSearch:
 
   @staticmethod
   def piece_by_name(piece_name: str, board: Board) -> SearchResult['Piece']:
-    """Find team discover by name across all board_candidate"""
+    """Find team discover by name across all board_validator"""
     method = "BoardSearch.piece_by_name"
 
     try:
@@ -92,7 +92,7 @@ class BoardSearch:
 
   @staticmethod
   def piece_by_coord(coord: Coord, board: Board) -> SearchResult['Piece']:
-    """Find team discover by coordinate across all board_candidate"""
+    """Find team discover by coordinate across all board_validator"""
     method = "BoardSearch.piece_by_coord"
 
     try:

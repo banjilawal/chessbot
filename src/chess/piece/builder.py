@@ -1,4 +1,4 @@
-# chess/square/validation.py
+# chess/square/validator.py
 
 """
 Module: `chess.square.validation`
@@ -11,8 +11,8 @@ SCOPE:
 This module is strictly limited to constructing `Piece` instances safely.
 
 **It does not** contain logic or rules for creating `TravelEvent` or
-`TravelEventBuilder`. Those are handled by `OccupationEventBuilder` before
-execution,`TravelEventBuilder` during execution.
+`TravelEventFactory`. Those are handled by `OccupationEventBuilder` before
+execution,`TravelEventFactory` during execution.
 
 **It does not** ensure existing `Piece` instances are valid. That is done
 by the `PieceValidator`.
@@ -25,7 +25,7 @@ complexities of the build process into team utility from the `Piece` constructor
 PURPOSE:
 -------
 To execute validated `TravelEvent` directives by orchestrating the necessary
-state changes across the board_candidate, pieces, and teams. It serves as the **engine
+state changes across the board_validator, pieces, and teams. It serves as the **engine
 layer responsible for persistent state modification** based on accepted moves.
 
 DEPENDENCIES:

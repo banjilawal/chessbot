@@ -82,7 +82,7 @@ class InvalidTravelActorException(TravelActorException, ValidationException):
 class TravelActorNotFoundException(TravelActorException, InconsistencyException):
   ERROR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate was not found during the board_candidate search. There may be a data inconsistency."
+    "TravelEvent actor_candidate was not found during the board_validator search. There may be a data inconsistency."
   )
 
 
@@ -100,14 +100,14 @@ class ActorNotOnBoardCannotMoveException(TravelActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate is not on the board_candidate. Its position history is empty. Actor cannot travel."
+    "TravelEvent actor_candidate is not on the board_validator. Its position history is empty. Actor cannot travel."
   )
 
 class CapturedActorCannotMoveException(TravelActorMovingException):
   """"""
   ERROR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate has been captured by the enemy. Captured pieces are not on the board_candidate."
+    "TravelEvent actor_candidate has been captured by the enemy. Captured pieces are not on the board_validator."
     "Actor cannot travel."
   )
 
@@ -117,11 +117,11 @@ class TravelActorSquareNotFoundException(TravelActorException, InconsistencyExce
   """"""
   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "BoardSearch did not find a square associated with the actor's coord. There may be a data "
+    "BoardSearch did not find a square associated with the actor_candidate's coord. There may be a data "
     "inconsistency."
   )
 
 class SquareMisMatchesTravelActorException(TravelActorException, InconsistencyException):
   """"""
   ERROR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
-  DEFAULT_MESSAGE = "The square does not contain the actor. There may be a data inconsistency."
+  DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a data inconsistency."

@@ -1,7 +1,7 @@
-# chess/board_candidate/__init__.py
+# chess/board_validator/__init__.py
 
 """
-Module: chess.board_candidate
+Module: chess.board_validator
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

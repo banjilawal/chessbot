@@ -93,7 +93,7 @@ class GameDisplay:
 
     for square in self.chess_board.occupied_squares():
       piece = square.occupant
-      # Skip drawing the dragged discover at its old board_candidate position
+      # Skip drawing the dragged discover at its old board_validator position
       if dragged_state and piece is dragged_state.chess_piece:
         continue
       self.draw_chess_piece(piece)
@@ -214,7 +214,7 @@ class GameDisplay:
     proposed_col = (mouse_position[0] - drag_state.offset_x) // self.cell_px
     proposed_row = (mouse_position[1] - drag_state.offset_y) // self.cell_px
 
-    # Clamp within board_candidate
+    # Clamp within board_validator
     proposed_col = max(0, min(proposed_col, 7))
     proposed_row = max(0, min(proposed_row, 7))
 
@@ -251,7 +251,7 @@ class GameDisplay:
 
   def is_position_valid_for_drag(self, chess_piece: Piece, test_coordinate: Coord) -> bool:
     """Combined state for visual dragging"""
-    # 1. Check board_candidate's official position (for static entities)
+    # 1. Check board_validator's official position (for static entities)
     if not chess_piece.rank.walk.is_walkable(chess_piece, test_coordinate):
       return False
     return True

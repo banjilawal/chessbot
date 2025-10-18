@@ -60,6 +60,7 @@ from chess.commander import Commander
 from chess.team import TeamSchema
 
 
+
 @AutoId()
 class Team:
   """
@@ -74,6 +75,7 @@ class Team:
     * `_roster` (`List[Piece]`): List of chess pieces on the team.
     * `_hostages` (`List[Piece]`): List of captured enemy pieces.
   """
+  MAX_ROSTER_SIZE = 16
 
   id: int
   _commander: Commander

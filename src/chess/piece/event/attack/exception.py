@@ -99,7 +99,7 @@ class AttackEventException(OccupationEventException):
 
   PURPOSE:
     Used when an error occurs in the course of an attack or capture
-    (e.g., invalid target, rollback during capture, inconsistent board_candidate state).
+    (e.g., invalid target, rollback during capture, inconsistent board_validator state).
   """
   DEFAULT_CODE = "ATTACK_ERROR"
   DEFAULT_MESSAGE = "An error occurred during an attack or capture transaction."
@@ -154,7 +154,7 @@ class HostageAdditionRollbackException(AttackEventException, RollbackException):
 
 class BoardPieceRemovalRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "BOARD_REMOVAL_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to remove captured actor_candidate from board_candidate; rollback performed."
+  DEFAULT_MESSAGE = "Failed to remove captured actor_candidate from board_validator; rollback performed."
 
 
 class SquareOccupationRollbackException(AttackEventException, RollbackException):

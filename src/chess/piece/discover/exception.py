@@ -69,15 +69,15 @@ class DiscoveryException(ChessException):
   """
   Super class of all exceptions team Board object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
-  all board_candidate exceptions
+  all board_validator exceptions
   """
   ERROR_CODE = "DISCOVERY_ERROR"
   DEFAULT_MESSAGE = "Discovery instance raised an exception."
   
 class InvalidDiscoveryException(DiscoveryException, ValidationException):
   """
-  Raised by DiscoveryValidator if board_candidate fails sanity checks. Exists primarily to catch all
-  exceptions raised validating an existing board_candidate
+  Raised by DiscoveryValidator if board_validator fails sanity checks. Exists primarily to catch all
+  exceptions raised validating an existing board_validator
   """
   ERROR_CODE = "DISCOVERY_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Discovery validation failed."
@@ -93,7 +93,7 @@ class NullDiscoveryException(DiscoveryException, NullException):
 class DiscoveryBuilderException(DiscoveryException, BuilderException):
   """
   Raised when BoardBuilder encounters an error while building team team. Exists primarily to
-  catch all exceptions raised building team new board_candidate
+  catch all exceptions raised building team new board_validator
   """
   ERROR_CODE = "DISCOVERY_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Discovery build failed."

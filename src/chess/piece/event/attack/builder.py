@@ -58,7 +58,7 @@ class AttackEventBuilder(Enum):
       `event_id`(`int`): The unique id for the attackEvent. Must pass `IdValidator` checks.
       `actor_candidate`(`Piece`): Initiates attack after successful validate`.
       `enemy`(`Piece`): The `Piece` attackned by `actor_candidate`.
-      `roster`(`ExecutionContext`): `roster.board_candidate` verifies `actor_candidate` and `enemy` are on the board_candidate.
+      `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
     Returns:
       BuildResult[AttackEvent]: A `BuildResult` containing either:

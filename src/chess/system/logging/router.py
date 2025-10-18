@@ -20,7 +20,7 @@ Created: 2025-09-28
 # DEPENDENCIES:
 
 # CONTAINS:
- * `TravelEventBuilder`
+ * `TravelEventFactory`
 """
 from functools import wraps
 from typing import Any, Callable, Optional, TypeVar

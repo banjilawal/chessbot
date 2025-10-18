@@ -1,4 +1,4 @@
-# chess/commander/validation.py
+# chess/commander/validator.py
 
 """
 Module: `chess.commander.validation`

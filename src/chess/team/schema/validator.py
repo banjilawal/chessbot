@@ -1,4 +1,4 @@
-# src/chess/teamSchema/schema/validation.py
+# src/chess/teamSchema/schema/validator.py
 
 """
 Module: chess.teamSchema.validator

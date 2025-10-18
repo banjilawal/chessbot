@@ -1,4 +1,4 @@
-# chess/board_candidate/commander__init__.py
+# chess/board_validator/commander__init__.py
 
 """
 Module: `chess.commander`
