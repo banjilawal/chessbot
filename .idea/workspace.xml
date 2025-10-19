@@ -5,32 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/discover/dto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/discover/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/dto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square_iterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square_iterator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/commander/commander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/commander.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/team_placement_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/analyze/scout_report_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/engine/scout/scout.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/engine/scout/scout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/discoveries.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/discoveries.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/discovery.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/discover/discovery.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/occupation/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/occupation/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/validation/actor/actor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/validation/actor/actor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/event/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/event/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank_spec.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank_spec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/examples.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/id/auto_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/id/auto_id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/assurance_test/validator/square_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/assurance_test/validator/square_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/chess_test/board/square_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/chess_test/board/square_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/search/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,6 +217,7 @@
     "Python.coordinate_stack_specification.executor": "Run",
     "Python.distance_magnitude_builder.executor": "Run",
     "Python.driver.executor": "Run",
+    "Python.exception.executor": "Run",
     "Python.find_missiing_package_init.executor": "Run",
     "Python.game.executor": "Run",
     "Python.id.executor": "Run",
@@ -273,7 +261,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece/discover",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -300,21 +288,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece" />
+      <recent name="$PROJECT_DIR$/src/chess/piece/model" />
       <recent name="$PROJECT_DIR$/src/chess/piece/discover" />
       <recent name="$PROJECT_DIR$/src/chess/piece/event/validation" />
       <recent name="$PROJECT_DIR$/src/chess/board" />
-      <recent name="$PROJECT_DIR$/src/chess/piece/event/builder" />
-      <recent name="$PROJECT_DIR$/src/chess/piece/event" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece/model" />
       <recent name="$PROJECT_DIR$/src/chess/piece/event/validation/actor" />
       <recent name="$PROJECT_DIR$/src/chess/system" />
       <recent name="$PROJECT_DIR$/src/chess/system/transaction" />
       <recent name="$PROJECT_DIR$/src/chess/system/event/transaction" />
-      <recent name="$PROJECT_DIR$/src/chess/piece" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.factory">
+  <component name="RunManager" selected="Python.exception">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -399,6 +387,26 @@
       <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exception" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/piece/search" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/piece/search/exception.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -445,52 +453,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/search/piece.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="piece (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/search" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/search/piece.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="team" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/side" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/side/team.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -570,11 +532,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.exception" />
         <item itemvalue="Python.factory" />
         <item itemvalue="Python.transaction" />
         <item itemvalue="Python.validator" />
         <item itemvalue="Python.__init__" />
-        <item itemvalue="Python.piece (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -697,7 +659,7 @@
       <workItem from="1760792160237" duration="25000" />
       <workItem from="1760816808765" duration="5492000" />
       <workItem from="1760841465022" duration="2480000" />
-      <workItem from="1760891475402" duration="3407000" />
+      <workItem from="1760891475402" duration="20992000" />
     </task>
     <servers />
   </component>

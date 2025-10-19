@@ -56,7 +56,7 @@ from typing import List
 
 from chess.coord import Coord
 from chess.piece import Piece
-from chess.board import Board, BoardSearchContext, BoardSearchContextValidator
+from chess.board import Board, BoardSearchContext, BoardSearchContextValidator, BoardValidator
 from chess.system import (
     Search, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException, 
     PieceSearchIdCollisionException
@@ -84,12 +84,12 @@ class BoardPieceSearch(Search[Board, Piece]):
     def search(cls, board: Board, search_context: BoardSearchContext) -> SearchResult[List[Piece]]:
         method = "BoardPieceSearch.old_search"
 
-        # board_validation = BoardValidator.validate(board_validator)
-        # if not board_validation.is_success():
-        #     return SearchResult(exception=board_validation.exception)
+        board_validation = BoardValidator.validate(board)
+        if board_validation.is_failure():
+            return SearchResult(exception=board_validation.exception)
 
         search_context_validation = BoardSearchContextValidator.validate(search_context)
-        if not search_context_validation.is_success():
+        if search_context_validation.is_failure():
             return SearchResult(exception=search_context_validation.exception)
 
         if search_context.id is not None:
@@ -132,7 +132,6 @@ class BoardPieceSearch(Search[Board, Piece]):
                 return BoardPieceSearch._resolve_matching_names(matches=matches, board=board)
         except Exception as e:
             return SearchResult(exception=e)
-
 
     @classmethod
     @LoggingLevelRouter.monitor
