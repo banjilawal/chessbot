@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/context/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/search/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/__init__.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -659,7 +645,7 @@
       <workItem from="1760792160237" duration="25000" />
       <workItem from="1760816808765" duration="5492000" />
       <workItem from="1760841465022" duration="2480000" />
-      <workItem from="1760891475402" duration="20992000" />
+      <workItem from="1760891475402" duration="22157000" />
     </task>
     <servers />
   </component>

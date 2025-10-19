@@ -2,7 +2,7 @@ from enum import Enum
 from typing import cast
 
 from chess.exception import SearchException
-from chess.piece.model.exception import CircularCaptureException
+from chess.piece.model.exception import PieceCapturingItSelfException
 from chess.commander.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
@@ -114,7 +114,7 @@ class TransferEventBuilder(Enum):
       if actor == enemy:
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          CircularCaptureException(CircularCaptureException.DEFAULT_MESSAGE)
+          PieceCapturingItSelfException(PieceCapturingItSelfException.DEFAULT_MESSAGE)
         )
 
       search_result = BoardSearch.square_by_coord(coord=enemy.current_position, board=context.board)

@@ -7,7 +7,7 @@ from chess.event import TargetSquareMismatchException, AttackEvent
 from chess.piece.event.attack.exception import AttackEventBuilderException
 from chess.piece.event.exception import TravelEventResourceNotFoundException
 from chess.piece import PieceValidator, InvalidPieceException, CombatantPiece
-from chess.piece.model.exception import CircularCaptureException, CaptureFriendException, KingCaptureException
+from chess.piece.model.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
 
 
 class AttackEventBuilder(Enum):
@@ -110,7 +110,7 @@ class AttackEventBuilder(Enum):
       if actor == enemy:
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          CircularCaptureException(CircularCaptureException.DEFAULT_MESSAGE)
+          PieceCapturingItSelfException(PieceCapturingItSelfException.DEFAULT_MESSAGE)
         )
 
       enemy_square_search = BoardSearch.square_by_coord(
@@ -159,13 +159,13 @@ class AttackEventBuilder(Enum):
       )
 
     except (
-            InvalidIdException,
-            InvalidPieceException,
-            CircularCaptureException,
-            TargetSquareMismatchException,
-            CaptureFriendException,
-            KingCaptureException,
-            TravelEventResourceNotFoundException
+        InvalidIdException,
+        InvalidPieceException,
+        PieceCapturingItSelfException,
+        TargetSquareMismatchException,
+        CaptureFriendException,
+        KingCaptureException,
+        TravelEventResourceNotFoundException
     ) as e:
       raise AttackEventBuilderException(f"{method}: {e}") from e
 

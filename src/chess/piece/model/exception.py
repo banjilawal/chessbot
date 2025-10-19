@@ -124,11 +124,11 @@ __all__ = [
   'UnsetCaptureException',
 
 #======================# PIECE CAPTURE EXCEPTIONS WITH ROLLBACK #======================#  
-  'RollBackCaptureException',
-  'CaptureFriendRolledBackException',
-  'KingCaptureRolledBackException',
-  'DoubleCaptureRolledBackException',
-  'UnsetCaptureRolledBackException',
+  'CaptureRollbackException',
+  'CaptureFriendRolledBackExceptionCapture',
+  'KingCaptureRolledBackExceptionCapture',
+  'DoubleCaptureRolledBackExceptionCapture',
+  'UnsetCaptureRolledBackExceptionCapture',
 
 #======================# ATTACKING PIECE EXCEPTIONS #======================#  
   'HostageActivityException',
@@ -310,16 +310,14 @@ class UnsetCaptureException(CapturePieceException):
   )
 
 
-class CircularCaptureException(CapturePieceException):
-  """
-  Raised if team piece tries to capture itself.
-  """
-  ERROR_CODE = "CIRCULAR_CAPTURE_ERROR"
+class PieceCapturingItSelfException(CapturePieceException):
+  """"""
+  ERROR_CODE = "PIECE_CAPTURING_IT_SELF_ERROR"
   DEFAULT_MESSAGE = "Piece cannot capture itself"
 
 
 #======================# PIECE CAPTURE EXCEPTIONS WITH ROLLBACK #======================#  
-class RollBackCaptureException(CapturePieceException, RollbackException):
+class CaptureRollbackException(CapturePieceException, RollbackException):
   """
   RollBackCapture exceptions should be raised in ACID transactions where team capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
@@ -327,7 +325,7 @@ class RollBackCaptureException(CapturePieceException, RollbackException):
   ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Capture raised an exception. Transaction rolled back."
 
-class CaptureFriendRolledBackException(RollBackCaptureException):
+class CaptureFriendRolledBackExceptionCapture(CaptureRollbackException):
   """
   Raised if team transaction attempts capturing team friend. The transaction
   was rolled back before raising this err.
@@ -337,7 +335,7 @@ class CaptureFriendRolledBackException(RollBackCaptureException):
     "Cannot capture team friend. Transaction rollback performed."
   )
 
-class KingCaptureRolledBackException(RollBackCaptureException):
+class KingCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
   Raised if team transaction attempts capturing an enemy. Kings can only be checked or
   checkmated. The transaction was rolled back before raising this err.
@@ -348,7 +346,7 @@ class KingCaptureRolledBackException(RollBackCaptureException):
     "Transaction rollback performed."
   )
 
-class DoubleCaptureRolledBackException(RollBackCaptureException):
+class DoubleCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
   Raised if team transaction attempts capturing an enemy combatant that is already
   team prisoner. The transaction was rolled back before raising this err.
@@ -359,7 +357,7 @@ class DoubleCaptureRolledBackException(RollBackCaptureException):
     "rollback performed."
   )
 
-class UnsetCaptureRolledBackException(RollBackCaptureException):
+class UnsetCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
   Raised if team transaction attempts setting prisoner's captor field null.
   The transaction was rolled back before raising this err.
@@ -371,7 +369,7 @@ class UnsetCaptureRolledBackException(RollBackCaptureException):
   )
 
 
-class CircularCaptureRolledBackException(CapturePieceException):
+class CaptureItSelfRolledBackException(CapturePieceException):
   """
   Raised if team transaction attempts to set team piece as its own captor. The transaction was
   rolled back before raising this err.
