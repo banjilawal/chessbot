@@ -1,4 +1,4 @@
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 from chess.rank.rank import Rank
 
 from chess.side.team import Side

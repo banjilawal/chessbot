@@ -168,7 +168,7 @@ def main():
   vector = Vector(x=3, y=1)
   chess_board = ChessBoardBuilder.build(chess_board_id=1)
   squares = chess_board.squares
-  coord = chess_board.squares[0][0].coord
+  coord = chess_board.squares[0][0].position
 
   square_iterator = SquareIterator(vector=vector, squares=squares, coord=coord)
 

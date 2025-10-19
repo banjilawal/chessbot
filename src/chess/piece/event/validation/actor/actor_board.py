@@ -9,7 +9,7 @@ Version: 1.0.0
 """
 from typing import cast, Tuple
 
-from chess.piece.piece import CombatantPiece
+from chess.piece.model.piece import CombatantPiece
 from chess.square import Square
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext

@@ -32,7 +32,7 @@ class SquareValidatorTest(unittest.TestCase):
     mock_square = create_autospec(Square, instance=True)
     mock_square.id=-1
     mock_square._name="A-1"
-    mock_square._coord=CoordTest.valid_mock_coord()
+    mock_square._position=CoordTest.valid_mock_coord()
 
     with self.assertRaises(SquareValidationException) as ctx:
       SquareValidator.validate(mock_square)
@@ -44,7 +44,7 @@ class SquareValidatorTest(unittest.TestCase):
     mock_square = create_autospec(Square, instance=True)
     mock_square.id=1
     mock_square._name="A"
-    mock_square._coord=CoordTest.valid_mock_coord()
+    mock_square._position=CoordTest.valid_mock_coord()
 
     with self.assertRaises(SquareValidationException) as ctx:
       SquareValidator.validate(mock_square)
@@ -56,7 +56,7 @@ class SquareValidatorTest(unittest.TestCase):
     mock_square = create_autospec(Square, instance=True)
     mock_square.id=1
     mock_square.name="A-1"
-    mock_square.coord=None
+    mock_square.position=None
 
     with self.assertRaises(SquareValidationException) as ctx:
       SquareValidator.validate(mock_square)

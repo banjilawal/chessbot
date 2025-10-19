@@ -42,24 +42,12 @@ class Discoveries:
 
   @property
   def items(self) -> List[Discovery]:
-    return self._items.copy()
+    return self._items
 
 
   def reset(self):
     self._items.clear()
 
-
-  def record_discovery(self, discovery: Discovery):
-    method = "Discoveries.record_discovery"
-
-    if discovery is None:
-      ThrowHelper.log_and_raise_error(
-        Discoveries,
-        NullDiscoveryException(f"{method}:{NullDiscoveryException.DEFAULT_MESSAGE}")
-      )
-
-    if discovery not in self._items:
-      self._items.append(discovery)
 
 
   def find_by_id(self, piece_id: int) -> SearchResult[Discovery]:
@@ -112,7 +100,7 @@ class Discoveries:
       if not coord_validation.is_success():
         return SearchResult(exception=coord_validation.exception)
 
-      discovery = next((discovery for discovery in self._items if discovery.coord == coord), None)
+      discovery = next((discovery for discovery in self._items if discovery.position == coord), None)
       if discovery is not None:
         return SearchResult(payload=discovery)
 

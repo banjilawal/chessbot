@@ -6,7 +6,7 @@ from assurance.exception.invalid_id import IdValidationException
 from assurance.exception.invalid_name import NameValidationException
 from chess.square import Square
 from chess.coord import Coord
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 from unit.chess_test.geometry.coord_test import CoordTest
 
 
@@ -21,7 +21,7 @@ class SquareTest(unittest.TestCase):
     square = create_autospec(Square, instance=True)
     square.id=square_id
     square.name=name
-    square.coord=coordinate
+    square.position=coordinate
     return square
 
   @patch('assurance.validators.coord.CoordValidator.validate')

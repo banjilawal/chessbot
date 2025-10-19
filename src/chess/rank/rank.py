@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from chess.board.board import Board
 from chess.coord import Coord
 from chess.geometry.quadrant import Quadrant
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 
 
 class Rank(ABC):

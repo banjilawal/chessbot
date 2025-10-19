@@ -3,7 +3,7 @@ from typing import List, TYPE_CHECKING
 
 from chess.exception.id.negative_id_exception import ChessException
 from chess.config.placement import PlacementChart
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 
 if TYPE_CHECKING:
   from chess.arena.arena import Arena
@@ -32,7 +32,7 @@ class TeamPlacementManager:
           square = arena.chess_board.find_square_by_name(square_name)
           # print("found square", square)
           square.occupant = chess_piece
-          chess_piece.positions.push_coord(square.coord)
+          chess_piece.positions.push_coord(square.position)
           # print(square)
 
 

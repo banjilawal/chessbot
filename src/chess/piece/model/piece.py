@@ -21,17 +21,15 @@ Notes:
   immutable in their core properties.
 """
 
-
-
 from abc import ABC
-from typing import Optional, cast
+from typing import List, Optional, cast
 
 from chess.rank import Rank
+from chess.team import Team
 from chess.coord import Coord
-from chess.system import IdValidator, NameValidator, InvalidNameException, InvalidIdException, AutoId, \
-  LoggingLevelRouter
-from chess.piece import CoordStack, Discovery, DiscoveryBuilder, Discoveries, PieceValidator, AutoDiscoveryException
-from chess.team import Team, TeamValidator, InvalidTeamException
+from chess.system import AutoId, LoggingLevelRouter
+from chess.piece import CoordStack, Discovery, Discoveries
+
 
 __all__ = [
   'Piece',
@@ -49,7 +47,7 @@ class Piece(ABC):
   The class is designed to be immutable with respect to its core properties (`id`, `name`, `rank`, `team`).
 
   Attributes:
-    _id (int): A unique identifier for the discover.
+    _piece_id (int): A unique identifier for the discover.
     _name (str): The name of the discover (e.g., "Pawn", "Queen").
     _team (Team): The team the discover belongs to.
     _rank (Rank): The rank that defines the discover's movement strategy.
@@ -65,55 +63,18 @@ class Piece(ABC):
   _rank: Rank
   _roster_number: int
   _current_position: Coord
-  _discoveries: Discoveries
   _positions: CoordStack
+  _discoveries: List[Discovery]
+
 
   @LoggingLevelRouter.monitor
   def __init__(self, name: str, rank: Rank, team: Team):
-    """Initializes team Piece instance.
-
-    Args:
-      piece_id (int): A unique identifier for the discover.
-      name (str): The name of the discover.
-      rank (Rank): The rank that defines the discover's movement strategy.
-      team (Team): The team the discover belongs to.
-
-    Raises:
-      InvalidIdException: If `discovery_id` fails validate checks.
-      InvalidNameException: If `name` fails validate checks.
-      InvalidTeamException: If `team` fails validate checks.
-    """
-
     method = "Piece.__init__"
-    #
-    # id_validation = IdValidator.validate(piece_id)
-    # if not id_validation.is_success():
-    #   raise InvalidIdException(f"Piece.__init__: {InvalidIdException.DEFAULT_MESSAGE}")
-    #
-    # name_validation = NameValidator.validate(name)
-    # if not name_validation.is_success():
-    #   raise InvalidNameException(
-    #     f"Piece.__init__: {InvalidNameException.DEFAULT_MESSAGE}"
-    #   )
-    #
-    # team_validation = TeamValidator.validate(team)
-    # if not team_validation.is_success():
-    #   raise InvalidTeamException(f"Piece.__init__: {InvalidTeamException.DEFAULT_MESSAGE}")
-    #
-    # team = cast(Team, team_validation.payload)
-
-    # self._id = cast(int, id_validation.payload)
-    # self._name = cast(str, name_validation.payload)
-    # self._rank = rank
-    #
-    # self._roster_number = len(team.roster) + 1
-    # self._team = team
-
     self._name = name
     self._team = team
     self._rank = rank
+    self._discoveries = []
 
-    self._discoveries = Discoveries()
     self._positions = CoordStack()
     self._current_position = self._positions.current_coord
 
@@ -124,7 +85,7 @@ class Piece(ABC):
   # @property
   # def id(self) -> int:
   #   """The unique ID of the discover."""
-  #   return self._id
+  #   return self._piece_id
 
 
   @property
@@ -158,65 +119,33 @@ class Piece(ABC):
 
 
   @property
-  def discoveries(self) -> Discoveries:
+  def discoveries(self) -> List[Discovery]:
     return self._discoveries
 
 
   def __eq__(self, other: object) -> bool:
-    """Compares two Piece instances for equality based on their ID."""
     if other is self:
       return True
-    if not isinstance(other, Piece):
-      return NotImplemented
+    if other in None:
+      return False
+    if not isinstance(other, 'Piece'):
+      return False
     return self.id == other.id
 
 
   def __hash__(self) -> int:
     """Returns the hash value of the Piece based on its ID."""
-    return hash(self._id)
+    return hash(self.id)
 
 
   def is_enemy(self, piece: 'Piece') -> bool:
-    """
-    Checks if another piece belongs to an opposing team.
-
-    Args:
-      piece (Piece): The other piece to compare.
-
-    Returns:
-      bool: `True` if the piece belongs to team different team, otherwise `False`.
-
-    Raises:
-      NullPieceException: If the provided discover is `None`.
-    """
-    method = "Piece.is_enemy"
     return self._team != piece.team
 
 
-  def record_discovery(self, piece: 'Piece'):
-    """
-    Records team piece discovered when scanning or moving on the board_validator.
+  def record_discovery(self, discovery: Discovery):
+    if discovery not in self._discoveries:
+      self._discoveries.record_discovery(discovery)
 
-    Args:
-      piece (Piece): The item that this piece has found.
-
-    Raises:
-      NullPieceException: If the found piece is `None`.
-      AutoDiscoveryException: If the piece wants tries to record team discover of itself.
-    """
-    method = "Piece.record_discovery"
-
-    try:
-      build_outcome = DiscoveryBuilder.build(observer=self, subject=piece)
-      if not build_outcome.is_success():
-        raise build_outcome.exception
-      discovery = build_outcome.payload
-
-      if discovery not in self._discoveries:
-        self._discoveries.record_discovery(discovery)
-
-    except Exception as e:
-      raise e
 
 
   def __str__(self) -> str:

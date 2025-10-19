@@ -261,8 +261,8 @@ class TravelTransaction(Transaction[TravelEvent]):
         exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
       )
 
-    directive.actor.positions.push_coord(directive.subject.coord)
-    if not directive.actor.current_position == directive.subject.coord:
+    directive.actor.positions.push_coord(directive.subject.position)
+    if not directive.actor.current_position == directive.subject.position:
       # Rollback all changes in reverse order
       directive.actor.positions.undo_push()
       actor_square.occupant = directive.actor

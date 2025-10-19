@@ -28,7 +28,7 @@ from chess.exception.search import PieceNotFoundException
 from chess.coord import Coord
 
 if TYPE_CHECKING:
-  from chess.piece.piece import Piece, CombatantPiece
+  from chess.piece.model.piece import Piece, CombatantPiece
 
 @auto_id
 class Board:

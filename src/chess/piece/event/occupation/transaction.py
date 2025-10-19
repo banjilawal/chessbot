@@ -268,8 +268,8 @@ class OccupationTransaction(OccupationTransaction[TransferEvent]):
         exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
       )
 
-    event.actor.positions.push_coord(event.subject.coord)
-    if not event.actor.current_position == event.subject.coord:
+    event.actor.positions.push_coord(event.subject.position)
+    if not event.actor.current_position == event.subject.position:
       # Rollback all changes in reverse order
       event.actor.positions.undo_push()
       actor_square.occupant = event.actor

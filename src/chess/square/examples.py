@@ -145,8 +145,8 @@ A `Square` can store team `Piece` object. All fields are immutable except for
 the `occupant`, which is managed by the `ChessBoard`.
 
 Attributes:
-  _id (int): A unique identifier for the square.
+  _piece_id (int): A unique identifier for the square.
   _name (str): The name of the square in chess notation (e.g., "A1", "B2").
-  _coord (Coord): The coordinate of the square on the chessboard.
+  _position (Coord): The coordinate of the square on the chessboard.
   _occupant (Optional[Piece]): The discover occupying the square, if any.
 """

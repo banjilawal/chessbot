@@ -58,7 +58,7 @@ class OccupationEventValidator(EventValidator[OccupationEvent]):
       if not destination_square_validation.is_success():
         raise InvalidSquareException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 
-      if event.subject.coord == event.actor.current_position:
+      if event.subject.position == event.actor.current_position:
         raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
       
       return Result(payload=event)

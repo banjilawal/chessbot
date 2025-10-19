@@ -5,7 +5,7 @@ from assurance.exception.invalid_id import IdValidationException
 from assurance.exception.invalid_name import NameValidationException
 from chess.rank.rank import Rank
 from chess.side.team import Side
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 
 
 

@@ -52,7 +52,7 @@ class ScoutReportAnalyzer:
       reverse=True,
       key=lambda vacancy: Distance(
         self._scout_coordinate,
-        vacancy.coord
+        vacancy.position
       ).magnitude
     )
     return vacant_squares
@@ -74,7 +74,7 @@ class ScoutReportAnalyzer:
     obstructions.sort(
       reverse=True,
       key=lambda blocker: Distance(
-        self._scout_coordinate, blocker.coord
+        self._scout_coordinate, blocker.position
       ).magnitude
     )
     return obstructions

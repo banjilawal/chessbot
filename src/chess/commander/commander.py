@@ -28,7 +28,7 @@ class Commander(ABC):
     if not name_validation.is_success():
       raise name_validation.exception
 
-    # self._id = cast(int, id_validation.payload)
+    # self._piece_id = cast(int, id_validation.payload)
     self._name = cast(str, name_validation.payload)
     self._teams = CommandHistory()
 
@@ -37,7 +37,7 @@ class Commander(ABC):
   #
   # @property
   # def id(self) -> int:
-  #   return self._id
+  #   return self._piece_id
   #
 
   @property

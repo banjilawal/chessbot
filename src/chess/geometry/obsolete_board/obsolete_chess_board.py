@@ -9,7 +9,7 @@ from typing import List, Optional, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-  from chess.piece.piece import Piece
+  from chess.piece.model.piece import Piece
   from chess.square import Square
   from chess.coord import Coord
 

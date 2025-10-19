@@ -7,19 +7,12 @@ Created: 2025-10-18
 Version: 1.0.0
 
 """
-from typing import TypeVar, cast, Any
+from typing import Tuple, TypeVar, cast, Any
 
-from chess.board.validator import BoardValidator
 from chess.square import Square
 from chess.system import LoggingLevelRouter, ValidationResult, ActorValidator
-from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext
-
-from chess.piece import (
-  Piece, CombatantPiece, PieceValidator, InvalidTravelActorException, ActorNotOnRosterCannotMoveException,
-  ActorNotOnBoardCannotMoveException, CapturedActorCannotMoveException, TravelActorNotFoundException,
-  TravelActorSquareNotFoundException, NullTravelActorException, SquareMisMatchesTravelActorException,
-  ActorBoardConsistencyValidator
-)
+from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext, BoardValidator
+from chess.piece import Piece, CombatantPiece, PieceValidator, ActorBoardConsistencyValidator
 
 A = TypeVar("A")
 X = TypeVar("X")
@@ -99,43 +92,50 @@ class TravelActorValidator:
       # Cast actor_candidate if validation is successful
       piece = cast(piece_validation.payload, Piece)
 
+      binding_validation = ActorBoardConsistencyValidator.validate(piece, board)
+      if binding_validation.is_failure():
+        return ValidationResult(exception=binding_validation.exception)
 
-
-
-
-
-      #========= Actor's Square Sanity Checks and  =========#
-      """
-      Ensure Actor_Candidate is on a square. Checking the position history is not enough because a captured piece 
-      will still have a position history but it should not be on the board. A thorough check will see if the piece 
-      was in the opposing team's hostages. Doing that will introduce more dependencies. Making sure Actor_Candidate 
-      is in the square is a good check.
-      """
-
-      # Find the square associated with the piece's last position.
-      actor_square_search = BoardSquareSearch.search(
-        board=board_validator,
-        search_context=BoardSearchContext(coord=actor_candidate.current_position)
-      )
-
-      if actor_square_search.is_empty():
-        return ValidationResult(exception=TravelActorSquareNotFoundException(
-          f"{method}: {TravelActorSquareNotFoundException.DEFAULT_MESSAGE}"
-        ))
-
-      if actor_square_search.is_failure():
-        return ValidationResult(exception=actor_square_search.exception)
-
-      # Just for safety cast the found square
-      square = cast(Square, actor_square_search.payload[0])
-
-      # If the piece is not the square's occupant it cannot be a TravelEvent's actor_candidate. Data inconsistency
-      # or some other integrity problem is likely.
-      if square.occupant is not piece:
-        return ValidationResult(exception=SquareMisMatchesTravelActorException(
-          f"{method}: {SquareMisMatchesTravelActorException.DEFAULT_MESSAGE}"
-        ))
-
-      return ValidationResult(payload=actor_square_search.payload[0])
+      return ValidationResult(payload=piece)
     except Exception as e:
-      return ValidationResult(exception=InvalidTravelActorException(f"{method}: {e}"))
+        return ValidationResult(exception=e)
+
+      #
+      #
+      #
+      #
+      # #========= Actor's Square Sanity Checks and  =========#
+      # """
+      # Ensure Actor_Candidate is on a square. Checking the position history is not enough because a captured piece
+      # will still have a position history but it should not be on the board. A thorough check will see if the piece
+      # was in the opposing team's hostages. Doing that will introduce more dependencies. Making sure Actor_Candidate
+      # is in the square is a good check.
+      # """
+      #
+      # # Find the square associated with the piece's last position.
+      # actor_square_search = BoardSquareSearch.search(
+      #   board=board_validator,
+      #   search_context=BoardSearchContext(coord=actor_candidate.current_position)
+      # )
+      #
+      # if actor_square_search.is_empty():
+      #   return ValidationResult(exception=TravelActorSquareNotFoundException(
+      #     f"{method}: {TravelActorSquareNotFoundException.DEFAULT_MESSAGE}"
+      #   ))
+      #
+      # if actor_square_search.is_failure():
+      #   return ValidationResult(exception=actor_square_search.exception)
+      #
+      # # Just for safety cast the found square
+      # square = cast(Square, actor_square_search.payload[0])
+      #
+      # # If the piece is not the square's occupant it cannot be a TravelEvent's actor_candidate. Data inconsistency
+      # # or some other integrity problem is likely.
+      # if square.occupant is not piece:
+      #   return ValidationResult(exception=SquareMisMatchesTravelActorException(
+      #     f"{method}: {SquareMisMatchesTravelActorException.DEFAULT_MESSAGE}"
+      #   ))
+    #
+    #   return ValidationResult(payload=actor_square_search.payload[0])
+    # except Exception as e:
+    #   return ValidationResult(exception=InvalidTravelActorException(f"{method}: {e}"))

@@ -5,7 +5,7 @@ from chess.transaction.orchestrator import TransactionOrchestrator
 from chess.rank.queen import Queen, PromotedQueen
 
 from chess.transaction.promotion.promote import PromotionRequestValidator
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 
 class PromotionException(RankException):
   ERROR_CODE = "RANK_PROMOTION_ERROR"

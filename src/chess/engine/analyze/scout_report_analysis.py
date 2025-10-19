@@ -2,7 +2,7 @@ from typing import List
 
 from chess.square import Square
 from chess.piece.discover import Discovery
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 
 
 class ScoutReportAnalysis:

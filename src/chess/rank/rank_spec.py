@@ -8,7 +8,7 @@ from chess.geometry.quadrant import Quadrant
 # class Quadrant(Enum):
 #   def __new__(cls, quad_id:int, null-pkg:Vector):
 #     obj = object.__new__(cls)
-#     obj._id = quad_id
+#     obj._piece_id = quad_id
 #     obj._vector = null-pkg
 #
 #     return obj

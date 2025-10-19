@@ -1,9 +1,9 @@
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 from chess.coord import Coord
 
 if TYPE_CHECKING:
-  from chess.piece.piece import Piece
+  from chess.piece.model.piece import Piece
 
 class Discovery:
   """
@@ -26,24 +26,26 @@ class Discovery:
     _coord (Coord): The board_validator coord where the discover was observed.
   """
 
-  _id: int
+  _piece_id: int
   _name: str
-  _team_id: int
   _ransom: int
   _rank_name: str
-  _coord: Coord
+  _team_id: int
+  _team_name: str
+  _position: Coord
 
   def __init__(self, piece: 'Piece'):
-    self._id = piece.id
+    self._piece_id = piece.id
     self._name = piece.name
     self._ransom = piece.rank.ransom
     self._rank_name = piece.rank.name
     self._team_id = piece.team.id
-    self._coord = piece.current_position
+    self._team_name = piece.team.schema.name
+    self._position = piece.current_position
 
   @property
   def id(self) -> int:
-    return self._id
+    return self._piece_id
 
   @property
   def name(self) -> str:
@@ -54,6 +56,10 @@ class Discovery:
     return self._team_id
 
   @property
+  def team_name(self):
+    return self._team_name
+
+  @property
   def rank_name(self) -> str:
     return self._rank_name
 
@@ -62,8 +68,19 @@ class Discovery:
     return self._ransom
 
   @property
-  def coord(self) -> Coord:
-    return self._coord
+  def position(self) -> Coord:
+    return self._position
+
+  def to_dict(self) -> dict:
+    return {
+      "id": self._piece_id,
+      "name": self._name,
+      "team_id": self._team_id,
+      "team_name": self._team_name,
+      "rank_name": self._rank_name,
+      "ransom": self._ransom,
+      "position": self._position
+    }
 
   def __eq__(self, other):
     """We have to use the coord because the id """
@@ -73,16 +90,16 @@ class Discovery:
       return False
     if not isinstance('Discovery', other):
       return False
-    return self._id == other.id and self._coord == other.coord
+    return self._piece_id == other.id and self._position == other.coord
 
 
   def __str__(self):
     return (
-      f"Discovery[id:{self._id} "
+      f"Discovery[id:{self._piece_id} "
       f"name:{self._name} "
       f"rank:{self._rank_name} "
       f"ransom:{self._ransom} "
-      f"coord:{self._coord}"
+      f"coord:{self._position}"
     )
 
 

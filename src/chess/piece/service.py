@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from chess.side.team import Side
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 from chess.piece.repo import ChessPieceRepo
 
 

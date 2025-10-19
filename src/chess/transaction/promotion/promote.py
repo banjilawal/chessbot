@@ -1,12 +1,12 @@
 from typing import Generic, TypeVar, cast
 
 from assurance.exception.invalid_id import IdValidationException
-from chess.piece.exception.invalid_piece import PieceValidationException
+from chess.piece.model.exception import PieceValidationException
 from assurance.exception.invalid_request import PromotionRequestValidationException
 
 from chess.system.transaction.result import TransactionResult
 from chess.system.id.validator import IdValidator
-from chess.piece.validator import PieceValidator
+from chess.piece.model.validator import PieceValidator
 from chess.rank.queen import PromotedQueen
 from chess.transaction.validators.base import RequestValidator
 from chess.system.permit import Event

@@ -219,15 +219,12 @@ class TargetSelector(BaseModel):
 from pydantic import BaseModel, Field, validator
 from typing import Optional, List, TYPE_CHECKING, Literal
 from uuid import UUID, uuid4
-from abc import ABC, abstractmethod
 
 # Forward references for models defined later in this file.
 # Pydantic handles these automatically, but explicit type checking
 # can be useful for external tools.
 if TYPE_CHECKING:
-  from chess.piece.piece import Piece
-  from chess.rank.rank import Rank
-  from chess.rank.walk import Walk
+  from chess.piece.model.piece import Piece
 
 # --- Constants for Chessboard Size ---
 ROW_SIZE = 8

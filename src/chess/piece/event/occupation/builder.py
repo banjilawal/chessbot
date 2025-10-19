@@ -2,7 +2,7 @@ from enum import Enum
 from typing import cast
 
 from chess.exception import SearchException
-from chess.piece.exception import CircularCaptureException
+from chess.piece.model.exception import CircularCaptureException
 from chess.commander.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper

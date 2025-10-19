@@ -17,7 +17,7 @@ from typing import List
 from chess.board.board import Board
 from chess.square import Square
 from chess.system.emitter import id_emitter
-from chess.piece.piece import Piece
+from chess.piece.model.piece import Piece
 from chess.engine.scout.report import ScoutReport
 
 
@@ -45,7 +45,7 @@ class Scout:
 
     for territory in self._scout.rank.quadrants:
       for square in chess_board.iterator(origin, territory.delta):
-        if not self._scout.rank.walk.is_walkable(self._scout, square.coord):
+        if not self._scout.rank.walk.is_walkable(self._scout, square.position):
           break
         if square.occupant is not None and square not in squares:
           squares.append(square)

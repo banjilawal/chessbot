@@ -61,9 +61,9 @@ class Square:
   None
 
   # ATTRIBUTES:
-    * `_id` (`int`): A unique identifier for the square.
+    * `_piece_id` (`int`): A unique identifier for the square.
     * `_name` (`str`): The name of the square.
-    * `_coord` (`Coord`): Address on the `Board`.
+    * `_position` (`Coord`): Address on the `Board`.
     * `_occupant` (`Optional[Piece]`): `Piece` of the square.`.
   """
   _name: str
@@ -80,7 +80,7 @@ class Square:
   # @property
   # def id(self) -> int:
   #   """The unique ID of the square."""
-  #   return self._id
+  #   return self._piece_id
 
 
   @property
