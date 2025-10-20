@@ -18,12 +18,7 @@ from chess.square import Square, SquareValidator
 from chess.system import Builder, LoggingLevelRouter, BuildResult
 from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext
 
-from chess.piece import (
-  Piece, CombatantPiece, AttackEvent, OccupationEvent, TravelEvent, EncounterEvent, PieceValidator,
-  TravelEventActorNotFoundException, ActorNotOnRosterCannotMoveException, ActorNotOnBoardCannotMoveException,
-  CapturedActorCannotMoveException, TravelEventResourceNotFoundException,  AutoTravelPieceException,
-  EventActorSquareNotFoundException,
-)
+
 
 
 class TravelEventFactory:
@@ -110,7 +105,7 @@ class TravelEventFactory:
       destination_occupant = destination_square.occupant
 
       if destination_occupant is None:
-        return BuildResult(payload=OccupationEvent(
+        return BuildResult(payload=OccupationEventValidator(
           actor=actor,
           actor_square=actor_square,
           destination_square=destination_square,

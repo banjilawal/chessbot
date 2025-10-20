@@ -152,11 +152,11 @@ class TravelEventBuildFailedException(TravelEventException, BuildFailedException
 
 class OccupationEventBuildFailedException(TravelEventBuildFailedException):
   """
-  Indicates OccupationEvent could not be built. Wraps and re-raises errors that occurred
+  Indicates OccupationEventValidator could not be built. Wraps and re-raises errors that occurred
   during build.
   """
   ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "OccupationEvent build failed."
+  DEFAULT_MESSAGE = "OccupationEventValidator build failed."
 
 class PieceException(ChessException):
   """

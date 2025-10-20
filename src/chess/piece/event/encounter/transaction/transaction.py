@@ -2,17 +2,6 @@
 Module: transaction
 Author: Banji Lawal
 Created: 2025-10-01
-
-Purpose:
-  Implements the `OccupationTransaction` class, responsible for managing the creation and recording of
-  team `Discovery` inside team `Square` by an actor_candidate.
-
-Contents:
-  - `OccupationTransaction:` Main class responsible for executing event directives.
-
-Notes:
-  This module is part of the chess.event.event.encounter package.
-  Exceptions raised during execution are defined in err.py and err.py.
 """
 
 from typing import cast

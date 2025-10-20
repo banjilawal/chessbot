@@ -60,11 +60,8 @@ VERSION: 1.0.0
 AUTHOR: Banji Lawal
 """
 
-from .exception import *
-from .event import OccupationEvent
-from .builder import TransferEventBuilder
-from .transaction import OccupationTransaction
-from .validator import TransferEventValidator
+from chess.piece.event.occupation.event.exception import *
+from chess.piece.event.occupation.event.validator import OccupationEventValidator
 
 
 
@@ -77,7 +74,7 @@ __package_name__ = "chess.event.event.occupation"
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-    'OccupationEvent',
+  'OccupationEventValidator',
 
   # Exception classes
   *exception.__all__,

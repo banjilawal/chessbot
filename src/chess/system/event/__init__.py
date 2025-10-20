@@ -7,7 +7,7 @@ Created: 2025-10-09
 """
 
 from .exception import *
-from .validator import *
+from .consistency import *
 
 from .event import Event
 
