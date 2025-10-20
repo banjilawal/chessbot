@@ -8,12 +8,12 @@ from chess.system import IdValidator, BuildResult, ExecutionContext
 from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidAttackException
 
 
-class ScanEventBuilder(Enum):
+class EncounterEventBuilder(Enum):
   """
   Builder class responsible for safely constructing `EncounterEvent` instances.
 
-  `ScanEventBuilder` ensures that `EncounterEvent` objects are always created successfully by performing comprehensive validate
-   checks during construction. This separates the responsibility of building from validating - `ScanEventBuilder`
+  `EncounterEventBuilder` ensures that `EncounterEvent` objects are always created successfully by performing comprehensive validate
+   checks during construction. This separates the responsibility of building from validating - `EncounterEventBuilder`
    focuses on creation while `ScanEventValidator` is used for validating existing `EncounterEvent` instances that are passed
    around the system.
 
@@ -23,7 +23,7 @@ class ScanEventBuilder(Enum):
   Usage:
     ```python
     # Safe scanEvent creation with validate
-    build_outcome = ScanEventBuilder.build(scanEvent_id=id_emitter.scanEvent_id, name="WN2", rank=Knight(), team=white_team)
+    build_outcome = EncounterEventBuilder.build(scanEvent_id=id_emitter.scanEvent_id, name="WN2", rank=Knight(), team=white_team)
     if not build_outcome.is_success():
       raise build_outcome.err
     scanEvent = build_outcome.payload
@@ -105,18 +105,18 @@ class ScanEventBuilder(Enum):
     Example:
       ```python
       # Valid scanEvent creation
-      build_outcome = ScanEventBuilder.build(value=1)
+      build_outcome = EncounterEventBuilder.build(value=1)
       if not build_outcome.is_success():
         return BuildResult(err=build_outcome.err)
       return BuildResult(payload=build_outcome.payload)
       ```
     """
-    method = "ScanEventBuilder.build"
+    method = "EncounterEventBuilder.build"
 
     try:
       id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
-        ThrowHelper.log_and_raise_error(ScanEventBuilder, id_validation)
+        ThrowHelper.log_and_raise_error(EncounterEventBuilder, id_validation)
 
 
       actor_validation = PieceValidator.validate(actor)
@@ -129,14 +129,14 @@ class ScanEventBuilder(Enum):
 
       if actor == subject:
         ThrowHelper.log_and_raise_error(
-          ScanEventBuilder,
+          EncounterEventBuilder,
           CircularDiscoveryException(CircularDiscoveryException.DEFAULT_MESSAGE)
         )
 
       search_result = BoardSearch.square_by_coord(coord=subject.current_position, board=context.board)
       if not search_result.payload == destination_square:
         ThrowHelper.log_and_raise_error(
-          ScanEventBuilder,
+          EncounterEventBuilder,
           TargetSquareMismatchException(
             f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
           )
