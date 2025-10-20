@@ -39,7 +39,7 @@ From `chess.system`:
     `IdValidator`, `NameValidator`
 
 From `chess.piece`:
-    `Piece`, `NullPiece`, `PieceBuildFailedException`, `PieceSchema`
+    `Piece`, `NullPiece`, `AttackBuildFailedException`, `PieceSchema`
 
 From `chess.commander`:
   `Commander`, `CommanderValidator`,

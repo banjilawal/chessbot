@@ -39,7 +39,7 @@ EXCEPTIONS:
   PieceCoordNullException: Piece coordinate is null
   SetCaptorNullException: Setting null captor
   PieceValidationException:raised if PieceValidation fails
-  NullPieceException: Abstract base class for null enemy exceptions.
+  NullAttackException: Abstract base class for null enemy exceptions.
   NullHostagePieceException: Raised when team team tries to add team null hostage enemy to its roster.
   NullCombatantPieceException: Raised when team team tries to remove team captured member but the captor is null.
   NullKingPieceException: Raised when team king enemy reference is null.
@@ -47,12 +47,12 @@ EXCEPTIONS:
 
 USAGE:
   # >>> from chess.enemy.team_exception import PieceCoordNullException
-  # >>> from chess.enemy.team_exception.null import NullPieceException
+  # >>> from chess.enemy.team_exception.null import NullAttackException
   #
   # >>> if enemy.current_position is None:
   # >>>   raise PieceCoordNullException("Piece coordinate is null")
-  # >>> from chess.enemy.team_exception.null import NullPieceException
-  # >>> raise NullPieceException(f"{NullPieceException.DEFAULT_MESSAGE}")
+  # >>> from chess.enemy.team_exception.null import NullAttackException
+  # >>> raise NullAttackException(f"{NullAttackException.DEFAULT_MESSAGE}")
 
 ___
 

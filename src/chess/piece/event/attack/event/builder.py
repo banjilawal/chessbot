@@ -4,9 +4,9 @@ from assurance import ThrowHelper
 from chess.board import BoardSearch
 from chess.system import IdValidator, BuildResult, InvalidIdException
 from chess.event import TargetSquareMismatchException, AttackEvent
-from chess.piece.event.attack.exception import AttackEventBuilderException
+from chess.piece.event.attack.event.exception import AttackEventBuilderException
 from chess.piece.event.exception import TravelEventResourceNotFoundException
-from chess.piece import PieceValidator, InvalidPieceException, CombatantPiece
+from chess.piece import PieceValidator, InvalidAttackException, CombatantPiece
 from chess.piece.model.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
 
 
@@ -101,11 +101,11 @@ class AttackEventBuilder(Enum):
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: AttackEvent actor_candidate failed validate")
+        raise InvalidAttackException(f"{method}: AttackEvent actor_candidate failed validate")
 
       enemy_validation = PieceValidator.validate(enemy)
       if not enemy_validation.is_success():
-        raise InvalidPieceException(f"{method}: AttackEvent enemy failed validate")
+        raise InvalidAttackException(f"{method}: AttackEvent enemy failed validate")
 
       if actor == enemy:
         ThrowHelper.log_and_raise_error(
@@ -160,7 +160,7 @@ class AttackEventBuilder(Enum):
 
     except (
         InvalidIdException,
-        InvalidPieceException,
+        InvalidAttackException,
         PieceCapturingItSelfException,
         TargetSquareMismatchException,
         CaptureFriendException,

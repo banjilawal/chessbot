@@ -45,7 +45,6 @@ from chess.system import ChessException, ResultException, ContextException
 __all__ = [
   'TransactionException',
   'TransactionResultException',
-  'ExecutionContextException'
 ]
 
 
@@ -60,14 +59,7 @@ class TransactionException(ChessException):
 
 
 #======================# EVENT VALIDATION EXCEPTIONS #======================#
-class ExecutionContextException(ContextException):
-  """
-  Super class of all exceptions `ExecutionContext` object raises. Do not use directly. Subclasses give
-  details useful for debugging. This class exists primarily to allow catching all `ExecutionContext`
-  exceptions.
-  """
-  ERROR_CODE = "EXECUTION_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "ExecutionContext raised an exception."
+
 
 class TransactionResultException(ResultException):
   """

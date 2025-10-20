@@ -1,6 +1,6 @@
 from typing import Generic, TypeVar, cast
 
-from chess.piece import Piece, CombatantPiece, KingPiece, PieceValidator, InvalidPieceException
+from chess.piece import Piece, CombatantPiece, KingPiece, PieceValidator, InvalidAttackException
 from chess.system import Result, ExecutionContext
 from chess.system.actor.exception import (
   CapturedActorCannotActException, ActorPlacementRequiredException,
@@ -19,18 +19,18 @@ class ActorValidator:
       - `id` does not fail validator
       - `actor_candidate` is team valid chess enemy
       - `target` is team valid square
-    Any validate failure raises an `InvalidPieceException`.
+    Any validate failure raises an `InvalidAttackException`.
 
     Argument:
       `candidate` (`Piece`): `piece `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
-        `InvalidPieceException` otherwise.
+        `InvalidAttackException` otherwise.
 
     Raises:
       `TypeError`: if `candidate` is not OperationEvent
-      `NullPieceException`: if `candidate` is null
+      `NullAttackException`: if `candidate` is null
 
       `InvalidIdException`: if invalid `id`
       `PieceValidationException`: if `actor_candidate` fails validator
@@ -39,7 +39,7 @@ class ActorValidator:
       `AutoOccupationException`: if target already occupies the square
       `KingAttackException`: if the target square is occupied by an enemy king
 
-      `InvalidPieceException`: Wraps any preceding exceptions
+      `InvalidAttackException`: Wraps any preceding exceptions
     """
     method = "ActorValidator.validate"
 
@@ -73,9 +73,9 @@ class ActorValidator:
       return Result(payload=piece)
 
     except (
-      InvalidPieceException,
-      ActorNotOnBoardException,
-      CapturedActorCannotActException
+        InvalidAttackException,
+        ActorNotOnBoardException,
+        CapturedActorCannotActException
     ) as e:
       raise InvalidActorException( f"{method}: {InvalidActorException.DEFAULT_MESSAGE}") from e
 

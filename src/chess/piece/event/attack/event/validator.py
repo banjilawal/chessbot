@@ -1,7 +1,7 @@
 from typing import Generic, TypeVar, cast
 
 from chess.event import EventValidator
-from chess.piece import PieceValidator, InvalidPieceException
+from chess.piece import PieceValidator, InvalidAttackException
 from chess.square import SquareValidator, InvalidSqaureException
 from chess.system import Result, IdValidator, InvalidIdException
 from chess.piece.event import (
@@ -64,7 +64,7 @@ class AttackEventValidator(EventValidator[A], Generic[T]):
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: actor_candidate validation failed.")
+        raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 
       destination_square_validation = SquareValidator.validate(event.destination_square)
       if not destination_square_validation.is_success():
@@ -78,7 +78,7 @@ class AttackEventValidator(EventValidator[A], Generic[T]):
     except (
         TypeError,
         InvalidIdException,
-        InvalidPieceException,
+        InvalidAttackException,
         InvalidSqaureException,
         NullAttackEventException,
         CircularOccupationException

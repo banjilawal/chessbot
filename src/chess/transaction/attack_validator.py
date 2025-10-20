@@ -3,7 +3,7 @@ from typing import Generic, TypeVar, cast
 from chess.board import NullBoardException
 from chess.system import Result, Validator
 from chess.transaction import CaptureContext
-from chess.piece import PieceValidator, InvalidPieceException, CombatantPiece
+from chess.piece import PieceValidator, InvalidAttackException, CombatantPiece
 
 from chess.transaction.exception import (
   NullCaptureContextException, AutoCaptureException, FriendlyFireException, EnemyNotOnBoardException,
@@ -65,11 +65,11 @@ class AttackValidator(Validator):
 
       piece_validation = PieceValidator.validate(context.piece)
       if not piece_validation.is_success():
-        raise InvalidPieceException(f"{method}: the piece is invalid")
+        raise InvalidAttackException(f"{method}: the piece is invalid")
 
       enemy_validation = PieceValidator.validate(context.enemy)
       if not enemy_validation.is_success():
-        raise InvalidPieceException(f"{method}: the enemy is not team valid piece")
+        raise InvalidAttackException(f"{method}: the enemy is not team valid piece")
 
       if context.piece is context.enemy:
         raise AutoCaptureException(f"{method}: {AutoCaptureException.DEFAULT_MESSAGE}")
@@ -105,7 +105,7 @@ class AttackValidator(Validator):
         TypeError,
         NullCaptureContextException,
         NullCaptureContextException,
-        InvalidPieceException,
+        InvalidAttackException,
         AutoCaptureException,
         FriendlyFireException,
         KingTargetException,

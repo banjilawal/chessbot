@@ -8,7 +8,7 @@ from chess.square import Square
 from assurance import ThrowHelper
 from chess.event import AttackEvent, AttackEventBuilderException, TargetSquareMismatchException
 from chess.system import IdValidator, BuildResult, ExecutionContext
-from chess.piece import Piece, PieceValidator, InvalidPieceException, CombatantPiece, \
+from chess.piece import Piece, PieceValidator, InvalidAttackException, CombatantPiece, \
   CaptureFriendException, KingCaptureException
 
 
@@ -105,11 +105,11 @@ class TransferEventBuilder(Enum):
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: AttackEvent actor_candidate failed validate")
+        raise InvalidAttackException(f"{method}: AttackEvent actor_candidate failed validate")
 
       enemy_validation = PieceValidator.validate(enemy)
       if not enemy_validation.is_success():
-        raise InvalidPieceException(f"{method}: AttackEvent enemy failed validate")
+        raise InvalidAttackException(f"{method}: AttackEvent enemy failed validate")
 
       if actor == enemy:
         ThrowHelper.log_and_raise_error(

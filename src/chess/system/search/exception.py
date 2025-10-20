@@ -1,69 +1,18 @@
-# src/chess/system/old_search/exception.py
+# src/chess/system/search/exception.py
 
 """
 Module: chess.system.old_search.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
-
-# SECTION 1 - Purpose:
-This module provides:
-  1. A satisfaction of the `ChessBot` integrity requirement.
-  2. A satisfaction of the `ChessBot` reliability requirement.
-
-# SECTION 2 - Scope:
-The module's effects and actions cover exceptions raised by implementors of the `Search` interface.
-
-# SECTION 3: Limitations
-  1. Does not provide granular, precise information pertinent to debugging. The module's
-      scope it too wide for that.
-
-# SECTION 4 - Design Considerations and Themes:
-The major theme influencing the modules design are
-  1. Single responsibility.
-  2. Discoverability.
-  3. Encapsulations.
-
-# SECTION 5- Features Supporting Requirements:
-  1. The ability to handle errors without crashing the application is a reliability feature.
-  2. Ensuring validation results are communicated are sent to clients is an integrity feature.
-
-# SECTION 6 - Feature Delivery Mechanism:
-  1. Verify existing entities meet minimum requirements for use in the system.
-  2. A description of an error condition, boundary violation, experienced or caused by an entity in
-      the validation domain.
-  3. The root of a scalable, modular hierarchy for validation related exceptions.
-
-# SECTION 7 - Dependencies:
-* From `chess.system`:
-    `ChessException`
-
-# SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `SearchException`,
-`SearchParamException`, `RowAboveBoundsException`).
-  * `SearchException`
-  * `SearchParamException`
-  * `ImpossibleFatalResultException`
 """
 
 from chess.system import ChessException
 
 __all__ = [
   'SearchException',
-  'SearchParamException',
   'ImpossibleFatalResultException',
-
-#======================# SEARCH_COLLISION EXCEPTIONS #======================#
-  'SearchCollisionException',
-  'PieceSearchIdCollisionException',
-  'PieceSearchNameCollisionException',
-  'PieceSearchCoordCollisionException',
-
-  'SquareSearchIdCollisionException',
-  'SquareSearchNameCollisionException',
-  'SquareSearchCoordCollisionException',
-
-  'TeamSearchIdCollisionException'
+  'SearchCollisionException'
 ]
 
 class SearchException(ChessException):
@@ -75,16 +24,6 @@ class SearchException(ChessException):
   DEFAULT_CODE = "SEARCH_ERROR"
   DEFAULT_MESSAGE = "Search raised an exception."
 
-
-class SearchParamException(SearchException):
-  """
-  This is different from failed validation checks. Might not be
-  necessary.
-  """
-  DEFAULT_CODE = "SEARCH_PARAM_ERROR"
-  DEFAULT_MESSAGE = "Search parameters raised an exception."
-
-
 class ImpossibleFatalResultException(SearchException):
   """
   This is for sanity checking. Events and transactions need to ensure
@@ -95,62 +34,15 @@ class ImpossibleFatalResultException(SearchException):
   """
   DEFAULT_CODE = "IMPOSSIBLE_FATAL_RESULT_ERROR"
   DEFAULT_MESSAGE = (
-    "The old_search transaction should be impossible. The transaction "
-    "indicates team major data inconsistency or system error"
+    "The search result should be impossible to get. This indicates a major data inconsistency or system error."
   )
 
 #======================# SEARCH_COLLISION EXCEPTIONS #======================#
 class SearchCollisionException(SearchException):
   DEFAULT_CODE = "SEARCH_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one entity had a property that should be unique. There"
-    " may be a data inconsistency."
+    "Search results contains multiple records for property that should be unique. There may be data inconsistencies."
   )
-
-class PieceSearchNameCollisionException(SearchCollisionException):
-  DEFAULT_CODE = "PIECE_SEARCH_NAME_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "More than one Piece found with the same name. There may be a data inconsistency."
-)
-
-class PieceSearchIdCollisionException(SearchCollisionException):
-  DEFAULT_CODE = "PIECE_SEARCH_ID_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "More than one Piece found with the same id. There may be a data inconsistency."
-  )
-
-class PieceSearchCoordCollisionException(SearchCollisionException):
-  DEFAULT_CODE = "PIECE_SEARCH_COORD_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "More than one Piece found at the same coordinate. There may be a data inconsistency."
-  )
-
-
-class SquareSearchIdCollisionException(SearchCollisionException):
-  DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "More than one Square found with the same id. There may be a data inconsistency."
-  )
-
-
-class SquareSearchNameCollisionException(SearchCollisionException):
-  DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "More than one Square found with the same name. There may be a data collision"
-  )
-
-class SquareSearchCoordCollisionException(SearchCollisionException):
-  DEFAULT_CODE = "SQUARE_SEARCH_COORD_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "More than one Square found at the same coordinate. There may be a data inconsistency."
-  )
-
-class TeamSearchIdCollisionException(SearchCollisionException):
-  DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "More than one Team found with the same name. There may be a data inconsistency."
-  )
-
 
 
 

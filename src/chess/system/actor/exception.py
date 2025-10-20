@@ -42,7 +42,7 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 """
 
 from chess.exception import RollbackException
-from chess.piece import PieceException, InvalidPieceException
+from chess.piece import AttackException, InvalidAttackException
 
 __all__ = [
   'ActorException',
@@ -66,7 +66,7 @@ __all__ = [
   'SubjectPlacementRequiredException'
 ]
 
-class ActorException(PieceException):
+class ActorException(AttackException):
   """
   Super class of all exceptions an actor_candidate object can raise. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
@@ -88,7 +88,7 @@ class ActorRollBackException(ActorException, RollbackException):
 
 
 #======================# ACTOR VALIDATION EXCEPTIONS #======================#  
-class InvalidActorException(ActorException, InvalidPieceException):
+class InvalidActorException(ActorException, InvalidAttackException):
   """
   Raised by ActorValidator if piece fails any conditions for acting on the board_validator.
   Exists primarily to catch all exceptions raised validating an existing piece
@@ -151,7 +151,7 @@ class CheckMatedKingActivityException(ActorException):
 
 
 #======================# SUBJECT EXCEPTIONS #======================#  
-class SubjectException(PieceException):
+class SubjectException(AttackException):
   """
   SubjectException classes are raised on team piece acted upon. They are raised on the same errors as ActorException,
   Using SubjectException makes tracing which side of the interaction is raising an error easier.
@@ -160,7 +160,7 @@ class SubjectException(PieceException):
   DEFAULT_MESSAGE = "A potential enemy piece raised an exception."
 
 
-class InvalidSubjectException(SubjectException, InvalidPieceException):
+class InvalidSubjectException(SubjectException, InvalidAttackException):
   """Raised if team required enemy fails validate."""
   ERROR_CODE = "SUBJECT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Required enemy failed validate. Actor cannot fire event onto enemy"

@@ -20,14 +20,14 @@ from typing import cast
 from chess.board import FailedPieceRemovalRolledBackException
 from chess.system import id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, TransferEventValidator
-from chess.piece.event.attack.exception import EmptyDestinationSquareRolledBackException
+from chess.piece.event.attack.event.exception import EmptyDestinationSquareRolledBackException
 
 from chess.square import Square
 from chess.commander.search import BoardSearch
 from chess.piece import CombatantPiece, Discovery, DiscoveryBuilder
 from chess.team import AddEnemyHostageRolledBackException
 from chess.team.exception import RemoveTeamMemberRolledBackException
-from chess.transaction import ExecutionContext, TransactionResult, CaptureContext
+from chess.transaction import TransactionResult, CaptureContext
 
 from chess.transaction import AttackValidator
 from chess.piece.event import (

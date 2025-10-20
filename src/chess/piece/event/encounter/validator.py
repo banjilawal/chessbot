@@ -3,7 +3,7 @@ from typing import TypeVar, cast
 from chess.board import BoardSearch
 from chess.event import AttackEvent, CircularOccupationException
 from chess.piece.event.encounter.exception import TargetSquareMismatchException, ScanSubjectException
-from chess.piece import PieceValidator, InvalidPieceException, CircularDiscoveryException, CombatantPiece
+from chess.piece import PieceValidator, InvalidAttackException, CircularDiscoveryException, CombatantPiece
 from chess.system import ExecutionContext, Result, IdValidator, InvalidIdException, Validator, LoggingLevelRouter
 from chess.piece import (
   EncounterEvent,
@@ -36,11 +36,11 @@ class EncounterEventValidator(Validator[EncounterEvent]):
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: EncounterEvent actor_candidate failed validate")
+        raise InvalidAttackException(f"{method}: EncounterEvent actor_candidate failed validate")
 
       subject_validation = PieceValidator.validate(event.subject)
       if not subject_validation.is_success():
-        raise InvalidPieceException(f"{method}: EncounterEvent enemy failed validate")
+        raise InvalidAttackException(f"{method}: EncounterEvent enemy failed validate")
 
       if event.actor == event.subject:
         raise CircularDiscoveryException(f"{method}: {CircularDiscoveryException.DEFAULT_MESSAGE}")
@@ -63,11 +63,11 @@ class EncounterEventValidator(Validator[EncounterEvent]):
       return Result(payload=event)
 
     except (
-            TypeError,
-            InvalidIdException,
-            NullEncounterEventException,
-            InvalidPieceException,
-            CircularOccupationException,
+        TypeError,
+        InvalidIdException,
+        NullEncounterEventException,
+        InvalidAttackException,
+        CircularOccupationException,
     ) as e:
       raise InvalidScanEventException(f"{method}: {InvalidScanEventException.DEFAULT_MESSAGE}") from e
 

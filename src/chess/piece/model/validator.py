@@ -55,8 +55,8 @@ from chess.team import Team, RosterNumberOutOfBoundsException
 from chess.rank import Bishop, King, Pawn, Queen, Rook, knight
 from chess.system import IdValidator, NameValidator, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
-  NullPieceException, Piece, PieceMissingCoordStackException, PieceMissingDiscoveryListException,
-  PieceRankOutOfBoundsException, PieceRosterNumberIsNullException, PieceTeamFieldIsNullException,
+  NullAttackException, Piece, AttackMissingCoordStackException, AttackMissingDiscoveryListException,
+  AttackRankOutOfBoundsException, AttackRosterNumberIsNullException, AttackTeamFieldIsNullException,
   UnregisteredTeamMemberException
 )
 
@@ -105,7 +105,7 @@ class PieceValidator(Validator[Piece]):
     try:
       # Prevents a null `Piece` being accepted as method argument.
       if candidate is None:
-        return ValidationResult(exception=NullPieceException(f"{method} {NullPieceException.DEFAULT_MESSAGE}"))
+        return ValidationResult(exception=NullAttackException(f"{method} {NullAttackException.DEFAULT_MESSAGE}"))
 
       if not isinstance(candidate, Piece):
         return ValidationResult(exception=TypeError(f"{method} Expected team Piece, got {type(candidate).__name__}"))
@@ -128,13 +128,13 @@ class PieceValidator(Validator[Piece]):
       # A `Piece` instance must have its `team` field set. This immutable field should have been set during
       # the build. If it's null there might be data loss or corruption.
       if piece.team is None:
-        return ValidationResult(exception=PieceTeamFieldIsNullException(
-          f"{method}: {PieceTeamFieldIsNullException.DEFAULT_MESSAGE}"
+        return ValidationResult(exception=AttackTeamFieldIsNullException(
+          f"{method}: {AttackTeamFieldIsNullException.DEFAULT_MESSAGE}"
         ))
 
       if piece.roster_number is None:
-        return ValidationResult(exception=PieceRosterNumberIsNullException(
-          f"{method}: {PieceRosterNumberIsNullException.DEFAULT_MESSAGE}"
+        return ValidationResult(exception=AttackRosterNumberIsNullException(
+          f"{method}: {AttackRosterNumberIsNullException.DEFAULT_MESSAGE}"
         ))
 
       if piece.roster_number < 1 or piece.roster_number > Team.MAX_ROSTER_SIZE:
@@ -143,8 +143,8 @@ class PieceValidator(Validator[Piece]):
         ))
 
       if not isinstance(piece.rank, [King, Queen, Bishop, knight, Rook, Pawn]):
-        return ValidationResult(exception=PieceRankOutOfBoundsException(
-          f"{method}: {PieceRankOutOfBoundsException.DEFAULT_MESSAGE}"
+        return ValidationResult(exception=AttackRankOutOfBoundsException(
+          f"{method}: {AttackRankOutOfBoundsException.DEFAULT_MESSAGE}"
         ))
 
       # This test will have to be removed because a valid piece that has been captured is taken of
@@ -156,13 +156,13 @@ class PieceValidator(Validator[Piece]):
       #   ))
 
       if piece.positions is None:
-        return ValidationResult(exception=PieceMissingCoordStackException(
-          f"{method}: {PieceMissingCoordStackException.DEFAULT_MESSAGE}"
+        return ValidationResult(exception=AttackMissingCoordStackException(
+          f"{method}: {AttackMissingCoordStackException.DEFAULT_MESSAGE}"
         ))
 
       if piece.discoveries is None:
-        return ValidationResult(exception=PieceMissingDiscoveryListException(
-          f"{method}: {PieceMissingDiscoveryListException.DEFAULT_MESSAGE}"
+        return ValidationResult(exception=AttackMissingDiscoveryListException(
+          f"{method}: {AttackMissingDiscoveryListException.DEFAULT_MESSAGE}"
         ))
 
       return ValidationResult(payload=piece)

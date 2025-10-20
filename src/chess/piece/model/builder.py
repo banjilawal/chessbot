@@ -44,7 +44,7 @@ CONTAINS:
 """
 
 from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext
-from chess.piece import Piece, PieceBuildFailedException, KingPiece, CombatantPiece, UnregisteredTeamMemberException
+from chess.piece import Piece, AttackBuildFailedException, KingPiece, CombatantPiece, UnregisteredTeamMemberException
 from chess.rank import Rank, RankValidator, King
 from chess.team import(
   Team, TeamValidator, TeamSearch, Datasource, FullRankQuotaException, ConflictingTeamAssignmentException
@@ -139,7 +139,7 @@ class PieceBuilder(Builder[Piece]):
       return BuildResult(payload=piece)
 
     except Exception as e:
-      raise PieceBuildFailedException(f"{method}: {e}")
+      raise AttackBuildFailedException(f"{method}: {e}")
 
 
 

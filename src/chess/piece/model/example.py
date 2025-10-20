@@ -41,9 +41,9 @@ All exceptions in `chess.piece` package have static fields:
 Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
 ### EXCEPTIONS
-  * `PieceException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
+  * `AttackException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
     more specific information.
-  * `NullPieceException`: The parent is `NullException`. `NullPieceException` is the parent of all exceptions
+  * `NullAttackException`: The parent is `NullException`. `NullAttackException` is the parent of all exceptions
     related to null pieces. Use more granular null exceptions that provide mmore specific information about the
     subclass instance that is null.
   * `NullKingPieceException`: Raised when team `kingPiece` reference is null
@@ -56,7 +56,7 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
   * `NullPieceValidatorException`: Raised if team null `PieceValidator` is passed as team parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-  * `PieceBuildFailedException`: Raised if there is an error during when team `PieceBuilder` is creating team new `Piece`
+  * `AttackBuildFailedException`: Raised if there is an error during when team `PieceBuilder` is creating team new `Piece`
     instance.
   * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as team parameter.
 
@@ -73,7 +73,7 @@ SetCaptorNullException: Setting null captor
 These examples show recommended workflows with `Piece` exceptions.
 
 ```python
-from chess.piece import CombatantPiece, Encounter, NullPieceException, AutoEncounterException
+from chess.piece import CombatantPiece, Encounter, NullAttackException, AutoEncounterException
 
 build_outcome = PieceBuilder.build(
   discovery_id=id_emitter.discovery_id,
@@ -89,7 +89,7 @@ if not build_outcome.is_success():
 black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 
 if black_bishop_2 is None:
-  raise NullPieceException(f'{NullPieceException.DEFAULT_MESSAGE}')
+  raise NullAttackException(f'{NullAttackException.DEFAULT_MESSAGE}')
 
 def create_encounter(actor_candidate: Piece, discover: Piece) -> Encounter:
   method = "create_encounter"
@@ -116,11 +116,100 @@ Args
 
 Raises:
   TypeError: if candidate is not Piece
-  NullPieceException: if candidate is null
+  NullAttackException: if candidate is null
 
   InvalidIdException: if invalid id
   InvalidNameException: if invalid name
   InvalidCoordException: if invalid coord
 
   PieceValidationException: Wraps any preceding exceptions
+"""
+# src/chess/system/event/exception.py
+
+"""
+Module: chess.system.event.exception
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` integrity requirement.
+  2. A satisfaction of the `ChessBot` reliability requirement.
+
+# SECTION 2 - Scope:
+The module's only covers exceptions raised by `IdValidator`;
+
+# SECTION 3: Limitations
+  1. Does not provide logic for fixing the errors or causing the exception being raised.
+       `IdValidator` is responsible for the logic which raises these exceptions.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. Discoverability.
+  3. Encapsulations.
+
+# SECTION 5- Features Supporting Requirements:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+
+
+# SECTION 6 - Feature Delivery Mechanism:
+1. Exceptions specific to verifying ids.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `ChessException`, `ContextException`, `ResultException`
+
+# SECTION 8 - Contains:
+See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+"""
+
+
+# src/chess/vector/exception.py
+
+"""
+Module: chess.vector.exception
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+SCOPE:
+-----
+This module is exclusively for defining all custom **exception classes** that are specific to the
+creation, validation, and manipulation of `Vector` objects.
+
+**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+`Vector`, `VectorBuilder`, and `VectorValidator`
+
+THEME:
+-----
+* Granular, targeted error reporting
+* Wrapping exceptions
+
+**Design Concepts**:
+  1. Each field and behavior in the `Vector` class has an exception specific to its possible
+      state, outcome, or behavior.
+
+PURPOSE:
+-------
+1. Centralized error dictionary for the `Vector` domain.
+2. Fast debugging using highly granular exception messages and naming to
+    find the source.
+3. Providing understandable, consistent information about failures originating from
+    the `Vector` domain.
+4. Providing a clear distinction between errors related to `Vector` instances and
+    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
+
+DEPENDENCIES:
+------------
+Requires base exception classes and constants from the core system:
+From `chess.system`:
+  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
+        `BuildFailedException`.
+
+CONTAINS:
+--------
+See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+`NullVectorException`, `InvalidVectorException`, ).
 """

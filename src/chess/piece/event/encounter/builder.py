@@ -5,7 +5,7 @@ from chess.square import Square
 from assurance import ThrowHelper
 from chess.event import ScanEvent, ScanEventBuilderException, TargetSquareMismatchException
 from chess.system import IdValidator, BuildResult, ExecutionContext
-from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidPieceException
+from chess.piece import Piece, CircularDiscoveryException, PieceValidator, InvalidAttackException
 
 
 class ScanEventBuilder(Enum):
@@ -121,11 +121,11 @@ class ScanEventBuilder(Enum):
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
-        raise InvalidPieceException(f"{method}: EncounterEvent actor_candidate failed validate")
+        raise InvalidAttackException(f"{method}: EncounterEvent actor_candidate failed validate")
 
       subject_validation = PieceValidator.validate(subject)
       if not subject_validation.is_success():
-        raise InvalidPieceException(f"{method}: EncounterEvent enemy failed validate")
+        raise InvalidAttackException(f"{method}: EncounterEvent enemy failed validate")
 
       if actor == subject:
         ThrowHelper.log_and_raise_error(
