@@ -7,15 +7,22 @@ Created: 2025-10-18
 Version: 1.0.0
 
 """
-from typing import Tuple, TypeVar, cast, Any
+from typing import TypeVar, cast, Tuple
 
+from chess.piece.event.validation.actor.exception import CheckMatedKingCannotMoveException, NoInitialPlacementException
+from chess.piece.model.piece import CombatantPiece, KingPiece
 from chess.square import Square
-from chess.system import LoggingLevelRouter, ValidationResult, ActorValidator
-from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext, BoardValidator
-from chess.piece import Piece, CombatantPiece, PieceValidator, ActorBoardConsistencyValidator
+from chess.system import BindingValidator, LoggingLevelRouter, ValidationResult, Validator
+from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext
 
-A = TypeVar("A")
-X = TypeVar("X")
+from chess.piece import (
+  ActorNotOnRosterCannotMoveException, CapturedActorCannotMoveException, Piece, InvalidTravelActorException,
+  ActorNotOnBoardCannotMoveException,
+  PieceValidator, TravelActorNotFoundException,
+  TravelActorSquareNotFoundException, SquareMisMatchesTravelActorException
+)
+
+T = TypeVar('T')
 
 """
 Implements the `OccupationExecutor` class, which handles executing event
@@ -28,7 +35,7 @@ Attributes:
   * `_run_scan`: Static method for handling discoveries on occupied squares.
   * `_switch_squares`: Static method the transferring team piece to team different `Square`.
 """
-class TravelActorValidator:
+class TravelActorValidator(Validator[Piece]):
   """
   # ROLE: Validator, Data Integrity
 
@@ -45,97 +52,47 @@ class TravelActorValidator:
   None
   """
 
-  _actor_validator: PieceValidator
-  _environment_validator: BoardValidator
-  _binding_validator: ActorBoardConsistencyValidator
-
-  def __init__(
-    self,
-    actor_validator: PieceValidator,
-    environment_validator: BoardValidator,
-    binding_validator: ActorBoardConsistencyValidator
-  ):
-    self._actor_validator = actor_validator
-    self._environment_validator = environment_validator
-    self._binding_validator = binding_validator
-
-  @classmethod
-  def create_default(cls) -> 'TravelActorValidator':
-    """Factory method for default configuration"""
-    return cls(
-      actor_validator=PieceValidator(),
-      environment_validator=BoardValidator(),
-      binding_validator=ActorBoardConsistencyValidator()
-    )
-
   @classmethod
   @LoggingLevelRouter.monitor
-  def validate(cls, actor_candidate: Any, environment_candidate: Any) -> ValidationResult[Piece]:
+  def validate(cls, candidate: T) -> ValidationResult[Piece]:
     """"""
     method = "TravelActorValidator.validate"
 
     try:
-      #========= Validate the Board_Candidate =========#
-      board_validation = BoardValidator.validate(environment_candidate)
-      if board_validation.is_failure():
-        return ValidationResult(exception=board_validation.exception)
+      validation = PieceValidator.validate(candidate)
+      if validation.is_failure():
+        return ValidationResult(exception=validation.exception)
 
-      # Cast board_validator if validation is successful
-      board = cast(board_validation.payload, Board)
+      actor = cast(Piece, validation.payload)
 
-      #========= Validate the Actor_Candidate =========#
-      # Do standard piece validations first
-      piece_validation = PieceValidator.validate(actor_candidate)
-      if piece_validation.is_failure():
-        return ValidationResult(exception=piece_validation.exception)
+      # If the piece has no position history its not on the board and cannot piece.
+      if actor.current_position is None or actor.positions.is_empty():
+        return ValidationResult(exception=NoInitialPlacementException(
+          f"{method}: {NoInitialPlacementException.DEFAULT_MESSAGE}"
+        ))
 
-      # Cast actor_candidate if validation is successful
-      piece = cast(piece_validation.payload, Piece)
+      # If the piece is not on its team roster it cannot be a TravelEvent actor_candidate. This might have been
+      # checked by the PieceValidator
+      team = actor.team
+      if actor not in team.roster:
+        return ValidationResult(exception=ActorNotOnRosterCannotMoveException(
+          f"{method}: {ActorNotOnRosterCannotMoveException.DEFAULT_MESSAGE}"
+        ))
 
-      binding_validation = ActorBoardConsistencyValidator.validate(piece, board)
-      if binding_validation.is_failure():
-        return ValidationResult(exception=binding_validation.exception)
+      # A captured combatant cannot be a TravelEvent actor_candidate. No need for validating a checkmated
+      # king as an actor_candidate because the game ends when a king is in checkmate.
+      if isinstance(actor, CombatantPiece) and actor.captor is not None:
+        return ValidationResult(exception=CapturedActorCannotMoveException(
+          f"{method}: {CapturedActorCannotMoveException.DEFAULT_MESSAGE}"
+        ))
 
-      return ValidationResult(payload=piece)
+      if isinstance(actor, KingPiece):
+        king_piece = cast(KingPiece, actor)
+        if king_piece.is_checkmated:
+          return ValidationResult(exception=CheckMatedKingCannotMoveException(
+            f"{method}: {CheckMatedKingCannotMoveException.DEFAULT_MESSAGE}"
+          ))
+
+      return ValidationResult(payload=actor)
     except Exception as e:
-        return ValidationResult(exception=e)
-
-      #
-      #
-      #
-      #
-      # #========= Actor's Square Sanity Checks and  =========#
-      # """
-      # Ensure Actor_Candidate is on a square. Checking the position history is not enough because a captured piece
-      # will still have a position history but it should not be on the board. A thorough check will see if the piece
-      # was in the opposing team's hostages. Doing that will introduce more dependencies. Making sure Actor_Candidate
-      # is in the square is a good check.
-      # """
-      #
-      # # Find the square associated with the piece's last position.
-      # actor_square_search = BoardSquareSearch.search(
-      #   board=board_validator,
-      #   search_context=BoardSearchContext(coord=actor_candidate.current_position)
-      # )
-      #
-      # if actor_square_search.is_empty():
-      #   return ValidationResult(exception=TravelActorSquareNotFoundException(
-      #     f"{method}: {TravelActorSquareNotFoundException.DEFAULT_MESSAGE}"
-      #   ))
-      #
-      # if actor_square_search.is_failure():
-      #   return ValidationResult(exception=actor_square_search.exception)
-      #
-      # # Just for safety cast the found square
-      # square = cast(Square, actor_square_search.payload[0])
-      #
-      # # If the piece is not the square's occupant it cannot be a TravelEvent's actor_candidate. Data inconsistency
-      # # or some other integrity problem is likely.
-      # if square.occupant is not piece:
-      #   return ValidationResult(exception=SquareMisMatchesTravelActorException(
-      #     f"{method}: {SquareMisMatchesTravelActorException.DEFAULT_MESSAGE}"
-      #   ))
-    #
-    #   return ValidationResult(payload=actor_square_search.payload[0])
-    # except Exception as e:
-    #   return ValidationResult(exception=InvalidTravelActorException(f"{method}: {e}"))
+      return ValidationResult(exception=e)

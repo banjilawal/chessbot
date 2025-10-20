@@ -49,10 +49,10 @@ The module provides an interface individual entities can use to for solving thei
 1. `PieceValidator`
 """
 
-from typing import cast, TypeVar, Any
+from typing import Tuple, Type, cast, TypeVar, Any
 
 from chess.team import Team, RosterNumberOutOfBoundsException
-from chess.rank import Bishop, King, Pawn, Queen, Rook, knight
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rook, knight
 from chess.system import IdValidator, NameValidator, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
   NullAttackException, Piece, AttackMissingCoordStackException, AttackMissingDiscoveryListException,
@@ -62,6 +62,7 @@ from chess.piece import (
 
 
 T = TypeVar('T')
+
 
 class PieceValidator(Validator[Piece]):
   """
@@ -79,6 +80,7 @@ class PieceValidator(Validator[Piece]):
   # ATTRIBUTES:
     None
   """
+  VALID_RANKS: tuple[Type, ...] = (King, Queen, Bishop, Knight, Rook, Pawn)
 
   @classmethod
   @LoggingLevelRouter.monitor
@@ -142,7 +144,7 @@ class PieceValidator(Validator[Piece]):
           f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
         ))
 
-      if not isinstance(piece.rank, [King, Queen, Bishop, knight, Rook, Pawn]):
+      if not isinstance(piece.rank, PieceValidator.VALID_RANKS):
         return ValidationResult(exception=AttackRankOutOfBoundsException(
           f"{method}: {AttackRankOutOfBoundsException.DEFAULT_MESSAGE}"
         ))

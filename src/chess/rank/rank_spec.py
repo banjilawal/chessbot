@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from typing import List, Optional
+from typing import List, Optional, Type
 
 from chess.rank.rank import Rank
 from chess.geometry.quadrant import Quadrant
@@ -17,6 +17,9 @@ from chess.geometry.quadrant import Quadrant
 
 
 class RankSpec(Enum):
+
+
+
   def __new__(cls, letter:str, quota:int, ransom:int, quadrants:List[Quadrant]):
     obj = object.__new__(cls)
     obj._letter = letter
@@ -74,6 +77,9 @@ class RankSpec(Enum):
 
     def quadrants_str(self) -> str:
         return " ".join(q.name for q in self._quadrants)
+
+    def valid_ranks(self):
+        return
 
 
     @staticmethod

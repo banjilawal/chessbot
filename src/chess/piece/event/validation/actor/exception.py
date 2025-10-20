@@ -82,34 +82,58 @@ class InvalidTravelActorException(TravelActorException, ValidationException):
 class TravelActorNotFoundException(TravelActorException, InconsistencyException):
   ERROR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate was not found during the board_validator search. There may be a data inconsistency."
+    "TravelEvent actor_candidate was not found during the board search. There may be a data inconsistency."
   )
 
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
 class TravelActorMovingException(TravelActorException):
   ERROR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate raised a moving violation."
+  DEFAULT_MESSAGE = "TravelEvent actor_candidate raised a moving violation. Candidate cannot travel."
+
+
+class NoInitialPlacementException(TravelActorMovingException):
+  """"""
+  ERROR_CODE = "ACTOR_DID_NOT_HAVE_INITIAL_PLACEMENT_ERROR"
+  DEFAULT_MESSAGE = (
+    "TravelEvent actor_candidate did not have an initial placement on the board. Its position history is empty. "
+    "Candidate cannot travel."
+  )
+
+
+class ActorAlreadyAtDestinationException(TravelActorMovingException):
+  """"""
+  ERROR_CODE = "ACTOR_ALREADY_AT_DESTINATION_ERROR"
+  DEFAULT_MESSAGE = "TravelEvent actor_candidate is already at the destination square. There is nn need to travel."
 
 class ActorNotOnRosterCannotMoveException(TravelActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team's roster. Actor cannot travel."
+  DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team's roster. Candidate cannot travel."
 
 class ActorNotOnBoardCannotMoveException(TravelActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate is not on the board_validator. Its position history is empty. Actor cannot travel."
+    "TravelEvent actor_candidate is not on the board. Candidate cannot travel."
   )
 
 class CapturedActorCannotMoveException(TravelActorMovingException):
   """"""
   ERROR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate has been captured by the enemy. Captured pieces are not on the board_validator."
-    "Actor cannot travel."
+    "TravelEvent actor_candidate has been captured by the enemy. Captured pieces are not on the board."
+    "Candidate cannot travel."
   )
+
+class CheckMatedKingCannotMoveException(TravelActorMovingException):
+  """"""
+  ERROR_CODE = "CHECK_MATED_KING_MOVE_ERROR"
+  DEFAULT_MESSAGE = (
+    "The king is checkmated. When a king is checkmated the game ends. If you are seeing this message "
+    "the win has not been processed correctly."
+  )
+
 
 
 # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#

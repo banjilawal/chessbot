@@ -12,7 +12,7 @@ Created: 2025-09-28
 # CONTAINS:
  * `TravelEventFactory`
 """
-from chess.piece.event.validation import TravelActorValidator
+from chess.piece.event.validation import OldTravelActorValidator
 from chess.rank import King
 from chess.square import Square, SquareValidator
 from chess.system import Builder, LoggingLevelRouter, BuildResult
@@ -60,7 +60,7 @@ class TravelEventFactory:
     method = "TravelEventFactory.execute"
 
     try:
-      actor_validation = TravelActorValidator.validate(actor_candidate=actor, execution_resource=board)
+      actor_validation = OldTravelActorValidator.validate(actor_candidate=actor, execution_resource=board)
       if actor_validation.is_failure():
         return BuildResult(execption=actor_validation.exception)
       actor_square = actor_validation.payload

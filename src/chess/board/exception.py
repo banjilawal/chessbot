@@ -46,7 +46,10 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.system import ChessException, NullException, BuilderException, ValidationException
+from chess.system import (
+  ChessException, InconsistencyException, InvariantBreachException, NullException,
+  BuilderException, ValidationException
+)
 
 __all__ = [
   'BoardException',
@@ -68,6 +71,12 @@ __all__ = [
 #====================== PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#  
   'FailedPieceAdditionRolledBackException',
   'FailedPieceRemovalRolledBackException',
+
+# ======================# BOARD CONSISTENCY EXCEPTION #======================#
+  'InconsistentBoardException',
+  'BoardInvariantBreachException',
+  'CoordInvariantBreachException',
+  'SquareInvariantBreachException'
 ]
 
 from chess.system import InconsistentCollectionException
@@ -156,7 +165,33 @@ class FailedPieceRemovalRolledBackException(BoardRollBackException):
     "Could not remove team piece from the board_validator. Transaction rollback performed."
   )
 
-class InconsistentBoardException(BoardException, InconsistentCollectionException):
+
+#======================# BOARD CONSISTENCY EXCEPTION #======================#
+class InconsistentBoardException(BoardException, InconsistencyException):
   """Raised if team board_validator fails any collection consistency checks"""
   ERROR_CODE = "INCONSISTENT_BOARD_ERROR"
-  DEFAULT_MESSAGE = "The board_validator is an inconsistent state. data might be corrupted."
+  DEFAULT_MESSAGE = "The board is in an inconsistent state. data might be corrupted."
+
+class BoardInvariantBreachException(BoardException, InvariantBreachException):
+  """
+  Raised when a fundamental invariant of the system or environment is violated.
+  This exception type signals a breach of consistency — meaning the system’s
+  assumptions about its internal state are no longer valid.
+  """
+  DEFAULT_CODE = "BOARD_INVARIANT_BREACH_ERROR"
+  DEFAULT_MESSAGE = "A Board invariant was breached, There may be a critical state inconsistency. or data loss."
+
+
+class CoordInvariantBreachException(BoardInvariantBreachException):
+  """"""
+  DEFAULT_CODE = "INVARIANT_SQUARE_BREACH_ERROR"
+  DEFAULT_MESSAGE = (
+    "A square invariant on the board was breached, There may be a critical state inconsistency. or data loss."
+  )
+
+class SquareInvariantBreachException(BoardInvariantBreachException):
+  """"""
+  DEFAULT_CODE = "INVARIANT_COORD_BREACH_ERROR"
+  DEFAULT_MESSAGE = (
+    "A coord invariant on the board was breached, There may be a critical state inconsistency. or data loss."
+  )
