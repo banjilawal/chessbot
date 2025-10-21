@@ -117,6 +117,17 @@ class TravelEventFactory:
           destination_square=destination_square,
           execution_environment=board
         ))
+
+      if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece):
+        return BuildResult(
+          payload=CheckEvent(
+            id=id_emitter.event_id,
+            actor=actor,
+            actor_square=actor_square,
+            enemy_combatant=destination_occupant,
+            destination_square=destination_square,
+            execution_environment=board
+          ))
     except Exception as e:
         return BuildResult(exception=e)
 

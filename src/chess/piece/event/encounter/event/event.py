@@ -41,8 +41,11 @@ class EncounterEvent(TravelEvent):
     return self.destination_square
 
 
-  def __eq__(self, other):
-    if not super().__eq__(other):
-      return False
-    if isinstance(other, 'EncounterEvent'):
-      return self.id == other.id
+  def __eq__(self, other) -> bool:
+    if super().__eq__(other):
+      if isinstance(other, EncounterEvent):
+        return True
+    return False
+
+  def __hash__(self) -> int:
+    return hash(self.id)

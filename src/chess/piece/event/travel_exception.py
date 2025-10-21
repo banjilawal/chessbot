@@ -1,4 +1,4 @@
-# src/chess.coord.exception.py
+# src/chess.coord.travel_exception.py
 
 """
 Module: chess.coord.exception
@@ -41,9 +41,11 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 `NullCoordException`, `RowAboveBoundsException`).
 """
 
-
-from chess.system import EventException, NullException, BuildFailedException, ValidationException, ResourceException, \
+from chess.system import (
+  EventException, NullException, BuildFailedException, TransactionException, ValidationException,
+  ResourceException,
   InconsistencyException
+)
 
 #
 # __all__ = [
@@ -93,6 +95,7 @@ from chess.system import EventException, NullException, BuildFailedException, Va
 
 __all__ = [
   'TravelEventException',
+  'TravelTransactionException',
 
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
   'InvalidTravelEventException',
@@ -117,6 +120,10 @@ __all__ = [
 class TravelEventException(EventException):
   ERROR_CODE = "TRAVEL_EXECUTION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent raised an exception."
+  
+class TravelTransactionException(TransactionException):
+  ERROR_CODE = "TRAVEL_TRANSACTION_ERROR"
+  DEFAULT_MESSAGE = "An exception was raised during a TravelEvent."
 
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
 class NullTravelEventException(TravelEventException, NullException):

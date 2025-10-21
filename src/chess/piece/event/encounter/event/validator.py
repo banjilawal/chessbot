@@ -23,16 +23,21 @@ class EncounterEventValidator(Validator[EncounterEvent]):
 
     try:
       if candidate is None:
-        return ValidationResult(exception=NullEncounterEventException(f"{method}: {NullEncounterEventException.DEFAULT_MESSAGE}")
+        return ValidationResult(
+          exception=NullEncounterEventException(
+            f"{method}: {NullEncounterEventException.DEFAULT_MESSAGE}"
+        ))
 
-      if not isinstance(t, EncounterEvent):
-        raise TypeError(f"{method} Expected an EncounterEvent, got {type(t).__name__}")
+      if not isinstance(candidate, EncounterEvent):
+        return ValidationResult(
+          exception=TypeError(f"{method} Expected an EncounterEvent, got {type(candidate).__name__}"
+        ))
 
-      event = cast(EncounterEvent, t)
+      event = cast(EncounterEvent, candidate)
 
       id_validation = IdValidator.validate(event.id)
-      if not id_validation.is_success():
-        raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
+      if id_validation.is_success():
+        return ValidationResult(exception=InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}"))
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():

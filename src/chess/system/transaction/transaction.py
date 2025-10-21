@@ -55,19 +55,16 @@ Major themes influencing the design include:
 
 
 from abc import ABC, abstractmethod
-from typing import TypeVar, Generic
 
-from chess.system import Event, TransactionResult, TransactionState
+from chess.system import Event, LoggingLevelRouter, TransactionResult, TransactionState
 
-X = TypeVar('X')
 
-class Transaction(ABC, Generic[X]):
+class Transaction(ABC):
   """Base class for transaction execution handlers"""
   _event: Event
   _state: TransactionState
-  _execution_environment: X
 
-
+  @LoggingLevelRouter.monitor
   def __init__(self, event: Event):
     self._event = event
     self._state = TransactionState.RUNNING
@@ -83,6 +80,7 @@ class Transaction(ABC, Generic[X]):
 
 
   @abstractmethod
+  @LoggingLevelRouter.monitor
   def execute(self) -> TransactionResult:
     """
     # ACTION:

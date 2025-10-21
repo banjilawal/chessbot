@@ -5,7 +5,7 @@ from chess.board import BoardSearch
 from chess.system import IdValidator, BuildResult, InvalidIdException
 from chess.event import TargetSquareMismatchException, AttackEvent
 from chess.piece.event.attack.event.exception import AttackEventBuilderException
-from chess.piece.event.exception import TravelEventResourceNotFoundException
+from chess.piece.event.travel_exception import TravelEventResourceNotFoundException
 from chess.piece import PieceValidator, InvalidAttackException, CombatantPiece
 from chess.piece.model.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
 

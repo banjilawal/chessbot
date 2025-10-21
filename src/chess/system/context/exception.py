@@ -1,4 +1,4 @@
-# src/chess/system/transaction/exception.py
+# src/chess/system/transaction/travel_exception.py
 
 """
 Module: chess.system.transaction.exception
@@ -45,7 +45,7 @@ See the list of exceptions in the `__all__` list following (e.g., `ResultExcepti
 
 
 
-# src/chess.context.exception.py
+# src/chess.context.travel_exception.py
 
 """
 Module: chess.context.exception

@@ -1,4 +1,4 @@
-# src/chess/piece/event/attack/event/exception.py
+# src/chess/piece/event/attack/event/travel_exception.py
 
 """
 Module: chess.piece.event.attack.event.exception

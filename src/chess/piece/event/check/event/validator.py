@@ -13,7 +13,7 @@ from chess.piece.event import (
 
 T = TypeVar('T')
 
-class AttackEventValidator(EventValidator[A], Generic[T]):
+class CheckEventValidator(EventValidator[A], Generic[T]):
 
   @staticmethod
   def validate(t: AttackEvent, ) -> Result[AttackEvent]:

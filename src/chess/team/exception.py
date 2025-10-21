@@ -1,4 +1,4 @@
-# src/chess.coord.exception.py
+# src/chess.coord.travel_exception.py
 
 """
 Module: chess.coord.exception

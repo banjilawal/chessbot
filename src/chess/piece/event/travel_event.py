@@ -1,4 +1,4 @@
-# src/chess/piece/event/event.py
+# src/chess/piece/event/travel_event.py
 
 """
 Module: `chess.piece.event.event`
@@ -14,7 +14,7 @@ Contains:
 """
 
 
-from typing import Optional
+from typing import Optional, cast
 
 from chess.board import Board
 from chess.square import Square
@@ -28,27 +28,31 @@ class TravelEvent(Event[Piece,Square, Board]):
   @LoggingLevelRouter.monitor
   def __init__(
       self,
+      id: int,
       actor: Piece,
       destination_square: Square,
       execution_environment: Board,
       parent: Optional[Event]=None
   ):
     super().__init__(
+      id=id,
       actor=actor,
       resource=destination_square,
-      parent=parent,
-      execution_environment=execution_environment
+      execution_environment=execution_environment,
+      parent=parent
     )
 
 
   @property
   def destination_square(self) -> Square:
-    return self.resource
+    return cast(Square, self._resource)
 
 
   def __eq__(self, other) -> bool:
     if not super().__eq__(other):
-      return False
-    if isinstance(other, TravelEvent):
-        return self.id == other.id
+      if isinstance(other, TravelEvent):
+        return True
     return False
+
+  def __hash__(self) -> int:
+    return hash(self.id)

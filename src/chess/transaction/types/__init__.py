@@ -9,7 +9,7 @@
 #   │  ├── __init__.py
 #   │  ├── old_transaction.py
 #   │  ├── old_occupation_validator.py
-#   │  ├── event.py
+#   │  ├── travel_event.py
 #   │  ├── err.py
 #   │  └── err.py
 #   │
@@ -17,7 +17,7 @@
 #   │  ├── __init__.py
 #   │  ├── old_transaction.py
 #   │  ├── old_occupation_validator.py
-#   │  ├── event.py
+#   │  ├── travel_event.py
 #   │  └── err.py
 #   │
 #   ├── castling/
@@ -30,5 +30,5 @@
 #     ├── __init__.py
 #     ├── old_transaction.py
 #     ├── old_occupation_validator.py
-#     ├── event.py
+#     ├── travel_event.py
 #     └── err.py

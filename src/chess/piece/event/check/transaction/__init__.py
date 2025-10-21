@@ -1,4 +1,4 @@
 
 from .example import *
 from .exception import *
-from .transaction import AttackTransaction
+from .transaction import CheckTransaction

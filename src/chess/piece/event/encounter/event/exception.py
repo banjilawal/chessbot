@@ -1,4 +1,4 @@
-# src/chess/system/event/exception.py
+# src/chess/system/event/travel_exception.py
 
 """
 Module: chess.system.event.exception
@@ -48,7 +48,7 @@ __all__ = [
 # ======================# ENCOUNTER_EVENT VALIDATION EXCEPTIONS #======================#
   'NullEncounterEventException',
   'PieceEncounteringItSelfException',
-  'NUllEncounterSubjectException',
+  'NullEncounterSubjectException',
   'DoubleEncounterException',
 
 #======================# ENCOUNTER_EVENT BUILD EXCEPTIONS #======================#
@@ -82,7 +82,7 @@ class PieceEncounteringItSelfException(EncounterEventException):
   ERROR_CODE = "PIECE_ENCOUNTERING_ITSELF_ERROR"
   DEFAULT_MESSAGE = "Piece cannot encounter itself."
 
-class NUllEncounterSubjectException(EncounterEventException):
+class NullEncounterSubjectException(EncounterEventException):
   """"""
   ERROR_CODE = "NULL_ENCOUNTER_SUBJECT_ERROR"
   DEFAULT_MESSAGE = "An EncounterEvent cannot have a null subject."

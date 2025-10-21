@@ -47,10 +47,10 @@ The major theme influencing the modules design are
 
 from typing import Optional, cast
 
-from chess.system import Event, Result, RollbackException, TransactionState
+from chess.system import Event, Result, RollbackException, TransactionState, TransactionResult
 
 
-class TransactionResult(Result):
+class TransactionResult(Result[Event]):
   """
   # ROLE: Builder implementation
 
@@ -121,13 +121,13 @@ class TransactionResult(Result):
     return self.exception is not None and self._transaction_state == TransactionState.TIMED_OUT
 
   @classmethod
-  def success(cls, event_update):
+  def success(cls, event_update) -> TransactionResult:
     return cls(event_update, TransactionState.SUCCESS)
 
   @classmethod
-  def failed(cls, event_update: Event, exception: Exception):
+  def failed(cls, event_update: Event, exception: Exception) -> TransactionResult:
     return cls(event_update, TransactionState.FAILURE, exception)
 
   @classmethod
-  def rolled_back(cls, event_update: Event, exception: RollbackException):
+  def rolled_back(cls, event_update: Event, exception: RollbackException) -> TransactionResult:
     return cls(event_update, TransactionState.ROLLED_BACK, exception)

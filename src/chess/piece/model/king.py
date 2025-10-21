@@ -44,10 +44,9 @@ class KingPiece(Piece):
 
 
   def __eq__(self, other):
-    if not super().__eq__(other):
-      return False
-    if isinstance(other, KingPiece):
-      return True
+    if super().__eq__(other):
+      if isinstance(other, KingPiece):
+        return True
     return False
 
   def __hash__(self):

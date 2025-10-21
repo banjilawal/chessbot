@@ -23,7 +23,7 @@ from chess.piece.event.occupation.transaction import OccupationTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 
-class AttackTransaction(Transaction[AttackEvent]):
+class CheckTransaction(Transaction[CheckEvent]):
 
   @staticmethod
   def execute(event: AttackEvent) -> TransactionResult:

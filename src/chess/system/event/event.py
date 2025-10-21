@@ -1,4 +1,4 @@
-# src/chess/system/event/event.py
+# src/chess/system/event/travel_event.py
 
 """
 Module: chess.system.id.validator
@@ -54,7 +54,7 @@ Major themes influencing the design include:
 """
 
 from typing import Generic, TypeVar, Optional, cast
-
+from chess.system import Event, LoggingLevelRouter
 
 A = TypeVar('A') # Actor Type
 R = TypeVar('R') # Resource Type
@@ -85,6 +85,7 @@ class Event(Generic[A, R, X]):
   _parent: Optional['Event']
   _execution_environment: X
 
+  @LoggingLevelRouter.monitor
   def __init__(
     self,
     id: int,
@@ -113,7 +114,7 @@ class Event(Generic[A, R, X]):
 
 
   @property
-  def parent(self) -> Optional['Event']:
+  def parent(self) -> Optional[Event]:
     return self._parent
 
 

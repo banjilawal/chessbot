@@ -1,4 +1,54 @@
-# src/chess/system/event/exception.py
+from chess.piece import TravelTransactionException
+from chess.system import RollbackException, TransactionException
+
+"""
+=============================================================================================================#
+==============OCCUPATION_TRANSACTION EXCEPTIONS ARE ALWAYS ROLL_BACK_EXCEPTION SUBCLASSES=================#
+=============================================================================================================#
+"""
+
+__all__ = [
+    'OccupationTransactionException',
+    'OccupationTransactionRolledBackException',
+]
+
+
+class OccupationTransactionException(TravelTransactionException):
+    """"""
+    ERROR_CODE = "OCCUPATION_TRANSACTION_ERROR"
+    DEFAULT_MESSAGE = "An exception was raised during an OccupationTransaction."
+
+
+class OccupationTransactionRolledBackException(OccupationTransactionException, RollbackException):
+    """"""
+    ERROR_CODE = "OCCUPATION_TRANSACTION_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = (
+        "The transaction failed when an error occurred. The transaction was rolled back before raising this exception."
+    )
+    
+class FailedDestinationSquareOccupationRollBackException(OccupationTransactionRolledBackException):
+    ERROR_CODE = "DESTINATION_SQUARE_OCCUPATION_FAILURE_ROLLED_BACK"
+    DEFAULT_MESSAGE = (
+        "Destination_Square's occupant was not successfully updated to actor_piece. OccupationTransaction was rolled "
+        "back before exception was raised."
+    )
+
+class FailedActorSquareVacationRollBackException(OccupationTransactionRolledBackException):
+    ERROR_CODE = "ACTOR_SQUARE_VACATION_FAILURE_ROLLED_BACK"
+    DEFAULT_MESSAGE = (
+        "Actor_Square was not successfully emptied. OccupationTransaction was rolled back before exception was raised."
+    )
+
+
+class FailedActorPositionUpdateRollBackException(OccupationTransactionRolledBackException):
+    ERROR_CODE = "ACTOR_POSITION_UPDATE_FAILURE_ROLLED_BACK"
+    DEFAULT_MESSAGE = (
+        "Actor.current_position was not successfully set to destination_square's coord. The OccupationTransaction"
+        " was rolled back before exception was raised."
+    )
+
+
+# src/chess/system/event/travel_exception.py
 
 """
 Module: chess.system.event.exception
@@ -39,7 +89,7 @@ The major theme influencing the modules design are
 See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
-# src/chess/vector/exception.py
+# src/chess/vector/travel_exception.py
 
 """
 Module: chess.vector.exception

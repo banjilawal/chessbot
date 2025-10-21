@@ -1,4 +1,4 @@
-# src/chess/system/old_search/transaction/exception.py
+# src/chess/system/old_search/transaction/travel_exception.py
 
 """
 Module: chess.system.old_search.transaction.exception
