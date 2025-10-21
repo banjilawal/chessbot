@@ -43,8 +43,7 @@ class Bot(Commander):
   def __eq__(self, other):
     if super().__eq__(other):
       if isinstance(other, Bot):
-        bot = cast(Bot, other)
-        return self._id == bot.id
+        return True
     return False
 
   def __hash__(self):

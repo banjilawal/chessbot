@@ -285,7 +285,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
   @staticmethod
   def _run_scan(op_result_id :int, directive: ScanDirective) -> TransactionResult:
     """
-    Creates team new `Discovery` object for directive.actor_candidate which is blocked from moving to
+    Creates team new `Checker` object for directive.actor_candidate which is blocked from moving to
     `subject_square` by `directive.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
     `Traveltransaction.execute` is the single entry point to `_run_scan`. Validations, error chains
     confirmed parameters ar are correct. No additional sanity checks are needed.
@@ -297,7 +297,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     Returns:
     `OccupationResult` containing:
       - On success: A new `ScanDirective` object that containing updated `actor_candidate`. Observer will have
-        team new `Discovery` instance inside `actor_candidate.discoveries`.
+        team new `Checker` instance inside `actor_candidate.discoveries`.
       - On failure: The original `ScanDirective` for verifying any rollbacks succeeded and the err
         describing the failure.
 

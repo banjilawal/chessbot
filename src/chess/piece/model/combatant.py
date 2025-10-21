@@ -11,7 +11,7 @@ Contents:
   - Piece: Abstract base class representing team chess piece with position and rank.
   - KingPiece: Concrete subclass representing team king piece.
   - CombatantPiece: Concrete subclass representing team piece capable of capturing others.
-  - CoordStack, Discovery, Discoveries: Supporting classes for tracking piece positions
+  - CoordStack, Checker, Discoveries: Supporting classes for tracking piece positions
    and discoveries.
   - Validators and exceptions related to piece creation and validate.
 
@@ -28,22 +28,12 @@ from chess.rank import Rank
 from chess.team import Team
 
 
-# Define the signature of Piece.__init__ (which is what super().__init__ calls)
-# Assuming Rank and Team are correctly imported or forward referenced.
-InitMethod = Callable[[str, Rank, Team], None]
-
 class CombatantPiece(Piece):
-  _id: int # Type hint so @AutoID works with __eq__, __hash__ or any places id is needed
   _captor: Optional[Piece]
 
-  def __init__(self, name: str, rank: Rank, team: Team):
 
-    # Cast the super().__init__ call to the defined signature
-    init_call = cast(InitMethod, super().__init__)
-
-    # Execute the correctly typed call
-    init_call(name, rank, team)
-
+  def __init__(self, id: int, name: str, rank: Rank, team: Team):
+    super().__init__(id, name, rank, team)
     self._captor = None
 
 

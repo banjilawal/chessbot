@@ -11,7 +11,7 @@ Contents:
   - Piece: Abstract base class representing team chess piece with position and rank.
   - KingPiece: Concrete subclass representing team king piece.
   - CombatantPiece: Concrete subclass representing team piece capable of capturing others.
-  - CoordStack, Discovery, Discoveries: Supporting classes for tracking piece positions
+  - CoordStack, Checker, Discoveries: Supporting classes for tracking piece positions
    and discoveries.
   - Validators and exceptions related to piece creation and validate.
 

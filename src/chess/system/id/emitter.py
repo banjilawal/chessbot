@@ -26,6 +26,13 @@ class IdEmitter:
     self._scan_id = 0
     self._attack_id = 0
 
+    self._event_id = 0
+
+  @property
+  def event_id(self) -> int:
+    self._event_id += 1
+    return self._event_id
+
 
   @property
   def occupation_id(self) -> int:

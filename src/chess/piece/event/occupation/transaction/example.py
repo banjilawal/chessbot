@@ -1,12 +1,12 @@
 """
-Builder class responsible for safely constructing `AttackEvent` instances.
+Builder class responsible for safely constructing `CheckEvent` instances.
 
-`AttackEventBuilder` ensures that `AttackEvent` objects are always created successfully by performing comprehensive validate
+`AttackEventBuilder` ensures that `CheckEvent` objects are always created successfully by performing comprehensive validate
  checks during construction. This separates the responsibility of building from validating - `AttackEventBuilder`
- focuses on creation while `AttackEventValidator` is used for validating existing `AttackEvent` instances that are passed
+ focuses on creation while `AttackEventValidator` is used for validating existing `CheckEvent` instances that are passed
  around the system.
 
-The build runs through all validate checks individually to guarantee that any `AttackEvent` instance it produces
+The build runs through all validate checks individually to guarantee that any `CheckEvent` instance it produces
 meets all required specifications before construction completes
 
 Usage:
@@ -19,18 +19,18 @@ Usage:
   ```
 
 See Also:
-  `AttackEvent`: The data structure being constructed
-  `AttackEventValidator`: Used for validating existing `AttackEvent` instances
-  `BuildResult`: Return type containing the built `AttackEvent` or error information
+  `CheckEvent`: The data structure being constructed
+  `AttackEventValidator`: Used for validating existing `CheckEvent` instances
+  `BuildResult`: Return type containing the built `CheckEvent` or error information
 """
 """
-Constructs team new `AttackEvent` instance with comprehensive checks on the parameters and states during the
+Constructs team new `CheckEvent` instance with comprehensive checks on the parameters and states during the
 build process.
 
-Performs individual validate checks on each component to ensure the resulting `AttackEvent` meets all
-specifications. If all checks are passed, team `AttackEvent` instance will be returned. It is not necessary to perform
-any additional validate checks on the returned `AttackEvent` instance. This method guarantees if team `BuildResult`
-with team successful status is returned, the contained `AttackEvent` is valid and ready for use.
+Performs individual validate checks on each component to ensure the resulting `CheckEvent` meets all
+specifications. If all checks are passed, team `CheckEvent` instance will be returned. It is not necessary to perform
+any additional validate checks on the returned `CheckEvent` instance. This method guarantees if team `BuildResult`
+with team successful status is returned, the contained `CheckEvent` is valid and ready for use.
 
 Args:
   `event_id`(`int`): The unique id for the attackEvent. Must pass `IdValidator` checks.
@@ -39,8 +39,8 @@ Args:
   `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
 Returns:
-  BuildResult[AttackEvent]: A `BuildResult` containing either:
-    - On success: A valid `AttackEvent` instance in the payload
+  BuildResult[CheckEvent]: A `BuildResult` containing either:
+    - On success: A valid `CheckEvent` instance in the payload
     - On failure: Error information and error details
 
 Raises:
@@ -56,8 +56,8 @@ Raises:
       not have the attackEvent
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team valid `AttackEvent` is
-  created, while `AttackEventValidator` is used for validating `AttackEvent` instances that are passed around after
+  The build runs through all the checks on parameters and state to guarantee only team valid `CheckEvent` is
+  created, while `AttackEventValidator` is used for validating `CheckEvent` instances that are passed around after
   creating. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
 

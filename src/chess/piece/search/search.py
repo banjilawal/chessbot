@@ -23,12 +23,12 @@ class DiscoverySearch(Search[Piece, Discovery]):
       # ROLE: Builder implementation
 
       # RESPONSIBILITIES:
-      1. Process and validate parameters for creating `Discovery` instances.
-      2. Create new `Discovery` objects if parameters meet specifications.
+      1. Process and validate parameters for creating `Checker` instances.
+      2. Create new `Checker` objects if parameters meet specifications.
       2. Report errors and return `BuildResult` with error details.
 
       # PROVIDES:
-      `BuildResult`: Return type containing the built `Discovery` or error information.
+      `BuildResult`: Return type containing the built `Checker` or error information.
 
       # ATTRIBUTES:
       None

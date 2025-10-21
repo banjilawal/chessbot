@@ -15,7 +15,7 @@ Created: 2025-09-28
 
 
 from chess.square import Square
-from chess.system import LoggingLevelRouter, BuildResult
+from chess.system import LoggingLevelRouter, BuildResult, id_emitter
 from chess.board import Board, BoardSquareSearch, BoardSearchContext, SearchByCoordInvariantBreachException
 from chess.piece import (
   Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, EncounterEvent, TravelEvent,
@@ -92,6 +92,7 @@ class TravelEventFactory:
 
       if destination_occupant is None:
         return BuildResult(payload=OccupationEvent(
+          id=id_emitter.event_id,
           actor=actor,
           actor_square=actor_square,
           destination_square=destination_square,
@@ -100,6 +101,7 @@ class TravelEventFactory:
 
       if not actor.is_enemy(destination_occupant) or isinstance(destination_occupant, KingPiece):
         return BuildResult(payload=EncounterEvent(
+          id=id_emitter.event_id,
           actor=actor,
           subject=destination_occupant,
           subject_square=destination_square,
@@ -107,13 +109,14 @@ class TravelEventFactory:
         ))
 
       if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
-      return BuildResult(payload=AttackEvent(
-        actor=actor,
-        actor_square=actor_square,
-        enemy_combatant=destination_occupant,
-        destination_square=destination_square,
-        execution_environment=board
-      ))
+        return BuildResult(payload=AttackEvent(
+          id=id_emitter.event_id,
+          actor=actor,
+          actor_square=actor_square,
+          enemy_combatant=destination_occupant,
+          destination_square=destination_square,
+          execution_environment=board
+        ))
     except Exception as e:
         return BuildResult(exception=e)
 

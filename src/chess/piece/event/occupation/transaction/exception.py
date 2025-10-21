@@ -149,14 +149,14 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #
 # #=== ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
 # class NullAttackEventException(AttackEventException, NullException):
-#   """Raised by methods, entities, and models that require team AttackEvent but receive team null."""
+#   """Raised by methods, entities, and models that require team CheckEvent but receive team null."""
 #   ERROR_CODE = "NULL_EVENT_ERROR"
-#   DEFAULT_MESSAGE = "AttackEvent cannot be null"
+#   DEFAULT_MESSAGE = "CheckEvent cannot be null"
 #
 # class InvalidAttackEventException(AttackEventException, ValidationException):
 #   """Raised by ExchangeValidators if client fails validation."""
 #   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
-#   DEFAULT_MESSAGE = "AttackEvent failed validate"
+#   DEFAULT_MESSAGE = "CheckEvent failed validate"
 #
 #
 # #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#
@@ -166,7 +166,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   during build.
 #   """
 #   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
-#   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team AttackEvent"
+#   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team CheckEvent"
 #
 #
 # #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#

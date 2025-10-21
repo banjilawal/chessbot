@@ -1,28 +1,26 @@
-from typing import Callable, cast
+from typing import Callable, List, cast
 
+from chess.piece.checker import Checker
 from chess.rank import Rank
 from chess.team import Team
 from chess.piece import Piece
 
-# Define the signature of Piece.__init__ (which is what super().__init__ calls)
-# Assuming Rank and Team are correctly imported or forward referenced.
-InitMethod = Callable[[str, Rank, Team], None]
 
 class KingPiece(Piece):
-  _id: int
   _is_checked: bool
   _is_checkmated: bool
+  _checkers: List[Checker] = []
 
-  def __init__(self, name: str, rank: Rank, team: Team):
-
-    # Cast the super().__init__ call to the defined signature.
-    init_call = cast(InitMethod, super().__init__)
-
-    # Execute the correctly typed call.
-    init_call(name, rank, team)
-
+  def __init__(self, id: int, name: str, rank: Rank, team: Team):
+    super().__init__(id, name, rank, team)
+    self._checkers = []
     self._is_checked = False
     self._is_checkmated = False
+
+
+  @@property
+  def checkers(self) -> List[Checker]:
+      return self._checkers
 
 
   @property

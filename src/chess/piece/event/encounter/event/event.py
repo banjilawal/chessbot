@@ -9,12 +9,12 @@ from chess.piece import Piece, TravelEvent
 #   from chess.piece.event.encounter.event import EncounterEvent
 
 
-@AutoId
 class EncounterEvent(TravelEvent):
   _subject: Piece
 
   def __init__(
     self,
+    id: int,
     actor: Piece,
     subject: Piece,
     subject_square: Square,
@@ -22,6 +22,7 @@ class EncounterEvent(TravelEvent):
     parent: Optional[Event] = None
   ):
     super().__init__(
+      id=id,
       actor=actor,
       parent=parent,
       destination_square=subject_square,

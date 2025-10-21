@@ -99,7 +99,7 @@ class Event(Generic[A, R, X]):
     self._resource = resource
     self._execution_environment = execution_environment
 
-  @@property
+  @property
   def id(self) -> int:
       return self._id
 

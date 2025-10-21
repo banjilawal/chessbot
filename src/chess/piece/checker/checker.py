@@ -5,7 +5,7 @@ from chess.coord import Coord
 if TYPE_CHECKING:
   from chess.piece.model.piece import Piece
 
-class Discovery:
+class Checker:
   """
   An immutable record of team piece found during play.
 
@@ -28,8 +28,6 @@ class Discovery:
 
   _piece_id: int
   _name: str
-  _ransom: int
-  _rank_name: str
   _team_id: int
   _team_name: str
   _position: Coord
@@ -37,8 +35,6 @@ class Discovery:
   def __init__(self, piece: 'Piece'):
     self._piece_id = piece.id
     self._name = piece.name
-    self._ransom = piece.rank.ransom
-    self._rank_name = piece.rank.name
     self._team_id = piece.team.id
     self._team_name = piece.team.schema.name
     self._position = piece.current_position
@@ -59,13 +55,6 @@ class Discovery:
   def team_name(self):
     return self._team_name
 
-  @property
-  def rank_name(self) -> str:
-    return self._rank_name
-
-  @property
-  def ransom(self):
-    return self._ransom
 
   @property
   def position(self) -> Coord:
@@ -77,8 +66,6 @@ class Discovery:
       "name": self._name,
       "team_id": self._team_id,
       "team_name": self._team_name,
-      "rank_name": self._rank_name,
-      "ransom": self._ransom,
       "position": self._position
     }
 
@@ -88,9 +75,9 @@ class Discovery:
       return True
     if other is None:
       return False
-    if not isinstance('Checker', other):
-      return False
-    return self._piece_id == other.id and self._position == other.coord
+    if isinstance('Checker', other):
+      return self._piece_id == other.id and self._position == other.coord
+    return False
 
 
   def __str__(self):

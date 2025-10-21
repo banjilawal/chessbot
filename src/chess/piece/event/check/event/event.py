@@ -4,12 +4,12 @@ from typing import Optional
 from chess.board import Board
 from chess.square import Square
 from chess.system import AutoId, Event
-from chess.piece import Piece, CombatantPiece, TravelEvent
+from chess.piece import KingPiece, Piece, CombatantPiece, TravelEvent
 
 
-class AttackEvent(TravelEvent):
+class CheckEvent(TravelEvent):
   _actor_square: Square
-  _enemy: CombatantPiece
+  _enemy_king: KingPiece
 
 
   def __init__(
@@ -18,7 +18,7 @@ class AttackEvent(TravelEvent):
     actor: Piece,
     actor_square: Square,
     destination_square: Square,
-    enemy_combatant: CombatantPiece,
+    king_piece: KingPiece,
     board: Board,
     parent: Optional[Event]=None
   ):
@@ -30,7 +30,7 @@ class AttackEvent(TravelEvent):
       execution_environment=board
     )
     self._actor_square = actor_square
-    self._enemy_combatant = enemy_combatant
+    self._king_piece =king_piece
 
 
   @property
@@ -39,12 +39,12 @@ class AttackEvent(TravelEvent):
 
 
   @property
-  def enemy_combatant(self) -> CombatantPiece:
-    return self._enemy_combatant
+  def king_piece(self) -> KingPiece:
+    return self._enemy_king
 
 
   def __eq__(self, other):
     if super().__eq__(other):
-      if isinstance(other, 'CheckEvent'):
-        return self._id == other.id
+      if isinstance(other, CheckEvent):
+        return True
     return False

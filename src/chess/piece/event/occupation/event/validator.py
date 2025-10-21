@@ -18,7 +18,7 @@ class OccupationEventValidator:
   @staticmethod
   def validate(t: TransferEvent, context: Event) -> Result[TransferEvent]:
     """
-    Validates an AttackEvent meets specifications:
+    Validates an CheckEvent meets specifications:
       - Not null
       - `id` does not fail validator
       - `actor_candidate` is team valid chess enemy
@@ -26,7 +26,7 @@ class OccupationEventValidator:
     Any validate failure raises an `InvalidAttackEventException`.
 
     Argument:
-      `candidate` (`AttackEvent`): `attackEvent `to validate
+      `candidate` (`CheckEvent`): `attackEvent `to validate
 
      Returns:
        `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
@@ -45,7 +45,7 @@ class OccupationEventValidator:
 
       `InvalidAttackEventException`: Wraps any preceding exceptions
     """
-    method = "AttackEvent.validate"
+    method = "CheckEvent.validate"
 
     try:
       if t is None:
@@ -54,7 +54,7 @@ class OccupationEventValidator:
         )
 
       if not isinstance(t, AttackEvent):
-        raise TypeError(f"{method} Expected an AttackEvent, got {type(t).__name__}")
+        raise TypeError(f"{method} Expected an CheckEvent, got {type(t).__name__}")
 
       event = cast(AttackEvent, t)
 

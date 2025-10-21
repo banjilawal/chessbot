@@ -6,7 +6,7 @@ from chess.system import TransactionResult, AutoId, Event, LoggingLevelRouter
 from chess.piece import Piece, TravelEvent, TravelContext
 
 
-@AutoId
+
 class OccupationEvent(TravelEvent):
   _actor_square: Square
 
@@ -14,6 +14,7 @@ class OccupationEvent(TravelEvent):
   @LoggingLevelRouter.monitor
   def __init__(
       self,
+      id: int,
       actor: Piece,
       actor_square: Square,
       destination_square: Square,
@@ -21,6 +22,7 @@ class OccupationEvent(TravelEvent):
       parent: Optional[Event]=None
   ):
     super().__init__(
+      id=id,
       actor=actor,
       parent=parent,
       destination_square=destination_square,
