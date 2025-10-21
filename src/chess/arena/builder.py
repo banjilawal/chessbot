@@ -1,4 +1,4 @@
-# chess/arena/validator.py
+# chess/arena/old_occupation_validator.py
 
 """
 Module: `chess.arena.validation`

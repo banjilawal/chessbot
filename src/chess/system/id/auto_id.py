@@ -50,7 +50,7 @@ Major themes influencing the design include:
 
 from itertools import count
 from threading import Lock
-from typing import Type, TypeVar
+from typing import Any, Type, TypeVar
 
 T = TypeVar("T")
 
@@ -68,28 +68,30 @@ class AutoId:
     """
 
     def __init__(self, start: int = 1, add_hash_eq: bool = True) -> object:
-        """
-
-        """
+        """"""
         self.start = start
         self.add_hash_eq = add_hash_eq
 
     def __call__(self, cls: Type[T]) -> Type[T]:
-        """
-        Decorate the given class with automatic ID assignment.
-        """
+        # Set up the counter and locking
         cls.id_counter = count(self.start)
         cls.id_lock = Lock()
 
+        # The original init from the AutoId client class.
         original_init = cls.__init__
 
-        def new_init(self, *args, **kwargs):
+        # The generic type hints to satisfy static type checkers
+        def new_init(self: Any, *args: Any, **kwargs:Any) -> None:
+
+            # Generate the id when it has a lock.
             with cls.id_lock:
-                self._piece_id = next(cls.id_counter)
+                self._id = next(cls.id_counter)
+
+            # Call the original __init__ with all its args
             original_init(self, *args, **kwargs)
 
         def get_id(self):
-            return self._piece_id
+            return self._id
 
         def repr_func(obj):
             return f"<{cls.__name__} id={obj.id}>"

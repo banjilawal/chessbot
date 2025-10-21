@@ -42,10 +42,11 @@ No feature delivery mechanisms.
 """
 
 
-from typing import Optional
+from typing import Optional, cast
 
 from chess.coord import Coord
 from chess.piece import Piece
+from chess.square import Square
 from chess.system import AutoId, LoggingLevelRouter
 
 
@@ -66,6 +67,7 @@ class Square:
     * `_position` (`Coord`): Address on the `Board`.
     * `_occupant` (`Optional[Piece]`): `Piece` of the square.`.
   """
+  _id: int
   _name: str
   _coord: Coord
   _occupant: Optional[Piece]
@@ -75,12 +77,6 @@ class Square:
     self._name = name
     self._coord = coord
     self._occupant = None
-
-
-  # @property
-  # def id(self) -> int:
-  #   """The unique ID of the square."""
-  #   return self._piece_id
 
 
   @property
@@ -109,14 +105,15 @@ class Square:
   def __eq__(self, other: object) -> bool:
     if other is self:
       return True
-    if not isinstance(other, Square):
-      return False
-    return self.id == other.id
+    if isinstance(other, Square):
+      square = cast(Square, other)
+      return self._id == square._id
+    return False
 
 
   def __hash__(self) -> int:
     """Returns the hash value of the Square based on its ID."""
-    return hash(self.id)
+    return hash(self._id)
 
 
   def __str__(self) -> str:

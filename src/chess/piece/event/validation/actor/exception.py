@@ -54,6 +54,8 @@ __all__ = [
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
   'TravelActorMovingException',
+  'NoInitialPlacementException',
+  'ActorAlreadyAtDestinationException',
   'ActorNotOnRosterCannotMoveException',
   'ActorNotOnBoardCannotMoveException',
   'CapturedActorCannotMoveException',

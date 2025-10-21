@@ -1,4 +1,4 @@
-# src/chess/system/event/transaction.py
+# src/chess/system/event/old_transaction.py
 
 """
 Module: `chess.system.event.transaction`

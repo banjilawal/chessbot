@@ -1,4 +1,4 @@
-# src/chess/piece/event/transaction.py
+# src/chess/piece/event/old_transaction.py
 
 """
 Module: chess.piece.event.transaction
@@ -29,7 +29,7 @@ from chess.team.exception import RemoveTeamMemberRolledBackException
 
 from chess.transaction import AttackValidator
 from chess.piece.event import (
-  OccupationEventValidator,
+  OldOccupationEventValidator,
   OccupationSearchEventException,
   TravelEvent,
   OccupationEventException,
@@ -39,7 +39,7 @@ from chess.piece.event import (
 )
 
 
-class TravelTransaction(Transaction[TravelEvent]):
+class OldTravelTransaction(Transaction[TravelEvent]):
   """
   Implements the `OccupationExecutor` class, which handles executing event
   directives in the chess engine. This includes moving pieces, capturing enemies,
@@ -417,5 +417,5 @@ class TravelTransaction(Transaction[TravelEvent]):
         )
       )
 
-    return TravelTransaction._switch_squares(op_result_id, directive, directive.actor_square)
+    return OldTravelTransaction._switch_squares(op_result_id, directive, directive.actor_square)
 

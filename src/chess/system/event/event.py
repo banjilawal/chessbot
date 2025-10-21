@@ -53,16 +53,17 @@ Major themes influencing the design include:
 1. `Event`
 """
 
-from typing import Generic, TypeVar, Optional
+from typing import Generic, TypeVar, Optional, cast
 
-from chess.system import ExecutionContext, AutoId
+from chess.system import AutoId
+from chess.system import Event
 
 
 A = TypeVar('A') # Actor Type
 R = TypeVar('R') # Resource Type
-X = TypeVar('X')
+X = TypeVar('X') # ExecutionEnvironment Type
 
-
+@AutoId
 class Event(Generic[A, R, X]):
   """
   # ROLE: State Management, Data Transport, Abstract Data Type
@@ -81,7 +82,7 @@ class Event(Generic[A, R, X]):
     * `_parent` (`Event`): The parent event of this event.
     * `_execution_environment` (`X`): The domain `actor_candidate` and `resource` are in where the state change will happen
   """
-  id: int
+  _id: int
   _actor: A
   __resource: Optional[R]
   _parent: Optional['Event']
@@ -96,7 +97,7 @@ class Event(Generic[A, R, X]):
   ):
     self._actor = actor
     self._parent = parent
-    self.__destination_square = resource
+    self._resource = resource
     self._execution_environment = execution_environment
 
   @property
@@ -105,7 +106,7 @@ class Event(Generic[A, R, X]):
 
   @property
   def resource(self) -> Optional[R]:
-    return self.__destination_square
+    return self._resource
 
 
   @property
@@ -123,6 +124,10 @@ class Event(Generic[A, R, X]):
       return True
     if other is None:
       return False
-    if not isinstance(other, Event):
-      return False
-    return self.id == other.id
+    if isinstance(other, Event):
+      event = cast(Event, other)
+      return self._id == event._id
+    return False
+
+  def __hash__(self):
+    return hash(self._id)

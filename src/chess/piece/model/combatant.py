@@ -22,6 +22,11 @@ Notes:
 """
 from typing import Optional
 
+from chess.piece import Piece
+from chess.rank import Rank
+from chess.system import AutoId
+from chess.team import Team
+
 
 class CombatantPiece(Piece):
   _captor: Optional[Piece]

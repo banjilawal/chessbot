@@ -7,28 +7,28 @@
 # └── transaction/
 #   ├── event/
 #   │  ├── __init__.py
-#   │  ├── transaction.py
-#   │  ├── validator.py
+#   │  ├── old_transaction.py
+#   │  ├── old_occupation_validator.py
 #   │  ├── event.py
 #   │  ├── err.py
 #   │  └── err.py
 #   │
 #   ├── promotion/
 #   │  ├── __init__.py
-#   │  ├── transaction.py
-#   │  ├── validator.py
+#   │  ├── old_transaction.py
+#   │  ├── old_occupation_validator.py
 #   │  ├── event.py
 #   │  └── err.py
 #   │
 #   ├── castling/
 #   │  ├── __init__.py
-#   │  ├── transaction.py
-#   │  ├── validator.py
+#   │  ├── old_transaction.py
+#   │  ├── old_occupation_validator.py
 #   │  └── err.py
 #   │
 #   └── enemy/
 #     ├── __init__.py
-#     ├── transaction.py
-#     ├── validator.py
+#     ├── old_transaction.py
+#     ├── old_occupation_validator.py
 #     ├── event.py
 #     └── err.py

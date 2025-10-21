@@ -5,7 +5,7 @@ from typing import cast, Generic
 
 from chess.system import Validator
 from chess.piece import PieceValidator
-from chess.system.emitter import id_emitter
+from chess.system.id.emitter import id_emitter
 from chess.exception import HostageCaptorNullException, RosterRemovalException, HostageAdditionException
 
 from chess.randomize.competitor import RandomName

@@ -52,16 +52,16 @@ From `chess.piece`:
  * `Team`
 """
 
-from typing import Sequence
+from typing import Sequence, cast
 
 from chess.piece import Piece
 from chess.system import AutoId
 from chess.commander import Commander
-from chess.team import TeamSchema
+from chess.team import Team, TeamSchema
 
 
 
-@AutoId()
+@AutoId
 class Team:
   """
   # ROLE: Service, Coordination
@@ -77,7 +77,7 @@ class Team:
   """
   MAX_ROSTER_SIZE = 16
 
-  id: int
+  _id: int
   _commander: Commander
   _schema: TeamSchema
   _roster: list['Piece']
@@ -153,14 +153,16 @@ class Team:
       return True
     if other is None:
       return False
-    if not isinstance(other, 'Team'):
-      return False
-    return self.id == other.id
+    if isinstance(other, Team):
+      team = cast(Team, other)
+      return self._id == team._id
+
+    return False
 
 
   def __hash__(self):
-    return hash(self.id)
+    return hash(self._id)
 
 
   def __str__(self):
-    return f"Team[id:{self.id} commander:{self._commander.name} {self._schema}"
+    return f"Team[id:{self._id} commander:{self._commander.name} {self._schema}"

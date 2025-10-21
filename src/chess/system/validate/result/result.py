@@ -1,4 +1,4 @@
-# src/chess/system/validate/transaction.py
+# src/chess/system/validate/old_transaction.py
 
 """
 Module: chess.piece.system.validate.transaction

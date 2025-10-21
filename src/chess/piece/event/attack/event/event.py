@@ -1,11 +1,10 @@
 from typing import Optional
 
+
 from chess.board import Board
-from chess.event import Event
 from chess.square import Square
-from chess.piece import Piece, CombatantPiece
-from chess.piece.event import TravelEvent
-from chess.system import AutoId
+from chess.system import AutoId, Event
+from chess.piece import Piece, CombatantPiece, TravelEvent
 
 
 @AutoId
@@ -46,6 +45,6 @@ class AttackEvent(TravelEvent):
 
   def __eq__(self, other):
     if super().__eq__(other):
-      if isinstance(other, AttackEvent):
+      if isinstance(other, 'AttackEvent'):
         return self._id == other.id
     return False

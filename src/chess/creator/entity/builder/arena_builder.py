@@ -1,5 +1,5 @@
 from chess.arena.arena import Arena
-from chess.system.emitter import id_emitter
+from chess.system.id.emitter import id_emitter
 from chess.board.builder import ChessBoardBuilder
 from chess.creator.entity.factory.owner_factory import OwnerFactory
 from chess.creator.team_placement_manager import TeamPlacementManager

@@ -1,4 +1,4 @@
-# chess/board_validator/validator.py
+# chess/board_validator/old_occupation_validator.py
 
 """
 Module: `chess.board_validator.validation`

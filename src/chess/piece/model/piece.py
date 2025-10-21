@@ -28,14 +28,8 @@ from chess.rank import Rank
 from chess.team import Team
 from chess.coord import Coord
 from chess.system import AutoId, LoggingLevelRouter
-from chess.piece import CoordStack, Discovery, Discoveries
+from chess.piece import CoordStack, Discovery, Discoveries, Piece
 
-
-__all__ = [
-  'Piece',
-  'KingPiece',
-  'CombatantPiece'
-]
 
 
 @AutoId
@@ -57,7 +51,7 @@ class Piece(ABC):
     _positions (CoordStack): A stack of the discover's historical coordinates.
   """
 
-  id: int
+  _id: int
   _name: str
   _team: Team
   _rank: Rank
@@ -80,13 +74,6 @@ class Piece(ABC):
 
     if self not in team.roster:
       team.add_to_roster(self)
-
-
-  # @property
-  # def id(self) -> int:
-  #   """The unique ID of the discover."""
-  #   return self._piece_id
-
 
   @property
   def name(self) -> str:
@@ -128,14 +115,14 @@ class Piece(ABC):
       return True
     if other in None:
       return False
-    if not isinstance(other, 'Piece'):
-      return False
-    return self.id == other.id
+    if isinstance(other, Piece):
+      piece = cast(Piece, other)
+      return self._id == piece._id
+    return False
 
 
   def __hash__(self) -> int:
-    """Returns the hash value of the Piece based on its ID."""
-    return hash(self.id)
+    return hash(self._id)
 
 
   def is_enemy(self, piece: 'Piece') -> bool:
@@ -158,71 +145,3 @@ class Piece(ABC):
       f"position:{self._positions.current_coord} "
       f"moves:{self._positions.size()}]"
     )
-
-
-class KingPiece(Piece):
-  """A concrete subclass representing team king piece."""
-  _is_checked: bool
-  _is_checkmated: bool
-
-  def __init__(self,name: str, rank: 'Rank', team: 'Team'):
-    super().__init__(name, rank, team)
-    self._is_checked = False
-    self._is_checkmated = False
-
-
-  @property
-  def is_checked(self) -> bool:
-    return self._is_checked
-
-  @property
-  def is_checkmated(self) -> bool:
-    return self._is_checkmated
-
-  @is_checked.setter
-  def is_checked(self, is_checked: bool):
-    self._is_checked = is_checked
-
-  @is_checkmated.setter
-  def is_checkmated(self, is_checkmated: bool):
-    if self._is_checked:
-      self._is_checkmated = is_checkmated
-    else:
-      raise Exception("Cannot set checkmated status if not checked")
-
-
-  def __eq__(self, other):
-    if not super().__eq__(other):
-      return False
-
-    if isinstance(other, KingPiece):
-      return self.id == other.id
-
-
-class CombatantPiece(Piece):
-  _captor: Optional[Piece]
-
-  def __init__(self, name: str, rank: 'Rank', team: 'Team'):
-    super().__init__(name, rank, team)
-    self._captor = None
-
-
-  @property
-  def captor(self) -> Optional[Piece]:
-    return self._captor
-
-
-  @captor.setter
-  def captor(self, captor: Piece):
-    self._captor = captor
-
-
-  def __eq__(self, other):
-    if not super().__eq__(other):
-      return False
-
-    if isinstance(other, CombatantPiece):
-      return self.id == other.id
-
-
-

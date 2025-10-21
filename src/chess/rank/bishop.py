@@ -4,7 +4,7 @@ from chess.coord import Coord
 from chess.geometry import Path
 from chess.rank import Rank, RankSpec
 from chess.board.board import Board
-from chess.system.emitter import id_emitter
+from chess.system.id.emitter import id_emitter
 
 
 

@@ -1,4 +1,4 @@
-# chess/coord/validator.py
+# chess/coord/old_occupation_validator.py
 
 """
 Module: `chess.coord.validation`

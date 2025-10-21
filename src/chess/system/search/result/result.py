@@ -1,4 +1,4 @@
-# src/chess/system/old_search/transaction.py
+# src/chess/system/old_search/old_transaction.py
 
 """
 Module: `chess.system.old_search.transaction`

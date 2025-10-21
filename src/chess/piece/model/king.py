@@ -1,11 +1,20 @@
+from typing import Callable, cast
+
+from chess.rank import Rank
+from chess.team import Team
+from chess.piece import Piece
+
+InitMethod = Callable[[str, Rank, Team], None]
 
 class KingPiece(Piece):
-  """A concrete subclass representing team king piece."""
+  _id: int
   _is_checked: bool
   _is_checkmated: bool
 
-  def __init__(self,name: str, rank: 'Rank', team: 'Team'):
-    super().__init__(name, rank, team)
+  def __init__(self, name: str, rank: Rank, team: Team):
+    init_call = cast(InitMethod, super().__init__)
+    init_call(name, rank, team)
+
     self._is_checked = False
     self._is_checkmated = False
 
@@ -33,35 +42,9 @@ class KingPiece(Piece):
   def __eq__(self, other):
     if not super().__eq__(other):
       return False
-
     if isinstance(other, KingPiece):
-      return self.id == other.id
+      return True
+    return False
 
-
-class CombatantPiece(Piece):
-  _captor: Optional[Piece]
-
-  def __init__(self, name: str, rank: 'Rank', team: 'Team'):
-    super().__init__(name, rank, team)
-    self._captor = None
-
-
-  @property
-  def captor(self) -> Optional[Piece]:
-    return self._captor
-
-
-  @captor.setter
-  def captor(self, captor: Piece):
-    self._captor = captor
-
-
-  def __eq__(self, other):
-    if not super().__eq__(other):
-      return False
-
-    if isinstance(other, CombatantPiece):
-      return self.id == other.id
-
-
-
+  def __hash__(self):
+    return hash(self._id)

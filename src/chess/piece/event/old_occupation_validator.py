@@ -1,7 +1,7 @@
 
 
 
-class OccupationEventValidator(EventValidator[OccupationEvent]):
+class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
   @classmethod
   def validate(cls, t: OccupationEvent, context: Optional[ExecutionContext]) -> Result[OccupationEvent]:

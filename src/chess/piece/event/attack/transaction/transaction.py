@@ -14,8 +14,8 @@ Notes:
 """
 
 from chess.board import FailedPieceRemovalRolledBackException
-from chess.piece import TravelTransaction
-from chess.system import TransactionResult, id_emitter
+from chess.piece import OldTravelTransaction
+from chess.system import Transaction, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
 from chess.piece.event.attack.event.exception import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
@@ -23,7 +23,7 @@ from chess.piece.event.occupation.transaction import OccupationTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 
-class AttackTransaction(TravelTransaction[AttackEvent]):
+class AttackTransaction(Transaction[AttackEvent]):
 
   @staticmethod
   def execute(event: AttackEvent) -> TransactionResult:
