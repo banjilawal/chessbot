@@ -8,6 +8,8 @@ version: 1.0.0
 """
 
 from .exception import *
+
 from .square import Square
+from .dto import SquareDTO
 from .builder import SquareBuilder
 from .validator import SquareValidator

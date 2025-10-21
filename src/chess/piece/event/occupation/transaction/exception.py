@@ -10,6 +10,9 @@ from chess.system import RollbackException, TransactionException
 __all__ = [
     'OccupationTransactionException',
     'OccupationTransactionRolledBackException',
+    'FailedDestinationSquareOccupationRolledBackException',
+    'FailedActorSquareVacationRolledBackException',
+    'FailedActorPositionUpdateRolledBackException',
 ]
 
 
@@ -26,21 +29,22 @@ class OccupationTransactionRolledBackException(OccupationTransactionException, R
         "The transaction failed when an error occurred. The transaction was rolled back before raising this exception."
     )
     
-class FailedDestinationSquareOccupationRollBackException(OccupationTransactionRolledBackException):
+class FailedDestinationSquareOccupationRolledBackException(OccupationTransactionRolledBackException):
     ERROR_CODE = "DESTINATION_SQUARE_OCCUPATION_FAILURE_ROLLED_BACK"
     DEFAULT_MESSAGE = (
         "Destination_Square's occupant was not successfully updated to actor_piece. OccupationTransaction was rolled "
         "back before exception was raised."
     )
+    
 
-class FailedActorSquareVacationRollBackException(OccupationTransactionRolledBackException):
+class FailedActorSquareVacationRolledBackException(OccupationTransactionRolledBackException):
     ERROR_CODE = "ACTOR_SQUARE_VACATION_FAILURE_ROLLED_BACK"
     DEFAULT_MESSAGE = (
         "Actor_Square was not successfully emptied. OccupationTransaction was rolled back before exception was raised."
     )
 
 
-class FailedActorPositionUpdateRollBackException(OccupationTransactionRolledBackException):
+class FailedActorPositionUpdateRolledBackException(OccupationTransactionRolledBackException):
     ERROR_CODE = "ACTOR_POSITION_UPDATE_FAILURE_ROLLED_BACK"
     DEFAULT_MESSAGE = (
         "Actor.current_position was not successfully set to destination_square's coord. The OccupationTransaction"

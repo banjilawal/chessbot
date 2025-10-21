@@ -8,6 +8,8 @@ version: 1.0.0
 """
 
 from .id import *
+from .dto import *
+from .err import *
 from .name import *
 from .actor import *
 from .context import *
@@ -17,7 +19,6 @@ from .result import *
 from .config import *
 from .search import *
 from .build import *
-from .err import *
 from .logging import *
 from .validate import *
 from .transaction import *
@@ -36,6 +37,7 @@ __all__ = [
   'GameColor',
 
   *id.__all__,
+  *dto.__all__,
   *name.__all__,
   *event.__all__,
   *utils.__all__,
