@@ -21,7 +21,7 @@ class PieceDTO:
 
   @classmethod
   def create_from_piece(cls, piece: Piece):
-      cls._id = piece.id
+      cls._id = piece._id
       cls._name = piece.name
       cls._ransom = piece.rank.ransom
       cls._team_id = piece.team.id

@@ -83,11 +83,17 @@ class Team:
   _roster: list['Piece']
   _hostages: list['Piece']
 
-  def __init__(self, commander: Commander, schema: TeamSchema):
+  def __init__(self, id: int, commander: Commander, schema: TeamSchema):
     method = "Team.__init__"
+    self._id = id
     self._commander = commander
     self._schema = schema
     self._roster = []
+
+
+  @property
+  def id(self) -> int:
+    return self._id
 
 
   @property
@@ -101,7 +107,7 @@ class Team:
 
 
   @property
-  def roster(self) -> Sequence['Piece']:
+  def roster(self) -> Sequence[Piece]:
     """
     Returns team read-only view of the team's roster. The returned sequence is safe to
     iterate and index, but mutating it will not affect the original roster.
@@ -110,7 +116,7 @@ class Team:
 
 
   @property
-  def hostages(self) -> Sequence['Piece']:
+  def hostages(self) -> Sequence[Piece]:
     """
     Returns team read-only view of the team's rostages. The returned sequence is safe to
     iterate and index, but mutating it will not affect the original hostage list.

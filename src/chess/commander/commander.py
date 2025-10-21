@@ -11,14 +11,14 @@ from chess.commander import CommandHistory
 if TYPE_CHECKING:
   pass
 
-@auto_id
 class Commander(ABC):
+  _id: int
   _name: str
   _teams: CommandHistory
   _current_team: Optional['Team']
 
 
-  def __init__(self, name: str):
+  def __init__(self, id: int, name: str):
 
     # id_validation = IdValidator.validate(commander_id)
     # if not id_validation.is_success():
@@ -29,16 +29,17 @@ class Commander(ABC):
       raise name_validation.exception
 
     # self._piece_id = cast(int, id_validation.payload)
+    self._id = id
     self._name = cast(str, name_validation.payload)
     self._teams = CommandHistory()
 
     self._current_team = self._teams.current_team
   #
   #
-  # @property
-  # def id(self) -> int:
-  #   return self._piece_id
-  #
+  @property
+  def id(self) -> int:
+    return self._id
+
 
   @property
   def name(self) -> str:
@@ -65,9 +66,9 @@ class Commander(ABC):
       return True
     if other is None:
       return False
-    if not isinstance(other, Commander):
-      return False
-    return self.id == other.id
+    if isinstance(other, Commander):
+      commander = cast(Commander, other)
+      return self._id == commander.id
 
 
   def __str__(self):

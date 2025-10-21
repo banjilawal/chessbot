@@ -12,14 +12,13 @@ version: 1.0.0
 Contains:
  * `Bot`
 """
+from typing import cast
 
-
-
-from chess.system import auto_id
 from chess.commander import Commander
 from chess.engine import DecisionEngine
+from chess.rank import Bishop
 
-@auto_id
+
 class Bot(Commander):
   """
   Automated player that uses team `DecisionEngine`
@@ -32,8 +31,8 @@ class Bot(Commander):
 
   _engine: DecisionEngine
 
-  def __init__(self, name: str,engine: DecisionEngine):
-    super().__init__(name)
+  def __init__(self, id: int, name: str,engine: DecisionEngine):
+    super().__init__(id, name)
     self._engine = engine
 
   @property
@@ -42,12 +41,14 @@ class Bot(Commander):
 
 
   def __eq__(self, other):
-    if not super().__eq__(other):
-      return False
-
-    if isinstance(other, Bot):
-      return self._id == other.id
+    if super().__eq__(other):
+      if isinstance(other, Bot):
+        bot = cast(Bot, other)
+        return self._id == bot.id
     return False
+
+  def __hash__(self):
+    return hash(self.id)
 
   def __str__(self):
     return f"{super().__str__()} engine:{self._engine.__class__.__name__.title()}"

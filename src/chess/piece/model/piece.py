@@ -27,12 +27,11 @@ from typing import List, Optional, cast
 from chess.rank import Rank
 from chess.team import Team
 from chess.coord import Coord
-from chess.system import AutoId, LoggingLevelRouter
-from chess.piece import CoordStack, Discovery, Discoveries, Piece
+from chess.system import LoggingLevelRouter
+from chess.piece import CoordStack, Discovery, Discoveries
 
 
 
-@AutoId
 class Piece(ABC):
   """An abstract base class representing team single chess discover.
 
@@ -62,8 +61,9 @@ class Piece(ABC):
 
 
   @LoggingLevelRouter.monitor
-  def __init__(self, name: str, rank: Rank, team: Team):
+  def __init__(self, id: int, name: str, rank: Rank, team: Team):
     method = "Piece.__init__"
+    self._id = id
     self._name = name
     self._team = team
     self._rank = rank
@@ -74,6 +74,10 @@ class Piece(ABC):
 
     if self not in team.roster:
       team.add_to_roster(self)
+
+  @property
+  def id(self) -> int:
+    return self._id
 
   @property
   def name(self) -> str:
@@ -117,7 +121,8 @@ class Piece(ABC):
       return False
     if isinstance(other, Piece):
       piece = cast(Piece, other)
-      return self._id == piece._id
+      return self._id == piece.id
+
     return False
 
 

@@ -46,11 +46,10 @@ from typing import Optional, cast
 
 from chess.coord import Coord
 from chess.piece import Piece
-from chess.square import Square
-from chess.system import AutoId, LoggingLevelRouter
+from chess.system import LoggingLevelRouter
 
 
-@AutoId
+
 class Square:
   """
   # ROLE: Data-Holding
@@ -73,10 +72,15 @@ class Square:
   _occupant: Optional[Piece]
 
   @LoggingLevelRouter.monitor
-  def __init__(self, name: str, coord: Coord):
+  def __init__(self, id: int, name: str, coord: Coord):
+    self._id = id
     self._name = name
     self._coord = coord
     self._occupant = None
+
+  @property
+  def id(self) -> int:
+    return self._id
 
 
   @property
@@ -107,7 +111,7 @@ class Square:
       return True
     if isinstance(other, Square):
       square = cast(Square, other)
-      return self._id == square._id
+      return self._id == square.id
     return False
 
 

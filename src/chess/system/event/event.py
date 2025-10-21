@@ -55,15 +55,12 @@ Major themes influencing the design include:
 
 from typing import Generic, TypeVar, Optional, cast
 
-from chess.system import AutoId
-from chess.system import Event
-
 
 A = TypeVar('A') # Actor Type
 R = TypeVar('R') # Resource Type
 X = TypeVar('X') # ExecutionEnvironment Type
 
-@AutoId
+
 class Event(Generic[A, R, X]):
   """
   # ROLE: State Management, Data Transport, Abstract Data Type
@@ -90,15 +87,21 @@ class Event(Generic[A, R, X]):
 
   def __init__(
     self,
+    id: int,
     actor: A,
     execution_environment: X,
     resource: Optional[R]=None,
     parent: Optional['Event']=None
   ):
+    self._id = id
     self._actor = actor
     self._parent = parent
     self._resource = resource
     self._execution_environment = execution_environment
+
+  @@property
+  def id(self) -> int:
+      return self._id
 
   @property
   def actor(self) -> A:
@@ -126,7 +129,7 @@ class Event(Generic[A, R, X]):
       return False
     if isinstance(other, Event):
       event = cast(Event, other)
-      return self._id == event._id
+      return self._id == event.id
     return False
 
   def __hash__(self):

@@ -20,19 +20,30 @@ Notes:
   in PieceValidator and related error classes. Piece objects are designed to be
   immutable in their core properties.
 """
-from typing import Optional
+
+from typing import Callable, Optional, cast
 
 from chess.piece import Piece
 from chess.rank import Rank
-from chess.system import AutoId
 from chess.team import Team
 
 
+# Define the signature of Piece.__init__ (which is what super().__init__ calls)
+# Assuming Rank and Team are correctly imported or forward referenced.
+InitMethod = Callable[[str, Rank, Team], None]
+
 class CombatantPiece(Piece):
+  _id: int # Type hint so @AutoID works with __eq__, __hash__ or any places id is needed
   _captor: Optional[Piece]
 
-  def __init__(self, name: str, rank: 'Rank', team: 'Team'):
-    super().__init__(name, rank, team)
+  def __init__(self, name: str, rank: Rank, team: Team):
+
+    # Cast the super().__init__ call to the defined signature
+    init_call = cast(InitMethod, super().__init__)
+
+    # Execute the correctly typed call
+    init_call(name, rank, team)
+
     self._captor = None
 
 
@@ -49,9 +60,12 @@ class CombatantPiece(Piece):
   def __eq__(self, other):
     if not super().__eq__(other):
       return False
-
     if isinstance(other, CombatantPiece):
-      return self.id == other.id
+      return True
+    return False
+
+  def __hash__(self):
+    return hash(self._id)
 
 
 

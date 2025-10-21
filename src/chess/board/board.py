@@ -14,12 +14,12 @@ Contains:
 """
 
 import random
-from typing import List, Optional, TYPE_CHECKING
+from typing import List, Optional, TYPE_CHECKING, cast
 
 from assurance.exception.invalid_hostage import HostageValidationException
 from chess.result import Result
 
-from chess.system import auto_id
+
 from chess.coord import CoordValidator
 from assurance.validators.hostage_validator import HostageValidator
 from chess.square import Square
@@ -30,7 +30,6 @@ from chess.coord import Coord
 if TYPE_CHECKING:
   from chess.piece.model.piece import Piece, CombatantPiece
 
-@auto_id
 class Board:
   """
   THe realm where game play happens. Provides mapping of `Square` to `Piece` with Coord.
@@ -40,10 +39,11 @@ class Board:
     _pieces (List[Piece]): pieces on the board_validator
     _squares (List[List[Square]]): 8x8 array of Square objects representing the chess chessboard.
   """
+  _id: int
   _pieces: [Piece]
   _squares: List[List[Square]]
 
-  def __init__(self, squares: List[List[Square]]):
+  def __init__(self, id: int, squares: List[List[Square]]):
     """
     Creates team Board instance
 
@@ -55,8 +55,14 @@ class Board:
       NullException: If squares is null
     """
     method = f"{self.__class__.__name__}.__ini__"
+    self._id = id
     self._squares = squares
     self._pieces = []
+
+
+  @@property
+  def id(self) -> int:
+    return self._id
 
 
   @property
@@ -73,8 +79,13 @@ class Board:
   def __eq__(self, other):
     if other is self: return True
     if other is None: return False
-    if not isinstance(other, Board): return False
-    return self._id == other.id
+    if isinstance(other, Board):
+      board = cast(Board, other)
+      return self._id == board.id
+    return False
+
+  def __hash__(self):
+    return hash(self._id)
 
   #
   # def iterator(

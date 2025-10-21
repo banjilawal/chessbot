@@ -4,6 +4,8 @@ from chess.rank import Rank
 from chess.team import Team
 from chess.piece import Piece
 
+# Define the signature of Piece.__init__ (which is what super().__init__ calls)
+# Assuming Rank and Team are correctly imported or forward referenced.
 InitMethod = Callable[[str, Rank, Team], None]
 
 class KingPiece(Piece):
@@ -12,7 +14,11 @@ class KingPiece(Piece):
   _is_checkmated: bool
 
   def __init__(self, name: str, rank: Rank, team: Team):
+
+    # Cast the super().__init__ call to the defined signature.
     init_call = cast(InitMethod, super().__init__)
+
+    # Execute the correctly typed call.
     init_call(name, rank, team)
 
     self._is_checked = False

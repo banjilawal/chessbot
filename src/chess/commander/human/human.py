@@ -1,25 +1,19 @@
-from abc import ABC
-from typing import Optional, cast, TYPE_CHECKING
+from typing import  TYPE_CHECKING
 
-from chess.coord import CoordValidator
-from assurance import IdValidator, NameValidator
-from chess.system import AutoId
-from chess.team import Team
-from chess.piece import Piece
-from chess.commander import CommandHistory
 
-if TYPE_CHECKING:
-  pass
+from chess.commander import  Commander
 
-@AutoId
+
 class Human(Commander):
 
-  def __init__(self, name: str):
-    super().__init__(name)
+  def __init__(self, id: int,  name: str):
+    super().__init__(id, name)
 
   def __eq__(self, other):
-    if not super().__eq__(other):
-      return False
-    if isinstance(other, Human):
-      return self.id == other.id
+    if super().__eq__(other):
+      if isinstance(other, Human):
+        return True
     return False
+
+  def __hash__(self):
+    return hash(self.id)
