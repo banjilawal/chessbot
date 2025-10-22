@@ -18,7 +18,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - All exceptions from `exception` package.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for event operations.
+  - `.exception`: Defines all custom exceptions for travel operations.
   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 # HOW TO IMPORT

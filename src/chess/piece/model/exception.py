@@ -1,7 +1,7 @@
-# src/chess/system/event/travel_exception.py
+# src/chess/system/travel/travel_exception.py
 
 """
-Module: chess.system.event.exception
+Module: chess.system.travel.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -307,7 +307,7 @@ class HostageActivityException(PieceException):
   useful for debugging.
   """
   ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"
-  DEFAULT_MESSAGE = "Hostage piece cannot move, encounter, or attack."
+  DEFAULT_MESSAGE = "Hostage piece cannot move, blocked, or attack."
 
 
 class HostageCannotAttackException(HostageActivityException):
@@ -326,9 +326,9 @@ class HostageCannotMoveException(HostageActivityException):
 
 class HostageCannotScanException(HostageActivityException):
   """
-  Raised if team captured piece tries to encounter team square.
+  Raised if team captured piece tries to blocked team square.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot encounter team sqaure."
+  DEFAULT_MESSAGE = "Captured piece cannot blocked team sqaure."
 
 

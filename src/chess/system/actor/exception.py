@@ -98,7 +98,7 @@ class InvalidActorException(ActorException, InvalidAttackException):
 
 class ActorNotOnBoardException(ActorException):
   """
-  A piece that has not been placed on the board_validator cannot move, encounter, capture or be captured
+  A piece that has not been placed on the board_validator cannot move, blocked, capture or be captured
   """
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
   DEFAULT_MESSAGE = "Actor is not on the board_validator. Piece cannot act"
@@ -135,10 +135,10 @@ class CapturedActorCannotMoveException(ActorException):
 
 class CapturedActorCannotScanException(ActorException):
   """
-  A captured piece cannot encounter.
+  A captured piece cannot blocked.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "A captured actor_candidate cannot encounter team square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot blocked team square."
 
 class CheckMatedKingActivityException(ActorException):
   """
@@ -163,13 +163,13 @@ class SubjectException(AttackException):
 class InvalidSubjectException(SubjectException, InvalidAttackException):
   """Raised if team required enemy fails validate."""
   ERROR_CODE = "SUBJECT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Required enemy failed validate. Actor cannot fire event onto enemy"
+  DEFAULT_MESSAGE = "Required enemy failed validate. Actor cannot fire travel onto enemy"
 
 
 class SubjectNotOnBoardException(SubjectException):
   """Raised when team required enemy is not found on the board_validator."""
   ERROR_CODE = "SUBJECT_NOT_ON_BOARD_ERROR"
-  DEFAULT_MESSAGE = "Required enemy was not found on the board_validator. Actor cannot fire event onto enemy"
+  DEFAULT_MESSAGE = "Required enemy was not found on the board_validator. Actor cannot fire travel onto enemy"
 
 
 class SubjectPlacementRequiredException(SubjectException):
@@ -177,5 +177,5 @@ class SubjectPlacementRequiredException(SubjectException):
   ERROR_CODE = "SUBJECT_PLACEMENT_REQUIRED_ERROR"
   DEFAULT_MESSAGE = (
     "Required enemy has an empty position stack. It as not been placed on the board_validator. Actor cannot"
-    "fire event onto enemy."
+    "fire travel onto enemy."
   )

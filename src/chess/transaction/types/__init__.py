@@ -1,11 +1,11 @@
 # 2. Domain-Specific Operations
 #
-# Each transaction type (event, promotion, castling, enemy, etc.) gets its own subpackage.
+# Each transaction type (travel, promotion, castling, enemy, etc.) gets its own subpackage.
 # Inside, you can have:
 #
 # chess/
 # └── transaction/
-#   ├── event/
+#   ├── travel/
 #   │  ├── __init__.py
 #   │  ├── old_transaction.py
 #   │  ├── old_occupation_validator.py

@@ -1,7 +1,7 @@
 # chess/geometry/__init__.py
 
 """
-Module: `chess.event.geometry`
+Module: `chess.travel.geometry`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

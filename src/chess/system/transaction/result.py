@@ -1,7 +1,7 @@
-# src/chess/system/event/old_transaction.py
+# src/chess/system/travel/old_transaction.py
 
 """
-Module: `chess.system.event.transaction`
+Module: `chess.system.travel.transaction`
 Author: Banji Lawal
 Created: 2025-09-28
 version: 1.0.0

@@ -10,10 +10,10 @@ class OccupationBlockedException(SquareException):
   default_message = "The chess square is occupied by another friendly captor."
 
 class OccupationCleanupException(SquareException):
-  default_message = "An event clean up task failed. Entities have inconsistent states."
+  default_message = "An travel clean up task failed. Entities have inconsistent states."
 
 class VacateCleanUpException(SquareException):
   default_message = "An vacate clean up task failed. Entities have inconsistent states."
 
 class InaccurateOccupationStatusException(SquareException):
-  default_message = "The event test_outcome is inaccurate"
+  default_message = "The travel test_outcome is inaccurate"

@@ -1,7 +1,7 @@
-# src/chess/system/event/context.py
+# src/chess/system/travel/context.py
 
 """
-Module: chess.system.event.context
+Module: chess.system.travel.context
 Author: Banji Lawal
 Created: 2025-10-06
 

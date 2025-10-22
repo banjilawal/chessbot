@@ -7,7 +7,8 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from .event import *
+from .dto import *
+from .travel import *
 from .model import *
 from .search import *
 from .discover import *

@@ -13,7 +13,7 @@ class Checker:
   It captures the essential identifying information about the discovered piece without holding team direct
   reference, ensuring immutability and safe storage within old_search logs or decision-making structures.
 
-  `Checker` objects are used to record what team piece has observed during scanning, moving, or event
+  `Checker` objects are used to record what team piece has observed during scanning, moving, or travel
   attempts. They provide enough detail (identity, team, rank, ransom value, and position) for evaluation
   by old_search and decision engines, while remaining lightweight and detached from the full `Piece` object.
 

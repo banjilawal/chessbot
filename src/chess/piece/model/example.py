@@ -14,8 +14,8 @@ Provides the fundamental data structures for game pieces and entities owned by t
   * `CombatantPiece`: Concrete piece that can be captured
   * `KingPiece`: Concrete king piece with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-  * `Encounter`: A record of an item discovered by team `Piece` during team encounter or move.
-  * `EncounterScan`: A data-holding object representing team single encounter of team chess piece's surroundings.
+  * `Encounter`: A record of an item discovered by team `Piece` during team blocked or move.
+  * `EncounterScan`: A data-holding object representing team single blocked of team chess piece's surroundings.
 
 ## Usage
 ```python
@@ -124,10 +124,10 @@ Raises:
 
   PieceValidationException: Wraps any preceding exceptions
 """
-# src/chess/system/event/travel_exception.py
+# src/chess/system/travel/travel_exception.py
 
 """
-Module: chess.system.event.exception
+Module: chess.system.travel.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

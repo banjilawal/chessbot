@@ -1,7 +1,7 @@
-# src/chess/system/event/travel_exception.py
+# src/chess/system/travel/travel_exception.py
 
 """
-Module: chess.system.event.exception
+Module: chess.system.travel.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

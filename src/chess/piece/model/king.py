@@ -1,4 +1,4 @@
-from typing import Callable, List, cast
+from typing import List
 
 from chess.piece.checker import Checker
 from chess.rank import Rank

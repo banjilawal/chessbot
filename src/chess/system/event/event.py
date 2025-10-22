@@ -1,4 +1,4 @@
-# src/chess/system/event/travel_event.py
+# src/chess/system/travel/travel_event.py
 
 """
 Module: chess.system.id.validator
@@ -19,7 +19,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Builders` which create subclasses for each state the entity has in its lifecycle.
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
-      `chess.system.event.transaction` is responsible for the `Event` lifecycle.
+      `chess.system.travel.transaction` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of data control or routing information it contains. Directly using the
       module can breach data integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
@@ -74,9 +74,9 @@ class Event(Generic[A, R, X]):
   Information to execute a `Transaction` that could change the entity's state.
 
   Attributes:
-    * `_actor` (`A`): The entity requesting the event.
+    * `_actor` (`A`): The entity requesting the travel.
     * `__resource` (`R`): Component `actor_candidate` needs to change system state.
-    * `_parent` (`Event`): The parent event of this event.
+    * `_parent` (`Event`): The parent travel of this travel.
     * `_execution_environment` (`X`): The domain `actor_candidate` and `resource` are in where the state change will happen
   """
   _id: int

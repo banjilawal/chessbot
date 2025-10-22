@@ -90,7 +90,7 @@ class EncounterLogException(CollectionException):
 
 class NullEncounterException(EncounterLogException):
   ERROR_CODE = "NULL_ENCOUNTER_ERROR"
-  DEFAULT_MESSAGE = "Cannot add null encounter to log"
+  DEFAULT_MESSAGE = "Cannot add null blocked to log"
 
 #======================# RELATIONSHIP EXCEPTIONS #======================#  
 
