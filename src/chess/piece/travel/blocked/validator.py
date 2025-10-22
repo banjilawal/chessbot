@@ -1,4 +1,4 @@
-# src/chess/piece/travel/blocked/validator.py
+# src/chess/piece/travel/blocked/piece.py
 
 """
 Module: `chess.piece.travel.blocked.validator`
@@ -11,8 +11,8 @@ from typing import cast
 
 from chess.system import IdValidator, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
-    ActorBindingBoardValidator, ActorBlockingItsOwnSquareException, ActorSameAsBlockingFriendException, BlockingEvent,
-    NullBlockingEventException, OccupationBlockerIsEnemyException, PieceValidator, ResourceBindingBoardValidator
+    PieceBindingBoardValidator, ActorBlockingItsOwnSquareException, ActorSameAsBlockingFriendException, BlockingEvent,
+    NullBlockingEventException, OccupationBlockerIsEnemyException, PieceValidator, TravelResourceValidator
 )
 
 
@@ -46,11 +46,11 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             if id_validation.is_failure():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_binding_validation = ActorBindingBoardValidator.validate(event.actor, event.execution_environment)
+            actor_binding_validation = PieceBindingBoardValidator.validate(event.actor, event.execution_environment)
             if actor_binding_validation.is_failure():
                 return ValidationResult(exception=actor_binding_validation.exception)
             
-            resource_binding_validation = ResourceBindingBoardValidator.validate(
+            resource_binding_validation = TravelResourceValidator.validate(
                 event.blocked_square,
                 event.execution_environment
             )

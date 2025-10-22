@@ -75,8 +75,8 @@ __all__ = [
 # ======================# BOARD CONSISTENCY EXCEPTION #======================#
   'InconsistentBoardException',
   'BoardInvariantBreachException',
-  'SearchByCoordInvariantBreachException',
-  'SearchBySquareIdInvariantBreachException'
+  'CoordSearchInvariantBreachException',
+  'SquareIdSearchInvariantBreachException'
 ]
 
 from chess.system import InconsistentCollectionException
@@ -182,14 +182,14 @@ class BoardInvariantBreachException(BoardException, InvariantBreachException):
   DEFAULT_MESSAGE = "A Board invariant was breached, There may be a critical state inconsistency. or data loss."
 
 
-class SearchByCoordInvariantBreachException(BoardInvariantBreachException):
+class CoordSearchInvariantBreachException(BoardInvariantBreachException):
   """"""
   DEFAULT_CODE = "INVARIANT_SQUARE_BREACH_ERROR"
   DEFAULT_MESSAGE = (
     "A square invariant on the board was breached, There may be a critical state inconsistency. or data loss."
   )
 
-class SearchBySquareIdInvariantBreachException(BoardInvariantBreachException):
+class SquareIdSearchInvariantBreachException(BoardInvariantBreachException):
   """"""
   DEFAULT_CODE = "INVARIANT_COORD_BREACH_ERROR"
   DEFAULT_MESSAGE = (

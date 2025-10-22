@@ -27,7 +27,7 @@ class PromotionTransaction(TransactionOrchestrator):
       raise permission_result.exception
 
     client = cast(Piece, permission_result.request.actor)
-    rank = cast(Queen, permission_result.request.resource)
+    rank = cast(Queen, permission_result.request.square)
 
 
     promoted_queen = PromotedQueen(

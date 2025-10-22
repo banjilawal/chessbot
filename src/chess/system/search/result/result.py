@@ -30,7 +30,7 @@ The major theme influencing the modules design are
 
 # 6 Feature Delivery Mechanism:
   1. The module implements logic for carrying either an exception or transaction of a successful old_search. in the same
-      container. This improves resource.
+      container. This improves square.
   2. Delivering an exception in the return instead of raising gives application higher reliability, uptimes and
       survivability.
 

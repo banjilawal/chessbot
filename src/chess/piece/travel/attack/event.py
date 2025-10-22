@@ -23,10 +23,10 @@ class AttackEvent(TravelEvent):
     self,
     id: int,
     actor: Piece,
-    board: Board,
     actor_square: Square,
     enemy_square: Square,
     enemy_combatant: CombatantPiece,
+    execution_environment: Board,
     parent: Optional[Event]=None
   ):
     super().__init__(
@@ -35,20 +35,22 @@ class AttackEvent(TravelEvent):
       parent=parent,
       actor_square=actor_square,
       destination_square=enemy_square,
-      execution_environment=board
+      execution_environment=execution_environment
     )
     self._actor_square = actor_square
     self._enemy_combatant = enemy_combatant
-
 
   @property
   def actor_square(self) -> Square:
     return self._actor_square
 
-
   @property
   def enemy_combatant(self) -> CombatantPiece:
     return self._enemy_combatant
+  
+  @property
+  def enemy_square(self) -> Square:
+    return self.destination_square
 
 
   def __eq__(self, other):

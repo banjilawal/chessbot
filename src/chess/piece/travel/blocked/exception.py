@@ -172,8 +172,8 @@ class OccupationBlockerIsEnemyException(BlockingEventException):
 #   'CapturedActorCannotMoveException',
 #
 #   # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-#   'TravelActorSquareNotFoundException',
-#   'SquareMisMatchesTravelActorException'
+#   'PieceSquareNotFoundException',
+#   'SquareMisMatchesPieceException'
 # ]
 #
 #
@@ -254,7 +254,7 @@ class OccupationBlockerIsEnemyException(BlockingEventException):
 #
 #
 # # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-# class TravelActorSquareNotFoundException(TravelActorException, InconsistencyException):
+# class PieceSquareNotFoundException(TravelActorException, InconsistencyException):
 #   """"""
 #   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
 #   DEFAULT_MESSAGE = (
@@ -263,7 +263,7 @@ class OccupationBlockerIsEnemyException(BlockingEventException):
 #   )
 #
 #
-# class SquareMisMatchesTravelActorException(TravelActorException, InconsistencyException):
+# class SquareMisMatchesPieceException(TravelActorException, InconsistencyException):
 #   """"""
 #   ERROR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
 #   DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a data inconsistency."

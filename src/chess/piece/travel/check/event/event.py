@@ -13,9 +13,9 @@ class KingCheckEvent(TravelEvent):
         self,
         id: int,
         actor: Piece,
-        board: Board,
         enemy_king: KingPiece,
         enemy_square: Square,
+        execution_environment: Board,
         parent: Optional[Event] = None
     ):
         super().__init__(
@@ -23,7 +23,7 @@ class KingCheckEvent(TravelEvent):
             actor=actor,
             parent=parent,
             destination_square=enemy_square,
-            execution_environment=board
+            execution_environment=execution_environment
         )
         self._enemy_king = enemy_king
     

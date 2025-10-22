@@ -6,7 +6,7 @@ from assurance.exception.invalid_request import PromotionRequestValidationExcept
 
 from chess.system.transaction.result import TransactionResult
 from chess.system.id.validator import IdValidator
-from chess.piece.model.validator import PieceValidator
+from chess.piece.validation.piece import PieceValidator
 from chess.rank.queen import PromotedQueen
 from chess.transaction.validators.base import RequestValidator
 from chess.system.permit import Event

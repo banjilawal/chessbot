@@ -102,7 +102,7 @@ __all__ = [
   'NullTravelEventException',
   'TravelEventActorNotFoundException',
   'EventActorSquareNotFoundException',
-  'TravelEventResourceNotFoundException',
+  'TravelEventSquareNotFoundException',
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
   'TravelEventBuildFailedException',
@@ -134,11 +134,10 @@ class InvalidTravelEventException(TravelEventException, ValidationException):
   ERROR_CODE = "TRAVEL_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent failed validate"
 
-
-class TravelEventResourceNotFoundException(TravelEventException, ResourceException):
-  ERROR_CODE = "TRAVEL_EVENT_RESOURCE_NOT_FOUND_ERROR"
+class TravelEventSquareNotFoundException(TravelEventException, ResourceException):
+  ERROR_CODE = "TRAVEL_EVENT_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent resource (the enemy_square) was not found during the board_validator search."
+    "A square necessary for a TravelEvent was not found during a BoardSearch operation."
   )
 
 class AutoTravelPieceException(TravelEventException):

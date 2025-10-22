@@ -86,7 +86,7 @@ Raise:
   InvalidCoordException: if 
 """
 
-# chess/coord/validator.py
+# chess/coord/piece.py
 
 """
 Module: `chess.coord.validation`

@@ -23,7 +23,7 @@ Created: 2025-09-28
  * `TravelEventFactory`
 """
 
-from chess.system import EmptyResultConstructorException, ErrorContradictsPayloadException
+from chess.system import Result
 from typing import Optional, TypeVar, Generic
 
 
@@ -61,39 +61,40 @@ Methods:
   is_success() -> bool: Returns True if the transaction is successful (i.e., has team payload only).
 """
 
-class BuildResult(Generic[T]):
+class BuildResult(Result[Generic[T]]):
 
 
   _payload: Optional[T]
   _exception: Optional[Exception]
-
+  
   def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-
-    method = "Result.__init_"
-
-    if payload is None and exception is None:
-      raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}")
-
-    if not (payload is None or exception is None):
-      raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}")
-
-    self._payload = payload
-    self._exception = exception
-
-
-  @property
-  def payload(self) -> Optional[T]:
-    return self._payload
-
-
-  @property
-  def exception(self) -> Optional[Exception]:
-    return self._exception
-
-
-  def is_success(self) -> bool:
-    return self._exception is None and self._payload is not None
-
+    super().__init__(payload=payload, exception=exception)
+  #
+  #   method = "Result.__init_"
+  #
+  #   if payload is None and exception is None:
+  #     raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}")
+  #
+  #   if not (payload is None or exception is None):
+  #     raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}")
+  #
+  #   self._payload = payload
+  #   self._exception = exception
+  #
+  #
+  # @property
+  # def payload(self) -> Optional[T]:
+  #   return self._payload
+  #
+  #
+  # @property
+  # def exception(self) -> Optional[Exception]:
+  #   return self._exception
+  #
+  #
+  # def is_success(self) -> bool:
+  #   return self._exception is None and self._payload is not None
+  #
 
     """
     Action:

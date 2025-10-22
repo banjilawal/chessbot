@@ -15,10 +15,11 @@ Created: 2025-09-28
 
 from chess.square import Square
 from chess.system import LoggingLevelRouter, BuildResult, id_emitter
-from chess.board import Board, BoardSquareSearch, BoardSearchContext, SearchByCoordInvariantBreachException
+from chess.board import Board, BoardSquareSearch, BoardSearchContext, CoordSearchInvariantBreachException
 from chess.piece import (
-    KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, TravelEvent,
-    ActorBindingBoardValidator, ResourceBindingBoardValidator, ActorAlreadyAtDestinationException
+    KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, TravelActorValidator,
+    TravelEvent,
+    PieceBindingBoardValidator, TravelResourceValidator, ActorAlreadyAtDestinationException
 )
 
 
@@ -61,17 +62,17 @@ class TravelEventFactory:
         method = "TravelEventFactory.execute"
         
         try:
-            actor_binding_validation = ActorBindingBoardValidator.validate((actor, board))
-            if actor_binding_validation.is_failure():
-                return BuildResult(exception=actor_binding_validation.exception)
+            actor_validation = TravelActorValidator.validate((actor, board))
+            if actor_validation.is_failure():
+                return BuildResult.failure(actor_validation.exception)
             
-            resource_binding_validation = ResourceBindingBoardValidator.validate((destination_square, board))
-            if resource_binding_validation.is_failure():
-                return BuildResult(exception=resource_binding_validation.exception)
+            resource_validator = TravelResourceValidator.validate((destination_square, board))
+            if resource_validator.is_failure():
+                return BuildResult.failure(resource_validator.exception)
             
             if actor.current_position == destination_square.coord:
-                return BuildResult(exception=ActorAlreadyAtDestinationException(
-                    f"{method}: {ActorAlreadyAtDestinationException.DEFAULT_MESSAGE}"
+                return BuildResult.failure(
+                    ActorAlreadyAtDestinationException(f"{method}: {ActorAlreadyAtDestinationException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -81,21 +82,21 @@ class TravelEventFactory:
             )
             
             if actor_square_search.is_empty():
-                return BuildResult(
-                    exception=SearchByCoordInvariantBreachException(
-                        f"{method}: {SearchByCoordInvariantBreachException.DEFAULT_MESSAGE}"
+                return BuildResult.failure(
+                    CoordSearchInvariantBreachException(
+                        f"{method}: {CoordSearchInvariantBreachException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if actor_square_search.is_failure():
-                return BuildResult(exception=actor_square_search.exception)
+                return BuildResult.failure(actor_square_search.exception)
             
             actor_square = actor_square_search.payload[0]
             destination_occupant = destination_square.occupant
             
             if destination_occupant is None:
-                return BuildResult(
-                    payload=OccupationEvent(
+                return BuildResult.success(
+                    OccupationEvent(
                         id=id_emitter.event_id,
                         actor=actor,
                         actor_square=actor_square,
@@ -105,8 +106,8 @@ class TravelEventFactory:
                 )
             
             if not actor.is_enemy(destination_occupant):
-                return BuildResult(
-                    payload=BlockingEvent(
+                return BuildResult.success(
+                    BlockingEvent(
                         id=id_emitter.event_id,
                         actor=actor,
                         friend=destination_occupant,
@@ -116,8 +117,8 @@ class TravelEventFactory:
                 )
             
             if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
-                return BuildResult(
-                    payload=AttackEvent(
+                return BuildResult.success(
+                    AttackEvent(
                         id=id_emitter.event_id,
                         actor=actor,
                         actor_square=actor_square,
@@ -128,11 +129,10 @@ class TravelEventFactory:
                 )
             
             if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece):
-                return BuildResult(
-                    payload=KingCheckEvent(
+                return BuildResult.success(
+                    KingCheckEvent(
                         id=id_emitter.event_id,
                         actor=actor,
-                        actor_square=actor_square,
                         enemy_king=destination_occupant,
                         enemy_square=destination_square,
                         execution_environment=board

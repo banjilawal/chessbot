@@ -1,1 +1,1 @@
-from .binding import ResourceBindingBoardValidator
+from .destination import TravelResourceValidator

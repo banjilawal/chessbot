@@ -14,7 +14,7 @@ from chess.piece import Piece, TravelActorValidator, ActorNotOnBoardCannotMoveEx
 from chess.system import BindingValidator, LoggingLevelRouter, ValidationResult, Validator
 
 
-class ActorBindingBoardValidator(BindingValidator[Piece, Board]):
+class PieceBindingBoardValidator(BindingValidator[Piece, Board]):
   """
   # ROLE: Validator, Data Integrity
 
@@ -35,7 +35,7 @@ class ActorBindingBoardValidator(BindingValidator[Piece, Board]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Piece, Board]) -> ValidationResult[Tuple[Piece, Board]]:
     """"""
-    method = "ActorBindingBoardValidator.validate"
+    method = "PieceBindingBoardValidator.validate"
 
     try:
       actor_candidate, environment_candidate = candidate
@@ -126,8 +126,8 @@ class ActorBindingBoardValidator(BindingValidator[Piece, Board]):
       # )
       #
       # if square_search.is_empty():
-      #   return ValidationResult(exception=TravelActorSquareNotFoundException(
-      #     f"{method}: {TravelActorSquareNotFoundException.DEFAULT_MESSAGE}"
+      #   return ValidationResult(exception=PieceSquareNotFoundException(
+      #     f"{method}: {PieceSquareNotFoundException.DEFAULT_MESSAGE}"
       #   ))
       #
       # if square_search.is_failure():
@@ -139,8 +139,8 @@ class ActorBindingBoardValidator(BindingValidator[Piece, Board]):
       # # If the piece is not the square's occupant it cannot be a TravelEvent's actor_candidate. Data inconsistency
       # # or some other integrity problem is likely.
       # if square.occupant is not piece:
-      #   return ValidationResult(exception=SquareMisMatchesTravelActorException(
-      #     f"{method}: {SquareMisMatchesTravelActorException.DEFAULT_MESSAGE}"
+      #   return ValidationResult(exception=SquareMisMatchesPieceException(
+      #     f"{method}: {SquareMisMatchesPieceException.DEFAULT_MESSAGE}"
       #   ))
 
       return ValidationResult(payload=Tuple[piece, board])

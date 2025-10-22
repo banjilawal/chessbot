@@ -27,7 +27,7 @@ class SearchException(ChessException):
 class ImpossibleFatalResultException(SearchException):
   """
   This is for sanity checking. Events and transactions need to ensure
-  an `actor_candidate` and the `resource` they need to run team `Transaction` exist
+  an `actor_candidate` and the `square` they need to run team `Transaction` exist
   in the datapool in `SearchContext`. Validations and builds guarantee
   resources and actors exist in the game. If they are not found that
   indicates data inconsistency or nonexistent data pool.

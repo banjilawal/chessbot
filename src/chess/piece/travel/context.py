@@ -77,7 +77,7 @@ class TravelContext(ExecutionContext):
   """
   """
   Additional dependencies an `TravelEvent` passes to an
-  `TravelEventFactory` apart from the `actor_candidate` and `resource`.
+  `TravelEventFactory` apart from the `actor_candidate` and `square`.
 
   Attributes:
     `_board (`Board)`:

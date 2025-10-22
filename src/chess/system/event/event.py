@@ -77,7 +77,7 @@ class Event(Generic[A, R, X]):
     * `_actor` (`A`): The entity requesting the travel.
     * `__resource` (`R`): Component `actor_candidate` needs to change system state.
     * `_parent` (`Event`): The parent travel of this travel.
-    * `_execution_environment` (`X`): The domain `actor_candidate` and `resource` are in where the state change will happen
+    * `_execution_environment` (`X`): The domain `actor_candidate` and `square` are in where the state change will happen
   """
   _id: int
   _actor: A

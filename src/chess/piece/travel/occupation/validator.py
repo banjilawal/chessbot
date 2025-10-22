@@ -11,8 +11,8 @@ from typing import Any
 
 from chess.system import Validator, ValidationResult
 from chess.piece import (
-    ActorAlreadyAtDestinationException, ActorBindingBoardValidator, OccupationEvent,
-    NullOccupationEventException, OccupationDestinationNotEmptyException, ResourceBindingBoardValidator
+    ActorAlreadyAtDestinationException, PieceBindingBoardValidator, OccupationEvent,
+    NullOccupationEventException, OccupationDestinationNotEmptyException, TravelResourceValidator
 )
 
 
@@ -42,18 +42,18 @@ class OccupationEventValidator(Validator[OccupationEvent]):
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_binding_validation = ActorBindingBoardValidator.validate(event.actor, event.execution_environment)
+            actor_binding_validation = PieceBindingBoardValidator.validate(event.actor, event.execution_environment)
             if actor_binding_validation.is_failure():
                 return ValidationResult(exception=actor_binding_validation.exception)
             
-            resource_binding_validation = ResourceBindingBoardValidator.validate(
-                event.resource,
+            resource_binding_validation = TravelResourceValidator.validate(
+                event.square,
                 event.execution_environment
             )
             if resource_binding_validation.is_failure():
                 return ValidationResult(exception=resource_binding_validation.exception)
             
-            if event.resource.occupant is not None:
+            if event.square.occupant is not None:
                 return ValidationResult(exception=OccupationDestinationNotEmptyException(
                     f"{method}: {OccupationDestinationNotEmptyException.DEFAULT_MESSAGE}"
                     )
