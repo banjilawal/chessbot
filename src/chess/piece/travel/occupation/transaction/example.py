@@ -97,7 +97,7 @@ Example:
 #     -
 #
 #   Note:
-#   *  If the transaction fails, `OperationResult.was_rolled_back = True`
+#   *  If the notification fails, `OperationResult.was_rolled_back = True`
 #   """
 #   method = "OccupationExecutor._switch_squares"
 #
@@ -106,7 +106,7 @@ Example:
 #     # Rollback all changes in reverse order
 #     travel.friend.occupant = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=travel,
@@ -120,7 +120,7 @@ Example:
 #     actor_square.occupant = travel.actor
 #     travel.friend.occupant = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=travel,
@@ -135,7 +135,7 @@ Example:
 #     actor_square.occupant = travel.actor
 #     travel.friend.occupant = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=travel,
@@ -181,7 +181,7 @@ Example:
 #     # Rollback all changes in reverse order
 #     travel.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
@@ -195,7 +195,7 @@ Example:
 #     # Rollback all changes in reverse order
 #     travel.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
@@ -210,7 +210,7 @@ Example:
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
@@ -226,7 +226,7 @@ Example:
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
@@ -243,7 +243,7 @@ Example:
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
@@ -267,7 +267,7 @@ Example:
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=travel,
@@ -524,7 +524,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #     (e.g., invalid target, rollback during capture, inconsistent board_validator state).
 #   """
 #   DEFAULT_CODE = "ATTACK_ERROR"
-#   DEFAULT_MESSAGE = "An error occurred during an attack or capture transaction."
+#   DEFAULT_MESSAGE = "An error occurred during an attack or capture notification."
 #
 #
 #

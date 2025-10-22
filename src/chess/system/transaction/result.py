@@ -1,7 +1,7 @@
 # src/chess/system/travel/old_transaction.py
 
 """
-Module: `chess.system.travel.transaction`
+Module: `chess.system.travel.notification`
 Author: Banji Lawal
 Created: 2025-09-28
 version: 1.0.0
@@ -12,11 +12,11 @@ This module provides:
   2. A satisfaction of the performance requirement.
 
 # SECTION 2 - Scope:
-The module covers `Transaction` instances that emit a `TransactionResult` and consumers of the transaction.
+The module covers `Transaction` instances that emit a `TransactionResult` and consumers of the notification.
 
 # SECTION 3 - Limitations:
   1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of data in the transaction.
+  2. The module does not guarantee the accuracy or precision of data in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -28,7 +28,7 @@ The major theme influencing the modules design are
   2. Performance does not degrade under high old_search loads.
 
 # 6 Feature Delivery Mechanism:
-  1. The module implements logic for carrying either an exception or transaction of a successful old_search. in the same
+  1. The module implements logic for carrying either an exception or notification of a successful old_search. in the same
       container. This improves square.
   2. Delivering an exception in the return instead of raising gives application higher reliability, uptimes and
       survivability.
@@ -66,7 +66,7 @@ class TransactionResult(Result[Event]):
   None
   """
   """
-  Result of team transaction that changes an entity's state.
+  Result of team notification that changes an entity's state.
 
   Use factory methods to create instances:
   - TransactionResult.success()

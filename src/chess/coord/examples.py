@@ -82,11 +82,11 @@ Return:
   Coord
 
 Raise:
-  InvalidVectorException: if null-pkg fails validators.
+  InvalidVectorException: if null-pkg fails notification.
   InvalidCoordException: if 
 """
 
-# chess/coord/piece.py
+# chess/coord/validator.py
 
 """
 Module: `chess.coord.validation`

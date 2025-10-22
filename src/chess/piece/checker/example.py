@@ -89,7 +89,7 @@ build_outcome = PieceBuilder.build(
 if not build_outcome.is_success():
   raise build_outcome.err
 
-# Its best practice to cast the transaction to the expected type.
+# Its best practice to cast the notification to the expected type.
 black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 
 if black_bishop_2 is None:

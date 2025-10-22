@@ -124,11 +124,11 @@ class AddNullDiscoveryException(DiscoveryException):
 #======================# DISCOVERY EXCEPTIONS WITH ROLLBACK===
 class DiscoveryRolledBackException(DiscoveryException, RollbackException):
   """
-  Any inconsistencies team discovery introduces into team transaction need to be rolled back.
+  Any inconsistencies team discovery introduces into team notification need to be rolled back.
   This is the super class of team discovery mutator operations, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
   exists primarily to allow catching all Checker exceptions that happen when team failed
-  transaction must be rolled back.
+  notification must be rolled back.
   """
   ERROR_CODE = "DISCOVERY_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Checker raised an exception. Transaction rolled back"
@@ -136,8 +136,8 @@ class DiscoveryRolledBackException(DiscoveryException, RollbackException):
 
 class CircularDiscoveryRolledBackException(DiscoveryException):
   """
-  Raised if an actor_candidate scans itself during an ACID transaction. The
-  transaction was rolled back before raising this err.
+  Raised if an actor_candidate scans itself during an ACID notification. The
+  notification was rolled back before raising this err.
   """
   ERROR_CODE = "OBSERVER_CIRCULAR_SCAN_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "An actor_candidate cannot discover itself. Transaction rolled back."
@@ -145,8 +145,8 @@ class CircularDiscoveryRolledBackException(DiscoveryException):
 
 class DuplicateDiscoveryRolledBackException(DiscoveryException):
   """
-  Raised if team transaction attempts adding team discovery twice to an actor_candidate. The
-  transaction was rolled back before raising this err.
+  Raised if team notification attempts adding team discovery twice to an actor_candidate. The
+  notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_DUPLICATE_DISCOVERY_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
@@ -156,8 +156,8 @@ class DuplicateDiscoveryRolledBackException(DiscoveryException):
 
 class AddNullDiscoveryRolledBackException(DiscoveryException):
   """
-  Raised if team transaction attempts adding team null or empty discovery to an
-  actor_candidate's list. The transaction was rolled back before raising this err.
+  Raised if team notification attempts adding team null or empty discovery to an
+  actor_candidate's list. The notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_NULL_DISCOVERY_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Cannot add team null discovery to the list. Transaction rolled back."
@@ -173,7 +173,7 @@ class DiscoveryRolledBackException(DiscoveryException, RollbackException):
 
 class CaptureFriendRolledBackException(DiscoveryRolledBackException):
   """
-  Raised if team transaction attempts capturing team friend. The transaction
+  Raised if team notification attempts capturing team friend. The notification
   was rolled back before raising this err.
   """
   ERROR_CODE = "FRIEND_CAPTURE_ERROR_ROLLED_BACK"
@@ -183,7 +183,7 @@ class CaptureFriendRolledBackException(DiscoveryRolledBackException):
 
 class KingCaptureRolledBackException(DiscoveryRolledBackException):
   """
-  Raised if team transaction attempts capturing an enemy. Kings can only be checked or
+  Raised if team notification attempts capturing an enemy. Kings can only be checked or
   checkmated. 
   """
   ERROR_CODE = "KING_CAPTURE_ERROR_ROLLED_BACK"
@@ -194,8 +194,8 @@ class KingCaptureRolledBackException(DiscoveryRolledBackException):
 
 class DoubleCaptureRolledBackException(DiscoveryRolledBackException):
   """
-  Raised if team transaction attempts capturing an enemy combatant that is already
-  team prisoner. The transaction was rolled back before raising this err.
+  Raised if team notification attempts capturing an enemy combatant that is already
+  team prisoner. The notification was rolled back before raising this err.
   """
   ERROR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
@@ -205,8 +205,8 @@ class DoubleCaptureRolledBackException(DiscoveryRolledBackException):
 
 class UnsetCaptureRolledBackException(DiscoveryRolledBackException):
   """
-  Raised if team transaction attempts setting prisoner's captor field null.
-  The transaction was rolled back before raising this err.
+  Raised if team notification attempts setting prisoner's captor field null.
+  The notification was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (

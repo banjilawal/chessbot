@@ -115,7 +115,7 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty old_search transaction if no match ws found
+      # returns empty old_search notification if no match ws found
       return SearchResult()
 
   @classmethod
@@ -145,7 +145,7 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty old_search transaction if no match ws found
+      # returns empty old_search notification if no match ws found
       return SearchResult()
 
   @classmethod
@@ -159,5 +159,5 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty old_search transaction if no match ws found
+      # returns empty old_search notification if no match ws found
       return SearchResult()

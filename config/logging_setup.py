@@ -45,5 +45,5 @@ def init_logging():
   os.makedirs('logs', exist_ok=True)
   logging.config.dictConfig(LOGGING_CONFIG)
   logger = logging.getLogger(__name__)
-  logger.info("Logging transaction ready")
+  logger.info("Logging notification ready")
   return logger

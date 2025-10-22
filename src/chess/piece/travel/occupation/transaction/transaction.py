@@ -1,7 +1,7 @@
-# src/chess/piece/travel/occupation/transaction/transaction.py
+# src/chess/piece/travel/occupation/notification/notification.py
 
 """
-Module: `chess.piece.travel.occupation.transaction.transaction`
+Module: `chess.piece.travel.occupation.notification.notification`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

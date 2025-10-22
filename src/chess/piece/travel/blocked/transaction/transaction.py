@@ -1,5 +1,5 @@
 """
-Module: transaction
+Module: notification
 Author: Banji Lawal
 Created: 2025-10-01
 """

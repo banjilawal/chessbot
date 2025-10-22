@@ -7,7 +7,7 @@ T = TypeVar('T')
 X = TypeVar('X')
 
 class BindingValidator(ABC, Generic[T, X]):
-    """Base pattern for all consistency validators"""
+    """Base pattern for all consistency notification"""
 
     # def __init__(self, element_validator: Validator[T], environment_validator: Validator[X]):
     #     self._element_validator = element_validator

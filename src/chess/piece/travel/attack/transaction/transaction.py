@@ -1,5 +1,5 @@
 """"
-Module: chess.travel.travel.attack.transaction
+Module: chess.travel.travel.attack.notification
 Author: Banji Lawal
 Created: 2025-10-01
 Version: 1.0.0
@@ -38,7 +38,7 @@ class AttackTransaction(Transaction[AttackEvent]):
       # Rollback all changes in reverse order
       event.enemy.captor = None
 
-      # Send the transaction indicating rollback
+      # Send the notification indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -52,7 +52,7 @@ class AttackTransaction(Transaction[AttackEvent]):
       # Rollback all changes in reverse order
       event.enemy.captor = None
 
-      # Send the transaction indicating rollback
+      # Send the notification indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -67,7 +67,7 @@ class AttackTransaction(Transaction[AttackEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the transaction indicating rollback
+      # Send the notification indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -83,7 +83,7 @@ class AttackTransaction(Transaction[AttackEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the transaction indicating rollback
+      # Send the notification indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,
@@ -100,7 +100,7 @@ class AttackTransaction(Transaction[AttackEvent]):
       event.enemy.team.add_to_roster(event.enemy)
       event.enemy.captor = None
 
-      # Send the transaction indicating rollback
+      # Send the notification indicating rollback
       return TransactionResult(
         event=event,
         was_rolled_back=True,

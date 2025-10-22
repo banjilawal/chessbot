@@ -38,7 +38,7 @@ class FailedCaptorPropertyUpdateRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Updating a prisoner's captor field during an attack transaction failed.  The transaction was rolled back "
+    "Updating a prisoner's captor field during an attack notification failed.  The notification was rolled back "
     "before this exception was raised."
   )
 
@@ -46,7 +46,7 @@ class FailedPrisonerRemovalFromSquareRolledBackException(AttackTransactionExcept
   """"""
   ERROR_CODE = "FAILED_PRISONER_REMOVAL_FROM_SQUARE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured piece from the square it was occupying failed during a transaction. The transaction "
+    "Removing a captured piece from the square it was occupying failed during a notification. The notification "
     "was rolled back before this exception was raised."
   )
 
@@ -54,7 +54,7 @@ class FailedHostageAdditionRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_HOSTAGE_ADDITION_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Adding a hostage failed during an attack transaction. The transaction was rolled back before this "
+    "Adding a hostage failed during an attack notification. The notification was rolled back before this "
     "exception was raised."
   )
 
@@ -62,7 +62,7 @@ class FailedRemovalFromRosterRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTIVE_REMOVAL_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured team member failed during an attack transaction. The transaction was rolled back "
+    "Removing a captured team member failed during an attack notification. The notification was rolled back "
     "before this exception was raised."
   )
 
@@ -70,6 +70,6 @@ class FailedCapturedPiecFromBoardRolledBackException(AttackTransactionException)
   """"""
   ERROR_CODE = "FAILED_CAPTURED_PIEC_FROM_BOARD_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured piece from the board failed during an attack transaction. The transaction was rolled back "
+    "Removing a captured piece from the board failed during an attack notification. The notification was rolled back "
     "before this exception was raised."
   )

@@ -1,7 +1,7 @@
-# src/chess/piece/travel/occupation/transaction/exception.py
+# src/chess/piece/travel/occupation/notification/exception.py
 
 """
-Module: `chess.piece.travel.occupation.transaction.exception`
+Module: `chess.piece.travel.occupation.notification.exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -35,7 +35,7 @@ class OccupationTransactionRolledBackException(OccupationTransactionException, R
     """"""
     ERROR_CODE = "OCCUPATION_TRANSACTION_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
-        "The transaction failed when an error occurred. The transaction was rolled back before raising this exception."
+        "The notification failed when an error occurred. The notification was rolled back before raising this exception."
     )
 
 

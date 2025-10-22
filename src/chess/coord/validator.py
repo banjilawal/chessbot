@@ -81,7 +81,7 @@ class CoordValidator(Validator[Coord]):
           f"{method} {ColumnAboveBoundsException.DEFAULT_MESSAGE}"
         ))
 
-      # Return the transaction if checks passed
+      # Return the notification if checks passed
       return ValidationResult(payload=coordinate)
 
     except Exception as e:

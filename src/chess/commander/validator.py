@@ -83,7 +83,7 @@ class CommanderValidator(Validator):
       # if not team_history_validation.is_success():
       #   raise team_history_validation.err
 
-      # Return the transaction if checks passed
+      # Return the notification if checks passed
       return Result(payload=commander)
 
     except (

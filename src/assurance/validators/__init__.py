@@ -6,7 +6,7 @@ from chess.system.name.validator import NameValidator
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "assurance.validators"
+__package_name__ = "assurance.notification"
 
 # Export control - only what belongs in public API
 __all__ = [

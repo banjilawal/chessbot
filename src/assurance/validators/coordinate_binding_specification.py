@@ -1,6 +1,6 @@
 from typing import Generic, cast
 
-from chess.piece.validation.piece import ChessPieceValidator
+from chess.piece.model.validator import ChessPieceValidator
 from chess.system.validate.validator import Validator
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from chess.board.coordinate_bind import CoordinateBinding
@@ -18,7 +18,7 @@ class CoordinateSBindingValidator(Validator):
       - chess_piece.coordinate_stack.current_coordinate() == square.coord
       - chess_piece_previous_square.occupant == null
       
-    If any validators fails their team_exception will be encapsulated in team CoordinateBindingValidationException
+    If any notification fails their team_exception will be encapsulated in team CoordinateBindingValidationException
 
     Args
       candidate (CoordinateBinding): coordinate_binding to validate
@@ -67,4 +67,4 @@ class CoordinateSBindingValidator(Validator):
         NullCoordinateException, TypeError,
         RowOutOfBoundsException, ColumnOutOfBoundsException) as e:
       raise CoordinateValidationException(
-        f"{method} {class_name}: {entity} validators failed") from e
+        f"{method} {class_name}: {entity} notification failed") from e

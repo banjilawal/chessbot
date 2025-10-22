@@ -1,4 +1,4 @@
-# src/chess/piece/travel/blocked/piece.py
+# src/chess/piece/travel/blocked/validator.py
 
 """
 Module: `chess.piece.travel.blocked.validator`

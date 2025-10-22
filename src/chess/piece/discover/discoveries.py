@@ -29,7 +29,7 @@ class Discoveries:
 
   Notes:
     - Validation of ids, names, coordinates, and ranks is delegated to their
-     respective validators (`IdValidator`, `NameValidator`, `CoordValidator`,
+     respective notification (`IdValidator`, `NameValidator`, `CoordValidator`,
      `RankValidator`).
     - Each method returns team `SearchResult` to provide consistent success/empty/err handling.
     - The collection enforces uniqueness and immutability at the discover level.
@@ -63,7 +63,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty old_search transaction
+      # returns empty old_search notification
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)
@@ -85,7 +85,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty old_search transaction
+      # returns empty old_search notification
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)
@@ -104,7 +104,7 @@ class Discoveries:
       if discovery is not None:
         return SearchResult(payload=discovery)
 
-      # returns empty old_search transaction
+      # returns empty old_search notification
       return SearchResult()
     except Exception as e:
       return SearchResult(exception=e)

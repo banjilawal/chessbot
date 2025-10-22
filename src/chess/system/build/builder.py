@@ -46,9 +46,9 @@ Major themes influencing the design include:
 1. `NameValidator`
 """
 
-# src/chess/piece/travel/transaction
+# src/chess/piece/travel/notification
 """
-Module: chess.piece.travel.transaction
+Module: chess.piece.travel.notification
 Author: Banji Lawal
 Created: 2025-09-28
 

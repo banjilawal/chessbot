@@ -1,7 +1,7 @@
 # src/chess/piece/travel/old_transaction.py
 
 """
-Module: chess.piece.travel.transaction
+Module: chess.piece.travel.notification
 Author: Banji Lawal
 Created: 2025-09-28
 
@@ -218,7 +218,7 @@ class TravelTransaction(Transaction):
   #     -
   #
   #   Note:
-  #   *  If the transaction fails, `OperationResult.was_rolled_back = True`
+  #   *  If the notification fails, `OperationResult.was_rolled_back = True`
   #   """
   #   method = "OccupationExecutor._switch_squares"
   #
@@ -227,7 +227,7 @@ class TravelTransaction(Transaction):
   #     # Rollback all changes in reverse order
   #     directive.friend.occupant = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
@@ -241,7 +241,7 @@ class TravelTransaction(Transaction):
   #     actor_square.occupant = directive.actor
   #     directive.friend.occupant = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
@@ -256,7 +256,7 @@ class TravelTransaction(Transaction):
   #     actor_square.occupant = directive.actor
   #     directive.friend.occupant = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
@@ -333,7 +333,7 @@ class TravelTransaction(Transaction):
   #     # Rollback all changes in reverse order
   #     directive.enemy.captor = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
@@ -346,7 +346,7 @@ class TravelTransaction(Transaction):
   #     # Rollback all changes in reverse order
   #     directive.enemy.captor = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
@@ -362,7 +362,7 @@ class TravelTransaction(Transaction):
   #     directive.enemy.team.add_to_roster(directive.enemy)
   #     directive.enemy.captor = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
@@ -379,7 +379,7 @@ class TravelTransaction(Transaction):
   #     directive.enemy.team.add_to_roster(directive.enemy)
   #     directive.enemy.captor = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
@@ -395,7 +395,7 @@ class TravelTransaction(Transaction):
   #     directive.enemy.team.add_to_roster(directive.enemy)
   #     directive.enemy.captor = None
   #
-  #     # Send the transaction indicating rollback
+  #     # Send the notification indicating rollback
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,

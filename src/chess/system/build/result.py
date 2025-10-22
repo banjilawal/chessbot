@@ -1,6 +1,6 @@
-# src/chess/piece/travel/transaction
+# src/chess/piece/travel/notification
 """
-Module: chess.piece.travel.transaction
+Module: chess.piece.travel.notification
 Author: Banji Lawal
 Created: 2025-09-28
 
@@ -51,14 +51,14 @@ team payload of type T or an Exception, but not both. If the build operation is 
 contain the built object. If the build operation fails, the error will contain the error that
 occurred during the build process.
 
-BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team transaction.
+BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team notification.
 
 Attributes:
-  _payload (Optional[T]): The payload of the transaction, if successful.
-  _exception (Optional[Exception]): The error of the transaction, if failed.
+  _payload (Optional[T]): The payload of the notification, if successful.
+  _exception (Optional[Exception]): The error of the notification, if failed.
 
 Methods:
-  is_success() -> bool: Returns True if the transaction is successful (i.e., has team payload only).
+  is_success() -> bool: Returns True if the notification is successful (i.e., has team payload only).
 """
 
 class BuildResult(Result[Generic[T]]):
@@ -109,8 +109,8 @@ class BuildResult(Result[Generic[T]]):
     """
     Initializes team BuildResult object.
     Args:
-      payload (Optional[T]): The payload of the transaction, if successful.
-      exception (Optional[Exception]): The error of the transaction, if failed.
+      payload (Optional[T]): The payload of the notification, if successful.
+      exception (Optional[Exception]): The error of the notification, if failed.
     Raises:
       EmptyResultConstructorException: If neither payload nor error is provided.
       ResultPayloadConflictException: If both payload and error are provided.

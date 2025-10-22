@@ -1,7 +1,7 @@
-# src/chess/system/old_search/transaction/travel_exception.py
+# src/chess/system/old_search/notification/travel_exception.py
 
 """
-Module: chess.system.old_search.transaction.exception
+Module: chess.system.old_search.notification.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

@@ -129,6 +129,55 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
   DEFAULT_MESSAGE = "PromotionEvent validation failed."
 
 
+class DoublePromotionException(PromotionEventException):
+  """
+  Raised when attempting promoting team piece already elevated to Queen rank.
+  Only pieces with Pawn or King rank can be promoted.
+  """
+  ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
+  DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
+
+
+# ======================# PIECE PROMOTION EXCEPTIONS #======================#
+
+
+
+class DoublePromotionRolledBackException(BackException):
+  """
+  Raised if team notification attempts promoting team piece already elevated to Queen rank.
+  Only pieces with Pawn or King rank can be promoted. The notification was rolled
+  back before raising this err.
+  """
+  ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
+  DEFAULT_MESSAGE = (
+    "Piece is already promoted to Queen. It cannot be promoted again. Transaction "
+    "rollback performed."
+  )
+
+
+# ======================# PIECE PROMOTION EXCEPTIONS #======================#
+class DoublePromotionException(PieceException):
+  """
+  Raised when attempting promoting team piece already elevated to Queen rank.
+  Only pieces with Pawn or King rank can be promoted.
+  """
+  ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
+  DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
+
+
+class DoublePromotionRolledBackException(PieceRollBackException):
+  """
+  Raised if team notification attempts promoting team piece already elevated to Queen rank.
+  Only pieces with Pawn or King rank can be promoted. The notification was rolled
+  back before raising this err.
+  """
+  ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
+  DEFAULT_MESSAGE = (
+    "Piece is already promoted to Queen. It cannot be promoted again. Transaction "
+    "rollback performed."
+  )
+
+
 #======================# PROMOTION_EVENT BUILD EXCEPTIONS #======================#  
 class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
   """

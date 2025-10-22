@@ -14,7 +14,7 @@ Objects and utilities responsible for the Promotion lifecycle.
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `PromotionEvent`: Information necessary to fire the transaction.
+  - `PromotionEvent`: Information necessary to fire the notification.
   - `PromotionTransaction`: Runs the promotion lifecycle.
   - `PromotionEventBuilder: Safely creates the `PromotionEvent`
   - `PromotionEventValidator`

@@ -344,7 +344,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     -
 #
 #   Note:
-#   *  If the transaction fails, `OperationResult.was_rolled_back = True`
+#   *  If the notification fails, `OperationResult.was_rolled_back = True`
 #   """
 #   method = "OccupationExecutor._switch_squares"
 #
@@ -353,7 +353,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     # Rollback all changes in reverse order
 #     directive.friend.occupant = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
@@ -367,7 +367,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     actor_square.occupant = directive.actor
 #     directive.friend.occupant = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
@@ -382,7 +382,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     actor_square.occupant = directive.actor
 #     directive.friend.occupant = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
@@ -405,7 +405,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     # Rollback all changes in reverse order
 #     directive.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
@@ -418,7 +418,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     # Rollback all changes in reverse order
 #     directive.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
@@ -434,7 +434,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     directive.enemy.team.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
@@ -451,7 +451,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     directive.enemy.team.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
@@ -467,7 +467,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     directive.enemy.team.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #
-#     # Send the transaction indicating rollback
+#     # Send the notification indicating rollback
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,

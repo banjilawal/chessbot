@@ -113,7 +113,7 @@ class PieceSearchContextBuildFailedException(PieceSearchContextException, BuildF
 class RansomOutOfBoundsException(PieceSearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team transaction, raise this
+  Instead of running team old_search that won'candidate produce team notification, raise this
   error.
   """
   ERROR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_ERROR"

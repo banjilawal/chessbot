@@ -1,4 +1,4 @@
-# chess/system/old_search/transaction/__init__.py
+# chess/system/old_search/notification/__init__.py
 
 """
 Module: chess.system.old_search

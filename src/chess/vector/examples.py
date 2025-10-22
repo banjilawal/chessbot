@@ -221,11 +221,11 @@ Example:
 # Example:
 # ```python
 # # Validate an existing vector
-# transaction = VectorValidator.validate(some_vector)
+# notification = VectorValidator.validate(some_vector)
 
 
-# if transaction.is_success():
-#     validated_vector = transaction.payload
+# if notification.is_success():
+#     validated_vector = notification.payload
 # else:
 #     # Handle validate failure
 #     pass
@@ -352,7 +352,7 @@ Example:
 # ## TEAM EXCEPTIONS
 # This package defines specific exceptions for issues encountered when interacting with `Team` objects.
 # The exceptions are designed to pinpoint the exact nature of an err, such as team null reference, team
-# failed transaction, or an invalid configuration. This granular approach helps developers to quickly diagnose
+# failed notification, or an invalid configuration. This granular approach helps developers to quickly diagnose
 # and resolve team-related issues.
 # 
 # ### CORE EXCEPTIONS

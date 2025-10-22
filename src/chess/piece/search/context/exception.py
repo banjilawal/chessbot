@@ -106,7 +106,7 @@ class TooManyDiscoverySearchParamsException(DiscoverySearchContextException):
 class DiscoveryRansomParamBoundsException(DiscoverySearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team transaction, raise this
+  Instead of running team old_search that won'candidate produce team notification, raise this
   error.
   """
   ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_RANSOM_BOUNDS_ERROR"
@@ -115,7 +115,7 @@ class DiscoveryRansomParamBoundsException(DiscoverySearchContextException):
 class DiscoveryInvalidRankNameParamException(DiscoverySearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team transaction, raise this
+  Instead of running team old_search that won'candidate produce team notification, raise this
   error.
   """
   ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_RANK_NAME_ERROR"

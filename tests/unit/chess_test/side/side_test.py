@@ -26,8 +26,8 @@ class SideTest(unittest.TestCase):
     return mock_side
 
 
-  @patch('assurance.validators.commander.CommanderValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = False
     mock_id_validation.return_value.exception = IdValidationException("Invalid name")
@@ -39,8 +39,8 @@ class SideTest(unittest.TestCase):
       Side(side_id=None, controller=mock_competitor, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.validators.commander.CommanderValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
@@ -51,8 +51,8 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.validators.commander.CommanderValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
@@ -63,8 +63,8 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.validators.commander.CommanderValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.is_success.return_value = True
@@ -75,8 +75,8 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=mock_competitor, profile=None)
 
 
-  @patch('assurance.validators.commander.CommanderValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.is_success.return_value = True
@@ -98,8 +98,8 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=fake_controller, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.validators.commander.CommanderValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1
@@ -114,8 +114,8 @@ class SideTest(unittest.TestCase):
       assert side in competitor.teams.items
 
 
-  @patch('assurance.validators.commander.CommanderValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1

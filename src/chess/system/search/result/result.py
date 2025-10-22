@@ -1,7 +1,7 @@
 # src/chess/system/old_search/old_transaction.py
 
 """
-Module: `chess.system.old_search.transaction`
+Module: `chess.system.old_search.notification`
 Author: Banji Lawal
 Created: 2025-10-04
 Updated: 2025-10-10
@@ -17,7 +17,7 @@ The module covers clients servers, and data owners in the `ChessBot` old_search 
 
 # SECTION 3 - Limitations:
   1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of data in the transaction.
+  2. The module does not guarantee the accuracy or precision of data in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -29,7 +29,7 @@ The major theme influencing the modules design are
   2. Performance does not degrade under high old_search loads.
 
 # 6 Feature Delivery Mechanism:
-  1. The module implements logic for carrying either an exception or transaction of a successful old_search. in the same
+  1. The module implements logic for carrying either an exception or notification of a successful old_search. in the same
       container. This improves square.
   2. Delivering an exception in the return instead of raising gives application higher reliability, uptimes and
       survivability.
@@ -58,13 +58,13 @@ class SearchResult(Result[Generic[T]]):
 
   # RESPONSIBILITIES:
   1. Carry results to the query requestor.
-  2. Indicate an empty old_search transaction with an object that has neither a payload nor an exception.
+  2. Indicate an empty old_search notification with an object that has neither a payload nor an exception.
 
   # PROVIDES:
   Answer from the `Search` service provider containing either:
     1. Matches to the client's query.
     2. An exception raised during the old_search process or query submission.
-    3. A transaction containing neither an exception nor a payload indicating no matches were found.
+    3. A notification containing neither an exception nor a payload indicating no matches were found.
 
   # ATTRIBUTES:
     * See `Result` superclass for attributes.

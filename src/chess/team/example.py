@@ -83,13 +83,13 @@ Note:
 Example:
   ```python
   # Valid team creation
-  transaction = TeamBuilder.build(team_id=1, commander=black-commander, schema=black_team_profile)
-  if transaction.is_success():
-    team = cast(Team, transaction.payload) # Guaranteed valid Team
+  notification = TeamBuilder.build(team_id=1, commander=black-commander, schema=black_team_profile)
+  if notification.is_success():
+    team = cast(Team, notification.payload) # Guaranteed valid Team
 
   # Null commander will fail gracefully
-  transaction = TeamBuilder.build(team_id=1, commander=None, schema=black_team_profile)
-  if not transaction.is_success():
+  notification = TeamBuilder.build(team_id=1, commander=None, schema=black_team_profile)
+  if not notification.is_success():
     # Handle construction failure
     pass
   ```

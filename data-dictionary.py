@@ -67,14 +67,14 @@ class Coordinate(BaseModel):
     row (int): The 0-based row index.
     column (int): The 0-based column index.
   """
-  # Pydantic's Field handles validators for bounds checks.
+  # Pydantic's Field handles notification for bounds checks.
   row: int = Field(..., ge=0, lt=ROW_SIZE)
   column: int = Field(..., ge=0, lt=COLUMN_SIZE)
 
   class Config:
     frozen = True # Makes the model immutable
     # You can add team custom validator to catch Pydantic's
-    # validators errors and re-raise them as your custom exceptions.
+    # notification errors and re-raise them as your custom exceptions.
     # @validator('*', pre=True)
     # def check_bounds(cls, v):
     #   # Example of re-raising for 'row' field
@@ -104,7 +104,7 @@ class Coordinate(BaseModel):
     new_row = self.row + delta.row_delta
     new_column = self.column + delta.column_delta
 
-    # Pydantic's automatic validators will raise an error if the new
+    # Pydantic's automatic notification will raise an error if the new
     # coord is outside the defined bounds.
     return Coordinate(row=new_row, column=new_column)
 

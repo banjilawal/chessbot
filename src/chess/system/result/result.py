@@ -1,7 +1,7 @@
-# src/chess/system/transaction/old_transaction.py
+# src/chess/system/notification/old_transaction.py
 
 """
-Module: `chess.system.old_search.transaction`
+Module: `chess.system.old_search.notification`
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10
@@ -18,7 +18,7 @@ The module covers `Result` object in `ChessBot``.
 
 # SECTION 3 - Limitations:
   1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of data in the transaction.
+  2. The module does not guarantee the accuracy or precision of data in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are

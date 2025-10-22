@@ -1,7 +1,7 @@
-# src/chess/system/validate/transaction/travel_exception.py
+# src/chess/system/validate/notification/travel_exception.py
 
 """
-Module: chess.system.validate.transaction.exception
+Module: chess.system.validate.notification.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

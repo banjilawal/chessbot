@@ -77,11 +77,11 @@ class ActorException(AttackException):
 
 class ActorRollBackException(ActorException, RollbackException):
   """
-  Any inconsistencies team piece introduces into team transaction need to be rolled back.
+  Any inconsistencies team piece introduces into team notification need to be rolled back.
   This is the super class of team piece mutator operations, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
   exists primarily to allow catching all Piece exceptions that happen when team failed
-  transaction must be rolled back.
+  notification must be rolled back.
   """
   ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Actor raised an exception. Transaction rolled back"

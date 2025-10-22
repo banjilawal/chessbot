@@ -19,7 +19,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Builders` which create subclasses for each state the entity has in its lifecycle.
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
-      `chess.system.travel.transaction` is responsible for the `Event` lifecycle.
+      `chess.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of data control or routing information it contains. Directly using the
       module can breach data integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
@@ -68,7 +68,7 @@ class Event(Generic[A, R, X]):
   # RESPONSIBILITIES:
   1. Transport data representing an entity's current state.
   2. A store of current states of an entities whose states might change.
-  3. A reference for verifying success of a rollback transaction.
+  3. A reference for verifying success of a rollback notification.
 
   # PROVIDES:
   Information to execute a `Transaction` that could change the entity's state.

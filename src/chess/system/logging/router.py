@@ -58,7 +58,7 @@ class LoggingLevelRouter:
     Ensures uniform logging without repetitive try/except.
     Arguments:
       * `context`:
-      * `transaction`: Anything `context` is returning on success.
+      * `notification`: Anything `context` is returning on success.
       * `exception`:
       * `exception_factory`:
     Returns:

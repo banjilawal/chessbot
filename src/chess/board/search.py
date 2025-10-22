@@ -59,7 +59,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty old_search transaction
+      # Return empty old_search notification
       return SearchResult()
 
     except Exception as e:
@@ -83,7 +83,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty old_search transaction
+      # Return empty old_search notification
       return SearchResult()
 
     except Exception as e:
@@ -108,7 +108,7 @@ class BoardSearch:
       if piece is not None:
         return SearchResult(payload=piece)
 
-      # Return empty old_search transaction
+      # Return empty old_search notification
       return SearchResult()
 
     except Exception as e:
@@ -145,7 +145,7 @@ class BoardSearch:
       SearchResult[Square]: The Square object if found, otherwise None.
 
     Raises:
-      InvalidNameException: If name is fails any validators checks.
+      InvalidNameException: If name is fails any notification checks.
     """
     method = f"BoardSearch.square_by_name"
 
@@ -158,7 +158,7 @@ class BoardSearch:
       if square is not None:
         return SearchResult(payload=square)
 
-      # returns empty old_search transaction
+      # returns empty old_search notification
       return SearchResult()
 
     except Exception as e:
@@ -177,7 +177,7 @@ class BoardSearch:
       SearchResult[Square]: The Square object if found, otherwise None.
 
     Raises:
-      InvalidCoordException: If coord is fails any validators checks.
+      InvalidCoordException: If coord is fails any notification checks.
     """
     method = f"BoardSearch.square_by_coord"
 
@@ -190,7 +190,7 @@ class BoardSearch:
       if square:
         return SearchResult(payload=square)
 
-      # Return empty old_search transaction
+      # Return empty old_search notification
       return SearchResult()
 
     except Exception as e:

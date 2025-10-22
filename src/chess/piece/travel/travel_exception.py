@@ -1,7 +1,7 @@
-# src/chess.coord.travel_exception.py
+# src/chess/piece/travel/travel_exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.piece.travel.travel_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -43,55 +43,8 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 
 from chess.system import (
   EventException, NullException, BuildFailedException, TransactionException, ValidationException,
-  ResourceException,
-  InconsistencyException
+  ResourceException, InconsistencyException
 )
-
-#
-# __all__ = [
-#   'TeamException',
-#   'TeamRollBackException',
-#
-# #====================== TEAM VALIDATION EXCEPTIONS #======================#  
-#   'NullTeamException',
-#   'InvalidTeamException',
-#
-#
-#
-#   'TeamBuildFailedException',
-#   'NullTeamSchemaException',
-#
-# #====================== TEAM MEMBER EXCEPTIONS #======================#  
-#   'TeamRosterException',
-#   'AddTeamMemberException',
-#   'AddEnemyToRosterException',
-#   'RemoveTeamMemberException',
-#   'FullRankQuotaException',
-#
-# #====================== TEAM MEMBER EXCEPTIONS WITH ROLLBACK #======================#  
-#   'TeamRosterRollBackException',
-#   'AddEnemyHostageRolledBackException',
-#   'AddTeamMemberRolledBackException',
-#   'RemoveTeamMemberRolledBackException',
-#   'FullRankQuotaRolledBackException',
-#
-# #====================== HOSTAGE EXCEPTIONS #======================#  
-#   'TeamHostageListException',
-#   'InvalidFriendlyHostageException',
-#   'FailedHostageAdditionRolledBackException',
-#   'AddEnemyKingHostageException',
-#   'HostageRemovalException',
-#
-# #====================== HOSTAGE EXCEPTIONS WITH ROLLBACK #======================#  
-#   'TeamHostageListRolledBackException',
-#   'InvalidFriendlyHostageRolledBackException',
-#   'AddEnemyToRosterRolledBackException',
-#   'EnemyKingHostageRolledBackException',
-#   'HostageRemovalRolledBackException',
-#
-# #====================== SEARCH EXCEPTIONS #======================#  
-#   'RosterNumberOutOfBoundsException'
-# ]
 
 __all__ = [
   'TravelEventException',
@@ -100,18 +53,12 @@ __all__ = [
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
   'InvalidTravelEventException',
   'NullTravelEventException',
-  'TravelEventActorNotFoundException',
-  'EventActorSquareNotFoundException',
   'TravelEventSquareNotFoundException',
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
   'TravelEventBuildFailedException',
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
-  'TravelActorMovingException',
-  'ActorNotOnRosterCannotMoveException',
-  'ActorNotOnBoardCannotMoveException',
-  'CapturedActorCannotMoveException',
   'AutoTravelPieceException',
 ]
 
@@ -164,114 +111,8 @@ class OccupationEventBuildFailedException(TravelEventBuildFailedException):
   ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "OldOccupationEventValidator build failed."
 
-class PieceException(ChessException):
-  """
-  Super class of all exceptions team Piece object raises. Do not use directly. Subclasses
-  give details useful for debugging. This class exists primarily to allow catching
-  all piece exceptions
-  """
-  ERROR_CODE = "PIECE_ERROR"
-  DEFAULT_MESSAGE = "Piece raised an exception."
-
-class PieceRollBackException(PieceException, RollbackException):
-  """
-  Any inconsistencies team piece introduces into team transaction need to be rolled back.
-  This is the super class of team piece mutator operations, methods, or fields that raise
-  errors. Do not use directly. Subclasses give details useful for debugging. This class
-  exists primarily to allow catching all Piece exceptions that happen when team failed
-  transaction must be rolled back.
-  """
-  ERROR_CODE = "PIECE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Piece raised an exception."
 
 
-
-
-#======================# NULL PIECE EXCEPTIONS #======================#
-class NullPieceException(PieceException, NullException):
-  """
-  Raised if an entity, method, or operation requires team piece but gets null instead.
-  Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
-  Do not throw NullAttackException. Raise NullKingPiece or NullCombatantPiece instead.
-  they are more descriptive and better suited for debugging.
-  """
-  ERROR_CODE = "NULL_PIECE_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot be null."
-
-class NullKingException(NullPieceException):
-  """
-  Raised if team KingPiece is null. Raise NullCombatant instead of NullAttackException
-  """
-  ERROR_CODE = "NULL_KING_PIECE_ERROR"
-  DEFAULT_MESSAGE = "KingPiece cannot be null."
-
-class AttackNullCombatantException(NullPieceException):
-  """
-  Raised if team CombatantPiece is null. Raise NullCombatant instead of NullAttackException
-  """
-  ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
-  DEFAULT_MESSAGE = "CombatantPiece cannot be null."
-
-
-
-#======================# PIECE PROMOTION EXCEPTIONS #======================#
-class DoublePromotionException(PieceException):
-  """
-  Raised when attempting promoting team piece already elevated to Queen rank.
-  Only pieces with Pawn or King rank can be promoted.
-  """
-  ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
-  DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
-
-class DoublePromotionRolledBackException(PieceRollBackException):
-  """
-  Raised if team transaction attempts promoting team piece already elevated to Queen rank.
-  Only pieces with Pawn or King rank can be promoted. The transaction was rolled
-  back before raising this err.
-  """
-  ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = (
-    "Piece is already promoted to Queen. It cannot be promoted again. Transaction "
-    "rollback performed."
-  )
-
-
-#======================# PIECE CAPTURE EXCEPTIONS #======================#
-class CapturePieceException(PieceException):
-  """
-  Several exceptions can be raised during capture operations. This class is the parent of
-  exceptions team piece can raise being captured or attacking. Do not use directly. Subclasses
-  give details useful for debugging.
-  """
-  ERROR_CODE = "PIECE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Piece capture attempt raised and err"
-
-class PieceAttackingFriendException(AttackEventException):
-  """"""
-  ERROR_CODE = "PIECE_ATTACKING_FRIEND_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack a friend."
-
-class PieceAttackingKingException(AttackEventException):
-  """"""
-  ERROR_CODE = "PIECE_ATTACKING_KING_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack a king."
-
-class PieceAttackingHostageException(AttackEventException):
-  """"""
-  ERROR_CODE = "PIECE_ATTACKING_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack a hostage."
-
-class AttackingNullException(AttackEventException, NullException):
-  """"""
-  ERROR_CODE = "PIECE_ATTACKING_NULL_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack something null."
-
-class HostageCannotAttackException(AttackEventException):
-  """
-  Raised if team captured piece tries to attack.
-  """
-  ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot attack."
 
 
 

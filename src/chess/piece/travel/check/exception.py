@@ -51,6 +51,27 @@ class AttackingFriendException(AttackEventException):
   """"""
   ERROR_CODE = "ATTACKING_FRIEND_ERROR"
   DEFAULT_MESSAGE = "A friend cannot be attacked."
+  
+  class KingCaptureException(CapturePieceException):
+    """
+    Raised if team piece attempts to capture an enemy king. Kings can only be checked or
+    checkmated.
+    """
+    ERROR_CODE = "KING_CAPTURE_ERROR"
+    DEFAULT_MESSAGE = (
+      "An enemy king cannot be captured. It can only be checked or checkmated."
+    )
+  
+  class KingCaptureRolledBackExceptionCapture(CaptureRollbackException):
+    """
+    Raised if team notification attempts capturing an enemy. Kings can only be checked or
+    checkmated. The notification was rolled back before raising this err.
+    """
+    ERROR_CODE = "KING_CAPTURE_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = (
+      "An enemy king cannot be captured. It can only be checked or checkmated. "
+      "Transaction rollback performed."
+    )
 
 
 class AttackingEnemyKingException(AttackEventException):
@@ -72,3 +93,6 @@ class AttackEventBuildFailedException(AttackEventException, BuildFailedException
   """
   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "KingCheckEvent build failed."
+
+
+

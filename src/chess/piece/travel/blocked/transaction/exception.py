@@ -24,7 +24,7 @@ class LogEncounterTransactionException(TransactionException):
   """"""
   ERROR_CODE = "LOG_ENCOUNTER_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = (
-    "FriendEncounterTransaction raised an exception. The transaction was rolled back before this exception "
+    "FriendEncounterTransaction raised an exception. The notification was rolled back before this exception "
     "was raised."
   )
 
@@ -32,7 +32,7 @@ class FailedEncounterAdditionRolledBackException(LogEncounterTransactionExceptio
   """"""
   ERROR_CODE = "FAILED_ENCOUNTER_ADDITION_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Adding a new discovery during an blocked-logging transaction failed. The transaction was rolled back before "
+    "Adding a new discovery during an blocked-logging notification failed. The notification was rolled back before "
     "this exception was raised."
   )
 

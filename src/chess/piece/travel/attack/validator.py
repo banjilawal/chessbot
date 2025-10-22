@@ -1,4 +1,4 @@
-# src/chess/piece/travel/attack/piece.py
+# src/chess/piece/travel/attack/validator.py
 
 """
 Module: `chess.piece.travel.attack.validator`

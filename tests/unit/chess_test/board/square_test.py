@@ -24,9 +24,9 @@ class SquareTest(unittest.TestCase):
     square.position=coordinate
     return square
 
-  @patch('assurance.validators.coord.CoordValidator.validate')
-  @patch('assurance.validators.name.NameValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.coord.CoordValidator.validate')
+  @patch('assurance.notification.name.NameValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_square_failed_id_validation_raises_error(
     self,
     mock_coord_validate,
@@ -43,9 +43,9 @@ class SquareTest(unittest.TestCase):
       Square(square_id=-1, name="A1", coord=Mock())
 
 
-  @patch('assurance.validators.coord.CoordValidator.validate')
-  @patch('assurance.validators.name.NameValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.coord.CoordValidator.validate')
+  @patch('assurance.notification.name.NameValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_square_failed_name_validation_raises_error(
     self,
     mock_coord_validate,
@@ -63,9 +63,9 @@ class SquareTest(unittest.TestCase):
       Square(square_id=1, name="", coord=Mock())
 
 
-  @patch('assurance.validators.coord.CoordValidator.validate')
-  @patch('assurance.validators.name.NameValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.coord.CoordValidator.validate')
+  @patch('assurance.notification.name.NameValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_square_failed_coordinate_validation_raises_error(
     self,
     mock_coord_validate,
@@ -86,9 +86,9 @@ class SquareTest(unittest.TestCase):
       Square(square_id=1, name="A-2", coord=None)
 
 
-  @patch('assurance.validators.coord.CoordValidator.validate')
-  @patch('assurance.validators.name.NameValidator.validate')
-  @patch('assurance.validators.id.IdValidator.validate')
+  @patch('assurance.notification.coord.CoordValidator.validate')
+  @patch('assurance.notification.name.NameValidator.validate')
+  @patch('assurance.notification.id.IdValidator.validate')
   def test_square_constructed_if_all_validations_pass(
     self,
     mock_coord_validate,

@@ -1,7 +1,7 @@
 # from typing import Generic
 #
-# from assurance.transaction.base import Result
-# # from assurance.validators.base import Validator, T
+# from assurance.notification.base import Result
+# # from assurance.notification.base import Validator, T
 # # from chess.validate.base import Rank
 #
 #

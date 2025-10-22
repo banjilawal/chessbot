@@ -106,3 +106,40 @@ class SourceSquareRollbackException(AttackEventException, RollbackException):
 class PositionUpdateRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "POSITION_UPDATE_ROLLBACK"
   DEFAULT_MESSAGE = "Failed to update actor_candidate's position history after move; rollback executed."
+
+
+# ======================# ATTACKING PIECE EXCEPTIONS #======================#
+class HostageActivityException(PieceException):
+  """
+  Several exceptions can be raised during capture operations. This class is the parent of
+  exceptions an attacking piece can raised. Do not use directly. Subclasses give details
+  useful for debugging.
+  """
+  ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"
+  DEFAULT_MESSAGE = "Hostage piece cannot move, blocked, or attack."
+
+
+class HostageCannotAttackException(HostageActivityException):
+  """
+  Raised if team captured piece tries to attack.
+  """
+  ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
+  DEFAULT_MESSAGE = "Captured piece cannot attack."
+
+
+class HostageCannotMoveException(HostageActivityException):
+  """
+  Raised if team captured piece tries to move.
+  """
+  ERROR_CODE = "HOSTAGE_CANNOT_MOVE_ERROR"
+  DEFAULT_MESSAGE = "Captured piece cannot move."
+
+
+class HostageCannotScanException(HostageActivityException):
+  """
+  Raised if team captured piece tries to blocked team square.
+  """
+  ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
+  DEFAULT_MESSAGE = "Captured piece cannot blocked team sqaure."
+
+

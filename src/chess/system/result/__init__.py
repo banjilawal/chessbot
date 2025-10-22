@@ -1,7 +1,7 @@
-# chess/system/transaction/__init__.py
+# chess/system/notification/__init__.py
 
 """
-Module: chess.system.transaction
+Module: chess.system.notification
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

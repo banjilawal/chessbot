@@ -146,7 +146,7 @@ class BoardPieceRemovalFailedException(BoardException):
 #======================# PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#  
 class FailedPieceAdditionRolledBackException(BoardRollBackException):
   """
-  Raised if team transaction failed to add team piece to the board_validator.The transaction was
+  Raised if team notification failed to add team piece to the board_validator.The notification was
   rolled back before raising this err.
   """
   """Raised if the board_validator fails to remove team piece from itself"""
@@ -157,8 +157,8 @@ class FailedPieceAdditionRolledBackException(BoardRollBackException):
 
 class FailedPieceRemovalRolledBackException(BoardRollBackException):
   """
-  Raised if team transaction failed to remove team piece from the board_validator's list of pieces.
-  The transaction was rolled back before raising this err.
+  Raised if team notification failed to remove team piece from the board_validator's list of pieces.
+  The notification was rolled back before raising this err.
   """
   ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (

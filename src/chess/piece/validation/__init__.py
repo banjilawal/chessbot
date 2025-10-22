@@ -9,4 +9,3 @@ Version: 1.0.0
 
 from .binding import *
 from .exception import *
-from .piece import PieceValidator

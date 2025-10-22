@@ -1,7 +1,7 @@
-# src/chess/system/transaction/state
+# src/chess/system/notification/state
 
 """
-Module: chess.system.transaction.state
+Module: chess.system.notification.state
 Author: Banji Lawal
 Created: 2025-08-11
 Updated: 2025-10-10
@@ -19,7 +19,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Builders` which create subclasses for each state the entity has in its lifecycle.
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
-      `chess.system.travel.transaction` is responsible for the `Event` lifecycle.
+      `chess.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of data control or routing information it contains. Directly using the
       module can breach data integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the

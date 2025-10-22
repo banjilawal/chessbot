@@ -36,7 +36,7 @@ This module requires components from various sub-systems:
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.validationResult`: ValidationResult subtypes (`KingValidationResult`, `CombatantValidationResult`, etc.)
 * `chess.team`: Roster management, exception handling
-* `chess.transaction`: Base transaction and roster types
+* `chess.notification`: Base notification and roster types
 
 CONTAINS:
 --------

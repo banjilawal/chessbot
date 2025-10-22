@@ -11,7 +11,7 @@ from typing import cast, Tuple
 
 
 from chess.square import Square, SquareValidator
-from chess.system import BindingValidator, LoggingLevelRouter, ValidationResult, Validator
+from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.board import Board, BoardSearchContext, BoardSquareSearch, BoardValidator, SquareIdSearchInvariantBreachException
 
 
