@@ -1,3 +1,3 @@
 from .example import *
 from .exception import *
-from .transaction import FriendEncounterTransaction
+from .transaction import FriendBlockingTransaction

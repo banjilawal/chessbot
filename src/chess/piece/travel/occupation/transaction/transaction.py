@@ -30,7 +30,7 @@ class OccupationTransaction(TravelTransaction):
         # the enemy_square is empty.
         validation = OccupationEventValidator.validate(self._event)
         if validation.is_failure():
-            return TransactionResult.failed(event_update=self._event, exception=validation.exception)
+            return TransactionResult.rolled_back(event_update=self._event, exception=validation.exception)
         
         # Step 2: Actor occupies enemy_square
         self._event.destination_square.occupant = self._event.actor

@@ -24,7 +24,7 @@ class LogEncounterTransactionException(TransactionException):
   """"""
   ERROR_CODE = "LOG_ENCOUNTER_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = (
-    "FriendEncounterTransaction raised an exception. The notification was rolled back before this exception "
+    "FriendBlockingTransaction raised an exception. The notification was rolled back before this exception "
     "was raised."
   )
 
