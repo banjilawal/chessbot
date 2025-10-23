@@ -32,7 +32,7 @@ class OccupationEventDTO(DTO[OccupationEvent]):
     def to_dict(self) -> dict:
         return {
             "event_id": self._event_id,
-            "actor": self._actor_dto.to_dict(),
+            "traveler": self._actor_dto.to_dict(),
             "actor_square": self._actor_square_dto.to_dict(),
             "enemy_square": self._destination_square_DTO.to_dict()
         }

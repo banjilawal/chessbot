@@ -124,7 +124,7 @@ Raises:
 
   PieceValidationException: Wraps any preceding exceptions
 """
-# src/chess/system/travel/travel_exception.py
+# src/chess/system/travel/exception.py
 
 """
 Module: chess.system.travel.exception
@@ -166,7 +166,7 @@ See the list of exceptions in the `__all__` list following (e.g., `EventExceptio
 """
 
 
-# src/chess/vector/travel_exception.py
+# src/chess/vector/exception.py
 
 """
 Module: chess.vector.exception

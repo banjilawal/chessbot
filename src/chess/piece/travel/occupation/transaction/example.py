@@ -101,8 +101,8 @@ Example:
 #   """
 #   method = "OccupationExecutor._switch_squares"
 #
-#   travel.friend.occupant = travel.actor
-#   if not travel.friend.occupant == travel.actor:
+#   travel.friend.occupant = travel.traveler
+#   if not travel.friend.occupant == travel.traveler:
 #     # Rollback all changes in reverse order
 #     travel.friend.occupant = None
 #
@@ -115,9 +115,9 @@ Example:
 #     )
 #
 #   actor_square.occupant = None
-#   if actor_square.occupant == travel.actor:
+#   if actor_square.occupant == travel.traveler:
 #     # Rollback all changes in reverse order
-#     actor_square.occupant = travel.actor
+#     actor_square.occupant = travel.traveler
 #     travel.friend.occupant = None
 #
 #     # Send the notification indicating rollback
@@ -128,11 +128,11 @@ Example:
 #       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
 #     )
 #
-#   travel.actor.positions.push_coord(travel.friend.position)
-#   if not travel.actor.current_position == travel.friend.position:
+#   travel.traveler.positions.push_coord(travel.friend.position)
+#   if not travel.traveler.current_position == travel.friend.position:
 #     # Rollback all changes in reverse order
-#     travel.actor.positions.undo_push()
-#     actor_square.occupant = travel.actor
+#     travel.traveler.positions.undo_push()
+#     actor_square.occupant = travel.traveler
 #     travel.friend.occupant = None
 #
 #     # Send the notification indicating rollback
@@ -145,7 +145,7 @@ Example:
 #
 #   return TransactionResult(
 #     result_id=op_result_id,
-#     travel=TravelEvent(id_emitter.event_id, travel.actor, travel.friend)
+#     travel=TravelEvent(id_emitter.event_id, travel.traveler, travel.friend)
 #   )
 
 # @staticmethod
@@ -176,8 +176,8 @@ Example:
 #   if not validation.is_success():
 #     return TransactionResult(travel, validation.exception)
 #
-#   travel.enemy.captor = travel.actor
-#   if travel.enemy.captor != travel.actor:
+#   travel.enemy.captor = travel.traveler
+#   if travel.enemy.captor != travel.traveler:
 #     # Rollback all changes in reverse order
 #     travel.enemy.captor = None
 #
@@ -204,8 +204,8 @@ Example:
 #       )
 #     )
 #
-#   travel.actor.team.hostages.append(travel.enemy)
-#   if travel.enemy not in travel.actor.team.hostages:
+#   travel.traveler.team.hostages.append(travel.enemy)
+#   if travel.enemy not in travel.traveler.team.hostages:
 #     # Rollback all changes in reverse order
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
@@ -222,7 +222,7 @@ Example:
 #   travel.board.pieces.remove(travel.enemy)
 #   if travel.enemy in travel.board.pieces:
 #     # Rollback all changes in reverse order
-#     travel.actor.team.hostages.remove(travel.enemy)
+#     travel.traveler.team.hostages.remove(travel.enemy)
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
@@ -239,7 +239,7 @@ Example:
 #   if not travel.enemy_square.occupant is None:
 #     # Rollback all changes in reverse order
 #     travel.board.pieces.add(travel.enemy_square.occupant)
-#     travel.actor.team.hostages.remove(travel.enemy)
+#     travel.traveler.team.hostages.remove(travel.enemy)
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
@@ -255,7 +255,7 @@ Example:
 #
 #   transfer_event = TransferEvent(
 #     parent=travel,
-#     actor=travel.actor,
+#     traveler=travel.traveler,
 #     event_id=id_emitter.attack_id,
 #     actor_square=travel.actor_square
 #   )
@@ -263,7 +263,7 @@ Example:
 #   travel.friend.occupant = None
 #   if travel.friend.occupant is not None:
 #     # Rollback all changes in reverse order
-#     travel.actor.team.hostages.remove(travel.enemy)
+#     travel.traveler.team.hostages.remove(travel.enemy)
 #     travel.enemy.team.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
@@ -278,7 +278,7 @@ Example:
 #
 #
 #   return OccupationTransaction._switch_squares(op_result_id, travel, travel.actor_square)
-#   search_result = BoardSearch.square_by_coord(coord=travel.actor.current_position, board=context.board)
+#   search_result = BoardSearch.square_by_coord(coord=travel.traveler.current_position, board=context.board)
 #   if search_result.exception is not None:
 #     return TransactionResult(op_result_id, travel, search_result.exception)
 #
@@ -293,13 +293,13 @@ Example:
 #   if travel.friend.occupant is None:
 #     return OccupationTransaction._switch_squares(op_result_id, travel, actor_square)
 #
-#   actor = travel.actor
+#   traveler = travel.traveler
 #   destination_occupant = travel.friend.occupant
 #
 #
 #
 #   attack_validation = AttackValidator.validate(
-#     CaptureContext(piece=travel.actor, enemy=destination_occupant, board=context.board)
+#     CaptureContext(piece=travel.traveler, enemy=destination_occupant, board=context.board)
 #   )
 #   if not attack_validation.is_success():
 #     return TransactionResult(op_result_id, travel, attack_validation.exception)
@@ -309,7 +309,7 @@ Example:
 #     op_result_id=op_result_id,
 #     travel=AttackEvent(
 #       board=context.board,
-#       actor=travel.actor,
+#       traveler=travel.traveler,
 #       enemy=enemy_king,
 #       occupation_id=travel.id,
 #       attack_id=id_emitter.attack_id,
@@ -365,7 +365,7 @@ Example:
 #     )
 #
 #   success_event = ScanEvent(
-#     actor=travel.actor,
+#     traveler=travel.traveler,
 #     friend=travel.friend,
 #     occupation_id=travel.id,
 #     scan_id=id_emitter.scan_id,
@@ -379,7 +379,7 @@ Example:
 #
 #
 
-# src/chess/system/travel/travel_exception.py
+# src/chess/system/travel/exception.py
 
 """
 Module: chess.system.travel.exception
@@ -420,7 +420,7 @@ The major theme influencing the modules design are
 See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
-# src/chess/vector/travel_exception.py
+# src/chess/vector/exception.py
 
 """
 Module: chess.vector.exception

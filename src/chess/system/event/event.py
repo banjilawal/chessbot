@@ -1,4 +1,4 @@
-# src/chess/system/travel/travel_event.py
+# src/chess/system/travel/event.py
 
 """
 Module: chess.system.id.validator

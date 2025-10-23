@@ -1,2 +1,2 @@
-from .actor import *
+from .traveler import *
 from .resource import *

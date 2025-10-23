@@ -1,4 +1,4 @@
-# src/chess/piece/travel/travel_event.py
+# src/chess/piece/travel/event.py
 
 """
 Module: `chess.piece.travel.travel`
@@ -16,14 +16,14 @@ Contains:
 
 from typing import Optional, cast
 
+from chess.piece import Piece
 from chess.board import Board
 from chess.square import Square
-from chess.piece import Piece, TravelContext
-from chess.system import Event, AutoId, LoggingLevelRouter
+from chess.system import Event, LoggingLevelRouter
 
 
 
-class TravelEvent(Event[Piece,Square, Board]):
+class TravelEvent(Event[Piece, Square, Board]):
 
   @LoggingLevelRouter.monitor
   def __init__(
@@ -37,19 +37,17 @@ class TravelEvent(Event[Piece,Square, Board]):
     super().__init__(
       id=id,
       actor=actor,
+      parent=parent,
       resource=destination_square,
       execution_environment=execution_environment,
-      parent=parent
     )
-
 
   @property
   def destination_square(self) -> Square:
     return cast(Square, self._resource)
 
-
   def __eq__(self, other) -> bool:
-    if not super().__eq__(other):
+    if super().__eq__(other):
       if isinstance(other, TravelEvent):
         return True
     return False

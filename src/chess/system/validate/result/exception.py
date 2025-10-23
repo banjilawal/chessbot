@@ -1,4 +1,4 @@
-# src/chess/system/validate/notification/travel_exception.py
+# src/chess/system/validate/notification/exception.py
 
 """
 Module: chess.system.validate.notification.exception

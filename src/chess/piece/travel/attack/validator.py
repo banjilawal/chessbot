@@ -7,10 +7,20 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from typing import Any, cast
+from typing import Any, Tuple, cast
 
-from chess.piece import PieceBindingBoardValidator, AttackEvent, NullAttackEventException, PieceValidator
+from chess.board import Board, BoardPieceSearch, BoardSearchContext
+from chess.piece import (
+    Piece, KingPiece, AttackEvent, AttackingEnemyKingException, AttackingFriendException, CombatantPiece,
+    DoublyAttackingPrisonerException, NullAttackEventException, PieceAttackingItSelfException, PieceValidator,
+    TravelActorValidator, TravelResourceValidator, UnregisteredTeamMemberException
+)
+from chess.piece.travel.attack.exception import (
+    AttackingPieceMissingFromBoardException,
+    EnemyNotInExpectedSquareException
+)
 from chess.system import ValidationResult, Validator
+from chess.team import InconsistentHostageEntry
 
 
 class AttackEventValidator(Validator[AttackEvent]):
@@ -28,23 +38,16 @@ class AttackEventValidator(Validator[AttackEvent]):
                 )
             
             if not isinstance(candidate, AttackEvent):
-                return ValidationResult.failure(
-                    TypeError(f"Expected an AttackEvent, got {type(candidate).__name__}")
-                )
-            
+                return ValidationResult.failure(TypeError(f"Expected an AttackEvent, got {type(candidate).__name__}"))
+    
             event = cast(AttackEvent, candidate)
-            actor_board_binding_validation = PieceBindingBoardValidator.validate(
-                actor=event.actor,
-                execution_environment=event.execution_environment
-            )
+            actor_board_binding_validation = TravelActorValidator.validate(event.actor, event.execution_environment)
             if actor_board_binding_validation.is_failure():
                 return ValidationResult.failure(actor_board_binding_validation.exception)
-            
-            enemy_board_binding_validation =
-            
-            resource_board_binding_validation = PieceBindingBoardValidator.validate(
-                square=event.resource,
-                execution_environment=event.execution_environment
+    
+            resource_board_binding_validation = TravelResourceValidator.validate(
+                event.resource,
+                event.execution_environment
             )
             if resource_board_binding_validation.is_failure():
                 return ValidationResult.failure(resource_board_binding_validation.exception)
@@ -53,86 +56,65 @@ class AttackEventValidator(Validator[AttackEvent]):
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
             
+            if event.actor == event.enemy_combatant:
+                return ValidationResult.failure(
+                    PieceAttackingItSelfException(PieceAttackingItSelfException.DEFAULT_MESSAGE)
+                )
             
+            if not event.actor.is_enemy(event.enemy_combatant):
+                return ValidationResult.failure(
+                    AttackingFriendException(f"{method}: {AttackingFriendException.DEFAULT_MESSAGE}")
+                )
             
+            if isinstance(event.enemy_combatant, KingPiece):
+                return ValidationResult.failure(
+                    AttackingEnemyKingException(AttackingEnemyKingException.DEFAULT_MESSAGE)
+                )
+            
+            if cast(CombatantPiece, event.enemy_combatant).captor is not None:
+                return ValidationResult.failure(
+                    DoublyAttackingPrisonerException(f"{method}: {DoublyAttackingPrisonerException.DEFAULT_MESSAGE}")
+                )
+            
+            enemy_team = event.enemy_combatant.team
+            if event.enemy_combatant not in enemy_team.roster:
+                return ValidationResult.failure(
+                    UnregisteredTeamMemberException(
+                        f"{method}: Cannot attack enemy missing from team roster. There may be a data inconsistency."
+                    )
+                )
+            
+            actor_team = event.actor.team
+            if event.enemy_combatant in actor_team.hostages:
+                return ValidationResult.failure(
+                    InconsistentHostageEntry(f"{method}: {InconsistentHostageEntry.DEFAULT_MESSAGE}")
+                )
+            
+            enemy_combatant = cast(CombatantPiece, event.enemy_combatant)
+            board = cast(Board, event.execution_environment)
+            piece_search = BoardPieceSearch.search(
+                board=board,
+                search_context=BoardSearchContext(id=enemy_combatant.id)
+            )
+            if piece_search.is_empty():
+                return ValidationResult.failure(
+                    AttackingPieceMissingFromBoardException(
+                        f"{method}: {AttackingPieceMissingFromBoardException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            if piece_search.is_failure():
+                return ValidationResult.failure(piece_search.exception)
+            
+            enemy_square_binding_validation = TravelResourceValidator.validate(event.destination_square, board)
+            if enemy_square_binding_validation.is_failure():
+                return ValidationResult.failure(enemy_square_binding_validation.exception)
+            
+            if event.enemy_square.occupant != event.enemy_combatant:
+                return ValidationResult.failure(
+                    EnemyNotInExpectedSquareException(f"{method}: {EnemyNotInExpectedSquareException.DEFAULT_MESSAGE}")
+                )
+         
             return ValidationResult.success(event)
         except Exception as e:
             return ValidationResult.failure(e)
-#
-# @staticmethod
-# def validate(t: AttackEvent, ) -> Result[AttackEvent]:
-#   """
-#   Validates an KingCheckEvent meets specifications:
-#     - Not null
-#     - `id` does not fail validator
-#     - `actor_candidate` is team valid chess enemy
-#     - `target` is team valid square
-#   Any validate failure raises an `InvalidAttackEventException`.
-#
-#   Argument:
-#     `candidate` (`KingCheckEvent`): `attackEvent `to validate
-#
-#    Returns:
-#      `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
-#       `InvalidAttackEventException` otherwise.
-#
-#   Raises:
-#     `TypeError`: if `candidate` is not OperationEvent
-#     `NullAttackEventException`: if `candidate` is null
-#
-#     `InvalidIdException`: if invalid `id`
-#     `PieceValidationException`: if `actor_candidate` fails validator
-#     `InvalidSquareException`: if `target` fails validator
-#
-#     `AutoOccupationException`: if target already occupies the square
-#     `KingAttackException`: if the target square is occupied by an enemy king
-#
-#     `InvalidAttackEventException`: Wraps any preceding exceptions
-#   """
-# method = "KingCheckEvent.validate"
-#
-# try:
-#   if t is None:
-#     raise NullAttackEventException(
-#       f"{method}: {NullAttackEventException.DEFAULT_MESSAGE}"
-#     )
-#
-#   if not isinstance(t, AttackEvent):
-#     raise TypeError(f"{method} Expected an KingCheckEvent, got {type(t).__name__}")
-#
-#   event = cast(AttackEvent, t)
-#
-#   id_validation = IdValidator.validate(event.id)
-#   if not id_validation.is_success():
-#     raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
-#
-#   actor_validation = PieceValidator.validate(event.actor)
-#   if not actor_validation.is_success():
-#     raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
-#
-#   destination_square_validation = SquareValidator.validate(event.enemy_square)
-#   if not destination_square_validation.is_success():
-#     raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
-#
-#   if event.enemy_square.coord == event.actor.current_position:
-#     raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
-#
-#   return Result(payload=event)
-#
-# except (
-#     TypeError,
-#     InvalidIdException,
-#     InvalidAttackException,
-#     InvalidSqaureException,
-#     NullAttackEventException,
-#     CircularOccupationException
-# ) as e:
-#   raise InvalidAttackEventException(
-#     f"{method}: {InvalidAttackEventException.DEFAULT_MESSAGE}"
-#   ) from e
-#
-# # This block catches any unexpected exceptions
-# # You might want to log the error here before re-raising
-# except Exception as e:
-#   raise InvalidAttackEventException(f"An unexpected error occurred during validate: {e}") from e
-#

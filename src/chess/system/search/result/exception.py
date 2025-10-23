@@ -1,4 +1,4 @@
-# src/chess/system/old_search/notification/travel_exception.py
+# src/chess/system/old_search/notification/exception.py
 
 """
 Module: chess.system.old_search.notification.exception

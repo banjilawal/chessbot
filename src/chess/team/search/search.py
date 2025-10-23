@@ -58,7 +58,7 @@ from chess.team import Team, TeamValidator
 from chess.piece.model.piece import Piece
 from chess.commander.search import SearchResult
 from chess.system import SearchContext
-from chess.team.search import TeamHostageSearch, TeamRosterSearch, Datasource
+from chess.team.search import TeamHostageSearch, TeamRosterSearch, TeamSearchCategory
 
 
 class TeamSearch(Piece):
@@ -106,7 +106,7 @@ class TeamSearch(Piece):
   """
 
   @classmethod
-  def search(cls, team: Team, data_source: Datasource, search_context: SearchContext) -> SearchResult[List[Piece]]:
+  def search(cls, team: Team, data_source: TeamSearchCategory, search_context: SearchContext) -> SearchResult[List[Piece]]:
     """
     Action:
     Parameters:
@@ -123,7 +123,7 @@ class TeamSearch(Piece):
     if not validation.is_success():
       return SearchResult(exception=validation.exception)
 
-    if data_source == Datasource.ROSTER:
+    if data_source == TeamSearchCategory.ROSTER:
       return TeamRosterSearch.search(team=team, search_context=search_context)
     else:
       return TeamHostageSearch.search(team=team, search_context=search_context)

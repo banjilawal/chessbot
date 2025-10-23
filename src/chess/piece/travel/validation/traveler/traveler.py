@@ -1,7 +1,7 @@
-# src/chess/piece/travel/validation/actor_candidate.py
+# src/chess/piece/travel/validation/traveler.py
 
 """
-Module: chess.piece.travel.validation.actor_candidate
+Module: chess.piece.travel.validation.traveler
 Author: Banji Lawal
 Created: 2025-10-18
 Version: 1.0.0
@@ -9,19 +9,18 @@ Version: 1.0.0
 """
 from typing import TypeVar, cast, Tuple
 
-from chess.piece.event.validation.actor.exception import CheckMatedKingCannotMoveException, NoInitialPlacementException
-from chess.piece.model.piece import CombatantPiece, KingPiece
-from chess.piece.travel.validation.actor.exception import NullTravelerEnvironmentTupleException
-from chess.square import Square
-from chess.system import BindingValidator, LoggingLevelRouter, ValidationResult, Validator
-from chess.board import Board, BoardPieceSearch, BoardSquareSearch, BoardSearchContext, BoardValidator
-
+from chess.board import Board, BoardPieceSearch, BoardSearchContext, BoardValidator
 from chess.piece import (
-  ActorNotOnRosterCannotMoveException, CapturedActorCannotMoveException, Piece, InvalidTravelActorException,
-  ActorNotOnBoardCannotMoveException,
-  PieceValidator, TravelActorNotFoundException,
-  TravelActorSquareNotFoundException, SquareMisMatchesTravelActorException
+  ActorNotOnRosterCannotMoveException, CapturedActorCannotMoveException, CombatantPiece, KingPiece,
+  NoInitialPlacementException,
+  NullTravelerEnvironmentTupleException, Piece
 )
+from chess.piece.model.validator import PieceValidator
+from chess.piece.travel.validation.traveler.exception import (
+  ActorNotOnBoardCannotMoveException,
+  CheckMatedKingCannotMoveException
+)
+from chess.system import ValidationResult, Validator
 
 T = TypeVar('T')
 

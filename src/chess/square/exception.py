@@ -1,4 +1,4 @@
-# src/chess/square/travel_exception.py
+# src/chess/square/exception.py
 
 """
 Module: chess.square.exception
@@ -41,7 +41,7 @@ The major theme influencing the modules design are
   * `ValidationException`
 """
 
-# src/chess/vector/travel_exception.py
+# src/chess/vector/exception.py
 
 """
 Module: chess.vector.exception

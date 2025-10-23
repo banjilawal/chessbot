@@ -11,7 +11,7 @@ from .context import *
 from .exception import *
 
 from .search import TeamSearch
-from .data_source import Datasource
+from .category import TeamSearchCategory
 from .roster import TeamRosterSearch
 from .hostage import TeamHostageSearch
 

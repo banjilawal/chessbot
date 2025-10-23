@@ -1,14 +1,14 @@
-# src/chess/piece/travel/occupation/notification/exception.py
+# src/chess/piece/travel/occupation/exception.py
 
 """
-Module: `chess.piece.travel.occupation.notification.exception`
+Module: `chess.piece.travel.occupation.exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
 from chess.piece import TravelTransactionException
-from chess.system import RollbackException, TransactionException
+from chess.system import RollbackException
 
 """
 =============================================================================================================#

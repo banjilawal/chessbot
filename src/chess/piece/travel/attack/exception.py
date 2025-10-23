@@ -1,4 +1,4 @@
-# src/chess/piece/travel/attack/travel/travel_exception.py
+# src/chess/piece/travel/attack/travel/exception.py
 
 """
 Module: chess.piece.travel.attack.travel.exception
@@ -16,6 +16,8 @@ __all__ = [
   'PieceAttackingItSelfException',
   'AttackingFriendException',
   'AttackingEnemyKingException',
+  'AttackingPieceMissingFromBoardException',
+  'EnemyNotInExpectedSquareException',
   'DoublyAttackingPrisonerException',
 ]
 
@@ -31,6 +33,11 @@ class AttackEventException(ChessException):
 
 
 #======================# ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
+class InvalidAttackEventException(TravelEventException, ValidationException):
+  ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "AttackEvent validation failed."
+
+
 class NullAttackEventException(AttackEventException, NullException):
   """
   Raised if an entity, method, or operation requires team piece but gets null instead.
@@ -62,6 +69,16 @@ class DoublyAttackingPrisonerException(AttackEventException):
   """"""
   ERROR_CODE = "DOUBLY_ATTACKING_PRISONER_ERROR"
   DEFAULT_MESSAGE = "Cannot attack an enemy that is already a prisoner."
+
+class AttackingPieceMissingFromBoardException(AttackEventException):
+  """"""
+  ERROR_CODE = "ATTACKING_ENEMY_MISSING_FROM_BOARD_ERROR"
+  DEFAULT_MESSAGE = "Cannot attack an enemy which is not on the board."
+
+class EnemyNotInExpectedSquareException(AttackEventException):
+  """"""
+  ERROR_CODE = "ENEMY_NOT_IN_EXPECTED_SQUARE_ERROR"
+  DEFAULT_MESSAGE = "Enemy is not in the expected square. There maybe inconsistent data."
 
 
 #======================# ATTACK_EVENT BUILD EXCEPTIONS #======================#

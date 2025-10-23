@@ -1,4 +1,4 @@
-# src/chess.coord.travel_exception.py
+# src/chess.coord.exception.py
 
 """
 Module: chess.coord.exception
@@ -80,6 +80,7 @@ __all__ = [
 
 #======================# HOSTAGE EXCEPTIONS #======================#  
   'TeamHostageListException',
+  'InconsistentHostageEntry',
   'InvalidFriendlyHostageException',
   'AddEnemyHostageException',
   'AddEnemyKingHostageException',
@@ -237,6 +238,12 @@ class TeamHostageListException(TeamException):
   """Raised on errors with team's hostage list"""
   ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
   DEFAULT_MESSAGE = "Team hostage list raised an exception."
+
+
+class InconsistentHostageEntry(TeamHostageListException):
+  """Raised on errors where a hostage shouldn't be in the  hostage list, i.e captor == null"""
+  ERROR_CODE = "INCONSISTENT_HOSTAGE_ENTRY_ERROR"
+  DEFAULT_MESSAGE = "An enemy with no captor is in the hostage list. There may be inconsistent data."
 
 class InvalidFriendlyHostageException(TeamHostageListException):
   """Attempting to team friendly to the hostage list raises an exception."""

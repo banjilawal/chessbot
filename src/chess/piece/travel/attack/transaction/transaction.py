@@ -33,10 +33,10 @@ class AttackTransaction(Transaction[AttackEvent]):
     if not validation.is_success():
       return TransactionResult(event, validation.exception)
 
-    event.enemy.captor = event.actor
-    if event.enemy.captor != event.actor:
+    event.enemy_combatant.captor = event.actor
+    if event.enemy_combatant.captor != event.actor:
       # Rollback all changes in reverse order
-      event.enemy.captor = None
+      event.enemy_combatant.captor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -47,10 +47,10 @@ class AttackTransaction(Transaction[AttackEvent]):
         )
       )
 
-    event.enemy.team.roster.remove(event.enemy)
-    if event.enemy in event.enemy.team.roster:
+    event.enemy_combatant.team.roster.remove(event.enemy_combatant)
+    if event.enemy_combatant in event.enemy_combatant.team.roster:
       # Rollback all changes in reverse order
-      event.enemy.captor = None
+      event.enemy_combatant.captor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -61,11 +61,11 @@ class AttackTransaction(Transaction[AttackEvent]):
         )
       )
 
-    event.actor.team.hostages.append(event.enemy)
-    if event.enemy not in event.actor.team.hostages:
+    event.actor.team.hostages.append(event.enemy_combatant)
+    if event.enemy_combatant not in event.actor.team.hostages:
       # Rollback all changes in reverse order
-      event.enemy.team.add_to_roster(event.enemy)
-      event.enemy.captor = None
+      event.enemy_combatant.team.add_to_roster(event.enemy_combatant)
+      event.enemy_combatant.captor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -76,12 +76,12 @@ class AttackTransaction(Transaction[AttackEvent]):
         )
       )
 
-    context.board.pieces.remove(event.enemy)
-    if event.enemy in event.board.pieces:
+    context.board.pieces.remove(event.enemy_combatant)
+    if event.enemy_combatant in event.board.pieces:
       # Rollback all changes in reverse order
-      event.actor.team.hostages.remove(event.enemy)
-      event.enemy.team.add_to_roster(event.enemy)
-      event.enemy.captor = None
+      event.actor.team.hostages.remove(event.enemy_combatant)
+      event.enemy_combatant.team.add_to_roster(event.enemy_combatant)
+      event.enemy_combatant.captor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -96,9 +96,9 @@ class AttackTransaction(Transaction[AttackEvent]):
     if not event.enemy_square.occupant is None:
       # Rollback all changes in reverse order
       context.board.pieces.add(event.enemy_square.occupant)
-      event.actor.team.hostages.remove(event.enemy)
-      event.enemy.team.add_to_roster(event.enemy)
-      event.enemy.captor = None
+      event.actor.team.hostages.remove(event.enemy_combatant)
+      event.enemy_combatant.team.add_to_roster(event.enemy_combatant)
+      event.enemy_combatant.captor = None
 
       # Send the notification indicating rollback
       return TransactionResult(

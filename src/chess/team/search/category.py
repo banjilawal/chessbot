@@ -54,7 +54,7 @@ From `chess.piece`:
 
 from enum import auto, Enum
 
-class Datasource(Enum):
+class TeamSearchCategory(Enum):
   """
   # ROLE: Builder implementation
 

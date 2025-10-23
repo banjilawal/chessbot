@@ -7,7 +7,6 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# src/chess/system/travel/travel_exception.py
 
 """
 Module: chess.system.travel.exception
@@ -86,7 +85,7 @@ class ActorSameAsBlockingFriendException(BlockingEventException):
 class OccupationBlockerIsEnemyException(BlockingEventException):
   """"""
   ERROR_CODE = "OCCUPATION_BLOCKER_IS_ENEMY_ERROR"
-  DEFAULT_MESSAGE = "Blocker cannot be an enemy of the actor."
+  DEFAULT_MESSAGE = "Blocker cannot be an enemy of the traveler."
 #
 # class DoubleEncounterException(BlockingEventException):
 #   """"""
@@ -109,7 +108,7 @@ class OccupationBlockerIsEnemyException(BlockingEventException):
 #   DEFAULT_MESSAGE = "BlockingEventException build failed."
 #
 #
-# # src/chess.coord.travel_exception.py
+# # src/chess.coord.exception.py
 #
 # """
 # Module: chess.coord.exception

@@ -11,7 +11,7 @@ from typing import Any
 
 from chess.system import Validator, ValidationResult
 from chess.piece import (
-    ActorAlreadyAtDestinationException, PieceBindingBoardValidator, OccupationEvent,
+    ActorAlreadyAtDestinationException, OccupationEvent,
     NullOccupationEventException, OccupationDestinationNotEmptyException, TravelResourceValidator
 )
 
@@ -117,7 +117,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     if not id_validation.is_success():
 #       raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
 #
-#     actor_validation = PieceValidator.validate(travel.actor)
+#     actor_validation = PieceValidator.validate(travel.traveler)
 #     if not actor_validation.is_success():
 #       raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 #
@@ -125,7 +125,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     if not destination_square_validation.is_success():
 #       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 #
-#     if travel.enemy_square.coord == travel.actor.current_position:
+#     if travel.enemy_square.coord == travel.traveler.current_position:
 #       raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
 #
 #     return Result(payload=travel)
@@ -196,7 +196,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     actor_square_search = BoardSearch.search(
 #       board=context.board,
 #       data_source=BoardDatasource.SQUARE,
-#       context=BoardSearchcontext(coord=travel.actor.current_position)
+#       context=BoardSearchcontext(coord=travel.traveler.current_position)
 #     )
 #
 #     if not actor_square_search.is_success():
@@ -232,7 +232,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     if destination_occupant is None:
 #       build_result = OccupationEventBuilder.build(
 #         parent=travel,
-#         actor=travel.actor,
+#         traveler=travel.traveler,
 #         actor_square=actor_square,
 #         enemy_square=travel.enemy_square
 #       )
@@ -240,7 +240,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #         return TransactionResult(exception=build_result.exception)
 #       return
 #
-#     if isinstance(destination_occupant.rank, King) or (not travel.actor.is_enemy(destination_occupant):
+#     if isinstance(destination_occupant.rank, King) or (not travel.traveler.is_enemy(destination_occupant):
 #     build_result = ScanEventBuilder(
 #
 #     )
@@ -259,7 +259,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #
 #   TravelTransactionsearch_result = BoardSearch.square_by_coord(
-#     coord=travel.actor.current_position, board=context.board
+#     coord=travel.traveler.current_position, board=context.board
 #     )
 #   if search_result.exception is not None:
 #     return TransactionResult(op_result_id, travel, search_result.exception)
@@ -275,15 +275,15 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   if travel.friend.occupant is None:
 #     return TravelTransaction._switch_squares(op_result_id, travel, actor_square)
 #
-#   actor = travel.actor
+#   traveler = travel.traveler
 #   destination_occupant = travel.friend.occupant
-#   if not actor.is_enemy(destination_occupant) or (
-#           actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
+#   if not traveler.is_enemy(destination_occupant) or (
+#           traveler.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece)
 #   ):
 #     return TravelTransaction._run_scan(
 #       op_result_id=op_result_id,
 #       directive=ScanDirective(
-#         actor=travel.actor,
+#         traveler=travel.traveler,
 #         occupation_id=travel.id,
 #         scan_id=id_emitter.scan_id,
 #         friend=destination_occupant,
@@ -292,7 +292,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     )
 #
 #   attack_validation = AttackValidator.validate(
-#     CaptureContext(piece=travel.actor, enemy=destination_occupant, board=context.board)
+#     CaptureContext(piece=travel.traveler, enemy=destination_occupant, board=context.board)
 #   )
 #   if not attack_validation.is_success():
 #     return TransactionResult(op_result_id, travel, attack_validation.exception)
@@ -302,7 +302,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     op_result_id=op_result_id,
 #     directive=AttackDirective(
 #       board=context.board,
-#       actor=travel.actor,
+#       traveler=travel.traveler,
 #       enemy=enemy_king,
 #       occupation_id=travel.id,
 #       attack_id=id_emitter.attack_id,
@@ -348,8 +348,8 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   """
 #   method = "OccupationExecutor._switch_squares"
 #
-#   directive.friend.occupant = directive.actor
-#   if not directive.friend.occupant == directive.actor:
+#   directive.friend.occupant = directive.traveler
+#   if not directive.friend.occupant == directive.traveler:
 #     # Rollback all changes in reverse order
 #     directive.friend.occupant = None
 #
@@ -362,9 +362,9 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     )
 #
 #   actor_square.occupant = None
-#   if actor_square.occupant == directive.actor:
+#   if actor_square.occupant == directive.traveler:
 #     # Rollback all changes in reverse order
-#     actor_square.occupant = directive.actor
+#     actor_square.occupant = directive.traveler
 #     directive.friend.occupant = None
 #
 #     # Send the notification indicating rollback
@@ -375,11 +375,11 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
 #     )
 #
-#   directive.actor.positions.push_coord(directive.friend.position)
-#   if not directive.actor.current_position == directive.friend.position:
+#   directive.traveler.positions.push_coord(directive.friend.position)
+#   if not directive.traveler.current_position == directive.friend.position:
 #     # Rollback all changes in reverse order
-#     directive.actor.positions.undo_push()
-#     actor_square.occupant = directive.actor
+#     directive.traveler.positions.undo_push()
+#     actor_square.occupant = directive.traveler
 #     directive.friend.occupant = None
 #
 #     # Send the notification indicating rollback
@@ -392,7 +392,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #   return TransactionResult(
 #     result_id=op_result_id,
-#     travel=TravelEvent(id_emitter.event_id, directive.actor, directive.friend)
+#     travel=TravelEvent(id_emitter.event_id, directive.traveler, directive.friend)
 #   )
 
 # @staticmethod

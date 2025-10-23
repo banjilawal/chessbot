@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.system import IdValidator, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
-    PieceBindingBoardValidator, ActorBlockingItsOwnSquareException, ActorSameAsBlockingFriendException, BlockingEvent,
+     ActorBlockingItsOwnSquareException, ActorSameAsBlockingFriendException, BlockingEvent,
     NullBlockingEventException, OccupationBlockerIsEnemyException, PieceValidator, TravelResourceValidator
 )
 

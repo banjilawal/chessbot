@@ -1,4 +1,4 @@
-# src/chess/piece/travel/travel_exception.py
+# src/chess/piece/travel/exception.py
 
 """
 Module: chess.piece.travel.travel_exception
@@ -53,15 +53,12 @@ __all__ = [
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
   'InvalidTravelEventException',
   'NullTravelEventException',
-  'TravelEventSquareNotFoundException',
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
   'TravelEventBuildFailedException',
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
-  'AutoTravelPieceException',
 ]
-
 
 
 class TravelEventException(EventException):
@@ -77,21 +74,7 @@ class NullTravelEventException(TravelEventException, NullException):
   ERROR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent cannot be null."
 
-class InvalidTravelEventException(TravelEventException, ValidationException):
-  ERROR_CODE = "TRAVEL_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent failed validate"
 
-class TravelEventSquareNotFoundException(TravelEventException, ResourceException):
-  ERROR_CODE = "TRAVEL_EVENT_SQUARE_NOT_FOUND_ERROR"
-  DEFAULT_MESSAGE = (
-    "A square necessary for a TravelEvent was not found during a BoardSearch operation."
-  )
-
-class AutoTravelPieceException(TravelEventException):
-  ERROR_CODE = "AUTO_TRAVEL_ERROR"
-  DEFAULT_MESSAGE = (
-    "Piece is already at the destination. Cannot travel to a square you are already occupying"
-  )
 
 
 #====================== TravelEvent BUILD EXCEPTIONS #======================#
@@ -109,47 +92,4 @@ class OccupationEventBuildFailedException(TravelEventBuildFailedException):
   during build.
   """
   ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "OldOccupationEventValidator build failed."
 
-
-
-
-
-
-#
-#
-#
-# class HostageValidationEventException(TravelEventException):
-#   ERROR_CODE = "HOSTAGE_VALIDATION_ERROR"
-#   DEFAULT_MESSAGE = f"Hostage validation failed."
-#
-#
-# class NullHostagePieceEventException(TravelEventException):
-#   """
-#   Raised if team enemy is null. Parent class for:
-#     - NullCombatantPieceException
-#     - NullKingException
-#   Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
-#   Do not throw NullAttackException. Use team finegrained subclass of NullAttackException.
-#   """
-#
-#   ERROR_CODE = "NULL_PIECE_ERROR"
-#   DEFAULT_MESSAGE = f"Piece cannot be null"
-#
-#
-# class NullCombatantPieceEventException(TravelEventException):
-#   """
-#   Raised if team CombatantPiece is null. Raise NullCombatant instead of NullAttackException
-#   """
-#
-#   ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
-#   DEFAULT_MESSAGE = f"CombatantPiece cannot be null"
-#
-#
-# class TravelSearchEventException(TravelEventException):
-#   """
-#   Board searches during an travel should not fai. If they do there is an inconsistency in the board_validator
-#   """
-#
-#   ERROR_CODE = "TRAVEL_SEARCH_ERROR"
-#   DEFAULT_MESSAGE = f"BoardSearch failed to find team square; this should not happen in an travel operation"

@@ -8,8 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import (
-  ChessException, BuilderException, InconsistencyException, NullException, RollbackException,
-  ValidationException
+  ChessException, BuilderException, InconsistencyException, NullException, ValidationException
 )
 
 __all__ = [

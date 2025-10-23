@@ -1,7 +1,7 @@
-# src/chess.coord.travel_exception.py
+# src/chess/piece/travel/validation/exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.piece.travel.validation.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -46,11 +46,17 @@ from chess.system import NullException, ValidationException, InconsistencyExcept
 
 __all__ = [
   'TravelActorException',
+  'TravelResourceException',
 
 #====================== TravelEvent actor_candidate VALIDATION EXCEPTIONS #======================#
   'InvalidTravelActorException',
+  'InvalidTravelResourceException',
   'NullTravelActorException',
+  'NullTravelResourceException',
   'TravelActorNotFoundException',
+  
+  'NullTravelerEnvironmentTupleException',
+  'NullDestinationEnvironmentTupleException',
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
   'TravelActorMovingException',
@@ -61,24 +67,44 @@ __all__ = [
   'CapturedActorCannotMoveException',
 
 # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-  'PieceSquareNotFoundException',
-  'SquareMisMatchesPieceException'
+  'TravelActorSquareNotFoundException',
+  'SquareMisMatchesTravelActorException'
 ]
-
 
 
 class TravelActorException(TravelEventException):
   ERROR_CODE = "TRAVEL_ACTOR_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate actor_candidate raised an exception."
+  DEFAULT_MESSAGE = "An exception was raised by a TravelEvent traveler."
+
+
+class TravelResourceException(TravelEventException):
+  ERROR_CODE = "TRAVEL_RESOURCE_ERROR"
+  DEFAULT_MESSAGE = "An exception was raised by a TravelEvent resource."
 
 #====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
 class NullTravelActorException(TravelActorException, NullException):
   ERROR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be null."
+  DEFAULT_MESSAGE = "A TravelEvent traveler cannot be null."
+
+class NullTravelResourceException(TravelResourceException, NullException):
+  ERROR_CODE = "NULL_TRAVEL_RESOURCE_ERROR"
+  DEFAULT_MESSAGE = "A TravelEvent resource cannot be null."
+
+class NullTravelerEnvironmentTupleException(TravelActorException, NullException):
+  ERROR_CODE = "NULL_TRAVELER_ENVIRONMENT_TUPLE_ERROR"
+  DEFAULT_MESSAGE = "Piece-Board-Tuple passed to TravelActorValidator cannot be null."
+  
+class NullDestinationEnvironmentTupleException(TravelResourceException, NullException):
+  ERROR_CODE = "NULL_DESTINATION__ENVIRONMENT_TUPLE_ERROR"
+  DEFAULT_MESSAGE = "Square-Board-Tuple passed to TravelResourceValidator cannot be null."
 
 class InvalidTravelActorException(TravelActorException, ValidationException):
   ERROR_CODE = "TRAVEL_ACTOR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate validation failed."
+  DEFAULT_MESSAGE = "Validation of a TravelEvent traveler failed."
+
+class InvalidTravelResourceException(TravelResourceException, ValidationException):
+  ERROR_CODE = "TRAVEL_RESOURCE_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "Validation of a TravelEvent resource failed."
 
 class TravelActorNotFoundException(TravelActorException, InconsistencyException):
   ERROR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
@@ -134,7 +160,7 @@ class CheckMatedKingCannotMoveException(TravelActorMovingException):
 
 
 # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-class PieceSquareNotFoundException(TravelActorException, InconsistencyException):
+class TravelActorSquareNotFoundException(TravelActorException, InconsistencyException):
   """"""
   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
@@ -142,7 +168,7 @@ class PieceSquareNotFoundException(TravelActorException, InconsistencyException)
     "inconsistency."
   )
 
-class SquareMisMatchesPieceException(TravelActorException, InconsistencyException):
+class SquareMisMatchesTravelActorException(TravelActorException, InconsistencyException):
   """"""
   ERROR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
   DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a data inconsistency."

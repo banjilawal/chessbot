@@ -10,7 +10,6 @@ version: 1.0.0
 from .context import *
 from .exception import *
 
-from .data_source import DataCategory
 from .square import BoardSquareSearch
 from .piece import BoardPieceSearch
 

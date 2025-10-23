@@ -1,4 +1,4 @@
-# src/chess/teamSchema/schema/travel_exception.py
+# src/chess/teamSchema/schema/exception.py
 
 """
 Module: chess.teamSchema.schema.exception

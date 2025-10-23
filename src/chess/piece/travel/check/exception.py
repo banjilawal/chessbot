@@ -1,4 +1,4 @@
-# src/chess/piece/travel/attack/travel/travel_exception.py
+# src/chess/piece/travel/attack/travel/exception.py
 
 """
 Module: chess.piece.travel.attack.travel.exception
@@ -13,10 +13,9 @@ from chess.system import ChessException, NullException, BuildFailedException
 __all__ = [
   'AttackEventException',
   'NullAttackEventException',
-  'PieceAttackingItSelfException',
+  'KingCheckMakingItSelfException',
   'AttackingFriendException',
   'AttackingEnemyKingException',
-  'DoublyAttackingPrisonerException',
 ]
 
 
@@ -42,25 +41,18 @@ class NullAttackEventException(AttackEventException, NullException):
   DEFAULT_MESSAGE = "Attack cannot be null"
 
 
-class PieceAttackingItSelfException(AttackEventException):
-  """"""
-  ERROR_CODE = "PIECE_ATTACKING_ITSELF_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack itself."
 
-class AttackingFriendException(AttackEventException):
-  """"""
-  ERROR_CODE = "ATTACKING_FRIEND_ERROR"
-  DEFAULT_MESSAGE = "A friend cannot be attacked."
-  
-  class KingCaptureException(CapturePieceException):
-    """
-    Raised if team piece attempts to capture an enemy king. Kings can only be checked or
-    checkmated.
-    """
-    ERROR_CODE = "KING_CAPTURE_ERROR"
-    DEFAULT_MESSAGE = (
-      "An enemy king cannot be captured. It can only be checked or checkmated."
-    )
+
+
+class KingCaptureException(CapturePieceException):
+  """
+  Raised if team piece attempts to capture an enemy king. Kings can only be checked or
+  checkmated.
+  """
+  ERROR_CODE = "KING_CAPTURE_ERROR"
+  DEFAULT_MESSAGE = (
+    "An enemy king cannot be captured. It can only be checked or checkmated."
+  )
   
   class KingCaptureRolledBackExceptionCapture(CaptureRollbackException):
     """
@@ -78,11 +70,6 @@ class AttackingEnemyKingException(AttackEventException):
   """"""
   ERROR_CODE = "ATTACKING_ENEMY_KING_ERROR"
   DEFAULT_MESSAGE = "An enemy cannot be attacked. They can only be checked or checkmated."
-
-class DoublyAttackingPrisonerException(AttackEventException):
-  """"""
-  ERROR_CODE = "DOUBLY_ATTACKING_PRISONER_ERROR"
-  DEFAULT_MESSAGE = "Cannot attack an enemy that is already a prisoner."
 
 
 #======================# ATTACK_EVENT BUILD EXCEPTIONS #======================#

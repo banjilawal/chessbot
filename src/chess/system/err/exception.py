@@ -1,4 +1,4 @@
-# src/chess/system/notification/travel_exception.py
+# src/chess/system/notification/exception.py
 
 """
 Module: chess.system.notification.exception
@@ -45,7 +45,7 @@ See the list of exceptions in the `__all__` list following (e.g., `ResultExcepti
 
 
 
-# src/chess.coord.travel_exception.py
+# src/chess.coord.exception.py
 
 """
 Module: chess.coord.exception

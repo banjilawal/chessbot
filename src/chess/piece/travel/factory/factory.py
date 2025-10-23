@@ -18,8 +18,7 @@ from chess.system import LoggingLevelRouter, BuildResult, id_emitter
 from chess.board import Board, BoardSquareSearch, BoardSearchContext, CoordSearchInvariantBreachException
 from chess.piece import (
     KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, TravelActorValidator,
-    TravelEvent,
-    PieceBindingBoardValidator, TravelResourceValidator, ActorAlreadyAtDestinationException
+    TravelEvent, TravelResourceValidator, ActorAlreadyAtDestinationException
 )
 
 
