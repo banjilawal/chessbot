@@ -1,7 +1,7 @@
-# src/chess.coord.exception.py
+# src/chess.coord.rollback_exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.coord.rollback_exception
 Author: Banji Lawal
 Created: 2025-09-16
 Updated: 2025-10-04
@@ -9,7 +9,7 @@ version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of `Team` objects.
 
 ***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
@@ -21,13 +21,13 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Team` class has an exception specific to its possible
+  1. Each field and behavior in the `Team` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
 -------
 1. Centralized error dictionary for the `Team` domain.
-2. Fast debugging using highly granular exception messages and naming to
+2. Fast debugging using highly granular rollback_exception messages and naming to
     find the source.
 3. Providing understandable, consistent information about failures originating from
     the `Team` domain.
@@ -36,7 +36,7 @@ PURPOSE:
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
         `BuildFailedException`.
@@ -104,7 +104,7 @@ class TeamException(ChessException):
   exceptions.
   """
   ERROR_CODE = "TEAM_ERROR"
-  DEFAULT_MESSAGE = "Team raised an exception."
+  DEFAULT_MESSAGE = "Team raised an rollback_exception."
 
 class TeamRollBackException(TeamException):
   """
@@ -113,7 +113,7 @@ class TeamRollBackException(TeamException):
   """
   pass
   ERROR_CODE = "TEAM_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Team raised an exception. Transaction rollback performed."
+  DEFAULT_MESSAGE = "Team raised an rollback_exception. Transaction rollback performed."
 
 
 #======================# TEAM VALIDATION EXCEPTIONS #======================#  
@@ -145,7 +145,7 @@ class TeamBuildFailedException(TeamException, BuildFailedException):
 class TeamRosterException(TeamException):
   """Raised for errors on team's roster"""
   ERROR_CODE = "TEAM_ROSTER_ERROR"
-  DEFAULT_MESSAGE = "Team roster raised an exception."
+  DEFAULT_MESSAGE = "Team roster raised an rollback_exception."
 
 class AddTeamMemberException(TeamRosterException):
   """Raised if piece could not be added to the team's roster"""
@@ -153,7 +153,7 @@ class AddTeamMemberException(TeamRosterException):
   DEFAULT_MESSAGE = "Could not add piece to team's roster."
 
 class AddEnemyToRosterException(TeamRosterException):
-  """Attempting to add an enemy to the team's roster raises an exception."""
+  """Attempting to add an enemy to the team's roster raises an rollback_exception."""
   ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR"
   DEFAULT_MESSAGE = "An enemy piece cannot be added to the team's roster."
 
@@ -180,7 +180,7 @@ class ConflictingTeamAssignmentException(TeamRosterException):
 class TeamRosterRollBackException(TeamRosterException, RollbackException):
   """Raised for errors on team's roster that are raised after rollback."""
   ERROR_CODE = "TEAM_ROSTER_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Team roster raised an exception. Transaction rollback performed."
+  DEFAULT_MESSAGE = "Team roster raised an rollback_exception. Transaction rollback performed."
 
 class AddTeamMemberRolledBackException(TeamRosterRollBackException):
   """
@@ -237,7 +237,7 @@ class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
 class TeamHostageListException(TeamException):
   """Raised on errors with team's hostage list"""
   ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
-  DEFAULT_MESSAGE = "Team hostage list raised an exception."
+  DEFAULT_MESSAGE = "Team hostage list raised an rollback_exception."
 
 
 class InconsistentHostageEntry(TeamHostageListException):
@@ -246,7 +246,7 @@ class InconsistentHostageEntry(TeamHostageListException):
   DEFAULT_MESSAGE = "An enemy with no captor is in the hostage list. There may be inconsistent data."
 
 class InvalidFriendlyHostageException(TeamHostageListException):
-  """Attempting to team friendly to the hostage list raises an exception."""
+  """Attempting to team friendly to the hostage list raises an rollback_exception."""
   ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR"
   DEFAULT_MESSAGE = "A friendly piece cannot be added to the team's hostage list"
 
@@ -256,7 +256,7 @@ class AddEnemyHostageException(TeamHostageListException):
   DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list"
 
 class AddEnemyKingHostageException(TeamHostageListException):
-  """Attempting to an enemy king to the hostage list raises an exception."""
+  """Attempting to an enemy king to the hostage list raises an rollback_exception."""
   ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR"
   DEFAULT_MESSAGE = (
     "An enemy king cannot be added to the team's hostage list. Kings can only "
@@ -264,7 +264,7 @@ class AddEnemyKingHostageException(TeamHostageListException):
   )
 
 class HostageRemovalException(TeamHostageListException):
-  """Attempting to remove an enemy from the hostage list raises an exception."""
+  """Attempting to remove an enemy from the hostage list raises an rollback_exception."""
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR"
   DEFAULT_MESSAGE = "An enemy piece cannot be removed from the team's hostage list"
 
@@ -277,7 +277,7 @@ class TeamHostageListRolledBackException(TeamHostageListException, RollbackExcep
   """
   ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Team hostage list raised an exception. Transaction rollback performed."
+    "Team hostage list raised an rollback_exception. Transaction rollback performed."
   )
 
 class InvalidFriendlyHostageRolledBackException(TeamHostageListRolledBackException):
@@ -318,7 +318,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
 
 #======================# SEARCH EXCEPTIONS #======================#  
 class RosterNumberOutOfBoundsException(TeamException, SearchException):
-  """Attempting to old_search for team roster number < 1 or > team_size raises an exception."""
+  """Attempting to old_search for team roster number < 1 or > team_size raises an rollback_exception."""
   ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"
   DEFAULT_MESSAGE = "Roster numbers are in the range [1, team_size]. Search failed."
 

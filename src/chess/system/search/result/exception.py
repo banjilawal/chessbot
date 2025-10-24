@@ -1,7 +1,7 @@
-# src/chess/system/old_search/notification/exception.py
+# src/chess/system/old_search/notification/rollback_exception.py
 
 """
-Module: chess.system.old_search.notification.exception
+Module: chess.system.old_search.notification.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

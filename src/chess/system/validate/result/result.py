@@ -35,7 +35,7 @@ The major theme influencing the modules design are
 * From `chess.system.validation`:
     `Validation`
 
-* From `chess.system.err.exception`:
+* From `chess.system.err.rollback_exception`:
     `Result`
 
 * From Python `abc` Library:
@@ -49,24 +49,35 @@ The major theme influencing the modules design are
 """
 
 from typing import Optional, TypeVar, Generic
-from chess.system import Result
+from chess.system import NotImplementedException, Result
 
 T = TypeVar("T")
 
+
 class ValidationResult(Result[Generic[T]]):
-  """
-  # ROLE: Message passing, Data Transfer Object
-
-  # RESPONSIBILITIES:
-  1. Carry the outcome a validation operation to originating client.
-  2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
-
-  # PROVIDES:
-  1. A correctness verification or denial for the `Validation` service provider.
-
-  # ATTRIBUTES:
-    * See `Result` superclass for attributes.
-  """
-
-  def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-    super().__init__(payload=payload, exception=exception)
+    """
+    # ROLE: Message passing, Data Transfer Object
+  
+    # RESPONSIBILITIES:
+    1. Carry the outcome a validation operation to originating client.
+    2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
+  
+    # PROVIDES:
+    1. A correctness verification or denial for the `Validation` service provider.
+  
+    # ATTRIBUTES:
+      * See `Result` superclass for attributes.
+    """
+    
+    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
+        super().__init__(payload=payload, exception=exception)
+    
+    @classmethod
+    def empty(cls) -> Result:
+        method = "ValidationResult.empty"
+        return Result(
+            exception=NotImplementedException(
+                f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. ValidationResult cannot"
+                f" be empty. It must have either a payload or an rollback_exception."
+            )
+        )

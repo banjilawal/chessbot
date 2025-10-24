@@ -36,7 +36,7 @@
   # RETURNS:
   `ValidationResult[str]`: A `ValidationResult` containing either:
       `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-      `exception` (`Exception`) - An exception detailing which naming rule was broken.
+      `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 
   # RAISES:
   `InvalidIdException`: Wraps any specification violations including:
@@ -54,7 +54,7 @@
 
   Args:
     `event_id`(`int`): The unique id for the scanEvent. Must pass `IdValidator` checks.
-    `actor_candidate`(`Piece`): Initiates blocked after successful validate`.
+    `actor_candidate`(`Piece`): Initiates blocking after successful validate`.
     `enemy`(`Piece`): The `Piece` scanned by `actor_candidate`.
     `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 

@@ -80,7 +80,7 @@ class VectorBuilder(Builder[Vector]):
         RETURNS:
         `BuildResult[Vector]`: A `BuildResult` containing either:
             `'payload'` - A valid `Vector` instance in the payload
-            `exception` - Error information and error details
+            `rollback_exception` - Error information and error details
 
         RAISES:
         `VectorBuildFailedException`: Wraps any specification violations including:
@@ -95,21 +95,21 @@ class VectorBuilder(Builder[Vector]):
             # Handle the x-component
             if x is None:
                 # ex =
-                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, rollback_exception=ex)
                 return BuildResult(exception=NullXComponentException(
                     f"{method}: {NullXComponentException.DEFAULT_MESSAGE}"
                 ))
 
             if x < -KNIGHT_STEP_SIZE:
                 # ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, rollback_exception=ex)
                 return BuildResult(exception=VectorBelowBoundsException(
                     f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
                 ))
 
             if x > KNIGHT_STEP_SIZE:
                 # ex = VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
-                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, rollback_exception=ex)
                 return BuildResult(exception=VectorAboveBoundsException(
                     f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
                 ))
@@ -117,14 +117,14 @@ class VectorBuilder(Builder[Vector]):
             # Handle the y-component
             if y is None:
                 # ex = NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
-                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, rollback_exception=ex)
                 return BuildResult(exception=NullYComponentException(
                     f"{method}: {NullYComponentException.DEFAULT_MESSAGE}"
                 ))
 
             if y < -KNIGHT_STEP_SIZE:
                 # ex = VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, exception=ex)
+                # LoggingLevelRouter.log_and_raise_error(context=VectorBuilder, rollback_exception=ex)
                 return BuildResult(exception=VectorBelowBoundsException(
                     f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
                 ))

@@ -88,7 +88,7 @@ class SquareValidator(Validator[Square]):
     # Returns:
       `ValidationResult[Square]`: A `ValidationResult` containing either:
             `'payload'` - A `Square` instance that satisfies the specification.
-            `exception` - Details about which specification violation occurred.
+            `rollback_exception` - Details about which specification violation occurred.
 
     # Raises:
     No Exceptions are raised. Exceptions are returned to caller in `ValidationResult[Square]`

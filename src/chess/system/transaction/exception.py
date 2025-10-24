@@ -1,7 +1,7 @@
-# src/chess/system/travel/exception.py
+# src/chess/system/travel/rollback_exception.py
 
 """
-Module: chess.system.travel.exception
+Module: chess.system.travel.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -15,7 +15,7 @@ This module provides:
 The module's only covers exceptions raised by `IdValidator`;
 
 # SECTION 3: Limitations
-  1. Does not provide logic for fixing the errors or causing the exception being raised.
+  1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
        `IdValidator` is responsible for the logic which raises these exceptions.
 
 # SECTION 4 - Design Considerations and Themes:
@@ -55,7 +55,7 @@ class TransactionException(ChessException):
   exceptions.
   """
   ERROR_CODE = "TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "Transaction raised an exception."
+  DEFAULT_MESSAGE = "Transaction raised an rollback_exception."
 
 
 #======================# EVENT VALIDATION EXCEPTIONS #======================#
@@ -68,6 +68,6 @@ class TransactionResultException(ResultException):
   exceptions.
   """
   ERROR_CODE = "TRANSACTION_RESULT_ERROR"
-  DEFAULT_MESSAGE = "TransactionResult raised an exception."
+  DEFAULT_MESSAGE = "TransactionResult raised an rollback_exception."
 
 

@@ -1,7 +1,7 @@
-# src/chess/piece/travel/occupation/exception.py
+# src/chess/piece/travel/occupation/rollback_exception.py
 
 """
-Module: `chess.piece.travel.occupation.exception`
+Module: `chess.piece.travel.occupation.rollback_exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -27,7 +27,7 @@ class OccupationEventException(TravelEventException):
   fine-grained messages and error codes better for debugging and logging.
   """
   DEFAULT_CODE = "OCCUPATION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "An OccupationEvent raised an exception."
+  DEFAULT_MESSAGE = "An OccupationEvent raised an rollback_exception."
 
 
 #====================== OCCUPATION_EVENT VALIDATION EXCEPTIONS #======================#
@@ -116,7 +116,7 @@ class HostageActivityException(PieceException):
   useful for debugging.
   """
   ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"
-  DEFAULT_MESSAGE = "Hostage piece cannot move, blocked, or attack."
+  DEFAULT_MESSAGE = "Hostage piece cannot move, blocking, or attack."
 
 
 class HostageCannotAttackException(HostageActivityException):
@@ -137,9 +137,9 @@ class HostageCannotMoveException(HostageActivityException):
 
 class HostageCannotScanException(HostageActivityException):
   """
-  Raised if team captured piece tries to blocked team square.
+  Raised if team captured piece tries to blocking team square.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot blocked team sqaure."
+  DEFAULT_MESSAGE = "Captured piece cannot blocking team sqaure."
 
 

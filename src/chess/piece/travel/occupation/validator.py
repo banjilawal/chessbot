@@ -175,7 +175,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     # RETURNS:
 #     `ValidationResult[str]`: A `ValidationResult` containing either:
 #         `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-#         `exception` (`Exception`) - An exception detailing which naming rule was broken.
+#         `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 #
 #     # RAISES:
 #     `InvalidIdException`: Wraps any specification violations including:
@@ -190,7 +190,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       return TransactionResult(
 #         event_update=travel,
 #         transaction_state=TransactionState.FAILURE,
-#         exception=event_validation.exception
+#         rollback_exception=event_validation.rollback_exception
 #       )
 #
 #     actor_square_search = BoardSearch.search(
@@ -203,7 +203,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       return TransactionResult(
 #         event_update=travel,
 #         transaction_state=TransactionState.FAILURE,
-#         exception=actor_square_search.exception
+#         rollback_exception=actor_square_search.rollback_exception
 #       )
 #
 #     destination_search = BoardSearch.search(
@@ -213,7 +213,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     )
 #     if not destination_search.is_success():
 #       return TransactionResult(
-#         exception=EventResourceNotFoundExeception(
+#         rollback_exception=EventResourceNotFoundExeception(
 #           f"{method}: {DestinationSquareNotFoundException.DEFAULT_MESSAGE}"
 #           # EventResourceNotFoundException
 #         )
@@ -221,7 +221,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #     if len(destination_search.payload) > 1:
 #       return TransactionResult(
-#         exception=DestinationSquareColiisonException(
+#         rollback_exception=DestinationSquareColiisonException(
 #           f"{method}: {DestinationSquareCollisionException.DEFAULT_MESSAGE}"
 #         )
 #       )
@@ -237,7 +237,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #         enemy_square=travel.enemy_square
 #       )
 #       if not build_result.is_success():
-#         return TransactionResult(exception=build_result.exception)
+#         return TransactionResult(rollback_exception=build_result.rollback_exception)
 #       return
 #
 #     if isinstance(destination_occupant.rank, King) or (not travel.traveler.is_enemy(destination_occupant):
@@ -245,7 +245,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #     )
 #     if not build_result.is_success():
-#       return TransactionResult(exception=build_result.exception)
+#       return TransactionResult(rollback_exception=build_result.rollback_exception)
 #     return OccupationTransacti()
 #
 #   )
@@ -261,8 +261,8 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   TravelTransactionsearch_result = BoardSearch.square_by_coord(
 #     coord=travel.traveler.current_position, board=context.board
 #     )
-#   if search_result.exception is not None:
-#     return TransactionResult(op_result_id, travel, search_result.exception)
+#   if search_result.rollback_exception is not None:
+#     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
 #
 #   if search_result.is_empty():
 #     return TransactionResult(
@@ -295,7 +295,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     CaptureContext(piece=travel.traveler, enemy=destination_occupant, board=context.board)
 #   )
 #   if not attack_validation.is_success():
-#     return TransactionResult(op_result_id, travel, attack_validation.exception)
+#     return TransactionResult(op_result_id, travel, attack_validation.rollback_exception)
 #
 #   enemy_king = cast(CombatantPiece, attack_validation.payload.enemy)
 #   return TravelTransaction._attack_enemy(
@@ -358,7 +358,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
 #     )
 #
 #   actor_square.occupant = None
@@ -372,7 +372,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
 #     )
 #
 #   directive.traveler.positions.push_coord(directive.friend.position)
@@ -387,7 +387,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
 #     )
 #
 #   return TransactionResult(
@@ -409,7 +409,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
 #       was_rolled_back=True
 #     )
 #
@@ -423,7 +423,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       exception=RemoveTeamMemberRolledBackException(
+#       rollback_exception=RemoveTeamMemberRolledBackException(
 #         f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
@@ -439,7 +439,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       exception=AddEnemyHostageRolledBackException(
+#       rollback_exception=AddEnemyHostageRolledBackException(
 #         f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
@@ -456,7 +456,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
 #     )
 #
 #   directive.board.pieces.remove(directive.enemy)
@@ -472,7 +472,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       exception=BoardPieceRemovalRollbackException(
+#       rollback_exception=BoardPieceRemovalRollbackException(
 #         f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"
 #       )
 #     )

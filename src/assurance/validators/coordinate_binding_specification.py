@@ -24,7 +24,7 @@ class CoordinateSBindingValidator(Validator):
       candidate (CoordinateBinding): coordinate_binding to validate
 
     Returns:
-      bool: True if coordinate_binding satisfies the specifications. Otherwise throws an exception
+      bool: True if coordinate_binding satisfies the specifications. Otherwise throws an rollback_exception
         returning always true is not standard practice. It simplifies testing and eliminates 
         distractions. 
 

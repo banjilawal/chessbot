@@ -72,7 +72,7 @@ PARAMETERS:
 RETURNS:
 `BuildResult[Team]`: A `BuildResult` containing either:
     `'payload'` - A valid `Team` instance in the payload
-    `exception` - Error information and error details
+    `rollback_exception` - Error information and error details
 
 RAISES:
 `TeamBuildFailedException`: Wraps any specification violations including:

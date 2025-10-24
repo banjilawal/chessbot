@@ -111,7 +111,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
 #     )
 #
 #   actor_square.occupant = None
@@ -125,7 +125,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
 #     )
 #
 #   travel.traveler.positions.push_coord(travel.friend.position)
@@ -140,7 +140,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
 #     )
 #
 #   return TransactionResult(
@@ -162,7 +162,7 @@ Example:
 #   # RETURNS:
 #   `ValidationResult[str]`: A `ValidationResult` containing either:
 #       `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-#       `exception` (`Exception`) - An exception detailing which naming rule was broken.
+#       `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 #
 #   # RAISES:
 #   `InvalidIdException`: Wraps any specification violations including:
@@ -174,7 +174,7 @@ Example:
 #
 #   validation = TransferEventValidator.validate(travel)
 #   if not validation.is_success():
-#     return TransactionResult(travel, validation.exception)
+#     return TransactionResult(travel, validation.rollback_exception)
 #
 #   travel.enemy.captor = travel.traveler
 #   if travel.enemy.captor != travel.traveler:
@@ -185,7 +185,7 @@ Example:
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=SetCaptorRollBackException(
+#       rollback_exception=SetCaptorRollBackException(
 #         f"{method}: {SetCaptorRollBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
@@ -199,7 +199,7 @@ Example:
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=RemoveTeamMemberRolledBackException(
+#       rollback_exception=RemoveTeamMemberRolledBackException(
 #         f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
@@ -214,7 +214,7 @@ Example:
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=AddEnemyHostageRolledBackException(
+#       rollback_exception=AddEnemyHostageRolledBackException(
 #         f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
@@ -230,7 +230,7 @@ Example:
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=FailedPieceRemovalRolledBackException(
+#       rollback_exception=FailedPieceRemovalRolledBackException(
 #         f"{method}: {FailedPieceRemovalRolledBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
@@ -247,7 +247,7 @@ Example:
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=EmptyDestinationSquareRolledBackException(
+#       rollback_exception=EmptyDestinationSquareRolledBackException(
 #         f"{method}: {EmptyDestinationSquareRolledBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
@@ -272,15 +272,15 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
 #     )
 #
 #
 #
 #   return OccupationTransaction._switch_squares(op_result_id, travel, travel.actor_square)
 #   search_result = BoardSearch.square_by_coord(coord=travel.traveler.current_position, board=context.board)
-#   if search_result.exception is not None:
-#     return TransactionResult(op_result_id, travel, search_result.exception)
+#   if search_result.rollback_exception is not None:
+#     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
 #
 #   if search_result.is_empty():
 #     return TransactionResult(
@@ -302,7 +302,7 @@ Example:
 #     CaptureContext(piece=travel.traveler, enemy=destination_occupant, board=context.board)
 #   )
 #   if not attack_validation.is_success():
-#     return TransactionResult(op_result_id, travel, attack_validation.exception)
+#     return TransactionResult(op_result_id, travel, attack_validation.rollback_exception)
 #
 #   enemy_king = cast(CombatantPiece, attack_validation.payload.enemy)
 #   return OccupationTransaction._attack_enemy(
@@ -324,7 +324,7 @@ Example:
 # @staticmethod
 # def _run_scan(op_result_id :int, travel: ScanEvent) -> TransactionResult:
 #   """
-#   Creates team new `Checker` object for travel.actor_candidate which is blocked from moving to
+#   Creates team new `Checker` object for travel.actor_candidate which is blocking from moving to
 #   `blocked_square` by `travel.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
 #   `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, error chains
 #   confirmed parameters ar are correct. No additional sanity checks are needed.
@@ -349,7 +349,7 @@ Example:
 #
 #   build_outcome = DiscoveryBuilder.build(observer=travel.observer, friend=travel.friend)
 #   if not build_outcome.is_success():
-#     return TransactionResult(op_result_id, travel, exception=build_outcome.exception)
+#     return TransactionResult(op_result_id, travel, rollback_exception=build_outcome.rollback_exception)
 #
 #   discovery = cast(Discovery, build_outcome.payload)
 #   if discovery not in travel.observer.discoveries.items:
@@ -361,7 +361,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
 #     )
 #
 #   success_event = ScanEvent(
@@ -379,10 +379,10 @@ Example:
 #
 #
 
-# src/chess/system/travel/exception.py
+# src/chess/system/travel/rollback_exception.py
 
 """
-Module: chess.system.travel.exception
+Module: chess.system.travel.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -396,7 +396,7 @@ This module provides:
 The module's only covers exceptions raised by `IdValidator`;
 
 # SECTION 3: Limitations
-  1. Does not provide logic for fixing the errors or causing the exception being raised.
+  1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
        `IdValidator` is responsible for the logic which raises these exceptions.
 
 # SECTION 4 - Design Considerations and Themes:
@@ -420,17 +420,17 @@ The major theme influencing the modules design are
 See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
-# src/chess/vector/exception.py
+# src/chess/vector/rollback_exception.py
 
 """
-Module: chess.vector.exception
+Module: chess.vector.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
@@ -442,13 +442,13 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Vector` class has an exception specific to its possible
+  1. Each field and behavior in the `Vector` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
 -------
 1. Centralized error dictionary for the `Vector` domain.
-2. Fast debugging using highly granular exception messages and naming to
+2. Fast debugging using highly granular rollback_exception messages and naming to
     find the source.
 3. Providing understandable, consistent information about failures originating from
     the `Vector` domain.
@@ -457,7 +457,7 @@ PURPOSE:
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
         `BuildFailedException`.
@@ -468,7 +468,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
-# from chess.exception import RollbackException
+# from chess.rollback_exception import RollbackException
 # from chess.piece.travel import OccupationEventException
 #
 # __all__ = [
@@ -507,10 +507,10 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 # class ScanTransactionException(TransactionException):
 #   """
 #   Wraps any ScanEventExceptions or other errors raised during
-#   the blocked's lifecycle.
+#   the blocking's lifecycle.
 #   """
 #   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-#   DEFAULT_MESSAGE = "OccupationTransaction raised an exception."
+#   DEFAULT_MESSAGE = "OccupationTransaction raised an rollback_exception."
 #
 #
 #

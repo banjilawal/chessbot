@@ -18,10 +18,10 @@ the current `Board` to find the best move.
 This package exposes core classes and all exceptions from its sub-modules:
   - `DecisionEngine`: Abstract super class defining shared traits and behaviors of engines.
   - `GreedyDecisionEngine`: `DecisionEngine` that uses team greedy algorithm
-  - All exceptions from `exception` package.
+  - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for travel operations.
+  - `.rollback_exception`: Defines all custom exceptions for travel operations.
 
 
 # HOW TO IMPORT

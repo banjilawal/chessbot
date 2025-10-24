@@ -1,12 +1,12 @@
 """
-Module: chess.discoverySearchContext.exception
+Module: chess.discoverySearchContext.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `DiscoverySearchContextValidator` and `DiscoverySearchContextBuilder`processes.
@@ -27,7 +27,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
@@ -63,7 +63,7 @@ class DiscoverySearchContextException(ContextException):
     USE DIRECTLY. Subclasses give more useful debugging messages.
     """
     ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "DiscoverySearchContext raised an exception"
+    DEFAULT_MESSAGE = "DiscoverySearchContext raised an rollback_exception"
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 

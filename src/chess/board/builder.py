@@ -40,7 +40,7 @@ class BoardBuilder(Builder[Board]):
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
         `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 
     # RAISES:
     `InvalidIdException`: Wraps any specification violations including:

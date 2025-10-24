@@ -38,7 +38,7 @@ Major themes influencing the design include:
 2. Direct support for reliability, verification, and integrity.
 
 # SECTION G - Feature Delivery Mechanism:
-1. An exception for each requirement providing granular, accurate and precise error reporting.
+1. An rollback_exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
 3. `IdValidator` can be used as component in more complex verifications.
 

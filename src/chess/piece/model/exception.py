@@ -1,7 +1,7 @@
-# src/chess/piece/model/exception.py
+# src/chess/piece/model/rollback_exception.py
 
 """
-Module: chess.piece.model.exception
+Module: chess.piece.model.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -39,7 +39,7 @@ class PieceException(ChessException):
   all piece exceptions
   """
   ERROR_CODE = "PIECE_ERROR"
-  DEFAULT_MESSAGE = "Piece raised an exception."
+  DEFAULT_MESSAGE = "Piece raised an rollback_exception."
 
 # ======================# PIECE VALIDATION EXCEPTIONS #======================#
 class InvalidPieceException(PieceException, ValidationException):

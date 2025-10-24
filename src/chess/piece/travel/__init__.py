@@ -11,7 +11,7 @@ from .base import *
 from .check import *
 from .attack import *
 from .factory import *
-from .blocked import *
+from .blocking import *
 from .occupation import *
 from .promotion import *
 from .validation import *

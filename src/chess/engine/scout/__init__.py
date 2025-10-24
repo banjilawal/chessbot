@@ -15,10 +15,10 @@ version: 1.0.0
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `CLASS>ANE`: <LINE_ABOUT_CLASS_PURPOSE_HERE>.
-  - All exceptions from `exception` package.
+  - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for travel operations.
+  - `.rollback_exception`: Defines all custom exceptions for travel operations.
   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 # HOW TO IMPORT

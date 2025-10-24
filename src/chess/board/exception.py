@@ -1,14 +1,14 @@
-# src/chess/vector/exception.py
+# src/chess/vector/rollback_exception.py
 
 """
-Module: chess.vector.exception
+Module: chess.vector.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
@@ -20,13 +20,13 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Vector` class has an exception specific to its possible
+  1. Each field and behavior in the `Vector` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
 -------
 1. Centralized error dictionary for the `Vector` domain.
-2. Fast debugging using highly granular exception messages and naming to
+2. Fast debugging using highly granular rollback_exception messages and naming to
     find the source.
 3. Providing understandable, consistent information about failures originating from
     the `Vector` domain.
@@ -35,7 +35,7 @@ PURPOSE:
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
         `BuildFailedException`.
@@ -88,14 +88,14 @@ class BoardException(ChessException):
   for debugging. This class exists primarily to allow catching all board_validator exceptions
   """
   ERROR_CODE = "BOARD_ERROR"
-  DEFAULT_MESSAGE = "Board raised an exception."
+  DEFAULT_MESSAGE = "Board raised an rollback_exception."
 
 class BoardRollBackException(BoardException):
   """
   Super class for exceptions that require team rollback to maintain board_validator integrity.
   """
   ERROR_CODE = "BOARD_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Board raised an exception. Transaction rollback performed."
+  DEFAULT_MESSAGE = "Board raised an rollback_exception. Transaction rollback performed."
 
 
 #======================# BOARD VALIDATION EXCEPTIONS #======================#  
@@ -175,7 +175,7 @@ class InconsistentBoardException(BoardException, InconsistencyException):
 class BoardInvariantBreachException(BoardException, InvariantBreachException):
   """
   Raised when a fundamental invariant of the system or environment is violated.
-  This exception type signals a breach of consistency — meaning the system’s
+  This rollback_exception type signals a breach of consistency — meaning the system’s
   assumptions about its internal state are no longer valid.
   """
   DEFAULT_CODE = "BOARD_INVARIANT_BREACH_ERROR"

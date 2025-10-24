@@ -31,7 +31,7 @@ Major themes influencing the design include:
 3. `NameValidator` can be used as component in more complex verifications.
 
 # SECTION G - Feature Delivery Mechanism:
-1. An exception for each requirement providing granular, accurate and precise error reporting.
+1. An rollback_exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
 
 # SECTION 7 - Dependencies:
@@ -86,7 +86,7 @@ class NameValidator(Validator[str]):
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
         `'payload'` (`str`) - A `str` meeting the `ChessBot` standard for names.
-        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 
     # RAISES:
     `InvalidNameException`: Wraps any specification violations including:

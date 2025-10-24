@@ -1,7 +1,7 @@
-# src/chess/system/name/exception.py
+# src/chess/system/name/rollback_exception.py
 
 """
-Module: chess.system.name.exception
+Module: chess.system.name.rollback_exception
 Author: Banji Lawal
 Created: 2025-09-17
 Updated: 2025-10-10
@@ -16,7 +16,7 @@ This module provides:
 The module's only covers exceptions raised by `NameValidator`;
 
 # SECTION 3: Limitations
-  1. Does not provide logic for fixing the errors or causing the exception being raised.
+  1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
        `NameValidator` is responsible for the logic which raises these exceptions.
 
 # SECTION 4 - Design Considerations and Themes:

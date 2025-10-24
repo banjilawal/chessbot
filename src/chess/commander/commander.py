@@ -22,7 +22,7 @@ class Commander(ABC):
 
     # id_validation = IdValidator.validate(commander_id)
     # if not id_validation.is_success():
-    #   raise id_validation.exception
+    #   raise id_validation.rollback_exception
 
     name_validation = NameValidator.validate(name)
     if not name_validation.is_success():

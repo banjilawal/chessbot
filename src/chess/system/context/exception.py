@@ -1,7 +1,7 @@
-# src/chess/system/notification/exception.py
+# src/chess/system/notification/rollback_exception.py
 
 """
-Module: chess.system.notification.exception
+Module: chess.system.notification.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -45,17 +45,17 @@ See the list of exceptions in the `__all__` list following (e.g., `ResultExcepti
 
 
 
-# src/chess.context.exception.py
+# src/chess.context.rollback_exception.py
 
 """
-Module: chess.context.exception
+Module: chess.context.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of **Context objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `ContextValidator` and `ContextBuilder`processes.
@@ -76,7 +76,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
@@ -107,7 +107,7 @@ class ContextException(ChessException):
   USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "Context raised an exception"
+  DEFAULT_MESSAGE = "Context raised an rollback_exception"
 
 #======================# CONTEXT VALIDATION EXCEPTIONS #======================#  
 class NullContextException(ContextException, NullException):

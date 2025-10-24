@@ -14,10 +14,10 @@ to move the `Team` members on the `Board`
 This package exposes core classes and all exceptions from its sub-modules:
   - `Arena`
   - `ArenaBuilder`
-  - All exceptions from `exception` sub-packages.
+  - All exceptions from `rollback_exception` sub-packages.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for `Arena` operations.
+  - `.rollback_exception`: Defines all custom exceptions for `Arena` operations.
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this `arena` package level

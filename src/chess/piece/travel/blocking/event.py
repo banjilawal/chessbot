@@ -1,7 +1,7 @@
-# src/chess/piece/travel/blocked/event.py
+# src/chess/piece/travel/blocking/event.py
 
 """
-Module: `chess.piece.travel.blocked.event`
+Module: `chess.piece.travel.blocking.event`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

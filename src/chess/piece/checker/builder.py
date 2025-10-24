@@ -49,7 +49,7 @@ class DiscoveryBuilder(Enum):
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
         `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 
     # RAISES:
     `InvalidIdException`: Wraps any specification violations including:
@@ -68,7 +68,7 @@ class DiscoveryBuilder(Enum):
 
 
     Args:
-      `actor_candidate`(`Piece`): The piece that is doing team blocked, or executing team move.
+      `actor_candidate`(`Piece`): The piece that is doing team blocking, or executing team move.
       `discover`(`Piece`): The static piece the `actor_candidate` finds in team `square`.
 
     Returns:

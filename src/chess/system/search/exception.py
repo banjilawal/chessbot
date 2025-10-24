@@ -1,7 +1,7 @@
-# src/chess/system/search/exception.py
+# src/chess/system/search/rollback_exception.py
 
 """
-Module: chess.system.old_search.exception
+Module: chess.system.old_search.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -22,7 +22,7 @@ class SearchException(ChessException):
   exceptions.
   """
   DEFAULT_CODE = "SEARCH_ERROR"
-  DEFAULT_MESSAGE = "Search raised an exception."
+  DEFAULT_MESSAGE = "Search raised an rollback_exception."
 
 class ImpossibleFatalResultException(SearchException):
   """

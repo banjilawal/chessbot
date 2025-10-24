@@ -23,7 +23,7 @@ class CoordStackValidator(Validator):
       - if CoordStack.is_empty() is True then current_coordinate.size == 0
       - if CoordStack.is_empty() is False then current_coordinate is not null
       - If CoordStack.is_empty() then current_coordinate is null
-    Any failed requirement raise an exception wrapped in team CoordStackValidationException
+    Any failed requirement raise an rollback_exception wrapped in team CoordStackValidationException
 
     Validation tests do not change state so pushes and pops are:
       - Tested in unit tests

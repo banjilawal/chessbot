@@ -1,14 +1,14 @@
-# src/chess.coord.exception.py
+# src/chess.coord.rollback_exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.coord.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
@@ -29,7 +29,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
@@ -73,7 +73,7 @@ class ActorException(AttackException):
   all piece exceptions
   """
   ERROR_CODE = "ACTOR_ERROR"
-  DEFAULT_MESSAGE = "Actor raised an exception. Piece cannot act."
+  DEFAULT_MESSAGE = "Actor raised an rollback_exception. Piece cannot act."
 
 class ActorRollBackException(ActorException, RollbackException):
   """
@@ -84,7 +84,7 @@ class ActorRollBackException(ActorException, RollbackException):
   notification must be rolled back.
   """
   ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Actor raised an exception. Transaction rolled back"
+  DEFAULT_MESSAGE = "Actor raised an rollback_exception. Transaction rolled back"
 
 
 #======================# ACTOR VALIDATION EXCEPTIONS #======================#  
@@ -98,7 +98,7 @@ class InvalidActorException(ActorException, InvalidAttackException):
 
 class ActorNotOnBoardException(ActorException):
   """
-  A piece that has not been placed on the board_validator cannot move, blocked, capture or be captured
+  A piece that has not been placed on the board_validator cannot move, blocking, capture or be captured
   """
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
   DEFAULT_MESSAGE = "Actor is not on the board_validator. Piece cannot act"
@@ -135,10 +135,10 @@ class CapturedActorCannotMoveException(ActorException):
 
 class CapturedActorCannotScanException(ActorException):
   """
-  A captured piece cannot blocked.
+  A captured piece cannot blocking.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "A captured actor_candidate cannot blocked team square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot blocking team square."
 
 class CheckMatedKingActivityException(ActorException):
   """
@@ -157,7 +157,7 @@ class SubjectException(AttackException):
   Using SubjectException makes tracing which side of the interaction is raising an error easier.
   """
   ERROR_CODE = "SUBJECT_ERROR"
-  DEFAULT_MESSAGE = "A potential enemy piece raised an exception."
+  DEFAULT_MESSAGE = "A potential enemy piece raised an rollback_exception."
 
 
 class InvalidSubjectException(SubjectException, InvalidAttackException):

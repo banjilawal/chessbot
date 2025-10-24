@@ -66,7 +66,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
         `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 
     # RAISES:
     `InvalidIdException`: Wraps any specification violations including:
@@ -285,7 +285,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
   @staticmethod
   def _run_scan(op_result_id :int, directive: ScanDirective) -> TransactionResult:
     """
-    Creates team new `Checker` object for directive.actor_candidate which is blocked from moving to
+    Creates team new `Checker` object for directive.actor_candidate which is blocking from moving to
     `blocked_square` by `directive.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
     `Traveltransaction.execute` is the single entry point to `_run_scan`. Validations, error chains
     confirmed parameters ar are correct. No additional sanity checks are needed.

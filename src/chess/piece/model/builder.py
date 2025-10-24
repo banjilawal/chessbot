@@ -35,7 +35,7 @@ This module requires components from various sub-systems:
 * `chess.square`: Location data structure (`Square`)
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.piece`: Piece subtypes (`KingPiece`, `CombatantPiece`, etc.)
-* `chess.team`: Roster management, exception handling
+* `chess.team`: Roster management, rollback_exception handling
 * `chess.notification`: Base notification and roster types
 
 CONTAINS:

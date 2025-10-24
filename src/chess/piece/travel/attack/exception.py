@@ -1,7 +1,7 @@
-# src/chess/piece/travel/attack/travel/exception.py
+# src/chess/piece/travel/attack/travel/rollback_exception.py
 
 """
-Module: chess.piece.travel.attack.travel.exception
+Module: chess.piece.travel.attack.travel.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-18
 version: 1.0.0
@@ -29,7 +29,7 @@ class AttackEventException(ChessException):
   all piece exceptions
   """
   ERROR_CODE = "ATTACK_ERROR"
-  DEFAULT_MESSAGE = "An attack raised an exception."
+  DEFAULT_MESSAGE = "An attack raised an rollback_exception."
 
 
 #======================# ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
@@ -141,7 +141,7 @@ class CaptureRollbackException(CapturePieceException, RollbackException):
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
   ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Capture raised an exception. Transaction rolled back."
+  DEFAULT_MESSAGE = "Capture raised an rollback_exception. Transaction rolled back."
 
 
 class CaptureFriendRolledBackExceptionCapture(CaptureRollbackException):

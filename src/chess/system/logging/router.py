@@ -59,7 +59,7 @@ class LoggingLevelRouter:
     Arguments:
       * `context`:
       * `notification`: Anything `context` is returning on success.
-      * `exception`:
+      * `rollback_exception`:
       * `exception_factory`:
     Returns:
       `void`
@@ -69,7 +69,7 @@ class LoggingLevelRouter:
 
     if exception is not None:
       ex = exception
-    elif result is not None and hasattr(result, 'exception'):
+    elif result is not None and hasattr(result, 'rollback_exception'):
       ex = result.exception
     elif exception_factory is not None:
       ex = exception_factory()

@@ -139,7 +139,8 @@ from its use or inability to use it.
 <a name="purpose-of-chessbot"></a>
 ### Purpose of ChessBot
 ChessBot A High Performance In-Memory Chess Engine Intelligent Agent with Transactional Move Orchestration
-, Centralize Validation and Reactive Notifications
+, Centralize Validation and Reactive Notifications. a state management engine that can be deployed anywhere. The
+transactional patterns you're establishing will make network distribution, persistence, and scaling much easier later.
 
 ChesBot's teaching engine helps a novice who might feel intimidated by chess into a a 
 confident, experienced player willing to take on everyone. ChessBot speeds up the learning curve
@@ -648,7 +649,7 @@ class RollbackFailedException(ChessException):
   ERROR_CODE = "ROLLBACK_FAILED_ERROR"
   DEFAULT_MESSAGE = "Rollback failed."
 
-# Using the custom exception
+# Using the custom rollback_exception
 def handle_fault(rolled_back_data, original_data):
   if not rolled_back_data == original_data:
     raise RollbackFailedException(RollbackFailedException.DEFAULT_MESSAGE)

@@ -53,7 +53,7 @@ class PieceValidator(Validator[Piece]):
             
             # This is really minimal checking. `Piece` object names have format:
             # [color_letter][rank_symbol]-[value_in_quota]
-            # Next step is use regexp to ensure the name fits the pattern and create a new exception for that.
+            # Next step is use regexp to ensure the name fits the pattern and create a new rollback_exception for that.
             name_validation = NameValidator.validate(piece.name)
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
@@ -84,7 +84,7 @@ class PieceValidator(Validator[Piece]):
             # its team's roster and put on its enemy's hostage list.
             # team = piece.team
             # if piece not in team.roster:
-            #   return ValidationResult(exception=UnregisteredTeamMemberException(
+            #   return ValidationResult(rollback_exception=UnregisteredTeamMemberException(
             #     f"{method}: {UnregisteredTeamMemberException.DEFAULT_MESSAGE}"
             #   ))
             

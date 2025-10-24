@@ -18,10 +18,10 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `PromotionTransaction`: Runs the promotion lifecycle.
   - `PromotionEventBuilder: Safely creates the `PromotionEvent`
   - `PromotionEventValidator`
-  - All exceptions from `exception` package.
+  - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for travel operations.
+  - `.rollback_exception`: Defines all custom exceptions for travel operations.
   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 # HOW TO IMPORT

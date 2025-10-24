@@ -35,7 +35,7 @@ This module requires components from various sub-systems:
 * `chess.square`: Location data structure (`Square`)
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.validationResult`: ValidationResult subtypes (`KingValidationResult`, `CombatantValidationResult`, etc.)
-* `chess.team`: Roster management, exception handling
+* `chess.team`: Roster management, rollback_exception handling
 * `chess.notification`: Base notification and roster types
 
 CONTAINS:
@@ -86,14 +86,14 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
     try:
       if payload is None and exception is None:
         return BuildResult(exception=ValidationResultBuildFailedException(
-          f"{method}: ValidationResultBuildFailed The payload and exception of a validation "
+          f"{method}: ValidationResultBuildFailed The payload and rollback_exception of a validation "
           f"result cannot both be null."
           )
         )
 
       if payload is not None and exception is not None:
         return BuildResult(exception=ValidationResultBuildFailedException(
-          f"{method}: ValidationResultBuildFailed. Either payload or exception can be null. Not both."
+          f"{method}: ValidationResultBuildFailed. Either payload or rollback_exception can be null. Not both."
           )
         )
 

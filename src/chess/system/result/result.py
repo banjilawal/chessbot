@@ -30,8 +30,8 @@ The major theme influencing the modules design are
 
 
 # 6 Feature Delivery Mechanism:
-  1. A data structure accessors and data generators can use to send either a data or an exception to the caller.
-      this prevents the application crashing when an error occurs but preservers the exception for safe handling.
+  1. A data structure accessors and data generators can use to send either a data or an rollback_exception to the caller.
+      this prevents the application crashing when an error occurs but preservers the rollback_exception for safe handling.
 
 # SECTION 7 - Dependencies:
 

@@ -81,7 +81,7 @@ class TeamSchemaValidator(Validator[TeamSchema]):
     RETURNS:
     `ValidationResult[TeamSchema]`: A `ValidationResult` containing either:
         `'payload'` - A `TeamSchema` instance that satisfies the specification.
-        `exception` - Details about which specification violation occurred.
+        `rollback_exception` - Details about which specification violation occurred.
 
     RAISES:
     `InvalidTeamSchemaException`: Wraps any specification violations including:

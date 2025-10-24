@@ -30,12 +30,12 @@ class BindingValidator(ABC, Generic[T, X]):
         # # 1. Validate environment
         # env_result = self._environment_validator.validate(environment)
         # if env_result.is_failure():
-        #     return ValidationResult(exception=env_result.exception)
+        #     return ValidationResult(rollback_exception=env_result.rollback_exception)
         #
         # # 2. Validate element
         # element_result = self._element_validator.validate(element)
         # if element_result.is_failure():
-        #     return ValidationResult(exception=element_result.exception)
+        #     return ValidationResult(rollback_exception=element_result.rollback_exception)
         #
         # # 3. Validate consistency (implemented by subclasses)
         # return self.validate_consistency(element_result.payload, env_result.payload)

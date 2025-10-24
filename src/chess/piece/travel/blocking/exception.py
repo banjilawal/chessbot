@@ -1,7 +1,7 @@
-# src/chess/piece/travel/blocked/exception.py
+# src/chess/piece/travel/blocking/rollback_exception.py
 
 """
-Module: `chess.piece.travel.blocked.exception`
+Module: `chess.piece.travel.blocking.rollback_exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 from chess.piece import TravelEventException
 
 """
-Module: chess.system.travel.exception
+Module: chess.system.travel.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -23,7 +23,7 @@ This module provides:
 The module's only covers exceptions raised by `IdValidator`;
 
 # SECTION 3: Limitations
-  1. Does not provide logic for fixing the errors or causing the exception being raised.
+  1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
        `IdValidator` is responsible for the logic which raises these exceptions.
 
 # SECTION 4 - Design Considerations and Themes:
@@ -65,13 +65,13 @@ __all__ = [
 class BlockingEventException(TravelEventException):
   """"""
   ERROR_CODE = "BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent raised an exception."
+  DEFAULT_MESSAGE = "BlockingEvent raised an rollback_exception."
 
 #======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
 class InvalidBlockingEventException(TravelEventException, ValidationException):
   """"""
   ERROR_CODE = "BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent raised an exception."
+  DEFAULT_MESSAGE = "BlockingEvent raised an rollback_exception."
   
 class NullBlockingEventException(BlockingEventException, NullException):
   """"""
@@ -123,17 +123,17 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   DEFAULT_MESSAGE = "BlockingEventException build failed."
 #
 #
-# # src/chess.coord.exception.py
+# # src/chess.coord.rollback_exception.py
 #
 # """
-# Module: chess.coord.exception
+# Module: chess.coord.rollback_exception
 # Author: Banji Lawal
 # Created: 2025-10-04
 # version: 1.0.0
 #
 # SCOPE:
 # -----
-# This module is exclusively for defining all custom **exception classes** that are specific to the
+# This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 # creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 # limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 # falls to the `CoordValidator` and `CoordBuilder`processes.
@@ -154,7 +154,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # DEPENDENCIES:
 # ------------
-# Requires base exception classes and constants from the core system:
+# Requires base rollback_exception classes and constants from the core system:
 # From `chess.system`:
 #   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
 #   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
@@ -193,7 +193,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # class TravelActorException(TravelEventException):
 #   ERROR_CODE = "TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate actor_candidate raised an exception."
+#   DEFAULT_MESSAGE = "TravelEvent actor_candidate actor_candidate raised an rollback_exception."
 #
 #
 # # ====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#

@@ -1,14 +1,14 @@
-# src/chess.coord.exception.py
+# src/chess.coord.rollback_exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.coord.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
@@ -29,7 +29,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
@@ -58,13 +58,13 @@ __all__ = [
 class ResultException(ChessException):
   """Base class for all Result exceptions"""
   ERROR_CODE = "RESULT_ERROR"
-  DEFAULT_MESSAGE = "Result raised an exception."
+  DEFAULT_MESSAGE = "Result raised an rollback_exception."
 
 
 class ResultConstructorException(ResultException):
   """Base class for all Result exceptions"""
   ERROR_CODE = "RESULT_CONSTRUCTOR_ERROR"
-  DEFAULT_MESSAGE = "Invalid constructor params raised an exception."
+  DEFAULT_MESSAGE = "Invalid constructor params raised an rollback_exception."
 
 
 class EmptyResultConstructorException(ResultConstructorException):

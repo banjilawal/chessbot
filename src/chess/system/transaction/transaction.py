@@ -38,7 +38,7 @@ Major themes influencing the design include:
 2. Direct support for reliability, verification, and integrity.
 
 # SECTION G - Feature Delivery Mechanism:
-1. An exception for each requirement providing granular, accurate and precise error reporting.
+1. An rollback_exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
 3. `IdValidator` can be used as component in more complex verifications.
 
@@ -94,7 +94,7 @@ class Transaction(ABC):
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
         `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `exception` (`Exception`) - An exception detailing which naming rule was broken.
+        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
 
     # RAISES:
     `InvalidIdException`: Wraps any specification violations including:

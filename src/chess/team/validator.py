@@ -79,7 +79,7 @@ class TeamValidator(Validator[Team]):
     RETURNS:
     `ValidationResult[Team]`: A `ValidationResult` containing either:
         `'payload'` - A `Team` instance that satisfies the specification.
-        `exception` - Details about which specification violation occurred.
+        `rollback_exception` - Details about which specification violation occurred.
 
     RAISES:
     `InvalidTeamException`: Wraps any specification violations including:

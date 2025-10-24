@@ -1,7 +1,7 @@
-# src/chess/system/notification/exception.py
+# src/chess/system/notification/rollback_exception.py
 
 """
-Module: chess.system.notification.exception
+Module: chess.system.notification.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -45,17 +45,17 @@ See the list of exceptions in the `__all__` list following (e.g., `ResultExcepti
 
 
 
-# src/chess.coord.exception.py
+# src/chess.coord.rollback_exception.py
 
 """
-Module: chess.coord.exception
+Module: chess.coord.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
 SCOPE:
 -----
-This module is exclusively for defining all custom **exception classes** that are specific to the
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
@@ -76,7 +76,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 
 DEPENDENCIES:
 ------------
-Requires base exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
   * Exceptions: `ChessException`, `ValidationException`, `NullException`,
@@ -106,7 +106,7 @@ class BuilderException(ChessException):
   exceptions.
   """
   ERROR_CODE = "BUILDER_ERROR"
-  DEFAULT_MESSAGE = "Builder raised an exception."
+  DEFAULT_MESSAGE = "Builder raised an rollback_exception."
 
 class NullBuilderException(BuilderException, NullException):
   """Raised if an entity, method, or operation requires team Engine but gets null instead."""

@@ -35,7 +35,7 @@ This module requires components from various sub-systems:
 * `chess.square`: Location data structure (`Square`)
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.searchResult`: SearchResult subtypes (`KingSearchResult`, `CombatantSearchResult`, etc.)
-* `chess.team`: Roster management, exception handling
+* `chess.team`: Roster management, rollback_exception handling
 * `chess.notification`: Base notification and roster types
 
 CONTAINS:
@@ -87,7 +87,7 @@ class SearchResultBuilder(Builder[SearchResult[Generic[T]]]):
 
       if payload is not None and exception is not None:
         return BuildResult(exception=SearchResultBuildFailedException(
-          f"{method}: SearchResultBuildFailed. Either payload or exception can be null. Not both."
+          f"{method}: SearchResultBuildFailed. Either payload or rollback_exception can be null. Not both."
           )
         )
 

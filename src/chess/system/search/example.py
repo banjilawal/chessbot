@@ -1,7 +1,7 @@
-# src/chess/system/old_search/exception.py
+# src/chess/system/old_search/rollback_exception.py
 
 """
-Module: chess.system.old_search.exception
+Module: chess.system.old_search.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

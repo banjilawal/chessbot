@@ -89,7 +89,7 @@ class BoardSquareSearch(Search[Board, Square]):
 
         # board_validation = BoardValidator.validate(board_validator)
         # if not board_validation.is_success():
-        #     return SearchResult(exception=board_validation.exception)
+        #     return SearchResult(rollback_exception=board_validation.rollback_exception)
 
         search_context_validation = BoardSearchContextValidator.validate(search_context)
         if not search_context_validation.is_success():

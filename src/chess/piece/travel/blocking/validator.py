@@ -1,7 +1,7 @@
-# src/chess/piece/travel/blocked/validator.py
+# src/chess/piece/travel/blocking/validator.py
 
 """
-Module: `chess.piece.travel.blocked.validator`
+Module: `chess.piece.travel.blocking.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

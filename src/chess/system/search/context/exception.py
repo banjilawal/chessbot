@@ -1,7 +1,7 @@
-# src/chess/system/old_search/context/exception.py
+# src/chess/system/old_search/context/rollback_exception.py
 
 """
-Module: chess.system.old_search.context.exception
+Module: chess.system.old_search.context.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -74,7 +74,7 @@ class SearchContextException(ContextException):
   USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "SearchContext raised an exception"
+  DEFAULT_MESSAGE = "SearchContext raised an rollback_exception"
 
 #======================# SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullSearchContextException(SearchContextException, NullException):
@@ -127,7 +127,7 @@ class FilterContextException(SearchContextException):
   USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "FILTER_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "FilterContext raised an exception"
+  DEFAULT_MESSAGE = "FilterContext raised an rollback_exception"
 
 #======================# FILTER_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullFilterContextException(FilterContextException, NullException):

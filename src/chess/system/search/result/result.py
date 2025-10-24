@@ -29,9 +29,9 @@ The major theme influencing the modules design are
   2. Performance does not degrade under high old_search loads.
 
 # 6 Feature Delivery Mechanism:
-  1. The module implements logic for carrying either an exception or notification of a successful old_search. in the same
+  1. The module implements logic for carrying either an rollback_exception or notification of a successful old_search. in the same
       container. This improves square.
-  2. Delivering an exception in the return instead of raising gives application higher reliability, uptimes and
+  2. Delivering an rollback_exception in the return instead of raising gives application higher reliability, uptimes and
       survivability.
 
 # SECTION 7 - Dependencies:
@@ -58,13 +58,13 @@ class SearchResult(Result[Generic[T]]):
 
   # RESPONSIBILITIES:
   1. Carry results to the query requestor.
-  2. Indicate an empty old_search notification with an object that has neither a payload nor an exception.
+  2. Indicate an empty old_search notification with an object that has neither a payload nor an rollback_exception.
 
   # PROVIDES:
   Answer from the `Search` service provider containing either:
     1. Matches to the client's query.
-    2. An exception raised during the old_search process or query submission.
-    3. A notification containing neither an exception nor a payload indicating no matches were found.
+    2. An rollback_exception raised during the old_search process or query submission.
+    3. A notification containing neither an rollback_exception nor a payload indicating no matches were found.
 
   # ATTRIBUTES:
     * See `Result` superclass for attributes.

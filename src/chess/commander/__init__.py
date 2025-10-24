@@ -19,10 +19,10 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `CommanderBuilder`: Builds new instances of `Commander`.
   - `CommanderValidator`: Performs validation and sanity checks on existing
       `Commander` instances. before they are used.
-  - All exceptions from `exception` package.
+  - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.exception`: Defines all custom exceptions for travel operations.
+  - `.rollback_exception`: Defines all custom exceptions for travel operations.
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
