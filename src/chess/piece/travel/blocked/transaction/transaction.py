@@ -8,7 +8,7 @@ from typing import cast
 
 from chess.piece import (
     BlockingEventValidator, Discovery, DiscoveryBuilder, BlockingEvent, DiscoverySearch,
-    DiscoverySearchContext, DiscoverySearchContextBuilder
+    DiscoverySearchContext, DiscoverySearchContextBuilder, TravelTransaction
 )
 from chess.system import ExecutionContext, TransactionResult
 from chess.piece.discover.exception import AddingValidDiscoveryFailedException
@@ -19,7 +19,7 @@ from chess.event import (
 from chess.team import PieceSearchContextBuilder
 
 
-class FriendBlockingTransaction(OccupationTransaction[BlockingEvent]):
+class FriendBlockingTransaction(TravelTransaction[BlockingEvent]):
     
     @staticmethod
     def execute(event: BlockingEvent) -> TransactionResult:
@@ -50,17 +50,9 @@ class FriendBlockingTransaction(OccupationTransaction[BlockingEvent]):
             if event_validation.is_failure():
                 return TransactionResult.failed(event_validation.exception)
             
-
-            
-            search_context = cast(DiscoverySearchContext, build_result.payload)
-            discovery_search = DiscoverySearch.search(data_owner=event.actor, search_context=search_context)
-            
-
-            
-
-            
             event.actor.discoveries.append(Discovery(event.friend))
             
+            context_build_result =
             search_result = DiscoverySearch.search(data_owner=event.actor, search_context=search_context)
             if search_result.is_failure():
                 return TransactionResult.failed(search_result.exception)

@@ -1,13 +1,13 @@
-# src/chess/system/travel/exception.py
+# src/chess/piece/travel/blocked/transaction/exception.py
 
 """
-Module: chess.system.travel.exception
+Module: chess.piece.travel.blocking.transaction.exception
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-10-21
 version: 1.0.0
 """
 
-from chess.system import TransactionException
+from chess.piece import TravelTransactionException
 
 """
 =============================================================================================================#
@@ -20,7 +20,7 @@ __all__ = [
   'FailedEncounterAdditionRolledBackException',
 ]
 
-class LogEncounterTransactionException(TransactionException):
+class LogEncounterTransactionException(TravelTransactionException):
   """"""
   ERROR_CODE = "LOG_ENCOUNTER_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = (
@@ -67,13 +67,6 @@ class EncounterEventEventBuilderException(EncounterEventEventException, BuilderE
   """Raised when team EncounterEventBuilder fails to build team BlockingEvent."""
   ERROR_CODE = "ENCOUNTER_EVENT_EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "EncounterEventBuilder failed to create team BlockingEvent"
-
-class EncounterEventSubjectException(EncounterEventEventException):
-  """
-  Raised if an BlockingEvent target is not team friendly or enemy king.
-  """
-  ERROR_CODE = "ENCOUNTER_EVENT_SUBJECT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent enemy must be team friendly or enemy king"
 
 
 

@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-
+from chess.piece import TravelEventException
 
 """
 Module: chess.system.travel.exception
@@ -55,37 +55,52 @@ __all__ = [
 
 # ======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
   'NullBlockingEventException',
-  'ActorBlockingItsOwnSquareException',
-  'ActorSameAsBlockingFriendException',
-  'OccupationBlockerIsEnemyException'
+  'ActorBlockingOwnSquareException',
+  'ActorSameAsBlockerException',
+  'EnemyCannotBeBlockerException',
+  'DiscoveryAlreadyExistsException'
 ]
 
 
-class BlockingEventException(ChessException):
+class BlockingEventException(TravelEventException):
   """"""
   ERROR_CODE = "BLOCKING_EVENT_ERROR"
   DEFAULT_MESSAGE = "BlockingEvent raised an exception."
 
 #======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
+class InvalidBlockingEventException(TravelEventException, ValidationException):
+  """"""
+  ERROR_CODE = "BLOCKING_EVENT_ERROR"
+  DEFAULT_MESSAGE = "BlockingEvent raised an exception."
+  
 class NullBlockingEventException(BlockingEventException, NullException):
   """"""
   ERROR_CODE = "NULL_BLOCKING_EVENT_ERROR"
   DEFAULT_MESSAGE = "BlockingEvent cannot be null"
 
-class ActorBlockingItsOwnSquareException(BlockingEventException):
+class ActorBlockingOwnSquareException(BlockingEventException):
   """"""
   ERROR_CODE = "ACTOR_BLOCKING_OWN_SQUARE_ERROR"
   DEFAULT_MESSAGE = "Actor cannot block itself from its own square"
 
-class ActorSameAsBlockingFriendException(BlockingEventException):
+class ActorSameAsBlockerException(BlockingEventException):
   """"""
   ERROR_CODE = "ACTOR_SAME_AS_BLOCKING_FRIEND_ERROR"
   DEFAULT_MESSAGE = "Actor and their blocking friend cannot be the same."
 
-class OccupationBlockerIsEnemyException(BlockingEventException):
+class EnemyCannotBeBlockerException(BlockingEventException):
   """"""
-  ERROR_CODE = "OCCUPATION_BLOCKER_IS_ENEMY_ERROR"
-  DEFAULT_MESSAGE = "Blocker cannot be an enemy of the traveler."
+  ERROR_CODE = "BLOCKER_IS_ENEMY_ERROR"
+  DEFAULT_MESSAGE = ("Blocker cannot be an enemy. An enemy at the destination is attacked or checked."
+     " Only friends can block the agent."
+  )
+
+
+class DiscoveryAlreadyExistsException(BlockingEventException):
+  """"""
+  ERROR_CODE = "DISCOVERY_ALREADY_EXISTS_ERROR"
+  DEFAULT_MESSAGE = "The Discovery already exists in the collection."
+
 #
 # class DoubleEncounterException(BlockingEventException):
 #   """"""
