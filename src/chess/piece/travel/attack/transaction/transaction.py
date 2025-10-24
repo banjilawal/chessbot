@@ -26,7 +26,7 @@ from chess.system import LoggingLevelRouter, TransactionResult, id_emitter
 from chess.team import RemoveTeamMemberRolledBackException
 
 
-class AttackTransaction(TravelTransaction):
+class AttackTransaction(TravelTransaction[AttackEvent]):
     
     def __init__(self, event: AttackEvent):
         super().__init__(event)

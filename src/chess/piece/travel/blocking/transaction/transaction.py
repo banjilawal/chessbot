@@ -13,7 +13,7 @@ from chess.piece import (
 )
 
 
-class BlockedPathTransaction(TravelTransaction):
+class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
     
     def __init__(self, event: BlockingEvent):
         super().__init__(event)

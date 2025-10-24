@@ -55,22 +55,25 @@ Major themes influencing the design include:
 
 
 from abc import ABC, abstractmethod
+from typing import TypeVar
 
-from chess.system import Event, LoggingLevelRouter, TransactionResult, TransactionState
+from chess.system import LoggingLevelRouter, TransactionResult, TransactionState
+
+T = TypeVar("T", bound='Event')
 
 
-class Transaction(ABC):
-  """Base class for notification execution handlers"""
-  _event: Event
+class Transaction(ABC, [T]):
+  """"""
+  _event: T
   _state: TransactionState
 
   @LoggingLevelRouter.monitor
-  def __init__(self, event: Event):
+  def __init__(self, event: T):
     self._event = event
     self._state = TransactionState.RUNNING
 
   @property
-  def event(self) -> Event:
+  def event(self) -> T:
     return self._event
 
 

@@ -1,9 +1,10 @@
-from typing import Generic, TypeVar, cast
+from logging import Logger
+from typing import Any, Generic, TypeVar, cast
 
 from chess.event import EventValidator
-from chess.piece import PieceValidator, InvalidAttackException
+from chess.piece import KingCheckEvent, PieceValidator, InvalidAttackException
 from chess.square import SquareValidator, InvalidSqaureException
-from chess.system import Result, IdValidator, InvalidIdException
+from chess.system import LoggingLevelRouter, Result, IdValidator, InvalidIdException, ValidationResult, Validator
 from chess.piece.event import (
   AttackEvent,
   NullAttackEventException,
@@ -13,10 +14,11 @@ from chess.piece.event import (
 
 T = TypeVar('T')
 
-class CheckEventValidator(EventValidator[A], Generic[T]):
+class KingCheckEventValidator(Validator[KingCheckEvent]):
 
   @staticmethod
-  def validate(t: AttackEvent, ) -> Result[AttackEvent]:
+  @LoggingLevelRouter.monitor
+  def validate(candidate: Any) -> ValidationResult:
     """
     Validates an KingCheckEvent meets specifications:
       - Not null

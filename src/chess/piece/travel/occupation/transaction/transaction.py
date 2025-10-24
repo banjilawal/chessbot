@@ -15,7 +15,7 @@ from chess.piece import (
 
 
 
-class OccupationTransaction(TravelTransaction):
+class OccupationTransaction(TravelTransaction[OccupationEvent]):
     """"""
     _event: OccupationEvent
     

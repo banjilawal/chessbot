@@ -14,8 +14,8 @@ Notes:
 """
 
 from chess.board import FailedRemovalFromBoardRolledBackException
-from chess.piece import OldTravelTransaction
-from chess.system import Transaction, TransactionResult, id_emitter
+from chess.piece import KingCheckEvent, OldTravelTransaction, TravelTransaction
+from chess.system import LoggingLevelRouter, Transaction, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
 from chess.piece.event.attack.event.exception import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
@@ -23,13 +23,16 @@ from chess.piece.event.occupation.transaction import OccupationTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 
-class CheckTransaction(Transaction[CheckEvent]):
+class CheckTransaction(TravelTransaction[KingCheckEvent]):
+  
+  def __init__(self, event: KingCheckEvent):
+    super().__init__(event)
 
-  @staticmethod
-  def execute(event: AttackEvent) -> TransactionResult:
+  @LoggingLevelRouter.monitor
+  def execute(self) -> TransactionResult:
     method = "AttackTransaction.execute"
 
-    validation = AttackEventValidator.validate(event)
+    validation = AttackEventValidator.validate(self.event)
     if not validation.is_success():
       return TransactionResult(event, validation.exception)
 
