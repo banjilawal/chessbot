@@ -19,6 +19,7 @@ from chess.piece import TravelTransactionException
 __all__ = [
   'BlockedPathTransactionException',
   'FailedDiscoveryAdditionRolledBackException',
+  'RolledBackBlockedPathTransactionException'
 ]
 
 class BlockedPathTransactionException(TravelTransactionException):
@@ -28,7 +29,15 @@ class BlockedPathTransactionException(TravelTransactionException):
     "BlockedPathTransaction failed. The transaction was rolled back before raising this rollback_exception."
   )
 
-class FailedDiscoveryAdditionRolledBackException(BlockedPathTransactionException, RollbackException):
+
+class RolledBackBlockedPathTransactionException(BlockedPathTransactionException, RollbackException):
+  """"""
+  ERROR_CODE = "BLOCKED_PATH_TRANSACTION_ERROR"
+  DEFAULT_MESSAGE = (
+    "BlockedPathTransaction failed. The transaction was rolled back before raising this rollback_exception."
+  )
+
+class FailedDiscoveryAdditionRolledBackException(RolledBackBlockedPathTransactionException):
   """"""
   ERROR_CODE = "FAILED_DISCOVERY_ADDITION_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (

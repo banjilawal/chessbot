@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/commander/commander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/commander.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/piece.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/attack/builder.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/attack/transaction/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/attack/transaction/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/attack/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/attack/transaction/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/attack/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/attack/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/base/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/base/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/blocking/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/blocking/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/blocking/transaction/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/blocking/transaction/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/blocking/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/blocking/transaction/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/check/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/check/transaction/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/transaction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
     </list>
@@ -629,7 +623,7 @@
       <workItem from="1761233224728" duration="4086000" />
       <workItem from="1761253936774" duration="616000" />
       <workItem from="1761265434191" duration="16665000" />
-      <workItem from="1761292693108" duration="8322000" />
+      <workItem from="1761292693108" duration="17418000" />
     </task>
     <servers />
   </component>
@@ -646,16 +640,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/chess/piece/travel/attack/builder.py</url>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_specification.coverage" NAME="coordinate_stack_specification Coverage Results" MODIFIED="1756175864375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />

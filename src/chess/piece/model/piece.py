@@ -73,7 +73,7 @@ class Piece(ABC):
     self._current_position = self._positions.current_coord
 
     if self not in team.roster:
-      team.add_to_roster(self)
+      team.roster.append(self)
 
   @property
   def id(self) -> int:

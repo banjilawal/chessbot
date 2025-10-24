@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import RollbackException
-from chess.piece import AttackEventException
+from chess.piece import TravelTransactionException
 
 __all__ = [
   'AttackTransactionException',
@@ -27,7 +27,7 @@ __all__ = [
 """
 
 # ======================# ROLLED BACK ATTACK TRANSACTION EXCEPTIONS #======================#
-class AttackTransactionException(AttackEventException, RollbackException):
+class AttackTransactionException(TravelTransactionException):
   """
   RollBackCapture exceptions should be raised in ACID transactions where team capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
@@ -35,7 +35,16 @@ class AttackTransactionException(AttackEventException, RollbackException):
   ERROR_CODE = "ATTACK_TRANSACTION_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "AttackTransaction raised an rollback_exception. Transaction rolled back."
 
-class FailedSettingActorAsEnemyCaptorRolledBackException(AttackTransactionException):
+
+class RolledBackAttackTransactionException(AttackTransactionException, RollbackException):
+  """
+  RollBackCapture exceptions should be raised in ACID transactions where team capture can
+  raise an err. Do not use directly. Subclasses give details useful for debugging.
+  """
+  ERROR_CODE = "ATTACK_TRANSACTION_ERROR_ROLLED_BACK"
+  DEFAULT_MESSAGE = "AttackTransaction raised an rollback_exception. Transaction rolled back."
+
+class FailedSettingActorAsEnemyCaptorRolledBackException(RolledBackAttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
@@ -43,7 +52,7 @@ class FailedSettingActorAsEnemyCaptorRolledBackException(AttackTransactionExcept
     "before raising this exception."
   )
 
-class FailedEnemyRemovalFromSquareRolledBackException(AttackTransactionException):
+class FailedEnemyRemovalFromSquareRolledBackException(RolledBackAttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_PRISONER_REMOVAL_FROM_SQUARE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
@@ -51,7 +60,7 @@ class FailedEnemyRemovalFromSquareRolledBackException(AttackTransactionException
     "rolled back before raising this exception."
   )
 
-class FailedHostageAdditionRolledBackException(AttackTransactionException):
+class FailedHostageAdditionRolledBackException(RolledBackAttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_HOSTAGE_ADDITION_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
@@ -59,7 +68,7 @@ class FailedHostageAdditionRolledBackException(AttackTransactionException):
     "exception."
   )
 
-class FailedRemovalFromRosterRolledBackException(AttackTransactionException):
+class FailedRemovalFromRosterRolledBackException(RolledBackAttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTIVE_REMOVAL_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
@@ -67,7 +76,7 @@ class FailedRemovalFromRosterRolledBackException(AttackTransactionException):
     "back before raising this exception."
   )
 
-class FailedCapturedPiecFromBoardRolledBackException(AttackTransactionException):
+class FailedCapturedPiecFromBoardRolledBackException(RolledBackAttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTURED_PIEC_FROM_BOARD_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
@@ -76,7 +85,7 @@ class FailedCapturedPiecFromBoardRolledBackException(AttackTransactionException)
   )
 
 
-class FailedRemovalFromBoardRolledBackException(AttackTransactionException):
+class FailedRemovalFromBoardRolledBackException(RolledBackAttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_PIECE_REMOVAL_FROM_BOARD_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (

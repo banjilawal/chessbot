@@ -84,7 +84,22 @@ class Commander(ABC):
       f"{total_games_str}"
       f"]"
     )
-
+  
+  # commander.order_move(
+  #   piece=TeamSearch.search(
+  #     data_owner=self._team,
+  #     search_category=SearchCategory.ROSTER,
+  #     search_context=TeamSearchContext(name="BN1")
+  #   ),
+  #   square_name="C8"
+  # )
+  #
+  # # Which internally uses your transactional system:
+  # # 1. Search returns Result[Piece]
+  # # 2. Validates inputs
+  # # 3. Creates MoveEvent
+  # # 4. Executes via TravelTransaction
+  # # 5. Returns TransactionResult with rollback safety
 
   def move_piece(self, piece_name:str, destination:Coord):
     method = "Commander.move_piece"

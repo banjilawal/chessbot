@@ -52,9 +52,9 @@ From `chess.piece`:
  * `Team`
 """
 
-from typing import List, Sequence, cast
+from typing import List, Optional, Sequence, cast
 
-from chess.piece import Piece
+from chess.piece import KingPiece, Piece
 from chess.system import AutoId
 from chess.commander import Commander
 from chess.team import Team, TeamSchema
@@ -80,6 +80,7 @@ class Team:
     _schema: TeamSchema
     _roster: list['Piece']
     _hostages: list['Piece']
+    _enemy_king: KingPiece
     
     def __init__(self, id: int, commander: Commander, schema: TeamSchema):
         """"""
@@ -89,6 +90,7 @@ class Team:
         self._schema = schema
         self._roster = []
         self._hostages = []
+        self._hostages = None
     
     @property
     def id(self) -> int:
@@ -109,6 +111,14 @@ class Team:
     @property
     def hostages(self) -> List[Piece]:
         return self._hostages
+    
+    @property
+    def enemy_king(self) -> Optional[KingPiece]:
+        return self._enemy_king
+    
+    @enemy_king.setter
+    def enemy_king(self, enemy_king: KingPiece):
+        self._enemy_king = enemy_king
     
     def __eq__(self, other):
         if other is self:
