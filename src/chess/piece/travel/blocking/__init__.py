@@ -9,6 +9,6 @@ version: 1.0.0
 
 from .example import *
 from .exception import *
-
+from .transaction import *
 from .event import BlockingEvent
 from .validator import BlockingEventValidator

@@ -13,7 +13,7 @@ Contents:
 Notes:
 """
 
-from chess.board import FailedPieceRemovalRolledBackException
+from chess.board import FailedRemovalFromBoardRolledBackException
 from chess.piece import OldTravelTransaction
 from chess.system import Transaction, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
@@ -87,8 +87,8 @@ class CheckTransaction(Transaction[CheckEvent]):
       return TransactionResult(
         event=event,
         was_rolled_back=True,
-        exception=FailedPieceRemovalRolledBackException(
-          f"{method}: {FailedPieceRemovalRolledBackException.DEFAULT_MESSAGE}"
+        exception=FailedRemovalFromBoardRolledBackException(
+          f"{method}: {FailedRemovalFromBoardRolledBackException.DEFAULT_MESSAGE}"
         )
       )
 

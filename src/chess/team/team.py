@@ -52,7 +52,7 @@ From `chess.piece`:
  * `Team`
 """
 
-from typing import Sequence, cast
+from typing import List, Sequence, cast
 
 from chess.piece import Piece
 from chess.system import AutoId
@@ -60,115 +60,69 @@ from chess.commander import Commander
 from chess.team import Team, TeamSchema
 
 
-
-@AutoId
 class Team:
-  """
-  # ROLE: Service, Coordination
-
-  # RESPONSIBILITIES:
-  # PROVIDES:
-
-  ATTRIBUTES:
-    * `_commander` (`Commander`): Player who controls `Team`
-    * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, name.
-    * `_roster` (`List[Piece]`): List of chess pieces on the team.
-    * `_hostages` (`List[Piece]`): List of captured enemy pieces.
-  """
-  MAX_ROSTER_SIZE = 16
-
-  _id: int
-  _commander: Commander
-  _schema: TeamSchema
-  _roster: list['Piece']
-  _hostages: list['Piece']
-
-  def __init__(self, id: int, commander: Commander, schema: TeamSchema):
-    method = "Team.__init__"
-    self._id = id
-    self._commander = commander
-    self._schema = schema
-    self._roster = []
-
-
-  @property
-  def id(self) -> int:
-    return self._id
-
-
-  @property
-  def commander(self) -> 'Commander':
-    return self._commander
-
-
-  @property
-  def schema(self) -> TeamSchema:
-    return self._schema
-
-
-  @property
-  def roster(self) -> Sequence[Piece]:
     """
-    Returns team read-only view of the team's roster. The returned sequence is safe to
-    iterate and index, but mutating it will not affect the original roster.
+    # ROLE: Service, Coordination
+  
+    # RESPONSIBILITIES:
+    # PROVIDES:
+  
+    ATTRIBUTES:
+      * `_commander` (`Commander`): Player who controls `Team`
+      * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, name.
+      * `_roster` (`List[Piece]`): List of chess pieces on the team.
+      * `_hostages` (`List[Piece]`): List of captured enemy pieces.
     """
-    return self._roster.copy()
-
-
-  @property
-  def hostages(self) -> Sequence[Piece]:
-    """
-    Returns team read-only view of the team's rostages. The returned sequence is safe to
-    iterate and index, but mutating it will not affect the original hostage list.
-    """
-    return self._hostages.copy()
-
-
-  def add_to_roster(self, piece: Piece):
-    """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    method = "Team.add_to_roster"
-    self._roster.append(piece)
-
-
-  def remove_from_roster(self, piece):
-    if piece in self._roster:
-      self._roster.remove(piece)
-
-
-  def add_hostage(self, enemy: Piece):
-    if enemy not in self._hostages:
-      self._hostages.append(enemy)
-
-
-  def remove_hostage(self, enemy: Piece):
-    if enemy in self._hostages:
-      self._hostages.remove(enemy)
-
-
-  def __eq__(self, other):
-    if other is self:
-      return True
-    if other is None:
-      return False
-    if isinstance(other, Team):
-      team = cast(Team, other)
-      return self._id == team._id
-
-    return False
-
-
-  def __hash__(self):
-    return hash(self._id)
-
-
-  def __str__(self):
-    return f"Team[id:{self._id} commander:{self._commander.name} {self._schema}"
+    MAX_ROSTER_SIZE = 16
+    
+    _id: int
+    _commander: Commander
+    _schema: TeamSchema
+    _roster: list['Piece']
+    _hostages: list['Piece']
+    
+    def __init__(self, id: int, commander: Commander, schema: TeamSchema):
+        """"""
+        method = "Team.__init__"
+        self._id = id
+        self._commander = commander
+        self._schema = schema
+        self._roster = []
+        self._hostages = []
+    
+    @property
+    def id(self) -> int:
+        return self._id
+    
+    @property
+    def commander(self) -> 'Commander':
+        return self._commander
+    
+    @property
+    def schema(self) -> TeamSchema:
+        return self._schema
+    
+    @property
+    def roster(self) -> List[Piece]:
+        return self._roster
+    
+    @property
+    def hostages(self) -> List[Piece]:
+        return self._hostages
+    
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if isinstance(other, Team):
+            team = cast(Team, other)
+            return self._id == team._id
+        
+        return False
+    
+    def __hash__(self):
+        return hash(self._id)
+    
+    def __str__(self):
+        return f"Team{id:{self._id} commander:{self._commander.name} {self._schema}}"

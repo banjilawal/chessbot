@@ -12,11 +12,12 @@ from chess.piece import AttackEventException
 
 __all__ = [
   'AttackTransactionException',
-  'FailedCaptorPropertyUpdateRolledBackException',
-  'FailedPrisonerRemovalFromSquareRolledBackException',
+  'FailedSettingActorAsEnemyCaptorRolledBackException',
+  'FailedEnemyRemovalFromSquareRolledBackException',
   'FailedHostageAdditionRolledBackException',
   'FailedRemovalFromRosterRolledBackException',
   'FailedCapturedPiecFromBoardRolledBackException',
+  'FailedRemovalFromBoardRolledBackException'
 ]
 
 """
@@ -34,36 +35,36 @@ class AttackTransactionException(AttackEventException, RollbackException):
   ERROR_CODE = "ATTACK_TRANSACTION_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "AttackTransaction raised an rollback_exception. Transaction rolled back."
 
-class FailedCaptorPropertyUpdateRolledBackException(AttackTransactionException):
+class FailedSettingActorAsEnemyCaptorRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Updating a prisoner's captor field during an attack notification failed.  The notification was rolled back "
-    "before this rollback_exception was raised."
+    "Updating a prisoner's captor field during an attack transaction failed. The transaction was rolled back "
+    "before raising this exception."
   )
 
-class FailedPrisonerRemovalFromSquareRolledBackException(AttackTransactionException):
+class FailedEnemyRemovalFromSquareRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_PRISONER_REMOVAL_FROM_SQUARE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured piece from the square it was occupying failed during a notification. The notification "
-    "was rolled back before this rollback_exception was raised."
+    "Removing a captured enemy from its square failed during an attack transaction. The transaction was "
+    "rolled back before raising this exception."
   )
 
 class FailedHostageAdditionRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_HOSTAGE_ADDITION_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Adding a hostage failed during an attack notification. The notification was rolled back before this "
-    "rollback_exception was raised."
+    "Adding a hostage failed during an attack transaction. The transaction was rolled back before raising this "
+    "exception."
   )
 
 class FailedRemovalFromRosterRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTIVE_REMOVAL_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured team member failed during an attack notification. The notification was rolled back "
-    "before this rollback_exception was raised."
+    "Removing a captured piece from the team roster failed during an attack transaction. The transaction was rolled "
+    "back before raising this exception."
   )
 
 class FailedCapturedPiecFromBoardRolledBackException(AttackTransactionException):
@@ -72,4 +73,13 @@ class FailedCapturedPiecFromBoardRolledBackException(AttackTransactionException)
   DEFAULT_MESSAGE = (
     "Removing a captured piece from the board failed during an attack notification. The notification was rolled back "
     "before this rollback_exception was raised."
+  )
+
+
+class FailedRemovalFromBoardRolledBackException(AttackTransactionException):
+  """"""
+  ERROR_CODE = "FAILED_PIECE_REMOVAL_FROM_BOARD_ROLLED_BACK_ERROR"
+  DEFAULT_MESSAGE = (
+    "Removing a captured piece from the board failed during an attack transaction. The transaction was rolled "
+    "back before raising this exception."
   )

@@ -41,16 +41,17 @@ class AttackEventValidator(Validator[AttackEvent]):
                 return ValidationResult.failure(TypeError(f"Expected an AttackEvent, got {type(candidate).__name__}"))
     
             event = cast(AttackEvent, candidate)
-            actor_board_binding_validation = TravelActorValidator.validate(event.actor, event.execution_environment)
-            if actor_board_binding_validation.is_failure():
-                return ValidationResult.failure(actor_board_binding_validation.exception)
+            actor_binding_validation = TravelActorValidator.validate(event.actor, event.execution_environment)
+            
+            if actor_binding_validation.is_failure():
+                return ValidationResult.failure(actor_binding_validation.exception)
     
-            resource_board_binding_validation = TravelResourceValidator.validate(
+            resource_binding_validation = TravelResourceValidator.validate(
                 event.resource,
                 event.execution_environment
             )
-            if resource_board_binding_validation.is_failure():
-                return ValidationResult.failure(resource_board_binding_validation.exception)
+            if resource_binding_validation.is_failure():
+                return ValidationResult.failure(resource_binding_validation.exception)
             
             piece_validation = PieceValidator.validate(event.enemy_combatant)
             if piece_validation.is_failure():
@@ -80,7 +81,8 @@ class AttackEventValidator(Validator[AttackEvent]):
             if event.enemy_combatant not in enemy_team.roster:
                 return ValidationResult.failure(
                     UnregisteredTeamMemberException(
-                        f"{method}: Cannot attack enemy missing from team roster. There may be a data inconsistency."
+                        f"{method}: Cannot attack enemy missing from team roster. There may be a "
+                        f"data inconsistency."
                     )
                 )
             
@@ -92,10 +94,12 @@ class AttackEventValidator(Validator[AttackEvent]):
             
             enemy_combatant = cast(CombatantPiece, event.enemy_combatant)
             board = cast(Board, event.execution_environment)
+            
             piece_search = BoardPieceSearch.search(
                 board=board,
                 search_context=BoardSearchContext(id=enemy_combatant.id)
             )
+            
             if piece_search.is_empty():
                 return ValidationResult.failure(
                     AttackingPieceMissingFromBoardException(
@@ -112,7 +116,9 @@ class AttackEventValidator(Validator[AttackEvent]):
             
             if event.enemy_square.occupant != event.enemy_combatant:
                 return ValidationResult.failure(
-                    EnemyNotInExpectedSquareException(f"{method}: {EnemyNotInExpectedSquareException.DEFAULT_MESSAGE}")
+                    EnemyNotInExpectedSquareException(
+                        f"{method}: {EnemyNotInExpectedSquareException.DEFAULT_MESSAGE}"
+                    )
                 )
          
             return ValidationResult.success(event)

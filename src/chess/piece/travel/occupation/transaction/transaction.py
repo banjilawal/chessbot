@@ -7,12 +7,12 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from chess.system import LoggingLevelRouter, TransactionResult
 from chess.piece import (
-    OccupationEvent, OccupationEventValidator, FailedActorPositionUpdateRolledBackException,
+    TravelTransaction, OccupationEvent, OccupationEventValidator, FailedActorPositionUpdateRolledBackException,
     FailedActorSquareVacationRolledBackException, FailedDestinationSquareOccupationRolledBackException
 )
-from chess.piece.event.travel_transaction import TravelTransaction
-from chess.system import LoggingLevelRouter, TransactionResult
+
 
 
 class OccupationTransaction(TravelTransaction):
@@ -64,6 +64,7 @@ class OccupationTransaction(TravelTransaction):
             self._event.actor_square.occupant = self._event.actor
             self._event.destination_square.occupant = None
             
+            # Send the error and last checkpoint in the result
             return TransactionResult.rolled_back(
                 event_update=self._event,
                 rollback_exception=FailedActorSquareVacationRolledBackException(
@@ -80,6 +81,7 @@ class OccupationTransaction(TravelTransaction):
             self._event.actor_square.occupant = self._event.actor
             self._event.destination_square.occupant = None
             
+            # Send the error and last checkpoint in the result
             return TransactionResult.rolled_back(
                 event_update=self._event,
                 rollback_exception=FailedActorPositionUpdateRolledBackException(

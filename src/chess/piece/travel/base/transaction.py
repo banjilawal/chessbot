@@ -18,7 +18,7 @@ from chess.piece import TravelEvent
 from chess.system import LoggingLevelRouter, Transaction, TransactionResult
 
 
-class TravelTransaction(Transaction):
+class TravelTransaction(Transaction[TravelEvent]):
   _event = TravelEvent
 
   def __init__(self, event: TravelEvent):
@@ -26,7 +26,7 @@ class TravelTransaction(Transaction):
 
   @abstractmethod
   @LoggingLevelRouter.monitor
-  def execute(self) -> TransactionResult:
+  def execute(self, event: TravelEvent) -> TransactionResult:
     pass
   # """
   # Implements the `OccupationExecutor` class, which handles executing travel

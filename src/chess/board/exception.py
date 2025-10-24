@@ -70,7 +70,6 @@ __all__ = [
 
 #====================== PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#  
   'FailedPieceAdditionRolledBackException',
-  'FailedPieceRemovalRolledBackException',
 
 # ======================# BOARD CONSISTENCY EXCEPTION #======================#
   'InconsistentBoardException',
@@ -151,16 +150,6 @@ class FailedPieceAdditionRolledBackException(BoardRollBackException):
   """
   """Raised if the board_validator fails to remove team piece from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = (
-    "Could not remove team piece from the board_validator. Transaction rollback performed."
-  )
-
-class FailedPieceRemovalRolledBackException(BoardRollBackException):
-  """
-  Raised if team notification failed to remove team piece from the board_validator's list of pieces.
-  The notification was rolled back before raising this err.
-  """
-  ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
     "Could not remove team piece from the board_validator. Transaction rollback performed."
   )

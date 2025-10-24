@@ -9,7 +9,6 @@ version: 1.0.0
 
 from chess.system import RollbackException
 from chess.piece import TravelTransactionException
-from chess.system.err.exception import RollbackFailedException
 
 """
 =============================================================================================================#

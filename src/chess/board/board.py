@@ -40,7 +40,7 @@ class Board:
     _squares (List[List[Square]]): 8x8 array of Square objects representing the chess chessboard.
   """
   _id: int
-  _pieces: [Piece]
+  _pieces: List[Piece]
   _squares: List[List[Square]]
 
   def __init__(self, id: int, squares: List[List[Square]]):
@@ -60,7 +60,7 @@ class Board:
     self._pieces = []
 
 
-  @@property
+  @property
   def id(self) -> int:
     return self._id
 
@@ -72,7 +72,7 @@ class Board:
 
 
   @property
-  def pieces(self) -> [Piece]:
+  def pieces(self) -> List[Piece]:
     return self._pieces
 
 

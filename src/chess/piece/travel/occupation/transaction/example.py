@@ -230,8 +230,8 @@ Example:
 #     return TransactionResult(
 #       travel=travel,
 #       was_rolled_back=True,
-#       rollback_exception=FailedPieceRemovalRolledBackException(
-#         f"{method}: {FailedPieceRemovalRolledBackException.DEFAULT_MESSAGE}"
+#       rollback_exception=FailedRemovalFromBoardRolledBackException(
+#         f"{method}: {FailedRemovalFromBoardRolledBackException.DEFAULT_MESSAGE}"
 #       )
 #     )
 #
