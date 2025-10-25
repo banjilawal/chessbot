@@ -9,9 +9,12 @@ version: 1.0.0
 
 from typing import Any, cast
 
+from chess.board import BoardSearchContext, BoardSquareSearch
+from chess.board.search.context.builder import BoardSearchContextBuilder
 from chess.piece.travel.promotion.event import PromotionEvent
 from chess.piece.travel.promotion.exception import DoublePromotionException
 from chess.rank import Queen
+from chess.square import Square
 from chess.system import Validator, ValidationResult
 from chess.piece import (
     ActorAlreadyAtDestinationException, NullPromotionEventException, OccupationEvent,
@@ -49,6 +52,11 @@ class PromotionEventValidator(Validator[PromotionEvent]):
             if actor_validator.is_failure():
                 return ValidationResult.failure(actor_validator.exception)
             
+            if event.actor.current_position.row != event.actor.team.schema.enemy_schema.rank_row:
+                return ValidationResult.failure(
+                    ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.DEFAULT_MESSAGE}")
+                )
+            
             if not isinstance(event.actor, PromotablePiece):
                 return ValidationResult.failure(
                     TypeError(f"Expected an PromotablePiece, got {type(candidate).__name__}")
@@ -68,16 +76,20 @@ class PromotionEventValidator(Validator[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
                 )
             
+            context_build_result = BoardSearchContextBuilder.build(piece_id=event.actor.id)
+            if context_build_result.is_failure():
+                return ValidationResult.failure(context_build_result.exception)
+            context = cast(BoardSearchContext, context_build_result.payload)
+            
+            square_search_result = BoardSquareSearch.search(board=event.execution_environment, context=context)
+            if square_search_result.is_failure():
+                return ValidationResult.failure(square_search_result.exception)
+            square = cast(Square, square_search_result.payload)
+            
             resource_validation = TravelResourceValidator.validate(event.square, event.execution_environment)
             if resource_validation.is_failure():
                 return ValidationResult(exception=resource_validation.exception)
             
-            promotion_square_occupant = event.promotion_square.occupant
-            if promotion_square_occupant is not None and promotion_square_occupant != piece:
-                return ValidationResult(exception=OccupationDestinationNotEmptyException(
-                    f"{method}: {PromotionSquareNotEmptyException.DEFAULT_MESSAGE}"
-                    )
-                )
             
             return ValidationResult(payload=event)
         

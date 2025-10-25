@@ -6,6 +6,9 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
+from typing import cast
+
+from chess.piece.travel.promotion.builder import PromotionEventBuilder
 from chess.piece.travel.promotion.transaction import PromotionTransaction
 from chess.system import LoggingLevelRouter, TransactionResult, id_emitter
 from chess.piece import (
@@ -91,16 +94,14 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             
             self.event.actor.discoveries.clear()
             
-            promotion_validation = PromotionEventValidator.validate(self.event)
-            if promotion_validation.is_success():
-                promotion_event = PromotionEvent(
-                    parent=self.event,
-                    id=id_emitter.event_id,
-                    actor=self.event.actor,
-                    actor_square=self.event.actor_square,
-                    promotion_square=self.event.destination_square,
-                    execution_environment=self.event.execution_environment,
-                )
+            promotion_event_build = PromotionEventBuilder.build(
+                actor=self.event.actor,
+                parentpiece=self.event,
+                destination_square=self.event.destination_square,
+                execution_environment=self.event.execution_environment,
+            )
+            if promotion_event_build.is_success():
+                promotion_event = cast(PromotionEvent, promotion_event_build.payload)
                 return PromotionTransaction(promotion_event).execute()
             
             return TransactionResult.success(event_update=self.event)

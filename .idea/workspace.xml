@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/promotion/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/promotion/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +255,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece/model/promotable",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece/travel/promotion",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -278,9 +282,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece/travel/promotion" />
       <recent name="$PROJECT_DIR$/src/chess/piece/model/promotable" />
       <recent name="$PROJECT_DIR$/src/chess/piece/model" />
-      <recent name="$PROJECT_DIR$/src/chess/piece/travel/promotion" />
       <recent name="$PROJECT_DIR$/src/chess/board/search" />
       <recent name="$PROJECT_DIR$/src/chess/piece/validation" />
     </key>
@@ -618,7 +622,8 @@
       <workItem from="1761265434191" duration="16665000" />
       <workItem from="1761292693108" duration="17762000" />
       <workItem from="1761323347042" duration="3511000" />
-      <workItem from="1761338123078" duration="31097000" />
+      <workItem from="1761338123078" duration="35022000" />
+      <workItem from="1761408805374" duration="3565000" />
     </task>
     <servers />
   </component>
