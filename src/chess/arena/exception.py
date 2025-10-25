@@ -9,7 +9,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `Vector` objects.
+creation, validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -84,7 +84,7 @@ class InvalidArenaException(ArenaException, ValidationException):
   catch all exceptions raised validating an existing arena
   """
   ERROR_CODE = "ARENA_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Arena validation failed"
+  DEFAULT_MESSAGE = "Arena validator failed"
 
 
 #======================# ARENA BUILD EXCEPTIONS #======================#  

@@ -7,7 +7,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validation, error checking is performed in `Team` class. Using the class directly instead of
+***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client

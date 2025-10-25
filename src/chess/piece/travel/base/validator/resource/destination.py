@@ -1,10 +1,10 @@
-# src/chess/square/travel/validation/resource_candidate.py
+# chess/piece/travel/base/validator/resource/destination.py
 
 """
-Module: chess.square.travel.validation.resource_candidate
+Module: `chess.piece.travel.base.validator.resource.destination`
 Author: Banji Lawal
 Created: 2025-10-18
-Version: 1.0.0
+Version: 1.0.1
 """
 
 from typing import cast, Tuple

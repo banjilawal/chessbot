@@ -9,7 +9,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `Vector` objects.
+creation, validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -117,7 +117,7 @@ class InvalidBoardException(BoardException, ValidationException):
   validating an existing board_validator
   """
   ERROR_CODE = "BOARD_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Board validation failed"
+  DEFAULT_MESSAGE = f"Board validator failed"
 
 #======================# BOARD BUILD EXCEPTIONS #======================#  
 class BoardBuildFailedException(BoardException, BuilderException):

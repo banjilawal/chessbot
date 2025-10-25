@@ -1,7 +1,7 @@
 # chess/arena/old_occupation_validator.py
 
 """
-Module: `chess.arena.validation`
+Module: `chess.arena.validator`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -67,8 +67,8 @@ class ArenaBuilder(Builder[Arena]):
 
     Raises:
     `ArenaBuildFailedException` wraps any exceptions raised build. These are:
-      * `InvalidCommanderException`: If team `white_commander` or `black_commander` fails validation.
-      * `InvalidBoardException`: If team `board_validator` fails validation.
+      * `InvalidCommanderException`: If team `white_commander` or `black_commander` fails validator.
+      * `InvalidBoardException`: If team `board_validator` fails validator.
 
     """
     method = "ArenaBuilder.build"

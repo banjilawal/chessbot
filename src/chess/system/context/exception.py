@@ -27,13 +27,13 @@ The major theme influencing the modules design are
 
 # SECTION 5- Features Supporting Requirements:
   1. The ability to handle errors without crashing the application is a reliability feature.
-  2. Ensuring validation results are communicated are sent to clients is an integrity feature.
+  2. Ensuring validator results are communicated are sent to clients is an integrity feature.
 
 # SECTION 6 - Feature Delivery Mechanism:
   1. Verify existing entities meet minimum requirements for use in the system.
   2. A description of an error condition, boundary violation, experienced or caused by an entity in
-      the validation domain.
-  3. The root of a scalable, modular hierarchy for validation related exceptions.
+      the validator domain.
+  3. The root of a scalable, modular hierarchy for validator related exceptions.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
@@ -56,7 +56,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of **Context objects**. It handles boundary checks (row/column)
+creation, validator, and manipulation of **Context objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `ContextValidator` and `ContextBuilder`processes.
 
@@ -124,7 +124,7 @@ class InvalidContextException(ContextException, ValidationException):
   catch all exceptions raised validating an existing context
   """
   ERROR_CODE = "CONTEXT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Context validation failed."
+  DEFAULT_MESSAGE = "Context validator failed."
 
 #======================# CONTEXT BUILD EXCEPTIONS #======================#  
 class ContextBuildFailedException(ContextException, BuildFailedException):

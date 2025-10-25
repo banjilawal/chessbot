@@ -65,7 +65,7 @@ class SquareValidator(Validator[Square]):
 
   # RESPONSIBILITIES:
   1. Run sanity checks on a `candidate` to make sure its a valid `Square` before use.
-  2. Pass results of validation process to client.
+  2. Pass results of validator process to client.
 
   # PROVIDES:
   `ValidationResult[Square]` containing either a verified `Square` or an `Exception`.

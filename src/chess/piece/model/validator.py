@@ -1,7 +1,7 @@
-# src/chess/piece/model/validation/validator.py
+# src/chess/piece/model/validator/validator.py
 
 """
-Module: chess.piece.model.validation.piece
+Module: chess.piece.model.validator.piece
 Author: Banji Lawal
 Created: 2025-10-22
 Version: 1.0.0

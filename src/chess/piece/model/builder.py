@@ -1,7 +1,7 @@
 # chess/square/old_occupation_validator.py
 
 """
-Module: `chess.square.validation`
+Module: `chess.square.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -40,7 +40,7 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * `PieceBuilder`: The validation of `Piece` instances.
+ * `PieceBuilder`: The validator of `Piece` instances.
 """
 
 from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext

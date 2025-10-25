@@ -17,7 +17,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `Human`: Concrete `subclass` of `Commander` people use.
   - `Bot`: Concrete `subclass` of `Commander` that uses team `DecisionEngine`.
   - `CommanderBuilder`: Builds new instances of `Commander`.
-  - `CommanderValidator`: Performs validation and sanity checks on existing
+  - `CommanderValidator`: Performs validator and sanity checks on existing
       `Commander` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 

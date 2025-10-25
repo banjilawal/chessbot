@@ -1,10 +1,23 @@
-from chess.piece import OccupationTransaction, PromotionEventValidator, TravelEvent, TravelTransaction
-from chess.piece.travel.promotion.event import PromotionEvent
+# src/chess/travel/promotion/transaction/transaction.py
+
+"""
+Module: chess.travel.promotion.transaction.transaction
+Author: Banji Lawal
+Created: 2025-10-24
+version: 1.0.0
+"""
+
+
+from chess.rank import Queen
 from chess.system import LoggingLevelRouter, TransactionResult
+from chess.piece import (
+    OccupationTransaction, PromotionEventValidator, PromotionEvent, FailedPreviousRankUpdateRolledBackException,
+    FailedSetRankToQueenRolledBackException
+)
 
 
 class PromotionTransaction(OccupationTransaction[PromotionEvent]):
-    
+    """"""
     def __init__(self, event: PromotionEvent):
         super().__init__(event)
     
@@ -18,15 +31,29 @@ class PromotionTransaction(OccupationTransaction[PromotionEvent]):
             if event_validation.failure():
                 return TransactionResult.errored(event_update=self.event, exception=event_validation.exception)
             
+            self.event.actor.previous_rank = self.event.actor.rank
+            if self.event.actor.previous_rank is None:
+                return TransactionResult.rolled_back(
+                    event_update=self.event,
+                    rollback_exception=FailedPreviousRankUpdateRolledBackException(
+                        f"{method}: {FailedPreviousRankUpdateRolledBackException.DEFAULT_MESSAGE}"
+                    )
+                )
         
-           self.event.actor.promote()
-           if not isinstance(self.event.actor.rank, Queen):
-               return TransactionResult.roll_back(
-                   event_update=self.event,
-                   exception=FailedPromotionRolledBackException(f"{method}: Failed to promote {event.actor.rank} to Queen.")
-               )
+            self.event.actor.promote()
+            if not isinstance(self.event.actor.rank, Queen):
+                self.event.actor._set_rank(self.event.actor.previous_rank)
+                self.event.actor.previous_rank = None
+                
+                return TransactionResult.rolled_back(
+                    event_update=self.event,
+                    rollback_exception=FailedSetRankToQueenRolledBackException(
+                        f"{method}: {FailedSetRankToQueenRolledBackException.DEFAULT_MESSAGE}"
+                    )
+                )
             
             return TransactionResult.success(event_update=self.event)
         except Exception as e:
             return TransactionResult.errored(event_update=self.event, exception=e)
+
 

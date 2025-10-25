@@ -10,7 +10,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `Team` objects.
+creation, validator, and manipulation of `Team` objects.
 
 ***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
     `Team`, `TeamBuilder`, and `TeamValidator`
@@ -127,7 +127,7 @@ class InvalidTeamException(TeamException, ValidationException):
   exceptions raised validating an existing`Team`.
   """
   ERROR_CODE = "TEAM_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Team validation failed"
+  DEFAULT_MESSAGE = "Team validator failed"
 
 
 #======================# TEAM BUILD EXCEPTIONS #======================#  

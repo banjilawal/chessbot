@@ -1,7 +1,7 @@
 # chess/square/old_occupation_validator.py
 
 """
-Module: `chess.square.validation`
+Module: `chess.square.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -40,7 +40,7 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * `ValidationResultBuilder`: The validation of `ValidationResult` instances.
+ * `ValidationResultBuilder`: The validator of `ValidationResult` instances.
 """
 
 from typing import TypeVar, Generic
@@ -86,7 +86,7 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
     try:
       if payload is None and exception is None:
         return BuildResult(exception=ValidationResultBuildFailedException(
-          f"{method}: ValidationResultBuildFailed The payload and rollback_exception of a validation "
+          f"{method}: ValidationResultBuildFailed The payload and rollback_exception of a validator "
           f"result cannot both be null."
           )
         )

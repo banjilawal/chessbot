@@ -12,7 +12,7 @@ Updated: 2025-10-10
 2. This module provides a satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers name validation only.
+The module covers name validator only.
 
 # SECTION 3 - Limitations:
   1. The module does not provide permissible naming guidelines.

@@ -9,7 +9,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `TeamSchema` objects.
+creation, validator, and manipulation of `TeamSchema` objects.
 
 ***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
     `TeamSchema`, `TeamSchemaBuilder`, and `TeamSchemaValidator`
@@ -84,4 +84,4 @@ class InvalidTeamSchemaException(TeamSchemaException, ValidationException):
   exceptions raised validating an existing`TeamSchema`.
   """
   ERROR_CODE = "TEAM_SCHEMA_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "TeamSchema validation failed"
+  DEFAULT_MESSAGE = "TeamSchema validator failed"

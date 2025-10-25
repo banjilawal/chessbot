@@ -9,7 +9,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `Vector` objects.
+creation, validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -85,9 +85,9 @@ class NullCoordException(CoordException, NullException):
   DEFAULT_MESSAGE = "Coord cannot be null"
 
 class InvalidCoordException(CoordException, ValidationException):
-  """Raised by CoordValidator if client fails validation."""
+  """Raised by CoordValidator if client fails validator."""
   ERROR_CODE = "COORD_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Coord validation failed"
+  DEFAULT_MESSAGE = "Coord validator failed"
 
 
 #====================== COORD_ROW VALIDATION EXCEPTIONS #======================#  

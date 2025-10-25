@@ -7,7 +7,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
+creation, validator, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `DiscoverySearchContextValidator` and `DiscoverySearchContextBuilder`processes.
 
@@ -82,7 +82,7 @@ class InvalidDiscoverySearchContextException(DiscoverySearchContextException, Va
     catch all exceptions raised validating an existing discoverySearchContext
     """
     ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "DiscoverySearchContext validation failed."
+    DEFAULT_MESSAGE = "DiscoverySearchContext validator failed."
 
 
 class ZeroDiscoverySearchParamsException(DiscoverySearchContextException):

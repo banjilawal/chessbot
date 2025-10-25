@@ -50,7 +50,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `Vector` objects.
+creation, validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -121,9 +121,9 @@ class NullScalarException(ScalarException, NullException):
   DEFAULT_MESSAGE = "Scalar cannot be null."
 
 class InvalidScalarException(ScalarException, ValidationException):
-  """Raised by ScalaValidators if client fails validation."""
+  """Raised by ScalaValidators if client fails validator."""
   ERROR_CODE = "SCALAR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Scalar validation failed."
+  DEFAULT_MESSAGE = "Scalar validator failed."
 
 
 #======================# SCALAR BUILD EXCEPTIONS #======================#  

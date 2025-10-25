@@ -110,7 +110,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # class InvalidEncounterException(BlockingEventException, ValidationException):
 #   """"""
 #   ERROR_CODE = "INVALID_BLOCKING_EVENT_ERROR"
-#   DEFAULT_MESSAGE = "BlockingEventException validation failed."
+#   DEFAULT_MESSAGE = "BlockingEventException validator failed."
 #
 #
 # #======================# BLOCKING_EVENT BUILD EXCEPTIONS #======================#
@@ -134,7 +134,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # SCOPE:
 # -----
 # This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-# creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
+# creation, validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 # limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 # falls to the `CoordValidator` and `CoordBuilder`processes.
 #
@@ -204,7 +204,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # class InvalidTravelActorException(TravelActorException, ValidationException):
 #   ERROR_CODE = "TRAVEL_ACTOR_VALIDATION_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate validation failed."
+#   DEFAULT_MESSAGE = "TravelEvent actor_candidate validator failed."
 #
 #
 # class TravelActorNotFoundException(TravelActorException, InconsistencyException):

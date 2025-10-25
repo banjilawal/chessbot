@@ -12,10 +12,10 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers clients and servers in the `ChessBot` validation domain.
+The module covers clients and servers in the `ChessBot` validator domain.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to the reporting validation results to clients.
+  1. The module is limited to the reporting validator results to clients.
   2. The module does not provide any methods for dealing with the candidates which fail to meet correctness
       requirements.
 
@@ -26,13 +26,13 @@ The major theme influencing the modules design are
 
 # SECTION 5- Features Supporting Requirements:
   1. The ability to handle errors without crashing the application is a reliability feature.
-  2. Ensuring validation results are communicated are sent to clients is an integrity feature.
+  2. Ensuring validator results are communicated are sent to clients is an integrity feature.
 
 # 6 Feature Delivery Mechanism:
-  1. The features are implemented by a communication mechanism between a validation service and its client.
+  1. The features are implemented by a communication mechanism between a validator service and its client.
 
 # SECTION 7 - Dependencies:
-* From `chess.system.validation`:
+* From `chess.system.validator`:
     `Validation`
 
 * From `chess.system.err.rollback_exception`:
@@ -59,7 +59,7 @@ class ValidationResult(Result[Generic[T]]):
     # ROLE: Message passing, Data Transfer Object
   
     # RESPONSIBILITIES:
-    1. Carry the outcome a validation operation to originating client.
+    1. Carry the outcome a validator operation to originating client.
     2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
   
     # PROVIDES:

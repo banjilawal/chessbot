@@ -17,7 +17,7 @@ Updated: 2025-10-08
     `Team` passes and additional checks before deployment.
 
 **Related Features**:
-    Building teams -> See TeamBuilder, module[chess.team.validation],
+    Building teams -> See TeamBuilder, module[chess.team.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -74,7 +74,7 @@ class TeamValidator(Validator[Team]):
       Ensure an existing `Team` object will not introduce bugs or failures.
 
     PARAMETERS:
-        * `candidate` (`Any`): The validation candidate.
+        * `candidate` (`Any`): The validator candidate.
 
     RETURNS:
     `ValidationResult[Team]`: A `ValidationResult` containing either:

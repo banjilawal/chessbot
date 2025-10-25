@@ -1,7 +1,7 @@
 # chess/commander/old_occupation_validator.py
 
 """
-Module: `chess.commander.validation`
+Module: `chess.commander.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 Updated: 2025-10-04

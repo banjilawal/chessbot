@@ -7,7 +7,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of **BoardSearchContext objects**. It handles boundary checks (row/column)
+creation, validator, and manipulation of **BoardSearchContext objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `BoardSearchContextValidator` and `PieceSearchContextBuilder`processes.
 
@@ -82,7 +82,7 @@ class InvalidPieceSearchContextException(PieceSearchContextException, Validation
     catch all exceptions raised validating an existing pieceSearchContext
     """
     ERROR_CODE = "SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "BoardSearchContext validation failed."
+    DEFAULT_MESSAGE = "BoardSearchContext validator failed."
 
 
 class PieceSearchContextZeroParamCountException(PieceSearchContextException):

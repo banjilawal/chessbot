@@ -3,18 +3,11 @@
 """
 Module: chess.piece.travel.factory.factory
 Author: Banji Lawal
-Created: 2025-09-28
-
-# SCOPE:
-# THEME:
-# PURPOSE:
-# DEPENDENCIES:
-# CONTAINS:
- * `TravelEventFactory`
+Created: 2025-10-21
+version: 1.0.0
 """
-from typing import cast
 
-from setuptools.package_index import ContentChecker
+from typing import cast
 
 from chess.rank import Queen
 from chess.square import Square
@@ -22,8 +15,7 @@ from chess.system import LoggingLevelRouter, BuildResult, id_emitter
 from chess.board import Board, BoardSquareSearch, BoardSearchContext, CoordSearchInvariantBreachException
 from chess.piece import (
     KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, PromotablePiece,
-    PromotionEvent, TravelActorValidator,
-    TravelEvent, TravelResourceValidator, ActorAlreadyAtDestinationException
+    PromotionEvent, TravelActorValidator,TravelEvent, TravelResourceValidator, ActorAlreadyAtDestinationException
 )
 
 

@@ -17,7 +17,7 @@ Created: 2025-10-08
     `TeamSchema` passes and additional checks before deployment.
 
 ***Related Features***:
-    Building teamSchemas -> See TeamSchemaBuilder, module[chess.teamSchema.validation],
+    Building teamSchemas -> See TeamSchemaBuilder, module[chess.teamSchema.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -76,7 +76,7 @@ class TeamSchemaValidator(Validator[TeamSchema]):
       Ensure an existing `TeamSchema` object will not introduce bugs or failures.
 
     PARAMETERS:
-        * `candidate` (`TeamSchema`): The validation candidate.
+        * `candidate` (`TeamSchema`): The validator candidate.
 
     RETURNS:
     `ValidationResult[TeamSchema]`: A `ValidationResult` containing either:

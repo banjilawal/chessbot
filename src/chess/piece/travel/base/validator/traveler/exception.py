@@ -1,15 +1,15 @@
-# src/chess/piece/travel/validation/rollback_exception.py
+# chess/piece/travel/base/validator/traveler/exception.py
 
 """
-Module: chess.piece.travel.validation.rollback_exception
+Module: `chess.piece.travel.base.validator.traveler.exception`
 Author: Banji Lawal
-Created: 2025-10-04
-version: 1.0.0
+Created: 2025-10-06
+Version: 1.0.1
 
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of **Coord objects**. It handles boundary checks (row/column)
+creation, validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
 

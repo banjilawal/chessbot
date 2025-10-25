@@ -9,7 +9,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `Vector` objects.
+creation, validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -87,7 +87,7 @@ class NullRankException(RankException, NullException):
 
 class InvalidRankException(RankException, ValidationException):
   ERROR_CODE = "RANK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Rank validation failed."
+  DEFAULT_MESSAGE = f"Rank validator failed."
 
 class UnRecognizedConcreteRankException(RankException):
   ERROR_CODE = "UNRECOGNIZED_CONCRETE_RANK_ERROR"
@@ -97,27 +97,27 @@ class UnRecognizedConcreteRankException(RankException):
 #======================# RANK SUBCLASS VALIDATION EXCEPTIONS #======================#  
 class InvalidKingException(InvalidRankException):
   ERROR_CODE = "KING_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "King validation failed."
+  DEFAULT_MESSAGE = "King validator failed."
 
 class InvalidPawnException(InvalidRankException):
   ERROR_CODE = "PAWN_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Pawn validation failed."
+  DEFAULT_MESSAGE = "Pawn validator failed."
 
 class InvalidKnightException(InvalidRankException):
   ERROR_CODE = "KNIGHT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Knight validation failed."
+  DEFAULT_MESSAGE = "Knight validator failed."
 
 class InvalidBishopException(InvalidRankException):
   ERROR_CODE = "BISHOP_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Bishop validation failed."
+  DEFAULT_MESSAGE = "Bishop validator failed."
 
 class InvalidRookException(InvalidRankException):
   ERROR_CODE = "ROOK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Rook validation failed."
+  DEFAULT_MESSAGE = "Rook validator failed."
 
 class InvalidQueenException(InvalidRankException):
   ERROR_CODE = "QUEEN_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Queen validation failed."
+  DEFAULT_MESSAGE = "Queen validator failed."
 
 
 #======================# RANK MOVING EXCEPTIONS #======================#  

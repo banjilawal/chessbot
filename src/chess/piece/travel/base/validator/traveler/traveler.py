@@ -1,12 +1,12 @@
-# src/chess/piece/travel/validation/traveler.py
+# chess/piece/travel/base/validator/traveler/traveler.py
 
 """
-Module: chess.piece.travel.validation.traveler
+Module: `chess.piece.travel.base.validator.traveler.traveler`
 Author: Banji Lawal
 Created: 2025-10-18
-Version: 1.0.0
-
+Version: 1.0.1
 """
+
 from typing import TypeVar, cast, Tuple
 
 from chess.board import Board, BoardPieceSearch, BoardSearchContext, BoardValidator
@@ -16,7 +16,7 @@ from chess.piece import (
   NullTravelerEnvironmentTupleException, Piece
 )
 from chess.piece.model.validator import PieceValidator
-from chess.piece.travel.validation.traveler.exception import (
+from chess.piece.travel.base.validator.traveler.exception import (
   ActorNotOnBoardCannotMoveException,
   CheckMatedKingCannotMoveException
 )

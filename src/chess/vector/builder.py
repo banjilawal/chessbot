@@ -1,6 +1,6 @@
 # src/chess/vector/old_occupation_validator.py
 """
-Module: chess.vector.validation
+Module: chess.vector.validator
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0

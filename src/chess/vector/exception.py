@@ -9,7 +9,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validation, and manipulation of `Vector` objects.
+creation, validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -91,7 +91,7 @@ class InvalidVectorException(VectorException, ValidationException):
   exceptions raised validating an existing `Vector`
   """
   ERROR_CODE = "VECTOR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Vector validation failed"
+  DEFAULT_MESSAGE = "Vector validator failed"
 
 
 #======================# VECTOR BUILD EXCEPTIONS #======================#  

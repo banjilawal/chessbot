@@ -16,7 +16,7 @@ Created: 2025-10-08
     `Vector` passes and additional checks before deployment.
 
 **Related Features**:
-    Building vectors -> See VectorBuilder, module[chess.vector.validation],
+    Building vectors -> See VectorBuilder, module[chess.vector.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -77,7 +77,7 @@ class VectorValidator(Validator[Vector]):
         Ensure an existing `Vector` object will not introduce bugs or failures.
 
         PARAMETERS:
-            * `candidate` (`Vector`): The validation candidate.
+            * `candidate` (`Vector`): The validator candidate.
 
         RETURNS:
         `ValidationResult[Vector]`: A `ValidationResult` containing either:

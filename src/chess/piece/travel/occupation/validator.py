@@ -1,7 +1,7 @@
-# chess/chess/piece/travel/occupation/validation.py
+# chess/chess/piece/travel/occupation/validator.py
 
 """
-Module: `chess.piece.travel.occupation.validation`
+Module: `chess.piece.travel.occupation.validator`
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0
@@ -119,7 +119,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #     actor_validation = PieceValidator.validate(travel.traveler)
 #     if not actor_validation.is_success():
-#       raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
+#       raise InvalidAttackException(f"{method}: actor_candidate validator failed.")
 #
 #     destination_square_validation = SquareValidator.validate(travel.enemy_square)
 #     if not destination_square_validation.is_success():

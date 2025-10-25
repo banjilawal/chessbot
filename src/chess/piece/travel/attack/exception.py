@@ -35,7 +35,7 @@ class AttackEventException(ChessException):
 #======================# ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
 class InvalidAttackEventException(TravelEventException, ValidationException):
   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "AttackEvent validation failed."
+  DEFAULT_MESSAGE = "AttackEvent validator failed."
 
 
 class NullAttackEventException(AttackEventException, NullException):

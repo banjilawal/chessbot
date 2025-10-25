@@ -43,9 +43,9 @@ class PieceException(ChessException):
 
 # ======================# PIECE VALIDATION EXCEPTIONS #======================#
 class InvalidPieceException(PieceException, ValidationException):
-  """Raised by PieceValidators if client fails validation."""
+  """Raised by PieceValidators if client fails validator."""
   ERROR_CODE = "PIECE_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Piece validation failed."
+  DEFAULT_MESSAGE = "Piece validator failed."
 
 
 class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
@@ -84,7 +84,7 @@ class UnregisteredTeamMemberException(PieceException):
 class PieceRosterNumberIsNullException(PieceException, NullException):
   """
   Raised a piece's roster number is null. This should never happen. the invariant roster number
-  is set during build. If its null during validation there has been data loss or an inconsistency.
+  is set during build. If its null during validator there has been data loss or an inconsistency.
   """
   ERROR_CODE = "PIECE_NULL_ROSTER_NUMBER_ERROR"
   DEFAULT_MESSAGE = "A `Piece` object cannot have a null roster number. There may be data inconsistency or loss."

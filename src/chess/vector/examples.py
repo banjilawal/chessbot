@@ -182,11 +182,11 @@ Example:
 # Validator class responsible for validating `Vector` instances.
 #
 # `VectorValidator` ensures that `Vector` instances are always validated successfully by performing comprehensive
-# validate checks during validation. This separates the responsibility of validating from building - `VectorValidator`
+# validate checks during validator. This separates the responsibility of validating from building - `VectorValidator`
 # focuses on validating while `VectorBuilder` is used for constructing new `Vector` instances that are passed around
 # the system.
 #
-# The validation runs through all validate checks individually to guarantee that any `Vector` instance it validates
+# The validator runs through all validate checks individually to guarantee that any `Vector` instance it validates
 
 # Validates that an existing `Vector` instance meets all specifications.
 #

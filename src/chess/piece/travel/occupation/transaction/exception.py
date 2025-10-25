@@ -18,7 +18,7 @@ from chess.system import RollbackException
 
 __all__ = [
     'OccupationTransactionException',
-    'OccupationTransactionRolledBackException',
+    'RolledBackOccupationTransactionException',
     'FailedDestinationSquareOccupationRolledBackException',
     'FailedActorSquareVacationRolledBackException',
     'FailedActorPositionUpdateRolledBackException',
@@ -31,7 +31,7 @@ class OccupationTransactionException(TravelTransactionException):
     DEFAULT_MESSAGE = "An rollback_exception was raised during an OccupationTransaction."
 
 
-class OccupationTransactionRolledBackException(OccupationTransactionException, RollbackException):
+class RolledBackOccupationTransactionException(OccupationTransactionException, RollbackException):
     """"""
     ERROR_CODE = "OCCUPATION_TRANSACTION_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
@@ -39,7 +39,7 @@ class OccupationTransactionRolledBackException(OccupationTransactionException, R
     )
 
 
-class FailedDestinationSquareOccupationRolledBackException(OccupationTransactionRolledBackException):
+class FailedDestinationSquareOccupationRolledBackException(RolledBackOccupationTransactionException):
     ERROR_CODE = "DESTINATION_SQUARE_OCCUPATION_FAILURE_ROLLED_BACK"
     DEFAULT_MESSAGE = (
         "Destination_Square's occupant was not successfully updated to actor_piece. OccupationTransaction was rolled "
@@ -47,14 +47,14 @@ class FailedDestinationSquareOccupationRolledBackException(OccupationTransaction
     )
 
 
-class FailedActorSquareVacationRolledBackException(OccupationTransactionRolledBackException):
+class FailedActorSquareVacationRolledBackException(RolledBackOccupationTransactionException):
     ERROR_CODE = "ACTOR_SQUARE_VACATION_FAILURE_ROLLED_BACK"
     DEFAULT_MESSAGE = (
         "Actor_Square was not successfully emptied. OccupationTransaction was rolled back before rollback_exception was raised."
     )
 
 
-class FailedActorPositionUpdateRolledBackException(OccupationTransactionRolledBackException):
+class FailedActorPositionUpdateRolledBackException(RolledBackOccupationTransactionException):
     ERROR_CODE = "ACTOR_POSITION_UPDATE_FAILURE_ROLLED_BACK"
     DEFAULT_MESSAGE = (
         "Actor.current_position was not successfully set to enemy_square's coord. The OccupationTransaction"

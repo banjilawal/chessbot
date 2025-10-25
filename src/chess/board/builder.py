@@ -1,7 +1,7 @@
 # chess/board_validator/old_occupation_validator.py
 
 """
-Module: `chess.board_validator.validation`
+Module: `chess.board_validator.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

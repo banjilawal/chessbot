@@ -12,7 +12,7 @@ Updated: 2025-10-10
 2. This module provides a satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers name validation only.
+The module covers name validator only.
 
 # SECTION 3 - Limitations:
   1. The module does not provide permissible naming guidelines.
@@ -83,7 +83,7 @@ class Builder(ABC, Generic[T]):
   # ROLE: Message passing, Data Transfer Object
 
   # RESPONSIBILITIES:
-  1. Carry the outcome a validation operation to originating client.
+  1. Carry the outcome a validator operation to originating client.
   2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
 
   # PROVIDES:
