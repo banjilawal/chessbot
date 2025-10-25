@@ -10,13 +10,14 @@ version: 1.0.0
 from typing import cast
 
 from chess.piece import (
-    AttackEvent, AttackEventValidator, OccupationTransaction, TravelTransaction, FailedEnemyRemovalFromSquareRolledBackException,
-    FailedRemovalFromRosterRolledBackException, FailedSettingActorAsEnemyCaptorRolledBackException, OccupationEvent,
-    FailedHostageAdditionRolledBackException, FailedRemovalFromBoardRolledBackException
+    AttackEvent, AttackEventValidator, OccupationEvent, OccupationTransaction, TravelTransaction,
+    FailedEnemyRemovalFromSquareRolledBackException,
+    FailedRemovalFromRosterRolledBackException, FailedSettingActorAsEnemyCaptorRolledBackException,
+    FailedHostageAdditionRolledBackException, FailedRemovalFromBoardRolledBackException,
 )
-from chess.piece.travel.check.transaction import
+
 from chess.system import LoggingLevelRouter, TransactionResult, id_emitter
-from chess.team import RemoveTeamMemberRolledBackException
+
 
 
 class AttackTransaction(TravelTransaction[AttackEvent]):

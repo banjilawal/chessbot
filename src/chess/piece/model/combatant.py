@@ -49,8 +49,8 @@ class CombatantPiece(Piece):
 
   def __eq__(self, other):
     if super().__eq__(other):
-    if isinstance(other, CombatantPiece):
-      return True
+      if isinstance(other, CombatantPiece):
+        return True
     return False
 
   def __hash__(self):

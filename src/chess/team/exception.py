@@ -74,7 +74,6 @@ __all__ = [
   'TeamRosterRollBackException',
   'AddEnemyHostageRolledBackException',
   'AddTeamMemberRolledBackException',
-  'RemoveTeamMemberRolledBackException',
   'FullRankQuotaRolledBackException',
   'ConflictingTeamAssignmentException',
 
@@ -203,15 +202,7 @@ class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
     "rollback performed."
   )
 
-class RemoveTeamMemberRolledBackException(TeamRosterRollBackException):
-  """
-  Raised if team notification failed to remove team piece from the team's roster. The
-  notification was rolled back before raising this err.
-  """
-  ERROR_CODE = "REMOVE_TEAM_MEMBER_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = (
-    "Could not remove team piece from the team's roster. Transaction rollback performed."
-  )
+
 
 class FullRankQuotaRolledBackException(TeamRosterRollBackException):
   """

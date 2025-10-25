@@ -3,7 +3,7 @@
 """
 Module: chess.piece.model.promotable.promotable
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-10-24
 version: 1.0.0
 """
 
@@ -21,5 +21,9 @@ class PromotablePiece(Piece, ABC):
   def promote_to_queen(self):
     self._set_rank(Queen())
     
+  def __eq__(self, other):
+    if super().__eq__(other):
+      if isinstance(other, PromotablePiece):
+        return True
+    return False
   
-    

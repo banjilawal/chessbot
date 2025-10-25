@@ -6,14 +6,13 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-
-from chess.system import LoggingLevelRouter, TransactionResult
+from chess.piece.travel.promotion.transaction import PromotionTransaction
+from chess.system import LoggingLevelRouter, TransactionResult, id_emitter
 from chess.piece import (
-    TravelTransaction, OccupationEvent, OccupationEventValidator, FailedActorPositionUpdateRolledBackException,
+    PromotionEvent, PromotionEventValidator, TravelTransaction, OccupationEvent, OccupationEventValidator,
+    FailedActorPositionUpdateRolledBackException,
     FailedActorSquareVacationRolledBackException, FailedDestinationSquareOccupationRolledBackException
 )
-
-
 
 class OccupationTransaction(TravelTransaction[OccupationEvent]):
     """"""
@@ -29,12 +28,12 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
         try:
             # Step 1: Ensure the travel will not have failure conditions, i.e, traveler is a hostage,
             # the enemy_square is empty.
-            validation = OccupationEventValidator.validate(self._event)
+            validation = OccupationEventValidator.validate(self.event)
             if validation.is_failure():
-                return TransactionResult.errored(event_update=self._event, exception=validation.exception)
+                return TransactionResult.errored(event_update=self.event, exception=validation.exception)
             
             # Step 2: Actor occupies enemy_square
-            self._event.destination_square.occupant = self._event.actor
+            self.event.destination_square.occupant = self.event.actor
             
             """
             # Step 2.1:
@@ -42,18 +41,18 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             enemy_square != traveler is not a sufficient success condition. If the traveler is not in both squares then
             rollback all the operations and return the rollback_exception.
             """
-            if self._event.destination_square.occupant != self._event.actor_square.occupant:
-                self._event.destination_square.occupant = None
+            if self.event.destination_square.occupant != self.event.actor_square.occupant:
+                self.event.destination_square.occupant = None
                 
                 return TransactionResult.rolled_back(
-                    event_update=self._event,
+                    event_update=self.event,
                     rollback_exception=FailedDestinationSquareOccupationRolledBackException(
                         f"{method}: {FailedDestinationSquareOccupationRolledBackException.DEFAULT_MESSAGE}"
                     )
                 )
             
             # Step 3: Remove the traveler from their old square.
-            self._event.actor_square.occupant = None
+            self.event.actor_square.occupant = None
             
             """
             #Step 3.1
@@ -61,37 +60,49 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                 actor_previous_square.occupant != traveler.
             If the condition is not met then rollback the operations and return the rollback_exception.
             """
-            if self._event.actor_square.occupant != self._event.actor:
-                self._event.actor_square.occupant = self._event.actor
-                self._event.destination_square.occupant = None
+            if self.event.actor_square.occupant != self.event.actor:
+                self.event.actor_square.occupant = self.event.actor
+                self.event.destination_square.occupant = None
                 
                 # Send the error and last checkpoint in the result
                 return TransactionResult.rolled_back(
-                    event_update=self._event,
+                    event_update=self.event,
                     rollback_exception=FailedActorSquareVacationRolledBackException(
                         f"{method}: {FailedActorSquareVacationRolledBackException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            self._event.actor.positions.push_coord(self._event.destination_square.coord)
+            self.event.actor.positions.push_coord(self.event.destination_square.coord)
             
             # If the push destination coord is not the traveler's current position rollback the operations,
             # then return the rollback_exception.
-            if self._event.actor.current_position != self._event.destination_square.coord:
-                self._event.actor.positions.undo_push()
-                self._event.actor_square.occupant = self._event.actor
-                self._event.destination_square.occupant = None
+            if self.event.actor.current_position != self.event.destination_square.coord:
+                self.event.actor.positions.undo_push()
+                self.event.actor_square.occupant = self.event.actor
+                self.event.destination_square.occupant = None
                 
                 # Send the error and last checkpoint in the result
                 return TransactionResult.rolled_back(
-                    event_update=self._event,
+                    event_update=self.event,
                     rollback_exception=FailedActorPositionUpdateRolledBackException(
                         f"{method}: {FailedActorPositionUpdateRolledBackException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            self._event.actor.discoveries.clear()
+            self.event.actor.discoveries.clear()
+            
+            promotion_validation = PromotionEventValidator.validate(self.event)
+            if promotion_validation.is_success():
+                promotion_event = PromotionEvent(
+                    parent=self.event,
+                    id=id_emitter.event_id,
+                    actor=self.event.actor,
+                    actor_square=self.event.actor_square,
+                    promotion_square=self.event.destination_square,
+                    execution_environment=self.event.execution_environment,
+                )
+                return PromotionTransaction(promotion_event).execute()
             
             return TransactionResult.success(event_update=self.event)
         except Exception as e:
-            return TransactionResult.errored(self._event, e)
+            return TransactionResult.errored(self.event, e)
