@@ -142,7 +142,7 @@ class DoublePromotionException(PromotionEventException):
 
 
 
-class DoublePromotionRolledBackException(BackException):
+class DoublePromotionRolledBackException(RollBackException):
   """
   Raised if team notification attempts promoting team piece already elevated to Queen rank.
   Only pieces with Pawn or King rank can be promoted. The notification was rolled
