@@ -101,7 +101,6 @@ from .bishop import Bishop
 from .knight import Knight
 from .rook import Rook
 from .queen import Queen
-from .promote import PromotedQueen
 from .rank_spec import RankSpec
 from .validator import RankValidator
 

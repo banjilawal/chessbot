@@ -1,14 +1,20 @@
 from chess.board.board import Board
-from chess.rank import PromotedQueen, RankSpec
+from chess.rank import  Rank, RankSpec
 
 
 
 
 
-class King(PromotedQueen):
+class King(Rank):
 
   def __init__(self, spec: RankSpec=RankSpec.KING):
-    super().__init__(spec=spec)
+    super().__init__(
+      name=spec.name,
+      letter=spec.letter,
+      ransom=spec.ransom,
+      quadrants=spec.quadrants,
+      quota=spec.quota
+    )
 
 
   def walk(self, piece: Piece, destination: Coord, board: Board):
