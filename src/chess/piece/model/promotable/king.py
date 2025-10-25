@@ -1,27 +1,29 @@
+# src/chess/piece/model/promotable/king.py
+
+"""
+Module: chess.piece.model.promotable.king
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+"""
+
 from typing import List
 
-from chess import rank
-from chess.piece.checker import Checker
-from chess.piece.model.promotable import PromotablePiece
+
 from chess.rank import Rank
 from chess.team import Team
+from chess.piece import PromotablePiece
 
 
 class KingPiece(PromotablePiece):
   _is_checked: bool
   _is_checkmated: bool
-  _checkers: List[Checker] = []
+
 
   def __init__(self, id: int, name: str, rank: Rank, team: Team):
     super().__init__(id, name, rank, team)
-    self._checkers = []
     self._is_checked = False
     self._is_checkmated = False
-
-
-  @@property
-  def checkers(self) -> List[Checker]:
-      return self._checkers
 
 
   @property

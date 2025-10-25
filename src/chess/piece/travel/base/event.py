@@ -1,16 +1,10 @@
-# src/chess/piece/travel/event.py
+# src/chess/piece/travel/base/event.py
 
 """
-Module: `chess.piece.travel.travel`
+Module: `chess.piece.travel.base.event`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
-
-Provides:
-Concrete subclass of `Event`.
-
-Contains:
- * `TravelEvent`
 """
 
 

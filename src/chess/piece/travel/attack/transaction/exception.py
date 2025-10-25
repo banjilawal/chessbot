@@ -1,7 +1,7 @@
-# src/chess/vector/rollback_exception.py
+# src/chess/piece/travel/attack/transaction/exception.py
 
 """
-Module: chess.vector.rollback_exception
+Module: chess.piece.travel.attack.transaction.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

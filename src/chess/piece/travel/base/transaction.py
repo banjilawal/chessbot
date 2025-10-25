@@ -1,17 +1,11 @@
-# src/chess/piece/travel/old_transaction.py
+# src/chess/piece/travel/base/transaction.py
 
 """
-Module: chess.piece.travel.notification
+Module: chess.piece.travel.base.transaction
 Author: Banji Lawal
 Created: 2025-09-28
-
-# SCOPE:
-# THEME:
-# PURPOSE:
-# DEPENDENCIES:
-# CONTAINS:
- * `TravelEventFactory`
 """
+
 from abc import abstractmethod
 
 from chess.piece import TravelEvent

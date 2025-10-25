@@ -1,17 +1,12 @@
-""""
-Module: chess.travel.travel.attack.notification
-Author: Banji Lawal
-Created: 2025-10-01
-Version: 1.0.0
+# src/chess/piece/travel/attack/transaction/transaction.py
 
-Purpose:
-  Implements the `AttackTransaction` class, responsible for capturing an enemy `CombatantPiece`
-
-Contents:
-  - `AttackTransaction:` Class responsible for AttackTransaction lifecycle.
-
-Notes:
 """
+Module: chess.piece.travel.attack.transaction.transaction
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+"""
+
 from typing import cast
 
 from chess.piece import (

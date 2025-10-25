@@ -1,7 +1,7 @@
-# src/chess/piece/travel/rollback_exception.py
+# src/chess/piece/travel/base/exception.py
 
 """
-Module: chess.piece.travel.travel_exception
+Module: chess.piece.travel.base.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

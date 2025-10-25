@@ -1,16 +1,17 @@
+# src/chess/piece/model/promotable/promotable.py
+
 """
-Module: piece
+Module: chess.piece.model.promotable.promotable
 Author: Banji Lawal
-Created: 2025-09-28
+Created: 2025-10-04
+version: 1.0.0
 """
 
 from abc import ABC
-from typing import Optional
 
-from chess.rank import Rank
 from chess.team import Team
 from chess.piece import Piece
-
+from chess.rank import Rank, Queen
 
 class PromotablePiece(Piece, ABC):
   """"""
@@ -18,7 +19,7 @@ class PromotablePiece(Piece, ABC):
     super().__init__(id, name, rank, team)
 
   def promote_to_queen(self):
-    self._rank = Queen
+    self._set_rank(Queen())
     
   
     
