@@ -123,7 +123,7 @@ class TeamSchema(Enum):
 
 
   @property
-  def enemy_config(self) -> 'TeamSchema':
+  def enemy_schema(self) -> 'TeamSchema':
     return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
 
 

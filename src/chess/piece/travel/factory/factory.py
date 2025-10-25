@@ -12,12 +12,17 @@ Created: 2025-09-28
 # CONTAINS:
  * `TravelEventFactory`
 """
+from typing import cast
 
+from setuptools.package_index import ContentChecker
+
+from chess.rank import Queen
 from chess.square import Square
 from chess.system import LoggingLevelRouter, BuildResult, id_emitter
 from chess.board import Board, BoardSquareSearch, BoardSearchContext, CoordSearchInvariantBreachException
 from chess.piece import (
-    KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, TravelActorValidator,
+    KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, PromotablePiece,
+    PromotionEvent, TravelActorValidator,
     TravelEvent, TravelResourceValidator, ActorAlreadyAtDestinationException
 )
 
@@ -71,8 +76,9 @@ class TravelEventFactory:
             
             if actor.current_position == destination_square.coord:
                 return BuildResult.failure(
-                    ActorAlreadyAtDestinationException(f"{method}: {ActorAlreadyAtDestinationException.DEFAULT_MESSAGE}"
-                    )
+                    ActorAlreadyAtDestinationException(
+                        f"{method}: {ActorAlreadyAtDestinationException.DEFAULT_MESSAGE}"
+                        )
                 )
             
             actor_square_search = BoardSquareSearch.search(
@@ -94,48 +100,79 @@ class TravelEventFactory:
             destination_occupant = destination_square.occupant
             
             if destination_occupant is None:
-                return BuildResult.success(
-                    OccupationEvent(
-                        id=id_emitter.event_id,
-                        actor=actor,
-                        actor_square=actor_square,
-                        destination_square=destination_square,
-                        execution_environment=board
-                    )
-                )
+                return TravelEventFactory._process_empty_square(actor, actor_square, destination_square, board)
             
-            if not actor.is_enemy(destination_occupant):
-                return BuildResult.success(
-                    BlockingEvent(
-                        id=id_emitter.event_id,
-                        actor=actor,
-                        friend=destination_occupant,
-                        blocked_square=destination_square,
-                        execution_environment=board
-                    )
-                )
-            
-            if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, CombatantPiece):
-                return BuildResult.success(
-                    AttackEvent(
-                        id=id_emitter.event_id,
-                        actor=actor,
-                        actor_square=actor_square,
-                        enemy_combatant=destination_occupant,
-                        enemy_square=destination_square,
-                        execution_environment=board
-                    )
-                )
-            
-            if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece):
-                return BuildResult.success(
-                    KingCheckEvent(
-                        id=id_emitter.event_id,
-                        actor=actor,
-                        enemy_king=destination_occupant,
-                        enemy_square=destination_square,
-                        execution_environment=board
-                    )
-                )
+            return TravelEventFactory._process_occupied_square(
+                actor, actor_square, destination_occupant, destination_square, board
+            )
+        
         except Exception as e:
             return BuildResult(exception=e)
+    
+    @staticmethod
+    @LoggingLevelRouter.monitor
+    def _process_empty_square(
+            actor: Piece, actor_square: Square, empty_square: Square, board: Board
+    ) -> BuildResult[TravelEvent]:
+        if isinstance(actor, PromotablePiece) and (
+                not isinstance(actor.rank, Queen) and
+                actor.current_position.row == actor.team.schema.enemy_schema.rank_row and
+                actor.current_position.row == empty_square.coord.row
+        ):
+            return BuildResult.success(
+                PromotionEvent(
+                    actor=actor,
+                    id=id_emitter.event_id,
+                    actor_square=actor_square,
+                    promotion_square=empty_square,
+                    execution_environment=board
+                )
+            )
+        
+        return BuildResult.success(
+            OccupationEvent(
+                actor=actor,
+                id=id_emitter.event_id,
+                actor_square=actor_square,
+                destination_square=empty_square,
+                execution_environment=board
+            )
+        )
+    
+    @staticmethod
+    @LoggingLevelRouter.monitor
+    def _process_occupied_square(
+            actor: Piece, actor_square: Square, destination_occupant: Piece, destination_square: Square, board: Board
+    ) -> BuildResult[TravelEvent]:
+        if not actor.is_enemy(destination_occupant):
+            return BuildResult.success(
+                BlockingEvent(
+                    actor=actor,
+                    id=id_emitter.event_id,
+                    friend=destination_occupant,
+                    blocked_square=destination_square,
+                    execution_environment=board
+                )
+            )
+        
+        if actor.is_enemy(destination_occupant) and isinstance(destination_occupant, KingPiece):
+            return BuildResult.success(
+                KingCheckEvent(
+                    actor=actor,
+                    id=id_emitter.event_id,
+                    enemy_king=destination_occupant,
+                    enemy_square=destination_square,
+                    execution_environment=board
+                )
+            )
+        
+        return BuildResult.success(
+            AttackEvent(
+                actor=actor,
+                id=id_emitter.event_id,
+                actor_square=actor_square,
+                enemy_square=destination_square,
+                enemy_combatant=cast(CombatantPiece, destination_occupant),
+                execution_environment=board
+            )
+        )

@@ -1,11 +1,11 @@
-from chess.piece import PromotionEventValidator, TravelEvent, TravelTransaction
+from chess.piece import OccupationTransaction, PromotionEventValidator, TravelEvent, TravelTransaction
 from chess.piece.travel.promotion.event import PromotionEvent
 from chess.system import LoggingLevelRouter, TransactionResult
 
 
-class PromotionTransaction(TravelTransaction[PromotionEvent]):
+class PromotionTransaction(OccupationTransaction[PromotionEvent]):
     
-    def __init__(self, event: TravelEvent):
+    def __init__(self, event: PromotionEvent):
         super().__init__(event)
     
     @LoggingLevelRouter.monitor
@@ -18,6 +18,7 @@ class PromotionTransaction(TravelTransaction[PromotionEvent]):
             if event_validation.failure():
                 return TransactionResult.errored(event_update=self.event, exception=event_validation.exception)
             
+        
            self.event.actor.promote()
            if not isinstance(self.event.actor.rank, Queen):
                return TransactionResult.roll_back(
