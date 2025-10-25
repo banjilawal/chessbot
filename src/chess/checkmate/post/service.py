@@ -13,10 +13,10 @@ class KingCheckDeliveryService:
     
     @staticmethod
     @LoggingLevelRouter.monitor
-    def receive_record(submitter: Piece, record: KingCheckRecord) -> SubmissionReceipt:
+    def receive_record(record: KingCheckRecord) -> SubmissionReceipt:
         pass
     
     @staticmethod
     @LoggingLevelRouter.monitor
-    def post_record(record_table: KingCheckRecordTable, poster: Piece, record: KingCheckRecord) -> PostConfirmation:
+    def post_record(record_table: KingCheckRecordTable, poster: Piece, record: KingCheckRecord) -> Result[KingCheckPosting]:
         pass

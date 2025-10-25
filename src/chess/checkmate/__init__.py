@@ -11,4 +11,4 @@ from .post import *
 from .publish import *
 from .exception import *
 
-from .record import KingCheckRecord
+from .record import CheckRecord

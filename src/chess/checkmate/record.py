@@ -1,7 +1,7 @@
 from chess.coord import Coord
 
 
-class KingCheckRecord:
+class CheckRecord:
     _poster_id: int
     _poster_name: str
     _poster_position: Coord
@@ -54,7 +54,7 @@ class KingCheckRecord:
             return True
         if other is None:
             return False
-        if isinstance(other, KingCheckRecord):
+        if isinstance(other, CheckRecord):
             return (
                 (self._poster_id == other._poster_id and self._poster_position == other.poster_position) and
                 (self._king_id == other._king_id and self._king_position == other.king_position)
