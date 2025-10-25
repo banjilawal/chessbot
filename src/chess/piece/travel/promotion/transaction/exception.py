@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import RollbackException
-from chess.piece import OccupationTransactionException
+from chess.piece import OccupationTransactionException, TravelTransactionException
 
 __all__ = [
     'PromotionTransactionException',
@@ -17,7 +17,7 @@ __all__ = [
     'FailedSetRankToQueenRolledBackException'
 ]
 
-class PromotionTransactionException(OccupationTransactionException):
+class PromotionTransactionException(TravelTransactionException):
     ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
     DEFAULT_MESSAGE = "PromotionTransaction raised an exception."
     

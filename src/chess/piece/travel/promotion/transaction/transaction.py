@@ -11,12 +11,12 @@ version: 1.0.0
 from chess.rank import Queen
 from chess.system import LoggingLevelRouter, TransactionResult
 from chess.piece import (
-    OccupationTransaction, PromotionEventValidator, PromotionEvent, FailedPreviousRankUpdateRolledBackException,
+    TravelTransaction, PromotionEvent, PromotionEventValidator, FailedPreviousRankUpdateRolledBackException,
     FailedSetRankToQueenRolledBackException
 )
 
 
-class PromotionTransaction(OccupationTransaction[PromotionEvent]):
+class PromotionTransaction(TravelTransaction[PromotionEvent]):
     """"""
     def __init__(self, event: PromotionEvent):
         super().__init__(event)
