@@ -18,7 +18,14 @@ class PromotionTransaction(TravelTransaction[PromotionEvent]):
             if event_validation.failure():
                 return TransactionResult.errored(event_update=self.event, exception=event_validation.exception)
             
-            promoted_piece = cast()
+           self.event.actor.promote()
+           if not isinstance(self.event.actor.rank, Queen):
+               return TransactionResult.roll_back(
+                   event_update=self.event,
+                   exception=FailedPromotionRolledBackException(f"{method}: Failed to promote {event.actor.rank} to Queen.")
+               )
+            
             return TransactionResult.success(event_update=self.event)
         except Exception as e:
             return TransactionResult.errored(event_update=self.event, exception=e)
+

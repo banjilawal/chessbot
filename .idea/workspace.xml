@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/transaction/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/transaction/excpetion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/transaction/transaction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/model/promotable/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/model/promotable/pawn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/model/promotable/promotable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/combatant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/combatant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/promotable/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/piece.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/attack/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/attack/transaction/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/blocking/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/blocking/transaction/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/check/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/check/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/check/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/check/transaction/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/check/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/check/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/occupation/transaction/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/promotion/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/promotion/transaction/transaction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +260,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece/travel/promotion",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece/model/promotable",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -288,18 +287,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece/model/promotable" />
+      <recent name="$PROJECT_DIR$/src/chess/piece/model" />
       <recent name="$PROJECT_DIR$/src/chess/piece/travel/promotion" />
       <recent name="$PROJECT_DIR$/src/chess/board/search" />
       <recent name="$PROJECT_DIR$/src/chess/piece/validation" />
-      <recent name="$PROJECT_DIR$/src/chess/team/dto" />
-      <recent name="$PROJECT_DIR$/src/chess/piece/dto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece/model/promotable" />
       <recent name="$PROJECT_DIR$/src/chess/piece/travel/promotion/transaction" />
       <recent name="$PROJECT_DIR$/src/chess/piece/travel/base" />
       <recent name="$PROJECT_DIR$/src/chess/system" />
       <recent name="$PROJECT_DIR$/src/chess/piece/travel/check" />
-      <recent name="$PROJECT_DIR$/src/chess/piece/model" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exception (1)">
@@ -627,7 +626,8 @@
       <workItem from="1761253936774" duration="616000" />
       <workItem from="1761265434191" duration="16665000" />
       <workItem from="1761292693108" duration="17762000" />
-      <workItem from="1761323347042" duration="1977000" />
+      <workItem from="1761323347042" duration="3511000" />
+      <workItem from="1761338123078" duration="9749000" />
     </task>
     <servers />
   </component>

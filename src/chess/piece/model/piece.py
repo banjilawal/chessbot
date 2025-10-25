@@ -63,6 +63,7 @@ class Piece(ABC):
   @LoggingLevelRouter.monitor
   def __init__(self, id: int, name: str, rank: Rank, team: Team):
     method = "Piece.__init__"
+    
     self._id = id
     self._name = name
     self._team = team
@@ -97,7 +98,7 @@ class Piece(ABC):
   @property
   def rank(self) -> 'Rank':
     return self._rank
-
+  
 
   @property
   def positions(self) -> CoordStack:
@@ -112,7 +113,12 @@ class Piece(ABC):
   @property
   def discoveries(self) -> List[Discovery]:
     return self._discoveries
-
+  
+  def _set_rank(self, rank: Rank) -> None:
+    self._rank = rank
+  
+  def is_enemy(self, piece: 'Piece') -> bool:
+    return self._team != piece.team
 
   def __eq__(self, other: object) -> bool:
     if other is self:
@@ -130,13 +136,8 @@ class Piece(ABC):
     return hash(self._id)
 
 
-  def is_enemy(self, piece: 'Piece') -> bool:
-    return self._team != piece.team
 
 
-  def record_discovery(self, discovery: Discovery):
-    if discovery not in self._discoveries:
-      self._discoveries.record_discovery(discovery)
 
 
 

@@ -14,14 +14,12 @@ Notes:
 """
 from typing import cast
 
-from chess.board import FailedRemovalFromBoardRolledBackException
 from chess.piece import (
-    AttackEvent, AttackEventValidator, FailedEnemyRemovalFromSquareRolledBackException,
-    FailedRemovalFromRosterRolledBackException,
-    FailedSettingActorAsEnemyCaptorRolledBackException,
-    OccupationEvent, OccupationTransaction, TravelTransaction
+    AttackEvent, AttackEventValidator, OccupationTransaction, TravelTransaction, FailedEnemyRemovalFromSquareRolledBackException,
+    FailedRemovalFromRosterRolledBackException, FailedSettingActorAsEnemyCaptorRolledBackException, OccupationEvent,
+    FailedHostageAdditionRolledBackException, FailedRemovalFromBoardRolledBackException
 )
-from chess.piece.travel.check.transaction import FailedHostageAdditionRolledBackException
+from chess.piece.travel.check.transaction import
 from chess.system import LoggingLevelRouter, TransactionResult, id_emitter
 from chess.team import RemoveTeamMemberRolledBackException
 

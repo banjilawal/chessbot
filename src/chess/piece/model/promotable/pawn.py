@@ -23,12 +23,13 @@ Notes:
 
 from typing import Callable, Optional, cast
 
-from chess.piece import Piece
+from chess.piece import CombatantPiece, Piece
+from chess.piece.model.promotable.promotable import PromotablePiece
 from chess.rank import Rank
 from chess.team import Team
 
 
-class CombatantPiece(Piece):
+class PawnPiece(CombatantPiece, PromotablePiece):
   _captor: Optional[Piece]
 
 
@@ -48,7 +49,8 @@ class CombatantPiece(Piece):
 
 
   def __eq__(self, other):
-    if super().__eq__(other):
+    if not super().__eq__(other):
+      return False
     if isinstance(other, CombatantPiece):
       return True
     return False

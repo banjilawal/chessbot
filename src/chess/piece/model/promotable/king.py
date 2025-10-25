@@ -1,12 +1,13 @@
 from typing import List
 
+from chess import rank
 from chess.piece.checker import Checker
+from chess.piece.model.promotable import PromotablePiece
 from chess.rank import Rank
 from chess.team import Team
-from chess.piece import Piece
 
 
-class KingPiece(Piece):
+class KingPiece(PromotablePiece):
   _is_checked: bool
   _is_checkmated: bool
   _checkers: List[Checker] = []
