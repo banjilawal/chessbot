@@ -54,25 +54,25 @@ class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
   never be null.
   """
   ERROR_CODE = "PIECE_TEAM_FIELD_NULL_ERROR"
-  DEFAULT_MESSAGE = "Piece.team field is null. It should never be null. There may be data inconsistency."
+  DEFAULT_MESSAGE = "Piece.team field is null. It should never be null. There may be service inconsistency."
 
 
 class PieceMissingCoordStackException(PieceException, InconsistencyException):
   """
-  Raised if `piece.positions` stack does not exist. If the `piece.positions == null there is data inconsistency
+  Raised if `piece.positions` stack does not exist. If the `piece.positions == null there is service inconsistency
   or loss.
   """
   ERROR_CODE = "PIECE_COORD_STACK_MISSING_ERROR"
-  DEFAULT_MESSAGE = "Piece.positions list is null. It should never be null. There may be data inconsistency or loss."
+  DEFAULT_MESSAGE = "Piece.positions list is null. It should never be null. There may be service inconsistency or loss."
 
 
 class PieceMissingDiscoveriesException(PieceException, InconsistencyException):
   """
-  Raised if `piece.discovery` list does not exist. If the `piece.discoveries == null there is data inconsistency
+  Raised if `piece.discovery` list does not exist. If the `piece.discoveries == null there is service inconsistency
   or loss.
   """
   ERROR_CODE = "PIECE_DISCOVERY_LIST_MISSING_ERROR"
-  DEFAULT_MESSAGE = "Piece.discovery list is null. It should never be null. There may be data inconsistency or loss."
+  DEFAULT_MESSAGE = "Piece.discovery list is null. It should never be null. There may be service inconsistency or loss."
 
 
 class UnregisteredTeamMemberException(PieceException):
@@ -84,10 +84,10 @@ class UnregisteredTeamMemberException(PieceException):
 class PieceRosterNumberIsNullException(PieceException, NullException):
   """
   Raised a piece's roster number is null. This should never happen. the invariant roster number
-  is set during build. If its null during validator there has been data loss or an inconsistency.
+  is set during build. If its null during validator there has been service loss or an inconsistency.
   """
   ERROR_CODE = "PIECE_NULL_ROSTER_NUMBER_ERROR"
-  DEFAULT_MESSAGE = "A `Piece` object cannot have a null roster number. There may be data inconsistency or loss."
+  DEFAULT_MESSAGE = "A `Piece` object cannot have a null roster number. There may be service inconsistency or loss."
 
 
 class PieceRankOutOfBoundsException(PieceException, NullException):

@@ -14,7 +14,7 @@ This module provides a satisfaction of the `ChessBot` performance requirement.
 The module covers old_search service providers.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to old_search providers.  between data owners and information requesters.
+  1. The module is limited to old_search providers.  between service owners and information requesters.
   2. The module does not provide any logic or directions on how the old_search providers implement their service.
 
 # SECTION 4 - Design Considerations and Themes:
@@ -28,7 +28,7 @@ The major theme influencing the modules design are
 1. Fast old_search
 
 # SECTION G - Feature Delivery Mechanism:
-The module provides an interface that can separate old_search responsibilities from data management responsibilities.
+The module provides an interface that can separate old_search responsibilities from service management responsibilities.
 
 
 # SECTION 7 - Dependencies:
@@ -95,10 +95,10 @@ class Search(ABC, Generic[A, S, R]):
       """
       Validates provided filter. Returns first match.
       Args:
-      - `collection_master` (`M`): The data owning entity.
-      - `data_set` (`D`): The data collection searched.
+      - `collection_master` (`M`): The service owning entity.
+      - `data_set` (`D`): The service collection searched.
       - `filter` (`F`): The old_search filter to hit,
-      - `search_context` (`C`): List of data set attributes.
+      - `search_context` (`C`): List of service set attributes.
       Returns:
         `SearchResult[`T`]`
   

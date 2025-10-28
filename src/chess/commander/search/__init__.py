@@ -2,7 +2,7 @@
 Search Package - Search Entities
 
 PURPOSE:
-  Separates old_search responsibilites from state mamangement, and data holding object.
+  Separates old_search responsibilites from state mamangement, and service holding object.
 
 CORE CLASSES:
   BoardPieceSearch

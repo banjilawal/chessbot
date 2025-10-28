@@ -13,11 +13,11 @@ This module provides:
   2. A satisfaction of the performance requirement.
 
 # SECTION 2 - Scope:
-The module covers clients servers, and data owners in the `ChessBot` old_search domain.
+The module covers clients servers, and service owners in the `ChessBot` old_search domain.
 
 # SECTION 3 - Limitations:
   1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of data in the notification.
+  2. The module does not guarantee the accuracy or precision of service in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are

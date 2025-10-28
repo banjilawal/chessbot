@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## Purpose
-Provides the data structures and utilities for storing history of `Piece` object's positions.
+Provides the service structures and utilities for storing history of `Piece` object's positions.
 
 ## Classes
   * `CoordStack`: Coordinate history and management utility. Only the last `Coord` can be removed in team turn.

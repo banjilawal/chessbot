@@ -6,17 +6,15 @@ Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0
 """
-from chess.system import LoggingLevelRouter
+
+from chess.checkmate import CheckRecord, CheckRecordTable
+from chess.system import LoggingLevelRouter, Result
 
 
-class KingCheckDeliveryService:
+class CheckPostalService:
     
-    @staticmethod
-    @LoggingLevelRouter.monitor
-    def receive_record(record: KingCheckRecord) -> SubmissionReceipt:
-        pass
     
-    @staticmethod
+
     @LoggingLevelRouter.monitor
-    def post_record(record_table: KingCheckRecordTable, poster: Piece, record: KingCheckRecord) -> Result[KingCheckPosting]:
+    def post_record(self) -> Result[CheckRecord]:
         pass

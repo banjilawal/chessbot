@@ -19,7 +19,7 @@ Usage:
   ```
 
 See Also:
-  `Square`: The data structure being constructed
+  `Square`: The service structure being constructed
   `SquareValidator`: Used for validating existing `Square` instances
   `BuildResult`: Return type containing the built `Square` or error information
 """
@@ -74,12 +74,12 @@ Example:
 #
 # ## PURPOSE
 # This package provides foundational objects for the chess board_validator. It defines the `Square` class,
-# which serves as team data container for storing team discover's location, and team `SquareValidator` to ensure
+# which serves as team service container for storing team discover's location, and team `SquareValidator` to ensure
 # the integrity of square objects.
 #
 # ## CORE CLASSES
-# * `Square`: A data-holding object representing team single square on team chessboard.
-# * `SquareValidator`: A class that validates the data and integrity of team `Square` object.
+# * `Square`: A service-holding object representing team single square on team chessboard.
+# * `SquareValidator`: A class that validates the service and integrity of team `Square` object.
 #
 # ## USAGE
 # To use this package, import the desired classes and perform square-related operations.
@@ -139,7 +139,7 @@ Raises:
   `InvalidSquareException`: Wraps any preceding exceptions
 """
 
-"""A data-holding object representing team single square on team chessboard.
+"""A service-holding object representing team single square on team chessboard.
 
 A `Square` can store team `Piece` object. All fields are immutable except for
 the `occupant`, which is managed by the `ChessBoard`.

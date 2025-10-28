@@ -7,15 +7,15 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## Purpose
-Provides the fundamental data structures for game pieces and entities owned by team game piece.
+Provides the fundamental service structures for game pieces and entities owned by team game piece.
 
 ## Core Classes
   * `Piece`: Abstract base class for all chess pieces
   * `CombatantPiece`: Concrete piece that can be captured
   * `KingPiece`: Concrete king piece with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-  * `Encounter`: A record of an item discovered by team `Piece` during team blocking or move.
-  * `EncounterScan`: A data-holding object representing team single blocking of team chess piece's surroundings.
+  * `Encounter`: A check of an item discovered by team `Piece` during team blocking or move.
+  * `EncounterScan`: A service-holding object representing team single blocking of team chess piece's surroundings.
 
 ## Usage
 ```python

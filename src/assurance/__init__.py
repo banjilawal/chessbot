@@ -8,7 +8,7 @@ exceptions in the project should inherit. This allows for team clean and
 consistent way to handle exceptions across different modules and layers
 of the application.
 
-The package includes specific validate exceptions for system data types,
+The package includes specific validate exceptions for system service types,
 such as `RankValidationException` and `InvalidIdException`, promoting
 predictable error handling and clear communication of validate failures.
 """

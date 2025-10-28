@@ -105,11 +105,11 @@ class NullBoardException(BoardException, NullException):
 
 class BoardNullPieceCollectionException(BoardException, NullException):
   ERROR_CODE = "BOARD_NULL_PIECE_COLLECTION_ERROR"
-  DEFAULT_MESSAGE = "The board_validator cannot have its pieces collection null. There may be a data inconsistency."
+  DEFAULT_MESSAGE = "The board_validator cannot have its pieces collection null. There may be a service inconsistency."
 
 class BoardNullSquareCollectionException(BoardException, NullException):
   ERROR_CODE = "BOARD_NULL_SQUARE_COLLECTION_ERROR"
-  DEFAULT_MESSAGE = "The board_validator cannot have its squares collection null. There may be a data inconsistency."
+  DEFAULT_MESSAGE = "The board_validator cannot have its squares collection null. There may be a service inconsistency."
 
 class InvalidBoardException(BoardException, ValidationException):
   """
@@ -159,7 +159,7 @@ class FailedPieceAdditionRolledBackException(BoardRollBackException):
 class InconsistentBoardException(BoardException, InconsistencyException):
   """Raised if team board_validator fails any collection consistency checks"""
   ERROR_CODE = "INCONSISTENT_BOARD_ERROR"
-  DEFAULT_MESSAGE = "The board is in an inconsistent state. data might be corrupted."
+  DEFAULT_MESSAGE = "The board is in an inconsistent state. service might be corrupted."
 
 class BoardInvariantBreachException(BoardException, InvariantBreachException):
   """
@@ -168,19 +168,19 @@ class BoardInvariantBreachException(BoardException, InvariantBreachException):
   assumptions about its internal state are no longer valid.
   """
   DEFAULT_CODE = "BOARD_INVARIANT_BREACH_ERROR"
-  DEFAULT_MESSAGE = "A Board invariant was breached, There may be a critical state inconsistency. or data loss."
+  DEFAULT_MESSAGE = "A Board invariant was breached, There may be a critical state inconsistency. or service loss."
 
 
 class CoordSearchInvariantBreachException(BoardInvariantBreachException):
   """"""
   DEFAULT_CODE = "INVARIANT_SQUARE_BREACH_ERROR"
   DEFAULT_MESSAGE = (
-    "A square invariant on the board was breached, There may be a critical state inconsistency. or data loss."
+    "A square invariant on the board was breached, There may be a critical state inconsistency. or service loss."
   )
 
 class SquareIdSearchInvariantBreachException(BoardInvariantBreachException):
   """"""
   DEFAULT_CODE = "INVARIANT_COORD_BREACH_ERROR"
   DEFAULT_MESSAGE = (
-    "A coord invariant on the board was breached, There may be a critical state inconsistency. or data loss."
+    "A coord invariant on the board was breached, There may be a critical state inconsistency. or service loss."
   )

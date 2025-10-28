@@ -18,7 +18,7 @@ The module covers `Result` object in `ChessBot``.
 
 # SECTION 3 - Limitations:
   1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of data in the notification.
+  2. The module does not guarantee the accuracy or precision of service in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -30,7 +30,7 @@ The major theme influencing the modules design are
 
 
 # 6 Feature Delivery Mechanism:
-  1. A data structure accessors and data generators can use to send either a data or an rollback_exception to the caller.
+  1. A service structure accessors and service generators can use to send either a service or an rollback_exception to the caller.
       this prevents the application crashing when an error occurs but preservers the rollback_exception for safe handling.
 
 # SECTION 7 - Dependencies:
@@ -53,14 +53,14 @@ class Result(Generic[T]):
   # ROLE: Message passing, Data Transfer Object
 
   # RESPONSIBILITIES:
-  1. Carry the outcome of a data access or data generation operation to the caller.
-  2. Transporting errors from the data source to the requester for handling that preserves reliability and availability.
+  1. Carry the outcome of a service access or service generation operation to the caller.
+  2. Transporting errors from the service source to the requester for handling that preserves reliability and availability.
 
   # PROVIDES:
   1.
 
   # Attributes:
-    `_payload` (`Optional`[`T`]): Data from the accessor or data generator if their operations were successful.
+    `_payload` (`Optional`[`T`]): Data from the accessor or service generator if their operations were successful.
     `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
   """
   _payload: Optional[T]

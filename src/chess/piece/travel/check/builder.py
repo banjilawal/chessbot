@@ -32,7 +32,7 @@ class CheckEventBuilder(Enum):
     ```
 
   See Also:
-    `KingCheckEvent`: The data structure being constructed
+    `KingCheckEvent`: The service structure being constructed
     `AttackEventValidator`: Used for validating existing `KingCheckEvent` instances
     `BuildResult`: Return type containing the built `KingCheckEvent` or error information
   """

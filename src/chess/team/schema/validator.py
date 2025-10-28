@@ -9,7 +9,7 @@ Created: 2025-10-08
 -------
 ***Limitation 1***: This module cannot prevent classes, processes or modules using `TeamSchema`
     instances that pass sanity checks will not fail when using the validated `TeamSchema`.
-    Once client's processes might fail, experience data inconsistency or have other
+    Once client's processes might fail, experience service inconsistency or have other
     faults.
 
 ***Limitation 2***: Objects authenticated by `TeamSchemaValidator` might fail additional requirements

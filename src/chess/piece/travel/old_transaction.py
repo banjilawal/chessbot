@@ -226,7 +226,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         describing the failure.
 
     Raises:
-    Errors raised will be about data and state inconsistencies OccupationException: Wraps any errors including:
+    Errors raised will be about service and state inconsistencies OccupationException: Wraps any errors including:
       -
 
     Note:
@@ -302,7 +302,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         describing the failure.
 
     Raises:
-    Errors raised will be about data and state inconsistencies OccupationException: Wraps any errors including:
+    Errors raised will be about service and state inconsistencies OccupationException: Wraps any errors including:
       -
     Note:
     """

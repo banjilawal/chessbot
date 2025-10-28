@@ -139,7 +139,7 @@ class CartesianDistance(BaseModel):
     return ((p.row - q.row) ** 2) + ((p.column - q.column) ** 2)
 
 
-# Import necessary models from the main data definition library for type hinting
+# Import necessary models from the main service definition library for type hinting
 from data_definition_library import Coordinate, ChessPiece
 
 
@@ -294,11 +294,11 @@ class CoordinateStack(BaseModel):
 
 class Rank(BaseModel):
   """
-  An immutable data model for team ChessPiece's validate, defining its identity.
+  An immutable service model for team ChessPiece's validate, defining its identity.
   """
   rank_name: str = Field(...)
   capture_value: int = Field(..., ge=0)
-  # Note: The `Walk` logic is handled by separate classes, not included in the data model.
+  # Note: The `Walk` logic is handled by separate classes, not included in the service model.
 
   class Config:
     frozen = True
@@ -356,7 +356,7 @@ class ChessBoard(BaseModel):
 
 
 # --- Engine-Related Data Models ---
-# These models represent the data structures used by the game AI.
+# These models represent the service structures used by the game AI.
 
 class ScoutReport(BaseModel):
   """

@@ -13,7 +13,7 @@ This package contains the foundational objects for representing and validating s
 
 ## CORE CLASSES
 * `Scalar`: A class representing team single numeric value used for scaling operations.
-* `ScalarValidator`: A class that validates the data and integrity of team `Scalar` object.
+* `ScalarValidator`: A class that validates the service and integrity of team `Scalar` object.
 
 ## USAGE
 To use this package, import the desired classes and perform scalar-related operations.
@@ -51,7 +51,7 @@ This package defines specific exceptions for issues encountered when working wit
 * `InvalidScalarException`: A general team_exception raised when team scalar value fails to meet its validate criteria.
 
 ### EXCEPTION USAGE EXCEPTIONS
-These exceptions can be imported and raised from within the scalar-related code to enforce data integrity.
+These exceptions can be imported and raised from within the scalar-related code to enforce service integrity.
 
 >>> from chess.scalar import Scalar, NullScalarException, ScalarAboveBoundsException
 >>>

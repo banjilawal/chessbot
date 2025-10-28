@@ -10,11 +10,11 @@ Updated: 2025-10-10
 This module provides a satisfaction of the `ChessBot` performance requirement.
 
 # SECTION 2 - Scope:
-The module covers old_search service providers, data owners and information requesters.
+The module covers old_search service providers, service owners and information requesters.
 
 # SECTION 3 - Limitations:
   1. The module does not provide any attributes or actionable code. Properties in a
-     data owner's collection determine what is in the SearchContext
+     service owner's collection determine what is in the SearchContext
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -28,7 +28,7 @@ The major theme influencing the modules design are
 
 
 # SECTION G - Feature Delivery Mechanism:
-The module provides a data structure for passing old_search for filtering the data owner's collection.
+The module provides a service structure for passing old_search for filtering the service owner's collection.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:

@@ -10,7 +10,7 @@ Updated: 2025-10-08
 -------
 **Limitation**: This module cannot prevent classes, processes or modules using `Team`
     instances that pass sanity checks will not fail when using the validated `Team`.
-    Once client's processes might fail, experience data inconsistency or have other
+    Once client's processes might fail, experience service inconsistency or have other
     faults.
 **Limitation**: Objects authenticated by `TeamValidator` might fail additional requirements
     a client has for a `Team`. It is the client's responsibility to ensure the validated

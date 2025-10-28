@@ -20,8 +20,8 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
       `chess.system.travel.notification` is responsible for the `Event` lifecycle.
-  2. The module does not verify the correctness of data control or routing information it contains. Directly using the
-      module can breach data integrity, propagate inconsistencies or negatively impact performance. Use a
+  2. The module does not verify the correctness of service control or routing information it contains. Directly using the
+      module can breach service integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `chess.system.id.auto_id` module.

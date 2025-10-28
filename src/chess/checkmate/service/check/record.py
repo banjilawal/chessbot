@@ -1,7 +1,17 @@
+# src/chess/checkmate/check.py
+
+"""
+Module: chess.checkmate.check.check
+Author: Banji Lawal
+Created: 2025-10-24
+version: 1.0.0
+"""
+
 from chess.coord import Coord
 
 
 class CheckRecord:
+    _id: int
     _poster_id: int
     _poster_name: str
     _poster_position: Coord
@@ -10,6 +20,7 @@ class CheckRecord:
     _king_position: Coord
     
     def __init__(self,
+            id: int,
             poster_id: int,
             poster_name: str,
             poster_position: Coord,
@@ -17,12 +28,17 @@ class CheckRecord:
             king_name: str,
             king_position: Coord
     ):
+        self._id = id
         self._poster_id = poster_id
         self._poster_name = poster_name
         self._poster_position = poster_position
         self._king_id = king_id
         self._king_name = king_name
         self._king_position = king_position
+        
+    @property
+    def id(self) -> int:
+        return self._id
         
     @property
     def poster_id(self) -> int:
@@ -48,19 +64,18 @@ class CheckRecord:
     def king_position(self) -> Coord:
         return self._king_position
     
-     
     def __eq__(self, other):
         if other is self:
             return True
         if other is None:
             return False
         if isinstance(other, CheckRecord):
-            return (
-                (self._poster_id == other._poster_id and self._poster_position == other.poster_position) and
-                (self._king_id == other._king_id and self._king_position == other.king_position)
-            )
+            return self._id == other.id
         return False
-        
+    
+    def __hash__(self):
+        return hash(self._id)
+    
     def __str__(self):
         return (
             f"poster_id:{self._poster_id}, "

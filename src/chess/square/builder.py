@@ -10,7 +10,7 @@ Updated: 2025-10-10
 This module provides a satisfaction of the `ChessBot` integrity requirement.
 
 # SECTION 2 - Scope:
-The module covers Building `Square` objects which do not introduce inconsistencies to the data.
+The module covers Building `Square` objects which do not introduce inconsistencies to the service.
 
 # SECTION 3 - Limitations:
   1. The module does not provide any actionable code.

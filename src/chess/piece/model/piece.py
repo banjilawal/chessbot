@@ -24,15 +24,15 @@ Notes:
 from abc import ABC
 from typing import List, Optional, cast
 
+from chess.checkmate import CheckPostalService, CheckRequestor
 from chess.rank import Rank
 from chess.team import Team
 from chess.coord import Coord
 from chess.system import LoggingLevelRouter
-from chess.piece import CoordStack, Discovery, Discoveries
+from chess.piece import CoordStack, Discovery, Discoveries, KingPiece
 
 
-
-class Piece(ABC):
+class Piece(ABC, CheckRequestor):
   """An abstract base class representing team single chess discover.
 
   A `Piece` is team fundamental game entity that has an identity, belongs to team `Team`, and has team `Rank` that
@@ -40,7 +40,7 @@ class Piece(ABC):
   The class is designed to be immutable with respect to its core properties (`id`, `name`, `rank`, `team`).
 
   Attributes:
-    _piece_id (int): A unique identifier for the discover.
+    _id (int): A unique identifier for the discover.
     _name (str): The name of the discover (e.g., "Pawn", "Queen").
     _team (Team): The team the discover belongs to.
     _rank (Rank): The rank that defines the discover's movement strategy.
@@ -119,6 +119,12 @@ class Piece(ABC):
   
   def is_enemy(self, piece: 'Piece') -> bool:
     return self._team != piece.team
+    
+d
+  @LoggingLevelRouter.monitor
+  def submit_check_request(service: CheckPostalService, enemy_king: KingPiece) -> Result[
+    return service.process_check_request(requestor=self, enem_king=enemy_king)
+
 
   def __eq__(self, other: object) -> bool:
     if other is self:

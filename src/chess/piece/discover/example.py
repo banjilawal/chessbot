@@ -8,15 +8,15 @@ version: 1.0.0
 
 
 ## Purpose
-Provides the fundamental data structures for game pieces and entities owned by team game piece.
+Provides the fundamental service structures for game pieces and entities owned by team game piece.
 
 ## Core Classes
   * `Piece`: Abstract base class for all chess pieces
   * `CombatantPiece`: Concrete piece that can be captured
   * `KingPiece`: Concrete king piece with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-  * `Checker`: A record of an item discovered by team `Piece` during team blocking or move.
-  * `DiscoveryScan`: A data-holding object representing team single blocking of team chess piece's surroundings.
+  * `Checker`: A check of an item discovered by team `Piece` during team blocking or move.
+  * `DiscoveryScan`: A service-holding object representing team single blocking of team chess piece's surroundings.
 
 ## Usage
 ```python
@@ -70,7 +70,7 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
   * `DiscoveryBuilderException`: Raised if there is an error during when `DiscoveryBuilder` is creating team new `Checker`
     instance.
   * `NullDiscoveryBuilderException`: Raised if there is null `DiscoveryBuilder` is passed as team parameter.
-  * `AutoDiscoveryException`: Raised if team `Piece` object tries to create an discover record about itself.
+  * `AutoDiscoveryException`: Raised if team `Piece` object tries to create an discover check about itself.
 
 
 ### PIECE EXCEPTION USAGE EXAMPLES

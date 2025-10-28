@@ -30,7 +30,7 @@ class ScalarBuilder(Builder[Scalar]):
     ```
 
   See Also:
-    `Scalar`: The data structure being constructed
+    `Scalar`: The service structure being constructed
     `ScalarValidator`: Used for validating existing `Scalar` instances
     `BuildResult`: Return type containing the built `Scalar` or error information
   """

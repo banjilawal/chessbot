@@ -29,7 +29,7 @@ Usage:
   ```
 
 See Also:
-  `Team`: The data structure being constructed
+  `Team`: The service structure being constructed
   `TeamValidator`: Used for validating existing `Team` instances
   `BuildResult`: Return type containing the built `Team` or error information
 """

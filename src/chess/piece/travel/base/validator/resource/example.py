@@ -43,7 +43,7 @@
 # board = cast(Board, environment_validation.payload)
 #
 # # Check if the square is on the board. If there is going to be a problem finding the square on
-# # the board an earlier check was likely to fail. If this fails there is probably a data integrity
+# # the board an earlier check was likely to fail. If this fails there is probably a service integrity
 # # or consistency problem.
 # square_search = BoardSquareSearch.search(
 #   board=board,

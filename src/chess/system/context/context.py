@@ -46,14 +46,14 @@ class Context(ABC):
   # ROLE: Message passing, Data Transfer Object
 
   # RESPONSIBILITIES:
-  1. Carry the outcome of a data access or data generation operation to the caller.
-  2. Transporting errors from the data source to the requester for handling that preserves reliability and availability.
+  1. Carry the outcome of a service access or service generation operation to the caller.
+  2. Transporting errors from the service source to the requester for handling that preserves reliability and availability.
 
   # PROVIDES:
   1.
 
   # Attributes:
-    `_payload` (`Optional`[`T`]): Data from the accessor or data generator if their operations were successful.
+    `_payload` (`Optional`[`T`]): Data from the accessor or service generator if their operations were successful.
     `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
   """
   """

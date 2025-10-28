@@ -59,7 +59,7 @@ class PieceValidator(Validator[Piece]):
                 return ValidationResult.failure(name_validation.exception)
             
             # A `Piece` instance must have its `team` field set. This immutable field should have been set during
-            # the build. If it's null there might be data loss or corruption.
+            # the build. If it's null there might be service loss or corruption.
             if piece.team is None:
                 return ValidationResult.failure(
                     PieceTeamFieldIsNullException(f"{method}: {PieceTeamFieldIsNullException.DEFAULT_MESSAGE}")

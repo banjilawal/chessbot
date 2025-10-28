@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-
+from abc import ABC
 from typing import Optional
 
 from chess.board import Board
@@ -15,7 +15,7 @@ from chess.square import Square
 from chess.piece import Piece, TravelEvent
 
 
-class OccupationEvent(TravelEvent):
+class OccupationEvent(ABC, TravelEvent):
     _actor_square: Square
     
     @LoggingLevelRouter.monitor

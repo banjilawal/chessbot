@@ -30,7 +30,7 @@ class DiscoveryBuilder(Enum):
     ```
   
   See Also:
-    `Checker`: The data structure being constructed
+    `Checker`: The service structure being constructed
     `DiscoveryValidator`: Used for validating existing `Checker` instances
     `BuildResult`: Return type containing the built `Checker` or error information
   """

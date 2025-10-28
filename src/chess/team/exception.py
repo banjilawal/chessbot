@@ -234,7 +234,7 @@ class TeamHostageListException(TeamException):
 class InconsistentHostageEntry(TeamHostageListException):
   """Raised on errors where a hostage shouldn't be in the  hostage list, i.e captor == null"""
   ERROR_CODE = "INCONSISTENT_HOSTAGE_ENTRY_ERROR"
-  DEFAULT_MESSAGE = "An enemy with no captor is in the hostage list. There may be inconsistent data."
+  DEFAULT_MESSAGE = "An enemy with no captor is in the hostage list. There may be inconsistent service."
 
 class InvalidFriendlyHostageException(TeamHostageListException):
   """Attempting to team friendly to the hostage list raises an rollback_exception."""

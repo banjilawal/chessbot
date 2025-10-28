@@ -109,7 +109,7 @@ class InvalidTravelResourceException(TravelResourceException, ValidationExceptio
 class TravelActorNotFoundException(TravelActorException, InconsistencyException):
   ERROR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate was not found during the board search. There may be a data inconsistency."
+    "TravelEvent actor_candidate was not found during the board search. There may be a service inconsistency."
   )
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
@@ -164,11 +164,11 @@ class TravelActorSquareNotFoundException(TravelActorException, InconsistencyExce
   """"""
   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "BoardSearch did not find a square associated with the actor_candidate's coord. There may be a data "
+    "BoardSearch did not find a square associated with the actor_candidate's coord. There may be a service "
     "inconsistency."
   )
 
 class SquareMisMatchesTravelActorException(TravelActorException, InconsistencyException):
   """"""
   ERROR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
-  DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a data inconsistency."
+  DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a service inconsistency."

@@ -162,7 +162,7 @@ class DiscoverySearchCollisionException(DiscoverySearchException, SearchCollisio
   DEFAULT_CODE = "DISCOVERY_SEARCH_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "DiscoverySearch results contains records with multiple records with properties that should be unique. There "
-    "may be data inconsistencies."
+    "may be service inconsistencies."
   )
 
 
@@ -170,47 +170,47 @@ class DiscoverySearchIdCollisionException(DiscoverySearchCollisionException):
   DEFAULT_CODE = "DISCOVERY_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "DiscoverySearch results contains has more than one match for the piece_id which should be unique. There "
-    "may be data inconsistencies."
+    "may be service inconsistencies."
   )
 
 class DiscoverySearchNameCollisionException(DiscoverySearchCollisionException):
   DEFAULT_CODE = "DISCOVERY_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "DiscoverySearch results contains has more than one match for discovery_name, which should be unique. There "
-    "may be data inconsistencies."
+    "may be service inconsistencies."
   )
 
 class DiscoverySearchCoordCollisionException(DiscoverySearchCollisionException):
   DEFAULT_CODE = "DISCOVERY_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "DiscoverySearch results contains has more than one match for discovery_position, which should be unique. There "
-    "may be data inconsistencies."
+    "may be service inconsistencies."
   )
 
 
 class SquareSearchIdCollisionException(SearchCollisionException):
   DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same id. There may be a data inconsistency."
+    "More than one Square found with the same id. There may be a service inconsistency."
   )
 
 
 class SquareSearchNameCollisionException(SearchCollisionException):
   DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same name. There may be a data collision"
+    "More than one Square found with the same name. There may be a service collision"
   )
 
 class SquareSearchCoordCollisionException(SearchCollisionException):
   DEFAULT_CODE = "SQUARE_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found at the same coordinate. There may be a data inconsistency."
+    "More than one Square found at the same coordinate. There may be a service inconsistency."
   )
 
 class TeamSearchIdCollisionException(SearchCollisionException):
   DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Team found with the same name. There may be a data inconsistency."
+    "More than one Team found with the same name. There may be a service inconsistency."
   )
 
 

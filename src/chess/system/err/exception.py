@@ -159,10 +159,10 @@ class ResourceException(ChessException):
 #======================# INCONSISTENCY EXCEPTIONS #======================#  
 class InconsistencyException(ChessException):
   """
-  Raised if team data inconsistency is detected
+  Raised if team service inconsistency is detected
   """
   ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
-  DEFAULT_MESSAGE = "A data inconsistency was detected."
+  DEFAULT_MESSAGE = "A service inconsistency was detected."
 
 class InvariantBreachException(ChessException):
   """
@@ -171,11 +171,11 @@ class InvariantBreachException(ChessException):
   assumptions about its internal state are no longer valid.
   """
   DEFAULT_CODE = "INVARIANT_BREACH_ERROR"
-  DEFAULT_MESSAGE = "A system invariant was violated, indicating a critical state inconsistency. or data loss."
+  DEFAULT_MESSAGE = "A system invariant was violated, indicating a critical state inconsistency. or service loss."
 
 class InconsistentCollectionException(InconsistencyException):
   """
-  Raised if a collection's state is inconsistent or its data corrupted
+  Raised if a collection's state is inconsistent or its service corrupted
   """
   ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
   DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."
