@@ -32,7 +32,7 @@ class NullCheckEventException(CheckEventException, NullException):
 class KingCheckingItselfException(CheckEventException):
   """"""
   ERROR_CODE = "KING_CAPTURING_IT_SELF_ERROR"
-  DEFAULT_MESSAGE = "A king cannot check itself."
+  DEFAULT_MESSAGE = "A occupation cannot check itself."
   
 class InvalidCheckEventException(CheckEventException, ValidationException):
   """"""

@@ -9,7 +9,7 @@ Purpose:
 
 Contents:
   - Piece: Abstract base class representing team chess piece with position and rank.
-  - KingPiece: Concrete subclass representing team king piece.
+  - KingPiece: Concrete subclass representing team occupation piece.
   - CombatantPiece: Concrete subclass representing team piece capable of capturing others.
   - CoordStack, Checker, Discoveries: Supporting classes for tracking piece positions
    and discoveries.

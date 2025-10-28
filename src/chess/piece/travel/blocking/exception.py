@@ -262,7 +262,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   """"""
 #   ERROR_CODE = "CHECK_MATED_KING_MOVE_ERROR"
 #   DEFAULT_MESSAGE = (
-#     "The king is checkmated. When a king is checkmated the game ends. If you are seeing this message "
+#     "The occupation is checkmated. When a occupation is checkmated the game ends. If you are seeing this message "
 #     "the win has not been processed correctly."
 #   )
 #

@@ -43,7 +43,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       `InvalidSquareException`: if `target` fails validator
 
       `AutoOccupationException`: if target already occupies the square
-      `KingAttackException`: if the target square is occupied by an enemy king
+      `KingAttackException`: if the target square is occupied by an enemy occupation
 
       `InvalidAttackEventException`: Wraps any preceding exceptions
     """

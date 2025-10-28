@@ -8,6 +8,5 @@ version: 1.0.0
 """
 
 from .exception import *
-from .king import KingPiece
 from .pawn import PawnPiece
 from .promotable import PromotablePiece

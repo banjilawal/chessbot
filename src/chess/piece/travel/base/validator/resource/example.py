@@ -23,7 +23,7 @@
 #   ))
 #
 # # A captured combatant cannot be a TravelEvent resource_candidate. No need for validating a checkmated
-# # king as an resource_candidate because the game ends when a king is in checkmate.
+# # occupation as an resource_candidate because the game ends when a occupation is in checkmate.
 # if isinstance(square, CombatantSquare) and square.captor is not None:
 #   return ValidationResult(rollback_exception=CapturedResourceCannotMoveException(
 #     f"{method}: {CapturedResourceCannotMoveException.DEFAULT_MESSAGE}"

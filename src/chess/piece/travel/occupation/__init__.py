@@ -7,8 +7,6 @@ Created: 2025-10-24
 version: 1.0.0
 """
 
-
-from .king import *
 from .combatant import *
 from .example import *
 from .exception import *

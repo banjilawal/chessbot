@@ -12,7 +12,7 @@ Provides the fundamental service structures for game pieces and entities owned b
 ## Core Classes
   * `Piece`: Abstract base class for all chess pieces
   * `CombatantPiece`: Concrete piece that can be captured
-  * `KingPiece`: Concrete king piece with special rules
+  * `KingPiece`: Concrete occupation piece with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
   * `Encounter`: A check of an item discovered by team `Piece` during team blocking or move.
   * `EncounterScan`: A service-holding object representing team single blocking of team chess piece's surroundings.
@@ -48,7 +48,7 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
     subclass instance that is null.
   * `NullKingPieceException`: Raised when team `kingPiece` reference is null
   * `NullCombatantPieceException`: Raised when team `CombatantPiece` is null.
-  * `DoublePromotionException`: Raised if there is an attempt to promotion team king or pawn that has already been
+  * `DoublePromotionException`: Raised if there is an attempt to promotion team occupation or pawn that has already been
     promoted.
 
 #### PIECE VALIDATION EXCEPTIONS

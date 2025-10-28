@@ -29,7 +29,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
       `InvalidSquareException`: if `target` fails validator
 
       `AutoOccupationException`: if target already occupies the square
-      `KingAttackException`: if the target square is occupied by an enemy king
+      `KingAttackException`: if the target square is occupied by an enemy occupation
 
       `InvalidOccupationEventException`: Wraps any preceding exceptions
     """

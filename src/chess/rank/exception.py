@@ -131,7 +131,7 @@ class BishopMovingException(RankException):
 
 class KingMovingException(RankException):
   ERROR_CODE = "KING_MOVING_ERROR"
-  DEFAULT_MESSAGE = "Invalid king move"
+  DEFAULT_MESSAGE = "Invalid occupation move"
 
 class KnightMovingException(RankException):
   ERROR_CODE = "KNIGHT_MOVING_ERROR"

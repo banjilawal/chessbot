@@ -247,10 +247,10 @@ class AddEnemyHostageException(TeamHostageListException):
   DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list"
 
 class AddEnemyKingHostageException(TeamHostageListException):
-  """Attempting to an enemy king to the hostage list raises an rollback_exception."""
+  """Attempting to an enemy occupation to the hostage list raises an rollback_exception."""
   ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR"
   DEFAULT_MESSAGE = (
-    "An enemy king cannot be added to the team's hostage list. Kings can only "
+    "An enemy occupation cannot be added to the team's hostage list. Kings can only "
     "be checked or checkmated"
   )
 
@@ -290,12 +290,12 @@ class AddEnemyHostageRolledBackException(TeamHostageListRolledBackException):
 
 class EnemyKingHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if team notification attempted adding an enemy king to the team's hostage list.
+  Raised if team notification attempted adding an enemy occupation to the team's hostage list.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "An enemy king cannot be added to the team's hostage list. Kings can only "
+    "An enemy occupation cannot be added to the team's hostage list. Kings can only "
     "be checked or checkmated."
   )
 

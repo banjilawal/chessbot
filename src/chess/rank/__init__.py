@@ -15,7 +15,7 @@ to be immutable once assigned.
 ## CORE CLASSES
 * `Rank`: The base class for all discover rank strategies.
 * `Bishop`: Provides movement validate for team bishop.
-* `King`: Provides movement validate for team king.
+* `King`: Provides movement validate for team occupation.
 * `Knight`: Provides movement validate for team knight.
 * `Pawn`: Provides movement validate for team pawn.
 * `Rook`: Provides movement validate for team rook.

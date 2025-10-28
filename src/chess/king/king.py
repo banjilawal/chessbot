@@ -1,7 +1,7 @@
-# src/chess/piece/model/promotable/king.py
+# src/chess/piece/model/promotable/occupation.py
 
 """
-Module: chess.piece.model.promotable.king
+Module: chess.piece.model.promotable.occupation
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

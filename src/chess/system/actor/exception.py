@@ -142,11 +142,11 @@ class CapturedActorCannotScanException(ActorException):
 
 class CheckMatedKingActivityException(ActorException):
   """
-  A checkmated king cannot act. The game should end once team king is checkmated
+  A checkmated occupation cannot act. The game should end once team occupation is checkmated
   """
   ERROR_CODE = "CHECKMATED_KING_ACTIVITY_ERROR"
   DEFAULT_MESSAGE = (
-    "A checkmated king cannot do anything. The game ends when team king is checkmated."
+    "A checkmated occupation cannot do anything. The game ends when team occupation is checkmated."
   )
 
 

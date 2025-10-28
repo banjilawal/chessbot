@@ -208,7 +208,7 @@ class PieceAttackingFriendException(AttackEventException):
 class PieceAttackingKingException(AttackEventException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_KING_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack a king."
+  DEFAULT_MESSAGE = "Piece cannot attack a occupation."
 
 
 class PieceAttackingHostageException(AttackEventException):

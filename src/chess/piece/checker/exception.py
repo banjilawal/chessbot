@@ -188,7 +188,7 @@ class KingCaptureRolledBackException(DiscoveryRolledBackException):
   """
   ERROR_CODE = "KING_CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "An enemy king cannot be captured. It can only be checked or checkmated. "
+    "An enemy occupation cannot be captured. It can only be checked or checkmated. "
     "Transaction rollback performed."
   )
 

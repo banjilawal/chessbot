@@ -1,7 +1,7 @@
-# chess/chess/piece/travel/occupation/king/validator.py
+# chess/chess/piece/travel/occupation/occupation/validator.py
 
 """
-Module: `chess.piece.travel.occupation.king.validator`
+Module: `chess.piece.travel.occupation.occupation.validator`
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0
@@ -96,7 +96,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     `InvalidSquareException`: if `target` fails validator
 #
 #     `AutoOccupationException`: if target already occupies the square
-#     `KingAttackException`: if the target square is occupied by an enemy king
+#     `KingAttackException`: if the target square is occupied by an enemy occupation
 #
 #     `InvalidAttackEventException`: Wraps any preceding exceptions
 #   """
@@ -326,7 +326,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
 #   `directive.blocked_square` contained either
 #     * A friendly piece blocking `actor_candidate` from `blocked_square`
-#     * An enemy king. Kings cannot be captured, only checked or checkmated.
+#     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
 #
 #   Args:
 #     - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.

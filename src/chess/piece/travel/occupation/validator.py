@@ -96,7 +96,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     `InvalidSquareException`: if `target` fails validator
 #
 #     `AutoOccupationException`: if target already occupies the square
-#     `KingAttackException`: if the target square is occupied by an enemy king
+#     `KingAttackException`: if the target square is occupied by an enemy occupation
 #
 #     `InvalidAttackEventException`: Wraps any preceding exceptions
 #   """
@@ -326,7 +326,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
 #   `directive.blocked_square` contained either
 #     * A friendly piece blocking `actor_candidate` from `blocked_square`
-#     * An enemy king. Kings cannot be captured, only checked or checkmated.
+#     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
 #
 #   Args:
 #     - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
