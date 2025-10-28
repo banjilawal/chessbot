@@ -12,17 +12,23 @@ from typing import Dict, List
 
 from chess.coord import Coord
 from chess.piece import PieceDTO
-from chess.system import GameColor
+
 
 
 __all__ = [
     'Projection',
-    'TeamProjectionTable'
+    'ProjectionTable'
 ]
+
+from chess.team import Team
+
 
 class Projection:
     _metadata: PieceDTO
     _points: List[Coord]
     
-class TeamProjectionTable:
-    _table: Dict[GameColor, List[Projection]]
+class ProjectionTable:
+    _table: Dict[str, List[Projection]]
+    
+    def __init__(self, white_team: Team, black_team: Team):
+        self._table = {}

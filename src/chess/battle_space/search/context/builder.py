@@ -1,4 +1,4 @@
-# src/chess/battle_space/search/context/builder.py
+# src/chess/battle_space/search/context/compute.py
 
 """
 Module: chess.battle_space.search.context.builder

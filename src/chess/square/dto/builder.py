@@ -1,4 +1,4 @@
-# src/chess/square/dto/builder.py
+# src/chess/square/dto/compute.py
 
 """
 Module: chess.square.dto.builder

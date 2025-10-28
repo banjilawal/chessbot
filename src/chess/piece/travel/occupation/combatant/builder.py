@@ -1,4 +1,4 @@
-# src/chess/piece/travel/occupation/combatant/builder.py
+# src/chess/piece/travel/occupation/combatant/compute.py
 
 """
 Module: chess.piece.travel.occupation.combatant.builder
