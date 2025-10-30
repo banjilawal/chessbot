@@ -23,14 +23,14 @@ class Bishop(Rank):
     @classmethod
     def compute_span(cls, origin: Coord) -> [[Coord]]:
         return [
-            cls._get_quadrant_points(0, origin.column, 1, origin.row, 1),
-            cls._get_quadrant_points(origin.column, COLUMN_SIZE, 1, 0, 1),
-            cls._get_quadrant_points(origin.column, 0, -1, ROW_SIZE, -1),
-            cls._get_quadrant_points(origin.column, COLUMN_SIZE, 1, ROW_SIZE, -1)
+            cls._compute_scan_helper(0, origin.column, 1, origin.row, 1),
+            cls._compute_scan_helper(origin.column, COLUMN_SIZE, 1, 0, 1),
+            cls._compute_scan_helper(origin.column, 0, -1, ROW_SIZE, -1),
+            cls._compute_scan_helper(origin.column, COLUMN_SIZE, 1, ROW_SIZE, -1)
         ]
     
     @classmethod
-    def _get_quadrant_points(cls, start_x: int, end_x: int, x_step: int, end_y: int, slope: int) -> [Coord]:
+    def _compute_scan_helper(cls, start_x: int, end_x: int, x_step: int, end_y: int, slope: int) -> [Coord]:
         """"""
         points = []
         i = start_x

@@ -62,8 +62,10 @@ class Rank(ABC):
     def __hash__(self):
         return hash(self._name)
     
+
+    @classmethod
     @abstractmethod
-    def compute_span(self, origin: Coord) -> List[Coord]:
+    def compute_span(cls, origin: Coord) -> [Coord]:
         """"""
         pass
     
