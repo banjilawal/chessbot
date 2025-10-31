@@ -13,12 +13,13 @@ from chess.board import BoardSearchContext, BoardSquareSearch
 from chess.board.search.context.builder import BoardSearchContextBuilder
 from chess.piece.travel.promotion.event import PromotionEvent
 from chess.piece.travel.promotion.exception import DoublePromotionException
-from chess.rank import Queen
+from chess.rank import Bishop, Knight, Queen, Rook
 from chess.square import Square
 from chess.system import Validator, ValidationResult
 from chess.piece import (
     ActorAlreadyAtDestinationException, NullPromotionEventException, OccupationEvent,
-    NullOccupationEventException, OccupationDestinationNotEmptyException, PromotablePiece, TravelActorValidator,
+    NullOccupationEventException, OccupationDestinationNotEmptyException, PawnPiece, PromotablePiece,
+    TravelActorValidator,
     TravelResourceValidator
 )
 
@@ -51,6 +52,18 @@ class PromotionEventValidator(Validator[PromotionEvent]):
             actor_validator = TravelActorValidator.validate(event.actor, event.execution_environment)
             if actor_validator.is_failure():
                 return ValidationResult.failure(actor_validator.exception)
+            
+            if not isinstance(event.actor, PawnPiece):
+                return ValidationResult.failure(
+                    TypeError(f"Expected a PawnPiece, got {type(event.actor).__name__}")
+                )
+            
+            if not isinstance(event.new_rank, (Knight, Bishop, Rook, Queen)):
+                return ValidationResult.failure(
+                    TypeError(
+                        f"Expected a PromotableRank(knight, bishop, queen ,or rook, got {type(event.new_rank).__name__}")
+                )
+                
             
             if event.actor.current_position.row != event.actor.team.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(

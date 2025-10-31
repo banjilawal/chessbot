@@ -12,10 +12,10 @@ from typing import List
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.piece import PromotablePiece
+from chess.piece import Piece, PromotablePiece
 
 
-class KingPiece(PromotablePiece):
+class KingPiece(Piece):
   _is_checked: bool
   _is_checkmated: bool
 

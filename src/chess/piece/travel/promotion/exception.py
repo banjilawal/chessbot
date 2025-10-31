@@ -120,6 +120,11 @@ class NullPromotionEventException(PromotionEventException, NullException):
   """Raised if an entity, method, or operation requires team `PromotionEvent` but gets null instead."""
   pass
 
+class PawnPromotionOnlyException(PromotionEventException):
+  """"""
+  ERROR_CODE = "CAN_ONLY_PROMOTE_PAWN_ERROR"
+  DEFAULT_MESSAGE = "Only pawns can be promoted"
+
 class InvalidPromotionEventException(PromotionEventException, ValidationException):
   """
   Raised by PromotionEventValidator if team client fails sanity checks. Exists to catch all
@@ -127,7 +132,6 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
   """
   ERROR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "PromotionEvent validator failed."
-
 
 class DoublePromotionException(PromotionEventException):
   """
