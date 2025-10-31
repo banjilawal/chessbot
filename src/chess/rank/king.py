@@ -1,4 +1,12 @@
-from chess.board.board import Board
+# src/chess/rank/king.py
+
+"""
+Module: chess.rank.king
+Author: Banji Lawal
+Created: 2025-07-25
+version: 1.0.0
+"""
+
 from chess.coord import Coord
 from chess.piece import Piece
 from chess.rank import Bishop, Rank, RankSpec, Rook
@@ -17,7 +25,8 @@ class King(Rank):
         )
         
     @classmethod
-    def compute_span(cls, origin: Coord) -> [Coord]:
+    def compute_span(cls, piece: Piece) -> [Coord]:
+        origin = piece.current_position
         return [cls._diagonal_span_helper(origin), cls._horizontal_helper(origin)]
     
     @classmethod
@@ -37,20 +46,3 @@ class King(Rank):
             Rook._compute_scan_helper(origin.column, origin.column, 0, origin.row-1, origin.row, 1),
             Rook._compute_scan_helper(origin.column, origin.column, 0, origin.row, origin.row+1, 1)
         ]
-        
-    @classmethod
-    def walk(cls, piece: Piece, destination: Coord, board: Board):
-        pass
-        # method = "King.walk"
-        #
-        # try:
-        #   if not Path(piece.current_position, destination).line == Line.KING:
-        #     raise KingWalkException(f"{method}: {KingWalkException.DEFAULT_MESSAGE}")
-        #
-        #   square = board.find_square_by_coord(destination)
-        #   OccupationFlow.enter(
-        #     board=board,
-        #     request=OccupationRequest(req_id=id_emitter.occupy_id, piece=piece, square=square)
-        #   )
-        # except KingWalkException as e:
-        #   raise KingException(f"{method}: {KingException.DEFAULT_MESSAGE}") from e

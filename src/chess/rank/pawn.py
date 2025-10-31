@@ -1,7 +1,18 @@
+# src/chess/rank/pawn.py
+
+"""
+Module: chess.rank.pawn
+Author: Banji Lawal
+Created: 2025-07-25
+version: 1.0.0
+"""
+
 from chess.coord import Coord
+from chess.piece import PawnPiece
 from chess.rank import  Rank, RankSpec
 
 class Pawn(Rank):
+  """"""
 
   def __init__(self, spec: RankSpec=RankSpec.PAWN):
     super().__init__(
@@ -14,57 +25,29 @@ class Pawn(Rank):
     )
     
   @classmethod
-  def compute_span(cls, origin: Coord) -> [Coord]:
-    return [cls._capture_points(origin), cls.compute_travel_points(origin)]
-  
+  def compute_span(cls, piece: PawnPiece) -> [Coord]:
+    """"""
+    origin = piece.current_position
+    if piece.positions.size() == 1:
+      return cls._opening_span(origin)
+    return cls._developed_span(origin)
   
   @classmethod
-  def compute_travel_points(cls, origin: Coord) -> [Coord]:
+  def _developed_span(cls, origin: Coord) -> [Coord]:
+    """"""
     return [
       Coord(column=origin.column, row=origin.row+1),
-      Coord(column=origin.column, row=origin.row+2),
-    ]
-  
-  @classmethod
-  def _capture_points(cls, origin: Coord) -> [Coord]:
-    return [
       Coord(column=origin.column-1, row=origin.row+1),
       Coord(column=origin.column+1, row=origin.row+1),
-      Coord(column=origin.column-1, row=origin.row+2),
-      Coord(column=origin.column+1, row=origin.row+2),
     ]
-
-
-  def walk(self, piece: Piece, destination: Coord, board: Board):
-    method = "Pawn.walk"
-
-    try:
-      if not (
-        self._is_opening(piece, destination) or
-        self._is_advance(piece, destination) or
-        self._is_attack(piece, destination)
-      ):
-        raise PawnWalkException(f"{method}: {PawnWalkException.DEFAULT_MESSAGE}")
-
-      square = board.find_square_by_coord(destination)
-      OccupationFlow.enter(
-        board=board,
-        request=OccupationRequest(req_id=id_emitter.occupy_id, piece=piece, square=square)
-      )
-    except PawnWalkException as e:
-      raise PawnRankException(f"{method}: {PawnRankException.DEFAULT_MESSAGE}") from e
-
-
-  @staticmethod
-  def _is_opening(piece: Piece, destination: Coord):
-    return piece.positions.size() == 1 and Path(piece.current_position, destination).line == Line.PAWN_OPENING
-
-
-  @staticmethod
-  def _is_advance(self, piece: Piece, destination: Coord):
-    return piece.positions.size() >= 1 and Path(piece.current_position, destination).line == Line.PAWN_ADVANCE
-
-  @staticmethod
-  def _is_attack(self, piece: Piece, destination: Coord):
-    return piece.positions.size() >= 1 and Path(piece.current_position, destination).line == Line.PAWN_ATTACK
-
+  
+  
+  @classmethod
+  def _opening_span(cls, origin: Coord) -> [Coord]:
+    """"""
+    return [
+      cls._developed_span(origin),
+      Coord(column=origin.column, row=origin.row+2),
+      Coord(column=origin.column - 1, row=origin.row + 2),
+      Coord(column=origin.column + 1, row=origin.row + 2)
+    ]

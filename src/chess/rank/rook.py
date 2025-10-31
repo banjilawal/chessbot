@@ -1,4 +1,12 @@
-from chess.board import Board
+# src/chess/rank/rook.py
+
+"""
+Module: chess.rank.rook
+Author: Banji Lawal
+Created: 2025-07-28
+version: 1.0.0
+"""
+
 from chess.coord import Coord
 from chess.piece import Piece
 from chess.rank import Rank, RankSpec
@@ -18,7 +26,8 @@ class Rook(Rank):
         )
     
     @classmethod
-    def compute_span(cls, origin: Coord) -> [Coord]:
+    def compute_span(cls, piece: Piece) -> [Coord]:
+        origin = piece.current_position
         return [
             cls._compute_scan_helper(0, origin.column, 1, origin.row, origin.row, 0),
             cls._compute_scan_helper(origin.column, COLUMN_SIZE, 1, origin.row, origin.row, 0),
@@ -46,32 +55,3 @@ class Rook(Rank):
             i += x_step
             j += y_step
         return points
-        
-        
-
-        
-    
-    def walk(self, piece: Piece, destination: Coord, board: Board):
-        """"""
-        pass
-        # method = "Rook.walk"
-        # try:
-        #   path = Path(piece.current_position, destination)
-        #   if not path.line == Line.ROOK:
-        #     raise CastleWalkException(f"{method}: {CastleWalkException.DEFAULT_MESSAGE}")
-        #
-        #   square = board.find_square_by_coord(destination)
-        #   OccupationFlow.enter(
-        #     board=board,
-        #     request=OccupationRequest(req_id=id_emitter.occupy_id, piece=piece, square=square)
-        #   )
-        # except CastleWalkException as e:
-        #   raise CastleException(f"{method}: {CastleException.DEFAULT_MESSAGE}") from e
-
-
-def main():
-    print(Rook())
-
-
-if __name__ == "__main__":
-    main()

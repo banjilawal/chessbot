@@ -1,4 +1,5 @@
 # src/chess/domain/exception.py
+
 """
 Module: chess.domain.exception
 Author: Banji Lawal

@@ -1,10 +1,15 @@
-from typing import List
+# src/chess/rank/bishop.py
+
+"""
+Module: chess.rank.bishop
+Author: Banji Lawal
+Created: 2025-07-24
+version: 1.0.0
+"""
 
 from chess.piece import Piece
 from chess.coord import Coord
-from chess.geometry import Path, Quadrant
 from chess.rank import Rank, RankSpec
-from chess.board.board import Board
 from chess.system import COLUMN_SIZE, ROW_SIZE
 
 
@@ -21,7 +26,8 @@ class Bishop(Rank):
         )
     
     @classmethod
-    def compute_span(cls, origin: Coord) -> [[Coord]]:
+    def compute_span(cls, piece: Piece) -> [[Coord]]:
+        origin = piece.current_position
         return [
             cls._compute_scan_helper(0, origin.column, 1, origin.row, 1),
             cls._compute_scan_helper(origin.column, COLUMN_SIZE, 1, 0, 1),
@@ -41,21 +47,3 @@ class Bishop(Rank):
             i += x_step
             j = (2 * slope * i) + slope
         return points
-    
-    def walk(self, piece: Piece, destination: Coord, board: Board):
-        """"""
-        pass
-        # method = "Bishop.walk"
-        # try:
-        #     if piece.current_position is None:
-        #         raise PieceCoordNullException(f"{method}: {PieceCoordNullException.DEFAULT_MESSAGE}")
-        #
-        #     path = Path(piece.current_position, destination)
-        #     if not path.is_diagonal():
-        #         raise BishopWalkException(f"{method}: {BishopWalkException.DEFAULT_MESSAGE}")
-        #
-        #     square = board.find_square_by_coord(destination)
-        #     request = OccupationRequest(req_id=id_emitter.occupy_id, piece=piece, square=square)
-        #     OccupationFlow.enter(request=request, board=board)
-        # except BishopWalkException as e:
-        #     raise BishopException(f"{method}: {BishopException.DEFAULT_MESSAGE}") from e

@@ -1,7 +1,7 @@
-# src/chess/vector/rollback_exception.py
+# src/chess/rank/exception.py
 
 """
-Module: chess.vector.rollback_exception
+Module: chess.rank.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -46,7 +46,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.exception import ChessException, NullException, ValidationException
+from chess.system import ChessException, NullException, ValidationException
 
 __all__ = [
   'RankException',
@@ -135,7 +135,7 @@ class KingMovingException(RankException):
 
 class KnightMovingException(RankException):
   ERROR_CODE = "KNIGHT_MOVING_ERROR"
-   DEFAULT_MESSAGE = "Invalid knight move"
+  DEFAULT_MESSAGE = "Invalid knight move"
 
 class PawnMovingException(RankException):
     ERROR_CODE = "PAWN_MOVING_ERROR"

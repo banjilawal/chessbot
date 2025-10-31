@@ -1,10 +1,13 @@
-# from typing import Generic
-#
-# from assurance.notification.base import ValidationResult
-# # from assurance.notification.base import Validator, T
-# # from chess.validate.base import Rank
-#
-#
+# src/chess/rank/validator.py
+
+"""
+Module: chess.rank.validator
+Author: Banji Lawal
+Created: 2025-09-26
+version: 1.0.0
+"""
+
+
 from typing import Any, TypeVar, cast
 
 from chess.system import LoggingLevelRouter, ValidationResult, ValidationResult

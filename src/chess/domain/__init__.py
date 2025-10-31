@@ -1,4 +1,5 @@
 # src/chess/domain/__init__.py
+
 """
 Module: chess.domain
 Author: Banji Lawal
@@ -8,5 +9,3 @@ version: 1.0.0
 
 from .exception import *
 from .domain import Domain
-from .compute import DomainBuilder
-from .validation import DomainValidator

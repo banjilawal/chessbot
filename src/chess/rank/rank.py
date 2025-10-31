@@ -1,16 +1,21 @@
-from abc import ABC, abstractmethod
-from typing import List
+# src/chess/rank/rank.py
 
-from chess.board.board import Board
+"""
+Module: chess.rank.rank
+Author: Banji Lawal
+Created: 2025-07-25
+version: 1.0.0
+"""
+
+from abc import ABC, abstractmethod
+
 from chess.coord import Coord
-from chess.geometry.quadrant import Quadrant
-from chess.piece.model.piece import Piece
+from chess.piece import Piece
+from chess.geometry import Quadrant
 
 
 class Rank(ABC):
-    LOWER_BOUND = 1
-    UPPER_BOUND = 8
-    
+    """"""
     _id: int
     _name: str
     _letter: str
@@ -25,6 +30,12 @@ class Rank(ABC):
         self._ransom = ransom
         self._quota = quota
         self._quadrants = quadrants
+    
+    @classmethod
+    @abstractmethod
+    def compute_span(cls, piece: Piece) -> [Coord]:
+        """"""
+        pass
     
     @property
     def id(self) -> int:
@@ -55,45 +66,20 @@ class Rank(ABC):
             return True
         if other is None:
             return False
-        if not isinstance(other, Rank):
-            return False
-        return self._name.upper() == other.name.upper()
+        if isinstance(other, Rank):
+            return self._id == other.id
+        return False
     
     def __hash__(self):
-        return hash(self._name)
-    
+        return hash(self._id)
 
-    @classmethod
-    @abstractmethod
-    def compute_span(cls, origin: Coord) -> [Coord]:
-        """"""
-        pass
-    
-    @abstractmethod
-    def walk(self, piece: Piece, destination: Coord, board: Board):
-        """
-        Validates team ChessPiece can reach team destination with its movement constraints. Must be instantiated by
-        Walk implementors.
-    
-        Args:
-          piece (ChessPiece):Source of truth for origin of motion
-          destination (Coord):terminus of ChessPiece movement
-    
-        Returns:
-          True if the move from origin to destination fits ChessRank movement rule.
-    
-        Raise:
-          NullChessPieceException:If discover is null.
-          NullCoordException:If destination is null.
-          CoordException:If destination properties are invalid.
-        """
-        
-        pass
-    
     def __str__(self):
         return (
-            f"{self._name} "
-            f"{self._letter} "
-            f"value:{self.ransom} "
-            f"per_side:{self._quota} "
-            f"quadrants:{len(self._quadrants)}")
+            "rank: {"
+            f"id:{self._id}, "
+            f"name:{self._name}, "
+            f"letter:{self._letter}, "
+            f"ransom:{self._ransom}, "
+            f"per_side:{self._quota}"
+            "}"
+        )
