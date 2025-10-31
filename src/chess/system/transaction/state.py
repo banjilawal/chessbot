@@ -1,7 +1,7 @@
-# src/chess/system/notification/state
+# src/chess/system/transaction/state
 
 """
-Module: chess.system.notification.state
+Module: chess.system.transaction.state
 Author: Banji Lawal
 Created: 2025-08-11
 Updated: 2025-10-10

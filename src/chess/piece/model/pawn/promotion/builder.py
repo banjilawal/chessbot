@@ -7,20 +7,18 @@ Created: 2025-10-21
 version: 1.0.0
 """
 
-from typing import Any, Tuple, cast
+from typing import Tuple, cast
 
 from chess.board import Board, BoardSearchContext, BoardSquareSearch
 from chess.board.search.context.builder import BoardSearchContextBuilder
-from chess.piece.travel.promotion.event import PromotionEvent
-from chess.piece.travel.promotion.exception import DoublePromotionException
+from chess.piece.model.pawn.promotion.event import PromotionEvent
+from chess.piece.model.pawn.promotion.exception import DoublePromotionException
 from chess.rank import Bishop, Knight, Pawn, Queen, Rank, Rook
 from chess.square import Square
-from chess.system import BuildResult, Builder, Event, LoggingLevelRouter, Validator, ValidationResult, id_emitter
+from chess.system import BuildResult, Builder, Event, LoggingLevelRouter, ValidationResult, id_emitter
 from chess.piece import (
-    ActorAlreadyAtDestinationException, NullPromotionEventException, OccupationEvent,
-    NullOccupationEventException, OccupationDestinationNotEmptyException, PawnPiece, PromotablePiece,
-    TravelActorValidator,
-    TravelResourceValidator
+    PawnPiece, PromotablePiece,
+    TravelActorValidator
 )
 
 

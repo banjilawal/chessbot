@@ -1,7 +1,7 @@
-# src/chess/piece/travel/occupation/rollback_exception.py
+# src/chess/king/occupation/transaction/exception.py
 
 """
-Module: `chess.piece.travel.occupation.rollback_exception`
+Module: `chess.king.occupation.transaction.exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

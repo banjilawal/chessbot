@@ -1,3 +1,11 @@
+# src/chess/geometry/path.py
+
+"""
+Module: chess.geometry
+Author: Banji Lawal
+Created: 2025-09-03
+version: 1.0.0
+"""
 
 from typing import cast
 

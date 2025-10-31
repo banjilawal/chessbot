@@ -3,7 +3,7 @@ from chess.rank.rook import Rook
 from chess.rank.king import King
 from chess.rank.knight import Knight
 from chess.rank.pawn import Pawn
-from chess.rank.rank_spec import RankSpec
+from chess.rank.spec import RankSpec
 from chess.rank.queen import Queen
 
 

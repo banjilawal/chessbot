@@ -1,18 +1,18 @@
-# src/chess/piece/model/promotable/occupation.py
+# src/chess/king/king.py
 
 """
-Module: chess.piece.model.promotable.occupation
+Module: chess.king
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 """
 
-from typing import List
+
 
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.piece import Piece, PromotablePiece
+from chess.piece import Piece
 
 
 class KingPiece(Piece):

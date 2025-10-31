@@ -1,3 +1,11 @@
+# chess/geometry/quadrant.py
+
+"""
+Module: chess.geometry.quadrant
+Author: Banji Lawal
+Created: 2025-07-26
+version: 1.0.0
+"""
 
 from enum import Enum, auto
 

@@ -1,11 +1,12 @@
-# chess/system/notification/__init__.py
+# chess/system/result/__init__.py
 
 """
-Module: chess.system.notification
+Module: chess.system.result
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
+from .example import *
 from .exception import *
 from .result import Result

@@ -1,18 +1,19 @@
-# src/chess/piece/travel/occupation/notification/notification.py
+# src/chess/king/occupation/transaction/transaction.py
 
 """
-Module: `chess.piece.travel.occupation.notification.notification`
+Module: `chess.king.occupation.transaction.transaction`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
+
 from typing import cast
 
-from chess.piece.travel.promotion.builder import PromotionEventBuilder
-from chess.piece.travel.promotion.transaction import PromotionTransaction
-from chess.system import LoggingLevelRouter, TransactionResult, id_emitter
+
+from chess.piece.model.pawn.promotion import PromotionTransaction
+from chess.system import LoggingLevelRouter, TransactionResult
 from chess.piece import (
-    PromotionEvent, PromotionEventValidator, TravelTransaction, OccupationEvent, OccupationEventValidator,
+    PromotionEvent, TravelTransaction, OccupationEvent, OccupationEventValidator,
     FailedActorPositionUpdateRolledBackException,
     FailedActorSquareVacationRolledBackException, FailedDestinationSquareOccupationRolledBackException
 )

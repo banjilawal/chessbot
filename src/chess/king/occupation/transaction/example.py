@@ -1,3 +1,12 @@
+# src/chess/king/occupation/transaction/example.py
+
+"""
+Module: `chess.king.occupation.transaction.example`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
 """
 Builder class responsible for safely constructing `KingCheckEvent` instances.
 

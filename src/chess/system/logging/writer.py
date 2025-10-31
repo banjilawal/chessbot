@@ -1,26 +1,10 @@
-# src/chess/system/err/handler
+# chess/system/logging/writer.py
+
 """
-Module: chess.system.err.handler
+Module: chess.system.writer
 Author: Banji Lawal
-Created: 2025-09-28
-
-# SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
-
-# THEME:
-* Highlight the core feature (thread-safety)
-* Explain the how-and-why of implementation choices.
-
-# PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
-
-# DEPENDENCIES:
-
-# CONTAINS:
- * `TravelEventFactory`
+Created: 2025-10-03
+version: 1.0.0
 """
 
 import inspect

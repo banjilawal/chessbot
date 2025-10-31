@@ -11,14 +11,14 @@ from typing import Any, cast
 
 from chess.board import BoardSearchContext, BoardSquareSearch
 from chess.board.search.context.builder import BoardSearchContextBuilder
-from chess.piece.travel.promotion.event import PromotionEvent
-from chess.piece.travel.promotion.exception import DoublePromotionException
+from chess.piece.model.pawn.promotion.event import PromotionEvent
+from chess.piece.model.pawn.promotion.exception import DoublePromotionException
 from chess.rank import Bishop, Knight, Queen, Rook
 from chess.square import Square
 from chess.system import Validator, ValidationResult
 from chess.piece import (
-    ActorAlreadyAtDestinationException, NullPromotionEventException, OccupationEvent,
-    NullOccupationEventException, OccupationDestinationNotEmptyException, PawnPiece, PromotablePiece,
+    NullPromotionEventException, OccupationEvent,
+    PawnPiece, PromotablePiece,
     TravelActorValidator,
     TravelResourceValidator
 )

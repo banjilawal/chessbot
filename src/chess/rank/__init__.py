@@ -16,3 +16,4 @@ from .king import King
 from .queen import Queen
 from .knight import Knight
 from .bishop import Bishop
+from .spec import RankSpec

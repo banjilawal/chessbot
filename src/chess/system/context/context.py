@@ -1,41 +1,10 @@
-# src/chess/piece/travel/notification
+# chess/system/context/context.py
+
 """
-Module: chess.piece.travel.notification
+Module: chess.system.context.context
 Author: Banji Lawal
-Created: 2025-09-28
-
-# SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
-
-# THEME:
-* Highlight the core feature (thread-safety)
-* Explain the how-and-why of implementation choices.
-
-# PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
-
-# DEPENDENCIES:
-
-# CONTAINS:
- * `TravelEventFactory`
-"""
-
-# src/chess/system/roster/square.py
-
-"""
-Module: `chess.system.roster.roster`
-Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-10-03
 version: 1.0.0
-
-Provides:
-Interface to implement team `Context`
-
-Contains:
- * `Context`
 """
 
 from abc import ABC, abstractmethod

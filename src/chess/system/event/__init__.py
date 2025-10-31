@@ -1,13 +1,13 @@
-# src/chess/system/travel/__init__.py
+# src/chess/system/event/__init__.py
 
 """
-Module: chess.system.travel
+Module: chess.system.event
 Author: Banji Lawal
 Created: 2025-10-09
 """
 
+from .example import *
 from .exception import *
-from .consistency import *
 
 from .event import Event
 

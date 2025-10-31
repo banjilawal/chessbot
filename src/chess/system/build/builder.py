@@ -1,74 +1,10 @@
-# src/chess/system/validate/old_occupation_validator.py
+# chess/system/build/builder.py
 
 """
-Module: chess.system.validate.validator
+Module: chess.system.build.builder
 Author: Banji Lawal
-Created: 2025-08-27
-Updated: 2025-10-10
-
-# SECTION 1 - Purpose:
-1. This module provides a satisfaction of the `ChessBot` integrity requirement. The satisfaction covers
-    enforcement of the minimum naming regulations in the system.
-2. This module provides a satisfaction of the `ChessBot` reliability requirement.
-
-# SECTION 2 - Scope:
-The module covers name validator only.
-
-# SECTION 3 - Limitations:
-  1. The module does not provide permissible naming guidelines.
-  2. Names that are allowed by the module might not meet additional restrictions other modules, classes, or processes
-      have.
-
-# SECTION 4 - Design Considerations and Themes:
-Major themes influencing the design include:
-1. Easy and fast debugging.
-2. Single responsibility, single source of truth.
-
-
-# SECTION 5 - Features Supporting Requirements:
-1. No direct support for any user level features.
-2. Direct support for reliability, verification, and integrity.
-3. `NameValidator` can be used as component in more complex verifications.
-
-# SECTION G - Feature Delivery Mechanism:
-1. An rollback_exception for each requirement providing granular, accurate and precise error reporting.
-2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
-
-# SECTION 7 - Dependencies:
-* From `chess.system`:
-    `MIN_NAME_LENGTH`, `MAX_NAME_LENGTH`, `LongNameException`, `ShortNameException`, `BlankNameException`
-    `NullNameException`, `Validator`,
-
-* From Python `typing` Library:
-    `cast`
-
-# SECTION 8 - Contains:
-1. `NameValidator`
-"""
-
-# src/chess/piece/travel/notification
-"""
-Module: chess.piece.travel.notification
-Author: Banji Lawal
-Created: 2025-09-28
-
-# SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
-
-# THEME:
-* Highlight the core feature (thread-safety)
-* Explain the how-and-why of implementation choices.
-
-# PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
-
-# DEPENDENCIES:
-
-# CONTAINS:
- * `TravelEventFactory`
+Created: 2025-10-03
+version: 1.0.0
 """
 
 from abc import ABC, abstractmethod

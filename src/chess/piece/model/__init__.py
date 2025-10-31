@@ -10,7 +10,7 @@ version: 1.0.0
 
 
 from .exception import *
-from .promotable import *
+from .pawn import *
 
 from.piece import Piece
 from .builder import PieceBuilder

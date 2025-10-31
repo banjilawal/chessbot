@@ -1,3 +1,12 @@
+# chess/system/build/result.py
+
+"""
+Module: chess.system.build.result
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
 # src/chess/piece/travel/notification
 """
 Module: chess.piece.travel.notification

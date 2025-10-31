@@ -1,3 +1,12 @@
+# src/chess/geometry/line.py
+
+"""
+Module: chess.geometry.line
+Author: Banji Lawal
+Created: 2025-09-09
+version: 1.0.0
+"""
+
 from enum import auto, Enum
 
 class Line(Enum):

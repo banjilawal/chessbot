@@ -1,18 +1,22 @@
-# src/chess/piece/model/promotable/pawn.py
+# src/chess/piece/model/pawn/pawn.py
 
 """
-Module: chess.piece.model.promotable.pawn
+Module: chess.piece.model.pawn.pawn
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0
 """
 from typing import Optional
 
+from chess.checkmate import CheckPostalService
 from chess.rank import Rank
+from chess.system import Result
 from chess.team import Team
-from chess.piece import CombatantPiece, PromotablePiece
+from chess.piece import CombatantPiece, Piece
 
-class PawnPiece(CombatantPiece, PromotablePiece):
+
+class PawnPiece(CombatantPiece):
+  
   _previous_rank: Optional[Rank]
 
   def __init__(self, id: int, name: str, rank: Rank, team: Team):
@@ -24,7 +28,7 @@ class PawnPiece(CombatantPiece, PromotablePiece):
     return self._previous_rank
     
   def promote(self, new_rank: Rank):
-    self._set_rank(rank)
+    self._set_rank(new_rank)
 
 
   def __eq__(self, other):

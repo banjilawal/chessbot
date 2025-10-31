@@ -8,11 +8,11 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.piece.travel.promotion.builder import PromotionEventBuilder
-from chess.piece.travel.promotion.transaction import PromotionTransaction
-from chess.system import LoggingLevelRouter, TransactionResult, id_emitter
+from chess.piece.model.pawn.promotion import PromotionEventBuilder
+from chess.piece.model.pawn.promotion import PromotionTransaction
+from chess.system import LoggingLevelRouter, TransactionResult
 from chess.piece import (
-    PromotionEvent, PromotionEventValidator, TravelTransaction, OccupationEvent, OccupationEventValidator,
+    PromotionEvent, TravelTransaction, OccupationEvent, OccupationEventValidator,
     FailedActorPositionUpdateRolledBackException,
     FailedActorSquareVacationRolledBackException, FailedDestinationSquareOccupationRolledBackException
 )

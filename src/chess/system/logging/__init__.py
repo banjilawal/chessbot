@@ -1,7 +1,7 @@
-# src/chess/system/err/logging/__init__.py
+# src/chess/system/logging/__init__.py
 
 """
-Module: chess.system.err.logging
+Module: chess.system.logging
 Author: Banji Lawal
 Created: 2025-09-28
 """

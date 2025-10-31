@@ -1,27 +1,12 @@
-# src/chess/system/err/propagator
+# chess/system/logging/router.py
+
 """
-Module: chess.system.err.propagator
+Module: chess.system.router
 Author: Banji Lawal
-Created: 2025-09-28
-
-# SCOPE:
-* The limits of the module, defined by what it does not do.
-* Where to look for related features this models does not provide because of its limitations.
-
-# THEME:
-* Highlight the core feature (thread-safety)
-* Explain the how-and-why of implementation choices.
-
-# PURPOSE:
-* Function and role in the system.
-* Why the module exists in the application architecture
-* What problem it fundamentally solves
-
-# DEPENDENCIES:
-
-# CONTAINS:
- * `TravelEventFactory`
+Created: 2025-10-03
+version: 1.0.0
 """
+
 from functools import wraps
 from typing import Any, Callable, Optional, TypeVar
 from chess.system import LogWriter, Result
