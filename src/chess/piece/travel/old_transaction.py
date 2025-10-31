@@ -23,7 +23,7 @@ from chess.system import Transaction, TransactionResult, TransactionState, Loggi
 from chess.square import Square
 from chess.commander.search import BoardSearch
 
-from chess.team import AddEnemyHostageRolledBackException, TeamSearchCategory
+from chess.team import AddEnemyHostageRolledBackException, PieceCollection
 from chess.team.exception import RemoveTeamMemberRolledBackException
 
 
@@ -326,7 +326,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
       )
 
     success_directive = ScanDirective(
-      actor=directive.piece,
+      actor=directive._capital,
       subject=directive.friend,
       occupation_id=directive.id,
       scan_id=id_emitter.scan_id,
@@ -340,8 +340,8 @@ class OldTravelTransaction(Transaction[TravelEvent]):
 
     method = "OccupationExecutor._attack_enemy"
 
-    directive.enemy_combatant.captor = directive.piece
-    if directive.enemy_combatant.captor != directive.piece:
+    directive.enemy_combatant.captor = directive._capital
+    if directive.enemy_combatant.captor != directive._capital:
       # Rollback all changes in reverse order
       directive.enemy_combatant.captor = None
 
@@ -368,8 +368,8 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         )
       )
 
-    directive.piece.team.hostages.append(directive.enemy_combatant)
-    if directive.enemy_combatant not in directive.piece.team.hostages:
+    directive._capital.team.hostages.append(directive.enemy_combatant)
+    if directive.enemy_combatant not in directive._capital.team.hostages:
       # Rollback all changes in reverse order
       directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
@@ -387,7 +387,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     directive.friend.occupant = None
     if directive.friend.occupant is not None:
       # Rollback all changes in reverse order
-      directive.piece.team.hostages.remove(directive.enemy_combatant)
+      directive._capital.team.hostages.remove(directive.enemy_combatant)
       directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
 
@@ -403,7 +403,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     if directive.enemy_combatant in directive.board.pieces:
       # Rollback all changes in reverse order
       directive.friend.occupant = directive.enemy_combatant
-      directive.piece.team.hostages.remove(directive.enemy_combatant)
+      directive._capital.team.hostages.remove(directive.enemy_combatant)
       directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
 

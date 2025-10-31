@@ -12,7 +12,7 @@ Updated: 2025-10-10
     enforcement of regulations for unique IDs in the system.
 
 # SECTION 2 - Scope:
-The module only covers the basic properties and behavior objects in the `Event` domain.
+The module only covers the basic properties and behavior objects in the `Event` graph.
 
 # SECTION 3 - Limitations:
   1. Do not use this module directly. A stateful entity is responsible for

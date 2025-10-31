@@ -13,7 +13,7 @@ This module provides:
   2. A satisfaction of the performance requirement.
 
 # SECTION 2 - Scope:
-The module covers clients servers, and service owners in the `ChessBot` old_search domain.
+The module covers clients servers, and service owners in the `ChessBot` old_search graph.
 
 # SECTION 3 - Limitations:
   1. The module is limited to presenting the answer from a `Search` service provider to the client delivering a query.

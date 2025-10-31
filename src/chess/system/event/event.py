@@ -12,7 +12,7 @@ Updated: 2025-10-10
     enforcement of regulations for unique IDs in the system.
 
 # SECTION 2 - Scope:
-The module only covers the basic properties and behavior objects in the `Event` domain.
+The module only covers the basic properties and behavior objects in the `Event` graph.
 
 # SECTION 3 - Limitations:
   1. Do not use this module directly. A stateful entity is responsible for
@@ -77,7 +77,7 @@ class Event(Generic[A, R, X]):
     * `_actor` (`A`): The entity requesting the travel.
     * `__resource` (`R`): Component `actor_candidate` needs to change system state.
     * `_parent` (`Event`): The parent travel of this travel.
-    * `_execution_environment` (`X`): The domain `actor_candidate` and `square` are in where the state change will happen
+    * `_execution_environment` (`X`): The graph `actor_candidate` and `square` are in where the state change will happen
   """
   _id: int
   _actor: A

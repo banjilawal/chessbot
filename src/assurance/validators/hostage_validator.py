@@ -21,7 +21,7 @@ class HostageValidator(Validator):
     method = f"{class_name}.validate"
 
     """
-    Validates team hostage meets domain requirements:
+    Validates team hostage meets graph requirements:
       - is team validated discovery
       - is team Combatant instance
       - The captor field is not null
@@ -33,7 +33,7 @@ class HostageValidator(Validator):
       candidate (CombatantPiece): coord to validate
 
      Returns:
-       Result[T]: A Result object containing the validated payload if all domain requirements 
+       Result[T]: A Result object containing the validated payload if all graph requirements
        are satisfied. HostageValidationException otherwise.
 
     Raises:

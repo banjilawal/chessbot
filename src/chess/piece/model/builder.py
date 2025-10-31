@@ -47,7 +47,7 @@ from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter
 from chess.piece import Piece, AttackBuildFailedException, KingPiece, CombatantPiece, UnregisteredTeamMemberException
 from chess.rank import Rank, RankValidator, King
 from chess.team import(
-  Team, TeamValidator, TeamSearch, TeamSearchCategory, FullRankQuotaException, ConflictingTeamAssignmentException
+    Team, TeamValidator, TeamSearch, PieceCollection, FullRankQuotaException, ConflictingTeamAssignmentException
 )
 
 
@@ -103,7 +103,7 @@ class PieceBuilder(Builder[Piece]):
 
       search_result = TeamSearch.search(
         team=team,
-        data_source=TeamSearchCategory.ROSTER,
+        data_source=PieceCollection.ROSTER,
         search_context=SearchContext(rank=rank)
       )
       if not search_result.is_success():

@@ -25,11 +25,11 @@ THEME:
 
 PURPOSE:
 -------
-1. Centralized error dictionary for the `TeamSchema` domain.
+1. Centralized error dictionary for the `TeamSchema` graph.
 2. Fast debugging using highly granular rollback_exception messages and naming to
     find the source.
 3. Providing understandable, consistent information about failures originating from
-    the `TeamSchema` domain.
+    the `TeamSchema` graph.
 4. Providing a clear distinction between errors related to `TeamSchema` instances and
     errors from Python, the Operating System or elsewhere in the `ChessBot` application.
 

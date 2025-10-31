@@ -1,7 +1,7 @@
-# src/chess/domain/exception.py
+# src/chess/graph/exception.py
 
 """
-Module: chess.domain.exception
+Module: chess.graph.exception
 Author: Banji Lawal
 Created: 2025-10-28
 version: 1.0.0
@@ -30,7 +30,7 @@ class DomainException(ChessException):
     """
     Super class of all exceptions team Domain object raises. Do not use directly. Subclasses
     give details useful for debugging. This class exists primarily to allow catching
-    all domain exceptions
+    all graph exceptions
     """
     ERROR_CODE = "DOMAIN_ERROR"
     DEFAULT_MESSAGE = "Domain raised an exception."
@@ -47,7 +47,7 @@ class InvalidDomainException(DomainException, ValidationException):
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
     """
-    Raised if an entity, method, or operation requires team domain but gets null instead.
+    Raised if an entity, method, or operation requires team graph but gets null instead.
     Domain is an abstract method. KingDomain and CombatantDomain are its subclasses.
     Do not throw NullAttackException. Raise NullKingDomain or NullCombatantDomain instead.
     they are more descriptive and better suited for debugging.

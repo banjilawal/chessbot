@@ -94,8 +94,8 @@ class TeamSchema(Enum):
 
 
   @property
-  def letter(self) -> str:
-    return self.name[0]
+  def letter(cls) -> str:
+    return cls.name[0]
 
 
   @property
@@ -125,6 +125,12 @@ class TeamSchema(Enum):
   @property
   def enemy_schema(self) -> 'TeamSchema':
     return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
+  
+  
+  def schema_from_color(self, color: GameColor) -> 'TeamSchema':
+    if color == TeamSchema.WHITE:
+      return TeamSchema.WHITE
+    return TeamSchema.BLACK
 
 
   def __str__(self) -> str:

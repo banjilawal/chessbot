@@ -8,9 +8,9 @@ from chess.commander import Commander, NullCommanderException, InvalidCommanderE
 
 class CommanderValidator(Validator):
   """
-  Validates an Commander used in team domain module meets requirements:
+  Validates an Commander used in team graph module meets requirements:
     - Is not null.
-    - Its fields meet the specifications for the domain.
+    - Its fields meet the specifications for the graph.
   Unmet requirements will raise team InvalidCommanderException
 
   For performance and single source of truth CommanderValidator has:
@@ -26,7 +26,7 @@ class CommanderValidator(Validator):
     method = f"{class_name}.validate"
 
     """
-    Validates team commander meets domain requirements:
+    Validates team commander meets graph requirements:
       - Not null
       - valid id
       - valid name
@@ -37,7 +37,7 @@ class CommanderValidator(Validator):
       candidate (Commander): commander to validate
       
      Returns:
-       Result[T]: A Result object containing the validated payload if all domain requirements 
+       Result[T]: A Result object containing the validated payload if all graph requirements
        are satisfied. InvalidCommanderException otherwise.
     
     Raises:

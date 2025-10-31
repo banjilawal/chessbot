@@ -13,5 +13,6 @@ from .search import *
 from .exception import *
 
 from .team import Team
+from .service import TeamService
 from .builder import TeamBuilder
 from .validator import TeamValidator

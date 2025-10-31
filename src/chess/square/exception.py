@@ -30,7 +30,7 @@ The major theme influencing the modules design are
 # SECTION 6 - Feature Delivery Mechanism:
   1. Verify existing entities meet minimum requirements for use in the system.
   2. A description of an error condition, boundary violation, experienced or caused by an entity in
-      the validator domain.
+      the validator graph.
   3. The root of a scalable, modular hierarchy for validator related exceptions.
 
 # SECTION 7 - Dependencies:
@@ -68,11 +68,11 @@ THEME:
 
 PURPOSE:
 -------
-1. Centralized error dictionary for the `Vector` domain.
+1. Centralized error dictionary for the `Vector` graph.
 2. Fast debugging using highly granular rollback_exception messages and naming to
     find the source.
 3. Providing understandable, consistent information about failures originating from
-    the `Vector` domain.
+    the `Vector` graph.
 4. Providing a clear distinction between errors related to `Vector` instances and
     errors from Python, the Operating System or elsewhere in the `ChessBot` application.
 

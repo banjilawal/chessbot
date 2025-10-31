@@ -12,7 +12,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers clients and servers in the `ChessBot` validator domain.
+The module covers clients and servers in the `ChessBot` validator graph.
 
 # SECTION 3 - Limitations:
   1. The module is limited to the reporting validator results to clients.

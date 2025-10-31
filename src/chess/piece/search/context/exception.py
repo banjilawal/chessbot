@@ -16,13 +16,13 @@ THEME:
 **Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
-and the **affected domain** (e.g., `DiscoverySearchContextException`). This enables precise error
+and the **affected graph** (e.g., `DiscoverySearchContextException`). This enables precise error
 logging and handling throughout the system.
 
 PURPOSE:
 -------
-To serve as the **centralized error dictionary** for the `DiscoverySearchContext` domain.
-It abstracts underlying Python exceptions into domain-specific, custom error types
+To serve as the **centralized error dictionary** for the `DiscoverySearchContext` graph.
+It abstracts underlying Python exceptions into graph-specific, custom error types
 to improve code clarity and facilitate robust error handling within the chess engine.
 
 DEPENDENCIES:

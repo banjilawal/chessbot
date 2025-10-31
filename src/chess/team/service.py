@@ -1,41 +1,61 @@
-from typing import List, Optional
+# src/chess/team/service.py
 
-from chess.system.color import GameColor
-from chess.geometry.quadrant import Quadrant
-from chess.competitor.commander import Commander
-from chess.side.repo import TeamRepo
-from chess.side.team import Side
+"""
+Module: chess.team.service
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+from typing import Any
 
-# if TYPE_CHECKING:
-#   from chess.team.square.team import Team
+from chess.commander import Commander
+from chess.piece import Piece
+from chess.system import BuildResult, GameColor, SearchResult, ValidationResult
+from chess.team import PieceCollection, Team, TeamBuilder, TeamSchema, TeamSearch, TeamValidator
 
 
 class TeamService:
-  _repo: TeamRepo
-
-  def __init__(self, team_repo: TeamRepo):
-    self._repo = team_repo
-
-
-  def size(self) -> int:
-    return self._repo.__len__()
-
-
-  def add_team(self, team: Side):
-    self._repo.add(team)
-
-
-  def find_team_by_id(self, team_id: int) -> Optional[Side]:
-    return self._repo.team_by_id(team_id)
-
-
-  def filter_teams_by_owner(self, owner: Commander) -> List[Side]:
-    return self._repo.teams_by_owner(owner)
-
-
-  def filter_teams_by_color(self, color: GameColor) -> List[Side]:
-    return self._repo.teams_by_color(color)
-
-
-  def filter_teams_by_quadrant(self, quadrant: Quadrant) -> List[Side]:
-    return self._repo.teams_by_quadrant(quadrant)
+    _schema: TeamSchema
+    _search: TeamSearch
+    _builder: TeamBuilder
+    _validator: TeamValidator
+    
+    def __init__(
+            self,
+            search: TeamSearch,
+            schema: TeamSchema,
+            builder: TeamBuilder,
+            validator: TeamValidator
+    ):
+        self._schema = schema
+        self._search = search
+        self._builder = builder
+        self._validator = validator
+        
+    @property
+    def schema(self) -> TeamSchema:
+        return self._schema
+    
+    @property
+    def search(self) -> TeamSearch:
+        return self._search
+    
+    @property
+    def builder(self) -> TeamBuilder:
+        return self._builder
+    
+    @property
+    def validator(self) -> TeamValidator:
+        return self._validator
+    
+    
+    def search_team(self, team: Team, collection: PieceCollection, search_context) -> SearchResult[[Piece]]:
+        return self._search.search(team, collection, search_context)
+        
+    
+    def validate_team(self, candidate: Any) -> ValidationResult[Team]:
+        return self._validator.validate(candidate)
+    
+    def build_team(self, team_id: int, commander: Commander, color: GameColor) -> BuildResult[Team]:
+        schema = TeamSchema.schema_from_color(color)
+        return self._builder.build(id=team_id, commander=commander, schema=schema)

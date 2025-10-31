@@ -32,7 +32,7 @@ The major theme influencing the modules design are
 # SECTION 6 - Feature Delivery Mechanism:
   1. Verify existing entities meet minimum requirements for use in the system.
   2. A description of an error condition, boundary violation, experienced or caused by an entity in
-      the validator domain.
+      the validator graph.
   3. The root of a scalable, modular hierarchy for validator related exceptions.
 
 # SECTION 7 - Dependencies:
@@ -65,13 +65,13 @@ THEME:
 **Comprehensive Domain Error Catalog.** The central theme is to provide team
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
-and the **affected domain** (e.g., `CoordException`). This enables precise error
+and the **affected graph** (e.g., `CoordException`). This enables precise error
 logging and handling throughout the system.
 
 PURPOSE:
 -------
-To serve as the **centralized error dictionary** for the `Coord` domain.
-It abstracts underlying Python exceptions into domain-specific, custom error types
+To serve as the **centralized error dictionary** for the `Coord` graph.
+It abstracts underlying Python exceptions into graph-specific, custom error types
 to improve code clarity and facilitate robust error handling within the chess engine.
 
 DEPENDENCIES:
