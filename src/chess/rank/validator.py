@@ -29,7 +29,7 @@ class RankValidator(Validator[Rank]):
         try:
             if candidate is None:
                 return ValidationResult.failure(NullRankException(f"{method} {NullRankException.DEFAULT_MESSAGE}"))
-                
+            
             if not isinstance(candidate, (King, Pawn, Knight, Bishop, Rook, Queen)):
                 return ValidationResult.failure(
                     TypeError(f"{method} Expected a Rank subclass, got {type(candidate).__name__}")
@@ -51,10 +51,8 @@ class RankValidator(Validator[Rank]):
                 raise UnRecognizedConcreteRankException(
                     f"{method}: {UnRecognizedConcreteRankException.DEFAULT_MESSAGE}"
                 )
-        
-        except Exception  as e:
+        except Exception as e:
             return ValidationResult.failure(e)
-
     
     @classmethod
     def _validate_king_spec(cls, candidate: King) -> ValidationResult[King]:

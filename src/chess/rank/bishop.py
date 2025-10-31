@@ -37,7 +37,7 @@ class Bishop(Rank):
         j = (2 * slope * i) + slope
         
         while i < end_x and j < end_y:
-            points.append(Coord(i, j))
+            points.append(Coord(column=i, row=j))
             i += x_step
             j = (2 * slope * i) + slope
         return points

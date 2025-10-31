@@ -1,15 +1,38 @@
+from chess.coord import Coord
 from chess.rank import  Rank, RankSpec
 
 class Pawn(Rank):
 
   def __init__(self, spec: RankSpec=RankSpec.PAWN):
     super().__init__(
+      id=spec.id,
       name=spec.name,
       letter=spec.letter,
       ransom=spec.ransom,
       quadrants=spec.quadrants,
       quota=spec.quota
     )
+    
+  @classmethod
+  def compute_span(cls, origin: Coord) -> [Coord]:
+    return [cls._capture_points(origin), cls.compute_travel_points(origin)]
+  
+  
+  @classmethod
+  def compute_travel_points(cls, origin: Coord) -> [Coord]:
+    return [
+      Coord(column=origin.column, row=origin.row+1),
+      Coord(column=origin.column, row=origin.row+2),
+    ]
+  
+  @classmethod
+  def _capture_points(cls, origin: Coord) -> [Coord]:
+    return [
+      Coord(column=origin.column-1, row=origin.row+1),
+      Coord(column=origin.column+1, row=origin.row+1),
+      Coord(column=origin.column-1, row=origin.row+2),
+      Coord(column=origin.column+1, row=origin.row+2),
+    ]
 
 
   def walk(self, piece: Piece, destination: Coord, board: Board):
