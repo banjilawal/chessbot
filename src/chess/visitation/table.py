@@ -1,3 +1,12 @@
+# src/chess/visitation/table.py
+
+"""
+Module: chess.graph.visitation.table
+Author: Banji Lawal
+Created: 2025-111-03
+version: 1.0.0
+"""
+
 from typing import List
 
 from chess.graph import Visitation

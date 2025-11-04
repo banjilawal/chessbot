@@ -1,7 +1,7 @@
-# src/chess/graph/visitationation/exception.py
+# src/chess/visitation/exception.py
 
 """
-Module: chess.graph.visitationation.exception
+Module: chess.graph.visitation.exception
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

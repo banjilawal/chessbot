@@ -5,22 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/domain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/domain/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/domain/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/domain/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/visitation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/visitation/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/visitation/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/visitation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/graph/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/domain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/domain/domain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/intersection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/visitation/visitation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/old_transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/old_transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/domain/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/domain/domain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/domain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/domain/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/domain/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/visitation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/visitation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/visitation/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/visitation/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/visitation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/visitation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/visitation/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/visitation/table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/visitation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/visitation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/visitation/visitation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/visitation/visitation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -622,7 +618,7 @@
       <workItem from="1761855669497" duration="47797000" />
       <workItem from="1762000987712" duration="689000" />
       <workItem from="1762191637713" duration="7783000" />
-      <workItem from="1762208531960" duration="4883000" />
+      <workItem from="1762208531960" duration="6149000" />
     </task>
     <servers />
   </component>

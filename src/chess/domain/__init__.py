@@ -1,7 +1,7 @@
-# src/chess/graph/domain/__init__.py
+# src/chess/domain/__init__.py
 
 """
-Module: chess.graph.domain
+Module: chess.domain
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

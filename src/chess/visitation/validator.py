@@ -1,7 +1,7 @@
-# src/chess/graph/visitation/validator.py
+# src/chess/visitation/validator.py
 
 """
-Module: chess.graph.visitation.validator
+Module: chess.visitation.validator
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

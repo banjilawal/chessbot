@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.graph import Domain, NullDomainException
-from chess.graph.domain.exception import DomainMissingTreeException
+from chess.domain.exception import DomainMissingTreeException
 from chess.piece import PieceValidator
 
 from chess.system import ChessException, IdValidator, LoggingLevelRouter, Validator, ValidationResult

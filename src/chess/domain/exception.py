@@ -1,7 +1,7 @@
-# src/chess/graph/domain/exception.py
+# src/chess/domain/exception.py
 
 """
-Module: chess.graph.domain.exception
+Module: chess.domain.exception
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

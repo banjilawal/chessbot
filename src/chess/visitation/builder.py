@@ -1,4 +1,4 @@
-# src/chess/graph/visitation/builder.py
+# src/chess/visitation/builder.py
 
 """
 Module: chess.graph.visitation.builder
@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.graph.domain import DomainValidator
+from chess.domain import DomainValidator
 from chess.piece import Piece, PieceValidator
 from chess.graph import Visitation
 from chess.system import BuildResult, Builder, ChessException, IdValidator, InvalidIdException, LoggingLevelRouter

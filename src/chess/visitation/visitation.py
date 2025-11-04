@@ -1,7 +1,7 @@
-# src/chess/graph/visitation/visitation.py
+# src/chess/visitation/visitation.py
 
 """
-Module: chess.graph.visitation.visitation
+Module: chess.visitation.visitation
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0

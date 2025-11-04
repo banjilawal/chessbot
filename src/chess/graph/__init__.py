@@ -9,8 +9,6 @@ version: 1.0.0
 
 from .search import *
 from .exception import *
-from .visitation import *
 
 from .graph import Graph
-from .domain import Domain
 
