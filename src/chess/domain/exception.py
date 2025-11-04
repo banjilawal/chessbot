@@ -16,17 +16,15 @@ __all__ = [
     
     # ======================# DOMAIN VALIDATION EXCEPTIONS #======================#
     'InvalidDomainException',
-    'DomainTeamFieldIsNullException',
-    'MissingDomainTreeException',
-    'UnregisteredTeamMemberException',
-    'DomainRosterNumberIsNullException',
-    'DomainRankOutOfBoundsException',
-    'DomainMissingDiscoveriesException',
+    'DomainMissingTreeException',
+    'CapturedDomainOwnerException',
+    'CheckmatedKingDomainOwnerException',
+    'PieceNotOnRosterDomainOwnerException',
+    'InconsistenDomainAddressException',
+    'RemovedPieceCannotOwnDomainException',
     
     # ======================# NULL DOMAIN EXCEPTIONS #======================#
     'NullDomainException',
-    'NullKingException',
-    'NullCombatantException',
     
     # ======================# DOMAIN BUILD EXCEPTIONS #======================#  
     'DomainBuildFailedException',
@@ -49,7 +47,6 @@ class InvalidDomainException(DomainException, ValidationException):
     ERROR_CODE = "DOMAIN_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Domain validator failed."
 
-
 class DomainMissingTreeException(DomainException, InconsistencyException):
     """
     Raised if `domain.positions` stack does not exist. If the `domain.positions == null there is service inconsistency
@@ -58,37 +55,33 @@ class DomainMissingTreeException(DomainException, InconsistencyException):
     ERROR_CODE = "DOMAIN_MISSING_TREE_ERROR"
     DEFAULT_MESSAGE = "Domain has a null tree. The tree should never be null. There may be data inconsistency."
 
-
-class DomainMissingDiscoveriesException(DomainException, InconsistencyException):
+class CapturedDomainOwnerException(DomainException):
     """
     Raised if `domain.discovery` list does not exist. If the `domain.discoveries == null there is service inconsistency
     or loss.
     """
-    ERROR_CODE = "DOMAIN_DISCOVERY_LIST_MISSING_ERROR"
+    ERROR_CODE = "HOSTAGE_CANNOT_OWN_DOMAIN_ERROR"
     DEFAULT_MESSAGE = "Domain.discovery list is null. It should never be null. There may be service inconsistency or loss."
 
-
-class UnregisteredTeamMemberException(DomainException):
+class PieceNotOnRosterDomainOwnerException(DomainException):
     """Raised if team domain has its team set but the domain is not on the roster."""
-    ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"
+    ERROR_CODE = "PIECE_NOT_ON_ROSTER_CANNOT_OWN_DOMAIN_ERROR"
     DEFAULT_MESSAGE = "The domain has assigned itself a team. but is not listed on that team's roster."
 
-
-class DomainRosterNumberIsNullException(DomainException, NullException):
+class CheckmatedKingDomainOwnerException(DomainException):
     """
     Raised a domain's roster number is null. This should never happen. the invariant roster number
     is set during build. If its null during validator there has been service loss or an inconsistency.
     """
-    ERROR_CODE = "DOMAIN_NULL_ROSTER_NUMBER_ERROR"
+    ERROR_CODE = ""
     DEFAULT_MESSAGE = "A `Domain` object cannot have a null roster number. There may be service inconsistency or loss."
 
-
-class DomainRankOutOfBoundsException(DomainException, NullException):
+class InconsistenDomainAddressException(DomainException, InconsistencyException):
     """
     Raised a domain's rank is not a recognized chess rank
     """
-    ERROR_CODE = "DOMAIN_RANK_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "A `Domain` does not have a recognized chess rank."
+    ERROR_CODE = "DOMAIN_ADDRESS_INCONSISTENCY_ERROR"
+    DEFAULT_MESSAGE = "The domain address doest not match the owner's current position. There may inconsistent data."
 
 
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
@@ -103,20 +96,13 @@ class NullDomainException(DomainException, NullException):
     DEFAULT_MESSAGE = "Domain cannot be null."
 
 
-class NullKingException(NullDomainException):
+class RemovedPieceCannotOwnDomainException(DomainException):
     """
     Raised if team KingDomain is null. Raise NullCombatant instead of NullAttackException
     """
-    ERROR_CODE = "NULL_KING_DOMAIN_ERROR"
+    ERROR_CODE = "REMOVED_PIECE_CANNOT_OWN_DOMAIN_ERROR"
     DEFAULT_MESSAGE = "KingDomain cannot be null."
 
-
-class NullCombatantException(NullDomainException):
-    """
-    Raised if team CombatantDomain is null. Raise NullCombatant instead of NullAttackException
-    """
-    ERROR_CODE = "NULL_COMBATANT_DOMAIN_ERROR"
-    DEFAULT_MESSAGE = "CombatantDomain cannot be null."
 
 
 # ======================# DOMAIN BUILD EXCEPTIONS #======================#  

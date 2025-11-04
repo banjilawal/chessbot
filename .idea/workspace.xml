@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/domain/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/pawn/promotion/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/pawn/promotion/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/pawn/promotion/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/model/pawn/promotion/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/attack/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/attack/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/base/validator/traveler/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/base/validator/traveler/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/base/validator/traveler/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/base/validator/traveler/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/base/validator/traveler/traveler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/base/validator/traveler/traveler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/occupation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/occupation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/blocking/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/blocking/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/blocking/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/blocking/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/travel/factory/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/travel/factory/factory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -609,7 +619,7 @@
       <workItem from="1761855669497" duration="47797000" />
       <workItem from="1762000987712" duration="689000" />
       <workItem from="1762191637713" duration="7783000" />
-      <workItem from="1762208531960" duration="6901000" />
+      <workItem from="1762208531960" duration="12026000" />
     </task>
     <servers />
   </component>

@@ -7,13 +7,18 @@ Created: 2025-11-03
 version: 1.0.0
 """
 
+
 from typing import Any, cast
 
-from chess.graph import Domain, NullDomainException
-from chess.domain.exception import DomainMissingTreeException
-from chess.piece import PieceValidator
-
+from chess.king import KingPiece
+from chess.piece import CombatantPiece, PieceValidator
 from chess.system import ChessException, IdValidator, LoggingLevelRouter, Validator, ValidationResult
+from chess.domain import (
+    Domain, NullDomainException, InconsistenDomainAddressException, PieceNotOnRosterDomainOwnerException,
+    CapturedDomainOwnerException, CheckmatedKingDomainOwnerException,DomainMissingTreeException,
+)
+
+
 
 
 class DomainValidator(Validator[Domain]):
@@ -42,9 +47,22 @@ class DomainValidator(Validator[Domain]):
             if owner_validation.is_failure():
                 return ValidationResult.failure(owner_validation.exception)
             
-            if domain.tree is None:
+            if isinstance(domain.owner, CombatantPiece) and cast(CombatantPiece, domain.owner).captor is not None:
                 return ValidationResult.failure(
-                    DomainMissingTreeException(f"{method}: {DomainMissingTreeException.DEFAULT_MESSAGE}")
+                    CapturedDomainOwnerException(f"{method}: {CapturedDomainOwnerException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(domain.owner, KingPiece) and cast(KingPiece, domain.owner).is_checkmated:
+                return ValidationResult.failure(
+                    CheckmatedKingDomainOwnerException(f"{method}: {CheckmatedKingDomainOwnerException.DEFAULT_MESSAGE}")
+                )
+            
+            team = domain.owner.team
+            if domain.owner not in team.roster:
+                return ValidationResult.failure(
+                    PieceNotOnRosterDomainOwnerException(
+                        f"{method}; {PieceNotOnRosterDomainOwnerException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if domain.owner.current_position is None:
@@ -54,7 +72,17 @@ class DomainValidator(Validator[Domain]):
             
             if domain.owner.current_position != domain.owner_address:
                 return ValidationResult.failure(
-                    ChessException(f"{method}: Domain current position and address are inconsistent")
+                    InconsistenDomainAddressException(f"{method}: {InconsistenDomainAddressException.DEFAULT_MESSAGE}")
+                )
+            
+            if domain.tree is None:
+                return ValidationResult.failure(
+                    DomainMissingTreeException(f"{method}: {DomainMissingTreeException.DEFAULT_MESSAGE}")
+                )
+            
+            if domain.owner.current_position not in domain.tree:
+                return ValidationResult.failure(
+                    ChessException(f"{method}: Owner's current position must be in the tree.")
                 )
             
             return ValidationResult.success(domain)

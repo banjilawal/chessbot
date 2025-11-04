@@ -17,7 +17,7 @@ from chess.piece import (
 )
 from chess.piece.model.validator import PieceValidator
 from chess.piece.travel.base.validator.traveler.exception import (
-  ActorNotOnBoardCannotMoveException,
+  RemovedBoardActorCannotMoveException,
   CheckMatedKingCannotMoveException
 )
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
@@ -35,7 +35,7 @@ Attributes:
   * `_run_scan`: Static method for handling discoveries on occupied squares.
   * `_switch_squares`: Static method the transferring team piece to team different `Square`.
 """
-class BoardActor(Validator[Tuple[Piece, Board]]):
+class BoardActorValidator(Validator[Tuple[Piece, Board]]):
   """
   # ROLE: Validator, Data Integrity
 
@@ -56,7 +56,7 @@ class BoardActor(Validator[Tuple[Piece, Board]]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Piece, Board])-> ValidationResult[Tuple[Piece, Board]]:
     """"""
-    method = "BoardActor.validate"
+    method = "BoardActorValidator.validate"
 
     try:
       if candidate is None:
@@ -107,7 +107,7 @@ class BoardActor(Validator[Tuple[Piece, Board]]):
       search_result = BoardPieceSearch.search(board=environment, search_context=BoardSearchContext(id=actor.id))
       if search_result.is_empty():
         return ValidationResult.failure(
-          ActorNotOnBoardCannotMoveException(f"{method}: {ActorNotOnBoardCannotMoveException.DEFAULT_MESSAGE}")
+          RemovedBoardActorCannotMoveException(f"{method}: {RemovedBoardActorCannotMoveException.DEFAULT_MESSAGE}")
         )
       
       if search_result.is_failure():

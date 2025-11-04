@@ -63,7 +63,7 @@ __all__ = [
   'NoInitialPlacementException',
   'ActorAlreadyAtDestinationException',
   'ActorNotOnRosterCannotMoveException',
-  'ActorNotOnBoardCannotMoveException',
+  'RemovedBoardActorCannotMoveException',
   'CapturedActorCannotMoveException',
 
 # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
@@ -92,7 +92,7 @@ class NullTravelResourceException(TravelResourceException, NullException):
 
 class NullTravelerEnvironmentTupleException(TravelActorException, NullException):
   ERROR_CODE = "NULL_TRAVELER_ENVIRONMENT_TUPLE_ERROR"
-  DEFAULT_MESSAGE = "Piece-Board-Tuple passed to BoardActor cannot be null."
+  DEFAULT_MESSAGE = "Piece-Board-Tuple passed to BoardActorValidator cannot be null."
   
 class NullDestinationEnvironmentTupleException(TravelResourceException, NullException):
   ERROR_CODE = "NULL_DESTINATION__ENVIRONMENT_TUPLE_ERROR"
@@ -135,7 +135,7 @@ class ActorNotOnRosterCannotMoveException(TravelActorMovingException):
   ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
   DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team's roster. Candidate cannot travel."
 
-class ActorNotOnBoardCannotMoveException(TravelActorMovingException):
+class RemovedBoardActorCannotMoveException(TravelActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
   DEFAULT_MESSAGE = (

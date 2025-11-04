@@ -182,7 +182,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   'NoInitialPlacementException',
 #   'ActorAlreadyAtDestinationException',
 #   'ActorNotOnRosterCannotMoveException',
-#   'ActorNotOnBoardCannotMoveException',
+#   'RemovedBoardActorCannotMoveException',
 #   'CapturedActorCannotMoveException',
 #
 #   # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
@@ -241,7 +241,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team's roster. Candidate cannot travel."
 #
 #
-# class ActorNotOnBoardCannotMoveException(TravelActorMovingException):
+# class RemovedBoardActorCannotMoveException(TravelActorMovingException):
 #   """"""
 #   ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
 #   DEFAULT_MESSAGE = (

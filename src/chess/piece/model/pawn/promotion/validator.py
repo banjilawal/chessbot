@@ -19,7 +19,7 @@ from chess.system import Validator, ValidationResult
 from chess.piece import (
     NullPromotionEventException, OccupationEvent,
     PawnPiece, PromotablePiece,
-    BoardActor,
+    BoardActorValidator,
     TravelResourceValidator
 )
 
@@ -49,7 +49,7 @@ class PromotionEventValidator(Validator[PromotionEvent]):
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_validator = BoardActor.validate(event.actor, event.execution_environment)
+            actor_validator = BoardActorValidator.validate(event.actor, event.execution_environment)
             if actor_validator.is_failure():
                 return ValidationResult.failure(actor_validator.exception)
             

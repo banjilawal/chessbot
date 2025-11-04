@@ -15,7 +15,7 @@ from chess.system import LoggingLevelRouter, BuildResult, id_emitter
 from chess.board import Board, BoardSquareSearch, BoardSearchContext, CoordSearchInvariantBreachException
 from chess.piece import (
     KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, PromotablePiece,
-    PromotionEvent, BoardActor, TravelEvent, TravelResourceValidator, ActorAlreadyAtDestinationException
+    PromotionEvent, BoardActorValidator, TravelEvent, TravelResourceValidator, ActorAlreadyAtDestinationException
 )
 
 
@@ -58,7 +58,7 @@ class TravelEventFactory:
         method = "TravelEventFactory.execute"
         
         try:
-            actor_validation = BoardActor.validate((actor, board))
+            actor_validation = BoardActorValidator.validate((actor, board))
             if actor_validation.is_failure():
                 return BuildResult.failure(actor_validation.exception)
             

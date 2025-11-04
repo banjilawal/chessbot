@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.system import Validator, ValidationResult, IdValidator, LoggingLevelRouter
 from chess.piece import (
-    BlockingEvent, NullBlockingEventException, PieceValidator, BoardActor, TravelResourceValidator,
+    BlockingEvent, NullBlockingEventException, PieceValidator, BoardActorValidator, TravelResourceValidator,
     DiscoverySearchContextBuilder, DiscoverySearchContext, DiscoverySearch, ActorSameAsBlockerException,
     ActorBlockingOwnSquareException, EnemyCannotBeBlockerException, DiscoveryAlreadyExistsException
 )
@@ -43,7 +43,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            actor_validation = BoardActor.validate(
+            actor_validation = BoardActorValidator.validate(
                 actor=event.actor,
                 environment=event.execution_environment
             )

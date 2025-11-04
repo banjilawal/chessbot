@@ -13,7 +13,7 @@ from chess.board import Board, BoardPieceSearch, BoardSearchContext
 from chess.piece import (
     Piece, KingPiece, AttackEvent, AttackingEnemyKingException, AttackingFriendException, CombatantPiece,
     DoublyAttackingPrisonerException, NullAttackEventException, PieceAttackingItSelfException, PieceValidator,
-    BoardActor, TravelResourceValidator, UnregisteredTeamMemberException
+    BoardActorValidator, TravelResourceValidator, UnregisteredTeamMemberException
 )
 from chess.piece.travel.attack.exception import (
     AttackingPieceMissingFromBoardException,
@@ -41,7 +41,7 @@ class AttackEventValidator(Validator[AttackEvent]):
                 return ValidationResult.failure(TypeError(f"Expected an AttackEvent, got {type(candidate).__name__}"))
     
             event = cast(AttackEvent, candidate)
-            actor_binding_validation = BoardActor.validate(event.actor, event.execution_environment)
+            actor_binding_validation = BoardActorValidator.validate(event.actor, event.execution_environment)
             
             if actor_binding_validation.is_failure():
                 return ValidationResult.failure(actor_binding_validation.exception)

@@ -18,7 +18,7 @@ from chess.square import Square
 from chess.system import BuildResult, Builder, Event, LoggingLevelRouter, ValidationResult, id_emitter
 from chess.piece import (
     PawnPiece, PromotablePiece,
-    BoardActor
+    BoardActorValidator
 )
 
 
@@ -41,7 +41,7 @@ class PromotionEventBuilder(Builder[PromotionEvent]):
                     f"Expected a PromotableRank(knight, bishop, queen ,or rook, got {type(new_rank).__name__}")
                 )
             
-            actor_validator = BoardActor.validate(actor, execution_environment)
+            actor_validator = BoardActorValidator.validate(actor, execution_environment)
             if actor_validator.is_failure():
                 return BuildResult.failure(actor_validator.exception)
             
