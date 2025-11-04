@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 
-from chess.graph import Domain, Intersection
+from chess.graph import Domain, Visitation
 
 
 class Graph:
     _domains: [Domain]
-    _intersections: [Intersection]
+    _intersections: [Visitation]
     
     

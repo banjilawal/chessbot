@@ -1,7 +1,7 @@
-# src/chess/graph/intersection.py
+# src/chess/graph/visitation/visitation.py
 
 """
-Module: chess.graph.intersection
+Module: chess.graph.visitation.visitation
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0
@@ -12,17 +12,17 @@ from chess.graph import Domain
 from chess.piece import Piece
 
 
-class Intersection:
+class Visitation:
     _id: int
     _domain: Domain
-    _capital: Piece
-    _shared_point: Coord
+    _visitor: Piece
+    _site: Coord
     
-    def __init__(self, id: int, domain: Domain, capital: Piece, shared_point: Coord):
+    def __init__(self, id: int, domain: Domain, visitor: Piece):
         self._id = id
         self._domain = domain
-        self._capital = capital
-        self._shared_point = shared_point
+        self._visitor = visitor
+        self._site = self._visitor.current_position
         
     @property
     def id(self):
@@ -33,15 +33,19 @@ class Intersection:
         return self._domain
     
     @property
-    def capital(self):
-        return self._capital
+    def visitor(self):
+        return self._visitor
+    
+    @property
+    def site(self):
+        return self._site
     
     def __eq__(self, other):
         if other is self:
             return True
         if other is None:
             return False
-        if isinstance(other, Intersection):
+        if isinstance(other, Visitation):
             return self._id == other._id
         return False
         

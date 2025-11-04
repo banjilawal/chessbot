@@ -1,7 +1,7 @@
-# src/chess/piece/model/rollback_exception.py
+# src/chess/piece/model/exception.py
 
 """
-Module: chess.piece.model.rollback_exception
+Module: chess.piece.model.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

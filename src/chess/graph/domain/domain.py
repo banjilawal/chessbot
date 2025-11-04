@@ -1,7 +1,7 @@
-# src/chess/graph/domain.py
+# src/chess/graph/domain/domain.py
 
 """
-Module: chess.graph.domain
+Module: chess.graph.domain.domain
 Author: Banji Lawal
 Created: 2025-10-28
 version: 1.0.0
@@ -16,33 +16,34 @@ from chess.piece import Piece
 class Domain:
     """"""
     _id: int
-    _capital: Piece
+    _owner: Piece
     _tree: [Coord]
-    _capital_origin: Coord
-    _previous_origin: Optional[Coord]
+    _owner_address: Optional[Coord]
+    _owner_previous_address: Coord
+
     
     def __init__(self, id: int, piece: Piece):
         self._id = id
-        self._capital = piece
-        self._previous_origin = None
-        self._origin = piece.current_position
-        self._tree = self._capital.rank.compute_span(self._capital)
+        self._owner = piece
+        self._owner_previous_address = None
+        self._owner_address = piece.current_position
+        self._tree = self._owner.rank.compute_span(self._owner)
         
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def capital(self) -> Piece:
-        return self._capital
+    def owner(self) -> Piece:
+        return self._owner
     
     @property
-    def origin(self) -> Coord:
-        return self._capital_origin
+    def owner_address(self) -> Coord:
+        return self._owner_previous_address
     
     @property
-    def previous_origin(self) -> Optional[Coord]:
-        return self._previous_origin
+    def owner_previous_address(self) -> Optional[Coord]:
+        return self._owner_previous_address
     
     @property
     def tree(self) -> [Coord]:
@@ -61,4 +62,4 @@ class Domain:
         return hash(self._id)
     
     def __str__(self) -> str:
-        return f"{self._capital} at {self._tree}"
+        return f"{self._owner} at {self._tree}"

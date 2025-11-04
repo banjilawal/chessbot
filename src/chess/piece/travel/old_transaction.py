@@ -326,7 +326,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
       )
 
     success_directive = ScanDirective(
-      actor=directive._capital,
+      actor=directive._owner,
       subject=directive.friend,
       occupation_id=directive.id,
       scan_id=id_emitter.scan_id,
@@ -340,8 +340,8 @@ class OldTravelTransaction(Transaction[TravelEvent]):
 
     method = "OccupationExecutor._attack_enemy"
 
-    directive.enemy_combatant.captor = directive._capital
-    if directive.enemy_combatant.captor != directive._capital:
+    directive.enemy_combatant.captor = directive._owner
+    if directive.enemy_combatant.captor != directive._owner:
       # Rollback all changes in reverse order
       directive.enemy_combatant.captor = None
 
@@ -368,8 +368,8 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         )
       )
 
-    directive._capital.team.hostages.append(directive.enemy_combatant)
-    if directive.enemy_combatant not in directive._capital.team.hostages:
+    directive._owner.team.hostages.append(directive.enemy_combatant)
+    if directive.enemy_combatant not in directive._owner.team.hostages:
       # Rollback all changes in reverse order
       directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
@@ -387,7 +387,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     directive.friend.occupant = None
     if directive.friend.occupant is not None:
       # Rollback all changes in reverse order
-      directive._capital.team.hostages.remove(directive.enemy_combatant)
+      directive._owner.team.hostages.remove(directive.enemy_combatant)
       directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
 
@@ -403,7 +403,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     if directive.enemy_combatant in directive.board.pieces:
       # Rollback all changes in reverse order
       directive.friend.occupant = directive.enemy_combatant
-      directive._capital.team.hostages.remove(directive.enemy_combatant)
+      directive._owner.team.hostages.remove(directive.enemy_combatant)
       directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
 

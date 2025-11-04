@@ -19,6 +19,7 @@ class TeamService:
     _search: TeamSearch
     _builder: TeamBuilder
     _validator: TeamValidator
+    _teams: [Team]
     
     def __init__(
             self,
