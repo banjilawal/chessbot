@@ -9,34 +9,34 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.graph import NullVisitException, Visitation, VisitNullException
+from chess.visitation import VisitationEvent, NullVisitationEventException
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
 
 
-class VisitationValidator(Validator[Visitation]):
+class VisitationEventValidator(Validator[VisitationEvent]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Visitation]:
+    def validate(cls, candidate: Any) -> ValidationResult[VisitationEvent]:
         """"""
-        method = "VisitationValidator.validate"
+        method = "VisitationEventValidator.validate"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullVisitException(f"{method}: {NullVisitException.DEFAULT_MESSAGE}")
+                    NullVisitationEventException(f"{method}: {NullVisitationEventException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(candidate, Visitation):
+            if not isinstance(candidate, VisitationEvent):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Visit, got {type(candidate)} instead")
                 )
-            visit = cast(Visitation, candidate)
+            event = cast(VisitationEvent, candidate)
             
             
             
-            return ValidationResult.success(payload=visit)
+            return ValidationResult.success(payload=event)
         except Exception as e:
             return ValidationResult.failure(e)
     

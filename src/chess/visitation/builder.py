@@ -9,17 +9,19 @@ version: 1.0.0
 
 
 from chess.domain import DomainValidator
+from chess.visitation import VisitationEvent
 from chess.piece import Piece, PieceValidator
-from chess.graph import Visitation
+
 from chess.system import BuildResult, Builder, ChessException, IdValidator, InvalidIdException, LoggingLevelRouter
 
 
-class VisitationBuilder(Builder[Visitation]):
+
+class VisitationEventBuilder(Builder[VisitationEvent]):
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[Visitation]:
+    def build(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[VisitationEvent]:
         """"""
         method = "VisitationBuilder.build"
         
@@ -48,7 +50,7 @@ class VisitationBuilder(Builder[Visitation]):
                     ChessException(f"{method}: Visitor's current position is not in the domain tree.")
                 )
             
-            BuildResult.success(payload=Visitation(domain=domain, visitor=domain_visitor))
+            BuildResult.success(payload=VisitationEvent(domain=domain, visitor=domain_visitor))
             
         except Exception as e:
             return BuildResult.failure(e)

@@ -9,6 +9,7 @@ version: 1.0.0
 
 from .exception import *
 
-from .visitation import Visitation
-from .builder import VisitationBuilder
-from .validator import VisitationValidator
+from .record import VisitRecord
+from .event import VisitationEvent
+from .builder import VisitationEventBuilder
+from .validator import VisitationEventValidator

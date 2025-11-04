@@ -9,15 +9,15 @@ version: 1.0.0
 
 from typing import List
 
-from chess.graph import Visitation
+from chess.visitation import VisitRecord
 
 
 class VisitationTable:
-    _entries: List[Visitation]
+    _entries: List[VisitRecord]
     
-    def __init__(self, entries: List[Visitation]=List[Visitation]):
+    def __init__(self, entries: List[VisitRecord]=List[VisitRecord]):
         self._entries = entries
         
     @property
-    def entries(self) -> List[Visitation]:
+    def entries(self) -> List[VisitRecord]:
         return self._entries
