@@ -7,14 +7,14 @@ Created: 2025-11-03
 version: 1.0.0
 """
 
-
-from chess.graph import Domain
+from chess.board import Board
+from chess.piece import Piece
+from chess.domain import Domain
 from chess.system import Builder, BuildResult
-from chess.system.build.builder import T
 
 
 class DomainBuilder(Builder[Domain]):
     
     @classmethod
-    def build(cls, *args, **kwargs) -> BuildResult[T]:
-        pass
+    def build(cls, piece: Piece, board: Board) -> BuildResult[Board]:
+        actor_validation = Actor

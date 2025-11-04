@@ -92,7 +92,7 @@ class NullTravelResourceException(TravelResourceException, NullException):
 
 class NullTravelerEnvironmentTupleException(TravelActorException, NullException):
   ERROR_CODE = "NULL_TRAVELER_ENVIRONMENT_TUPLE_ERROR"
-  DEFAULT_MESSAGE = "Piece-Board-Tuple passed to TravelActorValidator cannot be null."
+  DEFAULT_MESSAGE = "Piece-Board-Tuple passed to BoardActor cannot be null."
   
 class NullDestinationEnvironmentTupleException(TravelResourceException, NullException):
   ERROR_CODE = "NULL_DESTINATION__ENVIRONMENT_TUPLE_ERROR"

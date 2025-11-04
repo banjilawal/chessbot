@@ -20,7 +20,7 @@ from chess.piece.travel.base.validator.traveler.exception import (
   ActorNotOnBoardCannotMoveException,
   CheckMatedKingCannotMoveException
 )
-from chess.system import ValidationResult, Validator
+from chess.system import LoggingLevelRouter, ValidationResult, Validator
 
 T = TypeVar('T')
 
@@ -35,7 +35,7 @@ Attributes:
   * `_run_scan`: Static method for handling discoveries on occupied squares.
   * `_switch_squares`: Static method the transferring team piece to team different `Square`.
 """
-class TravelActorValidator(Validator[Tuple[Piece, Board]]):
+class BoardActor(Validator[Tuple[Piece, Board]]):
   """
   # ROLE: Validator, Data Integrity
 
@@ -56,7 +56,7 @@ class TravelActorValidator(Validator[Tuple[Piece, Board]]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Piece, Board])-> ValidationResult[Tuple[Piece, Board]]:
     """"""
-    method = "TravelActorValidator.validate"
+    method = "BoardActor.validate"
 
     try:
       if candidate is None:
