@@ -1,129 +1,265 @@
-# src/chess/team/team.py
+# src/chess/piece/search/search.py
+
 """
-Module: chess.team.team
+Module: chess.search.search
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-10-18
 version: 1.0.0
-
-# SCOPE:
--------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
-  its CRUD interfaces goes against recommended usage.
-
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
-
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-# THEME:
--------
-* Data Holding, Coordination, Performance
-
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
-
-# PURPOSE:
----------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
-
-***Satisfies***: Reliability and performance contracts.
-
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
-
-From `chess.team`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
-
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-From `chess.piece`:
-  `Piece`
-
-# CONTAINS:
-----------
- * `Team`
 """
+
 
 from typing import List
 
-from chess.team import Team, TeamValidator
-from chess.piece.model.piece import Piece
-from chess.commander.search import SearchResult
-from chess.system import SearchContext
-from chess.team.search import TeamHostageSearch, TeamRosterSearch, PieceCollection
+from chess.coord import Coord
+from chess.system import LoggingLevelRouter, Search, SearchResult
+from chess.piece import (
+    Piece, PieceValidator, Discovery, DiscoverySearchContext, DiscoverySearchContextValidator,
+    DiscoverySearchCoordCollisionException, DiscoverySearchIdCollisionException, DiscoverySearchNameCollisionException,
+)
 
 
-class TeamSearch(Piece):
-  """
-  ROLE:
-  ----
-  RESPONSIBILITIES:
-  ----------------
-  PROVIDES:
-  --------
-  ATTRIBUTES:
-  ----------
-  """
-  """
-  Static methods for entities and operations that need to old_search team Team for pieces and ranks. Provides consistent
-  old_search interface and return types across all old_search operations. Validates input parameters before searching to
-  ensure safe operations. Returns SearchResult objects encapsulating either the found entity or error information.
-
-  Usage:
-  ```python
-    from chess.team import Team, BoardSearch
-    from chess.piece import Piece
-   ```
-   
-  Methods:
-    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find team piece by its id on the given `team`.
-    
-    - `by_name(name: str, team: Team) -> SearchResult[Piece]`: Find team piece by its name on the given `team`.
-    
-    - `by_roster_number(roster_number: int, team: Team) -> SearchResult[Piece]`: Find team piece by its roster number
-      on the given team. Roster numbers are unique within team team. Not unique across teams.
-      
-    - `hostage_by_idy(discovery_id: int, team: Team) -> SearchResult[CombatantPiece]`:
-      
-    - `by_rank(rank: Rank, team: Team) -> SearchResult[list[Piece]]`: A list of all members with `rank` on 
-      given team. of team specific rank within team team.
-
-  Note:
-    DO NOT USE ANY OTHER METHODS TO SEARCH A TEAM. USE ONLY THE METHODS IN THIS CLASS.
-
-  See Also:
-    `Team`: The team being searched
-    `Piece`: The piece being searched for
-    `SearchResult`: The return type for all old_search operations
-  """
-
-  @classmethod
-  def search(cls, team: Team, data_source: PieceCollection, search_context: SearchContext) -> SearchResult[List[Piece]]:
+class DiscoverySearch(Search[Piece, Discovery]):
     """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    method = "ClassName.method_name"
+      # ROLE: Builder implementation
 
-    validation = TeamValidator.validate(team)
-    if not validation.is_success():
-      return SearchResult(exception=validation.exception)
+      # RESPONSIBILITIES:
+      1. Process and validate parameters for creating `Checker` instances.
+      2. Create new `Checker` objects if parameters meet specifications.
+      2. Report errors and return `BuildResult` with error details.
 
-    if data_source == PieceCollection.ROSTER:
-      return TeamRosterSearch.search(team=team, search_context=search_context)
-    else:
-      return TeamHostageSearch.search(team=team, search_context=search_context)
+      # PROVIDES:
+      `BuildResult`: Return type containing the built `Checker` or error information.
+
+      # ATTRIBUTES:
+      None
+      """
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def search(cls, data_owner: Piece, search_context: DiscoverySearchContext, *args, **kwargs) -> SearchResult[List[Discovery]]:
+        """"""
+        method = "DiscoverySearch.search"
+
+        owner_validation = PieceValidator.validate(data_owner)
+        if not owner_validation.is_failure():
+          return SearchResult(exception=owner_validation.exception)
+
+        search_context_validation = DiscoverySearchContextValidator.validate(search_context)
+        if not search_context_validation.is_success():
+          return SearchResult(exception=search_context_validation.exception)
+          
+        if search_context.piece_id is not None:
+            return DiscoverySearch._piece_id_search(piece=data_owner, piece_idid=search_context.piece_id)
+        
+        if search_context.name is not None:
+            return DiscoverySearch._name_search(piece=data_owner, name=search_context.name)
+        
+        if search_context.rank_name is not None:
+            return DiscoverySearch._rank_search(piece=data_owner, rank_name=search_context.rank_name)
+        
+        if search_context.discovery_id is not None:
+            return DiscoverySearch._discovery_id_search(piece=data_owner, discovery_id=search_context.discovery_id)
+        
+        if search_context.discovery_name is not None:
+            return DiscoverySearch._discovery_name_search(piece=data_owner, discovery_name=search_context.discovery_name)
+        
+        if search_context.current_position is not None:
+            return DiscoverySearch._position_search(piece=data_owner, ransom=search_context.current_position)
+        
+        return SearchResult()
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _piece_id_search(cls, piece: Piece, piece_id: int) -> SearchResult[List[Discovery]]:
+        """"""
+        method = "DiscoverySearch._piece_id_search"
+        try:
+            matches = [discovery for discovery in piece.discoveries if discovery.id == piece_id]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return DiscoverySearch._resolve_matching_ids(matches=matches, piece=piece)
+        except Exception as e:
+            return SearchResult(exception=e)
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _name_search(cls, piece: Piece, name: str) -> SearchResult[List[Discovery]]:
+        """"""
+        method = "DiscoverySearch._name_search"
+        try:
+            matches = [discovery for discovery in piece.discoveries if discovery.name.upper == name.upper()]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return DiscoverySearch._resolve_matching_names(piece=piece, matches=matches)
+        except Exception as e:
+            return SearchResult(exception=e)
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _ransom_search(cls, piece: Piece, ransom: int) -> SearchResult[List[Discovery]]:
+        """"""
+        method = "DiscoverySearch._ransom_search"
+        try:
+            matches = [discovery for discovery in piece.discoveries if discovery.ransom == ransom]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return DiscoverySearch._resolve_matching_ids(matches=matches, piece=piece)
+        except Exception as e:
+            return SearchResult(exception=e)
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _discovery_id_search(cls, piece: Piece, discovery_id: int) -> SearchResult[List[Discovery]]:
+        """"""
+        method = "DiscoverySearch._discovery_id_search"
+        try:
+            matches = [discovery for discovery in piece.discoveries if discovery.discovery_id == discovery_id]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return DiscoverySearch._resolve_matching_ids(matches=matches, piece=piece)
+        except Exception as e:
+            return SearchResult(exception=e)
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _discovery_name_search(cls, piece: Piece, discovery_name: str) -> SearchResult[List[Discovery]]:
+        """"""
+        method = "DiscoverySearch._piece_discovery_name_search"
+        try:
+            matches = [discovery for discovery in piece.discoveries if discovery.discovery_name.upper() == discovery_name.upper()]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return DiscoverySearch._resolve_matching_ids(matches=matches, piece=piece)
+        except Exception as e:
+            return SearchResult(exception=e)
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _rank_name_search(cls, piece: Piece, rank_name: str) -> SearchResult[List[Discovery]]:
+        """"""
+        method = "DiscoverySearch._rank_name_search"
+        try:
+            matches = [discovery for discovery in piece.discoveries if discovery.rank_name.upper() == rank_name.upper()]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return DiscoverySearch._resolve_matching_names(piece=piece, matches=matches)
+        except Exception as e:
+            return SearchResult(exception=e)
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _position_search(cls, piece: Piece, position: Coord) -> SearchResult[List[Discovery]]:
+        method = "DiscoverySearch._position_search"
+        try:
+            matches = [discovery for discovery in piece.discoveries if discovery.position == position]
+            if len(matches) == 0:
+                return SearchResult()
+            elif len(matches) == 1:
+                return SearchResult(payload=matches)
+            else:
+                return DiscoverySearch._resolve_matching_positions(piece=piece, matches=matches)
+        except Exception as e:
+            return SearchResult(exception=e)
+    
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _resolve_matching_ids(cls, piece: Piece, matches: List[Discovery]) -> SearchResult[List[Discovery]]:
+        method = "DiscoverySearch._resolve_matching_ids"
+        target = matches.pop()
+        misses = [discovery for discovery in matches if discovery.id == target.id and (
+            discovery.name.upper() != target.name.upper() or
+            discovery.position != target.position or
+            discovery.discovery_id != target.discovery_id or
+            discovery.discovery_name.upper() != target.discovery_name.upper() or
+            discovery.rank_name != target.rank_name.upper() or
+            discovery.ransom != target.ransom
+        )
+                  ]
+        if len(misses) == 0:
+            runs = len(matches) - 1
+            for discovery in matches:
+                if (
+                    discovery.id == target.id and
+                    piece.name.upper() == target.name.upper() and
+                    discovery.position == target.position and
+                    discovery.discovery_id == target.discovery_id and
+                    discovery.discovery_name.upper() == target.discovery_name.upper() and
+                    discovery.rank_name == target.rank_name.upper() and
+                    discovery.ransom == target.ransom
+                ):
+                    piece.discoveries.remove(discovery)
+                    matches.remove(discovery)
+            return SearchResult(payload=matches)
+        return SearchResult(
+            exception=DiscoverySearchIdCollisionException(
+                f"{method}: {DiscoverySearchIdCollisionException.DEFAULT_MESSAGE}"
+            )
+        )
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _resolve_matching_names(cls, piece: Piece, matches: List[Discovery]) -> SearchResult[List[Discovery]]:
+        method = "DiscoverySearch._resolve_matching_names"
+        target = matches.pop()
+        misses = [discovery for discovery in matches if discovery.name.upper() == target.name.upper() and (
+            discovery.id != target.id or
+            discovery.position != target.position or
+            discovery.discovery_id != target.discovery_id or
+            discovery.discovery_name.upper() != target.discovery_name.upper() or
+            discovery.rank_name != target.rank_name.upper() or
+            discovery.ransom != target.ransom
+        )]
+
+        if len(misses) == 0:
+            DiscoverySearch._remove_duplicates(piece=piece, target=target, number_of_duplicates=len(piece.discoveries))
+            return SearchResult(payload=[target])
+        return SearchResult(
+            exception=DiscoverySearchNameCollisionException(
+            f"{method}: {DiscoverySearchNameCollisionException.DEFAULT_MESSAGE}"
+        ))
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _resolve_matching_positions(cls, piece: Piece, matches: List[Discovery]) -> SearchResult[List[Discovery]]:
+        method = "DiscoverySearch._resolve_matching_positions"
+        target = matches.pop()
+        misses = [discovery for discovery in matches if discovery.position == target.position and (
+            discovery.id != target.id or
+            discovery.name.upper() != target.name.upper() or
+            discovery.discovery_id != target.discovery_id or
+            discovery.discovery_name.upper() != target.discovery_name.upper() or
+            discovery.rank_name != target.rank_name.upper() or
+            discovery.ransom != target.ransom
+        )]
+
+        if len(misses) == 0:
+            DiscoverySearch._remove_duplicates(piece=piece, target=target, number_of_duplicates=len(piece.discoveries))
+            return SearchResult(payload=[target])
+        return SearchResult(exception=DiscoverySearchCoordCollisionException(
+            f"{method}: {DiscoverySearchCoordCollisionException.DEFAULT_MESSAGE}"
+        ))
+    
+    @classmethod
+    def _remove_duplicates(cls, piece: Piece, target: Discovery, number_of_duplicates):
+        for i in range (number_of_duplicates):
+            piece.discoveries.remove(target)
+        piece.discoveries.append(target)

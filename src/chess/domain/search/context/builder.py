@@ -1,95 +1,49 @@
-# src/chess/team/team.py
+# src/chess/domain/search/context/builder.py
+
 """
-Module: chess.team.team
+Module: chess.domain.search.context.builder
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-11-05
 version: 1.0.0
-
-# SCOPE:
--------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
-  its CRUD interfaces goes against recommended usage.
-
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
-
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-# THEME:
--------
-* Data Holding, Coordination, Performance
-
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
-
-# PURPOSE:
----------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
-
-***Satisfies***: Reliability and performance contracts.
-
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
-
-From `chess.team`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
-
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-From `chess.piece`:
-  `Piece`
-
-# CONTAINS:
-----------
- * `Team`
 """
-
 
 from typing import Optional
 
-from chess.rank import Rank, RankValidator, RankSpec
-from chess.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
-from chess.system import (
-    IdValidator, NameValidator, Builder, BuildResult,
-    MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
+from chess.coord import Coord, CoordValidator
+from chess.rank import Queen, RankSpec
+from chess.system import BuildResult, Builder, IdValidator, LoggingLevelRouter, NameValidator
+from chess.domain import (
+    DomainSearchContext, TooManyDomainSearchParamsException, ZeroDomainSearchParamsException, DomainInvalidRankNameParamException,
 )
-from chess.team.search.context.context import TeamSearchContext
-from chess.team.search import RansomOutOfBoundsException
 
-
-class PieceSearchContextBuilder(Builder[TeamSearchContext]):
-    """
+class DomainSearchContextBuilder(Builder[DomainSearchContext]):
+    """iece
     # ROLE: Builder implementation
 
     # RESPONSIBILITIES:
-    1. Process and validate parameters for creating `Team` instances.
-    2. Create new `Team` objects if parameters meet specifications.
+    1. Process and validate parameters for creating `DomainSearchContext` instances.
+    2. Create new `DomainSearchContext` objects if parameters meet specifications.
     2. Report errors and return `BuildResult` with error details.
 
     # PROVIDES:
-    `BuildResult`: Return type containing the built `Team` or error information.
+    `BuildResult`: Return type containing the built `DomainSearchContext` or error information.
 
     # ATTRIBUTES:
     None
     """
 
     @classmethod
+    @LoggingLevelRouter.monitor
     def build (
         cls,
-        name: Optional[str],
-        rank: Optional[Rank],
-        ransom: Optional[int],
-        piece_id: Optional[int],
-        roster_number: Optional[int],
-    ) -> BuildResult[TeamSearchContext]:
+        name: Optional[str] = None,
+        ransom: Optional[int] = None,
+        piece_id: Optional[int] = None,
+        team_id: Optional[id] = None,
+        team_name: Optional[str] = None,
+        rank_name: Optional[Rank] = None,
+        position: Optional[Coord] = None,
+    ) -> BuildResult[DomainSearchContext]:
         """
         Action:
         Parameters:
@@ -97,56 +51,67 @@ class PieceSearchContextBuilder(Builder[TeamSearchContext]):
         Raises:
         MethodNameException wraps
         """
-        method = "PieceSearchContextBuilder.build"
+        method = "DomainSearchContextBuilder.build"
 
-        params = [name, rank, ransom, piece_id, roster_number]
-        param_count = sum(bool(p) for p in params)
+        try:
+            params = [name, ransom, piece_id, team_id, team_name, rank_name, position]
+            param_count = sum(bool(p) for p in params)
 
-        if param_count == 0:
-            raise AllParamsSetNullException(
-                f"{method}: {AllParamsSetNullException.DEFAULT_MESSAGE}"
-            )
-
-        if param_count > 1:
-            raise MutuallyExclusiveParamsException(
-                f"{method}: {MutuallyExclusiveParamsException.DEFAULT_MESSAGE}"
-            )
-
-        if piece_id is not None:
-            id_validation = IdValidator.validate(piece_id)
-            if not id_validation.is_success():
-                LoggingLevelRouter(PieceSearchContextBuilder, id_validation.exception)
-                return BuildResult(exception=id_validation.exception)
-            return BuildResult(payload=TeamSearchContext(piece_id=id_validation.payload))
-
-        if roster_number is not None:
-            if roster_number < 1 or roster_number > ROSTER_SIZE:
-                err = RosterNumberOutOfBoundsException(
-                    f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
+            if param_count == 0:
+                return BuildResult.failure(
+                    ZeroDomainSearchParamsException(f"{method}: {ZeroDomainSearchParamsException.DEFAULT_MESSAGE}")
                 )
-                LoggingLevelRouter(PieceSearchContextBuilder, err)
-                return BuildResult(exception=err)
-            return BuildResult(payload=TeamSearchContext(roster_number=roster_number))
 
-        if name is not None:
-            name_validation = NameValidator.validate(name)
-            if not name_validation.is_success():
-                LoggingLevelRouter(PieceSearchContextBuilder, name_validation.exception)
-                return BuildResult(exception=name_validation.exception)
-            return BuildResult(payload=TeamSearchContext(name=name))
-
-        if ransom is not None:
-            if ransom < RankSpec.KING.ransom or ransom > RankSpec.QUEEN.ransom:
-                err = RansomOutOfBoundsException(
-                    f"{method}: {RansomOutOfBoundsException.DEFAULT_MESSAGE}"
+            if param_count > 1:
+                return BuildResult(
+                    TooManyDomainSearchParamsException(f"{method}: {TooManyDomainSearchParamsException.DEFAULT_MESSAGE}")
                 )
-                LoggingLevelRouter(PieceSearchContextBuilder, err)
-                return BuildResult(exception=err)
-            return BuildResult(payload=TeamSearchContext(ransom=ransom))
 
-        if rank is not None:
-            rank_validation = RankValidator.validate(rank)
-            if not rank_validation.is_success():
-                LoggingLevelRouter(PieceSearchContextBuilder, rank_validation.exception)
-                return BuildResult(exception=rank_validation.exception)
-            return BuildResult(payload=TeamSearchContext(rank=rank))
+            if piece_id is not None:
+                id_validation = IdValidator.validate(piece_id)
+                if not id_validation.is_failure():
+                    return BuildResult(exception=id_validation.exception)
+
+            if name is not None:
+                piece_name_validation = NameValidator.validate(name)
+                if piece_name_validation.is_failure():
+                    return BuildResult(exception=piece_name_validation.exception)
+
+            if team_id is not None:
+                team_id_validation = IdValidator.validate(team_id)
+                if team_id_validation.is_failure():
+                    return BuildResult(exception=team_id_validation.exception)
+
+            if team_name is not None:
+                team_name_validation = NameValidator.validate(team_name)
+                if team_name_validation.is_failure():
+                    return BuildResult.failure(team_name_validation.exception)
+
+            if rank_name is not None and rank_name.upper() not in RankSpec.__members__:
+                return BuildResult.failure(
+                    DomainInvalidRankNameParamException(f"{method}: {DomainInvalidRankNameParamException.DEFAULT_MESSAGE}")
+                )
+
+            if ransom not in range[Queen.ransom]:
+                return BuildResult.failure(
+                    DomainInvalidRankNameParamException(f"{method}: {DomainInvalidRankNameParamException.DEFAULT_MESSAGE}")
+                )
+
+            if position is not None:
+                position_validation = CoordValidator.validate(position)
+                if position_validation.is_failure():
+                    return BuildResult.failure(position_validation.exception)
+
+            return BuildResult.success(
+                DomainSearchContext(
+                    name=name,
+                    ransom=ransom,
+                    piece_id=piece_id,
+                    team_id=team_id,
+                    team_name=team_name,
+                    rank_name=rank_name,
+                    position=position
+                )
+            )
+        except Exception as e:
+            return BuildResult.failure(e)

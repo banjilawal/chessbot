@@ -1,19 +1,8 @@
 from enum import Enum, auto
 from typing import List, Optional, Type
 
-from chess.rank.rank import Rank
-from chess.geometry.quadrant import Quadrant
-
-
-# class Quadrant(Enum):
-#   def __new__(cls, quad_id:int, null-pkg:Vector):
-#     obj = object.__new__(cls)
-#     obj._piece_id = quad_id
-#     obj._vector = null-pkg
-#
-#     return obj
-#
-#   N = (auto(), Vector(x=0, y=1))
+from chess.rank import Rank, RankSpec
+from chess.geometry import Quadrant
 
 
 class RankSpec(Enum):
@@ -80,8 +69,8 @@ class RankSpec(Enum):
     def valid_ranks(self):
         return
     
-    @staticmethod
-    def find_speck_by_rank(rank: Rank) -> Optional['RankSpec']:
+    @classmethod
+    def find_speck_by_rank(cls, rank: Rank) -> Optional[RankSpec]:
         print(f"Looking for config with name:{rank.name}")
         
         for spec in RankSpec:
@@ -89,6 +78,8 @@ class RankSpec(Enum):
             if spec.name.upper() == rank.name.upper():
                 return spec
         return None
+
+    
 
 
 def main():

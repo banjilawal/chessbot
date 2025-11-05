@@ -78,6 +78,145 @@ class ErrorContradictsPayloadException(ResultConstructorException):
   DEFAULT_MESSAGE = (
     "A Result cannot have both its payload and error set. Construct with either payload or err"
   )
+  
+# src/chess/system/old_search/rollback_exception.py
+
+"""
+Module: chess.system.old_search.rollback_exception
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the `ChessBot` integrity requirement.
+  2. A satisfaction of the `ChessBot` reliability requirement.
+
+# SECTION 2 - Scope:
+The module's effects and actions cover exceptions raised by implementors of the `Search` interface.
+
+# SECTION 3: Limitations
+  1. Does not provide granular, precise information pertinent to debugging. The module's
+      scope it too wide for that.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. Discoverability.
+  3. Encapsulations.
+
+# SECTION 5- Features Supporting Requirements:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+  2. Ensuring validator results are communicated are sent to clients is an integrity feature.
+
+# SECTION 6 - Feature Delivery Mechanism:
+  1. Verify existing entities meet minimum requirements for use in the system.
+  2. A description of an error condition, boundary violation, experienced or caused by an entity in
+      the validator graph.
+  3. The root of a scalable, modular hierarchy for validator related exceptions.
+
+# SECTION 7 - Dependencies:
+* From `chess.system`:
+    `ChessException`
+
+# SECTION 8 - Contains:
+See the list of exceptions in the `__all__` list following (e.g., `SearchException`,
+`SearchParamException`, `RowAboveBoundsException`).
+  * `SearchException`
+  * `SearchParamException`
+  * `ImpossibleFatalResultException`
+"""
+
+from chess.system import ChessException, SearchCollisionException
+
+__all__ = [
+  'DiscoverySearchException',
+  'SearchParamException',
+  'ImpossibleFatalResultException',
+
+#======================# SEARCH_COLLISION EXCEPTIONS #======================#
+  'DiscoverySearchCollisionException',
+  'DiscoverySearchIdCollisionException',
+  'DiscoverySearchNameCollisionException',
+  'DiscoverySearchCoordCollisionException',
+
+  'SquareSearchIdCollisionException',
+  'SquareSearchNameCollisionException',
+  'SquareSearchCoordCollisionException',
+
+  'TeamSearchIdCollisionException'
+]
+
+class DiscoverySearchException(ChessException):
+  """
+  Super class of exceptions organic to `Search` objects. DO NOT USE DIRECTLY. Subclasses give
+  details useful for debugging. `SearchException` exists primarily to allow catching all `Search`
+  exceptions.
+  """
+  DEFAULT_CODE = "SEARCH_ERROR"
+  DEFAULT_MESSAGE = "Search raised an rollback_exception."
+
+
+#======================# SEARCH_COLLISION EXCEPTIONS #======================#
+class DiscoverySearchCollisionException(DiscoverySearchException, SearchCollisionException):
+  DEFAULT_CODE = "DISCOVERY_SEARCH_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "DiscoverySearch results contains records with multiple records with properties that should be unique. There "
+    "may be service inconsistencies."
+  )
+
+
+class DiscoverySearchIdCollisionException(DiscoverySearchCollisionException):
+  DEFAULT_CODE = "DISCOVERY_SEARCH_ID_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "DiscoverySearch results contains has more than one match for the piece_id which should be unique. There "
+    "may be service inconsistencies."
+  )
+
+class DiscoverySearchNameCollisionException(DiscoverySearchCollisionException):
+  DEFAULT_CODE = "DISCOVERY_SEARCH_NAME_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "DiscoverySearch results contains has more than one match for discovery_name, which should be unique. There "
+    "may be service inconsistencies."
+  )
+
+class DiscoverySearchCoordCollisionException(DiscoverySearchCollisionException):
+  DEFAULT_CODE = "DISCOVERY_SEARCH_COORD_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "DiscoverySearch results contains has more than one match for discovery_position, which should be unique. There "
+    "may be service inconsistencies."
+  )
+
+
+class SquareSearchIdCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Square found with the same id. There may be a service inconsistency."
+  )
+
+
+class SquareSearchNameCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Square found with the same name. There may be a service collision"
+  )
+
+class SquareSearchCoordCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "SQUARE_SEARCH_COORD_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Square found at the same coordinate. There may be a service inconsistency."
+  )
+
+class TeamSearchIdCollisionException(SearchCollisionException):
+  DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
+  DEFAULT_MESSAGE = (
+    "More than one Team found with the same name. There may be a service inconsistency."
+  )
+
+
+
+
+
 
 
 
