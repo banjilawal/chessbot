@@ -48,7 +48,7 @@ The major theme influencing the modules design are
 See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
-# src/chess/system/travel/event.py
+# src/chess/system/travel/validator.py
 
 """
 Module: chess.system.id.validator

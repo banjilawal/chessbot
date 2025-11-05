@@ -42,38 +42,38 @@ See the list of exceptions in the `__all__` list following (e.g., `CoordExceptio
 """
 
 from chess.piece import TravelEventException
-from chess.system import NullException, ValidationException, InconsistencyException
+from chess.system import ChessException, NullException, ValidationException, InconsistencyException
 
 __all__ = [
-  'TravelActorException',
+  'BoardActorException',
   'TravelResourceException',
 
 #====================== TravelEvent actor_candidate VALIDATION EXCEPTIONS #======================#
-  'InvalidTravelActorException',
+  'InvalidBoardActorException',
   'InvalidTravelResourceException',
-  'NullTravelActorException',
+  'NullBoardActorException',
   'NullTravelResourceException',
-  'TravelActorNotFoundException',
+  'BoardActorNotFoundException',
   
   'NullTravelerEnvironmentTupleException',
   'NullDestinationEnvironmentTupleException',
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
-  'TravelActorMovingException',
+  'BoardActorMovingException',
   'NoInitialPlacementException',
   'ActorAlreadyAtDestinationException',
   'ActorNotOnRosterCannotMoveException',
-  'RemovedBoardActorCannotMoveException',
+  'ActorRemovedFromBoardCannotMoveException',
   'CapturedActorCannotMoveException',
 
 # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-  'TravelActorSquareNotFoundException',
-  'SquareMisMatchesTravelActorException'
+  'BoardActorSquareNotFoundException',
+  'SquareMisMatchesBoardActorException'
 ]
 
 
-class TravelActorException(TravelEventException):
-  ERROR_CODE = "TRAVEL_ACTOR_ERROR"
+class BoardActorException(ChessException):
+  ERROR_CODE = "BOARD_ACTOR_ERROR"
   DEFAULT_MESSAGE = "An rollback_exception was raised by a TravelEvent traveler."
 
 
@@ -82,15 +82,15 @@ class TravelResourceException(TravelEventException):
   DEFAULT_MESSAGE = "An rollback_exception was raised by a TravelEvent resource."
 
 #====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
-class NullTravelActorException(TravelActorException, NullException):
-  ERROR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
+class NullBoardActorException(BoardActorException, NullException):
+  ERROR_CODE = "NULL_BOARD_ACTOR_ERROR"
   DEFAULT_MESSAGE = "A TravelEvent traveler cannot be null."
 
 class NullTravelResourceException(TravelResourceException, NullException):
   ERROR_CODE = "NULL_TRAVEL_RESOURCE_ERROR"
   DEFAULT_MESSAGE = "A TravelEvent resource cannot be null."
 
-class NullTravelerEnvironmentTupleException(TravelActorException, NullException):
+class NullTravelerEnvironmentTupleException(BoardActorException, NullException):
   ERROR_CODE = "NULL_TRAVELER_ENVIRONMENT_TUPLE_ERROR"
   DEFAULT_MESSAGE = "Piece-Board-Tuple passed to BoardActorValidator cannot be null."
   
@@ -98,26 +98,26 @@ class NullDestinationEnvironmentTupleException(TravelResourceException, NullExce
   ERROR_CODE = "NULL_DESTINATION__ENVIRONMENT_TUPLE_ERROR"
   DEFAULT_MESSAGE = "Square-Board-Tuple passed to TravelResourceValidator cannot be null."
 
-class InvalidTravelActorException(TravelActorException, ValidationException):
-  ERROR_CODE = "TRAVEL_ACTOR_VALIDATION_ERROR"
+class InvalidBoardActorException(BoardActorException, ValidationException):
+  ERROR_CODE = "BOARD_ACTOR_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Validation of a TravelEvent traveler failed."
 
 class InvalidTravelResourceException(TravelResourceException, ValidationException):
   ERROR_CODE = "TRAVEL_RESOURCE_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Validation of a TravelEvent resource failed."
 
-class TravelActorNotFoundException(TravelActorException, InconsistencyException):
-  ERROR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
+class BoardActorNotFoundException(BoardActorException, InconsistencyException):
+  ERROR_CODE = "BOARD_ACTOR_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
     "TravelEvent actor_candidate was not found during the board search. There may be a service inconsistency."
   )
 
 # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
-class TravelActorMovingException(TravelActorException):
-  ERROR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
+class BoardActorMovingException(BoardActorException):
+  ERROR_CODE = "BOARD_ACTOR_MOVE_ERROR"
   DEFAULT_MESSAGE = "TravelEvent actor_candidate raised a moving violation. Candidate cannot travel."
 
-class NoInitialPlacementException(TravelActorMovingException):
+class NoInitialPlacementException(BoardActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_DID_NOT_HAVE_INITIAL_PLACEMENT_ERROR"
   DEFAULT_MESSAGE = (
@@ -125,24 +125,24 @@ class NoInitialPlacementException(TravelActorMovingException):
     "Candidate cannot travel."
   )
 
-class ActorAlreadyAtDestinationException(TravelActorMovingException):
+class ActorAlreadyAtDestinationException(BoardActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_ALREADY_AT_DESTINATION_ERROR"
   DEFAULT_MESSAGE = "TravelEvent actor_candidate is already at the destination square. There is nn need to travel."
 
-class ActorNotOnRosterCannotMoveException(TravelActorMovingException):
+class ActorNotOnRosterCannotMoveException(BoardActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
   DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team's roster. Candidate cannot travel."
 
-class RemovedBoardActorCannotMoveException(TravelActorMovingException):
+class ActorRemovedFromBoardCannotMoveException(BoardActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
   DEFAULT_MESSAGE = (
     "TravelEvent actor_candidate is not on the board. Candidate cannot travel."
   )
 
-class CapturedActorCannotMoveException(TravelActorMovingException):
+class CapturedActorCannotMoveException(BoardActorMovingException):
   """"""
   ERROR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
   DEFAULT_MESSAGE = (
@@ -150,7 +150,7 @@ class CapturedActorCannotMoveException(TravelActorMovingException):
     "Candidate cannot travel."
   )
 
-class CheckMatedKingCannotMoveException(TravelActorMovingException):
+class CheckMatedKingCannotMoveException(BoardActorMovingException):
   """"""
   ERROR_CODE = "CHECK_MATED_KING_MOVE_ERROR"
   DEFAULT_MESSAGE = (
@@ -160,15 +160,15 @@ class CheckMatedKingCannotMoveException(TravelActorMovingException):
 
 
 # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-class TravelActorSquareNotFoundException(TravelActorException, InconsistencyException):
+class BoardActorSquareNotFoundException(BoardActorException, InconsistencyException):
   """"""
-  ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
+  ERROR_CODE = "BOARD_ACTOR_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
     "BoardSearch did not find a square associated with the actor_candidate's coord. There may be a service "
     "inconsistency."
   )
 
-class SquareMisMatchesTravelActorException(TravelActorException, InconsistencyException):
+class SquareMisMatchesBoardActorException(BoardActorException, InconsistencyException):
   """"""
-  ERROR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
+  ERROR_CODE = "SQUARE_MISMATCHES_BOARD_ACTOR_ERROR"
   DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a service inconsistency."

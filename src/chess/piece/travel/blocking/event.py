@@ -1,4 +1,4 @@
-# src/chess/piece/travel/blocking/event.py
+# src/chess/piece/travel/blocking/validator.py
 
 """
 Module: `chess.piece.travel.blocking.event`

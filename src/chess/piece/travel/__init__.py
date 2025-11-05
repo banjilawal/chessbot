@@ -13,4 +13,3 @@ from .attack import *
 from .factory import *
 from .blocking import *
 from .occupation import *
-from chess.piece.travel.base.validator import *

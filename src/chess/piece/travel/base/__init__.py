@@ -8,6 +8,6 @@ Version: 1.0.1
 """
 
 from .exception import *
-from .validator import *
 from .event import TravelEvent
+from .validator import TravelEventValidator
 from .transaction import TravelTransaction

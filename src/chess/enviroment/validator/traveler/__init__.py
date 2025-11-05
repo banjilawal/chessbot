@@ -8,4 +8,4 @@ Version: 1.0.1
 """
 
 from .exception import *
-from .traveler import BoardActorValidator
+from .actor import BoardActorValidator

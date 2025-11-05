@@ -1,4 +1,4 @@
-# src/chess/visitation/event.py
+# src/chess/visitation/validator.py
 
 """
 Module: chess.visitation.visitation

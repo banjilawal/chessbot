@@ -1,4 +1,4 @@
-# src/chess/piece/travel/occupation/combatant/event.py
+# src/chess/piece/travel/occupation/combatant/validator.py
 
 """
 Module: chess.piece.travel.occupation.combatant.event

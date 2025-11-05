@@ -1,4 +1,4 @@
-# chess/piece/travel/base/validator/traveler/traveler.py
+# chess/piece/travel/base/validator/traveler/actor.py
 
 """
 Module: `chess.piece.travel.base.validator.traveler.traveler`
@@ -16,8 +16,8 @@ from chess.piece import (
   NullTravelerEnvironmentTupleException, Piece
 )
 from chess.piece.model.validator import PieceValidator
-from chess.piece.travel.base.validator.traveler.exception import (
-  RemovedBoardActorCannotMoveException,
+from chess.enviroment.validator.traveler.exception import (
+  ActorRemovedFromBoardCannotMoveException,
   CheckMatedKingCannotMoveException
 )
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
@@ -107,7 +107,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       search_result = BoardPieceSearch.search(board=environment, search_context=BoardSearchContext(id=actor.id))
       if search_result.is_empty():
         return ValidationResult.failure(
-          RemovedBoardActorCannotMoveException(f"{method}: {RemovedBoardActorCannotMoveException.DEFAULT_MESSAGE}")
+          ActorRemovedFromBoardCannotMoveException(f"{method}: {ActorRemovedFromBoardCannotMoveException.DEFAULT_MESSAGE}")
         )
       
       if search_result.is_failure():
