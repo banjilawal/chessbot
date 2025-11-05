@@ -1,4 +1,4 @@
-# src/chess/rank/king.py
+# src/chess/rank/piece.py
 
 """
 Module: chess.rank.king

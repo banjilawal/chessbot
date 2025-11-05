@@ -1,7 +1,7 @@
-# chess/piece/travel/base/validator/traveler/actor.py
+# src/chess/environment/actor.py
 
 """
-Module: `chess.piece.travel.base.validator.traveler.traveler`
+Module: `chess.environment.actor`
 Author: Banji Lawal
 Created: 2025-10-18
 Version: 1.0.1
@@ -16,13 +16,13 @@ from chess.piece import (
   NullTravelerEnvironmentTupleException, Piece
 )
 from chess.piece.model.validator import PieceValidator
-from chess.enviroment.validator.traveler.exception import (
+from chess.enviroment.exception import (
   ActorRemovedFromBoardCannotMoveException,
   CheckMatedKingCannotMoveException
 )
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
 
-T = TypeVar('T')
+
 
 """
 Implements the `OccupationExecutor` class, which handles executing travel

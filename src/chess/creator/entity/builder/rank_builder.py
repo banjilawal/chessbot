@@ -1,8 +1,8 @@
 from chess.rank.bishop import Bishop
 from chess.rank.rook import Rook
-from chess.rank.king import King
+from chess.king.rank import King
 from chess.rank.knight import Knight
-from chess.rank.pawn import Pawn
+from chess.pawn import Pawn
 from chess.rank.spec import RankSpec
 from chess.rank.queen import Queen
 

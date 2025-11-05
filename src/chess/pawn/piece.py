@@ -1,11 +1,13 @@
-# src/chess/piece/model/pawn/pawn.py
+# src/chess/pawn/pawn.py
 
 """
-Module: chess.piece.model.pawn.pawn
+Module: chess.pawn.pawn
 Author: Banji Lawal
-Created: 2025-10-24
+Created: 2025-10-04
 version: 1.0.0
 """
+
+
 from typing import Optional
 
 from chess.checkmate import CheckPostalService

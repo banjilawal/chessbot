@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 
-from chess.piece.model.pawn.promotion import PromotionTransaction
+from chess.pawn import PromotionTransaction
 from chess.system import LoggingLevelRouter, TransactionResult
 from chess.piece import (
     PromotionEvent, TravelTransaction, OccupationEvent, OccupationEventValidator,

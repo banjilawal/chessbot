@@ -1,7 +1,7 @@
-# chess/piece/travel/base/validator/resource/destination.py
+# src/chess/environment/resource.py
 
 """
-Module: `chess.piece.travel.base.validator.resource.destination`
+Module: `chess.environment.resource`
 Author: Banji Lawal
 Created: 2025-10-18
 Version: 1.0.1
@@ -15,7 +15,7 @@ from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.board import Board, BoardSearchContext, BoardSquareSearch, BoardValidator, SquareIdSearchInvariantBreachException
 
 
-class TravelResourceValidator(Validator[Square, Board]):
+class BoardResourceValidator(Validator[Square, Board]):
   """
   # ROLE: Validator, Data Integrity
 
@@ -36,7 +36,7 @@ class TravelResourceValidator(Validator[Square, Board]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Square, Board]) -> ValidationResult[Tuple[Square, Board]]:
     """"""
-    method = "TravelResourceValidator.validate"
+    method = "BoardResourceValidator.validate"
 
     try:
       if candidate is None:
