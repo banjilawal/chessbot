@@ -1,6 +1,6 @@
-# src/chess/piece/search/discoverySearchContext.py
+# src/chess/owner/search/discoverySearchContext.py
 """
-Module: chess.piece.search.discoverySearchContext
+Module: chess.owner.search.discoverySearchContext
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0

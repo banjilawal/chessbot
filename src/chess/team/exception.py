@@ -147,28 +147,28 @@ class TeamRosterException(TeamException):
   DEFAULT_MESSAGE = "Team roster raised an rollback_exception."
 
 class AddTeamMemberException(TeamRosterException):
-  """Raised if piece could not be added to the team's roster"""
+  """Raised if owner could not be added to the team's roster"""
   ERROR_CODE = "ADD_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "Could not add piece to team's roster."
+  DEFAULT_MESSAGE = "Could not add owner to team's roster."
 
 class AddEnemyToRosterException(TeamRosterException):
   """Attempting to add an enemy to the team's roster raises an rollback_exception."""
   ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR"
-  DEFAULT_MESSAGE = "An enemy piece cannot be added to the team's roster."
+  DEFAULT_MESSAGE = "An enemy owner cannot be added to the team's roster."
 
 class RemoveTeamMemberException(TeamRosterException):
-  """Raised if piece could not be removed from the team's roster"""
+  """Raised if owner could not be removed from the team's roster"""
   ERROR_CODE = "REMOVE_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "Could not remove team piece to team's roster."
+  DEFAULT_MESSAGE = "Could not remove team owner to team's roster."
 
 class FullRankQuotaException(TeamRosterException):
-  """Raised if the team has not empty slots for the piece's rank."""
+  """Raised if the team has not empty slots for the owner's rank."""
   ERROR_CODE = "FULL_RANK_QUOTA_ERROR"
-  DEFAULT_MESSAGE = "The team has no empty slots for the piece's rank."
+  DEFAULT_MESSAGE = "The team has no empty slots for the owner's rank."
 
 class ConflictingTeamAssignmentException(TeamRosterException):
   """
-  If team piece that's already on one team (piece.team == not None) tries joining
+  If team owner that's already on one team (owner.team == not None) tries joining
   another InvalidTeamAssignmentException is raised.
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR"
@@ -183,12 +183,12 @@ class TeamRosterRollBackException(TeamRosterException, RollbackException):
 
 class AddTeamMemberRolledBackException(TeamRosterRollBackException):
   """
-  Raised if team notification failed to add team piece could to the team's roster; then the
+  Raised if team notification failed to add team owner could to the team's roster; then the
   notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_TEAM_MEMBER_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Adding piece to team's roster failed. Transaction rollback performed."
+    "Adding owner to team's roster failed. Transaction rollback performed."
   )
 
 class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
@@ -198,7 +198,7 @@ class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
   """
   ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Caught attempt to add an enemy piece to the team's roster Transaction "
+    "Caught attempt to add an enemy owner to the team's roster Transaction "
     "rollback performed."
   )
 
@@ -206,17 +206,17 @@ class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
 
 class FullRankQuotaRolledBackException(TeamRosterRollBackException):
   """
-  Raised if team notification failed could not add team piece because there were no empty slots
-  for the piece's rank. The notification was rolled back before raising this err.
+  Raised if team notification failed could not add team owner because there were no empty slots
+  for the owner's rank. The notification was rolled back before raising this err.
   """
   ERROR_CODE = "FULL_RANK_QUOTA_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "The team has no empty slots for the piece's rank. Transaction rollback performed."
+    "The team has no empty slots for the owner's rank. Transaction rollback performed."
   )
 
 class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
   """
-  Raised if team notification tries to assign team piece to team different team's roster.
+  Raised if team notification tries to assign team owner to team different team's roster.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR_ROLLED_BACK"
@@ -239,12 +239,12 @@ class InconsistentHostageEntry(TeamHostageListException):
 class InvalidFriendlyHostageException(TeamHostageListException):
   """Attempting to team friendly to the hostage list raises an rollback_exception."""
   ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "A friendly piece cannot be added to the team's hostage list"
+  DEFAULT_MESSAGE = "A friendly owner cannot be added to the team's hostage list"
 
 class AddEnemyHostageException(TeamHostageListException):
-  """Raised if team piece could not be added to the team's hostage list"""
+  """Raised if team owner could not be added to the team's hostage list"""
   ERROR_CODE = "ADD_ENEMY_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list"
+  DEFAULT_MESSAGE = "Could not add an enemy owner to the team's hostage list"
 
 class AddEnemyKingHostageException(TeamHostageListException):
   """Attempting to an enemy occupation to the hostage list raises an rollback_exception."""
@@ -257,7 +257,7 @@ class AddEnemyKingHostageException(TeamHostageListException):
 class HostageRemovalException(TeamHostageListException):
   """Attempting to remove an enemy from the hostage list raises an rollback_exception."""
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR"
-  DEFAULT_MESSAGE = "An enemy piece cannot be removed from the team's hostage list"
+  DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team's hostage list"
 
 
 #======================# HOSTAGE LIST EXCEPTIONS WITH ROLLBACK #======================#  
@@ -273,19 +273,19 @@ class TeamHostageListRolledBackException(TeamHostageListException, RollbackExcep
 
 class InvalidFriendlyHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if team notification attempts to add team friendly piece to the team's hostage list.
+  Raised if team notification attempts to add team friendly owner to the team's hostage list.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "A friendly piece cannot be added to the team's hostage list"
+  DEFAULT_MESSAGE = "A friendly owner cannot be added to the team's hostage list"
 
 class AddEnemyHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if team notification could not add an enemy piece to the team's hostage list.
+  Raised if team notification could not add an enemy owner to the team's hostage list.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_HOSTAGE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Could not add an enemy piece to the team's hostage list."
+  DEFAULT_MESSAGE = "Could not add an enemy owner to the team's hostage list."
 
 
 class EnemyKingHostageRolledBackException(TeamHostageListRolledBackException):
@@ -305,7 +305,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "An enemy piece cannot be removed from the team's hostage list."
+  DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team's hostage list."
 
 #======================# SEARCH EXCEPTIONS #======================#  
 class RosterNumberOutOfBoundsException(TeamException, SearchException):

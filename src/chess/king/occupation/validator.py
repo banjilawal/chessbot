@@ -1,7 +1,7 @@
-# chess/chess/piece/travel/occupation/occupation/validator.py
+# chess/chess/owner/travel/occupation/occupation/validator.py
 
 """
-Module: `chess.piece.travel.occupation.occupation.validator`
+Module: `chess.owner.travel.occupation.occupation.validator`
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0
@@ -157,7 +157,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     * `OccupationExecutor:` Main class responsible for executing travel directives.
 #     * `_attack_enemy`: Static method for processing attacks on enemy pieces.
 #     * `_run_scan`: Static method for handling discoveries on occupied squares.
-#     * `_switch_squares`: Static method the transferring team piece to team different `Square`.
+#     * `_switch_squares`: Static method the transferring team owner to team different `Square`.
 #   """
 #
 #   @classmethod
@@ -292,7 +292,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     )
 #
 #   attack_validation = AttackValidator.validate(
-#     CaptureContext(piece=travel.traveler, enemy=destination_occupant, board=context.board)
+#     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=context.board)
 #   )
 #   if not attack_validation.is_success():
 #     return TransactionResult(op_result_id, travel, attack_validation.rollback_exception)
@@ -325,7 +325,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   `Traveltransaction.execute` is the single entry point to `_switch_squares`. Before `_switch_squares`
 #   was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
 #   `directive.blocked_square` contained either
-#     * A friendly piece blocking `actor_candidate` from `blocked_square`
+#     * A friendly owner blocking `actor_candidate` from `blocked_square`
 #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
 #
 #   Args:
@@ -335,7 +335,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #
 #   Returns:
 #   `OccupationResult` containing:
-#     - On success: A new `OccupationDirective` with the updated squares and `piece`.
+#     - On success: A new `OccupationDirective` with the updated squares and `owner`.
 #     - On failure: The original `OccupationDirective`or verifying any rollbacks succeeded and the err
 #       describing the failure.
 #
@@ -400,8 +400,8 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #
 #   method = "OccupationExecutor._attack_enemy"
 #
-#   directive.enemy.captor = directive.piece
-#   if directive.enemy.captor != directive.piece:
+#   directive.enemy.captor = directive.owner
+#   if directive.enemy.captor != directive.owner:
 #     # Rollback all changes in reverse order
 #     directive.enemy.captor = None
 #
@@ -428,8 +428,8 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #       )
 #     )
 #
-#   directive.piece.team.hostages.append(directive.enemy)
-#   if directive.enemy not in directive.piece.team.hostages:
+#   directive.owner.team.hostages.append(directive.enemy)
+#   if directive.enemy not in directive.owner.team.hostages:
 #     # Rollback all changes in reverse order
 #     directive.enemy.team.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
@@ -447,7 +447,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   directive.friend.occupant = None
 #   if directive.friend.occupant is not None:
 #     # Rollback all changes in reverse order
-#     directive.piece.team.hostages.remove(directive.enemy)
+#     directive.owner.team.hostages.remove(directive.enemy)
 #     directive.enemy.team.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #
@@ -463,7 +463,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   if directive.enemy in directive.board.pieces:
 #     # Rollback all changes in reverse order
 #     directive.friend.occupant = directive.enemy
-#     directive.piece.team.hostages.remove(directive.enemy)
+#     directive.owner.team.hostages.remove(directive.enemy)
 #     directive.enemy.team.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #

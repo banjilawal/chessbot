@@ -7,9 +7,9 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# src/chess/piece/travel/notification
+# src/chess/owner/travel/notification
 """
-Module: chess.piece.travel.notification
+Module: chess.owner.travel.notification
 Author: Banji Lawal
 Created: 2025-09-28
 

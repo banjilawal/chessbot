@@ -1,13 +1,12 @@
-# src/chess/domain/__init__.py
+# src/chess/owner/__init__.py
 
 """
-Module: chess.domain
+Module: chess.owner.__init__
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0
 """
 
-from .search import *
 from .exception import *
 
 from .domain import Domain

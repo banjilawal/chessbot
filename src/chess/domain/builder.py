@@ -8,8 +8,9 @@ version: 1.0.0
 """
 
 from chess.board import Board
-from chess.piece import BoardActorValidator, Piece
+from chess.piece import Piece
 from chess.domain import Domain
+from chess.enviroment import BoardActorValidator
 from chess.system import Builder, BuildResult, LoggingLevelRouter, id_emitter
 
 
@@ -17,7 +18,7 @@ class DomainBuilder(Builder[Domain]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, piece: Piece, board: Board) -> BuildResult[Board]:
+    def build(cls, piece: Piece, board: Board) -> BuildResult[Domain]:
         """"""
         method = "DomainBuilder.build"
         
@@ -26,6 +27,6 @@ class DomainBuilder(Builder[Domain]):
             if board_actor_validation.is_failure():
                 return BuildResult.failure(board_actor_validation.exception)
             
-            return BuildResult.success(payload=Domain(id=id_emitter.domain_id, piece=piece))
+            return BuildResult.success(Domain(piece=piece))
         except Exception as e:
             return BuildResult.failure(e)

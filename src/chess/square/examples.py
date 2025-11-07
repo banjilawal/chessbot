@@ -34,7 +34,7 @@ any additional validate checks on the returned `Square` instance. This method gu
 with team successful status is returned, the contained `Square` is valid and ready for use.
 
 Args:
-  `discovery_id` (`int`): The unique id for the piece. Must pass `IdValidator` checks.
+  `discovery_id` (`int`): The unique id for the owner. Must pass `IdValidator` checks.
   `name` (`Name`): Must pass `NameValidator` checks.
   `coord` (`Coord`): Where `Square` is located on team `Board`. Must pass `CoordValidator` checks.
 
@@ -86,7 +86,7 @@ Example:
 #
 # >>> from chess.enemy import Square, SquareValidator
 # >>> from chess.coord import Coord
-# >>> from chess.piece import Piece
+# >>> from chess.owner import Piece
 # >>>
 # >>>
 # >>> # Build team new Square at Coord(2, 1)

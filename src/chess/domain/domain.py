@@ -1,15 +1,16 @@
-# src/chess/domain/domain.py
+# src/chess/owner/owner.py
 
 """
-Module: chess.graph.domain
+Module: chess.graph.owner
 Author: Banji Lawal
 Created: 2025-10-28
 version: 1.0.0
 """
 
-from typing import Optional
+from typing import List, Optional
 
 from chess.coord import Coord
+from chess.pawn import ActorPlacementRequiredException
 from chess.piece import Piece
 
 
@@ -17,37 +18,61 @@ class Domain:
     """"""
     _id: int
     _owner: Piece
-    _tree: [Coord]
-    _owner_address: Optional[Coord]
-    _owner_previous_address: Coord
+    _tree: List[Coord]
+    _visitors: List[Piece]
+    _tree_root: Optional[Coord]
+    _previous_tree_root: Coord
 
     
-    def __init__(self, id: int, piece: Piece):
-        self._id = id
+    def __init__(self, piece: Piece):
         self._owner = piece
-        self._owner_previous_address = None
-        self._owner_address = piece.current_position
-        self._tree = self._owner.rank.compute_span(self._owner)
+        self._id = self._owner.id
+        self._tree = List[Coord]
+        self._visitors = List[Piece]
+        self._previous_tree_root = None
+        self._tree_root = piece.current_position
+        
+        self._tree.append(self._tree_root)
+
         
     @property
     def id(self) -> int:
-        return self._id
+        return self._owner.id
     
     @property
     def owner(self) -> Piece:
         return self._owner
     
     @property
-    def owner_address(self) -> Coord:
-        return self._owner_previous_address
+    def tree_root(self) -> Coord:
+        return self._tree_root
     
     @property
-    def owner_previous_address(self) -> Optional[Coord]:
-        return self._owner_previous_address
+    def previous_tree_root(self) -> Optional[Coord]:
+        return self._previous_tree_root
     
     @property
-    def tree(self) -> [Coord]:
+    def tree(self) -> List[Coord]:
         return self._tree
+    
+    @property
+    def visitors(self) -> List[Piece]:
+        return self._visitors
+    
+    def update(self):
+        """"""
+        method = "Domain.update"
+        
+        if self._tree_root is None and self._previous_tree_root == self._tree_root:
+            raise ActorPlacementRequiredException(f"{method}: {ActorPlacementRequiredException.DEFAULT_MESSAGE}")
+        if self.previous_tree_root is not None and self.previous_tree_root in self._tree:
+            self._tree.remove(self.previous_tree_root)
+            
+        if self._tree_root is not None and self._tree_root not in self._tree:
+            
+            self._previous_tree_root = self._tree_root
+            
+            self._tree_root = self._owner.current_position
     
     def __eq__(self, other) -> bool:
         if other is self:

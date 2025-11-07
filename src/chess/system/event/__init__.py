@@ -1,7 +1,7 @@
 # src/chess/system/event/__init__.py
 
 """
-Module: chess.system.event
+Module: chess.system.event.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 """

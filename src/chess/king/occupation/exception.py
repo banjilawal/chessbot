@@ -1,7 +1,7 @@
-# src/chess/piece/travel/occupation/rollback_exception.py
+# src/chess/owner/travel/occupation/rollback_exception.py
 
 """
-Module: `chess.piece.travel.occupation.rollback_exception`
+Module: `chess.owner.travel.occupation.rollback_exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -112,34 +112,34 @@ class PositionUpdateRollbackException(AttackEventException, RollbackException):
 class HostageActivityException(PieceException):
   """
   Several exceptions can be raised during capture operations. This class is the parent of
-  exceptions an attacking piece can raised. Do not use directly. Subclasses give details
+  exceptions an attacking owner can raised. Do not use directly. Subclasses give details
   useful for debugging.
   """
   ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"
-  DEFAULT_MESSAGE = "Hostage piece cannot move, blocking, or attack."
+  DEFAULT_MESSAGE = "Hostage owner cannot move, blocking, or attack."
 
 
 class HostageCannotAttackException(HostageActivityException):
   """
-  Raised if team captured piece tries to attack.
+  Raised if team captured owner tries to attack.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot attack."
+  DEFAULT_MESSAGE = "Captured owner cannot attack."
 
 
 class HostageCannotMoveException(HostageActivityException):
   """
-  Raised if team captured piece tries to move.
+  Raised if team captured owner tries to move.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_MOVE_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot move."
+  DEFAULT_MESSAGE = "Captured owner cannot move."
 
 
 class HostageCannotScanException(HostageActivityException):
   """
-  Raised if team captured piece tries to blocking team square.
+  Raised if team captured owner tries to blocking team square.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "Captured piece cannot blocking team sqaure."
+  DEFAULT_MESSAGE = "Captured owner cannot blocking team sqaure."
 
 

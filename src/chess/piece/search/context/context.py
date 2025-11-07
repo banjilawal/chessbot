@@ -1,9 +1,9 @@
-# src/chess/domain/search/context/context.py
+# src/chess/piece/search/context/context.py
 
 """
-Module: chess.domain.search.context.context
+Module: chess.piece.search.context.context
 Author: Banji Lawal
-Created: 2025-11-05
+Created: 2025-10-19
 version: 1.0.0
 """
 
@@ -13,7 +13,7 @@ from chess.coord import Coord
 from chess.rank import Rank
 from chess.system import SearchContext
 
-class DomainSearchContext(SearchContext):
+class DiscoverySearchContext(SearchContext):
   """
   # ROLE: Builder implementation
 

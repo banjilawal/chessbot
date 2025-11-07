@@ -1,4 +1,4 @@
-# src/chess/king/piece.py
+# src/chess/king/owner.py
 
 """
 Module: chess.king

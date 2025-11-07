@@ -1,7 +1,7 @@
-# src/chess/piece/dto/dto.py
+# src/chess/owner/dto/dto.py
 
 """
-Module: chess.piece.dto.dto
+Module: chess.owner.dto.dto
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0

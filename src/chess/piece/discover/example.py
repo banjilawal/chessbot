@@ -1,40 +1,40 @@
-# chess/piece/discover/__init__.py
+# chess/owner/discover/__init__.py
 
 """
-Module: `chess.piece.discover`
+Module: `chess.owner.discover`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
 
 ## Purpose
-Provides the fundamental service structures for game pieces and entities owned by team game piece.
+Provides the fundamental service structures for game pieces and entities owned by team game owner.
 
 ## Core Classes
   * `Piece`: Abstract base class for all chess pieces
-  * `CombatantPiece`: Concrete piece that can be captured
-  * `KingPiece`: Concrete occupation piece with special rules
+  * `CombatantPiece`: Concrete owner that can be captured
+  * `KingPiece`: Concrete occupation owner with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
   * `Checker`: A check of an item discovered by team `Piece` during team blocking or move.
-  * `DiscoveryScan`: A service-holding object representing team single blocking of team chess piece's surroundings.
+  * `DiscoveryScan`: A service-holding object representing team single blocking of team chess owner's surroundings.
 
 ## Usage
 ```python
 from chess.rank import Pawn, King
-from chess.piece import CombatantPiece, KingPiece
+from chess.owner import CombatantPiece, KingPiece
 
 white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', rank=Pawn(), team=white_team)
 white_king = KingPiece(discovery_id=2, name='WK', rank=King(), team=white_team)
 ```
 
 ## EXCEPTIONS
-These are not all the exceptions related to `Piece` in the application. `chess.piece` package only has exceptions
+These are not all the exceptions related to `Piece` in the application. `chess.owner` package only has exceptions
 organic to:
   * `Piece` and its subclases.
   * `Checker` and `DiscoveryScan`
   * `CoordStack`.
 
-All exceptions in `chess.piece` package have static fields:
+All exceptions in `chess.owner` package have static fields:
   - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with team "_ERROR" suffix
   - `DFAULT_MESSAGE`: A sentence describing the err.
 Use an err's `DEFAULT_MESSAGE` For consistency across the application.
@@ -77,7 +77,7 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 These examples show recommended workflows with `Piece` exceptions.
 
 ```python
-from chess.piece import CombatantPiece, Checker, NullAttackException, AutoDiscoveryException
+from chess.owner import CombatantPiece, Checker, NullAttackException, AutoDiscoveryException
 
 build_outcome = PieceBuilder.build(
   discovery_id=id_emitter.discovery_id,

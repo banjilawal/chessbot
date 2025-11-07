@@ -68,8 +68,8 @@ class DiscoveryBuilder(Enum):
 
 
     Args:
-      `actor_candidate`(`Piece`): The piece that is doing team blocking, or executing team move.
-      `discover`(`Piece`): The static piece the `actor_candidate` finds in team `square`.
+      `actor_candidate`(`Piece`): The owner that is doing team blocking, or executing team move.
+      `discover`(`Piece`): The static owner the `actor_candidate` finds in team `square`.
 
     Returns:
       BuildResult[Checker]: A `BuildResult` containing either:

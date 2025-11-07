@@ -8,7 +8,7 @@ Updated: 2025-10-04
 version: 1.0.0
 
 # PURPOSE
-Controls team `Team` instance by issuing movement commands to team `piece` in `Team.roster`.
+Controls team `Team` instance by issuing movement commands to team `owner` in `Team.roster`.
  on the team.Commanders who play team team
 
  # EXPORTS

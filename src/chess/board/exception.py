@@ -131,27 +131,27 @@ class BoardBuildFailedException(BoardException, BuilderException):
 
 #======================# PIECE ADDITION/REMOVAL EXCEPTIONS #======================#  
 class BoardPieceAdditionFailedException(BoardException):
-  """Raised if the board_validator fails to remove team piece from itself"""
+  """Raised if the board_validator fails to remove team owner from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR"
-  DEFAULT_MESSAGE = "Board failed to add the piece"
+  DEFAULT_MESSAGE = "Board failed to add the owner"
 
 class BoardPieceRemovalFailedException(BoardException):
-  """Raised if the board_validator fails to remove team piece from itself"""
+  """Raised if the board_validator fails to remove team owner from itself"""
   ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR"
-  DEFAULT_MESSAGE = "Board failed to remove the piece"
+  DEFAULT_MESSAGE = "Board failed to remove the owner"
 
 
 
 #======================# PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#  
 class FailedPieceAdditionRolledBackException(BoardRollBackException):
   """
-  Raised if team notification failed to add team piece to the board_validator.The notification was
+  Raised if team notification failed to add team owner to the board_validator.The notification was
   rolled back before raising this err.
   """
-  """Raised if the board_validator fails to remove team piece from itself"""
+  """Raised if the board_validator fails to remove team owner from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Could not remove team piece from the board_validator. Transaction rollback performed."
+    "Could not remove team owner from the board_validator. Transaction rollback performed."
   )
 
 

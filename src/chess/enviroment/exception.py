@@ -29,7 +29,7 @@ __all__ = [
   'NoInitialPlacementException',
   'ActorAlreadyAtDestinationException',
   'ActorNotOnRosterCannotMoveException',
-  'ActorRemovedFromBoardCannotMoveException',
+  'BoardPieceRemovedCannotActException',
   'CapturedActorCannotMoveException',
 
 # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
@@ -101,7 +101,7 @@ class ActorNotOnRosterCannotMoveException(BoardActorMovingException):
   ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
   DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team's roster. Candidate cannot travel."
 
-class ActorRemovedFromBoardCannotMoveException(BoardActorMovingException):
+class BoardPieceRemovedCannotActException(BoardActorMovingException):
   """"""
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
   DEFAULT_MESSAGE = (

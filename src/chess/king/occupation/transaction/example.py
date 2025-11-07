@@ -87,7 +87,7 @@ Example:
 #   `OccupationExecutor.execute_event` is the single entry point to `_switch_squares`. Before `_switch_squares`
 #   was called `execute_event`: validated the parameters, handled exceptions, and confirmed
 #   `travel.blocked_square` contained either
-#     * A friendly piece blocking `actor_candidate` from `blocked_square`
+#     * A friendly owner blocking `actor_candidate` from `blocked_square`
 #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
 #
 #   Args:
@@ -97,7 +97,7 @@ Example:
 #
 #   Returns:
 #   `OccupationResult` containing:
-#     - On success: A new `TravelEvent` with the updated squares and `piece`.
+#     - On success: A new `TravelEvent` with the updated squares and `owner`.
 #     - On failure: The original `TravelEvent`or verifying any rollbacks succeeded and the err
 #       describing the failure.
 #
@@ -308,7 +308,7 @@ Example:
 #
 #
 #   attack_validation = AttackValidator.validate(
-#     CaptureContext(piece=travel.traveler, enemy=destination_occupant, board=context.board)
+#     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=context.board)
 #   )
 #   if not attack_validation.is_success():
 #     return TransactionResult(op_result_id, travel, attack_validation.rollback_exception)
@@ -334,7 +334,7 @@ Example:
 # def _run_scan(op_result_id :int, travel: ScanEvent) -> TransactionResult:
 #   """
 #   Creates team new `Checker` object for travel.actor_candidate which is blocking from moving to
-#   `blocked_square` by `travel.enemy`. The enemy is either team friendly piece or an enemy `KingPiece`.
+#   `blocked_square` by `travel.enemy`. The enemy is either team friendly owner or an enemy `KingPiece`.
 #   `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, error chains
 #   confirmed parameters ar are correct. No additional sanity checks are needed.
 #
@@ -478,7 +478,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 """
 
 # from chess.rollback_exception import RollbackException
-# from chess.piece.travel import OccupationEventException
+# from chess.owner.travel import OccupationEventException
 #
 # __all__ = [
 #   #=== SCAN_TRANSACTION EXCEPTIONS #======================#

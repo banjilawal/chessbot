@@ -34,7 +34,7 @@ This module requires components from various sub-systems:
 * `chess.rank`: Movement strategy (`Rank`)
 * `chess.square`: Location service structure (`Square`)
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
-* `chess.piece`: Piece subtypes (`KingPiece`, `CombatantPiece`, etc.)
+* `chess.owner`: Piece subtypes (`KingPiece`, `CombatantPiece`, etc.)
 * `chess.team`: Roster management, rollback_exception handling
 * `chess.notification`: Base notification and roster types
 
@@ -64,8 +64,8 @@ class PieceBuilder(Builder[Piece]):
 
     Args:
       `name`(`str`): Must pass `NameValidator` checks.
-      `rank`(`Rank`): The `rank` which determines how the piece moves and its capture value.
-      `team`(`Team`): Specifies if the `piece` is white or black.
+      `rank`(`Rank`): The `rank` which determines how the owner moves and its capture value.
+      `team`(`Team`): Specifies if the `owner` is white or black.
 
     Returns:
     BuildResult[Piece]: A `BuildResult` containing either:
@@ -77,10 +77,10 @@ class PieceBuilder(Builder[Piece]):
       * `InvalidNameException`: if `name` fails validate checks
       * `InvalidRankException`: if `rank` fails validate checks
       * `InvalidTeamException`: if `team` fails validate checks
-      * `InvalidTeamAssignmentException`: If `piece.team` is different from `team` parameter
-      * `FullRankQuotaException`: If the `team` has no empty slots for the `piece.rank`
-      * `FullRankQuotaException`: If `piece.team` is equal to `team` parameter but `team.roster` still does
-        not have the piece
+      * `InvalidTeamAssignmentException`: If `owner.team` is different from `team` parameter
+      * `FullRankQuotaException`: If the `team` has no empty slots for the `owner.rank`
+      * `FullRankQuotaException`: If `owner.team` is equal to `team` parameter but `team.roster` still does
+        not have the owner
     """
     method = "PieceBuilder.build"
 
@@ -146,17 +146,17 @@ class PieceBuilder(Builder[Piece]):
 # def main():
 #   build_outcome = PieceBuilder.build()
 #   if build_outcome.is_success():
-#     piece = build_outcome.payload
-#     print(f"Successfully built piece: {piece}")
+#     owner = build_outcome.payload
+#     print(f"Successfully built owner: {owner}")
 #   else:
-#     print(f"Failed to build piece: {build_outcome.err}")
+#     print(f"Failed to build owner: {build_outcome.err}")
 #   #
 #   build_outcome = PieceBuilder.build(1, None)
 #   if build_outcome.is_success():
-#     piece = build_outcome.payload
-#     print(f"Successfully built piece: {piece}")
+#     owner = build_outcome.payload
+#     print(f"Successfully built owner: {owner}")
 #   else:
-#     print(f"Failed to build piece: {build_outcome.err}")
+#     print(f"Failed to build owner: {build_outcome.err}")
 #
 # if __name__ == "__main__":
 #   main()

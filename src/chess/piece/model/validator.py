@@ -1,7 +1,7 @@
-# src/chess/piece/model/validator/validator.py
+# src/chess/owner/model/validator/validator.py
 
 """
-Module: chess.piece.model.validator.piece
+Module: chess.owner.model.validator.owner
 Author: Banji Lawal
 Created: 2025-10-22
 Version: 1.0.0
@@ -80,10 +80,10 @@ class PieceValidator(Validator[Piece]):
                     PieceRankOutOfBoundsException("{method}: {PieceRankOutOfBoundsException.DEFAULT_MESSAGE}")
                 )
             
-            # This test will have to be removed because a valid piece that has been captured is taken of
+            # This test will have to be removed because a valid owner that has been captured is taken of
             # its team's roster and put on its enemy's hostage list.
-            # team = piece.team
-            # if piece not in team.roster:
+            # team = owner.team
+            # if owner not in team.roster:
             #   return ValidationResult(rollback_exception=UnregisteredTeamMemberException(
             #     f"{method}: {UnregisteredTeamMemberException.DEFAULT_MESSAGE}"
             #   ))

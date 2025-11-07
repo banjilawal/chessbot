@@ -1,7 +1,7 @@
 # src/chess/system/id/__init__.py
 
 """
-Module: chess.system.id
+Module: chess.system.id.__init__
 Author: Banji Lawal
 Created: 2025-09-17
 Updated: 2025-10-10

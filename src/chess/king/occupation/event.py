@@ -1,7 +1,7 @@
-# src/chess/piece/travel/occupation/validator.py
+# src/chess/owner/travel/occupation/validator.py
 
 """
-Module: `chess.piece.travel.occupation.event`
+Module: `chess.owner.travel.occupation.event`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

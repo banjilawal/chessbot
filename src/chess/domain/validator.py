@@ -1,7 +1,7 @@
-# src/chess/graph/domain/validator.py
+# src/chess/graph/owner/validator.py
 
 """
-Module: chess.graph.domain.validator
+Module: chess.graph.owner.validator
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0
@@ -67,7 +67,7 @@ class DomainValidator(Validator[Domain]):
             
             if domain.owner.current_position is None:
                 return ValidationResult.failure(
-                    ChessException(f"{method}: Cannot get the domain of a piece not on the board")
+                    ChessException(f"{method}: Cannot get the owner of a piece not on the board")
                 )
             
             if domain.owner.current_position != domain.owner_address:

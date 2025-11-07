@@ -14,7 +14,7 @@ class CommanderSearch:
   Usage:
     ```python
     from chess.board_validator import Board, BoardSearch
-    from chess.piece import Piece
+    from chess.owner import Piece
     ```
 
   Note:
@@ -22,7 +22,7 @@ class CommanderSearch:
 
   See Also:
     `Board`: The board_validator being searched
-    `Piece`: The piece being searched for
+    `Piece`: The owner being searched for
     `Square`: The square being searched for
     `Coord`: The coordinate being searched for
     `SearchResult`: The return type for all old_search operations

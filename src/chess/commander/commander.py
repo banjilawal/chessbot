@@ -86,7 +86,7 @@ class Commander(ABC):
     )
   
   # commander.order_move(
-  #   piece=TeamSearch.search(
+  #   owner=TeamSearch.search(
   #     data_owner=self._team,
   #     search_category=SearchCategory.ROSTER,
   #     search_context=TeamSearchContext(name="BN1")

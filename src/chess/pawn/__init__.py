@@ -1,7 +1,7 @@
 # src/chess/pawn/__init__.py
 
 """
-Module: chess.piece.pawn
+Module: chess.owner.pawn
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

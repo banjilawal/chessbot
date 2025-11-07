@@ -44,7 +44,7 @@ From `chess.team`:
 From `chess.commander`:
   `Commander`, `CommanderValidator`,
 
-From `chess.piece`:
+From `chess.owner`:
   `Piece`
 
 # CONTAINS:
@@ -80,15 +80,15 @@ class TeamSearch(Piece):
   Usage:
   ```python
     from chess.team import Team, BoardSearch
-    from chess.piece import Piece
+    from chess.owner import Piece
    ```
    
   Methods:
-    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find team piece by its id on the given `team`.
+    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find team owner by its id on the given `team`.
     
-    - `by_name(name: str, team: Team) -> SearchResult[Piece]`: Find team piece by its name on the given `team`.
+    - `by_name(name: str, team: Team) -> SearchResult[Piece]`: Find team owner by its name on the given `team`.
     
-    - `by_roster_number(roster_number: int, team: Team) -> SearchResult[Piece]`: Find team piece by its roster number
+    - `by_roster_number(roster_number: int, team: Team) -> SearchResult[Piece]`: Find team owner by its roster number
       on the given team. Roster numbers are unique within team team. Not unique across teams.
       
     - `hostage_by_idy(discovery_id: int, team: Team) -> SearchResult[CombatantPiece]`:
@@ -101,7 +101,7 @@ class TeamSearch(Piece):
 
   See Also:
     `Team`: The team being searched
-    `Piece`: The piece being searched for
+    `Piece`: The owner being searched for
     `SearchResult`: The return type for all old_search operations
   """
 

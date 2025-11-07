@@ -135,7 +135,7 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
 
 class DoublePromotionException(PromotionEventException):
   """
-  Raised when attempting promoting team piece already elevated to Queen rank.
+  Raised when attempting promoting team owner already elevated to Queen rank.
   Only pieces with Pawn or King rank can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
@@ -148,7 +148,7 @@ class DoublePromotionException(PromotionEventException):
 
 class DoublePromotionRolledBackException(RollBackException):
   """
-  Raised if team notification attempts promoting team piece already elevated to Queen rank.
+  Raised if team notification attempts promoting team owner already elevated to Queen rank.
   Only pieces with Pawn or King rank can be promoted. The notification was rolled
   back before raising this err.
   """
@@ -162,7 +162,7 @@ class DoublePromotionRolledBackException(RollBackException):
 # ======================# PIECE PROMOTION EXCEPTIONS #======================#
 class DoublePromotionException(PieceException):
   """
-  Raised when attempting promoting team piece already elevated to Queen rank.
+  Raised when attempting promoting team owner already elevated to Queen rank.
   Only pieces with Pawn or King rank can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
@@ -171,7 +171,7 @@ class DoublePromotionException(PieceException):
 
 class DoublePromotionRolledBackException(PieceRollBackException):
   """
-  Raised if team notification attempts promoting team piece already elevated to Queen rank.
+  Raised if team notification attempts promoting team owner already elevated to Queen rank.
   Only pieces with Pawn or King rank can be promoted. The notification was rolled
   back before raising this err.
   """
@@ -279,7 +279,7 @@ class ActorException(AttackException):
   """
   Super class of all exceptions an actor_candidate object can raise. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
-  all piece exceptions
+  all owner exceptions
   """
   ERROR_CODE = "ACTOR_ERROR"
   DEFAULT_MESSAGE = "Actor raised an rollback_exception. Piece cannot act."
@@ -287,8 +287,8 @@ class ActorException(AttackException):
 
 class ActorRollBackException(ActorException, RollbackException):
   """
-  Any inconsistencies team piece introduces into team notification need to be rolled back.
-  This is the super class of team piece mutator operations, methods, or fields that raise
+  Any inconsistencies team owner introduces into team notification need to be rolled back.
+  This is the super class of team owner mutator operations, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
   exists primarily to allow catching all Piece exceptions that happen when team failed
   notification must be rolled back.
@@ -300,8 +300,8 @@ class ActorRollBackException(ActorException, RollbackException):
 # ======================# ACTOR VALIDATION EXCEPTIONS #======================#
 class InvalidActorException(ActorException, InvalidAttackException):
   """
-  Raised by ActorValidator if piece fails any conditions for acting on the board_validator.
-  Exists primarily to catch all exceptions raised validating an existing piece
+  Raised by ActorValidator if owner fails any conditions for acting on the board_validator.
+  Exists primarily to catch all exceptions raised validating an existing owner
   """
   ERROR_CODE = "ACTOR_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Piece did not meet condition to act in the game."
@@ -309,7 +309,7 @@ class InvalidActorException(ActorException, InvalidAttackException):
 
 class ActorNotOnBoardException(ActorException):
   """
-  A piece that has not been placed on the board_validator cannot move, blocking, capture or be captured
+  A owner that has not been placed on the board_validator cannot move, blocking, capture or be captured
   """
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
   DEFAULT_MESSAGE = "Actor is not on the board_validator. Piece cannot act"
@@ -326,23 +326,23 @@ class ActorPlacementRequiredException(ActorException):
 # ======================# ACTOR ACTIVITY EXCEPTIONS #======================#
 class CapturedActorCannotActException(ActorException):
   """
-  A captured piece cannot actt.
+  A captured owner cannot actt.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_ACT_ERROR"
-  DEFAULT_MESSAGE = "Actor has been captured. Captured piece cannot act."
+  DEFAULT_MESSAGE = "Actor has been captured. Captured owner cannot act."
 
 
 class CapturedActorCannotAttackException(ActorException):
   """
-  A captured piece cannot attack.
+  A captured owner cannot attack.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Actor has been captured. Captured piece cannot attack."
+  DEFAULT_MESSAGE = "Actor has been captured. Captured owner cannot attack."
 
 
 class CapturedActorCannotMoveException(ActorException):
   """
-  A captured piece cannot move.
+  A captured owner cannot move.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_ERROR"
   DEFAULT_MESSAGE = "A captured actor_candidate cannot move to team square."
@@ -350,7 +350,7 @@ class CapturedActorCannotMoveException(ActorException):
 
 class CapturedActorCannotScanException(ActorException):
   """
-  A captured piece cannot blocking.
+  A captured owner cannot blocking.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
   DEFAULT_MESSAGE = "A captured actor_candidate cannot blocking team square."
@@ -369,11 +369,11 @@ class CheckMatedKingActivityException(ActorException):
 # ======================# SUBJECT EXCEPTIONS #======================#
 class SubjectException(AttackException):
   """
-  SubjectException classes are raised on team piece acted upon. They are raised on the same errors as ActorException,
+  SubjectException classes are raised on team owner acted upon. They are raised on the same errors as ActorException,
   Using SubjectException makes tracing which side of the interaction is raising an error easier.
   """
   ERROR_CODE = "SUBJECT_ERROR"
-  DEFAULT_MESSAGE = "A potential enemy piece raised an rollback_exception."
+  DEFAULT_MESSAGE = "A potential enemy owner raised an rollback_exception."
 
 
 class InvalidSubjectException(SubjectException, InvalidAttackException):

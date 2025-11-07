@@ -1,5 +1,5 @@
 """
-Module: piece
+Module: owner
 Author: Banji Lawal
 Created: 2025-09-28
 Purpose:
@@ -8,15 +8,15 @@ Purpose:
   membership, rank, and board_validator position, and manage interactions with other pieces.
 
 Contents:
-  - Piece: Abstract base class representing team chess piece with position and rank.
-  - KingPiece: Concrete subclass representing team occupation piece.
-  - CombatantPiece: Concrete subclass representing team piece capable of capturing others.
-  - CoordStack, Checker, Discoveries: Supporting classes for tracking piece positions
+  - Piece: Abstract base class representing team chess owner with position and rank.
+  - KingPiece: Concrete subclass representing team occupation owner.
+  - CombatantPiece: Concrete subclass representing team owner capable of capturing others.
+  - CoordStack, Checker, Discoveries: Supporting classes for tracking owner positions
    and discoveries.
-  - Validators and exceptions related to piece creation and validate.
+  - Validators and exceptions related to owner creation and validate.
 
 Notes:
-  This module is part of the chess.piece package. Validation exceptions are defined
+  This module is part of the chess.owner package. Validation exceptions are defined
   in PieceValidator and related error classes. Piece objects are designed to be
   immutable in their core properties.
 """

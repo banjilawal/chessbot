@@ -1,7 +1,7 @@
 # src/chess/system/validate/old_transaction.py
 
 """
-Module: chess.piece.system.validate.notification
+Module: chess.owner.system.validate.notification
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10

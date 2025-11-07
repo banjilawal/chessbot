@@ -1,4 +1,4 @@
-# src/chess/paw/rank.py
+# src/chess/pawn/rank.py
 
 """
 Module: chess.pawn.rank
@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.coord import Coord
-from chess.piece import PawnPiece
+from chess.pawn import PawnPiece
 from chess.rank import  Rank, RankSpec
 
 class Pawn(Rank):

@@ -44,7 +44,7 @@ From `chess.team`:
 From `chess.commander`:
   `Commander`, `CommanderValidator`,
 
-From `chess.piece`:
+From `chess.owner`:
   `Piece`
 
 # CONTAINS:

@@ -1,7 +1,7 @@
-# src/chess/domain/exception.py
+# src/chess/owner/exception.py
 
 """
-Module: chess.domain.exception
+Module: chess.owner.exception
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0
@@ -35,7 +35,7 @@ class DomainException(ChessException):
     """
     Super class of all exceptions team Domain object raises. Do not use directly. Subclasses
     give details useful for debugging. This class exists primarily to allow catching
-    all domain exceptions
+    all owner exceptions
     """
     ERROR_CODE = "DOMAIN_ERROR"
     DEFAULT_MESSAGE = "Domain raised an rollback_exception."
@@ -49,7 +49,7 @@ class InvalidDomainException(DomainException, ValidationException):
 
 class DomainMissingTreeException(DomainException, InconsistencyException):
     """
-    Raised if `domain.positions` stack does not exist. If the `domain.positions == null there is service inconsistency
+    Raised if `owner.positions` stack does not exist. If the `owner.positions == null there is service inconsistency
     or loss.
     """
     ERROR_CODE = "DOMAIN_MISSING_TREE_ERROR"
@@ -57,20 +57,20 @@ class DomainMissingTreeException(DomainException, InconsistencyException):
 
 class CapturedDomainOwnerException(DomainException):
     """
-    Raised if `domain.discovery` list does not exist. If the `domain.discoveries == null there is service inconsistency
+    Raised if `owner.discovery` list does not exist. If the `owner.discoveries == null there is service inconsistency
     or loss.
     """
     ERROR_CODE = "HOSTAGE_CANNOT_OWN_DOMAIN_ERROR"
     DEFAULT_MESSAGE = "Domain.discovery list is null. It should never be null. There may be service inconsistency or loss."
 
 class PieceNotOnRosterDomainOwnerException(DomainException):
-    """Raised if team domain has its team set but the domain is not on the roster."""
+    """Raised if team owner has its team set but the owner is not on the roster."""
     ERROR_CODE = "PIECE_NOT_ON_ROSTER_CANNOT_OWN_DOMAIN_ERROR"
-    DEFAULT_MESSAGE = "The domain has assigned itself a team. but is not listed on that team's roster."
+    DEFAULT_MESSAGE = "The owner has assigned itself a team. but is not listed on that team's roster."
 
 class CheckmatedKingDomainOwnerException(DomainException):
     """
-    Raised a domain's roster number is null. This should never happen. the invariant roster number
+    Raised a owner's roster number is null. This should never happen. the invariant roster number
     is set during build. If its null during validator there has been service loss or an inconsistency.
     """
     ERROR_CODE = ""
@@ -78,16 +78,16 @@ class CheckmatedKingDomainOwnerException(DomainException):
 
 class InconsistenDomainAddressException(DomainException, InconsistencyException):
     """
-    Raised a domain's rank is not a recognized chess rank
+    Raised a owner's rank is not a recognized chess rank
     """
     ERROR_CODE = "DOMAIN_ADDRESS_INCONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "The domain address doest not match the owner's current position. There may inconsistent data."
+    DEFAULT_MESSAGE = "The owner address doest not match the owner's current position. There may inconsistent data."
 
 
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
     """
-    Raised if an entity, method, or operation requires team domain but gets null instead.
+    Raised if an entity, method, or operation requires team owner but gets null instead.
     Domain is an abstract method. KingDomain and CombatantDomain are its subclasses.
     Do not throw NullAttackException. Raise NullKingDomain or NullCombatantDomain instead.
     they are more descriptive and better suited for debugging.
