@@ -89,7 +89,7 @@ class BoardSearchContext(SearchContext):
 
 @property
 def id(self) -> Optional[int]:
-  return self._piece_id
+  return self._visitor_id
 
 @property
 def name(self) -> Optional[str]:
@@ -103,7 +103,7 @@ def coord(self) -> Optional[Coord]:
 
 def to_dict(self) -> dict:
   return {
-    "id": self._piece_id,
+    "id": self._visitor_id,
     "name": self._name,
     "coord": self._position
   }

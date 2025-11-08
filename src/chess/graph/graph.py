@@ -27,14 +27,11 @@ class Graph:
     def __init__(
             self,
             id: int,
-            board: Board,
-            domains: List[Domain] = [Domain],
-            visitations: List[VisitRecord] = [VisitRecord]
+            board: Board
     ):
         self._id = id
         self.board = board
-        self._domains = domains
-        self._visitations = visitations
+        self._domains = []
     
     @property
     def id(self) -> int:

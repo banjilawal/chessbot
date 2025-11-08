@@ -101,7 +101,7 @@ class AutoId:
         cls.__repr__ = repr_func
 
         return cls
-        # cls.id = property(lambda self: self._piece_id)
+        # cls.id = property(lambda self: self._visitor_id)
 
         # if self.add_hash_eq:
         #     if not hasattr(cls, "__eq__"):
@@ -110,13 +110,13 @@ class AutoId:
         #                 return True
         #             if not isinstance(other, cls):
         #                 return NotImplemented
-        #             return self._piece_id == other
+        #             return self._visitor_id == other
         #         cls.__eq__ = __eq__
         #
         #     if not hasattr(cls, "__hash__"):
-        #         cls.__hash__ = lambda self: hash(self._piece_id)
+        #         cls.__hash__ = lambda self: hash(self._visitor_id)
         #
         #     if not hasattr(cls, "__repr__"):
-        #         cls.__repr__ = lambda self: f"<{cls.__name__}: id={self._piece_id}>"
+        #         cls.__repr__ = lambda self: f"<{cls.__name__}: id={self._visitor_id}>"
         #
         #     return cls

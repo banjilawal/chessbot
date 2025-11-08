@@ -22,10 +22,10 @@ def auto_id(cls: Type[T]) -> Type[T]:
 
   def new_init(self, *args, **kwargs):
     with cls._id_lock:
-      self._piece_id = next(cls._id_counter)
+      self._visitor_id = next(cls._id_counter)
     original_init(self, *args, **kwargs)
 
   cls.__init__ = new_init
-  cls.id = property(lambda self: self._piece_id)
+  cls.id = property(lambda self: self._visitor_id)
 
   return cls

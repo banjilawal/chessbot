@@ -7,7 +7,6 @@ Created: 2025-11-08
 version: 1.0.0
 """
 
-from typing import Optional
 
 from chess.graph import Graph
 from chess.board import Board, BoardValidator
@@ -22,6 +21,7 @@ class GraphBuilder(Builder[Graph]):
     def build(cls, id: int, board: Board) -> BuildResult[Graph]:
         """"""
         method = "GraphBuilder.build"
+        
         try:
             id_validation = IdValidator.validate(id)
             if id_validation.is_failure():

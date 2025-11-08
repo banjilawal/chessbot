@@ -22,7 +22,7 @@ class Checker:
     _name (str): The name of the discovered owner (e.g., "Pawn", "Queen").
     _team_id (int): The identifier of the team to which the discovered owner belongs.
     _ransom (int): The ransom (or value) associated with the discovered owner's rank.
-    _rank_name (str): The rank name of the discovered owner (e.g., "Knight", "Bishop").
+    _visitor_rank (str): The rank name of the discovered owner (e.g., "Knight", "Bishop").
     _coord (Coord): The board_validator coord where the discover was observed.
   """
 

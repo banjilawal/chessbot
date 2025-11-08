@@ -61,7 +61,7 @@ class Square:
   None
 
   # ATTRIBUTES:
-    * `_piece_id` (`int`): A unique identifier for the square.
+    * `_visitor_id` (`int`): A unique identifier for the square.
     * `_name` (`str`): The name of the square.
     * `_position` (`Coord`): Address on the `Board`.
     * `_occupant` (`Optional[Piece]`): `Piece` of the square.`.

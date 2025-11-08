@@ -106,7 +106,7 @@ def ransom(self) -> Optional[int]:
 
 @property
 def piece_id(self) -> Optional[int]:
-  return self._piece_id
+  return self._visitor_id
 
 @property
 def roster_number(self) -> Optional[int]:
@@ -119,6 +119,6 @@ def to_dict(self) -> dict:
     "name": self._name,
     "rank": self._rank,
     "ransom": self._ransom,
-    "id": self._piece_id,
+    "id": self._visitor_id,
     "roster_number": self._roster_number,
   }

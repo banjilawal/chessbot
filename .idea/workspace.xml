@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/graph/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/domain/search/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/domain/search/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/domain/search/context/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/domain/search/context/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/domain/search/context/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/domain/search/context/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/commander/commander.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/commander/commander.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/graph/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/checker/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/examples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/id/auto_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/id/auto_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/search/context/context.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -612,7 +627,7 @@
       <workItem from="1762241067438" duration="3089000" />
       <workItem from="1762338667560" duration="38595000" />
       <workItem from="1762455471749" duration="15765000" />
-      <workItem from="1762627610288" duration="1443000" />
+      <workItem from="1762627610288" duration="3818000" />
     </task>
     <servers />
   </component>
