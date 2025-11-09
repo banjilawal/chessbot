@@ -15,10 +15,9 @@ from chess.system import (
 )
 
 from chess.team import (
-    TeamSchema, NullTeamLetterException, TeamLetterBoundsException, TeamNameBoundsException,
-    RankRowNullException, RankRowBelowBoundsException, RankRowAboveBoundsException,
-    PawnRowNullException, PawnRowBelowBoundsException, PawnRowAboveBoundsException,
-    AdvancingStepBoundsException, TeamColorBoundsException,
+    TeamSchema, AdvancingStepBoundsException, TeamColorBoundsException, NullTeamLetterException,
+    TeamLetterBoundsException, TeamNameBoundsException, RankRowNullException, RankRowBelowBoundsException,
+    RankRowAboveBoundsException, PawnRowNullException, PawnRowBelowBoundsException, PawnRowAboveBoundsException,
 )
 
 
@@ -123,12 +122,12 @@ class TeamBoundsChecker:
                 )
             
             pawn_row = cast(int, candidate)
-            if row_number < 0:
+            if pawn_row < 0:
                 return ValidationResult.failure(
                     PawnRowBelowBoundsException(f"{method}: {PawnRowBelowBoundsException.DEFAULT_MESSAGE}")
                 )
             
-            if row_number >= ROW_SIZE:
+            if pawn_row >= ROW_SIZE:
                 return ValidationResult.failure(
                     PawnRowAboveBoundsException(f"{method}: {PawnRowAboveBoundsException.DEFAULT_MESSAGE}")
                 )
@@ -150,7 +149,7 @@ class TeamBoundsChecker:
             
             scalar = cast(Scalar, candidate)
             
-            if scalar not in [TeamSpec.WHITE.advancing_step, TeamSpec.BLACK.advancing_step]:
+            if scalar not in [TeamSchema.WHITE.advancing_step, TeamSchema.BLACK.advancing_step]:
                 return ValidationResult.failure(
                     AdvancingStepBoundsException(f"{method}: {AdvancingStepBoundsException.DEFAULT_MESSAGE}")
                 )
@@ -176,7 +175,7 @@ class TeamBoundsChecker:
                     TypeError(f"{method}: Expected a GameColor, got {type(candidate).__id__}")
                 )
             game_color = cast(GameColor, candidate)
-            if game_color not in [TeamSpec.WHITE.color, TeamSpec.BLACK.color]:
+            if game_color not in [TeamSchema.WHITE.color, TeamSchema.BLACK.color]:
                 return ValidationResult.failure(
                     TeamColorBoundsException(f"{method}: {TeamColorBoundsException.DEFAULT_MESSAGE}")
                 )
