@@ -48,23 +48,10 @@ class Search(ABC, Generic[A, S, R]):
       """
       Action:
       Parameters:
-          * `param` (`DataType`):
+          * `data_owner` (`A`):
+          * `search_context` (`S`):
       Returns:
-          `DataType` or `Void`
-      Raises:
-      MethodNameException wraps
-          *
-      """
-      """
-      Validates provided filter. Returns first consistency.
-      Args:
-      - `collection_master` (`M`): The service owning entity.
-      - `data_set` (`D`): The service collection searched.
-      - `filter` (`F`): The old_search filter to hit,
-      - `search_context` (`C`): List of service set attributes.
-      Returns:
-        `SearchResult[`T`]`
-  
+          `SearchResult[List[R]]` or `Void`
       Raise:
         No exceptions. Subclasses raise exceptions.
       """

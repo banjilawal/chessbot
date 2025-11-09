@@ -107,7 +107,7 @@ class TeamHostageSearch(Search):
   @classmethod
   def _name_search(cls, team: Team, name: str) -> SearchResult[List[Piece]]:
       """
-      Does not guarantee uniqueness returns the first item which matches the given name.
+      Does not guarantee uniqueness returns the first item which duplicates the given name.
       """
       method = "DiscoverySearch._name_search"
 
@@ -151,7 +151,7 @@ class TeamHostageSearch(Search):
   @classmethod
   def _roster_number_search(cls, team: Team, roster_number: int) -> SearchResult[List[Piece]]:
       """
-      Does not guarantee uniqueness returns the first item which matches the given id.
+      Does not guarantee uniqueness returns the first item which duplicates the given id.
       """
       method = "DiscoverySearch._roster_number_search"
 

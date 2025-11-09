@@ -27,7 +27,7 @@ class SearchResult(Result[Generic[T]]):
   Answer from the `Search` service provider containing either:
     1. Matches to the client's query.
     2. An rollback_exception raised during the old_search process or query submission.
-    3. A notification containing neither an rollback_exception nor a payload indicating no matches were found.
+    3. A notification containing neither an rollback_exception nor a payload indicating no duplicates were found.
 
   # ATTRIBUTES:
     * See `Result` superclass for attributes.

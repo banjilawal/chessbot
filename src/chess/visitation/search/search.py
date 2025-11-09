@@ -52,7 +52,7 @@ class VisitationSearch(Search[List[Coord]]):
   @classmethod
   def _name_search(cls, visitation: Visitation, name: str) -> SearchResult[List[Coord]]:
       """
-      Does not guarantee uniqueness returns the first item which matches the given name.
+      Does not guarantee uniqueness returns the first item which duplicates the given name.
       """
       method = "VisitationSearch._name_search"
 
@@ -96,7 +96,7 @@ class VisitationSearch(Search[List[Coord]]):
   @classmethod
   def _roster_number_search(cls, visitation: Visitation, roster_number: int) -> SearchResult[List[Coord]]:
       """
-      Does not guarantee uniqueness returns the first item which matches the given id.
+      Does not guarantee uniqueness returns the first item which duplicates the given id.
       """
       method = "VisitationSearch._roster_number_search"
 

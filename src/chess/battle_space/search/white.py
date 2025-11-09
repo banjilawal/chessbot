@@ -103,7 +103,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
             elif len(matches) == 1:
                 return SearchResult(payload=matches)
             else:
-                return BoardPieceSearch._resolve_matching_ids(matches=matches, board=board)
+                return BoardPieceSearch._resolve_duplicate_ids(duplicates=matches, board=board)
         except Exception as e:
             return SearchResult(exception=e)
 
@@ -119,7 +119,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
             elif len(matches) == 1:
                 return SearchResult(payload=matches)
             else:
-                return BoardPieceSearch._resolve_matching_names(matches=matches, board=board)
+                return BoardPieceSearch._resolve_duplicate_names(duplicates=matches, board=board)
         except Exception as e:
             return SearchResult(exception=e)
 
@@ -134,7 +134,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
             elif len(matches) == 1:
                 return SearchResult(payload=matches)
             else:
-                return BoardPieceSearch._resolve_matching_coords(matches=matches, board=board)
+                return BoardPieceSearch._resolve_duplicate_coords(matches=matches, board=board)
         except Exception as e:
             return SearchResult(exception=e)
 
