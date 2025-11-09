@@ -1,7 +1,7 @@
-# src/chess/pawn/rank.py
+# src/chess/rank/pawn.py
 
 """
-Module: chess.pawn.rank
+Module: chess.rank.pawn
 Author: Banji Lawal
 Created: 2025-07-25
 version: 1.0.0

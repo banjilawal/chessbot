@@ -48,21 +48,21 @@ class VisitationSearchCollisionException(VisitationSearchException, SearchCollis
 class VisitationSearchIdCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "VisitationSearch results contains has more than one match for the piece_id which should be unique. There "
+    "VisitationSearch results contains has more than one consistency for the piece_id which should be unique. There "
     "may be service inconsistencies."
   )
 
 class VisitationSearchNameCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "VisitationSearch results contains has more than one match for visitation_name, which should be unique. There "
+    "VisitationSearch results contains has more than one consistency for visitation_name, which should be unique. There "
     "may be service inconsistencies."
   )
 
 class VisitationSearchCoordCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "VisitationSearch results contains has more than one match for visitation_position, which should be unique. There "
+    "VisitationSearch results contains has more than one consistency for visitation_position, which should be unique. There "
     "may be service inconsistencies."
   )
 

@@ -1,4 +1,4 @@
-# src/chess/owner/travel/blocking/validator.py
+# src/chess/owner/travel/blocking/factory.py
 
 """
 Module: `chess.owner.travel.blocking.validator`

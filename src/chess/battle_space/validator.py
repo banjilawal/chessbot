@@ -1,4 +1,4 @@
-# src/chess/battle_space/validator.py
+# src/chess/battle_space/factory.py
 """
 Module: chess.battle_space.validation
 Author: Banji Lawal

@@ -1,4 +1,4 @@
-# src/chess/system/event/validator.py
+# src/chess/system/event/factory.py
 
 """
 Module: chess.system.event.event

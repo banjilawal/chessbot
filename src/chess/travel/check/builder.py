@@ -25,7 +25,7 @@ class CheckEventBuilder(Enum):
   Usage:
     ```python
     # Safe attackEvent creation with validate
-    build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, name="WN2", rank=Knight(), team=white_team)
+    build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, name="WN2", bounds=Knight(), team=white_team)
     if not build_outcome.is_success():
       raise build_outcome.err
     attackEvent = build_outcome.payload
@@ -70,10 +70,10 @@ class CheckEventBuilder(Enum):
       This includes:
         * `InvalidIdException`: if `attackEvent_id` fails validate checks
         * `InvalidNameException`: if `name` fails validate checks
-        * `InvalidRankException`: if `rank` fails validate checks
+        * `InvalidRankException`: if `bounds` fails validate checks
         * `InvalidTeamException`: if `team` fails validate checks
         * `InvalidTeamAssignmentException`: If `attackEvent.team` is different from `team` parameter
-        * `FullRankQuotaException`: If the `team` has no empty slots for the `attackEvent.rank`
+        * `FullRankQuotaException`: If the `team` has no empty slots for the `attackEvent.bounds`
         * `FullRankQuotaException`: If `attackEvent.team` is equal to `team` parameter but `team.roster` still does
           not have the attackEvent
 

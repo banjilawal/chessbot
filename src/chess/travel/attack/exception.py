@@ -169,7 +169,7 @@ class DoubleCaptureRolledBackExceptionCapture(CaptureRollbackException):
 
 class UnsetCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
-  Raised if team notification attempts setting prisoner's captor field null.
+  Raised if team notification attempts setting prisoner's captor consistency null.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"

@@ -1,7 +1,13 @@
-from enum import Enum, auto
-from typing import List, Optional, Type
+# chess/rank/spec.py
 
-from chess.rank import Rank, RankSpec
+"""
+Module: chess.rank.spec
+Author: Banji Lawal
+Created: 2025-09-08
+version: 1.0.0
+"""
+
+from enum import Enum, auto
 from chess.geometry import Quadrant
 
 
@@ -69,6 +75,10 @@ class RankSpec(Enum):
     def valid_ranks(self):
         return
     
+    @property
+    def max_rank_id(self) -> int:
+        return RankSpec.QUEEN.id
+    
     @classmethod
     def find_speck_by_rank(cls, rank: Rank) -> Optional[RankSpec]:
         print(f"Looking for config with name:{rank.name}")
@@ -78,14 +88,3 @@ class RankSpec(Enum):
             if spec.name.upper() == rank.name.upper():
                 return spec
         return None
-
-    
-
-
-def main():
-    for spec in RankSpec:
-        print(spec)
-
-
-if __name__ == "__main__":
-    main()

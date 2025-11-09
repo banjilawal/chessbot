@@ -48,7 +48,7 @@ class FailedSettingActorAsEnemyCaptorRolledBackException(RolledBackAttackTransac
   """"""
   ERROR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Updating a prisoner's captor field during an attack transaction failed. The transaction was rolled back "
+    "Updating a prisoner's captor consistency during an attack transaction failed. The transaction was rolled back "
     "before raising this exception."
   )
 

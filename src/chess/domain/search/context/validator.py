@@ -1,19 +1,19 @@
-# src/chess/graph/search/context/validator.py
+# src/chess/domain/search/context/factory.py
 
 """
-Module: chess.graph.search.context.validator
+Module: chess.domain.search.context.validator
 Author: Banji Lawal
-Created: 2025-10-31
+Created: 2025-11-08
 version: 1.0.0
 """
 
-from typing import cast
+from typing import Any, cast
+
+from chess.domain import VisitorSearchContext
+from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
 
 
-from chess.system import Validator
-from chess.graph import GraphSearchContext
-
-class GraphSearchContextValidator(Validator[GraphSearchContext]):
+class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
   """
   # ROLE: Validation, Data Integrity
 
@@ -31,57 +31,56 @@ class GraphSearchContextValidator(Validator[GraphSearchContext]):
 
   @classmethod
   @LoggingLevelRouter.monitor
-  def validate(cls, candidate: T) -> ValidationResult[GraphSearchContext]:
+  def validate(cls, candidate: Any) -> ValidationResult[VisitorSearchContext]:
     """"""
-    method = "GraphSearchContextValidator.validate"
+    method = "VisitorSearchContextValidator.validate"
 
     try:
       if candidate is None:
-        return ValidationResult(exception=NullGraphSearchContextException(
-          f"{method} {NullGraphSearchContextException.DEFAULT_MESSAGE}"
-        ))
+        return ValidationResult.failure(
+          NullVisitorSearchContextException(f"{method} {NullVisitorSearchContextException.DEFAULT_MESSAGE}")
+        )
 
-      if not isinstance(candidate, GraphSearchContext):
-        return ValidationResult(exception=TypeError(
-          f"{method} Expected graphSearchContext GraphSearchContext, got {type(candidate).__name__}"
-        ))
+      if not isinstance(candidate, VisitorSearchContext):
+        return ValidationResult.failure(
+          TypeError(f"{method} Expected VisitorSearchContext, got {type(candidate).__name__} instead.")
+        )
 
-      search_context = cast(GraphSearchContext, candidate)
+      search_context = cast(VisitorSearchContext, candidate)
 
       if len(search_context.to_dict()) == 0:
-        return ValidationResult(exception=ZeroGraphSearchParamsException(
-          f"{method} {ZeroGraphSearchParamsException.DEFAULT_MESSAGE}"
-        ))
+        return ValidationResult.failure(
+          ZeroVisitorSearchParamsException(f"{method} {ZeroVisitorSearchParamsException.DEFAULT_MESSAGE}")
+        )
 
       if len(search_context.to_dict()) > 1:
-        return ValidationResult(exception=TooManyGraphSearchParamsException(
-          f"{method} {InvalidGraphSearchContextException.DEFAULT_MESSAGE}"
-        ))
+        return ValidationResult.failure(
+          TooManyGraphSearchParamsException(f"{method} {InvalidGraphSearchContextException.DEFAULT_MESSAGE}")
+        )
 
-      if search_context.piece_id is not None:
-        piece_id_validation = IdValidator.validate(search_context.piece_id)
-        if piece_id_validation.is_failure():
-          return ValidationResult(exception=piece_id_validation.exception)
+      if search_context.id is not None:
+        id_validation = IdValidator.validate(search_context.id)
+        if id_validation.is_failure():
+          return ValidationResult.failure(id_validation.exception)
 
       if search_context.name is not None:
-        piece_name_validation = NameValidator.validate(search_context.name)
-        if piece_name_validation.is_failure():
-          return ValidationResult(exception=piece_name_validation.exception)
+        name_validation = NameValidator.validate(search_context.name)
+        if name_validation.is_failure():
+          return ValidationResult.failure(name_validation.exception)
 
       if search_context.team_id is not None:
         team_id_validation = IdValidator.validate(search_context.team_id)
         if team_id_validation.is_failure():
-          return ValidationResult(exception=team_id_validation.exception)
+          return ValidationResult.failure(team_id_validation.exception)
 
       if search_context.team_name is not None:
         team_name_validation = NameValidator.validate(search_context.team_name)
         if team_name_validation.is_failure():
-          return ValidationResult(exception=team_name_validation.exception)
+          return ValidationResult.failure(team_name_validation.exception)
 
-      if (search_context.rank_name is not None and
-          search_context.rank_name not in [King.name, Queen.name, Rook.name, Bishop.name, Knight.name, Pawn.name]
-      ):
-          return ValidationResult(exception=GraphInvalidRankNameParamException(
+      if search_context.rank_name is not None and search_context.rank_name not in RankSpec._name_:
+          return ValidationResult.failure(
+            InvalidRankNameParamException(
             f"{method}: {GraphInvalidRankNameParamException.DEFAULT_MESSAGE}"
         ))
 

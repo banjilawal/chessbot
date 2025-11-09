@@ -21,7 +21,7 @@ class Discoveries:
   Each discover represents team snapshot of another owner found during play (through
   scanning, moving, or travel attempts). By aggregating them, `Discoveries`
   provides both simple access (all discoveries) and targeted lookups (by id, name,
-  coordinate, rank, or ransom).
+  coordinate, bounds, or ransom).
 
   Attributes:
     _items (List[Discovery]): Internal list storing the recorded discoveries.
@@ -30,7 +30,7 @@ class Discoveries:
   Notes:
     - Validation of ids, names, coordinates, and ranks is delegated to their
      respective notification (`IdValidator`, `NameValidator`, `CoordValidator`,
-     `RankValidator`).
+     `RankValidatorFactory`).
     - Each method returns team `SearchResult` to provide consistent success/empty/err handling.
     - The collection enforces uniqueness and immutability at the discover level.
   """
@@ -111,7 +111,7 @@ class Discoveries:
 
 
   def select_by_ransom(self, ransom: int) -> SearchResult[List[Discovery]]:
-    """Filter discoveries by team rank's ransom value"""
+    """Filter discoveries by team bounds's ransom value"""
     method = "Discoveries.select_by_ransom"
 
     try:
@@ -126,7 +126,7 @@ class Discoveries:
 
 
   def select_by_rank(self, rank: Rank) -> SearchResult[List[Discovery]]:
-    """Filter discoveries by rank"""
+    """Filter discoveries by bounds"""
     method = "Discoveries.select_by_rank"
 
     try:

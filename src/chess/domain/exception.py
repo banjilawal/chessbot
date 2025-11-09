@@ -78,10 +78,10 @@ class CheckmatedKingDomainOwnerException(DomainException):
 
 class InconsistenDomainAddressException(DomainException, InconsistencyException):
     """
-    Raised a owner's rank is not a recognized chess rank
+    Raised a owner's bounds is not a recognized chess bounds
     """
     ERROR_CODE = "DOMAIN_ADDRESS_INCONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "The owner address doest not match the owner's current position. There may inconsistent data."
+    DEFAULT_MESSAGE = "The owner address doest not consistency the owner's current position. There may inconsistent data."
 
 
 # ======================# NULL DOMAIN EXCEPTIONS #======================#

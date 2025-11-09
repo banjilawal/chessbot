@@ -1,4 +1,4 @@
-# src/chess/system/id/validator.py
+# src/chess/system/id/factory.py
 
 """
 Module: chess.system.id.validator

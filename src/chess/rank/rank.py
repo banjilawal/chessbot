@@ -75,7 +75,7 @@ class Rank(ABC):
 
     def __str__(self):
         return (
-            "rank: {"
+            "bounds: {"
             f"id:{self._id}, "
             f"name:{self._name}, "
             f"letter:{self._letter}, "

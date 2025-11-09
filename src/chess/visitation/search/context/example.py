@@ -157,7 +157,7 @@ Raises:
   `InvalidIdException`: if `id` fails validate checks
   `InvalidCommanderException`: if `commander` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `schema` is null
-  `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
+  `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
   `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and Commander is broken
   `InvalidDiscoverySearchContextException`: Wraps any preceding exceptions
 """

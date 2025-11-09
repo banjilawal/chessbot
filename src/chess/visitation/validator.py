@@ -1,4 +1,4 @@
-# src/chess/visitation/validator.py
+# src/chess/visitation/factory.py
 
 """
 Module: chess.visitation.validator

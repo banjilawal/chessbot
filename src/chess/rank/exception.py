@@ -20,7 +20,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -54,7 +54,6 @@ __all__ = [
 #======================# RANK VALIDATION EXCEPTIONS #======================#  
   'NullRankException',
   'InvalidRankException',
-  'UnRecognizedConcreteRankException',
 
 #======================# RANK SUBCLASS VALIDATION EXCEPTIONS #======================#  
   'InvalidKingException',
@@ -80,7 +79,8 @@ class RankException(ChessException):
   ERROR_CODE = "RANK_ERROR"
   DEFAULT_MESSAGE = "Rank raised an rollback_exception."
 
-#======================# RANK VALIDATION EXCEPTIONS #======================#  
+
+# ======================# RANK VALIDATION EXCEPTIONS #======================#
 class NullRankException(RankException, NullException):
   ERROR_CODE = "NULL_RANK_ERROR"
   DEFAULT_MESSAGE = "Rank cannot be null"
@@ -88,11 +88,6 @@ class NullRankException(RankException, NullException):
 class InvalidRankException(RankException, ValidationException):
   ERROR_CODE = "RANK_VALIDATION_ERROR"
   DEFAULT_MESSAGE = f"Rank validator failed."
-
-class UnRecognizedConcreteRankException(RankException):
-  ERROR_CODE = "UNRECOGNIZED_CONCRETE_RANK_ERROR"
-  DEFAULT_MESSAGE = "This concrete subclass of Rank is not recognized"
-
 
 #======================# RANK SUBCLASS VALIDATION EXCEPTIONS #======================#  
 class InvalidKingException(InvalidRankException):

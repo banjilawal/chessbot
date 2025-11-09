@@ -1,4 +1,4 @@
-# src/chess/battle_space/search/context/validator.py
+# src/chess/battle_space/search/context/factory.py
 
 """
 Module: chess.battle_space.search.context.validator

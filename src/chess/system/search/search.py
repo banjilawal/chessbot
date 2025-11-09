@@ -56,7 +56,7 @@ class Search(ABC, Generic[A, S, R]):
           *
       """
       """
-      Validates provided filter. Returns first match.
+      Validates provided filter. Returns first consistency.
       Args:
       - `collection_master` (`M`): The service owning entity.
       - `data_set` (`D`): The service collection searched.

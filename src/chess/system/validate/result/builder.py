@@ -31,7 +31,7 @@ layer responsible for persistent state modification** based on accepted moves.
 DEPENDENCIES:
 ------------
 This module requires components from various sub-systems:
-* `chess.rank`: Movement strategy (`Rank`)
+* `chess.bounds`: Movement strategy (`Rank`)
 * `chess.square`: Location service structure (`Square`)
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.validationResult`: ValidationResult subtypes (`KingValidationResult`, `CombatantValidationResult`, etc.)
@@ -63,7 +63,7 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
 
     Args:
       `name`(`str`): Must pass `NameValidator` checks.
-      `rank`(`Rank`): The `rank` which determines how the validationResult moves and its capture value.
+      `bounds`(`Rank`): The `bounds` which determines how the validationResult moves and its capture value.
       `team`(`Team`): Specifies if the `validationResult` is white or black.
 
     Returns:
@@ -74,10 +74,10 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
     Raises:
     `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
       * `InvalidNameException`: if `name` fails validate checks
-      * `InvalidRankException`: if `rank` fails validate checks
+      * `InvalidRankException`: if `bounds` fails validate checks
       * `InvalidTeamException`: if `team` fails validate checks
       * `InvalidTeamAssignmentException`: If `validationResult.team` is different from `team` parameter
-      * `FullRankQuotaException`: If the `team` has no empty slots for the `validationResult.rank`
+      * `FullRankQuotaException`: If the `team` has no empty slots for the `validationResult.bounds`
       * `FullRankQuotaException`: If `validationResult.team` is equal to `team` parameter but `team.roster` still does
         not have the validationResult
     """

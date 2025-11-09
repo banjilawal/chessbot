@@ -1,4 +1,4 @@
-# src/chess/graph/owner/validator.py
+# src/chess/graph/owner/factory.py
 
 """
 Module: chess.graph.owner.validator

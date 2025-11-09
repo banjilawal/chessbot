@@ -20,7 +20,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -205,7 +205,7 @@ class DoubleCaptureRolledBackException(DiscoveryRolledBackException):
 
 class UnsetCaptureRolledBackException(DiscoveryRolledBackException):
   """
-  Raised if team notification attempts setting prisoner's captor field null.
+  Raised if team notification attempts setting prisoner's captor consistency null.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"

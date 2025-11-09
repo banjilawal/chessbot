@@ -1,4 +1,4 @@
-# src/chess/owner/model/validator/validator.py
+# src/chess/owner/model/validator/factory.py
 
 """
 Module: chess.owner.model.validator.owner
@@ -58,7 +58,7 @@ class PieceValidator(Validator[Piece]):
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
             
-            # A `Piece` instance must have its `team` field set. This immutable field should have been set during
+            # A `Piece` instance must have its `team` consistency set. This immutable consistency should have been set during
             # the build. If it's null there might be service loss or corruption.
             if piece.team is None:
                 return ValidationResult.failure(

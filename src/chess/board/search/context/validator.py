@@ -119,7 +119,7 @@ class BoardSearchContextValidator(Validator):
       `InvalidIdException`: if `id` fails validate checks
       `InvalidCommanderException`: if `commander` fails validate checks
       `NullTeamProfileException`: if `schema` is null
-      `InvalidCommanderAssignmentException`: if the assigned commander does not match the validated commander
+      `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
       `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
       `InvalidTeamException`: Wraps any preceding exceptions
     """

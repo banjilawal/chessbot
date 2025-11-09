@@ -5,10 +5,10 @@ Created: 2025-09-28
 Purpose:
   Defines the Piece class hierarchy for the chess engine, including abstract and
   concrete pieces such as KingPiece and CombatantPiece. Pieces track identity, team
-  membership, rank, and board_validator position, and manage interactions with other pieces.
+  membership, bounds, and board_validator position, and manage interactions with other pieces.
 
 Contents:
-  - Piece: Abstract base class representing team chess owner with position and rank.
+  - Piece: Abstract base class representing team chess owner with position and bounds.
   - KingPiece: Concrete subclass representing team occupation owner.
   - CombatantPiece: Concrete subclass representing team owner capable of capturing others.
   - CoordStack, Checker, Discoveries: Supporting classes for tracking owner positions

@@ -13,7 +13,7 @@
   Usage:
     ```python
     # Safe scanEvent creation with validate
-    build_outcome = EncounterEventBuilder.build(scanEvent_id=id_emitter.scanEvent_id, name="WN2", rank=Knight(), team=white_team)
+    build_outcome = EncounterEventBuilder.build(scanEvent_id=id_emitter.scanEvent_id, name="WN2", bounds=Knight(), team=white_team)
     if not build_outcome.is_success():
       raise build_outcome.err
     scanEvent = build_outcome.payload
@@ -68,10 +68,10 @@
     This includes:
       * `InvalidIdException`: if `scanEvent_id` fails validate checks
       * `InvalidNameException`: if `name` fails validate checks
-      * `InvalidRankException`: if `rank` fails validate checks
+      * `InvalidRankException`: if `bounds` fails validate checks
       * `InvalidTeamException`: if `team` fails validate checks
       * `InvalidTeamAssignmentException`: If `scanEvent.team` is different from `team` parameter
-      * `FullRankQuotaException`: If the `team` has no empty slots for the `scanEvent.rank`
+      * `FullRankQuotaException`: If the `team` has no empty slots for the `scanEvent.bounds`
       * `FullRankQuotaException`: If `scanEvent.team` is equal to `team` parameter but `team.roster` still does
         not have the scanEvent
 

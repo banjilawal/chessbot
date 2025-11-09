@@ -117,7 +117,7 @@ def roster_number(self) -> Optional[int]:
 def to_dict(self) -> dict:
   return {
     "name": self._name,
-    "rank": self._rank,
+    "bounds": self._rank,
     "ransom": self._ransom,
     "id": self._visitor_id,
     "roster_number": self._roster_number,

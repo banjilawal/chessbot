@@ -60,7 +60,7 @@ class VisitationSearch(Search[List[Coord]]):
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty old_search notification if no match ws found
+      # returns empty old_search notification if no consistency ws found
       return SearchResult()
 
   @classmethod
@@ -76,7 +76,7 @@ class VisitationSearch(Search[List[Coord]]):
   @classmethod
   def _id_search(cls, visitation: Visitation, piece_id: int) -> SearchResult[List[Coord]]:
       """
-      IDs should be unique. Faster old_search would return the first match. An easy
+      IDs should be unique. Faster old_search would return the first consistency. An easy
       integrity check finds all the items with the same id. If there is more than
       one raise owner `DuplicateUniqueIdException`.
 
@@ -90,7 +90,7 @@ class VisitationSearch(Search[List[Coord]]):
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty old_search notification if no match ws found
+      # returns empty old_search notification if no consistency ws found
       return SearchResult()
 
   @classmethod
@@ -104,5 +104,5 @@ class VisitationSearch(Search[List[Coord]]):
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
-      # returns empty old_search notification if no match ws found
+      # returns empty old_search notification if no consistency ws found
       return SearchResult()

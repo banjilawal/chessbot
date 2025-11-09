@@ -1,4 +1,4 @@
-# src/chess/graph/search/context/validator.py
+# src/chess/graph/search/context/factory.py
 
 """
 Module: chess.graph.search.context.validator

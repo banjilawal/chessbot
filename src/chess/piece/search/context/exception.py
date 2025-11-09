@@ -119,7 +119,7 @@ class DiscoveryInvalidRankNameParamException(DiscoverySearchContextException):
   error.
   """
   ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_RANK_NAME_ERROR"
-  DEFAULT_MESSAGE = "The rank name is not recognized. It cannot be used in DiscoverySearchContext."
+  DEFAULT_MESSAGE = "The bounds name is not recognized. It cannot be used in DiscoverySearchContext."
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 

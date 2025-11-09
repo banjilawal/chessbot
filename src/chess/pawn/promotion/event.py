@@ -1,4 +1,4 @@
-# src/chess/travel/promotion/validator.py
+# src/chess/travel/promotion/factory.py
 
 """
 Module: chess.travel.promotion.event

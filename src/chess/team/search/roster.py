@@ -115,7 +115,7 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty old_search notification if no match ws found
+      # returns empty old_search notification if no consistency ws found
       return SearchResult()
 
   @classmethod
@@ -131,7 +131,7 @@ class TeamRosterSearch(Search[Team, Piece]):
   @classmethod
   def _id_search(cls, team: Team, piece_id: int) -> SearchResult[List[Piece]]:
       """
-      IDs should be unique. Faster old_search would return the first match. An easy
+      IDs should be unique. Faster old_search would return the first consistency. An easy
       integrity check finds all the items with the same id. If there is more than
       one raise team `DuplicateUniqueIdException`.
 
@@ -145,7 +145,7 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty old_search notification if no match ws found
+      # returns empty old_search notification if no consistency ws found
       return SearchResult()
 
   @classmethod
@@ -159,5 +159,5 @@ class TeamRosterSearch(Search[Team, Piece]):
       if piece is not None:
           return SearchResult(payload=List[piece])
 
-      # returns empty old_search notification if no match ws found
+      # returns empty old_search notification if no consistency ws found
       return SearchResult()

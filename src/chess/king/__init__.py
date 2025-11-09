@@ -7,6 +7,5 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from .rank import King
 from .occupation import *
 from .piece import KingPiece

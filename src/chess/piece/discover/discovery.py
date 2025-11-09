@@ -14,15 +14,15 @@ class Discovery:
   reference, ensuring immutability and safe storage within old_search logs or decision-making structures.
 
   `Checker` objects are used to check what team owner has observed during scanning, moving, or travel
-  attempts. They provide enough detail (identity, team, rank, ransom value, and position) for evaluation
+  attempts. They provide enough detail (identity, team, bounds, ransom value, and position) for evaluation
   by old_search and decision engines, while remaining lightweight and detached from the full `Piece` object.
 
   Attributes:
     _id (int): The unique identifier of the discovered owner.
     _name (str): The name of the discovered owner (e.g., "Pawn", "Queen").
     _team_id (int): The identifier of the team to which the discovered owner belongs.
-    _ransom (int): The ransom (or value) associated with the discovered owner's rank.
-    _rank_name (str): The rank name of the discovered owner (e.g., "Knight", "Bishop").
+    _ransom (int): The ransom (or value) associated with the discovered owner's bounds.
+    _rank_name (str): The bounds name of the discovered owner (e.g., "Knight", "Bishop").
     _coord (Coord): The board_validator coord where the discover was observed.
   """
 
@@ -97,7 +97,7 @@ class Discovery:
     return (
       f"Checker[id:{self._piece_id} "
       f"name:{self._name} "
-      f"rank:{self._rank_name} "
+      f"bounds:{self._rank_name} "
       f"ransom:{self._ransom} "
       f"coord:{self._position}"
     )

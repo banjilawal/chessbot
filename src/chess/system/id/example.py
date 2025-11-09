@@ -8,7 +8,7 @@ Updated: 2025-10-10
 version: 1.0.0
 """
 
-# src/chess/system/id/validator.py
+# src/chess/system/id/factory.py
 
 """
 Module: chess.system.id.validator

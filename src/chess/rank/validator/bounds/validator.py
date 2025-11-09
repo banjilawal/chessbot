@@ -1,9 +1,9 @@
-# src/chess/rank/validator.py
+# src/chess/bounds/validator/factory.py
 
 """
-Module: chess.rank.validator
+Module: chess.bounds.validator.validator.bounds
 Author: Banji Lawal
-Created: 2025-09-26
+Created: 2025-11-08
 version: 1.0.0
 """
 
@@ -18,7 +18,7 @@ from chess.rank import (
     InvalidKnightException, InvalidBishopException,
     InvalidRookException, InvalidQueenException,
     NullRankException, InvalidRankException,
-    UnRecognizedConcreteRankException, InvalidKingException
+    InvalidKingException
 )
 
 
@@ -32,12 +32,7 @@ class RankValidator(Validator[Rank]):
         try:
             if candidate is None:
                 return ValidationResult.failure(NullRankException(f"{method} {NullRankException.DEFAULT_MESSAGE}"))
-            
-            if not isinstance(candidate, (King, Pawn, Knight, Bishop, Rook, Queen)):
-                return ValidationResult.failure(
-                    TypeError(f"{method} Expected a Rank subclass, got {type(candidate).__name__}")
-                )
-            
+ 
             if isinstance(candidate, King):
                 return RankValidator._validate_king_spec(cast(King, candidate))
             elif isinstance(candidate, Pawn):
@@ -51,13 +46,14 @@ class RankValidator(Validator[Rank]):
             elif isinstance(candidate, Queen):
                 return RankValidator._validate_queen_spec(cast(Queen, candidate))
             else:
-                raise UnRecognizedConcreteRankException(
-                    f"{method}: {UnRecognizedConcreteRankException.DEFAULT_MESSAGE}"
+                return ValidationResult.failure(
+                    TypeError(f"{method} Expected a Rank subclass, got {type(candidate).__name__}")
                 )
         except Exception as e:
             return ValidationResult.failure(e)
     
     @classmethod
+    @LoggingLevelRouter.monitor
     def _validate_king_spec(cls, candidate: King) -> ValidationResult[King]:
         if not (
                 candidate.quota == RankSpec.KING.quota and
@@ -69,9 +65,10 @@ class RankValidator(Validator[Rank]):
             return ValidationResult.failure(
                 InvalidKingException(f"RankValidator.validate: {InvalidKingException.DEFAULT_MESSAGE}")
             )
-        return ValidationResult(payload=cast(King, candidate))
+        return ValidationResult.success(payload=cast(King, candidate))
     
     @classmethod
+    @LoggingLevelRouter.monitor
     def _validate_pawn_spec(cls, candidate: Pawn) -> ValidationResult[Pawn]:
         if not (
                 candidate.quota == RankSpec.PAWN.quota and
@@ -83,7 +80,7 @@ class RankValidator(Validator[Rank]):
             return ValidationResult.failure(
                 InvalidPawnException(f"RankValidator.validate: {InvalidPawnException.DEFAULT_MESSAGE}")
             )
-        return ValidationResult(payload=cast(Pawn, candidate))
+        return ValidationResult.success(payload=cast(Pawn, candidate))
     
     @classmethod
     def _validate_bishop_spec(cls, candidate: Bishop) -> ValidationResult[Bishop]:
@@ -97,7 +94,7 @@ class RankValidator(Validator[Rank]):
             return ValidationResult.failure(
                 InvalidBishopException(f"RankValidator.validate: {InvalidBishopException.DEFAULT_MESSAGE}")
             )
-        return ValidationResult(payload=cast(Bishop, candidate))
+        return ValidationResult.success(payload=cast(Bishop, candidate))
     
     @classmethod
     def _validate_knight_spec(cls, candidate: Knight) -> ValidationResult[Knight]:

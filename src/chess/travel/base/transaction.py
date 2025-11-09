@@ -111,7 +111,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       return TransactionResult(rollback_exception=build_result.rollback_exception)
   #     return
   #
-  #   if isinstance(destination_occupant.rank, King) or (not travel.traveler.is_enemy(destination_occupant):
+  #   if isinstance(destination_occupant.bounds, King) or (not travel.traveler.is_enemy(destination_occupant):
   #     build_result = ScanEventBuilder(
   #
   #     )

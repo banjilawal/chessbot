@@ -21,7 +21,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Team` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Team` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -162,9 +162,9 @@ class RemoveTeamMemberException(TeamRosterException):
   DEFAULT_MESSAGE = "Could not remove team owner to team's roster."
 
 class FullRankQuotaException(TeamRosterException):
-  """Raised if the team has not empty slots for the owner's rank."""
+  """Raised if the team has not empty slots for the owner's bounds."""
   ERROR_CODE = "FULL_RANK_QUOTA_ERROR"
-  DEFAULT_MESSAGE = "The team has no empty slots for the owner's rank."
+  DEFAULT_MESSAGE = "The team has no empty slots for the owner's bounds."
 
 class ConflictingTeamAssignmentException(TeamRosterException):
   """
@@ -207,11 +207,11 @@ class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
 class FullRankQuotaRolledBackException(TeamRosterRollBackException):
   """
   Raised if team notification failed could not add team owner because there were no empty slots
-  for the owner's rank. The notification was rolled back before raising this err.
+  for the owner's bounds. The notification was rolled back before raising this err.
   """
   ERROR_CODE = "FULL_RANK_QUOTA_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "The team has no empty slots for the owner's rank. Transaction rollback performed."
+    "The team has no empty slots for the owner's bounds. Transaction rollback performed."
   )
 
 class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):

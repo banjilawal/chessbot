@@ -14,7 +14,7 @@ from chess.coord import Coord
 from chess.rank.bishop import Bishop
 from chess.rank.rook import Rook
 from chess.rank.knight import Knight
-from chess.king.rank import King
+from chess.rank.king import King
 from chess.pawn import Pawn
 from chess.rank.queen import Queen
 from chess.piece.model.piece import Piece

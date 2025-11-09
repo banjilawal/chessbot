@@ -169,21 +169,21 @@ class DiscoverySearchCollisionException(DiscoverySearchException, SearchCollisio
 class DiscoverySearchIdCollisionException(DiscoverySearchCollisionException):
   DEFAULT_CODE = "DISCOVERY_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "DiscoverySearch results contains has more than one match for the piece_id which should be unique. There "
+    "DiscoverySearch results contains has more than one consistency for the piece_id which should be unique. There "
     "may be service inconsistencies."
   )
 
 class DiscoverySearchNameCollisionException(DiscoverySearchCollisionException):
   DEFAULT_CODE = "DISCOVERY_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "DiscoverySearch results contains has more than one match for discovery_name, which should be unique. There "
+    "DiscoverySearch results contains has more than one consistency for discovery_name, which should be unique. There "
     "may be service inconsistencies."
   )
 
 class DiscoverySearchCoordCollisionException(DiscoverySearchCollisionException):
   DEFAULT_CODE = "DISCOVERY_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "DiscoverySearch results contains has more than one match for discovery_position, which should be unique. There "
+    "DiscoverySearch results contains has more than one consistency for discovery_position, which should be unique. There "
     "may be service inconsistencies."
   )
 

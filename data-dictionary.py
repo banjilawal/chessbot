@@ -77,8 +77,8 @@ class Coordinate(BaseModel):
     # notification errors and re-raise them as your custom exceptions.
     # @validator('*', pre=True)
     # def check_bounds(cls, v):
-    #   # Example of re-raising for 'row' field
-    #   # You would need team more complex state to see which field failed.
+    #   # Example of re-raising for 'row' consistency
+    #   # You would need team more complex state to see which consistency failed.
     #   # This is often not needed as Pydantic's errors are clear.
     #   if 'row' in cls.__fields__ and not (0 <= v < ROW_SIZE):
     #     raise RowOutOfBoundsException()

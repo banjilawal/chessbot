@@ -61,7 +61,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -135,8 +135,8 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
 
 class DoublePromotionException(PromotionEventException):
   """
-  Raised when attempting promoting team owner already elevated to Queen rank.
-  Only pieces with Pawn or King rank can be promoted.
+  Raised when attempting promoting team owner already elevated to Queen bounds.
+  Only pieces with Pawn or King bounds can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
   DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
@@ -148,8 +148,8 @@ class DoublePromotionException(PromotionEventException):
 
 class DoublePromotionRolledBackException(RollBackException):
   """
-  Raised if team notification attempts promoting team owner already elevated to Queen rank.
-  Only pieces with Pawn or King rank can be promoted. The notification was rolled
+  Raised if team notification attempts promoting team owner already elevated to Queen bounds.
+  Only pieces with Pawn or King bounds can be promoted. The notification was rolled
   back before raising this err.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
@@ -162,8 +162,8 @@ class DoublePromotionRolledBackException(RollBackException):
 # ======================# PIECE PROMOTION EXCEPTIONS #======================#
 class DoublePromotionException(PieceException):
   """
-  Raised when attempting promoting team owner already elevated to Queen rank.
-  Only pieces with Pawn or King rank can be promoted.
+  Raised when attempting promoting team owner already elevated to Queen bounds.
+  Only pieces with Pawn or King bounds can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
   DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
@@ -171,8 +171,8 @@ class DoublePromotionException(PieceException):
 
 class DoublePromotionRolledBackException(PieceRollBackException):
   """
-  Raised if team notification attempts promoting team owner already elevated to Queen rank.
-  Only pieces with Pawn or King rank can be promoted. The notification was rolled
+  Raised if team notification attempts promoting team owner already elevated to Queen bounds.
+  Only pieces with Pawn or King bounds can be promoted. The notification was rolled
   back before raising this err.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"

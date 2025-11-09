@@ -9,6 +9,6 @@ version: 1.0.0
 
 from .exception import *
 
-from .context import GraphSearchContext
-from .builder import GraphSearchContextBuilder
-from .validator import GraphSearchContextValidator
+from .context import VisitorSearchContext
+from .builder import VisitorSearchContextBuilder
+from .validator import VisitorSearchContextValidator

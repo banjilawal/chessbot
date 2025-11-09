@@ -1,4 +1,4 @@
-# src/chess/owner/travel/occupation/combatant/validator.py
+# src/chess/owner/travel/occupation/combatant/factory.py
 
 """
 Module: chess.owner.travel.occupation.combatant.event

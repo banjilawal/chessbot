@@ -87,7 +87,7 @@ class VisitationInvalidRankNameParamException(VisitationSearchContextException):
   error.
   """
   ERROR_CODE = "VISITATION_SEARCH_CONTEXT_RANK_NAME_ERROR"
-  DEFAULT_MESSAGE = "The rank name is not recognized. It cannot be used in VisitationSearchContext."
+  DEFAULT_MESSAGE = "The bounds name is not recognized. It cannot be used in VisitationSearchContext."
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 

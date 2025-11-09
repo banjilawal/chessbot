@@ -1,7 +1,7 @@
-# chess/rank/__init__.py
+# chess/bounds/__init__.py
 
 """
-Module: `chess.rank`
+Module: `chess.bounds`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -13,30 +13,30 @@ from its core identity, this design ensures that the movement logic is scalable 
 to be immutable once assigned.
 
 ## CORE CLASSES
-* `Rank`: The base class for all discover rank strategies.
+* `Rank`: The base class for all discover bounds strategies.
 * `Bishop`: Provides movement validate for team bishop.
 * `King`: Provides movement validate for team occupation.
 * `Knight`: Provides movement validate for team knight.
 * `Pawn`: Provides movement validate for team pawn.
 * `Rook`: Provides movement validate for team rook.
 * `Queen`: Provides movement validate for team queen.
-* `PromotedQueen`: A specialized rank for team promoted queen's movement.
+* `PromotedQueen`: A specialized bounds for team promoted queen's movement.
 
 ## USAGE
 The `Rank` classes are primarily used to validate team discover's movement at runtime. A `Piece` object holds team
 reference to its `Rank`, and delegates movement validate to it using the `walk()` method. This allows
 for team clean and simple interface for team chess board_validator's logic.
 
-# >>> from chess.rank import Knight
+# >>> from chess.bounds import Knight
 # >>> from chess.discover import Piece
 # >>> from chess.coord import Coord
 # >>>
 # >>> knight_rank = Knight()
-# >>> knight_piece = Piece(rank=knight_rank, coord=Coord(2, 2))
+# >>> knight_piece = Piece(bounds=knight_rank, coord=Coord(2, 2))
 # >>> destination = Coord(4, 3)
 # >>>
-# >>> # Validate the move using the Piece's rank
-# >>> is_valid = knight_piece.rank.walk(discover=knight_piece, destination=destination)
+# >>> # Validate the move using the Piece's bounds
+# >>> is_valid = knight_piece.bounds.walk(discover=knight_piece, destination=destination)
 # >>> print(is_valid.is_success())
 True
 
@@ -49,7 +49,7 @@ exact nature of the err, such as an invalid move for team specific discover type
 wrapper for underlying errors, providing team clean and consistent API for handling movement-related failures.
 
 ###CORE RANK EXCEPTIONS
-* `RankException`: The base team_exception for all rank-related errors.
+* `RankException`: The base team_exception for all bounds-related errors.
 
 #### Moving related Rank Exceptions
 * `BishopMovingException`
@@ -72,7 +72,7 @@ wrapper for underlying errors, providing team clean and consistent API for handl
 These exceptions are typically raised within team `Rank` class's movement methods and can be caught to handle
 invalid moves gracefully.
 
-# >>> from chess.rank import PawnException
+# >>> from chess.bounds import PawnException
 # >>>
 # >>> def move_pawn(start_pos, end_pos):
 # ...   # ... some validate logic

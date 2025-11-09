@@ -21,7 +21,7 @@ log = logging.getLogger("chessbot")
 # from .geometry import *
 # from .io import *
 # from .owner import *
-# from .rank import *
+# from .bounds import *
 # from .scalar import *
 # from .system import *
 # from .team import *

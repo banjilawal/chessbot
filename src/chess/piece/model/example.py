@@ -19,11 +19,11 @@ Provides the fundamental service structures for game pieces and entities owned b
 
 ## Usage
 ```python
-from chess.rank import Pawn, King
+from chess.bounds import Pawn, King
 from chess.owner import CombatantPiece, KingPiece
 
-white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', rank=Pawn(), team=white_team)
-white_king = KingPiece(discovery_id=2, name='WK', rank=King(), team=white_team)
+white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', bounds=Pawn(), team=white_team)
+white_king = KingPiece(discovery_id=2, name='WK', bounds=King(), team=white_team)
 ```
 ## SUBPACKAGES
   * `chess.owner.err`: Exceptions raised by `Piece` and its subclasses.
@@ -78,7 +78,7 @@ from chess.owner import CombatantPiece, Encounter, NullAttackException, AutoEnco
 build_outcome = PieceBuilder.build(
   discovery_id=id_emitter.discovery_id,
   name='BB2',
-  rank=Bishop(),
+  bounds=Bishop(),
   team=black_team
 )
 
@@ -188,7 +188,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each field and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:

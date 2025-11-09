@@ -93,8 +93,8 @@ class TeamSearch(Piece):
       
     - `hostage_by_idy(discovery_id: int, team: Team) -> SearchResult[CombatantPiece]`:
       
-    - `by_rank(rank: Rank, team: Team) -> SearchResult[list[Piece]]`: A list of all members with `rank` on 
-      given team. of team specific rank within team team.
+    - `by_rank(bounds: Rank, team: Team) -> SearchResult[list[Piece]]`: A list of all members with `bounds` on
+      given team. of team specific bounds within team team.
 
   Note:
     DO NOT USE ANY OTHER METHODS TO SEARCH A TEAM. USE ONLY THE METHODS IN THIS CLASS.

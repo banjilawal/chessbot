@@ -54,7 +54,7 @@ class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
   never be null.
   """
   ERROR_CODE = "PIECE_TEAM_FIELD_NULL_ERROR"
-  DEFAULT_MESSAGE = "Piece.team field is null. It should never be null. There may be service inconsistency."
+  DEFAULT_MESSAGE = "Piece.team consistency is null. It should never be null. There may be service inconsistency."
 
 
 class PieceMissingCoordStackException(PieceException, InconsistencyException):
@@ -92,10 +92,10 @@ class PieceRosterNumberIsNullException(PieceException, NullException):
 
 class PieceRankOutOfBoundsException(PieceException, NullException):
   """
-  Raised a owner's rank is not a recognized chess rank
+  Raised a owner's bounds is not a recognized chess bounds
   """
   ERROR_CODE = "PIECE_RANK_OUT_OF_BOUNDS_ERROR"
-  DEFAULT_MESSAGE = "A `Piece` does not have a recognized chess rank."
+  DEFAULT_MESSAGE = "A `Piece` does not have a recognized chess bounds."
 
 
 # ======================# NULL PIECE EXCEPTIONS #======================#

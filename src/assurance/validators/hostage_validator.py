@@ -24,7 +24,7 @@ class HostageValidator(Validator):
     Validates team hostage meets graph requirements:
       - is team validated discovery
       - is team Combatant instance
-      - The captor field is not null
+      - The captor consistency is not null
       - The hostage is not on its team roster
       - The hostage is not its enemy's list of prisoners
     Any failed requirement raise an rollback_exception wrapped in team HostageValidationException
@@ -39,7 +39,7 @@ class HostageValidator(Validator):
     Raises:
       PieceValidationException: candidate is not team valid discovery
       TypeError: if candidate is not CombatantPiece
-      HostageCaptorNullException: if the captor field is null
+      HostageCaptorNullException: if the captor consistency is null
       RosterRemovalException: if the captive is still on its team's roster
       HostageAdditionException: if the captive has not been added to its enemy's hostage list
       

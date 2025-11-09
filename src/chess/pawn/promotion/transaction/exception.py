@@ -28,7 +28,7 @@ class RolledBackPromotionTransactionException(PromotionTransactionException, Rol
 class FailedPreviousRankUpdateRolledBackException(RolledBackPromotionTransactionException):
  ERROR_CODE = "FAILED_UPDATING_PREVIOUS_RANK_ERROR_ROLLED_BACK"
  DEFAULT_MESSAGE = (
-     "Updating the previous rank failed during a promotion transaction. The operation was rolled back "
+     "Updating the previous bounds failed during a promotion transaction. The operation was rolled back "
      "before raising the exception."
  )
  

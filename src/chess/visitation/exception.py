@@ -56,7 +56,7 @@ class VisitationTeamFieldIsNullException(VisitationEventException, Inconsistency
     never be null.
     """
     ERROR_CODE = "VISITATION_TEAM_FIELD_NULL_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.team field is null. It should never be null. There may be service inconsistency."
+    DEFAULT_MESSAGE = "Visitationation.team consistency is null. It should never be null. There may be service inconsistency."
 
 
 class VisitationMissingCoordStackException(VisitationEventException, InconsistencyException):
@@ -94,10 +94,10 @@ class VisitationRosterNumberIsNullException(VisitationEventException, NullExcept
 
 class VisitationRankOutOfBoundsException(VisitationEventException, NullException):
     """
-    Raised a visitationation's rank is not a recognized chess rank
+    Raised a visitationation's bounds is not a recognized chess bounds
     """
     ERROR_CODE = "VISITATION_RANK_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "A `Visitationation` does not have a recognized chess rank."
+    DEFAULT_MESSAGE = "A `Visitationation` does not have a recognized chess bounds."
 
 
 # ======================# NULL VISITATION EXCEPTIONS #======================#
