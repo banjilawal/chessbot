@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import Any, cast, Tuple
 from chess.system import LoggingLevelRouter, ValidationResult
 from chess.rank import (
-    Rank, RankSpec, King, Queen, Bishop, Rook, Knight, Pawn, RankBoundsChecker,
-
+    NullRankException, Rank, RankSpec, King, Queen, Bishop, Rook, Knight, Pawn, RankBoundsChecker,
+    
     WrongKingRansomException, WrongQueenRansomException, WrongRookRansomException, WrongBishopRansomException,
     WrongKnightRansomException, WrongPawnRansomException,
     
@@ -20,12 +20,13 @@ from chess.rank import (
     
     WrongKingNameException, WrongQueenNameException, WrongRookNameException, WrongBishopNameException,
     WrongKnightNameException, WrongPawnNameException,
-
+    
     WrongKingLetterException, WrongQueenLetterException, WrongRookLetterException, WrongBishopLetterException,
     WrongKnightLetterException, WrongPawnLetterException,
     
     WrongKingIdException, WrongQueenIdException, WrongRookIdException, WrongBishopIdException, WrongKnightIdException,
-    WrongPawnIdException
+    WrongPawnIdException,
+    NullTupleException
 )
 
 
@@ -170,7 +171,7 @@ class RankFieldConsistencyCheck:
             
             if isinstance(rank, Rook) and name.upper() != RankSpec.ROOK.name.upper():
                 return ValidationResult.failure(
-                    WrongRookNamexception(f"{method}: {WrongRookNamexception.DEFAULT_MESSAGE}")
+                    WrongRookNameException(f"{method}: {WrongRookNameException.DEFAULT_MESSAGE}")
                 )
             
             if isinstance(rank, Knight) and name.upper() != RankSpec.KNIGHT.name.upper():
@@ -323,7 +324,7 @@ class RankFieldConsistencyCheck:
                     TypeError(f"{method}: Expected a Tuple, got {type(candidate).__id__}")
                 )
             
-            return RankFieldValidator._basic_rank_check(cast(candidate, Tuple)[0])
+            return cls._basic_rank_check(cast(candidate, Tuple)[0])
         except Exception as e:
             return ValidationResult.failure(e)
             

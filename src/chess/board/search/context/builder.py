@@ -56,7 +56,6 @@ From `chess.owner`:
 from typing import Optional
 
 from chess.coord import Coord, CoordValidator
-from chess.rank import Rank, RankValidator, RankSpec
 from chess.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
 from chess.system import (
     IdValidator, NameValidator, Builder, BuildResult,

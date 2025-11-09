@@ -48,10 +48,13 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 
 from chess.system import NullException, ValidationException
 from chess.rank import (
-  RankRansomException, RankQuotaException, RankNameException, RankLetterException, RankIdException
+  RankException, RankRansomException, RankQuotaException, RankNameException, RankLetterException, RankIdException
 )
 
 __all__ = [
+
+# ======================# TUPLE EXCEPTIONS #======================#
+  "NullTupleException",
 
 # ======================# RANK_RANSOM_INCONSISTENCY EXCEPTIONS #======================#
   "WrongKingRansomException",
@@ -93,6 +96,12 @@ __all__ = [
   "WrongKnightIdException",
   "WrongPawnIdException"
 ]
+
+
+# ======================# TUPLE EXCEPTIONS #======================#
+class NullTupleException(RankException):
+  ERROR_CODE = "NULL_TUPLE_ERROR"
+  DEFAULT_MESSAGE = f"Tuple cannot be null."
 
 
 # ======================# RANK_RANSOM_INCONSISTENCY EXCEPTIONS #======================#
@@ -219,7 +228,6 @@ class WrongKnightLetterException(RankLetterException):
 class WrongPawnLetterException(RankLetterException):
   ERROR_CODE = "WRONG_ROOK_LETTER_ERROR"
   DEFAULT_MESSAGE = f"Incorrect value for a Rook letter."
-
 
 
 # ======================# RANK_ID_INCONSISTENCY EXCEPTIONS #======================#
