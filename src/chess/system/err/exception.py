@@ -8,31 +8,34 @@ version: 1.0.0
 """
 
 __all__ = [
-  'ChessException',
+  "ChessException",
 
 #======================# ROLL_BACK EXCEPTIONS #======================#  
-  'RollbackException',
-  'RollbackFailedException',
+  "RollbackException",
+  "RollbackFailedException",
   
 #======================# IMPLEMENTATION EXCEPTIONS #======================#
-  'NotImplementedException',
+  "NotImplementedException",
   
 #======================# STARVATION EXCEPTIONS #======================#
-  'ResourceException',
+  "ResourceException",
 
 #======================# INCONSISTENCY EXCEPTIONS #======================#  
-  'InconsistencyException',
-  'InvariantBreachException',
-  'InconsistentCollectionException',
+  "InconsistencyException",
+  "InvariantBreachException",
+  "InconsistentCollectionException",
 
 #======================# NULL/EMPTY EXCEPTIONS #======================#  
-  'NullException',
-  'NullNumberException',
-  'NullStringException',
-  'BlankStringException'
-]
+  "NullException",
+  "NullNumberException",
+  "NullStringException",
+  "BlankStringException",
 
-from chess.system import ValidationException
+# ======================# NULL/EMPTY EXCEPTIONS #======================#  
+  "GameColorException",
+  "InvalidGameColorException",
+  "NullGameColorException"
+]
 
 
 class ChessException(Exception):
@@ -139,6 +142,22 @@ class BlankStringException(ChessException):
   ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
   DEFAULT_MESSAGE = "Cannot old_search by an empty or blank string"
 
+
+# ======================# NULL/EMPTY EXCEPTIONS #======================#  
+class GameColorException(ChessException):
+  """"""
+  ERROR_CODE = "GAME_COLOR_ERROR"
+  DEFAULT_MESSAGE = "GameColor raised an exception failed."
+
+class InvalidGameColorException(GameColorException):
+  """"""
+  ERROR_CODE = "GAME_COLOR_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "GameColor validation failed"
+
+class NullGameColorException(GameColorException, NullException):
+  """"""
+  ERROR_CODE = "NULL_GAME_COLOR_ERROR"
+  DEFAULT_MESSAGE = "GameColor cannot be null."
 
 
 

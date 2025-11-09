@@ -25,21 +25,21 @@ class VisitorSearchContext(SearchContext):
 
     def __init__(
             self,
-            _id: Optional[int] = None,
-            _name: Optional[str] = None,
-            _ransom: Optional[int] = None,
-            _coord: Optional[Coord] = None,
-            _rank_name: Optional[str] = None,
-            _team_id: Optional[id] = None,
-            _team_name: Optional[str] = None
+            id: Optional[int] = None,
+            name: Optional[str] = None,
+            ransom: Optional[int] = None,
+            coord: Optional[Coord] = None,
+            rank_name: Optional[str] = None,
+            team_id: Optional[id] = None,
+            team_name: Optional[str] = None
     ):
-        self._id = _id
-        self._name = _name
-        self._coord = _coord
-        self._ransom = _ransom
-        self._rank_name = _rank_name
-        self._team_id = _team_id
-        self._team_name = _team_name
+        self._id = id
+        self._name = name
+        self._coord = coord
+        self._ransom = ransom
+        self._rank_name = rank_name
+        self._team_id = team_id
+        self._team_name = team_name
         
     @property
     def id(self) -> Optional[int]:

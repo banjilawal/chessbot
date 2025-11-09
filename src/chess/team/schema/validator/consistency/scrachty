@@ -1,0 +1,47 @@
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_knight(cls, knight: Knight) -> ValidationResult[Knight]:
+        try:
+            id_check = RankFieldConsistencyCheck.rank_id_consistency((knight, knight.id))
+            if id_check.is_failure():
+                return ValidationResult.failure(id_check.exception)
+            quota_check = RankFieldConsistencyCheck.rank_quota_consistency((knight, knight.quota))
+            if quota_check.is_failure():
+                return ValidationResult.failure(quota_check.exception)
+            ransom_check = RankFieldConsistencyCheck.rank_ransom_consistency((knight, knight.ransom))
+            if ransom_check.is_failure():
+                return ValidationResult.failure(ransom_check.exception)
+            name_check = RankFieldConsistencyCheck.rank_name_consistency((knight, knight.name))
+            if name_check.is_failure():
+                return ValidationResult.failure(name_check.exception)
+            letter_check = RankFieldConsistencyCheck.rank_letter_consistency((knight, knight.letter))
+            if letter_check.is_failure():
+                return ValidationResult.failure(letter_check.exception)
+            
+            return ValidationResult.success(payload=knight)
+        except Exception as e:
+            return ValidationResult.failure(e)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_pawn(cls, pawn: Pawn) -> ValidationResult[Pawn]:
+        try:
+            id_check = RankFieldConsistencyCheck.rank_id_consistency((pawn, pawn.id))
+            if id_check.is_failure():
+                return ValidationResult.failure(id_check.exception)
+            quota_check = RankFieldConsistencyCheck.rank_quota_consistency((pawn, pawn.quota))
+            if quota_check.is_failure():
+                return ValidationResult.failure(quota_check.exception)
+            ransom_check = RankFieldConsistencyCheck.rank_ransom_consistency((pawn, pawn.ransom))
+            if ransom_check.is_failure():
+                return ValidationResult.failure(ransom_check.exception)
+            name_check = RankFieldConsistencyCheck.rank_name_consistency((pawn, pawn.name))
+            if name_check.is_failure():
+                return ValidationResult.failure(name_check.exception)
+            letter_check = RankFieldConsistencyCheck.rank_letter_consistency((pawn, pawn.letter))
+            if letter_check.is_failure():
+                return ValidationResult.failure(letter_check.exception)
+            
+            return ValidationResult.success(payload=pawn)
+        except Exception as e:
+            return ValidationResult.failure(e)

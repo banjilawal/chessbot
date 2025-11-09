@@ -11,11 +11,10 @@ version: 1.0.0
 
 from chess.system import ValidationException, NullException
 
-
 __all__ = [
-  'InvalidIdException',
-  'IdNullException',
-  'NegativeIdException'
+  "InvalidIdException",
+  "IdNullException",
+  "NegativeIdException"
 ]
 
 class InvalidIdException(ValidationException):

@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/consistency/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/consistency/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/consistency/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/consistency/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/bounds/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/bounds/checker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/bounds/example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/bounds/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/bounds/scracth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/consistency/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/consistency/checker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/consistency/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/consistency/scrachty" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/schema/validator/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/search/context/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/search/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/search/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/search/context/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +268,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/rank/validator",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/team/schema",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -282,11 +295,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/team/schema" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/rank" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/field" />
       <recent name="$PROJECT_DIR$/src/chess/rank" />
-      <recent name="$PROJECT_DIR$/src/chess/domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/rank" />
@@ -615,7 +628,8 @@
       <workItem from="1762241067438" duration="3089000" />
       <workItem from="1762338667560" duration="38595000" />
       <workItem from="1762455471749" duration="15765000" />
-      <workItem from="1762627610288" duration="36567000" />
+      <workItem from="1762627610288" duration="38851000" />
+      <workItem from="1762671342509" duration="8533000" />
     </task>
     <servers />
   </component>

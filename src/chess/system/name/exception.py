@@ -26,7 +26,7 @@ class InvalidNameException(ValidationException):
   to allow catching and wrapping all errors discovered validating names. DO NOT USE DIRECTLY.
   """
   ERROR_CODE = "NAME_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Name Validation failed"
+  DEFAULT_MESSAGE = "Name validation failed"
 
 class BlankNameException(InvalidNameException, BlankStringException):
   """

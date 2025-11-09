@@ -9,34 +9,35 @@ version: 1.0.0
 
 from typing import Optional
 
+from chess.coord import Coord
 from chess.system import Builder, BuildResult
-from chess.graph import GraphSearchContext, ZeroGraphSearchParamsException
+from chess.domain import VisitorSearchContext, NoVisitorSearchFilterSelectionException
 
 
-class DomainSearchContextBuilder(Builder[DomainSearchContext]):
+class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
     """"""
 
     @classmethod
     def build (
         cls,
+        id: Optional[int] = None,
         name: Optional[str] = None,
         ransom: Optional[int] = None,
-        piece_id: Optional[int] = None,
+        coord: Optional[Coord] = None,
+        rank_name: Optional[str] = None,
         team_id: Optional[id] = None,
-        team_name: Optional[str] = None,
-        rank_name: Optional[Rank] = None,
-        position: Optional[Coord] = None,
-    ) -> BuildResult[GraphSearchContext]:
+        team_name: Optional[str] = None
+    ) -> BuildResult[VisitorSearchContext]:
         """"""
-        method = "GraphSearchContextBuilder.build"
+        method = "VisitorSearchContextBuilder.build"
 
         try:
             params = [name, ransom, piece_id, team_id, team_name, rank_name, position]
             param_count = sum(bool(p) for p in params)
 
             if param_count == 0:
-                return BuildResult(exception=ZeroGraphSearchParamsException(
-                    f"{method}: {ZeroGraphSearchParamsException.DEFAULT_MESSAGE}"
+                return BuildResult(exception=NoVisitorSearchFilterSelectionException(
+                    f"{method}: {NoVisitorSearchFilterSelectionException.DEFAULT_MESSAGE}"
                 ))
 
             if param_count > 1:
