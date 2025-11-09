@@ -10,18 +10,16 @@ version: 1.0.0
 from chess.system import SearchContextException, NullException, BuildFailedException, ValidationException
 
 __all__ = [
-    'VisitorSearchContextException',
+    "VisitorSearchContextException",
 
     # ======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
-    'NullVisitorSearchContextException',
-    'InvalidVisitorSearchContextException',
-    'NoVisitorSearchFilterSelectionException',
-    'TooManyVisitorSearchParamsException',
-    'VisitorRansomParamBoundsException',
-    'VisitorInvalidRankNameParamException',
+    "NullVisitorSearchContextException",
+    "InvalidVisitorSearchContextException",
+    "NoVisitorSearchParamException",
+    "TooManyVisitorSearchParamsException",
 
     # ======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
-    'VisitorSearchContextBuildFailedException',
+    "VisitorSearchContextBuildFailedException",
 ]
 
 
@@ -71,26 +69,8 @@ class TooManyVisitorSearchParamsException(VisitorSearchContextException):
         "More than one VisitorSearchContext param was set. If more than one param is set a search cannot be run."
     )
 
-class VisitorRansomParamBoundsException(VisitorSearchContextException):
-  """
-  If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
-  error.
-  """
-  ERROR_CODE = "VISITOR_SEARCH_CONTEXT_RANSOM_BOUNDS_ERROR"
-  DEFAULT_MESSAGE = "The ransom is out of bounds. It cannot be used in VisitorSearchContext."
 
-class VisitorInvalidRankNameParamException(VisitorSearchContextException):
-  """
-  If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
-  error.
-  """
-  ERROR_CODE = "VISITOR_SEARCH_CONTEXT_RANK_NAME_ERROR"
-  DEFAULT_MESSAGE = "The bounds name is not recognized. It cannot be used in VisitorSearchContext."
-
-
-# #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
+# #======================# VISITOR_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class VisitorSearchContextBuildFailedException(VisitorSearchContextException, BuildFailedException):
     """
     Raised when VisitorSearchContextBuilder encounters an error while building team team.
