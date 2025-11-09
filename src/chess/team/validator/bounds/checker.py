@@ -1,4 +1,4 @@
-# src/chess/team/validator/bounds/__init__.py
+# src/chess/team/validator/bounds/checker.py
 
 """
 Module: chess.team.validator.bounds.checker
@@ -13,16 +13,12 @@ from chess.scalar import Scalar, ScalarValidator
 from chess.system import (
     LoggingLevelRouter, GameColor, NullGameColorException, ROW_SIZE, ValidationResult, NameValidator
 )
+
 from chess.team import (
-    TeamSpec, NullTeamLetterException, TeamLetterOutOfBoundsException, TeamNameOutOfBoundsException,
-    NullTeamRansomException, TeamRansomBelowBoundsException, TeamRansomAboveBoundsException,
-    NullTeamQuotaException, TeamQuotaBelowBoundsException, TeamQuotaAboveBoundsException,
-    TeamIdAboveBoundsException
-)
-from chess.team.schema.validator import RankRowAboveBoundsException, RankRowBelowBoundsException
-from chess.team.schema.validator.bounds.exception import (
-    AdvancingStepBoundsException, RankRowNullException, PawnRowAboveBoundsException, PawnRowBelowBoundsException,
-    PawnRowNullException, TeamColorBoundsException, TeamLetterBoundsException, TeamNameBoundsException, row_number
+    TeamSchema, NullTeamLetterException, TeamLetterBoundsException, TeamNameBoundsException,
+    RankRowNullException, RankRowBelowBoundsException, RankRowAboveBoundsException,
+    PawnRowNullException, PawnRowBelowBoundsException, PawnRowAboveBoundsException,
+    AdvancingStepBoundsException, TeamColorBoundsException,
 )
 
 

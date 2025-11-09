@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 
 from chess.piece.model.piece import Piece
-from chess.team.schema.schema import TeamSchema
+from chess.team.schema import TeamSchema
 from chess.rank.spec import RankSpec
 
 

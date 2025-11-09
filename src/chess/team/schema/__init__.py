@@ -9,4 +9,3 @@ version: 1.0.0
 
 from .exception import *
 from .schema import TeamSchema
-from .validator import TeamSchemaValidator

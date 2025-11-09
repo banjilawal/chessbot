@@ -1,0 +1,28 @@
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def team_advancing_step_consistency(cls, candidate: Any) -> ValidationResult[int]:
+        """"""
+        method = "TeamFieldConsistencyCheck.team_advancing_step_consistency"
+        
+        try:
+            tuple_validation = cls._basic_tuple_check(candidate)
+            if tuple_validation.failure():
+                return ValidationResult.failure(tuple_validation.exception)
+            
+            pair = cast(Tuple, candidate)
+            team = cast(Team, pair[0])
+            
+            advancing_step_bounds_check = TeamBoundsChecker.advancing_step_bounds_check(pair[1])
+            if advancing_step_bounds_check.failure():
+                return ValidationResult.failure(advancing_step_bounds_check.exception)
+            
+            advancing_step = cast(int, pair[1])
+            
+            if team.schema.advancing_step != advancing_step:
+                return ValidationResult.failure(
+                    TeamRankRowInconsistencyException(f"{method}: {TeamRankRowInconsistencyException.DEFAULT_MESSAGE}")
+                )
+            
+            return ValidationResult.success(advancing_step)
+        except Exception as e:
+            return ValidationResult.failure(e)

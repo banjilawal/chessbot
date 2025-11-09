@@ -26,7 +26,7 @@ from chess.rank import (
     
     WrongKingIdException, WrongQueenIdException, WrongRookIdException, WrongBishopIdException, WrongKnightIdException,
     WrongPawnIdException,
-    NullTupleException
+    NullRankConsistencyTupleException
 )
 
 
@@ -316,7 +316,7 @@ class RankFieldConsistencyCheck:
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullTupleException(f"{method}: {NullTupleException.DEFAULT_MESSAGE}")
+                    NullRankConsistencyTupleException(f"{method}: {NullRankConsistencyTupleException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, Tuple):

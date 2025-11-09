@@ -53,47 +53,48 @@ from chess.system import(
 )
 
 __all__ = [
-  'TeamException',
-  'TeamRollBackException',
+  "TeamException",
+  "TeamRollBackException",
 
 #======================# TEAM VALIDATION EXCEPTIONS #======================#  
-  'NullTeamException',
-  'InvalidTeamException',
+  "NullTeamException",
+  "InvalidTeamException",
+  "TeamCommanderInconsistencyException",
 
 #======================# TEAM BUILD EXCEPTIONS #======================#  
-  'TeamBuildFailedException',
+  "TeamBuildFailedException",
 
 #======================# TEAM MEMBER EXCEPTIONS #======================#  
-  'TeamRosterException',
-  'AddTeamMemberException',
-  'AddEnemyToRosterException',
-  'RemoveTeamMemberException',
-  'FullRankQuotaException',
+  "TeamRosterException",
+  "AddTeamMemberException",
+  "AddEnemyToRosterException",
+  "RemoveTeamMemberException",
+  "FullRankQuotaException",
 
 #======================# TEAM MEMBER EXCEPTIONS WITH ROLLBACK #======================#  
-  'TeamRosterRollBackException',
-  'AddEnemyHostageRolledBackException',
-  'AddTeamMemberRolledBackException',
-  'FullRankQuotaRolledBackException',
-  'ConflictingTeamAssignmentException',
+  "TeamRosterRollBackException",
+  "AddEnemyHostageRolledBackException",
+  "AddTeamMemberRolledBackException",
+  "FullRankQuotaRolledBackException",
+  "ConflictingTeamAssignmentException",
 
 #======================# HOSTAGE EXCEPTIONS #======================#  
-  'TeamHostageListException',
-  'InconsistentHostageEntry',
-  'InvalidFriendlyHostageException',
-  'AddEnemyHostageException',
-  'AddEnemyKingHostageException',
-  'HostageRemovalException',
+  "TeamHostageListException",
+  "InconsistentHostageEntry",
+  "InvalidFriendlyHostageException",
+  "AddEnemyHostageException",
+  "AddEnemyKingHostageException",
+  "HostageRemovalException",
 
 #======================# HOSTAGE EXCEPTIONS WITH ROLLBACK #======================#  
-  'TeamHostageListRolledBackException',
-  'InvalidFriendlyHostageRolledBackException',
-  'AddEnemyToRosterRolledBackException',
-  'EnemyKingHostageRolledBackException',
-  'HostageRemovalRolledBackException',
+  "TeamHostageListRolledBackException",
+  "InvalidFriendlyHostageRolledBackException",
+  "AddEnemyToRosterRolledBackException",
+  "EnemyKingHostageRolledBackException",
+  "HostageRemovalRolledBackException",
 
 #======================# SEARCH EXCEPTIONS #======================#  
-  'RosterNumberOutOfBoundsException'
+  "RosterNumberOutOfBoundsException"
 ]
 
 class TeamException(ChessException):
@@ -128,6 +129,12 @@ class InvalidTeamException(TeamException, ValidationException):
   """
   ERROR_CODE = "TEAM_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Team validator failed"
+
+
+class TeamCommanderInconsistencyException(TeamException):
+  """Raised if piece has its team set but the owner is not on the roster."""
+  ERROR_CODE = "TEAM_COMMANDER_INCONSISTENCY_ERROR"
+  DEFAULT_MESSAGE = "The team has assigned itself to a commander but the Commander has no record of the team."
 
 
 #======================# TEAM BUILD EXCEPTIONS #======================#  

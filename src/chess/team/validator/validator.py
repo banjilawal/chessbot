@@ -1,7 +1,7 @@
-# src/chess/team/old_occupation_validator.py
+# src/chess/team/validator/validator.py
 
 """
-Module: chess.team.validator
+Module: chess.team.validator.validator
 Author: Banji Lawal
 Created: 2025-09-11
 Updated: 2025-10-08
@@ -45,10 +45,13 @@ From `chess.team`:
 ----------
  * `TeamValidator`
 """
+
 from typing import cast, Any
+
+
+from chess.system import ValidationResult, Validator, LoggingLevelRouter, IdValidator
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
-from chess.team import Team, InvalidTeamException, NullTeamException, NullTeamSchemaException, TeamSchemaValidator
-from chess.system import ValidationResult, Validator, LoggingLevelRouter, IdValidator, InconsistentCollectionException
+from chess.team import Team, NullTeamException, TeamFieldConsistencyCheck, TeamCommanderInconsistencyException
 
 
 class TeamValidator(Validator[Team]):
@@ -95,42 +98,56 @@ class TeamValidator(Validator[Team]):
 
     try:
       if candidate is None:
-        return ValidationResult(exception=
-            NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}"
-        ))
+        return ValidationResult.failure(NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
+        )
 
-      from chess.team import Team
       if not isinstance(candidate, Team):
-        return ValidationResult(exception=TypeError(
-          f"{method} Expected team Team, got {type(candidate).__name__}"
-        ))
+        return ValidationResult.failure(
+          TypeError(f"{method} Expected team Team, got {type(candidate).__name__}")
+        )
 
       team = cast(Team, candidate)
-
-      schema_validation = TeamSchemaValidator.validate(team.schema)
-      if not schema_validation.is_success():
-        return ValidationResult(exception=schema_validation.exception)
-
+      
       id_validation = IdValidator.validate(team.id)
       if not id_validation.is_success():
-        return ValidationResult(exception=id_validation.exception)
+        return ValidationResult.failure(id_validation.exception)
+      
+      name_consistency = TeamFieldConsistencyCheck.team_name_consistency((team, team.schema.name))
+      if name_consistency.failure():
+        return ValidationResult.failure(name_consistency.exception)
+      
+      letter_consistency = TeamFieldConsistencyCheck.team_letter_consistency((team, team.schema.letter))
+      if letter_consistency.failure():
+        return ValidationResult.failure(letter_consistency.exception)
+      
+      rank_row_consistency = TeamFieldConsistencyCheck.team_rank_row_consistency((team, team.schema.rank_row))
+      if rank_row_consistency.failure():
+        return ValidationResult.failure(rank_row_consistency.exception)
+      
+      pawn_row_consistency = TeamFieldConsistencyCheck.team_pawn_row_consistency((team, team.schema.rank_row))
+      if pawn_row_consistency.failure():
+        return ValidationResult.failure(pawn_row_consistency.exception)
+      
+      color_consistency = TeamFieldConsistencyCheck.team_color_consistency((team, team.schema.color))
+      if color_consistency.failure():
+        return ValidationResult.failure(color_consistency.exception)
 
       commander_validation = CommanderValidator.validate(team.commander)
       if not commander_validation.is_success():
-        return ValidationResult(exception=commander_validation.exception)
+        return ValidationResult.failure(commander_validation.exception)
 
       commander = cast(Commander, commander_validation.payload)
       if team.commander != commander:
-        return ValidationResult(exception=InvalidCommanderAssignmentException(
-          f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"
-        ))
+        return ValidationResult.failure(
+          InvalidCommanderAssignmentException(f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}")
+        )
 
       if team not in commander.teams.items:
-        return ValidationResult(exception=InconsistentCollectionException(
-          f"{method}: [Team-Not-In-Commander-History] {InconsistentCollectionException.DEFAULT_MESSAGE}"
-        ))
+        return ValidationResult.failure(
+            TeamCommanderInconsistencyException(f"{method}:  {TeamCommanderInconsistencyException.DEFAULT_MESSAGE}")
+        )
 
-      return ValidationResult(payload=team)
+      return ValidationResult.success(team)
 
     except Exception as e:
-      return ValidationResult(exception=InvalidTeamException(f"{method}: {e}"))
+      return ValidationResult.failure(e)

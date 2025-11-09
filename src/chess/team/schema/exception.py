@@ -1,7 +1,7 @@
-# src/chess/teamSchema/schema/rollback_exception.py
+# src/chess/team/schema/exception.py
 
 """
-Module: chess.teamSchema.schema.rollback_exception
+Module: chess.team.schema.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

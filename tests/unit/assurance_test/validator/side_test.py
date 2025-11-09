@@ -6,7 +6,7 @@ from assurance.exception.invalid_id import IdValidationException
 from chess.team.team_exception.invalid_team import TeamValidationException
 from chess.team.validator import TeamValidator
 from chess.competitor.commander import Commander
-from chess.team.schema.schema import TeamSchema
+from chess.team.schema import TeamSchema
 from chess.team.team_exception.null_team_profile import NullTeamProfileException
 from chess.team.team_exception.null_team import NullTeamException
 from chess.side.team import Side

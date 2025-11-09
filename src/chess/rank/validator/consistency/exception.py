@@ -54,7 +54,7 @@ from chess.rank import (
 __all__ = [
 
 # ======================# TUPLE EXCEPTIONS #======================#
-  "NullTupleException",
+  "NullRankConsistencyTupleException",
 
 # ======================# RANK_RANSOM_INCONSISTENCY EXCEPTIONS #======================#
   "WrongKingRansomException",
@@ -98,11 +98,11 @@ __all__ = [
 ]
 
 
-# ======================# TUPLE EXCEPTIONS #======================#
-class NullTupleException(RankException):
-  ERROR_CODE = "NULL_TUPLE_ERROR"
-  DEFAULT_MESSAGE = f"Tuple cannot be null."
-
+# ======================# RANK_CONSISTENCY_TUPLE EXCEPTIONS #======================#
+class NullRankConsistencyTupleException(RankException):
+  ERROR_CODE = "NULL_RANK_CONSISTENCY_TUPLE_ERROR"
+  DEFAULT_MESSAGE = "Tuple for checking Rank-Field consistency cannot be null."
+  
 
 # ======================# RANK_RANSOM_INCONSISTENCY EXCEPTIONS #======================#
 class WrongKingRansomException(RankRansomException):

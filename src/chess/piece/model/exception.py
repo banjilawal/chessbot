@@ -76,9 +76,9 @@ class PieceMissingDiscoveriesException(PieceException, InconsistencyException):
 
 
 class UnregisteredTeamMemberException(PieceException):
-  """Raised if team owner has its team set but the owner is not on the roster."""
+  """Raised if piece has its team set but the owner is not on the roster."""
   ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "The owner has assigned itself a team. but is not listed on that team's roster."
+  DEFAULT_MESSAGE = "The piece has assigned itself a team. but is not listed on that team's roster."
 
 
 class PieceRosterNumberIsNullException(PieceException, NullException):

@@ -1,6 +1,6 @@
-# src/chess/team/team.py
+# src/chess/team/schema/schema.py
 """
-Module: chess.team.team
+Module: chess.team.schema.schema
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
