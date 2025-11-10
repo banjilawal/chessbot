@@ -32,7 +32,7 @@ class EuclidDistanceTest(unittest.TestCase):
       Distance(p=Coord(row=ROW_SIZE, column=0), q=Coord(row=0, column=0))
 
   def test_p_row_in_bounds(self):
-    # Valid rows should construct team Coord without exceptions
+    # Valid rows should construct team_name Coord without exceptions
     for row in range(0, ROW_SIZE):
       cartesian_distance = Distance(
         p=Coord(row=row, column=0),
@@ -56,7 +56,7 @@ class EuclidDistanceTest(unittest.TestCase):
 
 
   def test_p_column_in_bounds(self):
-    # Valid rows should construct team Coord without exceptions
+    # Valid rows should construct team_name Coord without exceptions
     for col in range(0, COLUMN_SIZE):
       cartesian_distance = Distance(
         p=Coord(row=0, column=col),
@@ -86,7 +86,7 @@ class EuclidDistanceTest(unittest.TestCase):
 
 
   def test_q_row_in_bounds(self):
-    # Valid rows should construct team Coord without exceptions
+    # Valid rows should construct team_name Coord without exceptions
     for row in range(0, ROW_SIZE):
       cartesian_distance = Distance(
         p=Coord(row=0, column=0),

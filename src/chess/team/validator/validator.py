@@ -1,7 +1,7 @@
-# src/chess/team/validator/validator.py
+# src/chess/team_name/validator/validator.py
 
 """
-Module: chess.team.validator.validator
+Module: chess.team_name.validator.validator
 Author: Banji Lawal
 Created: 2025-09-11
 Updated: 2025-10-08
@@ -17,7 +17,7 @@ Updated: 2025-10-08
     `Team` passes and additional checks before deployment.
 
 **Related Features**:
-    Building teams -> See TeamBuilder, module[chess.team.validator],
+    Building teams -> See TeamBuilder, module[chess.team_name.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -37,7 +37,7 @@ Updated: 2025-10-08
 From `chess.system`:
   * `ValidationResult`, `Validator`, `LoggingLevelRouter`
 
-From `chess.team`:
+From `chess.team_name`:
     `Team`, `NullTeamException`, `InvalidTeamException`, `NullXComponentException`,
     `NullYComponentException`, `TeamBelowBoundsException`, `TeamAboveBoundsException`
 
@@ -86,7 +86,7 @@ class TeamValidator(Validator[Team]):
 
     RAISES:
     `InvalidTeamException`: Wraps any specification violations including:
-      `TypeError`: if `candidate` is not team Team` object
+      `TypeError`: if `candidate` is not team_name Team` object
       `NullTeamException`: if `candidate` is null
       `InvalidIdException`: if `visitor_id` fails validate checks
       `InvalidCommanderException`: if `commander` fails validate checks
@@ -103,7 +103,7 @@ class TeamValidator(Validator[Team]):
 
       if not isinstance(candidate, Team):
         return ValidationResult.failure(
-          TypeError(f"{method} Expected team Team, got {type(candidate).__name__}")
+          TypeError(f"{method} Expected team_name Team, got {type(candidate).__name__}")
         )
 
       team = cast(Team, candidate)

@@ -106,7 +106,7 @@ __all__ = [
 
 class ScalarException(ChessException):
   """
-  Super class of all exceptions team Scalar object raises. Do not use directly. Subclasses
+  Super class of all exceptions team_name Scalar object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching all 
   Scalar exceptions.
   """
@@ -116,7 +116,7 @@ class ScalarException(ChessException):
 
 #======================# SCALAR VALIDATION EXCEPTIONS #======================#  
 class NullScalarException(ScalarException, NullException):
-  """Raised if an entity, method, or operation requires team scalar but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name scalar but gets null instead."""
   ERROR_CODE = "NULL_SCALAR_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be null."
 
@@ -138,11 +138,11 @@ class ScalarBuildFailed(ScalarException, BuilderException):
 
 #======================# SCALAR BOUNDS EXCEPTIONS #======================#  
 class ScalarBelowBoundsException(ScalarException):
-  """Raised if team scalar is below its < -KNIGHT_STEP_SIZE"""
+  """Raised if team_name scalar is below its < -KNIGHT_STEP_SIZE"""
   ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be less than -KNIGHT_STEP_SIZE."
 
 class ScalarAboveBoundsException(ScalarException):
-  """Raised if team scalar is above its > KNIGHT_STEP_SIZE"""
+  """Raised if team_name scalar is above its > KNIGHT_STEP_SIZE"""
   ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be greater than KNIGHT_STEP_SIZE."

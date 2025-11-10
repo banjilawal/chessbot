@@ -80,7 +80,7 @@ class CoordException(ChessException):
 
 #====================== COORD VALIDATION EXCEPTIONS #======================#  
 class NullCoordException(CoordException, NullException):
-  """Raised by methods, entities, and models that require team Coord but receive team null."""
+  """Raised by methods, entities, and models that require team_name Coord but receive team_name null."""
   ERROR_CODE = "NULL_COORD_ERROR"
   DEFAULT_MESSAGE = "Coord cannot be null"
 
@@ -93,7 +93,7 @@ class InvalidCoordException(CoordException, ValidationException):
 #====================== COORD_ROW VALIDATION EXCEPTIONS #======================#  
 class NullRowException(CoordException, NullException):
   """
-  Raised if team row is null. A visitor_coord cannot be created if the row is null
+  Raised if team_name row is null. A visitor_coord cannot be created if the row is null
   """
   ERROR_CODE = "NULL_ROW_ERROR"
   DEFAULT_MESSAGE = "Row cannot be null."
@@ -108,7 +108,7 @@ class RowBelowBoundsException(CoordException):
 
 class RowAboveBoundsException(CoordException):
   """
-  If team row >= ROW_SIZE RowAboveBoundsException is raised.
+  If team_name row >= ROW_SIZE RowAboveBoundsException is raised.
   """
   ERROR_CODE = "ROW_ABOVE_BOUNDS_ERROR"
   DEFAULT_MESSAGE = f"Coord.row > {ROW_SIZE - 1}. This outside the dimension of the board"
@@ -117,7 +117,7 @@ class RowAboveBoundsException(CoordException):
 #====================== COORD_COLUMN VALIDATION EXCEPTIONS #======================#  
 class NullColumnException(NullException):
   """
-  Raised if team column is null. A visitor_coord cannot be created if the column is null
+  Raised if team_name column is null. A visitor_coord cannot be created if the column is null
   """
   ERROR_CODE = "NULL_COLUMN_ERROR"
   DEFAULT_MESSAGE = "Column cannot be null"

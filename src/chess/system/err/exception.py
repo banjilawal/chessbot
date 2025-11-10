@@ -50,7 +50,7 @@ class ChessException(Exception):
     self.message = message or self.DEFAULT_MESSAGE
     super().__init__(self.message)
 
-  # Only the super class needs to declare team toString. Subclasses
+  # Only the super class needs to declare team_name toString. Subclasses
   # will use this.
   def __str__(self):
     return "{self.message}"
@@ -82,7 +82,7 @@ class ResourceException(ChessException):
 #======================# INCONSISTENCY EXCEPTIONS #======================#  
 class InconsistencyException(ChessException):
   """
-  Raised if team service inconsistency is detected
+  Raised if team_name service inconsistency is detected
   """
   ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
   DEFAULT_MESSAGE = "A service inconsistency was detected."
@@ -122,22 +122,22 @@ class NullException(ChessException):
 class NullNumberException(NullException):
   """
   Raised if mathematical expression or geometric, algebraic, or optimization that need
-   team number but get null instead NUllNumberException is thrown. Ids are not used for math
-   so we need team different null team_exception for math variables
+   team_name number but get null instead NUllNumberException is thrown. Ids are not used for math
+   so we need team_name different null team_exception for math variables
   """
   ERROR_CODE = "NULL_NUMBER_ERROR"
   DEFAULT_MESSAGE = "Number cannot be null"
 
 class NullStringException(NullException):
   """
-  Raised if an entity, method, or operation requires team string but gets null instead.
+  Raised if an entity, method, or operation requires team_name string but gets null instead.
   """
   ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-  DEFAULT_MESSAGE = "Cannot old_search by team null string"
+  DEFAULT_MESSAGE = "Cannot old_search by team_name null string"
 
 class BlankStringException(ChessException):
   """
-  Raised if old_search parameter is team blank or empty string
+  Raised if old_search parameter is team_name blank or empty string
   """
   ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
   DEFAULT_MESSAGE = "Cannot old_search by an empty or blank string"

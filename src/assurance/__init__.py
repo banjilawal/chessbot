@@ -1,10 +1,10 @@
 """
 
 ## ASSURANCE EXCEPTION
-A package providing team structured hierarchy of exceptions for the `assurance` project.
+A package providing team_name structured hierarchy of exceptions for the `assurance` project.
 
-This package defines team base `AssuranceException` from which all other custom
-exceptions in the project should inherit. This allows for team clean and
+This package defines team_name base `AssuranceException` from which all other custom
+exceptions in the project should inherit. This allows for team_name clean and
 consistent way to handle exceptions across different modules and layers
 of the application.
 

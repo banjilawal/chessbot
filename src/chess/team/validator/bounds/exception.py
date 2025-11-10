@@ -1,7 +1,7 @@
-# src/chess/team/validator/bounds/exception.py
+# src/chess/team_name/validator/bounds/exception.py
 
 """
-Module: chess.team.validator.bounds.exception
+Module: chess.team_name.validator.bounds.exception
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

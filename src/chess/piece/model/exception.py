@@ -34,7 +34,7 @@ __all__ = [
 
 class PieceException(ChessException):
   """
-  Super class of all exceptions team Piece object raises. Do not use directly. Subclasses
+  Super class of all exceptions team_name Piece object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
   all owner exceptions
   """
@@ -50,11 +50,11 @@ class InvalidPieceException(PieceException, ValidationException):
 
 class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
   """
-  Raised if `owner.team` is null. Might indicate a consistency or build problem because `Piece.team` should
+  Raised if `owner.team_name` is null. Might indicate a consistency or build problem because `Piece.team_name` should
   never be null.
   """
   ERROR_CODE = "PIECE_TEAM_FIELD_NULL_ERROR"
-  DEFAULT_MESSAGE = "Piece.team consistency is null. It should never be null. There may be service inconsistency."
+  DEFAULT_MESSAGE = "Piece.team_name consistency is null. It should never be null. There may be service inconsistency."
 
 
 class PieceMissingCoordStackException(PieceException, InconsistencyException):
@@ -76,9 +76,9 @@ class PieceMissingDiscoveriesException(PieceException, InconsistencyException):
 
 
 class UnregisteredTeamMemberException(PieceException):
-  """Raised if piece has its team set but the owner is not on the roster."""
+  """Raised if piece has its team_name set but the owner is not on the roster."""
   ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "The piece has assigned itself a team. but is not listed on that team's roster."
+  DEFAULT_MESSAGE = "The piece has assigned itself a team_name. but is not listed on that team_name's roster."
 
 
 class PieceRosterNumberIsNullException(PieceException, NullException):
@@ -101,7 +101,7 @@ class PieceRankOutOfBoundsException(PieceException, NullException):
 # ======================# NULL PIECE EXCEPTIONS #======================#
 class NullPieceException(PieceException, NullException):
   """
-  Raised if an entity, method, or operation requires team owner but gets null instead.
+  Raised if an entity, method, or operation requires team_name owner but gets null instead.
   Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
   Do not throw NullAttackException. Raise NullKingPiece or NullCombatantPiece instead.
   they are more descriptive and better suited for debugging.
@@ -112,14 +112,14 @@ class NullPieceException(PieceException, NullException):
 
 class NullKingException(NullPieceException):
   """
-  Raised if team KingPiece is null. Raise NullCombatant instead of NullAttackException
+  Raised if team_name KingPiece is null. Raise NullCombatant instead of NullAttackException
   """
   ERROR_CODE = "NULL_KING_PIECE_ERROR"
   DEFAULT_MESSAGE = "KingPiece cannot be null."
 
 class NullCombatantException(NullPieceException):
   """
-  Raised if team CombatantPiece is null. Raise NullCombatant instead of NullAttackException
+  Raised if team_name CombatantPiece is null. Raise NullCombatant instead of NullAttackException
   """
   ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
   DEFAULT_MESSAGE = "CombatantPiece cannot be null."

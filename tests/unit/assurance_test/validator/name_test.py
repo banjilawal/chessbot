@@ -26,7 +26,7 @@ class NameValidatorTest(unittest.TestCase):
 
   def test_name_too_short_raises_exception(self):
     with self.assertRaises(NameValidationException) as ctx:
-      NameValidator.validate("team")
+      NameValidator.validate("team_name")
     self.assertIsInstance(ctx.exception.__cause__, ShortNameException)
 
 

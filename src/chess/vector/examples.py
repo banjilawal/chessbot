@@ -41,7 +41,7 @@ From `chess.vector`:
 #
 # Usage:
 #   ```python
-#   # Safe construction of team Vector instance if and only if the parameters meet specs
+#   # Safe construction of team_name Vector instance if and only if the parameters meet specs
 #   build_outcome = VectorBuilder.build(x=2, y=1)
 #   if not build_outcome.is_success():
 #     raise build_outcome.err
@@ -68,13 +68,13 @@ From `chess.vector`:
 # # """
 # """
 """
-Constructs team new `Vector` instance with comprehensive checks on the parameters and states during the
+Constructs team_name new `Vector` instance with comprehensive checks on the parameters and states during the
 build process.
 
 Performs individual validate checks on each component to ensure the resulting `Vector` meets all
-specifications. If all checks are passed, team `Vector` instance will be returned. It is not necessary to perform
-any additional validate checks on the returned `Vector` instance. This method guarantees if team `BuildResult`
-with team successful status is returned, the contained `Vector` is valid and ready for use.
+specifications. If all checks are passed, team_name `Vector` instance will be returned. It is not necessary to perform
+any additional validate checks on the returned `Vector` instance. This method guarantees if team_name `BuildResult`
+with team_name successful status is returned, the contained `Vector` is valid and ready for use.
 
 Args:
   `x` (`int`): The x-component of the vector. Must not be None and must be within 
@@ -97,7 +97,7 @@ Raises:
     * Any validate errors from `VectorValidator`
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team valid `Vector` is
+  The build runs through all the checks on parameters and state to guarantee only team_name valid `Vector` is
   created, while `VectorValidator` is used for validating `Vector` instances that are passed around after 
   creation. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -107,7 +107,7 @@ Example:
   from typing import cast
   from chess.vector import Vector, VectorBuilder
 
-  # Creates team valid vector
+  # Creates team_name valid vector
   build_outcome = VectorBuilder.build(x=2, y=1)
 
   if not build_outcome.is_success():
@@ -190,13 +190,13 @@ Example:
 
 # Validates that an existing `Vector` instance meets all specifications.
 #
-# Performs comprehensive validate on team `Vector` instance that already exists,
+# Performs comprehensive validate on team_name `Vector` instance that already exists,
 # checking type safety, null values, and component bounds. Unlike VectorBuilder
 # which creates new valid Vectors, this validator verifies existing `Vector`
 # instances from external sources, deserialization, or after modifications.
 #
 # Args:
-# candidate (Generic[T]): The object to validate, expected to be team Vector instance.
+# candidate (Generic[T]): The object to validate, expected to be team_name Vector instance.
 # Must not be None and must be within component bounds
 # [-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE].
 #
@@ -208,7 +208,7 @@ Example:
 # Raises:
 # InvalidVectorException: Wraps any specification violations including:
 # - NullVectorException: if input is None
-#     - TypeError: if input is not team Vector instance
+#     - TypeError: if input is not team_name Vector instance
 # - NullXComponentException: if Vector.x is None
 #     - NullYComponentException: if Vector.y is None
 #     - VectorBelowBoundsException: if x or y < -KNIGHT_STEP_SIZE
@@ -237,11 +237,11 @@ Example:
 #
 # ## PURPOSE
 # This package contains the foundational objects for vector arithmetic, handling transforms on
-# `Coord` objects. A `Vector` represents an offset that defines team path from team source to team
+# `Coord` objects. A `Vector` represents an offset that defines team_name path from team_name source to team_name
 # destination coordinate.
 #
 # ### CORE CLASSES
-# * `Vector`: An immutable class representing team two-dimensional offset.
+# * `Vector`: An immutable class representing team_name two-dimensional offset.
 # * `VectorValidator`: Provides validate for `Vector` objects to ensure service integrity.
 #
 # ### USAGE
@@ -249,10 +249,10 @@ Example:
 #
 # >>> from chess.vector import Vector, VectorValidator
 # >>>
-# >>> # Create and validate team vector instance
+# >>> # Create and validate team_name vector instance
 # >>> candidate = Vector(x=2, y=1)
 # >>>
-# >>> # Validator.validate returns team Result
+# >>> # Validator.validate returns team_name Result
 # >>> validate = VectorValidator.validate(candidate)
 # >>> if not validate.is_success():
 # >>>   raise validate.err
@@ -261,8 +261,8 @@ Example:
 #
 #
 # ## EXCEPTION CLASSES
-# This package defines team collection of specific exceptions for issues encountered when
-# working with `Vector` instances. The primary goal is to provide team clean and
+# This package defines team_name collection of specific exceptions for issues encountered when
+# working with `Vector` instances. The primary goal is to provide team_name clean and
 # consistent way to handle system vector-related errors, such as null values or
 # out-of-bounds components. This granular approach helps developers quickly
 # diagnose and resolve issues by pinpointing the exact nature of the problem.
@@ -283,7 +283,7 @@ Example:
 # >>> from chess.vector import Vector
 # >>>
 # >>> try:
-# ...   # This will raise team VectorBelowBoundsException
+# ...   # This will raise team_name VectorBelowBoundsException
 # ...   vector = Vector(x=-100, y=3)
 # ... except VectorBelowBoundsException as e:
 # ...   print(f'Error: {e}')
@@ -294,7 +294,7 @@ Example:
 # ... except NullXComponentException as e:
 # ...   print(f'Error: {e}')
 #
-# Classes, modules and functions that require team not-null `Vector` raise `NullVectorException`. A `Vector` cannot raise
+# Classes, modules and functions that require team_name not-null `Vector` raise `NullVectorException`. A `Vector` cannot raise
 # `NullVectorException` on itself.
 #
 # ---
@@ -322,10 +322,10 @@ Example:
 # ```
 # ---
 # """
-# # chess/team/__init__.py
+# # chess/team_name/__init__.py
 
 """
-# Module: `chess.team`
+# Module: `chess.team_name`
 # Author: Banji Lawal
 # Created: 2025-10-03
 # version: 1.0.0
@@ -333,59 +333,59 @@ Example:
 # A package providing core classes and utilities for managing chess teams.
 # 
 # ## PURPOSE
-# This package contains the foundational objects and logic for representing and managing chess teams. It defines the structure of team `Team`, maintains team roster of its `Piece` objects, and includes validate to ensure team correct configuration.
+# This package contains the foundational objects and logic for representing and managing chess teams. It defines the structure of team_name `Team`, maintains team_name roster of its `Piece` objects, and includes validate to ensure team_name correct configuration.
 # 
 # ## CORE CLASSES
-# * `Team`: A class representing team chess team.
-# * `TeamProfile`: A class that stores descriptive information for team team, such as its visitor_name and ID.
-#     Neccessary for constructing team team
-# * `TeamValidator`: A class that provides validate and sanity checks for team team's configuration.
+# * `Team`: A class representing team_name chess team_name.
+# * `TeamProfile`: A class that stores descriptive information for team_name team_name, such as its visitor_name and ID.
+#     Neccessary for constructing team_name team_name
+# * `TeamValidator`: A class that provides validate and sanity checks for team_name team_name's configuration.
 # 
 # ## USAGE
-# To use this package, import the desired classes and perform team-related operations.
+# To use this package, import the desired classes and perform team_name-related operations.
 # 
-# >>> from chess.team import Team, TeamSchema, TeamValidator
-# >>> # Create team new team and roster
-# >>> team = Team(visitor_team_id=1, commander=white_team_commander, schema=TeamSchema.WHITE)
-# >>> validate = TeamValidator.validate(team)
+# >>> from chess.team_name import Team, TeamSchema, TeamValidator
+# >>> # Create team_name new team_name and roster
+# >>> team_name = Team(visitor_team_id=1, commander=white_team_commander, schema=TeamSchema.WHITE)
+# >>> validate = TeamValidator.validate(team_name)
 # 
 # ## TEAM EXCEPTIONS
 # This package defines specific exceptions for issues encountered when interacting with `Team` objects.
-# The exceptions are designed to pinpoint the exact nature of an err, such as team null reference, team
+# The exceptions are designed to pinpoint the exact nature of an err, such as team_name null reference, team_name
 # failed notification, or an invalid configuration. This granular approach helps developers to quickly diagnose
-# and resolve team-related issues.
+# and resolve team_name-related issues.
 # 
 # ### CORE EXCEPTIONS
-# * `NullTeamException`: Raised when team `Team` reference is unexpectedly `None`.
-# * `AddTeamMemberException`: Raised when an attempt to add team discover to team team fails, for example, if the team is full.
-# * `InvalidTeamException`: Raised when team `Team` fails to meet its validate criteria.
-# * `RemoveCombatantException`: Raised when team discover cannot be removed from team team, for example, if the discover is not present.
-# * `InvalidTeamAssignmentException`: Raised when team `Team`'s properties conflict with another `Team`'s, such as having the same ID.
+# * `NullTeamException`: Raised when team_name `Team` reference is unexpectedly `None`.
+# * `AddTeamMemberException`: Raised when an attempt to add team_name discover to team_name team_name fails, for example, if the team_name is full.
+# * `InvalidTeamException`: Raised when team_name `Team` fails to meet its validate criteria.
+# * `RemoveCombatantException`: Raised when team_name discover cannot be removed from team_name team_name, for example, if the discover is not present.
+# * `InvalidTeamAssignmentException`: Raised when team_name `Team`'s properties conflict with another `Team`'s, such as having the same ID.
 # 
 # ### EXCEPTION USAGE EXAMPLES
-# These exceptions can be imported and raised from within the team-related code to enforce service integrity.
+# These exceptions can be imported and raised from within the team_name-related code to enforce service integrity.
 # 
-# >>> from chess.team import NullTeamException
+# >>> from chess.team_name import NullTeamException
 # >>>
-# >>> def check_team(team):
-# ...   if team is None:
-# ...     raise NullTeamException("Error: No team exists.")
+# >>> def check_team(team_name):
+# ...   if team_name is None:
+# ...     raise NullTeamException("Error: No team_name exists.")
 # ...
 # >>> check_team(None)
 # Traceback (most recent call last):
 #   ...
-# NullTeamException: Error: No team exists.
+# NullTeamException: Error: No team_name exists.
 # ---
 # 
 # A use case for the `AddTeamMemberException`.
-# >#>> from chess.team.team_exception import AddTeamMemberException
+# >#>> from chess.team_name.team_exception import AddTeamMemberException
 # >>>
-# >>> def add_piece(team, discover):
-# ...   if is discover.team.commander not team.commander:
-# ...     raise QUotaFullException("The discover is not on this team. Adding discover failed")
+# >>> def add_piece(team_name, discover):
+# ...   if is discover.team_name.commander not team_name.commander:
+# ...     raise QUotaFullException("The discover is not on this team_name. Adding discover failed")
 # Traceback (most recent call last):
 #   ...
-# AddTeamMemberException: The discover is not on this team. Adding discover faile.
+# AddTeamMemberException: The discover is not on this team_name. Adding discover faile.
 # 
 # ---
 # """

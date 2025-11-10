@@ -1,7 +1,7 @@
-# chess/rank/spec.py
+# chess/rank_name/spec.py
 
 """
-Module: chess.rank.spec
+Module: chess.rank_name.spec
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

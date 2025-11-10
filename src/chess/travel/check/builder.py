@@ -25,7 +25,7 @@ class CheckEventBuilder(Enum):
   Usage:
     ```python
     # Safe attackEvent creation with validate
-    build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, visitor_name="WN2", bounds=Knight(), team=white_team)
+    build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, visitor_name="WN2", bounds=Knight(), team_name=white_team)
     if not build_outcome.is_success():
       raise build_outcome.err
     attackEvent = build_outcome.payload
@@ -46,13 +46,13 @@ class CheckEventBuilder(Enum):
     context: ExecutionContext
   ) -> BuildResult[AttackEvent]:
     """
-    Constructs team new `KingCheckEvent` instance with comprehensive checks on the parameters and states during the
+    Constructs team_name new `KingCheckEvent` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `KingCheckEvent` meets all
-    specifications. If all checks are passed, team `KingCheckEvent` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `KingCheckEvent` instance. This method guarantees if team `BuildResult`
-    with team successful status is returned, the contained `KingCheckEvent` is valid and ready for use.
+    specifications. If all checks are passed, team_name `KingCheckEvent` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `KingCheckEvent` instance. This method guarantees if team_name `BuildResult`
+    with team_name successful status is returned, the contained `KingCheckEvent` is valid and ready for use.
 
     Args:
       `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidator` checks.
@@ -71,14 +71,14 @@ class CheckEventBuilder(Enum):
         * `InvalidIdException`: if `attackEvent_id` fails validate checks
         * `InvalidNameException`: if `visitor_name` fails validate checks
         * `InvalidRankException`: if `bounds` fails validate checks
-        * `InvalidTeamException`: if `team` fails validate checks
-        * `InvalidTeamAssignmentException`: If `attackEvent.team` is different from `team` parameter
-        * `FullRankQuotaException`: If the `team` has no empty slots for the `attackEvent.bounds`
-        * `FullRankQuotaException`: If `attackEvent.team` is equal to `team` parameter but `team.roster` still does
+        * `InvalidTeamException`: if `team_name` fails validate checks
+        * `InvalidTeamAssignmentException`: If `attackEvent.team_name` is different from `team_name` parameter
+        * `FullRankQuotaException`: If the `team_name` has no empty slots for the `attackEvent.bounds`
+        * `FullRankQuotaException`: If `attackEvent.team_name` is equal to `team_name` parameter but `team_name.roster` still does
           not have the attackEvent
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only team valid `KingCheckEvent` is
+      The build runs through all the checks on parameters and state to guarantee only team_name valid `KingCheckEvent` is
       created, while `AttackEventValidator` is used for validating `KingCheckEvent` instances that are passed around after
       creating. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.

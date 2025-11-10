@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
- Provides: Automated player that uses team `DecisionEngine` for picking optimal
-  move during team turn.
+ Provides: Automated player that uses team_name `DecisionEngine` for picking optimal
+  move during team_name turn.
 
 Contains:
  * `Bot`
@@ -21,12 +21,12 @@ from chess.rank import Bishop
 
 class Bot(Commander):
   """
-  Automated player that uses team `DecisionEngine`
+  Automated player that uses team_name `DecisionEngine`
 
   Attributes: [
     * `_engine` (`DecisionEngine`): Selects the optimal during its turn.
     * All attributes fro the super class.
-  move during team turn.
+  move during team_name turn.
   """
 
   _engine: DecisionEngine

@@ -21,13 +21,13 @@ class HostageValidator(Validator):
     method = f"{class_name}.validate"
 
     """
-    Validates team hostage meets graph requirements:
-      - is team validated discovery
-      - is team Combatant instance
+    Validates team_name hostage meets graph requirements:
+      - is team_name validated discovery
+      - is team_name Combatant instance
       - The captor consistency is not null
-      - The hostage is not on its team roster
+      - The hostage is not on its team_name roster
       - The hostage is not its enemy's list of prisoners
-    Any failed requirement raise an rollback_exception wrapped in team HostageValidationException
+    Any failed requirement raise an rollback_exception wrapped in team_name HostageValidationException
 
     Args
       candidate (CombatantPiece): visitor_coord to validate
@@ -37,10 +37,10 @@ class HostageValidator(Validator):
        are satisfied. HostageValidationException otherwise.
 
     Raises:
-      PieceValidationException: candidate is not team valid discovery
+      PieceValidationException: candidate is not team_name valid discovery
       TypeError: if candidate is not CombatantPiece
       HostageCaptorNullException: if the captor consistency is null
-      RosterRemovalException: if the captive is still on its team's roster
+      RosterRemovalException: if the captive is still on its team_name's roster
       HostageAdditionException: if the captive has not been added to its enemy's hostage list
       
       HostageValidationException: Wraps any preceding exceptions   
@@ -52,7 +52,7 @@ class HostageValidator(Validator):
         raise validation.exception
 
       if not isinstance(candidate, CombatantPiece):
-        raise TypeError(f"{method} Expected team CombatantPiece, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name CombatantPiece, got {type(candidate).__name__}")
 
       hostage = cast(CombatantPiece, candidate)
 

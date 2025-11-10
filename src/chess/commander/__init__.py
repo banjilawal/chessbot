@@ -8,14 +8,14 @@ Updated: 2025-10-04
 version: 1.0.0
 
 # PURPOSE
-Controls team `Team` instance by issuing movement commands to team `owner` in `Team.roster`.
- on the team.Commanders who play team team
+Controls team_name `Team` instance by issuing movement commands to team_name `owner` in `Team.roster`.
+ on the team_name.Commanders who play team_name team_name
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `Commander`: Abstract class.
   - `Human`: Concrete `subclass` of `Commander` people use.
-  - `Bot`: Concrete `subclass` of `Commander` that uses team `DecisionEngine`.
+  - `Bot`: Concrete `subclass` of `Commander` that uses team_name `DecisionEngine`.
   - `CommanderBuilder`: Builds new instances of `Commander`.
   - `CommanderValidator`: Performs validator and sanity checks on existing
       `Commander` instances. before they are used.

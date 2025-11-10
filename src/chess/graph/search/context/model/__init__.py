@@ -9,4 +9,4 @@ version: 1.0.0
 
 
 from .base import GraphSearchContext
-from .domain import GraphDomainSearchContext
+from .domain import GraphDomainFilter

@@ -21,8 +21,8 @@ SEARCH EXCEPTIONS:
   Exceptions raised by Search entities
 
 EXCEPTION CLASSES:
-  PieceNotFoundException: Raised when team discover is not found by BoardPieceSearch
-  SqaureNotFoundException: Raised when team sqaure is not found by SquareSearch
+  PieceNotFoundException: Raised when team_name discover is not found by BoardPieceSearch
+  SqaureNotFoundException: Raised when team_name sqaure is not found by SquareSearch
 
 USAGE:
   >>> from chess.old_search import BoardSearch  >>> from chess.old_search.team_exception import PieceNotFoundException

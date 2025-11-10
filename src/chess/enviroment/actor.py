@@ -33,7 +33,7 @@ Attributes:
   * `OccupationExecutor:` Main class responsible for executing travel directives.
   * `_attack_enemy`: Static method for processing attacks on enemy pieces.
   * `_run_scan`: Static method for handling discoveries on occupied squares.
-  * `_switch_squares`: Static method the transferring team owner to team different `Square`.
+  * `_switch_squares`: Static method the transferring team_name owner to team_name different `Square`.
 """
 class BoardActorValidator(Validator[Tuple[Piece, Board]]):
   """
@@ -78,7 +78,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
           NoInitialPlacementException(f"{method}: {NoInitialPlacementException.DEFAULT_MESSAGE}")
         )
 
-      # If the owner is not on its team roster it cannot be a TravelEvent actor_candidate. This might have been
+      # If the owner is not on its team_name roster it cannot be a TravelEvent actor_candidate. This might have been
       # checked by the PieceValidator
       team = actor.team
       if actor not in team.roster:

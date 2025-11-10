@@ -99,7 +99,7 @@ The major theme influencing the modules design are
  None
  """
 """
-Result of team notification that changes an entity's state.
+Result of team_name notification that changes an entity's state.
 
 Use factory methods to create instances:
 - TransactionResult.success()

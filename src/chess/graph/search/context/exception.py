@@ -35,7 +35,7 @@ class VisitorSearchContextException(SearchContextException):
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullVisitorSearchContextException(VisitorSearchContextException, NullException):
     """
-    Raised if an entity, method, or operation requires team visitorSearchContext but
+    Raised if an entity, method, or operation requires team_name visitorSearchContext but
     gets null instead.
     """
     ERROR_CODE = "NULL_SEARCH_VISITOR_CONTEXT_ERROR"
@@ -73,8 +73,8 @@ class TooManyVisitorSearchParamsException(VisitorSearchContextException):
 # #======================# VISITOR_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class VisitorSearchContextBuildFailedException(VisitorSearchContextException, BuildFailedException):
     """
-    Raised when VisitorSearchContextBuilder encounters an error while building team team.
-    Exists primarily to catch all exceptions raised build team new visitorSearchContext
+    Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
+    Exists primarily to catch all exceptions raised build team_name new visitorSearchContext
     """
     ERROR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "VisitorSearchContext build failed."

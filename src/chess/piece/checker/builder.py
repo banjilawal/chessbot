@@ -58,18 +58,18 @@ class DiscoveryBuilder(Enum):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Constructs team new `Checker` instance with comprehensive checks on the parameters and states during the
+    Constructs team_name new `Checker` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `Checker` meets all
-    specifications. If all checks are passed, team `Checker` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `Checker` instance. This method guarantees if team `BuildResult`
-    with team successful status is returned, the contained `Checker` is valid and ready for use.
+    specifications. If all checks are passed, team_name `Checker` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `Checker` instance. This method guarantees if team_name `BuildResult`
+    with team_name successful status is returned, the contained `Checker` is valid and ready for use.
 
 
     Args:
-      `actor_candidate`(`Piece`): The owner that is doing team blocking, or executing team move.
-      `discover`(`Piece`): The static owner the `actor_candidate` finds in team `square`.
+      `actor_candidate`(`Piece`): The owner that is doing team_name blocking, or executing team_name move.
+      `discover`(`Piece`): The static owner the `actor_candidate` finds in team_name `square`.
 
     Returns:
       BuildResult[Checker]: A `BuildResult` containing either:
@@ -83,7 +83,7 @@ class DiscoveryBuilder(Enum):
         * `AutoDiscoveryException`: if `actor_candidate` and `discover` are the same.
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only team valid `Checker` is
+      The build runs through all the checks on parameters and state to guarantee only team_name valid `Checker` is
       created, while `DiscoveryValidator` is used for validating `Checker` instances that are passed around after 
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.

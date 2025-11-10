@@ -37,7 +37,7 @@ class VisitationSearchContextException(ContextException):
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullVisitationSearchContextException(VisitationSearchContextException, NullException):
     """
-    Raised if an entity, method, or operation requires team visitationSearchContext but
+    Raised if an entity, method, or operation requires team_name visitationSearchContext but
     gets null instead.
     """
     ERROR_CODE = "NULL_SEARCH_VISITATION_CONTEXT_ERROR"
@@ -74,7 +74,7 @@ class TooManyVisitationSearchParamsException(VisitationSearchContextException):
 class VisitationRansomParamBoundsException(VisitationSearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
+  Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
   ERROR_CODE = "VISITATION_SEARCH_CONTEXT_RANSOM_BOUNDS_ERROR"
@@ -83,7 +83,7 @@ class VisitationRansomParamBoundsException(VisitationSearchContextException):
 class VisitationInvalidRankNameParamException(VisitationSearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
+  Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
   ERROR_CODE = "VISITATION_SEARCH_CONTEXT_RANK_NAME_ERROR"
@@ -93,8 +93,8 @@ class VisitationInvalidRankNameParamException(VisitationSearchContextException):
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class VisitationSearchContextBuildFailedException(VisitationSearchContextException, BuildFailedException):
     """
-    Raised when VisitationSearchContextBuilder encounters an error while building team team.
-    Exists primarily to catch all exceptions raised build team new visitationSearchContext
+    Raised when VisitationSearchContextBuilder encounters an error while building team_name team_name.
+    Exists primarily to catch all exceptions raised build team_name new visitationSearchContext
     """
     ERROR_CODE = "VISITATION_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "VisitationSearchContext build failed."

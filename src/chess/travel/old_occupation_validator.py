@@ -9,8 +9,8 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
     Validates an TravelEvent meets specifications:
       - Not null
       - `visitor_id` does not fail validator
-      - `actor_candidate` is team valid chess enemy
-      - `target` is team valid square
+      - `actor_candidate` is team_name valid chess enemy
+      - `target` is team_name valid square
     Any validate failure raises an `InvalidOccupationEventException`.
 
     Argument:

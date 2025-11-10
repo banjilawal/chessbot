@@ -9,7 +9,7 @@ class TeamBuilder:
 
   @staticmethod
   def build(owner: Commander, config: TeamSchema) -> Side:
-    print("build team got config", config)
+    print("build team_name got config", config)
     team = Side(
       side_id=id_emitter.team_id,
       letter=config.letter,
@@ -28,10 +28,10 @@ class TeamBuilder:
 #   teams: list[Team] = []
 #   for config in TeamConfig:
 #     commander = OwnerBuilder.build(id_emitter.commander_id)
-#     team = TeamBuilder.build(commander, config)
-#     print(team)
-#     if team not in teams:
-#       teams.append(team)
+#     team_name = TeamBuilder.build(commander, config)
+#     print(team_name)
+#     if team_name not in teams:
+#       teams.append(team_name)
 #   print(len(teams))
 #
 #   old_owwer = teams[0].commander
@@ -41,8 +41,8 @@ class TeamBuilder:
 #   teams[0].commander = OwnerBuilder.build(id_emitter.commander_id)
 #   print(teams[0])
 #
-#   team = TeamBuilder.build(old_owwer, TeamConfig.WHITE)
-#   print(team)
+#   team_name = TeamBuilder.build(old_owwer, TeamConfig.WHITE)
+#   print(team_name)
 #   print(old_owwer)
 #
 #

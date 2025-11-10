@@ -13,12 +13,12 @@ class CoordinateSBindingValidator(Validator):
     method = "CoordinateBindingSpecification.is_satisfied_by"
 
     """
-    Validates team CoordinateBinding meets specifications:
+    Validates team_name CoordinateBinding meets specifications:
       - square.occupant == chess_piece
       - chess_piece.coordinate_stack.current_coordinate() == square.visitor_coord
       - chess_piece_previous_square.occupant == null
       
-    If any notification fails their team_exception will be encapsulated in team CoordinateBindingValidationException
+    If any notification fails their team_exception will be encapsulated in team_name CoordinateBindingValidationException
 
     Args
       candidate (CoordinateBinding): coordinate_binding to validate
@@ -51,7 +51,7 @@ class CoordinateSBindingValidator(Validator):
         )
 
       if not isinstance(candidate, CoordinateBinding):
-        raise TypeError(f"{method} Expected team CoordinateBinding, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name CoordinateBinding, got {type(candidate).__name__}")
 
       coordinate_binding = cast(CoordinateBinding, candidate)
 

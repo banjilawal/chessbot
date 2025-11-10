@@ -16,14 +16,14 @@ class CoordStackValidator(Validator):
   @staticmethod
   def validate(candidate: CoordValidator) -> Result[CoordStack]:
     """
-    Validates team CoordStack meets requirements:
+    Validates team_name CoordStack meets requirements:
       - Not null
       - CoordStack.items is not null
-      - CoordStack.current_coordinate is null if the stack is empty, otherwise is team validated Coord
+      - CoordStack.current_coordinate is null if the stack is empty, otherwise is team_name validated Coord
       - if CoordStack.is_empty() is True then current_coordinate.size == 0
       - if CoordStack.is_empty() is False then current_coordinate is not null
       - If CoordStack.is_empty() then current_coordinate is null
-    Any failed requirement raise an rollback_exception wrapped in team CoordStackValidationException
+    Any failed requirement raise an rollback_exception wrapped in team_name CoordStackValidationException
 
     Validation tests do not change state so pushes and pops are:
       - Tested in unit tests
@@ -33,7 +33,7 @@ class CoordStackValidator(Validator):
       candidate (CoordStack): coordinate_stack to validate
 
      Returns:
-       Result[T]: Result instance containing team validated coordinate_stack as payload if validations
+       Result[T]: Result instance containing team_name validated coordinate_stack as payload if validations
        are satisfied, CoordStackValidationException otherwise.
 
     Raises:
@@ -54,7 +54,7 @@ class CoordStackValidator(Validator):
         )
 
       if not isinstance(candidate, CoordStack):
-        raise TypeError(f"{method} Expected team CoordStack, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name CoordStack, got {type(candidate).__name__}")
 
       coords = cast(CoordStack, candidate)
 

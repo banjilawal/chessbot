@@ -1,7 +1,7 @@
-# src/chess/rank/knight.py
+# src/chess/rank_name/knight.py
 
 """
-Module: chess.rank.knight
+Module: chess.rank_name.knight
 Author: Banji Lawal
 Created: 2025-07-25
 version: 1.0.0

@@ -1,6 +1,6 @@
-# src/chess/team/team.py
+# src/chess/team_name/team_name.py
 """
-Module: chess.team.team
+Module: chess.team_name.team_name
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -15,7 +15,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -38,7 +38,7 @@ From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
     `IdValidator`, `NameValidator`
 
-From `chess.team`:
+From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.commander`:
@@ -133,10 +133,10 @@ class TeamRosterSearch(Search[Team, Piece]):
       """
       IDs should be unique. Faster old_search would return the first consistency. An easy
       integrity check finds all the items with the same visitor_id. If there is more than
-      one raise team `DuplicateUniqueIdException`.
+      one raise team_name `DuplicateUniqueIdException`.
 
       Performance Impact:
-      The set of roster will never exceed 15 so this is not going to be team really
+      The set of roster will never exceed 15 so this is not going to be team_name really
       burdensome old_search.
       """
       method = "TeamRosterSearch._id_search"

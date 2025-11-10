@@ -1,7 +1,7 @@
-# src/chess/team/builder.py
+# src/chess/team_name/builder.py
 
 """
-Module: chess.team.builder
+Module: chess.team_name.builder
 Author: Banji Lawal
 Created: 2025-09-04
 Updated: 2025-10-08
@@ -38,7 +38,7 @@ class TeamBuilder(Builder[Team]):
 
     PARAMETERS:
         * `commander` (`Commander`): owner of `Team` object.
-        * `schema` (`iTeamSchema`): Spec about the team's color, starting squares etc.
+        * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
 
     RETURNS:
     `BuildResult[Team]`: A `BuildResult` containing either:

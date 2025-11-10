@@ -8,10 +8,10 @@ from chess.commander import Commander, NullCommanderException, InvalidCommanderE
 
 class CommanderValidator(Validator):
   """
-  Validates an Commander used in team graph module meets requirements:
+  Validates an Commander used in team_name graph module meets requirements:
     - Is not null.
     - Its fields meet the specifications for the graph.
-  Unmet requirements will raise team InvalidCommanderException
+  Unmet requirements will raise team_name InvalidCommanderException
 
   For performance and single source of truth CommanderValidator has:
     - No fields
@@ -26,12 +26,12 @@ class CommanderValidator(Validator):
     method = f"{class_name}.validate"
 
     """
-    Validates team commander meets graph requirements:
+    Validates team_name commander meets graph requirements:
       - Not null
       - valid visitor_id
       - valid visitor_name
       - Commander.team_history meets validator requirements
-    Any failed requirement raise an rollback_exception wrapped in team InvalidCommanderException
+    Any failed requirement raise an rollback_exception wrapped in team_name InvalidCommanderException
       
     Args
       candidate (Commander): commander to validate
@@ -55,7 +55,7 @@ class CommanderValidator(Validator):
 
     try:
       """
-      Tests are chained in this specific order for team reason.
+      Tests are chained in this specific order for team_name reason.
       """
 
       # If candidate is null no point continuing
@@ -65,7 +65,7 @@ class CommanderValidator(Validator):
       # If cannot cast from candidate to Commander need to break
       from chess.commander import Commander
       if not isinstance(candidate, Commander):
-        raise TypeError(f"{method} Expected team Commander, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name Commander, got {type(candidate).__name__}")
 
       # cast and run checks for the fields
       from chess.commander import Commander

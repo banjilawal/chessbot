@@ -13,7 +13,7 @@ falls to the `BoardSearchContextValidator` and `PieceSearchContextBuilder`proces
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
+**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `PieceSearchContextException`). This enables precise error
@@ -69,7 +69,7 @@ class PieceSearchContextException(ContextException):
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullPieceSearchContextException(PieceSearchContextException, NullException):
     """
-    Raised if an entity, method, or operation requires team pieceSearchContext but
+    Raised if an entity, method, or operation requires team_name pieceSearchContext but
     gets null instead.
     """
     ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
@@ -104,8 +104,8 @@ class PieceSearchContextMaxParamCountException(PieceSearchContextException):
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class PieceSearchContextBuildFailedException(PieceSearchContextException, BuildFailedException):
     """
-    Raised when PieceSearchContextBuilder encounters an error while building team team.
-    Exists primarily to catch all exceptions raised build team new pieceSearchContext
+    Raised when PieceSearchContextBuilder encounters an error while building team_name team_name.
+    Exists primarily to catch all exceptions raised build team_name new pieceSearchContext
     """
     ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "BoardSearchContext build failed."
@@ -113,7 +113,7 @@ class PieceSearchContextBuildFailedException(PieceSearchContextException, BuildF
 class RansomOutOfBoundsException(PieceSearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
+  Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
   ERROR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_ERROR"

@@ -1,7 +1,7 @@
-# src/chess/rank/rook.py
+# src/chess/rank_name/rook.py
 
 """
-Module: chess.rank.rook
+Module: chess.rank_name.rook
 Author: Banji Lawal
 Created: 2025-07-28
 version: 1.0.0

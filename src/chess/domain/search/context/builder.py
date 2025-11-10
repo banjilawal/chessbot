@@ -13,90 +13,90 @@ from chess.rank import RankBoundsChecker
 from chess.coord import Coord, CoordValidator
 from chess.system import Builder, BuildResult, IdValidator, LoggingLevelRouter, NameValidator
 from chess.domain import (
-    VisitorSearchContext, TooManyVisitorSearchParamsException, NoVisitorSearchParamException
+    ResidentFilter, TooManyResidentSearchParamsException, NoResidentSearchParamException
 )
 
 
-class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
+class ResidentFilterBuilder(Builder[ResidentFilter]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            visitor_id: Optional[int] = None,
-            visitor_name: Optional[str] = None,
-            visitor_ransom: Optional[int] = None,
-            visitor_coord: Optional[Coord] = None,
-            visitor_rank: Optional[str] = None,
-            visitor_team_id: Optional[id] = None,
-            visitor_team: Optional[str] = None
-    ) -> BuildResult[VisitorSearchContext]:
+            id: Optional[int] = None,
+            name: Optional[str] = None,
+            ransom: Optional[int] = None,
+            coord: Optional[Coord] = None,
+            rank_name: Optional[str] = None,
+            team_id: Optional[id] = None,
+            team_name: Optional[str] = None
+    ) -> BuildResult[ResidentFilter]:
         """"""
-        method = "VisitorSearchContextBuilder.build"
+        method = "ResidentFilterBuilder.build"
         
         try:
             params = [
-                visitor_name, visitor_ransom, visitor_id, visitor_team_id, visitor_team, visitor_rank, visitor_coord
+                name, ransom, id, team_id, team_name, rank_name, coord
             ]
             param_count = sum(bool(p) for p in params)
             
             if param_count == 0:
                 return BuildResult.failure(
-                    NoVisitorSearchParamException(f"{method}: {NoVisitorSearchParamException.DEFAULT_MESSAGE}")
+                    NoResidentSearchParamException(f"{method}: {NoResidentSearchParamException.DEFAULT_MESSAGE}")
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyVisitorSearchParamsException(
-                        f"{method}: {TooManyVisitorSearchParamsException.DEFAULT_MESSAGE}"
+                    TooManyResidentSearchParamsException(
+                        f"{method}: {TooManyResidentSearchParamsException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if visitor_id is not None:
-                id_validation = IdValidator.validate(visitor_id)
+            if id is not None:
+                id_validation = IdValidator.validate(id)
                 if not id_validation.is_failure():
                     return BuildResult.result(id_validation.exception)
             
-            if visitor_name is not None:
-                name_validation = NameValidator.validate(visitor_name)
+            if name is not None:
+                name_validation = NameValidator.validate(name)
                 if name_validation.is_failure():
                     return BuildResult.failure(name_validation.exception)
             
-            if visitor_team_id is not None:
-                team_id_validation = IdValidator.validate(visitor_team_id)
+            if team_id is not None:
+                team_id_validation = IdValidator.validate(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult.failure(team_id_validation.exception)
             
-            if visitor_team is not None:
-                team_name_validation = NameValidator.validate(visitor_team)
+            if team_name is not None:
+                team_name_validation = NameValidator.validate(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
             
-            if visitor_rank is not None:
-                rank_name_bounds = RankBoundsChecker.name_bounds_check(visitor_rank.upper())
+            if rank_name is not None:
+                rank_name_bounds = RankBoundsChecker.name_bounds_check(rank_name.upper())
                 if rank_name_bounds.is_failure():
                     return BuildResult.failure(rank_name_bounds.exception)
             
-            if visitor_ransom is not None:
-                ransom_bounds_check = RankBoundsChecker.ransom_bounds_check(visitor_ransom)
+            if ransom is not None:
+                ransom_bounds_check = RankBoundsChecker.ransom_bounds_check(ransom)
                 if ransom_bounds_check.is_failure():
                     return BuildResult.failure(ransom_bounds_check.exception)
             
-            if visitor_coord is not None:
-                coord_validation = CoordValidator.validate(visitor_coord)
+            if coord is not None:
+                coord_validation = CoordValidator.validate(coord)
                 if coord_validation.is_failure():
                     return BuildResult.failure(coord_validation.exception)
             
             return BuildResult.success(
-                VisitorSearchContext(
-                    visitor_id=visitor_id,
-                    visitor_name=visitor_name,
-                    visitor_coord=visitor_coord,
-                    visitor_ransom=visitor_ransom,
-                    visitor_team_id=visitor_team_id,
-                    visitor_team=visitor_team,
-                    visitor_rank=visitor_rank
+                ResidentFilter(
+                    id=id,
+                    name=name,
+                    coord=coord,
+                    ransom=ransom,
+                    team_id=team_id,
+                    team=team_name,
+                    rank=rank_name
                 )
             )
         except Exception as e:

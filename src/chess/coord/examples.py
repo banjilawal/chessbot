@@ -1,5 +1,5 @@
 """
-Coord is team tuple of the row, and column indices of the 2x2 array which makes up team
+Coord is team_name tuple of the row, and column indices of the 2x2 array which makes up team_name
 ChessBoard. All fields are immutable.
 
 Attributes:
@@ -25,7 +25,7 @@ Usage:
   if not Coord_validation.is_success():
     raise Coord_validation.err
 
-  # Cast the payload to team Coord instance to make sure it will work correctly and to avoid type or
+  # Cast the payload to team_name Coord instance to make sure it will work correctly and to avoid type or
   # null errors that might be difficult to detect.
   Coord = cast(Coord, Coord_validation.payload)
   ```
@@ -34,12 +34,12 @@ Use `CoordBuilder` for construction, `CoordValidator` for verification.
 """
 """
 Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validate
-on team `Coord` instance that already exists, checking type safety, null values, and component bounds.
+on team_name `Coord` instance that already exists, checking type safety, null values, and component bounds.
 Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies existing `Coord`
 instances from external sources, deserialization, or after modifications.
 
 Args:
-candidate (Generic[T]): The object to validate, expected to be team Coord instance.
+candidate (Generic[T]): The object to validate, expected to be team_name Coord instance.
 
 Returns:
 Result[Coord]: A Result containing either:
@@ -49,7 +49,7 @@ Result[Coord]: A Result containing either:
 Raises:
 InvalidCoordException: Wraps any specification violations including:
   - NullCoordException: if input is None
-  - TypeError: if input is not team Coord instance
+  - TypeError: if input is not team_name Coord instance
   - NullXComponentException: if Coord.x is None
   - RowBelowBoundsException: If visitor_coord.row < 0
   - RowAboveBoundsException: If visitor_coord.row >= ROW_SIZE
@@ -118,7 +118,7 @@ Verify the `candidate` is a valid ID. The Application requires
     * `NegativeIdException`: if candidate is negative `
 """
 """
-Constructs team new `Coord` that works correctly.
+Constructs team_name new `Coord` that works correctly.
 
 Args:
   `row` (`int`):.

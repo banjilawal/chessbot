@@ -58,13 +58,13 @@ class ScalarBuilder(Builder[Scalar]):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Constructs team new `Scalar` instance with comprehensive checks on the parameters and states during the
+    Constructs team_name new `Scalar` instance with comprehensive checks on the parameters and states during the
     build process.
 
     Performs individual validate checks on each component to ensure the resulting `Scalar` meets all
-    specifications. If all checks are passed, team `Scalar` instance will be returned. It is not necessary to perform
-    any additional validate checks on the returned `Scalar` instance. This method guarantees if team `BuildResult`
-    with team successful status is returned, the contained `Scalar` is valid and ready for use.
+    specifications. If all checks are passed, team_name `Scalar` instance will be returned. It is not necessary to perform
+    any additional validate checks on the returned `Scalar` instance. This method guarantees if team_name `BuildResult`
+    with team_name successful status is returned, the contained `Scalar` is valid and ready for use.
 
     Args:
       `scalar_id`(`int`): The unique visitor_id for the scalar. Must pass `IdValidator` checks.
@@ -89,7 +89,7 @@ class ScalarBuilder(Builder[Scalar]):
         * `InvalidScalarException`: Wraps any preceding exceptions
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only team valid `Scalar` is
+      The build runs through all the checks on parameters and state to guarantee only team_name valid `Scalar` is
       created, while `ScalarValidator` is used for validating `Scalar` instances that are passed around after
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.

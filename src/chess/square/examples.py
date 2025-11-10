@@ -25,18 +25,18 @@ See Also:
 """
 method = "VectorBuilder.build"
 """
-Constructs team new `Square` instance with comprehensive checks on the parameters and states during the
+Constructs team_name new `Square` instance with comprehensive checks on the parameters and states during the
 build process.
 
 Performs individual validate checks on each component to ensure the resulting `Square` meets all
-specifications. If all checks are passed, team `Square` instance will be returned. It is not necessary to perform
-any additional validate checks on the returned `Square` instance. This method guarantees if team `BuildResult`
-with team successful status is returned, the contained `Square` is valid and ready for use.
+specifications. If all checks are passed, team_name `Square` instance will be returned. It is not necessary to perform
+any additional validate checks on the returned `Square` instance. This method guarantees if team_name `BuildResult`
+with team_name successful status is returned, the contained `Square` is valid and ready for use.
 
 Args:
   `discovery_id` (`int`): The unique visitor_id for the owner. Must pass `IdValidator` checks.
   `visitor_name` (`Name`): Must pass `NameValidator` checks.
-  `visitor_coord` (`Coord`): Where `Square` is located on team `Board`. Must pass `CoordValidator` checks.
+  `visitor_coord` (`Coord`): Where `Square` is located on team_name `Board`. Must pass `CoordValidator` checks.
 
 Returns:
   BuildResult[Square]: A `BuildResult` containing either:
@@ -52,7 +52,7 @@ Raises:
     * `SquareBuildFailedException`: for any other construction failures
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team valid `Square` is
+  The build runs through all the checks on parameters and state to guarantee only team_name valid `Square` is
   created, while `SquareValidator` is used for validating `Square` instances that are passed around after
   creation. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -74,12 +74,12 @@ Example:
 #
 # ## PURPOSE
 # This package provides foundational objects for the chess board_validator. It defines the `Square` class,
-# which serves as team service container for storing team discover's location, and team `SquareValidator` to ensure
+# which serves as team_name service container for storing team_name discover's location, and team_name `SquareValidator` to ensure
 # the integrity of square objects.
 #
 # ## CORE CLASSES
-# * `Square`: A service-holding object representing team single square on team chessboard.
-# * `SquareValidator`: A class that validates the service and integrity of team `Square` object.
+# * `Square`: A service-holding object representing team_name single square on team_name chessboard.
+# * `SquareValidator`: A class that validates the service and integrity of team_name `Square` object.
 #
 # ## USAGE
 # To use this package, import the desired classes and perform square-related operations.
@@ -89,7 +89,7 @@ Example:
 # >>> from chess.owner import Piece
 # >>>
 # >>>
-# >>> # Build team new Square at Coord(2, 1)
+# >>> # Build team_name new Square at Coord(2, 1)
 # >>> visitor_coord = Coord(row=2, column=1)
 # >>> build_outcome = SquareBuilder.build(visitor_id=1, visitor_name="B2", visitor_coord=visitor_coord)
 # >>> if not build_outcome.is_success():
@@ -119,9 +119,9 @@ Use `SquareBuilder` for construction, `SquareValidator` for verification.
 """
 """
 Validates that an existing `Square` instance meets specifications.
-This method performs team series of checks on team Square instance, ensuring it is not null and that
+This method performs team_name series of checks on team_name Square instance, ensuring it is not null and that
 its ID, visitor_name, and coordinate are valid. Exceptions from these checks are caught and re-raised
-as team `InvalidSquareException`, providing team clean and consistent err-handling experience.
+as team_name `InvalidSquareException`, providing team_name clean and consistent err-handling experience.
 
 Args
   `candidate` (`Square`): `Square` instance to validate
@@ -139,9 +139,9 @@ Raises:
   `InvalidSquareException`: Wraps any preceding exceptions
 """
 
-"""A service-holding object representing team single square on team chessboard.
+"""A service-holding object representing team_name single square on team_name chessboard.
 
-A `Square` can store team `Piece` object. All fields are immutable except for
+A `Square` can store team_name `Piece` object. All fields are immutable except for
 the `occupant`, which is managed by the `ChessBoard`.
 
 Attributes:

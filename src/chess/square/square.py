@@ -121,6 +121,6 @@ class Square:
 
 
   def __str__(self) -> str:
-    """Returns team string representation of the Square."""
+    """Returns team_name string representation of the Square."""
     occupant_str = f" occupant:{self._occupant.name}" if self._occupant else ""
     return f"Square:[{self._id} {self._name} {self._coord}{occupant_str}]"

@@ -49,7 +49,7 @@ class BoardBuilder(Builder[Board]):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Constructs team new `Board` that works correctly.
+    Constructs team_name new `Board` that works correctly.
 
     Args:
       None

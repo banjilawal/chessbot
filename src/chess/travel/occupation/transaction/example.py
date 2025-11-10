@@ -12,7 +12,7 @@ meets all required specifications before construction completes
 Usage:
   ```python
   # Safe attackEvent creation with validate
-  build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, visitor_name="WN2", bounds=Knight(), team=white_team)
+  build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, visitor_name="WN2", bounds=Knight(), team_name=white_team)
   if not build_outcome.is_success():
     raise build_outcome.err
   attackEvent = build_outcome.payload
@@ -24,13 +24,13 @@ See Also:
   `BuildResult`: Return type containing the built `KingCheckEvent` or error information
 """
 """
-Constructs team new `KingCheckEvent` instance with comprehensive checks on the parameters and states during the
+Constructs team_name new `KingCheckEvent` instance with comprehensive checks on the parameters and states during the
 build process.
 
 Performs individual validate checks on each component to ensure the resulting `KingCheckEvent` meets all
-specifications. If all checks are passed, team `KingCheckEvent` instance will be returned. It is not necessary to perform
-any additional validate checks on the returned `KingCheckEvent` instance. This method guarantees if team `BuildResult`
-with team successful status is returned, the contained `KingCheckEvent` is valid and ready for use.
+specifications. If all checks are passed, team_name `KingCheckEvent` instance will be returned. It is not necessary to perform
+any additional validate checks on the returned `KingCheckEvent` instance. This method guarantees if team_name `BuildResult`
+with team_name successful status is returned, the contained `KingCheckEvent` is valid and ready for use.
 
 Args:
   `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidator` checks.
@@ -49,14 +49,14 @@ Raises:
     * `InvalidIdException`: if `attackEvent_id` fails validate checks
     * `InvalidNameException`: if `visitor_name` fails validate checks
     * `InvalidRankException`: if `bounds` fails validate checks
-    * `InvalidTeamException`: if `team` fails validate checks
-    * `InvalidTeamAssignmentException`: If `attackEvent.team` is different from `team` parameter
-    * `FullRankQuotaException`: If the `team` has no empty slots for the `attackEvent.bounds`
-    * `FullRankQuotaException`: If `attackEvent.team` is equal to `team` parameter but `team.roster` still does
+    * `InvalidTeamException`: if `team_name` fails validate checks
+    * `InvalidTeamAssignmentException`: If `attackEvent.team_name` is different from `team_name` parameter
+    * `FullRankQuotaException`: If the `team_name` has no empty slots for the `attackEvent.bounds`
+    * `FullRankQuotaException`: If `attackEvent.team_name` is equal to `team_name` parameter but `team_name.roster` still does
       not have the attackEvent
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team valid `KingCheckEvent` is
+  The build runs through all the checks on parameters and state to guarantee only team_name valid `KingCheckEvent` is
   created, while `AttackEventValidator` is used for validating `KingCheckEvent` instances that are passed around after
   creating. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -190,8 +190,8 @@ Example:
 #       )
 #     )
 #
-#   travel.enemy.team.roster.remove(travel.enemy)
-#   if travel.enemy in travel.enemy.team.roster:
+#   travel.enemy.team_name.roster.remove(travel.enemy)
+#   if travel.enemy in travel.enemy.team_name.roster:
 #     # Rollback all changes in reverse order
 #     travel.enemy.captor = None
 #
@@ -204,10 +204,10 @@ Example:
 #       )
 #     )
 #
-#   travel.traveler.team.hostages.append(travel.enemy)
-#   if travel.enemy not in travel.traveler.team.hostages:
+#   travel.traveler.team_name.hostages.append(travel.enemy)
+#   if travel.enemy not in travel.traveler.team_name.hostages:
 #     # Rollback all changes in reverse order
-#     travel.enemy.team.add_to_roster(travel.enemy)
+#     travel.enemy.team_name.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
 #     # Send the notification indicating rollback
@@ -222,8 +222,8 @@ Example:
 #   travel.board.pieces.remove(travel.enemy)
 #   if travel.enemy in travel.board.pieces:
 #     # Rollback all changes in reverse order
-#     travel.traveler.team.hostages.remove(travel.enemy)
-#     travel.enemy.team.add_to_roster(travel.enemy)
+#     travel.traveler.team_name.hostages.remove(travel.enemy)
+#     travel.enemy.team_name.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
 #     # Send the notification indicating rollback
@@ -239,8 +239,8 @@ Example:
 #   if not travel.enemy_square.occupant is None:
 #     # Rollback all changes in reverse order
 #     travel.board.pieces.add(travel.enemy_square.occupant)
-#     travel.traveler.team.hostages.remove(travel.enemy)
-#     travel.enemy.team.add_to_roster(travel.enemy)
+#     travel.traveler.team_name.hostages.remove(travel.enemy)
+#     travel.enemy.team_name.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
 #     # Send the notification indicating rollback
@@ -263,8 +263,8 @@ Example:
 #   travel.friend.occupant = None
 #   if travel.friend.occupant is not None:
 #     # Rollback all changes in reverse order
-#     travel.traveler.team.hostages.remove(travel.enemy)
-#     travel.enemy.team.add_to_roster(travel.enemy)
+#     travel.traveler.team_name.hostages.remove(travel.enemy)
+#     travel.enemy.team_name.add_to_roster(travel.enemy)
 #     travel.enemy.captor = None
 #
 #     # Send the notification indicating rollback
@@ -324,8 +324,8 @@ Example:
 # @staticmethod
 # def _run_scan(op_result_id :int, travel: ScanEvent) -> TransactionResult:
 #   """
-#   Creates team new `Checker` object for travel.actor_candidate which is blocking from moving to
-#   `blocked_square` by `travel.enemy`. The enemy is either team friendly owner or an enemy `KingPiece`.
+#   Creates team_name new `Checker` object for travel.actor_candidate which is blocking from moving to
+#   `blocked_square` by `travel.enemy`. The enemy is either team_name friendly owner or an enemy `KingPiece`.
 #   `OccupationExecutor.execute_event` is the single entry point to `_run_scan`. Validations, error chains
 #   confirmed parameters ar are correct. No additional sanity checks are needed.
 #
@@ -336,7 +336,7 @@ Example:
 #   Returns:
 #   `OccupationResult` containing:
 #     - On success: A new `BlockingEvent` object that containing updated `actor_candidate`. Observer will have
-#       team new `Checker` instance inside `actor_candidate.discoveries`.
+#       team_name new `Checker` instance inside `actor_candidate.discoveries`.
 #     - On failure: The original `BlockingEvent` for verifying any rollbacks succeeded and the err
 #       describing the failure.
 #
@@ -530,7 +530,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #
 # #=== ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
 # class NullAttackEventException(AttackEventException, NullException):
-#   """Raised by methods, entities, and models that require team KingCheckEvent but receive team null."""
+#   """Raised by methods, entities, and models that require team_name KingCheckEvent but receive team_name null."""
 #   ERROR_CODE = "NULL_EVENT_ERROR"
 #   DEFAULT_MESSAGE = "KingCheckEvent cannot be null"
 #
@@ -547,7 +547,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   during build.
 #   """
 #   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
-#   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team KingCheckEvent"
+#   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team_name KingCheckEvent"
 #
 #
 # #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#

@@ -132,16 +132,16 @@ class InvalidTeamException(TeamException, ValidationException):
 
 
 class TeamCommanderInconsistencyException(TeamException):
-  """Raised if piece has its team set but the owner is not on the roster."""
+  """Raised if piece has its team_name set but the owner is not on the roster."""
   ERROR_CODE = "TEAM_COMMANDER_INCONSISTENCY_ERROR"
-  DEFAULT_MESSAGE = "The team has assigned itself to a commander but the Commander has no record of the team."
+  DEFAULT_MESSAGE = "The team_name has assigned itself to a commander but the Commander has no record of the team_name."
 
 
 #======================# TEAM BUILD EXCEPTIONS #======================#  
 class TeamBuildFailedException(TeamException, BuildFailedException):
   """
   Raised when TeamBuilder encounters an error while building `Team`. Exists primarily to
-  catch all exceptions raised building team new team
+  catch all exceptions raised building team_name new team_name
   """
   ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Team build failed."
@@ -149,63 +149,63 @@ class TeamBuildFailedException(TeamException, BuildFailedException):
 
 #======================# TEAM MEMBER LIST EXCEPTIONS #======================#  
 class TeamRosterException(TeamException):
-  """Raised for errors on team's roster"""
+  """Raised for errors on team_name's roster"""
   ERROR_CODE = "TEAM_ROSTER_ERROR"
   DEFAULT_MESSAGE = "Team roster raised an rollback_exception."
 
 class AddTeamMemberException(TeamRosterException):
-  """Raised if owner could not be added to the team's roster"""
+  """Raised if owner could not be added to the team_name's roster"""
   ERROR_CODE = "ADD_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "Could not add owner to team's roster."
+  DEFAULT_MESSAGE = "Could not add owner to team_name's roster."
 
 class AddEnemyToRosterException(TeamRosterException):
-  """Attempting to add an enemy to the team's roster raises an rollback_exception."""
+  """Attempting to add an enemy to the team_name's roster raises an rollback_exception."""
   ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR"
-  DEFAULT_MESSAGE = "An enemy owner cannot be added to the team's roster."
+  DEFAULT_MESSAGE = "An enemy owner cannot be added to the team_name's roster."
 
 class RemoveTeamMemberException(TeamRosterException):
-  """Raised if owner could not be removed from the team's roster"""
+  """Raised if owner could not be removed from the team_name's roster"""
   ERROR_CODE = "REMOVE_TEAM_MEMBER_ERROR"
-  DEFAULT_MESSAGE = "Could not remove team owner to team's roster."
+  DEFAULT_MESSAGE = "Could not remove team_name owner to team_name's roster."
 
 class FullRankQuotaException(TeamRosterException):
-  """Raised if the team has not empty slots for the owner's bounds."""
+  """Raised if the team_name has not empty slots for the owner's bounds."""
   ERROR_CODE = "FULL_RANK_QUOTA_ERROR"
-  DEFAULT_MESSAGE = "The team has no empty slots for the owner's bounds."
+  DEFAULT_MESSAGE = "The team_name has no empty slots for the owner's bounds."
 
 class ConflictingTeamAssignmentException(TeamRosterException):
   """
-  If team owner that's already on one team (owner.team == not None) tries joining
+  If team_name owner that's already on one team_name (owner.team_name == not None) tries joining
   another InvalidTeamAssignmentException is raised.
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR"
-  DEFAULT_MESSAGE = "Piece is already assigned to team team."
+  DEFAULT_MESSAGE = "Piece is already assigned to team_name team_name."
 
 
 #======================# TEAM MEMBER LIST EXCEPTIONS WITH ROLLBACK #======================#  
 class TeamRosterRollBackException(TeamRosterException, RollbackException):
-  """Raised for errors on team's roster that are raised after rollback."""
+  """Raised for errors on team_name's roster that are raised after rollback."""
   ERROR_CODE = "TEAM_ROSTER_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Team roster raised an rollback_exception. Transaction rollback performed."
 
 class AddTeamMemberRolledBackException(TeamRosterRollBackException):
   """
-  Raised if team notification failed to add team owner could to the team's roster; then the
+  Raised if team_name notification failed to add team_name owner could to the team_name's roster; then the
   notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_TEAM_MEMBER_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Adding owner to team's roster failed. Transaction rollback performed."
+    "Adding owner to team_name's roster failed. Transaction rollback performed."
   )
 
 class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
   """
-  Raised if team notification attempted to add an enemy to the team's roster.
+  Raised if team_name notification attempted to add an enemy to the team_name's roster.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_TO_ROSTER_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Caught attempt to add an enemy owner to the team's roster Transaction "
+    "Caught attempt to add an enemy owner to the team_name's roster Transaction "
     "rollback performed."
   )
 
@@ -213,27 +213,27 @@ class AddEnemyToRosterRolledBackException(TeamRosterRollBackException):
 
 class FullRankQuotaRolledBackException(TeamRosterRollBackException):
   """
-  Raised if team notification failed could not add team owner because there were no empty slots
+  Raised if team_name notification failed could not add team_name owner because there were no empty slots
   for the owner's bounds. The notification was rolled back before raising this err.
   """
   ERROR_CODE = "FULL_RANK_QUOTA_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "The team has no empty slots for the owner's bounds. Transaction rollback performed."
+    "The team_name has no empty slots for the owner's bounds. Transaction rollback performed."
   )
 
 class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
   """
-  Raised if team notification tries to assign team owner to team different team's roster.
+  Raised if team_name notification tries to assign team_name owner to team_name different team_name's roster.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Piece is already assigned to team team. Transaction rollback performed."
+    "Piece is already assigned to team_name team_name. Transaction rollback performed."
   )
 
 #======================# HOSTAGE LIST EXCEPTIONS #======================#  
 class TeamHostageListException(TeamException):
-  """Raised on errors with team's hostage list"""
+  """Raised on errors with team_name's hostage list"""
   ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
   DEFAULT_MESSAGE = "Team hostage list raised an rollback_exception."
 
@@ -244,27 +244,27 @@ class InconsistentHostageEntry(TeamHostageListException):
   DEFAULT_MESSAGE = "An enemy with no captor is in the hostage list. There may be inconsistent service."
 
 class InvalidFriendlyHostageException(TeamHostageListException):
-  """Attempting to team friendly to the hostage list raises an rollback_exception."""
+  """Attempting to team_name friendly to the hostage list raises an rollback_exception."""
   ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "A friendly owner cannot be added to the team's hostage list"
+  DEFAULT_MESSAGE = "A friendly owner cannot be added to the team_name's hostage list"
 
 class AddEnemyHostageException(TeamHostageListException):
-  """Raised if team owner could not be added to the team's hostage list"""
+  """Raised if team_name owner could not be added to the team_name's hostage list"""
   ERROR_CODE = "ADD_ENEMY_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Could not add an enemy owner to the team's hostage list"
+  DEFAULT_MESSAGE = "Could not add an enemy owner to the team_name's hostage list"
 
 class AddEnemyKingHostageException(TeamHostageListException):
   """Attempting to an enemy occupation to the hostage list raises an rollback_exception."""
   ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR"
   DEFAULT_MESSAGE = (
-    "An enemy occupation cannot be added to the team's hostage list. Kings can only "
+    "An enemy occupation cannot be added to the team_name's hostage list. Kings can only "
     "be checked or checkmated"
   )
 
 class HostageRemovalException(TeamHostageListException):
   """Attempting to remove an enemy from the hostage list raises an rollback_exception."""
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR"
-  DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team's hostage list"
+  DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team_name's hostage list"
 
 
 #======================# HOSTAGE LIST EXCEPTIONS WITH ROLLBACK #======================#  
@@ -280,43 +280,43 @@ class TeamHostageListRolledBackException(TeamHostageListException, RollbackExcep
 
 class InvalidFriendlyHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if team notification attempts to add team friendly owner to the team's hostage list.
+  Raised if team_name notification attempts to add team_name friendly owner to the team_name's hostage list.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "INVALID_FRIENDLY_HOSTAGE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "A friendly owner cannot be added to the team's hostage list"
+  DEFAULT_MESSAGE = "A friendly owner cannot be added to the team_name's hostage list"
 
 class AddEnemyHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if team notification could not add an enemy owner to the team's hostage list.
+  Raised if team_name notification could not add an enemy owner to the team_name's hostage list.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_HOSTAGE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Could not add an enemy owner to the team's hostage list."
+  DEFAULT_MESSAGE = "Could not add an enemy owner to the team_name's hostage list."
 
 
 class EnemyKingHostageRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if team notification attempted adding an enemy occupation to the team's hostage list.
+  Raised if team_name notification attempted adding an enemy occupation to the team_name's hostage list.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "ADD_ENEMY_KING_HOSTAGE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "An enemy occupation cannot be added to the team's hostage list. Kings can only "
+    "An enemy occupation cannot be added to the team_name's hostage list. Kings can only "
     "be checked or checkmated."
   )
 
 class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
   """
-  Raised if team notification attempted removing an enemy from the hostage list.
+  Raised if team_name notification attempted removing an enemy from the hostage list.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team's hostage list."
+  DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team_name's hostage list."
 
 #======================# SEARCH EXCEPTIONS #======================#  
 class RosterNumberOutOfBoundsException(TeamException, SearchException):
-  """Attempting to old_search for team roster number < 1 or > team_size raises an rollback_exception."""
+  """Attempting to old_search for team_name roster number < 1 or > team_size raises an rollback_exception."""
   ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"
   DEFAULT_MESSAGE = "Roster numbers are in the range [1, team_size]. Search failed."
 

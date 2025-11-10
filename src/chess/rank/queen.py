@@ -1,7 +1,7 @@
-# src/chess/rank/queen.py
+# src/chess/rank_name/queen.py
 
 """
-Module: chess.rank.queen
+Module: chess.rank_name.queen
 Author: Banji Lawal
 Created: 2025-07-25
 version: 1.0.0

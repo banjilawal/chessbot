@@ -53,9 +53,9 @@ class ScalarValidator(Validator[Generic[T]]):
     """
     """
     Validates that an existing `Scalar` instance meets specifications.
-    This method performs team series of checks on team Scalar instance, ensuring it is not null and that
+    This method performs team_name series of checks on team_name Scalar instance, ensuring it is not null and that
     its ID, visitor_name, and coordinate are valid. Exceptions from these checks are caught and re-raised
-    as team `InvalidScalarException`, providing team clean and consistent err-handling experience.
+    as team_name `InvalidScalarException`, providing team_name clean and consistent err-handling experience.
 
     Args
       `candidate` (`Scalar`): `Scalar` instance to validate

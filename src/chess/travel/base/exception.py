@@ -15,7 +15,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
+**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `CoordException`). This enables precise error

@@ -1,7 +1,7 @@
 src / chess / team / old_occupation_validator.py
 
 """
-Module: chess.team.validator
+Module: chess.team_name.validator
 Author: Banji Lawal
 Created: 2025-09-04
 Updated: 2025-10-08
@@ -13,7 +13,7 @@ version: 1.0.0
     client requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -37,7 +37,7 @@ From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
     `IdValidator`, `NameValidator`
 
-From `chess.team`:
+From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.commander`:
@@ -67,7 +67,7 @@ Create a `Team` object if the parameters have correctness.
 
 PARAMETERS:
     * `commander` (`Commander`): owner of `Team` object.
-    * `schema` (`iTeamSchema`): Spec about the team's color, starting squares etc.
+    * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
 
 RETURNS:
 `BuildResult[Team]`: A `BuildResult` containing either:

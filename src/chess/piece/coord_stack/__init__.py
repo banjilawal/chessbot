@@ -10,7 +10,7 @@ version: 1.0.0
 Provides the service structures and utilities for storing history of `Piece` object's positions.
 
 ## Classes
-  * `CoordStack`: Coordinate history and management utility. Only the last `Coord` can be removed in team turn.
+  * `CoordStack`: Coordinate history and management utility. Only the last `Coord` can be removed in team_name turn.
   * `CoordStackValidator`: Integrity checks for an existing `CoordStack`.
 
 
@@ -21,9 +21,9 @@ Provides the service structures and utilities for storing history of `Piece` obj
 
 ## EXCEPTIONS
   * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
-  * `DoubleCoordPushException`: Raised when team `Coord` at the top of the stack is pushed again.
+  * `DoubleCoordPushException`: Raised when team_name `Coord` at the top of the stack is pushed again.
   * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validate.
-  * `NullCoordStackException`: Raised if team null `CoordStackException` is passed as team parameter.
+  * `NullCoordStackException`: Raised if team_name null `CoordStackException` is passed as team_name parameter.
 
 ### EXCEPTION USAGE EXAMPLES
 These examples show recommended workflows with `CoordStack` exceptions.

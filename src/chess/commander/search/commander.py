@@ -6,7 +6,7 @@ from chess.system import IdValidator
 
 class CommanderSearch:
   """
-  Static methods for entities and operations that need to old_search team Board for pieces, squares, coords, etc.
+  Static methods for entities and operations that need to old_search team_name Board for pieces, squares, coords, etc.
   Provides consistent old_search interface and return types across all old_search operations.
   Validates input parameters before searching to ensure safe operations.
   Returns SearchResult objects encapsulating either the found entity or error information.
@@ -31,7 +31,7 @@ class CommanderSearch:
   @staticmethod
   def for_team(team_id: int, commander: 'Commander') -> SearchResult['Team']:
     method = "CommanderSearch.for_team"
-    """Find team discover by ID within team specific commander"""
+    """Find team_name discover by ID within team_name specific commander"""
 
     try:
       id_validation = IdValidator.validate(team_id)

@@ -35,7 +35,7 @@ __all__ = [
 
 class VisitationEventException(ChessException):
     """
-    Super class of all exceptions team Visitationation object raises. Do not use directly. Subclasses
+    Super class of all exceptions team_name Visitationation object raises. Do not use directly. Subclasses
     give details useful for debugging. This class exists primarily to allow catching
     all visitationation exceptions
     """
@@ -52,11 +52,11 @@ class InvalidVisitationEventException(VisitationEventException, ValidationExcept
 
 class VisitationTeamFieldIsNullException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.team` is null. Might indicate a consistency or build problem because `Visitationation.team` should
+    Raised if `visitationation.team_name` is null. Might indicate a consistency or build problem because `Visitationation.team_name` should
     never be null.
     """
     ERROR_CODE = "VISITATION_TEAM_FIELD_NULL_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.team consistency is null. It should never be null. There may be service inconsistency."
+    DEFAULT_MESSAGE = "Visitationation.team_name consistency is null. It should never be null. There may be service inconsistency."
 
 
 class VisitationMissingCoordStackException(VisitationEventException, InconsistencyException):
@@ -78,9 +78,9 @@ class VisitationMissingDiscoveriesException(VisitationEventException, Inconsiste
 
 
 class UnregisteredTeamMemberException(VisitationEventException):
-    """Raised if team visitationation has its team set but the visitationation is not on the roster."""
+    """Raised if team_name visitationation has its team_name set but the visitationation is not on the roster."""
     ERROR_CODE = "UNREGISTERED_TEAM_MEMBER_ERROR"
-    DEFAULT_MESSAGE = "The visitationation has assigned itself a team. but is not listed on that team's roster."
+    DEFAULT_MESSAGE = "The visitationation has assigned itself a team_name. but is not listed on that team_name's roster."
 
 
 class VisitationRosterNumberIsNullException(VisitationEventException, NullException):
@@ -103,7 +103,7 @@ class VisitationRankOutOfBoundsException(VisitationEventException, NullException
 # ======================# NULL VISITATION EXCEPTIONS #======================#
 class NullVisitationEventException(VisitationEventException, NullException):
     """
-    Raised if an entity, method, or operation requires team visitationation but gets null instead.
+    Raised if an entity, method, or operation requires team_name visitationation but gets null instead.
     Visitationation is an abstract method. KingVisitation and CombatantVisitation are its subclasses.
     Do not throw NullAttackException. Raise NullKingVisitation or NullCombatantVisitation instead.
     they are more descriptive and better suited for debugging.
@@ -114,7 +114,7 @@ class NullVisitationEventException(VisitationEventException, NullException):
 
 class NullKingException(NullVisitationEventException):
     """
-    Raised if team KingVisitation is null. Raise NullCombatant instead of NullAttackException
+    Raised if team_name KingVisitation is null. Raise NullCombatant instead of NullAttackException
     """
     ERROR_CODE = "NULL_KING_VISITATION_ERROR"
     DEFAULT_MESSAGE = "KingVisitation cannot be null."
@@ -122,7 +122,7 @@ class NullKingException(NullVisitationEventException):
 
 class NullCombatantException(NullVisitationEventException):
     """
-    Raised if team CombatantVisitation is null. Raise NullCombatant instead of NullAttackException
+    Raised if team_name CombatantVisitation is null. Raise NullCombatant instead of NullAttackException
     """
     ERROR_CODE = "NULL_COMBATANT_VISITATION_ERROR"
     DEFAULT_MESSAGE = "CombatantVisitation cannot be null."

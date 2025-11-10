@@ -48,7 +48,7 @@ class CommanderBuilder(Builder[Commander]):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Constructs team new `Commander` that works correctly.
+    Constructs team_name new `Commander` that works correctly.
 
     Args:
       `visitor_name` (`str`): Must pass `NameValidator` checks.
@@ -76,13 +76,13 @@ class CommanderBuilder(Builder[Commander]):
         LoggingLevelRouter.log_and_raise_error(CommanderBuilder, name_validation.exception)
 
       if engine is not None and not isinstance(engine, DecisionEngine):
-        error = TypeError(f"Expected team Decision, but got {type(engine).__name__}.")
+        error = TypeError(f"Expected team_name Decision, but got {type(engine).__name__}.")
         LoggingLevelRouter.log_and_raise_error(CommanderBuilder, error)
 
       if engine is not None and isinstance(engine, DecisionEngine):
         return BuildResult(payload=Bot(name=name, engine=engine))
 
-      # If no engine is provided and all the checks are passed, team Human commander is returned
+      # If no engine is provided and all the checks are passed, team_name Human commander is returned
       return BuildResult(payload=Human(name=name))
 
     except (

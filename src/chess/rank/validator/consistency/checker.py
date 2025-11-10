@@ -1,7 +1,7 @@
-# src/chess/rank/validator/consistency/check.py
+# src/chess/rank_name/validator/consistency/check.py
 
 """
-Module: chess.rank.validator.consistency.check
+Module: chess.rank_name.validator.consistency.check
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

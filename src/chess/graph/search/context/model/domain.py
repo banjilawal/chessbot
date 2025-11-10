@@ -24,6 +24,7 @@ class GraphDomainFilter(GraphSearchContext):
     _domain_rank: Optional[str] = None
     _domain_team_id: Optional[id] = None
     _domain_team: Optional[str] = None
+    _visitor_coord: Optional[Coord] = None
     
     
     def __init__(
@@ -32,10 +33,11 @@ class GraphDomainFilter(GraphSearchContext):
             domain_name: Optional[str] = None,
             domain_ransom: Optional[int] = None,
             domain_root: Optional[Coord] = None,
-            domain_previous_root: Optional[Coord] = None,
             domain_rank: Optional[str] = None,
             domain_team_id: Optional[id] = None,
-            domain_team: Optional[str] = None
+            domain_team: Optional[str] = None,
+            visitor_coord: Optional[Coord] = None,
+            domain_previous_root: Optional[Coord] = None,
     ):
         self._domain_id = domain_id
         self._domain_name = domain_name
@@ -44,6 +46,7 @@ class GraphDomainFilter(GraphSearchContext):
         self._domain_rank = domain_rank
         self._domain_team_id = domain_team_id
         self._domain_team = domain_team
+        self._visitor_coord = visitor_coord
         self._domain_previous_root = domain_previous_root
   
     
@@ -87,6 +90,11 @@ class GraphDomainFilter(GraphSearchContext):
         return self._domain_team
     
     
+    @property
+    def visitor_coord(self) -> Optional[Coord]:
+        return self._visitor_coord
+    
+    
     def to_dict(self):
         return {
             "domain_id": self._id,
@@ -97,4 +105,5 @@ class GraphDomainFilter(GraphSearchContext):
             "domain_team_id": self._domain_team_id,
             "domain_root": self._domain_root,
             "domain_previous_root": self._domain_previous_root,
+            "visitor_coord": self._visitor_coord,
         }

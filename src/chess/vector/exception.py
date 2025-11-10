@@ -80,7 +80,7 @@ class VectorException(ChessException):
 
 #======================# VECTOR VALIDATION EXCEPTIONS #======================#  
 class NullVectorException(VectorException, NullException):
-  """Raised if an entity, method, or operation requires team vector but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name vector but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_ERROR"
   DEFAULT_MESSAGE = "Vector cannot be null"
 
@@ -106,13 +106,13 @@ class VectorBuildFailedException(VectorException, BuildFailedException):
 
 #======================# NULL COMPONENT EXCEPTIONS #======================#  
 class NullXComponentException(VectorException, NullException):
-  """Raised if team vector's x dimension is null"""
+  """Raised if team_name vector's x dimension is null"""
   ERROR_CODE = "VECTOR_NULL_X_DIMENSION_ERROR"
   DEFAULT_MESSAGE = "Vector's X-dimension cannot be null"
 
 
 class NullYComponentException(VectorException, NullException):
-  """Raised if team vector's y dimension is null"""
+  """Raised if team_name vector's y dimension is null"""
   ERROR_CODE = "VECTOR_NULL_Y_DIMENSION_ERROR"
   DEFAULT_MESSAGE = "Vector's Y-dimension cannot be null"
 
@@ -120,8 +120,8 @@ class NullYComponentException(VectorException, NullException):
 #======================# VECTOR BOUNDS EXCEPTIONS #======================#  
 class VectorAboveBoundsException(VectorException):
   """
-  Iterating across coordinates to examine squares chess pieces can explore their with team step no
-  larger than the knight's number of rows o squares covered in team move. If team vector's x value is
+  Iterating across coordinates to examine squares chess pieces can explore their with team_name step no
+  larger than the knight's number of rows o squares covered in team_name move. If team_name vector's x value is
   larger than KNIGHT SIZE raise this err
   """
   ERROR_CODE = "VECTOR_ABOVE_BOUNDS"
@@ -130,8 +130,8 @@ class VectorAboveBoundsException(VectorException):
 
 class VectorBelowBoundsException(VectorException):
   """
-  Iterating across coordinates to examine squares chess pieces can explore their with team step no
-  larger than the knight's number of rows o squares covered in team move. If team vector's x value is
+  Iterating across coordinates to examine squares chess pieces can explore their with team_name step no
+  larger than the knight's number of rows o squares covered in team_name move. If team_name vector's x value is
   larger than KNIGHT SIZE raise this err
   """
   ERROR_CODE = "VECTOR_BELOW_BOUNDS_EXCEPTION"

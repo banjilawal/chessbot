@@ -1,7 +1,7 @@
-# src/chess/team/validation/__init__.py
+# src/chess/team_name/validation/__init__.py
 
 """
-Module: chess.rank.validator.__init__
+Module: chess.rank_name.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

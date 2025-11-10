@@ -1,7 +1,7 @@
-# src/chess/team/validator/consistency/check.py
+# src/chess/team_name/validator/consistency/check.py
 
 """
-Module: chess.team.validator.consistency.check
+Module: chess.team_name.validator.consistency.check
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

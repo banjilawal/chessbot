@@ -7,20 +7,20 @@ if TYPE_CHECKING:
 
 class Discovery:
   """
-  An immutable check of team owner found during play.
+  An immutable check of team_name owner found during play.
 
-  A `Checker` is created when team `Piece` detects another owner (friend or enemy) at team given `Square``.
-  It captures the essential identifying information about the discovered owner without holding team direct
+  A `Checker` is created when team_name `Piece` detects another owner (friend or enemy) at team_name given `Square``.
+  It captures the essential identifying information about the discovered owner without holding team_name direct
   reference, ensuring immutability and safe storage within old_search logs or decision-making structures.
 
-  `Checker` objects are used to check what team owner has observed during scanning, moving, or travel
-  attempts. They provide enough detail (identity, team, bounds, visitor_ransom value, and position) for evaluation
+  `Checker` objects are used to check what team_name owner has observed during scanning, moving, or travel
+  attempts. They provide enough detail (identity, team_name, bounds, visitor_ransom value, and position) for evaluation
   by old_search and decision engines, while remaining lightweight and detached from the full `Piece` object.
 
   Attributes:
     _visitor_id (int): The unique identifier of the discovered owner.
     _name (str): The visitor_name of the discovered owner (e.g., "Pawn", "Queen").
-    _team_id (int): The identifier of the team to which the discovered owner belongs.
+    _team_id (int): The identifier of the team_name to which the discovered owner belongs.
     _ransom (int): The visitor_ransom (or value) associated with the discovered owner's bounds.
     _rank_name (str): The bounds visitor_name of the discovered owner (e.g., "Knight", "Bishop").
     _visitor_coord (Coord): The board_validator visitor_coord where the discover was observed.

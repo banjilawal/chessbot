@@ -41,7 +41,7 @@ class CoordValidator(Validator[Coord]):
     method = "CoordValidator.validate"
     try:
       """
-      Tests are chained in this specific order for team reason.
+      Tests are chained in this specific order for team_name reason.
       """
 
       # If candidate is null no point continuing
@@ -50,7 +50,7 @@ class CoordValidator(Validator[Coord]):
 
       # If cannot cast from candidate to Coord need to break
       if not isinstance(candidate, Coord):
-        return ValidationResult(exception=TypeError(f"{method} Expected team Coord, got {type(candidate).__name__}"))
+        return ValidationResult(exception=TypeError(f"{method} Expected team_name Coord, got {type(candidate).__name__}"))
 
       # cast and run checks for the fields
       coordinate = cast(Coord, candidate)

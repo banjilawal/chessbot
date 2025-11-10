@@ -7,23 +7,23 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## Purpose
-Provides the fundamental service structures for game pieces and entities owned by team game owner.
+Provides the fundamental service structures for game pieces and entities owned by team_name game owner.
 
 ## Core Classes
   * `Piece`: Abstract base class for all chess pieces
   * `CombatantPiece`: Concrete owner that can be captured
   * `KingPiece`: Concrete occupation owner with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-  * `Encounter`: A check of an item discovered by team `Piece` during team blocking or move.
-  * `EncounterScan`: A service-holding object representing team single blocking of team chess owner's surroundings.
+  * `Encounter`: A check of an item discovered by team_name `Piece` during team_name blocking or move.
+  * `EncounterScan`: A service-holding object representing team_name single blocking of team_name chess owner's surroundings.
 
 ## Usage
 ```python
 from chess.bounds import Pawn, King
 from chess.owner import CombatantPiece, KingPiece
 
-white_pawn_9 = CombatantPiece(discovery_id=9, visitor_name='WP1', bounds=Pawn(), team=white_team)
-white_king = KingPiece(discovery_id=2, visitor_name='WK', bounds=King(), team=white_team)
+white_pawn_9 = CombatantPiece(discovery_id=9, visitor_name='WP1', bounds=Pawn(), team_name=white_team)
+white_king = KingPiece(discovery_id=2, visitor_name='WK', bounds=King(), team_name=white_team)
 ```
 ## SUBPACKAGES
   * `chess.owner.err`: Exceptions raised by `Piece` and its subclasses.
@@ -36,7 +36,7 @@ organic to:
   * `Piece` and its subclases..
 
 All exceptions in `chess.owner` package have static fields:
-  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with team "_ERROR" suffix
+  - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with team_name "_ERROR" suffix
   - `DFAULT_MESSAGE`: A sentence describing the err.
 Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
@@ -46,19 +46,19 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
   * `NullAttackException`: The parent is `NullException`. `NullAttackException` is the parent of all exceptions
     related to null pieces. Use more granular null exceptions that provide mmore specific information about the
     subclass instance that is null.
-  * `NullKingPieceException`: Raised when team `kingPiece` reference is null
-  * `NullCombatantPieceException`: Raised when team `CombatantPiece` is null.
-  * `DoublePromotionException`: Raised if there is an attempt to promotion team occupation or pawn that has already been
+  * `NullKingPieceException`: Raised when team_name `kingPiece` reference is null
+  * `NullCombatantPieceException`: Raised when team_name `CombatantPiece` is null.
+  * `DoublePromotionException`: Raised if there is an attempt to promotion team_name occupation or pawn that has already been
     promoted.
 
 #### PIECE VALIDATION EXCEPTIONS
   * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
-  * `NullPieceValidatorException`: Raised if team null `PieceValidator` is passed as team parameter.
+  * `NullPieceValidatorException`: Raised if team_name null `PieceValidator` is passed as team_name parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-  * `AttackBuildFailedException`: Raised if there is an error during when team `PieceBuilder` is creating team new `Piece`
+  * `AttackBuildFailedException`: Raised if there is an error during when team_name `PieceBuilder` is creating team_name new `Piece`
     instance.
-  * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as team parameter.
+  * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as team_name parameter.
 
 
 null or improperly referenced during chess operations.
@@ -79,7 +79,7 @@ build_outcome = PieceBuilder.build(
   discovery_id=id_emitter.discovery_id,
   visitor_name='BB2',
   bounds=Bishop(),
-  team=black_team
+  team_name=black_team
 )
 
 if not build_outcome.is_success():
@@ -100,12 +100,12 @@ def create_encounter(actor_candidate: Piece, discover: Piece) -> Encounter:
 """
 
 """
-Validates team discover with chained exceptions for discover meeting specifications:
+Validates team_name discover with chained exceptions for discover meeting specifications:
   - Not null
   - visitor_id fails validator
   - visitor_name fails validator
   - visitor_coord fails validator
-If validator fails their team_exception will be encapsulated in team PieceValidationException
+If validator fails their team_exception will be encapsulated in team_name PieceValidationException
 
 Args
   candidate (Piece): discover to validate

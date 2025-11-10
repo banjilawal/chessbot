@@ -26,7 +26,7 @@ class Context(ABC):
     `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
   """
   """
-  Interface for defining optional dependencies an `Event` needs to execute team
+  Interface for defining optional dependencies an `Event` needs to execute team_name
   `Transaction`.
 
   Attributes:
@@ -51,7 +51,7 @@ class Context(ABC):
 
     method = "ClassName.method_name"
     """
-    Converts team roster's fields into team dictionary.
+    Converts team_name roster's fields into team_name dictionary.
     Attributes:
       No attributes. Implementors declare their own.
     """

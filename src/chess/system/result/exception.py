@@ -44,7 +44,7 @@ class ResultConstructorException(ResultException):
 
 class EmptyResultConstructorException(ResultConstructorException):
   """
-  Raised if team `Result` object's constructor is empty.
+  Raised if team_name `Result` object's constructor is empty.
   """
   ERROR_CODE = "EMPTY_RESULT_CONSTRUCTOR_ERROR"
   DEFAULT_MESSAGE = "A Result cannot be constructed with no payload or err."
@@ -53,7 +53,7 @@ class EmptyResultConstructorException(ResultConstructorException):
 class ErrorContradictsPayloadException(ResultConstructorException):
   """
   Raised if both payload and error params are not null
-  when constructing team `Result` object.
+  when constructing team_name `Result` object.
   """
   ERROR_CODE = "ERROR_CONFLICTS_PAYLOAD_IN_RESULT_CONSTRUCTOR"
   DEFAULT_MESSAGE = (

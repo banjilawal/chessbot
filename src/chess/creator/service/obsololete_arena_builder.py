@@ -22,21 +22,21 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
     #
     # for team_config in TeamConfig:
     #   print(team_config)
-    #   team = TeamBuilder.build(team_config)
-    #   teams.append(team)
+    #   team_name = TeamBuilder.build(team_config)
+    #   teams.append(team_name)
     #
     # motion_controllers = RankFactory.assemble()
     # for validate in motion_controllers:
     #   print(validate)
     #
-    # for team in teams:
+    # for team_name in teams:
     #   for validate in motion_controllers:
     #     for i in range(validate.number_per_team):
     #       captor = ChessPieceBuilder.build(
     #         id_emitter.chess_piece_id,
     #         (i + 1),
     #         validate=validate,
-    #         team=team
+    #         team_name=team_name
     #       )
     #       # print(captor)
     # return teams

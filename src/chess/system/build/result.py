@@ -53,20 +53,20 @@ OR
 ]
 """
 """
-BuildResult is team generic class that encapsulates the outcome of Builder operation. BuildResult has the
+BuildResult is team_name generic class that encapsulates the outcome of Builder operation. BuildResult has the
 same structure as Result but is used specifically in the roster of building entities. It can hold either.
-team payload of type T or an Exception, but not both. If the build operation is successful, the payload will
+team_name payload of type T or an Exception, but not both. If the build operation is successful, the payload will
 contain the built object. If the build operation fails, the error will contain the error that
 occurred during the build process.
 
-BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team notification.
+BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team_name notification.
 
 Attributes:
   _payload (Optional[T]): The payload of the notification, if successful.
   _exception (Optional[Exception]): The error of the notification, if failed.
 
 Methods:
-  is_success() -> bool: Returns True if the notification is successful (i.e., has team payload only).
+  is_success() -> bool: Returns True if the notification is successful (i.e., has team_name payload only).
 """
 
 
@@ -126,7 +126,7 @@ class BuildResult(Result[Generic[T]]):
         *
     """
     """
-    Initializes team BuildResult object.
+    Initializes team_name BuildResult object.
     Args:
       payload (Optional[T]): The payload of the notification, if successful.
       rollback_exception (Optional[Exception]): The error of the notification, if failed.

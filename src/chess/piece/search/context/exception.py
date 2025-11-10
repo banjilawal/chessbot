@@ -13,7 +13,7 @@ falls to the `DiscoverySearchContextValidator` and `DiscoverySearchContextBuilde
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
+**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `DiscoverySearchContextException`). This enables precise error
@@ -69,7 +69,7 @@ class DiscoverySearchContextException(ContextException):
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullDiscoverySearchContextException(DiscoverySearchContextException, NullException):
     """
-    Raised if an entity, method, or operation requires team discoverySearchContext but
+    Raised if an entity, method, or operation requires team_name discoverySearchContext but
     gets null instead.
     """
     ERROR_CODE = "NULL_SEARCH_DISCOVERY_CONTEXT_ERROR"
@@ -106,7 +106,7 @@ class TooManyDiscoverySearchParamsException(DiscoverySearchContextException):
 class DiscoveryRansomParamBoundsException(DiscoverySearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
+  Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
   ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_RANSOM_BOUNDS_ERROR"
@@ -115,7 +115,7 @@ class DiscoveryRansomParamBoundsException(DiscoverySearchContextException):
 class DiscoveryInvalidRankNameParamException(DiscoverySearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
+  Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
   ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_RANK_NAME_ERROR"
@@ -125,8 +125,8 @@ class DiscoveryInvalidRankNameParamException(DiscoverySearchContextException):
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class DiscoverySearchContextBuildFailedException(DiscoverySearchContextException, BuildFailedException):
     """
-    Raised when DiscoverySearchContextBuilder encounters an error while building team team.
-    Exists primarily to catch all exceptions raised build team new discoverySearchContext
+    Raised when DiscoverySearchContextBuilder encounters an error while building team_name team_name.
+    Exists primarily to catch all exceptions raised build team_name new discoverySearchContext
     """
     ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "DiscoverySearchContext build failed."

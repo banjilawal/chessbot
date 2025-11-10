@@ -29,7 +29,7 @@ __all__ = [
 # ======================# ROLLED BACK ATTACK TRANSACTION EXCEPTIONS #======================#
 class AttackTransactionException(TravelTransactionException):
   """
-  RollBackCapture exceptions should be raised in ACID transactions where team capture can
+  RollBackCapture exceptions should be raised in ACID transactions where team_name capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
   ERROR_CODE = "ATTACK_TRANSACTION_ERROR_ROLLED_BACK"
@@ -38,7 +38,7 @@ class AttackTransactionException(TravelTransactionException):
 
 class RolledBackAttackTransactionException(AttackTransactionException, RollbackException):
   """
-  RollBackCapture exceptions should be raised in ACID transactions where team capture can
+  RollBackCapture exceptions should be raised in ACID transactions where team_name capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
   ERROR_CODE = "ATTACK_TRANSACTION_ERROR_ROLLED_BACK"
@@ -72,7 +72,7 @@ class FailedRemovalFromRosterRolledBackException(RolledBackAttackTransactionExce
   """"""
   ERROR_CODE = "FAILED_CAPTIVE_REMOVAL_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured owner from the team roster failed during an attack transaction. The transaction was rolled "
+    "Removing a captured owner from the team_name roster failed during an attack transaction. The transaction was rolled "
     "back before raising this exception."
   )
 

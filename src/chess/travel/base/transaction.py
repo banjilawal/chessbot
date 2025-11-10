@@ -31,7 +31,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   * `OccupationExecutor:` Main class responsible for executing travel directives.
   #   * `_attack_enemy`: Static method for processing attacks on enemy pieces.
   #   * `_run_scan`: Static method for handling discoveries on occupied squares.
-  #   * `_switch_squares`: Static method the transferring team owner to team different `Square`.
+  #   * `_switch_squares`: Static method the transferring team_name owner to team_name different `Square`.
   # """
   # @classmethod
   # @LoggingLevelRouter.monitor
@@ -267,8 +267,8 @@ class TravelTransaction(Transaction[TravelEvent]):
   # @staticmethod
   # def _run_scan(op_result_id :int, directive: ScanDirective) -> TransactionResult:
   #   """
-  #   Creates team new `Checker` object for directive.actor_candidate which is blocking from moving to
-  #   `blocked_square` by `directive.enemy`. The enemy is either team friendly owner or an enemy `KingPiece`.
+  #   Creates team_name new `Checker` object for directive.actor_candidate which is blocking from moving to
+  #   `blocked_square` by `directive.enemy`. The enemy is either team_name friendly owner or an enemy `KingPiece`.
   #   `Traveltransaction.execute` is the single entry point to `_run_scan`. Validations, error chains
   #   confirmed parameters ar are correct. No additional sanity checks are needed.
   #
@@ -279,7 +279,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   Returns:
   #   `OccupationResult` containing:
   #     - On success: A new `ScanDirective` object that containing updated `actor_candidate`. Observer will have
-  #       team new `Checker` instance inside `actor_candidate.discoveries`.
+  #       team_name new `Checker` instance inside `actor_candidate.discoveries`.
   #     - On failure: The original `ScanDirective` for verifying any rollbacks succeeded and the err
   #       describing the failure.
   #
@@ -335,8 +335,8 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       was_rolled_back=True
   #     )
   #
-  #   directive.enemy.team.roster.remove(directive.enemy)
-  #   if directive.enemy in directive.enemy.team.roster:
+  #   directive.enemy.team_name.roster.remove(directive.enemy)
+  #   if directive.enemy in directive.enemy.team_name.roster:
   #     # Rollback all changes in reverse order
   #     directive.enemy.captor = None
   #
@@ -350,10 +350,10 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       )
   #     )
   #
-  #   directive.owner.team.hostages.append(directive.enemy)
-  #   if directive.enemy not in directive.owner.team.hostages:
+  #   directive.owner.team_name.hostages.append(directive.enemy)
+  #   if directive.enemy not in directive.owner.team_name.hostages:
   #     # Rollback all changes in reverse order
-  #     directive.enemy.team.add_to_roster(directive.enemy)
+  #     directive.enemy.team_name.add_to_roster(directive.enemy)
   #     directive.enemy.captor = None
   #
   #     # Send the notification indicating rollback
@@ -369,8 +369,8 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   directive.friend.occupant = None
   #   if directive.friend.occupant is not None:
   #     # Rollback all changes in reverse order
-  #     directive.owner.team.hostages.remove(directive.enemy)
-  #     directive.enemy.team.add_to_roster(directive.enemy)
+  #     directive.owner.team_name.hostages.remove(directive.enemy)
+  #     directive.enemy.team_name.add_to_roster(directive.enemy)
   #     directive.enemy.captor = None
   #
   #     # Send the notification indicating rollback
@@ -385,8 +385,8 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   if directive.enemy in directive.board.pieces:
   #     # Rollback all changes in reverse order
   #     directive.friend.occupant = directive.enemy
-  #     directive.owner.team.hostages.remove(directive.enemy)
-  #     directive.enemy.team.add_to_roster(directive.enemy)
+  #     directive.owner.team_name.hostages.remove(directive.enemy)
+  #     directive.enemy.team_name.add_to_roster(directive.enemy)
   #     directive.enemy.captor = None
   #
   #     # Send the notification indicating rollback

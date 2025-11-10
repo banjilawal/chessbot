@@ -36,12 +36,12 @@ class BoardValidator(Validator[Board]):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Validates team discover with chained exceptions for discover meeting specifications:
+    Validates team_name discover with chained exceptions for discover meeting specifications:
       - Not null
       - visitor_id fails validator
       - visitor_name fails validator
       - visitor_coord fails validator
-    If validator fails their team_exception will be encapsulated in team BoardValidationException
+    If validator fails their team_exception will be encapsulated in team_name BoardValidationException
 
     Args
       candidate (Board): discover to validate
@@ -67,7 +67,7 @@ class BoardValidator(Validator[Board]):
         return ValidationResult(exception=NullBoardException(f"{method} {NullBoardException.DEFAULT_MESSAGE}"))
 
       if not isinstance(candidate, Board):
-        return ValidationResult(exception=TypeError(f"{method} Expected team Board, got {type(candidate).__name__}"))
+        return ValidationResult(exception=TypeError(f"{method} Expected team_name Board, got {type(candidate).__name__}"))
 
       board = cast(Board, candidate)
 
@@ -91,4 +91,4 @@ class BoardValidator(Validator[Board]):
 #
 # def main():
 #   person = CommanderBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
-#   team = TeamBuilder.build()
+#   team_name = TeamBuilder.build()

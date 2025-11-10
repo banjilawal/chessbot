@@ -13,7 +13,7 @@ falls to the `BoardSearchContextValidator` and `ProjectionSearchContextBuilder`p
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
+**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `ProjectionSearchContextException`). This enables precise error
@@ -69,7 +69,7 @@ class ProjectionSearchContextException(ContextException):
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullProjectionSearchContextException(ProjectionSearchContextException, NullException):
     """
-    Raised if an entity, method, or operation requires team projectionSearchContext but
+    Raised if an entity, method, or operation requires team_name projectionSearchContext but
     gets null instead.
     """
     ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
@@ -104,8 +104,8 @@ class ProjectionSearchContextMaxParamCountException(ProjectionSearchContextExcep
 # #======================#   PROJECTION_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class ProjectionSearchContextBuildFailedException(ProjectionSearchContextException, BuildFailedException):
     """
-    Raised when ProjectionSearchContextBuilder encounters an error while building team team.
-    Exists primarily to catch all exceptions raised build team new projectionSearchContext
+    Raised when ProjectionSearchContextBuilder encounters an error while building team_name team_name.
+    Exists primarily to catch all exceptions raised build team_name new projectionSearchContext
     """
     ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "BoardSearchContext build failed."
@@ -113,7 +113,7 @@ class ProjectionSearchContextBuildFailedException(ProjectionSearchContextExcepti
 class RansomOutOfBoundsException(ProjectionSearchContextException):
   """
   If the old_search context is out of bounds there might be other problems.
-  Instead of running team old_search that won'candidate produce team notification, raise this
+  Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
   ERROR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_ERROR"

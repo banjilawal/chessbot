@@ -58,7 +58,7 @@ class PieceValidator(Validator[Piece]):
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
             
-            # A `Piece` instance must have its `team` consistency set. This immutable consistency should have been set during
+            # A `Piece` instance must have its `team_name` consistency set. This immutable consistency should have been set during
             # the build. If it's null there might be service loss or corruption.
             if piece.team is None:
                 return ValidationResult.failure(
@@ -81,9 +81,9 @@ class PieceValidator(Validator[Piece]):
                 )
             
             # This test will have to be removed because a valid owner that has been captured is taken of
-            # its team's roster and put on its enemy's hostage list.
-            # team = owner.team
-            # if owner not in team.roster:
+            # its team_name's roster and put on its enemy's hostage list.
+            # team_name = owner.team_name
+            # if owner not in team_name.roster:
             #   return ValidationResult(rollback_exception=UnregisteredTeamMemberException(
             #     f"{method}: {UnregisteredTeamMemberException.DEFAULT_MESSAGE}"
             #   ))

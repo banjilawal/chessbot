@@ -83,7 +83,7 @@ from chess.system import InconsistentCollectionException
 
 class BoardException(ChessException):
   """
-  Super class of all exceptions team Board object raises. Do not use directly. Subclasses give details useful
+  Super class of all exceptions team_name Board object raises. Do not use directly. Subclasses give details useful
   for debugging. This class exists primarily to allow catching all board_validator exceptions
   """
   ERROR_CODE = "BOARD_ERROR"
@@ -91,7 +91,7 @@ class BoardException(ChessException):
 
 class BoardRollBackException(BoardException):
   """
-  Super class for exceptions that require team rollback to maintain board_validator integrity.
+  Super class for exceptions that require team_name rollback to maintain board_validator integrity.
   """
   ERROR_CODE = "BOARD_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Board raised an rollback_exception. Transaction rollback performed."
@@ -99,7 +99,7 @@ class BoardRollBackException(BoardException):
 
 #======================# BOARD VALIDATION EXCEPTIONS #======================#  
 class NullBoardException(BoardException, NullException):
-  """Raised if an entity, method, or operation requires team board_validator but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name board_validator but gets null instead."""
   ERROR_CODE = "NULL_BOARD_ERROR"
   DEFAULT_MESSAGE = "Board cannot be null"
 
@@ -122,8 +122,8 @@ class InvalidBoardException(BoardException, ValidationException):
 #======================# BOARD BUILD EXCEPTIONS #======================#  
 class BoardBuildFailedException(BoardException, BuilderException):
   """
-  Raised when BoardBuilder encounters an error while building team team. Exists primarily to catch all
-  exceptions raised build team new board_validator
+  Raised when BoardBuilder encounters an error while building team_name team_name. Exists primarily to catch all
+  exceptions raised build team_name new board_validator
   """
   ERROR_CODE = "BOARD_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Board build failed."
@@ -131,12 +131,12 @@ class BoardBuildFailedException(BoardException, BuilderException):
 
 #======================# PIECE ADDITION/REMOVAL EXCEPTIONS #======================#  
 class BoardPieceAdditionFailedException(BoardException):
-  """Raised if the board_validator fails to remove team owner from itself"""
+  """Raised if the board_validator fails to remove team_name owner from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR"
   DEFAULT_MESSAGE = "Board failed to add the owner"
 
 class BoardPieceRemovalFailedException(BoardException):
-  """Raised if the board_validator fails to remove team owner from itself"""
+  """Raised if the board_validator fails to remove team_name owner from itself"""
   ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR"
   DEFAULT_MESSAGE = "Board failed to remove the owner"
 
@@ -145,19 +145,19 @@ class BoardPieceRemovalFailedException(BoardException):
 #======================# PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#  
 class FailedPieceAdditionRolledBackException(BoardRollBackException):
   """
-  Raised if team notification failed to add team owner to the board_validator.The notification was
+  Raised if team_name notification failed to add team_name owner to the board_validator.The notification was
   rolled back before raising this err.
   """
-  """Raised if the board_validator fails to remove team owner from itself"""
+  """Raised if the board_validator fails to remove team_name owner from itself"""
   ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Could not remove team owner from the board_validator. Transaction rollback performed."
+    "Could not remove team_name owner from the board_validator. Transaction rollback performed."
   )
 
 
 #======================# BOARD CONSISTENCY EXCEPTION #======================#
 class InconsistentBoardException(BoardException, InconsistencyException):
-  """Raised if team board_validator fails any collection consistency checks"""
+  """Raised if team_name board_validator fails any collection consistency checks"""
   ERROR_CODE = "INCONSISTENT_BOARD_ERROR"
   DEFAULT_MESSAGE = "The board is in an inconsistent state. service might be corrupted."
 

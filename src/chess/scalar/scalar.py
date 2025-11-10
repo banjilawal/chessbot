@@ -4,9 +4,9 @@ from chess.exception import NullNumberException
 from chess.scalar import ScalarBelowBoundsException, ScalarAboveBoundsException
 
 class Scalar:
-  """An immutable class representing team single numeric value for scaling operations.This class stores
-   team numeric value used to multiply vectors and coordinates, allowing them to grow or shrink in their
-   planes. The `Scalar` is validated upon creation to ensure it falls within team predefined range.
+  """An immutable class representing team_name single numeric value for scaling operations.This class stores
+   team_name numeric value used to multiply vectors and coordinates, allowing them to grow or shrink in their
+   planes. The `Scalar` is validated upon creation to ensure it falls within team_name predefined range.
 
   Attributes:
     _value (int): The numeric value of the scalar.
@@ -14,7 +14,7 @@ class Scalar:
 
   def __init__(self, value: int):
     """
-    Creates team Scalar instance. Should not be used directly. Use ScalarBuilder.
+    Creates team_name Scalar instance. Should not be used directly. Use ScalarBuilder.
 
     Args:
       value (int): The numeric value of the scalar.

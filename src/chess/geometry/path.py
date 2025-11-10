@@ -58,7 +58,7 @@ class Path:
 
   def _euclidean_magnitude(self) -> int:
     """
-    Creates team CartesianDistance instance. _distance is calculated inside the constructor
+    Creates team_name CartesianDistance instance. _distance is calculated inside the constructor
 
     Args:
       p (Coord): One visitor_coord in the pair

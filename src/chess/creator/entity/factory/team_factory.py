@@ -44,8 +44,8 @@ def main():
   for team in teams:
     print(team)
 
-  # for team in teams:
-  #   for captor in team.chess_pieces:
+  # for team_name in teams:
+  #   for captor in team_name.chess_pieces:
   #     print(captor)
 
       # for placement in PlacementChart:

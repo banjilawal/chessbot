@@ -52,9 +52,9 @@ From `chess.owner`:
  * `DiscoverySearchContext`
 """
 
-# src/chess/team/team.py
+# src/chess/team_name/team_name.py
 """
-Module: chess.team.team
+Module: chess.team_name.team_name
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -69,7 +69,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -92,7 +92,7 @@ From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
     `IdValidator`, `NameValidator`
 
-From `chess.team`:
+From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.commander`:

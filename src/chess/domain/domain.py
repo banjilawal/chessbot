@@ -20,7 +20,7 @@ class Domain:
     """
     _owner: Piece
     _tree: List[Coord]
-    _visitors: List[Piece]
+    _residents: List[Piece]
     _tree_root: Optional[Coord]
     _previous_tree_root: Coord
 
@@ -29,11 +29,9 @@ class Domain:
         self._owner = piece
         self._id = self._owner.id
         self._tree = List[Coord]
-        self._visitors = List[Piece]
+        self._residents = List[Piece]
         self._previous_tree_root = None
         self._tree_root = piece.current_position
-        
-        self._tree.append(self._tree_root)
 
     
     @property
@@ -53,8 +51,8 @@ class Domain:
         return self._tree
     
     @property
-    def visitors(self) -> List[Piece]:
-        return self._visitors
+    def residents(self) -> List[Piece]:
+        return self._residents
     
     def update(self):
         """"""

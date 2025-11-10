@@ -87,9 +87,9 @@ class DuplicatePushException(CoordStackException):
 
 
 class NullCoordStackException(CoordStackException, NullException):
-  """Raised team CoordStack is null. A null CoordStack indicates team corrupted Piece state"""
+  """Raised team_name CoordStack is null. A null CoordStack indicates team_name corrupted Piece state"""
   ERROR_CODE = "NULL_COORD_STACK_ERROR"
-  DEFAULT_MESSAGE = f"CoordStack is null. This should never happen because Piece must always have team CoordStack"
+  DEFAULT_MESSAGE = f"CoordStack is null. This should never happen because Piece must always have team_name CoordStack"
 
 
 class CoordStackValidationException(CoordStackException):

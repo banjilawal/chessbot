@@ -45,7 +45,7 @@ class Board:
 
   def __init__(self, id: int, squares: List[List[Square]]):
     """
-    Creates team Board instance
+    Creates team_name Board instance
 
     Args:
       squares (List[List[Square]]): 2D list of Square objects representing the chess
@@ -67,7 +67,7 @@ class Board:
 
   @property
   def squares(self) -> List[Square]:
-    """Flatten the 2D board_validator into team 1D list of squares for efficient searching."""
+    """Flatten the 2D board_validator into team_name 1D list of squares for efficient searching."""
     return [square for row in self._squares for square in row]
 
 
@@ -162,9 +162,9 @@ class Board:
     method = f"{self.__class__.__name__}.remove_captured_piece"
 
     """
-    Remove team captured discover from the board_validator after it has been:
+    Remove team_name captured discover from the board_validator after it has been:
       - Processed by the captor
-      - Removed from its' team's roster
+      - Removed from its' team_name's roster
       - Added to its' enemy's hostages
       
     Args:
@@ -208,7 +208,7 @@ class Board:
     method = f"ChessBoard.find_chess_piece"
 
     """" 
-    Finds team ChessPiece if it exists at the Coord. 
+    Finds team_name ChessPiece if it exists at the Coord.
 
     Args:
       visitor_coord (Coord): The visitor_coord of the ChessPiece to find.
@@ -227,7 +227,7 @@ class Board:
       if not validation.is_success():
         raise validation.exception
 
-      # A valida visitor_coord will have team square.
+      # A valida visitor_coord will have team_name square.
       piece = self.find_square_by_coord(coord).occupant
 
       if piece is None:
@@ -244,18 +244,18 @@ class Board:
     method = f"ChessBoard.capture_square"
 
     """
-    The entry point to the ChessBoard for moving team ChessPiece to team new Square.
-    It checks if the destination square is occupied, and if so, whether the occupant is an enemy or team friend.
+    The entry point to the ChessBoard for moving team_name ChessPiece to team_name new Square.
+    It checks if the destination square is occupied, and if so, whether the occupant is an enemy or team_name friend.
     If the destination square is empty, it finalizes the capture by moving the chess_piece to
-    the destination square. If the occupant is team friend, it marks the move as obstructed.
+    the destination square. If the occupant is team_name friend, it marks the move as obstructed.
     If the occupant is an enemy, it captures the occupant and finalizes the capture.
     Args:
-      chess_piece (ChessPiece): The ChessPiece that is attempting to capture team square.
+      chess_piece (ChessPiece): The ChessPiece that is attempting to capture team_name square.
       destination (Coord): The Coord of the destination square.
       
     Raises:
       Exception: If chess_piece is None, if chess_piece is not on the chessboard, if
-      destination is not on the chessboard, or if the destination square is occupied by team friend.
+      destination is not on the chessboard, or if the destination square is occupied by team_name friend.
     """
 
     # print(f"Validating move for {chess_piece.visitor_name} to {destination}")
@@ -312,7 +312,7 @@ class Board:
     method = f"ChessBoard._imprison_occupant"
 
     """    
-      Helper method that handles the steps of capturing team ChessPiece.
+      Helper method that handles the steps of capturing team_name ChessPiece.
       Sets the captor as the resident of the square, adds the square's coordinates to the captor's
       stack, and sets the captor's old resident as empty.
       Also sets the prisoner.captor to the captor.
@@ -340,7 +340,7 @@ class Board:
     method = f"ChessBoard._finalize_capture"
 
     """
-    Helper method fthat handles the final steps of team capture.
+    Helper method fthat handles the final steps of team_name capture.
     Sets the captor as the resident and adds square's coordinates to the captor's
     stack. Sets the captor's old resident as empty.
     
@@ -378,7 +378,7 @@ class Board:
 
     validated_destination = self.find_square_by_coord(destination.coord)
 
-    # Set the Square team of the relationship
+    # Set the Square team_name of the relationship
     validated_destination.occupant = captor
 
 
@@ -412,10 +412,10 @@ class Board:
 
   def __str__(self) -> str:
     """
-    Provides team string representation of the chessboard, showing pieces or square names.
+    Provides team_name string representation of the chessboard, showing pieces or square names.
 
-    If team square is occupied, it shows the chess discover's visitor_name.
-    If team square is vacant, it shows the square's visitor_name in brackets.
+    If team_name square is occupied, it shows the chess discover's visitor_name.
+    If team_name square is vacant, it shows the square's visitor_name in brackets.
     """
     string = ""
     # Iterate from the top row (row 7) down to the bottom (row 0)

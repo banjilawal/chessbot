@@ -41,7 +41,7 @@ Created: 2025-10-04
 version: 1.0.0
 
 Provides:
-Interface to implement team `Context`
+Interface to implement team_name `Context`
 
 Contains:
  * `Context`
@@ -109,7 +109,7 @@ falls to the `ContextValidator` and `ContextBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
+**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `ContextException`). This enables precise error

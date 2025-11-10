@@ -1,7 +1,7 @@
-# src/chess/team/validator/bounds/checker.py
+# src/chess/team_name/validator/bounds/checker.py
 
 """
-Module: chess.team.validator.bounds.checker
+Module: chess.team_name.validator.bounds.checker
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

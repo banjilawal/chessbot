@@ -7,11 +7,11 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## PURPOSE:
-Executes team `OccupationTransaction` after `BlockingEvent` is validated
+Executes team_name `OccupationTransaction` after `BlockingEvent` is validated
 
 ## CORE CLASSES:
-  * `BlockingEvent`: Provides information about an `actor_candidate` scanning team `enemy` `Piece`.
-  * `EncounterEventBuilder`: Builds team new `BlockingEvent`.
+  * `BlockingEvent`: Provides information about an `actor_candidate` scanning team_name `enemy` `Piece`.
+  * `EncounterEventBuilder`: Builds team_name new `BlockingEvent`.
   * `ScanEventValidator`: Validates an existing `BlockingEvent`.
   * `OccupationTransaction`: Performs the blocking operation for the observing `Piece`
 
@@ -25,8 +25,8 @@ from chess.travel.travel import BlockingEvent, OccupationTransaction
 Gives granular information about errors that occur during blocking operations.
   * `ScanEventException`: Superclass for all blocking travel exceptions. Subclasses give better debugging information
   * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
-  * `NullEncounterEventException`: Raised by methods, entities, and models that require team BlockingEvent but receive team null
-  * `OccupationOccupationScanSubjectException`: Raised if team enemy of team blocking is invalid.
+  * `NullEncounterEventException`: Raised by methods, entities, and models that require team_name BlockingEvent but receive team_name null
+  * `OccupationOccupationScanSubjectException`: Raised if team_name enemy of team_name blocking is invalid.
   * `ObserverCircularScanException`: Raised if an actor_candidate scans itself.
 
 ### EXCEPTION USAGE:

@@ -12,10 +12,11 @@ from typing import List
 
 from chess.coord import Coord
 from chess.piece import Piece
+from chess.graph import Graph
 from chess.system import LoggingLevelRouter, Search, SearchResult
 from chess.domain import (
-    Domain, DomainValidator, GraphSearchContext, GraphSearchContextValidator, VisitorSearchCoordCollisionException,
-    VisitorSearchIdCollisionException, VisitorSearchNameCollisionException
+    Domain, DomainValidator, GraphSearchContext, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
+    ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 
 
@@ -215,7 +216,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
                 )
                 return SearchResult.success(striped_list)
         
-        except VisitorSearchIdCollisionException as e:
+        except ResidentSearchIdCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
     
@@ -245,7 +246,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
                 )
                 return SearchResult.success(striped_list)
         
-        except VisitorSearchNameCollisionException as e:
+        except ResidentSearchNameCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
     
@@ -272,7 +273,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
                     num_of_runs=num_of_runs
                 )
                 return SearchResult.success(striped_list)
-        except VisitorSearchCoordCollisionException as e:
+        except ResidentSearchCoordCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
     @classmethod
@@ -291,13 +292,13 @@ class GraphDomainSearch(Search[Graph, Domain]):
             return duplicates
         
         if run_number > 0:
-            for visitor in domain.visitors:
+            for visitor in domain.residents:
                 if (
                         visitor.id == target.id and
                         visitor.name.upper() == target.name.upper() and
                         visitor.current_position == target.current_position
                 ):
-                    domain.visitors.remove(visitor)
+                    domain.residents.remove(visitor)
                     duplicates.remove(visitor)
                     return cls._duplicate_remover(domain, duplicates, target, run_number - 1)
         return

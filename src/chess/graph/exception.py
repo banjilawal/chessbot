@@ -28,7 +28,7 @@ __all__ = [
 
 class DomainException(ChessException):
     """
-    Super class of all exceptions team Domain object raises. Do not use directly. Subclasses
+    Super class of all exceptions team_name Domain object raises. Do not use directly. Subclasses
     give details useful for debugging. This class exists primarily to allow catching
     all graph exceptions
     """
@@ -47,7 +47,7 @@ class InvalidDomainException(DomainException, ValidationException):
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
     """
-    Raised if an entity, method, or operation requires team graph but gets null instead.
+    Raised if an entity, method, or operation requires team_name graph but gets null instead.
     Domain is an abstract method. KingDomain and CombatantDomain are its subclasses.
     Do not throw NullAttackException. Raise NullKingDomain or NullCombatantDomain instead.
     they are more descriptive and better suited for debugging.

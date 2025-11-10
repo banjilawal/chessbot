@@ -1,7 +1,7 @@
-# src/chess/team/validator/consistency/__init__.py
+# src/chess/team_name/validator/consistency/__init__.py
 
 """
-Module: chess.team.validator.consistency.__init__
+Module: chess.team_name.validator.consistency.__init__
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

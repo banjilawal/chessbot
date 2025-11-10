@@ -22,7 +22,7 @@ Verify the `candidate` is a valid ID. The Application requires
     * `NegativeIdException`: if candidate is negative `
 """
 """
-Constructs team new `Coord` that works correctly.
+Constructs team_name new `Coord` that works correctly.
 
 Args:
   `row` (`int`):.

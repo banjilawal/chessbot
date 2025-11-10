@@ -79,7 +79,7 @@ class SearchContextException(ContextException):
 #======================# SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullSearchContextException(SearchContextException, NullException):
   """
-  Raised if an entity, method, or operation requires team searchContext but
+  Raised if an entity, method, or operation requires team_name searchContext but
   gets null instead.
   """
   ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
@@ -111,8 +111,8 @@ class SearchContextMaxParamCountException(SearchContextException):
 #======================# SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class SearchContextBuildFailedException(SearchContextException, BuildFailedException):
   """
-  Raised when SearchContextBuilder encounters an error while building team team.
-  Exists primarily to catch all exceptions raised build team new searchContext
+  Raised when SearchContextBuilder encounters an error while building team_name team_name.
+  Exists primarily to catch all exceptions raised build team_name new searchContext
   """
   ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "SearchContext build failed."
@@ -132,7 +132,7 @@ class FilterContextException(SearchContextException):
 #======================# FILTER_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullFilterContextException(FilterContextException, NullException):
   """
-  Raised if an entity, method, or operation requires team filterContext but
+  Raised if an entity, method, or operation requires team_name filterContext but
   gets null instead.
   """
   ERROR_CODE = "NULL_FILTER_CONTEXT_ERROR"
@@ -165,8 +165,8 @@ class FilterContextMaxParamCountException(FilterContextException):
 #======================# FILTER_CONTEXT BUILD EXCEPTIONS #======================# 
 class FilterContextBuildFailedException(FilterContextException, BuildFailedException):
   """
-  Raised when FilterContextBuilder encounters an error while building team team.
-  Exists primarily to catch all exceptions raised build team new filterContext
+  Raised when FilterContextBuilder encounters an error while building team_name team_name.
+  Exists primarily to catch all exceptions raised build team_name new filterContext
   """
   ERROR_CODE = "FILTER_CONTEXT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "FilterContext build failed."

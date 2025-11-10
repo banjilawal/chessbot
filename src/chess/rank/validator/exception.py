@@ -1,7 +1,7 @@
-# src/chess/rank/validation/exception.py
+# src/chess/rank_name/validation/exception.py
 
 """
-Module: chess.rank.validator.exception
+Module: chess.rank_name.validator.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

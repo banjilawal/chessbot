@@ -90,7 +90,7 @@ class InvalidArenaException(ArenaException, ValidationException):
 #======================# ARENA BUILD EXCEPTIONS #======================#  
 class ArenaBuildFailedException(ArenaException, BuildFailedException):
   """
-  Raised when ArenaBuilder crashed while building team new arena. Exists
+  Raised when ArenaBuilder crashed while building team_name new arena. Exists
   primarily to catch all exceptions raised creating arenas.
   """
   ERROR_CODE = "ARENA_BUILD_FAILED_ERROR"

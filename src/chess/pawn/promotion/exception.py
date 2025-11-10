@@ -117,7 +117,7 @@ class PromotionEventException(ChessException):
 
 #======================# PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
 class NullPromotionEventException(PromotionEventException, NullException):
-  """Raised if an entity, method, or operation requires team `PromotionEvent` but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
   pass
 
 class PawnPromotionOnlyException(PromotionEventException):
@@ -127,7 +127,7 @@ class PawnPromotionOnlyException(PromotionEventException):
 
 class InvalidPromotionEventException(PromotionEventException, ValidationException):
   """
-  Raised by PromotionEventValidator if team client fails sanity checks. Exists to catch all
+  Raised by PromotionEventValidator if team_name client fails sanity checks. Exists to catch all
   exceptions raised validating an existing `PromotionEvent` candidate.
   """
   ERROR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
@@ -135,7 +135,7 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
 
 class DoublePromotionException(PromotionEventException):
   """
-  Raised when attempting promoting team owner already elevated to Queen bounds.
+  Raised when attempting promoting team_name owner already elevated to Queen bounds.
   Only pieces with Pawn or King bounds can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
@@ -148,7 +148,7 @@ class DoublePromotionException(PromotionEventException):
 
 class DoublePromotionRolledBackException(RollBackException):
   """
-  Raised if team notification attempts promoting team owner already elevated to Queen bounds.
+  Raised if team_name notification attempts promoting team_name owner already elevated to Queen bounds.
   Only pieces with Pawn or King bounds can be promoted. The notification was rolled
   back before raising this err.
   """
@@ -162,7 +162,7 @@ class DoublePromotionRolledBackException(RollBackException):
 # ======================# PIECE PROMOTION EXCEPTIONS #======================#
 class DoublePromotionException(PieceException):
   """
-  Raised when attempting promoting team owner already elevated to Queen bounds.
+  Raised when attempting promoting team_name owner already elevated to Queen bounds.
   Only pieces with Pawn or King bounds can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
@@ -171,7 +171,7 @@ class DoublePromotionException(PieceException):
 
 class DoublePromotionRolledBackException(PieceRollBackException):
   """
-  Raised if team notification attempts promoting team owner already elevated to Queen bounds.
+  Raised if team_name notification attempts promoting team_name owner already elevated to Queen bounds.
   Only pieces with Pawn or King bounds can be promoted. The notification was rolled
   back before raising this err.
   """
@@ -185,7 +185,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
 #======================# PROMOTION_EVENT BUILD EXCEPTIONS #======================#  
 class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
   """
-  Raised when `PromotionEventBuilder` crashed while building team new `PromotionEven`. Exists
+  Raised when `PromotionEventBuilder` crashed while building team_name new `PromotionEven`. Exists
   primarily to catch all exceptions raised creating `PromotionEvent` objects.
   """
   ERROR_CODE = "PROMOTION_EVENT_BUILD_FAILED_ERROR"
@@ -201,7 +201,7 @@ class PromotionTransactionException(TransactionException):
   DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
 
 class NullPromotionTransactionException(TransactionException):
-  """Raised if an entity, method, or operation requires team `PromotionEvent` but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
   ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
 
@@ -223,7 +223,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
+**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `CoordException`). This enables precise error
@@ -287,10 +287,10 @@ class ActorException(AttackException):
 
 class ActorRollBackException(ActorException, RollbackException):
   """
-  Any inconsistencies team owner introduces into team notification need to be rolled back.
-  This is the super class of team owner mutator operations, methods, or fields that raise
+  Any inconsistencies team_name owner introduces into team_name notification need to be rolled back.
+  This is the super class of team_name owner mutator operations, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
-  exists primarily to allow catching all Piece exceptions that happen when team failed
+  exists primarily to allow catching all Piece exceptions that happen when team_name failed
   notification must be rolled back.
   """
   ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
@@ -316,7 +316,7 @@ class ActorNotOnBoardException(ActorException):
 
 
 class ActorPlacementRequiredException(ActorException):
-  """Raised when team potential actor_candidate has not been placed on the board_validator."""
+  """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
   ERROR_CODE = "ACTOR_PLACEMENT_REQUIRED_ERROR"
   DEFAULT_MESSAGE = (
     "Required actor_candidate has an empty position stack. It as not been placed on the board_validator. Event cannot be executed."
@@ -345,7 +345,7 @@ class CapturedActorCannotMoveException(ActorException):
   A captured owner cannot move.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_ERROR"
-  DEFAULT_MESSAGE = "A captured actor_candidate cannot move to team square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot move to team_name square."
 
 
 class CapturedActorCannotScanException(ActorException):
@@ -353,23 +353,23 @@ class CapturedActorCannotScanException(ActorException):
   A captured owner cannot blocking.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "A captured actor_candidate cannot blocking team square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot blocking team_name square."
 
 
 class CheckMatedKingActivityException(ActorException):
   """
-  A checkmated occupation cannot act. The game should end once team occupation is checkmated
+  A checkmated occupation cannot act. The game should end once team_name occupation is checkmated
   """
   ERROR_CODE = "CHECKMATED_KING_ACTIVITY_ERROR"
   DEFAULT_MESSAGE = (
-    "A checkmated occupation cannot do anything. The game ends when team occupation is checkmated."
+    "A checkmated occupation cannot do anything. The game ends when team_name occupation is checkmated."
   )
 
 
 # ======================# SUBJECT EXCEPTIONS #======================#
 class SubjectException(AttackException):
   """
-  SubjectException classes are raised on team owner acted upon. They are raised on the same errors as ActorException,
+  SubjectException classes are raised on team_name owner acted upon. They are raised on the same errors as ActorException,
   Using SubjectException makes tracing which side of the interaction is raising an error easier.
   """
   ERROR_CODE = "SUBJECT_ERROR"
@@ -377,19 +377,19 @@ class SubjectException(AttackException):
 
 
 class InvalidSubjectException(SubjectException, InvalidAttackException):
-  """Raised if team required enemy fails validate."""
+  """Raised if team_name required enemy fails validate."""
   ERROR_CODE = "SUBJECT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Required enemy failed validate. Actor cannot fire travel onto enemy"
 
 
 class SubjectNotOnBoardException(SubjectException):
-  """Raised when team required enemy is not found on the board_validator."""
+  """Raised when team_name required enemy is not found on the board_validator."""
   ERROR_CODE = "SUBJECT_NOT_ON_BOARD_ERROR"
   DEFAULT_MESSAGE = "Required enemy was not found on the board_validator. Actor cannot fire travel onto enemy"
 
 
 class SubjectPlacementRequiredException(SubjectException):
-  """Raised when team required enemy has not been placed on the board_validator."""
+  """Raised when team_name required enemy has not been placed on the board_validator."""
   ERROR_CODE = "SUBJECT_PLACEMENT_REQUIRED_ERROR"
   DEFAULT_MESSAGE = (
     "Required enemy has an empty position stack. It as not been placed on the board_validator. Actor cannot"

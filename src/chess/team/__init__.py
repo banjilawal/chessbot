@@ -1,7 +1,7 @@
-# src/chess/team/__init__.py
+# src/chess/team_name/__init__.py
 
 """
-Module: chess.team.__init__
+Module: chess.team_name.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -28,14 +28,14 @@ class BuilderException(ChessException):
   DEFAULT_MESSAGE = "Builder raised an rollback_exception."
 
 class NullBuilderException(BuilderException, NullException):
-  """Raised if an entity, method, or operation requires team Engine but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
   ERROR_CODE = "NULL_ERROR"
   DEFAULT_MESSAGE = "Builder cannot be null"
 
 class BuildFailedException(BuilderException):
   """
-  Raised when team Builder encounters an error while building an object. Exists primarily to
-  catch all exceptions raised building team new objects.
+  Raised when team_name Builder encounters an error while building an object. Exists primarily to
+  catch all exceptions raised building team_name new objects.
   """
   ERROR_CODE = "BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "build failed."

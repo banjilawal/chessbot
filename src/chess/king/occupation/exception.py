@@ -121,7 +121,7 @@ class HostageActivityException(PieceException):
 
 class HostageCannotAttackException(HostageActivityException):
   """
-  Raised if team captured owner tries to attack.
+  Raised if team_name captured owner tries to attack.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
   DEFAULT_MESSAGE = "Captured owner cannot attack."
@@ -129,7 +129,7 @@ class HostageCannotAttackException(HostageActivityException):
 
 class HostageCannotMoveException(HostageActivityException):
   """
-  Raised if team captured owner tries to move.
+  Raised if team_name captured owner tries to move.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_MOVE_ERROR"
   DEFAULT_MESSAGE = "Captured owner cannot move."
@@ -137,9 +137,9 @@ class HostageCannotMoveException(HostageActivityException):
 
 class HostageCannotScanException(HostageActivityException):
   """
-  Raised if team captured owner tries to blocking team square.
+  Raised if team_name captured owner tries to blocking team_name square.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "Captured owner cannot blocking team sqaure."
+  DEFAULT_MESSAGE = "Captured owner cannot blocking team_name sqaure."
 
 

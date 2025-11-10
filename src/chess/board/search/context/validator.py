@@ -1,6 +1,6 @@
-# src/chess/team/team.py
+# src/chess/team_name/team_name.py
 """
-Module: chess.team.team
+Module: chess.team_name.team_name
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -15,7 +15,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -38,7 +38,7 @@ From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
     `IdValidator`, `NameValidator`
 
-From `chess.team`:
+From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.commander`:
@@ -86,11 +86,11 @@ class BoardSearchContextValidator(Validator):
   
   Usage:
     ```python
-    # Validate an existing team
+    # Validate an existing team_name
     team_validation = TeamValidator.validate(candidate)  
     if not team_validation.is_success():
       raise team_validation.err
-    team = cast(Team, team_validation.payload)
+    team_name = cast(Team, team_validation.payload)
     ```
 
   Use `TeamBuilder` for construction, `TeamValidator` for verification.
@@ -101,7 +101,7 @@ class BoardSearchContextValidator(Validator):
     """
     Validates that an existing `Team` instance meets all specifications.
 
-    Performs comprehensive validate on team `Team` instance that already exists,
+    Performs comprehensive validate on team_name `Team` instance that already exists,
     checking type safety, null values, and component bounds. Unlike `TeamBuilder`
     which creates new valid Teams, this validator verifies existing `Team`
     instances from external sources, deserialization, or after modifications.
@@ -114,7 +114,7 @@ class BoardSearchContextValidator(Validator):
       `InvalidTeamException` otherwise.
 
     Raises:
-      `TypeError`: if `candidate` is not team Team` object
+      `TypeError`: if `candidate` is not team_name Team` object
       `NullTeamException`: if `candidate` is null
       `InvalidIdException`: if `visitor_id` fails validate checks
       `InvalidCommanderException`: if `commander` fails validate checks
@@ -131,7 +131,7 @@ class BoardSearchContextValidator(Validator):
 
       from chess.team import Team
       if not isinstance(candidate, Team):
-        raise TypeError(f"{method} Expected team Team, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name Team, got {type(candidate).__name__}")
 
       team = cast(Team, candidate)
 
@@ -181,8 +181,8 @@ class BoardSearchContextValidator(Validator):
 #   from chess.commander.commander import Human
 #   person = Human(1, "person")
 #
-#   from chess.team import Team
-#   team = Team(visitor_team_id=1, controller=person, schema=TeamProfile.BLACK)
+#   from chess.team_name import Team
+#   team_name = Team(visitor_team_id=1, controller=person, schema=TeamProfile.BLACK)
 #
 #
 # if __name__ == "__main__":

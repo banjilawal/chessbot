@@ -24,6 +24,6 @@ log = logging.getLogger("chessbot")
 # from .bounds import *
 # from .scalar import *
 # from .system import *
-# from .team import *
+# from .team_name import *
 # from .vector import *
 

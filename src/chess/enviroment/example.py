@@ -14,10 +14,10 @@
 #     f"{method}: {NoInitialPlacementException.DEFAULT_MESSAGE}"
 #   ))
 #
-# # If the square is not on its team roster it cannot be a TravelEvent resource_candidate. This might have been
+# # If the square is not on its team_name roster it cannot be a TravelEvent resource_candidate. This might have been
 # # checked by the SquareValidator
-# team = square.team
-# if square not in team.roster:
+# team_name = square.team_name
+# if square not in team_name.roster:
 #   return ValidationResult(rollback_exception=ResourceNotOnRosterCannotMoveException(
 #     f"{method}: {ResourceNotOnRosterCannotMoveException.DEFAULT_MESSAGE}"
 #   ))
@@ -98,7 +98,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team
+**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
 highly granular and hierarchical set of exceptions, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `CoordException`). This enables precise error

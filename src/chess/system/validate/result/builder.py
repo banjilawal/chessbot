@@ -19,8 +19,8 @@ by the `ValidationResultValidator`.
 
 THEME:
 -----
-**Integrity, Consistency, Validation.** The module's design centers on team separating
-complexities of the build process into team utility from the `ValidationResult` constructor.
+**Integrity, Consistency, Validation.** The module's design centers on team_name separating
+complexities of the build process into team_name utility from the `ValidationResult` constructor.
 
 PURPOSE:
 -------
@@ -35,7 +35,7 @@ This module requires components from various sub-systems:
 * `chess.square`: Location service structure (`Square`)
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.validationResult`: ValidationResult subtypes (`KingValidationResult`, `CombatantValidationResult`, etc.)
-* `chess.team`: Roster management, rollback_exception handling
+* `chess.team_name`: Roster management, rollback_exception handling
 * `chess.notification`: Base notification and roster types
 
 CONTAINS:
@@ -59,12 +59,12 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
   @LoggingLevelRouter.monitor
   def build(cls, payload: T, exception: Exception) -> BuildResult[ValidationResult]:
     """
-    Constructs team new `Square` that works correctly.
+    Constructs team_name new `Square` that works correctly.
 
     Args:
       `visitor_name`(`str`): Must pass `NameValidator` checks.
       `bounds`(`Rank`): The `bounds` which determines how the validationResult moves and its capture value.
-      `team`(`Team`): Specifies if the `validationResult` is white or black.
+      `team_name`(`Team`): Specifies if the `validationResult` is white or black.
 
     Returns:
     BuildResult[ValidationResult]: A `BuildResult` containing either:
@@ -75,10 +75,10 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
     `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
       * `InvalidNameException`: if `visitor_name` fails validate checks
       * `InvalidRankException`: if `bounds` fails validate checks
-      * `InvalidTeamException`: if `team` fails validate checks
-      * `InvalidTeamAssignmentException`: If `validationResult.team` is different from `team` parameter
-      * `FullRankQuotaException`: If the `team` has no empty slots for the `validationResult.bounds`
-      * `FullRankQuotaException`: If `validationResult.team` is equal to `team` parameter but `team.roster` still does
+      * `InvalidTeamException`: if `team_name` fails validate checks
+      * `InvalidTeamAssignmentException`: If `validationResult.team_name` is different from `team_name` parameter
+      * `FullRankQuotaException`: If the `team_name` has no empty slots for the `validationResult.bounds`
+      * `FullRankQuotaException`: If `validationResult.team_name` is equal to `team_name` parameter but `team_name.roster` still does
         not have the validationResult
     """
     method = "TransactionResultBuilder.build"

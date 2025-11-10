@@ -24,7 +24,7 @@ __all__ = [
 
 class AttackEventException(ChessException):
   """
-  Super class of all exceptions team Piece object raises. Do not use directly. Subclasses
+  Super class of all exceptions team_name Piece object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
   all owner exceptions
   """
@@ -40,7 +40,7 @@ class InvalidAttackEventException(TravelEventException, ValidationException):
 
 class NullAttackEventException(AttackEventException, NullException):
   """
-  Raised if an entity, method, or operation requires team owner but gets null instead.
+  Raised if an entity, method, or operation requires team_name owner but gets null instead.
   Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
   Do not throw NullAttackException. Raise NullKingPiece or NullCombatantPiece instead.
   they are more descriptive and better suited for debugging.
@@ -95,7 +95,7 @@ class AttackEventBuildFailedException(AttackEventException, BuildFailedException
 class CapturePieceException(PieceException):
   """
   Several exceptions can be raised during capture operations. This class is the parent of
-  exceptions team owner can raise being captured or attacking. Do not use directly. Subclasses
+  exceptions team_name owner can raise being captured or attacking. Do not use directly. Subclasses
   give details useful for debugging.
   """
   ERROR_CODE = "PIECE_CAPTURE_ERROR"
@@ -104,18 +104,18 @@ class CapturePieceException(PieceException):
 
 class CaptureFriendException(CapturePieceException):
   """
-  Raised if team owner attempts to capture team friend.
+  Raised if team_name owner attempts to capture team_name friend.
   """
   ERROR_CODE = "FRIEND_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture team friend."
+  DEFAULT_MESSAGE = "Cannot capture team_name friend."
 
 
 class DoubleCaptureException(CapturePieceException):
   """
-  Raised when team owner attempts to capture an enemy combatant that is already team prisoner
+  Raised when team_name owner attempts to capture an enemy combatant that is already team_name prisoner
   """
   ERROR_CODE = "DOUBLE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture team owner that is already team prisoner."
+  DEFAULT_MESSAGE = "Cannot capture team_name owner that is already team_name prisoner."
 
 
 class UnsetCaptureException(CapturePieceException):
@@ -124,7 +124,7 @@ class UnsetCaptureException(CapturePieceException):
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR"
   DEFAULT_MESSAGE = (
-    "Cannot set team prisoner's captor to null. A captured owner cannot be freed."
+    "Cannot set team_name prisoner's captor to null. A captured owner cannot be freed."
   )
 
 
@@ -137,7 +137,7 @@ class PieceCapturingItSelfException(CapturePieceException):
 # ======================# PIECE CAPTURE EXCEPTIONS WITH ROLLBACK #======================#
 class CaptureRollbackException(CapturePieceException, RollbackException):
   """
-  RollBackCapture exceptions should be raised in ACID transactions where team capture can
+  RollBackCapture exceptions should be raised in ACID transactions where team_name capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
   ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
@@ -146,42 +146,42 @@ class CaptureRollbackException(CapturePieceException, RollbackException):
 
 class CaptureFriendRolledBackExceptionCapture(CaptureRollbackException):
   """
-  Raised if team notification attempts capturing team friend. The notification
+  Raised if team_name notification attempts capturing team_name friend. The notification
   was rolled back before raising this err.
   """
   ERROR_CODE = "FRIEND_CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot capture team friend. Transaction rollback performed."
+    "Cannot capture team_name friend. Transaction rollback performed."
   )
 
 
 class DoubleCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
-  Raised if team notification attempts capturing an enemy combatant that is already
-  team prisoner. The notification was rolled back before raising this err.
+  Raised if team_name notification attempts capturing an enemy combatant that is already
+  team_name prisoner. The notification was rolled back before raising this err.
   """
   ERROR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot capture team owner that is already team prisoner. Transaction "
+    "Cannot capture team_name owner that is already team_name prisoner. Transaction "
     "rollback performed."
   )
 
 
 class UnsetCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
-  Raised if team notification attempts setting prisoner's captor consistency null.
+  Raised if team_name notification attempts setting prisoner's captor consistency null.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot set team prisoner's captor to null. A captured owner cannot be freed. "
+    "Cannot set team_name prisoner's captor to null. A captured owner cannot be freed. "
     "Transaction rollback performed."
   )
 
 
 class CapturingItSelfRolledBackException(CapturePieceException):
   """
-  Raised if team notification attempts to set team owner as its own captor. The notification was
+  Raised if team_name notification attempts to set team_name owner as its own captor. The notification was
   rolled back before raising this err.
   """
   ERROR_CODE = "PIECE_CAPTURING_IT_SELF_ROLLED_BACK_ERROR"
@@ -192,7 +192,7 @@ class CapturingItSelfRolledBackException(CapturePieceException):
 class CapturePieceException(PieceException):
   """
   Several exceptions can be raised during capture operations. This class is the parent of
-  exceptions team owner can raise being captured or attacking. Do not use directly. Subclasses
+  exceptions team_name owner can raise being captured or attacking. Do not use directly. Subclasses
   give details useful for debugging.
   """
   ERROR_CODE = "PIECE_CAPTURE_ERROR"
@@ -225,7 +225,7 @@ class AttackingNullException(AttackEventException, NullException):
 
 class HostageCannotAttackException(AttackEventException):
   """
-  Raised if team captured owner tries to attack.
+  Raised if team_name captured owner tries to attack.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
   DEFAULT_MESSAGE = "Captured owner cannot attack."

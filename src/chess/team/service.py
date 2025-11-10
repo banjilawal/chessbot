@@ -1,7 +1,7 @@
-# src/chess/team/service.py
+# src/chess/team_name/service.py
 
 """
-Module: chess.team.service
+Module: chess.team_name.service
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

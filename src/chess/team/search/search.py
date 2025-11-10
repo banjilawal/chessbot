@@ -1,6 +1,6 @@
-# src/chess/team/team.py
+# src/chess/team_name/team_name.py
 """
-Module: chess.team.team
+Module: chess.team_name.team_name
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -15,7 +15,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -38,7 +38,7 @@ From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
     `IdValidator`, `NameValidator`
 
-From `chess.team`:
+From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.commander`:
@@ -73,34 +73,34 @@ class TeamSearch(Piece):
   ----------
   """
   """
-  Static methods for entities and operations that need to old_search team Team for pieces and ranks. Provides consistent
+  Static methods for entities and operations that need to old_search team_name Team for pieces and ranks. Provides consistent
   old_search interface and return types across all old_search operations. Validates input parameters before searching to
   ensure safe operations. Returns SearchResult objects encapsulating either the found entity or error information.
 
   Usage:
   ```python
-    from chess.team import Team, BoardSearch
+    from chess.team_name import Team, BoardSearch
     from chess.owner import Piece
    ```
    
   Methods:
-    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find team owner by its visitor_id on the given `team`.
+    - `by_id(discovery_id: int, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its visitor_id on the given `team_name`.
     
-    - `by_name(visitor_name: str, team: Team) -> SearchResult[Piece]`: Find team owner by its visitor_name on the given `team`.
+    - `by_name(visitor_name: str, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its visitor_name on the given `team_name`.
     
-    - `by_roster_number(roster_number: int, team: Team) -> SearchResult[Piece]`: Find team owner by its roster number
-      on the given team. Roster numbers are unique within team team. Not unique across teams.
+    - `by_roster_number(roster_number: int, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its roster number
+      on the given team_name. Roster numbers are unique within team_name team_name. Not unique across teams.
       
-    - `hostage_by_idy(discovery_id: int, team: Team) -> SearchResult[CombatantPiece]`:
+    - `hostage_by_idy(discovery_id: int, team_name: Team) -> SearchResult[CombatantPiece]`:
       
-    - `by_rank(bounds: Rank, team: Team) -> SearchResult[list[Piece]]`: A list of all members with `bounds` on
-      given team. of team specific bounds within team team.
+    - `by_rank(bounds: Rank, team_name: Team) -> SearchResult[list[Piece]]`: A list of all members with `bounds` on
+      given team_name. of team_name specific bounds within team_name team_name.
 
   Note:
     DO NOT USE ANY OTHER METHODS TO SEARCH A TEAM. USE ONLY THE METHODS IN THIS CLASS.
 
   See Also:
-    `Team`: The team being searched
+    `Team`: The team_name being searched
     `Piece`: The owner being searched for
     `SearchResult`: The return type for all old_search operations
   """

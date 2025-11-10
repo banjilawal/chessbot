@@ -14,49 +14,49 @@ from chess.coord import Coord
 from chess.piece import Piece
 from chess.system import LoggingLevelRouter, Search, SearchResult
 from chess.domain import (
-    Domain, DomainValidator, VisitorSearchContext, VisitorSearchContextValidator, VisitorSearchCoordCollisionException,
-    VisitorSearchIdCollisionException, VisitorSearchNameCollisionException
+    Domain, DomainValidator, ResidentFilter, ResidentFilterValidator, ResidentSearchCoordCollisionException,
+    ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 
 
-class DomainVisitorSearch(Search[Domain, Piece]):
+class DomainResidentSearch(Search[Domain, Piece]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def search(cls, data_owner: Domain, search_context: VisitorSearchContext) -> SearchResult[List[Piece]]:
+    def search(cls, data_owner: Domain, search_context: ResidentFilter) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch.search"
+        method = "DomainResidentSearch.search"
         
         try:
             domain_validation = DomainValidator.validate(data_owner)
             if domain_validation.is_failure():
                 return SearchResult.failure(domain_validation.exception)
             
-            search_context_validation = VisitorSearchContextValidator.validate(search_context)
+            search_context_validation = ResidentFilterValidator.validate(search_context)
             if search_context_validation.is_failure():
                 return SearchResult.failure(search_context_validation.exception)
             
-            if search_context.visitor_id is not None:
-                return cls._id_search(domain=data_owner, id=search_context.visitor_id)
+            if search_context.resident_id is not None:
+                return cls._id_search(domain=data_owner, id=search_context.resident_id)
             
-            if search_context.visitor_name is not None:
-                return cls._name_search(domain=data_owner, name=search_context.visitor_name)
+            if search_context.resident_name is not None:
+                return cls._name_search(domain=data_owner, name=search_context.resident_name)
             
-            if search_context.visitor_coord is not None:
-                return cls._coord_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.resident_coord is not None:
+                return cls._coord_search(domain=data_owner, coord=search_context.resident_coord)
             
-            if search_context.visitor_rank is not None:
-                return cls._rank_name_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.resident_rank is not None:
+                return cls._rank_name_search(domain=data_owner, coord=search_context.resident_coord)
             
-            if search_context.visitor_ransom is not None:
-                return cls._ransom_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.resident_ransom is not None:
+                return cls._ransom_search(domain=data_owner, coord=search_context.resident_coord)
             
             if search_context.team_id is not None:
-                return cls._team_id_search(domain=data_owner, coord=search_context.visitor_coord)
+                return cls._team_id_search(domain=data_owner, coord=search_context.resident_coord)
             
-            if search_context.visitor_team is not None:
-                return cls._team_name_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.resident_team is not None:
+                return cls._team_name_search(domain=data_owner, coord=search_context.resident_coord)
         
         except Exception as e:
             return SearchResult.failure(e)
@@ -66,16 +66,16 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _id_search(cls, domain: Domain, id: int) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._id_search"
+        method = "DomainResidentSearch._id_search"
         
         try:
-            matches = [visitor for visitor in domain.visitors if visitor.id == id]
+            matches = [resident for resident in domain.residents if resident.id == id]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
                 return SearchResult.success(matches)
             else:
-                return cls._resolve_duplicate_ids(duplicates=matches, domain=domain)
+                return cls._resolve_duplicate_ids(domain=domain, duplicates=matches)
         except Exception as e:
             return SearchResult.failure(e)
     
@@ -84,16 +84,16 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _name_search(cls, domain: Domain, name: str) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._name_search"
+        method = "DomainResidentSearch._name_search"
         
         try:
-            matches = [visitor for visitor in domain.visitors if visitor.name.upper == name.upper()]
+            matches = [resident for resident in domain.residents if resident.name.upper == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
                 return SearchResult.success(matches)
             else:
-                return cls._resolve_duplicate_names(duplicates=matches, domain=domain)
+                return cls._resolve_duplicate_names(domain=domain, duplicates=matches)
         except Exception as e:
             return SearchResult.failure(e)
     
@@ -102,28 +102,28 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _coord_search(cls, domain: Domain, coord: Coord) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._coord_search"
+        method = "DomainResidentSearch._coord_search"
         
         try:
-            matches = [visitor for visitor in domain.visitor if visitor.current_position == coord]
+            matches = [resident for resident in domain.resident if resident.current_position == coord]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
                 return SearchResult.success(matches)
             else:
-                return cls._resolve_duplicate_coords(matches=matches, domain=domain)
+                return cls._resolve_duplicate_coords(domain=domain, duplicates=matches)
         except Exception as e:
             return SearchResult.failure(e)
     
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _rank_name_search(cls, domain: Domain, rank_name: str) -> SearchResult[List[Piece]]:
+    def _rank_name_search(cls, domain: Domain, name: str) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._rank_name_search"
+        method = "DomainResidentSearch._rank_name_search"
         
         try:
-            matches = [visitor for visitor in domain.visitors if visitor.rank.name.upper() == rank_name.upper()]
+            matches = [resident for resident in domain.residents if resident.rank.name.upper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -137,10 +137,10 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _ransom_search(cls, domain: Domain, ransom: int) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._ransom_search"
+        method = "DomainResidentSearch._ransom_search"
         
         try:
-            matches = [visitor for visitor in domain.visitors if visitor.rank.ransom == ransom]
+            matches = [resident for resident in domain.residents if resident.rank.ransom == ransom]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -153,10 +153,10 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _team_id_search(cls, domain: Domain, id: int) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._team_id_search"
+        method = "DomainResidentSearch._team_id_search"
         
         try:
-            matches = [visitor for visitor in domain.visitor if visitor.team.visitor_id == id]
+            matches = [resident for resident in domain.resident if resident.team.id == id]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -171,10 +171,10 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _team_name_search(cls, domain: Domain, name: str) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._team_name_search"
+        method = "DomainResidentSearch._team_name_search"
         
         try:
-            matches = [visitor for visitor in domain.visitor if visitor.team.visitor_name.uppper() == name.upper()]
+            matches = [resident for resident in domain.resident if resident.team.name.uppper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -188,13 +188,13 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _resolve_duplicate_ids(cls, domain: Domain, duplicates: List[Piece]) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._resolve_duplicate_ids"
+        method = "DomainResidentSearch._resolve_duplicate_ids"
         
         try:
             # Pop the first one to compare to all the others.
             target = duplicates.pop()
             
-            # Each piece should have a different visitor_id, visitor_name, and current_position. Stripping all the misses from
+            # Each piece should have a different resident_id, resident_name, and current_position. Stripping all the misses from
             # the target should only leave duplicates
             uniques = [
                 piece for piece in duplicates if piece.id == target.id and (
@@ -215,7 +215,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
                 )
                 return SearchResult.success(striped_list)
         
-        except VisitorSearchIdCollisionException as e:
+        except ResidentSearchIdCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
     
@@ -223,7 +223,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _resolve_duplicate_names(cls, domain: Domain, duplicates: List[Piece]) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainVisitorSearch._resolve_duplicate_names"
+        method = "DomainResidentSearch._resolve_duplicate_names"
         
         try:
             target = duplicates.pop()
@@ -245,7 +245,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
                 )
                 return SearchResult.success(striped_list)
         
-        except VisitorSearchNameCollisionException as e:
+        except ResidentSearchNameCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
     
@@ -272,7 +272,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
                     num_of_runs=num_of_runs
                 )
                 return SearchResult.success(striped_list)
-        except VisitorSearchCoordCollisionException as e:
+        except ResidentSearchCoordCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
     @classmethod
@@ -285,19 +285,19 @@ class DomainVisitorSearch(Search[Domain, Piece]):
             run_number: int
     ) -> (Domain, List[Piece]):
         """"""
-        method = "DomainVisitorPieceSearch._duplicate_remover"
+        method = "DomainResidentPieceSearch._duplicate_remover"
         
         if run_number == 0:
             return duplicates
         
         if run_number > 0:
-            for visitor in domain.visitors:
+            for resident in domain.residents:
                 if (
-                        visitor.id == target.id and
-                        visitor.name.upper() == target.name.upper() and
-                        visitor.current_position == target.current_position
+                        resident.id == target.id and
+                        resident.name.upper() == target.name.upper() and
+                        resident.current_position == target.current_position
                 ):
-                    domain.visitors.remove(visitor)
-                    duplicates.remove(visitor)
+                    domain.residents.remove(resident)
+                    duplicates.remove(resident)
                     return cls._duplicate_remover(domain, duplicates, target, run_number - 1)
         return

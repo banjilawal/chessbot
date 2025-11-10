@@ -35,7 +35,7 @@ class CoordValidatorTest(unittest.TestCase):
 
 
   def test_null_row_raises_exception(self):
-    # Create team mock Coord with row = None
+    # Create team_name mock Coord with row = None
     mock_coord = create_autospec(Coord, instance=True)
     mock_coord.row = None
     mock_coord.column = 0 # valid column
@@ -47,7 +47,7 @@ class CoordValidatorTest(unittest.TestCase):
 
   def test_row_below_bound_raises_exception(self):
 
-    # Create team mock Coord with row = None
+    # Create team_name mock Coord with row = None
     mock_coord = create_autospec(Coord, instance=True)
     mock_coord.row = -1
     mock_coord.column = 0 # valid column
@@ -58,7 +58,7 @@ class CoordValidatorTest(unittest.TestCase):
     self.assertIsInstance(ctx.exception.__cause__, RowBelowBoundsException)
 
   def test_row_above_or_equals_bound_raises_exception(self):
-    # Create team mock Coord with row = None
+    # Create team_name mock Coord with row = None
     mock_coord = create_autospec(Coord, instance=True)
     mock_coord.row = ROW_SIZE
     mock_coord.column = 0 # valid column
@@ -70,7 +70,7 @@ class CoordValidatorTest(unittest.TestCase):
 
 
   def test_null_column_raises_exception(self):
-    # Create team mock Coord with row = None
+    # Create team_name mock Coord with row = None
     mock_coord = create_autospec(Coord, instance=True)
     mock_coord.row = 0
     mock_coord.column = None
@@ -81,7 +81,7 @@ class CoordValidatorTest(unittest.TestCase):
     self.assertIsInstance(ctx.exception.__cause__, NullColumnException)
 
   def test_column_below_bound_raises_exception(self):
-    # Create team mock Coord with row = None
+    # Create team_name mock Coord with row = None
     mock_coord = create_autospec(Coord, instance=True)
     mock_coord.row = 0
     mock_coord.column = -1
@@ -92,7 +92,7 @@ class CoordValidatorTest(unittest.TestCase):
     self.assertIsInstance(ctx.exception.__cause__, ColumnBelowBoundsException)
 
   def test_column_above_bound_raises_exception(self):
-    # Create team mock Coord with row = None
+    # Create team_name mock Coord with row = None
     mock_coord = create_autospec(Coord, instance=True)
     mock_coord.row = 0
     mock_coord.column = COLUMN_SIZE

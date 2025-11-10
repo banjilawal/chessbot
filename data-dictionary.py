@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field, validator
 from typing import Optional
 
 
-# --- Custom Exceptions (You can define these in team separate file) ---
+# --- Custom Exceptions (You can define these in team_name separate file) ---
 
 class NullException(Exception):
   """Exception raised for null values."""
@@ -34,11 +34,11 @@ COLUMN_SIZE = 8
 
 class Delta(BaseModel):
   """
-  Represents team null-pkg for shifting coordinates.
+  Represents team_name null-pkg for shifting coordinates.
 
   Attributes:
-    row_delta (int): The amount to add to team visitor_coord's row.
-    column_delta (int): The amount to add to team visitor_coord's column.
+    row_delta (int): The amount to add to team_name visitor_coord's row.
+    column_delta (int): The amount to add to team_name visitor_coord's column.
   """
   row_delta: int = Field(...)
   column_delta: int = Field(...)
@@ -48,7 +48,7 @@ class Delta(BaseModel):
 
   def __mul__(self, scalar: int) -> 'Delta':
     """
-    Multiplies the Delta null-pkg by team scalar value.
+    Multiplies the Delta null-pkg by team_name scalar value.
     """
     if scalar is None:
       raise NullException("Scalar cannot be null for multiplication.")
@@ -61,7 +61,7 @@ class Delta(BaseModel):
 
 class Coordinate(BaseModel):
   """
-  Represents an immutable visitor_coord on team chessboard.
+  Represents an immutable visitor_coord on team_name chessboard.
 
   Attributes:
     row (int): The 0-based row index.
@@ -73,12 +73,12 @@ class Coordinate(BaseModel):
 
   class Config:
     frozen = True # Makes the model immutable
-    # You can add team custom validator to catch Pydantic's
+    # You can add team_name custom validator to catch Pydantic's
     # notification errors and re-raise them as your custom exceptions.
     # @validator('*', pre=True)
     # def check_bounds(cls, v):
     #   # Example of re-raising for 'row' consistency
-    #   # You would need team more complex state to see which consistency failed.
+    #   # You would need team_name more complex state to see which consistency failed.
     #   # This is often not needed as Pydantic's errors are clear.
     #   if 'row' in cls.__fields__ and not (0 <= v < ROW_SIZE):
     #     raise RowOutOfBoundsException()
@@ -86,7 +86,7 @@ class Coordinate(BaseModel):
 
   def shift(self, delta: Delta) -> 'Coord':
     """
-    Creates team new Coord shifted by team given Delta.
+    Creates team_name new Coord shifted by team_name given Delta.
 
     Args:
       delta (Delta): A null-pkg for the shift.
@@ -147,7 +147,7 @@ from data_definition_library import Coordinate, ChessPiece
 
 class ScoutReport(BaseModel):
   """
-  Encapsulates the findings of team single Scout's mission.
+  Encapsulates the findings of team_name single Scout's mission.
 
   Attributes:
     id (UUID): A unique identifier for the report.
@@ -164,7 +164,7 @@ class ScoutReport(BaseModel):
 
 class Scout(BaseModel):
   """
-  Represents team single ChessPiece on team scouting mission.
+  Represents team_name single ChessPiece on team_name scouting mission.
 
   Attributes:
     id (int): A unique identifier for the scout instance.
@@ -246,7 +246,7 @@ class Delta(BaseModel):
 
 class Coordinate(BaseModel):
   """
-  Represents an immutable visitor_coord on team chessboard with bounds checking.
+  Represents an immutable visitor_coord on team_name chessboard with bounds checking.
   """
   row: int = Field(..., ge=0, lt=ROW_SIZE)
   column: int = Field(..., ge=0, lt=COLUMN_SIZE)
@@ -277,7 +277,7 @@ class CartesianDistance(BaseModel):
 
 class CoordinateStack(BaseModel):
   """
-  An immutable stack for storing team ChessPiece's movement history.
+  An immutable stack for storing team_name ChessPiece's movement history.
   """
   _stack: List[Coordinate] = Field(default_factory=list)
 
@@ -294,7 +294,7 @@ class CoordinateStack(BaseModel):
 
 class Rank(BaseModel):
   """
-  An immutable service model for team ChessPiece's validate, defining its identity.
+  An immutable service model for team_name ChessPiece's validate, defining its identity.
   """
   rank_name: str = Field(...)
   capture_value: int = Field(..., ge=0)
@@ -327,7 +327,7 @@ class ChessPiece(BaseModel):
 
 class Square(BaseModel):
   """
-  Represents team single square on the chessboard.
+  Represents team_name single square on the chessboard.
   """
   id: int = Field(..., gt=0)
   name: str = Field(..., min_length=2, max_length=2)
@@ -340,7 +340,7 @@ class Square(BaseModel):
 
 class ChessBoard(BaseModel):
   """
-  Manages the state of the chessboard as team collection of Squares.
+  Manages the state of the chessboard as team_name collection of Squares.
   """
   id: int = Field(..., gt=0)
   squares: List[List[Square]]
@@ -351,7 +351,7 @@ class ChessBoard(BaseModel):
   @validator('squares')
   def check_board_size(cls, v):
     if len(v) != ROW_SIZE or not all(len(row) == COLUMN_SIZE for row in v):
-      raise ValueError(f"ChessBoard must be team {ROW_SIZE}x{COLUMN_SIZE} grid.")
+      raise ValueError(f"ChessBoard must be team_name {ROW_SIZE}x{COLUMN_SIZE} grid.")
     return v
 
 
@@ -360,7 +360,7 @@ class ChessBoard(BaseModel):
 
 class ScoutReport(BaseModel):
   """
-  Encapsulates the findings of team single Scout's mission.
+  Encapsulates the findings of team_name single Scout's mission.
   """
   id: UUID = Field(default_factory=uuid4)
   scout: ChessPiece
@@ -372,7 +372,7 @@ class ScoutReport(BaseModel):
 
 class Scout(BaseModel):
   """
-  Represents team single ChessPiece on team scouting mission.
+  Represents team_name single ChessPiece on team_name scouting mission.
   """
   id: int = Field(..., gt=0)
   chess_piece: ChessPiece

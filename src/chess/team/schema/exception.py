@@ -1,7 +1,7 @@
-# src/chess/team/schema/exception.py
+# src/chess/team_name/schema/exception.py
 
 """
-Module: chess.team.schema.exception
+Module: chess.team_name.schema.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -40,7 +40,7 @@ Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Exceptions: `ValidationException`, `NullException`
 
-From `chess.team`:
+From `chess.team_name`:
   * `TeamException`:
 
 CONTAINS:

@@ -33,7 +33,7 @@ __all__ = [
 
 class DomainException(ChessException):
     """
-    Super class of all exceptions team Domain object raises. Do not use directly. Subclasses
+    Super class of all exceptions team_name Domain object raises. Do not use directly. Subclasses
     give details useful for debugging. This class exists primarily to allow catching
     all owner exceptions
     """
@@ -64,9 +64,9 @@ class CapturedDomainOwnerException(DomainException):
     DEFAULT_MESSAGE = "Domain.discovery list is null. It should never be null. There may be service inconsistency or loss."
 
 class PieceNotOnRosterDomainOwnerException(DomainException):
-    """Raised if team owner has its team set but the owner is not on the roster."""
+    """Raised if team_name owner has its team_name set but the owner is not on the roster."""
     ERROR_CODE = "PIECE_NOT_ON_ROSTER_CANNOT_OWN_DOMAIN_ERROR"
-    DEFAULT_MESSAGE = "The owner has assigned itself a team. but is not listed on that team's roster."
+    DEFAULT_MESSAGE = "The owner has assigned itself a team_name. but is not listed on that team_name's roster."
 
 class CheckmatedKingDomainOwnerException(DomainException):
     """
@@ -87,7 +87,7 @@ class InconsistenDomainAddressException(DomainException, InconsistencyException)
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
     """
-    Raised if an entity, method, or operation requires team owner but gets null instead.
+    Raised if an entity, method, or operation requires team_name owner but gets null instead.
     Domain is an abstract method. KingDomain and CombatantDomain are its subclasses.
     Do not throw NullAttackException. Raise NullKingDomain or NullCombatantDomain instead.
     they are more descriptive and better suited for debugging.
@@ -98,7 +98,7 @@ class NullDomainException(DomainException, NullException):
 
 class RemovedPieceCannotOwnDomainException(DomainException):
     """
-    Raised if team KingDomain is null. Raise NullCombatant instead of NullAttackException
+    Raised if team_name KingDomain is null. Raise NullCombatant instead of NullAttackException
     """
     ERROR_CODE = "REMOVED_PIECE_CANNOT_OWN_DOMAIN_ERROR"
     DEFAULT_MESSAGE = "KingDomain cannot be null."

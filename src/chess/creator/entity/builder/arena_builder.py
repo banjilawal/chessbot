@@ -40,15 +40,15 @@ def main():
   # TeamPlacementManager.place_teams(arena)
   # return arena
   #
-  # print("white team commander", arena.white_owner,
-  #    "\nwhite chess pieces:", len(arena.white_owner.team.chess_pieces))
+  # print("white team_name commander", arena.white_owner,
+  #    "\nwhite chess pieces:", len(arena.white_owner.team_name.chess_pieces))
   #
-  # print("\nblack team commander", arena.black_owner,
-  #    "\nblack chess pieces:", len(arena.black_owner.team.chess_pieces))
+  # print("\nblack team_name commander", arena.black_owner,
+  #    "\nblack chess pieces:", len(arena.black_owner.team_name.chess_pieces))
 
 
   #
-  # for captor in arena.white_owner.team.chess_pieces:
+  # for captor in arena.white_owner.team_name.chess_pieces:
   #   print(captor, " current visitor_coord", captor.coordinate_stack.current_coordinate())
 
   # TeamPlacementManager.place_teams(arena)
@@ -57,7 +57,7 @@ def main():
   # for square in arena.chess_board.occupied_squares():
   #   print(square, " occupied by", square.occupant.visitor_name)
 
-  # for captor in arena.white_owner.team.chess_pieces:
+  # for captor in arena.white_owner.team_name.chess_pieces:
   #   print(captor, " current visitor_coord", captor.coordinate_stack.current_coordinate())
   # for square in arena.chess_board.squares:
   #   print(square)

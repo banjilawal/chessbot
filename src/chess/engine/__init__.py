@@ -12,12 +12,12 @@ the current `Board` to find the best move.
 
  NOTES:
    Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one DecisionEngine
-   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team Bot.
+   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name Bot.
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `DecisionEngine`: Abstract super class defining shared traits and behaviors of engines.
-  - `GreedyDecisionEngine`: `DecisionEngine` that uses team greedy algorithm
+  - `GreedyDecisionEngine`: `DecisionEngine` that uses team_name greedy algorithm
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES

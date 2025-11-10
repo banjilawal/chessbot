@@ -22,7 +22,7 @@ class TeamPlacementManager:
     chess_pieces.extend(arena.black_owner.team.roster)
 
     for chess_piece in chess_pieces:
-        # .black_owner.team.chess_pieces):
+        # .black_owner.team_name.chess_pieces):
       # print("placing", captor.visitor_name)
       for placement in PlacementChart:
         # print("checking placement", placement.value[0])

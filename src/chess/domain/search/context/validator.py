@@ -13,12 +13,12 @@ from chess.coord import CoordValidator
 from chess.rank import RankBoundsChecker
 from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
 from chess.domain import (
-    NullVisitorSearchContextException, VisitorSearchContext, NoVisitorSearchParamException,
-    TooManyVisitorSearchParamsException
+    NullResidentSearchContextException, ResidentFilter, NoResidentSearchParamException,
+    TooManyResidentSearchParamsException
 )
 
 
-class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
+class ResidentFilterValidator(Validator[ResidentFilter]):
     """
     # ROLE: Validation, Data Integrity
   
@@ -36,42 +36,42 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[VisitorSearchContext]:
+    def validate(cls, candidate: Any) -> ValidationResult[ResidentFilter]:
         """"""
-        method = "VisitorSearchContextValidator.validate"
+        method = "ResidentFilterValidator.validate"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullVisitorSearchContextException(f"{method} {NullVisitorSearchContextException.DEFAULT_MESSAGE}")
+                    NullResidentSearchContextException(f"{method} {NullResidentSearchContextException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(candidate, VisitorSearchContext):
+            if not isinstance(candidate, ResidentFilter):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected VisitorSearchContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected ResidentSearchContext, got {type(candidate).__name__} instead.")
                 )
             
-            search_context = cast(VisitorSearchContext, candidate)
+            search_context = cast(ResidentFilter, candidate)
             
             if len(search_context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoVisitorSearchParamException(f"{method} {NoVisitorSearchParamException.DEFAULT_MESSAGE}")
+                    NoResidentSearchParamException(f"{method} {NoResidentSearchParamException.DEFAULT_MESSAGE}")
                 )
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyVisitorSearchParamsException(
-                        f"{method} {TooManyVisitorSearchParamsException.DEFAULT_MESSAGE}"
+                    TooManyResidentSearchParamsException(
+                        f"{method} {TooManyResidentSearchParamsException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if search_context.visitor_id is not None:
-                id_validation = IdValidator.validate(search_context.visitor_id)
+            if search_context.resident_id is not None:
+                id_validation = IdValidator.validate(search_context.resident_id)
                 if id_validation.is_failure():
                     return ValidationResult.failure(id_validation.exception)
             
-            if search_context.visitor_name is not None:
-                name_validation = NameValidator.validate(search_context.visitor_name)
+            if search_context.resident_name is not None:
+                name_validation = NameValidator.validate(search_context.resident_name)
                 if name_validation.is_failure():
                     return ValidationResult.failure(name_validation.exception)
             
@@ -80,23 +80,23 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
                 if team_id_validation.is_failure():
                     return ValidationResult.failure(team_id_validation.exception)
             
-            if search_context.visitor_team is not None:
-                team_name_validation = NameValidator.validate(search_context.visitor_team)
+            if search_context.resident_team is not None:
+                team_name_validation = NameValidator.validate(search_context.resident_team)
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
-            if search_context.visitor_rank is not None:
-                rank_name_bounds_check = RankBoundsChecker.name_bounds_check(search_context.visitor_rank)
+            if search_context.resident_rank is not None:
+                rank_name_bounds_check = RankBoundsChecker.name_bounds_check(search_context.resident_rank)
                 if rank_name_bounds_check.is_failure():
                     return ValidationResult.failure(rank_name_bounds_check.exception)
             
-            if search_context.visitor_ransom is not None:
-                ransom_bounds_check = RankBoundsChecker.name_bounds_check(search_context.visitor_ransom)
+            if search_context.resident_ransom is not None:
+                ransom_bounds_check = RankBoundsChecker.name_bounds_check(search_context.resident_ransom)
                 if ransom_bounds_check.is_failure():
                     return ValidationResult.failure(ransom_bounds_check.exception)
             
-            if search_context.visitor_coord is not None:
-                coord_validation = CoordValidator.validate(search_context.visitor_coord)
+            if search_context.resident_coord is not None:
+                coord_validation = CoordValidator.validate(search_context.resident_coord)
                 if coord_validation.is_failure():
                     return ValidationResult.failure(coord_validation.exception)
             

@@ -59,7 +59,7 @@ class Graph:
                 return TransactionResult.errored(event_update=event, exception=search_result.exception)
             
             if search_result.is_success():
-                domain.visitors.append(cast(search_result.payload[0]))
+                domain.residents.append(cast(search_result.payload[0]))
                 
             if search_result.is_empty() and point not in domain.tree:
                 domain.tree.append(point)

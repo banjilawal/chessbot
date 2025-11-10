@@ -76,8 +76,8 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   Validates an KingCheckEvent meets specifications:
 #     - Not null
 #     - `visitor_id` does not fail validator
-#     - `actor_candidate` is team valid chess enemy
-#     - `target` is team valid square
+#     - `actor_candidate` is team_name valid chess enemy
+#     - `target` is team_name valid square
 #   Any validate failure raises an `InvalidAttackEventException`.
 #
 #   Argument:
@@ -157,7 +157,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     * `OccupationExecutor:` Main class responsible for executing travel directives.
 #     * `_attack_enemy`: Static method for processing attacks on enemy pieces.
 #     * `_run_scan`: Static method for handling discoveries on occupied squares.
-#     * `_switch_squares`: Static method the transferring team owner to team different `Square`.
+#     * `_switch_squares`: Static method the transferring team_name owner to team_name different `Square`.
 #   """
 #
 #   @classmethod
@@ -413,8 +413,8 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #       was_rolled_back=True
 #     )
 #
-#   directive.enemy.team.roster.remove(directive.enemy)
-#   if directive.enemy in directive.enemy.team.roster:
+#   directive.enemy.team_name.roster.remove(directive.enemy)
+#   if directive.enemy in directive.enemy.team_name.roster:
 #     # Rollback all changes in reverse order
 #     directive.enemy.captor = None
 #
@@ -428,10 +428,10 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #       )
 #     )
 #
-#   directive.owner.team.hostages.append(directive.enemy)
-#   if directive.enemy not in directive.owner.team.hostages:
+#   directive.owner.team_name.hostages.append(directive.enemy)
+#   if directive.enemy not in directive.owner.team_name.hostages:
 #     # Rollback all changes in reverse order
-#     directive.enemy.team.add_to_roster(directive.enemy)
+#     directive.enemy.team_name.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #
 #     # Send the notification indicating rollback
@@ -447,8 +447,8 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   directive.friend.occupant = None
 #   if directive.friend.occupant is not None:
 #     # Rollback all changes in reverse order
-#     directive.owner.team.hostages.remove(directive.enemy)
-#     directive.enemy.team.add_to_roster(directive.enemy)
+#     directive.owner.team_name.hostages.remove(directive.enemy)
+#     directive.enemy.team_name.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #
 #     # Send the notification indicating rollback
@@ -463,8 +463,8 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   if directive.enemy in directive.board.pieces:
 #     # Rollback all changes in reverse order
 #     directive.friend.occupant = directive.enemy
-#     directive.owner.team.hostages.remove(directive.enemy)
-#     directive.enemy.team.add_to_roster(directive.enemy)
+#     directive.owner.team_name.hostages.remove(directive.enemy)
+#     directive.enemy.team_name.add_to_roster(directive.enemy)
 #     directive.enemy.captor = None
 #
 #     # Send the notification indicating rollback
