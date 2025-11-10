@@ -13,7 +13,7 @@ from typing import List
 from chess.coord import Coord
 
 from chess.system import LoggingLevelRouter, Search, SearchResult
-from chess.visitation import VisitRecord, VisitationSearchContext, VisitationValidator, VisitationSearchContextValidator
+from chess.neighbor import NeighborTuple, VisitationSearchContext, VisitationValidator, VisitationSearchContextValidator
 
 
 

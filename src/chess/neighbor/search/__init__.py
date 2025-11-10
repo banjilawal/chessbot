@@ -1,7 +1,7 @@
-# src/chess/visitation/search/__init__.py
+# src/chess/neighbor/search/__init__.py
 
 """
-Module: chess.visitation.search.__init__
+Module: chess.neighbor.search.__init__
 Author: Banji Lawal
 Created: 2025-11=05
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/visitation/search/exception.py
+# src/chess/neighbor/search/exception.py
 
 """
-Module: chess.visitation.search.exception
+Module: chess.neighbor.search.exception
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0

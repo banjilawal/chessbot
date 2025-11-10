@@ -1,7 +1,7 @@
-# src/chess/visitation/search/context/builder.py
+# src/chess/neighbor/search/context/builder.py
 
 """
-Module: chess.visitation.search.context.builder
+Module: chess.neighbor.search.context.builder
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0
@@ -12,7 +12,7 @@ from typing import Optional
 from chess.coord import Coord, CoordValidator
 from chess.rank import Queen, RankSpec
 from chess.system import BuildResult, Builder, IdValidator, LoggingLevelRouter, NameValidator
-from chess.visitation import (
+from chess.neighbor import (
     VisitationSearchContext, TooManyVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
 )
 

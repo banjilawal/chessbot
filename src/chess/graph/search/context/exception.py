@@ -1,7 +1,7 @@
-# src/chess/visitor/search/context/exception.py
+# src/chess/neighbor/search/context/exception.py
 
 """
-Module: chess.visitor.search.context.exception
+Module: chess.neighbor.search.context.exception
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/visitation/factory.py
+# src/chess/neighbor/factory.py
 
 """
-Module: chess.visitation.visitation
+Module: chess.neighbor.neighbor
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0
@@ -13,7 +13,7 @@ from chess.board import Board
 from chess.coord import Coord
 from chess.domain import Domain
 from chess.system import Event
-from chess.visitation.table import VisitationTable
+from chess.neighbor.table import VisitationTable
 
 
 class VisitationEvent(Event[Domain, VisitationTable, Board]):

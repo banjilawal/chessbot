@@ -1,7 +1,7 @@
-# src/chess/visitation/factory.py
+# src/chess/neighbor/factory.py
 
 """
-Module: chess.visitation.validator
+Module: chess.neighbor.validator
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.visitation import VisitationEvent, NullVisitationEventException
+from chess.neighbor import VisitationEvent, NullVisitationEventException
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
 
 

@@ -1,7 +1,7 @@
-# src/chess/visitation/exception.py
+# src/chess/neighbor/exception.py
 
 """
-Module: chess.graph.visitation.exception
+Module: chess.graph.neighbor.exception
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

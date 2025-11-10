@@ -1,7 +1,7 @@
-# src/chess/visitation/builder.py
+# src/chess/neighbor/builder.py
 
 """
-Module: chess.graph.visitation.builder
+Module: chess.graph.neighbor.builder
 Author: Banji Lawal
 Created: 2025-111-03
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.domain import DomainValidator
-from chess.visitation import VisitationEvent
+from chess.neighbor import VisitationEvent
 from chess.piece import Piece, PieceValidator
 
 from chess.system import BuildResult, Builder, ChessException, IdValidator, InvalidIdException, LoggingLevelRouter

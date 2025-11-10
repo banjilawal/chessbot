@@ -1,7 +1,7 @@
-# src/chess/visitation/search/context/factory.py
+# src/chess/neighbor/search/context/factory.py
 
 """
-Module: chess.visitation.search.context.validator
+Module: chess.neighbor.search.context.validator
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0

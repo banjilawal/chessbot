@@ -11,4 +11,6 @@ from .search import *
 from .exception import *
 
 from .graph import Graph
+from .builder import GraphBuilder
+from .validator import GraphValidator
 
