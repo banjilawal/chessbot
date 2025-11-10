@@ -1,4 +1,4 @@
-# src/chess/system/old_search/context/context.py
+# src/chess/system/old_search/context/base.py
 
 """
 Module: chess.system.old_search.context.context

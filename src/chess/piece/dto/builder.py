@@ -63,7 +63,7 @@ class PieceBuilder(Builder[Piece]):
     Constructs team new `Square` that works correctly.
 
     Args:
-      `name`(`str`): Must pass `NameValidator` checks.
+      `visitor_name`(`str`): Must pass `NameValidator` checks.
       `bounds`(`Rank`): The `bounds` which determines how the owner moves and its capture value.
       `team`(`Team`): Specifies if the `owner` is white or black.
 
@@ -74,7 +74,7 @@ class PieceBuilder(Builder[Piece]):
 
     Raises:
     `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
-      * `InvalidNameException`: if `name` fails validate checks
+      * `InvalidNameException`: if `visitor_name` fails validate checks
       * `InvalidRankException`: if `bounds` fails validate checks
       * `InvalidTeamException`: if `team` fails validate checks
       * `InvalidTeamAssignmentException`: If `owner.team` is different from `team` parameter
@@ -85,7 +85,7 @@ class PieceBuilder(Builder[Piece]):
     method = "PieceBuilder.build"
 
     try:
-      # id_validation = IdValidator.validate(id)
+      # id_validation = IdValidator.validate(visitor_id)
       # if not id_validation.is_success():
       #   LoggingLevelRouter.throw_if_invalid(PieceBuilder, id_validation)
 

@@ -15,7 +15,7 @@ Created: 2025-10-09
     validated `Vector` passes and additional checks before deployment.
 
 **Related Features**:
-    `Coord` -> See `Coord`, `CoordBuilder`, `CoordValidator`, module[chess.coord],
+    `Coord` -> See `Coord`, `CoordBuilder`, `CoordValidator`, module[chess.visitor_coord],
     `Scalar` --> See `Scalar`, `ScalarValidator`, module[chess.vector],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 

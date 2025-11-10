@@ -1,16 +1,16 @@
-# chess/system/name/example.py
+# chess/system/visitor_name/example.py
 
 """
-Module: chess.system.name.example
+Module: chess.system.visitor_name.example
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# src/chess/system/name/exception.py
+# src/chess/system/visitor_name/exception.py
 
 """
-Module: chess.system.name.exception
+Module: chess.system.visitor_name.exception
 Author: Banji Lawal
 Created: 2025-09-17
 Updated: 2025-10-10

@@ -78,7 +78,7 @@ class VisitationRansomParamBoundsException(VisitationSearchContextException):
   error.
   """
   ERROR_CODE = "VISITATION_SEARCH_CONTEXT_RANSOM_BOUNDS_ERROR"
-  DEFAULT_MESSAGE = "The ransom is out of bounds. It cannot be used in VisitationSearchContext."
+  DEFAULT_MESSAGE = "The visitor_ransom is out of bounds. It cannot be used in VisitationSearchContext."
 
 class VisitationInvalidRankNameParamException(VisitationSearchContextException):
   """
@@ -87,7 +87,7 @@ class VisitationInvalidRankNameParamException(VisitationSearchContextException):
   error.
   """
   ERROR_CODE = "VISITATION_SEARCH_CONTEXT_RANK_NAME_ERROR"
-  DEFAULT_MESSAGE = "The bounds name is not recognized. It cannot be used in VisitationSearchContext."
+  DEFAULT_MESSAGE = "The bounds visitor_name is not recognized. It cannot be used in VisitationSearchContext."
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 

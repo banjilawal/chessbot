@@ -1,7 +1,7 @@
-# chess/system/name/__init__.py
+# chess/system/visitor_name/__init__.py
 
 """
-Module: chess.system.name
+Module: chess.system.visitor_name
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

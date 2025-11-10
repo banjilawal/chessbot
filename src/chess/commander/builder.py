@@ -34,7 +34,7 @@ class CommanderBuilder(Builder[Commander]):
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the id.
+        * `candidate` (`int`): the visitor_id.
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -51,7 +51,7 @@ class CommanderBuilder(Builder[Commander]):
     Constructs team new `Commander` that works correctly.
 
     Args:
-      `name` (`str`): Must pass `NameValidator` checks.
+      `visitor_name` (`str`): Must pass `NameValidator` checks.
       `engine` (DecisionEngine): The engine used to determine how to play.`
 
     Returns:
@@ -62,7 +62,7 @@ class CommanderBuilder(Builder[Commander]):
     Raises:
     `CommanderBuildFailedException`: Wraps any exceptions raised build. These are:
       * `InvalidIdException`: if `commander_id` fails validate checks.
-      * `InvalidNameException`: if `name` fails validate checks.
+      * `InvalidNameException`: if `visitor_name` fails validate checks.
       * `EngineValidationException`: If `engine` is not null and fails validate checks.
     """
     method = "CommanderBuilder.build"
@@ -99,7 +99,7 @@ class CommanderBuilder(Builder[Commander]):
 #
 #
 # def main():
-#   build_result = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
+#   build_result = CommanderBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")

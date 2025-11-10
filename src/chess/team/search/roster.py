@@ -107,7 +107,7 @@ class TeamRosterSearch(Search[Team, Piece]):
   @classmethod
   def _name_search(cls, team: Team, name: str) -> SearchResult[List[Piece]]:
       """
-      Does not guarantee uniqueness returns the first item which duplicates the given name.
+      Does not guarantee uniqueness returns the first item which duplicates the given visitor_name.
       """
       method = "TeamRosterSearch._name_search"
 
@@ -132,7 +132,7 @@ class TeamRosterSearch(Search[Team, Piece]):
   def _id_search(cls, team: Team, piece_id: int) -> SearchResult[List[Piece]]:
       """
       IDs should be unique. Faster old_search would return the first consistency. An easy
-      integrity check finds all the items with the same id. If there is more than
+      integrity check finds all the items with the same visitor_id. If there is more than
       one raise team `DuplicateUniqueIdException`.
 
       Performance Impact:
@@ -151,7 +151,7 @@ class TeamRosterSearch(Search[Team, Piece]):
   @classmethod
   def _roster_number_search(cls, team: Team, roster_number: int) -> SearchResult[List[Piece]]:
       """
-      Does not guarantee uniqueness returns the first item which duplicates the given id.
+      Does not guarantee uniqueness returns the first item which duplicates the given visitor_id.
       """
       method = "TeamRosterSearch._roster_number_search"
 

@@ -92,7 +92,7 @@ class TeamNameException(TeamException):
 
 class TeamNameBoundsException(TeamBoundsException):
     ERROR_CODE = "TEAM_NAME_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The Team.name property violates TeamSchema constraints."
+    DEFAULT_MESSAGE = "The Team.visitor_name property violates TeamSchema constraints."
 
 
 # ======================# TEAM_RANK_ROW_FIELD VALIDATION EXCEPTIONS #======================#

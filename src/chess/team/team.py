@@ -69,7 +69,7 @@ class Team:
   
     ATTRIBUTES:
       * `_commander` (`Commander`): Player who controls `Team`
-      * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, name.
+      * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, visitor_name.
       * `_roster` (`List[Piece]`): List of chess pieces on the team.
       * `_hostages` (`List[Piece]`): List of captured enemy pieces.
     """

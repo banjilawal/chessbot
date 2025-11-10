@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# src/chess/system/context/context.py
+# src/chess/system/context/base.py
 """
 Module: chess.system.context.context
 Author: Banji Lawal

@@ -1,14 +1,15 @@
-# src/chess/graph/search/context/__init__.py
+# src/chess/domain/search/context/__init__.py
 
 """
-Module: chess.graph.search.context
+Module: chess.domain.search.context.__init__
 Author: Banji Lawal
-Created: 2025-10-31
+Created: 2025-11-08
 version: 1.0.0
 """
 
+
+from .model import *
 from .exception import *
 
-from .context import GraphSearchContext
-from .builder import GraphSearchContextBuilder
-from .validator import GraphSearchContextValidator
+from .builder import VisitorSearchContextBuilder
+from .validator import VisitorSearchContextValidator

@@ -15,7 +15,7 @@ class CoordinateSBindingValidator(Validator):
     """
     Validates team CoordinateBinding meets specifications:
       - square.occupant == chess_piece
-      - chess_piece.coordinate_stack.current_coordinate() == square.coord
+      - chess_piece.coordinate_stack.current_coordinate() == square.visitor_coord
       - chess_piece_previous_square.occupant == null
       
     If any notification fails their team_exception will be encapsulated in team CoordinateBindingValidationException
@@ -34,10 +34,10 @@ class CoordinateSBindingValidator(Validator):
 
       TypeError: if candidate is not Coord
 
-      RowOutOfBoundsException: If coord.row is outside the range 
+      RowOutOfBoundsException: If visitor_coord.row is outside the range
         (0, ROW_SIZE - 1) inclusive
 
-      ColumnOutOfBoundsException: If coord.column is outside the range
+      ColumnOutOfBoundsException: If visitor_coord.column is outside the range
         (0, COLUMN_SIZE - 1) inclusive
 .
       InvalidCoordException: Wraps any

@@ -12,7 +12,7 @@ meets all required specifications before construction completes
 Usage:
   ```python
   # Safe square creation
-  build_result = SquareBuilder.build(id=1, name="A-1", coordinate=Coord(0, 0))
+  build_result = SquareBuilder.build(visitor_id=1, visitor_name="A-1", coordinate=Coord(0, 0))
 
   if build_result.is_success():
     square = build_result.payload
@@ -34,9 +34,9 @@ any additional validate checks on the returned `Square` instance. This method gu
 with team successful status is returned, the contained `Square` is valid and ready for use.
 
 Args:
-  `discovery_id` (`int`): The unique id for the owner. Must pass `IdValidator` checks.
-  `name` (`Name`): Must pass `NameValidator` checks.
-  `coord` (`Coord`): Where `Square` is located on team `Board`. Must pass `CoordValidator` checks.
+  `discovery_id` (`int`): The unique visitor_id for the owner. Must pass `IdValidator` checks.
+  `visitor_name` (`Name`): Must pass `NameValidator` checks.
+  `visitor_coord` (`Coord`): Where `Square` is located on team `Board`. Must pass `CoordValidator` checks.
 
 Returns:
   BuildResult[Square]: A `BuildResult` containing either:
@@ -46,9 +46,9 @@ Returns:
 Raises:
   `SquareBuildFailedException`: Wraps any underlying validate failures that occur during the construction
    process. This includes:
-    * `InvalidIdException`: if `id` fails validate checks`
-    * `InvalidNameException`: if `name` fails validate checks
-    * `InvalidCoordException`: if `coord` fails validate checks
+    * `InvalidIdException`: if `visitor_id` fails validate checks`
+    * `InvalidNameException`: if `visitor_name` fails validate checks
+    * `InvalidCoordException`: if `visitor_coord` fails validate checks
     * `SquareBuildFailedException`: for any other construction failures
 
 Note:
@@ -60,12 +60,12 @@ Note:
 Example:
   ```python
   # Valid square creation
-  notification = SquareBuilder.build(id=1, name=black-name, schema=black_square_profile)
+  notification = SquareBuilder.build(visitor_id=1, visitor_name=black-visitor_name, schema=black_square_profile)
   if notification.is_success():
     square = cast(Square, notification.payload) # Guaranteed valid Square
 
-  # Null name will fail gracefully
-  notification = SquareBuilder.build(id=1, name=None, schema=black_square_profile)
+  # Null visitor_name will fail gracefully
+  notification = SquareBuilder.build(visitor_id=1, visitor_name=None, schema=black_square_profile)
   if not notification.is_success():
     # Handle construction failure
     pass
@@ -85,13 +85,13 @@ Example:
 # To use this package, import the desired classes and perform square-related operations.
 #
 # >>> from chess.enemy import Square, SquareValidator
-# >>> from chess.coord import Coord
+# >>> from chess.visitor_coord import Coord
 # >>> from chess.owner import Piece
 # >>>
 # >>>
 # >>> # Build team new Square at Coord(2, 1)
-# >>> coord = Coord(row=2, column=1)
-# >>> build_outcome = SquareBuilder.build(id=1, name="B2", coord=coord)
+# >>> visitor_coord = Coord(row=2, column=1)
+# >>> build_outcome = SquareBuilder.build(visitor_id=1, visitor_name="B2", visitor_coord=visitor_coord)
 # >>> if not build_outcome.is_success():
 # >>>  raise build_outcome.err
 # >>> square = cast(Square, build_outcome.payload)
@@ -120,7 +120,7 @@ Use `SquareBuilder` for construction, `SquareValidator` for verification.
 """
 Validates that an existing `Square` instance meets specifications.
 This method performs team series of checks on team Square instance, ensuring it is not null and that
-its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised
+its ID, visitor_name, and coordinate are valid. Exceptions from these checks are caught and re-raised
 as team `InvalidSquareException`, providing team clean and consistent err-handling experience.
 
 Args
@@ -133,9 +133,9 @@ Args
 Raises:
   `TypeError`: If the input `candidate` is not an instance of `Square`.
   `NullSquareException`: If the input `candidate` is `None`.
-  `InvalidIdException`: If the `id` attribute of the square fails validate checks.
-  `InvalidNameException`: If the `name` attribute of the square fails validate checks.
-  `InvalidCoordException`: If the `coord` attribute of the square fails validate checks.
+  `InvalidIdException`: If the `visitor_id` attribute of the square fails validate checks.
+  `InvalidNameException`: If the `visitor_name` attribute of the square fails validate checks.
+  `InvalidCoordException`: If the `visitor_coord` attribute of the square fails validate checks.
   `InvalidSquareException`: Wraps any preceding exceptions
 """
 
@@ -146,7 +146,7 @@ the `occupant`, which is managed by the `ChessBoard`.
 
 Attributes:
   _visitor_id (int): A unique identifier for the square.
-  _name (str): The name of the square in chess notation (e.g., "A1", "B2").
+  _visitor_name (str): The visitor_name of the square in chess notation (e.g., "A1", "B2").
   _position (Coord): The coordinate of the square on the chessboard.
   _occupant (Optional[Piece]): The discover occupying the square, if any.
 """

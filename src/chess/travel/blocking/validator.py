@@ -39,7 +39,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             
             event = cast(BlockingEvent, candidate)
             
-            id_validation = IdValidator.validate(event.id)
+            id_validation = IdValidator.validate(event.visitor_id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
@@ -57,7 +57,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             if resource_validation.is_failure():
                 return ValidationResult.failure(resource_validation.exception)
             
-            if event.actor.current_position == event.blocked_square.coord:
+            if event.actor.current_position == event.blocked_square.visitor_coord:
                 return ValidationResult.failure(
                     ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.DEFAULT_MESSAGE}")
                 )
@@ -76,7 +76,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
                     f"{method}: {EnemyCannotBeBlockerException.DEFAULT_MESSAGE}")
                 )
             
-            context_build_result = DiscoverySearchContextBuilder.build(piece_id=event.friend.id)
+            context_build_result = DiscoverySearchContextBuilder.build(piece_id=event.friend.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             search_context = cast(DiscoverySearchContext, context_build_result.payload)

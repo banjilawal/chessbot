@@ -45,8 +45,8 @@ class TeamDTO(DTO[Team]):
     
     def to_dict(self):
         return {
-            "id": self._id,
-            "name": self._name,
+            "visitor_id": self._id,
+            "visitor_name": self._name,
             "commander_id": self._commander_id,
             "captor_name": self._commander_name
         }

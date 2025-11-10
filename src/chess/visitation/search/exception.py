@@ -70,14 +70,14 @@ class VisitationSearchCoordCollisionException(VisitationSearchCollisionException
 class SquareSearchIdCollisionException(SearchCollisionException):
   DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same id. There may be a service inconsistency."
+    "More than one Square found with the same visitor_id. There may be a service inconsistency."
   )
 
 
 class SquareSearchNameCollisionException(SearchCollisionException):
   DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same name. There may be a service collision"
+    "More than one Square found with the same visitor_name. There may be a service collision"
   )
 
 class SquareSearchCoordCollisionException(SearchCollisionException):
@@ -89,7 +89,7 @@ class SquareSearchCoordCollisionException(SearchCollisionException):
 class TeamSearchIdCollisionException(SearchCollisionException):
   DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Team found with the same name. There may be a service inconsistency."
+    "More than one Team found with the same visitor_name. There may be a service inconsistency."
   )
 
 

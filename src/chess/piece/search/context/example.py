@@ -154,7 +154,7 @@ Args
 Raises:
   `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
   `NullDiscoverySearchContextException`: if `candidate` is null
-  `InvalidIdException`: if `id` fails validate checks
+  `InvalidIdException`: if `visitor_id` fails validate checks
   `InvalidCommanderException`: if `commander` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `schema` is null
   `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander

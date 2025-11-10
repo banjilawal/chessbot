@@ -22,7 +22,7 @@ meets all required specifications before construction completes
 Usage:
   ```python
   # Safe team creation with validate
-  build_result = TeamBuilder.build(team_id=1, commander=black_commander, schema=TeamProfile.BLACK)
+  build_result = TeamBuilder.build(visitor_team_id=1, commander=black_commander, schema=TeamProfile.BLACK)
 
   if build_result.is_success():
     team = build_result.payload
@@ -54,7 +54,7 @@ validate checks on the returned `Team` instance. This method guarantees if team 
 status is returned, the contained `Team` is valid and ready for use.
 
 Args:
-  `team_id`(`int`): The unique id for the team. Must pass `IdValidator` checks.
+  `visitor_team_id`(`int`): The unique visitor_id for the team. Must pass `IdValidator` checks.
   `commander`(`Commander`): The human or cybernetic moving pieces in `Team.roster`. The commander must pass
     `CommanderValidator` checks.must pass `CommanderValidator` checks.
   `schema`(`TeamProfile`): The schema defining team attributes and behaviors. Must not be None and be
@@ -68,7 +68,7 @@ Returns:
 Raises:
   `TeamBuildFailedException`: Wraps any underlying validate failures that occur during the construction process.
   This includes:
-    * `InvalidIdException`: if `id` fails validate checks`
+    * `InvalidIdException`: if `visitor_id` fails validate checks`
     * `InvalidCommanderException`: if `commander` fails validate checks
     * `NullTeamProfileException`: if `schema` is None
     * `TypeError`: if `schema` is not team `TeamProfile` instance
@@ -83,12 +83,12 @@ Note:
 Example:
   ```python
   # Valid team creation
-  notification = TeamBuilder.build(team_id=1, commander=black-commander, schema=black_team_profile)
+  notification = TeamBuilder.build(visitor_team_id=1, commander=black-commander, schema=black_team_profile)
   if notification.is_success():
     team = cast(Team, notification.payload) # Guaranteed valid Team
 
   # Null commander will fail gracefully
-  notification = TeamBuilder.build(team_id=1, commander=None, schema=black_team_profile)
+  notification = TeamBuilder.build(visitor_team_id=1, commander=None, schema=black_team_profile)
   if not notification.is_success():
     # Handle construction failure
     pass

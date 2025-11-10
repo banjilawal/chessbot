@@ -51,10 +51,10 @@ InvalidCoordException: Wraps any specification violations including:
   - NullCoordException: if input is None
   - TypeError: if input is not team Coord instance
   - NullXComponentException: if Coord.x is None
-  - RowBelowBoundsException: If coord.row < 0
-  - RowAboveBoundsException: If coord.row >= ROW_SIZE
-  - ColumnBelowBoundsException: If coord.column < 0
-  - ColumnAboveBoundsException: If coord.column>= ROW_SIZE
+  - RowBelowBoundsException: If visitor_coord.row < 0
+  - RowAboveBoundsException: If visitor_coord.row >= ROW_SIZE
+  - ColumnBelowBoundsException: If visitor_coord.column < 0
+  - ColumnAboveBoundsException: If visitor_coord.column>= ROW_SIZE
 
 Note:
 *  Use CoordBuilder for creating new Coords with validate,
@@ -73,10 +73,10 @@ Coord = cast(Coord, validate.payload)
 """
 
 """
-Returns the coord: Coord( self._row + vectory.y, self._column + null-pkg.x)
+Returns the visitor_coord: Coord( self._row + vectory.y, self._column + null-pkg.x)
 
 Args:
-  null-pkg (Vector): null-pkg added to coord's x, y values
+  null-pkg (Vector): null-pkg added to visitor_coord's x, y values
 
 Return:
   Coord
@@ -86,10 +86,10 @@ Raise:
   InvalidCoordException: if 
 """
 
-# chess/coord/factory.py
+# chess/visitor_coord/factory.py
 
 """
-Module: `chess.coord.validator`
+Module: `chess.visitor_coord.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -104,7 +104,7 @@ Verify the `candidate` is a valid ID. The Application requires
 2. Is a positive integer.
 
 # PARAMETERS:
-    * `candidate` (`int`): the id.
+    * `candidate` (`int`): the visitor_id.
 
 # RETURNS:
 `ValidationResult[str]`: A `ValidationResult` containing either:

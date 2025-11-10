@@ -1,101 +1,106 @@
-# src/chess/graph/search/context/factory.py
+# src/chess/domain/search/context/factory.py
 
 """
-Module: chess.graph.search.context.validator
+Module: chess.domain.search.context.validator
 Author: Banji Lawal
-Created: 2025-10-31
+Created: 2025-11-08
 version: 1.0.0
 """
 
-from typing import cast
+from typing import Any, cast
+
+from chess.coord import CoordValidator
+from chess.domain import NullVisitorSearchContextException, VisitorSearchContext
+from chess.rank import RankBoundsChecker, RankBoundsException
+from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
+from chess.visitation import TooManyVisitationSearchParamsException, ZeroVisitationSearchParamsException
 
 
-from chess.system import Validator
-from chess.graph import GraphSearchContext
-
-class GraphSearchContextValidator(Validator[GraphSearchContext]):
-  """
-  # ROLE: Validation, Data Integrity
-
-  # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `GraphSearchContext` instances.
-  2. Create new `GraphSearchContext` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
-
-  # PROVIDES:
-  `BuildResult`: Return type containing the built `GraphSearchContext` or error information.
-
-  # ATTRIBUTES:
-  None
-  """
-
-  @classmethod
-  @LoggingLevelRouter.monitor
-  def validate(cls, candidate: T) -> ValidationResult[GraphSearchContext]:
-    """"""
-    method = "GraphSearchContextValidator.validate"
-
-    try:
-      if candidate is None:
-        return ValidationResult(exception=NullGraphSearchContextException(
-          f"{method} {NullGraphSearchContextException.DEFAULT_MESSAGE}"
-        ))
-
-      if not isinstance(candidate, GraphSearchContext):
-        return ValidationResult(exception=TypeError(
-          f"{method} Expected graphSearchContext GraphSearchContext, got {type(candidate).__name__}"
-        ))
-
-      search_context = cast(GraphSearchContext, candidate)
-
-      if len(search_context.to_dict()) == 0:
-        return ValidationResult(exception=ZeroGraphSearchParamsException(
-          f"{method} {ZeroGraphSearchParamsException.DEFAULT_MESSAGE}"
-        ))
-
-      if len(search_context.to_dict()) > 1:
-        return ValidationResult(exception=TooManyGraphSearchParamsException(
-          f"{method} {InvalidGraphSearchContextException.DEFAULT_MESSAGE}"
-        ))
-
-      if search_context.piece_id is not None:
-        piece_id_validation = IdValidator.validate(search_context.piece_id)
-        if piece_id_validation.is_failure():
-          return ValidationResult(exception=piece_id_validation.exception)
-
-      if search_context.name is not None:
-        piece_name_validation = NameValidator.validate(search_context.name)
-        if piece_name_validation.is_failure():
-          return ValidationResult(exception=piece_name_validation.exception)
-
-      if search_context.team_id is not None:
-        team_id_validation = IdValidator.validate(search_context.team_id)
-        if team_id_validation.is_failure():
-          return ValidationResult(exception=team_id_validation.exception)
-
-      if search_context.team_name is not None:
-        team_name_validation = NameValidator.validate(search_context.team_name)
-        if team_name_validation.is_failure():
-          return ValidationResult(exception=team_name_validation.exception)
-
-      if (search_context.rank_name is not None and
-          search_context.rank_name not in [King.name, Queen.name, Rook.name, Bishop.name, Knight.name, Pawn.name]
-      ):
-          return ValidationResult(exception=GraphInvalidRankNameParamException(
-            f"{method}: {GraphInvalidRankNameParamException.DEFAULT_MESSAGE}"
-        ))
-
-      if search_context.ransom not in range[Queen.ransom]:
-        return ValidationResult(exception=GraphInvalidRankNameParamException(
-          f"{method}: {GraphInvalidRankNameParamException.DEFAULT_MESSAGE}"
-        ))
-
-      if search_context.position is not None:
-        position_validation = CoordValidator.validate(search_context.position)
-        if position_validation.is_failure():
-          return ValidationResult(exception=position_validation.exception)
-
-      return ValidationResult(payload=search_context)
-
-    except Exception as e:
-      return ValidationResult(exception=e)
+class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
+    """
+    # ROLE: Validation, Data Integrity
+  
+    # RESPONSIBILITIES:
+    1. Process and validate parameters for creating `GraphSearchContext` instances.
+    2. Create new `GraphSearchContext` objects if parameters meet specifications.
+    2. Report errors and return `BuildResult` with error details.
+  
+    # PROVIDES:
+    `BuildResult`: Return type containing the built `GraphSearchContext` or error information.
+  
+    # ATTRIBUTES:
+    None
+    """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(cls, candidate: Any) -> ValidationResult[VisitorSearchContext]:
+        """"""
+        method = "VisitorSearchContextValidator.validate"
+        
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullVisitorSearchContextException(f"{method} {NullVisitorSearchContextException.DEFAULT_MESSAGE}")
+                )
+            
+            if not isinstance(candidate, VisitorSearchContext):
+                return ValidationResult.failure(
+                    TypeError(f"{method} Expected VisitorSearchContext, got {type(candidate).__name__} instead.")
+                )
+            
+            search_context = cast(VisitorSearchContext, candidate)
+            
+            if len(search_context.to_dict()) == 0:
+                return ValidationResult.failure(
+                    ZeroVisitationSearchParamsException(
+                        f"{method} {ZeroVisitationSearchParamsException.DEFAULT_MESSAGE}"
+                        )
+                )
+            
+            if len(search_context.to_dict()) > 1:
+                return ValidationResult.failure(
+                    TooManyVisitationSearchParamsException(
+                        f"{method} {TooManyVisitationSearchParamsException.DEFAULT_MESSAGE}"
+                        )
+                )
+            
+            if search_context.visitor_id is not None:
+                id_validation = IdValidator.validate(search_context.visitor_id)
+                if id_validation.is_failure():
+                    return ValidationResult.failure(id_validation.exception)
+            
+            if search_context.visitor_name is not None:
+                name_validation = NameValidator.validate(search_context.visitor_name)
+                if name_validation.is_failure():
+                    return ValidationResult.failure(name_validation.exception)
+            
+            if search_context.team_id is not None:
+                team_id_validation = IdValidator.validate(search_context.team_id)
+                if team_id_validation.is_failure():
+                    return ValidationResult.failure(team_id_validation.exception)
+            
+            if search_context.visitor_team is not None:
+                team_name_validation = NameValidator.validate(search_context.visitor_team)
+                if team_name_validation.is_failure():
+                    return ValidationResult.failure(team_name_validation.exception)
+            
+            if search_context.visitor_rank is not None:
+                rank_name_bounds_check = RankBoundsChecker.name_bounds_check(search_context.visitor_rank)
+                if rank_name_bounds_check.is_failure():
+                    return ValidationResult.failure(rank_name_bounds_check.exception)
+            
+            if search_context.visitor_ransom is not None:
+                ransom_bounds_check = RankBoundsChecker.name_bounds_check(search_context.visitor_ransom)
+                if ransom_bounds_check.is_failure():
+                    return ValidationResult.failure(ransom_bounds_check.exception)
+            
+            if search_context.visitor_coord is not None:
+                coord_validation = CoordValidator.validate(search_context.visitor_coord)
+                if coord_validation.is_failure():
+                    return ValidationResult.failure(coord_validation.exception)
+            
+            return ValidationResult.sucess(search_context)
+        
+        except Exception as e:
+            return ValidationResult.failure(e)

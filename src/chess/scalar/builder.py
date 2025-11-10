@@ -44,7 +44,7 @@ class ScalarBuilder(Builder[Scalar]):
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the id.
+        * `candidate` (`int`): the visitor_id.
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -67,8 +67,8 @@ class ScalarBuilder(Builder[Scalar]):
     with team successful status is returned, the contained `Scalar` is valid and ready for use.
 
     Args:
-      `scalar_id`(`int`): The unique id for the scalar. Must pass `IdValidator` checks.
-      `name`(`Name`): The human or cybernetic moving pieces in `Scalar.roster`. The name
+      `scalar_id`(`int`): The unique visitor_id for the scalar. Must pass `IdValidator` checks.
+      `visitor_name`(`Name`): The human or cybernetic moving pieces in `Scalar.roster`. The visitor_name
         must not be None and must pass `NameValidator` checks.must pass `NameValidator` checks.
       `schema`(`ScalarProfile`): The schema defining scalar attributes and behaviors. Must not be None and be
         an instance of `ScalarProfile`.

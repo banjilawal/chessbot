@@ -22,7 +22,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
     """
     Validates an KingCheckEvent meets specifications:
       - Not null
-      - `id` does not fail validator
+      - `visitor_id` does not fail validator
       - `actor_candidate` is team valid chess enemy
       - `target` is team valid square
     Any validate failure raises an `InvalidAttackEventException`.
@@ -38,7 +38,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       `TypeError`: if `candidate` is not OperationEvent
       `NullAttackEventException`: if `candidate` is null
 
-      `InvalidIdException`: if invalid `id`
+      `InvalidIdException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails validator
       `InvalidSquareException`: if `target` fails validator
 
@@ -60,7 +60,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
       event = cast(AttackEvent, t)
 
-      id_validation = IdValidator.validate(event.id)
+      id_validation = IdValidator.validate(event.visitor_id)
       if not id_validation.is_success():
         raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
 
@@ -72,7 +72,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       if not destination_square_validation.is_success():
         raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 
-      if event.enemy_square.coord == event.actor.current_position:
+      if event.enemy_square.visitor_coord == event.actor.current_position:
         raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
 
       return Result(payload=event)

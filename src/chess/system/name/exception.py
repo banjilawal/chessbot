@@ -1,7 +1,7 @@
-# src/chess/system/name/exception.py
+# src/chess/system/visitor_name/exception.py
 
 """
-Module: chess.system.name.exception
+Module: chess.system.visitor_name.exception
 Author: Banji Lawal
 Created: 2025-09-17
 Updated: 2025-10-10
@@ -55,7 +55,7 @@ class LongNameException(InvalidNameException):
 
 class NullNameException(InvalidNameException, NullException):
   """
-  Raised if an entity's name is null
+  Raised if an entity's visitor_name is null
   """
   ERROR_CODE = "NULL_NAME_ERROR"
   DEFAULT_MESSAGE = f"Name cannot be null"

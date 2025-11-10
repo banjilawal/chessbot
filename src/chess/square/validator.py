@@ -38,7 +38,7 @@ The order of sanity checks produces early failures. to the most granular
 * From `chess.square`:
     `Square`, `InvalidSquareException`
 
-* From `chess.coord`:
+* From `chess.visitor_coord`:
     `Coord`, `CoordValidator`
 
 * From Python `abc` Library:

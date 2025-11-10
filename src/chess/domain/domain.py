@@ -15,8 +15,9 @@ from chess.piece import Piece
 
 
 class Domain:
-    """"""
-    _id: int
+    """
+    
+    """
     _owner: Piece
     _tree: List[Coord]
     _visitors: List[Piece]
@@ -34,10 +35,6 @@ class Domain:
         
         self._tree.append(self._tree_root)
 
-        
-    @property
-    def id(self) -> int:
-        return self._owner.id
     
     @property
     def owner(self) -> Piece:

@@ -182,5 +182,5 @@ class SquareIdSearchInvariantBreachException(BoardInvariantBreachException):
   """"""
   DEFAULT_CODE = "INVARIANT_COORD_BREACH_ERROR"
   DEFAULT_MESSAGE = (
-    "A coord invariant on the board was breached, There may be a critical state inconsistency. or service loss."
+    "A visitor_coord invariant on the board was breached, There may be a critical state inconsistency. or service loss."
   )

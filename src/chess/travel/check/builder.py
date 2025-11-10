@@ -25,7 +25,7 @@ class CheckEventBuilder(Enum):
   Usage:
     ```python
     # Safe attackEvent creation with validate
-    build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, name="WN2", bounds=Knight(), team=white_team)
+    build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, visitor_name="WN2", bounds=Knight(), team=white_team)
     if not build_outcome.is_success():
       raise build_outcome.err
     attackEvent = build_outcome.payload
@@ -55,7 +55,7 @@ class CheckEventBuilder(Enum):
     with team successful status is returned, the contained `KingCheckEvent` is valid and ready for use.
 
     Args:
-      `event_id`(`int`): The unique id for the attackEvent. Must pass `IdValidator` checks.
+      `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidator` checks.
       `actor_candidate`(`Piece`): Initiates attack after successful validate`.
       `enemy`(`Piece`): The `Piece` attackned by `actor_candidate`.
       `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
@@ -69,7 +69,7 @@ class CheckEventBuilder(Enum):
       AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
       This includes:
         * `InvalidIdException`: if `attackEvent_id` fails validate checks
-        * `InvalidNameException`: if `name` fails validate checks
+        * `InvalidNameException`: if `visitor_name` fails validate checks
         * `InvalidRankException`: if `bounds` fails validate checks
         * `InvalidTeamException`: if `team` fails validate checks
         * `InvalidTeamAssignmentException`: If `attackEvent.team` is different from `team` parameter

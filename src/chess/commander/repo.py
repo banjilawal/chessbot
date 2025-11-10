@@ -23,7 +23,7 @@ class OwnerRepo:
 
   def owner_by_id(self, owner_id: int) -> Optional[Commander]:
     for owner in self._owners:
-      if owner.id == owner_id:
+      if owner.visitor_id == owner_id:
         return owner
     return None
 
@@ -32,7 +32,7 @@ class OwnerRepo:
     matches: List[Commander] = []
 
     for owner in self._owners:
-      if owner.name.upper() == name.upper() and owner not in matches:
+      if owner.visitor_name.upper() == name.upper() and owner not in matches:
         matches.append(owner)
     return matches
 

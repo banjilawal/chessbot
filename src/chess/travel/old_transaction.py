@@ -61,7 +61,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the id.
+        * `candidate` (`int`): the visitor_id.
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -100,7 +100,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     destination_search = BoardSearch.search(
       board=context.board,
       data_source=BoardDatasource.SQUARE,
-      context=BoardSearchcontext(event.enemy_square.id)
+      context=BoardSearchcontext(event.enemy_square.visitor_id)
     )
     if not destination_search.is_success():
       return TransactionResult(exception=EventResourceNotFoundExeception(
@@ -172,7 +172,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         op_result_id=op_result_id,
         directive=ScanDirective(
           actor=event.actor,
-          occupation_id=event.id,
+          occupation_id=event.visitor_id,
           scan_id=id_emitter.scan_id,
           subject=destination_occupant,
           destination_square=event.friend
@@ -193,7 +193,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         board=context.board,
         actor=event.actor,
         enemy=enemy_combatant,
-        occupation_id=event.id,
+        occupation_id=event.visitor_id,
         attack_id=id_emitter.attack_id,
         actor_square=actor_square,
         destination_square=event.friend
@@ -215,7 +215,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
       * An enemy occupation. Kings cannot be captured, only checked or checkmated.
 
     Args:
-      - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
+      - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.
       - `directive` (`OccupationDirective`): The `OccupationDirective` to be executed.
       - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
 
@@ -291,7 +291,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     confirmed parameters ar are correct. No additional sanity checks are needed.
 
     Args
-      - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
+      - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.
       - `directive` (`ScanDirective`): The `ScanDirective` to execute.
 
     Returns:
@@ -328,7 +328,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     success_directive = ScanDirective(
       actor=directive._owner,
       subject=directive.friend,
-      occupation_id=directive.id,
+      occupation_id=directive.visitor_id,
       scan_id=id_emitter.scan_id,
       destination_square=directive.friend
     )

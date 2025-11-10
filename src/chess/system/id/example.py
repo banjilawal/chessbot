@@ -1,17 +1,17 @@
-# src/chess/system/id/example.py
+# src/chess/system/visitor_id/example.py
 
 """
-Module: chess.system.id.example
+Module: chess.system.visitor_id.example
 Author: Banji Lawal
 Created: 2025-09-17
 Updated: 2025-10-10
 version: 1.0.0
 """
 
-# src/chess/system/id/factory.py
+# src/chess/system/visitor_id/factory.py
 
 """
-Module: chess.system.id.validator
+Module: chess.system.visitor_id.validator
 Author: Banji Lawal
 Created: 2025-08-12
 Updated: 2025-10-10
@@ -26,9 +26,9 @@ The module only covers the `IdValidator` provider.
 
 # SECTION 3 - Limitations:
   1. This module is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
-      `chess.system.id.auto_id` module.
+      `chess.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
-      For details about publishing IDs see the `AutoId` class in module `chess.system.id.auto_id`.
+      For details about publishing IDs see the `AutoId` class in module `chess.system.visitor_id.auto_id`.
 
 # SECTION 4 - Design Considerations and Themes:
 Major themes influencing the design include:
@@ -55,10 +55,10 @@ Major themes influencing the design include:
 1. `IdValidator`
 """
 
-# src/chess/system/id/auto_id.py
+# src/chess/system/visitor_id/auto_id.py
 
 """
-Module: chess.system.id.auto_id
+Module: chess.system.visitor_id.auto_id
 Author: Banji Lawal
 Created: 2025-10-09
 Updated: 2025-10-10
@@ -72,7 +72,7 @@ The module only covers the generating and publishing IDs.
 
 # SECTION 3 - Limitations:
   1. This module is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
-      `chess.system.id.auto_id` module.
+      `chess.system.visitor_id.auto_id` module.
 
 # SECTION 4 - Design Considerations and Themes:
 Major themes influencing the design include:
@@ -105,10 +105,10 @@ Major themes influencing the design include:
 1. `AutoId
 """
 
-# src/chess/system/id/exception.py
+# src/chess/system/visitor_id/exception.py
 
 """
-Module: chess.system.id.exception
+Module: chess.system.visitor_id.exception
 Author: Banji Lawal
 Created: 2025-09-17
 Updated: 2025-10-10

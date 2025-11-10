@@ -110,7 +110,7 @@ class DiscoveryRansomParamBoundsException(DiscoverySearchContextException):
   error.
   """
   ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_RANSOM_BOUNDS_ERROR"
-  DEFAULT_MESSAGE = "The ransom is out of bounds. It cannot be used in DiscoverySearchContext."
+  DEFAULT_MESSAGE = "The visitor_ransom is out of bounds. It cannot be used in DiscoverySearchContext."
 
 class DiscoveryInvalidRankNameParamException(DiscoverySearchContextException):
   """
@@ -119,7 +119,7 @@ class DiscoveryInvalidRankNameParamException(DiscoverySearchContextException):
   error.
   """
   ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_RANK_NAME_ERROR"
-  DEFAULT_MESSAGE = "The bounds name is not recognized. It cannot be used in DiscoverySearchContext."
+  DEFAULT_MESSAGE = "The bounds visitor_name is not recognized. It cannot be used in DiscoverySearchContext."
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 

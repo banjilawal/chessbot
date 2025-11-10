@@ -12,7 +12,7 @@ Updated: 2025-10-10
 2. This module provides a satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers name validator only.
+The module covers visitor_name validator only.
 
 # SECTION 3 - Limitations:
   1. The module does not provide permissible naming guidelines.
@@ -74,14 +74,14 @@ class NameValidator(Validator[str]):
   def validate(cls, candidate: str) -> ValidationResult[str]:
     """
     # ACTION:
-    Verify the `candidate` is a valid name in the application. The Application requires
+    Verify the `candidate` is a valid visitor_name in the application. The Application requires
     1. Candidate is not null.
     2. Candidate is a string whose length is between `MIN_NAME_LENGTH` and `MAX_NAME_LENGTH` inclusive.
     3. Candidate does not contain only white space.
 
 
     # PARAMETERS:
-        * `candidate` (`str`): the name.
+        * `candidate` (`str`): the visitor_name.
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:

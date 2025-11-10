@@ -47,7 +47,7 @@ class TeamColorInconsistencyException(TeamException):
 
 class TeamNameInconsistencyException(TeamException):
     ERROR_CODE = "TEAM_NAME_CONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "Team.name value does not match the name assigned to the Team object by TeamSchema."
+    DEFAULT_MESSAGE = "Team.visitor_name value does not match the visitor_name assigned to the Team object by TeamSchema."
 
 
 class TeamLetterInconsistencyException(TeamException):

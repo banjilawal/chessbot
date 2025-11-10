@@ -1,4 +1,4 @@
-# src/chess/domain/search/context/context.py
+# src/chess/domain/search/context/base.py
 
 """
 Module: chess.domain.search.context.context
@@ -15,63 +15,67 @@ from chess.system import SearchContext
 
 class VisitorSearchContext(SearchContext):
     """"""
-    _id: Optional[int] = None
-    _name: Optional[str] = None
-    _ransom: Optional[int] = None
-    _coord: Optional[Coord] = None
-    _rank_name: Optional[str] = None
-    _team_id: Optional[id] = None
-    _team_name: Optional[str] = None
+    _visitor_id: Optional[int] = None
+    _visitor_name: Optional[str] = None
+    _visitor_ransom: Optional[int] = None
+    _visitor_coord: Optional[Coord] = None
+    _visitor_rank: Optional[str] = None
+    _visitor_team: Optional[str] = None
+    _visitor_team_id: Optional[id] = None
+
 
     def __init__(
             self,
-            id: Optional[int] = None,
-            name: Optional[str] = None,
-            ransom: Optional[int] = None,
-            coord: Optional[Coord] = None,
-            rank_name: Optional[str] = None,
-            team_id: Optional[id] = None,
-            team_name: Optional[str] = None
+            visitor_id: Optional[int] = None,
+            visitor_name: Optional[str] = None,
+            visitor_ransom: Optional[int] = None,
+            visitor_coord: Optional[Coord] = None,
+            visitor_rank: Optional[str] = None,
+            visitor_team: Optional[str] = None,
+            visitor_team_id: Optional[id] = None
     ):
-        self._id = id
-        self._name = name
-        self._coord = coord
-        self._ransom = ransom
-        self._rank_name = rank_name
-        self._team_id = team_id
-        self._team_name = team_name
+        self._visitor_id = visitor_id
+        self._visitor_name = visitor_name
+        self._visitor_coord = visitor_coord
+        
+        self._visitor_rank = visitor_rank
+        self._visitor_ransom = visitor_ransom
+
+        self._visitor_team = visitor_team
+        self._visitor_team_id = visitor_team_id
+
         
     @property
-    def id(self) -> Optional[int]:
-        return self._id
+    def visitor_id(self) -> Optional[int]:
+        return self._visitor_id
     
     @property
-    def name(self) -> Optional[str]:
-        return self._name
-    
-    @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
-    
-    @property
-    def ransom(self) -> Optional[int]:
-        return self._ransom
+    def visitor_name(self) -> Optional[str]:
+        return self._visitor_name
     
     @property
     def coord(self) -> Optional[Coord]:
-        return self._coord
+        return self._visitor_coord
+    
+    @property
+    def visitor_ransom(self) -> Optional[int]:
+        return self._visitor_ransom
+    
+    @property
+    def visitor_coord(self) -> Optional[Coord]:
+        return self._visitor_coord
 
     @property
-    def rank_name(self) -> Optional[str]:
+    def visitor_rank(self) -> Optional[str]:
         return self._visitor_rank
     
     @property
-    def team_id(self) -> Optional[int]:
-        return self._team_id
+    def visitor_team_id(self) -> Optional[int]:
+        return self.visitor_team_id
     
     @property
-    def team_name(self) -> Optional[str]:
-        return self._team_name
+    def visitor_team(self) -> Optional[str]:
+        return self._visitor_team
     
     @property
     def domain_id(self) -> Optional[int]:
@@ -79,11 +83,11 @@ class VisitorSearchContext(SearchContext):
     
     def to_dict(self):
         return {
-            "id": self._id,
-            "name": self._name,
-            "ransom": self._ransom,
-            "coord": self._coord,
-            "rank_name": self._rank_name,
-            "team_id": self._team_id,
-            "team_name": self._team_name
+            "visitor_id": self._visitor_id,
+            "visitor_name": self._visitor_name,
+            "visitor_ransom": self._visitor_ransom,
+            "visitor_coord": self._visitor_coord,
+            "visitor_rank": self._visitor_rank,
+            "visitor_team_id": self.visitor_team_id,
+            "visitor_name": self._visitor_team
         }

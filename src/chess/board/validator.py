@@ -22,7 +22,7 @@ class BoardValidator(Validator[Board]):
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the id.
+        * `candidate` (`int`): the visitor_id.
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -38,9 +38,9 @@ class BoardValidator(Validator[Board]):
     """
     Validates team discover with chained exceptions for discover meeting specifications:
       - Not null
-      - id fails validator
-      - name fails validator
-      - coord fails validator
+      - visitor_id fails validator
+      - visitor_name fails validator
+      - visitor_coord fails validator
     If validator fails their team_exception will be encapsulated in team BoardValidationException
 
     Args
@@ -54,9 +54,9 @@ class BoardValidator(Validator[Board]):
       TypeError: if candidate is not Board
       NullBoardException: if candidate is null
 
-      InvalidIdException: if invalid id
-      InvalidNameException: if invalid name
-      InvalidCoordException: if invalid coord
+      InvalidIdException: if invalid visitor_id
+      InvalidNameException: if invalid visitor_name
+      InvalidCoordException: if invalid visitor_coord
 
       BoardValidationException: Wraps any preceding exceptions
     """
@@ -90,5 +90,5 @@ class BoardValidator(Validator[Board]):
 #
 #
 # def main():
-#   person = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
+#   person = CommanderBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   team = TeamBuilder.build()

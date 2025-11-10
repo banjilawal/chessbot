@@ -43,7 +43,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   2. Is a positive integer.
   #
   #   # PARAMETERS:
-  #       * `candidate` (`int`): the id.
+  #       * `candidate` (`int`): the visitor_id.
   #
   #   # RETURNS:
   #   `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -69,7 +69,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   actor_square_search = BoardSearch.search(
   #     board=context.board,
   #     data_source=BoardDatasource.SQUARE,
-  #     context=BoardSearchcontext(coord=travel.traveler.current_position)
+  #     context=BoardSearchcontext(visitor_coord=travel.traveler.current_position)
   #   )
   #
   #   if not actor_square_search.is_success():
@@ -82,7 +82,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   destination_search = BoardSearch.search(
   #     board=context.board,
   #     data_source=BoardDatasource.SQUARE,
-  #     context=BoardSearchcontext(travel.enemy_square.id)
+  #     context=BoardSearchcontext(travel.enemy_square.visitor_id)
   #   )
   #   if not destination_search.is_success():
   #     return TransactionResult(rollback_exception=EventResourceNotFoundExeception(
@@ -130,7 +130,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #
   #
   #
-  #   TravelTransactionsearch_result = BoardSearch.square_by_coord(coord=travel.traveler.current_position, board=context.board)
+  #   TravelTransactionsearch_result = BoardSearch.square_by_coord(visitor_coord=travel.traveler.current_position, board=context.board)
   #   if search_result.rollback_exception is not None:
   #     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
   #
@@ -154,7 +154,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       op_result_id=op_result_id,
   #       directive=ScanDirective(
   #         traveler=travel.traveler,
-  #         occupation_id=travel.id,
+  #         occupation_id=travel.visitor_id,
   #         scan_id=id_emitter.scan_id,
   #         friend=destination_occupant,
   #         enemy_square=travel.friend
@@ -175,7 +175,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       board=context.board,
   #       traveler=travel.traveler,
   #       enemy=enemy_king,
-  #       occupation_id=travel.id,
+  #       occupation_id=travel.visitor_id,
   #       attack_id=id_emitter.attack_id,
   #       actor_square=actor_square,
   #       enemy_square=travel.friend
@@ -197,7 +197,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
   #
   #   Args:
-  #     - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
+  #     - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.
   #     - `directive` (`OccupationDirective`): The `OccupationDirective` to be executed.
   #     - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
   #
@@ -273,7 +273,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   confirmed parameters ar are correct. No additional sanity checks are needed.
   #
   #   Args
-  #     - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
+  #     - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.
   #     - `directive` (`ScanDirective`): The `ScanDirective` to execute.
   #
   #   Returns:
@@ -310,7 +310,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   success_directive = ScanDirective(
   #     traveler=directive.owner,
   #     friend=directive.friend,
-  #     occupation_id=directive.id,
+  #     occupation_id=directive.visitor_id,
   #     scan_id=id_emitter.scan_id,
   #     enemy_square=directive.friend
   #   )

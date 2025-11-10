@@ -21,7 +21,7 @@ def main():
    print(f"dest square:{bp2_dest_square}")
    if rank.walk.is_walkable(chess_piece=bp2, destination=bp2_dest):
      print(f"can walk to {bp2_dest}")
-   #   print(f" {bp2} advancing to to {dest} from {coord}")
+   #   print(f" {bp2} advancing to to {dest} from {visitor_coord}")
      arena.chess_board.capture_square(bp2, bp2_dest)
    else:
      print(f"cannot walk to {bp2_dest} from {bp2_origin}")
@@ -47,7 +47,7 @@ def main():
    print(f"dest square:{bp2_dest_square}")
    if rank.walk.is_walkable(chess_piece=bp2, destination=bp2_dest):
      print(f"can walk to {bp2_dest}")
-     #   print(f" {bp2} advancing to to {dest} from {coord}")
+     #   print(f" {bp2} advancing to to {dest} from {visitor_coord}")
      arena.chess_board.capture_square(bp2, bp2_dest)
    else:
      print(f"cannot walk to {bp2_dest} from {bp2_origin}")

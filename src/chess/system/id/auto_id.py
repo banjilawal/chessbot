@@ -1,7 +1,7 @@
-# src/chess/system/id/auto_id.py
+# src/chess/system/visitor_id/auto_id.py
 
 """
-Module: chess.system.id.auto_id
+Module: chess.system.visitor_id.auto_id
 Author: Banji Lawal
 Created: 2025-10-09
 Updated: 2025-10-10
@@ -15,7 +15,7 @@ The module only covers the generating and publishing IDs.
 
 # SECTION 3 - Limitations:
   1. This module is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
-      `chess.system.id.auto_id` module.
+      `chess.system.visitor_id.auto_id` module.
 
 # SECTION 4 - Design Considerations and Themes:
 Major themes influencing the design include:
@@ -83,25 +83,25 @@ class AutoId:
         # The generic type hints to satisfy static type checkers
         def new_init(self: Any, *args: Any, **kwargs:Any) -> None:
 
-            # Generate the id when it has a lock.
+            # Generate the visitor_id when it has a lock.
             with cls.id_lock:
-                self._id = next(cls.id_counter)
+                self._visitor_id = next(cls.id_counter)
 
             # Call the original __init__ with all its args
             original_init(self, *args, **kwargs)
 
         def get_id(self):
-            return self._id
+            return self._visitor_id
 
         def repr_func(obj):
-            return f"<{cls.__name__} id={obj.id}>"
+            return f"<{cls.__name__} visitor_id={obj.visitor_id}>"
 
         cls.__init__ = new_init
         cls.id = property(get_id)
         cls.__repr__ = repr_func
 
         return cls
-        # cls.id = property(lambda self: self._visitor_id)
+        # cls.visitor_id = property(lambda self: self._visitor_id)
 
         # if self.add_hash_eq:
         #     if not hasattr(cls, "__eq__"):
@@ -117,6 +117,6 @@ class AutoId:
         #         cls.__hash__ = lambda self: hash(self._visitor_id)
         #
         #     if not hasattr(cls, "__repr__"):
-        #         cls.__repr__ = lambda self: f"<{cls.__name__}: id={self._visitor_id}>"
+        #         cls.__repr__ = lambda self: f"<{cls.__name__}: visitor_id={self._visitor_id}>"
         #
         #     return cls

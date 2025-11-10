@@ -19,7 +19,7 @@ class GameRepo:
 
   def find(self, game_id: int) -> Optional[Game]:
     for game in self._games:
-      if game.id == game_id:
+      if game.visitor_id == game_id:
         return game
     return None
 

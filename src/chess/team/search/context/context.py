@@ -94,7 +94,7 @@ class TeamSearchContext(SearchContext):
 
 @property
 def name(self) -> Optional[str]:
-  return self._name
+  return self._visitor_name
 
 @property
 def rank(self) -> Optional[Rank]:
@@ -102,7 +102,7 @@ def rank(self) -> Optional[Rank]:
 
 @property
 def ransom(self) -> Optional[int]:
-  return self._ransom
+  return self._visitor_ransom
 
 @property
 def piece_id(self) -> Optional[int]:
@@ -116,9 +116,9 @@ def roster_number(self) -> Optional[int]:
 
 def to_dict(self) -> dict:
   return {
-    "name": self._name,
+    "visitor_name": self._visitor_name,
     "bounds": self._rank,
-    "ransom": self._ransom,
-    "id": self._visitor_id,
+    "visitor_ransom": self._visitor_ransom,
+    "visitor_id": self._visitor_id,
     "roster_number": self._roster_number,
   }

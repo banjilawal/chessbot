@@ -38,7 +38,7 @@ class ScalarValidator(Validator[Generic[T]]):
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the id.
+        * `candidate` (`int`): the visitor_id.
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -54,7 +54,7 @@ class ScalarValidator(Validator[Generic[T]]):
     """
     Validates that an existing `Scalar` instance meets specifications.
     This method performs team series of checks on team Scalar instance, ensuring it is not null and that
-    its ID, name, and coordinate are valid. Exceptions from these checks are caught and re-raised
+    its ID, visitor_name, and coordinate are valid. Exceptions from these checks are caught and re-raised
     as team `InvalidScalarException`, providing team clean and consistent err-handling experience.
 
     Args

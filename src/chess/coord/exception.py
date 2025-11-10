@@ -93,7 +93,7 @@ class InvalidCoordException(CoordException, ValidationException):
 #====================== COORD_ROW VALIDATION EXCEPTIONS #======================#  
 class NullRowException(CoordException, NullException):
   """
-  Raised if team row is null. A coord cannot be created if the row is null
+  Raised if team row is null. A visitor_coord cannot be created if the row is null
   """
   ERROR_CODE = "NULL_ROW_ERROR"
   DEFAULT_MESSAGE = "Row cannot be null."
@@ -117,7 +117,7 @@ class RowAboveBoundsException(CoordException):
 #====================== COORD_COLUMN VALIDATION EXCEPTIONS #======================#  
 class NullColumnException(NullException):
   """
-  Raised if team column is null. A coord cannot be created if the column is null
+  Raised if team column is null. A visitor_coord cannot be created if the column is null
   """
   ERROR_CODE = "NULL_COLUMN_ERROR"
   DEFAULT_MESSAGE = "Column cannot be null"

@@ -8,7 +8,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
     """
     Validates an TravelEvent meets specifications:
       - Not null
-      - `id` does not fail validator
+      - `visitor_id` does not fail validator
       - `actor_candidate` is team valid chess enemy
       - `target` is team valid square
     Any validate failure raises an `InvalidOccupationEventException`.
@@ -24,7 +24,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
       `TypeError`: if `candidate` is not OperationEvent
       `NullOccupationEventException`: if `candidate` is null
 
-      `InvalidIdException`: if invalid `id`
+      `InvalidIdException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails validator
       `InvalidSquareException`: if `target` fails validator
 
@@ -46,7 +46,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
       event = cast(OccupationEvent, t)
 
-      id_validation = IdValidator.validate(event.id)
+      id_validation = IdValidator.validate(event.visitor_id)
       if not id_validation.is_success():
         raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 

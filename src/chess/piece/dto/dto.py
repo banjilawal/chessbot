@@ -46,8 +46,8 @@ class PieceDTO:
 
   def to_dict(self):
       return {
-          "id": self._id,
-          "name": self._name,
+          "visitor_id": self._id,
+          "visitor_name": self._name,
           "team_dto": self._team_dto,
           "rank_dto": self._rank_dto,
           "captor_name": self._captor_name,

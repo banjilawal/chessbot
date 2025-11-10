@@ -10,10 +10,12 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.coord import CoordValidator
-from chess.domain import NullVisitorSearchContextException, VisitorSearchContext
-from chess.rank import RankBoundsChecker, RankBoundsException
+from chess.rank import RankBoundsChecker
 from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
-from chess.visitation import TooManyVisitationSearchParamsException, ZeroVisitationSearchParamsException
+from chess.domain import (
+    NullVisitorSearchContextException, VisitorSearchContext, NoVisitorSearchParamException,
+    TooManyVisitorSearchParamsException
+)
 
 
 class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
@@ -53,25 +55,23 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
             
             if len(search_context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroVisitationSearchParamsException(
-                        f"{method} {ZeroVisitationSearchParamsException.DEFAULT_MESSAGE}"
-                        )
+                    NoVisitorSearchParamException(f"{method} {NoVisitorSearchParamException.DEFAULT_MESSAGE}")
                 )
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyVisitationSearchParamsException(
-                        f"{method} {TooManyVisitationSearchParamsException.DEFAULT_MESSAGE}"
-                        )
+                    TooManyVisitorSearchParamsException(
+                        f"{method} {TooManyVisitorSearchParamsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
-            if search_context.id is not None:
-                id_validation = IdValidator.validate(search_context.id)
+            if search_context.visitor_id is not None:
+                id_validation = IdValidator.validate(search_context.visitor_id)
                 if id_validation.is_failure():
                     return ValidationResult.failure(id_validation.exception)
             
-            if search_context.name is not None:
-                name_validation = NameValidator.validate(search_context.name)
+            if search_context.visitor_name is not None:
+                name_validation = NameValidator.validate(search_context.visitor_name)
                 if name_validation.is_failure():
                     return ValidationResult.failure(name_validation.exception)
             
@@ -80,23 +80,23 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
                 if team_id_validation.is_failure():
                     return ValidationResult.failure(team_id_validation.exception)
             
-            if search_context.team_name is not None:
-                team_name_validation = NameValidator.validate(search_context.team_name)
+            if search_context.visitor_team is not None:
+                team_name_validation = NameValidator.validate(search_context.visitor_team)
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
-            if search_context.rank_name is not None:
-                rank_name_bounds_check = RankBoundsChecker.name_bounds_check(search_context.rank_name)
+            if search_context.visitor_rank is not None:
+                rank_name_bounds_check = RankBoundsChecker.name_bounds_check(search_context.visitor_rank)
                 if rank_name_bounds_check.is_failure():
                     return ValidationResult.failure(rank_name_bounds_check.exception)
             
-            if search_context.ransom is not None:
-                ransom_bounds_check = RankBoundsChecker.name_bounds_check(search_context.ransom)
+            if search_context.visitor_ransom is not None:
+                ransom_bounds_check = RankBoundsChecker.name_bounds_check(search_context.visitor_ransom)
                 if ransom_bounds_check.is_failure():
                     return ValidationResult.failure(ransom_bounds_check.exception)
             
-            if search_context.coord is not None:
-                coord_validation = CoordValidator.validate(search_context.coord)
+            if search_context.visitor_coord is not None:
+                coord_validation = CoordValidator.validate(search_context.visitor_coord)
                 if coord_validation.is_failure():
                     return ValidationResult.failure(coord_validation.exception)
             

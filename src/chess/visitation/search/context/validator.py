@@ -72,8 +72,8 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
                 if piece_id_validation.is_failure():
                     return ValidationResult.failure(piece_id_validation.exception)
             
-            if search_context.name is not None:
-                piece_name_validation = NameValidator.validate(search_context.name)
+            if search_context.visitor_name is not None:
+                piece_name_validation = NameValidator.validate(search_context.visitor_name)
                 if piece_name_validation.is_failure():
                     return ValidationResult.failure(piece_name_validation.exception)
             
@@ -82,19 +82,19 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
                 if team_id_validation.is_failure():
                     return ValidationResult.failure(team_id_validation.exception)
             
-            if search_context.team_name is not None:
-                team_name_validation = NameValidator.validate(search_context.team_name)
+            if search_context.visitor_team is not None:
+                team_name_validation = NameValidator.validate(search_context.visitor_team)
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
-            if search_context.rank_name is not None and search_context.rank_name.upper() not in RankSpec.__members__:
+            if search_context.visitor_rank is not None and search_context.visitor_rank.upper() not in RankSpec.__members__:
                 return ValidationResult.failure(
                     DomainInvalidRankNameParamException(
                         f"{method}: {DomainInvalidRankNameParamException.DEFAULT_MESSAGE}"
                         )
                 )
             
-            if search_context.ransom not in range[Queen.ransom]:
+            if search_context.visitor_ransom not in range[Queen.ransom]:
                 return ValidationResult.failure(
                     DomainInvalidRankNameParamException(
                         f"{method}: {DomainInvalidRankNameParamException.DEFAULT_MESSAGE}"

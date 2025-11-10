@@ -337,7 +337,7 @@ Example:
 # 
 # ## CORE CLASSES
 # * `Team`: A class representing team chess team.
-# * `TeamProfile`: A class that stores descriptive information for team team, such as its name and ID.
+# * `TeamProfile`: A class that stores descriptive information for team team, such as its visitor_name and ID.
 #     Neccessary for constructing team team
 # * `TeamValidator`: A class that provides validate and sanity checks for team team's configuration.
 # 
@@ -346,7 +346,7 @@ Example:
 # 
 # >>> from chess.team import Team, TeamSchema, TeamValidator
 # >>> # Create team new team and roster
-# >>> team = Team(team_id=1, commander=white_team_commander, schema=TeamSchema.WHITE)
+# >>> team = Team(visitor_team_id=1, commander=white_team_commander, schema=TeamSchema.WHITE)
 # >>> validate = TeamValidator.validate(team)
 # 
 # ## TEAM EXCEPTIONS

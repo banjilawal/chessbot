@@ -34,7 +34,7 @@ None
 From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`
 
-From `chess.coord`:
+From `chess.visitor_coord`:
     `Coord`, `CoordValidator`
 
 From `chess.square`:
@@ -71,8 +71,8 @@ class SquareBuilder(Builder[Square]):
     Create a `Square` object if parameters meet system specifications.
 
     # PARAMETERS:
-        * `name` (`str`):
-        * `coord` (`Coord`): Address on the `Board`
+        * `visitor_name` (`str`):
+        * `visitor_coord` (`Coord`): Address on the `Board`
 
     # RETURNS:
     `BuildResult[Square]` containing: `Square` on success. `Exception` on failure.
@@ -83,7 +83,7 @@ class SquareBuilder(Builder[Square]):
     method = "SquareBuilder.build"
 
     try:
-      # id_validation = IdSquareBuilder.validate(id)
+      # id_validation = IdSquareBuilder.validate(visitor_id)
       # if not id_validation.is_success():
       #   ThrowHelper.log_and_raise_error(SquareBuilder, id_validation.rollback_exception)
 

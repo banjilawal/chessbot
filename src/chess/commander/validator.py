@@ -28,8 +28,8 @@ class CommanderValidator(Validator):
     """
     Validates team commander meets graph requirements:
       - Not null
-      - valid id
-      - valid name
+      - valid visitor_id
+      - valid visitor_name
       - Commander.team_history meets validator requirements
     Any failed requirement raise an rollback_exception wrapped in team InvalidCommanderException
       

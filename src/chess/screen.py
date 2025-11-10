@@ -98,7 +98,7 @@ class GameDisplay:
         continue
       self.draw_chess_piece(piece)
 
-    # Draw the dragged discover last, at its temporary coord
+    # Draw the dragged discover last, at its temporary visitor_coord
     if dragged_state:
       self.draw_chess_piece_at(dragged_state.chess_piece, dragged_state.current_coordinate)
 
@@ -125,7 +125,7 @@ class GameDisplay:
     if isinstance(chess_piece.rank, Knight):
       pygame.draw.rect(self.screen, KNIGHT_COLOR, chess_piece_shape)
     if isinstance(chess_piece.rank, Rook):
-      pygame.draw.rect(self.screen, CASTLE_COLOR.ransom, chess_piece_shape)
+      pygame.draw.rect(self.screen, CASTLE_COLOR.visitor_ransom, chess_piece_shape)
     if isinstance(chess_piece.rank, Bishop):
       pygame.draw.rect(self.screen, BISHOP_COLOR, chess_piece_shape)
     if isinstance(chess_piece.rank, Queen):
@@ -271,7 +271,7 @@ class GameDisplay:
     elif isinstance(chess_piece.rank, Knight):
       pygame.draw.rect(self.screen, KNIGHT_COLOR, rect)
     elif isinstance(chess_piece.rank, Rook):
-      pygame.draw.rect(self.screen, CASTLE_COLOR.ransom, rect)
+      pygame.draw.rect(self.screen, CASTLE_COLOR.visitor_ransom, rect)
     elif isinstance(chess_piece.rank, Bishop):
       pygame.draw.rect(self.screen, BISHOP_COLOR, rect)
     elif isinstance(chess_piece.rank, Queen):

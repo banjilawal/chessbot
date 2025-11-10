@@ -30,7 +30,7 @@ class HostageValidator(Validator):
     Any failed requirement raise an rollback_exception wrapped in team HostageValidationException
 
     Args
-      candidate (CombatantPiece): coord to validate
+      candidate (CombatantPiece): visitor_coord to validate
 
      Returns:
        Result[T]: A Result object containing the validated payload if all graph requirements
@@ -83,5 +83,5 @@ class HostageValidator(Validator):
 
 
 def main():
-  person = CommanderBuilder.build(commander_id=id_emitter.person_id, name=RandomName.person())
+  person = CommanderBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
   side = TeamBuilder.build()

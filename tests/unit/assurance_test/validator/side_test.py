@@ -29,7 +29,7 @@ class SideValidatorTest(unittest.TestCase):
 
   def test_failed_id_validation_raises_exception(self):
     mock_side = create_autospec(Side, instance=True)
-    mock_side.id=-1
+    mock_side.visitor_id=-1
     mock_side.schema = TeamSchema.BLACK
     mock_side.competitor= CompetitorTest.valid_mock_competitor()
 
@@ -40,7 +40,7 @@ class SideValidatorTest(unittest.TestCase):
 
   def test_side_failed_competitor_validation_raises_exception(self):
     mock_side = create_autospec(Side, instance=True)
-    mock_side.id=1
+    mock_side.visitor_id=1
     mock_side.competitor=None
     mock_side.schema = TeamSchema.BLACK
 
@@ -52,7 +52,7 @@ class SideValidatorTest(unittest.TestCase):
 
   def test_side_null_profile_raises_exception(self):
     mock_side = create_autospec(Side, instance=True)
-    mock_side.id=1
+    mock_side.visitor_id=1
 
 
     mock_side.competitor=Commander(1, "commander")

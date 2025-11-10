@@ -34,10 +34,10 @@ class LogWriter:
       """
       Action:
         Derive `context` metadata for logging, including
-          - file name
-          - module name
-          - class name
-          - function name when its available
+          - file visitor_name
+          - module visitor_name
+          - class visitor_name
+          - function visitor_name when its available
 
       Parameters:
         * `context (`Any`)`:
@@ -58,7 +58,7 @@ class LogWriter:
       module_name = module.__name__ if module is not None else "unknown"
       file_name = getattr(module, "__file__", "unknown")
 
-      # Resolve the class name
+      # Resolve the class visitor_name
       if inspect.isclass(context):
         class_name = context.__name__
       elif hasattr(context, "__name__"):
@@ -93,15 +93,15 @@ class LogWriter:
     return logging.getLogger(log_info["module"])
 
     #
-    # # If it's class, use its name
+    # # If it's class, use its visitor_name
     # if inspect.isclass(context):
     #   return logging.getLogger(context.__name__)
     #
-    # # If it's an instance, use the instance's name
+    # # If it's an instance, use the instance's visitor_name
     # if hasattr(context, '__class__'):
     #   return logging.getLogger(context.__class__.__name__)
     #
-    # # Otherwise get the module(file) name
+    # # Otherwise get the module(file) visitor_name
     # frame = inspect.currentframe()
     # caller_frame = frame.f_back
     # module = inspect.getmodule(caller_frame)

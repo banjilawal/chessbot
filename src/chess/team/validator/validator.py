@@ -88,7 +88,7 @@ class TeamValidator(Validator[Team]):
     `InvalidTeamException`: Wraps any specification violations including:
       `TypeError`: if `candidate` is not team Team` object
       `NullTeamException`: if `candidate` is null
-      `InvalidIdException`: if `id` fails validate checks
+      `InvalidIdException`: if `visitor_id` fails validate checks
       `InvalidCommanderException`: if `commander` fails validate checks
       `NullTeamProfileException`: if `schema` is null
       `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander

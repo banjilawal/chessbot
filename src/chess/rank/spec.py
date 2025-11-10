@@ -70,7 +70,7 @@ class RankSpec(Enum):
         )
     
     def quadrants_str(self) -> str:
-        return " ".join(q.name for q in self._quadrants)
+        return " ".join(q.visitor_name for q in self._quadrants)
     
     def valid_ranks(self):
         return
@@ -81,10 +81,10 @@ class RankSpec(Enum):
     
     @classmethod
     def find_speck_by_rank(cls, rank: Rank) -> Optional[RankSpec]:
-        print(f"Looking for config with name:{rank.name}")
+        print(f"Looking for config with name:{rank.visitor_name}")
         
         for spec in RankSpec:
             print(f"Checking config:{spec.ransom}")
-            if spec.name.upper() == rank.name.upper():
+            if spec.name.upper() == rank.visitor_name.upper():
                 return spec
         return None

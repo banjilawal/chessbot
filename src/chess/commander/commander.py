@@ -89,7 +89,7 @@ class Commander(ABC):
   #   owner=TeamSearch.search(
   #     data_owner=self._team,
   #     search_category=SearchCategory.ROSTER,
-  #     search_context=TeamSearchContext(name="BN1")
+  #     search_context=TeamSearchContext(visitor_name="BN1")
   #   ),
   #   square_name="C8"
   # )

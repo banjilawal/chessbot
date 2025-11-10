@@ -52,10 +52,10 @@ The major theme influencing the modules design are
 See the list of exceptions in the `__all__` list following (e.g., `ResultException`).
 """
 
-# src/chess.coord.rollback_exception.py
+# src/chess.visitor_coord.rollback_exception.py
 
 """
-Module: chess.coord.rollback_exception
+Module: chess.visitor_coord.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -109,7 +109,7 @@ Updated: 2025-10-10
 2. This module provides a satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers name validator only.
+The module covers visitor_name validator only.
 
 # SECTION 3 - Limitations:
   1. The module does not provide permissible naming guidelines.

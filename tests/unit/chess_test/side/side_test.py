@@ -20,17 +20,17 @@ class SideTest(unittest.TestCase):
     # pieces.is_empty.return_value = True
     # pieces.size.return_value = 0
     # pieces.items = []
-    mock_side.id = 1
+    mock_side.visitor_id = 1
     mock_side.controlller = CompetitorTest.valid_mock_competitor()
 
     return mock_side
 
 
   @patch('assurance.notification.commander.CommanderValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = False
-    mock_id_validation.return_value.exception = IdValidationException("Invalid name")
+    mock_id_validation.return_value.exception = IdValidationException("Invalid visitor_name")
 
     mock_competitor_validation.return_value.is_success.return_value = True
     mock_competitor = CompetitorTest.valid_mock_competitor()
@@ -40,7 +40,7 @@ class SideTest(unittest.TestCase):
 
 
   @patch('assurance.notification.commander.CommanderValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
@@ -52,7 +52,7 @@ class SideTest(unittest.TestCase):
 
 
   @patch('assurance.notification.commander.CommanderValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
@@ -64,7 +64,7 @@ class SideTest(unittest.TestCase):
 
 
   @patch('assurance.notification.commander.CommanderValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.is_success.return_value = True
@@ -76,7 +76,7 @@ class SideTest(unittest.TestCase):
 
 
   @patch('assurance.notification.commander.CommanderValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.is_success.return_value = True
@@ -99,7 +99,7 @@ class SideTest(unittest.TestCase):
 
 
   @patch('assurance.notification.commander.CommanderValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1
@@ -115,7 +115,7 @@ class SideTest(unittest.TestCase):
 
 
   @patch('assurance.notification.commander.CommanderValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1

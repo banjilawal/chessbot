@@ -93,7 +93,7 @@ def id(self) -> Optional[int]:
 
 @property
 def name(self) -> Optional[str]:
-  return self._name
+  return self._visitor_name
 
 
 @property
@@ -103,7 +103,7 @@ def coord(self) -> Optional[Coord]:
 
 def to_dict(self) -> dict:
   return {
-    "id": self._visitor_id,
-    "name": self._name,
-    "coord": self._position
+    "visitor_id": self._visitor_id,
+    "visitor_name": self._visitor_name,
+    "visitor_coord": self._position
   }

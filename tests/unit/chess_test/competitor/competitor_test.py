@@ -19,15 +19,15 @@ class CompetitorTest(unittest.TestCase):
     sides_played.items = []
     sides_played.current_team = None
 
-    competitor.id = 1
-    competitor.name = "Valid Commander"
+    competitor.visitor_id = 1
+    competitor.visitor_name = "Valid Commander"
     competitor.teams = sides_played
 
     return competitor
 
 
-  @patch('assurance.notification.name.NameValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_competitor_failed_id_validation_raises_error(
     self,
     mock_name_validate,
@@ -42,8 +42,8 @@ class CompetitorTest(unittest.TestCase):
       Commander(competitor_id=-1, name="commander")
 
 
-  @patch('assurance.notification.name.NameValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_competitor_failed_name_validation_raises_error(
     self,
     mock_name_validate,
@@ -52,14 +52,14 @@ class CompetitorTest(unittest.TestCase):
     mock_id_validate.return_value.is_success.return_value = True
 
     mock_name_validate.return_value.is_success.return_value = False
-    mock_name_validate.return_value.exception = NameValidationException("Invalid name")
+    mock_name_validate.return_value.exception = NameValidationException("Invalid visitor_name")
 
     with self.assertRaises(NameValidationException):
       Commander(competitor_id=1, name="a1")
 
 
-  @patch('assurance.notification.name.NameValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_competitor_constructed_if_params_are_valid(
     self,
     mock_name_validate,

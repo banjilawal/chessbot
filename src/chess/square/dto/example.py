@@ -34,7 +34,7 @@ None
 From `chess.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`
 
-From `chess.coord`:
+From `chess.visitor_coord`:
     `Coord`, `CoordValidator`
 
 From `chess.square`:
@@ -62,8 +62,8 @@ None
 Create a `Square` object if parameters meet system specifications.
 
 # PARAMETERS:
-    * `name` (`str`):
-    * `coord` (`Coord`): Address on the `Board`
+    * `visitor_name` (`str`):
+    * `visitor_coord` (`Coord`): Address on the `Board`
 
 # RETURNS:
 `BuildResult[Square]` containing: `Square` on success. `Exception` on failure.

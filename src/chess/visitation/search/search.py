@@ -52,11 +52,11 @@ class VisitationSearch(Search[List[Coord]]):
   @classmethod
   def _name_search(cls, visitation: Visitation, name: str) -> SearchResult[List[Coord]]:
       """
-      Does not guarantee uniqueness returns the first item which duplicates the given name.
+      Does not guarantee uniqueness returns the first item which duplicates the given visitor_name.
       """
       method = "VisitationSearch._name_search"
 
-      prisoner = next((hostage for hostage in visitation.hostages if hostage.name.upper() == name.upper()), None)
+      prisoner = next((hostage for hostage in visitation.hostages if hostage.visitor_name.upper() == name.upper()), None)
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
@@ -70,14 +70,14 @@ class VisitationSearch(Search[List[Coord]]):
 
   @classmethod
   def _ransom_filter(cls, visitation: Visitation, ransom: int) -> SearchResult[List[Coord]]:
-      matches = [hostage for hostage in visitation.hostages if hostage.rank.ransom == ransom]
+      matches = [hostage for hostage in visitation.hostages if hostage.rank.visitor_ransom == ransom]
       return SearchResult(payload=matches)
 
   @classmethod
   def _id_search(cls, visitation: Visitation, piece_id: int) -> SearchResult[List[Coord]]:
       """
       IDs should be unique. Faster old_search would return the first consistency. An easy
-      integrity check finds all the items with the same id. If there is more than
+      integrity check finds all the items with the same visitor_id. If there is more than
       one raise owner `DuplicateUniqueIdException`.
 
       Performance Impact:
@@ -86,7 +86,7 @@ class VisitationSearch(Search[List[Coord]]):
       """
       method = "VisitationSearch._id_search"
 
-      prisoner = next((hostage for hostage in visitation.hostages if hostage.id == piece_id), None)
+      prisoner = next((hostage for hostage in visitation.hostages if hostage.visitor_id == piece_id), None)
       if prisoner is not None:
           return SearchResult(payload=List[prisoner])
 
@@ -96,7 +96,7 @@ class VisitationSearch(Search[List[Coord]]):
   @classmethod
   def _roster_number_search(cls, visitation: Visitation, roster_number: int) -> SearchResult[List[Coord]]:
       """
-      Does not guarantee uniqueness returns the first item which duplicates the given id.
+      Does not guarantee uniqueness returns the first item which duplicates the given visitor_id.
       """
       method = "VisitationSearch._roster_number_search"
 

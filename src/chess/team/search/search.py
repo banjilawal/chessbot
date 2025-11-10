@@ -84,9 +84,9 @@ class TeamSearch(Piece):
    ```
    
   Methods:
-    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find team owner by its id on the given `team`.
+    - `by_id(discovery_id: int, team: Team) -> SearchResult[Piece]`: Find team owner by its visitor_id on the given `team`.
     
-    - `by_name(name: str, team: Team) -> SearchResult[Piece]`: Find team owner by its name on the given `team`.
+    - `by_name(visitor_name: str, team: Team) -> SearchResult[Piece]`: Find team owner by its visitor_name on the given `team`.
     
     - `by_roster_number(roster_number: int, team: Team) -> SearchResult[Piece]`: Find team owner by its roster number
       on the given team. Roster numbers are unique within team team. Not unique across teams.

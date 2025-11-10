@@ -1,7 +1,7 @@
-# src/chess/system/id/exception.py
+# src/chess/system/visitor_id/exception.py
 
 """
-Module: chess.system.id.exception
+Module: chess.system.visitor_id.exception
 Author: Banji Lawal
 Created: 2025-09-17
 Updated: 2025-10-10
@@ -28,14 +28,14 @@ class InvalidIdException(ValidationException):
 
 class IdNullException(NullException):
   """
-  Raised if an entity's id is null
+  Raised if an entity's visitor_id is null
   """
   ERROR_CODE = "NULL_ID_ERROR"
   DEFAULT_MESSAGE = "Id cannot be null."
 
 
 class NegativeIdException(InvalidIdException):
-  """Raised if an id is zero or less"""
+  """Raised if an visitor_id is zero or less"""
   ERROR_CODE = "ID_IS_NEGATIVE"
   DEFAULT_MESSAGE = "Id cannot be negative."
 

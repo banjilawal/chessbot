@@ -20,16 +20,16 @@ class PieceTest(unittest.TestCase):
     mock_team = create_autospec(Side, instance=True)
     mock_rank = create_autospec(Rank, instance=True)
 
-    piece.id = piece_id
-    piece.name = name
+    piece.visitor_id = piece_id
+    piece.visitor_name = name
     piece.rank = mock_rank
     piece.team = mock_team
 
     return piece
 
 
-  @patch('assurance.notification.name.NameValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_piece_failed_id_validation_raises_error(
     self,
     mock_name_validate,
@@ -47,8 +47,8 @@ class PieceTest(unittest.TestCase):
       Piece(piece_id=-1, name="discovery", team=mock_side, rank=mock_rank)
 
 
-  @patch('assurance.notification.name.NameValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_piece_failed_name_validation_raises_error(
     self,
     mock_name_validate,
@@ -57,14 +57,14 @@ class PieceTest(unittest.TestCase):
     mock_id_validate.return_value.is_success.return_value = True
 
     mock_name_validate.return_value.is_success.return_value = False
-    mock_name_validate.return_value.exception = NameValidationException("Invalid name")
+    mock_name_validate.return_value.exception = NameValidationException("Invalid visitor_name")
 
     with self.assertRaises(NameValidationException):
       Piece(piece_id=1, name="a1")
 
 
-  @patch('assurance.notification.name.NameValidator.validate')
-  @patch('assurance.notification.id.IdValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_piece_constructed_if_params_are_valid(
     self,
     mock_name_validate,

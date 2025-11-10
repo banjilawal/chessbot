@@ -1,7 +1,7 @@
-# src/chess/system/id/factory.py
+# src/chess/system/visitor_id/factory.py
 
 """
-Module: chess.system.id.validator
+Module: chess.system.visitor_id.validator
 Author: Banji Lawal
 Created: 2025-08-12
 Updated: 2025-10-10
@@ -40,7 +40,7 @@ class IdValidator(Validator[int]):
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the id.
+        * `candidate` (`int`): the visitor_id.
 
     # RETURNS:
     `ValidationResult[str]`: A `ValidationResult` containing either:

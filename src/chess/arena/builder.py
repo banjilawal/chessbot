@@ -28,7 +28,7 @@ class ArenaBuilder(Builder[Arena]):
   2. Is a positive integer.
 
   # PARAMETERS:
-      * `candidate` (`int`): the id.
+      * `candidate` (`int`): the visitor_id.
 
   # RETURNS:
   `ValidationResult[str]`: A `ValidationResult` containing either:

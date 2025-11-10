@@ -20,8 +20,8 @@ class Discoveries:
 
   Each discover represents team snapshot of another owner found during play (through
   scanning, moving, or travel attempts). By aggregating them, `Discoveries`
-  provides both simple access (all discoveries) and targeted lookups (by id, name,
-  coordinate, bounds, or ransom).
+  provides both simple access (all discoveries) and targeted lookups (by visitor_id, visitor_name,
+  coordinate, bounds, or visitor_ransom).
 
   Attributes:
     _items (List[Discovery]): Internal list storing the recorded discoveries.
@@ -51,7 +51,7 @@ class Discoveries:
 
 
   def find_by_id(self, piece_id: int) -> SearchResult[Discovery]:
-    """Find team discover by the id"""
+    """Find team discover by the visitor_id"""
     method = "Discoveries.find_by_id"
 
     try:
@@ -70,7 +70,7 @@ class Discoveries:
 
 
   def find_by_piece_name(self, piece_name: str) -> SearchResult[Discovery]:
-    """Find team discover by the name"""
+    """Find team discover by the visitor_name"""
     method = "Discoveries.find_by_piece_name"
 
     try:
@@ -92,7 +92,7 @@ class Discoveries:
 
 
   def find_by_coord(self, coord: Coord) -> SearchResult[Discovery]:
-    """Find team discover by the coord"""
+    """Find team discover by the visitor_coord"""
     method = "Discoveries.find_by_coord"
 
     try:
@@ -111,7 +111,7 @@ class Discoveries:
 
 
   def select_by_ransom(self, ransom: int) -> SearchResult[List[Discovery]]:
-    """Filter discoveries by team bounds's ransom value"""
+    """Filter discoveries by team bounds's visitor_ransom value"""
     method = "Discoveries.select_by_ransom"
 
     try:

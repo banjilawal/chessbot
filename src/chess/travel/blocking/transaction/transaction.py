@@ -28,7 +28,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
         2. Is a positive integer.
     
         # PARAMETERS:
-            * `candidate` (`int`): the id.
+            * `candidate` (`int`): the visitor_id.
     
         # RETURNS:
         `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -53,7 +53,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
             
             self.event.actor.discoveries.append(Discovery(self.event.friend))
             
-            context_build = DiscoverySearchContextBuilder.build(piece_id=self.event.friend.id)
+            context_build = DiscoverySearchContextBuilder.build(piece_id=self.event.friend.visitor_id)
             if context_build.is_failure():
                 return TransactionResult.errored(
                     event_update=self.event,

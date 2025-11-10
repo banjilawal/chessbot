@@ -22,8 +22,8 @@ Provides the fundamental service structures for game pieces and entities owned b
 from chess.bounds import Pawn, King
 from chess.owner import CombatantPiece, KingPiece
 
-white_pawn_9 = CombatantPiece(discovery_id=9, name='WP1', bounds=Pawn(), team=white_team)
-white_king = KingPiece(discovery_id=2, name='WK', bounds=King(), team=white_team)
+white_pawn_9 = CombatantPiece(discovery_id=9, visitor_name='WP1', bounds=Pawn(), team=white_team)
+white_king = KingPiece(discovery_id=2, visitor_name='WK', bounds=King(), team=white_team)
 ```
 ## SUBPACKAGES
   * `chess.owner.err`: Exceptions raised by `Piece` and its subclasses.
@@ -77,7 +77,7 @@ from chess.owner import CombatantPiece, Encounter, NullAttackException, AutoEnco
 
 build_outcome = PieceBuilder.build(
   discovery_id=id_emitter.discovery_id,
-  name='BB2',
+  visitor_name='BB2',
   bounds=Bishop(),
   team=black_team
 )
@@ -102,9 +102,9 @@ def create_encounter(actor_candidate: Piece, discover: Piece) -> Encounter:
 """
 Validates team discover with chained exceptions for discover meeting specifications:
   - Not null
-  - id fails validator
-  - name fails validator
-  - coord fails validator
+  - visitor_id fails validator
+  - visitor_name fails validator
+  - visitor_coord fails validator
 If validator fails their team_exception will be encapsulated in team PieceValidationException
 
 Args
@@ -118,9 +118,9 @@ Raises:
   TypeError: if candidate is not Piece
   NullAttackException: if candidate is null
 
-  InvalidIdException: if invalid id
-  InvalidNameException: if invalid name
-  InvalidCoordException: if invalid coord
+  InvalidIdException: if invalid visitor_id
+  InvalidNameException: if invalid visitor_name
+  InvalidCoordException: if invalid visitor_coord
 
   PieceValidationException: Wraps any preceding exceptions
 """

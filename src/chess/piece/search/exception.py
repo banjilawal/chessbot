@@ -1,7 +1,7 @@
-# src/chess.coord.rollback_exception.py
+# src/chess.visitor_coord.rollback_exception.py
 
 """
-Module: chess.coord.rollback_exception
+Module: chess.visitor_coord.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -191,14 +191,14 @@ class DiscoverySearchCoordCollisionException(DiscoverySearchCollisionException):
 class SquareSearchIdCollisionException(SearchCollisionException):
   DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same id. There may be a service inconsistency."
+    "More than one Square found with the same visitor_id. There may be a service inconsistency."
   )
 
 
 class SquareSearchNameCollisionException(SearchCollisionException):
   DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same name. There may be a service collision"
+    "More than one Square found with the same visitor_name. There may be a service collision"
   )
 
 class SquareSearchCoordCollisionException(SearchCollisionException):
@@ -210,7 +210,7 @@ class SquareSearchCoordCollisionException(SearchCollisionException):
 class TeamSearchIdCollisionException(SearchCollisionException):
   DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Team found with the same name. There may be a service inconsistency."
+    "More than one Team found with the same visitor_name. There may be a service inconsistency."
   )
 
 

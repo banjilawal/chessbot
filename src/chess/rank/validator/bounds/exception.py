@@ -47,19 +47,19 @@ class RankBoundsException(InvalidRankException):
 # ======================# RANK_RANSOM_FIELD VALIDATION EXCEPTIONS #======================#
 class RankRansomException(RankBoundsException):
     ERROR_CODE = "RANK_RANSOM_FIELD_ERROR"
-    DEFAULT_MESSAGE = "The ransom of a Rank object is outside the bounds declared in RankSpec."
+    DEFAULT_MESSAGE = "The visitor_ransom of a Rank object is outside the bounds declared in RankSpec."
 
 class NullRankRansomException(RankRansomException, NullException):
     ERROR_CODE = "NULL_RANK_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "A Rank object cannot have a null ransom."
+    DEFAULT_MESSAGE = "A Rank object cannot have a null visitor_ransom."
 
 class RankRansomBelowBoundsException(RankRansomException):
     ERROR_CODE = "RANK_RANSOM_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "A Rank instance cannot have a negative ransom value. The lowest ransom allowed is zero."
+    DEFAULT_MESSAGE = "A Rank instance cannot have a negative visitor_ransom value. The lowest visitor_ransom allowed is zero."
 
 class RankRansomAboveBoundsException(RankRansomException):
     ERROR_CODE = "RANK_RANSOM_ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The Queen bounds has the highest allowable ransom. The value is above the ransom bounds."
+    DEFAULT_MESSAGE = "The Queen bounds has the highest allowable visitor_ransom. The value is above the visitor_ransom bounds."
 
 
 # ======================# RANK_QUOTA_FIELD VALIDATION EXCEPTIONS #======================#
@@ -87,7 +87,7 @@ class RankNameException(RankException):
 
 class RankNameOutOfBoundsException(RankBoundsException):
     ERROR_CODE = "RANK_NAME_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The name is not included in the Rank name specifications."
+    DEFAULT_MESSAGE = "The visitor_name is not included in the Rank visitor_name specifications."
 
 
 # ======================# RANK_LETTER_FIELD VALIDATION EXCEPTIONS #======================#
@@ -107,8 +107,8 @@ class RankLetterOutOfBoundsException(RankBoundsException):
 # ======================# RANK_ID_FIELD VALIDATION EXCEPTIONS #======================#
 class RankIdException(RankException):
     ERROR_CODE = "RANK_ID_FIELD_ERROR"
-    DEFAULT_MESSAGE = "The id field of a Rank object raised an exception."
+    DEFAULT_MESSAGE = "The visitor_id field of a Rank object raised an exception."
 
 class RankIdAboveBoundsException(RankIdException):
     ERROR_CODE = "RANK_ID_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = f"The value is too high for a Rank id."
+    DEFAULT_MESSAGE = f"The value is too high for a Rank visitor_id."

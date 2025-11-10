@@ -51,7 +51,7 @@ See the list of exceptions in the `__all__` list following (e.g., `EventExceptio
 # src/chess/system/travel/factory.py
 
 """
-Module: chess.system.id.validator
+Module: chess.system.visitor_id.validator
 Author: Banji Lawal
 Created: 2025-08-11
 Updated: 2025-10-10
@@ -74,9 +74,9 @@ The module only covers the basic properties and behavior objects in the `Event` 
       module can breach service integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
-      `chess.system.id.auto_id` module.
+      `chess.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
-      For details about publishing IDs see the `AutoId` class in module `chess.system.id.auto_id`.
+      For details about publishing IDs see the `AutoId` class in module `chess.system.visitor_id.auto_id`.
 
 # SECTION 4 - Design Considerations and Themes:
 Major themes influencing the design include:

@@ -28,7 +28,7 @@ class TeamFactory:
       for rank in ranks:
         for i in range(rank.quota):
           chess_piece = ChessPieceBuilder.build(
-            token_id=id_emitter.id,
+            token_id=id_emitter.visitor_id,
             team_rank_member_id=(i + 1),
             rank=rank,
             team=team
@@ -55,13 +55,13 @@ def main():
       #     chessboard(captor)
       #     print(chessboard)
   # print(repo)
-          # print(chessboard.name, " occupied by", chessboard.occupant.name)
+          # print(chessboard.visitor_name, " occupied by", chessboard.occupant.visitor_name)
         # print(placement.value[0])
         # placement.map_chess_piece_to_square_name(captor)
-        # print("comparing", placement.chess_piece_name.capitalize(), " with", captor.name.capitalize())
-        # captor.name.capitalize() == placement.value[0].capitalize():
+        # print("comparing", placement.chess_piece_name.capitalize(), " with", captor.visitor_name.capitalize())
+        # captor.visitor_name.capitalize() == placement.value[0].capitalize():
 
-    # print(f"matched chessboard:{placement.square_name} with {captor.name}")`````````
+    # print(f"matched chessboard:{placement.square_name} with {captor.visitor_name}")`````````
 
 if __name__ == "__main__":
   main()

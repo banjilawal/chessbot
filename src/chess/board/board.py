@@ -51,7 +51,7 @@ class Board:
       squares (List[List[Square]]): 2D list of Square objects representing the chess
 
     Raise:
-      InvalidIdException: If id fails notification checks for non-null and positive.
+      InvalidIdException: If visitor_id fails notification checks for non-null and positive.
       NullException: If squares is null
     """
     method = f"{self.__class__.__name__}.__ini__"
@@ -101,7 +101,7 @@ class Board:
   #
   #   Args:
   #     squares (List[List[Square]]): 2D list of Square objects to iterate through.
-  #     index: The starting coord for the iteration.
+  #     index: The starting visitor_coord for the iteration.
   #     null-pkg: The direction of the iteration.
   #
   #   Returns:
@@ -211,15 +211,15 @@ class Board:
     Finds team ChessPiece if it exists at the Coord. 
 
     Args:
-      coord (Coord): The coord of the ChessPiece to find.   
+      visitor_coord (Coord): The visitor_coord of the ChessPiece to find.
 
     Returns:  
       Result[Piece]: with payload != NULL if discover is found. Otherwise the Result contains 
       any team_exception raised.
 
     Raises: 
-      InvalidCoordException: If coord fails sanity checks.
-      PieceNotFoundException: If no discover is at the coord.
+      InvalidCoordException: If visitor_coord fails sanity checks.
+      PieceNotFoundException: If no discover is at the visitor_coord.
     """
 
     try:
@@ -227,7 +227,7 @@ class Board:
       if not validation.is_success():
         raise validation.exception
 
-      # A valida coord will have team square.
+      # A valida visitor_coord will have team square.
       piece = self.find_square_by_coord(coord).occupant
 
       if piece is None:
@@ -258,7 +258,7 @@ class Board:
       destination is not on the chessboard, or if the destination square is occupied by team friend.
     """
 
-    # print(f"Validating move for {chess_piece.name} to {destination}")
+    # print(f"Validating move for {chess_piece.visitor_name} to {destination}")
     # if not ChessPieceSpecification.is_satisfied_by(chess_piece):
     #   raise ChessPieceValidationException(
     #     f"{method}: {ChessPieceValidationException.default_message}"
@@ -357,13 +357,13 @@ class Board:
     # Remove the captor from their old square. I think its easier to understand
     # because there is less code than if I got the coords first to find the square
     # then deleted it.
-    # STORE the old coord FIRST before any modifications
+    # STORE the old visitor_coord FIRST before any modifications
     old_coordinate = captor.positions.current_coord
     old_square = self.find_square_by_coord(old_coordinate)
 
     print(
       f"{method}: moving {captor.name} from "
-      f"{old_square.name}.coord=("f"{old_square.coord}) to "
+      f"{old_square.name}.visitor_coord=("f"{old_square.coord}) to "
       f"{destination.name}=({destination.coord})"
     )
     # Clear the old square
@@ -386,7 +386,7 @@ class Board:
 
 
     # Put the destination square's coordinates at the top of the captor's
-    # coord stack.
+    # visitor_coord stack.
     captor.positions.push_coord(validated_destination.coord)
 
     # Checks to make sure everything worked correctly.
@@ -394,7 +394,7 @@ class Board:
     if destination.occupant is not captor:
       raise Exception(f"{method}: data inconsistency square occupant not updated")
     if captor.positions.current_coord is not destination.coord:
-      raise Exception(f"{method}: chess_piece coord stack not updated")
+      raise Exception(f"{method}: chess_piece visitor_coord stack not updated")
 
     # Method showing success.
     print(
@@ -414,8 +414,8 @@ class Board:
     """
     Provides team string representation of the chessboard, showing pieces or square names.
 
-    If team square is occupied, it shows the chess discover's name.
-    If team square is vacant, it shows the square's name in brackets.
+    If team square is occupied, it shows the chess discover's visitor_name.
+    If team square is vacant, it shows the square's visitor_name in brackets.
     """
     string = ""
     # Iterate from the top row (row 7) down to the bottom (row 0)
@@ -423,10 +423,10 @@ class Board:
       row_str_parts = []
       for square in row:
         if square.occupant is not None:
-          # Display the discover's name if the square is occupied.
+          # Display the discover's visitor_name if the square is occupied.
           row_str_parts.append(f"[{square.occupant.name}]")
         else:
-          # Display the square's name in brackets if it's empty.
+          # Display the square's visitor_name in brackets if it's empty.
           row_str_parts.append(f"[{square.name}]")
       string += " ".join(row_str_parts) + "\n"
     return string.strip()

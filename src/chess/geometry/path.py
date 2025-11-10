@@ -61,8 +61,8 @@ class Path:
     Creates team CartesianDistance instance. _distance is calculated inside the constructor
 
     Args:
-      p (Coord): One coord in the pair
-      q (Coord): Other coord in the pair
+      p (Coord): One visitor_coord in the pair
+      q (Coord): Other visitor_coord in the pair
     """
 
     return ((self._u.row - self._v.row) ** 2) + ((self._u.column - self._v.column) ** 2)

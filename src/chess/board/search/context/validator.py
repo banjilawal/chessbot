@@ -116,7 +116,7 @@ class BoardSearchContextValidator(Validator):
     Raises:
       `TypeError`: if `candidate` is not team Team` object
       `NullTeamException`: if `candidate` is null
-      `InvalidIdException`: if `id` fails validate checks
+      `InvalidIdException`: if `visitor_id` fails validate checks
       `InvalidCommanderException`: if `commander` fails validate checks
       `NullTeamProfileException`: if `schema` is null
       `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
@@ -182,7 +182,7 @@ class BoardSearchContextValidator(Validator):
 #   person = Human(1, "person")
 #
 #   from chess.team import Team
-#   team = Team(team_id=1, controller=person, schema=TeamProfile.BLACK)
+#   team = Team(visitor_team_id=1, controller=person, schema=TeamProfile.BLACK)
 #
 #
 # if __name__ == "__main__":

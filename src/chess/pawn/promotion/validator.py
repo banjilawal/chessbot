@@ -89,7 +89,7 @@ class PromotionEventValidator(Validator[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
                 )
             
-            context_build_result = BoardSearchContextBuilder.build(piece_id=event.actor.id)
+            context_build_result = BoardSearchContextBuilder.build(piece_id=event.actor.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             context = cast(BoardSearchContext, context_build_result.payload)

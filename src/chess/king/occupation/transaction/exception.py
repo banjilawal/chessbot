@@ -57,6 +57,6 @@ class FailedActorSquareVacationRolledBackException(RolledBackOccupationTransacti
 class FailedActorPositionUpdateRolledBackException(RolledBackOccupationTransactionException):
     ERROR_CODE = "ACTOR_POSITION_UPDATE_FAILURE_ROLLED_BACK"
     DEFAULT_MESSAGE = (
-        "Actor.current_position was not successfully set to enemy_square's coord. The OccupationTransaction"
+        "Actor.current_position was not successfully set to enemy_square's visitor_coord. The OccupationTransaction"
         " was rolled back before rollback_exception was raised."
     )

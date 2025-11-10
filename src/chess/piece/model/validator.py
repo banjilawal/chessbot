@@ -53,7 +53,7 @@ class PieceValidator(Validator[Piece]):
             
             # This is really minimal checking. `Piece` object names have format:
             # [color_letter][rank_symbol]-[value_in_quota]
-            # Next step is use regexp to ensure the name fits the pattern and create a new rollback_exception for that.
+            # Next step is use regexp to ensure the visitor_name fits the pattern and create a new rollback_exception for that.
             name_validation = NameValidator.validate(piece.name)
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)

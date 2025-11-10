@@ -1,4 +1,4 @@
-# src/chess/piece/search/context/context.py
+# src/chess/piece/search/context/base.py
 
 """
 Module: chess.piece.search.context.context
@@ -84,11 +84,11 @@ class DiscoverySearchContext(SearchContext):
 
   def to_dict(self):
     return {
-      "name": self._name,
-      "ransom": self._ransom,
+      "visitor_name": self._name,
+      "visitor_ransom": self._ransom,
       "piece_id": self._piece_id,
-      "rank_name": self._rank_name,
-      "team_id": self._team_id,
-      "team_name": self._team_name,
+      "visitor_rank": self._rank_name,
+      "visitor_team_id": self._team_id,
+      "visitor_name": self._team_name,
       "position": self._position
     }

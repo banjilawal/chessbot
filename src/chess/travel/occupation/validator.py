@@ -38,7 +38,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
                 )
             event = cast(OccupationEvent, candidate)
             
-            id_validation = Validator.validate(candidate.id)
+            id_validation = Validator.validate(candidate.visitor_id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
@@ -75,7 +75,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   """
 #   Validates an KingCheckEvent meets specifications:
 #     - Not null
-#     - `id` does not fail validator
+#     - `visitor_id` does not fail validator
 #     - `actor_candidate` is team valid chess enemy
 #     - `target` is team valid square
 #   Any validate failure raises an `InvalidAttackEventException`.
@@ -91,7 +91,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     `TypeError`: if `candidate` is not OperationEvent
 #     `NullAttackEventException`: if `candidate` is null
 #
-#     `InvalidIdException`: if invalid `id`
+#     `InvalidIdException`: if invalid `visitor_id`
 #     `PieceValidationException`: if `actor_candidate` fails validator
 #     `InvalidSquareException`: if `target` fails validator
 #
@@ -113,7 +113,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #     travel = cast(AttackEvent, t)
 #
-#     id_validation = IdValidator.validate(travel.id)
+#     id_validation = IdValidator.validate(travel.visitor_id)
 #     if not id_validation.is_success():
 #       raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
 #
@@ -125,7 +125,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     if not destination_square_validation.is_success():
 #       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 #
-#     if travel.enemy_square.coord == travel.traveler.current_position:
+#     if travel.enemy_square.visitor_coord == travel.traveler.current_position:
 #       raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
 #
 #     return Result(payload=travel)
@@ -170,7 +170,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     2. Is a positive integer.
 #
 #     # PARAMETERS:
-#         * `candidate` (`int`): the id.
+#         * `candidate` (`int`): the visitor_id.
 #
 #     # RETURNS:
 #     `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -196,7 +196,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     actor_square_search = BoardSearch.search(
 #       board=context.board,
 #       data_source=BoardDatasource.SQUARE,
-#       context=BoardSearchcontext(coord=travel.traveler.current_position)
+#       context=BoardSearchcontext(visitor_coord=travel.traveler.current_position)
 #     )
 #
 #     if not actor_square_search.is_success():
@@ -209,7 +209,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     destination_search = BoardSearch.search(
 #       board=context.board,
 #       data_source=BoardDatasource.SQUARE,
-#       context=BoardSearchcontext(travel.enemy_square.id)
+#       context=BoardSearchcontext(travel.enemy_square.visitor_id)
 #     )
 #     if not destination_search.is_success():
 #       return TransactionResult(
@@ -259,7 +259,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #
 #   TravelTransactionsearch_result = BoardSearch.square_by_coord(
-#     coord=travel.traveler.current_position, board=context.board
+#     visitor_coord=travel.traveler.current_position, board=context.board
 #     )
 #   if search_result.rollback_exception is not None:
 #     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
@@ -284,7 +284,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       op_result_id=op_result_id,
 #       directive=ScanDirective(
 #         traveler=travel.traveler,
-#         occupation_id=travel.id,
+#         occupation_id=travel.visitor_id,
 #         scan_id=id_emitter.scan_id,
 #         friend=destination_occupant,
 #         enemy_square=travel.friend
@@ -304,7 +304,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       board=context.board,
 #       traveler=travel.traveler,
 #       enemy=enemy_king,
-#       occupation_id=travel.id,
+#       occupation_id=travel.visitor_id,
 #       attack_id=id_emitter.attack_id,
 #       actor_square=actor_square,
 #       enemy_square=travel.friend
@@ -329,7 +329,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
 #
 #   Args:
-#     - `op_result_id` (`int`): The `id` of the `OperationResult` passed to the caller.
+#     - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.
 #     - `directive` (`OccupationDirective`): The `OccupationDirective` to be executed.
 #     - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
 #

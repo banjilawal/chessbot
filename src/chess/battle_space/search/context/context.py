@@ -1,4 +1,4 @@
-# src/chess/battle_space/search/context/context.py
+# src/chess/battle_space/search/context/base.py
 
 """
 Module: chess.battle_space.search.context.context
@@ -34,7 +34,7 @@ class ProjectionSearchContext(SearchContext):
     
     def to_dict(self) -> dict:
         return {
-            "id": self._piece_id,
-            "name": self._name,
-            "coord": self._position
+            "visitor_id": self._piece_id,
+            "visitor_name": self._name,
+            "visitor_coord": self._position
         }
