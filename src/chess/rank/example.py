@@ -29,10 +29,10 @@ for team_name clean and simple interface for team_name chess board_validator's l
 
 # >>> from chess.bounds import Knight
 # >>> from chess.discover import Piece
-# >>> from chess.visitor_coord import Coord
+# >>> from chess.point import Coord
 # >>>
 # >>> knight_rank = Knight()
-# >>> knight_piece = Piece(bounds=knight_rank, visitor_coord=Coord(2, 2))
+# >>> knight_piece = Piece(bounds=knight_rank, point=Coord(2, 2))
 # >>> destination = Coord(4, 3)
 # >>>
 # >>> # Validate the move using the Piece's bounds

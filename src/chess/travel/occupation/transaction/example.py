@@ -278,7 +278,7 @@ Example:
 #
 #
 #   return OccupationTransaction._switch_squares(op_result_id, travel, travel.actor_square)
-#   search_result = BoardSearch.square_by_coord(visitor_coord=travel.traveler.current_position, board=context.board)
+#   search_result = BoardSearch.square_by_coord(point=travel.traveler.current_position, board=context.board)
 #   if search_result.rollback_exception is not None:
 #     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
 #

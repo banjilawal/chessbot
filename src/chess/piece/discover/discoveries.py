@@ -92,7 +92,7 @@ class Discoveries:
 
 
   def find_by_coord(self, coord: Coord) -> SearchResult[Discovery]:
-    """Find team_name discover by the visitor_coord"""
+    """Find team_name discover by the point"""
     method = "Discoveries.find_by_coord"
 
     try:

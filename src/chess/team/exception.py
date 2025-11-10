@@ -1,7 +1,7 @@
-# src/chess.visitor_coord.rollback_exception.py
+# src/chess.point.rollback_exception.py
 
 """
-Module: chess.visitor_coord.rollback_exception
+Module: chess.point.rollback_exception
 Author: Banji Lawal
 Created: 2025-09-16
 Updated: 2025-10-04

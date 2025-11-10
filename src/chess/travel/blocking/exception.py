@@ -123,10 +123,10 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   DEFAULT_MESSAGE = "BlockingEventException build failed."
 #
 #
-# # src/chess.visitor_coord.rollback_exception.py
+# # src/chess.point.rollback_exception.py
 #
 # """
-# Module: chess.visitor_coord.rollback_exception
+# Module: chess.point.rollback_exception
 # Author: Banji Lawal
 # Created: 2025-10-04
 # version: 1.0.0
@@ -272,7 +272,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   """"""
 #   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
 #   DEFAULT_MESSAGE = (
-#     "BoardSearch did not find a square associated with the actor_candidate's visitor_coord. There may be a service "
+#     "BoardSearch did not find a square associated with the actor_candidate's point. There may be a service "
 #     "inconsistency."
 #   )
 #

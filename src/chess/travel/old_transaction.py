@@ -129,7 +129,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         return TransactionResult(exception=build_result.exception)
       return
 
-    if isinstance(destination_occupant.rank, King) or (not event.actor.is_enemy(destination_occupant):
+    if isinstance(destination_occupant.rank_name, King) or (not event.actor.is_enemy(destination_occupant):
       build_result = ScanEventBuilder(
 
       )
@@ -353,8 +353,8 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         was_rolled_back=True
       )
 
-    directive.enemy_combatant.team.roster.remove(directive.enemy_combatant)
-    if directive.enemy_combatant in directive.enemy_combatant.team.roster:
+    directive.enemy_combatant.team_name.roster.remove(directive.enemy_combatant)
+    if directive.enemy_combatant in directive.enemy_combatant.team_name.roster:
       # Rollback all changes in reverse order
       directive.enemy_combatant.captor = None
 
@@ -368,10 +368,10 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         )
       )
 
-    directive._owner.team.hostages.append(directive.enemy_combatant)
-    if directive.enemy_combatant not in directive._owner.team.hostages:
+    directive._owner.team_name.hostages.append(directive.enemy_combatant)
+    if directive.enemy_combatant not in directive._owner.team_name.hostages:
       # Rollback all changes in reverse order
-      directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
+      directive.enemy_combatant.team_name.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
 
       # Send the notification indicating rollback
@@ -387,8 +387,8 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     directive.friend.occupant = None
     if directive.friend.occupant is not None:
       # Rollback all changes in reverse order
-      directive._owner.team.hostages.remove(directive.enemy_combatant)
-      directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
+      directive._owner.team_name.hostages.remove(directive.enemy_combatant)
+      directive.enemy_combatant.team_name.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
 
       # Send the notification indicating rollback
@@ -403,8 +403,8 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     if directive.enemy_combatant in directive.board.pieces:
       # Rollback all changes in reverse order
       directive.friend.occupant = directive.enemy_combatant
-      directive._owner.team.hostages.remove(directive.enemy_combatant)
-      directive.enemy_combatant.team.add_to_roster(directive.enemy_combatant)
+      directive._owner.team_name.hostages.remove(directive.enemy_combatant)
+      directive.enemy_combatant.team_name.add_to_roster(directive.enemy_combatant)
       directive.enemy_combatant.captor = None
 
       # Send the notification indicating rollback

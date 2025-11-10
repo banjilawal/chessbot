@@ -1,7 +1,7 @@
-# src/chess/visitor_coord/dto/__init__.py
+# src/chess/point/dto/__init__.py
 
 """
-Module: `chess.visitor_coord.dto`
+Module: `chess.point.dto`
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0

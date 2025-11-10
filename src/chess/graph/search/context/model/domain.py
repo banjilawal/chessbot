@@ -10,100 +10,109 @@ version: 1.0.0
 
 from typing import Optional
 
+from chess.piece import Piece
 from chess.coord import Coord
 from chess.graph import GraphSearchContext
 
 
+
 class GraphDomainFilter(GraphSearchContext):
     """"""
-    _domain_id: Optional[int] = None
-    _domain_name: Optional[str] = None
-    _domain_root: Optional[Coord] = None
-    _domain_previous_root: Optional[Coord] = None
-    _domain_ransom: Optional[int] = None
-    _domain_rank: Optional[str] = None
-    _domain_team_id: Optional[id] = None
-    _domain_team: Optional[str] = None
-    _visitor_coord: Optional[Coord] = None
+    _id: Optional[int] = None
+    _name: Optional[str] = None
+    _root: Optional[Coord] = None
+    _previous_root: Optional[Coord] = None
+    _ransom: Optional[int] = None
+    _rank_name: Optional[str] = None
+    _team_id: Optional[id] = None
+    _team_name: Optional[str] = None
+    _point: Optional[Coord] = None
+    _resident: Optional[Piece] = None
     
     
     def __init__(
             self,
-            domain_id: Optional[int] = None,
-            domain_name: Optional[str] = None,
-            domain_ransom: Optional[int] = None,
-            domain_root: Optional[Coord] = None,
-            domain_rank: Optional[str] = None,
-            domain_team_id: Optional[id] = None,
-            domain_team: Optional[str] = None,
-            visitor_coord: Optional[Coord] = None,
-            domain_previous_root: Optional[Coord] = None,
+            id: Optional[int] = None,
+            name: Optional[str] = None,
+            ransom: Optional[int] = None,
+            root: Optional[Coord] = None,
+            rank_name: Optional[str] = None,
+            team_id: Optional[id] = None,
+            team_name: Optional[str] = None,
+            previous_root: Optional[Coord] = None,
+            point: Optional[Coord] = None,
+            resident: Optional[Piece] = None,
     ):
-        self._domain_id = domain_id
-        self._domain_name = domain_name
-        self._domain_root = domain_root
-        self._domain_ransom = domain_ransom
-        self._domain_rank = domain_rank
-        self._domain_team_id = domain_team_id
-        self._domain_team = domain_team
-        self._visitor_coord = visitor_coord
-        self._domain_previous_root = domain_previous_root
+        self._id = id
+        self._name = name
+        self._root = root
+        self._ransom = ransom
+        self._rank_name = rank_name
+        self._team_id = team_id
+        self._team_name = team_name
+        self._previous_root = previous_root
+        self._point = point
+        self._resident = resident
   
     
     @property
-    def domain_id(self) -> Optional[int]:
-        return self._domain_id
+    def id(self) -> Optional[int]:
+        return self._id
     
     
     @property
-    def domain_name(self) -> Optional[str]:
-        return self._domain_name
+    def name(self) -> Optional[str]:
+        return self._name
     
     
     @property
-    def domain_root(self) -> Optional[Coord]:
-        return self._domain_root
+    def root(self) -> Optional[Coord]:
+        return self._root
     
     
     @property
-    def domain_ransom(self) -> Optional[int]:
-        return self._domain_ransom
+    def ransom(self) -> Optional[int]:
+        return self._ransom
    
     
     @property
-    def domain_previous_root(self) -> Optional[Coord]:
-        return self._domain_previous_root
+    def previous_root(self) -> Optional[Coord]:
+        return self._previous_root
     
     
     @property
-    def domain_rank(self) -> Optional[str]:
-        return self._domain_rank
+    def rank_name(self) -> Optional[str]:
+        return self._rank_name
     
     
     @property
-    def domain_team_id(self) -> Optional[int]:
-        return self._domain_team_id
+    def team_id(self) -> Optional[int]:
+        return self._team_id
     
     
     @property
-    def domain_team(self) -> Optional[str]:
-        return self._domain_team
+    def team_name(self) -> Optional[str]:
+        return self._team_name
     
     
     @property
-    def visitor_coord(self) -> Optional[Coord]:
-        return self._visitor_coord
+    def point(self) -> Optional[Coord]:
+        return self._point
+    
+    @property
+    def resident(self) -> Optional[Piece]:
+        return self._resident
     
     
     def to_dict(self):
         return {
-            "domain_id": self._id,
-            "domain_name": self._domain_name,
-            "domain_ransom": self._domain_ransom,
-            "domain_rank": self._domain_rank,
-            "domain_team": self._domain_team,
-            "domain_team_id": self._domain_team_id,
-            "domain_root": self._domain_root,
-            "domain_previous_root": self._domain_previous_root,
-            "visitor_coord": self._visitor_coord,
+            "id": self._id,
+            "name": self._name,
+            "ransom": self._ransom,
+            "rank_name": self._rank_name,
+            "team_name": self._team_name,
+            "team_id": self._team_id,
+            "root": self._root,
+            "previous_root": self._previous_root,
+            "point": self._point,
         }

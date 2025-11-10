@@ -1,7 +1,7 @@
-# chess/visitor_coord/old_occupation_validator.py
+# chess/point/old_occupation_validator.py
 
 """
-Module: `chess.visitor_coord.validator`
+Module: `chess.point.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

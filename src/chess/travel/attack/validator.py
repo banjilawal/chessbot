@@ -77,7 +77,7 @@ class AttackEventValidator(Validator[AttackEvent]):
                     DoublyAttackingPrisonerException(f"{method}: {DoublyAttackingPrisonerException.DEFAULT_MESSAGE}")
                 )
             
-            enemy_team = event.enemy_combatant.team
+            enemy_team = event.enemy_combatant.team_name
             if event.enemy_combatant not in enemy_team.roster:
                 return ValidationResult.failure(
                     UnregisteredTeamMemberException(
@@ -86,7 +86,7 @@ class AttackEventValidator(Validator[AttackEvent]):
                     )
                 )
             
-            actor_team = event.actor.team
+            actor_team = event.actor.team_name
             if event.enemy_combatant in actor_team.hostages:
                 return ValidationResult.failure(
                     InconsistentHostageEntry(f"{method}: {InconsistentHostageEntry.DEFAULT_MESSAGE}")

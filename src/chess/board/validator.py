@@ -40,7 +40,7 @@ class BoardValidator(Validator[Board]):
       - Not null
       - visitor_id fails validator
       - visitor_name fails validator
-      - visitor_coord fails validator
+      - point fails validator
     If validator fails their team_exception will be encapsulated in team_name BoardValidationException
 
     Args
@@ -56,7 +56,7 @@ class BoardValidator(Validator[Board]):
 
       InvalidIdException: if invalid visitor_id
       InvalidNameException: if invalid visitor_name
-      InvalidCoordException: if invalid visitor_coord
+      InvalidCoordException: if invalid point
 
       BoardValidationException: Wraps any preceding exceptions
     """

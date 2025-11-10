@@ -27,7 +27,7 @@ def main():
   print(arena.chess_board)
   for c in arena.white_owner.team.roster, arena.black_owner.team.roster:
     for p in c:
-      print(p, " current visitor_coord", p.positions.current_coord(), p.positions.size())
+      print(p, " current point", p.positions.current_coord(), p.positions.size())
   #
   # teams = TeamFactory.assemble()
   # white_team_owner = teams[0].commander
@@ -49,7 +49,7 @@ def main():
 
   #
   # for captor in arena.white_owner.team_name.chess_pieces:
-  #   print(captor, " current visitor_coord", captor.coordinate_stack.current_coordinate())
+  #   print(captor, " current point", captor.coordinate_stack.current_coordinate())
 
   # TeamPlacementManager.place_teams(arena)
   # print(arena.chess_board)
@@ -58,7 +58,7 @@ def main():
   #   print(square, " occupied by", square.occupant.visitor_name)
 
   # for captor in arena.white_owner.team_name.chess_pieces:
-  #   print(captor, " current visitor_coord", captor.coordinate_stack.current_coordinate())
+  #   print(captor, " current point", captor.coordinate_stack.current_coordinate())
   # for square in arena.chess_board.squares:
   #   print(square)
 

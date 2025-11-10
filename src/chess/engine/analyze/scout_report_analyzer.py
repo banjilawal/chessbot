@@ -92,7 +92,7 @@ class ScoutReportAnalyzer:
 
     enemies.sort(
       reverse=True,
-      key=lambda chess_piece: chess_piece.rank.visitor_ransom
+      key=lambda chess_piece: chess_piece.rank_name.visitor_ransom
     )
     return enemies
 

@@ -36,5 +36,5 @@ class ProjectionSearchContext(SearchContext):
         return {
             "visitor_id": self._piece_id,
             "visitor_name": self._name,
-            "visitor_coord": self._position
+            "point": self._position
         }

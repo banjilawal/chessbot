@@ -105,5 +105,5 @@ def to_dict(self) -> dict:
   return {
     "visitor_id": self._visitor_id,
     "visitor_name": self._visitor_name,
-    "visitor_coord": self._position
+    "point": self._position
   }

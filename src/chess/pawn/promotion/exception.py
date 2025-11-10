@@ -206,10 +206,10 @@ class NullPromotionTransactionException(TransactionException):
   DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
 
 
-# src/chess.visitor_coord.rollback_exception.py
+# src/chess.point.rollback_exception.py
 
 """
-Module: chess.visitor_coord.rollback_exception
+Module: chess.point.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

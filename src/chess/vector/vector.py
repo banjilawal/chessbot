@@ -15,7 +15,7 @@ Created: 2025-10-08
     validated `Vector` passes and additional checks before deployment.
 
 **Related Features**:
-    `Coord` -> See `Coord`, `CoordBuilder`, `CoordValidator`, module[chess.visitor_coord],
+    `Coord` -> See `Coord`, `CoordBuilder`, `CoordValidator`, module[chess.point],
     `Scalar` --> See `Scalar`, `ScalarValidator`, module[chess.vector],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
@@ -35,7 +35,7 @@ Created: 2025-10-08
 ---------------
 From `chess.system`:
   * `LoggingLevelRouter`
-From `chess.visitor_coord`:
+From `chess.point`:
   * `Coord`, `CoordValidator`, `KNIGHT_STEP_SIZE`, `LoggingLevelRouter`
 
 From `chess.scalar`:
@@ -135,7 +135,7 @@ class Vector:
       Transform a `Coord` by offsetting `Coord.row` and `Coord.column`.
 
     Parameters:
-      * `visitor_coord` (`Coord`): A Coord object
+      * `point` (`Coord`): A Coord object
 
     Returns:
       Result[`Coord`]

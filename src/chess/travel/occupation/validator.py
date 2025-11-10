@@ -125,7 +125,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     if not destination_square_validation.is_success():
 #       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 #
-#     if travel.enemy_square.visitor_coord == travel.traveler.current_position:
+#     if travel.enemy_square.point == travel.traveler.current_position:
 #       raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
 #
 #     return Result(payload=travel)
@@ -196,7 +196,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     actor_square_search = BoardSearch.search(
 #       board=context.board,
 #       data_source=BoardDatasource.SQUARE,
-#       context=BoardSearchcontext(visitor_coord=travel.traveler.current_position)
+#       context=BoardSearchcontext(point=travel.traveler.current_position)
 #     )
 #
 #     if not actor_square_search.is_success():
@@ -259,7 +259,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #
 #   TravelTransactionsearch_result = BoardSearch.square_by_coord(
-#     visitor_coord=travel.traveler.current_position, board=context.board
+#     point=travel.traveler.current_position, board=context.board
 #     )
 #   if search_result.rollback_exception is not None:
 #     return TransactionResult(op_result_id, travel, search_result.rollback_exception)

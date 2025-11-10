@@ -30,7 +30,7 @@ class HostageValidator(Validator):
     Any failed requirement raise an rollback_exception wrapped in team_name HostageValidationException
 
     Args
-      candidate (CombatantPiece): visitor_coord to validate
+      candidate (CombatantPiece): point to validate
 
      Returns:
        Result[T]: A Result object containing the validated payload if all graph requirements

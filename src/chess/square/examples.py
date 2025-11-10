@@ -36,7 +36,7 @@ with team_name successful status is returned, the contained `Square` is valid an
 Args:
   `discovery_id` (`int`): The unique visitor_id for the owner. Must pass `IdValidator` checks.
   `visitor_name` (`Name`): Must pass `NameValidator` checks.
-  `visitor_coord` (`Coord`): Where `Square` is located on team_name `Board`. Must pass `CoordValidator` checks.
+  `point` (`Coord`): Where `Square` is located on team_name `Board`. Must pass `CoordValidator` checks.
 
 Returns:
   BuildResult[Square]: A `BuildResult` containing either:
@@ -48,7 +48,7 @@ Raises:
    process. This includes:
     * `InvalidIdException`: if `visitor_id` fails validate checks`
     * `InvalidNameException`: if `visitor_name` fails validate checks
-    * `InvalidCoordException`: if `visitor_coord` fails validate checks
+    * `InvalidCoordException`: if `point` fails validate checks
     * `SquareBuildFailedException`: for any other construction failures
 
 Note:
@@ -85,13 +85,13 @@ Example:
 # To use this package, import the desired classes and perform square-related operations.
 #
 # >>> from chess.enemy import Square, SquareValidator
-# >>> from chess.visitor_coord import Coord
+# >>> from chess.point import Coord
 # >>> from chess.owner import Piece
 # >>>
 # >>>
 # >>> # Build team_name new Square at Coord(2, 1)
-# >>> visitor_coord = Coord(row=2, column=1)
-# >>> build_outcome = SquareBuilder.build(visitor_id=1, visitor_name="B2", visitor_coord=visitor_coord)
+# >>> point = Coord(row=2, column=1)
+# >>> build_outcome = SquareBuilder.build(visitor_id=1, visitor_name="B2", point=point)
 # >>> if not build_outcome.is_success():
 # >>>  raise build_outcome.err
 # >>> square = cast(Square, build_outcome.payload)
@@ -135,7 +135,7 @@ Raises:
   `NullSquareException`: If the input `candidate` is `None`.
   `InvalidIdException`: If the `visitor_id` attribute of the square fails validate checks.
   `InvalidNameException`: If the `visitor_name` attribute of the square fails validate checks.
-  `InvalidCoordException`: If the `visitor_coord` attribute of the square fails validate checks.
+  `InvalidCoordException`: If the `point` attribute of the square fails validate checks.
   `InvalidSquareException`: Wraps any preceding exceptions
 """
 

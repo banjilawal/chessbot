@@ -57,7 +57,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             if resource_validation.is_failure():
                 return ValidationResult.failure(resource_validation.exception)
             
-            if event.actor.current_position == event.blocked_square.visitor_coord:
+            if event.actor.current_position == event.blocked_square.point:
                 return ValidationResult.failure(
                     ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.DEFAULT_MESSAGE}")
                 )

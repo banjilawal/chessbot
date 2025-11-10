@@ -65,12 +65,12 @@ class VisitationSearch(Search[List[Coord]]):
 
   @classmethod
   def _rank_filter(cls, visitation: Visitation, rank: Rank) -> SearchResult[List[Coord]]:
-      matches = [hostage for hostage in visitation.hostages if hostage.rank == rank]
+      matches = [hostage for hostage in visitation.hostages if hostage.rank_name == rank]
       return SearchResult(payload=matches)
 
   @classmethod
   def _ransom_filter(cls, visitation: Visitation, ransom: int) -> SearchResult[List[Coord]]:
-      matches = [hostage for hostage in visitation.hostages if hostage.rank.visitor_ransom == ransom]
+      matches = [hostage for hostage in visitation.hostages if hostage.rank_name.visitor_ransom == ransom]
       return SearchResult(payload=matches)
 
   @classmethod

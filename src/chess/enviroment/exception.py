@@ -130,7 +130,7 @@ class BoardActorSquareNotFoundException(BoardActorException, InconsistencyExcept
   """"""
   ERROR_CODE = "BOARD_ACTOR_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "BoardSearch did not find a square associated with the actor_candidate's visitor_coord. There may be a service "
+    "BoardSearch did not find a square associated with the actor_candidate's point. There may be a service "
     "inconsistency."
   )
 

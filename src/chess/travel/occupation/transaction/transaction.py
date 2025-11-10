@@ -75,11 +75,11 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                     )
                 )
             
-            self.event.actor.positions.push_coord(self.event.destination_square.visitor_coord)
+            self.event.actor.positions.push_coord(self.event.destination_square.point)
             
-            # If the push destination visitor_coord is not the traveler's current position rollback the operations,
+            # If the push destination point is not the traveler's current position rollback the operations,
             # then return the rollback_exception.
-            if self.event.actor.current_position != self.event.destination_square.visitor_coord:
+            if self.event.actor.current_position != self.event.destination_square.point:
                 self.event.actor.positions.undo_push()
                 self.event.actor_square.occupant = self.event.actor
                 self.event.destination_square.occupant = None

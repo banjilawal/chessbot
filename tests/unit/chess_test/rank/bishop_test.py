@@ -12,7 +12,7 @@ class BishopTest(unittest.TestCase):
     board = ChessBoardBuilder.build(1)
 
     with self.assertRaises(BishopException) as ctx:
-      piece.rank.walk(piece, Coord(0, 1), board)
+      piece.rank_name.walk(piece, Coord(0, 1), board)
     self.assertIsInstance(ctx.exception.__cause__, BishopWalkException)
 
 
@@ -23,7 +23,7 @@ class BishopTest(unittest.TestCase):
 
     piece = Piece(1, "BB-1", rank, side)
     piece.positions.push_coord(Coord(0, 0))
-    piece.rank.walk(piece, Coord(5, 5), board)
+    piece.rank_name.walk(piece, Coord(5, 5), board)
 
 
 if __name__ == "__main__":

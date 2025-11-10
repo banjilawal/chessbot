@@ -65,7 +65,7 @@ class PromotionEventValidator(Validator[PromotionEvent]):
                 )
                 
             
-            if event.actor.current_position.row != event.actor.team.schema.enemy_schema.rank_row:
+            if event.actor.current_position.row != event.actor.team_name.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(
                     ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.DEFAULT_MESSAGE}")
                 )
@@ -77,14 +77,14 @@ class PromotionEventValidator(Validator[PromotionEvent]):
             piece = cast(PromotablePiece, event.actor)
             
             if (
-                (piece.previous_rank is not None and not isinstance(piece.rank, Queen)) or
-                (piece.previous_rank is None and isinstance(piece.rank, Queen))
+                (piece.previous_rank is not None and not isinstance(piece.rank_name, Queen)) or
+                (piece.previous_rank is None and isinstance(piece.rank_name, Queen))
             ):
                 return ValidationResult.failure(
                     InconsistentRankHistoryException(f"{method}: {InconistenctRankHistoryException.DEFAULT_MESSAGE}")
                 )
             
-            if piece.previous_rank is not None and isinstance(piece.rank, Queen):
+            if piece.previous_rank is not None and isinstance(piece.rank_name, Queen):
                 return ValidationResult.failure(
                     DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
                 )

@@ -31,7 +31,7 @@ class PromotionTransaction(TravelTransaction[PromotionEvent]):
             if event_validation.failure():
                 return TransactionResult.errored(event_update=self.event, exception=event_validation.exception)
             
-            self.event.actor.previous_rank = self.event.actor.rank
+            self.event.actor.previous_rank = self.event.actor.rank_name
             if self.event.actor.previous_rank is None:
                 return TransactionResult.rolled_back(
                     event_update=self.event,
@@ -41,7 +41,7 @@ class PromotionTransaction(TravelTransaction[PromotionEvent]):
                 )
         
             self.event.actor.promote(self.event.new_rank)
-            if not isinstance(self.event.actor.rank, self.event.new_rank):
+            if not isinstance(self.event.actor.rank_name, self.event.new_rank):
                 self.event.actor._set_rank(self.event.actor.previous_rank)
                 self.event.actor.previous_rank = None
                 

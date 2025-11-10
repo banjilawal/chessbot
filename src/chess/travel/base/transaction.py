@@ -69,7 +69,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   actor_square_search = BoardSearch.search(
   #     board=context.board,
   #     data_source=BoardDatasource.SQUARE,
-  #     context=BoardSearchcontext(visitor_coord=travel.traveler.current_position)
+  #     context=BoardSearchcontext(point=travel.traveler.current_position)
   #   )
   #
   #   if not actor_square_search.is_success():
@@ -130,7 +130,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #
   #
   #
-  #   TravelTransactionsearch_result = BoardSearch.square_by_coord(visitor_coord=travel.traveler.current_position, board=context.board)
+  #   TravelTransactionsearch_result = BoardSearch.square_by_coord(point=travel.traveler.current_position, board=context.board)
   #   if search_result.rollback_exception is not None:
   #     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
   #

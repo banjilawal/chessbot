@@ -95,8 +95,8 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
                 if ransom_bounds_check.is_failure():
                     return ValidationResult.failure(ransom_bounds_check.exception)
             
-            if search_context.visitor_coord is not None:
-                coord_validation = CoordValidator.validate(search_context.visitor_coord)
+            if search_context.point is not None:
+                coord_validation = CoordValidator.validate(search_context.point)
                 if coord_validation.is_failure():
                     return ValidationResult.failure(coord_validation.exception)
             

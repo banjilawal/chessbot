@@ -60,7 +60,7 @@
 # # Find the square associated with the square's last position.
 # square_search = BoardSquareSearch.search(
 #   board=board,
-#   search_context=BoardSearchContext(visitor_coord=square.current_position)
+#   search_context=BoardSearchContext(point=square.current_position)
 # )
 #
 # if square_search.is_empty():

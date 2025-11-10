@@ -7,12 +7,11 @@ Created: 2025-11-09
 version: 1.0.0
 """
 
-
 from typing import List
 
 from chess.coord import Coord
 from chess.piece import Piece
-from chess.graph import Graph
+from chess.graph import Graph, GraphDomainFilter, graph
 from chess.system import LoggingLevelRouter, Search, SearchResult
 from chess.domain import (
     Domain, DomainValidator, GraphSearchContext, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
@@ -25,7 +24,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def search(cls, data_owner: Graph, search_context: GraphSearchContext) -> SearchResult[List[Domain]]:
+    def search(cls, data_owner: Graph, search_context: GraphDomainFilter) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch.search"
         
@@ -34,43 +33,51 @@ class GraphDomainSearch(Search[Graph, Domain]):
             if graph_validation.is_failure():
                 return SearchResult.failure(graph_validation.exception)
             
-            search_context_validation = GraphSearchContextValidator.validate(search_context)
-            if search_context_validation.is_failure():
-                return SearchResult.failure(search_context_validation.exception)
+            filter_validation = GraphSearchContextValidator.validate(search_context)
+            if filter_validation.is_failure():
+                return SearchResult.failure(filter_validation.exception)
             
-            if search_context.visitor_id is not None:
-                return cls._id_search(domain=data_owner, id=search_context.visitor_id)
+            if search_context.id is not None:
+                return cls._id_search(graph=data_owner, id=search_context.id)
             
-            if search_context.visitor_name is not None:
-                return cls._name_search(domain=data_owner, name=search_context.visitor_name)
+            if search_context.name is not None:
+                return cls._name_search(graph=data_owner, name=search_context.name)
             
-            if search_context.visitor_coord is not None:
-                return cls._coord_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.root is not None:
+                return cls._root_search(graph=data_owner, coord=search_context.root)
             
-            if search_context.visitor_rank is not None:
-                return cls._rank_name_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.previous_root is not None:
+                return cls._previous_root_search(graph=data_owner, coord=search_context.previous_root)
             
-            if search_context.visitor_ransom is not None:
-                return cls._ransom_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.point is not None:
+                return cls._point_search(graph=data_owner, coord=search_context.point)
+            
+            if search_context.rank_name is not None:
+                return cls._rank_name_search(graph=data_owner, name=search_context.rank_name)
+            
+            if search_context.ransom is not None:
+                return cls._ransom_search(graph=data_owner, ransom=search_context.point)
             
             if search_context.team_id is not None:
-                return cls._team_id_search(domain=data_owner, coord=search_context.visitor_coord)
+                return cls._team_id_search(graph=data_owner, id=search_context.team_id)
             
-            if search_context.visitor_team is not None:
-                return cls._team_name_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.team_name is not None:
+                return cls._team_name_search(graph=data_owner, name=search_context.team_name)
+            
+            if search_context.resident:
+                return cls._resident_search(graph=data_owner, piece=search_context.resident)
         
         except Exception as e:
             return SearchResult.failure(e)
     
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _id_search(cls, graph: Graph, id: int) -> SearchResult[List[Piece]]:
+    def _id_search(cls, graph: Graph, id: int) -> SearchResult[List[Domain]]
         """"""
         method = "GraphDomainSearch._id_search"
-        
+    
         try:
-            matches = [domain for domain in graph.domains if domain.owner.visitor_id == id]
+            matches = [domain for domain in graph.domains if domain.owner.id == id]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
@@ -80,106 +87,118 @@ class GraphDomainSearch(Search[Graph, Domain]):
         except Exception as e:
             return SearchResult.failure(e)
     
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _name_search(cls, graph: Graph, name: str) -> SearchResult[List[Piece]]:
+    def _name_search(cls, graph: Graph, name: str) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch._name_search"
-        
+    
         try:
-            matches = [domain for domain in graph.domains if domain.owner.visitor_name.upper == name.upper()]
+            matches = [domain for domain in graph.domains if domain.owner.name.upper == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
                 return SearchResult.success(matches)
             else:
-                return cls._resolve_duplicate_names(duplicates=matches, graph=graph)
+                return cls._resolve_duplicate_names(graph=graph, duplicates=matches)
         except Exception as e:
             return SearchResult.failure(e)
     
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _coord_search(cls, graph: Graph, coord: Coord) -> SearchResult[List[Piece]]:
+    def _root_search(cls, graph: Graph, coord: Coord) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._coord_search"
-        
+        method = "GraphDomainSearch._root_search"
+    
         try:
-            matches = [domain for domain in graph.domains if visitor.current_position == coord]
+            matches = [domain for domain in graph.domains if domain.tree_root == coord]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
                 return SearchResult.success(matches)
             else:
-                return cls._resolve_duplicate_coords(matches=matches, graph=graph)
+                return cls._resolve_duplicate_coords(graph=graph, duplicates=matches)
         except Exception as e:
             return SearchResult.failure(e)
     
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _previous_root_search(cls, graph: Graph, coord: Coord) -> SearchResult[List[Domain]]:
+        """"""
+        method = "GraphDomainSearch._previous_root_search"
+        
+        try:
+            matches = [domain for domain in graph.domains if domain.previous_tree_root == coord]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            
+            if len(matches) >= 1:
+                return SearchResult.success(matches)
+
+        except Exception as e:
+            return SearchResult.failure(e)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _rank_name_search(cls, graph: Graph, rank_name: str) -> SearchResult[List[Piece]]:
+    def _rank_name_search(cls, graph: Graph, name: str) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch._rank_name_search"
-        
+    
         try:
-            matches = [domain for domain in graph.domains if visitor.rank.visitor_name.upper() == rank_name.upper()]
+            matches = [domain for domain in graph.domains if domain.ownerr.rank.name.upper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
-            if len(matches) == 1:
+            if len(matches) >= 1:
                 return SearchResult.success(matches)
         except Exception as e:
             return SearchResult.failure(e)
     
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _ransom_search(cls, graph: Graph, ransom: int) -> SearchResult[List[Piece]]:
+    def _ransom_search(cls, graph: Graph, ransom: int) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch._ransom_search"
-        
+    
         try:
-            matches = [domain for domain in graph.domains if visitor.rank.visitor_ransom == ransom]
+            matches = [domain for domain in graph.domains if domain.owner.rank.ransom == ransom]
             if len(matches) == 0:
                 return SearchResult.empty()
             
-            elif len(matches) == 1:
+            elif len(matches) >= 1:
                 return SearchResult.success(matches)
         except Exception as e:
             return SearchResult.failure(e)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _team_id_search(cls, graph: Graph, id: int) -> SearchResult[List[Piece]]:
+    def _team_id_search(cls, graph: Graph, id: int) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch._team_id_search"
-        
+    
         try:
-            matches = [domain for domain in domain.visitor if visitor.team.visitor_id == id]
+            matches = [domain for domain in graph.domains if domain.downer.team.id == id]
             if len(matches) == 0:
                 return SearchResult.empty()
             
-            if len(matches) == 1:
+            if len(matches) >= 1:
                 return SearchResult.success(matches)
         
         except Exception as e:
             return SearchResult.failure(e)
     
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _team_name_search(cls, graph: Graph, name: str) -> SearchResult[List[Piece]]:
+    def _team_name_search(cls, graph: Graph, name: str) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch._team_name_search"
-        
+    
         try:
-            matches = [domain for domain in domain.visitor if visitor.team.visitor_name.uppper() == name.upper()]
+            matches = [domain for domain in graph.domains if domain.owner.team.name.uppper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
-            if len(matches) == 1:
+            if len(matches) >= 1:
                 return SearchResult.success(matches)
         except Exception as e:
             return SearchResult.failure(e)
@@ -187,15 +206,48 @@ class GraphDomainSearch(Search[Graph, Domain]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _resolve_duplicate_ids(cls, graph: Graph, duplicates: List[Piece]) -> SearchResult[List[Piece]]:
+    def _resident_search(cls, graph: Graph, piece: Piece) -> SearchResult[List[Domain]]:
+        """"""
+        method = "GraphDomainSearch._resident_search"
+        
+        try:
+            matches = [domain for domain in graph.domains if piece in domain.residents]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            
+            if len(matches) >= 1:
+                return SearchResult.success(matches)
+        except Exception as e:
+            return SearchResult.failure(e)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _point_search(cls, graph: Graph, coord: Coord) -> SearchResult[List[Domain]]:
+        """"""
+        method = "GraphDomainSearch._point_search"
+        
+        try:
+            matches = [domain for domain in graph.domains if coord in domain.tree]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            
+            if len(matches) >= 1:
+                return SearchResult.success(matches)
+        except Exception as e:
+            return SearchResult.failure(e)
+
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _resolve_duplicate_ids(cls, graph: Graph, duplicates: List[Domain]) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch._resolve_duplicate_ids"
-        
+            
         try:
             # Pop the first one to compare to all the others.
             target = duplicates.pop()
             
-            # Each piece should have a different visitor_id, visitor_name, and current_position. Stripping all the misses from
+            # Each piece should have a different id, name, and current_position. Stripping all the misses from
             # the target should only leave duplicates
             uniques = [
                 piece for piece in duplicates if piece.id == target.id and (
@@ -219,13 +271,12 @@ class GraphDomainSearch(Search[Graph, Domain]):
         except ResidentSearchIdCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _resolve_duplicate_names(cls, graph: Graph, duplicates: List[Piece]) -> SearchResult[List[Piece]]:
+    def _resolve_duplicate_names(cls, graph: Graph, duplicates: List[Domain]) -> SearchResult[List[Domain]]:
         """"""
         method = "GraphDomainSearch._resolve_duplicate_names"
-        
+    
         try:
             target = duplicates.pop()
             uniques = [
@@ -249,11 +300,12 @@ class GraphDomainSearch(Search[Graph, Domain]):
         except ResidentSearchNameCollisionException as e:
             return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
     
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _resolve_duplicate_coords(cls, graph: Graph, duplicates: List[Coord]) -> SearchResult[List[Piece]]:
-        method = "DomainPiceSearch._resolve_duplicate_coords"
+    def _resolve_duplicate_coords(cls, graph: Graph, duplicates: List[Coord]) -> SearchResult[List[Domain]]:
+        """"""                                                                                      
+        method = "GraphDomainSearch._resolve_duplicate_coords"
+        
         try:
             target = duplicates.pop()
             uniques = [
@@ -281,10 +333,10 @@ class GraphDomainSearch(Search[Graph, Domain]):
     def _duplicate_remover(
             cls,
             domain: Domain,
-            duplicates: List[Piece],
+            duplicates: List[Domain],
             target: Piece,
             run_number: int
-    ) -> (Domain, List[Piece]):
+    ) -> (Domain, List[Domain]):
         """"""
         method = "GraphDomainPieceSearch._duplicate_remover"
         

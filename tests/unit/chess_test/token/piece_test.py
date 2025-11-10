@@ -22,8 +22,8 @@ class PieceTest(unittest.TestCase):
 
     piece.visitor_id = piece_id
     piece.visitor_name = name
-    piece.rank = mock_rank
-    piece.team = mock_team
+    piece.rank_name = mock_rank
+    piece.team_name = mock_team
 
     return piece
 

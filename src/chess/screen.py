@@ -98,7 +98,7 @@ class GameDisplay:
         continue
       self.draw_chess_piece(piece)
 
-    # Draw the dragged discover last, at its temporary visitor_coord
+    # Draw the dragged discover last, at its temporary point
     if dragged_state:
       self.draw_chess_piece_at(dragged_state.chess_piece, dragged_state.current_coordinate)
 

@@ -43,20 +43,20 @@ class DomainVisitorSearch(Search[Domain, Piece]):
             if search_context.visitor_name is not None:
                 return cls._name_search(domain=data_owner, name=search_context.visitor_name)
             
-            if search_context.visitor_coord is not None:
-                return cls._coord_search(domain=data_owner, coord=search_context.visitor_coord)
+            if search_context.point is not None:
+                return cls._coord_search(domain=data_owner, coord=search_context.point)
             
             if search_context.visitor_rank is not None:
-                return cls._rank_name_search(domain=data_owner, coord=search_context.visitor_coord)
+                return cls._rank_name_search(domain=data_owner, coord=search_context.point)
             
             if search_context.visitor_ransom is not None:
-                return cls._ransom_search(domain=data_owner, coord=search_context.visitor_coord)
+                return cls._ransom_search(domain=data_owner, coord=search_context.point)
             
             if search_context.team_id is not None:
-                return cls._team_id_search(domain=data_owner, coord=search_context.visitor_coord)
+                return cls._team_id_search(domain=data_owner, coord=search_context.point)
             
             if search_context.visitor_team is not None:
-                return cls._team_name_search(domain=data_owner, coord=search_context.visitor_coord)
+                return cls._team_name_search(domain=data_owner, coord=search_context.point)
         
         except Exception as e:
             return SearchResult.failure(e)
@@ -156,7 +156,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
         method = "DomainResidentSearch._team_id_search"
         
         try:
-            matches = [visitor for visitor in domain.visitor if visitor.team.visitor_id == id]
+            matches = [visitor for visitor in domain.visitor if visitor.team_name.visitor_id == id]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -174,7 +174,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
         method = "DomainResidentSearch._team_name_search"
         
         try:
-            matches = [visitor for visitor in domain.visitor if visitor.team.visitor_name.uppper() == name.upper()]
+            matches = [visitor for visitor in domain.visitor if visitor.team_name.visitor_name.uppper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             

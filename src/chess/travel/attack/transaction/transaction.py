@@ -55,10 +55,10 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 )
             
             # Set checkpoint 2.
-            event.enemy_combatant.team.roster.remove(event.enemy_combatant)
+            event.enemy_combatant.team_name.roster.remove(event.enemy_combatant)
             
             # Evaluate checkpoint 2 success condition.
-            if event.enemy_combatant in event.enemy_combatant.team.roster:
+            if event.enemy_combatant in event.enemy_combatant.team_name.roster:
                 event.enemy_combatant.captor = None
                 
                 # Send the error and last checkpoint in the result on failure.
@@ -69,10 +69,10 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                     )
                 )
             
-            event.actor.team.hostages.append(event.enemy_combatant)
-            if event.enemy_combatant not in event.actor.team.hostages:
+            event.actor.team_name.hostages.append(event.enemy_combatant)
+            if event.enemy_combatant not in event.actor.team_name.hostages:
                 # Rollback all changes in reverse order
-                event.enemy_combatant.team.roster.append(event.enemy_combatant)
+                event.enemy_combatant.team_name.roster.append(event.enemy_combatant)
                 event.enemy_combatant.captor = None
                 
                 # Send the error and last checkpoint in the result
@@ -86,8 +86,8 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
             event.enemy_square.occupant = None
             if event.enemy_square.occupant == event.enemy_combatant:
                 # Rollback all changes in reverse order
-                event.actor.team.hostages.remove(event.enemy_combatant)
-                event.enemy_combatant.team.roster.append(event.enemy_combatant)
+                event.actor.team_name.hostages.remove(event.enemy_combatant)
+                event.enemy_combatant.team_name.roster.append(event.enemy_combatant)
                 event.enemy_combatant.captor = None
                 
                 # Send the error and last checkpoint in the result
@@ -101,8 +101,8 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
             event.execution_environment.pieces.remove(event.enemy_combatant)
             if event.enemy_combatant in event.execution_environment.pieces:
                 # Rollback all changes in reverse order
-                event.actor.team.hostages.remove(event.enemy_combatant)
-                event.enemy_combatant.team.roster.append(event.enemy_combatant)
+                event.actor.team_name.hostages.remove(event.enemy_combatant)
+                event.enemy_combatant.team_name.roster.append(event.enemy_combatant)
                 event.enemy_combatant.captor = None
                 
                 # Send the error and last checkpoint in the result

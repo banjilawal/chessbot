@@ -104,7 +104,7 @@ Validates team_name discover with chained exceptions for discover meeting specif
   - Not null
   - visitor_id fails validator
   - visitor_name fails validator
-  - visitor_coord fails validator
+  - point fails validator
 If validator fails their team_exception will be encapsulated in team_name PieceValidationException
 
 Args
@@ -120,7 +120,7 @@ Raises:
 
   InvalidIdException: if invalid visitor_id
   InvalidNameException: if invalid visitor_name
-  InvalidCoordException: if invalid visitor_coord
+  InvalidCoordException: if invalid point
 
   PieceValidationException: Wraps any preceding exceptions
 """

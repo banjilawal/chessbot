@@ -1,7 +1,7 @@
-# src/chess/visitor_coord/__init__.py
+# src/chess/point/__init__.py
 
 """
-Module: `chess.visitor_coord`
+Module: `chess.point`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

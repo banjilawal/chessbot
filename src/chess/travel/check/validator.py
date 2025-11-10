@@ -72,7 +72,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       if not destination_square_validation.is_success():
         raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
 
-      if event.enemy_square.visitor_coord == event.actor.current_position:
+      if event.enemy_square.point == event.actor.current_position:
         raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
 
       return Result(payload=event)

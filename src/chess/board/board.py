@@ -101,7 +101,7 @@ class Board:
   #
   #   Args:
   #     squares (List[List[Square]]): 2D list of Square objects to iterate through.
-  #     index: The starting visitor_coord for the iteration.
+  #     index: The starting point for the iteration.
   #     null-pkg: The direction of the iteration.
   #
   #   Returns:
@@ -211,15 +211,15 @@ class Board:
     Finds team_name ChessPiece if it exists at the Coord.
 
     Args:
-      visitor_coord (Coord): The visitor_coord of the ChessPiece to find.
+      point (Coord): The point of the ChessPiece to find.
 
     Returns:  
       Result[Piece]: with payload != NULL if discover is found. Otherwise the Result contains 
       any team_exception raised.
 
     Raises: 
-      InvalidCoordException: If visitor_coord fails sanity checks.
-      PieceNotFoundException: If no discover is at the visitor_coord.
+      InvalidCoordException: If point fails sanity checks.
+      PieceNotFoundException: If no discover is at the point.
     """
 
     try:
@@ -227,7 +227,7 @@ class Board:
       if not validation.is_success():
         raise validation.exception
 
-      # A valida visitor_coord will have team_name square.
+      # A valida point will have team_name square.
       piece = self.find_square_by_coord(coord).occupant
 
       if piece is None:
@@ -357,13 +357,13 @@ class Board:
     # Remove the captor from their old square. I think its easier to understand
     # because there is less code than if I got the coords first to find the square
     # then deleted it.
-    # STORE the old visitor_coord FIRST before any modifications
+    # STORE the old point FIRST before any modifications
     old_coordinate = captor.positions.current_coord
     old_square = self.find_square_by_coord(old_coordinate)
 
     print(
       f"{method}: moving {captor.name} from "
-      f"{old_square.name}.visitor_coord=("f"{old_square.coord}) to "
+      f"{old_square.name}.point=("f"{old_square.coord}) to "
       f"{destination.name}=({destination.coord})"
     )
     # Clear the old square
@@ -386,7 +386,7 @@ class Board:
 
 
     # Put the destination square's coordinates at the top of the captor's
-    # visitor_coord stack.
+    # point stack.
     captor.positions.push_coord(validated_destination.coord)
 
     # Checks to make sure everything worked correctly.
@@ -394,7 +394,7 @@ class Board:
     if destination.occupant is not captor:
       raise Exception(f"{method}: data inconsistency square occupant not updated")
     if captor.positions.current_coord is not destination.coord:
-      raise Exception(f"{method}: chess_piece visitor_coord stack not updated")
+      raise Exception(f"{method}: chess_piece point stack not updated")
 
     # Method showing success.
     print(

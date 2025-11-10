@@ -55,20 +55,20 @@ class PromotionEventBuilder(Builder[PromotionEvent]):
             actor = cast(PawnPiece, actor_candidate)
             board = cast(Board, environment_candidate)
             
-            if actor.current_position.row != actor.team.schema.enemy_schema.rank_row:
+            if actor.current_position.row != actor.team_name.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(
                     ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.DEFAULT_MESSAGE}")
                 )
             
             if (
-                (actor.previous_rank is not None and not isinstance(actor.rank, Queen)) or
-                (actor.previous_rank is None and isinstance(actor.rank, Queen))
+                (actor.previous_rank is not None and not isinstance(actor.rank_name, Queen)) or
+                (actor.previous_rank is None and isinstance(actor.rank_name, Queen))
             ):
                 return BuildResult.failure(
                     InconsistentRankHistoryException(f"{method}: {InconistenctRankHistoryException.DEFAULT_MESSAGE}")
                 )
             
-            if piece.previous_rank is not None and isinstance(piece.rank, Queen):
+            if piece.previous_rank is not None and isinstance(piece.rank_name, Queen):
                 return ValidationResult.failure(
                     DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
                 )
