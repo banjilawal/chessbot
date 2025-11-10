@@ -262,7 +262,7 @@ __all__ = [
   'ActorPlacementRequiredException',
   
   # ======================# ACTOR ACTIVITY EXCEPTIONS #======================#
-  'CapturedActorCannotActException',
+  'CapturedPieceCannotActException',
   'CapturedActorCannotAttackException',
   'CapturedActorCannotMoveException',
   'CheckMatedKingActivityException',
@@ -324,7 +324,7 @@ class ActorPlacementRequiredException(ActorException):
 
 
 # ======================# ACTOR ACTIVITY EXCEPTIONS #======================#
-class CapturedActorCannotActException(ActorException):
+class CapturedPieceCannotActException(ActorException):
   """
   A captured owner cannot actt.
   """

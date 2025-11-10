@@ -38,6 +38,7 @@ The major theme influencing the modules design are
 # SECTION 8 - Contains:
 See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
+from chess.system import BuildFailedException
 
 # src/chess/vector/rollback_exception.py
 
@@ -97,7 +98,7 @@ __all__ = [
   'InvalidScalarException',
   
 #======================# SCALAR BUILD EXCEPTIONS #======================#  
-  'ScalarBuildFailed',
+  'ScalarBuildFailedException',
 
 #======================# SCALAR BOUNDS EXCEPTIONS #======================#  
   'ScalarBelowBoundsException',
@@ -127,7 +128,7 @@ class InvalidScalarException(ScalarException, ValidationException):
 
 
 #======================# SCALAR BUILD EXCEPTIONS #======================#  
-class ScalarBuildFailed(ScalarException, BuilderException):
+class ScalarBuildFailedException(ScalarException, BuildFailedException):
   """
   Indicates Scalar could not be built. Wraps and re-raises errors that occurred
   during build.

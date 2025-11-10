@@ -1,140 +1,123 @@
 # src/chess/environment/exception.py
 
 """
-Module: `chess.environment.exception`
+Module: chess.environment.exception
 Author: Banji Lawal
 Created: 2025-10-18
 Version: 1.0.1
 """
 
-from chess.piece import TravelEventException
-from chess.system import ChessException, NullException, ValidationException, InconsistencyException
+from chess.system import (
+  ChessException, NullException, ValidationException, BuildFailedException, InconsistencyException
+)
+
 
 __all__ = [
-  'BoardActorException',
-  'TravelResourceException',
+  "TurnSceneException",
 
-#====================== TravelEvent actor_candidate VALIDATION EXCEPTIONS #======================#
-  'InvalidBoardActorException',
-  'InvalidTravelResourceException',
-  'NullBoardActorException',
-  'NullTravelResourceException',
-  'BoardActorNotFoundException',
-  
-  'NullTravelerEnvironmentTupleException',
-  'NullDestinationEnvironmentTupleException',
+# ====================== TURN_SCENE GENERAL VALIDATION EXCEPTIONS #======================#
+  "NullTurnSceneException",
+  "InvalidTurnSceneException",
 
-# ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
-  'BoardActorMovingException',
-  'NoInitialPlacementException',
-  'ActorAlreadyAtDestinationException',
-  'ActorNotOnRosterCannotMoveException',
-  'BoardPieceRemovedCannotActException',
-  'CapturedActorCannotMoveException',
+# ====================== TURN_SCENE ACTOR VALIDATION EXCEPTIONS #======================#
+  "CapturedPieceCannotActException",
+  "PieceWithNoStartingPlacementException",
+  "PieceNotOnRosterCannotActException",
+  "PieceNotOnBoardCannotActException",
+  "CheckmatedKingCannotActException",
 
-# ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-  'BoardActorSquareNotFoundException',
-  'SquareMisMatchesBoardActorException'
+# ====================== TURN_SCENE BUILD EXCEPTIONS #======================#
+  "TurnSceneBuildFailedException",
+
+# ====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTIONS #======================#
+  "TurnSceneSquareNotFoundException",
+  "PieceDoesNotOwnCurrentSquareException",
+  "ActorAndScenePropCoordMismatchException",
 ]
 
 
-class BoardActorException(ChessException):
-  ERROR_CODE = "BOARD_ACTOR_ERROR"
-  DEFAULT_MESSAGE = "An rollback_exception was raised by a TravelEvent traveler."
+class TurnSceneException(ChessException):
+  ERROR_CODE = "TURN_SCENE_ERROR"
+  DEFAULT_MESSAGE = "An rollback_exception was raised by a TurnScene."
 
 
-class TravelResourceException(TravelEventException):
-  ERROR_CODE = "TRAVEL_RESOURCE_ERROR"
-  DEFAULT_MESSAGE = "An rollback_exception was raised by a TravelEvent resource."
+#====================== TURN_SCENE GENERAL VALIDATION EXCEPTIONS #======================#
+class NullTurnSceneException(TurnSceneException, NullException):
+  """"""
+  ERROR_CODE = "NULL_TURN_SCENE_ERROR"
+  DEFAULT_MESSAGE = "A TurnScene cannot be null."
 
-#====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
-class NullBoardActorException(BoardActorException, NullException):
-  ERROR_CODE = "NULL_BOARD_ACTOR_ERROR"
-  DEFAULT_MESSAGE = "A TravelEvent traveler cannot be null."
 
-class NullTravelResourceException(TravelResourceException, NullException):
-  ERROR_CODE = "NULL_TRAVEL_RESOURCE_ERROR"
-  DEFAULT_MESSAGE = "A TravelEvent resource cannot be null."
+class InvalidTurnSceneException(TurnSceneException, ValidationException):
+  """"""
+  ERROR_CODE = "TURN_SCENE_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "TurnScene validation failed."
 
-class NullTravelerEnvironmentTupleException(BoardActorException, NullException):
-  ERROR_CODE = "NULL_TRAVELER_ENVIRONMENT_TUPLE_ERROR"
-  DEFAULT_MESSAGE = "Piece-Board-Tuple passed to BoardActorValidator cannot be null."
+
+# ====================== TURN_SCENE ACTOR VALIDATION EXCEPTIONS #======================#
+class CapturedPieceCannotActException(TurnSceneException):
+  """"""
+  ERROR_CODE = "CAPTURED_PIECE_CANNOT_ACT_ERROR"
+  DEFAULT_MESSAGE = "A captured piece cannot act in a scene."
+
+
+class PieceWithNoStartingPlacementException(TurnSceneException):
+  """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
+  ERROR_CODE = "PIECE_WITH_NO_INITIAL_PLACEMENT_ERROR"
+  DEFAULT_MESSAGE = (
+    "A Piece never placed at its starting position cannot act in a scene. A piece never placed "
+    "on an initial square cannot act."
+  )
+
+
+class PieceNotOnRosterCannotActException(TurnSceneException):
+  """"""
+  ERROR_CODE = "PIECE_NOT_ON_ROSTER_CANNOT_ACT_ERROR"
+  DEFAULT_MESSAGE = "A Piece must be on its Team roster to act in a scene"
   
-class NullDestinationEnvironmentTupleException(TravelResourceException, NullException):
-  ERROR_CODE = "NULL_DESTINATION__ENVIRONMENT_TUPLE_ERROR"
-  DEFAULT_MESSAGE = "Square-Board-Tuple passed to BoardResourceValidator cannot be null."
 
-class InvalidBoardActorException(BoardActorException, ValidationException):
-  ERROR_CODE = "BOARD_ACTOR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Validation of a TravelEvent traveler failed."
-
-class InvalidTravelResourceException(TravelResourceException, ValidationException):
-  ERROR_CODE = "TRAVEL_RESOURCE_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Validation of a TravelEvent resource failed."
-
-class BoardActorNotFoundException(BoardActorException, InconsistencyException):
-  ERROR_CODE = "BOARD_ACTOR_NOT_FOUND_ERROR"
-  DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate was not found during the board search. There may be a service inconsistency."
-  )
-
-# ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
-class BoardActorMovingException(BoardActorException):
-  ERROR_CODE = "BOARD_ACTOR_MOVE_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate raised a moving violation. Candidate cannot travel."
-
-class NoInitialPlacementException(BoardActorMovingException):
+class PieceNotOnBoardCannotActException(TurnSceneException):
   """"""
-  ERROR_CODE = "ACTOR_DID_NOT_HAVE_INITIAL_PLACEMENT_ERROR"
-  DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate did not have an initial placement on the board. Its position history is empty. "
-    "Candidate cannot travel."
-  )
+  ERROR_CODE = "PIECE_NOT_ON_BOARD_CANNOT_ACT_ERROR"
+  DEFAULT_MESSAGE = "A piece must be on the board to act in a scene,"
+  
 
-class ActorAlreadyAtDestinationException(BoardActorMovingException):
+class CheckmatedKingCannotActException(TurnSceneException):
   """"""
-  ERROR_CODE = "ACTOR_ALREADY_AT_DESTINATION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate is already at the destination square. There is nn need to travel."
+  ERROR_CODE = "CHECK_MATED_KING_CANNOT_ACT_ERROR"
+  DEFAULT_MESSAGE = "A checkmated king cannot act in a scene."
 
-class ActorNotOnRosterCannotMoveException(BoardActorMovingException):
+
+# ====================== TURN_SCENE BUILD EXCEPTIONS #======================#
+class TurnSceneBuildFailedException(TurnSceneException, BuildFailedException):
   """"""
-  ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team_name's roster. Candidate cannot travel."
+  ERROR_CODE = "TURN_SCENE_BUILD_FAILED_ERROR"
+  DEFAULT_MESSAGE = "TurnScene build failed."
+  
 
-class BoardPieceRemovedCannotActException(BoardActorMovingException):
+# ====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTIONS #======================#
+class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyException):
   """"""
-  ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
-  DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate is not on the board. Candidate cannot travel."
-  )
-
-class CapturedActorCannotMoveException(BoardActorMovingException):
-  """"""
-  ERROR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
-  DEFAULT_MESSAGE = (
-    "TravelEvent actor_candidate has been captured by the enemy. Captured pieces are not on the board."
-    "Candidate cannot travel."
-  )
-
-class CheckMatedKingCannotMoveException(BoardActorMovingException):
-  """"""
-  ERROR_CODE = "CHECK_MATED_KING_MOVE_ERROR"
-  DEFAULT_MESSAGE = (
-    "The occupation is checkmated. When a occupation is checkmated the game ends. If you are seeing this message "
-    "the win has not been processed correctly."
-  )
-
-
-# ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
-class BoardActorSquareNotFoundException(BoardActorException, InconsistencyException):
-  """"""
-  ERROR_CODE = "BOARD_ACTOR_SQUARE_NOT_FOUND_ERROR"
+  ERROR_CODE = "TURN_SCENE_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
     "BoardSearch did not find a square associated with the actor_candidate's point. There may be a service "
     "inconsistency."
   )
 
-class SquareMisMatchesBoardActorException(BoardActorException, InconsistencyException):
+class PieceDoesNotOwnCurrentSquareException(TurnSceneException, InconsistencyException):
   """"""
-  ERROR_CODE = "SQUARE_MISMATCHES_BOARD_ACTOR_ERROR"
-  DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a service inconsistency."
+  ERROR_CODE = "PIECE_DOES_NOT_OWN_CURRENT_SQUARE_ERROR"
+  DEFAULT_MESSAGE = (
+    "The Piece sharing the Square's Coord is not marked as the Square occupant. "
+    "There may be a service inconsistency."
+  )
+
+
+class ActorAndScenePropCoordMismatchException(TurnSceneException, InconsistencyException):
+  """"""
+  ERROR_CODE = "ACTOR_AND_SCENE_PROP_COORD_MISMATCH_ERROR"
+  DEFAULT_MESSAGE = (
+    "The Actor and their Prop have different coords. The scene requires the square and "
+    "piece have the same Coord."
+  )
+

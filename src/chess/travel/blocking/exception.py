@@ -181,7 +181,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   'TravelActorMovingException',
 #   'NoInitialPlacementException',
 #   'ActorAlreadyAtDestinationException',
-#   'ActorNotOnRosterCannotMoveException',
+#   'PieceNotOnRosterCannotActException',
 #   'BoardPieceRemovedCannotActException',
 #   'CapturedActorCannotMoveException',
 #
@@ -235,7 +235,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate is already at the destination square. There is nn need to travel."
 #
 #
-# class ActorNotOnRosterCannotMoveException(TravelActorMovingException):
+# class PieceNotOnRosterCannotActException(TravelActorMovingException):
 #   """"""
 #   ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team_name's roster. Candidate cannot travel."
@@ -258,7 +258,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   )
 #
 #
-# class CheckMatedKingCannotMoveException(TravelActorMovingException):
+# class CheckmatedKingCannotActException(TravelActorMovingException):
 #   """"""
 #   ERROR_CODE = "CHECK_MATED_KING_MOVE_ERROR"
 #   DEFAULT_MESSAGE = (

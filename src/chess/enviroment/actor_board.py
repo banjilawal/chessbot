@@ -18,7 +18,7 @@ from chess.piece.model.validator import PieceValidator
 from chess.system import LoggingLevelRouter, Validator, ValidationResult
 from chess.enviroment import (
   NoInitialPlacementException, NullTravelerEnvironmentTupleException, CheckMatedKingCannotMoveException,
-  BoardPieceRemovedCannotActException, ActorNotOnRosterCannotMoveException, CapturedActorCannotMoveException
+  BoardPieceRemovedCannotActException, PieceNotOnRosterCannotActException, CapturedActorCannotMoveException
 )
 
 
@@ -83,7 +83,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       team = actor.team
       if actor not in team.roster:
         return ValidationResult.failure(
-          ActorNotOnRosterCannotMoveException(f"{method}: {ActorNotOnRosterCannotMoveException.DEFAULT_MESSAGE}")
+          PieceNotOnRosterCannotActException(f"{method}: {PieceNotOnRosterCannotActException.DEFAULT_MESSAGE}")
         )
 
       # A captured combatant cannot be a TravelEvent actor_candidate. No need for validating a checkmated

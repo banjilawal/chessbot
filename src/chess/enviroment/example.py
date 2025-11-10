@@ -32,8 +32,8 @@
 # if isinstance(square, KingSquare):
 #   king_square = cast(KingSquare, square)
 #   if king_square.is_checkmated:
-#     return ValidationResult(rollback_exception=CheckMatedKingCannotMoveException(
-#       f"{method}: {CheckMatedKingCannotMoveException.DEFAULT_MESSAGE}"
+#     return ValidationResult(rollback_exception=CheckmatedKingCannotActException(
+#       f"{method}: {CheckmatedKingCannotActException.DEFAULT_MESSAGE}"
 #     ))
 #
 # environment_validation = Validator.validate(environment_candidate)

@@ -2,7 +2,7 @@ from enum import Enum
 
 
 from chess.system import BuildResult, BOARD_DIMENSION, NullNumberException, LoggingLevelRouter, Builder
-from chess.scalar import Scalar, ScalarAboveBoundsException, ScalarBelowBoundsException, ScalarBuildFailed
+from chess.scalar import Scalar, ScalarAboveBoundsException, ScalarBelowBoundsException, ScalarBuildFailedException
 
 
 
@@ -79,7 +79,7 @@ class ScalarBuilder(Builder[Scalar]):
         - On failure: Error information and error details
 
     Raises:
-      `ScalarBuildFailed`: Wraps any underlying validate failures that occur during the construction
+      `ScalarBuildFailedException`: Wraps any underlying validate failures that occur during the construction
       process. This includes:
         * `NullScalarException`: if `candidate` is null
         * `TypeError`: if `candidate` is not Scalar
@@ -124,4 +124,4 @@ class ScalarBuilder(Builder[Scalar]):
       return BuildResult(payload=Scalar(value=value))
 
     except Exception as e:
-      return BuildResult(exception=ScalarBuildFailed(f"{method}: {e}"))
+      return BuildResult(exception=ScalarBuildFailedException(f"{method}: {e}"))
