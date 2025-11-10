@@ -12,7 +12,7 @@ version: 1.0.0
 from .search import *
 from .exception import *
 
-from .record import NeighborTuple
+from .neighbor import NeighborTuple
 from .event import VisitationEvent
 from .service import VisitationService
 from .builder import VisitationEventBuilder

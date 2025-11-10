@@ -1,4 +1,4 @@
-# src/chess/environment/actor.py
+# src/chess/environment/actor_board.py
 
 """
 Module: `chess.environment.actor`
