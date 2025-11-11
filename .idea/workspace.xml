@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/enviroment/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/enviroment/actor_board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/enviroment/actor_board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/enviroment/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/enviroment/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/enviroment/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/enviroment/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/house/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/house/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/house/house.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/house/house.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/pawn/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/pawn/promotion/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/travel/blocking/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/travel/blocking/exception.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +251,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/house",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -288,11 +278,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system" />
       <recent name="$PROJECT_DIR$/src/chess/house" />
       <recent name="$PROJECT_DIR$/src/chess" />
       <recent name="$PROJECT_DIR$/src/chess/graph/search/context/model" />
       <recent name="$PROJECT_DIR$/src/chess/graph/search/domain" />
-      <recent name="$PROJECT_DIR$/src/chess/graph" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/graph/search/context/model" />
@@ -624,7 +614,7 @@
       <workItem from="1762627610288" duration="38851000" />
       <workItem from="1762671342509" duration="19364000" />
       <workItem from="1762707487858" duration="33074000" />
-      <workItem from="1762757955730" duration="15949000" />
+      <workItem from="1762757955730" duration="23363000" />
     </task>
     <servers />
   </component>
