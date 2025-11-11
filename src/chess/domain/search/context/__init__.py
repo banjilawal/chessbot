@@ -10,5 +10,5 @@ version: 1.0.0
 from .exception import *
 
 from .context import ResidentFilter
-from .builder import ResidentSearchContextBuilder
+from .builder import ResidentFilterBuilder
 from .validator import ResidentFilterValidator
