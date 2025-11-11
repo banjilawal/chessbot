@@ -16,12 +16,43 @@ P = TypeVar("P")
 
 
 class Scene(ABC, Generic[A, S, P]):
+    """
+    # ROLE:
+    
+    # RESPONSIBILITIES:
+    
+    # PROVIDES:
+        `Scene`
+      
+    # ATTRIBUTES:
+        `id`: `int`
+        `actor`: `A` Entity performing operations on `Stage`.
+        `stage`: `S` Region containing `actor` and any `prop` they need.
+        `prop`: `P` Resource `actor` may need for their operation
+    """
+    
     _id: int
     _actor: A
     _stage: S
     _prop: Optional[P]=None
     
     def __init__(self, id: int,  actor: A, stage: S, prop: Optional[P]=None):
+        """
+        # ACTION:
+        Constructs a new `Scene`.
+
+        # PARAMETERS:
+            * `id` (`int`):
+            * `actor` (`A`): Performs operations on `Stage`.
+            * `stage` (`S`): Environment whose `actor` interacts with entities.
+            * `prop` (`P`): Resource `actor` may need for their operations.
+
+        # RETURNS:
+            `None`
+
+        # RAISES:
+            `None`
+        """
         self._id = id
         self._actor = actor
         self._stage = stage

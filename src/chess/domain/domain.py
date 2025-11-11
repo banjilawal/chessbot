@@ -7,71 +7,102 @@ Created: 2025-10-28
 version: 1.0.0
 """
 
-from typing import List, Optional
+from typing import List
 
 from chess.coord import Coord
-from chess.house import House
+from chess.square import Square
+from chess.domain import Domain, DomainOrigin
 from chess.pawn import ActorPlacementRequiredException
-from chess.piece import Piece
+
+from chess.system import LoggingLevelRouter
 
 
 class Domain:
     """
-    
+    # ROLE:
+        Data-Holding, Data Transfer
+    # RESPONSIBILITIES:
+        1. Lists all possible points the Domain owner can reach.
+        2. List squares the Domain owner is blocked from by friends.
+        3. List Squares within Domain containing enemies the owner can attack or
+            might avoid.
+    # PROVIDES:
+        Domain
+
+    # ATTRIBUTES:
+        id (int)
+        origin (DomainOrigin): Contains Domain owner and their Square.
+        points: (List[Coord]): Set of Coord objects the owner can reach.. 
+        enemy_squares: (List[Square]): Places containing enemies.
+        friendly_squares: (List[Square]): Domain places inside owner is blocked from occupying. 
     """
-    _owner: Piece
-    _tree: List[Coord]
-    _residents: List[Piece]
-    _tree_root: Optional[Coord]
-    _previous_tree_root: Coord
+    _id: int
+    _origin: DomainOrigin
+    _points: List[Coord]
+    _enemy_squares: List[Square]
+    _friendly_squares: List[Square]
     
-    _enemy_houses: List[House]
-    _friendly_houses: List[House]
+    def __init__(
+            self, id: int,
+            origin: DomainOrigin,
+            points: List[Coord],
+            _enemy_squares: List[Square],
+            friendly_squares: List[Square],
+    ):
+        self._id = id
+        self._origin = origin
+        self._points = points
+        self._enemy_squares = _enemy_squares
+        self._friendly_squares = friendly_squares
+    
+    @property
+    def id(self) -> int:
+        return self._id
+    
+    @property
+    def origin(self) -> DomainOrigin:
+        return self._origin
+    
+    @property
+    def points(self) -> List[Coord]:
+        return self._points
+    
+    @property
+    def enemy_squares(self) -> List[Square]:
+        return self._enemy_squares
+    
+    @property
+    def friendly_squares(self) -> List[Square]:
+        return self._friendly_squares
+    
+    @LoggingLevelRouter.monitor
+    def update(self, points: List[Coord], enemy_squares: List[Square], friendly_squares: List[Square]) -> Domain:
+        """
+        # ACTION:
+            Factory for updating datasets when the Domain owner changes their position
 
-    
-    def __init__(self, piece: Piece):
-        self._owner = piece
-        self._id = self._owner.id
-        self._tree = List[Coord]
-        self._residents = List[Piece]
-        self._previous_tree_root = None
-        self._tree_root = piece.current_position
+        # PARAMETERS:
+            * points: (List[Coord]): Updated points within range of the Domain owner.
+            * enemy_squares: (List[Square]): Updated set of enemy-held squares the owner might
+                attack or avoid.
+            * friendly_squares: (List[Square]): Updated set of friendly squares the owner is
+                blocked from occupying.
+            
+        # RETURNS:
+            Domain: Recycling Domain.id and Domain.origin makes searches easier.
 
-    
-    @property
-    def owner(self) -> Piece:
-        return self._owner
-    
-    @property
-    def tree_root(self) -> Coord:
-        return self._tree_root
-    
-    @property
-    def previous_tree_root(self) -> Optional[Coord]:
-        return self._previous_tree_root
-    
-    @property
-    def tree(self) -> List[Coord]:
-        return self._tree
-    
-    @property
-    def residents(self) -> List[Piece]:
-        return self._residents
-    
-    def update(self):
-        """"""
-        method = "Domain.update"
+        # RAISES:
+            None
+        """
         
-        if self._tree_root is None and self._previous_tree_root == self._tree_root:
-            raise ActorPlacementRequiredException(f"{method}: {ActorPlacementRequiredException.DEFAULT_MESSAGE}")
-        if self.previous_tree_root is not None and self.previous_tree_root in self._tree:
-            self._tree.remove(self.previous_tree_root)
-            
-        if self._tree_root is not None and self._tree_root not in self._tree:
-            
-            self._previous_tree_root = self._tree_root
-            
-            self._tree_root = self._owner.current_position
+        method = "Domain.update"
+        return Domain(
+            id=self._id,
+            origin=self._origin,
+            points=points,
+            enemy_squares=enemy_squares,
+            friendly_squares=friendly_squares,
+        )
     
     def __eq__(self, other) -> bool:
         if other is self:
@@ -84,6 +115,4 @@ class Domain:
     
     def __hash__(self) -> int:
         return hash(self._id)
-    
-    def __str__(self) -> str:
-        return f"{self._owner} at {self._tree}"
+
