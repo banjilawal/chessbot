@@ -36,6 +36,8 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             
             domain_origin = cast(DomainOrigin, candidate)
             
+            piece
+            
             ValidationResult.success(payload=domain_origin)
         except Exception as e:
             return ValidationResult.failure(e)

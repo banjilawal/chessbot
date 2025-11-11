@@ -189,14 +189,7 @@ class CapturingItSelfRolledBackException(CapturePieceException):
 
 
 # ======================# PIECE CAPTURE EXCEPTIONS #======================#
-class CapturePieceException(PieceException):
-  """
-  Several exceptions can be raised during capture operations. This class is the parent of
-  exceptions team_name owner can raise being captured or attacking. Do not use directly. Subclasses
-  give details useful for debugging.
-  """
-  ERROR_CODE = "PIECE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Piece capture attempt raised and err"
+
 
 
 class PieceAttackingFriendException(AttackEventException):

@@ -20,7 +20,6 @@ __all__ = [
     
     # ====================== DOMAIN_ORIGIN VALIDATION EXCEPTIONS #======================#
     "CapturedPieceCannotActException",
-    "PieceWithNoStartingPlacementException",
     "PieceNotOnRosterCannotActException",
     "PieceNotOnBoardCannotActException",
     "CheckmatedKingCannotActException",
@@ -60,13 +59,7 @@ class CapturedPieceCannotActException(DomainOriginException):
     DEFAULT_MESSAGE = "A captured piece cannot act in a scene."
 
 
-class PieceWithNoStartingPlacementException(DomainOriginException):
-    """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
-    ERROR_CODE = "PIECE_WITH_NO_INITIAL_PLACEMENT_ERROR"
-    DEFAULT_MESSAGE = (
-        "A Piece never placed at its starting position cannot act in a scene. A piece never placed "
-        "on an initial square cannot act."
-    )
+
 
 
 class PieceNotOnRosterCannotActException(DomainOriginException):

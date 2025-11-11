@@ -265,7 +265,7 @@ __all__ = [
   'CapturedPieceCannotActException',
   'CapturedActorCannotAttackException',
   'CapturedActorCannotMoveException',
-  'CheckMatedKingActivityException',
+
   
   # ======================# SUBJECT ACTIVITY EXCEPTIONS #======================#
   'SubjectException',
@@ -356,14 +356,7 @@ class CapturedActorCannotScanException(ActorException):
   DEFAULT_MESSAGE = "A captured actor_candidate cannot blocking team_name square."
 
 
-class CheckMatedKingActivityException(ActorException):
-  """
-  A checkmated occupation cannot act. The game should end once team_name occupation is checkmated
-  """
-  ERROR_CODE = "CHECKMATED_KING_ACTIVITY_ERROR"
-  DEFAULT_MESSAGE = (
-    "A checkmated occupation cannot do anything. The game ends when team_name occupation is checkmated."
-  )
+
 
 
 # ======================# SUBJECT EXCEPTIONS #======================#

@@ -7,19 +7,24 @@ Created: 2025-10-22
 Version: 1.0.0
 """
 
-from typing import Tuple, Type, cast, TypeVar, Any
+from typing import Type, Any, cast
 
+from chess.domain import PieceWithNoStartingPlacementException
+from chess.king import KingPiece
+from chess.pawn import ActorPlacementRequiredException
+from chess.piece.model.exception import CapturedPieceException, CheckmatedKingException
 from chess.team import Team, RosterNumberOutOfBoundsException
-from chess.rank import Bishop, King, Knight, Pawn, Queen, Rook, knight
+from chess.rank import Bishop, King, Knight, Pawn, Queen, RankValidatorFactory, Rook, knight
 from chess.system import IdValidator, NameValidator, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
-    NullAttackException, NullPieceException, Piece, AttackMissingCoordStackException,
+    CombatantPiece, NullAttackException, NullPieceException, Piece, AttackMissingCoordStackException,
     AttackMissingDiscoveryListException,
     AttackRankOutOfBoundsException, AttackRosterNumberIsNullException, AttackTeamFieldIsNullException,
+    PieceNullCoordStackException, PieceRequiresInitialPlacementException, PieceRosterNumberIsNullException,
+    PieceTeamFieldIsNullException,
     UnregisteredTeamMemberException
 )
-
-T = TypeVar('T')
+from chess.travel.attack.exception import CapturePieceException
 
 
 class PieceValidator(Validator[Piece]):
@@ -46,7 +51,7 @@ class PieceValidator(Validator[Piece]):
             # For safety cast the candidate to a `Piece` instance.
             piece = cast(Piece, candidate)
             
-            # With AutoId decorator, the ID check should never fail. It might not be necessary anymore.
+
             id_validation = IdValidator.validate(piece.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
@@ -75,30 +80,57 @@ class PieceValidator(Validator[Piece]):
                     RosterNumberOutOfBoundsException(f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(piece.rank, PieceValidator.VALID_RANKS):
-                return ValidationResult.failure(
-                    PieceRankOutOfBoundsException("{method}: {PieceRankOutOfBoundsException.DEFAULT_MESSAGE}")
-                )
-            
-            # This test will have to be removed because a valid owner that has been captured is taken of
-            # its team_name's roster and put on its enemy's hostage list.
-            # team_name = owner.team_name
-            # if owner not in team_name.roster:
-            #   return ValidationResult(rollback_exception=UnregisteredTeamMemberException(
-            #     f"{method}: {UnregisteredTeamMemberException.DEFAULT_MESSAGE}"
-            #   ))
+            rank_validation = RankValidatorFactory.validate(piece.rank)
+            if rank_validation.is_failure():
+                return ValidationResult.failure(rank_validation.exception)
+
             
             if piece.positions is None:
                 return ValidationResult.failure(
-                    PieceMissingCoordStackException(f"{method}: {AttackMissingCoordStackException.DEFAULT_MESSAGE}")
-                )
-            
-            if piece.discoveries is None:
-                return ValidationResult.failure(
-                    PieceMissingDiscoveriesException(f"{method}: {PieceMissingDiscoveriesException.DEFAULT_MESSAGE}")
+                    PieceNullCoordStackException(f"{method}: {PieceNullCoordStackException.DEFAULT_MESSAGE}")
                 )
             
             return ValidationResult.success(piece)
         
         except Exception as e:
             return ValidationResult(exception=e)
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_piece_is_free(cls, candidate: Any) -> ValidationResult[Piece]:
+        """"""
+        method = "PieceValidator.validate_piece_is_free"
+        try:
+            piece_validation = cls.validate(candidate)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            piece = cast(Piece, piece_validation.payload)
+            
+            team = piece.team
+            if piece not in team.roster:
+                return ValidationResult.failure(
+                    UnregisteredTeamMemberException(f"{method} {UnregisteredTeamMemberException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated:
+                return ValidationResult.failure(
+                    CheckmatedKingException(f"{method} {CheckmatedKingException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is not None:
+                return ValidationResult.failure(
+                    CapturedPieceException(f"{method}: {CapturedPieceException.DEFAULT_MESSAGE}")
+                )
+            
+            if piece.current_position is None or piece.postions.is_empty():
+                return ValidationResult.failure(
+                   PieceRequiresInitialPlacementException(
+                       f"{method}: {PieceRequiresInitialPlacementException.DEFAULT_MESSAGE}"
+                  )
+                )
+            
+            return ValidationResult.success(piece)
+        except Exception as e:
+            return ValidationResult.failure(e)
+        
