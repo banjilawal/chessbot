@@ -55,7 +55,10 @@ from typing import Any, cast
 
 from chess.coord import CoordValidator
 from chess.piece import Piece, PieceValidator
-from chess.square import Square, InvalidSquareException, NullSquareException, SquareAndPieceMismatchedCoordException
+from chess.square import (
+    PieceInconsistentSquareOccupationException, Square, InvalidSquareException,
+    NullSquareException, SquareAndPieceMismatchedCoordException
+)
 from chess.system import Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
 
 
@@ -79,49 +82,54 @@ class SquareValidator(Validator[Square]):
     def validate(cls, candidate: Any) -> ValidationResult[Square]:
         """
         # Action:
-        Ensures clients the candidate meets minimum system requirements for use in the system.
+        Ensures the candidate is a Square that meets the minimum requirements for use in the system.
     
         # Parameters:
-          * candidate (Any): The object to verify
+          * candidate (Any): Object to verify is a Square.
     
         # Returns:
-          ValidationResult[Square]: A ValidationResult containing either:
-                payload - A Square instance that satisfies the specification.
-                rollback_exception - Details about which specification violation occurred.
+          ValidationResult[Square] containing either:
+                - On success: Square in payload.
+                - On failure: Exception.
     
         # Raises:
-        No Exceptions are raised. Exceptions are returned to caller in ValidationResult[Square]
+            * TypeError
+            * NullSquareException
+            * InvalidSquareException
         """
-        
         method = "SquareValidator.validate"
         
         try:
             if candidate is None:
-                return ValidationResult(
-                    exception=NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}")
-                    )
+                return ValidationResult.failure(
+                    NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}")
+                )
             
             if not isinstance(candidate, Square):
-                return ValidationResult(exception=TypeError(f"Expected Square, but got {type(candidate).__name__}."))
+                return ValidationResult.failure(
+                    TypeError(f"Expected Square, but got {type(candidate).__name__}.")
+                )
             
             square = cast(Square, candidate)
             
             id_validation = IdValidator.validate(square.id)
-            if not id_validation.is_success():
-                return ValidationResult(exception=id_validation.exception)
+            if id_validation.is_failure():
+                return ValidationResult.failure(id_validation.exception)
             
             name_validation = NameValidator.validate(square.name)
-            if not name_validation.is_success():
-                return ValidationResult(exception=name_validation.exception)
+            if name_validation.is_failure:
+                return ValidationResult.failure(name_validation.exception)
             
             coord_validation = CoordValidator.validate(square.coord)
             if not coord_validation.is_success():
-                raise coord_validation.exception
+                return ValidationResult.failure(coord_validation.exception)
             
-            return ValidationResult(payload=square)
+            return ValidationResult.success(payload=square)
         
         except Exception as e:
-            return ValidationResult(exception=InvalidSquareException(f"{method}: {e}"))
+            return ValidationResult.failure(
+                InvalidSquareException(f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}", e)
+            )
         
         
     @classmethod
@@ -141,14 +149,16 @@ class SquareValidator(Validator[Square]):
             * piece_candidate (Any): The object to verify is an active Piece instance.
 
         # Returns:
-          ValidationResult[Square, Piece]: A ValidationResult containing either:
-                payload - A Square instance that satisfies the specification.
-                rollback_exception - Details about which specification violation occurred.
+          ValidationResult[(Square, Piece)] containing either:
+                - On success: Tuple(Square, Piece) in payload.
+                - On failure: Exception.
 
         # Raises:
-        No Exceptions are raised. Exceptions are returned to caller in ValidationResult[Square]
+            * SquareAndPieceMismatchedCoordException
+            * PieceInconsistentSquareOccupationException
         """
         method = "SquareValidator.validate_piece_by_square"
+        
         try:
             square_validation = cls.validate(square_candidate)
             if not square_validation.is_failure():
@@ -171,9 +181,14 @@ class SquareValidator(Validator[Square]):
             
             if square.occupant != piece:
                 return ValidationResult.failure(
-                    Mis
+                    PieceInconsistentSquareOccupationException(
+                        f"{method} {PieceInconsistentSquareOccupationException.DEFAULT_MESSAGE}"
+                    )
                 )
             
+            return ValidationResult.success(payload=(square, piece))
             
         except Exception as e:
-            return ValidationResult.failure(e)
+            return ValidationResult.failure(
+                InvalidSquareException(f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}", e)
+            )
