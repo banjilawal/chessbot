@@ -6,15 +6,29 @@ Author: Banji Lawal
 Created: 2025-11-11
 version: 1.0.0
 """
+
 from chess.piece import Piece
 from chess.square import Square
 
 
 class DomainOrigin:
+    """
+    # ROLE:
+        Data-Holding
+    # RESPONSIBILITIES:
+        1. Encapsulates information about a Domain owner and their current Square.
+    # PROVIDES:
+        Domain
+
+    # ATTRIBUTES:
+        owner (Piece): Owner of a Domain.
+        owner_square (Square):
+    """
     _owner: Piece
     _owner_square: Square
     
     def __init__(self, owner: Piece, owner_square: Square):
+        
         self._owner = owner
         self._owner_square = owner_square
         

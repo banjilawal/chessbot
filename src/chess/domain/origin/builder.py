@@ -17,11 +17,14 @@ from chess.system import Builder, BuildResult, LoggingLevelRouter
 class DomainOriginBuilder(Builder[DomainOrigin]):
     """
     # ROLE:
-    
+        Build, Validation
+        
     # RESPONSIBILITIES:
-    
+        1. Perform sanity checks on resources for creating a new DomainOrigin object.
+        2. Report any errors preventing a successful build.
+        3. Provide a DomainOrigin object that meets minimal requirements for usage in the system.
     # PROVIDES:
-        DomainOrigin
+        BuildResult
     
     # ATTRIBUTES:
         None.
@@ -30,7 +33,23 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
     @classmethod
     @LoggingLevelRouter.monitor
     def build(cls, turn_scene: TurnScene) -> BuildResult[DomainOrigin]:
-        """"""
+        """
+        # ACTION:
+        Create a new DomainOrigin object that can be safely used in the system if and only if:
+            1. turn_scene parameter has passed validation checks.
+            2. turn_scene parameter has verified owner and their square have the same Coord.
+
+        # PARAMETERS:
+            * candidate (int): the visitor_id.
+
+        # RETURNS:
+        BuildResult: Containing
+            * DomainOrigin on success.
+            * Exception on failure.
+
+        # RAISES:
+            Any TurnSceneValidator exceptions.
+        """
         method = "DomainOriginBuilder.build"
         
         try:

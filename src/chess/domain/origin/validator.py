@@ -13,4 +13,11 @@ from typing import Any, cast
 from chess.domain import DomainOrigin
 from chess.system import Validator, ValidationResult
 
+
+
 class DomainOriginValidator(Validator[DomainOrigin]):
+    """"""
+    
+    @classmethod
+    def validate(cls, candidate: Any) -> ValidationResult[T]:
+        pass

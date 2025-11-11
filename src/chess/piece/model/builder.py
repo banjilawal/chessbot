@@ -1,46 +1,46 @@
 # chess/square/old_occupation_validator.py
 
 """
-Module: `chess.square.validator`
+Module: chess.square.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 
 SCOPE:
 -----
-This module is strictly limited to constructing `Piece` instances safely.
+This module is strictly limited to constructing Piece instances safely.
 
-**It does not** contain logic or rules for creating `TravelEvent` or
-`TravelEventFactory`. Those are handled by `OccupationEventBuilder` before
-execution,`TravelEventFactory` during execution.
+**It does not** contain logic or rules for creating TravelEvent or
+TravelEventFactory. Those are handled by OccupationEventBuilder before
+execution,TravelEventFactory during execution.
 
-**It does not** ensure existing `Piece` instances are valid. That is done
-by the `PieceValidator`.
+**It does not** ensure existing Piece instances are valid. That is done
+by the PieceValidator.
 
 THEME:
 -----
 **Integrity, Consistency, Validation.** The module's design centers on team_name separating
-complexities of the build process into team_name utility from the `Piece` constructor.
+complexities of the build process into team_name utility from the Piece constructor.
 
 PURPOSE:
 -------
-To execute validated `TravelEvent` directives by orchestrating the necessary
+To execute validated TravelEvent directives by orchestrating the necessary
 state changes across the board_validator, pieces, and teams. It serves as the **engine
 layer responsible for persistent state modification** based on accepted moves.
 
 DEPENDENCIES:
 ------------
 This module requires components from various sub-systems:
-* `chess.bounds`: Movement strategy (`Rank`)
-* `chess.square`: Location service structure (`Square`)
-* `chess.old_search`: Board lookup utilities (`BoardSearch`)
-* `chess.owner`: Piece subtypes (`KingPiece`, `CombatantPiece`, etc.)
-* `chess.team_name`: Roster management, rollback_exception handling
-* `chess.notification`: Base notification and roster types
+* chess.bounds: Movement strategy (Rank)
+* chess.square: Location service structure (Square)
+* chess.old_search: Board lookup utilities (BoardSearch)
+* chess.owner: Piece subtypes (KingPiece, CombatantPiece, etc.)
+* chess.team_name: Roster management, rollback_exception handling
+* chess.notification: Base notification and roster types
 
 CONTAINS:
 --------
- * `PieceBuilder`: The validator of `Piece` instances.
+ * PieceBuilder: The validator of Piece instances.
 """
 
 from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext
@@ -53,33 +53,33 @@ from chess.team import(
 
 class PieceBuilder(Builder[Piece]):
   """
-  Responsible for safely constructing `Square` instances.
+  Responsible for safely constructing Square instances.
   """
 
   @classmethod
   @LoggingLevelRouter.monitor
   def build(cls, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
     """
-    Constructs team_name new `Square` that works correctly.
+    Constructs team_name new Square that works correctly.
 
     Args:
-      `visitor_name`(`str`): Must pass `NameValidator` checks.
-      `bounds`(`Rank`): The `bounds` which determines how the owner moves and its capture value.
-      `team_name`(`Team`): Specifies if the `owner` is white or black.
+      visitor_name(str): Must pass NameValidator checks.
+      bounds(Rank): The bounds which determines how the owner moves and its capture value.
+      team_name(Team): Specifies if the owner is white or black.
 
     Returns:
-    BuildResult[Piece]: A `BuildResult` containing either:
-      - On success: A valid `Piece` instance in the payload
+    BuildResult[Piece]: A BuildResult containing either:
+      - On success: A valid Piece instance in the payload
       - On failure: Error information and error details
 
     Raises:
-    `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
-      * `InvalidNameException`: if `visitor_name` fails validate checks
-      * `InvalidRankException`: if `bounds` fails validate checks
-      * `InvalidTeamException`: if `team_name` fails validate checks
-      * `InvalidTeamAssignmentException`: If `owner.team_name` is different from `team_name` parameter
-      * `FullRankQuotaException`: If the `team_name` has no empty slots for the `owner.bounds`
-      * `FullRankQuotaException`: If `owner.team_name` is equal to `team_name` parameter but `team_name.roster` still does
+    SquareBuildFailedException: Wraps any exceptions raised build. These are:
+      * InvalidNameException: if visitor_name fails validate checks
+      * InvalidRankException: if bounds fails validate checks
+      * InvalidTeamException: if team_name fails validate checks
+      * InvalidTeamAssignmentException: If owner.team_name is different from team_name parameter
+      * FullRankQuotaException: If the team_name has no empty slots for the owner.bounds
+      * FullRankQuotaException: If owner.team_name is equal to team_name parameter but team_name.roster still does
         not have the owner
     """
     method = "PieceBuilder.build"
