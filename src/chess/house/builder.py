@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.house import House
-from chess.enviroment import TurnScene
+from chess.enviroment import TurnScene, TurnSceneValidator
 from chess.system import Builder, BuildResult, LoggingLevelRouter
 
 
@@ -23,6 +23,17 @@ class HouseBuilder(Builder[House]):
         method = "HouseBuilder.build"
         
         try:
-            return BuildResult(House(square=turn_scene.actor_square, resident=turn_scene.actor))
+            turn_scene_validation = TurnSceneValidator.validate(turn_scene)
+            if turn_scene_validation.is_failure():
+                return BuildResult.failure(turn_scene_validation.exception)
+            
+            if turn_scene.actor_square is None:
+                return BuildResult.failure(
+                    TurnSceneActorSquareIsNullException(
+                        f"{method}: {TurnSceneActorSquareIsNullException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            BuildResult.success(turn_scene.actor_square)
         except Exception as e:
             return BuildResult.failure(e)

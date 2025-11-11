@@ -11,5 +11,5 @@ from .exception import *
 
 from .house import House
 from .builder import HouseBuilder
-from .category impprt HouseCategory
+from .category import HouseCategory
 from .validator import HouseValidator

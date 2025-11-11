@@ -11,5 +11,5 @@ from .exception import *
 
 from .scene import Scene
 from .turn import TurnScene
-from .actor_board import BoardActorValidator
-from .resource import BoardResourceValidator
+from .builder import TurnSceneBuilder
+from .validator import TurnSceneValidator
