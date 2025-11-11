@@ -45,7 +45,7 @@ class DomainException(ChessException):
 class InvalidDomainException(DomainException, ValidationException):
     """Raised by DomainValidators if client fails validator."""
     ERROR_CODE = "DOMAIN_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Domain validator failed."
+    DEFAULT_MESSAGE = "Domain validation failed."
 
 class DomainMissingTreeException(DomainException, InconsistencyException):
     """

@@ -82,7 +82,7 @@ class InvalidProjectionSearchContextException(ProjectionSearchContextException, 
     catch all exceptions raised validating an existing projectionSearchContext
     """
     ERROR_CODE = "SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "BoardSearchContext validator failed."
+    DEFAULT_MESSAGE = "BoardSearchContext validation failed."
 
 
 class ProjectionSearchContextZeroParamCountException(ProjectionSearchContextException):

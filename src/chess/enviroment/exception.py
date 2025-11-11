@@ -104,13 +104,7 @@ class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyExceptio
     "inconsistency."
   )
 
-class PieceDoesNotOwnCurrentSquareException(TurnSceneException, InconsistencyException):
-  """"""
-  ERROR_CODE = "PIECE_DOES_NOT_OWN_CURRENT_SQUARE_ERROR"
-  DEFAULT_MESSAGE = (
-    "The Piece sharing the Square's Coord is not marked as the Square occupant. "
-    "There may be a service inconsistency."
-  )
+
 
 
 class ActorAndScenePropCoordMismatchException(TurnSceneException, InconsistencyException):

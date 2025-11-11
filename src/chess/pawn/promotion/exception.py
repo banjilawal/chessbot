@@ -131,7 +131,7 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
   exceptions raised validating an existing `PromotionEvent` candidate.
   """
   ERROR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "PromotionEvent validator failed."
+  DEFAULT_MESSAGE = "PromotionEvent validation failed."
 
 class DoublePromotionException(PromotionEventException):
   """

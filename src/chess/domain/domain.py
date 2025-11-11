@@ -7,9 +7,10 @@ Created: 2025-10-28
 version: 1.0.0
 """
 
-from typing import List
+from typing import Dict, List
 
-from chess.coord import Coord
+from chess.square import Square
+from chess.piece import Piece
 from chess.square import Square
 from chess.domain import Domain, DomainOrigin
 from chess.pawn import ActorPlacementRequiredException
@@ -21,9 +22,10 @@ class Domain:
     """
     # ROLE:
         Data-Holding, Data Transfer
+        Set of; Square instances, Piece objects reachable by Domain owner from their origin
     # RESPONSIBILITIES:
-        1. Lists all possible points the Domain owner can reach.
-        2. List squares the Domain owner is blocked from by friends.
+        1. Lists all squares reachable by Domain owner.
+        2. Provides data about which friends are .
         3. List Squares within Domain containing enemies the owner can attack or
             might avoid.
     # PROVIDES:
@@ -32,28 +34,28 @@ class Domain:
     # ATTRIBUTES:
         id (int)
         origin (DomainOrigin): Contains Domain owner and their Square.
-        points: (List[Coord]): Set of Coord objects the owner can reach.. 
-        enemy_squares: (List[Square]): Places containing enemies.
-        friendly_squares: (List[Square]): Domain places inside owner is blocked from occupying. 
+        squares: (List[Square]): Set of Square objects the owner can reach.
+        enemy_squares: (Dict[Piece: Square]): Places containing enemies
+        friendly_squares: (Dict[Piece: Square]): Domain places inside owner is blocked from occupying. 
     """
     _id: int
     _origin: DomainOrigin
-    _points: List[Coord]
-    _enemy_squares: List[Square]
-    _friendly_squares: List[Square]
+    _squares: Dict[Piece: Square]
+    _enemies: Dict[Piece: Square]
+    _friends: Dict[Piece: Square]
     
     def __init__(
             self, id: int,
             origin: DomainOrigin,
-            points: List[Coord],
-            _enemy_squares: List[Square],
-            friendly_squares: List[Square],
+            squares: Dict[Piece: Square],
+            enemies: Dict[Piece: Square],
+            friends: Dict[Piece: Square],
     ):
         self._id = id
         self._origin = origin
-        self._points = points
-        self._enemy_squares = _enemy_squares
-        self._friendly_squares = friendly_squares
+        self._squares = squares
+        self._enemy_squares = enemies
+        self._friendly_squares = friends
     
     @property
     def id(self) -> int:
@@ -64,45 +66,17 @@ class Domain:
         return self._origin
     
     @property
-    def points(self) -> List[Coord]:
-        return self._points
+    def squares(self) -> Dict[Piece: Square]:
+        return self._squares
     
     @property
-    def enemy_squares(self) -> List[Square]:
-        return self._enemy_squares
+    def enemies(self) -> Dict[Piece, Square]:
+        return self._enemies
     
     @property
-    def friendly_squares(self) -> List[Square]:
-        return self._friendly_squares
-    
-    @LoggingLevelRouter.monitor
-    def update(self, points: List[Coord], enemy_squares: List[Square], friendly_squares: List[Square]) -> Domain:
-        """
-        # ACTION:
-            Factory for updating datasets when the Domain owner changes their position
+    def friends(self) -> Dict[Piece, Square]:
+        return self._friends
 
-        # PARAMETERS:
-            * points: (List[Coord]): Updated points within range of the Domain owner.
-            * enemy_squares: (List[Square]): Updated set of enemy-held squares the owner might
-                attack or avoid.
-            * friendly_squares: (List[Square]): Updated set of friendly squares the owner is
-                blocked from occupying.
-            
-        # RETURNS:
-            Domain: Recycling Domain.id and Domain.origin makes searches easier.
-
-        # RAISES:
-            None
-        """
-        
-        method = "Domain.update"
-        return Domain(
-            id=self._id,
-            origin=self._origin,
-            points=points,
-            enemy_squares=enemy_squares,
-            friendly_squares=friendly_squares,
-        )
     
     def __eq__(self, other) -> bool:
         if other is self:

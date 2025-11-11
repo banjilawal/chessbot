@@ -119,7 +119,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #     actor_validation = PieceValidator.validate(travel.traveler)
 #     if not actor_validation.is_success():
-#       raise InvalidAttackException(f"{method}: actor_candidate validator failed.")
+#       raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 #
 #     destination_square_validation = SquareValidator.validate(travel.enemy_square)
 #     if not destination_square_validation.is_success():

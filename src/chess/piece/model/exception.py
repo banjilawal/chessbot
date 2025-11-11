@@ -50,7 +50,7 @@ class PieceException(ChessException):
 class InvalidPieceException(PieceException, ValidationException):
     """Raised by PieceValidators if client fails validator."""
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Piece validator failed."
+    DEFAULT_MESSAGE = "Piece validation failed."
 
 
 class PieceTeamFieldIsNullException(PieceException, InconsistencyException):

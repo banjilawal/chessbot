@@ -47,7 +47,7 @@ class VisitationEventException(ChessException):
 class InvalidVisitationEventException(VisitationEventException, ValidationException):
     """Raised by VisitationValidators if client fails validator."""
     ERROR_CODE = "VISITATION_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Visitationation validator failed."
+    DEFAULT_MESSAGE = "Visitationation validation failed."
 
 
 class VisitationTeamFieldIsNullException(VisitationEventException, InconsistencyException):

@@ -40,7 +40,7 @@ class NullKingOccupationEventException(KingOccupationEventException, NullExcepti
 class InvalidKingOccupationEventException(KingOccupationEventException, ValidationException):
   """Raised by KingOccupationEventValidators if a candidate fails validator."""
   ERROR_CODE = "KING_OCCUPATION_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "KingOccupationEvent validator failed."
+  DEFAULT_MESSAGE = "KingOccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(KingOccupationEventException):

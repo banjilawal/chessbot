@@ -24,4 +24,4 @@ class NullRankException(RankException, NullException):
 
 class InvalidRankException(RankException, ValidationException):
   ERROR_CODE = "RANK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Rank validator failed."
+  DEFAULT_MESSAGE = f"Rank validation failed."

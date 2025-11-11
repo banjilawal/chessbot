@@ -39,7 +39,7 @@ class DomainOrigin:
     
     
     @property
-    def origin_square(self) -> Square:
+    def square(self) -> Square:
         return self._owner_square
     
     

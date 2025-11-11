@@ -40,7 +40,7 @@ class NullOccupationEventException(OccupationEventException, NullException):
 class InvalidOccupationEventException(OccupationEventException, ValidationException):
   """Raised by OccupationEventValidators if a candidate fails validator."""
   ERROR_CODE = "OCCUPATION_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "OccupationEvent validator failed."
+  DEFAULT_MESSAGE = "OccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(OccupationEventException):

@@ -106,10 +106,4 @@ class PieceDoesNotOwnCurrentSquareException(DomainOriginException, Inconsistency
     )
 
 
-class ActorAndScenePropCoordMismatchException(DomainOriginException, InconsistencyException):
-    """"""
-    ERROR_CODE = "ACTOR_AND_SCENE_PROP_COORD_MISMATCH_ERROR"
-    DEFAULT_MESSAGE = (
-        "The and their Prop have different coords. The scene requires the square and "
-        "piece have the same Coord."
-    )
+

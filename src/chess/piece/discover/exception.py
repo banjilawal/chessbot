@@ -80,7 +80,7 @@ class InvalidDiscoveryException(DiscoveryException, ValidationException):
   exceptions raised validating an existing board_validator
   """
   ERROR_CODE = "DISCOVERY_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Checker validator failed."
+  DEFAULT_MESSAGE = "Checker validation failed."
 
 class NullDiscoveryException(DiscoveryException, NullException):
   """

@@ -110,7 +110,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # class InvalidEncounterException(BlockingEventException, ValidationException):
 #   """"""
 #   ERROR_CODE = "INVALID_BLOCKING_EVENT_ERROR"
-#   DEFAULT_MESSAGE = "BlockingEventException validator failed."
+#   DEFAULT_MESSAGE = "BlockingEventException validation failed."
 #
 #
 # #======================# BLOCKING_EVENT BUILD EXCEPTIONS #======================#
@@ -204,7 +204,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # class InvalidTravelActorException(TravelActorException, ValidationException):
 #   ERROR_CODE = "TRAVEL_ACTOR_VALIDATION_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate validator failed."
+#   DEFAULT_MESSAGE = "TravelEvent actor_candidate validation failed."
 #
 #
 # class TravelActorNotFoundException(TravelActorException, InconsistencyException):

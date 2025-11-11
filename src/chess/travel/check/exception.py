@@ -37,4 +37,4 @@ class KingCheckingItselfException(CheckEventException):
 class InvalidCheckEventException(CheckEventException, ValidationException):
   """"""
   ERROR_CODE = "INVALID_CHECK_EVENT_ERROR"
-  DEFAULT_MESSAGE = "CheckEvent validator failed."
+  DEFAULT_MESSAGE = "CheckEvent validation failed."

@@ -82,7 +82,7 @@ class InvalidDiscoverySearchContextException(DiscoverySearchContextException, Va
     catch all exceptions raised validating an existing discoverySearchContext
     """
     ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "DiscoverySearchContext validator failed."
+    DEFAULT_MESSAGE = "DiscoverySearchContext validation failed."
 
 
 class ZeroDiscoverySearchParamsException(DiscoverySearchContextException):

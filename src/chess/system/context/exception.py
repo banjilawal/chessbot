@@ -43,7 +43,7 @@ class InvalidContextException(ContextException, ValidationException):
   catch all exceptions raised validating an existing context
   """
   ERROR_CODE = "CONTEXT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Context validator failed."
+  DEFAULT_MESSAGE = "Context validation failed."
 
 #======================# CONTEXT BUILD EXCEPTIONS #======================#  
 class ContextBuildFailedException(ContextException, BuildFailedException):

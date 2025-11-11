@@ -97,7 +97,7 @@ class PieceValidator(Validator[Piece]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate_piece_is_free(cls, candidate: Any) -> ValidationResult[Piece]:
+    def verify_active_piece(cls, candidate: Any) -> ValidationResult[Piece]:
         """"""
         method = "PieceValidator.validate_piece_is_free"
         try:

@@ -7,18 +7,18 @@ Created: 2025-09-28
 Updated: 2025-10-10
 
 # SECTION 1 - Purpose:
-This module provides a satisfaction of the `ChessBot` integrity requirement.
+This module provides a satisfaction of the ChessBot integrity requirement.
 
 # SECTION 2 - Scope:
-The module covers minimum verification requirements of `Square` objects
+The module covers minimum verification requirements of Square objects
 
 # SECTION 3 - Limitations:
-  1. This module cannot only be used on existing `Square` instances. Use `SquareBuilder` for construction.
-  2. A `Square` positively verified by the module may fail stricter requirements other components may have.
+  1. This module cannot only be used on existing Square instances. Use SquareBuilder for construction.
+  2. A Square positively verified by the module may fail stricter requirements other components may have.
 
 # SECTION 4 - Design Considerations and Themes:
-  1. A `Square` must undergo sanity checking before use.
-  2. As a fundamental, ubiquitous item consolidating all `Square` sanity checking into one place avoids repetition
+  1. A Square must undergo sanity checking before use.
+  2. As a fundamental, ubiquitous item consolidating all Square sanity checking into one place avoids repetition
       and inconsistent implementations.
   3. Moving all the verification code into one place creates a highly cohesive component.
   4. The component is loosely coupled to other entities even squares and can be used anywhere.
@@ -32,92 +32,148 @@ The module covers minimum verification requirements of `Square` objects
 The order of sanity checks produces early failures. to the most granular
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
-    `Validator`, `ValidationResult`, `NameValidator`, `LoggingLevelRouter`
+* From chess.system:
+    Validator, ValidationResult, NameValidator, LoggingLevelRouter
 
-* From `chess.square`:
-    `Square`, `InvalidSquareException`
+* From chess.square:
+    Square, InvalidSquareException
 
-* From `chess.point`:
-    `Coord`, `CoordValidator`
+* From chess.point:
+    Coord, CoordValidator
 
-* From Python `abc` Library:
-    `ABC`, `abstractmethod`
+* From Python abc Library:
+    ABC, abstractmethod
 
-* From Python `typing` Library:
-    `Generic`, `TypeVar`
+* From Python typing Library:
+    Generic, TypeVar
 
 # SECTION 8 - Contains:
-1. `SquareValidator`
+1. SquareValidator
 """
-
 
 from typing import Any, cast
 
 from chess.coord import CoordValidator
-from chess.square import Square, InvalidSquareException, NullSquareException
+from chess.piece import Piece, PieceValidator
+from chess.square import Square, InvalidSquareException, NullSquareException, SquareAndPieceMismatchedCoordException
 from chess.system import Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
 
 
 class SquareValidator(Validator[Square]):
-  """
-  # ROLE: Validation
-
-  # RESPONSIBILITIES:
-  1. Run sanity checks on a `candidate` to make sure its a valid `Square` before use.
-  2. Pass results of validator process to client.
-
-  # PROVIDES:
-  `ValidationResult[Square]` containing either a verified `Square` or an `Exception`.
-
-  # ATTRIBUTES:
-  No attributes.
-  """
-
-
-  @classmethod
-  @LoggingLevelRouter.monitor
-  def validate(cls, candidate: Any) -> ValidationResult[Square]:
     """
-    # Action:
-    Ensures clients the candidate meets minimum system requirements for use in the system.
-
-    # Parameters:
-      * `candidate` (`Any`): The object to verify
-
-    # Returns:
-      `ValidationResult[Square]`: A `ValidationResult` containing either:
-            `'payload'` - A `Square` instance that satisfies the specification.
-            `rollback_exception` - Details about which specification violation occurred.
-
-    # Raises:
-    No Exceptions are raised. Exceptions are returned to caller in `ValidationResult[Square]`
+    # ROLE: Validation
+  
+    # RESPONSIBILITIES:
+    1. Run sanity checks on a candidate to make sure its a valid Square before use.
+    2. Pass results of validator process to client.
+  
+    # PROVIDES:
+    ValidationResult[Square] containing either a verified Square or an Exception.
+  
+    # ATTRIBUTES:
+    No attributes.
     """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(cls, candidate: Any) -> ValidationResult[Square]:
+        """
+        # Action:
+        Ensures clients the candidate meets minimum system requirements for use in the system.
+    
+        # Parameters:
+          * candidate (Any): The object to verify
+    
+        # Returns:
+          ValidationResult[Square]: A ValidationResult containing either:
+                payload - A Square instance that satisfies the specification.
+                rollback_exception - Details about which specification violation occurred.
+    
+        # Raises:
+        No Exceptions are raised. Exceptions are returned to caller in ValidationResult[Square]
+        """
+        
+        method = "SquareValidator.validate"
+        
+        try:
+            if candidate is None:
+                return ValidationResult(
+                    exception=NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}")
+                    )
+            
+            if not isinstance(candidate, Square):
+                return ValidationResult(exception=TypeError(f"Expected Square, but got {type(candidate).__name__}."))
+            
+            square = cast(Square, candidate)
+            
+            id_validation = IdValidator.validate(square.id)
+            if not id_validation.is_success():
+                return ValidationResult(exception=id_validation.exception)
+            
+            name_validation = NameValidator.validate(square.name)
+            if not name_validation.is_success():
+                return ValidationResult(exception=name_validation.exception)
+            
+            coord_validation = CoordValidator.validate(square.coord)
+            if not coord_validation.is_success():
+                raise coord_validation.exception
+            
+            return ValidationResult(payload=square)
+        
+        except Exception as e:
+            return ValidationResult(exception=InvalidSquareException(f"{method}: {e}"))
+        
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def verify_piece_relates_to_square(
+            cls, 
+            square_candidate: Any, 
+            piece_candidate: Any
+    ) -> ValidationResult[Square, Piece]:
+        """
+        # Action:
+        Verify there is a relationship between an actionable piece and a square before, they
+        are used in conjunction in the system.
 
-    method = "SquareValidator.validate"
+        # Parameters:
+            * square_candidate (Any): The object to verify is a Square instance.
+            * piece_candidate (Any): The object to verify is an active Piece instance.
 
-    try:
-      if candidate is None:
-        return ValidationResult(exception=NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}"))
+        # Returns:
+          ValidationResult[Square, Piece]: A ValidationResult containing either:
+                payload - A Square instance that satisfies the specification.
+                rollback_exception - Details about which specification violation occurred.
 
-      if not isinstance(candidate, Square):
-        return ValidationResult(exception=TypeError(f"Expected Square, but got {type(candidate).__name__}."))
-
-      square = cast(Square, candidate)
-
-      id_validation = IdValidator.validate(square.id)
-      if not id_validation.is_success():
-        return ValidationResult(exception=id_validation.exception)
-
-      name_validation = NameValidator.validate(square.name)
-      if not name_validation.is_success():
-        return ValidationResult(exception=name_validation.exception)
-
-      coord_validation = CoordValidator.validate(square.coord)
-      if not coord_validation.is_success():
-        raise coord_validation.exception
-
-      return ValidationResult(payload=square)
-
-    except Exception as e:
-      return ValidationResult(exception=InvalidSquareException(f"{method}: {e}"))
+        # Raises:
+        No Exceptions are raised. Exceptions are returned to caller in ValidationResult[Square]
+        """
+        method = "SquareValidator.validate_piece_by_square"
+        try:
+            square_validation = cls.validate(square_candidate)
+            if not square_validation.is_failure():
+                return ValidationResult.failure(square_validation.exception)
+            
+            square = cast(Square, square_candidate)
+            
+            active_piece_validation = PieceValidator.verify_active_piece(piece_candidate)
+            if not active_piece_validation.is_failure():
+                return ValidationResult.failure(active_piece_validation.exception)
+            
+            piece = cast(Piece, piece_candidate)
+            
+            if square.coord != piece.current_position:
+                return ValidationResult.failure(
+                    SquareAndPieceMismatchedCoordException(
+                        f"{method} {SquareAndPieceMismatchedCoordException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            if square.occupant != piece:
+                return ValidationResult.failure(
+                    Mis
+                )
+            
+            
+        except Exception as e:
+            return ValidationResult.failure(e)

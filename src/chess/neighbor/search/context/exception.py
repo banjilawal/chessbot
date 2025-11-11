@@ -50,7 +50,7 @@ class InvalidVisitationSearchContextException(VisitationSearchContextException, 
     catch all exceptions raised validating an existing visitationSearchContext
     """
     ERROR_CODE = "VISITATION_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "VisitationSearchContext validator failed."
+    DEFAULT_MESSAGE = "VisitationSearchContext validation failed."
 
 
 class ZeroVisitationSearchParamsException(VisitationSearchContextException):

@@ -92,7 +92,7 @@ class InvalidCommanderException(CommanderException, ValidationException):
   validating an existing board_validator
   """
   ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Commander validator failed."
+  DEFAULT_MESSAGE = "Commander validation failed."
 
 #======================# COMMANDER BUILD EXCEPTIONS #======================#  
 class CommanderBuildFailedException(CommanderException, BuildFailedException):

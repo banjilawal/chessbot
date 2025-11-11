@@ -91,7 +91,7 @@ class InvalidSearchContextException(SearchContextException, ValidationException)
   catch all exceptions raised validating an existing searchContext
   """
   ERROR_CODE = "SEARCH_CONTEXT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "SearchContext validator failed."
+  DEFAULT_MESSAGE = "SearchContext validation failed."
 
 
 class SearchContextZeroParamCountException(SearchContextException):
@@ -144,7 +144,7 @@ class InvalidFilterContextException(FilterContextException, ValidationException)
   catch all exceptions raised validating an existing filterContext
   """
   ERROR_CODE = "FILTER_CONTEXT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "FilterContext validator failed."
+  DEFAULT_MESSAGE = "FilterContext validation failed."
 
 
 class FilterContextZeroParamCountException(FilterContextException):

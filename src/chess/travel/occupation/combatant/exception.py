@@ -40,7 +40,7 @@ class NullCombatantOccupationEventException(CombatantOccupationEventException, N
 class InvalidCombatantOccupationEventException(CombatantOccupationEventException, ValidationException):
   """Raised by CombatantOccupationEventValidators if a candidate fails validator."""
   ERROR_CODE = "OCCUPATION_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "CombatantOccupationEvent validator failed."
+  DEFAULT_MESSAGE = "CombatantOccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(CombatantOccupationEventException):
