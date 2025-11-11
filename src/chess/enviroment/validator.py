@@ -87,7 +87,7 @@ class TurnSceneValidator(Validator[TurnScene]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _actor_square_validation_helper(cls, actor: Piece, board: Board) -> ValidationResult[Square]:
+    def actor_square_validation_helper(cls, actor: Piece, board: Board) -> ValidationResult[Square]:
         """"""
         method = "TurnScene._actor_square_validation_helper"
         
@@ -125,7 +125,7 @@ class TurnSceneValidator(Validator[TurnScene]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _actor_validation_helper(cls, piece: Piece, board: Board) -> ValidationResult[PieceValidator]:
+    def actor_board_validation_helper(cls, piece: Piece, board: Board) -> ValidationResult[PieceValidator]:
         """"""
         method = "TurnSceneValidator._actor_validation_helper"
         
