@@ -10,6 +10,7 @@ version: 1.0.0
 from typing import List, Optional
 
 from chess.coord import Coord
+from chess.house import House
 from chess.pawn import ActorPlacementRequiredException
 from chess.piece import Piece
 
@@ -23,6 +24,9 @@ class Domain:
     _residents: List[Piece]
     _tree_root: Optional[Coord]
     _previous_tree_root: Coord
+    
+    _enemy_houses: List[House]
+    _friendly_houses: List[House]
 
     
     def __init__(self, piece: Piece):
