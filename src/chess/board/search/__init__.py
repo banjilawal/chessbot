@@ -1,9 +1,9 @@
-# src/chess/team_name/old_search/__init__.py
+# chess/board/search.__init__.py
 
 """
-Module: chess.team_name.old_search
+Module: chess.board.search.__init__
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-10-15
 version: 1.0.0
 """
 

@@ -102,12 +102,12 @@ class SquareValidator(Validator[Square]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullSquareException(f"{method} {NullSquareException.DEFAULT_MESSAGE}")
+                    NullSquareException(f"{method}: {NullSquareException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, Square):
                 return ValidationResult.failure(
-                    TypeError(f"Expected Square, but got {type(candidate).__name__}.")
+                    TypeError(f"{method}: Expected Square, but got {type(candidate).__name__} instead.")
                 )
             
             square = cast(Square, candidate)
@@ -137,7 +137,8 @@ class SquareValidator(Validator[Square]):
     def verify_piece_relates_to_square(
             cls, 
             square_candidate: Any, 
-            piece_candidate: Any
+            piece_candidate: Any,
+            piece_validator: PieceValidator = PieceValidator
     ) -> ValidationResult[Square, Piece]:
         """
         # Action:
@@ -147,6 +148,7 @@ class SquareValidator(Validator[Square]):
         # Parameters:
             * square_candidate (Any): The object to verify is a Square instance.
             * piece_candidate (Any): The object to verify is an active Piece instance.
+            * piece_validator (PieceValidator): Validates the piece_candidate.
 
         # Returns:
           ValidationResult[(Square, Piece)] containing either:
@@ -157,7 +159,7 @@ class SquareValidator(Validator[Square]):
             * SquareAndPieceMismatchedCoordException
             * PieceInconsistentSquareOccupationException
         """
-        method = "SquareValidator.validate_piece_by_square"
+        method = "SquareValidator.verify_piece_relates_to_square"
         
         try:
             square_validation = cls.validate(square_candidate)
@@ -166,7 +168,7 @@ class SquareValidator(Validator[Square]):
             
             square = cast(Square, square_candidate)
             
-            active_piece_validation = PieceValidator.verify_active_piece(piece_candidate)
+            active_piece_validation = piece_validator.verify_active_piece(piece_candidate)
             if not active_piece_validation.is_failure():
                 return ValidationResult.failure(active_piece_validation.exception)
             

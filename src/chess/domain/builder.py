@@ -9,17 +9,56 @@ version: 1.0.0
 
 from chess.board import Board
 from chess.piece import Piece
-from chess.domain import Domain
-from chess.enviroment import BoardActorValidator
-from chess.system import Builder, BuildResult, LoggingLevelRouter, id_emitter
+from chess.domain import Domain, DomainOriginBuilder
+from chess.system import Builder, BuildResult, LoggingLevelRouter
 
 
 class DomainBuilder(Builder[Domain]):
+    """
+    # ROLE: Build
+
+    # RESPONSIBILITIES:
+    Create new Domain objects safely.
+
+    # PROVIDES:
+      BuildResult[Domain] containing either:
+            - On success: Domain in payload.
+            - On failure: Exception.
+
+    # ATTRIBUTES:
+    No attributes.
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, piece: Piece, board: Board) -> BuildResult[Domain]:
-        """"""
+    def build(
+            cls,
+            piece: Piece,
+            board: Board,
+            domain_origin_builder: DomainOriginBuilder
+    ) -> BuildResult[Domain]:
+        """
+        # Action:
+        Construct a new Domain object after verifying its inputs will not cause an error.
+        
+        # Parameters:
+          * piece (Piece): The domain owner
+          * board (Board): Provides the Square of the Domain owner.
+          * domain_origin_builder (DomainOriginBuilder): Creates the DomainOwner object.
+
+        # Returns:
+          BuildResult[Domain] containing either:
+                - On success: Square in payload.
+                - On failure: Exception.
+
+        # Raises:
+            * TypeError
+            * NullDomainException
+            * DomainNullSquaresListException
+            * DomainNullEnemiesDictException
+            * DomainNullFriendsDictException
+            * InvalidDomainException
+        """
         method = "DomainBuilder.build"
         
         try:

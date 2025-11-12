@@ -67,7 +67,7 @@ class Validator(ABC, Generic[T]):
 
   @classmethod
   @abstractmethod
-  def validate(cls, candidate: Any) -> ValidationResult[T]:
+  def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
     """
     # Action:
     Ensures clients the candidate meets minimum system requirements for use in the system.

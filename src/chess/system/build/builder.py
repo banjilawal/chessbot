@@ -20,13 +20,13 @@ class Builder(ABC, Generic[T]):
 
   # RESPONSIBILITIES:
   1. Carry the outcome a validator operation to originating client.
-  2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
+  2. Enforcing mutual exclusion. A ValidationResult can either carry _payload or _exception. Not both.
 
   # PROVIDES:
-  1. A correctness verification or denial for the `Validation` service provider.
+  1. A correctness verification or denial for the Validation service provider.
 
   # ATTRIBUTES:
-    * See `Result` superclass for attributes.
+    * See Result superclass for attributes.
   """
 
   @classmethod
@@ -34,30 +34,30 @@ class Builder(ABC, Generic[T]):
   def build(cls, *args, **kwargs) -> BuildResult[T]:
     """
     # ACTION:
-    Verify the `candidate` is a valid ID. The Application requires
+    Verify the candidate is a valid ID. The Application requires
     1. Candidate is not null.
     2. Is a positive integer.
 
     # PARAMETERS:
-        * `candidate` (`int`): the visitor_id.
+        * candidate (int): the visitor_id.
 
     # RETURNS:
-    `ValidationResult[str]`: A `ValidationResult` containing either:
-        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
+    ValidationResult[str]: A ValidationResult containing either:
+        'payload' (it) - A str meeting the ChessBot standard for IDs.
+        rollback_exception (Exception) - An rollback_exception detailing which naming rule was broken.
 
     # RAISES:
-    `InvalidIdException`: Wraps any specification violations including:
-        * `TypeError`: if candidate is not an `int`
-        * `IdNullException`: if candidate is null
-        * `NegativeIdException`: if candidate is negative `
+    InvalidIdException: Wraps any specification violations including:
+        * TypeError: if candidate is not an int
+        * IdNullException: if candidate is null
+        * NegativeIdException: if candidate is negative 
     """
     """
     Action:
     Parameters:
-        * `param` (`DataType`):
+        * param (DataType):
     Returns:
-        `DataType` or `Void`
+        DataType or Void
     Raises:
     MethodNameException wraps
         *

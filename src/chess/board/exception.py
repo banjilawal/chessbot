@@ -1,7 +1,7 @@
-# src/chess/vector/rollback_exception.py
+# src/chess/board/exception.py
 
 """
-Module: chess.vector.rollback_exception
+Module: chess.board.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -47,35 +47,29 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 """
 
 from chess.system import (
-    ChessException, InconsistencyException, InvariantBreachException, NullException,
-    BuilderException, ValidationException
+    ChessException, BuildFailedException, InvariantBreachException, NullException, RollbackException,
+    ValidationException
 )
 
 __all__ = [
-    'BoardException',
-    'BoardRollBackException',
+    "BoardException",
     
-    # ====================== BOARD VALIDATION EXCEPTIONS #======================#
-    'NullBoardException',
-    'BoardNullPieceCollectionException',
-    'BoardNullSquareCollectionException',
-    'InvalidBoardException',
+#====================== BOARD VALIDATION EXCEPTIONS #======================#
+    "NullBoardException",
+    "BoardNullPieceListException",
+    "BoardNullBoardListException",
+    "InvalidBoardException",
     
-    # ====================== BOARD BUILD EXCEPTIONS #======================#
-    'BoardBuildFailedException',
+#====================== BOARD BUILD EXCEPTIONS #======================#
+    "BoardBuildFailedException",
     
-    # ====================== PIECE ADDITION/REMOVAL EXCEPTIONS #======================#
-    'BoardPieceAdditionFailedException',
-    'BoardPieceRemovalFailedException',
+#====================== PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#
+    "FailedPieceAdditionRolledBackException",
+    "FailedPieceRemovalRolledBackException",
     
-    # ====================== PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#
-    'FailedPieceAdditionRolledBackException',
-    
-    # ======================# BOARD CONSISTENCY EXCEPTION #======================#
-    'InconsistentBoardException',
-    'BoardInvariantBreachException',
-    'CoordSearchInvariantBreachException',
-    'SquareInvariantBreachException'
+#======================# BOARD CONSISTENCY EXCEPTION #======================#
+    "CoordSearchInvariantBreachException",
+    "BoardInvariantBreachException"
 ]
 
 from chess.system import InconsistentCollectionException
@@ -83,110 +77,82 @@ from chess.system import InconsistentCollectionException
 
 class BoardException(ChessException):
     """
-    Super class of all exceptions team_name Board object raises. Do not use directly. Subclasses give details useful
-    for debugging. This class exists primarily to allow catching all board_validator exceptions
+    Super class of exceptions raised by a Board object. Do not use directly. Subclasses give
+    targeted, fined grained, debugging info.
     """
     ERROR_CODE = "BOARD_ERROR"
     DEFAULT_MESSAGE = "Board raised an rollback_exception."
 
 
-class BoardRollBackException(BoardException):
-    """
-    Super class for exceptions that require team_name rollback to maintain board_validator integrity.
-    """
-    ERROR_CODE = "BOARD_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = "Board raised an rollback_exception. Transaction rollback performed."
-
-
-# ======================# BOARD VALIDATION EXCEPTIONS #======================#
+# ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullBoardException(BoardException, NullException):
-    """Raised if an entity, method, or operation requires team_name board_validator but gets null instead."""
+    """Raised if an entity, method, or operation requires Board but gets null instead."""
     ERROR_CODE = "NULL_BOARD_ERROR"
     DEFAULT_MESSAGE = "Board cannot be null"
 
 
-class BoardNullPieceCollectionException(BoardException, NullException):
-    ERROR_CODE = "BOARD_NULL_PIECE_COLLECTION_ERROR"
-    DEFAULT_MESSAGE = "The board_validator cannot have its pieces collection null. There may be a service inconsistency."
-
-
-class BoardNullSquareCollectionException(BoardException, NullException):
-    ERROR_CODE = "BOARD_NULL_SQUARE_COLLECTION_ERROR"
-    DEFAULT_MESSAGE = "The board_validator cannot have its squares collection null. There may be a service inconsistency."
-
-
+# ======================# BOARD VALIDATION EXCEPTIONS #======================#
 class InvalidBoardException(BoardException, ValidationException):
-    """
-    Raised by BoardValidator if board_validator fails sanity checks. Exists primarily to catch all exceptions raised
-    validating an existing board_validator
-    """
+    """Catchall Exception for BoardValidator when a validation candidate fails a sanity check."""
     ERROR_CODE = "BOARD_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = f"Board validator failed"
+    DEFAULT_MESSAGE = "Board validation failed."
+
+
+class BoardNullPieceListException(BoardException, NullException):
+    """Raised if a Board.pieces list does not exist. This should never happen."""
+    ERROR_CODE = "MISSING_PIECES_LIST_ERROR"
+    DEFAULT_MESSAGE = "The Board.pieces list is null. There may be a service failure or data inconsistency."
+
+
+class BoardNullBoardListException(BoardException, NullException):
+    """Raised if a Board.squares list does not exist. This should never happen."""
+    ERROR_CODE = "MISSING_BOARDS_LIST_ERROR"
+    DEFAULT_MESSAGE = "The Board.boards list is null. There may be a service failure or data inconsistency."
+
+
+class NumberOfBoardBoardsOutOfBoundsException(BoardException):
+    """Raised if the Board does not contain 64 boards. This should never happen."""
+    ERROR_CODE = "NUMBER_OF_BOARD_BOARDS_OUT_OF_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "The number of boards on the board is out of bounds. Only 64 Boards are allowed."
 
 
 # ======================# BOARD BUILD EXCEPTIONS #======================#
-class BoardBuildFailedException(BoardException, BuilderException):
-    """
-    Raised when BoardBuilder encounters an error while building team_name team_name. Exists primarily to catch all
-    exceptions raised build team_name new board_validator
-    """
+class BoardBuildFailedException(BoardException, BuildFailedException):
+    """Catchall Exception for DomainBuilder when it encounters an error building a Domain."""
     ERROR_CODE = "BOARD_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Board build failed."
 
 
-# ======================# PIECE ADDITION/REMOVAL EXCEPTIONS #======================#
-class BoardPieceAdditionFailedException(BoardException):
-    """Raised if the board_validator fails to remove team_name owner from itself"""
-    ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR"
-    DEFAULT_MESSAGE = "Board failed to add the owner"
-
-
-class BoardPieceRemovalFailedException(BoardException):
-    """Raised if the board_validator fails to remove team_name owner from itself"""
-    ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR"
-    DEFAULT_MESSAGE = "Board failed to remove the owner"
-
-
 # ======================# PIECE ADDITION/REMOVAL EXCEPTIONS WITH ROLLBACK #======================#
-class FailedPieceAdditionRolledBackException(BoardRollBackException):
-    """
-    Raised if team_name notification failed to add team_name owner to the board_validator.The notification was
-    rolled back before raising this err.
-    """
-    """Raised if the board_validator fails to remove team_name owner from itself"""
+class FailedPieceAdditionRolledBackException(BoardException, RollbackException):
+    """Raised after a Transaction rolled back changes when it could not add a Piece to a Board."""
     ERROR_CODE = "BOARD_PIECE_ADDITION_ERROR_ROLLED_BACK"
     DEFAULT_MESSAGE = (
-        "Could not remove team_name owner from the board_validator. Transaction rollback performed."
+        "Adding the Piece to the Board failed during the Transaction. The transaction was rolled back "
+        "before raising this exception."
+    )
+
+
+class FailedPieceRemovalRolledBackException(BoardException, RollbackException):
+    """Raised after a Transaction rolled back changes when it could not remove a Piece to a Board."""
+    ERROR_CODE = "BOARD_PIECE_REMOVAL_ERROR_ROLLED_BACK"
+    DEFAULT_MESSAGE = (
+        "Removing the Piece to the Board failed during the Transaction. The transaction was rolled back "
+        "before raising this exception."
     )
 
 
 # ======================# BOARD CONSISTENCY EXCEPTION #======================#
-class InconsistentBoardException(BoardException, InconsistencyException):
-    """Raised if team_name board_validator fails any collection consistency checks"""
-    ERROR_CODE = "INCONSISTENT_BOARD_ERROR"
-    DEFAULT_MESSAGE = "The board is in an inconsistent state. service might be corrupted."
-
-
-class BoardInvariantBreachException(BoardException, InvariantBreachException):
-    """
-    Raised when a fundamental invariant of the system or environment is violated.
-    This rollback_exception type signals a breach of consistency — meaning the system’s
-    assumptions about its internal state are no longer valid.
-    """
-    DEFAULT_CODE = "BOARD_INVARIANT_BREACH_ERROR"
-    DEFAULT_MESSAGE = "A Board invariant was breached, There may be a critical state inconsistency. or service loss."
-
-
-class CoordSearchInvariantBreachException(BoardInvariantBreachException):
-    """"""
+class CoordSearchInvariantBreachException(BoardException, InvariantBreachException):
+    """Raised if searching the board for a Coord in the legal range produces either no or many results."""
     DEFAULT_CODE = "BOARD_COORD_INVARIANT_BREACH_ERROR"
     DEFAULT_MESSAGE = (
         "The Board's Coord invariant was breached, There may be a critical state inconsistency. or service loss."
     )
 
 
-class SquareInvariantBreachException(BoardInvariantBreachException):
-    """"""
+class SquareInvariantBreachException(BoardException, InvariantBreachException):
+    """Raised if searching the board for a Board in the legal range produces either no or many results."""
     DEFAULT_CODE = "BOARD_SQUARE_INVARIANT_BREACH_ERROR"
     DEFAULT_MESSAGE = (
         "The Board's Square invariant was breached, There may be a critical state inconsistency. or service loss."

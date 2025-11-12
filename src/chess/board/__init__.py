@@ -1,15 +1,15 @@
-# chess/board_validator/__init__.py
+# chess/board/__init__.py
 
 """
-Module: chess.board_validator
+Module: chess.board.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
 
+from .search import *
 from .exception import *
 
-from .search import *
 from .board import Board
 from .validator import BoardValidator
 from .square_iterator import SquareIterator

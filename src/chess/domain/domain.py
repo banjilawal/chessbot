@@ -1,7 +1,7 @@
-# src/chess/owner/owner.py
+# src/chess/domain/domain.py
 
 """
-Module: chess.graph.owner
+Module: chess.domain.domain
 Author: Banji Lawal
 Created: 2025-10-28
 version: 1.0.0
@@ -9,53 +9,62 @@ version: 1.0.0
 
 from typing import Dict, List
 
-from chess.square import Square
 from chess.piece import Piece
 from chess.square import Square
 from chess.domain import Domain, DomainOrigin
-from chess.pawn import ActorPlacementRequiredException
-
-from chess.system import LoggingLevelRouter
 
 
 class Domain:
     """
-    # ROLE:
-        Data-Holding, Data Transfer
-        Set of; Square instances, Piece objects reachable by Domain owner from their origin
+    # ROLE: Data-Holding
+
     # RESPONSIBILITIES:
-        1. Lists all squares reachable by Domain owner.
-        2. Provides data about which friends are .
-        3. List Squares within Domain containing enemies the owner can attack or
-            might avoid.
+    Immutable data structure that:
+        1. Lists all squares reachable by Domain owner in a walk from its current position.
+        2. Indicate which Squares are blocked by a friendly Piece.
+        3. Indicate which Squares contain an enemy Piece which might be attacked or avoided.
+        
     # PROVIDES:
         Domain
 
     # ATTRIBUTES:
-        id (int)
-        origin (DomainOrigin): Contains Domain owner and their Square.
-        squares: (List[Square]): Set of Square objects the owner can reach.
-        enemy_squares: (Dict[Piece: Square]): Places containing enemies
-        friendly_squares: (Dict[Piece: Square]): Domain places inside owner is blocked from occupying. 
+        * id (int)
+        * origin (DomainOrigin): Contains Domain owner and their Square.
+        * squares: (List[Square]): Set of Square objects the owner can reach.
+        * enemies: (Dict[Piece: Square]): Map of enemies to their Squares.
+        * friends: (Dict[Piece: Square]): Map of friendly to their Squares.
     """
     _id: int
     _origin: DomainOrigin
-    _squares: Dict[Piece: Square]
-    _enemies: Dict[Piece: Square]
-    _friends: Dict[Piece: Square]
+    _squares: [Square]
+    _enemies: {Piece: Square}
+    _friends: {Piece: Square}
     
     def __init__(
             self, id: int,
             origin: DomainOrigin,
-            squares: Dict[Piece: Square],
-            enemies: Dict[Piece: Square],
-            friends: Dict[Piece: Square],
     ):
+        """
+        # Action:
+        Construct a Domain object.
+
+        # Parameters:
+            * id (int)
+            * origin (DomainOrigin)
+        # Returns:
+        None
+        
+        # Raises:
+        None
+        """
+        method = "Domain.__init__"
+        
         self._id = id
         self._origin = origin
-        self._squares = squares
-        self._enemy_squares = enemies
-        self._friendly_squares = friends
+        self._squares = [Square]
+        self._enemies = {Piece: Square}
+        self._friends = {Piece: Square}
+        
     
     @property
     def id(self) -> int:
@@ -66,17 +75,16 @@ class Domain:
         return self._origin
     
     @property
-    def squares(self) -> Dict[Piece: Square]:
+    def squares(self) -> [Square]:
         return self._squares
     
     @property
-    def enemies(self) -> Dict[Piece, Square]:
+    def enemies(self) -> {Piece, Square}:
         return self._enemies
     
     @property
-    def friends(self) -> Dict[Piece, Square]:
+    def friends(self) -> {Piece, Square}:
         return self._friends
-
     
     def __eq__(self, other) -> bool:
         if other is self:
@@ -89,4 +97,3 @@ class Domain:
     
     def __hash__(self) -> int:
         return hash(self._id)
-

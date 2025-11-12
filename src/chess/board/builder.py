@@ -12,75 +12,87 @@ Contains:
   * `BoardBuilder`
 """
 
-from typing import List
+from typing import List, Type
 
-
-from chess.square import Square
+from chess.coord import CoordBuilder
+from chess.square import Square, SquareBuilder
 from chess.board import Board, BoardBuildFailedException
-from chess.system import BOARD_DIMENSION, Builder, BuildResult
-
+from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdValidator
 
 
 class BoardBuilder(Builder[Board]):
-  """
-  Responsible for safely constructing `Board` instances.
-  """
-
-  @classmethod
-  def build(cls) -> BuildResult[Board]:
     """
-    # ACTION:
-    Verify the `candidate` is a valid ID. The Application requires
-    1. Candidate is not null.
-    2. Is a positive integer.
-
-    # PARAMETERS:
-        * `candidate` (`int`): the visitor_id.
-
-    # RETURNS:
-    `ValidationResult[str]`: A `ValidationResult` containing either:
-        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
-
-    # RAISES:
-    `InvalidIdException`: Wraps any specification violations including:
-        * `TypeError`: if candidate is not an `int`
-        * `IdNullException`: if candidate is null
-        * `NegativeIdException`: if candidate is negative `
+    # ROLE: Build
+  
+    # RESPONSIBILITIES:
+    Create new Board objects safely.
+  
+    # PROVIDES:
+      BuildResult[Board] containing either:
+            - On success: Board in payload.
+            - On failure: Exception.
+  
+    # ATTRIBUTES:
+    No attributes.
     """
-    """
-    Constructs team_name new `Board` that works correctly.
-
-    Args:
-      None
-
-    Returns:
-      `BuildResult`[`Board`]: A `BuildResult` containing either:
-        - On success: A valid `Board` instance in the payload
-        - On failure: Error information and error details
-
-    Raises:
-      `BoardBuildFailedException`:`: Wraps any exceptions raised build. These are:
-    """
-    method = "BoardBuilder.build"
     
-    try:
-      squares: List[List[Square]] = []
-      for i in range(BOARD_DIMENSION):
-        row_squares: List[Square] = []
-        ascii_value = ord('A')
-  
-        for j in range(BOARD_DIMENSION):
-          name = chr(ascii_value) + str(i + 1)
-          board = Board(row=i, column=j)
-          square = Square(name, board)
-  
-          row_squares.append(square)
-          ascii_value += 1
-        squares.append(row_squares)
-      return BuildResult(payload=Board(squares=squares))
-
-    except Exception as e:
-      raise BoardBuildFailedException(f"{method}: {e}") from e
-
-
+    @classmethod
+    def build(
+            cls,
+            id: int,
+            id_validator: Type[IdValidator]=IdValidator,
+            coord_builder: Type[CoordBuilder]=CoordBuilder,
+            square_builder: Type[SquareBuilder]=SquareBuilder
+    ) -> BuildResult[Board]:
+        """
+        # Action:
+        Construct a new Board object after verifying its inputs will not cause an error.
+    
+        # Parameters:
+          * piece (Piece): The board owner
+          * board (Board): Provides the Square of the Board owner.
+          * board_origin_builder (BoardOriginBuilder): Creates the BoardOwner object.
+    
+        # Returns:
+          BuildResult[Board] containing either:
+                - On success: Square in payload.
+                - On failure: Exception.
+    
+        # Raises:
+            * TypeError
+            * NullBoardException
+            * BoardNullSquaresListException
+            * BoardNullEnemiesDictException
+            * BoardNullFriendsDictException
+            * InvalidBoardException
+        """
+        method = "BoardBuilder.build"
+        
+        try:
+            id_validation = id_validator.validate(id)
+            if id_validation.is_failure():
+                return BuildResult.failure(id_validation.exception)
+            
+            squares: List[List[Square]] = []
+            for i in range(BOARD_DIMENSION):
+                row_squares: List[Square] = []
+                ascii_value = ord('A')
+                
+                for j in range(BOARD_DIMENSION):
+                    name = chr(ascii_value) + str(i + 1)
+                    board = Board(row=i, column=j)
+                    square = Square(name, board)
+                    
+                    row_squares.append(square)
+                    ascii_value += 1
+                squares.append(row_squares)
+            
+            return BuildResult.success(payload=Board(squares=squares))
+        
+        except Exception as e:
+            return BuildResult.failure(
+                BoardBuildFailedException(
+                    f"{method}: {BoardBuildFailedException.DEFAULT_MESSAGE}",
+                    e
+                )
+            )

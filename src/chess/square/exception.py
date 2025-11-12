@@ -113,7 +113,7 @@ class SquareException(ChessException):
     targeted, fined grained, debugging info.
     """
     ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square raised an rollback_exception."
+    DEFAULT_MESSAGE = "Square raised an exception."
 
 
 # ======================# SQUARE VALIDATION EXCEPTIONS #======================#  
@@ -144,9 +144,9 @@ class SquareAndPieceMismatchedCoordException(SquareException, PieceException):
 
 
 class PieceInconsistentSquareOccupationException(SquareException, PieceException, InconsistencyException):
-    """Raised if a Piece with the same Coord as a Square is not set as the Square\'s occupant"""
+    """Raised if a Piece with the same Coord as a Square is not set as the Square's occupant"""
     ERROR_CODE = "PIECE_INCONSISTENT_SQUARE_OCCUPATION_ERROR"
     DEFAULT_MESSAGE = (
-        "A Piece sharing a Coord with a Square is not marked as the Square\'s occupant. There may be "
+        "A Piece sharing a Coord with a Square is not marked as the Square's occupant. There may be "
         "service or data inconsistency."
     )

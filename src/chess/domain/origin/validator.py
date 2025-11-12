@@ -10,25 +10,67 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.piece import Piece, PieceValidator
-from chess.domain import DomainOrigin, InvalidDomainOriginException, NullDomainOriginException
+
+from chess.piece import PieceValidator
 from chess.square import SquareValidator
 from chess.system import LoggingLevelRouter, Validator, ValidationResult
+from chess.domain import DomainOrigin, InvalidDomainOriginException, NullDomainOriginException
+
 
 
 
 class DomainOriginValidator(Validator[DomainOrigin]):
-    """"""
+    """
+    # ROLE: Validation
+
+    # RESPONSIBILITIES:
+    1. Verify a candidate is a DomainOrigin instance that can be used safely in the system.
+
+    # PROVIDES:
+      ValidationResult[DomainOrigin] containing either:
+            - On success: DomainOrigin in payload.
+            - On failure: Exception.
+
+    # ATTRIBUTES:
+    No attributes.
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[DomainOrigin]:
-        """"""
+    def validate(
+            cls,
+            candidate: Any,
+            piece_validator: type[PieceValidator] = PieceValidator,
+            square_validator: type[SquareValidator] = SquareValidator
+    ) -> ValidationResult[DomainOrigin]:
+        """
+        # Action:
+        Use chained PieceValidator and SquareValidator to ensure a candidate is a valid DomainOrigin before
+        the client can use it.
+
+        # Parameters:
+          * candidate (Any): Object to verify is a Domain.
+          * piece_validator (type[DomainOriginValidator]): Injected into square_validator.
+          * square_validator (type[SquareValidator]): verifies the relationship between the
+                Domain's owning Piece and Square.
+
+        # Returns:
+          ValidationResult[Domain] containing either:
+                - On success: Square in payload.
+                - On failure: Exception.
+
+        # Raises:
+            * TypeError
+            * InvalidDomainOriginException
+        """
         method = "DomainOriginValidator.validate"
+        
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullDomainOriginException(f"{method}: {NullDomainOriginException.DEFAULT_MESSAGE}")
+                    NullDomainOriginException(
+                        f"{method}: {NullDomainOriginException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if not isinstance(candidate, DomainOrigin):
@@ -38,9 +80,12 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             
             domain_origin = cast(DomainOrigin, candidate)
             
-            piece_square_relation_validation = SquareValidator.verify_piece_relates_to_square(
-                domain_origin.owner, domain_origin.square
+            piece_square_relation_validation = square_validator.verify_piece_relates_to_square(
+                square_candidate=domain_origin.square,
+                piece_candidate=domain_origin.owner,
+                piece_validator=piece_validator,
             )
+            
             if piece_square_relation_validation.is_failure():
                 return ValidationResult.failure(piece_square_relation_validation.exception)
             
@@ -49,7 +94,6 @@ class DomainOriginValidator(Validator[DomainOrigin]):
         except Exception as e:
             return ValidationResult.failure(
                 InvalidDomainOriginException(
-                    f"{method}: {InvalidDomainOriginException.DEFAULT_MESSAGE}",
-                    e
+                    f"{method}: {InvalidDomainOriginException.DEFAULT_MESSAGE}", e
                 )
             )

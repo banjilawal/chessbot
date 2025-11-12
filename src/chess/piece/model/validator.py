@@ -12,7 +12,7 @@ from typing import Type, Any, cast
 from chess.domain import PieceWithNoStartingPlacementException
 from chess.king import KingPiece
 from chess.pawn import ActorPlacementRequiredException
-from chess.piece.model.exception import CapturedPieceException, CheckmatedKingException
+from chess.piece.model.exception import CapturedPieceException, CheckmatedKingException, InvalidPieceException
 from chess.team import Team, RosterNumberOutOfBoundsException
 from chess.rank import Bishop, King, Knight, Pawn, Queen, RankValidatorFactory, Rook, knight
 from chess.system import IdValidator, NameValidator, LoggingLevelRouter, ValidationResult, Validator
@@ -56,15 +56,11 @@ class PieceValidator(Validator[Piece]):
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            # This is really minimal checking. `Piece` object names have format:
-            # [color_letter][rank_symbol]-[value_in_quota]
-            # Next step is use regexp to ensure the visitor_name fits the pattern and create a new rollback_exception for that.
+        
             name_validation = NameValidator.validate(piece.name)
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
             
-            # A `Piece` instance must have its `team_name` consistency set. This immutable consistency should have been set during
-            # the build. If it's null there might be service loss or corruption.
             if piece.team is None:
                 return ValidationResult.failure(
                     PieceTeamFieldIsNullException(f"{method}: {PieceTeamFieldIsNullException.DEFAULT_MESSAGE}")
@@ -72,12 +68,16 @@ class PieceValidator(Validator[Piece]):
             
             if piece.roster_number is None:
                 return ValidationResult.failure(
-                    PieceRosterNumberIsNullException(f"{method}: {PieceRosterNumberIsNullException.DEFAULT_MESSAGE}")
+                    PieceRosterNumberIsNullException(
+                        f"{method}: {PieceRosterNumberIsNullException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if piece.roster_number < 1 or piece.roster_number > Team.MAX_ROSTER_SIZE:
                 return ValidationResult.failure(
-                    RosterNumberOutOfBoundsException(f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}")
+                    RosterNumberOutOfBoundsException(
+                        f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             rank_validation = RankValidatorFactory.validate(piece.rank)
@@ -91,15 +91,17 @@ class PieceValidator(Validator[Piece]):
                 )
             
             return ValidationResult.success(piece)
-        
+
         except Exception as e:
-            return ValidationResult(exception=e)
+            return ValidationResult.failure(
+                InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}", e)
+            )
         
     @classmethod
     @LoggingLevelRouter.monitor
     def verify_active_piece(cls, candidate: Any) -> ValidationResult[Piece]:
         """"""
-        method = "PieceValidator.validate_piece_is_free"
+        method = "PieceValidator.verify_active_piece"
         try:
             piece_validation = cls.validate(candidate)
             if piece_validation.is_failure():
@@ -131,6 +133,9 @@ class PieceValidator(Validator[Piece]):
                 )
             
             return ValidationResult.success(piece)
+        
         except Exception as e:
-            return ValidationResult.failure(e)
+            return ValidationResult.failure(
+                InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}", e)
+            )
         

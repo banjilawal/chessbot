@@ -63,12 +63,9 @@ class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
 
 
 class PieceNullCoordStackException(PieceException, InconsistencyException):
-    """
-    Raised if `owner.positions` stack does not exist. If the `owner.positions == null there is service inconsistency
-    or loss.
-    """
+    """Raised if a Piece's CoordStack does not exist."""
     ERROR_CODE = "PIECE_COORD_STACK_MISSING_ERROR"
-    DEFAULT_MESSAGE = "Piece.positions list is null. It should never be null. There may be service inconsistency or loss."
+    DEFAULT_MESSAGE = "Piece.positions stack is null. There may be a service failure or data inconsistency."
 
 
 class PieceMissingDiscoveriesException(PieceException, InconsistencyException):
@@ -114,9 +111,7 @@ class PieceRosterNumberIsNullException(PieceException, NullException):
 
 
 class PieceRankOutOfBoundsException(PieceException, NullException):
-    """
-    Raised a owner"s bounds is not a recognized chess bounds
-    """
+    """Raised a owner"s bounds is not a recognized chess bounds"""
     ERROR_CODE = "PIECE_RANK_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "A `Piece` does not have a recognized chess bounds."
 
