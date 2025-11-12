@@ -104,6 +104,7 @@ __all__ = [
 # ======================# RELATIONAL SQUARE EXCEPTIONS #======================# 
     "SquareAndPieceMismatchedCoordException",
     "PieceInconsistentSquareOccupationException",
+    "InvalidPieceSquareRelationException",
 ]
 
 
@@ -136,7 +137,12 @@ class SquareBuildFailedException(SquareException, BuildFailedException):
     DEFAULT_MESSAGE = "Square build failed."
 
 
-# ======================# RELATIONAL SQUARE EXCEPTIONS #======================# 
+# ======================# RELATIONAL SQUARE EXCEPTIONS #======================#
+class InvalidPieceSquareRelationException(SquareException, PieceException, InconsistencyException):
+    """Catchall Exception for when SquareValidator fails candidates on a Piece-Square relationship test."""
+    ERROR_CODE = "PIECE_RELATES_TO_SQUARE_ERROR"
+    DEFAULT_MESSAGE = "Validation of Piece-Square relationship failed."
+
 class SquareAndPieceMismatchedCoordException(SquareException, PieceException):
     """Raised if a Piece needs to occupy a Square before they are used together."""
     ERROR_CODE = "SQUARE_AND_PIECE_COORD_MISMATCH_ERROR"
@@ -150,3 +156,5 @@ class PieceInconsistentSquareOccupationException(SquareException, PieceException
         "A Piece sharing a Coord with a Square is not marked as the Square's occupant. There may be "
         "service or data inconsistency."
     )
+
+

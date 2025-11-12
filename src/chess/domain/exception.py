@@ -30,7 +30,7 @@ __all__ = [
 
 class DomainException(ChessException):
     """
-    Super class of exceptions raised by a Square object. Do not use directly. Subclasses give
+    Super class of exceptions raised by a Domain object. Do not use directly. Subclasses give
     targeted, fined grained, debugging info.
     """
     ERROR_CODE = "DOMAIN_ERROR"
@@ -39,7 +39,7 @@ class DomainException(ChessException):
 
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
-    """Raised if an entity, method, or operation requires Square but gets null instead."""
+    """Raised if an entity, method, or operation requires Domain but gets null instead."""
     ERROR_CODE = "NULL_DOMAIN_ERROR"
     DEFAULT_MESSAGE = "Domain cannot be null."
 
@@ -71,6 +71,6 @@ class DomainNullFriendsDictException(DomainException, InconsistencyException):
 
 # ======================# DOMAIN BUILD EXCEPTIONS #======================#
 class DomainBuildFailedException(DomainException, BuilderException):
-    """Catchall Exception for DomainBuilder when it encounters an error building a Domain."""
+    """Catchall Exception for DomainBuilder when it stops because of an error."""
     ERROR_CODE = "DOMAIN_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Domain build failed."

@@ -79,13 +79,22 @@ class SquareValidator(Validator[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Square]:
+    def validate(
+            cls,
+            candidate: Any,
+            id_validator: type[IdValidator]=IdValidator,
+            name_validator: type[NameValidator]=NameValidator,
+            coord_validator: type[CoordValidator]=CoordValidator,
+    ) -> ValidationResult[Square]:
         """
         # Action:
         Ensures the candidate is a Square that meets the minimum requirements for use in the system.
     
         # Parameters:
           * candidate (Any): Object to verify is a Square.
+          * id_validator (type[IdValidator]): Verifies the Square.id property
+          * name_validator (type[NameValidator]): Verifies the Square.name property
+          * coord_validator (type[CoordValidator]): Verifies the Square.coord property
     
         # Returns:
           ValidationResult[Square] containing either:
@@ -112,17 +121,17 @@ class SquareValidator(Validator[Square]):
             
             square = cast(Square, candidate)
             
-            id_validation = IdValidator.validate(square.id)
-            if id_validation.is_failure():
-                return ValidationResult.failure(id_validation.exception)
+            id_verification = id_validator.validate(square.id)
+            if id_verification.is_failure():
+                return ValidationResult.failure(id_verification.exception)
             
-            name_validation = NameValidator.validate(square.name)
-            if name_validation.is_failure:
-                return ValidationResult.failure(name_validation.exception)
+            name_verification = name_validator.validate(square.name)
+            if name_verification.is_failure:
+                return ValidationResult.failure(name_verification.exception)
             
-            coord_validation = CoordValidator.validate(square.coord)
-            if not coord_validation.is_success():
-                return ValidationResult.failure(coord_validation.exception)
+            coord_verification = coord_validator.validate(square.coord)
+            if not coord_verification.is_success():
+                return ValidationResult.failure(coord_verification.exception)
             
             return ValidationResult.success(payload=square)
         
@@ -134,11 +143,11 @@ class SquareValidator(Validator[Square]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_piece_relates_to_square(
+    def validate_piece_square_binding(
             cls, 
             square_candidate: Any, 
             piece_candidate: Any,
-            piece_validator: PieceValidator = PieceValidator
+            piece_validator: type[PieceValidator]=PieceValidator
     ) -> ValidationResult[Square, Piece]:
         """
         # Action:
@@ -162,15 +171,15 @@ class SquareValidator(Validator[Square]):
         method = "SquareValidator.verify_piece_relates_to_square"
         
         try:
-            square_validation = cls.validate(square_candidate)
-            if not square_validation.is_failure():
-                return ValidationResult.failure(square_validation.exception)
+            square_verification = cls.validate(square_candidate)
+            if square_verification.is_failure():
+                return ValidationResult.failure(square_verification.exception)
             
             square = cast(Square, square_candidate)
             
-            active_piece_validation = piece_validator.verify_active_piece(piece_candidate)
-            if not active_piece_validation.is_failure():
-                return ValidationResult.failure(active_piece_validation.exception)
+            piece_verification = piece_validator.validate_piece_is_actionable(piece_candidate)
+            if piece_verification.is_failure():
+                return ValidationResult.failure(piece_verification.exception)
             
             piece = cast(Piece, piece_candidate)
             
@@ -192,5 +201,7 @@ class SquareValidator(Validator[Square]):
             
         except Exception as e:
             return ValidationResult.failure(
-                InvalidSquareException(f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}", e)
+                InvalidPieceSquareRelationException(
+                    f"{method}: {InvalidPieceSquareRealtionException.DEFAULT_MESSAGE}", e
+                )
             )

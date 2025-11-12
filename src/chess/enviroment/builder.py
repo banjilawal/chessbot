@@ -31,7 +31,7 @@ class TurnSceneBuilder(Builder[TurnScene]):
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            piece_validation = PieceValidator.verify_active_piece(piece)
+            piece_validation = PieceValidator.validate_piece_is_actionable(piece)
             if piece_validation.is_failure():
                 return BuildResult.failure(piece_validation.exception)
             

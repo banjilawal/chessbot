@@ -1,28 +1,31 @@
 from typing import cast, Any
 
-from chess.piece import NullPieceException
-from chess.system import (
-    COLUMN_SIZE, ChessException, IdValidator, ROW_SIZE, Validator, ValidationResult,
-    LoggingLevelRouter
-)
+from chess.board.exception import
+
+from chess.piece import Piece, PieceValidator
+from chess.square import Square, SquareValidator, NumberOfBoardSquaresOutOfBoundsException
+
 from chess.board import (
-    Board, NullBoardException, BoardNullPieceListException, BoardNullSquareListException,
-    InvalidBoardException
+    Board, BoardSearchContext, BoardSquareSearch, NullBoardException, InvalidBoardException,
+    BoardNullPieceListException, BoardNullSquareListException,
+)
+from chess.system import (
+    ChessException, COLUMN_SIZE, ROW_SIZE, IdValidator, Validator, ValidationResult, LoggingLevelRouter,
 )
 
 
 class BoardValidator(Validator[Board]):
     """
     # ROLE: Validation
-  
+
     # RESPONSIBILITIES:
-    1. Verify a candidate is a Board instance that can be used safely in the system.
-  
+    1. Verify a candidate is a Board object meeting the applications base safety requirements.
+
     # PROVIDES:
       ValidationResult[Board] containing either:
             - On success: Board in payload.
             - On failure: Exception.
-  
+
     # ATTRIBUTES:
     No attributes.
     """
@@ -32,28 +35,27 @@ class BoardValidator(Validator[Board]):
     def validate(
             cls, candidate: Any,
             id_validator: type[IdValidator] = IdValidator,
+            square_validator: type[SquareValidator] = SquareValidator
     ) -> ValidationResult[Board]:
         """
         # Action:
-        Run checks verifying a candidate is a valid Board object meeting the minimum requirements
-        for use in the system.
-    
+        Use chained PieceValidator and SquareValidator to ensure a candidate is a valid DomainOrigin before
+        the client can use it.
+
         # Parameters:
-          * candidate (Any): Object to verify is a Board.
-          * id_validator (type[IdValidator]): IdValidator runs sanity checks on the board's id
-    
+          * candidate (Any): Object to verify is a Domain.
+          * piece_validator (type[PieceValidator]): Injected into square_validator.
+          * square_validator (type[SquareValidator]): verifies the relationship between the
+                Domain's owning Piece and Square.
+
         # Returns:
-          ValidationResult[Board] containing either:
-                - On success: Board in payload.
+          ValidationResult[DomainOrigin] containing either:
+                - On success: DomainOrigin in payload.
                 - On failure: Exception.
-    
+
         # Raises:
             * TypeError
-            * NullBoardException
-            * BoardNullSquaresListException
-            * BoardNullEnemiesDictException
-            * BoardNullFriendsDictException
-            * InvalidBoardException
+            * InvalidDomainOriginException
         """
         method = "BoardValidator.validate"
         
@@ -90,10 +92,15 @@ class BoardValidator(Validator[Board]):
             
             if len(board.squares) == ROW_SIZE * COLUMN_SIZE:
                 return ValidationResult.failure(
-                    NumberOfBoardSquaresOutBoundsException(
-                        f"{method}: {NumberOfBoardSquaresOutBoundsException.DEFAULT_MESSAGE}"
+                    NumberOfBoardSquaresOutOfBoundsException(
+                        f"{method}: {NumberOfBoardSquaresOutOfBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
+            
+            for square in board.squares:
+                square_validation = square_validator.validate(square)
+                if not square_validation.is_failure():
+                    return ValidationResult.failure(square_validation.exception)
             
             return ValidationResult(payload=board)
         
@@ -105,11 +112,14 @@ class BoardValidator(Validator[Board]):
        
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_piece_relates_to_board(
+    def validate_piece_board_binding(
             cls,
             board_candidate: Any,
             piece_candidate: Any,
+            board_search_context: BoardSearchContext=BoardSearchContext,
             piece_validator: type[PieceValidator] = PieceValidator,
+            square_validator: type[SquareValidator] = SquareValidator,
+            board_square_search: type[BoardSquareSearch] = BoardSquareSearch
     ) -> ValidationResult[(Board, Piece, Square)]:
         """
         # Action:
@@ -117,7 +127,7 @@ class BoardValidator(Validator[Board]):
         method = "BoardValidator.verify_piece_relates_to_board"
         
         try:
-            piece_validation = piece_validator.
+            piece_validation = piece_validator.validate_piece_is_actionable(piece_candidate)
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
             
@@ -131,8 +141,14 @@ class BoardValidator(Validator[Board]):
             
             if piece not in board.pieces:
                 return ValidationResult.failure(
-                    return ChessException
+                    PieceNotOnBoardException(
+                        f"{method}: {PieceNotOnBoardException.DEFAULT_MESSAGE}"
+                    )
                 )
+            
+            square_search_result = board_square_search.search(board=board, piece)
+            
+            
             
             if board_candidate is None:
             

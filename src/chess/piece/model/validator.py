@@ -99,7 +99,7 @@ class PieceValidator(Validator[Piece]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_active_piece(cls, candidate: Any) -> ValidationResult[Piece]:
+    def validate_piece_is_actionable(cls, candidate: Any) -> ValidationResult[Piece]:
         """"""
         method = "PieceValidator.verify_active_piece"
         try:

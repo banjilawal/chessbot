@@ -50,13 +50,13 @@ class DomainOriginValidator(Validator[DomainOrigin]):
 
         # Parameters:
           * candidate (Any): Object to verify is a Domain.
-          * piece_validator (type[DomainOriginValidator]): Injected into square_validator.
+          * piece_validator (type[PieceValidator]): Injected into square_validator.
           * square_validator (type[SquareValidator]): verifies the relationship between the
                 Domain's owning Piece and Square.
 
         # Returns:
-          ValidationResult[Domain] containing either:
-                - On success: Square in payload.
+          ValidationResult[DomainOrigin] containing either:
+                - On success: DomainOrigin in payload.
                 - On failure: Exception.
 
         # Raises:
@@ -80,14 +80,14 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             
             domain_origin = cast(DomainOrigin, candidate)
             
-            piece_square_relation_validation = square_validator.verify_piece_relates_to_square(
+            piece_square_binding_validation = square_validator.validate_piece_square_binding(
                 square_candidate=domain_origin.square,
                 piece_candidate=domain_origin.owner,
                 piece_validator=piece_validator,
             )
             
-            if piece_square_relation_validation.is_failure():
-                return ValidationResult.failure(piece_square_relation_validation.exception)
+            if piece_square_binding_validation.is_failure():
+                return ValidationResult.failure(piece_square_binding_validation.exception)
             
             ValidationResult.success(payload=domain_origin)
             

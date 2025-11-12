@@ -25,6 +25,10 @@ __all__ = [
   "InvariantBreachException",
   "InconsistentCollectionException",
 
+#======================# BUILD_OPTIONS EXCEPTIONS #======================#
+  "NoBuildOptionSelectedException",
+  "BuildOptionSelectionTooLargeException",
+
 #======================# NULL/EMPTY EXCEPTIONS #======================#  
   "NullException",
   "NullNumberException",
@@ -103,12 +107,21 @@ class InconsistentCollectionException(InconsistencyException):
   ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
   DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."
 
-  class CollectionOperationException(ValidationException):
+
+# ======================# BUILD_OPTIONS EXCEPTIONS #======================#
+class NoBuildOptionSelectedException(ChessException):
     """
-    Raised if an operation is not allowed in a collection
+    Raised when none of the possible options required to build an object are selected.
+    Mainly used by Context classes
     """
-    ERROR_CODE = "COLLECTION_OPERATION_ERROR"
-    DEFAULT_MESSAGE = "Operation not allowed in the collection."
+    ERROR_CODE = "NO_BUILD_OPTION_SELECTED_ERROR"
+    DEFAULT_MESSAGE = "None of the options required for the build were."
+
+
+class BuildOptionSelectionTooLargeException(ChessException):
+  """Raised when too many of the available build options are selected. Mainly used by Context classes."""
+  ERROR_CODE = "TOO_MANY_BUILD_OPTIONS_SELECTED_ERROR"
+  DEFAULT_MESSAGE = "Too many build options were selected."
 
 
 #======================# NULL/EMPTY EXCEPTIONS #======================#  

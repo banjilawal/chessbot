@@ -1,189 +1,237 @@
-# src/chess/team_name/team_name.py
+# src/board/search/context/validator.py
+
 """
-Module: chess.team_name.team_name
+Module: chess.board.search.context.validator
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-10-04
 version: 1.0.0
-
-# SCOPE:
--------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
-  its CRUD interfaces goes against recommended usage.
-
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
-
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-# THEME:
--------
-* Data Holding, Coordination, Performance
-
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
-
-# PURPOSE:
----------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
-
-***Satisfies***: Reliability and performance contracts.
-
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
-
-From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
-
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-From `chess.owner`:
-  `Piece`
-
-# CONTAINS:
-----------
- * `Team`
 """
 
-from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
-from chess.system import Result, Validator, IdValidator, InvalidIdException, InconsistentCollectionException
-from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
-from chess.commander import Commander, CommanderValidator, InvalidCommanderException, \
-  InvalidCommanderAssignmentException
-from chess.team.search import TeamSearchContext
+from typing import Any, cast
 
-T = TypeVar('T')
+
+from chess.coord import Coord, CoordValidator
+from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
+from chess.board import (
+    BoardSearchContext, InvalidBoardSearchContextException, NullBoardSearchContextException,
+    MoreThanOneBoardSearchOptionPickedException, NoBoardSearchOptionSelectedException
+)
 
 class BoardSearchContextValidator(Validator):
-  """
-  # ROLE: Builder implementation
-
-  # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `Team` instances.
-  2. Create new `Team` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
-
-  # PROVIDES:
-  `BuildResult`: Return type containing the built `Team` or error information.
-
-  # ATTRIBUTES:
-  None
-  """
-  """
-  Validates existing `Team` instances that are passed around the system.
-
-  While `TeamBuilder` ensures valid Teams are created, `TeamValidator`
-  checks `Team` instances that already exist - whether they came from
-  deserialization, external sources, or need re-validate after modifications.
-  
-  Usage:
-    ```python
-    # Validate an existing team_name
-    team_validation = TeamValidator.validate(candidate)  
-    if not team_validation.is_success():
-      raise team_validation.err
-    team_name = cast(Team, team_validation.payload)
-    ```
-
-  Use `TeamBuilder` for construction, `TeamValidator` for verification.
-  """
-
-  @staticmethod
-  def validate(candidate: TeamSearchContext) -> Result[TeamSearchContext]:
     """
-    Validates that an existing `Team` instance meets all specifications.
+    # ROLE: Validation
 
-    Performs comprehensive validate on team_name `Team` instance that already exists,
-    checking type safety, null values, and component bounds. Unlike `TeamBuilder`
-    which creates new valid Teams, this validator verifies existing `Team`
-    instances from external sources, deserialization, or after modifications.
+    # RESPONSIBILITIES:
+    1. Verify a candidate is a BoardSearchContext that meets the application's safety contract before the client
+        is allowed to use the BoardSearchContext object.
+    2. Provide pluggable factories for validating different options separately.
+    
+    # PROVIDES:
+      ValidationResult[BoardSearchContext] containing either:
+            - On success: Board in payload.
+            - On failure: Exception.
 
-    Args
-      `candidate` (`Team`): `Team` instance to validate
-
-     Returns:
-      `Result`[`Team`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
-      `InvalidTeamException` otherwise.
-
-    Raises:
-      `TypeError`: if `candidate` is not team_name Team` object
-      `NullTeamException`: if `candidate` is null
-      `InvalidIdException`: if `visitor_id` fails validate checks
-      `InvalidCommanderException`: if `commander` fails validate checks
-      `NullTeamProfileException`: if `schema` is null
-      `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
-      `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
-      `InvalidTeamException`: Wraps any preceding exceptions
+    # ATTRIBUTES:
+    No attributes.
     """
-    method = "TeamValidator.validate"
 
-    try:
-      if candidate is None:
-        raise NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(
+            cls,
+            candidate: Any,
+            id_validator: type[IdValidator]=IdValidator,
+            name_validator: type[NameValidator]=NameValidator,
+            coord_validator: type[CoordValidator]=CoordValidator
+    ) -> ValidationResult[BoardSearchContext]:
+        """
+        # Action:
+        Verifies candidate is a BoardSearchContext in two steps.
+            1. Test the candidate is a valid SearchBoardContext with a single search option switched on.
+            2. Test the value passed to BoardSearchContext passes its validation contract..
 
-      from chess.team import Team
-      if not isinstance(candidate, Team):
-        raise TypeError(f"{method} Expected team_name Team, got {type(candidate).__name__}")
+        # Parameters:
+          * candidate (Any): Object to verify is a Board.
+          * id_validator (type[IdValidator]): Enforces safety requirements on id-search targets.
+          * name_validator (type[NameValidator]): Enforces safety requirements on name-search targets.
+          * coord_validator (type[CoordValidator]): Enforces safety requirements on name-search targets.
+          
+        # Returns:
+          ValidationResult[BoardSearchContext] containing either:
+                - On success: BoardSearchContext in payload.
+                - On failure: Exception.
 
-      team = cast(Team, candidate)
+        # Raises:
+            * TypeError
+            * InvalidBoardSearchContextException
+            * NullBoardSearchContextException
+            * NoBoardSearchOptionSelectedException
+            * MoreThanOneBoardSearchOptionPickedException
+        """
+        method = "BoardSearchContextValidator.validate"
+        
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullBoardSearchContextException(f"{method} {NullBoardSearchContextException.DEFAULT_MESSAGE}")
+                )
+            
+            if not isinstance(candidate, BoardSearchContext):
+                return ValidationResult.failure(
+                    TypeError(f"{method}: Expected BoardSearchContext, got {type(candidate).__name__} instead.")
+                )
+            
+            board_search_context = cast(BoardSearchContext, candidate)
+            if len(board_search_context.to_dict() == 0):
+                return ValidationResult.failure(
+                    NoBoardSearchOptionSelectedException(
+                        f"{method}: {NoBoardSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                    )
+                )
+        
+            if len(board_search_context.to_dict()) > 1:
+                return ValidationResult.failure(
+                    MoreThanOneBoardSearchOptionPickedException(
+                        f"{method}: {MoreThanOneBoardSearchOptionPickedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            if board_search_context.id is not None:
+                return cls.validate_id_search_option(
+                    candidate=board_search_context.id,
+                    id_validator=id_validator
+                )
+            
+            if board_search_context.name is not None:
+                return cls.validate_name_search_option(
+                    name=board_search_context.name,
+                    name_validator=name_validator
+                )
+            
+            if board_search_context.coord is not None:
+                return cls.validate_coord_search_option(
+                    coord=board_search_context.coord,
+                    coord_validator=coord_validator
+                )
+            
+        except Exception as e:
+            return ValidationResult.failure(
+                InvalidBoardSearchContextException(
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                )
+            )
 
-      if team.schema is None:
-        raise NullTeamSchemaException(f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}")
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_id_search_option(
+            cls,
+            candidate: Any,
+            id_validator: type[IdValidator]=IdValidator
+    ) -> ValidationResult[BoardSearchContext]:
+        """
+        # Action:
+        Verify an id_candidate meets application BoardSearchContext safety requirements.
 
-      id_validation = IdValidator.validate(team.id)
-      if not id_validation.is_success():
-        raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
+        # Parameters:
+          * candidate (Any): Object to verify is an id.
+          * id_validator (type[IdValidator]): Checks if candidate complies with safety contract.
 
-      commander_validation = CommanderValidator.validate(team.commander)
-      if not commander_validation.is_success():
-        raise InvalidCommanderException(f"{method}: {InvalidCommanderException.DEFAULT_MESSAGE}")
+        # Returns:
+          ValidationResult[BoardSearchContext] containing either:
+                - On success: BoardSearchContext in payload.
+                - On failure: Exception.
 
-      commander = cast(Commander, commander_validation.payload)
-      if team.commander != commander:
-        raise InvalidCommanderAssignmentException(
-          f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"
-        )
+        # Raises:
+            * InvalidBoardSearchContextException
+        """
+        method = "BoardSearchContextValidator.validate_id_search_option"
+        
+        try:
+            id_validation = id_validator.validate(candidate)
+            if id_validation.is_failure():
+                return ValidationResult.failure(id_validation.exception)
+            
+            return ValidationResult.success(payload=BoardSearchContext(id=id_validation.payload))
+        except Exception as e:
+            return ValidationResult.failure(
+                InvalidBoardSearchContextException(
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_name_search_option(
+            cls,
+            candidate: Any,
+            name_validator: type[NameValidator]=NameValidator
+    ) -> ValidationResult[BoardSearchContext]:
+        """
+        # Action:
+        Verify a name_candidate meets application BoardSearchContext safety requirements.
 
-      if team not in commander.teams.items:
-        raise InconsistentCollectionException(
-          f"{method}: [Team-Not-In-Commander-History] {RelationshipException.DEFAULT_MESSAGE}"
-        )
+        # Parameters:
+          * candidate (Any): Object to verify is a name.
+          * name_validator (type[NameValidator]): Checks if candidate complies with safety contract.
 
-      return Result(payload=team)
+        # Returns:
+          ValidationResult[BoardSearchContext] containing either:
+                - On success: BoardSearchContext in payload.
+                - On failure: Exception.
 
-    except (
-        TypeError,
-        NullTeamException,
-        InvalidIdException,
-        NullTeamSchemaException,
-        InvalidCommanderException,
-        InconsistentCollectionException,
-        InvalidCommanderAssignmentException,
-    ) as e:
-      raise InvalidTeamException(f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}") from e
+        # Raises:
+            * InvalidBoardSearchContextException
+        """
+        method = "BoardSearchContextValidator.validate_name_search_option"
+        
+        try:
+            name_validation = name_validator.validate(candidate)
+            if name_validation.is_failure():
+                return ValidationResult.failure(name_validation.exception)
+            
+            return ValidationResult.success(payload=BoardSearchContext(name=name_validation.payload))
+        except Exception as e:
+            return ValidationResult.failure(
+                InvalidBoardSearchContextException(
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_coord_search_option(
+            cls,
+            candidate: Any,
+            coord_validator: type[CoordValidator] = CoordValidator
+    ) -> ValidationResult[BoardSearchContext]:
+        """
+        # Action:
+        Verify a coord_candidate meets application BoardSearchContext safety requirements.
 
-    # This block catches any unexpected exceptions
-    # You might want to log the error here before re-raising
-    except Exception as e:
-      raise InvalidTeamException(f"An unexpected error occurred during validate: {e}") from e
+        # Parameters:
+          * candidate (Any): Object to verify is a coord.
+          * name_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
-#
-# def main():
-#
-#   from chess.commander.commander import Human
-#   person = Human(1, "person")
-#
-#   from chess.team_name import Team
-#   team_name = Team(visitor_team_id=1, controller=person, schema=TeamProfile.BLACK)
-#
-#
-# if __name__ == "__main__":
-#   main()
+        # Returns:
+          ValidationResult[BoardSearchContext] containing either:
+                - On success: BoardSearchContext in payload.
+                - On failure: Exception.
+
+        # Raises:
+            * InvalidBoardSearchContextException
+        """
+        method = "BoardSearchContextValidator.validate_coord_search_option"
+        
+        try:
+            coord_validation = coord_validator.validate(candidate)
+            if coord_validation.is_failure():
+                return ValidationResult.failure(coord_validation.exception)
+            
+            return ValidationResult.success(payload=BoardSearchContext(coord=coord_validation.payload))
+        except Exception as e:
+            return ValidationResult.failure(
+                InvalidBoardSearchContextException(
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                )
+            )

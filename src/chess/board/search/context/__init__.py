@@ -1,13 +1,13 @@
-# src/chess/team_name/old_search/__init__.py
+# src/board/search/context/__init__.py
 
 """
-Module: chess.team_name.old_search
+Module: chess.board.search.context.__iinit__
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-10-15
 version: 1.0.0
 """
 
 from .exception import *
 from .context import BoardSearchContext
-from .builder import PieceSearchContextBuilder
+from .builder import BoardSearchContextBuilder
 from .validator import BoardSearchContextValidator

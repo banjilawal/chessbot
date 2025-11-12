@@ -1,55 +1,9 @@
-# src/chess/team_name/team_name.py
+# src/chess/board/search/context/context
 """
-Module: chess.team_name.team_name
+Module: chess.board.search.context.context
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
-
-# SCOPE:
--------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
-  its CRUD interfaces goes against recommended usage.
-
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
-
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-# THEME:
--------
-* Data Holding, Coordination, Performance
-
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
-
-# PURPOSE:
----------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
-
-***Satisfies***: Reliability and performance contracts.
-
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
-
-From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
-
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-From `chess.owner`:
-  `Piece`
-
-# CONTAINS:
-----------
- * `Team`
 """
 
 from typing import Optional
@@ -59,18 +13,18 @@ from chess.system import SearchContext
 
 class BoardSearchContext(SearchContext):
   """
-  # ROLE: Builder implementation
+  # ROLE: Search option filter
 
   # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `Team` instances.
-  2. Create new `Team` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
+  Provides options for what type of key-value pair BoardSearch implementations use to find matches.
 
   # PROVIDES:
-  `BuildResult`: Return type containing the built `Team` or error information.
+  BoardSearchContext.
 
   # ATTRIBUTES:
-  None
+    * id (int): Find items whose id matches this value.
+    * name (str): Find items whose name matches this value.
+    * coord (Coord): Find items whose coord matches this value.
   """
 
   _id: Optional[int] = None
@@ -89,21 +43,21 @@ class BoardSearchContext(SearchContext):
 
 @property
 def id(self) -> Optional[int]:
-  return self._visitor_id
+  return self._id
 
 @property
 def name(self) -> Optional[str]:
-  return self._visitor_name
+  return self._name
 
 
 @property
 def coord(self) -> Optional[Coord]:
-  return self._position
+  return self._coord
 
 
 def to_dict(self) -> dict:
   return {
-    "visitor_id": self._visitor_id,
-    "visitor_name": self._visitor_name,
-    "point": self._position
+    "id": self._id,
+    "name": self._name,
+    "coord": self._coord
   }

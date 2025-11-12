@@ -57,7 +57,8 @@ __all__ = [
 #====================== BOARD VALIDATION EXCEPTIONS #======================#
     "NullBoardException",
     "BoardNullPieceListException",
-    "BoardNullBoardListException",
+    "BoardNullSquareListException",
+    "NumberOfBoardSquaresOutOfBoundsException",
     "InvalidBoardException",
     
 #====================== BOARD BUILD EXCEPTIONS #======================#
@@ -69,10 +70,10 @@ __all__ = [
     
 #======================# BOARD CONSISTENCY EXCEPTION #======================#
     "CoordSearchInvariantBreachException",
-    "BoardInvariantBreachException"
+    "SquareInvariantBreachException"
 ]
 
-from chess.system import InconsistentCollectionException
+
 
 
 class BoardException(ChessException):
@@ -104,16 +105,16 @@ class BoardNullPieceListException(BoardException, NullException):
     DEFAULT_MESSAGE = "The Board.pieces list is null. There may be a service failure or data inconsistency."
 
 
-class BoardNullBoardListException(BoardException, NullException):
+class BoardNullSquareListException(BoardException, NullException):
     """Raised if a Board.squares list does not exist. This should never happen."""
-    ERROR_CODE = "MISSING_BOARDS_LIST_ERROR"
-    DEFAULT_MESSAGE = "The Board.boards list is null. There may be a service failure or data inconsistency."
+    ERROR_CODE = "BOARD_MISSING_SQUARE_LIST_ERROR"
+    DEFAULT_MESSAGE = "The Board.squares list is null. There may be a service failure or data inconsistency."
 
 
-class NumberOfBoardBoardsOutOfBoundsException(BoardException):
+class NumberOfBoardSquaresOutOfBoundsException(BoardException):
     """Raised if the Board does not contain 64 boards. This should never happen."""
-    ERROR_CODE = "NUMBER_OF_BOARD_BOARDS_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The number of boards on the board is out of bounds. Only 64 Boards are allowed."
+    ERROR_CODE = "NUMBER_OF_BOARD_SQUARES_OUT_OF_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "The number of Square instance in Board is out of bounds. Only 64 Squares are allowed."
 
 
 # ======================# BOARD BUILD EXCEPTIONS #======================#

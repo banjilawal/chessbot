@@ -94,7 +94,7 @@ class NullCoordStackException(CoordStackException, NullException):
 
 class CoordStackValidationException(CoordStackException):
   ERROR_CODE = "COORDINATE_STACK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"CoordinateStack validator failed"
+  DEFAULT_MESSAGE = f"CoordinateStack validation failed."
 
 
 

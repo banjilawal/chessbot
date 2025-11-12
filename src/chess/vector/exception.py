@@ -91,7 +91,7 @@ class InvalidVectorException(VectorException, ValidationException):
   exceptions raised validating an existing `Vector`
   """
   ERROR_CODE = "VECTOR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Vector validator failed"
+  DEFAULT_MESSAGE = "Vector validation failed."
 
 
 #======================# VECTOR BUILD EXCEPTIONS #======================#  

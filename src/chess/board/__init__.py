@@ -11,5 +11,6 @@ from .search import *
 from .exception import *
 
 from .board import Board
+from .builder import BoardBuilder
 from .validator import BoardValidator
 from .square_iterator import SquareIterator

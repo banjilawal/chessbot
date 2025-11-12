@@ -51,6 +51,6 @@ class InvalidDomainOriginException(DomainOriginException, ValidationException):
 
 # ====================== DOMAIN_ORIGIN BUILD EXCEPTIONS #======================#
 class DomainOriginBuildFailedException(DomainOriginException, BuildFailedException):
-    """Catchall Exception for DomainOriginBuilder when it encounters an error building a DomainOrigin."""
+    """Catchall Exception for DomainOriginBuilder when it stops because of an error."""
     ERROR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "DomainOrigin build failed."

@@ -128,7 +128,7 @@ class InvalidTeamException(TeamException, ValidationException):
   exceptions raised validating an existing`Team`.
   """
   ERROR_CODE = "TEAM_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Team validator failed"
+  DEFAULT_MESSAGE = "Team validation failed."
 
 
 class TeamCommanderInconsistencyException(TeamException):

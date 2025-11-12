@@ -84,7 +84,7 @@ class InvalidArenaException(ArenaException, ValidationException):
   catch all exceptions raised validating an existing arena
   """
   ERROR_CODE = "ARENA_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Arena validator failed"
+  DEFAULT_MESSAGE = "Arena validation failed."
 
 
 #======================# ARENA BUILD EXCEPTIONS #======================#  

@@ -1,89 +1,53 @@
-# src/chess/team_name/team_name.py
+# src/chess/board/search/context/builder
 """
-Module: chess.team_name.team_name
+Module: chess.board.search.context.builder
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
-
-# SCOPE:
--------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
-  its CRUD interfaces goes against recommended usage.
-
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
-
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-# THEME:
--------
-* Data Holding, Coordination, Performance
-
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
-
-# PURPOSE:
----------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
-
-***Satisfies***: Reliability and performance contracts.
-
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
-
-From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
-
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-From `chess.owner`:
-  `Piece`
-
-# CONTAINS:
-----------
- * `Team`
 """
 
 
 from typing import Optional
 
+
 from chess.coord import Coord, CoordValidator
-from chess.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
-from chess.system import (
-    IdValidator, NameValidator, Builder, BuildResult,
-    MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
+from chess.system import  BuildResult, Builder, IdValidator, NameValidator, LoggingLevelRouter
+from chess.board import (
+    BoardSearchContext, BoardSearchContextBuildFailedException, NoBoardSearchOptionSelectedException,
+    MoreThanOneBoardSearchOptionPickedException,
 )
-from chess.team.search.context.context import BoardSearchContext
-from chess.team.search import RansomOutOfBoundsException
 
 
 class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     """
-    # ROLE: Builder implementation
+    # ROLE: Builder
 
     # RESPONSIBILITIES:
-    1. Process and validate parameters for creating `Team` instances.
-    2. Create new `Team` objects if parameters meet specifications.
-    2. Report errors and return `BuildResult` with error details.
+        1. Manage construction of BoardSearch instances that can be used safely by the client.
+        2. Ensure params for BoardSearch creation have met the application's safety contract.
+        3. Provide pluggable factories for creating different BoardSearchContext products.
+
 
     # PROVIDES:
-    `BuildResult`: Return type containing the built `Team` or error information.
+      ValidationResult[BoardSearchContext] containing either:
+            - On success: BoardSearchContext in the payload.
+            - On failure: Exception.
 
     # ATTRIBUTES:
-    None
+    No attributes.
     """
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def build (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[BoardSearchContext]:
+    def build (
+            cls,
+            id: Optional[int],
+            name: Optional[str],
+            coord: Optional[Coord],
+            id_validator: type[IdValidator]=IdValidator,
+            name_validator: type[NameValidator]=NameValidator,
+            coord_validator: type[CoordValidator]=CoordValidator
+    ) -> BuildResult[BoardSearchContext]:
         """
         Action:
         Parameters:
@@ -97,36 +61,100 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             param_count = sum(bool(p) for p in params)
 
             if param_count == 0:
-                return BuildResult(exception=AllParamsSetNullException(
-                        f"{method}: {AllParamsSetNullException.DEFAULT_MESSAGE}"
+                return BuildResult.failure(
+                    NoBoardSearchOptionSelectedException(
+                        f"{method}: {NoBoardSearchOptionSelectedException.DEFAULT_MESSAGE}"
                     )
                 )
 
             if param_count > 1:
-                return BuildResult(exception=MutuallyExclusiveParamsException(
-                    f"{method}: {MutuallyExclusiveParamsException.DEFAULT_MESSAGE}"
+                return BuildResult.failure(
+                    MoreThanOneBoardSearchOptionPickedException(
+                        f"{method}: {MoreThanOneBoardSearchOptionPickedException.DEFAULT_MESSAGE}"
                     )
                 )
 
             if id is not None:
-                id_validation = IdValidator.validate(id)
-                if not id_validation.is_success():
-                    return BuildResult(exception=id_validation.exception)
-                return BuildResult(payload=BoardSearchContext(id=id_validation.payload))
+                return cls.build_id_search_context(id=id, id_validator=id_validator)
+            
+            if name is not None:
+                return cls.build_name_search_context(name=name, name_validator=name_validator)
 
             if coord is not None:
-                coord_validation =CoordValidator.validate(coord)
-                if not coord_validation.is_success():
-                    return BuildResult(exception=RosterNumberOutOfBoundsException(
-                            f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                return BuildResult(payload=BoardSearchContext(coord=coord))
+                return cls.build_coord_search_context(coord=coord, coord_validator=coord_validator)
 
-            if name is not None:
-                name_validation = NameValidator.validate(name)
-                if not name_validation.is_success():
-                    return BuildResult(exception=name_validation.exception)
-                return BuildResult(payload=BoardSearchContext(name=name))
+        except Exception as ex:
+            return BuildResult.failure(
+                BoardSearchContextBuildFailedException(
+                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                )
+            )
+        
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def build_id_search_context(
+            cls,
+            id: int,
+            id_validator: type[IdValidator]=IdValidator
+    ) -> BuildResult[BoardSearchContext]:
+        """"""
+        method = "BoardSearchContextBuilder.build_id_search_context"
+        try:
+            id_validation = id_validator.validate(id)
+            if id_validation.is_failure():
+                return BuildResult.failure(id_validation.exception)
+            
+            return BuildResult.success(payload=BoardSearchContext(id=id_validation.payload))
+        except Exception as ex:
+            return BuildResult.failure(
+                BoardSearchContextBuildFailedException(
+                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def build_name_search_context(
+            cls,
+            name: str,
+            name_validator: type[NameValidator]=NameValidator
+    ) -> BuildResult[BoardSearchContext]:
+        """"""
+        method = "BoardSearchContextBuilder.build_name_search_context"
+        
+        try:
+            name_validation = name_validator.validate(name)
+            if name_validation.is_failure():
+                return BuildResult.failure(name_validation.exception)
+            
+            return BuildResult.success(payload=BoardSearchContext(name=name_validation.payload))
+        except Exception as ex:
+            return BuildResult.failure(
+                BoardSearchContextBuildFailedException(
+                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def build_coord_search_context(
+            cls,
+            coord: Coord,
+            coord_validator: type[CoordValidator] = CoordValidator
+    ) -> BuildResult[BoardSearchContext]:
+        """"""
+        method = "BoardSearchContextBuilder.build_coord_search_context"
+        
+        try:
+            coord_validation = coord_validator.validate(coord)
+            if coord_validation.is_failure():
+                return BuildResult.failure(coord_validation.exception)
+            
+            return BuildResult.success(payload=BoardSearchContext(name=coord_validation.payload))
         except Exception as e:
-            return BuildResult(exception=e)
+            return BuildResult.failure(
+                BoardSearchContextBuildFailedException(
+                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}"
+                )
+            )

@@ -84,4 +84,4 @@ class InvalidTeamSchemaException(TeamSchemaException, ValidationException):
   exceptions raised validating an existing`TeamSchema`.
   """
   ERROR_CODE = "TEAM_SCHEMA_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "TeamSchema validator failed"
+  DEFAULT_MESSAGE = "TeamSchema validation failed."

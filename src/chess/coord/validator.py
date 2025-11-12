@@ -1,4 +1,4 @@
-from typing import cast, TypeVar
+from typing import cast, Any
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter, ROW_SIZE, COLUMN_SIZE
 from chess.coord import (
@@ -7,7 +7,6 @@ from chess.coord import (
 )
 
 
-T = TypeVar('T')
 
 class CoordValidator(Validator[Coord]):
   """
@@ -15,7 +14,7 @@ class CoordValidator(Validator[Coord]):
 
   @classmethod
   @LoggingLevelRouter.monitor
-  def validate(cls, candidate: T) -> ValidationResult[Coord]:
+  def validate(cls, candidate: Any) -> ValidationResult[Coord]:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
