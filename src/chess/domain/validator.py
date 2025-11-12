@@ -12,10 +12,12 @@ from typing import Any, cast
 
 from chess.king import KingPiece
 from chess.piece import CombatantPiece, PieceValidator
+from chess.square import SquareValidator
 from chess.system import ChessException, IdValidator, LoggingLevelRouter, Validator, ValidationResult
 from chess.domain import (
-    Domain, NullDomainException, InconsistenDomainAddressException, PieceNotOnRosterDomainOwnerException,
-    CapturedDomainOwnerException, CheckmatedKingDomainOwnerException,DomainMissingTreeException,
+    Domain, InvalidDomainException, NullDomainException, InconsistenDomainAddressException,
+    PieceNotOnRosterDomainOwnerException,
+    CapturedDomainOwnerException, CheckmatedKingDomainOwnerException, DomainMissingTreeException,
 )
 
 
@@ -37,54 +39,38 @@ class DomainValidator(Validator[Domain]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Was expecting type {Domain}, got {type(candidate)} instead")
                 )
+            
             domain = cast(Domain, candidate)
             
             id_validation = IdValidator.validate(domain.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            owner_validation = PieceValidator.validate(domain.owner)
-            if owner_validation.is_failure():
-                return ValidationResult.failure(owner_validation.exception)
+            owner_square_validation = SquareValidator.verify_piece_relates_to_square(
+                domain.origin.square,
+                domain.origin.owner
+            )
+            if owner_square_validation.is_failure():
+                return ValidationResult.failure(owner_square_validation.exception)
             
-            if isinstance(domain.owner, CombatantPiece) and cast(CombatantPiece, domain.owner).captor is not None:
+            if domain.squares is None:
                 return ValidationResult.failure(
-                    CapturedDomainOwnerException(f"{method}: {CapturedDomainOwnerException.DEFAULT_MESSAGE}")
+                    ChessException(f"{method}: Domain cannot have a null square list.")
                 )
             
-            if isinstance(domain.owner, KingPiece) and cast(KingPiece, domain.owner).is_checkmated:
+            if domain.enemies is None:
                 return ValidationResult.failure(
-                    CheckmatedKingDomainOwnerException(f"{method}: {CheckmatedKingDomainOwnerException.DEFAULT_MESSAGE}")
+                    ChessException(f"{method}: Domain cannot have a null enemies dictionary.")
                 )
             
-            team = domain.owner.team
-            if domain.owner not in team.roster:
+            if domain.friends is None:
                 return ValidationResult.failure(
-                    PieceNotOnRosterDomainOwnerException(
-                        f"{method}; {PieceNotOnRosterDomainOwnerException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if domain.owner.current_position is None:
-                return ValidationResult.failure(
-                    ChessException(f"{method}: Cannot get the owner of a piece not on the board")
-                )
-            
-            if domain.owner.current_position != domain.owner_address:
-                return ValidationResult.failure(
-                    InconsistenDomainAddressException(f"{method}: {InconsistenDomainAddressException.DEFAULT_MESSAGE}")
-                )
-            
-            if domain.tree is None:
-                return ValidationResult.failure(
-                    DomainMissingTreeException(f"{method}: {DomainMissingTreeException.DEFAULT_MESSAGE}")
-                )
-            
-            if domain.owner.current_position not in domain.tree:
-                return ValidationResult.failure(
-                    ChessException(f"{method}: Owner's current position must be in the tree.")
+                    ChessException(f"{method}: Domain cannot have a null friends dictionary.")
                 )
             
             return ValidationResult.success(domain)
+        
         except Exception as e:
-            return ValidationResult.failure(e)
+            return ValidationResult.failure(
+                InvalidDomainException(f"{method}: {InvalidDomainException.DEFAULT_MESSAGE}", e)
+            )

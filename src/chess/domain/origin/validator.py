@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.piece import Piece, PieceValidator
-from chess.domain import DomainOrigin, NullDomainOriginException
+from chess.domain import DomainOrigin, InvalidDomainOriginException, NullDomainOriginException
 from chess.square import SquareValidator
 from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
@@ -38,18 +38,18 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             
             domain_origin = cast(DomainOrigin, candidate)
             
-            piece_validation = PieceValidator.verify_active_piece(domain_origin.owner)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
-            
-            square_validation = SquareValidator.validate(domain_origin.square)
-            if square_validation.is_failure():
-                return ValidationResult.failure(square_validation.exception)
-            
-            square = domain_origin.square
-            
-            
+            piece_square_relation_validation = SquareValidator.verify_piece_relates_to_square(
+                domain_origin.owner, domain_origin.square
+            )
+            if piece_square_relation_validation.is_failure():
+                return ValidationResult.failure(piece_square_relation_validation.exception)
             
             ValidationResult.success(payload=domain_origin)
+            
         except Exception as e:
-            return ValidationResult.failure(e)
+            return ValidationResult.failure(
+                InvalidDomainOriginException(
+                    f"{method}: {InvalidDomainOriginException.DEFAULT_MESSAGE}",
+                    e
+                )
+            )

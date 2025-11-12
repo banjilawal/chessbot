@@ -8,10 +8,9 @@ version: 1.0.0
 """
 
 
-from chess.domain import DomainOrigin
+from chess.domain import DomainOrigin, DomainOriginBuildFailedException
 from chess.enviroment import TurnScene, TurnSceneValidator
 from chess.system import Builder, BuildResult, LoggingLevelRouter
-
 
 
 class DomainOriginBuilder(Builder[DomainOrigin]):
@@ -23,6 +22,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         1. Perform sanity checks on resources for creating a new DomainOrigin object.
         2. Report any errors preventing a successful build.
         3. Provide a DomainOrigin object that meets minimal requirements for usage in the system.
+        
     # PROVIDES:
         BuildResult
     
@@ -42,13 +42,13 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         # PARAMETERS:
             * candidate (int): the visitor_id.
 
-        # RETURNS:
-        BuildResult: Containing
-            * DomainOrigin on success.
-            * Exception on failure.
+        # Returns:
+          BuildResult[DomainOrigin] containing either:
+                - On success: DomainOrigin in payload.
+                - On failure: Exception.
 
         # RAISES:
-            Any TurnSceneValidator exceptions.
+            None
         """
         method = "DomainOriginBuilder.build"
         
@@ -58,7 +58,13 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
                 return BuildResult.failure(turn_scene_validation.exception)
             
             return BuildResult.success(payload=DomainOrigin(owner=turn_scene.actor, owner_square=turn_scene.square))
+        
         except Exception as e:
-            return BuildResult.failure(e)
+            return BuildResult.failure(
+                DomainOriginBuildFailedException(
+                    f"{method}: {DomainOriginBuildFailedException.DEFAULT_MESSAGE}",
+                    e
+                )
+            )
     
     
