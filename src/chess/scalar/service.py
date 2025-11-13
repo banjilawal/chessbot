@@ -44,14 +44,6 @@ class ScalarService:
     ):
         self._scalar_builder = scalar_builder
         self._scalar_validator = scalar_validator
-        
-    @property
-    def scalar_builder(self) -> type[ScalarBuilder]:
-        return self._scalar_builder
-    
-    @property
-    def scalar_validator(self) -> type[ScalarValidator]:
-        return self._scalar_validator
     
     def validate_as_scalar(self, candidate: Any) -> ValidationResult[Scalar]:
         return self._scalar_validator.validate(candidate)
