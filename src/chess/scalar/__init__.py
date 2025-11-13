@@ -17,9 +17,9 @@ from .validator import ScalarValidator
 from .service import ScalarService
 
 # Package metadata (organic to __init__.py)
-__version__ = '1.0.0'
-__author__ = 'Banji Lawal'
-__package_name__ = 'chess.scalar'
+__version__ = "1.0.0"
+__author__ = "Banji Lawal"
+__package_name__ = "chess.scalar"
 
 
 # Export control - only what belongs in public API
@@ -29,9 +29,9 @@ __all__ = [
     *exception.__all__,
     
     # Package metadata and utilities
-    '__version__',
-    '__author__',
-    'package_info',
+    "__version__",
+    "__author__",
+    "package_info",
 ]
 
 
@@ -39,9 +39,8 @@ __all__ = [
 def package_info() -> dict:
     """Return basic package information."""
     return {
-        'visitor_name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
+        "visitor_name": __package_name__,
+        "version": __version__,
+        "author": __author__,
+        "exports": __all__
     }
-

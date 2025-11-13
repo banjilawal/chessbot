@@ -1,7 +1,7 @@
 # chess/vector/__init__.py
 
 """
-Module: `chess.vector.__init__`
+Module: chess.vector.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,3 +12,34 @@ from .exception import *
 from .vector import Vector
 from .builder import VectorBuilder
 from .validator import VectorValidator
+
+from .service import VectorService
+
+# Package metadata (organic to __init__.py)
+__version__ = "1.0.0"
+__author__ = "Banji Lawal"
+__package_name__ = "chess.vector"
+
+# Export control - only what belongs in public API
+__all__ = [
+    "VectorService",
+    
+    *exception.__all__,
+    
+    # Package metadata and utilities
+    "__version__",
+    "__author__",
+    "package_info",
+]
+
+
+# Organic utility function for package info
+def package_info() -> dict:
+    """Return basic package information."""
+    return {
+        "visitor_name": __package_name__,
+        "version": __version__,
+        "author": __author__,
+        "exports": __all__
+    }
+

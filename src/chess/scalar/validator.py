@@ -21,8 +21,7 @@ class ScalarValidator(Validator[Scalar]):
     # ROLE: Validation
   
     # RESPONSIBILITIES:
-    Verify a candidate is a Scalar that meets the application's safety contract before the client
-    is allowed to use it.
+    Prevents an object that does not meet the system's Scalar specifications from being used.
   
     # PROVIDES:
       ValidationResult[Scalar] containing either:
