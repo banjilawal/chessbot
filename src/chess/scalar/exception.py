@@ -1,138 +1,55 @@
-# src/chess/system/travel/rollback_exception.py
+# chess/scalar/exception.py
 
 """
-Module: chess.system.travel.rollback_exception
+Module: chess.scalar.exception
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-09-11
 version: 1.0.0
-
-# SECTION 1 - Purpose:
-This module provides:
-  1. A satisfaction of the `ChessBot` integrity requirement.
-  2. A satisfaction of the `ChessBot` reliability requirement.
-
-# SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
-
-# SECTION 3: Limitations
-  1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
-
-# SECTION 4 - Design Considerations and Themes:
-The major theme influencing the modules design are
-  1. Single responsibility.
-  2. Discoverability.
-  3. Encapsulations.
-
-# SECTION 5- Features Supporting Requirements:
-  1. The ability to handle errors without crashing the application is a reliability feature.
-
-
-# SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
-
-# SECTION 7 - Dependencies:
-* From `chess.system`:
-    `ChessException`, `ContextException`, `ResultException`
-
-# SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
-"""
-from chess.system import BuildFailedException
-
-# src/chess/vector/rollback_exception.py
-
-"""
-Module: chess.vector.rollback_exception
-Author: Banji Lawal
-Created: 2025-10-04
-version: 1.0.0
-
-SCOPE:
------
-This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Vector` objects.
-
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidator`
-
-THEME:
------
-* Granular, targeted error reporting
-* Wrapping exceptions
-
-**Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
-      state, outcome, or behavior.
-
-PURPOSE:
--------
-1. Centralized error dictionary for the `Vector` graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
-    find the source.
-3. Providing understandable, consistent information about failures originating from
-    the `Vector` graph.
-4. Providing a clear distinction between errors related to `Vector` instances and
-    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
-
-DEPENDENCIES:
-------------
-Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
-        `BuildFailedException`.
-
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.exception import ChessException, NullException, ValidationException, BuilderException
+from chess.system import ChessException, NullException, ValidationException, BuildFailedException
 
 __all__ = [
-  'ScalarException',
+  "ScalarException",
   
 #======================# SCALAR VALIDATION EXCEPTIONS #======================#  
-  'NullScalarException',
-  'InvalidScalarException',
+  "NullScalarException",
+  "InvalidScalarException",
   
 #======================# SCALAR BUILD EXCEPTIONS #======================#  
-  'ScalarBuildFailedException',
+  "ScalarBuildFailedException",
 
 #======================# SCALAR BOUNDS EXCEPTIONS #======================#  
-  'ScalarBelowBoundsException',
-  'ScalarAboveBoundsException'
+  "ScalarBelowBoundsException",
+  "ScalarAboveBoundsException"
 ]
 
 class ScalarException(ChessException):
   """
-  Super class of all exceptions team_name Scalar object raises. Do not use directly. Subclasses
-  give details useful for debugging. This class exists primarily to allow catching all 
-  Scalar exceptions.
+  Super class of exceptions raised by Scalar objects. Do not use directly. Subclasses give
+  precise, fined-grained, debugging info.
   """
   ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
   DEFAULT_MESSAGE = "Scalar is below lower bound"
   
 
-#======================# SCALAR VALIDATION EXCEPTIONS #======================#  
+#======================# NULL SCALAR EXCEPTIONS #======================#
 class NullScalarException(ScalarException, NullException):
-  """Raised if an entity, method, or operation requires team_name scalar but gets null instead."""
+  """Raised if an entity, method, or operation requires Board but gets null instead."""
   ERROR_CODE = "NULL_SCALAR_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be null."
 
+
+#======================# SCALAR VALIDATION EXCEPTIONS #======================#
 class InvalidScalarException(ScalarException, ValidationException):
-  """Raised by ScalaValidators if client fails validator."""
+  """Catchall Exception for BoardValidator when a validation candidate fails a sanity check."""
   ERROR_CODE = "SCALAR_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Scalar validation failed."
 
 
-#======================# SCALAR BUILD EXCEPTIONS #======================#  
+#======================# SCALAR BUILD EXCEPTIONS #======================#
 class ScalarBuildFailedException(ScalarException, BuildFailedException):
-  """
-  Indicates Scalar could not be built. Wraps and re-raises errors that occurred
-  during build.
-  """
+  """Catchall Exception for BoardBuilder when it encounters an error building a Board."""
   ERROR_CODE = "SCALAR_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Scalar build failed."
 

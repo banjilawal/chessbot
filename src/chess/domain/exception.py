@@ -30,8 +30,8 @@ __all__ = [
 
 class DomainException(ChessException):
     """
-    Super class of exceptions raised by a Domain object. Do not use directly. Subclasses give
-    targeted, fined grained, debugging info.
+    Super class of exceptions raised by Domain objects. Do not use directly. Subclasses give
+    precise, fined-grained, debugging info.
     """
     ERROR_CODE = "DOMAIN_ERROR"
     DEFAULT_MESSAGE = "Domain raised an exception."

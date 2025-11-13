@@ -73,8 +73,8 @@ __all__ = [
 
 class CoordException(ChessException):
   """
-  Super class of exceptions raised by a Coord object. Do not use directly. Subclasses give 
-  targeted, fined grained, debugging info.
+  Super class of exceptions raised by Coord objects. Do not use directly. Subclasses give 
+  precise, fined-grained, debugging info.
   """
   ERROR_CODE = "COORD_ERROR"
   DEFAULT_MESSAGE = f"Invalid Coord state threw an err"

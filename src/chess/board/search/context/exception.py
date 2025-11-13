@@ -31,8 +31,8 @@ __all__ = [
 
 class BoardSearchContextException(ContextException):
     """
-    Super class of exceptions raised by a BoardSearchContext object. Do not use directly. Subclasses give
-    targeted, fined grained, debugging info.
+    Super class of exceptions raised by BoardSearchContext objects. Do not use directly. Subclasses give
+    precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "BoardSearchContext raised an rollback_exception"

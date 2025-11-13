@@ -78,14 +78,14 @@ __all__ = [
 
 class BoardException(ChessException):
     """
-    Super class of exceptions raised by a Board object. Do not use directly. Subclasses give
-    targeted, fined grained, debugging info.
+    Super class of exceptions raised by Board objects. Do not use directly. Subclasses give
+    precise, fined-grained, debugging info.
     """
     ERROR_CODE = "BOARD_ERROR"
-    DEFAULT_MESSAGE = "Board raised an rollback_exception."
+    DEFAULT_MESSAGE = "Board raised an exception."
 
 
-# ======================# NULL DOMAIN EXCEPTIONS #======================#
+# ======================# NULL BOARD EXCEPTIONS #======================#
 class NullBoardException(BoardException, NullException):
     """Raised if an entity, method, or operation requires Board but gets null instead."""
     ERROR_CODE = "NULL_BOARD_ERROR"
@@ -112,14 +112,14 @@ class BoardNullSquareListException(BoardException, NullException):
 
 
 class NumberOfBoardSquaresOutOfBoundsException(BoardException):
-    """Raised if the Board does not contain 64 boards. This should never happen."""
+    """Raised if the Board does not contain 64 Squares. This should never happen."""
     ERROR_CODE = "NUMBER_OF_BOARD_SQUARES_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "The number of Square instance in Board is out of bounds. Only 64 Squares are allowed."
 
 
 # ======================# BOARD BUILD EXCEPTIONS #======================#
 class BoardBuildFailedException(BoardException, BuildFailedException):
-    """Catchall Exception for DomainBuilder when it encounters an error building a Domain."""
+    """Catchall Exception for BoardBuilder when it encounters an error building a Board."""
     ERROR_CODE = "BOARD_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Board build failed."
 

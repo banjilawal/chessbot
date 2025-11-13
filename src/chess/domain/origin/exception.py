@@ -28,8 +28,8 @@ __all__ = [
 
 class DomainOriginException(ChessException):
     """
-    Super class of exceptions raised by a DomainOrigin object. Do not use directly. Subclasses give
-    targeted, fined grained, debugging info.
+    Super class of exceptions raised by DomainOrigin objects. Do not use directly. Subclasses give
+    precise, fined-grained, debugging info.
     """
     ERROR_CODE = "DOMAIN_ORIGIN_ERROR"
     DEFAULT_MESSAGE = "An rollback_exception was raised by a DomainOrigin."

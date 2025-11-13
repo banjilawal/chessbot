@@ -110,8 +110,8 @@ __all__ = [
 
 class SquareException(ChessException):
     """
-    Super class of exceptions raised by a Square object. Do not use directly. Subclasses give
-    targeted, fined grained, debugging info.
+    Super class of exceptions raised by Square objects. Do not use directly. Subclasses give
+    precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SQUARE_ERROR"
     DEFAULT_MESSAGE = "Square raised an exception."
