@@ -7,8 +7,11 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
+from typing import Any
 
-from chess.scalar import ScalarBuilder, ScalarValidator
+from chess.system import BuildResult, ValidationResult
+from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
+
 
 
 class ScalarService:
@@ -49,3 +52,9 @@ class ScalarService:
     @property
     def scalar_validator(self) -> type[ScalarValidator]:
         return self._scalar_validator
+    
+    def validate_as_scalar(self, candidate: Any) -> ValidationResult[Scalar]:
+        return self._scalar_validator.validate(candidate)
+    
+    def build_scalar(self, value: int) -> BuildResult[Scalar]:
+        return self._scalar_builder.build(value)

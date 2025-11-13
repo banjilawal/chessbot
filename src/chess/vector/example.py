@@ -89,3 +89,57 @@ From chess.vector:
 ----------
  * VectorBuilder
 """
+# src/chess/vector/vector.py
+"""
+Module: chess.vector.vector
+Author: Banji Lawal
+Created: 2025-10-08
+
+# SCOPE:
+-------
+***Limitation***: This module cannot prevent classes, processes or modules using Vector
+    instances that pass sanity checks will not fail when using the validated Vector.
+    Once client's processes might fail, experience service inconsistency or have other
+    faults.
+    Objects authenticated by VectorValidator might fail additional requirements
+    a client has for a Vector. It is the client's responsibility to ensure the
+    validated Vector passes and additional checks before deployment.
+
+**Related Features**:
+    Coord -> See Coord, CoordBuilder, CoordValidator, module[chess.point],
+    Scalar --> See Scalar, ScalarValidator, module[chess.vector],
+    Handling process and rolling back failures --> See Transaction, module[chess.system]
+
+# THEME:
+-------
+* Transform, geometry
+
+# PURPOSE:
+---------
+1. Central, single source of truth for correctness of existing Vector objects.
+2. Putting all the steps and logging into one place makes modules using Vector objects
+    cleaner and easier to follow.
+
+**Satisfies**: Consistency contracts.
+
+# DEPENDENCIES:
+---------------
+From chess.system:
+  * LoggingLevelRouter
+From chess.point:
+  * Coord, CoordValidator, KNIGHT_STEP_SIZE, LoggingLevelRouter
+
+From chess.scalar:
+  * Scalar, ScalarValidator
+
+from chess.board_validator
+  * SquareIterator
+
+From chess.vector:
+    Vector, NullVectorException, InvalidVectorException, NullXComponentException,
+    NullYComponentException, VectorBelowBoundsException, VectorAboveBoundsException
+
+# CONTAINS:
+----------
+ * VectorValidator
+"""
