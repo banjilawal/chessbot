@@ -1,49 +1,10 @@
-# src/chess/bounds/validator/exception.py
+# src/chess/rank/validator/quota/exception.py
 
 """
-Module: chess.bounds.validator.exception
+Module: chess.rank.validator.quota.exceptiom
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
-
-SCOPE:
------
-This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Vector` objects.
-
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidator`
-
-THEME:
------
-* Granular, targeted error reporting
-* Wrapping exceptions
-
-**Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
-      state, outcome, or behavior.
-
-PURPOSE:
--------
-1. Centralized error dictionary for the `Vector` graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
-    find the source.
-3. Providing understandable, consistent information about failures originating from
-    the `Vector` graph.
-4. Providing a clear distinction between errors related to `Vector` instances and
-    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
-
-DEPENDENCIES:
-------------
-Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
-        `BuildFailedException`.
-
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
 """
 
 from chess.system import NullException
@@ -60,15 +21,12 @@ __all__ = [
     "RankQuotaAboveBoundsException",
     
     # ======================# RANK_QUOTA_INCONSISTENCY EXCEPTIONS #======================#
-    "RankQuotaInconsistencyException",
-    
-    # ======================# RANK_QUOTA_INCONSISTENCY EXCEPTIONS #======================#
-    "WrongKingQuotaException",
-    "WrongQueenQuotaException",
-    "WrongBishopQuotaException",
-    "WrongRookQuotaException",
-    "WrongKnightQuotaException",
-    "WrongPawnQuotaException",
+    "KingQuotaException",
+    "QueenQuotaException",
+    "BishopQuotaException",
+    "RookQuotaException",
+    "KnightQuotaException",
+    "PawnQuotaException",
 ]
 
 
@@ -85,46 +43,49 @@ class NullRankQuotaException(RankQuotaException, NullException):
 
 # ======================# RANK_QUOTA BOUNDS EXCEPTIONS #======================#
 class RankQuotaBelowBoundsException(RankQuotaException):
+    """Raised if the quota zero or less. The lowest quota is 1."""
     ERROR_CODE = "RANK_QUOTA_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "A Rank instance cannot have a quota below one."
+    DEFAULT_MESSAGE = "Rank.quota cannot be less than one."
 
 
 class RankQuotaAboveBoundsException(RankQuotaException):
-    ERROR_CODE = "RANK_QUOTA_ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The Pawn has the highest quota. The value is above quota bounds."
+    """Raised if the Rank.ransom is null. This should never happen. It might indicate data inconsistency."""
+    ERROR_CODE = "NULL_RANK_RANSOM_ERROR"
+    DEFAULT_MESSAGE = "Rank.ransom cannot be null. There may be a data inconsistency or system failure."
+    
+    
+# ======================# RANK_RANSOM INCONSISTENCY EXCEPTIONS #======================#
+class KingQuotaException(RankQuotaException):
+    """Raised when the ransom assigned to a King differs from the RankSpec value."""
+    ERROR_CODE = "_QUEEN_RANSOM_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Queen ransom."
 
 
-# ======================# RANK_QUOTA_INCONSISTENCY EXCEPTIONS #======================#
-class RankQuotaInconsistencyException(RankException):
-    ERROR_CODE = "RANK_QUOTA_CONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "Rank and quota do not match."
-
-
-class WrongKingQuotaException(RankQuotaException):
-    ERROR_CODE = "WRONG_KING_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a King quota."
-
-
-class WrongQueenQuotaException(RankQuotaException):
-    ERROR_CODE = "WRONG_QUEEN_QUOTA_ERROR"
+class QueenQuotaException(RankQuotaException):
+    """Raised when the ransom assigned to a Queen differs from the RankSpec value."""
+    ERROR_CODE = "QUEEN_QUOTA_ERROR"
     DEFAULT_MESSAGE = "Incorrect value for a Queen quota."
 
 
-class WrongBishopQuotaException(RankQuotaException):
-    ERROR_CODE = "WRONG_BISHOP_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Bishop quota."
+class BishopQuotaException(RankQuotaException):
+    """Raised when the ransom assigned to a Bishop differs from the RankSpec value."""
+    ERROR_CODE = "BISHOP_RANSOM_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Bishop ransom."
 
 
-class WrongRookQuotaException(RankQuotaException):
-    ERROR_CODE = "WRONG_ROOK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Rook quota."
+class RookQuotaException(RankQuotaException):
+    """Raised when the ransom assigned to a Rook differs from the RankSpec value."""
+    ERROR_CODE = "ROOK_RANSOM_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Rook ransom."
 
 
-class WrongKnightQuotaException(RankQuotaException):
-    ERROR_CODE = "WRONG_BISHOP_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Bishop quota."
+class KnightQuotaException(RankQuotaException):
+    """Raised when the ransom assigned to a Knight differs from the RankSpec value."""
+    ERROR_CODE = "KNIGHT_RANSOM_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Knight ransom."
 
 
-class WrongPawnQuotaException(RankQuotaException):
-    ERROR_CODE = "WRONG_ROOK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Rook quota."
+class PawnQuotaException(RankQuotaException):
+    """Raised when the ransom assigned to a Pawn differs from the RankSpec value."""
+    ERROR_CODE = "PAWN_RANSOM_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Pawn ransom."

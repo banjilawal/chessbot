@@ -7,7 +7,7 @@ Created: 2025-11-08
 version: 1.0.0
 """
 
-from chess.system import NullException, ValidationException
+from chess.system import NullException
 from chess.rank import RankException
 
 
@@ -32,7 +32,7 @@ __all__ = [
 
 
 class RankRansomException(RankException):
-  ERROR_CODE = "RANK_RANSOM_FIELD_ERROR"
+  ERROR_CODE = "RANK_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Rank.ransom raised an exception."
 
 
@@ -67,20 +67,24 @@ class QueenRansomException(RankRansomException):
   ERROR_CODE = "WRONG_QUEEN_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Queen ransom."
 
+
 class BishopRansomException(RankRansomException):
   """Raised when the ransom assigned to a Bishop differs from the RankSpec value."""
   ERROR_CODE = "WRONG_BISHOP_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Bishop ransom."
+
 
 class RookRansomException(RankRansomException):
   """Raised when the ransom assigned to a Rook differs from the RankSpec value."""
   ERROR_CODE = "WRONG_ROOK_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Rook ransom."
 
+
 class KnightRansomException(RankRansomException):
   """Raised when the ransom assigned to a Knight differs from the RankSpec value."""
   ERROR_CODE = "WRONG_KNIGHT_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Knight ransom."
+
 
 class PawnRansomException(RankRansomException):
   """Raised when the ransom assigned to a Pawn differs from the RankSpec value."""
