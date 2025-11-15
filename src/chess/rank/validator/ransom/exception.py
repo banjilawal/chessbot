@@ -32,6 +32,10 @@ __all__ = [
 
 
 class RankRansomException(RankException):
+  """
+  Super class of exceptions raised by Ransom objects. Do not use directly. Subclasses give
+  precise, fined-grained, debugging info.
+  """
   ERROR_CODE = "RANK_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Rank.ransom raised an exception."
 

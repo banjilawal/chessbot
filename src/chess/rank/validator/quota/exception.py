@@ -31,12 +31,17 @@ __all__ = [
 
 
 class RankQuotaException(RankException):
+    """
+    Super class of exceptions raised by Quota objects. Do not use directly. Subclasses give
+    precise, fined-grained, debugging info.
+    """
     ERROR_CODE = "RANK_QUOTA_ERROR"
     DEFAULT_MESSAGE = "Rank.quota raised an exception."
 
 
 # ======================# NULL RANK_QUOTA EXCEPTIONS #======================#
 class NullRankQuotaException(RankQuotaException, NullException):
+    """Raised if the Rank.quota is null. This should never happen. It might indicate data inconsistency."""
     ERROR_CODE = "NULL_RANK_QUOTA_ERROR"
     DEFAULT_MESSAGE = "Rank.quota cannot be null."
 
@@ -49,43 +54,43 @@ class RankQuotaBelowBoundsException(RankQuotaException):
 
 
 class RankQuotaAboveBoundsException(RankQuotaException):
-    """Raised if the Rank.ransom is null. This should never happen. It might indicate data inconsistency."""
-    ERROR_CODE = "NULL_RANK_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "Rank.ransom cannot be null. There may be a data inconsistency or system failure."
+    """Raised if the quota higher than the Pawn's."""
+    ERROR_CODE = "NULL_RANK_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Rank.quota cannot be null. There may be a data inconsistency or system failure."
     
     
-# ======================# RANK_RANSOM INCONSISTENCY EXCEPTIONS #======================#
+# ======================# RANK_QUOTA INCONSISTENCY EXCEPTIONS #======================#
 class KingQuotaException(RankQuotaException):
-    """Raised when the ransom assigned to a King differs from the RankSpec value."""
-    ERROR_CODE = "_QUEEN_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Queen ransom."
+    """Raised when the quota assigned to a King differs from the RankSpec value."""
+    ERROR_CODE = "_QUEEN_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Queen quota."
 
 
 class QueenQuotaException(RankQuotaException):
-    """Raised when the ransom assigned to a Queen differs from the RankSpec value."""
+    """Raised when the quota assigned to a Queen differs from the RankSpec value."""
     ERROR_CODE = "QUEEN_QUOTA_ERROR"
     DEFAULT_MESSAGE = "Incorrect value for a Queen quota."
 
 
 class BishopQuotaException(RankQuotaException):
-    """Raised when the ransom assigned to a Bishop differs from the RankSpec value."""
-    ERROR_CODE = "BISHOP_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Bishop ransom."
+    """Raised when the quota assigned to a Bishop differs from the RankSpec value."""
+    ERROR_CODE = "BISHOP_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Bishop quota."
 
 
 class RookQuotaException(RankQuotaException):
-    """Raised when the ransom assigned to a Rook differs from the RankSpec value."""
-    ERROR_CODE = "ROOK_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Rook ransom."
+    """Raised when the quota assigned to a Rook differs from the RankSpec value."""
+    ERROR_CODE = "ROOK_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Rook quota."
 
 
 class KnightQuotaException(RankQuotaException):
-    """Raised when the ransom assigned to a Knight differs from the RankSpec value."""
-    ERROR_CODE = "KNIGHT_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Knight ransom."
+    """Raised when the quota assigned to a Knight differs from the RankSpec value."""
+    ERROR_CODE = "BISHOP_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Bishop quota."
 
 
 class PawnQuotaException(RankQuotaException):
-    """Raised when the ransom assigned to a Pawn differs from the RankSpec value."""
-    ERROR_CODE = "PAWN_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Pawn ransom."
+    """Raised when the quota assigned to a Pawn differs from the RankSpec value."""
+    ERROR_CODE = "ROOK_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Rook quota."

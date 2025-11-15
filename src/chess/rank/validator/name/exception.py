@@ -1,49 +1,10 @@
-# src/chess/bounds/validator/exception.py
+# src/chess/rank/validator/name/exception.py
 
 """
-Module: chess.bounds.validator.exception
+Module: chess.rank.validator.name.exceptiom
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
-
-SCOPE:
------
-This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Vector` objects.
-
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidator`
-
-THEME:
------
-* Granular, targeted error reporting
-* Wrapping exceptions
-
-**Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
-      state, outcome, or behavior.
-
-PURPOSE:
--------
-1. Centralized error dictionary for the `Vector` graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
-    find the source.
-3. Providing understandable, consistent information about failures originating from
-    the `Vector` graph.
-4. Providing a clear distinction between errors related to `Vector` instances and
-    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
-
-DEPENDENCIES:
-------------
-Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
-        `BuildFailedException`.
-
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
 """
 
 from chess.system import NullException
@@ -58,65 +19,72 @@ __all__ = [
 # ======================# RANK_NAME BOUNDS EXCEPTIONS #======================#
   "RankNameOutOfBoundsException",
 
-# ======================# RANK_NAME INCONSISTENCY EXCEPTIONS #======================#
-  "RankNameInconsistencyException",
   
   # ======================# RANK_NAME_INCONSISTENCY EXCEPTIONS #======================#
-  "WrongKingNameException",
-  "WrongQueenNameException",
-  "WrongBishopNameException",
-  "WrongRookNameException",
-  "WrongKnightNameException",
-  "WrongPawnNameException",
+  "KingNameException",
+  "QueenNameException",
+  "BishopNameException",
+  "RookNameException",
+  "KnightNameException",
+  "PawnNameException",
 ]
 
 
 class RankNameException(RankException):
+  """
+  Super class of exceptions raised by Name objects. Do not use directly. Subclasses give
+  precise, fined-grained, debugging info.
+  """
   ERROR_CODE = "RANK_NAME_ERROR"
   DEFAULT_MESSAGE = "Rank.name raised an exception."
 
 
 # ======================# NULL RANK_NAME EXCEPTIONS #======================#
-class RankNameNullException(RankException, NullException):
-  ERROR_CODE = "RANK_NAME_NULL_ERROR"
+class RankNameNullException(RankNameException, NullException):
+  """Raised if the Rank.name is null. This should never happen. It might indicate data inconsistency."""
+  ERROR_CODE = "NULL_RANK_NAME_ERROR"
   DEFAULT_MESSAGE = "Rank.name cannot be null."
 
 
 # ======================# RANK_NAME BOUNDS EXCEPTIONS #======================#
 class RankNameOutOfBoundsException(RankNameException):
+  """Raised if the name is not in RankSpec."""
   ERROR_CODE = "RANK_NAME_OUT_OF_BOUNDS_ERROR"
   DEFAULT_MESSAGE = "The name is not included in the Rank name specifications."
 
 
 # ======================# RANK_NAME INCONSISTENCY EXCEPTIONS #======================#
-class RankNameInconsistencyException(RankException):
-  ERROR_CODE = "RANK_NAME_CONSISTENCY_ERROR"
-  DEFAULT_MESSAGE = "Rank and name don't match."
-  
-
-class WrongKingNameException(RankNameException):
-  ERROR_CODE = "WRONG_KING_NAME_ERROR"
-  DEFAULT_MESSAGE = "Incorrect value for a King name."
-
-
-class WrongQueenNameException(RankNameException):
-  ERROR_CODE = "WRONG_QUEEN_NAME_ERROR"
+class KingNameException(RankNameException):
+  """Raised when the name assigned to a King differs from the RankSpec value."""
+  ERROR_CODE = "_QUEEN_NAME_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Queen name."
 
 
-class WrongRookNameException(RankNameException):
-  ERROR_CODE = "WRONG_ROOK_NAME_ERROR"
-  DEFAULT_MESSAGE = "Incorrect value for a Rook name."
+class QueenNameException(RankNameException):
+  """Raised when the name assigned to a Queen differs from the RankSpec value."""
+  ERROR_CODE = "QUEEN_NAME_ERROR"
+  DEFAULT_MESSAGE = "Incorrect value for a Queen name."
 
-class WrongBishopNameException(RankNameException):
-  ERROR_CODE = "WRONG_BISHOP_NAME_ERROR"
+
+class BishopNameException(RankNameException):
+  """Raised when the name assigned to a Bishop differs from the RankSpec value."""
+  ERROR_CODE = "BISHOP_NAME_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Bishop name."
 
-class WrongKnightNameException(RankNameException):
-  ERROR_CODE = "WRONG_RANK_NAME_ERROR"
-  DEFAULT_MESSAGE = "Incorrect value for a Knight name."
+
+class RookNameException(RankNameException):
+  """Raised when the name assigned to a Rook differs from the RankSpec value."""
+  ERROR_CODE = "ROOK_NAME_ERROR"
+  DEFAULT_MESSAGE = "Incorrect value for a Rook name."
 
 
-class WrongPawnNameException(RankNameException):
-  ERROR_CODE = "WRONG_PAWN_NAME_ERROR"
-  DEFAULT_MESSAGE = "Incorrect value for a Pawn name."
+class KnightNameException(RankNameException):
+  """Raised when the name assigned to a Knight differs from the RankSpec value."""
+  ERROR_CODE = "BISHOP_NAME_ERROR"
+  DEFAULT_MESSAGE = "Incorrect value for a Bishop name."
+
+
+class PawnNameException(RankNameException):
+  """Raised when the name assigned to a Pawn differs from the RankSpec value."""
+  ERROR_CODE = "ROOK_NAME_ERROR"
+  DEFAULT_MESSAGE = "Incorrect value for a Rook name."

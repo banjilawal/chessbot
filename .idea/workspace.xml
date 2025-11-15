@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/name/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/name/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/name/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/name/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/quota/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/quota/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/ransom/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/ransom/exception.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -620,7 +627,7 @@
       <workItem from="1762885805665" duration="84766000" />
       <workItem from="1763030945266" duration="5954000" />
       <workItem from="1763048725703" duration="30784000" />
-      <workItem from="1763123420919" duration="60595000" />
+      <workItem from="1763123420919" duration="66820000" />
     </task>
     <servers />
   </component>
