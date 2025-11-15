@@ -56,7 +56,7 @@ class VerifyRankIdConsistency:
             identity_service: type[IdentityService]=IdentityService
     ) -> ValidationResult[Rank, int]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_id_consistency"
+        method = "RankRansomValidator.rank_id_consistency"
         
         try:
             id_validation = identity_service.validate_id(candidate)

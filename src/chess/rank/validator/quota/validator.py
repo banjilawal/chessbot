@@ -30,7 +30,7 @@ from chess.rank import (
 )
 
 
-class VerifyRankRansomConsistency:
+class RankQuotaValidator:
     """
     # ROLE: Validator, Consistency Management
 
@@ -48,74 +48,78 @@ class VerifyRankRansomConsistency:
         *   _occupant (Optional[Piece]): Piece object that might be occupying the Square.
     """
     
+    
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[(Rank, int)]:
+    def verify_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[Rank, int]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_ransom_consistency"
+        method = "RankRansomValidator.rank_quota_consistency"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRankRansomException(
-                        f"{method}: {NullRankRansomException.DEFAULT_MESSAGE}"
+                    NullRankQuotaException(
+                        f"{method}: {NullRankQuotaException.DEFAULT_MESSAGE}"
                     )
                 )
-                
+            
             if not isinstance(candidate, int):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: Expected an integer, got {type(candidate).__id__}"
                     )
                 )
-                
-            ransom = cast(candidate, int)
-            if ransom < 0:
+            
+            quota = cast(candidate, int)
+            if quota < 1:
                 return ValidationResult.failure(
-                    RankRansomBelowBoundsException(
-                        f"{method}: {RankRansomBelowBoundsException.DEFAULT_MESSAGE}"
+                    RankQuotaBelowBoundsException(
+                        f"{method}: {RankQuotaBelowBoundsException.DEFAULT_MESSAGE}"
                     )
-                )
-                
-            if ransom > RankSpec.QUEEN.ransom:
-                return ValidationResult.failure(
-                    RankRansomAboveBoundsException(
-                        f"{method}: {RankRansomAboveBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-
-                
-            if isinstance(rank, King) and ransom != RankSpec.KING.ransom:
-                return ValidationResult.failure(
-                    WrongKingRansomException(f"{method}: {WrongKingRansomException.DEFAULT_MESSAGE}")
-                )
-            if isinstance(rank, Queen) and ransom != RankSpec.QUEEN.ransom:
-                return ValidationResult.failure(
-                    WrongQueenRansomException(f"{method}: {WrongQueenRansomException.DEFAULT_MESSAGE}")
-                )
-            if isinstance(rank, Bishop) and ransom != RankSpec.BISHOP.ransom:
-                return ValidationResult.failure(
-                    WrongBishopRansomException(f"{method}: {WrongBishopRansomException.DEFAULT_MESSAGE}")
-                )
-            if isinstance(rank, Rook) and ransom != RankSpec.ROOK.rasnom:
-                return ValidationResult.failure(
-                    WrongRookRansomException(f"{method}: {WrongRookRansomException.DEFAULT_MESSAGE}")
-                )
-            if isinstance(rank, Knight) and ransom != RankSpec.KNIGHT.ransom:
-                return ValidationResult.failure(
-                    WrongKnightRansomException(f"{method}: {WrongKnightRansomException.DEFAULT_MESSAGE}")
-                )
-            if isinstance(rank, Pawn) and ransom != RankSpec.PAWN.ransom:
-                return ValidationResult.failure(
-                    WrongPawnRansomException(f"{method}: {WrongPawnRansomException.DEFAULT_MESSAGE}")
                 )
             
-            return ValidationResult.success((rank, ransom))
-        
+            if quota > RankSpec.PAWN.ransom:
+                return ValidationResult.failure(
+                    RankQuotaAboveBoundsException(
+                        f"{method}: {RankQuotaAboveBoundsException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            if isinstance(rank, King) and quota != RankSpec.KING.quota:
+                return ValidationResult.failure(
+                    WrongKingQuotaException(f"{method}: {WrongKingQuotaException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(rank, Queen) and quota != RankSpec.QUEEN.quota:
+                return ValidationResult.failure(
+                    WrongQueenQuotaException(f"{method}: {WrongQueenQuotaException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(rank, Bishop) and quota != RankSpec.BISHOP.quota:
+                return ValidationResult.failure(
+                    WrongBishopQuotaException(f"{method}: {WrongBishopQuotaException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(rank, Rook) and quota != RankSpec.ROOK.quota:
+                return ValidationResult.failure(
+                    WrongRookQuotaException(f"{method}: {WrongRookQuotaException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(rank, Knight) and quota != RankSpec.KNIGHT.quota:
+                return ValidationResult.failure(
+                    WrongKnightQuotaException(f"{method}: {WrongKnightQuotaException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(rank, Pawn) and quota != RankSpec.PAWN.quota:
+                return ValidationResult.failure(
+                    WrongPawnQuotaException(f"{method}: {WrongPawnQuotaException.DEFAULT_MESSAGE}")
+                )
+            
+            return ValidationResult.success(quota)
         except Exception as ex:
             return ValidationResult.failure(
-                RankRansomInconsistencyException(
-                    f"{method}: {RankRansomInconsistencyException.DEFAULT_MESSAGE}",
+                RankQuotaInconsistencyException(
+                    f"{method}: {RankQuotaInconsistencyException.DEFAULT_MESSAGE}",
                     ex
                 )
             )

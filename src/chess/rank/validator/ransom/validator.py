@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from typing import Any, cast, Tuple
-from chess.system import LoggingLevelRouter, ValidationResult
+from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.rank import (
     NullRankException, Rank, RankSpec, King, Queen, Bishop, Rook, Knight, Pawn, RankBoundsChecker,
     
@@ -30,7 +30,7 @@ from chess.rank import (
 )
 
 
-class VerifyRankLetterConsistency:
+class RankRansomValidator(Validator[Rank, int]):
     """
     # ROLE: Validator, Consistency Management
 
@@ -49,69 +49,73 @@ class VerifyRankLetterConsistency:
     """
     
     @classmethod
-    def verify_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[Rank, str]:
+    @LoggingLevelRouter.monitor
+    def validate(cls, rank: Rank, candidate: Any) -> ValidationResult[(Rank, int)]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_letter_consistency"
+        method = "RankRansomValidator.verify_consistency"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRankLetterException(
-                        f"{method}: {NullRankLetterException.DEFAULT_MESSAGE}"
+                    NullRankRansomException(
+                        f"{method}: {NullRankRansomException.DEFAULT_MESSAGE}"
                     )
                 )
-            
-            if not isinstance(candidate, str):
+                
+            if not isinstance(candidate, int):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected a str, got {type(candidate).__id__}"
+                        f"{method}: Expected an integer, got {type(candidate).__id__}"
                     )
                 )
-            
-            letter = cast(str, candidate)
-            
-            if letter.upper() not in ["K", "Q", "B", "R", "N", "P"]:
+                
+            ransom = cast(candidate, int)
+            if ransom < 0:
                 return ValidationResult.failure(
-                    RankLetterOutOfBoundsException(
-                        f"{method}: {RankLetterOutOfBoundsException.DEFAULT_MESSAGE}"
+                    RankRansomBelowBoundsException(
+                        f"{method}: {RankRansomBelowBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
-            
-            if isinstance(rank, King) and letter.upper() != RankSpec.KING.letter.upper():
+                
+            if ransom > RankSpec.QUEEN.ransom:
                 return ValidationResult.failure(
-                    WrongKingLetterException(f"{method}: {WrongKingLetterException.DEFAULT_MESSAGE}")
+                    RankRansomAboveBoundsException(
+                        f"{method}: {RankRansomAboveBoundsException.DEFAULT_MESSAGE}"
+                    )
+                )
+
+                
+            if isinstance(rank, King) and ransom != RankSpec.KING.ransom:
+                return ValidationResult.failure(
+                    WrongKingRansomException(f"{method}: {WrongKingRansomException.DEFAULT_MESSAGE}")
+                )
+            if isinstance(rank, Queen) and ransom != RankSpec.QUEEN.ransom:
+                return ValidationResult.failure(
+                    WrongQueenRansomException(f"{method}: {WrongQueenRansomException.DEFAULT_MESSAGE}")
+                )
+            if isinstance(rank, Bishop) and ransom != RankSpec.BISHOP.ransom:
+                return ValidationResult.failure(
+                    WrongBishopRansomException(f"{method}: {WrongBishopRansomException.DEFAULT_MESSAGE}")
+                )
+            if isinstance(rank, Rook) and ransom != RankSpec.ROOK.rasnom:
+                return ValidationResult.failure(
+                    WrongRookRansomException(f"{method}: {WrongRookRansomException.DEFAULT_MESSAGE}")
+                )
+            if isinstance(rank, Knight) and ransom != RankSpec.KNIGHT.ransom:
+                return ValidationResult.failure(
+                    WrongKnightRansomException(f"{method}: {WrongKnightRansomException.DEFAULT_MESSAGE}")
+                )
+            if isinstance(rank, Pawn) and ransom != RankSpec.PAWN.ransom:
+                return ValidationResult.failure(
+                    WrongPawnRansomException(f"{method}: {WrongPawnRansomException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Queen) and letter.upper() != RankSpec.QUEEN.letter.upper():
-                return ValidationResult.failure(
-                    WrongQueenLetterException(f"{method}: {WrongQueenLetterException.DEFAULT_MESSAGE}")
-                )
-            
-            if isinstance(rank, Bishop) and letter.upper() != RankSpec.BISHOP.letter.upper():
-                return ValidationResult.failure(
-                    WrongBishopLetterException(f"{method}: {WrongBishopLetterException.DEFAULT_MESSAGE}")
-                )
-            
-            if isinstance(rank, Rook) and letter.upper() != RankSpec.ROOK.letter.upper():
-                return ValidationResult.failure(
-                    WrongRookLetterException(f"{method}: {WrongRookLetterException.DEFAULT_MESSAGE}")
-                )
-            
-            if isinstance(rank, Knight) and letter.upper() != RankSpec.KNIGHT.letter.upper():
-                return ValidationResult.failure(
-                    WrongKnightLetterException(f"{method}: {WrongKnightLetterException.DEFAULT_MESSAGE}")
-                )
-            
-            if isinstance(rank, Pawn) and letter.upper() != RankSpec.PAWN.letter.upper():
-                return ValidationResult.failure(
-                    WrongPawnLetterException(f"{method}: {WrongPawnLetterException.DEFAULT_MESSAGE}")
-                )
-            
-            return ValidationResult.success(letter)
+            return ValidationResult.success((rank, ransom))
         
         except Exception as ex:
             return ValidationResult.failure(
-                RankLetterInconsistencyException(
-                    f"{method}: {RankLetterInconsisitencyException.DEFAULT_MESSAGE}"
+                RankRansomInconsistencyException(
+                    f"{method}: {RankRansomInconsistencyException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )

@@ -52,7 +52,7 @@ class RankFieldConsistencyCheck:
     @LoggingLevelRouter.monitor
     def rank_ransom_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[(Rank, int)]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_ransom_consistency"
+        method = "RankRansomValidator.rank_ransom_consistency"
         
         try:
             ransom_bounds_check = RankBoundsChecker.ransom_bounds_check(candidate)
@@ -94,7 +94,7 @@ class RankFieldConsistencyCheck:
     @LoggingLevelRouter.monitor
     def rank_quota_consistency(cls, candidate: Any) -> ValidationResult[int]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_quota_consistency"
+        method = "RankRansomValidator.rank_quota_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)
@@ -147,7 +147,7 @@ class RankFieldConsistencyCheck:
     @classmethod
     def rank_name_consistency(cls, candidate: Any) -> ValidationResult[str]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_name_consistency"
+        method = "RankRansomValidator.rank_name_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)
@@ -199,7 +199,7 @@ class RankFieldConsistencyCheck:
     @classmethod
     def rank_letter_consistency(cls, candidate: Any) -> ValidationResult[str]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_letter_consistency"
+        method = "RankRansomValidator.rank_letter_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)
@@ -252,7 +252,7 @@ class RankFieldConsistencyCheck:
     @LoggingLevelRouter.monitor
     def rank_id_consistency(cls, candidate: Any) -> ValidationResult[int]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_id_consistency"
+        method = "RankRansomValidator.rank_id_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)

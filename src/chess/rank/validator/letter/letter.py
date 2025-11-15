@@ -30,7 +30,7 @@ from chess.rank import (
 )
 
 
-class VerifyRankQuotaConsistency:
+class VerifyRankLetterConsistency:
     """
     # ROLE: Validator, Consistency Management
 
@@ -48,78 +48,70 @@ class VerifyRankQuotaConsistency:
         *   _occupant (Optional[Piece]): Piece object that might be occupying the Square.
     """
     
-    
     @classmethod
-    @LoggingLevelRouter.monitor
-    def verify_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[Rank, int]:
+    def verify_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[Rank, str]:
         """"""
-        method = "VerifyRankRansomConsistency.rank_quota_consistency"
+        method = "RankRansomValidator.rank_letter_consistency"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRankQuotaException(
-                        f"{method}: {NullRankQuotaException.DEFAULT_MESSAGE}"
+                    NullRankLetterException(
+                        f"{method}: {NullRankLetterException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if not isinstance(candidate, int):
+            if not isinstance(candidate, str):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected an integer, got {type(candidate).__id__}"
+                        f"{method}: Expected a str, got {type(candidate).__id__}"
                     )
                 )
             
-            quota = cast(candidate, int)
-            if quota < 1:
+            letter = cast(str, candidate)
+            
+            if letter.upper() not in ["K", "Q", "B", "R", "N", "P"]:
                 return ValidationResult.failure(
-                    RankQuotaBelowBoundsException(
-                        f"{method}: {RankQuotaBelowBoundsException.DEFAULT_MESSAGE}"
+                    RankLetterOutOfBoundsException(
+                        f"{method}: {RankLetterOutOfBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if quota > RankSpec.PAWN.ransom:
+            if isinstance(rank, King) and letter.upper() != RankSpec.KING.letter.upper():
                 return ValidationResult.failure(
-                    RankQuotaAboveBoundsException(
-                        f"{method}: {RankQuotaAboveBoundsException.DEFAULT_MESSAGE}"
-                    )
+                    WrongKingLetterException(f"{method}: {WrongKingLetterException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, King) and quota != RankSpec.KING.quota:
+            if isinstance(rank, Queen) and letter.upper() != RankSpec.QUEEN.letter.upper():
                 return ValidationResult.failure(
-                    WrongKingQuotaException(f"{method}: {WrongKingQuotaException.DEFAULT_MESSAGE}")
+                    WrongQueenLetterException(f"{method}: {WrongQueenLetterException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Queen) and quota != RankSpec.QUEEN.quota:
+            if isinstance(rank, Bishop) and letter.upper() != RankSpec.BISHOP.letter.upper():
                 return ValidationResult.failure(
-                    WrongQueenQuotaException(f"{method}: {WrongQueenQuotaException.DEFAULT_MESSAGE}")
+                    WrongBishopLetterException(f"{method}: {WrongBishopLetterException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Bishop) and quota != RankSpec.BISHOP.quota:
+            if isinstance(rank, Rook) and letter.upper() != RankSpec.ROOK.letter.upper():
                 return ValidationResult.failure(
-                    WrongBishopQuotaException(f"{method}: {WrongBishopQuotaException.DEFAULT_MESSAGE}")
+                    WrongRookLetterException(f"{method}: {WrongRookLetterException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Rook) and quota != RankSpec.ROOK.quota:
+            if isinstance(rank, Knight) and letter.upper() != RankSpec.KNIGHT.letter.upper():
                 return ValidationResult.failure(
-                    WrongRookQuotaException(f"{method}: {WrongRookQuotaException.DEFAULT_MESSAGE}")
+                    WrongKnightLetterException(f"{method}: {WrongKnightLetterException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Knight) and quota != RankSpec.KNIGHT.quota:
+            if isinstance(rank, Pawn) and letter.upper() != RankSpec.PAWN.letter.upper():
                 return ValidationResult.failure(
-                    WrongKnightQuotaException(f"{method}: {WrongKnightQuotaException.DEFAULT_MESSAGE}")
+                    WrongPawnLetterException(f"{method}: {WrongPawnLetterException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Pawn) and quota != RankSpec.PAWN.quota:
-                return ValidationResult.failure(
-                    WrongPawnQuotaException(f"{method}: {WrongPawnQuotaException.DEFAULT_MESSAGE}")
-                )
-            
-            return ValidationResult.success(quota)
+            return ValidationResult.success(letter)
+        
         except Exception as ex:
             return ValidationResult.failure(
-                RankQuotaInconsistencyException(
-                    f"{method}: {RankQuotaInconsistencyException.DEFAULT_MESSAGE}",
-                    ex
+                RankLetterInconsistencyException(
+                    f"{method}: {RankLetterInconsisitencyException.DEFAULT_MESSAGE}"
                 )
             )
