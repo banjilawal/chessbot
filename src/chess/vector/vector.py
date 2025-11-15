@@ -1,4 +1,4 @@
-# chess/vector/vector.py
+# src/chess/vector/vector.py
 
 """
 Module: chess.vector.vector

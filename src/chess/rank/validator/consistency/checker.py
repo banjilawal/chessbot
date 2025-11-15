@@ -12,8 +12,8 @@ from chess.system import LoggingLevelRouter, ValidationResult
 from chess.rank import (
     NullRankException, Rank, RankSpec, King, Queen, Bishop, Rook, Knight, Pawn, RankBoundsChecker,
     
-    WrongKingRansomException, WrongQueenRansomException, WrongRookRansomException, WrongBishopRansomException,
-    WrongKnightRansomException, WrongPawnRansomException,
+    KingRansomException, QueenRansomException, RookRansomException, BishopRansomException,
+    KnightRansomException, PawnRansomException,
     
     WrongKingQuotaException, WrongQueenQuotaException, WrongRookQuotaException, WrongBishopQuotaException,
     WrongKnightQuotaException, WrongPawnQuotaException,
@@ -63,27 +63,27 @@ class RankFieldConsistencyCheck:
             
             if isinstance(rank, King) and ransom != RankSpec.KING.ransom:
                 return ValidationResult.failure(
-                    WrongKingRansomException(f"{method}: {WrongKingRansomException.DEFAULT_MESSAGE}")
+                    KingRansomException(f"{method}: {KingRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Queen) and ransom != RankSpec.QUEEN.ransom:
                 return ValidationResult.failure(
-                    WrongQueenRansomException(f"{method}: {WrongQueenRansomException.DEFAULT_MESSAGE}")
+                    QueenRansomException(f"{method}: {QueenRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Bishop) and ransom != RankSpec.BISHOP.ransom:
                 return ValidationResult.failure(
-                    WrongBishopRansomException(f"{method}: {WrongBishopRansomException.DEFAULT_MESSAGE}")
+                    BishopRansomException(f"{method}: {BishopRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Rook) and ransom != RankSpec.ROOK.rasnom:
                 return ValidationResult.failure(
-                    WrongRookRansomException(f"{method}: {WrongRookRansomException.DEFAULT_MESSAGE}")
+                    RookRansomException(f"{method}: {RookRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Knight) and ransom != RankSpec.KNIGHT.ransom:
                 return ValidationResult.failure(
-                    WrongKnightRansomException(f"{method}: {WrongKnightRansomException.DEFAULT_MESSAGE}")
+                    KnightRansomException(f"{method}: {KnightRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Pawn) and ransom != RankSpec.PAWN.ransom:
                 return ValidationResult.failure(
-                    WrongPawnRansomException(f"{method}: {WrongPawnRansomException.DEFAULT_MESSAGE}")
+                    PawnRansomException(f"{method}: {PawnRansomException.DEFAULT_MESSAGE}")
                 )
             
             return ValidationResult.success(ransom)

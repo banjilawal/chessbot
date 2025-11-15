@@ -1,4 +1,5 @@
 # src/chess/vector/examples.py
+
 """
 Module: chess.vector.examples
 Author: Banji Lawal

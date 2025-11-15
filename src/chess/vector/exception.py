@@ -1,141 +1,103 @@
-# src/chess/vector/rollback_exception.py
+# src/chess/vector/exception.py
 
 """
-Module: chess.vector.rollback_exception
+Module: chess.vector.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
-
-SCOPE:
------
-This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Vector` objects.
-
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidator`
-
-THEME:
------
-* Granular, targeted error reporting
-* Wrapping exceptions
-
-**Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
-      state, outcome, or behavior.
-
-PURPOSE:
--------
-1. Centralized error dictionary for the `Vector` graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
-    find the source.
-3. Providing understandable, consistent information about failures originating from
-    the `Vector` graph.
-4. Providing a clear distinction between errors related to `Vector` instances and
-    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
-
-DEPENDENCIES:
-------------
-Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
-        `BuildFailedException`.
-
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
 """
 
 from chess.system import ChessException, NullException, ValidationException, BuildFailedException
 
 
 __all__ = [
-  'VectorException',
+  "VectorException",
 
-#====================== VECTOR VALIDATION EXCEPTIONS #======================#  
-  'NullVectorException',
-  'InvalidVectorException',
+#====================== NULL VECTOR EXCEPTIONS #======================#
+  "NullVectorException",
+  
+# ====================== VECTOR VALIDATION EXCEPTIONS #======================#
+  "InvalidVectorException",
 
 #====================== VECTOR BUILD EXCEPTIONS #======================#  
-  'VectorBuildFailedException',
+  "VectorBuildFailedException",
 
 #====================== NULL COMPONENT EXCEPTIONS #======================#  
-  'VectorAboveBoundsException',
-  'VectorBelowBoundsException',
+  "VectorAboveBoundsException",
+  "VectorBelowBoundsException",
 
 #====================== VECTOR BOUNDS EXCEPTIONS #======================#  
-  'NullXComponentException',
-  'NullYComponentException',
+  "NullXComponentException",
+  "NullYComponentException",
 ]
 
 class VectorException(ChessException):
   """
-  Super class of exceptions organic to `Vector` objects. DO NOT USE DIRECTLY. Subclasses give
-  details useful for debugging. `VectorException` exists primarily to allow catching all `Vector`
-  exceptions.
+  Super class of exceptions raised by Scalar objects. Do not use directly. Subclasses give
+  precise, fined-grained, debugging info.
   """
   ERROR_CODE = "VECTOR_ERROR"
-  DEFAULT_MESSAGE = "Vector raised an rollback_exception."
+  DEFAULT_MESSAGE = "Vector raised an exception."
 
 
-#======================# VECTOR VALIDATION EXCEPTIONS #======================#  
+
+# ====================== NULL VECTOR EXCEPTIONS #======================#
 class NullVectorException(VectorException, NullException):
-  """Raised if an entity, method, or operation requires team_name vector but gets null instead."""
+  """Raised if an entity, method, or operation requires Vector but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_ERROR"
-  DEFAULT_MESSAGE = "Vector cannot be null"
+  DEFAULT_MESSAGE = "Vector cannot be null."
 
 
+# ======================# VECTOR VALIDATION EXCEPTIONS #======================#
 class InvalidVectorException(VectorException, ValidationException):
-  """
-  Raised by VectorValidator if `Vector` fails sanity checks. Exists primarily to catch all
-  exceptions raised validating an existing `Vector`
-  """
+  """Catchall Exception for VectorValidator when a validation candidate fails a sanity check."""
   ERROR_CODE = "VECTOR_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Vector validation failed."
 
 
 #======================# VECTOR BUILD EXCEPTIONS #======================#  
 class VectorBuildFailedException(VectorException, BuildFailedException):
-  """
-  Raised when VectorBuilder crashed while building a new vector. Exists
-  primarily to catch all exceptions raised creating vectors.
-  """
+  """Catchall Exception for VectorBuilder when it encounters an error building a Vector."""
   ERROR_CODE = "VECTOR_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Vector build failed."
 
 
 #======================# NULL COMPONENT EXCEPTIONS #======================#  
 class NullXComponentException(VectorException, NullException):
-  """Raised if team_name vector's x dimension is null"""
+  """Raised if Vector's x dimension is null."""
   ERROR_CODE = "VECTOR_NULL_X_DIMENSION_ERROR"
-  DEFAULT_MESSAGE = "Vector's X-dimension cannot be null"
+  DEFAULT_MESSAGE = "Vector's X-dimension cannot be null."
 
 
 class NullYComponentException(VectorException, NullException):
-  """Raised if team_name vector's y dimension is null"""
+  """Raised if a Vector's y dimension is null."""
   ERROR_CODE = "VECTOR_NULL_Y_DIMENSION_ERROR"
-  DEFAULT_MESSAGE = "Vector's Y-dimension cannot be null"
+  DEFAULT_MESSAGE = "Vector's Y-dimension cannot be null."
 
 
 #======================# VECTOR BOUNDS EXCEPTIONS #======================#  
 class VectorAboveBoundsException(VectorException):
   """
-  Iterating across coordinates to examine squares chess pieces can explore their with team_name step no
-  larger than the knight's number of rows o squares covered in team_name move. If team_name vector's x value is
-  larger than KNIGHT SIZE raise this err
+  A Vector with a component whose magnitude > 7 will cause an ArrayIndexOutOfBounds error when the Vector is
+  added or subtracted from a Coord.
   """
   ERROR_CODE = "VECTOR_ABOVE_BOUNDS"
-  DEFAULT_MESSAGE = "Vector above bounds"
+  DEFAULT_MESSAGE = (
+    "Vector is above bounds. Arithmetic operations with a Coord will produce a "
+    "Coord whose row or column value is outside the Board's range."
+  )
 
 
 class VectorBelowBoundsException(VectorException):
   """
-  Iterating across coordinates to examine squares chess pieces can explore their with team_name step no
-  larger than the knight's number of rows o squares covered in team_name move. If team_name vector's x value is
-  larger than KNIGHT SIZE raise this err
+  A Vector with a component whose magnitude < -7 will cause an ArrayIndexOutOfBounds error when the Vector is
+  added or subtracted from a Coord.
   """
   ERROR_CODE = "VECTOR_BELOW_BOUNDS_EXCEPTION"
-  DEFAULT_MESSAGE = "Vector is below bounds"
+  DEFAULT_MESSAGE = (
+    "Vector is below bounds. Arithmetic operations with a Coord will produce a "
+    "Coord whose row or column value is outside the Board's range."
+  )
 
 
 

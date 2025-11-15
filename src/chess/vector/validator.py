@@ -1,4 +1,4 @@
-# chess/vector/validator.py
+# src/chess/vector/validator.py
 
 """
 Module: chess.vector.validator

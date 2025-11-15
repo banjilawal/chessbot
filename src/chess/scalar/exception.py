@@ -29,8 +29,8 @@ class ScalarException(ChessException):
   Super class of exceptions raised by Scalar objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
-  ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
-  DEFAULT_MESSAGE = "Scalar is below lower bound"
+  ERROR_CODE = "SCALAR_ERROR"
+  DEFAULT_MESSAGE = "Scalar raised an exception."
   
 
 #======================# NULL SCALAR EXCEPTIONS #======================#

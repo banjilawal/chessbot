@@ -12,8 +12,8 @@ from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.rank import (
     NullRankException, Rank, RankSpec, King, Queen, Bishop, Rook, Knight, Pawn, RankBoundsChecker,
     
-    WrongKingRansomException, WrongQueenRansomException, WrongRookRansomException, WrongBishopRansomException,
-    WrongKnightRansomException, WrongPawnRansomException,
+    KingRansomException, QueenRansomException, RookRansomException, BishopRansomException,
+    KnightRansomException, PawnRansomException,
     
     WrongKingQuotaException, WrongQueenQuotaException, WrongRookQuotaException, WrongBishopQuotaException,
     WrongKnightQuotaException, WrongPawnQuotaException,

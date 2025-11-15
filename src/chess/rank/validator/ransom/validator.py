@@ -1,32 +1,20 @@
-# src/chess/rank/validator/consistency/check.py
+# src/chess/rank/validator/ransom/validator.py
 
 """
-Module: chess.rank.validator.consistency.check
+Module: chess.rank.validator.ransom.validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
 """
 
 from typing import Any, cast, Tuple
+
+from chess.rank.validator.ransom.exception import InvalidRankRansomException, RankRansomException
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.rank import (
-    NullRankException, Rank, RankSpec, King, Queen, Bishop, Rook, Knight, Pawn, RankBoundsChecker,
-    
-    WrongKingRansomException, WrongQueenRansomException, WrongRookRansomException, WrongBishopRansomException,
-    WrongKnightRansomException, WrongPawnRansomException,
-    
-    WrongKingQuotaException, WrongQueenQuotaException, WrongRookQuotaException, WrongBishopQuotaException,
-    WrongKnightQuotaException, WrongPawnQuotaException,
-    
-    WrongKingNameException, WrongQueenNameException, WrongRookNameException, WrongBishopNameException,
-    WrongKnightNameException, WrongPawnNameException,
-    
-    WrongKingLetterException, WrongQueenLetterException, WrongRookLetterException, WrongBishopLetterException,
-    WrongKnightLetterException, WrongPawnLetterException,
-    
-    WrongKingIdException, WrongQueenIdException, WrongRookIdException, WrongBishopIdException, WrongKnightIdException,
-    WrongPawnIdException,
-    NullRankConsistencyTupleException
+    Rank, King, Queen, Bishop, Rook, Knight, Pawn, RankSpec, RankRansomException, NullRankRansomException,
+    RankRansomAboveBoundsException, RankRansomBelowBoundsException, KingRansomException, QueenRansomException,
+    RookRansomException, BishopRansomException, KnightRansomException, PawnRansomException,
 )
 
 
@@ -52,7 +40,7 @@ class RankRansomValidator(Validator[Rank, int]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any, rank: Rank) -> ValidationResult[Rank, int]:
         """"""
-        method = "RankRansomValidator.verify_consistency"
+        method = "RankRansomValidator.validate"
         
         try:
             if candidate is None:
@@ -65,7 +53,7 @@ class RankRansomValidator(Validator[Rank, int]):
             if not isinstance(candidate, int):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected an integer, got {type(candidate).__id__}"
+                        f"{method}: Expected an integer, got {type(candidate).__id__} instead."
                     )
                 )
                 
@@ -87,35 +75,35 @@ class RankRansomValidator(Validator[Rank, int]):
                 
             if isinstance(rank, King) and ransom != RankSpec.KING.ransom:
                 return ValidationResult.failure(
-                    WrongKingRansomException(f"{method}: {WrongKingRansomException.DEFAULT_MESSAGE}")
+                    KingRansomException(f"{method}: {KingRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Queen) and ransom != RankSpec.QUEEN.ransom:
                 return ValidationResult.failure(
-                    WrongQueenRansomException(f"{method}: {WrongQueenRansomException.DEFAULT_MESSAGE}")
+                    QueenRansomException(f"{method}: {QueenRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Bishop) and ransom != RankSpec.BISHOP.ransom:
                 return ValidationResult.failure(
-                    WrongBishopRansomException(f"{method}: {WrongBishopRansomException.DEFAULT_MESSAGE}")
+                    BishopRansomException(f"{method}: {BishopRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Rook) and ransom != RankSpec.ROOK.rasnom:
                 return ValidationResult.failure(
-                    WrongRookRansomException(f"{method}: {WrongRookRansomException.DEFAULT_MESSAGE}")
+                    RookRansomException(f"{method}: {RookRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Knight) and ransom != RankSpec.KNIGHT.ransom:
                 return ValidationResult.failure(
-                    WrongKnightRansomException(f"{method}: {WrongKnightRansomException.DEFAULT_MESSAGE}")
+                    KnightRansomException(f"{method}: {KnightRansomException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Pawn) and ransom != RankSpec.PAWN.ransom:
                 return ValidationResult.failure(
-                    WrongPawnRansomException(f"{method}: {WrongPawnRansomException.DEFAULT_MESSAGE}")
+                    PawnRansomException(f"{method}: {PawnRansomException.DEFAULT_MESSAGE}")
                 )
             
-            return ValidationResult.success((rank, ransom))
+            return ValidationResult.success(rank, ransom)
         
         except Exception as ex:
             return ValidationResult.failure(
-                RankRansomInconsistencyException(
-                    f"{method}: {RankRansomInconsistencyException.DEFAULT_MESSAGE}",
+                RankRansomException(
+                    f"{method}: {RankRansomException.DEFAULT_MESSAGE}",
                     ex
                 )
             )

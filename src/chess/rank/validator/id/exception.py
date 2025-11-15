@@ -57,12 +57,12 @@ __all__ = [
   "NullRankConsistencyTupleException",
 
 # ======================# RANK_RANSOM_INCONSISTENCY EXCEPTIONS #======================#
-  "WrongKingRansomException",
-  "WrongQueenRansomException",
-  "WrongBishopRansomException",
-  "WrongRookRansomException",
-  "WrongKnightRansomException",
-  "WrongPawnRansomException",
+  "KingRansomException",
+  "QueenRansomException",
+  "BishopRansomException",
+  "RookRansomException",
+  "KnightRansomException",
+  "PawnRansomException",
   
   # ======================# RANK_QUOTA_INCONSISTENCY EXCEPTIONS #======================#
   "WrongKingQuotaException",

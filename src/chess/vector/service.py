@@ -1,4 +1,4 @@
-# chess/vector/service.py
+# src/chess/vector/service.py
 
 """
 Module: chess.vector.service
