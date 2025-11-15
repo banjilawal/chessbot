@@ -7,36 +7,51 @@ Created: 2025-07-28
 version: 1.0.0
 """
 
-from chess.coord import Coord
+
 from chess.piece import Piece
+from chess.coord import Coord
+from chess.geometry import Quadrant
 from chess.rank import Rank, RankSpec
-from chess.system import COLUMN_SIZE
+from chess.system import COLUMN_SIZE, LoggingLevelRouter
+
+
+
 
 
 class Rook(Rank):
     
-    def __init__(self, spec: RankSpec = RankSpec.BISHOP):
-        super().__init__(
-            id=spec.id,
-            name=spec.name,
-            letter=spec.letter,
-            ransom=spec.ransom,
-            quadrants=spec.quadrants,
-            quota=spec.quota
+    def __init__(
+            self,
+            id: int = RankSpec.ROOK.id,
+            name: str = RankSpec.ROOK.name,
+            letter: str = RankSpec.ROOK.letter,
+            ransom: int = RankSpec.ROOK.ransom,
+            quota: int = RankSpec.ROOK.quota,
+            quadrants: list[Quadrant] = RankSpec.ROOK.quadrants
+    ):
+        super().__init(
+            id=id,
+            name=name,
+            letter=letter,
+            ransom=ransom,
+            quadrants=quadrants,
+            quota=quota
         )
     
     @classmethod
+    @LoggingLevelRouter.monitor
     def compute_span(cls, piece: Piece) -> [Coord]:
         origin = piece.current_position
         return [
-            cls._compute_scan_helper(0, origin.column, 1, origin.row, origin.row, 0),
-            cls._compute_scan_helper(origin.column, COLUMN_SIZE, 1, origin.row, origin.row, 0),
-            cls._compute_scan_helper(origin.column, origin.column, 0, 0, origin.row, 1),
-            cls._compute_scan_helper(origin.column, origin.column, 0, origin.row, COLUMN_SIZE, 1)
+            cls.slope_points(0, origin.column, 1, origin.row, origin.row, 0),
+            cls.slope_points(origin.column, COLUMN_SIZE, 1, origin.row, origin.row, 0),
+            cls.slope_points(origin.column, origin.column, 0, 0, origin.row, 1),
+            cls.slope_points(origin.column, origin.column, 0, origin.row, COLUMN_SIZE, 1)
         ]
     
     @classmethod
-    def _compute_scan_helper(
+    @LoggingLevelRouter.monitor
+    def slope_points(
             cls,
             start_x: int,
             end_x: int,

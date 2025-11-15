@@ -1,4 +1,4 @@
-# chess/scalar/validator.py
+# src/chess/scalar/validator.py
 
 """
 Module: chess.scalar.validator

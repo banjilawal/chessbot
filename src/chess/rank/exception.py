@@ -33,7 +33,7 @@ class RankException(ChessException):
 # ======================# SQUARE BUILD EXCEPTIONS #======================# 
 class RankBuildFailedException(RankException, BuildFailedException):
   """
-  Raised when RankBuilder encounters an error building a `Rank`. Exists primarily
+  Raised when RankFactory encounters an error building a `Rank`. Exists primarily
   to catch all exceptions raised creating new `Rank`.
   """
   ERROR_CODE = "RANK_BUILD_FAILED_ERROR"

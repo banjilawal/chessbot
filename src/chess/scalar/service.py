@@ -1,4 +1,4 @@
-# chess/scalar/service.py
+# src/chess/scalar/service.py
 
 """
 Module: chess.scalar.service

@@ -1,4 +1,4 @@
-# chess/scalar/scalar.py
+# src/chess/scalar/scalar.py
 
 
 """

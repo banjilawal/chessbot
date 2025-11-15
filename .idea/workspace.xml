@@ -5,9 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/quota/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/quota/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/ransom/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/ransom/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/search/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/search/comtext.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/search/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/chess_piece_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/chess_piece_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/bishop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/bishop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/knight.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/knight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/pawn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/rook.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/spec.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/spec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/scalar.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/scalar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +274,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/rank/validator/consistency/letter",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/rank",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -283,18 +301,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/rank" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/letter" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/name" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/quota" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/ransom" />
-      <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/rank/search" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/id" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/ransom" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/quota" />
-      <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/name" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exception (2)">
@@ -624,7 +642,7 @@
       <workItem from="1762885805665" duration="84766000" />
       <workItem from="1763030945266" duration="5954000" />
       <workItem from="1763048725703" duration="30784000" />
-      <workItem from="1763123420919" duration="71496000" />
+      <workItem from="1763123420919" duration="79921000" />
     </task>
     <servers />
   </component>

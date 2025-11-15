@@ -12,6 +12,7 @@ from abc import ABC, abstractmethod
 from chess.coord import Coord
 from chess.piece import Piece
 from chess.geometry import Quadrant
+from chess.system import LoggingLevelRouter
 
 
 class Rank(ABC):
@@ -83,3 +84,11 @@ class Rank(ABC):
             f"per_side:{self._quota}"
             "}"
         )
+
+
+    @classmethod
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def compute_span(cls, piece: Piece, *args, **kwargs) -> [Coord]:
+        """"""
+        pass

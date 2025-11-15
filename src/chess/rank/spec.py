@@ -3,7 +3,7 @@
 """
 Module: chess.rank.spec
 Author: Banji Lawal
-Created: 2025-09-08
+Created: 2025-07-26
 version: 1.0.0
 """
 

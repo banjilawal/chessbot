@@ -7,26 +7,39 @@ Created: 2025-07-25
 version: 1.0.0
 """
 
-from chess.coord import Coord
+
 from chess.piece import Piece
-from chess.rank import Rank, RankSpec
+from chess.coord import Coord
+from chess.system import LoggingLevelRouter
 from chess.vector import Vector
+from chess.geometry import Quadrant
+from chess.rank import Rank, RankSpec
+
 
 
 class Knight(Rank):
     """"""
     
-    def __init__(self, spec: RankSpec = RankSpec.KNIGHT):
-        super().__init__(
-            id=spec.id,
-            name=spec.name,
-            letter=spec.letter,
-            ransom=spec.ransom,
-            quadrants=spec.quadrants,
-            quota=spec.quota
+    def __init__(
+            self,
+            id: int = RankSpec.KNIGHT.id,
+            name: str = RankSpec.KNIGHT.name,
+            letter: str = RankSpec.KNIGHT.letter,
+            ransom: int = RankSpec.KNIGHT.ransom,
+            quota: int = RankSpec.KNIGHT.quota,
+            quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants
+    ):
+        super().__init(
+            id=id,
+            name=name,
+            letter=letter,
+            ransom=ransom,
+            quadrants=quadrants,
+            quota=quota
         )
     
     @classmethod
+    @LoggingLevelRouter.monitor
     def compute_span(cls, piece: Piece) -> [Coord]:
         """"""
         origin = piece.current_position

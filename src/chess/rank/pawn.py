@@ -9,19 +9,30 @@ version: 1.0.0
 
 from chess.coord import Coord
 from chess.pawn import PawnPiece
-from chess.rank import  Rank, RankSpec
+from chess.geometry import Quadrant
+from chess.rank import Rank, RankSpec
+from chess.system import LoggingLevelRouter
+
 
 class Pawn(Rank):
   """"""
-
-  def __init__(self, spec: RankSpec=RankSpec.PAWN):
-    super().__init__(
-      id=spec.id,
-      name=spec.name,
-      letter=spec.letter,
-      ransom=spec.ransom,
-      quadrants=spec.quadrants,
-      quota=spec.quota
+  
+  def __init__(
+          self,
+          id: int = RankSpec.PAWN.id,
+          name: str = RankSpec.PAWN.name,
+          letter: str = RankSpec.PAWN.letter,
+          ransom: int = RankSpec.PAWN.ransom,
+          quota: int = RankSpec.PAWN.quota,
+          quadrants: list[Quadrant] = RankSpec.PAWN.quadrants
+  ):
+    super().__init(
+      id=id,
+      name=name,
+      letter=letter,
+      ransom=ransom,
+      quadrants=quadrants,
+      quota=quota
     )
     
   @classmethod
@@ -33,6 +44,7 @@ class Pawn(Rank):
     return cls._developed_span(origin)
   
   @classmethod
+  @LoggingLevelRouter.monitor
   def _developed_span(cls, origin: Coord) -> [Coord]:
     """"""
     return [
@@ -43,6 +55,7 @@ class Pawn(Rank):
   
   
   @classmethod
+  @LoggingLevelRouter
   def _opening_span(cls, origin: Coord) -> [Coord]:
     """"""
     return [
