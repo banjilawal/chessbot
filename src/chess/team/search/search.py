@@ -55,7 +55,7 @@ From `chess.owner`:
 from typing import List
 
 from chess.team import Team, TeamValidator
-from chess.piece.model.piece import Piece
+from chess.piece.piece import Piece
 from chess.commander.search import SearchResult
 from chess.system import SearchContext
 from chess.team.search import TeamHostageSearch, TeamRosterSearch, PieceCollection

@@ -17,7 +17,7 @@ from chess.rank.knight import Knight
 from chess.rank.king import King
 from chess.pawn import Pawn
 from chess.rank.queen import Queen
-from chess.piece.model.piece import Piece
+from chess.piece.piece import Piece
 
 if TYPE_CHECKING:
   from chess.board.board import Board

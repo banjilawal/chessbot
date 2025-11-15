@@ -1,7 +1,7 @@
-# src/chess/bounds/bishop.py
+# src/chess/rank/bishop.py
 
 """
-Module: chess.bounds.bishop
+Module: chess.rank.bishop
 Author: Banji Lawal
 Created: 2025-07-24
 version: 1.0.0

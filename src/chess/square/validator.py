@@ -3,105 +3,66 @@
 """
 Module: chess.square.validator
 Author: Banji Lawal
-Created: 2025-09-28
-Updated: 2025-10-10
-
-# SECTION 1 - Purpose:
-This module provides a satisfaction of the ChessBot integrity requirement.
-
-# SECTION 2 - Scope:
-The module covers minimum verification requirements of Square objects
-
-# SECTION 3 - Limitations:
-  1. This module cannot only be used on existing Square instances. Use SquareBuilder for construction.
-  2. A Square positively verified by the module may fail stricter requirements other components may have.
-
-# SECTION 4 - Design Considerations and Themes:
-  1. A Square must undergo sanity checking before use.
-  2. As a fundamental, ubiquitous item consolidating all Square sanity checking into one place avoids repetition
-      and inconsistent implementations.
-  3. Moving all the verification code into one place creates a highly cohesive component.
-  4. The component is loosely coupled to other entities even squares and can be used anywhere.
-  5. This module cuts down code, increases understanding an simplicity.
-
-# SECTION 5 - Features Supporting Requirements:
-1. Testability: Unit testing the module is easy.
-2. Maintainable: The component is easy to maintain.
-
-# SECTION G - Feature Delivery Mechanism:
-The order of sanity checks produces early failures. to the most granular
-
-# SECTION 7 - Dependencies:
-* From chess.system:
-    Validator, ValidationResult, NameValidator, LoggingLevelRouter
-
-* From chess.square:
-    Square, InvalidSquareException
-
-* From chess.point:
-    Coord, CoordValidator
-
-* From Python abc Library:
-    ABC, abstractmethod
-
-* From Python typing Library:
-    Generic, TypeVar
-
-# SECTION 8 - Contains:
-1. SquareValidator
+Created: 2025-09-11
 """
 
 from typing import Any, cast
 
-from chess.coord import CoordValidator
+from chess.coord import CoordService, CoordValidator
 from chess.piece import Piece, PieceValidator
 from chess.square import (
-    PieceInconsistentSquareOccupationException, Square, InvalidSquareException,
+    InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square, InvalidSquareException,
     NullSquareException, SquareAndPieceMismatchedCoordException
 )
-from chess.system import Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
+from chess.system import IdentityService, Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
 
 
 class SquareValidator(Validator[Square]):
     """
-    # ROLE: Validation
-  
+    # ROLE: Validation, Verify Data Integrity
+
     # RESPONSIBILITIES:
-    1. Run sanity checks on a candidate to make sure its a valid Square before use.
-    2. Pass results of validator process to client.
-  
+    1.  Verifies a candidate is an instance of Square, that meets integrity requirements, before
+        the candidate is used.
+    2.  Verify an actionable Piece is bound to a Square before the Piece object is used.
+
     # PROVIDES:
-    ValidationResult[Square] containing either a verified Square or an Exception.
-  
+    ValidationResult[Coord] containing either:
+        - On success: Coord in payload.
+        - On failure: Exception.
+
     # ATTRIBUTES:
-    No attributes.
+    None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            id_validator: type[IdValidator]=IdValidator,
-            name_validator: type[NameValidator]=NameValidator,
-            coord_validator: type[CoordValidator]=CoordValidator,
+            coord_service: type[CoordService]=CoordService,
+            identity_service: type[IdentityService]=IdentityService,
     ) -> ValidationResult[Square]:
         """
-        # Action:
-        Ensures the candidate is a Square that meets the minimum requirements for use in the system.
-    
-        # Parameters:
-          * candidate (Any): Object to verify is a Square.
-          * id_validator (type[IdValidator]): Verifies the Square.id property
-          * name_validator (type[NameValidator]): Verifies the Square.name property
-          * coord_validator (type[CoordValidator]): Verifies the Square.coord property
-    
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is a Square.
+        3.  Run id and name integrity checks with identity_service
+        4.  Run coord integrity checks with coord_service.
+        5  If any check fails, return the exception inside a ValidationResult.
+        3.  When all checks pass cast candidate to a Square instance, then return inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any): Object to validate.
+            *   coord_service (type[CoordService])=CoordService
+            *   identity_service: type[IdentityService]=IdentityService
+        coord_service and identity_service have default values.
+
         # Returns:
-          ValidationResult[Square] containing either:
-                - On success: Square in payload.
-                - On failure: Exception.
-    
-        # Raises:
+        ValidationResult[Coord] containing either:
+            - On success: Coord in payload.
+            - On failure: Exception.
+
+        # RAISES:
             * TypeError
             * NullSquareException
             * InvalidSquareException
@@ -121,23 +82,25 @@ class SquareValidator(Validator[Square]):
             
             square = cast(Square, candidate)
             
-            id_verification = id_validator.validate(square.id)
-            if id_verification.is_failure():
-                return ValidationResult.failure(id_verification.exception)
+            identity_validation = identity_service.validate_identity(
+                id_candidate=square.id,
+                name_candidate=square.name
+            )
+            if identity_validation.is_failure():
+                return ValidationResult.failure(identity_validation.exception)
             
-            name_verification = name_validator.validate(square.name)
-            if name_verification.is_failure:
-                return ValidationResult.failure(name_verification.exception)
-            
-            coord_verification = coord_validator.validate(square.coord)
-            if not coord_verification.is_success():
-                return ValidationResult.failure(coord_verification.exception)
+            coord_validation = coord_service.validate_as_coord(square.coord)
+            if coord_validation.is_failure():
+                return ValidationResult.failure(coord_validation.exception)
             
             return ValidationResult.success(payload=square)
         
-        except Exception as e:
+        except Exception as ex:
             return ValidationResult.failure(
-                InvalidSquareException(f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}", e)
+                InvalidSquareException(
+                    f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}",
+                    ex
+                )
             )
         
         
@@ -157,7 +120,7 @@ class SquareValidator(Validator[Square]):
         # Parameters:
             * square_candidate (Any): The object to verify is a Square instance.
             * piece_candidate (Any): The object to verify is an active Piece instance.
-            * piece_validator (PieceValidator): Validates the piece_candidate.
+            * piece_service (type[PieceValidator])=PieceService
 
         # Returns:
           ValidationResult[(Square, Piece)] containing either:
@@ -168,7 +131,31 @@ class SquareValidator(Validator[Square]):
             * SquareAndPieceMismatchedCoordException
             * PieceInconsistentSquareOccupationException
         """
-        method = "SquareValidator.verify_piece_relates_to_square"
+        """
+        # ACTION:
+        1.  SquareValidator.validate runs integrity checks on square_candidate.
+        2.  piece_service verifies piece_candidate is an active piece on the board.
+        3.  After casting the candidates into square and piece test square.coord == piece.current_position.
+        4.  Test square.occupant == piece.
+        5   If any check fails, return the exception inside a ValidationResult.
+        6.  When all pass tuple(square, piece) to sender in a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate_square (Any): Object to validate as a Square.
+            *   candidate_piece (Any): object to validate as an active Piece
+            *   piece_service (ype[PieceService])
+
+        # Returns:
+        ValidationResult[(Square, Piece)] containing either:
+            - On success: tuple(Square, Piece) in payload.
+            - On failure: Exception.
+
+        # RAISES:
+            * TypeError
+            * NullSquareException
+            * InvalidSquareException
+        """
+        method = "SquareValidator.validate_piece_square_binding"
         
         try:
             square_verification = cls.validate(square_candidate)
@@ -202,6 +189,6 @@ class SquareValidator(Validator[Square]):
         except Exception as e:
             return ValidationResult.failure(
                 InvalidPieceSquareRelationException(
-                    f"{method}: {InvalidPieceSquareRealtionException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidPieceSquareRelationException.DEFAULT_MESSAGE}", e
                 )
             )

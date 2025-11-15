@@ -213,3 +213,25 @@ CONTAINS:
 See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
+"""
+Module: owner
+Author: Banji Lawal
+Created: 2025-09-28
+Purpose:
+  Defines the Piece class hierarchy for the chess engine, including abstract and
+  concrete pieces such as KingPiece and CombatantPiece. Pieces track identity, team_name
+  membership, bounds, and board_validator position, and manage interactions with other pieces.
+
+Contents:
+  - Piece: Abstract base class representing team_name chess owner with position and bounds.
+  - KingPiece: Concrete subclass representing team_name occupation owner.
+  - CombatantPiece: Concrete subclass representing team_name owner capable of capturing others.
+  - CoordStack, Checker, Discoveries: Supporting classes for tracking owner positions
+   and discoveries.
+  - Validators and exceptions related to owner creation and validate.
+
+Notes:
+  This module is part of the chess.owner package. Validation exceptions are defined
+  in PieceValidator and related error classes. Piece objects are designed to be
+  immutable in their core properties.
+"""

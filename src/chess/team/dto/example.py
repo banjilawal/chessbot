@@ -78,6 +78,6 @@ RAISES:
 `TeamBuildFailedException`: Wraps any specification violations including:
     * `NullXComponentException`: if `x` is None
     * `NullYComponentException`: if `y` is None
-    * `TeamBelowBoundsException`: if `x` or `y` < -KNIGHT_STEP_SIZE
-    * `TeamAboveBoundsException`: if `x` or `y` > KNIGHT_STEP_SIZE
+    * `TeamBelowBoundsException`: if `x` or `y` < -LONGEST_KNIGHT_LEG_SIZE
+    * `TeamAboveBoundsException`: if `x` or `y` > LONGEST_KNIGHT_LEG_SIZE
 """

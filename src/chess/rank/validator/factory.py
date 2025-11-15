@@ -23,7 +23,11 @@ class RankValidatorFactory(Validator[Rank]):
         method = "RankValidatorFactory.validate"
         try:
             if candidate is None:
-                return ValidationResult.failure(NullRankException(f"{method} {NullRankException.DEFAULT_MESSAGE}"))
+                return ValidationResult.failure(
+                    NullRankException(
+                        f"{method} {NullRankException.DEFAULT_MESSAGE}"
+                    )
+                )
  
             if isinstance(candidate, King):
                 return RankValidatorFactory.validate_king(cast(King, candidate))

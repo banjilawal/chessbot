@@ -7,124 +7,140 @@ Created: 2025-09-03
 version: 1.0.0
 """
 
-from typing import cast
+from typing import Any, cast
 
-from chess.system import Builder, BuildResult, KNIGHT_STEP_SIZE, LoggingLevelRouter
+from chess.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
 from chess.vector import (
     Vector, VectorBuildFailedException, NullXComponentException, NullYComponentException,
     VectorBelowBoundsException, VectorAboveBoundsException
 )
 
+
 class VectorBuilder(Builder[Vector]):
     """
-    # ROLE: Builder
+    # ROLE: Builder, Guarantee Data Integrity
 
     # RESPONSIBILITIES:
-    1. Process and validate parameters for creating Vector instances.
-    2. Create new Vector objects if parameters meet specifications.
-    2. Report errors and return BuildResult with error details.
+    Produce Coord instances whose integrity is always guaranteed. If any attributes do not pass their integrity checks,
+    send an exception instead.
 
     # PROVIDES:
-      BuildResult[Vector] containing either:
-            - On success: Vector in payload.
-            - On failure: Exception.
+    BuildResult[Vector] containing either:
+        - On success: Vector in payload.
+        - On failure: Exception.
 
     # ATTRIBUTES:
     None
     """
-
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def build(cls, x: int, y: int) -> BuildResult[Vector]:
         """
         ACTION:
-        Create a Vector object if the parameters are not null and their values are within
-        the systems bounds.
+        1.  Check x is:
+            *   an INT
+            *   between -LONGEST_KNIGHT_LEG_SIZE and LONGEST_KNIGHT_LEG_SIZE inclusive.
+        2.  Check y is:
+            *   an INT
+            *   between -LONGEST_KNIGHT_LEG_SIZE and LONGEST_KNIGHT_LEG_SIZE inclusive.
+        3.  If any check fails, return the exception inside a BuildResult.
+        2.  When all checks create a new Vector and return in a BuildResult
 
         PARAMETERS:
-            * x (int): value in the x-plane
-            * y (int): value in the y-plane
+            *   x (int): value in the x-plane
+            *   y (int): value in the y-plane
 
         # Returns:
-        BuildResult[Scalar] containing either:
-            - On success: Scalar in payload.
+        BuildResult[Vector] containing either:
+            - On success: T in payload.
             - On failure: Exception.
 
         RAISES:
-            * NullXComponentException
-            * NullYComponentException
-            * VectorBelowBoundsException
-            * VectorAboveBoundsException
+            *   VectorBuildFailedException
         """
         method = "VectorBuilder.build"
-
+        
         try:
-            build_x_result = cls.process_x_component(x)
-            if build_x_result.is_failure():
-                return BuildResult.failure(build_x_result.exception)
+            x_component_validation = cls._validate_x_component(x)
+            if x_component_validation.is_failure():
+                return BuildResult.failure(x_component_validation.exception)
             
-            build_y_result = cls.process_y_component(y)
-            if build_y_result.is_failure():
-                return BuildResult.failure(build_y_result.exception)
+            y_component_validation = cls._validate_y_component(y)
+            if y_component_validation.is_failure():
+                return BuildResult.failure(y_component_validation.exception)
             
-            x = build_x_result.payload
-            y = build_y_result.payload
-
-            return BuildResult.success(
-                payload=Vector(x=build_x_result.payload, y=build_y_result.payload)
-            )
-
+            x = cast(int, x_component_validation.payload)
+            y = cast(int, y_component_validation.payload)
+            
+            return BuildResult.success(payload=Vector(x=x, y=y))
+        
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}", ex
+                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def process_x_component(cls, x_component: int) -> BuildResult[int]:
+    def _validate_x_component(cls, candidate: Any) -> BuildResult[int]:
         """
-        ACTION:
-        Build the x component of a Vector object.
-
-        PARAMETERS:
-            * x_component (int): The object to validate.
+        # ACTION:
+        1.  Test if candidate is:
+                *   not null
+                *   is an int
+                *   between -LONGEST_KNIGHT_LEG_SIZE and LONGEST_KNIGHT_LEG_SIZE] exclusive.
+        2.  If any check fails return its exception inside a BuildResult.
+        3.  Otherwise cast candidate to an INT and return to caller.
+    
+        # PARAMETERS:
+            *   candidate (Any): The object to validate.
 
         # Returns:
-          BuildResult[int] containing either:
-                - On success: int in payload.
-                - On failure: Exception.
+        BuildResult[int] containing either:
+            - On success: int in payload.
+            - On failure: Exception.
 
-        RAISES:
-            * TypeError
-            * NullXComponentException
-            * VectorBelowBoundsException
-            * VectorAboveBoundsException
-            * InvalidVectorException
+        # RAISES:
+            *   TypeError
+            *   NullXComponentException
+            *   VectorBelowBoundsException
+            *   VectorAboveBoundsException
+            *   InvalidVectorException
+            
+        # Notes
+        See chess.system.config.LONGEST_KNIGHT_LEG_SIZE for more details.
         """
-        method = "VectorValidator.process_x_component"
+        method = "VectorValidator._validate_x_component"
         
         try:
-            if x_component is None:
+            if candidate is None:
                 return BuildResult.failure(
-                    NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
+                    NullXComponentException(
+                        f"{method}: {NullXComponentException.DEFAULT_MESSAGE}"
+                    )
                 )
             
-            if not isinstance(x_component, int):
+            if not isinstance(candidate, int):
                 return BuildResult.failure(
-                    TypeError(f"{method}: Expected an int, got {type(x_component).__name__} instead.")
+                    TypeError(f"{method}: Expected an int, got {type(candidate).__name__} instead.")
                 )
-            x = cast(int, x_component)
+            x = cast(int, candidate)
             
-            if x < -KNIGHT_STEP_SIZE:
+            if x < -LONGEST_KNIGHT_LEG_SIZE:
                 return BuildResult.failure(
-                    VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                    VectorBelowBoundsException(
+                        f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
-            if x >= KNIGHT_STEP_SIZE:
+            if x >= LONGEST_KNIGHT_LEG_SIZE:
                 return BuildResult.failure(
-                    VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                    VectorAboveBoundsException(
+                        f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             return BuildResult.success(payload=x)
@@ -132,54 +148,71 @@ class VectorBuilder(Builder[Vector]):
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}", ex
+                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def process_y_component(cls, y_component: int) -> BuildResult[int]:
+    def _validate_y_component(cls, candidate: Any) -> BuildResult[int]:
         """
-        ACTION:
-        Build the y component of a Vector object.
+        # ACTION:
+        1.  Test if candidate is:
+                *   not null
+                *   is an int
+                *   between -LONGEST_KNIGHT_LEG_SIZE and LONGEST_KNIGHT_LEG_SIZE] exclusive.
+        2.  If any check fails return its exception inside a BuildResult.
+        3.  Otherwise, cast candidate to an INT and return to caller.
 
-        PARAMETERS:
-            * y_component (int):
+        # PARAMETERS:
+            *   candidate (Any): The object to validate.
 
         # Returns:
-          BuildResult[int] containing either:
-                - On success: int in payload.
-                - On failure: Exception.
+        BuildResult[int] containing either:
+            - On success: int in payload.
+            - On failure: Exception.
 
-        RAISES:
-            * TypeError
-            * NullYComponentException
-            * VectorBelowBoundsException
-            * VectorAboveBoundsException
-            * InvalidVectorException
+        # RAISES:
+            *   TypeError
+            *   NullYComponentException
+            *   VectorBelowBoundsException
+            *   VectorAboveBoundsException
+            *   InvalidVectorException
+
+        # Notes
+        See chess.system.config.LONGEST_KNIGHT_LEG_SIZE for more details.
         """
         method = "VectorValidator._validate_y_component"
         
         try:
-            if y_component is None:
+            if candidate is None:
                 return BuildResult.failure(
-                    NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
+                    NullYComponentException(
+                        f"{method}: {NullYComponentException.DEFAULT_MESSAGE}"
+                    )
                 )
             
-            if not isinstance(y_component, int):
+            if not isinstance(candidate, int):
                 return BuildResult.failure(
-                    TypeError(f"{method}: Expected an int, got {type(y_component).__name__} instead.")
+                    TypeError(
+                        f"{method}: Expected an int, got {type(candidate).__name__} instead."
+                    )
                 )
-            y = cast(int, y_component)
+            y = cast(int, candidate)
             
-            if y < -KNIGHT_STEP_SIZE:
+            if y < -LONGEST_KNIGHT_LEG_SIZE:
                 return BuildResult.failure(
-                    VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                    VectorBelowBoundsException(
+                        f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
-            if y >= KNIGHT_STEP_SIZE:
+            if y >= LONGEST_KNIGHT_LEG_SIZE:
                 return BuildResult.failure(
-                    VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                    VectorAboveBoundsException(
+                        f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             return BuildResult.success(payload=y)
@@ -187,6 +220,7 @@ class VectorBuilder(Builder[Vector]):
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}", ex
+                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )

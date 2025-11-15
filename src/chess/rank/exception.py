@@ -1,7 +1,7 @@
-# src/chess/rank_name/exception.py
+# src/chess/rank/exception.py
 
 """
-Module: chess.rank_name.exception
+Module: chess.rank.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

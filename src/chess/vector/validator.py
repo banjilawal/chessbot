@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import ValidationResult, Validator,  KNIGHT_STEP_SIZE, LoggingLevelRouter
+from chess.system import ValidationResult, Validator,  LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
 from chess.vector import (
   Vector, NullVectorException, NullXComponentException, NullYComponentException, VectorBelowBoundsException,
   VectorAboveBoundsException, InvalidVectorException
@@ -20,12 +20,13 @@ class VectorValidator(Validator[Vector]):
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    Prevents an object that does not meet the system's Vector specifications from being used.
+    Verifies a candidate is an instance of Vector, that meets integrity requirements, before 
+    the candidate is used.
 
     # PROVIDES:
-      ValidationResult[Vector] containing either:
-            - On success: Vector in payload.
-            - On failure: Exception.
+    ValidationResult[Vector] containing either:
+        - On success: Vector in payload.
+        - On failure: Exception.
 
     # ATTRIBUTES:
     No attributes
@@ -35,21 +36,30 @@ class VectorValidator(Validator[Vector]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[Vector]:
         """
-        ACTION:
-        Run checks to ensure the candidate is a Vector that meets safety requirements before its used.
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is a Vector.
+        3.  Check candidate.x is:
+                *   an INT
+                *   between -LONGEST_KNIGHT_LEG_SIZE and -LONGEST_KNIGHT_LEG_SIZE exclusive.
+        4.  Check candidate.y is:
+                *   an INT
+                *   between -LONGEST_KNIGHT_LEG_SIZE and -LONGEST_KNIGHT_LEG_SIZE exclusive.
+        4.  If any check fails, return the exception inside a ValidationResult.
+        3.  When all checks pass cast candidate to a Vector instance then return inside a ValidationResult.
 
-        PARAMETERS:
-            * candidate (Any): The object to vaildate.
+        # PARAMETERS:
+            *   candidate (Any): Object to validate.
 
         # Returns:
-          ValidationResult[Scalar] containing either:
-                - On success: Scalar in payload.
-                - On failure: Exception.
+        ValidationResult[Vector] containing either:
+            - On success: Vector in payload.
+            - On failure: Exception.
 
-        RAISES:
-            * TypeError
-            * NullVectorException
-            * InvalidVectorException
+        # RAISES:
+            *   TypeError
+            *   NullVectorException
+            *   InvalidVectorException
         """
         method = "VectorValidator.validate"
 
@@ -90,19 +100,19 @@ class VectorValidator(Validator[Vector]):
         Check if the x component is a number within the bounds of the vector.
 
         PARAMETERS:
-            * x_candidate (Any): The object to validate.
+            *   x_candidate (Any): The object to validate.
 
         # Returns:
-          ValidationResult[int] containing either:
-                - On success: int in payload.
-                - On failure: Exception.
+        ValidationResult[int] containing either:
+            - On success: int in payload.
+            - On failure: Exception.
 
         RAISES:
-            * TypeError
-            * NullXComponentException
-            * VectorBelowBoundsException
-            * VectorAboveBoundsException
-            * InvalidVectorException
+            *   TypeError
+            *   NullXComponentException
+            *   VectorBelowBoundsException
+            *   VectorAboveBoundsException
+            *   InvalidVectorException
         """
         method = "VectorValidator.validate_x_component"
         
@@ -118,12 +128,12 @@ class VectorValidator(Validator[Vector]):
                 )
             x = cast(int, x_candidate)
             
-            if x < -KNIGHT_STEP_SIZE:
+            if x < -LONGEST_KNIGHT_LEG_SIZE:
                 return ValidationResult.failure(
                     VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
                 )
             
-            if x >= KNIGHT_STEP_SIZE:
+            if x >= LONGEST_KNIGHT_LEG_SIZE:
                 return ValidationResult.failure(
                     VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
                 )
@@ -143,19 +153,19 @@ class VectorValidator(Validator[Vector]):
         Check if the y component is a number within the bounds of the vector.
 
         PARAMETERS:
-            * y_candidate (Any): The object to validate.
+            *   y_candidate (Any): The object to validate.
 
         # Returns:
-          ValidationResult[int] containing either:
-                - On success: int in payload.
-                - On failure: Exception.
+        ValidationResult[int] containing either:
+            - On success: int in payload.
+            - On failure: Exception.
 
         RAISES:
-            * TypeError
-            * NullYComponentException
-            * VectorBelowBoundsException
-            * VectorAboveBoundsException
-            * InvalidVectorException
+            *   TypeError
+            *   NullYComponentException
+            *   VectorBelowBoundsException
+            *   VectorAboveBoundsException
+            *   InvalidVectorException
         """
         method = "VectorValidator._validate_y_component"
         
@@ -171,12 +181,12 @@ class VectorValidator(Validator[Vector]):
                 )
             y = cast(int, y_candidate)
             
-            if y < -KNIGHT_STEP_SIZE:
+            if y < -LONGEST_KNIGHT_LEG_SIZE:
                 return ValidationResult.failure(
                     VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
                 )
             
-            if y >= KNIGHT_STEP_SIZE:
+            if y >= LONGEST_KNIGHT_LEG_SIZE:
                 return ValidationResult.failure(
                     VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
                 )

@@ -1,7 +1,7 @@
 import unittest
 
 
-from chess.system.name.validator import NameValidator
+from chess.system.identity.name import NameValidator
 from chess.exception import LongNameException, ShortNameException, BlankNameException
 
 

@@ -150,3 +150,227 @@ Attributes:
   _position (Coord): The coordinate of the square on the chessboard.
   _occupant (Optional[Piece]): The discover occupying the square, if any.
 """
+# src/chess/system/validate/squareBuilder.py
+
+"""
+Module: chess.system.validate.squareBuilder
+Author: Banji Lawal
+Created: 2025-09-28
+Updated: 2025-10-10
+
+# SECTION 1 - Purpose:
+This module provides a satisfaction of the `ChessBot` integrity requirement.
+
+# SECTION 2 - Scope:
+The module covers Building `Square` objects which do not introduce inconsistencies to the service.
+
+# SECTION 3 - Limitations:
+  1. The module does not provide any actionable code.
+  2. The module is limited to providing a framework for validating integrity of existing objects.
+  3. The module does not provide any enforceable polices on entities using the framework.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. separating entity responsibilities into from implementation details.
+  2. Loose coupling of modules while maintaining a unified, consistent interface for high cohesion among components
+    that have no direct relationship with each other.
+  3. A consistent interface and aids discoverability, understanding and simplicity.
+
+# SECTION 5 - Features Supporting Requirements:
+None
+
+# SECTION G - Feature Delivery Mechanism:
+None
+
+# SECTION 7 - Dependencies:
+From `chess.system`:
+    `BuildResult`, `Builder`, `LoggingLevelRouter`
+
+From `chess.point`:
+    `Coord`, `CoordValidator`
+
+From `chess.square`:
+  `Square`, `SquareBuildFailedException`
+
+# SECTION 8 - Contains:
+1. `SquareBuilder`
+"""
+"""
+Module: chess.square.square
+Author: Banji Lawal
+Created: 2025-07-26
+Updated: 2025-10-10
+
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the ChessBot integrity requirement.
+  2. A satisfaction of the ChessBot reliability requirement.
+
+# SECTION 2 - Scope:
+The module covers Square objects.
+
+# SECTION 3 - Limitations:
+  1. The module has no logic for assuring a Square will not introduce errors.
+  2. This module should not be used directly. For constructing a Square use SquareBuilder. Before using a
+     Square it must be verified by SquareValidator.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. A consistent interface aiding discoverability, understanding and simplicity.
+
+# SECTION 5- Features Supporting Requirements:
+No features provided.
+
+# 6 Feature Delivery Mechanism:
+No feature delivery mechanisms.
+
+# SECTION 7 - Dependencies:
+* From chess.system:
+    AutoId, LoggingLevelRouter
+
+* From Python typing Library:
+   Optional
+
+# SECTION 8- Contains:
+1. Square
+"""
+# src/chess/square/rollback_exception.py
+
+"""
+Module: chess.square.rollback_exception
+Author: Banji Lawal
+Created: 2025-09-08
+version: 1.0.0
+
+# SECTION 1 - Purpose:
+This module provides:
+  1. A satisfaction of the ChessBot integrity requirement.
+  2. A satisfaction of the ChessBot reliability requirement.
+
+# SECTION 2 - Scope:
+The module covers SquareValidator only.
+
+# SECTION 3: Limitations
+  1. Module ensures Square instances satisfy minimal requirements before use.
+
+# SECTION 4 - Design Considerations and Themes:
+The major theme influencing the modules design are
+  1. Single responsibility.
+  2. Discoverability.
+  3. Encapsulations.
+
+# SECTION 5- Features Supporting Requirements:
+  1. The ability to handle errors without crashing the application is a reliability feature.
+  2. Ensuring validator results are communicated are sent to clients is an integrity feature.
+
+# SECTION 6 - Feature Delivery Mechanism:
+  1. Verify existing entities meet minimum requirements for use in the system.
+  2. A description of an error condition, boundary violation, experienced or caused by an entity in
+      the validator graph.
+  3. The root of a scalable, modular hierarchy for validator related exceptions.
+
+# SECTION 7 - Dependencies:
+* From chess.system:
+    ChessException
+
+# SECTION 8 - Contains:
+  * ValidationException
+"""
+"""
+Module: chess.vector.rollback_exception
+Author: Banji Lawal
+Created: 2025-10-04
+version: 1.0.0
+
+SCOPE:
+-----
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
+creation, validator, and manipulation of Vector objects.
+
+**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+Vector, VectorBuilder, and VectorValidator
+
+THEME:
+-----
+* Granular, targeted error reporting
+* Wrapping exceptions
+
+**Design Concepts**:
+  1. Each consistency and behavior in the Vector class has an rollback_exception specific to its possible
+      state, outcome, or behavior.
+
+PURPOSE:
+-------
+1. Centralized error dictionary for the Vector graph.
+2. Fast debugging using highly granular rollback_exception messages and naming to
+    find the source.
+3. Providing understandable, consistent information about failures originating from
+    the Vector graph.
+4. Providing a clear distinction between errors related to Vector instances and
+    errors from Python, the Operating System or elsewhere in the ChessBot application.
+
+DEPENDENCIES:
+------------
+Requires base rollback_exception classes and constants from the core system:
+From chess.system:
+  * Exceptions: ChessException, ValidationException, NullException,
+        BuildFailedException.
+
+CONTAINS:
+--------
+See the list of exceptions in the __all__ list following (e.g., VectorException,
+NullVectorException, InvalidVectorException, ).
+"""
+# src/chess/square/validator.py
+
+"""
+Module: chess.square.validator
+Author: Banji Lawal
+Created: 2025-09-28
+Updated: 2025-10-10
+
+# SECTION 1 - Purpose:
+This module provides a satisfaction of the ChessBot integrity requirement.
+
+# SECTION 2 - Scope:
+The module covers minimum verification requirements of Square objects
+
+# SECTION 3 - Limitations:
+  1. This module cannot only be used on existing Square instances. Use SquareBuilder for construction.
+  2. A Square positively verified by the module may fail stricter requirements other components may have.
+
+# SECTION 4 - Design Considerations and Themes:
+  1. A Square must undergo sanity checking before use.
+  2. As a fundamental, ubiquitous item consolidating all Square sanity checking into one place avoids repetition
+      and inconsistent implementations.
+  3. Moving all the verification code into one place creates a highly cohesive component.
+  4. The component is loosely coupled to other entities even squares and can be used anywhere.
+  5. This module cuts down code, increases understanding an simplicity.
+
+# SECTION 5 - Features Supporting Requirements:
+1. Testability: Unit testing the module is easy.
+2. Maintainable: The component is easy to maintain.
+
+# SECTION G - Feature Delivery Mechanism:
+The order of sanity checks produces early failures. to the most granular
+
+# SECTION 7 - Dependencies:
+* From chess.system:
+    Validator, ValidationResult, NameValidator, LoggingLevelRouter
+
+* From chess.square:
+    Square, InvalidSquareException
+
+* From chess.point:
+    Coord, CoordValidator
+
+* From Python abc Library:
+    ABC, abstractmethod
+
+* From Python typing Library:
+    Generic, TypeVar
+
+# SECTION 8 - Contains:
+1. SquareValidator
+"""

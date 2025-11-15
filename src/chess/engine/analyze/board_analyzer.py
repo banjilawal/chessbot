@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.board.board import Board
-from chess.system.id.emitter import id_emitter
+from chess.system.identity.id import id_emitter
 from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.competitor.commander import CyberneticCommander
 from chess.engine.analyze.scout_report_analysis import ScoutReportAnalysis

@@ -1,4 +1,4 @@
-# chess/system/build/builder.py
+# src/chess/system/build/builder.py
 
 """
 Module: chess.system.build.builder
@@ -10,58 +10,46 @@ version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from chess.system import BuildResult
+from chess.system import BuildResult, LoggingLevelRouter
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 class Builder(ABC, Generic[T]):
   """
-  # ROLE: Message passing, Data Transfer Object
+  # ROLE: Builder, Guarantee Data Integrity
 
   # RESPONSIBILITIES:
-  1. Carry the outcome a validator operation to originating client.
-  2. Enforcing mutual exclusion. A ValidationResult can either carry _payload or _exception. Not both.
+  Produce T instances whose integrity is always guaranteed. If any parameters do not pass their integrity checks,
+  send an exception instead.
 
   # PROVIDES:
-  1. A correctness verification or denial for the Validation service provider.
-
+  BuildResult[T] containing either:
+      - On success: T in payload.
+      - On failure: Exception.
+      
   # ATTRIBUTES:
-    * See Result superclass for attributes.
+  None
   """
 
   @classmethod
   @abstractmethod
+  @LoggingLevelRouter.monitor
   def build(cls, *args, **kwargs) -> BuildResult[T]:
     """
     # ACTION:
-    Verify the candidate is a valid ID. The Application requires
-    1. Candidate is not null.
-    2. Is a positive integer.
+    1. Run integrity checks on each parameter required for constructing T.
+    2. If any check fails it raises an exception that is returned inside a BuildResult.
+    3. When all checks pass, construct T then return it inside a BuildResult.
 
     # PARAMETERS:
-        * candidate (int): the visitor_id.
+        * args: Parameters for constructing T.
 
-    # RETURNS:
-    ValidationResult[str]: A ValidationResult containing either:
-        'payload' (it) - A str meeting the ChessBot standard for IDs.
-        rollback_exception (Exception) - An rollback_exception detailing which naming rule was broken.
+    # Returns:
+    BuildResult[T] containing either:
+        - On success: T in payload.
+        - On failure: Exception.
 
     # RAISES:
-    InvalidIdException: Wraps any specification violations including:
-        * TypeError: if candidate is not an int
-        * IdNullException: if candidate is null
-        * NegativeIdException: if candidate is negative 
+      * BuildFailedException
     """
-    """
-    Action:
-    Parameters:
-        * param (DataType):
-    Returns:
-        DataType or Void
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    method = "ClassName.method_name"
-
     pass

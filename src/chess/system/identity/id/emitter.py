@@ -1,5 +1,15 @@
+# src/chess/system/identity/id/emitter.py
+
+"""
+Module: chess.system.identity.id.emitter
+Author: Banji Lawal
+Created: 2025-07-26
+version: 1.0.0
+"""
+
 __all__ = [
-  'id_emitter'
+  "IdEmitter",
+  "id_emitter"
 ]
 
 class IdEmitter:

@@ -9,9 +9,10 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import ValidationResult, NameValidator, IdValidator, LoggingLevelRouter
+from chess.system import IdentityService, ValidationResult, NameValidator, IdValidator, LoggingLevelRouter
 from chess.rank import (
-    RankSpec, NullRankLetterException, RankLetterOutOfBoundsException, RankNameOutOfBoundsException,
+    RankBoundsException, RankSpec, NullRankLetterException, RankLetterOutOfBoundsException,
+    RankNameOutOfBoundsException,
     NullRankRansomException, RankRansomBelowBoundsException, RankRansomAboveBoundsException,
     NullRankQuotaException, RankQuotaBelowBoundsException, RankQuotaAboveBoundsException,
     RankIdAboveBoundsException
@@ -20,38 +21,84 @@ from chess.rank import (
 
 
 class RankBoundsChecker:
-    """"""
+    """
+    # ROLE: Validation, Consistency Management, Data Integrity, Factory
+
+    # RESPONSIBILITIES:
+    1.  Provide factory methods to verify a value is within bounds detailed in RankSpec.
+
+    # PROVIDES:
+    ValidationResult[Coord] containing either:
+        - On success: Coord in payload.
+        - On failure: Exception.
+
+    # ATTRIBUTES:
+    None
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
     def letter_bounds_check(cls, candidate: Any) -> ValidationResult[str]:
-        """"""
+        """
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is a STR.
+        3.  Check if the candidate is in the set (k, Q, B, R, N, P).
+        4.  If any check fails return the exception inside a ValidationResult.
+        3.  When all checks pass cast candidate to a STR, then return inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any): object to verify is within letter bounds.
+
+        # Returns:
+        ValidationResult[str] containing either:
+            - On success: str in payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullRankLetterException
+            *   RankLetterOutOfBoundsException
+            *   RankBoundsException
+        """
         method = "RankBoundsChecker.letter_bounds_check"
         
         try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullRankLetterException(f"{method}: {NullRankLetterException.DEFAULT_MESSAGE}")
-                )
-            
-            if not isinstance(candidate, str):
-                return ValidationResult.failure(
-                    TypeError(f"{method}:  Expected a str, got {type(candidate).__id__}")
-                )
-            letter = cast(str, candidate)
-            
-            if letter.upper() not in ["K", "Q", "B", "R", "N", "P"]:
-                return ValidationResult.failure(
-                    RankLetterOutOfBoundsException(f"{method}: {RankLetterOutOfBoundsException.DEFAULT_MESSAGE}")
-                )
+
             return ValidationResult.success(letter)
-        except Exception as e:
-            return ValidationResult.failure(e)
+        except Exception as ex:
+            return ValidationResult.failure(
+                RankBoundsException(
+                    f"{method}: {RankBoundsException.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )
     
     @classmethod
     @LoggingLevelRouter.monitor
     def name_bounds_check(cls, candidate: Any) -> ValidationResult[str]:
-        """"""
+        """
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is a STR.
+        3.  Check if the candidate is in the set (king, Queen, Bishop, Rook, Knight, Pawn).
+        4.  If any check fails return the exception inside a ValidationResult.
+        3.  When all checks pass cast candidate to a STR, then return inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any): Object to verify is within naming bounds.
+
+        # Returns:
+        ValidationResult[str] containing either:
+            - On success: str in payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullRankLNameException
+            *   RankNameOutOfBoundsException
+            *   RankBoundsException
+        """
         method = "RankBoundsChecker.name_bounds_check"
         
         try:
@@ -63,94 +110,129 @@ class RankBoundsChecker:
             
             if name.upper() not in ["KING", "QUEEN", "BISHOP", "ROOK", "KNIGHT", "PAWN"]:
                 return ValidationResult.failure(
-                    RankNameOutOfBoundsException(f"{method}: {RankNameOutOfBoundsException.DEFAULT_MESSAGE}")
+                    RankNameOutOfBoundsException(
+                        f"{method}: {RankNameOutOfBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             return ValidationResult.success(name)
-        except Exception as e:
-            return ValidationResult.failure(e)
+        except Exception as ex:
+            return ValidationResult.failure(
+                RankBoundsException(
+                    f"{method}: {RankBoundsException.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )
     
     @classmethod
     @LoggingLevelRouter.monitor
     def ransom_bounds_check(cls, candidate: Any) -> ValidationResult[int]:
-        """"""
+        """
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is an INT.
+        3.  Check candidate is between 0 and Queen.ransom inclusive.
+        4.  If any check fails return the exception inside a ValidationResult.
+        3.  When all checks pass cast candidate to an INT, then return inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any): Object to validate is within ransom bounds
+
+        # Returns:
+        ValidationResult[int] containing either:
+            - On success: int in payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullRankRansomException
+            *   RankRansomBelowBoundsException
+            *   RankRansomAboveBoundsException
+            *   RankBoundsException
+        """
         method = "RankBoundsChecker.ransom_bounds_check"
         
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullRankRansomException(f"{method}: {NullRankRansomException.DEFAULT_MESSAGE}")
-                )
-            
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected an integer, got {type(candidate).__id__}")
-                )
-            
-            number = cast(candidate, int)
-            if number < 0:
-                return ValidationResult.failure(
-                    RankRansomBelowBoundsException(f"{method}: {RankRansomBelowBoundsException.DEFAULT_MESSAGE}")
-                )
-            
-            if number > RankSpec.QUEEN.ransom:
-                return ValidationResult.failure(
-                    RankRansomAboveBoundsException(f"{method}: {RankRansomAboveBoundsException.DEFAULT_MESSAGE}")
-                )
-            
-            return ValidationResult.success(number)
-        except Exception as e:
-            return ValidationResult.failure(e)
+
     
     @classmethod
     @LoggingLevelRouter.monitor
     def quota_bounds_check(cls, candidate: Any) -> ValidationResult[int]:
-        """"""
+        """
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is an INT.
+        3.  Check candidate is between 0 and Pawn.quota inclusive.
+        4.  If any check fails return the exception inside a ValidationResult.
+        3.  When all checks pass cast candidate to an INT, then return inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any): Object to validate is within ransom bounds
+
+        # Returns:
+        ValidationResult[int] containing either:
+            - On success: int in payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullRankQuotaException
+            *   RankQuotaBelowBoundsException
+            *   RankQuotaAboveBoundsException
+            *   RankBoundsException
+        """
         method = "RankBoundsChecker.quota_bounds_check"
         
         try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullRankQuotaException(f"{method}: {NullRankQuotaException.DEFAULT_MESSAGE}")
-                )
-            
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected an integer, got {type(candidate).__id__}")
-                )
-            
-            quota= cast(candidate, int)
-            if quota < 1:
-                return ValidationResult.failure(
-                    RankQuotaBelowBoundsException(f"{method}: {RankQuotaBelowBoundsException.DEFAULT_MESSAGE}")
-                )
-            
-            if quota > RankSpec.PAWN.ransom:
-                return ValidationResult.failure(
-                    RankQuotaAboveBoundsException(f"{method}: {RankQuotaAboveBoundsException.DEFAULT_MESSAGE}")
-                )
-            
+   
             return ValidationResult.success(quota)
-        except Exception as e:
-            return ValidationResult.failure(e)
+        except Exception as ex:
+            return ValidationResult.failure(
+                RankBoundsException(
+                    f"{method}: {RankBoundsException.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def id_bounds_check(cls, candidate: Any) -> ValidationResult[int]:
-        """"""
+    def id_bounds_check(
+            cls,
+            candidate: Any,
+            identity_service: type[IdentityService]=IdentityService
+    ) -> ValidationResult[int]:
+        """
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is an INT.
+        3.  Check candidate is between within the bounds of rank id.
+        4.  If any check fails return the exception inside a ValidationResult.
+        3.  When all checks pass cast candidate to an INT, then return inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any): Object to validate is within ransom bounds
+
+        # Returns:
+        ValidationResult[int] containing either:
+            - On success: int in payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullRankQuotaException
+            *   RankQuotaBelowBoundsException
+            *   RankQuotaAboveBoundsException
+            *   RankBoundsException
+        """
         method = "RankBoundsChecker.id_bounds_check"
         
         try:
-            id_validation = IdValidator.validate(candidate)
-            if id_validation.is_failure():
-                return ValidationResult.failure(id_validation.exception)
-            
-            id = cast(candidate, int)
-            if id > RankSpec.max_rank_id:
-                return ValidationResult.failure(
-                    RankIdAboveBoundsException(f"{method}: {RankIdAboveBoundsException.DEFAULT_MESSAGE}")
-                )
+
             
             return ValidationResult.success(id)
-        except Exception as e:
-            return ValidationResult.failure(e)
+        except Exception as ex:
+            return ValidationResult.failure(
+                RankBoundsException(
+                    f"{method}: {RankBoundsException.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )

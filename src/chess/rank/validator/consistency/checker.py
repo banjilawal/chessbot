@@ -1,7 +1,7 @@
-# src/chess/rank_name/validator/consistency/check.py
+# src/chess/rank/validator/consistency/check.py
 
 """
-Module: chess.rank_name.validator.consistency.check
+Module: chess.rank.validator.consistency.check
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -31,27 +31,35 @@ from chess.rank import (
 
 
 class RankFieldConsistencyCheck:
-    """"""
+    """
+    # ROLE: Validator, Consistency Management
+
+    # RESPONSIBILITIES:
+    1.  Tests
+    2.  Provides reference to a Piece.
+
+    # PROVIDES:
+    Square
+
+    # ATTRIBUTES:
+        *   _id (int): unique identifier
+        *   _name (str): letter-number combination. Only unique in the Board
+        *   _coord (Coord): row-column array indices in Board array.
+        *   _occupant (Optional[Piece]): Piece object that might be occupying the Square.
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def rank_ransom_consistency(cls, candidate: Any) -> ValidationResult[int]:
+    def rank_ransom_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[(Rank, int)]:
         """"""
-        method = "RankFieldConsistencyCheck.rank_ransom_consistency"
+        method = "VerifyRankRansomConsistency.rank_ransom_consistency"
         
         try:
-            tuple_validation = cls._basic_tuple_check(candidate)
-            if tuple_validation.failure():
-                return ValidationResult.failure(tuple_validation.exception)
-            
-            pair = cast(Tuple, candidate)
-            rank = cast(Rank, pair[0])
-            
-            ransom_bounds_check = RankBoundsChecker.ransom_bounds_check(pair[1])
+            ransom_bounds_check = RankBoundsChecker.ransom_bounds_check(candidate)
             if ransom_bounds_check.failure():
                 return ValidationResult.failure(ransom_bounds_check.exception)
             
-            ransom = cast(int, pair[1])
+            ransom = cast(int, candidate)
             
             if isinstance(rank, King) and ransom != RankSpec.KING.ransom:
                 return ValidationResult.failure(
@@ -86,7 +94,7 @@ class RankFieldConsistencyCheck:
     @LoggingLevelRouter.monitor
     def rank_quota_consistency(cls, candidate: Any) -> ValidationResult[int]:
         """"""
-        method = "RankFieldConsistencyCheck.rank_quota_consistency"
+        method = "VerifyRankRansomConsistency.rank_quota_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)
@@ -139,7 +147,7 @@ class RankFieldConsistencyCheck:
     @classmethod
     def rank_name_consistency(cls, candidate: Any) -> ValidationResult[str]:
         """"""
-        method = "RankFieldConsistencyCheck.rank_name_consistency"
+        method = "VerifyRankRansomConsistency.rank_name_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)
@@ -191,7 +199,7 @@ class RankFieldConsistencyCheck:
     @classmethod
     def rank_letter_consistency(cls, candidate: Any) -> ValidationResult[str]:
         """"""
-        method = "RankFieldConsistencyCheck.rank_letter_consistency"
+        method = "VerifyRankRansomConsistency.rank_letter_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)
@@ -244,7 +252,7 @@ class RankFieldConsistencyCheck:
     @LoggingLevelRouter.monitor
     def rank_id_consistency(cls, candidate: Any) -> ValidationResult[int]:
         """"""
-        method = "RankFieldConsistencyCheck.rank_id_consistency"
+        method = "VerifyRankRansomConsistency.rank_id_consistency"
         
         try:
             tuple_validation = cls._basic_tuple_check(candidate)

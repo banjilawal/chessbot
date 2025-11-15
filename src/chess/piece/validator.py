@@ -9,22 +9,16 @@ Version: 1.0.0
 
 from typing import Type, Any, cast
 
-from chess.domain import PieceWithNoStartingPlacementException
 from chess.king import KingPiece
-from chess.pawn import ActorPlacementRequiredException
-from chess.piece.model.exception import CapturedPieceException, CheckmatedKingException, InvalidPieceException
+from chess.piece.exception import CapturedPieceException, CheckmatedKingException, InvalidPieceException
 from chess.team import Team, RosterNumberOutOfBoundsException
-from chess.rank import Bishop, King, Knight, Pawn, Queen, RankValidatorFactory, Rook, knight
+from chess.rank import Bishop, King, Knight, Pawn, Queen, RankValidatorFactory, Rook
 from chess.system import IdValidator, NameValidator, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
-    CombatantPiece, NullAttackException, NullPieceException, Piece, AttackMissingCoordStackException,
-    AttackMissingDiscoveryListException,
-    AttackRankOutOfBoundsException, AttackRosterNumberIsNullException, AttackTeamFieldIsNullException,
-    PieceNullCoordStackException, PieceRequiresInitialPlacementException, PieceRosterNumberIsNullException,
+    CombatantPiece, NullPieceException, Piece, PieceNullCoordStackException, PieceRequiresInitialPlacementException, PieceRosterNumberIsNullException,
     PieceTeamFieldIsNullException,
     UnregisteredTeamMemberException
 )
-from chess.travel.attack.exception import CapturePieceException
 
 
 class PieceValidator(Validator[Piece]):

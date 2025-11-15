@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.square import Square
-from chess.system.id.emitter import id_emitter
+from chess.system.identity.id import id_emitter
 from chess.coord import Coord
 from chess.piece.discover import Discovery
 

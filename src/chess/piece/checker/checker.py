@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from chess.coord import Coord
 
 if TYPE_CHECKING:
-  from chess.piece.model.piece import Piece
+  from chess.piece.piece import Piece
 
 class Checker:
   """

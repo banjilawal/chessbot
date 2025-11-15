@@ -34,7 +34,7 @@ Created: 2025-10-08
 # DEPENDENCIES:
 ---------------
 From chess.system:
-  * ValidationResult, Validator, KNIGHT_STEP_SIZE, LoggingLevelRouter
+  * ValidationResult, Validator, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
 
 From chess.vector:
     Vector, NullVectorException, InvalidVectorException, NullXComponentException,
@@ -78,7 +78,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From chess.system:
-    BuildResult, Builder, KNIGHT_STEP_SIZE, LoggingLevelRouter, ChessException, NullException
+    BuildResult, Builder, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, ChessException, NullException
     BuildFailedException
 
 From chess.vector:
@@ -127,7 +127,7 @@ Created: 2025-10-08
 From chess.system:
   * LoggingLevelRouter
 From chess.point:
-  * Coord, CoordValidator, KNIGHT_STEP_SIZE, LoggingLevelRouter
+  * Coord, CoordValidator, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
 
 From chess.scalar:
   * Scalar, ScalarValidator

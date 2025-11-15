@@ -1,10 +1,9 @@
-# src/chess/system/visitor_id/__init__.py
+# src/chess/system/identity/id/__init__.py
 
 """
-Module: chess.system.visitor_id.__init__
+Module: chess.system.identity.id.__init__
 Author: Banji Lawal
 Created: 2025-09-17
-Updated: 2025-10-10
 version: 1.0.0
 """
 
@@ -13,3 +12,5 @@ from .exception import *
 from .auto_id import AutoId
 
 from .validator import IdValidator
+
+

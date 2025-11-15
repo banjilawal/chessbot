@@ -34,7 +34,6 @@ __all__ = [
     "package_info",
 ]
 
-
 # Organic utility function for package info
 def package_info() -> dict:
     """Return basic package information."""

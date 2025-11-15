@@ -224,7 +224,7 @@ from uuid import UUID, uuid4
 # Pydantic handles these automatically, but explicit type checking
 # can be useful for external tools.
 if TYPE_CHECKING:
-  from chess.piece.model.piece import Piece
+  from chess.piece.piece import Piece
 
 # --- Constants for Chessboard Size ---
 ROW_SIZE = 8

@@ -1,6 +1,6 @@
 import unittest
 
-from chess.system.config import KNIGHT_STEP_SIZE
+from chess.system.config import LONGEST_KNIGHT_LEG_SIZE
 from chess.vector.vector_exception.null_vector import NullXDimensionException
 
 from chess.exception.vector.x_dim
@@ -15,18 +15,18 @@ class VectorTest(unittest.TestCase):
 
   def test_x_component_below_lower_bound_raises_error(self):
     with self.assertRaises(XComponentBelowLowerBoundException):
-      Vector(x=-(KNIGHT_STEP_SIZE + 1), y=0)
+      Vector(x=-(LONGEST_KNIGHT_LEG_SIZE + 1), y=0)
 
 
   def test_x_component_above_upper_bound_raises_error(self):
     with self.assertRaises(XComponentAboveUpperBoundException):
-      Vector(x=(KNIGHT_STEP_SIZE + 1), y=0)
+      Vector(x=(LONGEST_KNIGHT_LEG_SIZE + 1), y=0)
 
 
   def test_x_component_within_bounds(self):
     # Test all valid delta_row values from -3 to +3 inclusive
     # print()
-    for x in range(-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE + 1):
+    for x in range(-LONGEST_KNIGHT_LEG_SIZE, LONGEST_KNIGHT_LEG_SIZE + 1):
       vector = Vector(x=x, y=0)
       # print(f"Testing delta_row: {distance_test.delta_row} expected={delta_row}")
       self.assertEqual(vector.x, x)
@@ -38,18 +38,18 @@ class VectorTest(unittest.TestCase):
 
   def test_y_component_below_lower_bound_raises_error(self):
     with self.assertRaises(YComponentBelowLowerBoundException):
-      Vector(x=0, y=-(KNIGHT_STEP_SIZE + 1))
+      Vector(x=0, y=-(LONGEST_KNIGHT_LEG_SIZE + 1))
 
 
   def test_y_component_above_upper_bound_raises_error(self):
     with self.assertRaises(YComponentAboveUpperBoundException):
-      Vector(x=0, y=(KNIGHT_STEP_SIZE + 1))
+      Vector(x=0, y=(LONGEST_KNIGHT_LEG_SIZE + 1))
 
 
   def test_y_component_within_bounds(self):
     # Test all valid delta_row values from -3 to +3 inclusive
     # print()
-    for y in range(-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE + 1):
+    for y in range(-LONGEST_KNIGHT_LEG_SIZE, LONGEST_KNIGHT_LEG_SIZE + 1):
       vector = Vector(x=0, y=y)
       # print(f"Testing delta_row: {distance_test.delta_row} expected={delta_row}")
       self.assertEqual(vector.y, y)

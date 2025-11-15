@@ -7,7 +7,7 @@ from chess.event import TargetSquareMismatchException, AttackEvent
 from chess.piece.event.attack.event.exception import AttackEventBuilderException
 from chess.piece.event.travel_exception import TravelEventResourceNotFoundException
 from chess.piece import PieceValidator, InvalidAttackException, CombatantPiece
-from chess.piece.model.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
+from chess.piece.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
 
 
 class CheckEventBuilder(Enum):

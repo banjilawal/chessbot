@@ -1,13 +1,15 @@
-# chess/rank_name/spec.py
+# chess/rank/spec.py
 
 """
-Module: chess.rank_name.spec
+Module: chess.rank.spec
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-from enum import Enum, auto
+from enum import Enum
+from typing import List
+
 from chess.geometry import Quadrant
 
 
@@ -71,20 +73,18 @@ class RankSpec(Enum):
     
     def quadrants_str(self) -> str:
         return " ".join(q.visitor_name for q in self._quadrants)
-    
-    def valid_ranks(self):
-        return
+
     
     @property
     def max_rank_id(self) -> int:
         return RankSpec.QUEEN.id
     
-    @classmethod
-    def find_speck_by_rank(cls, rank: Rank) -> Optional[RankSpec]:
-        print(f"Looking for config with name:{rank.visitor_name}")
-        
-        for spec in RankSpec:
-            print(f"Checking config:{spec.ransom}")
-            if spec.name.upper() == rank.visitor_name.upper():
-                return spec
-        return None
+    # @classmethod
+    # def find_speck_by_rank(cls, rank: Rank) -> Optional[RankSpec]:
+    #     print(f"Looking for config with name:{rank.visitor_name}")
+    #
+    #     for spec in RankSpec:
+    #         print(f"Checking config:{spec.ransom}")
+    #         if spec.name.upper() == rank.visitor_name.upper():
+    #             return spec
+    #     return None

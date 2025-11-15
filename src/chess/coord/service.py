@@ -1,20 +1,43 @@
 # src/chess/coord/service.py
 
 """
-Module: chess.coord
+Module: chess.coord.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
+
 from typing import Any
 
-from chess.coord import Coord, CoordBuilder, CoordValidator
+
 from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, ValidationResult
 from chess.vector import Vector, VectorService
+from chess.system import BuildResult, ValidationResult
+from chess.coord import Coord, CoordBuilder, CoordValidator
 
 
 class CoordService:
+    """
+    # ROLE: Service, Data Protraction
+
+    # RESPONSIBILITIES:
+    1.  Manages integrity lifecycle of Coord objects.
+    2.  Vector addition and scalar multiplication of Coord objects.
+    3.  Calculate distance between two Coords.
+
+    # PROVIDES:
+        *   CoordBuilder
+        *   CoordValidator
+        *   ScalarService
+        *   VectorService
+
+    # ATTRIBUTES:
+        *   coord_builder (type[CoordBuilder]): produces safe Coord objects.
+        *   coord_validator (type[CoordValidator]): ensures existing Coord objects are safe.
+        
+        *   scalar_service (type[ScalarService): Manages integrity of scalar objects.
+        *   vector_service (type[VectorService]): Manages integrity of vector objects, scalar-vector multiplication.
+    """
     
     _coord_builder: type[CoordBuilder]
     _coord_validator: type[CoordValidator]
@@ -35,14 +58,78 @@ class CoordService:
         
     
     def validate_as_coord(self, candidate: Any) -> ValidationResult[Coord]:
+        """
+        # Action:
+        CoordService directs coord_validator to run the verification process on the candidate.
+
+        # Parameters:
+            *   row (int):
+            *   column (int):
+
+        # Returns:
+        BuildResult[Coord] containing either:
+            - On success: Coord in payload.
+            - On failure: Exception.
+
+        Raises:
+            *   None are raised here.
+            *   coord_validator sends any validation exceptions back to the caller.
+            *   The caller is responsible for safely handling any exceptions it receives.
+        """
         return self._coord_validator.validate(candidate=candidate)
     
     
     def build_coord(self, row: int, column: int) -> BuildResult[Coord]:
+        """
+        # Action:
+        CoordService directs coord_builder to run the build process with the inputs.
+
+        # Parameters:
+            *   row (int):
+            *   column (int):
+            
+        # Returns:
+        BuildResult[Coord] containing either:
+            - On success: Coord in payload.
+            - On failure: Exception.
+
+        Raises:
+            *   None are raised here
+            *   coord_builder sends any build exceptions back to the caller.
+            *   The caller is responsible for safely handling any exceptions it receives.
+        """
         return self._coord_builder.build(row=row, column=column)
     
     
-    def add_vector(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
+    def add_vector_to_coord(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
+        """
+        # Action:
+        1.  coord_validator runs integrity checks on the coord param.
+        2.  vector_service runs integrity checks on the vector param.
+        3.  If any checks raise an exception return it in the BuildResult.
+        4.  If coord and vector params are valid:
+                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
+
+        # Parameters:
+            *   coord(Coord):
+            *   vector (Vector):
+
+        # Returns:
+        BuildResult[Coord] containing either:
+            - On success: Coord in payload.
+            - On failure: Exception.
+
+        Raises:
+            *   None are raised here.
+            *   Any validation exceptions that occur are sent to the caller by either
+                    coord_validator
+                    vector_service
+            *   coord_builder sends any build exceptions back to the caller.
+            *   The caller is responsible for safely handling any exceptions it receives.
+        """
+        method = "CoordService.add_vector_to_coord"
+        
         try:
             coord_validation = self._coord_validator.validate(candidate=coord)
             if coord_validation.is_failure():
@@ -60,6 +147,34 @@ class CoordService:
             return BuildResult.failure(ex)
     
     def dot_product(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
+        """
+        # Action:
+        1.  coord_validator runs integrity checks on the coord param.
+        2.  vector_service runs integrity checks on the vector param.
+        3.  If any checks raise an exception return it in the BuildResult.
+        4.  If coord and vector params are valid:
+                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
+
+        # Parameters:
+            *   coord(Coord):
+            *   vector (Vector):
+
+        # Returns:
+        BuildResult[Coord] containing either:
+            - On success: Coord in payload.
+            - On failure: Exception.
+
+        Raises:
+            *   None are raised here.
+            *   Any validation exceptions that occur are sent to the caller by either
+                    coord_validator
+                    vector_service
+            *   coord_builder sends any build exceptions back to the caller.
+            *   The caller is responsible for safely handling any exceptions it receives.
+        """
+        method = "CoordService.dot_product"
+        
         try:
             coord_validation = self._coord_validator.validate(candidate=coord)
             if coord_validation.is_failure():
@@ -77,7 +192,35 @@ class CoordService:
             return BuildResult.failure(ex)
         
         
-    def scalar_product(self, coord: Coord, scalar: Scalar) -> BuildResult[Coord]:
+    def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar) -> BuildResult[Coord]:
+        """
+        # Action:
+        1.  coord_validator runs integrity checks on the coord param.
+        2.  scalar_service runs integrity checks on the scalar param.
+        3.  If any checks raise an exception return it in the BuildResult.
+        4.  If coord and scalar params are valid:
+                new_row, new_colum = coord.row * scalar.value, coord.column * scalar.value
+        5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
+
+        # Parameters:
+            *   coord (Coord):
+            *   scalar (Scalar):
+
+        # Returns:
+        BuildResult[Coord] containing either:
+            - On success: Coord in payload.
+            - On failure: Exception.
+
+        Raises:
+            *   None are raised here.
+            *   Any validation exceptions that occur are sent to the caller by either
+                    coord_validator
+                    scalar_service
+            *   coord_builder sends any build exceptions back to the caller.
+            *   The caller is responsible for safely handling any exceptions it receives.
+        """
+        method = "CoordService.multiply_coord_by_scalar"
+        
         try:
             coord_validation = self._coord_validator.validate(candidate=coord)
             if coord_validation.is_failure():
@@ -96,21 +239,34 @@ class CoordService:
         
         
     def convert_vector_to_coord(self, vector: Vector) -> BuildResult[Coord]:
+        """
+        # Action:
+        1.  vector_service runs integrity checks on param.
+        2.  If any checks raise an exception return it in the BuildResult.
+        3.  Run build_coord(row=y, column=y) to ensure the computed values produce a
+            safe Coord instance.
+
+        # Parameters:
+            *   vector (Vector):
+
+        # Returns:
+        BuildResult[Coord] containing either:
+            - On success: Coord in payload.
+            - On failure: Exception.
+
+        Raises:
+            *   None are raised here.
+            *   vector_service sends any validation exceptions back to the caller.
+            *   coord_builder sends any build exceptions back to the caller.
+            *   The caller is responsible for safely handling any exceptions it receives.
+        """
+        method = "CoordService.convert_vector_to_coord"
+        
         try:
             vector_validation = self._vector_service.validate_as_vector(candidate=vector)
             if vector_validation.is_failure():
                 return BuildResult.failure(vector_validation.exception)
             
             return self._coord_builder.build(row=vector.y, column=vector.x)
-        except Exception as ex:
-            return BuildResult.failure(ex)
-        
-    def convert_coord_to_vector(self, coord: Coord) -> BuildResult[Vector]:
-        try:
-            coord_validation = self._coord_validator.validate(candidate=coord)
-            if coord_validation.is_failure():
-                return BuildResult.failure(coord_validation.exception)
-            
-            return self._vector_service.build_vector(y=coord.row, x=coord.column)
         except Exception as ex:
             return BuildResult.failure(ex)

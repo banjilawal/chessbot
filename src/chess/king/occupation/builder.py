@@ -4,7 +4,7 @@ from enum import Enum
 from typing import cast
 
 from chess.exception import SearchException
-from chess.piece.model.exception import PieceCapturingItSelfException
+from chess.piece.exception import PieceCapturingItSelfException
 from chess.commander.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper

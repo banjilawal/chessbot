@@ -14,7 +14,7 @@ from chess.board import Board, BoardPieceSearch, BoardSearchContext, BoardValida
 
 from chess.king import KingPiece
 from chess.piece import Piece, CombatantPiece
-from chess.piece.model.validator import PieceValidator
+from chess.piece.validator import PieceValidator
 from chess.system import LoggingLevelRouter, Validator, ValidationResult
 from chess.enviroment import (
   NoInitialPlacementException, NullTravelerEnvironmentTupleException, CheckMatedKingCannotMoveException,

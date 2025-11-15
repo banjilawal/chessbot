@@ -35,32 +35,32 @@ class ScalarException(ChessException):
 
 #======================# NULL SCALAR EXCEPTIONS #======================#
 class NullScalarException(ScalarException, NullException):
-  """Raised if an entity, method, or operation requires Board but gets null instead."""
+  """Raised if an entity, method, or operation requires Scalar but gets null instead."""
   ERROR_CODE = "NULL_SCALAR_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be null."
 
 
 #======================# SCALAR VALIDATION EXCEPTIONS #======================#
 class InvalidScalarException(ScalarException, ValidationException):
-  """Catchall Exception for BoardValidator when a validation candidate fails a sanity check."""
+  """Catchall Exception for ScalarValidator when a validation candidate fails a sanity check."""
   ERROR_CODE = "SCALAR_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Scalar validation failed."
 
 
 #======================# SCALAR BUILD EXCEPTIONS #======================#
 class ScalarBuildFailedException(ScalarException, BuildFailedException):
-  """Catchall Exception for BoardBuilder when it encounters an error building a Board."""
+  """Catchall Exception for ScalarBuilder when it encounters an error building a Scalar."""
   ERROR_CODE = "SCALAR_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Scalar build failed."
 
 
 #======================# SCALAR BOUNDS EXCEPTIONS #======================#  
 class ScalarBelowBoundsException(ScalarException):
-  """Raised if team_name scalar is below its < -KNIGHT_STEP_SIZE"""
+  """Raised if scalar is below its < -LONGEST_KNIGHT_LEG_SIZE"""
   ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
-  DEFAULT_MESSAGE = "Scalar cannot be less than -KNIGHT_STEP_SIZE."
+  DEFAULT_MESSAGE = "Scalar cannot be less than -LONGEST_KNIGHT_LEG_SIZE."
 
 class ScalarAboveBoundsException(ScalarException):
-  """Raised if team_name scalar is above its > KNIGHT_STEP_SIZE"""
+  """Raised if scalar is above its > LONGEST_KNIGHT_LEG_SIZE"""
   ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
-  DEFAULT_MESSAGE = "Scalar cannot be greater than KNIGHT_STEP_SIZE."
+  DEFAULT_MESSAGE = "Scalar cannot be greater than LONGEST_KNIGHT_LEG_SIZE."

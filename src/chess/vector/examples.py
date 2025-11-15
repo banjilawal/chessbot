@@ -78,9 +78,9 @@ with team_name successful status is returned, the contained `Vector` is valid an
 
 Args:
   `x` (`int`): The x-component of the vector. Must not be None and must be within 
-    [`-KNIGHT_STEP_SIZE`, `KNIGHT_STEP_SIZE ] bounds.
+    [`-LONGEST_KNIGHT_LEG_SIZE`, `LONGEST_KNIGHT_LEG_SIZE ] bounds.
   `y` (`int`): The y-component of the vector. Must not be None and must be within 
-  [  -KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE] bounds.
+  [  -LONGEST_KNIGHT_LEG_SIZE, LONGEST_KNIGHT_LEG_SIZE] bounds.
 
 Returns:
   BuildResult[Vector]: A `BuildResult` containing either:
@@ -92,8 +92,8 @@ Raises:
   process. This includes:
     * `NullXComponentException`: if x is None
     * `NullYComponentException`: if y is None
-    * `VectorBelowBoundsException`: if x or y < -KNIGHT_STEP_SIZE
-    * `VectorAboveBoundsException`: if x or y > KNIGHT_STEP_SIZE
+    * `VectorBelowBoundsException`: if x or y < -LONGEST_KNIGHT_LEG_SIZE
+    * `VectorAboveBoundsException`: if x or y > LONGEST_KNIGHT_LEG_SIZE
     * Any validate errors from `VectorValidator`
 
 Note:
@@ -123,12 +123,12 @@ Example:
 #       VectorBuilder,
 #       NullXComponentException(NullXComponentException.DEFAULT_MESSAGE)
 #     )
-#   if x < -KNIGHT_STEP_SIZE:
+#   if x < -LONGEST_KNIGHT_LEG_SIZE:
 #     ThrowHelper.route_error(
 #       VectorBuilder,
 #       VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
 #     )
-#   if x > KNIGHT_STEP_SIZE:
+#   if x > LONGEST_KNIGHT_LEG_SIZE:
 #     ThrowHelper.route_error(
 #       VectorBuilder,
 #       VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
@@ -140,12 +140,12 @@ Example:
 #       VectorBuilder,
 #       NullYComponentException(NullYComponentException.DEFAULT_MESSAGE)
 #     )
-#   if y < -KNIGHT_STEP_SIZE:
+#   if y < -LONGEST_KNIGHT_LEG_SIZE:
 #     ThrowHelper.route_error(
 #       VectorBuilder,
 #       VectorBelowBoundsException(VectorBelowBoundsException.DEFAULT_MESSAGE)
 #     )
-#   if y > KNIGHT_STEP_SIZE:
+#   if y > LONGEST_KNIGHT_LEG_SIZE:
 #     ThrowHelper.route_error(
 #       VectorBuilder,
 #       VectorBelowBoundsException(VectorAboveBoundsException.DEFAULT_MESSAGE)
@@ -198,7 +198,7 @@ Example:
 # Args:
 # candidate (Generic[T]): The object to validate, expected to be team_name Vector instance.
 # Must not be None and must be within component bounds
-# [-KNIGHT_STEP_SIZE, KNIGHT_STEP_SIZE].
+# [-LONGEST_KNIGHT_LEG_SIZE, LONGEST_KNIGHT_LEG_SIZE].
 #
 # Returns:
 # Result[Vector]: A Result containing either:
@@ -211,8 +211,8 @@ Example:
 #     - TypeError: if input is not team_name Vector instance
 # - NullXComponentException: if Vector.x is None
 #     - NullYComponentException: if Vector.y is None
-#     - VectorBelowBoundsException: if x or y < -KNIGHT_STEP_SIZE
-#     - VectorAboveBoundsException: if x or y > KNIGHT_STEP_SIZE
+#     - VectorBelowBoundsException: if x or y < -LONGEST_KNIGHT_LEG_SIZE
+#     - VectorAboveBoundsException: if x or y > LONGEST_KNIGHT_LEG_SIZE
 #
 # Note:
 # Use VectorBuilder for creating new Vectors with validate,

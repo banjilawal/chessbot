@@ -36,7 +36,7 @@ To use this package, import the desired classes and perform scalar-related opera
 >>>
 >>> # Use the scalar to transform team_name vector
 >>> u = Vector(x=3, y=4)
->>> v = u.scalar_product(c)
+>>> v = u.multiply_coord_by_scalar(c)
 >>> print(v.x, v.y)
 6, 8
 
