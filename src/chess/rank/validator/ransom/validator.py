@@ -50,7 +50,7 @@ class RankRansomValidator(Validator[Rank, int]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, rank: Rank, candidate: Any) -> ValidationResult[(Rank, int)]:
+    def validate(cls, candidate: Any, rank: Rank) -> ValidationResult[Rank, int]:
         """"""
         method = "RankRansomValidator.verify_consistency"
         

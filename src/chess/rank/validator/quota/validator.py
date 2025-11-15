@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from typing import Any, cast, Tuple
-from chess.system import LoggingLevelRouter, ValidationResult
+from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.rank import (
     NullRankException, Rank, RankSpec, King, Queen, Bishop, Rook, Knight, Pawn, RankBoundsChecker,
     
@@ -30,7 +30,7 @@ from chess.rank import (
 )
 
 
-class RankQuotaValidator:
+class RankQuotaValidator(Validator[Rank, int]):
     """
     # ROLE: Validator, Consistency Management
 
@@ -51,7 +51,7 @@ class RankQuotaValidator:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_consistency(cls, rank: Rank, candidate: Any) -> ValidationResult[Rank, int]:
+    def validate(cls, candidate: Any, rank: Rank) -> ValidationResult[Rank, int]:
         """"""
         method = "RankRansomValidator.rank_quota_consistency"
         
