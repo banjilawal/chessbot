@@ -65,7 +65,7 @@ class CommanderValidator(Validator):
       # If cannot cast from candidate to Commander need to break
       from chess.commander import Commander
       if not isinstance(candidate, Commander):
-        raise TypeError(f"{method} Expected team_name Commander, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name Commander, got {type(candidate).__name__} instead.")
 
       # cast and run checks for the fields
       from chess.commander import Commander

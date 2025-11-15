@@ -131,7 +131,7 @@ class PieceSearchContextValidator(Validator):
 
       from chess.team import Team
       if not isinstance(candidate, Team):
-        raise TypeError(f"{method} Expected team_name Team, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name Team, got {type(candidate).__name__} instead.")
 
       team = cast(Team, candidate)
 

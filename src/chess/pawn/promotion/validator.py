@@ -40,7 +40,7 @@ class PromotionEventValidator(Validator[PromotionEvent]):
             
             if not isinstance (candidate, PromotionEvent):
                 return ValidationResult.failure(
-                    TypeError(f"Expected an PromotionEvent, got {type(candidate).__name__}")
+                    TypeError(f"Expected an PromotionEvent, got {type(candidate).__name__} instead.")
                 )
             
             event = cast(PromotionEvent, candidate)
@@ -72,7 +72,7 @@ class PromotionEventValidator(Validator[PromotionEvent]):
             
             if not isinstance(event.actor, PromotablePiece):
                 return ValidationResult.failure(
-                    TypeError(f"Expected an PromotablePiece, got {type(candidate).__name__}")
+                    TypeError(f"Expected an PromotablePiece, got {type(candidate).__name__} instead.")
                 )
             piece = cast(PromotablePiece, event.actor)
             

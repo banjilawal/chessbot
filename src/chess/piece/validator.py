@@ -39,7 +39,7 @@ class PieceValidator(Validator[Piece]):
             
             if not isinstance(candidate, Piece):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected team Piece, got {type(candidate).__name__}")
+                    TypeError(f"{method} Expected team Piece, got {type(candidate).__name__} instead.")
                 )
             
             # For safety cast the candidate to a `Piece` instance.

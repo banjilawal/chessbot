@@ -54,7 +54,7 @@ class CoordStackValidator(Validator):
         )
 
       if not isinstance(candidate, CoordStack):
-        raise TypeError(f"{method} Expected team_name CoordStack, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name CoordStack, got {type(candidate).__name__} instead.")
 
       coords = cast(CoordStack, candidate)
 

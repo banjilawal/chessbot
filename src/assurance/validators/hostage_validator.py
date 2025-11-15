@@ -52,7 +52,7 @@ class HostageValidator(Validator):
         raise validation.exception
 
       if not isinstance(candidate, CombatantPiece):
-        raise TypeError(f"{method} Expected team_name CombatantPiece, got {type(candidate).__name__}")
+        raise TypeError(f"{method} Expected team_name CombatantPiece, got {type(candidate).__name__} instead.")
 
       hostage = cast(CombatantPiece, candidate)
 

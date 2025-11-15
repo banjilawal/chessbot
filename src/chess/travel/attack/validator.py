@@ -38,7 +38,7 @@ class AttackEventValidator(Validator[AttackEvent]):
                 )
             
             if not isinstance(candidate, AttackEvent):
-                return ValidationResult.failure(TypeError(f"Expected an AttackEvent, got {type(candidate).__name__}"))
+                return ValidationResult.failure(TypeError(f"Expected an AttackEvent, got {type(candidate).__name__} instead."))
     
             event = cast(AttackEvent, candidate)
             actor_binding_validation = BoardActorValidator.validate(event.actor, event.execution_environment)
