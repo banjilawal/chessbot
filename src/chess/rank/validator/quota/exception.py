@@ -72,25 +72,25 @@ class QueenQuotaException(RankQuotaException):
     DEFAULT_MESSAGE = "Incorrect value for a Queen quota."
 
 
-class BishopQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a Bishop differs from the RankSpec value."""
-    ERROR_CODE = "BISHOP_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Bishop quota."
-
-
 class RookQuotaException(RankQuotaException):
     """Raised when the quota assigned to a Rook differs from the RankSpec value."""
     ERROR_CODE = "ROOK_QUOTA_ERROR"
     DEFAULT_MESSAGE = "Incorrect value for a Rook quota."
 
 
-class KnightQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a Knight differs from the RankSpec value."""
+class BishopQuotaException(RankQuotaException):
+    """Raised when the quota assigned to a Bishop differs from the RankSpec value."""
     ERROR_CODE = "BISHOP_QUOTA_ERROR"
     DEFAULT_MESSAGE = "Incorrect value for a Bishop quota."
 
 
+class KnightQuotaException(RankQuotaException):
+    """Raised when the quota assigned to a Knight differs from the RankSpec value."""
+    ERROR_CODE = "KNIGHT_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Knight quota."
+
+
 class PawnQuotaException(RankQuotaException):
     """Raised when the quota assigned to a Pawn differs from the RankSpec value."""
-    ERROR_CODE = "ROOK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Rook quota."
+    ERROR_CODE = "PAWN_QUOTA_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Pawn quota."

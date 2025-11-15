@@ -65,25 +65,25 @@ class QueenIdException(RankIdException):
     DEFAULT_MESSAGE = "Incorrect value for a Queen id."
 
 
+class RookIdException(RankIdException):
+    """Raised when the id assigned to a Rook differs from the RankSpec value."""
+    ERROR_CODE = "ROOK_ID_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Rook id."
+    
+    
 class BishopIdException(RankIdException):
     """Raised when the id assigned to a Bishop differs from the RankSpec value."""
     ERROR_CODE = "BISHOP_ID_ERROR"
     DEFAULT_MESSAGE = "Incorrect value for a Bishop id."
 
 
-class RookIdException(RankIdException):
-    """Raised when the id assigned to a Rook differs from the RankSpec value."""
-    ERROR_CODE = "ROOK_ID_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Rook id."
-
-
 class KnightIdException(RankIdException):
     """Raised when the id assigned to a Knight differs from the RankSpec value."""
-    ERROR_CODE = "BISHOP_ID_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Bishop id."
+    ERROR_CODE = "KNIGHT_ID_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Knight id."
 
 
 class PawnIdException(RankIdException):
     """Raised when the id assigned to a Pawn differs from the RankSpec value."""
-    ERROR_CODE = "ROOK_ID_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Rook id."
+    ERROR_CODE = "PAWN_ID_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Pawn id."

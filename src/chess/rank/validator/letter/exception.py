@@ -65,16 +65,16 @@ class QueenLetterException(RankLetterException):
     DEFAULT_MESSAGE = "Incorrect value for a Queen letter."
 
 
-class BishopLetterException(RankLetterException):
-    """Raised when the letter assigned to a Bishop differs from the RankSpec value."""
-    ERROR_CODE = "BISHOP_LETTER_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Bishop letter."
-
-
 class RookLetterException(RankLetterException):
     """Raised when the letter assigned to a Rook differs from the RankSpec value."""
     ERROR_CODE = "ROOK_LETTER_ERROR"
     DEFAULT_MESSAGE = "Incorrect value for a Rook letter."
+    
+
+class BishopLetterException(RankLetterException):
+    """Raised when the letter assigned to a Bishop differs from the RankSpec value."""
+    ERROR_CODE = "BISHOP_LETTER_ERROR"
+    DEFAULT_MESSAGE = "Incorrect value for a Bishop letter."
 
 
 class KnightLetterException(RankLetterException):

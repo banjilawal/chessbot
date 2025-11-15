@@ -66,25 +66,25 @@ class QueenNameException(RankNameException):
   DEFAULT_MESSAGE = "Incorrect value for a Queen name."
 
 
-class BishopNameException(RankNameException):
-  """Raised when the name assigned to a Bishop differs from the RankSpec value."""
-  ERROR_CODE = "BISHOP_NAME_ERROR"
-  DEFAULT_MESSAGE = "Incorrect value for a Bishop name."
-
-
 class RookNameException(RankNameException):
   """Raised when the name assigned to a Rook differs from the RankSpec value."""
   ERROR_CODE = "ROOK_NAME_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Rook name."
 
 
-class KnightNameException(RankNameException):
-  """Raised when the name assigned to a Knight differs from the RankSpec value."""
+class BishopNameException(RankNameException):
+  """Raised when the name assigned to a Bishop differs from the RankSpec value."""
   ERROR_CODE = "BISHOP_NAME_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Bishop name."
 
 
+class KnightNameException(RankNameException):
+  """Raised when the name assigned to a Knight differs from the RankSpec value."""
+  ERROR_CODE = "BISHOP_NAME_ERROR"
+  DEFAULT_MESSAGE = "Incorrect value for a Knight name."
+
+
 class PawnNameException(RankNameException):
   """Raised when the name assigned to a Pawn differs from the RankSpec value."""
-  ERROR_CODE = "ROOK_NAME_ERROR"
-  DEFAULT_MESSAGE = "Incorrect value for a Rook name."
+  ERROR_CODE = "PAWN_NAME_ERROR"
+  DEFAULT_MESSAGE = "Incorrect value for a PAwn name."

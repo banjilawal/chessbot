@@ -18,6 +18,20 @@ from chess.rank import (
 
 
 class RankValidatorFactory(Validator[Rank]):
+    """
+    # ROLE: Validation
+
+    # RESPONSIBILITIES:
+    Verifies a candidate is an instance of Rank, that meets integrity requirements, before the candidate is used.
+
+    # PROVIDES:
+    ValidationResult[Rank] containing either:
+        - On success: Rank in payload.
+        - On failure: Exception.
+
+    # ATTRIBUTES:
+    No attributes
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -30,8 +44,40 @@ class RankValidatorFactory(Validator[Rank]):
             rank_quota_validator: type[RankQuotaValidator]=RankQuotaValidator,
             rank_ransom_validator: type[RankRansomValidator]=RankRansomValidator
     ) -> ValidationResult[Rank]:
-        """"""
+        """
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is a Rank.
+        3.  Cast to candidate to its subclass.
+        4.  Validate
+                *   id      ->  with rank_id_validator
+                *   name    ->  with rank_name_validator
+                *   letter  ->  with rank_letter_validator
+                *   quota   ->  with rank_quota_validator
+                *   ransom  ->  with rank_ransom_validator
+        5.  If any check fails, return the exception inside a ValidationResult.
+        6.  When all checks pass return the Rank instance inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any): Object to validate.
+            *   rank_id_validator (type[RankIdValidator]=RankIdValidator)
+            *   rank_name_validator (type[RankNameValidator]=RankNameValidator)
+            *   rank_letter_validator (type[RankLetterValidator]=RankLetterValidator)
+            *   rank_quota_validator (type[RankQuotaValidator]=RankQuotaValidator)
+            *   rank_ransom_validator (type[RankRansomValidator]=RankRansomValidator)
+
+        # Returns:
+        ValidationResult[Rank] containing either:
+            - On success: Vector in payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullRankException
+            *   InvalidRankException
+        """
         method = "RankValidatorFactory.validate"
+        
         try:
             if candidate is None:
                 return ValidationResult.failure(

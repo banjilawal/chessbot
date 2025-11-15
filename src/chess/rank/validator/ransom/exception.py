@@ -63,34 +63,34 @@ class RankRansomAboveBoundsException(RankRansomException):
 # ======================# RANK_RANSOM_INCONSISTENCY EXCEPTIONS #======================#
 class KingRansomException(RankRansomException):
   """Raised when the ransom assigned to a King differs from the RankSpec value."""
-  ERROR_CODE = "WRONG_KING_RANSOM_ERROR"
+  ERROR_CODE = "KING_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a King ransom."
 
 class QueenRansomException(RankRansomException):
   """Raised when the ransom assigned to a Queen differs from the RankSpec value."""
-  ERROR_CODE = "WRONG_QUEEN_RANSOM_ERROR"
+  ERROR_CODE = "QUEEN_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Queen ransom."
 
 
 class BishopRansomException(RankRansomException):
   """Raised when the ransom assigned to a Bishop differs from the RankSpec value."""
-  ERROR_CODE = "WRONG_BISHOP_RANSOM_ERROR"
+  ERROR_CODE = "BISHOP_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Bishop ransom."
 
 
 class RookRansomException(RankRansomException):
   """Raised when the ransom assigned to a Rook differs from the RankSpec value."""
-  ERROR_CODE = "WRONG_ROOK_RANSOM_ERROR"
+  ERROR_CODE = "ROOK_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Rook ransom."
 
 
 class KnightRansomException(RankRansomException):
   """Raised when the ransom assigned to a Knight differs from the RankSpec value."""
-  ERROR_CODE = "WRONG_KNIGHT_RANSOM_ERROR"
+  ERROR_CODE = "KNIGHT_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Knight ransom."
 
 
 class PawnRansomException(RankRansomException):
   """Raised when the ransom assigned to a Pawn differs from the RankSpec value."""
-  ERROR_CODE = "WRONG_PAWN_RANSOM_ERROR"
+  ERROR_CODE = "PAWN_RANSOM_ERROR"
   DEFAULT_MESSAGE = "Incorrect value for a Pawn ransom."
