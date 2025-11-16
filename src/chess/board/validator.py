@@ -23,7 +23,7 @@ class BoardValidator(Validator[Board]):
 
     # PROVIDES:
       ValidationResult[Board] containing either:
-            - On success: Board in payload.
+            - On success: Board in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -50,7 +50,7 @@ class BoardValidator(Validator[Board]):
 
         # Returns:
           ValidationResult[DomainOrigin] containing either:
-                - On success: DomainOrigin in payload.
+                - On success: DomainOrigin in the payload.
                 - On failure: Exception.
 
         # Raises:

@@ -60,7 +60,7 @@ class VectorService:
 
         # Returns:
         BuildResult[Vector] containing either:
-            - On success: Vector in payload.
+            - On success: Vector in the payload.
             - On failure: Exception.
 
         Raises:
@@ -83,7 +83,7 @@ class VectorService:
 
         # Returns:
         ValidationResult[Vector] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         Raises:
@@ -113,7 +113,7 @@ class VectorService:
         
         # Returns:
         BuildResult[Vector] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
         
         Raises:

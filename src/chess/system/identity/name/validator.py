@@ -30,7 +30,7 @@ class NameValidator(Validator[str]):
   
     # PROVIDES:
     ValidationResult[str] containing either:
-        - On success: str in payload.
+        - On success: str in the payload.
         - On failure: Exception.
         
     # ATTRIBUTES:
@@ -55,7 +55,7 @@ class NameValidator(Validator[str]):
     
         # Returns:
         ValidationResult[str] containing either:
-            - On success: str in payload.
+            - On success: str in the payload.
             - On failure: Exception.
     
         # Raises:

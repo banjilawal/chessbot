@@ -44,7 +44,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
 
         # Returns:
           BuildResult[DomainOrigin] containing either:
-                - On success: DomainOrigin in payload.
+                - On success: DomainOrigin in the payload.
                 - On failure: Exception.
 
         # RAISES:

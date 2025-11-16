@@ -24,7 +24,7 @@ class CoordBuilder(Builder[Coord]):
 
     # PROVIDES:
     BuildResult[Coord] containing either:
-        - On success: Coord in payload.
+        - On success: Coord in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -51,7 +51,7 @@ class CoordBuilder(Builder[Coord]):
 
         # Returns:
         ValidationResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         # RAISES:

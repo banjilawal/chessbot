@@ -25,7 +25,7 @@ class VectorValidator(Validator[Vector]):
 
     # PROVIDES:
     ValidationResult[Vector] containing either:
-        - On success: Vector in payload.
+        - On success: Vector in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -53,7 +53,7 @@ class VectorValidator(Validator[Vector]):
 
         # Returns:
         ValidationResult[Vector] containing either:
-            - On success: Vector in payload.
+            - On success: Vector in the payload.
             - On failure: Exception.
 
         # RAISES:
@@ -104,7 +104,7 @@ class VectorValidator(Validator[Vector]):
 
         # Returns:
         ValidationResult[int] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         RAISES:
@@ -157,7 +157,7 @@ class VectorValidator(Validator[Vector]):
 
         # Returns:
         ValidationResult[int] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         RAISES:

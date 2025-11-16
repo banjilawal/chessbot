@@ -22,7 +22,7 @@ class DomainBuilder(Builder[Domain]):
 
     # PROVIDES:
       BuildResult[Domain] containing either:
-            - On success: Domain in payload.
+            - On success: Domain in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -48,7 +48,7 @@ class DomainBuilder(Builder[Domain]):
 
         # Returns:
           BuildResult[Domain] containing either:
-                - On success: Square in payload.
+                - On success: Square in the payload.
                 - On failure: Exception.
 
         # Raises:

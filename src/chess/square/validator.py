@@ -28,7 +28,7 @@ class SquareValidator(Validator[Square]):
 
     # PROVIDES:
     ValidationResult[Coord] containing either:
-        - On success: Coord in payload.
+        - On success: Coord in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -59,7 +59,7 @@ class SquareValidator(Validator[Square]):
 
         # Returns:
         ValidationResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         # RAISES:
@@ -124,7 +124,7 @@ class SquareValidator(Validator[Square]):
 
         # Returns:
           ValidationResult[(Square, Piece)] containing either:
-                - On success: Tuple(Square, Piece) in payload.
+                - On success: Tuple(Square, Piece) in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -147,7 +147,7 @@ class SquareValidator(Validator[Square]):
 
         # Returns:
         ValidationResult[(Square, Piece)] containing either:
-            - On success: tuple(Square, Piece) in payload.
+            - On success: tuple(Square, Piece) in the payload.
             - On failure: Exception.
 
         # RAISES:

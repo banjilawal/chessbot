@@ -46,7 +46,7 @@ class ScalarBuilder(Builder[Scalar]):
     
         # Returns:
           BuildResult[Scalar] containing either:
-                - On success: Scalar in payload.
+                - On success: Scalar in the payload.
                 - On failure: Exception.
     
         # Raises:

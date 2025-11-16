@@ -28,7 +28,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
 
     # PROVIDES:
       ValidationResult[DomainOrigin] containing either:
-            - On success: DomainOrigin in payload.
+            - On success: DomainOrigin in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -56,7 +56,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
 
         # Returns:
           ValidationResult[DomainOrigin] containing either:
-                - On success: DomainOrigin in payload.
+                - On success: DomainOrigin in the payload.
                 - On failure: Exception.
 
         # Raises:

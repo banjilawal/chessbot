@@ -27,7 +27,7 @@ class RankIdValidator(Validator[Rank, int]):
 
     # PROVIDES:
     ValidationResult[Rank, int] containing either:
-        - On success: (Rank, int) tuple in payload.
+        - On success: (Rank, int) tuple in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -57,7 +57,7 @@ class RankIdValidator(Validator[Rank, int]):
 
         # Returns:
         ValidationResult[tuple(Rank, int)] containing either:
-            - On success: tuple(Rank,int) in payload.
+            - On success: tuple(Rank,int) in the payload.
             - On failure: Exception.
 
         # RAISES:

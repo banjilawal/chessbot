@@ -98,7 +98,7 @@ class IdentityService:
 
         # Returns:
         ValidationResult[int] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         Raises:
@@ -119,7 +119,7 @@ class IdentityService:
 
         # Returns:
         ValidationResult[str] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         Raises:
@@ -151,7 +151,7 @@ class IdentityService:
 
         # Returns:
         ValidationResult[Tuple(int, str)] containing either:
-            - On success: Tuple(int, str) in payload.
+            - On success: Tuple(int, str) in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -211,7 +211,7 @@ class CoordService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -237,7 +237,7 @@ class CoordService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -282,7 +282,7 @@ class CoordService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -327,7 +327,7 @@ class CoordService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -369,7 +369,7 @@ class CoordService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:

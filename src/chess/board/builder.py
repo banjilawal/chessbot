@@ -24,7 +24,7 @@ class BoardBuilder(Builder[Board]):
   
     # PROVIDES:
       BuildResult[Board] containing either:
-            - On success: Board in payload.
+            - On success: Board in the payload.
             - On failure: Exception.
   
     # ATTRIBUTES:
@@ -55,7 +55,7 @@ class BoardBuilder(Builder[Board]):
     
         # Returns:
           BuildResult[Board] containing either:
-                - On success: Square in payload.
+                - On success: Square in the payload.
                 - On failure: Exception.
     
         # Raises:

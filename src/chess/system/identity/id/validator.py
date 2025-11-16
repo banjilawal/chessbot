@@ -22,7 +22,7 @@ class IdValidator(Validator[int]):
   
     # PROVIDES:
     ValidationResult[int] containing either:
-        - On success: int in payload.
+        - On success: int in the payload.
         - On failure: Exception.
   
     # ATTRIBUTES:
@@ -45,7 +45,7 @@ class IdValidator(Validator[int]):
     
         # Returns:
         ValidationResult[int] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
     
         # Raises:

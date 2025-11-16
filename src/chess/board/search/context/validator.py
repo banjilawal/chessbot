@@ -29,7 +29,7 @@ class BoardSearchContextValidator(Validator):
     
     # PROVIDES:
       ValidationResult[BoardSearchContext] containing either:
-            - On success: Board in payload.
+            - On success: Board in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -59,7 +59,7 @@ class BoardSearchContextValidator(Validator):
           
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -139,7 +139,7 @@ class BoardSearchContextValidator(Validator):
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -177,7 +177,7 @@ class BoardSearchContextValidator(Validator):
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -215,7 +215,7 @@ class BoardSearchContextValidator(Validator):
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:

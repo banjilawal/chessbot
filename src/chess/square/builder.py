@@ -24,7 +24,7 @@ class SquareBuilder(Builder[Square]):
 
     # PROVIDES:
     BuildResult[Square] containing either:
-        - On success: Coord in payload.
+        - On success: Coord in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -57,7 +57,7 @@ class SquareBuilder(Builder[Square]):
     
         # Returns:
         ValidationResult[Square] containing either:
-            - On success: Square in payload.
+            - On success: Square in the payload.
             - On failure: Exception.
     
         # Raises:

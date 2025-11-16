@@ -62,7 +62,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
 
         # Returns:
           BuildResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -123,7 +123,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -161,7 +161,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -200,7 +200,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in payload.
+                - On success: BoardSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:

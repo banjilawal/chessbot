@@ -27,7 +27,7 @@ class DomainValidator(Validator[Domain]):
     
     # PROVIDES:
       ValidationResult[Domain] containing either:
-            - On success: Domain in payload.
+            - On success: Domain in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -52,7 +52,7 @@ class DomainValidator(Validator[Domain]):
 
         # Returns:
           ValidationResult[Domain] containing either:
-                - On success: Square in payload.
+                - On success: Square in the payload.
                 - On failure: Exception.
 
         # Raises:

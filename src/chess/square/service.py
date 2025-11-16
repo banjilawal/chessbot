@@ -69,7 +69,7 @@ class SquareService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -94,7 +94,7 @@ class SquareService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -126,7 +126,7 @@ class SquareService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -171,7 +171,7 @@ class SquareService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -216,7 +216,7 @@ class SquareService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:
@@ -258,7 +258,7 @@ class SquareService:
 
         # Returns:
         BuildResult[Coord] containing either:
-            - On success: Coord in payload.
+            - On success: Coord in the payload.
             - On failure: Exception.
 
         Raises:

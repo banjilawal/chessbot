@@ -28,7 +28,7 @@ class RankNameValidator:
 
     # PROVIDES:
     ValidationResult[Rank, int] containing either:
-        - On success: (Rank, int) tuple in payload.
+        - On success: (Rank, int) tuple in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -58,7 +58,7 @@ class RankNameValidator:
 
         # Returns:
         ValidationResult[tuple(Rank, str)] containing either:
-            - On success: tuple(Rank,str) in payload.
+            - On success: tuple(Rank,str) in the payload.
             - On failure: Exception.
 
         # RAISES:

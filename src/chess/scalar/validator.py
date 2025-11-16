@@ -25,7 +25,7 @@ class ScalarValidator(Validator[Scalar]):
   
     # PROVIDES:
       ValidationResult[Scalar] containing either:
-            - On success: Scalar in payload.
+            - On success: Scalar in the payload.
             - On failure: Exception.
   
     # ATTRIBUTES:
@@ -44,7 +44,7 @@ class ScalarValidator(Validator[Scalar]):
     
         # Returns:
           ValidationResult[Scalar] containing either:
-                - On success: Scalar in payload.
+                - On success: Scalar in the payload.
                 - On failure: Exception.
     
         # Raises:

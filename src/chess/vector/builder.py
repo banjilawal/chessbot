@@ -26,7 +26,7 @@ class VectorBuilder(Builder[Vector]):
 
     # PROVIDES:
     BuildResult[Vector] containing either:
-        - On success: Vector in payload.
+        - On success: Vector in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -53,7 +53,7 @@ class VectorBuilder(Builder[Vector]):
 
         # Returns:
         BuildResult[Vector] containing either:
-            - On success: T in payload.
+            - On success: T in the payload.
             - On failure: Exception.
 
         RAISES:
@@ -100,7 +100,7 @@ class VectorBuilder(Builder[Vector]):
 
         # Returns:
         BuildResult[int] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         # RAISES:
@@ -170,7 +170,7 @@ class VectorBuilder(Builder[Vector]):
 
         # Returns:
         BuildResult[int] containing either:
-            - On success: int in payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         # RAISES:

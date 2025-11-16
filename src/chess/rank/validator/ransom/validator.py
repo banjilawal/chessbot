@@ -28,7 +28,7 @@ class RankRansomValidator(Validator[Rank, int]):
 
     # PROVIDES:
     ValidationResult[Rank, int] containing either:
-        - On success: (Rank, int) tuple in payload.
+        - On success: (Rank, int) tuple in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -52,7 +52,7 @@ class RankRansomValidator(Validator[Rank, int]):
 
         # Returns:
         ValidationResult[tuple(Rank, int)] containing either:
-            - On success: Vector in payload.
+            - On success: Vector in the payload.
             - On failure: Exception.
 
         # RAISES:

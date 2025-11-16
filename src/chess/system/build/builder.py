@@ -24,7 +24,7 @@ class Builder(ABC, Generic[T]):
 
   # PROVIDES:
   BuildResult[T] containing either:
-      - On success: T in payload.
+      - On success: T in the payload.
       - On failure: Exception.
       
   # ATTRIBUTES:
@@ -46,7 +46,7 @@ class Builder(ABC, Generic[T]):
 
     # Returns:
     BuildResult[T] containing either:
-        - On success: T in payload.
+        - On success: T in the payload.
         - On failure: Exception.
 
     # RAISES:

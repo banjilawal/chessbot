@@ -23,7 +23,7 @@ class Validator(ABC, Generic[T]):
   
     # PROVIDES:
     ValidationResult[T] containing either:
-        - On success: T in payload.
+        - On success: T in the payload.
         - On failure: Exception.
   
     # ATTRIBUTES:
@@ -47,7 +47,7 @@ class Validator(ABC, Generic[T]):
     
         # Returns:
         ValidationResult[T] containing either:
-            - On success: T in payload.
+            - On success: T in the payload.
             - On failure: Exception.
     
         # RAISES:
