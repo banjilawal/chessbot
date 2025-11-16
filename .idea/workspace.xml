@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/context/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/context/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/context/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/context/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,11 +298,11 @@
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/ransom" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/coord/search" />
       <recent name="$PROJECT_DIR$/src/chess/rank/search" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/id" />
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/ransom" />
-      <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/quota" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exception (2)">
@@ -623,7 +633,7 @@
       <workItem from="1763030945266" duration="5954000" />
       <workItem from="1763048725703" duration="30784000" />
       <workItem from="1763123420919" duration="86975000" />
-      <workItem from="1763265847754" duration="15569000" />
+      <workItem from="1763265847754" duration="28559000" />
     </task>
     <servers />
   </component>

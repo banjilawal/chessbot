@@ -1,4 +1,5 @@
 # src/chess/board/search/context/builder
+
 """
 Module: chess.board.search.context.builder
 Author: Banji Lawal

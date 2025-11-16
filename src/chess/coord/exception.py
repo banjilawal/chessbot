@@ -22,14 +22,16 @@ __all__ = [
     "NullRowException",
     "RowBelowBoundsException",
     "RowAboveBoundsException",
+    "InvalidCoordRowException",
     
     # ====================== COORD_COLUMN VALIDATION EXCEPTIONS #======================#
     "NullColumnException",
     "ColumnAboveBoundsException",
     "ColumnBelowBoundsException",
+    "InvalidCoordColumnException",
     
     # ====================== COORD BUILD EXCEPTIONS #======================#
-    "CoordBuildFailedException"
+    "CoordBuildFailedException",
 ]
 
 
@@ -75,6 +77,12 @@ class RowAboveBoundsException(CoordException):
     DEFAULT_MESSAGE = "Coord.row > (ROW_SIZE-1). This outside the dimension of the board."
 
 
+class InvalidCoordRowException(CoordException, ValidationException):
+    """Catchall CoordValidator.validate_row when a row fails a sanity check."""
+    ERROR_CODE = "COORD_ROW_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Coord.row validation failed."
+
+
 # ====================== COORD_COLUMN VALIDATION EXCEPTIONS #======================#
 class NullColumnException(NullException):
     """Raised if Coord.row is null."""
@@ -94,6 +102,12 @@ class ColumnAboveBoundsException(CoordException):
     DEFAULT_MESSAGE = "Coord.column > (COLUMN_SIZE-1). This outside the dimension of the board."
 
 
+class InvalidCoordColumnException(CoordException, ValidationException):
+    """Catchall CoordValidator.validate_column when a row fails a sanity check."""
+    ERROR_CODE = "COORD_COLUMN_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Coord.column validation failed."
+    
+    
 # ====================== COORD BUILD EXCEPTIONS #======================#
 class CoordBuildFailedException(CoordException, BuildFailedException):
     """Catchall Exception for CoordBuilder when it stops because of an error."""

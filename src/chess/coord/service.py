@@ -7,8 +7,7 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from typing import Any
-
+from typing import Any, List
 
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
@@ -270,3 +269,5 @@ class CoordService:
             return self._coord_builder.build(row=vector.y, column=vector.x)
         except Exception as ex:
             return BuildResult.failure(ex)
+        
+    
