@@ -19,7 +19,19 @@ from chess.system import COLUMN_SIZE, LoggingLevelRouter
 
 
 class Rook(Rank):
-    
+    """
+    # ROLE: Computation, Metadata
+
+    # RESPONSIBILITIES:
+    1.  Produces a list of Coords reachable from a Rook's current position.
+    2.  Metadata about the Rook rank useful for optimizing the GameGraph.
+
+    # PROVIDES:
+    Rook
+
+    # ATTRIBUTES:
+    See super class
+    """
     def __init__(
             self,
             id: int = RankSpec.ROOK.id,
@@ -39,7 +51,6 @@ class Rook(Rank):
             quadrants=quadrants,
             coord_service=coord_service,
         )
-    
 
     @LoggingLevelRouter.monitor
     def compute_span(self, piece: Piece) -> [Coord]:

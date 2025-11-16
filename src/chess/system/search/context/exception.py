@@ -74,7 +74,7 @@ class SearchContextException(ContextException):
   USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "SearchContext raised an rollback_exception"
+  DEFAULT_MESSAGE = "SearchContext raised an exception."
 
 #======================# SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullSearchContextException(SearchContextException, NullException):
@@ -127,7 +127,7 @@ class FilterContextException(SearchContextException):
   USE DIRECTLY. Subclasses give more useful debugging messages.
   """
   ERROR_CODE = "FILTER_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "FilterContext raised an rollback_exception"
+  DEFAULT_MESSAGE = "FilterContext raised an exception."
 
 #======================# FILTER_CONTEXT VALIDATION EXCEPTIONS #======================# 
 class NullFilterContextException(FilterContextException, NullException):

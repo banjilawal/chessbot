@@ -31,7 +31,7 @@ class VisitationSearchContextException(ContextException):
     USE DIRECTLY. Subclasses give more useful debugging messages.
     """
     ERROR_CODE = "VISITATION_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "VisitationSearchContext raised an rollback_exception"
+    DEFAULT_MESSAGE = "VisitationSearchContext raised an exception."
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 

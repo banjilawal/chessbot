@@ -63,7 +63,7 @@ class DiscoverySearchContextException(ContextException):
     USE DIRECTLY. Subclasses give more useful debugging messages.
     """
     ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "DiscoverySearchContext raised an rollback_exception"
+    DEFAULT_MESSAGE = "DiscoverySearchContext raised an exception."
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 

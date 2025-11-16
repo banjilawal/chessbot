@@ -13,14 +13,14 @@ from chess.coord import Coord, CoordSearchContextValidator, CoordSearchException
 
 
 
-class CoordSearch(Search[CoordService, List[Coord]]):
+class CoordSearch:
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
+    
     def search(
             cls,
-            data_owner: CoordService,
             collection: List[Coord],
             search_context: CoordSearchContext,
             coord_search_context_validator: type[CoordSearchContextValidator] = CoordSearchContextValidator,

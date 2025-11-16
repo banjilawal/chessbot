@@ -21,7 +21,7 @@ class Bishop(Rank):
 
     # RESPONSIBILITIES:
     1.  Produces a list of Coords reachable from a Bishop's current position.
-    2.  Metadata about the Bishop rank.
+    2.  Metadata about the Bishop rank useful for optimizing the GameGraph.
 
     # PROVIDES:
     Bishop

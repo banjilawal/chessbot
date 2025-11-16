@@ -63,7 +63,7 @@ class PieceSearchContextException(ContextException):
     USE DIRECTLY. Subclasses give more useful debugging messages.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "BoardSearchContext raised an rollback_exception"
+    DEFAULT_MESSAGE = "BoardSearchContext raised an exception."
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 

@@ -38,7 +38,7 @@ class CoordSearchException(ContextException):
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "CoordSearchContext raised an rollback_exception"
+    DEFAULT_MESSAGE = "CoordSearchContext raised an exception."
 
 
 # ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#

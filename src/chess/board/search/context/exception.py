@@ -35,7 +35,7 @@ class BoardSearchContextException(ContextException):
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "BoardSearchContext raised an rollback_exception"
+    DEFAULT_MESSAGE = "BoardSearchContext raised an exception."
 
 
 #========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#

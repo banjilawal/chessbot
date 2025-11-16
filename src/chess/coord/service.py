@@ -11,8 +11,8 @@ from typing import Any, List
 
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
-from chess.system import BuildResult, ValidationResult
-from chess.coord import Coord, CoordBuilder, CoordValidator
+from chess.system import BuildResult, LoggingLevelRouter, ValidationResult
+from chess.coord import Coord, CoordBuilder, CoordValidator, CoordSearchService
 
 
 class CoordService:
@@ -42,18 +42,21 @@ class CoordService:
     _coord_validator: type[CoordValidator]
     _scalar_service: ScalarService
     _vector_service: VectorService
+    _search_service: type[CoordSearchService]
     
     def __init__(
             self,
-            coord_builder: type[CoordBuilder]=CoordBuilder,
-            coord_validator: type[CoordValidator]=CoordValidator,
-            scalar_service: ScalarService=ScalarService(),
-            vector_service: VectorService=VectorService()
+            coord_builder: type[CoordBuilder] = CoordBuilder,
+            coord_validator: type[CoordValidator] = CoordValidator,
+            scalar_service: ScalarService = ScalarService(),
+            vector_service: VectorService = VectorService(),
+            search_service: type[CoordSearchService] = CoordSearchService
     ):
         self._coord_builder = coord_builder
         self._coord_validator = coord_validator
         self._scalar_service = scalar_service
         self._vector_service = vector_service
+        self._search_service = search_service
         
     
     def validate_as_coord(self, candidate: Any) -> ValidationResult[Coord]:
@@ -269,5 +272,24 @@ class CoordService:
             return self._coord_builder.build(row=vector.y, column=vector.x)
         except Exception as ex:
             return BuildResult.failure(ex)
+        
+        
+    @LoggingLevelRouter.monitor
+    def coord_search_by_row(self, collection: List[Coord], row: int) -> BuildResult[List[Coord]]:
+        """Search a collection of coords by the row."""
+        method = "CoordService.coord_search_by_row"
+        return self._search_service.search_by_row(collection=collection, row=row)
+    
+    @LoggingLevelRouter.monitor
+    def coord_search_by_column(self, collection: List[Coord], column: int) -> BuildResult[List[Coord]]:
+        """Search a collection of coords by the column."""
+        method = "CoordService.coord_search_by_column"
+        return self._search_service.search_by_column(collection=collection, column=column)
+    
+    
+    def coord_search_by_coord(self, collection: List[Coord], coord: Coord) -> BuildResult[List[Coord]]:
+        """Search a collection of coords for a specific coor.d"""
+        method = "CoordService.coord_search_by_coord"
+        return self._search_service.search_by_coord(collection=collection, coord=coord)
         
     

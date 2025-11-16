@@ -16,6 +16,19 @@ from chess.system import LoggingLevelRouter
 
 
 class King(Rank):
+    """
+    # ROLE: Computation, Metadata
+
+    # RESPONSIBILITIES:
+    1.  Produces a list of Coords reachable from a King's current position.
+    2.  Metadata about the King rank useful for optimizing the GameGraph.
+
+    # PROVIDES:
+    King
+
+    # ATTRIBUTES:
+    See super class
+    """
     
     def __init__(
             self,
