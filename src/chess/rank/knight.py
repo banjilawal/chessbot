@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.piece import Piece
-from chess.coord import Coord
+from chess.coord import Coord, CoordService
 from chess.system import LoggingLevelRouter
 from chess.vector import Vector
 from chess.geometry import Quadrant
@@ -24,32 +24,34 @@ class Knight(Rank):
             self,
             id: int = RankSpec.KNIGHT.id,
             name: str = RankSpec.KNIGHT.name,
-            designation: str = RankSpec.KNIGHT.designation,
             ransom: int = RankSpec.KNIGHT.ransom,
             team_quota: int = RankSpec.KNIGHT.team_quota,
-            quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants
+            designation: str = RankSpec.KNIGHT.designation,
+            quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants,
+            coord_service: CoordService=CoordService()
     ):
         super().__init(
             id=id,
             name=name,
-            letter=designation,
             ransom=ransom,
+            quota=team_quota,
+            letter=designation,
             quadrants=quadrants,
-            quota=team_quota
+            coord_service=coord_service,
         )
     
-    @classmethod
+
     @LoggingLevelRouter.monitor
-    def compute_span(cls, piece: Piece) -> [Coord]:
+    def compute_span(self, piece: Piece) -> [Coord]:
         """"""
         origin = piece.current_position
         return [
-            origin.add_vector(Vector(1, 2)),
-            origin.add_vector(Vector(-1, 2)),
-            origin.add_vector(Vector(1, -2)),
-            origin.add_vector(Vector(-1, -2)),
-            origin.add_vector(Vector(2, 1)),
-            origin.add_vector(Vector(2, -1)),
-            origin.add_vector(Vector(-2, 1)),
-            origin.add_vector(Vector(-2, -1))
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(1, 2)),
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-1, 2)),
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(1, -2)),
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-1, -2)),
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(2, 1)),
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(2, -1)),
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-2, 1)),
+            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-2, -1))
         ]

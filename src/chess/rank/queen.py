@@ -9,36 +9,52 @@ version: 1.0.0
 
 
 from chess.piece import Piece
-from chess.coord import Coord
+
 from chess.geometry import Quadrant
+from chess.rank import Rank, RankSpec
 from chess.system import LoggingLevelRouter
-from chess.rank import Bishop, Rank, RankSpec, Rook
+from chess.coord import Coord, CoordService
+
 
 
 
 class Queen(Rank):
-    """"""
+    """
+    # ROLE: Computation, Metadata
+
+    # RESPONSIBILITIES:
+    1.  Produces a list of Coords reachable from a Queen's current position.
+    2.  Metadata about the Queen rank.
+
+    # PROVIDES:
+    Queen
+
+    # ATTRIBUTES:
+    See super class
+    """
     
     def __init__(
             self,
             id: int = RankSpec.QUEEN.id,
             name: str = RankSpec.QUEEN.name,
-            designation: str = RankSpec.QUEEN.designation,
             ransom: int = RankSpec.QUEEN.ransom,
             team_quota: int = RankSpec.QUEEN.team_quota,
-            quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants
+            designation: str = RankSpec.QUEEN.designation,
+            quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants,
+            coord_service: CoordService=CoordService()
     ):
         super().__init(
             id=id,
             name=name,
-            letter=designation,
             ransom=ransom,
+            quota=team_quota,
+            letter=designation,
             quadrants=quadrants,
-            quota=team_quota
+            coord_service=coord_service,
         )
     
-    @classmethod
+
     @LoggingLevelRouter.monitor
-    def compute_span(cls, piece: Piece) -> [Coord]:
+    def compute_span(self, piece: Piece) -> [Coord]:
         """"""
-        return [Bishop.compute_span(piece), Rook.compute_span(piece)]
+        return [self.compute_diagonal_span(piece), self.compute_perpendicular_span(piece)]

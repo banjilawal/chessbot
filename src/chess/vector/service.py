@@ -35,13 +35,13 @@ class VectorService:
     """
     _vector_builder: type[VectorBuilder]
     _vector_validator: type[VectorValidator]
-    _scalar_service: type[ScalarService]
+    _scalar_service: ScalarService
     
     def __init__(
             self,
             vector_builder: type[VectorBuilder] = VectorBuilder,
             vector_validator: type[VectorValidator] = VectorValidator,
-            scalar_service: type[ScalarService] = ScalarService
+            scalar_service: ScalarService = ScalarService()
     ):
         self._vector_builder = vector_builder
         self._vector_validator = vector_validator

@@ -9,10 +9,10 @@ version: 1.0.0
 
 from abc import ABC, abstractmethod
 
-from chess.coord import Coord
+from chess.coord import Coord, CoordService
 from chess.piece import Piece
 from chess.geometry import Quadrant
-from chess.system import LoggingLevelRouter
+from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
 
 
 class Rank(ABC):
@@ -40,6 +40,7 @@ class Rank(ABC):
     _ransom: int
     _team_quota: int
     _quadrants: list[Quadrant]
+    _coord_service: CoordService
     
     def __init__(self,
             id: int,
@@ -47,19 +48,21 @@ class Rank(ABC):
             designation: str,
             ransom: int,
             team_quota: int,
-            quadrants: list[Quadrant]
+            quadrants: list[Quadrant],
+            coord_service: CoordService=CoordService(),
     ):
         self._id = id
         self._name = name
-        self._designation = designation
         self._ransom = ransom
         self._team_quota = team_quota
+        self._designation = designation
         self._quadrants = quadrants
+        self._coord_service = coord_service
     
-    @classmethod
+
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def compute_span(cls, piece: Piece, *args, **kwargs) -> [Coord]:
+    def compute_span(self, piece: Piece) -> [Coord]:
         """"""
         pass
     
@@ -86,6 +89,10 @@ class Rank(ABC):
     @property
     def team_quota(self) -> int:
         return self._team_quota
+    
+    @property
+    def coord_service(self) -> CoordService:
+        return self._coord_service
     
     def __eq__(self, other):
         if other is self:
@@ -117,7 +124,78 @@ class Rank(ABC):
     def compute_span(cls, piece: Piece, *args, **kwargs) -> [Coord]:
         """"""
         pass
-
+    
+    @LoggingLevelRouter.monitor
+    def compute_diagonal_span(self, piece: Piece) -> [[Coord]]:
+        """"""
+        origin = piece.current_position
+        return [
+            self._compute_diagonal_ray(
+                start_x=0, end_x=origin.column, x_step=1, end_y=origin.row, slop=1
+            ),
+            self._compute_diagonal_ray(
+                start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, end_y=0, slope=1
+            ),
+            self._compute_diagonal_ray(
+                start_x=origin.column, end_x=0, x_step=-1, end_y=ROW_SIZE, slope=-1
+            ),
+            self._compute_diagonal_ray(
+                start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, end_y=ROW_SIZE, slope=-1
+            )
+        ]
+    
+    @LoggingLevelRouter.monitor
+    def _compute_diagonal_ray(self, start_x: int, end_x: int, x_step: int, end_y: int, slope: int) -> [Coord]:
+        """"""
+        points = []
+        i = start_x
+        j = (2 * slope * i) + slope
+        
+        while i < end_x and j < end_y:
+            points.append(self.coord_service.build_coord(row=j, column=i))
+            i += x_step
+            j = (2 * slope * i) + slope
+        return points
+    
+    @LoggingLevelRouter.monitor
+    def compute_perpendicular_span(self, piece: Piece) -> [Coord]:
+        """"""
+        origin = piece.current_position
+        return [
+            self._compute_perpendicular_ray(
+                start_x=0, end_x=origin.column, x_step=1, start_y=origin.row, end_y=origin.row, y_step=0
+            ),
+            self._compute_perpendicular_ray(
+                start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, start_y=origin.row, end_y=origin.row, y_step=0
+            ),
+            self._compute_perpendicular_ray(
+                start_x=origin.column, end_x=origin.column, x_step=0, start_y=0, end_y=origin.row, y_step=1
+            ),
+            self._compute_perpendicular_ray(
+                start_x=origin.column, end_x=origin.column, x_step=0, start_y=origin.row, end_y=COLUMN_SIZE, y_step=1
+            )
+        ]
+    
+    @LoggingLevelRouter.monitor
+    def _compute_perpendicular_ray(
+            self,
+            start_x: int,
+            end_x: int,
+            x_step: int,
+            start_y: int,
+            end_y: int,
+            y_step: int
+    ) -> [Coord]:
+        """"""
+        i = start_x
+        j = start_y
+        
+        points = [Coord]
+        while i < end_x and j < end_y:
+            points.append(self.coord_service.build_coord(row=j, column=i))
+            i += x_step
+            j += y_step
+        return points
 
 # src/chess/vector/builder.py
 

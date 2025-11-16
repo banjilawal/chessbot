@@ -9,51 +9,47 @@ version: 1.0.0
 
 
 from chess.piece import Piece
-from chess.coord import Coord
 from chess.geometry import Quadrant
 from chess.rank import Rank, RankSpec
-from chess.system import COLUMN_SIZE, ROW_SIZE
+from chess.coord import Coord, CoordService
+from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
 
 
 class Bishop(Rank):
+    """
+    # ROLE: Computation, Metadata
+
+    # RESPONSIBILITIES:
+    1.  Produces a list of Coords reachable from a Bishop's current position.
+    2.  Metadata about the Bishop rank.
+
+    # PROVIDES:
+    Bishop
+
+    # ATTRIBUTES:
+    See super class
+    """
     
     def __init__(
             self,
             id: int = RankSpec.BISHOP.id,
             name: str = RankSpec.BISHOP.name,
-            designation: str = RankSpec.BISHOP.designation,
             ransom: int = RankSpec.BISHOP.ransom,
             team_quota: int = RankSpec.BISHOP.team_quota,
-            quadrants: list[Quadrant] = RankSpec.BISHOP.quadrants
+            designation: str = RankSpec.BISHOP.designation,
+            quadrants: list[Quadrant] = RankSpec.BISHOP.quadrants,
+            coord_service: CoordService = CoordService(),
     ):
         super().__init(
             id=id,
             name=name,
-            letter=designation,
             ransom=ransom,
+            quota=team_quota,
+            letter=designation,
             quadrants=quadrants,
-            quota=team_quota
+            coord_service=coord_service,
         )
     
-    @classmethod
-    def compute_span(cls, piece: Piece) -> [[Coord]]:
-        origin = piece.current_position
-        return [
-            cls.slope_points(0, origin.column, 1, origin.row, 1),
-            cls.slope_points(origin.column, COLUMN_SIZE, 1, 0, 1),
-            cls.slope_points(origin.column, 0, -1, ROW_SIZE, -1),
-            cls.slope_points(origin.column, COLUMN_SIZE, 1, ROW_SIZE, -1)
-        ]
-    
-    @classmethod
-    def slope_points(cls, start_x: int, end_x: int, x_step: int, end_y: int, slope: int) -> [Coord]:
-        """"""
-        points = []
-        i = start_x
-        j = (2 * slope * i) + slope
-        
-        while i < end_x and j < end_y:
-            points.append(Coord(column=i, row=j))
-            i += x_step
-            j = (2 * slope * i) + slope
-        return points
+    @LoggingLevelRouter.monitor
+    def compute_span(self, piece: Piece) -> [[Coord]]:
+        return self.compute_diagonal_span(piece)

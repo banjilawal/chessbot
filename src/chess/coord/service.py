@@ -41,15 +41,15 @@ class CoordService:
     
     _coord_builder: type[CoordBuilder]
     _coord_validator: type[CoordValidator]
-    _scalar_service: type[ScalarService]
-    _vector_service: type[VectorService]
+    _scalar_service: ScalarService
+    _vector_service: VectorService
     
     def __init__(
             self,
-            coord_builder: type[CoordBuilder],
-            coord_validator: type[CoordValidator],
-            scalar_service: type[ScalarService],
-            vector_service: type[VectorService]
+            coord_builder: type[CoordBuilder]=CoordBuilder,
+            coord_validator: type[CoordValidator]=CoordValidator,
+            scalar_service: ScalarService=ScalarService(),
+            vector_service: VectorService=VectorService()
     ):
         self._coord_builder = coord_builder
         self._coord_validator = coord_validator

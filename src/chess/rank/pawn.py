@@ -7,7 +7,7 @@ Created: 2025-07-25
 version: 1.0.0
 """
 
-from chess.coord import Coord
+from chess.coord import Coord, CoordService
 from chess.pawn import PawnPiece
 from chess.geometry import Quadrant
 from chess.rank import Rank, RankSpec
@@ -15,24 +15,38 @@ from chess.system import LoggingLevelRouter
 
 
 class Pawn(Rank):
-  """"""
+  """
+  # ROLE: Computation, Metadata
+
+  # RESPONSIBILITIES:
+  1.  Produces a list of Coords reachable from a Pawn's current position.
+  2.  Metadata about the Pawn rank.
+
+  # PROVIDES:
+  Queen
+
+  # ATTRIBUTES:
+  See super class
+  """
   
   def __init__(
           self,
           id: int = RankSpec.PAWN.id,
           name: str = RankSpec.PAWN.name,
-          designation: str = RankSpec.PAWN.designation,
           ransom: int = RankSpec.PAWN.ransom,
           team_quota: int = RankSpec.PAWN.team_quota,
-          quadrants: list[Quadrant] = RankSpec.PAWN.quadrants
+          designation: str = RankSpec.PAWN.designation,
+          quadrants: list[Quadrant] = RankSpec.PAWN.quadrants,
+          coord_service: CoordService = CoordService()
   ):
     super().__init(
       id=id,
       name=name,
-      letter=designation,
       ransom=ransom,
+      quota=team_quota,
+      letter=designation,
       quadrants=quadrants,
-      quota=team_quota
+      coord_service=coord_service,
     )
     
   @classmethod
