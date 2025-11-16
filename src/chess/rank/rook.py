@@ -24,18 +24,18 @@ class Rook(Rank):
             self,
             id: int = RankSpec.ROOK.id,
             name: str = RankSpec.ROOK.name,
-            letter: str = RankSpec.ROOK.letter,
+            designation: str = RankSpec.ROOK.designation,
             ransom: int = RankSpec.ROOK.ransom,
-            quota: int = RankSpec.ROOK.quota,
+            team_quota: int = RankSpec.ROOK.team_quota,
             quadrants: list[Quadrant] = RankSpec.ROOK.quadrants
     ):
         super().__init(
             id=id,
             name=name,
-            letter=letter,
+            letter=designation,
             ransom=ransom,
             quadrants=quadrants,
-            quota=quota
+            quota=team_quota
         )
     
     @classmethod

@@ -21,18 +21,18 @@ class Pawn(Rank):
           self,
           id: int = RankSpec.PAWN.id,
           name: str = RankSpec.PAWN.name,
-          letter: str = RankSpec.PAWN.letter,
+          designation: str = RankSpec.PAWN.designation,
           ransom: int = RankSpec.PAWN.ransom,
-          quota: int = RankSpec.PAWN.quota,
+          team_quota: int = RankSpec.PAWN.team_quota,
           quadrants: list[Quadrant] = RankSpec.PAWN.quadrants
   ):
     super().__init(
       id=id,
       name=name,
-      letter=letter,
+      letter=designation,
       ransom=ransom,
       quadrants=quadrants,
-      quota=quota
+      quota=team_quota
     )
     
   @classmethod

@@ -21,18 +21,18 @@ class Bishop(Rank):
             self,
             id: int = RankSpec.BISHOP.id,
             name: str = RankSpec.BISHOP.name,
-            letter: str = RankSpec.BISHOP.letter,
+            designation: str = RankSpec.BISHOP.designation,
             ransom: int = RankSpec.BISHOP.ransom,
-            quota: int = RankSpec.BISHOP.quota,
+            team_quota: int = RankSpec.BISHOP.team_quota,
             quadrants: list[Quadrant] = RankSpec.BISHOP.quadrants
     ):
         super().__init(
             id=id,
             name=name,
-            letter=letter,
+            letter=designation,
             ransom=ransom,
             quadrants=quadrants,
-            quota=quota
+            quota=team_quota
         )
     
     @classmethod

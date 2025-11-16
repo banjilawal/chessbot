@@ -29,29 +29,37 @@ class Rank(ABC):
     # ATTRIBUTES:
         *   id (int):       Identifier for the subclass.
         *   name (str):     Common name of the rank.
-        *   letter (str):   Chess designation
-        *   ransom (int):   
-        *   quota  (int):   Number of instances on a team.
-        *   quadrants (List[Quandrant]):
+        *   designation (str):   Chess designation
+        *   ransom (int):   Value of ranks that can be captured.
+        *   team_quota  (int):   Number of instances on a team.
+        *   quadrants (List[Quadrant]):
     """
     _id: int
     _name: str
-    _letter: str
+    _designation: str
     _ransom: int
-    _quota: int
+    _team_quota: int
     _quadrants: list[Quadrant]
     
-    def __init__(self, id: int, name: str, letter: str, ransom: int, quota: int, quadrants: list[Quadrant]):
+    def __init__(self,
+            id: int,
+            name: str,
+            designation: str,
+            ransom: int,
+            team_quota: int,
+            quadrants: list[Quadrant]
+    ):
         self._id = id
         self._name = name
-        self._letter = letter
+        self._designation = designation
         self._ransom = ransom
-        self._quota = quota
+        self._team_quota = team_quota
         self._quadrants = quadrants
     
     @classmethod
     @abstractmethod
-    def compute_span(cls, piece: Piece, args*, kwargs**) -> [Coord]:
+    @LoggingLevelRouter.monitor
+    def compute_span(cls, piece: Piece, *args, **kwargs) -> [Coord]:
         """"""
         pass
     
@@ -64,8 +72,8 @@ class Rank(ABC):
         return self._name
     
     @property
-    def letter(self) -> str:
-        return self._letter
+    def designation(self) -> str:
+        return self._designation
     
     @property
     def ransom(self) -> int:
@@ -76,8 +84,8 @@ class Rank(ABC):
         return self._quadrants
     
     @property
-    def quota(self) -> int:
-        return self._quota
+    def team_quota(self) -> int:
+        return self._team_quota
     
     def __eq__(self, other):
         if other is self:
@@ -96,9 +104,9 @@ class Rank(ABC):
             "bounds: {"
             f"id:{self._id}, "
             f"name:{self._name}, "
-            f"letter:{self._letter}, "
+            f"designation:{self._designation}, "
             f"ransom:{self._ransom}, "
-            f"per_side:{self._quota}"
+            f"team_quota:{self._team_quota}"
             "}"
         )
 

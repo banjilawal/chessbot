@@ -1,4 +1,4 @@
-# src/chess/rank/validator/quota/__init__.py
+# src/chess/rank/validator/team_quota/__init__.py
 
 """
 Module: chess.rank.validator.quota__init__

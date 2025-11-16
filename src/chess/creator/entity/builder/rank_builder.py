@@ -15,7 +15,7 @@ class RankBuilder:
     if config is RankSpec.KING:
       return King(
         name=config.name,
-        letter=config.letter,
+        designation=config.designation,
         per_side=config.number_per_team,
         quadrants=config.quadrants,
         value=config.capture_value
@@ -23,7 +23,7 @@ class RankBuilder:
     if config is RankSpec.PAWN:
       return Pawn(
         name=config.name,
-        letter=config.letter,
+        letter=config.designation,
         per_side=config.number_per_team,
         quadrants=config.quadrants,
         value=config.capture_value
@@ -31,7 +31,7 @@ class RankBuilder:
     if config is RankSpec.KNIGHT:
       return Knight(
         name=config.name,
-        letter=config.letter,
+        designation=config.designation,
         per_side=config.number_per_team,
         quadrants=config.quadrants,
         value=config.capture_value
@@ -39,7 +39,7 @@ class RankBuilder:
     if config is RankSpec.BISHOP:
       return Bishop(
         name=config.name,
-        letter=config.letter,
+        designation=config.designation,
         per_side=config.number_per_team,
         quadrants=config.quadrants,
         value=config.capture_value
@@ -47,15 +47,15 @@ class RankBuilder:
     if config is RankSpec.ROOK:
       return Rook(
         name=config.name,
-        letter=config.letter,
-        quota=config.number_per_team,
+        designation=config.designation,
+        team_quota=config.number_per_team,
         quadrants=config.quadrants,
         ransom=config.capture_value
       )
     if config is RankSpec.QUEEN:
       return Queen(
         name=config.name,
-        letter=config.letter,
+        designation=config.designation,
         per_side=config.number_per_team,
         quadrants=config.quadrants,
         value=config.capture_value

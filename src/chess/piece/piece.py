@@ -32,7 +32,7 @@ class Piece(ABC):
   
     # ATTRIBUTES:
         *   id (int): unique identifier.
-        *   name (str): letter-number combination. Only unique in the Board.
+        *   name (str): designation-number combination. Only unique in the Board.
         *   team (Team):
         *   rank (Rank):
         *   roster_number (int): initial number on its team's roster.

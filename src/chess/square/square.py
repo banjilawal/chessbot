@@ -25,7 +25,7 @@ class Square:
   
     # ATTRIBUTES:
         *   _id (int): unique identifier
-        *   _name (str): letter-number combination. Only unique in the Board
+        *   _name (str): designation-number combination. Only unique in the Board
         *   _coord (Coord): row-column array indices in Board array.
         *   _occupant (Optional[Piece]): Piece object that might be occupying the Square.
     """

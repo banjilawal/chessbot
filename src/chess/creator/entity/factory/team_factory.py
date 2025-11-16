@@ -26,7 +26,7 @@ class TeamFactory:
 
     for team in teams:
       for rank in ranks:
-        for i in range(rank.quota):
+        for i in range(rank.team_quota):
           chess_piece = ChessPieceBuilder.build(
             token_id=id_emitter.visitor_id,
             team_rank_member_id=(i + 1),

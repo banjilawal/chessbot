@@ -52,8 +52,8 @@ class RankValidatorFactory(Validator[Rank]):
         4.  Validate
                 *   id      ->  with rank_id_validator
                 *   name    ->  with rank_name_validator
-                *   letter  ->  with rank_letter_validator
-                *   quota   ->  with rank_quota_validator
+                *   designation  ->  with rank_letter_validator
+                *   team_quota   ->  with rank_quota_validator
                 *   ransom  ->  with rank_ransom_validator
         5.  If any check fails, return the exception inside a ValidationResult.
         6.  When all checks pass return the Rank instance inside a ValidationResult.
@@ -116,7 +116,7 @@ class RankValidatorFactory(Validator[Rank]):
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
             
-            letter_validation = rank_letter_validator.validate(rank=rank, candidate=rank.letter)
+            letter_validation = rank_letter_validator.validate(rank=rank, candidate=rank.designation)
             if letter_validation.is_failure():
                 return ValidationResult.failure(letter_validation.exception)
             

@@ -52,7 +52,7 @@ class TeamNameInconsistencyException(TeamException):
 
 class TeamLetterInconsistencyException(TeamException):
     ERROR_CODE = "TEAM_LETTER_CONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "Team.letter value does not match the letter assigned to the Team object by TeamSchema."
+    DEFAULT_MESSAGE = "Team.designation value does not match the designation assigned to the Team object by TeamSchema."
 
 
 class AdvancingStepInconsistencyException(TeamException):

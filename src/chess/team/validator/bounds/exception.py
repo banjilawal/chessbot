@@ -71,17 +71,17 @@ class AdvancingStepBoundsException(TeamBoundsException):
 # ======================# TEAM_LETTER_FIELD VALIDATION EXCEPTIONS #======================#
 class TeamLetterException(TeamException):
     ERROR_CODE = "TEAM_LETTER_FIELD_ERROR"
-    DEFAULT_MESSAGE = "The Team.schema.letter raised an exception."
+    DEFAULT_MESSAGE = "The Team.schema.designation raised an exception."
 
 
 class NullTeamLetterException(TeamLetterException, NullException):
     ERROR_CODE = "NULL_TEAM_RANSOM_ERROR"
-    DEFAULT_MESSAGE = "A Team.letter property cannot be null."
+    DEFAULT_MESSAGE = "A Team.designation property cannot be null."
 
 
 class TeamLetterBoundsException(TeamBoundsException):
     ERROR_CODE = "TEAM_LETTER_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The Team.letter property violates TeamSchema constraints."
+    DEFAULT_MESSAGE = "The Team.designation property violates TeamSchema constraints."
 
 
 # ======================# TEAM_NAME_FIELD VALIDATION EXCEPTIONS #======================#
@@ -98,28 +98,28 @@ class TeamNameBoundsException(TeamBoundsException):
 # ======================# TEAM_RANK_ROW_FIELD VALIDATION EXCEPTIONS #======================#
 class TeamRankRowException(TeamBoundsException):
     ERROR_CODE = "TEAM_QUOTA_FIELD_ERROR"
-    DEFAULT_MESSAGE = "The quota of a Team object is outside the bounds declared in TeamSpec."
+    DEFAULT_MESSAGE = "The team_quota of a Team object is outside the bounds declared in TeamSpec."
 
 
 class RankRowNullException(TeamRankRowException, NullException):
     ERROR_CODE = "NULL_TEAM_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "A Team object cannot have a null quota."
+    DEFAULT_MESSAGE = "A Team object cannot have a null team_quota."
 
 
 class RankRowBelowBoundsException(TeamRankRowException):
     ERROR_CODE = "TEAM_QUOTA_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "A Team instance cannot have a quota below one."
+    DEFAULT_MESSAGE = "A Team instance cannot have a team_quota below one."
 
 
 class RankRowAboveBoundsException(TeamRankRowException):
     ERROR_CODE = "TEAM_QUOTA_ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The Pawn has the highest quota. The value is above quota bounds."
+    DEFAULT_MESSAGE = "The Pawn has the highest team_quota. The value is above team_quota bounds."
 
 
 # ======================# TEAM_PAWN_ROW VALIDATION EXCEPTIONS #======================#
 class TeamPawnRowException(TeamBoundsException):
     ERROR_CODE = "TEAM_PAWN_ROW_FIELD_ERROR"
-    DEFAULT_MESSAGE = "The quota of a Team object is outside the bounds declared in TeamSpec."
+    DEFAULT_MESSAGE = "The team_quota of a Team object is outside the bounds declared in TeamSpec."
 
 
 class PawnRowNullException(TeamPawnRowException, NullException):
@@ -129,23 +129,23 @@ class PawnRowNullException(TeamPawnRowException, NullException):
 
 class PawnRowBelowBoundsException(TeamPawnRowException):
     ERROR_CODE = "TEAM_PAWN_ROW_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "A Team instance cannot have a quota below one."
+    DEFAULT_MESSAGE = "A Team instance cannot have a team_quota below one."
 
 
 class PawnRowAboveBoundsException(TeamPawnRowException):
     ERROR_CODE = "TEAM_PAWN_ROW_ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The Pawn has the highest quota. The value is above quota bounds."
+    DEFAULT_MESSAGE = "The Pawn has the highest team_quota. The value is above team_quota bounds."
 
 
 # ======================# TEAM_LETTER_FIELD VALIDATION EXCEPTIONS #======================#
 class TeamLetterException(InvalidTeamException):
     ERROR_CODE = "TEAM_LETTER_FIELD_ERROR"
-    DEFAULT_MESSAGE = "The letter field of a Team object raised an exception."
+    DEFAULT_MESSAGE = "The designation field of a Team object raised an exception."
 
 
 class NullTeamLetterException(TeamLetterException, NullException):
     ERROR_CODE = "NULL_TEAM_LETTER_ERROR"
-    DEFAULT_MESSAGE = "A Team object cannot have a null letter field."
+    DEFAULT_MESSAGE = "A Team object cannot have a null designation field."
 
 
 # ======================# TEAM_COLOR_FIELD VALIDATION EXCEPTIONS #======================#
@@ -156,4 +156,4 @@ class TeamColorException(InvalidTeamException):
 
 class TeamColorBoundsException(TeamBoundsException):
     ERROR_CODE = "TEAM_LETTER_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The letter is not included in the Team letter specifications."
+    DEFAULT_MESSAGE = "The designation is not included in the Team designation specifications."

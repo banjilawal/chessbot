@@ -23,18 +23,18 @@ class Queen(Rank):
             self,
             id: int = RankSpec.QUEEN.id,
             name: str = RankSpec.QUEEN.name,
-            letter: str = RankSpec.QUEEN.letter,
+            designation: str = RankSpec.QUEEN.designation,
             ransom: int = RankSpec.QUEEN.ransom,
-            quota: int = RankSpec.QUEEN.quota,
+            team_quota: int = RankSpec.QUEEN.team_quota,
             quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants
     ):
         super().__init(
             id=id,
             name=name,
-            letter=letter,
+            letter=designation,
             ransom=ransom,
             quadrants=quadrants,
-            quota=quota
+            quota=team_quota
         )
     
     @classmethod

@@ -21,18 +21,18 @@ class King(Rank):
             self,
             id: int=RankSpec.KING.id,
             name: str=RankSpec.KING.name,
-            letter: str=RankSpec.KING.letter,
+            designation: str=RankSpec.KING.designation,
             ransom: int=RankSpec.KING.ransom,
-            quota: int=RankSpec.KING.quota,
+            team_quota: int=RankSpec.KING.team_quota,
             quadrants: list[Quadrant]=RankSpec.KING.quadrants
     ):
         super().__init(
             id=id,
             name=name,
-            letter=letter,
+            letter=designation,
             ransom=ransom,
             quadrants=quadrants,
-            quota=quota
+            quota=team_quota
         )
         
     @classmethod

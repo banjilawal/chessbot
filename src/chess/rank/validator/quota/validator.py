@@ -1,7 +1,7 @@
-# src/chess/rank/validator/quota/validator.py
+# src/chess/rank/validator/team_quota/validator.py
 
 """
-Module: chess.rank.validator.quota.validator
+Module: chess.rank.validator.team_quota.validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -22,7 +22,7 @@ class RankQuotaValidator(Validator[Rank, int]):
     # ROLE: Validation, Data Integrity.
 
     # RESPONSIBILITIES:
-    Verifies the candidate is consistent with the quota attribute for a Rank is
+    Verifies the candidate is consistent with the team_quota attribute for a Rank is
         *   Not null.
         *   A valid Rank subclass.
 
@@ -41,14 +41,14 @@ class RankQuotaValidator(Validator[Rank, int]):
         """
         # ACTION:
         1.  If the candidate is not null and an INT convert to a number.
-        2.  Check if the number is between 0 and Queen.quota.
+        2.  Check if the number is between 0 and Queen.team_quota.
         3.  Verify the number matches the RankSpec value for rank param.
         4.  If any check fails, return the exception inside a ValidationResult.
         3.  When all checks pass return a tuple of rank, number. inside a ValidationResult.
 
         # PARAMETERS:
             *   rank (Rank): an appropriate, not null subclass instance.
-            *   candidate (Any): object to validate as the correct quota for the rank.
+            *   candidate (Any): object to validate as the correct team_quota for the rank.
 
         # Returns:
         ValidationResult[tuple(Rank, int)] containing either:
@@ -93,39 +93,39 @@ class RankQuotaValidator(Validator[Rank, int]):
                     )
                 )
             
-            if quota > RankSpec.PAWN.quota:
+            if quota > RankSpec.PAWN.team_quota:
                 return ValidationResult.failure(
                     RankQuotaAboveBoundsException(
                         f"{method}: {RankQuotaAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if isinstance(rank, King) and quota != RankSpec.KING.quota:
+            if isinstance(rank, King) and quota != RankSpec.KING.team_quota:
                 return ValidationResult.failure(
                     KingQuotaException(f"{method}: {KingQuotaException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Queen) and quota != RankSpec.QUEEN.quota:
+            if isinstance(rank, Queen) and quota != RankSpec.QUEEN.team_quota:
                 return ValidationResult.failure(
                     QueenQuotaException(f"{method}: {QueenQuotaException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Bishop) and quota != RankSpec.BISHOP.quota:
+            if isinstance(rank, Bishop) and quota != RankSpec.BISHOP.team_quota:
                 return ValidationResult.failure(
                     BishopQuotaException(f"{method}: {BishopQuotaException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Rook) and quota != RankSpec.ROOK.quota:
+            if isinstance(rank, Rook) and quota != RankSpec.ROOK.team_quota:
                 return ValidationResult.failure(
                     RookQuotaException(f"{method}: {RookQuotaException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Knight) and quota != RankSpec.KNIGHT.quota:
+            if isinstance(rank, Knight) and quota != RankSpec.KNIGHT.team_quota:
                 return ValidationResult.failure(
                     KnightQuotaException(f"{method}: {KnightQuotaException.DEFAULT_MESSAGE}")
                 )
             
-            if isinstance(rank, Pawn) and quota != RankSpec.PAWN.quota:
+            if isinstance(rank, Pawn) and quota != RankSpec.PAWN.team_quota:
                 return ValidationResult.failure(
                     PawnQuotaException(f"{method}: {PawnQuotaException.DEFAULT_MESSAGE}")
                 )

@@ -10,9 +10,9 @@ class ChessPieceBuilder:
   @staticmethod
   def build(token_id: int, team_rank_member_id: int, rank: Rank, team: Side):
 
-    name = team.letter.capitalize() + rank.letter.capitalize() + str(team_rank_member_id)
-    if rank.letter == "K" or rank.letter == "Q":
-      name = team.letter.capitalize() + rank.letter.capitalize()
+    name = team.designation.capitalize() + rank.designation.capitalize() + str(team_rank_member_id)
+    if rank.designation == "K" or rank.designation == "Q":
+      name = team.designation.capitalize() + rank.designation.capitalize()
 
     return Piece(
       token_id=token_id,

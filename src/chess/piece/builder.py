@@ -109,7 +109,7 @@ class PieceBuilder(Builder[Piece]):
       if not search_result.is_success():
         return BuildResult(exception=search_result.exception)
 
-      if len(search_result.payload) >= rank.quota:
+      if len(search_result.payload) >= rank.team_quota:
         return BuildResult(exception=FullRankQuotaException(
           f"{method}: FullRankQuotaException.DEFAULT_MESSAGE"
           )

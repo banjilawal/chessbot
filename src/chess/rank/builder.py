@@ -109,9 +109,9 @@ class RankFactory(Builder[Rank]):
             King(
                 id=RankSpec.KING.id,
                 name=RankSpec.KING.name,
-                letter=RankSpec.KING.letter,
+                designation=RankSpec.KING.designation,
                 ransom=RankSpec.KING.ransom,
-                quota=RankSpec.KING.quota,
+                team_quota=RankSpec.KING.team_quota,
                 quadrants=RankSpec.KING.quadrants
             )
         )
@@ -139,9 +139,9 @@ class RankFactory(Builder[Rank]):
             Pawn(
                 id=RankSpec.PAWN.id,
                 name=RankSpec.PAWN.name,
-                letter=RankSpec.PAWN.letter,
+                designation=RankSpec.PAWN.designation,
                 ransom=RankSpec.PAWN.ransom,
-                quota=RankSpec.PAWN.quota,
+                team_quota=RankSpec.PAWN.team_quota,
                 quadrants=RankSpec.PAWN.quadrants
             )
         )
@@ -169,9 +169,9 @@ class RankFactory(Builder[Rank]):
             Knight(
                 id=RankSpec.KNIGHT.id,
                 name=RankSpec.KNIGHT.name,
-                letter=RankSpec.KNIGHT.letter,
+                designation=RankSpec.KNIGHT.designation,
                 ransom=RankSpec.KNIGHT.ransom,
-                quota=RankSpec.KNIGHT.quota,
+                team_quota=RankSpec.KNIGHT.team_quota,
                 quadrants=RankSpec.KNIGHT.quadrants
             )
         )
@@ -199,9 +199,9 @@ class RankFactory(Builder[Rank]):
             Bishop(
                 id=RankSpec.BISHOP.id,
                 name=RankSpec.BISHOP.name,
-                letter=RankSpec.BISHOP.letter,
+                designation=RankSpec.BISHOP.designation,
                 ransom=RankSpec.BISHOP.ransom,
-                quota=RankSpec.BISHOP.quota,
+                team_quota=RankSpec.BISHOP.team_quota,
                 quadrants=RankSpec.BISHOP.quadrants
             )
         )
@@ -229,9 +229,9 @@ class RankFactory(Builder[Rank]):
             Rook(
                 id=RankSpec.ROOK.id,
                 name=RankSpec.ROOK.name,
-                letter=RankSpec.ROOK.letter,
+                designation=RankSpec.ROOK.designation,
                 ransom=RankSpec.ROOK.ransom,
-                quota=RankSpec.ROOK.quota,
+                team_quota=RankSpec.ROOK.team_quota,
                 quadrants=RankSpec.ROOK.quadrants
             )
         )
@@ -259,9 +259,9 @@ class RankFactory(Builder[Rank]):
             Queen(
                 id=RankSpec.QUEEN.id,
                 name=RankSpec.QUEEN.name,
-                letter=RankSpec.QUEEN.letter,
+                designation=RankSpec.QUEEN.designation,
                 ransom=RankSpec.QUEEN.ransom,
-                quota=RankSpec.QUEEN.quota,
+                team_quota=RankSpec.QUEEN.team_quota,
                 quadrants=RankSpec.QUEEN.quadrants
             )
         )

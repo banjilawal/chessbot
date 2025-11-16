@@ -1,7 +1,7 @@
-# src/chess/rank/validator/quota/exception.py
+# src/chess/rank/validator/team_quota/exception.py
 
 """
-Module: chess.rank.validator.quota.exceptiom
+Module: chess.rank.validator.team_quota.exceptiom
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -36,61 +36,61 @@ class RankQuotaException(RankException):
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "RANK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Rank.quota raised an exception."
+    DEFAULT_MESSAGE = "Rank.team_quota raised an exception."
 
 
 # ======================# NULL RANK_QUOTA EXCEPTIONS #======================#
 class NullRankQuotaException(RankQuotaException, NullException):
-    """Raised if the Rank.quota is null. This should never happen. It might indicate data inconsistency."""
+    """Raised if the Rank.team_quota is null. This should never happen. It might indicate data inconsistency."""
     ERROR_CODE = "NULL_RANK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Rank.quota cannot be null."
+    DEFAULT_MESSAGE = "Rank.team_quota cannot be null."
 
 
 # ======================# RANK_QUOTA BOUNDS EXCEPTIONS #======================#
 class RankQuotaBelowBoundsException(RankQuotaException):
-    """Raised if the quota zero or less. The lowest quota is 1."""
+    """Raised if the team_quota zero or less. The lowest team_quota is 1."""
     ERROR_CODE = "RANK_QUOTA_BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Rank.quota cannot be less than one."
+    DEFAULT_MESSAGE = "Rank.team_quota cannot be less than one."
 
 
 class RankQuotaAboveBoundsException(RankQuotaException):
-    """Raised if the quota higher than the Pawn's."""
+    """Raised if the team_quota higher than the Pawn's."""
     ERROR_CODE = "NULL_RANK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Rank.quota cannot be null. There may be a data inconsistency or system failure."
+    DEFAULT_MESSAGE = "Rank.team_quota cannot be null. There may be a data inconsistency or system failure."
     
     
 # ======================# RANK_QUOTA INCONSISTENCY EXCEPTIONS #======================#
 class KingQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a King differs from the RankSpec value."""
+    """Raised when the team_quota assigned to a King differs from the RankSpec value."""
     ERROR_CODE = "_QUEEN_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Queen quota."
+    DEFAULT_MESSAGE = "Incorrect value for a Queen team_quota."
 
 
 class QueenQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a Queen differs from the RankSpec value."""
+    """Raised when the team_quota assigned to a Queen differs from the RankSpec value."""
     ERROR_CODE = "QUEEN_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Queen quota."
+    DEFAULT_MESSAGE = "Incorrect value for a Queen team_quota."
 
 
 class RookQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a Rook differs from the RankSpec value."""
+    """Raised when the team_quota assigned to a Rook differs from the RankSpec value."""
     ERROR_CODE = "ROOK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Rook quota."
+    DEFAULT_MESSAGE = "Incorrect value for a Rook team_quota."
 
 
 class BishopQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a Bishop differs from the RankSpec value."""
+    """Raised when the team_quota assigned to a Bishop differs from the RankSpec value."""
     ERROR_CODE = "BISHOP_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Bishop quota."
+    DEFAULT_MESSAGE = "Incorrect value for a Bishop team_quota."
 
 
 class KnightQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a Knight differs from the RankSpec value."""
+    """Raised when the team_quota assigned to a Knight differs from the RankSpec value."""
     ERROR_CODE = "KNIGHT_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Knight quota."
+    DEFAULT_MESSAGE = "Incorrect value for a Knight team_quota."
 
 
 class PawnQuotaException(RankQuotaException):
-    """Raised when the quota assigned to a Pawn differs from the RankSpec value."""
+    """Raised when the team_quota assigned to a Pawn differs from the RankSpec value."""
     ERROR_CODE = "PAWN_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Incorrect value for a Pawn quota."
+    DEFAULT_MESSAGE = "Incorrect value for a Pawn team_quota."

@@ -14,12 +14,32 @@ from chess.geometry import Quadrant
 
 
 class RankSpec(Enum):
+    """
+    # ROLE: Configuration
+
+    # RESPONSIBILITIES:
+    1.  Catalog of settings for each concrete Rank
+
+    # PROVIDES:
+    Enum
+
+    # ATTRIBUTES:
+        *   id (int):           Identifier for the subclass.
+        *   name (str):         Common name of the rank.
+        *   designation (str):  Chess designation
+        *   ransom (int):       Value of ranks that can be captured.
+        *   team_quota  (int):  Number of instances on a team.
+        *   quadrants (List[Quadrant]):
+    """
     
-    def __new__(cls, id: int, letter: str, quota: int, ransom: int, quadrants: List[Quadrant]):
+    def __new__(cls, id: int, designation: str, team_quota: int, ransom: int, quadrants: List[Quadrant]):
+        """
+        Factory method for creating new instances of RankSpec enum.
+        """
         obj = object.__new__(cls)
         obj._id = id
-        obj._letter = letter
-        obj._quota = quota
+        obj._designation = designation
+        obj._team_quota = team_quota
         obj._ransom = ransom
         obj._quadrants = quadrants
         
@@ -45,12 +65,12 @@ class RankSpec(Enum):
         return self._id
     
     @property
-    def letter(self) -> str:
-        return self._letter
+    def designation(self) -> str:
+        return self._designation
     
     @property
-    def quota(self) -> int:
-        return self._quota
+    def team_quota(self) -> int:
+        return self._team_quota
     
     @property
     def ransom(self) -> int:
@@ -64,8 +84,8 @@ class RankSpec(Enum):
         return (
             f"Rank["
             f"{self._id} "
-            f"{self._letter} "
-            f"per_team:{self._quota} "
+            f"{self._designation} "
+            f"per_team:{self._team_quota} "
             f"value:{self._ransom} "
             f"quadrants:({len(self.quadrants_str())})"
             f"] "

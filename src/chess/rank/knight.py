@@ -24,18 +24,18 @@ class Knight(Rank):
             self,
             id: int = RankSpec.KNIGHT.id,
             name: str = RankSpec.KNIGHT.name,
-            letter: str = RankSpec.KNIGHT.letter,
+            designation: str = RankSpec.KNIGHT.designation,
             ransom: int = RankSpec.KNIGHT.ransom,
-            quota: int = RankSpec.KNIGHT.quota,
+            team_quota: int = RankSpec.KNIGHT.team_quota,
             quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants
     ):
         super().__init(
             id=id,
             name=name,
-            letter=letter,
+            letter=designation,
             ransom=ransom,
             quadrants=quadrants,
-            quota=quota
+            quota=team_quota
         )
     
     @classmethod
