@@ -12,10 +12,8 @@ from typing import Any, cast
 
 
 from chess.coord import Coord, CoordValidator
-from chess.system import Validator, Coordvalidator, Coordvalidator, ValidationResult, LoggingLevelRouter
+from chess.system import Validator, ValidationResult, LoggingLevelRouter
 from chess.coord import (
-    CoordSearchContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
-    MoreThanOneCoordSearchOptionPickedException, NoCoordSearchOptionSelectedException
 )
 
 class CoordSearchContextValidator(Validator):
@@ -51,9 +49,8 @@ class CoordSearchContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a Coord.
-          * coord_validator (type[Coordvalidator]): Enforces safety requirements on id-search targets.
-          * coord_validator (type[Coordvalidator]): Enforces safety requirements on name-search targets.
-          * coord_validator (type[CoordValidator]): Enforces safety requirements on name-search targets.
+          * coord_validator (type[CoordValidator]): Enforces safety requirements on row, column, coord targets.
+
           
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -103,7 +100,7 @@ class CoordSearchContextValidator(Validator):
             
             if coord_search_context.column is not None:
                 return cls.validate_column_search_option(
-                    name=coord_search_context.column,
+                    column=coord_search_context.column,
                     coord_validator=coord_validator
                 )
             
@@ -129,11 +126,11 @@ class CoordSearchContextValidator(Validator):
     ) -> ValidationResult[CoordSearchContext]:
         """
         # Action:
-        Verify an id_candidate meets application CoordSearchContext safety requirements.
+        Verify a row_candidate meets application CoordSearchContext safety requirements.
 
         # Parameters:
-          * candidate (Any): Object to verify is an id.
-          * coord_validator (type[Coordvalidator]): Checks if candidate complies with safety contract.
+          * candidate (Any): Object to verify is a row.
+          * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -170,7 +167,7 @@ class CoordSearchContextValidator(Validator):
         Verify a column_candidate meets application CoordSearchContext safety requirements.
 
         # Parameters:
-          * candidate (Any): Object to verify is a name.
+          * candidate (Any): Object to verify is a column.
           * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
