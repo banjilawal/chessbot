@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/search/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/search/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/piece.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/coord/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/search.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -632,7 +626,7 @@
       <workItem from="1763048725703" duration="30784000" />
       <workItem from="1763123420919" duration="86975000" />
       <workItem from="1763265847754" duration="34750000" />
-      <workItem from="1763314326886" duration="5499000" />
+      <workItem from="1763314326886" duration="8112000" />
     </task>
     <servers />
   </component>
@@ -657,8 +651,8 @@
     <SUITE FILE_PATH="coverage/chessbot$square__1_.coverage" NAME="square (1) Coverage Results" MODIFIED="1756996071141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/board" />
     <SUITE FILE_PATH="coverage/chessbot$piece__1_.coverage" NAME="piece (1) Coverage Results" MODIFIED="1759340215468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/search" />
     <SUITE FILE_PATH="coverage/chessbot$validation_exception.coverage" NAME="validation_exception Coverage Results" MODIFIED="1756118963737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/exception/validation" />
-    <SUITE FILE_PATH="coverage/chessbot$name.coverage" NAME="name Coverage Results" MODIFIED="1756305816296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/exception/validation" />
     <SUITE FILE_PATH="coverage/chessbot$motion_controller_builder.coverage" NAME="motion_controller_builder Coverage Results" MODIFIED="1754426174289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/builder" />
+    <SUITE FILE_PATH="coverage/chessbot$name.coverage" NAME="name Coverage Results" MODIFIED="1756305816296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/exception/validation" />
     <SUITE FILE_PATH="coverage/chessbot$rank_factory.coverage" NAME="rank_factory Coverage Results" MODIFIED="1754840763918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
     <SUITE FILE_PATH="coverage/chessbot$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1755129037473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chessbot$motion_controller_factory__1_.coverage" NAME="motion_controller_factory (1) Coverage Results" MODIFIED="1754421232075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
@@ -682,7 +676,7 @@
     <SUITE FILE_PATH="coverage/chessbot$offset.coverage" NAME="offset Coverage Results" MODIFIED="1756212974974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry/coordinate" />
     <SUITE FILE_PATH="coverage/chessbot$team_factory.coverage" NAME="team_factory Coverage Results" MODIFIED="1754842536324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
     <SUITE FILE_PATH="coverage/chessbot$checker.coverage" NAME="checker Coverage Results" MODIFIED="1762652884973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/rank/validator/bounds" />
-    <SUITE FILE_PATH="coverage/chessbot$exception__2_.coverage" NAME="exception (2) Coverage Results" MODIFIED="1762930543892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/domain" />
+    <SUITE FILE_PATH="coverage/chessbot$exception__2_.coverage" NAME="exception (2) Coverage Results" MODIFIED="1763321500247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/domain" />
     <SUITE FILE_PATH="coverage/chessbot$id.coverage" NAME="id Coverage Results" MODIFIED="1756182204086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$vector.coverage" NAME="vector Coverage Results" MODIFIED="1756234334595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
     <SUITE FILE_PATH="coverage/chessbot$placement.coverage" NAME="placement Coverage Results" MODIFIED="1756945561943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/config" />

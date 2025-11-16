@@ -11,3 +11,4 @@ from .exception import *
 
 from .context import *
 from .search import CoordSearch
+from .service import CoordSearchService
