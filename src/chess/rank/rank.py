@@ -156,7 +156,12 @@ class Rank(ABC):
         5.  Return the list.
 
         PARAMETERS:
-            *   piece (Piece): Single-source-of-truth for the basis of the span.
+            *   start_x (int):   Starting x value. In practice, it will be piece.current_position.column.
+            *   end_x (int):     Ending x value. This will be either 0 or COLUMN_SIZE - 1.
+            *   x_step (int):    Step size for x. In practice, the magnitude will be 1, the sign may be negative.
+            *   end_y (int):     Ending y value. This will be either 0 or ROW_SIZE - 1 dependng on the direction
+                                 of travel.
+            *   slope (int):     Slope of the diagonal. Used to find next y value.
 
         # Returns:
         List[Coord]
@@ -170,10 +175,7 @@ class Rank(ABC):
         
         while i < end_x and j < end_y:
             ray.append(
-                self.coord_service.build_coord(
-                    row=j,
-                    column=i
-                )
+                self.coord_service.build_coord(row=j, column=i)
             )
             i += x_step
             j = (2 * slope * i) + slope
