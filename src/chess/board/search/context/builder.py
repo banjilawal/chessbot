@@ -22,15 +22,15 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     # ROLE: Builder
 
     # RESPONSIBILITIES:
-        1. Manage construction of BoardSearch instances that can be used safely by the client.
-        2. Ensure params for BoardSearch creation have met the application's safety contract.
-        3. Provide pluggable factories for creating different BoardSearchContext products.
+    1.  Manage construction of BoardSearch instances that can be used safely by the client.
+    2.  Ensure params for BoardSearch creation have met the application's safety contract.
+    3.  Provide pluggable factories for creating different BoardSearchContext products.
 
 
     # PROVIDES:
-      ValidationResult[BoardSearchContext] containing either:
-            - On success: BoardSearchContext in the payload.
-            - On failure: Exception.
+    ValidationResult[BoardSearchContext] containing either:
+        - On success:   BoardSearchContext in the payload.
+        - On failure:   Exception.
 
     # ATTRIBUTES:
     No attributes.
@@ -49,27 +49,27 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-            1. Use dependency injected validators to verify correctness of parameters required to
+            1.  Use dependency injected validators to verify correctness of parameters required to
                 build a BoardSearchContext instance.
-            2. If the parameters are safe the BoardSearchContext is built and returned.
+            2.  If the parameters are safe the BoardSearchContext is built and returned.
 
         # Parameters:
-            * id (Optional[int]): selected if search target is an id.
-            * name (Optional[str]): selected if search target is a name.
-            * coord (Optional[Coord]): selected if search target is a coord.
-            * id_validator (type[IdValidator]): validates an id-search-target
-            * name_validator (type[NameValidator]): validates a name-search-target
-            * coord_builder (type[CoordBuilder]): validates a coord-search-target
+            *   id (Optional[int]):                     Selected if search target is an id.
+            *   name (Optional[str]):                   Selected if search target is a name.
+            *   coord (Optional[Coord]):                Selected if search target is a coord.
+            *   id_validator (type[IdValidator]):       Validates an id-search-target
+            *   name_validator (type[NameValidator]):   Validates a name-search-target
+            *   coord_builder (type[CoordBuilder]):     Validates a coord-search-target
 
         # Returns:
-          BuildResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in the payload.
-                - On failure: Exception.
+        BuildResult[BoardSearchContext] containing either:
+            - On success:   BoardSearchContext in the payload.
+            - On failure:   Exception.
 
         # Raises:
-            * BoardSearchContextBuildFailedException
-            * NoBoardSearchOptionSelectedException
-            * MoreThanOneBoardSearchOptionPickedException
+            *   BoardSearchContextBuildFailedException
+            *   NoBoardSearchOptionSelectedException
+            *   MoreThanOneBoardSearchOptionPickedException
         """
         method = "BoardSearchContextBuilder.build"
         
@@ -119,16 +119,16 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         Build an id-BoardSearchContext if IdValidator verifies search target is safe.
 
         # Parameters:
-          * id (int): target id
-          * id_validator (type[IdValidator]): validates target.
+          *     id (int):                           target id
+          *     id_validator (type[IdValidator]):   validates target.
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in the payload.
-                - On failure: Exception.
+                - On success:   BoardSearchContext in the payload.
+                - On failure:   Exception.
 
         # Raises:
-            * InvalidBoardSearchContextException
+            *   InvalidBoardSearchContextException
         """
         method = "BoardSearchContextBuilder.build_id_search_context"
         try:
@@ -157,16 +157,16 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         Build a name-BoardSearchContext if NameValidator verifies search target is safe.
 
         # Parameters:
-          * name (str): target name
-          * name_validator (type[NameValidator]): validates target.
+            *   name (str):                             target name
+            *   name_validator (type[NameValidator]):   validates target.
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in the payload.
-                - On failure: Exception.
+                - On success:   BoardSearchContext in the payload.
+                - On failure:   Exception.
 
         # Raises:
-            * InvalidBoardSearchContextException
+            *   InvalidBoardSearchContextException
         """
         method = "BoardSearchContextBuilder.build_name_search_context"
         
@@ -196,16 +196,16 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         Build a coord-BoardSearchContext if CoordValidator verifies search target is safe.
 
         # Parameters:
-          * coord (Coord): target Coord
-          * coord_validator (type[CoordValidator]): validates target.
+          *     coord (Coord):                              target Coord
+          *     coord_validator (type[CoordValidator]):     validates target.
 
         # Returns:
-          ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in the payload.
-                - On failure: Exception.
+        ValidationResult[BoardSearchContext] containing either:
+            - On success:   BoardSearchContext in the payload.
+            - On failure:   Exception.
 
         # Raises:
-            * InvalidBoardSearchContextException
+            *   InvalidBoardSearchContextException
         """
         method = "BoardSearchContextBuilder.build_coord_search_context"
         

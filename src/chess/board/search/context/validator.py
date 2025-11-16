@@ -7,9 +7,7 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-
 from typing import Any, cast
-
 
 from chess.coord import Coord, CoordValidator
 from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
@@ -18,56 +16,57 @@ from chess.board import (
     MoreThanOneBoardSearchOptionPickedException, NoBoardSearchOptionSelectedException
 )
 
+
 class BoardSearchContextValidator(Validator):
     """
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a BoardSearchContext that meets the application's safety contract before the client
+    1.  Verify a candidate is a BoardSearchContext that meets the application's safety contract before the client
         is allowed to use the BoardSearchContext object.
-    2. Provide pluggable factories for validating different options separately.
+    2.  Provide pluggable factories for validating different options separately.
     
     # PROVIDES:
-      ValidationResult[BoardSearchContext] containing either:
-            - On success: Board in the payload.
-            - On failure: Exception.
+    ValidationResult[BoardSearchContext] containing either:
+        - On success:   Board in the payload.
+        - On failure:   Exception.
 
     # ATTRIBUTES:
     No attributes.
     """
-
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            id_validator: type[IdValidator]=IdValidator,
-            name_validator: type[NameValidator]=NameValidator,
-            coord_validator: type[CoordValidator]=CoordValidator
+            id_validator: type[IdValidator] = IdValidator,
+            name_validator: type[NameValidator] = NameValidator,
+            coord_validator: type[CoordValidator] = CoordValidator
     ) -> ValidationResult[BoardSearchContext]:
         """
         # Action:
         Verifies candidate is a BoardSearchContext in two steps.
-            1. Test the candidate is a valid SearchBoardContext with a single search option switched on.
-            2. Test the value passed to BoardSearchContext passes its validation contract..
+            1.  Test the candidate is a valid SearchBoardContext with a single search option switched on.
+            2.  Test the value passed to BoardSearchContext passes its validation contract..
 
         # Parameters:
-          * candidate (Any): Object to verify is a Board.
-          * id_validator (type[IdValidator]): Enforces safety requirements on id-search targets.
-          * name_validator (type[NameValidator]): Enforces safety requirements on name-search targets.
-          * coord_validator (type[CoordValidator]): Enforces safety requirements on name-search targets.
+          * candidate (Any):                            Object to verify is a Board.
+          * id_validator (type[IdValidator]):           Enforces safety requirements on id-search targets.
+          * name_validator (type[NameValidator]):       Enforces safety requirements on name-search targets.
+          * coord_validator (type[CoordValidator]):     Enforces safety requirements on name-search targets.
           
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in the payload.
-                - On failure: Exception.
+                - On success:   BoardSearchContext in the payload.
+                - On failure:   Exception.
 
         # Raises:
-            * TypeError
-            * InvalidBoardSearchContextException
-            * NullBoardSearchContextException
-            * NoBoardSearchOptionSelectedException
-            * MoreThanOneBoardSearchOptionPickedException
+            *   TypeError
+            *   InvalidBoardSearchContextException
+            *   NullBoardSearchContextException
+            *   NoBoardSearchOptionSelectedException
+            *   MoreThanOneBoardSearchOptionPickedException
         """
         method = "BoardSearchContextValidator.validate"
         
@@ -89,7 +88,7 @@ class BoardSearchContextValidator(Validator):
                         f"{method}: {NoBoardSearchOptionSelectedException.DEFAULT_MESSAGE}"
                     )
                 )
-        
+            
             if len(board_search_context.to_dict()) > 1:
                 return ValidationResult.failure(
                     MoreThanOneBoardSearchOptionPickedException(
@@ -114,36 +113,37 @@ class BoardSearchContextValidator(Validator):
                     coord=board_search_context.coord,
                     coord_validator=coord_validator
                 )
-            
-        except Exception as e:
+        
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
-
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate_id_search_option(
             cls,
             candidate: Any,
-            id_validator: type[IdValidator]=IdValidator
+            id_validator: type[IdValidator] = IdValidator
     ) -> ValidationResult[BoardSearchContext]:
         """
         # Action:
         Verify an id_candidate meets application BoardSearchContext safety requirements.
 
         # Parameters:
-          * candidate (Any): Object to verify is an id.
-          * id_validator (type[IdValidator]): Checks if candidate complies with safety contract.
+            *   candidate (Any):                    Object to verify is an id.
+            *   id_validator (type[IdValidator]):   Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in the payload.
-                - On failure: Exception.
+                - On success:   BoardSearchContext in the payload.
+                - On failure:   Exception.
 
         # Raises:
-            * InvalidBoardSearchContextException
+            *   InvalidBoardSearchContextException
         """
         method = "BoardSearchContextValidator.validate_id_search_option"
         
@@ -153,10 +153,11 @@ class BoardSearchContextValidator(Validator):
                 return ValidationResult.failure(id_validation.exception)
             
             return ValidationResult.success(payload=BoardSearchContext(id=id_validation.payload))
-        except Exception as e:
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
     
@@ -165,7 +166,7 @@ class BoardSearchContextValidator(Validator):
     def validate_name_search_option(
             cls,
             candidate: Any,
-            name_validator: type[NameValidator]=NameValidator
+            name_validator: type[NameValidator] = NameValidator
     ) -> ValidationResult[BoardSearchContext]:
         """
         # Action:
@@ -191,10 +192,12 @@ class BoardSearchContextValidator(Validator):
                 return ValidationResult.failure(name_validation.exception)
             
             return ValidationResult.success(payload=BoardSearchContext(name=name_validation.payload))
-        except Exception as e:
+        
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
     
@@ -210,16 +213,16 @@ class BoardSearchContextValidator(Validator):
         Verify a coord_candidate meets application BoardSearchContext safety requirements.
 
         # Parameters:
-          * candidate (Any): Object to verify is a coord.
-          * name_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
+            *   candidate (Any):                        Object to verify is a coord.
+            *   name_validator (type[CoordValidator]):  Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[BoardSearchContext] containing either:
-                - On success: BoardSearchContext in the payload.
-                - On failure: Exception.
+                - On success:   BoardSearchContext in the payload.
+                - On failure:    Exception.
 
         # Raises:
-            * InvalidBoardSearchContextException
+            *   InvalidBoardSearchContextException
         """
         method = "BoardSearchContextValidator.validate_coord_search_option"
         
@@ -229,9 +232,10 @@ class BoardSearchContextValidator(Validator):
                 return ValidationResult.failure(coord_validation.exception)
             
             return ValidationResult.success(payload=BoardSearchContext(coord=coord_validation.payload))
-        except Exception as e:
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
