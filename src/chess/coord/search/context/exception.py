@@ -46,19 +46,13 @@ class NullCoordSearchContextException(CoordSearchContextException, NullException
 
 
 #========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
-class InvalidCoordSearchContextException(
-    CoordSearchContextException,
-    ValidationException
-):
+class InvalidCoordSearchContextException(CoordSearchContextException, ValidationException):
     """Catchall Exception for CoordSearchContextValidator when a validation candidate fails a sanity check."""
     ERROR_CODE = "COORD_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "CoordSearchContext validation failed."
 
 
-class NoCoordSearchOptionSelectedException(
-    CoordSearchContextException,
-    NoBuildOptionSelectedException
-):
+class NoCoordSearchOptionSelectedException(CoordSearchContextException, NoBuildOptionSelectedException):
     """"""
     ERROR_CODE = "NO_COORD_SEARCH_OPTION_SELECTED_ERROR"
     DEFAULT_MESSAGE = "None of the CoordSearchContext options wre selected. An option must be picked."

@@ -3,7 +3,7 @@
 """
 Module: chess.coord.search.context.validator
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-16
 version: 1.0.0
 """
 
@@ -11,9 +11,10 @@ version: 1.0.0
 from typing import Any, cast
 
 
-from chess.coord import Coord, CoordValidator
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
 from chess.coord import (
+    Coord, CoordValidator, CoordSearchContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
+    MoreThanOneCoordSearchOptionPickedException, NoCoordSearchOptionSelectedException,
 )
 
 class CoordSearchContextValidator(Validator):
@@ -122,7 +123,7 @@ class CoordSearchContextValidator(Validator):
     def validate_row_search_option(
             cls,
             candidate: Any,
-            coord_validator: type[Coordvalidator]=Coordvalidator
+            coord_validator: type[CoordValidator]=CoordValidator
     ) -> ValidationResult[CoordSearchContext]:
         """
         # Action:
@@ -143,15 +144,18 @@ class CoordSearchContextValidator(Validator):
         method = "CoordSearchContextValidator.validate_id_search_option"
         
         try:
-            coord_validator = coord_validator.validate(candidate)
-            if coord_validator.is_failure():
-                return ValidationResult.failure(coord_validator.exception)
+            row_validation = coord_validator.validate_row(candidate)
+            if row_validation.is_failure():
+                return ValidationResult.failure(row_validation.exception)
             
-            return ValidationResult.success(payload=CoordSearchContext(id=coord_validator.payload))
-        except Exception as e:
+            row = cast(int, row_validation.payload)
+            
+            return ValidationResult.success(payload=CoordSearchContext(row=row))
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
     
@@ -160,7 +164,7 @@ class CoordSearchContextValidator(Validator):
     def validate_column_search_option(
             cls,
             candidate: Any,
-            coord_validator: type[Coordvalidator] = Coordvalidator
+            coord_validator: type[CoordValidator] = CoordValidator
     ) -> ValidationResult[CoordSearchContext]:
         """
         # Action:
@@ -185,11 +189,14 @@ class CoordSearchContextValidator(Validator):
             if column_validation.is_failure():
                 return ValidationResult.failure(column_validation.exception)
             
-            return ValidationResult.success(payload=CoordSearchContext(name=column_validation.payload))
-        except Exception as e:
+            column = cast(str, column_validation.payload)
+            
+            return ValidationResult.success(payload=CoordSearchContext(column=column))
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )
     
@@ -223,10 +230,13 @@ class CoordSearchContextValidator(Validator):
             if coord_validation.is_failure():
                 return ValidationResult.failure(coord_validation.exception)
             
-            return ValidationResult.success(payload=CoordSearchContext(coord=coord_validation.payload))
-        except Exception as e:
+            coord = cast(Coord, coord_validation.payload)
+            
+            return ValidationResult.success(payload=CoordSearchContext(coord=coord))
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
+                    ex
                 )
             )

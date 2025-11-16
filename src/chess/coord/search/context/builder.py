@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.coord import Coord, CoordValidator
-from chess.system import BuildResult, Builder, CoordValidator, CoordValidator, LoggingLevelRouter
+
+from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.coord import (
-    CoordSearchContext, CoordSearchContextBuildFailedException, NoCoordSearchOptionSelectedException,
-    MoreThanOneCoordSearchOptionPickedException,
+    Coord, CoordValidator, CoordSearchContext, CoordSearchContextBuildFailedException,
+    NoCoordSearchOptionSelectedException, MoreThanOneCoordSearchOptionPickedException,
 )
 
 

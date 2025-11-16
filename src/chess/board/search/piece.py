@@ -114,8 +114,8 @@ class BoardPieceSearch(Search[Board, Piece]):
                 return SearchResult(payload=matches)
             else:
                 return BoardPieceSearch._resolve_matching_ids(matches=matches, board=board)
-        except Exception as e:
-            return SearchResult(exception=e)
+        except Exception as ex:
+            return SearchResult(exception=ex)
 
 
     @classmethod
