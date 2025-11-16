@@ -37,7 +37,7 @@ class VectorBuilder(Builder[Vector]):
     @LoggingLevelRouter.monitor()
     def build(cls, x: int, y: int) -> BuildResult[Vector]:
         """
-        ACTION:
+        # ACTION:
         1.  Check x is:
             *   an INT
             *   between -LONGEST_KNIGHT_LEG_SIZE and LONGEST_KNIGHT_LEG_SIZE inclusive.
@@ -47,7 +47,7 @@ class VectorBuilder(Builder[Vector]):
         3.  If any check fails, return the exception inside a BuildResult.
         2.  When all checks create a new Vector and return in a BuildResult
 
-        PARAMETERS:
+        # PARAMETERS:
             *   x (int): value in the x-plane
             *   y (int): value in the y-plane
 

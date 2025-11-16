@@ -34,8 +34,8 @@ class ScalarService:
             the application's safety contract.
     """
     
-    _scalar_builder: [ScalarBuilder]
-    _scalar_validator: [ScalarValidator]
+    _scalar_builder: type[ScalarBuilder]
+    _scalar_validator: type[ScalarValidator]
     
     def __init__(
             self,

@@ -45,8 +45,8 @@ class VectorValidator(Validator[Vector]):
         4.  Check candidate.y is:
                 *   an INT
                 *   between -LONGEST_KNIGHT_LEG_SIZE and -LONGEST_KNIGHT_LEG_SIZE exclusive.
-        4.  If any check fails, return the exception inside a ValidationResult.
-        3.  When all checks pass cast candidate to a Vector instance then return inside a ValidationResult.
+        5.  If any check fails, return the exception inside a ValidationResult.
+        6.  When all checks pass cast candidate to a Vector instance then return inside a ValidationResult.
 
         # PARAMETERS:
             *   candidate (Any): Object to validate.
@@ -96,10 +96,10 @@ class VectorValidator(Validator[Vector]):
     @LoggingLevelRouter.monitor
     def validate_x_component(cls, x_candidate: Any) -> ValidationResult[int]:
         """
-        ACTION:
+        # ACTION:
         Check if the x component is a number within the bounds of the vector.
 
-        PARAMETERS:
+        # PARAMETERS:
             *   x_candidate (Any): The object to validate.
 
         # Returns:
@@ -107,7 +107,7 @@ class VectorValidator(Validator[Vector]):
             - On success: int in the payload.
             - On failure: Exception.
 
-        RAISES:
+        # RAISES:
             *   TypeError
             *   NullXComponentException
             *   VectorBelowBoundsException
@@ -149,10 +149,10 @@ class VectorValidator(Validator[Vector]):
     @LoggingLevelRouter.monitor
     def validate_y_component(cls, y_candidate: Any) -> ValidationResult[int]:
         """
-        ACTION:
+        # ACTION:
         Check if the y component is a number within the bounds of the vector.
 
-        PARAMETERS:
+        # PARAMETERS:
             *   y_candidate (Any): The object to validate.
 
         # Returns:
@@ -160,7 +160,7 @@ class VectorValidator(Validator[Vector]):
             - On success: int in the payload.
             - On failure: Exception.
 
-        RAISES:
+        # RAISES:
             *   TypeError
             *   NullYComponentException
             *   VectorBelowBoundsException

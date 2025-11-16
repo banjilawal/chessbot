@@ -94,10 +94,10 @@ class Rank(ABC):
         # Action
         1.  origin = piece.current_position is the basis of the set.
         2.  Get points on each quadrant with a call to _compute_diagonal_ray then append to a list.
-        3.  Add origin to the span
+        3.  Add origin to the span if it not already there.
         4.  Return the list.
 
-        PARAMETERS:
+        # PARAMETERS:
             *   piece (Piece): Single-source-of-truth for the basis of the span.
         
         # Returns:
@@ -106,37 +106,78 @@ class Rank(ABC):
         RAISES:
         None
         """
+        method = "Rank.compute_diagonal_span"
+        
         origin = piece.current_position
-        return [
-            self._compute_diagonal_ray(
-                start_x=0,
-                end_x=origin.column,
-                x_step=1,
-                end_y=origin.row,
-                slop=1
-            ),
-            self._compute_diagonal_ray(
-                start_x=origin.column,
-                end_x=COLUMN_SIZE,
-                x_step=1,
-                end_y=0,
-                slope=1
-            ),
-            self._compute_diagonal_ray(
-                start_x=origin.column,
-                end_x=0,
-                x_step=-1,
-                end_y=ROW_SIZE,
-                slope=-1
-            ),
-            self._compute_diagonal_ray(
-                start_x=origin.column,
-                end_x=COLUMN_SIZE,
-                x_step=1,
-                end_y=ROW_SIZE,
-                slope=-1
-            )
-        ]
+        span = [Coord]
+        
+        self._compute_diagonal_ray(
+            start_x=0,
+            end_x=origin.column,
+            x_step=1,
+            end_y=origin.row,
+            slop=1,
+            span=span,
+        )
+        
+        self._compute_diagonal_ray(
+            start_x=origin.column,
+            end_x=COLUMN_SIZE,
+            x_step=1,
+            end_y=0,
+            slope=1,
+            span=span,
+        )
+        
+        self._compute_diagonal_ray(
+            start_x=origin.column,
+            end_x=0,
+            x_step=-1,
+            end_y=ROW_SIZE,
+            slope=-1,
+            span=span,
+        )
+        
+        self._compute_diagonal_ray(
+            start_x=origin.column,
+            end_x=COLUMN_SIZE,
+            x_step=1,
+            end_y=ROW_SIZE,
+            slope=-1,
+            span=span,
+        )
+        return span
+        
+        # return [
+        #     self._compute_diagonal_ray(
+        #         start_x=0,
+        #         end_x=origin.column,
+        #         x_step=1,
+        #         end_y=origin.row,
+        #         slop=1,
+        #     ),
+        #     self._compute_diagonal_ray(
+        #         start_x=origin.column,
+        #         end_x=COLUMN_SIZE,
+        #         x_step=1,
+        #         end_y=0,
+        #         slope=1
+        #     ),
+        #     self._compute_diagonal_ray(
+        #         start_x=origin.column,
+        #         end_x=0,
+        #         x_step=-1,
+        #         end_y=ROW_SIZE,
+        #         slope=-1
+        #     ),
+        #     self._compute_diagonal_ray(
+        #         start_x=origin.column,
+        #         end_x=COLUMN_SIZE,
+        #         x_step=1,
+        #         end_y=ROW_SIZE,
+        #         slope=-1
+        #     )
+        # ]
     
     @LoggingLevelRouter.monitor
     def _compute_diagonal_ray(
@@ -145,23 +186,26 @@ class Rank(ABC):
             end_x: int,
             x_step: int,
             end_y: int,
-            slope: int
-    ) -> [Coord]:
+            slope: int,
+            span: [Coord],
+    ):
         """
         # Action
         1.  Iterate over the range of start_x to end_x with step x_step.
         2.  For each x find the y value using the slope.
         3.  Build a Coord from the x, y pair.
-        4.  End the loop when x >= end_x and y >= end_y.
-        5.  Return the list.
+        4.  If the Coord is not in span, append it.
+        5.  End the loop when x >= end_x and y >= end_y.
 
         PARAMETERS:
-            *   start_x (int):   Starting x value. In practice, it will be piece.current_position.column.
-            *   end_x (int):     Ending x value. This will be either 0 or COLUMN_SIZE - 1.
-            *   x_step (int):    Step size for x. In practice, the magnitude will be 1, the sign may be negative.
-            *   end_y (int):     Ending y value. This will be either 0 or ROW_SIZE - 1 dependng on the direction
-                                 of travel.
-            *   slope (int):     Slope of the diagonal. Used to find next y value.
+            *   start_x (int):          Starting x value. In practice, it will be piece.current_position.column.
+            *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
+            *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
+                                        the sign may be negative.
+            *   end_y (int):            Ending y value. This will be either 0 or ROW_SIZE - 1 depending on the
+                                        direction of travel.
+            *   slope (int):            Slope of the diagonal. Used to find next y value.
+            *   span (List[Coord]):     List to append Coords to if they are not already in the list.
 
         # Returns:
         List[Coord]
@@ -169,55 +213,123 @@ class Rank(ABC):
         RAISES:
         None
         """
-        ray = []
+        method = "Rank._compute_diagonal_ray"
+        
         i = start_x
         j = (2 * slope * i) + slope
         
         while i < end_x and j < end_y:
-            ray.append(
-                self.coord_service.build_coord(row=j, column=i)
-            )
+            point = self.coord_service.build_coord(row=j, column=i)
+            if point not in span:
+                span.append(point)
             i += x_step
             j = (2 * slope * i) + slope
-        return ray
+            
     
     @LoggingLevelRouter.monitor
     def compute_perpendicular_span(self, piece: Piece) -> [Coord]:
-        """"""
+        """
+        # BACKGROUND:
+        1.  Perpendicular relations will define a Cartesian plane with 4 quadrants.
+        2.  In the X-plane, points are in the form: p_0(0,0), p_1(1,0), p_2(2,0), p_3(3,0), ...., p_n(n,0)
+        3.  In the Y-plane, points are in the form: p_0(0,0), p_1(0,1), p_2(0,2), p_3(0,3), ...., p_n(0,n)
+        4.  we can get the span by iterating over the quadrants with the in the range [0, BOARD_DIMENSION - 1]
+
+        # Action
+        1.  origin = piece.current_position is the basis of the set.
+        2.  Get points on each quadrant with a call to _compute_perpendicular_ray then append to a list.
+        3.  Add origin to the span if it not already there.
+        4.  Return the list.
+
+        # PARAMETERS:
+            *   piece (Piece): Single-source-of-truth for the basis of the span.
+
+        # Returns:
+        List[Coord]
+
+        RAISES:
+        None
+        """
+        method = "Rank.compute_perpendicular_span"
+        
         origin = piece.current_position
-        return [
-            self._compute_perpendicular_ray(
-                start_x=0,
-                end_x=origin.column,
-                x_step=1,
-                start_y=origin.row,
-                end_y=origin.row, y_step=0
-            ),
-            self._compute_perpendicular_ray(
-                start_x=origin.column,
-                end_x=COLUMN_SIZE,
-                x_step=1,
-                start_y=origin.row,
-                end_y=origin.row,
-                y_step=0
-            ),
-            self._compute_perpendicular_ray(
-                start_x=origin.column,
-                end_x=origin.column,
-                x_step=0,
-                start_y=0,
-                end_y=origin.row,
-                y_step=1
-            ),
-            self._compute_perpendicular_ray(
-                start_x=origin.column,
-                end_x=origin.column,
-                x_step=0,
-                start_y=origin.row,
-                end_y=COLUMN_SIZE,
-                y_step=1
-            )
-        ]
+        span = [Coord]
+        
+        # Doing it this way avoids duplicates
+        self._compute_perpendicular_ray(
+            start_x=origin.column,
+            end_x=origin.column,
+            x_step=0,
+            start_y=origin.row,
+            end_y=origin.row,
+            y_step=0,
+            span=span
+        )
+        
+        self._compute_perpendicular_ray(
+            start_x=origin.column,
+            end_x=COLUMN_SIZE,
+            x_step=1,
+            start_y=origin.row,
+            end_y=origin.row,
+            y_step=0,
+            span=span,
+        ),
+        
+        self._compute_perpendicular_ray(
+            start_x=origin.column,
+            end_x=origin.column,
+            x_step=0,
+            start_y=0,
+            end_y=origin.row,
+            y_step=1,
+            span=span,
+        )
+        
+        self._compute_perpendicular_ray(
+            start_x=origin.column,
+            end_x=origin.column,
+            x_step=0,
+            start_y=origin.row,
+            end_y=COLUMN_SIZE,
+            y_step=1,
+            span=span,
+        )
+        return span
+        
+        # return [
+        #     self._compute_perpendicular_ray(
+        #         start_x=0,
+        #         end_x=origin.column,
+        #         x_step=1,
+        #         start_y=origin.row,
+        #         end_y=origin.row, y_step=0
+        #     ),
+        #     self._compute_perpendicular_ray(
+        #         start_x=origin.column,
+        #         end_x=COLUMN_SIZE,
+        #         x_step=1,
+        #         start_y=origin.row,
+        #         end_y=origin.row,
+        #         y_step=0
+        #     ),
+        #     self._compute_perpendicular_ray(
+        #         start_x=origin.column,
+        #         end_x=origin.column,
+        #         x_step=0,
+        #         start_y=0,
+        #         end_y=origin.row,
+        #         y_step=1
+        #     ),
+        #     self._compute_perpendicular_ray(
+        #         start_x=origin.column,
+        #         end_x=origin.column,
+        #         x_step=0,
+        #         start_y=origin.row,
+        #         end_y=COLUMN_SIZE,
+        #         y_step=1
+        #     )
+        # ].append(origin)
     
     @LoggingLevelRouter.monitor
     def _compute_perpendicular_ray(
@@ -227,23 +339,44 @@ class Rank(ABC):
             x_step: int,
             start_y: int,
             end_y: int,
-            y_step: int
-    ) -> [Coord]:
-        """"""
+            y_step: int,
+            span: [Coord] = None,
+    ):
+        """
+        # Action
+        1.  Iterate over the range of start_x to end_x with step x_step.
+        2.  For each x find the y value using the slope.
+        3.  Build a Coord from the x, y pair.
+        4.  If the Coord is not in span, append it.
+        5.  End the loop when x >= end_x and y >= end_y.
+
+        PARAMETERS:
+            *   start_x (int):          Starting x value. In practice, it will be piece.current_position.column.
+            *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
+            *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
+                                        the sign may be negative.
+            *   start_y (int):          Starting y value. In practice, it will be piece.current_position.row.
+            *   end_y (int):            Ending y value. This will be either 0 or ROW_SIZE - 1 depending on the
+                                        direction of travel.
+            *   y_step (int):           Step size for y. In practice, the magnitude will be 1,
+            *   span (List[Coord]):     List to append Coords to if they are not already in the list.
+
+        # Returns:
+        List[Coord]
+
+        RAISES:
+        None
+        """
+        method = "Rank._compute_perpendicular_ray"
         i = start_x
         j = start_y
         
-        points = [Coord]
         while i < end_x and j < end_y:
-            points.append(
-                self.coord_service.build_coord(
-                    row=j,
-                    column=i
-                )
-            )
+            point = self.coord_service.build_coord(row=j, column=i)
+            if point not in span:
+                span.append(point)
             i += x_step
             j += y_step
-        return points
     
     @property
     def id(self) -> int:

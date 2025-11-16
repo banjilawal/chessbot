@@ -20,7 +20,7 @@ class Scalar:
     Scalar
   
     # ATTRIBUTES:
-        *   value (int): range [-BOARD_DIMENSION, BOARD_DIMENSION]
+        *   value (int):    range [-BOARD_DIMENSION, BOARD_DIMENSION]
     """
     
     def __init__(self, value: int):
