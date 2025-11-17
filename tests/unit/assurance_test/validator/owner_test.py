@@ -3,9 +3,9 @@ from unittest.mock import create_autospec
 
 from assurance.exception.invalid_id import IdValidationException
 from assurance.exception.invalid_name import NameValidationException
-from chess.commander.exception.invalid_commander import CommanderValidationException
-from chess.commander.commander_validator import CommanderValidator
-from chess.commander.exception import NullCommanderException
+from chess.agent.exception.invalid_commander import CommanderValidationException
+from chess.agent.commander_validator import CommanderValidator
+from chess.agent.exception import NullCommanderException
 from chess.competitor.commander import Commander
 from unit.chess_test.competitor.competitor_test import CompetitorTest
 
@@ -29,7 +29,7 @@ class CompetitorValidatorTest(unittest.TestCase):
   def test_competitor_validator_failed_id_validation_raises_exception(self):
     mock_competitor = create_autospec(Commander, instance=True)
     mock_competitor.visitor_id=-1
-    mock_competitor._visitor_name= "commander"
+    mock_competitor._visitor_name= "agent"
 
     with self.assertRaises(CommanderValidationException) as ctx:
       CommanderValidator.validate(mock_competitor)

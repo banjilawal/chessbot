@@ -40,8 +40,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 # CONTAINS:
 ----------
@@ -66,7 +66,7 @@ ACTION:
 Create a `Team` object if the parameters have correctness.
 
 PARAMETERS:
-    * `commander` (`Commander`): owner of `Team` object.
+    * `agent` (`PlayerAgent`): owner of `Team` object.
     * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
 
 RETURNS:

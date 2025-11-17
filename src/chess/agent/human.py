@@ -1,17 +1,17 @@
 from typing import  TYPE_CHECKING
 
 
-from chess.commander import  Commander
+from chess.agent import  PlayerAgent
 
 
-class Human(Commander):
+class HumanPlayerAgent(PlayerAgent):
 
   def __init__(self, id: int,  name: str):
     super().__init__(id, name)
 
   def __eq__(self, other):
     if super().__eq__(other):
-      if isinstance(other, Human):
+      if isinstance(other, HumanPlayerAgent):
         return True
     return False
 

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.commander import Commander, CommanderService
+from chess.agent import PlayerAgent, CommanderService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
 
@@ -35,7 +35,7 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             id: int,
-            commander: Commander,
+            commander: PlayerAgent,
             team_schema: TeamSchema,
             identity_service: IdentityService = IdentityService(),
             commander_validator: CommanderService = CommanderValidator(),
@@ -45,10 +45,10 @@ class TeamBuilder(Builder[Team]):
         # ACTION:
         1.  Check ID safety with IdentityService.validate_id.
         2.  Check schema correctness with TeamSchemaValidator.validate.
-        3.  Check commander safety with CommanderService.validate_commander.
+        3.  Check agent safety with CommanderService.validate_commander.
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks create a new Team object.
-        6.  Add the new Team to the commander's teams collection if it is not already there.
+        6.  Add the new Team to the agent's teams collection if it is not already there.
     
         # PARAMETERS:
             *   x (int): value in the x-plane

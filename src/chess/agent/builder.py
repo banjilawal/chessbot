@@ -1,13 +1,13 @@
-# chess/commander/old_occupation_validator.py
+# chess/agent/old_occupation_validator.py
 
 """
-Module: `chess.commander.validator`
+Module: `chess.agent.validator`
 Author: Banji Lawal
 Created: 2025-10-03
 Updated: 2025-10-04
 version: 1.0.0
 
- Provides: Create concrete subclasses of `Commander`
+ Provides: Create concrete subclasses of `PlayerAgent`
 
 Contains:
   * `CommanderBuilder`
@@ -16,17 +16,17 @@ Contains:
 from typing import Optional
 
 from chess.system import LoggingLevelRouter, NameValidator, InvalidNameException, BuildResult, Builder
-from chess.commander import Commander, Human, Bot, CommanderBuildFailedException
+from chess.agent import PlayerAgent, Human, Bot, CommanderBuildFailedException
 from chess.engine import DecisionEngine
 
 
-class CommanderBuilder(Builder[Commander]):
+class CommanderBuilder(Builder[PlayerAgent]):
   """
-  Responsible for safely constructing `Commander` instances.
+  Responsible for safely constructing `PlayerAgent` instances.
   """
 
   @classmethod
-  def build(cls, name: str, engine: Optional[DecisionEngine]=None) -> BuildResult[Commander]:
+  def build(cls, name: str, engine: Optional[DecisionEngine]=None) -> BuildResult[PlayerAgent]:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -48,15 +48,15 @@ class CommanderBuilder(Builder[Commander]):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Constructs team_name new `Commander` that works correctly.
+    Constructs team_name new `PlayerAgent` that works correctly.
 
     Args:
       `visitor_name` (`str`): Must pass `NameValidator` checks.
       `engine` (DecisionEngine): The engine used to determine how to play.`
 
     Returns:
-    BuildResult[Commander]: A `BuildResult` containing either:
-      - On success: A valid `Commander` instance in the payload
+    BuildResult[PlayerAgent]: A `BuildResult` containing either:
+      - On success: A valid `PlayerAgent` instance in the payload
       - On failure: Error information and error details
 
     Raises:
@@ -82,7 +82,7 @@ class CommanderBuilder(Builder[Commander]):
       if engine is not None and isinstance(engine, DecisionEngine):
         return BuildResult(payload=Bot(name=name, engine=engine))
 
-      # If no engine is provided and all the checks are passed, team_name Human commander is returned
+      # If no engine is provided and all the checks are passed, team_name HumanPlayerAgent agent is returned
       return BuildResult(payload=Human(name=name))
 
     except (

@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import create_autospec, patch
 
-from chess.commander.exception.invalid_commander import CommanderValidationException
+from chess.agent.exception.invalid_commander import CommanderValidationException
 from assurance.exception.invalid_id import IdValidationException
 from chess.competitor.commander import Commander
 from chess.team.schema import TeamSchema
@@ -26,7 +26,7 @@ class SideTest(unittest.TestCase):
     return mock_side
 
 
-  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.agent.CommanderValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = False
@@ -39,31 +39,31 @@ class SideTest(unittest.TestCase):
       Side(side_id=None, controller=mock_competitor, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.agent.CommanderValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
     mock_competitor_validation.return_value.is_success.return_value = False
-    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid agent")
 
     with self.assertRaises(CommanderValidationException):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.agent.CommanderValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
     mock_competitor_validation.return_value.is_success.return_value = False
-    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid commander")
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid agent")
 
     with self.assertRaises(CommanderValidationException):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.agent.CommanderValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -75,7 +75,7 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=mock_competitor, profile=None)
 
 
-  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.agent.CommanderValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -98,14 +98,14 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=fake_controller, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.agent.CommanderValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1
 
 
-    competitor = Commander(competitor_id=1, name="commander")
+    competitor = Commander(competitor_id=1, name="agent")
     mock_competitor_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.payload = competitor
 
@@ -114,14 +114,14 @@ class SideTest(unittest.TestCase):
       assert side in competitor.teams.items
 
 
-  @patch('assurance.notification.commander.CommanderValidator.validate')
+  @patch('assurance.notification.agent.CommanderValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1
 
 
-    competitor = Commander(competitor_id=1, name="commander")
+    competitor = Commander(competitor_id=1, name="agent")
     mock_competitor_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.payload = competitor
 

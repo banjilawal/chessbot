@@ -41,8 +41,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -56,7 +56,7 @@ from typing import List
 
 from chess.team import Team, TeamSearchContext, TeamValidator
 from chess.piece.piece import Piece
-from chess.commander.search import SearchResult
+from chess.agent.search import SearchResult
 from chess.system import SearchContext
 from chess.team.search import TeamHostageSearch, TeamRosterSearch, PieceCollectionCategory
 

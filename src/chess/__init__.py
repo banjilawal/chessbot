@@ -14,7 +14,7 @@ log = logging.getLogger("chessbot")
 # from .arena import *
 # from .assets import *
 # from .board import *
-# from .commander import *
+# from .agent import *
 # from .point import *
 # from .driver import *
 # from .game import *

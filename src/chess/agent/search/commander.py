@@ -1,7 +1,7 @@
 
-from chess.commander import Commander, CommanderValidator
+from chess.agent import PlayerAgent, CommanderValidator
 from chess.team import Team
-from chess.commander.search import SearchResult
+from chess.agent.search import SearchResult
 from chess.system import IdValidator
 
 class CommanderSearch:
@@ -29,9 +29,9 @@ class CommanderSearch:
   """
 
   @staticmethod
-  def for_team(team_id: int, commander: 'Commander') -> SearchResult['Team']:
+  def for_team(team_id: int, commander: 'PlayerAgent') -> SearchResult['Team']:
     method = "CommanderSearch.for_team"
-    """Find team_name discover by ID within team_name specific commander"""
+    """Find team_name discover by ID within team_name specific agent"""
 
     try:
       id_validation = IdValidator.validate(team_id)

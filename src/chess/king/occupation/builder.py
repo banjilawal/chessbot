@@ -5,7 +5,7 @@ from typing import cast
 
 from chess.exception import SearchException
 from chess.piece.exception import PieceCapturingItSelfException
-from chess.commander.search import BoardSearch
+from chess.agent.search import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
 from chess.event import KingOccupationEvent, KingOccupationEventBuilderException, TargetSquareMismatchException

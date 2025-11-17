@@ -22,7 +22,7 @@ meets all required specifications before construction completes
 Usage:
   ```python
   # Safe team_name creation with validate
-  build_result = TeamBuilder.build(visitor_team_id=1, commander=black_commander, schema=TeamProfile.BLACK)
+  build_result = TeamBuilder.build(visitor_team_id=1, agent=black_commander, schema=TeamProfile.BLACK)
 
   if build_result.is_success():
     team_name = build_result.payload
@@ -55,7 +55,7 @@ status is returned, the contained `Team` is valid and ready for use.
 
 Args:
   `visitor_team_id`(`int`): The unique visitor_id for the team_name. Must pass `IdValidator` checks.
-  `commander`(`Commander`): The human or cybernetic moving pieces in `Team.roster`. The commander must pass
+  `agent`(`PlayerAgent`): The human or cybernetic moving pieces in `Team.roster`. The agent must pass
     `CommanderValidator` checks.must pass `CommanderValidator` checks.
   `schema`(`TeamProfile`): The schema defining team_name attributes and behaviors. Must not be None and be
     an instance of `TeamProfile`.
@@ -69,10 +69,10 @@ Raises:
   `TeamBuildFailedException`: Wraps any underlying validate failures that occur during the construction process.
   This includes:
     * `InvalidIdException`: if `visitor_id` fails validate checks`
-    * `InvalidCommanderException`: if `commander` fails validate checks
+    * `InvalidCommanderException`: if `agent` fails validate checks
     * `NullTeamProfileException`: if `schema` is None
     * `TypeError`: if `schema` is not team_name `TeamProfile` instance
-    * `RelationshipException`: if the bidirectional relationship between `Team` and `Commander` is broken
+    * `RelationshipException`: if the bidirectional relationship between `Team` and `PlayerAgent` is broken
 
 Note:
   The build runs through all the checks on parameters and state to guarantee only team_name valid `Team` is
@@ -83,12 +83,12 @@ Note:
 Example:
   ```python
   # Valid team_name creation
-  notification = TeamBuilder.build(visitor_team_id=1, commander=black-commander, schema=black_team_profile)
+  notification = TeamBuilder.build(visitor_team_id=1, agent=black-agent, schema=black_team_profile)
   if notification.is_success():
     team_name = cast(Team, notification.payload) # Guaranteed valid Team
 
-  # Null commander will fail gracefully
-  notification = TeamBuilder.build(visitor_team_id=1, commander=None, schema=black_team_profile)
+  # Null agent will fail gracefully
+  notification = TeamBuilder.build(visitor_team_id=1, agent=None, schema=black_team_profile)
   if not notification.is_success():
     # Handle construction failure
     pass
@@ -153,8 +153,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 # CONTAINS:
 ----------
@@ -203,8 +203,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -220,7 +220,7 @@ From `chess.owner`:
 # PROVIDES:
 
 ATTRIBUTES:
-  * `_commander` (`Commander`): Player who controls `Team`
+  * `_commander` (`PlayerAgent`): Player who controls `Team`
   * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, visitor_name.
   * `_roster` (`List[Piece]`): List of chess pieces on the team_name.
   * `_hostages` (`List[Piece]`): List of captured enemy pieces.
@@ -244,7 +244,7 @@ ACTION:
 Create a `Team` object if the parameters have correctness.
 
 PARAMETERS:
-    * `commander` (`Commander`): owner of `Team` object.
+    * `agent` (`PlayerAgent`): owner of `Team` object.
     * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
 
 RETURNS:

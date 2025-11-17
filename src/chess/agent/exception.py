@@ -74,17 +74,17 @@ __all__ = [
 
 class CommanderException(ChessException):
   """
-  Super class for exceptions raised by Commander objects. DO NOT USE DIRECTLY. Subclasses
+  Super class for exceptions raised by PlayerAgent objects. DO NOT USE DIRECTLY. Subclasses
   give more useful debugging messages.
   """
   ERROR_CODE = "COMMANDER_ERROR"
-  DEFAULT_MESSAGE = "Commander raised an rollback_exception"
+  DEFAULT_MESSAGE = "PlayerAgent raised an rollback_exception"
 
 #======================# COMMANDER VALIDATION EXCEPTIONS #======================#  
 class NullCommanderException(CommanderException, NullException):
-  """Raised if an entity, method, or operation requires team_name commander but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name agent but gets null instead."""
   ERROR_CODE = "NULL_COMMANDER_ERROR"
-  DEFAULT_MESSAGE = f"Commander cannot be null"
+  DEFAULT_MESSAGE = f"PlayerAgent cannot be null"
 
 class InvalidCommanderException(CommanderException, ValidationException):
   """
@@ -92,7 +92,7 @@ class InvalidCommanderException(CommanderException, ValidationException):
   validating an existing board_validator
   """
   ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Commander validation failed."
+  DEFAULT_MESSAGE = "PlayerAgent validation failed."
 
 #======================# COMMANDER BUILD EXCEPTIONS #======================#  
 class CommanderBuildFailedException(CommanderException, BuildFailedException):
@@ -101,7 +101,7 @@ class CommanderBuildFailedException(CommanderException, BuildFailedException):
   exceptions raised build team_name new board_validator
   """
   ERROR_CODE = "COMMANDER_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Commander build failed."
+  DEFAULT_MESSAGE = "PlayerAgent build failed."
 
 #======================# COMMANDER HISTORY EXCEPTIONS #======================#  
 class CommanderHistoryException(CommanderException):
@@ -132,11 +132,11 @@ class CannotRemoveOldTeamException(CommanderHistoryException):
 
 class InvalidCommanderAssignmentException(CommanderHistoryException):
   """
-  If team_name team_name already attached to team_name commander (team_name.commander == not None) tries being assigned team_name
-  different commander, `InvalidCommanderAssignmentException` is raised.
+  If team_name team_name already attached to team_name agent (team_name.agent == not None) tries being assigned team_name
+  different agent, `InvalidCommanderAssignmentException` is raised.
   """
   ERROR_CODE = "INVALID_COMMANDER_ASSIGNMENT_ERROR"
-  DEFAULT_MESSAGE = "Team is already assigned to team_name different commander."
+  DEFAULT_MESSAGE = "Team is already assigned to team_name different agent."
 
 
 

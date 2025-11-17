@@ -1,14 +1,14 @@
 from typing import cast, Generic, TYPE_CHECKING
 
-from chess.commander.exception import CommanderHistoryException
+from chess.agent.exception import CommanderHistoryException
 from chess.system import Result, Validator, IdValidator, NameValidator
 from chess.exception import NameValidationException, IdValidationException
-from chess.commander import Commander, NullCommanderException, InvalidCommanderException
+from chess.agent import PlayerAgent, NullCommanderException, InvalidCommanderException
 
 
 class CommanderValidator(Validator):
   """
-  Validates an Commander used in team_name graph module meets requirements:
+  Validates an PlayerAgent used in team_name graph module meets requirements:
     - Is not null.
     - Its fields meet the specifications for the graph.
   Unmet requirements will raise team_name InvalidCommanderException
@@ -20,35 +20,35 @@ class CommanderValidator(Validator):
   """
 
   @staticmethod
-  def validate(candidate: Generic[T]) -> Result[Commander]:
-    entity = "Commander"
+  def validate(candidate: Generic[T]) -> Result[PlayerAgent]:
+    entity = "PlayerAgent"
     class_name = f"{entity}Validator"
     method = f"{class_name}.validate"
 
     """
-    Validates team_name commander meets graph requirements:
+    Validates team_name agent meets graph requirements:
       - Not null
       - valid visitor_id
       - valid visitor_name
-      - Commander.team_history meets validator requirements
+      - PlayerAgent.team_history meets validator requirements
     Any failed requirement raise an rollback_exception wrapped in team_name InvalidCommanderException
       
     Args
-      candidate (Commander): commander to validate
+      candidate (PlayerAgent): agent to validate
       
      Returns:
        Result[T]: A Result object containing the validated payload if all graph requirements
        are satisfied. InvalidCommanderException otherwise.
     
     Raises:
-      TypeError: if candidate is not Commander
+      TypeError: if candidate is not PlayerAgent
       NullCommanderException: if candidate is null  
 
-      RowBelowBoundsException: If commander.row < 0
-      RowAboveBoundsException: If commander.row >= ROW_SIZE
+      RowBelowBoundsException: If agent.row < 0
+      RowAboveBoundsException: If agent.row >= ROW_SIZE
         
-      ColumnBelowBoundsException: If commander.column < 0
-      ColumnAboveBoundsException: If commander.column>= ROW_SIZE
+      ColumnBelowBoundsException: If agent.column < 0
+      ColumnAboveBoundsException: If agent.column>= ROW_SIZE
         
       InvalidCommanderException: Wraps any preceding team_exception   
     """
@@ -62,14 +62,14 @@ class CommanderValidator(Validator):
       if candidate is None:
         raise NullCommanderException(f"{method} {NullCommanderException.DEFAULT_MESSAGE}")
 
-      # If cannot cast from candidate to Commander need to break
-      from chess.commander import Commander
-      if not isinstance(candidate, Commander):
-        raise TypeError(f"{method} Expected team_name Commander, got {type(candidate).__name__} instead.")
+      # If cannot cast from candidate to PlayerAgent need to break
+      from chess.agent import PlayerAgent
+      if not isinstance(candidate, PlayerAgent):
+        raise TypeError(f"{method} Expected team_name PlayerAgent, got {type(candidate).__name__} instead.")
 
       # cast and run checks for the fields
-      from chess.commander import Commander
-      commander = cast(Commander, candidate)
+      from chess.agent import PlayerAgent
+      commander = cast(PlayerAgent, candidate)
 
       id_validation = IdValidator.validate(commander.id)
       if not id_validation.is_success():
@@ -79,7 +79,7 @@ class CommanderValidator(Validator):
       if not name_validation.is_success():
         raise name_validation.exception
 
-      # team_history_validation = TeamListValidator.validate(commander.teams)
+      # team_history_validation = TeamListValidator.validate(agent.teams)
       # if not team_history_validation.is_success():
       #   raise team_history_validation.err
 

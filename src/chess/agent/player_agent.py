@@ -6,15 +6,15 @@ from assurance import IdValidator, NameValidator
 from chess.system import auto_id
 from chess.team import Team
 from chess.piece import Piece
-from chess.commander import CommandHistory
+from chess.agent import CommandHistory
 
 if TYPE_CHECKING:
   pass
 
-class Commander(ABC):
+class PlayerAgent(ABC):
   _id: int
   _name: str
-  _teams: CommandHistory
+  _team_assignments: CommandHistory
   _current_team: Optional['Team']
 
 
@@ -31,9 +31,9 @@ class Commander(ABC):
     # self._visitor_id = cast(int, id_validation.payload)
     self._id = id
     self._name = cast(str, name_validation.payload)
-    self._teams = CommandHistory()
+    self._team_assignments = CommandHistory()
 
-    self._current_team = self._teams.current_team
+    self._current_team = self._team_assignments.current_team
   #
   #
   @property
@@ -48,12 +48,12 @@ class Commander(ABC):
 
   @property
   def teams(self) -> CommandHistory:
-    return self._teams
+    return self._team_assignments
 
 
   @property
   def current_team(self) -> Optional['Team']:
-    return self._teams.current_team
+    return self._team_assignments.current_team
 
 
   @name.setter
@@ -66,8 +66,8 @@ class Commander(ABC):
       return True
     if other is None:
       return False
-    if isinstance(other, Commander):
-      commander = cast(Commander, other)
+    if isinstance(other, PlayerAgent):
+      commander = cast(PlayerAgent, other)
       return self._id == commander.id
 
 
@@ -85,7 +85,7 @@ class Commander(ABC):
       f"]"
     )
   
-  # commander.order_move(
+  # agent.order_move(
   #   owner=TeamSearch.search(
   #     data_owner=self._team_name,
   #     search_category=SearchCategory.ROSTER,
@@ -102,7 +102,7 @@ class Commander(ABC):
   # # 5. Returns TransactionResult with rollback safety
 
   def move_piece(self, piece_name:str, destination:Coord):
-    method = "Commander.move_piece"
+    method = "PlayerAgent.move_piece"
 
     try:
       validation = NameValidator.validate(piece_name)

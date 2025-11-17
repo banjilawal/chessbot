@@ -347,7 +347,7 @@ Example:
 # 
 # >>> from chess.team_name import Team, TeamSchema, TeamValidator
 # >>> # Create team_name new team_name and roster
-# >>> team_name = Team(visitor_team_id=1, commander=white_team_commander, schema=TeamSchema.WHITE)
+# >>> team_name = Team(visitor_team_id=1, agent=white_team_commander, schema=TeamSchema.WHITE)
 # >>> validate = TeamValidator.validate(team_name)
 # 
 # ## TEAM EXCEPTIONS
@@ -382,7 +382,7 @@ Example:
 # >#>> from chess.team_name.team_exception import AddTeamMemberException
 # >>>
 # >>> def add_piece(team_name, discover):
-# ...   if is discover.team_name.commander not team_name.commander:
+# ...   if is discover.team_name.agent not team_name.agent:
 # ...     raise QUotaFullException("The discover is not on this team_name. Adding discover failed")
 # Traceback (most recent call last):
 #   ...

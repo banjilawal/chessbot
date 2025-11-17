@@ -41,8 +41,8 @@ From `chess.system`:
 From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -95,8 +95,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -155,10 +155,10 @@ Raises:
   `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
   `NullDiscoverySearchContextException`: if `candidate` is null
   `InvalidIdException`: if `visitor_id` fails validate checks
-  `InvalidCommanderException`: if `commander` fails validate checks
+  `InvalidCommanderException`: if `agent` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `schema` is null
-  `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
-  `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and Commander is broken
+  `InvalidCommanderAssignmentException`: if the assigned agent does not consistency the validated agent
+  `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and PlayerAgent is broken
   `InvalidDiscoverySearchContextException`: Wraps any preceding exceptions
 """
 # src/chess/discoverySearchContext/discoverySearchContext.py
@@ -204,8 +204,8 @@ From `chess.system`:
 From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -258,8 +258,8 @@ From `chess.system`:
 From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`

@@ -1,7 +1,7 @@
-# src/chess/commander/bot.py
+# src/chess/agent/machine.py
 
 """
-Module: `chess.commander.bot`
+Module: `chess.agent.bot`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -10,16 +10,16 @@ version: 1.0.0
   move during team_name turn.
 
 Contains:
- * `Bot`
+ * `MachinePlayerAgent`
 """
 from typing import cast
 
-from chess.commander import Commander
+from chess.agent import PlayerAgent
 from chess.engine import DecisionEngine
 from chess.rank import Bishop
 
 
-class Bot(Commander):
+class MachinePlayerAgent(PlayerAgent):
   """
   Automated player that uses team_name `DecisionEngine`
 
@@ -42,7 +42,7 @@ class Bot(Commander):
 
   def __eq__(self, other):
     if super().__eq__(other):
-      if isinstance(other, Bot):
+      if isinstance(other, MachinePlayerAgent):
         return True
     return False
 

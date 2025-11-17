@@ -10,7 +10,7 @@ from chess.competitor.side import SideRecord
 class CompetitorTest(unittest.TestCase):
 
   @staticmethod
-  def valid_mock_competitor(competitor_id=1, name="commander"):
+  def valid_mock_competitor(competitor_id=1, name="agent"):
     competitor = create_autospec(Commander, instance=True)
     sides_played = create_autospec(SideRecord, instance=True)
 
@@ -20,7 +20,7 @@ class CompetitorTest(unittest.TestCase):
     sides_played.current_team = None
 
     competitor.visitor_id = 1
-    competitor.visitor_name = "Valid Commander"
+    competitor.visitor_name = "Valid PlayerAgent"
     competitor.teams = sides_played
 
     return competitor
@@ -39,7 +39,7 @@ class CompetitorTest(unittest.TestCase):
     mock_name_validate.return_value.is_success.return_value = True
 
     with self.assertRaises(IdValidationException):
-      Commander(competitor_id=-1, name="commander")
+      Commander(competitor_id=-1, name="agent")
 
 
   @patch('assurance.notification.visitor_name.NameValidator.validate')
@@ -68,7 +68,7 @@ class CompetitorTest(unittest.TestCase):
     mock_id_validate.return_value.is_success.return_value = True
     mock_name_validate.return_value.is_success.return_value = True
 
-    Commander(competitor_id=1, name="commander")
+    Commander(competitor_id=1, name="agent")
 
 
 if __name__ == "__main__":

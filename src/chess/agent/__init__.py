@@ -1,7 +1,7 @@
 # chess/board_validator/commander__init__.py
 
 """
-Module: `chess.commander`
+Module: `chess.agent`
 Author: Banji Lawal
 Created: 2025-10-03
 Updated: 2025-10-04
@@ -13,12 +13,12 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `Commander`: Abstract class.
-  - `Human`: Concrete `subclass` of `Commander` people use.
-  - `Bot`: Concrete `subclass` of `Commander` that uses team_name `DecisionEngine`.
-  - `CommanderBuilder`: Builds new instances of `Commander`.
+  - `PlayerAgent`: Abstract class.
+  - `HumanPlayerAgent`: Concrete `subclass` of `PlayerAgent` people use.
+  - `MachinePlayerAgent`: Concrete `subclass` of `PlayerAgent` that uses team_name `DecisionEngine`.
+  - `CommanderBuilder`: Builds new instances of `PlayerAgent`.
   - `CommanderValidator`: Performs validator and sanity checks on existing
-      `Commander` instances. before they are used.
+      `PlayerAgent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
@@ -26,7 +26,7 @@ This package exposes core classes and all exceptions from its sub-modules:
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
-`commander` package level. (e.g., `from chess.commander import CommanderValidator`). See USAGE
+`agent` package level. (e.g., `from chess.agent import CommanderValidator`). See USAGE
 EXAMPLES section.
 
 # USAGE EXAMPLES
@@ -37,7 +37,7 @@ ___
 """
 
 from .exception import *
-from .commander import *
+from .player_agent import *
 from .human import Human
 from .bot import Bot
 from .history import CommandHistory
@@ -48,13 +48,13 @@ from .builder import CommanderBuilder
 
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.commander'
+__package_name__ = 'chess.agent'
 
 __all__ = [
   # Core classes
-  'Bot',
-  'Human',
-  'Commander',
+  'MachinePlayerAgent',
+  'HumanPlayerAgent',
+  'PlayerAgent',
   'CommandHistory',
   'CommanderValidator',
   'CommanderBuilder',

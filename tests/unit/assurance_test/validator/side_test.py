@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import create_autospec
 
-from chess.commander.exception.invalid_commander import CommanderValidationException
+from chess.agent.exception.invalid_commander import CommanderValidationException
 from assurance.exception.invalid_id import IdValidationException
 from chess.team.team_exception.invalid_team import TeamValidationException
 from chess.team.validator import TeamValidator
@@ -55,7 +55,7 @@ class SideValidatorTest(unittest.TestCase):
     mock_side.visitor_id=1
 
 
-    mock_side.competitor=Commander(1, "commander")
+    mock_side.competitor=Commander(1, "agent")
     mock_side.schema = None
 
     with self.assertRaises(TeamValidationException) as ctx:
@@ -65,7 +65,7 @@ class SideValidatorTest(unittest.TestCase):
 
 
   def test_side_validator_payload_equals_valid_side(self):
-    side = Side(1, Commander(1, "commander"), TeamSchema.BLACK)
+    side = Side(1, Commander(1, "agent"), TeamSchema.BLACK)
     validation = TeamValidator.validate(side)
     self.assertEqual(validation.payload, side)
 

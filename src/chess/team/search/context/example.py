@@ -41,8 +41,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -109,8 +109,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -176,8 +176,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
+From `chess.agent`:
+  `PlayerAgent`, `CommanderValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -237,9 +237,9 @@ Raises:
   `TypeError`: if `candidate` is not team_name Team` object
   `NullTeamException`: if `candidate` is null
   `InvalidIdException`: if `visitor_id` fails validate checks
-  `InvalidCommanderException`: if `commander` fails validate checks
+  `InvalidCommanderException`: if `agent` fails validate checks
   `NullTeamProfileException`: if `schema` is null
-  `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
-  `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
+  `InvalidCommanderAssignmentException`: if the assigned agent does not consistency the validated agent
+  `RelationshipException`: if the bidirectional relationship between Team and PlayerAgent is broken
   `InvalidTeamException`: Wraps any preceding exceptions
 """
