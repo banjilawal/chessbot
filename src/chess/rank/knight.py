@@ -55,7 +55,24 @@ class Knight(Rank):
 
     @LoggingLevelRouter.monitor
     def compute_span(self, piece: Piece) -> [Coord]:
-        """"""
+        """
+        # BACKGROUND:
+        Knights can move 2 steps on any axis, then a diagonal step.
+        # Action
+        1.  Go through each of the 8 possible moves and add them to the span.
+        2.  Return the list.
+
+        # PARAMETERS:
+            *   piece (Piece): Single-source-of-truth for the basis of the span.
+
+        # Returns:
+        List[Coord]
+
+        RAISES:
+        None
+        """
+        method = "Knight.compute_span"
+        
         origin = piece.current_position
         return [
             self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(1, 2)),

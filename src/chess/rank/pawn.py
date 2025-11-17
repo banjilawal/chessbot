@@ -76,7 +76,7 @@ class Pawn(Rank):
         return self._developed_span(origin)
     
 @LoggingLevelRouter.monitor
-def _developed_span(self, origin: Coord) -> [Coord]:
+def _compute_developed_span(self, origin: Coord) -> [Coord]:
     """
     # BACKGROUND:
     Any opening moves develop by
@@ -97,7 +97,7 @@ def _developed_span(self, origin: Coord) -> [Coord]:
     RAISES:
     None
     """
-    method = "Pawn.compute_developed_span"
+    method = "Pawn._compute_developed_span"
     return [
         # Forward position
         self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=0, y=1)),
@@ -108,7 +108,7 @@ def _developed_span(self, origin: Coord) -> [Coord]:
     ]
 
 @LoggingLevelRouter
-def _opening_span(self, origin: Coord) -> [Coord]:
+def _compute_opening_span(self, origin: Coord) -> [Coord]:
     """
     # BACKGROUND:
     Any opening moves develop by
@@ -130,6 +130,7 @@ def _opening_span(self, origin: Coord) -> [Coord]:
     RAISES:
     None
     """
+    method = "Pawn._compute_opening_span"
     return [
         # Get destination of 2 step advance.
         self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=0, y=2)),
@@ -138,5 +139,5 @@ def _opening_span(self, origin: Coord) -> [Coord]:
         # Get 2 step king-side attack destination.
         self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=1, y=2)),
         # Add points in developed move.
-        self._developed_span(origin),
+        self._compute_developed_span(origin),
     ]

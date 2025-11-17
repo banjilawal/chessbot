@@ -71,5 +71,5 @@ class Queen(Rank):
         RAISES:
         None
         """
-        method = "Rank.compute_diagonal_span"
+        method = "Queen.compute_span"
         return [self.compute_diagonal_span(piece), self.compute_perpendicular_span(piece)]

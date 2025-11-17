@@ -52,4 +52,19 @@ class Bishop(Rank):
     
     @LoggingLevelRouter.monitor
     def compute_span(self, piece: Piece) -> [[Coord]]:
+        """
+        # Action
+        Call compute_diagonal_span points in the Bishop's range.
+
+
+        # PARAMETERS:
+            *   piece (Piece): Single-source-of-truth for the basis of the span.
+
+        # Returns:
+        List[Coord]
+
+        RAISES:
+        None
+        """
+        method = "Bishop.compute_span"
         return self.compute_diagonal_span(piece)
