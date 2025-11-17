@@ -40,14 +40,14 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * `PieceBuilder`: The validator of `Piece` instances.
+ * `PieceFactory`: The validator of `Piece` instances.
 """
 
 from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext
 from chess.piece import Piece, AttackBuildFailedException, KingPiece, CombatantPiece, UnregisteredTeamMemberException
 from chess.rank import Rank, RankValidator, King
 from chess.team import(
-    Team, TeamValidator, TeamSearch, PieceCollection, FullRankQuotaException, ConflictingTeamAssignmentException
+    Team, TeamValidator, TeamSearch, PieceCollectionCategory, FullRankQuotaException, ConflictingTeamAssignmentException
 )
 
 
@@ -82,12 +82,12 @@ class PieceBuilder(Builder[Piece]):
       * `FullRankQuotaException`: If `owner.team_name` is equal to `team_name` parameter but `team_name.roster` still does
         not have the owner
     """
-    method = "PieceBuilder.build"
+    method = "PieceFactory.build"
 
     try:
       # id_validation = IdValidator.validate(visitor_id)
       # if not id_validation.is_success():
-      #   LoggingLevelRouter.throw_if_invalid(PieceBuilder, id_validation)
+      #   LoggingLevelRouter.throw_if_invalid(PieceFactory, id_validation)
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
@@ -103,7 +103,7 @@ class PieceBuilder(Builder[Piece]):
 
       search_result = TeamSearch.search(
         team=team,
-        data_source=PieceCollection.ROSTER,
+        data_source=PieceCollectionCategory.ROSTER,
         search_context=SearchContext(rank=rank)
       )
       if not search_result.is_success():
@@ -144,14 +144,14 @@ class PieceBuilder(Builder[Piece]):
 
 
 # def main():
-#   build_outcome = PieceBuilder.build()
+#   build_outcome = PieceFactory.build()
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")
 #   else:
 #     print(f"Failed to build owner: {build_outcome.err}")
 #   #
-#   build_outcome = PieceBuilder.build(1, None)
+#   build_outcome = PieceFactory.build(1, None)
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")

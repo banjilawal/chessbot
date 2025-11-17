@@ -48,106 +48,137 @@ From `chess.team_name`:
 
 from typing import cast, Any
 
-
+from chess.piece import CombatantPiece, Piece
+from chess.rank import Knight
 from chess.system import ValidationResult, Validator, LoggingLevelRouter, IdValidator
 from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
 from chess.team import Team, NullTeamException, TeamFieldConsistencyCheck, TeamCommanderInconsistencyException
 
 
 class TeamValidator(Validator[Team]):
-  """
-  # ROLE: Validation
-
-  # RESPONSIBILITIES:
-  1. Ensures clients receive only valid Teams for further processing.
-  2 Sending granular error report via `ValidationResult`.
-
-  # PROVIDES:
-    `ValidationResult[Team]`: Contains either a verified `Team` or an `Exception`.
-
-  # ATTRIBUTES:
-  None
-  """
-
-  @classmethod
-  @LoggingLevelRouter.monitor()
-  def validate(cls, candidate: Any) -> ValidationResult[Team]:
     """
-    ACTION:
-      Ensure an existing `Team` object will not introduce bugs or failures.
-
-    PARAMETERS:
-        * `candidate` (`Any`): The validator candidate.
-
-    RETURNS:
-    `ValidationResult[Team]`: A `ValidationResult` containing either:
-        `'payload'` - A `Team` instance that satisfies the specification.
-        `rollback_exception` - Details about which specification violation occurred.
-
-    RAISES:
-    `InvalidTeamException`: Wraps any specification violations including:
-      `TypeError`: if `candidate` is not team_name Team` object
-      `NullTeamException`: if `candidate` is null
-      `InvalidIdException`: if `visitor_id` fails validate checks
-      `InvalidCommanderException`: if `commander` fails validate checks
-      `NullTeamProfileException`: if `schema` is null
-      `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
-      `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
+    # ROLE: Validation
+  
+    # RESPONSIBILITIES:
+    1. Ensures clients receive only valid Teams for further processing.
+    2 Sending granular error report via `ValidationResult`.
+  
+    # PROVIDES:
+      `ValidationResult[Team]`: Contains either a verified `Team` or an `Exception`.
+  
+    # ATTRIBUTES:
+    None
     """
-    method = "TeamValidator.validate"
-
-    try:
-      if candidate is None:
-        return ValidationResult.failure(NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
-        )
-
-      if not isinstance(candidate, Team):
-        return ValidationResult.failure(
-          TypeError(f"{method} Expected team_name Team, got {type(candidate).__name__} instead.")
-        )
-
-      team = cast(Team, candidate)
-      
-      id_validation = IdValidator.validate(team.id)
-      if not id_validation.is_success():
-        return ValidationResult.failure(id_validation.exception)
-      
-      name_consistency = TeamFieldConsistencyCheck.team_name_consistency((team, team.schema.name))
-      if name_consistency.failure():
-        return ValidationResult.failure(name_consistency.exception)
-      
-      letter_consistency = TeamFieldConsistencyCheck.team_letter_consistency((team, team.schema.letter))
-      if letter_consistency.failure():
-        return ValidationResult.failure(letter_consistency.exception)
-      
-      rank_row_consistency = TeamFieldConsistencyCheck.team_rank_row_consistency((team, team.schema.rank_row))
-      if rank_row_consistency.failure():
-        return ValidationResult.failure(rank_row_consistency.exception)
-      
-      pawn_row_consistency = TeamFieldConsistencyCheck.team_pawn_row_consistency((team, team.schema.rank_row))
-      if pawn_row_consistency.failure():
-        return ValidationResult.failure(pawn_row_consistency.exception)
-      
-      color_consistency = TeamFieldConsistencyCheck.team_color_consistency((team, team.schema.color))
-      if color_consistency.failure():
-        return ValidationResult.failure(color_consistency.exception)
-
-      commander_validation = CommanderValidator.validate(team.commander)
-      if not commander_validation.is_success():
-        return ValidationResult.failure(commander_validation.exception)
-
-      commander = cast(Commander, commander_validation.payload)
-      if team.commander != commander:
-        return ValidationResult.failure(
-          InvalidCommanderAssignmentException(f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}")
-        )
-
-      if team not in commander.teams.items:
-        return ValidationResult.failure(
-            TeamCommanderInconsistencyException(f"{method}:  {TeamCommanderInconsistencyException.DEFAULT_MESSAGE}")
-        )
-
-      return ValidationResult.success(team)
-
-    except Exception as e:
-      return ValidationResult.failure(e)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def validate(cls, candidate: Any) -> ValidationResult[Team]:
+        """
+        ACTION:
+          Ensure an existing `Team` object will not introduce bugs or failures.
+    
+        PARAMETERS:
+            * `candidate` (`Any`): The validator candidate.
+    
+        RETURNS:
+        `ValidationResult[Team]`: A `ValidationResult` containing either:
+            `'payload'` - A `Team` instance that satisfies the specification.
+            `rollback_exception` - Details about which specification violation occurred.
+    
+        RAISES:
+        `InvalidTeamException`: Wraps any specification violations including:
+          `TypeError`: if `candidate` is not team_name Team` object
+          `NullTeamException`: if `candidate` is null
+          `InvalidIdException`: if `visitor_id` fails validate checks
+          `InvalidCommanderException`: if `commander` fails validate checks
+          `NullTeamProfileException`: if `schema` is null
+          `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
+          `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
+        """
+        method = "TeamValidator.validate"
+        
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullTeamException(f"{method} {NullTeamException.DEFAULT_MESSAGE}")
+                    )
+            
+            if not isinstance(candidate, Team):
+                return ValidationResult.failure(
+                    TypeError(f"{method} Expected team_name Team, got {type(candidate).__name__} instead.")
+                )
+            
+            team = cast(Team, candidate)
+            
+            id_validation = IdValidator.validate(team.id)
+            if not id_validation.is_success():
+                return ValidationResult.failure(id_validation.exception)
+            
+            name_consistency = TeamFieldConsistencyCheck.team_name_consistency((team, team.schema.name))
+            if name_consistency.failure():
+                return ValidationResult.failure(name_consistency.exception)
+            
+            letter_consistency = TeamFieldConsistencyCheck.team_letter_consistency((team, team.schema.letter))
+            if letter_consistency.failure():
+                return ValidationResult.failure(letter_consistency.exception)
+            
+            rank_row_consistency = TeamFieldConsistencyCheck.team_rank_row_consistency((team, team.schema.rank_row))
+            if rank_row_consistency.failure():
+                return ValidationResult.failure(rank_row_consistency.exception)
+            
+            pawn_row_consistency = TeamFieldConsistencyCheck.team_pawn_row_consistency((team, team.schema.rank_row))
+            if pawn_row_consistency.failure():
+                return ValidationResult.failure(pawn_row_consistency.exception)
+            
+            color_consistency = TeamFieldConsistencyCheck.team_color_consistency((team, team.schema.color))
+            if color_consistency.failure():
+                return ValidationResult.failure(color_consistency.exception)
+            
+            commander_validation = CommanderValidator.validate(team.commander)
+            if not commander_validation.is_success():
+                return ValidationResult.failure(commander_validation.exception)
+            
+            commander = cast(Commander, commander_validation.payload)
+            if team.commander != commander:
+                return ValidationResult.failure(
+                    InvalidCommanderAssignmentException(
+                        f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"
+                        )
+                )
+            
+            if team not in commander.teams.items:
+                return ValidationResult.failure(
+                    TeamCommanderInconsistencyException(
+                        f"{method}:  {TeamCommanderInconsistencyException.DEFAULT_MESSAGE}"
+                        )
+                )
+            
+            return ValidationResult.success(team)
+        
+        except Exception as e:
+            return ValidationResult.failure(e)
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_piece_team_roster_binding(
+            cls,
+            team: Team,
+            piece: Piece,
+            piece_validator
+    ) -> ValidationResult[Team, Piece]:
+        try:
+            team_validation = cls.validate(team)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
+            
+            piece_validation = piece_validator.validate(piece)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            if piece.team != team:
+                return ValidationResult.failure(
+                    ChessException(f"{method}: Piece team does not match team.")
+                )
+        
+        except Exception as ex:
+            return ValidationResult.failure(ex)

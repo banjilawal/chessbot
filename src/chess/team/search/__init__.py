@@ -11,7 +11,7 @@ from .context import *
 from .exception import *
 
 from .search import TeamSearch
-from .category import PieceCollection
+from .category import PieceCollectionCategory
 from .roster import TeamRosterSearch
 from .hostage import TeamHostageSearch
 

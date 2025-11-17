@@ -40,25 +40,42 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * PieceBuilder: The validator of Piece instances.
+ * PieceFactory: The validator of Piece instances.
 """
-
-from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext
-from chess.piece import Piece, AttackBuildFailedException, KingPiece, CombatantPiece, UnregisteredTeamMemberException
-from chess.rank import Rank, RankValidator, King
-from chess.team import(
-    Team, TeamValidator, TeamSearch, PieceCollection, FullRankQuotaException, ConflictingTeamAssignmentException
+from chess.pawn import PawnPiece
+from chess.rank.service import RankService
+from chess.system import (
+  Builder, BuildResult, IdValidator, IdentityService, NameValidator, LoggingLevelRouter,
+  SearchContext, ValidationResult
+)
+from chess.piece import (
+  Piece, AttackBuildFailedException, KingPiece, CombatantPiece, PieceBuildFailedException,
+  UnregisteredTeamMemberException
+)
+from chess.rank import Pawn, Rank, RankValidator, King
+from chess.team import (
+  Team, TeamService, TeamValidator, TeamSearch, PieceCollectionCategory, FullRankQuotaException,
+  ConflictingTeamAssignmentException
 )
 
 
-class PieceBuilder(Builder[Piece]):
+class PieceFactory(Builder[Piece]):
   """
   Responsible for safely constructing Square instances.
   """
 
   @classmethod
   @LoggingLevelRouter.monitor
-  def build(cls, name: str, rank: Rank, team: Team) -> BuildResult[Piece]:
+  def build(
+          cls,
+          id: int,
+          name: str,
+          rank: Rank,
+          team: Team,
+          rank_service: RankService = RankService(),
+          team_service: TeamService = TeamService(),
+          identity_service: IdentityService = IdentityService(),
+  ) -> BuildResult[Piece]:
     """
     Constructs team_name new Square that works correctly.
 
@@ -82,12 +99,30 @@ class PieceBuilder(Builder[Piece]):
       * FullRankQuotaException: If owner.team_name is equal to team_name parameter but team_name.roster still does
         not have the owner
     """
-    method = "PieceBuilder.build"
+    method = "PieceFactory.build"
 
     try:
+      
+      piece = None
+      if isinstance(rank, King):
+        return cls.build_king_
+      
+      piece = Piece(id=id, name=name, rank=rank, team=team)
+      if piece not in team.roster:
+        team.roster.append(piece)
+      
+      return BuildResult(
+        payload=Piece(
+          id=id,
+          name=name,
+          rank=rank,
+          team=team
+        )
+      )
+      
       # id_validation = IdValidator.validate(visitor_id)
       # if not id_validation.is_success():
-      #   LoggingLevelRouter.throw_if_invalid(PieceBuilder, id_validation)
+      #   LoggingLevelRouter.throw_if_invalid(PieceFactory, id_validation)
 
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
@@ -103,7 +138,7 @@ class PieceBuilder(Builder[Piece]):
 
       search_result = TeamSearch.search(
         team=team,
-        data_source=PieceCollection.ROSTER,
+        data_source=PieceCollectionCategory.ROSTER,
         search_context=SearchContext(rank=rank)
       )
       if not search_result.is_success():
@@ -140,18 +175,102 @@ class PieceBuilder(Builder[Piece]):
 
     except Exception as e:
       raise AttackBuildFailedException(f"{method}: {e}")
+  
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def build_pawn_piece(cls, id: int, name: str, team: Team) -> BuildResult[PawnPiece]:
+    """"""
+    method = "PieceFactory.build_pawn_piece"
+    try:
+      attribute_validation = cls.validate_build_attributes(id, name, PawnPiece(), team)
+      if attribute_validation.is_failure():
+        return BuildResult(exception=attribute_validation.exception)
+      piece = PawnPiece(id=id, name=name, rank=Pawn(), team=team)
+      
+      return BuildResult(
+        payload=KingPiece(
+          id=id,
+          name=name,
+          rank=King(),
+          team=team
+        )
+      )
+    
+    except Exception as ex:
+      return BuildResult.failure(
+        PieceBuildFailedException(
+          f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}",
+          ex
+        )
+      )
+      
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def build_king_piece(cls, id: int, name: str, team: Team) -> BuildResult[KingPiece]:
+    """"""
+    method = "PieceFactory.build_king_piece"
+    try:
+      attribute_validation = cls.validate_build_attributes(id, name, King(), team)
+      if attribute_validation.is_failure():
+        return BuildResult(exception=attribute_validation.exception)
+      piece = KingPiece(id=id, name=name, rank=King(), team=team)
+      
+    except Exception as ex:
+      return BuildResult.failure(
+        PieceBuildFailedException(
+          f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}",
+          ex
+        )
+      )
 
-
-
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def validate_build_attributes(
+          cls,
+          id: int,
+          name: str,
+          rank: Rank,
+          team: Team,
+          rank_service: RankService = RankService(),
+          team_service: TeamService = TeamService(),
+          identity_service: IdentityService = IdentityService(),
+  ) -> ValidationResult(int, str, Rank, Team):
+    """"""
+    method = "PieceFactory.validate_build_attributes"
+    
+    try:
+      identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
+      if identity_validation.is_failure():
+        return BuildResult(exception=identity_validation.exception)
+      
+      rank_validation = rank_service.validate(candidate=rank)
+      if rank_validation.is_failure():
+        return BuildResult(exception=rank_validation.exception)
+      
+      team_validation = team_service.validate_team(candidate=team)
+      if team_validation.is_failure():
+        return BuildResult(exception=team_validation.exception)
+      
+      
+      
+      return ValidationResult.success((id, name, rank, team))
+    except Exception as ex:
+      return BuildResult(
+        PieceBuildFailedException(
+          f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}",
+          ex
+        )
+      )
+  
 # def main():
-#   build_outcome = PieceBuilder.build()
+#   build_outcome = PieceFactory.build()
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")
 #   else:
 #     print(f"Failed to build owner: {build_outcome.err}")
 #   #
-#   build_outcome = PieceBuilder.build(1, None)
+#   build_outcome = PieceFactory.build(1, None)
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")

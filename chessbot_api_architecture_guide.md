@@ -501,13 +501,15 @@ the system passed sanity checks.
       simplifies maintenance.
 
 ### Recommended Builder Workflow
+
 ```python
 from chess.team import Team
 from chess.rank import Knight
-from chess.piece import CombatantPiece, PieceBuilder
-build_result = PieceBuilder.build(name="WN2", rank=Knight(), team=white_team)
+from chess.piece import CombatantPiece, PieceFactory
+
+build_result = PieceFactory.build(name="WN2", rank=Knight(), team=white_team)
 if not build_result.is_success():
-  raise build_result.exception
+    raise build_result.exception
 
 piece = cast(CombatantPiece, build_result.payload)
 ```

@@ -56,9 +56,9 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
   * `NullPieceValidatorException`: Raised if team_name null `PieceValidator` is passed as team_name parameter.
 
 #### PIECE BUILDING EXCEPTIONS
-  * `AttackBuildFailedException`: Raised if there is an error during when team_name `PieceBuilder` is creating team_name new `Piece`
+  * `AttackBuildFailedException`: Raised if there is an error during when team_name `PieceFactory` is creating team_name new `Piece`
     instance.
-  * `NullPieceBuilderException`: Raised if there is null `PieceBuilder` is passed as team_name parameter.
+  * `NullPieceBuilderException`: Raised if there is null `PieceFactory` is passed as team_name parameter.
 
 
 null or improperly referenced during chess operations.
@@ -75,7 +75,7 @@ These examples show recommended workflows with `Piece` exceptions.
 ```python
 from chess.owner import CombatantPiece, Encounter, NullAttackException, AutoEncounterException
 
-build_outcome = PieceBuilder.build(
+build_outcome = PieceFactory.build(
   discovery_id=id_emitter.discovery_id,
   visitor_name='BB2',
   bounds=Bishop(),

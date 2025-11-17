@@ -54,7 +54,7 @@ From `chess.owner`:
 
 from enum import auto, Enum
 
-class PieceCollection(Enum):
+class PieceCollectionCategory(Enum):
   """
   # ROLE: Builder implementation
 

@@ -54,11 +54,11 @@ From `chess.owner`:
 
 from typing import List
 
-from chess.team import Team, TeamValidator
+from chess.team import Team, TeamSearchContext, TeamValidator
 from chess.piece.piece import Piece
 from chess.commander.search import SearchResult
 from chess.system import SearchContext
-from chess.team.search import TeamHostageSearch, TeamRosterSearch, PieceCollection
+from chess.team.search import TeamHostageSearch, TeamRosterSearch, PieceCollectionCategory
 
 
 class TeamSearch(Piece):
@@ -106,7 +106,12 @@ class TeamSearch(Piece):
   """
 
   @classmethod
-  def search(cls, team: Team, data_source: PieceCollection, search_context: SearchContext) -> SearchResult[List[Piece]]:
+  def search(
+          cls,
+          team: Team,
+          piece_collection_category: PieceCollectionCategory,
+          search_context: TeamSearchContext
+  ) -> SearchResult[List[Piece]]:
     """
     Action:
     Parameters:
@@ -123,7 +128,7 @@ class TeamSearch(Piece):
     if not validation.is_success():
       return SearchResult(exception=validation.exception)
 
-    if data_source == PieceCollection.ROSTER:
+    if data_source == PieceCollectionCategory.ROSTER:
       return TeamRosterSearch.search(team=team, search_context=search_context)
     else:
       return TeamHostageSearch.search(team=team, search_context=search_context)

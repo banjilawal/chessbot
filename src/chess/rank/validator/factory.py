@@ -68,7 +68,7 @@ class RankValidatorFactory(Validator[Rank]):
 
         # Returns:
         ValidationResult[Rank] containing either:
-            - On success: Vector in the payload.
+            - On success: Rank in the payload.
             - On failure: Exception.
 
         # RAISES:
