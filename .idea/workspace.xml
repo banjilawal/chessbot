@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/system/color/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/color/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/color/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/search/context/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/search/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/color/color.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -633,7 +624,7 @@
       <workItem from="1763123420919" duration="86975000" />
       <workItem from="1763265847754" duration="34750000" />
       <workItem from="1763314326886" duration="24621000" />
-      <workItem from="1763364100247" duration="41300000" />
+      <workItem from="1763364100247" duration="42211000" />
     </task>
     <servers />
   </component>

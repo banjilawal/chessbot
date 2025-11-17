@@ -9,13 +9,12 @@ version: 1.0.0
 
 from typing import Any, Optional, cast
 
-from chess.agent import AgentTeamSearchContext
 from chess.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.agent import (
-    AgentTeamSearchContext, NullAgentTeamSearchContext, AgentTeamSearchContextBuildFailedException,
-    NoAgentTeamSearchOptionSelectedException, MoreThanOneAgentTeamSearchOptionPickedException,
+    AgentTeamSearchContext, MoreThanOneAgentTeamSearchOptionPickedException,
+    NoAgentTeamSearchOptionSelectedException, AgentTeamSearchContextBuildFailedException,
 )
 
 

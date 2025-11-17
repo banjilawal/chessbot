@@ -9,27 +9,27 @@ version: 1.0.0
 
 
 from chess.system import (
-    BuildOptionSelectionTooLargeException, ContextException, NoBuildOptionSelectedException, NullException,
-    BuildFailedException, ValidationException,
+     NullException, BuildFailedException, SearchContextException, ValidationException,
+     NoBuildOptionSelectedException, BuildOptionSelectionTooLargeException,
 )
 
 __all__ = [
-    "BoardSearchContextException",
+    "AgentTeamSearchContextException",
     
-# ========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
-    "NullBoardSearchContextException",
+# ========================= NULLAGENT_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
+    "NullAgentTeamSearchContextException",
     
-# ========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
-    "InvalidBoardSearchContextException",
-    "NoBoardSearchOptionSelectedException",
-    "MoreThanOneBoardSearchOptionPickedException",
+# =========================AGENT_TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+    "InvalidAgentTeamSearchContextException",
+    "NoAgentTeamSearchOptionSelectedException",
+    "MoreThanOneAgentTeamSearchOptionPickedException",
     
-# ========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
-    "BoardSearchContextBuildFailedException",
+# =========================AGENT_TEAM_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+    "AgentTeamSearchContextBuildFailedException",
 ]
 
 
-class BoardSearchContextException(ContextException):
+class AgentTeamSearchContextException(SearchContextException):
     """
     Super class of exceptions raised by AgentTeamSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
@@ -38,46 +38,46 @@ class BoardSearchContextException(ContextException):
     DEFAULT_MESSAGE = "AgentTeamSearchContext raised an exception."
 
 
-#========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
-class NullBoardSearchContextException(BoardSearchContextException, NullException):
-    """Raised if an entity, method, or operation requires Board but gets null instead."""
-    ERROR_CODE = "NULL_BOARD_SEARCH_CONTEXT_ERROR"
+#========================= NULLAGENT_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
+class NullAgentTeamSearchContextException(AgentTeamSearchContextException, NullException):
+    """Raised if an entity, method, or operation requires AgentTeamSearchContext but gets null instead."""
+    ERROR_CODE = "NULL_AGENT_TEAM_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "AgentTeamSearchContext cannot be null"
 
 
-#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
-class InvalidBoardSearchContextException(
-    BoardSearchContextException,
+#=========================AGENT_TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+class InvalidAgentTeamSearchContextException(
+    AgentTeamSearchContextException,
     ValidationException
 ):
-    """Catchall Exception for BoardSearchContextValidator when a validation candidate fails a sanity check."""
-    ERROR_CODE = "BOARD_SEARCH_CONTEXT_VALIDATION_ERROR"
+    """Catchall Exception for AgentTeamSearchContextValidator when a validation candidate fails a sanity check."""
+    ERROR_CODE = "AGENT_TEAM_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "AgentTeamSearchContext validation failed."
 
 
-class NoBoardSearchOptionSelectedException(
-    BoardSearchContextException,
+class NoAgentTeamSearchOptionSelectedException(
+    AgentTeamSearchContextException,
     NoBuildOptionSelectedException
 ):
     """"""
-    ERROR_CODE = "NO_BOARD_SEARCH_OPTION_SELECTED_ERROR"
+    ERROR_CODE = "NO_AGENT_TEAM_SEARCH_OPTION_SELECTED_ERROR"
     DEFAULT_MESSAGE = "None of the AgentTeamSearchContext options wre selected. An option must be picked."
 
 
-class MoreThanOneBoardSearchOptionPickedException(
-    BoardSearchContextException,
+class MoreThanOneAgentTeamSearchOptionPickedException(
+    AgentTeamSearchContextException,
     BuildOptionSelectionTooLargeException
 ):
     """"""
-    ERROR_CODE = "TOO_MANY_BOARD_SEARCH_OPTIONS_ERROR"
+    ERROR_CODE = "TOO_MANY_AGENT_TEAM_SEARCH_OPTIONS_ERROR"
     DEFAULT_MESSAGE = "Only one AgentTeamSearchContext option can be selected."
 
 
-#========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
-class BoardSearchContextBuildFailedException(BoardSearchContextException, BuildFailedException):
+#=========================AGENT_TEAM_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+class AgentTeamSearchContextBuildFailedException(AgentTeamSearchContextException, BuildFailedException):
     """
-    Catchall Exception for BoardSearchContextBuilder when it encounters an error building
+    Catchall Exception for AgentTeamSearchContextBuilder when it encounters an error building
     a AgentTeamSearchContext.
     """
-    ERROR_CODE = "BOARD_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "AGENT_TEAM_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "AgentTeamSearchContext build failed."
