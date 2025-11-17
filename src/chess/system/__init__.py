@@ -10,6 +10,7 @@ version: 1.0.0
 
 from .dto import *
 from .err import *
+from .color import *
 from .context import *
 from .event import *
 from .utils import *
@@ -22,8 +23,6 @@ from .validate import *
 from .identity import *
 from .transaction import *
 
-from .color import GameColor
-
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
@@ -33,8 +32,9 @@ __package_name__ = "chess.system"
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  "GameColor",
 
+
+  *color.__all__,
   *dto.__all__,
   *event.__all__,
   *utils.__all__,

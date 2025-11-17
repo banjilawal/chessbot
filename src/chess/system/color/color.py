@@ -1,3 +1,12 @@
+# src/chess/system/color/color.py
+
+"""
+Module: chess.system.color.color
+Author: Banji Lawal
+Created: 2025-07-24
+"""
+
+
 from enum import Enum
 
 class GameColor(Enum):

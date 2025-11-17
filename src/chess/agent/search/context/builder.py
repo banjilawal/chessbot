@@ -7,23 +7,25 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from typing import Optional
+from typing import Any, Optional, cast
 
-from chess.coord import Coord, CoordValidator
-from chess.system import BuildResult, Builder, IdValidator, NameValidator, LoggingLevelRouter
-from chess.board import (
-    BoardSearchContext, BoardSearchContextBuildFailedException, NoBoardSearchOptionSelectedException,
-    MoreThanOneBoardSearchOptionPickedException,
+from chess.agent import AgentTeamSearchContext
+from chess.system import (
+    BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+)
+from chess.agent import (
+    AgentTeamSearchContext, NullAgentTeamSearchContext, AgentTeamSearchContextBuildFailedException,
+    NoAgentTeamSearchOptionSelectedException, MoreThanOneAgentTeamSearchOptionPickedException,
 )
 
 
-class BoardSearchContextBuilder(Builder[BoardSearchContext]):
+class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
     """
     # ROLE: Builder
 
     # RESPONSIBILITIES:
-    1.  Manage construction of BoardSearch instances that can be used safely by the client.
-    2.  Ensure params for BoardSearch creation have met the application's safety contract.
+    1.  Manage construction of AgentTeamSearchContext instances that can be used safely by the client.
+    2.  Ensure params for AgentTeamSearchContext creation have met the application's safety contract.
     3.  Provide pluggable factories for creating different AgentTeamSearchContext products.
 
 
@@ -42,11 +44,10 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             cls,
             id: Optional[int],
             name: Optional[str],
-            coord: Optional[Coord],
-            id_validator: type[IdValidator] = IdValidator,
-            name_validator: type[NameValidator] = NameValidator,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> BuildResult[BoardSearchContext]:
+            color: Optional[GameColor],
+            color_validator: type[GameColorValidator] = GameColorValidator,
+            identity_service: IdentityService=IdentityService(),
+    ) -> BuildResult[AgentTeamSearchContext]:
         """
         # Action:
             1.  Use dependency injected validators to verify correctness of parameters required to
@@ -54,12 +55,15 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             2.  If the parameters are safe the AgentTeamSearchContext is built and returned.
 
         # Parameters:
-            *   id (Optional[int]):                     Selected if search target is an id.
-            *   name (Optional[str]):                   Selected if search target is a name.
-            *   coord (Optional[Coord]):                Selected if search target is a coord.
-            *   id_validator (type[IdValidator]):       Validates an id-search-target
-            *   name_validator (type[NameValidator]):   Validates a name-search-target
-            *   coord_builder (type[CoordBuilder]):     Validates a coord-search-target
+            *   id (Optional[int]):                             Selected if search target is an id.
+            
+            *   name (Optional[str]):                           Selected if search target is a name.
+            
+            *   color (Optional[GameColor]):                    Selected if search target is a GameColor.
+            
+            *   identity_service (type[IdentityService]):       Validates name or ID safety
+            
+            *   color_validator (type[GameColorValidator]):     Validates a name-search-target
 
         # Returns:
         BuildResult[AgentTeamSearchContext] containing either:
@@ -67,43 +71,43 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             - On failure:   Exception.
 
         # Raises:
-            *   BoardSearchContextBuildFailedException
-            *   NoBoardSearchOptionSelectedException
-            *   MoreThanOneBoardSearchOptionPickedException
+            *   AgentTeamSearchContextBuildFailedException
+            *   NoAgentTeamSearchOptionSelectedException
+            *   MoreThanOneAgentTeamSearchOptionPickedException
         """
-        method = "BoardSearchContextBuilder.build"
+        method = "AgentTeamSearchContextBuilder.build"
         
         try:
-            params = [id, name, coord]
+            params = [id, name, color]
             param_count = sum(bool(p) for p in params)
             
             if param_count == 0:
                 return BuildResult.failure(
-                    NoBoardSearchOptionSelectedException(
-                        f"{method}: {NoBoardSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                    NoAgentTeamSearchOptionSelectedException(
+                        f"{method}: {NoAgentTeamSearchOptionSelectedException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
-                    MoreThanOneBoardSearchOptionPickedException(
-                        f"{method}: {MoreThanOneBoardSearchOptionPickedException.DEFAULT_MESSAGE}"
+                    MoreThanOneAgentTeamSearchOptionPickedException(
+                        f"{method}: {MoreThanOneAgentTeamSearchOptionPickedException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if id is not None:
-                return cls.build_id_search_context(id=id, id_validator=id_validator)
+                return cls.build_id_search_context(id=id, identity_service=identity_service)
             
             if name is not None:
-                return cls.build_name_search_context(name=name, name_validator=name_validator)
+                return cls.build_name_search_context(name=name, identity_service=identity_service)
             
-            if coord is not None:
-                return cls.build_coord_search_context(coord=coord, coord_validator=coord_validator)
+            if color is not None:
+                return cls.build_color_search_context(color=color, color_validator=color_validator)
         
         except Exception as ex:
             return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                AgentTeamSearchContextBuildFailedException(
+                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -111,16 +115,17 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     @LoggingLevelRouter.monitor
     def build_id_search_context(
             cls,
-            id: int,
-            id_validator: type[IdValidator] = IdValidator
-    ) -> BuildResult[BoardSearchContext]:
+            candidate: Any,
+            identity_service: IdentityService=IdentityService(),
+    ) -> BuildResult[AgentTeamSearchContext]:
         """
         # Action:
-        Build an id-AgentTeamSearchContext if IdValidator verifies search target is safe.
+        Build an id-AgentTeamSearchContext if IdentityService verifies search target is safe.
 
         # Parameters:
-          *     id (int):                           target id
-          *     id_validator (type[IdValidator]):   validates target.
+          *     candidate (int):                            search_value to validate
+          
+          *     identity_service (type[IdentityService]):   validates target.
 
         # Returns:
           ValidationResult[AgentTeamSearchContext] containing either:
@@ -128,20 +133,22 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
                 - On failure:   Exception.
 
         # Raises:
-            *   InvalidBoardSearchContextException
+            *   InvalidAgentTeamSearchContextException
         """
-        method = "BoardSearchContextBuilder.build_id_search_context"
+        method = "AgentTeamSearchContextBuilder.build_id_search_context"
         try:
-            id_validation = id_validator.validate(id)
+            id_validation = identity_service.validate_id(candidate=id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            return BuildResult.success(payload=BoardSearchContext(id=id_validation.payload))
+            id = cast(int, id_validation.payload)
+            
+            return BuildResult.success(payload=AgentTeamSearchContext(id=id))
         
         except Exception as ex:
             return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                AgentTeamSearchContextBuildFailedException(
+                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -149,16 +156,17 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     @LoggingLevelRouter.monitor
     def build_name_search_context(
             cls,
-            name: str,
-            name_validator: type[NameValidator] = NameValidator
-    ) -> BuildResult[BoardSearchContext]:
+            candidate: Any,
+            identity_service: IdentityService=IdentityService(),
+    ) -> BuildResult[AgentTeamSearchContext]:
         """
         # Action:
         Build a name-AgentTeamSearchContext if NameValidator verifies search target is safe.
 
         # Parameters:
-            *   name (str):                             target name
-            *   name_validator (type[NameValidator]):   validates target.
+          *     candidate (Any):                            search_value to validate
+          
+          *     identity_service (type[IdentityService]):   validates is a valida name.
 
         # Returns:
           ValidationResult[AgentTeamSearchContext] containing either:
@@ -166,38 +174,41 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
                 - On failure:   Exception.
 
         # Raises:
-            *   InvalidBoardSearchContextException
+            *   InvalidAgentTeamSearchContextException
         """
-        method = "BoardSearchContextBuilder.build_name_search_context"
+        method = "AgentTeamSearchContextBuilder.build_name_search_context"
         
         try:
-            name_validation = name_validator.validate(name)
+            name_validation = identity_service.validate_name(candidate=candidate)
             if name_validation.is_failure():
                 return BuildResult.failure(name_validation.exception)
             
-            return BuildResult.success(payload=BoardSearchContext(name=name_validation.payload))
+            name = cast(str, name_validation.payload)
+            
+            return BuildResult.success(payload=AgentTeamSearchContext(name=name))
         
         except Exception as ex:
             return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                AgentTeamSearchContextBuildFailedException(
+                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_coord_search_context(
+    def build_color_search_context(
             cls,
-            coord: Coord,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> BuildResult[BoardSearchContext]:
+            candidate: Any,
+            color_validator: type[GameColorValidator]=GameColorValidator
+    ) -> BuildResult[AgentTeamSearchContext]:
         """
         # Action:
-        Build a coord-AgentTeamSearchContext if CoordValidator verifies search target is safe.
+        Build a color-AgentTeamSearchContext if ColorValidator verifies search target is safe.
 
         # Parameters:
-          *     coord (Coord):                              target Coord
-          *     coord_validator (type[CoordValidator]):     validates target.
+          *     candidate (Any):                            search_value to validate
+          
+          *     color_validator (type[ColorValidator]):   validates is a valida name.
 
         # Returns:
         ValidationResult[AgentTeamSearchContext] containing either:
@@ -205,20 +216,22 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             - On failure:   Exception.
 
         # Raises:
-            *   InvalidBoardSearchContextException
+            *   InvalidAgentTeamSearchContextException
         """
-        method = "BoardSearchContextBuilder.build_coord_search_context"
+        method = "AgentTeamSearchContextBuilder.build_color_search_context"
         
         try:
-            coord_validation = coord_validator.validate(coord)
-            if coord_validation.is_failure():
-                return BuildResult.failure(coord_validation.exception)
+            color_validation = color_validator.validate(candidate)
+            if color_validation.is_failure():
+                return BuildResult.failure(color_validation.exception)
             
-            return BuildResult.success(payload=BoardSearchContext(name=coord_validation.payload))
+            color = cast(GameColor, color_validation.payload)
+            
+            return BuildResult.success(payload=AgentTeamSearchContext(color=color))
         
         except Exception as e:
             return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}"
+                AgentTeamSearchContextBuildFailedException(
+                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
