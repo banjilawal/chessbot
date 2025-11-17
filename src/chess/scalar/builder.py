@@ -18,7 +18,7 @@ from chess.scalar import (
 
 class ScalarBuilder(Builder[Scalar]):
     """
-    # ROLE: Builder
+    # ROLE: Builder, Data Integrity Guarantor
   
     # RESPONSIBILITIES:
         1. Manage construction of Scalar instances that can be used safely by the client.

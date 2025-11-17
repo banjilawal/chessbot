@@ -160,3 +160,151 @@ From `chess.commander`:
 ----------
  * `TeamBuilder`
 """
+# src/chess/team_name/team_name.py
+"""
+Module: chess.team_name.team_name
+Author: Banji Lawal
+Created: 2025-10-08
+version: 1.0.0
+
+# SCOPE:
+-------
+***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
+  its CRUD interfaces goes against recommended usage.
+
+***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
+    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
+    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
+
+**Related Features**:
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+
+# THEME:
+-------
+* Data Holding, Coordination, Performance
+
+**Design Concepts**:
+    Separating object creation from object usage.
+    Keeping constructors lightweight
+
+# PURPOSE:
+---------
+1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
+
+***Satisfies***: Reliability and performance contracts.
+
+# DEPENDENCIES:
+---------------
+From `chess.system`:
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
+    `IdValidator`, `NameValidator`
+
+From `chess.team_name`:
+    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
+
+From `chess.commander`:
+  `Commander`, `CommanderValidator`,
+
+From `chess.owner`:
+  `Piece`
+
+# CONTAINS:
+----------
+ * `Team`
+"""
+"""
+# ROLE: Service, Coordination
+
+# RESPONSIBILITIES:
+# PROVIDES:
+
+ATTRIBUTES:
+  * `_commander` (`Commander`): Player who controls `Team`
+  * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, visitor_name.
+  * `_roster` (`List[Piece]`): List of chess pieces on the team_name.
+  * `_hostages` (`List[Piece]`): List of captured enemy pieces.
+"""
+"""
+# ROLE: Builder implementation
+
+# RESPONSIBILITIES:
+1. Process and validate parameters for creating `Team` instances.
+2. Create new `Team` objects if parameters meet specifications.
+2. Report errors and return `BuildResult` with error details.
+
+# PROVIDES:
+`BuildResult`: Return type containing the built `Team` or error information.
+
+# ATTRIBUTES:
+None
+"""
+"""
+ACTION:
+Create a `Team` object if the parameters have correctness.
+
+PARAMETERS:
+    * `commander` (`Commander`): owner of `Team` object.
+    * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
+
+RETURNS:
+`BuildResult[Team]`: A `BuildResult` containing either:
+    `'payload'` - A valid `Team` instance in the payload
+    `rollback_exception` - Error information and error details
+
+RAISES:
+`TeamBuildFailedException`: Wraps any specification violations including:
+    * `NullXComponentException`: if `x` is None
+    * `NullYComponentException`: if `y` is None
+    * `TeamBelowBoundsException`: if `x` or `y` < -LONGEST_KNIGHT_LEG_SIZE
+    * `TeamAboveBoundsException`: if `x` or `y` > LONGEST_KNIGHT_LEG_SIZE
+"""
+# src/chess.point.rollback_exception.py
+
+"""
+Module: chess.point.rollback_exception
+Author: Banji Lawal
+Created: 2025-09-16
+Updated: 2025-10-04
+version: 1.0.0
+
+SCOPE:
+-----
+This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
+creation, validator, and manipulation of `Team` objects.
+
+***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
+    `Team`, `TeamBuilder`, and `TeamValidator`
+
+THEME:
+-----
+* Granular, targeted error reporting
+* Wrapping exceptions
+
+**Design Concepts**:
+  1. Each consistency and behavior in the `Team` class has an rollback_exception specific to its possible
+      state, outcome, or behavior.
+
+PURPOSE:
+-------
+1. Centralized error dictionary for the `Team` graph.
+2. Fast debugging using highly granular rollback_exception messages and naming to
+    find the source.
+3. Providing understandable, consistent information about failures originating from
+    the `Team` graph.
+4. Providing a clear distinction between errors related to `Team` instances and
+    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
+
+DEPENDENCIES:
+------------
+Requires base rollback_exception classes and constants from the core system:
+From `chess.system`:
+  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
+        `BuildFailedException`.
+
+CONTAINS:
+--------
+See the list of exceptions in the `__all__` list following (e.g., `TeamException`,
+`NullTeamException`, `InvalidTeamException`, ).
+"""
+

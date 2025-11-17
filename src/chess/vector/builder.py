@@ -1,4 +1,4 @@
-# src/chess/vector/factory.py
+# src/chess/vector/builder.py
 
 """
 Module: chess.vector.builder
@@ -18,7 +18,7 @@ from chess.vector import (
 
 class VectorBuilder(Builder[Vector]):
     """
-    # ROLE: Builder, Guarantee Data Integrity
+    # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
     Produce Coord instances whose integrity is always guaranteed. If any attributes do not pass their integrity checks,

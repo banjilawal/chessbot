@@ -17,7 +17,7 @@ from chess.rank import (
 
 class RankFactory(Builder[Rank]):
     """
-    # ROLE: Factory
+    # ROLE: Factory, Data Integrity Guarantor
   
     # RESPONSIBILITIES:
         1. Manage construction of Rank instances that can be used safely by the client.

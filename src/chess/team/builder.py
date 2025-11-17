@@ -4,83 +4,97 @@
 Module: chess.team_name.builder
 Author: Banji Lawal
 Created: 2025-09-04
-Updated: 2025-10-08
 version: 1.0.0
 """
 
-from chess.team import Team, TeamSchema, TeamSchemaValidator, TeamBuildFailedException
-from chess.commander import Commander, CommanderValidator, InvalidCommanderAssignmentException
-from chess.system import BuildResult, Builder, LoggingLevelRouter, InconsistentCollectionException
+
+from chess.commander import Commander, CommanderService
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
+from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
 
 
 class TeamBuilder(Builder[Team]):
-  """
-  # ROLE: Builder implementation
-
-  # RESPONSIBILITIES:
-  1. Process and validate parameters for creating `Team` instances.
-  2. Create new `Team` objects if parameters meet specifications.
-  2. Report errors and return `BuildResult` with error details.
-
-  # PROVIDES:
-  `BuildResult`: Return type containing the built `Team` or error information.
-
-  # ATTRIBUTES:
-  None
-  """
-
-  @classmethod
-  @LoggingLevelRouter.monitor()
-  def build(cls, id: int, commander: Commander, schema: TeamSchema) -> BuildResult[Team]:
     """
-    ACTION:
-    Create a `Team` object if the parameters have correctness.
-
-    PARAMETERS:
-        * `commander` (`Commander`): owner of `Team` object.
-        * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
-
-    RETURNS:
-    `BuildResult[Team]`: A `BuildResult` containing either:
-        `'payload'` - A valid `Team` instance in the payload
-        `rollback_exception` - Error information and error details
-
-    RAISES:
-    `TeamBuildFailedException`: Wraps any specification violations including:
-        * `NullXComponentException`: if `x` is None
-        * `NullYComponentException`: if `y` is None
-        * `TeamBelowBoundsException`: if `x` or `y` < -LONGEST_KNIGHT_LEG_SIZE
-        * `TeamAboveBoundsException`: if `x` or `y` > LONGEST_KNIGHT_LEG_SIZE
+    # ROLE: Builder, Data Integrity Guarantor
+  
+    # RESPONSIBILITIES:
+    Produce Team instances whose integrity is always guaranteed. If any attributes do not pass
+    their integrity checks, send an exception instead.
+  
+    # PROVIDES:
+    BuildResult[Team] containing either:
+        - On success: Team in the payload.
+        - On failure: Exception.
+  
+    # ATTRIBUTES:
+    None
     """
-    method = "TeamBuilder.build"
-
-    try:
-      schema_validation = TeamSchemaValidator.validate(schema)
-      if not schema_validation.is_success():
-        return BuildResult(exception=schema_validation.exception)
-
-      commander_validation = CommanderValidator.validate(commander)
-      if not commander_validation.is_success():
-        return BuildResult(exception=commander_validation.exception)
-
-      team = Team(commander=commander, schema=schema)
-
-      if team.commander != commander:
-        return BuildResult(exception=InvalidCommanderAssignmentException(
-          f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"
-          )
-        )
-
-      if team not in commander.teams:
-        commander.teams.add_team(team)
-
-      if team not in commander.teams:
-        return BuildResult(exception=InconsistentCollectionException(
-          f"{method}: [Team-Not-In-Commander-History] {InconsistentCollectionException.DEFAULT_MESSAGE}"
-          )
-        )
-
-      return BuildResult(payload=team)
-
-    except Exception as e:
-      return BuildResult(exception=TeamBuildFailedException(f"{method}: {e}"))
+    
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def build(
+            cls,
+            id: int,
+            commander: Commander,
+            team_schema: TeamSchema,
+            identity_service: IdentityService = IdentityService(),
+            commander_validator: CommanderService = CommanderValidator(),
+            team_schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
+    ) -> BuildResult[Team]:
+        """
+        # ACTION:
+        1.  Check ID safety with IdentityService.validate_id.
+        2.  Check schema correctness with TeamSchemaValidator.validate.
+        3.  Check commander safety with CommanderService.validate_commander.
+        4.  If any check fails, return the exception inside a BuildResult.
+        5.  When all checks create a new Team object.
+        6.  Add the new Team to the commander's teams collection if it is not already there.
+    
+        # PARAMETERS:
+            *   x (int): value in the x-plane
+            *   y (int): value in the y-plane
+    
+        # Returns:
+        BuildResult[Team] containing either:
+            - On success: T in the payload.
+            - On failure: Exception.
+    
+        RAISES:
+            *   TeamBuildFailedException
+        """
+        method = "TeamBuilder.build"
+        
+        try:
+            id_validation = identity_service.validate_id(id)
+            if id_validation.is_failure():
+                return BuildResult.failure(id_validation.exception)
+            
+            team_schema_validation = team_schema_validator.validate(team_schema)
+            if team_schema_validation.is_failure():
+                return BuildResult.failure(team_schema_validation.exception)
+            
+            commander_validation = commander_service.validate_commander(commander)
+            if commander_validation.is_failure():
+                return BuildResult.failure(commander_validation.exception)
+            
+            team = Team(id=id, commander=commander, team_schema=team_schema)
+            
+            if team not in commander.teams:
+                commander.teams.add_team(team)
+            
+            if team not in commander.teams:
+                return BuildResult.failure(
+                    AddingTeamToCommanderHisstoryFailedException(
+                        f"{method}: {AddingTeamToCommanderHisstoryFailedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            return BuildResult.success(team)
+        
+        except Exception as ex:
+            return BuildResult.failure(
+                TeamBuildFailedException(
+                    f"{method}: {TeamBuildFailedException.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )

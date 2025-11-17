@@ -1,138 +1,110 @@
-# src/chess/team_name/team_name.py
+# src/chess/team/team.py
+
 """
-Module: chess.team_name.team_name
+Module: chess.team.team
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-08-04
 version: 1.0.0
-
-# SCOPE:
--------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
-  its CRUD interfaces goes against recommended usage.
-
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
-
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-# THEME:
--------
-* Data Holding, Coordination, Performance
-
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
-
-# PURPOSE:
----------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
-
-***Satisfies***: Reliability and performance contracts.
-
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
-
-From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
-
-From `chess.commander`:
-  `Commander`, `CommanderValidator`,
-
-From `chess.owner`:
-  `Piece`
-
-# CONTAINS:
-----------
- * `Team`
 """
+from typing import List
 
-from typing import List, Optional, Sequence, cast
-
-from chess.piece import KingPiece, Piece
-from chess.system import AutoId
+from chess.piece import Piece
+from chess.team import TeamSchema
 from chess.commander import Commander
-from chess.team import Team, TeamSchema
 
 
 class Team:
     """
-    # ROLE: Service, Coordination
-  
-    # RESPONSIBILITIES:
+    # ROLE: Data-Holding
+
+    # RESPONSIBILITY:
+    1.  Disposition of Pieces the Commander can move on a Board instance.
+    2.  Holds the captured enemy Pieces.
+
     # PROVIDES:
-  
-    ATTRIBUTES:
-      * `_commander` (`Commander`): Player who controls `Team`
-      * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, visitor_name.
-      * `_roster` (`List[Piece]`): List of chess pieces on the team_name.
-      * `_hostages` (`List[Piece]`): List of captured enemy pieces.
+    Team
+
+    # ATTRIBUTES:
+        *   MAX_ROSTER_SIZE (int):  Size of roster at full strength.
+        *   id (int):               Globally unique identifier for the team.
+        *   roster (List[Piece]):   Collection of Pieces the Commander can move on a Board instance.
+        *   hostages (List[Piece):  Collection of captured enemy Pieces.
+        *   commander (Commander):  Directs moves of Pieces in Team.roster.
+        *   schema (TeamSchema):    Defines the Team's
+                *   name (str):                 Unique within the Game instance.
+                *   color (GameColor):          Color of the Team. (white/black)
+                *   rank_row (int):             Index or row containing the Team's ranked Pieces.
+                *   pawn_row (int):             Index or row containing the Team's pawn Pieces.
+                *   advancing_step (Vector):    Direction of the Team's roster member to get to the enemy's
+                                                Pieces.
     """
+
     MAX_ROSTER_SIZE = 16
     
     _id: int
     _commander: Commander
     _schema: TeamSchema
-    _roster: list['Piece']
-    _hostages: list['Piece']
-    _enemy_king: KingPiece
+    _roster: [Piece]
+    _hostages: [Piece]
     
     def __init__(self, id: int, commander: Commander, schema: TeamSchema):
-        """"""
+        """
+        # ACTION:
+        Construct a Team object.
+
+        # PARAMETERS:
+            *   id (int):               Globally unique identifier for the team.
+            *   commander (Commander):  Directs moves of Pieces in Team.roster.
+            *   schema (TeamSchema):    Defines the Team's
+
+        # Returns:
+        None
+
+        # RAISES:
+        None
+        """
         method = "Team.__init__"
+        
         self._id = id
-        self._commander = commander
         self._schema = schema
-        self._roster = []
-        self._hostages = []
-        self._hostages = None
+        self._roster = [Piece]
+        self._hostages = [Piece]
+        self._commander = commander
+
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def commander(self) -> 'Commander':
-        return self._commander
+    def roster(self) -> [Piece]:
+        return self._roster
+    
+    @property
+    def hostages(self) -> [Piece]:
+        return self._hostages
     
     @property
     def schema(self) -> TeamSchema:
         return self._schema
     
     @property
-    def roster(self) -> List[Piece]:
-        return self._roster
+    def commander(self) -> Commander:
+        return self._commander
     
-    @property
-    def hostages(self) -> List[Piece]:
-        return self._hostages
-    
-    @property
-    def enemy_king(self) -> Optional[KingPiece]:
-        return self._enemy_king
-    
-    @enemy_king.setter
-    def enemy_king(self, enemy_king: KingPiece):
-        self._enemy_king = enemy_king
-    
-    def __eq__(self, other):
-        if other is self:
-            return True
-        if other is None:
-            return False
+    def __eq__(self, other) -> bool:
+        if other is self: return True
+        if other is None: return False
         if isinstance(other, Team):
-            team = cast(Team, other)
-            return self._id == team._id
-        
+            return self._id == other.id
         return False
     
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self._id)
     
-    def __str__(self):
-        return f"Team{id:{self._id} commander:{self._commander.name} {self._schema}}"
+    def __str__(self) -> str:
+        return (
+            f"Team{{"
+            f"id:{self._id} {self._commander.name} {self._schema}"
+            f"}}"
+        )
