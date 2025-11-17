@@ -42,7 +42,7 @@ From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `CommanderValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -96,7 +96,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `CommanderValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -205,7 +205,7 @@ From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `CommanderValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -259,7 +259,7 @@ From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `CommanderValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`

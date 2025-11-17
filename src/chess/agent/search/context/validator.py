@@ -1,9 +1,9 @@
-# src/board/search/context/validator.py
+# src/agent/search/context/validator.py
 
 """
-Module: chess.board.search.context.validator
+Module: chess.agent.search.context.validator
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-17
 version: 1.0.0
 """
 

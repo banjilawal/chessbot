@@ -16,8 +16,8 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `PlayerAgent`: Abstract class.
   - `HumanPlayerAgent`: Concrete `subclass` of `PlayerAgent` people use.
   - `MachinePlayerAgent`: Concrete `subclass` of `PlayerAgent` that uses team_name `DecisionEngine`.
-  - `CommanderBuilder`: Builds new instances of `PlayerAgent`.
-  - `CommanderValidator`: Performs validator and sanity checks on existing
+  - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
+  - `PlayerAgentValidator`: Performs validator and sanity checks on existing
       `PlayerAgent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
@@ -26,7 +26,7 @@ This package exposes core classes and all exceptions from its sub-modules:
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
-`agent` package level. (e.g., `from chess.agent import CommanderValidator`). See USAGE
+`agent` package level. (e.g., `from chess.agent import PlayerAgentValidator`). See USAGE
 EXAMPLES section.
 
 # USAGE EXAMPLES
@@ -53,8 +53,8 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `PlayerAgent`: Abstract class.
   - `HumanPlayerAgent`: Concrete `subclass` of `PlayerAgent` people use.
   - `MachinePlayerAgent`: Concrete `subclass` of `PlayerAgent` that uses team_name `DecisionEngine`.
-  - `CommanderBuilder`: Builds new instances of `PlayerAgent`.
-  - `CommanderValidator`: Performs validator and sanity checks on existing
+  - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
+  - `PlayerAgentValidator`: Performs validator and sanity checks on existing
       `PlayerAgent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
@@ -63,7 +63,7 @@ This package exposes core classes and all exceptions from its sub-modules:
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
-`agent` package level. (e.g., `from chess.agent import CommanderValidator`). See USAGE
+`agent` package level. (e.g., `from chess.agent import PlayerAgentValidator`). See USAGE
 EXAMPLES section.
 
 # USAGE EXAMPLES
@@ -73,15 +73,11 @@ ___
 ---
 """
 
-from .exception import *
 from .agent import PlayerAgent
-from .human import Human
-from .bot import Bot
-from .history import CommandHistory
+from chess.agent.stack.history import CommandHistory
 
-from .history import CommandHistory
-from .validator import CommanderValidator
-from .builder import CommanderBuilder
+from .validator import PlayerAgentValidator
+from .builder import PlayerAgentBuilder
 
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
@@ -93,8 +89,8 @@ __all__ = [
     'HumanPlayerAgent',
     'PlayerAgent',
     'CommandHistory',
-    'CommanderValidator',
-    'CommanderBuilder',
+    'PlayerAgentValidator',
+    'PlayerAgentBuilder',
     
     *commander.__all__,
     *exception.__all__,

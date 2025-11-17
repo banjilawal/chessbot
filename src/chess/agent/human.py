@@ -1,3 +1,11 @@
+# src/chess/agent/agent/human.py
+
+"""
+Module: chess.agent.agent.human
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
 
 class HumanPlayerAgent(PlayerAgent):
 

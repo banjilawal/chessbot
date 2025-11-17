@@ -1,19 +1,20 @@
-from typing import cast, Generic, TYPE_CHECKING
+# src/chess/agent/validator.py
 
-from chess.agent.exception import CommanderHistoryException
-from chess.system import Result, Validator, IdValidator, NameValidator
-from chess.exception import NameValidationException, IdValidationException
-from chess.agent import PlayerAgent, NullCommanderException, InvalidCommanderException
+"""
+Module: chess.agent.validator
+Author: Banji Lawal
+Created: 2025-08-31
+version: 1.0.0
+"""
 
-
-class CommanderValidator(Validator):
+class PlayerAgentValidator(Validator):
   """
   Validates an PlayerAgent used in team_name graph module meets requirements:
     - Is not null.
     - Its fields meet the specifications for the graph.
   Unmet requirements will raise team_name InvalidCommanderException
 
-  For performance and single source of truth CommanderValidator has:
+  For performance and single source of truth PlayerAgentValidator has:
     - No fields
     - only static method validate
   subclasses must implement validate.

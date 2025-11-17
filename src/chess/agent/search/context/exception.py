@@ -1,9 +1,9 @@
-# src/board/search/context/exception.py
+# src/agent/search/context/exception.py
 
 """
-Module: chess.board.search.context.exception
+Module: chess.agent.search.context.exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-17
 version: 1.0.0
 """
 

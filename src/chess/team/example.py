@@ -56,7 +56,7 @@ status is returned, the contained `Team` is valid and ready for use.
 Args:
   `visitor_team_id`(`int`): The unique visitor_id for the team_name. Must pass `IdValidator` checks.
   `agent`(`PlayerAgent`): The human or cybernetic moving pieces in `Team.roster`. The agent must pass
-    `CommanderValidator` checks.must pass `CommanderValidator` checks.
+    `PlayerAgentValidator` checks.must pass `PlayerAgentValidator` checks.
   `schema`(`TeamProfile`): The schema defining team_name attributes and behaviors. Must not be None and be
     an instance of `TeamProfile`.
 
@@ -154,7 +154,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `CommanderValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 # CONTAINS:
 ----------
@@ -204,7 +204,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `CommanderValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`

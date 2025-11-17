@@ -1,10 +1,11 @@
-from typing import Generic, cast
+# src/chess/agent/stack/validator.py
 
-
-from chess.coord import CoordValidator
-from chess.piece import CoordStack, CoordStackValidationException, NullCoordStackException
-from chess.system import Validator, Result,ErrorContradictsPayloadException
-from chess.exception import InconsistentCurrentCoordException
+"""
+Module: chess.agent.stack.validator
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
 
 
 __all__ = [

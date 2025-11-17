@@ -1,4 +1,11 @@
+# src/chess/agent/stack/exception.py
 
+"""
+Module: chess.agent.stack.exception
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
 
 from chess.exception import ChessException, ValidationException, NullException
 

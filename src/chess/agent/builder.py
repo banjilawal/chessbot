@@ -1,26 +1,20 @@
-# chess/agent/old_occupation_validator.py
+# src/chess/agent/build.py
 
 """
-Module: `chess.agent.validator`
+Module: chess.agent.build
 Author: Banji Lawal
-Created: 2025-10-03
-Updated: 2025-10-04
+Created: 2025-09-11
 version: 1.0.0
-
- Provides: Create concrete subclasses of `PlayerAgent`
-
-Contains:
-  * `CommanderBuilder`
 """
 
-from typing import Optional
 
-from chess.system import LoggingLevelRouter, NameValidator, InvalidNameException, BuildResult, Builder
-from chess.agent import PlayerAgent, Human, Bot, CommanderBuildFailedException
-from chess.engine import DecisionEngine
+from chess.agent import (
+  PlayerAgent, HumanPlayerAgent, MachinePlayerAgent, PlayerAgentBuildFailed
+)
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 
 
-class CommanderBuilder(Builder[PlayerAgent]):
+class PlayerAgentBuilder(Builder[PlayerAgent]):
   """
   Responsible for safely constructing `PlayerAgent` instances.
   """
@@ -65,19 +59,19 @@ class CommanderBuilder(Builder[PlayerAgent]):
       * `InvalidNameException`: if `visitor_name` fails validate checks.
       * `EngineValidationException`: If `engine` is not null and fails validate checks.
     """
-    method = "CommanderBuilder.build"
+    method = "PlayerAgentBuilder.build"
 
     try:
       # id_validation = IdValidator.validate(commander_id)
       # if not id_validation.is_success():
-      #   LoggingLevelRouter.throw_if_invalid(CommanderBuilder, id_validation.err)
+      #   LoggingLevelRouter.throw_if_invalid(PlayerAgentBuilder, id_validation.err)
       name_validation = NameValidator.validate(name)
       if not name_validation.is_success():
-        LoggingLevelRouter.log_and_raise_error(CommanderBuilder, name_validation.exception)
+        LoggingLevelRouter.log_and_raise_error(PlayerAgentBuilder, name_validation.exception)
 
       if engine is not None and not isinstance(engine, DecisionEngine):
         error = TypeError(f"Expected team_name Decision, but got {type(engine).__name__}.")
-        LoggingLevelRouter.log_and_raise_error(CommanderBuilder, error)
+        LoggingLevelRouter.log_and_raise_error(PlayerAgentBuilder, error)
 
       if engine is not None and isinstance(engine, DecisionEngine):
         return BuildResult(payload=Bot(name=name, engine=engine))
@@ -99,14 +93,14 @@ class CommanderBuilder(Builder[PlayerAgent]):
 #
 #
 # def main():
-#   build_result = CommanderBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
+#   build_result = PlayerAgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")
 #   else:
 #     print(f"Failed to build competitor: {build_result.err}")
 #
-#   build_result = CommanderBuilder.build(-1, 4)
+#   build_result = PlayerAgentBuilder.build(-1, 4)
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")

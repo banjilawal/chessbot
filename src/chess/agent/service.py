@@ -1,4 +1,11 @@
+# src/chess/agent/service.py
 
+"""
+Module: chess.agent.service
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
 
 
 
@@ -12,7 +19,12 @@ class PlayerAgentService:
     _validator: PlayAgentValidator
     _search: PlayerAgentTeamSearch
     
-    def __init__(self, builder: type[PlayerAgentBuilder] = PlayerAgentBuilder, validator: validator: type[PlayerAgentValidator] = PlayerAgentValidator, search_service: PlayerAgentSearchService = PlayerAgentSearchService()):
+    def __init__(
+            self,
+            builder: type[PlayerAgentBuilder]=PlayerAgentBuilder,
+            validator: type[PlayerAgentValidator]=PlayerAgentValidator,
+            search_service: PlayerAgentSearchService = PlayerAgentSearchService()
+    ):
         self._agents = [PlayerAgent]
         self._builder = builder
         self._validator = validator

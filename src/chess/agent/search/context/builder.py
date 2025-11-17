@@ -1,9 +1,9 @@
-# src/chess/board/search/context/builder
+# src/chess/agent/search/context/builder
 
 """
-Module: chess.board.search.context.builder
+Module: chess.agent.search.context.builder
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-11-17
 version: 1.0.0
 """
 
