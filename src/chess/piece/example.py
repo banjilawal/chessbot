@@ -27,7 +27,7 @@ white_king = KingPiece(discovery_id=2, visitor_name='WK', bounds=King(), team_na
 ```
 ## SUBPACKAGES
   * `chess.owner.err`: Exceptions raised by `Piece` and its subclasses.
-  * `chess.owner.coord_stack`: Data structures and utilities for storing history of `Piece` object's positions.
+  * `chess.owner.stack`: Data structures and utilities for storing history of `Piece` object's positions.
   * `chess.owner.discover`: Data structures and utilities for managing discoveries made by `Piece` objects.
 
 ## EXCEPTIONS

@@ -50,12 +50,12 @@ class CoordStack:
 #
 #
 # def main():
-#   coord_stack = CoordStack()
-#   coord_stack.push_coord(Coord(1, 1))
-#   coord_stack.push_coord(Coord(1, 1))
-#   print(f"Current Coord: {coord_stack.current_coord}")
-#   coord_stack.undo_push()
-#   print(f"Current Coord after undo: {coord_stack.current_coord}")
+#   stack = CoordStack()
+#   stack.push_coord(Coord(1, 1))
+#   stack.push_coord(Coord(1, 1))
+#   print(f"Current Coord: {stack.current_coord}")
+#   stack.undo_push()
+#   print(f"Current Coord after undo: {stack.current_coord}")
 #
 #
 # if __name__ == '__main__':

@@ -1,15 +1,3 @@
-from abc import ABC
-from typing import Optional, cast, TYPE_CHECKING
-
-from chess.coord import CoordValidator
-from assurance import IdValidator, NameValidator
-from chess.system import auto_id
-from chess.team import Team
-from chess.piece import Piece
-from chess.agent import CommandHistory
-
-if TYPE_CHECKING:
-  pass
 
 class PlayerAgent(ABC):
   _id: int

@@ -1,7 +1,7 @@
-# chess/owner/coord_stack/__init__.py
+# chess/owner/stack/__init__.py
 
 """
-Module: `chess.owner.coord_stack`
+Module: `chess.owner.stack`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -34,14 +34,14 @@ from chess.owner import CoordStack, NullCoordStackException, CoordStackValidatio
 """
 
 from .exception import *
-from .coord_stack import CoordStack
+from .stack import CoordStack
 from .validator import CoordStackValidator
 
 
 # Package metadata (organic to __init__.py)
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
-__package_name__ = 'chess.owner.coord_stack'
+__package_name__ = 'chess.owner.stack'
 
 
 # Export control - only what belongs in public API
