@@ -1,4 +1,4 @@
-# src/chess/neighbor/builder.py
+# src/chess/neighbor/factory.py
 
 """
 Module: chess.graph.neighbor.builder

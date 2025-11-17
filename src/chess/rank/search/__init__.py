@@ -10,5 +10,5 @@ version: 1.0.0
 from .exception import *
 
 from .context import *
-from .search import rankSearch
-from .service import rankSearchService
+from .search import RankSearch
+from .service import RankSearchService

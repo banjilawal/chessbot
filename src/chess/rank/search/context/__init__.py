@@ -9,6 +9,6 @@ version: 1.0.0
 
 from .exception import *
 
-from .context import CoordSearchContext
-from .builder import CoordSearchContextBuilder
-from .validator import CoordSearchContextValidator
+from .context import RankSearchContext
+from .builder import RankSearchContextBuilder
+from .validator import RankSearchContextValidator

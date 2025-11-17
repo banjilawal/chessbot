@@ -1,4 +1,4 @@
-# src/chess/domain/origin/builder.py
+# src/chess/domain/origin/factory.py
 
 """
 Module: chess.domain.origin.builder

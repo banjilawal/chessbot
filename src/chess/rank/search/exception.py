@@ -16,10 +16,8 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from chess.system import (
-    BuildOptionSelectionTooLargeException, ContextException, NoBuildOptionSelectedException, NullException,
-    BuildFailedException, ValidationException,
-)
+from chess.system import NullException, SearchException, ValidationException
+from chess.rank import RankException
 
 __all__ = [
     "RankSearchException",
@@ -32,7 +30,7 @@ __all__ = [
 ]
 
 
-class RankSearchException(ContextException):
+class RankSearchException(RankException, SearchException):
     """
     Super class of exceptions raised by RankSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.

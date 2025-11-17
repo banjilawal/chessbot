@@ -1,4 +1,4 @@
-# src/chess/graph/builder.py
+# src/chess/graph/factory.py
 
 """
 Module: chess.graph.builder

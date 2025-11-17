@@ -1,7 +1,7 @@
-# src/chess/house/builder.py
+# src/chess/house/factory.py
 
 """
-Module: chess.house.builder.py
+Module: chess.house.factory.py
 Author: Banji Lawal
 Created: 2025-11-10
 version: 1.0.0

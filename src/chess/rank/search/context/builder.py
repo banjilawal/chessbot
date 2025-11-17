@@ -1,4 +1,4 @@
-# src/chess/rank/search/context/builder.py
+# src/chess/rank/search/context/factory.py
 
 """
 Module: chess.rank.search.context.builder

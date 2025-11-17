@@ -1,4 +1,4 @@
-# src/chess/coord/builder.py
+# src/chess/coord/factory.py
 
 """
 Module: chess.coord.builder

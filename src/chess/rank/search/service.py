@@ -1,49 +1,45 @@
-# src/chess/coord/search/service.py
+# src/chess/rank/search/service.py
 
 """
-Module: chess.coord.search.service
+Module: chess.rank.search.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
 """
 
-from typing import List, cast
-from chess.system import SearchResult
-from chess.coord import Coord, CoordSearch, CoordSearchContext, CoordSearchContextBuilder, CoordSearchContextValidator
+
+from chess.rank import RankSearch, RankSearchContext, RankSearchContextValidator, RankSearchContextBuilder
 
 
-class CoordSearchService:
+
+
+class RankSearchService:
     """"""
-    _context_builder: type[CoordSearchContextBuilder]
-    _context_validator: type[CoordSearchContextValidator]
-    _search: type[CoordSearch]
+    _context_builder: type[RankSearchContextBuilder]
+    _context_validator: type[RankSearchContextValidator]
+    _search: type[RankSearch]
     
     def __init__(
             self,
-            context_builder: type[CoordSearchContextBuilder],
-            context_validator: type[CoordSearchContextValidator],
-            search: type[CoordSearch] = type[CoordSearch],
+            context_builder: type[RankSearchContextBuilder],
+            context_validator: type[RankSearchContextValidator],
+            search: type[RankSearch] = type[RankSpecSearch],
     ):
         self._search = search
         self._context_builder = context_builder
         self._context_validator = context_validator
         
         
-    def search_by_row(self, row) -> List[Coord]:
-        try:
-            return self._search.search_by_row(row=row)
-        except Exception as ex:
-            return SearchResult.failure(ex)
+    @property
+    def search(self) -> type[RankSearch]:
+        return self._search
     
-    def search_by_column(self, column) -> List[Coord]:
-        try:
-            return self._search.search_by_column(column=column)
-        except Exception as ex:
-            return SearchResult.failure(ex)
-    
-    def search_by_coord(self, coord: Coord) -> List[Coord]:
-        try:
-            return self._search.search_by_row(coord=coord)
-        except Exception as ex:
-            return SearchResult.failure(ex)
+    #
+    # def build_search_context(self, **kwargs) -> RankSearchContext:
+    #     return self._context_builder.build(**kwargs)
+    #
+    #
+    # def validate_search_context(self, candidate: Any) -> SearchResult[RankSearchContext]:
+    #     return self._context_validator.validate(candidate)
+
     

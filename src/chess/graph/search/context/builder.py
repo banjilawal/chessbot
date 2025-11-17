@@ -1,4 +1,4 @@
-# src/chess/domain/search/context/builder.py
+# src/chess/domain/search/context/factory.py
 
 """
 Module: chess.domain.search.context.builder

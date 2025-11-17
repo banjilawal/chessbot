@@ -1,4 +1,4 @@
-# src/chess/coord/search/context/builder.py
+# src/chess/coord/search/context/factory.py
 
 """
 Module: chess.coord.search.context.builder

@@ -1,4 +1,4 @@
-# src/chess/rank/builder.py
+# src/chess/rank/factory.py
 
 """
 Module: chess.rank.builder

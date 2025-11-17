@@ -1,4 +1,4 @@
-# chess/board/builder.py
+# chess/board/factory.py
 
 """
 Module: chess.board.builder

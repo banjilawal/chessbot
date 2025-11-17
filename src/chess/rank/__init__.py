@@ -7,6 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
+from .search import *
 from .validator import *
 from .exception import *
 
@@ -18,3 +19,4 @@ from .queen import Queen
 from .knight import Knight
 from .bishop import Bishop
 from .spec import RankSpec
+from .factory import RankFactory

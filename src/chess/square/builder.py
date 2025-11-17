@@ -1,4 +1,4 @@
-# chess/square/builder.py
+# chess/square/factory.py
 
 """
 Module: chess.square.builder

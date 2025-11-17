@@ -1,7 +1,7 @@
-# src/coord/search/context/validator.py
+# src/rank/search/context/validator.py
 
 """
-Module: chess.coord.search.context.validator
+Module: chess.rank.search.context.validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -12,23 +12,23 @@ from typing import Any, cast
 
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
-from chess.coord import (
-    Coord, CoordValidator, CoordSearchContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
-    MoreThanOneCoordSearchOptionPickedException, NoCoordSearchOptionSelectedException,
+from chess.rank import (
+    Rank, RankSearchContext, InvalidRankSearchContextException, NullRankSearchContextException,
+    MoreThanOneRankSearchOptionPickedException, NoRankSearchOptionSelectedException,
 )
 
-class CoordSearchContextValidator(Validator):
+class RankSearchContextValidator(Validator[RankSearchContext]):
     """
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a CoordSearchContext that meets the application's safety contract before the client
-        is allowed to use the CoordSearchContext object.
+    1. Verify a candidate is a RankSearchContext that meets the application's safety contract before the client
+        is allowed to use the RankSearchContext object.
     2. Provide pluggable factories for validating different options separately.
     
     # PROVIDES:
-      ValidationResult[CoordSearchContext] containing either:
-            - On success: Coord in the payload.
+      ValidationResult[RankSearchContext] containing either:
+            - On success: Rank in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -40,203 +40,186 @@ class CoordSearchContextValidator(Validator):
     def validate(
             cls,
             candidate: Any,
-            coord_validator: type[CoordValidator]=CoordValidator
-    ) -> ValidationResult[CoordSearchContext]:
+    ) -> ValidationResult[RankSearchContext]:
         """
         # Action:
-        Verifies candidate is a CoordSearchContext in two steps.
-            1. Test the candidate is a valid SearchCoordContext with a single search option switched on.
-            2. Test the value passed to CoordSearchContext passes its validation contract..
+        Verifies candidate is a RankSearchContext in two steps.
+            1. Test the candidate is a valid SearchRankContext with a single search option switched on.
+            2. Test the value passed to RankSearchContext passes its validation contract..
 
         # Parameters:
-          * candidate (Any): Object to verify is a Coord.
-          * coord_validator (type[CoordValidator]): Enforces safety requirements on row, column, coord targets.
+          * candidate (Any): Object to verify is a Rank.
+          * rank_validator (type[RankValidator]): Enforces safety requirements on row, column, rank targets.
 
           
         # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
+          ValidationResult[RankSearchContext] containing either:
+                - On success: RankSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
             * TypeError
-            * InvalidCoordSearchContextException
-            * NullCoordSearchContextException
-            * NoCoordSearchOptionSelectedException
-            * MoreThanOneCoordSearchOptionPickedException
+            * InvalidRankSearchContextException
+            * NullRankSearchContextException
+            * NoRankSearchOptionSelectedException
+            * MoreThanOneRankSearchOptionPickedException
         """
-        method = "CoordSearchContextValidator.validate"
+        method = "RankSearchContextValidator.validate"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullCoordSearchContextException(f"{method} {NullCoordSearchContextException.DEFAULT_MESSAGE}")
+                    NullRankSearchContextException(f"{method} {NullRankSearchContextException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(candidate, CoordSearchContext):
+            if not isinstance(candidate, RankSearchContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected CoordSearchContext, got {type(candidate).__column__} instead.")
+                    TypeError(f"{method}: Expected RankSearchContext, got {type(candidate).__column__} instead.")
                 )
             
-            coord_search_context = cast(CoordSearchContext, candidate)
-            if len(coord_search_context.to_dict() == 0):
+            rank_search_context = cast(RankSearchContext, candidate)
+            if len(rank_search_context.to_dict() == 0):
                 return ValidationResult.failure(
-                    NoCoordSearchOptionSelectedException(
-                        f"{method}: {NoCoordSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                    NoRankSearchOptionSelectedException(
+                        f"{method}: {NoRankSearchOptionSelectedException.DEFAULT_MESSAGE}"
                     )
                 )
         
-            if len(coord_search_context.to_dict()) > 1:
+            if len(rank_search_context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    MoreThanOneCoordSearchOptionPickedException(
-                        f"{method}: {MoreThanOneCoordSearchOptionPickedException.DEFAULT_MESSAGE}"
+                    MoreThanOneRankSearchOptionPickedException(
+                        f"{method}: {MoreThanOneRankSearchOptionPickedException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if coord_search_context.row is not None:
-                return cls.validate_row_search_option(
-                    candidate=coord_search_context.row,
-                    coord_validator=coord_validator
-                )
+            return ValidationResult.success(payload=rank_search_context)
+   
             
-            if coord_search_context.column is not None:
-                return cls.validate_column_search_option(
-                    column=coord_search_context.column,
-                    coord_validator=coord_validator
-                )
-            
-            if coord_search_context.coord is not None:
-                return cls.validate_coord_search_option(
-                    coord=coord_search_context.coord,
-                    coord_validator=coord_validator
-                )
-            
-        except Exception as e:
-            return ValidationResult.failure(
-                InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}", e
-                )
-            )
-
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_row_search_option(
-            cls,
-            candidate: Any,
-            coord_validator: type[CoordValidator]=CoordValidator
-    ) -> ValidationResult[CoordSearchContext]:
-        """
-        # Action:
-        Verify a row_candidate meets application CoordSearchContext safety requirements.
-
-        # Parameters:
-          * candidate (Any): Object to verify is a row.
-          * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
-
-        # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
-                - On failure: Exception.
-
-        # Raises:
-            * InvalidCoordSearchContextException
-        """
-        method = "CoordSearchContextValidator.validate_id_search_option"
-        
-        try:
-            row_validation = coord_validator.validate_row(candidate)
-            if row_validation.is_failure():
-                return ValidationResult.failure(row_validation.exception)
-            
-            row = cast(int, row_validation.payload)
-            
-            return ValidationResult.success(payload=CoordSearchContext(row=row))
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
-                    ex
+                InvalidRankSearchContextException(
+                    f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}", ex
                 )
             )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_column_search_option(
-            cls,
-            candidate: Any,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> ValidationResult[CoordSearchContext]:
-        """
-        # Action:
-        Verify a column_candidate meets application CoordSearchContext safety requirements.
-
-        # Parameters:
-          * candidate (Any): Object to verify is a column.
-          * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
-
-        # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
-                - On failure: Exception.
-
-        # Raises:
-            * InvalidCoordSearchContextException
-        """
-        method = "CoordSearchContextValidator.validate_column_search_option"
-        
-        try:
-            column_validation = coord_validator.validate(candidate)
-            if column_validation.is_failure():
-                return ValidationResult.failure(column_validation.exception)
-            
-            column = cast(str, column_validation.payload)
-            
-            return ValidationResult.success(payload=CoordSearchContext(column=column))
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
-                    ex
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_coord_search_option(
-            cls,
-            candidate: Any,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> ValidationResult[CoordSearchContext]:
-        """
-        # Action:
-        Verify a coord_candidate meets application CoordSearchContext safety requirements.
-
-        # Parameters:
-          * candidate (Any): Object to verify is a coord.
-          * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
-
-        # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
-                - On failure: Exception.
-
-        # Raises:
-            * InvalidCoordSearchContextException
-        """
-        method = "CoordSearchContextValidator.validate_coord_search_option"
-        
-        try:
-            coord_validation = coord_validator.validate(candidate)
-            if coord_validation.is_failure():
-                return ValidationResult.failure(coord_validation.exception)
-            
-            coord = cast(Coord, coord_validation.payload)
-            
-            return ValidationResult.success(payload=CoordSearchContext(coord=coord))
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
-                    ex
-                )
-            )
+    #
+    # @classmethod
+    # @LoggingLevelRouter.monitor
+    # def validate_row_search_option(
+    #         cls,
+    #         candidate: Any,
+    # ) -> ValidationResult[RankSearchContext]:
+    #     """
+    #     # Action:
+    #     Verify a row_candidate meets application RankSearchContext safety requirements.
+    #
+    #     # Parameters:
+    #       * candidate (Any): Object to verify is a row.
+    #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
+    #
+    #     # Returns:
+    #       ValidationResult[RankSearchContext] containing either:
+    #             - On success: RankSearchContext in the payload.
+    #             - On failure: Exception.
+    #
+    #     # Raises:
+    #         * InvalidRankSearchContextException
+    #     """
+    #     method = "RankSearchContextValidator.validate_id_search_option"
+    #
+    #     try:
+    #         row_validation = rank_validator.validate_row(candidate)
+    #         if row_validation.is_failure():
+    #             return ValidationResult.failure(row_validation.exception)
+    #
+    #         row = cast(int, row_validation.payload)
+    #
+    #         return ValidationResult.success(payload=RankSearchContext(row=row))
+    #     except Exception as ex:
+    #         return ValidationResult.failure(
+    #             InvalidRankSearchContextException(
+    #                 f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}",
+    #                 ex
+    #             )
+    #         )
+    #
+    # @classmethod
+    # @LoggingLevelRouter.monitor
+    # def validate_column_search_option(
+    #         cls,
+    #         candidate: Any,
+    #         rank_validator: type[RankValidator] = RankValidator
+    # ) -> ValidationResult[RankSearchContext]:
+    #     """
+    #     # Action:
+    #     Verify a column_candidate meets application RankSearchContext safety requirements.
+    #
+    #     # Parameters:
+    #       * candidate (Any): Object to verify is a column.
+    #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
+    #
+    #     # Returns:
+    #       ValidationResult[RankSearchContext] containing either:
+    #             - On success: RankSearchContext in the payload.
+    #             - On failure: Exception.
+    #
+    #     # Raises:
+    #         * InvalidRankSearchContextException
+    #     """
+    #     method = "RankSearchContextValidator.validate_column_search_option"
+    #
+    #     try:
+    #         column_validation = rank_validator.validate(candidate)
+    #         if column_validation.is_failure():
+    #             return ValidationResult.failure(column_validation.exception)
+    #
+    #         column = cast(str, column_validation.payload)
+    #
+    #         return ValidationResult.success(payload=RankSearchContext(column=column))
+    #     except Exception as ex:
+    #         return ValidationResult.failure(
+    #             InvalidRankSearchContextException(
+    #                 f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}",
+    #                 ex
+    #             )
+    #         )
+    #
+    # @classmethod
+    # @LoggingLevelRouter.monitor
+    # def validate_rank_search_option(
+    #         cls,
+    #         candidate: Any,
+    #         rank_validator: type[RankValidator] = RankValidator
+    # ) -> ValidationResult[RankSearchContext]:
+    #     """
+    #     # Action:
+    #     Verify a rank_candidate meets application RankSearchContext safety requirements.
+    #
+    #     # Parameters:
+    #       * candidate (Any): Object to verify is a rank.
+    #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
+    #
+    #     # Returns:
+    #       ValidationResult[RankSearchContext] containing either:
+    #             - On success: RankSearchContext in the payload.
+    #             - On failure: Exception.
+    #
+    #     # Raises:
+    #         * InvalidRankSearchContextException
+    #     """
+    #     method = "RankSearchContextValidator.validate_rank_search_option"
+    #
+    #     try:
+    #         rank_validation = rank_validator.validate(candidate)
+    #         if rank_validation.is_failure():
+    #             return ValidationResult.failure(rank_validation.exception)
+    #
+    #         rank = cast(Rank, rank_validation.payload)
+    #
+    #         return ValidationResult.success(payload=RankSearchContext(rank=rank))
+    #     except Exception as ex:
+    #         return ValidationResult.failure(
+    #             InvalidRankSearchContextException(
+    #                 f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}",
+    #                 ex
+    #             )
+    #         )
