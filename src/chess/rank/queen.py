@@ -41,7 +41,7 @@ class Queen(Rank):
             team_quota: int = RankSpec.QUEEN.team_quota,
             designation: str = RankSpec.QUEEN.designation,
             quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants,
-            coord_service: CoordService=CoordService()
+            coord_service: CoordService = CoordService()
     ):
         super().__init(
             id=id,
@@ -56,5 +56,20 @@ class Queen(Rank):
 
     @LoggingLevelRouter.monitor
     def compute_span(self, piece: Piece) -> [Coord]:
-        """"""
+        """
+        # Action
+        Call compute_diagonal_span and compute_perpendicular_span to get vertical,
+        horizontal and diagonal points in the Queen's range.
+
+        
+        # PARAMETERS:
+            *   piece (Piece): Single-source-of-truth for the basis of the span.
+        
+        # Returns:
+        List[Coord]
+        
+        RAISES:
+        None
+        """
+        method = "Rank.compute_diagonal_span"
         return [self.compute_diagonal_span(piece), self.compute_perpendicular_span(piece)]

@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/context/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/pawn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/rook.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rook.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,6 +226,7 @@
     "Python.owner_builder.executor": "Run",
     "Python.owner_factory.executor": "Run",
     "Python.path.executor": "Run",
+    "Python.pawn.executor": "Coverage",
     "Python.piece (1).executor": "Run",
     "Python.piece.executor": "Run",
     "Python.placement.executor": "Run",
@@ -303,7 +299,7 @@
       <recent name="$PROJECT_DIR$/src/chess/rank/validator/consistency/ransom" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exception (2)">
+  <component name="RunManager" selected="Python.pawn">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -442,7 +438,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="exception" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="pawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -451,12 +447,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/piece/search" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/rank" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/piece/search/exception.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/pawn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -467,11 +463,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pawn" />
         <item itemvalue="Python.exception (2)" />
         <item itemvalue="Python.checker" />
         <item itemvalue="Python.exception (1)" />
         <item itemvalue="Python.dto" />
-        <item itemvalue="Python.exception" />
       </list>
     </recent_temporary>
   </component>
@@ -633,6 +629,7 @@
       <workItem from="1763123420919" duration="86975000" />
       <workItem from="1763265847754" duration="34750000" />
       <workItem from="1763314326886" duration="24621000" />
+      <workItem from="1763364100247" duration="5587000" />
     </task>
     <servers />
   </component>

@@ -54,4 +54,19 @@ class Rook(Rank):
 
     @LoggingLevelRouter.monitor
     def compute_span(self, piece: Piece) -> [Coord]:
+        """
+        # Action
+        1.  Call compute_perpendicular_span. to get the horizontal and vertical points
+            in the Rook's range.
+
+        # PARAMETERS:
+            *   piece (Piece): Single-source-of-truth for the basis of the span.
+
+        # Returns:
+        List[Coord]
+
+        RAISES:
+        None
+        """
+        method = "Rook.compute_span"
         return self.compute_perpendicular_span(piece)

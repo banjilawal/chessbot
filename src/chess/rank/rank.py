@@ -13,6 +13,7 @@ from chess.coord import Coord, CoordService
 from chess.piece import Piece
 from chess.geometry import Quadrant
 from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
+from chess.vector import VectorService
 
 
 class Rank(ABC):
@@ -42,6 +43,7 @@ class Rank(ABC):
     _team_quota: int
     _quadrants: list[Quadrant]
     _coord_service: CoordService
+    _vector_service: VectorService
     
     def __init__(self,
             id: int,
@@ -51,6 +53,7 @@ class Rank(ABC):
             team_quota: int,
             quadrants: list[Quadrant],
             coord_service: CoordService=CoordService(),
+            vector_service: VectorService=VectorService(),
     ):
         self._id = id
         self._name = name
@@ -59,6 +62,7 @@ class Rank(ABC):
         self._designation = designation
         self._quadrants = quadrants
         self._coord_service = coord_service
+        self._vector_service = vector_service
     
 
     @abstractmethod
@@ -405,6 +409,10 @@ class Rank(ABC):
     @property
     def coord_service(self) -> CoordService:
         return self._coord_service
+    
+    @property
+    def vector_service(self) -> VectorService:
+        return self._vector_service
     
     def __eq__(self, other):
         if other is self:
