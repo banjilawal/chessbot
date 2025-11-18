@@ -308,3 +308,50 @@ See the list of exceptions in the `__all__` list following (e.g., `TeamException
 `NullTeamException`, `InvalidTeamException`, ).
 """
 
+# src/chess/team/validator.py
+
+"""
+Module: chess.team.validator
+Author: Banji Lawal
+Created: 2025-09-11
+
+# SCOPE:
+-------
+**Limitation**: This module cannot prevent classes, processes or modules using `Team`
+    instances that pass sanity checks will not fail when using the validated `Team`.
+    Once client's processes might fail, experience service inconsistency or have other
+    faults.
+**Limitation**: Objects authenticated by `TeamValidator` might fail additional requirements
+    a client has for a `Team`. It is the client's responsibility to ensure the validated
+    `Team` passes and additional checks before deployment.
+
+**Related Features**:
+    Building teams -> See TeamBuilder, module[chess.team_name.validator],
+    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+
+# THEME:
+-------
+* Data assurance, error detection, error prevention
+
+# PURPOSE:
+---------
+1. Central, single source of truth for correctness of existing `Team` objects.
+2. Putting all the steps and logging into one place makes modules using `Team` objects
+    cleaner and easier to follow.
+
+**Satisfies**: Reliability and performance contracts.
+
+# DEPENDENCIES:
+---------------
+From `chess.system`:
+  * `ValidationResult`, `Validator`, `LoggingLevelRouter`
+
+From `chess.team_name`:
+    `Team`, `NullTeamException`, `InvalidTeamException`, `NullXComponentException`,
+    `NullYComponentException`, `TeamBelowBoundsException`, `TeamAboveBoundsException`
+
+# CONTAINS:
+----------
+ * `TeamValidator`
+"""
+

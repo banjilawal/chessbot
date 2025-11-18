@@ -17,7 +17,7 @@ from chess.vector import (
 
 class VectorValidator(Validator[Vector]):
     """
-    # ROLE: Validation
+    # ROLE: Validation, Data Integrity Guarantor.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of Vector, that meets integrity requirements, before 
