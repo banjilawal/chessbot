@@ -34,28 +34,37 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             id: int,
-            agent: PlayerAgent,
             schema: TeamSchema,
+            agent: PlayerAgent,
             identity_service: IdentityService = IdentityService(),
             agent_service: PlayerAgentService = PlayerAgentService(),
-            team_schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
+            schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
     ) -> BuildResult[Team]:
         """
         # ACTION:
         1.  Check ID safety with IdentityService.validate_id.
         2.  Check schema correctness with TeamSchemaValidator.validate.
-        3.  Check agent safety with CommanderService.validate_commander.
+        3.  Check agent safety with PlayAgentService.validate_player.
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks create a new Team object.
-        6.  Add the new Team to the agent's teams collection if it is not already there.
+        6.  If the team is not in actor's team_assignments use their team_stack_service to add it.
     
         # PARAMETERS:
-            *   x (int): value in the x-plane
-            *   y (int): value in the y-plane
+            *   id (int):                               Globally unique identifier for the team.
+            
+            *   agent (PlayerAgent):                    Directs Pieces on Team's roster where they should move.
+            
+            *   schema (TeamSchema):                    Fixed information about white and black teams
+            
+            *   identity_service (IdentityService):     Validates id safety
+            
+            *   agent_service (PlayerAgentService):     Provides PlayerAgentValidator
+            
+            *   schema_validator (TeamSchemaValidator): Validates Schema instance's correctness.
     
         # Returns:
         BuildResult[Team] containing either:
-            - On success: T in the payload.
+            - On success: Team in the payload.
             - On failure: Exception.
     
         RAISES:
@@ -68,7 +77,7 @@ class TeamBuilder(Builder[Team]):
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            team_schema_validation = team_schema_validator.validate(schema)
+            team_schema_validation = schema_validator.validate(schema)
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             

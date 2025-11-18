@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-08-04
 version: 1.0.0
 """
+
 from typing import List
 
 from chess.piece import Piece
@@ -42,20 +43,20 @@ class Team:
     MAX_ROSTER_SIZE = 16
     
     _id: int
-    _player_agent: PlayerAgent
-    _schema: TeamSchema
     _roster: [Piece]
     _hostages: [Piece]
-    
+    _schema: TeamSchema
+    _player_agent: PlayerAgent
+
     def __init__(self, id: int, player_agent: PlayerAgent, schema: TeamSchema):
         """
         # ACTION:
         Construct a Team object.
 
         # PARAMETERS:
-            *   id (int):               Globally unique identifier for the team.
-            *   agent (PlayerAgent):   Directs moves of Pieces in Team.roster.
-            *   schema (TeamSchema):    Defines the Team's
+            *   id (int):                       Globally unique identifier for the team.
+            *   agent (PlayerAgent):     Directs moves of Pieces in Team.roster.
+            *   schema (TeamSchema):            Defines the Team's
 
         # Returns:
         None
