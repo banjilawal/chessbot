@@ -14,70 +14,70 @@ from chess.system import (
 )
 
 __all__ = [
-    "AgentTeamSearchContextException",
+    "TeamSearchContextException",
     
-# ========================= NULLAGENT_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
-    "NullAgentTeamSearchContextException",
+# ========================= AGENT_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
+    "NullTeamSearchContextException",
     
-# =========================AGENT_TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
-    "InvalidAgentTeamSearchContextException",
-    "NoAgentTeamSearchOptionSelectedException",
-    "MoreThanOneAgentTeamSearchOptionPickedException",
+# ========================= TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+    "InvalidTeamSearchContextException",
+    "NoTeamSearchOptionSelectedException",
+    "MoreThanOneTeamSearchOptionPickedException",
     
-# =========================AGENT_TEAM_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
-    "AgentTeamSearchContextBuildFailedException",
+# ========================= TEAM_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+    "TeamSearchContextBuildFailedException",
 ]
 
 
-class AgentTeamSearchContextException(SearchContextException):
+class TeamSearchContextException(SearchContextException):
     """
     Super class of exceptions raised by TeamSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
-    ERROR_CODE = "SEARCH_CONTEXT_ERROR"
+    ERROR_CODE = "TEAM_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext raised an exception."
 
 
-#========================= NULLAGENT_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
-class NullAgentTeamSearchContextException(AgentTeamSearchContextException, NullException):
+#========================= NULL_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
+class NullTeamSearchContextException(TeamSearchContextException, NullException):
     """Raised if an entity, method, or operation requires TeamSearchContext but gets null instead."""
-    ERROR_CODE = "NULL_AGENT_TEAM_SEARCH_CONTEXT_ERROR"
+    ERROR_CODE = "NULL_TEAM_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext cannot be null"
 
 
-#=========================AGENT_TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
-class InvalidAgentTeamSearchContextException(
-    AgentTeamSearchContextException,
+#========================= TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+class InvalidTeamSearchContextException(
+    TeamSearchContextException,
     ValidationException
 ):
     """Catchall Exception for TeamSearchContext when a validation candidate fails a sanity check."""
-    ERROR_CODE = "AGENT_TEAM_SEARCH_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = " TEAM_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext validation failed."
 
 
-class NoAgentTeamSearchOptionSelectedException(
-    AgentTeamSearchContextException,
+class NoTeamSearchOptionSelectedException(
+    TeamSearchContextException,
     NoBuildOptionSelectedException
 ):
     """"""
-    ERROR_CODE = "NO_AGENT_TEAM_SEARCH_OPTION_SELECTED_ERROR"
+    ERROR_CODE = "NO_TEAM_SEARCH_OPTION_SELECTED_ERROR"
     DEFAULT_MESSAGE = "None of the TeamSearchContext options wre selected. An option must be picked."
 
 
-class MoreThanOneAgentTeamSearchOptionPickedException(
-    AgentTeamSearchContextException,
+class MoreThanOneTeamSearchOptionPickedException(
+    TeamSearchContextException,
     BuildOptionSelectionTooLargeException
 ):
     """"""
-    ERROR_CODE = "TOO_MANY_AGENT_TEAM_SEARCH_OPTIONS_ERROR"
+    ERROR_CODE = "TOO_MANY_TEAM_SEARCH_OPTIONS_ERROR"
     DEFAULT_MESSAGE = "Only one TeamSearchContext option can be selected."
 
 
 #=========================AGENT_TEAM_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
-class AgentTeamSearchContextBuildFailedException(AgentTeamSearchContextException, BuildFailedException):
+class TeamSearchContextBuildFailedException(TeamSearchContextException, BuildFailedException):
     """
     Catchall Exception for AgentTeamSearchContextBuilder when it encounters an error building
     a TeamSearchContext.
     """
-    ERROR_CODE = "AGENT_TEAM_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "EAM_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext build failed."

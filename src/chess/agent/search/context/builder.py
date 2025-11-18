@@ -13,8 +13,8 @@ from chess.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.agent import (
-    TeamSearchContext, MoreThanOneAgentTeamSearchOptionPickedException,
-    NoAgentTeamSearchOptionSelectedException, AgentTeamSearchContextBuildFailedException,
+    TeamSearchContext, MoreThanOneTeamSearchOptionPickedException,
+    NoTeamSearchOptionSelectedException, TeamSearchContextBuildFailedException,
 )
 
 
@@ -70,9 +70,9 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
             - On failure:   Exception.
 
         # Raises:
-            *   AgentTeamSearchContextBuildFailedException
-            *   NoAgentTeamSearchOptionSelectedException
-            *   MoreThanOneAgentTeamSearchOptionPickedException
+            *   TeamSearchContextBuildFailedException
+            *   NoTeamSearchOptionSelectedException
+            *   MoreThanOneTeamSearchOptionPickedException
         """
         method = "AgentTeamSearchContextBuilder.build"
         
@@ -82,15 +82,15 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
             
             if param_count == 0:
                 return BuildResult.failure(
-                    NoAgentTeamSearchOptionSelectedException(
-                        f"{method}: {NoAgentTeamSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                    NoTeamSearchOptionSelectedException(
+                        f"{method}: {NoTeamSearchOptionSelectedException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
-                    MoreThanOneAgentTeamSearchOptionPickedException(
-                        f"{method}: {MoreThanOneAgentTeamSearchOptionPickedException.DEFAULT_MESSAGE}"
+                    MoreThanOneTeamSearchOptionPickedException(
+                        f"{method}: {MoreThanOneTeamSearchOptionPickedException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -105,8 +105,8 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                AgentTeamSearchContextBuildFailedException(
-                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                TeamSearchContextBuildFailedException(
+                    f"{method}: {TeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -132,9 +132,10 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
                 - On failure:   Exception.
 
         # Raises:
-            *   InvalidAgentTeamSearchContextException
+            *   InvalidTeamSearchContextException
         """
         method = "AgentTeamSearchContextBuilder.build_id_search_context"
+        
         try:
             id_validation = identity_service.validate_id(candidate=id)
             if id_validation.is_failure():
@@ -146,8 +147,8 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                AgentTeamSearchContextBuildFailedException(
-                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                TeamSearchContextBuildFailedException(
+                    f"{method}: {TeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -173,7 +174,7 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
                 - On failure:   Exception.
 
         # Raises:
-            *   InvalidAgentTeamSearchContextException
+            *   InvalidTeamSearchContextException
         """
         method = "AgentTeamSearchContextBuilder.build_name_search_context"
         
@@ -188,8 +189,8 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                AgentTeamSearchContextBuildFailedException(
-                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                TeamSearchContextBuildFailedException(
+                    f"{method}: {TeamSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -215,7 +216,7 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
             - On failure:   Exception.
 
         # Raises:
-            *   InvalidAgentTeamSearchContextException
+            *   InvalidTeamSearchContextException
         """
         method = "AgentTeamSearchContextBuilder.build_color_search_context"
         
@@ -230,7 +231,7 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
         
         except Exception as e:
             return BuildResult.failure(
-                AgentTeamSearchContextBuildFailedException(
-                    f"{method}: {AgentTeamSearchContextBuildFailedException.DEFAULT_MESSAGE}"
+                TeamSearchContextBuildFailedException(
+                    f"{method}: {TeamSearchContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

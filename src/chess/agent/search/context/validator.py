@@ -12,8 +12,8 @@ from typing import Any, cast
 
 from chess.system import GameColor, Validator, IdentityService, GameColorValidator, ValidationResult, LoggingLevelRouter
 from chess.agent import (
-    TeamSearchContext, InvalidAgentTeamSearchContextException, NullAgentTeamSearchContextException,
-    MoreThanOneAgentTeamSearchOptionPickedException, NoAgentTeamSearchOptionSelectedException
+    TeamSearchContext, InvalidTeamSearchContextException, NullTeamSearchContextException,
+    MoreThanOneTeamSearchOptionPickedException, NoTeamSearchOptionSelectedException
 )
 
 
@@ -63,18 +63,18 @@ class TeamSearchContext(Validator):
 
         # Raises:
             *   TypeError
-            *   NullAgentTeamSearchContextException
-            *   NoAgentTeamSearchOptionSelectedException
-            *   InvalidAgentTeamSearchContextException
-            *   MoreThanOneAgentTeamSearchOptionPickedException
+            *   NullTeamSearchContextException
+            *   NoTeamSearchOptionSelectedException
+            *   InvalidTeamSearchContextException
+            *   MoreThanOneTeamSearchOptionPickedException
         """
         method = "TeamSearchContext.validate"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullAgentTeamSearchContextException(
-                        f"{method} {NullAgentTeamSearchContextException.DEFAULT_MESSAGE}"
+                    NullTeamSearchContextException(
+                        f"{method} {NullTeamSearchContextException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -88,15 +88,15 @@ class TeamSearchContext(Validator):
             agentTeam_search_context = cast(TeamSearchContext, candidate)
             if len(agentTeam_search_context.to_dict() == 0):
                 return ValidationResult.failure(
-                    NoAgentTeamSearchOptionSelectedException(
-                        f"{method}: {NoAgentTeamSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                    NoTeamSearchOptionSelectedException(
+                        f"{method}: {NoTeamSearchOptionSelectedException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if len(agentTeam_search_context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    MoreThanOneAgentTeamSearchOptionPickedException(
-                        f"{method}: {MoreThanOneAgentTeamSearchOptionPickedException.DEFAULT_MESSAGE}"
+                    MoreThanOneTeamSearchOptionPickedException(
+                        f"{method}: {MoreThanOneTeamSearchOptionPickedException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -120,8 +120,8 @@ class TeamSearchContext(Validator):
         
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidAgentTeamSearchContextException(
-                    f"{method}: {InvalidAgentTeamSearchContextException.DEFAULT_MESSAGE}",
+                InvalidTeamSearchContextException(
+                    f"{method}: {InvalidTeamSearchContextException.DEFAULT_MESSAGE}",
                     ex
                 )
             )
@@ -131,7 +131,7 @@ class TeamSearchContext(Validator):
     def validate_id_search_option(
             cls,
             candidate: Any,
-            identity_service: type[IdentityService] = IdentityService
+            identity_service: IdentityService=IdentityService()
     ) -> ValidationResult[TeamSearchContext]:
         """
         # Action:
@@ -148,7 +148,7 @@ class TeamSearchContext(Validator):
                 - On failure:   Exception.
 
         # Raises:
-            *   InvalidAgentTeamSearchContextException
+            *   InvalidTeamSearchContextException
         """
         method = "TeamSearchContext.validate_id_search_option"
         
@@ -162,8 +162,8 @@ class TeamSearchContext(Validator):
             return ValidationResult.success(payload=TeamSearchContext(id=id))
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidAgentTeamSearchContextException(
-                    f"{method}: {InvalidAgentTeamSearchContextException.DEFAULT_MESSAGE}",
+                InvalidTeamSearchContextException(
+                    f"{method}: {InvalidTeamSearchContextException.DEFAULT_MESSAGE}",
                     ex
                 )
             )
@@ -190,7 +190,7 @@ class TeamSearchContext(Validator):
                 - On failure: Exception.
 
         # Raises:
-            * InvalidAgentTeamSearchContextException
+            * InvalidTeamSearchContextException
         """
         method = "TeamSearchContext.validate_name_search_option"
         
@@ -205,8 +205,8 @@ class TeamSearchContext(Validator):
         
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidAgentTeamSearchContextException(
-                    f"{method}: {InvalidAgentTeamSearchContextException.DEFAULT_MESSAGE}",
+                InvalidTeamSearchContextException(
+                    f"{method}: {InvalidTeamSearchContextException.DEFAULT_MESSAGE}",
                     ex
                 )
             )
@@ -233,7 +233,7 @@ class TeamSearchContext(Validator):
                 - On failure:    Exception.
 
         # Raises:
-            *   InvalidAgentTeamSearchContextException
+            *   InvalidTeamSearchContextException
         """
         method = "TeamSearchContext.validate_color_search_option"
         
@@ -247,8 +247,8 @@ class TeamSearchContext(Validator):
             return ValidationResult.success(payload=TeamSearchContext(color=color))
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidAgentTeamSearchContextException(
-                    f"{method}: {InvalidAgentTeamSearchContextException.DEFAULT_MESSAGE}",
+                InvalidTeamSearchContextException(
+                    f"{method}: {InvalidTeamSearchContextException.DEFAULT_MESSAGE}",
                     ex
                 )
             )

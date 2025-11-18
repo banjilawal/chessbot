@@ -41,6 +41,25 @@ class TeamSearch(Search[Agent, Team]):
             agent_validator: type[AgentValidator]=AgentValidator,
             search_context_validator: type[TeamSearchContext]=TeamSearchContext,
     ) -> SearchResult[List[Team]]:
+        """
+        # Action:
+        1.  Verify the data_owner is a valid Agent using the agent_validator.
+        2.  Verify the search_context is a valid TeamSearchContext using the search_context_validator.
+        3.  Extract the search_context attribute. and call either _id_search, _name_search, or _color_search.
+
+        # Parameters:
+            *   candidate (Any):                                Object to verify is a color.
+
+            *   identity_service (type[GameColorValidator]):    Checks if candidate complies with safety contract.
+
+        # Returns:
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
+                - On failure:    Exception.
+
+        # Raises:
+        None
+        """
         method = "TeamSearch.search"
 
         data_owner_validation = agent_validator.validate(data_owner)
@@ -64,15 +83,39 @@ class TeamSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _id_search(cls, data_owner: Agent, id: int) -> SearchResult[List[Team]]:
+        """
+        # Action:
+        1.  Get the teams whose id matched the target.
+        2.  If no matches are found return an empty SearchResult.
+        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
+        4.  If the search returns multiple hits call _resolve_matching_ids.
+
+        # Parameters:
+            *   id (int):              Target color to search for.
+
+            *   data_owner (Agent):     Provides the Team objects to search.
+
+        # Returns:
+        SearchResult[List[Team]] containing either:
+                - On success:   List[team] in the payload.
+                - On failure:   Exception.
+
+        # Raises:
+            *   TeamSearchException
+        """
         method = "TeamSearch._id_search"
+        
         try:
             matches = [team for team in data_owner.teams if team.id == id]
+            
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
                 return SearchResult.success(payload=matches)
+            
             else:
                 return cls._resolve_matching_ids(matches=matches, data_owner=data_owner)
+            
         except Exception as ex:
             return SearchResult.failure(
                 TeamSearchException(
@@ -85,7 +128,28 @@ class TeamSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _name_search(cls, data_owner: Agent, name: str) -> SearchResult[List[Team]]:
+        """
+        # Action:
+        1.  Get the teams whose names matched the target, insensitive to case.
+        2.  If no matches are found return an empty SearchResult.
+        3.  If one or more matches are found return a successful SearchResult with the all
+            the items in an array.
+
+        # Parameters:
+            *   name (str):             Target color to search for.
+
+            *   data_owner (Agent):     Provides the Team objects to search.
+
+        # Returns:
+        SearchResult[List[Team]] containing either:
+                - On success:   List[team] in the payload.
+                - On failure:   Exception.
+
+        # Raises:
+            *   TeamSearchException
+        """
         method = "TeamSearch._name_search"
+        
         try:
             matches = [
                 team for team in data_owner.team_assignments if team.schema.name.upper() == name.upper()
@@ -102,7 +166,28 @@ class TeamSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _color_search(cls, data_owner: Agent, color: GameColor) -> SearchResult[List[Team]]:
+        """
+        # Action:
+        1.  Get the teams whose color is the same as the target..
+        2.  If no matches are found return an empty SearchResult.
+        3.  If one or more matches are found return a successful SearchResult with the all the items
+            in an array.
+
+        # Parameters:
+            *   color (GameColor):      Target color to search for.
+
+            *   data_owner (Agent):     Provides the Team objects to search.
+
+        # Returns:
+        SearchResult[List[Team]] containing either:
+                - On success:   List[team] in the payload.
+                - On failure:   Exception.
+
+        # Raises:
+            *   TeamSearchException
+        """
         method = "TeamSearch._color_search"
+        
         try:
             matches = [
                 team for team in data_owner.team_assignments if team.schema.color == color
@@ -125,24 +210,66 @@ class TeamSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_ids(cls, matches: List[Team], data_owner: Agent) -> SearchResult[List[Team]]:
+        """
+        # Action:
+        1.  Pop the first item in the matches list.
+        2.  Loop through the remaining items in the matches list.
+                *   If only the id matches but color and name differ from the target's put that item in the
+                    uniques list.
+        3.  If uniques list is empty get the size of the matches list.
+        4.  If the size of the matches list is greater than the size of the uniques list, remove the
+            duplicates from the data_owner.team_assignments
+
+        # Parameters:
+            *   color (GameColor):      Target color to search for.
+
+            *   data_owner (Agent):     Provides the Team objects to search.
+
+        # Returns:
+        SearchResult[List[Team]] containing either:
+                - On success:   List[team] in the payload.
+                - On failure:   Exception.
+
+        # Raises:
+            *   TeamSearchException
+            *   TeamSearchIdCollisionException
+            
+        # NOTE
+        The while loop used for doing this should be replaced with a recursive method.
+        """
         method = "TeamSearch._resolve_matching_ids"
-        target = matches.pop()
-        misses = [team for team in matches if team.id == target.id and (
-                team.schema.name.upper() != target.name.upper() or team.schema.color != target.schema.color
+        
+        try:
+            target = matches.pop()
+            uniques = [team for team in matches if team.id == target.id and (
+                    team.schema.name.upper() != target.name.upper() or team.schema.color != target.schema.color
+                )
+            ]
+            
+            # This should be implemented with a call to a recursive function. I thought I wrote that
+            # already.
+            if len(uniques) == 0:
+                runs = len(matches) - 1
+                for team in data_owner.teams:
+                    if (
+                        team.id == target.id and
+                        team.name.upper() == target.name.upper() and
+                        team.current_position == target.current_position
+                    ):
+                        data_owner.teams.remove(team)
+                        matches.remove(team)
+                return SearchResult.success(payload=matches)
+            
+            return SearchResult.failure(
+                TeamSearchIdCollisionException(
+                    f"{method}: {TeamSearchIdCollisionException.DEFAULT_MESSAGE}"
+                )
             )
-        ]
-        if len(misses) == 0:
-            runs = len(matches) - 1
-            for team in data_owner.teams:
-                if (
-                    team.id == target.id and
-                    team.name.upper() == target.name.upper() and
-                    team.current_position == target.current_position
-                ):
-                    data_owner.teams.remove(team)
-                    matches.remove(team)
-            return SearchResult(payload=matches)
-        return SearchResult(exception=TeamSearchIdCollisionException(
-                f"{method}: {TeamSearchIdCollisionException.DEFAULT_MESSAGE}"
+        
+        except Exception as ex:
+            return SearchResult.failure(
+                TeamSearchException(
+                    f"{method}: {TeamSearchException.DEFAULT_MESSAGE}",
+                    ex
+                )
             )
-        )

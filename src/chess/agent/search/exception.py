@@ -7,7 +7,7 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import SearchException
+from chess.system import InconsistencyException, SearchException
 
 __all__ = [
   "TeamSearchException",
@@ -25,10 +25,14 @@ class TeamSearchException(SearchException):
   DEFAULT_MESSAGE = "TeamSearch raised an exception."
 
 
-class TeamSearchIdCollisionException(TeamSearchException):
-  """"""
+class TeamSearchIdCollisionException(TeamSearchException, InconsistencyException):
+  """
+  Raised if a search produced multiple results with the same id ad other properties do not match.
+  This error is not raised by duplicates (all properties are the same.)
+  """
   ERROR_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "TeamSearch produced multiple results with the same id. Team.id should be globally unique. There "
-    "may be inconsistent data in the system."
+    "TeamSearch produced multiple results with the same id but other properties do not match. Ids should "
+    "be globally unique. If multiple Teams with all properties except the id differing, There may be data "
+    "inconsistencies in the system."
   )
