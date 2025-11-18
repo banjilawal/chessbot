@@ -87,9 +87,9 @@ class TeamValidator(Validator[Team]):
           `TypeError`: if `candidate` is not team_name Team` object
           `NullTeamException`: if `candidate` is null
           `InvalidIdException`: if `visitor_id` fails validate checks
-          `InvalidCommanderException`: if `commander` fails validate checks
+          `InvalidCommanderException`: if `agent` fails validate checks
           `NullTeamProfileException`: if `schema` is null
-          `InvalidCommanderAssignmentException`: if the assigned commander does not consistency the validated commander
+          `InvalidCommanderAssignmentException`: if the assigned agent does not consistency the validated agent
           `RelationshipException`: if the bidirectional relationship between Team and Commander is broken
         """
         method = "TeamValidator.validate"

@@ -220,7 +220,7 @@ From `chess.owner`:
 # PROVIDES:
 
 ATTRIBUTES:
-  * `_commander` (`Agent`): Player who controls `Team`
+  * `_player_agent` (`Agent`): Player who controls `Team`
   * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, visitor_name.
   * `_roster` (`List[Piece]`): List of chess pieces on the team_name.
   * `_hostages` (`List[Piece]`): List of captured enemy pieces.

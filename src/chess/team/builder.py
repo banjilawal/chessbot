@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.agent import Agent, CommanderService
+from chess.agent import Agent, CommanderService, PushingDuplicateTeamException, PushingNullException
 from chess.agent.service import AgentService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
@@ -36,10 +36,10 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             id: int,
-            commander: Agent,
-            team_schema: TeamSchema,
+            agent: Agent,
+            schema: TeamSchema,
             identity_service: IdentityService = IdentityService(),
-            team_service: AgentService = AgentService(),
+            agent_service: AgentService = AgentService(),
             team_schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
     ) -> BuildResult[Team]:
         """
@@ -74,22 +74,20 @@ class TeamBuilder(Builder[Team]):
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             
-            commander_validation = commander_service.validate_commander(commander)
-            if commander_validation.is_failure():
-                return BuildResult.failure(commander_validation.exception)
+            agent_validation = agent_service.validate_agent(agent)
+            if agent_validation.is_failure():
+                return BuildResult.failure(agent_validation.exception)
             
-            team = Team(id=id, commander=commander, team_schema=team_schema)
+            team = Team(id=id, player_agent=agent, schema=schema)
             
-            if team not in commander.teams:
-                commander.teams.add_team(team)
-            
-            if team not in commander.teams:
+            if team in agent.team_stack_service.find_tean(team) is not None:
                 return BuildResult.failure(
-                    AddingTeamToCommanderHisstoryFailedException(
-                        f"{method}: {AddingTeamToCommanderHisstoryFailedException.DEFAULT_MESSAGE}"
+                    PushingDuplicateTeamException(
+                        f"{method}: {PushingDuplicateTeamException.DEFAULT_MESSAGE}"
                     )
                 )
             
+            agent.team_stack_service.push_team(team)
             return BuildResult.success(team)
         
         except Exception as ex:

@@ -42,19 +42,19 @@ class Team:
     MAX_ROSTER_SIZE = 16
     
     _id: int
-    _commander: Agent
+    _player_agent: Agent
     _schema: TeamSchema
     _roster: [Piece]
     _hostages: [Piece]
     
-    def __init__(self, id: int, commander: Agent, schema: TeamSchema):
+    def __init__(self, id: int, player_agent: Agent, schema: TeamSchema):
         """
         # ACTION:
         Construct a Team object.
 
         # PARAMETERS:
             *   id (int):               Globally unique identifier for the team.
-            *   agent (Agent):  Directs moves of Pieces in Team.roster.
+            *   agent (Agent):   Directs moves of Pieces in Team.roster.
             *   schema (TeamSchema):    Defines the Team's
 
         # Returns:
@@ -69,7 +69,7 @@ class Team:
         self._schema = schema
         self._roster = [Piece]
         self._hostages = [Piece]
-        self._commander = commander
+        self._player_agent = player_agent
 
     
     @property
@@ -89,8 +89,8 @@ class Team:
         return self._schema
     
     @property
-    def commander(self) -> Agent:
-        return self._commander
+    def player_agent(self) -> Agent:
+        return self._player_agent
     
     def __eq__(self, other) -> bool:
         if other is self: return True
@@ -105,6 +105,6 @@ class Team:
     def __str__(self) -> str:
         return (
             f"Team{{"
-            f"id:{self._id} {self._commander.name} {self._schema}"
+            f"id:{self._id} {self._player_agent.name} {self._schema}"
             f"}}"
         )
