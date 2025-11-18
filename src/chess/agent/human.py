@@ -7,10 +7,10 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import PlayerAgent, TeamStackService
+from chess.agent import Agent, TeamStackService
 
 
-class HumanPlayer(PlayerAgent):
+class HumanPlayer(Agent):
     
     def __init__(self, id: int, name: str, team_stack_service: TeamStackService = TeamStackService()):
         super().__init__(id=id, name=name, team_stack_service=team_stack_service)

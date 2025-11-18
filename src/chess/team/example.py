@@ -55,7 +55,7 @@ status is returned, the contained `Team` is valid and ready for use.
 
 Args:
   `visitor_team_id`(`int`): The unique visitor_id for the team_name. Must pass `IdValidator` checks.
-  `agent`(`PlayerAgent`): The human or cybernetic moving pieces in `Team.roster`. The agent must pass
+  `agent`(`Agent`): The human or cybernetic moving pieces in `Team.roster`. The agent must pass
     `PlayerAgentValidator` checks.must pass `PlayerAgentValidator` checks.
   `schema`(`TeamProfile`): The schema defining team_name attributes and behaviors. Must not be None and be
     an instance of `TeamProfile`.
@@ -72,7 +72,7 @@ Raises:
     * `InvalidCommanderException`: if `agent` fails validate checks
     * `NullTeamProfileException`: if `schema` is None
     * `TypeError`: if `schema` is not team_name `TeamProfile` instance
-    * `RelationshipException`: if the bidirectional relationship between `Team` and `PlayerAgent` is broken
+    * `RelationshipException`: if the bidirectional relationship between `Team` and `Agent` is broken
 
 Note:
   The build runs through all the checks on parameters and state to guarantee only team_name valid `Team` is
@@ -154,7 +154,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `PlayerAgentValidator`,
 
 # CONTAINS:
 ----------
@@ -204,7 +204,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -220,7 +220,7 @@ From `chess.owner`:
 # PROVIDES:
 
 ATTRIBUTES:
-  * `_player_agent` (`PlayerAgent`): Player who controls `Team`
+  * `_player_agent` (`Agent`): Player who controls `Team`
   * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, visitor_name.
   * `_roster` (`List[Piece]`): List of chess pieces on the team_name.
   * `_hostages` (`List[Piece]`): List of captured enemy pieces.
@@ -244,7 +244,7 @@ ACTION:
 Create a `Team` object if the parameters have correctness.
 
 PARAMETERS:
-    * `agent` (`PlayerAgent`): owner of `Team` object.
+    * `agent` (`Agent`): owner of `Team` object.
     * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
 
 RETURNS:

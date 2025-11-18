@@ -8,10 +8,12 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.team import InvalidTeamException, Team
+
 from chess.agent import PlayerAgentService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
-
+from chess.team import (
+    InvalidTeamException, NullTeamException, Team, TeamNotRegisteredWithAgentException, TeamSchemaValidator
+)
 
 class TeamValidator(Validator[Team]):
     """
@@ -32,7 +34,13 @@ class TeamValidator(Validator[Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Team]:
+    def validate(
+            cls,
+            candidate: Any,
+            identity_service: IdentityService=IdentityService(),
+            agent_service: PlayerAgentService=PlayerAgentService(),
+            schema_validation: type[TeamSchemaValidator]=TeamSchemaValidator,
+    ) -> ValidationResult[Team]:
         """
         # ACTION:
         1.  Check candidate is not null.
@@ -61,6 +69,7 @@ class TeamValidator(Validator[Team]):
             *   TypeError
             *   NullTeamException
             *   InvalidTeamException
+            *   TeamNotRegisteredWithAgentException
         """
         method = "TeamValidator.validate"
         
@@ -77,7 +86,7 @@ class TeamValidator(Validator[Team]):
             
             team = cast(Team, candidate)
             
-            id_validation = id_service.validate_id(team.id)
+            id_validation = identity_service.validate_id(team.id)
             if not id_validation.is_success():
                 return ValidationResult.failure(id_validation.exception)
             
@@ -85,16 +94,22 @@ class TeamValidator(Validator[Team]):
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
             
-            agent_validation = agent_service.validate(agent)
+            agent_validation = agent_service.validate(team.agent)
             if agent_validation.is_failure():
                 return ValidationResult.failure(agent_validation.exception)
             
-            if team agent_service.found_team(team) is None:
+            if agent_service.found_team(team) is None:
                 return ValidationResult.failure(
-                    TeamNotRegisterdWithAgentException(f"{method}: {TeamNotRegisterdWithAgentException.DEFAULT_MESSAGE}")
+                    TeamNotRegisteredWithAgentException(
+                        f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             return ValidationResult.success(team)
         
         except Exception as ex:
-            return ValidationResult.failure(InvalidTeamException(f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}", ex))
+            return ValidationResult.failure(
+                InvalidTeamException(
+                    f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}",
+                    ex)
+            )

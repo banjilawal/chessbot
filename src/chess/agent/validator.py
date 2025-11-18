@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import PlayerAgent, TeamStackServiceValidator
+from chess.agent import Agent, TeamStackServiceValidator
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
-class PlayerAgentValidator(Validator[PlayerAgent]):
+class PlayerAgentValidator(Validator[Agent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -22,25 +22,25 @@ class PlayerAgentValidator(Validator[PlayerAgent]):
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
             team_stack_service_validator: type[TeamStackServiceValidator] = TeamStackServiceValidator,
-    ) -> ValidationResult[PlayerAgent]:
+    ) -> ValidationResult[Agent]:
         
         """
         Validates team_name agent meets graph requirements:
           - Not null
           - valid visitor_id
           - valid visitor_name
-          - PlayerAgent.team_history meets validator requirements
+          - Agent.team_history meets validator requirements
         Any failed requirement raise an rollback_exception wrapped in team_name InvalidCommanderException
         
         Args
-          candidate (PlayerAgent): agent to validate
+          candidate (Agent): agent to validate
           
          Returns:
            Result[T]: A Result object containing the validated payload if all graph requirements
            are satisfied. InvalidCommanderException otherwise.
         
         Raises:
-          TypeError: if candidate is not PlayerAgent
+          TypeError: if candidate is not Agent
           NullCommanderException: if candidate is null
     
           RowBelowBoundsException: If agent.row < 0
@@ -60,10 +60,10 @@ class PlayerAgentValidator(Validator[PlayerAgent]):
                     NullPlayerAgentException(f"{method}: {NullPlayerAgentException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(candidate, PlayerAgent):
-                raise TypeError(f"{method}: Expected PlayerAgent, got {type(candidate).__name__} instead.")
+            if not isinstance(candidate, Agent):
+                raise TypeError(f"{method}: Expected Agent, got {type(candidate).__name__} instead.")
             
-            player_agent = cast(PlayerAgent, candidate)
+            player_agent = cast(Agent, candidate)
             
             identity_validation = identity_service.validate_identity(player_agent.id, player_agent.name)
             if identity_validation.is_failure():

@@ -16,7 +16,7 @@ from typing import List
 from chess.arena import Arena
 from chess.system import Builder, BuildResult
 from chess.board import Board, BoardValidator
-from chess.agent import PlayerAgent, CommnderValidator
+from chess.agent import Agent, CommnderValidator
 
 
 
@@ -48,16 +48,16 @@ class ArenaBuilder(Builder[Arena]):
   @classmethod
   def build(
     cls,
-    white_commander: PlayerAgent,
-    black_commander: PlayerAgent,
+    white_commander: Agent,
+    black_commander: Agent,
     board: Board
   ) -> BuildResult[Arena]:
     """
     Constructs team_name new `Arena` that works correctly.
 
     Args:
-      - `white_commander`: White PlayerAgent
-      - `black_commander`: Black PlayerAgent
+      - `white_commander`: White Agent
+      - `black_commander`: Black Agent
       - `board_validator`: Board
 
     Returns:

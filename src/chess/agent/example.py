@@ -13,12 +13,12 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `PlayerAgent`: Abstract class.
-  - `HumanPlayer`: Concrete `subclass` of `PlayerAgent` people use.
-  - `MachinePlayer`: Concrete `subclass` of `PlayerAgent` that uses team_name `Engine`.
-  - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
+  - `Agent`: Abstract class.
+  - `HumanPlayer`: Concrete `subclass` of `Agent` people use.
+  - `MachinePlayer`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
+  - `PlayerAgentBuilder`: Builds new instances of `Agent`.
   - `PlayerAgentValidator`: Performs validator and sanity checks on existing
-      `PlayerAgent` instances. before they are used.
+      `Agent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
@@ -50,12 +50,12 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `PlayerAgent`: Abstract class.
-  - `HumanPlayer`: Concrete `subclass` of `PlayerAgent` people use.
-  - `MachinePlayer`: Concrete `subclass` of `PlayerAgent` that uses team_name `Engine`.
-  - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
+  - `Agent`: Abstract class.
+  - `HumanPlayer`: Concrete `subclass` of `Agent` people use.
+  - `MachinePlayer`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
+  - `PlayerAgentBuilder`: Builds new instances of `Agent`.
   - `PlayerAgentValidator`: Performs validator and sanity checks on existing
-      `PlayerAgent` instances. before they are used.
+      `Agent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
@@ -73,7 +73,7 @@ ___
 ---
 """
 
-from .agent import PlayerAgent
+from .agent import Agent
 from chess.agent.stack.stack import TeamStack
 
 from .validator import PlayerAgentValidator
@@ -87,7 +87,7 @@ __all__ = [
     # Core classes
     'MachinePlayer',
     'HumanPlayer',
-    'PlayerAgent',
+    'Agent',
     'TeamStack',
     'PlayerAgentValidator',
     'PlayerAgentBuilder',

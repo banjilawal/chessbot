@@ -42,7 +42,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -110,7 +110,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -177,7 +177,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -240,6 +240,6 @@ Raises:
   `InvalidCommanderException`: if `agent` fails validate checks
   `NullTeamProfileException`: if `schema` is null
   `InvalidCommanderAssignmentException`: if the assigned agent does not consistency the validated agent
-  `RelationshipException`: if the bidirectional relationship between Team and PlayerAgent is broken
+  `RelationshipException`: if the bidirectional relationship between Team and Agent is broken
   `InvalidTeamException`: Wraps any preceding exceptions
 """

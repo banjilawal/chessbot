@@ -11,7 +11,7 @@ from typing import List
 
 from chess.piece import Piece
 from chess.team import TeamSchema
-from chess.agent import PlayerAgent
+from chess.agent import Agent
 
 
 class Team:
@@ -19,7 +19,7 @@ class Team:
     # ROLE: Data-Holding
 
     # RESPONSIBILITY:
-    1.  Disposition of Pieces the PlayerAgent can move on a Board instance.
+    1.  Disposition of Pieces the Agent can move on a Board instance.
     2.  Holds the captured enemy Pieces.
 
     # PROVIDES:
@@ -28,9 +28,9 @@ class Team:
     # ATTRIBUTES:
         *   MAX_ROSTER_SIZE (int):  Size of roster at full strength.
         *   id (int):               Globally unique identifier for the team.
-        *   roster (List[Piece]):   Collection of Pieces the PlayerAgent can move on a Board instance.
+        *   roster (List[Piece]):   Collection of Pieces the Agent can move on a Board instance.
         *   hostages (List[Piece):  Collection of captured enemy Pieces.
-        *   agent (PlayerAgent):  Directs moves of Pieces in Team.roster.
+        *   agent (Agent):  Directs moves of Pieces in Team.roster.
         *   schema (TeamSchema):    Defines the Team's
                 *   name (str):                 Unique within the Game instance.
                 *   color (GameColor):          Color of the Team. (white/black)
@@ -46,16 +46,16 @@ class Team:
     _roster: [Piece]
     _hostages: [Piece]
     _schema: TeamSchema
-    _player_agent: PlayerAgent
+    _player_agent: Agent
 
-    def __init__(self, id: int, player_agent: PlayerAgent, schema: TeamSchema):
+    def __init__(self, id: int, player_agent: Agent, schema: TeamSchema):
         """
         # ACTION:
         Construct a Team object.
 
         # PARAMETERS:
             *   id (int):                       Globally unique identifier for the team.
-            *   agent (PlayerAgent):     Directs moves of Pieces in Team.roster.
+            *   agent (Agent):     Directs moves of Pieces in Team.roster.
             *   schema (TeamSchema):            Defines the Team's
 
         # Returns:
@@ -90,7 +90,7 @@ class Team:
         return self._schema
     
     @property
-    def player_agent(self) -> PlayerAgent:
+    def player_agent(self) -> Agent:
         return self._player_agent
     
     def __eq__(self, other) -> bool:

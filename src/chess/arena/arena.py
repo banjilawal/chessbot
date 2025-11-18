@@ -13,7 +13,7 @@ Contains:
 
 from chess.system import auto_id
 from chess.board import Board
-from chess.agent import PlayerAgent
+from chess.agent import Agent
 
 
 @auto_id
@@ -26,11 +26,11 @@ class Arena:
   """
 
   _id: int
-  _white_owner: PlayerAgent
-  _black_owner: PlayerAgent
+  _white_owner: Agent
+  _black_owner: Agent
   _chess_board: Board
 
-  def __init__(self, white_owner: PlayerAgent, black_owner: PlayerAgent, chess_board: Board):
+  def __init__(self, white_owner: Agent, black_owner: Agent, chess_board: Board):
     """
     <METHOD_ACTION>
 
@@ -50,12 +50,12 @@ class Arena:
     self._chess_board = chess_board
 
   @property
-  def white_owner(self) -> PlayerAgent:
+  def white_owner(self) -> Agent:
     return self._white_owner
 
 
   @property
-  def black_owner(self) -> PlayerAgent:
+  def black_owner(self) -> Agent:
     return self._black_owner
 
 

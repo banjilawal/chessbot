@@ -10,21 +10,21 @@ version: 1.0.0
 from typing import Optional
 
 from chess.engine.service import EngineService
-from chess.agent import PlayerAgent, HumanPlayer, MachinePlayer, AgentBuildFailed, TeamStackService
+from chess.agent import Agent, HumanPlayer, MachinePlayer, AgentBuildFailed, TeamStackService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult
 
 
-class PlayerAgentBuilder(Builder[PlayerAgent]):
+class PlayerAgentBuilder(Builder[Agent]):
     """
     # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    Produce PlayerAgent instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead of an unsafe PlayerAgent.
+    Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
+    their integrity checks, send an exception instead of an unsafe Agent.
 
     # PROVIDES:
-    BuildResult[PlayerAgent] containing either:
-        - On success: PlayerAgent in the payload.
+    BuildResult[Agent] containing either:
+        - On success: Agent in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -39,7 +39,7 @@ class PlayerAgentBuilder(Builder[PlayerAgent]):
             identity_service: IdentityService = IdentityService(),
             team_stack_service: TeamStackService = TeamStackService(),
             engine_service: Optional[EngineService] = None,
-    ) -> BuildResult[PlayerAgent]:
+    ) -> BuildResult[Agent]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
@@ -127,17 +127,17 @@ class PlayerAgentBuilder(Builder[PlayerAgent]):
     
     from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult
     
-    class AgentBuilder(Builder[PlayerAgent]):
+    class AgentBuilder(Builder[Agent]):
         """
         # ROLE: Builder, Data Integrity Guarantor
 
         # RESPONSIBILITIES:
-        Produce PlayerAgent instances whose integrity is always guaranteed. If any attributes do not pass
-        their integrity checks, send an exception instead of an unsafe PlayerAgent.
+        Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
+        their integrity checks, send an exception instead of an unsafe Agent.
 
         # PROVIDES:
-        BuildResult[PlayerAgent] containing either:
-            - On success: PlayerAgent in the payload.
+        BuildResult[Agent] containing either:
+            - On success: Agent in the payload.
             - On failure: Exception.
 
         # ATTRIBUTES:
@@ -152,7 +152,7 @@ class PlayerAgentBuilder(Builder[PlayerAgent]):
                 identity_service: IdentityService = IdentityService(),
                 team_stack_service: TeamStackService = TeamStackService(),
                 engine_service: Optional[EngineService] = None,
-        ) -> BuildResult[PlayerAgent]:
+        ) -> BuildResult[Agent]:
             """
             # ACTION:
             1.  Call _validate_build_params. to verify inputs are safe.

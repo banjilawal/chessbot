@@ -45,7 +45,8 @@ __all__ = [
   "HostageRemovalRolledBackException",
 
 #======================# SEARCH EXCEPTIONS #======================#  
-  "RosterNumberOutOfBoundsException"
+  "RosterNumberOutOfBoundsException",
+  "TeamNotRegisteredWithAgentException",
 ]
 
 class TeamException(ChessException):
@@ -85,7 +86,7 @@ class InvalidTeamException(TeamException, ValidationException):
 class TeamCommanderInconsistencyException(TeamException):
   """Raised if piece has its team_name set but the owner is not on the roster."""
   ERROR_CODE = "TEAM_COMMANDER_INCONSISTENCY_ERROR"
-  DEFAULT_MESSAGE = "The team_name has assigned itself to a agent but the PlayerAgent has no record of the team_name."
+  DEFAULT_MESSAGE = "The team_name has assigned itself to a agent but the Agent has no record of the team_name."
 
 
 #======================# TEAM BUILD EXCEPTIONS #======================#  
@@ -272,7 +273,10 @@ class RosterNumberOutOfBoundsException(TeamException, SearchException):
   DEFAULT_MESSAGE = "Roster numbers are in the range [1, team_size]. Search failed."
 
 
-
+class TeamNotRegisteredWithAgentException(TeamException, SearchException):
+  """Team was not found in the Agent's team_assignments list."""
+  ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_AGENT_ERROR"
+  DEFAULT_MESSAGE = "Team not found in the Agent's team_assignments list."
 
 
 

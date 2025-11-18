@@ -12,7 +12,7 @@ from .stack import *
 from .search import *
 from .exception import *
 
-from .agent import PlayerAgent
+from .agent import Agent
 from .human import HumanPlayer
 from .machine import MachinePlayer
 from .builder import PlayerAgentBuilder

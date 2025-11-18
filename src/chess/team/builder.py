@@ -7,7 +7,7 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import PlayerAgent, PlayerAgentService, PushingDuplicateTeamException
+from chess.agent import Agent, PlayerAgentService, PushingDuplicateTeamException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
 
@@ -35,7 +35,7 @@ class TeamBuilder(Builder[Team]):
             cls,
             id: int,
             schema: TeamSchema,
-            agent: PlayerAgent,
+            agent: Agent,
             identity_service: IdentityService = IdentityService(),
             agent_service: PlayerAgentService = PlayerAgentService(),
             schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
@@ -52,7 +52,7 @@ class TeamBuilder(Builder[Team]):
         # PARAMETERS:
             *   id (int):                               Globally unique identifier for the team.
             
-            *   agent (PlayerAgent):                    Directs Pieces on Team's roster where they should move.
+            *   agent (Agent):                    Directs Pieces on Team's roster where they should move.
             
             *   schema (TeamSchema):                    Fixed information about white and black teams
             

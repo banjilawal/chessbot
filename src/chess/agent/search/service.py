@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.agent import (
-    PlayerAgent, TeamSearch, TeamSearchContext, TeamSearchContextBuilder, TeamSearchContextValidator,
+    Agent, TeamSearch, TeamSearchContext, TeamSearchContextBuilder, TeamSearchContextValidator,
     TeamSearchException
 )
 from chess.system import SearchResult
@@ -35,11 +35,11 @@ class TeamSearchService:
         self._search_context_validator = search_context_validator
         
     
-    def search(self, data_owner: PlayerAgent, search_context: TeamSearchContext) -> SearchResult[List[Team]]:
+    def search(self, data_owner: Agent, search_context: TeamSearchContext) -> SearchResult[List[Team]]:
         return self._search.search(data_owner=data_owner, search_context=search_context)
         
         
-    def search_by_id(self, data_owner: PlayerAgent, id: int) -> SearchResult[List[Team]]:
+    def search_by_id(self, data_owner: Agent, id: int) -> SearchResult[List[Team]]:
         method = "TeamSearchService.search_by_id"
         try:
             search_context_build = self._search_context_builder.build(id=id)
@@ -56,7 +56,7 @@ class TeamSearchService:
                 )
             )
     
-    def search_by_name(self, data_owner: PlayerAgent, name: str) -> SearchResult[List[Team]]:
+    def search_by_name(self, data_owner: Agent, name: str) -> SearchResult[List[Team]]:
         method = "TeamSearchService.search_by_name"
         try:
             search_context_build = self._search_context_builder.build(name=name)
@@ -73,7 +73,7 @@ class TeamSearchService:
                 )
             )
     
-    def search_by_color(self, data_owner: PlayerAgent, color: GameColor) -> SearchResult[List[Team]]:
+    def search_by_color(self, data_owner: Agent, color: GameColor) -> SearchResult[List[Team]]:
         method = "TeamSearchService.search_by_color"
         try:
             search_context_build = self._search_context_builder.build(color=color)

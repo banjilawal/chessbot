@@ -11,14 +11,14 @@ from typing import List, cast
 from chess.engine.service import EngineService
 from chess.system import BuildResult, IdentityService, LoggingLevelRouter, SearchResult, ValidationResult
 from chess.agent import (
-    PlayerAgent, PlayerAgentBuilder, PlayerAgentValidator, HumanPlayer, MachinePlayer, TeamSearchContext, TeamSearchService,
+    Agent, PlayerAgentBuilder, PlayerAgentValidator, HumanPlayer, MachinePlayer, TeamSearchContext, TeamSearchService,
     TeamStackService
 )
 from chess.team import Team
 
 
 class PlayerAgentService:
-    _agents: List[PlayerAgent]
+    _agents: List[Agent]
     _builder: PlayerAgentBuilder
     _validator: PlayerAgentValidator
     _search_service: TeamSearchService
@@ -69,7 +69,7 @@ class PlayerAgentService:
             id: int,
             name: str,
             engine_service: EngineService = EngineService()
-    ) -> BuildResult[PlayerAgent]:
+    ) -> BuildResult[Agent]:
         try:
             agent_build = self._builder.build(
                 id=id,
@@ -97,13 +97,13 @@ class PlayerAgentService:
             return BuildResult.failure(ex)
     
     
-    def validate_agent(self, agent: PlayerAgent) -> ValidationResult[PlayerAgent]:
+    def validate_agent(self, agent: Agent) -> ValidationResult[Agent]:
         return self._validator.validate(candidate=agent)
     
     
     def search_for_team(
             self,
-            player_agent: PlayerAgent,
+            player_agent: Agent,
             search_context: TeamSearchContext
     ) -> SearchResult[List[Team]]:
         return self._search_service.search(data_owner=player_agent, search_context=search_context)

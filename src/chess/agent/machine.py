@@ -7,11 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import PlayerAgent, TeamStackService
+from chess.agent import Agent, TeamStackService
 from chess.engine.service import EngineService
 
 
-class MachinePlayer(PlayerAgent):
+class MachinePlayer(Agent):
     _engine_service: EngineService
     
     def __init__(

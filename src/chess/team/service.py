@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from typing import Any, cast
 
-from chess.agent import PlayerAgent
+from chess.agent import Agent
 from chess.piece import Piece
 from chess.system import BuildResult, GameColor, LoggingLevelRouter, SearchResult, ValidationResult
 from chess.team import (
@@ -62,7 +62,7 @@ class TeamService:
         return self._validator.validate(candidate)
     
     @LoggingLevelRouter.monitor
-    def build_team(self, team_id: int, commander: PlayerAgent, color: GameColor) -> BuildResult[Team]:
+    def build_team(self, team_id: int, commander: Agent, color: GameColor) -> BuildResult[Team]:
         """"""
         method = "TeamService.build_team"
         try:
