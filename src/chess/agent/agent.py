@@ -12,10 +12,10 @@ from abc import ABC
 from typing import Optional
 
 from chess.team.team import Team
-from chess.agent import TeamStack, TeamStackService
+from chess.agent import TeamStackService
 
 
-class Agent(ABC):
+class PlayerAgent(ABC):
     _id: int
     _name: str
     _current_team: Optional[Team]
@@ -55,7 +55,7 @@ class Agent(ABC):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Agent):
+        if isinstance(other, PlayerAgent):
             return self._id == other.id
         return False
     
@@ -90,7 +90,7 @@ class Agent(ABC):
     # # 5. Returns TransactionResult with rollback safety
     
     def move_piece(self, piece_name: str, destination: Coord):
-        method = "Agent.move_piece"
+        method = "PlayerAgent.move_piece"
         
         try:
             validation = NameValidator.validate(piece_name)

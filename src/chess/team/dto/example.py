@@ -41,7 +41,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `Agent`, `AgentValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 # CONTAINS:
 ----------
@@ -66,7 +66,7 @@ ACTION:
 Create a `Team` object if the parameters have correctness.
 
 PARAMETERS:
-    * `agent` (`Agent`): owner of `Team` object.
+    * `agent` (`PlayerAgent`): owner of `Team` object.
     * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
 
 RETURNS:

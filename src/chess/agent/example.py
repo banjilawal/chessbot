@@ -13,12 +13,12 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `Agent`: Abstract class.
-  - `HumanAgent`: Concrete `subclass` of `Agent` people use.
-  - `MachineAgent`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
-  - `AgentBuilder`: Builds new instances of `Agent`.
-  - `AgentValidator`: Performs validator and sanity checks on existing
-      `Agent` instances. before they are used.
+  - `PlayerAgent`: Abstract class.
+  - `HumanPlayer`: Concrete `subclass` of `PlayerAgent` people use.
+  - `MachinePlayer`: Concrete `subclass` of `PlayerAgent` that uses team_name `Engine`.
+  - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
+  - `PlayerAgentValidator`: Performs validator and sanity checks on existing
+      `PlayerAgent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
@@ -26,7 +26,7 @@ This package exposes core classes and all exceptions from its sub-modules:
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
-`agent` package level. (e.g., `from chess.agent import AgentValidator`). See USAGE
+`agent` package level. (e.g., `from chess.agent import PlayerAgentValidator`). See USAGE
 EXAMPLES section.
 
 # USAGE EXAMPLES
@@ -50,12 +50,12 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `Agent`: Abstract class.
-  - `HumanAgent`: Concrete `subclass` of `Agent` people use.
-  - `MachineAgent`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
-  - `AgentBuilder`: Builds new instances of `Agent`.
-  - `AgentValidator`: Performs validator and sanity checks on existing
-      `Agent` instances. before they are used.
+  - `PlayerAgent`: Abstract class.
+  - `HumanPlayer`: Concrete `subclass` of `PlayerAgent` people use.
+  - `MachinePlayer`: Concrete `subclass` of `PlayerAgent` that uses team_name `Engine`.
+  - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
+  - `PlayerAgentValidator`: Performs validator and sanity checks on existing
+      `PlayerAgent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
@@ -63,7 +63,7 @@ This package exposes core classes and all exceptions from its sub-modules:
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
-`agent` package level. (e.g., `from chess.agent import AgentValidator`). See USAGE
+`agent` package level. (e.g., `from chess.agent import PlayerAgentValidator`). See USAGE
 EXAMPLES section.
 
 # USAGE EXAMPLES
@@ -73,11 +73,11 @@ ___
 ---
 """
 
-from .agent import Agent
+from .agent import PlayerAgent
 from chess.agent.stack.stack import TeamStack
 
-from .validator import AgentValidator
-from .builder import AgentBuilder
+from .validator import PlayerAgentValidator
+from .builder import PlayerAgentBuilder
 
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
@@ -85,12 +85,12 @@ __package_name__ = 'chess.agent'
 
 __all__ = [
     # Core classes
-    'MachineAgent',
-    'HumanAgent',
-    'Agent',
+    'MachinePlayer',
+    'HumanPlayer',
+    'PlayerAgent',
     'TeamStack',
-    'AgentValidator',
-    'AgentBuilder',
+    'PlayerAgentValidator',
+    'PlayerAgentBuilder',
     
     *commander.__all__,
     *exception.__all__,
@@ -171,7 +171,7 @@ version: 1.0.0
   move during team_name turn.
 
 Contains:
- * `MachineAgent`
+ * `MachinePlayer`
 """
 """
 Automated player that uses team_name `Engine`

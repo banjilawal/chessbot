@@ -42,7 +42,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `Agent`, `AgentValidator`,
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`

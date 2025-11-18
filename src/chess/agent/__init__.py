@@ -12,9 +12,11 @@ from .stack import *
 from .search import *
 from .exception import *
 
-from .agent import Agent
-from .human import HumanAgent
-from .machine import MachineAgent
-from .builder import AgentBuilder
-from .validator import AgentValidator
+from .agent import PlayerAgent
+from .human import HumanPlayer
+from .machine import MachinePlayer
+from .builder import PlayerAgentBuilder
+from .validator import PlayerAgentValidator
+
+from .service import PlayerAgentService
 

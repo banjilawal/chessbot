@@ -13,16 +13,16 @@ from typing import List
 from chess.team import Team
 from chess.system import GameColor, Search, SearchResult, LoggingLevelRouter
 from chess.agent import (
-    Agent, AgentValidator, TeamSearchContext, TeamSearchException, TeamSearchIdCollisionException
+    PlayerAgent, PlayerAgentValidator, TeamSearchContext, TeamSearchException, TeamSearchIdCollisionException
 )
 
 
-class TeamSearch(Search[Agent, Team]):
+class TeamSearch(Search[PlayerAgent, Team]):
     """
     # ROLE: Search
   
     # RESPONSIBILITIES:
-    1.  Search an Agent.team_assignments for items whose attribute matches the value in
+    1.  Search an PlayerAgent.team_assignments for items whose attribute matches the value in
         TeamsSearchContext function param.
   
     # PROVIDES:
@@ -36,14 +36,14 @@ class TeamSearch(Search[Agent, Team]):
     @LoggingLevelRouter.monitor
     def search(
             cls, 
-            data_owner: Agent,
+            data_owner: PlayerAgent,
             search_context: TeamSearchContext,
-            agent_validator: type[AgentValidator]=AgentValidator,
+            agent_validator: type[PlayerAgentValidator]=PlayerAgentValidator,
             search_context_validator: type[TeamSearchContext]=TeamSearchContext,
     ) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Verify the data_owner is a valid Agent using the agent_validator.
+        1.  Verify the data_owner is a valid PlayerAgent using the agent_validator.
         2.  Verify the search_context is a valid TeamSearchContext using the search_context_validator.
         3.  Extract the search_context attribute. and call either _id_search, _name_search, or _color_search.
 
@@ -82,7 +82,7 @@ class TeamSearch(Search[Agent, Team]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _id_search(cls, data_owner: Agent, id: int) -> SearchResult[List[Team]]:
+    def _id_search(cls, data_owner: PlayerAgent, id: int) -> SearchResult[List[Team]]:
         """
         # Action:
         1.  Get the teams whose id matched the target.
@@ -93,7 +93,7 @@ class TeamSearch(Search[Agent, Team]):
         # Parameters:
             *   id (int):              Target color to search for.
 
-            *   data_owner (Agent):     Provides the Team objects to search.
+            *   data_owner (PlayerAgent):     Provides the Team objects to search.
 
         # Returns:
         SearchResult[List[Team]] containing either:
@@ -127,7 +127,7 @@ class TeamSearch(Search[Agent, Team]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _name_search(cls, data_owner: Agent, name: str) -> SearchResult[List[Team]]:
+    def _name_search(cls, data_owner: PlayerAgent, name: str) -> SearchResult[List[Team]]:
         """
         # Action:
         1.  Get the teams whose names matched the target, insensitive to case.
@@ -138,7 +138,7 @@ class TeamSearch(Search[Agent, Team]):
         # Parameters:
             *   name (str):             Target color to search for.
 
-            *   data_owner (Agent):     Provides the Team objects to search.
+            *   data_owner (PlayerAgent):     Provides the Team objects to search.
 
         # Returns:
         SearchResult[List[Team]] containing either:
@@ -165,7 +165,7 @@ class TeamSearch(Search[Agent, Team]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _color_search(cls, data_owner: Agent, color: GameColor) -> SearchResult[List[Team]]:
+    def _color_search(cls, data_owner: PlayerAgent, color: GameColor) -> SearchResult[List[Team]]:
         """
         # Action:
         1.  Get the teams whose color is the same as the target..
@@ -176,7 +176,7 @@ class TeamSearch(Search[Agent, Team]):
         # Parameters:
             *   color (GameColor):      Target color to search for.
 
-            *   data_owner (Agent):     Provides the Team objects to search.
+            *   data_owner (PlayerAgent):     Provides the Team objects to search.
 
         # Returns:
         SearchResult[List[Team]] containing either:
@@ -209,7 +209,7 @@ class TeamSearch(Search[Agent, Team]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _resolve_matching_ids(cls, matches: List[Team], data_owner: Agent) -> SearchResult[List[Team]]:
+    def _resolve_matching_ids(cls, matches: List[Team], data_owner: PlayerAgent) -> SearchResult[List[Team]]:
         """
         # Action:
         1.  Pop the first item in the matches list.
@@ -223,7 +223,7 @@ class TeamSearch(Search[Agent, Team]):
         # Parameters:
             *   color (GameColor):      Target color to search for.
 
-            *   data_owner (Agent):     Provides the Team objects to search.
+            *   data_owner (PlayerAgent):     Provides the Team objects to search.
 
         # Returns:
         SearchResult[List[Team]] containing either:

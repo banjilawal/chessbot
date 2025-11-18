@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from .exception import *
+from .service import *
 
 from .stack import TeamStack
-from .service import TeamStackService
 from .validator import TeamStackValidator

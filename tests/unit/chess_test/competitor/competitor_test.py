@@ -20,7 +20,7 @@ class CompetitorTest(unittest.TestCase):
     sides_played.current_team = None
 
     competitor.visitor_id = 1
-    competitor.visitor_name = "Valid Agent"
+    competitor.visitor_name = "Valid PlayerAgent"
     competitor.teams = sides_played
 
     return competitor

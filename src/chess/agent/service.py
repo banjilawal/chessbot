@@ -11,22 +11,23 @@ from typing import List, cast
 from chess.engine.service import EngineService
 from chess.system import BuildResult, IdentityService, LoggingLevelRouter, SearchResult, ValidationResult
 from chess.agent import (
-    Agent, AgentBuilder, AgentValidator, HumanAgent, MachineAgent, TeamSearchService,
+    PlayerAgent, PlayerAgentBuilder, PlayerAgentValidator, HumanPlayer, MachinePlayer, TeamSearchContext, TeamSearchService,
     TeamStackService
 )
+from chess.team import Team
 
 
-class AgentService:
-    _agents: List[Agent]
-    _builder: AgentBuilder
-    _validator: AgentValidator
+class PlayerAgentService:
+    _agents: List[PlayerAgent]
+    _builder: PlayerAgentBuilder
+    _validator: PlayerAgentValidator
     _search_service: TeamSearchService
     _identity_service: IdentityService
     
     def __init__(
             self,
-            builder: type[AgentBuilder] = AgentBuilder,
-            validator: type[AgentValidator] = AgentValidator,
+            builder: type[PlayerAgentBuilder] = PlayerAgentBuilder,
+            validator: type[PlayerAgentValidator] = PlayerAgentValidator,
             search_service: TeamSearchService = TeamSearchService(),
             identity_service: IdentityService = IdentityService(),
     ):
@@ -38,7 +39,7 @@ class AgentService:
 
 
     @LoggingLevelRouter.monitor
-    def build_human_agent(self, id: int, name: str) -> BuildResult[HumanAgent]:
+    def build_human_agent(self, id: int, name: str) -> BuildResult[HumanPlayer]:
         try:
             agent_build =  self._builder.build(
                 id=id,
@@ -49,7 +50,7 @@ class AgentService:
             if agent_build.is_failure():
                 return BuildResult.failure(agent_build.exception)
             
-            agent = cast(HumanAgent, agent_build.payload)
+            agent = cast(HumanPlayer, agent_build.payload)
             
             if agent in self._agents:
                 return BuildResult.failure(
@@ -68,7 +69,7 @@ class AgentService:
             id: int,
             name: str,
             engine_service: EngineService = EngineService()
-    ) -> BuildResult[Agent]:
+    ) -> BuildResult[PlayerAgent]:
         try:
             agent_build = self._builder.build(
                 id=id,
@@ -80,7 +81,7 @@ class AgentService:
             if agent_build.is_failure():
                 return BuildResult.failure(agent_build.exception)
             
-            agent = cast(MachineAgent, agent_build.payload)
+            agent = cast(MachinePlayer, agent_build.payload)
             
             if agent in self._agents:
                 return BuildResult.failure(
@@ -89,20 +90,20 @@ class AgentService:
                     )
                 )
             
-                self._agents.append(agent)
+            self._agents.append(agent)
             return BuildResult.success(agent_build.payload)
     
         except Exception as ex:
             return BuildResult.failure(ex)
     
     
-    def validate_agent(self, agent: Agent) -> ValidationResult[Agent]:
-        return self._validator.validate(agent=agent)
+    def validate_agent(self, agent: PlayerAgent) -> ValidationResult[PlayerAgent]:
+        return self._validator.validate(candidate=agent)
     
     
     def search_for_team(
             self,
-            player_agent: Agent,
-            search_context: AgentTeamSearchContext
-    ) -> SearchResult[List[team]]:
+            player_agent: PlayerAgent,
+            search_context: TeamSearchContext
+    ) -> SearchResult[List[Team]]:
         return self._search_service.search(data_owner=player_agent, search_context=search_context)

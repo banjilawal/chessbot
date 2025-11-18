@@ -15,7 +15,7 @@ Contains:
 
  NOTES:
    Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one Engine
-   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachineAgent.
+   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachinePlayer.
 """
 
 
@@ -66,7 +66,7 @@ class Engine(ABC):
   @abstractmethod
   def decide_destination(
       self,
-      cybernaut: 'MachineAgent',
+      cybernaut: 'MachinePlayer',
       chess_board: Board
   ) -> Optional[Coord]:
     pass

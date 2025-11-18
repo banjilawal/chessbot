@@ -1,11 +1,12 @@
-# src/chess/agent/stack/service.py
+# src/chess/agent/stack/service/service.py
 
 """
-Module: chess.agent.stack.service
+Module: chess.agent.stack.service.service
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
 """
+
 from typing import List, Optional
 
 from chess.piece.stack.exception import DuplicatePushException, PopEmptyStackException

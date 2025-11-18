@@ -7,9 +7,7 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-
-from chess.agent import Agent, CommanderService, PushingDuplicateTeamException, PushingNullException
-from chess.agent.service import AgentService
+from chess.agent import PlayerAgent, PlayerAgentService, PushingDuplicateTeamException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
 
@@ -36,10 +34,10 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             id: int,
-            agent: Agent,
+            agent: PlayerAgent,
             schema: TeamSchema,
             identity_service: IdentityService = IdentityService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             team_schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
     ) -> BuildResult[Team]:
         """
@@ -70,7 +68,7 @@ class TeamBuilder(Builder[Team]):
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            team_schema_validation = team_schema_validator.validate(team_schema)
+            team_schema_validation = team_schema_validator.validate(schema)
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             

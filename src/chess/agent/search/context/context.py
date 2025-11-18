@@ -19,7 +19,7 @@ class TeamSearchContext(SearchContext):
   
     # RESPONSIBILITIES:
     Provides options for what type of key-value pair AgentTeamSearch implementations use to
-    find matches in Agent.team_assignments.
+    find matches in PlayerAgent.team_assignments.
   
     # PROVIDES:
     TeamSearchContext.

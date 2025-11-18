@@ -7,27 +7,24 @@ Created: 2025-09-11
 version: 1.0.0
 """
 
-
 from typing import Optional
 
-
 from chess.engine.service import EngineService
-from chess.agent import Agent, HumanAgent, MachineAgent, AgentBuildFailed, TeamStackService
+from chess.agent import PlayerAgent, HumanPlayer, MachinePlayer, AgentBuildFailed, TeamStackService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult
 
 
-
-class AgentBuilder(Builder[Agent]):
+class PlayerAgentBuilder(Builder[PlayerAgent]):
     """
     # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead of an unsafe Agent.
+    Produce PlayerAgent instances whose integrity is always guaranteed. If any attributes do not pass
+    their integrity checks, send an exception instead of an unsafe PlayerAgent.
 
     # PROVIDES:
-    BuildResult[Agent] containing either:
-        - On success: Agent in the payload.
+    BuildResult[PlayerAgent] containing either:
+        - On success: PlayerAgent in the payload.
         - On failure: Exception.
 
     # ATTRIBUTES:
@@ -40,9 +37,9 @@ class AgentBuilder(Builder[Agent]):
             id: int,
             name: str,
             identity_service: IdentityService = IdentityService(),
-            team_stack_service: TeamStackService=TeamStackService(),
+            team_stack_service: TeamStackService = TeamStackService(),
             engine_service: Optional[EngineService] = None,
-    ) -> BuildResult[Agent]:
+    ) -> BuildResult[PlayerAgent]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
@@ -64,7 +61,7 @@ class AgentBuilder(Builder[Agent]):
         # Raises:
             *   AgentBuildFailedException
         """
-        method = "AgentBuilder.build"
+        method = "PlayerAgentBuilder.build"
         
         try:
             params_validation = cls._validate_params(
@@ -96,8 +93,7 @@ class AgentBuilder(Builder[Agent]):
                     ex
                 )
             )
-        
-        
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def _build_machine_agent(
@@ -107,14 +103,14 @@ class AgentBuilder(Builder[Agent]):
             identity_service: IdentityService = IdentityService(),
             team_stack_service: TeamStackService = TeamStackService(),
             engine_service: EngineService = EngineService(),
-    ) -> BuildResult[MachineAgent]:
+    ) -> BuildResult[MachinePlayer]:
         try:
             param_validation = cls._validate_params(id=id, name=name, identity_service=identity_service)
             if param_validation.is_failure():
                 return BuildResult.failure(param_validation.exception)
             
             return BuildResult.success(
-                MachineAgent(
+                MachinePlayer(
                     id=id,
                     name=name,
                     team_stack_service=team_stack_service,
@@ -128,8 +124,117 @@ class AgentBuilder(Builder[Agent]):
                     ex
                 )
             )
+    
+    from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult
+    
+    class AgentBuilder(Builder[PlayerAgent]):
+        """
+        # ROLE: Builder, Data Integrity Guarantor
+
+        # RESPONSIBILITIES:
+        Produce PlayerAgent instances whose integrity is always guaranteed. If any attributes do not pass
+        their integrity checks, send an exception instead of an unsafe PlayerAgent.
+
+        # PROVIDES:
+        BuildResult[PlayerAgent] containing either:
+            - On success: PlayerAgent in the payload.
+            - On failure: Exception.
+
+        # ATTRIBUTES:
+        None
+        """
         
+        @classmethod
+        def build(
+                cls,
+                id: int,
+                name: str,
+                identity_service: IdentityService = IdentityService(),
+                team_stack_service: TeamStackService = TeamStackService(),
+                engine_service: Optional[EngineService] = None,
+        ) -> BuildResult[PlayerAgent]:
+            """
+            # ACTION:
+            1.  Call _validate_build_params. to verify inputs are safe.
+            2.  If the _validate params returns failure include the failure in a BuildResult.
+            3.  If the engine is not null call build_machine_agent. Otherwise, call build_human_agent.
+
+            # PARAMETERS:
+                *   id (int)
+                *   name (str)
+                *   identity_service (IdentityService)
+                *   team_stack_service (teamStackService)
+                *   engine_service (Optional[EngineService])
+
+            # Returns:
+            ValidationResult[TeamStackService] containing either:
+                - On success: TeamStackService in the payload.
+                - On failure: Exception.
+
+            # Raises:
+                *   AgentBuildFailedException
+            """
+            method = "PlayerAgentBuilder.build"
+            
+            try:
+                params_validation = cls._validate_params(
+                    id=id,
+                    name=name,
+                    identity_service=identity_service,
+                )
+                
+                if engine_service is not None:
+                    return cls._build_machine_agent(
+                        id=id,
+                        name=name,
+                        identity_service=identity_service,
+                        team_stack_service=team_stack_service,
+                        engine_service=engine_service,
+                    )
+                
+                return cls.build_human_agent(
+                    id=id,
+                    name=name,
+                    identity_service=identity_service,
+                    team_stack_service=team_stack_service,
+                )
+            
+            except Exception as ex:
+                return BuildResult.failure(
+                    AgentBuildFailedException(
+                        f"{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
+                        ex
+                    )
+                )
         
+        @classmethod
+        @LoggingLevelRouter.monitor
+        def _build_human_agent(
+                cls,
+                id: int,
+                name: str,
+                identity_service: IdentityService = IdentityService(),
+                team_stack_service: TeamStackService = TeamStackService(),
+        ) -> BuildResult[MachinePlayer]:
+            try:
+                param_validation = cls._validate_params(id=id, name=name, identity_service=identity_service)
+                if param_validation.is_failure():
+                    return BuildResult.failure(param_validation.exception)
+                
+                return BuildResult.success(
+                    HumanPlayer(
+                        id=id,
+                        name=name,
+                        team_stack_service=team_stack_service,
+                    )
+                )
+            except Exception as ex:
+                return BuildResult.failure(
+                    AgentBuildFailedException(
+                        "f{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
+                        ex
+                    )
+                )
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -146,14 +251,14 @@ class AgentBuilder(Builder[Agent]):
 #
 #
 # def main():
-#   build_result = AgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
+#   build_result = PlayerAgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")
 #   else:
 #     print(f"Failed to build competitor: {build_result.err}")
 #
-#   build_result = AgentBuilder.build(-1, 4)
+#   build_result = PlayerAgentBuilder.build(-1, 4)
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")
