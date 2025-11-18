@@ -42,7 +42,7 @@ From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `AgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -96,7 +96,7 @@ From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `AgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -158,7 +158,7 @@ Raises:
   `InvalidCommanderException`: if `agent` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `schema` is null
   `InvalidCommanderAssignmentException`: if the assigned agent does not consistency the validated agent
-  `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and PlayerAgent is broken
+  `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and Agent is broken
   `InvalidDiscoverySearchContextException`: Wraps any preceding exceptions
 """
 # src/chess/discoverySearchContext/discoverySearchContext.py
@@ -205,7 +205,7 @@ From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `AgentValidator`,
 
 From `chess.owner`:
   `Piece`
@@ -259,7 +259,7 @@ From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
 From `chess.agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Agent`, `AgentValidator`,
 
 From `chess.owner`:
   `Piece`

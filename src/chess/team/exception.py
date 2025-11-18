@@ -85,7 +85,7 @@ class InvalidTeamException(TeamException, ValidationException):
 class TeamCommanderInconsistencyException(TeamException):
   """Raised if piece has its team_name set but the owner is not on the roster."""
   ERROR_CODE = "TEAM_COMMANDER_INCONSISTENCY_ERROR"
-  DEFAULT_MESSAGE = "The team_name has assigned itself to a agent but the PlayerAgent has no record of the team_name."
+  DEFAULT_MESSAGE = "The team_name has assigned itself to a agent but the Agent has no record of the team_name."
 
 
 #======================# TEAM BUILD EXCEPTIONS #======================#  

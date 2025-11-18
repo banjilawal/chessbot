@@ -13,24 +13,24 @@ from chess.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.agent import (
-    AgentTeamSearchContext, MoreThanOneAgentTeamSearchOptionPickedException,
+    TeamSearchContext, MoreThanOneAgentTeamSearchOptionPickedException,
     NoAgentTeamSearchOptionSelectedException, AgentTeamSearchContextBuildFailedException,
 )
 
 
-class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
+class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
     """
     # ROLE: Builder
 
     # RESPONSIBILITIES:
-    1.  Manage construction of AgentTeamSearchContext instances that can be used safely by the client.
-    2.  Ensure params for AgentTeamSearchContext creation have met the application's safety contract.
-    3.  Provide pluggable factories for creating different AgentTeamSearchContext products.
+    1.  Manage construction of TeamSearchContext instances that can be used safely by the client.
+    2.  Ensure params for TeamSearchContext creation have met the application's safety contract.
+    3.  Provide pluggable factories for creating different TeamSearchContext products.
 
 
     # PROVIDES:
-    ValidationResult[AgentTeamSearchContext] containing either:
-        - On success:   AgentTeamSearchContext in the payload.
+    ValidationResult[TeamSearchContext] containing either:
+        - On success:   TeamSearchContext in the payload.
         - On failure:   Exception.
 
     # ATTRIBUTES:
@@ -46,12 +46,12 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             color: Optional[GameColor],
             color_validator: type[GameColorValidator] = GameColorValidator,
             identity_service: IdentityService=IdentityService(),
-    ) -> BuildResult[AgentTeamSearchContext]:
+    ) -> BuildResult[TeamSearchContext]:
         """
         # Action:
             1.  Use dependency injected validators to verify correctness of parameters required to
-                build a AgentTeamSearchContext instance.
-            2.  If the parameters are safe the AgentTeamSearchContext is built and returned.
+                build a TeamSearchContext instance.
+            2.  If the parameters are safe the TeamSearchContext is built and returned.
 
         # Parameters:
             *   id (Optional[int]):                             Selected if search target is an id.
@@ -65,8 +65,8 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             *   color_validator (type[GameColorValidator]):     Validates a name-search-target
 
         # Returns:
-        BuildResult[AgentTeamSearchContext] containing either:
-            - On success:   AgentTeamSearchContext in the payload.
+        BuildResult[TeamSearchContext] containing either:
+            - On success:   TeamSearchContext in the payload.
             - On failure:   Exception.
 
         # Raises:
@@ -116,10 +116,10 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             cls,
             candidate: Any,
             identity_service: IdentityService=IdentityService(),
-    ) -> BuildResult[AgentTeamSearchContext]:
+    ) -> BuildResult[TeamSearchContext]:
         """
         # Action:
-        Build an id-AgentTeamSearchContext if IdentityService verifies search target is safe.
+        Build an id-TeamSearchContext if IdentityService verifies search target is safe.
 
         # Parameters:
           *     candidate (int):                            search_value to validate
@@ -127,8 +127,8 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
           *     identity_service (type[IdentityService]):   validates target.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
@@ -142,7 +142,7 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             
             id = cast(int, id_validation.payload)
             
-            return BuildResult.success(payload=AgentTeamSearchContext(id=id))
+            return BuildResult.success(payload=TeamSearchContext(id=id))
         
         except Exception as ex:
             return BuildResult.failure(
@@ -157,10 +157,10 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             cls,
             candidate: Any,
             identity_service: IdentityService=IdentityService(),
-    ) -> BuildResult[AgentTeamSearchContext]:
+    ) -> BuildResult[TeamSearchContext]:
         """
         # Action:
-        Build a name-AgentTeamSearchContext if NameValidator verifies search target is safe.
+        Build a name-TeamSearchContext if NameValidator verifies search target is safe.
 
         # Parameters:
           *     candidate (Any):                            search_value to validate
@@ -168,8 +168,8 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
           *     identity_service (type[IdentityService]):   validates is a valida name.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
@@ -184,7 +184,7 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             
             name = cast(str, name_validation.payload)
             
-            return BuildResult.success(payload=AgentTeamSearchContext(name=name))
+            return BuildResult.success(payload=TeamSearchContext(name=name))
         
         except Exception as ex:
             return BuildResult.failure(
@@ -199,10 +199,10 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             cls,
             candidate: Any,
             color_validator: type[GameColorValidator]=GameColorValidator
-    ) -> BuildResult[AgentTeamSearchContext]:
+    ) -> BuildResult[TeamSearchContext]:
         """
         # Action:
-        Build a color-AgentTeamSearchContext if ColorValidator verifies search target is safe.
+        Build a color-TeamSearchContext if ColorValidator verifies search target is safe.
 
         # Parameters:
           *     candidate (Any):                            search_value to validate
@@ -210,8 +210,8 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
           *     color_validator (type[ColorValidator]):   validates is a valida name.
 
         # Returns:
-        ValidationResult[AgentTeamSearchContext] containing either:
-            - On success:   AgentTeamSearchContext in the payload.
+        ValidationResult[TeamSearchContext] containing either:
+            - On success:   TeamSearchContext in the payload.
             - On failure:   Exception.
 
         # Raises:
@@ -226,7 +226,7 @@ class AgentTeamSearchContextBuilder(Builder[AgentTeamSearchContext]):
             
             color = cast(GameColor, color_validation.payload)
             
-            return BuildResult.success(payload=AgentTeamSearchContext(color=color))
+            return BuildResult.success(payload=TeamSearchContext(color=color))
         
         except Exception as e:
             return BuildResult.failure(

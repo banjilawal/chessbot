@@ -24,12 +24,12 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     # RESPONSIBILITIES:
     1.  Manage construction of BoardSearch instances that can be used safely by the client.
     2.  Ensure params for BoardSearch creation have met the application's safety contract.
-    3.  Provide pluggable factories for creating different AgentTeamSearchContext products.
+    3.  Provide pluggable factories for creating different TeamSearchContext products.
 
 
     # PROVIDES:
-    ValidationResult[AgentTeamSearchContext] containing either:
-        - On success:   AgentTeamSearchContext in the payload.
+    ValidationResult[TeamSearchContext] containing either:
+        - On success:   TeamSearchContext in the payload.
         - On failure:   Exception.
 
     # ATTRIBUTES:
@@ -50,8 +50,8 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         """
         # Action:
             1.  Use dependency injected validators to verify correctness of parameters required to
-                build a AgentTeamSearchContext instance.
-            2.  If the parameters are safe the AgentTeamSearchContext is built and returned.
+                build a TeamSearchContext instance.
+            2.  If the parameters are safe the TeamSearchContext is built and returned.
 
         # Parameters:
             *   id (Optional[int]):                     Selected if search target is an id.
@@ -62,8 +62,8 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             *   coord_builder (type[CoordBuilder]):     Validates a coord-search-target
 
         # Returns:
-        BuildResult[AgentTeamSearchContext] containing either:
-            - On success:   AgentTeamSearchContext in the payload.
+        BuildResult[TeamSearchContext] containing either:
+            - On success:   TeamSearchContext in the payload.
             - On failure:   Exception.
 
         # Raises:
@@ -116,15 +116,15 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build an id-AgentTeamSearchContext if IdValidator verifies search target is safe.
+        Build an id-TeamSearchContext if IdValidator verifies search target is safe.
 
         # Parameters:
           *     id (int):                           target id
           *     id_validator (type[IdValidator]):   validates target.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
@@ -154,15 +154,15 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build a name-AgentTeamSearchContext if NameValidator verifies search target is safe.
+        Build a name-TeamSearchContext if NameValidator verifies search target is safe.
 
         # Parameters:
             *   name (str):                             target name
             *   name_validator (type[NameValidator]):   validates target.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
@@ -193,15 +193,15 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build a coord-AgentTeamSearchContext if CoordValidator verifies search target is safe.
+        Build a coord-TeamSearchContext if CoordValidator verifies search target is safe.
 
         # Parameters:
           *     coord (Coord):                              target Coord
           *     coord_validator (type[CoordValidator]):     validates target.
 
         # Returns:
-        ValidationResult[AgentTeamSearchContext] containing either:
-            - On success:   AgentTeamSearchContext in the payload.
+        ValidationResult[TeamSearchContext] containing either:
+            - On success:   TeamSearchContext in the payload.
             - On failure:   Exception.
 
         # Raises:

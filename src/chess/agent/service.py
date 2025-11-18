@@ -10,11 +10,11 @@ version: 1.0.0
 
 
 from chess.system import BuildResult, SearchResult, ValidationResult
-from chess.agent.agent import PlayerAgent, PlayerAgentBuilder, PlayerAgentValidator, PlayerAgentSearch
+from chess.agent.agent import Agent, PlayerAgentBuilder, PlayerAgentValidator, PlayerAgentSearch
 
 
 class PlayerAgentService:
-    _agents: [PlayerAgent]
+    _agents: [Agent]
     _builder: PlayerAgentBuilder
     _validator: PlayAgentValidator
     _search: PlayerAgentTeamSearch
@@ -25,7 +25,7 @@ class PlayerAgentService:
             validator: type[PlayerAgentValidator]=PlayerAgentValidator,
             search_service: PlayerAgentSearchService = PlayerAgentSearchService()
     ):
-        self._agents = [PlayerAgent]
+        self._agents = [Agent]
         self._builder = builder
         self._validator = validator
         self._search_service = search_serivce
@@ -36,17 +36,17 @@ class PlayerAgentService:
             id: int,
             name: str,
             agent_category: PlayerAgentCategory
-    ) -> BuildResult[PlayerAgent]:
+    ) -> BuildResult[Agent]:
         return self._builder.build(id=id, name=name, agent_category=agent_category)
     
     
-    def validate_agent(self, agent: PlayerAgent) -> ValidationResult[PlayerAgent]:
+    def validate_agent(self, agent: Agent) -> ValidationResult[Agent]:
         return self._validator.validate(agent=agent)
     
     
     def search_for_team(
             self,
-            player_agent: PlayerAgent,
+            player_agent: Agent,
             search_context: AgentTeamSearchContext
     ) -> SearchResult[List[team]]:
         return self._search_service.search(data_owner=player_agent, search_context=search_context)

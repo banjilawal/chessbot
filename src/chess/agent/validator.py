@@ -7,14 +7,14 @@ Created: 2025-08-31
 version: 1.0.0
 """
 
-class PlayerAgentValidator(Validator):
+class AgentValidator(Validator):
   """
-  Validates an PlayerAgent used in team_name graph module meets requirements:
+  Validates an Agent used in team_name graph module meets requirements:
     - Is not null.
     - Its fields meet the specifications for the graph.
   Unmet requirements will raise team_name InvalidCommanderException
 
-  For performance and single source of truth PlayerAgentValidator has:
+  For performance and single source of truth AgentValidator has:
     - No fields
     - only static method validate
   subclasses must implement validate.
@@ -22,7 +22,7 @@ class PlayerAgentValidator(Validator):
 
   @staticmethod
   def validate(candidate: Generic[T]) -> Result[PlayerAgent]:
-    entity = "PlayerAgent"
+    entity = "Agent"
     class_name = f"{entity}Validator"
     method = f"{class_name}.validate"
 
@@ -31,18 +31,18 @@ class PlayerAgentValidator(Validator):
       - Not null
       - valid visitor_id
       - valid visitor_name
-      - PlayerAgent.team_history meets validator requirements
+      - Agent.team_history meets validator requirements
     Any failed requirement raise an rollback_exception wrapped in team_name InvalidCommanderException
       
     Args
-      candidate (PlayerAgent): agent to validate
+      candidate (Agent): agent to validate
       
      Returns:
        Result[T]: A Result object containing the validated payload if all graph requirements
        are satisfied. InvalidCommanderException otherwise.
     
     Raises:
-      TypeError: if candidate is not PlayerAgent
+      TypeError: if candidate is not Agent
       NullCommanderException: if candidate is null  
 
       RowBelowBoundsException: If agent.row < 0
@@ -63,14 +63,14 @@ class PlayerAgentValidator(Validator):
       if candidate is None:
         raise NullCommanderException(f"{method} {NullCommanderException.DEFAULT_MESSAGE}")
 
-      # If cannot cast from candidate to PlayerAgent need to break
-      from chess.agent import PlayerAgent
-      if not isinstance(candidate, PlayerAgent):
-        raise TypeError(f"{method} Expected team_name PlayerAgent, got {type(candidate).__name__} instead.")
+      # If cannot cast from candidate to Agent need to break
+      from chess.agent import Agent
+      if not isinstance(candidate, Agent):
+        raise TypeError(f"{method} Expected team_name Agent, got {type(candidate).__name__} instead.")
 
       # cast and run checks for the fields
-      from chess.agent import PlayerAgent
-      commander = cast(PlayerAgent, candidate)
+      from chess.agent import Agent
+      commander = cast(Agent, candidate)
 
       id_validation = IdValidator.validate(commander.id)
       if not id_validation.is_success():

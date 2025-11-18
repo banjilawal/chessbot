@@ -9,18 +9,18 @@ version: 1.0.0
 
 
 from chess.agent import (
-  PlayerAgent, HumanPlayerAgent, MachinePlayerAgent, PlayerAgentBuildFailed
+  Agent, HumanPlayerAgent, MachinePlayerAgent, PlayerAgentBuildFailed
 )
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 
 
-class PlayerAgentBuilder(Builder[PlayerAgent]):
+class PlayerAgentBuilder(Builder[Agent]):
   """
-  Responsible for safely constructing `PlayerAgent` instances.
+  Responsible for safely constructing `Agent` instances.
   """
 
   @classmethod
-  def build(cls, name: str, engine: Optional[DecisionEngine]=None) -> BuildResult[PlayerAgent]:
+  def build(cls, name: str, engine: Optional[DecisionEngine]=None) -> BuildResult[Agent]:
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
@@ -42,15 +42,15 @@ class PlayerAgentBuilder(Builder[PlayerAgent]):
         * `NegativeIdException`: if candidate is negative `
     """
     """
-    Constructs team_name new `PlayerAgent` that works correctly.
+    Constructs team_name new `Agent` that works correctly.
 
     Args:
       `visitor_name` (`str`): Must pass `NameValidator` checks.
       `engine` (DecisionEngine): The engine used to determine how to play.`
 
     Returns:
-    BuildResult[PlayerAgent]: A `BuildResult` containing either:
-      - On success: A valid `PlayerAgent` instance in the payload
+    BuildResult[Agent]: A `BuildResult` containing either:
+      - On success: A valid `Agent` instance in the payload
       - On failure: Error information and error details
 
     Raises:

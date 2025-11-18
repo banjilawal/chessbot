@@ -27,17 +27,17 @@ __all__ = [
 
 class CommanderException(ChessException):
   """
-  Super class for exceptions raised by PlayerAgent objects. DO NOT USE DIRECTLY. Subclasses
+  Super class for exceptions raised by Agent objects. DO NOT USE DIRECTLY. Subclasses
   give more useful debugging messages.
   """
   ERROR_CODE = "COMMANDER_ERROR"
-  DEFAULT_MESSAGE = "PlayerAgent raised an rollback_exception"
+  DEFAULT_MESSAGE = "Agent raised an rollback_exception"
 
 #======================# COMMANDER VALIDATION EXCEPTIONS #======================#  
 class NullCommanderException(CommanderException, NullException):
   """Raised if an entity, method, or operation requires team_name agent but gets null instead."""
   ERROR_CODE = "NULL_COMMANDER_ERROR"
-  DEFAULT_MESSAGE = f"PlayerAgent cannot be null"
+  DEFAULT_MESSAGE = f"Agent cannot be null"
 
 class InvalidCommanderException(CommanderException, ValidationException):
   """
@@ -45,7 +45,7 @@ class InvalidCommanderException(CommanderException, ValidationException):
   validating an existing board_validator
   """
   ERROR_CODE = "COMMANDER_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "PlayerAgent validation failed."
+  DEFAULT_MESSAGE = "Agent validation failed."
 
 #======================# COMMANDER BUILD EXCEPTIONS #======================#  
 class CommanderBuildFailedException(CommanderException, BuildFailedException):
@@ -54,7 +54,7 @@ class CommanderBuildFailedException(CommanderException, BuildFailedException):
   exceptions raised build team_name new board_validator
   """
   ERROR_CODE = "COMMANDER_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "PlayerAgent build failed."
+  DEFAULT_MESSAGE = "Agent build failed."
 
 #======================# COMMANDER HISTORY EXCEPTIONS #======================#  
 class CommanderHistoryException(CommanderException):

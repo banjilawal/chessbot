@@ -20,7 +20,7 @@ class BoardSearchContext(SearchContext):
     Provides options for what type of key-value pair BoardSearch implementations use to find matches.
   
     # PROVIDES:
-    AgentTeamSearchContext.
+    TeamSearchContext.
   
     # ATTRIBUTES:
         *   id (int):       Find items whose id matches this value.

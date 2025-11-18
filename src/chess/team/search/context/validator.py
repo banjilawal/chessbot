@@ -4,7 +4,7 @@ from typing import cast, Generic, TYPE_CHECKING, TypeVar
 
 from chess.system import Result, Validator, IdValidator, InvalidIdException, InconsistentCollectionException
 from chess.team import Team, NullTeamException, NullTeamSchemaException, InvalidTeamException
-from chess.agent import PlayerAgent, CommanderValidator, InvalidCommanderException, \
+from chess.agent import Agent, CommanderValidator, InvalidCommanderException, \
   InvalidCommanderAssignmentException
 from chess.team.search import TeamSearchContext
 
@@ -39,7 +39,7 @@ class PieceSearchContextValidator(Validator):
       if not commander_validation.is_success():
         raise InvalidCommanderException(f"{method}: {InvalidCommanderException.DEFAULT_MESSAGE}")
 
-      commander = cast(PlayerAgent, commander_validation.payload)
+      commander = cast(Agent, commander_validation.payload)
       if team.commander != commander:
         raise InvalidCommanderAssignmentException(
           f"{method}: {InvalidCommanderAssignmentException.DEFAULT_MESSAGE}"

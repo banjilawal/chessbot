@@ -31,18 +31,18 @@ __all__ = [
 
 class AgentTeamSearchContextException(SearchContextException):
     """
-    Super class of exceptions raised by AgentTeamSearchContext objects.
+    Super class of exceptions raised by TeamSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext raised an exception."
+    DEFAULT_MESSAGE = "TeamSearchContext raised an exception."
 
 
 #========================= NULLAGENT_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullAgentTeamSearchContextException(AgentTeamSearchContextException, NullException):
-    """Raised if an entity, method, or operation requires AgentTeamSearchContext but gets null instead."""
+    """Raised if an entity, method, or operation requires TeamSearchContext but gets null instead."""
     ERROR_CODE = "NULL_AGENT_TEAM_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext cannot be null"
+    DEFAULT_MESSAGE = "TeamSearchContext cannot be null"
 
 
 #=========================AGENT_TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
@@ -50,9 +50,9 @@ class InvalidAgentTeamSearchContextException(
     AgentTeamSearchContextException,
     ValidationException
 ):
-    """Catchall Exception for AgentTeamSearchContextValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for TeamSearchContext when a validation candidate fails a sanity check."""
     ERROR_CODE = "AGENT_TEAM_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext validation failed."
+    DEFAULT_MESSAGE = "TeamSearchContext validation failed."
 
 
 class NoAgentTeamSearchOptionSelectedException(
@@ -61,7 +61,7 @@ class NoAgentTeamSearchOptionSelectedException(
 ):
     """"""
     ERROR_CODE = "NO_AGENT_TEAM_SEARCH_OPTION_SELECTED_ERROR"
-    DEFAULT_MESSAGE = "None of the AgentTeamSearchContext options wre selected. An option must be picked."
+    DEFAULT_MESSAGE = "None of the TeamSearchContext options wre selected. An option must be picked."
 
 
 class MoreThanOneAgentTeamSearchOptionPickedException(
@@ -70,14 +70,14 @@ class MoreThanOneAgentTeamSearchOptionPickedException(
 ):
     """"""
     ERROR_CODE = "TOO_MANY_AGENT_TEAM_SEARCH_OPTIONS_ERROR"
-    DEFAULT_MESSAGE = "Only one AgentTeamSearchContext option can be selected."
+    DEFAULT_MESSAGE = "Only one TeamSearchContext option can be selected."
 
 
 #=========================AGENT_TEAM_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
 class AgentTeamSearchContextBuildFailedException(AgentTeamSearchContextException, BuildFailedException):
     """
     Catchall Exception for AgentTeamSearchContextBuilder when it encounters an error building
-    a AgentTeamSearchContext.
+    a TeamSearchContext.
     """
     ERROR_CODE = "AGENT_TEAM_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext build failed."
+    DEFAULT_MESSAGE = "TeamSearchContext build failed."

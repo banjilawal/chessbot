@@ -31,18 +31,18 @@ __all__ = [
 
 class BoardSearchContextException(ContextException):
     """
-    Super class of exceptions raised by AgentTeamSearchContext objects.
+    Super class of exceptions raised by TeamSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext raised an exception."
+    DEFAULT_MESSAGE = "TeamSearchContext raised an exception."
 
 
 #========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullBoardSearchContextException(BoardSearchContextException, NullException):
     """Raised if an entity, method, or operation requires Board but gets null instead."""
     ERROR_CODE = "NULL_BOARD_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext cannot be null"
+    DEFAULT_MESSAGE = "TeamSearchContext cannot be null"
 
 
 #========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
@@ -52,7 +52,7 @@ class InvalidBoardSearchContextException(
 ):
     """Catchall Exception for BoardSearchContextValidator when a validation candidate fails a sanity check."""
     ERROR_CODE = "BOARD_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext validation failed."
+    DEFAULT_MESSAGE = "TeamSearchContext validation failed."
 
 
 class NoBoardSearchOptionSelectedException(
@@ -61,7 +61,7 @@ class NoBoardSearchOptionSelectedException(
 ):
     """"""
     ERROR_CODE = "NO_BOARD_SEARCH_OPTION_SELECTED_ERROR"
-    DEFAULT_MESSAGE = "None of the AgentTeamSearchContext options wre selected. An option must be picked."
+    DEFAULT_MESSAGE = "None of the TeamSearchContext options wre selected. An option must be picked."
 
 
 class MoreThanOneBoardSearchOptionPickedException(
@@ -70,14 +70,14 @@ class MoreThanOneBoardSearchOptionPickedException(
 ):
     """"""
     ERROR_CODE = "TOO_MANY_BOARD_SEARCH_OPTIONS_ERROR"
-    DEFAULT_MESSAGE = "Only one AgentTeamSearchContext option can be selected."
+    DEFAULT_MESSAGE = "Only one TeamSearchContext option can be selected."
 
 
 #========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
 class BoardSearchContextBuildFailedException(BoardSearchContextException, BuildFailedException):
     """
     Catchall Exception for BoardSearchContextBuilder when it encounters an error building
-    a AgentTeamSearchContext.
+    a TeamSearchContext.
     """
     ERROR_CODE = "BOARD_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "AgentTeamSearchContext build failed."
+    DEFAULT_MESSAGE = "TeamSearchContext build failed."

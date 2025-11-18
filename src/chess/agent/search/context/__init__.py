@@ -8,6 +8,6 @@ version: 1.0.0
 """
 
 from .exception import *
-from .context import AgentTeamSearchContext
-from .builder import BoardSearchContextBuilder
-from .validator import BoardSearchContextValidator
+from .context import TeamSearchContext
+from .builder import AgentTeamSearchContextBuilder
+from .validator import TeamSearchContext

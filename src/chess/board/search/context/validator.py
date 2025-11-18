@@ -22,12 +22,12 @@ class BoardSearchContextValidator(Validator):
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    1.  Verify a candidate is a AgentTeamSearchContext that meets the application's safety contract before the client
-        is allowed to use the AgentTeamSearchContext object.
+    1.  Verify a candidate is a TeamSearchContext that meets the application's safety contract before the client
+        is allowed to use the TeamSearchContext object.
     2.  Provide pluggable factories for validating different options separately.
     
     # PROVIDES:
-    ValidationResult[AgentTeamSearchContext] containing either:
+    ValidationResult[TeamSearchContext] containing either:
         - On success:   Board in the payload.
         - On failure:   Exception.
 
@@ -46,9 +46,9 @@ class BoardSearchContextValidator(Validator):
     ) -> ValidationResult[BoardSearchContext]:
         """
         # Action:
-        Verifies candidate is a AgentTeamSearchContext in two steps.
+        Verifies candidate is a TeamSearchContext in two steps.
             1.  Test the candidate is a valid SearchBoardContext with a single search option switched on.
-            2.  Test the value passed to AgentTeamSearchContext passes its validation contract..
+            2.  Test the value passed to TeamSearchContext passes its validation contract..
 
         # Parameters:
           * candidate (Any):                            Object to verify is a Board.
@@ -57,8 +57,8 @@ class BoardSearchContextValidator(Validator):
           * coord_validator (type[CoordValidator]):     Enforces safety requirements on name-search targets.
           
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
@@ -78,7 +78,7 @@ class BoardSearchContextValidator(Validator):
             
             if not isinstance(candidate, BoardSearchContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected AgentTeamSearchContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected TeamSearchContext, got {type(candidate).__name__} instead.")
                 )
             
             board_search_context = cast(BoardSearchContext, candidate)
@@ -131,15 +131,15 @@ class BoardSearchContextValidator(Validator):
     ) -> ValidationResult[BoardSearchContext]:
         """
         # Action:
-        Verify an id_candidate meets application AgentTeamSearchContext safety requirements.
+        Verify an id_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
             *   candidate (Any):                    Object to verify is an id.
             *   id_validator (type[IdValidator]):   Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
@@ -170,15 +170,15 @@ class BoardSearchContextValidator(Validator):
     ) -> ValidationResult[BoardSearchContext]:
         """
         # Action:
-        Verify a name_candidate meets application AgentTeamSearchContext safety requirements.
+        Verify a name_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
           * candidate (Any): Object to verify is a name.
           * name_validator (type[NameValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success: AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success: TeamSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -210,15 +210,15 @@ class BoardSearchContextValidator(Validator):
     ) -> ValidationResult[BoardSearchContext]:
         """
         # Action:
-        Verify a coord_candidate meets application AgentTeamSearchContext safety requirements.
+        Verify a coord_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
             *   candidate (Any):                        Object to verify is a coord.
             *   name_validator (type[CoordValidator]):  Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:    Exception.
 
         # Raises:

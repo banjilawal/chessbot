@@ -12,22 +12,22 @@ from typing import Any, cast
 
 from chess.system import GameColor, Validator, IdentityService, GameColorValidator, ValidationResult, LoggingLevelRouter
 from chess.agent import (
-    AgentTeamSearchContext, InvalidAgentTeamSearchContextException, NullAgentTeamSearchContextException,
+    TeamSearchContext, InvalidAgentTeamSearchContextException, NullAgentTeamSearchContextException,
     MoreThanOneAgentTeamSearchOptionPickedException, NoAgentTeamSearchOptionSelectedException
 )
 
 
-class AgentTeamSearchContextValidator(Validator):
+class TeamSearchContext(Validator):
     """
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    1.  Verify a candidate is a AgentTeamSearchContext that meets the application's safety contract before the client
-        is allowed to use the AgentTeamSearchContext object.
+    1.  Verify a candidate is a TeamSearchContext that meets the application's safety contract before the client
+        is allowed to use the TeamSearchContext object.
     2.  Provide pluggable factories for validating different search options separately.
     
     # PROVIDES:
-    ValidationResult[AgentTeamSearchContext] containing either:
+    ValidationResult[TeamSearchContext] containing either:
         - On success:   AgentTeam in the payload.
         - On failure:   Exception.
 
@@ -42,12 +42,12 @@ class AgentTeamSearchContextValidator(Validator):
             candidate: Any,
             identity_service: IdentityService=IdentityService,
             color_validator: type[GameColorValidator]=GameColorValidator
-    ) -> ValidationResult[AgentTeamSearchContext]:
+    ) -> ValidationResult[TeamSearchContext]:
         """
         # Action:
-        Verifies candidate is a AgentTeamSearchContext in two steps.
+        Verifies candidate is a TeamSearchContext in two steps.
             1.  Test the candidate is a valid SearchAgentTeamContext with a single search option switched on.
-            2.  Test the value passed to AgentTeamSearchContext passes its validation contract..
+            2.  Test the value passed to TeamSearchContext passes its validation contract..
 
         # Parameters:
           * candidate (Any):                                Object to verify is a AgentTeam.
@@ -57,8 +57,8 @@ class AgentTeamSearchContextValidator(Validator):
           * color_validator (type[GameColorValidator]):     Enforces safety requirements on name-search targets.
           
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
@@ -68,7 +68,7 @@ class AgentTeamSearchContextValidator(Validator):
             *   InvalidAgentTeamSearchContextException
             *   MoreThanOneAgentTeamSearchOptionPickedException
         """
-        method = "AgentTeamSearchContextValidator.validate"
+        method = "TeamSearchContext.validate"
         
         try:
             if candidate is None:
@@ -78,14 +78,14 @@ class AgentTeamSearchContextValidator(Validator):
                     )
                 )
             
-            if not isinstance(candidate, AgentTeamSearchContext):
+            if not isinstance(candidate, TeamSearchContext):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected AgentTeamSearchContext, got {type(candidate).__name__} instead."
+                        f"{method}: Expected TeamSearchContext, got {type(candidate).__name__} instead."
                     )
                 )
             
-            agentTeam_search_context = cast(AgentTeamSearchContext, candidate)
+            agentTeam_search_context = cast(TeamSearchContext, candidate)
             if len(agentTeam_search_context.to_dict() == 0):
                 return ValidationResult.failure(
                     NoAgentTeamSearchOptionSelectedException(
@@ -132,10 +132,10 @@ class AgentTeamSearchContextValidator(Validator):
             cls,
             candidate: Any,
             identity_service: type[IdentityService] = IdentityService
-    ) -> ValidationResult[AgentTeamSearchContext]:
+    ) -> ValidationResult[TeamSearchContext]:
         """
         # Action:
-        Verify an id_candidate meets application AgentTeamSearchContext safety requirements.
+        Verify an id_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
             *   candidate (Any):                            Object to verify is an id.
@@ -143,14 +143,14 @@ class AgentTeamSearchContextValidator(Validator):
             *   identity_service (type[IdentityService]):   Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
         # Raises:
             *   InvalidAgentTeamSearchContextException
         """
-        method = "AgentTeamSearchContextValidator.validate_id_search_option"
+        method = "TeamSearchContext.validate_id_search_option"
         
         try:
             id_validation = identity_service.validate(candidate)
@@ -159,7 +159,7 @@ class AgentTeamSearchContextValidator(Validator):
             
             id = cast(int, id_validation.payload)
             
-            return ValidationResult.success(payload=AgentTeamSearchContext(id=id))
+            return ValidationResult.success(payload=TeamSearchContext(id=id))
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentTeamSearchContextException(
@@ -174,10 +174,10 @@ class AgentTeamSearchContextValidator(Validator):
             cls,
             candidate: Any,
             identity_service: type[IdentityService] = IdentityService
-    ) -> ValidationResult[AgentTeamSearchContext]:
+    ) -> ValidationResult[TeamSearchContext]:
         """
         # Action:
-        Verify a name_candidate meets application AgentTeamSearchContext safety requirements.
+        Verify a name_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
           * candidate (Any):                            Object to verify is a name.
@@ -185,14 +185,14 @@ class AgentTeamSearchContextValidator(Validator):
           * identity_service (type[IdentityService]):   Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success: AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success: TeamSearchContext in the payload.
                 - On failure: Exception.
 
         # Raises:
             * InvalidAgentTeamSearchContextException
         """
-        method = "AgentTeamSearchContextValidator.validate_name_search_option"
+        method = "TeamSearchContext.validate_name_search_option"
         
         try:
             name_validation = identity_service.validate(candidate)
@@ -201,7 +201,7 @@ class AgentTeamSearchContextValidator(Validator):
             
             name = cast(str, name_validation.payload)
             
-            return ValidationResult.success(payload=AgentTeamSearchContext(name=name))
+            return ValidationResult.success(payload=TeamSearchContext(name=name))
         
         except Exception as ex:
             return ValidationResult.failure(
@@ -217,10 +217,10 @@ class AgentTeamSearchContextValidator(Validator):
             cls,
             candidate: Any,
             color_validator: type[GameColorValidator] = GameColorValidator
-    ) -> ValidationResult[AgentTeamSearchContext]:
+    ) -> ValidationResult[TeamSearchContext]:
         """
         # Action:
-        Verify a color_candidate meets application AgentTeamSearchContext safety requirements.
+        Verify a color_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
             *   candidate (Any):                                Object to verify is a color.
@@ -228,14 +228,14 @@ class AgentTeamSearchContextValidator(Validator):
             *   identity_service (type[GameColorValidator]):    Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[AgentTeamSearchContext] containing either:
-                - On success:   AgentTeamSearchContext in the payload.
+          ValidationResult[TeamSearchContext] containing either:
+                - On success:   TeamSearchContext in the payload.
                 - On failure:    Exception.
 
         # Raises:
             *   InvalidAgentTeamSearchContextException
         """
-        method = "AgentTeamSearchContextValidator.validate_color_search_option"
+        method = "TeamSearchContext.validate_color_search_option"
         
         try:
             color_validation = color_validator.validate(candidate)
@@ -244,7 +244,7 @@ class AgentTeamSearchContextValidator(Validator):
             
             color = cast(GameColor, color_validation.payload)
             
-            return ValidationResult.success(payload=AgentTeamSearchContext(color=color))
+            return ValidationResult.success(payload=TeamSearchContext(color=color))
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentTeamSearchContextException(

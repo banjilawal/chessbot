@@ -13,16 +13,16 @@ from typing import Optional
 from chess.system import GameColor, SearchContext
 
 
-class AgentTeamSearchContext(SearchContext):
+class TeamSearchContext(SearchContext):
     """
     # ROLE: Search option filter
   
     # RESPONSIBILITIES:
     Provides options for what type of key-value pair AgentTeamSearch implementations use to
-    find matches in PlayerAgent.team_assignments.
+    find matches in Agent.team_assignments.
   
     # PROVIDES:
-    AgentTeamSearchContext.
+    TeamSearchContext.
   
     # ATTRIBUTES:
         *   id (int):           Should produce one and only one, Team object team ids are globally unique.
