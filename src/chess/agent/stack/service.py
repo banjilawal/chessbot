@@ -6,10 +6,10 @@ Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
 """
-from typing import List
+from typing import List, Optional
 
 from chess.piece.stack.exception import DuplicatePushException, PopEmptyStackException
-from chess.system import IdentityService, SearchResult
+from chess.system import IdentityService, LoggingLevelRouter, SearchResult
 from chess.team import Team, TeamService
 from chess.system.result import Result
 from chess.agent import (
@@ -20,30 +20,47 @@ from chess.agent import (
 
 class TeamStackService:
     _pop_count: int
+    _is_empty: bool
     _stack: TeamStack
-    _validator: type[TeamStackValidator]
+    _current_team: Team
     _team_service: TeamService
     _identity_service: IdentityService
+    _validator: type[TeamStackValidator]
     
     def __init__(
             self,
             stack: TeamStack,
+            team_service: TeamService = TeamService(),
+            identity_service: IdentityService=IdentityService(),
             validator: type[TeamStackValidator]=TeamStackValidator,
-            team_service: TeamService=TeamService()
     ):
         self._stack = stack
         self._validator = validator
         self._team_service = team_service
         
         self._pop_count = 0
-        
+        self._is_empty = self._stack.is_empty()
+        self._current_team = self._stack.current_team
+       
+    @property
     def stack_size(self) -> int:
         return self._stack.size()
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._stack.is_empty()
+    
+    @property
+    def current_team(self) -> Optional[Team]:
+        return self._stack.current_team
         
     def pop_count(self) -> int:
         return self._pop_count
         
+        
+    @LoggingLevelRouter.monitor
     def push_team(self, team) -> Result[Team]:
+        
         method = "TeamStackService.push_team"
         
         try:
@@ -88,6 +105,28 @@ class TeamStackService:
         
         except Exception as ex:
             return Result.failure(
+                TeamStackServiceException(
+                    f"{method}: {TeamStackServiceException.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )
+        
+        
+    def find_tean(self, team) -> SearchResult[Team]:
+        method = "TeamStackService.find_team"
+        
+        try:
+            team_validation = self._team_service.validate_team(team)
+            if team_validation.is_failure():
+                return SearchResult.failure(team_validation.exception)
+            
+            for team in self._stack.items:
+                if team == team:
+                    return SearchResult.success(team)
+                
+            return SearchResult.empty()
+        except Exception as ex:
+            return SearchResult.failure(
                 TeamStackServiceException(
                     f"{method}: {TeamStackServiceException.DEFAULT_MESSAGE}",
                     ex

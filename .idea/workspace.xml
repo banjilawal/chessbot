@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/stack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/stack/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/stack/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/stack/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -627,7 +634,7 @@
       <workItem from="1763123420919" duration="86975000" />
       <workItem from="1763265847754" duration="34750000" />
       <workItem from="1763314326886" duration="24621000" />
-      <workItem from="1763364100247" duration="65144000" />
+      <workItem from="1763364100247" duration="67915000" />
     </task>
     <servers />
   </component>

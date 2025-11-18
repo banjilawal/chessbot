@@ -8,99 +8,102 @@ version: 1.0.0
 """
 
 
-from chess.agent import (
-  Agent, HumanPlayerAgent, MachinePlayerAgent, PlayerAgentBuildFailed
-)
+from typing import Optional
+
+from chess.engine import DecisionEngine
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
+from chess.agent import Agent, HumanPlayerAgent, MachinePlayerAgent, PlayerAgentBuildFailed, TeamStackService
 
 
-class PlayerAgentBuilder(Builder[Agent]):
-  """
-  Responsible for safely constructing `Agent` instances.
-  """
-
-  @classmethod
-  def build(cls, name: str, engine: Optional[DecisionEngine]=None) -> BuildResult[Agent]:
+class AgentBuilder(Builder[Agent]):
     """
-    # ACTION:
-    Verify the `candidate` is a valid ID. The Application requires
-    1. Candidate is not null.
-    2. Is a positive integer.
+    # ROLE: Builder, Data Integrity Guarantor
 
-    # PARAMETERS:
-        * `candidate` (`int`): the visitor_id.
+    # RESPONSIBILITIES:
+    Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
+    their integrity checks, send an exception instead of an unsafe Agent.
 
-    # RETURNS:
-    `ValidationResult[str]`: A `ValidationResult` containing either:
-        `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-        `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
+    # PROVIDES:
+    BuildResult[Agent] containing either:
+        - On success: Agent in the payload.
+        - On failure: Exception.
 
-    # RAISES:
-    `InvalidIdException`: Wraps any specification violations including:
-        * `TypeError`: if candidate is not an `int`
-        * `IdNullException`: if candidate is null
-        * `NegativeIdException`: if candidate is negative `
+    # ATTRIBUTES:
+    None
     """
-    """
-    Constructs team_name new `Agent` that works correctly.
+    
+    @classmethod
+    def build(
+            cls,
+            id: int,
+            name: str,
+            engine: Optional[DecisionEngine] = None,
+            identity_service: IdentityService = IdentityService(),
+            team_stack_service: TeamStackService=TeamStackService(),
+    ) -> BuildResult[Agent]:
+        """
+        # ACTION:
+        1.  Run safety checks on id and name with identity_service checks with identity_service.
+        2.  If any checks fail, send their exception to the caller in a BuildResult.
+        3.  When all checks pass, create a new Agent object then send to the caller in a BuildResult.
 
-    Args:
-      `visitor_name` (`str`): Must pass `NameValidator` checks.
-      `engine` (DecisionEngine): The engine used to determine how to play.`
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   engine (Optional[DecisionEngine])
+            *   identity_service (IdentityService)
+            *   team_stack_service (teamStackService])
 
-    Returns:
-    BuildResult[Agent]: A `BuildResult` containing either:
-      - On success: A valid `Agent` instance in the payload
-      - On failure: Error information and error details
+        # Returns:
+        ValidationResult[TeamStackService] containing either:
+            - On success: TeamStackService in the payload.
+            - On failure: Exception.
 
-    Raises:
-    `CommanderBuildFailedException`: Wraps any exceptions raised build. These are:
-      * `InvalidIdException`: if `commander_id` fails validate checks.
-      * `InvalidNameException`: if `visitor_name` fails validate checks.
-      * `EngineValidationException`: If `engine` is not null and fails validate checks.
-    """
-    method = "PlayerAgentBuilder.build"
-
-    try:
-      # id_validation = IdValidator.validate(commander_id)
-      # if not id_validation.is_success():
-      #   LoggingLevelRouter.throw_if_invalid(PlayerAgentBuilder, id_validation.err)
-      name_validation = NameValidator.validate(name)
-      if not name_validation.is_success():
-        LoggingLevelRouter.log_and_raise_error(PlayerAgentBuilder, name_validation.exception)
-
-      if engine is not None and not isinstance(engine, DecisionEngine):
-        error = TypeError(f"Expected team_name Decision, but got {type(engine).__name__}.")
-        LoggingLevelRouter.log_and_raise_error(PlayerAgentBuilder, error)
-
-      if engine is not None and isinstance(engine, DecisionEngine):
-        return BuildResult(payload=Bot(name=name, engine=engine))
-
-      # If no engine is provided and all the checks are passed, team_name HumanPlayerAgent agent is returned
-      return BuildResult(payload=Human(name=name))
-
-    except (
-      TypeError,
-      InvalidNameException
-    ) as e:
-      raise CommanderBuildFailedException(f"{method}: {e}") from e
-
-    # Catch any unexpected errors with details about type and message
-    except Exception as e:
-      raise CommanderBuildFailedException(
-        f"{method}: Unexpected error ({type(e).__name__}): {e}"
-      ) from e
+        # Raises:
+            *   AgentBuildFailedException
+        """
+        method = "AgentBuilder.build"
+        
+        try:
+            # id_validation = IdValidator.validate(commander_id)
+            # if not id_validation.is_success():
+            #   LoggingLevelRouter.throw_if_invalid(AgentBuilder, id_validation.err)
+            name_validation = NameValidator.validate(name)
+            if not name_validation.is_success():
+                LoggingLevelRouter.log_and_raise_error(AgentBuilder, name_validation.exception)
+            
+            if engine is not None and not isinstance(engine, DecisionEngine):
+                error = TypeError(f"Expected agent_name Decision, but got {type(engine).__name__}.")
+                LoggingLevelRouter.log_and_raise_error(AgentBuilder, error)
+            
+            if engine is not None and isinstance(engine, DecisionEngine):
+                return BuildResult(payload=Bot(name=name, engine=engine))
+            
+            # If no engine is provided and all the checks are passed, agent_name HumanPlayerAgent agent is returned
+            return BuildResult(payload=Human(name=name))
+        
+        except (
+                TypeError,
+                InvalidNameException
+        ) as e:
+            raise CommanderBuildFailedException(f"{method}: {e}") from e
+        
+        # Catch any unexpected errors with details about type and message
+        except Exception as e:
+            raise CommanderBuildFailedException(
+                f"{method}: Unexpected error ({type(e).__name__}): {e}"
+            ) from e
 #
 #
 # def main():
-#   build_result = PlayerAgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
+#   build_result = AgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")
 #   else:
 #     print(f"Failed to build competitor: {build_result.err}")
 #
-#   build_result = PlayerAgentBuilder.build(-1, 4)
+#   build_result = AgentBuilder.build(-1, 4)
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")

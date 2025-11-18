@@ -7,24 +7,24 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
+
 from abc import ABC
 from typing import Optional
 
 from chess.team.team import Team
-from chess.agent import TeamStack
+from chess.agent import TeamStack, TeamStackService
 
 
 class Agent(ABC):
     _id: int
     _name: str
-    _team_assignments: TeamStack
-    _current_team: Optional[Team]
+    _team_stack_service: TeamStackService
     
     def __init__(self, id: int, name: str):
         self._id = id
         self._name = name
-        self._team_assignments = TeamStack()
-        self._current_team = self._team_assignments.current_team
+        self._team_stack_service = TeamStackService()
+        self._current_team = self._team_stack_service.current_team
     
     @property
     def id(self) -> int:
@@ -44,7 +44,7 @@ class Agent(ABC):
     
     @property
     def current_team(self) -> Optional[Team]:
-        return self._team_assignments.current_team
+        return self._team_stack_service.current_team
     
     def __eq__(self, other):
         if other is self: return True

@@ -9,6 +9,7 @@ version: 1.0.0
 
 
 from chess.agent import Agent, CommanderService
+from chess.agent.service import AgentService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
 
@@ -38,7 +39,7 @@ class TeamBuilder(Builder[Team]):
             commander: Agent,
             team_schema: TeamSchema,
             identity_service: IdentityService = IdentityService(),
-            commander_validator: CommanderService = CommanderValidator(),
+            team_service: AgentService = AgentService(),
             team_schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
     ) -> BuildResult[Team]:
         """

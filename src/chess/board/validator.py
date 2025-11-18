@@ -166,5 +166,5 @@ class BoardValidator(Validator[Board]):
 #
 #
 # def main():
-#   person = PlayerAgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
+#   person = AgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   team_name = TeamBuilder.build()

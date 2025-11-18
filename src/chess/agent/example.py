@@ -16,7 +16,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `Agent`: Abstract class.
   - `HumanPlayerAgent`: Concrete `subclass` of `Agent` people use.
   - `MachinePlayerAgent`: Concrete `subclass` of `Agent` that uses team_name `DecisionEngine`.
-  - `PlayerAgentBuilder`: Builds new instances of `Agent`.
+  - `AgentBuilder`: Builds new instances of `Agent`.
   - `AgentValidator`: Performs validator and sanity checks on existing
       `Agent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
@@ -53,7 +53,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `Agent`: Abstract class.
   - `HumanPlayerAgent`: Concrete `subclass` of `Agent` people use.
   - `MachinePlayerAgent`: Concrete `subclass` of `Agent` that uses team_name `DecisionEngine`.
-  - `PlayerAgentBuilder`: Builds new instances of `Agent`.
+  - `AgentBuilder`: Builds new instances of `Agent`.
   - `AgentValidator`: Performs validator and sanity checks on existing
       `Agent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
@@ -77,7 +77,7 @@ from .agent import Agent
 from chess.agent.stack.stack import TeamStack
 
 from .validator import AgentValidator
-from .builder import PlayerAgentBuilder
+from .builder import AgentBuilder
 
 __version__ = '1.0.0'
 __author__ = 'Banji Lawal'
@@ -90,7 +90,7 @@ __all__ = [
     'Agent',
     'TeamStack',
     'AgentValidator',
-    'PlayerAgentBuilder',
+    'AgentBuilder',
     
     *commander.__all__,
     *exception.__all__,

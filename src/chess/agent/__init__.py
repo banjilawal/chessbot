@@ -15,6 +15,6 @@ from .exception import *
 from .agent import Agent
 from .human import HumanPlayerAgent
 from .machine import MachinePlayerAgent
-from .builder import PlayerAgentBuilder
+from .builder import AgentBuilder
 from .validator import AgentValidator
 

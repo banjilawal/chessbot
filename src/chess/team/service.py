@@ -57,7 +57,7 @@ class TeamService:
     def search_team(self, team: Team, collection: PieceCollectionCategory, search_context) -> SearchResult[[Piece]]:
         return self._search.search(team, collection, search_context)
         
-    @LoggingLevelRouter
+    @LoggingLevelRouter.monitor
     def validate_team(self, candidate: Any) -> ValidationResult[Team]:
         return self._validator.validate(candidate)
     

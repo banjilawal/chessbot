@@ -10,10 +10,10 @@ version: 1.0.0
 
 
 from chess.system import BuildResult, SearchResult, ValidationResult
-from chess.agent.agent import Agent, PlayerAgentBuilder, PlayerAgentValidator, PlayerAgentSearch
+from chess.agent.agent import Agent, AgentBuilder, AgentValidator, PlayerAgentSearch
 
 
-class PlayerAgentService:
+class AgentService:
     _agents: [Agent]
     _builder: PlayerAgentBuilder
     _validator: PlayAgentValidator
