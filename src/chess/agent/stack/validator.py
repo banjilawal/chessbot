@@ -3,7 +3,7 @@
 """
 Module: chess.agent.stack.validator
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-08-25
 version: 1.0.0
 """
 
@@ -12,7 +12,7 @@ __all__ = [
   'CoordStackValidator'
 ]
 
-class CoordStackValidator(Validator):
+class TeamStackValidator(Validator[TeamStack]):
 
   @staticmethod
   def validate(candidate: CoordValidator) -> Result[CoordStack]:

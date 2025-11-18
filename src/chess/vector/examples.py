@@ -323,7 +323,7 @@ Example:
 # ```
 # ---
 # """
-# # chess/team_name/__init__.py
+# # src/chess/team_name/__init__.py
 
 """
 # Module: `chess.team_name`

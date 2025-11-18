@@ -1,4 +1,4 @@
-# chess/arena/arena.py
+# src/chess/arena/arena.py
 
 """
 Module: `chess.arena.arena`

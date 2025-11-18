@@ -1,4 +1,4 @@
-# chess/system/context/example.py
+# src/chess/system/context/example.py
 
 """
 Module: chess.system.context.example

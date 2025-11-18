@@ -1,4 +1,4 @@
-# chess/game/__init__.py
+# src/chess/game/__init__.py
 
 """
 Module: `chess.game`

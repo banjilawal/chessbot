@@ -1,4 +1,4 @@
-# chess/owner/travel/base/__init__.py
+# src/chess/owner/travel/base/__init__.py
 
 """
 Module: `chess.owner.travel.base`

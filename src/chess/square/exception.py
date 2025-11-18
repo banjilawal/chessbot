@@ -1,4 +1,4 @@
-# chess/square/exception.py
+# src/chess/square/exception.py
 
 """
 Module: chess.square.exception

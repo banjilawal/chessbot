@@ -1,4 +1,4 @@
-# chess/piece/__init__.py
+# src/chess/piece/__init__.py
 
 """
 Module: chess.piece.__init__

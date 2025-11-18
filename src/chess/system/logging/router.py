@@ -1,4 +1,4 @@
-# chess/system/logging/router.py
+# src/chess/system/logging/router.py
 
 """
 Module: chess.system.router

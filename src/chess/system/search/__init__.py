@@ -1,4 +1,4 @@
-# chess/system/search/__init__.py
+# src/chess/system/search/__init__.py
 
 """
 Module: chess.system.search

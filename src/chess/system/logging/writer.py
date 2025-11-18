@@ -1,4 +1,4 @@
-# chess/system/logging/writer.py
+# src/chess/system/logging/writer.py
 
 """
 Module: chess.system.writer

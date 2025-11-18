@@ -1,4 +1,4 @@
-# chess/system/transaction/__init__.py
+# src/chess/system/transaction/__init__.py
 
 """
 Module: chess.system.transaction

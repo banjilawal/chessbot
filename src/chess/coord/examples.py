@@ -86,7 +86,7 @@ Raise:
   InvalidCoordException: if 
 """
 
-# chess/point/factory.py
+# src/chess/point/factory.py
 
 """
 Module: `chess.point.validator`

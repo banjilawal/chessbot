@@ -1,4 +1,4 @@
-# chess/owner/__init__.py
+# src/chess/owner/__init__.py
 
 """
 Module: `chess.owner`

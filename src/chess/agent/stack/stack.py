@@ -3,31 +3,31 @@
 """
 Module: chess.agent.stack.stack
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-08-16
 version: 1.0.0
 """
 
 
-class CommandHistory:
-  _teams: list[Team]
+from typing import List, Optional
+
+from chess.team import Team
+
+
+class TeamStack:
+  _teams: List[Team]
   _current_team: Team
 
   def __init__(self):
-    self._teams = []
+    self._teams = List[Team]
     self._current_team = self._teams[-1] if self._teams else None
 
   @property
-  def items(self) -> list['Team']:
-    """
-    Returns team_name read-only view of the stack's contents. The returned sequence is safe to
-    iterate and index, but mutating it will not affect the original stack.
-    """
-
+  def items(self) -> list[Team]:
     return self._teams
 
 
   @property
-  def current_team(self) -> Optional['Team']:
+  def current_team(self) -> Optional[Team]:
     return self._teams[-1] if self._teams else None
 
 
@@ -38,27 +38,6 @@ class CommandHistory:
   def size(self) -> int:
     return len(self._teams)
 
-
-  def find_by_id(self, id: int) -> Optional['Team']:
-    for side in self._teams:
-      if side.id == id:
-        return side
-    return None
-
-
-  def add_team(self, team: Team):
-    method = "CommandHistory.add_team"
-
-    if team is None:
-      raise PushingNullEntityException(f"{method}: {PushingNullEntityException.DEFAULT_MESSAGE}")
-
-    if self._teams is None:
-      raise CorruptedStackException(f"{method}: {CorruptedStackException.DEFAULT_MESSAGE}")
-
-    if self.current_team == team:
-      raise DuplicatePushException(f"{method} {DuplicatePushException.DEFAULT_MESSAGE}")
-
-    self._teams.append(team)
   
   # src/chess/agent/stack/stack
   

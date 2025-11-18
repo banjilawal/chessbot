@@ -1,4 +1,4 @@
-# chess/square/dto/__init__.py
+# src/chess/square/dto/__init__.py
 
 """
 Module: `chess.square.dto`

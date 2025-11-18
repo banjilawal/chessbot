@@ -1,4 +1,4 @@
-# chess/board/__init__.py
+# src/chess/board/__init__.py
 
 """
 Module: chess.board.__init__

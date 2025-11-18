@@ -1,4 +1,4 @@
-# chess/system/identity/service.py
+# src/chess/system/identity/service.py
 
 """
 Module: chess.system.identity.service

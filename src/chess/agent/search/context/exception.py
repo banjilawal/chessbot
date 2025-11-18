@@ -76,7 +76,7 @@ class MoreThanOneTeamSearchOptionPickedException(
 #=========================AGENT_TEAM_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
 class TeamSearchContextBuildFailedException(TeamSearchContextException, BuildFailedException):
     """
-    Catchall Exception for AgentTeamSearchContextBuilder when it encounters an error building
+    Catchall Exception for TeamSearchContextBuilder when it encounters an error building
     a TeamSearchContext.
     """
     ERROR_CODE = "EAM_SEARCH_CONTEXT_BUILD_FAILED_ERROR"

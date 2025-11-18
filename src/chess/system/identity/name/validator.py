@@ -1,4 +1,4 @@
-# chess/system/identity/name/validator.py
+# src/chess/system/identity/name/validator.py
 
 """
 Module: chess.system.identity.name.validator

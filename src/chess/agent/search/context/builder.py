@@ -18,7 +18,7 @@ from chess.agent import (
 )
 
 
-class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
+class TeamSearchContextBuilder(Builder[TeamSearchContext]):
     """
     # ROLE: Builder
 
@@ -74,7 +74,7 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
             *   NoTeamSearchOptionSelectedException
             *   MoreThanOneTeamSearchOptionPickedException
         """
-        method = "AgentTeamSearchContextBuilder.build"
+        method = "TeamSearchContextBuilder.build"
         
         try:
             params = [id, name, color]
@@ -134,7 +134,7 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
         # Raises:
             *   InvalidTeamSearchContextException
         """
-        method = "AgentTeamSearchContextBuilder.build_id_search_context"
+        method = "TeamSearchContextBuilder.build_id_search_context"
         
         try:
             id_validation = identity_service.validate_id(candidate=id)
@@ -176,7 +176,7 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
         # Raises:
             *   InvalidTeamSearchContextException
         """
-        method = "AgentTeamSearchContextBuilder.build_name_search_context"
+        method = "TeamSearchContextBuilder.build_name_search_context"
         
         try:
             name_validation = identity_service.validate_name(candidate=candidate)
@@ -218,7 +218,7 @@ class AgentTeamSearchContextBuilder(Builder[TeamSearchContext]):
         # Raises:
             *   InvalidTeamSearchContextException
         """
-        method = "AgentTeamSearchContextBuilder.build_color_search_context"
+        method = "TeamSearchContextBuilder.build_color_search_context"
         
         try:
             color_validation = color_validator.validate(candidate)

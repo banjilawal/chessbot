@@ -1,4 +1,4 @@
-# chess/system/validate/__init__.py
+# src/chess/system/validate/__init__.py
 
 """
 Module: chess.system.validate.__init__

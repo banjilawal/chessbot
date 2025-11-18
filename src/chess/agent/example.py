@@ -1,4 +1,4 @@
-# chess/board_validator/commander__init__.py
+# src/chess/board_validator/commander__init__.py
 
 """
 Module: `chess.agent`
@@ -35,7 +35,7 @@ ___
 ```
 ---
 """
-# chess/board_validator/commander__init__.py
+# src/chess/board_validator/commander__init__.py
 
 """
 Module: `chess.agent`
@@ -74,7 +74,7 @@ ___
 """
 
 from .agent import Agent
-from chess.agent.stack.history import CommandHistory
+from chess.agent.stack.stack import TeamStack
 
 from .validator import AgentValidator
 from .builder import PlayerAgentBuilder
@@ -88,7 +88,7 @@ __all__ = [
     'MachinePlayerAgent',
     'HumanPlayerAgent',
     'Agent',
-    'CommandHistory',
+    'TeamStack',
     'AgentValidator',
     'PlayerAgentBuilder',
     

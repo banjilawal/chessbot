@@ -1,4 +1,4 @@
-# chess/owner/stack/__init__.py
+# src/chess/owner/stack/__init__.py
 
 """
 Module: `chess.owner.stack`

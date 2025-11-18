@@ -1,4 +1,4 @@
-# chess/system/err/__init__.py
+# src/chess/system/err/__init__.py
 
 """
 Module: chess.system.err.__init__

@@ -10,14 +10,16 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import GameColor, Validator, IdentityService, GameColorValidator, ValidationResult, LoggingLevelRouter
+
 from chess.agent import (
     TeamSearchContext, InvalidTeamSearchContextException, NullTeamSearchContextException,
     MoreThanOneTeamSearchOptionPickedException, NoTeamSearchOptionSelectedException
 )
+from chess.system import (
+    GameColor, Validator, IdentityService, GameColorValidator, ValidationResult, LoggingLevelRouter
+)
 
-
-class TeamSearchContext(Validator):
+class TeamSearchContextValidator(Validator[TeamSearchContext]):
     """
     # ROLE: Validation
 

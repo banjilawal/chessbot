@@ -1,4 +1,4 @@
-# chess/board_validator/board_validator/square_iterator.py
+# src/chess/board_validator/board_validator/square_iterator.py
 
 """
 Module: `chess.board_validator.square_iterator`

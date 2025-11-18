@@ -7,69 +7,95 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.exception import ChessException, ValidationException, NullException
+
+from chess.system import ChessException, ValidationException, NullException
+
 
 __all__ = [
-  'CoordStackException',
+  "TeamStackException",
+  
+# ======================# NULL TEAM_STACK EXCEPTIONS #======================#
+  "NullTeamStackException",
+  
+# ======================# TEAM_STACK VALIDATION EXCEPTIONS #======================#
+  "InvalidTeamStackException",
 
-  'NullCoordStackException',
-  'CoordStackValidationException'
+# ======================# TEAM_STACK OPERATION EXCEPTIONS #======================#
+  "PoppingEmptyTeamStackException",
+  "PushingDuplicateTeamException",
+  "PushingNullException",
+
+# ======================# TEAM_STACK_SERVICE EXCEPTIONS #======================#
+  "TeamStackServiceException",
+
+# ======================# NULL TEAM_STACK_SERVICE EXCEPTIONS #======================#
+  "NullTeamStackServiceException",
+
+
+# ======================# TEAM_STACK VALIDATION EXCEPTIONS #======================#
+  "InvalidTeamStackServiceException",
 ]
 
-from chess.system import InconsistentCollectionException
 
-"""
-Super class for Piece exceptions
-"""
-class CoordStackException(InconsistentCollectionException):
+class TeamStackException(ChessException):
   """
-  Super class for exceptions raised by CoordStack objects
+  Super class for exceptions raised by TeamStack objects. DO NOT USE DIRECTLY. Subclasses
+  give more useful debugging messages.
   """
-  ERROR_CODE = "COORD_STACK_ERROR"
-  DEFAULT_MESSAGE = "CoordStack raised an rollback_exception."
-  
-  
-class CoordStakOperationException(CoordStackException):
-  pass
-  
-class CoordStackConsistencyException(CoordStackException, InconsistentCollectionException):
-  pass
+  ERROR_CODE = "TEAM_STACK_ERROR"
+  DEFAULT_MESSAGE = "TeamStack raised an exception."
 
 
-class PopEmptyStackException(CoordStackException):
-  """Raised when trying to pop from empty stack."""
-  ERROR_CODE = "POP_EMPTY_STACK_ERROR"
-  DEFAULT_MESSAGE = "Cannot pop from empty stack"
-
-class DuplicatePushException(CoordStackException):
-  """Raised when trying to push duplicate to stack that doesn'candidate allow duplicates."""
-  ERROR_CODE = "DUPLICATE_PUSH_ERROR"
-  DEFAULT_MESSAGE = "Cannot push duplicate item to stack"
+# ======================# NULL TEAM_STACK EXCEPTIONS #======================#
+class NullTeamStackException(TeamStackException, NullException):
+  """Raised if an entity, method, or operation requires TeamStack but gets null instead."""
+  ERROR_CODE = "NULL_TEAM_STACK_ERROR"
+  DEFAULT_MESSAGE = "TeamStack cannot be null."
 
 
-class NullCoordStackException(CoordStackException, NullException):
-  """Raised team_name CoordStack is null. A null CoordStack indicates team_name corrupted Piece state"""
-  ERROR_CODE = "NULL_COORD_STACK_ERROR"
-  DEFAULT_MESSAGE = f"CoordStack is null. This should never happen because Piece must always have team_name CoordStack"
+# ======================# TEAM_STACK VALIDATION EXCEPTIONS #======================#
+class InvalidTeamStackException(TeamStackException, ValidationException):
+  """Catchall Exception for TeamStackValidator when a validation candidate fails a sanity check."""
+  ERROR_CODE = "TEAM_STACK_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "TeamStack validation failed."
 
 
-class CoordStackValidationException(CoordStackException):
-  ERROR_CODE = "COORDINATE_STACK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"CoordinateStack validation failed."
+# ======================# TEAM_STACK OPERATION EXCEPTIONS #======================#
+class PoppingEmptyTeamStackException(TeamStackException):
+  """Raised when trying to pop from an empty TeamStack."""
+  ERROR_CODE = "POPPING_EMPTY_STACK_ERROR"
+  DEFAULT_MESSAGE = "Cannot pop from an empty TeamStack."
 
+class PushingDuplicateTeamException(TeamStackException):
+  """Raised when trying to push the same team onto the stack."""
+  ERROR_CODE = "PUSHING_DUPLICATE_TEAM_ERROR"
+  DEFAULT_MESSAGE = "Cannot push duplicate team onto the stack. All Teams must be unique."
 
-
-
-
-
-
-
-class PushNullException(CoordStackException):
+class PushingNullException(TeamStackException):
   """Raised when trying to push null item to stack."""
-  ERROR_CODE = "PUSH_NULL_ERROR"
-  DEFAULT_MESSAGE = "Cannot push null item to stack"
+  ERROR_CODE = "PUSHING_NULL_ERROR"
+  DEFAULT_MESSAGE = "Cannot push null item onto a TeamStack."
 
 
-class InconsistentCurrentCoordException(CoordStackException):
-  ERROR_CODE = "INCONSISTENT_CURRENT_COORD_ERROR"
-  DEFAULT_MESSAGE = "Current coordinate state is inconsistent"
+# ======================# TEAM_STACK_SERVICE EXCEPTIONS #======================#
+class TeamStackServiceException(ChessException):
+  """
+  Super class for exceptions raised by TeamStackService objects. DO NOT USE DIRECTLY. Subclasses
+  give more useful debugging messages.
+  """
+  ERROR_CODE = "TEAM_STACK_SERVICE_ERROR"
+  DEFAULT_MESSAGE = "TeamStackService raised an exception."
+
+
+# ======================# NULL TEAM_STACK_SERVICE EXCEPTIONS #======================#
+class NullTeamStackServiceException(TeamStackServiceException, NullException):
+  """Raised if an entity, method, or operation requires TeamStackService but gets null instead."""
+  ERROR_CODE = "NULL_TEAM_STACK_SERVICE_ERROR"
+  DEFAULT_MESSAGE = "TeamStackService cannot be null."
+
+
+# ======================# TEAM_STACK VALIDATION EXCEPTIONS #======================#
+class InvalidTeamStackServiceException(TeamStackServiceException, ValidationException):
+  """Catchall Exception for TeamStackServiceValidator when a validation candidate fails a sanity check."""
+  ERROR_CODE = "TEAM_STACK_SERVICE_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "TeamStackService validation failed."

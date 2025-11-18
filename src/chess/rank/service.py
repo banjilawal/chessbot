@@ -1,4 +1,4 @@
-# chess/rank/service.py
+# src/chess/rank/service.py
 
 """
 Module: chess.rank.service

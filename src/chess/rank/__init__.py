@@ -1,4 +1,4 @@
-# chess/rank/__init__.py
+# src/chess/rank/__init__.py
 
 """
 Module: chess.rank.__init__

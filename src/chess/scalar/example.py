@@ -1,4 +1,4 @@
-## chess/scalar/__init__.py
+# src/chess/scalar/__init__.py
 
 """
 Module: chess.scalar

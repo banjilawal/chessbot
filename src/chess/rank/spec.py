@@ -1,4 +1,4 @@
-# chess/rank/spec.py
+# src/chess/rank/spec.py
 
 """
 Module: chess.rank.spec

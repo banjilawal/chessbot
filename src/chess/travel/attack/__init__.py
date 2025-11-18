@@ -1,4 +1,4 @@
-# chess/travel/attack/__init__.py
+# src/chess/travel/attack/__init__.py
 
 """
 Module: `chess.travel.travel.attack`

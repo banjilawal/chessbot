@@ -1,4 +1,4 @@
-# chess/point/old_occupation_validator.py
+# src/chess/point/old_occupation_validator.py
 
 """
 Module: `chess.point.validator`

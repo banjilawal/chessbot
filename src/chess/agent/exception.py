@@ -1,7 +1,7 @@
 # src/chess/agent/exception.py
 
 """
-Module: chess.agent.agent_
+Module: chess.agent.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -71,7 +71,7 @@ class InconsistentCommandHistoryException(CommanderHistoryException, Inconsisten
 class PushNewTeamException(CommanderHistoryException):
   """Raised if team_name new team_name could not be pushed to commandHistory"""
   ERROR_CODE = "PUSH_NEW_TEAM_ERROR"
-  DEFAULT_MESSAGE = "Could not push team_name new team_name to CommandHistory."
+  DEFAULT_MESSAGE = "Could not push team_name new team_name to TeamStack."
 
 class UndoingPushTeamFailedException(CommanderHistoryException):
   """Raised if removing the current team_name failed"""
@@ -79,9 +79,9 @@ class UndoingPushTeamFailedException(CommanderHistoryException):
   DEFAULT_MESSAGE = "Could not undo the new team_name addition."
 
 class CannotRemoveOldTeamException(CommanderHistoryException):
-  """Raised if an attempt is made to remove an old team_name from CommandHistory"""
+  """Raised if an attempt is made to remove an old team_name from TeamStack"""
   ERROR_CODE = "REMOVE_OLD_TEAM_ERROR"
-  DEFAULT_MESSAGE = "Removing old teams from CommandHistory is not allowed."
+  DEFAULT_MESSAGE = "Removing old teams from TeamStack is not allowed."
 
 class InvalidCommanderAssignmentException(CommanderHistoryException):
   """

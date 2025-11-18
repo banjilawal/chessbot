@@ -1,4 +1,4 @@
-# chess/vector/__init__.py
+# src/chess/vector/__init__.py
 
 """
 Module: chess.vector.__init__

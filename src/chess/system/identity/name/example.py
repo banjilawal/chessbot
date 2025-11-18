@@ -1,4 +1,4 @@
-# chess/system/visitor_name/example.py
+# src/chess/system/visitor_name/example.py
 
 """
 Module: chess.system.visitor_name.example

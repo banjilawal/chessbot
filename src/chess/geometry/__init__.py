@@ -1,4 +1,4 @@
-# chess/geometry/__init__.py
+# src/chess/geometry/__init__.py
 
 """
 Module: chess.geometry

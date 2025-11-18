@@ -1,4 +1,4 @@
-# chess/bounds/__init__.py
+# src/chess/bounds/__init__.py
 
 """
 Module: `chess.bounds`

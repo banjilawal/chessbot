@@ -1,4 +1,4 @@
-# chess/square/__init__.py
+# src/chess/square/__init__.py
 
 """
 Module: chess.square.__init__

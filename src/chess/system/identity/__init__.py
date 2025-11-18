@@ -1,4 +1,4 @@
-# chess/system/identity/__init__.py
+# src/chess/system/identity/__init__.py
 
 """
 Module: chess.system.identity.__init__

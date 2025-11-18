@@ -1,4 +1,4 @@
-# chess/owner/discover/__init__.py
+# src/chess/owner/discover/__init__.py
 
 """
 Module: `chess.owner.discover`

@@ -81,7 +81,7 @@
 #     f"{method}: {SquareMisMatchesTravelResourceException.DEFAULT_MESSAGE}"
 #   ))
 
-# chess/owner/travel/base/validator/traveler/exception.py
+# src/chess/owner/travel/base/validator/traveler/exception.py
 
 """
 Module: `chess.owner.travel.base.validator.traveler.exception`

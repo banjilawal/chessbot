@@ -1,4 +1,4 @@
-# chess/agenet/search/exception.py
+# src/chess/agent/search/exception.py
 
 """
 Module: chess.agent.search.exception

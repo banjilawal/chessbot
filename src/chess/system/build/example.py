@@ -1,4 +1,4 @@
-# chess/system/build/example.py
+# src/chess/system/build/example.py
 
 """
 Module: chess.system.build.example

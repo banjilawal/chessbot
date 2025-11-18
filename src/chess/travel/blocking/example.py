@@ -1,4 +1,4 @@
-# chess/travel/travel/blocking/__init__.py
+# src/chess/travel/travel/blocking/__init__.py
 
 """
 Module: `chess.travel.travel.blocking`

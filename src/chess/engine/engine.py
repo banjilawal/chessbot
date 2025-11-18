@@ -1,4 +1,4 @@
-# chess/engine/engine.py
+# src/chess/engine/engine.py
 
 """
 Module: `chess.engine.engine`

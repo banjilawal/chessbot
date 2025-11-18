@@ -1,4 +1,4 @@
-# chess/system/build/result.py
+# src/chess/system/build/result.py
 
 """
 Module: chess.system.build.result

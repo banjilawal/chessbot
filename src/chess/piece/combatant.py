@@ -1,4 +1,4 @@
-# chess/piece/combatant.py
+# src/chess/piece/combatant.py
 
 """
 Module: chess.piece.combatant

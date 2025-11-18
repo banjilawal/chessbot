@@ -1,4 +1,4 @@
-# chess/geometry/quadrant.py
+# src/chess/geometry/quadrant.py
 
 """
 Module: chess.geometry.quadrant
