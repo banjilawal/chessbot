@@ -13,8 +13,8 @@ from .search import *
 from .exception import *
 
 from .agent import Agent
-from .human import HumanPlayerAgent
-from .machine import MachinePlayerAgent
+from .human import HumanAgent
+from .machine import MachineAgent
 from .builder import AgentBuilder
 from .validator import AgentValidator
 

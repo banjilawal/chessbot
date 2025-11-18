@@ -14,8 +14,8 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `Agent`: Abstract class.
-  - `HumanPlayerAgent`: Concrete `subclass` of `Agent` people use.
-  - `MachinePlayerAgent`: Concrete `subclass` of `Agent` that uses team_name `DecisionEngine`.
+  - `HumanAgent`: Concrete `subclass` of `Agent` people use.
+  - `MachineAgent`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
   - `AgentBuilder`: Builds new instances of `Agent`.
   - `AgentValidator`: Performs validator and sanity checks on existing
       `Agent` instances. before they are used.
@@ -51,8 +51,8 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
   - `Agent`: Abstract class.
-  - `HumanPlayerAgent`: Concrete `subclass` of `Agent` people use.
-  - `MachinePlayerAgent`: Concrete `subclass` of `Agent` that uses team_name `DecisionEngine`.
+  - `HumanAgent`: Concrete `subclass` of `Agent` people use.
+  - `MachineAgent`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
   - `AgentBuilder`: Builds new instances of `Agent`.
   - `AgentValidator`: Performs validator and sanity checks on existing
       `Agent` instances. before they are used.
@@ -85,8 +85,8 @@ __package_name__ = 'chess.agent'
 
 __all__ = [
     # Core classes
-    'MachinePlayerAgent',
-    'HumanPlayerAgent',
+    'MachineAgent',
+    'HumanAgent',
     'Agent',
     'TeamStack',
     'AgentValidator',
@@ -167,17 +167,17 @@ Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
 
- Provides: Automated player that uses team_name `DecisionEngine` for picking optimal
+ Provides: Automated player that uses team_name `Engine` for picking optimal
   move during team_name turn.
 
 Contains:
- * `MachinePlayerAgent`
+ * `MachineAgent`
 """
 """
-Automated player that uses team_name `DecisionEngine`
+Automated player that uses team_name `Engine`
 
 Attributes: [
-  * `_engine` (`DecisionEngine`): Selects the optimal during its turn.
+  * `_engine` (`Engine`): Selects the optimal during its turn.
   * All attributes fro the super class.
 move during team_name turn.
 """

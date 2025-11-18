@@ -10,9 +10,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.engine import DecisionEngine
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
-from chess.agent import Agent, HumanPlayerAgent, MachinePlayerAgent, PlayerAgentBuildFailed, TeamStackService
+
+from chess.engine.service import EngineService
+from chess.agent import Agent, HumanAgent, MachineAgent, AgentBuildFailed, TeamStackService
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult
+
 
 
 class AgentBuilder(Builder[Agent]):
@@ -37,22 +39,22 @@ class AgentBuilder(Builder[Agent]):
             cls,
             id: int,
             name: str,
-            engine: Optional[DecisionEngine] = None,
             identity_service: IdentityService = IdentityService(),
             team_stack_service: TeamStackService=TeamStackService(),
+            engine_service: Optional[EngineService] = None,
     ) -> BuildResult[Agent]:
         """
         # ACTION:
-        1.  Run safety checks on id and name with identity_service checks with identity_service.
-        2.  If any checks fail, send their exception to the caller in a BuildResult.
-        3.  When all checks pass, create a new Agent object then send to the caller in a BuildResult.
+        1.  Call _validate_build_params. to verify inputs are safe.
+        2.  If the _validate params returns failure include the failure in a BuildResult.
+        3.  If the engine is not null call build_machine_agent. Otherwise, call build_human_agent.
 
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   engine (Optional[DecisionEngine])
             *   identity_service (IdentityService)
-            *   team_stack_service (teamStackService])
+            *   team_stack_service (teamStackService)
+            *   engine_service (Optional[EngineService])
 
         # Returns:
         ValidationResult[TeamStackService] containing either:
@@ -65,34 +67,82 @@ class AgentBuilder(Builder[Agent]):
         method = "AgentBuilder.build"
         
         try:
-            # id_validation = IdValidator.validate(commander_id)
-            # if not id_validation.is_success():
-            #   LoggingLevelRouter.throw_if_invalid(AgentBuilder, id_validation.err)
-            name_validation = NameValidator.validate(name)
-            if not name_validation.is_success():
-                LoggingLevelRouter.log_and_raise_error(AgentBuilder, name_validation.exception)
+            params_validation = cls._validate_params(
+                id=id,
+                name=name,
+                identity_service=identity_service,
+            )
             
-            if engine is not None and not isinstance(engine, DecisionEngine):
-                error = TypeError(f"Expected agent_name Decision, but got {type(engine).__name__}.")
-                LoggingLevelRouter.log_and_raise_error(AgentBuilder, error)
+            if engine_service is not None:
+                return cls._build_machine_agent(
+                    id=id,
+                    name=name,
+                    identity_service=identity_service,
+                    team_stack_service=team_stack_service,
+                    engine_service=engine_service,
+                )
             
-            if engine is not None and isinstance(engine, DecisionEngine):
-                return BuildResult(payload=Bot(name=name, engine=engine))
-            
-            # If no engine is provided and all the checks are passed, agent_name HumanPlayerAgent agent is returned
-            return BuildResult(payload=Human(name=name))
+            return cls.build_human_agent(
+                id=id,
+                name=name,
+                identity_service=identity_service,
+                team_stack_service=team_stack_service,
+            )
         
-        except (
-                TypeError,
-                InvalidNameException
-        ) as e:
-            raise CommanderBuildFailedException(f"{method}: {e}") from e
+        except Exception as ex:
+            return BuildResult.failure(
+                AgentBuildFailedException(
+                    f"{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )
         
-        # Catch any unexpected errors with details about type and message
-        except Exception as e:
-            raise CommanderBuildFailedException(
-                f"{method}: Unexpected error ({type(e).__name__}): {e}"
-            ) from e
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _build_machine_agent(
+            cls,
+            id: int,
+            name: str,
+            identity_service: IdentityService = IdentityService(),
+            team_stack_service: TeamStackService = TeamStackService(),
+            engine_service: EngineService = EngineService(),
+    ) -> BuildResult[MachineAgent]:
+        try:
+            param_validation = cls._validate_params(id=id, name=name, identity_service=identity_service)
+            if param_validation.is_failure():
+                return BuildResult.failure(param_validation.exception)
+            
+            return BuildResult.success(
+                MachineAgent(
+                    id=id,
+                    name=name,
+                    team_stack_service=team_stack_service,
+                    engine_service=engine_service
+                )
+            )
+        except Exception as ex:
+            return BuildResult.failure(
+                AgentBuildFailedException(
+                    "f{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
+                    ex
+                )
+            )
+        
+        
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _validate_params(
+            cls,
+            id: int,
+            name: str,
+            identity_service: IdentityService
+    ) -> ValidationResult[(int, str)]:
+        try:
+            return identity_service.validate_identity(id_candidate=id, name_candidate=name)
+        except Exception as ex:
+            return ValidationResult.failure(ex)
 #
 #
 # def main():

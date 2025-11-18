@@ -3,13 +3,13 @@ from typing import Optional
 from chess.board.board import Board
 from chess.engine.analyze.board_analysis import BoardAnalysis
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
-from chess.engine.engine import DecisionEngine
+from chess.engine.engine import Engine
 
 from chess.coord import Coord
 from chess.competitor.commander import CyberneticCommander
 
 
-class GreedyDecisionEngine(DecisionEngine):
+class GreedyEngine(Engine):
   _board_analysis: BoardAnalysis
 
   def __init__(self, engine_id: int, board_analyzer: BoardAnalyzer = BoardAnalyzer()):

@@ -18,12 +18,18 @@ from chess.agent import TeamStack, TeamStackService
 class Agent(ABC):
     _id: int
     _name: str
+    _current_team: Optional[Team]
     _team_stack_service: TeamStackService
     
-    def __init__(self, id: int, name: str):
+    def __init__(
+            self,
+            id: int,
+            name: str,
+            team_stack_service: TeamStackService = TeamStackService()
+    ):
         self._id = id
         self._name = name
-        self._team_stack_service = TeamStackService()
+        self._team_stack_service = team_stack_service
         self._current_team = self._team_stack_service.current_team
     
     @property
@@ -34,13 +40,13 @@ class Agent(ABC):
     def name(self) -> str:
         return self._name
     
-    @_name.setter
+    @name.setter
     def name(self, name: str):
         self._name = name
     
     @property
-    def team_assignments(self) -> TeamStack:
-        return self._team_assignments
+    def team_stack_service(self) -> TeamStackService:
+        return self._team_stack_service
     
     @property
     def current_team(self) -> Optional[Team]:

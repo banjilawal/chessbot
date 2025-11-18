@@ -2,8 +2,8 @@ from enum import Enum
 from typing import Optional
 
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
-from chess.engine.engine import DecisionEngine
-from chess.engine.greedy import GreedyDecisionEngine
+from chess.engine.engine import Engine
+from chess.engine.greedy import GreedyEngine
 from chess.randomize.competitor import RandomName
 
 
@@ -11,7 +11,7 @@ class DecisionMode(Enum):
   def __new__(
     cls,
     name: str,
-    decision_engine: Optional[DecisionEngine] = None,
+    decision_engine: Optional[Engine] = None,
     board_analyzer: Optional[BoardAnalyzer] = None
   ):
     obj = object.__new__(cls)
@@ -22,12 +22,12 @@ class DecisionMode(Enum):
   HUMAN = (None, None, None,)
   MACHINE = (
     RandomName.cybernaut(),
-    GreedyDecisionEngine(engine_id=id_emitter.engine_id),
+    GreedyEngine(engine_id=id_emitter.engine_id),
     BoardAnalyzer()
   )
 
   @property
-  def decision_engine(self) -> DecisionEngine:
+  def decision_engine(self) -> Engine:
     return self._decision_engine
 
   @property

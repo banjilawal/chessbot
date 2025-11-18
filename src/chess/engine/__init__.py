@@ -11,13 +11,13 @@ Contains implementations of optimization algorithms that old_search the graph of
 the current `Board` to find the best move.
 
  NOTES:
-   Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one DecisionEngine
-   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachinePlayerAgent.
+   Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one Engine
+   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachineAgent.
 
  # EXPORTS
 This package exposes core classes and all exceptions from its sub-modules:
-  - `DecisionEngine`: Abstract super class defining shared traits and behaviors of engines.
-  - `GreedyDecisionEngine`: `DecisionEngine` that uses team_name greedy algorithm
+  - `Engine`: Abstract super class defining shared traits and behaviors of engines.
+  - `GreedyEngine`: `Engine` that uses team_name greedy algorithm
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
@@ -37,8 +37,8 @@ ___
 """
 
 from .exception import *
-from .engine import DecisionEngine
-from .greedy import GreedyDecisionEngine
+from .engine import Engine
+from .greedy import GreedyEngine
 
 
 # Package metadata (organic to __init__.py)
@@ -49,8 +49,8 @@ __package_name__ = 'chess.engine'
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  'DecisionEngine',
-  'GreedyDecisionEngine',
+  'Engine',
+  'GreedyEngine',
 
   *exception.__all__,
 

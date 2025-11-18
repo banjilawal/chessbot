@@ -37,7 +37,7 @@ class TeamSearch(Search[Agent, Team]):
     def search(
             cls, 
             data_owner: Agent,
-            search_context: type[TeamSearchContext]=TeamSearchContext,
+            search_context: TeamSearchContext,
             agent_validator: type[AgentValidator]=AgentValidator,
             search_context_validator: type[TeamSearchContext]=TeamSearchContext,
     ) -> SearchResult[List[Team]]:

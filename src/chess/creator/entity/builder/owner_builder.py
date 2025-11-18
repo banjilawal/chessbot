@@ -2,7 +2,7 @@ import random
 
 from chess.system.identity.id import id_emitter
 from chess.engine.analyze.board_analyzer import BoardAnalyzer
-from chess.engine.greedy import GreedyDecisionEngine
+from chess.engine.greedy import GreedyEngine
 from chess.competitor.commander import CyberneticCommander
 from chess.competitor.commander import HumanCommander
 from chess.competitor.commander import Commander
@@ -14,7 +14,7 @@ class OwnerBuilder:
   @staticmethod
   def build(owner_id: int) -> Commander:
     if random.random() < 0.46:
-      decision_engine = GreedyDecisionEngine(
+      decision_engine = GreedyEngine(
         engine_id=owner_id,
         board_analyzer=BoardAnalyzer()
       )

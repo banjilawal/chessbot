@@ -71,8 +71,8 @@ class PieceSearchContextValidator(Validator):
 #
 # def main():
 #
-#   from chess.agent.agent import HumanPlayerAgent
-#   person = HumanPlayerAgent(1, "person")
+#   from chess.agent.agent import HumanAgent
+#   person = HumanAgent(1, "person")
 #
 #   from chess.team_name import Team
 #   team_name = Team(visitor_team_id=1, controller=person, schema=TeamProfile.BLACK)

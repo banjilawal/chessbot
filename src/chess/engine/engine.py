@@ -10,12 +10,12 @@ Provides:
 Interface to implement pluggable optimization algorithms during team_name turn or the duration of the game.
 
 Contains:
- * `DecisionEngine`
+ * `Engine`
 
 
  NOTES:
-   Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one DecisionEngine
-   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachinePlayerAgent.
+   Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one Engine
+   actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachineAgent.
 """
 
 
@@ -29,7 +29,7 @@ from chess.coord import Coord
 
 
 
-class DecisionEngine(ABC):
+class Engine(ABC):
   """
   Interface implemented by selectors of optimization engines for `BotCommander`.
 
@@ -66,7 +66,7 @@ class DecisionEngine(ABC):
   @abstractmethod
   def decide_destination(
       self,
-      cybernaut: 'MachinePlayerAgent',
+      cybernaut: 'MachineAgent',
       chess_board: Board
   ) -> Optional[Coord]:
     pass

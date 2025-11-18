@@ -6,28 +6,37 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
-class MachinePlayerAgent(PlayerAgent):
 
 
-  _engine: DecisionEngine
+from chess.agent import Agent, TeamStackService
+from chess.engine.service import EngineService
 
-  def __init__(self, id: int, name: str,engine: DecisionEngine):
-    super().__init__(id, name)
-    self._engine = engine
+
+class MachineAgent(Agent):
+  _engine_service: EngineService
+
+  def __init__(
+          self,
+          id: int,
+          name: str,
+          team_stack_service: TeamStackService = TeamStackService(),
+          engine_service: EngineService = EngineService(),
+  ):
+    super().__init__(id=id, name=name, team_stack_service=team_stack_service)
+    self._engine_service = engine_service
 
   @property
-  def engine(self) -> DecisionEngine:
-    return self._engine
-
+  def engine_service(self) -> EngineService:
+    return self._engine_service
 
   def __eq__(self, other):
     if super().__eq__(other):
-      if isinstance(other, MachinePlayerAgent):
+      if isinstance(other, MachineAgent):
         return True
     return False
 
   def __hash__(self):
-    return hash(self.id)
+    return super.__hash__()
 
   def __str__(self):
     return f"{super().__str__()} engine:{self._engine.__class__.__name__.title()}"

@@ -11,4 +11,5 @@ from .context import *
 from .exception import *
 
 from .search import TeamSearch
+from .service import TeamSearchService
 
