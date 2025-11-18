@@ -19,6 +19,9 @@ __all__ = [
   
 # ======================# TEAM_STACK VALIDATION EXCEPTIONS #======================#
   "InvalidTeamStackException",
+  "TeamStackSizeConflictException",
+  "InconsistentCurrentTeamException",
+  "CorruptedTeamStackException",
 
 # ======================# TEAM_STACK OPERATION EXCEPTIONS #======================#
   "PoppingEmptyTeamStackException",
@@ -60,6 +63,24 @@ class InvalidTeamStackException(TeamStackException, ValidationException):
   DEFAULT_MESSAGE = "TeamStack validation failed."
 
 
+class TeamStackSizeConflictException(TeamStackException, ValidationException):
+  """Raised if team_stack.size and team_stack.is_empty() contradict each other."""
+  ERROR_CODE = "TEAM_STACK_SIZE_CONFLICT_ERROR"
+  DEFAULT_MESSAGE = "TeamStack.size and TeamStack.is_empty() give contradictory results."
+
+
+class InconsistentCurrentTeamException(TeamStackException, ValidationException):
+  """Raised if team_stack.current_team is not null but the stack is empty or vice versa."""
+  ERROR_CODE = "INCONSISTENT_CURRENT_TEAM_ERROR"
+  DEFAULT_MESSAGE = "The TeamStack.current_team contradicts the stack's emptyness state."
+
+
+class CorruptedTeamStackException(TeamStackException, ValidationException):
+  """RAised if the list is null. That is TeamStack.items is null"""
+  ERROR_CODE = "CORRUPTED_TEAM_STACK_ERROR"
+  DEFAULT_MESSAGE = "TeamStack.items is null. There is inconsistent data in the system."
+
+
 # ======================# TEAM_STACK OPERATION EXCEPTIONS #======================#
 class PoppingEmptyTeamStackException(TeamStackException):
   """Raised when trying to pop from an empty TeamStack."""
@@ -99,3 +120,6 @@ class InvalidTeamStackServiceException(TeamStackServiceException, ValidationExce
   """Catchall Exception for TeamStackServiceValidator when a validation candidate fails a sanity check."""
   ERROR_CODE = "TEAM_STACK_SERVICE_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "TeamStackService validation failed."
+
+
+
