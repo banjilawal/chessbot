@@ -10,6 +10,8 @@ from typing import cast, Any
 
 
 from chess.agent import PlayerAgentService
+from chess.king import KingPiece
+from chess.piece import CombatantPiece, Piece, PieceValidator
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
     InvalidTeamException, NullTeamException, Team, TeamNotRegisteredWithAgentException, TeamSchemaValidator
@@ -113,3 +115,71 @@ class TeamValidator(Validator[Team]):
                     f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}",
                     ex)
             )
+        
+        
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def piece_bound_to_team_roster(
+            cls,
+            team: Team,
+            piece: Piece,
+            piece_validator: type[PieceValidator] = PieceValidator
+    ) -> ValidationResult[(Team, Piece)]:
+        try:
+            team_validation = cls.validate(team)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
+            
+            piece_validation = piece_validator.validate(piece)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            if piece.team != team:
+                return ValidationResult.failure()
+                
+            if (
+                    (isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is not None) or
+                    isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated
+                ):
+                return ValidationResult.failure()
+            
+            if piece not in team.roster:
+                return ValidationResult.failure()
+            
+            return ValidationResult.success((team, piece))
+        except Exception as ex:
+            return ValidationResult.failure(ex)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def piece_bound_to_team_hostages(
+            cls,
+            team: Team,
+            piece: Piece,
+            piece_validator: type[PieceValidator] = PieceValidator
+    ) -> ValidationResult[(Team, Piece)]:
+        try:
+            team_validation = cls.validate(team)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
+            
+            piece_validation = piece_validator.validate(piece)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            if piece.team == team:
+                return ValidationResult.failure()
+            
+            if (
+                    (isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is None) or
+                    isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated
+            ):
+                return ValidationResult.failure()
+            
+            if piece not in team.hostages:
+                return ValidationResult.failure()
+            
+            return ValidationResult.success((team, piece))
+        except Exception as ex:
+            return ValidationResult.failure(ex)

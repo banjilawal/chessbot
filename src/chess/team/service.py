@@ -1,11 +1,12 @@
-# src/chess/team_name/service.py
+# src/chess/team/service.py
 
 """
-Module: chess.team_name.service
+Module: chess.team.service
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-10-31
 version: 1.0.0
 """
+
 from typing import Any, cast
 
 from chess.agent import Agent

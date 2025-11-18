@@ -1,7 +1,7 @@
-# src/chess/team_name/factory.py
+# src/chess/team/builder.py
 
 """
-Module: chess.team_name.builder
+Module: chess.team.builder
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
