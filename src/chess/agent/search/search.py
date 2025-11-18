@@ -17,17 +17,16 @@ from chess.agent import (
 )
 
 
-class AgentTeamSearchSearch(Search[Agent, Team]):
+class TeamSearch(Search[Agent, Team]):
     """
-    # ROLE: Builder implementation
+    # ROLE: Search
   
     # RESPONSIBILITIES:
-    1. Process and validate parameters for creating `Agent` instances.
-    2. Create new `Agent` objects if parameters meet specifications.
-    2. Report errors and return `BuildResult` with error details.
+    1.  Search an Agent.team_assignments for items whose attribute matches the value in
+        TeamsSearchContext function param.
   
     # PROVIDES:
-    `BuildResult`: Return type containing the built `Agent` or error information.
+    TeamSearch:
   
     # ATTRIBUTES:
     None
@@ -42,7 +41,7 @@ class AgentTeamSearchSearch(Search[Agent, Team]):
             agent_validator: type[AgentValidator]=AgentValidator,
             search_context_validator: type[TeamSearchContext]=TeamSearchContext,
     ) -> SearchResult[List[Team]]:
-        method = "AgentTeamSearchSearch.search"
+        method = "TeamSearch.search"
 
         data_owner_validation = agent_validator.validate(data_owner)
         if data_owner_validation.is_failure():
@@ -65,7 +64,7 @@ class AgentTeamSearchSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _id_search(cls, data_owner: Agent, id: int) -> SearchResult[List[Team]]:
-        method = "AgentTeamSearchSearch._id_search"
+        method = "TeamSearch._id_search"
         try:
             matches = [team for team in data_owner.teams if team.id == id]
             if len(matches) == 0:
@@ -86,7 +85,7 @@ class AgentTeamSearchSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _name_search(cls, data_owner: Agent, name: str) -> SearchResult[List[Team]]:
-        method = "AgentTeamSearchSearch._name_search"
+        method = "TeamSearch._name_search"
         try:
             matches = [
                 team for team in data_owner.team_assignments if team.schema.name.upper() == name.upper()
@@ -103,7 +102,7 @@ class AgentTeamSearchSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _color_search(cls, data_owner: Agent, color: GameColor) -> SearchResult[List[Team]]:
-        method = "AgentTeamSearchSearch._color_search"
+        method = "TeamSearch._color_search"
         try:
             matches = [
                 team for team in data_owner.team_assignments if team.schema.color == color
@@ -126,7 +125,7 @@ class AgentTeamSearchSearch(Search[Agent, Team]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_ids(cls, matches: List[Team], data_owner: Agent) -> SearchResult[List[Team]]:
-        method = "AgentTeamSearchSearch._resolve_matching_ids"
+        method = "TeamSearch._resolve_matching_ids"
         target = matches.pop()
         misses = [team for team in matches if team.id == target.id and (
                 team.schema.name.upper() != target.name.upper() or team.schema.color != target.schema.color
