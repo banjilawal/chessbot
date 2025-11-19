@@ -213,7 +213,7 @@ class BoardSearchContextValidator(Validator):
         Verify a coord_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
-            *   candidate (Any):                        Object to verify is a coord.
+            *   candidate (Any):                        Object to verify is a target.
             *   name_validator (type[CoordValidator]):  Checks if candidate complies with safety contract.
 
         # Returns:

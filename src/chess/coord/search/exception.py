@@ -1,16 +1,16 @@
-# src/chess/coord/search/exception.py
+# src/chess/target/search/exception.py
 
 """
-Module: chess.coord.search.exception
+Module: chess.target.search.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
 """
 
-# src/coord/search/context/exception.py
+# src/target/search/context/exception.py
 
 """
-Module: chess.coord.search.context.exception
+Module: chess.target.search.context.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

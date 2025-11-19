@@ -44,15 +44,15 @@ class SquareBuilder(Builder[Square]):
         """
         # ACTION:
         1.  Run identity-integrity checks with identity_service.
-        2.  Ron coord-integrity checks with coord_service.
+        2.  Ron target-integrity checks with coord_service.
         3.  If any checks fail, send their exception to the caller in a BuildResult.
         4.  When all checks pass, create a new Square object then send to the caller in a BuildResult.
     
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   coord (coord)
-            *   coord_service (type[CoordService]): validates coord.
+            *   target (target)
+            *   coord_service (type[CoordService]): validates target.
             *   identity_service (type[IdentityService]): validates id and name.
     
         # Returns:

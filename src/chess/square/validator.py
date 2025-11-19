@@ -47,7 +47,7 @@ class SquareValidator(Validator[Square]):
         1.  Check candidate is not null.
         2.  Check if candidate is a Square.
         3.  Run id and name integrity checks with identity_service
-        4.  Run coord integrity checks with coord_service.
+        4.  Run target integrity checks with coord_service.
         5  If any check fails, return the exception inside a ValidationResult.
         3.  When all checks pass cast candidate to a Square instance, then return inside a ValidationResult.
 
@@ -135,7 +135,7 @@ class SquareValidator(Validator[Square]):
         # ACTION:
         1.  SquareValidator.validate runs integrity checks on square_candidate.
         2.  piece_service verifies piece_candidate is an active piece on the board.
-        3.  After casting the candidates into square and piece test square.coord == piece.current_position.
+        3.  After casting the candidates into square and piece test square.target == piece.current_position.
         4.  Test square.occupant == piece.
         5   If any check fails, return the exception inside a ValidationResult.
         6.  When all pass tuple(square, piece) to sender in a ValidationResult.

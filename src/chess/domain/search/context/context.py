@@ -80,7 +80,7 @@ class ResidentFilter(SearchContext):
             "id": self._id,
             "name": self._name,
             "ransom": self._ransom,
-            "coord": self._coord,
+            "target": self._coord,
             "rank_name": self._rank_name,
             "team_id": self.team_id,
             "team_name": self._team_name

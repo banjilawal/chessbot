@@ -1,7 +1,7 @@
-# src/chess/coord/search/context/factory.py
+# src/chess/target/search/context/factory.py
 
 """
-Module: chess.coord.search.context.builder
+Module: chess.target.search.context.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -54,7 +54,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
         # Parameters:
             * row (Optional[int]): selected if search target is an id.
             * column (Optional[int]): selected if search target is a column.
-            * coord (Optional[Coord]): selected if search target is a coord.
+            * target (Optional[Coord]): selected if search target is a target.
             * coord_validator (type[CoordValidator]): validates an id-search-target
 
         # Returns:
@@ -189,10 +189,10 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
     ) -> BuildResult[CoordSearchContext]:
         """
         # Action:
-        Build a coord-CoordSearchContext if CoordValidator verifies search target is safe.
+        Build a target-CoordSearchContext if CoordValidator verifies search target is safe.
 
         # Parameters:
-          * coord (Coord): target Coord
+          * target (Coord): target Coord
           * coord_validator (type[CoordValidator]): validates target.
 
         # Returns:

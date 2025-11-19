@@ -1,7 +1,7 @@
-# src/chess/coord/factory.py
+# src/chess/target/factory.py
 
 """
-Module: chess.coord.builder
+Module: chess.target.builder
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0

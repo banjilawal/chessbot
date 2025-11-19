@@ -67,7 +67,7 @@ class InvalidPieceSquareRelationException(SquareException, PieceException, Incon
 class SquareAndPieceMismatchedCoordException(SquareException, PieceException):
     """Raised if a Piece needs to occupy a Square before they are used together."""
     ERROR_CODE = "SQUARE_AND_PIECE_COORD_MISMATCH_ERROR"
-    DEFAULT_MESSAGE = "Square and Piece do not share a coord. They do not have a relationship."
+    DEFAULT_MESSAGE = "Square and Piece do not share a target. They do not have a relationship."
 
 
 class PieceInconsistentSquareOccupationException(SquareException, PieceException, InconsistencyException):

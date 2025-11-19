@@ -33,7 +33,7 @@ class SquareService:
         *   square_builder (type[SquareBuilder]): produces safe Coord objects.
         *   square_validator (type[SquareValidator]): ensures existing Coord objects are safe.
 
-        *   coord_service (type[CoordService): Manages integrity of the Square's coord attributes
+        *   coord_service (type[CoordService): Manages integrity of the Square's target attributes
         *   identity_service (type[IdentityService]): Manages integrity of Square's id and name attributes.
         *   piece_service (type[PieceService]): Tests Piece is actionable for in Piece-Square binding checks.
     """
@@ -113,15 +113,15 @@ class SquareService:
     def validate_piece_square_binding(self, coord: Coord, vector: Vector) -> BuildResult[(Square, Piece)]:
         """
         # Action:
-        1.  square_validator runs integrity checks on the coord param.
+        1.  square_validator runs integrity checks on the target param.
         2.  identity_service runs integrity checks on the vector param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and vector params are valid:
-                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        4.  If target and vector params are valid:
+                new_row, new_colum = target.row + vector.y, target.column + vector.x
         5.  Run build_square(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord(Coord):
+            *   target(Coord):
             *   vector (Vector):
 
         # Returns:
@@ -158,15 +158,15 @@ class SquareService:
     def dot_product(self, coord: Coord, vector: Vector) -> BuildResult[Square]:
         """
         # Action:
-        1.  square_validator runs integrity checks on the coord param.
+        1.  square_validator runs integrity checks on the target param.
         2.  identity_service runs integrity checks on the vector param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and vector params are valid:
-                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        4.  If target and vector params are valid:
+                new_row, new_colum = target.row + vector.y, target.column + vector.x
         5.  Run build_square(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord(Coord):
+            *   target(Coord):
             *   vector (Vector):
 
         # Returns:
@@ -203,15 +203,15 @@ class SquareService:
     def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar) -> BuildResult[Square]:
         """
         # Action:
-        1.  square_validator runs integrity checks on the coord param.
+        1.  square_validator runs integrity checks on the target param.
         2.  coord_service runs integrity checks on the scalar param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and scalar params are valid:
-                new_row, new_colum = coord.row * scalar.value, coord.column * scalar.value
+        4.  If target and scalar params are valid:
+                new_row, new_colum = target.row * scalar.value, target.column * scalar.value
         5.  Run build_square(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord (Coord):
+            *   target (Coord):
             *   scalar (Scalar):
 
         # Returns:

@@ -1,7 +1,7 @@
-# src/chess/coord/search/service.py
+# src/chess/target/search/service.py
 
 """
-Module: chess.coord.search.service
+Module: chess.target.search.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/coord/stack/service/service.py
+# src/chess/target/stack/service/service.py
 
 """
-Module: chess.coord.stack.service.service
+Module: chess.target.stack.service.service
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -44,7 +44,7 @@ class CoordStackService:
         *   stack (CoordStack):                                 The stack of Coord objects. Protected
                                                                 from direct access.
                                                                 
-        *   current_coord (Coord):                              Shows the current coord on the stack.
+        *   current_coord (Coord):                              Shows the current target on the stack.
         
         *   coord_service (CoordService):                       Validates Coord objects before pushing them
                                                                 onto the stack.
@@ -108,10 +108,10 @@ class CoordStackService:
         1.  Verify the stack is not empty.
         2.  Make sure pops_per_turn is zero.
         3.  Validate the Coord is safe to push.
-        4.  Make sure the coord does not already at the top of the stack.
+        4.  Make sure the target does not already at the top of the stack.
         5.  If any check fails, return the exception inside a Result.
-        6.  Pussh the new coord ontop of the stack.
-        8.  Return the pushed coord in a Result to show success.
+        6.  Pussh the new target ontop of the stack.
+        8.  Return the pushed target in a Result to show success.
 
         # PARAMETERS:
         None
@@ -123,6 +123,7 @@ class CoordStackService:
 
         # RAISES:
             *   DoubleCoordPushException
+            *   CoordStackServiceException
         """
         method = "CoordStackService.push_coord"
         
@@ -160,7 +161,7 @@ class CoordStackService:
         5.  If any check fails, return the exception inside a Result.
         6.  Pop current_position from the stack.
         7.  Increment pops_per_turn.
-        8.  Return the pushed coord in a Result.
+        8.  Return the pushed target in a Result.
 
         # PARAMETERS:
         None
@@ -173,6 +174,7 @@ class CoordStackService:
         # RAISES:
             *   PoppingEmptyCoordStackException
             *   CannotUndoPreviousTurnException
+            *   CoordStackServiceException
         """
         method = "CoordStackService.undo_push"
         
@@ -206,18 +208,127 @@ class CoordStackService:
                 )
             )
     
-    def find_coord(self, coord) -> SearchResult[Coord]:
+    def find_coord(self, target: Coord) -> SearchResult[[Coord]]:
+        """
+        # ACTION:
+        1.  Verify target is safe with CoordStackService.coord_service.
+        2.  If the check fails, return the exception inside a SearchResult.
+        3.  Return the first hit found in an array for consistency with other Search flow.
+        4.  If no match is found return an empty SearchResult.
+
+        # PARAMETERS:
+            * target (Coord):   Coord to search for.
+
+        # Returns:
+        SearchResult[Coord] containing either:
+            - On getting a hit:     Coord in the payload.
+            - On getting no hit:    Empty SearchResult.
+            - On failure:           Exception.
+
+        # RAISES:
+            *   CoordStackServiceException
+        """
         method = "CoordStackService.find_coord"
         
         try:
-            coord_validation = self._coord_service.validate_as_coord(coord)
+            coord_validation = self._coord_service.validator.validate(target)
             if coord_validation.is_failure():
                 return SearchResult.failure(coord_validation.exception)
             
-            for coord in self._stack.items:
-                if coord == coord:
-                    return SearchResult.success(coord)
+            for target in self._stack.items:
+                if target == target:
+                    return SearchResult.success([target])
             return SearchResult.empty()
+        
+        except Exception as ex:
+            return SearchResult.failure(
+                CoordStackServiceException(
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{CoordStackServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    def find_coord_by_row(self, target: int) -> SearchResult[[Coord]]:
+        """
+        # ACTION:
+        1.  Use CoordStackService.coord_service to verify target meets safety requirements
+            for a Coord.row attribute.
+        2.  If the check fails, return the exception inside a SearchResult.
+        3.  Return all Coords with a matching row attribute.
+        4.  If no match is found return an empty SearchResult.
+
+        # PARAMETERS:
+            * target (int):   row to search for.
+
+        # Returns:
+        SearchResult[[Coord]] containing either:
+            - On getting a hit:     [Coord] in the payload.
+            - On getting no hit:    Empty SearchResult.
+            - On failure:           Exception.
+
+        # RAISES:
+            *   CoordStackServiceException
+        """
+        method = "CoordStackService.find_coord"
+        
+        try:
+            row_validation = (self._coord_service
+                                .validator
+                                .validate_row(target))
+            if row_validation.is_failure():
+                return SearchResult.failure(row_validation.exception)
+            
+            matches = [coord for coord in self._stack.items if coord.row == target]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            
+            return SearchResult.success(matches)
+        
+        except Exception as ex:
+            return SearchResult.failure(
+                CoordStackServiceException(
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{CoordStackServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    def find_coord_by_column(self, target: int) -> SearchResult[[Coord]]:
+        """
+        # ACTION:
+        1.  Use CoordStackService.coord_service to verify target meets safety requirements
+            for a Coord.column attribute.
+        2.  If the check fails, return the exception inside a SearchResult.
+        3.  Return all Coords with a matching row attribute.
+        4.  If no match is found return an empty SearchResult.
+
+        # PARAMETERS:
+            * target (int):   column to search for.
+
+        # Returns:
+        SearchResult[[Coord]] containing either:
+            - On getting a hit:     [Coord] in the payload.
+            - On getting no hit:    Empty SearchResult.
+            - On failure:           Exception.
+
+        # RAISES:
+            *   CoordStackServiceException
+        """
+        method = "CoordStackService.find_coord"
+        
+        try:
+            row_validation = (self._coord_service
+                              .validator
+                              .validate_row(target))
+            if row_validation.is_failure():
+                return SearchResult.failure(row_validation.exception)
+            
+            matches = [coord for coord in self._stack.items if coord.column == target]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            
+            return SearchResult.success(matches)
         
         except Exception as ex:
             return SearchResult.failure(

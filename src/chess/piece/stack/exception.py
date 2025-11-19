@@ -88,9 +88,9 @@ class PoppingEmptyCoordStackException(CoordStackException):
 
 
 class PushingDuplicateCoordException(CoordStackException):
-  """Raised when trying to push the same coord onto the stack."""
+  """Raised when trying to push the same target onto the stack."""
   ERROR_CODE = "PUSHING_DUPLICATE_COORD_ERROR"
-  DEFAULT_MESSAGE = "Cannot push duplicate coord onto the stack. All Coords must be unique."
+  DEFAULT_MESSAGE = "Cannot push duplicate target onto the stack. All Coords must be unique."
 
 
 class PushingNullException(CoordStackException):

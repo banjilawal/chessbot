@@ -43,7 +43,7 @@ class Square:
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   coord (Coord)
+            *   target (Coord)
         
         # Returns:
         None

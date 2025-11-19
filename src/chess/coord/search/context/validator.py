@@ -1,7 +1,7 @@
-# src/coord/search/context/coord_stack_validator.py
+# src/target/search/context/coord_stack_validator.py
 
 """
-Module: chess.coord.search.context.coord_stack_validator
+Module: chess.target.search.context.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -50,7 +50,7 @@ class CoordSearchContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a Coord.
-          * coord_validator (type[CoordValidator]): Enforces safety requirements on row, column, coord targets.
+          * coord_validator (type[CoordValidator]): Enforces safety requirements on row, column, target targets.
 
           
         # Returns:
@@ -212,7 +212,7 @@ class CoordSearchContextValidator(Validator):
         Verify a coord_candidate meets application CoordSearchContext safety requirements.
 
         # Parameters:
-          * candidate (Any): Object to verify is a coord.
+          * candidate (Any): Object to verify is a target.
           * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:

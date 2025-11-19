@@ -181,7 +181,7 @@ class IdentityService:
 
 
 """
-Module: chess.coord.service
+Module: chess.target.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
@@ -224,15 +224,15 @@ class CoordService:
     def add_vector_to_coord(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
         """
         # Action:
-        1.  coord_validator runs integrity checks on the coord param.
+        1.  coord_validator runs integrity checks on the target param.
         2.  vector_service runs integrity checks on the vector param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and vector params are valid:
-                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        4.  If target and vector params are valid:
+                new_row, new_colum = target.row + vector.y, target.column + vector.x
         5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord(Coord):
+            *   target(Coord):
             *   vector (Vector):
 
         # Returns:
@@ -269,15 +269,15 @@ class CoordService:
     def dot_product(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
         """
         # Action:
-        1.  coord_validator runs integrity checks on the coord param.
+        1.  coord_validator runs integrity checks on the target param.
         2.  vector_service runs integrity checks on the vector param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and vector params are valid:
-                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        4.  If target and vector params are valid:
+                new_row, new_colum = target.row + vector.y, target.column + vector.x
         5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord(Coord):
+            *   target(Coord):
             *   vector (Vector):
 
         # Returns:
@@ -314,15 +314,15 @@ class CoordService:
     def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar) -> BuildResult[Coord]:
         """
         # Action:
-        1.  coord_validator runs integrity checks on the coord param.
+        1.  coord_validator runs integrity checks on the target param.
         2.  scalar_service runs integrity checks on the scalar param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and scalar params are valid:
-                new_row, new_colum = coord.row * scalar.value, coord.column * scalar.value
+        4.  If target and scalar params are valid:
+                new_row, new_colum = target.row * scalar.value, target.column * scalar.value
         5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord (Coord):
+            *   target (Coord):
             *   scalar (Scalar):
 
         # Returns:

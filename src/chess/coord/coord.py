@@ -1,7 +1,7 @@
-# src/chess/coord/coord.py
+# src/chess/target/target.py
 
 """
-Module: chess.coord.coord
+Module: chess.target.target
 Author: Banji Lawal
 Created: 2025-07-26
 version: 1.0.0

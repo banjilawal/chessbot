@@ -25,7 +25,7 @@ class BoardSearchContext(SearchContext):
     # ATTRIBUTES:
         *   id (int):       Find items whose id matches this value.
         *   name (str):     Find items whose name matches this value.
-        *   coord (Coord):  Find items whose coord matches this value.
+        *   target (Coord):  Find items whose target matches this value.
     """
     _id: Optional[int] = None
     _name: Optional[str] = None
@@ -57,5 +57,5 @@ class BoardSearchContext(SearchContext):
         return {
             "id": self._id,
             "name": self._name,
-            "coord": self._coord
+            "target": self._coord
         }

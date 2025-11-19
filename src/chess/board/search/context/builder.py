@@ -56,10 +56,10 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         # Parameters:
             *   id (Optional[int]):                     Selected if search target is an id.
             *   name (Optional[str]):                   Selected if search target is a name.
-            *   coord (Optional[Coord]):                Selected if search target is a coord.
+            *   target (Optional[Coord]):                Selected if search target is a target.
             *   id_validator (type[IdValidator]):       Validates an id-search-target
             *   name_validator (type[NameValidator]):   Validates a name-search-target
-            *   coord_builder (type[CoordBuilder]):     Validates a coord-search-target
+            *   coord_builder (type[CoordBuilder]):     Validates a target-search-target
 
         # Returns:
         BuildResult[TeamSearchContext] containing either:
@@ -193,10 +193,10 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build a coord-TeamSearchContext if CoordValidator verifies search target is safe.
+        Build a target-TeamSearchContext if CoordValidator verifies search target is safe.
 
         # Parameters:
-          *     coord (Coord):                              target Coord
+          *     target (Coord):                              target Coord
           *     coord_validator (type[CoordValidator]):     validates target.
 
         # Returns:
