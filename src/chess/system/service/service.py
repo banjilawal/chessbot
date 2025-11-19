@@ -6,8 +6,10 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
+from abc import ABC
 
-class Service:
+
+class Service(ABC):
     """
     # ROLE: Service, Encapsulation, API layer.
 
@@ -50,3 +52,6 @@ class Service:
     
     def __hash__(self):
         return hash(self._int)
+    
+    def __str__(self):
+        return f"id:{self._id}, name:{self._name}"

@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 
+from .service import *
 from .exception import *
 
 from .scalar import Scalar
 from .builder import ScalarBuilder
 from .validator import ScalarValidator
 
-from .service import ScalarService
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
@@ -38,7 +38,7 @@ __all__ = [
 def package_info() -> dict:
     """Return basic package information."""
     return {
-        "visitor_name": __package_name__,
+        "name": __package_name__,
         "version": __version__,
         "author": __author__,
         "exports": __all__

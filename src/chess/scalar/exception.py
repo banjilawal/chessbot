@@ -55,12 +55,12 @@ class ScalarBuildFailedException(ScalarException, BuildFailedException):
 
 
 #======================# SCALAR BOUNDS EXCEPTIONS #======================#  
-class ScalarBelowBoundsException(ScalarException):
+class ScalarBelowBoundsException(InvalidScalarException):
   """Raised if scalar is below its < -LONGEST_KNIGHT_LEG_SIZE"""
   ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be less than -LONGEST_KNIGHT_LEG_SIZE."
 
-class ScalarAboveBoundsException(ScalarException):
+class ScalarAboveBoundsException(InvalidScalarException):
   """Raised if scalar is above its > LONGEST_KNIGHT_LEG_SIZE"""
   ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
   DEFAULT_MESSAGE = "Scalar cannot be greater than LONGEST_KNIGHT_LEG_SIZE."
