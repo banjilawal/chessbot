@@ -7,13 +7,14 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from .service import *
 from .exception import *
 
 from .vector import Vector
 from .builder import VectorBuilder
 from .validator import VectorValidator
 
-from .service import VectorService
+
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"

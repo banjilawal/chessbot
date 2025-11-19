@@ -50,7 +50,7 @@ class ScalarService(Service):
         self._scalar_validator = scalar_validator
     
     @property
-    def validate(self) -> ScalarValidator:
+    def validator(self) -> type[ScalarValidator]:
         return self._scalar_validator
     
     def build_scalar(self, value: int) -> BuildResult[Scalar]:

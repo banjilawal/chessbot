@@ -1,11 +1,11 @@
-# src/chess/scalar/service/py
+# src/chess/vector/service/py
 
 """
-Module: chess.scalar.service.__init__
+Module: chess.vector.service.__init__
 Author: Banji Lawal
-Created: 2025-08-25
+Created: 2025-11-19
 version: 1.0.0
 """
 
 from .exception import *
-from .service import ScalarService
+from .service import VectorService

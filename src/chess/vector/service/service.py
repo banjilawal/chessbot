@@ -22,31 +22,37 @@ class VectorService:
     2.  Compute dot product of Scalar and Vector objects.
 
     # PROVIDES:
-        * VectorBuilder
-        * VectorValidator
-        * Vector exceptions
+        *   VectorBuilder
+        *   VectorValidator
+        *   Vector exceptions
 
     # ATTRIBUTES:
-        *   vector_builder (type[VectorBuilder]): Builds new Vector instances that meet
-            the application's safety contract.
-        *   vector_validator (type[VectorValidator]): Ensures an existing Vector will not raise an
-            exception when used by a client.
-        *   scalar_service (type[ScalarService]): Provides scalar product functionality.
+        *   vector_builder (type[VectorBuilder]):       Builds new Vector instances that meet
+                                                        the application's safety contract.
+                                                        
+        *   vector_validator (type[VectorValidator]):   Ensures an existing Vector will not raise an
+                                                        exception when used by a client.
+                                                        
+        *   scalar_service (type[ScalarService]):       Provides scalar product functionality.
     """
     _vector_builder: type[VectorBuilder]
-    _vector_validator: type[VectorValidator]
+    _vector_validator: VectorValidator
     _scalar_service: ScalarService
     
     def __init__(
             self,
             vector_builder: type[VectorBuilder] = VectorBuilder,
-            vector_validator: type[VectorValidator] = VectorValidator,
+            vector_validator: VectorValidator = VectorValidator,
             scalar_service: ScalarService = ScalarService()
     ):
         self._vector_builder = vector_builder
         self._vector_validator = vector_validator
         self._scalar_service = scalar_service
     
+    
+    @property
+    def validator(self) -> VectorValidator:
+        return self._vector_validator
     
     @LoggingLevelRouter.monitor
     def build_vector(self, x: int, y: int) -> BuildResult[Vector]:
@@ -72,27 +78,27 @@ class VectorService:
         return self._vector_builder.build(x=x, y=y)
     
     
-    @LoggingLevelRouter.monitor
-    def validate_as_vector(self, candidate: Any) -> ValidationResult[Vector]:
-        """
-        # Action:
-        VectorService directs vector_validator to run the verification process on the candidate.
-
-        # Parameters:
-            *   candidate (Any):
-
-        # Returns:
-        ValidationResult[Vector] containing either:
-            - On success: int in the payload.
-            - On failure: Exception.
-
-        Raises:
-            *   None are raised here.
-            *   vector_validator sends any validation exceptions back to the caller.
-            *   The caller is responsible for safely handling any exceptions it receives.
-        """
-        method = "VectorService.validate_as_vector"
-        return self._vector_validator.validate(candidate)
+    # @LoggingLevelRouter.monitor
+    # def validate_as_vector(self, candidate: Any) -> ValidationResult[Vector]:
+    #     """
+    #     # Action:
+    #     VectorService directs vector_validator to run the verification process on the candidate.
+    #
+    #     # Parameters:
+    #         *   candidate (Any):
+    #
+    #     # Returns:
+    #     ValidationResult[Vector] containing either:
+    #         - On success: int in the payload.
+    #         - On failure: Exception.
+    #
+    #     Raises:
+    #         *   None are raised here.
+    #         *   vector_validator sends any validation exceptions back to the caller.
+    #         *   The caller is responsible for safely handling any exceptions it receives.
+    #     """
+    #     method = "VectorService.validate_as_vector"
+    #     return self._vector_validator.validate(candidate)
     
     
     @LoggingLevelRouter.monitor
@@ -122,7 +128,7 @@ class VectorService:
         method = "VectorService.multiply_by_scalar"
         
         try:
-            scalar_validation = self._scalar_service.validate_as_scalar(scalar)
+            scalar_validation = self._scalar_service.validator.validate(scalar)
             if scalar_validation.is_failure():
                 return BuildResult.failure(scalar_validation.exception)
             
@@ -138,6 +144,8 @@ class VectorService:
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}", ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{VectorBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

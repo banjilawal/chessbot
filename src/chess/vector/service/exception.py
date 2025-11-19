@@ -1,7 +1,7 @@
-# src/chess/scalar/service/exception.py
+# src/chess/vector/service/exception.py
 
 """
-Module: chess.scalar.service.exception
+Module: chess.vector.service.exception
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0
@@ -10,41 +10,41 @@ version: 1.0.0
 from chess.system import ServiceException, NullException, ValidationException, BuildFailedException
 
 __all__ = [
-  "ScalarServiceException",
+  "VectorServiceException",
   
-#======================# SCALARSERVICE VALIDATION EXCEPTIONS #======================#  
-  "NullScalarServiceException",
-  "InvalidScalarServiceException",
+#======================# VECTOR_SERVICE VALIDATION EXCEPTIONS #======================#  
+  "NullVectorServiceException",
+  "InvalidVectorServiceException",
   
-#======================# SCALARSERVICE BUILD EXCEPTIONS #======================#  
-  "ScalarBuildFailedException",
+#======================# VECTOR_SERVICE BUILD EXCEPTIONS #======================#  
+  "VectorBuildFailedException",
 ]
 
-class ScalarServiceException(ServiceException):
+class VectorServiceException(ServiceException):
   """
-  Super class of exceptions raised by ScalarService objects. Do not use directly. Subclasses give
+  Super class of exceptions raised by VectorService objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
-  ERROR_CODE = "SCALAR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "ScalarService raised an exception."
+  ERROR_CODE = "VECTOR_SERVICE_ERROR"
+  DEFAULT_MESSAGE = "VectorService raised an exception."
   
 
-#======================# NULL SCALARSERVICE EXCEPTIONS #======================#
-class NullScalarServiceException(ScalarServiceException, NullException):
-  """Raised if an entity, method, or operation requires ScalarService but gets null instead."""
-  ERROR_CODE = "NULL_SCALAR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "ScalarService cannot be null."
+#======================# NULL VECTOR_SERVICE EXCEPTIONS #======================#
+class NullVectorServiceException(VectorServiceException, NullException):
+  """Raised if an entity, method, or operation requires VectorService but gets null instead."""
+  ERROR_CODE = "NULL_VECTOR_SERVICE_ERROR"
+  DEFAULT_MESSAGE = "VectorService cannot be null."
 
 
-#======================# SCALARSERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidScalarServiceException(ScalarServiceException, ValidationException):
-  """Catchall Exception for ScalarValidator when a validation candidate fails a sanity check."""
-  ERROR_CODE = "SCALAR_SERVICE_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "ScalarService validation failed."
+#======================# VECTOR_SERVICE VALIDATION EXCEPTIONS #======================#
+class InvalidVectorServiceException(VectorServiceException, ValidationException):
+  """Catchall Exception for VectorValidator when a validation candidate fails a sanity check."""
+  ERROR_CODE = "VECTOR_SERVICE_VALIDATION_ERROR"
+  DEFAULT_MESSAGE = "VectorService validation failed."
 
 
-#======================# SCALARSERVICE BUILD EXCEPTIONS #======================#
-class ScalarBuildFailedException(ScalarServiceException, BuildFailedException):
-  """Catchall Exception for ScalarServiceBuilder when it encounters an error building a ScalarService."""
-  ERROR_CODE = "SCALAR_SERVICE_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "ScalarService build failed."
+#======================# VECTORSERVICE BUILD EXCEPTIONS #======================#
+class VectorBuildFailedException(VectorServiceException, BuildFailedException):
+  """Catchall Exception for VectorServiceBuilder when it encounters an error building a VectorService."""
+  ERROR_CODE = "VECTOR_SERVICE_BUILD_FAILED_ERROR"
+  DEFAULT_MESSAGE = "VectorService build failed."
