@@ -16,11 +16,14 @@ T = TypeVar("T")
 
 class Builder(ABC, Generic[T]):
   """
-  # ROLE: Builder, Guarantee Data Integrity
+  # ROLE: Builder, Data Integrity and Reliability Guarantor.
 
   # RESPONSIBILITIES:
-  Produce T instances whose integrity is always guaranteed. If any parameters do not pass their integrity checks,
-  send an exception instead.
+  1.  Produce T instances whose integrity is always guaranteed.
+  1.  Uses Validator instances to verify build resources do not break safety contracts.
+  2.  Wraps ValidatorExceptions inside BuildResult before returning to caller.
+  3.  Performs any additional checks not covered by Validators to assure safety and integrity of new objects.
+
 
   # PROVIDES:
   BuildResult[T] containing either:

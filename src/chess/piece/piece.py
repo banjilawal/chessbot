@@ -8,13 +8,14 @@ version: 1.0.0
 """
 
 from abc import ABC
+from pprint import pprint
 from typing import List, Optional
 
 
 from chess.team import Team
 from chess.rank import Rank
 from chess.coord import Coord
-from chess.piece import CoordStack
+from chess.piece import CoordStack, CoordStackService
 
 
 class Piece(ABC):
@@ -31,13 +32,14 @@ class Piece(ABC):
     Piece
   
     # ATTRIBUTES:
-        *   id (int): unique identifier.
-        *   name (str): designation-number combination. Only unique in the Board.
+        *   id (int):                                   Globally unique identifier.
+        *   name (str):                                 Conventional name of chess piece
         *   team (Team):
         *   rank (Rank):
-        *   roster_number (int): initial number on its team's roster.
-        *   current_position (Coord): Coord at last move
-        *   positions (Stack[Coord]): list of coords occupied
+        *   roster_number (int):                        initial number on its team's roster.
+        *   current_position (Coord):                   Coord at last move
+        *   positions (Stack[Coord]):                   list of coords occupied
+        *   coord_stack_service (CoordStackService):    Service for managing positions.
     """
     _id: int
     _name: str
@@ -46,6 +48,8 @@ class Piece(ABC):
     _roster_number: int
     _current_position: Coord
     _positions: CoordStack
+    _coord_stack_service: CoordStackService
+
     
     def __init__(self, id: int, name: str, rank: Rank, team: Team):
         method = "Piece.__init__"
@@ -57,7 +61,8 @@ class Piece(ABC):
         self._discoveries = []
         
         self._positions = CoordStack()
-        self._current_position = self._positions.current_coord
+        self._coord_stack_service = CoordStackService()
+        self._current_position = self._coord_stack_service.current_coord
         
         if self not in team.roster:
             team.roster.append(self)
@@ -85,6 +90,10 @@ class Piece(ABC):
     @property
     def positions(self) -> CoordStack:
         return self._positions
+    
+    @property
+    def coord_stack_service(self) -> CoordStackService:
+        return self._coord_stack_service
     
     @property
     def current_position(self) -> Optional[Coord]:

@@ -19,6 +19,9 @@ __all__ = [
     
     # ======================# STARVATION EXCEPTIONS #======================#
     "ResourceException",
+
+# ======================# SERVICE EXCEPTIONS #======================#
+    "ServiceException",
     
     # ======================# INCONSISTENCY EXCEPTIONS #======================#
     "InconsistencyException",
@@ -35,10 +38,10 @@ __all__ = [
     "NullStringException",
     "BlankStringException",
     
-    # ======================# NULL/EMPTY EXCEPTIONS #======================#
+    # ======================# GAME_COLOR EXCEPTIONS #======================#
     "GameColorException",
     "InvalidGameColorException",
-    "NullGameColorException"
+    "NullGameColorException",
 ]
 
 from typing import Optional

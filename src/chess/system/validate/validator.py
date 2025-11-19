@@ -16,10 +16,12 @@ T = TypeVar("T")
 
 class Validator(ABC, Generic[T]):
     """
-    # ROLE: Validation, Verify Data Integrity
+    # ROLE: Validation, Data Integrity assurance.
   
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of T, that meets integrity requirements, before the candidate is used.
+    1.  Verifies a candidate is an instance of T, that meets integrity requirements, before the candidate is used.
+    2.  Returns any exceptions raised inside a ValidationResult
+    
   
     # PROVIDES:
     ValidationResult[T] containing either:

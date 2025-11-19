@@ -40,7 +40,7 @@ class CoordStackService:
         *   is_empty (bool):                                    Shows if the internal stack is empty.
         
         *   pops_per_turn (int):                                Assures only the current move can be undone.
-        .
+        
         *   stack (CoordStack):                                 The stack of Coord objects. Protected
                                                                 from direct access.
                                                                 
@@ -76,9 +76,9 @@ class CoordStackService:
         self._is_empty = self._stack.is_empty()
         self._current_coord = self._stack.current_coord
         
-    @property
-    def stack(self) -> CoordStack:
-        return self._stack
+    # @property
+    # def stack(self) -> CoordStack:
+    #     return self._stack
     
     @property
     def stack_size(self) -> int:
@@ -128,7 +128,7 @@ class CoordStackService:
         method = "CoordStackService.push_coord"
         
         try:
-            coord_validation = self._coord_service.validate_as_coord(coord)
+            coord_validation = self._coord_service.validator.validate(candidate=coord)
             if coord_validation.is_failure():
                 return Result.failure(coord_validation.exception)
             
@@ -231,7 +231,7 @@ class CoordStackService:
         method = "CoordStackService.find_coord"
         
         try:
-            coord_validation = self._coord_service.validator.validate(target)
+            coord_validation = self._coord_service.validator.validate(candidate=target)
             if coord_validation.is_failure():
                 return SearchResult.failure(coord_validation.exception)
             
@@ -275,7 +275,7 @@ class CoordStackService:
         try:
             row_validation = (self._coord_service
                                 .validator
-                                .validate_row(target))
+                                .validate_row(candidate=target))
             if row_validation.is_failure():
                 return SearchResult.failure(row_validation.exception)
             
@@ -318,11 +318,11 @@ class CoordStackService:
         method = "CoordStackService.find_coord"
         
         try:
-            row_validation = (self._coord_service
+            column_validation = (self._coord_service
                               .validator
-                              .validate_row(target))
-            if row_validation.is_failure():
-                return SearchResult.failure(row_validation.exception)
+                              .validate_column(candidate=target))
+            if column_validation.is_failure():
+                return SearchResult.failure(column_validation.exception)
             
             matches = [coord for coord in self._stack.items if coord.column == target]
             if len(matches) == 0:

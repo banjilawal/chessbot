@@ -44,7 +44,7 @@ CONTAINS:
 """
 
 from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext
-from chess.piece import Piece, AttackBuildFailedException, KingPiece, CombatantPiece, UnregisteredTeamMemberException
+from chess.piece import Piece, AttackBuildFailedException, KingPiece, CombatantPiece, ActivePieceMissingFromTeamRoster
 from chess.rank import Rank, RankValidator, King
 from chess.team import(
     Team, TeamValidator, TeamSearch, PieceCollectionCategory, FullRankQuotaException, ConflictingTeamAssignmentException
@@ -131,7 +131,7 @@ class PieceBuilder(Builder[Piece]):
         team.add_to_roster(piece)
 
       if piece not in team.roster:
-        return BuildResult(exception=UnregisteredTeamMemberException(
+        return BuildResult(exception=ActivePieceMissingFromTeamRoster(
           f"{method}: UnregisteredTeamMemberException.DEFAULT_MESSAGE"
           )
         )

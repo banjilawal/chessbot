@@ -61,30 +61,35 @@ class CoordService:
     
     @property
     def validator(self) -> type[CoordValidator]:
-        """Its ok to expose the validator directly. Its factory methods might be useful."""
+        """
+        CoordValidator is the single-source-of truth for certifying the safety of
+        Coord instances, their organic row and column attributes. It makes sense
+        providing direct access here and letting coord_validator return its Validation
+        result directly to the caller.
+        """
         return self._coord_validator
         
     
-    def validate_as_coord(self, candidate: Any) -> ValidationResult[Coord]:
-        """
-        # Action:
-        CoordService directs coord_validator to run the verification process on the candidate.
-
-        # Parameters:
-            *   row (int):
-            *   column (int):
-
-        # Returns:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-        Raises:
-            *   None are raised here.
-            *   coord_validator sends any validation exceptions back to the caller.
-            *   The caller is responsible for safely handling any exceptions it receives.
-        """
-        return self._coord_validator.validate(candidate=candidate)
+    # def validate_as_coord(self, candidate: Any) -> ValidationResult[Coord]:
+    #     """
+    #     # Action:
+    #     CoordService directs coord_validator to run the verification process on the candidate.
+    #
+    #     # Parameters:
+    #         *   row (int):
+    #         *   column (int):
+    #
+    #     # Returns:
+    #     BuildResult[Coord] containing either:
+    #         - On success: Coord in the payload.
+    #         - On failure: Exception.
+    #
+    #     Raises:
+    #         *   None are raised here.
+    #         *   coord_validator sends any validation exceptions back to the caller.
+    #         *   The caller is responsible for safely handling any exceptions it receives.
+    #     """
+    #     return self._coord_validator.validate(candidate=candidate)
     
     
     def build_coord(self, row: int, column: int) -> BuildResult[Coord]:

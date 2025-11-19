@@ -17,7 +17,7 @@ from chess.system import IdValidator, NameValidator, LoggingLevelRouter, Validat
 from chess.piece import (
     CombatantPiece, NullPieceException, Piece, PieceNullCoordStackException, PieceRequiresInitialPlacementException, PieceRosterNumberIsNullException,
     PieceTeamFieldIsNullException,
-    UnregisteredTeamMemberException
+    ActivePieceMissingFromTeamRoster
 )
 
 
@@ -118,7 +118,7 @@ class PieceValidator(Validator[Piece]):
             team = piece.team
             if piece not in team.roster:
                 return ValidationResult.failure(
-                    UnregisteredTeamMemberException(f"{method} {UnregisteredTeamMemberException.DEFAULT_MESSAGE}")
+                    ActivePieceMissingFromTeamRoster(f"{method} {ActivePieceMissingFromTeamRoster.DEFAULT_MESSAGE}")
                 )
             
             if isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated:

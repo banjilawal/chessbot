@@ -80,7 +80,8 @@ class CoordStackServiceValidator(Validator[CoordStackService]):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected CoordStackService, got {type(candidate).__name__} instead."
+                        f"Expected CoordStackService, "
+                        f"got {type(candidate).__name__} instead."
                     )
                 )
             

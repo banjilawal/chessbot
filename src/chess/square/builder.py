@@ -1,4 +1,4 @@
-# src/chess/square/factory.py
+# src/chess/square/builder.py
 
 """
 Module: chess.square.builder
@@ -19,8 +19,8 @@ class SquareBuilder(Builder[Square]):
     # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    Produce Square instances whose integrity is always guaranteed. If any attributes do not pass their integrity
-    checks, send an exception instead.
+    Produce Square instances whose integrity is always guaranteed. If any
+    attributes do not pass their integrity checks, send an exception instead.
 
     # PROVIDES:
     BuildResult[Square] containing either:
@@ -38,8 +38,8 @@ class SquareBuilder(Builder[Square]):
             id: int,
             name: str,
             coord: Coord,
-            coord_service: type[CoordService] = CoordService,
-            identity_service: type[IdentityService] = IdentityService
+            coord_service: CoordService = CoordService(),
+            identity_service: IdentityService = IdentityService()
     ) -> BuildResult[Square]:
         """
         # ACTION:
@@ -52,8 +52,8 @@ class SquareBuilder(Builder[Square]):
             *   id (int)
             *   name (str)
             *   target (target)
-            *   coord_service (type[CoordService]): validates target.
-            *   identity_service (type[IdentityService]): validates id and name.
+            *   coord_service (CoordService): validates target.
+            *   identity_service (IdentityService): validates id and name.
     
         # Returns:
         ValidationResult[Square] containing either:
@@ -73,7 +73,7 @@ class SquareBuilder(Builder[Square]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            coord_validation = coord_service.validate_as_coord(coord)
+            coord_validation = coord_service.validator.validate(candidate=coord)
             if coord_validation.is_failure():
                 return BuildResult.failure(coord_validation.exception)
             
@@ -82,6 +82,8 @@ class SquareBuilder(Builder[Square]):
         except Exception as ex:
             return BuildResult(
                 SquareBuildFailedException(
-                    f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}", ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{SquareBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

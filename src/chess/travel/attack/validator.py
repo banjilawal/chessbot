@@ -13,7 +13,7 @@ from chess.board import Board, BoardPieceSearch, BoardSearchContext
 from chess.piece import (
     KingPiece, AttackEvent, AttackingEnemyKingException, AttackingFriendException, CombatantPiece,
     DoublyAttackingPrisonerException, NullAttackEventException, PieceAttackingItSelfException, PieceValidator,
-    BoardActorValidator, TravelResourceValidator, UnregisteredTeamMemberException
+    BoardActorValidator, TravelResourceValidator, ActivePieceMissingFromTeamRoster
 )
 from chess.travel.attack.exception import (
     AttackingPieceMissingFromBoardException,
@@ -80,7 +80,7 @@ class AttackEventValidator(Validator[AttackEvent]):
             enemy_team = event.enemy_combatant.team_name
             if event.enemy_combatant not in enemy_team.roster:
                 return ValidationResult.failure(
-                    UnregisteredTeamMemberException(
+                    ActivePieceMissingFromTeamRoster(
                         f"{method}: Cannot attack enemy missing from team roster. There may be a "
                         f"data inconsistency."
                     )

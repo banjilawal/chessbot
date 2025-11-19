@@ -21,6 +21,7 @@ from .build import *
 from .logging import *
 from .validate import *
 from .identity import *
+from .service import *
 from .transaction import *
 
 
@@ -46,6 +47,7 @@ __all__ = [
   *err.__all__,
   *logging.__all__,
   *config.__all__,
+  *.service.__all__,
   *transaction.__all__,
 
   # Package metadata and utilities
