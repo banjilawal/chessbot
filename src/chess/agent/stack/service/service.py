@@ -1,7 +1,7 @@
-# src/chess/agent/stack/service/service.py
+# src/chess/teamStack/stack/service/service.py
 
 """
-Module: chess.agent.stack.service.service
+Module: chess.teamStack.stack.service.service
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -10,43 +10,77 @@ version: 1.0.0
 from typing import List, Optional
 
 from chess.piece.stack.exception import DuplicatePushException, PopEmptyStackException
-from chess.system import IdentityService, LoggingLevelRouter, SearchResult
+from chess.system import IdentityService, LoggingLevelRouter, SearchResult, Service
 from chess.team import Team, TeamService
 from chess.system.result import Result
-from chess.agent import (
+from chess.teamStack import (
     PushingDuplicateTeamException, PushingNullException, TeamStack, TeamStackServiceException,
     TeamStackValidator
 )
 
 
-class TeamStackService:
+class TeamStackService(Service[TeamStack]):
+    """
+    # ROLE: Service, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Provide a single interface/entry point for TeamStack, TeamStackValidator and TeamStackBuilder.
+    2.  Protects TeamStack object from direct manipulation.
+    3.  Extends behavior and functionality of TeamStack objects
+    4.  Public facing API for TeamStack modules.
+
+    # PROVIDES:
+        *   TeamStackBuilder
+        *   TeamStackValidator
+        *   TeamStackService
+
+    # ATTRIBUTES:
+        *   pop_count (int):Assures teams from commited games are not removed from the stack
+        *   is_empty (bool): Ensures teams from commited games are not removed from the stack
+                                                        the application's safety contract.
+
+        *   team_validator (type[TeamValidator]):   Ensures an existing Team will not raise an
+                                                        exception when used by a client.
+
+        *   scalar_service (type[ScalarService]):       Provides scalar product functionality.
+    """
+    SERVICE_NAME = "TeamService"
+    
+    SERVICE_NAME = "TeamStackService"
+    
     _pop_count: int
     _is_empty: bool
     _stack: TeamStack
     _current_team: Team
     _team_service: TeamService
     _identity_service: IdentityService
-    _validator: type[TeamStackValidator]
+    _team_stack_validator: type[TeamStackValidator]
     
     def __init__(
             self,
+            id: int,
+            name: str = SERVICE_NAME,
             stack: TeamStack = TeamStack(),
             team_service: TeamService = TeamService(),
             identity_service: IdentityService = IdentityService(),
-            validator: type[TeamStackValidator]=TeamStackValidator,
+            team_stack_validator: type[TeamStackValidator]=TeamStackValidator,
     ):
         self._stack = stack
-        self._validator = validator
+        self._team_stack_validator = team_stack_validator
         self._team_service = team_service
         
         self._pop_count = 0
         self._is_empty = self._stack.is_empty()
         self._current_team = self._stack.current_team
         self._identity_service = identity_service
+        
+    @property
+    def validator(self) -> type[TeamStackValidator]:
+        return self._team_stack_validator
        
     @property
     def stack_size(self) -> int:
-        return self._stack.size()
+        return self._stack.size
     
     @property
     def is_empty(self) -> bool:

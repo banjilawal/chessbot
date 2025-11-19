@@ -6,25 +6,28 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
-from typing import Any
+
 
 from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, LoggingLevelRouter, ValidationResult
+from chess.system import BuildResult, LoggingLevelRouter, Service
 from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, VectorValidator
 
 
-class VectorService:
+class VectorService(Service):
     """
-    # ROLE: Service, Data Protect
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Manages integrity lifecycle of Vector objects.
-    2.  Compute dot product of Scalar and Vector objects.
+    1.  Provide a single interface/entry point for VectoValidator and VectorBuilder.
+    2.  Protects Vector objects from direct manipulation.
+    3.  Extends behavior and functionality of Vector objects.
+    4.  Public facing API for Vector modules.
 
     # PROVIDES:
         *   VectorBuilder
         *   VectorValidator
         *   Vector exceptions
+        *   Dot Product functionality
 
     # ATTRIBUTES:
         *   vector_builder (type[VectorBuilder]):       Builds new Vector instances that meet
@@ -35,12 +38,16 @@ class VectorService:
                                                         
         *   scalar_service (type[ScalarService]):       Provides scalar product functionality.
     """
+    SERVICE_NAME = "VectorService"
+    
     _vector_builder: type[VectorBuilder]
     _vector_validator: VectorValidator
     _scalar_service: ScalarService
     
     def __init__(
             self,
+            id: int,
+            name: str = SERVICE_NAME,
             vector_builder: type[VectorBuilder] = VectorBuilder,
             vector_validator: VectorValidator = VectorValidator,
             scalar_service: ScalarService = ScalarService()

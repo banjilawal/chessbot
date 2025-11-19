@@ -43,7 +43,7 @@ class InvalidVectorServiceException(VectorServiceException, ValidationException)
   DEFAULT_MESSAGE = "VectorService validation failed."
 
 
-#======================# VECTORSERVICE BUILD EXCEPTIONS #======================#
+#======================# VECTOR_SERVICE BUILD EXCEPTIONS #======================#
 class VectorBuildFailedException(VectorServiceException, BuildFailedException):
   """Catchall Exception for VectorServiceBuilder when it encounters an error building a VectorService."""
   ERROR_CODE = "VECTOR_SERVICE_BUILD_FAILED_ERROR"
