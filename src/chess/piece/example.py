@@ -235,3 +235,47 @@ Notes:
   in PieceValidator and related error classes. Piece objects are designed to be
   immutable in their core properties.
 """
+# src/chess/square/old_occupation_validator.py
+
+"""
+Module: chess.square.validator
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+
+SCOPE:
+-----
+This module is strictly limited to constructing Piece instances safely.
+
+**It does not** contain logic or rules for creating TravelEvent or
+TravelEventFactory. Those are handled by OccupationEventBuilder before
+execution,TravelEventFactory during execution.
+
+**It does not** ensure existing Piece instances are valid. That is done
+by the PieceValidator.
+
+THEME:
+-----
+**Integrity, Consistency, Validation.** The module's design centers on team_name separating
+complexities of the build process into team_name utility from the Piece constructor.
+
+PURPOSE:
+-------
+To execute validated TravelEvent directives by orchestrating the necessary
+state changes across the board_validator, pieces, and teams. It serves as the **engine
+layer responsible for persistent state modification** based on accepted moves.
+
+DEPENDENCIES:
+------------
+This module requires components from various sub-systems:
+* chess.bounds: Movement strategy (Rank)
+* chess.square: Location service structure (Square)
+* chess.old_search: Board lookup utilities (BoardSearch)
+* chess.owner: Piece subtypes (KingPiece, CombatantPiece, etc.)
+* chess.team_name: Roster management, rollback_exception handling
+* chess.notification: Base notification and roster types
+
+CONTAINS:
+--------
+ * PieceFactory: The validator of Piece instances.
+"""

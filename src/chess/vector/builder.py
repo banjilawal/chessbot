@@ -1,4 +1,4 @@
-# src/chess/vector/builder.py
+# src/chess/vector/factory.py
 
 """
 Module: chess.vector.builder

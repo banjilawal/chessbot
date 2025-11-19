@@ -16,7 +16,7 @@ Created: 2025-09-30
 version: 1.0.0
 """
 
-from chess.system import ChessException, ValidationException, NullException
+from chess.system import ServiceException, ValidationException, NullException
 
 __all__ = [
     "CoordStackServiceException",
@@ -26,9 +26,7 @@ __all__ = [
     
     # ======================# COORD_STACK_SERVICE VALIDATION EXCEPTIONS #======================#
     "InvalidCoordStackServiceException",
-    "CoordStackServiceSizeConflictException",
-    "InconsistentCurrentCoordException",
-    "CorruptedCoordStackServiceException",
+    "CannotRunServiceWithoutCoordStackException",
     
     # ======================# COORD_STACK_SERVICE OPERATION EXCEPTIONS #======================#
     "PoppingEmptyCoordStackException",
@@ -46,7 +44,7 @@ __all__ = [
 ]
 
 
-class CoordStackServiceException(ChessException):
+class CoordStackServiceException(ServiceException):
     """
     Super class for exceptions raised by CoordStackService objects. DO NOT USE DIRECTLY. Subclasses
     give more useful debugging messages.
@@ -69,10 +67,13 @@ class InvalidCoordStackServiceException(CoordStackServiceException, ValidationEx
     DEFAULT_MESSAGE = "CoordStackService validation failed."
 
 
-class CorruptedCoordStackServiceException(CoordStackServiceException, ValidationException):
-    """Raised if the list is null. That is CoordStackService.items is null"""
-    ERROR_CODE = "CORRUPTED_COORD_STACK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CoordStackService.items is null. There is inconsistent data in the system."
+class CannotRunServiceWithoutCoordStackException(CoordStackServiceException):
+    """Raised if the service does not have a CoordStack."""
+    ERROR_CODE = "NO_COORD_STACK_FOR_SERVICE_ERROR"
+    DEFAULT_MESSAGE = (
+        "The service does not have a CoordStack to manage. CoordStackService"
+        " requires a CoordStack."
+    )
 
 
 # ======================# COORD_STACK_SERVICE OPERATION EXCEPTIONS #======================#
@@ -94,6 +95,7 @@ class PushingNullException(CoordStackServiceException):
     DEFAULT_MESSAGE = "Cannot push null item onto a CoordStackService."
 
 
+CannotUndoPreviousTurnException
 # ======================# COORD_STACK_SERVICE EXCEPTIONS #======================#
 class CoordStackServiceServiceException(ChessException):
     """

@@ -1,47 +1,13 @@
-# src/chess/square/old_occupation_validator.py
+# src/chess/piece/factory.py
 
 """
-Module: chess.square.validator
+Module: chess.piece.factory
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-04
 version: 1.0.0
-
-SCOPE:
------
-This module is strictly limited to constructing Piece instances safely.
-
-**It does not** contain logic or rules for creating TravelEvent or
-TravelEventFactory. Those are handled by OccupationEventBuilder before
-execution,TravelEventFactory during execution.
-
-**It does not** ensure existing Piece instances are valid. That is done
-by the PieceValidator.
-
-THEME:
------
-**Integrity, Consistency, Validation.** The module's design centers on team_name separating
-complexities of the build process into team_name utility from the Piece constructor.
-
-PURPOSE:
--------
-To execute validated TravelEvent directives by orchestrating the necessary
-state changes across the board_validator, pieces, and teams. It serves as the **engine
-layer responsible for persistent state modification** based on accepted moves.
-
-DEPENDENCIES:
-------------
-This module requires components from various sub-systems:
-* chess.bounds: Movement strategy (Rank)
-* chess.square: Location service structure (Square)
-* chess.old_search: Board lookup utilities (BoardSearch)
-* chess.owner: Piece subtypes (KingPiece, CombatantPiece, etc.)
-* chess.team_name: Roster management, rollback_exception handling
-* chess.notification: Base notification and roster types
-
-CONTAINS:
---------
- * PieceFactory: The validator of Piece instances.
 """
+
+
 from chess.pawn import PawnPiece
 from chess.rank.service import RankService
 from chess.system import (
@@ -61,7 +27,19 @@ from chess.team import (
 
 class PieceFactory(Builder[Piece]):
   """
-  Responsible for safely constructing Square instances.
+  # ROLE: Builder, Data Integrity Guarantor
+
+  # RESPONSIBILITIES:
+  Produce Piece instances whose integrity is always guaranteed. If any attributes do not pass
+  their integrity checks, send an exception instead.
+
+  # PROVIDES:
+  BuildResult[Piece] containing either:
+      - On success: Piece in the payload.
+      - On failure: Exception.
+
+  # ATTRIBUTES:
+  None
   """
 
   @classmethod
@@ -76,6 +54,27 @@ class PieceFactory(Builder[Piece]):
           team_service: TeamService = TeamService(),
           identity_service: IdentityService = IdentityService(),
   ) -> BuildResult[Piece]:
+    """
+    # ACTION:
+    1.  Call _validate_build_params. to verify inputs are safe.
+    2.  If the _validate params returns failure include the failure in a BuildResult.
+    3.  If the engine is not null call build_machine_agent. Otherwise, call build_human_agent.
+
+    # PARAMETERS:
+        *   id (int)
+        *   name (str)
+        *   identity_service (IdentityService)
+        *   team_stack_service (teamStackService)
+        *   engine_service (Optional[EngineService])
+
+    # Returns:
+    ValidationResult[TeamStackService] containing either:
+        - On success: TeamStackService in the payload.
+        - On failure: Exception.
+
+    # Raises:
+        *   AgentBuildFailedException
+    """
     """
     Constructs team_name new Square that works correctly.
 

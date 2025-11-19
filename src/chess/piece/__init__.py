@@ -18,7 +18,7 @@ from .exception import *
 from .piece import Piece
 from .combatant import CombatantPiece
 
-from .builder import PieceFactory
+from .factory import PieceFactory
 from .validator import PieceValidator
 
 

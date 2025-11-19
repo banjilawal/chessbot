@@ -21,8 +21,8 @@ class CoordStackValidator(Validator[CoordStack]):
     # ROLE: Validation, Integrity Guarantor
   
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of CoordStack, that meets integrity requirements, before
-    the candidate is used.
+    Verifies a candidate is an instance of CoordStack, that meets integrity
+    requirements, before the candidate is used.
   
     # PROVIDES:
     ValidationResult[CoordStack] containing either:
@@ -68,13 +68,16 @@ class CoordStackValidator(Validator[CoordStack]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullCoordStackException(f"{method}: {NullCoordStackException.DEFAULT_MESSAGE}")
+                    NullCoordStackException(
+                        f"{method}: {NullCoordStackException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if not isinstance(candidate, CoordStack):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method} Expected CoordStack, got {type(candidate).__name__} instead."
+                        f"{method}:"
+                        f" Expected CoordStack, got {type(candidate).__name__} instead."
                     )
                 )
             

@@ -18,7 +18,7 @@ from chess.system import LoggingLevelRouter, Result, SearchResult
 
 
 class CoordStackService:
-    _pop_count: int
+    _pops_per_turn: int
     _is_empty: bool
     _stack: CoordStack
     _current_coord: Coord
@@ -35,9 +35,13 @@ class CoordStackService:
         self._validator = validator
         self._coord_service = coord_service
         
-        self._pop_count = 0
+        self._pops_per_turn = 0
         self._is_empty = self._stack.is_empty()
         self._current_coord = self._stack.current_coord
+        
+    @property
+    def stack(self) -> CoordStack:
+        return self._stack
     
     @property
     def stack_size(self) -> int:
@@ -53,7 +57,7 @@ class CoordStackService:
     
     @property
     def pop_count(self) -> int:
-        return self._pop_count
+        return self._pops_per_turn
     
     @LoggingLevelRouter.monitor
     def push_coord(self, coord) -> Result[Coord]:
@@ -73,7 +77,7 @@ class CoordStackService:
                 )
             
             self._stack.items.append(coord)
-            self._pop_count = 0
+            self._pops_per_turn = 0
             return Result.success(coord)
         
         except Exception as ex:
@@ -90,20 +94,28 @@ class CoordStackService:
             if self._stack.is_empty():
                 return Result.failure(
                     PoppingEmptyCoordStackException(
-                        f"{method}: {PoppingEmptyCoordStackException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{PoppingEmptyCoordStackException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if self._pop_count == 1:
-                return Result.failure()
+            if self._pops_per_turn != 0:
+                return Result.failure(
+                    CannotUndoPreviousTurnException(
+                        f"{method}: "
+                        f"{CannotUndoPreviousTurnException.DEFAULT_MESSAGE}"
+                    )
+                )
             
             coord = self._stack.items.pop()
+            self._pops_per_turn += 1
             return Result.success(coord)
         
         except Exception as ex:
             return Result.failure(
                 CoordStackServiceException(
-                    f"{method}: {CoordStackServiceException.DEFAULT_MESSAGE}"
+                    f"{method}: "
+                    f"{CoordStackServiceException.DEFAULT_MESSAGE}"
                 )
             )
     
@@ -111,7 +123,7 @@ class CoordStackService:
         method = "CoordStackService.find_coord"
         
         try:
-            coord_validation = self._coord_service.validate_coord(coord)
+            coord_validation = self._coord_service.validate_as_coord(coord)
             if coord_validation.is_failure():
                 return SearchResult.failure(coord_validation.exception)
             

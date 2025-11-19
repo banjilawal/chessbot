@@ -1,4 +1,4 @@
-# src/chess/team/builder.py
+# src/chess/team/factory.py
 
 """
 Module: chess.team.builder

@@ -34,12 +34,18 @@ class PieceValidator(Validator[Piece]):
             # Prevents a null `Piece` being accepted as method argument.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullPieceException(f"{method} {NullPieceException.DEFAULT_MESSAGE}")
+                    NullPieceException(
+                        f"{method}:"
+                        f" {NullPieceException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if not isinstance(candidate, Piece):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected team Piece, got {type(candidate).__name__} instead.")
+                    TypeError(
+                        f"{method}: "
+                        f"Expected team Piece, got {type(candidate).__name__} instead."
+                    )
                 )
             
             # For safety cast the candidate to a `Piece` instance.
@@ -57,20 +63,24 @@ class PieceValidator(Validator[Piece]):
             
             if piece.team is None:
                 return ValidationResult.failure(
-                    PieceTeamFieldIsNullException(f"{method}: {PieceTeamFieldIsNullException.DEFAULT_MESSAGE}")
+                    PieceTeamFieldIsNullException(
+                        f"{method}: "
+                        f"{PieceTeamFieldIsNullException.DEFAULT_MESSAGE}")
                 )
             
             if piece.roster_number is None:
                 return ValidationResult.failure(
                     PieceRosterNumberIsNullException(
-                        f"{method}: {PieceRosterNumberIsNullException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{PieceRosterNumberIsNullException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if piece.roster_number < 1 or piece.roster_number > Team.MAX_ROSTER_SIZE:
                 return ValidationResult.failure(
                     RosterNumberOutOfBoundsException(
-                        f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -81,7 +91,9 @@ class PieceValidator(Validator[Piece]):
             
             if piece.positions is None:
                 return ValidationResult.failure(
-                    PieceNullCoordStackException(f"{method}: {PieceNullCoordStackException.DEFAULT_MESSAGE}")
+                    PieceNullCoordStackException(
+                        f"{method}: "
+                        f"{PieceNullCoordStackException.DEFAULT_MESSAGE}")
                 )
             
             return ValidationResult.success(piece)

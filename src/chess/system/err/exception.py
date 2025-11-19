@@ -8,104 +8,146 @@ version: 1.0.0
 """
 
 __all__ = [
-  "ChessException",
-
-#======================# ROLL_BACK EXCEPTIONS #======================#  
-  "RollbackException",
-  "RollbackFailedException",
-  
-#======================# IMPLEMENTATION EXCEPTIONS #======================#
-  "NotImplementedException",
-  
-#======================# STARVATION EXCEPTIONS #======================#
-  "ResourceException",
-
-#======================# INCONSISTENCY EXCEPTIONS #======================#  
-  "InconsistencyException",
-  "InvariantBreachException",
-  "InconsistentCollectionException",
-
-#======================# BUILD_OPTIONS EXCEPTIONS #======================#
-  "NoBuildOptionSelectedException",
-  "BuildOptionSelectionTooLargeException",
-
-#======================# NULL/EMPTY EXCEPTIONS #======================#  
-  "NullException",
-  "NullNumberException",
-  "NullStringException",
-  "BlankStringException",
-
-# ======================# NULL/EMPTY EXCEPTIONS #======================#  
-  "GameColorException",
-  "InvalidGameColorException",
-  "NullGameColorException"
+    "ChessException",
+    
+    # ======================# ROLL_BACK EXCEPTIONS #======================#
+    "RollbackException",
+    "RollbackFailedException",
+    
+    # ======================# IMPLEMENTATION EXCEPTIONS #======================#
+    "NotImplementedException",
+    
+    # ======================# STARVATION EXCEPTIONS #======================#
+    "ResourceException",
+    
+    # ======================# INCONSISTENCY EXCEPTIONS #======================#
+    "InconsistencyException",
+    "InvariantBreachException",
+    "InconsistentCollectionException",
+    
+    # ======================# BUILD_OPTIONS EXCEPTIONS #======================#
+    "NoBuildOptionSelectedException",
+    "BuildOptionSelectionTooLargeException",
+    
+    # ======================# NULL/EMPTY EXCEPTIONS #======================#
+    "NullException",
+    "NullNumberException",
+    "NullStringException",
+    "BlankStringException",
+    
+    # ======================# NULL/EMPTY EXCEPTIONS #======================#
+    "GameColorException",
+    "InvalidGameColorException",
+    "NullGameColorException"
 ]
+
+from typing import Optional
 
 
 class ChessException(Exception):
-  """
-  Super class for application exceptions. do not use directly
-  """
-  ERROR_CODE = "CHESS_ERROR"
-  DEFAULT_MESSAGE = "Chess error occurred."
+    """
+    Super class for application exceptions. do not use directly
+    """
+    ERROR_CODE = "CHESS_ERROR"
+    DEFAULT_MESSAGE = "Chess error occurred."
+    _ex: Optional[Exception]
+    code: str
+    _msg: str
+    
+    def __init__(
+            self,
+            ex: Optional[Exception],
+            msg: str = DEFAULT_MESSAGE,
+            code: str = ERROR_CODE
+    ):
+        self._ex = ex
+        self._code = code
+        self._msg = msg
+        super().__init__(self.msg)
+    
+        
+    @property
+    def ex(self) -> Exception:
+        return self._ex
+    
+    @property
+    def error_code(self) -> str:
+        return self._code
+    
+    @property
+    def msg(self) -> str:
+        return self._msg
+    
+    def __str__(self):
+        return f"{self._code}: {self._msg}"
+    
+    # Only the super class needs the explict constructor
+    # def __init__(self, message: str):
+    #     self.message = message or self.DEFAULT_MESSAGE
+    #     super().__init__(self.message)
+    
+    # Only the super class needs to declare team_name toString. Subclasses
+    # will use this.
 
-  # Only the super class needs the explict constructor
-  def __init__(self, message=None):
-    self.message = message or self.DEFAULT_MESSAGE
-    super().__init__(self.message)
-
-  # Only the super class needs to declare team_name toString. Subclasses
-  # will use this.
-  def __str__(self):
-    return "{self.message}"
 
 
-#======================# ROLL_BACK EXCEPTIONS #======================#  
+# ======================# ROLL_BACK EXCEPTIONS #======================#
 class RollbackException(ChessException):
-  """
-  Base class for rollback-related errors in the chess engine..
-  """
-  DEFAULT_CODE = "ROLLBACK"
-  DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
+    """
+    Base class for rollback-related errors in the chess engine..
+    """
+    DEFAULT_CODE = "ROLLBACK"
+    DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
+
 
 class RollbackFailedException(RollbackException):
-  ERROR_CODE = "ROLLBACK_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Rollback failed."
-  
-#======================# IMPLEMENTATION EXCEPTIONS #======================#
+    ERROR_CODE = "ROLLBACK_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Rollback failed."
+
+
+# ======================# IMPLEMENTATION EXCEPTIONS #======================#
 class NotImplementedException(ChessException):
-  ERROR_CODE = "NOT_IMPLEMENTED_WARNING"
-  DEFAULT_MESSAGE = "Not implemented."
+    ERROR_CODE = "NOT_IMPLEMENTED_WARNING"
+    DEFAULT_MESSAGE = "Not implemented."
 
-#======================# STARVATION EXCEPTIONS #======================#
+
+# ======================# STARVATION EXCEPTIONS #======================#
 class ResourceException(ChessException):
-  ERROR_CODE = "RESOURCE_ERROR"
-  DEFAULT_MESSAGE = "Resource raised an rollback_exception."
+    ERROR_CODE = "RESOURCE_ERROR"
+    DEFAULT_MESSAGE = "Resource raised an exception."
 
 
-#======================# INCONSISTENCY EXCEPTIONS #======================#  
+# ======================# SERVICE EXCEPTIONS #======================#
+class ServiceException(ChessException):
+    ERROR_CODE = "SERVICE_ERROR"
+    DEFAULT_MESSAGE = "Service raised an exception."
+
+
+# ======================# INCONSISTENCY EXCEPTIONS #======================#
 class InconsistencyException(ChessException):
-  """
-  Raised if team_name service inconsistency is detected
-  """
-  ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
-  DEFAULT_MESSAGE = "A service inconsistency was detected."
+    """
+    Raised if service inconsistency is detected
+    """
+    ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
+    DEFAULT_MESSAGE = "A service inconsistency was detected."
+
 
 class InvariantBreachException(ChessException):
-  """
-  Raised when a fundamental invariant of the system or environment is violated.
-  This rollback_exception type signals a breach of consistency — meaning the system’s
-  assumptions about its internal state are no longer valid.
-  """
-  DEFAULT_CODE = "INVARIANT_BREACH_ERROR"
-  DEFAULT_MESSAGE = "A system invariant was violated, indicating a critical state inconsistency. or service loss."
+    """
+    Raised when a fundamental invariant of the system or environment is violated.
+    This rollback_exception type signals a breach of consistency — meaning the system’s
+    assumptions about its internal state are no longer valid.
+    """
+    DEFAULT_CODE = "INVARIANT_BREACH_ERROR"
+    DEFAULT_MESSAGE = "A system invariant was violated, indicating a critical state inconsistency. or service loss."
+
 
 class InconsistentCollectionException(InconsistencyException):
-  """
-  Raised if a collection's state is inconsistent or its service corrupted
-  """
-  ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
-  DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."
+    """
+    Raised if a collection's state is inconsistent or its service corrupted
+    """
+    ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
+    DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."
 
 
 # ======================# BUILD_OPTIONS EXCEPTIONS #======================#
@@ -119,68 +161,60 @@ class NoBuildOptionSelectedException(ChessException):
 
 
 class BuildOptionSelectionTooLargeException(ChessException):
-  """Raised when too many of the available build options are selected. Mainly used by Context classes."""
-  ERROR_CODE = "TOO_MANY_BUILD_OPTIONS_SELECTED_ERROR"
-  DEFAULT_MESSAGE = "Too many build options were selected."
+    """Raised when too many of the available build options are selected. Mainly used by Context classes."""
+    ERROR_CODE = "TOO_MANY_BUILD_OPTIONS_SELECTED_ERROR"
+    DEFAULT_MESSAGE = "Too many build options were selected."
 
 
-#======================# NULL/EMPTY EXCEPTIONS #======================#  
+# ======================# NULL/EMPTY EXCEPTIONS #======================#
 class NullException(ChessException):
-  """
-  Raised if an entity, method, or operation requires not null but gets null instead.
-  """
-  ERROR_CODE = "NULL_ERROR"
-  DEFAULT_MESSAGE = "cannot be null"
+    """
+    Raised if an entity, method, or operation requires not null but gets null instead.
+    """
+    ERROR_CODE = "NULL_ERROR"
+    DEFAULT_MESSAGE = "cannot be null"
+
 
 class NullNumberException(NullException):
-  """
-  Raised if mathematical expression or geometric, algebraic, or optimization that need
-   team_name number but get null instead NUllNumberException is thrown. Ids are not used for math
-   so we need team_name different null team_exception for math variables
-  """
-  ERROR_CODE = "NULL_NUMBER_ERROR"
-  DEFAULT_MESSAGE = "Number cannot be null"
+    """
+    Raised if mathematical expression or geometric, algebraic, or optimization that need
+     number but get null instead NUllNumberException is thrown. Ids are not used for math
+     so we need different null team_exception for math variables
+    """
+    ERROR_CODE = "NULL_NUMBER_ERROR"
+    DEFAULT_MESSAGE = "Number cannot be null"
+
 
 class NullStringException(NullException):
-  """
-  Raised if an entity, method, or operation requires team_name string but gets null instead.
-  """
-  ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-  DEFAULT_MESSAGE = "Cannot old_search by team_name null string"
+    """
+    Raised if an entity, method, or operation requires string but gets null instead.
+    """
+    ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
+    DEFAULT_MESSAGE = "Cannot old_search by null string"
+
 
 class BlankStringException(ChessException):
-  """
-  Raised if old_search parameter is team_name blank or empty string
-  """
-  ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
-  DEFAULT_MESSAGE = "Cannot old_search by an empty or blank string"
+    """
+    Raised if old_search parameter is blank or empty string
+    """
+    ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
+    DEFAULT_MESSAGE = "Cannot old_search by an empty or blank string"
 
 
 # ======================# NULL/EMPTY EXCEPTIONS #======================#  
 class GameColorException(ChessException):
-  """"""
-  ERROR_CODE = "GAME_COLOR_ERROR"
-  DEFAULT_MESSAGE = "GameColor raised an exception failed."
+    """"""
+    ERROR_CODE = "GAME_COLOR_ERROR"
+    DEFAULT_MESSAGE = "GameColor raised an exception failed."
+
 
 class InvalidGameColorException(GameColorException):
-  """"""
-  ERROR_CODE = "GAME_COLOR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "GameColor validation failed"
+    """"""
+    ERROR_CODE = "GAME_COLOR_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "GameColor validation failed"
+
 
 class NullGameColorException(GameColorException, NullException):
-  """"""
-  ERROR_CODE = "NULL_GAME_COLOR_ERROR"
-  DEFAULT_MESSAGE = "GameColor cannot be null."
-
-
-
-
-
-
-
-
-
-
-
-
-
+    """"""
+    ERROR_CODE = "NULL_GAME_COLOR_ERROR"
+    DEFAULT_MESSAGE = "GameColor cannot be null."
