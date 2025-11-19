@@ -1,7 +1,7 @@
-# src/chess/target/coord_stack_validator.py
+# src/chess/coord/validator.py
 
 """
-Module: chess.target.coord_stack_validator
+Module: chess.coord.validator
 Author: Banji Lawal
 Created: 2025-08-12
 version: 1.0.0
@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from chess.coord.exception import
+
 from chess.system import Validator, ValidationResult, LoggingLevelRouter, ROW_SIZE, COLUMN_SIZE
 from chess.coord import (
-    Coord, NullCoordException, NullRowException, RowBelowBoundsException, RowAboveBoundsException, NullColumnException,
-    ColumnBelowBoundsException, ColumnAboveBoundsException, InvalidCoordException, InvalidCoordColumnException,
-    InvalidCoordRowException
+    Coord, NullCoordException, NullRowException, RowBelowBoundsException, RowAboveBoundsException,
+    NullColumnException, ColumnBelowBoundsException, ColumnAboveBoundsException, InvalidCoordException,
+    InvalidCoordColumnException, InvalidCoordRowException
 )
 
 
@@ -69,12 +69,14 @@ class CoordValidator(Validator[Coord]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullCoordException(f"{method}: {NullCoordException.DEFAULT_MESSAGE}")
+                    NullCoordException(f"{method}: "
+                                       f"{NullCoordException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, Coord):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected Coord, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: "
+                              f"Expected Coord, got {type(candidate).__name__} instead.")
                 )
             
             coord = cast(Coord, candidate)
@@ -92,8 +94,9 @@ class CoordValidator(Validator[Coord]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordException(
-                    f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{InvalidCoordException.DEFAULT_MESSAGE}",
                 )
             )
         
@@ -127,12 +130,14 @@ class CoordValidator(Validator[Coord]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRowException(f"{method}: {NullRowException.DEFAULT_MESSAGE}")
+                    NullRowException(f"{method}: "
+                                     f"{NullRowException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, int):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected int, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: "
+                              f"Expected int, got {type(candidate).__name__} instead.")
                 )
             
             number = cast(int, candidate)
@@ -147,7 +152,8 @@ class CoordValidator(Validator[Coord]):
             if number >= ROW_SIZE:
                 return ValidationResult.failure(
                     RowAboveBoundsException(
-                        f"{method}: {RowAboveBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{RowAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -156,8 +162,9 @@ class CoordValidator(Validator[Coord]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordRowException(
-                    f"{method}: {InvalidCoordRowException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{InvalidCoordRowException.DEFAULT_MESSAGE}",
                 )
             )
     
@@ -190,12 +197,14 @@ class CoordValidator(Validator[Coord]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullColumnException(f"{method}: {NullColumnException.DEFAULT_MESSAGE}")
+                    NullColumnException(f"{method}: "
+                                        f"{NullColumnException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, int):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected int, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: "
+                              f"Expected int, got {type(candidate).__name__} instead.")
                 )
             
             number = cast(int, candidate)
@@ -203,14 +212,16 @@ class CoordValidator(Validator[Coord]):
             if number < 0:
                 return ValidationResult.failure(
                     ColumnBelowBoundsException(
-                        f"{method}: {ColumnBelowBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{ColumnBelowBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if number >= COLUMN_SIZE:
                 return ValidationResult.failure(
                     ColumnAboveBoundsException(
-                        f"{method}: {ColumnAboveBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{ColumnAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -219,7 +230,8 @@ class CoordValidator(Validator[Coord]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordColumnException(
-                    f"{method}: {InvalidCoordColumnException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{InvalidCoordColumnException.DEFAULT_MESSAGE}",
                 )
             )

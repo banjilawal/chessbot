@@ -1,12 +1,13 @@
-# src/chess/target/__init__.py
+# src/chess/coord/__init__.py
 
 """
-Module: chess.target.__init__
+Module: chess.coord.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+from .service import *
 from .exception import *
 
 from .dto import *
@@ -15,17 +16,16 @@ from .coord import Coord
 from .builder import CoordBuilder
 from .validator import CoordValidator
 
-from .service import CoordService
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
 __author__ = "Banji Lawal"
-__package_name__ = "chess.target"
+__package_name__ = "chess.coord"
 
 
 # Export control - only what belongs in public API
 __all__ = [
-    "CoordService",
+    *service.CoordService,
     
     *exception.__all__,
     

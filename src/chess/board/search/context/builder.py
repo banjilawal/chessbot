@@ -59,7 +59,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             *   target (Optional[Coord]):                Selected if search target is a target.
             *   id_validator (type[IdValidator]):       Validates an id-search-target
             *   name_validator (type[NameValidator]):   Validates a name-search-target
-            *   coord_builder (type[CoordBuilder]):     Validates a target-search-target
+            *   builder (type[CoordBuilder]):     Validates a target-search-target
 
         # Returns:
         BuildResult[TeamSearchContext] containing either:
@@ -197,7 +197,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
 
         # Parameters:
           *     target (Coord):                              target Coord
-          *     coord_validator (type[CoordValidator]):     validates target.
+          *     validator (type[CoordValidator]):     validates target.
 
         # Returns:
         ValidationResult[TeamSearchContext] containing either:

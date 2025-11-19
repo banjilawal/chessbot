@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/scalar/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/scalar/service/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/scalar/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/scalar/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/context/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/search/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/context/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/stack/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/identity/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/identity/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +264,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/vector",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/coord/service",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -289,18 +291,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/coord/service" />
       <recent name="$PROJECT_DIR$/src/chess/vector" />
       <recent name="$PROJECT_DIR$/src/chess/scalar/service" />
       <recent name="$PROJECT_DIR$/src/chess/piece/stack" />
       <recent name="$PROJECT_DIR$/src/chess/team/schema" />
-      <recent name="$PROJECT_DIR$/src/chess/agent/stack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/coord/service" />
+      <recent name="$PROJECT_DIR$/src/chess/vector/service" />
       <recent name="$PROJECT_DIR$/src/chess/scalar/service" />
       <recent name="$PROJECT_DIR$/src/chess/agent/stack/service" />
       <recent name="$PROJECT_DIR$/src/chess/engine" />
-      <recent name="$PROJECT_DIR$/src/chess/system/color" />
-      <recent name="$PROJECT_DIR$/src/chess/agent/stack" />
     </key>
   </component>
   <component name="RunManager" selected="Python.pawn">
@@ -634,7 +636,7 @@
       <workItem from="1763265847754" duration="34750000" />
       <workItem from="1763314326886" duration="24621000" />
       <workItem from="1763364100247" duration="89670000" />
-      <workItem from="1763492397223" duration="43929000" />
+      <workItem from="1763492397223" duration="49517000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,7 @@
-# src/chess/target/stack/service/service.py
+# src/chess/piece/stack/service/service.py
 
 """
-Module: chess.target.stack.service.service
+Module: chess.piece.stack.service.service
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -18,12 +18,12 @@ from chess.piece.stack.service.exception import CannotUndoPreviousTurnException,
 from chess.system import LoggingLevelRouter, Result, SearchResult, Service, ValidationResult
 
 
-class CoordStackService(Service):
+class CoordStackService(Service[CoordStack]):
     """
     # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for VectoValidator and CoordStackBuilder.
+    1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.
     2.  Protects CoordStack objects from direct manipulation.
     3.  Extends behavior and functionality of CoordStack objects.
     4.  Public facing API for CoordStack modules.
@@ -44,12 +44,11 @@ class CoordStackService(Service):
         *   stack (CoordStack):                                 The stack of Coord objects. Protected
                                                                 from direct access.
                                                                 
-        *   current_coord (Coord):                              Shows the current target on the stack.
+        *   current_coord (Coord):                              Coord at the top of the stack.
         
-        *   coord_service (CoordService):                       Validates Coord objects before pushing them
-                                                                onto the stack.
+        *   coord_service (CoordService):                       
                                                                 
-        *   coord_stack_validator (type[CoordStackValidator]):  For internally validating the stack attribute
+        *   stack_validator (type[CoordStackValidator]):  For internally validating the stack attribute
                                                                 when running CoordStackServiceValidator
     """
     SERVICE_NAME = "CoordStackService"
@@ -60,7 +59,7 @@ class CoordStackService(Service):
     _stack: CoordStack
     _current_coord: Coord
     _coord_service: CoordService
-    _coord_stack_validator: type[CoordStackValidator]
+    _stack_validator: type[CoordStackValidator]
     
     def __init__(
             self,
@@ -68,13 +67,13 @@ class CoordStackService(Service):
             name: str = SERVICE_NAME,
             stack: CoordStack = CoordStack(),
             coord_service: CoordService = CoordService(),
-            coord_stack_validator: type[CoordStackValidator] = CoordStackValidator,
+            stack_validator: type[CoordStackValidator] = CoordStackValidator,
     ):
         super().__init__(id=id, name=name)
         
         self._stack = stack
         self._coord_service = coord_service
-        self._coord_stack_validator = coord_stack_validator
+        self._stack_validator = stack_validator
 
         self._pops_per_turn = 0
         self._stack_size = self._stack.size
@@ -104,7 +103,7 @@ class CoordStackService(Service):
     @LoggingLevelRouter.monitor
     def validate_coord_stack(self) -> ValidationResult[CoordStack]:
         """Validates the internal CoordStack without exposing it."""
-        return self._coord_stack_validator.validate(self._stack)
+        return self._stack_validator.validate(self._stack)
     
     @LoggingLevelRouter.monitor
     def push_coord(self, coord) -> Result[Coord]:

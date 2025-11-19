@@ -50,7 +50,7 @@ class BoardBuilder(Builder[Board]):
           * num_rows (int): number of rows in the 2D array of Squares
           * num_columns (int): number of columns in the 2D array of Squares
           * id_validator (type[IdValidator]): sanity checks id parameter.
-          * coord_builder (type[CoordBuilder]): Responsible for building Coord objects in the board.
+          * builder (type[CoordBuilder]): Responsible for building Coord objects in the board.
           * square_builder (type[SquareBuilder]): Responsible for building Square objects in the board.
     
         # Returns:

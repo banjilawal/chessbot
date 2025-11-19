@@ -1,7 +1,7 @@
-# src/chess/target/factory.py
+# src/chess/coord/builder.py
 
 """
-Module: chess.target.builder
+Module: chess.coord.builder
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0
@@ -68,39 +68,45 @@ class CoordBuilder(Builder[Coord]):
         try:
             if row is None:
                 return BuildResult.failure(
-                    NullRowException(f"{method}: {NullRowException.DEFAULT_MESSAGE}")
+                    NullRowException(f"{method}: "
+                                     f"{NullRowException.DEFAULT_MESSAGE}")
                 )
             
             if row < 0:
                 return BuildResult.failure(
                     RowBelowBoundsException(
-                        f"{method}: {RowBelowBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{RowBelowBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if row >= ROW_SIZE:
                 return BuildResult.failure(
                     RowAboveBoundsException(
-                        f"{method}: {RowAboveBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{RowAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if column is None:
                 return BuildResult.failure(
-                    NullColumnException(f"{method}: {NullRowException.DEFAULT_MESSAGE}")
+                    NullColumnException(f"{method}: "
+                                        f"{NullRowException.DEFAULT_MESSAGE}")
                 )
             
             if column < 0:
                 return BuildResult.failure(
                     ColumnBelowBoundsException(
-                        f"{method}: {ColumnBelowBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{ColumnBelowBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if column >= COLUMN_SIZE:
                 return BuildResult.failure(
                     ColumnAboveBoundsException(
-                        f"{method}: {ColumnAboveBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{ColumnAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -109,7 +115,8 @@ class CoordBuilder(Builder[Coord]):
         except Exception as ex:
             return BuildResult.failure(
                 CoordBuildFailedException(
-                    f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{CoordBuildFailedException.DEFAULT_MESSAGE}",
                 )
             )

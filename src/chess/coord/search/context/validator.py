@@ -50,7 +50,7 @@ class CoordSearchContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a Coord.
-          * coord_validator (type[CoordValidator]): Enforces safety requirements on row, column, target targets.
+          * validator (type[CoordValidator]): Enforces safety requirements on row, column, target targets.
 
           
         # Returns:
@@ -131,7 +131,7 @@ class CoordSearchContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a row.
-          * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
+          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -172,7 +172,7 @@ class CoordSearchContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a column.
-          * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
+          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -213,7 +213,7 @@ class CoordSearchContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a target.
-          * coord_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
+          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:

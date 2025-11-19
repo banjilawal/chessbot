@@ -1,7 +1,7 @@
-# src/chess/target/exception.py
+# src/chess/coord/exception.py
 
 """
-Module: chess.target.exception
+Module: chess.coord.exception
 Author: Banji Lawal
 Created: 2025-09-27
 version: 1.0.0

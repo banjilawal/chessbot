@@ -55,7 +55,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
             * row (Optional[int]): selected if search target is an id.
             * column (Optional[int]): selected if search target is a column.
             * target (Optional[Coord]): selected if search target is a target.
-            * coord_validator (type[CoordValidator]): validates an id-search-target
+            * validator (type[CoordValidator]): validates an id-search-target
 
         # Returns:
           BuildResult[CoordSearchContext] containing either:
@@ -116,7 +116,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
 
         # Parameters:
           * row (int): target id
-          * coord_validator (type[CoordValidator]): validates target.
+          * validator (type[CoordValidator]): validates target.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -154,7 +154,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
 
         # Parameters:
           * column (int): target column
-          * coord_validator (type[CoordValidator]): validates target.
+          * validator (type[CoordValidator]): validates target.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -193,7 +193,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
 
         # Parameters:
           * target (Coord): target Coord
-          * coord_validator (type[CoordValidator]): validates target.
+          * validator (type[CoordValidator]): validates target.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
