@@ -20,8 +20,6 @@ __all__ = [
     # ======================# STARVATION EXCEPTIONS #======================#
     "ResourceException",
 
-# ======================# SERVICE EXCEPTIONS #======================#
-    "ServiceException",
     
     # ======================# INCONSISTENCY EXCEPTIONS #======================#
     "InconsistencyException",
@@ -116,12 +114,6 @@ class NotImplementedException(ChessException):
 class ResourceException(ChessException):
     ERROR_CODE = "RESOURCE_ERROR"
     DEFAULT_MESSAGE = "Resource raised an exception."
-
-
-# ======================# SERVICE EXCEPTIONS #======================#
-class ServiceException(ChessException):
-    ERROR_CODE = "SERVICE_ERROR"
-    DEFAULT_MESSAGE = "Service raised an exception."
 
 
 # ======================# INCONSISTENCY EXCEPTIONS #======================#
