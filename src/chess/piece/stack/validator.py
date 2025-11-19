@@ -18,7 +18,7 @@ from chess.piece import (
 
 class CoordStackValidator(Validator[CoordStack]):
     """
-    # ROLE: Validation
+    # ROLE: Validation, Integrity Guarantor
   
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of CoordStack, that meets integrity requirements, before

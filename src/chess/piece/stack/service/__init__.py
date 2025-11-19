@@ -8,5 +8,5 @@ version: 1.0.0
 """
 
 from .exception import *
-from .service import PieceStackService
-from .validator import PieceStackServiceValidator
+from .service import CoordStackService
+from .validator import CoordStackServiceValidator
