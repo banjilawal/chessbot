@@ -15,24 +15,24 @@ from chess.piece import (
     PushingDuplicateCoordException
 )
 from chess.piece.stack.service.exception import CannotUndoPreviousTurnException, DoubleCoordPushException
-from chess.system import LoggingLevelRouter, Result, SearchResult, ValidationResult
+from chess.system import LoggingLevelRouter, Result, SearchResult, Service, ValidationResult
 
 
-class CoordStackService:
+class CoordStackService(Service):
     """
-    # ROLE: Service, Data Structure Operations
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provides Piece instance with a single interface for CoordStack, CoordStackValidator
-        and CoordService.
-    2.  Prevents direct access to CoordStack.
-    3.  Manages push, pop and search operations on CoordStack.
-
+    1.  Provide a single interface/entry point for VectoValidator and CoordStackBuilder.
+    2.  Protects CoordStack objects from direct manipulation.
+    3.  Extends behavior and functionality of CoordStack objects.
+    4.  Public facing API for CoordStack modules.
 
     # PROVIDES:
-    ValidationResult[CoordStackService] containing either:
-        - On success: CoordStackService in the payload.
-        - On failure: Exception.
+        *   CoordStackBuilder
+        *   CoordStackValidator
+        *   CoordStack exceptions
+        *   Stack operations (push, pop, search
 
     # ATTRIBUTES:
         *   stack_size (int):                                  Shows the size of the internal stack.
@@ -52,6 +52,7 @@ class CoordStackService:
         *   coord_stack_validator (type[CoordStackValidator]):  For internally validating the stack attribute
                                                                 when running CoordStackServiceValidator
     """
+    SERVICE_NAME = "CoordStackService"
     
     _is_empty: bool
     _stack_size: int
@@ -63,10 +64,14 @@ class CoordStackService:
     
     def __init__(
             self,
+            id: int,
+            name: str = SERVICE_NAME,
             stack: CoordStack = CoordStack(),
             coord_service: CoordService = CoordService(),
             coord_stack_validator: type[CoordStackValidator] = CoordStackValidator,
     ):
+        super().__init__(id=id, name=name)
+        
         self._stack = stack
         self._coord_service = coord_service
         self._coord_stack_validator = coord_stack_validator

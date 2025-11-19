@@ -44,8 +44,6 @@ class TeamStackService(Service[TeamStack]):
 
         *   scalar_service (type[ScalarService]):       Provides scalar product functionality.
     """
-    SERVICE_NAME = "TeamService"
-    
     SERVICE_NAME = "TeamStackService"
     
     _pop_count: int
