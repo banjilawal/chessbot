@@ -7,10 +7,13 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from typing import List, Optional
+from typing import Optional
 
 from chess.coord import Coord, CoordService
-from chess.piece import CoordStackValidator, CoordStack
+from chess.piece import (
+    CoordStackServiceException, CoordStackValidator, CoordStack, PoppingEmptyCoordStackException,
+    PushingDuplicateCoordException
+)
 from chess.system import LoggingLevelRouter, Result, SearchResult
 
 
@@ -58,7 +61,7 @@ class CoordStackService:
         method = "CoordStackService.push_coord"
         
         try:
-            coord_validation = self._coord_service.validate_coord(coord)
+            coord_validation = self._coord_service.validate_as_coord(coord)
             if coord_validation.is_failure():
                 return Result.failure(coord_validation.exception)
             
@@ -76,8 +79,7 @@ class CoordStackService:
         except Exception as ex:
             return Result.failure(
                 CoordStackServiceException(
-                    f"{method}: {CoordStackServiceException.DEFAULT_MESSAGE}",
-                    ex
+                    f"{method}: {CoordStackServiceException.DEFAULT_MESSAGE}"
                 )
             )
     
@@ -87,8 +89,8 @@ class CoordStackService:
         try:
             if self._stack.is_empty():
                 return Result.failure(
-                    PopEmptyStackException(
-                        f"{method}: {PopEmptyStackException.DEFAULT_MESSAGE}"
+                    PoppingEmptyCoordStackException(
+                        f"{method}: {PoppingEmptyCoordStackException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -101,8 +103,7 @@ class CoordStackService:
         except Exception as ex:
             return Result.failure(
                 CoordStackServiceException(
-                    f"{method}: {CoordStackServiceException.DEFAULT_MESSAGE}",
-                    ex
+                    f"{method}: {CoordStackServiceException.DEFAULT_MESSAGE}"
                 )
             )
     
@@ -122,7 +123,6 @@ class CoordStackService:
         except Exception as ex:
             return SearchResult.failure(
                 CoordStackServiceException(
-                    f"{method}: {CoordStackServiceException.DEFAULT_MESSAGE}",
-                    ex
+                    f"{method}: {CoordStackServiceException.DEFAULT_MESSAGE}"
                 )
             )
