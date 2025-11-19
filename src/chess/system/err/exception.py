@@ -45,25 +45,23 @@ from typing import Optional
 
 
 class ChessException(Exception):
-    """
-    Super class for application exceptions. do not use directly
-    """
+    """Super class for application exceptions. do not use directly."""
     ERROR_CODE = "CHESS_ERROR"
     DEFAULT_MESSAGE = "Chess error occurred."
     _ex: Optional[Exception]
-    code: str
-    _msg: str
+    _error_code: str
+    _message: str
     
     def __init__(
             self,
-            ex: Optional[Exception],
-            msg: str = DEFAULT_MESSAGE,
-            code: str = ERROR_CODE
+            message: str = DEFAULT_MESSAGE,
+            error_code: str = ERROR_CODE,
+            ex: Optional[Exception] = None,
     ):
         self._ex = ex
-        self._code = code
-        self._msg = msg
-        super().__init__(self.msg)
+        self._error_code = error_code
+        self._message = message
+        super().__init__(message)
     
         
     @property
@@ -72,14 +70,14 @@ class ChessException(Exception):
     
     @property
     def error_code(self) -> str:
-        return self._code
+        return self._error_code
     
     @property
     def msg(self) -> str:
-        return self._msg
+        return self._message
     
     def __str__(self):
-        return f"{self._code}: {self._msg}"
+        return f"{self._error_code}: {self._message}"
     
     # Only the super class needs the explict constructor
     # def __init__(self, message: str):

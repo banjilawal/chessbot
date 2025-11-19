@@ -39,7 +39,7 @@ class Context(ABC):
     # ROLE: Message passing, Data Transfer Object
 
     # RESPONSIBILITIES:
-    1. Carry the outcome a validator operation to originating client.
+    1. Carry the outcome a coord_stack_validator operation to originating client.
     2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
 
     # PROVIDES:

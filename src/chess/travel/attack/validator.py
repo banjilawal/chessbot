@@ -1,7 +1,7 @@
 # src/chess/owner/travel/attack/factory.py
 
 """
-Module: `chess.owner.travel.attack.validator`
+Module: `chess.owner.travel.attack.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

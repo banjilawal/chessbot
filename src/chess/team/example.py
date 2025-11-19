@@ -126,7 +126,7 @@ version: 1.0.0
     client requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -169,7 +169,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `Team` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
@@ -177,7 +177,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -271,7 +271,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Team` objects.
+creation, coord_stack_validator, and manipulation of `Team` objects.
 
 ***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
     `Team`, `TeamBuilder`, and `TeamValidator`
@@ -308,10 +308,10 @@ See the list of exceptions in the `__all__` list following (e.g., `TeamException
 `NullTeamException`, `InvalidTeamException`, ).
 """
 
-# src/chess/team/validator.py
+# src/chess/team/coord_stack_validator.py
 
 """
-Module: chess.team.validator
+Module: chess.team.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-09-11
 
@@ -326,7 +326,7 @@ Created: 2025-09-11
     `Team` passes and additional checks before deployment.
 
 **Related Features**:
-    Building teams -> See TeamBuilder, module[chess.team_name.validator],
+    Building teams -> See TeamBuilder, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

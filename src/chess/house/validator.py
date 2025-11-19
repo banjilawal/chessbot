@@ -1,7 +1,7 @@
-# src/chess/house/validator.py
+# src/chess/house/coord_stack_validator.py
 
 """
-Module: chess.house.validator
+Module: chess.house.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-10
 version: 1.0.0

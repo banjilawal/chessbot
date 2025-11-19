@@ -1,7 +1,7 @@
-# src/chess/team/schema/validator.py
+# src/chess/team/schema/coord_stack_validator.py
 
 """
-Module: chess.team.schema.validator
+Module: chess.team.schema.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-18
 """

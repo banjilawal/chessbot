@@ -48,7 +48,7 @@ class PieceException(ChessException):
 
 # ======================# PIECE VALIDATION EXCEPTIONS #======================#
 class InvalidPieceException(PieceException, ValidationException):
-    """Raised by PieceValidators if client fails validator."""
+    """Raised by PieceValidators if client fails coord_stack_validator."""
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Piece validation failed."
 
@@ -104,7 +104,7 @@ class PieceRequiresInitialPlacementException(PieceException):
 class PieceRosterNumberIsNullException(PieceException, NullException):
     """
     Raised a owner"s roster number is null. This should never happen. the invariant roster number
-    is set during build. If its null during validator there has been service loss or an inconsistency.
+    is set during build. If its null during coord_stack_validator there has been service loss or an inconsistency.
     """
     ERROR_CODE = "PIECE_NULL_ROSTER_NUMBER_ERROR"
     DEFAULT_MESSAGE = "A `Piece` object cannot have a null roster number. There may be service inconsistency or loss."

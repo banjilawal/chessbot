@@ -1,7 +1,7 @@
-# src/coord/search/context/validator.py
+# src/coord/search/context/coord_stack_validator.py
 
 """
-Module: chess.coord.search.context.validator
+Module: chess.coord.search.context.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

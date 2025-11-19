@@ -102,10 +102,10 @@ def create_encounter(actor_candidate: Piece, discover: Piece) -> Encounter:
 """
 Validates team_name discover with chained exceptions for discover meeting specifications:
   - Not null
-  - visitor_id fails validator
-  - visitor_name fails validator
-  - point fails validator
-If validator fails their team_exception will be encapsulated in team_name PieceValidationException
+  - visitor_id fails coord_stack_validator
+  - visitor_name fails coord_stack_validator
+  - point fails coord_stack_validator
+If coord_stack_validator fails their team_exception will be encapsulated in team_name PieceValidationException
 
 Args
   candidate (Piece): discover to validate
@@ -177,7 +177,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Vector` objects.
+creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -238,7 +238,7 @@ Notes:
 # src/chess/square/old_occupation_validator.py
 
 """
-Module: chess.square.validator
+Module: chess.square.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -277,5 +277,5 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * PieceFactory: The validator of Piece instances.
+ * PieceFactory: The coord_stack_validator of Piece instances.
 """

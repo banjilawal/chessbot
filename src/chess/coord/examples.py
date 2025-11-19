@@ -89,7 +89,7 @@ Raise:
 # src/chess/point/factory.py
 
 """
-Module: `chess.point.validator`
+Module: `chess.point.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -372,7 +372,7 @@ Raises:
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of Coord objects.
+creation, coord_stack_validator, and manipulation of Coord objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 Coord, CoordBuilder, and CoordValidator

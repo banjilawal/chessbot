@@ -1,7 +1,7 @@
-# src/chess/engine/validator.py
+# src/chess/engine/coord_stack_validator.py
 
 """
-Module: chess.engine.validator
+Module: chess.engine.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-18
 version: 1.0.0

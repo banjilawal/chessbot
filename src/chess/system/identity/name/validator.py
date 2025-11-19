@@ -1,7 +1,7 @@
-# src/chess/system/identity/name/validator.py
+# src/chess/system/identity/name/coord_stack_validator.py
 
 """
-Module: chess.system.identity.name.validator
+Module: chess.system.identity.name.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-08-27
 version: 1.0.0

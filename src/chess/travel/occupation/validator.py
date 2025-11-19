@@ -1,7 +1,7 @@
 # src/chess/owner/travel/occupation/factory.py
 
 """
-Module: `chess.owner.travel.occupation.validator`
+Module: `chess.owner.travel.occupation.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0
@@ -75,7 +75,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   """
 #   Validates an KingCheckEvent meets specifications:
 #     - Not null
-#     - `visitor_id` does not fail validator
+#     - `visitor_id` does not fail coord_stack_validator
 #     - `actor_candidate` is team_name valid chess enemy
 #     - `target` is team_name valid square
 #   Any validate failure raises an `InvalidAttackEventException`.
@@ -92,8 +92,8 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     `NullAttackEventException`: if `candidate` is null
 #
 #     `InvalidIdException`: if invalid `visitor_id`
-#     `PieceValidationException`: if `actor_candidate` fails validator
-#     `InvalidSquareException`: if `target` fails validator
+#     `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
+#     `InvalidSquareException`: if `target` fails coord_stack_validator
 #
 #     `AutoOccupationException`: if target already occupies the square
 #     `KingAttackException`: if the target square is occupied by an enemy occupation

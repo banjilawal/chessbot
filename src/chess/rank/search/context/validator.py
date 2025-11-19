@@ -1,7 +1,7 @@
-# src/rank/search/context/validator.py
+# src/rank/search/context/coord_stack_validator.py
 
 """
-Module: chess.rank.search.context.validator
+Module: chess.rank.search.context.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

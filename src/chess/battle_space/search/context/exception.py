@@ -7,7 +7,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of **TeamSearchContext objects**. It handles boundary checks (row/column)
+creation, coord_stack_validator, and manipulation of **TeamSearchContext objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `BoardSearchContextValidator` and `ProjectionSearchContextBuilder`processes.
 

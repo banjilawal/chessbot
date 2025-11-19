@@ -1,7 +1,7 @@
-# src/chess/rank/validator/name/validator.py
+# src/chess/rank/coord_stack_validator/name/coord_stack_validator.py
 
 """
-Module: chess.rank.validator.name.validator
+Module: chess.rank.coord_stack_validator.name.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

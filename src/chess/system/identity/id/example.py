@@ -11,7 +11,7 @@ version: 1.0.0
 # src/chess/system/visitor_id/factory.py
 
 """
-Module: chess.system.visitor_id.validator
+Module: chess.system.visitor_id.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-08-12
 Updated: 2025-10-10

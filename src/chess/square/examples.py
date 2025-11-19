@@ -262,13 +262,13 @@ The major theme influencing the modules design are
 
 # SECTION 5- Features Supporting Requirements:
   1. The ability to handle errors without crashing the application is a reliability feature.
-  2. Ensuring validator results are communicated are sent to clients is an integrity feature.
+  2. Ensuring coord_stack_validator results are communicated are sent to clients is an integrity feature.
 
 # SECTION 6 - Feature Delivery Mechanism:
   1. Verify existing entities meet minimum requirements for use in the system.
   2. A description of an error condition, boundary violation, experienced or caused by an entity in
-      the validator graph.
-  3. The root of a scalable, modular hierarchy for validator related exceptions.
+      the coord_stack_validator graph.
+  3. The root of a scalable, modular hierarchy for coord_stack_validator related exceptions.
 
 # SECTION 7 - Dependencies:
 * From chess.system:
@@ -286,7 +286,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of Vector objects.
+creation, coord_stack_validator, and manipulation of Vector objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 Vector, VectorBuilder, and VectorValidator
@@ -322,10 +322,10 @@ CONTAINS:
 See the list of exceptions in the __all__ list following (e.g., VectorException,
 NullVectorException, InvalidVectorException, ).
 """
-# src/chess/square/validator.py
+# src/chess/square/coord_stack_validator.py
 
 """
-Module: chess.square.validator
+Module: chess.square.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10

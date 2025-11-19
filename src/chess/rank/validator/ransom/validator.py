@@ -1,7 +1,7 @@
-# src/chess/rank/validator/ransom/validator.py
+# src/chess/rank/coord_stack_validator/ransom/coord_stack_validator.py
 
 """
-Module: chess.rank.validator.ransom.validator
+Module: chess.rank.coord_stack_validator.ransom.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

@@ -7,7 +7,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `Team` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
@@ -15,7 +15,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

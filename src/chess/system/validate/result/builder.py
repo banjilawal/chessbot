@@ -1,7 +1,7 @@
 # src/chess/square/old_occupation_validator.py
 
 """
-Module: `chess.square.validator`
+Module: `chess.square.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -40,7 +40,7 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * `ValidationResultBuilder`: The validator of `ValidationResult` instances.
+ * `ValidationResultBuilder`: The coord_stack_validator of `ValidationResult` instances.
 """
 
 from typing import TypeVar, Generic
@@ -86,7 +86,7 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
     try:
       if payload is None and exception is None:
         return BuildResult(exception=ValidationResultBuildFailedException(
-          f"{method}: ValidationResultBuildFailed The payload and rollback_exception of a validator "
+          f"{method}: ValidationResultBuildFailed The payload and rollback_exception of a coord_stack_validator "
           f"result cannot both be null."
           )
         )

@@ -1,4 +1,4 @@
-# src/chess/graph/validator.py
+# src/chess/graph/coord_stack_validator.py
 
 """
 Module: chess.graph.validation

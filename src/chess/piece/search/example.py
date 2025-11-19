@@ -7,7 +7,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `Checker` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `Checker` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Checker` objects released by the module will satisfy client
@@ -15,7 +15,7 @@ version: 1.0.0
     from `DiscoveryBuilder` --should-- satisfy `DiscoveryValidator` requirements.
 
 **Related Features**:
-    Authenticating existing discoverys -> See DiscoveryValidator, module[chess.discovery.validator],
+    Authenticating existing discoverys -> See DiscoveryValidator, module[chess.discovery.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

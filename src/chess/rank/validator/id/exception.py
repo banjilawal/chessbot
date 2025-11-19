@@ -1,7 +1,7 @@
-# src/chess/rank/validator/id/exception.py
+# src/chess/rank/coord_stack_validator/id/exception.py
 
 """
-Module: chess.rank.validator.id.exceptiom
+Module: chess.rank.coord_stack_validator.id.exceptiom
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

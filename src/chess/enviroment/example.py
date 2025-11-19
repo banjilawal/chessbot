@@ -81,10 +81,10 @@
 #     f"{method}: {SquareMisMatchesTravelResourceException.DEFAULT_MESSAGE}"
 #   ))
 
-# src/chess/owner/travel/base/validator/traveler/exception.py
+# src/chess/owner/travel/base/coord_stack_validator/traveler/exception.py
 
 """
-Module: `chess.owner.travel.base.validator.traveler.exception`
+Module: `chess.owner.travel.base.coord_stack_validator.traveler.exception`
 Author: Banji Lawal
 Created: 2025-10-06
 Version: 1.0.1
@@ -92,7 +92,7 @@ Version: 1.0.1
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
+creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
 

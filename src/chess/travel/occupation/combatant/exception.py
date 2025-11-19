@@ -38,13 +38,13 @@ class NullCombatantOccupationEventException(CombatantOccupationEventException, N
 
 
 class InvalidCombatantOccupationEventException(CombatantOccupationEventException, ValidationException):
-  """Raised by CombatantOccupationEventValidators if a candidate fails validator."""
+  """Raised by CombatantOccupationEventValidators if a candidate fails coord_stack_validator."""
   ERROR_CODE = "OCCUPATION_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "CombatantOccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(CombatantOccupationEventException):
-  """Raised by CombatantOccupationEventValidators if a candidate fails validator."""
+  """Raised by CombatantOccupationEventValidators if a candidate fails coord_stack_validator."""
   ERROR_CODE = "OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_ERROR"
   DEFAULT_MESSAGE = "CombatantOccupationEvent destination square is not empty."
   

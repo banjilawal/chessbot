@@ -45,7 +45,7 @@ class VisitationEventException(ChessException):
 
 # ======================# VISITATION VALIDATION EXCEPTIONS #======================#
 class InvalidVisitationEventException(VisitationEventException, ValidationException):
-    """Raised by VisitationValidators if client fails validator."""
+    """Raised by VisitationValidators if client fails coord_stack_validator."""
     ERROR_CODE = "VISITATION_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Visitationation validation failed."
 
@@ -86,7 +86,7 @@ class UnregisteredTeamMemberException(VisitationEventException):
 class VisitationRosterNumberIsNullException(VisitationEventException, NullException):
     """
     Raised a visitationation's roster number is null. This should never happen. the invariant roster number
-    is set during build. If its null during validator there has been service loss or an inconsistency.
+    is set during build. If its null during coord_stack_validator there has been service loss or an inconsistency.
     """
     ERROR_CODE = "VISITATION_NULL_ROSTER_NUMBER_ERROR"
     DEFAULT_MESSAGE = "A `Visitationation` object cannot have a null roster number. There may be service inconsistency or loss."

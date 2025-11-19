@@ -1,7 +1,7 @@
-# src/chess/rank/validator/ransom/exception.py
+# src/chess/rank/coord_stack_validator/ransom/exception.py
 
 """
-Module: chess.rank.validator.ransom.exception
+Module: chess.rank.coord_stack_validator.ransom.exception
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

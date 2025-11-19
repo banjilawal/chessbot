@@ -1,7 +1,7 @@
-# src/chess/owner/model/validator/factory.py
+# src/chess/owner/model/coord_stack_validator/factory.py
 
 """
-Module: chess.owner.model.validator.owner
+Module: chess.owner.model.coord_stack_validator.owner
 Author: Banji Lawal
 Created: 2025-10-22
 Version: 1.0.0

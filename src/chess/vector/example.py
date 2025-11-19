@@ -1,7 +1,7 @@
 # src/chess/vector/old_occupation_validator.py
 
 """
-Module: chess.vector.validator
+Module: chess.vector.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-08
 
@@ -16,7 +16,7 @@ Created: 2025-10-08
     Vector passes and additional checks before deployment.
 
 **Related Features**:
-    Building vectors -> See VectorBuilder, module[chess.vector.validator],
+    Building vectors -> See VectorBuilder, module[chess.vector.coord_stack_validator],
     Handling process and rolling back failures --> See Transaction, module[chess.system]
 
 # THEME:
@@ -46,7 +46,7 @@ From chess.vector:
 """
 # src/chess/vector/old_occupation_validator.py
 """
-Module: chess.vector.validator
+Module: chess.vector.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -57,7 +57,7 @@ version: 1.0.0
     client requirements. Clients are responsible for ensuring a VectorBuilder product will not fail when used.
 
 ***Related Features***:
-    Authenticating existing vectors -> See VectorValidator, module[chess.vector.validator],
+    Authenticating existing vectors -> See VectorValidator, module[chess.vector.coord_stack_validator],
     Handling process and rolling back failures --> See Transaction, module[chess.system]
 
 # THEME:

@@ -1,7 +1,7 @@
-# src/chess/scalar/validator.py
+# src/chess/scalar/coord_stack_validator.py
 
 """
-Module: chess.scalar.validator
+Module: chess.scalar.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-08-26
 version: 1.0.0

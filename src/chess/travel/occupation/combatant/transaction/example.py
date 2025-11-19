@@ -172,9 +172,9 @@ Example:
 #   """
 #   method = "AttackTransaction.execute"
 #
-#   validator = TransferEventValidator.validate(travel)
-#   if not validator.is_success():
-#     return TransactionResult(travel, validator.rollback_exception)
+#   coord_stack_validator = TransferEventValidator.validate(travel)
+#   if not coord_stack_validator.is_success():
+#     return TransactionResult(travel, coord_stack_validator.rollback_exception)
 #
 #   travel.enemy.captor = travel.traveler
 #   if travel.enemy.captor != travel.traveler:
@@ -431,7 +431,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Vector` objects.
+creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
@@ -535,7 +535,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   DEFAULT_MESSAGE = "KingCheckEvent cannot be null"
 #
 # class InvalidAttackEventException(AttackEventException, ValidationException):
-#   """Raised by ExchangeValidators if client fails validator."""
+#   """Raised by ExchangeValidators if client fails coord_stack_validator."""
 #   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
 #   DEFAULT_MESSAGE = "KingCheckEvent failed validate"
 #

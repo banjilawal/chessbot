@@ -38,7 +38,7 @@ class GraphException(ChessException):
 
 # ======================# GRAPH VALIDATION EXCEPTIONS #======================#
 class InvalidGraphException(GraphException, ValidationException):
-    """Raised by GraphValidators if client fails validator."""
+    """Raised by GraphValidators if client fails coord_stack_validator."""
     ERROR_CODE = "GRAPH_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "GraphValidation failed."
 

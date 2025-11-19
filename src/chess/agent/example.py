@@ -17,7 +17,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `HumanPlayer`: Concrete `subclass` of `Agent` people use.
   - `MachinePlayer`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
   - `PlayerAgentBuilder`: Builds new instances of `Agent`.
-  - `PlayerAgentValidator`: Performs validator and sanity checks on existing
+  - `PlayerAgentValidator`: Performs coord_stack_validator and sanity checks on existing
       `Agent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
@@ -54,7 +54,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - `HumanPlayer`: Concrete `subclass` of `Agent` people use.
   - `MachinePlayer`: Concrete `subclass` of `Agent` that uses team_name `Engine`.
   - `PlayerAgentBuilder`: Builds new instances of `Agent`.
-  - `PlayerAgentValidator`: Performs validator and sanity checks on existing
+  - `PlayerAgentValidator`: Performs coord_stack_validator and sanity checks on existing
       `Agent` instances. before they are used.
   - All exceptions from `rollback_exception` package.
 
@@ -123,7 +123,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of `Vector` objects.
+creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exceptions; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`

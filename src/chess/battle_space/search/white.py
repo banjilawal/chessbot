@@ -7,7 +7,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `Board` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `Board` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Board` objects released by the module will satisfy client
@@ -15,7 +15,7 @@ version: 1.0.0
     from `BoardBuilder` --should-- satisfy `BoardValidator` requirements.
 
 **Related Features**:
-    Authenticating existing boards -> See BoardValidator, module[chess.board_validator.validator],
+    Authenticating existing boards -> See BoardValidator, module[chess.board_validator.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

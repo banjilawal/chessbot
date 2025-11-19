@@ -38,13 +38,13 @@ class NullKingOccupationEventException(KingOccupationEventException, NullExcepti
 
 
 class InvalidKingOccupationEventException(KingOccupationEventException, ValidationException):
-  """Raised by KingOccupationEventValidators if a candidate fails validator."""
+  """Raised by KingOccupationEventValidators if a candidate fails coord_stack_validator."""
   ERROR_CODE = "KING_OCCUPATION_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "KingOccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(KingOccupationEventException):
-  """Raised by KingOccupationEventValidators if a candidate fails validator."""
+  """Raised by KingOccupationEventValidators if a candidate fails coord_stack_validator."""
   ERROR_CODE = "KING_OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_ERROR"
   DEFAULT_MESSAGE = "KingOccupationEvent destination square is not empty."
   

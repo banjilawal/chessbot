@@ -1,7 +1,7 @@
-# src/chess/square/validator.py
+# src/chess/square/coord_stack_validator.py
 
 """
-Module: chess.square.validator
+Module: chess.square.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-09-11
 """

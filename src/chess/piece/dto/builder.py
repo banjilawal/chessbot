@@ -1,7 +1,7 @@
 # src/chess/square/old_occupation_validator.py
 
 """
-Module: `chess.square.validator`
+Module: `chess.square.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -40,7 +40,7 @@ This module requires components from various sub-systems:
 
 CONTAINS:
 --------
- * `PieceFactory`: The validator of `Piece` instances.
+ * `PieceFactory`: The coord_stack_validator of `Piece` instances.
 """
 
 from chess.system import Builder, BuildResult, NameValidator, LoggingLevelRouter, SearchContext

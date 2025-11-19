@@ -83,10 +83,10 @@ class PoppingEmptyCoordStackException(CoordStackServiceException):
     DEFAULT_MESSAGE = "Cannot pop from an empty CoordStackService."
 
 
-class PushingDuplicateCoordException(CoordStackServiceException):
-    """Raised when trying to push the same coord onto the stack."""
-    ERROR_CODE = "PUSHING_DUPLICATE_COORD_ERROR"
-    DEFAULT_MESSAGE = "Cannot push duplicate coord onto the stack. All Coords must be unique."
+class DoubleCoordPushException(CoordStackServiceException):
+    """Raised when trying to push the current_position onto the stack again."""
+    ERROR_CODE = "DOUBLY_PSUHING_CURRENT_POSITION_ERROR"
+    DEFAULT_MESSAGE = "The Coord is already at the top of the stack. It cannot be pushed twice."
 
 
 class PushingNullException(CoordStackServiceException):
@@ -95,7 +95,14 @@ class PushingNullException(CoordStackServiceException):
     DEFAULT_MESSAGE = "Cannot push null item onto a CoordStackService."
 
 
-CannotUndoPreviousTurnException
+class CannotUndoPreviousTurnException(CoordStackServiceException):
+    """Only the current move can be undone."""
+    ERROR_CODE = "UNDOING_PREVIOUS_TURN_ERROR"
+    DEFAULT_MESSAGE = "Cannot undo a previous turn once it has been committed.."
+
+
+
+
 # ======================# COORD_STACK_SERVICE EXCEPTIONS #======================#
 class CoordStackServiceServiceException(ChessException):
     """

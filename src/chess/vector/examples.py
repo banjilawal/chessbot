@@ -183,17 +183,17 @@ Example:
 # Validator class responsible for validating `Vector` instances.
 #
 # `VectorValidator` ensures that `Vector` instances are always validated successfully by performing comprehensive
-# validate checks during validator. This separates the responsibility of validating from building - `VectorValidator`
+# validate checks during coord_stack_validator. This separates the responsibility of validating from building - `VectorValidator`
 # focuses on validating while `VectorBuilder` is used for constructing new `Vector` instances that are passed around
 # the system.
 #
-# The validator runs through all validate checks individually to guarantee that any `Vector` instance it validates
+# The coord_stack_validator runs through all validate checks individually to guarantee that any `Vector` instance it validates
 
 # Validates that an existing `Vector` instance meets all specifications.
 #
 # Performs comprehensive validate on team_name `Vector` instance that already exists,
 # checking type safety, null values, and component bounds. Unlike VectorBuilder
-# which creates new valid Vectors, this validator verifies existing `Vector`
+# which creates new valid Vectors, this coord_stack_validator verifies existing `Vector`
 # instances from external sources, deserialization, or after modifications.
 #
 # Args:

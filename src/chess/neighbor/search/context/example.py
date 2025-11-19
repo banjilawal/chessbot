@@ -7,7 +7,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `DiscoverySearchContext` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `DiscoverySearchContext` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `DiscoverySearchContext` objects released by the module will satisfy client
@@ -15,7 +15,7 @@ version: 1.0.0
     from `DiscoverySearchContextBuilder` --should-- satisfy `DiscoverySearchContextValidator` requirements.
 
 **Related Features**:
-    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.validator],
+    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -61,7 +61,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `Team` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `Team` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
@@ -69,7 +69,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.validator],
+    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -141,7 +141,7 @@ Validates that an existing `DiscoverySearchContext` instance meets all specifica
 
 Performs comprehensive validate on discoverySearchContext `DiscoverySearchContext` instance that already exists,
 checking type safety, null values, and component bounds. Unlike `DiscoverySearchContextBuilder`
-which creates new valid DiscoverySearchContexts, this validator verifies existing `DiscoverySearchContext`
+which creates new valid DiscoverySearchContexts, this coord_stack_validator verifies existing `DiscoverySearchContext`
 instances from external sources, deserialization, or after modifications.
 
 Args
@@ -170,7 +170,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `DiscoverySearchContext` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `DiscoverySearchContext` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `DiscoverySearchContext` objects released by the module will satisfy client
@@ -178,7 +178,7 @@ version: 1.0.0
     from `DiscoverySearchContextBuilder` --should-- satisfy `DiscoverySearchContextValidator` requirements.
 
 **Related Features**:
-    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.validator],
+    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -224,7 +224,7 @@ version: 1.0.0
 
 # SCOPE:
 -------
-***Limitation 1***: No validator, error checking is performed in `DiscoverySearchContext` class. Using the class directly instead of
+***Limitation 1***: No coord_stack_validator, error checking is performed in `DiscoverySearchContext` class. Using the class directly instead of
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `DiscoverySearchContext` objects released by the module will satisfy client
@@ -232,7 +232,7 @@ version: 1.0.0
     from `DiscoverySearchContextBuilder` --should-- satisfy `DiscoverySearchContextValidator` requirements.
 
 **Related Features**:
-    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.validator],
+    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -285,7 +285,7 @@ version: 1.0.0
 SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, validator, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
+creation, coord_stack_validator, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
 limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `DiscoverySearchContextValidator` and `DiscoverySearchContextBuilder`processes.
 

@@ -51,7 +51,7 @@ See the list of exceptions in the `__all__` list following (e.g., `InvalidNameEx
 # src/chess/system/validate/old_occupation_validator.py
 
 """
-Module: chess.system.validate.validator
+Module: chess.system.validate.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-08-27
 Updated: 2025-10-10
@@ -62,7 +62,7 @@ Updated: 2025-10-10
 2. This module provides a satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module covers visitor_name validator only.
+The module covers visitor_name coord_stack_validator only.
 
 # SECTION 3 - Limitations:
   1. The module does not provide permissible naming guidelines.

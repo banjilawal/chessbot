@@ -1,7 +1,7 @@
 # src/chess/domain/search/context/factory.py
 
 """
-Module: chess.domain.search.context.validator
+Module: chess.domain.search.context.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

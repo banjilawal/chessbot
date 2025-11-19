@@ -1,7 +1,7 @@
-# src/chess/agent/validator.py
+# src/chess/agent/coord_stack_validator.py
 
 """
-Module: chess.agent.validator
+Module: chess.agent.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0
@@ -29,7 +29,7 @@ class PlayerAgentValidator(Validator[Agent]):
           - Not null
           - valid visitor_id
           - valid visitor_name
-          - Agent.team_history meets validator requirements
+          - Agent.team_history meets coord_stack_validator requirements
         Any failed requirement raise an rollback_exception wrapped in team_name InvalidCommanderException
         
         Args

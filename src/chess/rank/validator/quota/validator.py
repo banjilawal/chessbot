@@ -1,7 +1,7 @@
-# src/chess/rank/validator/team_quota/validator.py
+# src/chess/rank/coord_stack_validator/team_quota/coord_stack_validator.py
 
 """
-Module: chess.rank.validator.team_quota.validator
+Module: chess.rank.coord_stack_validator.team_quota.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/environment/validator
+# src/chess/environment/coord_stack_validator
 
 """
-Module: chess.environment.validator
+Module: chess.environment.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-18
 Version: 1.0.1

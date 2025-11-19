@@ -1,7 +1,7 @@
-# src/chess/agent/stack/service/validator.py
+# src/chess/agent/stack/service/coord_stack_validator.py
 
 """
-Module: chess.agent.stack.service.validator
+Module: chess.agent.stack.service.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -46,7 +46,7 @@ class CoordStackServiceValidator(Validator[CoordStackService]):
         1.  Check candidate is not null.
         2.  Check if candidate is a CoordStackService. If so cast it.
         3.  Verify the CoordStackService.stack is not null.
-        4.  Verify the CoordStackService.stack with coord_stack_validator.
+        4.  Verify the CoordStackService.stack by running CoordStackService.validate_coord_stack.
         4.  If any check fails, return the exception inside a ValidationResult.
         5.  If all pass return the CoordStackStack object in a ValidationResult
 
@@ -66,6 +66,7 @@ class CoordStackServiceValidator(Validator[CoordStackService]):
             *   CannotRunServiceWithoutCoordStackException
         """
         method = "CoordStackServiceValidator.validate"
+        
         try:
             if candidate is None:
                 return ValidationResult.failure(
@@ -93,13 +94,17 @@ class CoordStackServiceValidator(Validator[CoordStackService]):
                     )
                 )
             
+            stack_validation = coord_stack_service.validate_coord_stack()
+            if stack_validation.is_failure():
+                return ValidationResult.failure(stack_validation.exception)
+            
             return ValidationResult.success(coord_stack_service)
         
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordStackServiceException(
-                    ex,
-                    f"{method}: "
-                    f"{InvalidCoordStackServiceException.DEFAULT_MESSAGE}",
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{InvalidCoordStackServiceException.DEFAULT_MESSAGE}"
                 )
             )

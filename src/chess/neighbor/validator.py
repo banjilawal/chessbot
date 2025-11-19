@@ -1,7 +1,7 @@
 # src/chess/neighbor/factory.py
 
 """
-Module: chess.neighbor.validator
+Module: chess.neighbor.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

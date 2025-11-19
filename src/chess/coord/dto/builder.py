@@ -1,7 +1,7 @@
 # src/chess/point/old_occupation_validator.py
 
 """
-Module: `chess.point.validator`
+Module: `chess.point.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

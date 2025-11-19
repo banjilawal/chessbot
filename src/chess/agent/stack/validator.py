@@ -1,7 +1,7 @@
-# src/chess/agent/stack/validator.py
+# src/chess/agent/stack/coord_stack_validator.py
 
 """
-Module: chess.agent.stack.validator
+Module: chess.agent.stack.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0
