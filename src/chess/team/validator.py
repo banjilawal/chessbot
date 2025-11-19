@@ -131,7 +131,7 @@ class TeamValidator(Validator[Team]):
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
             
-            piece_validation = piece_validator.validate(piece)
+            piece_validation = piece_validator.validate_piece_is_actionable(piece)
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
             
@@ -164,19 +164,13 @@ class TeamValidator(Validator[Team]):
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
             
-            piece_validation = piece_validator.validate(piece)
+            piece_validation = piece_validator.validate_piece_is_actionable(piece)
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
             
             if piece.team == team:
                 return ValidationResult.failure()
-            
-            if (
-                    (isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is None) or
-                    isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated
-            ):
-                return ValidationResult.failure()
-            
+                
             if piece not in team.hostages:
                 return ValidationResult.failure()
             

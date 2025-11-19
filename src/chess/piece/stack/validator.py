@@ -1,108 +1,121 @@
-from typing import Generic, cast
+# src/chess/piece/stack/validator.py
+
+"""
+Module: chess.piece.stack.validator
+Author: Banji Lawal
+Created: 2025-09-30
+version: 1.0.0
+"""
 
 
-from chess.coord import CoordValidator
+from typing import Any, cast
+
 from chess.piece import CoordStack, CoordStackValidationException, NullCoordStackException
-from chess.system import Validator, Result,ErrorContradictsPayloadException
-from chess.exception import InconsistentCurrentCoordException
+from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
 
-__all__ = [
-  'CoordStackValidator'
-]
+class CoordStackValidator(Validator[CoordStack]):
+  """
+  # ROLE: Validation
 
-class CoordStackValidator(Validator):
+  # RESPONSIBILITIES:
+  Verifies a candidate is an instance of Team, that meets integrity requirements, before
+  the candidate is used.
 
-  @staticmethod
-  def validate(candidate: CoordValidator) -> Result[CoordStack]:
+  # PROVIDES:
+  ValidationResult[Team] containing either:
+      - On success: Team in the payload.
+      - On failure: Exception.
+
+  # ATTRIBUTES:
+  No attributes
+  """
+
+  @classmethod
+  @LoggingLevelRouter.monitor
+  def validate(cls, candidate: Any) -> ValidationResult[CoordStack]:
     """
-    Validates team_name CoordStack meets requirements:
-      - Not null
-      - CoordStack.items is not null
-      - CoordStack.current_coordinate is null if the stack is empty, otherwise is team_name validated Coord
-      - if CoordStack.is_empty() is True then current_coordinate.size == 0
-      - if CoordStack.is_empty() is False then current_coordinate is not null
-      - If CoordStack.is_empty() then current_coordinate is null
-    Any failed requirement raise an rollback_exception wrapped in team_name CoordStackValidationException
+    # ACTION:
+    1.  Check candidate is not null.
+    2.  Check if candidate is a Team. If so cast it.
+    3.  Verify the CoordStack.items is not null.
+    4.  Verify Coordstack.size and CoordStack.is_empty() do not conflict.
+    5.  Verify CoordStack.current_coord is null if CoordStack.is_empty()
+        do not conflict.
+    6.  If any check fails, return the exception inside a ValidationResult.
+    7.  If all pass return the Team object in a ValidationResult
 
-    Validation tests do not change state so pushes and pops are:
-      - Tested in unit tests
-      - Piece life-cycles and flows.
+    # PARAMETERS:
+        *   candidate (Any):  Object to validate as a Team object.
 
-    Args
-      candidate (CoordStack): coordinate_stack to validate
+    # Returns:
+    ValidationResult[Team] containing either:
+        - On success:   Team in the payload.
+        - On failure:   Exception.
 
-     Returns:
-       Result[T]: Result instance containing team_name validated coordinate_stack as payload if validations
-       are satisfied, CoordStackValidationException otherwise.
-
-    Raises:
-      TypeError: if candidate is not CoordStack
-      NullCoordStackException: if candidate is null
-
-      InternalStackDataStructureException: If CoordStack.items is null
-      InconsistentCurrentCoordException: If current_coordinate does not meet CoordValidator
-
-      CoordStackValidationException: Wraps any preceding exceptions
+    # RAISES:
+        *   TypeError
+        *   NullTeamException
+        *   CorruptedCoordStackException
+        *   InconsistentCurrentCoordException
+        *   TeamNotRegisteredWithAgentException
+        *   InvalidCoordStackException
     """
     method = "CoordinateStackValidator.validate"
 
     try:
       if candidate is None:
-        raise NullCoordStackException(
-          f"{method} {NullCoordStackException.DEFAULT_MESSAGE}"
+        return ValidationResult.failure(
+          NullCoordStackException(f"{method}: {NullCoordStackException.DEFAULT_MESSAGE}")
         )
 
       if not isinstance(candidate, CoordStack):
-        raise TypeError(f"{method} Expected team_name CoordStack, got {type(candidate).__name__} instead.")
-
-      coords = cast(CoordStack, candidate)
-
-      if coords.size() > 0 and coords.is_empty():
-        raise StackSizeConflictException(f"{method}: {StackSizeConflictException.DEFAULT_MESSAGE}")
-
-      if coords.is_empty() and coords.current_coord is not None:
-        raise InconsistentCurrentCoordException(
-          f"{method}: {InconsistentCurrentCoordException.DEFAULT_MESSAGE}"
+        return ValidationResult.failure(
+          TypeError(
+            f"{method} Expected CoordStack, got {type(candidate).__name__} instead."
+          )
         )
 
-      if coords.current_coord is None and not coords.is_empty():
-        raise InconsistentCurrentCoordException(
-          f"{method} {InconsistentCurrentCoordException.DEFAULT_MESSAGE}"
+      coord_stack = cast(CoordStack, candidate)
+      
+      if coord_stack.items is None:
+        return ValidationResult.failure(
+          CorruptedCoordStackException(
+            f"{method} {CorruptedCoordStackException.DEFAULT_MESSAGE}"
+          )
         )
-
-      if coords.items is None:
-        raise CorruptedStackException(f"{method} {CorruptedStackException.DEFAULT_MESSAGE}")
-
-      current_coord = coords.current_coord
-
-      if (current_coord is not None and
-          not CoordValidator.validate(current_coord).is_success()):
-        raise InconsistentCurrentCoordException(
-          f"{method} {InconsistentCurrentCoordException.DEFAULT_MESSAGE}"
+      
+      if (
+              coord_stack.size > 0 and coord_stack.is_empty() or
+              coord_stack.size == 0 and not coord_stack.is_empty()
+      ):
+        return ValidationResult.failure(
+          CoordStackSizeConflictException(
+            f"{method}: {CoordStackSizeConflictException.DEFAULT_MESSAGE}"
+          )
         )
-
-      return Result(payload=coords)
+      
+      if (
+              coord_stack.is_empty() and coord_stack.current_coord is not None or
+              not coord_stack.is_empty() and coord_stack.current_team is None
+      ):
+        return ValidationResult.failure(
+          InconsistentCurrentCoordException(
+            f"{method}: {InconsistentCurrentCoordException.DEFAULT_MESSAGE}"
+          )
+        )
+      
+      return ValidationResult.success(payload=coord_stack)
 
     except (
         TypeError,
         NullCoordStackException,
         StackSizeConflictException,
         InconsistentCurrentCoordException
-    ) as e:
-      raise CoordStackValidationException(
-        f"{method}: {CoordStackValidationException.DEFAULT_MESSAGE}"
-      ) from e
-#
-#
-# def main():
-#   coordinate_stack = CoordStack()
-#   validator_result = CoordinateStackValidatorvalidate(coordinate_stack)
-#   if validator_result.is_success():
-#     print("CoordStack validator satisfied.")
-#   else:
-#     print("CoordStack validator not satisfied.")
-#
-#
-# if __name__ == "__main__":
-#   main()
+    ) as ex:
+      return ValidationResult.failure(
+        InvalidCooordStackException(
+          f"{method}: {InvalidCoordStackException.DEFAULT_MESSAGE}",
+          ex
+        )
+      )

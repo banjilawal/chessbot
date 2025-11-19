@@ -37,33 +37,33 @@ class TeamStackValidator(Validator[TeamStack]):
             
             team_stack = cast(TeamStack, candidate)
             
-            if team_stack.size() > 0 and team_stack.is_empty():
-                return ValidationResult.failure(
-                    TeamStackSizeConflictException(
-                        f"{method}: {TeamStackSizeConflictException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if team_stack.is_empty() and team_stack.current_team is not None:
-                return ValidationResult.failure(
-                    InconsistentCurrentTeamException(
-                        f"{method}: {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if team_stack.current_team is None and not team_stack.is_empty():
-                return ValidationResult.failure(
-                    InconsistentCurrentTeamException(
-                        f"{method}: {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
             if team_stack.items is None:
                 return ValidationResult.failure(
                     CorruptedTeamStackException(
                         f"{method} {CorruptedTeamStackException.DEFAULT_MESSAGE}"
                     )
                 )
+            
+            if (
+                    team_stack.size > 0 and team_stack.is_empty() or
+                    team_stack.size == 0 and not team_stack.is_empty()
+            ):
+                return ValidationResult.failure(
+                    TeamStackSizeConflictException(
+                        f"{method}: {TeamStackSizeConflictException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            if (
+                    team_stack.is_empty() and team_stack.current_team is not None or
+                    not team_stack.is_empty() and team_stack.current_team is None
+            ):
+                return ValidationResult.failure(
+                    InconsistentCurrentTeamException(
+                        f"{method}: {InconsistentCurrentTeamException.DEFAULT_MESSAGE}"
+                    )
+                )
+
             
             return ValidationResult.success(payload=team_stack)
         

@@ -30,9 +30,9 @@ class TeamStackService:
     
     def __init__(
             self,
-            stack: TeamStack,
+            stack: TeamStack = TeamStack(),
             team_service: TeamService = TeamService(),
-            identity_service: IdentityService=IdentityService(),
+            identity_service: IdentityService = IdentityService(),
             validator: type[TeamStackValidator]=TeamStackValidator,
     ):
         self._stack = stack
@@ -42,6 +42,7 @@ class TeamStackService:
         self._pop_count = 0
         self._is_empty = self._stack.is_empty()
         self._current_team = self._stack.current_team
+        self._identity_service = identity_service
        
     @property
     def stack_size(self) -> int:

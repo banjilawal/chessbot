@@ -3,7 +3,7 @@
 """
 Module: chess.vector.rollback_exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-09-30
 version: 1.0.0
 
 SCOPE:
