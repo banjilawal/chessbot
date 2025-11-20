@@ -14,7 +14,6 @@ from chess.system import Validator, ValidationResult, LoggingLevelRouter, ROW_SI
 from chess.coord import (
     Coord, NullCoordException, NullRowException, RowBelowBoundsException, RowAboveBoundsException,
     NullColumnException, ColumnBelowBoundsException, ColumnAboveBoundsException, InvalidCoordException,
-    InvalidCoordColumnException, InvalidCoordRowException
 )
 
 
@@ -124,7 +123,7 @@ class CoordValidator(Validator[Coord]):
             * NullRowException
             * RowBelowBoundsException
             * RowAboveBoundsException
-            * InvalidCoordRowException
+            * InvalidCoordException
         """
         method = "CoordValidator.validate_row"
         try:
@@ -161,10 +160,10 @@ class CoordValidator(Validator[Coord]):
             
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordRowException(
+                InvalidCoordException(
                     ex=ex,
                     message=f"{method}: "
-                            f"{InvalidCoordRowException.DEFAULT_MESSAGE}",
+                            f"{InvalidCoordException.DEFAULT_MESSAGE}",
                 )
             )
     
@@ -191,7 +190,7 @@ class CoordValidator(Validator[Coord]):
             * NullColumnException
             * ColumnBelowBoundsException
             * ColumnAboveBoundsException
-            * InvalidCoordColumnException
+            * InvalidCoordException
         """
         method = "CoordValidator.validate_column"
         try:
@@ -229,9 +228,9 @@ class CoordValidator(Validator[Coord]):
         
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordColumnException(
+                InvalidCoordException(
                     ex=ex,
                     message=f"{method}: "
-                            f"{InvalidCoordColumnException.DEFAULT_MESSAGE}",
+                            f"{InvalidCoordException.DEFAULT_MESSAGE}",
                 )
             )

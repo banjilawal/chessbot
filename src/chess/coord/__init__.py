@@ -7,14 +7,15 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
+from .dto import *
+from .builder import *
+from .validator import *
+from .search import *
 from .service import *
 from .exception import *
 
-from .dto import *
-from .search import *
+
 from .coord import Coord
-from .builder import CoordBuilder
-from .validator import CoordValidator
 
 
 # Package metadata (organic to __init__.py)
@@ -25,8 +26,7 @@ __package_name__ = "chess.coord"
 
 # Export control - only what belongs in public API
 __all__ = [
-    *service.CoordService,
-    
+    *service.__all__,
     *exception.__all__,
     
     # Package metadata and utilities

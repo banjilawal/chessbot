@@ -19,7 +19,8 @@ class CoordBuilder(Builder[Coord]):
     # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    Produce Coord instances whose integrity is always guaranteed. If any attributes do not pass their integrity checks,
+    Produce Coord instances whose integrity is always guaranteed.
+    If any attributes do not pass their integrity checks,
     send an exception instead.
 
     # PROVIDES:
