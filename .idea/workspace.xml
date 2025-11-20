@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/builder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/scalar/builder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/scalar/builder/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/scalar/validator/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/builder/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,11 +294,11 @@
       <recent name="$PROJECT_DIR$/src/chess/team/schema" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/scalar/builder" />
+      <recent name="$PROJECT_DIR$/src/chess/coord/validator" />
+      <recent name="$PROJECT_DIR$/src/chess/coord/builder" />
       <recent name="$PROJECT_DIR$/src/chess/square/validator" />
       <recent name="$PROJECT_DIR$/src/chess/square/builder" />
-      <recent name="$PROJECT_DIR$/src/chess/square/service" />
-      <recent name="$PROJECT_DIR$/src/chess/coord/service" />
-      <recent name="$PROJECT_DIR$/src/chess/vector/service" />
     </key>
   </component>
   <component name="RunManager" selected="Python.pawn">
@@ -630,7 +632,7 @@
       <workItem from="1763265847754" duration="34750000" />
       <workItem from="1763314326886" duration="24621000" />
       <workItem from="1763364100247" duration="89670000" />
-      <workItem from="1763492397223" duration="63908000" />
+      <workItem from="1763492397223" duration="65977000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,7 @@
-# src/chess/scalar/builder.py
+# src/chess/scalar/builder/builder.py
 
 """
-Module: chess.scalar.builder
+Module: chess.scalar.builder.builder
 Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0
