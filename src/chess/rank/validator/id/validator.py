@@ -72,11 +72,11 @@ class RankIdValidator(Validator[Rank, int]):
         method = "RankIdValidator.validate"
         
         try:
-            id_validation = cls.validate_rank_id_bounds(candidate)
-            if id_validation.is_failure():
-                return ValidationResult.failure(id_validation.exception)
+            base_id_validation = cls.validate_rank_id_bounds(candidate)
+            if base_id_validation.is_failure():
+                return ValidationResult.failure(base_id_validation.exception)
             
-            id = cast(candidate, int)
+            id = cast(int, base_id_validation.payload)
             
             if isinstance(rank, King) and id != RankSpec.KING.id:
                 return ValidationResult.failure(
@@ -110,7 +110,7 @@ class RankIdValidator(Validator[Rank, int]):
                                     f"{PawnIdException.DEFAULT_MESSAGE}")
                 )
             
-            return ValidationResult.success(rank, id)
+            return ValidationResult.success((rank, id))
         
         except Exception as ex:
             return ValidationResult.failure(
@@ -152,20 +152,21 @@ class RankIdValidator(Validator[Rank, int]):
         method = "RankIdValidator.validate_rank_id_bounds"
         
         try:
-            id_validation = identity_service.validate_id(candidate)
-            if id_validation.is_failure():
-                return ValidationResult.failure(id_validation.exception)
+            bound_id_validation = identity_service.validate_id(candidate)
+            if bound_id_validation.is_failure():
+                return ValidationResult.failure(bound_id_validation.exception)
             
-            id = cast(int, candidate)
+            bound_id = cast(int, bound_id_validation.payload)
             
-            if id > RankSpec.max_rank_id:
+            if bound_id > Queen().id:
                 return ValidationResult.failure(
                     RankIdAboveBoundsException(
                         f"{method}: "
                         f"{RankIdAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
-            return ValidationResult.success(id)
+            
+            return ValidationResult.success(bound_id)
         except Exception as ex:
             return ValidationResult.failure(
                 RankIdException(

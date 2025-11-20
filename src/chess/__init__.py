@@ -11,19 +11,32 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# from .arena import *
-# from .assets import *
-# from .board import *
-# from .agent import *
-# from .point import *
-# from .driver import *
-# from .game import *
-# from .geometry import *
-# from .io import *
-# from .owner import *
-# from .bounds import *
-# from .scalar import *
-# from .system import *
-# from .team_name import *
-# from .vector import *
+from .agent import *
+from .arena import *
+from .assets import *
+from .board import *
+from .checkmate import *
+from .coord import *
+from .domain import *
+from .driver import *
+from .engine import *
+from .enviroment import *
+from .game import *
+from .geometry import *
+from .graph import *
+from .house import *
+from .io import *
+from .king import *
+from .neighbor import *
+from .pawn import *
+from .piece import *
+from .rank import *
+from .runtime import *
+from .randomize import *
+from .rank import *
+from .scalar import *
+from .square import *
+from .system import *
+from .travel import *
+from .vector import *
 

@@ -8,15 +8,16 @@ version: 1.0.0
 """
 
 from chess.coord import CoordService
+from chess.system import BuildResult, ValidationResult
 from chess.rank import (
     Bishop, King, Knight, Pawn, Queen, Rank, RankFactory, RankSearchService, RankSpec,
     RankValidatorFactory, Rook
 )
-from chess.system import BuildResult, ValidationResult
+
 
 
 class RankService:
-    _factory: type[RankFactory] = RankFactory
+    _factory: type[RankFactory]
     _validator: type[RankValidatorFactory]
     _search_service: type[RankSearchService]
     _coord_service: CoordService
@@ -41,8 +42,12 @@ class RankService:
     def search(self) -> type[RankSearchService]:
         return self._search_service
     
-    def validate_rank(self, candidate) -> ValidationResult[Rank]:
-        return self._validator.validate(candidate)
+    @property
+    def validator(self) -> type[RankValidatorFactory]:
+        return self._validator
+    
+    def build_rank(self, rank_spec: RankSpec) -> BuildResult[Rank]:
+        return self._factory.build(rank_spec)
     
     def build_king_rank(self) -> BuildResult[King]:
         return self._factory.build_king_rank()

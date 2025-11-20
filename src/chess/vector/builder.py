@@ -78,8 +78,8 @@ class VectorBuilder(Builder[Vector]):
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
                 )
             )
     
@@ -119,13 +119,15 @@ class VectorBuilder(Builder[Vector]):
             if candidate is None:
                 return BuildResult.failure(
                     NullXComponentException(
-                        f"{method}: {NullXComponentException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{NullXComponentException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if not isinstance(candidate, int):
                 return BuildResult.failure(
-                    TypeError(f"{method}: Expected an int, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: "
+                              f"Expected an int, got {type(candidate).__name__} instead.")
                 )
             x = cast(int, candidate)
             
@@ -139,7 +141,8 @@ class VectorBuilder(Builder[Vector]):
             if x >= LONGEST_KNIGHT_LEG_SIZE:
                 return BuildResult.failure(
                     VectorAboveBoundsException(
-                        f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{VectorAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -148,8 +151,9 @@ class VectorBuilder(Builder[Vector]):
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{VectorBuildFailedException.DEFAULT_MESSAGE}",
                 )
             )
     
@@ -189,14 +193,16 @@ class VectorBuilder(Builder[Vector]):
             if candidate is None:
                 return BuildResult.failure(
                     NullYComponentException(
-                        f"{method}: {NullYComponentException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{NullYComponentException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if not isinstance(candidate, int):
                 return BuildResult.failure(
                     TypeError(
-                        f"{method}: Expected an int, got {type(candidate).__name__} instead."
+                        f"{method}: "
+                        f"Expected an int, got {type(candidate).__name__} instead."
                     )
                 )
             y = cast(int, candidate)
@@ -211,7 +217,8 @@ class VectorBuilder(Builder[Vector]):
             if y >= LONGEST_KNIGHT_LEG_SIZE:
                 return BuildResult.failure(
                     VectorAboveBoundsException(
-                        f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{VectorAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -220,7 +227,8 @@ class VectorBuilder(Builder[Vector]):
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{VectorBuildFailedException.DEFAULT_MESSAGE}",
                 )
             )

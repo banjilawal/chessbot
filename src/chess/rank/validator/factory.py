@@ -7,13 +7,12 @@ Created: 2025-11-08
 version: 1.0.0
 """
 
-
 from typing import Any, cast
 
 from chess.system import LoggingLevelRouter, Validator, ValidationResult
 from chess.rank import (
-    Rank, King, Queen, Rook, Bishop, Knight, Pawn, RankIdValidator, , RankNameValidator,
-    RankQuotaValidator, RankRansomValidator, NullRankException, InvalidRankException, RankDesignationValidator
+    Rank, King, Queen, Rook, Bishop, Knight, Pawn, RankIdValidator, RankNameValidator, RankQuotaValidator,
+    RankRansomValidator, NullRankException, InvalidRankException, RankDesignationValidator
 )
 
 
@@ -38,10 +37,10 @@ class RankValidatorFactory(Validator[Rank]):
     def validate(
             cls,
             candidate: Any,
-            id_validator: type[RankIdValidator]=RankIdValidator,
-            name_validator: type[RankNameValidator]=RankNameValidator,
-            quota_validator: type[RankQuotaValidator]=RankQuotaValidator,
-            ransom_validator: type[RankRansomValidator]=RankRansomValidator,
+            id_validator: type[RankIdValidator] = RankIdValidator,
+            name_validator: type[RankNameValidator] = RankNameValidator,
+            quota_validator: type[RankQuotaValidator] = RankQuotaValidator,
+            ransom_validator: type[RankRansomValidator] = RankRansomValidator,
             designation_validator: type[RankDesignationValidator] = RankDesignationValidator,
     ) -> ValidationResult[Rank]:
         """
@@ -95,7 +94,7 @@ class RankValidatorFactory(Validator[Rank]):
                 )
             
             rank = cast(Rank, candidate)
- 
+            
             if isinstance(candidate, King):
                 rank = cast(King, candidate)
             if isinstance(candidate, Queen):
@@ -108,7 +107,7 @@ class RankValidatorFactory(Validator[Rank]):
                 rank = cast(Knight, candidate)
             if isinstance(candidate, Pawn):
                 rank = cast(Pawn, candidate)
-                
+            
             id_validation = id_validator.validate(rank=rank, candidate=rank.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
@@ -128,7 +127,7 @@ class RankValidatorFactory(Validator[Rank]):
             quota_validation = quota_validator.validate(rank=rank, candidate=rank.ransom)
             if quota_validation.is_failure():
                 return ValidationResult.failure(quota_validation.exception)
-            
+        
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRankException(

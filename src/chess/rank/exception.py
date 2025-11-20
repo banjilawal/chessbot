@@ -39,12 +39,6 @@ class RankException(ChessException):
 class NullRankException(RankException, NullException):
     ERROR_CODE = "NULL_RANK_ERROR"
     DEFAULT_MESSAGE = "Rank cannot be null."
-    
-# ======================# RANK BUILD EXCEPTIONS #======================#
-class RankBuildFailedException(RankException, BuildFailedException):
-    """Catchall Exception for RankFactory when it encounters an error fabricating a Rank."""
-    ERROR_CODE = "RANK_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Rank build failed."
 
 
 # ======================# RANK MOVING EXCEPTIONS #======================#

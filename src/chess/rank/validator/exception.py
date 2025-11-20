@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.rank import RankException
-from chess.system import NullException, ValidationException
+from chess.system import ValidationException
 
 __all__ = [
   "InvalidRankException"
@@ -19,6 +19,4 @@ class InvalidRankException(RankException, ValidationException):
   """Catchall Exception for RankValidator when a validation candidate fails a sanity check."""
   ERROR_CODE = "RANK_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Rank validation failed."
-  
-"
 

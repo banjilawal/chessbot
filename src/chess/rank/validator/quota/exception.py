@@ -8,7 +8,8 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.rank import InvalidRankException, RankException
+from chess.rank import InvalidRankException
+
 
 __all__ = [
     "RankQuotaException",
