@@ -7,18 +7,20 @@ Created: 2025-11-18
 """
 
 from abc import ABC
+from typing import Generic, TypeVar
+
+T = TypeVar("T")
 
 
-class Service(ABC):
+class Service(ABC, Generic[T]):
     """
     # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for highly cohesive entities and operations.
-    2.  Protects direct access to core objects.
-    3.  Encapsulates the implementation details and business logic.
+    1.  Provide a single interface/entry point for T objects and modules.
+    2.  Masks implementation details and business logic making features easier to use.
+    3.  Protects T objects from direct, unprotected access.
     4.  Public facing API.
-
 
     # PROVIDES:
     Service
@@ -26,12 +28,14 @@ class Service(ABC):
     # ATTRIBUTES:
     None
         * id (int):     Globally unique identifier for the service.
-        * name (str):   Name shared by all instance of the service.
+        
+        * name (str):   Name shared by all instance of the service. Default: "Service".
     """
+    SERVICE_NAME = "service"
     _int: int
     _name: str
     
-    def __init__(self, id: int, name: str) -> None:
+    def __init__(self, id: int, name: str = SERVICE_NAME) -> None:
         self._int = id
         self._name = name
         

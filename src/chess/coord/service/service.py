@@ -17,6 +17,25 @@ from chess.coord import Coord, CoordBuilder, CoordValidator, CoordSearchService
 
 class CoordService(Service[Coord]):
     """
+    # ROLE: Service, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Provide a single interface/entry point for Square, VectoValidator and SquareBuilder objects.
+    2.  Masks implementation details and business logic making features easier to use.
+    3.  Protects Square objects from direct, unprotected access.
+    4.  Public facing API.
+
+    # PROVIDES:
+        *   SquareBuilder
+        *   SquareValidator
+
+    # ATTRIBUTES:
+        *   builder (type[SquareBuilder]):
+        *   validator (type[SquareValidator]):
+        *   coord_service (CoordService)
+        *   identity_service (IdentityService)
+    """
+    """
     # ROLE: Service, Data Protraction
 
     # RESPONSIBILITIES:
@@ -51,20 +70,25 @@ class CoordService(Service[Coord]):
     """
     SERVICE_NAME = "CoordService"
     
+    id: int
+    name: str
     _builder: type[CoordBuilder]
     _validator: type[CoordValidator]
     _scalar_service: ScalarService
     _vector_service: VectorService
-    _search_service: type[CoordSearchService]
+    _search_service: CoordSearchService
     
     def __init__(
             self,
+            id: int,
+            name: str = SERVICE_NAME,
             builder: type[CoordBuilder] = CoordBuilder,
             validator: type[CoordValidator] = CoordValidator,
             scalar_service: ScalarService = ScalarService(),
             vector_service: VectorService = VectorService(),
-            search_service: type[CoordSearchService] = CoordSearchService
+            search_service: CoordSearchService = CoordSearchService()
     ):
+        super().__init__(id=id, name=name)
         self._coord_builder = builder
         self._validator = validator
         self._scalar_service = scalar_service

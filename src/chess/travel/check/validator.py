@@ -12,7 +12,7 @@ from chess.piece.event import (
   InvalidAttackEventException
 )
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 class KingCheckEventValidator(Validator[KingCheckEvent]):
 
@@ -31,7 +31,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       `candidate` (`KingCheckEvent`): `attackEvent `to validate
 
      Returns:
-       `Result[T]`: A `Result` object containing the validated payload if the specification is satisfied,
+       `Result[V]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidAttackEventException` otherwise.
 
     Raises:

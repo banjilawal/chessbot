@@ -47,7 +47,7 @@ from typing import TypeVar, Generic
 
 from chess.system import Builder, BuildResult, ValidationResult, LoggingLevelRouter, ValidationResultBuildFailedException
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
   """

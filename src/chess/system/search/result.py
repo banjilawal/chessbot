@@ -12,7 +12,7 @@ from typing import Optional, TypeVar, Generic, List
 
 from chess.system import Result
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 
 class SearchResult(Result[Generic[T]]):

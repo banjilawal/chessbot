@@ -11,7 +11,7 @@ version: 1.0.0
 
 from typing import Optional, TypeVar, Generic
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 
 class Result(Generic[T]):
@@ -27,7 +27,7 @@ class Result(Generic[T]):
   1.
 
   # Attributes:
-    `_payload` (`Optional`[`T`]): Data from the accessor or service generator if their operations
+    `_payload` (`Optional`[`V`]): Data from the accessor or service generator if their operations
       were successful.
     `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
   """
@@ -57,15 +57,15 @@ class Result(Generic[T]):
     return self._payload is None and self._exception is None
 
   @classmethod
-  def success(cls, payload: T) -> 'Result[T]':
+  def success(cls, payload: T) -> 'Result[V]':
     return cls(payload=payload)
 
   @classmethod
-  def failure(cls, exception: Exception) -> 'Result[T]':
+  def failure(cls, exception: Exception) -> 'Result[V]':
     return cls(exception=exception)
 
   @classmethod
-  def empty(cls) -> 'Result[T]':
+  def empty(cls) -> 'Result[V]':
     return cls()
 
 

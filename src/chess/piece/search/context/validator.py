@@ -16,7 +16,7 @@ from chess.piece import (
   TooManyDiscoverySearchParamsException, ZeroDiscoverySearchParamsException,  DiscoveryInvalidRankNameParamException
 )
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 class DiscoverySearchContextValidator(Validator[DiscoverySearchContext]):
   """

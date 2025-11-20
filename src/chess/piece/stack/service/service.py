@@ -23,33 +23,25 @@ class CoordStackService(Service[CoordStack]):
     # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.
+    1.  Provide a single interface/entry point for CoordStack, CoordStackValidator and CoordStackBuilde.
     2.  Protects CoordStack objects from direct manipulation.
     3.  Extends behavior and functionality of CoordStack objects.
     4.  Public facing API for CoordStack modules.
 
     # PROVIDES:
-        *   CoordStackBuilder
-        *   CoordStackValidator
+        *   CoordStack building
+        *   CoordStack validation
         *   CoordStack exceptions
         *   Stack operations (push, pop, search
 
     # ATTRIBUTES:
-        *   stack_size (int):                                  Shows the size of the internal stack.
-        
-        *   is_empty (bool):                                    Shows if the internal stack is empty.
-        
-        *   pops_per_turn (int):                                Assures only the current move can be undone.
-        
-        *   stack (CoordStack):                                 The stack of Coord objects. Protected
-                                                                from direct access.
-                                                                
-        *   current_coord (Coord):                              Coord at the top of the stack.
-        
-        *   coord_service (CoordService):                       
-                                                                
-        *   stack_validator (type[CoordStackValidator]):  For internally validating the stack attribute
-                                                                when running CoordStackServiceValidator
+        *   stack_size (int)
+        *   is_empty (bool)
+        *   pops_per_turn (int)
+        *   stack (CoordStack)
+        *   current_coord (Coord)
+        *   coord_service (CoordService)
+        *   validator (type[CoordStackValidator]
     """
     SERVICE_NAME = "CoordStackService"
     
@@ -59,7 +51,7 @@ class CoordStackService(Service[CoordStack]):
     _stack: CoordStack
     _current_coord: Coord
     _coord_service: CoordService
-    _stack_validator: type[CoordStackValidator]
+    _validator: type[CoordStackValidator]
     
     def __init__(
             self,
@@ -67,13 +59,13 @@ class CoordStackService(Service[CoordStack]):
             name: str = SERVICE_NAME,
             stack: CoordStack = CoordStack(),
             coord_service: CoordService = CoordService(),
-            stack_validator: type[CoordStackValidator] = CoordStackValidator,
+            validator: type[CoordStackValidator] = CoordStackValidator,
     ):
         super().__init__(id=id, name=name)
         
         self._stack = stack
         self._coord_service = coord_service
-        self._stack_validator = stack_validator
+        self._validator = validator
 
         self._pops_per_turn = 0
         self._stack_size = self._stack.size
@@ -100,10 +92,15 @@ class CoordStackService(Service[CoordStack]):
     def pops_per_turn(self) -> int:
         return self._pops_per_turn
     
-    @LoggingLevelRouter.monitor
-    def validate_coord_stack(self) -> ValidationResult[CoordStack]:
-        """Validates the internal CoordStack without exposing it."""
-        return self._stack_validator.validate(self._stack)
+    @property
+    def validator(self) -> type[CoordStackValidator]:
+        """
+        CoordValidator is the single-source-of truth for certifying the safety of
+        Piece instances, their organic row and column attributes. It makes sense
+        providing direct access here and letting validator return its Validation
+        result directly to the caller.
+        """
+        return self._validator
     
     @LoggingLevelRouter.monitor
     def push_coord(self, coord) -> Result[Coord]:
@@ -127,7 +124,7 @@ class CoordStackService(Service[CoordStack]):
 
         # RAISES:
             *   DoubleCoordPushException
-            *   CoordStackServiceException
+            *   PieceServiceException
         """
         method = "CoordStackService.push_coord"
         
@@ -178,7 +175,7 @@ class CoordStackService(Service[CoordStack]):
         # RAISES:
             *   PoppingEmptyCoordStackException
             *   CannotUndoPreviousTurnException
-            *   CoordStackServiceException
+            *   PieceServiceException
         """
         method = "CoordStackService.undo_push"
         
@@ -230,7 +227,7 @@ class CoordStackService(Service[CoordStack]):
             - On failure:           Exception.
 
         # RAISES:
-            *   CoordStackServiceException
+            *   PieceServiceException
         """
         method = "CoordStackService.find_coord"
         
@@ -272,7 +269,7 @@ class CoordStackService(Service[CoordStack]):
             - On failure:           Exception.
 
         # RAISES:
-            *   CoordStackServiceException
+            *   PieceServiceException
         """
         method = "CoordStackService.find_coord"
         
@@ -317,7 +314,7 @@ class CoordStackService(Service[CoordStack]):
             - On failure:           Exception.
 
         # RAISES:
-            *   CoordStackServiceException
+            *   PieceServiceException
         """
         method = "CoordStackService.find_coord"
         

@@ -4,7 +4,7 @@ from itertools import count
 from threading import Lock
 from typing import Any, Type, TypeVar
 
-T = TypeVar("T")
+T = TypeVar("V")
 
 
 class AutoId:

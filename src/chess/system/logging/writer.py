@@ -11,7 +11,7 @@ import inspect
 import logging
 from typing import Callable, TypeVar, Any, Optional, Dict
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 class LogWriter:
   """

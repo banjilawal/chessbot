@@ -1,7 +1,7 @@
-# src/chess/owner/model/coord_stack_validator/factory.py
+# src/chess/piece/exception.py
 
 """
-Module: chess.owner.model.coord_stack_validator.owner
+Module: chess.piece.exception
 Author: Banji Lawal
 Created: 2025-10-22
 Version: 1.0.0

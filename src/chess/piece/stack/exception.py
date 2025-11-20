@@ -22,20 +22,6 @@ __all__ = [
   "CoordStackSizeConflictException",
   "InconsistentCurrentCoordException",
   "CorruptedCoordStackException",
-  
-  # ======================# COORD_STACK OPERATION EXCEPTIONS #======================#
-  "PoppingEmptyCoordStackException",
-  "PushingDuplicateCoordException",
-  "PushingNullException",
-  
-  # ======================# COORD_STACK_SERVICE EXCEPTIONS #======================#
-  "CoordStackServiceException",
-  
-  # ======================# NULL COORD_STACK_SERVICE EXCEPTIONS #======================#
-  "NullCoordStackServiceException",
-  
-  # ======================# COORD_STACK VALIDATION EXCEPTIONS #======================#
-  "InvalidCoordStackServiceException",
 ]
 
 

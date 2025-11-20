@@ -3,7 +3,7 @@ from itertools import count
 from threading import Lock
 from typing import Type, TypeVar
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 __all__ = [
   'auto_id'

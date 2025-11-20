@@ -111,7 +111,7 @@ Args
   candidate (Piece): discover to validate
 
  Returns:
-   Result[T]: A Result object containing the validated payload if the specification is satisfied,
+   Result[V]: A Result object containing the validated payload if the specification is satisfied,
     PieceValidationException otherwise.
 
 Raises:

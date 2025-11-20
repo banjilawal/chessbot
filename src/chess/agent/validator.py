@@ -36,7 +36,7 @@ class PlayerAgentValidator(Validator[Agent]):
           candidate (Agent): agent to validate
           
          Returns:
-           Result[T]: A Result object containing the validated payload if all graph requirements
+           Result[V]: A Result object containing the validated payload if all graph requirements
            are satisfied. InvalidCommanderException otherwise.
         
         Raises:

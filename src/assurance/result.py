@@ -2,7 +2,7 @@ from enum import Flag, auto
 from typing import Optional, TypeVar, Generic
 
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 
 class OperationStatus(Flag):

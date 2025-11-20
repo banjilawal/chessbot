@@ -11,7 +11,7 @@ from typing import Generic, TypeVar, Any
 
 from chess.system import LoggingLevelRouter, ValidationResult
 
-T = TypeVar("T")
+T = TypeVar("V")
 
 
 class Validator(ABC, Generic[T]):
@@ -19,13 +19,13 @@ class Validator(ABC, Generic[T]):
     # ROLE: Validation, Data Integrity assurance.
   
     # RESPONSIBILITIES:
-    1.  Verifies a candidate is an instance of T, that meets integrity requirements, before the candidate is used.
+    1.  Verifies a candidate is an instance of V, that meets integrity requirements, before the candidate is used.
     2.  Returns any exceptions raised inside a ValidationResult
     
   
     # PROVIDES:
-    ValidationResult[T] containing either:
-        - On success: T in the payload.
+    ValidationResult[V] containing either:
+        - On success: V in the payload.
         - On failure: Exception.
   
     # ATTRIBUTES:
@@ -39,17 +39,17 @@ class Validator(ABC, Generic[T]):
         """
         # ACTION:
         1.  Check if candidate is null.
-        2.  Check if candidate is of type T.
+        2.  Check if candidate is of type V.
         3.  Run integrity check on each of the candidate's attributes.
         4.  If any check fails, it raises an exception, return the exception inside a ValidationResult.
-        3.  When all checks pass, cast candidate to T, then return it inside a ValidationResult.
+        3.  When all checks pass, cast candidate to V, then return it inside a ValidationResult.
     
         # PARAMETERS:
             *   candidate (Any): Object to validate.
     
         # Returns:
-        ValidationResult[T] containing either:
-            - On success: T in the payload.
+        ValidationResult[V] containing either:
+            - On success: V in the payload.
             - On failure: Exception.
     
         # RAISES:

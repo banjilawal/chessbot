@@ -1,7 +1,7 @@
-# src/chess/owner/model/exception.py
+# src/chess/piece/exception.py
 
 """
-Module: chess.owner.model.exception
+Module: chess.piece.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -49,7 +49,7 @@ class PieceException(ChessException):
 # ======================# PIECE NULL EXCEPTIONS #======================#
 class NullPieceException(PieceException, NullException):
     """
-    Catchall for when an entity, method, or operation requires team_name owner but gets null instead.
+    Catchall for when an entity, method, or operation requires team_name piece but gets null instead.
     Using nulls appropriate to the subclasses is recommended.
     """
     ERROR_CODE = "NULL_PIECE_ERROR"
@@ -100,7 +100,7 @@ class PieceNullCoordStackException(PieceException, InconsistencyException):
 
 class PieceMissingDiscoveriesException(PieceException, InconsistencyException):
     """
-    Raised if owner.discovery list does not exist. If the owner.discoveries == null there is service inconsistency
+    Raised if piece.discovery list does not exist. If the piece.discoveries == null there is service inconsistency
     or loss.
     """
     ERROR_CODE = "PIECE_DISCOVERY_LIST_MISSING_ERROR"
@@ -154,7 +154,7 @@ class PieceRequiresInitialPlacementException(PieceException):
 
 
 class PieceRankOutOfBoundsException(PieceException, NullException):
-    """Raised a owner"s bounds is not a recognized chess bounds"""
+    """Raised a piece"s bounds is not a recognized chess bounds"""
     ERROR_CODE = "PIECE_RANK_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "A Piece does not have a recognized chess bounds."
 

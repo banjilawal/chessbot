@@ -197,7 +197,7 @@ Example:
 # instances from external sources, deserialization, or after modifications.
 #
 # Args:
-# candidate (Generic[T]): The object to validate, expected to be team_name Vector instance.
+# candidate (Generic[V]): The object to validate, expected to be team_name Vector instance.
 # Must not be None and must be within component bounds
 # [-LONGEST_KNIGHT_LEG_SIZE, LONGEST_KNIGHT_LEG_SIZE].
 #

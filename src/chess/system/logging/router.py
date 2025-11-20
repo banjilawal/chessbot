@@ -11,7 +11,7 @@ from functools import wraps
 from typing import Any, Callable, Optional, TypeVar
 from chess.system import LogWriter, Result
 
-T = TypeVar("T")
+T = TypeVar("V")
 
 class LoggingLevelRouter:
   """

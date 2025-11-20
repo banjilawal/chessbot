@@ -1,20 +1,12 @@
-# src/chess/target/search/exception.py
+# src/chess/coord/search/exception.py
 
 """
-Module: chess.target.search.exception
+Module: chess.coord.search.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
 """
 
-# src/target/search/context/exception.py
-
-"""
-Module: chess.target.search.context.exception
-Author: Banji Lawal
-Created: 2025-10-04
-version: 1.0.0
-"""
 
 from chess.system import (
     BuildOptionSelectionTooLargeException, ContextException, NoBuildOptionSelectedException, NullException,
@@ -24,10 +16,10 @@ from chess.system import (
 __all__ = [
     "CoordSearchException",
     
-    # ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
+# ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
     "NullCoordSearchException",
     
-    # ========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+# ========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
     "InvalidCoordSearchException",
 ]
 

@@ -39,7 +39,7 @@ Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies ex
 instances from external sources, deserialization, or after modifications.
 
 Args:
-candidate (Generic[T]): The object to validate, expected to be team_name Coord instance.
+candidate (Generic[V]): The object to validate, expected to be team_name Coord instance.
 
 Returns:
 Result[Coord]: A Result containing either:

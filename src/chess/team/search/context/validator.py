@@ -8,7 +8,7 @@ from chess.agent import Agent, CommanderValidator, InvalidCommanderException, \
   InvalidCommanderAssignmentException
 from chess.team.search import TeamSearchContext
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 class PieceSearchContextValidator(Validator):
 

@@ -51,7 +51,7 @@ The major theme influencing the modules design are
 from typing import Optional, TypeVar, Generic
 from chess.system import NotImplementedException, Result
 
-T = TypeVar("T")
+T = TypeVar("V")
 
 
 class ValidationResult(Result[Generic[T]]):

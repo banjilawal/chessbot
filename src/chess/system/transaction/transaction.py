@@ -7,25 +7,26 @@ Created: 2025-08-11
 Updated: 2025-10-10
 """
 
-from typing import TypeVar
+from typing import Generic, TypeVar
 from abc import ABC, abstractmethod
 from chess.system import LoggingLevelRouter, TransactionResult, TransactionState
 
-T = TypeVar("T", bound='Event')
+
+V = TypeVar("V", bound='Event')
 
 
-class Transaction(ABC, [T]):
+class Transaction(ABC, Generic[V]):
   """"""
-  _event: T
+  _event: V
   _state: TransactionState
 
   @LoggingLevelRouter.monitor
-  def __init__(self, event: T):
+  def __init__(self, event: V):
     self._event = event
     self._state = TransactionState.RUNNING
 
   @property
-  def event(self) -> T:
+  def event(self) -> V:
     return self._event
 
 

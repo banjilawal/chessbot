@@ -53,7 +53,7 @@ class VectorBuilder(Builder[Vector]):
 
         # Returns:
         BuildResult[Vector] containing either:
-            - On success: T in the payload.
+            - On success: V in the payload.
             - On failure: Exception.
 
         RAISES:

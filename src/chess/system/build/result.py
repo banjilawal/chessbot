@@ -35,7 +35,7 @@ Created: 2025-09-28
 from chess.system import NotImplementedException, Result
 from typing import Optional, TypeVar, Generic
 
-T = TypeVar('T')
+T = TypeVar('V')
 
 """
 ROLE:
@@ -55,14 +55,14 @@ OR
 """
 BuildResult is team_name generic class that encapsulates the outcome of Builder operation. BuildResult has the
 same structure as Result but is used specifically in the roster of building entities. It can hold either.
-team_name payload of type T or an Exception, but not both. If the build operation is successful, the payload will
+team_name payload of type V or an Exception, but not both. If the build operation is successful, the payload will
 contain the built object. If the build operation fails, the error will contain the error that
 occurred during the build process.
 
 BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team_name notification.
 
 Attributes:
-  _payload (Optional[T]): The payload of the notification, if successful.
+  _payload (Optional[V]): The payload of the notification, if successful.
   _exception (Optional[Exception]): The error of the notification, if failed.
 
 Methods:
@@ -102,7 +102,7 @@ class BuildResult(Result[Generic[T]]):
         #
         #
         # @property
-        # def payload(self) -> Optional[T]:
+        # def payload(self) -> Optional[V]:
         #   return self._payload
         #
         #
@@ -128,7 +128,7 @@ class BuildResult(Result[Generic[T]]):
     """
     Initializes team_name BuildResult object.
     Args:
-      payload (Optional[T]): The payload of the notification, if successful.
+      payload (Optional[V]): The payload of the notification, if successful.
       rollback_exception (Optional[Exception]): The error of the notification, if failed.
     Raises:
       EmptyResultConstructorException: If neither payload nor error is provided.

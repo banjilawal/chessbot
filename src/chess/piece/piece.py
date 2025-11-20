@@ -1,4 +1,4 @@
-# src/chess/piece/search.py
+# src/chess/piece/piece.py
 
 """
 Module: chess.piece.piece
@@ -8,8 +8,7 @@ version: 1.0.0
 """
 
 from abc import ABC
-from pprint import pprint
-from typing import List, Optional
+from typing import Optional
 
 
 from chess.team import Team

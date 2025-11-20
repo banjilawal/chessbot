@@ -62,7 +62,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
       candidate (CoordStack): coordinate_stack to validate
 
      Returns:
-       Result[T]: Result instance containing team_name validated coordinate_stack as payload if validations
+       Result[V]: Result instance containing team_name validated coordinate_stack as payload if validations
        are satisfied, CoordStackValidationException otherwise.
 
     Raises:
