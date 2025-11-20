@@ -19,6 +19,7 @@ from .logging import *
 from .mouse import *
 from .notification import *
 from .result import *
+from .result import *
 from .search import *
 from .service import *
 from .search import *

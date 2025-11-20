@@ -10,6 +10,6 @@ version: 0.0.1
 from chess import ServiceException
 
 
-class ResolutionException(ServiceException):
+class ResolutionServiceException(ServiceException):
     ERROR_CODE = "RESOLUTION_SERVICE_ERROR"
     DEFAULT_MESSAGE = "ResolutionService raised an exception."
