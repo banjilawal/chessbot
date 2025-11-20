@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/system/resolution/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/resolution/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/scratch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/activity/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/binding/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/factory/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/factory/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/factory/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/factory/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/designation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/designation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/id/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/id/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/quota/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/quota/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,18 +288,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/resolution" />
       <recent name="$PROJECT_DIR$/src/chess/coord/service" />
       <recent name="$PROJECT_DIR$/src/chess/vector" />
       <recent name="$PROJECT_DIR$/src/chess/scalar/service" />
       <recent name="$PROJECT_DIR$/src/chess/piece/stack" />
-      <recent name="$PROJECT_DIR$/src/chess/team/schema" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece/validator" />
       <recent name="$PROJECT_DIR$/src/chess/rank/spec" />
       <recent name="$PROJECT_DIR$/src/chess/rank/factory" />
       <recent name="$PROJECT_DIR$/src/chess/rank/service" />
       <recent name="$PROJECT_DIR$/src/chess/scalar/validator" />
-      <recent name="$PROJECT_DIR$/src/chess/scalar/builder" />
     </key>
   </component>
   <component name="RunManager" selected="Python.pawn">
@@ -646,7 +635,7 @@
       <workItem from="1763364100247" duration="89670000" />
       <workItem from="1763492397223" duration="79403000" />
       <workItem from="1763630642378" duration="5384000" />
-      <workItem from="1763656352650" duration="311000" />
+      <workItem from="1763656352650" duration="1345000" />
     </task>
     <servers />
   </component>
