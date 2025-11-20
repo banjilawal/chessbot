@@ -10,11 +10,8 @@ version: 1.0.0
 from chess.system import ChessException, BuildFailedException, NullException
 
 __all__ = [
-# ======================# RANK_SPEC EXCEPTIONS #======================#
-    "RankSpecException",
-    "NullRankSpecException",
-# ======================# RANK EXCEPTIONS #======================#
     "RankException",
+    "NullRankException",
 # ======================# RANK BUILD EXCEPTIONS #======================#
     "RankBuildFailedException",
     
@@ -29,23 +26,7 @@ __all__ = [
 ]
 
 
-# ======================# RANK_SPEC EXCEPTIONS #======================#
-class RankSpecException(ChessException):
-    """
-    Super class of exceptions raised by RankSpec objects. Do not use directly.
-    Subclasses give precise, fined-grained, debugging info.
-    """
-    ERROR_CODE = "RANK_SPEC_ERROR"
-    DEFAULT_MESSAGE = "RankSpec raised an exception."
 
-
-class NullRankSpecException(RankSpecException, NullException):
-    """Raised if an entity, method, or operation requires RankSpec but gets null instead."""
-    ERROR_CODE = "NULL_RANK_SPEC_ERROR"
-    DEFAULT_MESSAGE = "RankSpec cannot be null."
-
-
-# ======================# RANK EXCEPTIONS #======================#
 class RankException(ChessException):
     """
     Super class of exceptions raised by Rank objects. Do not use directly.
@@ -55,7 +36,11 @@ class RankException(ChessException):
     DEFAULT_MESSAGE = "Rank raised an exception."
 
 
-# ======================# SQUARE BUILD EXCEPTIONS #======================# 
+class NullRankException(RankException, NullException):
+    ERROR_CODE = "NULL_RANK_ERROR"
+    DEFAULT_MESSAGE = "Rank cannot be null."
+    
+# ======================# RANK BUILD EXCEPTIONS #======================#
 class RankBuildFailedException(RankException, BuildFailedException):
     """Catchall Exception for RankFactory when it encounters an error fabricating a Rank."""
     ERROR_CODE = "RANK_BUILD_FAILED_ERROR"

@@ -1,7 +1,7 @@
-# src/chess/rank/factory.py
+# src/chess/rank/factory/factory.py
 
 """
-Module: chess.rank.builder
+Module: chess.rank.factory.factory
 Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0

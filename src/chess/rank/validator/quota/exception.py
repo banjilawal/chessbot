@@ -1,14 +1,14 @@
-# src/chess/rank/coord_stack_validator/team_quota/exception.py
+# src/chess/rank/validator/quota/exception.py
 
 """
-Module: chess.rank.coord_stack_validator.team_quota.exceptiom
+Module: chess.rank.validator.quota.exceptiom
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.rank import RankException
+from chess.rank import InvalidRankException, RankException
 
 __all__ = [
     "RankQuotaException",
@@ -30,7 +30,7 @@ __all__ = [
 ]
 
 
-class RankQuotaException(RankException):
+class RankQuotaException(InvalidRankException):
     """
     Super class of exceptions raised by Quota objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.

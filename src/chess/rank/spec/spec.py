@@ -1,7 +1,7 @@
-# src/chess/rank/spec.py
+# src/chess/rank/spec/spec.py
 
 """
-Module: chess.rank.spec
+Module: chess.rank.spec.spec
 Author: Banji Lawal
 Created: 2025-07-26
 version: 1.0.0

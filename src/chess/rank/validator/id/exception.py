@@ -1,20 +1,20 @@
-# src/chess/rank/coord_stack_validator/id/exception.py
+# src/chess/rank/validator/id/exception.py
 
 """
-Module: chess.rank.coord_stack_validator.id.exceptiom
+Module: chess.rank.validator.id.exceptiom
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.rank import RankException
+from chess.rank import InvalidRankException
 
 __all__ = [
     "RankIdException",
     
     # ======================# NULL RANK_ID EXCEPTIONS #======================#
-  "RankIdNullException",
+    "RankIdNullException",
     
     # ======================# RANK_ID BOUNDS EXCEPTIONS #======================#
     "RankIdAboveBoundsException",
@@ -29,7 +29,7 @@ __all__ = [
 ]
 
 
-class RankIdException(RankException):
+class RankIdException(InvalidRankException):
     """
   Super class of exceptions raised by Id objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.

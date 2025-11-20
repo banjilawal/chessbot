@@ -1,7 +1,7 @@
-# src/chess/rank/service.py
+# src/chess/rank/service/service.py
 
 """
-Module: chess.rank.service
+Module: chess.rank.service.service
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

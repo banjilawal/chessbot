@@ -20,7 +20,6 @@ __all__ = [
     # ======================# STARVATION EXCEPTIONS #======================#
     "ResourceException",
 
-    
     # ======================# INCONSISTENCY EXCEPTIONS #======================#
     "InconsistencyException",
     "InvariantBreachException",

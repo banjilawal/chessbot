@@ -1,7 +1,7 @@
-# src/chess/rank/coord_stack_validator/exception.py
+# src/chess/rank/validator/exception.py
 
 """
-Module: chess.rank.coord_stack_validator.exception
+Module: chess.rank.validator.exception
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -11,17 +11,14 @@ from chess.rank import RankException
 from chess.system import NullException, ValidationException
 
 __all__ = [
-
-#======================# RANK VALIDATION EXCEPTIONS #======================#  
-  'NullRankException',
-  'InvalidRankException'
+  "InvalidRankException"
 ]
 
 # ======================# RANK VALIDATION EXCEPTIONS #======================#
-class NullRankException(RankException, NullException):
-  ERROR_CODE = "NULL_RANK_ERROR"
-  DEFAULT_MESSAGE = "Rank cannot be null"
-
 class InvalidRankException(RankException, ValidationException):
+  """Catchall Exception for RankValidator when a validation candidate fails a sanity check."""
   ERROR_CODE = "RANK_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = f"Rank validation failed."
+  DEFAULT_MESSAGE = "Rank validation failed."
+  
+"
+

@@ -1,14 +1,14 @@
-# src/chess/rank/coord_stack_validator/name/exception.py
+# src/chess/rank/validator/name/exception.py
 
 """
-Module: chess.rank.coord_stack_validator.name.exceptiom
+Module: chess.validator.name.exceptiom
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.rank import RankException
+from chess.rank import InvalidRankException
 
 __all__ = [
   "RankNameException",
@@ -30,7 +30,7 @@ __all__ = [
 ]
 
 
-class RankNameException(RankException):
+class RankNameException(InvalidRankException):
   """
   Super class of exceptions raised by Name objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.

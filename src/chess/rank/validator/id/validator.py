@@ -1,7 +1,7 @@
-# src/chess/rank/coord_stack_validator/id/coord_stack_validator.py
+# src/chess/rank/validator/id/validator.py
 
 """
-Module: chess.rank.coord_stack_validator.id.coord_stack_validator
+Module: chess.rank.validator.id.validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -61,8 +61,6 @@ class RankIdValidator(Validator[Rank, int]):
             - On failure: Exception.
 
         # RAISES:
-            *   TypeError
-            *   RankIdAboveBoundsException
             *   KingIdException
             *   QueenIdException
             *   BishopIdException
@@ -74,42 +72,42 @@ class RankIdValidator(Validator[Rank, int]):
         method = "RankIdValidator.validate"
         
         try:
-            basic_id_validation = identity_service.validate_id(candidate)
-            if basic_id_validation.is_failure():
-                return ValidationResult.failure(basic_id_validation.exception)
+            id_validation = cls.validate_rank_id_bounds(candidate)
+            if id_validation.is_failure():
+                return ValidationResult.failure(id_validation.exception)
             
             id = cast(candidate, int)
             
-            if id > RankSpec.max_rank_id:
-                return ValidationResult.failure(
-                    RankIdAboveBoundsException(
-                        f"{method}: {RankIdAboveBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
             if isinstance(rank, King) and id != RankSpec.KING.id:
                 return ValidationResult.failure(
-                    KingIdException(f"{method}: {KingIdException.DEFAULT_MESSAGE}")
+                    KingIdException(f"{method}: "
+                                    f"{KingIdException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Queen) and id != RankSpec.QUEEN.id:
                 return ValidationResult.failure(
-                    QueenIdException(f"{method}: {QueenIdException.DEFAULT_MESSAGE}")
+                    QueenIdException(f"{method}: "
+                                     f"{QueenIdException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Bishop) and id != RankSpec.BISHOP.id:
                 return ValidationResult.failure(
-                    BishopIdException(f"{method}: {BishopIdException.DEFAULT_MESSAGE}")
+                    BishopIdException(f"{method}: "
+                                      f"{BishopIdException.DEFAULT_MESSAGE}")
                 )
-            if isinstance(rank, Rook) and id != RankSpec.ROOK.rasnom:
+            if isinstance(rank, Rook) and id != RankSpec.ROOK.id:
                 return ValidationResult.failure(
-                    RookIdException(f"{method}: {RookIdException.DEFAULT_MESSAGE}")
+                    RookIdException(f"{method}: "
+                                    f"{RookIdException.DEFAULT_MESSAGE}")
                 )
             if isinstance(rank, Knight) and id != RankSpec.KNIGHT.id:
                 return ValidationResult.failure(
-                    KnightIdException(f"{method}: {KnightIdException.DEFAULT_MESSAGE}")
+                    KnightIdException(f"{method}: "
+                                      f"{KnightIdException.DEFAULT_MESSAGE}")
                 )
+            
             if isinstance(rank, Pawn) and id != RankSpec.PAWN.id:
                 return ValidationResult.failure(
-                    PawnIdException(f"{method}: {PawnIdException.DEFAULT_MESSAGE}")
+                    PawnIdException(f"{method}: "
+                                    f"{PawnIdException.DEFAULT_MESSAGE}")
                 )
             
             return ValidationResult.success(rank, id)
@@ -117,7 +115,62 @@ class RankIdValidator(Validator[Rank, int]):
         except Exception as ex:
             return ValidationResult.failure(
                 RankIdException(
-                    f"{method}: {RankIdException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=f"{method}:"
+                            f" {RankIdException.DEFAULT_MESSAGE}",
+                )
+            )
+
+
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def validate_rank_id_bounds(
+            cls,
+            candidate: any,
+            identity_service: IdentityService = IdentityService()
+    ) -> ValidationResult[int]:
+        """
+        # ACTION:
+        1.  Use identity_service to verify basic id safety.
+        2.  Check the candidate exists in the set of ids in RankSpec.
+        4.  If any check fails, return the exception inside a ValidationResult.
+        3.  When all checks pass return the id inside a ValidationResult.
+
+        # PARAMETERS:
+            *   candidate (Any)
+            *   identity_service (IdentityService)
+
+        # Returns:
+        ValidationResult[int] containing either:
+            - On success: int in the payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   RankIdAboveBoundsException
+            *   RankIdException
+        """
+        method = "RankIdValidator.validate_rank_id_bounds"
+        
+        try:
+            id_validation = identity_service.validate_id(candidate)
+            if id_validation.is_failure():
+                return ValidationResult.failure(id_validation.exception)
+            
+            id = cast(int, candidate)
+            
+            if id > RankSpec.max_rank_id:
+                return ValidationResult.failure(
+                    RankIdAboveBoundsException(
+                        f"{method}: "
+                        f"{RankIdAboveBoundsException.DEFAULT_MESSAGE}"
+                    )
+                )
+            return ValidationResult.success(id)
+        except Exception as ex:
+            return ValidationResult.failure(
+                RankIdException(
+                    ex=ex,
+                    message=f"{method}:"
+                            f" {RankIdException.DEFAULT_MESSAGE}",
                 )
             )
