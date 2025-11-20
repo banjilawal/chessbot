@@ -33,7 +33,7 @@ class ResidentFilterBuilder(Builder[ResidentFilter]):
             team_name: Optional[str] = None
     ) -> BuildResult[ResidentFilter]:
         """"""
-        method = "ResidentFilterBuilder.build"
+        method = "ResidentFilterBuilder.builder"
         
         try:
             params = [

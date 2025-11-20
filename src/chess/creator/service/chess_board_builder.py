@@ -10,7 +10,7 @@
 # class ChessBoardBuilder:
 #
 #   @staticmethod
-#   def build() -> ChessBoard:
+#   def builder() -> ChessBoard:
 #
 #     squares: List[List[Square]] = []
 #
@@ -30,7 +30,7 @@
 
 # def main():
 #
-#   chess_board = ChessBoardBuilder.build()
+#   chess_board = ChessBoardBuilder.builder()
 #   print(chess_board.__str__())
 #
 #

@@ -1,7 +1,7 @@
-# src/chess/system/build/result.py
+# src/chess/system/builder/result.py
 
 """
-Module: chess.system.build.result
+Module: chess.system.builder.result
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -55,9 +55,9 @@ OR
 """
 BuildResult is team_name generic class that encapsulates the outcome of Builder operation. BuildResult has the
 same structure as Result but is used specifically in the roster of building entities. It can hold either.
-team_name payload of type V or an Exception, but not both. If the build operation is successful, the payload will
-contain the built object. If the build operation fails, the error will contain the error that
-occurred during the build process.
+team_name payload of type V or an Exception, but not both. If the builder operation is successful, the payload will
+contain the built object. If the builder operation fails, the error will contain the error that
+occurred during the builder process.
 
 BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team_name notification.
 

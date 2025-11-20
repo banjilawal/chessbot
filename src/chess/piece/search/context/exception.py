@@ -126,7 +126,7 @@ class DiscoveryInvalidRankNameParamException(DiscoverySearchContextException):
 class DiscoverySearchContextBuildFailedException(DiscoverySearchContextException, BuildFailedException):
     """
     Raised when DiscoverySearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised build team_name new discoverySearchContext
+    Exists primarily to catch all exceptions raised builder team_name new discoverySearchContext
     """
     ERROR_CODE = "DISCOVERY_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "DiscoverySearchContext build failed."

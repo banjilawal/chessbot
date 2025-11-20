@@ -1,7 +1,7 @@
-# src/chess/system/build/exception.py
+# src/chess/system/builder/exception.py
 
 """
-Module: chess.system.build.exception
+Module: chess.system.builder.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -38,11 +38,11 @@ class BuildFailedException(BuilderException):
   catch all exceptions raised building team_name new objects.
   """
   ERROR_CODE = "BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "build failed."
+  DEFAULT_MESSAGE = "builder failed."
 
 class AllParamsSetNullException(BuilderException):
   """
-  Raised if all build params cannot be null.
+  Raised if all builder params cannot be null.
   """
   ERROR_CODE = "ALL_PARAMS_SET_NULL_ERROR"
   DEFAULT_MESSAGE = "Cannot have all params set null."

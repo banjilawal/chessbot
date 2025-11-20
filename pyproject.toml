@@ -1,4 +1,4 @@
-# Centralized build configuration for the ChessBot project. Supersedes:
+# Centralized builder configuration for the ChessBot project. Supersedes:
 #  setup.py
 #  setup.cfg
 #  requirements.txt

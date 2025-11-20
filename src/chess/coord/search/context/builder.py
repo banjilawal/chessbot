@@ -48,7 +48,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
         """
         # Action:
             1. Use dependency injected validators to verify correctness of parameters required to
-                build a CoordSearchContext instance.
+                builder a CoordSearchContext instance.
             2. If the parameters are safe the CoordSearchContext is built and returned.
 
         # Parameters:
@@ -67,7 +67,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
             * NoCoordSearchOptionSelectedException
             * MoreThanOneCoordSearchOptionPickedException
         """
-        method = "CoordSearchContextBuilder.build"
+        method = "CoordSearchContextBuilder.builder"
         
         try:
             params = [row, column, coord]

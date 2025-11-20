@@ -85,7 +85,7 @@ class EnemyNotInExpectedSquareException(AttackEventException):
 class AttackEventBuildFailedException(AttackEventException, BuildFailedException):
   """
   Indicates Coord could not be built. Wraps and re-raises errors that occurred
-  during build.
+  during builder.
   """
   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "KingCheckEvent build failed."

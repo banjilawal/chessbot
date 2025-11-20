@@ -52,7 +52,7 @@ class OccupationDestinationNotEmptyException(KingOccupationEventException):
 class AttackEventBuilderException(AttackEventException, BuilderException):
   """
   Indicates Coord could not be built. Wraps and re-raises errors that occurred
-  during build.
+  during builder.
   """
   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "AttackEventBuilder failed to create kingOccupationEvent"

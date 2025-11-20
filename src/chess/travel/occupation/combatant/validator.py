@@ -230,7 +230,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     actor_square = BoardSearch.search()
 #
 #     if destination_occupant is None:
-#       build_result = OccupationEventBuilder.build(
+#       build_result = OccupationEventBuilder.builder(
 #         parent=travel,
 #         traveler=travel.traveler,
 #         actor_square=actor_square,

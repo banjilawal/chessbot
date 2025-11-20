@@ -28,7 +28,7 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
     @LoggingLevelRouter.monitor
     def build (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
         """"""
-        method = "ProjectionSearchContextBuilder.build"
+        method = "ProjectionSearchContextBuilder.builder"
         try:
             params = [id, name, coord]
             param_count = sum(bool(p) for p in params)

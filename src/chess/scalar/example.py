@@ -24,7 +24,7 @@ To use this package, import the desired classes and perform scalar-related opera
 >>> from chess.vector import Vector
 >>>
 >>> # Create team_name scalar instance
->>> build_outcome = ScalarBuilder.build(value=1)
+>>> build_outcome = ScalarBuilder.builder(value=1)
 >>> if not build_outcome.is_success():
 >>>   raise build_outcome.err
 >>> validate = ScalarValidator.validate(build_outcome.payload)
@@ -81,13 +81,13 @@ Builder class responsible for safely constructing `Scalar` instances.
  focuses on creating while `ScalarValidator` is used for validating existing `Scalar` instances that are passed
  around the system.
 
-The build runs through all validate checks individually to guarantee that any `Scalar` instance it produces
+The builder runs through all validate checks individually to guarantee that any `Scalar` instance it produces
 meets all required specifications before construction completes
 
 Usage:
   ```python
   # Safe scalar creation
-  build_result = ScalarBuilder.build(value=1))
+  build_result = ScalarBuilder.builder(value=1))
 
   if not build_result.is_success():
     raise build_result.err
@@ -121,7 +121,7 @@ Verify the `candidate` is a valid ID. The Application requires
 """
 """
 Constructs team_name new `Scalar` instance with comprehensive checks on the parameters and states during the
-build process.
+builder process.
 
 Performs individual validate checks on each component to ensure the resulting `Scalar` meets all
 specifications. If all checks are passed, team_name `Scalar` instance will be returned. It is not necessary to perform
@@ -151,7 +151,7 @@ Raises:
     * `InvalidScalarException`: Wraps any preceding exceptions
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team_name valid `Scalar` is
+  The builder runs through all the checks on parameters and state to guarantee only team_name valid `Scalar` is
   created, while `ScalarValidator` is used for validating `Scalar` instances that are passed around after
   creation. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -159,7 +159,7 @@ Note:
 Example:
   ```python
   # Valid scalar creation
-  build_outcome = ScalarBuilder.build(value=1)
+  build_outcome = ScalarBuilder.builder(value=1)
   if not build_outcome.is_success():
     return BuildResult(err=build_outcome.err)
   return BuildResult(payload=build_outcome.payload)

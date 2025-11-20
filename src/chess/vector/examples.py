@@ -37,13 +37,13 @@ From `chess.vector`:
 #  focuses on creating while `VectorValidator` is used for validating existing `Vector` instances that are passed
 #  around the system.
 #
-# The build runs through all validate checks individually to guarantee that any `Vector` instance it produces
+# The builder runs through all validate checks individually to guarantee that any `Vector` instance it produces
 # meets all required specifications before construction completes.
 #
 # Usage:
 #   ```python
 #   # Safe construction of team_name Vector instance if and only if the parameters meet specs
-#   build_outcome = VectorBuilder.build(x=2, y=1)
+#   build_outcome = VectorBuilder.builder(x=2, y=1)
 #   if not build_outcome.is_success():
 #     raise build_outcome.err
 #   vector = build_outcome.payload
@@ -56,7 +56,7 @@ From `chess.vector`:
 # """
 #
 # @staticmethod
-# def build(x: int, y: int) -> BuildResult[Vector]:
+# def builder(x: int, y: int) -> BuildResult[Vector]:
 # #   """
 # # Action:
 # # Parameters:
@@ -70,7 +70,7 @@ From `chess.vector`:
 # """
 """
 Constructs team_name new `Vector` instance with comprehensive checks on the parameters and states during the
-build process.
+builder process.
 
 Performs individual validate checks on each component to ensure the resulting `Vector` meets all
 specifications. If all checks are passed, team_name `Vector` instance will be returned. It is not necessary to perform
@@ -98,7 +98,7 @@ Raises:
     * Any validate errors from `VectorValidator`
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team_name valid `Vector` is
+  The builder runs through all the checks on parameters and state to guarantee only team_name valid `Vector` is
   created, while `VectorValidator` is used for validating `Vector` instances that are passed around after 
   creation. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -109,14 +109,14 @@ Example:
   from chess.vector import Vector, VectorBuilder
 
   # Creates team_name valid vector
-  build_outcome = VectorBuilder.build(x=2, y=1)
+  build_outcome = VectorBuilder.builder(x=2, y=1)
 
   if not build_outcome.is_success():
     raise build_outcome.err # <--- Skips this because x and y are valid
   u = cast(Vector, build_outcome.payload) # <-- executes this line
   ```
 """
-# method = "VectorBuilder.build"
+# method = "VectorBuilder.builder"
 #
 # try:
 #   if x is None:
@@ -160,19 +160,19 @@ Example:
 
 
 # def main():
-#   build_outcome = VectorBuilder.build(3, 4)
+#   build_outcome = VectorBuilder.builder(3, 4)
 #   if build_outcome.is_success():
 #     vector = build_outcome.payload
 #     print(f"Successfully built vector: {vector}")
 #   else:
-#     print(f"Failed to build vector: {build_outcome.team_exception}")
+#     print(f"Failed to builder vector: {build_outcome.team_exception}")
 #
-#   build_outcome = VectorBuilder.build(-1, 4)
+#   build_outcome = VectorBuilder.builder(-1, 4)
 #   if build_outcome.is_success():
 #     vector = build_outcome.payload
 #     print(f"Successfully built vector: {vector}")
 #   else:
-#     print(f"Failed to build vector: {build_outcome.team_exception}")
+#     print(f"Failed to builder vector: {build_outcome.team_exception}")
 #
 # if __name__ == "__main__":
 #   main()

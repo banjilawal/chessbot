@@ -75,7 +75,7 @@ These examples show recommended workflows with `Piece` exceptions.
 ```python
 from chess.owner import CombatantPiece, Encounter, NullAttackException, AutoEncounterException
 
-build_outcome = PieceFactory.build(
+build_outcome = PieceFactory.builder(
   discovery_id=id_emitter.discovery_id,
   visitor_name='BB2',
   bounds=Bishop(),
@@ -257,7 +257,7 @@ by the PieceValidator.
 THEME:
 -----
 **Integrity, Consistency, Validation.** The module's design centers on team_name separating
-complexities of the build process into team_name utility from the Piece constructor.
+complexities of the builder process into team_name utility from the Piece constructor.
 
 PURPOSE:
 -------

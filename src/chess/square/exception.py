@@ -15,12 +15,8 @@ from chess.system import (
 __all__ = [
     "SquareException",
     
-# ======================# SQUARE VALIDATION EXCEPTIONS #======================#  
+# ======================# NULL SQUARE EXCEPTIONS #======================#
     "NullSquareException",
-    "InvalidSquareException",
-    
-# ======================# SQUARE BUILD EXCEPTIONS #======================#  
-    "SquareBuildFailedException",
 
 # ======================# RELATIONAL SQUARE EXCEPTIONS #======================# 
     "SquareAndPieceMismatchedCoordException",
@@ -38,24 +34,11 @@ class SquareException(ChessException):
     DEFAULT_MESSAGE = "Square raised an exception."
 
 
-# ======================# SQUARE VALIDATION EXCEPTIONS #======================#  
+# ======================# NULL SQUARE EXCEPTIONS #======================#
 class NullSquareException(SquareException, NullException):
     """Raised if an entity, method, or operation requires Square but gets null instead."""
     ERROR_CODE = "NULL_SQUARE_ERROR"
     DEFAULT_MESSAGE = "Square cannot be null."
-
-
-class InvalidSquareException(SquareException, ValidationException):
-    """Catchall Exception for SquareValidator when a validation candidate fails a sanity check."""
-    ERROR_CODE = "SQUARE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Square validation failed."
-
-
-# ======================# SQUARE BUILD EXCEPTIONS #======================# 
-class SquareBuildFailedException(SquareException, BuildFailedException):
-    """Catchall Exception for SquareBuilder when it encounters an error building a Square."""
-    ERROR_CODE = "SQUARE_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Square build failed."
 
 
 # ======================# RELATIONAL SQUARE EXCEPTIONS #======================#

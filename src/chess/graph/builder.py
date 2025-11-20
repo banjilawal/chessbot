@@ -20,7 +20,7 @@ class GraphBuilder(Builder[Graph]):
     @LoggingLevelRouter.monitor
     def build(cls, id: int, board: Board) -> BuildResult[Graph]:
         """"""
-        method = "GraphBuilder.build"
+        method = "GraphBuilder.builder"
         
         try:
             id_validation = IdValidator.validate(id)

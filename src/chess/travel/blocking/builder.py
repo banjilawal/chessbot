@@ -7,13 +7,13 @@
    focuses on creation while `ScanEventValidator` is used for validating existing `BlockingEvent` instances that are passed
    around the system.
 
-  The build runs through all validate checks individually to guarantee that any `BlockingEvent` instance it produces
+  The builder runs through all validate checks individually to guarantee that any `BlockingEvent` instance it produces
   meets all required specifications before construction completes
 
   Usage:
     ```python
     # Safe scanEvent creation with validate
-    build_outcome = EncounterEventBuilder.build(scanEvent_id=id_emitter.scanEvent_id, visitor_name="WN2", bounds=Knight(), team_name=white_team)
+    build_outcome = EncounterEventBuilder.builder(scanEvent_id=id_emitter.scanEvent_id, visitor_name="WN2", bounds=Knight(), team_name=white_team)
     if not build_outcome.is_success():
       raise build_outcome.err
     scanEvent = build_outcome.payload
@@ -45,7 +45,7 @@
       * `NegativeIdException`: if candidate is negative `
  
   Constructs team_name new `BlockingEvent` instance with comprehensive checks on the parameters and states during the
-  build process.
+  builder process.
 
   Performs individual validate checks on each component to ensure the resulting `BlockingEvent` meets all
   specifications. If all checks are passed, team_name `BlockingEvent` instance will be returned. It is not necessary to perform
@@ -76,7 +76,7 @@
         not have the scanEvent
 
   Note:
-    The build runs through all the checks on parameters and state to guarantee only team_name valid `BlockingEvent` is
+    The builder runs through all the checks on parameters and state to guarantee only team_name valid `BlockingEvent` is
     created, while `ScanEventValidator` is used for validating `BlockingEvent` instances that are passed around after
     creating. This separation of concerns makes the validate and building independent of each other and
     simplifies maintenance.
@@ -84,7 +84,7 @@
   Example:
     ```python
     # Valid scanEvent creation
-    build_outcome = EncounterEventBuilder.build(value=1)
+    build_outcome = EncounterEventBuilder.builder(value=1)
     if not build_outcome.is_success():
       return BuildResult(err=build_outcome.err)
     return BuildResult(payload=build_outcome.payload)

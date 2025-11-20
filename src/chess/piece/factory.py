@@ -88,7 +88,7 @@ class PieceFactory(Builder[Piece]):
           - On failure: Error information and error details
     
         Raises:
-        SquareBuildFailedException: Wraps any exceptions raised build. These are:
+        SquareBuildFailedException: Wraps any exceptions raised builder. These are:
           * InvalidNameException: if visitor_name fails validate checks
           * InvalidRankException: if bounds fails validate checks
           * InvalidTeamException: if team_name fails validate checks
@@ -97,7 +97,7 @@ class PieceFactory(Builder[Piece]):
           * FullRankQuotaException: If owner.team_name is equal to team_name parameter but team_name.roster still does
             not have the owner
         """
-        method = "PieceFactory.build"
+        method = "PieceFactory.builder"
         
         try:
             attribute_validation = cls._validate_build_attributes(
@@ -300,19 +300,19 @@ class PieceFactory(Builder[Piece]):
             )
 
 # def main():
-#   build_outcome = PieceFactory.build()
+#   build_outcome = PieceFactory.builder()
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")
 #   else:
-#     print(f"Failed to build owner: {build_outcome.err}")
+#     print(f"Failed to builder owner: {build_outcome.err}")
 #   #
-#   build_outcome = PieceFactory.build(1, None)
+#   build_outcome = PieceFactory.builder(1, None)
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")
 #   else:
-#     print(f"Failed to build owner: {build_outcome.err}")
+#     print(f"Failed to builder owner: {build_outcome.err}")
 #
 # if __name__ == "__main__":
 #   main()

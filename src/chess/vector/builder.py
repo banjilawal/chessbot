@@ -59,7 +59,7 @@ class VectorBuilder(Builder[Vector]):
         RAISES:
             *   VectorBuildFailedException
         """
-        method = "VectorBuilder.build"
+        method = "VectorBuilder.builder"
         
         try:
             x_component_validation = cls._validate_x_component(x)

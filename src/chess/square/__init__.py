@@ -8,13 +8,15 @@ version: 1.0.0
 """
 
 from .dto import *
+from .builder import *
+from .service import *
 from .exception import *
+from .exception import *
+from .validator import *
+
 
 from .square import Square
-from .builder import SquareBuilder
-from .validator import SquareValidator
 
-from .service import SquareService
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
@@ -23,8 +25,7 @@ __package_name__ = "chess.square"
 
 # Export control - only what belongs in public API
 __all__ = [
-    "SquareService",
-    
+    *service.__all__,
     *exception.__all__,
     
     # Package metadata and utilities

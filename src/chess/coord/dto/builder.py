@@ -21,7 +21,7 @@ class CoordDTOBuilder(Builder[CoordDTO]):
     @LoggingLevelRouter.monitor
     def build(cls, coord: Coord) -> BuildResult[CoordDTO]:
         """"""
-        method = "CoordDTOBuilder.build"
+        method = "CoordDTOBuilder.builder"
         
         try:
             validation = CoordValidator.validate(coord)

@@ -52,7 +52,7 @@ class RankFactory(Builder[Rank]):
             * NullRankSpecException
             * RankBuildFailedException
         """
-        method = "RankFactory.build"
+        method = "RankFactory.builder"
         
         try:
             if rank_spec is None:

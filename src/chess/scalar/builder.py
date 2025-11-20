@@ -55,7 +55,7 @@ class ScalarBuilder(Builder[Scalar]):
             * ScalarAboveBoundsException
             * ScalarBuildFailedException
         """
-        method = "ScalarBuilder.build"
+        method = "ScalarBuilder.builder"
         
         try:
             if value is None:

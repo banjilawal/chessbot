@@ -16,13 +16,13 @@ Builder class responsible for safely constructing `Team` instances.
  focuses on creating while `TeamValidator` is used for validating existing `Team` instances that are passed
  around the system.
 
-The build runs through all validate checks individually to guarantee that any `Team` instance it produces
+The builder runs through all validate checks individually to guarantee that any `Team` instance it produces
 meets all required specifications before construction completes
 
 Usage:
   ```python
   # Safe team_name creation with validate
-  build_result = TeamBuilder.build(visitor_team_id=1, agent=black_commander, schema=TeamProfile.BLACK)
+  build_result = TeamBuilder.builder(visitor_team_id=1, agent=black_commander, schema=TeamProfile.BLACK)
 
   if build_result.is_success():
     team_name = build_result.payload
@@ -46,7 +46,7 @@ See Also:
 # """
 """
 Constructs team_name new `Team` instance with comprehensive checks on the parameters and states during the
-build process.
+builder process.
 
 Performs individual validate checks on each component to ensure the resulting `Team` meets all specifications.
 If all checks are passed, team_name `Team` instance will be returned. It is not necessary to perform any additional
@@ -75,7 +75,7 @@ Raises:
     * `RelationshipException`: if the bidirectional relationship between `Team` and `Agent` is broken
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team_name valid `Team` is
+  The builder runs through all the checks on parameters and state to guarantee only team_name valid `Team` is
   created, while `TeamValidator` is used for validating `Team` instances that are passed around after
   creation. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -83,12 +83,12 @@ Note:
 Example:
   ```python
   # Valid team_name creation
-  notification = TeamBuilder.build(visitor_team_id=1, agent=black-agent, schema=black_team_profile)
+  notification = TeamBuilder.builder(visitor_team_id=1, agent=black-agent, schema=black_team_profile)
   if notification.is_success():
     team_name = cast(Team, notification.payload) # Guaranteed valid Team
 
   # Null agent will fail gracefully
-  notification = TeamBuilder.build(visitor_team_id=1, agent=None, schema=black_team_profile)
+  notification = TeamBuilder.builder(visitor_team_id=1, agent=None, schema=black_team_profile)
   if not notification.is_success():
     # Handle construction failure
     pass

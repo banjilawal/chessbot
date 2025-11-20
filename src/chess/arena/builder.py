@@ -66,12 +66,12 @@ class ArenaBuilder(Builder[Arena]):
         - On failure: Error information and error details
 
     Raises:
-    `ArenaBuildFailedException` wraps any exceptions raised build. These are:
+    `ArenaBuildFailedException` wraps any exceptions raised builder. These are:
       * `InvalidCommanderException`: If team_name `white_commander` or `black_commander` fails coord_stack_validator.
       * `InvalidBoardException`: If team_name `board_validator` fails coord_stack_validator.
 
     """
-    method = "ArenaBuilder.build"
+    method = "ArenaBuilder.builder"
 
     try:
       squares: List[List[Square]] = []

@@ -24,7 +24,7 @@ class PieceSearchContextBuilder(Builder[TeamSearchContext]):
         roster_number: Optional[int],
     ) -> BuildResult[TeamSearchContext]:
 
-        method = "PieceSearchContextBuilder.build"
+        method = "PieceSearchContextBuilder.builder"
 
         params = [name, rank, ransom, piece_id, roster_number]
         param_count = sum(bool(p) for p in params)

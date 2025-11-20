@@ -20,7 +20,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         
     # RESPONSIBILITIES:
         1. Perform sanity checks on resources for creating a new DomainOrigin object.
-        2. Report any errors preventing a successful build.
+        2. Report any errors preventing a successful builder.
         3. Provide a DomainOrigin object that meets minimal requirements for usage in the system.
         
     # PROVIDES:
@@ -50,7 +50,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         # RAISES:
             None
         """
-        method = "DomainOriginBuilder.build"
+        method = "DomainOriginBuilder.builder"
         
         try:
             turn_scene_validation = TurnSceneValidator.validate(turn_scene)

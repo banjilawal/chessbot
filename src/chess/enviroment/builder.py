@@ -24,7 +24,7 @@ class TurnSceneBuilder(Builder[TurnScene]):
     @LoggingLevelRouter.monitor
     def build(cls, id: int, piece: Piece, board: Board) -> BuildResult[TurnScene]:
         """"""
-        method = "TurnSceneBuilder.build"
+        method = "TurnSceneBuilder.builder"
         
         try:
             id_validation = IdValidator.validate(id)

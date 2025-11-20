@@ -20,7 +20,7 @@ by the `PieceValidator`.
 THEME:
 -----
 **Integrity, Consistency, Validation.** The module's design centers on team_name separating
-complexities of the build process into team_name utility from the `Piece` constructor.
+complexities of the builder process into team_name utility from the `Piece` constructor.
 
 PURPOSE:
 -------
@@ -73,7 +73,7 @@ class PieceBuilder(Builder[Piece]):
       - On failure: Error information and error details
 
     Raises:
-    `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
+    `SquareBuildFailedException`: Wraps any exceptions raised builder. These are:
       * `InvalidNameException`: if `visitor_name` fails validate checks
       * `InvalidRankException`: if `bounds` fails validate checks
       * `InvalidTeamException`: if `team_name` fails validate checks
@@ -82,7 +82,7 @@ class PieceBuilder(Builder[Piece]):
       * `FullRankQuotaException`: If `owner.team_name` is equal to `team_name` parameter but `team_name.roster` still does
         not have the owner
     """
-    method = "PieceFactory.build"
+    method = "PieceFactory.builder"
 
     try:
       # id_validation = IdValidator.validate(visitor_id)
@@ -144,19 +144,19 @@ class PieceBuilder(Builder[Piece]):
 
 
 # def main():
-#   build_outcome = PieceFactory.build()
+#   build_outcome = PieceFactory.builder()
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")
 #   else:
-#     print(f"Failed to build owner: {build_outcome.err}")
+#     print(f"Failed to builder owner: {build_outcome.err}")
 #   #
-#   build_outcome = PieceFactory.build(1, None)
+#   build_outcome = PieceFactory.builder(1, None)
 #   if build_outcome.is_success():
 #     owner = build_outcome.payload
 #     print(f"Successfully built owner: {owner}")
 #   else:
-#     print(f"Failed to build owner: {build_outcome.err}")
+#     print(f"Failed to builder owner: {build_outcome.err}")
 #
 # if __name__ == "__main__":
 #   main()

@@ -6,7 +6,7 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
 # class ObsololeteArenaBuilder:
 #
 #   @staticmethod
-#   def build() -> Arena:
+#   def builder() -> Arena:
 #
 #     team_service = TeamServiceBuilder.assemble()
 #     square_service = ChessBoardBuilder.assemble()
@@ -22,7 +22,7 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
     #
     # for team_config in TeamConfig:
     #   print(team_config)
-    #   team_name = TeamBuilder.build(team_config)
+    #   team_name = TeamBuilder.builder(team_config)
     #   teams.append(team_name)
     #
     # motion_controllers = RankFactory.assemble()
@@ -32,7 +32,7 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
     # for team_name in teams:
     #   for validate in motion_controllers:
     #     for i in range(validate.number_per_team):
-    #       captor = ChessPieceBuilder.build(
+    #       captor = ChessPieceBuilder.builder(
     #         id_emitter.chess_piece_id,
     #         (i + 1),
     #         validate=validate,
@@ -60,7 +60,7 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
 # def main():
 #   chess_board = ChessBoardBuilder.assemble()
 #   team_service = TeamServiceBuilder.assemble()
-#   board_controller = ArenaBuilder.build(team_service, chess_board)
+#   board_controller = ArenaBuilder.builder(team_service, chess_board)
 #
 #   print(board_controller.chess_board.squares_to_string())
 #

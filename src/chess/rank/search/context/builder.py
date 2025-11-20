@@ -50,7 +50,7 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
         """
         # Action:
             1. Use dependency injected validators to verify correctness of parameters required to
-                build a RankSearchContext instance.
+                builder a RankSearchContext instance.
             2. If the parameters are safe the RankSearchContext is built and returned.
 
         # Parameters:
@@ -71,7 +71,7 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankSearchContextBuilder.build"
+        method = "RankSearchContextBuilder.builder"
         
         try:
             params = [id, name, ransom, team_quota, designation]

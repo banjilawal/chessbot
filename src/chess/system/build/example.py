@@ -1,7 +1,7 @@
-# src/chess/system/build/example.py
+# src/chess/system/builder/example.py
 
 """
-Module: chess.system.build.example
+Module: chess.system.builder.example
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

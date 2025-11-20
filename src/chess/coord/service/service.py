@@ -132,7 +132,7 @@ class CoordService(Service[Coord]):
     def build_coord(self, row: int, column: int) -> BuildResult[Coord]:
         """
         # Action:
-        CoordService directs builder to run the build process with the inputs.
+        CoordService directs builder to run the builder process with the inputs.
 
         # Parameters:
             *   row (int):
@@ -145,7 +145,7 @@ class CoordService(Service[Coord]):
 
         Raises:
             *   None are raised here
-            *   builder sends any build exceptions back to the caller.
+            *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
         return self._coord_builder.build(row=row, column=column)
@@ -175,7 +175,7 @@ class CoordService(Service[Coord]):
             *   Any validation exceptions that occur are sent to the caller by either
                     validator
                     vector_service
-            *   builder sends any build exceptions back to the caller.
+            *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
         method = "CoordService.add_vector_to_coord"
@@ -220,7 +220,7 @@ class CoordService(Service[Coord]):
             *   Any validation exceptions that occur are sent to the caller by either
                     validator
                     vector_service
-            *   builder sends any build exceptions back to the caller.
+            *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
         method = "CoordService.dot_product"
@@ -266,7 +266,7 @@ class CoordService(Service[Coord]):
             *   Any validation exceptions that occur are sent to the caller by either
                     validator
                     scalar_service
-            *   builder sends any build exceptions back to the caller.
+            *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
         method = "CoordService.multiply_coord_by_scalar"
@@ -307,7 +307,7 @@ class CoordService(Service[Coord]):
         Raises:
             *   None are raised here.
             *   vector_service sends any validation exceptions back to the caller.
-            *   builder sends any build exceptions back to the caller.
+            *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
         method = "CoordService.convert_vector_to_coord"

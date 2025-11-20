@@ -79,7 +79,7 @@ These examples show recommended workflows with `Piece` exceptions.
 ```python
 from chess.owner import CombatantPiece, Checker, NullAttackException, AutoDiscoveryException
 
-build_outcome = PieceFactory.build(
+build_outcome = PieceFactory.builder(
   discovery_id=id_emitter.discovery_id,
   visitor_name='BB2',
   bounds=Bishop(),

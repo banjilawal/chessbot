@@ -146,17 +146,17 @@ class InconsistentCollectionException(InconsistencyException):
 # ======================# BUILD_OPTIONS EXCEPTIONS #======================#
 class NoBuildOptionSelectedException(ChessException):
     """
-    Raised when none of the possible options required to build an object are selected.
+    Raised when none of the possible options required to builder an object are selected.
     Mainly used by Context classes
     """
     ERROR_CODE = "NO_BUILD_OPTION_SELECTED_ERROR"
-    DEFAULT_MESSAGE = "None of the options required for the build were."
+    DEFAULT_MESSAGE = "None of the options required for the builder were."
 
 
 class BuildOptionSelectionTooLargeException(ChessException):
-    """Raised when too many of the available build options are selected. Mainly used by Context classes."""
+    """Raised when too many of the available builder options are selected. Mainly used by Context classes."""
     ERROR_CODE = "TOO_MANY_BUILD_OPTIONS_SELECTED_ERROR"
-    DEFAULT_MESSAGE = "Too many build options were selected."
+    DEFAULT_MESSAGE = "Too many builder options were selected."
 
 
 # ======================# NULL/EMPTY EXCEPTIONS #======================#

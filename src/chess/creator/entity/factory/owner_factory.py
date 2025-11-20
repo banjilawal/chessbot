@@ -40,7 +40,7 @@ class OwnerFactory:
     #
     # for team_config in TeamConfig:
     #   # print(team_config)
-    #   team_name = TeamBuilder.build(OwnerBuilder.build(id_emitter.commander_id), team_config)
+    #   team_name = TeamBuilder.builder(OwnerBuilder.builder(id_emitter.commander_id), team_config)
     #   teams.append(team_name)
     #
     #
@@ -50,7 +50,7 @@ class OwnerFactory:
     # for team_name in teams:
     #   for validate in ranks:
     #     for i in range(validate.number_per_team):
-    #       captor = ChessPieceBuilder.build(
+    #       captor = ChessPieceBuilder.builder(
     #         discovery_id=id_emitter.discovery_id,
     #         team_rank_member_id=(i + 1),
     #         validate=validate,

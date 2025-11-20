@@ -20,7 +20,7 @@ by the `ValidationResultValidator`.
 THEME:
 -----
 **Integrity, Consistency, Validation.** The module's design centers on team_name separating
-complexities of the build process into team_name utility from the `ValidationResult` constructor.
+complexities of the builder process into team_name utility from the `ValidationResult` constructor.
 
 PURPOSE:
 -------
@@ -72,7 +72,7 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
       - On failure: Error information and error details
 
     Raises:
-    `SquareBuildFailedException`: Wraps any exceptions raised build. These are:
+    `SquareBuildFailedException`: Wraps any exceptions raised builder. These are:
       * `InvalidNameException`: if `visitor_name` fails validate checks
       * `InvalidRankException`: if `bounds` fails validate checks
       * `InvalidTeamException`: if `team_name` fails validate checks
@@ -81,7 +81,7 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
       * `FullRankQuotaException`: If `validationResult.team_name` is equal to `team_name` parameter but `team_name.roster` still does
         not have the validationResult
     """
-    method = "TransactionResultBuilder.build"
+    method = "TransactionResultBuilder.builder"
 
     try:
       if payload is None and exception is None:
@@ -106,19 +106,19 @@ class ValidationResultBuilder(Builder[ValidationResult[Generic[T]]]):
 
 
 # def main():
-#   build_outcome = ValidationResultBuilder.build()
+#   build_outcome = ValidationResultBuilder.builder()
 #   if build_outcome.is_success():
 #     validationResult = build_outcome.payload
 #     print(f"Successfully built validationResult: {validationResult}")
 #   else:
-#     print(f"Failed to build validationResult: {build_outcome.err}")
+#     print(f"Failed to builder validationResult: {build_outcome.err}")
 #   #
-#   build_outcome = ValidationResultBuilder.build(1, None)
+#   build_outcome = ValidationResultBuilder.builder(1, None)
 #   if build_outcome.is_success():
 #     validationResult = build_outcome.payload
 #     print(f"Successfully built validationResult: {validationResult}")
 #   else:
-#     print(f"Failed to build validationResult: {build_outcome.err}")
+#     print(f"Failed to builder validationResult: {build_outcome.err}")
 #
 # if __name__ == "__main__":
 #   main()

@@ -59,7 +59,7 @@ class DomainBuilder(Builder[Domain]):
             * DomainNullFriendsDictException
             * InvalidDomainException
         """
-        method = "DomainBuilder.build"
+        method = "DomainBuilder.builder"
         
         try:
             board_actor_validation = BoardActorValidator.validate(piece, board)

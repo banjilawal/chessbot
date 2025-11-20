@@ -30,7 +30,7 @@ class PromotionEventBuilder(Builder[PromotionEvent]):
     @LoggingLevelRouter.monitor
     def build(cls, actor: Pawn, execution_environment: Board, parent: Event, new_rank: Rank=Queen) -> BuildResult[PromotionEvent]:
         """"""
-        method = "PromotionEventBuilder.build"
+        method = "PromotionEventBuilder.builder"
         
         try:
             if not isinstance(actor, PawnPiece):

@@ -6,13 +6,13 @@ Builder class responsible for safely constructing `KingCheckEvent` instances.
  focuses on creation while `AttackEventValidator` is used for validating existing `KingCheckEvent` instances that are passed
  around the system.
 
-The build runs through all validate checks individually to guarantee that any `KingCheckEvent` instance it produces
+The builder runs through all validate checks individually to guarantee that any `KingCheckEvent` instance it produces
 meets all required specifications before construction completes
 
 Usage:
   ```python
   # Safe attackEvent creation with validate
-  build_outcome = AttackEventBuilder.build(attackEvent_id=id_emitter.attackEvent_id, visitor_name="WN2", bounds=Knight(), team_name=white_team)
+  build_outcome = AttackEventBuilder.builder(attackEvent_id=id_emitter.attackEvent_id, visitor_name="WN2", bounds=Knight(), team_name=white_team)
   if not build_outcome.is_success():
     raise build_outcome.err
   attackEvent = build_outcome.payload
@@ -25,7 +25,7 @@ See Also:
 """
 """
 Constructs team_name new `KingCheckEvent` instance with comprehensive checks on the parameters and states during the
-build process.
+builder process.
 
 Performs individual validate checks on each component to ensure the resulting `KingCheckEvent` meets all
 specifications. If all checks are passed, team_name `KingCheckEvent` instance will be returned. It is not necessary to perform
@@ -56,7 +56,7 @@ Raises:
       not have the attackEvent
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team_name valid `KingCheckEvent` is
+  The builder runs through all the checks on parameters and state to guarantee only team_name valid `KingCheckEvent` is
   created, while `AttackEventValidator` is used for validating `KingCheckEvent` instances that are passed around after
   creating. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -64,7 +64,7 @@ Note:
 Example:
   ```python
   # Valid attackEvent creation
-  build_outcome = AttackEventBuilder.build(value=1)
+  build_outcome = AttackEventBuilder.builder(value=1)
   if not build_outcome.is_success():
     return BuildResult(err=build_outcome.err)
   return BuildResult(payload=build_outcome.payload)
@@ -347,7 +347,7 @@ Example:
 #   """
 #   method = "OccupationExecutor._run_scan"
 #
-#   build_outcome = DiscoveryBuilder.build(observer=travel.observer, friend=travel.friend)
+#   build_outcome = DiscoveryBuilder.builder(observer=travel.observer, friend=travel.friend)
 #   if not build_outcome.is_success():
 #     return TransactionResult(op_result_id, travel, rollback_exception=build_outcome.rollback_exception)
 #
@@ -544,7 +544,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 # class AttackEventBuilderException(AttackEventException, BuilderException):
 #   """
 #   Indicates Coord could not be built. Wraps and re-raises errors that occurred
-#   during build.
+#   during builder.
 #   """
 #   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
 #   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team_name KingCheckEvent"

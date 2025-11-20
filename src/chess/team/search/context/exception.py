@@ -105,7 +105,7 @@ class PieceSearchContextMaxParamCountException(PieceSearchContextException):
 class PieceSearchContextBuildFailedException(PieceSearchContextException, BuildFailedException):
     """
     Raised when PieceSearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised build team_name new pieceSearchContext
+    Exists primarily to catch all exceptions raised builder team_name new pieceSearchContext
     """
     ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext build failed."

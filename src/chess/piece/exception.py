@@ -76,7 +76,7 @@ class NullPawnException(NullPieceException):
 class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
     """
     Raised if a Piece.team attribute is null. This should never happen, the field is required and
-    set during build. If its null after the Piece is created there has been service loss
+    set during builder. If its null after the Piece is created there has been service loss
     or data inconsistency.
     """
     ERROR_CODE = "PIECE_TEAM_FIELD_NULL_ERROR"
@@ -86,7 +86,7 @@ class PieceTeamFieldIsNullException(PieceException, InconsistencyException):
 class PieceNoCoordStackServiceException(PieceException, InconsistencyException):
     """
     Raised if a Piece.coord_stack_service attribute is null. This should never happen, the field is required and
-    set during build. If its null after the Piece is created there has been service loss or data inconsistency.
+    set during builder. If its null after the Piece is created there has been service loss or data inconsistency.
     """
     ERROR_CODE = "PIECE_DOES_NOT_HAVE_COORD_STACK_SERVICE_ERROR"
     DEFAULT_MESSAGE = "Piece.coord_stack_service is null. There may be a service failure or data inconsistency."
@@ -110,7 +110,7 @@ class PieceMissingDiscoveriesException(PieceException, InconsistencyException):
 class PieceRosterNumberIsNullException(PieceException, NullException):
     """
     Raised if a Piece.roster_number attribute is null. This should never happen, the field is required and
-    set during build. If its null after the Piece is created there has been service loss or data inconsistency.
+    set during builder. If its null after the Piece is created there has been service loss or data inconsistency.
     """
     ERROR_CODE = "PIECE_NULL_ROSTER_NUMBER_ERROR"
     DEFAULT_MESSAGE = (

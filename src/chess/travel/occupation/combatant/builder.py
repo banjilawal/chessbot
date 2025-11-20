@@ -33,7 +33,7 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
   ) -> BuildResult[AttackEvent]:
 
 
-    method = "AttackEventBuilder.build"
+    method = "AttackEventBuilder.builder"
 
     try:
       id_validation = IdValidator.validate(event_id)

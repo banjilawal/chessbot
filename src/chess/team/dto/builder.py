@@ -11,7 +11,7 @@ class TeamBuilder(Builder[TeamDTO]):
     @LoggingLevelRouter.monitor()
     def build(cls, team: Team) -> BuildResult[TeamDTO]:
         
-        method = "TeamDTOBuilder.build"
+        method = "TeamDTOBuilder.builder"
         
         try:
             validation = TeamValidator.validate(team)

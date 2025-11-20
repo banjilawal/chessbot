@@ -230,7 +230,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     actor_square = BoardSearch.search()
 #
 #     if destination_occupant is None:
-#       build_result = KingOccupationEventBuilder.build(
+#       build_result = KingOccupationEventBuilder.builder(
 #         parent=travel,
 #         traveler=travel.traveler,
 #         actor_square=actor_square,

@@ -18,7 +18,7 @@ class SquareDTOBuilder(Builder[SquareDTO]):
     @LoggingLevelRouter.monitor()
     def build(cls, square: Square) -> BuildResult[SquareDTO]:
         """"""
-        method = "SquareDTOBuilder.build"
+        method = "SquareDTOBuilder.builder"
         
         try:
             validation = SquareValidator.validate(square)

@@ -33,7 +33,7 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
             team_name: Optional[str] = None
     ) -> BuildResult[VisitorSearchContext]:
         """"""
-        method = "VisitorSearchContextBuilder.build"
+        method = "VisitorSearchContextBuilder.builder"
         
         try:
             params = [name, ransom, id, team_id, team_name, rank_name, coord]

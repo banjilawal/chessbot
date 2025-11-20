@@ -1,7 +1,7 @@
-# src/chess/checkmate/post/check/build.py
+# src/chess/checkmate/post/check/builder.py
 
 """
-Module: chess.checkmate.post.check.build
+Module: chess.checkmate.post.check.builder
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

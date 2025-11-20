@@ -51,7 +51,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
         Raises:
         MethodNameException wraps
         """
-        method = "VisitationSearchContextBuilder.build"
+        method = "VisitationSearchContextBuilder.builder"
 
         try:
             params = [name, ransom, piece_id, team_id, team_name, rank_name, position]

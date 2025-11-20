@@ -1,7 +1,7 @@
-# src/chess/square/builder.py
+# src/chess/square/builder/builder.py
 
 """
-Module: chess.square.builder
+Module: chess.square.builder.builder
 Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
@@ -63,7 +63,7 @@ class SquareBuilder(Builder[Square]):
         # Raises:
             *   SquareBuildFailedException
         """
-        method = "SquareBuilder.build"
+        method = "SquareBuilder.builder"
         
         try:
             identity_validation = identity_service.validate_identity(

@@ -1,7 +1,7 @@
-# src/chess/agent/build.py
+# src/chess/agent/builder.py
 
 """
-Module: chess.agent.build
+Module: chess.agent.builder
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0
@@ -61,7 +61,7 @@ class PlayerAgentBuilder(Builder[Agent]):
         # Raises:
             *   AgentBuildFailedException
         """
-        method = "PlayerAgentBuilder.build"
+        method = "PlayerAgentBuilder.builder"
         
         try:
             params_validation = cls._validate_params(
@@ -174,7 +174,7 @@ class PlayerAgentBuilder(Builder[Agent]):
             # Raises:
                 *   AgentBuildFailedException
             """
-            method = "PlayerAgentBuilder.build"
+            method = "PlayerAgentBuilder.builder"
             
             try:
                 params_validation = cls._validate_params(
@@ -251,19 +251,19 @@ class PlayerAgentBuilder(Builder[Agent]):
 #
 #
 # def main():
-#   build_result = PlayerAgentBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
+#   build_result = PlayerAgentBuilder.builder(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")
 #   else:
-#     print(f"Failed to build competitor: {build_result.err}")
+#     print(f"Failed to builder competitor: {build_result.err}")
 #
-#   build_result = PlayerAgentBuilder.build(-1, 4)
+#   build_result = PlayerAgentBuilder.builder(-1, 4)
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")
 #   else:
-#     print(f"Failed to build competitor: {build_result.err}")
+#     print(f"Failed to builder competitor: {build_result.err}")
 #
 # if __name__ == "__main__":
 #   main()

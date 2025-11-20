@@ -23,7 +23,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
     @LoggingLevelRouter.monitor
     def build(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[VisitationEvent]:
         """"""
-        method = "VisitationBuilder.build"
+        method = "VisitationBuilder.builder"
         
         try:
             id_validation = IdValidator.validate(id)

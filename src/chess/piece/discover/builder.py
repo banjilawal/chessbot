@@ -17,13 +17,13 @@ class DiscoveryBuilder(Enum):
   focuses on creating while `DiscoveryValidator` is used for validating existing `Checker` instances that are passed
   around the system.
 
-  The build runs through all validate checks individually to guarantee that any `Checker` instance it produces
+  The builder runs through all validate checks individually to guarantee that any `Checker` instance it produces
   meets all required specifications before construction completes
   
   Usage:
     ```python
     # Safe discover creation with validate
-    build_outcome = DiscoveryBuilder.build(actor_candidate=bishop, discover=pawn))
+    build_outcome = DiscoveryBuilder.builder(actor_candidate=bishop, discover=pawn))
     if not build_outcome.is_success():
       raise build_outcome.err
     discover = build_outcome.payload
@@ -59,7 +59,7 @@ class DiscoveryBuilder(Enum):
     """
     """
     Constructs team_name new `Checker` instance with comprehensive checks on the parameters and states during the
-    build process.
+    builder process.
 
     Performs individual validate checks on each component to ensure the resulting `Checker` meets all
     specifications. If all checks are passed, team_name `Checker` instance will be returned. It is not necessary to perform
@@ -83,7 +83,7 @@ class DiscoveryBuilder(Enum):
         * `AutoDiscoveryException`: if `actor_candidate` and `discover` are the same.
 
     Note:
-      The build runs through all the checks on parameters and state to guarantee only team_name valid `Checker` is
+      The builder runs through all the checks on parameters and state to guarantee only team_name valid `Checker` is
       created, while `DiscoveryValidator` is used for validating `Checker` instances that are passed around after 
       creation. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
@@ -91,13 +91,13 @@ class DiscoveryBuilder(Enum):
     Example:
       ```python
       # Valid discover creation
-      build_outcome = DiscoveryBuilder.build(value=1)
+      build_outcome = DiscoveryBuilder.builder(value=1)
       if not build_outcome.is_success():
         return BuildResult(err=build_outcome.err)
       return BuildResult(payload=build_outcome.payload)
       ```
     """
-    method = "DiscoveryBuilder.build"
+    method = "DiscoveryBuilder.builder"
 
     try:
       observer_validation = PieceValidator.validate(observer)

@@ -36,7 +36,7 @@ class RankSearchService:
     
     #
     # def build_search_context(self, **kwargs) -> RankSearchContext:
-    #     return self._context_builder.build(**kwargs)
+    #     return self._context_builder.builder(**kwargs)
     #
     #
     # def validate_search_context(self, candidate: Any) -> SearchResult[RankSearchContext]:

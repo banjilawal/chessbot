@@ -1,7 +1,7 @@
-# src/chess/square/service.py
+# src/chess/square/service/service.py
 
 """
-Module: chess.square.service
+Module: chess.square.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
@@ -57,31 +57,27 @@ class SquareService(Service[Square]):
         
         self._coord_service = coord_service
         self._identity_service = identity_service
-
     
+    @property
     def validator(self) -> type[SquareValidator]:
         """
-        # Action:
-        CoordService directs validator to run the verification process on the candidate.
-
-        # Parameters:
-            *   row (int):
-            *   column (int):
-
-        # Returns:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-        Raises:
-        None
+        SquareValidator is the single-source-of truth for
+            1.  Certifying the safety of Square instances.
+            2.  Verifying Piece-Square bindings.
+        With those two responsibilities, it makes sense to directly expose SquareValidator.
         """
         return self._validator
     
     def build_square(self, id: int, name: str, coord: Coord) -> BuildResult[Square]:
         """
+        Builders have
+            1.  A single responsibility.
+            2.  Require external resources to create products.
+        Those facts make Builders strong encapsulation targets.
+        
         # Action:
-        Use builder, coord_service and identity_service to build a new Square object.
+        Delegate fabrication responsibility to builder. Pass coord_service and identity_service to
+        builder.
 
         # Parameters:
             *   id (int):

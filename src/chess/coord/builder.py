@@ -63,7 +63,7 @@ class CoordBuilder(Builder[Coord]):
             *   ColumnAboveBoundsException
             *   InvalidCoordException
         """
-        method = "CoordBuilder.build"
+        method = "CoordBuilder.builder"
         
         try:
             if row is None:

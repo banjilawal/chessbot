@@ -105,7 +105,7 @@ class ProjectionSearchContextMaxParamCountException(ProjectionSearchContextExcep
 class ProjectionSearchContextBuildFailedException(ProjectionSearchContextException, BuildFailedException):
     """
     Raised when ProjectionSearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised build team_name new projectionSearchContext
+    Exists primarily to catch all exceptions raised builder team_name new projectionSearchContext
     """
     ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext build failed."

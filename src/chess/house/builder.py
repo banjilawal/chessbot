@@ -20,7 +20,7 @@ class HouseBuilder(Builder[House]):
     @LoggingLevelRouter.monitor
     def build(cls, turn_scene: TurnScene) -> BuildResult[House]:
         """"""
-        method = "HouseBuilder.build"
+        method = "HouseBuilder.builder"
         
         try:
             turn_scene_validation = TurnSceneValidator.validate(turn_scene)

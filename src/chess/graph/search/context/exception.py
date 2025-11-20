@@ -74,7 +74,7 @@ class TooManyVisitorSearchParamsException(VisitorSearchContextException):
 class VisitorSearchContextBuildFailedException(VisitorSearchContextException, BuildFailedException):
     """
     Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised build team_name new visitorSearchContext
+    Exists primarily to catch all exceptions raised builder team_name new visitorSearchContext
     """
     ERROR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "VisitorSearchContext build failed."

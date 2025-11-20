@@ -70,7 +70,7 @@ class TeamBuilder(Builder[Team]):
         RAISES:
             *   TeamBuildFailedException
         """
-        method = "TeamBuilder.build"
+        method = "TeamBuilder.builder"
         
         try:
             id_validation = identity_service.validate_id(id)

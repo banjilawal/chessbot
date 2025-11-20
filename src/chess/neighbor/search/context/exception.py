@@ -94,7 +94,7 @@ class VisitationInvalidRankNameParamException(VisitationSearchContextException):
 class VisitationSearchContextBuildFailedException(VisitationSearchContextException, BuildFailedException):
     """
     Raised when VisitationSearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised build team_name new visitationSearchContext
+    Exists primarily to catch all exceptions raised builder team_name new visitationSearchContext
     """
     ERROR_CODE = "VISITATION_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "VisitationSearchContext build failed."

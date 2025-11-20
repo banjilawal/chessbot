@@ -50,7 +50,7 @@ class DiscoverySearchContextBuilder(Builder[DiscoverySearchContext]):
         Raises:
         MethodNameException wraps
         """
-        method = "PieceSearchContextBuilder.build"
+        method = "PieceSearchContextBuilder.builder"
 
         try:
             params = [name, ransom, piece_id, team_id, team_name, rank_name, position]

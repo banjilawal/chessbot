@@ -112,7 +112,7 @@ class SearchContextMaxParamCountException(SearchContextException):
 class SearchContextBuildFailedException(SearchContextException, BuildFailedException):
   """
   Raised when SearchContextBuilder encounters an error while building team_name team_name.
-  Exists primarily to catch all exceptions raised build team_name new searchContext
+  Exists primarily to catch all exceptions raised builder team_name new searchContext
   """
   ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "SearchContext build failed."
@@ -166,7 +166,7 @@ class FilterContextMaxParamCountException(FilterContextException):
 class FilterContextBuildFailedException(FilterContextException, BuildFailedException):
   """
   Raised when FilterContextBuilder encounters an error while building team_name team_name.
-  Exists primarily to catch all exceptions raised build team_name new filterContext
+  Exists primarily to catch all exceptions raised builder team_name new filterContext
   """
   ERROR_CODE = "FILTER_CONTEXT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "FilterContext build failed."

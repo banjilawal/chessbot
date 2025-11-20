@@ -61,7 +61,7 @@ class BoardBuilder(Builder[Board]):
         # Raises:
             * BoardBuildFailedException:
         """
-        method = "BoardBuilder.build"
+        method = "BoardBuilder.builder"
         
         try:
             id_validation = id_validator.validate(id)

@@ -1,7 +1,7 @@
-# src/chess/system/build/factory.py
+# src/chess/system/builder/factory.py
 
 """
-Module: chess.system.build.builder
+Module: chess.system.builder.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -20,7 +20,7 @@ class Builder(ABC, Generic[T]):
 
   # RESPONSIBILITIES:
   1.  Produce V instances whose integrity is always guaranteed.
-  1.  Uses Validator instances to verify build resources do not break safety contracts.
+  1.  Uses Validator instances to verify builder resources do not break safety contracts.
   2.  Wraps ValidatorExceptions inside BuildResult before returning to caller.
   3.  Performs any additional checks not covered by Validators to assure safety and integrity of new objects.
 

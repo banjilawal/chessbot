@@ -50,7 +50,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         """
         # Action:
             1.  Use dependency injected validators to verify correctness of parameters required to
-                build a TeamSearchContext instance.
+                builder a TeamSearchContext instance.
             2.  If the parameters are safe the TeamSearchContext is built and returned.
 
         # Parameters:
@@ -71,7 +71,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             *   NoBoardSearchOptionSelectedException
             *   MoreThanOneBoardSearchOptionPickedException
         """
-        method = "BoardSearchContextBuilder.build"
+        method = "BoardSearchContextBuilder.builder"
         
         try:
             params = [id, name, coord]

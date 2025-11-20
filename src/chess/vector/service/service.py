@@ -65,7 +65,7 @@ class VectorService(Service):
     def build_vector(self, x: int, y: int) -> BuildResult[Vector]:
         """
         # Action:
-        VectorService directs builder to run the build process with the inputs.
+        VectorService directs builder to run the builder process with the inputs.
 
         # Parameters:
             *   x (int):
@@ -78,7 +78,7 @@ class VectorService(Service):
 
         Raises:
             *   None are raised here
-            *   builder sends any build exceptions back to the caller.
+            *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
         method = "VectorService.build_vector"

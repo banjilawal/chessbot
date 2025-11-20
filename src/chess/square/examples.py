@@ -6,13 +6,13 @@ Builder class responsible for safely constructing `Square` instances.
  focuses on creation while `SquareValidator` is used for validating existing `Square` instances that are passed
  around the system.
 
-The build runs through all validate checks individually to guarantee that any `Square` instance it produces
+The builder runs through all validate checks individually to guarantee that any `Square` instance it produces
 meets all required specifications before construction completes
 
 Usage:
   ```python
   # Safe square creation
-  build_result = SquareBuilder.build(visitor_id=1, visitor_name="A-1", coordinate=Coord(0, 0))
+  build_result = SquareBuilder.builder(visitor_id=1, visitor_name="A-1", coordinate=Coord(0, 0))
 
   if build_result.is_success():
     square = build_result.payload
@@ -23,10 +23,10 @@ See Also:
   `SquareValidator`: Used for validating existing `Square` instances
   `BuildResult`: Return type containing the built `Square` or error information
 """
-method = "VectorBuilder.build"
+method = "VectorBuilder.builder"
 """
 Constructs team_name new `Square` instance with comprehensive checks on the parameters and states during the
-build process.
+builder process.
 
 Performs individual validate checks on each component to ensure the resulting `Square` meets all
 specifications. If all checks are passed, team_name `Square` instance will be returned. It is not necessary to perform
@@ -52,7 +52,7 @@ Raises:
     * `SquareBuildFailedException`: for any other construction failures
 
 Note:
-  The build runs through all the checks on parameters and state to guarantee only team_name valid `Square` is
+  The builder runs through all the checks on parameters and state to guarantee only team_name valid `Square` is
   created, while `SquareValidator` is used for validating `Square` instances that are passed around after
   creation. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
@@ -60,12 +60,12 @@ Note:
 Example:
   ```python
   # Valid square creation
-  notification = SquareBuilder.build(visitor_id=1, visitor_name=black-visitor_name, schema=black_square_profile)
+  notification = SquareBuilder.builder(visitor_id=1, visitor_name=black-visitor_name, schema=black_square_profile)
   if notification.is_success():
     square = cast(Square, notification.payload) # Guaranteed valid Square
 
   # Null visitor_name will fail gracefully
-  notification = SquareBuilder.build(visitor_id=1, visitor_name=None, schema=black_square_profile)
+  notification = SquareBuilder.builder(visitor_id=1, visitor_name=None, schema=black_square_profile)
   if not notification.is_success():
     # Handle construction failure
     pass
@@ -91,7 +91,7 @@ Example:
 # >>>
 # >>> # Build team_name new Square at Coord(2, 1)
 # >>> point = Coord(row=2, column=1)
-# >>> build_outcome = SquareBuilder.build(visitor_id=1, visitor_name="B2", point=point)
+# >>> build_outcome = SquareBuilder.builder(visitor_id=1, visitor_name="B2", point=point)
 # >>> if not build_outcome.is_success():
 # >>>  raise build_outcome.err
 # >>> square = cast(Square, build_outcome.payload)

@@ -130,7 +130,7 @@ BuildResult[Coord]: A `BuildResult` containing either:
   - On failure: Error information and error details
 
 Raises:
-`CoordBuildFailedException`: Wraps any exceptions raised build. These are:
+`CoordBuildFailedException`: Wraps any exceptions raised builder. These are:
   * `NullRowException`: if `row` is null.
   * `NullColumnException`: if `column` is null.
   * `RowBelowBoundsException`: if `row` < 0.
