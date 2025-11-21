@@ -88,35 +88,7 @@ class ChessException(Exception):
     # will use this.
 
 
-# ======================# BOUNDS EXCEPTIONS #======================#
-class BoundsException(ChessException):
-    """Base class for out of Bounds errors."""
-    DEFAULT_CODE = "OUT_OF__BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Out of bounds."
 
-
-class AboveBoundsException(BoundsException):
-    """Base class for above bounds exceptions."""
-    DEFAULT_CODE = "ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Above bounds."
-
-
-class BelowBoundsException(BoundsException):
-    """Base class for above bounds exceptions."""
-    DEFAULT_CODE = "BELOW_BOUNS_RROR"
-    DEFAULT_MESSAGE = "Below bounds."
-
-
-# ======================# ROLL_BACK EXCEPTIONS #======================#
-class RollbackException(ChessException):
-    """Base class for rollback-related errors."""
-    DEFAULT_CODE = "ROLLBACK"
-    DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
-
-
-class RollbackFailedException(RollbackException):
-    ERROR_CODE = "ROLLBACK_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Rollback failed."
 
 
 # ======================# IMPLEMENTATION EXCEPTIONS #======================#
@@ -174,55 +146,4 @@ class BuildOptionSelectionTooLargeException(ChessException):
     DEFAULT_MESSAGE = "Too many builder options were selected."
 
 
-# ======================# NULL/EMPTY EXCEPTIONS #======================#
-class NullException(ChessException):
-    """
-    Raised if an entity, method, or operation requires not null but gets null instead.
-    """
-    ERROR_CODE = "NULL_ERROR"
-    DEFAULT_MESSAGE = "cannot be null"
 
-
-class NullNumberException(NullException):
-    """
-    Raised if mathematical expression or geometric, algebraic, or optimization that need
-     number but get null instead NUllNumberException is thrown. Ids are not used for math
-     so we need different null team_exception for math variables
-    """
-    ERROR_CODE = "NULL_NUMBER_ERROR"
-    DEFAULT_MESSAGE = "Number cannot be null"
-
-
-class NullStringException(NullException):
-    """
-    Raised if an entity, method, or operation requires string but gets null instead.
-    """
-    ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-    DEFAULT_MESSAGE = "Cannot old_search by null string"
-
-
-class BlankStringException(ChessException):
-    """
-    Raised if old_search parameter is blank or empty string
-    """
-    ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
-    DEFAULT_MESSAGE = "Cannot old_search by an empty or blank string"
-
-
-# ======================# NULL/EMPTY EXCEPTIONS #======================#  
-class GameColorException(ChessException):
-    """"""
-    ERROR_CODE = "GAME_COLOR_ERROR"
-    DEFAULT_MESSAGE = "GameColor raised an exception failed."
-
-
-class InvalidGameColorException(GameColorException):
-    """"""
-    ERROR_CODE = "GAME_COLOR_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "GameColor validation failed"
-
-
-class NullGameColorException(GameColorException, NullException):
-    """"""
-    ERROR_CODE = "NULL_GAME_COLOR_ERROR"
-    DEFAULT_MESSAGE = "GameColor cannot be null."

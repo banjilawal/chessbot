@@ -109,37 +109,3 @@ class PositionUpdateRollbackException(AttackEventException, RollbackException):
 
 
 # ======================# ATTACKING PIECE EXCEPTIONS #======================#
-class HostageActivityException(PieceException):
-  """
-  Several exceptions can be raised during capture operations. This class is the parent of
-  exceptions an attacking owner can raised. Do not use directly. Subclasses give details
-  useful for debugging.
-  """
-  ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"
-  DEFAULT_MESSAGE = "Hostage owner cannot move, blocking, or attack."
-
-
-class HostageCannotAttackException(HostageActivityException):
-  """
-  Raised if team_name captured owner tries to attack.
-  """
-  ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Captured owner cannot attack."
-
-
-class HostageCannotMoveException(HostageActivityException):
-  """
-  Raised if team_name captured owner tries to move.
-  """
-  ERROR_CODE = "HOSTAGE_CANNOT_MOVE_ERROR"
-  DEFAULT_MESSAGE = "Captured owner cannot move."
-
-
-class HostageCannotScanException(HostageActivityException):
-  """
-  Raised if team_name captured owner tries to blocking team_name square.
-  """
-  ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "Captured owner cannot blocking team_name sqaure."
-
-
