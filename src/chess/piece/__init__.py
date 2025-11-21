@@ -18,7 +18,7 @@ from .exception import *
 from .piece import Piece
 from .combatant import CombatantPiece
 
-from .factory import PieceFactory
+from chess.piece.builder.factory import PieceFactory
 from .validator import PieceValidator
 
 

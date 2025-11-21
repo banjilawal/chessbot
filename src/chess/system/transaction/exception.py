@@ -1,4 +1,4 @@
-# src/chess/system/transaction/exception.py
+# src/chess/system/transaction/collision.py
 
 """
 Module: chess.system.transaction.exception

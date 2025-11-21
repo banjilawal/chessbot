@@ -1,4 +1,4 @@
-# src/chess/rank/validator/exception.py
+# src/chess/rank/validator/collision.py
 
 """
 Module: chess.rank.validator.exception

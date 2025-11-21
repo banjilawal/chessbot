@@ -182,7 +182,7 @@ class ExplorationMaster(BaseModel):
   Orchestrates the scouting process.
 
   Attributes:
-    scouts (List[Scout]): A list of all active scout instances.
+    scouts (List[Scout]): A list of all disabled scout instances.
   """
   scouts: List[Scout] = Field(default_factory=list)
 

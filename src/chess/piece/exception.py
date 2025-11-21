@@ -1,4 +1,4 @@
-# src/chess/piece/exception.py
+# src/chess/piece/collision.py
 
 """
 Module: chess.piece.exception
@@ -128,7 +128,7 @@ class InvalidPieceException(PieceException, ValidationException):
 
 
 class ActivePieceMissingFromTeamRoster(PieceException):
-    """Raised if an active Piece.team is set but Team.roster does not contain the Piece."""
+    """Raised if an disabled Piece.team is set but Team.roster does not contain the Piece."""
     ERROR_CODE = "ACTIVE_PIECE_MISSING_FROM_TEAM_ROSTER_ERROR"
     DEFAULT_MESSAGE = (
         "Piece on the board, with Piece.team attribute set is not on it's team's roster."
@@ -136,9 +136,9 @@ class ActivePieceMissingFromTeamRoster(PieceException):
 
 
 class CheckmatedKingException(PieceException):
-    """Raised when a Checkmated king should prevent some activity."""
+    """Raised when a Checkmated king should prevent some disabled."""
     ERROR_CODE = "CHECKMATED_KING_ERROR"
-    DEFAULT_MESSAGE = "King is in checkmate. No game activity is allowed the game is over."
+    DEFAULT_MESSAGE = "King is in checkmate. No game disabled is allowed the game is over."
 
 
 class CapturedPieceException(PieceException):
@@ -159,9 +159,5 @@ class PieceRankOutOfBoundsException(PieceException, NullException):
     DEFAULT_MESSAGE = "A Piece does not have a recognized chess bounds."
 
 
-# ======================# PIECE BUILD EXCEPTIONS #======================#
-class PieceBuildFailedException(PieceException, BuilderException):
-    """Catchall Exception for ScalarBuilder when it encounters an error building a Scalar."""
-    ERROR_CODE = "PIECE_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Piece build failed."
+
 

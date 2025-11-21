@@ -1,4 +1,4 @@
-# src/chess/owner/travel/occupation/combatant/transaction/exception.py
+# src/chess/owner/travel/occupation/combatant/transaction/collision.py
 
 """
 Module: chess.owner.travel.occupation.combatant.transaction.exception

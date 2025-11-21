@@ -1,4 +1,4 @@
-# src/chess/system/err/exception.py
+# src/chess/system/err/collision.py
 
 """
 Module: chess.system.err.exception
@@ -88,12 +88,28 @@ class ChessException(Exception):
     # will use this.
 
 
+# ======================# BOUNDS EXCEPTIONS #======================#
+class BoundsException(ChessException):
+    """Base class for out of Bounds errors."""
+    DEFAULT_CODE = "OUT_OF__BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "Out of bounds."
+
+
+class AboveBoundsException(BoundsException):
+    """Base class for above bounds exceptions."""
+    DEFAULT_CODE = "ABOVE_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "Above bounds."
+
+
+class BelowBoundsException(BoundsException):
+    """Base class for above bounds exceptions."""
+    DEFAULT_CODE = "BELOW_BOUNS_RROR"
+    DEFAULT_MESSAGE = "Below bounds."
+
 
 # ======================# ROLL_BACK EXCEPTIONS #======================#
 class RollbackException(ChessException):
-    """
-    Base class for rollback-related errors in the chess engine..
-    """
+    """Base class for rollback-related errors."""
     DEFAULT_CODE = "ROLLBACK"
     DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
 

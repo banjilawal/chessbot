@@ -1,4 +1,4 @@
-# src/chess/system/search/exception.py
+# src/chess/system/search/collision.py
 
 """
 Module: chess.system.search.exception
@@ -11,7 +11,7 @@ from chess.system import ChessException
 
 __all__ = [
   'SearchException',
-  'SearchCollisionException'
+
 ]
 
 class SearchException(ChessException):
@@ -23,13 +23,7 @@ class SearchException(ChessException):
   DEFAULT_CODE = "SEARCH_ERROR"
   DEFAULT_MESSAGE = "Search raised an exception."
 
-class SearchCollisionException(SearchException):
-  """"""
-  DEFAULT_CODE = "SEARCH_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "Search results contains multiple records for property that should be unique. There may"
-    " be service inconsistencies."
-  )
+
 
 
 

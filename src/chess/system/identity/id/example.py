@@ -105,7 +105,7 @@ Major themes influencing the design include:
 1. `AutoId
 """
 
-# src/chess/system/visitor_id/exception.py
+# src/chess/system/visitor_id/collision.py
 
 """
 Module: chess.system.visitor_id.exception

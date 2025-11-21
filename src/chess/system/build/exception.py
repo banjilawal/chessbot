@@ -1,4 +1,4 @@
-# src/chess/system/builder/exception.py
+# src/chess/system/builder/collision.py
 
 """
 Module: chess.system.builder.exception

@@ -1,4 +1,4 @@
-# src/chess/system/color/exception.py
+# src/chess/system/color/collision.py
 
 """
 Module: chess.system.color.exception

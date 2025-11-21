@@ -51,7 +51,7 @@ The major theme influencing the modules design are
 # SECTION 8 - Contains:
 1. `Result`
 """
-# src/chess/system/result/exception.py
+# src/chess/system/result/collision.py
 
 """
 Module: `chess.system.result.exception`

@@ -1,4 +1,4 @@
-# src/chess/rank/search/exception.py
+# src/chess/rank/search/collision.py
 
 """
 Module: chess.rank.search.exception
@@ -7,7 +7,7 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-# src/rank/search/context/exception.py
+# src/rank/search/context/collision.py
 
 """
 Module: chess.rank.search.context.exception

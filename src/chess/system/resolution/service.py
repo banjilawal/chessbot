@@ -19,3 +19,17 @@ T = TypeVar("T")
 class ResolutionService(Service[ABC, Generic[T]]):
     """"""""
     pass
+
+"""
+Sorting
+1.  if the piece.team.player.game.id != lock.game.id:
+    deliver_to_game_level_resolver.(piece)
+2.  if piece.team.player.id != lock.player.id:
+    deliver_to_player_level_resolver.(piece)
+3.  if piece.team.id != lock.team.id:
+    deliver_to_team_level_resolver.(piece)
+4.  If piece.id == lock.id:
+    pieces.remove(piece)
+5.  lock = pieces.pop(0)
+ I felt ashamed
+"""

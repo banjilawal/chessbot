@@ -1,4 +1,4 @@
-# src/chess/graph/exception.py
+# src/chess/graph/collision.py
 
 """
 Module: chess.graph.exception

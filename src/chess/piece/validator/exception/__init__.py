@@ -8,6 +8,6 @@ version: 1.0.0
 """
 
 from .binding import *
-from .activity import *
+from .disabled import *
 
 from .exception import *

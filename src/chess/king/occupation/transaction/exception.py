@@ -1,4 +1,4 @@
-# src/chess/king/occupation/transaction/exception.py
+# src/chess/king/occupation/transaction/collision.py
 
 """
 Module: `chess.king.occupation.transaction.exception`

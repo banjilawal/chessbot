@@ -1,4 +1,4 @@
-# src/chess/owner/model/pawn/exception.py
+# src/chess/owner/model/pawn/collision.py
 
 """
 Module: chess.owner.model.pawn.exception

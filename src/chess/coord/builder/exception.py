@@ -1,4 +1,4 @@
-# src/chess/coord/builder/exception.py
+# src/chess/coord/builder/collision.py
 
 """
 Module: chess.coord.builder.exception

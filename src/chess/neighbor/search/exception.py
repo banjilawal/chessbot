@@ -1,4 +1,4 @@
-# src/chess/neighbor/search/exception.py
+# src/chess/neighbor/search/collision.py
 
 """
 Module: chess.neighbor.search.exception
@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.system import ChessException, SearchCollisionException
+from chess.system import ChessException, OrphanException
 
 __all__ = [
   'VisitationSearchException',
@@ -37,7 +37,7 @@ class VisitationSearchException(ChessException):
 
 
 #======================# SEARCH_COLLISION EXCEPTIONS #======================#
-class VisitationSearchCollisionException(VisitationSearchException, SearchCollisionException):
+class VisitationSearchCollisionException(VisitationSearchException, OrphanException):
   DEFAULT_CODE = "VISITATION_SEARCH_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "VisitationSearch results contains records with multiple records with properties that should be unique. There "
@@ -67,26 +67,26 @@ class VisitationSearchCoordCollisionException(VisitationSearchCollisionException
   )
 
 
-class SquareSearchIdCollisionException(SearchCollisionException):
+class SquareSearchIdCollisionException(OrphanException):
   DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "More than one Square found with the same visitor_id. There may be a service inconsistency."
   )
 
 
-class SquareSearchNameCollisionException(SearchCollisionException):
+class SquareSearchNameCollisionException(OrphanException):
   DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "More than one Square found with the same visitor_name. There may be a service collision"
   )
 
-class SquareSearchCoordCollisionException(SearchCollisionException):
+class SquareSearchCoordCollisionException(OrphanException):
   DEFAULT_CODE = "SQUARE_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "More than one Square found at the same coordinate. There may be a service inconsistency."
   )
 
-class TeamSearchIdCollisionException(SearchCollisionException):
+class TeamSearchIdCollisionException(OrphanException):
   DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "More than one Team found with the same visitor_name. There may be a service inconsistency."

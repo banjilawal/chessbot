@@ -1,23 +1,23 @@
-# src/chess/piece/factory.py
+# src/chess/piece/builder/factory.py
 
 """
-Module: chess.piece.factory
+Module: chess.piece.builder.factory
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
 """
 
 from chess.pawn import PawnPiece
-from chess.rank.service import RankService
+from chess.rank import
 from chess.system import (
-    Builder, BuildResult, IdValidator, IdentityService, NameValidator, LoggingLevelRouter,
+    Builder, BuildResult, IdentityService, LoggingLevelRouter,
     SearchContext, ValidationResult
 )
 from chess.piece import (
     Piece, AttackBuildFailedException, KingPiece, CombatantPiece, PieceBuildFailedException,
     ActivePieceMissingFromTeamRoster
 )
-from chess.rank import Pawn, Rank, RankValidator, King
+from chess.rank import Pawn, Rank, RankValidator, King, RankService
 from chess.team import (
     Team, TeamService, TeamValidator, TeamSearch, PieceCollectionCategory, FullRankQuotaException,
     ConflictingTeamAssignmentException

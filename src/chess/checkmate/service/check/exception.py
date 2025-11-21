@@ -1,4 +1,4 @@
-# src/chess/checkmate/post/check/exception.py
+# src/chess/checkmate/post/check/collision.py
 
 """
 Module: chess.checkmate.post.check.exception

@@ -1,4 +1,4 @@
-# src/chess/travel/promotion/transaction/exception.py
+# src/chess/travel/promotion/transaction/collision.py
 
 """
 Module: chess.travel.promotion.transaction.exception

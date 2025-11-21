@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# src/chess/system/event/exception.py
+# src/chess/system/event/collision.py
 
 """
 Module: chess.system.event.exception

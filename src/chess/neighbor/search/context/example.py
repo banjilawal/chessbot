@@ -269,7 +269,7 @@ From `chess.owner`:
  * `DiscoverySearchContext`
 """
 
-# src/chess/owner/search/context/exception.py
+# src/chess/owner/search/context/collision.py
 
 """
 Module: chess.owner.search.context.exception

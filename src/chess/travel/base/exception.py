@@ -1,4 +1,4 @@
-# src/chess/owner/travel/base/exception.py
+# src/chess/owner/travel/base/collision.py
 
 """
 Module: chess.owner.travel.base.exception

@@ -1,4 +1,4 @@
-# src/chess/rank/validator/id/exception.py
+# src/chess/rank/validator/id/collision.py
 
 """
 Module: chess.rank.validator.id.exceptiom

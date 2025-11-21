@@ -1,4 +1,4 @@
-# src/chess/vector/exception.py
+# src/chess/vector/collision.py
 
 """
 Module: chess.vector.exception

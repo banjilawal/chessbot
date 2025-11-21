@@ -1,4 +1,4 @@
-# src/chess/system/identity/exception.py
+# src/chess/system/identity/collision.py
 
 """
 Module: chess.system.identity.exception

@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# src/chess/system/visitor_name/exception.py
+# src/chess/system/visitor_name/collision.py
 
 """
 Module: chess.system.visitor_name.exception

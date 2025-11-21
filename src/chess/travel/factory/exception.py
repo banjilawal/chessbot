@@ -1,4 +1,4 @@
-# src/chess/owner/travel/factory/exception.py
+# src/chess/owner/travel/factory/collision.py
 
 """
 Module: `chess.owner.travel.factory.exception`

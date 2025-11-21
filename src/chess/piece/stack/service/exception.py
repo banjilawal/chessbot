@@ -1,4 +1,4 @@
-# src/chess/piece/stack/service/exception.py
+# src/chess/piece/stack/service/collision.py
 
 """
 Module: chess.piece.stack.service.exception

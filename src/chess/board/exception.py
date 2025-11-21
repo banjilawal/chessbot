@@ -1,4 +1,4 @@
-# src/chess/board/exception.py
+# src/chess/board/collision.py
 
 """
 Module: chess.board.exception

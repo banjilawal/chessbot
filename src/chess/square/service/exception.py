@@ -1,4 +1,4 @@
-# src/chess/square.service/service/exception.py
+# src/chess/square.service/service/collision.py
 
 """
 Module: chess.square.service.service.exception

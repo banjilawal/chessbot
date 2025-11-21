@@ -81,7 +81,7 @@
 #     f"{method}: {SquareMisMatchesTravelResourceException.DEFAULT_MESSAGE}"
 #   ))
 
-# src/chess/owner/travel/base/coord_stack_validator/traveler/exception.py
+# src/chess/owner/travel/base/coord_stack_validator/traveler/collision.py
 
 """
 Module: `chess.owner.travel.base.coord_stack_validator.traveler.exception`

@@ -1,4 +1,4 @@
-# src/chess/neighbor/exception.py
+# src/chess/neighbor/collision.py
 
 """
 Module: chess.graph.neighbor.exception

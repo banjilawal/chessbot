@@ -1,0 +1,37 @@
+# src/chess/system/resolution/exception/failure/coord/exception.py
+
+"""
+Module: chess.system.resolution.exception.failure.coord.exception
+Author: Banji Lawal
+Created: 2025-11-20
+version: 1.0.0
+"""
+
+
+from chess.system.resolution import ResolutionFailedException
+
+_
+
+__all__ = [
+    "ResolvingCoordConflictFailedException",
+    "ResolvingSquareCoordConflictFailedException",
+    "ResolvingPieceCoordConflictFailedException",
+]
+
+
+class ResolvingCoordConflictFailedException(ResolutionFailedException):
+    ERROR_CODE = "RESOLUTION_FAILED_ERROR"
+    DEFAULT_MESSAGE = "The resolution process failed to break the attribute conflict."
+
+
+class ResolvingSquareCoordConflictFailedException(ResolvingCoordConflictFailedException):
+    """Each square has a fixed unique coord. Searching squares by their unique coord attribute
+     should return a single hit. Raise this exception if SquareResolver leaves orphan squares that
+      cannot be linked ot a game or a board. returned multiple hits."""
+    DEFAULT_CODE = "SQUARE_COORD_CONFLICT_RESOLUTION_ERROR"
+    DEFAULT_MESSAGE = "The resolution process failed to break the Square.coord conflict."
+
+
+class ResolvingPieceCoordConflictFailedException(ResolvingCoordConflictFailedException):
+    DEFAULT_CODE = "PIECE_COORD_CONFLICT_RESOLUTION_ERROR"
+    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.coord conflict."

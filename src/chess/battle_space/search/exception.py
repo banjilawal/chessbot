@@ -1,4 +1,4 @@
-# src/chess/battle_space/search/exception.py
+# src/chess/battle_space/search/collision.py
 
 """
 Module: chess.battle_space.search.exception

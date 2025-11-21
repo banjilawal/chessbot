@@ -14,7 +14,7 @@ from typing import Optional
 from chess.team import Team
 from chess.rank import Rank
 from chess.coord import Coord
-from chess.piece import CoordStack, CoordStackService
+from chess.piece import CoordStack, CoordStackService, Piece
 
 
 class Piece(ABC):
@@ -50,7 +50,14 @@ class Piece(ABC):
     _coord_stack_service: CoordStackService
 
     
-    def __init__(self, id: int, name: str, rank: Rank, team: Team):
+    def __init__(
+            self,
+            id: int,
+            name: str,
+            rank: Rank,
+            team: Team,
+            coord_stack_service: CoordStackService = CoordStackService()
+    ):
         method = "Piece.__init__"
         
         self._id = id
@@ -60,7 +67,7 @@ class Piece(ABC):
         self._discoveries = []
         
         self._positions = CoordStack()
-        self._coord_stack_service = CoordStackService()
+        self._coord_stack_service = coord_stack_service
         self._current_position = self._coord_stack_service.current_coord
         
         if self not in team.roster:
@@ -96,12 +103,12 @@ class Piece(ABC):
     
     @property
     def current_position(self) -> Optional[Coord]:
-        return self._positions.current_coord
+        return self._coord_stack_service.current_coord
     
     def _set_rank(self, rank: Rank) -> None:
         self._rank = rank
     
-    def is_enemy(self, piece: 'Piece') -> bool:
+    def is_enemy(self, piece: Piece) -> bool:
         return self._team != piece.team
     
     def __eq__(self, other: object) -> bool:

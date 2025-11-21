@@ -1,4 +1,4 @@
-# src/chess/rank/spec/exception.py
+# src/chess/rank/spec/collision.py
 """
 Module: chess.rank.spec.exception
 Author: Banji Lawal

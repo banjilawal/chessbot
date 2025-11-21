@@ -1,4 +1,4 @@
-# src/chess/piece/validator/exception/binding/exception.py
+# src/chess/piece/validator/exception/binding/collision.py
 """
 Module: chess.piece.validator.exception.binding.exception
 Author: Banji Lawal
@@ -38,16 +38,3 @@ __all__ = [
 
 # ======================# PIECE VALIDATION EXCEPTIONS #======================#
 
-
-class ActivePieceMissingFromTeamRoster(PieceException):
-    """Raised if an active Piece.team is set but Team.roster does not contain the Piece."""
-    ERROR_CODE = "ACTIVE_PIECE_MISSING_FROM_TEAM_ROSTER_ERROR"
-    DEFAULT_MESSAGE = (
-        "Piece on the board, with Piece.team attribute set is not on it's team's roster."
-    )
-
-
-class PieceRequiresInitialPlacementException(PieceException):
-    """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
-    ERROR_CODE = "PIECE_WITH_NO_INITIAL_PLACEMENT_ERROR"
-    DEFAULT_MESSAGE = "Piece has not received its initial placement on the board."

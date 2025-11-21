@@ -1,4 +1,4 @@
-# src/chess/scalar/builder/exception.py
+# src/chess/scalar/builder/collision.py
 
 """
 Module: chess.scalar.builder.exception

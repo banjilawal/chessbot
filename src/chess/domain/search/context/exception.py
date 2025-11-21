@@ -1,4 +1,4 @@
-# src/chess/domain/search/context/exception.py
+# src/chess/domain/search/context/collision.py
 
 """
 Module: chess.domain.search.context.exception

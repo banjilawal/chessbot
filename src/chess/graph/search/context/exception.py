@@ -1,4 +1,4 @@
-# src/chess/neighbor/search/context/exception.py
+# src/chess/neighbor/search/context/collision.py
 
 """
 Module: chess.neighbor.search.context.exception

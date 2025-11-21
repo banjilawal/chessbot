@@ -123,7 +123,7 @@ class SquareValidator(Validator[Square]):
 
         # Parameters:
             * square_candidate (Any): The object to verify is a Square instance.
-            * piece_candidate (Any): The object to verify is an active Piece instance.
+            * piece_candidate (Any): The object to verify is an disabled Piece instance.
             * piece_service (type[PieceValidator])=PieceService
 
         # Returns:
@@ -138,7 +138,7 @@ class SquareValidator(Validator[Square]):
         """
         # ACTION:
         1.  SquareValidator.validate runs integrity checks on square_candidate.
-        2.  piece_service verifies piece_candidate is an active piece on the board.
+        2.  piece_service verifies piece_candidate is an disabled piece on the board.
         3.  After casting the candidates into square and piece test square.target == piece.current_position.
         4.  Test square.occupant == piece.
         5   If any check fails, return the exception inside a ValidationResult.
@@ -146,7 +146,7 @@ class SquareValidator(Validator[Square]):
 
         # PARAMETERS:
             *   candidate_square (Any): Object to validate as a Square.
-            *   candidate_piece (Any): object to validate as an active Piece
+            *   candidate_piece (Any): object to validate as an disabled Piece
             *   piece_service (ype[PieceService])
 
         # Returns:
