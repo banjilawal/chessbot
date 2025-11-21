@@ -42,7 +42,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             # Step 2.1:
             If Step 2 was successful actor_square and enemy_square should have the same occupant. Only checking
             enemy_square != traveler is not a sufficient success condition. If the traveler is not in both squares then
-            rollback all the operations and return the rollback_exception.
+            rollback all the rollback and return the rollback_exception.
             """
             if self.event.destination_square.occupant != self.event.actor_square.occupant:
                 self.event.destination_square.occupant = None
@@ -61,7 +61,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             #Step 3.1
             Cannot guarantee that traveler's previous square is empty. So the success condition is:
                 actor_previous_square.occupant != traveler.
-            If the condition is not met then rollback the operations and return the rollback_exception.
+            If the condition is not met then rollback the rollback and return the rollback_exception.
             """
             if self.event.actor_square.occupant != self.event.actor:
                 self.event.actor_square.occupant = self.event.actor
@@ -77,7 +77,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             
             self.event.actor.positions.push_coord(self.event.destination_square.point)
             
-            # If the push destination point is not the traveler's current position rollback the operations,
+            # If the push destination point is not the traveler's current position rollback the rollback,
             # then return the rollback_exception.
             if self.event.actor.current_position != self.event.destination_square.point:
                 self.event.actor.positions.undo_push()

@@ -8,7 +8,7 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **TeamSearchContext objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `BoardSearchContextValidator` and `PieceSearchContextBuilder`processes.
 
 THEME:
@@ -70,10 +70,10 @@ class PieceSearchContextException(ContextException):
 class NullPieceSearchContextException(PieceSearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team_name pieceSearchContext but
-    gets null instead.
+    gets validation instead.
     """
     ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext cannot be null"
+    DEFAULT_MESSAGE = "TeamSearchContext cannot be validation"
 
 
 class InvalidPieceSearchContextException(PieceSearchContextException, ValidationException):
@@ -87,18 +87,18 @@ class InvalidPieceSearchContextException(PieceSearchContextException, Validation
 
 class PieceSearchContextZeroParamCountException(PieceSearchContextException):
     """
-    Raised if all TeamSearchContext params are set null.
+    Raised if all TeamSearchContext params are set validation.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ZERO_PARAM_ERROR"
-    DEFAULT_MESSAGE = "A TeamSearchContext cannot have all params set null."
+    DEFAULT_MESSAGE = "A TeamSearchContext cannot have all params set validation."
 
 
 class PieceSearchContextMaxParamCountException(PieceSearchContextException):
     """
-    Raised if more than one TeamSearchContext param is set null.
+    Raised if more than one TeamSearchContext param is set validation.
     """
     ERROR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
-    DEFAULT_MESSAGE = "A TeamSearchContext cannot have more than one param set null."
+    DEFAULT_MESSAGE = "A TeamSearchContext cannot have more than one param set validation."
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 

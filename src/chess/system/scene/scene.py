@@ -26,7 +26,7 @@ class Scene(ABC, Generic[A, S, P]):
       
     # ATTRIBUTES:
         `id`: `int`
-        `actor`: `A` Entity performing operations on `Stage`.
+        `actor`: `A` Entity performing rollback on `Stage`.
         `stage`: `S` Region containing `actor` and any `prop` they need.
         `prop`: `P` Resource `actor` may need for their operation
     """
@@ -43,9 +43,9 @@ class Scene(ABC, Generic[A, S, P]):
 
         # PARAMETERS:
             * `id` (`int`):
-            * `actor` (`A`): Performs operations on `Stage`.
+            * `actor` (`A`): Performs rollback on `Stage`.
             * `stage` (`S`): Environment whose `actor` interacts with entities.
-            * `prop` (`P`): Resource `actor` may need for their operations.
+            * `prop` (`P`): Resource `actor` may need for their rollback.
 
         # RETURNS:
             `None`

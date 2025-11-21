@@ -45,7 +45,7 @@ class RankValidatorFactory(Validator[Rank]):
     ) -> ValidationResult[Rank]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is a Rank.
         3.  Cast to candidate to its subclass.
         4.  Validate

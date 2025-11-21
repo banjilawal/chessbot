@@ -1,7 +1,7 @@
-# src/chess/system/err/null.py
+# src/chess/system/err/validation.py
 
 """
-Module: chess.system.err.null
+Module: chess.system.err.validation
 Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0
@@ -18,28 +18,28 @@ __all__ = [
 
 class NullException(ChessException):
     """
-    Raised if an entity, method, or operation requires not null but gets null instead.
+    Raised if an entity, method, or operation requires not validation but gets validation instead.
     """
     ERROR_CODE = "NULL_ERROR"
-    DEFAULT_MESSAGE = "cannot be null"
+    DEFAULT_MESSAGE = "cannot be validation"
 
 
 class NullNumberException(NullException):
     """
     Raised if mathematical expression or geometric, algebraic, or optimization that need
-     number but get null instead NUllNumberException is thrown. Ids are not used for math
-     so we need different null team_exception for math variables
+     number but get validation instead NUllNumberException is thrown. Ids are not used for math
+     so we need different validation team_exception for math variables
     """
     ERROR_CODE = "NULL_NUMBER_ERROR"
-    DEFAULT_MESSAGE = "Number cannot be null"
+    DEFAULT_MESSAGE = "Number cannot be validation"
 
 
 class NullStringException(NullException):
     """
-    Raised if an entity, method, or operation requires string but gets null instead.
+    Raised if an entity, method, or operation requires string but gets validation instead.
     """
     ERROR_CODE = "NULL_STRING_SEARCH_ERROR"
-    DEFAULT_MESSAGE = "Cannot old_search by null string"
+    DEFAULT_MESSAGE = "Cannot old_search by validation string"
 
 
 class BlankStringException(ChessException):

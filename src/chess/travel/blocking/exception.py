@@ -76,7 +76,7 @@ class InvalidBlockingEventException(TravelEventException, ValidationException):
 class NullBlockingEventException(BlockingEventException, NullException):
   """"""
   ERROR_CODE = "NULL_BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent cannot be null"
+  DEFAULT_MESSAGE = "BlockingEvent cannot be validation"
 
 class ActorBlockingOwnSquareException(BlockingEventException):
   """"""
@@ -135,7 +135,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # -----
 # This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 # creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-# limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+# limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 # falls to the `CoordValidator` and `CoordBuilder`processes.
 #
 # THEME:
@@ -199,7 +199,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # # ====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
 # class NullTravelActorException(TravelActorException, NullException):
 #   ERROR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be null."
+#   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be validation."
 #
 #
 # class InvalidTravelActorException(TravelActorException, ValidationException):

@@ -1,17 +1,15 @@
-from typing import cast, Any
+# src/chess/board/validator/__init__.py
 
-from chess.board.exception import
+"""
+Module: chess.board.validator.__init__
+Author: Banji Lawal
+Created: 2025-11-21
+version: 1.0.0
+"""
 
-from chess.piece import Piece, PieceValidator
-from chess.square import Square, SquareValidator, NumberOfBoardSquaresOutOfBoundsException
 
-from chess.board import (
-    Board, BoardSearchContext, BoardSquareSearch, NullBoardException, InvalidBoardException,
-    BoardNullPieceListException, BoardNullSquareListException,
-)
-from chess.system import (
-    ChessException, COLUMN_SIZE, ROW_SIZE, IdValidator, Validator, ValidationResult, LoggingLevelRouter,
-)
+from chess.board import Board
+from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
 
 class BoardValidator(Validator[Board]):

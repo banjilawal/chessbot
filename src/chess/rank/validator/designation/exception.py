@@ -40,9 +40,9 @@ class RankDesignationException(InvalidRankException):
 
 # ======================# NULL RANK_DESIGNATION EXCEPTIONS #======================#
 class NullRankDesignationException(RankDesignationException, NullException):
-    """Raised if the Rank.designation is null. This should never happen. It might indicate data inconsistency."""
+    """Raised if the Rank.designation is validation. This should never happen. It might indicate data inconsistency."""
     ERROR_CODE = "NULL_RANK_DESIGNATION_ERROR"
-    DEFAULT_MESSAGE = "Rank.designation cannot be null."
+    DEFAULT_MESSAGE = "Rank.designation cannot be validation."
 
 
 # ======================# RANK_DESIGNATION BOUNDS EXCEPTIONS #======================#

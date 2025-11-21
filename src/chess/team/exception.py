@@ -70,9 +70,9 @@ class TeamRollBackException(TeamException):
 
 #======================# TEAM VALIDATION EXCEPTIONS #======================#  
 class NullTeamException(TeamException, NullException):
-  """Raised if an entity, method, or operation requires `Team` but gets null instead."""
+  """Raised if an entity, method, or operation requires `Team` but gets validation instead."""
   ERROR_CODE = "NULL_TEAM_ERROR"
-  DEFAULT_MESSAGE = "Team cannot be null"
+  DEFAULT_MESSAGE = "Team cannot be validation"
 
 class InvalidTeamException(TeamException, ValidationException):
   """
@@ -191,7 +191,7 @@ class TeamHostageListException(TeamException):
 
 
 class InconsistentHostageEntry(TeamHostageListException):
-  """Raised on errors where a hostage shouldn't be in the  hostage list, i.e captor == null"""
+  """Raised on errors where a hostage shouldn't be in the  hostage list, i.e captor == validation"""
   ERROR_CODE = "INCONSISTENT_HOSTAGE_ENTRY_ERROR"
   DEFAULT_MESSAGE = "An enemy with no captor is in the hostage list. There may be inconsistent service."
 

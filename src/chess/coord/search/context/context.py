@@ -1,7 +1,7 @@
-# src/chess/coord/search/context/context
+# src/chess/square/search/context/context
 
 """
-Module: chess.coord.search.context.context
+Module: chess.square.search.context.context
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -26,7 +26,7 @@ class CoordSearchContext(SearchContext):
     # ATTRIBUTES:
         *   row (int): Find items whose row matches this value.
         *   column (str): Find items whose column matches this value.
-        *   coord (Coord): Find items whose coord matches this value.
+        *   square (Coord): Find items whose square matches this value.
     """
     
     _row: Optional[int] = None
@@ -63,5 +63,5 @@ class CoordSearchContext(SearchContext):
         return {
             "row": self._row,
             "column": self._column,
-            "coord": self._coord
+            "square": self._coord
         }

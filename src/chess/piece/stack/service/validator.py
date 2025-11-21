@@ -43,9 +43,9 @@ class CoordStackServiceValidator(Validator[CoordStackService]):
     ) -> ValidationResult[CoordStackService]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is a CoordStackService. If so cast it.
-        3.  Verify the CoordStackService.stack is not null.
+        3.  Verify the CoordStackService.stack is not validation.
         4.  Verify the CoordStackService.stack by running CoordStackService.validate_coord_stack.
         4.  If any check fails, return the exception inside a ValidationResult.
         5.  If all pass return the CoordStackStack object in a ValidationResult

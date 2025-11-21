@@ -40,9 +40,9 @@ class CoordStackServiceException(ServiceException):
 
 # ======================# NULL COORD_STACK_SERVICE EXCEPTIONS #======================#
 class NullCoordStackServiceException(CoordStackServiceException, NullException):
-    """Raised if an entity, method, or operation requires CoordStackService but gets null instead."""
+    """Raised if an entity, method, or operation requires CoordStackService but gets validation instead."""
     ERROR_CODE = "NULL_COORD_STACK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CoordStackService cannot be null."
+    DEFAULT_MESSAGE = "CoordStackService cannot be validation."
 
 
 # ======================# COORD_STACK_SERVICE VALIDATION EXCEPTIONS #======================#
@@ -75,9 +75,9 @@ class DoubleCoordPushException(CoordStackServiceException):
 
 
 class PushingNullException(CoordStackServiceException):
-    """Raised when trying to push null item to stack."""
+    """Raised when trying to push validation item to stack."""
     ERROR_CODE = "PUSHING_NULL_ERROR"
-    DEFAULT_MESSAGE = "Cannot push null item onto a CoordStackService."
+    DEFAULT_MESSAGE = "Cannot push validation item onto a CoordStackService."
 
 
 class CannotUndoPreviousTurnException(CoordStackServiceException):

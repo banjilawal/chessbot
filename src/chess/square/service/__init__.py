@@ -1,4 +1,4 @@
-# src/chess/square/service/s__init__.py
+# src/chess/square/service/__init__.py
 
 """
 Module: chess.square.service.__init__
@@ -8,5 +8,7 @@ version: 1.0.0
 """
 
 
+from .builder import *
 from .exception import *
+from .validator import *
 from .service import SquareService

@@ -1,7 +1,7 @@
-# src/chess/coord/collision.py
+# src/chess/square/collision.py
 
 """
-Module: chess.coord.exception
+Module: chess.square.exception
 Author: Banji Lawal
 Created: 2025-09-27
 version: 1.0.0
@@ -31,9 +31,9 @@ class CoordException(ChessException):
 
 # ====================== NULL COORD EXCEPTIONS #======================#
 class NullCoordException(CoordException, NullException):
-    """Raised if an entity, method, or operation requires Coord but gets null instead."""
+    """Raised if an entity, method, or operation requires Coord but gets validation instead."""
     ERROR_CODE = "NULL_COORD_ERROR"
-    DEFAULT_MESSAGE = "Coord cannot be null"
+    DEFAULT_MESSAGE = "Coord cannot be validation"
     
     
 # ====================== COORD BUILD EXCEPTIONS #======================#

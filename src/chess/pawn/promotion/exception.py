@@ -117,7 +117,7 @@ class PromotionEventException(ChessException):
 
 #======================# PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
 class NullPromotionEventException(PromotionEventException, NullException):
-  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets validation instead."""
   pass
 
 class PawnPromotionOnlyException(PromotionEventException):
@@ -201,7 +201,7 @@ class PromotionTransactionException(TransactionException):
   DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
 
 class NullPromotionTransactionException(TransactionException):
-  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets validation instead."""
   ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
 
@@ -218,7 +218,7 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
@@ -288,7 +288,7 @@ class ActorException(AttackException):
 class ActorRollBackException(ActorException, RollbackException):
   """
   Any inconsistencies team_name owner introduces into team_name notification need to be rolled back.
-  This is the super class of team_name owner mutator operations, methods, or fields that raise
+  This is the super class of team_name owner mutator rollback, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
   exists primarily to allow catching all Piece exceptions that happen when team_name failed
   notification must be rolled back.

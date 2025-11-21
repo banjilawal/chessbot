@@ -1,7 +1,7 @@
-# src/chess/coord/search/context/factory.py
+# src/chess/square/search/context/factory.py
 
 """
-Module: chess.coord.search.context.builder
+Module: chess.square.search.context.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -52,10 +52,10 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
             2. If the parameters are safe the CoordSearchContext is built and returned.
 
         # Parameters:
-            * row (Optional[int]): selected if search coord is an id.
-            * column (Optional[int]): selected if search coord is a column.
-            * coord (Optional[Coord]): selected if search coord is a coord.
-            * validator (type[CoordValidator]): validates an id-search-coord
+            * row (Optional[int]): selected if search square is an id.
+            * column (Optional[int]): selected if search square is a column.
+            * square (Optional[Coord]): selected if search square is a square.
+            * validator (type[CoordValidator]): validates an id-search-square
 
         # Returns:
           BuildResult[CoordSearchContext] containing either:
@@ -112,11 +112,11 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
     ) -> BuildResult[CoordSearchContext]:
         """
         # Action:
-        Build an id-CoordSearchContext if CoordValidator verifies search coord is safe.
+        Build an id-CoordSearchContext if CoordValidator verifies search square is safe.
 
         # Parameters:
-          * row (int): coord id
-          * validator (type[CoordValidator]): validates coord.
+          * row (int): square id
+          * validator (type[CoordValidator]): validates square.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -150,11 +150,11 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
     ) -> BuildResult[CoordSearchContext]:
         """
         # Action:
-        Build a column-CoordSearchContext if CoordValidator verifies search coord is safe.
+        Build a column-CoordSearchContext if CoordValidator verifies search square is safe.
 
         # Parameters:
-          * column (int): coord column
-          * validator (type[CoordValidator]): validates coord.
+          * column (int): square column
+          * validator (type[CoordValidator]): validates square.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:
@@ -189,11 +189,11 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
     ) -> BuildResult[CoordSearchContext]:
         """
         # Action:
-        Build a coord-CoordSearchContext if CoordValidator verifies search coord is safe.
+        Build a square-CoordSearchContext if CoordValidator verifies search square is safe.
 
         # Parameters:
-          * coord (Coord): coord Coord
-          * validator (type[CoordValidator]): validates coord.
+          * square (Coord): square Coord
+          * validator (type[CoordValidator]): validates square.
 
         # Returns:
           ValidationResult[CoordSearchContext] containing either:

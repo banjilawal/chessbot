@@ -1,7 +1,7 @@
-# src/chess/coord/validator.py
+# src/chess/square/validator.py
 
 """
-Module: chess.coord.validator
+Module: chess.square.validator
 Author: Banji Lawal
 Created: 2025-08-12
 version: 1.0.0
@@ -39,7 +39,7 @@ class CoordValidator(Validator[Coord]):
     def validate(cls, candidate: Any) -> ValidationResult[Coord]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is a Coord.
         3.  Check candidate.row is:
                 *   an INT
@@ -104,7 +104,7 @@ class CoordValidator(Validator[Coord]):
     def validate_row(cls, candidate: Any) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is an INT
         3.  Check if candidate is between 0 and ROW_SIZE - 1 inclusive.
         4.  If any check fails, return the exception inside a ValidationResult.
@@ -171,7 +171,7 @@ class CoordValidator(Validator[Coord]):
     def validate_column(cls, candidate: Any) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is an INT
         3.  Check if candidate is between 0 and COLUMN_SIZE - 1 inclusive.
         4.  If any check fails, return the exception inside a ValidationResult.

@@ -23,7 +23,7 @@ class IdentityService:
     1.  Issue IDs to new objects.
     2.  Manage integrity checks on IDs and names of existing objects.
     3.  Assure names are:
-        *   Not null.
+        *   Not validation.
         *   Not white space only (" ", tab, newline).
         *   Not empty. (".", ".\n", ".\t", ".\r").
         *   Meet minimum length requirement specified in chess.syst.

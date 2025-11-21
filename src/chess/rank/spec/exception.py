@@ -28,6 +28,6 @@ class RankSpecException(ChessException):
 
 
 class NullRankSpecException(RankSpecException, NullException):
-    """Raised if an entity, method, or operation requires RankSpec but gets null instead."""
+    """Raised if an entity, method, or operation requires RankSpec but gets validation instead."""
     ERROR_CODE = "NULL_RANK_SPEC_ERROR"
-    DEFAULT_MESSAGE = "RankSpec cannot be null."
+    DEFAULT_MESSAGE = "RankSpec cannot be validation."

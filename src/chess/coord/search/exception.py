@@ -1,7 +1,7 @@
-# src/chess/coord/search/collision.py
+# src/chess/square/search/collision.py
 
 """
-Module: chess.coord.search.exception
+Module: chess.square.search.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -35,9 +35,9 @@ class CoordSearchException(ContextException):
 
 # ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullCoordSearchException(CoordSearchException, NullException):
-    """Raised if an entity, method, or operation requires Coord but gets null instead."""
+    """Raised if an entity, method, or operation requires Coord but gets validation instead."""
     ERROR_CODE = "NULL_COORD_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "CoordSearchContext cannot be null"
+    DEFAULT_MESSAGE = "CoordSearchContext cannot be validation"
 
 
 # ========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#

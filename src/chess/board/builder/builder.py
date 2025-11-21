@@ -1,18 +1,18 @@
-# src/chess/board/factory.py
+# src/chess/board/builder/builder
 
 """
-Module: chess.board.builder
+Module: chess.board.builder.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, cast
 
-from chess.coord import CoordBuilder
-from chess.square import Square, SquareBuilder
+from chess.coord import Coord, CoordService
+from chess.square import SquareBuilder, SquareService
 from chess.board import Board, BoardBuildFailedException
-from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdValidator, id_emitter
+from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdentityService
 
 
 class BoardBuilder(Builder[Board]):
@@ -37,9 +37,9 @@ class BoardBuilder(Builder[Board]):
             id: int,
             num_rows: int=BOARD_DIMENSION,
             num_columns: int=BOARD_DIMENSION,
-            id_validator: type[IdValidator]=IdValidator,
-            coord_builder: type[CoordBuilder]=CoordBuilder,
-            square_builder: type[SquareBuilder]=SquareBuilder
+            coord_service: CoordService=CoordService(),
+            square_service: SquareService=SquareService(),
+            identityService: IdentityService=IdentityService(),
     ) -> BuildResult[Board]:
         """
         # Action:
@@ -64,37 +64,33 @@ class BoardBuilder(Builder[Board]):
         method = "BoardBuilder.builder"
         
         try:
-            id_validation = id_validator.validate(id)
+            id_validation = identityService.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
-            
-            squares: List[List[Square]] = []
+
+
             for i in range(num_rows):
-                row_squares: List[Square] = []
                 ascii_value = ord('A')
                 
                 for j in range(num_columns):
                     name = chr(ascii_value) + str(i + 1)
                     
-                    coord_build_result = coord_builder.build(row=i, column=j)
+                    coord_build_result = coord_service.build_coord(row=i, column=j)
                     if coord_build_result.is_failure():
                         return BuildResult.failure(coord_build_result.exception)
-                    
-                    square_build_result  = square_builder.build(
-                        id=id_emitter.square_id,
+   
+                    square_build_result = square_service.build_square(
+                        id=identityService.id_emitter.square_id,
                         name=name,
                         coord=coord_build_result.payload
                     )
-                    
-                    if square_build_result.is_failure():
-                        return BuildResult.failure(square_build_result.exception)
-                    
-                    
-                    row_squares.append(square_build_result.payload)
+                    addition_result = square_service.add_square(square=square_build_result.payload)
+                    if addition_result.is_failure():
+                        return BuildResult.failure(addition_result.exception)
                     ascii_value += 1
-                squares.append(row_squares)
+                
             
-            return BuildResult.success(payload=Board(id=id))
+            return BuildResult.success(payload=Board(id=id, square_service=square_service))
         
         except Exception as e:
             return BuildResult.failure(

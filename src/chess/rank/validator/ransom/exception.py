@@ -42,9 +42,9 @@ class RankRansomException(RankException):
 
 # ======================# NULL RANK_RANSOM EXCEPTIONS #======================#
 class NullRankRansomException(RankRansomException, NullException):
-  """Raised if the Rank.ransom is null. This should never happen. It might indicate data inconsistency."""
+  """Raised if the Rank.ransom is validation. This should never happen. It might indicate data inconsistency."""
   ERROR_CODE = "NULL_RANK_RANSOM_ERROR"
-  DEFAULT_MESSAGE = "Rank.ransom cannot be null. There may be a data inconsistency or system failure."
+  DEFAULT_MESSAGE = "Rank.ransom cannot be validation. There may be a data inconsistency or system failure."
 
 
 # ======================# RANK_RANSOM BOUNDS EXCEPTIONS #======================#

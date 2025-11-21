@@ -28,9 +28,9 @@ class BuilderException(ChessException):
   DEFAULT_MESSAGE = "Builder raised an rollback_exception."
 
 class NullBuilderException(BuilderException, NullException):
-  """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name Engine but gets validation instead."""
   ERROR_CODE = "NULL_ERROR"
-  DEFAULT_MESSAGE = "Builder cannot be null"
+  DEFAULT_MESSAGE = "Builder cannot be validation"
 
 class BuildFailedException(BuilderException):
   """
@@ -42,17 +42,17 @@ class BuildFailedException(BuilderException):
 
 class AllParamsSetNullException(BuilderException):
   """
-  Raised if all builder params cannot be null.
+  Raised if all builder params cannot be validation.
   """
   ERROR_CODE = "ALL_PARAMS_SET_NULL_ERROR"
-  DEFAULT_MESSAGE = "Cannot have all params set null."
+  DEFAULT_MESSAGE = "Cannot have all params set validation."
 
 class MutuallyExclusiveParamsException(BuilderException):
   """
-  Raised if only one param cannot be null.
+  Raised if only one param cannot be validation.
   """
   ERROR_CODE = "MUTUALLY_EXCLUSIVE_BUILD_PARAMS_ERROR"
-  DEFAULT_MESSAGE = "Cannot have more than one param set null."
+  DEFAULT_MESSAGE = "Cannot have more than one param set validation."
 
 
 

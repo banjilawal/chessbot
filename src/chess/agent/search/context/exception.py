@@ -40,9 +40,9 @@ class TeamSearchContextException(SearchContextException):
 
 #========================= NULL_TEAM_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullTeamSearchContextException(TeamSearchContextException, NullException):
-    """Raised if an entity, method, or operation requires TeamSearchContext but gets null instead."""
+    """Raised if an entity, method, or operation requires TeamSearchContext but gets validation instead."""
     ERROR_CODE = "NULL_TEAM_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext cannot be null"
+    DEFAULT_MESSAGE = "TeamSearchContext cannot be validation"
 
 
 #========================= TEAM_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#

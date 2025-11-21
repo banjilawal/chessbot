@@ -64,7 +64,7 @@ class PieceWithNoStartingPlacementException(TurnSceneException):
 
 class HostageActivityException(PieceException):
     """
-    Several exceptions can be raised during capture operations. This class is the parent of
+    Several exceptions can be raised during capture rollback. This class is the parent of
     exceptions an attacking owner can raised. Do not use directly. Subclasses give details
     useful for debugging.
     """

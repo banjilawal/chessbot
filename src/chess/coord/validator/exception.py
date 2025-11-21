@@ -1,7 +1,7 @@
-# src/chess/coord/validator/exception_.py
+# src/chess/square/validator/exception_.py
 
 """
-Module: chess.coord.validator.exception
+Module: chess.square.validator.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -34,9 +34,9 @@ class InvalidCoordException(CoordException, ValidationException):
 
 # ====================== COORD_ROW VALIDATION EXCEPTIONS #======================#
 class NullRowException(CoordException, NullException):
-    """Raised if Coord.row is null."""
+    """Raised if Coord.row is validation."""
     ERROR_CODE = "NULL_COORD_ROW_ERROR"
-    DEFAULT_MESSAGE = "Coord.row property cannot be null."
+    DEFAULT_MESSAGE = "Coord.row property cannot be validation."
 
 
 class RowBelowBoundsException(InvalidCoordException):
@@ -53,9 +53,9 @@ class RowAboveBoundsException(InvalidCoordException):
 
 # ====================== COORD_COLUMN VALIDATION EXCEPTIONS #======================#
 class NullColumnException(InvalidCoordException, NullException):
-    """Raised if Coord.row is null."""
+    """Raised if Coord.row is validation."""
     ERROR_CODE = "NULL_COORD_COLUMN_INDEX_ERROR"
-    DEFAULT_MESSAGE = "Coord.column property cannot be null."
+    DEFAULT_MESSAGE = "Coord.column property cannot be validation."
 
 
 class ColumnBelowBoundsException(InvalidCoordException):

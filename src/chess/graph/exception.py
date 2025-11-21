@@ -47,13 +47,13 @@ class InvalidGraphException(GraphException, ValidationException):
 # ======================# NULL GRAPH EXCEPTIONS #======================#
 class NullGraphException(GraphException, NullException):
     """
-    Raised if an entity, method, or operation requires team_name graph but gets null instead.
+    Raised if an entity, method, or operation requires team_name graph but gets validation instead.
     Graph is an abstract method. KingGraph and CombatantGraph are its subclasses.
     Do not throw NullAttackException. Raise NullKingGraph or NullCombatantGraph instead.
     they are more descriptive and better suited for debugging.
     """
     ERROR_CODE = "NULL_GRAPH_ERROR"
-    DEFAULT_MESSAGE = "Graph cannot be null."
+    DEFAULT_MESSAGE = "Graph cannot be validation."
 
 
 # ======================# GRAPH BUILD EXCEPTIONS #======================#  

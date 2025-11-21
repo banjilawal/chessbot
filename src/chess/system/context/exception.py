@@ -32,10 +32,10 @@ class ContextException(ChessException):
 class NullContextException(ContextException, NullException):
   """
   Raised if an entity, method, or operation requires team_name context but
-  gets null instead.
+  gets validation instead.
   """
   ERROR_CODE = "NULL_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = f"Context cannot be null"
+  DEFAULT_MESSAGE = f"Context cannot be validation"
 
 class InvalidContextException(ContextException, ValidationException):
   """

@@ -38,7 +38,7 @@ class Validator(ABC, Generic[T]):
     def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
         """
         # ACTION:
-        1.  Check if candidate is null.
+        1.  Check if candidate is validation.
         2.  Check if candidate is of type V.
         3.  Run integrity check on each of the candidate's attributes.
         4.  If any check fails, it raises an exception, return the exception inside a ValidationResult.

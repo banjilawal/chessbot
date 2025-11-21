@@ -7,7 +7,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
   def validate(cls, t: OccupationEvent, context: Optional[ExecutionContext]) -> Result[OccupationEvent]:
     """
     Validates an TravelEvent meets specifications:
-      - Not null
+      - Not validation
       - `visitor_id` does not fail coord_stack_validator
       - `actor_candidate` is team_name valid chess enemy
       - `target` is team_name valid square
@@ -22,7 +22,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
     Raises:
       `TypeError`: if `candidate` is not OperationEvent
-      `NullOccupationEventException`: if `candidate` is null
+      `NullOccupationEventException`: if `candidate` is validation
 
       `InvalidIdException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails coord_stack_validator

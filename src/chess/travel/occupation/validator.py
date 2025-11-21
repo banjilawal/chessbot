@@ -74,7 +74,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 # def validate(t: TransferEvent, context: Event) -> Result[TransferEvent]:
 #   """
 #   Validates an KingCheckEvent meets specifications:
-#     - Not null
+#     - Not validation
 #     - `visitor_id` does not fail coord_stack_validator
 #     - `actor_candidate` is team_name valid chess enemy
 #     - `target` is team_name valid square
@@ -89,7 +89,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #   Raises:
 #     `TypeError`: if `candidate` is not OperationEvent
-#     `NullAttackEventException`: if `candidate` is null
+#     `NullAttackEventException`: if `candidate` is validation
 #
 #     `InvalidIdException`: if invalid `visitor_id`
 #     `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
@@ -151,7 +151,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   """
 #   Implements the `OccupationExecutor` class, which handles executing travel
 #   directives in the chess engine. This includes moving pieces, capturing enemies,
-#   and coordinating rollback logic in case of inconsistencies or failed operations.
+#   and coordinating rollback logic in case of inconsistencies or failed rollback.
 #
 #   Attributes:
 #     * `OccupationExecutor:` Main class responsible for executing travel directives.
@@ -166,7 +166,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     """
 #     # ACTION:
 #     Verify the `candidate` is a valid ID. The Application requires
-#     1. Candidate is not null.
+#     1. Candidate is not validation.
 #     2. Is a positive integer.
 #
 #     # PARAMETERS:
@@ -180,7 +180,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     # RAISES:
 #     `InvalidIdException`: Wraps any specification violations including:
 #         * `TypeError`: if candidate is not an `int`
-#         * `IdNullException`: if candidate is null
+#         * `IdNullException`: if candidate is validation
 #         * `NegativeIdException`: if candidate is negative `
 #     """
 #     method = "TravelEventFactory.execute"

@@ -45,7 +45,7 @@ class TurnSceneException(ChessException):
 class NullTurnSceneException(TurnSceneException, NullException):
   """"""
   ERROR_CODE = "NULL_TURN_SCENE_ERROR"
-  DEFAULT_MESSAGE = "A TurnScene cannot be null."
+  DEFAULT_MESSAGE = "A TurnScene cannot be validation."
 
 
 class InvalidTurnSceneException(TurnSceneException, ValidationException):

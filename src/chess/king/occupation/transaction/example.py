@@ -162,7 +162,7 @@ Example:
 #   """
 #   # ACTION:
 #   Verify the `candidate` is a valid ID. The Application requires
-#   1. Candidate is not null.
+#   1. Candidate is not validation.
 #   2. Is a positive integer.
 #
 #   # PARAMETERS:
@@ -176,7 +176,7 @@ Example:
 #   # RAISES:
 #   `InvalidIdException`: Wraps any specification violations including:
 #       * `TypeError`: if candidate is not an `int`
-#       * `IdNullException`: if candidate is null
+#       * `IdNullException`: if candidate is validation
 #       * `NegativeIdException`: if candidate is negative `
 #   """
 #   method = "AttackTransaction.execute"
@@ -526,7 +526,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 # #=== SCAN_EVENT EXCEPTIONS #======================#
 # class AttackEventException(OccupationEventException):
 #   """
-#   Base class for exceptions raised during attack/capture operations.
+#   Base class for exceptions raised during attack/capture rollback.
 #
 #   PURPOSE:
 #     Used when an error occurs in the course of an attack or capture
@@ -539,9 +539,9 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #
 # #=== ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
 # class NullAttackEventException(AttackEventException, NullException):
-#   """Raised by methods, entities, and models that require team_name KingCheckEvent but receive team_name null."""
+#   """Raised by methods, entities, and models that require team_name KingCheckEvent but receive team_name validation."""
 #   ERROR_CODE = "NULL_EVENT_ERROR"
-#   DEFAULT_MESSAGE = "KingCheckEvent cannot be null"
+#   DEFAULT_MESSAGE = "KingCheckEvent cannot be validation"
 #
 # class InvalidAttackEventException(AttackEventException, ValidationException):
 #   """Raised by ExchangeValidators if client fails coord_stack_validator."""
@@ -562,7 +562,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 # #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#
 # class UnexpectedNullEnemyException(AttackEventException):
 #   DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
-#   DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly null during capture; this should not happen."
+#   DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly validation during capture; this should not happen."
 #
 #
 #

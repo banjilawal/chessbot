@@ -34,7 +34,7 @@ class HouseException(ChessException):
 class NullHouseException(HouseException, NullException):
     """"""
     ERROR_CODE = "NULL_HOUSE_ERROR"
-    DEFAULT_MESSAGE = "A House cannot be null."
+    DEFAULT_MESSAGE = "A House cannot be validation."
 
 
 class InvalidHouseException(HouseException, ValidationException):
@@ -46,13 +46,13 @@ class InvalidHouseException(HouseException, ValidationException):
 class TurnSceneActorSquareIsNullException(HouseException):
     """"""
     ERROR_CODE = "HOUSE_SQUARE_IS_NULL_ERROR"
-    DEFAULT_MESSAGE = "A House object cannot have a null square."
+    DEFAULT_MESSAGE = "A House object cannot have a validation square."
 
 
 class NullHouseResidentException(HouseException):
     """"""
     ERROR_CODE = "HOUSE_RESIDENT_IS_NULL_ERROR"
-    DEFAULT_MESSAGE = "A House instance cannot have a null occupant."
+    DEFAULT_MESSAGE = "A House instance cannot have a validation occupant."
 
 
 # ====================== HOUSE BUILD EXCEPTIONS #======================#

@@ -37,7 +37,7 @@ class VectorValidator(Validator[Vector]):
     def validate(cls, candidate: Any) -> ValidationResult[Vector]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is a Vector.
         3.  Check candidate.x is:
                 *   an INT

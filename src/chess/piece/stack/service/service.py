@@ -32,7 +32,7 @@ class CoordStackService(Service[CoordStack]):
         *   CoordStack building
         *   CoordStack validation
         *   CoordStack exceptions
-        *   Stack operations (push, pop, search
+        *   Stack rollback (push, pop, search
 
     # ATTRIBUTES:
         *   stack_size (int)

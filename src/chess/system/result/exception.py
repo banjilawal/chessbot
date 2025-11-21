@@ -33,7 +33,7 @@ class ResultException(ChessException):
 class ResultConstructorException(ResultException):
   """
   Base class for exceptions about `Result` constructors. A `Result` must
-  have one-and-only-one parameter that is not null. This is the super class
+  have one-and-only-one parameter that is not validation. This is the super class
   for cases:
     No params
     Both params
@@ -52,7 +52,7 @@ class EmptyResultConstructorException(ResultConstructorException):
 
 class ErrorContradictsPayloadException(ResultConstructorException):
   """
-  Raised if both payload and error params are not null
+  Raised if both payload and error params are not validation
   when constructing team_name `Result` object.
   """
   ERROR_CODE = "ERROR_CONFLICTS_PAYLOAD_IN_RESULT_CONSTRUCTOR"

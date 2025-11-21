@@ -8,7 +8,7 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `DiscoverySearchContextValidator` and `DiscoverySearchContextBuilder`processes.
 
 THEME:
@@ -70,10 +70,10 @@ class DiscoverySearchContextException(ContextException):
 class NullDiscoverySearchContextException(DiscoverySearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team_name discoverySearchContext but
-    gets null instead.
+    gets validation instead.
     """
     ERROR_CODE = "NULL_SEARCH_DISCOVERY_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "DiscoverySearchContext cannot be null"
+    DEFAULT_MESSAGE = "DiscoverySearchContext cannot be validation"
 
 
 class InvalidDiscoverySearchContextException(DiscoverySearchContextException, ValidationException):
@@ -87,7 +87,7 @@ class InvalidDiscoverySearchContextException(DiscoverySearchContextException, Va
 
 class ZeroDiscoverySearchParamsException(DiscoverySearchContextException):
     """
-    Raised if all DiscoverySearchContext params are set null.
+    Raised if all DiscoverySearchContext params are set validation.
     """
     ERROR_CODE = "ZERO_DISCOVERY_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (
@@ -96,7 +96,7 @@ class ZeroDiscoverySearchParamsException(DiscoverySearchContextException):
 
 class TooManyDiscoverySearchParamsException(DiscoverySearchContextException):
     """
-    Raised if more than one DiscoverySearchContext param is set null.
+    Raised if more than one DiscoverySearchContext param is set validation.
     """
     ERROR_CODE = "TOO_MANY_DISCOVERY_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (

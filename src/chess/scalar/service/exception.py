@@ -31,9 +31,9 @@ class ScalarServiceException(ServiceException):
 
 #======================# NULL SCALARSERVICE EXCEPTIONS #======================#
 class NullScalarServiceException(ScalarServiceException, NullException):
-  """Raised if an entity, method, or operation requires ScalarService but gets null instead."""
+  """Raised if an entity, method, or operation requires ScalarService but gets validation instead."""
   ERROR_CODE = "NULL_SCALAR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "ScalarService cannot be null."
+  DEFAULT_MESSAGE = "ScalarService cannot be validation."
 
 
 #======================# SCALARSERVICE VALIDATION EXCEPTIONS #======================#

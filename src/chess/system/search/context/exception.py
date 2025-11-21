@@ -80,10 +80,10 @@ class SearchContextException(ContextException):
 class NullSearchContextException(SearchContextException, NullException):
   """
   Raised if an entity, method, or operation requires team_name searchContext but
-  gets null instead.
+  gets validation instead.
   """
   ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "SearchContext cannot be null"
+  DEFAULT_MESSAGE = "SearchContext cannot be validation"
 
 class InvalidSearchContextException(SearchContextException, ValidationException):
   """
@@ -96,17 +96,17 @@ class InvalidSearchContextException(SearchContextException, ValidationException)
 
 class SearchContextZeroParamCountException(SearchContextException):
   """
-  Raised if all SearchContext params are set null.
+  Raised if all SearchContext params are set validation.
   """
   ERROR_CODE = "SEARCH_CONTEXT_ZERO_PARAM_ERROR"
-  DEFAULT_MESSAGE = "A SearchContext cannot have all params set null."
+  DEFAULT_MESSAGE = "A SearchContext cannot have all params set validation."
 
 class SearchContextMaxParamCountException(SearchContextException):
   """
-  Raised if more than one SearchContext param is set null.
+  Raised if more than one SearchContext param is set validation.
   """
   ERROR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
-  DEFAULT_MESSAGE = "A SearchContext cannot have more than one param set null."
+  DEFAULT_MESSAGE = "A SearchContext cannot have more than one param set validation."
 
 #======================# SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
 class SearchContextBuildFailedException(SearchContextException, BuildFailedException):
@@ -133,10 +133,10 @@ class FilterContextException(SearchContextException):
 class NullFilterContextException(FilterContextException, NullException):
   """
   Raised if an entity, method, or operation requires team_name filterContext but
-  gets null instead.
+  gets validation instead.
   """
   ERROR_CODE = "NULL_FILTER_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = "FilterContext cannot be null"
+  DEFAULT_MESSAGE = "FilterContext cannot be validation"
 
 class InvalidFilterContextException(FilterContextException, ValidationException):
   """
@@ -149,18 +149,18 @@ class InvalidFilterContextException(FilterContextException, ValidationException)
 
 class FilterContextZeroParamCountException(FilterContextException):
   """
-  Raised if all FilterContext params are set null.
+  Raised if all FilterContext params are set validation.
   """
   ERROR_CODE = "FILTER_CONTEXT_ZERO_PARAM_ERROR"
-  DEFAULT_MESSAGE = "A FilterContext cannot have all params set null."
+  DEFAULT_MESSAGE = "A FilterContext cannot have all params set validation."
 
 
 class FilterContextMaxParamCountException(FilterContextException):
   """
-  Raised if more than one FilterContext param is set null.
+  Raised if more than one FilterContext param is set validation.
   """
   ERROR_CODE = "FILTER_CONTEXT_MAX_PARAM_ERROR"
-  DEFAULT_MESSAGE = "A FilterContext cannot have more than one param set null."
+  DEFAULT_MESSAGE = "A FilterContext cannot have more than one param set validation."
 
 #======================# FILTER_CONTEXT BUILD EXCEPTIONS #======================# 
 class FilterContextBuildFailedException(FilterContextException, BuildFailedException):

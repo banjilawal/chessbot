@@ -42,9 +42,9 @@ class RankQuotaException(InvalidRankException):
 
 # ======================# NULL RANK_QUOTA EXCEPTIONS #======================#
 class NullRankQuotaException(RankQuotaException, NullException):
-    """Raised if the Rank.team_quota is null. This should never happen. It might indicate data inconsistency."""
+    """Raised if the Rank.team_quota is validation. This should never happen. It might indicate data inconsistency."""
     ERROR_CODE = "NULL_RANK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Rank.team_quota cannot be null."
+    DEFAULT_MESSAGE = "Rank.team_quota cannot be validation."
 
 
 # ======================# RANK_QUOTA BOUNDS EXCEPTIONS #======================#
@@ -57,7 +57,7 @@ class RankQuotaBelowBoundsException(RankQuotaException):
 class RankQuotaAboveBoundsException(RankQuotaException):
     """Raised if the team_quota higher than the Pawn's."""
     ERROR_CODE = "NULL_RANK_QUOTA_ERROR"
-    DEFAULT_MESSAGE = "Rank.team_quota cannot be null. There may be a data inconsistency or system failure."
+    DEFAULT_MESSAGE = "Rank.team_quota cannot be validation. There may be a data inconsistency or system failure."
     
     
 # ======================# RANK_QUOTA INCONSISTENCY EXCEPTIONS #======================#

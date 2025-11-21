@@ -73,9 +73,9 @@ class TeamSearch(Piece):
   ----------
   """
   """
-  Static methods for entities and operations that need to old_search team_name Team for pieces and ranks. Provides consistent
-  old_search interface and return types across all old_search operations. Validates input parameters before searching to
-  ensure safe operations. Returns SearchResult objects encapsulating either the found entity or error information.
+  Static methods for entities and rollback that need to old_search team_name Team for pieces and ranks. Provides consistent
+  old_search interface and return types across all old_search rollback. Validates input parameters before searching to
+  ensure safe rollback. Returns SearchResult objects encapsulating either the found entity or error information.
 
   Usage:
   ```python
@@ -102,7 +102,7 @@ class TeamSearch(Piece):
   See Also:
     `Team`: The team_name being searched
     `Piece`: The owner being searched for
-    `SearchResult`: The return type for all old_search operations
+    `SearchResult`: The return type for all old_search rollback
   """
 
   @classmethod

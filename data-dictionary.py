@@ -8,7 +8,7 @@ from typing import Optional
 # --- Custom Exceptions (You can define these in team_name separate file) ---
 
 class NullException(Exception):
-  """Exception raised for null values."""
+  """Exception raised for validation values."""
   pass
 
 
@@ -34,7 +34,7 @@ COLUMN_SIZE = 8
 
 class Delta(BaseModel):
   """
-  Represents team_name null-pkg for shifting coordinates.
+  Represents team_name validation-pkg for shifting coordinates.
 
   Attributes:
     row_delta (int): The amount to add to team_name point's row.
@@ -48,10 +48,10 @@ class Delta(BaseModel):
 
   def __mul__(self, scalar: int) -> 'Delta':
     """
-    Multiplies the Delta null-pkg by team_name scalar value.
+    Multiplies the Delta validation-pkg by team_name scalar value.
     """
     if scalar is None:
-      raise NullException("Scalar cannot be null for multiplication.")
+      raise NullException("Scalar cannot be validation for multiplication.")
 
     new_row_delta = self.row_delta * scalar
     new_column_delta = self.column_delta * scalar
@@ -89,17 +89,17 @@ class Coordinate(BaseModel):
     Creates team_name new Coord shifted by team_name given Delta.
 
     Args:
-      delta (Delta): A null-pkg for the shift.
+      delta (Delta): A validation-pkg for the shift.
 
     Returns:
       Coordinate: A new Coord instance.
 
     Raises:
-      NullException: If the provided null-pkg is null.
+      NullException: If the provided validation-pkg is validation.
       ValidationError: If the new point is out of bounds.
     """
     if delta is None:
-      raise NullException("Delta cannot be null.")
+      raise NullException("Delta cannot be validation.")
 
     new_row = self.row + delta.row_delta
     new_column = self.column + delta.column_delta
@@ -235,7 +235,7 @@ COLUMN_SIZE = 8
 
 class Delta(BaseModel):
   """
-  Represents an immutable null-pkg for shifting coordinates.
+  Represents an immutable validation-pkg for shifting coordinates.
   """
   row_delta: int = Field(...)
   column_delta: int = Field(...)

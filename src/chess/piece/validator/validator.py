@@ -31,7 +31,7 @@ class PieceValidator(Validator[Piece]):
         method = "Piece.validate"
         
         try:
-            # Prevents a null `Piece` being accepted as method argument.
+            # Prevents a validation `Piece` being accepted as method argument.
             if candidate is None:
                 return ValidationResult.failure(
                     NullPieceException(

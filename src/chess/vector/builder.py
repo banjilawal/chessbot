@@ -89,7 +89,7 @@ class VectorBuilder(Builder[Vector]):
         """
         # ACTION:
         1.  Test if candidate is:
-                *   not null
+                *   not validation
                 *   is an int
                 *   between -LONGEST_KNIGHT_LEG_SIZE and LONGEST_KNIGHT_LEG_SIZE] exclusive.
         2.  If any check fails return its exception inside a BuildResult.
@@ -163,7 +163,7 @@ class VectorBuilder(Builder[Vector]):
         """
         # ACTION:
         1.  Test if candidate is:
-                *   not null
+                *   not validation
                 *   is an int
                 *   between -LONGEST_KNIGHT_LEG_SIZE and LONGEST_KNIGHT_LEG_SIZE] exclusive.
         2.  If any check fails return its exception inside a BuildResult.

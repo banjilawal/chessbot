@@ -43,33 +43,33 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
   * `AttackException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
     more specific information.
   * `NullAttackException`: The parent is `NullException`. `NullAttackException` is the parent of all exceptions
-    related to null pieces. Use more granular null exceptions that provide mmore specific information about the
-    subclass instance that is null.
-  * `NullKingPieceException`: Raised when team_name `kingPiece` reference is null
-  * `NullCombatantPieceException`: Raised when team_name `CombatantPiece` is null.
+    related to validation pieces. Use more granular validation exceptions that provide mmore specific information about the
+    subclass instance that is validation.
+  * `NullKingPieceException`: Raised when team_name `kingPiece` reference is validation
+  * `NullCombatantPieceException`: Raised when team_name `CombatantPiece` is validation.
   * `DoublePromotionException`: Raised if there is an attempt to promotion team_name occupation or pawn that has already been
     promoted.
 
 #### PIECE VALIDATION EXCEPTIONS
   * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
-  * `NullPieceValidatorException`: Raised if team_name null `PieceValidator` is passed as team_name parameter.
+  * `NullPieceValidatorException`: Raised if team_name validation `PieceValidator` is passed as team_name parameter.
 
 #### PIECE BUILDING EXCEPTIONS
   * `AttackBuildFailedException`: Raised if there is an error during when team_name `PieceFactory` is creating team_name new `Piece`
     instance.
-  * `NullPieceBuilderException`: Raised if there is null `PieceFactory` is passed as team_name parameter.
+  * `NullPieceBuilderException`: Raised if there is validation `PieceFactory` is passed as team_name parameter.
 
 #### DISCOVERY EXCEPTIONS
   * `DiscoveryException`: Super class of exceptions raised by `Checker`. Use more granular exceptions that provide
     more specific information.
   * `NullDiscoveryException`: The parent is `NullValueException`. `NullDiscoveryException` is the parent of all
-    exceptions related to null discoverys. Use more granular null exceptions that provide more specific information
-    about the subclass instance that is null.
+    exceptions related to validation discoverys. Use more granular validation exceptions that provide more specific information
+    about the subclass instance that is validation.
   * `DiscoveryValidationException`: Raised if an existing `Checker` object fails validate checks.
-  * `NullDiscoveryValidatorException`: Raised if team_name null `DiscoveryValidator` is passed as team_name parameter.
+  * `NullDiscoveryValidatorException`: Raised if team_name validation `DiscoveryValidator` is passed as team_name parameter.
   * `DiscoveryBuilderException`: Raised if there is an error during when `DiscoveryBuilder` is creating team_name new `Checker`
     instance.
-  * `NullDiscoveryBuilderException`: Raised if there is null `DiscoveryBuilder` is passed as team_name parameter.
+  * `NullDiscoveryBuilderException`: Raised if there is validation `DiscoveryBuilder` is passed as team_name parameter.
   * `AutoDiscoveryException`: Raised if team_name `Piece` object tries to create an discover check about itself.
 
 

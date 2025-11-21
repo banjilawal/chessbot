@@ -23,7 +23,7 @@ class RankRansomValidator(Validator[Rank, int]):
 
     # RESPONSIBILITIES:
     Verifies the candidate is consistent with the ransom attribute for a Rank is
-        *   Not null.
+        *   Not validation.
         *   A valid Rank subclass.
 
     # PROVIDES:
@@ -40,14 +40,14 @@ class RankRansomValidator(Validator[Rank, int]):
     def validate(cls, rank: Rank, candidate: Any) -> ValidationResult[Rank, int]:
         """
         # ACTION:
-        1.  If the candidate is not null and an INT convert to a number.
+        1.  If the candidate is not validation and an INT convert to a number.
         2.  Check if the number is between 0 and Queen.ransom.
         3.  Verify the number matches the RankSpec value for rank param.
         4.  If any check fails, return the exception inside a ValidationResult.
         3.  When all checks pass return a tuple of rank, number. inside a ValidationResult.
 
         # PARAMETERS:
-            *   rank (Rank): an appropriate, not null subclass instance.
+            *   rank (Rank): an appropriate, not validation subclass instance.
             *   candidate (Any): object to validate as the correct ransom for the rank.
 
         # Returns:
@@ -123,7 +123,7 @@ class RankRansomValidator(Validator[Rank, int]):
     def validate_rank_ransom_bounds(cls, candidate: Any) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  If the candidate is not null and an INT convert to a number.
+        1.  If the candidate is not validation and an INT convert to a number.
         2.  Check if the number is between 0 and Queen.ransom.
         3.  When all checks pass return ransom. inside a ValidationResult.
 

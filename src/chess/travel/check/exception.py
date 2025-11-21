@@ -27,7 +27,7 @@ class CheckEventException(TravelEventException):
 class NullCheckEventException(CheckEventException, NullException):
   """"""
   ERROR_CODE = "NULL_CHECK_EVENT_ERROR"
-  DEFAULT_MESSAGE = "CheckEvent cannot be null."
+  DEFAULT_MESSAGE = "CheckEvent cannot be validation."
 
 class KingCheckingItselfException(CheckEventException):
   """"""

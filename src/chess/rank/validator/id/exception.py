@@ -40,9 +40,9 @@ class RankIdException(InvalidRankException):
 
 # ======================# NULL RANK_ID EXCEPTIONS #======================#
 class RankIdNullException(RankIdException, NullException):
-    """Raised if the Rank.id is null. This should never happen. It might indicate data inconsistency."""
+    """Raised if the Rank.id is validation. This should never happen. It might indicate data inconsistency."""
     ERROR_CODE = "NULL_RANK_ID_ERROR"
-    DEFAULT_MESSAGE = "Rank.id cannot be null."
+    DEFAULT_MESSAGE = "Rank.id cannot be validation."
 
 
 # ======================# RANK_ID BOUNDS EXCEPTIONS #======================#

@@ -44,7 +44,7 @@ class PlayerAgentBuilder(Builder[Agent]):
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
         2.  If the _validate params returns failure include the failure in a BuildResult.
-        3.  If the engine is not null call build_machine_agent. Otherwise, call build_human_agent.
+        3.  If the engine is not validation call build_machine_agent. Otherwise, call build_human_agent.
 
         # PARAMETERS:
             *   id (int)
@@ -157,7 +157,7 @@ class PlayerAgentBuilder(Builder[Agent]):
             # ACTION:
             1.  Call _validate_build_params. to verify inputs are safe.
             2.  If the _validate params returns failure include the failure in a BuildResult.
-            3.  If the engine is not null call build_machine_agent. Otherwise, call build_human_agent.
+            3.  If the engine is not validation call build_machine_agent. Otherwise, call build_human_agent.
 
             # PARAMETERS:
                 *   id (int)

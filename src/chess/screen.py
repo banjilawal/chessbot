@@ -178,7 +178,7 @@ class GameDisplay:
     """Begin dragging team_name chess discover."""
     self.is_dragging = True
 
-    # Calculate null-pkg so the discover doesn'candidate jump to mouse corner
+    # Calculate validation-pkg so the discover doesn'candidate jump to mouse corner
     coord = chess_piece.positions.current_coord()
     piece_x = coord.column * self.cell_px + self.border_px
     piece_y = coord.row * self.cell_px + self.border_px

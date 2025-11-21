@@ -39,9 +39,9 @@ class DomainException(ChessException):
 
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
-    """Raised if an entity, method, or operation requires Domain but gets null instead."""
+    """Raised if an entity, method, or operation requires Domain but gets validation instead."""
     ERROR_CODE = "NULL_DOMAIN_ERROR"
-    DEFAULT_MESSAGE = "Domain cannot be null."
+    DEFAULT_MESSAGE = "Domain cannot be validation."
 
 
 # ======================# DOMAIN VALIDATION EXCEPTIONS #======================#
@@ -54,19 +54,19 @@ class InvalidDomainException(DomainException, ValidationException):
 class DomainNullSquaresListException(DomainException, InconsistencyException):
     """Raised if a Domain's Squares list does not exist."""
     ERROR_CODE = "MISSING_SQUARES_LIST_ERROR"
-    DEFAULT_MESSAGE = "The Domain.squares list is null. There may be a service failure or data inconsistency."
+    DEFAULT_MESSAGE = "The Domain.squares list is validation. There may be a service failure or data inconsistency."
 
 
 class DomainNullEnemiesDictException(DomainException, InconsistencyException):
     """Raised if a Domain's enemies dictionary does not exist."""
     ERROR_CODE = "MISSING_ENEMY_DICTIONARY_ERROR"
-    DEFAULT_MESSAGE = "The Domain.enemies dict is null. There may be a service failure or data inconsistency."
+    DEFAULT_MESSAGE = "The Domain.enemies dict is validation. There may be a service failure or data inconsistency."
 
 
 class DomainNullFriendsDictException(DomainException, InconsistencyException):
     """Raised if a Domain's friends dictionary does not exist."""
     ERROR_CODE = "MISSING_FRIEND_DICTIONARY_ERROR"
-    DEFAULT_MESSAGE = "The Domain.friends dict is null. There may be a service failure or data inconsistency."
+    DEFAULT_MESSAGE = "The Domain.friends dict is validation. There may be a service failure or data inconsistency."
 
 
 # ======================# DOMAIN BUILD EXCEPTIONS #======================#

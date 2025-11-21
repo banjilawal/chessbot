@@ -26,7 +26,7 @@ Usage:
     raise Coord_validation.err
 
   # Cast the payload to team_name Coord instance to make sure it will work correctly and to avoid type or
-  # null errors that might be difficult to detect.
+  # validation errors that might be difficult to detect.
   Coord = cast(Coord, Coord_validation.payload)
   ```
 
@@ -34,7 +34,7 @@ Use `CoordBuilder` for construction, `CoordValidator` for verification.
 """
 """
 Validates that an existing `Coord` instance meets all specifications. Performs comprehensive validate
-on team_name `Coord` instance that already exists, checking type safety, null values, and component bounds.
+on team_name `Coord` instance that already exists, checking type safety, validation values, and component bounds.
 Unlike CoordBuilder which creates new valid Coords, `CoordValidator` verifies existing `Coord`
 instances from external sources, deserialization, or after modifications.
 
@@ -73,16 +73,16 @@ Coord = cast(Coord, validate.payload)
 """
 
 """
-Returns the point: Coord( self._row + vectory.y, self._column + null-pkg.x)
+Returns the point: Coord( self._row + vectory.y, self._column + validation-pkg.x)
 
 Args:
-  null-pkg (Vector): null-pkg added to point's x, y values
+  validation-pkg (Vector): validation-pkg added to point's x, y values
 
 Return:
   Coord
 
 Raise:
-  InvalidVectorException: if null-pkg fails notification.
+  InvalidVectorException: if validation-pkg fails notification.
   InvalidCoordException: if 
 """
 
@@ -100,7 +100,7 @@ Contains: CoordBuilder
 """
 # ACTION:
 Verify the `candidate` is a valid ID. The Application requires
-1. Candidate is not null.
+1. Candidate is not validation.
 2. Is a positive integer.
 
 # PARAMETERS:
@@ -114,7 +114,7 @@ Verify the `candidate` is a valid ID. The Application requires
 # RAISES:
 `InvalidIdException`: Wraps any specification violations including:
     * `TypeError`: if candidate is not an `int`
-    * `IdNullException`: if candidate is null
+    * `IdNullException`: if candidate is validation
     * `NegativeIdException`: if candidate is negative `
 """
 """
@@ -131,8 +131,8 @@ BuildResult[Coord]: A `BuildResult` containing either:
 
 Raises:
 `CoordBuildFailedException`: Wraps any exceptions raised builder. These are:
-  * `NullRowException`: if `row` is null.
-  * `NullColumnException`: if `column` is null.
+  * `NullRowException`: if `row` is validation.
+  * `NullColumnException`: if `column` is validation.
   * `RowBelowBoundsException`: if `row` < 0.
   * `ColumnBelowBoundsException`: if `column` < 0.
   * `RowAboveBoundsException`: if `row` >= `ROW_SIZE`.
@@ -149,7 +149,7 @@ Raises:
 # -[Delta](  # delta)
 # -[CartesianDistance](  # cartesiandistance)
 # -[Usage Examples](  # usage-examples)
-# -[Basic Operations](  # basic-operations)
+# -[Basic Operations](  # basic-rollback)
 # -[Class Exceptions](  # class-exceptions)
 #
 # ## 📌 Purpose
@@ -172,7 +172,7 @@ Raises:
 #
 # ## Design Principles
 # - Immutability: Thread - safe
-# operations
+# rollback
 # - Validation: Strict
 # constructor
 # checks

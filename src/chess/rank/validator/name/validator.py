@@ -23,7 +23,7 @@ class RankNameValidator:
 
     # RESPONSIBILITIES:
     Verifies the candidate is consistent with the name attribute for a Rank is
-        *   Not null.
+        *   Not validation.
         *   A valid Rank subclass.
 
     # PROVIDES:
@@ -51,7 +51,7 @@ class RankNameValidator:
         3.  When all checks pass return a tuple of rank, name. inside a ValidationResult.
 
         # PARAMETERS:
-            *   rank (Rank): an appropriate, not null subclass instance.
+            *   rank (Rank): an appropriate, not validation subclass instance.
             *   candidate (Any): object to validate as the correct name for the rank.
             *   identity_service (type[IdentityService]): has default value, does basic name safety checks.
 

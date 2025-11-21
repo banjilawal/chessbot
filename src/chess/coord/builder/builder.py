@@ -1,7 +1,7 @@
-# src/chess/coord/builder.py
+# src/chess/square/builder.py
 
 """
-Module: chess.coord.builder
+Module: chess.square.builder
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0

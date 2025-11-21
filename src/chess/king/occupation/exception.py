@@ -32,9 +32,9 @@ class KingOccupationEventException(TravelEventException):
 
 #====================== KING_OCCUPATION_EVENT VALIDATION EXCEPTIONS #======================#
 class NullKingOccupationEventException(KingOccupationEventException, NullException):
-  """Raised by methods, entities, and models that require KingOccupationEvent but receive null instead."""
+  """Raised by methods, entities, and models that require KingOccupationEvent but receive validation instead."""
   ERROR_CODE = "NULL_KING_OCCUPATION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "An KingOccupationEvent cannot be null."
+  DEFAULT_MESSAGE = "An KingOccupationEvent cannot be validation."
 
 
 class InvalidKingOccupationEventException(KingOccupationEventException, ValidationException):
@@ -61,7 +61,7 @@ class AttackEventBuilderException(AttackEventException, BuilderException):
 #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#
 class UnexpectedNullEnemyException(AttackEventException):
   DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
-  DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly null during capture; this should not happen."
+  DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly validation during capture; this should not happen."
 
 
 

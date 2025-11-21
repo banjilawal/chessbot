@@ -26,7 +26,7 @@ class PlayerAgentValidator(Validator[Agent]):
         
         """
         Validates team_name agent meets graph requirements:
-          - Not null
+          - Not validation
           - valid visitor_id
           - valid visitor_name
           - Agent.team_history meets coord_stack_validator requirements
@@ -41,7 +41,7 @@ class PlayerAgentValidator(Validator[Agent]):
         
         Raises:
           TypeError: if candidate is not Agent
-          NullCommanderException: if candidate is null
+          NullCommanderException: if candidate is validation
     
           RowBelowBoundsException: If agent.row < 0
           RowAboveBoundsException: If agent.row >= ROW_SIZE
@@ -54,7 +54,7 @@ class PlayerAgentValidator(Validator[Agent]):
         method = "PlayerAgentValidator.validate"
         
         try:
-            # If candidate is null no point continuing
+            # If candidate is validation no point continuing
             if candidate is None:
                 return ValidationResult.failure(
                     NullPlayerAgentException(f"{method}: {NullPlayerAgentException.DEFAULT_MESSAGE}")

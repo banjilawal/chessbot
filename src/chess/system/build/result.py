@@ -59,7 +59,7 @@ team_name payload of type V or an Exception, but not both. If the builder operat
 contain the built object. If the builder operation fails, the error will contain the error that
 occurred during the builder process.
 
-BuildResult is helpful for debugging and showing Builders have different outcomes than operations which generate team_name notification.
+BuildResult is helpful for debugging and showing Builders have different outcomes than rollback which generate team_name notification.
 
 Attributes:
   _payload (Optional[V]): The payload of the notification, if successful.

@@ -66,9 +66,9 @@ class EngineException(ChessException):
   DEFAULT_MESSAGE = "Engine raised an rollback_exception."
 
 class NullEngineException(EngineException, NullException):
-  """Raised if an entity, method, or operation requires an `Engine` but gets null instead."""
+  """Raised if an entity, method, or operation requires an `Engine` but gets validation instead."""
   ERROR_CODE = "NULL_ENGINE_ERROR"
-  DEFAULT_MESSAGE = "Engine cannot be null"
+  DEFAULT_MESSAGE = "Engine cannot be validation"
 
 class EngineBuildFailed(EngineException, BuildFailedException):
   """

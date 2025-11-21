@@ -4,7 +4,7 @@ Responsible for safely constructing `Coord` instances.
 """
 # ACTION:
 Verify the `candidate` is a valid ID. The Application requires
-1. Candidate is not null.
+1. Candidate is not validation.
 2. Is a positive integer.
 
 # PARAMETERS:
@@ -18,7 +18,7 @@ Verify the `candidate` is a valid ID. The Application requires
 # RAISES:
 `InvalidIdException`: Wraps any specification violations including:
     * `TypeError`: if candidate is not an `int`
-    * `IdNullException`: if candidate is null
+    * `IdNullException`: if candidate is validation
     * `NegativeIdException`: if candidate is negative `
 """
 """
@@ -35,8 +35,8 @@ BuildResult[Coord]: A `BuildResult` containing either:
 
 Raises:
 `CoordBuildFailedException`: Wraps any exceptions raised builder. These are:
-  * `NullRowException`: if `row` is null.
-  * `NullColumnException`: if `column` is null.
+  * `NullRowException`: if `row` is validation.
+  * `NullColumnException`: if `column` is validation.
   * `RowBelowBoundsException`: if `row` < 0.
   * `ColumnBelowBoundsException`: if `column` < 0.
   * `RowAboveBoundsException`: if `row` >= `ROW_SIZE`.

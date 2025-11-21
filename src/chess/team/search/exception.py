@@ -10,7 +10,7 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
@@ -73,7 +73,7 @@ class EmptyResultConstructorException(ResultConstructorException):
 
 
 class ErrorContradictsPayloadException(ResultConstructorException):
-  """Raised if both payload and error params are not null when constructing team_name Result object"""
+  """Raised if both payload and error params are not validation when constructing team_name Result object"""
   ERROR_CODE = "ERROR_CONFLICTS_PAYLOAD_IN_RESULT_CONSTRUCTOR"
   DEFAULT_MESSAGE = (
     "A Result cannot have both its payload and error set. Construct with either payload or err"

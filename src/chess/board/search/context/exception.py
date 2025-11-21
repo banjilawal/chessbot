@@ -40,9 +40,9 @@ class BoardSearchContextException(ContextException):
 
 #========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullBoardSearchContextException(BoardSearchContextException, NullException):
-    """Raised if an entity, method, or operation requires Board but gets null instead."""
+    """Raised if an entity, method, or operation requires Board but gets validation instead."""
     ERROR_CODE = "NULL_BOARD_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext cannot be null"
+    DEFAULT_MESSAGE = "TeamSearchContext cannot be validation"
 
 
 #========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#

@@ -43,7 +43,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
   """
   Implements the `OccupationExecutor` class, which handles executing travel
   directives in the chess engine. This includes moving pieces, capturing enemies,
-  and coordinating rollback logic in case of inconsistencies or failed operations.
+  and coordinating rollback logic in case of inconsistencies or failed rollback.
 
   Attributes:
     * `OccupationExecutor:` Main class responsible for executing travel directives.
@@ -57,7 +57,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
-    1. Candidate is not null.
+    1. Candidate is not validation.
     2. Is a positive integer.
 
     # PARAMETERS:
@@ -71,7 +71,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     # RAISES:
     `InvalidIdException`: Wraps any specification violations including:
         * `TypeError`: if candidate is not an `int`
-        * `IdNullException`: if candidate is null
+        * `IdNullException`: if candidate is validation
         * `NegativeIdException`: if candidate is negative `
     """
     method = "TravelEventFactory.execute"

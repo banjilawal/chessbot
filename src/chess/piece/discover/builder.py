@@ -40,7 +40,7 @@ class DiscoveryBuilder(Enum):
     """
     # ACTION:
     Verify the `candidate` is a valid ID. The Application requires
-    1. Candidate is not null.
+    1. Candidate is not validation.
     2. Is a positive integer.
 
     # PARAMETERS:
@@ -54,7 +54,7 @@ class DiscoveryBuilder(Enum):
     # RAISES:
     `InvalidIdException`: Wraps any specification violations including:
         * `TypeError`: if candidate is not an `int`
-        * `IdNullException`: if candidate is null
+        * `IdNullException`: if candidate is validation
         * `NegativeIdException`: if candidate is negative `
     """
     """

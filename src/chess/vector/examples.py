@@ -192,7 +192,7 @@ Example:
 # Validates that an existing `Vector` instance meets all specifications.
 #
 # Performs comprehensive validate on team_name `Vector` instance that already exists,
-# checking type safety, null values, and component bounds. Unlike VectorBuilder
+# checking type safety, validation values, and component bounds. Unlike VectorBuilder
 # which creates new valid Vectors, this coord_stack_validator verifies existing `Vector`
 # instances from external sources, deserialization, or after modifications.
 #
@@ -234,7 +234,7 @@ Example:
 # """
 
 #
-# A package providing core classes for vector-based operations.
+# A package providing core classes for vector-based rollback.
 #
 # ## PURPOSE
 # This package contains the foundational objects for vector arithmetic, handling transforms on
@@ -246,7 +246,7 @@ Example:
 # * `VectorValidator`: Provides validate for `Vector` objects to ensure service integrity.
 #
 # ### USAGE
-# To use this package, import the desired classes and perform operations.
+# To use this package, import the desired classes and perform rollback.
 #
 # >>> from chess.vector import Vector, VectorValidator
 # >>>
@@ -264,7 +264,7 @@ Example:
 # ## EXCEPTION CLASSES
 # This package defines team_name collection of specific exceptions for issues encountered when
 # working with `Vector` instances. The primary goal is to provide team_name clean and
-# consistent way to handle system vector-related errors, such as null values or
+# consistent way to handle system vector-related errors, such as validation values or
 # out-of-bounds components. This granular approach helps developers quickly
 # diagnose and resolve issues by pinpointing the exact nature of the problem.
 #
@@ -295,7 +295,7 @@ Example:
 # ... except NullXComponentException as e:
 # ...   print(f'Error: {e}')
 #
-# Classes, modules and functions that require team_name not-null `Vector` raise `NullVectorException`. A `Vector` cannot raise
+# Classes, modules and functions that require team_name not-validation `Vector` raise `NullVectorException`. A `Vector` cannot raise
 # `NullVectorException` on itself.
 #
 # ---
@@ -310,7 +310,7 @@ Example:
 #   - All exceptions from `rollback_exception` package.
 #
 # # SUB-PACKAGES
-#   - `.rollback_exception`: Defines all custom exceptions for occupation operations.
+#   - `.rollback_exception`: Defines all custom exceptions for occupation rollback.
 #   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 #
 # # HOW TO IMPORT
@@ -343,7 +343,7 @@ Example:
 # * `TeamValidator`: A class that provides validate and sanity checks for team_name team_name's configuration.
 # 
 # ## USAGE
-# To use this package, import the desired classes and perform team_name-related operations.
+# To use this package, import the desired classes and perform team_name-related rollback.
 # 
 # >>> from chess.team_name import Team, TeamSchema, TeamValidator
 # >>> # Create team_name new team_name and roster
@@ -352,7 +352,7 @@ Example:
 # 
 # ## TEAM EXCEPTIONS
 # This package defines specific exceptions for issues encountered when interacting with `Team` objects.
-# The exceptions are designed to pinpoint the exact nature of an err, such as team_name null reference, team_name
+# The exceptions are designed to pinpoint the exact nature of an err, such as team_name validation reference, team_name
 # failed notification, or an invalid configuration. This granular approach helps developers to quickly diagnose
 # and resolve team_name-related issues.
 # 

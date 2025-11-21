@@ -1,7 +1,7 @@
-# src/chess/coord/service/service.py
+# src/chess/square/service/service.py
 
 """
-Module: chess.coord.service.service
+Module: chess.square.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
@@ -11,8 +11,11 @@ from typing import Any, List
 
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
-from chess.system import BuildResult, LoggingLevelRouter, Service, ValidationResult
-from chess.coord import Coord, CoordBuilder, CoordValidator, CoordSearchService
+from chess.system import BuildResult, LoggingLevelRouter, Result, SearchResult, Service
+from chess.coord import (
+    AddingDuplicateCoordException, Coord, CoordBuilder, CoordServiceException, CoordValidator,
+    CoordSearchService, RemovingNonExistentCoordException
+)
 
 
 class CoordService(Service[Coord]):
@@ -72,11 +75,11 @@ class CoordService(Service[Coord]):
     
     id: int
     name: str
+    _coords: List[Coord] = []
     _builder: type[CoordBuilder]
     _validator: type[CoordValidator]
     _scalar_service: ScalarService
     _vector_service: VectorService
-    _search_service: CoordSearchService
     
     def __init__(
             self,
@@ -86,14 +89,14 @@ class CoordService(Service[Coord]):
             validator: type[CoordValidator] = CoordValidator,
             scalar_service: ScalarService = ScalarService(),
             vector_service: VectorService = VectorService(),
-            search_service: CoordSearchService = CoordSearchService()
     ):
         super().__init__(id=id, name=name)
         self._coord_builder = builder
         self._validator = validator
         self._scalar_service = scalar_service
         self._vector_service = vector_service
-        self._search_service = search_service
+        
+        self._coords = []
         
     
     @property
@@ -105,7 +108,111 @@ class CoordService(Service[Coord]):
         result directly to the caller.
         """
         return self._validator
+    
+    
+    # @property
+    # def coords(self) -> List[Coord]:
+    #     return self._coords
+    
+    
+    def add_coord(self, coord: Coord) -> Result[Coord]:
+        method = "CoordService.add_coord"
+        try:
+            coord_validation = self._validator.validate(candidate=coord)
+            if coord_validation.is_failure():
+                return Result.failure(coord_validation.exception)
+            if coord in self._squares:
+                return Result.failure(
+                    AddingDuplicateCoordException(
+                        f"{method}: {AddingDuplicateCoordException.DEFAULT_MESSAGE}"
+                    )
+                )
+            self._squares.append(coord)
+            return Result.success(coord)
+        except Exception as ex:
+            return Result.failure(
+                CoordServiceException(
+                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    def remove_coord(self, coord: Coord) -> Result[Coord]:
+        method = "CoordService.remove_coord"
+        try:
+            coord_validation = self._validator.validate(candidate=coord)
+            if coord_validation.is_failure():
+                return Result.failure(coord_validation.exception)
+            if coord not in  self._coords:
+                return Result.failure(
+                    RemovingNonExistentCoordException(
+                        f"{method}: {RemovingNonExistentCoordException.DEFAULT_MESSAGE}"
+                    )
+                )
+            coord = self._coords.remove(coord)
+            return Result.success(coord)
+        except Exception as ex:
+            return Result.failure(
+                CoordServiceException(
+                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
+                )
+            )
         
+        
+    def find_coord(self, coord: Coord) -> SearchResult[[Coord]]:
+        method = "CoordService.find_coord"
+        try:
+            coord_validation = self._validator.validate(candidate=coord)
+            if coord_validation.is_failure():
+                return SearchResult.failure(coord_validation.exception)
+            
+            return SearchResult.empty()
+        except Exception as ex:
+            return SearchResult.failure(
+                CoordServiceException(
+                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    def find_coord_by_row(self, row: int) -> SearchResult[[Coord]]:
+        method = "CoordService.find_coord_by_row"
+        try:
+            row_validation = self._validator.validate_row(row)
+            
+            matches = [coord for coord in self._coords if coord.row == row]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            
+            elif len(matches) > 1:
+                return SearchResult.success(payload=matches)
+            
+            return SearchResult.empty()
+        except Exception as ex:
+            return SearchResult.failure(
+                CoordServiceException(
+                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    
+    def find_coord_by_colum(self, column: int) -> SearchResult[[Coord]]:
+        method = "CoordService.find_coord_by_row"
+        try:
+            row_validation = self._validator.validate_column(column)
+            
+            matches = [coord for coord in self._coords if coord.column == column]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            
+            elif len(matches) > 1:
+                return SearchResult.success(payload=matches)
+            
+            return SearchResult.empty()
+        except Exception as ex:
+            return SearchResult.failure(
+                CoordServiceException(
+                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
+                )
+            )
     
     # def validate_as_coord(self, candidate: Any) -> ValidationResult[Coord]:
     #     """
@@ -154,15 +261,15 @@ class CoordService(Service[Coord]):
     def add_vector_to_coord(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
         """
         # Action:
-        1.  validator runs integrity checks on the coord param.
+        1.  validator runs integrity checks on the square param.
         2.  vector_service runs integrity checks on the vector param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and vector params are valid:
-                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        4.  If square and vector params are valid:
+                new_row, new_colum = square.row + vector.y, square.column + vector.x
         5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord(Coord):
+            *   square(Coord):
             *   vector (Vector):
 
         # Returns:
@@ -199,15 +306,15 @@ class CoordService(Service[Coord]):
     def cross_product(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
         """
         # Action:
-        1.  validator runs integrity checks on the coord param.
+        1.  validator runs integrity checks on the square param.
         2.  vector_service runs integrity checks on the vector param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and vector params are valid:
-                new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        4.  If square and vector params are valid:
+                new_row, new_colum = square.row + vector.y, square.column + vector.x
         5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord(Coord):
+            *   square(Coord):
             *   vector (Vector):
 
         # Returns:
@@ -245,15 +352,15 @@ class CoordService(Service[Coord]):
     def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar) -> BuildResult[Coord]:
         """
         # Action:
-        1.  validator runs integrity checks on the coord param.
+        1.  validator runs integrity checks on the square param.
         2.  scalar_service runs integrity checks on the scalar param.
         3.  If any checks raise an exception return it in the BuildResult.
-        4.  If coord and scalar params are valid:
-                new_row, new_colum = coord.row * scalar.value, coord.column * scalar.value
+        4.  If square and scalar params are valid:
+                new_row, new_colum = square.row * scalar.value, square.column * scalar.value
         5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
 
         # Parameters:
-            *   coord (Coord):
+            *   square (Coord):
             *   scalar (Scalar):
 
         # Returns:

@@ -27,7 +27,7 @@ from chess.enviroment import (
 """
 Implements the `OccupationExecutor` class, which handles executing travel
 directives in the chess engine. This includes moving pieces, capturing enemies,
-and coordinating rollback logic in case of inconsistencies or failed operations.
+and coordinating rollback logic in case of inconsistencies or failed rollback.
 
 Attributes:
   * `OccupationExecutor:` Main class responsible for executing travel directives.

@@ -35,7 +35,7 @@ class IdValidator(Validator[int]):
         """
         # ACTION:
         1.  Test if the candidate is:
-                *   Not null.
+                *   Not validation.
                 *   A positive integer.
         2.  If either text fails send their exception in a ValidationResult.
         3.  When all checks pass cast the candidate to an INT then send inside a ValidationResult.

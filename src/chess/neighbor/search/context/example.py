@@ -140,7 +140,7 @@ Use `DiscoverySearchContextBuilder` for construction, `DiscoverySearchContextVal
 Validates that an existing `DiscoverySearchContext` instance meets all specifications.
 
 Performs comprehensive validate on discoverySearchContext `DiscoverySearchContext` instance that already exists,
-checking type safety, null values, and component bounds. Unlike `DiscoverySearchContextBuilder`
+checking type safety, validation values, and component bounds. Unlike `DiscoverySearchContextBuilder`
 which creates new valid DiscoverySearchContexts, this coord_stack_validator verifies existing `DiscoverySearchContext`
 instances from external sources, deserialization, or after modifications.
 
@@ -153,10 +153,10 @@ Args
 
 Raises:
   `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
-  `NullDiscoverySearchContextException`: if `candidate` is null
+  `NullDiscoverySearchContextException`: if `candidate` is validation
   `InvalidIdException`: if `visitor_id` fails validate checks
   `InvalidCommanderException`: if `agent` fails validate checks
-  `NullDiscoverySearchContextProfileException`: if `schema` is null
+  `NullDiscoverySearchContextProfileException`: if `schema` is validation
   `InvalidCommanderAssignmentException`: if the assigned agent does not consistency the validated agent
   `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and Agent is broken
   `InvalidDiscoverySearchContextException`: Wraps any preceding exceptions
@@ -286,7 +286,7 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `DiscoverySearchContextValidator` and `DiscoverySearchContextBuilder`processes.
 
 THEME:

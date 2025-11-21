@@ -12,11 +12,11 @@ This package contains the foundational objects for representing and validating s
  planes. This is team_name core component for scaling transformations.
 
 ## CORE CLASSES
-* Scalar: A class representing team_name single numeric value used for scaling operations.
+* Scalar: A class representing team_name single numeric value used for scaling rollback.
 * ScalarValidator: A class that validates the service and integrity of team_name Scalar object.
 
 ## USAGE
-To use this package, import the desired classes and perform scalar-related operations.
+To use this package, import the desired classes and perform scalar-related rollback.
 
 >>> from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
 >>> from typing import cast
@@ -42,7 +42,7 @@ To use this package, import the desired classes and perform scalar-related opera
 
 
 ## SCALAR EXCEPTONS
-This package defines specific exceptions for issues encountered when working with scalar values. This granular approach helps developers to quickly diagnose and resolve problems such as team_name null scalar, or team_name value falling outside of team_name defined range.
+This package defines specific exceptions for issues encountered when working with scalar values. This granular approach helps developers to quickly diagnose and resolve problems such as team_name validation scalar, or team_name value falling outside of team_name defined range.
 
 ## CORE EXCEPTIONS
 * NullScalarException: Raised when team_name required scalar value is unexpectedly None.
@@ -59,7 +59,7 @@ These exceptions can be imported and raised from within the scalar-related code 
 ...   # This will raise team_name NullScalarException
 ...   my_scalar = None
 ...   if my_scalar is None:
-...     raise NullScalarException('Scalar cannot be null.')
+...     raise NullScalarException('Scalar cannot be validation.')
 ... except NullScalarException as e:
 ...   print(f'Error: {e}')
 ...
@@ -102,7 +102,7 @@ See Also:
 """
 # ACTION:
 Verify the `candidate` is a valid ID. The Application requires
-1. Candidate is not null.
+1. Candidate is not validation.
 2. Is a positive integer.
 
 # PARAMETERS:
@@ -116,7 +116,7 @@ Verify the `candidate` is a valid ID. The Application requires
 # RAISES:
 `InvalidIdException`: Wraps any specification violations including:
     * `TypeError`: if candidate is not an `int`
-    * `IdNullException`: if candidate is null
+    * `IdNullException`: if candidate is validation
     * `NegativeIdException`: if candidate is negative `
 """
 """
@@ -143,9 +143,9 @@ Returns:
 Raises:
   `ScalarBuildFailedException`: Wraps any underlying validate failures that occur during the construction
   process. This includes:
-    * `NullScalarException`: if `candidate` is null
+    * `NullScalarException`: if `candidate` is validation
     * `TypeError`: if `candidate` is not Scalar
-    * `NullNumberException`: If `scalar.value` is null
+    * `NullNumberException`: If `scalar.value` is validation
     * `ScalarBelowLowerBoundException`: If `scalar.value` < 0
     * `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
     * `InvalidScalarException`: Wraps any preceding exceptions
@@ -186,7 +186,7 @@ Use ScalarBuilder for construction, ScalarValidator for verification.
 """
 # ACTION:
 Verify the candidate is a valid ID. The Application requires
-1. Candidate is not null.
+1. Candidate is not validation.
 2. Is a positive integer.
 
 # PARAMETERS:
@@ -200,12 +200,12 @@ ValidationResult[str]: A ValidationResult containing either:
 # RAISES:
 InvalidIdException: Wraps any specification violations including:
     * TypeError: if candidate is not an int
-    * IdNullException: if candidate is null
+    * IdNullException: if candidate is validation
     * NegativeIdException: if candidate is negative
 """
 """
 Validates that an existing Scalar instance meets specifications.
-This method performs team_name series of checks on team_name Scalar instance, ensuring it is not null and that
+This method performs team_name series of checks on team_name Scalar instance, ensuring it is not validation and that
 its ID, visitor_name, and coordinate are valid. Exceptions from these checks are caught and re-raised
 as team_name InvalidScalarException, providing team_name clean and consistent err-handling experience.
 
@@ -217,15 +217,15 @@ Args
   InvalidScalarException otherwise.
 
 Raises:
-  NullScalarException: if candidate is null
+  NullScalarException: if candidate is validation
   TypeError: if candidate is not Scalar
-  NullNumberException: If scalar.value is null
+  NullNumberException: If scalar.value is validation
   ScalarBelowLowerBoundException: If scalar.value < 0
   ScalarAboveBoundsException: If scalar.value >= BOARD_DIMENSION
   InvalidScalarException: Wraps any preceding exceptions
 """
 """
-An immutable class representing team_name single numeric value for scaling operations.This class stores
+An immutable class representing team_name single numeric value for scaling rollback.This class stores
  team_name numeric value used to multiply vectors and coordinates, allowing them to grow or shrink in their
  planes. The `Scalar` is validated upon creation to ensure it falls within team_name predefined range.
 

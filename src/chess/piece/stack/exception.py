@@ -36,9 +36,9 @@ class CoordStackException(ChessException):
 
 # ======================# NULL COORD_STACK EXCEPTIONS #======================#
 class NullCoordStackException(CoordStackException, NullException):
-  """Raised if an entity, method, or operation requires CoordStack but gets null instead."""
+  """Raised if an entity, method, or operation requires CoordStack but gets validation instead."""
   ERROR_CODE = "NULL_COORD_STACK_ERROR"
-  DEFAULT_MESSAGE = "CoordStack cannot be null."
+  DEFAULT_MESSAGE = "CoordStack cannot be validation."
 
 
 # ======================# COORD_STACK VALIDATION EXCEPTIONS #======================#
@@ -55,12 +55,12 @@ class CoordStackSizeConflictException(CoordStackException, ValidationException):
 
 
 class InconsistentCurrentCoordException(CoordStackException, ValidationException):
-  """Raised if coord_stack.current_coord is not null but the stack is empty or vice versa."""
+  """Raised if coord_stack.current_coord is not validation but the stack is empty or vice versa."""
   ERROR_CODE = "INCONSISTENT_CURRENT_COORD_ERROR"
   DEFAULT_MESSAGE = "The CoordStack.current_coord CoordStack.is_empty() contradict each other."
 
 
 class CorruptedCoordStackException(CoordStackException, ValidationException):
-  """Raised if the list is null. That is CoordStack.items is null"""
+  """Raised if the list is validation. That is CoordStack.items is validation"""
   ERROR_CODE = "CORRUPTED_COORD_STACK_ERROR"
-  DEFAULT_MESSAGE = "CoordStack.items is null. There is inconsistent data in the system."
+  DEFAULT_MESSAGE = "CoordStack.items is validation. There is inconsistent data in the system."

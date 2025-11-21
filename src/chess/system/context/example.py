@@ -32,7 +32,7 @@ Created: 2025-09-28
  * `TravelEventFactory`
 """
 
-# src/chess/system/roster/square.py
+# src/chess/system/roster/search.py
 
 """
 Module: `chess.system.roster.roster`
@@ -104,7 +104,7 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Context objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `ContextValidator` and `ContextBuilder`processes.
 
 THEME:

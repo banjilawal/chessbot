@@ -38,10 +38,10 @@ class VisitationSearchContextException(ContextException):
 class NullVisitationSearchContextException(VisitationSearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team_name visitationSearchContext but
-    gets null instead.
+    gets validation instead.
     """
     ERROR_CODE = "NULL_SEARCH_VISITATION_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "VisitationSearchContext cannot be null"
+    DEFAULT_MESSAGE = "VisitationSearchContext cannot be validation"
 
 
 class InvalidVisitationSearchContextException(VisitationSearchContextException, ValidationException):
@@ -55,7 +55,7 @@ class InvalidVisitationSearchContextException(VisitationSearchContextException, 
 
 class ZeroVisitationSearchParamsException(VisitationSearchContextException):
     """
-    Raised if all VisitationSearchContext params are set null.
+    Raised if all VisitationSearchContext params are set validation.
     """
     ERROR_CODE = "ZERO_VISITATION_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (
@@ -64,7 +64,7 @@ class ZeroVisitationSearchParamsException(VisitationSearchContextException):
 
 class TooManyVisitationSearchParamsException(VisitationSearchContextException):
     """
-    Raised if more than one VisitationSearchContext param is set null.
+    Raised if more than one VisitationSearchContext param is set validation.
     """
     ERROR_CODE = "TOO_MANY_VISITATION_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (

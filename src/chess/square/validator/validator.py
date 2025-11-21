@@ -45,7 +45,7 @@ class SquareValidator(Validator[Square]):
     ) -> ValidationResult[Square]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is a Square.
         3.  Run id and name integrity checks with identity_service
         4.  Run target integrity checks with coord_service.

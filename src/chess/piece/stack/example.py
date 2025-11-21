@@ -23,7 +23,7 @@ Provides the service structures and utilities for storing history of `Piece` obj
   * `CoordStackException`: Super class of exceptions raised by `CoordStack`.
   * `DoubleCoordPushException`: Raised when team_name `Coord` at the top of the stack is pushed again.
   * `CoordStackValidationException`: Raised if an existing `CoordStack` object fails validate.
-  * `NullCoordStackException`: Raised if team_name null `CoordStackException` is passed as team_name parameter.
+  * `NullCoordStackException`: Raised if team_name validation `CoordStackException` is passed as team_name parameter.
 
 ### EXCEPTION USAGE EXAMPLES
 These examples show recommended workflows with `CoordStack` exceptions.

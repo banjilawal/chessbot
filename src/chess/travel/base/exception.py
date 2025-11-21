@@ -10,7 +10,7 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and null checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
@@ -63,7 +63,7 @@ class TravelTransactionException(TransactionException):
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
 class NullTravelEventException(TravelEventException, NullException):
   ERROR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent cannot be null."
+  DEFAULT_MESSAGE = "TravelEvent cannot be validation."
 
 
 

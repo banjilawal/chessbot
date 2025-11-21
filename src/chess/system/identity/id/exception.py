@@ -23,9 +23,9 @@ class InvalidIdException(ValidationException):
 
 
 class IdNullException(NullException):
-    """Raised if an entity, method, or operation requires ID but gets null instead."""
+    """Raised if an entity, method, or operation requires ID but gets validation instead."""
     ERROR_CODE = "NULL_ID_ERROR"
-    DEFAULT_MESSAGE = "Id cannot be null."
+    DEFAULT_MESSAGE = "Id cannot be validation."
 
 
 class NegativeIdException(InvalidIdException):

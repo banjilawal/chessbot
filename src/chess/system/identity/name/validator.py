@@ -21,7 +21,7 @@ class NameValidator(Validator[str]):
   
     # RESPONSIBILITIES:
     Verifies a candidate is
-        *   Not null.
+        *   Not validation.
         *   Is a STRING
         *   Not white space only (" ", tab, newline).
         *   Not empty. (".", ".\n", ".\t", ".\r").
@@ -43,7 +43,7 @@ class NameValidator(Validator[str]):
         """
         # ACTION:
         1.  Test if the candidate is:
-            *   Not null.
+            *   Not validation.
             *   Is not a white-space string.
             *   Is not an empty string.
             *   has a length between MIN_NAME_LENGTH and MAX_NAME_LENGTH.

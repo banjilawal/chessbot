@@ -31,9 +31,9 @@ class VectorServiceException(ServiceException):
 
 #======================# NULL VECTOR_SERVICE EXCEPTIONS #======================#
 class NullVectorServiceException(VectorServiceException, NullException):
-  """Raised if an entity, method, or operation requires VectorService but gets null instead."""
+  """Raised if an entity, method, or operation requires VectorService but gets validation instead."""
   ERROR_CODE = "NULL_VECTOR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "VectorService cannot be null."
+  DEFAULT_MESSAGE = "VectorService cannot be validation."
 
 
 #======================# VECTOR_SERVICE VALIDATION EXCEPTIONS #======================#

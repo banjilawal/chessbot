@@ -22,7 +22,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.rollback_exception`: Defines all custom exceptions for travel operations.
+  - `.rollback_exception`: Defines all custom exceptions for travel rollback.
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this
@@ -59,7 +59,7 @@ This package exposes core classes and all exceptions from its sub-modules:
   - All exceptions from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.rollback_exception`: Defines all custom exceptions for travel operations.
+  - `.rollback_exception`: Defines all custom exceptions for travel rollback.
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all core classes and exceptions from this

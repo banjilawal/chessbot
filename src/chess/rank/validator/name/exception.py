@@ -41,9 +41,9 @@ class RankNameException(InvalidRankException):
 
 # ======================# NULL RANK_NAME EXCEPTIONS #======================#
 class RankNameNullException(RankNameException, NullException):
-  """Raised if the Rank.name is null. This should never happen. It might indicate data inconsistency."""
+  """Raised if the Rank.name is validation. This should never happen. It might indicate data inconsistency."""
   ERROR_CODE = "NULL_RANK_NAME_ERROR"
-  DEFAULT_MESSAGE = "Rank.name cannot be null."
+  DEFAULT_MESSAGE = "Rank.name cannot be validation."
 
 
 # ======================# RANK_NAME BOUNDS EXCEPTIONS #======================#

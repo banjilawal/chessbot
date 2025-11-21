@@ -37,9 +37,9 @@ class DomainOriginException(ChessException):
 
 # ====================== NULL DOMAIN_ORIGIN EXCEPTIONS #======================#
 class NullDomainOriginException(DomainOriginException, NullException):
-    """Raised if an entity, method, or operation requires DomainOrigin but gets null instead."""
+    """Raised if an entity, method, or operation requires DomainOrigin but gets validation instead."""
     ERROR_CODE = "NULL_DOMAIN_ORIGIN_ERROR"
-    DEFAULT_MESSAGE = "A DomainOrigin cannot be null."
+    DEFAULT_MESSAGE = "A DomainOrigin cannot be validation."
 
 
 # ====================== DOMAIN_ORIGIN VALIDATION EXCEPTIONS #======================#

@@ -29,9 +29,9 @@ class GameColorException(ChessException):
 
 # ======================# GAMECOLOR VALIDATION EXCEPTIONS #======================#  
 class NullGameColorException(GameColorException, NullException):
-    """Raised if an entity, method, or operation requires GameColor but gets null instead."""
+    """Raised if an entity, method, or operation requires GameColor but gets validation instead."""
     ERROR_CODE = "NULL_GAME_COLOR_ERROR"
-    DEFAULT_MESSAGE = "GameColor cannot be null."
+    DEFAULT_MESSAGE = "GameColor cannot be validation."
 
 
 class InvalidGameColorException(GameColorException, ValidationException):

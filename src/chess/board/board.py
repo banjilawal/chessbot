@@ -10,7 +10,8 @@ version: 1.0.0
 
 from typing import List
 from chess.piece import Piece
-from chess.square import Square
+from chess.piece.service import PieceService
+from chess.square import Square, SquareService
 
 
 class Board:
@@ -30,10 +31,10 @@ class Board:
     """
     
     _id: int
-    _pieces: List[Piece]
-    _squares: List[List[Square]]
+    _piece_service: PieceService
+    _square_service: SquareService
     
-    def __init__(self, id: int):
+    def __init__(self, id: int, piece_service: PieceService, square_service: SquareService):
         """
         # Action:
         Constructs Board object
@@ -50,12 +51,20 @@ class Board:
         method = "Board.__init__"
         
         self._id = id
-        self._pieces = [Piece]
-        self._squares = [[Square]]
+        self._piece_service = piece_service
+        self._square_service = square_service
     
     @property
     def id(self) -> int:
         return self._id
+    
+    @@property
+    def (self) -> [PieceService]:
+        return self._piece_service
+    
+    @@property
+    def (self) -> [SquareService]:
+        return self._square_service
     
     @property
     def squares(self) -> List[Square]:

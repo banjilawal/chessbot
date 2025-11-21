@@ -1,7 +1,7 @@
-# src/chess/coord/coord.py
+# src/chess/square/square.py
 
 """
-Module: chess.coord.coord
+Module: chess.square.square
 Author: Banji Lawal
 Created: 2025-07-26
 version: 1.0.0

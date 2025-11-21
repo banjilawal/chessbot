@@ -45,7 +45,7 @@ class TeamValidator(Validator[Team]):
     ) -> ValidationResult[Team]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is a Team. If so casyt it.
         3.  Check id safety with IdentityService
         4.  Verify schema's correctness with TeamSchemaValidator.

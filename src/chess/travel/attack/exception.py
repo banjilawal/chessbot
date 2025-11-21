@@ -40,13 +40,13 @@ class InvalidAttackEventException(TravelEventException, ValidationException):
 
 class NullAttackEventException(AttackEventException, NullException):
   """
-  Raised if an entity, method, or operation requires team_name owner but gets null instead.
+  Raised if an entity, method, or operation requires team_name owner but gets validation instead.
   Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
   Do not throw NullAttackException. Raise NullKingPiece or NullCombatantPiece instead.
   they are more descriptive and better suited for debugging.
   """
   ERROR_CODE = "NULL_ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Attack cannot be null"
+  DEFAULT_MESSAGE = "Attack cannot be validation"
 
 
 class PieceAttackingItSelfException(AttackEventException):
@@ -94,7 +94,7 @@ class AttackEventBuildFailedException(AttackEventException, BuildFailedException
 # ======================# PIECE CAPTURE EXCEPTIONS #======================#
 class CapturePieceException(PieceException):
   """
-  Several exceptions can be raised during capture operations. This class is the parent of
+  Several exceptions can be raised during capture rollback. This class is the parent of
   exceptions team_name owner can raise being captured or attacking. Do not use directly. Subclasses
   give details useful for debugging.
   """
@@ -120,11 +120,11 @@ class DoubleCaptureException(CapturePieceException):
 
 class UnsetCaptureException(CapturePieceException):
   """
-  If owner.captor is not null. Attempting to change it raises this err
+  If owner.captor is not validation. Attempting to change it raises this err
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR"
   DEFAULT_MESSAGE = (
-    "Cannot set team_name prisoner's captor to null. A captured owner cannot be freed."
+    "Cannot set team_name prisoner's captor to validation. A captured owner cannot be freed."
   )
 
 
@@ -169,12 +169,12 @@ class DoubleCaptureRolledBackExceptionCapture(CaptureRollbackException):
 
 class UnsetCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
-  Raised if team_name notification attempts setting prisoner's captor consistency null.
+  Raised if team_name notification attempts setting prisoner's captor consistency validation.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot set team_name prisoner's captor to null. A captured owner cannot be freed. "
+    "Cannot set team_name prisoner's captor to validation. A captured owner cannot be freed. "
     "Transaction rollback performed."
   )
 
@@ -213,7 +213,7 @@ class PieceAttackingHostageException(AttackEventException):
 class AttackingNullException(AttackEventException, NullException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_NULL_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack something null."
+  DEFAULT_MESSAGE = "Piece cannot attack something validation."
 
 
 class HostageCannotAttackException(AttackEventException):

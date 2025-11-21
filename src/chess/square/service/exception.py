@@ -12,15 +12,8 @@ from chess.system import ServiceException, ValidationException, NullException
 
 __all__ = [
     "SquareServiceException",
-    
-# ======================# NULL SQUARE_SERVICE EXCEPTIONS #======================#
-    "NullSquareServiceException",
-    
-# ======================# SQUARE_SERVICE VALIDATION EXCEPTIONS #======================#
-    "InvalidSquareServiceException",
-
-# ======================# SQUARE_SERVICE BUILD EXCEPTIONS #======================#
-    "SquareServiceBuildFailedException",
+    "AddingDuplicateSquareException",
+    "RemovingNonExistentSquareException",
 ]
 
 
@@ -33,25 +26,13 @@ class SquareServiceException(ServiceException):
     DEFAULT_MESSAGE = "SquareService raised an exception."
 
 
-# ======================# NULL SQUARE_SERVICE EXCEPTIONS #======================#
-class NullSquareServiceException(SquareServiceException, NullException):
-    """Raised if an entity, method, or operation requires SquareService but gets null instead."""
-    ERROR_CODE = "NULL_SQUARE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SquareService cannot be null."
+class AddingDuplicateSquareException(ServiceException):
+    """Raised when trying to add a duplicate Square to a list of Squares."""
+    ERROR_CODE = "DUPLICATE_SQUARE_ADDITION_ERROR"
+    DEFAULT_MESSAGE = "SquareService cannot add duplicate Squares to the list."
 
 
-# ======================# SQUARE_SERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidSquareServiceException(SquareServiceException, ValidationException):
-    """Catchall Exception for when SquareServiceValidator fails candidates on a Piece-SquareService relationship test."""
-    ERROR_CODE = "INVALID_SQUARE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SquareService validation failed."
-
-
-# ======================# SQUARE_SERVICE BUILD EXCEPTIONS #======================#
-class SquareServiceBuildFailedException(SquareServiceException, BuildFailedException):
-    """Catchall Exception for SquareServiceBuilder when it encounters an error building a Square."""
-    ERROR_CODE = "SQUARE_SERVICE_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "SquareService build failed."
-
-
-
+class RemovingNonExistentSquareException(ServiceException):
+    """Raised when trying  to remove a Square not in the list."""
+    ERROR_CODE = "REMOVING_NON_EXISTENT_SQUARE_ERROR"
+    DEFAULT_MESSAGE = "SquareService cannot remove a Square not in the list."

@@ -45,63 +45,63 @@ class InvalidPieceException(InvalidPieceException, ValidationException):
 # ======================# PIECE NULL EXCEPTIONS #======================#
 class NullPieceException(InvalidPieceException, NullException):
     """
-    Catchall for when an entity, method, or operation requires team_name piece but gets null instead.
+    Catchall for when an entity, method, or operation requires team_name piece but gets validation instead.
     Using nulls appropriate to the subclasses is recommended.
     """
     ERROR_CODE = "NULL_PIECE_ERROR"
-    DEFAULT_MESSAGE = "Piece cannot be null."
+    DEFAULT_MESSAGE = "Piece cannot be validation."
 
 
 class NullKingException(InvalidPieceException, NullException):
-    """Raised if team_name KingPiece but gets null instead."""
+    """Raised if team_name KingPiece but gets validation instead."""
     ERROR_CODE = "NULL_KING_PIECE_ERROR"
-    DEFAULT_MESSAGE = "KingPiece cannot be null."
+    DEFAULT_MESSAGE = "KingPiece cannot be validation."
 
 
 class NullCombatantException(InvalidPieceException, NullException):
-    """Raised if team_name CombatantPiece is expecting a CombatantPiece but gets null instead."""
+    """Raised if team_name CombatantPiece is expecting a CombatantPiece but gets validation instead."""
     ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
-    DEFAULT_MESSAGE = "CombatantPiece cannot be null."
+    DEFAULT_MESSAGE = "CombatantPiece cannot be validation."
 
 
 class NullPawnException(InvalidPieceException, NullException):
-    """Raised if team_name CombatantPiece is expecting a CombatantPiece but gets null instead."""
+    """Raised if team_name CombatantPiece is expecting a CombatantPiece but gets validation instead."""
     ERROR_CODE = "NULL_PAWN_PIECE_ERROR"
-    DEFAULT_MESSAGE = "PawnPiece cannot be null."
+    DEFAULT_MESSAGE = "PawnPiece cannot be validation."
 
 
 class PieceTeamFieldIsNullException(InvalidPieceException, NullException):
     """
-    Raised if a Piece.team attribute is null. This should never happen, the field is required and
-    set during builder. If its null after the Piece is created there has been service loss
+    Raised if a Piece.team attribute is validation. This should never happen, the field is required and
+    set during builder. If its validation after the Piece is created there has been service loss
     or data inconsistency.
     """
     ERROR_CODE = "PIECE_TEAM_FIELD_NULL_ERROR"
-    DEFAULT_MESSAGE = "Piece.team_name consistency is null. It should never be null. There may be service inconsistency."
+    DEFAULT_MESSAGE = "Piece.team_name consistency is validation. It should never be validation. There may be service inconsistency."
 
 
 class PieceNoCoordStackServiceException(InvalidPieceException, NullException):
     """
-    Raised if a Piece.coord_stack_service attribute is null. This should never happen, the field is required and
-    set during builder. If its null after the Piece is created there has been service loss or data inconsistency.
+    Raised if a Piece.coord_stack_service attribute is validation. This should never happen, the field is required and
+    set during builder. If its validation after the Piece is created there has been service loss or data inconsistency.
     """
     ERROR_CODE = "PIECE_DOES_NOT_HAVE_COORD_STACK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "Piece.coord_stack_service is null. There may be a service failure or data inconsistency."
+    DEFAULT_MESSAGE = "Piece.coord_stack_service is validation. There may be a service failure or data inconsistency."
 
 
 class PieceNullCoordStackException(InvalidPieceException, NullException):
     """Raised if a Piece's CoordStack does not exist."""
     ERROR_CODE = "PIECE_COORD_STACK_MISSING_ERROR"
-    DEFAULT_MESSAGE = "Piece.positions stack is null. There may be a service failure or data inconsistency."
+    DEFAULT_MESSAGE = "Piece.positions stack is validation. There may be a service failure or data inconsistency."
 
 class PieceRosterNumberIsNullException(InvalidPieceException, NullException):
     """
-    Raised if a Piece.roster_number attribute is null. This should never happen, the field is required and
-    set during builder. If its null after the Piece is created there has been service loss or data inconsistency.
+    Raised if a Piece.roster_number attribute is validation. This should never happen, the field is required and
+    set during builder. If its validation after the Piece is created there has been service loss or data inconsistency.
     """
     ERROR_CODE = "PIECE_NULL_ROSTER_NUMBER_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece.roster_number attribute cannot be null. There may be service "
+        "Piece.roster_number attribute cannot be validation. There may be service "
         "loss or inconsistent data."
     )
 

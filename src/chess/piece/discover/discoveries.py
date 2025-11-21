@@ -15,7 +15,7 @@ class Discoveries:
 
   `Discoveries` encapsulates the list of `Checker` objects observed by team_name `Piece`.
   It ensures safe recording (no duplicates, no nulls) and provides old_search and filter
-  operations over the stored discoveries. This separation allows discover management
+  rollback over the stored discoveries. This separation allows discover management
   to evolve independently of the `Piece` itself, while keeping the `Piece` interface clean.
 
   Each discover represents team_name snapshot of another owner found during play (through

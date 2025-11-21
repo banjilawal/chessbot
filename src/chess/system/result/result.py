@@ -27,7 +27,7 @@ class Result(Generic[T]):
   1.
 
   # Attributes:
-    `_payload` (`Optional`[`V`]): Data from the accessor or service generator if their operations
+    `_payload` (`Optional`[`V`]): Data from the accessor or service generator if their rollback
       were successful.
     `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
   """

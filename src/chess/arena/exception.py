@@ -73,9 +73,9 @@ class ArenaException(ChessException):
 
 #======================# ARENA VALIDATION EXCEPTIONS #======================#  
 class NullArenaException(ArenaException, NullException):
-  """Raised if an entity, method, or operation requires an arena but gets null instead."""
+  """Raised if an entity, method, or operation requires an arena but gets validation instead."""
   ERROR_CODE = "NULL_ARENA_ERROR"
-  DEFAULT_MESSAGE = "Arena cannot be null"
+  DEFAULT_MESSAGE = "Arena cannot be validation"
 
 
 class InvalidArenaException(ArenaException, ValidationException):

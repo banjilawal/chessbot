@@ -23,7 +23,7 @@ class RankDesignationValidator:
 
     # RESPONSIBILITIES:
     Verifies the candidate is consistent with the designation attribute for a Rank is
-        *   Not null.
+        *   Not validation.
         *   A valid Rank subclass.
 
     # PROVIDES:
@@ -51,7 +51,7 @@ class RankDesignationValidator:
         3.  When all checks pass return a tuple of rank, designation. inside a ValidationResult.
 
         # PARAMETERS:
-            *   rank (Rank): an appropriate, not null subclass instance.
+            *   rank (Rank): an appropriate, not validation subclass instance.
             *   candidate (Any): object to validate as the correct designation for the rank.
 
         # Returns:
@@ -127,7 +127,7 @@ class RankDesignationValidator:
     ) -> ValidationResult[str]:
         """
         # ACTION:
-        1.  Verify the candidate is not null.
+        1.  Verify the candidate is not validation.
         2.  Verify the candidate is a string.
         2.  Check the candidate exists in the set of in RankSpec designations.
         4.  If any check fails, return the exception inside a ValidationResult.

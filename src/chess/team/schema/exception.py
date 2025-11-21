@@ -74,9 +74,9 @@ class TeamSchemaException(TeamException):
 
 #======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
 class NullTeamSchemaException(TeamSchemaException, NullException):
-  """Raised if an entity, method, or operation requires `TeamSchema` but gets null instead."""
+  """Raised if an entity, method, or operation requires `TeamSchema` but gets validation instead."""
   ERROR_CODE = "NULL_TEAM_SCHEMA_ERROR"
-  DEFAULT_MESSAGE = "TeamSchema cannot be null"
+  DEFAULT_MESSAGE = "TeamSchema cannot be validation"
 
 class InvalidTeamSchemaException(TeamSchemaException, ValidationException):
   """

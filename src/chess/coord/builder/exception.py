@@ -1,7 +1,7 @@
-# src/chess/coord/builder/collision.py
+# src/chess/square/builder/collision.py
 
 """
-Module: chess.coord.builder.exception
+Module: chess.square.builder.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

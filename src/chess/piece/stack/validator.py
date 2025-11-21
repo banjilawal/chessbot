@@ -38,11 +38,11 @@ class CoordStackValidator(Validator[CoordStack]):
     def validate(cls, candidate: Any) -> ValidationResult[CoordStack]:
         """
         # ACTION:
-        1.  Check candidate is not null.
+        1.  Check candidate is not validation.
         2.  Check if candidate is a CoordStack. If so cast it.
-        3.  Verify the CoordStack.items is not null.
+        3.  Verify the CoordStack.items is not validation.
         4.  Verify Coordstack.size and CoordStack.is_empty() do not conflict.
-        5.  Verify CoordStack.current_coord is null if CoordStack.is_empty()
+        5.  Verify CoordStack.current_coord is validation if CoordStack.is_empty()
             do not conflict.
         6.  If any check fails, return the exception inside a ValidationResult.
         7.  If all pass return the CoordStack object in a ValidationResult

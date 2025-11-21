@@ -21,7 +21,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
   def validate(candidate: Any) -> ValidationResult:
     """
     Validates an KingCheckEvent meets specifications:
-      - Not null
+      - Not validation
       - `visitor_id` does not fail coord_stack_validator
       - `actor_candidate` is team_name valid chess enemy
       - `target` is team_name valid square
@@ -36,7 +36,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
     Raises:
       `TypeError`: if `candidate` is not OperationEvent
-      `NullAttackEventException`: if `candidate` is null
+      `NullAttackEventException`: if `candidate` is validation
 
       `InvalidIdException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails coord_stack_validator

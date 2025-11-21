@@ -9,8 +9,11 @@ version: 1.0.0
 
 
 from chess.coord import Coord, CoordService
-from chess.system import BuildResult, IdentityService, Service
-from chess.square import Square, SquareBuilder, SquareValidator
+from chess.system import BuildResult, IdentityService, Result, SearchResult, Service
+from chess.square import (
+    AddingDuplicateSquareException, RemovingNonExistentSquareException, Square, SquareBuilder,
+    SquareServiceException, SquareValidator
+)
 
 
 class SquareService(Service[Square]):
@@ -35,6 +38,7 @@ class SquareService(Service[Square]):
     """
     SERVICE_NAME = "SquareService"
     
+    _squarest: []
     _builder: type[SquareBuilder]
     _validator: type[SquareValidator]
     
@@ -54,9 +58,10 @@ class SquareService(Service[Square]):
         super().__init__(id=id, name=name)
         self._builder= builder
         self._validator = validator
-        
         self._coord_service = coord_service
         self._identity_service = identity_service
+        
+        self._squares = []
     
     @property
     def validator(self) -> type[SquareValidator]:
@@ -82,7 +87,7 @@ class SquareService(Service[Square]):
         # Parameters:
             *   id (int):
             *   name (str):
-            *   coord (Coord):
+            *   square (Coord):
 
         # Returns:
         BuildResult[Square] containing either:
@@ -99,4 +104,104 @@ class SquareService(Service[Square]):
             identity_service=self._identity_service,
             coord_service=self._coord_service
         )
+    
+    def add_square(self, square: Square) -> Result[Square]:
+        method = "SquaredService.add_square"
+        try:
+            square_validation = self._validator.validate(candidate=square)
+            if square_validation.is_failure():
+               return Result.failure(square_validation.exception)
             
+            if square in self._squares:
+                return Result.failure(
+                    AddingDuplicateSquareException(
+                        f"{method}: {AddingDuplicateSquareException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            self._squares.append(square)
+            return Result.success(square)
+        except Exception as ex:
+            return Result.failure(
+                SquareServiceException(
+                    f"{method}: ex=ex, message={SquareServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    def remove_square(self, square: Square) -> Result[Square]:
+        method = "SquaredService.remove_square"
+        try:
+            square_validation = self._validator.validate(candidate=square)
+            if square_validation.is_failure():
+                return Result.failure(square_validation.exception)
+            
+            if square not in self._squares:
+                return Result.failure(
+                    RemovingNonExistentSquareException(
+                        f"{method}: {RemovingNonExistentSquareException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            self._squares.remove(square)
+            return Result.success(square)
+        except Exception as ex:
+            return Result.failure(
+                SquareServiceException(
+                    f"{method}: ex=ex, message={SquareServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+        
+    def find_by_square_by_coord(self, coord: Coord) -> SearchResult[[Square]]:
+        method = "SquareService.find_square_by_coord"
+        try:
+            coord_validation = self._validator.validate(candidate=coord)
+            if coord_validation.is_failure():
+                return SearchResult.failure(coord_validation.exception)
+            
+            matches = [square for square in self._squares if square.coord == coord]
+            if len(matches) == 0:
+            
+                return SearchResult.empty()
+            return SearchResult.success(payload=matches)
+        except Exception as ex:
+            return SearchResult.failure(
+                SquareServiceException(
+                    f"{method}: ex=ex, message={SquareServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    def find_by_square_by_name(self, name: str) -> SearchResult[[Square]]:
+        method = "SquareService.find_square_by_name"
+        try:
+            name_validation = self._identity_service.validate_name(candidate=name)
+            if name_validation.is_failure():
+                return SearchResult.failure(name_validation.exception)
+            
+            matches = [square for square in self._squares if square.name.upper() == name.upper()]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            return SearchResult.success(payload=matches)
+        except Exception as ex:
+            return SearchResult.failure(
+                SquareServiceException(
+                    f"{method}: ex=ex, message={SquareServiceException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    def find_by_square_by_id(self, id: int) -> SearchResult[[Square]]:
+        method = "SquareService.find_square_by_id"
+        try:
+            id_validation = self._identity_service.validate_id(candidate=id)
+            if id_validation.is_failure():
+                return SearchResult.failure(id_validation.exception)
+            
+            matches = [square for square in self._squares if square.id == id]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            return SearchResult.success(payload=matches)
+        except Exception as ex:
+            return SearchResult.failure(
+                SquareServiceException(
+                    f"{method}: ex=ex, message={SquareServiceException.DEFAULT_MESSAGE}"
+                )
+            )

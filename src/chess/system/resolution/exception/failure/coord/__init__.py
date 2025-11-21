@@ -1,7 +1,7 @@
-# src/chess/system/resolution/exception/failure/coord/__init__.py
+# src/chess/system/resolution/exception/failure/square/__init__.py
 
 """
-Module: chess.system.resolution.exception.failure.coord.__init__
+Module: chess.system.resolution.exception.failure.square.__init__
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

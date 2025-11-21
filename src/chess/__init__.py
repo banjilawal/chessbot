@@ -16,7 +16,7 @@ log = logging.getLogger("chessbot")
 # from .assets import *
 # from .board import *
 # from .checkmate import *
-# from .coord import CoordService
+# from .square import CoordService
 # from .domain import DomainService
 # from .driver import *
 # from .engine import *

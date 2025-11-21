@@ -7,10 +7,12 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from .search import *
+
+from .builder import *
 from .exception import *
+from .search import *
+from .validator import *
 
 from .board import Board
-from .builder import BoardBuilder
-from .validator import BoardValidator
-from .square_iterator import SquareIterator
+from .iterator import SquareIterator
+from .service import BoardService

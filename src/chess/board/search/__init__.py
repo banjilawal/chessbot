@@ -1,4 +1,4 @@
-# src/chess/board/search.__init__.py
+# src/chess/board/search/__init__.py
 
 """
 Module: chess.board.search.__init__
@@ -9,7 +9,9 @@ version: 1.0.0
 
 from .context import *
 from .exception import *
+from .piece import *
+from .service import *
+from .square import *
 
-from .square import BoardSquareSearch
-from .piece import BoardPieceSearch
+
 

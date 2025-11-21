@@ -51,9 +51,9 @@ class TeamStackException(ChessException):
 
 # ======================# NULL TEAM_STACK EXCEPTIONS #======================#
 class NullTeamStackException(TeamStackException, NullException):
-  """Raised if an entity, method, or operation requires TeamStack but gets null instead."""
+  """Raised if an entity, method, or operation requires TeamStack but gets validation instead."""
   ERROR_CODE = "NULL_TEAM_STACK_ERROR"
-  DEFAULT_MESSAGE = "TeamStack cannot be null."
+  DEFAULT_MESSAGE = "TeamStack cannot be validation."
 
 
 # ======================# TEAM_STACK VALIDATION EXCEPTIONS #======================#
@@ -70,15 +70,15 @@ class TeamStackSizeConflictException(TeamStackException, ValidationException):
 
 
 class InconsistentCurrentTeamException(TeamStackException, ValidationException):
-  """Raised if team_stack.current_team is not null but the stack is empty or vice versa."""
+  """Raised if team_stack.current_team is not validation but the stack is empty or vice versa."""
   ERROR_CODE = "INCONSISTENT_CURRENT_TEAM_ERROR"
   DEFAULT_MESSAGE = "The TeamStack.current_team contradicts the stack's emptyness state."
 
 
 class CorruptedTeamStackException(TeamStackException, ValidationException):
-  """RAised if the list is null. That is TeamStack.items is null"""
+  """RAised if the list is validation. That is TeamStack.items is validation"""
   ERROR_CODE = "CORRUPTED_TEAM_STACK_ERROR"
-  DEFAULT_MESSAGE = "TeamStack.items is null. There is inconsistent data in the system."
+  DEFAULT_MESSAGE = "TeamStack.items is validation. There is inconsistent data in the system."
 
 
 # ======================# TEAM_STACK OPERATION EXCEPTIONS #======================#
@@ -93,9 +93,9 @@ class PushingDuplicateTeamException(TeamStackException):
   DEFAULT_MESSAGE = "Cannot push duplicate team onto the stack. All Teams must be unique."
 
 class PushingNullException(TeamStackException):
-  """Raised when trying to push null item to stack."""
+  """Raised when trying to push validation item to stack."""
   ERROR_CODE = "PUSHING_NULL_ERROR"
-  DEFAULT_MESSAGE = "Cannot push null item onto a TeamStack."
+  DEFAULT_MESSAGE = "Cannot push validation item onto a TeamStack."
 
 
 # ======================# TEAM_STACK_SERVICE EXCEPTIONS #======================#
@@ -110,9 +110,9 @@ class TeamStackServiceException(ChessException):
 
 # ======================# NULL TEAM_STACK_SERVICE EXCEPTIONS #======================#
 class NullTeamStackServiceException(TeamStackServiceException, NullException):
-  """Raised if an entity, method, or operation requires TeamStackService but gets null instead."""
+  """Raised if an entity, method, or operation requires TeamStackService but gets validation instead."""
   ERROR_CODE = "NULL_TEAM_STACK_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "TeamStackService cannot be null."
+  DEFAULT_MESSAGE = "TeamStackService cannot be validation."
 
 
 # ======================# TEAM_STACK VALIDATION EXCEPTIONS #======================#

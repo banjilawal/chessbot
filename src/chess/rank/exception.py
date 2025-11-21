@@ -38,7 +38,7 @@ class RankException(ChessException):
 
 class NullRankException(RankException, NullException):
     ERROR_CODE = "NULL_RANK_ERROR"
-    DEFAULT_MESSAGE = "Rank cannot be null."
+    DEFAULT_MESSAGE = "Rank cannot be validation."
 
 
 # ======================# RANK MOVING EXCEPTIONS #======================#

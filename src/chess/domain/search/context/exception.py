@@ -36,10 +36,10 @@ class ResidentSearchContextException(SearchContextException):
 class NullResidentSearchContextException(ResidentSearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team_name residentSearchContext but
-    gets null instead.
+    gets validation instead.
     """
     ERROR_CODE = "NULL_SEARCH_RESIDENT_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "ResidentFilter cannot be null"
+    DEFAULT_MESSAGE = "ResidentFilter cannot be validation"
 
 
 class InvalidResidentSearchContextException(ResidentSearchContextException, ValidationException):
@@ -53,7 +53,7 @@ class InvalidResidentSearchContextException(ResidentSearchContextException, Vali
 
 class NoResidentSearchParamException(ResidentSearchContextException):
     """
-    Raised if all ResidentFilter params are set null.
+    Raised if all ResidentFilter params are set validation.
     """
     ERROR_CODE = "ZERO_RESIDENT_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (
@@ -62,7 +62,7 @@ class NoResidentSearchParamException(ResidentSearchContextException):
 
 class TooManyResidentSearchParamsException(ResidentSearchContextException):
     """
-    Raised if more than one ResidentFilter param is set null.
+    Raised if more than one ResidentFilter param is set validation.
     """
     ERROR_CODE = "TOO_MANY_RESIDENT_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (

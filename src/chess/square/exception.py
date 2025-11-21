@@ -35,10 +35,7 @@ class SquareException(ChessException):
 
 
 # ======================# NULL SQUARE EXCEPTIONS #======================#
-class NullSquareException(SquareException, NullException):
-    """Raised if an entity, method, or operation requires Square but gets null instead."""
-    ERROR_CODE = "NULL_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square cannot be null."
+
 
 
 # ======================# RELATIONAL SQUARE EXCEPTIONS #======================#

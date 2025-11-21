@@ -27,6 +27,6 @@ class ScalarException(ChessException):
 
 #======================# NULL SCALAR EXCEPTIONS #======================#
 class NullScalarException(ScalarException, NullException):
-  """Raised if an entity, method, or operation requires Scalar but gets null instead."""
+  """Raised if an entity, method, or operation requires Scalar but gets validation instead."""
   ERROR_CODE = "NULL_SCALAR_ERROR"
-  DEFAULT_MESSAGE = "Scalar cannot be null."
+  DEFAULT_MESSAGE = "Scalar cannot be validation."

@@ -52,29 +52,29 @@ class InvalidVisitationEventException(VisitationEventException, ValidationExcept
 
 class VisitationTeamFieldIsNullException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.team_name` is null. Might indicate a consistency or builder problem because `Visitationation.team_name` should
-    never be null.
+    Raised if `visitationation.team_name` is validation. Might indicate a consistency or builder problem because `Visitationation.team_name` should
+    never be validation.
     """
     ERROR_CODE = "VISITATION_TEAM_FIELD_NULL_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.team_name consistency is null. It should never be null. There may be service inconsistency."
+    DEFAULT_MESSAGE = "Visitationation.team_name consistency is validation. It should never be validation. There may be service inconsistency."
 
 
 class VisitationMissingCoordStackException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.positions` stack does not exist. If the `visitationation.positions == null there is service inconsistency
+    Raised if `visitationation.positions` stack does not exist. If the `visitationation.positions == validation there is service inconsistency
     or loss.
     """
     ERROR_CODE = "VISITATION_COORD_STACK_MISSING_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.positions list is null. It should never be null. There may be service inconsistency or loss."
+    DEFAULT_MESSAGE = "Visitationation.positions list is validation. It should never be validation. There may be service inconsistency or loss."
 
 
 class VisitationMissingDiscoveriesException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.discovery` list does not exist. If the `visitationation.discoveries == null there is service inconsistency
+    Raised if `visitationation.discovery` list does not exist. If the `visitationation.discoveries == validation there is service inconsistency
     or loss.
     """
     ERROR_CODE = "VISITATION_DISCOVERY_LIST_MISSING_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.discovery list is null. It should never be null. There may be service inconsistency or loss."
+    DEFAULT_MESSAGE = "Visitationation.discovery list is validation. It should never be validation. There may be service inconsistency or loss."
 
 
 class UnregisteredTeamMemberException(VisitationEventException):
@@ -85,11 +85,11 @@ class UnregisteredTeamMemberException(VisitationEventException):
 
 class VisitationRosterNumberIsNullException(VisitationEventException, NullException):
     """
-    Raised a visitationation's roster number is null. This should never happen. the invariant roster number
-    is set during builder. If its null during coord_stack_validator there has been service loss or an inconsistency.
+    Raised a visitationation's roster number is validation. This should never happen. the invariant roster number
+    is set during builder. If its validation during coord_stack_validator there has been service loss or an inconsistency.
     """
     ERROR_CODE = "VISITATION_NULL_ROSTER_NUMBER_ERROR"
-    DEFAULT_MESSAGE = "A `Visitationation` object cannot have a null roster number. There may be service inconsistency or loss."
+    DEFAULT_MESSAGE = "A `Visitationation` object cannot have a validation roster number. There may be service inconsistency or loss."
 
 
 class VisitationRankOutOfBoundsException(VisitationEventException, NullException):
@@ -103,29 +103,29 @@ class VisitationRankOutOfBoundsException(VisitationEventException, NullException
 # ======================# NULL VISITATION EXCEPTIONS #======================#
 class NullVisitationEventException(VisitationEventException, NullException):
     """
-    Raised if an entity, method, or operation requires team_name visitationation but gets null instead.
+    Raised if an entity, method, or operation requires team_name visitationation but gets validation instead.
     Visitationation is an abstract method. KingVisitation and CombatantVisitation are its subclasses.
     Do not throw NullAttackException. Raise NullKingVisitation or NullCombatantVisitation instead.
     they are more descriptive and better suited for debugging.
     """
     ERROR_CODE = "NULL_VISITATION_ERROR"
-    DEFAULT_MESSAGE = "Visitationation cannot be null."
+    DEFAULT_MESSAGE = "Visitationation cannot be validation."
 
 
 class NullKingException(NullVisitationEventException):
     """
-    Raised if team_name KingVisitation is null. Raise NullCombatant instead of NullAttackException
+    Raised if team_name KingVisitation is validation. Raise NullCombatant instead of NullAttackException
     """
     ERROR_CODE = "NULL_KING_VISITATION_ERROR"
-    DEFAULT_MESSAGE = "KingVisitation cannot be null."
+    DEFAULT_MESSAGE = "KingVisitation cannot be validation."
 
 
 class NullCombatantException(NullVisitationEventException):
     """
-    Raised if team_name CombatantVisitation is null. Raise NullCombatant instead of NullAttackException
+    Raised if team_name CombatantVisitation is validation. Raise NullCombatant instead of NullAttackException
     """
     ERROR_CODE = "NULL_COMBATANT_VISITATION_ERROR"
-    DEFAULT_MESSAGE = "CombatantVisitation cannot be null."
+    DEFAULT_MESSAGE = "CombatantVisitation cannot be validation."
 
 
 # ======================# VISITATION BUILD EXCEPTIONS #======================#  

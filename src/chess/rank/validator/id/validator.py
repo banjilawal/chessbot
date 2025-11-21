@@ -22,7 +22,7 @@ class RankIdValidator(Validator[Rank, int]):
 
     # RESPONSIBILITIES:
     Verifies the candidate is consistent with the id attribute for a Rank is
-        *   Not null.
+        *   Not validation.
         *   A valid Rank subclass.
 
     # PROVIDES:
@@ -51,7 +51,7 @@ class RankIdValidator(Validator[Rank, int]):
         3.  When all checks pass return a tuple of rank, number. inside a ValidationResult.
 
         # PARAMETERS:
-            *   rank (Rank): an appropriate, not null subclass instance.
+            *   rank (Rank): an appropriate, not validation subclass instance.
             *   candidate (Any): object to validate as the correct id for the rank.
             *   identity_service (type[IdentityService]): has default value, does basic id safety checks.
 

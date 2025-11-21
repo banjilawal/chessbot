@@ -31,4 +31,4 @@ class InvalidGameColorException(GameColorException):
 class NullGameColorException(GameColorException, NullException):
     """"""
     ERROR_CODE = "NULL_GAME_COLOR_ERROR"
-    DEFAULT_MESSAGE = "GameColor cannot be null."
+    DEFAULT_MESSAGE = "GameColor cannot be validation."

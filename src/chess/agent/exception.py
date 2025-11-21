@@ -35,9 +35,9 @@ class PlayerAgentException(ChessException):
 
 #======================# PLAYER_AGENT_VALIDATION EXCEPTIONS #======================#  
 class NullPlayerAgentException(PlayerAgentException, NullException):
-  """Raised if an entity, method, or operation requires team_name agent but gets null instead."""
+  """Raised if an entity, method, or operation requires team_name agent but gets validation instead."""
   ERROR_CODE = "NULL_PLAYER_AGENT_ERROR"
-  DEFAULT_MESSAGE = f"Agent cannot be null"
+  DEFAULT_MESSAGE = f"Agent cannot be validation"
 
 class InvalidPlayerAgentException(PlayerAgentException, ValidationException):
   """
