@@ -10,7 +10,7 @@ version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from chess.system import BuildResult, LoggingLevelRouter
+from chess.system import BuildResult, LoggingLevelRouter, Validator
 
 T = TypeVar("T")
 
@@ -32,10 +32,16 @@ class Builder(ABC, Generic[T]):
         - On failure: Exception.
         
     # ATTRIBUTES:
+        *   validator (Validator[T]): Validator instance used to verify safety of new
     """
+    _validator: Validator[T]
     
-    def __init__(self, *args, **kwargs):
-        pass
+    def __init__(self, validator: Validator[T], *args, **kwargs):
+        self._validator = validator
+    
+    @property
+    def validator(self) -> Validator[T]:
+        return self._validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor

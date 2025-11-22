@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
 from chess.vector import (
     Vector, VectorBuildFailedException, NullXComponentException, NullYComponentException,
-    VectorBelowBoundsException, VectorAboveBoundsException
+    VectorBelowBoundsException, VectorAboveBoundsException, VectorValidator
 )
 
 
@@ -30,12 +30,20 @@ class VectorBuilder(Builder[Vector]):
         - On failure: Exception.
 
     # ATTRIBUTES:
-    None
+        * vector_validator (VectorValidator)
     """
+    _vector_validator: VectorValidator
     
-    @classmethod
-    @LoggingLevelRouter.monitor()
-    def build(cls, x: int, y: int) -> BuildResult[Vector]:
+    def __init__(self, ) -> None:
+    
+
+    @LoggingLevelRouter.monitor
+    def build(
+            self,
+            x: int,
+            y: int,
+            vector_validator: VectorValidator = VectorValidator(),
+    ) -> BuildResult[Vector]:
         """
         # ACTION:
         1.  Check x is:
