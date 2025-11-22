@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/system/build/result/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/build/result/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/build/result/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/exception/add/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/exception/add/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/exception/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/exception/remove/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/exception/remove/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/result/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/result/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/result/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/data/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/search/context/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/build/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/result/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/service.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -654,7 +632,7 @@
       <workItem from="1763719500072" duration="6233000" />
       <workItem from="1763736699637" duration="3866000" />
       <workItem from="1763740678957" duration="9442000" />
-      <workItem from="1763763378424" duration="5701000" />
+      <workItem from="1763763378424" duration="8329000" />
     </task>
     <servers />
   </component>
