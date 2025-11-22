@@ -7,10 +7,6 @@ Created: 2025-08-26
 version: 1.0.0
 """
 
-from chess.coord import Coord, CoordValidator
-from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, Result, LoggingLevelRouter
-
 
 class Vector:
     """

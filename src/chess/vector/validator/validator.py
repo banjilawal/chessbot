@@ -1,7 +1,7 @@
 # src/chess/vector/validator/validator.py
 
 """
-Module: chess.vector.validator.validator_
+Module: chess.vector.validator.validator
 Author: Banji Lawal
 Created: 2025-08-26
 version: 1.0.0
@@ -9,11 +9,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import ValidationResult, Validator,  LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
+
 from chess.vector import (
-  Vector, NullVectorException, NullXComponentException, NullYComponentException, VectorBelowBoundsException,
-  VectorAboveBoundsException, InvalidVectorException
+  Vector, NullVectorException, NullXComponentException, NullYComponentException,
+  VectorBelowBoundsException, VectorAboveBoundsException, InvalidVectorException
 )
+from chess.system import ValidationResult, Validator, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
+
 
 class VectorValidator(Validator[Vector]):
     """
@@ -29,12 +31,14 @@ class VectorValidator(Validator[Vector]):
         - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes
     """
+    
+    def __init__(self, candidate: Any) -> None:
+        super().__init__(candidate)
 
-    @classmethod
+
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Vector]:
+    def validate(self) -> ValidationResult[Vector]:
         """
         # ACTION:
         1.  Check candidate is not validation.
@@ -64,24 +68,24 @@ class VectorValidator(Validator[Vector]):
         method = "VectorValidator.validate"
 
         try:
-            if candidate is None:
+            if self.candidate is None:
                 return ValidationResult.failure(
                     NullVectorException(f"{method}: {NullVectorException.DEFAULT_MESSAGE}")
                 )
 
 
-            if not isinstance(candidate, Vector):
+            if not isinstance(self.candidate, Vector):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected an Vector, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Vector, got {type(self.candidate).__name__} instead.")
                 )
 
-            vector = cast(Vector, candidate)
+            vector = cast(Vector, self.candidate)
 
-            x_component_validation = cls.validate_x_component(x=vector.x)
+            x_component_validation = self.validate_x_component(x=vector.x)
             if x_component_validation.is_failure():
                 return ValidationResult.failure(x_component_validation.exception)
             
-            y_component_validation = cls._y_component_validator(y=vector.y)
+            y_component_validation = self._y_component_validator(y=vector.y)
             if y_component_validation.is_failure():
                 return ValidationResult.failure(y_component_validation.exception)
             
@@ -89,7 +93,10 @@ class VectorValidator(Validator[Vector]):
 
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidVectorException(f"{method}: {InvalidVectorException.DEFAULT_MESSAGE}", ex)
+                InvalidVectorException(
+                    ex=ex,
+                    message=f"{method}: {InvalidVectorException.DEFAULT_MESSAGE}"
+                )
             )
         
     @classmethod
@@ -172,28 +179,44 @@ class VectorValidator(Validator[Vector]):
         try:
             if y_candidate is None:
                 return ValidationResult.failure(
-                    NullYComponentException(f"{method}: {NullYComponentException.DEFAULT_MESSAGE}")
+                    NullYComponentException(
+                        f"{method}: "
+                        f"{NullYComponentException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if not isinstance(y_candidate, int):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected an int, got {type(x).__name__} instead.")
+                    TypeError(
+                        f"{method}: "
+                        f"Expected an int, got {type(x).__name__} instead."
+                    )
                 )
             y = cast(int, y_candidate)
             
             if y < -LONGEST_KNIGHT_LEG_SIZE:
                 return ValidationResult.failure(
-                    VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
+                    VectorBelowBoundsException(
+                        f"{method}: "
+                        f"{VectorBelowBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if y >= LONGEST_KNIGHT_LEG_SIZE:
                 return ValidationResult.failure(
-                    VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
+                    VectorAboveBoundsException(
+                        f"{method}:"
+                        f" {VectorAboveBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             return ValidationResult.success(payload=y)
         
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidVectorException(f"{method}: {InvalidVectorException.DEFAULT_MESSAGE}", ex)
+                InvalidVectorException(
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{InvalidVectorException.DEFAULT_MESSAGE}"
+                )
             )
