@@ -29,12 +29,15 @@ class ScalarValidator(Validator[Scalar]):
             - On failure: Exception.
   
     # ATTRIBUTES:
-    No attributes.
+        *   candidate (Any)
     """
     
-    @classmethod
+    def __init__(self, candidate: Any):
+        super().__init__(candidate)
+    
+
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Scalar]:
+    def validate(self) -> ValidationResult[Scalar]:
         """
         # Action:
         Verifies candidate is a Scalar whose absolute value is within BOARD_DIMENSION.
@@ -58,26 +61,34 @@ class ScalarValidator(Validator[Scalar]):
         method = "ScalarValidator.validate"
         
         try:
-            if candidate is None:
+            if self.candidate is None:
                 return ValidationResult.failure(
-                    NullScalarException(f"{method}: {NullScalarException.DEFAULT_MESSAGE}")
+                    NullScalarException(
+                        f"{method}: {NullScalarException.DEFAULT_MESSAGE}"
+                    )
                 )
             
-            if not isinstance(candidate, Scalar):
+            if not isinstance(self.candidate, Scalar):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected Scaler got {type(candidate)} instead.")
+                    TypeError(
+                        f"{method}: Expected Scaler got {type(self.candidate)} instead."
+                    )
                 )
             
-            scalar = cast(Scalar, candidate)
+            scalar = cast(Scalar, self.candidate)
             
             if scalar.value is None:
                 return ValidationResult.failure(
-                    NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
+                    NullNumberException(
+                        f"{method}: {NullNumberException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if scalar.value < -BOARD_DIMENSION:
                 return ValidationResult.failure(
-                    ScalarBelowBoundsException(f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}")
+                    ScalarBelowBoundsException(
+                        f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if scalar.value >= BOARD_DIMENSION:
@@ -91,5 +102,8 @@ class ScalarValidator(Validator[Scalar]):
         
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidScalarException(f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}", ex)
+                InvalidScalarException(
+                    ex=ex,
+                    message=f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}"
+                )
             )
