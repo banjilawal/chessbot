@@ -4,6 +4,7 @@
 Module: chess.system.service.service
 Author: Banji Lawal
 Created: 2025-11-18
+Version: 1.0.0
 """
 
 from abc import ABC
@@ -25,13 +26,15 @@ class Service(ABC, Generic[T]):
     4.  Public facing API.
 
     # PROVIDES:
-    Service
+    Validator for T
+    Building of T objects.
 
     # ATTRIBUTES:
     None
-        * id (int):     Globally unique identifier for the service.
-        
-        * name (str):   Name shared by all instance of the service. Default: "Service".
+        *   id (int):
+        *   name (str):
+        *   builder (type[Builder[T]]):
+        *   validator (type[Validator[T]]):
     """
     SERVICE_NAME = "service"
     _int: int
@@ -64,7 +67,6 @@ class Service(ABC, Generic[T]):
     @property
     def validator(self) -> type[Validator[T]]:
         return self._validator
-    
     
     def build(self, *args, **kwargs) -> BuildResult[T]:
        return self._builder.build(*args, **kwargs)

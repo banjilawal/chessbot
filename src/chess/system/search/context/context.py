@@ -1,47 +1,13 @@
-# src/chess/system/old_search/context/base.py
+# src/chess/system/search/context/context.py
 
 """
-Module: chess.system.old_search.context.context
+Module: chess.system.search.context.context
 Author: Banji Lawal
 Created: 2025-09-28
-Updated: 2025-10-10
-
-# SECTION 1 - Purpose:
-This module provides a satisfaction of the `ChessBot` performance requirement.
-
-# SECTION 2 - Scope:
-The module covers old_search service providers, service owners and information requesters.
-
-# SECTION 3 - Limitations:
-  1. The module does not provide any attributes or actionable code. Properties in a
-     service owner's collection determine what is in the SearchContext
-
-# SECTION 4 - Design Considerations and Themes:
-The major theme influencing the modules design are
-  1. separating entity responsibilities into from implementation details.
-  2. Loose coupling of modules while maintaining a unified, consistent interface for high cohesion among components
-    that have no direct relationship with each other.
-  3. A consistent interface and aids discoverability, understanding and simplicity.
-
-# SECTION 5 - Features Supporting Requirements:
-1. Simplicity
-
-
-# SECTION G - Feature Delivery Mechanism:
-The module provides a service structure for passing old_search for filtering the service owner's collection.
-
-# SECTION 7 - Dependencies:
-* From `chess.system`:
-    `Context`
-
-* From Python `abc` Library:
-    `ABC`
-
-# SECTION 8 - Contains:
-1. `SearchContext`
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
+from typing import Optional
 
 from chess.system import Context
 
@@ -59,4 +25,26 @@ class SearchContext(ABC, Context):
     # ATTRIBUTES:
       * See `Context` superclass for attributes.
     """
-    pass
+    _id: Optional[int]
+    _name: Optional[str]
+    
+    
+    def __init__(self, id: Optional[int] = None, name: Optional[str] = None):
+        self._id = id
+        self._name = name
+    
+    @property
+    def id(self) -> Optional[int]:
+        return self._id
+    
+    @property
+    def name(self) -> Optional[str]:
+        return self._name
+
+
+
+
+    @classmethod
+    @abstractmethod
+    def to_dict(self) -> dict:
+        pass
