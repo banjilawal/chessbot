@@ -124,7 +124,7 @@ class InvariantBreachException(ChessException):
 
 class InconsistentCollectionException(InconsistencyException):
     """
-    Raised if a collection's state is inconsistent or its service corrupted
+    Raised if a data_set's state is inconsistent or its service corrupted
     """
     ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
     DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."

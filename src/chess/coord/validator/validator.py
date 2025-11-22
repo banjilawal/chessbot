@@ -1,7 +1,7 @@
-# src/chess/square/validator.py
+# src/chess/coord/validator.py
 
 """
-Module: chess.square.validator
+Module: chess.coord.validator
 Author: Banji Lawal
 Created: 2025-08-12
 version: 1.0.0
@@ -68,14 +68,16 @@ class CoordValidator(Validator[Coord]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullCoordException(f"{method}: "
-                                       f"{NullCoordException.DEFAULT_MESSAGE}")
+                    NullCoordException(
+                        f"{method}: "
+                        f"{NullCoordException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, Coord):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: "
-                              f"Expected Coord, got {type(candidate).__name__} instead.")
+                    TypeError(
+                        f"{method}: "
+                        f"Expected a Coord, got {type(candidate).__name__} instead.")
                 )
             
             coord = cast(Coord, candidate)
@@ -94,8 +96,7 @@ class CoordValidator(Validator[Coord]):
             return ValidationResult.failure(
                 InvalidCoordException(
                     ex=ex,
-                    message=f"{method}: "
-                            f"{InvalidCoordException.DEFAULT_MESSAGE}",
+                    message=f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}"
                 )
             )
         
@@ -129,14 +130,16 @@ class CoordValidator(Validator[Coord]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRowException(f"{method}: "
-                                     f"{NullRowException.DEFAULT_MESSAGE}")
+                    NullRowException(
+                        f"{method}: "
+                        f"{NullRowException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, int):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: "
-                              f"Expected int, got {type(candidate).__name__} instead.")
+                    TypeError(
+                        f"{method}: "
+                        f"Expected int, got {type(candidate).__name__} instead.")
                 )
             
             number = cast(int, candidate)
@@ -144,7 +147,8 @@ class CoordValidator(Validator[Coord]):
             if number < 0:
                 return ValidationResult.failure(
                     RowBelowBoundsException(
-                        f"{method}: {RowBelowBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: "
+                        f"{RowBelowBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -155,7 +159,7 @@ class CoordValidator(Validator[Coord]):
                         f"{RowAboveBoundsException.DEFAULT_MESSAGE}"
                     )
                 )
-            
+
             return ValidationResult.success(payload=number)
             
         except Exception as ex:
@@ -196,14 +200,16 @@ class CoordValidator(Validator[Coord]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullColumnException(f"{method}: "
-                                        f"{NullColumnException.DEFAULT_MESSAGE}")
+                    NullColumnException(
+                        f"{method}: "
+                        f"{NullColumnException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, int):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: "
-                              f"Expected int, got {type(candidate).__name__} instead.")
+                    TypeError(
+                        f"{method}: "
+                        f"Expected int, got {type(candidate).__name__} instead.")
                 )
             
             number = cast(int, candidate)

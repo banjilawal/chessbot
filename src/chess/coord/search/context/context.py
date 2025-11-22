@@ -9,8 +9,10 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.coord import Coord
+
 from chess.system import SearchContext
+from chess.coord import Coord, CoordSearchContext
+from chess.system.context import ContextMaskList
 
 
 class CoordSearchContext(SearchContext):
@@ -18,7 +20,7 @@ class CoordSearchContext(SearchContext):
     # ROLE: Search option filter
   
     # RESPONSIBILITIES:
-    Provides options for what type of key-value pair CoordSearch implementations use to find matches.
+    Provides options for what type of key-value pair CoordSearchService implementations use to find matches.
   
     # PROVIDES:
     CoordSearchContext.
@@ -30,38 +32,39 @@ class CoordSearchContext(SearchContext):
     """
     
     _row: Optional[int] = None
-    _column: Optional[str] = None
-    _coord: Optional[Coord] = None
+    _column: Optional[int] = None
     
     def __init__(
             self,
             row: Optional[int] = None,
             column: Optional[str] = None,
-            coord: Optional[Coord] = None,
     ):
+        super().__init__(id=None, name=None)
         self._row = row
         self._column = column
-        self._coord = coord
-    
     
     @property
     def row(self) -> Optional[int]:
         return self._row
     
-    
     @property
-    def column(self) -> Optional[str]:
+    def column(self) -> Optional[int]:
         return self._column
     
+    @classmethod
+    def row_context(cls, row: int) -> CoordSearchContext:
+        return cls(row=row)
     
-    @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
+    @classmethod
+    def column_context(cls, column: str) -> CoordSearchContext:
+        return cls(column=column)
     
+    @classmethod
+    def row_column_context(cls, row: int, column: str) -> CoordSearchContext:
+        return cls(row=row, column=column)
     
     def to_dict(self) -> dict:
         return {
             "row": self._row,
             "column": self._column,
-            "square": self._coord
         }

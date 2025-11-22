@@ -1,4 +1,4 @@
-# src/chess/system/search/search.py
+# src/chess/system/search/service.py
 
 """
 Module: `chess.system.search.search`
@@ -35,7 +35,7 @@ class Search(ABC, Generic[A, S, R]):
   """
   """
   implement by entities "owning" relationships for unified old_search
-  by collection attributes with validated params.
+  by data_set attributes with validated params.
 
   Attributes:
     No attributes. Implementors declare their own

@@ -1,4 +1,4 @@
-# src/chess/piece/search.py
+# src/chess/piece/service.py
 
 """
 Module: chess.piece.piece

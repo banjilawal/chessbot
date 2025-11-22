@@ -9,6 +9,8 @@ version: 1.0.0
 
 from abc import ABC, abstractmethod
 
+from chess.system.context.mask import MaskList
+
 
 class Context(ABC):
   """
@@ -32,6 +34,7 @@ class Context(ABC):
   Attributes:
     No attributes. Implementors declare their own.>
   """
+  
 
   @abstractmethod
   def to_dict(self) -> dict:

@@ -30,17 +30,13 @@ class VectorService(Service):
         *   Dot Product functionality
 
     # ATTRIBUTES:
-        *   builder (type[VectorBuilder]):       Builds new Vector instances that meet
-                                                        the application's safety contract.
-                                                        
-        *   validator (type[VectorValidator]):   Ensures an existing Vector will not raise an
-                                                        exception when used by a client.
-                                                        
-        *   scalar_service (type[ScalarService]):       Provides scalar product functionality.
+        *   builder (VectorBuilder)
+        *   validator (VectorValidator)
+        *   scalar_service (ScalarService)
     """
     SERVICE_NAME = "VectorService"
     
-    _builder: type[VectorBuilder]
+    _builder: VectorBuilder
     _validator: VectorValidator
     _scalar_service: ScalarService
     
@@ -48,8 +44,8 @@ class VectorService(Service):
             self,
             id: int,
             name: str = SERVICE_NAME,
-            builder: type[VectorBuilder] = VectorBuilder,
-            validator: VectorValidator = VectorValidator,
+            builder: VectorBuilder = VectorBuilder(),
+            validator: VectorValidator = VectorValidator(),
             scalar_service: ScalarService = ScalarService()
     ):
         self._builder = builder
@@ -83,29 +79,6 @@ class VectorService(Service):
         """
         method = "VectorService.build_vector"
         return self._builder.build(x=x, y=y)
-    
-    
-    # @LoggingLevelRouter.monitor
-    # def validate_as_vector(self, candidate: Any) -> ValidationResult[Vector]:
-    #     """
-    #     # Action:
-    #     VectorService directs validator to run the verification process on the candidate.
-    #
-    #     # Parameters:
-    #         *   candidate (Any):
-    #
-    #     # Returns:
-    #     ValidationResult[Vector] containing either:
-    #         - On success: int in the payload.
-    #         - On failure: Exception.
-    #
-    #     Raises:
-    #         *   None are raised here.
-    #         *   validator sends any validation exceptions back to the caller.
-    #         *   The caller is responsible for safely handling any exceptions it receives.
-    #     """
-    #     method = "VectorService.validate_as_vector"
-    #     return self._validator.validate(candidate)
     
     
     @LoggingLevelRouter.monitor

@@ -1,7 +1,7 @@
-# src/chess/square/service/service.py
+# src/chess/coord/service/service.py
 
 """
-Module: chess.square.service.service
+Module: chess.coord.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
@@ -11,14 +11,14 @@ from typing import Any, List
 
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
-from chess.system import BuildResult, LoggingLevelRouter, Result, SearchResult, Service
+from chess.system import BuildResult, DataService, LoggingLevelRouter, Result, SearchResult, Service
 from chess.coord import (
-    AddingDuplicateCoordException, Coord, CoordBuilder, CoordServiceException, CoordValidator,
-    CoordSearchService, RemovingNonExistentCoordException
+    AddingDuplicateCoordException, Coord, CoordBuilder, CoordSearchService, CoordSearchService, CoordServiceException,
+    CoordValidator,
 )
 
 
-class CoordService(Service[Coord]):
+class CoordService(DataService[Coord]):
     """
     # ROLE: Service, Encapsulation, API layer.
 
@@ -31,6 +31,8 @@ class CoordService(Service[Coord]):
     # PROVIDES:
         *   SquareBuilder
         *   SquareValidator
+        *   Coord Data Service
+        *
 
     # ATTRIBUTES:
         *   builder (type[SquareBuilder]):
@@ -75,165 +77,93 @@ class CoordService(Service[Coord]):
     
     id: int
     name: str
-    _coords: List[Coord] = []
-    _builder: type[CoordBuilder]
-    _validator: type[CoordValidator]
+    _items: [Coord]
+    _builder: CoordBuilder
+    _validator: CoordValidator
     _scalar_service: ScalarService
     _vector_service: VectorService
+    _search_service: CoordSearchService
     
     def __init__(
             self,
             id: int,
+            items: List[Coord] = [],
             name: str = SERVICE_NAME,
-            builder: type[CoordBuilder] = CoordBuilder,
-            validator: type[CoordValidator] = CoordValidator,
+            builder: CoordBuilder = CoordBuilder(),
+            validator: CoordValidator = CoordValidator(),
             scalar_service: ScalarService = ScalarService(),
             vector_service: VectorService = VectorService(),
+            search_service: CoordSearchService = CoordSearchService(),
     ):
         super().__init__(id=id, name=name)
-        self._coord_builder = builder
+        self._builder = builder
         self._validator = validator
         self._scalar_service = scalar_service
         self._vector_service = vector_service
+        self._search_service = search_service
         
-        self._coords = []
+        self._items = items
         
     
     @property
-    def validator(self) -> type[CoordValidator]:
-        """
-        CoordValidator is the single-source-of truth for certifying the safety of
-        Coord instances, their organic row and column attributes. It makes sense
-        providing direct access here and letting validator return its Validation
-        result directly to the caller.
-        """
-        return self._validator
-    
+    def search_service(self) -> CoordSearchService:
+        return self._search_service
     
     # @property
-    # def coords(self) -> List[Coord]:
-    #     return self._coords
-    
-    
-    def add_coord(self, coord: Coord) -> Result[Coord]:
-        method = "CoordService.add_coord"
-        try:
-            coord_validation = self._validator.validate(candidate=coord)
-            if coord_validation.is_failure():
-                return Result.failure(coord_validation.exception)
-            if coord in self._squares:
-                return Result.failure(
-                    AddingDuplicateCoordException(
-                        f"{method}: {AddingDuplicateCoordException.DEFAULT_MESSAGE}"
-                    )
-                )
-            self._squares.append(coord)
-            return Result.success(coord)
-        except Exception as ex:
-            return Result.failure(
-                CoordServiceException(
-                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
-                )
-            )
-    
-    def remove_coord(self, coord: Coord) -> Result[Coord]:
-        method = "CoordService.remove_coord"
-        try:
-            coord_validation = self._validator.validate(candidate=coord)
-            if coord_validation.is_failure():
-                return Result.failure(coord_validation.exception)
-            if coord not in  self._coords:
-                return Result.failure(
-                    RemovingNonExistentCoordException(
-                        f"{method}: {RemovingNonExistentCoordException.DEFAULT_MESSAGE}"
-                    )
-                )
-            coord = self._coords.remove(coord)
-            return Result.success(coord)
-        except Exception as ex:
-            return Result.failure(
-                CoordServiceException(
-                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
-                )
-            )
-        
-        
-    def find_coord(self, coord: Coord) -> SearchResult[[Coord]]:
-        method = "CoordService.find_coord"
-        try:
-            coord_validation = self._validator.validate(candidate=coord)
-            if coord_validation.is_failure():
-                return SearchResult.failure(coord_validation.exception)
-            
-            return SearchResult.empty()
-        except Exception as ex:
-            return SearchResult.failure(
-                CoordServiceException(
-                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
-                )
-            )
-    
-    def find_coord_by_row(self, row: int) -> SearchResult[[Coord]]:
-        method = "CoordService.find_coord_by_row"
-        try:
-            row_validation = self._validator.validate_row(row)
-            
-            matches = [coord for coord in self._coords if coord.row == row]
-            if len(matches) == 0:
-                return SearchResult.empty()
-            
-            elif len(matches) > 1:
-                return SearchResult.success(payload=matches)
-            
-            return SearchResult.empty()
-        except Exception as ex:
-            return SearchResult.failure(
-                CoordServiceException(
-                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
-                )
-            )
-    
-    
-    def find_coord_by_colum(self, column: int) -> SearchResult[[Coord]]:
-        method = "CoordService.find_coord_by_row"
-        try:
-            row_validation = self._validator.validate_column(column)
-            
-            matches = [coord for coord in self._coords if coord.column == column]
-            if len(matches) == 0:
-                return SearchResult.empty()
-            
-            elif len(matches) > 1:
-                return SearchResult.success(payload=matches)
-            
-            return SearchResult.empty()
-        except Exception as ex:
-            return SearchResult.failure(
-                CoordServiceException(
-                    f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
-                )
-            )
-    
-    # def validate_as_coord(self, candidate: Any) -> ValidationResult[Coord]:
+    # def validator(self) -> CoordValidator:
     #     """
-    #     # Action:
-    #     CoordService directs validator to run the verification process on the candidate.
-    #
-    #     # Parameters:
-    #         *   row (int):
-    #         *   column (int):
-    #
-    #     # Returns:
-    #     BuildResult[Coord] containing either:
-    #         - On success: Coord in the payload.
-    #         - On failure: Exception.
-    #
-    #     Raises:
-    #         *   None are raised here.
-    #         *   validator sends any validation exceptions back to the caller.
-    #         *   The caller is responsible for safely handling any exceptions it receives.
+    #     CoordValidator is the single-source-of truth for certifying the safety of
+    #     Coord instances, their organic row and column attributes. It makes sense
+    #     providing direct access here and letting validator return its Validation
+    #     result directly to the caller.
     #     """
-    #     return self._validator.validate(candidate=candidate)
+    #     return self._validator
+    #
+    
+    
+    
+    # def build_data(self, coord: Coord) -> Result[Coord]:
+    #     method = "CoordService.add_coord"
+    #     try:
+    #         coord_validation = self._validator.validate(candidate=coord)
+    #         if coord_validation.is_failure():
+    #             return Result.failure(coord_validation.exception)
+    #
+    #         if coord in self._squares:
+    #             return Result.failure(
+    #                 AddingDuplicateCoordException(
+    #                     f"{method}: {AddingDuplicateCoordException.DEFAULT_MESSAGE}"
+    #                 )
+    #             )
+    #         self._squares.append(coord)
+    #         return Result.success(coord)
+    #     except Exception as ex:
+    #         return Result.failure(
+    #             CoordServiceException(
+    #                 f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
+    #             )
+    #         )
+    
+    # def remove_coord(self, coord: Coord) -> Result[Coord]:
+    #     method = "CoordService.remove_coord"
+    #     try:
+    #         coord_validation = self._validator.validate(candidate=coord)
+    #         if coord_validation.is_failure():
+    #             return Result.failure(coord_validation.exception)
+    #         if coord not in  self._coords:
+    #             return Result.failure(
+    #                 RemovingNonExistentCoordException(
+    #                     f"{method}: {RemovingNonExistentCoordException.DEFAULT_MESSAGE}"
+    #                 )
+    #             )
+    #         coord = self._coords.remove(coord)
+    #         return Result.success(coord)
+    #     except Exception as ex:
+    #         return Result.failure(
+    #             CoordServiceException(
+    #                 f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
+    #             )
+    #
     
     
     def build_coord(self, row: int, column: int) -> BuildResult[Coord]:
@@ -427,23 +357,4 @@ class CoordService(Service[Coord]):
             return self._coord_builder.build(row=vector.y, column=vector.x)
         except Exception as ex:
             return BuildResult.failure(ex)
-        
-        
-    @LoggingLevelRouter.monitor
-    def coord_search_by_row(self, collection: List[Coord], row: int) -> BuildResult[List[Coord]]:
-        """Search a collection of coords by the row."""
-        method = "CoordService.coord_search_by_row"
-        return self._search_service.search_by_row(collection=collection, row=row)
-    
-    @LoggingLevelRouter.monitor
-    def coord_search_by_column(self, collection: List[Coord], column: int) -> BuildResult[List[Coord]]:
-        """Search a collection of coords by the column."""
-        method = "CoordService.coord_search_by_column"
-        return self._search_service.search_by_column(collection=collection, column=column)
-    
-    
-    def coord_search_by_coord(self, collection: List[Coord], coord: Coord) -> BuildResult[List[Coord]]:
-        """Search a collection of coords for a specific coor.d"""
-        method = "CoordService.coord_search_by_coord"
-        return self._search_service.search_by_coord(collection=collection, coord=coord)
-    
+

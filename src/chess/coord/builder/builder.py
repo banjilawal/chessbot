@@ -1,17 +1,16 @@
-# src/chess/square/builder.py
+# src/chess/coord/builder/builder.py
 
 """
-Module: chess.square.builder
+Module: chess.coord.builder.builder
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0
 """
 
-from chess.system import Builder, BuildResult, ROW_SIZE, COLUMN_SIZE, LoggingLevelRouter
-from chess.coord import (
-    Coord, NullRowException, NullColumnException, RowBelowBoundsException, RowAboveBoundsException,
-    ColumnBelowBoundsException, ColumnAboveBoundsException, CoordBuildFailedException
-)
+
+from chess.system import Builder, BuildResult,  LoggingLevelRouter
+from chess.coord import Coord, CoordValidator,  CoordBuildFailedException
+
 
 
 class CoordBuilder(Builder[Coord]):
@@ -19,9 +18,8 @@ class CoordBuilder(Builder[Coord]):
     # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    Produce Coord instances whose integrity is always guaranteed.
-    If any attributes do not pass their integrity checks,
-    send an exception instead.
+    Produce Coord instances whose integrity is always guaranteed. If any attributes do
+    not pass their integrity checks, send an exception instead.
 
     # PROVIDES:
     BuildResult[Coord] containing either:
@@ -34,82 +32,42 @@ class CoordBuilder(Builder[Coord]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, row: int, column: int) -> BuildResult[Coord]:
+    def build(
+            cls,
+            row: int,
+            column: int,
+            validator: CoordValidator = CoordValidator(),
+    ) -> BuildResult[Coord]:
         """
         # ACTION:
-        1.  Check candidate.row is:
-                *   an INT
-                *   between 0 and ROW_SIZE - 1 inclusive.
-        2. Check candidate.column is:
-                *   an INT
-                *   between 0 and ROW_SIZE - 1 inclusive.
-        3.  If any check fails, return the exception inside a ValidationResult.
-        4.  When all checks pass cast candidate to a Coord instance then return inside a ValidationResult.
+        1.  Use the validator to certify the row is safe to use.
+        2.  Use the validator to certify the column is safe to use.
+        3.  If any check fails, return the exception inside a BuildResult.
+        4.  When all checks pass return a new Coord instance in a BuildResult.
 
         # PARAMETERS:
             *   row (int)
             *   column (int)
+            *   validator (CoordValidator)
 
         # Returns:
-        ValidationResult[Coord] containing either:
+        BuildResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.
 
         # RAISES:
-            *   NullRowException
-            *   RowBelowBoundsException
-            *   RowAboveBoundsException
-            *   NullColumnException
-            *   ColumnBelowBoundsException
-            *   ColumnAboveBoundsException
-            *   InvalidCoordException
+            *   CoordBuildFailedException
         """
         method = "CoordBuilder.builder"
         
         try:
-            if row is None:
-                return BuildResult.failure(
-                    NullRowException(f"{method}: "
-                                     f"{NullRowException.DEFAULT_MESSAGE}")
-                )
-            
-            if row < 0:
-                return BuildResult.failure(
-                    RowBelowBoundsException(
-                        f"{method}: "
-                        f"{RowBelowBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if row >= ROW_SIZE:
-                return BuildResult.failure(
-                    RowAboveBoundsException(
-                        f"{method}: "
-                        f"{RowAboveBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if column is None:
-                return BuildResult.failure(
-                    NullColumnException(f"{method}: "
-                                        f"{NullRowException.DEFAULT_MESSAGE}")
-                )
-            
-            if column < 0:
-                return BuildResult.failure(
-                    ColumnBelowBoundsException(
-                        f"{method}: "
-                        f"{ColumnBelowBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if column >= COLUMN_SIZE:
-                return BuildResult.failure(
-                    ColumnAboveBoundsException(
-                        f"{method}: "
-                        f"{ColumnAboveBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
+            row_validation = validator.validate_row(row)
+            if row_validation.is_failure:
+                return BuildResult.failure(row_validation.exception)
+                
+            column_validation = validator.validate_column(column)
+            if column_validation.is_failure:
+                return BuildResult.failure(column_validation.exception)
             
             return BuildResult.success(payload=Coord(row=row, column=column))
         
@@ -117,7 +75,6 @@ class CoordBuilder(Builder[Coord]):
             return BuildResult.failure(
                 CoordBuildFailedException(
                     ex=ex,
-                    message=f"{method}: "
-                            f"{CoordBuildFailedException.DEFAULT_MESSAGE}",
+                    message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

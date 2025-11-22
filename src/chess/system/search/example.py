@@ -46,7 +46,7 @@ See the list of exceptions in the `__all__` list following (e.g., `SearchExcepti
   * `ImpossibleFatalResultException`
 """
 
-# src/chess/system/search/search.py
+# src/chess/system/search/service.py
 
 """
 Module: `chess.system.search.search`

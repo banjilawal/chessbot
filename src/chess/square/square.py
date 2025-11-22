@@ -1,4 +1,4 @@
-# src/chess/square/search.py
+# src/chess/square/service.py
 
 """
 Module: chess.square.square

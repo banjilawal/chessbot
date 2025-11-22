@@ -11,7 +11,7 @@ from chess.system import IdValidator, NameValidator, SearchResult
 
 class Discoveries:
   """
-  A collection class for managing `Checker` records.
+  A data_set class for managing `Checker` records.
 
   `Discoveries` encapsulates the list of `Checker` objects observed by team_name `Piece`.
   It ensures safe recording (no duplicates, no nulls) and provides old_search and filter
@@ -32,7 +32,7 @@ class Discoveries:
      respective notification (`IdValidator`, `NameValidator`, `CoordValidator`,
      `RankValidatorFactory`).
     - Each method returns team_name `SearchResult` to provide consistent success/empty/err handling.
-    - The collection enforces uniqueness and immutability at the discover level.
+    - The data_set enforces uniqueness and immutability at the discover level.
   """
   _items: List[Discovery]
 

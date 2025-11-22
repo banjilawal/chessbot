@@ -1,4 +1,4 @@
-# src/chess/agent/search/search.py
+# src/chess/agent/search/service.py
 
 """
 Module: chess.agent.search.search

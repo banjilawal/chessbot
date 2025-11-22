@@ -29,11 +29,7 @@ class CoordException(ChessException):
     DEFAULT_MESSAGE = f"Invalid Coord state threw an err"
 
 
-# ====================== NULL COORD EXCEPTIONS #======================#
-class NullCoordException(CoordException, NullException):
-    """Raised if an entity, method, or operation requires Coord but gets validation instead."""
-    ERROR_CODE = "NULL_COORD_ERROR"
-    DEFAULT_MESSAGE = "Coord cannot be validation"
+
     
     
 # ====================== COORD BUILD EXCEPTIONS #======================#

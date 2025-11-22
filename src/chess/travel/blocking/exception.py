@@ -99,7 +99,7 @@ class EnemyCannotBeBlockerException(BlockingEventException):
 class DiscoveryAlreadyExistsException(BlockingEventException):
   """"""
   ERROR_CODE = "DISCOVERY_ALREADY_EXISTS_ERROR"
-  DEFAULT_MESSAGE = "The Discovery already exists in the collection."
+  DEFAULT_MESSAGE = "The Discovery already exists in the data_set."
 
 #
 # class DoubleEncounterException(BlockingEventException):

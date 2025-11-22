@@ -1,4 +1,4 @@
-# src/chess/battle_space/search.py
+# src/chess/battle_space/service.py
 
 """
 Module: chess.battle_space.search

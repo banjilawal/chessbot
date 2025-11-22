@@ -1,4 +1,4 @@
-# src/chess/owner/search/search.py
+# src/chess/owner/search/service.py
 
 """
 Module: chess.owner.search.exception

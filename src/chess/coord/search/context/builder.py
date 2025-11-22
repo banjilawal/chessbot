@@ -12,7 +12,7 @@ from typing import Optional
 
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.coord import (
-    Coord, CoordValidator, CoordSearchContext, CoordSearchContextBuildFailedException,
+    Coord, CoordSearchContextValidator, CoordValidator, CoordSearchContext, CoordSearchContextBuildFailedException,
     NoCoordSearchOptionSelectedException, MoreThanOneCoordSearchOptionPickedException,
 )
 
@@ -22,8 +22,8 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
     # ROLE: Builder
 
     # RESPONSIBILITIES:
-        1. Manage conintuction of CoordSearch instances that can be used safely by the client.
-        2. Ensure params for CoordSearch creation have met the application's safety contract.
+        1. Manage conintuction of CoordSearchService instances that can be used safely by the client.
+        2. Ensure params for CoordSearchService creation have met the application's safety contract.
         3. Provide pluggable factories for creating different CoordSearchContext products.
 
 
@@ -42,8 +42,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
             cls,
             row: Optional[int],
             column: Optional[int],
-            coord: Optional[Coord],
-            coord_validator: type[CoordValidator] = CoordValidator
+            validator: CoordSearchContextValidator = CoordSearchContextValidator()
     ) -> BuildResult[CoordSearchContext]:
         """
         # Action:
@@ -70,7 +69,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
         method = "CoordSearchContextBuilder.builder"
         
         try:
-            params = [row, column, coord]
+            params = [row, column]
             param_count = sum(bool(p) for p in params)
             
             if param_count == 0:
@@ -80,21 +79,20 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
                     )
                 )
             
-            if param_count > 1:
-                return BuildResult.failure(
-                    MoreThanOneCoordSearchOptionPickedException(
-                        f"{method}: {MoreThanOneCoordSearchOptionPickedException.DEFAULT_MESSAGE}"
-                    )
-                )
+            if row is not None and column is not None:
+                validation = validator.validate(row=row, column=column)
+                if validation.is_failure():
+                    return BuildResult.failure(validation.exception)
             
             if row is not None:
-                return cls.build_row_search_context(row=row, coord_validator=coord_validator)
-            
+                validation = validator.validate_row_search_option(row=row)
+                if validation.is_failure():
+                    return BuildResult.failure(validation.exception)
+                
             if column is not None:
-                return cls.build_ncolumn_search_context(column=column, coord_validator=coord_validator)
-            
-            if coord is not None:
-                return cls.build_coord_search_context(coord=coord, coord_validator=coord_validator)
+                validation = validator.validate_column_search_option(column=column)
+                if validation.is_failure():
+                    return BuildResult.failure(validation.exception)
         
         except Exception as ex:
             return BuildResult.failure(

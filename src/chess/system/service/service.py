@@ -39,15 +39,15 @@ class Service(ABC, Generic[T]):
     SERVICE_NAME = "service"
     _int: int
     _name: str
-    _builder: type[Builder[T]]
-    _validator: type[Validator[T]]
+    _builder: Builder[T]
+    _validator: Validator[T]
     
     def __init__(
             self,
             id: int,
             name: str,
-            builder: type[Builder[T]],
-            validator: type[Validator[T]]
+            builder: Builder[T],
+            validator: Validator[T]
     ) -> None:
         self._int = id
         self._name = name
@@ -65,7 +65,7 @@ class Service(ABC, Generic[T]):
     
     
     @property
-    def validator(self) -> type[Validator[T]]:
+    def validator(self) -> Validator[T]:
         return self._validator
     
     def build(self, *args, **kwargs) -> BuildResult[T]:
