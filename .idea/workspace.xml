@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/builder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/builder/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/validator/validator.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -287,11 +297,11 @@
       <recent name="$PROJECT_DIR$/src/chess/vector" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/vector/validator" />
+      <recent name="$PROJECT_DIR$/src/chess/vector/builder" />
       <recent name="$PROJECT_DIR$/src/chess/system/data/result" />
       <recent name="$PROJECT_DIR$/src/chess/system/build/result" />
       <recent name="$PROJECT_DIR$/src/chess/square/service" />
-      <recent name="$PROJECT_DIR$/src/chess/square/service/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/square/validator" />
     </key>
   </component>
   <component name="RunManager" selected="Python.pawn">
@@ -632,7 +642,7 @@
       <workItem from="1763719500072" duration="6233000" />
       <workItem from="1763736699637" duration="3866000" />
       <workItem from="1763740678957" duration="9442000" />
-      <workItem from="1763763378424" duration="8329000" />
+      <workItem from="1763763378424" duration="11656000" />
     </task>
     <servers />
   </component>

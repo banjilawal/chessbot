@@ -1,9 +1,9 @@
-# src/chess/vector/factory.py
+# src/chess/vector/builder/builder.py
 
 """
-Module: chess.vector.builder
+Module: chess.vector.builder.__init__
 Author: Banji Lawal
-Created: 2025-09-03
+Created: 2025-09083
 version: 1.0.0
 """
 
