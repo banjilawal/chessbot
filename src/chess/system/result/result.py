@@ -1,7 +1,7 @@
 # src/chess/system/result/result.py
 
 """
-Module: `chess.system.result.result`
+Module: chess.system.result.result
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10
@@ -10,8 +10,10 @@ version: 1.0.0
 
 
 from typing import Optional, TypeVar, Generic
+from chess.system import Result
 
-T = TypeVar('V')
+T = TypeVar("T")
+V = TypeVar("V")
 
 
 class Result(Generic[T]):
@@ -27,9 +29,9 @@ class Result(Generic[T]):
   1.
 
   # Attributes:
-    `_payload` (`Optional`[`V`]): Data from the accessor or service generator if their rollback
+    _payload (Optional[V]): Data from the accessor or service generator if their rollback
       were successful.
-    `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
+    _exception (Optional[Exception]): The error raised if the operation called failed.
   """
   _payload: Optional[T]
   _exception: Optional[Exception]
@@ -57,15 +59,15 @@ class Result(Generic[T]):
     return self._payload is None and self._exception is None
 
   @classmethod
-  def success(cls, payload: T) -> 'Result[V]':
+  def success(cls, payload: T) -> Result[V]:
     return cls(payload=payload)
 
   @classmethod
-  def failure(cls, exception: Exception) -> 'Result[V]':
+  def failure(cls, exception: Exception) -> Result[V]:
     return cls(exception=exception)
 
   @classmethod
-  def empty(cls) -> 'Result[V]':
+  def empty(cls) -> Result[None]:
     return cls()
 
 
