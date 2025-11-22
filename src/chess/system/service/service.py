@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from chess.system import BuildResult, Builder, Validator
@@ -39,21 +39,14 @@ class Service(ABC, Generic[T]):
     SERVICE_NAME = "service"
     _int: int
     _name: str
-    _builder: Builder[T]
-    _validator: Validator[T]
     
     def __init__(
             self,
             id: int,
             name: str,
-            builder: Builder[T],
-            validator: Validator[T]
     ) -> None:
         self._int = id
         self._name = name
-        self._builder = builder
-        self._validator = validator
-        
         
     @property
     def id(self) -> int:
@@ -63,13 +56,17 @@ class Service(ABC, Generic[T]):
     def name(self) -> str:
         return self._name
     
-    
     @property
+    @abstractmethod
     def validator(self) -> Validator[T]:
-        return self._validator
+        """"""
+        pass
     
+    @abstractmethod
     def build(self, *args, **kwargs) -> BuildResult[T]:
-       return self._builder.build(*args, **kwargs)
+        """"""
+        pass
+       # return self._builder.build(*args, **kwargs)
     
     def __eq__(self, other):
         if other is self: return True

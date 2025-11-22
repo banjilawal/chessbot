@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
-
+from chess.coord import Coord
 from chess.system import SearchContext
 
 
-class CoordContext(SearchContext):
+class CoordContext(SearchContext[Coord]):
     """
     # ROLE: Search option filter
   

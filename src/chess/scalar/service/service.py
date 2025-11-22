@@ -36,7 +36,7 @@ class ScalarService(Service[Scalar]):
     
     def __init__(
             self,
-            int: id,
+            id: int,
             name: str = SERVICE_NAME,
             builder: ScalarBuilder = ScalarBuilder(),
             validator: ScalarValidator = ScalarValidator()

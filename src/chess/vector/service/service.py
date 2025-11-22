@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
-
+from typing import cast
 
 from chess.scalar import Scalar, ScalarService
 from chess.system import BuildResult, LoggingLevelRouter, Service
@@ -48,6 +48,7 @@ class VectorService(Service):
             validator: VectorValidator = VectorValidator(),
             scalar_service: ScalarService = ScalarService()
     ):
+        super().__init__(id=id, name=name)
         self._builder = builder
         self._validator = validator
         self._scalar_service = scalar_service
@@ -58,7 +59,7 @@ class VectorService(Service):
         return self._validator
     
     @LoggingLevelRouter.monitor
-    def build_vector(self, x: int, y: int) -> BuildResult[Vector]:
+    def build(self, x: int, y: int) -> BuildResult[Vector]:
         """
         # Action:
         VectorService directs builder to run the builder process with the inputs.
@@ -78,7 +79,7 @@ class VectorService(Service):
             *   The caller is responsible for safely handling any exceptions it receives.
         """
         method = "VectorService.build_vector"
-        return self._builder.build(x=x, y=y)
+        return self._builder.build(x=x, y=y, validator=self._validator)
     
     
     @LoggingLevelRouter.monitor
@@ -105,7 +106,7 @@ class VectorService(Service):
         Raises:
             VectorBuildFailedException
         """
-        method = "VectorService.multiply_by_scalar"
+        method = "VectorService.multiply_vector_by_scalar"
         
         try:
             scalar_validation = self._scalar_service.validator.validate(scalar)
@@ -116,16 +117,19 @@ class VectorService(Service):
             if vector_validation.is_failure():
                 return BuildResult.failure(vector_validation.exception)
             
-            x_component = vector.x * scalar.value
-            y_component = vector.y * scalar.value
-            
-            return self._builder.build(x=x_component, y=y_component)
+            return self._builder.build(
+                x=(vector.x * scalar.value),
+                y=(vector.y * scalar.value),
+                validator=self._validator
+            )
         
         except Exception as ex:
             return BuildResult.failure(
                 VectorBuildFailedException(
                     ex=ex,
-                    message=f"{method}: "
-                            f"{VectorBuildFailedException.DEFAULT_MESSAGE}"
+                    message=(
+                        f"{method}: "
+                        f"{VectorBuildFailedException.DEFAULT_MESSAGE}"
+                    )
                 )
             )

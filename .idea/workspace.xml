@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/service/service.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -632,7 +644,7 @@
       <workItem from="1763719500072" duration="6233000" />
       <workItem from="1763736699637" duration="3866000" />
       <workItem from="1763740678957" duration="9442000" />
-      <workItem from="1763763378424" duration="52121000" />
+      <workItem from="1763763378424" duration="59559000" />
     </task>
     <servers />
   </component>

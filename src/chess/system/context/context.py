@@ -18,15 +18,12 @@ class Context(ABC, Generic[T]):
   # ROLE: Message passing, Data Transfer Object
 
   # RESPONSIBILITIES:
-  1. Carry the outcome of a service access or service generation operation to the caller.
-  2. Transporting errors from the service source to the requester for handling that preserves reliability and availability.
+  which attribute of T will be used for some operation.
 
   # PROVIDES:
   1.
 
   # Attributes:
-    `_payload` (`Optional`[`V`]): Data from the accessor or service generator if their rollback were successful.
-    `_exception` (`Optional`[`Exception`]): The error raised if the operation called failed.
   """
   """
   Interface for defining optional dependencies an `Event` needs to execute team_name

@@ -10,8 +10,9 @@ Version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from chess.system import Builder, DataResult, SearchContext, SearchResult, Service, Validator
-from chess.system.search.service import SearchService
+from chess.system import (
+    Builder, SearchContext, SearchContextService, SearchResult, Service, Validator, SearchService
+)
 
 T = TypeVar("T")
 
@@ -35,9 +36,19 @@ class DataService(ABC, Service[Generic[T]]):
         self._search_service = search_service
     
     @property
+    @abstractmethod
     def items(self) -> [T]:
-        return self._items
+        pass
     
-
+    @property
+    @abstractmethod
+    def service(self) -> Service[T]:
+        pass
+    
+    @property
+    @abstractmethod
+    def context_service(self) -> SearchContextService[T]:
+    
+    @abstractmethod
     def search(self, context: SearchContext) -> SearchResult[[T]]:
-        return self._search_service.find(data_set=items, context=context, )
+        pass
