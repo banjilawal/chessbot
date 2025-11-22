@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/null/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/null/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/selection/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/selection/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/builder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/exception/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/service/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/search/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/search/context/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/search/context/service.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -656,7 +632,7 @@
       <workItem from="1763719500072" duration="6233000" />
       <workItem from="1763736699637" duration="3866000" />
       <workItem from="1763740678957" duration="9442000" />
-      <workItem from="1763763378424" duration="50506000" />
+      <workItem from="1763763378424" duration="52121000" />
     </task>
     <servers />
   </component>

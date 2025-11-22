@@ -7,12 +7,13 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from typing import Generic, TypeVar
 from abc import ABC, abstractmethod
 
-from chess.system.context.mask import MaskList
 
+T = TypeVar("T")
 
-class Context(ABC):
+class Context(ABC, Generic[T]):
   """
   # ROLE: Message passing, Data Transfer Object
 

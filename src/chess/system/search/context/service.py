@@ -8,12 +8,16 @@ version: 1.0.0
 """
 
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar
 
 from chess.system import BuildResult, Builder, Validator, SearchContext
 
+A = TypeVar("A")
+C = TypeVar("C", biding="SearchContext[C]")
 
-class SearchContextService:
+
+class SearchContextService(ABC, Generic[C]):
     """
     # ROLE: Service, Encapsulation, API layer.
     
@@ -31,19 +35,19 @@ class SearchContextService:
         *   _builder (SearchContextBuilder):
         *   _validator (SearchContextValidator):
     """
-    _builder: Builder[SearchContext]
-    _validator: Validator[SearchContext]
+    _builder: Builder[C]
+    _validator: Validator[C]
     
     def __init__(
             self,
-            builder: Builder[SearchContext],
-            validator: Validator[SearchContext]
+            builder: Builder[C],
+            validator: Validator[C]
     ):
         self._builder = builder
         self._validator = validator
         
     @property
-    def validator(self) -> Validator[SearchContext]:
+    def validator(self) -> Validator[C]:
         """
         Validators may have extra features and logic.
         Direct access is given ta all the Validator's capabilities.
@@ -51,7 +55,7 @@ class SearchContextService:
         return self._validator
     
     @abstractmethod
-    def build(self, *args, **kwargs) -> BuildResult[SearchContext]:
+    def build(self, *args, **kwargs) -> BuildResult[C]:
         """
         Implementations must inject self._validator into
         self._builder along with any other dependencies and params.
