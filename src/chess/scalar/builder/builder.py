@@ -29,20 +29,13 @@ class ScalarBuilder(Builder[Scalar]):
         *   _value (int)
         *   _scalar_validator (ScalarValidator)
     """
-    _value: int
-    
-    def __init__(self, value: int, scalar_validator: ScalarValidator = ScalarValidator()):
+    def __init__(self, scalar_validator: ScalarValidator = ScalarValidator()):
         super().__init__()
-        self._value = value
         self._scalar_validator = scalar_validator
         
-    @property
-    def value(self) -> int:
-        return self._value
-    
 
     @LoggingLevelRouter.monitor
-    def build(self) -> BuildResult[Scalar]:
+    def build(self, value: int) -> BuildResult[Scalar]:
         """
         # Action:
         If the absolute value of the param is within BOARD_DIMENSION return a new Scalar instance.
@@ -65,7 +58,7 @@ class ScalarBuilder(Builder[Scalar]):
         method = "ScalarBuilder.builder"
         
         try:
-            validation = self._scalar_validator.validate_value(self._value)
+            validation = self._scalar_validator.validate_value(value)
             if validation.is_failure():
                 return BuildResult.failure(validation.exception)
             # if value is None:

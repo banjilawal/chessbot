@@ -26,31 +26,28 @@ class ScalarService(Service[Scalar]):
         *   Scalar validation
 
     # ATTRIBUTES:
-        *   builder (ScalarBuilder):        Builds new Scalar instances that meet the application's
-                                            safety contract.
-                                                
-        *   validator (ScalarValidator):   Validates candidates are Scalar objects complying with
-                                           safety contracts.
+        *   builder (ScalarBuilder)
+        *   validator (ScalarValidator)
     """
     SERVICE_NAME = "ScalarService"
     
-    _builder: type[ScalarBuilder]
-    _validator: type[ScalarValidator]
+    _builder: ScalarBuilder
+    _validator: ScalarValidator
     
     def __init__(
             self,
             int: id,
             name: str = SERVICE_NAME,
-            builder: type[ScalarBuilder] = ScalarBuilder,
-            validator: type[ScalarValidator] = ScalarValidator
+            builder: ScalarBuilder = ScalarBuilder(),
+            validator: ScalarValidator = ScalarValidator()
     ):
         super().__init__(id=id, name=name)
         self._builder = builder
         self._validator = validator
     
     @property
-    def validator(self) -> type[ScalarValidator]:
+    def validator(self) -> ScalarValidator:
         return self._validator
     
-    def build_scalar(self, value: int) -> BuildResult[Scalar]:
-        return self._builder.build(value)
+    def build(self, value: int) -> BuildResult[Scalar]:
+        return self._builder.build(value, self._validator)
