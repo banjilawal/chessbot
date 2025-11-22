@@ -5,31 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/validator/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/validator/exception/bounds/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/validator/exception/bounds/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/validator/exception/null/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/validator/exception/null/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/search/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/black/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/black/schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/builder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/search/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/search/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/search/context/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/search/context/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/search/context/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/search/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/search/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/service/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/service/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/service/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/white/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/layout/white/schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/builder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/context/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/search/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/search/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/validator/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/validator/exception/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/vector/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/service/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -658,7 +652,7 @@
       <workItem from="1763719500072" duration="6233000" />
       <workItem from="1763736699637" duration="3866000" />
       <workItem from="1763740678957" duration="9442000" />
-      <workItem from="1763763378424" duration="25063000" />
+      <workItem from="1763763378424" duration="27504000" />
     </task>
     <servers />
   </component>
