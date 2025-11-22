@@ -31,13 +31,13 @@ class SearchContext(ABC, Context):
     _name: Optional[str]
     
     
-    def __init__(self, id: Optional[int] = None, name: Optional[str] = None):
+    def __init__(
+            self,
+            id: Optional[int] = None,
+            name: Optional[str] = None
+    ):
         self._id = id
         self._name = name
-    
-    @abstractmethod
-    def to_dict(self) -> dict:
-        pass
     
     @property
     def id(self) -> Optional[int]:
@@ -47,12 +47,8 @@ class SearchContext(ABC, Context):
     def name(self) -> Optional[str]:
         return self._name
     
-    @classmethod
-    def id_context(cls, id: int) -> SearchContext:
-        return cls(id=id)
-    
-    @classmethod
-    def name_context(cls, name: str) -> SearchContext:
-        return cls(name=name)
+    @abstractmethod
+    def to_dict(self) -> dict:
+        pass
     
 

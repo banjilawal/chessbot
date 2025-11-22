@@ -1,7 +1,7 @@
-# src/square/search/context/coord_stack_validator.py
+# src/chess/coord/context/validator/validator.py
 
 """
-Module: chess.square.search.context.coord_stack_validator
+Module: chess.coord.context.validator.validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
 from chess.coord import (
-    Coord, CoordValidator, CoordSearchContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
+    CoordValidator, CoordSearchContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
     MoreThanOneCoordSearchOptionPickedException, NoCoordSearchOptionSelectedException,
 )
 
@@ -40,7 +40,7 @@ class CoordSearchContextValidator(Validator):
     def validate(
             cls,
             candidate: Any,
-            coord_validator: CoordValidator=CoordValidator()
+            validator: CoordValidator=CoordValidator()
     ) -> ValidationResult[CoordSearchContext]:
         """
         # Action:
@@ -70,51 +70,79 @@ class CoordSearchContextValidator(Validator):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullCoordSearchContextException(f"{method} {NullCoordSearchContextException.DEFAULT_MESSAGE}")
+                    NullCoordSearchContextException(
+                        f"{method} "
+                        f"{NullCoordSearchContextException.DEFAULT_MESSAGE}"
+                    )
                 )
             
             if not isinstance(candidate, CoordSearchContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected CoordSearchContext, got {type(candidate).__column__} instead.")
-                )
-            
-            coord_search_context = cast(CoordSearchContext, candidate)
-            if len(coord_search_context.to_dict()) == 0:
-                return ValidationResult.failure(
-                    NoCoordSearchOptionSelectedException(
-                        f"{method}: {NoCoordSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                    TypeError(
+                        f"{method}: "
+                        f"Expected a CoordSearchContext, "
+                        f"got {type(candidate).__column__} instead."
                     )
                 )
             
-            if coord_search_context.row is not None:
-                return cls.validate_row_search_option(
-                    candidate=coord_search_context.row,
-                    coord_validator=coord_validator
+           
+            context = cast(CoordSearchContext, candidate)
+            if len(context.to_dict()) == 0:
+                return ValidationResult.failure(
+                    NoCoordSearchOptionSelectedException(
+                        f"{method}: "
+                        f"{NoCoordSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                    )
                 )
             
-            if coord_search_context.column is not None:
-                return cls.validate_column_search_option(
-                    column=coord_search_context.column,
-                    coord_validator=coord_validator
+            if context.row is not None and context.column is not None:
+                validation = cls.validate_both(
+                    row_candidate=context.row,
+                    column_candidate=context.column,
+                    validator=validator
                 )
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
+                else:
+                    ValidationResult.success(payload=validation.payload)
             
-            if coord_search_context.row is not None and coord_search_context.column is not None:
-                return cls.validate_both(row=coord_search_context.row, colum=coord_search_context.column)
+            if context.row is not None:
+                validator = cls.validate_row_context(
+                    candidate=context.row,
+                    validator=validator
+                )
+                if validator.is_failure():
+                    return ValidationResult.failure(validator.exception)
+                else:
+                    return ValidationResult.success(payload=validator.payload)
             
-        except Exception as e:
+            if context.column is not None:
+                validation = cls.validate_column_context(
+                    column=context.column,
+                    coord_validator=validator
+                )
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
+                else:
+                    return ValidationResult.success(payload=validation.payload)
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}", e
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate_row_search_option(
+    def validate_row_context(
             cls,
             candidate: Any,
-            coord_validator: CoordValidator=CoordValidator()
-    ) -> ValidationResult[CoordSearchContext]:
+            validator: CoordValidator=CoordValidator()
+    ) -> ValidationResult[int]:
         """
         # Action:
         Verify a row_candidate meets application CoordSearchContext safety requirements.
@@ -134,28 +162,28 @@ class CoordSearchContextValidator(Validator):
         method = "CoordSearchContextValidator.validate_id_search_option"
         
         try:
-            row_validation = coord_validator.validate_row(candidate)
-            if row_validation.is_failure():
-                return ValidationResult.failure(row_validation.exception)
-            
-            row = cast(int, row_validation.payload)
-            
-            return ValidationResult.success(payload=CoordSearchContext(row=row))
+            validation = validator.validate_row(candidate)
+            if validation.is_failure():
+                return ValidationResult.failure(validation.exception)
+            return ValidationResult.success(payload=validation.payload)
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordSearchContextException(
                     ex=ex,
-                    message=f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
+                    message=(
+                        f"{method}: "
+                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate_column_search_option(
+    def validate_column_context(
             cls,
             candidate: Any,
-            coord_validator: CoordValidator = CoordValidator()
-    ) -> ValidationResult[CoordSearchContext]:
+            validator: CoordValidator = CoordValidator()
+    ) -> ValidationResult[int]:
         """
         # Action:
         Verify a column_candidate meets application CoordSearchContext safety requirements.
@@ -172,83 +200,54 @@ class CoordSearchContextValidator(Validator):
         # Raises:
             * InvalidCoordSearchContextException
         """
-        method = "CoordSearchContextValidator.validate_column_search_option"
+        method = "CoordSearchContextValidator.validate_column_context"
         
         try:
-            column_validation = coord_validator.validate(candidate)
-            if column_validation.is_failure():
-                return ValidationResult.failure(column_validation.exception)
-            
-            column = cast(str, column_validation.payload)
-            
-            return ValidationResult.success(payload=CoordSearchContext(column=column))
+            validation = validator.validate(candidate)
+            if validation.is_failure():
+                return ValidationResult.failure(validation.exception)
+            return ValidationResult.success(validation.payload)
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordSearchContextException(
                     ex=ex,
-                    message=f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
+                    message=(
+                        f"{method}: "
+                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
-    
+
     @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_coord_search_option(
+    def validate_both(
             cls,
-            candidate: Any,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> ValidationResult[CoordSearchContext]:
-        """
-        # Action:
-        Verify a coord_candidate meets application CoordSearchContext safety requirements.
-
-        # Parameters:
-          * candidate (Any): Object to verify is a square.
-          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
-
-        # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
-                - On failure: Exception.
-
-        # Raises:
-            * InvalidCoordSearchContextException
-        """
-        method = "CoordSearchContextValidator.validate_coord_search_option"
-        
-        try:
-            coord_validation = coord_validator.validate(candidate)
-            if coord_validation.is_failure():
-                return ValidationResult.failure(coord_validation.exception)
-            
-            coord = cast(Coord, coord_validation.payload)
-            
-            return ValidationResult.success(payload=CoordSearchContext(coord=coord))
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidCoordSearchContextException(
-                    f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}",
-                    ex
-                )
-            )
-        
-        
-    @classmethod
-    def validate_both(cls, row: int, colum: int) -> ValidationResult[(int, int)]:
+            row_candidate: Any,
+            column_candidate: Any
+    ) -> ValidationResult[(int, int)]:
         method = "CoordSearchContextValidator.validate_both"
         try:
-            row_validation = cls.validate_row_search_option(row)
+            row_validation = cls.validate_row_context(row_candidate)
             if row_validation.is_failure():
                 return ValidationResult.failure(row_validation.exception)
             
-            column_validation = cls.validate_column_search_option(colum)
+            column_validation = cls.validate_column_context(column_candidate)
             if column_validation.is_failure():
                 return ValidationResult.failure(column_validation.exception)
             
-            return ValidationResult.success((row, colum))
+            return ValidationResult.success(
+                payload=(
+                    row_validation.payload,
+                    column_validation.payload
+                )
+            )
+            
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordSearchContextException(
                     ex=ex,
-                    message=f"{method}: {InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                    message=(
+                        f"{method}: "
+                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                    )
                 )
             )

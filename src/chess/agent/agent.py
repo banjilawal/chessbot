@@ -77,7 +77,7 @@ class Agent(ABC):
     #   owner=TeamSearch.search(
     #     data_owner=self._team_name,
     #     search_category=SearchCategory.ROSTER,
-    #     search_context=TeamSearchContext(visitor_name="BN1")
+    #     context=TeamSearchContext(visitor_name="BN1")
     #   ),
     #   square_name="C8"
     # )

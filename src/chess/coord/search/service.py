@@ -1,7 +1,7 @@
-# src/chess/target/search/service.py
+# src/chess/coord/search/service.py
 
 """
-Module: chess.target.search.search
+Module: chess.coord.search.search
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -10,14 +10,14 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system import LoggingLevelRouter, SearchResult
+from chess.system import LoggingLevelRouter, SearchResult, SearchService
 from chess.coord import (
     Coord, CoordSearchContextBuilder, CoordSearchContextValidator, CoordSearchException, CoordSearchContext
 )
 
 
 
-class CoordSearchService:
+class CoordSearchService(SearchService[Coord]):
     """"""
     
     @classmethod
@@ -25,43 +25,61 @@ class CoordSearchService:
     def context_builder(cls) -> CoordSearchContextBuilder:
         return CoordSearchContextBuilder()
     
+    @classmethod
+    @LoggingLevelRouter.monitor
     def search(
             cls,
             data_set: List[Coord],
-            search_context: CoordSearchContext,
+            context: CoordSearchContext,
             context_validator: CoordSearchContextValidator = CoordSearchContextValidator(),
     ) -> SearchResult[List[Coord]]:
         method = "CoordSearchService.search"
         try:
-            context_validation = context_validator.validate(search_context)
+            context_validation = context_validator.validate(context)
             if context_validation.is_failure():
                 return SearchResult.failure(context_validation.exception)
             
-            if search_context.row is not None:
-                return cls._search_by_row(data_set=data_set, row=search_context.row)
-            
-            if search_context.column is not None:
-                return cls._search_by_column(data_set=data_set, column=search_context.column)
-            
-            if search_context.column is not None and search_context.row is not None:
-                return cls._search_by_row_and_coord(
+            if context.row is not None:
+                return cls._search_by_row(
                     data_set=data_set,
-                    row=search_context.row,
-                    column=search_context.column
+                    row=context.row
+                )
+            
+            if context.column is not None:
+                return cls._search_by_column(
+                    data_set=data_set,
+                    column=context.column
+                )
+            
+            if (
+                    context.column is not None and
+                    context.row is not None
+            ):
+                return cls._searc_by_both(
+                    data_set=data_set,
+                    row=context.row,
+                    column=context.column
                 )
             
         except Exception as ex:
             return SearchResult.failure(
                 CoordSearchException(
                     ex=ex,
-                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}"
+                    message=(
+                        f"{method}: "
+                        f"{CoordSearchException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _search_by_row(cls, data_set: List[Coord], row: int) -> SearchResult[List[Coord]]:
+    def _search_by_row(
+            cls,
+            data_set: List[Coord],
+            row: int
+    ) -> SearchResult[List[Coord]]:
         """"""
         method = "CoordSearchService.search_by_row"
         
@@ -77,13 +95,20 @@ class CoordSearchService:
             return SearchResult.failure(
                 CoordSearchException(
                     ex=ex,
-                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}"
+                    message=(
+                        f"{method}: "
+                        f"{CoordSearchException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _search_by_column(cls, data_set: List[Coord], column: int) -> SearchResult[List[Coord]]:
+    def _search_by_column(
+            cls,
+            data_set: List[Coord],
+            column: int
+    ) -> SearchResult[List[Coord]]:
         """"""
         method = "CoordSearchService.search_by_column"
         try:
@@ -98,13 +123,16 @@ class CoordSearchService:
             return SearchResult.failure(
                 CoordSearchException(
                     ex=ex,
-                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}"
+                    message=(
+                        f"{method}: "
+                        f"{CoordSearchException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _search_by_row_and_coord(cls, data_set: List[Coord], row:int, column: int) -> SearchResult[List[Coord]]:
+    def _searc_by_both(cls, data_set: List[Coord], row:int, column: int) -> SearchResult[List[Coord]]:
         """"""
         method = "CoordSearchService.search_by_coord"
         

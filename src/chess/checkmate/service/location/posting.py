@@ -38,7 +38,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
                 )
             )
         
-        check_posting_search_result = CheckPostingService.search(king=request.actor, location=request.destination_square)
+        check_posting_search_result = CheckPostingService.find(king=request.actor, location=request.destination_square)
         if check_posting_search_result.is_failure():
             return TransactionResult.errored(event_update=request, exception=check_posting_search_result.exception)
         if check_posting_search_result.is_success():

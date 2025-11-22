@@ -44,8 +44,8 @@ class TeamSearch(Search[Agent, Team]):
         """
         # Action:
         1.  Verify the data_owner is a valid Agent using the agent_validator.
-        2.  Verify the search_context is a valid TeamSearchContext using the search_context_validator.
-        3.  Extract the search_context attribute. and call either _id_search, _name_search, or _color_search.
+        2.  Verify the context is a valid TeamSearchContext using the search_context_validator.
+        3.  Extract the context attribute. and call either _id_search, _name_search, or _color_search.
 
         # Parameters:
             *   candidate (Any):                                Object to verify is a color.

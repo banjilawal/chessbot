@@ -1,22 +1,22 @@
-# src/chess/coord/service/exception/exception.py
+# src/chess/coord/service/exception.py
 
 """
-Module: chess.coord.service.exception.exception
+Module: chess.coord.service.exception
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.system import ServiceException
+from chess.system import DataServiceException
 
 __all__ = [
     "CoordServiceException",
     "AddingDuplicateCoordException",
-    "RemovingNonExistentCoordException",
+    "RemovingNullCoordException",
 ]
 
 
-class CoordServiceException(ServiceException):
+class CoordServiceException(DataServiceException):
     """
     Super class of exceptions raised by CoordService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
@@ -31,7 +31,7 @@ class AddingDuplicateCoordException(ServiceException):
     DEFAULT_MESSAGE = "CoordService cannot add duplicate Coords to the list."
 
 
-class RemovingNonExistentCoordException(ServiceException):
+class RemovingNullCoordException(ServiceException):
     """Raised when trying  to remove a Coord not in the list."""
     ERROR_CODE = "REMOVING_NON_EXISTENT_COORD_ERROR"
     DEFAULT_MESSAGE = "CoordService cannot aremove a Coord not in the list."

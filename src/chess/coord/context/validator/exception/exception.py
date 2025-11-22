@@ -1,12 +1,11 @@
-# src/square/search/context/collision.py
+# src/chess/coord/context/validator/exception/exception.py
 
 """
-Module: chess.square.search.context.exception
+Module: chess.coord.context.validator.exception.exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-16
 version: 1.0.0
 """
-
 
 from chess.system import (
     BuildOptionSelectionTooLargeException, ContextException, NoBuildOptionSelectedException, NullException,
@@ -16,15 +15,15 @@ from chess.system import (
 __all__ = [
     "CoordSearchContextException",
     
-# ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
+    # ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
     "NullCoordSearchContextException",
     
-# ========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+    # ========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
     "InvalidCoordSearchContextException",
     "NoCoordSearchOptionSelectedException",
     "MoreThanOneCoordSearchOptionPickedException",
     
-# ========================= COORD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+    # ========================= COORD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
     "CoordSearchContextBuildFailedException",
 ]
 
@@ -38,14 +37,14 @@ class CoordSearchContextException(ContextException):
     DEFAULT_MESSAGE = "CoordSearchContext raised an exception."
 
 
-#========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
+# ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullCoordSearchContextException(CoordSearchContextException, NullException):
     """Raised if an entity, method, or operation requires Coord but gets validation instead."""
     ERROR_CODE = "NULL_COORD_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "CoordSearchContext cannot be validation"
 
 
-#========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+# ========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
 class InvalidCoordSearchContextException(CoordSearchContextException, ValidationException):
     """Catchall Exception for CoordSearchContextValidator when a validation candidate fails a sanity check."""
     ERROR_CODE = "COORD_SEARCH_CONTEXT_VALIDATION_ERROR"
@@ -67,11 +66,3 @@ class MoreThanOneCoordSearchOptionPickedException(
     DEFAULT_MESSAGE = "Only one CoordSearchContext option can be selected."
 
 
-#========================= COORD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
-class CoordSearchContextBuildFailedException(CoordSearchContextException, BuildFailedException):
-    """
-    Catchall Exception for CoordSearchContextBuilder when it encounters an error building
-    a CoordSearchContext.
-    """
-    ERROR_CODE = "COORD_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "CoordSearchContext build failed."

@@ -152,8 +152,8 @@ class CoordService(DataService[Coord]):
     #             return Result.failure(coord_validation.exception)
     #         if coord not in  self._coords:
     #             return Result.failure(
-    #                 RemovingNonExistentCoordException(
-    #                     f"{method}: {RemovingNonExistentCoordException.DEFAULT_MESSAGE}"
+    #                 RemovingNullCoordException(
+    #                     f"{method}: {RemovingNullCoordException.DEFAULT_MESSAGE}"
     #                 )
     #             )
     #         coord = self._coords.remove(coord)

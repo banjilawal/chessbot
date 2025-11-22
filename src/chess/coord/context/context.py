@@ -11,7 +11,7 @@ from typing import Optional
 
 
 from chess.system import SearchContext
-from chess.coord import Coord, CoordSearchContext
+from chess.coord import Coord, CoordSearchContext, CoordValidator
 from chess.system.context import ContextMaskList
 
 
@@ -37,7 +37,7 @@ class CoordSearchContext(SearchContext):
     def __init__(
             self,
             row: Optional[int] = None,
-            column: Optional[str] = None,
+            column: Optional[int] = None,
     ):
         super().__init__(id=None, name=None)
         self._row = row
@@ -49,19 +49,7 @@ class CoordSearchContext(SearchContext):
     
     @property
     def column(self) -> Optional[int]:
-        return self._column
-    
-    @classmethod
-    def row_context(cls, row: int) -> CoordSearchContext:
-        return cls(row=row)
-    
-    @classmethod
-    def column_context(cls, column: str) -> CoordSearchContext:
-        return cls(column=column)
-    
-    @classmethod
-    def row_column_context(cls, row: int, column: str) -> CoordSearchContext:
-        return cls(row=row, column=column)
+            return self._column
     
     def to_dict(self) -> dict:
         return {

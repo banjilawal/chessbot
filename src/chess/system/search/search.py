@@ -49,7 +49,7 @@ class Search(ABC, Generic[A, S, R]):
       Action:
       Parameters:
           * `data_owner` (`A`):
-          * `search_context` (`S`):
+          * `context` (`S`):
       Returns:
           `SearchResult[List[R]]` or `Void`
       Raise:

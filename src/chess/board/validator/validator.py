@@ -144,7 +144,7 @@ class BoardValidator(Validator[Board]):
                     )
                 )
             
-            square_search_result = board_square_search.search(board=board, piece)
+            square_search_result = board_square_search.find(board=board, piece)
             
             
             

@@ -11,6 +11,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from chess.system import Builder, DataResult, SearchContext, SearchResult, Service, Validator
+from chess.system.search.service import SearchService
 
 T = TypeVar("T")
 
@@ -18,15 +19,25 @@ T = TypeVar("T")
 class DataService(ABC, Service[Generic[T]]):
     """"""
     _items: [T]
+    _search_service: SearchService[T]
     
-    def __init__(self, id: int, name: str, items: [T], builder: Builder[T], validator: Validator[T]):
+    def __init__(
+            self,
+            id: int,
+            name: str,
+            items: [T],
+            builder: Builder[T],
+            validator: Validator[T],
+            search_service: SearchService[T],
+    ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._items = items
+        self._search_service = search_service
     
     @property
     def items(self) -> [T]:
         return self._items
     
 
-    @property
-    def
+    def search(self, context: SearchContext) -> SearchResult[[T]]:
+        return self._search_service.find(data_set=items, context=context, )
