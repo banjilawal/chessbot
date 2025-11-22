@@ -31,22 +31,13 @@ class Validator(ABC, Generic[T]):
     # ATTRIBUTES:
         * _candidate (Any): Object to validate.
     """
-    _candidate: Any
+    def __init__(self):
+        pass
     
-    def __init__(self, candidate: Any, *args, **kwargs):
-        self._candidate = candidate
-        
-    @property
-    def candidate(self) -> Any:
-        return self._candidate
-    
-
-    # @abstractmethod
-    # @LoggingLevelRouter.monitor
-    # def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
-    @LoggingLevelRouter.monitor
+    @classmethod
     @abstractmethod
-    def validate(self) -> ValidationResult[T]:
+    @LoggingLevelRouter.monitor
+    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
         """
         # ACTION:
         1.  Check if candidate is validation.

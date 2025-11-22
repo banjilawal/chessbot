@@ -32,17 +32,12 @@ class Builder(ABC, Generic[T]):
         - On failure: Exception.
         
     # ATTRIBUTES:
-        *   validator (Validator[T]): Validator instance used to verify safety of new
+    None
     """
-    _validator: Validator[T]
-    
-    def __init__(self, validator: Validator[T], *args, **kwargs):
-        self._validator = validator
-    
-    @property
-    def validator(self) -> Validator[T]:
-        return self._validator
-    
+    def __init__(self):
+        pass
+
+    @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
     def build(self, *args, **kwargs) -> BuildResult[T]:

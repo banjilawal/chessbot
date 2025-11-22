@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0
 """
-
+from wsgiref.validate import validator
 
 from chess.system import Builder, BuildResult, LoggingLevelRouter
 from chess.scalar import Scalar, ScalarBuildFailedException, ScalarValidator
@@ -29,20 +29,22 @@ class ScalarBuilder(Builder[Scalar]):
         *   _value (int)
         *   _scalar_validator (ScalarValidator)
     """
-    def __init__(self, scalar_validator: ScalarValidator = ScalarValidator()):
-        super().__init__()
-        self._scalar_validator = scalar_validator
-        
+
 
     @LoggingLevelRouter.monitor
-    def build(self, value: int) -> BuildResult[Scalar]:
+    def build(
+            self,
+            value: int,
+            scalar_validator: ScalarValidator = ScalarValidator()
+    ) -> BuildResult[Scalar]:
         """
         # Action:
         If the absolute value of the param is within BOARD_DIMENSION return a new Scalar instance.
         Otherwise, return an exception.
     
         # Parameters:
-            * value (int): selected if search target is an id.
+            *   value (int)
+            *   scalar_validator (ScalarValidator)
     
         # Returns:
           BuildResult[Scalar] containing either:
@@ -50,41 +52,22 @@ class ScalarBuilder(Builder[Scalar]):
                 - On failure: Exception.
     
         # Raises:
-            * NullNumberException
-            * ScalarBelowBoundsException
-            * ScalarAboveBoundsException
             * ScalarBuildFailedException
         """
         method = "ScalarBuilder.builder"
         
         try:
-            validation = self._scalar_validator.validate_value(value)
+            validation = scalar_validator.validate_value(value)
             if validation.is_failure():
                 return BuildResult.failure(validation.exception)
-            # if value is None:
-            #     return BuildResult.failure(
-            #         NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
-            #     )
-            #
-            # if value < -BOARD_DIMENSION:
-            #     return BuildResult.failure(
-            #         ScalarBelowBoundsException(
-            #             f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}"
-            #         )
-            #     )
-            #
-            # if value > BOARD_DIMENSION:
-            #     return BuildResult.failure(
-            #         ScalarAboveBoundsException(
-            #             f"{method}: {ScalarAboveBoundsException.DEFAULT_MESSAGE}"
-            #         )
-            #     )
             
-            return BuildResult.sucess(payload=Scalar(value=self._value))
+            return BuildResult.sucess(payload=Scalar(value=value))
         
         except Exception as ex:
             return BuildResult.failure(
                 ScalarBuildFailedException(
-                    f"{method}: {ScalarBuildFailedException.DEFAULT_MESSAGE}", ex
+                    ex=ex,
+                    message=f"{method}: "
+                            f"{ScalarBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

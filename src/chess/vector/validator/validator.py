@@ -32,13 +32,11 @@ class VectorValidator(Validator[Vector]):
 
     # ATTRIBUTES:
     """
-    
-    def __init__(self, candidate: Any) -> None:
-        super().__init__(candidate)
 
 
+    @classmethod
     @LoggingLevelRouter.monitor
-    def validate(self) -> ValidationResult[Vector]:
+    def validate(cls, candidate: Any) -> ValidationResult[Vector]:
         """
         # ACTION:
         1.  Check candidate is not validation.
@@ -68,24 +66,24 @@ class VectorValidator(Validator[Vector]):
         method = "VectorValidator.validate"
 
         try:
-            if self.candidate is None:
+            if candidate is None:
                 return ValidationResult.failure(
                     NullVectorException(f"{method}: {NullVectorException.DEFAULT_MESSAGE}")
                 )
 
 
-            if not isinstance(self.candidate, Vector):
+            if not isinstance(candidate, Vector):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Vector, got {type(self.candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Vector, got {type(candidate).__name__} instead.")
                 )
 
-            vector = cast(Vector, self.candidate)
+            vector = cast(Vector, candidate)
 
-            x_component_validation = self.validate_x_component(x=vector.x)
+            x_component_validation = cls.validate_x_component(x=vector.x)
             if x_component_validation.is_failure():
                 return ValidationResult.failure(x_component_validation.exception)
             
-            y_component_validation = self._y_component_validator(y=vector.y)
+            y_component_validation = cls.validate_y_component(y=vector.y)
             if y_component_validation.is_failure():
                 return ValidationResult.failure(y_component_validation.exception)
             
