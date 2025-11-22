@@ -11,7 +11,7 @@ from typing import Generic, TypeVar, Any
 
 from chess.system import LoggingLevelRouter, ValidationResult
 
-T = TypeVar("V")
+T = TypeVar("T")
 
 
 class Validator(ABC, Generic[T]):
@@ -29,13 +29,24 @@ class Validator(ABC, Generic[T]):
         - On failure: Exception.
   
     # ATTRIBUTES:
-    None
+        * _candidate (Any): Object to validate.
     """
+    _candidate: Any
     
-    @classmethod
-    @abstractmethod
+    def __init__(self, candidate: Any, *args, **kwargs):
+        self._candidate = candidate
+        
+    @property
+    def candidate(self) -> Any:
+        return self._candidate
+    
+
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
+    @abstractmethod
+    def validate(self) -> ValidationResult[T]:
         """
         # ACTION:
         1.  Check if candidate is validation.
