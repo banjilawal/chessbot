@@ -1,7 +1,7 @@
-# src/chess/square/search/context/context
+# src/chess/coord/context/context
 
 """
-Module: chess.square.search.context.context
+Module: chess.coord.context.context
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -11,11 +11,9 @@ from typing import Optional
 
 
 from chess.system import SearchContext
-from chess.coord import Coord, CoordSearchContext, CoordValidator
-from chess.system.context import ContextMaskList
 
 
-class CoordSearchContext(SearchContext):
+class CoordContext(SearchContext):
     """
     # ROLE: Search option filter
   
@@ -23,12 +21,11 @@ class CoordSearchContext(SearchContext):
     Provides options for what type of key-value pair CoordSearchService implementations use to find matches.
   
     # PROVIDES:
-    CoordSearchContext.
+    CoordContext.
   
     # ATTRIBUTES:
-        *   row (int): Find items whose row matches this value.
-        *   column (str): Find items whose column matches this value.
-        *   square (Coord): Find items whose square matches this value.
+        *   row (int)
+        *   column (int)
     """
     
     _row: Optional[int] = None

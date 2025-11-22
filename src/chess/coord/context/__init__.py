@@ -12,4 +12,4 @@ from .exception import *
 from .validator import *
 from .service import *
 
-from .context import CoordSearchContext
+from .context import CoordContext

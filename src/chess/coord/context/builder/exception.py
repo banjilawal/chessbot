@@ -7,18 +7,16 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-from chess.system import SearchContextException
+from chess.system import BuildFailedException
+from chess.coord import CoordContextException
 
 
 __all__ = [
-    "SearchContextBuildFailedException",
+    "CoordContextBuildFailedException",
 ]
 
-# ======================# SEARCH_CONTEXT BUILD EXCEPTIONS #======================#
-class SearchContextBuildFailedException(SearchContextException, BuildFailedException):
-    """
-    Raised when SearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised builder team_name new searchContext
-    """
-    ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "SearchContext build failed."
+# ======================# COORD_CONTEXT BUILD EXCEPTIONS #======================#
+class CoordContextBuildFailedException(CoordContextException, BuildFailedException):
+    """Catchall Exception for CoordContextBuilder when it stops because of an error."""
+    ERROR_CODE = "COORD_CONTEXT_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "CoordContext build failed."

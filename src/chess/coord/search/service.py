@@ -1,7 +1,7 @@
 # src/chess/coord/search/service.py
 
 """
-Module: chess.coord.search.search
+Module: chess.coord.search.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -12,7 +12,7 @@ from typing import List
 
 from chess.system import LoggingLevelRouter, SearchResult, SearchService
 from chess.coord import (
-    Coord, CoordSearchContextBuilder, CoordSearchContextValidator, CoordSearchException, CoordSearchContext
+    Coord, CoordSearchContextBuilder, CoordSearchContextValidator, CoordSearchException, CoordContext
 )
 
 
@@ -30,7 +30,7 @@ class CoordSearchService(SearchService[Coord]):
     def search(
             cls,
             data_set: List[Coord],
-            context: CoordSearchContext,
+            context: CoordContext,
             context_validator: CoordSearchContextValidator = CoordSearchContextValidator(),
     ) -> SearchResult[List[Coord]]:
         method = "CoordSearchService.search"

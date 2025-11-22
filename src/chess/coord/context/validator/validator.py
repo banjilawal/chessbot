@@ -13,21 +13,21 @@ from typing import Any, cast
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
 from chess.coord import (
-    CoordValidator, CoordSearchContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
+    CoordValidator, CoordContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
     MoreThanOneCoordSearchOptionPickedException, NoCoordSearchOptionSelectedException,
 )
 
-class CoordSearchContextValidator(Validator):
+class CoordContextValidator(Validator):
     """
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a CoordSearchContext that meets the application's safety contract before the client
-        is allowed to use the CoordSearchContext object.
+    1. Verify a candidate is a CoordContext that meets the application's safety contract before the client
+        is allowed to use the CoordContext object.
     2. Provide pluggable factories for validating different options separately.
     
     # PROVIDES:
-      ValidationResult[CoordSearchContext] containing either:
+      ValidationResult[CoordContext] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.
 
@@ -41,12 +41,12 @@ class CoordSearchContextValidator(Validator):
             cls,
             candidate: Any,
             validator: CoordValidator=CoordValidator()
-    ) -> ValidationResult[CoordSearchContext]:
+    ) -> ValidationResult[CoordContext]:
         """
         # Action:
-        Verifies candidate is a CoordSearchContext in two steps.
+        Verifies candidate is a CoordContext in two steps.
             1. Test the candidate is a valid SearchCoordContext with a single search option switched on.
-            2. Test the value passed to CoordSearchContext passes its validation contract..
+            2. Test the value passed to CoordContext passes its validation contract..
 
         # Parameters:
           * candidate (Any): Object to verify is a Coord.
@@ -54,8 +54,8 @@ class CoordSearchContextValidator(Validator):
 
           
         # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
+          ValidationResult[CoordContext] containing either:
+                - On success: CoordContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -76,17 +76,16 @@ class CoordSearchContextValidator(Validator):
                     )
                 )
             
-            if not isinstance(candidate, CoordSearchContext):
+            if not isinstance(candidate, CoordContext):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected a CoordSearchContext, "
+                        f"Expected a CoordContext, "
                         f"got {type(candidate).__column__} instead."
                     )
                 )
-            
            
-            context = cast(CoordSearchContext, candidate)
+            context = cast(CoordContext, candidate)
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     NoCoordSearchOptionSelectedException(
@@ -145,15 +144,15 @@ class CoordSearchContextValidator(Validator):
     ) -> ValidationResult[int]:
         """
         # Action:
-        Verify a row_candidate meets application CoordSearchContext safety requirements.
+        Verify a row_candidate meets application CoordContext safety requirements.
 
         # Parameters:
           * candidate (Any): Object to verify is a row.
           * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
+          ValidationResult[CoordContext] containing either:
+                - On success: CoordContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -186,15 +185,15 @@ class CoordSearchContextValidator(Validator):
     ) -> ValidationResult[int]:
         """
         # Action:
-        Verify a column_candidate meets application CoordSearchContext safety requirements.
+        Verify a column_candidate meets application CoordContext safety requirements.
 
         # Parameters:
           * candidate (Any): Object to verify is a column.
           * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
-          ValidationResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
+          ValidationResult[CoordContext] containing either:
+                - On success: CoordContext in the payload.
                 - On failure: Exception.
 
         # Raises:

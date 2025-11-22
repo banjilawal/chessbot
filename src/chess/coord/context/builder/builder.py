@@ -12,24 +12,22 @@ from typing import Optional
 
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.coord import (
-    Coord, CoordSearchContextValidator, CoordValidator, CoordSearchContext, CoordSearchContextBuildFailedException,
-    NoCoordSearchOptionSelectedException, MoreThanOneCoordSearchOptionPickedException,
+    CoordContextValidator, CoordContext, CoordContextBuildFailedException,
+    NoCoordContextFlagSetException
 )
 
 
-class CoordSearchContextBuilder(Builder[CoordSearchContext]):
+class CoordContextBuilder(Builder[CoordContext]):
     """
     # ROLE: Builder
 
     # RESPONSIBILITIES:
-        1. Manage conintuction of CoordSearchService instances that can be used safely by the client.
-        2. Ensure params for CoordSearchService creation have met the application's safety contract.
-        3. Provide pluggable factories for creating different CoordSearchContext products.
-
+        1. Produce only CoordContext instances that are safe and reliable.
+        2. Ensure params for CoordContext have correctness.
 
     # PROVIDES:
-      ValidationResult[CoordSearchContext] containing either:
-            - On success: CoordSearchContext in the payload.
+      BuildResult[CoordContext] containing either:
+            - On success: CoordContext in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -42,27 +40,27 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
             cls,
             row: Optional[int],
             column: Optional[int],
-            validator: CoordSearchContextValidator = CoordSearchContextValidator()
-    ) -> BuildResult[CoordSearchContext]:
+            validator: CoordContextValidator = CoordContextValidator()
+    ) -> BuildResult[CoordContext]:
         """
         # Action:
-            1. Use dependency injected validators to verify correctness of parameters required to
-                builder a CoordSearchContext instance.
-            2. If the parameters are safe the CoordSearchContext is built and returned.
+            1. Use validator to certify either row or column are safe.
+            2. If any validations fail return the exception in a BuildResult.
+            3. If all checks pass build the CoordContext in a BuildResult.
 
         # Parameters:
-            * row (Optional[int]): selected if search square is an id.
-            * column (Optional[int]): selected if search square is a column.
-            * square (Optional[Coord]): selected if search square is a square.
-            * validator (type[CoordValidator]): validates an id-search-square
+        At least one of the following must be provided:
+            * row (Optional[int])
+            * column (Optional[int])
+            * validator (CoordContextValidator)
 
         # Returns:
-          BuildResult[CoordSearchContext] containing either:
-                - On success: CoordSearchContext in the payload.
+          BuildResult[CoordContext] containing either:
+                - On success: CoordContext in the payload.
                 - On failure: Exception.
 
         # Raises:
-            * CoordSearchContextBuildFailedException
+            * CoordContextBuildFailedException
             * NoCoordSearchOptionSelectedException
             * MoreThanOneCoordSearchOptionPickedException
         """
@@ -74,9 +72,9 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
             
             if param_count == 0:
                 return BuildResult.failure(
-                    NoCoordSearchOptionSelectedException(
+                    NoCoordContextFlagSetException(
                         f"{method}: "
-                        f"{NoCoordSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                        f"{NoCoordContextFlagSetException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -88,8 +86,7 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 else:
-                    return BuildResult.success(
-                        payload=CoordSearchContext(
+                    return BuildResult.success(CoordContext(
                             row=row,
                             column=column
                         )
@@ -100,26 +97,22 @@ class CoordSearchContextBuilder(Builder[CoordSearchContext]):
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 else:
-                    return BuildResult.success(
-                        payload=CoordSearchContext(row=row)
-                    )
+                    return BuildResult.success(CoordContext(row=row))
                 
             if column is not None:
                 validation = validator.validate_column_context(column=column)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 else:
-                    return BuildResult.success(
-                        payload=CoordSearchContext(column=column)
-                    )
+                    return BuildResult.success(CoordContext(column=column))
         
         except Exception as ex:
             return BuildResult.failure(
-                CoordSearchContextBuildFailedException(
+                CoordContextBuildFailedException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{CoordSearchContextBuildFailedException.DEFAULT_MESSAGE}"
+                        f"{CoordContextBuildFailedException.DEFAULT_MESSAGE}"
                     )
                 )
             )

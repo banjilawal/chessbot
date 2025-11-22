@@ -10,14 +10,7 @@ version: 1.0.0
 from chess.system import ChessException, NullException, BuildFailedException, ValidationException
 
 __all__ = [
-  'ContextException',
-
-#======================# CONTEXT VALIDATION EXCEPTIONS #======================#  
-  'NullContextException',
-  'InvalidContextException',
-
-#======================# CONTEXT BUILD EXCEPTIONS #======================#  
-  'ContextBuildFailedException',
+  "ContextException",
 ]
 
 class ContextException(ChessException):
@@ -27,29 +20,3 @@ class ContextException(ChessException):
   """
   ERROR_CODE = "CONTEXT_ERROR"
   DEFAULT_MESSAGE = "Context raised an exception."
-
-#======================# CONTEXT VALIDATION EXCEPTIONS #======================#  
-class NullContextException(ContextException, NullException):
-  """
-  Raised if an entity, method, or operation requires team_name context but
-  gets validation instead.
-  """
-  ERROR_CODE = "NULL_CONTEXT_ERROR"
-  DEFAULT_MESSAGE = f"Context cannot be validation"
-
-class InvalidContextException(ContextException, ValidationException):
-  """
-  Raised by contextBValidator if context fails sanity checks. Exists primarily to
-  catch all exceptions raised validating an existing context
-  """
-  ERROR_CODE = "CONTEXT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Context validation failed."
-
-#======================# CONTEXT BUILD EXCEPTIONS #======================#  
-class ContextBuildFailedException(ContextException, BuildFailedException):
-  """
-  Raised when ContextBuilder encounters an error while building team_name team_name.
-  Exists primarily to catch all exceptions raised builder team_name new context
-  """
-  ERROR_CODE = "CONTEXT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Context build failed."
