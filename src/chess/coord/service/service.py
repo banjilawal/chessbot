@@ -15,13 +15,10 @@ from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidat
 
 class CoordService(Service[Coord]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for Square, VectoValidator and SquareBuilder objects.
-    2.  Masks implementation details and business logic making features easier to use.
-    3.  Protects Square objects from direct, unprotected access.
-    4.  Public facing API.
+
 
     # PROVIDES:
         *   SquareBuilder
@@ -36,28 +33,21 @@ class CoordService(Service[Coord]):
         *   identity_service (IdentityService)
     """
     """
-    # ROLE: Service, Data Protraction
-
-    # RESPONSIBILITIES:
-    1.  Manages integrity lifecycle of Coord objects.
-    2.  Vector addition and scalar multiplication of Coord objects.
-    3.  Calculate distance between two Coords.
     # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.
-    2.  Protects CoordStack objects from direct manipulation.
-    3.  Extends behavior and functionality of CoordStack objects.
-    4.  Public facing API for CoordStack modules.
-    5.  Vector addition
-    6.  Scalar multiplication
+    1.  An API for managing the integrity lifecycle of Coord objects through CoordBuilder and CoordValidator.
+    2.  Protects Coord instances from direct access to assure high reliability and consistency from a single
+        source of truth.Assure reliability and consistency by protecting Coord objects from direct access.direct access to Coord objects.
+    3.  Vector addition
+    4.  Scalar multiplication
+    5.  Converting Vectors to Coords and vice versa.
     
     # PROVIDES:
-        *   CoordBuilding
-        *   CoordValidation
-        *   Scalar multiplication
-        *   Vector addition
-
+        *   CoordBuilder
+        *   CoordValidator
+        *   VectorService
+        *   ScalarService
 
     # ATTRIBUTES:
         *   builder (type[CoordBuilder])
@@ -118,51 +108,6 @@ class CoordService(Service[Coord]):
             column=column,
             validator=self._validator
         )
-    
-    # def build_data(self, coord: Coord) -> Result[Coord]:
-    #     method = "CoordService.add_coord"
-    #     try:
-    #         coord_validation = self._validator.validate(candidate=coord)
-    #         if coord_validation.is_failure():
-    #             return Result.failure(coord_validation.exception)
-    #
-    #         if coord in self._squares:
-    #             return Result.failure(
-    #                 AddingDuplicateCoordException(
-    #                     f"{method}: {AddingDuplicateCoordException.DEFAULT_MESSAGE}"
-    #                 )
-    #             )
-    #         self._squares.append(coord)
-    #         return Result.success(coord)
-    #     except Exception as ex:
-    #         return Result.failure(
-    #             CoordServiceException(
-    #                 f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
-    #             )
-    #         )
-    #
-    # def remove_coord(self, coord: Coord) -> Result[Coord]:
-    #     method = "CoordService.remove_coord"
-    #     try:
-    #         coord_validation = self._validator.validate(candidate=coord)
-    #         if coord_validation.is_failure():
-    #             return Result.failure(coord_validation.exception)
-    #         if coord not in  self._coords:
-    #             return Result.failure(
-    #                 RemovingNullCoordException(
-    #                     f"{method}: {RemovingNullCoordException.DEFAULT_MESSAGE}"
-    #                 )
-    #             )
-    #         coord = self._coords.remove(coord)
-    #         return Result.success(coord)
-    #     except Exception as ex:
-    #         return Result.failure(
-    #             CoordServiceException(
-    #                 f"{method}: ex=ex, message={CoordServiceException.DEFAULT_MESSAGE}"
-    #             )
-    #
-
-    
     
     def add_vector_to_coord(
             self,
