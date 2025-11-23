@@ -29,8 +29,6 @@ class CoordService(Service[Coord]):
     # ATTRIBUTES:
         *   builder (type[SquareBuilder]):
         *   validator (type[SquareValidator]):
-        *   coord_service (CoordService)
-        *   identity_service (IdentityService)
     """
     """
     # ROLE: Service, Encapsulation, API layer.
