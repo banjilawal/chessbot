@@ -8,6 +8,7 @@ Created: 2025-07-26
 
 from typing import Optional
 
+from chess.board import Board
 from chess.coord import Coord
 from chess.piece import Piece
 
@@ -24,18 +25,20 @@ class Square:
     Square
   
     # ATTRIBUTES:
-        *   _id (int): unique identifier
-        *   _name (str): designation-number combination. Only unique in the Board
-        *   _coord (Coord): row-column array indices in Board array.
-        *   _occupant (Optional[Piece]): Piece object that might be occupying the Square.
+        *   _id (int)
+        *   _name (str)
+        *   _board (Board)
+        *   _coord (Coord)
+        *   _occupant (Optional[Piece])
     """
     _id: int
     _name: str
+    _board: Board
     _coord: Coord
     _occupant: Optional[Piece]
     
     
-    def __init__(self, id: int, name: str, coord: Coord):
+    def __init__(self, id: int, name: str, coord: Coord, board: Board):
         """
         # ACTION:
         Construct a Piece instance.
@@ -54,6 +57,7 @@ class Square:
         self._id = id
         self._name = name
         self._coord = coord
+        self._board = board
         self._occupant = None
     
     @property
@@ -63,6 +67,10 @@ class Square:
     @property
     def name(self) -> str:
         return self._name
+    
+    @property
+    def board(self) -> Board:
+        return self._board
     
     @property
     def coord(self) -> Coord:

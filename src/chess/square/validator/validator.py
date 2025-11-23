@@ -8,6 +8,7 @@ Created: 2025-09-11
 
 from typing import Any, cast
 
+from chess.board import BoardService
 from chess.coord import CoordService, CoordValidator
 from chess.piece import Piece, PieceValidator
 from chess.square import (
@@ -40,6 +41,7 @@ class SquareValidator(Validator[Square]):
     def validate(
             cls,
             candidate: Any,
+            board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Square]:
@@ -96,6 +98,10 @@ class SquareValidator(Validator[Square]):
             coord_validation = coord_service.validator.validate(candidate=square.coord)
             if coord_validation.is_failure():
                 return ValidationResult.failure(coord_validation.exception)
+            
+            board_validation = board_service.validator.validate(square.board)
+            if board_validation.is_failure():
+                return ValidationResult.failure(board_validation.exception)
             
             return ValidationResult.success(payload=square)
         

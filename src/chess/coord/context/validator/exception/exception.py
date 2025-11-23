@@ -18,8 +18,8 @@ __all__ = [
 ]
 
 
-# ========================= COORD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+# ========================= COORD_CONTEXT VALIDATION EXCEPTIONS =========================#
 class InvalidCoordContextException(CoordContextException, ValidationException):
-    """Catchall Exception for CoordSearchContextValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for CoordContextValidator when a validation candidate fails a sanity check."""
     ERROR_CODE = "COORD_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "CoordContext validation failed."

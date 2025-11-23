@@ -12,6 +12,7 @@ from chess.coord import InvalidCoordContextException
 
 
 __all__ = [
+    # ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
     "NullCoordContextException"
 ]
 

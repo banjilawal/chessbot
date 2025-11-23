@@ -6,10 +6,9 @@ Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
 """
-
-
+from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
-from chess.square import Square, SquareBuildFailedException
+from chess.square import Square, SquareBuildFailedException, SquareValidator
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 
 
@@ -37,23 +36,29 @@ class SquareBuilder(Builder[Square]):
             cls,
             id: int,
             name: str,
+            board: Board,
             coord: Coord,
+            board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService()
+            square_validator: SquareValidator = SquareValidator(),
+            identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Square]:
         """
         # ACTION:
         1.  Run identity-integrity checks with identity_service.
-        2.  Ron target-integrity checks with coord_service.
-        3.  If any checks fail, send their exception to the caller in a BuildResult.
-        4.  When all checks pass, create a new Square object then send to the caller in a BuildResult.
+        2.  Run coord-integrity checks with coord_service.
+        3.  Run board-integrity checks with board_service.
+        4.  If any checks fail, send their exception to the caller in a BuildResult.
+        5.  When all checks pass, create a new Square object then send to the caller in a BuildResult.
     
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   target (target)
-            *   coord_service (CoordService): validates target.
-            *   identity_service (IdentityService): validates id and name.
+            *   cord (Coord)
+            *   board (Board)
+            *   board_service (BoardService)
+            *   coord_service (CoordService)
+            *   identity_service (IdentityService)
     
         # Returns:
         ValidationResult[Square] containing either:
@@ -73,17 +78,29 @@ class SquareBuilder(Builder[Square]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            coord_validation = coord_service.validator.validate(candidate=coord)
+            coord_validation = coord_service.validator.validate(coord)
             if coord_validation.is_failure():
                 return BuildResult.failure(coord_validation.exception)
             
-            return BuildResult(payload=Square(id=id, name=name, coord=coord))
+            board_validation = board_service.validator.validate(board)
+            if board_validation.is_failure():
+                return BuildResult.failure(board_validation.exception)
+            
+            return BuildResult.success(
+                payload=Square(
+                    id=id,
+                    name=name,
+                    coord=coord,
+                    board=board)
+            )
         
         except Exception as ex:
             return BuildResult(
                 SquareBuildFailedException(
                     ex=ex,
-                    message=f"{method}: "
-                            f"{SquareBuildFailedException.DEFAULT_MESSAGE}"
+                    message=(
+                        f"{method}: "
+                        f"{SquareBuildFailedException.DEFAULT_MESSAGE}"
+                    )
                 )
             )

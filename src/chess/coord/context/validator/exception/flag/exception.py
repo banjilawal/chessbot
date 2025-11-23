@@ -1,7 +1,7 @@
-# src/chess/coord/context/validator/exception/selection/exception.py
+# src/chess/coord/context/validator/exception/flag/exception.py
 
 """
-Module: chess.coord.context.validator.exception.selection.exception
+Module: chess.coord.context.validator.exception.flag.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -13,11 +13,17 @@ from chess.coord import InvalidCoordContextException
 
 
 __all__ = [
+    # ========================= COORD_CONTEXT FLAG EXCEPTIONS =========================#
     "NoCoordContextFlagSetException",
     "TooManyCoordContextFlagsSetException"
 ]
 
-class NoCoordContextFlagSetException(InvalidCoordContextException, BoundsException):
+
+# ========================= COORD_CONTEXT FLAG EXCEPTIONS =========================#
+class NoCoordContextFlagSetException(
+    InvalidCoordContextException,
+    BoundsException
+):
     """Raised if no CoordContext was selected."""
     ERROR_CODE = "NO_COORD_CONTEXT_FLAG_SET_ERROR"
     DEFAULT_MESSAGE = "At least one CoordContext flag must be set."
@@ -25,5 +31,5 @@ class NoCoordContextFlagSetException(InvalidCoordContextException, BoundsExcepti
 
 class TooManyCoordContextFlagsSetException(InvalidCoordContextException, BoundsException):
     """Raised if too many CoordContext flags were set."""
-    ERROR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
+    ERROR_CODE = "COORD_CONTEXT_MAX_PARAM_ERROR"
     DEFAULT_MESSAGE = "Only one CoordContext flag can be set."
