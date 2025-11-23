@@ -27,7 +27,7 @@ class CoordSearchService(SearchService[Coord]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def search(
+    def find(
             cls,
             data_set: List[Coord],
             context: CoordContext,
@@ -39,28 +39,25 @@ class CoordSearchService(SearchService[Coord]):
             if context_validation.is_failure():
                 return SearchResult.failure(context_validation.exception)
             
-            if context.row is not None:
+            if context.row is not None and context.column is None:
                 return cls._search_by_row(
                     data_set=data_set,
                     row=context.row
                 )
             
-            if context.column is not None:
-                return cls._search_by_column(
+            if context.column is not None and context.row is None:
+                return cls._find_by_column(
                     data_set=data_set,
                     column=context.column
                 )
             
-            if (
-                    context.column is not None and
-                    context.row is not None
-            ):
-                return cls._searc_by_both(
+            if context.column is not None and context.row is not None:
+                return cls._find_by_row_and_coord(
                     data_set=data_set,
                     row=context.row,
                     column=context.column
                 )
-            
+  
         except Exception as ex:
             return SearchResult.failure(
                 CoordSearchException(
@@ -75,20 +72,20 @@ class CoordSearchService(SearchService[Coord]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _search_by_row(
+    def _find_by_row(
             cls,
             data_set: List[Coord],
             row: int
     ) -> SearchResult[List[Coord]]:
         """"""
-        method = "CoordSearchService.search_by_row"
+        method = "CoordSearchService._find_by_row"
         
         try:
             matches = [coord for coord in data_set if coord.row == row]
             
             if len(matches) == 0:
                 return SearchResult.empty()
-            elif len(matches) >  1:
+            elif len(matches) >=  1:
                 return SearchResult.success(payload=matches)
             
         except Exception as ex:
@@ -104,19 +101,19 @@ class CoordSearchService(SearchService[Coord]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _search_by_column(
+    def _find_by_column(
             cls,
             data_set: List[Coord],
             column: int
     ) -> SearchResult[List[Coord]]:
         """"""
-        method = "CoordSearchService.search_by_column"
+        method = "CoordSearchService._find_by_column"
         try:
             matches = [coord for coord in data_set if coord.column == column]
             
             if len(matches) == 0:
                 return SearchResult.empty()
-            elif len(matches) > 1:
+            elif len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
         except Exception as ex:
@@ -132,16 +129,21 @@ class CoordSearchService(SearchService[Coord]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _searc_by_both(cls, data_set: List[Coord], row:int, column: int) -> SearchResult[List[Coord]]:
+    def _find_by_row_and_column(
+            cls,
+            data_set: List[Coord],
+            row:int,
+            column: int
+    ) -> SearchResult[List[Coord]]:
         """"""
-        method = "CoordSearchService.search_by_coord"
+        method = "CoordSearchService._find_by_row_and_column"
         
         try:
             matches = [point for point in data_set if point.row == row and point.column == column]
             
             if len(matches) == 0:
                 return SearchResult.empty()
-            elif len(matches) > 1:
+            elif len(matches) >= 1:
                 
                 return SearchResult.success(payload=matches)
         except Exception as ex:
