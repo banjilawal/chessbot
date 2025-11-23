@@ -13,8 +13,8 @@ from typing import Any, cast
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
 from chess.coord import (
-    CoordValidator, CoordContext, InvalidCoordSearchContextException, NullCoordSearchContextException,
-    MoreThanOneCoordSearchOptionPickedException, NoCoordSearchOptionSelectedException,
+    CoordValidator, CoordContext, InvalidCoordContextException, NoCoordContextFlagSetException,
+    NullCoordContextException
 )
 
 class CoordContextValidator(Validator):
@@ -60,7 +60,7 @@ class CoordContextValidator(Validator):
 
         # Raises:
             * TypeError
-            * InvalidCoordSearchContextException
+            * NullCoordContextException
             * NullCoordSearchContextException
             * NoCoordSearchOptionSelectedException
             * MoreThanOneCoordSearchOptionPickedException
@@ -70,9 +70,9 @@ class CoordContextValidator(Validator):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullCoordSearchContextException(
+                    NullCoordContextException(
                         f"{method} "
-                        f"{NullCoordSearchContextException.DEFAULT_MESSAGE}"
+                        f"{NullCoordContextException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -88,17 +88,16 @@ class CoordContextValidator(Validator):
             context = cast(CoordContext, candidate)
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoCoordSearchOptionSelectedException(
+                    NoCoordContextFlagSetException(
                         f"{method}: "
-                        f"{NoCoordSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                        f"{NoCoordContextFlagSetException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if context.row is not None and context.column is not None:
                 validation = cls.validate_both(
                     row_candidate=context.row,
-                    column_candidate=context.column,
-                    validator=validator
+                    column_candidate=context.column
                 )
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
@@ -126,11 +125,11 @@ class CoordContextValidator(Validator):
                     return ValidationResult.success(payload=validation.payload)
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordSearchContextException(
+                InvalidCoordContextException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -167,11 +166,11 @@ class CoordContextValidator(Validator):
             return ValidationResult.success(payload=validation.payload)
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordSearchContextException(
+                InvalidCoordContextException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -208,11 +207,11 @@ class CoordContextValidator(Validator):
             return ValidationResult.success(validation.payload)
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordSearchContextException(
+                InvalidCoordContextException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -242,11 +241,11 @@ class CoordContextValidator(Validator):
             
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordSearchContextException(
+                InvalidCoordContextException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{InvalidCoordSearchContextException.DEFAULT_MESSAGE}"
+                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
                     )
                 )
             )
