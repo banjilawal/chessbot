@@ -5,9 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/combatant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/combatant/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/combatant/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/combatant/pawn/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/combatant/pawn/exception/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/piece/king/exception/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/dto/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/dto/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/dto/dto.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/dto/example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/builder/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/builder/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/builder/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/checker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/discoveries.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/dto.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/checker/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/combatant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/combatant/combatant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/discoveries.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/discovery.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/dto.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/discover/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/dto/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/dto/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/dto/dto.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/search/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/search/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/service/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/service/service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/service/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/stack/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,11 +333,11 @@
       <recent name="$PROJECT_DIR$/src/chess/system/resolution" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/piece/combatant" />
       <recent name="$PROJECT_DIR$/src/chess/square/context/validator/exception" />
       <recent name="$PROJECT_DIR$/src/chess/coord/service" />
       <recent name="$PROJECT_DIR$/src/chess/coord/serviceex" />
       <recent name="$PROJECT_DIR$/src/chess/coord/service/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/coord/context/service" />
     </key>
   </component>
   <component name="RunManager" selected="Python.pawn">
@@ -640,7 +682,7 @@
       <workItem from="1763865359241" duration="5067000" />
       <workItem from="1763877412747" duration="6273000" />
       <workItem from="1763884142435" duration="3250000" />
-      <workItem from="1763899883407" duration="9202000" />
+      <workItem from="1763899883407" duration="11654000" />
     </task>
     <servers />
   </component>

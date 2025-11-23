@@ -1,7 +1,7 @@
-# src/chess/piece/builder/factory.py
+# src/chess/piece/factory/factory.py
 
 """
-Module: chess.piece.builder.factory
+Module: chess.piece.factory.factory
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0

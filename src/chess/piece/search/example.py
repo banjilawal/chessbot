@@ -1,4 +1,4 @@
-# src/chess/discovery/checker.py
+
 """
 Module: chess.discovery.discovery
 Author: Banji Lawal

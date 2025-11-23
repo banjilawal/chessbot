@@ -16,5 +16,4 @@ from .exception import *
 from .exception import *
 from .validator import *
 
-
 from .square import Square

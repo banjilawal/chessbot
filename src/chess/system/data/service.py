@@ -48,6 +48,7 @@ class DataService(ABC, Service[Generic[T]]):
     @property
     @abstractmethod
     def context_service(self) -> SearchContextService[T]:
+        pass
     
     @abstractmethod
     def search(self, context: SearchContext) -> SearchResult[[T]]:
