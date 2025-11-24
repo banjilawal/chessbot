@@ -17,6 +17,7 @@ from chess.square import Square, SquareContext, SquareContextService, SquareSear
 class SquareDataService(DataService[Square]):
     """"""
     DEFAULT_NAME = "SquareDataService"
+    
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -25,7 +26,6 @@ class SquareDataService(DataService[Square]):
             search: SquareSearch = SquareSearch(),
             service: SquareService = SquareService(),
             context_service: SquareContextService =  SquareContextService(),
-
     ):
         super().__init__(
             id=id,
@@ -37,7 +37,7 @@ class SquareDataService(DataService[Square]):
         )
         
     @LoggingLevelRouter.monitor
-    def search(self, context: SquareContext) -> SearchResult[List[Square]]:
+    def query(self, context: SquareContext) -> SearchResult[List[Square]]:
         """"""
         method = "SquareDataService.search"
         return self._search.find(

@@ -13,7 +13,5 @@ from chess.system.data import DataServiceException
 
 __all__ = ["RemovingNullException"]
 
-class RemovingNullException(DataServiceException):
-    ERROR_CODE = "REMOVING_NULL_ERROR"
-    DEFAULT_MESSAGE = "Cannot remove an item that does not exist."
+
     

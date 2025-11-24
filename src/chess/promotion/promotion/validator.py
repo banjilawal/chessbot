@@ -24,7 +24,7 @@ from chess.piece import (
 )
 
 
-class PromotionEventValidator(Validator[PromotionEvent]):
+class OldPromotionEventValidator(Validator[PromotionEvent]):
     """"""
     
     @classmethod

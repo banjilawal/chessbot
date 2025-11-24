@@ -1,4 +1,4 @@
-# src/chess/system/data/exception/exception.py
+# src/chess/system/data/exception.py
 
 """
 Module: chess.system.data.exception.__init__
@@ -11,6 +11,6 @@ from chess.system import ChessException
 
 __all__ = ["DataServiceException"]
 
-class DataServiceException(ChessException):
-    ERROR_CODE = "DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "DataService raised an exception."
+class DataException(ChessException):
+    ERROR_CODE = "DATA_ERROR"
+    DEFAULT_MESSAGE = "Data exception was raised."

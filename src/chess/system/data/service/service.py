@@ -8,7 +8,7 @@ Version: 1.0.0
 """
 
 from abc import ABC, abstractmethod
-from typing import Generic, List, TypeVar
+from typing import Generic, List, Optional, TypeVar
 
 from chess.system import Context, SearchResult, Service, Search
 
@@ -19,11 +19,14 @@ C = TypeVar("C", binding=Context)
 class DataService(ABC, [Generic [A,C]]):
     """"""
     _id: int
+    _size: int
     _name: str
     _items: List[A]
     _search: Search[A]
     _service: Service[A]
     _context_service: Service[C]
+    
+    _current_item: A
 
     
     def __init__(
@@ -42,16 +45,23 @@ class DataService(ABC, [Generic [A,C]]):
         self._service = service
         self._context_service = context_service
         
+        self._size = len(self._items)
+        self._current_item = self._items[-1] if self._items else None
+        
     @property
-    def id(self) -> id:
+    def id(self) -> int:
         return self._id
+    
+    @property
+    def size(self) -> int:
+        return len(self._items)
     
     @property
     def name(self) -> str:
         return self._name
     
     @property
-    def items(self) -> [A]:
+    def items(self) -> List[A]:
         return self._items
     
     @property
@@ -62,6 +72,14 @@ class DataService(ABC, [Generic [A,C]]):
     def context_service(self) -> Service[C]:
         return self._context_service
     
+    @property
+    def current_item(self) -> Optional[A]:
+        return self._items[-1] if self._items else None
+    
+    
+    def is_empty(self) -> bool:
+        return len(self._items) == 0
+    
     @abstractmethod
-    def search(self, context: C) -> SearchResult[List[A]]:
+    def query(self, context: C) -> SearchResult[List[A]]:
         pass
