@@ -8,4 +8,3 @@ version: 1.0.0
 """
 
 from .occupation import *
-from .piece import KingPiece

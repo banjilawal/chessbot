@@ -16,7 +16,7 @@ from chess.square import Square
 from chess.piece import OccupationEvent, Piece, TravelEvent
 
 
-class PromotionEvent(TravelEvent[Piece, Square, Board]):
+class OldPromotionEvent(TravelEvent[Piece, Square, Board]):
     """"""
     _new_rank: Rank
     

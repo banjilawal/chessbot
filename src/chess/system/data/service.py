@@ -8,48 +8,60 @@ Version: 1.0.0
 """
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, List, TypeVar
 
-from chess.system import (
-    Builder, SearchContext, SearchContextService, SearchResult, Service, Validator, SearchService
-)
-
-T = TypeVar("T")
+from chess.system import Context, SearchResult, Service, Search
 
 
-class DataService(ABC, Service[Generic[T]]):
+A = TypeVar("T")
+C = TypeVar("C", binding=Context)
+
+class DataService(ABC, [Generic [A,C]]):
     """"""
-    _items: [T]
-    _search_service: SearchService[T]
+    _id: int
+    _name: str
+    _items: List[A]
+    _search: Search[A]
+    _service: Service[A]
+    _context_service: Service[C]
+
     
     def __init__(
             self,
             id: int,
             name: str,
-            items: [T],
-            builder: Builder[T],
-            validator: Validator[T],
-            search_service: SearchService[T],
+            items: List[A],
+            search: Search[A],
+            service: Service[A],
+            context_service: Service[C],
     ):
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._id = id
+        self._name = name
         self._items = items
-        self._search_service = search_service
+        self._search = search
+        self._service = service
+        self._context_service = context_service
+        
+    @property
+    def id(self) -> id:
+        return self._id
     
     @property
-    @abstractmethod
-    def items(self) -> [T]:
-        pass
+    def name(self) -> str:
+        return self._name
     
     @property
-    @abstractmethod
-    def service(self) -> Service[T]:
-        pass
+    def items(self) -> [A]:
+        return self._items
     
     @property
-    @abstractmethod
-    def context_service(self) -> SearchContextService[T]:
-        pass
+    def service(self) -> Service[A]:
+        return self._service
+    
+    @property
+    def context_service(self) -> Service[C]:
+        return self._context_service
     
     @abstractmethod
-    def search(self, context: SearchContext) -> SearchResult[[T]]:
+    def search(self, context: C) -> SearchResult[List[A]]:
         pass

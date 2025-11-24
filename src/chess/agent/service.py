@@ -1,4 +1,4 @@
-# src/chess/agent/service.py
+
 
 """
 Module: chess.agent.service

@@ -17,7 +17,7 @@ class TeamFactory:
 
     for team_config in TeamSchema:
       # print(team_config)
-      team = TeamBuilder.build(OwnerBuilder.build(id_emitter.person_id), team_config)
+      team = TeamBuilder.build(OwnerBuilder.build(id_emitter.machine_agent), team_config)
       teams.append(team)
 
     ranks = RankFactory.assemble()

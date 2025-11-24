@@ -15,7 +15,7 @@ from chess.system import Context, SearchContext
 
 T = TypeVar("T")
 
-class SearchContext(ABC, Context[Generic[T]]):
+class SearchContext(Context, Generic[T]):
     """
     # ROLE: Option Menu, Switch
 

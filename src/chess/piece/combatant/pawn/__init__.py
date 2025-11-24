@@ -8,3 +8,4 @@ version: 1.0.0
 """
 
 from .exception import *
+from .piece import PawnPiece

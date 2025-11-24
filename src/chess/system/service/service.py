@@ -36,17 +36,22 @@ class Service(ABC, Generic[T]):
         *   builder (type[Builder[T]]):
         *   validator (type[Validator[T]]):
     """
-    SERVICE_NAME = "service"
     _int: int
     _name: str
+    _builder: Builder[T]
+    _validator: Validator[T]
     
     def __init__(
             self,
             id: int,
             name: str,
+            builder: Builder[T],
+            validator: Validator[T]
     ) -> None:
         self._int = id
         self._name = name
+        self._builder = builder
+        self._validator = validator
         
     @property
     def id(self) -> int:
@@ -57,15 +62,16 @@ class Service(ABC, Generic[T]):
         return self._name
     
     @property
-    @abstractmethod
     def validator(self) -> Validator[T]:
-        """"""
-        pass
+        return self._validator
     
-    @abstractmethod
-    def build(self, *args, **kwargs) -> BuildResult[T]:
-        """"""
-        pass
+    @property
+    def builder(self) -> Builder[T]:
+        return self._builder
+    # @abstractmethod
+    # def build(self, *args, **kwargs) -> BuildResult[T]:
+    #     """"""
+    #     pass
        # return self._builder.build(*args, **kwargs)
     
     def __eq__(self, other):

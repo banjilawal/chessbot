@@ -83,5 +83,5 @@ class HostageValidator(Validator):
 
 
 def main():
-  person = CommanderBuilder.build(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
+  person = CommanderBuilder.build(commander_id=id_emitter.machine_agent, visitor_name=RandomName.person())
   side = TeamBuilder.build()

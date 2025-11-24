@@ -6,3 +6,13 @@ Author: Banji Lawal
 Created: 2025-11-23
 version: 1.0.0
 """
+
+
+
+from chess.piece import CombatantPieceException
+
+
+class PawnPieceException(CombatantPieceException):
+    ERROR_CODE = "PAWN_PIECE_ERROR"
+    DEFAULT_MESSAGE = "PawnPiece raised an exception."
+    

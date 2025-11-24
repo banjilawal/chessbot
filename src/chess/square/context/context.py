@@ -11,10 +11,10 @@ from typing import Optional
 
 from chess.coord import Coord
 from chess.square import Square
-from chess.system.search import SearchContext
+from chess.system.search import Context
 
 
-class SquareContext(SearchContext[Square]):
+class SquareContext(Context[Square]):
     _coord: Optional[Coord] = None
     
     def __init__(

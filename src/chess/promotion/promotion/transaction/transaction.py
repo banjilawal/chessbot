@@ -16,7 +16,7 @@ from chess.piece import (
 )
 
 
-class PromotionTransaction(TravelTransaction[PromotionEvent]):
+class OldPromotionTransaction(TravelTransaction[PromotionEvent]):
     """"""
     def __init__(self, event: PromotionEvent):
         super().__init__(event)

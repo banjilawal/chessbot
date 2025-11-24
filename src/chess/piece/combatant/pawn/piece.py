@@ -1,20 +1,18 @@
-# src/chess/pawn/pawn.py
+# src/chess/piece/combatant/pawn/pawn.py
 
 """
-Module: chess.pawn.pawn
+Module: chess.piece.combatant.pawn.pawn
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-23
 version: 1.0.0
 """
 
 
 from typing import Optional
 
-from chess.checkmate import CheckPostalService
 from chess.rank import Rank
-from chess.system import Result
 from chess.team import Team
-from chess.piece import CombatantPiece, Piece
+from chess.piece import CombatantPiece
 
 
 class PawnPiece(CombatantPiece):

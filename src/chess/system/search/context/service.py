@@ -13,11 +13,12 @@ from typing import Generic, TypeVar
 
 from chess.system import BuildResult, Builder, Validator, SearchContext
 
-A = TypeVar("A")
-C = TypeVar("C", biding="SearchContext[C]")
+# A = TypeVar("A")
+# C = TypeVar("C", biding="SearchContext[C]")
+T = TypeVar("T")
 
 
-class SearchContextService(ABC, Generic[C]):
+class SearchContextService(Generic[T]):
     """
     # ROLE: Service, Encapsulation, API layer.
     
@@ -35,29 +36,29 @@ class SearchContextService(ABC, Generic[C]):
         *   _builder (SearchContextBuilder):
         *   _validator (SearchContextValidator):
     """
-    _builder: Builder[C]
-    _validator: Validator[C]
+    _builder: Builder[T]
+    _validator: Validator[T]
     
     def __init__(
             self,
-            builder: Builder[C],
-            validator: Validator[C]
+            builder: Builder[T],
+            validator: Validator[T]
     ):
         self._builder = builder
         self._validator = validator
         
     @property
-    def validator(self) -> Validator[C]:
-        """
-        Validators may have extra features and logic.
-        Direct access is given ta all the Validator's capabilities.
-        """
+    def validator(self) -> Validator[T]:
         return self._validator
     
-    @abstractmethod
-    def build(self, *args, **kwargs) -> BuildResult[C]:
-        """
-        Implementations must inject self._validator into
-        self._builder along with any other dependencies and params.
-        """
-        pass
+    @property
+    def builder(self) -> Builder[T]:
+        return self._builder
+    
+    # @abstractmethod
+    # def build(self, *args, **kwargs) -> BuildResult[C]:
+    #     """
+    #     Implementations must inject self._validator into
+    #     self._builder along with any other dependencies and params.
+    #     """
+    #     pass

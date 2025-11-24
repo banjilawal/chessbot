@@ -9,8 +9,7 @@ version: 1.0.0
 from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
 from chess.square import Square, SquareBuildFailedException, SquareValidator
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
-
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
 
 class SquareBuilder(Builder[Square]):
@@ -34,10 +33,10 @@ class SquareBuilder(Builder[Square]):
     @LoggingLevelRouter.monitor()
     def build(
             cls,
-            id: int,
             name: str,
             board: Board,
             coord: Coord,
+            id: int = id_emitter.square_id,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             square_validator: SquareValidator = SquareValidator(),

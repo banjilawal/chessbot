@@ -22,7 +22,7 @@ from chess.piece import (
 )
 
 
-class PromotionEventBuilder(Builder[PromotionEvent]):
+class OldPromotionEventBuilder(Builder[PromotionEvent]):
     """"""
     PROMOTABLE_RANKS = Tuple[Queen, Knight, Bishop, Rook]
     

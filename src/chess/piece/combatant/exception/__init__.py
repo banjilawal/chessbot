@@ -1,8 +1,10 @@
-# src/chess/piece/combatant/combatant/pawn/__init__.py
+# src/chess/piece/combatant/exception/__init__.py
 
 """
-Module: chess.piece.combatant.combatant.pawn.__init__
+Module: chess.piece.combatant.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-23
 version: 1.0.0
 """
+
+from .exception import *

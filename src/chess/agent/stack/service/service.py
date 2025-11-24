@@ -1,4 +1,4 @@
-# src/chess/teamStack/stack/service/service.py
+
 
 """
 Module: chess.teamStack.stack.service.service

@@ -7,18 +7,15 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
+from chess.system import BuildResult, Service, id_emitter
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
-from chess.system import BuildResult, Service
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
 
 
 class CoordService(Service[Coord]):
     """
-
-
     # RESPONSIBILITIES:
-
 
     # PROVIDES:
         *   SquareBuilder
@@ -64,54 +61,19 @@ class CoordService(Service[Coord]):
     
     def __init__(
             self,
-            id: int,
             name: str = SERVICE_NAME,
+            id: int = id_emitter.service_id,
             builder: CoordBuilder = CoordBuilder(),
             validator: CoordValidator = CoordValidator(),
             scalar_service: ScalarService = ScalarService(),
             vector_service: VectorService = VectorService(),
     ):
-        super().__init__(id=id, name=name)
-        self._builder = builder
-        self._validator = validator
+        super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._scalar_service = scalar_service
         self._vector_service = vector_service
       
-      
-    @property
-    def validator(self) -> CoordValidator:
-        return self._validator
-        
-    def build(self, row: int, column: int) -> BuildResult[Coord]:
-        """
-        # Action:
-        CoordService directs builder to run the builder process with the inputs.
-
-        # Parameters:
-            *   row (int):
-            *   column (int):
-
-        # Returns:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-        Raises:
-            *   None are raised here
-            *   builder sends any builder exceptions back to the caller.
-            *   The caller is responsible for safely handling any exceptions it receives.
-        """
-        return self._builder.build(
-            row=row,
-            column=column,
-            validator=self._validator
-        )
     
-    def add_vector_to_coord(
-            self,
-            coord: Coord,
-            vector: Vector
-    ) -> BuildResult[Coord]:
+    def add_vector_to_coord(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
         """
         # Action:
         1.  validator runs integrity checks on the square param.
@@ -160,11 +122,7 @@ class CoordService(Service[Coord]):
                 )
             )
       
-    def multiply_coord_by_scalar(
-            self,
-            coord: Coord,
-            scalar: Scalar
-    ) -> BuildResult[Coord]:
+    def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar) -> BuildResult[Coord]:
         """
         # Action:
         1.  validator runs integrity checks on the square param.

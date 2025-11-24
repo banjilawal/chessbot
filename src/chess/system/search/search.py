@@ -11,13 +11,11 @@ version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic, List
 
-from chess.system.search import SearchContext, SearchResult
+from chess.system import Context, Validator, SearchResult
 
-A = TypeVar('A')
-S = TypeVar('S', bound=SearchContext)
-R = TypeVar('R')
+D = TypeVar("D")
 
-class Search(ABC, Generic[A, S, R]):
+class Search(ABC, Generic[D]):
   """
   ROLE:
   ----
@@ -43,8 +41,12 @@ class Search(ABC, Generic[A, S, R]):
 
   @classmethod
   @abstractmethod
-  def search(cls, data_owner: A, search_context: S, *args, **kwargs) -> SearchResult[R]:
-      pass
+  def find(
+          cls,
+          data_set: List[D],
+          context: Context[D],
+          context_validator: Validator[Context[D]]
+  ) -> SearchResult[List[D]]:
       """
       Action:
       Parameters:
@@ -55,3 +57,5 @@ class Search(ABC, Generic[A, S, R]):
       Raise:
         No exceptions. Subclasses raise exceptions.
       """
+      pass
+

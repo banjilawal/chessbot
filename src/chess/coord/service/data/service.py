@@ -6,11 +6,12 @@ Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
+
 from typing import List
 
-from chess.coord import Coord, CoordContext, CoordSearchService, CoordService
+from chess.coord import Coord, CoordContext, CoordSearch, CoordService
 from chess.coord.context.service.service import CoordContextService
-from chess.system import DataService, SearchResult
+from chess.system import DataService, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class CoordDataService(DataService[Coord]):
@@ -67,41 +68,26 @@ class CoordDataService(DataService[Coord]):
     """
     SERVICE_NAME = "CoordService"
     
-    id: int
-    name: str
-    _items: [Coord]
-    _coord_service: CoordService
-    _context_service: CoordContextService
-    _search_service: CoordSearchService
-    
     def __init__(
             self,
-            id: int,
-            items: List[Coord] = [],
             name: str = SERVICE_NAME,
-            coord_service: CoordService = CoordService(),
+            id: int = id_emitter.service_id,
+            items: List[Coord] = List[Coord],
+            search: CoordSearch = CoordSearch(),
+            service: CoordService = CoordService(),
             context_service: CoordContext = CoordContextService(),
-            search_service: CoordSearchService = CoordSearchService(),
     ):
-        super().__init__(id=id, name=name)
-        self._coord_service = coord_service
-        self._coord_service = context_service
-        self._search_service = search_service
+        super().__init__(
+            self,
+            id=id,
+            name=name,
+            items=items,
+            search=search,
+            service=service,
+            context_service=context_service,
+        )
         
-        self._items = items
-        
-    @property
-    def items(self) -> List[Coord]:
-        return self._items
-    
-    @property
-    def coord_service(self) -> CoordService:
-        return self._coord_service
-    
-    @property
-    def context_service(self) -> CoordContextService:
-        return self._context_service
-    
+    @LoggingLevelRouter.monitor
     def search(self, context: CoordContext) -> SearchResult[[Coord]]:
         return self._search_service.find(
             data_set=self.items,

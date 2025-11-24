@@ -29,7 +29,7 @@ class OwnerBuilder:
 
 def main():
 
-  owner = OwnerBuilder.build(id_emitter.person_id)
+  owner = OwnerBuilder.build(id_emitter.machine_agent)
   print(owner, owner.teams.size())
 
 if __name__ == "__main__":

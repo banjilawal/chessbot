@@ -7,11 +7,10 @@ Created: 2025-10-17
 version: 1.0.0
 """
 
-from typing import Callable, Optional, cast
 
-from chess.piece import Piece
-from chess.rank import Rank
 from chess.team import Team
+from chess.rank import Rank
+from chess.piece import Piece
 
 
 class CombatantPiece(Piece):

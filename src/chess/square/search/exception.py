@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 
-from chess.system import SearchContextServiceException
+from chess.system import SearchException
 
 __all__ = [
-    "SquareSearchServiceException",
+    "SquareSearchException",
 ]
-class SquareSearchServiceException(SearchContextServiceException):
-    ERROR_CODE = "SQUARE_SEARCH_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SquareSearchService raised an exception."
+class SquareSearchException(SearchException):
+    ERROR_CODE = "SQUARE_SEARCH_ERROR"
+    DEFAULT_MESSAGE = "SquareSearch raised an exception."

@@ -16,8 +16,8 @@ class OwnerFactory:
   def assemble() -> List[Commander]:
     owners: List[Commander] = []
 
-    wo = HumanCommander(competitor_id=id_emitter.person_id, name=RandomName.person())
-    bo = HumanCommander(competitor_id=id_emitter.person_id, name=RandomName.person())
+    wo = HumanCommander(competitor_id=id_emitter.machine_agent, name=RandomName.person())
+    bo = HumanCommander(competitor_id=id_emitter.machine_agent, name=RandomName.person())
 
     wt = TeamBuilder.build(wo, TeamSchema.WHITE)
     bt = TeamBuilder.build(bo, TeamSchema.BLACK)

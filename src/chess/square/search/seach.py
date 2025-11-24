@@ -1,4 +1,4 @@
-# src/chess/square/search/service.py
+# src/chess/square/search/search.py
 
 """
 Module: chess.square.search.service
@@ -10,17 +10,19 @@ version: 1.0.0
 from typing import List
 
 from chess.coord import Coord
-from chess.square import Square
-from chess.square.search import SquareSearchServiceException
-from chess.system import LoggingLevelRouter, SearchContext, SearchResult, SearchService, Validator
-from chess.system.search.service import T
+from chess.system import LoggingLevelRouter, Search, SearchResult
+from chess.square import Square, SquareContext, SquareContextValidator, SquareSearchException
 
 
-class SquareSearchService(SearchService[Square]):
+class SquareSearch(Search[Square]):
     
     @classmethod
-    def find(cls, data_set: List[T], context: SearchContext, validator: Validator[SearchContext]) -> SearchResult[
-        [T]]:
+    def find(
+            cls,
+            data_set: List[T],
+            context: SquareContext,
+            validator: SquareContextValidator = SquareContextValidator()
+    ) -> SearchResult[[Square]]:
         """"""
         method = "SquareSearchService(SearchService.find"
         try:
@@ -29,13 +31,13 @@ class SquareSearchService(SearchService[Square]):
                 return SearchResult.failure(context_validation.exception)
             
             if context.id is not None:
-                return cls.find_by_id(data_set=data_set, id=context.id)
+                return cls._find_by_id(id=context.id, data_set=data_set)
             
             if context.name is not None:
-                return cls.find_by_name(data_set, name=context.naame)
+                return cls._find_by_name(name=context.name, data_set=data_set)
             
             if context.coord:
-                return cls._find_coord(data_set=data_set, coord=context.coord)
+                return cls._find_coord(coord=context.coord, data_set=data_set)
         except Exception as ex:
             return SearchResult.failure(
                 SquareSearchServiceException(
@@ -49,15 +51,15 @@ class SquareSearchService(SearchService[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_column(
+    def _find_by_id(
             cls,
+            id: int,
             data_set: List[Square],
-            column: int
     ) -> SearchResult[List[Square]]:
         """"""
-        method = "CoordSearchService._find_by_column"
+        method = "CoordSearchService._find_by_id"
         try:
-            matches = [square for square in data_set if square.coord == coord]
+            matches = [square for square in data_set if square.id == id]
             
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -77,13 +79,41 @@ class SquareSearchService(SearchService[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_coord(
+    def _find_by_name(
             cls,
+            name: str,
             data_set: List[Square],
-            coord: Coord
     ) -> SearchResult[List[Square]]:
         """"""
-        method = "CoordSearchService._find_by_row_and_coord"
+        method = "CoordSearchService._find_by_name"
+        
+        try:
+            matches = [square for square in data_set if square.name.upper() == name.upper()]
+            
+            if len(matches) == 0:
+                return SearchResult.empty()
+            elif len(matches) >= 1:
+                return SearchResult.success(payload=matches)
+        except Exception as ex:
+            return SearchResult.failure(
+                SquareSearchServiceException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{SquareSearchServiceException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_coord(
+            cls,
+            coord: Coord,
+            data_set: List[Square],
+    ) -> SearchResult[List[Square]]:
+        """"""
+        method = "CoordSearchService._find_by_coord"
         
         try:
             matches = [square for square in data_set if square.coord == coord]
@@ -96,7 +126,9 @@ class SquareSearchService(SearchService[Square]):
             return SearchResult.failure(
                 SquareSearchServiceException(
                     ex=ex,
-                    message=f"{method}: {SquareSearchServiceException.DEFAULT_MESSAGE}"
+                    message=(
+                        f"{method}: "
+                        f"{SquareSearchServiceException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
-        
