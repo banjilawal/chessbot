@@ -37,6 +37,3 @@ class TeamStack:
 
   def is_empty(self) -> bool:
     return len(self._teams) == 0
-
-
-

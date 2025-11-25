@@ -78,7 +78,7 @@ class IdEmitter:
         self._piece_id += 1
         return self._piece_id
     
-    @ @property
+    @property
     def service_id(self):
         self._service_id += 1
         return self._service_id

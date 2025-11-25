@@ -9,9 +9,17 @@ Version: 1.0.0
 
 from chess.system import DataServiceException
 
-__all__ = ["UniqueDataServiceException"]
+__all__ = [
+    "UniqueDataServiceException",
+    "AddingDuplicateDataException",
+]
 
 
 class UniqueDataServiceException(DataServiceException):
     ERROR_CODE = "UNIQUE_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "UniqueDataService raised an exception."
+
+
+class AddingDuplicateDataException(UniqueDataServiceException):
+    ERROR_CODE = "ADDING_DUPLICATE_DATA_ERROR"
+    DEFAULT_MESSAGE = "The data already exists. Adding duplicate data is not allowed."

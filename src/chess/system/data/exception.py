@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from chess.system import ChessException
 
-__all__ = ["DataServiceException"]
+__all__ = ["DataException"]
 
 class DataException(ChessException):
     ERROR_CODE = "DATA_ERROR"

@@ -88,7 +88,7 @@ class CoordDataService(DataService[Coord]):
         )
         
     @LoggingLevelRouter.monitor
-    def query(self, context: CoordContext) -> SearchResult[[Coord]]:
+    def search(self, context: CoordContext) -> SearchResult[[Coord]]:
         return self._search_service.find(
             data_set=self.items,
             context=context,

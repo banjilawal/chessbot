@@ -10,13 +10,17 @@ Version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system import Context, SearchResult, Service, Search
+from chess.system.data import DeletionResult, DataServiceException, RemovingNullDataException
+from chess.system import (
+    Context, DataResult, DataServiceException, PoppingEmptyStackException, SearchResult, Service,
+    Search
+)
 
 
-A = TypeVar("T")
+A = TypeVar("A")
 C = TypeVar("C", binding=Context)
 
-class DataService(ABC, [Generic [A,C]]):
+class DataService(ABC, [Generic [A, C]]):
     """"""
     _id: int
     _size: int
@@ -28,7 +32,6 @@ class DataService(ABC, [Generic [A,C]]):
     
     _current_item: A
 
-    
     def __init__(
             self,
             id: int,
@@ -76,10 +79,33 @@ class DataService(ABC, [Generic [A,C]]):
     def current_item(self) -> Optional[A]:
         return self._items[-1] if self._items else None
     
-    
     def is_empty(self) -> bool:
         return len(self._items) == 0
     
+    def undo(self) -> DeletionResult[A]:
+        method = "DataService.undo"
+        try:
+            if self._items == 0:
+                return DeletionResult.failure(
+                    PoppingEmptyStackException(
+                        f"{method}: "
+                        f"{PoppingEmptyStackException.DEFAULT_MESSAGE}"
+                    )
+                )
+            item = self._items.pop()
+            return DeletionResult.success(payload=item)
+        
+        except Exception as ex:
+            return DeletionResult.failure(
+                DataServiceException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{DataServiceException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+    
     @abstractmethod
-    def query(self, context: C) -> SearchResult[List[A]]:
+    def search(self, context: C) -> SearchResult[List[A]]:
         pass

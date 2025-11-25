@@ -1,7 +1,7 @@
-# src/chess/system/data/result/result.py
+# src/chess/system/data/result/deletion/result.py
 
 """
-Module: chess.system.data.result.result
+Module: chess.system.data.result.deletion.result
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -9,11 +9,12 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system import  NotImplementedException, Result
+from chess.system.data import DataResult
+from chess.system import  NotImplementedException
 
 T = TypeVar("T")
 
-class DataResult(Result[Generic[T]]):
+class DeletionResult(DataResult[Generic[T]]):
     
     def __init__(
             self,
@@ -23,7 +24,7 @@ class DataResult(Result[Generic[T]]):
         super().__init__(payload=payload, exception=exception)
     
     @classmethod
-    def empty(cls) -> Result:
+    def empty(cls) -> DataResult:
         method = "BuildResult.empty"
         
         return cls(

@@ -8,6 +8,6 @@ Version: 1.0.0
 """
 
 from .unique import *
-from .service import *
-from .stack import *
 from .exception import *
+
+from .service import DataService

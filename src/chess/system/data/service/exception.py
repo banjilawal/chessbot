@@ -12,7 +12,8 @@ from chess.system import ServiceException
 
 __all__ = [
     "DataServiceException",
-    "RemovingNullException",
+    "RemovingNullDataException",
+    "PoppingEmptyStackException",
 ]
 
 class DataServiceException(ServiceException):
@@ -20,6 +21,11 @@ class DataServiceException(ServiceException):
     DEFAULT_MESSAGE = "DataService raised an exception."
 
 
-class RemovingNullException(DataServiceException):
-    ERROR_CODE = "REMOVING_NULL_ERROR"
-    DEFAULT_MESSAGE = "Cannot remove an item that does not exist."
+class RemovingNullDataException(DataServiceException):
+    ERROR_CODE = "REMOVING_NULL_DATA_ERROR"
+    DEFAULT_MESSAGE = "Cannot remove data that does not exist."
+
+
+class PoppingEmptyStackException(DataServiceException):
+    ERROR_CODE = "POPPING_EMPTY_STACK_ERROR"
+    DEFAULT_MESSAGE = "Stack is empty. There is nothing to poop."

@@ -9,11 +9,12 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system import  NotImplementedException, Result
+from chess.system.data import EmptyDataResultException
+from chess.system import NotImplementedException, Result
 
 T = TypeVar("T")
 
-class DataResult(Result[Generic[T]]):
+class InsertionResult(Result[Generic[T]]):
     
     def __init__(
             self,
