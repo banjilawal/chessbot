@@ -27,50 +27,47 @@ class PieceContext(Context[Piece]):
     PieceContext.
 
     # ATTRIBUTES:
-        *   id (int)
-        *   name (str)
+        *   team (Team)
+        *   rank (Rank)
+        *   ransom (str)
         *   coord (Coord)
     """
-    _coord: Optional[Coord]
     _rank: Optional[Rank]
-    _tean: Optional[Team]
+    _team: Optional[Team]
     _ransom: Optional[int]
+    _coord: Optional[Coord]
     
     @LoggingLevelRouter.monitor
     def __init__(
             self,
             id: Optional[int] = None,
             name: Optional[str] = None,
-            coord: Optional[Coord] = None,
-            rank: Optional[Rank] = None,
             team: Optional[Team] = None,
+            rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
+            coord: Optional[Coord] = None,
     ):
         super().__init__(id=id, name=name)
         self._coord = coord
         self._rank = rank
         self._team = team
         self._ransom = ransom
-        
+
     @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
-    
-    @property
-    def name(self) -> Optional[str]:
-        return self._visitor_name
-    
+    def team(self) -> Optional[Team]:
+        return self._team
+   
     @property
     def rank(self) -> Optional[Rank]:
-        return self._rank_name
+        return self._rank
     
     @property
     def ransom(self) -> Optional[int]:
         return self._ransom
     
     @property
-    def team(self) -> Optional[Team]:
-        return self._team
+    def coord(self) -> Optional[Coord]:
+        return self._coord
     
     def to_dict(self) -> dict:
         return {
@@ -79,4 +76,5 @@ class PieceContext(Context[Piece]):
             "team": self._team,
             "rank": self._rank,
             "ransom": self._ransom,
+            "coord": self._coord,
         }

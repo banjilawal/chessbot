@@ -11,6 +11,9 @@ version: 1.0.0
 from chess.piece import PieceException
 from chess.system import BuilderException
 
+__all__ = [
+    "PieceBuildFailedException",
+]
 
 class PieceBuildFailedException(PieceException, BuilderException):
     """Catchall Exception for PieceBuilder when it encounters an error building a Scalar."""
