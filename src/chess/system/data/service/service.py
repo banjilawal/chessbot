@@ -12,33 +12,59 @@ from typing import Generic, List, Optional, TypeVar
 
 from chess.system.data import DeletionResult, DataServiceException, RemovingNullDataException
 from chess.system import (
-    Context, DataResult, DataServiceException, PoppingEmptyStackException, SearchResult, Service,
+    Context, DataServiceException, PoppingEmptyStackException, SearchResult, Service,
     Search
 )
 
 
-A = TypeVar("A")
+D = TypeVar("D")
 C = TypeVar("C", binding=Context)
 
-class DataService(ABC, [Generic [A, C]]):
-    """"""
+class DataService(ABC, [Generic [D, C]]):
+    """
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Scales Builder and Validator operations for collection of objects.
+    2.  Provides context aware Search.
+    3.  Safe and reliable CRUD operations.
+    4.  Public facing API.
+
+    # PROVIDES:
+        *   Builder
+        *   Validator
+        *   Search
+        *   Insertion
+        *   Deletin
+
+    # ATTRIBUTES:
+    None
+        *   id (int):
+        *   name (str):
+        *   items (List[D]):
+        *   search (Search[D]):
+        *   service (Service[D]):
+        *   context_service (Service[C]);
+        *   current_item (D):
+        *   size (int):
+    """
     _id: int
     _size: int
     _name: str
-    _items: List[A]
-    _search: Search[A]
-    _service: Service[A]
+    _items: List[D]
+    _search: Search[D]
+    _service: Service[D]
     _context_service: Service[C]
     
-    _current_item: A
+    _current_item: D
 
     def __init__(
             self,
             id: int,
             name: str,
-            items: List[A],
-            search: Search[A],
-            service: Service[A],
+            items: List[D],
+            search: Search[D],
+            service: Service[D],
             context_service: Service[C],
     ):
         self._id = id
@@ -64,11 +90,11 @@ class DataService(ABC, [Generic [A, C]]):
         return self._name
     
     @property
-    def items(self) -> List[A]:
+    def items(self) -> List[D]:
         return self._items
     
     @property
-    def service(self) -> Service[A]:
+    def service(self) -> Service[D]:
         return self._service
     
     @property
@@ -76,13 +102,13 @@ class DataService(ABC, [Generic [A, C]]):
         return self._context_service
     
     @property
-    def current_item(self) -> Optional[A]:
+    def current_item(self) -> Optional[D]:
         return self._items[-1] if self._items else None
     
     def is_empty(self) -> bool:
         return len(self._items) == 0
     
-    def undo(self) -> DeletionResult[A]:
+    def undo(self) -> DeletionResult[D]:
         method = "DataService.undo"
         try:
             if self._items == 0:
@@ -107,5 +133,5 @@ class DataService(ABC, [Generic [A, C]]):
             )
     
     @abstractmethod
-    def search(self, context: C) -> SearchResult[List[A]]:
+    def search(self, context: C) -> SearchResult[List[D]]:
         pass

@@ -11,15 +11,31 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from chess.system.data import DataService, InsertionResult
-from chess.system import Context, LoggingLevelRouter, SearchResult, Service
-
-
+from chess.system import Context, LoggingLevelRouter, SearchResult, Service, UniqueDataServiceException
 
 A = TypeVar("A")
 C = TypeVar("C", binding=Context)
 
 class UniqueDataService(ABC, Generic[A]):
-    """"""
+    """
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Assures DataService only stores unique data with no duplicates.
+    2.  Interface for inserting data into the DataService.
+    3.  Protects data from direct access.
+    4.  Wrapper for DataService
+    5.  Public facing API.
+
+    # PROVIDES:
+        *   DataService
+
+    # ATTRIBUTES:
+    None
+        *   id (int):
+        *   name (str):
+        *   data_service (DataService[D]):
+    """
     _id: int
     _name: str
     _data_service: DataService[A]

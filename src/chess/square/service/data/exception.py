@@ -7,11 +7,10 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import DataServiceException, ServiceException, ValidationException, NullException
+from chess.system import DataServiceException, NullException
 
 __all__ = [
     "SquareDataServiceException",
-    "AddingDuplicateSquareException",
     "RemovingNonExistentSquareException",
 ]
 
@@ -25,13 +24,7 @@ class SquareDataServiceException(DataServiceException):
     DEFAULT_MESSAGE = "SquareDataService raised an exception."
 
 
-class AddingDuplicateSquareException(SquareDataServiceException):
-    """Raised when trying to add a duplicate Square to a list of Squares."""
-    ERROR_CODE = "DUPLICATE_SQUARE_ADDITION_ERROR"
-    DEFAULT_MESSAGE = "SquareDataService cannot add duplicate Squares to the list."
-
-
-class RemovingNonExistentSquareException(SquareDataServiceException):
+class RemovingNonExistentSquareException(SquareDataServiceException, NullException):
     """Raised when trying  to remove a Square not in the list."""
     ERROR_CODE = "REMOVING_NON_EXISTENT_SQUARE_ERROR"
     DEFAULT_MESSAGE = "SquareDataService cannot remove a Square not in the list."
