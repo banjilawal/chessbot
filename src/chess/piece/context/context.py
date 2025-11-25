@@ -27,7 +27,6 @@ class PieceContext(Context[Piece]):
         super().__init__(id=id, name=name)
         self._coord = coord
         
-        
     @property
     def coord(self) -> Optional[Coord]:
         return self._coord
@@ -38,5 +37,3 @@ class PieceContext(Context[Piece]):
             "name": self.name,
             "coord": self._coord
         }
-    
-    

@@ -13,6 +13,7 @@ from .exception import *
 from .factory import *
 from .king import *
 from .search import *
+from .service import *
 from .validator import *
 
 from .piece import Piece

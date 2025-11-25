@@ -1,7 +1,7 @@
-# src/chess/piece/collision.py
+# src/chess/piece/validator/validator.py
 
 """
-Module: chess.piece.exception
+Module: chess.piece.validator.validator
 Author: Banji Lawal
 Created: 2025-10-22
 Version: 1.0.0
@@ -9,16 +9,10 @@ Version: 1.0.0
 
 from typing import Type, Any, cast
 
-from chess.king import KingPiece
-from chess.piece.exception import CapturedPieceException, CheckmatedKingException, InvalidPieceException
-from chess.team import Team, RosterNumberOutOfBoundsException
-from chess.rank import Bishop, King, Knight, Pawn, Queen, RankValidatorFactory, Rook
-from chess.system import IdValidator, NameValidator, LoggingLevelRouter, ValidationResult, Validator
-from chess.piece import (
-    CombatantPiece, NullPieceException, Piece, PieceNullCoordStackException, PieceRequiresInitialPlacementException, PieceRosterNumberIsNullException,
-    PieceTeamFieldIsNullException,
-    ActivePieceMissingFromTeamRoster
-)
+from chess.coord import CoordService
+from chess.rank import RankService
+from chess.system import IdentityService, LoggingLevelRouter, Validator
+from chess.team import TeamService
 
 
 class PieceValidator(Validator[Piece]):
@@ -26,7 +20,14 @@ class PieceValidator(Validator[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Piece]:
+    def validate(
+            cls,
+            candidate: Any,
+            team_service: TeamService = TeamService(),
+            rank_service: RankService = RankService(),
+            coord_service: CoordService = CoordService(),
+            identity_service: IdentityService = IdentityService()
+    ) -> ValidationResult[Piece]:
         """"""
         method = "Piece.validate"
         
@@ -44,15 +45,12 @@ class PieceValidator(Validator[Piece]):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected team Piece, got {type(candidate).__name__} instead."
+                        f"Expected Piece, got {type(candidate).__name__} instead."
                     )
                 )
             
-            # For safety cast the candidate to a `Piece` instance.
             piece = cast(Piece, candidate)
-            
-
-            id_validation = IdValidator.validate(piece.id)
+            identity_validation = identity_service.va
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             

@@ -1,38 +1,32 @@
-# src/chess/square/service/data/service.py
+# src/chess/coord/service/data/unique/service.py
 
 """
-Module: chess.square.service.data.service
+Module: chess.coord.service.data.unique.service
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-11-19
 version: 1.0.0
 """
+from chess.coord import AddingDuplicateCoordException, Coord, CoordDataService, UniqueCoordDataServiceException
+from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
 
 
-from typing import List
-
-from chess.square.service.data.unique.exception import UniqueSquareDataServiceException
-from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, ValidationResult, id_emitter
-from chess.square import AddingDuplicateSquareException, Square, SquareDataService, SquareDataServiceException
-
-
-
-class UniqueSquareDataService(UniqueDataService[Square]):
+class UniqueCoordDataService(UniqueDataService[Coord]):
     """"""
     
     DEFAULT_NAME = "UniqueSquareDataService"
     _id: int
-    _data_service: SquareDataService
+    _data_service: CoordDataService
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            data_service: SquareDataService = SquareDataService(),
+            data_service: CoordDataService = CoordDataService(),
     ):
         super().__init__(id=id, name=name, data_service=data_service)
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Square) -> InsertionResult[Square]:
+    def push(self, item: Coord) -> InsertionResult[Coord]:
         method = "UniqueSquareDataService.push"
         try:
             validation = self._data_service.validator.validate(item)
@@ -41,25 +35,20 @@ class UniqueSquareDataService(UniqueDataService[Square]):
             
             if item in self._data_service.items:
                 return InsertionResult.failure(
-                    AddingDuplicateSquareException(
+                    AddingDuplicateCoordException(
                         f"{method}: "
-                        f"{AddingDuplicateSquareException.DEFAULT_MESSAGE}"
+                        f"{AddingDuplicateCoordException.DEFAULT_MESSAGE}"
                     )
                 )
             self._data_service.items.append(item)
             return InsertionResult.success(item)
         except Exception as ex:
             return InsertionResult.failure(
-                UniqueSquareDataServiceException(
+                UniqueCoordDataServiceException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{UniqueSquareDataServiceException.DEFAULT_MESSAGE}"
+                        f"{UniqueCoordDataServiceException.DEFAULT_MESSAGE}"
                     )
                 )
             )
-        
-        
-    
-
-        

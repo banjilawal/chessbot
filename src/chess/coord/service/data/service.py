@@ -9,9 +9,8 @@ version: 1.0.0
 
 from typing import List
 
-from chess.coord import Coord, CoordContext, CoordSearch, CoordService
-from chess.coord.context.service.service import CoordContextService
 from chess.system import DataService, LoggingLevelRouter, SearchResult, id_emitter
+from chess.coord import Coord, CoordContext, CoordSearch, CoordService, CoordContextService
 
 
 class CoordDataService(DataService[Coord]):

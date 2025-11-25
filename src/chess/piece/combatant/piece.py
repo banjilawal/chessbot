@@ -1,12 +1,13 @@
-# src/chess/piece/combatant/combatant.py
+# src/chess/piece/combatant/piece.py
 
 """
-Module: chess.piece.combatant.combatant
+Module: chess.piece.combatant.piece
 Author: Banji Lawal
 Created: 2025-10-17
 version: 1.0.0
 """
 
+from typing import Optional
 
 from chess.team import Team
 from chess.rank import Rank

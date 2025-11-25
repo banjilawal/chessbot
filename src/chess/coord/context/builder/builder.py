@@ -49,10 +49,12 @@ class CoordContextBuilder(Builder[CoordContext]):
             3. If all checks pass build the CoordContext in a BuildResult.
 
         # Parameters:
-        At least one of the following must be provided:
-            * row (Optional[int])
-            * column (Optional[int])
-            * validator (CoordContextValidator)
+        At least one of these must be provided:
+            *   row (Optional[int])
+            *   column (Optional[int])
+            
+        This parameter is Required:
+            *   validator (CoordContextValidator)
 
         # Returns:
           BuildResult[CoordContext] containing either:
@@ -60,9 +62,8 @@ class CoordContextBuilder(Builder[CoordContext]):
                 - On failure: Exception.
 
         # Raises:
-            * CoordContextBuildFailedException
-            * NoCoordSearchOptionSelectedException
-            * MoreThanOneCoordSearchOptionPickedException
+            *   CoordContextBuildFailedException
+            *   NoCoordContextFlagSetException
         """
         method = "CoordSearchContextBuilder.builder"
         
@@ -85,26 +86,19 @@ class CoordContextBuilder(Builder[CoordContext]):
                 )
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                else:
-                    return BuildResult.success(CoordContext(
-                            row=row,
-                            column=column
-                        )
-                    )
+                return BuildResult.success(CoordContext(row=row, column=column))
             
             if row is not None:
                 validation = validator.validate_row_context(row=row)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                else:
-                    return BuildResult.success(CoordContext(row=row))
+                return BuildResult.success(CoordContext(row=row))
                 
             if column is not None:
                 validation = validator.validate_column_context(column=column)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                else:
-                    return BuildResult.success(CoordContext(column=column))
+                return BuildResult.success(CoordContext(column=column))
         
         except Exception as ex:
             return BuildResult.failure(

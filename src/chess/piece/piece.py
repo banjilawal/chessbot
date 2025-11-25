@@ -1,4 +1,4 @@
-# src/chess/piece/service.py
+# src/chess/piece/piece.py
 
 """
 Module: chess.piece.piece
@@ -13,7 +13,7 @@ from typing import Optional
 
 from chess.team import Team
 from chess.rank import Rank
-from chess.coord import Coord
+from chess.coord import Coord, CoordDataService
 from chess.piece import CoordStack, CoordStackService, Piece
 
 
@@ -37,8 +37,7 @@ class Piece(ABC):
         *   rank (Rank):
         *   roster_number (int):                        initial number on its team's roster.
         *   current_position (Coord):                   Coord at last move
-        *   positions (Stack[Coord]):                   list of coords occupied
-        *   coord_stack_service (CoordStackService):    Service for managing positions.
+        *   positions (CoordDataService):
     """
     _id: int
     _name: str
@@ -46,8 +45,7 @@ class Piece(ABC):
     _rank: Rank
     _roster_number: int
     _current_position: Coord
-    _positions: CoordStack
-    _coord_stack_service: CoordStackService
+    _positions: CoordDataService
 
     
     def __init__(
@@ -56,19 +54,16 @@ class Piece(ABC):
             name: str,
             rank: Rank,
             team: Team,
-            coord_stack_service: CoordStackService = CoordStackService()
+            positions: CoordStackService = CoordStackService()
     ):
         method = "Piece.__init__"
-        
+
         self._id = id
         self._name = name
         self._team = team
         self._rank = rank
-        self._discoveries = []
-        
-        self._positions = CoordStack()
-        self._coord_stack_service = coord_stack_service
-        self._current_position = self._coord_stack_service.current_coord
+        self._positions = positions
+        self._current_position = self._positions.current_item
         
         if self not in team.roster:
             team.roster.append(self)
@@ -94,16 +89,12 @@ class Piece(ABC):
         return self._rank
     
     @property
-    def positions(self) -> CoordStack:
+    def positions(self) -> CoordDataService:
         return self._positions
     
     @property
-    def coord_stack_service(self) -> CoordStackService:
-        return self._coord_stack_service
-    
-    @property
     def current_position(self) -> Optional[Coord]:
-        return self._coord_stack_service.current_coord
+        return self._positions.current_item
     
     def _set_rank(self, rank: Rank) -> None:
         self._rank = rank
@@ -126,7 +117,7 @@ class Piece(ABC):
             f"Piece[id:{self._id} "
             f"name:{self._name} "
             f"rank:{self._rank.name} "
-            f"team_name:{self._team.name.schema.name} "
+            f"team_name:{self._team.schema.name} "
             f"position:{self._positions.current_coord} "
-            f"moves:{self._positions.size()}]"
+            f"moves:{self._positions.size}]"
         )
