@@ -74,13 +74,7 @@ class NullTeamException(TeamException, NullException):
   ERROR_CODE = "NULL_TEAM_ERROR"
   DEFAULT_MESSAGE = "Team cannot be validation"
 
-class InvalidTeamException(TeamException, ValidationException):
-  """
-  Raised by `TeamValidator` if an object fails sanity checks. Exists primarily to catch all
-  exceptions raised validating an existing`Team`.
-  """
-  ERROR_CODE = "TEAM_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Team validation failed."
+
 
 
 class TeamCommanderInconsistencyException(TeamException):
@@ -89,14 +83,7 @@ class TeamCommanderInconsistencyException(TeamException):
   DEFAULT_MESSAGE = "The team_name has assigned itself to a agent but the Agent has no record of the team_name."
 
 
-#======================# TEAM BUILD EXCEPTIONS #======================#  
-class TeamBuildFailedException(TeamException, BuildFailedException):
-  """
-  Raised when TeamBuilder encounters an error while building `Team`. Exists primarily to
-  catch all exceptions raised building team_name new team_name
-  """
-  ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Team build failed."
+
 
 
 #======================# TEAM MEMBER LIST EXCEPTIONS #======================#  

@@ -18,7 +18,7 @@ class CoordContext(Context[Coord]):
     # ROLE: Search option filter
   
     # RESPONSIBILITIES:
-    Provides options for what type of key-value pair CoordSearchService implementations use to find matches.
+    Provides options for what type of key-value pair CoordSearch should use to find matches.
   
     # PROVIDES:
     CoordContext.
@@ -27,7 +27,6 @@ class CoordContext(Context[Coord]):
         *   row (int)
         *   column (int)
     """
-    
     _row: Optional[int] = None
     _column: Optional[int] = None
     
@@ -49,6 +48,7 @@ class CoordContext(Context[Coord]):
             return self._column
     
     def to_dict(self) -> dict:
+        method = "CoordContext.to_dict"
         return {
             "row": self._row,
             "column": self._column,

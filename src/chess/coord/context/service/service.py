@@ -38,32 +38,3 @@ class CoordContextService(Service[CoordContext]):
             validator: CoordContextValidator = CoordContextValidator(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-    
-    # @property
-    # def validator(self) -> CoordContextValidator:
-    #     """
-    #     Validators may have extra features and logic.
-    #     Direct access is given ta all the Validator's capabilities.
-    #     """
-    #     return self._validator
-    
-    # def build(self, row: Optional[int], column: Optional[int]) -> BuildResult[SearchContext]:
-    #     """
-    #     # ACTION:
-    #     1.  Pass the row and column parameters to the internal CoordContextBuilder which uses the internal validator.
-    #     2.  The builder returns a ValidationResult containing either the CoordContext or an Exception.
-    #
-    #     # PARAMETERS:
-    #     At least one of the following must be provided:
-    #         *   row (Optional[int]):
-    #         *   column (Optional[int]):
-    #
-    #     # Returns:
-    #     BuildResult[CoordContext] containing either:
-    #         - On success: CoordContext in the payload.
-    #         - On failure: Exception.
-    #
-    #     # RAISES:
-    #     None
-    #     """
-    #     return self._builder.build(row=row, column=column, validator=self._validator)

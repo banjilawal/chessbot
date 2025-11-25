@@ -42,6 +42,7 @@ class UniqueCoordDataService(UniqueDataService[Coord]):
                 )
             self._data_service.items.append(item)
             return InsertionResult.success(item)
+        
         except Exception as ex:
             return InsertionResult.failure(
                 UniqueCoordDataServiceException(

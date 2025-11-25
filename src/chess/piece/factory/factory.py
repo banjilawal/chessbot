@@ -7,21 +7,13 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.pawn import PawnPiece
-from chess.rank import
+from chess.team import Team, TeamService
+from chess.rank import King, Pawn, Rank, RankService
+from chess.piece import CombatantPiece, KingPiece, PawnPiece, Piece, PieceBuildFailedException
 from chess.system import (
-    Builder, BuildResult, IdentityService, LoggingLevelRouter,
-    SearchContext, ValidationResult
+    BuildFailedException, BuildResult, Builder, IdentityService, LoggingLevelRouter, ValidationResult
 )
-from chess.piece import (
-    Piece, AttackBuildFailedException, KingPiece, CombatantPiece, PieceBuildFailedException,
-    ActivePieceMissingFromTeamRoster
-)
-from chess.rank import Pawn, Rank, RankValidator, King, RankService
-from chess.team import (
-    Team, TeamService, TeamValidator, TeamSearch, PieceCollectionCategory, FullRankQuotaException,
-    ConflictingTeamAssignmentException
-)
+
 
 
 class PieceFactory(Builder[Piece]):
@@ -116,82 +108,17 @@ class PieceFactory(Builder[Piece]):
                 return cls.build_king_piece(id=id, name=name, team=team)
             
             return cls.build_combatant_piece(id=id, name=name, rank=rank, team=team)
-            
-            piece = None
-            if isinstance(rank, King):
-                return cls.build_king_
-            
-            piece = Piece(id=id, name=name, rank=rank, team=team)
-            if piece not in team.roster:
-                team.roster.append(piece)
-            
-            return BuildResult(
-                payload=Piece(
-                    id=id,
-                    name=name,
-                    rank=rank,
-                    team=team
-                )
-            )
-            
-            # id_validation = IdValidator.validate(visitor_id)
-            # if not id_validation.is_success():
-            #   LoggingLevelRouter.throw_if_invalid(PieceFactory, id_validation)
-            
-            name_validation = NameValidator.validate(name)
-            if not name_validation.is_success():
-                return BuildResult(exception=name_validation.exception)
-            
-            rank_validation = RankValidator.validate(rank)
-            if not rank_validation.is_success():
-                return BuildResult(exception=rank_validation.exception)
-            
-            team_validation = TeamValidator.validate(team)
-            if not team_validation.is_success():
-                return BuildResult(exception=team_validation.exception)
-            
-            search_result = TeamSearch.search(
-                team=team,
-                data_source=PieceCollectionCategory.ROSTER,
-                search_context=SearchContext(rank=rank)
-            )
-            if not search_result.is_success():
-                return BuildResult(exception=search_result.exception)
-            
-            if len(search_result.payload) >= rank.team_quota:
-                return BuildResult(
-                    exception=FullRankQuotaException(
-                        f"{method}: FullRankQuotaException.DEFAULT_MESSAGE"
-                    )
-                )
-            
-            piece = None
-            if isinstance(rank, King):
-                piece = KingPiece(name=name, rank=rank, team=team)
-            else:
-                piece = CombatantPiece(name=name, rank=rank, team=team)
-            
-            if not piece.team == team:
-                return BuildResult(
-                    exception=ConflictingTeamAssignmentException(
-                        f"{method}: ConflictingTeamAssignmentException.DEFAULT_MESSAGE"
-                    )
-                )
-            
-            if not piece.team == team:
-                team.add_to_roster(piece)
-            
-            if piece not in team.roster:
-                return BuildResult(
-                    exception=ActivePieceMissingFromTeamRoster(
-                        f"{method}: UnregisteredTeamMemberException.DEFAULT_MESSAGE"
-                    )
-                )
-            
-            return BuildResult(payload=piece)
         
-        except Exception as e:
-            raise AttackBuildFailedException(f"{method}: {e}")
+        except Exception as ex:
+            raise BuildResult.failure(
+                BuildFailedException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{BuildFailedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
     
     
     @classmethod
@@ -200,25 +127,26 @@ class PieceFactory(Builder[Piece]):
         """"""
         method = "PieceFactory.build_pawn_piece"
         try:
-            attribute_validation = cls.validate_build_attributes(id, name, PawnPiece(), team)
+            attribute_validation = cls._validate_build_attributes(id, name, PawnPiece(), team)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
+            
             piece = PawnPiece(id=id, name=name, rank=Pawn(), team=team)
             
-            return BuildResult(
-                payload=KingPiece(
-                    id=id,
-                    name=name,
-                    rank=King(),
-                    team=team
-                )
-            )
+            binding_result = cls._ensure_team_binding(piece=piece, team=team)
+            if binding_result.is_failure():
+                return BuildResult.failure(binding_result.exception)
+            
+            return BuildResult.success(piece)
         
         except Exception as ex:
             return BuildResult.failure(
                 PieceBuildFailedException(
-                    f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
     
@@ -232,32 +160,77 @@ class PieceFactory(Builder[Piece]):
             attribute_validation = cls._validate_build_attributes(id, name, King(), team)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
+            
             piece = KingPiece(id=id, name=name, rank=King(), team=team)
+            
+            binding_result = cls._ensure_team_binding(piece=piece, team=team)
+            if binding_result.is_failure():
+                return BuildResult.failure(binding_result.exception)
+            
+            return BuildResult.success(piece)
         
         except Exception as ex:
             return BuildResult.failure(
                 PieceBuildFailedException(
-                    f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_combatant_piece(cls, id: int, name: str, rank, team: Team) -> BuildResult[CombatantPiece]:
+    def build_combatant_piece(
+            cls,
+            id: int,
+            name: str,
+            rank: Rank,
+            team: Team
+    ) -> BuildResult[CombatantPiece]:
         """"""
         method = "PieceFactory.build_combatant_piece"
         try:
             attribute_validation = cls._validate_build_attributes(id, name, rank, team)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
-            piece = KingPiece(id=id, name=name, rank=rank, team=team)
+            
+            piece = CombatantPiece(id=id, name=name, rank=rank, team=team)
+            
+            binding_result = cls._ensure_team_binding(piece=piece, team=team)
+            if binding_result.is_failure():
+                return BuildResult.failure(binding_result.exception)
+            
+            return BuildResult.success(piece)
         
         except Exception as ex:
             return BuildResult.failure(
                 PieceBuildFailedException(
-                    f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _ensure_team_binding(cls, piece: Piece, team: Team) -> BuildResult[(Piece, Team)]:
+        method = "PieceFactory._verify_team_building"
+        try:
+            if piece not in team.roster.items:
+                team.roster.items.append(piece)
+            return BuildResult.success((piece, team))
+        except Exception as ex:
+            return BuildResult.failure(
+                PieceBuildFailedException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
     
@@ -273,7 +246,7 @@ class PieceFactory(Builder[Piece]):
             rank_service: RankService = RankService(),
             team_service: TeamService = TeamService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult(int, str, Rank, Team):
+    ) -> ValidationResult[(int, str, Rank, Team)]:
         """"""
         method = "PieceFactory._validate_build_attributes"
         
@@ -282,9 +255,9 @@ class PieceFactory(Builder[Piece]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            rank_validation = rank_service.validate(candidate=rank)
+            rank_validation = rank_service.validator.validate(candidate=rank)
             if rank_validation.is_failure():
-                return BuildResult.failure.(rank_validation.exception)
+                return BuildResult.failure(rank_validation.exception)
             
             team_validation = team_service.validate_team(candidate=team)
             if team_validation.is_failure():
@@ -292,10 +265,13 @@ class PieceFactory(Builder[Piece]):
             
             return ValidationResult.success((id, name, rank, team))
         except Exception as ex:
-            return BuildResult(
+            return ValidationResult(
                 PieceBuildFailedException(
                     ex=ex,
-                    message=f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}",
+                    message=(
+                        f"{method}: "
+                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
 

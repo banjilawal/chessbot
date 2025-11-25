@@ -10,4 +10,4 @@ version: 1.0.0
 from .pawn import *
 from .exception import *
 
-from .combatant import CombatantPiece
+from .piece import CombatantPiece

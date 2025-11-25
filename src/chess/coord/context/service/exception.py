@@ -7,13 +7,13 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-from chess.system import SearchException
+from chess.system import ServiceException
 
 
 __all__ = ["CoordContextServiceException"]
 
 
-class CoordContextServiceException(SearchException):
+class CoordContextServiceException(ServiceException):
     """
     Super class of exceptions raised by CoordContextService objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.

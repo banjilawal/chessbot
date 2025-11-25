@@ -10,9 +10,13 @@ Version: 1.0.0
 from typing import Type, Any, cast
 
 from chess.coord import CoordService
+from chess.piece import (
+    InvalidPieceException, NullPieceException, PieceNullCoordStackException,
+    PieceRosterNumberIsNullException
+)
 from chess.rank import RankService
-from chess.system import IdentityService, LoggingLevelRouter, Validator
-from chess.team import TeamService
+from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.team import RosterNumberOutOfBoundsException, Team, TeamService
 
 
 class PieceValidator(Validator[Piece]):
@@ -50,21 +54,21 @@ class PieceValidator(Validator[Piece]):
                 )
             
             piece = cast(Piece, candidate)
-            identity_validation = identity_service.va
-            if id_validation.is_failure():
-                return ValidationResult.failure(id_validation.exception)
+            identity_validation = identity_service.validate_identity(
+                id_candidate=piece.id,
+                name_candidate=piece.name
+            )
+            if identity_validation.is_failure():
+                return ValidationResult.failure(identity_validation.exception)
             
-        
-            name_validation = NameValidator.validate(piece.name)
-            if name_validation.is_failure():
-                return ValidationResult.failure(name_validation.exception)
+            team_validation = team_service.validator.validate(piece.team)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
             
-            if piece.team is None:
-                return ValidationResult.failure(
-                    PieceTeamFieldIsNullException(
-                        f"{method}: "
-                        f"{PieceTeamFieldIsNullException.DEFAULT_MESSAGE}")
-                )
+            rank_validation = rank_service.validator.validate(piece.rank)
+            if rank_validation.is_failure():
+                return ValidationResult.failure(rank_validation.exception)
+
             
             if piece.roster_number is None:
                 return ValidationResult.failure(
@@ -82,11 +86,6 @@ class PieceValidator(Validator[Piece]):
                     )
                 )
             
-            rank_validation = RankValidatorFactory.validate(piece.rank)
-            if rank_validation.is_failure():
-                return ValidationResult.failure(rank_validation.exception)
-
-            
             if piece.positions is None:
                 return ValidationResult.failure(
                     PieceNullCoordStackException(
@@ -96,9 +95,12 @@ class PieceValidator(Validator[Piece]):
             
             return ValidationResult.success(piece)
 
-        except Exception as e:
+        except Exception as ex:
             return ValidationResult.failure(
-                InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}", e)
+                InvalidPieceException(
+                    ex=ex,
+                    message=f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}"
+                )
             )
         
     @classmethod

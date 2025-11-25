@@ -17,14 +17,11 @@ __all__ = [
 ]
 
 
-# ========================= COORD_CONTEXT FLAG EXCEPTIONS =========================#
-class NoPieceContextFlagSetException(
-    InvalidPieceContextException,
-    BoundsException
-):
+# ========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
+class NoPieceContextFlagSetException(InvalidPieceContextException, BoundsException):
     """Raised if no PieceContext was selected."""
     ERROR_CODE = "NO_PIECE_CONTEXT_FLAG_SET_ERROR"
-    DEFAULT_MESSAGE = "At least one PieceContext flag must be set."
+    DEFAULT_MESSAGE = "One and only one, PieceContext flag must be set."
 
 
 class TooManyPieceContextFlagsSetException(InvalidPieceContextException, BoundsException):

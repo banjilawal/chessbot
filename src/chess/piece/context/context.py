@@ -9,12 +9,26 @@ version: 1.0.0
 
 from typing import Dict, Optional
 
-from chess.coord import Coord
 from chess.piece import Piece
+from chess.coord import Coord
 from chess.system import Context, LoggingLevelRouter
 
 
 class PieceContext(Context[Piece]):
+    """
+    # ROLE: Search option filter
+
+    # RESPONSIBILITIES:
+    Provides options for what type of key-value pair PieceSearch should use to find matches.
+
+    # PROVIDES:
+    PieceContext.
+
+    # ATTRIBUTES:
+        *   id (int)
+        *   name (str)
+        *   coord (Coord)
+    """
     _coord: Optional[Coord]
     
     @LoggingLevelRouter.monitor
@@ -32,6 +46,7 @@ class PieceContext(Context[Piece]):
         return self._coord
     
     def to_dict(self) -> Dict:
+        method = "PieceContext.to_dict"
         return {
             "id": self.id,
             "name": self.name,

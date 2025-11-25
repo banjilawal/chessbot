@@ -1,11 +1,18 @@
+# src/chess/team/context/exception.py
 
+"""
+Module: chess.team.context.exception
+Author: Banji Lawal
+Created: 2025-11-24
+version: 1.0.0
+"""
 
 from typing import Optional
 
 from chess.rank import Rank
 from chess.system import SearchContext
 
-class TeamSearchContext(SearchContext):
+class TeamContext(Context):
 
   _name: Optional[str] = None
   _rank: Optional[Rank] = None

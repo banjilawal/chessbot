@@ -9,11 +9,9 @@ version: 1.0.0
 
 from typing import Optional
 
-
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.coord import (
-    CoordContextValidator, CoordContext, CoordContextBuildFailedException,
-    NoCoordContextFlagSetException
+    CoordContextValidator, CoordContext, CoordContextBuildFailedException, NoCoordContextFlagSetException
 )
 
 
@@ -65,7 +63,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             *   CoordContextBuildFailedException
             *   NoCoordContextFlagSetException
         """
-        method = "CoordSearchContextBuilder.builder"
+        method = "CoordContextBuilder.builder"
         
         try:
             params = [row, column]

@@ -7,18 +7,16 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-
 from typing import Any, cast
 
 from chess.coord import CoordService
-from chess.piece import (
-    InvalidPieceContextException, NoPieceContextFlagSetException, NullPieceContextException,
-    NullPieceException, Piece, PieceContext, TooManyPieceContextFlagsSetException
-)
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
+from chess.piece import (
+    InvalidPieceContextException, NoPieceContextFlagSetException, NullPieceContextException, PieceContext,
+    TooManyPieceContextFlagsSetException
+)
 
-
-class PieceContextValidator(Validator[Piece]):
+class PieceContextValidator(Validator[PieceContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -43,7 +41,7 @@ class PieceContextValidator(Validator[Piece]):
             if not isinstance(candidate, PieceContext):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected PieceContext, got {type(candidate)} instead."
+                        f"{method}: Expected PieceContext, got {type(candidate).__name__} instead."
                     )
                 )
             
@@ -66,26 +64,24 @@ class PieceContextValidator(Validator[Piece]):
                 )
             
             if context.id is not None:
-                id_validation = identity_service.validate_id(context.id)
-                if id_validation.is_failure():
-                    return ValidationResult.failure(id_validation.exception)
+                validation = identity_service.validate_id(candidate=context.id)
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.name is not None:
-                name_validation = identity_service.validate_name(context.name)
-                if name_validation.is_failure():
-                    return ValidationResult.failure(name_validation.exception)
+                validation = identity_service.validate_name(candidate=context.name)
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.coord is not None:
-                coord_validation = coord_service.validator.validate(
+                validation = coord_service.validator.validate(
                     candidate=candidate,
                     validator=coord_service.validator
                 )
-                if coord_validation.is_failure():
-                    return ValidationResult.failure(
-                        coord_validation.exception
-                    )
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
                 return ValidationResult.succes(context)
                 
         except Exception as ex:
