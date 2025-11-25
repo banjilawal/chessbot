@@ -136,3 +136,19 @@ class RankValidatorFactory(Validator[Rank]):
                             f"{InvalidRankException.DEFAULT_MESSAGE}",
                 )
             )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_ransom_in_bounds(cls, ransom_candidate: Any) -> ValidationResult[int]:
+        try:
+            return ValidationResult.failure(InvalidRankException())
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidRankException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{InvalidRankException}"
+                    )
+                )
+            )

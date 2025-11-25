@@ -1,12 +1,12 @@
-# src/chess/team_name/old_search/__init__.py
+# src/chess/piece/search/__init__.py
 
 """
-Module: chess.team_name.old_search
+Module: chess.piece.search.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
-from .context import *
-from .search import DiscoverySearch
+from .exception import *
+from .search import PieceSearch
 

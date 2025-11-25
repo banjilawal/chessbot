@@ -40,11 +40,11 @@ __all__ = [
 
 class PieceException(ChessException):
     """
-    Super class of exceptions raised by Scalar objects. Do not use directly. Subclasses give
+    Super class of exceptions raised by Piece objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "PIECE_ERROR"
-    DEFAULT_MESSAGE = "Piece raised an rollback_exception."
+    DEFAULT_MESSAGE = "Piece raised an exception."
     
 # ======================# PIECE NULL EXCEPTIONS #======================#
 class NullPieceException(PieceException, NullException):

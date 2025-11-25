@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.rank import Rank
-from chess.system import SearchContext
+from chess.system import Context
 
 class TeamContext(Context):
 
@@ -33,34 +33,3 @@ class TeamContext(Context):
     self._ransom = ransom
     self._piece_id = piece_id
     self._roster_number = roster_number
-
-@property
-def name(self) -> Optional[str]:
-  return self._visitor_name
-
-@property
-def rank(self) -> Optional[Rank]:
-  return self._rank_name
-
-@property
-def ransom(self) -> Optional[int]:
-  return self._visitor_ransom
-
-@property
-def piece_id(self) -> Optional[int]:
-  return self._visitor_id
-
-@property
-def roster_number(self) -> Optional[int]:
-  return self._roster_number
-
-
-
-def to_dict(self) -> dict:
-  return {
-    "visitor_name": self._visitor_name,
-    "bounds": self._rank_name,
-    "visitor_ransom": self._visitor_ransom,
-    "visitor_id": self._visitor_id,
-    "roster_number": self._roster_number,
-  }

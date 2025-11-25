@@ -37,7 +37,7 @@ __all__ = [
 
 
 class InvalidPieceException(InvalidPieceException, ValidationException):
-    """Catchall Exception for ScalarValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for PieceValidator when a validation candidate fails a sanity check."""
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Piece validation failed."
     

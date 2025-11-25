@@ -6,13 +6,17 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+from typing import Optional
 
 from chess.piece import (
     NoPieceContextFlagSetException, PieceContext, PieceContextBuildFailedException,
     TooManyPieceContextFlagsSetException
 )
 from chess.coord import Coord, CoordService
+from chess.rank import Rank, RankService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
+from chess.team import Team, TeamService
+
 
 class PieceContextBuilder(Builder[PieceContext]):
     """
@@ -37,7 +41,12 @@ class PieceContextBuilder(Builder[PieceContext]):
             cls,
             id: int,
             name: str,
-            coord: Coord,
+            team: Optional[Team],
+            rank: Optional[Rank],
+            ransom: Optional[int],
+            coord: Optional[Coord],
+            team_service: TeamService = TeamService(),
+            rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[PieceContext]:
@@ -51,9 +60,14 @@ class PieceContextBuilder(Builder[PieceContext]):
         Only one these must be provided:
             *   id (Optional[int])
             *   name (Optional[int])
-            *   coord (CoordContextValidator)
+            *   team (Optional[Team])
+            *   rank (Optional[Rank])
+            *   ransom (Optional[int])
+            *   coord (Optional[Coord])
             
         These Parameters must be provided:
+            *   team_service (TeamService)
+            *   rank_service (RankService)
             *   coord_service (CoordService)
             *   identity_service (IdentityService)
 
@@ -70,7 +84,7 @@ class PieceContextBuilder(Builder[PieceContext]):
         method = "PieceSearchContextBuilder.builder"
         
         try:
-            params = [id, name,coord]
+            params = [id, name, team, rank, ransom, coord]
             param_count = sum(bool(p) for p in params)
             
             if param_count == 0:
@@ -106,6 +120,24 @@ class PieceContextBuilder(Builder[PieceContext]):
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(PieceContext(coord=coord))
+            
+            if rank is not None:
+                validation = rank_service.validator.validate(rank)
+                if validation.is_failure():
+                    return BuildResult.failure(validation.exception)
+                return BuildResult.success(PieceContext(rank=rank))
+            
+            if team is not None:
+                validation = team_service.validator.validate(team)
+                if validation.is_failure():
+                    return BuildResult.failure(validation.exception)
+                return BuildResult.success(PieceContext(team=team))
+            
+            if ransom is not None:
+                validation = rank_service.validator.validate_ransom_in_bounds(ransom)
+                if validation.is_failure():
+                    return BuildResult.failure(validation.exception)
+                return BuildResult.success(PieceContext(ransom=ransom))
         
         except Exception as ex:
             return BuildResult.failure(
