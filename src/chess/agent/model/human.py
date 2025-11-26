@@ -1,7 +1,7 @@
-# src/chess/agent/agent/human.py
+# src/chess/model/human.py
 
 """
-Module: chess.agent.agent.human
+Module: chess.model.human
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

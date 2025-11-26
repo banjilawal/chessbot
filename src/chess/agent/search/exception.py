@@ -1,4 +1,4 @@
-# src/chess/agent/search/collision.py
+# src/chess/agent/search/exception
 
 """
 Module: chess.agent.search.exception

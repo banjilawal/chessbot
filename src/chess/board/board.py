@@ -8,8 +8,11 @@ version: 1.0.0
 """
 
 
-from chess.piece.service import PieceService
-from chess.square import  SquareService
+from chess.game import Game
+from chess.piece import UniquePieceDataService
+from chess.square import UniqueSquareDataService
+from chess.piece.service import UniquePieceDataServiceException
+
 
 
 class Board:
@@ -29,10 +32,17 @@ class Board:
     """
     
     _id: int
-    _piece_service: PieceService
-    _square_service: SquareService
+    _game: Game
+    _piece_service: UniquePieceDataService
+    _square_service: UniqueSquareDataService
     
-    def __init__(self, id: int, piece_service: PieceService, square_service: SquareService):
+    def __init__(
+            self,
+            id: int,
+            game: Game,
+            piece_service: UniquePieceDataService = UniquePieceDataServiceException(),
+            square_service: UniqueSquareDataService = UniqueSquareDataService(),
+    ):
         """
         # Action:
         Constructs Board object
@@ -49,6 +59,7 @@ class Board:
         method = "Board.__init__"
         
         self._id = id
+        self._game = game
         self._piece_service = piece_service
         self._square_service = square_service
     
@@ -56,22 +67,17 @@ class Board:
     def id(self) -> int:
         return self._id
     
+    @property
+    def game(self) -> Game:
+        return self._game
+    
     @@property
-    def piece_service(self) -> PieceService:
+    def piece_service(self) -> UniquePieceDataService:
         return self._piece_service
     
     @@property
-    def square_service(self) -> SquareService:
+    def square_service(self) -> UniqueSquareDataService:
         return self._square_service
-    
-    # @property
-    # def squares(self) -> List[Square]:
-    #     """Flatten the 2D board_validator into team_name 1D list of squares for efficient searching."""
-    #     return [square for row in self._squares for square in row]
-    #
-    # @property
-    # def pieces(self) -> List[Piece]:
-    #     return self._pieces
     
     def __eq__(self, other):
         if other is self: return True

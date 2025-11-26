@@ -1,7 +1,7 @@
-# src/chess/agent/agent.py
+# src/chess/agent/model/agent.py
 
 """
-Module: chess.agent.agent
+Module: chess.agent.model.agent
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

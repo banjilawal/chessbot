@@ -7,9 +7,7 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from .context import *
 from .exception import *
 
 from .search import TeamSearch
-from .service import TeamSearchService
 

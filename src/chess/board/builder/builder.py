@@ -10,6 +10,8 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.coord import Coord, CoordService
+from chess.game.model import Game
+from chess.piece import UniquePieceDataService
 from chess.square import SquareBuilder, SquareService, UniqueSquareDataService
 from chess.board import Board, BoardBuildFailedException
 from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdentityService
@@ -35,11 +37,12 @@ class BoardBuilder(Builder[Board]):
     def build(
             cls,
             id: int,
+            game: Game,
             num_rows: int=BOARD_DIMENSION,
             num_columns: int=BOARD_DIMENSION,
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            
+            piece_service: UniquePieceDataService = UniquePieceDataService(),
             square_data: UniqueSquareDataService = UniqueSquareDataService(),
     ) -> BuildResult[Board]:
         """
@@ -80,7 +83,7 @@ class BoardBuilder(Builder[Board]):
                     if coord_build_result.is_failure():
                         return BuildResult.failure(coord_build_result.exception)
    
-                    square_build_result = square_data.service.builder.build(
+                    square_build_result = square_data.builder.build(
                         id=identity_service.id_emitter.square_id,
                         name=name,
                         coord=coord_build_result.payload
@@ -94,7 +97,14 @@ class BoardBuilder(Builder[Board]):
                     ascii_value += 1
                 
             
-            return BuildResult.success(payload=Board(id=id, square_service=square_data))
+            return BuildResult.success(
+                Board(
+                    id=id,
+                    game=game,
+                    square_service=square_data,
+                    piece_service=piece_service
+                )
+            )
         
         except Exception as e:
             return BuildResult.failure(
