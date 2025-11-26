@@ -74,5 +74,5 @@ class UniqueDataService(ABC, Generic[A]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def push(self, item: A) -> InsertionResult[A]:
+    def push_unique(self, item: A) -> InsertionResult[A]:
         pass

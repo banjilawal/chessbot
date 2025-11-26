@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+
 from typing import Optional
 
 from chess.piece import (

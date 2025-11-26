@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import Service
-from chess.piece import Piece, PieceFactory, PieceValidator,
+from chess.piece import Piece, PieceFactory, PieceValidator
 
 class PieceService(Service[Piece]):
     """

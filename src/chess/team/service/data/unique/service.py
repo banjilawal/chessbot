@@ -13,7 +13,7 @@ from chess.system import InsertionResult, UniqueDataService
 class UniqueTeamDataService(UniqueDataService[Team]):
     
     
-    def push(self, item: Team) -> InsertionResult[Team]:
+    def push_unique(self, item: Team) -> InsertionResult[Team]:
         pass
     
     

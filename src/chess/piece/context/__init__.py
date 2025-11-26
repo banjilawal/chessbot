@@ -9,8 +9,9 @@ version: 1.0.0
 
 
 from .builder import *
+from .exception import *
 from .service import *
 from .validator import *
 
-from .exception import *
+
 from .context import PieceContext

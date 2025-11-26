@@ -26,7 +26,7 @@ class UniqueCoordDataService(UniqueDataService[Coord]):
         super().__init__(id=id, name=name, data_service=data_service)
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Coord) -> InsertionResult[Coord]:
+    def push_unique(self, item: Coord) -> InsertionResult[Coord]:
         method = "UniqueSquareDataService.push"
         try:
             validation = self._data_service.validator.validate(item)

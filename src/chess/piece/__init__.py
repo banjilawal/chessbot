@@ -17,11 +17,3 @@ from .service import *
 from .validator import *
 
 from .piece import Piece
-
-
-
-
-
-
-
-

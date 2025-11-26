@@ -12,7 +12,8 @@ from typing import Generic, List, Optional, TypeVar
 
 from chess.system.data import DeletionResult, DataServiceException, RemovingNullDataException
 from chess.system import (
-    Context, DataServiceException, PoppingEmptyStackException, SearchResult, Service,
+    Context, DataServiceException, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException, SearchResult,
+    Service,
     Search
 )
 
@@ -76,6 +77,17 @@ class DataService(ABC, [Generic [D, C]]):
         
         self._size = len(self._items)
         self._current_item = self._items[-1] if self._items else None
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def push(self, item: D) -> InsertionResult[D]:
+        """Each subclass must implement."""
+        pass
+    
+    @abstractmethod
+    def search(self, context: C) -> SearchResult[List[D]]:
+        """Each subclass must implement."""
+        pass
         
     @property
     def id(self) -> int:
@@ -108,6 +120,7 @@ class DataService(ABC, [Generic [D, C]]):
     def is_empty(self) -> bool:
         return len(self._items) == 0
     
+    @LoggingLevelRouter.monitor
     def undo(self) -> DeletionResult[D]:
         method = "DataService.undo"
         try:
@@ -120,7 +133,6 @@ class DataService(ABC, [Generic [D, C]]):
                 )
             item = self._items.pop()
             return DeletionResult.success(payload=item)
-        
         except Exception as ex:
             return DeletionResult.failure(
                 DataServiceException(
@@ -132,6 +144,3 @@ class DataService(ABC, [Generic [D, C]]):
                 )
             )
     
-    @abstractmethod
-    def search(self, context: C) -> SearchResult[List[D]]:
-        pass

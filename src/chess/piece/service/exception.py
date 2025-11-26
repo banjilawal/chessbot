@@ -1,7 +1,7 @@
-# src/chess/piece/service/__init__.py
+# src/chess/piece/service/exception.py
 
 """
-Module: chess.piece.service.__init__
+Module: chess.piece.service.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -7,13 +7,13 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from typing import Dict, Optional
+from typing import Optional
 
+from chess.team import Team
+from chess.rank import Rank
 from chess.piece import Piece
 from chess.coord import Coord
-from chess.rank import Rank
 from chess.system import Context, LoggingLevelRouter
-from chess.team import Team
 
 
 class PieceContext(Context[Piece]):
@@ -69,7 +69,7 @@ class PieceContext(Context[Piece]):
     def coord(self) -> Optional[Coord]:
         return self._coord
     
-    def to_dict(self) -> dict:
+    def to_dict(self) -> {}:
         return {
             "id": self.id,
             "name": self.name,

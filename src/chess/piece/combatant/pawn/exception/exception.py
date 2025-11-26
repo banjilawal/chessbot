@@ -11,6 +11,9 @@ version: 1.0.0
 
 from chess.piece import CombatantPieceException
 
+__all__ =[
+    "PawnPieceException",
+]
 
 class PawnPieceException(CombatantPieceException):
     ERROR_CODE = "PAWN_PIECE_ERROR"
