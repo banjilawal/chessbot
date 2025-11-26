@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system import DataService, LoggingLevelRouter, SearchResult, id_emitter
-from chess.coord import Coord, CoordContext, CoordSearch, CoordService, CoordContextService
+from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
+from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordSearch, CoordService, CoordContextService
 
 
 class CoordDataService(DataService[Coord]):
@@ -85,9 +85,31 @@ class CoordDataService(DataService[Coord]):
             service=service,
             context_service=context_service,
         )
+    
+    @LoggingLevelRouter.monitor
+    def push(self, item: Coord) -> InsertionResult[Coord]:
+        method = "CoordDataService.push"
+        try:
+            validation = self.service.validator.validate(item)
+            if validation.is_failure():
+                return InsertionResult.failure(validation.exception)
+            self.items.append(item)
+            
+            return InsertionResult.success(payload=item)
+        except Exception as ex:
+            return InsertionResult.failure(
+                CoordDataServiceException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{CoordDataServiceException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
         
     @LoggingLevelRouter.monitor
     def search(self, context: CoordContext) -> SearchResult[[Coord]]:
+        method = "CoordDataService.search"
         return self._search_service.find(
             data_set=self.items,
             context=context,

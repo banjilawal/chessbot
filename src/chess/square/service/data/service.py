@@ -10,8 +10,11 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system import DataService, LoggingLevelRouter, SearchResult, id_emitter
-from chess.square import Square, SquareContext, SquareContextService, SquareSearch, SquareService
+from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
+from chess.square import (
+    Square, SquareContext, SquareContextService, SquareDataServiceException, SquareSearch,
+    SquareService
+)
 
 
 class SquareDataService(DataService[Square]):
@@ -35,6 +38,28 @@ class SquareDataService(DataService[Square]):
             service=service,
             context_service=context_service,
         )
+    
+    @LoggingLevelRouter.monitor
+    def push(self, item: Square) -> InsertionResult[Square]:
+        method = "SquareDataService.push"
+        try:
+            validation = self.service.validator.validate(item)
+            if validation.is_failure():
+                return InsertionResult.failure(validation.exception)
+            self.items.append(item)
+            
+            return InsertionResult.success(payload=item)
+        except Exception as ex:
+            return InsertionResult.failure(
+                SquareDataServiceException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{SquareDataServiceException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+ 
         
     @LoggingLevelRouter.monitor
     def search(self, context: SquareContext) -> SearchResult[List[Square]]:

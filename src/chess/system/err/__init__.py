@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from .binding import *
+from .registration import *
 from .bounds import *
 from .color import *
 from .null import *

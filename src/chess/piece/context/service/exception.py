@@ -9,9 +9,13 @@ version: 1.0.0
 
 from chess.system import ServiceException
 
-__all__ = ["PieceContextServiceException"]
+__all__ = [
+    # ======================# PIECE_CONTEXT_SERVICE EXCEPTIONS #======================#
+    "PieceContextServiceException"
+]
 
 
+# ======================# PIECE_CONTEXT_SERVICE EXCEPTIONS #======================#
 class PieceContextServiceException(ServiceException):
     """
     Super class of exceptions raised by PieceContextService objects.

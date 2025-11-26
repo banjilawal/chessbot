@@ -6,3 +6,17 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+
+from chess.team import TeamContextException
+from chess.system import ValidationException
+
+
+__all__ = [
+    "InvalidTeamContextException",
+]
+
+
+class InvalidTeamContextException(TeamContextException, ValidationException):
+    """Catchall Exception for TeamContextValidator when a validation candidate fails a sanity check."""
+    ERROR_CODE = "TEAM_CONTEXT_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "TeamContext validation failed."

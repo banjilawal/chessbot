@@ -17,7 +17,7 @@ from chess.agent import (
 from chess.team import Team
 
 
-class PlayerAgentService:
+class AgentService:
     _agents: List[Agent]
     _builder: PlayerAgentBuilder
     _validator: PlayerAgentValidator

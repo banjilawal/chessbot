@@ -31,18 +31,7 @@ class PieceServiceException(ServiceException):
     DEFAULT_MESSAGE = "PieceService raised an exception."
 
 
-# ======================# NULL PIECE_SERVICE EXCEPTIONS #======================#
-class NullPieceServiceException(PieceServiceException, NullException):
-    """Raised if an entity, method, or operation requires PieceService but gets validation instead."""
-    ERROR_CODE = "NULL_PIECE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PieceService cannot be validation."
 
-
-# ======================# PIECE_SERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidPieceServiceException(PieceServiceException, ValidationException):
-    """Catchall Exception for PieceServiceValidator when a validation candidate fails a sanity check."""
-    ERROR_CODE = "PIECE_SERVICE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "PieceService validation failed."
 
 
 # ====================== PIECE_SERVICE BUILD EXCEPTIONS #======================#

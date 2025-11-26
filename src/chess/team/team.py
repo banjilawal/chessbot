@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.piece import Piece
+from chess.piece import Piece, UniquePieceDataService
 from chess.team import TeamSchema
 from chess.agent import Agent
 
@@ -28,8 +28,8 @@ class Team:
     # ATTRIBUTES:
         *   MAX_ROSTER_SIZE (int):  Size of roster at full strength.
         *   id (int):               Globally unique identifier for the team.
-        *   roster (List[Piece]):   Collection of Pieces the Agent can move on a Board instance.
-        *   hostages (List[Piece):  Collection of captured enemy Pieces.
+        *   roster (UniquePieceDataService):   Collection of Pieces the Agent can move on a Board instance.
+        *   hostages (UniquePieceDataService):  Collection of captured enemy Pieces.
         *   agent (Agent):  Directs moves of Pieces in Team.roster.
         *   schema (TeamSchema):    Defines the Team's
                 *   name (str):                 Unique within the Game instance.
@@ -43,20 +43,29 @@ class Team:
     MAX_ROSTER_SIZE = 16
     
     _id: int
-    _roster: [Piece]
-    _hostages: [Piece]
+    _agent: Agent
     _schema: TeamSchema
-    _player_agent: Agent
+    _roster: UniquePieceDataService
+    _hostages: UniquePieceDataService
 
-    def __init__(self, id: int, player_agent: Agent, schema: TeamSchema):
+    def __init__(
+            self,
+            id: int,
+            agent: Agent,
+            schema: TeamSchema,
+            roster: UniquePieceDataService,
+            hostages: UniquePieceDataService,
+    ):
         """
         # ACTION:
         Construct a Team object.
 
         # PARAMETERS:
-            *   id (int):                       Globally unique identifier for the team.
-            *   agent (Agent):     Directs moves of Pieces in Team.roster.
-            *   schema (TeamSchema):            Defines the Team's
+            *   id (int)
+            *   agent (Agent)
+            *   schema (TeamSchema)
+            *   roster (UniquePieceDataService)
+            *   hostages (UniquePieceDataService)
 
         # Returns:
         None
@@ -65,33 +74,31 @@ class Team:
         None
         """
         method = "Team.__init__"
-        
         self._id = id
+        self._agent = agent
         self._schema = schema
-        self._roster = [Piece]
-        self._hostages = [Piece]
-        self._player_agent = player_agent
-
+        self._roster = roster
+        self._hostages = hostages
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def roster(self) -> [Piece]:
-        return self._roster
-    
-    @property
-    def hostages(self) -> [Piece]:
-        return self._hostages
+    def agent(self) -> Agent:
+        return self._agent
     
     @property
     def schema(self) -> TeamSchema:
         return self._schema
+
+    @property
+    def roster(self) -> UniquePieceDataService:
+        return self._roster
     
     @property
-    def player_agent(self) -> Agent:
-        return self._player_agent
+    def hostages(self) -> UniquePieceDataService:
+        return self._hostages
     
     def __eq__(self, other) -> bool:
         if other is self: return True
@@ -106,6 +113,6 @@ class Team:
     def __str__(self) -> str:
         return (
             f"Team{{"
-            f"id:{self._id} {self._player_agent.name} {self._schema}"
+            f"id:{self._id} {self._agent.name} {self._schema}"
             f"}}"
         )

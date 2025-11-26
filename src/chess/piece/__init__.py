@@ -9,11 +9,12 @@ version: 1.0.0
 
 from .combatant import *
 from .context import *
-from .exception import *
 from .factory import *
 from .king import *
 from .search import *
 from .service import *
 from .validator import *
+
+from .exception import *
 
 from .piece import Piece

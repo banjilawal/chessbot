@@ -10,12 +10,10 @@ version: 1.0.0
 from abc import ABC
 from typing import Optional
 
-
 from chess.team import Team
 from chess.rank import Rank
+from chess.piece import Piece
 from chess.coord import Coord, CoordDataService
-from chess.piece import CoordStack, CoordStackService, Piece
-
 
 class Piece(ABC):
     """
@@ -31,12 +29,12 @@ class Piece(ABC):
     Piece
   
     # ATTRIBUTES:
-        *   id (int):                                   Globally unique identifier.
-        *   name (str):                                 Conventional name of chess piece
-        *   team (Team):
-        *   rank (Rank):
-        *   roster_number (int):                        initial number on its team's roster.
-        *   current_position (Coord):                   Coord at last move
+        *   id (int)
+        *   name (str)
+        *   team (Team)
+        *   rank (Rank)
+        *   roster_number (int)
+        *   current_position (Coord)
         *   positions (CoordDataService):
     """
     _id: int
@@ -47,14 +45,13 @@ class Piece(ABC):
     _current_position: Coord
     _positions: CoordDataService
 
-    
     def __init__(
             self,
             id: int,
             name: str,
             rank: Rank,
             team: Team,
-            positions: CoordStackService = CoordStackService()
+            positions: CoordDataService = CoordDataService()
     ):
         method = "Piece.__init__"
 
@@ -81,11 +78,11 @@ class Piece(ABC):
         return self._roster_number
     
     @property
-    def team(self) -> 'Team':
+    def team(self) -> Team:
         return self._team
     
     @property
-    def rank(self) -> 'Rank':
+    def rank(self) -> Rank:
         return self._rank
     
     @property
@@ -117,7 +114,6 @@ class Piece(ABC):
             f"Piece[id:{self._id} "
             f"name:{self._name} "
             f"rank:{self._rank.name} "
-            f"team_name:{self._team.schema.name} "
-            f"position:{self._positions.current_coord} "
-            f"moves:{self._positions.size}]"
+            f"team:{self._team.schema.name} "
+            f"position:{self._positions.current_coord}"
         )

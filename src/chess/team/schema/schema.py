@@ -97,11 +97,9 @@ class TeamSchema(Enum):
   def letter(cls) -> str:
     return cls.name[0]
 
-
   @property
   def color(self) -> GameColor:
     return self._game_color
-
 
   @property
   def advancing_step(self) -> Scalar:
@@ -111,27 +109,22 @@ class TeamSchema(Enum):
   def home_quadrant(self) -> Quadrant:
     return self.home_quadrant
 
-
   @property
   def rank_row(self) -> int:
     return self._rank_row
-
 
   @property
   def pawn_row(self) -> int:
     return self._rank_row + self._advancing_step.value
 
-
   @property
   def enemy_schema(self) -> 'TeamSchema':
     return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
-  
   
   def schema_from_color(self, color: GameColor) -> 'TeamSchema':
     if color == TeamSchema.WHITE:
       return TeamSchema.WHITE
     return TeamSchema.BLACK
-
 
   def __str__(self) -> str:
     return (

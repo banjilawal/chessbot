@@ -9,13 +9,20 @@ version: 1.0.0
 
 
 from chess.piece import PieceException
-from chess.system import BuilderException
+from chess.system import BuilderException, BuildFailedException, NullException
 
 __all__ = [
     "PieceBuildFailedException",
+    "NullPieceFactoryException",
 ]
 
-class PieceBuildFailedException(PieceException, BuilderException):
-    """Catchall Exception for PieceBuilder when it encounters an error building a Scalar."""
+class PieceBuildFailedException(PieceException, BuildFailedException):
+    """Catchall Exception for PieceBuilder when it encounters an error building a Piece."""
     ERROR_CODE = "PIECE_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Piece build failed."
+
+
+class NullPieceFactoryException(BuilderException, NullException):
+    """Raised when an entity, method, or operation requires a PieceBuilder but gets null instead."""
+    ERROR_CODE = "NULL_PIECE_FACTORY_ERROR"
+    DEFAULT_MESSAGE = "PieceFactory cannot be null."

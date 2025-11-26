@@ -1,10 +1,11 @@
-# src/chess/team/context/builder/exception.py
+# src/chess/team/context/builder/__init__.py
 
 """
-Module: chess.team.context.builder.exception
+Module: chess.team.context.builder.__init__
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
 
-__all__ = []
+from .exception import *
+from .builder import TeamContextBuilder

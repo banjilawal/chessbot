@@ -9,14 +9,11 @@ version: 1.0.0
 
 
 from .stack import *
+from .context import *
+from .factory import *
+from .model import *
+from .service import *
 from .search import *
+from .validator import *
 from .exception import *
-
-from .agent import Agent
-from .human import HumanPlayer
-from .machine import MachinePlayer
-from .builder import PlayerAgentBuilder
-from .validator import PlayerAgentValidator
-
-from .service import PlayerAgentService
 

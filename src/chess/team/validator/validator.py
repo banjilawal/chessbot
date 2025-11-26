@@ -10,11 +10,13 @@ from typing import cast, Any
 
 
 from chess.agent import PlayerAgentService
+from chess.agent.service import AgentService
 from chess.king import KingPiece
 from chess.piece import CombatantPiece, Piece, PieceValidator
-from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
+from chess.system import GameColor, IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    InvalidTeamException, NullTeamException, Team, TeamNotRegisteredWithAgentException, TeamSchemaValidator
+    InvalidTeamException, NullTeamException, Team, TeamDataService, TeamNotRegisteredWithAgentException, TeamSchema,
+    TeamSchemaValidator
 )
 
 class TeamValidator(Validator[Team]):
@@ -39,9 +41,9 @@ class TeamValidator(Validator[Team]):
     def validate(
             cls,
             candidate: Any,
-            identity_service: IdentityService=IdentityService(),
-            agent_service: PlayerAgentService=PlayerAgentService(),
-            schema_validation: type[TeamSchemaValidator]=TeamSchemaValidator,
+            agent_service: AgentService = AgentService(),
+            identity_service: IdentityService = IdentityService(),
+            schema_validation: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
         """
         # ACTION:
@@ -115,9 +117,155 @@ class TeamValidator(Validator[Team]):
                     f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}",
                     ex)
             )
-        
-        
     
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def validate_schema(cls, candidate: Any) -> ValidationResult[TeamSchema]:
+        method = "TeamValidator.validate"
+        
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullTeamSchemaException(f"{method} {NullTeamSchemaException.DEFAULT_MESSAGE}")
+                )
+            
+            if not isinstance(candidate, TeamSchema):
+                return ValidationResult.failure(
+                    TypeError(
+                        f"{method}: "
+                        f"Expected TeamSchema, got {type(candidate).__name__} instead."
+                    )
+                )
+            
+            team_schema = cast(TeamSchema, candidate)
+            return ValidationResult.success(team_schema)
+        
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidTeamSchemaException(
+                    ex=ex,
+                    message=(
+                        f"{method} "
+                        f"{InvalidTeamSchemaException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        
+    @classmethod
+    LoggingLevelRouter.monitor
+    def validate_piece_registration(
+            cls,
+            piece_candidate: Any,
+            team_candidate: Any,
+            piece_validator: PieceValidator = PieceValidator(),
+            team_data_service: TeamDataService = TeamDataService(),
+    ) -> ValidationResult(Team, Piece):
+        method = "TeamValidator.validate_piece_registration"
+        try:
+            piece_validation = piece_validator.validate(piece_candidate)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            piece = cast(Piece, piece_candidate)
+            
+            team_validation = cls.validate(team_candidate)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
+            
+            team = cast(Team, team_candidate)
+            
+            
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidTeamException(
+                    ex=ex,
+                    message=(
+                        f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}"
+                    )
+                    
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def validate_team_name(cls, candidate: Any) -> ValidationResult[str]:
+        method = "TeamValidator.validate_team_name"
+        
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullTeamNameException(f"{method} {NullTeamNameException.DEFAULT_MESSAGE}")
+                )
+            
+            if not isinstance(candidate, str):
+                return ValidationResult.failure(
+                    TypeError(
+                        f"{method}: "
+                        f"Expected str, got {type(candidate).__name__} instead."
+                    )
+                )
+            
+            name = cast(str, candidate)
+            if name not in [TeamSchema.WHITE.name, TeamSchema.BLACK.name]:
+                return ValidationResult.failure(
+                    TeamNameBoundsException(
+                        f"{method} {TeamNameBoundsException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            return ValidationResult.success(name)
+        
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidTeamException(
+                    ex=ex,
+                    message=(
+                        f"{method} "
+                        f"{InvalidTeamException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def validate_team_color(cls, candidate: Any) -> ValidationResult[GameColor]:
+        method = "TeamValidator.validate_team_color"
+        
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullTeamColorException(f"{method} {NullTeamColorException.DEFAULT_MESSAGE}")
+                )
+            
+            if not isinstance(candidate, str):
+                return ValidationResult.failure(
+                    TypeError(
+                        f"{method}: "
+                        f"Expected GameColor, got {type(candidate).__name__} instead."
+                    )
+                )
+            
+            color = cast(GameColor, candidate)
+            if name not in [TeamSchema.WHITE.name, TeamSchema.BLACK.name]:
+                return ValidationResult.failure(
+                    TeamColorBoundsException(
+                        f"{method} {TeamColorBoundsException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            return ValidationResult.success(color)
+        
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidTeamException(
+                    ex=ex,
+                    message=(
+                        f"{method} "
+                        f"{InvalidTeamException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        
     @classmethod
     @LoggingLevelRouter.monitor
     def piece_bound_to_team_roster(

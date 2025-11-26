@@ -11,6 +11,5 @@ from .context import *
 from .exception import *
 
 from .search import  Search
-from .service import SearchService
 from .result import SearchResult
 

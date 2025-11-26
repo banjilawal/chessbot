@@ -1,7 +1,7 @@
-# src/chess/agent/search/service.py
+# src/chess/team/search/search.py
 
 """
-Module: chess.agent.search.search
+Module: chess.team.search.search
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

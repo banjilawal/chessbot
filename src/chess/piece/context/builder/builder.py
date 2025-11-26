@@ -40,12 +40,12 @@ class PieceContextBuilder(Builder[PieceContext]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            id: int,
-            name: str,
-            team: Optional[Team],
-            rank: Optional[Rank],
-            ransom: Optional[int],
-            coord: Optional[Coord],
+            id: Optional[int] = None,
+            name: Optional[str] = None,
+            team: Optional[Team] = None,
+            rank: Optional[Rank] = None,
+            ransom: Optional[int] = None,
+            coord: Optional[Coord] = None,
             team_service: TeamService = TeamService(),
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),

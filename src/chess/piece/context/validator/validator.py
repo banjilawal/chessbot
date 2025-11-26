@@ -41,7 +41,8 @@ class PieceContextValidator(Validator[PieceContext]):
             if not isinstance(candidate, PieceContext):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected PieceContext, got {type(candidate).__name__} instead."
+                        f"{method}: "
+                        f"Expected PieceContext, got {type(candidate).__name__} instead."
                     )
                 )
             

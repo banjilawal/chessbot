@@ -7,4 +7,5 @@ Created: 2025-11-23
 version: 1.0.0
 """
 
+from .promotion import *
 from .exception import *

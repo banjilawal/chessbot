@@ -16,6 +16,6 @@ __all__ =  [
 
 # ======================# TEAM BUILD EXCEPTIONS #======================#
 class TeamBuildFailedException(TeamException, BuildFailedException):
-    """Catchall Exception for TeamBuilder when it encounters an error building a Scalar."""
+    """Catchall Exception for TeamBuilder when it encounters an error building a Team."""
     ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Team build failed."

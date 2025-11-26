@@ -68,11 +68,7 @@ class TeamRollBackException(TeamException):
   DEFAULT_MESSAGE = "Team raised an rollback_exception. Transaction rollback performed."
 
 
-#======================# TEAM VALIDATION EXCEPTIONS #======================#  
-class NullTeamException(TeamException, NullException):
-  """Raised if an entity, method, or operation requires `Team` but gets validation instead."""
-  ERROR_CODE = "NULL_TEAM_ERROR"
-  DEFAULT_MESSAGE = "Team cannot be validation"
+
 
 
 
@@ -254,10 +250,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
   DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team_name's hostage list."
 
 #======================# SEARCH EXCEPTIONS #======================#  
-class RosterNumberOutOfBoundsException(TeamException, SearchException):
-  """Attempting to old_search for team_name roster number < 1 or > team_size raises an rollback_exception."""
-  ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"
-  DEFAULT_MESSAGE = "Roster numbers are in the range [1, team_size]. Search failed."
+
 
 
 class TeamNotRegisteredWithAgentException(TeamException, SearchException):

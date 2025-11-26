@@ -7,7 +7,8 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, PlayerAgentService, PushingDuplicateTeamException
+from chess.agent import Agent, AgentService, PushingDuplicateTeamException
+from chess.piece import UniquePieceDataService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
 
@@ -34,11 +35,13 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             id: int,
-            schema: TeamSchema,
             agent: Agent,
+            schema: TeamSchema,
             identity_service: IdentityService = IdentityService(),
-            agent_service: PlayerAgentService = PlayerAgentService(),
-            schema_validator: type[TeamSchemaValidator] = TeamSchemaValidator,
+            agent_service: AgentService = AgentService(),
+            roster: UniquePieceDataService = UniquePieceDataService(),
+            hostages: UniquePieceDataService = UniquePieceDataService(),
+            schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
@@ -50,18 +53,12 @@ class TeamBuilder(Builder[Team]):
         6.  If the team is not in actor's team_assignments use their team_stack_service to add it.
     
         # PARAMETERS:
-            *   id (int):                               Globally unique identifier for the team.
-            
-            *   agent (Agent):                    Directs Pieces on Team's roster where they should move.
-            
-            *   schema (TeamSchema):                    Fixed information about white and black teams
-            
-            *   identity_service (IdentityService):     Validates id safety
-            
-            *   agent_service (PlayerAgentService):     Provides PlayerAgentValidator
-            
-            *   schema_validator (TeamSchemaValidator): Validates Schema instance's correctness.
-    
+            *   id (int)
+            *   agent (Agent)
+            *   schema (TeamSchema)
+            *   identity_service (IdentityService)
+            *   agent_service (AgentService)
+            *   schema_validator (TeamSchemaValidator)
         # Returns:
         BuildResult[Team] containing either:
             - On success: Team in the payload.
@@ -85,7 +82,9 @@ class TeamBuilder(Builder[Team]):
             if agent_validation.is_failure():
                 return BuildResult.failure(agent_validation.exception)
             
-            team = Team(id=id, player_agent=agent, schema=schema)
+            team = Team(id=id, agent=agent, schema=schema, roster=roster, hostages=hostages)
+            if team not in agent.team_stack_service.push_team:
+                (team)
             
             if team in agent.team_stack_service.find_tean(team) is not None:
                 return BuildResult.failure(

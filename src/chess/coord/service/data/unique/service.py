@@ -6,8 +6,9 @@ Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
-from chess.coord import AddingDuplicateCoordException, Coord, CoordDataService, UniqueCoordDataServiceException
+
 from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
+from chess.coord import AddingDuplicateCoordException, Coord, CoordDataService, UniqueCoordDataServiceException
 
 
 class UniqueCoordDataService(UniqueDataService[Coord]):

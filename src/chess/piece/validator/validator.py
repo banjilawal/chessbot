@@ -11,7 +11,7 @@ from typing import Type, Any, cast
 
 from chess.coord import CoordService
 from chess.piece import (
-    InvalidPieceException, NullPieceException, PieceNullCoordStackException,
+    Piece, InvalidPieceException, NullPieceException, PieceNullCoordStackException,
     PieceRosterNumberIsNullException
 )
 from chess.rank import RankService
@@ -19,8 +19,8 @@ from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, 
 from chess.team import RosterNumberOutOfBoundsException, Team, TeamService
 
 
-class PieceValidator(Validator[Piece]):
-    VALID_RANKS: tuple[Type, ...] = (King, Queen, Bishop, Knight, Rook, Pawn)
+# class PieceValidator(Validator[Piece]):
+#     VALID_RANKS: tuple[Type, ...] = (King, Queen, Bishop, Knight, Rook, Pawn)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -69,7 +69,6 @@ class PieceValidator(Validator[Piece]):
             if rank_validation.is_failure():
                 return ValidationResult.failure(rank_validation.exception)
 
-            
             if piece.roster_number is None:
                 return ValidationResult.failure(
                     PieceRosterNumberIsNullException(
@@ -105,7 +104,34 @@ class PieceValidator(Validator[Piece]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate_piece_is_actionable(cls, candidate: Any) -> ValidationResult[Piece]:
+    def piece_is_disabled(cls, candidate: Any) -> ValidationResult[bool]:
+        """"""
+        method = "PieceValidator.piece_is_disabled"
+        try:
+            piece_validation = cls.validate(candidate)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            if
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidPieceException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{InvalidPieceException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_piece_is_actionable(
+            cls, candidate: Any,
+            team_service: TeamService = TeamService(),
+            board_service: BoardService = BoardService(),
+    ) -> ValidationResult[Piece]:
         """"""
         method = "PieceValidator.verify_active_piece"
         try:
