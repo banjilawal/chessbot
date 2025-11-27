@@ -10,22 +10,22 @@ version: 1.0.0
 from chess.system import ChessException, NullException
 
 __all__ = [
-  'BuilderException',
-  'NullBuilderException',
-  'BuildFailedException',
-  'AllParamsSetNullException',
-  'MutuallyExclusiveParamsException'
+  "BuilderException",
+  "NullBuilderException",
+  "BuildFailedException",
+  "AllParamsSetNullException",
+  "MutuallyExclusiveParamsException"
 ]
 
 
 class BuilderException(ChessException):
   """
-  Super class of exceptions organic to `Builder` objects. DO NOT USE DIRECTLY. Subclasses give
+  Super class of exceptions organic to Builder objects. DO NOT USE DIRECTLY. Subclasses give
   details useful for debugging. `BuilderException` exists primarily to allow catching all `Builder`
   exceptions.
   """
   ERROR_CODE = "BUILDER_ERROR"
-  DEFAULT_MESSAGE = "Builder raised an rollback_exception."
+  DEFAULT_MESSAGE = "Builder raised an exception."
 
 class NullBuilderException(BuilderException, NullException):
   """Raised if an entity, method, or operation requires team_name Engine but gets validation instead."""
@@ -34,11 +34,10 @@ class NullBuilderException(BuilderException, NullException):
 
 class BuildFailedException(BuilderException):
   """
-  Raised when team_name Builder encounters an error while building an object. Exists primarily to
-  catch all exceptions raised building team_name new objects.
+  Catchall exception for when Builder encounters an error building a new object.
   """
   ERROR_CODE = "BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "builder failed."
+  DEFAULT_MESSAGE = "build failed."
 
 class AllParamsSetNullException(BuilderException):
   """

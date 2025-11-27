@@ -56,7 +56,7 @@ class TeamException(ChessException):
   exceptions.
   """
   ERROR_CODE = "TEAM_ERROR"
-  DEFAULT_MESSAGE = "Team raised an rollback_exception."
+  DEFAULT_MESSAGE = "Team raised an exception."
 
 class TeamRollBackException(TeamException):
   """

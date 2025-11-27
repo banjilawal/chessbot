@@ -27,8 +27,8 @@ class Context(ABC, Generic[T]):
     1. Search options.
   
     # ATTRIBUTES:
-        *   id (int)
-        *   name (str)
+        *   id (Optional[int])
+        *   name (Optional[str])
     """
     _id: Optional[int]
     _name: Optional[str]

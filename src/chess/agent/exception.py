@@ -7,37 +7,35 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ChessException, NullException, ValidationException
+from chess.system import ChessException, ValidationException
 
 __all__ = [
-  "PlayerAgentException",
+  "AgentException",
 
-#======================# NULL PLAYER_AGENT EXCEPTIONS #======================#  
-  "NullPlayerAgentException",
-  
   # ======================# PLAYER_AGENT VALIDATION EXCEPTIONS #======================# 
   "InvalidPlayerAgentException",
 
-#======================# PLAYER_AGENT_BUILD EXCEPTIONS #======================#  
+ 
   "PlayerAgentBuildFailedException",
 ]
 
+"""
+Catchall Exception for AgentValidator when a validation candidate fails a sanity check. Super
+class of all Agent validation exceptions.
+"""
 
 
-
-class PlayerAgentException(ChessException):
+# ======================# AGENT EXCEPTION SUPER CLASS #======================#
+class AgentException(ChessException):
   """
   Super class for exceptions raised by Agent objects. DO NOT USE DIRECTLY. Subclasses
   give more useful debugging messages.
   """
-  ERROR_CODE = "PLAYER_AGENT_ERROR"
-  DEFAULT_MESSAGE = "Agent raised an exception"
+  ERROR_CODE = "AGENT_ERROR"
+  DEFAULT_MESSAGE = "Agent raised an exception."
 
 #======================# PLAYER_AGENT_VALIDATION EXCEPTIONS #======================#  
-class NullPlayerAgentException(PlayerAgentException, NullException):
-  """Raised if an entity, method, or operation requires team_name agent but gets validation instead."""
-  ERROR_CODE = "NULL_PLAYER_AGENT_ERROR"
-  DEFAULT_MESSAGE = f"Agent cannot be validation"
+
 
 class InvalidPlayerAgentException(PlayerAgentException, ValidationException):
   """

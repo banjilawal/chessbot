@@ -14,6 +14,8 @@ from chess.system import BuildFailedException
 __all__ = ["BoardBuildFailedException"]
 
 class BoardBuildFailedException(BoardException, BuildFailedException):
-    """Catchall Exception for BoardBuilder when it encounters an error building a Board."""
+    """
+    Catchall exception for when BoardBuilder encounters an error building a new Board instance.
+    """
     ERROR_CODE = "BOARD_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Board build failed."

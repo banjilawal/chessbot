@@ -15,6 +15,14 @@ __all__ = [
 ]
 
 
+# ======================# PIECE_SEARCH EXCEPTIONS #======================#
+class PieceSearchException(SearchException):
+  """
+  Super class of exceptions raised by PieceSearch objects. Do not use directly. Subclasses give
+  precise, fined-grained, debugging info.
+  """
+  ERROR_CODE = "PIECE_SEARCH_ERROR"
+  DEFAULT_MESSAGE = "PieceSearch raised an exception."
 
 class TeamSearchException(SearchException):
   """

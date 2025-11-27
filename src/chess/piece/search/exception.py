@@ -10,10 +10,12 @@ version: 1.0.0
 from chess.system import SearchException
 
 __all__ = [
+    # ======================# PIECE_SEARCH EXCEPTIONS #======================#
     "PieceSearchException",
 ]
 
 
+# ======================# PIECE_SEARCH EXCEPTIONS #======================#
 class PieceSearchException(SearchException):
     """
     Super class of exceptions raised by PieceSearch objects. Do not use directly. Subclasses give

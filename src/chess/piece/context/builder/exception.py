@@ -12,6 +12,7 @@ from chess.system import BuildFailedException
 from chess.piece import PieceContextException
 
 __all__ = [
+    # ======================# PIECE_CONTEXT BUILD EXCEPTIONS #======================#
     "PieceContextBuildFailedException",
 ]
 

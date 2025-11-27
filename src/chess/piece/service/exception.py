@@ -22,6 +22,8 @@ __all__ = [
     "PieceServiceBuildFailedException",
 ]
 
+
+# ====================== PIECE_SERVICE EXCEPTION SUPER CLASS #======================#
 class PieceServiceException(ServiceException):
     """
     Super class for exceptions raised by PieceService objects. DO NOT USE DIRECTLY. Subclasses

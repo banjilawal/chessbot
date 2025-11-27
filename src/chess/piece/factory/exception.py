@@ -17,12 +17,14 @@ __all__ = [
 ]
 
 class PieceBuildFailedException(PieceException, BuildFailedException):
-    """Catchall Exception for PieceBuilder when it encounters an error building a Piece."""
+    """
+    Catchall exception for when PieceBuilder encounters an error building a new Piece instance.
+    """
     ERROR_CODE = "PIECE_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Piece build failed."
 
 
 class NullPieceFactoryException(BuilderException, NullException):
-    """Raised when an entity, method, or operation requires a PieceBuilder but gets null instead."""
+    """Raised when an entity, method, or operation requires a PieceFactory but gets null instead."""
     ERROR_CODE = "NULL_PIECE_FACTORY_ERROR"
     DEFAULT_MESSAGE = "PieceFactory cannot be null."

@@ -16,6 +16,8 @@ __all__ = [
 
 # ======================# SCALAR BUILD EXCEPTIONS #======================#
 class ScalarBuildFailedException(ScalarException, BuildFailedException):
-    """Catchall Exception for ScalarBuilder when it encounters an error building a Scalar."""
+    """
+    Catchall exception for when ScalarBuilder encounters an error building a new Scalar instance.
+    """
     ERROR_CODE = "SCALAR_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Scalar build failed."

@@ -17,7 +17,9 @@ __all__ = [
 
 # ======================# SQUARE BUILD EXCEPTIONS #======================#
 class SquareBuildFailedException(SquareException, BuildFailedException):
-    """Catchall Exception for SquareBuilder when it encounters an error building a Square."""
+    """
+    Catchall exception for when SquareBuilder encounters an error building a new Square instance.
+    """
     ERROR_CODE = "SQUARE_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Square build failed."
 
