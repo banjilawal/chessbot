@@ -1,0 +1,43 @@
+# src/chess/agent/service/data/service.py
+
+"""
+Module: chess.agent.service.data.service
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+from typing import List
+
+from chess.agent import Agent, AgentContext, AgentContextService, AgentService
+from chess.agent.search.search import AgentSearch
+from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult
+
+
+class AgentDataService(DataService[Agent]):
+    DEFAULT_NAME = "AgentDataService"
+    
+    def __init__(
+            self,
+            id: int,
+            name: str = DEFAULT_NAME,
+            items: List[Agent] = List[Agent],
+            search: AgentSearch = AgentSearch(),
+            service: AgentService = AgentService(),
+            context_service: AgentContextService = AgentContextService(),
+    ):
+        super().__init__(
+            id=id,
+            name=name,
+            items=items,
+            search=search,
+            service=service,
+            context_service=context_service,
+        )
+    
+    @LoggingLevelRouter.monitor
+    def push(self, item: Agent) -> InsertionResult[Agent]:
+        pass
+    
+    @LoggingLevelRouter.monitor
+    def search(self, context: AgentContext) -> SearchResult[List[Agent]]:
+        pass

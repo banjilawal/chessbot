@@ -7,40 +7,19 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import InconsistencyException, SearchException
+from chess.system import SearchException
 
 __all__ = [
-  "TeamSearchException",
-  "TeamSearchIdCollisionException",
+  # ======================# AGENT_SEARCH EXCEPTIONS #======================#
+  "AgentSearchException",
 ]
 
 
-# ======================# PIECE_SEARCH EXCEPTIONS #======================#
-class PieceSearchException(SearchException):
+# ======================# AGENT_SEARCH EXCEPTIONS #======================#
+class AgentSearchException(SearchException):
   """
-  Super class of exceptions raised by PieceSearch objects. Do not use directly. Subclasses give
+  Super class of exceptions raised by AgentSearch objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
-  ERROR_CODE = "PIECE_SEARCH_ERROR"
-  DEFAULT_MESSAGE = "PieceSearch raised an exception."
-
-class TeamSearchException(SearchException):
-  """
-  Super class of exceptions raised by TeamSearch objects. Do not use directly. Subclasses give
-  precise, fined-grained, debugging info.
-  """
-  ERROR_CODE = "TEAM_SEARCH_ERROR"
-  DEFAULT_MESSAGE = "TeamSearch raised an exception."
-
-
-class TeamSearchIdCollisionException(TeamSearchException, InconsistencyException):
-  """
-  Raised if a search produced multiple results with the same id ad other properties do not match.
-  This error is not raised by duplicates (all properties are the same.)
-  """
-  ERROR_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
-  DEFAULT_MESSAGE = (
-    "TeamSearch produced multiple results with the same id but other properties do not match. Ids should "
-    "be globally unique. If multiple Teams with all properties except the id differing, There may be data "
-    "inconsistencies in the system."
-  )
+  ERROR_CODE = "AGENT_SEARCH_ERROR"
+  DEFAULT_MESSAGE = "AgentSearch raised an exception."

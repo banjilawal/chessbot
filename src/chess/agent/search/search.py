@@ -14,8 +14,8 @@ from chess.agent import (
     Agent, AgentContext, AgentContextValidator, AgentSearchException, AgentVariety, HumanAgent,
     MachineAgent
 )
+from chess.agent.sevice.data.exception import AgentNullDataSetException
 from chess.system import LoggingLevelRouter, Search, SearchResult
-from chess.agent import AgentNullDataSetException
 
 
 class AgentSearch(Search[Agent]):

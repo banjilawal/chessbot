@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/agent/sevice/data/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/agent/sevice/data/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/agent/sevice/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/search/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/agent/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/search/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/sevice/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/sevice/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/sevice/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/sevice/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/sevice/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/sevice/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -641,7 +649,7 @@
       <workItem from="1763884142435" duration="3250000" />
       <workItem from="1763899883407" duration="122444000" />
       <workItem from="1764162921976" duration="42682000" />
-      <workItem from="1764218711944" duration="5450000" />
+      <workItem from="1764218711944" duration="9212000" />
     </task>
     <servers />
   </component>
