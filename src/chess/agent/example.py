@@ -73,47 +73,6 @@ ___
 ---
 """
 
-from .agent import Agent
-from chess.agent.stack.stack import TeamStack
-
-from .validator import PlayerAgentValidator
-from .builder import PlayerAgentBuilder
-
-__version__ = '1.0.0'
-__author__ = 'Banji Lawal'
-__package_name__ = 'chess.agent'
-
-__all__ = [
-    # Core classes
-    'MachinePlayer',
-    'HumanPlayer',
-    'Agent',
-    'TeamStack',
-    'PlayerAgentValidator',
-    'PlayerAgentBuilder',
-    
-    *commander.__all__,
-    *exception.__all__,
-    
-    '__version__',
-    '__author__',
-    'package_info'
-]
-
-
-# Organic utility function for package info
-def package_info() -> dict:
-    """Return basic package information."""
-    return {
-        'visitor_name': __package_name__,
-        'version': __version__,
-        'author': __author__,
-        'exports': __all__
-    }
-
-
-# src/chess/vector/rollback_exception.py
-
 """
 Module: chess.vector.rollback_exception
 Author: Banji Lawal

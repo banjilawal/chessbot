@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.agent import (
-    Agent, AgentVariety, InvalidAgentException, NullAgentTypeException,
+    Agent, AgentVariety, InvalidAgentException, NullAgentException, NullAgentTypeException,
     TeamStackServiceValidator
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
@@ -24,7 +24,6 @@ class AgentValidator(Validator[Agent]):
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
-            team_stack_service_validator: type[TeamStackServiceValidator] = TeamStackServiceValidator,
     ) -> ValidationResult[Agent]:
         
         """
@@ -54,64 +53,32 @@ class AgentValidator(Validator[Agent]):
           
           InvalidCommanderException: Wraps any preceding team_exception
         """
-        method = "PlayerAgentValidator.validate"
+        method = "AgentValidator.validate"
         
         try:
             # If candidate is validation no point continuing
             if candidate is None:
                 return ValidationResult.failure(
-                    NullPlayerAgentException(f"{method}: {NullPlayerAgentException.DEFAULT_MESSAGE}")
+                    NullAgentException(f"{method}: {NullAgentException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, Agent):
-                raise TypeError(f"{method}: Expected Agent, got {type(candidate).__name__} instead.")
-            
-            player_agent = cast(Agent, candidate)
-            
-            identity_validation = identity_service.validate_identity(player_agent.id, player_agent.name)
-            if identity_validation.is_failure():
-                return ValidationResult.failure(identity_validation.exception)
-            
-            stack_service_validation = team_stack_service_validator.validate(player_agent.team_stack_service)
-            if stack_service_validation.is_failure():
-                return ValidationResult.failure(stack_service_validation.exception)
-            
-            return ValidationResult.success(payload=player_agent)
-        
-        except Exception as ex:
-            raise ValidationResult.failure(
-                InvalidPlayerAgentException(
-                    f"{method}: {InvalidPlayerAgentException.DEFAULT_MESSAGE}",
-                    ex
-                )
-            )
-    
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def certify_agent_variety(cls, candidate: Any) -> ValidationResult[AgentVariety]:
-        """"""
-        method = "AgentValidator.validate_agent_category"
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullAgentTypeException(
-                        f"{method}: {NullAgentTypeException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if not isinstance(candidate, AgentCategory):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected AgentCategory, "
+                        f"{method}: Expected Agent, "
                         f"got {type(candidate).__name__} instead."
                     )
                 )
             
-            return ValidationResult.success(cast(AgentType, candidate))
-    
+            agent = cast(Agent, candidate)
+            
+            identity_validation = identity_service.validate_identity(agent.id, agent.name)
+            if identity_validation.is_failure():
+                return ValidationResult.failure(identity_validation.exception)
+            
+            return ValidationResult.success(agent)
         except Exception as ex:
-            return ValidationResult.failure(
+            raise ValidationResult.failure(
                 InvalidAgentException(
                     ex=ex,
                     message=(
@@ -120,3 +87,37 @@ class AgentValidator(Validator[Agent]):
                     )
                 )
             )
+    #
+    # @classmethod
+    # @LoggingLevelRouter.monitor
+    # def certify_agent_variety(cls, candidate: Any) -> ValidationResult[AgentVariety]:
+    #     """"""
+    #     method = "AgentValidator.validate_agent_category"
+    #     try:
+    #         if candidate is None:
+    #             return ValidationResult.failure(
+    #                 NullAgentTypeException(
+    #                     f"{method}: {NullAgentTypeException.DEFAULT_MESSAGE}"
+    #                 )
+    #             )
+    #
+    #         if not isinstance(candidate, AgentCategory):
+    #             return ValidationResult.failure(
+    #                 TypeError(
+    #                     f"{method}: Expected AgentCategory, "
+    #                     f"got {type(candidate).__name__} instead."
+    #                 )
+    #             )
+    #
+    #         return ValidationResult.success(cast(AgentType, candidate))
+    #
+    #     except Exception as ex:
+    #         return ValidationResult.failure(
+    #             InvalidAgentException(
+    #                 ex=ex,
+    #                 message=(
+    #                     f"{method}: "
+    #                     f"{InvalidAgentException.DEFAULT_MESSAGE}"
+    #                 )
+    #             )
+    #         )
