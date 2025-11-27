@@ -10,8 +10,8 @@ version: 1.0.0
 from chess.system import DataServiceException, NullException
 
 __all__ = [
-    "DataServiceException",
-    "NullException",
+    "AgentDataServiceException",
+    "AgentNullDataSetException",
 ]
 
 # ======================# AGENT SERVICE EXCEPTIONS #======================#

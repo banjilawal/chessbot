@@ -6,11 +6,13 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+
 from typing import List
 
-from chess.agent import Agent, AgentContext, AgentContextService, AgentService
-from chess.agent.search.search import AgentSearch
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult
+from chess.agent import (
+    Agent, AgentContext, AgentContextService, AgentService, AgentSearch, AgentDataServiceException
+)
 
 
 class AgentDataService(DataService[Agent]):
@@ -36,8 +38,30 @@ class AgentDataService(DataService[Agent]):
     
     @LoggingLevelRouter.monitor
     def push(self, item: Agent) -> InsertionResult[Agent]:
-        pass
+        method = "AgentDataService.push"
+        try:
+            validation = self.service.validator.validate(item)
+            if validation.is_failure():
+                return InsertionResult.failure(validation.exception)
+            self.items.append(item)
+            
+            return InsertionResult.success(payload=item)
+        except Exception as ex:
+            return InsertionResult.failure(
+                AgentDataServiceException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{AgentDataServiceException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
     
     @LoggingLevelRouter.monitor
     def search(self, context: AgentContext) -> SearchResult[List[Agent]]:
-        pass
+        method = "AgentDataService.search"
+        return self.search.find(
+            data_set=self.items,
+            context=context,
+            context_validator=self.context_service.validator
+        )

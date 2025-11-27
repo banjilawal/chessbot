@@ -7,20 +7,18 @@ Created: 2025-10-22
 Version: 1.0.0
 """
 
-from typing import Type, Any, cast
+from typing import Any, cast
 
-from chess.coord import CoordService
-from chess.piece import (
-    Piece, InvalidPieceException, NullPieceException, PieceNullCoordStackException,
-    PieceRosterNumberIsNullException
-)
 from chess.rank import RankService
-from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.coord import CoordService
 from chess.team import RosterNumberOutOfBoundsException, Team, TeamService
+from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.piece import (
+    Piece, InvalidPieceException, NullPieceException, PieceNullCoordStackException, PieceRosterNumberIsNullException
+)
 
-
-# class PieceValidator(Validator[Piece]):
-#     VALID_RANKS: tuple[Type, ...] = (King, Queen, Bishop, Knight, Rook, Pawn)
+class PieceValidator(Validator[Piece]):
+    # VALID_RANKS: tuple[Type, ...] = (King, Queen, Bishop, Knight, Rook, Pawn)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -111,8 +109,7 @@ from chess.team import RosterNumberOutOfBoundsException, Team, TeamService
             piece_validation = cls.validate(candidate)
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
-            
-            if
+
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPieceException(

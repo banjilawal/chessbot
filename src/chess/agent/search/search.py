@@ -10,12 +10,12 @@ version: 1.0.0
 
 from typing import List
 
+from chess.system import LoggingLevelRouter, Search, SearchResult
 from chess.agent import (
     Agent, AgentContext, AgentContextValidator, AgentSearchException, AgentVariety, HumanAgent,
-    MachineAgent
+    MachineAgent, AgentNullDataSetException
 )
-from chess.agent.sevice.data.exception import AgentNullDataSetException
-from chess.system import LoggingLevelRouter, Search, SearchResult
+
 
 
 class AgentSearch(Search[Agent]):

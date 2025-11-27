@@ -7,16 +7,10 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.system import ServiceException, NullException, ValidationException
+from chess.system import BuildFailedException, ServiceException
 
 __all__ = [
     "PieceServiceException",
-    
-# ======================# NULL PIECE_SERVICE EXCEPTIONS #======================#
-    "NullPieceServiceException",
-    
-# ======================# NULL PIECE_SERVICE EXCEPTIONS #======================#
-    "InvalidPieceServiceException",
     
 # ====================== PIECE_SERVICE BUILD EXCEPTIONS #======================#
     "PieceServiceBuildFailedException",

@@ -7,9 +7,8 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-
-from chess.agent import Agent, AgentFactory, AgentValidator
 from chess.system import Service
+from chess.agent import Agent, AgentFactory, AgentValidator
 
 
 class AgentService(Service[Agent]):
