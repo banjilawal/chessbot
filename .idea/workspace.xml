@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/service/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/service/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/service/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/service/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/stack.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/stack/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/search/search.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -651,7 +641,7 @@
       <workItem from="1763884142435" duration="3250000" />
       <workItem from="1763899883407" duration="122444000" />
       <workItem from="1764162921976" duration="42682000" />
-      <workItem from="1764218711944" duration="5029000" />
+      <workItem from="1764218711944" duration="5450000" />
     </task>
     <servers />
   </component>
