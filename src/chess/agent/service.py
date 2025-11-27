@@ -1,109 +1,23 @@
-
+# src/chess/agent/service/service.py
 
 """
-Module: chess.agent.service
+Module: chess.agent.service.service
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-08-31
 version: 1.0.0
 """
-from typing import List, cast
 
-from chess.engine.service import EngineService
-from chess.system import BuildResult, IdentityService, LoggingLevelRouter, SearchResult, ValidationResult
-from chess.agent import (
-    Agent, PlayerAgentBuilder, PlayerAgentValidator, HumanPlayer, MachinePlayer, TeamSearchContext, TeamSearchService,
-    TeamStackService
-)
-from chess.team import Team
+from chess.system import Service, id_emitter
+from chess.agent import Agent, AgentFactory, AgentValidator
 
-
-class AgentService:
-    _agents: List[Agent]
-    _builder: PlayerAgentBuilder
-    _validator: PlayerAgentValidator
-    _search_service: TeamSearchService
-    _identity_service: IdentityService
+class AgentService(Service[Agent]):
+    DEFAULT_NAME = "AgentService"
     
     def __init__(
             self,
-            builder: type[PlayerAgentBuilder] = PlayerAgentBuilder,
-            validator: type[PlayerAgentValidator] = PlayerAgentValidator,
-            search_service: TeamSearchService = TeamSearchService(),
-            identity_service: IdentityService = IdentityService(),
+            id: int = id_emitter.service_id,
+            name: str = DEFAULT_NAME,
+            builder: AgentFactory = AgentFactory(),
+            validator: AgentValidator = AgentValidator(),
     ):
-        self._agents = []
-        self._builder = builder
-        self._validator = validator
-        self._search_service = search_service
-        self._identity_service = identity_service
-
-
-    @LoggingLevelRouter.monitor
-    def build_human_agent(self, id: int, name: str) -> BuildResult[HumanPlayer]:
-        try:
-            agent_build =  self._builder.build(
-                id=id,
-                name=name,
-                identity_service=self._identity_service,
-                team_stack_service=TeamStackService()
-            )
-            if agent_build.is_failure():
-                return BuildResult.failure(agent_build.exception)
-            
-            agent = cast(HumanPlayer, agent_build.payload)
-            
-            if agent in self._agents:
-                return BuildResult.failure(
-                    CannotAddDuplicatePlayerToAgentServicException(
-                        f"{method}: {CannotAddDuplicatePlayerToAgentService.DEFAULT_MESSAGE}"
-                    )
-                )
-            self._agents.append(agent)
-            
-            return BuildResult.success(agent_build.payload)
-        except Exception as ex:
-            return BuildResult.failure(ex)
-    
-    def build_machine_agent(
-            self,
-            id: int,
-            name: str,
-            engine_service: EngineService = EngineService()
-    ) -> BuildResult[Agent]:
-        try:
-            agent_build = self._builder.build(
-                id=id,
-                name=name,
-                engine_service=engine_service,
-                identity_service=self._identity_service,
-                team_stack_service=TeamStackService()
-            )
-            if agent_build.is_failure():
-                return BuildResult.failure(agent_build.exception)
-            
-            agent = cast(MachinePlayer, agent_build.payload)
-            
-            if agent in self._agents:
-                return BuildResult.failure(
-                    CannotAddDuplicatePlayerToAgentServicException(
-                        f"{method}: {CannotAddDuplicatePlayerToAgentService.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            self._agents.append(agent)
-            return BuildResult.success(agent_build.payload)
-    
-        except Exception as ex:
-            return BuildResult.failure(ex)
-    
-    
-    def validate_agent(self, agent: Agent) -> ValidationResult[Agent]:
-        return self._validator.validate(candidate=agent)
-    
-    
-    def search_for_team(
-            self,
-            player_agent: Agent,
-            search_context: TeamSearchContext
-    ) -> SearchResult[List[Team]]:
-        return self._search_service.search(data_owner=player_agent, search_context=search_context)
+        super().__init__(id=id, name=name, builder=builder, validator=validator)

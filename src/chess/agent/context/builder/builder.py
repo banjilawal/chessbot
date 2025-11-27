@@ -42,9 +42,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,
-            team: Optional[Team] = None,
             variety: Optional[AgentVariety] = None,
-            team_service: TeamService = TeamService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[AgentContext]:
         """
@@ -76,7 +74,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         method = "AgentSearchContextBuilder.builder"
         
         try:
-            params = [id, name, team, variety, ]
+            params = [id, name, variety, ]
             param_count = sum(bool(p) for p in params)
             
             if param_count == 0:
@@ -107,22 +105,7 @@ class AgentContextBuilder(Builder[AgentContext]):
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(AgentContext(name=name))
             
-            if team is not None:
-                validation = team_service.validator.validate(team)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(team=team))
-            
-            if variety is not None:
-                if variety not in [AgentVariety.HUMAN_AGENT, AgentVariety.MACHINE_AGENT]:
-                    return BuildResult.failure(
-                        TypeError(
-                            (
-                                f"{method}: Expected AgentVariety, "
-                                f"got {type(variety).__name__} instead."
-                            )
-                        )
-                    )
+
                 return BuildResult.success(AgentContext(variety=variety))
         
         except Exception as ex:

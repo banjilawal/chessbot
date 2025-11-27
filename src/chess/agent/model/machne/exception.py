@@ -19,3 +19,4 @@ __all__ = [
 class MachineAgentException(AgentException):
     ERROR_CODE = "MACHINE_AGENT_ERROR"
     DEFAULT_MESSAGE = "MachineAgent raised an exception."
+    

@@ -1,7 +1,7 @@
-# src/chess/piece/combatant/piece.py
+# src/chess/piece/model/combatant/piece.py
 
 """
-Module: chess.piece.combatant.piece
+Module: chess.piece.model.combatant.piece
 Author: Banji Lawal
 Created: 2025-10-17
 version: 1.0.0

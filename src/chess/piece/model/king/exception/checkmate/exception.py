@@ -1,7 +1,7 @@
-# src/chess/piece/king/exception/checkmate/exception.py
+# src/chess/piece/model/king/exception/checkmate/exception.py
 
 """
-Module: chess.piece.king.exception.checkmate.exception
+Module: chess.piece.model.king.exception.checkmate.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,7 +12,7 @@ from chess.piece import KingPieceException
 
 __all__ = [
     # ======================# CHECKMATED KING EXCEPTIONS #======================#
-    "KingPieceException",
+    "CheckmatedKingException",
 ]
 
 

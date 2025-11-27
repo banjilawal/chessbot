@@ -12,9 +12,7 @@ from chess.system import ChessException
 __all__ = [
     # ======================# AGENT EXCEPTION SUPER CLASS #======================#
     "AgentException",
-    "AgentVarietyException",
 ]
-
 
 # ======================# AGENT EXCEPTION SUPER CLASS #======================#
 class AgentException(ChessException):
@@ -24,12 +22,3 @@ class AgentException(ChessException):
     """
     ERROR_CODE = "AGENT_ERROR"
     DEFAULT_MESSAGE = "Agent raised an exception."
-
-
-class AgentVarietyException(ChessException):
-    """
-    Super class for exceptions raised by AgentVariety objects. DO NOT USE DIRECTLY. Subclasses
-    give more useful debugging messages.
-    """
-    ERROR_CODE = "AGENT_VARIETY_ERROR"
-    DEFAULT_MESSAGE = "AgentVariety raised an exception."

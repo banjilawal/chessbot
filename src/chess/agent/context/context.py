@@ -22,16 +22,10 @@ class AgentContext(Context[Agent]):
             self,
             id: Optional[id] = None,
             name: Optional[str] = None,
-            team: Optional[Team] = None,
             variety: Optional[AgentVariety] = None,
     ):
         super().__init__(id=id, name=name)
-        self._team = team
         self._variety = variety
-        
-    @property
-    def team(self) -> Optional[Team]:
-        return self._team
     
     @property
     def variety(self) -> Optional[AgentVariety]:
@@ -41,7 +35,6 @@ class AgentContext(Context[Agent]):
         return {
             "id": self.id,
             "name": self.name,
-            "team": self._team,
             "variety": self._variety,
         }
     

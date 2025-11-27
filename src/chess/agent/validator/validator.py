@@ -9,11 +9,12 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import (
-    Agent, AgentVariety, InvalidAgentException, NullAgentException, NullAgentTypeException,
-    TeamStackServiceValidator
-)
+from chess.engine.service import EngineService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.agent import (
+    Agent, AgentVariety, AgentVarietyNullException, InvalidAgentException, MachineAgent, NullAgentException,
+)
+
 
 
 class AgentValidator(Validator[Agent]):
@@ -64,10 +65,7 @@ class AgentValidator(Validator[Agent]):
             
             if not isinstance(candidate, Agent):
                 return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: Expected Agent, "
-                        f"got {type(candidate).__name__} instead."
-                    )
+                    TypeError(f"{method}: Expected Agent, {type(candidate).__name__} instead.")
                 )
             
             agent = cast(Agent, candidate)
@@ -76,18 +74,55 @@ class AgentValidator(Validator[Agent]):
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
+            if isinstance(agent, MachineAgent):
+                return cls._certify_machine_engine(machine=agent, engine_candidate=agent.engine_service)
+            
             return ValidationResult.success(agent)
         except Exception as ex:
-            raise ValidationResult.failure(
-                InvalidAgentException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidAgentException.DEFAULT_MESSAGE}"
-                    )
-                )
+            return ValidationResult.failure(
+                InvalidAgentException(ex=ex, message=f"{method}: {InvalidAgentException.DEFAULT_MESSAGE}")
             )
-    #
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def certify_variety(cls, candidate: Any) -> ValidationResult[AgentVariety]:
+        method = "AgentValidator.certify_variety"
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    AgentVarietyNullException(f"{method}: {AgentVarietyNullException.DEFAULT_MESSAGE}")
+                )
+
+            if candidate not in [AgentVariety.HUMAN_AGENT, AgentVariety.MACHINE_AGENT]:
+                return ValidationResult.failure(
+                    TypeError(f"{method}: Expected AgentVariety,  {type(candidate).__name__} instead.")
+                )
+            
+            return ValidationResult.success(cast(AgentVariety, candidate))
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidAgentException(ex=ex, message=f"{method}: {InvalidAgentException.DEFAULT_MESSAGE}")
+            )
+        
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def certify_machine_engine(
+            cls,
+            machine: MachineAgent,
+            engine_candidate: Any,
+            engine_service: EngineService = EngineService(),
+    ) -> ValidationResult[Agent]:
+        method = "AgentValidator.certify_machine_engine"
+        try:
+            engine_validation = engine_service.validate_engine(engine_candidate)
+            if engine_validation.is_failure():
+            
+        except Exception as ex:
+        return ValidationResult.failure(
+            InvalidAgentException(ex=ex, message=f"{method}: {InvalidAgentException.DEFAULT_MESSAGE}")
+        )
+    
     # @classmethod
     # @LoggingLevelRouter.monitor
     # def certify_agent_variety(cls, candidate: Any) -> ValidationResult[AgentVariety]:

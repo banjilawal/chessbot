@@ -11,6 +11,6 @@ version: 1.0.0
 from .exception import *
 from .human import *
 from .machne import *
+from .variety import *
 
 from .agent import Agent
-from .variety import AgentVariety
