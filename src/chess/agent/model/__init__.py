@@ -7,8 +7,10 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
+
 from .exception import *
+from .human import *
+from .machne import *
 
 from .agent import Agent
-from .human import HumanAgent
-from .machine import MachineAgent
+from .variety import AgentVariety

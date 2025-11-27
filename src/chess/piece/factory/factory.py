@@ -55,7 +55,7 @@ class PieceFactory(Builder[Piece]):
             *   id (int)
             *   name (str)
             *   identity_service (IdentityService)
-            *   team_stack_service (teamStackService)
+            *   team_stack (teamStackService)
             *   engine_service (Optional[EngineService])
     
         # Returns:

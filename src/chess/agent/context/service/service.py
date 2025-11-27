@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import Service, id_emitter
-from chess.agent import AgentContext, AgentContextBuilder
+from chess.agent import AgentContext, AgentContextBuilder, AgentContextValidator
 
 
 class AgentContextService(Service[AgentContext]):

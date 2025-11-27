@@ -7,52 +7,8 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ChessException, ValidationException
-
-__all__ = [
-  "AgentException",
-
-  # ======================# PLAYER_AGENT VALIDATION EXCEPTIONS #======================# 
-  "InvalidPlayerAgentException",
-
- 
-  "PlayerAgentBuildFailedException",
-]
-
-"""
-Catchall Exception for AgentValidator when a validation candidate fails a sanity check. Super
-class of all Agent validation exceptions.
-"""
 
 
-# ======================# AGENT EXCEPTION SUPER CLASS #======================#
-class AgentException(ChessException):
-  """
-  Super class for exceptions raised by Agent objects. DO NOT USE DIRECTLY. Subclasses
-  give more useful debugging messages.
-  """
-  ERROR_CODE = "AGENT_ERROR"
-  DEFAULT_MESSAGE = "Agent raised an exception."
-
-#======================# PLAYER_AGENT_VALIDATION EXCEPTIONS #======================#  
-
-
-class InvalidPlayerAgentException(PlayerAgentException, ValidationException):
-  """
-  Raised by PlayerAgentValidator if a candidate fails sanity checks. Exists primarily to catch all exceptions raised
-  validating an existing Agent object.
-  """
-  ERROR_CODE = "PLAYER_AGENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Agent validation failed."
-
-#======================# PLAYER_AGENT_BUILD EXCEPTIONS #======================#  
-class PlayerAgentBuildFailedException(PlayerAgentException, BuildFailedException):
-  """
-  Raised when PlayerAgentBuilder encounters an error building a new Agent instance. Exists
-  primarily as a catchall.
-  """
-  ERROR_CODE = "PLAYER_AGENT_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Agent build failed."
 #
 # #======================# PLAYER_AGENT_HISTORY EXCEPTIONS #======================#
 # class PlayerAgentHistoryException(PlayerAgentException):

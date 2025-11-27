@@ -11,26 +11,25 @@ version: 1.0.0
 from abc import ABC
 from typing import Optional
 
-from chess.team.team import Team
-from chess.agent import TeamStackService
+from chess.team import Team, UniqueTeamDataService
 
 
 class Agent(ABC):
     _id: int
     _name: str
     _current_team: Optional[Team]
-    _team_stack_service: TeamStackService
+    _team_stack: UniqueTeamDataService
     
     def __init__(
             self,
             id: int,
             name: str,
-            team_stack_service: TeamStackService = TeamStackService()
+            team_stack: UniqueTeamDataService = UniqueTeamDataService()
     ):
         self._id = id
         self._name = name
-        self._team_stack_service = team_stack_service
-        self._current_team = self._team_stack_service.current_team
+        self._team_stack = team_stack
+        self._current_team = self._team_stack.current_item
     
     @property
     def id(self) -> int:
@@ -45,12 +44,12 @@ class Agent(ABC):
         self._name = name
     
     @property
-    def team_stack_service(self) -> TeamStackService:
-        return self._team_stack_service
+    def team_stack(self) -> UniqueTeamDataService:
+        return self._team_stack
     
     @property
     def current_team(self) -> Optional[Team]:
-        return self._team_stack_service.current_team
+        return self._team_stack.current_item
     
     def __eq__(self, other):
         if other is self: return True
@@ -59,19 +58,19 @@ class Agent(ABC):
             return self._id == other.id
         return False
     
-    def __str__(self):
-        total_games = self.teams.size()
-        total_games_str = f"total games:{total_games}" if total_games > 0 else ""
-        
-        current_side = "" if self._current_team is None else \
-            f" curren_team:[{self._current_team.id}, {self._current_team.schema.color}"
-        return (
-            f"Owner[id:{self._id}"
-            f" name:{self._name}"
-            f"{current_side}"
-            f"{total_games_str}"
-            f"]"
-        )
+    # def __str__(self):
+    #     total_games = self.teams.size()
+    #     total_games_str = f"total games:{total_games}" if total_games > 0 else ""
+    #
+    #     current_side = "" if self._current_team is None else \
+    #         f" curren_team:[{self._current_team.id}, {self._current_team.schema.color}"
+    #     return (
+    #         f"Owner[id:{self._id}"
+    #         f" name:{self._name}"
+    #         f"{current_side}"
+    #         f"{total_games_str}"
+    #         f"]"
+    #     )
     
     # agent.order_move(
     #   owner=TeamSearch.search(

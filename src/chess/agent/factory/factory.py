@@ -9,12 +9,13 @@ version: 1.0.0
 
 from typing import Optional
 
+from chess.team import UniqueTeamDataService
 from chess.engine.service import EngineService
-from chess.agent import Agent, HumanPlayer, MachinePlayer, AgentBuildFailed, TeamStackService
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult
+from chess.agent import Agent, AgentBuildFailedException, AgentVariety, AgentValidator, HumanAgent, MachineAgent
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
-class PlayerAgentBuilder(Builder[Agent]):
+class AgentBuilder(Builder[Agent]):
     """
     # ROLE: Builder, Data Integrity Guarantor
 
@@ -36,9 +37,11 @@ class PlayerAgentBuilder(Builder[Agent]):
             cls,
             id: int,
             name: str,
-            identity_service: IdentityService = IdentityService(),
-            team_stack_service: TeamStackService = TeamStackService(),
+            variety: AgentVariety,
+            validator: AgentValidator = AgentValidator(),
             engine_service: Optional[EngineService] = None,
+            identity_service: IdentityService = IdentityService(),
+            team_stack: UniqueTeamDataService = UniqueTeamDataService(),
     ) -> BuildResult[Agent]:
         """
         # ACTION:
@@ -49,25 +52,29 @@ class PlayerAgentBuilder(Builder[Agent]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
+            *   agent_category (AgentCategory)
             *   identity_service (IdentityService)
-            *   team_stack_service (teamStackService)
+            *   team_stack (UniqueTeamDataService)
             *   engine_service (Optional[EngineService])
 
         # Returns:
-        ValidationResult[TeamStackService] containing either:
-            - On success: TeamStackService in the payload.
+        BuildResult[Agent] containing either:
+            - On success: Agent in the payload.
             - On failure: Exception.
 
         # Raises:
             *   AgentBuildFailedException
         """
-        method = "PlayerAgentBuilder.builder"
+        method = "AgentBuilder.builder"
         
         try:
             params_validation = cls._validate_params(
                 id=id,
                 name=name,
+                variety=variety,
                 identity_service=identity_service,
+                team_stack=team_stack,
+                engine_service=engine_service,
             )
             
             if engine_service is not None:
@@ -89,7 +96,7 @@ class PlayerAgentBuilder(Builder[Agent]):
         except Exception as ex:
             return BuildResult.failure(
                 AgentBuildFailedException(
-                    f"{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
+                    f"{method}: {AgentBuildFailed.DEFAULT_MESSAGE}",
                     ex
                 )
             )
@@ -120,7 +127,7 @@ class PlayerAgentBuilder(Builder[Agent]):
         except Exception as ex:
             return BuildResult.failure(
                 AgentBuildFailedException(
-                    "f{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
+                    "f{method}: {AgentBuildFailed.DEFAULT_MESSAGE}",
                     ex
                 )
             )
@@ -149,8 +156,10 @@ class PlayerAgentBuilder(Builder[Agent]):
                 cls,
                 id: int,
                 name: str,
+                variety: AgentVariety,
+                agent_validator: AgentValidator = AgentValidator(),
                 identity_service: IdentityService = IdentityService(),
-                team_stack_service: TeamStackService = TeamStackService(),
+                team_stack: UniqueTeamDataService = UniqueTeamDataService(),
                 engine_service: Optional[EngineService] = None,
         ) -> BuildResult[Agent]:
             """
@@ -163,7 +172,7 @@ class PlayerAgentBuilder(Builder[Agent]):
                 *   id (int)
                 *   name (str)
                 *   identity_service (IdentityService)
-                *   team_stack_service (teamStackService)
+                *   team_stack (teamStackService)
                 *   engine_service (Optional[EngineService])
 
             # Returns:
@@ -174,91 +183,133 @@ class PlayerAgentBuilder(Builder[Agent]):
             # Raises:
                 *   AgentBuildFailedException
             """
-            method = "PlayerAgentBuilder.builder"
+            method = "AgentBuilder.builder"
             
             try:
-                params_validation = cls._validate_params(
-                    id=id,
-                    name=name,
-                    identity_service=identity_service,
-                )
+                variety_validation = agent_validator.certify_agent_variety(candidate=variety)
+                if variety_validation.failure():
+                    return BuildResult.failure(variety_validation.exception)
                 
-                if engine_service is not None:
-                    return cls._build_machine_agent(
+                if variety == AgentVariety.MACHINE_AGENT and engine_service is None:
+                    return BuildResult.failure(
+                        AgentBuildFailedException(
+                            f"{method}: Cannot build a MachineAgent "
+                            f"without an EngineService instance."
+                        )
+                    )
+                
+                if variety == AgentVariety.MACHINE_AGENT and engine_service is not None:
+                    return cls.build_machine_agent(
                         id=id,
                         name=name,
-                        identity_service=identity_service,
-                        team_stack_service=team_stack_service,
+                        team_stack=team_stack,
                         engine_service=engine_service,
+                        identity_service=identity_service,
                     )
                 
                 return cls.build_human_agent(
                     id=id,
                     name=name,
+                    team_stack=team_stack,
                     identity_service=identity_service,
-                    team_stack_service=team_stack_service,
                 )
             
             except Exception as ex:
                 return BuildResult.failure(
                     AgentBuildFailedException(
-                        f"{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
-                        ex
+                        ex=ex,
+                        message=(
+                            f"{method}: "
+                            f"{AgentBuildFailedException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
         
         @classmethod
         @LoggingLevelRouter.monitor
-        def _build_human_agent(
+        def build_human_agent(
                 cls,
-                id: int,
                 name: str,
+                id: int = id_emitter.service_id,
                 identity_service: IdentityService = IdentityService(),
-                team_stack_service: TeamStackService = TeamStackService(),
-        ) -> BuildResult[MachinePlayer]:
+                team_stack: UniqueTeamDataService = UniqueTeamDataService(),
+        ) -> BuildResult[HumanAgent]:
+            """"""
+            method = "AgentBuilder.build_human_agent"
+            
             try:
-                param_validation = cls._validate_params(id=id, name=name, identity_service=identity_service)
-                if param_validation.is_failure():
-                    return BuildResult.failure(param_validation.exception)
+                validation_result = identity_service.validate_identity(
+                    id_candidate=id,
+                    name_candidate=name
+                )
+                if validation_result.is_failure():
+                    return BuildResult.failure(validation_result.exception)
                 
                 return BuildResult.success(
-                    HumanPlayer(
+                    HumanAgent(id=id, name=name, team_stack=team_stack)
+                )
+            except Exception as ex:
+                return BuildResult.failure(
+                    AgentBuildFailedException(
+                        ex=ex,
+                        message=(
+                            f"{method}: "
+                            f"{AgentBuildFailedException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+        
+        @classmethod
+        @LoggingLevelRouter.monitor
+        def build_machine_agent(
+                cls,
+                name: str,
+                id: int = id_emitter.service_id,
+                engine_service: EngineService = EngineService(),
+                identity_service: IdentityService = IdentityService(),
+                team_stack: UniqueTeamDataService = UniqueTeamDataService(),
+        ) -> BuildResult[HumanAgent]:
+            """"""
+            method = "AgentBuilder.build_machine_agent"
+            
+            try:
+                validation_result = identity_service.validate_identity(
+                    id_candidate=id,
+                    name_candidate=name
+                )
+                if validation_result.is_failure():
+                    return BuildResult.failure(validation_result.exception)
+                
+                return BuildResult.success(
+                    MachineAgent(
                         id=id,
                         name=name,
-                        team_stack_service=team_stack_service,
+                        team_stack=team_stack,
+                        engine_service=engine_service
                     )
                 )
             except Exception as ex:
                 return BuildResult.failure(
                     AgentBuildFailedException(
-                        "f{method}: {PlayerAgentBuildFailed.DEFAULT_MESSAGE}",
-                        ex
+                        ex=ex,
+                        message=(
+                            f"{method}: "
+                            f"{AgentBuildFailedException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _validate_params(
-            cls,
-            id: int,
-            name: str,
-            identity_service: IdentityService
-    ) -> ValidationResult[(int, str)]:
-        try:
-            return identity_service.validate_identity(id_candidate=id, name_candidate=name)
-        except Exception as ex:
-            return ValidationResult.failure(ex)
+
 #
 #
 # def main():
-#   build_result = PlayerAgentBuilder.builder(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
+#   build_result = AgentBuilder.builder(commander_id=id_emitter.person_id, visitor_name=RandomName.person())
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")
 #   else:
 #     print(f"Failed to builder competitor: {build_result.err}")
 #
-#   build_result = PlayerAgentBuilder.builder(-1, 4)
+#   build_result = AgentBuilder.builder(-1, 4)
 #   if build_result.is_success():
 #     competitor = build_result.payload
 #     print(f"Successfully built competitor: {competitor}")

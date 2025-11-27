@@ -9,11 +9,14 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import Agent, TeamStackServiceValidator
+from chess.agent import (
+    Agent, AgentVariety, InvalidAgentException, NullAgentTypeException,
+    TeamStackServiceValidator
+)
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
-class PlayerAgentValidator(Validator[Agent]):
+class AgentValidator(Validator[Agent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -80,5 +83,40 @@ class PlayerAgentValidator(Validator[Agent]):
                 InvalidPlayerAgentException(
                     f"{method}: {InvalidPlayerAgentException.DEFAULT_MESSAGE}",
                     ex
+                )
+            )
+    
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def certify_agent_variety(cls, candidate: Any) -> ValidationResult[AgentVariety]:
+        """"""
+        method = "AgentValidator.validate_agent_category"
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullAgentTypeException(
+                        f"{method}: {NullAgentTypeException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            if not isinstance(candidate, AgentCategory):
+                return ValidationResult.failure(
+                    TypeError(
+                        f"{method}: Expected AgentCategory, "
+                        f"got {type(candidate).__name__} instead."
+                    )
+                )
+            
+            return ValidationResult.success(cast(AgentType, candidate))
+    
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidAgentException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{InvalidAgentException.DEFAULT_MESSAGE}"
+                    )
                 )
             )

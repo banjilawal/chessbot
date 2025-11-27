@@ -7,17 +7,17 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentContextException
+from chess.agent import AgentException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# AGENT_CONTEXT BUILD EXCEPTIONS #======================#
+    # ======================# AGENT BUILD EXCEPTIONS #======================#
     "AgentBuildFailedException",
 ]
 
 
-# ======================# AGENT_CONTEXT BUILD EXCEPTIONS #======================#
-class AgentBuildFailedException(AgentContextException, BuildFailedException):
+# ======================# AGENT BUILD EXCEPTIONS #======================#
+class AgentBuildFailedException(AgentException, BuildFailedException):
     """
     Catchall exception for when AgentFactory encounters an error building a new Agent instance.
     """

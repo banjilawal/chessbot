@@ -12,7 +12,8 @@ from typing import Any, cast
 from chess.team import Team, TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.agent import (
-    AgentContext, InvalidAgentContextException, NoAgentContextFlagSetException, NullAgentContextException,
+    AgentType, AgentContext, InvalidAgentContextException, NoAgentContextFlagSetException,
+    NullAgentContextException,
     TooManyAgentContextFlagsSetException
 )
 
@@ -81,8 +82,20 @@ class AgentContextValidator(Validator[AgentContext]):
                 validation = team_service.validator.validate(candidate=context.team)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
-                return ValidationResult.succes(context)
-        
+                return ValidationResult.success(context)
+            
+            if context.agent_type is not None:
+                if context.agent_type not in [AgentType.HUMAN_AGENT, AgentType.MACHINE_AGENT]:
+                    return ValidationResult.failure(
+                        TypeError(
+                            (
+                                f"{method}: Expected AgentType, "
+                                f"got {type(candidate).__name__} instead."
+                            )
+                        )
+                    )
+                return ValidationResult.success(context)
+            
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentContextException(
@@ -93,3 +106,4 @@ class AgentContextValidator(Validator[AgentContext]):
                     )
                 )
             )
+        

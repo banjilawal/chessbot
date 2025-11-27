@@ -9,10 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
+
 from chess.team import Team, TeamService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.agent import (
-    AgentContext, AgentContextBuildFailedException, NoAgentContextFlagSetException,
+    AgentVariety, AgentContext, AgentContextBuildFailedException, NoAgentContextFlagSetException,
     TooManyAgentContextFlagsSetException
 )
 
@@ -42,6 +43,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             id: Optional[int] = None,
             name: Optional[str] = None,
             team: Optional[Team] = None,
+            variety: Optional[AgentVariety] = None,
             team_service: TeamService = TeamService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[AgentContext]:
@@ -74,7 +76,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         method = "AgentSearchContextBuilder.builder"
         
         try:
-            params = [id, name, team,]
+            params = [id, name, team, variety, ]
             param_count = sum(bool(p) for p in params)
             
             if param_count == 0:
@@ -110,6 +112,18 @@ class AgentContextBuilder(Builder[AgentContext]):
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(AgentContext(team=team))
+            
+            if variety is not None:
+                if variety not in [AgentVariety.HUMAN_AGENT, AgentVariety.MACHINE_AGENT]:
+                    return BuildResult.failure(
+                        TypeError(
+                            (
+                                f"{method}: Expected AgentVariety, "
+                                f"got {type(variety).__name__} instead."
+                            )
+                        )
+                    )
+                return BuildResult.success(AgentContext(variety=variety))
         
         except Exception as ex:
             return BuildResult.failure(

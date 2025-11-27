@@ -50,7 +50,7 @@ class TeamBuilder(Builder[Team]):
         3.  Check agent safety with PlayAgentService.validate_player.
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks create a new Team object.
-        6.  If the team is not in actor's team_assignments use their team_stack_service to add it.
+        6.  If the team is not in actor's team_assignments use their team_stack to add it.
     
         # PARAMETERS:
             *   id (int)

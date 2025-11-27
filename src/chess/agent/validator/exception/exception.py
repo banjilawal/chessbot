@@ -23,3 +23,4 @@ class InvalidAgentException(AgentException, ValidationException):
     """
     ERROR_CODE = "AGENT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Agent validation failed."
+
