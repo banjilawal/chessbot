@@ -31,6 +31,17 @@ class TeamService(Service[Team]):
         *   builder (TeamBuilder)
         *   validator (TeamValidator)
         *   schema (TeamSchema)
+        
+    # CONSTRUCTOR:
+        *   __init__(i
+                d: int, name: str, schema: TeamSchema, builder: TeamBuilder, validator: TeamValidator
+            )
+    
+    # CLASS METHODS:
+    None
+    
+    # INSTANCE METHODS:
+    None
     """
     DEFAULT_NAME = "TeamService"
     _schema: TeamSchema

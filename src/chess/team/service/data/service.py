@@ -42,7 +42,6 @@ class TeamDataService(DataService[Team]):
         *   current_item (Team):
         *   size (int):
         
-        
     # CONSTRUCTOR:
         *   __init__(
                 id: int, name: str, items: List[Team], search: TeamSearch,
