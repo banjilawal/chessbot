@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, Search, SearchResult, Service, id_emitter
-from chess.team import Team, TeamContext
+from chess.team import Team, TeamContext, TeamDataServiceException
 
 
 class TeamDataService(DataService[Team]):
@@ -73,4 +73,9 @@ class TeamDataService(DataService[Team]):
     
     @LoggingLevelRouter.monitor
     def search(self, context: TeamContext) -> SearchResult[List[Team]]:
-        pass
+        method = "TeamDataService.search"
+        try:
+        except Exception as ex:
+            return SearchResult.failure(
+                TeamDataServiceException(ex=ex, message=f"{method}: {TeamDataServiceException.DEFAULT_MESSAGE}")
+            )

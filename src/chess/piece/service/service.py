@@ -7,22 +7,23 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.system import Service
+from chess.system import Service, id_emitter
 from chess.piece import Piece, PieceFactory, PieceValidator
 
 class PieceService(Service[Piece]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for Piece, PieceValidator and PieceBuilder.
-    2.  Protects Piece objects from direct manipulation.
-    3.  Extends behavior and functionality of Piece objects.
-    4.  Public facing API for Piece modules.
-  
+    1.  Public facing API.
+    2.  Protects Piece instance's internal state.
+    3.  Masks implementation details and business logic making features easier to use.
+    4.  Single entry point for managing Piece lifecycles with PieceBuilder and PieceValidator.
+
     # PROVIDES:
-        *   Piece building
-        *   Piece validation
+        *   PieceBuilder
+        *   PieceValidator
+        *   PieceSchema
 
     # ATTRIBUTES:
         *   id (int)
@@ -39,11 +40,17 @@ class PieceService(Service[Piece]):
     
     def __init__(
             self,
-            id: int,
+            id: int = id_emitter.service_id,
             name: str = SERVICE_NAME,
             builder: PieceFactory = PieceFactory(),
             validator: PieceValidator = PieceValidator(),
     ):
+        """
+        # Action
+        1.  Use id_emitter to automatically generate a unique id for each PieceService instance.
+        2.  Automatic dependency injection by providing working default instances of each attribute.
+        """
+        method = "PieceService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     
