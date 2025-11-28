@@ -17,9 +17,6 @@ __all__ = [
 
 # ========================= TEAM_CONTEXT_SERVICE EXCEPTIONS =========================#
 class TeamContextServiceException(ServiceException):
-    """
-    Catchall Exception for TeamContextService when either TeamContextService.builder or
-    TeamContextService.validator raise an unhandled exception.
-    """
+    """wrapper for exceptions which hit a TeamContextService method's finally block."""
     ERROR_CODE = "TEAM_CONTEXT_SERVICE_ERROR"
     DEFAULT_MESSAGE = "TeamContextService raised an exception."

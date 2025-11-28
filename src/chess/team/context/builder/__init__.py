@@ -7,5 +7,11 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
+# =========== TEAM.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+
+# Packages
+# None
+
+# Modules
 from .exception import *
 from .builder import TeamContextBuilder
