@@ -13,20 +13,14 @@ from chess.system import UniqueDataServiceException
 __all__ = [
     # ======================# UNIQUE_TEAM_DATA_SERVICE EXCEPTIONS #======================#
     "UniqueTeamDataServiceException",
-    "AddingDuplicateTeamException",
 ]
 
 
 # ======================# UNIQUE_TEAM_DATA_SERVICE EXCEPTIONS #======================#
 class UniqueTeamDataServiceException(UniqueDataServiceException):
     """
-    Super class of exceptions raised by UniqueTeamDataService objects. Do not use directly. Subclasses give
-    precise, fined-grained, debugging info.
+    Raised when internal components are null or raise system errors. Not appropriate
+    for CRUD exceptions.
     """
     ERROR_CODE = "UNIQUE_TEAM_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "UniqueTeamDataService raised an exception."
-
-
-class TeamInsertionFailedException(InsertionFailedException):
-
-

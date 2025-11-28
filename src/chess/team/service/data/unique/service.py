@@ -7,7 +7,10 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.team import AddingDuplicateTeamException, Team, TeamDataService, UniqueTeamDataServiceException
+from chess.team import (
+    AddingDuplicateTeamException, Team, TeamDataService, TeamInsertionFailedException,
+    UniqueTeamDataServiceException
+)
 from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
 
 
@@ -103,8 +106,8 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return InsertionResult.failure(
-                UniqueTeamDataServiceException(
-                    ex=ex, message=f"{method}: {UniqueTeamDataServiceException.DEFAULT_MESSAGE}"
+                TeamInsertionFailedException(
+                    ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}"
                 )
             )
     

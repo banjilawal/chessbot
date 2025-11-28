@@ -9,9 +9,9 @@ version: 1.0.0
 
 from typing import List
 
-from chess.team import Team, TeamContext, TeamContextService, TeamDataServiceException, TeamSearch, TeamService
+from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamService
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, Search, SearchResult, Service, id_emitter
-
+from chess.team.service.data.unique.exception import TeamInsertionFailedException
 
 
 class TeamDataService(DataService[Team]):
@@ -41,6 +41,19 @@ class TeamDataService(DataService[Team]):
         *   context_service (TeamContextService):;
         *   current_item (Team):
         *   size (int):
+        
+        
+    # CONSTRUCTOR:
+        *   __init__(
+                id: int, name: str, items: List[Team], search: TeamSearch,
+                service: TeamService, contextService: TeamContextService
+            )
+    
+    # CLASS METHODS:
+    None
+    
+    # INSTANCE METHODS:
+        *   push(item: Team) -> InsertionResult[Team]
     """
     DEFAULT_NAME = "TeamDataService"
     
@@ -86,7 +99,7 @@ class TeamDataService(DataService[Team]):
             - On failure: Exception.
 
         # Raises:
-            *   TeamDataServiceException
+            *   TeamInsertionFailedException
         """
         method = "TeamDataService.push"
         
@@ -99,7 +112,9 @@ class TeamDataService(DataService[Team]):
             return InsertionResult.success(payload=item)
         except Exception as ex:
             return InsertionResult.failure(
-                TeamDataServiceException(ex=ex, message=f"{method}: {TeamDataServiceException.DEFAULT_MESSAGE}")
+                TeamInsertionFailedException(
+                    ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}"
+                )
             )
     
     @LoggingLevelRouter.monitor
