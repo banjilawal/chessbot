@@ -7,10 +7,10 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Generic, TypeVar
 
-from chess.system import BuildResult, Builder, Validator
+from chess.system import Builder, Validator
 
 T = TypeVar("T")
 
@@ -68,11 +68,6 @@ class Service(ABC, Generic[T]):
     @property
     def builder(self) -> Builder[T]:
         return self._builder
-    # @abstractmethod
-    # def build(self, *args, **kwargs) -> BuildResult[T]:
-    #     """"""
-    #     pass
-       # return self._builder.build(*args, **kwargs)
     
     def __eq__(self, other):
         if other is self: return True

@@ -7,10 +7,14 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
+# =========== TEAM.CONTEXT PACKAGE CONTENTS ===========#
+
+# Packages
 from .builder import *
-from .exception import *
 from .service import *
 from .validator import *
 
+# Modules
+from .exception import *
 from .context import TeamContext
 

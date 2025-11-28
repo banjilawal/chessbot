@@ -7,11 +7,10 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, AgentService, PushingDuplicateTeamException
+from chess.agent import Agent, AgentService
 from chess.piece import UniquePieceDataService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
-
 
 class TeamBuilder(Builder[Team]):
     """
@@ -59,6 +58,8 @@ class TeamBuilder(Builder[Team]):
             *   identity_service (IdentityService)
             *   agent_service (AgentService)
             *   schema_validator (TeamSchemaValidator)
+        All Services have default values to ensure they are never null.
+        
         # Returns:
         BuildResult[Team] containing either:
             - On success: Team in the payload.
@@ -78,28 +79,17 @@ class TeamBuilder(Builder[Team]):
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             
-            agent_validation = agent_service.validate_agent(agent)
+            agent_validation = agent_service.validator.validate(agent)
             if agent_validation.is_failure():
                 return BuildResult.failure(agent_validation.exception)
             
             team = Team(id=id, agent=agent, schema=schema, roster=roster, hostages=hostages)
-            if team not in agent.team_stack_service.push_team:
-                (team)
+            if team not in agent.team_stack:
+                agent.team_stack.push_unique(team)
             
-            if team in agent.team_stack_service.find_tean(team) is not None:
-                return BuildResult.failure(
-                    PushingDuplicateTeamException(
-                        f"{method}: {PushingDuplicateTeamException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            agent.team_stack_service.push_team(team)
             return BuildResult.success(team)
         
         except Exception as ex:
             return BuildResult.failure(
-                TeamBuildFailedException(
-                    f"{method}: {TeamBuildFailedException.DEFAULT_MESSAGE}",
-                    ex
-                )
+                TeamBuildFailedException(ex=ex, message=f"{method}: {TeamBuildFailedException.DEFAULT_MESSAGE}")
             )

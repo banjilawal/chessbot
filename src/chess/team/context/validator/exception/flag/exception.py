@@ -12,19 +12,19 @@ from chess.team import InvalidTeamContextException
 
 __all__ = [
     # ========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
-    "NoTeamContextFlagSetException",
-    "TooManyTeamContextFlagsSetException"
+    "NoTeamContextFlagsException",
+    "TooManyTeamContextFlagsException"
 ]
 
 
 # ========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
-class NoTeamContextFlagSetException(InvalidTeamContextException, BoundsException):
+class NoTeamContextFlagsException(InvalidTeamContextException, BoundsException):
     """Raised if no TeamContext was selected."""
     ERROR_CODE = "NO_TEAM_CONTEXT_FLAG_SET_ERROR"
     DEFAULT_MESSAGE = "One and only one, TeamContext flag must be set."
 
 
-class TooManyTeamContextFlagsSetException(InvalidTeamContextException, BoundsException):
+class TooManyTeamContextFlagsException(InvalidTeamContextException, BoundsException):
     """Raised if too many TeamContext flags were set."""
     ERROR_CODE = "TEAM_CONTEXT_MAX_PARAM_ERROR"
     DEFAULT_MESSAGE = "Only one TeamContext flag can be set."

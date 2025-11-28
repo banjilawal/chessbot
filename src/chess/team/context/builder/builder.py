@@ -6,17 +6,33 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+
 from typing import Optional
 
 from chess.agent import Agent, AgentService
 from chess.system import Builder, BuildResult, GameColor, IdentityService, LoggingLevelRouter
 from chess.team import (
-    NoTeamContextFlagSetException, TeamContext, TeamSchema, TeamValidator, TooManyTeamContextFlagsSetException
+    NoTeamContextFlagsException, TeamContext, TeamContextBuildFailedException, TeamSchema, TeamValidator,
+    TooManyTeamContextFlagsException
 )
 
 
 class TeamContextBuilder(Builder[TeamContext]):
-    """"""
+    """
+     # ROLE: Builder, Data Integrity Guarantor
+
+     # RESPONSIBILITIES:
+     Produce TeamContext instances whose integrity is always guaranteed. If any attributes do not pass
+     their integrity checks, send an exception instead.
+
+     # PROVIDES:
+     BuildResult[TeamContext] containing either:
+         - On success: TeamContext in the payload.
+         - On failure: Exception.
+
+     # ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -57,8 +73,8 @@ class TeamContextBuilder(Builder[TeamContext]):
 
         # Raises:
             *   TeamContextBuildFailedException
-            *   NoTeamContextFlagSetException
-            *   TooManyTeamContextFlagsSetException
+            *   NoTeamContextFlagsException
+            *   TooManyTeamContextFlagsException
         """
         method = "PieceSearchContextBuilder.builder"
         
@@ -68,54 +84,45 @@ class TeamContextBuilder(Builder[TeamContext]):
             
             if param_count == 0:
                 return BuildResult.failure(
-                    NoTeamContextFlagSetException(
-                        f"{method}: "
-                        f"{NoTeamContextFlagSetException.DEFAULT_MESSAGE}"
-                    )
+                    NoTeamContextFlagsException(f"{method}:  {NoTeamContextFlagsException.DEFAULT_MESSAGE}")
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyTeamContextFlagsSetException(
-                        f"{method}: "
-                        f"{TooManyTeamContextFlagsSetException}"
-                    )
+                    TooManyTeamContextFlagsException(f"{method}: {TooManyTeamContextFlagsException}")
                 )
             
             if id is not None:
                 validation = identity_service.validate_id(id)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                return BuildResult.success(TeamContext(id=id))
+                return BuildResult.success(payload=TeamContext(id=id))
             
             if agent is not None:
                 validation = agent_service.validator.validate(agent)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                return BuildResult.success(TeamContext(agent=agent))
+                return BuildResult.success(payload=TeamContext(agent=agent))
             
             if name is not None:
                 validation = team_validator.validate_name(name)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                return BuildResult.success(TeamContext(name=name))
+                return BuildResult.success(payload=TeamContext(name=name))
 
             if color is not None:
                 validation = team_validator.validate_color(color)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                return BuildResult.success(TeamContext(color=color))
+                return BuildResult.success(payload=TeamContext(color=color))
             
             if schema is not None:
                 return BuildResult.success(TeamContext(schema=schema))
             
         except Exception as ex:
             return BuildResult.failure(
-                PieceContextBuildFailedException(
+                TeamContextBuildFailedException(
                     ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{PieceContextBuildFailedException.DEFAULT_MESSAGE}"
-                    )
+                    message=f"{method}: {TeamContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

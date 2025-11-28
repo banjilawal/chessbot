@@ -63,9 +63,13 @@ class PieceValidator(Validator[Piece]):
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
             
+            roster_number_validation = team_service.validator
+            
             rank_validation = rank_service.validator.validate(piece.rank)
             if rank_validation.is_failure():
                 return ValidationResult.failure(rank_validation.exception)
+            
+            
 
             if piece.roster_number is None:
                 return ValidationResult.failure(

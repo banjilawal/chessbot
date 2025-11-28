@@ -7,13 +7,18 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
+#=========== TEAM ROOT PACKAGE CONTENTS ===========#
+
+# Packages
 from .builder import *
 from .context import *
 from .dto import *
 from .schema import *
 from .search import *
 from .service import *
-from .exception import *
+from .validator import *
 
+# Modules
+from .exception import *
 from .team import Team
 

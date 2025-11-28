@@ -9,7 +9,6 @@ Created: 2025-09-11
 from typing import cast, Any
 
 
-from chess.agent import PlayerAgentService
 from chess.agent.service import AgentService
 from chess.king import KingPiece
 from chess.piece import CombatantPiece, Piece, PieceValidator

@@ -21,7 +21,7 @@ from chess.system import (
 D = TypeVar("D")
 C = TypeVar("C", binding=Context)
 
-class DataService(ABC, [Generic [D, C]]):
+class DataService(ABC, [Generic [D]]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 

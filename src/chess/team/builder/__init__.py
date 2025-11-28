@@ -7,5 +7,11 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
+# =========== TEAM.BUILDER PACKAGE CONTENTS ===========#
+
+# Packages
+# None
+
+# Modules
 from .exception import *
 from .builder import TeamBuilder

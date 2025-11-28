@@ -9,11 +9,9 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.team import Team, TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.agent import (
-    AgentType, AgentContext, InvalidAgentContextException, NoAgentContextFlagSetException,
-    NullAgentContextException,
+    AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagSetException, NullAgentContextException,
     TooManyAgentContextFlagsSetException
 )
 
@@ -25,7 +23,6 @@ class AgentContextValidator(Validator[AgentContext]):
     def validate(
             cls,
             candidate: Any,
-            team_service: TeamService = TeamService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[AgentContext]:
         """"""
@@ -78,21 +75,10 @@ class AgentContextValidator(Validator[AgentContext]):
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
-            if context.team is not None:
-                validation = team_service.validator.validate(candidate=context.team)
-                if validation.is_failure():
-                    return ValidationResult.failure(validation.exception)
-                return ValidationResult.success(context)
-            
-            if context.agent_type is not None:
-                if context.agent_type not in [AgentType.HUMAN_AGENT, AgentType.MACHINE_AGENT]:
+            if context.variety is not None:
+                if context.variety not in [AgentVariety.HUMAN_AGENT, AgentVariety.MACHINE_AGENT]:
                     return ValidationResult.failure(
-                        TypeError(
-                            (
-                                f"{method}: Expected AgentType, "
-                                f"got {type(candidate).__name__} instead."
-                            )
-                        )
+                        TypeError(f"{method}: Expected AgentType, got {type(candidate).__name__} instead.")
                     )
                 return ValidationResult.success(context)
             
@@ -100,10 +86,7 @@ class AgentContextValidator(Validator[AgentContext]):
             return ValidationResult.failure(
                 InvalidAgentContextException(
                     ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidAgentContextException.DEFAULT_MESSAGE}"
-                    )
+                    message=f"{method}: {InvalidAgentContextException.DEFAULT_MESSAGE}"
                 )
             )
         

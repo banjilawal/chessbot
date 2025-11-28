@@ -10,14 +10,16 @@ version: 1.0.0
 from chess.system import ServiceException
 
 __all__ = [
+    # ========================= TEAM_CONTEXT_SERVICE EXCEPTIONS =========================#
     "TeamContextServiceException",
 ]
 
 
+# ========================= TEAM_CONTEXT_SERVICE EXCEPTIONS =========================#
 class TeamContextServiceException(ServiceException):
     """
-    Super class of exceptions raised by TeamContextService objects.
-    Do not use directly. Subclasses give precise, fined-grained, debugging info.
+    Catchall Exception for TeamContextService when either TeamContextService.builder or
+    TeamContextService.validator raise an unhandled exception.
     """
     ERROR_CODE = "TEAM_CONTEXT_SERVICE_ERROR"
     DEFAULT_MESSAGE = "TeamContextService raised an exception."

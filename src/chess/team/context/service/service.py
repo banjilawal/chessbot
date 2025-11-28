@@ -17,7 +17,7 @@ class TeamContextService(Service[TeamContext]):
 
     # RESPONSIBILITIES:
     1.  Provide a single entry point for TeamContextBuilder and TeamContextValidator objects.
-    2.  Passing its self._validator to the self._builder simplifies the Context lifecycle.
+    2.  Passing its self._validator to the self._builder to clients
     3.  Protects Context from direct, unprotected access.
     4.  Public facing API.
 
