@@ -69,13 +69,64 @@ class TeamDataService(DataService[Team]):
         )
     
     def push(self, item: Team) -> InsertionResult[Team]:
-        pass
+        """
+        # ACTION:
+        1.  Use TeamDataService.service.validator to certify item.
+        2.  If certification fails return the exception inside an InsertionResult.
+        3.  Otherwise, push item onto the stack.
+        4.  Send the successfully pushed data back in an InsertionResult.
+
+        # PARAMETERS:
+            *   item (Team)
+
+        # Returns:
+        InsertionResult[TTeam] containing either:
+            - On success: Team in the payload.
+            - On failure: Exception.
+
+        # Raises:
+            *   TeamDataServiceException
+        """
+        method = "TeamDataService.push"
+        
+        try:
+            validation = self.service.validator.validate(item)
+            if validation.is_failure():
+                return InsertionResult.failure(validation.exception)
+            self.items.append(item)
+            
+            return InsertionResult.success(payload=item)
+        except Exception as ex:
+            return InsertionResult.failure(
+                TeamDataServiceException(ex=ex, message=f"{method}: {TeamDataServiceException.DEFAULT_MESSAGE}")
+            )
     
     @LoggingLevelRouter.monitor
     def search(self, context: TeamContext) -> SearchResult[List[Team]]:
+        """
+        # ACTION:
+        1.  Pass context argument to self.search.
+        2.  Pass self.items and self.context_service.validator to self.search's renaming params.
+        3.  The Search object will return any exceptions if it fails, success otherwise.
+        4.  Because Search object does all the error using a try-catch is uneccesar
+
+        2.  If certification fails return the exception inside an InsertionResult.
+        3.  Otherwise, push item onto the stack.
+        4.  Send the successfully pushed data back in an InsertionResult.
+
+        # PARAMETERS:
+            *   item (Team)
+
+        # Returns:
+        SearchResult[List[Team]] containing either:
+            - On success: List[Team] in the payload.
+            - On failure: Exception.
+
+        # Raises:
+        None
+        """
         method = "TeamDataService.search"
-        try:
-        except Exception as ex:
-            return SearchResult.failure(
-                TeamDataServiceException(ex=ex, message=f"{method}: {TeamDataServiceException.DEFAULT_MESSAGE}")
-            )
+        
+        return self.search.find(
+            data_set=self.items, context=context, context_validator=self.context_service.validator
+        )
