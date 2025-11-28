@@ -94,7 +94,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
                     AddingDuplicatePieceException(f"{method}: {AddingDuplicatePieceException.DEFAULT_MESSAGE}")
                 )
             
-            # After the error has been passed self._data_service returns the outcome of
+            # After the error chain is passed self._data_service returns the outcome of
             # pushing the item on to the stack.
             return self._data_service.push(item)
         
@@ -103,10 +103,6 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         except Exception as ex:
             return InsertionResult.failure(
                 UniquePieceDataServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{UniquePieceDataServiceException.DEFAULT_MESSAGE}"
-                    )
+                    ex=ex, message=f"{method}: {UniquePieceDataServiceException.DEFAULT_MESSAGE}"
                 )
             )

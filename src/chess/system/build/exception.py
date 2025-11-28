@@ -7,17 +7,30 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ChessException, NullException
+from chess.system import ChessException, NullException, ValidationException
 
 __all__ = [
+# ======================# BUILDER EXCEPTION SUPER_CLASS #======================#
   "BuilderException",
+  
+# ======================# BUILDER VALIDATION EXCEPTIONS #======================#
+  "InvalidBuilderException",
   "NullBuilderException",
+  
+# ======================# FAILED BUILD OPERATION EXCEPTION #======================#
   "BuildFailedException",
+  
+# ======================# MUTUAL EXCLUSION EXCEPTIONS #======================#
   "AllParamsSetNullException",
-  "MutuallyExclusiveParamsException"
+  "MutuallyExclusiveParamsException",
+  
+# ======================# BUILD_OPTIONS EXCEPTIONS #======================#
+  "NoBuildOptionSelectedException",
+  "BuildOptionSelectionTooLargeException",
 ]
 
 
+# ======================# BUILDER EXCEPTION SUPER_CLASS #======================#
 class BuilderException(ChessException):
   """
   Super class of exceptions organic to Builder objects. DO NOT USE DIRECTLY. Subclasses give
@@ -27,11 +40,20 @@ class BuilderException(ChessException):
   ERROR_CODE = "BUILDER_ERROR"
   DEFAULT_MESSAGE = "Builder raised an exception."
 
-class NullBuilderException(BuilderException, NullException):
+
+# ======================# BUILDER VALIDATION EXCEPTIONS #======================#
+class InvalidBuilderException(BuilderException, ValidationException):
   """Raised if an entity, method, or operation requires team_name Engine but gets validation instead."""
   ERROR_CODE = "NULL_ERROR"
   DEFAULT_MESSAGE = "Builder cannot be validation"
 
+class NullBuilderException(InvalidBuilderException, NullException):
+  """Raised if an entity, method, or operation requires team_name Engine but gets validation instead."""
+  ERROR_CODE = "NULL_ERROR"
+  DEFAULT_MESSAGE = "Builder cannot be validation"
+
+
+# ======================# FAILED BUILD OPERATION EXCEPTION #======================#
 class BuildFailedException(BuilderException):
   """
   Catchall exception for when Builder encounters an error building a new object.
@@ -39,7 +61,9 @@ class BuildFailedException(BuilderException):
   ERROR_CODE = "BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "build failed."
 
-class AllParamsSetNullException(BuilderException):
+
+# ======================# MUTUAL EXCLUSION EXCEPTIONS #======================#
+class AllParamsSetNullException(BuilderException, NullException):
   """
   Raised if all builder params cannot be validation.
   """
@@ -52,6 +76,22 @@ class MutuallyExclusiveParamsException(BuilderException):
   """
   ERROR_CODE = "MUTUALLY_EXCLUSIVE_BUILD_PARAMS_ERROR"
   DEFAULT_MESSAGE = "Cannot have more than one param set validation."
+
+
+# ======================# BUILD_OPTIONS EXCEPTIONS #======================#
+class NoBuildOptionSelectedException(BuilderException):
+  """
+  Raised when none of the possible options required to builder an object are selected.
+  Mainly used by Context classes
+  """
+  ERROR_CODE = "NO_BUILD_OPTION_SELECTED_ERROR"
+  DEFAULT_MESSAGE = "None of the options required for the builder were."
+
+
+class BuildOptionSelectionTooLargeException(BuilderException):
+  """Raised when too many of the available builder options are selected. Mainly used by Context classes."""
+  ERROR_CODE = "TOO_MANY_BUILD_OPTIONS_SELECTED_ERROR"
+  DEFAULT_MESSAGE = "Too many builder options were selected."
 
 
 

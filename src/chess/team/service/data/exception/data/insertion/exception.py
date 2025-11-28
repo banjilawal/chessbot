@@ -14,17 +14,7 @@ __all__ = [
     "TeamInsertionFailedException",
     "AddingDuplicateTeamException",
     "CannotAddNullTeamException",
-# ======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
-    "TeamDeletionFailedException",
-    "CannotRemoveNullTEamException",
 ]
-
-
-# ======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
-class TeamDataException(DataException):
-    ERROR_CODE = "TEAM_DATA_COLLECTION_OPERATION_ERROR"
-    DEFAULT_MESSAGE = "A CRUD operation on the Team data set raised an exception."
-
 
 # ======================# TEAM_INSERTION_FAILED EXCEPTIONS #======================#
 class TeamInsertionFailedException(TeamDataException):
@@ -39,14 +29,3 @@ class AddingDuplicateTeamException(TeamInsertionFailedException):
 class CannotAddNullTeamException(TeamInsertionFailedException, NullException):
     ERROR_CODE = "INSERTING_NULL_TEAM_ERROR"
     DEFAULT_MESSAGE = "Cannot push a null Team into the dataset."
-
-
-# ======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
-class TeamDeletionFailedException(TeamDataException):
-    ERROR_CODE = "TEAM_DELETION_ERROR"
-    DEFAULT_MESSAGE = "Team deletion failed."
-
-
-class CannotRemoveNullTEamException(TeamDeletionFailedException, NullException):
-    ERROR_CODE = "DELETING_NULL_TEAM_ERROR"
-    DEFAULT_MESSAGE = "Cannot pull a team which does not exist in the dataset."

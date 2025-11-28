@@ -253,10 +253,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
 
 
 
-class TeamNotRegisteredWithAgentException(TeamException, SearchException):
-  """Team was not found in the Agent's team_assignments list."""
-  ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_AGENT_ERROR"
-  DEFAULT_MESSAGE = "Team not found in the Agent's team_assignments list."
+
 
 
 

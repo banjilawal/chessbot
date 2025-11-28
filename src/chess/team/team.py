@@ -9,6 +9,7 @@ version: 1.0.0
 
 from typing import List
 
+from chess.game.model import Game
 from chess.piece import Piece, UniquePieceDataService
 from chess.team import TeamSchema
 from chess.agent import Agent
@@ -44,6 +45,7 @@ class Team:
     
     _id: int
     _agent: Agent
+    _game: Game
     _schema: TeamSchema
     _roster: UniquePieceDataService
     _hostages: UniquePieceDataService
@@ -52,6 +54,7 @@ class Team:
             self,
             id: int,
             agent: Agent,
+            game: Game,
             schema: TeamSchema,
             roster: UniquePieceDataService,
             hostages: UniquePieceDataService,
@@ -76,6 +79,7 @@ class Team:
         method = "Team.__init__"
         self._id = id
         self._agent = agent
+        self._game = game
         self._schema = schema
         self._roster = roster
         self._hostages = hostages
@@ -87,6 +91,9 @@ class Team:
     @property
     def agent(self) -> Agent:
         return self._agent
+    
+    @property def game(self) -> Game:
+        return self._game
     
     @property
     def schema(self) -> TeamSchema:

@@ -10,12 +10,11 @@ from typing import cast, Any
 
 
 from chess.agent.service import AgentService
-from chess.king import KingPiece
-from chess.piece import CombatantPiece, Piece, PieceValidator
+from chess.piece import CombatantPiece, KingPiece, Piece, PieceValidator
 from chess.system import GameColor, IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
     InvalidTeamException, NullTeamException, Team, TeamDataService, TeamNotRegisteredWithAgentException, TeamSchema,
-    TeamSchemaValidator
+    TeamSchemaValidator,
 )
 
 class TeamValidator(Validator[Team]):
@@ -33,6 +32,20 @@ class TeamValidator(Validator[Team]):
 
     # ATTRIBUTES:
     No attributes
+    
+    # CONSTRUCTOR:
+    Default Constructor
+    
+    # CLASS METHODS:
+        *   validate(
+                    candidate: Any,
+                    agent_service: AgentService,
+                    identity_service: IdentityService
+                    team_schema_validator: TeamSchemaValidator
+            ) -> ValidationResult[Team]
+    
+    # INSTANCE METHODS:
+    None
     """
     
     @classmethod
@@ -42,7 +55,7 @@ class TeamValidator(Validator[Team]):
             candidate: Any,
             agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
-            schema_validation: TeamSchemaValidator = TeamSchemaValidator(),
+            schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
         """
         # ACTION:
@@ -55,13 +68,10 @@ class TeamValidator(Validator[Team]):
         7.  If all pass return the Team object in a ValidationResult
 
         # PARAMETERS:
-            *   candidate (Any):                            Object to validate as a Team object.
-            
-            *   identity_service (IdentityService):         Validates id safety
-            
-            *   agent_service (PlayerAgentService):         Validares agnent if candidate is a Team .
-            
-            *   schema_validator (TeamSchemaValidator):     Validates Schema instance's correctness.
+            *   candidate (Any)
+            *   schema (TeamSchema)
+            *   agent_service (PlayerAgentService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[Team] containing either:
@@ -77,6 +87,7 @@ class TeamValidator(Validator[Team]):
         method = "TeamValidator.validate"
         
         try:
+            # Start the error detection process.
             if candidate is None:
                 return ValidationResult.failure(
                     NullTeamException(f"{method}: {NullTeamException.DEFAULT_MESSAGE}")
@@ -93,33 +104,33 @@ class TeamValidator(Validator[Team]):
             if not id_validation.is_success():
                 return ValidationResult.failure(id_validation.exception)
             
-            schema_validation = schema_validation.validate(team.schema)
+            schema_validation = schema_validator.validate(team.schema)
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
             
-            agent_validation = agent_service.validate(team.agent)
+            agent_validation = agent_service.validator.validate(team.agent)
             if agent_validation.is_failure():
                 return ValidationResult.failure(agent_validation.exception)
             
-            if agent_service.found_team(team) is None:
+            if team not in team.agent.team_stack.items:
                 return ValidationResult.failure(
                     TeamNotRegisteredWithAgentException(
                         f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
                     )
                 )
             
+            # If no errors are detected return the successfully validated Team instance.
             return ValidationResult.success(team)
-        
+        # Finally, if there is an unhandled exception Wrap an InvalidPieceException around it
+        # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidTeamException(
-                    f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}",
-                    ex)
+                InvalidTeamException(ex=ex, message=f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def validate_schema(cls, candidate: Any) -> ValidationResult[TeamSchema]:
+    def validate_schema(cls, candidate: Any, schema) -> ValidationResult[TeamSchema]:
         method = "TeamValidator.validate"
         
         try:

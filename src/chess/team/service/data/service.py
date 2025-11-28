@@ -9,10 +9,8 @@ version: 1.0.0
 
 from typing import List
 
-from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamService
-from chess.system import DataService, InsertionResult, LoggingLevelRouter, Search, SearchResult, Service, id_emitter
-from chess.team.service.data.unique.exception import TeamInsertionFailedException
-
+from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
+from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamService, TeamInsertionFailedException
 
 class TeamDataService(DataService[Team]):
     """
@@ -106,9 +104,13 @@ class TeamDataService(DataService[Team]):
             validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
-            self.items.append(item)
             
+            self.items.append(item)
+            # After item is pushed onto the stack indicate success by sending it
+            # back to the caller.
             return InsertionResult.success(payload=item)
+        # Finally, if there is an unhandled exception Wrap a TeamInsertionFailedException around it
+        # then return exception chain inside an InsertionResult.
         except Exception as ex:
             return InsertionResult.failure(
                 TeamInsertionFailedException(

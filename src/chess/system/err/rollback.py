@@ -10,7 +10,6 @@ version: 1.0.0
 
 from chess.system.err import ChessException
 
-
 __all__ = [
     "RollbackException",
     "RollbackFailedException"

@@ -26,8 +26,7 @@ class TeamRegistrationException(InvalidTeamException, RegistrationException):
     DEFAULT_MESSAGE = "Team is not registered in the collection."
 
 
-class TeamNotRegisteredWithActorException(TeamRegistrationException):
-    ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_ACTOR_ERROR"
-    DEFAULT_MESSAGE = (
-        "Team is not registered in Actor.team_stack. There is no relationship between them."
-    )
+class TeamNotRegisteredWithAgentException(TeamRegistrationException):
+    """Team was not found in the Agent's team_assignments list."""
+    ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_AGENT_ERROR"
+    DEFAULT_MESSAGE = "Team not found in the Agent's team_assignments list."
