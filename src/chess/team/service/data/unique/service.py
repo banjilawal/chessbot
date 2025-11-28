@@ -24,10 +24,18 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         *   TeamDataService
 
     # ATTRIBUTES:
+        *   id (int)
+        *   name (str)
+        *   data_service (TeamDataService)
+        
+    # CONSTRUCTOR:
+        *   __init__(id: int, name: str, data_service: TeamDataService)
+    
+    # CLASS METHODS:
     None
-        *   id (int):
-        *   name (str):
-        *   data_service (TeamDataService):
+    
+    # INSTANCE METHODS:
+        *   push_unique(item: Team) -> InsertionResult[Team]
     """
     DEFAULT_NAME = "UniqueTeamDataService"
     
