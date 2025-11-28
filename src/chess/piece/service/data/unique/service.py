@@ -28,6 +28,15 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         *   id (int):
         *   name (str):
         *   data_service (PieceDataService):
+        
+    # CONSTRUCTOR:
+        *   __init__(id: int, name: str, data_service: TeamDataService)
+    
+    # CLASS METHODS:
+    None
+    
+    # INSTANCE METHODS:
+        *   push_unique(item: Team) -> InsertionResult[Team]
     """
     DEFAULT_NAME = "UniquePieceDataService"
     
@@ -46,8 +55,28 @@ class UniquePieceDataService(UniqueDataService[Piece]):
     
     @LoggingLevelRouter.monitor
     def push_unique(self, item: Piece) -> InsertionResult[Piece]:
+        """
+        # ACTION:
+        1.  Use TeamDataService.service.validator to certify item.
+        2.  If certification fails return the exception inside an InsertionResult.
+        3.  Otherwise, push item onto the stack.
+        4.  Send the successfully pushed data back in an InsertionResult.
+
+        # PARAMETERS:
+            *   item (Team)
+
+        # Returns:
+        InsertionResult[TTeam] containing either:
+            - On success: Team in the payload.
+            - On failure: Exception.
+
+        # Raises:
+            *   TeamDataServiceException
+        """
         method = "UniquePieceDataService.push_unique"
+        
         try:
+            # Process the error chain
             validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
@@ -62,11 +91,13 @@ class UniquePieceDataService(UniqueDataService[Piece]):
             
             if search_result.is_success():
                 return InsertionResult.failure(
-                    AddingDuplicatePieceException(
-                        f"{method}: {AddingDuplicatePieceException.DEFAULT_MESSAGE}"
-                    )
+                    AddingDuplicatePieceException(f"{method}: {AddingDuplicatePieceException.DEFAULT_MESSAGE}")
                 )
+            
+            # After the error has been passed self._data_service returns the outcome of
+            # pushing the item on to the stack.
             return self._data_service.push(item)
+        
         except Exception as ex:
             return InsertionResult.failure(
                 UniquePieceDataServiceException(
