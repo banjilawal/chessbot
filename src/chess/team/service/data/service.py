@@ -9,8 +9,9 @@ version: 1.0.0
 
 from typing import List
 
+from chess.team import Team, TeamContext, TeamContextService, TeamDataServiceException, TeamSearch, TeamService
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, Search, SearchResult, Service, id_emitter
-from chess.team import Team, TeamContext, TeamDataServiceException
+
 
 
 class TeamDataService(DataService[Team]):
@@ -35,9 +36,9 @@ class TeamDataService(DataService[Team]):
         *   id (int):
         *   name (str):
         *   items (List[Team]):
-        *   search (Search[Team]):
-        *   service (Service[Team]):
-        *   context_service (Service[TeamContext]);
+        *   search (TeamSearch):
+        *   service (TeamService):
+        *   context_service (TeamContextService):;
         *   current_item (Team):
         *   size (int):
     """
@@ -48,9 +49,9 @@ class TeamDataService(DataService[Team]):
             name=DEFAULT_NAME,
             id=id_emitter.service_id,
             items: List[Team] = List[Team],
-            search: Search[Team] = Search[Team],
-            service: Service[Team] = Service[Team],
-            context_service: Service[TeamContext] = Service[TeamContext],
+            search: TeamSearch = TeamSearch(),
+            service: TeamService = TeamService(),
+            context_service: TeamContextService = TeamContextService(),
     ):
         """
         # Action
