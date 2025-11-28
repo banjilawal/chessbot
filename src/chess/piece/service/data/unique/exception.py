@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.system import DataServiceException
+from chess.system import UniqueDataServiceException
 
 __all__ = [
     # ======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTIONS #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTIONS #======================#
-class UniquePieceDataServiceException(DataServiceException):
+class UniquePieceDataServiceException(UniqueDataServiceException):
     """
     Super class of exceptions raised by UniquePieceDataService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.

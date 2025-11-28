@@ -39,4 +39,9 @@ class SquareService(Service[Square]):
             builder: SquareBuilder =  SquareBuilder(),
             validator: SquareValidator = SquareValidator(),
     ):
+        """
+        # Action
+        1.  Use id_emitter to automatically generate a unique id for each SquareService instance.
+        2.  Automatic dependency injection by providing working default instances of each attribute.
+        """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

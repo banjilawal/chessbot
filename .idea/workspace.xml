@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/service/data/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/service/data/unique/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/service/data/unique/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/service/data/unique/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -645,7 +649,7 @@
       <workItem from="1764162921976" duration="42682000" />
       <workItem from="1764218711944" duration="22870000" />
       <workItem from="1764266108566" duration="9765000" />
-      <workItem from="1764285644086" duration="12097000" />
+      <workItem from="1764285644086" duration="14577000" />
     </task>
     <servers />
   </component>
@@ -662,6 +666,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/chess/team/context/validator/exception/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/chessbot$coordinate_stack_specification.coverage" NAME="coordinate_stack_specification Coverage Results" MODIFIED="1756175864375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validation" />
