@@ -11,6 +11,27 @@ from chess.system import Service, id_emitter
 from chess.team import Team, TeamBuilder, TeamSchema, TeamValidator
 
 class TeamService(Service[Team]):
+    """
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  A single entry point for managing Team object lifecycles with; TeamBuilder, TeamValidator and TeamSchema.
+    2.  Masks implementation details and business logic making features easier to use.
+    3.  Protects Team instance's internal state.
+    4.  Public facing API.
+
+    # PROVIDES:
+        *   TeamBuilder
+        *   TeamValidator
+        *   TeamSchema
+
+    # ATTRIBUTES:
+        *   id (int)
+        *   name (str)
+        *   schema (TeamSchema)
+        *   builder (TeamBuilder)
+        *   validator (TeamValidator)
+    """
     DEFAULT_NAME = "TeamService"
     _schema: TeamSchema
     

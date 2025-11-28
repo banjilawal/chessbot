@@ -7,21 +7,17 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.board import Board, BoardService
-from chess.coord import Coord, CoordService
-from chess.system import BuildResult, IdentityService, LoggingLevelRouter, Service, id_emitter
-from chess.square import Square, SquareBuilder, SquareServiceException, SquareValidator
-
-
+from chess.system import Service, id_emitter
+from chess.square import Square, SquareBuilder, SquareValidator
 
 class SquareService(Service[Square]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for Square, SquareValidator and SquareBuilder objects.
+    1.  A single entry point for managing Square object lifecycles with SquareBuilder and SquareValidator.
     2.  Masks implementation details and business logic making features easier to use.
-    3.  Protects Square objects from direct, unprotected access.
+    3.  Protects Square instance's internal state.
     4.  Public facing API.
 
     # PROVIDES:
@@ -29,8 +25,10 @@ class SquareService(Service[Square]):
         *   SquareValidator
 
     # ATTRIBUTES:
-        *   builder (type[SquareBuilder]):
-        *   validator (type[SquareValidator]):
+        *   id (int)
+        *   name (str)
+        *   builder (SquareBuilder)
+        *   validator (SquareValidator)
     """
     SERVICE_NAME = "SquareService"
 
