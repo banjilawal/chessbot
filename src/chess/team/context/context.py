@@ -31,7 +31,6 @@ class TeamContext(Context):
   """
   _agent: Optional[Agent] = None
   _color: Optional[GameColor] = None,
-  _schema: Optional[TeamSchema] = None
 
   def __init__(
       self,
@@ -39,7 +38,6 @@ class TeamContext(Context):
       name: Optional[str] = None,
       agent: Optional[Agent] = None,
       color: Optional[GameColor] = None,
-      schema: Optional[TeamSchema] = None,
   ):
     """
     # Action:
@@ -49,7 +47,6 @@ class TeamContext(Context):
     super().__init__(id=id, name=name)
     self._agent = agent
     self._color = color
-    self._schema = schema
     
   @property
   def agent(self) -> Optional[Agent]:
@@ -58,10 +55,6 @@ class TeamContext(Context):
   @property
   def color(self) -> Optional[GameColor]:
     return self._color
-  
-  @property
-  def schema(self) -> Optional[TeamSchema]:
-    return self._schema
   
   def to_dict(self) -> dict:
     """
@@ -83,5 +76,4 @@ class TeamContext(Context):
       "name": self.name,
       "agent": self._agent,
       "color": self._color,
-      "schema": self._schema
     }

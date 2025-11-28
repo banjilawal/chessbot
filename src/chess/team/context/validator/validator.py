@@ -10,10 +10,10 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.agent import AgentService
-from chess.system import BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
-    InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext,
-    TeamContextBuildFailedException, TeamSchema, TooManyTeamContextFlagsException
+    InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext, TeamSchema,
+    TooManyTeamContextFlagsException
 )
 
 
@@ -33,7 +33,9 @@ class TeamContextValidator(Validator[TeamContext]):
     # ATTRIBUTES:
     No attributes
     """
+    
     @classmethod
+    @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
@@ -41,9 +43,34 @@ class TeamContextValidator(Validator[TeamContext]):
             agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[TeamContext]:
-        """"""
+        """
+        # ACTION:
+        1.  Check candidate is not null.
+        2.  Check if candidate is a TeamContext. If so cast it.
+        3.  Verify only one flag is set.
+        4.  For whichever of the flag is set certify its correctness with either validators in:
+            AgentService or IdentityService.
+        5.  If any check fails, return the exception inside a ValidationResult.
+        7.  If all pass return the TeamContext object in a ValidationResult
+
+        # PARAMETERS:
+            *   candidate (Any)
+            *   identity_service (IdentityService):
+            *   agent_service (PlayerAgentService):
+            *   schema (TeamSchema)
+
+        # Returns:
+        ValidationResult[TeamContext] containing either:
+            - On success:   TeamContext in the payload.
+            - On failure:   Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullTeamContextException
+            *   InvalidTeamContextException
+        """
         method = "TeamContextValidator.validate"
-            
+        
         try:
             if candidate is None:
                 return ValidationResult.failure(
@@ -71,19 +98,22 @@ class TeamContextValidator(Validator[TeamContext]):
                 validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
-                return ValidationResult.success(context)
+                return ValidationResult.success(payload=context)
             
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
-                return ValidationResult.success(context)
+                return ValidationResult.success(payload=context)
             
             if context.agent is not None:
                 validation = agent_service.validator.validate(candidate=context.agent)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
-                return ValidationResult.succes(context)
+                return ValidationResult.succes(payload=context)
+            
+            if context.color is not None:
+                validation = team_validator
         
         except Exception as ex:
             return ValidationResult.failure(
