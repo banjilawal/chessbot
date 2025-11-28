@@ -15,10 +15,10 @@ class TeamService(Service[Team]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  A single entry point for managing Team object lifecycles with; TeamBuilder, TeamValidator and TeamSchema.
-    2.  Masks implementation details and business logic making features easier to use.
-    3.  Protects Team instance's internal state.
-    4.  Public facing API.
+    1.  Public facing API.
+    2.  Protects Team instance's internal state.
+    3.  Masks implementation details and business logic making features easier to use.
+    4.  Single entry point for managing Team lifecycles with TeamBuilder and TeamValidator.
 
     # PROVIDES:
         *   TeamBuilder
@@ -28,9 +28,9 @@ class TeamService(Service[Team]):
     # ATTRIBUTES:
         *   id (int)
         *   name (str)
-        *   schema (TeamSchema)
         *   builder (TeamBuilder)
         *   validator (TeamValidator)
+        *   schema (TeamSchema)
     """
     DEFAULT_NAME = "TeamService"
     _schema: TeamSchema

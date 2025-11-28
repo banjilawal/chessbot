@@ -15,10 +15,10 @@ class SquareService(Service[Square]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  A single entry point for managing Square object lifecycles with SquareBuilder and SquareValidator.
-    2.  Masks implementation details and business logic making features easier to use.
-    3.  Protects Square instance's internal state.
-    4.  Public facing API.
+    1.  Public facing API.
+    2.  Protects Square instance's internal state.
+    3.  Masks implementation details and business logic making features easier to use.
+    4.  Single entry point for managing Square lifecycles with SquareBuilder and SquareValidator.
 
     # PROVIDES:
         *   SquareBuilder
@@ -30,11 +30,11 @@ class SquareService(Service[Square]):
         *   builder (SquareBuilder)
         *   validator (SquareValidator)
     """
-    SERVICE_NAME = "SquareService"
+    DEFAULT_NAME = "SquareService"
 
     def __init__(
             self,
-            name: str = SERVICE_NAME,
+            name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: SquareBuilder =  SquareBuilder(),
             validator: SquareValidator = SquareValidator(),

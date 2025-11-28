@@ -13,21 +13,23 @@ from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator
 
 class TeamContextService(Service[TeamContext]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single entry point for TeamContextBuilder and TeamContextValidator objects.
-    2.  Passing its self._validator to the self._builder to clients
-    3.  Protects Context from direct, unprotected access.
-    4.  Public facing API.
+    1.  Public facing API.
+    2.  Protects TeamContext instance's internal state.
+    3.  Masks implementation details and business logic making features easier to use.
+    4.  Single entry point for managing TeamContext lifecycles with TeamContextBuilder and TeamContextValidator.
 
     # PROVIDES:
-        *   TeamContextValidator
         *   TeamContextBuilder
+        *   TeamContextValidator
 
     # ATTRIBUTES:
-        *   builder (TeamContextBuilder):
-        *   validator (TeamContextValidator):
+        *   id (int)
+        *   name (str)
+        *   builder (TeamContextBuilder)
+        *   validator (TeamContextValidator)
     """
     DEFAULT_NAME = "TeamContextService"
     
