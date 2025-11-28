@@ -27,7 +27,6 @@ class UniqueTeamDataServiceException(UniqueDataServiceException):
     DEFAULT_MESSAGE = "UniqueTeamDataService raised an exception."
 
 
-class AddingDuplicateTeamException(UniqueTeamDataServiceException):
-    """Raised when trying to add a duplicate Team to a list of Teams."""
-    ERROR_CODE = "DUPLICATE_TEAM_ADDITION_ERROR"
-    DEFAULT_MESSAGE = "UniqueTeamDataService cannot add duplicate Teams to the list."
+class TeamInsertionFailedException(InsertionFailedException):
+
+

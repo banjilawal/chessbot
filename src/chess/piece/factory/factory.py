@@ -109,15 +109,11 @@ class PieceFactory(Builder[Piece]):
             
             return cls.build_combatant_piece(id=id, name=name, rank=rank, team=team)
         
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             raise BuildResult.failure(
-                BuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{BuildFailedException.DEFAULT_MESSAGE}"
-                    )
-                )
+                PieceBuildFailedException(ex=ex, message= f"{method}:  {BuildFailedException.DEFAULT_MESSAGE}")
             )
     
     
@@ -138,16 +134,11 @@ class PieceFactory(Builder[Piece]):
                 return BuildResult.failure(binding_result.exception)
             
             return BuildResult.success(piece)
-        
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                PieceBuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
-                    )
-                )
+                PieceBuildFailedException(ex=ex, message=f"{method}:  {PieceBuildFailedException.DEFAULT_MESSAGE}")
             )
     
     
@@ -168,16 +159,11 @@ class PieceFactory(Builder[Piece]):
                 return BuildResult.failure(binding_result.exception)
             
             return BuildResult.success(piece)
-        
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                PieceBuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
-                    )
-                )
+                PieceBuildFailedException(ex=ex, message=f"{method}:  {PieceBuildFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -203,18 +189,13 @@ class PieceFactory(Builder[Piece]):
                 return BuildResult.failure(binding_result.exception)
             
             return BuildResult.success(piece)
-        
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                PieceBuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
-                    )
-                )
+                PieceBuildFailedException(ex=ex, message=f"{method}:  {PieceBuildFailedException.DEFAULT_MESSAGE}")
             )
-        
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def _ensure_team_binding(cls, piece: Piece, team: Team) -> BuildResult[(Piece, Team)]:
@@ -222,18 +203,14 @@ class PieceFactory(Builder[Piece]):
         try:
             if piece not in team.roster.items:
                 team.roster.items.append(piece)
+                
             return BuildResult.success((piece, team))
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                PieceBuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
-                    )
-                )
+                PieceBuildFailedException(ex=ex, message=f"{method}:  {PieceBuildFailedException.DEFAULT_MESSAGE}")
             )
-    
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -264,31 +241,9 @@ class PieceFactory(Builder[Piece]):
                 return BuildResult.failure(team_validation.exception)
             
             return ValidationResult.success((id, name, rank, team))
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
-            return ValidationResult(
-                PieceBuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{PieceBuildFailedException.DEFAULT_MESSAGE}"
-                    )
-                )
+            return BuildResult.failure(
+                PieceBuildFailedException(ex=ex, message=f"{method}:  {PieceBuildFailedException.DEFAULT_MESSAGE}")
             )
-
-# def main():
-#   build_outcome = PieceFactory.builder()
-#   if build_outcome.is_success():
-#     owner = build_outcome.payload
-#     print(f"Successfully built owner: {owner}")
-#   else:
-#     print(f"Failed to builder owner: {build_outcome.err}")
-#   #
-#   build_outcome = PieceFactory.builder(1, None)
-#   if build_outcome.is_success():
-#     owner = build_outcome.payload
-#     print(f"Successfully built owner: {owner}")
-#   else:
-#     print(f"Failed to builder owner: {build_outcome.err}")
-#
-# if __name__ == "__main__":
-#   main()

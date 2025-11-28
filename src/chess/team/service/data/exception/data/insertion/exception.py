@@ -1,0 +1,52 @@
+# src/chess/team/service/data/exception/data/exception.py
+
+"""
+Module: chess.team.service.data.exception.service.exception
+Author: Banji Lawal
+Created: 2025-11-24
+version: 1.0.0
+"""
+
+from chess.system import DataException, NullException
+
+__all__ = [
+# ======================# TEAM_INSERTION_FAILED EXCEPTIONS #======================#
+    "TeamInsertionFailedException",
+    "AddingDuplicateTeamException",
+    "CannotAddNullTeamException",
+# ======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
+    "TeamDeletionFailedException",
+    "CannotRemoveNullTEamException",
+]
+
+
+# ======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
+class TeamDataException(DataException):
+    ERROR_CODE = "TEAM_DATA_COLLECTION_OPERATION_ERROR"
+    DEFAULT_MESSAGE = "A CRUD operation on the Team data set raised an exception."
+
+
+# ======================# TEAM_INSERTION_FAILED EXCEPTIONS #======================#
+class TeamInsertionFailedException(TeamDataException):
+    ERROR_CODE = "TEAM_INSERTION_ERROR"
+    DEFAULT_MESSAGE = "Team insertion failed."
+
+class AddingDuplicateTeamException(TeamInsertionFailedException):
+    """Raised when trying to add a duplicate Team to a list of Teams."""
+    ERROR_CODE = "DUPLICATE_TEAM_INSERTION_ERROR"
+    DEFAULT_MESSAGE = "UniqueTeamDataService cannot add duplicate Teams to the list."
+
+class CannotAddNullTeamException(TeamInsertionFailedException, NullException):
+    ERROR_CODE = "INSERTING_NULL_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Cannot push a null Team into the dataset."
+
+
+# ======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
+class TeamDeletionFailedException(TeamDataException):
+    ERROR_CODE = "TEAM_DELETION_ERROR"
+    DEFAULT_MESSAGE = "Team deletion failed."
+
+
+class CannotRemoveNullTEamException(TeamDeletionFailedException, NullException):
+    ERROR_CODE = "DELETING_NULL_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Cannot pull a team which does not exist in the dataset."
