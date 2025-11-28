@@ -46,6 +46,26 @@ class UniqueTeamDataService(UniqueDataService[Team]):
     
     @LoggingLevelRouter.monitor
     def push_unique(self, item: Team) -> InsertionResult[Team]:
+        """
+        # ACTION:
+        1.  Use self.service.validator to verify the item is safe.
+        2.  There is no direct access to the internal list so use self.data_service.search to find item.
+        3.  If item already exists return an exception in an InsertionResult.
+        4.  Otherwise, push the item onto the stack and send the item.
+        5.  After the push send the item back to the caller indicating success.
+
+        # PARAMETERS:
+            *   item (Team)
+
+        # Returns:
+        InsertionResult[Team] containing either:
+            - On success: Team in the payload.
+            - On failure: Exception.
+
+        # Raises:
+            *   AddingDuplicateTeamException
+            *   UniqueTeamDataServiceException
+        """
         method = "UniqueTeamDataService.push_unique"
         
         try:
