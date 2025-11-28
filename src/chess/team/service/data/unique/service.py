@@ -99,6 +99,8 @@ class UniqueTeamDataService(UniqueDataService[Team]):
             # pushing the item on to the stack.
             return self._data_service.push(item)
         
+        # Finally return an InsertionResult containing any unhandled exceptions insided an
+        # UniqueTeamDataServiceException
         except Exception as ex:
             return InsertionResult.failure(
                 UniqueTeamDataServiceException(
