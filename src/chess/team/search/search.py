@@ -140,6 +140,7 @@ class TeamSearch(Search[Team]):
             *   TeamSearchFailedException
         """
         method = "TeamSearch._find_by_name"
+        
         try:
             matches = [team for team in data_set if team.schema.name.upper() == name.upper()]
             if len(matches) == 0:
@@ -177,6 +178,7 @@ class TeamSearch(Search[Team]):
             *   TeamSearchFailedException
         """
         method = "TeamSearch._find_by_agent"
+        
         try:
             matches = [team for team in data_set if team.agent == agent]
             if len(matches) == 0:
@@ -204,7 +206,6 @@ class TeamSearch(Search[Team]):
             *   data_set: (List[Team])
             *   color (GameColor)
 
-
         # Returns:
         SearchResult[List[Team]] containing either:
                 - On success:   List[Team] in the payload.
@@ -214,6 +215,7 @@ class TeamSearch(Search[Team]):
             *   TeamSearchFailedException
         """
         method = "TeamSearch._find_by_color"
+        
         try:
             matches = [team for team in data_set if team.schema.color == color]
             if len(matches) == 0:
@@ -241,7 +243,6 @@ class TeamSearch(Search[Team]):
             *   data_set: (List[Team])
             *   game (Game)
 
-
         # Returns:
         SearchResult[List[Team]] containing either:
                 - On success:   List[Team] in the payload.
@@ -251,6 +252,7 @@ class TeamSearch(Search[Team]):
             *   TeamSearchFailedException
         """
         method = "TeamSearch._find_by_game"
+        
         try:
             matches = [team for team in data_set if team.game == game]
             if len(matches) == 0:

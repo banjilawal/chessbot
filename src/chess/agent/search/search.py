@@ -31,6 +31,20 @@ class AgentSearch(Search[Agent]):
   
     # ATTRIBUTES:
     None
+    
+    # CONSTRUCTOR:
+    Default Constructor
+  
+    # CLASS METHODS:
+        ## search signature:
+                def search(
+                        cls,
+                        data_set: List[Agent],
+                        search_context: AgentSearchContext
+                ) -> SearchResult[List[Agent]]:
+                
+    # INSTANCE METHODS:
+    None
     """
     
     @classmethod

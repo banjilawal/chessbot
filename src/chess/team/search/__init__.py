@@ -15,6 +15,5 @@ None
 # Modules
 from .exception import *
 from .search import TeamSearch
-from .roster import TeamRosterSearch
 
 
