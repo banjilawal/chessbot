@@ -8,21 +8,13 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.agent import Agent, NullAgentException
-from chess.agent.service import AgentService
-from chess.team import CombatantTeam, KingTeam, Team, TeamValidator
-from chess.system import (
-    GameColor, IdentityService, LoggingLevelRouter, NullGameColorException, Validator,
-    ValidationResult
-)
+from chess.agent import Agent, AgentService
+from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    InvalidTeamException, InvalidTeamSchemaException, NoTeamGameRelationshipException, NullTeamException,
-    NullTeamSchemaException, Team,
-    TeamContextService, TeamDataService,
-    TeamMismatchesAgentException, TeamNotRegisteredWithAgentException, TeamSchema,
-    TeamSchemaValidator,
+    InvalidTeamException, NoTeamGameRelationshipException, NullTeamException, Team, TeamContextService,
+    TeamMismatchesAgentException, TeamNotRegisteredWithAgentException, TeamSchemaValidator
 )
-from chess.team.validator.exception.bounds.exception import TeamColorBoundsException
+
 
 
 class TeamValidator(Validator[Team]):
@@ -124,11 +116,11 @@ class TeamValidator(Validator[Team]):
             # Cast after the first two checks are passed so Team attributes can be checked.
             team = cast(Team, candidate)
             
-            # identity check
+            # check schema first
             schema_validation = schema_validator.validate(team.schema)
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
-            # schema check
+            # After schema checks out. Test name and id at the same time.
             identity_validation = identity_service.validate_identity(
                 id_candidate=team.id,
                 name_candidate=team.schema.name

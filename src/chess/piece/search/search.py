@@ -35,7 +35,7 @@ class PieceSearch(Search[Piece]):
                 return SearchResult.failure(result.exception)
             
             if context.id is not None:
-                return cls._find_by_id(data_set=data_set, id=id)
+                return cls._find_by_id(data_set=data_set, id=context.id)
             
             if context.name is not None:
                 return cls._find_by_name(data_set=data_set, name=context.name)

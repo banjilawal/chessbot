@@ -21,4 +21,5 @@ from .inconsistency import *
 from .null import *
 from .registration import *
 from .rollback import *
+from .text import *
 

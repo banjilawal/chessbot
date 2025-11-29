@@ -1,87 +1,63 @@
-# src/chess/team_name/schema/collision.py
+# src/chess/team/schema/exception.py
 
 """
 Module: chess.team_name.schema.exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-10-09
 version: 1.0.0
-
-SCOPE:
------
-This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, coord_stack_validator, and manipulation of TeamSchema objects.
-
-***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
-    TeamSchema, TeamSchemaBuilder, and TeamSchemaValidator
-
-THEME:
------
-* Granular, targeted error reporting
-* Wrapping exceptions
-
-**Design Concepts**:
-  1. Each consistency and behavior in the TeamSchema class has an rollback_exception specific to its possible
-      state, outcome, or behavior.
-
-PURPOSE:
--------
-1. Centralized error dictionary for the TeamSchema graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
-    find the source.
-3. Providing understandable, consistent information about failures originating from
-    the TeamSchema graph.
-4. Providing a clear distinction between errors related to TeamSchema instances and
-    errors from Python, the Operating System or elsewhere in the ChessBot application.
-
-DEPENDENCIES:
-------------
-Requires base rollback_exception classes and constants from the core system:
-
-From chess.system:
-  * Exceptions: ValidationException, NullException
-
-From chess.team_name:
-  * TeamException:
-
-CONTAINS:
---------
-See the list of exceptions in the __all__ list following (e.g., TeamSchemaException,
-NullTeamSchemaException, InvalidTeamSchemaException, ).
 """
 
 from chess.team import TeamException
-from chess.system import NullException, ValidationException
-
+from chess.system import BoundsException, NullException, ValidationException
 
 __all__ = [
-  'TeamSchemaException',
-
-#======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
-  'NullTeamSchemaException',
-  'InvalidTeamSchemaException'
+    # ======================# TEAM_SCHEMA EXCEPTION SUPER CLASS #======================#
+    "TeamSchemaException",
+    
+    # ======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
+    "InvalidTeamSchemaException",
+    "NullTeamSchemaException",
+    
+    # ======================# TEAM_SCHEMA BOUNDS EXCEPTIONS #======================#
+    "TeamNameBoundsException",
+    "TeamColorBoundsException",
 ]
 
 
+# ======================# TEAM_SCHEMA EXCEPTION SUPER CLASS #======================#
 class TeamSchemaException(TeamException):
-  """
-  Super class of all exceptions TeamSchema object raises. Do not use directly. Subclasses give
-  details useful for debugging. This class exists primarily to allow catching all TeamSchema
-  exceptions.
-  """
-  ERROR_CODE = "TEAM_SCHEMA_ERROR"
-  DEFAULT_MESSAGE = "TeamSchema raised an rollback_exception."
+    """
+    Super class of all exceptions TeamSchema object raises. Do not use directly. Subclasses give
+    details useful for debugging.
+    """
+    ERROR_CODE = "TEAM_SCHEMA_ERROR"
+    DEFAULT_MESSAGE = "TeamSchema raised an rollback_exception."
 
 
-#======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
-class NullTeamSchemaException(TeamSchemaException, NullException):
-  """Raised if an entity, method, or operation requires TeamSchema but gets validation instead."""
-  ERROR_CODE = "NULL_TEAM_SCHEMA_ERROR"
-  DEFAULT_MESSAGE = "TeamSchema cannot be validation"
-
+# ======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
 class InvalidTeamSchemaException(TeamSchemaException, ValidationException):
-  """
-  Raised by TeamSchemaValidator if an object fails sanity checks. Exists primarily to catch all
-  exceptions raised validating an existingTeamSchema.
-  """
-  ERROR_CODE = "TEAM_SCHEMA_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "TeamSchema validation failed."
+    """
+    Raised by TeamSchemaValidator if an object fails sanity checks. Exists primarily to catch all
+    exceptions raised validating an existingTeamSchema.
+    """
+    ERROR_CODE = "TEAM_SCHEMA_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "TeamSchema validation failed."
+
+
+class NullTeamSchemaException(TeamSchemaException, NullException):
+    """Raised if an entity, method, or operation requires a TeamSchema but gets null."""
+    ERROR_CODE = "NULL_TEAM_SCHEMA_ERROR"
+    DEFAULT_MESSAGE = "TeamSchema cannot be validation"
+
+
+# ======================# TEAM_SCHEMA BOUNDS EXCEPTIONS #======================#
+class TeamNameBoundsException(TeamSchemaException, BoundsException):
+    """Raised if a name is not in a TeamSchema names"""
+    ERROR_CODE = "TEAM_NAME_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "Name is not allowed by TeamSchema settings."
+
+
+class TeamColorBoundsException(TeamSchemaException, NullException):
+    """Raised if a color is not in a TeamSchema names"""
+    ERROR_CODE = "TEAM_COLOR_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "Color is not allowed by TeamSchema settings."

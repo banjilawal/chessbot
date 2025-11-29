@@ -1,55 +1,10 @@
-# src/chess/team_name/schema/schema.py
+# src/chess/team/schema/schema.py
+
 """
 Module: chess.team_name.schema.schema
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-10-09
 version: 1.0.0
-
-# SCOPE:
--------
-***Limitation 1***: No coord_stack_validator, error checking is performed in `Team` class. Using the class directly instead of
-  its CRUD interfaces goes against recommended usage.
-
-***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used. Products
-    from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
-
-**Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
-
-# THEME:
--------
-* Data Holding, Coordination, Performance
-
-**Design Concepts**:
-    Separating object creation from object usage.
-    Keeping constructors lightweight
-
-# PURPOSE:
----------
-1. Putting all the steps and logging into one place makes modules using `Team` objects cleaner and easier to follow.
-
-***Satisfies***: Reliability and performance contracts.
-
-# DEPENDENCIES:
----------------
-From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
-    `IdValidator`, `NameValidator`
-
-From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
-
-From `chess.agent`:
-  `Agent`, `PlayerAgentValidator`,
-
-From `chess.owner`:
-  `Piece`
-
-# CONTAINS:
-----------
- * `Team`
 """
 
 from enum import Enum

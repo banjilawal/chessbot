@@ -1,17 +1,20 @@
-# src/chess/team_name/search/__init__.py
+# src/chess/team/search/__init__.py
 
 """
-Module: chess.team_name.search
+Module: chess.team.search
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
-from .context import *
-from .exception import *
+# =========== CHESS.TEAM.SEARCH PACKAGE CONTENTS ===========#
 
+# Packages
+None
+
+# Modules
+from .exception import *
 from .search import TeamSearch
-from .category import PieceCollectionCategory
 from .roster import TeamRosterSearch
-from .hostage import TeamHostageSearch
+
 
