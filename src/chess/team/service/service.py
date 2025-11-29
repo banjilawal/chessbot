@@ -33,8 +33,8 @@ class TeamService(Service[Team]):
         *   schema (TeamSchema)
         
     # CONSTRUCTOR:
-        *   __init__(i
-                d: int, name: str, schema: TeamSchema, builder: TeamBuilder, validator: TeamValidator
+        *   __init__(
+                id: int, name: str, schema: TeamSchema, builder: TeamBuilder, validator: TeamValidator
             )
     
     # CLASS METHODS:

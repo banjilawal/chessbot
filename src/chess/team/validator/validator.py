@@ -10,7 +10,7 @@ from typing import cast, Any
 
 from chess.agent import Agent, NullAgentException
 from chess.agent.service import AgentService
-from chess.piece import CombatantPiece, KingPiece, Piece, PieceValidator
+from chess.team import CombatantTeam, KingTeam, Team, TeamValidator
 from chess.system import (
     GameColor, IdentityService, LoggingLevelRouter, NullGameColorException, Validator,
     ValidationResult
@@ -45,12 +45,28 @@ class TeamValidator(Validator[Team]):
     Default Constructor
     
     # CLASS METHODS:
-        *   validate(
-                    candidate: Any,
-                    agent_service: AgentService,
-                    identity_service: IdentityService
-                    team_schema_validator: TeamSchemaValidator
-            ) -> ValidationResult[Team]:
+        ## Validate signature:
+               validate(
+                        candidate: Any,
+                        agent_service: AgentService,
+                        identity_service: IdentityService
+                        team_schema_validator: TeamSchemaValidator
+                ) -> ValidationResult[Team]:
+            
+        ## verify_agent_has_registered_team signature:
+               verify_agent_has_registered_team(
+                        team_candidate: Any,
+                        agent_candidate: Any,
+                        agent_service: AgentService = AgentService(),
+                        team_context_service: TeamContextService = TeamContextService(),
+                ) -> ValidationResult[(Team, Agent)]:
+            
+        ## verify_team_and_game_relationship signature:
+               verify_team_and_game_relationship(
+                        team_candidate: Any,
+                        game_candidate: Any,
+                        game_service: GameService = GameService(),
+                ) -> ValidationResult[(Team, Game)]:
     
     # INSTANCE METHODS:
     None
@@ -67,8 +83,8 @@ class TeamValidator(Validator[Team]):
     ) -> ValidationResult[Team]:
         """
         # ACTION:
-        1.  Check candidate is not validation.
-        2.  Check if candidate is a Team. If so casyt it.
+        1.  Check candidate is not null .
+        2.  Check if candidate is a Team. If so cast it.
         3.  Check id safety with IdentityService
         4.  Verify schema's correctness with TeamSchemaValidator.
         5.  Check agent safety with PlayerAgentService.
@@ -105,13 +121,14 @@ class TeamValidator(Validator[Team]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
-            
+            # Cast after the first two checks are passed so Team attributes can be checked.
             team = cast(Team, candidate)
             
+            # identity check
             schema_validation = schema_validator.validate(team.schema)
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
-            
+            # schema check
             identity_validation = identity_service.validate_identity(
                 id_candidate=team.id,
                 name_candidate=team.schema.name
@@ -136,7 +153,7 @@ class TeamValidator(Validator[Team]):
             # If no errors are detected return the successfully validated Team instance.
             return ValidationResult.success(team)
         
-        # Finally, if there is an unhandled exception Wrap an InvalidPieceException around it
+        # Finally, if there is an unhandled exception Wrap an InvalidTeamException around it
         # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
@@ -217,7 +234,7 @@ class TeamValidator(Validator[Team]):
             # The agent has the team in its records.
             return ValidationResult.success(payload=(team, agent))
         
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
         # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
@@ -277,7 +294,7 @@ class TeamValidator(Validator[Team]):
             # The agent has the team in its records.
             return ValidationResult.success(payload=(team, game))
         
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
         # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(

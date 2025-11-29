@@ -37,16 +37,17 @@ class TeamContextBuilder(Builder[TeamContext]):
     None
 
     # CLASS METHODS:
-        *   build(
-                id: Optional[int] = None,
-                name: Optional[str] = None,
-                agent: Optional[Agent] = None,
-                color: Optional[GameColor] = None,
-                schema: Optional[TeamSchema] = None,
-                agent_service: AgentService = AgentService(),
-                team_validator: TeamValidator = TeamValidator(),
-                identity_service: IdentityService = IdentityService(),
-            ):
+        ## build signature:
+               build(
+                        id: Optional[int] = None,
+                        name: Optional[str] = None,
+                        agent: Optional[Agent] = None,
+                        color: Optional[GameColor] = None,
+                        schema: Optional[TeamSchema] = None,
+                        agent_service: AgentService = AgentService(),
+                        team_validator: TeamValidator = TeamValidator(),
+                        identity_service: IdentityService = IdentityService(),
+               ) -> BuildResult[TeamContext]:
         For ease of use and cleaner code dependencies are given default values. All flags must
         be turned set to null byy default. Only activated flags should have a not-null value.
         

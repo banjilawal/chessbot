@@ -32,16 +32,17 @@ class TeamBuilder(Builder[Team]):
     None
     
     # CLASS METHODS:
-        *   build(
-                id: int.
-                agent: Agent,
-                schema: TeamSchema,
-                agent_service: AgentService = AgentService(),
-                identity_service: IdentityService = IdentityService(),
-                roster: UniquePieceDataService = UniquePieceDataService(),
-                hostages: UniquePieceDataService = UniquePieceDataService(),
-                schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
-            ):
+        ## build signature
+              build(
+                    id: int.
+                    agent: Agent,
+                    schema: TeamSchema,
+                    agent_service: AgentService = AgentService(),
+                    identity_service: IdentityService = IdentityService(),
+                    roster: UniquePieceDataService = UniquePieceDataService(),
+                    hostages: UniquePieceDataService = UniquePieceDataService(),
+                    schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
+                ) -> BuildResult[Team]:
         For ease of use and cleaner code dependencies are given default values.
     
     # INSTANCE METHODS:

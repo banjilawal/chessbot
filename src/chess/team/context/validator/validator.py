@@ -32,6 +32,21 @@ class TeamContextValidator(Validator[TeamContext]):
 
     # ATTRIBUTES:
     No attributes
+    
+    # CONSTRUCTOR:
+    Default Constructor
+    
+    # CLASS METHODS:
+        ## Validate signature:
+                validate(
+                        candidate: Any,
+                        schema: TeamSchema = TeamSchema,
+                        agent_service: AgentService = AgentService(),
+                        identity_service: IdentityService = IdentityService(),
+                ) -> ValidationResult[TeamContext]:
+                
+    # INSTANCE METHODS:
+    None
     """
     
     @classmethod

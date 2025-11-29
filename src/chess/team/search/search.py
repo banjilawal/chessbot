@@ -63,66 +63,42 @@ from chess.team.search import TeamHostageSearch, TeamRosterSearch, PieceCollecti
 
 class TeamSearch(Piece):
   """
-  ROLE:
-  ----
-  RESPONSIBILITIES:
-  ----------------
-  PROVIDES:
-  --------
-  ATTRIBUTES:
-  ----------
-  """
-  """
-  Static methods for entities and rollback that need to old_search team_name Team for pieces and ranks. Provides consistent
-  old_search interface and return types across all old_search rollback. Validates input parameters before searching to
-  ensure safe rollback. Returns SearchResult objects encapsulating either the found entity or error information.
+  # ROLE: Search
 
-  Usage:
-  ```python
-    from chess.team_name import Team, BoardSearch
-    from chess.owner import Piece
-   ```
-   
-  Methods:
-    - `by_id(discovery_id: int, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its visitor_id on the given `team_name`.
-    
-    - `by_name(visitor_name: str, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its visitor_name on the given `team_name`.
-    
-    - `by_roster_number(roster_number: int, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its roster number
-      on the given team_name. Roster numbers are unique within team_name team_name. Not unique across teams.
-      
-    - `hostage_by_idy(discovery_id: int, team_name: Team) -> SearchResult[CombatantPiece]`:
-      
-    - `by_rank(bounds: Rank, team_name: Team) -> SearchResult[list[Piece]]`: A list of all members with `bounds` on
-      given team_name. of team_name specific bounds within team_name team_name.
+  # RESPONSIBILITIES:
+  Find Team instances that match target attributes set in TeamContext
 
-  Note:
-    DO NOT USE ANY OTHER METHODS TO SEARCH A TEAM. USE ONLY THE METHODS IN THIS CLASS.
+  # PROVIDES:
+  SearchResult[List[Team]' containing either:
+      - On success: List[Team] in the payload.
+      - On failure: Exception.
 
-  See Also:
-    `Team`: The team_name being searched
-    `Piece`: The owner being searched for
-    `SearchResult`: The return type for all old_search rollback
+  # ATTRIBUTES:
+  No attributes
+
+  # CONSTRUCTOR:
+  Default Constructor
+
+  # CLASS METHODS:
+      ## search signature:
+              def search(
+                      cls,
+                      data_set: List[Team],
+                      search_context: TeamSearchContext
+              ) -> SearchResult[List[Piece]]:
+              
+  # INSTANCE METHODS:
+  None
   """
 
   @classmethod
   def search(
           cls,
-          team: Team,
-          piece_collection_category: PieceCollectionCategory,
+          data_set: List[Team],
           search_context: TeamSearchContext
   ) -> SearchResult[List[Piece]]:
-    """
-    Action:
-    Parameters:
-        * `param` (`DataType`):
-    Returns:
-        `DataType` or `Void`
-    Raises:
-    MethodNameException wraps
-        *
-    """
-    method = "ClassName.method_name"
+    """"""
+    method = "TeamSearch.search"
 
     validation = TeamValidator.validate(team)
     if not validation.is_success():

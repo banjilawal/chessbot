@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TEAM.SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
-# None
+None
 
 # Modules
 from .exception import *
