@@ -40,4 +40,4 @@ class InvalidNumberException(NumberException, ValidationException):
 class NullNumberException(NumberException, NullException):
     """Raised if an entity, method, or operation requires number but gets null instead."""
     ERROR_CODE = "NULL_NUMBER_ERROR"
-    DEFAULT_MESSAGE = "Number cannot be number."
+    DEFAULT_MESSAGE = "Number cannot be null."

@@ -19,7 +19,7 @@ __all__ = [
 class NullException(ChessException):
     """Raised if an entity, method, or operation requires a resource but gets null instead."""
     ERROR_CODE = "NULL_ERROR"
-    DEFAULT_MESSAGE = "cannot be validation"
+    DEFAULT_MESSAGE = "cannot be null."
     
 
 

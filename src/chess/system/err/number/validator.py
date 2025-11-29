@@ -6,20 +6,6 @@ from chess.system.err.number.exception import InvalidNumberException, NullNumber
 
 class NumberValidator(Validator[int]):
     """
-    # ROLE: Validation, Integrity
-
-    # RESPONSIBILITIES:
-    Verifies a candidate is an INT greater than zero before its used an ID.
-
-    # PROVIDES:
-    ValidationResult[int] containing either:
-        - On success: int in the payload.
-        - On failure: Exception.
-
-    # ATTRIBUTES:
-    No attributes.
-    """
-    """
     # ROLE: Validation
 
     # RESPONSIBILITIES:
@@ -43,6 +29,7 @@ class NumberValidator(Validator[int]):
     # INSTANCE METHODS:
     None
     """
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[int]:

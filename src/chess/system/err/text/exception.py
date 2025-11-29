@@ -46,4 +46,4 @@ class NullTextException(InvalidTextException, NullException):
 class BlankTextException(InvalidTextException):
     """Raised if a text is empty or white space only."""
     ERROR_CODE = "BLANK_TEXT_ERROR"
-    DEFAULT_MESSAGE = "Text cannot be white space only or empty."
+    DEFAULT_MESSAGE = "Text cannot be white space only nor empty."
