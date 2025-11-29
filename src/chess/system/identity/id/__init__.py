@@ -7,10 +7,16 @@ Created: 2025-09-17
 version: 1.0.0
 """
 
-from .emitter import *
-from .exception import *
-from .auto_id import AutoId
+# =========== SYSTEM.IDENTITY.ID PACKAGE CONTENTS ===========#
 
+# Packages
+
+# Modules
+from .exception import *
+from .auto import AutoId
+from .emitter import IdEmitter
 from .validator import IdValidator
+
+
 
 

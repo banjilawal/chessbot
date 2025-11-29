@@ -13,6 +13,24 @@ __all__ = [
     "InvalidIdentityParamException",
 ]
 
+from chess.system.err import ChessException
+
+
+class IdentityException(ChessException):
+    """Catchall Exception for IdValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "IDENTITY_PROPERTY_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Identity property failed validation."
+
+class InvalidIdentityException(IdentityException, ValidationException):
+    """Catchall Exception for IdValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "IDENTITY_PROPERTY_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Identity property failed validation."
+
+
+class IdentityNullException(IdentityException, NullException):
+    """Catchall Exception for IdValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "IDENTITY_PROPERTY_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Identity property failed validation."
 
 class InvalidIdentityParamException(ValidationException):
     """Catchall Exception for IdValidator when a candidate fails a sanity check."""

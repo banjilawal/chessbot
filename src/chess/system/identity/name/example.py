@@ -86,7 +86,7 @@ Major themes influencing the design include:
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
-    `MIN_NAME_LENGTH`, `MAX_NAME_LENGTH`, `LongNameException`, `ShortNameException`, `BlankNameException`
+    `MIN_NAME_LENGTH`, `MAX_NAME_LENGTH`, `LongNameException`, `ShortNameException`, `WhiteSpaceNameException`
     `NullNameException`, `Validator`,
 
 * From Python `typing` Library:

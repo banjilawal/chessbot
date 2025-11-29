@@ -8,5 +8,11 @@ version: 1.0.0
 """
 
 
+# =========== SYSTEM.IDENTITY.NAME PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
 from .exception import *
 from .validator import NameValidator

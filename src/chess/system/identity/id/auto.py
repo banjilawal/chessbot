@@ -1,4 +1,11 @@
+# src/chess/system/identity/id/auto.py
 
+"""
+Module: chess.system.identity.id.auto
+Author: Banji Lawal
+Created: 2025-07-26
+version: 1.0.0
+"""
 
 from itertools import count
 from threading import Lock

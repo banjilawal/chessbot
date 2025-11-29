@@ -91,12 +91,12 @@ class RankSpec(Enum):
         return [member.id for member in cls]
     
     @classmethod
-    def allowed_names(cls) -> List[str]:
-        return [member.name for member in cls]
+    def allowed_upper_case_names(cls) -> List[str]:
+        return [member.name.upper() for member in cls]
     
     @classmethod
-    def allowed_designations(cls) -> List[int]:
-        return [member.designation for member in cls]
+    def allowed_upper_case_designations(cls) -> List[str]:
+        return [member.designation.upper() for member in cls]
     
     @classmethod
     def allowed_team_quotas(cls) -> List[int]:

@@ -10,8 +10,9 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import (
-    MIN_NAME_LENGTH, MAX_NAME_LENGTH, Validator, ValidationResult, LongNameException,
-    ShortNameException, BlankNameException, NullNameException, LoggingLevelRouter, InvalidNameException
+    BlankTextException, MIN_NAME_LENGTH, MAX_NAME_LENGTH, NullTextException, TextValidator, Validator, ValidationResult,
+    LongNameException,
+    ShortNameException, WhiteSpaceNameException, NullNameException, LoggingLevelRouter, InvalidNameException
 )
 
 
@@ -39,7 +40,11 @@ class NameValidator(Validator[str]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: str) -> ValidationResult[str]:
+    def validate(
+            cls,
+            candidate: str,
+            text_validator: TextValidator = TextValidator()
+    ) -> ValidationResult[str]:
         """
         # ACTION:
         1.  Test if the candidate is:
@@ -59,56 +64,31 @@ class NameValidator(Validator[str]):
             - On failure: Exception.
     
         # Raises:
-            *   TypeError
-            *   NullNameException
-            *   BlankNameException
             *   ShortNameException
             *   LongNameException
         """
         method = "NameValidator.validate"
         
         try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullNameException(
-                        f"{method}: {NullNameException.DEFAULT_MESSAGE}"
-                    )
-                )
+            # Verify the candidate is not null and an int.
+            validation = text_validator.validate(candidate)
+            if validation.is_failure():
+                return ValidationResult.failure(validation.exception)
             
-            if not isinstance(candidate, str):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method} Expected an str, got {type(candidate).__name__} instead."
-                    )
-                )
-            
-            name = cast(str, candidate)
-            
-            if len(name.strip()) == 0:
-                return ValidationResult.failure(
-                    BlankNameException(
-                        f"{method}: {BlankNameException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
+            name = validation.name
             if len(name) < MIN_NAME_LENGTH:
                 return ValidationResult.failure(
-                    ShortNameException(
-                        f"{method}: {ShortNameException.DEFAULT_MESSAGE}"
-                    )
+                    ShortNameException(f"{method}: {ShortNameException.DEFAULT_MESSAGE}")
                 )
-            
             if len(name) > MAX_NAME_LENGTH:
                 return ValidationResult.failure(
                     LongNameException(f"{method}: {LongNameException.DEFAULT_MESSAGE}")
                 )
             
             return ValidationResult.success(payload=name)
-        
+        # Finally, if there is an unhandled exception Wrap an InvalidNameException around it
+        # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidNameException(
-                    f"{method}: {InvalidNameException.DEFAULT_MESSAGE}",
-                    ex
-                )
+                InvalidNameException(ex=ex, message=f"{method}: {InvalidNameException.DEFAULT_MESSAGE}")
             )

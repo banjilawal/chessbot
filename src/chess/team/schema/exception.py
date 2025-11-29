@@ -1,7 +1,7 @@
 # src/chess/team/schema/exception.py
 
 """
-Module: chess.team_name.schema.exception
+Module: chess.team.schema.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -31,7 +31,7 @@ class TeamSchemaException(TeamException):
     details useful for debugging.
     """
     ERROR_CODE = "TEAM_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "TeamSchema raised an rollback_exception."
+    DEFAULT_MESSAGE = "TeamSchema raised an rexception."
 
 
 # ======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
@@ -47,7 +47,7 @@ class InvalidTeamSchemaException(TeamSchemaException, ValidationException):
 class NullTeamSchemaException(TeamSchemaException, NullException):
     """Raised if an entity, method, or operation requires a TeamSchema but gets null."""
     ERROR_CODE = "NULL_TEAM_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "TeamSchema cannot be validation"
+    DEFAULT_MESSAGE = "TeamSchema cannot be null."
 
 
 # ======================# TEAM_SCHEMA BOUNDS EXCEPTIONS #======================#
@@ -57,7 +57,7 @@ class TeamNameBoundsException(TeamSchemaException, BoundsException):
     DEFAULT_MESSAGE = "Name is not allowed by TeamSchema settings."
 
 
-class TeamColorBoundsException(TeamSchemaException, NullException):
+class TeamColorBoundsException(TeamSchemaException, BoundsException):
     """Raised if a color is not in a TeamSchema names"""
     ERROR_CODE = "TEAM_COLOR_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Color is not allowed by TeamSchema settings."

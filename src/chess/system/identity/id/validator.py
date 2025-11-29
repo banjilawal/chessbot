@@ -1,15 +1,16 @@
-# src/chess/system/identity/id/coord_stack_validator.py
+# src/chess/system/identity/id/validator.py
 
 """
-Module: chess.system.identity.id.coord_stack_validator
+Module: chess.system.identity.id.validator
 Author: Banji Lawal
 Created: 2025-08-12
 """
 
-from typing import cast
+from typing import Any, cast
 
 from chess.system import (
-    Validator, ValidationResult, IdNullException, NegativeIdException, InvalidIdException, LoggingLevelRouter,
+    NumberValidator, Validator, ValidationResult, NegativeIdException, InvalidIdException,
+    LoggingLevelRouter,
 )
 
 
@@ -18,7 +19,7 @@ class IdValidator(Validator[int]):
     # ROLE: Validation, Integrity
   
     # RESPONSIBILITIES:
-    Verifies a candidate is an INT greater than zero before its used an ID.
+    Verifies a candidate is an int greater than zero before its used an ID.
   
     # PROVIDES:
     ValidationResult[int] containing either:
@@ -31,17 +32,20 @@ class IdValidator(Validator[int]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: int) -> ValidationResult[int]:
+    def validate(
+            cls,
+            candidate: Any,
+            number_validator: NumberValidator = NumberValidator()
+    ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Test if the candidate is:
-                *   Not validation.
-                *   A positive integer.
-        2.  If either text fails send their exception in a ValidationResult.
-        3.  When all checks pass cast the candidate to an INT then send inside a ValidationResult.
+        1.  Test the candidate is not null and an int with number_validator.
+        2.  If the value is negative return an exception in the ValidationResult.
+        3.  When all checks pass send the number in a ValidationResult's payload.
     
         # PARAMETERS:
-            *   candidate (Any): object to certify is a legal ID.
+            *   candidate (Any):
+            *   number_validator (NumberValidator)
     
         # Returns:
         ValidationResult[int] containing either:
@@ -49,40 +53,29 @@ class IdValidator(Validator[int]):
             - On failure: Exception.
     
         # Raises:
-          *     TypeError
-          *     IdNULLException
-          *     NegativeIdException
+            *   NegativeIdException
+            *   InvalidIdException
         """
         method = "IdValidator.validate"
         
         try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    IdNullException(f"{method}: {IdNullException.DEFAULT_MESSAGE}")
-                )
+            # Verify the candidate is not null and an int.
+            validation = number_validator.validate(candidate=candidate)
+            if validation.is_failure():
+                return ValidationResult.failure(validation.exception)
             
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: Expected an integer, got {type(candidate).__id__} instead."
-                    )
-                )
-            
+            # Cast and test if the number is negative.
             id = cast(int, candidate)
-            
             if id < 0:
                 return ValidationResult.failure(
-                    NegativeIdException(
-                        f"{method}: {NegativeIdException.DEFAULT_MESSAGE}"
-                    )
+                    NegativeIdException(f"{method}: {NegativeIdException.DEFAULT_MESSAGE}")
                 )
-            
+            # If all checks pass return the validated id in a ValidationResult.
             return ValidationResult.success(payload=id)
         
+        # Finally, if there is an unhandled exception Wrap an InvalidNIdException around it
+        # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidIdException(
-                    f"{method}: {InvalidIdException.DEFAULT_MESSAGE}",
-                    ex
-                )
+                InvalidIdException(ex=ex, message=f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
             )

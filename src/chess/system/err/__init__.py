@@ -10,7 +10,8 @@ version: 1.0.0
 # =========== SYSTEM.ERR PACKAGE CONTENTS ===========#
 
 # Packages
-# None
+from .number import *
+from .text import *
 
 # Modules
 from .base import *
@@ -21,5 +22,4 @@ from .inconsistency import *
 from .null import *
 from .registration import *
 from .rollback import *
-from .text import *
 
