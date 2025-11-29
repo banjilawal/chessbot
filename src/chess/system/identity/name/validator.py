@@ -66,6 +66,7 @@ class NameValidator(Validator[str]):
         # Raises:
             *   ShortNameException
             *   LongNameException
+            *   InvalidNameException
         """
         method = "NameValidator.validate"
         

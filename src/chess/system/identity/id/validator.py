@@ -9,8 +9,7 @@ Created: 2025-08-12
 from typing import Any, cast
 
 from chess.system import (
-    NumberValidator, Validator, ValidationResult, NegativeIdException, InvalidIdException,
-    LoggingLevelRouter,
+    NumberValidator, Validator, ValidationResult, NegativeIdException, InvalidIdException, LoggingLevelRouter,
 )
 
 
