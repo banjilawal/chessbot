@@ -72,6 +72,7 @@ class TeamContextValidator(Validator[TeamContext]):
         method = "TeamContextValidator.validate"
         
         try:
+            # Start the error detection process.
             if candidate is None:
                 return ValidationResult.failure(
                     NullTeamContextException(f"{method}: {NullTeamContextException.DEFAULT_MESSAGE}")
@@ -81,7 +82,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
-            
+            # After not-null and type checks have passed cast te candidate.
             context = cast(TeamContext, candidate)
             
             if len(context.to_dict()) == 0:
@@ -93,7 +94,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 return ValidationResult.failure(
                     TooManyTeamContextFlagsException(f"{method}: {TooManyTeamContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            
+            # If no errors are detected pick the flag whose value is not for processing.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure():
@@ -113,7 +114,10 @@ class TeamContextValidator(Validator[TeamContext]):
                 return ValidationResult.succes(payload=context)
             
             if context.color is not None:
-                validation = team_validator
+                if context.color not in [TeamSchema.color.WHITE, TeamSchema.color.BLACK]:
+                    return ValidationResult.failure(
+                        InvalidTeamContextException(f"{method}: Color not in TeamSchema bounds.")
+                    )
         
         except Exception as ex:
             return ValidationResult.failure(

@@ -44,7 +44,7 @@ class Agent(ABC):
         self._name = name
     
     @property
-    def team_stack(self) -> UniqueTeamDataService:
+    def team_assignments(self) -> UniqueTeamDataService:
         return self._team_stack
     
     @property

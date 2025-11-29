@@ -7,12 +7,10 @@ Created: 2025-08-04
 version: 1.0.0
 """
 
-from typing import List
-
-from chess.game.model import Game
-from chess.piece import Piece, UniquePieceDataService
-from chess.team import TeamSchema
 from chess.agent import Agent
+from chess.team import TeamSchema
+from chess.game.model import Game
+from chess.piece import UniquePieceDataService
 
 
 class Team:
@@ -40,7 +38,6 @@ class Team:
                 *   advancing_step (Vector):    Direction of the Team's roster member to get to the enemy's
                                                 Pieces.
     """
-
     MAX_ROSTER_SIZE = 16
     
     _id: int
@@ -92,7 +89,8 @@ class Team:
     def agent(self) -> Agent:
         return self._agent
     
-    @property def game(self) -> Game:
+    @property
+    def game(self) -> Game:
         return self._game
     
     @property

@@ -16,8 +16,6 @@ __all__ = [
 ]
 
 
-
-
 # ======================# TEAM_CONTEXT BUILD EXCEPTIONS #======================#
 class TeamContextBuildFailedException(TeamContextException, BuildFailedException):
     """

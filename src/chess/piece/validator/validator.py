@@ -171,4 +171,94 @@ class PieceValidator(Validator[Piece]):
             return ValidationResult.failure(
                 InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}", e)
             )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def piece_bound_to_team_roster(
+            cls,
+            team: Team,
+            piece: Piece,
+            piece_validator: type[PieceValidator] = PieceValidator
+    ) -> ValidationResult[(Team, Piece)]:
+        try:
+            team_validation = cls.validate(team)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
+            
+            piece_validation = piece_validator.validate_piece_is_actionable(piece)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            if piece.team != team:
+                return ValidationResult.failure()
+            
+            if (
+                    (isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is not None) or
+                    isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated
+            ):
+                return ValidationResult.failure()
+            
+            if piece not in team.roster:
+                return ValidationResult.failure()
+            
+            return ValidationResult.success((team, piece))
+        except Exception as ex:
+            return ValidationResult.failure(ex)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def piece_bound_to_team_hostages(
+            cls,
+            team: Team,
+            piece: Piece,
+            piece_validator: type[PieceValidator] = PieceValidator
+    ) -> ValidationResult[(Team, Piece)]:
+        try:
+            team_validation = cls.validate(team)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
+            
+            piece_validation = piece_validator.validate_piece_is_actionable(piece)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            if piece.team == team:
+                return ValidationResult.failure()
+            
+            if piece not in team.hostages:
+                return ValidationResult.failure()
+            
+            return ValidationResult.success((team, piece))
+        except Exception as ex:
+            return ValidationResult.failure(ex)
+    
+    @classmethod
+    
+    LoggingLevelRouter.monitor
+    
+    def validate_piece_registration(
+            cls,
+            piece_candidate: Any,
+            team_candidate: Any,
+            piece_validator: PieceValidator = PieceValidator(),
+            team_data_service: TeamDataService = TeamDataService(),
+    ) -> ValidationResult(Team, Piece):
+        method = "TeamValidator.validate_piece_registration"
+        try:
+            piece_validation = piece_validator.validate(piece_candidate)
+            if piece_validation.is_failure():
+                return ValidationResult.failure(piece_validation.exception)
+            
+            piece = cast(Piece, piece_candidate)
+            
+            team_validation = cls.validate(team_candidate)
+            if team_validation.is_failure():
+                return ValidationResult.failure(team_validation.exception)
+            
+            team = cast(Team, team_candidate)
         
+        
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidTeamException(ex=ex, message=f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}")
+            )

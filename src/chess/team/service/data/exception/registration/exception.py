@@ -1,23 +1,24 @@
-# src/chess/team/validator/exception/registration/exception.py
+# src/chess/team/service/data/exception/registration/exception.py
 
 """
-Module: chess.team.validator.exception.registration.exception
+Module: chess.team.service.data.exception.registration.exception
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.team import InvalidTeamException
 from chess.system import RegistrationException
+from chess.team.validator import InvalidTeamException
+
 
 __all__ = [
-    # ======================# TEAM_REGISTRATION EXCEPTIONS #======================#  
+    # ======================# TEAM_REGISTRATION EXCEPTIONS #======================#
     "TeamRegistrationException",
-    "TeamNotRegisteredWithActorException",
+    "TeamNotRegisteredWithAgentException",
 ]
 
 
-# ======================# TEAM_REGISTRATION EXCEPTIONS #======================#  
+# ======================# TEAM_REGISTRATION EXCEPTIONS #======================#
 class TeamRegistrationException(InvalidTeamException, RegistrationException):
     """
     Catchall for when a Team does not have a relationship with another entity.

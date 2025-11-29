@@ -32,7 +32,27 @@ class TeamContextBuilder(Builder[TeamContext]):
 
      # ATTRIBUTES:
      None
-     """
+     
+     # CONSTRUCTOR:
+    None
+
+    # CLASS METHODS:
+        *   build(
+                id: Optional[int] = None,
+                name: Optional[str] = None,
+                agent: Optional[Agent] = None,
+                color: Optional[GameColor] = None,
+                schema: Optional[TeamSchema] = None,
+                agent_service: AgentService = AgentService(),
+                team_validator: TeamValidator = TeamValidator(),
+                identity_service: IdentityService = IdentityService(),
+            ):
+        For ease of use and cleaner code dependencies are given default values. All flags must
+        be turned set to null byy default. Only activated flags should have a not-null value.
+        
+    # INSTANCE METHODS:
+    None
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -79,6 +99,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         method = "PieceSearchContextBuilder.builder"
         
         try:
+            # Start the error detection process.
             params = [id, name, agent, color, schema]
             param_count = sum(bool(p) for p in params)
             
@@ -91,38 +112,41 @@ class TeamContextBuilder(Builder[TeamContext]):
                 return BuildResult.failure(
                     TooManyTeamContextFlagsException(f"{method}: {TooManyTeamContextFlagsException}")
                 )
+            # If no errors are detected pick the flag whose value is not for processing.
             
             if id is not None:
                 validation = identity_service.validate_id(id)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # If id is correct create a TeamContext and return it.
                 return BuildResult.success(payload=TeamContext(id=id))
             
             if agent is not None:
                 validation = agent_service.validator.validate(agent)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # If name is correct create a TeamContext and return it.
                 return BuildResult.success(payload=TeamContext(agent=agent))
             
             if name is not None:
                 validation = team_validator.validate_name(name)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # If name is correct create a TeamContext and return it.
                 return BuildResult.success(payload=TeamContext(name=name))
 
             if color is not None:
                 validation = team_validator.validate_color(color)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # If id color is correct create a TeamContext and return it.
                 return BuildResult.success(payload=TeamContext(color=color))
             
-            if schema is not None:
-                return BuildResult.success(TeamContext(schema=schema))
-            
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
                 TeamContextBuildFailedException(
-                    ex=ex,
-                    message=f"{method}: {TeamContextBuildFailedException.DEFAULT_MESSAGE}"
+                    ex=ex, message=f"{method}: {TeamContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

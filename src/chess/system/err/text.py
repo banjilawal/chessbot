@@ -12,10 +12,8 @@ from chess.system import ChessException, NullException
 __all__ = [
 # ======================# TEXT EXCEPTION SUPER CLASS #======================#
     "TextException",
-
 # ======================# NULL STRING EXCEPTIONS #======================#
     "NullStringException",
-
 # ======================# BLANK/WHITE SPACE STRING EXCEPTIONS #======================#
     "BlankStringException",
 ]
@@ -38,7 +36,7 @@ class NullStringException(TextException, NullException):
 class BlankStringException(TextException):
     """
     Raised if an entity, method, or operation requires a string with content but gets
-    either an empty string or one conating only white space instead.
+    either an empty string or one connecting only white space instead.
     """
     ERROR_CODE = "BLANK_SEARCH_STRING_ERROR"
     DEFAULT_MESSAGE = "Cannot old_search by an empty or blank string"

@@ -1,7 +1,7 @@
-# src/chess/team/service/data/exception/data/exception.py
+# src/chess/team/service/data/exception/exception.py
 
 """
-Module: chess.team.service.data.exception.service.exception
+Module: chess.team.service.data.exception.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -13,7 +13,6 @@ __all__ = [
 # ======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
     "TeamDataException",
 ]
-
 
 # ======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
 class TeamDataException(DataException):

@@ -27,6 +27,25 @@ class TeamBuilder(Builder[Team]):
   
     # ATTRIBUTES:
     None
+    
+    # CONSTRUCTOR:
+    None
+    
+    # CLASS METHODS:
+        *   build(
+                id: int.
+                agent: Agent,
+                schema: TeamSchema,
+                agent_service: AgentService = AgentService(),
+                identity_service: IdentityService = IdentityService(),
+                roster: UniquePieceDataService = UniquePieceDataService(),
+                hostages: UniquePieceDataService = UniquePieceDataService(),
+                schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
+            ):
+        For ease of use and cleaner code dependencies are given default values.
+    
+    # INSTANCE METHODS:
+    None
     """
     
     @classmethod
@@ -36,8 +55,8 @@ class TeamBuilder(Builder[Team]):
             id: int,
             agent: Agent,
             schema: TeamSchema,
-            identity_service: IdentityService = IdentityService(),
             agent_service: AgentService = AgentService(),
+            identity_service: IdentityService = IdentityService(),
             roster: UniquePieceDataService = UniquePieceDataService(),
             hostages: UniquePieceDataService = UniquePieceDataService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
@@ -71,6 +90,7 @@ class TeamBuilder(Builder[Team]):
         method = "TeamBuilder.builder"
         
         try:
+            # Start the error detection process.
             id_validation = identity_service.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
@@ -82,13 +102,17 @@ class TeamBuilder(Builder[Team]):
             agent_validation = agent_service.validator.validate(agent)
             if agent_validation.is_failure():
                 return BuildResult.failure(agent_validation.exception)
-            
+            # If no errors are detected build the Team object.
             team = Team(id=id, agent=agent, schema=schema, roster=roster, hostages=hostages)
-            if team not in agent.team_stack:
-                agent.team_stack.push_unique(team)
             
+            # If the team is not in Agent.team_assignments register it.
+            if team not in agent.team_assignments:
+                agent.team_assignments.push_unique(team)
+            # Send the successfully built and registered Team object inside a BuildResult.
             return BuildResult.success(team)
         
+        # Finally return a BuildResult containing any unhandled exceptions insided an
+        # TeamBuildFailedException
         except Exception as ex:
             return BuildResult.failure(
                 TeamBuildFailedException(ex=ex, message=f"{method}: {TeamBuildFailedException.DEFAULT_MESSAGE}")

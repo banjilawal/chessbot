@@ -8,14 +8,22 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-
+from chess.agent import Agent, NullAgentException
 from chess.agent.service import AgentService
 from chess.piece import CombatantPiece, KingPiece, Piece, PieceValidator
-from chess.system import GameColor, IdentityService, LoggingLevelRouter, Validator, ValidationResult
+from chess.system import (
+    GameColor, IdentityService, LoggingLevelRouter, NullGameColorException, Validator,
+    ValidationResult
+)
 from chess.team import (
-    InvalidTeamException, NullTeamException, Team, TeamDataService, TeamNotRegisteredWithAgentException, TeamSchema,
+    InvalidTeamException, InvalidTeamSchemaException, NoTeamGameRelationshipException, NullTeamException,
+    NullTeamSchemaException, Team,
+    TeamContextService, TeamDataService,
+    TeamMismatchesAgentException, TeamNotRegisteredWithAgentException, TeamSchema,
     TeamSchemaValidator,
 )
+from chess.team.validator.exception.bounds.exception import TeamColorBoundsException
+
 
 class TeamValidator(Validator[Team]):
     """
@@ -42,7 +50,7 @@ class TeamValidator(Validator[Team]):
                     agent_service: AgentService,
                     identity_service: IdentityService
                     team_schema_validator: TeamSchemaValidator
-            ) -> ValidationResult[Team]
+            ) -> ValidationResult[Team]:
     
     # INSTANCE METHODS:
     None
@@ -100,238 +108,136 @@ class TeamValidator(Validator[Team]):
             
             team = cast(Team, candidate)
             
-            id_validation = identity_service.validate_id(team.id)
-            if not id_validation.is_success():
-                return ValidationResult.failure(id_validation.exception)
-            
             schema_validation = schema_validator.validate(team.schema)
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
             
+            identity_validation = identity_service.validate_identity(
+                id_candidate=team.id,
+                name_candidate=team.schema.name
+            )
+            if identity_validation.is_failure():
+                return ValidationResult.failure(identity_validation.exception)
+            
+            # Only baseline agent certification is necessary. An agent registering a team is not
+            # the main use case for team objects. Separating registration verification from team
+            # validation avoids circular dependencies, separates concerns and is flexible.
             agent_validation = agent_service.validator.validate(team.agent)
             if agent_validation.is_failure():
                 return ValidationResult.failure(agent_validation.exception)
-            
-            if team not in team.agent.team_stack.items:
-                return ValidationResult.failure(
-                    TeamNotRegisteredWithAgentException(
-                        f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
-                    )
-                )
+
+            # For basic verification we only need to prove team has a safe game attribute.
+            # Testng for a team<-->game relationship is not necessary. The team<--> game
+            # relationship only matters during searches so a deeper check is not necessary.
+            game_validation = game_service.validator.validate(team.game)
+            if game_validation.is_failure():
+                return ValidationResult.failure(game_validation.exception)
             
             # If no errors are detected return the successfully validated Team instance.
             return ValidationResult.success(team)
+        
         # Finally, if there is an unhandled exception Wrap an InvalidPieceException around it
         # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidTeamException(ex=ex, message=f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}")
             )
+ 
     
     @classmethod
-    @LoggingLevelRouter.monitor()
-    def validate_schema(cls, candidate: Any, schema) -> ValidationResult[TeamSchema]:
-        method = "TeamValidator.validate"
-        
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullTeamSchemaException(f"{method} {NullTeamSchemaException.DEFAULT_MESSAGE}")
-                )
-            
-            if not isinstance(candidate, TeamSchema):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected TeamSchema, got {type(candidate).__name__} instead."
-                    )
-                )
-            
-            team_schema = cast(TeamSchema, candidate)
-            return ValidationResult.success(team_schema)
-        
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidTeamSchemaException(
-                    ex=ex,
-                    message=(
-                        f"{method} "
-                        f"{InvalidTeamSchemaException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        
-    @classmethod
-    LoggingLevelRouter.monitor
-    def validate_piece_registration(
+    @LoggingLevelRouter.monitor
+    def verify_agent_has_registered_team(
             cls,
-            piece_candidate: Any,
             team_candidate: Any,
-            piece_validator: PieceValidator = PieceValidator(),
-            team_data_service: TeamDataService = TeamDataService(),
-    ) -> ValidationResult(Team, Piece):
-        method = "TeamValidator.validate_piece_registration"
+            agent_candidate: Any,
+            agent_service: AgentService = AgentService(),
+            team_context_service: TeamContextService = TeamContextService(),
+    ) -> ValidationResult[(Team, Agent)]:
+        """"""
+        method = "TeamValidator.verify_agent_has_registered_team"
+        
         try:
-            piece_validation = piece_validator.validate(piece_candidate)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
-            
-            piece = cast(Piece, piece_candidate)
-            
+            # Start the error detection process.
             team_validation = cls.validate(team_candidate)
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
+            team = team_validation.payload
             
-            team = cast(Team, team_candidate)
+            agent_validation = agent_service.validator.validate(agent_candidate)
+            if agent_validation.is_failure():
+                return ValidationResult.failure(agent_validation.exception)
+            agent = agent_validation.payload
             
+            if team.agent != agent:
+                return ValidationResult.failure(
+                    TeamMismatchesAgentException(f"{method}: {TeamMismatchesAgentException.DEFAULT_MESSAGE}")
+                )
             
+            # When team.agent == agent Search agent.team_assignments; build a search context
+            search_context_build = team_context_service.builder.build(id=team.id)
+            if search_context_build.is_failure():
+                return ValidationResult.failure(search_context_build.exception)
+            # Run a search for the target.
+            search_result = agent.team_assignments.search(search_context=search_context_build.payload)
+            if search_result.is_failure():
+                return ValidationResult.failure(search_result.exception)
+            
+            # An empty search result means there is no registration.
+            if search_result.is_empty():
+                return ValidationResult.failure(
+                    TeamNotRegisteredWithAgentException(
+                        f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
+                    )
+                )
+            # If no errors are detected return the (team, agent) tuple indicating
+            # The agent has the team in its records.
+            return ValidationResult.success(payload=(team, agent))
+        
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidTeamException(
-                    ex=ex,
-                    message=(
-                        f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}"
-                    )
-                    
+                TeamNotRegisteredWithAgentException(
+                    ex=ex, message=f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
                 )
             )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor()
-    def validate_team_name(cls, candidate: Any) -> ValidationResult[str]:
-        method = "TeamValidator.validate_team_name"
-        
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullTeamNameException(f"{method} {NullTeamNameException.DEFAULT_MESSAGE}")
-                )
-            
-            if not isinstance(candidate, str):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected str, got {type(candidate).__name__} instead."
-                    )
-                )
-            
-            name = cast(str, candidate)
-            if name not in [TeamSchema.WHITE.name, TeamSchema.BLACK.name]:
-                return ValidationResult.failure(
-                    TeamNameBoundsException(
-                        f"{method} {TeamNameBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            return ValidationResult.success(name)
-        
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidTeamException(
-                    ex=ex,
-                    message=(
-                        f"{method} "
-                        f"{InvalidTeamException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor()
-    def validate_team_color(cls, candidate: Any) -> ValidationResult[GameColor]:
-        method = "TeamValidator.validate_team_color"
-        
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullTeamColorException(f"{method} {NullTeamColorException.DEFAULT_MESSAGE}")
-                )
-            
-            if not isinstance(candidate, str):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected GameColor, got {type(candidate).__name__} instead."
-                    )
-                )
-            
-            color = cast(GameColor, candidate)
-            if name not in [TeamSchema.WHITE.name, TeamSchema.BLACK.name]:
-                return ValidationResult.failure(
-                    TeamColorBoundsException(
-                        f"{method} {TeamColorBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            return ValidationResult.success(color)
-        
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidTeamException(
-                    ex=ex,
-                    message=(
-                        f"{method} "
-                        f"{InvalidTeamException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def piece_bound_to_team_roster(
-            cls,
-            team: Team,
-            piece: Piece,
-            piece_validator: type[PieceValidator] = PieceValidator
-    ) -> ValidationResult[(Team, Piece)]:
-        try:
-            team_validation = cls.validate(team)
-            if team_validation.is_failure():
-                return ValidationResult.failure(team_validation.exception)
-            
-            piece_validation = piece_validator.validate_piece_is_actionable(piece)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
-            
-            if piece.team != team:
-                return ValidationResult.failure()
-                
-            if (
-                    (isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is not None) or
-                    isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated
-                ):
-                return ValidationResult.failure()
-            
-            if piece not in team.roster:
-                return ValidationResult.failure()
-            
-            return ValidationResult.success((team, piece))
-        except Exception as ex:
-            return ValidationResult.failure(ex)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def piece_bound_to_team_hostages(
+    def verify_team_and_game_relationship(
             cls,
-            team: Team,
-            piece: Piece,
-            piece_validator: type[PieceValidator] = PieceValidator
-    ) -> ValidationResult[(Team, Piece)]:
+            team_candidate: Any,
+            game_candidate: Any,
+            game_service: GameService = GameService(),
+    ) -> ValidationResult[(Team, Game)]:
+        """"""
+        method = "TeamValidator.verify_team_and_game_relationship"
+        
         try:
-            team_validation = cls.validate(team)
+            # Start the error detection process.
+            team_validation = cls.validate(team_candidate)
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
+            team = team_validation.payload
             
-            piece_validation = piece_validator.validate_piece_is_actionable(piece)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
+            game_validation = game_service.validator.validate(game_candidate)
+            if game_validation.is_failure():
+                return ValidationResult.failure(game_validation.exception)
+            game = game_validation.payload
             
-            if piece.team == team:
-                return ValidationResult.failure()
-                
-            if piece not in team.hostages:
-                return ValidationResult.failure()
-            
-            return ValidationResult.success((team, piece))
+            if team.game != game:
+                return ValidationResult.failure(
+                    NoTeamGameRelationshipException(f"{method}: {NoTeamGameRelationshipException.DEFAULT_MESSAGE}")
+                )
+            # If no errors are detected return the (team, agent) tuple indicating
+            # The agent has the team in its records.
+            return ValidationResult.success(payload=(team, game))
+        
+        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
-            return ValidationResult.failure(ex)
+            return ValidationResult.failure(
+                NoTeamGameRelationshipException(
+                    ex=ex, message=f"{method}: {NoTeamGameRelationshipException.DEFAULT_MESSAGE}"
+                )
+            )

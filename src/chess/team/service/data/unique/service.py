@@ -80,7 +80,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         method = "UniqueTeamDataService.push_unique"
         
         try:
-            # Process the error chain
+            # Start the error detection process.
             validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
@@ -97,7 +97,6 @@ class UniqueTeamDataService(UniqueDataService[Team]):
                 return InsertionResult.failure(
                     AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
                 )
-            
             # After the error has been passed self._data_service returns the outcome of
             # pushing the item on to the stack.
             return self._data_service.push(item)

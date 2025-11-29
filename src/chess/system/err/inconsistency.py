@@ -7,18 +7,19 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from chess.system import ChessException
+from chess.system.err import ChessException
+
 
 __all__ = [
-# ======================# INCONSISTENCY EXCEPTION SUPER CLASS #======================#
+    # ======================# INCONSISTENCY EXCEPTION SUPER CLASS #======================#
     "InconsistencyException",
-    
-# ======================# INCONSISTENT COLLECTION EXCEPTION #======================#
+    # ======================# INCONSISTENT COLLECTION EXCEPTION #======================#
     "InconsistentCollectionException",
-    
-# ======================# INVARIANT_BREACH EXCEPTION #======================#
+    # ======================# INVARIANT_BREACH EXCEPTION #======================#
     "InvariantBreachException",
 ]
+
+
 
 # ======================# INCONSISTENCY EXCEPTION SUPER CLASS #======================#
 class InconsistencyException(ChessException):
@@ -47,5 +48,3 @@ class InvariantBreachException(ChessException):
     """
     DEFAULT_CODE = "INVARIANT_BREACH_ERROR"
     DEFAULT_MESSAGE = "A system invariant was violated, indicating a critical state inconsistency. or service loss."
-
-

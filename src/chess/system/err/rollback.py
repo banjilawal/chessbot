@@ -12,16 +12,45 @@ from chess.system.err import ChessException
 
 __all__ = [
     "RollbackException",
-    "RollbackFailedException"
+    "FailedOperationRolledBackException",
 ]
 
 
+# ======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
 class RollbackException(ChessException):
     """Base class for rollback-related errors."""
-    DEFAULT_CODE = "ROLLBACK"
-    DEFAULT_MESSAGE = "Operation rolled back due to failure in update consistency."
+    DEFAULT_CODE = "ROLLBACK_ERROR"
+    DEFAULT_MESSAGE = "Rollback exception raised."
 
 
-class RollbackFailedException(RollbackException):
-    ERROR_CODE = "ROLLBACK_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Rollback failed."
+# ======================# FAILED_OPERATION ROLLED_BACK EXCEPTION #======================#
+class FailedOperationRolledBackException(RollbackException):
+    """
+    Raised when an operation fails. The changes are rolled back. Then the exception
+    is raised. Use this exception in production instead of the base RollbackException.
+    """
+    ERROR_CODE = "FAILED_OPERATION_ROLLED_BACK_ERROR"
+    DEFAULT_MESSAGE = (
+        "An operation failed. The data was rolled back to its last good state "
+        "before this exception was raised."
+    )
+
+
+# ======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
+class RollbackException(ChessException):
+    """Base class for rollback-related errors."""
+    DEFAULT_CODE = "ROLLBACK_ERROR"
+    DEFAULT_MESSAGE = "Rollback exception raised."
+
+
+# ======================# FAILED_OPERATION ROLLED_BACK EXCEPTION #======================#
+class FailedOperationRolledBackException(RollbackException):
+    """
+    Raised when an operation fails. The changes are rolled back. Then the exception
+    is raised. Use this exception in production instead of the base RollbackException.
+    """
+    ERROR_CODE = "FAILED_OPERATION_ROLLED_BACK_ERROR"
+    DEFAULT_MESSAGE = (
+        "An operation failed. The data was rolled back to its last good state "
+        "before this exception was raised."
+    )

@@ -24,7 +24,6 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         *   PieceDataService
 
     # ATTRIBUTES:
-    None
         *   id (int):
         *   name (str):
         *   data_service (PieceDataService):
@@ -76,7 +75,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         method = "UniquePieceDataService.push_unique"
         
         try:
-            # Process the error chain
+            # Start the error detection process.
             validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
@@ -93,7 +92,6 @@ class UniquePieceDataService(UniqueDataService[Piece]):
                 return InsertionResult.failure(
                     AddingDuplicatePieceException(f"{method}: {AddingDuplicatePieceException.DEFAULT_MESSAGE}")
                 )
-            
             # After the error chain is passed self._data_service returns the outcome of
             # pushing the item on to the stack.
             return self._data_service.push(item)

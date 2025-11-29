@@ -30,13 +30,28 @@ class TeamContextService(Service[TeamContext]):
         *   name (str)
         *   builder (TeamContextBuilder)
         *   validator (TeamContextValidator)
+     
+     # CONSTRUCTOR:
+        *   __init__(
+                id: int = id_emmit=service_id,
+                name: Optional[str] = DEFAULT_SERVICE_NAME,
+                builder: TeamContextBuilder = TeamContextBuilder(),
+                validator: TeamContextValidator = TeamContextValidator(),
+            ):
+        For ease of use and cleaner code dependencies are given default values.
+
+    # CLASS METHODS:
+    None
+    
+    # INSTANCE METHODS:
+    See super class.
     """
-    DEFAULT_NAME = "TeamContextService"
+    DEFAULT_SERVICE_NAME = "TeamContextService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
+            name: str = DEFAULT_SERVICE_NAME,
             builder: TeamContextBuilder = TeamContextBuilder(),
             validator: TeamContextValidator = TeamContextValidator(),
     ):

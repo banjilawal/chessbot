@@ -101,14 +101,15 @@ class TeamDataService(DataService[Team]):
         method = "TeamDataService.push"
         
         try:
+            # Start the error detection process.
             validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
-            
             self.items.append(item)
             # After item is pushed onto the stack indicate success by sending it
             # back to the caller.
             return InsertionResult.success(payload=item)
+        
         # Finally, if there is an unhandled exception Wrap a TeamInsertionFailedException around it
         # then return exception chain inside an InsertionResult.
         except Exception as ex:

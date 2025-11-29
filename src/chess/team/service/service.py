@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import Service, id_emitter
-from chess.team import Team, TeamBuilder, TeamSchema, TeamValidator
+from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamValidator
 
 class TeamService(Service[Team]):
     """
@@ -45,18 +45,31 @@ class TeamService(Service[Team]):
     """
     DEFAULT_NAME = "TeamService"
     _schema: TeamSchema
+    _schema_validator: TeamSchemaValidator
     
     def __init__(
             self,
+
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            schema: TeamSchema = TeamSchema,
+            schema: TeamSchema = TeamSchema(),
             builder: TeamBuilder = TeamBuilder(),
             validator: TeamValidator = TeamValidator(),
+            team_schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._schema = schema
+        self._schema_validator = team_schema_validator
         
     @property
     def schema(self) -> TeamSchema:
         return self._schema
+    
+    @property
+    def schema_validator(self) -> TeamSchemaValidator:
+        return self._schema_validator
+    
+
+        
+
+    
