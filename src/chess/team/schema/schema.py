@@ -35,6 +35,8 @@ class TeamSchema(Enum):
         *   pawn_row (int)
         *   advancing_step (Scalar)
         *   home_quadrant (Quadrant)
+        *   allowed_colors (List[GameColor])
+        *   allowed_names (List[str])
         
     # CONSTRUCTOR:
     Default Constructor
@@ -43,8 +45,6 @@ class TeamSchema(Enum):
     # CLASS METHODS:
         *   get_by_color(cls, color: GameColor) -> TeamSchema
         *   get_by_name(cls, name: str) -> TeamSchema
-        *   allowed_colors(cls) -> List[GameColor]
-        *   allowed_names(cls) -> List[str]
     """
     
     def __new__(
@@ -101,7 +101,7 @@ class TeamSchema(Enum):
     def get_by_name(cls, name: str) -> TeamSchema:
         if name in cls.__members__:
             return cls.__members__[name]
-        
+    
     @classmethod
     def allowed_colors(cls) -> List[GameColor]:
         return [member.color for member in cls]

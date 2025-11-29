@@ -49,7 +49,6 @@ class TeamService(Service[Team]):
     
     def __init__(
             self,
-
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             schema: TeamSchema = TeamSchema(),

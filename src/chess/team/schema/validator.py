@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast, Any
 
 from chess.system import (
-    GameColor, InvalidGameColorException, NullGameColorException, Validator, ValidationResult,
+    GameColor, IdentityService, InvalidGameColorException, NullGameColorException, Validator, ValidationResult,
     LoggingLevelRouter, NullStringException, TextException
 )
 from chess.team import (
@@ -152,7 +152,7 @@ class TeamSchemaValidator(Validator[TeamSchema]):
             color = cast(GameColor, candidate)
             
   
-            if color not in [team_schema_hedge.WHITE.color, team_schema_hedge.BLACK.color]:
+            if color not in team_schema_hedge.allowed_colors:
                 return ValidationResult.failure(
                     TeamColorBoundsException(f"{method}: {TeamColorBoundsException.DEFAULT_MESSAGE}")
                 )
@@ -171,7 +171,7 @@ class TeamSchemaValidator(Validator[TeamSchema]):
     def verify_name_in_schema(
             cls,
             candidate: Any,
-            team_schema_hedge: TeamSchema = TeamSchema()
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[str]:
         """
         # ACTION:
@@ -200,18 +200,13 @@ class TeamSchemaValidator(Validator[TeamSchema]):
         
         try:
             # Start the error detection process.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullStringException(f"{method}: {NullStringException.DEFAULT_MESSAGE}")
-                )
-            if not isinstance(candidate, str):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected str, got {type(candidate).__name__} instead.")
-                )
-            # cast candidate to str for the last check.
-            name = cast(str, candidate)
+            name_validation = identity_service.validate_name(candidate)
+            if name_validation.is_failure():
+                return ValidationResult.failure(name_validation.exception)
+            # Get the name from the validation payload on success.
+            name = name_validation.payload
             
-            if name not in [team_schema_hedge.WHITE.name, team_schema_hedge.BLACK.name]:
+            if name not in TeamSchema.allowed_names():
                 return ValidationResult.failure(
                     TeamNameBoundsException(f"{method} {TeamNameBoundsException.DEFAULT_MESSAGE}")
                 )

@@ -8,9 +8,10 @@ version: 1.0.0
 """
 
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 from chess.geometry import Quadrant
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankSpec, Rook
 
 
 class RankSpec(Enum):
@@ -79,6 +80,57 @@ class RankSpec(Enum):
     @property
     def quadrants(self) -> List[Quadrant]:
         return self._quadrants
+    
+    @classmethod
+    def get_by_name(cls, name: str) -> RankSpec:
+        if name in cls.__members__:
+            return cls.__members__[name]
+    
+    @classmethod
+    def allowed_ids(cls) -> List[int]:
+        return [member.id for member in cls]
+    
+    @classmethod
+    def allowed_names(cls) -> List[str]:
+        return [member.name for member in cls]
+    
+    @classmethod
+    def allowed_designations(cls) -> List[int]:
+        return [member.designation for member in cls]
+    
+    @classmethod
+    def allowed_team_quotas(cls) -> List[int]:
+        return [member.team_quota for member in cls]
+    
+    @classmethod
+    def allowed_ransoms(cls) -> List[int]:
+        return [member.ransom for member in cls]
+    
+    @classmethod
+    def allowed_quadrants(cls) -> List[List[Quadrant]]:
+        return [member.quadrants for member in cls]
+    
+    @classmethod
+    def rank_from_spec(cls, spec: RankSpec) -> Optional[Rank]:
+        if spec == cls.KING: return King()
+        if spec == cls.PAWN: return Pawn()
+        if spec == cls.KNIGHT: return Knight()
+        if spec == cls.BISHOP: return Bishop()
+        if spec == cls.ROOK: return Rook()
+        if spec == cls.QUEEN: return Queen()
+        return None
+    
+    @classmethod
+    def spec_from_rank(cls, rank: Rank) -> Optional[RankSpec]:
+        if isinstance(rank, King): return cls.KING
+        if isinstance(rank, Pawn): return cls.PAWN
+        if isinstance(rank, Knight): return cls.KNIGHT
+        if isinstance(rank, Bishop): return cls.BISHOP
+        if isinstance(rank, Rook): return cls.ROOK
+        if isinstance(rank, Queen): return cls.QUEEN
+        return None
+        
+    
     
     def __str__(self) -> str:
         return (

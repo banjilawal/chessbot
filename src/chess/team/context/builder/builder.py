@@ -10,9 +10,12 @@ version: 1.0.0
 from typing import Optional
 
 from chess.agent import Agent, AgentService
+from chess.game import Game
+from chess.game.service import GameService
 from chess.system import Builder, BuildResult, GameColor, IdentityService, LoggingLevelRouter
 from chess.team import (
-    NoTeamContextFlagsException, TeamContext, TeamContextBuildFailedException, TeamSchema, TeamValidator,
+    NoTeamContextFlagsException, TeamContext, TeamContextBuildFailedException, TeamSchema, TeamSchemaValidator,
+    TeamValidator,
     TooManyTeamContextFlagsException
 )
 
@@ -43,10 +46,11 @@ class TeamContextBuilder(Builder[TeamContext]):
                         name: Optional[str] = None,
                         agent: Optional[Agent] = None,
                         color: Optional[GameColor] = None,
-                        schema: Optional[TeamSchema] = None,
+
                         agent_service: AgentService = AgentService(),
                         team_validator: TeamValidator = TeamValidator(),
                         identity_service: IdentityService = IdentityService(),
+                        schema_validator: Optional[TeamSchemaValidator] = TeamSchemaValidator(),
                ) -> BuildResult[TeamContext]:
         For ease of use and cleaner code dependencies are given default values. All flags must
         be turned set to null byy default. Only activated flags should have a not-null value.
@@ -61,12 +65,13 @@ class TeamContextBuilder(Builder[TeamContext]):
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,
+            game: Optional[Game] = None,
             agent: Optional[Agent] = None,
             color: Optional[GameColor] = None,
-            schema: Optional[TeamSchema] = None,
+            game_service: GameService = GameService(),
             agent_service: AgentService = AgentService(),
-            team_validator: TeamValidator = TeamValidator(),
             identity_service: IdentityService = IdentityService(),
+            schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> BuildResult[TeamContext]:
         """
         # Action:
@@ -78,14 +83,15 @@ class TeamContextBuilder(Builder[TeamContext]):
         Only one these must be provided:
             *   id (Optional[int])
             *   name (Optional[int])
+            8   game (Optional[Game])
             *   agent (Optional[Agent])
             *   color (Optional[GameColor])
-            *   schema (Optional[TeamSchema])
 
         These Parameters must be provided:
+            *   game_service (GameService)
             *   agent_service (AgentService)
-            *   team_validator (TeamValidator)
             *   identity_service (IdentityService)
+            *   schema_validator (TeamSchemaValidator)
 
         # Returns:
           BuildResult[TeamContext] containing either:
@@ -119,29 +125,36 @@ class TeamContextBuilder(Builder[TeamContext]):
                 validation = identity_service.validate_id(id)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                # If id is correct create a TeamContext and return it.
-                return BuildResult.success(payload=TeamContext(id=id))
+                # If id is correct create a id.TeamContext and return it.
+                return BuildResult.success(payload=TeamContext(id=validation.payload))
             
             if agent is not None:
                 validation = agent_service.validator.validate(agent)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                # If name is correct create a TeamContext and return it.
-                return BuildResult.success(payload=TeamContext(agent=agent))
+                # If agent is correct create a agent.TeamContext and return it.
+                return BuildResult.success(payload=TeamContext(agent=validation.payload))
             
             if name is not None:
-                validation = team_validator.validate_name(name)
+                validation = schema_validator.verify_name_in_schema(candidate=name)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                # If name is correct create a TeamContext and return it.
-                return BuildResult.success(payload=TeamContext(name=name))
+                # If name is correct create a name.TeamContext and return it.
+                return BuildResult.success(payload=TeamContext(name=validation.payload))
 
             if color is not None:
-                validation = team_validator.validate_color(color)
+                validation = schema_validator.verify_color_in_schema(candidate=color)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                # If id color is correct create a TeamContext and return it.
-                return BuildResult.success(payload=TeamContext(color=color))
+                # If color is correct create a color.TeamContext and return it.
+                return BuildResult.success(payload=TeamContext(color=validation.payload))
+            
+            if game is not None:
+                validation = game_service.validator.validate(candidate=color)
+                if validation.is_failure():
+                    return BuildResult.failure(validation.exception)
+                # If game is correct create a game.TeamContext and return it.
+                return BuildResult.success(payload=TeamContext(game=validation.payload))
             
         # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
         # then return the exceptions inside a BuildResult.
