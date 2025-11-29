@@ -153,7 +153,31 @@ class TeamValidator(Validator[Team]):
             agent_service: AgentService = AgentService(),
             team_context_service: TeamContextService = TeamContextService(),
     ) -> ValidationResult[(Team, Agent)]:
-        """"""
+        """
+        # ACTION:
+        1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
+        2.  Use agent_service to certify agent_candidate is a safe agent. If so pull from validation_result payload.
+        3.  If team.agent != agent return an exception inside a ValidationResult.
+        4.  Build a search_context for the team with team_context service.
+        5.  Search for the team inside agent.team_assignments.
+        6.  If the search generates an error or produces an no hits return an exception inside a ValidationResult.
+        7.  If all checks pass return the (team, agent) registration tuple.
+
+        # PARAMETERS:
+            *   team_candidate (Any)
+            *   agent_candidate (Any)
+            *   agent_service (AgentService)
+            *   team_context (TeamContextService)
+
+        # Returns:
+        ValidationResult[(Team, Agent)] containing either:
+            - On success:   (Team,Agent) in the payload.
+            - On failure:   Exception.
+
+        # RAISES:
+            *   TeamMismatchesAgentException
+            *   TeamNotRegisteredWithAgentException
+        """
         method = "TeamValidator.verify_agent_has_registered_team"
         
         try:
@@ -210,7 +234,27 @@ class TeamValidator(Validator[Team]):
             game_candidate: Any,
             game_service: GameService = GameService(),
     ) -> ValidationResult[(Team, Game)]:
-        """"""
+        """
+        # ACTION:
+        1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
+        2.  Use agent_service to certify agent_candidate is a safe agent. If so pull from validation_result payload.
+        3.  If team.game != game return an exception inside a ValidationResult.
+        4.  If all checks pass return a ValidationResult containing the (team, game) relationship tuple.
+
+        # PARAMETERS:
+            *   team_candidate (Any)
+            *   agent_candidate (Any)
+            *   agent_service (AgentService)
+            *   team_context (TeamContextService)
+
+        # Returns:
+        ValidationResult[(Team, Agent)] containing either:
+            - On success:   (Team,Agent) in the payload.
+            - On failure:   Exception.
+
+        # RAISES:
+            *   NoTeamGameRelationshipException
+        """
         method = "TeamValidator.verify_team_and_game_relationship"
         
         try:
