@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/designation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/designation/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/id/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/id/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/name/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/name/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/quota/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/quota/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/ransom/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/ransom/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/spec/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/spec/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/spec/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/spec/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/spec/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/designation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/designation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/schema/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/schema/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/rook/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/spec/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -663,7 +652,7 @@
       <workItem from="1764162921976" duration="42682000" />
       <workItem from="1764218711944" duration="22870000" />
       <workItem from="1764266108566" duration="9765000" />
-      <workItem from="1764285644086" duration="118543000" />
+      <workItem from="1764285644086" duration="118845000" />
     </task>
     <servers />
   </component>
