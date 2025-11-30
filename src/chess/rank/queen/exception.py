@@ -7,6 +7,8 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
+
+from chess.system import ValidationException
 from chess.rank import (
     ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
     RankRansomException, TeamQuotaException
@@ -15,6 +17,9 @@ from chess.rank import (
 __all__ = [
     # ======================# QUEEN EXCEPTION SUPER CLASS #======================#
     "QueenException",
+    # ======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
+    "InvalidQueenException",
+    "NullQueenException",
     # ======================# RANK_DESIGNATION #======================#
     "NotQueenDesignationException",
     # ======================# RANK_ID EXCEPTION #======================#
@@ -33,11 +38,22 @@ __all__ = [
 # ======================# QUEEN EXCEPTION SUPER CLASS #======================#
 class QueenException(RankException):
     """
-    Catchall for exceptions organic to Queen properties and its atomic operations. 
-    Use subclass exceptions in debugging
-    """
+    Catchall for exceptions organic to Queen properties and its atomic operations."""
     ERROR_CODE = "QUEEN ERROR"
     DEFAULT_MESSAGE = "Queen raised an exception."
+
+
+# ======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
+class InvalidQueenException(QueenException, ValidationException):
+    """Catchall Exception for QueenValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "QUEEN_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Queen validation failed."
+
+
+class NullQueenException(QueenException, ValidationException):
+    """Raised if an entity, method, or operation expects a Queen but gets null instead."""
+    ERROR_CODE = "NULL_QUEEN_ERROR"
+    DEFAULT_MESSAGE = "Queen cannot be null."
 
 
 # ======================# RANK_DESIGNATION #======================#

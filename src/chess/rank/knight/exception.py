@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
-
+from chess.system import ValidationException
 from chess.rank import (
     ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
     RankRansomException, TeamQuotaException
@@ -15,6 +15,9 @@ from chess.rank import (
 __all__ = [
     # ======================# KNIGHT EXCEPTION SUPER CLASS #======================#
     "KnightException",
+    # ======================# KNIGHT VALIDATION EXCEPTION SUPER CLASS #======================#
+    "InvalidKnightException",
+    "NullKnightException",
     # ======================# RANK_DESIGNATION #======================#
     "NotKnightDesignationException",
     # ======================# RANK_ID EXCEPTION #======================#
@@ -33,11 +36,22 @@ __all__ = [
 # ======================# KNIGHT EXCEPTION SUPER CLASS #======================#
 class KnightException(RankException):
     """
-    Catchall for exceptions organic to Knight properties and its atomic operations. 
-    Use subclass exceptions in debugging
-    """
+    Catchall for exceptions organic to Knight properties and its atomic operations."""
     ERROR_CODE = "KNIGHT ERROR"
     DEFAULT_MESSAGE = "Knight raised an exception."
+
+
+# ======================# KNIGHT VALIDATION EXCEPTION SUPER CLASS #======================#
+class InvalidKnightException(KnightException, ValidationException):
+    """Catchall Exception for KnightValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "KNIGHT_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Knight validation failed."
+
+
+class NullKnightException(KnightException, ValidationException):
+    """Raised if an entity, method, or operation expects a Knight but gets null instead."""
+    ERROR_CODE = "NULL_KNIGHT_ERROR"
+    DEFAULT_MESSAGE = "Knight cannot be null."
 
 
 # ======================# RANK_DESIGNATION #======================#

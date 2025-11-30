@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
-
+from chess.system import ValidationException
 from chess.rank import (
     ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
     RankRansomException, TeamQuotaException
@@ -15,6 +15,9 @@ from chess.rank import (
 __all__ = [
     # ======================# KING EXCEPTION SUPER CLASS #======================#
     "KingException",
+    # ======================# KING VALIDATION EXCEPTION SUPER CLASS #======================#
+    "InvalidKingException",
+    "NullKingException",
     # ======================# RANK_DESIGNATION #======================#
     "NotKingDesignationException",
     # ======================# RANK_ID EXCEPTION #======================#
@@ -29,14 +32,26 @@ __all__ = [
     "ImproperKingMoveException",
 ]
 
+
 # ======================# KING EXCEPTION SUPER CLASS #======================#
 class KingException(RankException):
     """
-    Catchall for exceptions organic to King properties and its atomic operations. 
-    Use subclass exceptions in debugging
-    """
+    Catchall for exceptions organic to King properties and its atomic operations."""
     ERROR_CODE = "KING ERROR"
     DEFAULT_MESSAGE = "King raised an exception."
+
+
+# ======================# KING VALIDATION EXCEPTION SUPER CLASS #======================#
+class InvalidKingException(KingException, ValidationException):
+    """Catchall Exception for KingValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "KING_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "King validation failed."
+
+
+class NullKingException(KingException, ValidationException):
+    """Raised if an entity, method, or operation expects a King but gets null instead."""
+    ERROR_CODE = "NULL_KING_ERROR"
+    DEFAULT_MESSAGE = "King cannot be null."
 
 
 # ======================# RANK_DESIGNATION #======================#

@@ -7,14 +7,20 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
+
+from chess.system import ValidationException
 from chess.rank import (
     ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
     RankRansomException, TeamQuotaException
 )
 
+
 __all__ = [
     # ======================# ROOK EXCEPTION SUPER CLASS #======================#
     "RookException",
+    # ======================# ROOK VALIDATION EXCEPTION SUPER CLASS #======================#
+    "InvalidRookException",
+    "NullRookException",
     # ======================# RANK_DESIGNATION #======================#
     "NotRookDesignationException",
     # ======================# RANK_ID EXCEPTION #======================#
@@ -33,11 +39,22 @@ __all__ = [
 # ======================# ROOK EXCEPTION SUPER CLASS #======================#
 class RookException(RankException):
     """
-    Catchall for exceptions organic to Rook properties and its atomic operations.
-    Use subclass exceptions in debugging
-    """
+    Catchall for exceptions organic to Rook properties and its atomic operations."""
     ERROR_CODE = "ROOK ERROR"
     DEFAULT_MESSAGE = "Rook raised an exception."
+
+
+# ======================# ROOK VALIDATION EXCEPTION SUPER CLASS #======================#
+class InvalidRookException(RookException, ValidationException):
+    """Catchall Exception for RookValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "ROOK_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Rook validation failed."
+
+
+class NullRookException(RookException, ValidationException):
+    """Raised if an entity, method, or operation expects a Rook but gets null instead."""
+    ERROR_CODE = "NULL_ROOK_ERROR"
+    DEFAULT_MESSAGE = "Rook cannot be null."
 
 
 # ======================# RANK_DESIGNATION #======================#

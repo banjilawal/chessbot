@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 
+from chess.system import ValidationException
 from chess.rank import (
     ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
     RankRansomException, TeamQuotaException
@@ -16,6 +17,9 @@ from chess.rank import (
 __all__ = [
     # ======================# PAWN EXCEPTION SUPER CLASS #======================#
     "PawnException",
+    # ======================# PAWN VALIDATION EXCEPTION SUPER CLASS #======================#
+    "InvalidPawnException",
+    "NullPawnException",
     # ======================# RANK_DESIGNATION #======================#
     "NotPawnDesignationException",
     # ======================# RANK_ID EXCEPTION #======================#
@@ -34,11 +38,22 @@ __all__ = [
 # ======================# PAWN EXCEPTION SUPER CLASS #======================#
 class PawnException(RankException):
     """
-    Catchall for exceptions organic to Pawn properties and its atomic operations. 
-    Use subclass exceptions in debugging
-    """
+    Catchall for exceptions organic to Pawn properties and its atomic operations."""
     ERROR_CODE = "PAWN ERROR"
     DEFAULT_MESSAGE = "Pawn raised an exception."
+
+
+# ======================# PAWN VALIDATION EXCEPTION SUPER CLASS #======================#
+class InvalidPawnException(PawnException, ValidationException):
+    """Catchall Exception for PawnValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "PAWN_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Pawn validation failed."
+
+
+class NullPawnException(PawnException, ValidationException):
+    """Raised if an entity, method, or operation expects a Pawn but gets null instead."""
+    ERROR_CODE = "NULL_PAWN_ERROR"
+    DEFAULT_MESSAGE = "Pawn cannot be null."
 
 
 # ======================# RANK_DESIGNATION #======================#
