@@ -15,3 +15,4 @@ None
 # Modules
 from .exception import *
 from .bishop import Bishop
+from .validator import BishopValidator

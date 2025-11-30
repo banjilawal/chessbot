@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .exception import *
 from .king import King
+from .exception import *
 from .validator import KingValidator

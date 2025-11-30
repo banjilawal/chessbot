@@ -9,11 +9,15 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import LoggingLevelRouter, Validator, ValidationResult
 from chess.rank import (
-    Rank, King, Queen, Rook, Bishop, Knight, Pawn, RankIdValidator, RankNameValidator, RankQuotaValidator,
-    RankRansomValidator, NullRankException, InvalidRankException, RankDesignationValidator
+    Bishop, BishopValidator, InvalidRankException, King, KingValidator, Knight, KnightValidator, NullRankException,
+    Pawn, PawnValidator,
+    Queen,
+    QueenValidator,
+    Rank,
+    Rook, RookValidator
 )
+from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
 
 class RankValidatorFactory(Validator[Rank]):
@@ -37,11 +41,12 @@ class RankValidatorFactory(Validator[Rank]):
     def validate(
             cls,
             candidate: Any,
-            id_validator: type[RankIdValidator] = RankIdValidator,
-            name_validator: type[RankNameValidator] = RankNameValidator,
-            quota_validator: type[RankQuotaValidator] = RankQuotaValidator,
-            ransom_validator: type[RankRansomValidator] = RankRansomValidator,
-            designation_validator: type[RankDesignationValidator] = RankDesignationValidator,
+            rook_validator: RookValidator = RookValidator(),
+            king_validator: KingValidator = KingValidator(),
+            pawn_validator: PawnValidator = PawnValidator(),
+            queen_validator: QueenValidator = QueenValidator(),
+            knight_validator: KnightValidator = KnightValidator(),
+            bishop_validator: BishopValidator = BishopValidator(),
     ) -> ValidationResult[Rank]:
         """
         # ACTION:
@@ -80,75 +85,29 @@ class RankValidatorFactory(Validator[Rank]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRankException(
-                        f"{method} {NullRankException.DEFAULT_MESSAGE}"
-                    )
+                    NullRankException(f"{method} {NullRankException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, Rank):
                 return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected a Rank got {type(candidate).__name__} instead."
-                    )
+                    TypeError(f"{method}: Expected a Rank got {type(candidate).__name__} instead.")
                 )
-            
             rank = cast(Rank, candidate)
             
             if isinstance(candidate, King):
-                return king_rank
+                return king_validator.validate(rank)
             if isinstance(candidate, Queen):
-                rank = cast(Queen, candidate)
+                return queen_validator.validate(rank)
             if isinstance(candidate, Rook):
-                rank = cast(Rook, candidate)
+                return rook_validator.validate(rank)
             if isinstance(candidate, Bishop):
-                rank = cast(Bishop, candidate)
+                return bishop_validator.validate(rank)
             if isinstance(candidate, Knight):
-                rank = cast(Knight, candidate)
+                return knight_validator.validate(rank)
             if isinstance(candidate, Pawn):
-                rank = cast(Pawn, candidate)
-            
-            id_validation = id_validator.validate(rank=rank, candidate=rank.id)
-            if id_validation.is_failure():
-                return ValidationResult.failure(id_validation.exception)
-            
-            name_validation = name_validator.validate(rank=rank, candidate=rank.name)
-            if name_validation.is_failure():
-                return ValidationResult.failure(name_validation.exception)
-            
-            designation_validation = designation_validator.validate(rank=rank, candidate=rank.designation)
-            if designation_validation.is_failure():
-                return ValidationResult.failure(designation_validation.exception)
-            
-            ransom_validation = ransom_validator.validate(rank=rank, candidate=rank.ransom)
-            if ransom_validation.is_failure():
-                return ValidationResult.failure(ransom_validation.exception)
-            
-            quota_validation = quota_validator.validate(rank=rank, candidate=rank.ransom)
-            if quota_validation.is_failure():
-                return ValidationResult.failure(quota_validation.exception)
+                return pawn_validator.validate(rank)
         
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidRankException(
-                    ex=ex,
-                    message=f"{method}: "
-                            f"{InvalidRankException.DEFAULT_MESSAGE}",
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_ransom_in_bounds(cls, ransom_candidate: Any) -> ValidationResult[int]:
-        try:
-            return ValidationResult.failure(InvalidRankException())
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidRankException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidRankException}"
-                    )
-                )
+                InvalidRankException(ex=ex, message=f"{method}: {InvalidRankException.DEFAULT_MESSAGE}")
             )

@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .exception import *
 from .pawn import Pawn
+from .exception import *
 from .validator import PawnValidator
