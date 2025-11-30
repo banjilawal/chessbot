@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     "IdEmitter",
-    "id_emitter"
+    "id_emitter",
 ]
 
 
@@ -158,8 +158,5 @@ class IdEmitter:
     def directive_id(self) -> int:
         self._directive_id += 1
         return self._directive_id
-    
-
-
 
 id_emitter = IdEmitter()

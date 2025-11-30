@@ -19,9 +19,7 @@ __all__ = [
 # ======================# PIECE VALIDATION EXCEPTION SUPER CLASS #======================#
 class InvalidPieceException(PieceException, ValidationException):
     """
-    Catchall Exception for PieceValidator when a candidate fails a sanity check.""" Super
-    class of all Piece validation exceptions.
-    """
+    Catchall Exception for PieceValidator when a candidate fails a sanity check."""
     ERROR_CODE = "PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Piece validation failed."
 

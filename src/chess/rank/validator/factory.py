@@ -96,7 +96,7 @@ class RankValidatorFactory(Validator[Rank]):
             rank = cast(Rank, candidate)
             
             if isinstance(candidate, King):
-                rank = cast(King, candidate)
+                return king_rank
             if isinstance(candidate, Queen):
                 rank = cast(Queen, candidate)
             if isinstance(candidate, Rook):

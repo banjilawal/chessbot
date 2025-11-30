@@ -14,7 +14,7 @@ version: 1.0.0
 # Modules
 from .exception import *
 from .auto import AutoId
-from .emitter import IdEmitter
+from .emitter import IdEmitter, id_emitter
 from .validator import IdValidator
 
 

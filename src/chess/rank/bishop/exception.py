@@ -7,6 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
+from chess.system import ValidationException
 from chess.rank import (
     ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
     RankRansomException, TeamQuotaException
@@ -15,6 +16,9 @@ from chess.rank import (
 __all__ = [
     # ======================# BISHOP EXCEPTION SUPER CLASS #======================#
     "BishopException",
+    # ======================# BISHOP VALIDATION EXCEPTION SUPER CLASS #======================#
+    "InvalidBishopException",
+    "NullBishopException",
     # ======================# RANK_DESIGNATION #======================#
     "NotBishopDesignationException",
     # ======================# RANK_ID EXCEPTION #======================#
@@ -29,15 +33,25 @@ __all__ = [
     "ImproperBishopMoveException",
 ]
 
-
 # ======================# BISHOP EXCEPTION SUPER CLASS #======================#
 class BishopException(RankException):
     """
-    Catchall for exceptions organic to Bishop properties and its atomic operations. 
-    Use subclass exceptions in debugging
-    """
+    Catchall for exceptions organic to Bishop properties and its atomic operations."""
     ERROR_CODE = "BISHOP ERROR"
     DEFAULT_MESSAGE = "Bishop raised an exception."
+
+
+# ======================# BISHOP VALIDATION EXCEPTION SUPER CLASS #======================#
+class InvalidBishopException(BishopException, ValidationException):
+    """Catchall Exception for BishopValidator when a candidate fails a sanity check."""
+    ERROR_CODE = "BISHOP_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Bishop validation failed."
+
+
+class NullBishopException(BishopException, ValidationException):
+    """Raised if an entity, method, or operation expects a Bishop but gets null instead."""
+    ERROR_CODE = "NULL_BISHOP_ERROR"
+    DEFAULT_MESSAGE = "Bishop cannot be null."
 
 
 # ======================# RANK_DESIGNATION #======================#

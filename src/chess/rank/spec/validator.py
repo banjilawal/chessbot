@@ -324,7 +324,7 @@ class RankSpecValidator(Validator[RankSpec]):
         """
         method = "RankSpecValidator.verify_in_team_quota_spec"
         try:
-            # Tes if the candidate is a safe number.
+            # Test if the candidate is a safe number.
             number_validation = number_validator.validate(candidate)
             if number_validation.is_failure():
                 return ValidationResult.failure(number_validation.exception)

@@ -9,11 +9,13 @@ version: 1.0.0
 
 from abc import ABC, abstractmethod
 
-from chess.coord import Coord, CoordService
+
 from chess.piece import Piece
 from chess.geometry import Quadrant
-from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
 from chess.vector import VectorService
+from chess.coord import Coord, CoordService
+from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
+
 
 
 class Rank(ABC):

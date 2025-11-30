@@ -7,7 +7,7 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from chess.system import ChessException, BuildFailedException, NullException, ValidationException
+from chess.system import ChessException, BuildFailedException, NullException
 
 __all__ = [
     # ======================# RANK EXCEPTION SUPER CLASS #======================#
