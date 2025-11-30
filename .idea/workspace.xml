@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/rook/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/spec/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/spec/exception/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/rook/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/bishop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/queen/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/rook/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,11 +302,11 @@
       <recent name="$PROJECT_DIR$/src/chess/agent/model/machne" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/chess/rank/spec/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/system/err/text" />
-      <recent name="$PROJECT_DIR$/src/chess/system/err/number" />
-      <recent name="$PROJECT_DIR$/src/chess/team/service/data/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/team/service/data/exception/service" />
+      <recent name="$PROJECT_DIR$/src/chess/rank/rook" />
+      <recent name="$PROJECT_DIR$/src/chess/rank/queen" />
+      <recent name="$PROJECT_DIR$/src/chess/rank/pawn" />
+      <recent name="$PROJECT_DIR$/src/chess/rank/knight" />
+      <recent name="$PROJECT_DIR$/src/chess/rank/king" />
     </key>
   </component>
   <component name="RunManager" selected="Python.factory">
@@ -436,7 +439,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/pawn.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/pawn/pawn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -652,7 +655,7 @@
       <workItem from="1764162921976" duration="42682000" />
       <workItem from="1764218711944" duration="22870000" />
       <workItem from="1764266108566" duration="9765000" />
-      <workItem from="1764285644086" duration="118845000" />
+      <workItem from="1764285644086" duration="119653000" />
     </task>
     <servers />
   </component>
