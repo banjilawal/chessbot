@@ -15,3 +15,4 @@ None
 # Modules
 from .exception import *
 from .knight import Knight
+from .validator import  KnightValidator

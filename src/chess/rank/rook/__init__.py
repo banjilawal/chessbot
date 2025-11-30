@@ -15,3 +15,4 @@ None
 # Modules
 from .exception import *
 from .rook import Rook
+from .validator import RookValidator

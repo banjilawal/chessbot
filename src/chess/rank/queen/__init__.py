@@ -15,3 +15,4 @@ None
 # Modules
 from .exception import *
 from .queen import Queen
+from .validator import QueenValidator
