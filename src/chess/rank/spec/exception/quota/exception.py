@@ -50,4 +50,4 @@ class NullTeamQuotaException(TeamQuotaException, NullException):
 class TeamQuotaBoundsException(TeamQuotaException, BoundsException):
     """Raised if the quota is not in RankSpec."""
     ERROR_CODE = "TEAM_QUOTA_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Team quota is not allowed by RankSpec settings."
+    DEFAULT_MESSAGE = "The team_quota is not included in the RankSpec settings."

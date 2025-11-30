@@ -50,4 +50,4 @@ class NullRankDesignationException(RankDesignationException, NullException):
 class RankDesignationBoundsException(RankDesignationException, BoundsException):
     """Raised if the designation is not in RankSpec."""
     ERROR_CODE = "RANK_DESIGNATION_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Designation is not allowed by RankSpec settings."
+    DEFAULT_MESSAGE = "The designation is not included in the RankSpec settings."

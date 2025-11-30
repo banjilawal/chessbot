@@ -50,4 +50,4 @@ class NullRankRansomException(RankRansomException, NullException):
 class RankRansomBoundsException(RankRansomException, BoundsException):
     """Raised if the ransom is not in RankSpec."""
     ERROR_CODE = "RANK_RANSOM_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Ransom is not allowed by RankSpec settings."
+    DEFAULT_MESSAGE = "The ransom is not included in the RankSpec settings."

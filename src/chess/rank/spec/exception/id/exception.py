@@ -50,4 +50,4 @@ class NullRankIdException(RankIdException, NullException):
 class RankIdBoundsException(RankIdException, BoundsException):
     """Raised if the id is not in RankSpec."""
     ERROR_CODE = "RANK_ID_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Id is not allowed by RankSpec settings."
+    DEFAULT_MESSAGE = "The id is not included in the RankSpec settings."

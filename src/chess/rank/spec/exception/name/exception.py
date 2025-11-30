@@ -51,4 +51,4 @@ class NullRankNameException(RankNameException, NullException):
 class RankNameBoundsException(RankNameException, BoundsException):
     """Raised if the name is not in RankSpec."""
     ERROR_CODE = "RANK_NAME_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Name is not allowed by RankSpec settings."
+    DEFAULT_MESSAGE = "The name is not included in the RankSpec settings."

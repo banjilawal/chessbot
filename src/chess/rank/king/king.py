@@ -1,7 +1,7 @@
-# src/chess/rank/king.py
+# src/chess/rank/king/king.py
 
 """
-Module: chess.rank.king
+Module: chess.rank.king.king
 Author: Banji Lawal
 Created: 2025-07-25
 version: 1.0.0
