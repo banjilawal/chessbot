@@ -1,10 +1,10 @@
-from chess.rank.bishop import Bishop
-from chess.rank.rook import Rook
-from chess.rank.king import King
-from chess.rank.knight import Knight
+from chess.rank.model.bishop import Bishop
+from chess.rank.model.rook import Rook
+from chess.rank.model.king import King
+from chess.rank.model.knight import Knight
 from chess.pawn import Pawn
 from chess.rank.spec import RankSpec
-from chess.rank.queen import Queen
+from chess.rank.model.queen import Queen
 
 
 class RankBuilder:
