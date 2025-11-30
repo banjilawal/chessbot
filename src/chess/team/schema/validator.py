@@ -151,7 +151,6 @@ class TeamSchemaValidator(Validator[TeamSchema]):
             # cast candidate to GameColor for the last check.
             color = cast(GameColor, candidate)
             
-  
             if color not in team_schema_hedge.allowed_colors:
                 return ValidationResult.failure(
                     TeamColorBoundsException(f"{method}: {TeamColorBoundsException.DEFAULT_MESSAGE}")

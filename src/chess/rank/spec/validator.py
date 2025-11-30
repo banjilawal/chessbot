@@ -8,17 +8,13 @@ version: 1.0.0
 """
 from typing import Any, cast
 
-from chess.rank import InvalidRankSpecException, NullRankSpecException, RankSpec
-from chess.rank.spec.exception import (
-    RankDesignationBoundsException, RankIdBoundsException, RankNameBoundsException,
-    RankQuotaBoundsException, RankRansomBoundsException
+from chess.rank import (
+    InvalidRankDesignationException, InvalidRankIdException, InvalidRankNameException, InvalidRankRansomException,
+    InvalidRankSpecException, InvalidTeamQuotaException, NullRankSpecException, RankSpec, TeamQuotaBoundsException,
+    RankDesignationBoundsException, RankIdBoundsException, RankNameBoundsException, RankRansomBoundsException
 )
 from chess.system import (
-    IdNullException, IdentityService, InvalidIdException, InvalidNameException, LoggingLevelRouter, NullNameException,
-    NullNumberException,
-    NullStringException, TextException,
-    ValidationResult,
-    Validator
+    IdentityService, LoggingLevelRouter, NumberValidator, TextValidator, ValidationResult, Validator
 )
 
 
@@ -43,21 +39,18 @@ class RankSpecValidator(Validator[RankSpec]):
     Default Constructor
 
     # CLASS METHODS:
-        ## Validate signature:
-               validate(candidate: Any) -> ValidationResult[RankSpec]:
-
-        ## verify_id_in_spec signature:
-               verify_id_in_spec(
-                        candidate: Any,
-                        team_spec_hedge: RankSpec = RankSpec(),
-                ) -> ValidationResult[Int]:
-
-        ## verify_name_in_spec signature:
-               verify_name_in_spec(
-                        candidate: Any,
-                        team_spec_hedge: RankSpec = RankSpec(),
-                ) -> ValidationResult[str]:
-
+        *   validate(candidate: Any) -> ValidationResult[RankSpec]:
+        
+        *   verify_id_in_spec(candidate: Any, identity_service: IdentityService) -> ValidationResult[int]:
+        
+        *   verify_name_in_spec(candidate: Any, identity_service: IdentityService) -> ValidationResult[str]:
+        
+        *   verify_designation_in_spec(candidate: Any, text_validator: TextValidator) -> ValidationResult[str]:
+        
+        *   verify_ransom_in_spec(candidate: Any, number_validator: NumberValidator) -> ValidationResult[int]:
+        
+        *   verify_quota_in_spec(candidate: Any, number_validator: NumberValidator) -> ValidationResult[int]:
+        
     # INSTANCE METHODS:
     None
     """
@@ -111,248 +104,20 @@ class RankSpecValidator(Validator[RankSpec]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_in_id_spec(
-            cls,
-            candidate: Any
-    ) -> ValidationResult[int]:
-        """
-        # ACTION:
-        1.  Check candidate is not null and is an int instance. If both conditions are true
-            cast to a number
-        2.  If number is not inside the set of RankSpec.ids send a
-            ValidationResult containing an exception.
-        4.  If all checks pass return the id in a ValidationResult
-
-        # PARAMETERS:
-            *   candidate (Any)
-
-        # Returns:
-        ValidationResult[Int] containing either:
-            - On success:   int in the payload.
-            - On failure:   Exception.
-
-        # RAISES:
-            *   TypeError
-            *   NullRankSpecException
-            *   TeamColorBoundsException
-            *   InvalidIntException
-        """
-        method = "RankSpecValidator.verify_id_in_spec"
-        
-        try:
-            # Start the error detection process.
-            if candidate is None:
-                return ValidationResult.failure(
-                    IdNullException(f"{method}: {IdNullException.DEFAULT_MESSAGE}")
-                )
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected int, got {type(candidate).__name__} instead.")
-                )
-            # cast candidate to Int for the last check.
-            id = cast(int, candidate)
-            
-  
-            if int() not in RankSpec.allowed_ids():
-                return ValidationResult.failure(
-                    RankIdBoundsException(f"{method}: {RankIdBoundsException.DEFAULT_MESSAGE}")
-                )
-            # If no errors are detected send the verified color inside a ValidationResult.
-            return ValidationResult.success(payload=id)
-            
-            # Finally, if there is an unhandled exception Wrap a InvalidIntException around it
-            # then return the exceptions inside a ValidationResult.
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidIdException(ex=ex, message=f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor()
-    def verify_in_name_spec(
-            cls,
-            candidate: Any,
-            identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[str]:
-        """
-        # ACTION:
-        1.  Check candidate is not null and is a str instance. If both conditions are true
-            cast to a str
-        2.  If str is not inside the set of RankSpec.names send a
-            ValidationResult containing an exception.
-        4.  If all checks pass return the name in a ValidationResult
-
-        # PARAMETERS:
-            *   candidate (Any)
-            *   team_spec_hedge (RankSpec)
-
-        # Returns:
-        ValidationResult[str] containing either:
-            - On success:   str in the payload.
-            - On failure:   Exception.
-
-        # RAISES:
-            *   TypeError
-            *   NullStringException
-            *   TeamNameBoundsException
-            *   TextException
-        """
-        method = "RankSpecValidator.verify_name_in_spec"
-        
-        try:
-            # Start the error detection process.
-            name_validation = identity_service.validate_name(candidate)
-            if name_validation.is_failure():
-                return ValidationResult.failure(name_validation.exception)
-            # Get the name from the validation payload on success.
-            name = name_validation.payload
-            
-            if name.upper() not in RankSpec.allowed_upper_case_names():
-                return ValidationResult.failure(
-                    RankNameBoundsException(f"{method} {RankNameBoundsException.DEFAULT_MESSAGE}")
-                )
-            # If no errors are detected send the name inside a ValidationResult.
-            return ValidationResult.success(payload=name)
-            
-            # Finally, if there is an unhandled exception Wrap a TextException around it
-            # then return the exceptions inside a ValidationResult.
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidNameException(ex=ex, message=f"{method} {InvalidNameException.DEFAULT_MESSAGE}")
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
     def verify_in_ransom_spec(
             cls,
-            candidate: Any
-    ) -> ValidationResult[int]:
-        """
-        # ACTION:
-        1.  Check candidate is not null and is an int. If both conditions are true
-            cast to an int otherwise return an exception inside the ValidationResult.
-        2.  If value is not inside the set of RankSpec.ransoms send a
-            ValidationResult containing an exception.
-        4.  If all checks pass return the value in a ValidationResult
-
-        # PARAMETERS:
-            *   candidate (Any)
-
-        # Returns:
-        ValidationResult[Iint] containing either:
-            - On success:   int in the payload.
-            - On failure:   Exception.
-
-        # RAISES:
-            *   TypeError
-            *   NullNumberException
-            *   TeamColorBoundsException
-            *   InvalidIntException
-        """
-        method = "RankSpecValidator.verify_id_in_spec"
-        
-        try:
-            # Start the error detection process.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
-                )
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected int, got {type(candidate).__name__} instead.")
-                )
-            # cast candidate to Int for the last check.
-            ransom = cast(int, candidate)
-            
-            if ransom not in RankSpec.allowed_ransoms():
-                return ValidationResult.failure(
-                    RankRansomBoundsException(f"{method}: {RankRansomBoundsException.DEFAULT_MESSAGE}")
-                )
-            # If no errors are detected send the verified ransom value inside a ValidationResult.
-            return ValidationResult.success(payload=ransom)
-            
-            # Finally, if there is an unhandled exception Wrap a InvalidIntException around it
-            # then return the exceptions inside a ValidationResult.
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidIdException(ex=ex, message=f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor()
-    def verify_in_designation_spec(
-            cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[str]:
-        """
-        # ACTION:
-        1.  Check candidate is not null and is a str instance. If both conditions are true
-            cast to a str
-        2.  If str is not inside the set of RankSpec.names send a
-            ValidationResult containing an exception.
-        4.  If all checks pass return the name in a ValidationResult
-
-        # PARAMETERS:
-            *   candidate (Any)
-            *   team_spec_hedge (RankSpec)
-
-        # Returns:
-        ValidationResult[str] containing either:
-            - On success:   str in the payload.
-            - On failure:   Exception.
-
-        # RAISES:
-            *   TypeError
-            *   NullStringException
-            *   TeamNameBoundsException
-            *   TextException
-        """
-        method = "RankSpecValidator.verify_name_in_spec"
-        
-        try:
-            # Start the error detection process.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullStringException(f"{method}: {NullStringException.DEFAULT_MESSAGE}")
-                )
-            if not isinstance(candidate, str):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected str, got {type(candidate).__name__} instead.")
-                )
-            # Get the name from the validation payload on success.
-            designation = cast(str, candidate)
-            
-            if designation.upper() not in RankSpec.allowed_upper_case_designations():
-                return ValidationResult.failure(
-                    RankDesignationBoundsException(f"{method} {RankDesignationBoundsException.DEFAULT_MESSAGE}")
-                )
-            # If no errors are detected send the name inside a ValidationResult.
-            return ValidationResult.success(payload=designation)
-            
-            # Finally, if there is an unhandled exception Wrap a TextException around it
-            # then return the exceptions inside a ValidationResult.
-        except Exception as ex:
-            return ValidationResult.failure(
-                TextException(ex=ex, message=f"{method} {TextException.DEFAULT_MESSAGE}")
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def verify_in_quota_spec(
-            cls,
-            candidate: Any
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Check candidate is not null and is an int instance. If both conditions are true
-            cast to a number
-        2.  If number is not inside the set of RankSpec.team_quotas send a
-            ValidationResult containing an exception.
-        4.  If all checks pass return the quota in a ValidationResult
+        1.  Verify candidate is a safe id using identity_service. If safe get the id. Else return failure.
+        2.  If number not in RankSpec.allowed_ransoms return a failed validation result.
+        3.  If all checks pass the number in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -360,36 +125,221 @@ class RankSpecValidator(Validator[RankSpec]):
             - On failure:   Exception.
 
         # RAISES:
-            *   TypeError
-            *   NullNumberSpecException
-            *   RankQuotaBoundsException
-            *   InvalidNumberException
+            *   RankIdBoundsException
+            *   InvalidRankIdException
         """
-        method = "RankSpecValidator.verify_in_quota_spec"
-        
+        method = "RankSpecValidator.verify_in_id_spec"
         try:
             # Start the error detection process.
-            if candidate is None:
+            id_validation = identity_service.validate_id(candidate)
+            if id_validation.is_failure():
+                return ValidationResult.failure(id_validation.exception)
+                # Next check if id is allowed.
+            id = id_validation.payload
+            if id not in RankSpec.allowed_ids():
                 return ValidationResult.failure(
-                    NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
+                    RankIdBoundsException(f"{method}: {RankIdBoundsException.DEFAULT_MESSAGE}")
                 )
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected int, got {type(candidate).__name__} instead.")
-                )
-            # cast candidate to Int for the last check.
-            quota = cast(int, candidate)
-            
-            if quota not in RankSpec.allowed_quotas():
-                return ValidationResult.failure(
-                    RankQuotaBoundsException(f"{method}: {RankQuotaBoundsException.DEFAULT_MESSAGE}")
-                )
-            # If no errors are detected send the verified color inside a ValidationResult.
+            # If no errors are detected send the verified ransom inside a ValidationResult.
             return ValidationResult.success(payload=id)
             
-            # Finally, if there is an unhandled exception Wrap a InvalidIntException around it
+            # Finally, if there is an unhandled exception Wrap a InvalidRankIdException around it
             # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidNumberException(ex=ex, message=f"{method}: {InvalidNumberException.DEFAULT_MESSAGE}")
+                InvalidRankIdException(ex=ex, message=f"{method}: {InvalidRankIdException.DEFAULT_MESSAGE}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def verify_name_in_spec(
+            cls,
+            candidate: Any,
+            identity_service: IdentityService = IdentityService(),
+    ) -> ValidationResult[str]:
+        """
+        # ACTION:
+        1.  Verify candidate is a safe id using identity_service. If so convert to id. Else return failure.
+        2.  If id not in RankSpec.allowed_ids return a failed validation result.
+        3.  If all checks pass the id in a success validation result.
+
+        # PARAMETERS:
+            *   candidate (Any)
+            *   identity_service (IdentityService)
+
+        # Returns:
+        ValidationResult[str] containing either:
+            - On success:   str in the payload.
+            - On failure:   Exception.
+
+        # RAISES:
+            *   RankNameBoundsException
+            *   InvalidRankNameException
+        """
+        method = "RankSpecValidator.verify_name_in_spec"
+        try:
+            # Test if the candidate is safe text.
+            validation = identity_service.validate_name(candidate)
+            if validation.is_failure():
+                return ValidationResult.failure(validation.exception)
+            # Next check if designation is allowed.
+            name = validation.payload
+            if name.upper() not in RankSpec.allowed_upper_case_names():
+                return ValidationResult.failure(
+                    RankNameBoundsException(f"{method} {RankNameBoundsException.DEFAULT_MESSAGE}")
+                )
+            # If no errors are detected send the name inside a ValidationResult.
+            return ValidationResult.success(payload=name)
+            
+            # Finally, if there is an unhandled exception Wrap a InvalidRankNameException around it
+            # then return the exceptions inside a ValidationResult.
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidRankNameException(ex=ex, message=f"{method} {InvalidRankNameException.DEFAULT_MESSAGE}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def verify_in_ransom_spec(
+            cls,
+            candidate: Any,
+            number_validator: NumberValidator = NumberValidator(),
+    ) -> ValidationResult[int]:
+        """
+        # ACTION:
+        1.  Verify candidate is a safe number using number_validator. If safe get the number. Else return failure.
+        2.  If number not in RankSpec.allowed_ransoms return a failed validation result.
+        3.  If all checks pass the number in a success validation result.
+
+        # PARAMETERS:
+            *   candidate (Any)
+            *   number_validator (NumberValidator)
+
+        # Returns:
+        ValidationResult[int] containing either:
+            - On success:   int in the payload.
+            - On failure:   Exception.
+
+        # RAISES:
+            *   RankRansomBoundsException
+            *   InvalidRankRansomException
+        """
+        method = "RankSpecValidator.verify_in_ransom_spec"
+        try:
+            # Start the error detection process.
+            number_validation = number_validator.validate(candidate)
+            if number_validation.is_failure():
+                return ValidationResult.failure(number_validation.exception)
+                # Next check if ransom is allowed.
+            ransom = number_validation.payload
+            if ransom not in RankSpec.allowed_ransoms():
+                return ValidationResult.failure(
+                    RankRansomBoundsException(f"{method}: {RankRansomBoundsException.DEFAULT_MESSAGE}")
+                )
+            # If no errors are detected send the verified ransom inside a ValidationResult.
+            return ValidationResult.success(payload=ransom)
+            
+            # Finally, if there is an unhandled exception Wrap a InvalidRankRansomException around it
+            # then return the exceptions inside a ValidationResult.
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidRankRansomException(ex=ex, message=f"{method}: {InvalidRankRansomException.DEFAULT_MESSAGE}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor()
+    def verify_in_designation_spec(
+            cls,
+            candidate: Any,
+            text_validator: TextValidator = TextValidator(),
+    ) -> ValidationResult[str]:
+        """
+        # ACTION:
+        1.  Verify candidate is a safe string using text_validator. If safe convert to text. Else return failure.
+        2.  If text not in RankSpec.allowed_designations return a failed validation result.
+        3.  If all checks pass the text in a success validation result.
+
+        # PARAMETERS:
+            *   candidate (Any)
+            *   text_validator (TextValidator)
+
+        # Returns:
+        ValidationResult[str] containing either:
+            - On success:   str in the payload.
+            - On failure:   Exception.
+
+        # RAISES:
+            *   RankDesignationBoundsException
+            *   InvalidRankDesignationException
+        """
+        method = "RankSpecValidator.verify_designation_in_spec"
+        try:
+            # Test if the candidate is safe text.
+            validation = text_validator.validate(candidate)
+            if validation.is_failure():
+                return ValidationResult.failure(validation.exception)
+            # Next check if designation is allowed.
+            designation = validation.payload
+            if designation.upper() not in RankSpec.allowed_upper_case_designations():
+                return ValidationResult.failure(
+                    RankDesignationBoundsException(f"{method} {RankDesignationBoundsException.DEFAULT_MESSAGE}")
+                )
+            # If no errors are detected send the designation inside a ValidationResult.
+            return ValidationResult.success(payload=designation)
+            
+            # Finally, if there is an unhandled exception Wrap an InvalidRankDesignationException around it
+            # then return the exceptions inside a ValidationResult.
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidRankDesignationException(
+                    ex=ex, message=f"{method} {InvalidRankDesignationException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def verify_in_team_quota_spec(
+            cls,
+            candidate: Any,
+            number_validator: NumberValidator = NumberValidator(),
+    ) -> ValidationResult[int]:
+        """
+        # ACTION:
+        1.  Verify candidate is a safe number using number_validator. If safe get the number. Else return failure.
+        2.  If number not in RankSpec.allowed_quotas return a failed validation result.
+        3.  If all checks pass the number in a success validation result.
+
+        # PARAMETERS:
+            *   candidate (Any)
+            *   number_validator (NumberValidator)
+
+        # Returns:
+        ValidationResult[int] containing either:
+            - On success:   int in the payload.
+            - On failure:   Exception.
+
+        # RAISES:
+            *   TeamQuotaBoundsException
+            *   InvalidTeamQuotaException
+        """
+        method = "RankSpecValidator.verify_in_team_quota_spec"
+        try:
+            # Tes if the candidate is a safe number.
+            number_validation = number_validator.validate(candidate)
+            if number_validation.is_failure():
+                return ValidationResult.failure(number_validation.exception)
+            # Next check if team_quota is allowed.
+            team_quota = number_validation.payload
+            if team_quota not in RankSpec.allowed_team_quotas():
+                return ValidationResult.failure(
+                    TeamQuotaBoundsException(f"{method}: {TeamQuotaBoundsException.DEFAULT_MESSAGE}")
+                )
+            # If no errors are detected send the verified team_quota inside a ValidationResult.
+            return ValidationResult.success(payload=team_quota)
+            
+            # Finally, if there is an unhandled exception Wrap an InvalidTeamQuotaException around it
+            # then return the exceptions inside a ValidationResult.
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidTeamQuotaException(ex=ex, message=f"{method}: {InvalidTeamQuotaException.DEFAULT_MESSAGE}")
             )

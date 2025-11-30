@@ -29,27 +29,7 @@ __all__ = [
 ]
 
 
-class RankDesignationException(InvalidRankException):
-    """
-    Super class of exceptions raised by Designation objects. Do not use directly. Subclasses give
-    precise, fined-grained, debugging info.
-    """
-    ERROR_CODE = "RANK_DESIGNATION_ERROR"
-    DEFAULT_MESSAGE = "Rank.designation raised an exception."
 
-
-# ======================# NULL RANK_DESIGNATION EXCEPTIONS #======================#
-class NullRankDesignationException(RankDesignationException, NullException):
-    """Raised if the Rank.designation is validation. This should never happen. It might indicate data inconsistency."""
-    ERROR_CODE = "NULL_RANK_DESIGNATION_ERROR"
-    DEFAULT_MESSAGE = "Rank.designation cannot be validation."
-
-
-# ======================# RANK_DESIGNATION BOUNDS EXCEPTIONS #======================#
-class RankDesignationBoundsException(RankDesignationException):
-    """Raised if the designation is not in RankSpec."""
-    ERROR_CODE = "RANK_DESIGNATION_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The designation is not included in the Rank designation specifications."
 
 
 # ======================# RANK_DESIGNATION INCONSISTENCY EXCEPTIONS #======================#
