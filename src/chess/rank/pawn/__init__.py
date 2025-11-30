@@ -15,4 +15,5 @@ None
 # Modules
 from .pawn import Pawn
 from .exception import *
+from .service import PawnService
 from .validator import PawnValidator

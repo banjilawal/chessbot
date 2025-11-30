@@ -15,4 +15,5 @@ None
 # Modules
 from .king import King
 from .exception import *
+from .service import KingService
 from .validator import KingValidator

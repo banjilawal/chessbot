@@ -15,4 +15,5 @@ None
 # Modules
 from .exception import *
 from .knight import Knight
+from .service import KnightService
 from .validator import  KnightValidator
