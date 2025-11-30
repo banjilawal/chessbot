@@ -10,22 +10,19 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.rank import (
-    Bishop, BishopValidator, InvalidRankException, King, KingValidator, Knight, KnightValidator, NullRankException,
-    Pawn, PawnValidator,
-    Queen,
-    QueenValidator,
-    Rank,
-    Rook, RookValidator
+    Bishop, BishopValidator, InvalidRankException, King, KingValidator, Knight, KnightValidator,
+    NullRankException, Pawn, PawnValidator, Queen, QueenValidator, Rank, Rook, RookValidator
 )
 from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
 
 class RankValidatorFactory(Validator[Rank]):
     """
-    # ROLE: Validation
+    # ROLE: Validation, Verify Data Integrity
 
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of Rank, that meets integrity requirements, before the candidate is used.
+    1.  Verifies a candidate is a Rank instance that meets integrity requirements, before
+        the candidate is used.
 
     # PROVIDES:
     ValidationResult[Rank] containing either:
@@ -33,7 +30,19 @@ class RankValidatorFactory(Validator[Rank]):
         - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes
+
+    # CONSTRUCTOR:
+    Default Constructor
+
+    # CLASS METHODS:
+        def validate(
+                candidate: Any, rook_validator: RookValidator, king_validator: KingValidator,
+                pawn_validator: PawnValidator, queen_validator: QueenValidator,
+                knight_validator: KnightValidator, bishop_validator: BishopValidator,
+        ) -> ValidationResult[Rank]: ValidationResult[(Team, Game)]:
+
+    # INSTANCE METHODS:
+    None
     """
     
     @classmethod
@@ -50,26 +59,20 @@ class RankValidatorFactory(Validator[Rank]):
     ) -> ValidationResult[Rank]:
         """
         # ACTION:
-        1.  Check candidate is not validation.
-        2.  Check if candidate is a Rank.
-        3.  Cast to candidate to its subclass.
-        4.  Validate
-                *   id      ->  with id_validator
-                *   name    ->  with name_validator
-                *   designation  ->  with designation_validator
-                *   team_quota   ->  with quota_validator
-                *   ransom  ->  with ransom_validator
-        5.  If any check fails, return the exception inside a ValidationResult.
-        6.  When all checks pass return the Rank instance inside a ValidationResult.
+        1.  Check if the candidate is null. If so return an exception in a ValidationResult.
+        2.  If the candidate is not a Rank instance send an exception in a ValidationResult.
+        3.  Find the candidate's matching concrete rank and hand off its validation to the
+            subclass validator.
 
         # PARAMETERS:
-            *   candidate (Any): Object to validate.
-            *   id_validator (type[RankIdValidator]=RankIdValidator)
-            *   name_validator (type[RankNameValidator]=RankNameValidator)
-            *   designation_validator (type[RankLetterValidator]=RankLetterValidator)
-            *   quota_validator (type[RankQuotaValidator]=RankQuotaValidator)
-            *   ransom_validator (type[RankRansomValidator]=RankRansomValidator)
-
+            *   candidate (Any)
+            *   rook_validator (RookValidator)
+            *   king_validator (KingValidator)
+            *   pawn_validator (PawnValidator)
+            *   queen_validator (QueenValidator)
+            *   knight_validator (KnightValidator)
+            *   bishop_validator (BishopValidator)
+            
         # Returns:
         ValidationResult[Rank] containing either:
             - On success: Rank in the payload.
@@ -81,19 +84,19 @@ class RankValidatorFactory(Validator[Rank]):
             *   InvalidRankException
         """
         method = "RankValidatorFactory.validate"
-        
         try:
+            # Make sure its not null first.
             if candidate is None:
                 return ValidationResult.failure(
                     NullRankException(f"{method} {NullRankException.DEFAULT_MESSAGE}")
                 )
-            
+            # Verify candidate is a Rank instance. Cast to a Rank if so.
             if not isinstance(candidate, Rank):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected a Rank got {type(candidate).__name__} instead.")
                 )
             rank = cast(Rank, candidate)
-            
+            # Pick which validator to run.
             if isinstance(candidate, King):
                 return king_validator.validate(rank)
             if isinstance(candidate, Queen):
@@ -106,7 +109,10 @@ class RankValidatorFactory(Validator[Rank]):
                 return knight_validator.validate(rank)
             if isinstance(candidate, Pawn):
                 return pawn_validator.validate(rank)
-        
+            
+        # If the candidate is not any of the concrete Ranks control passes to the except block.
+        # The unhandled exception is wrapped inside an InvalidRankException which is sent inside
+        # a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRankException(ex=ex, message=f"{method}: {InvalidRankException.DEFAULT_MESSAGE}")

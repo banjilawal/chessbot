@@ -33,6 +33,26 @@ class SquareValidator(Validator[Square]):
         - On failure: Exception.
 
     # ATTRIBUTES:
+    
+    # CONSTRUCTOR:
+    Default Constructor
+    
+    # CLASS METHODS:
+           validate(
+                candidate: Any, board_service: BoardService, coord_service: CoordService,
+                identity_service: IdentityService
+            ) -> ValidationResult[Square]:
+            
+           verify_agent_has_registered_team(
+                team_candidate: Any, agent_candidate: Any, agent_service: AgentService,
+                team_context_service: TeamContextService,
+            ) -> ValidationResult[(Team, Agent)]:
+            
+           verify_team_and_game_relationship(
+                team_candidate: Any, game_candidate: Any, game_service: GameService
+            ) -> ValidationResult[(Team, Game)]:
+    
+    # INSTANCE METHODS:
     None
     """
     
@@ -71,47 +91,42 @@ class SquareValidator(Validator[Square]):
             * InvalidSquareException
         """
         method = "SquareValidator.validate"
-        
         try:
+            # Make sure its not null first.
             if candidate is None:
                 return ValidationResult.failure(
                     NullSquareException(f"{method}: {NullSquareException.DEFAULT_MESSAGE}")
                 )
-            
+            # Verify candidate is a Square instance
             if not isinstance(candidate, Square):
                 return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected Square, but got {type(candidate).__name__} instead."
-                    )
+                    TypeError(f"{method}: Expected Square, but got {type(candidate).__name__} instead.")
                 )
-            
             square = cast(Square, candidate)
             
+            # Verify the Square.id and Square.name
             identity_validation = identity_service.validate_identity(
                 id_candidate=square.id,
                 name_candidate=square.name
             )
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
-            
+            # Verify the Square.coord
             coord_validation = coord_service.validator.validate(candidate=square.coord)
             if coord_validation.is_failure():
                 return ValidationResult.failure(coord_validation.exception)
-            
+            # Ensure the Square is registered with a Board.
             board_validation = board_service.validator.validate(square.board)
             if board_validation.is_failure():
                 return ValidationResult.failure(board_validation.exception)
-            
+            # If no errors are detected return the successfully validated Square instance.
             return ValidationResult.success(payload=square)
-        
+            
+            # Finally, if there is an unhandled exception Wrap a InvalidSquareException around it
+            # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidSquareException(
-                    ex=ex,
-                    message=f"{method}: "
-                            f"{InvalidSquareException.DEFAULT_MESSAGE}"
-                )
+                InvalidSquareException(ex=ex, message=f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -196,9 +211,9 @@ class SquareValidator(Validator[Square]):
             
             return ValidationResult.success(payload=(square, piece))
         
-        except Exception as e:
+        except Exception as ex:
             return ValidationResult.failure(
                 InvalidPieceSquareRelationException(
-                    f"{method}: {InvalidPieceSquareRelationException.DEFAULT_MESSAGE}", e
+                    ex=ex, message=f"{method}: {InvalidPieceSquareRelationException.DEFAULT_MESSAGE}"
                 )
             )

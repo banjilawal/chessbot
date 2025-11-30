@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/designation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/designation/validator.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/id/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/id/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/name/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/name/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/quota/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/quota/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/ransom/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/ransom/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -656,7 +646,7 @@
       <workItem from="1764162921976" duration="42682000" />
       <workItem from="1764218711944" duration="22870000" />
       <workItem from="1764266108566" duration="9765000" />
-      <workItem from="1764285644086" duration="144544000" />
+      <workItem from="1764285644086" duration="147812000" />
     </task>
     <servers />
   </component>

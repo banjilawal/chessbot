@@ -37,28 +37,19 @@ class TeamValidator(Validator[Team]):
     Default Constructor
     
     # CLASS METHODS:
-        ## Validate signature:
-               validate(
-                        candidate: Any,
-                        agent_service: AgentService,
-                        identity_service: IdentityService
-                        team_schema_validator: TeamSchemaValidator
-                ) -> ValidationResult[Team]:
+           validate(
+                candidate: Any, agent_service: AgentService, identity_service: IdentityService
+                team_schema_validator: TeamSchemaValidator
+            ) -> ValidationResult[Team]:
             
-        ## verify_agent_has_registered_team signature:
-               verify_agent_has_registered_team(
-                        team_candidate: Any,
-                        agent_candidate: Any,
-                        agent_service: AgentService = AgentService(),
-                        team_context_service: TeamContextService = TeamContextService(),
-                ) -> ValidationResult[(Team, Agent)]:
+           verify_agent_has_registered_team(
+                team_candidate: Any, agent_candidate: Any, agent_service: AgentService,
+                team_context_service: TeamContextService,
+            ) -> ValidationResult[(Team, Agent)]:
             
-        ## verify_team_and_game_relationship signature:
-               verify_team_and_game_relationship(
-                        team_candidate: Any,
-                        game_candidate: Any,
-                        game_service: GameService = GameService(),
-                ) -> ValidationResult[(Team, Game)]:
+           verify_team_and_game_relationship(
+                team_candidate: Any, game_candidate: Any, game_service: GameService
+            ) -> ValidationResult[(Team, Game)]:
     
     # INSTANCE METHODS:
     None
@@ -108,12 +99,11 @@ class TeamValidator(Validator[Team]):
                 return ValidationResult.failure(
                     NullTeamException(f"{method}: {NullTeamException.DEFAULT_MESSAGE}")
                 )
-            
             if not isinstance(candidate, Team):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
-            # Cast after the first two checks are passed so Team attributes can be checked.
+            # Cast after the null and type checks are passed so Team attributes can be checked.
             team = cast(Team, candidate)
             
             # check schema first
