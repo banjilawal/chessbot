@@ -1,4 +1,4 @@
-# src/chess/system/builder/collision.py
+# src/chess/system/builder/exception.py
 
 """
 Module: chess.system.builder.exception
@@ -43,12 +43,12 @@ class BuilderException(ChessException):
 
 # ======================# BUILDER VALIDATION EXCEPTIONS #======================#
 class InvalidBuilderException(BuilderException, ValidationException):
-  """Raised if an entity, method, or operation requires team_name Engine but gets validation instead."""
+  """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
   ERROR_CODE = "NULL_ERROR"
   DEFAULT_MESSAGE = "Builder cannot be validation"
 
 class NullBuilderException(InvalidBuilderException, NullException):
-  """Raised if an entity, method, or operation requires team_name Engine but gets validation instead."""
+  """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
   ERROR_CODE = "NULL_ERROR"
   DEFAULT_MESSAGE = "Builder cannot be validation"
 

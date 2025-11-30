@@ -17,6 +17,6 @@ class InvalidSquareContextException(
     SquareContextException,
     ValidationException
 ):
-    """Catchall Exception for SquareContextValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for SquareContextValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "SQUARE_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "SquareContext validation failed."

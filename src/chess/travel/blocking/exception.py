@@ -199,7 +199,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # # ====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
 # class NullTravelActorException(TravelActorException, NullException):
 #   ERROR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be validation."
+#   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be null."
 #
 #
 # class InvalidTravelActorException(TravelActorException, ValidationException):

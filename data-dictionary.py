@@ -99,7 +99,7 @@ class Coordinate(BaseModel):
       ValidationError: If the new point is out of bounds.
     """
     if delta is None:
-      raise NullException("Delta cannot be validation.")
+      raise NullException("Delta cannot be null.")
 
     new_row = self.row + delta.row_delta
     new_column = self.column + delta.column_delta

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.rank import RankException
-from chess.system import BoundsException, ChessException, NullException, ValidationException
+from chess.system import NullException, ValidationException
 
 __all__ = [
     # ======================# RANK_SPEC EXCEPTION SUPER CLASS #======================#

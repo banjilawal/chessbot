@@ -19,6 +19,6 @@ __all__ = [
 
 # ========================= TEAM_CONTEXT VALIDATION EXCEPTION SUPER CLASS  =========================#
 class InvalidTeamContextException(TeamContextException, ValidationException):
-    """Catchall Exception for TeamContextValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for TeamContextValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "TEAM_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "TeamContext validation failed."

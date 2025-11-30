@@ -1,7 +1,7 @@
-# src/chess/vector/rollback_exception.py
+# src/chess/arena/exception.py
 
 """
-Module: chess.vector.rollback_exception
+Module: chess.arena.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -73,7 +73,7 @@ class ArenaException(ChessException):
 
 #======================# ARENA VALIDATION EXCEPTIONS #======================#  
 class NullArenaException(ArenaException, NullException):
-  """Raised if an entity, method, or operation requires an arena but gets validation instead."""
+  """Raised if an entity, method, or operation requires an arena but gets null instead."""
   ERROR_CODE = "NULL_ARENA_ERROR"
   DEFAULT_MESSAGE = "Arena cannot be validation"
 

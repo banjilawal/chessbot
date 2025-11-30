@@ -26,7 +26,7 @@ class InvalidIdException(InvalidTextException):
 
 # ======================# ID VALIDATION SUB CLASSES #======================#
 class IdNullException(InvalidIdException, NullException):
-    """Raised if an entity, method, or operation requires ID but gets validation instead."""
+    """Raised if an entity, method, or operation requires ID but gets null instead."""
     ERROR_CODE = "NULL_ID_ERROR"
     DEFAULT_MESSAGE = "Id cannot be null."
 

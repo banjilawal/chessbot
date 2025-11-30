@@ -17,6 +17,6 @@ __all__ = [
 
 # ======================# COORD_CONTEXT BUILD EXCEPTIONS #======================#
 class CoordContextBuildFailedException(CoordContextException, BuildFailedException):
-    """Catchall Exception for CoordContextBuilder when it stops because of an error."""
+    """Catchall exception for when CoordContextBuilder encounters an error during a CoordContext build."""
     ERROR_CODE = "COORD_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "CoordContext build failed."

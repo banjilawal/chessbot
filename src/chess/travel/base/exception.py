@@ -63,7 +63,7 @@ class TravelTransactionException(TransactionException):
 #====================== TravelEvent VALIDATION EXCEPTIONS #======================#
 class NullTravelEventException(TravelEventException, NullException):
   ERROR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent cannot be validation."
+  DEFAULT_MESSAGE = "TravelEvent cannot be null."
 
 
 

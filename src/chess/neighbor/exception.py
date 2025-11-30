@@ -109,7 +109,7 @@ class NullVisitationEventException(VisitationEventException, NullException):
     they are more descriptive and better suited for debugging.
     """
     ERROR_CODE = "NULL_VISITATION_ERROR"
-    DEFAULT_MESSAGE = "Visitationation cannot be validation."
+    DEFAULT_MESSAGE = "Visitationation cannot be null."
 
 
 class NullKingException(NullVisitationEventException):
@@ -117,7 +117,7 @@ class NullKingException(NullVisitationEventException):
     Raised if team_name KingVisitation is validation. Raise NullCombatant instead of NullAttackException
     """
     ERROR_CODE = "NULL_KING_VISITATION_ERROR"
-    DEFAULT_MESSAGE = "KingVisitation cannot be validation."
+    DEFAULT_MESSAGE = "KingVisitation cannot be null."
 
 
 class NullCombatantException(NullVisitationEventException):
@@ -125,7 +125,7 @@ class NullCombatantException(NullVisitationEventException):
     Raised if team_name CombatantVisitation is validation. Raise NullCombatant instead of NullAttackException
     """
     ERROR_CODE = "NULL_COMBATANT_VISITATION_ERROR"
-    DEFAULT_MESSAGE = "CombatantVisitation cannot be validation."
+    DEFAULT_MESSAGE = "CombatantVisitation cannot be null."
 
 
 # ======================# VISITATION BUILD EXCEPTIONS #======================#  

@@ -1,4 +1,4 @@
-# src/chess/vector/service/collision.py
+# src/chess/vector/service/exception.py
 
 """
 Module: chess.vector.service.exception
@@ -31,14 +31,14 @@ class VectorServiceException(ServiceException):
 
 #======================# NULL VECTOR_SERVICE EXCEPTIONS #======================#
 class NullVectorServiceException(VectorServiceException, NullException):
-  """Raised if an entity, method, or operation requires VectorService but gets validation instead."""
+  """Raised if an entity, method, or operation requires VectorService but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "VectorService cannot be validation."
+  DEFAULT_MESSAGE = "VectorService cannot be null."
 
 
 #======================# VECTOR_SERVICE VALIDATION EXCEPTIONS #======================#
 class InvalidVectorServiceException(VectorServiceException, ValidationException):
-  """Catchall Exception for VectorValidator when a validation candidate fails a sanity check."""
+  """Catchall Exception for VectorValidator when a candidate fails a sanity check.""""""
   ERROR_CODE = "VECTOR_SERVICE_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "VectorService validation failed."
 

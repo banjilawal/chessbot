@@ -34,7 +34,7 @@ class HouseException(ChessException):
 class NullHouseException(HouseException, NullException):
     """"""
     ERROR_CODE = "NULL_HOUSE_ERROR"
-    DEFAULT_MESSAGE = "A House cannot be validation."
+    DEFAULT_MESSAGE = "A House cannot be null."
 
 
 class InvalidHouseException(HouseException, ValidationException):

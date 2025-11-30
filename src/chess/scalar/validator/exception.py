@@ -23,7 +23,7 @@ __all__ = [
 
 # ======================# SCALAR VALIDATION EXCEPTIONS #======================#
 class InvalidScalarException(ScalarException, ValidationException):
-    """Catchall Exception for ScalarValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for ScalarValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "SCALAR_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Scalar validation failed."
 

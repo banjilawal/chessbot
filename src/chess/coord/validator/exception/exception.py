@@ -17,7 +17,7 @@ __all__ = [
 
 # ====================== COORD VALIDATION EXCEPTIONS #======================#
 class InvalidCoordException(CoordException, ValidationException):
-    """Catchall Exception for CoordValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for CoordValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "COORD_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Coord validation failed."
 

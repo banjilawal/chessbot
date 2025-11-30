@@ -1,7 +1,7 @@
-# src/chess/vector/rollback_exception.py
+# src/chess/engine/exception.py
 
 """
-Module: chess.vector.rollback_exception
+Module: chess.engine.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -66,7 +66,7 @@ class EngineException(ChessException):
   DEFAULT_MESSAGE = "Engine raised an rollback_exception."
 
 class NullEngineException(EngineException, NullException):
-  """Raised if an entity, method, or operation requires an `Engine` but gets validation instead."""
+  """Raised if an entity, method, or operation requires an `Engine` but gets null instead."""
   ERROR_CODE = "NULL_ENGINE_ERROR"
   DEFAULT_MESSAGE = "Engine cannot be validation"
 

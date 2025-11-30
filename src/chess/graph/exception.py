@@ -53,7 +53,7 @@ class NullGraphException(GraphException, NullException):
     they are more descriptive and better suited for debugging.
     """
     ERROR_CODE = "NULL_GRAPH_ERROR"
-    DEFAULT_MESSAGE = "Graph cannot be validation."
+    DEFAULT_MESSAGE = "Graph cannot be null."
 
 
 # ======================# GRAPH BUILD EXCEPTIONS #======================#  

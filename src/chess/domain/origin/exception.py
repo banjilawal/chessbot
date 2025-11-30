@@ -1,4 +1,4 @@
-# src/chess/domain/origin/collision.py
+# src/chess/domain/origin/exception.py
 
 """
 Module: chess.domain.origin.exception
@@ -37,14 +37,14 @@ class DomainOriginException(ChessException):
 
 # ====================== NULL DOMAIN_ORIGIN EXCEPTIONS #======================#
 class NullDomainOriginException(DomainOriginException, NullException):
-    """Raised if an entity, method, or operation requires DomainOrigin but gets validation instead."""
+    """Raised if an entity, method, or operation requires DomainOrigin but gets null instead."""
     ERROR_CODE = "NULL_DOMAIN_ORIGIN_ERROR"
-    DEFAULT_MESSAGE = "A DomainOrigin cannot be validation."
+    DEFAULT_MESSAGE = "A DomainOrigin cannot be null."
 
 
 # ====================== DOMAIN_ORIGIN VALIDATION EXCEPTIONS #======================#
 class InvalidDomainOriginException(DomainOriginException, ValidationException):
-    """Catchall Exception for DomainOriginValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for DomainOriginValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "DOMAIN_ORIGIN_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "DomainOrigin validation failed."
 

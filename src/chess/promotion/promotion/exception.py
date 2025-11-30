@@ -1,7 +1,7 @@
-# src/chess/system/travel/rollback_exception.py
+# src/chess/promotion/promotion/exception.py
 
 """
-Module: chess.system.travel.rollback_exception
+Module: chess.promotion.promotion.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -117,7 +117,7 @@ class PromotionEventException(ChessException):
 
 #======================# PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
 class NullPromotionEventException(PromotionEventException, NullException):
-  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets validation instead."""
+  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
   pass
 
 class PawnPromotionOnlyException(PromotionEventException):
@@ -201,7 +201,7 @@ class PromotionTransactionException(TransactionException):
   DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
 
 class NullPromotionTransactionException(TransactionException):
-  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets validation instead."""
+  """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
   ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
   DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
 

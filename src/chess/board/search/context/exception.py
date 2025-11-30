@@ -1,4 +1,4 @@
-# src/board/search/context/collision.py
+# src/board/search/context/exception.py
 
 """
 Module: chess.board.search.context.exception
@@ -40,7 +40,7 @@ class BoardSearchContextException(ContextException):
 
 #========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullBoardSearchContextException(BoardSearchContextException, NullException):
-    """Raised if an entity, method, or operation requires Board but gets validation instead."""
+    """Raised if an entity, method, or operation requires Board but gets null instead."""
     ERROR_CODE = "NULL_BOARD_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext cannot be validation"
 
@@ -50,7 +50,7 @@ class InvalidBoardSearchContextException(
     BoardSearchContextException,
     ValidationException
 ):
-    """Catchall Exception for BoardSearchContextValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for BoardSearchContextValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "BOARD_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext validation failed."
 

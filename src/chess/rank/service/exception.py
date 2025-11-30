@@ -1,4 +1,4 @@
-# src/chess/rank/service/collision.py
+# src/chess/rank/service/exception.py
 
 """
 Module: chess.rank.service.exception
@@ -35,9 +35,9 @@ class RankServiceException(ServiceException):
 
 # ======================# NULL RANK_SERVICE EXCEPTIONS #======================#
 class NullRankServiceException(RankServiceException, NullException):
-    """Raised if an entity, method, or operation requires RankService but gets validation instead."""
+    """Raised if an entity, method, or operation requires RankService but gets null instead."""
     ERROR_CODE = "NULL_RANK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "RankService cannot be validation."
+    DEFAULT_MESSAGE = "RankService cannot be null."
 
 
 # ======================# RANK_SERVICE VALIDATION EXCEPTIONS #======================#

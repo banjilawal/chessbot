@@ -34,7 +34,7 @@ class CombatantOccupationEventException(OccupationEventException):
 class NullCombatantOccupationEventException(CombatantOccupationEventException, NullException):
   """Raised by methods, entities, and models that require CombatantOccupationEvent but receive validation instead."""
   ERROR_CODE = "NULL_OCCUPATION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "An CombatantOccupationEvent cannot be validation."
+  DEFAULT_MESSAGE = "An CombatantOccupationEvent cannot be null."
 
 
 class InvalidCombatantOccupationEventException(CombatantOccupationEventException, ValidationException):

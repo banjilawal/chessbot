@@ -18,7 +18,7 @@ __all__ = [
 
 # ====================== NULL COORD EXCEPTIONS #======================#
 class NullCoordException(InvalidCoordException, NullException):
-    """Raised if an entity, method, or operation requires Coord but gets validation instead."""
+    """Raised if an entity, method, or operation requires Coord but gets null instead."""
     ERROR_CODE = "NULL_COORD_ERROR"
     DEFAULT_MESSAGE = "Coord cannot be validation"
 
@@ -26,11 +26,11 @@ class NullCoordException(InvalidCoordException, NullException):
 class NullRowException(InvalidCoordException, NullException):
     """Raised if Coord.row is validation."""
     ERROR_CODE = "NULL_COORD_ROW_ERROR"
-    DEFAULT_MESSAGE = "Coord.row property cannot be validation."
+    DEFAULT_MESSAGE = "Coord.row property cannot be null."
 
 
 # ====================== NULL COORD_COLUMN VALIDATION EXCEPTIONS #======================#
 class NullColumnException(InvalidCoordException, NullException):
     """Raised if Coord.row is validation."""
     ERROR_CODE = "NULL_COORD_COLUMN_INDEX_ERROR"
-    DEFAULT_MESSAGE = "Coord.column property cannot be validation."
+    DEFAULT_MESSAGE = "Coord.column property cannot be null."

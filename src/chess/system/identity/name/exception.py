@@ -46,9 +46,9 @@ class InvalidNameException(NameException):
 
 # ======================# NAME NULL/BLANK EXCEPTIONS #======================#
 class NullNameException(InvalidNameException, NullException):
-    """Raised if an entity, method, or operation requires Name but gets validation instead."""
+    """Raised if an entity, method, or operation requires Name but gets null instead."""
     ERROR_CODE = "NULL_NAME_ERROR"
-    DEFAULT_MESSAGE = "Name cannot be validation."
+    DEFAULT_MESSAGE = "Name cannot be null."
 
 
 class WhiteSpaceNameException(InvalidNameException, BlankTextException):

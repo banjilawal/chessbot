@@ -18,7 +18,7 @@ __all__ = [
 # ======================# AGENT VALIDATION EXCEPTION SUPER CLASS #======================#
 class InvalidAgentException(AgentException, ValidationException):
     """
-    Catchall Exception for AgentValidator when a validation candidate fails a sanity check. Super
+    Catchall Exception for AgentValidator when a candidate fails a sanity check.""" Super
     class of all Agent validation exceptions.
     """
     ERROR_CODE = "AGENT_VALIDATION_ERROR"

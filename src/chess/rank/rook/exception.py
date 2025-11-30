@@ -7,9 +7,41 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
+from chess.rank import (
+    ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
+    RankRansomException, TeamQuotaException
+)
+
+__all__ = [
+    # ======================# ROOK EXCEPTION SUPER CLASS #======================#
+    "RookException",
+    # ======================# RANK_DESIGNATION #======================#
+    "NotRookDesignationException",
+    # ======================# RANK_ID EXCEPTION #======================#
+    "NotRookIdException",
+    # ======================# RANK_NAME EXCEPTION #======================#
+    "NotRookNameException",
+    # ======================# RANK_QUOTA EXCEPTION #======================#
+    "NotRookQuotaException",
+    # ======================# RANK_RANSOM EXCEPTION #======================#
+    "NotRookRansomException",
+    # ======================# IMPROPER_MOVE EXCEPTION #======================#
+    "ImproperRookMoveException",
+]
+
+
+# ======================# ROOK EXCEPTION SUPER CLASS #======================#
+class RookException(RankException):
+    """
+    Catchall for exceptions organic to Rook properties and its atomic operations.
+    Use subclass exceptions in debugging
+    """
+    ERROR_CODE = "ROOK ERROR"
+    DEFAULT_MESSAGE = "Rook raised an exception."
+
 
 # ======================# RANK_DESIGNATION #======================#
-class NotRookDesignationException(RookDesignation, RankDesignationException):
+class NotRookDesignationException(RookException, RankDesignationException):
     """Raised when a tested designation is not a Rook's."""
     ERROR_CODE = "ROOK_DESIGNATION_ERROR"
     DEFAULT_MESSAGE = "Not the correct Rook designation."
@@ -43,15 +75,8 @@ class NotRookRansomException(RookException, RankRansomException):
     DEFAULT_MESSAGE = "Not the correct Rook ransom."
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+# ======================# IMPROPER_MOVE EXCEPTION #======================#
+class ImproperRookMoveException(RookException, ImproperMoveException):
+    """Raised when a Rook's traveling rules prevent it from getting to a position."""
+    ERROR_CODE = "IMPROPER_ROOK_MOVE_ERROR"
+    DEFAULT_MESSAGE = "Improper Rook move."

@@ -1,4 +1,4 @@
-# src/rank/search/context/collision.py
+# src/rank/search/context/exception.py
 
 """
 Module: chess.rank.search.context.exception
@@ -40,14 +40,14 @@ class RankSearchContextException(ContextException):
 
 #========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullRankSearchContextException(RankSearchContextException, NullException):
-    """Raised if an entity, method, or operation requires Rank but gets validation instead."""
+    """Raised if an entity, method, or operation requires Rank but gets null instead."""
     ERROR_CODE = "NULL_RANK_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "RankSearchContext cannot be validation"
 
 
 #========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
 class InvalidRankSearchContextException(RankSearchContextException, ValidationException):
-    """Catchall Exception for RankSearchContextValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for RankSearchContextValidator when a candidate fails a sanity check."""
     ERROR_CODE = "RANK_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "RankSearchContext validation failed."
 

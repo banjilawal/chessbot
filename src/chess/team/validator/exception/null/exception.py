@@ -17,7 +17,7 @@ __all__ = [
 
 # ======================# TEAM VALIDATION EXCEPTIONS #======================#
 class NullTeamException(InvalidTeamException, NullException):
-    """Raised if an entity, method, or operation requires Team but gets validation instead."""
+    """Raised if an entity, method, or operation requires Team but gets null instead."""
     ERROR_CODE = "NULL_TEAM_ERROR"
     DEFAULT_MESSAGE = "Team cannot be validation"
 

@@ -8,13 +8,43 @@ version: 1.0.0
 """
 
 
+from chess.rank import (
+    ImproperMoveException, RankDesignationException, RankException, RankIdException, RankNameException,
+    RankRansomException, TeamQuotaException
+)
+
+__all__ = [
+    # ======================# PAWN EXCEPTION SUPER CLASS #======================#
+    "PawnException",
+    # ======================# RANK_DESIGNATION #======================#
+    "NotPawnDesignationException",
+    # ======================# RANK_ID EXCEPTION #======================#
+    "NotPawnIdException",
+    # ======================# RANK_NAME EXCEPTION #======================#
+    "NotPawnNameException",
+    # ======================# RANK_QUOTA EXCEPTION #======================#
+    "NotPawnQuotaException",
+    # ======================# RANK_RANSOM EXCEPTION #======================#
+    "NotPawnRansomException",
+    # ======================# IMPROPER_MOVE EXCEPTION #======================#
+    "ImproperPawnMoveException",
+]
 
 
+# ======================# PAWN EXCEPTION SUPER CLASS #======================#
+class PawnException(RankException):
+    """
+    Catchall for exceptions organic to Pawn properties and its atomic operations. 
+    Use subclass exceptions in debugging
+    """
+    ERROR_CODE = "PAWN ERROR"
+    DEFAULT_MESSAGE = "Pawn raised an exception."
 
-# ======================# RANK_DESIGNATION EXCEPTION #======================#
+
+# ======================# RANK_DESIGNATION #======================#
 class NotPawnDesignationException(PawnException, RankDesignationException):
     """Raised when a tested designation is not a Pawn's."""
-    ERROR_CODE = "ROOK_DESIGNATION_ERROR"
+    ERROR_CODE = "PAWN_DESIGNATION_ERROR"
     DEFAULT_MESSAGE = "Not the correct Pawn designation."
 
 
@@ -32,7 +62,7 @@ class NotPawnNameException(PawnException, RankNameException):
     DEFAULT_MESSAGE = "Not the correct Pawn name."
 
 
-# ======================# TEAM_QUOTA EXCEPTION #======================#
+# ======================# RANK_QUOTA EXCEPTION #======================#
 class NotPawnQuotaException(PawnException, TeamQuotaException):
     """Raised when a tested quota is not a Pawn's."""
     ERROR_CODE = "PAWN_QUOTA_ERROR"
@@ -41,6 +71,13 @@ class NotPawnQuotaException(PawnException, TeamQuotaException):
 
 # ======================# RANK_RANSOM EXCEPTION #======================#
 class NotPawnRansomException(PawnException, RankRansomException):
-    """Raised when a tested quota is not a Pawn's."""
+    """Raised when a tested ransom is not a Pawn's."""
     ERROR_CODE = "PAWN_RANSOM_ERROR"
     DEFAULT_MESSAGE = "Not the correct Pawn ransom."
+
+
+# ======================# IMPROPER_MOVE EXCEPTION #======================#
+class ImproperPawnMoveException(PawnException, ImproperMoveException):
+    """Raised when a Pawn's traveling rules prevent it from getting to a position."""
+    ERROR_CODE = "IMPROPER_PAWN_MOVE_ERROR"
+    DEFAULT_MESSAGE = "Improper Pawn move."

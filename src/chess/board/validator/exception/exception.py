@@ -9,13 +9,13 @@ version: 1.0.0
 
 
 class InvalidBoardException(BoardException, ValidationException):
-    """Catchall Exception for BoardValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for BoardValidator when a candidate fails a sanity check."""
     ERROR_CODE = "BOARD_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Board validation failed."
 
 
 class NullBoardException(BoardException, NullException):
-    """Raised if an entity, method, or operation requires Board but gets validation instead."""
+    """Raised if an entity, method, or operation requires Board but gets null instead."""
     ERROR_CODE = "NULL_BOARD_ERROR"
     DEFAULT_MESSAGE = "Board cannot be validation"
 

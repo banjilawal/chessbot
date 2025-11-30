@@ -18,6 +18,6 @@ __all__ = [
 # ======================# VECTOR VALIDATION EXCEPTIONS #======================#
 
 class InvalidVectorException(VectorException, ValidationException):
-    """Catchall Exception for VectorValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for VectorValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "VECTOR_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Vector validation failed."

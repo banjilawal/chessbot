@@ -19,8 +19,6 @@ __all__ = [
 
 # ======================# AGENT_CONTEXT BUILD EXCEPTIONS #======================#
 class AgentContextBuildFailedException(AgentContextException, BuildFailedException):
-    """
-    Catchall exception for when AgentContextBuilder encounters an error building a new AgentContext instance.
-    """
+    """Catchall exception for when AgentContextBuilder encounters an error during an AgentContext build."""
     ERROR_CODE = "AGENT_CONTEXT_BUILD_ERROR"
     DEFAULT_MESSAGE = "Agent build failed."

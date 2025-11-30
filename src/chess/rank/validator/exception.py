@@ -1,4 +1,4 @@
-# src/chess/rank/validator/collision.py
+# src/chess/rank/validator/exception.py
 
 """
 Module: chess.rank.validator.exception
@@ -11,12 +11,12 @@ from chess.rank import RankException
 from chess.system import ValidationException
 
 __all__ = [
+  # ======================# RANK VALIDATION EXCEPTION #======================#
   "InvalidRankException"
 ]
 
-# ======================# RANK VALIDATION EXCEPTIONS #======================#
+# ======================# RANK VALIDATION EXCEPTION #======================#
 class InvalidRankException(RankException, ValidationException):
-  """Catchall Exception for RankValidator when a validation candidate fails a sanity check."""
+  """Catchall Exception for RankValidator when a candidate fails a sanity check."""
   ERROR_CODE = "RANK_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Rank validation failed."
-

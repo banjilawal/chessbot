@@ -16,7 +16,7 @@ __all__ = [
 
 
 class InvalidSquareException(SquareException, ValidationException):
-    """Catchall Exception for SquareValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for SquareValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "SQUARE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Square validation failed."
 
@@ -24,4 +24,4 @@ class InvalidSquareException(SquareException, ValidationException):
 class NullSquareException(SquareException, NullException):
     """Raised if an entity, method, or operation requires Square but gets null instead."""
     ERROR_CODE = "NULL_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square cannot be validation."
+    DEFAULT_MESSAGE = "Square cannot be null."

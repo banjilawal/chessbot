@@ -34,7 +34,7 @@ class OccupationEventException(TravelEventException):
 class NullOccupationEventException(OccupationEventException, NullException):
   """Raised by methods, entities, and models that require OccupationEvent but receive validation instead."""
   ERROR_CODE = "NULL_OCCUPATION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "An OccupationEvent cannot be validation."
+  DEFAULT_MESSAGE = "An OccupationEvent cannot be null."
 
 
 class InvalidOccupationEventException(OccupationEventException, ValidationException):

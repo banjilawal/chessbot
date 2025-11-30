@@ -1,4 +1,4 @@
-# src/chess/domain/collision.py
+# src/chess/domain/exception.py
 
 """
 Module: chess.domain.exception
@@ -39,20 +39,20 @@ class DomainException(ChessException):
 
 # ======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
-    """Raised if an entity, method, or operation requires Domain but gets validation instead."""
+    """Raised if an entity, method, or operation requires Domain but gets null instead."""
     ERROR_CODE = "NULL_DOMAIN_ERROR"
-    DEFAULT_MESSAGE = "Domain cannot be validation."
+    DEFAULT_MESSAGE = "Domain cannot be null."
 
 
 # ======================# DOMAIN VALIDATION EXCEPTIONS #======================#
 class InvalidDomainException(DomainException, ValidationException):
-    """Catchall Exception for SquareValidator when a validation candidate fails a sanity check."""
+    """Catchall Exception for SquareValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "DOMAIN_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Domain validation failed."
 
 
 class DomainNullSquaresListException(DomainException, InconsistencyException):
-    """Raised if a Domain's Squares list does not exist."""
+    """"Raised if a Domain's Squares list does not exist."""
     ERROR_CODE = "MISSING_SQUARES_LIST_ERROR"
     DEFAULT_MESSAGE = "The Domain.squares list is validation. There may be a service failure or data inconsistency."
 

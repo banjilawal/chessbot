@@ -34,7 +34,7 @@ class KingOccupationEventException(TravelEventException):
 class NullKingOccupationEventException(KingOccupationEventException, NullException):
   """Raised by methods, entities, and models that require KingOccupationEvent but receive validation instead."""
   ERROR_CODE = "NULL_KING_OCCUPATION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "An KingOccupationEvent cannot be validation."
+  DEFAULT_MESSAGE = "An KingOccupationEvent cannot be null."
 
 
 class InvalidKingOccupationEventException(KingOccupationEventException, ValidationException):

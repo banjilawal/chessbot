@@ -18,8 +18,6 @@ __all__ = [
 
 # ======================# AGENT BUILD EXCEPTIONS #======================#
 class AgentBuildFailedException(AgentException, BuildFailedException):
-    """
-    Catchall exception for when AgentFactory encounters an error building a new Agent instance.
-    """
+    """Catchall exception for when AgentFactory encounters an error during an Agent build."""
     ERROR_CODE = "AGENT_BUILD_ERROR"
     DEFAULT_ERROR_CODE = "Agent build failed."
