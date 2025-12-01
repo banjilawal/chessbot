@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/validator/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/spec/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/spec/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/build/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -646,7 +648,7 @@
       <workItem from="1764162921976" duration="42682000" />
       <workItem from="1764218711944" duration="22870000" />
       <workItem from="1764266108566" duration="9765000" />
-      <workItem from="1764285644086" duration="160471000" />
+      <workItem from="1764285644086" duration="161851000" />
     </task>
     <servers />
   </component>

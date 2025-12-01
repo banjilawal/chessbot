@@ -12,14 +12,25 @@ from chess.system import ValidationResult, Validator
 from chess.rank import Rank, RankSpecValidator, RankValidatorFactory
 
 class RankValidatorService(Validator[Rank]):
-    _spec_validator: RankSpecValidator
+    _rank_validator: RankValidatorFactory
+    _rank_spec_validator: RankSpecValidator
     
-    def __init__(self, spec_validator: RankSpecValidator = RankSpecValidator()):
-        self._spec_validator = spec_validator
+    def __init__(
+            self,
+            rank_spec_validator: RankSpecValidator = RankSpecValidator(),
+            rank_validator: RankValidatorFactory = RankValidatorFactory(),
+    ):
+        super().__init__()
+        self._rank_validator = rank_validator
+        self._rank_spec_validator = rank_spec_validator
+
+    @property
+    def rank_validator(self) -> RankValidatorFactory:
+        return self._rank_validator
         
     @property
-    def spec_validator(self) -> RankSpecValidator:
-        return self._spec_validator
+    def rank_spec_validator(self) -> RankSpecValidator:
+        return self._rank_spec_validator
     
     @classmethod
     def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Rank]:

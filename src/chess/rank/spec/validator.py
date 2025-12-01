@@ -23,9 +23,10 @@ class RankSpecValidator(Validator[RankSpec]):
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    1.  Verifies a candidate is not null and is an actual RankSpec Enum.
-    2.  Only have to write the two verification checks for a RankSpec once. This gives cleaner code.
-    3.  Verifies names and colors used in filtering and branching logic gets arguments in bounds.
+    1.  Simplify Searches based on rank metadata.
+    2.  Verifies a candidate is not null and is an actual RankSpec Enum.
+    3.  Only have to write the two verification checks for a RankSpec once. This gives cleaner code.
+    4.  Verifies names and colors used in filtering and branching logic gets arguments in bounds.
 
     # PROVIDES:
     ValidationResult[RankSpec] containing either:

@@ -29,7 +29,7 @@ class Validator(ABC, Generic[T]):
         - On failure: Exception.
   
     # ATTRIBUTES:
-        * _candidate (Any): Object to validate.
+        *   candidate (Any): Object to validate.
     """
     def __init__(self):
         pass
