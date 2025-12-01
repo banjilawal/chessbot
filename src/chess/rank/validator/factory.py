@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.rank import (
     Bishop, BishopValidator, InvalidRankException, King, KingValidator, Knight, KnightValidator,
-    NullRankException, Pawn, PawnValidator, Queen, QueenValidator, Rank, Rook, RookValidator
+    NullRankException, Pawn, PawnValidator, Queen, QueenValidator, Rank, RankSpecValidator, Rook, RookValidator
 )
 from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
@@ -42,9 +42,8 @@ class RankValidatorFactory(Validator[Rank]):
         ) -> ValidationResult[Rank]: ValidationResult[(Team, Game)]:
 
     # INSTANCE METHODS:
-    None
+        *   rank_spec_validator: RankSpecValidator
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
