@@ -7,64 +7,34 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.coord import CoordService
-from chess.system import BuildResult, ValidationResult
-from chess.rank import (
-    Bishop, King, Knight, Pawn, Queen, Rank, RankFactory, RankSearchService, RankSpec,
-    RankValidatorFactory, Rook
-)
+from chess.system import Service, id_emitter
+from chess.rank import Rank, RankFactory, RankSpec, RankSpecValidator, RankValidatorFactory
 
 
-
-class RankService:
-    _factory: type[RankFactory]
-    _validator: type[RankValidatorFactory]
-    _search_service: type[RankSearchService]
-    _coord_service: CoordService
+class RankService(Service[Rank]):
+    DEFAULT_NAME = "RankService"
+    _spec: RankSpec
+    _spec_validator: RankSpecValidator
     
     def __init__(
             self,
-            factory: type[RankFactory] = RankFactory,
-            search_service: type[RankSearchService] = RankSearchService,
-            validator: type[RankValidatorFactory] = RankValidatorFactory,
-            coord_service: CoordService = CoordService()
+            name: str = DEFAULT_NAME,
+            spec: RankSpec = RankSpec(),
+            id: int = id_emitter.service_id,
+            builder: RankFactory = RankFactory(),
+            spec_validator: RankSpecValidator = RankSpecValidator(),
+            validator: RankValidatorFactory = RankValidatorFactory(),
     ):
-        self._factory = factory
-        self._validator = validator
-        self._search_service = search_service
-        self._coord_service = coord_service
-        self._search_service = RankSearchService
-    
-
-
+        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._spec = spec
+        self._spec_validator = spec_validator
+        
+    @property
+    def spec(self) -> RankSpec:
+        return self._spec
     
     @property
-    def search(self) -> type[RankSearchService]:
-        return self._search_service
-    
-    @property
-    def validator(self) -> type[RankValidatorFactory]:
-        return self._validator
-    
-    def build_rank(self, rank_spec: RankSpec) -> BuildResult[Rank]:
-        return self._factory.build(rank_spec)
-    
-    def build_king_rank(self) -> BuildResult[King]:
-        return self._factory.build_king_rank()
-    
-    def build_queen_rank(self) -> BuildResult[Queen]:
-        return self._factory.build_queen_rank()
-    
-    def build_rook_rank(self) -> BuildResult[Rook]:
-        return self._factory.build_rook_rank()
-    
-    def build_bishop_rank(self) -> BuildResult[Bishop]:
-        return self._factory.build_bishop_rank()
-    
-    def build_knight_rank(self) -> BuildResult[Knight]:
-        return self._factory.build_knight_rank()
-    
-    def build_pawn_rank(self) -> BuildResult[Pawn]:
-        return self._factory.build_pawn_rank()
+    def spec_validator(self) -> RankSpecValidator:
+        return self._spec_validator
     
 
