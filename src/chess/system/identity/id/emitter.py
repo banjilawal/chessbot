@@ -42,6 +42,13 @@ class IdEmitter:
         self._occupation_id = 0
         self._scan_id = 0
         self._attack_id = 0
+        
+        self._king_id = 0
+        self._queen_id = 0
+        self._bishop_id = 0
+        self._knight_id = 0
+        self._rook_id = 0
+        self._pawn_id = 0
     
     @property
     def arena_id(self) -> int:
@@ -105,10 +112,35 @@ class IdEmitter:
         return self._attack_id
     
 
+    @property
+    def king_id(self) -> int:
+        self._king_id += 1
+        return self._king_id
     
-
+    @property
+    def queen_id(self) -> int:
+        self._queen_id += 1
+        return self._queen_id
     
-
+    @property
+    def rook_id(self) -> int:
+        self._rook_id += 1
+        return self._rook_id
+    
+    @property
+    def bishop_id(self) -> int:
+        self._bishop_id += 1
+        return self._bishop_id
+    
+    @property
+    def knight_id(self) -> int:
+        self._knight_id += 1
+        return self._knight_id
+    
+    @property
+    def pawn_id(self) -> int:
+        self._pawn_id += 1
+        return self._pawn_id
     
     @property
     def side_id(self) -> int:

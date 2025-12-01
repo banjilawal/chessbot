@@ -82,12 +82,14 @@ class RankSpec(Enum):
         return self._quadrants
     
     @classmethod
-    def get_by_name(cls, name: str) -> RankSpec:
+    def get_spec_by_name(cls, name: str) -> RankSpec:
+        """Get a Spec that matches the given name."""
         if name in cls.__members__:
             return cls.__members__[name]
     
     @classmethod
     def allowed_ids(cls) -> List[int]:
+        """Ranks """
         return [member.id for member in cls]
     
     @classmethod
