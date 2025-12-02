@@ -10,10 +10,8 @@ version: 1.0.0
 # =========== GAME PACKAGE CONTENTS ===========#
 
 # Packages
-from .model import *
-from .insertion import *
-from .registration import *
-from .relationship import *
+from .builder import *
 
 # Modules
 from .exception import *
+from .game import Game
