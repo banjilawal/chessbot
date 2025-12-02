@@ -19,9 +19,12 @@ __all__ = [
 ]
 
 
-# ======================# PIECE BUILD FAILURE EXCEPTION #======================#
+# ======================# PIECE BUILD EXCEPTIONS #======================#
 class PieceBuildFailedException(PieceException, BuildFailedException):
-    """Catchall exception for when PieceFactory encounters an error during a Piece build."""
+    """
+    Catchall/wrapper exception for when a condition not handled directly by PieceBuilder 
+    prevents successful Piece creation.
+    """
     ERROR_CODE = "PIECE_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Piece build failed."
 

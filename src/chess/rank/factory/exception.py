@@ -1,4 +1,4 @@
-# src/chess/rank/factory/collision.py
+# src/chess/rank/factory/exception.py
 
 """
 Module: chess.rank.factory.exception
@@ -11,14 +11,16 @@ from chess.rank import RankException
 from chess.system import BuildFailedException
 
 __all__ = [
+    # ======================# RANK BUILD EXCEPTIONS #======================#
     "RankBuildFailedException",
 ]
 
 
-
-
 # ======================# RANK BUILD EXCEPTIONS #======================#
 class RankBuildFailedException(RankException, BuildFailedException):
-    """Catchall Exception for RankFactory when it encounters an error fabricating a Rank."""
+    """
+    Catchall/wrapper exception for when a condition not handled directly by RankBuilder 
+    prevents successful Rank creation.
+    """
     ERROR_CODE = "RANK_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Rank build failed."

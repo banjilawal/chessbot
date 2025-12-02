@@ -11,9 +11,17 @@ version: 1.0.0
 from chess.board import BoardException
 from chess.system import BuildFailedException
 
-__all__ = ["BoardBuildFailedException"]
+__all__ = [
+    # ======================# BOARD BUILD EXCEPTIONS #======================#
+    "BoardBuildFailedException",
+]
 
+
+# ======================# BOARD BUILD EXCEPTIONS #======================#
 class BoardBuildFailedException(BoardException, BuildFailedException):
-    """Catchall exception for when BoardBuilder encounters an error during a Board build."""
+    """
+    Catchall/wrapper exception for when a condition not handled directly by BoardBuilder
+    prevents successful Board creation.
+    """
     ERROR_CODE = "BOARD_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Board build failed."

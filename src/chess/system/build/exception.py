@@ -55,9 +55,7 @@ class NullBuilderException(InvalidBuilderException, NullException):
 
 # ======================# FAILED BUILD OPERATION EXCEPTION #======================#
 class BuildFailedException(BuilderException):
-  """
-  Catchall exception for when Builder encounters an error building a new object.
-  """
+  """Raised when an error halts an object's build process."""
   ERROR_CODE = "BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "build failed."
 

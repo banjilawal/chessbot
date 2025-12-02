@@ -18,7 +18,8 @@ __all__ =  [
 # ======================# GAME BUILD EXCEPTIONS #======================#
 class GameBuildFailedException(GameException, BuildFailedException):
     """
-    Catchall exception for when GameBuilder encounters an error building a new Game instance.
+    Catchall/wrapper exception for when a condition not handled directly by GameBuilder
+    prevents successful Game creation.
     """
     ERROR_CODE = "GAME_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Game build failed."

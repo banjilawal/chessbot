@@ -17,7 +17,7 @@ class GameException(ChessException):
     4.  Parent class of GameService and GameDataService exceptions.
     
     # PROVIDES
-      * GameException
+    GameException
       
     # ATTRIBUTES
         *   ERROR_CODE (str)

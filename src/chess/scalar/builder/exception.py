@@ -10,14 +10,18 @@ version: 1.0.0
 from chess.scalar import ScalarException
 from chess.system import BuildFailedException
 
+
 __all__ = [
+    # ======================# SCALAR BUILD EXCEPTIONS #======================#
     "ScalarBuildFailedException",
 ]
+
 
 # ======================# SCALAR BUILD EXCEPTIONS #======================#
 class ScalarBuildFailedException(ScalarException, BuildFailedException):
     """
-    Catchall exception for when ScalarBuilder encounters an error building a new Scalar instance.
+    Catchall/wrapper exception for when a condition not handled directly by ScalarBuilder 
+    prevents successful Scalar creation.
     """
     ERROR_CODE = "SCALAR_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Scalar build failed."

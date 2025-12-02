@@ -10,15 +10,18 @@ version: 1.0.0
 from chess.team import TeamException
 from chess.system import BuildFailedException
 
-__all__ =  [
+
+__all__ = [
     # ======================# TEAM BUILD EXCEPTIONS #======================#
     "TeamBuildFailedException",
 ]
 
+
 # ======================# TEAM BUILD EXCEPTIONS #======================#
 class TeamBuildFailedException(TeamException, BuildFailedException):
     """
-    Catchall exception for when TeamBuilder encounters an error building a new Team instance.
+    Catchall/wrapper exception for when a condition not handled directly by TeamBuilder 
+    prevents successful Team creation.
     """
     ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Team build failed."
