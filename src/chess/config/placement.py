@@ -80,7 +80,7 @@ class PlacementChart(Enum):
     )
 
 
-  def filter_by_side(side_name: str) -> ['PlacementChart']:
+  def filter_by_side(side_name: str) -> ['WhiteBattleOrder']:
     matches = []
 
     for placement in PlacementChart:
@@ -89,7 +89,7 @@ class PlacementChart(Enum):
     return matches
 
 
-  def filter_by_rank(rank_name: str) -> ['PlacementChart']:
+  def filter_by_rank(rank_name: str) -> ['WhiteBattleOrder']:
     matches = []
 
     for placement in PlacementChart:
@@ -98,7 +98,7 @@ class PlacementChart(Enum):
     return matches
 
 
-  def find_placement_by_piece(piece: Piece) -> Optional['PlacementChart']:
+  def find_placement_by_piece(piece: Piece) -> Optional['WhiteBattleOrder']:
 
     for placement in PlacementChart:
       if placement.piece_name.upper() == piece.name.upper():
@@ -107,7 +107,7 @@ class PlacementChart(Enum):
 
 
 def main():
-  # for placement in PlacementChart:
+  # for placement in WhiteBattleOrder:
   #   print(placement)
 
   for placement in PlacementChart.filter_by_side(side_name="white"):

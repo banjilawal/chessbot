@@ -48,7 +48,7 @@ def main():
   #   for captor in team_name.chess_pieces:
   #     print(captor)
 
-      # for placement in PlacementChart:
+      # for placement in WhiteBattleOrder:
       #   square_name = placement.map_chess_piece_to_square_name(captor)
       #   if square_name is not None:
       #     chessboard = chess_board.find_square_by_name(square_name)
