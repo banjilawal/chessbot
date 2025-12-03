@@ -67,8 +67,8 @@ class PieceContextBuilder(Builder[PieceContext]):
             *   coord (Optional[Coord])
             
         These Parameters must be provided:
-            *   team_service (TeamIntegrityService)
-            *   rank_service (RankIntegrityService)
+            *   team_integrity (TeamIntegrityService)
+            *   rank_integrity (RankIntegrityService)
             *   coord_service (CoordIntegrityService)
             *   identity_service (IdentityService)
 

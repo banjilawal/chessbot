@@ -58,7 +58,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             *   team (Optional[Team])
 
         These Parameters must be provided:
-            *   team_service (TeamIntegrityService)
+            *   team_integrity (TeamIntegrityService)
             *   identity_service (IdentityService)
 
         # Returns:

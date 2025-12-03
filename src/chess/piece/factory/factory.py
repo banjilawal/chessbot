@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from chess.coord import CoordDataService
+from chess.square import Square, SquareIntegrityService
 from chess.team import Team, TeamIntegrityService
 from chess.rank import King, Pawn, Rank, RankIntegrityService
 from chess.piece import (
@@ -45,8 +46,8 @@ class PieceFactory(Builder[Piece]):
                     rank: Rank,
                     team: Team,
                     id: int = id_emitter.piece_id,
-                    rank_service: RankIntegrityService = RankIntegrityService(),
-                    team_service: TeamIntegrityService = TeamIntegrityService(),
+                    rank_integrity: RankIntegrityService = RankIntegrityService(),
+                    team_integrity: TeamIntegrityService = TeamIntegrityService(),
                     positions: CoordDataService = CoordDataService(),
                     identity_service: IdentityService = IdentityService(),
         ) -> BuildResult[Piece]:
@@ -65,9 +66,12 @@ class PieceFactory(Builder[Piece]):
             name: str,
             rank: Rank,
             team: Team,
+            roster_number: int,
+            starting_square: Square,
             id: int = id_emitter.piece_id,
-            rank_service: RankIntegrityService = RankIntegrityService(),
-            team_service: TeamIntegrityService = TeamIntegrityService(),
+            square_integrity: SquareIntegrityService = SquareIntegrityService(),
+            rank_integrity: RankIntegrityService = RankIntegrityService(),
+            team_integrity: TeamIntegrityService = TeamIntegrityService(),
             positions: CoordDataService = CoordDataService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Piece]:
@@ -81,8 +85,8 @@ class PieceFactory(Builder[Piece]):
             *   name (str)
             *   rank (Rank)
             *   team (Team)
-            *   rank_service (RankIntegrityService)
-            *   team_service (TeamIntegrityService)
+            *   rank_integrity (RankIntegrityService)
+            *   team_integrity (TeamIntegrityService)
             *   positions (CoordDataService)
             *   identity_service (IdentityService)
     
@@ -105,7 +109,9 @@ class PieceFactory(Builder[Piece]):
                 id=id,
                 name=name,
                 rank=rank,
-                team=team
+                team=team,
+                roster_number=roster_number,
+                starting_square=starting_square,
             )
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
@@ -306,10 +312,13 @@ class PieceFactory(Builder[Piece]):
             name: str,
             rank: Rank,
             team: Team,
-            rank_service: RankIntegrityService = RankIntegrityService(),
-            team_service: TeamIntegrityService = TeamIntegrityService(),
+            roster_number: int,
+            starting_square: Square,
+            rank_integrity: RankIntegrityService = RankIntegrityService(),
+            team_integrity: TeamIntegrityService = TeamIntegrityService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[(int, str, Rank, Team)]:
+            square_integrity: SquareIntegrityService = SquareIntegrityService(),
+    ) -> ValidationResult[(int, str, Rank, Team, int, Square)]:
         """
         # ACTION
         validate_build_attributes. This decouples verification logic from build logic so
@@ -324,15 +333,25 @@ class PieceFactory(Builder[Piece]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            rank_validation = rank_service.item_validator.validate(candidate=rank)
+            rank_validation = rank_integrity.item_validator.validate(candidate=rank)
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             
-            team_validation = team_service.validate_team(candidate=team)
+            team_validation = team_integrity.validator.validate(candidate=team)
             if team_validation.is_failure():
                 return BuildResult.failure(team_validation.exception)
+
+        
+            square_validation = square_integrity.validator..validate(candidate=square)
+            if square_validation.is_failure():
+                return BuildResult.failure(square_validation.exception)
+            
+            roster_number_validation = identity_service.validate_id(candidate=roster_number)
+            if roster_number_validation.is_failure():
+                return BuildResult.failure(roster_number_validation.exception)
+            
             # If no errors are detected return the successfully validated (id, name, rank, team) tuple.
-            return ValidationResult.success((id, name, rank, team))
+            return ValidationResult.success((id, name, rank, team, roster_number, starting_square))
         
         # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
         # then return the exceptions inside a ValidationResult.

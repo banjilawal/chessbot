@@ -8,16 +8,16 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
 #   @staticmethod
 #   def builder() -> Arena:
 #
-#     team_service = TeamServiceBuilder.assemble()
+#     team_integrity = TeamServiceBuilder.assemble()
 #     square_service = ChessBoardBuilder.assemble()
 #
-#     arena = Arena(team_service=team_service, square_service=square_service)
+#     arena = Arena(team_integrity=team_integrity, square_service=square_service)
 #
 #     from chess.creator.team_placement_manager import TeamPlacementManager
 #     TeamPlacementManager.place_teams(arena)
 #     return arena
-    # ArenaBuilder.place_teams(team_service, chess_board)
-    # return Arena(team_service=team_service, chess_board=chess_board)
+    # ArenaBuilder.place_teams(team_integrity, chess_board)
+    # return Arena(team_integrity=team_integrity, chess_board=chess_board)
     # teams: List[Team] = []
     #
     # for team_config in TeamConfig:
@@ -42,9 +42,9 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
     # return teams
   #
   # @staticmethod
-  # def place_teams(team_service: TeamIntegrityService, chess_board: MapService):
+  # def place_teams(team_integrity: TeamIntegrityService, chess_board: MapService):
   #
-  #   for captor in team_service.chess_pieces():
+  #   for captor in team_integrity.chess_pieces():
   #     for placement in WhiteBattleOrder:
   #       square_name = placement.map_chess_piece_to_square_name(captor)
   #       if square_name is not None:
@@ -59,8 +59,8 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
 #
 # def main():
 #   chess_board = ChessBoardBuilder.assemble()
-#   team_service = TeamServiceBuilder.assemble()
-#   board_controller = ArenaBuilder.builder(team_service, chess_board)
+#   team_integrity = TeamServiceBuilder.assemble()
+#   board_controller = ArenaBuilder.builder(team_integrity, chess_board)
 #
 #   print(board_controller.chess_board.squares_to_string())
 #
