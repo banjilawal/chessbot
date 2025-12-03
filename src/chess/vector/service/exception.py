@@ -22,29 +22,29 @@ __all__ = [
 
 class VectorServiceException(ServiceException):
   """
-  Super class of exceptions raised by VectorService objects. Do not use directly. Subclasses give
+  Super class of exceptions raised by VectorIntegrityService objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
   ERROR_CODE = "VECTOR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "VectorService raised an exception."
+  DEFAULT_MESSAGE = "VectorIntegrityService raised an exception."
   
 
 #======================# NULL VECTOR_SERVICE EXCEPTIONS #======================#
 class NullVectorServiceException(VectorServiceException, NullException):
-  """Raised if an entity, method, or operation requires VectorService but gets null instead."""
+  """Raised if an entity, method, or operation requires VectorIntegrityService but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "VectorService cannot be null."
+  DEFAULT_MESSAGE = "VectorIntegrityService cannot be null."
 
 
 #======================# VECTOR_SERVICE VALIDATION EXCEPTIONS #======================#
 class InvalidVectorServiceException(VectorServiceException, ValidationException):
   """Catchall Exception for VectorValidator when a candidate fails a sanity check.""""""
   ERROR_CODE = "VECTOR_SERVICE_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "VectorService validation failed."
+  DEFAULT_MESSAGE = "VectorIntegrityService validation failed."
 
 
 #======================# VECTOR_SERVICE BUILD EXCEPTIONS #======================#
 class VectorBuildFailedException(VectorServiceException, BuildFailedException):
   """Catchall Exception for VectorServiceBuilder when it encounters an error building a VectorService."""
   ERROR_CODE = "VECTOR_SERVICE_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "VectorService build failed."
+  DEFAULT_MESSAGE = "VectorIntegrityService build failed."

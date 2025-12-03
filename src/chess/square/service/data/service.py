@@ -13,7 +13,7 @@ from typing import List
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
 from chess.square import (
     Square, SquareContext, SquareContextService, SquareDataServiceException, SquareSearch,
-    SquareService
+    SquareIntegrityService
 )
 
 
@@ -27,7 +27,7 @@ class SquareDataService(DataService[Square]):
             id: int = id_emitter.service_id,
             items: List[Square] = List[Square],
             search: SquareSearch = SquareSearch(),
-            service: SquareService = SquareService(),
+            service: SquareIntegrityService = SquareIntegrityService(),
             context_service: SquareContextService =  SquareContextService(),
     ):
         super().__init__(
@@ -43,7 +43,7 @@ class SquareDataService(DataService[Square]):
     def push(self, item: Square) -> InsertionResult[Square]:
         method = "SquareDataService.push"
         try:
-            validation = self.service.validator.validate(item)
+            validation = self.service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -68,5 +68,5 @@ class SquareDataService(DataService[Square]):
         return self._search.find(
             data_set=self.items,
             context=context,
-            context_validator=self.context_service.validator
+            context_validator=self.context_service.item_validator
         )

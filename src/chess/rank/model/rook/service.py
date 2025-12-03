@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 from chess.rank import Rook, RookValidator, RankFactory
-from chess.system import Service, Validator, id_emitter
+from chess.system import IntegrityService, Validator, id_emitter
 
 
-class RookService(Service[Rook]):
-    DEFAULT_NAME = "RookService"
+class RookIntegrityService(IntegrityService[Rook]):
+    DEFAULT_NAME = "RookIntegrityService"
     
     def __init__(
             self,

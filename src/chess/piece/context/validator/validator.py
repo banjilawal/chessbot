@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.coord import CoordService
+from chess.coord import CoordIntegrityService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.piece import (
     InvalidPieceContextException, NoPieceContextFlagSetException, NullPieceContextException, PieceContext,
@@ -23,7 +23,7 @@ class PieceContextValidator(Validator[PieceContext]):
     def validate(
             cls,
             candidate: Any,
-            coord_service: CoordService = CoordService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[PieceContext]:
         """"""
@@ -77,9 +77,9 @@ class PieceContextValidator(Validator[PieceContext]):
                 return ValidationResult.success(context)
             
             if context.coord is not None:
-                validation = coord_service.validator.validate(
+                validation = coord_service.item_validator.validate(
                     candidate=candidate,
-                    validator=coord_service.validator
+                    validator=coord_service.item_validator
                 )
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)

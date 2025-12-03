@@ -9,10 +9,10 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.coord import Coord, CoordService
+from chess.coord import Coord, CoordIntegrityService
 from chess.game.model import Game
 from chess.piece import UniquePieceDataService
-from chess.square import SquareBuilder, SquareService, UniqueSquareDataService
+from chess.square import SquareBuilder, SquareIntegrityService, UniqueSquareDataService
 from chess.board import Board, BoardBuildFailedException
 from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdentityService
 
@@ -40,7 +40,7 @@ class BoardBuilder(Builder[Board]):
             game: Game,
             num_rows: int=BOARD_DIMENSION,
             num_columns: int=BOARD_DIMENSION,
-            coord_service: CoordService = CoordService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService(),
             piece_service: UniquePieceDataService = UniquePieceDataService(),
             square_data: UniqueSquareDataService = UniqueSquareDataService(),
@@ -79,7 +79,7 @@ class BoardBuilder(Builder[Board]):
                 for j in range(num_columns):
                     name = chr(ascii_value) + str(i + 1)
                     
-                    coord_build_result = coord_service.builder.build(row=i, column=j)
+                    coord_build_result = coord_service.item_builder.build(row=i, column=j)
                     if coord_build_result.is_failure():
                         return BuildResult.failure(coord_build_result.exception)
    

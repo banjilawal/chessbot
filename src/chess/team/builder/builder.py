@@ -7,7 +7,7 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, AgentService
+from chess.agent import Agent, AgentIntegrityService
 from chess.piece import UniquePieceDataService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
@@ -37,7 +37,7 @@ class TeamBuilder(Builder[Team]):
                     id: int.
                     agent: Agent,
                     schema: TeamSchema,
-                    agent_service: AgentService = AgentService(),
+                    agent_service: AgentIntegrityService = AgentIntegrityService(),
                     identity_service: IdentityService = IdentityService(),
                     roster: UniquePieceDataService = UniquePieceDataService(),
                     hostages: UniquePieceDataService = UniquePieceDataService(),
@@ -56,7 +56,7 @@ class TeamBuilder(Builder[Team]):
             id: int,
             agent: Agent,
             schema: TeamSchema,
-            agent_service: AgentService = AgentService(),
+            agent_service: AgentIntegrityService = AgentIntegrityService(),
             identity_service: IdentityService = IdentityService(),
             roster: UniquePieceDataService = UniquePieceDataService(),
             hostages: UniquePieceDataService = UniquePieceDataService(),
@@ -76,7 +76,7 @@ class TeamBuilder(Builder[Team]):
             *   agent (Agent)
             *   schema (TeamSchema)
             *   identity_service (IdentityService)
-            *   agent_service (AgentService)
+            *   agent_service (AgentIntegrityService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
         
@@ -100,7 +100,7 @@ class TeamBuilder(Builder[Team]):
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             
-            agent_validation = agent_service.validator.validate(agent)
+            agent_validation = agent_service.item_validator.validate(agent)
             if agent_validation.is_failure():
                 return BuildResult.failure(agent_validation.exception)
             # If no errors are detected build the Team object.

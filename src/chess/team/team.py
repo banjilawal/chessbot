@@ -7,9 +7,9 @@ Created: 2025-08-04
 version: 1.0.0
 """
 
+from chess.game import Game
 from chess.agent import Agent
 from chess.team import TeamSchema
-from chess.game.model import Game
 from chess.piece import UniquePieceDataService
 
 

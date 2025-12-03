@@ -8,8 +8,8 @@ version: 1.0.0
 """
 
 from chess.coord import CoordDataService
-from chess.team import Team, TeamService
-from chess.rank import King, Pawn, Rank, RankService
+from chess.team import Team, TeamIntegrityService
+from chess.rank import King, Pawn, Rank, RankIntegrityService
 from chess.piece import (
     CombatantPiece, CombatantPieceBuildFailedException, KingPiece, KingPieceBuildFailedException, PawnPiece,
     PawnPieceBuildFailedException, Piece, PieceBuildFailedException
@@ -45,8 +45,8 @@ class PieceFactory(Builder[Piece]):
                     rank: Rank,
                     team: Team,
                     id: int = id_emitter.piece_id,
-                    rank_service: RankService = RankService(),
-                    team_service: TeamService = TeamService(),
+                    rank_service: RankIntegrityService = RankIntegrityService(),
+                    team_service: TeamIntegrityService = TeamIntegrityService(),
                     positions: CoordDataService = CoordDataService(),
                     identity_service: IdentityService = IdentityService(),
         ) -> BuildResult[Piece]:
@@ -66,8 +66,8 @@ class PieceFactory(Builder[Piece]):
             rank: Rank,
             team: Team,
             id: int = id_emitter.piece_id,
-            rank_service: RankService = RankService(),
-            team_service: TeamService = TeamService(),
+            rank_service: RankIntegrityService = RankIntegrityService(),
+            team_service: TeamIntegrityService = TeamIntegrityService(),
             positions: CoordDataService = CoordDataService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Piece]:
@@ -81,8 +81,8 @@ class PieceFactory(Builder[Piece]):
             *   name (str)
             *   rank (Rank)
             *   team (Team)
-            *   rank_service (RankService)
-            *   team_service (TeamService)
+            *   rank_service (RankIntegrityService)
+            *   team_service (TeamIntegrityService)
             *   positions (CoordDataService)
             *   identity_service (IdentityService)
     
@@ -306,8 +306,8 @@ class PieceFactory(Builder[Piece]):
             name: str,
             rank: Rank,
             team: Team,
-            rank_service: RankService = RankService(),
-            team_service: TeamService = TeamService(),
+            rank_service: RankIntegrityService = RankIntegrityService(),
+            team_service: TeamIntegrityService = TeamIntegrityService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[(int, str, Rank, Team)]:
         """
@@ -324,7 +324,7 @@ class PieceFactory(Builder[Piece]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            rank_validation = rank_service.validator.validate(candidate=rank)
+            rank_validation = rank_service.item_validator.validate(candidate=rank)
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             

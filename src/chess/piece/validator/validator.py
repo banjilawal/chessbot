@@ -9,9 +9,9 @@ Version: 1.0.0
 
 from typing import Any, cast
 
-from chess.rank import RankService
-from chess.coord import CoordService
-from chess.team import RosterNumberOutOfBoundsException, Team, TeamService
+from chess.rank import RankIntegrityService
+from chess.coord import CoordIntegrityService
+from chess.team import RosterNumberOutOfBoundsException, Team, TeamIntegrityService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
     Piece, InvalidPieceException, NullPieceException, PieceNullCoordStackException, PieceRosterNumberIsNullException
@@ -25,9 +25,9 @@ class PieceValidator(Validator[Piece]):
     def validate(
             cls,
             candidate: Any,
-            team_service: TeamService = TeamService(),
-            rank_service: RankService = RankService(),
-            coord_service: CoordService = CoordService(),
+            team_service: TeamIntegrityService = TeamIntegrityService(),
+            rank_service: RankIntegrityService = RankIntegrityService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[Piece]:
         """"""
@@ -59,13 +59,13 @@ class PieceValidator(Validator[Piece]):
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            team_validation = team_service.validator.validate(piece.team)
+            team_validation = team_service.item_validator.validate(piece.team)
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
             
-            roster_number_validation = team_service.validator
+            roster_number_validation = team_service.item_validator
             
-            rank_validation = rank_service.validator.validate(piece.rank)
+            rank_validation = rank_service.item_validator.validate(piece.rank)
             if rank_validation.is_failure():
                 return ValidationResult.failure(rank_validation.exception)
             
@@ -130,7 +130,7 @@ class PieceValidator(Validator[Piece]):
     @LoggingLevelRouter.monitor
     def validate_piece_is_actionable(
             cls, candidate: Any,
-            team_service: TeamService = TeamService(),
+            team_service: TeamIntegrityService = TeamIntegrityService(),
             board_service: BoardService = BoardService(),
     ) -> ValidationResult[Piece]:
         """"""

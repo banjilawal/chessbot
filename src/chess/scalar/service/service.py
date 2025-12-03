@@ -7,13 +7,13 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.system import BuildResult, Service, ValidationResult
+from chess.system import BuildResult, IntegrityService, ValidationResult
 from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
 
 
-class ScalarService(Service[Scalar]):
+class ScalarIntegrityService(IntegrityService[Scalar]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: IntegrityService, Encapsulation, API layer.
     
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for ScalarValidator and ScalarBuilder.
@@ -29,10 +29,10 @@ class ScalarService(Service[Scalar]):
         *   builder (ScalarBuilder)
         *   validator (ScalarValidator)
     """
-    SERVICE_NAME = "ScalarService"
+    SERVICE_NAME = "ScalarIntegrityService"
     
-    _builder: ScalarBuilder
-    _validator: ScalarValidator
+    _item_builder: ScalarBuilder
+    _item_validator: ScalarValidator
     
     def __init__(
             self,
@@ -46,7 +46,7 @@ class ScalarService(Service[Scalar]):
         self._validator = validator
     
     @property
-    def validator(self) -> ScalarValidator:
+    def item_validator(self) -> ScalarValidator:
         return self._validator
     
     def build(self, value: int) -> BuildResult[Scalar]:

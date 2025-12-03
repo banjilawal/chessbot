@@ -9,4 +9,4 @@ version: 0.0.1
 
 
 from .exception import *
-from .service import ResolutionService
+from .service import ResolutionIntegrityService

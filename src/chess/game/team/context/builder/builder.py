@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.agent import Agent, AgentService
+from chess.agent import Agent, AgentIntegrityService
 from chess.game import Game
 from chess.game.service import GameService
 from chess.system import Builder, BuildResult, GameColor, IdentityService, LoggingLevelRouter
@@ -47,7 +47,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                         agent: Optional[Agent] = None,
                         color: Optional[GameColor] = None,
 
-                        agent_service: AgentService = AgentService(),
+                        agent_service: AgentIntegrityService = AgentIntegrityService(),
                         team_validator: TeamValidator = TeamValidator(),
                         identity_service: IdentityService = IdentityService(),
                         schema_validator: Optional[TeamSchemaValidator] = TeamSchemaValidator(),
@@ -69,7 +69,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             agent: Optional[Agent] = None,
             color: Optional[GameColor] = None,
             game_service: GameService = GameService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: AgentIntegrityService = AgentIntegrityService(),
             identity_service: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> BuildResult[TeamContext]:
@@ -89,7 +89,7 @@ class TeamContextBuilder(Builder[TeamContext]):
 
         These Parameters must be provided:
             *   game_service (GameService)
-            *   agent_service (AgentService)
+            *   agent_service (AgentIntegrityService)
             *   identity_service (IdentityService)
             *   schema_validator (TeamSchemaValidator)
 
@@ -129,7 +129,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 return BuildResult.success(payload=TeamContext(id=validation.payload))
             
             if agent is not None:
-                validation = agent_service.validator.validate(agent)
+                validation = agent_service.item_validator.validate(agent)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 # If agent is correct create a agent.TeamContext and return it.
@@ -150,7 +150,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 return BuildResult.success(payload=TeamContext(color=validation.payload))
             
             if game is not None:
-                validation = game_service.validator.validate(candidate=color)
+                validation = game_service.item_validator.validate(candidate=color)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 # If game is correct create a game.TeamContext and return it.

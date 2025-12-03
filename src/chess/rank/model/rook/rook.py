@@ -11,7 +11,7 @@ version: 1.0.0
 from chess.piece import Piece
 from chess.geometry import Quadrant
 from chess.rank import Rank, RankSpec
-from chess.coord import Coord, CoordService
+from chess.coord import Coord, CoordIntegrityService
 from chess.system import COLUMN_SIZE, LoggingLevelRouter
 
 
@@ -40,7 +40,7 @@ class Rook(Rank):
             ransom: int = RankSpec.ROOK.ransom,
             team_quota: int = RankSpec.ROOK.team_quota,
             quadrants: list[Quadrant] = RankSpec.ROOK.quadrants,
-            coord_service: CoordService = CoordService()
+            coord_service: CoordIntegrityService = CoordIntegrityService()
     ):
         super().__init(
             id=id,

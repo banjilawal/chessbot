@@ -6,13 +6,14 @@ Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0
 """
+from typing import cast
 
-from chess.system import Service, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.agent import Agent, AgentFactory, AgentValidator
 
-class AgentService(Service[Agent]):
+class AgentIntegrityService(IntegrityService[Agent]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: IntegrityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -30,7 +31,7 @@ class AgentService(Service[Agent]):
         *   builder (AgentBuilder)
         *   validator (AgentValidator)
     """
-    DEFAULT_NAME = "AgentService"
+    DEFAULT_NAME = "AgentIntegrityService"
     
     def __init__(
             self,
@@ -41,7 +42,15 @@ class AgentService(Service[Agent]):
     ):
         """
         # Action
-        1.  Use id_emitter to automatically generate a unique id for each AgentService instance.
+        1.  Use id_emitter to automatically generate a unique id for each AgentIntegrityService instance.
         2.  Automatic dependency injection by providing working default instances of each attribute.
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        
+        @property
+        def validator(self) -> AgentValidator:
+            return cast(AgentValidator, self.item_validator)
+        
+        @property
+        def builder(self) -> AgentFactory:
+            return cast(AgentFactory, self.item_builder)

@@ -7,24 +7,24 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, cast
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamService, TeamInsertionFailedException
+from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamIntegrityService, TeamInsertionFailedException
 
 class TeamDataService(DataService[Team]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
     2.  Stack data structure for Team objects with no guarantee of uniqueness.
     3.  Implements search, insert, delete, and update operations on Team objects.
     4.  ContextService for building selecting different search attributes.
-    5.  Including a TeamService instance creates a microservice for clients.
+    5.  Including a TeamIntegrityService instance creates a microservice for clients.
 
     # PROVIDES:
-        *   TeamService
+        *   TeamIntegrityService
         *   ContextService
         *   Search
         *   TeamStack data structure
@@ -35,7 +35,7 @@ class TeamDataService(DataService[Team]):
         *   name (str):
         *   items (List[Team]):
         *   search (TeamSearch):
-        *   service (TeamService):
+        *   service (TeamIntegrityService):
         *   context_service (TeamContextService):;
         *   current_item (Team):
         *   size (int):
@@ -43,7 +43,7 @@ class TeamDataService(DataService[Team]):
     # CONSTRUCTOR:
         *   __init__(
                 id: int, name: str, items: List[Team], search: TeamSearch,
-                service: TeamService, contextService: TeamContextService
+                service: TeamIntegrityService, contextService: TeamContextService
             )
     
     # CLASS METHODS:
@@ -60,7 +60,7 @@ class TeamDataService(DataService[Team]):
             id=id_emitter.service_id,
             items: List[Team] = List[Team],
             search: TeamSearch = TeamSearch(),
-            service: TeamService = TeamService(),
+            service: TeamIntegrityService = TeamIntegrityService(),
             context_service: TeamContextService = TeamContextService(),
     ):
         """
@@ -78,6 +78,18 @@ class TeamDataService(DataService[Team]):
             service=service,
             context_service=context_service
         )
+        
+    @property
+    def team_service(self) -> TeamIntegrityService:
+        return cast(TeamIntegrityService, self.service)
+    
+    @property
+    def service(self) -> TeamIntegrityService:
+        return cast(TeamIntegrityService, self._service)
+    
+    @property
+    def context_service(self) -> TeamContextService:
+        return cast(TeamContextService, self.context_service)
     
     def push(self, item: Team) -> InsertionResult[Team]:
         """
@@ -102,7 +114,7 @@ class TeamDataService(DataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.service.validator.validate(item)
+            validation = self.service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -146,5 +158,5 @@ class TeamDataService(DataService[Team]):
         method = "TeamDataService.search"
         
         return self.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.validator
+            data_set=self.items, context=context, context_validator=self.context_service.item_validator
         )

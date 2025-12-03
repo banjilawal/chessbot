@@ -10,12 +10,12 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordSearch, CoordService, CoordContextService
+from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordSearch, CoordIntegrityService, CoordContextService
 
 
 class CoordDataService(DataService[Coord]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: IntegrityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for Square, VectoValidator and SquareBuilder objects.
@@ -26,23 +26,23 @@ class CoordDataService(DataService[Coord]):
     # PROVIDES:
         *   SquareBuilder
         *   SquareValidator
-        *   Coord Data Service
+        *   Coord Data IntegrityService
         *
 
     # ATTRIBUTES:
         *   builder (type[SquareBuilder]):
         *   validator (type[SquareValidator]):
-        *   coord_service (CoordService)
+        *   coord_service (CoordIntegrityService)
         *   identity_service (IdentityService)
     """
     """
-    # ROLE: Service, Data Protraction
+    # ROLE: IntegrityService, Data Protraction
 
     # RESPONSIBILITIES:
     1.  Manages integrity lifecycle of Coord objects.
     2.  Vector addition and scalar multiplication of Coord objects.
     3.  Calculate distance between two Coords.
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: IntegrityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.
@@ -62,10 +62,10 @@ class CoordDataService(DataService[Coord]):
     # ATTRIBUTES:
         *   builder (type[CoordBuilder])
         *   validator (type[CoordValidator])
-        *   scalar_service (type[ScalarService):
-        *   vector_service (type[VectorService])
+        *   scalar_service (type[ScalarIntegrityService):
+        *   vector_service (type[VectorIntegrityService])
     """
-    SERVICE_NAME = "CoordService"
+    SERVICE_NAME = "CoordIntegrityService"
     
     def __init__(
             self,
@@ -73,7 +73,7 @@ class CoordDataService(DataService[Coord]):
             id: int = id_emitter.service_id,
             items: List[Coord] = List[Coord],
             search: CoordSearch = CoordSearch(),
-            service: CoordService = CoordService(),
+            service: CoordIntegrityService = CoordIntegrityService(),
             context_service: CoordContext = CoordContextService(),
     ):
         super().__init__(
@@ -90,7 +90,7 @@ class CoordDataService(DataService[Coord]):
     def push(self, item: Coord) -> InsertionResult[Coord]:
         method = "CoordDataService.push"
         try:
-            validation = self.service.validator.validate(item)
+            validation = self.service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -113,5 +113,5 @@ class CoordDataService(DataService[Coord]):
         return self._search_service.find(
             data_set=self.items,
             context=context,
-            context_validator=self.context_service.validator
+            context_validator=self.context_service.item_validator
         )

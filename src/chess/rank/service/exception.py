@@ -26,29 +26,29 @@ __all__ = [
 
 class RankServiceException(ServiceException):
     """
-    Super class of exceptions raised by RankService objects. Do not use directly. Subclasses give
+    Super class of exceptions raised by RankIntegrityService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "RANK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "RankService raised an exception."
+    DEFAULT_MESSAGE = "RankIntegrityService raised an exception."
 
 
 # ======================# NULL RANK_SERVICE EXCEPTIONS #======================#
 class NullRankServiceException(RankServiceException, NullException):
-    """Raised if an entity, method, or operation requires RankService but gets null instead."""
+    """Raised if an entity, method, or operation requires RankIntegrityService but gets null instead."""
     ERROR_CODE = "NULL_RANK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "RankService cannot be null."
+    DEFAULT_MESSAGE = "RankIntegrityService cannot be null."
 
 
 # ======================# RANK_SERVICE VALIDATION EXCEPTIONS #======================#
 class InvalidRankServiceException(RankServiceException, ValidationException):
-    """Catchall Exception for when RankServiceValidator fails candidates on a Piece-RankService relationship test."""
+    """Catchall Exception for when RankServiceValidator fails candidates on a Piece-RankIntegrityService relationship test."""
     ERROR_CODE = "INVALID_RANK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "RankService validation failed."
+    DEFAULT_MESSAGE = "RankIntegrityService validation failed."
 
 
 # ======================# RANK_SERVICE BUILD EXCEPTIONS #======================#
 class RankServiceBuildFailedException(RankServiceException, BuildFailedException):
     """Catchall Exception for RankServiceBuilder when it encounters an error building a Rank."""
     ERROR_CODE = "RANK_SERVICE_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "RankService build failed."
+    DEFAULT_MESSAGE = "RankIntegrityService build failed."

@@ -1,11 +1,11 @@
 from typing import Any
 
-from chess.piece import PieceService
+from chess.piece import PieceIntegrityService
 from chess.system import ValidationResult, Validator
 
 
-class PieceServiceValidator(Validator[PieceService]):
+class PieceServiceValidator(Validator[PieceIntegrityService]):
     
     @classmethod
-    def validate(cls, candidate: Any) -> ValidationResult[PieceService]:
+    def validate(cls, candidate: Any) -> ValidationResult[PieceIntegrityService]:
         pass

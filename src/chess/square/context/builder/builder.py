@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.board import Board
-from chess.coord import Coord, CoordService
+from chess.coord import Coord, CoordIntegrityService
 from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
     NoSquareContextFlagSetException, SquareContext, SquareContextBuildFailedException,
@@ -29,7 +29,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             name: Optional[str] = None,
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
-            coord_service: CoordService = CoordService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[SquareContext]:
         """"""
@@ -67,7 +67,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 return BuildResult.success(SquareContext(name=name))
             
             if coord is not None:
-                coord_validation = coord_service.validator.validate(coord)
+                coord_validation = coord_service.item_validator.validate(coord)
                 if coord_validation.is_failure:
                     return BuildResult.failure(coord_validation.exception)
                 return BuildResult.success(SquareContext(coord=coord))

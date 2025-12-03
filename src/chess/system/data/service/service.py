@@ -13,7 +13,7 @@ from typing import Generic, List, Optional, TypeVar
 from chess.system.data import DeletionResult, DataServiceException, RemovingNullDataException
 from chess.system import (
     Context, DataServiceException, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException, SearchResult,
-    Service,
+    IntegrityService,
     Search
 )
 
@@ -23,7 +23,7 @@ C = TypeVar("C", binding=Context)
 
 class DataService(ABC, [Generic [D]]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Scales Builder and Validator operations for collection of objects.
@@ -44,8 +44,8 @@ class DataService(ABC, [Generic [D]]):
         *   name (str):
         *   items (List[D]):
         *   search (Search[D]):
-        *   service (Service[D]):
-        *   context_service (Service[C]);
+        *   service (IntegrityService[D]):
+        *   context_service (IntegrityService[C]);
         *   current_item (D):
         *   size (int):
     """
@@ -54,8 +54,8 @@ class DataService(ABC, [Generic [D]]):
     _name: str
     _items: List[D]
     _search: Search[D]
-    _service: Service[D]
-    _context_service: Service[C]
+    _service: IntegrityService[D]
+    _context_service: IntegrityService[C]
     
     _current_item: D
 
@@ -65,8 +65,8 @@ class DataService(ABC, [Generic [D]]):
             name: str,
             items: List[D],
             search: Search[D],
-            service: Service[D],
-            context_service: Service[C],
+            service: IntegrityService[D],
+            context_service: IntegrityService[C],
     ):
         self._id = id
         self._name = name
@@ -106,11 +106,11 @@ class DataService(ABC, [Generic [D]]):
         return self._items
     
     @property
-    def service(self) -> Service[D]:
+    def service(self) -> IntegrityService[D]:
         return self._service
     
     @property
-    def context_service(self) -> Service[C]:
+    def context_service(self) -> IntegrityService[C]:
         return self._context_service
     
     @property

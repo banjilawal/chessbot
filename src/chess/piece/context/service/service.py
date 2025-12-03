@@ -7,16 +7,16 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.system import Service, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.piece import PieceContext, PieceContextBuilder, PieceContextValidator
 
-class PieceContextService(Service[PieceContext]):
+class PieceContextService(IntegrityService[PieceContext]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: IntegrityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single entry point for PieceContextBuilder and PieceContextValidator objects.
-    2.  Passing its self._validator to the self._builder simplifies the Context lifecycle.
+    2.  Passing its self._item_validator to the self._item_builder simplifies the Context lifecycle.
     3.  Protects Context from direct, unprotected access.
     4.  Public facing API.
 

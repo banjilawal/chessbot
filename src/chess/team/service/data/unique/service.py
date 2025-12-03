@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+from typing import cast
 
 from chess.team import (
     AddingDuplicateTeamException, Team, TeamDataService, TeamInsertionFailedException,
@@ -16,7 +17,7 @@ from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService,
 
 class UniqueTeamDataService(UniqueDataService[Team]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -53,7 +54,11 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         1.  Use id_emitter to automatically generate a unique id for each UniqueTeamDataService instance.
         2.  Automatic dependency injection by providing working default instances name and TeamDataService instance.
         """
-        super().__init__(id=id, name=name,data_service=data_service )
+        super().__init__(id=id, name=name, data_service=data_service)
+        
+    @property
+    def team_data_service(self) -> TeamDataService:
+        return cast(TeamDataService, self._data_service)
     
     @LoggingLevelRouter.monitor
     def push_unique(self, item: Team) -> InsertionResult[Team]:
@@ -81,11 +86,11 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.service.validator.validate(item)
+            validation = self.service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             
-            context_validation = self._data_service.context_service.builder.build(id=item.id)
+            context_validation = self._data_service.context_service.item_builder.build(id=item.id)
             if context_validation.is_failure():
                 return InsertionResult.failure(context_validation.exception)
             

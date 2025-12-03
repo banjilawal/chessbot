@@ -15,5 +15,5 @@ None
 # Modules
 from .exception import *
 from .bishop import Bishop
-from .service import BishopService
+from .service import BishopIntegrityService
 from .validator import BishopValidator

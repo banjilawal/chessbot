@@ -7,5 +7,5 @@ Created: 2025-11-18
 """
 
 from .exception import *
-from .service import Service
+from .service import IntegrityService
 

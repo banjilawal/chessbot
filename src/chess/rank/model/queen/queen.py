@@ -13,7 +13,7 @@ from chess.piece import Piece
 from chess.geometry import Quadrant
 from chess.rank import Rank, RankSpec
 from chess.system import LoggingLevelRouter
-from chess.coord import Coord, CoordService
+from chess.coord import Coord, CoordIntegrityService
 
 
 
@@ -41,7 +41,7 @@ class Queen(Rank):
             team_quota: int = RankSpec.QUEEN.team_quota,
             designation: str = RankSpec.QUEEN.designation,
             quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants,
-            coord_service: CoordService = CoordService()
+            coord_service: CoordIntegrityService = CoordIntegrityService()
     ):
         super().__init(
             id=id,

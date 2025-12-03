@@ -1,28 +1,30 @@
-# src/chess/team/builder.builder.py
+# src/chess/game/builder.builder.py
 
 """
-Module: chess.team.builder.builder
+Module: chess.game.builder.builder
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, AgentService
-from chess.piece import UniquePieceDataService
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
-from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
+from chess.agent import Agent, AgentIntegrityService, UniqueAgentDataService
+from chess.board import BoardIntegrityService
+from chess.team import Team, UniqueTeamDataService
+from chess.game import Game, GameBuildFailedException
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
-class TeamBuilder(Builder[Team]):
+
+class GameBuilder(Builder[Game]):
     """
     # ROLE: Builder, Data Integrity Guarantor
   
     # RESPONSIBILITIES:
-    Produce Team instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead.
+    Produce Game instances whose integrity is always guaranteed. If any attributes
+    do not pass their integrity checks, send an exception instead.
   
     # PROVIDES:
-    BuildResult[Team] containing either:
-        - On success: Team in the payload.
+    BuildResult[Game] containing either:
+        - On success: Game in the payload.
         - On failure: Exception.
   
     # ATTRIBUTES:
@@ -35,14 +37,11 @@ class TeamBuilder(Builder[Team]):
         ## build signature
               build(
                     id: int.
-                    agent: Agent,
-                    schema: TeamSchema,
-                    agent_service: AgentService = AgentService(),
-                    identity_service: IdentityService = IdentityService(),
-                    roster: UniquePieceDataService = UniquePieceDataService(),
-                    hostages: UniquePieceDataService = UniquePieceDataService(),
-                    schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
-                ) -> BuildResult[Team]:
+                    white_player: Agent,
+                    black_player: Agent,
+                    board: BoardIntegrityService = BoardIntegrityService(),
+                    players: UniqueAgentDataService = UniqueAgentDataService(),
+                ) -> BuildResult[Game]:
         For ease of use and cleaner code dependencies are given default values.
     
     # INSTANCE METHODS:
@@ -53,42 +52,40 @@ class TeamBuilder(Builder[Team]):
     @LoggingLevelRouter.monitor()
     def build(
             cls,
-            id: int,
-            agent: Agent,
-            schema: TeamSchema,
-            agent_service: AgentService = AgentService(),
+            white_player: Agent,
+            black_player: Agent,
+            id: int = id_emitter.service_id,
+            board: BoardIntegrityService = BoardIntegrityService(),
             identity_service: IdentityService = IdentityService(),
-            roster: UniquePieceDataService = UniquePieceDataService(),
-            hostages: UniquePieceDataService = UniquePieceDataService(),
-            schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
-    ) -> BuildResult[Team]:
+            agent_data: UniqueAgentDataService = UniqueAgentDataService(),
+    ) -> BuildResult[Game]:
         """
         # ACTION:
         1.  Check ID safety with IdentityService.validate_id.
-        2.  Check schema correctness with TeamSchemaValidator.validate.
+        2.  Check schema correctness with GameSchemaValidator.validate.
         3.  Check agent safety with PlayAgentService.validate_player.
         4.  If any check fails, return the exception inside a BuildResult.
-        5.  When all checks create a new Team object.
-        6.  If the team is not in actor's team_assignments use their team_stack to add it.
+        5.  When all checks create a new Game object.
+        6.  If the game is not in actor's game_assignments use their game_stack to add it.
     
         # PARAMETERS:
             *   id (int)
-            *   agent (Agent)
-            *   schema (TeamSchema)
+            *   white_player (Agent)
+            *   black_player (GameSchema)
             *   identity_service (IdentityService)
-            *   agent_service (AgentService)
-            *   schema_validator (TeamSchemaValidator)
+            *   agent_service (AgentIntegrityService)
+            *   schema_validator (GameSchemaValidator)
         All Services have default values to ensure they are never null.
         
         # Returns:
-        BuildResult[Team] containing either:
-            - On success: Team in the payload.
+        BuildResult[Game] containing either:
+            - On success: Game in the payload.
             - On failure: Exception.
     
         RAISES:
-            *   TeamBuildFailedException
+            *   GameBuildFailedException
         """
-        method = "TeamBuilder.builder"
+        method = "GameBuilder.builder"
         
         try:
             # Start the error detection process.
@@ -96,25 +93,38 @@ class TeamBuilder(Builder[Team]):
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            team_schema_validation = schema_validator.validate(schema)
-            if team_schema_validation.is_failure():
-                return BuildResult.failure(team_schema_validation.exception)
+            white_player_validation = agent_data.service.item_validator.validate(white_player)
+            if white_player_validation.is_failure():
+                return BuildResult.failure(white_player_validation.exception)
             
-            agent_validation = agent_service.validator.validate(agent)
-            if agent_validation.is_failure():
-                return BuildResult.failure(agent_validation.exception)
-            # If no errors are detected build the Team object.
-            team = Team(id=id, agent=agent, schema=schema, roster=roster, hostages=hostages)
+            white_player.team_assignments.
             
-            # If the team is not in Agent.team_assignments register it.
-            if team not in agent.team_assignments:
-                agent.team_assignments.push_unique(team)
-            # Send the successfully built and registered Team object inside a BuildResult.
-            return BuildResult.success(team)
+            black_player_validation = agent_data.service.item_validator.validate(black_player)
+            if black_player_validation.is_failure():
+                return BuildResult.failure(black_player_validation.exception)
+            
+            if not agent_data.size != 0:
+                return BuildResult.failure("Players already assigned to game.")
+            
+            insertion_result = agent_data.push_unique(white_player_validation.payload)
+            if insertion_result.is_failure():
+                return BuildResult.failure(insertion_result.exception)
+            
+            insertion_result = agent_data.push_unique(black_player_validation.payload)
+            if insertion_result.is_failure():
+                return BuildResult.failure(insertion_result.exception)
+            
+            # If no errors are detected build the Game object.
+            
+            # If the game is not in Agent.game_assignments register it.
+            if game not in agent.game_assignments:
+                agent.game_assignments.push_unique(game)
+            # Send the successfully built and registered Game object inside a BuildResult.
+            return BuildResult.success(game)
         
         # Finally return a BuildResult containing any unhandled exceptions insided an
-        # TeamBuildFailedException
+        # GameBuildFailedException
         except Exception as ex:
             return BuildResult.failure(
-                TeamBuildFailedException(ex=ex, message=f"{method}: {TeamBuildFailedException.DEFAULT_MESSAGE}")
+                GameBuildFailedException(ex=ex, message=f"{method}: {GameBuildFailedException.DEFAULT_MESSAGE}")
             )

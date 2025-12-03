@@ -10,4 +10,4 @@ version: 1.0.0
 
 from .data import *
 from .exception import *
-from .service import PieceService
+from .service import PieceIntegrityService

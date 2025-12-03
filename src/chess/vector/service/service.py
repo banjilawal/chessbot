@@ -8,14 +8,14 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, LoggingLevelRouter, Service
+from chess.scalar import Scalar, ScalarIntegrityService
+from chess.system import BuildResult, LoggingLevelRouter, IntegrityService
 from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, VectorValidator
 
 
-class VectorService(Service):
+class VectorIntegrityService(IntegrityService):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: IntegrityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for Vector objects, VectoValidator and VectorBuilder.
@@ -32,13 +32,11 @@ class VectorService(Service):
     # ATTRIBUTES:
         *   builder (VectorBuilder)
         *   validator (VectorValidator)
-        *   scalar_service (ScalarService)
+        *   scalar_service (ScalarIntegrityService)
     """
-    SERVICE_NAME = "VectorService"
+    SERVICE_NAME = "VectorIntegrityService"
     
-    _builder: VectorBuilder
-    _validator: VectorValidator
-    _scalar_service: ScalarService
+    _scalar_service: ScalarIntegrityService
     
     def __init__(
             self,
@@ -46,23 +44,21 @@ class VectorService(Service):
             name: str = SERVICE_NAME,
             builder: VectorBuilder = VectorBuilder(),
             validator: VectorValidator = VectorValidator(),
-            scalar_service: ScalarService = ScalarService()
+            scalar_service: ScalarIntegrityService = ScalarIntegrityService()
     ):
-        super().__init__(id=id, name=name)
-        self._builder = builder
-        self._validator = validator
+        super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._scalar_service = scalar_service
     
     
     @property
-    def validator(self) -> VectorValidator:
-        return self._validator
+    def item_validator(self) -> VectorValidator:
+        return cast(VectorValidator, self.item_validator
     
     @LoggingLevelRouter.monitor
     def build(self, x: int, y: int) -> BuildResult[Vector]:
         """
         # Action:
-        VectorService directs builder to run the builder process with the inputs.
+        VectorIntegrityService directs builder to run the builder process with the inputs.
 
         # Parameters:
             *   x (int):
@@ -78,8 +74,8 @@ class VectorService(Service):
             *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
-        method = "VectorService.build_vector"
-        return self._builder.build(x=x, y=y, validator=self._validator)
+        method = "VectorIntegrityService.build_vector"
+        return self._item_builder.build(x=x, y=y, validator=self._item_validator)
     
     
     @LoggingLevelRouter.monitor
@@ -106,21 +102,21 @@ class VectorService(Service):
         Raises:
             VectorBuildFailedException
         """
-        method = "VectorService.multiply_vector_by_scalar"
+        method = "VectorIntegrityService.multiply_vector_by_scalar"
         
         try:
-            scalar_validation = self._scalar_service.validator.validate(scalar)
+            scalar_validation = self._scalar_service.item_validator.validate(scalar)
             if scalar_validation.is_failure():
                 return BuildResult.failure(scalar_validation.exception)
             
-            vector_validation = self._validator.validate(vector)
+            vector_validation = self._item_validator.validate(vector)
             if vector_validation.is_failure():
                 return BuildResult.failure(vector_validation.exception)
             
-            return self._builder.build(
+            return self._item_builder.build(
                 x=(vector.x * scalar.value),
                 y=(vector.y * scalar.value),
-                validator=self._validator
+                validator=self._item_validator
             )
         
         except Exception as ex:

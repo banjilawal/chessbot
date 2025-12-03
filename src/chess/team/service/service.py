@@ -6,13 +6,15 @@ Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0
 """
+from typing import cast
 
-from chess.system import Service, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamValidator
 
-class TeamService(Service[Team]):
+
+class TeamIntegrityService(IntegrityService[Team]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: IntegrityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -43,14 +45,14 @@ class TeamService(Service[Team]):
     # INSTANCE METHODS:
     None
     """
-    DEFAULT_NAME = "TeamService"
+    DEFAULT_NAME = "TeamIntegrityService"
     _schema: TeamSchema
     _schema_validator: TeamSchemaValidator
     
     def __init__(
             self,
+            id: int,
             name: str = DEFAULT_NAME,
-            id: int = id_emitter.service_id,
             schema: TeamSchema = TeamSchema(),
             builder: TeamBuilder = TeamBuilder(),
             validator: TeamValidator = TeamValidator(),
@@ -59,16 +61,19 @@ class TeamService(Service[Team]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._schema = schema
         self._schema_validator = team_schema_validator
-        
+    
     @property
     def schema(self) -> TeamSchema:
         return self._schema
     
     @property
+    def item_validator(self) -> TeamValidator:
+        return cast(TeamValidator, super().item_validator)
+    
+    @property
+    def item_builder(self) -> TeamBuilder:
+        return cast(TeamBuilder, super().item_builder)
+    
+    @property
     def schema_validator(self) -> TeamSchemaValidator:
         return self._schema_validator
-    
-
-        
-
-    

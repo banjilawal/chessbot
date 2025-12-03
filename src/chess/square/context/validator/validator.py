@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.board import BoardService
-from chess.coord.service import CoordService
+from chess.board import BoardIntegrityService
+from chess.coord.service import CoordIntegrityService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.square import (
     InvalidSquareContextException, NoSquareContextFlagSetException, NullSquareContextException,
@@ -25,8 +25,8 @@ class SquareContextValidator(Validator[SquareContext]):
     def validate(
             cls,
             candidate: Any,
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
+            board_service: BoardIntegrityService = BoardIntegrityService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[SquareContext]:
         """"""
@@ -79,7 +79,7 @@ class SquareContextValidator(Validator[SquareContext]):
                 return ValidationResult.success(payload=context)
             
             if context.coord is not None:
-                coord_validation = coord_service.validator.validate(context.coord)
+                coord_validation = coord_service.item_validator.validate(context.coord)
                 if coord_validation.is_failure:
                     return ValidationResult.failure(coord_validation.exception)
                 return ValidationResult.success(payload=context)

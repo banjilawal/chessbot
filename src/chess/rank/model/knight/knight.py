@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.piece import Piece
-from chess.coord import Coord, CoordService
+from chess.coord import Coord, CoordIntegrityService
 from chess.system import LoggingLevelRouter
 from chess.vector import Vector
 from chess.geometry import Quadrant
@@ -40,7 +40,7 @@ class Knight(Rank):
             team_quota: int = RankSpec.KNIGHT.team_quota,
             designation: str = RankSpec.KNIGHT.designation,
             quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants,
-            coord_service: CoordService=CoordService()
+            coord_service: CoordIntegrityService=CoordIntegrityService()
     ):
         super().__init(
             id=id,

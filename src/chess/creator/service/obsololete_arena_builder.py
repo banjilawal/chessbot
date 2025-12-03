@@ -42,7 +42,7 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
     # return teams
   #
   # @staticmethod
-  # def place_teams(team_service: TeamService, chess_board: MapService):
+  # def place_teams(team_service: TeamIntegrityService, chess_board: MapService):
   #
   #   for captor in team_service.chess_pieces():
   #     for placement in PlacementChart:

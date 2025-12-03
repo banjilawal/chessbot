@@ -22,29 +22,29 @@ __all__ = [
 
 class ScalarServiceException(ServiceException):
   """
-  Super class of exceptions raised by ScalarService objects. Do not use directly. Subclasses give
+  Super class of exceptions raised by ScalarIntegrityService objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
   ERROR_CODE = "SCALAR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "ScalarService raised an exception."
+  DEFAULT_MESSAGE = "ScalarIntegrityService raised an exception."
   
 
 #======================# NULL SCALARSERVICE EXCEPTIONS #======================#
 class NullScalarServiceException(ScalarServiceException, NullException):
-  """Raised if an entity, method, or operation requires ScalarService but gets null instead."""
+  """Raised if an entity, method, or operation requires ScalarIntegrityService but gets null instead."""
   ERROR_CODE = "NULL_SCALAR_SERVICE_ERROR"
-  DEFAULT_MESSAGE = "ScalarService cannot be null."
+  DEFAULT_MESSAGE = "ScalarIntegrityService cannot be null."
 
 
 #======================# SCALARSERVICE VALIDATION EXCEPTIONS #======================#
 class InvalidScalarServiceException(ScalarServiceException, ValidationException):
   """Catchall Exception for ScalarValidator when a candidate fails a sanity check."""
   ERROR_CODE = "SCALAR_SERVICE_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "ScalarService validation failed."
+  DEFAULT_MESSAGE = "ScalarIntegrityService validation failed."
 
 
 #======================# SCALARSERVICE BUILD EXCEPTIONS #======================#
 class ScalarBuildFailedException(ScalarServiceException, BuildFailedException):
-  """Catchall Exception for ScalarServiceBuilder when it encounters an error building a ScalarService."""
+  """Catchall Exception for ScalarServiceBuilder when it encounters an error building a ScalarIntegrityService."""
   ERROR_CODE = "SCALAR_SERVICE_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "ScalarService build failed."
+  DEFAULT_MESSAGE = "ScalarIntegrityService build failed."

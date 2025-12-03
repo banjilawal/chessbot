@@ -11,7 +11,7 @@ version: 1.0.0
 from chess.piece import Piece
 from chess.geometry import Quadrant
 from chess.rank import Rank, RankSpec
-from chess.coord import Coord, CoordService
+from chess.coord import Coord, CoordIntegrityService
 from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
 
 
@@ -38,7 +38,7 @@ class Bishop(Rank):
             team_quota: int = RankSpec.BISHOP.team_quota,
             designation: str = RankSpec.BISHOP.designation,
             quadrants: list[Quadrant] = RankSpec.BISHOP.quadrants,
-            coord_service: CoordService = CoordService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
     ):
         super().__init(
             id=id,

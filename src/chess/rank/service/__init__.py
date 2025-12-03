@@ -9,4 +9,4 @@ version: 1.0.0
 
 
 from .exception import *
-from .service import RankService
+from .service import RankIntegrityService

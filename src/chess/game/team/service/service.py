@@ -7,12 +7,12 @@ Created: 2025-10-31
 version: 1.0.0
 """
 
-from chess.system import Service, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamValidator
 
-class TeamService(Service[Team]):
+class TeamIntegrityService(IntegrityService[Team]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: IntegrityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -43,7 +43,7 @@ class TeamService(Service[Team]):
     # INSTANCE METHODS:
     None
     """
-    DEFAULT_NAME = "TeamService"
+    DEFAULT_NAME = "TeamIntegrityService"
     _schema: TeamSchema
     _schema_validator: TeamSchemaValidator
     

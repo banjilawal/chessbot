@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
 """
-from chess.board import Board, BoardService
-from chess.coord import Coord, CoordService
+from chess.board import Board, BoardIntegrityService
+from chess.coord import Coord, CoordIntegrityService
 from chess.square import Square, SquareBuildFailedException, SquareValidator
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
@@ -37,8 +37,8 @@ class SquareBuilder(Builder[Square]):
             board: Board,
             coord: Coord,
             id: int = id_emitter.square_id,
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
+            board_service: BoardIntegrityService = BoardIntegrityService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
             square_validator: SquareValidator = SquareValidator(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Square]:
@@ -55,8 +55,8 @@ class SquareBuilder(Builder[Square]):
             *   name (str)
             *   cord (Coord)
             *   board (Board)
-            *   board_service (BoardService)
-            *   coord_service (CoordService)
+            *   board_service (BoardIntegrityService)
+            *   coord_service (CoordIntegrityService)
             *   identity_service (IdentityService)
     
         # Returns:
@@ -77,11 +77,11 @@ class SquareBuilder(Builder[Square]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            coord_validation = coord_service.validator.validate(coord)
+            coord_validation = coord_service.item_validator.validate(coord)
             if coord_validation.is_failure():
                 return BuildResult.failure(coord_validation.exception)
             
-            board_validation = board_service.validator.validate(board)
+            board_validation = board_service.item_validator.validate(board)
             if board_validation.is_failure():
                 return BuildResult.failure(board_validation.exception)
             

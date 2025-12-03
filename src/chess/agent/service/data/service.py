@@ -7,11 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, cast
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult
 from chess.agent import (
-    Agent, AgentContext, AgentContextService, AgentService, AgentSearch, AgentDataServiceException
+    Agent, AgentContext, AgentContextService, AgentIntegrityService, AgentSearch, AgentDataServiceException
 )
 
 
@@ -24,7 +24,7 @@ class AgentDataService(DataService[Agent]):
             name: str = DEFAULT_NAME,
             items: List[Agent] = List[Agent],
             search: AgentSearch = AgentSearch(),
-            service: AgentService = AgentService(),
+            service: AgentIntegrityService = AgentIntegrityService(),
             context_service: AgentContextService = AgentContextService(),
     ):
         super().__init__(
@@ -35,12 +35,16 @@ class AgentDataService(DataService[Agent]):
             service=service,
             context_service=context_service,
         )
+        
+    @property
+    def service(self) -> AgentIntegrityService:
+        return cast(AgentIntegrityService, self.service)
     
     @LoggingLevelRouter.monitor
     def push(self, item: Agent) -> InsertionResult[Agent]:
         method = "AgentDataService.push"
         try:
-            validation = self.service.validator.validate(item)
+            validation = self.service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -63,5 +67,5 @@ class AgentDataService(DataService[Agent]):
         return self.search.find(
             data_set=self.items,
             context=context,
-            context_validator=self.context_service.validator
+            context_validator=self.context_service.item_validator
         )

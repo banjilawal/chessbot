@@ -20,11 +20,11 @@ __all__ = [
 # ====================== PIECE_SERVICE EXCEPTION SUPER CLASS #======================#
 class PieceServiceException(ServiceException):
     """
-    Super class for exceptions raised by PieceService objects. DO NOT USE DIRECTLY. Subclasses
+    Super class for exceptions raised by PieceIntegrityService objects. DO NOT USE DIRECTLY. Subclasses
     give more useful debugging messages.
     """
     ERROR_CODE = "PIECE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PieceService raised an exception."
+    DEFAULT_MESSAGE = "PieceIntegrityService raised an exception."
 
 
 
@@ -34,5 +34,5 @@ class PieceServiceException(ServiceException):
 class PieceServiceBuildFailedException(PieceServiceException, BuildFailedException):
     """Catchall Exception for PieceServiceBuilder when it stops because of an error."""
     ERROR_CODE = "PIECE_SERVICE_BUILD_FAILED"
-    DEFAULT_MESSAGE = "PieceService build failed."
+    DEFAULT_MESSAGE = "PieceIntegrityService build failed."
 

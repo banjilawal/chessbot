@@ -7,10 +7,10 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import Service, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.square import SquareContext, SquareContextBuilder, SquareContextValidator
 
-class SquareContextService(Service[SquareContext]):
+class SquareContextService(IntegrityService[SquareContext]):
     """"""
     DEFAULT_NAME = "SquareContextService"
     

@@ -29,7 +29,7 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
     def push_unique(self, item: Agent) -> InsertionResult[Agent]:
         method = "UniqueAgentDataService.push_unique"
         try:
-            validation = self.service.validator.validate(item)
+            validation = self.service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             

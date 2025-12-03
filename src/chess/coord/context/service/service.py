@@ -6,17 +6,18 @@ Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
 """
+from typing import cast
 
-from chess.system import Service, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.coord import CoordContext, CoordContextBuilder, CoordContextValidator
 
-class CoordContextService(Service[CoordContext]):
+class CoordContextService(IntegrityService[CoordContext]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: IntegrityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single entry point for CoordContextBuilder and CoordContextValidator objects.
-    2.  Passing its self._validator to the self._builder simplifies the SearchContext lifecycle.
+    2.  Passing its self._item_validator to the self._item_builder simplifies the SearchContext lifecycle.
     3.  Protects SearchContext from direct, unprotected access.
     4.  Public facing API.
 
@@ -25,8 +26,8 @@ class CoordContextService(Service[CoordContext]):
         *   Interface to CoordContextBuilder
 
     # ATTRIBUTES:
-        *   _builder (CoordContextBuilder):
-        *   _validator (CoordContextValidator):
+        *   _item_builder (CoordContextBuilder):
+        *   _item_validator (CoordContextValidator):
     """
     DEFAULT_NAME = "CoordContextService"
     
@@ -38,3 +39,11 @@ class CoordContextService(Service[CoordContext]):
             validator: CoordContextValidator = CoordContextValidator(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        
+    @property
+    def item_builder(self) -> CoordContextBuilder:
+        return cast(CoordContextBuilder, self.item_builder)
+    
+    @property
+    def item_validator(self) -> CoordContextValidator:
+        return cast(CoordContextValidator, self.item_validator)

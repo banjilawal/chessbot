@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 
-from chess.team import Team, TeamService
+from chess.team import Team, TeamIntegrityService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.agent import (
     AgentVariety, AgentContext, AgentContextBuildFailedException, NoAgentContextFlagSetException,
@@ -58,7 +58,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             *   team (Optional[Team])
 
         These Parameters must be provided:
-            *   team_service (TeamService)
+            *   team_service (TeamIntegrityService)
             *   identity_service (IdentityService)
 
         # Returns:

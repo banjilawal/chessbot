@@ -15,4 +15,4 @@ from .validator import *
 
 from .board import Board
 from .iterator import SquareIterator
-from .service import BoardService
+from .service import BoardIntegrityService

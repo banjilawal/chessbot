@@ -13,10 +13,10 @@ from chess.piece import (
     NoPieceContextFlagSetException, PieceContext, PieceContextBuildFailedException,
     TooManyPieceContextFlagsSetException
 )
-from chess.coord import Coord, CoordService
-from chess.rank import Rank, RankService
+from chess.coord import Coord, CoordIntegrityService
+from chess.rank import Rank, RankIntegrityService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
-from chess.team import Team, TeamService
+from chess.team import Team, TeamIntegrityService
 
 
 class PieceContextBuilder(Builder[PieceContext]):
@@ -46,9 +46,9 @@ class PieceContextBuilder(Builder[PieceContext]):
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
             coord: Optional[Coord] = None,
-            team_service: TeamService = TeamService(),
-            rank_service: RankService = RankService(),
-            coord_service: CoordService = CoordService(),
+            team_service: TeamIntegrityService = TeamIntegrityService(),
+            rank_service: RankIntegrityService = RankIntegrityService(),
+            coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[PieceContext]:
         """
@@ -67,9 +67,9 @@ class PieceContextBuilder(Builder[PieceContext]):
             *   coord (Optional[Coord])
             
         These Parameters must be provided:
-            *   team_service (TeamService)
-            *   rank_service (RankService)
-            *   coord_service (CoordService)
+            *   team_service (TeamIntegrityService)
+            *   rank_service (RankIntegrityService)
+            *   coord_service (CoordIntegrityService)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -117,25 +117,25 @@ class PieceContextBuilder(Builder[PieceContext]):
                 return BuildResult.success(PieceContext(name=name))
             
             if coord is not None:
-                validation = coord_service.validator.validate(coord)
+                validation = coord_service.item_validator.validate(coord)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(PieceContext(coord=coord))
             
             if rank is not None:
-                validation = rank_service.validator.validate(rank)
+                validation = rank_service.item_validator.validate(rank)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(PieceContext(rank=rank))
             
             if team is not None:
-                validation = team_service.validator.validate(team)
+                validation = team_service.item_validator.validate(team)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(PieceContext(team=team))
             
             if ransom is not None:
-                validation = rank_service.validator.validate_ransom_in_bounds(ransom)
+                validation = rank_service.item_validator.validate_ransom_in_bounds(ransom)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(PieceContext(ransom=ransom))

@@ -12,8 +12,8 @@ from abc import ABC, abstractmethod
 
 from chess.piece import Piece
 from chess.geometry import Quadrant
-from chess.vector import VectorService
-from chess.coord import Coord, CoordService
+from chess.vector import VectorIntegrityService
+from chess.coord import Coord, CoordIntegrityService
 from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
 
 
@@ -44,8 +44,8 @@ class Rank(ABC):
     _ransom: int
     _team_quota: int
     _quadrants: list[Quadrant]
-    _coord_service: CoordService
-    _vector_service: VectorService
+    _coord_service: CoordIntegrityService
+    _vector_service: VectorIntegrityService
     
     def __init__(self,
             id: int,
@@ -54,8 +54,8 @@ class Rank(ABC):
             ransom: int,
             team_quota: int,
             quadrants: list[Quadrant],
-            coord_service: CoordService=CoordService(),
-            vector_service: VectorService=VectorService(),
+            coord_service: CoordIntegrityService=CoordIntegrityService(),
+            vector_service: VectorIntegrityService=VectorIntegrityService(),
     ):
         self._id = id
         self._name = name
@@ -409,11 +409,11 @@ class Rank(ABC):
         return self._team_quota
     
     @property
-    def coord_service(self) -> CoordService:
+    def coord_service(self) -> CoordIntegrityService:
         return self._coord_service
     
     @property
-    def vector_service(self) -> VectorService:
+    def vector_service(self) -> VectorIntegrityService:
         return self._vector_service
     
     def __eq__(self, other):

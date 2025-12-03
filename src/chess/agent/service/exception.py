@@ -18,4 +18,4 @@ __all__ = [
 # ======================# AGENT_SERVICE EXCEPTIONS #======================#
 class AgentServiceException(ServiceException):
     ERROR_CODE = "AGENT_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "AgentService raised an exception."
+    DEFAULT_ERROR_CODE = "AgentIntegrityService raised an exception."

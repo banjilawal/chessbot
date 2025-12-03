@@ -24,7 +24,7 @@ To use this package, import the desired classes and perform scalar-related rollb
 >>> from chess.vector import Vector
 >>>
 >>> # Create team_name scalar instance
->>> build_outcome = ScalarBuilder.builder(value=1)
+>>> build_outcome = ScalarBuilder.item_builder(value=1)
 >>> if not build_outcome.is_success():
 >>>   raise build_outcome.err
 >>> validate = ScalarValidator.validate(build_outcome.payload)

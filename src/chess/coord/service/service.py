@@ -7,20 +7,20 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.system import BuildResult, Service, id_emitter
-from chess.scalar import Scalar, ScalarService
-from chess.vector import Vector, VectorService
+from chess.system import BuildResult, IntegrityService, id_emitter
+from chess.scalar import Scalar, ScalarIntegrityService
+from chess.vector import Vector, VectorIntegrityService
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
 
 
-class CoordService(Service[Coord]):
+class CoordIntegrityService(IntegrityService[Coord]):
     """
     # RESPONSIBILITIES:
 
     # PROVIDES:
         *   SquareBuilder
         *   SquareValidator
-        *   Coord Data Service
+        *   Coord Data IntegrityService
         *
 
     # ATTRIBUTES:
@@ -28,7 +28,7 @@ class CoordService(Service[Coord]):
         *   validator (type[SquareValidator]):
     """
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: IntegrityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  An API for managing the integrity lifecycle of Coord objects through CoordBuilder and CoordValidator.
@@ -41,23 +41,23 @@ class CoordService(Service[Coord]):
     # PROVIDES:
         *   CoordBuilder
         *   CoordValidator
-        *   VectorService
-        *   ScalarService
+        *   VectorIntegrityService
+        *   ScalarIntegrityService
 
     # ATTRIBUTES:
         *   builder (type[CoordBuilder])
         *   validator (type[CoordValidator])
-        *   scalar_service (type[ScalarService):
-        *   vector_service (type[VectorService])
+        *   scalar_service (type[ScalarIntegrityService):
+        *   vector_service (type[VectorIntegrityService])
     """
-    SERVICE_NAME = "CoordService"
+    SERVICE_NAME = "CoordIntegrityService"
     
     _id: int
     _name: str
-    _builder: CoordBuilder
-    _validator: CoordValidator
-    _scalar_service: ScalarService
-    _vector_service: VectorService
+    _item_builder: CoordBuilder
+    _item_validator: CoordValidator
+    _scalar_service: ScalarIntegrityService
+    _vector_service: VectorIntegrityService
     
     def __init__(
             self,
@@ -65,8 +65,8 @@ class CoordService(Service[Coord]):
             id: int = id_emitter.service_id,
             builder: CoordBuilder = CoordBuilder(),
             validator: CoordValidator = CoordValidator(),
-            scalar_service: ScalarService = ScalarService(),
-            vector_service: VectorService = VectorService(),
+            scalar_service: ScalarIntegrityService = ScalarIntegrityService(),
+            vector_service: VectorIntegrityService = VectorIntegrityService(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._scalar_service = scalar_service
@@ -95,14 +95,14 @@ class CoordService(Service[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordService.add_vector_to_coord"
+        method = "CoordIntegrityService.add_vector_to_coord"
         
         try:
             coord_validation = self._validator.validate(candidate=coord)
             if coord_validation.is_failure():
                 return BuildResult.failure(coord_validation.exception)
             
-            vector_validation = self._vector_service.validator.validate(candidate=vector)
+            vector_validation = self._vector_service.item_validator.validate(candidate=vector)
             if vector_validation.is_failure():
                 return BuildResult.failure(vector_validation.exception)
             
@@ -144,14 +144,14 @@ class CoordService(Service[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordService.multiply_coord_by_scalar"
+        method = "CoordIntegrityService.multiply_coord_by_scalar"
         
         try:
             coord_validation = self._validator.validate(candidate=coord)
             if coord_validation.is_failure():
                 return BuildResult.failure(coord_validation.exception)
             
-            scalar_validation = self._scalar_service.validator.validate(candidate=scalar)
+            scalar_validation = self._scalar_service.item_validator.validate(candidate=scalar)
             if scalar_validation.is_failure():
                 return BuildResult.failure(scalar_validation.exception)
             
@@ -191,10 +191,10 @@ class CoordService(Service[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordService.convert_vector_to_coord"
+        method = "CoordIntegrityService.convert_vector_to_coord"
         
         try:
-            vector_validation = self._vector_service.validator.validate(candidate=vector)
+            vector_validation = self._vector_service.item_validator.validate(candidate=vector)
             if vector_validation.is_failure():
                 return BuildResult.failure(vector_validation.exception)
             
@@ -217,7 +217,7 @@ class CoordService(Service[Coord]):
     def convert_coord_to_vector(self, coord: Coord) -> BuildResult[Vector]:
         """
         # Action:
-        1.  self._validator runs integrity checks on param.
+        1.  self._item_validator runs integrity checks on param.
         2.  If any checks raise an exception return it in the BuildResult.
         3.  Run vector_service.buil to ensure the computed values produce a
             safe vector instance.
@@ -233,7 +233,7 @@ class CoordService(Service[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordService.convert_coord_to_vector"
+        method = "CoordIntegrityService.convert_coord_to_vector"
         
         try:
             coord_validation = self._validator.validate(candidate=coord)
@@ -243,7 +243,7 @@ class CoordService(Service[Coord]):
             return self._vector_service.build(
                 x=coord.colum,
                 y=coord.row,
-                validator=self._vector_service.validator
+                validator=self._vector_service.item_validator
             )
         except Exception as ex:
             return BuildResult.failure(

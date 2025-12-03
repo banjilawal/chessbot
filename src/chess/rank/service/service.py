@@ -7,12 +7,12 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import Service, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.rank import Rank, RankFactory, RankSpecValidator, RankValidatorFactory
 
 
-class RankService(Service[Rank]):
-    DEFAULT_NAME = "RankService"
+class RankIntegrityService(IntegrityService[Rank]):
+    DEFAULT_NAME = "RankIntegrityService"
     _spec_validator: RankSpecValidator
     
     def __init__(
