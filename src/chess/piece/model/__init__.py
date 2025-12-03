@@ -7,8 +7,11 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+# =========== CHESS.PIECE.MODEL PACKAGE CONTENTS ===========#
 
+# Packages
 from .combatant import *
 from .king import *
 
+# Modules
 from .piece import Piece

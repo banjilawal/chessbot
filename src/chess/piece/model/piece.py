@@ -10,6 +10,7 @@ version: 1.0.0
 from abc import ABC
 from typing import Optional
 
+from chess.square import Square
 from chess.team import Team
 from chess.rank import Rank
 from chess.piece import Piece
@@ -42,6 +43,7 @@ class Piece(ABC):
     _team: Team
     _rank: Rank
     _roster_number: int
+    _starting_square: Square
     _current_position: Coord
     _positions: CoordDataService
 
@@ -51,6 +53,8 @@ class Piece(ABC):
             name: str,
             rank: Rank,
             team: Team,
+            roster_number: int,
+            starting_square: Square,
             positions: CoordDataService = CoordDataService()
     ):
         method = "Piece.__init__"
@@ -60,6 +64,8 @@ class Piece(ABC):
         self._team = team
         self._rank = rank
         self._positions = positions
+        self.roster_number = roster_number
+        self._starting_square = starting_square
         self._current_position = self._positions.current_item
         
         if self not in team.roster:
@@ -84,6 +90,10 @@ class Piece(ABC):
     @property
     def rank(self) -> Rank:
         return self._rank
+    
+    @property
+    def starting_square(self) -> Square:
+        return self._starting_square
     
     @property
     def positions(self) -> CoordDataService:
