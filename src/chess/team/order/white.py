@@ -10,8 +10,10 @@ version: 1.0.0
 from enum import Enum
 from typing import List, Optional
 
+from chess.piece import Piece
 from chess.rank import RankSpec
 from chess.square import Square
+from chess.team import WhiteBattleOrder
 
 
 class WhiteBattleOrder(Enum):

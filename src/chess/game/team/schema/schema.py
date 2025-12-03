@@ -40,7 +40,7 @@ class TeamSchema(Enum):
         
     # CONSTRUCTOR:
     Default Constructor
-            __new__(game_color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant))
+            __new__(color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant))
             
     # CLASS METHODS:
         *   get_by_color(cls, color: GameColor) -> TeamSchema

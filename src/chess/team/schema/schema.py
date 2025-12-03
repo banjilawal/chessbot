@@ -11,9 +11,10 @@ from enum import Enum
 from typing import List
 
 from chess.scalar import Scalar
-from chess.team import TeamSchema
+from chess.team import BlackBattleOrder, TeamSchema
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
+from chess.team.order import WhiteBattleOrder
 
 
 class TeamSchema(Enum):
@@ -40,7 +41,7 @@ class TeamSchema(Enum):
         
     # CONSTRUCTOR:
     Default Constructor
-            __new__(game_color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant))
+            __new__(color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant))
             
     # CLASS METHODS:
         *   get_by_color(cls, color: GameColor) -> TeamSchema
@@ -49,28 +50,30 @@ class TeamSchema(Enum):
     
     def __new__(
             cls,
-            game_color: GameColor,
+            color: GameColor,
             rank_row: int,
             advancing_step: Scalar,
-            home_quadrant: Quadrant
+            home_quadrant: Quadrant,
+            battle_order
     ):
         obj = object.__new__(cls)
-        obj._game_color = game_color
+        obj._color = color
         obj._rank_row = rank_row
         obj._advancing_step = advancing_step
         obj._home_quadrant = home_quadrant
+        obj._battle_order = battle_order
         return obj
     
-    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N)
-    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S)
+    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N, WhiteBattleOrder)
+    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S, BlackBattleOrder)
     
     @property
-    def letter(cls) -> str:
-        return cls.name[0]
+    def letter(self) -> str:
+        return self.name[0]
     
     @property
     def color(self) -> GameColor:
-        return self._game_color
+        return self._color
     
     @property
     def advancing_step(self) -> Scalar:
@@ -92,13 +95,17 @@ class TeamSchema(Enum):
     def enemy_schema(self) -> TeamSchema:
         return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
     
+    @property
+    def battle_order(self) -> [WhiteBattleOrder|BlackBattleOrder]:
+        return self._battle_order
+    
     @classmethod
-    def get_by_color(cls, color: GameColor) -> TeamSchema:
+    def find_by_color(cls, color: GameColor) -> TeamSchema:
         if color in cls.__members__:
             return cls.__members__[color]
     
     @classmethod
-    def get_by_name(cls, name: str) -> TeamSchema:
+    def find_by_name(cls, name: str) -> TeamSchema:
         if name in cls.__members__:
             return cls.__members__[name]
     
@@ -112,7 +119,7 @@ class TeamSchema(Enum):
     
     def __str__(self) -> str:
         return (
-            f"color:{self._game_color.name}, "
+            f"color:{self._color.name}, "
             f"advancing_step:{self._advancing_step} "
             f"rank_row:{self.rank_row} "
             f"pawn_row:{self.pawn_row}]"

@@ -117,7 +117,7 @@ class TeamSchemaValidator(Validator[TeamSchema]):
         # ACTION:
         1.  Check candidate is not null and is a GameColor instance. If both conditions are true
             cast to a GameColor
-        2.  If game_color is not inside the set of TeamSchema.colors send a
+        2.  If color is not inside the set of TeamSchema.colors send a
             ValidationResult containing an exception.
         4.  If all checks pass return the color in a ValidationResult
 
