@@ -146,7 +146,7 @@ class RankSpec(Enum):
         )
     
     def quadrants_str(self) -> str:
-        return " ".join(q.visitor_name for q in self._quadrants)
+        return " ".join(q.name for q in self._quadrants)
 
     
     @property

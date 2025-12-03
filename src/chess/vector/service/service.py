@@ -13,7 +13,7 @@ from chess.system import BuildResult, LoggingLevelRouter, IntegrityService
 from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, VectorValidator
 
 
-class VectorIntegrityService(IntegrityService):
+class VectorIntegrityService(IntegrityService[Vector]):
     """
     # ROLE: IntegrityService, Encapsulation, API layer.
 
@@ -51,8 +51,13 @@ class VectorIntegrityService(IntegrityService):
     
     
     @property
-    def item_validator(self) -> VectorValidator:
-        return cast(VectorValidator, self.item_validator
+    def validator(self) -> VectorValidator:
+        return cast(VectorValidator, self.item_validator)
+    
+    
+    @property
+    def builder(self) -> VectorBuilder:
+        return cast(VectorBuilder, self.item_builder)
     
     @LoggingLevelRouter.monitor
     def build(self, x: int, y: int) -> BuildResult[Vector]:

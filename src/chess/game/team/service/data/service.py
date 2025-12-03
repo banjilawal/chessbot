@@ -102,7 +102,7 @@ class TeamDataService(DataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.service.item_validator.validate(item)
+            validation = self.security_service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)

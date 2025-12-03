@@ -37,14 +37,14 @@ class AgentDataService(DataService[Agent]):
         )
         
     @property
-    def service(self) -> AgentIntegrityService:
-        return cast(AgentIntegrityService, self.service)
+    def security_service(self) -> AgentIntegrityService:
+        return cast(AgentIntegrityService, self.security_service)
     
     @LoggingLevelRouter.monitor
     def push(self, item: Agent) -> InsertionResult[Agent]:
         method = "AgentDataService.push"
         try:
-            validation = self.service.item_validator.validate(item)
+            validation = self.security_service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)

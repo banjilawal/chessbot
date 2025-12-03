@@ -97,7 +97,7 @@ class GameBuilder(Builder[Game]):
             if white_player_validation.is_failure():
                 return BuildResult.failure(white_player_validation.exception)
             
-            white_player.team_assignments.
+            team = white_player.team_assignments.team_data_service.s
             
             black_player_validation = agent_data.service.item_validator.validate(black_player)
             if black_player_validation.is_failure():

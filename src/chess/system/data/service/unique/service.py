@@ -13,10 +13,9 @@ from typing import Generic, List, Optional, TypeVar
 from chess.system.data import DataService, InsertionResult
 from chess.system import Context, LoggingLevelRouter, SearchResult, IntegrityService, UniqueDataServiceException
 
-A = TypeVar("A")
-C = TypeVar("C", binding=Context)
+T = TypeVar("T")
 
-class UniqueDataService(ABC, Generic[A]):
+class UniqueDataService(DataService[T]):
     """
     # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
 
@@ -38,41 +37,42 @@ class UniqueDataService(ABC, Generic[A]):
     """
     _id: int
     _name: str
-    _data_service: DataService[A]
+    _data_service: DataService[T]
     
-    def __init__(self, id: int, name: str, data_service: DataService[A]):
+    def __init__(self, id: int, name: str, data_service: DataService[T]):
         self._id = id
         self._name =  name
         self._data_service = data_service
-        
-    @property
-    def id(self) -> int:
-        return self._id
-    
-    @property
-    def name(self) -> str:
-        return self._name
+    #
+    # @property
+    # def id(self) -> int:
+    #     return self._id
+    #
+    # @property
+    # def name(self) -> str:
+    #     return self._name
     
     @property
     def size(self) -> int:
         return self._data_service.size
     
     @property
-    def current_item(self) -> Optional[A]:
+    def current_item(self) -> Optional[T]:
         return self._data_service.current_item
     
     @property
-    def service(self) -> IntegrityService[A]:
-        return self._data_service.service
+    def security_service(self) -> IntegrityService[T]:
+        return self._data_service.security_service
     
     @property
-    def context_service(self) -> IntegrityService[C]:
-        return self._data_service.context_service
+    def is_empty(self) -> bool:
+        return self.data_service.is_empty
+
     
-    def search(self, context: C) -> SearchResult[List[A]]:
-        return self._data_service.search(context=context)
+    # def search(self, context: C) -> SearchResult[List[T]]:
+    #     return self._data_service.search(context=context)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def push_unique(self, item: A) -> InsertionResult[A]:
+    def push_unique(self, item: T) -> InsertionResult[T]:
         pass

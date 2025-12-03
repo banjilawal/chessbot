@@ -60,7 +60,7 @@ class TeamDataService(DataService[Team]):
             id=id_emitter.service_id,
             items: List[Team] = List[Team],
             search: TeamSearch = TeamSearch(),
-            service: TeamIntegrityService = TeamIntegrityService(),
+            integrity_service: TeamIntegrityService = TeamIntegrityService(),
             context_service: TeamContextService = TeamContextService(),
     ):
         """
@@ -75,21 +75,17 @@ class TeamDataService(DataService[Team]):
             name=name,
             items=items,
             search=search,
-            service=service,
-            context_service=context_service
+            integrity_service=integrity_service,
+            context_service=context_service,
         )
-        
-    @property
-    def team_service(self) -> TeamIntegrityService:
-        return cast(TeamIntegrityService, self.service)
     
     @property
-    def service(self) -> TeamIntegrityService:
-        return cast(TeamIntegrityService, self._service)
+    def integrity(self) -> TeamIntegrityService:
+        return cast(TeamIntegrityService, self._security_service)
     
     @property
     def context_service(self) -> TeamContextService:
-        return cast(TeamContextService, self.context_service)
+        return cast(TeamContextService, self.search_filter_service)
     
     def push(self, item: Team) -> InsertionResult[Team]:
         """
@@ -114,7 +110,7 @@ class TeamDataService(DataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.service.item_validator.validate(item)
+            validation = self.security_service.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)

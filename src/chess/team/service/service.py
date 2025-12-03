@@ -67,12 +67,14 @@ class TeamIntegrityService(IntegrityService[Team]):
         return self._schema
     
     @property
-    def item_validator(self) -> TeamValidator:
-        return cast(TeamValidator, super().item_validator)
+    def builder(self) -> TeamBuilder:
+        return cast(TeamBuilder, self.item_builder)
     
     @property
-    def item_builder(self) -> TeamBuilder:
-        return cast(TeamBuilder, super().item_builder)
+    def validator(self) -> TeamValidator:
+        return cast(TeamValidator, self.item_validator)
+    
+
     
     @property
     def schema_validator(self) -> TeamSchemaValidator:

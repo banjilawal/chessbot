@@ -54,8 +54,8 @@ class DataService(ABC, [Generic [D]]):
     _name: str
     _items: List[D]
     _search: Search[D]
-    _service: IntegrityService[D]
-    _context_service: IntegrityService[C]
+    _security_service: IntegrityService[D]
+    _search_filter_service: C
     
     _current_item: D
 
@@ -65,15 +65,16 @@ class DataService(ABC, [Generic [D]]):
             name: str,
             items: List[D],
             search: Search[D],
-            service: IntegrityService[D],
+            integrity_service: IntegrityService[D],
             context_service: IntegrityService[C],
     ):
-        self._id = id
-        self._name = name
+        super().__init__(id=id, name=name)
+        # self._id = id
+        # self._name = name
         self._items = items
         self._search = search
-        self._service = service
-        self._context_service = context_service
+        self._security_service = integrity_service
+        self._search_filter_service = context_service
         
         self._size = len(self._items)
         self._current_item = self._items[-1] if self._items else None
@@ -89,34 +90,35 @@ class DataService(ABC, [Generic [D]]):
         """Each subclass must implement."""
         pass
         
-    @property
-    def id(self) -> int:
-        return self._id
-    
+    # @property
+    # def id(self) -> int:
+    #     return self._id
+    #
     @property
     def size(self) -> int:
         return len(self._items)
     
-    @property
-    def name(self) -> str:
-        return self._name
+    # @property
+    # def name(self) -> str:
+    #     return self._name
+    #
+    # @property
+    # def items(self) -> List[D]:
+    #     return self._items
     
     @property
-    def items(self) -> List[D]:
-        return self._items
+    def security_service(self) -> IntegrityService[D]:
+        return self._security_service
     
     @property
-    def service(self) -> IntegrityService[D]:
-        return self._service
-    
-    @property
-    def context_service(self) -> IntegrityService[C]:
-        return self._context_service
+    def search_filter_service(self) -> C:
+        return self._search_filter_service
     
     @property
     def current_item(self) -> Optional[D]:
         return self._items[-1] if self._items else None
     
+    @property
     def is_empty(self) -> bool:
         return len(self._items) == 0
     

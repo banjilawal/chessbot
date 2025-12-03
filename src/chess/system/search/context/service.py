@@ -1,4 +1,4 @@
-# src/chess/system/search/context/_service.py
+# src/chess/system/search/context/_security_service.py
 
 """
 Module: chess.system.search.context.service
