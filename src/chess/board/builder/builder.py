@@ -12,7 +12,7 @@ from typing import List, cast
 from chess.coord import Coord, CoordIntegrityService
 from chess.game.model import Game
 from chess.piece import UniquePieceDataService
-from chess.square import SquareBuilder, SquareIntegrityService, UniqueSquareDataService
+from chess.square import SquareBuilder, SquareCertifier, UniqueSquareDataService
 from chess.board import Board, BoardBuildFailedException
 from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdentityService
 

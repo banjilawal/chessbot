@@ -6,11 +6,12 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
+from typing import cast
 
 from chess.system import IntegrityService, id_emitter
 from chess.square import Square, SquareBuilder, SquareValidator
 
-class SquareIntegrityService(IntegrityService[Square]):
+class SquareCertifier(IntegrityService[Square]):
     """
     # ROLE: IntegrityService, Lifecycle Management, Encapsulation, API layer.
 
@@ -30,7 +31,7 @@ class SquareIntegrityService(IntegrityService[Square]):
         *   builder (SquareBuilder)
         *   validator (SquareValidator)
     """
-    DEFAULT_NAME = "SquareIntegrityService"
+    DEFAULT_NAME = "SquareCertifier"
 
     def __init__(
             self,
@@ -41,7 +42,17 @@ class SquareIntegrityService(IntegrityService[Square]):
     ):
         """
         # Action
-        1.  Use id_emitter to automatically generate a unique id for each SquareIntegrityService instance.
+        1.  Use id_emitter to automatically generate a unique id for each SquareCertifier instance.
         2.  Automatic dependency injection by providing working default instances of each attribute.
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        
+        
+    @property
+    def builder(self) -> SquareBuilder:
+        return cast(SquareBuilder, self.item_builder)
+    
+    
+    @property
+    def validator(self) -> SquareValidator:
+        return cast(SquareValidator, self.item_validator)

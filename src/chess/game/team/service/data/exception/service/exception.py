@@ -48,6 +48,6 @@ class TeamSearchNullException(TeamDataServiceException, NullException):
 
 
 class TeamServiceNullException(TeamDataServiceException, NullException):
-    """Raised if the internal TeamIntegrityService object  is null"""
+    """Raised if the internal TeamCertifier object  is null"""
     ERROR_CODE = "TEAM_SERVICE_NULL_ERROR"
-    DEFAULT_MESSAGE = "TeamDataService cannot have a null TeamIntegrityService."
+    DEFAULT_MESSAGE = "TeamDataService cannot have a null TeamCertifier."

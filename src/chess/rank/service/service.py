@@ -11,8 +11,8 @@ from chess.system import IntegrityService, id_emitter
 from chess.rank import Rank, RankFactory, RankSpecValidator, RankValidatorFactory
 
 
-class RankIntegrityService(IntegrityService[Rank]):
-    DEFAULT_NAME = "RankIntegrityService"
+class RankCertifier(IntegrityService[Rank]):
+    DEFAULT_NAME = "RankCertifier"
     _spec_validator: RankSpecValidator
     
     def __init__(

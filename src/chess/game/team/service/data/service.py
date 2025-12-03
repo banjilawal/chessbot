@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamIntegrityService, TeamInsertionFailedException
+from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamCertifier, TeamInsertionFailedException
 
 class TeamDataService(DataService[Team]):
     """
@@ -21,10 +21,10 @@ class TeamDataService(DataService[Team]):
     2.  Stack data structure for Team objects with no guarantee of uniqueness.
     3.  Implements search, insert, delete, and update operations on Team objects.
     4.  ContextService for building selecting different search attributes.
-    5.  Including a TeamIntegrityService instance creates a microservice for clients.
+    5.  Including a TeamCertifier instance creates a microservice for clients.
 
     # PROVIDES:
-        *   TeamIntegrityService
+        *   TeamCertifier
         *   ContextService
         *   Search
         *   TeamStack data structure
@@ -35,7 +35,7 @@ class TeamDataService(DataService[Team]):
         *   name (str):
         *   items (List[Team]):
         *   search (TeamSearch):
-        *   service (TeamIntegrityService):
+        *   service (TeamCertifier):
         *   context_service (TeamContextService):;
         *   current_item (Team):
         *   size (int):
@@ -43,7 +43,7 @@ class TeamDataService(DataService[Team]):
     # CONSTRUCTOR:
         *   __init__(
                 id: int, name: str, items: List[Team], search: TeamSearch,
-                service: TeamIntegrityService, contextService: TeamContextService
+                service: TeamCertifier, contextService: TeamContextService
             )
     
     # CLASS METHODS:
@@ -60,7 +60,7 @@ class TeamDataService(DataService[Team]):
             id=id_emitter.service_id,
             items: List[Team] = List[Team],
             search: TeamSearch = TeamSearch(),
-            service: TeamIntegrityService = TeamIntegrityService(),
+            service: TeamCertifier = TeamCertifier(),
             context_service: TeamContextService = TeamContextService(),
     ):
         """

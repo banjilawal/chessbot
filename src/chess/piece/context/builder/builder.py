@@ -14,9 +14,9 @@ from chess.piece import (
     TooManyPieceContextFlagsSetException
 )
 from chess.coord import Coord, CoordIntegrityService
-from chess.rank import Rank, RankIntegrityService
+from chess.rank import Rank, RankCertifier
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
-from chess.team import Team, TeamIntegrityService
+from chess.team import Team, TeamCertifier
 
 
 class PieceContextBuilder(Builder[PieceContext]):
@@ -46,8 +46,8 @@ class PieceContextBuilder(Builder[PieceContext]):
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
             coord: Optional[Coord] = None,
-            team_service: TeamIntegrityService = TeamIntegrityService(),
-            rank_service: RankIntegrityService = RankIntegrityService(),
+            team_service: TeamCertifier = TeamCertifier(),
+            rank_service: RankCertifier = RankCertifier(),
             coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[PieceContext]:
@@ -67,8 +67,8 @@ class PieceContextBuilder(Builder[PieceContext]):
             *   coord (Optional[Coord])
             
         These Parameters must be provided:
-            *   team_integrity (TeamIntegrityService)
-            *   rank_integrity (RankIntegrityService)
+            *   team_certifier (TeamCertifier)
+            *   rank_certifier (RankCertifier)
             *   coord_service (CoordIntegrityService)
             *   identity_service (IdentityService)
 

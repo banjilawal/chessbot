@@ -9,4 +9,4 @@ version: 1.0.0
 
 
 from .exception import *
-from .service import RankIntegrityService
+from .service import RankCertifier

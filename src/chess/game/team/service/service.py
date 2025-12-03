@@ -43,7 +43,7 @@ class TeamIntegrityService(IntegrityService[Team]):
     # INSTANCE METHODS:
     None
     """
-    DEFAULT_NAME = "TeamIntegrityService"
+    DEFAULT_NAME = "TeamCertifier"
     _schema: TeamSchema
     _schema_validator: TeamSchemaValidator
     

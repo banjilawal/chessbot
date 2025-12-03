@@ -13,7 +13,7 @@ from typing import List
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
 from chess.square import (
     Square, SquareContext, SquareContextService, SquareDataServiceException, SquareSearch,
-    SquareIntegrityService
+    SquareCertifier
 )
 
 
@@ -27,7 +27,7 @@ class SquareDataService(DataService[Square]):
             id: int = id_emitter.service_id,
             items: List[Square] = List[Square],
             search: SquareSearch = SquareSearch(),
-            service: SquareIntegrityService = SquareIntegrityService(),
+            service: SquareCertifier = SquareCertifier(),
             context_service: SquareContextService =  SquareContextService(),
     ):
         super().__init__(

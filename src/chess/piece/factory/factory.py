@@ -8,9 +8,9 @@ version: 1.0.0
 """
 
 from chess.coord import CoordDataService
-from chess.square import Square, SquareIntegrityService
-from chess.team import Team, TeamIntegrityService
-from chess.rank import King, Pawn, Rank, RankIntegrityService
+from chess.square import Square, SquareCertifier
+from chess.team import Team, TeamCertifier
+from chess.rank import King, Pawn, Rank, RankCertifier
 from chess.piece import (
     CombatantPiece, CombatantPieceBuildFailedException, KingPiece, KingPieceBuildFailedException, PawnPiece,
     PawnPieceBuildFailedException, Piece, PieceBuildFailedException
@@ -46,8 +46,8 @@ class PieceFactory(Builder[Piece]):
                     rank: Rank,
                     team: Team,
                     id: int = id_emitter.piece_id,
-                    rank_integrity: RankIntegrityService = RankIntegrityService(),
-                    team_integrity: TeamIntegrityService = TeamIntegrityService(),
+                    rank_certifier: RankCertifier = RankCertifier(),
+                    team_certifier: TeamCertifier = TeamCertifier(),
                     positions: CoordDataService = CoordDataService(),
                     identity_service: IdentityService = IdentityService(),
         ) -> BuildResult[Piece]:
@@ -67,13 +67,13 @@ class PieceFactory(Builder[Piece]):
             rank: Rank,
             team: Team,
             roster_number: int,
-            starting_square: Square,
+            opening_square: Square,
             id: int = id_emitter.piece_id,
-            square_integrity: SquareIntegrityService = SquareIntegrityService(),
-            rank_integrity: RankIntegrityService = RankIntegrityService(),
-            team_integrity: TeamIntegrityService = TeamIntegrityService(),
-            positions: CoordDataService = CoordDataService(),
-            identity_service: IdentityService = IdentityService(),
+            # square_integrity: SquareCertifier = SquareCertifier(),
+            # rank_integrity: RankCertifier = RankCertifier(),
+            # team_integrity: TeamCertifier = TeamCertifier(),
+            # positions: CoordDataService = CoordDataService(),
+            # identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Piece]:
         """
         # ACTION:
@@ -85,8 +85,8 @@ class PieceFactory(Builder[Piece]):
             *   name (str)
             *   rank (Rank)
             *   team (Team)
-            *   rank_integrity (RankIntegrityService)
-            *   team_integrity (TeamIntegrityService)
+            *   rank_certifier (RankCertifier)
+            *   team_certifier (TeamCertifier)
             *   positions (CoordDataService)
             *   identity_service (IdentityService)
     
@@ -111,7 +111,7 @@ class PieceFactory(Builder[Piece]):
                 rank=rank,
                 team=team,
                 roster_number=roster_number,
-                starting_square=starting_square,
+                opening_square=opening_square,
             )
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
@@ -133,7 +133,14 @@ class PieceFactory(Builder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_pawn_piece(cls, id: int, name: str, team: Team) -> BuildResult[PawnPiece]:
+    def build_pawn_piece(
+            cls,
+            id: int,
+            name: str,
+            team: Team,
+            roster_number: int,
+            opening_square: Square,
+    ) -> BuildResult[PawnPiece]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
@@ -159,7 +166,7 @@ class PieceFactory(Builder[Piece]):
         
         try:
             # Verify the build resources.
-            attribute_validation = cls._validate_build_attributes(id, name, PawnPiece(), team)
+            attribute_validation = cls._validate_build_attributes(id, name, Pawn(), team, roster_number, opening_square)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
             # If no errors are detected build the KingPiece object.
@@ -184,7 +191,14 @@ class PieceFactory(Builder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_king_piece(cls, id: int, name: str, team: Team) -> BuildResult[KingPiece]:
+    def build_king_piece(
+            cls,
+            id: int,
+            name: str,
+            team: Team,
+            roster_number: int,
+            opening_square: Square,
+    ) -> BuildResult[KingPiece]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
@@ -210,7 +224,7 @@ class PieceFactory(Builder[Piece]):
         
         try:
             # Verify the build resources.
-            attribute_validation = cls._validate_build_attributes(id, name, King(), team)
+            attribute_validation = cls._validate_build_attributes(id, name, King(), team, roster_number, opening_square)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
             # If no errors are detected build the KingPiece object.
@@ -239,7 +253,9 @@ class PieceFactory(Builder[Piece]):
             id: int,
             name: str,
             rank: Rank,
-            team: Team
+            team: Team,
+            roster_number: int,
+            opening_square: Square
     ) -> BuildResult[CombatantPiece]:
         """
         # ACTION:
@@ -265,7 +281,7 @@ class PieceFactory(Builder[Piece]):
         method = "PieceFactory.build_combatant_piece"
         try:
             # Verify the build resources.
-            attribute_validation = cls._validate_build_attributes(id, name, rank, team)
+            attribute_validation = cls._validate_build_attributes(id, name, rank, team, roster_number, opening_square)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
             # If no errors are detected build the CombatantPiece object.
@@ -313,11 +329,11 @@ class PieceFactory(Builder[Piece]):
             rank: Rank,
             team: Team,
             roster_number: int,
-            starting_square: Square,
-            rank_integrity: RankIntegrityService = RankIntegrityService(),
-            team_integrity: TeamIntegrityService = TeamIntegrityService(),
+            opening_square: Square,
+            rank_certifier: RankCertifier = RankCertifier(),
+            team_certifier: TeamCertifier = TeamCertifier(),
             identity_service: IdentityService = IdentityService(),
-            square_integrity: SquareIntegrityService = SquareIntegrityService(),
+            square_certifier: SquareCertifier = SquareCertifier(),
     ) -> ValidationResult[(int, str, Rank, Team, int, Square)]:
         """
         # ACTION
@@ -333,16 +349,16 @@ class PieceFactory(Builder[Piece]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            rank_validation = rank_integrity.item_validator.validate(candidate=rank)
+            rank_validation = rank_certifier.item_validator.validate(candidate=rank)
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             
-            team_validation = team_integrity.validator.validate(candidate=team)
+            team_validation = team_certifier.validator.validate(candidate=team)
             if team_validation.is_failure():
                 return BuildResult.failure(team_validation.exception)
 
         
-            square_validation = square_integrity.validator..validate(candidate=square)
+            square_validation = square_certifier.validator.validate(candidate=opening_square)
             if square_validation.is_failure():
                 return BuildResult.failure(square_validation.exception)
             
@@ -351,7 +367,7 @@ class PieceFactory(Builder[Piece]):
                 return BuildResult.failure(roster_number_validation.exception)
             
             # If no errors are detected return the successfully validated (id, name, rank, team) tuple.
-            return ValidationResult.success((id, name, rank, team, roster_number, starting_square))
+            return ValidationResult.success((id, name, rank, team, roster_number, opening_square))
         
         # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
         # then return the exceptions inside a ValidationResult.

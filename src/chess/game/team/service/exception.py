@@ -16,6 +16,6 @@ __all__ = [
 
 # ======================# TEAM_SERVICE EXCEPTIONS #======================#
 class TeamServiceException(ServiceException):
-    """wrapper for exceptions which hit a TeamIntegrityService method's finally block."""
+    """wrapper for exceptions which hit a TeamCertifier method's finally block."""
     ERROR_CODE = "TEAM_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "TeamIntegrityService raised an exception."
+    DEFAULT_ERROR_CODE = "TeamCertifier raised an exception."

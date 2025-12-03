@@ -30,14 +30,14 @@ log = logging.getLogger("chessbot")
 # from .neighbor import *
 # from .pawn import *
 # from .piece import CoordStackService, PieceIntegrityService
-# from .rank import RankIntegrityService
+# from .rank import RankCertifier
 # from .runtime import *
 # from .randomize import *
 # from .rank import *
 # from .scalar import ScalarIntegrityService
-# from .square import SquareIntegrityService
+# from .square import SquareCertifier
 # from .system import *
-# from .team import TeamIntegrityService, PieceSearchService
+# from .team import TeamCertifier, PieceSearchService
 # from .travel import *
 # from .vector import VectorIntegrityService
 

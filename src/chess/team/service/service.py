@@ -12,7 +12,7 @@ from chess.system import IntegrityService, id_emitter
 from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamValidator
 
 
-class TeamIntegrityService(IntegrityService[Team]):
+class TeamCertifier(IntegrityService[Team]):
     """
     # ROLE: IntegrityService, Lifecycle Management, Encapsulation, API layer.
 
@@ -45,7 +45,7 @@ class TeamIntegrityService(IntegrityService[Team]):
     # INSTANCE METHODS:
     None
     """
-    DEFAULT_NAME = "TeamIntegrityService"
+    DEFAULT_NAME = "TeamCertifier"
     _schema: TeamSchema
     _schema_validator: TeamSchemaValidator
     

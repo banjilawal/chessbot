@@ -9,9 +9,9 @@ Version: 1.0.0
 
 from typing import Any, cast
 
-from chess.rank import RankIntegrityService
+from chess.rank import RankCertifier
 from chess.coord import CoordIntegrityService
-from chess.team import RosterNumberOutOfBoundsException, Team, TeamIntegrityService
+from chess.team import RosterNumberOutOfBoundsException, Team, TeamCertifier
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
     Piece, InvalidPieceException, NullPieceException, PieceNullCoordStackException, PieceRosterNumberIsNullException
@@ -25,8 +25,8 @@ class PieceValidator(Validator[Piece]):
     def validate(
             cls,
             candidate: Any,
-            team_service: TeamIntegrityService = TeamIntegrityService(),
-            rank_service: RankIntegrityService = RankIntegrityService(),
+            team_service: TeamCertifier = TeamCertifier(),
+            rank_service: RankCertifier = RankCertifier(),
             coord_service: CoordIntegrityService = CoordIntegrityService(),
             identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[Piece]:
@@ -130,7 +130,7 @@ class PieceValidator(Validator[Piece]):
     @LoggingLevelRouter.monitor
     def validate_piece_is_actionable(
             cls, candidate: Any,
-            team_service: TeamIntegrityService = TeamIntegrityService(),
+            team_service: TeamCertifier = TeamCertifier(),
             board_service: BoardService = BoardService(),
     ) -> ValidationResult[Piece]:
         """"""
