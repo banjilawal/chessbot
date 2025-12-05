@@ -73,7 +73,7 @@ class GameBuilder(Builder[Game]):
             *   white_player (Agent)
             *   black_player (GameSchema)
             *   identity_service (IdentityService)
-            *   agent_service (AgentIntegrityService)
+            *   agent_certifier (AgentIntegrityService)
             *   schema_validator (GameSchemaValidator)
         All Services have default values to ensure they are never null.
         
@@ -93,13 +93,13 @@ class GameBuilder(Builder[Game]):
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            white_player_validation = agent_data.service.item_validator.validate(white_player)
+            white_player_validation = agent_data.service.validator.validate(white_player)
             if white_player_validation.is_failure():
                 return BuildResult.failure(white_player_validation.exception)
             
             team = white_player.team_assignments.team_data_service.s
             
-            black_player_validation = agent_data.service.item_validator.validate(black_player)
+            black_player_validation = agent_data.service.validator.validate(black_player)
             if black_player_validation.is_failure():
                 return BuildResult.failure(black_player_validation.exception)
             

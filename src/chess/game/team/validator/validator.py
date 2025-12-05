@@ -38,12 +38,12 @@ class TeamValidator(Validator[Team]):
     
     # CLASS METHODS:
            validate(
-                candidate: Any, agent_service: AgentIntegrityService, identity_service: IdentityService
+                candidate: Any, agent_certifier: AgentIntegrityService, identity_service: IdentityService
                 team_schema_validator: TeamSchemaValidator
             ) -> ValidationResult[Team]:
             
            verify_agent_has_registered_team(
-                team_candidate: Any, agent_candidate: Any, agent_service: AgentIntegrityService,
+                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentIntegrityService,
                 team_context_service: TeamContextService,
             ) -> ValidationResult[(Team, Agent)]:
             
@@ -77,7 +77,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   candidate (Any)
             *   schema (TeamSchema)
-            *   agent_service (PlayerAgentService)
+            *   agent_certifier (PlayerAgentService)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -128,7 +128,7 @@ class TeamValidator(Validator[Team]):
             # For basic verification we only need to prove team has a safe game attribute.
             # Testng for a team<-->game relationship is not necessary. The team<--> game
             # relationship only matters during searches so a deeper check is not necessary.
-            game_validation = game_service.item_validator.validate(team.game)
+            game_validation = game_service.validator.validate(team.game)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
             
@@ -155,7 +155,7 @@ class TeamValidator(Validator[Team]):
         """
         # ACTION:
         1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
-        2.  Use agent_service to certify agent_candidate is a safe agent. If so pull from validation_result payload.
+        2.  Use agent_certifier to certify agent_candidate is a safe agent. If so pull from validation_result payload.
         3.  If team.agent != agent return an exception inside a ValidationResult.
         4.  Build a search_context for the team with team_context service.
         5.  Search for the team inside agent.team_assignments.
@@ -165,7 +165,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_service (AgentIntegrityService)
+            *   agent_certifier (AgentIntegrityService)
             *   team_context (TeamContextService)
 
         # Returns:
@@ -236,14 +236,14 @@ class TeamValidator(Validator[Team]):
         """
         # ACTION:
         1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
-        2.  Use agent_service to certify agent_candidate is a safe agent. If so pull from validation_result payload.
+        2.  Use agent_certifier to certify agent_candidate is a safe agent. If so pull from validation_result payload.
         3.  If team.game != game return an exception inside a ValidationResult.
         4.  If all checks pass return a ValidationResult containing the (team, game) relationship tuple.
 
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_service (AgentIntegrityService)
+            *   agent_certifier (AgentIntegrityService)
             *   team_context (TeamContextService)
 
         # Returns:
@@ -263,7 +263,7 @@ class TeamValidator(Validator[Team]):
                 return ValidationResult.failure(team_validation.exception)
             team = team_validation.payload
             
-            game_validation = game_service.item_validator.validate(game_candidate)
+            game_validation = game_service.validator.validate(game_candidate)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
             game = game_validation.payload

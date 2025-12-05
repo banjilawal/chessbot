@@ -6,7 +6,13 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
+# =========== CHESS.SYSTEM.SERVICE PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
 from .exception import *
 from .service import Service
-from .integrity import IntegrityService
+
 

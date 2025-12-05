@@ -13,7 +13,7 @@ from chess.agent import Agent, AgentFactory, AgentValidator
 
 class AgentIntegrityService(IntegrityService[Agent]):
     """
-    # ROLE: IntegrityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -49,8 +49,8 @@ class AgentIntegrityService(IntegrityService[Agent]):
         
         @property
         def validator(self) -> AgentValidator:
-            return cast(AgentValidator, self.item_validator)
+            return cast(AgentValidator, self.validator)
         
         @property
         def builder(self) -> AgentFactory:
-            return cast(AgentFactory, self.item_builder)
+            return cast(AgentFactory, self.builder)

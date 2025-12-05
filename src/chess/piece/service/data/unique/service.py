@@ -13,7 +13,7 @@ from chess.piece import Piece, AddingDuplicatePieceException, PieceDataService, 
 
 class UniquePieceDataService(UniqueDataService[Piece]):
     """
-    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -76,11 +76,11 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         
         try:
             # Start the error detection process.
-            validation = self.service.item_validator.validate(item)
+            validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             
-            context_validation = self._data_service.context_service.item_builder.build(id=item.id)
+            context_validation = self._data_service.context_service.builder.build(id=item.id)
             if context_validation.is_failure():
                 return InsertionResult.failure(context_validation.exception)
             

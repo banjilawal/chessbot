@@ -1,4 +1,4 @@
-# src/chess/system/search/context/_security_service.py
+# src/chess/system/search/context/service.py
 
 """
 Module: chess.system.search.context.service
@@ -20,7 +20,7 @@ T = TypeVar("T")
 
 class SearchContextService(Generic[T]):
     """
-    # ROLE: IntegrityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
     
     # RESPONSIBILITIES:
     1.  Provide a single entry point for SearchContextBuilder and SearchContextValidator objects.
@@ -33,8 +33,8 @@ class SearchContextService(Generic[T]):
         *   Interface to SearchContextBuilder
     
     # ATTRIBUTES:
-        *   _item_builder (SearchContextBuilder):
-        *   _item_validator (SearchContextValidator):
+        *   builder (SearchContextBuilder):
+        *   _validator (SearchContextValidator):
     """
     _builder: Builder[T]
     _validator: Validator[T]
@@ -58,7 +58,7 @@ class SearchContextService(Generic[T]):
     # @abstractmethod
     # def build(self, *args, **kwargs) -> BuildResult[C]:
     #     """
-    #     Implementations must inject self._item_validator into
-    #     self._item_builder along with any other dependencies and params.
+    #     Implementations must inject self._validator into
+    #     self.builder along with any other dependencies and params.
     #     """
     #     pass

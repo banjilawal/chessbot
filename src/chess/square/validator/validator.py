@@ -44,7 +44,7 @@ class SquareValidator(Validator[Square]):
             ) -> ValidationResult[Square]:
             
            verify_agent_has_registered_team(
-                team_candidate: Any, agent_candidate: Any, agent_service: AgentIntegrityService,
+                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentIntegrityService,
                 team_context_service: TeamContextService,
             ) -> ValidationResult[(Team, Agent)]:
             

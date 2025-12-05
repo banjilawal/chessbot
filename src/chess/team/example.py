@@ -214,7 +214,7 @@ From `chess.owner`:
  * `Team`
 """
 """
-# ROLE: IntegrityService, Coordination
+# ROLE: Service, Coordination
 
 # RESPONSIBILITIES:
 # PROVIDES:

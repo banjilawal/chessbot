@@ -27,8 +27,8 @@ class AgentContextService(IntegrityService[AgentContext]):
         
         @property
         def builder(self) -> AgentContextBuilder:
-            return cast(AgentContext, self._item_builder)
+            return cast(AgentContext, self.builder)
         
         @property
         def validator(self) -> AgentContextValidator:
-            return cast(AgentContextValidator, self._item_validator)
+            return cast(AgentContextValidator, self._validator)

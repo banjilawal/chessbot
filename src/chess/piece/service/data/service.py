@@ -15,7 +15,7 @@ from chess.piece import Piece, PieceContext, PieceDataServiceException, PieceSea
 
 class PieceDataService(DataService[Piece]):
     """
-    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -36,8 +36,8 @@ class PieceDataService(DataService[Piece]):
         *   name (str):
         *   items (List[Piece]):
         *   search (Search[Piece]):
-        *   service (IntegrityService[Piece]):
-        *   context_service (IntegrityService[PieceContext]);
+        *   service (Service[Piece]):
+        *   context_service (Service[PieceContext]);
         *   current_item (Piece):
         *   size (int):
     """
@@ -90,7 +90,7 @@ class PieceDataService(DataService[Piece]):
         method = "PieceDataService.push"
         
         try:
-            validation = self.security_service.item_validator.validate(item)
+            validation = self.security_service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -129,5 +129,5 @@ class PieceDataService(DataService[Piece]):
         method = "PieceDataService.search"
         
         return self.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.item_validator
+            data_set=self.items, context=context, context_validator=self.context_service.validator
         )

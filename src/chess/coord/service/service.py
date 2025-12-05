@@ -20,7 +20,7 @@ class CoordIntegrityService(IntegrityService[Coord]):
     # PROVIDES:
         *   SquareBuilder
         *   SquareValidator
-        *   Coord Data IntegrityService
+        *   Coord Data Service
         *
 
     # ATTRIBUTES:
@@ -28,7 +28,7 @@ class CoordIntegrityService(IntegrityService[Coord]):
         *   validator (type[SquareValidator]):
     """
     """
-    # ROLE: IntegrityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  An API for managing the integrity lifecycle of Coord objects through CoordBuilder and CoordValidator.
@@ -217,7 +217,7 @@ class CoordIntegrityService(IntegrityService[Coord]):
     def convert_coord_to_vector(self, coord: Coord) -> BuildResult[Vector]:
         """
         # Action:
-        1.  self._item_validator runs integrity checks on param.
+        1.  self._validator runs integrity checks on param.
         2.  If any checks raise an exception return it in the BuildResult.
         3.  Run vector_service.buil to ensure the computed values produce a
             safe vector instance.

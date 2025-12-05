@@ -12,7 +12,7 @@ from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamV
 
 class TeamIntegrityService(IntegrityService[Team]):
     """
-    # ROLE: IntegrityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

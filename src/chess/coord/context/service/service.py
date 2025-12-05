@@ -13,11 +13,11 @@ from chess.coord import CoordContext, CoordContextBuilder, CoordContextValidator
 
 class CoordContextService(IntegrityService[CoordContext]):
     """
-    # ROLE: IntegrityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single entry point for CoordContextBuilder and CoordContextValidator objects.
-    2.  Passing its self._item_validator to the self._item_builder simplifies the SearchContext lifecycle.
+    2.  Passing its self._validator to the self.builder simplifies the SearchContext lifecycle.
     3.  Protects SearchContext from direct, unprotected access.
     4.  Public facing API.
 
@@ -26,8 +26,8 @@ class CoordContextService(IntegrityService[CoordContext]):
         *   Interface to CoordContextBuilder
 
     # ATTRIBUTES:
-        *   _item_builder (CoordContextBuilder):
-        *   _item_validator (CoordContextValidator):
+        *   builder (CoordContextBuilder):
+        *   _validator (CoordContextValidator):
     """
     DEFAULT_NAME = "CoordContextService"
     

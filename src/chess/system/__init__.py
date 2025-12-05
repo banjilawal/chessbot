@@ -7,6 +7,9 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+# =========== CHESS.SYSTEM PACKAGE CONTENTS ===========#
+
+# Packages
 from .build import *
 from .color import *
 from .config import *
@@ -27,6 +30,11 @@ from .search import *
 from .transaction import *
 from .utils import *
 from .validate import *
+
+# Modules
+None
+
+
 
 #
 #

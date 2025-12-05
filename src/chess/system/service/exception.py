@@ -1,4 +1,4 @@
-# src/chess/system/service/collision.py
+# src/chess/system/service/exception.py
 
 """
 Module: chess.system.service.exception
@@ -16,8 +16,8 @@ __all__ = [
 # ======================# SERVICE EXCEPTIONS #======================#
 class ServiceException(ChessException):
     """
-    Super class of exceptions raised by IntegrityService objects. Do not use directly. Subclasses give
+    Super class of exceptions raised by Service objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SERVICE_ERROR"
-    DEFAULT_MESSAGE = "IntegrityService raised an exception."
+    DEFAULT_MESSAGE = "Service raised an exception."

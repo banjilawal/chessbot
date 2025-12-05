@@ -1,7 +1,7 @@
-# src/chess/system/validate/rollback_exception.py
+# src/chess/system/validate/exception.py
 
 """
-Module: chess.system.validate.rollback_exception
+Module: chess.system.validate.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from chess.agent import Agent, AgentIntegrityService
+from chess.game import Game
 from chess.piece import PieceFactory, UniquePieceDataService
 from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
@@ -37,7 +38,7 @@ class TeamBuilder(Builder[Team]):
                     id: int.
                     agent: Agent,
                     schema: TeamSchema,
-                    agent_service: AgentIntegrityService = AgentIntegrityService(),
+                    agent_certifier: AgentIntegrityService = AgentIntegrityService(),
                     identity_service: IdentityService = IdentityService(),
                     roster: UniquePieceDataService = UniquePieceDataService(),
                     hostages: UniquePieceDataService = UniquePieceDataService(),
@@ -54,13 +55,16 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             id: int,
+            game: Game,
             agent: Agent,
             schema: TeamSchema,
-            agent_service: AgentIntegrityService = AgentIntegrityService(),
+
             identity_service: IdentityService = IdentityService(),
             # roster: UniquePieceDataService = UniquePieceDataService(),
             # hostages: UniquePieceDataService = UniquePieceDataService(),
+            game_certifier: GameIntegrityService = GameIntegrityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
+            agent_certifier: AgentIntegrityService = AgentIntegrityService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
@@ -76,7 +80,7 @@ class TeamBuilder(Builder[Team]):
             *   agent (Agent)
             *   schema (TeamSchema)
             *   identity_service (IdentityService)
-            *   agent_service (AgentIntegrityService)
+            *   agent_certifier (AgentIntegrityService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
         
@@ -89,9 +93,8 @@ class TeamBuilder(Builder[Team]):
             *   TeamBuildFailedException
         """
         method = "TeamBuilder.builder"
-        
         try:
-            # Start the error detection process.
+            # Certify the build resources are safe to use.
             id_validation = identity_service.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
@@ -100,17 +103,23 @@ class TeamBuilder(Builder[Team]):
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             
-            agent_validation = agent_service.item_validator.validate(agent)
-            if agent_validation.is_failure():
-                return BuildResult.failure(agent_validation.exception)
+            agent_certification = agent_certifier.validator.validate(agent)
+            if agent_certification.is_failure():
+                return BuildResult.failure(agent_certification.exception)
+            
+            game_certification = game_certifier.validator.validate(game)
+            if game_certification.is_failure():
+                return BuildResult.failure(game_certification.exception)
             # If no errors are detected build the Team object.
             team = Team(
                 id=id,
+                game=game,
                 agent=agent,
                 schema=schema,
                 roster=UniquePieceDataService(),
                 hostages=UniquePieceDataService(),
             )
+            # Add members to the roster to make the team ready for play.
             fill_roster_result = cls._fill_roster(team, piece_factory=PieceFactory())
             if fill_roster_result.is_failure():
                 return BuildResult.failure(fill_roster_result.exception)

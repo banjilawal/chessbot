@@ -47,7 +47,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                         agent: Optional[Agent] = None,
                         color: Optional[GameColor] = None,
 
-                        agent_service: AgentIntegrityService = AgentIntegrityService(),
+                        agent_certifier: AgentIntegrityService = AgentIntegrityService(),
                         team_validator: TeamValidator = TeamValidator(),
                         identity_service: IdentityService = IdentityService(),
                         schema_validator: Optional[TeamSchemaValidator] = TeamSchemaValidator(),
@@ -89,7 +89,7 @@ class TeamContextBuilder(Builder[TeamContext]):
 
         These Parameters must be provided:
             *   game_service (GameService)
-            *   agent_service (AgentIntegrityService)
+            *   agent_certifier (AgentIntegrityService)
             *   identity_service (IdentityService)
             *   schema_validator (TeamSchemaValidator)
 
@@ -150,7 +150,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 return BuildResult.success(payload=TeamContext(color=validation.payload))
             
             if game is not None:
-                validation = game_service.item_validator.validate(candidate=color)
+                validation = game_service.validator.validate(candidate=color)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 # If game is correct create a game.TeamContext and return it.

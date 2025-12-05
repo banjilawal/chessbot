@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 
 # Purpose
-Holds `Agent` instances and `Board` they play on. IntegrityService that team_name `Agent` uses
+Holds `Agent` instances and `Board` they play on. Service that team_name `Agent` uses
 to move the `Team` members on the `Board`
 
 # EXPORTS

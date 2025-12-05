@@ -15,7 +15,7 @@ from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, Vect
 
 class VectorIntegrityService(IntegrityService[Vector]):
     """
-    # ROLE: IntegrityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for Vector objects, VectoValidator and VectorBuilder.

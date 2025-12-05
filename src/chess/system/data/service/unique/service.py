@@ -17,7 +17,7 @@ T = TypeVar("T")
 
 class UniqueDataService(DataService[T]):
     """
-    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Assures DataService only stores unique data with no duplicates.

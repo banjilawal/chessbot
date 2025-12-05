@@ -15,7 +15,7 @@ from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordSea
 
 class CoordDataService(DataService[Coord]):
     """
-    # ROLE: IntegrityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for Square, VectoValidator and SquareBuilder objects.
@@ -26,7 +26,7 @@ class CoordDataService(DataService[Coord]):
     # PROVIDES:
         *   SquareBuilder
         *   SquareValidator
-        *   Coord Data IntegrityService
+        *   Coord Data Service
         *
 
     # ATTRIBUTES:
@@ -36,13 +36,13 @@ class CoordDataService(DataService[Coord]):
         *   identity_service (IdentityService)
     """
     """
-    # ROLE: IntegrityService, Data Protraction
+    # ROLE: Service, Data Protraction
 
     # RESPONSIBILITIES:
     1.  Manages integrity lifecycle of Coord objects.
     2.  Vector addition and scalar multiplication of Coord objects.
     3.  Calculate distance between two Coords.
-    # ROLE: IntegrityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.
@@ -90,7 +90,7 @@ class CoordDataService(DataService[Coord]):
     def push(self, item: Coord) -> InsertionResult[Coord]:
         method = "CoordDataService.push"
         try:
-            validation = self.security_service.item_validator.validate(item)
+            validation = self.security_service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -113,5 +113,5 @@ class CoordDataService(DataService[Coord]):
         return self._search_service.find(
             data_set=self.items,
             context=context,
-            context_validator=self.context_service.item_validator
+            context_validator=self.context_service.validator
         )

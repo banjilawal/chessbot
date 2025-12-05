@@ -23,7 +23,7 @@ C = TypeVar("C", binding=Context)
 
 class DataService(ABC, [Generic [D]]):
     """
-    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Scales Builder and Validator operations for collection of objects.
@@ -44,8 +44,8 @@ class DataService(ABC, [Generic [D]]):
         *   name (str):
         *   items (List[D]):
         *   search (Search[D]):
-        *   service (IntegrityService[D]):
-        *   context_service (IntegrityService[C]);
+        *   service (Service[D]):
+        *   context_service (Service[C]);
         *   current_item (D):
         *   size (int):
     """

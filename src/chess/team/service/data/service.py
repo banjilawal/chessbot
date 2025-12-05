@@ -14,7 +14,7 @@ from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamCe
 
 class TeamDataService(DataService[Team]):
     """
-    # ROLE: Data Stack, Search IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -110,7 +110,7 @@ class TeamDataService(DataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.security_service.item_validator.validate(item)
+            validation = self.security_service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
