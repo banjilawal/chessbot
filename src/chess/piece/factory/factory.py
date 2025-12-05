@@ -342,7 +342,6 @@ class PieceFactory(Builder[Piece]):
         should be manufactured.
         """
         method = "PieceFactory._validate_build_attributes"
-        
         try:
             # Start the error detection process.
             identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)

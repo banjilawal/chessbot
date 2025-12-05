@@ -35,8 +35,6 @@ class IntegrityService(Service[T]):
         *   item_builder (type[Builder[T]]):
         *   item_validator (type[Validator[T]]):
     """
-    _int: int
-    _name: str
     _item_builder: Builder[T]
     _item_validator: Validator[T]
     
@@ -47,19 +45,10 @@ class IntegrityService(Service[T]):
             builder: Builder[T],
             validator: Validator[T]
     ) -> None:
-        self._int = id
-        self._name = name
+        super().__init__(id=id, name=name)
         self._item_builder = builder
         self._item_validator = validator
-        
-    @property
-    def id(self) -> int:
-        return self._int
-    
-    @property
-    def name(self) -> str:
-        return self._name
-    
+
     @property
     def item_validator(self) -> Validator[T]:
         return self._item_validator
