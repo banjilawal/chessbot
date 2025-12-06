@@ -104,8 +104,7 @@ class AgentContextValidator(Validator[AgentContext]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentContextException(
-                    ex=ex,
-                    message=f"{method}: {InvalidAgentContextException.DEFAULT_MESSAGE}"
+                    ex=ex, message=f"{method}: {InvalidAgentContextException.DEFAULT_MESSAGE}"
                 )
             )
         

@@ -15,13 +15,16 @@ from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, Vect
 
 class VectorService(Service[Vector]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for Vector objects, VectoValidator and VectorBuilder.
-    2.  Masks implementation details and business logic making features easier to use.
-    3.  Protects Vector objects from direct, unprotected access.
-    4.  Public facing API.
+    1.  Public facing API.
+    2.  Protects Vector's internal state from direct, unprotected access.
+    3.  Encapsulates AgentContext operations for easier extension and maintenance.
+    4.  Single entry point for managing Vector integrity lifecycles with VectorBuilder and VectorValidator.
+
+    # Parent
+        *   Service
 
     # PROVIDES:
         *   Vector building
@@ -35,7 +38,6 @@ class VectorService(Service[Vector]):
         *   scalar_service (ScalarService)
     """
     SERVICE_NAME = "VectorService"
-    
     _scalar_service: ScalarService
     
     def __init__(
@@ -46,6 +48,7 @@ class VectorService(Service[Vector]):
             validator: VectorValidator = VectorValidator(),
             scalar_service: ScalarService = ScalarService()
     ):
+        
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._scalar_service = scalar_service
     
