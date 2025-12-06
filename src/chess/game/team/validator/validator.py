@@ -8,7 +8,7 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.agent import Agent, AgentIntegrityService
+from chess.agent import Agent, AgentService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
     InvalidTeamException, NoTeamGameRelationshipException, NullTeamException, Team, TeamContextService,
@@ -38,12 +38,12 @@ class TeamValidator(Validator[Team]):
     
     # CLASS METHODS:
            validate(
-                candidate: Any, agent_certifier: AgentIntegrityService, identity_service: IdentityService
+                candidate: Any, agent_certifier: AgentService, identity_service: IdentityService
                 team_schema_validator: TeamSchemaValidator
             ) -> ValidationResult[Team]:
             
            verify_agent_has_registered_team(
-                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentIntegrityService,
+                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentService,
                 team_context_service: TeamContextService,
             ) -> ValidationResult[(Team, Agent)]:
             
@@ -60,7 +60,7 @@ class TeamValidator(Validator[Team]):
     def validate(
             cls,
             candidate: Any,
-            agent_service: AgentIntegrityService = AgentIntegrityService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
@@ -128,7 +128,7 @@ class TeamValidator(Validator[Team]):
             # For basic verification we only need to prove team has a safe game attribute.
             # Testng for a team<-->game relationship is not necessary. The team<--> game
             # relationship only matters during searches so a deeper check is not necessary.
-            game_validation = game_service.validator.validate(team.game)
+            game_validation = game_service.item_validator.validate(team.game)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
             
@@ -149,7 +149,7 @@ class TeamValidator(Validator[Team]):
             cls,
             team_candidate: Any,
             agent_candidate: Any,
-            agent_service: AgentIntegrityService = AgentIntegrityService(),
+            agent_service: AgentService = AgentService(),
             team_context_service: TeamContextService = TeamContextService(),
     ) -> ValidationResult[(Team, Agent)]:
         """
@@ -165,7 +165,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (AgentIntegrityService)
+            *   agent_certifier (AgentService)
             *   team_context (TeamContextService)
 
         # Returns:
@@ -243,7 +243,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (AgentIntegrityService)
+            *   agent_certifier (AgentService)
             *   team_context (TeamContextService)
 
         # Returns:
@@ -263,7 +263,7 @@ class TeamValidator(Validator[Team]):
                 return ValidationResult.failure(team_validation.exception)
             team = team_validation.payload
             
-            game_validation = game_service.validator.validate(game_candidate)
+            game_validation = game_service.item_validator.validate(game_candidate)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
             game = game_validation.payload

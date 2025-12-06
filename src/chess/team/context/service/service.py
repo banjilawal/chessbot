@@ -6,12 +6,13 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+from typing import cast
 
-from chess.system import IntegrityService, id_emitter
-from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator
+from chess.system import Service, id_emitter
+from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator, TeamSearch
 
 
-class TeamContextService(IntegrityService[TeamContext]):
+class TeamContextService(Service[TeamContext]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -47,6 +48,7 @@ class TeamContextService(IntegrityService[TeamContext]):
     See super class.
     """
     DEFAULT_SERVICE_NAME = "TeamContextService"
+    _search: TeamSearch
     
     def __init__(
             self,
@@ -54,5 +56,20 @@ class TeamContextService(IntegrityService[TeamContext]):
             name: str = DEFAULT_SERVICE_NAME,
             builder: TeamContextBuilder = TeamContextBuilder(),
             validator: TeamContextValidator = TeamContextValidator(),
+            search: TeamSearch = TeamSearch(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._search = search
+        
+    @property
+    def builder(self) -> TeamContextBuilder:
+        return cast(TeamContextBuilder, self.builder)
+    
+    @property
+    def validator(self) ->TeamContextValidator:
+        return cast(TeamContextValidator, self.validator)
+        
+    @property
+    def search(self) -> TeamSearch:
+        return self._search
+        

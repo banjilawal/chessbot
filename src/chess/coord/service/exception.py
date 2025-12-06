@@ -16,8 +16,8 @@ __all__ = [
 
 class CoordServiceException(ServiceException):
     """
-    Super class of exceptions raised by CoordIntegrityService objects. Do not use directly. Subclasses give
+    Super class of exceptions raised by CoordService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "COORD_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CoordIntegrityService raised an exception."
+    DEFAULT_MESSAGE = "CoordService raised an exception."

@@ -10,18 +10,16 @@ Version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system.data import DeletionResult, DataServiceException, RemovingNullDataException
 from chess.system import (
     Context, DataServiceException, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException, SearchResult,
-    IntegrityService,
-    Search
+    Search, Service, DeletionResult
 )
 
 
 D = TypeVar("D")
-C = TypeVar("C", binding=Context)
+C = TypeVar("C", binding=Context[D])
 
-class DataService(ABC, [Generic [D]]):
+class DataService(ABC, Generic[D]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -53,9 +51,8 @@ class DataService(ABC, [Generic [D]]):
     _size: int
     _name: str
     _items: List[D]
-    _search: Search[D]
-    _security_service: IntegrityService[D]
-    _search_filter_service: C
+    _service: Service[D]
+    _context_service: Service[C]
     
     _current_item: D
 
@@ -64,20 +61,23 @@ class DataService(ABC, [Generic [D]]):
             id: int,
             name: str,
             items: List[D],
-            search: Search[D],
-            integrity_service: IntegrityService[D],
-            context_service: IntegrityService[C],
+            service: Service[D],
+            context_service: Service[C],
     ):
         super().__init__(id=id, name=name)
         # self._id = id
         # self._name = name
         self._items = items
-        self._search = search
-        self._security_service = integrity_service
-        self._search_filter_service = context_service
+        self._service = service
+        self._context_service = context_service
         
         self._size = len(self._items)
         self._current_item = self._items[-1] if self._items else None
+        
+        
+    @property
+    def data(self) -> Service[D]:
+        return self._service
     
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -90,29 +90,29 @@ class DataService(ABC, [Generic [D]]):
         """Each subclass must implement."""
         pass
         
-    # @property
-    # def id(self) -> int:
-    #     return self._id
-    #
+    @property
+    def id(self) -> int:
+        return self._id
+
     @property
     def size(self) -> int:
         return len(self._items)
     
-    # @property
-    # def name(self) -> str:
-    #     return self._name
-    #
-    # @property
-    # def items(self) -> List[D]:
-    #     return self._items
+    @property
+    def name(self) -> str:
+        return self._name
+
+    @property
+    def items(self) -> List[D]:
+        return self._items
     
     @property
-    def security_service(self) -> IntegrityService[D]:
-        return self._security_service
+    def service(self) -> Service[D]:
+        return self._service
     
     @property
-    def search_filter_service(self) -> C:
-        return self._search_filter_service
+    def context_service(self) -> C:
+        return self._context_service
     
     @property
     def current_item(self) -> Optional[D]:
@@ -128,21 +128,12 @@ class DataService(ABC, [Generic [D]]):
         try:
             if self._items == 0:
                 return DeletionResult.failure(
-                    PoppingEmptyStackException(
-                        f"{method}: "
-                        f"{PoppingEmptyStackException.DEFAULT_MESSAGE}"
-                    )
+                    PoppingEmptyStackException(f"{method}: {PoppingEmptyStackException.DEFAULT_MESSAGE}")
                 )
             item = self._items.pop()
             return DeletionResult.success(payload=item)
         except Exception as ex:
             return DeletionResult.failure(
-                DataServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{DataServiceException.DEFAULT_MESSAGE}"
-                    )
-                )
+                DataServiceException(ex=ex, message=f"{method}: {DataServiceException.DEFAULT_MESSAGE}")
             )
     

@@ -7,10 +7,10 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.system import IntegrityService, id_emitter
+from chess.system import Service, id_emitter
 from chess.piece import PieceContext, PieceContextBuilder, PieceContextValidator
 
-class PieceContextService(IntegrityService[PieceContext]):
+class PieceContextService(Service[PieceContext]):
     """
     # ROLE: Service, Encapsulation, API layer.
 

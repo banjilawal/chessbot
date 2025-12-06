@@ -8,12 +8,16 @@ version: 1.0.0
 """
 
 
-from .stack import *
+# =========== CHESS.AGENT ROOT PACKAGE CONTENTS ===========#
+
+# Packages
 from .context import *
 from .factory import *
 from .model import *
 from .service import *
 from .search import *
 from .validator import *
+
+# Modules
 from .exception import *
 

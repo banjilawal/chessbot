@@ -30,7 +30,7 @@ class RankFactory(Builder[Rank]):
             - On failure: Exception.
   
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

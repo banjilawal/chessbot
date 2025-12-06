@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import (
-    BlankTextException, MIN_NAME_LENGTH, MAX_NAME_LENGTH, NullTextException, TextValidator, Validator, ValidationResult,
+    BlankTextException, MIN_NAME_LENGTH, MAX_NAME_LENGTH, NullStringException, TextValidator, Validator, ValidationResult,
     LongNameException,
     ShortNameException, WhiteSpaceNameException, NullNameException, LoggingLevelRouter, InvalidNameException
 )
@@ -35,7 +35,7 @@ class NameValidator(Validator[str]):
         - On failure: Exception.
         
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

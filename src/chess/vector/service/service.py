@@ -8,12 +8,12 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.scalar import Scalar, ScalarIntegrityService
-from chess.system import BuildResult, LoggingLevelRouter, IntegrityService
+from chess.scalar import Scalar, ScalarService
+from chess.system import BuildResult, LoggingLevelRouter, Service
 from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, VectorValidator
 
 
-class VectorIntegrityService(IntegrityService[Vector]):
+class VectorService(Service[Vector]):
     """
     # ROLE: Service, Encapsulation, API layer.
 
@@ -32,11 +32,11 @@ class VectorIntegrityService(IntegrityService[Vector]):
     # ATTRIBUTES:
         *   builder (VectorBuilder)
         *   validator (VectorValidator)
-        *   scalar_service (ScalarIntegrityService)
+        *   scalar_service (ScalarService)
     """
-    SERVICE_NAME = "VectorIntegrityService"
+    SERVICE_NAME = "VectorService"
     
-    _scalar_service: ScalarIntegrityService
+    _scalar_service: ScalarService
     
     def __init__(
             self,
@@ -44,7 +44,7 @@ class VectorIntegrityService(IntegrityService[Vector]):
             name: str = SERVICE_NAME,
             builder: VectorBuilder = VectorBuilder(),
             validator: VectorValidator = VectorValidator(),
-            scalar_service: ScalarIntegrityService = ScalarIntegrityService()
+            scalar_service: ScalarService = ScalarService()
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._scalar_service = scalar_service
@@ -63,7 +63,7 @@ class VectorIntegrityService(IntegrityService[Vector]):
     def build(self, x: int, y: int) -> BuildResult[Vector]:
         """
         # Action:
-        VectorIntegrityService directs builder to run the builder process with the inputs.
+        VectorService directs builder to run the builder process with the inputs.
 
         # Parameters:
             *   x (int):
@@ -79,7 +79,7 @@ class VectorIntegrityService(IntegrityService[Vector]):
             *   builder sends any builder exceptions back to the caller.
             *   The caller is responsible for safely handling any exceptions it receives.
         """
-        method = "VectorIntegrityService.build_vector"
+        method = "VectorService.build_vector"
         return self._item_builder.build(x=x, y=y, validator=self._item_validator)
     
     
@@ -107,7 +107,7 @@ class VectorIntegrityService(IntegrityService[Vector]):
         Raises:
             VectorBuildFailedException
         """
-        method = "VectorIntegrityService.multiply_vector_by_scalar"
+        method = "VectorService.multiply_vector_by_scalar"
         
         try:
             scalar_validation = self._scalar_service.item_validator.validate(scalar)

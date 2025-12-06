@@ -15,5 +15,5 @@ None
 # Modules
 from .rook import Rook
 from .exception import *
-from .service import RookIntegrityService
+from .service import RookService
 from .validator import RookValidator

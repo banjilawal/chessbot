@@ -102,7 +102,7 @@ class TeamDataService(DataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.security_service.validator.validate(item)
+            validation = self.data.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -146,5 +146,5 @@ class TeamDataService(DataService[Team]):
         method = "TeamDataService.search"
         
         return self.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.validator
+            data_set=self.items, context=context, context_validator=self.context_service.item_validator
         )

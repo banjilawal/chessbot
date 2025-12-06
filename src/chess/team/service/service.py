@@ -3,16 +3,16 @@
 """
 Module: chess.team.service
 Author: Banji Lawal
-Created: 2025-10-31
+Created: 2025-08-05
 version: 1.0.0
 """
 from typing import cast
 
-from chess.system import IntegrityService, id_emitter
+from chess.system import Service
 from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamValidator
 
 
-class TeamCertifier(IntegrityService[Team]):
+class TeamService(Service[Team]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -33,6 +33,7 @@ class TeamCertifier(IntegrityService[Team]):
         *   builder (TeamBuilder)
         *   validator (TeamValidator)
         *   schema (TeamSchema)
+        *   schema_validator (TeamSchemaValidator)
         
     # CONSTRUCTOR:
         *   __init__(
@@ -45,7 +46,7 @@ class TeamCertifier(IntegrityService[Team]):
     # INSTANCE METHODS:
     None
     """
-    DEFAULT_NAME = "TeamCertifier"
+    DEFAULT_NAME = "TeamService"
     _schema: TeamSchema
     _schema_validator: TeamSchemaValidator
     
@@ -68,13 +69,11 @@ class TeamCertifier(IntegrityService[Team]):
     
     @property
     def builder(self) -> TeamBuilder:
-        return cast(TeamBuilder, self.item_builder)
+        return self.builder
     
     @property
     def validator(self) -> TeamValidator:
-        return cast(TeamValidator, self.item_validator)
-    
-
+        return cast(TeamValidator, self.validator)
     
     @property
     def schema_validator(self) -> TeamSchemaValidator:

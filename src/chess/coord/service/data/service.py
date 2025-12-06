@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordSearch, CoordIntegrityService, CoordContextService
+from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordSearch, CoordService, CoordContextService
 
 
 class CoordDataService(DataService[Coord]):
@@ -32,7 +32,7 @@ class CoordDataService(DataService[Coord]):
     # ATTRIBUTES:
         *   builder (type[SquareBuilder]):
         *   validator (type[SquareValidator]):
-        *   coord_service (CoordIntegrityService)
+        *   coord_service (CoordService)
         *   identity_service (IdentityService)
     """
     """
@@ -62,10 +62,10 @@ class CoordDataService(DataService[Coord]):
     # ATTRIBUTES:
         *   builder (type[CoordBuilder])
         *   validator (type[CoordValidator])
-        *   scalar_service (type[ScalarIntegrityService):
-        *   vector_service (type[VectorIntegrityService])
+        *   scalar_service (type[ScalarService):
+        *   vector_service (type[VectorService])
     """
-    SERVICE_NAME = "CoordIntegrityService"
+    SERVICE_NAME = "CoordService"
     
     def __init__(
             self,
@@ -73,7 +73,7 @@ class CoordDataService(DataService[Coord]):
             id: int = id_emitter.service_id,
             items: List[Coord] = List[Coord],
             search: CoordSearch = CoordSearch(),
-            service: CoordIntegrityService = CoordIntegrityService(),
+            service: CoordService = CoordService(),
             context_service: CoordContext = CoordContextService(),
     ):
         super().__init__(
@@ -90,7 +90,7 @@ class CoordDataService(DataService[Coord]):
     def push(self, item: Coord) -> InsertionResult[Coord]:
         method = "CoordDataService.push"
         try:
-            validation = self.security_service.validator.validate(item)
+            validation = self.data.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -113,5 +113,5 @@ class CoordDataService(DataService[Coord]):
         return self._search_service.find(
             data_set=self.items,
             context=context,
-            context_validator=self.context_service.validator
+            context_validator=self.context_service.item_validator
         )

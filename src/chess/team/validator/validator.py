@@ -8,10 +8,11 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.agent import Agent, AgentIntegrityService
+from chess.agent import Agent, AgentService
+from chess.game import Game
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    InvalidTeamException, NoTeamGameRelationshipException, NullTeamException, Team, TeamContextService,
+    InvalidTeamException, NoTeamGameRelationshipException, NullTeamException, Team, TeamContext, TeamContextService,
     TeamMismatchesAgentException, TeamNotRegisteredWithAgentException, TeamSchemaValidator
 )
 
@@ -38,12 +39,12 @@ class TeamValidator(Validator[Team]):
     
     # CLASS METHODS:
            validate(
-                candidate: Any, agent_certifier: AgentIntegrityService, identity_service: IdentityService
+                candidate: Any, agent_certifier: AgentService, identity_service: IdentityService
                 team_schema_validator: TeamSchemaValidator
             ) -> ValidationResult[Team]:
             
            verify_agent_has_registered_team(
-                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentIntegrityService,
+                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentService,
                 team_context_service: TeamContextService,
             ) -> ValidationResult[(Team, Agent)]:
             
@@ -60,7 +61,7 @@ class TeamValidator(Validator[Team]):
     def validate(
             cls,
             candidate: Any,
-            agent_service: AgentIntegrityService = AgentIntegrityService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
@@ -124,6 +125,17 @@ class TeamValidator(Validator[Team]):
             agent_validation = agent_service.item_validator.validate(team.agent)
             if agent_validation.is_failure():
                 return ValidationResult.failure(agent_validation.exception)
+            
+            # Check if the Team is registered in agent's team_assignments.
+            search_result = team.agent.team_assignments.search(context=TeamContext(id=team.id))
+            if search_result.is_failure():
+                return ValidationResult.failure(search_result.exception)
+            if search_result.is_empty():
+                return ValidationResult.failure(
+                    TeamNotRegisteredWithAgentException(
+                        f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}")
+                )
+            
 
             # For basic verification we only need to prove team has a safe game attribute.
             # Testng for a team<-->game relationship is not necessary. The team<--> game
@@ -131,6 +143,7 @@ class TeamValidator(Validator[Team]):
             game_validation = game_service.validator.validate(team.game)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
+            
             
             # If no errors are detected return the successfully validated Team instance.
             return ValidationResult.success(team)
@@ -149,7 +162,7 @@ class TeamValidator(Validator[Team]):
             cls,
             team_candidate: Any,
             agent_candidate: Any,
-            agent_service: AgentIntegrityService = AgentIntegrityService(),
+            agent_service: AgentService = AgentService(),
             team_context_service: TeamContextService = TeamContextService(),
     ) -> ValidationResult[(Team, Agent)]:
         """
@@ -165,7 +178,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (AgentIntegrityService)
+            *   agent_certifier (AgentService)
             *   team_context (TeamContextService)
 
         # Returns:
@@ -243,7 +256,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (AgentIntegrityService)
+            *   agent_certifier (AgentService)
             *   team_context (TeamContextService)
 
         # Returns:
@@ -263,7 +276,7 @@ class TeamValidator(Validator[Team]):
                 return ValidationResult.failure(team_validation.exception)
             team = team_validation.payload
             
-            game_validation = game_service.validator.validate(game_candidate)
+            game_validation = game_service.item_validator.validate(game_candidate)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
             game = game_validation.payload

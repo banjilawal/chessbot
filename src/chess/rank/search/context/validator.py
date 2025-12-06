@@ -32,7 +32,7 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
 
     @classmethod

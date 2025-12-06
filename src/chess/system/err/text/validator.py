@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import (
-    BlankTextException, InvalidTextException, LoggingLevelRouter, NullTextException, ValidationResult, Validator
+    BlankTextException, InvalidTextException, LoggingLevelRouter, NullStringException, ValidationResult, Validator
 )
 
 
@@ -59,7 +59,7 @@ class TextValidator(Validator[str]):
             # Verify the candidate is not null and an int.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullTextException(f"{method}: {NullTextException.DEFAULT_MESSAGE}")
+                    NullStringException(f"{method}: {NullStringException.DEFAULT_MESSAGE}")
                 )
                 # Raise an error if its not a str.
             if not isinstance(candidate, str):

@@ -8,10 +8,10 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.system import IntegrityService, id_emitter
+from chess.system import Service, id_emitter
 from chess.coord import CoordContext, CoordContextBuilder, CoordContextValidator
 
-class CoordContextService(IntegrityService[CoordContext]):
+class CoordContextService(Service[CoordContext]):
     """
     # ROLE: Service, Encapsulation, API layer.
 
@@ -41,9 +41,9 @@ class CoordContextService(IntegrityService[CoordContext]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def item_builder(self) -> CoordContextBuilder:
-        return cast(CoordContextBuilder, self.item_builder)
+    def builder(self) -> CoordContextBuilder:
+        return cast(CoordContextBuilder, self.builder)
     
     @property
     def item_validator(self) -> CoordContextValidator:
-        return cast(CoordContextValidator, self.item_validator)
+        return cast(CoordContextValidator, self.validator)

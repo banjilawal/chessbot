@@ -9,11 +9,11 @@ version: 1.0.0
 
 
 from chess.piece import Piece
-from chess.coord import Coord, CoordIntegrityService
+from chess.coord import Coord, CoordService
 from chess.geometry import Quadrant
 from chess.rank import Rank, Bishop, RankSpec, Rook
 from chess.system import LoggingLevelRouter
-from chess.vector import Vector, VectorIntegrityService
+from chess.vector import Vector, VectorService
 
 
 class King(Rank):
@@ -39,8 +39,8 @@ class King(Rank):
             team_quota: int = RankSpec.KING.team_quota,
             designation: str=RankSpec.KING.designation,
             quadrants: list[Quadrant]=RankSpec.KING.quadrants,
-            coord_service: CoordIntegrityService=CoordIntegrityService(),
-            vector_service: VectorIntegrityService=VectorIntegrityService(),
+            coord_service: CoordService=CoordService(),
+            vector_service: VectorService=VectorService(),
     ):
         super().__init(
             id=id,

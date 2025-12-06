@@ -33,7 +33,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         - On failure:   Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

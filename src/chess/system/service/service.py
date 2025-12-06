@@ -1,7 +1,7 @@
-# src/chess/system/service/integrity.py
+# src/chess/system/service/service.py
 
 """
-Module: chess.system.service.integrity
+Module: chess.system.service.service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -36,7 +36,7 @@ class Service(ABC, Generic[T]):
         *   item_builder (type[Builder[T]]):
         *   item_validator (type[Validator[T]]):
     """
-    builder: Builder[T]
+    _builder: Builder[T]
     _validator: Validator[T]
     
     def __init__(
@@ -48,7 +48,7 @@ class Service(ABC, Generic[T]):
     ) -> None:
         self._id = id
         self._name = name
-        self.builder = builder
+        self._builder = builder
         self._validator = validator
         
     @property
@@ -58,24 +58,24 @@ class Service(ABC, Generic[T]):
     @property
     def name(self) -> str:
         return self._name
-
-    @property
-    def validator(self) -> Validator[T]:
-        return self._validator
     
     @property
     def builder(self) -> Builder[T]:
-        return self.builder
+        return self._builder
+    
+    @property
+    def validator(self) -> Validator[T]:
+        return self._validator
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
         if isinstance(other, Service):
-            return self._int == other._int
+            return self._id == other.id
         return False
     
     def __hash__(self):
-        return hash(self._int)
+        return hash(self._id)
     
     def __str__(self):
         return f"id:{self._id}, name:{self._name}"

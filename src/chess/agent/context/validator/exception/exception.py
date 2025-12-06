@@ -17,5 +17,22 @@ __all__ = [
 
 # ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
 class InvalidAgentContextException(AgentContextException, ValidationException):
-    ERROR_CODE = "AGENT_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "AgentContext raised an exception."
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised AgentContext validation.
+    2.  Wraps unhandled exceptions that hit the finally-block in AgentContextValidator methods.
+    
+    # Parent
+        *   AgentContextException
+        *   ValidationException
+
+    # PROVIDES:
+    InvalidAgentContextException
+
+    # ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "AGENT_CONTEXT_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "AgentContext validation failed."

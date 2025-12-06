@@ -25,7 +25,7 @@ class PieceRegistrationException(InvalidPieceException, RegistrationException):
     Catchall for when a Piece does not have a relationship with another entity.
     """
     ERROR_CODE = "PIECE_REGISTRATION_ERROR"
-    DEFAULT_MESSAGE = "Piece is not registered in the collection."
+    DEFAULT_MESSAGE = "Piece is not registered with parent."
 
 
 class PieceNotRegisteredWithBoardException(PieceRegistrationException):

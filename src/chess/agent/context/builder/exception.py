@@ -19,6 +19,24 @@ __all__ = [
 
 # ======================# AGENT_CONTEXT BUILD EXCEPTIONS #======================#
 class AgentContextBuildFailedException(AgentContextException, BuildFailedException):
-    """Catchall exception for when AgentContextBuilder encounters an error during an AgentContext build."""
+    """
+    # ROLE: BuildFailedException, AgentContextException
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised during AgentContext build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentContextBuilder method.
+    
+    # Parent
+        *   AgentContextException
+        *   BuildFailedException
+
+    # PROVIDES:
+    BuildResult[AgentContext] containing either:
+            - On success: AgentContext in the payload.
+            - On failure: Exception.
+
+    # ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "AGENT_CONTEXT_BUILD_ERROR"
     DEFAULT_MESSAGE = "Agent build failed."

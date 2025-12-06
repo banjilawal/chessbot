@@ -7,10 +7,10 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.system import IntegrityService, id_emitter
+from chess.system import Service, id_emitter
 from chess.piece import Piece, PieceFactory, PieceValidator
 
-class PieceIntegrityService(IntegrityService[Piece]):
+class PieceService(Service[Piece]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -31,7 +31,7 @@ class PieceIntegrityService(IntegrityService[Piece]):
         *   builder (PieceBuilder)
         *   validator (PieceValidator)
     """
-    SERVICE_NAME = "PieceIntegrityService"
+    SERVICE_NAME = "PieceService"
     
     _id: int
     _name: str
@@ -47,10 +47,10 @@ class PieceIntegrityService(IntegrityService[Piece]):
     ):
         """
         # Action
-        1.  Use id_emitter to automatically generate a unique id for each PieceIntegrityService instance.
+        1.  Use id_emitter to automatically generate a unique id for each PieceService instance.
         2.  Automatic dependency injection by providing working default instances of each attribute.
         """
-        method = "PieceIntegrityService.__init__"
+        method = "PieceService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     

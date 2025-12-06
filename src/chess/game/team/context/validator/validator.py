@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import AgentIntegrityService
+from chess.agent import AgentService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
     InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext, TeamSchema,
@@ -41,7 +41,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 validate(
                         candidate: Any,
                         schema: TeamSchema = TeamSchema,
-                        agent_certifier: AgentIntegrityService = AgentIntegrityService(),
+                        agent_certifier: AgentService = AgentService(),
                         identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
                 
@@ -55,7 +55,7 @@ class TeamContextValidator(Validator[TeamContext]):
             cls,
             candidate: Any,
             schema: TeamSchema = TeamSchema,
-            agent_service: AgentIntegrityService = AgentIntegrityService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[TeamContext]:
         """
@@ -64,7 +64,7 @@ class TeamContextValidator(Validator[TeamContext]):
         2.  Check if candidate is a TeamContext. If so cast it.
         3.  Verify only one flag is set.
         4.  For whichever of the flag is set certify its correctness with either validators in:
-            AgentIntegrityService or IdentityService.
+            AgentService or IdentityService.
         5.  If any check fails, return the exception inside a ValidationResult.
         7.  If all pass return the TeamContext object in a ValidationResult
 

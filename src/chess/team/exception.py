@@ -1,19 +1,19 @@
 
-from chess.system import(
-  ChessException, SearchException, NullException, ValidationException, BuildFailedException, RollbackException
+from chess.system import (
+  ChessException, GameColorException, NameException, RollbackException
 )
 
 __all__ = [
   "TeamException",
   "TeamRollBackException",
 
-#======================# TEAM VALIDATION EXCEPTIONS #======================#  
-  "NullTeamException",
-  "InvalidTeamException",
-  "TeamCommanderInconsistencyException",
+#======================# TEAM VALIDATION EXCEPTIONS #======================#
 
-#======================# TEAM BUILD EXCEPTIONS #======================#  
-  "TeamBuildFailedException",
+# ======================# TEAM PARAMETER EXCEPTIONS #======================#
+  "TeamNameException",
+  "TeamColorException",
+  
+#======================# TEAM BUILD EXCEPTIONS #======================#
 
 #======================# TEAM MEMBER EXCEPTIONS #======================#  
   "TeamRosterException",
@@ -44,8 +44,7 @@ __all__ = [
   "EnemyKingHostageRolledBackException",
   "HostageRemovalRolledBackException",
 
-#======================# SEARCH EXCEPTIONS #======================#  
-  "RosterNumberOutOfBoundsException",
+#======================# SEARCH EXCEPTIONS #======================#
   "TeamNotRegisteredWithAgentException",
 ]
 
@@ -68,7 +67,18 @@ class TeamRollBackException(TeamException):
   DEFAULT_MESSAGE = "Team raised an rollback_exception. Transaction rollback performed."
 
 
+class TeamNameException(TeamException, NameException):
+  """Catchall for when a method dependent on a Team's name get an invalid argument."""
+  pass
+  ERROR_CODE = "TEAM_NAME_ERROR"
+  DEFAULT_MESSAGE = "Team.name raised an exception."
 
+
+class TeamColorException(TeamException, GameColorException):
+  """Catchall for when a method dependent on a Team's color get an invalid argument."""
+  pass
+  ERROR_CODE = "TEAM_COLOR_ERROR"
+  DEFAULT_MESSAGE = "Team.color raised an exception."
 
 
 

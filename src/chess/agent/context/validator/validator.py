@@ -9,20 +9,37 @@ version: 1.0.0
 
 from typing import Any, cast
 
+from chess.game import GameService
+from chess.team import TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.agent import (
-    AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagSetException, NullAgentContextException,
-    TooManyAgentContextFlagsSetException
+    AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagException, NullAgentContextException,
+    TooManyAgentContextFlagsException
 )
 
 
 class AgentContextValidator(Validator[AgentContext]):
-    
+    """
+    # ROLE: Validation
+
+    # RESPONSIBILITIES:
+    1. Verify a candidate is an AgentContext object's safety before a client uses it.
+
+    # PROVIDES:
+      ValidationResult[AgentContext] containing either:
+            - On success: AgentContext in the payload.
+            - On failure: Exception.
+
+    # ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
+            team_service: TeamService = TeamService(),
+            game_service: GameService = GameService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[AgentContext]:
         """"""
@@ -31,35 +48,25 @@ class AgentContextValidator(Validator[AgentContext]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullAgentContextException(
-                        f"{method}: "
-                        f"{NullAgentContextException.DEFAULT_MESSAGE}"
-                    )
+                    NullAgentContextException(f"{method}: {NullAgentContextException.DEFAULT_MESSAGE}")
                 )
             
             if not isinstance(candidate, AgentContext):
                 return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected AgentContext, got {type(candidate).__name__} instead."
-                    )
+                    TypeError(f"{method}: Expected AgentContext, got {type(candidate).__name__} instead.")
                 )
             
             context = cast(AgentContext, candidate)
             
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoAgentContextFlagSetException(
-                        f"{method}: "
-                        f"{NoAgentContextFlagSetException.DEFAULT_MESSAGE}"
-                    )
+                    NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
                 )
             
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyAgentContextFlagsSetException(
-                        F"{method}: "
-                        F"{TooManyAgentContextFlagsSetException.DEFAULT_MESSAGE}"
+                    TooManyAgentContextFlagsException(
+                        f"{method}: {TooManyAgentContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -71,6 +78,18 @@ class AgentContextValidator(Validator[AgentContext]):
             
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
+                return ValidationResult.success(context)
+            
+            if context.team is not None:
+                validation = team_service.validator.validate(candidate=context.name)
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
+                return ValidationResult.success(context)
+            
+            if context.game is not None:
+                validation = game_service.validator.validate(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)

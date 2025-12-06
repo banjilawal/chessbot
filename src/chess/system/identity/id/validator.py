@@ -26,7 +26,7 @@ class IdValidator(Validator[int]):
         - On failure: Exception.
   
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

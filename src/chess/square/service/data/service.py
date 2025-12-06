@@ -8,13 +8,10 @@ version: 1.0.0
 """
 
 
-from typing import List
+from typing import List, cast
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.square import (
-    Square, SquareContext, SquareContextService, SquareDataServiceException, SquareSearch,
-    SquareCertifier
-)
+from chess.square import Square, SquareContext, SquareContextService, SquareDataServiceException, SquareService
 
 
 class SquareDataService(DataService[Square]):
@@ -26,24 +23,20 @@ class SquareDataService(DataService[Square]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             items: List[Square] = List[Square],
-            search: SquareSearch = SquareSearch(),
-            service: SquareCertifier = SquareCertifier(),
-            context_service: SquareContextService =  SquareContextService(),
+            service: SquareService = SquareService(),
+            context_service: SquareContextService = SquareContextService(),
     ):
-        super().__init__(
-            id=id,
-            name=name,
-            items=items,
-            search=search,
-            service=service,
-            context_service=context_service,
-        )
+        super().__init__(id=id, name=name, items=items, service=service, context_service=context_service,)
+        
+    @LoggingLevelRouter.monitor
+    def service(self) -> SquareService:
+        return cast(SquareService, self.service)
     
     @LoggingLevelRouter.monitor
     def push(self, item: Square) -> InsertionResult[Square]:
         method = "SquareDataService.push"
         try:
-            validation = self.security_service.validator.validate(item)
+            validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -52,21 +45,14 @@ class SquareDataService(DataService[Square]):
         except Exception as ex:
             return InsertionResult.failure(
                 SquareDataServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{SquareDataServiceException.DEFAULT_MESSAGE}"
-                    )
+                    ex=ex, message=f"{method}: {SquareDataServiceException.DEFAULT_MESSAGE}"
                 )
             )
- 
         
     @LoggingLevelRouter.monitor
     def search(self, context: SquareContext) -> SearchResult[List[Square]]:
         """"""
         method = "SquareDataService.search"
-        return self._search.find(
-            data_set=self.items,
-            context=context,
-            context_validator=self.context_service.validator
+        return self.context_service.search.find(
+            data_set=self.items, context=context, context_validator=self.context_service.validator
         )

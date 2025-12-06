@@ -7,8 +7,11 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
+# =========== CHESS.SQUARE.SERVICE PACKAGE CONTENTS ===========#
 
+# Packages
 from .data import *
-from .exception import *
 
-from .service import SquareCertifier
+# Modules
+from .exception import *
+from .service import SquareService

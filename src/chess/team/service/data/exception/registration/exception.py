@@ -24,7 +24,7 @@ class TeamRegistrationException(InvalidTeamException, RegistrationException):
     Catchall for when a Team does not have a relationship with another entity.
     """
     ERROR_CODE = "TEAM_REGISTRATION_ERROR"
-    DEFAULT_MESSAGE = "Team is not registered in the collection."
+    DEFAULT_MESSAGE = "Team is not registered with parent."
 
 
 class TeamNotRegisteredWithAgentException(TeamRegistrationException):

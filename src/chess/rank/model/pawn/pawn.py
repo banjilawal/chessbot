@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from typing import List
 
-from chess.coord import Coord, CoordIntegrityService
+from chess.coord import Coord, CoordService
 from chess.pawn import PawnPiece
 from chess.geometry import Quadrant
 from chess.rank import PawnMovingException, Rank, RankSpec
@@ -39,7 +39,7 @@ class Pawn(Rank):
             team_quota: int = RankSpec.PAWN.team_quota,
             designation: str = RankSpec.PAWN.designation,
             quadrants: list[Quadrant] = RankSpec.PAWN.quadrants,
-            coord_service: CoordIntegrityService = CoordIntegrityService()
+            coord_service: CoordService = CoordService()
     ):
         super().__init(
             id=id,

@@ -15,7 +15,7 @@ __all__ = [
 # ======================# INVALID TEXT EXCEPTIONS #======================#
     "InvalidTextException",
 # ======================# NULL TEXT EXCEPTIONS #======================#
-    "NullTextException",
+    "NullStringException",
 # ======================# BLANK/WHITE SPACE TEXT EXCEPTIONS #======================#
     "BlankTextException",
 ]
@@ -36,7 +36,7 @@ class InvalidTextException(TextException, ValidationException):
 
 
 # ======================# NULL/EMPTY TEXT EXCEPTIONS #======================#
-class NullTextException(InvalidTextException, NullException):
+class NullStringException(InvalidTextException, NullException):
     """Raised if an entity, method, or operation requires text but gets null instead."""
     ERROR_CODE = "NULL_TEXT_ERROR"
     DEFAULT_MESSAGE = "Text cannot be null."

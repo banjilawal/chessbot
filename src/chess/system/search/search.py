@@ -1,7 +1,7 @@
 # src/chess/system/search/service.py
 
 """
-Module: `chess.system.search.search`
+Module: chess.system.search.search
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10
@@ -28,7 +28,7 @@ class Search(ABC, Generic[D]):
   [
     <No attributes. Implementors declare their own.>
   OR
-    * `_attribute` (`data_type`): <sentence_if_necessary>
+    * _attribute (data_type): <sentence_if_necessary>
   ]
   """
   """
@@ -36,7 +36,7 @@ class Search(ABC, Generic[D]):
   by data_set attributes with validated params.
 
   Attributes:
-    No attributes. Implementors declare their own
+    None Implementors declare their own
   """
 
   @classmethod
@@ -50,10 +50,11 @@ class Search(ABC, Generic[D]):
       """
       Action:
       Parameters:
-          * `data_owner` (`A`):
-          * `context` (`S`):
+          * data_set (List[D])
+          * context (Context[D)
+          * context_validator (Validator[Context[D])
       Returns:
-          `SearchResult[List[R]]` or `Void`
+          SearchResult[List[R]] or Void
       Raise:
         No exceptions. Subclasses raise exceptions.
       """

@@ -7,13 +7,13 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.system import BuildResult, IntegrityService, id_emitter
-from chess.scalar import Scalar, ScalarIntegrityService
-from chess.vector import Vector, VectorIntegrityService
+from chess.system import BuildResult, Service, id_emitter
+from chess.scalar import Scalar, ScalarService
+from chess.vector import Vector, VectorService
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
 
 
-class CoordIntegrityService(IntegrityService[Coord]):
+class CoordService(Service[Coord]):
     """
     # RESPONSIBILITIES:
 
@@ -41,23 +41,23 @@ class CoordIntegrityService(IntegrityService[Coord]):
     # PROVIDES:
         *   CoordBuilder
         *   CoordValidator
-        *   VectorIntegrityService
-        *   ScalarIntegrityService
+        *   VectorService
+        *   ScalarService
 
     # ATTRIBUTES:
         *   builder (type[CoordBuilder])
         *   validator (type[CoordValidator])
-        *   scalar_service (type[ScalarIntegrityService):
-        *   vector_service (type[VectorIntegrityService])
+        *   scalar_service (type[ScalarService):
+        *   vector_service (type[VectorService])
     """
-    SERVICE_NAME = "CoordIntegrityService"
+    SERVICE_NAME = "CoordService"
     
     _id: int
     _name: str
     _item_builder: CoordBuilder
     _item_validator: CoordValidator
-    _scalar_service: ScalarIntegrityService
-    _vector_service: VectorIntegrityService
+    _scalar_service: ScalarService
+    _vector_service: VectorService
     
     def __init__(
             self,
@@ -65,8 +65,8 @@ class CoordIntegrityService(IntegrityService[Coord]):
             id: int = id_emitter.service_id,
             builder: CoordBuilder = CoordBuilder(),
             validator: CoordValidator = CoordValidator(),
-            scalar_service: ScalarIntegrityService = ScalarIntegrityService(),
-            vector_service: VectorIntegrityService = VectorIntegrityService(),
+            scalar_service: ScalarService = ScalarService(),
+            vector_service: VectorService = VectorService(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._scalar_service = scalar_service
@@ -95,7 +95,7 @@ class CoordIntegrityService(IntegrityService[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordIntegrityService.add_vector_to_coord"
+        method = "CoordService.add_vector_to_coord"
         
         try:
             coord_validation = self._validator.validate(candidate=coord)
@@ -144,7 +144,7 @@ class CoordIntegrityService(IntegrityService[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordIntegrityService.multiply_coord_by_scalar"
+        method = "CoordService.multiply_coord_by_scalar"
         
         try:
             coord_validation = self._validator.validate(candidate=coord)
@@ -191,7 +191,7 @@ class CoordIntegrityService(IntegrityService[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordIntegrityService.convert_vector_to_coord"
+        method = "CoordService.convert_vector_to_coord"
         
         try:
             vector_validation = self._vector_service.item_validator.validate(candidate=vector)
@@ -233,7 +233,7 @@ class CoordIntegrityService(IntegrityService[Coord]):
         Raises:
             *   CoordServiceException
         """
-        method = "CoordIntegrityService.convert_coord_to_vector"
+        method = "CoordService.convert_coord_to_vector"
         
         try:
             coord_validation = self._validator.validate(candidate=coord)

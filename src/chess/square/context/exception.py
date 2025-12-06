@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.system import SearchContextException
+from chess.system import ContextException
 
 __all__ = [
     # ======================# SQUARE_CONTEXT EXCEPTIONS #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# SQUARE_CONTEXT EXCEPTIONS #======================#
-class SquareContextException(SearchContextException):
+class SquareContextException(ContextException):
     ERROR_CODE = "SQUARE_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "SquareContext raised an exception."
     

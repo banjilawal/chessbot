@@ -11,6 +11,7 @@ version: 1.0.0
 from abc import ABC
 from typing import Optional
 
+from chess.game import Game
 from chess.team import Team, UniqueTeamDataService
 
 
@@ -18,18 +19,24 @@ class Agent(ABC):
     _id: int
     _name: str
     _current_team: Optional[Team]
-    _team_stack: UniqueTeamDataService
+    _current_game: Optional[Game]
+    _games: UniqueGameDataService
+    _team_assignments: UniqueTeamDataService
     
     def __init__(
             self,
             id: int,
             name: str,
-            team_stack: UniqueTeamDataService = UniqueTeamDataService()
+            games: UniqueGameDataService = UniqueGameDataService(),
+            team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         self._id = id
         self._name = name
-        self._team_stack = team_stack
-        self._current_team = self._team_stack.current_item
+        self._games = games
+        self._team_assignments = team_assignments
+    
+        self._current_game = self._games.current_game
+        self._current_team = self._team_assignments.current_current_team
     
     @property
     def id(self) -> int:
@@ -45,11 +52,11 @@ class Agent(ABC):
     
     @property
     def team_assignments(self) -> UniqueTeamDataService:
-        return self._team_stack
+        return self._team_assignments
     
     @property
     def current_team(self) -> Optional[Team]:
-        return self._team_stack.current_item
+        return self._team_assignments.current_team
     
     def __eq__(self, other):
         if other is self: return True

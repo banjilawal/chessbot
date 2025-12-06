@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 from chess.rank import Queen, QueenValidator, RankFactory
-from chess.system import IntegrityService, Validator, id_emitter
+from chess.system import Service, Validator, id_emitter
 
 
-class QueenIntegrityService(IntegrityService[Queen]):
-    DEFAULT_NAME = "QueenIntegrityService"
+class QueenService(Service[Queen]):
+    DEFAULT_NAME = "QueenService"
     
     def __init__(
             self,

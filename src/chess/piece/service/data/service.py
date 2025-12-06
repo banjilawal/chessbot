@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.piece import Piece, PieceContext, PieceDataServiceException, PieceSearch, PieceIntegrityService, PieceContextService
+from chess.piece import Piece, PieceContext, PieceDataServiceException, PieceSearch, PieceService, PieceContextService
 
 
 class PieceDataService(DataService[Piece]):
@@ -22,10 +22,10 @@ class PieceDataService(DataService[Piece]):
     2.  Stack data structure for Piece objects with no guarantee of uniqueness.
     3.  Implements search, insert, delete, and update operations on Piece objects.
     4.  ContextService for building selecting different search attributes.
-    5.  Including a PieceIntegrityService instance creates a microservice for clients.
+    5.  Including a PieceService instance creates a microservice for clients.
 
     # PROVIDES:
-        *   PieceIntegrityService
+        *   PieceService
         *   ContextService
         *   Search
         *   PieceStack data structure
@@ -49,7 +49,7 @@ class PieceDataService(DataService[Piece]):
             id: int = id_emitter.service_id,
             items: List[Piece] = List[Piece],
             search: PieceSearch = PieceSearch(),
-            service: PieceIntegrityService = PieceIntegrityService(),
+            service: PieceService = PieceService(),
             context_service: PieceContextService = PieceContextService(),
     ):
         """
@@ -57,7 +57,7 @@ class PieceDataService(DataService[Piece]):
         1.  Use id_emitter to automatically generate a unique id for each PieceDataService instance.
         2.  Automatic dependency injection by providing working default instances of each attribute.
         """
-        method = "PieceIntegrityService.__init__"
+        method = "PieceService.__init__"
         super().__init__(
             id=id,
             name=name,
@@ -90,7 +90,7 @@ class PieceDataService(DataService[Piece]):
         method = "PieceDataService.push"
         
         try:
-            validation = self.security_service.validator.validate(item)
+            validation = self.data.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -129,5 +129,5 @@ class PieceDataService(DataService[Piece]):
         method = "PieceDataService.search"
         
         return self.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.validator
+            data_set=self.items, context=context, context_validator=self.context_service.item_validator
         )

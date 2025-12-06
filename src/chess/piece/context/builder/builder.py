@@ -13,7 +13,7 @@ from chess.piece import (
     NoPieceContextFlagSetException, PieceContext, PieceContextBuildFailedException,
     TooManyPieceContextFlagsSetException
 )
-from chess.coord import Coord, CoordIntegrityService
+from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankCertifier
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamCertifier
@@ -33,7 +33,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod
@@ -48,7 +48,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             coord: Optional[Coord] = None,
             team_service: TeamCertifier = TeamCertifier(),
             rank_service: RankCertifier = RankCertifier(),
-            coord_service: CoordIntegrityService = CoordIntegrityService(),
+            coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[PieceContext]:
         """
@@ -69,7 +69,7 @@ class PieceContextBuilder(Builder[PieceContext]):
         These Parameters must be provided:
             *   team_certifier (TeamCertifier)
             *   rank_certifier (RankCertifier)
-            *   coord_service (CoordIntegrityService)
+            *   coord_service (CoordService)
             *   identity_service (IdentityService)
 
         # Returns:

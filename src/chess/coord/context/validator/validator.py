@@ -32,7 +32,7 @@ class CoordContextValidator(Validator):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
 
     @classmethod

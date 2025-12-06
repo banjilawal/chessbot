@@ -86,11 +86,11 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.service.validator.validate(item)
+            validation = self.data.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             
-            context_validation = self._data_service.context_service.builder.build(id=item.id)
+            context_validation = self._data_service.context_service.item_builder.build(id=item.id)
             if context_validation.is_failure():
                 return InsertionResult.failure(context_validation.exception)
             

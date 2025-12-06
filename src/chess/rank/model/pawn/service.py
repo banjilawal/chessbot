@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 from chess.rank import Pawn, PawnValidator, RankFactory
-from chess.system import IntegrityService, Validator, id_emitter
+from chess.system import Service, Validator, id_emitter
 
 
-class PawnIntegrityService(IntegrityService[Pawn]):
-    DEFAULT_NAME = "PawnIntegrityService"
+class PawnService(Service[Pawn]):
+    DEFAULT_NAME = "PawnService"
     
     def __init__(
             self,

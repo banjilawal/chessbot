@@ -7,23 +7,34 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import BoundsException
+from chess.system import ContextFlag
 from chess.agent import InvalidAgentContextException
 
 __all__ = [
     # ========================= AGENT_CONTEXT FLAG EXCEPTIONS =========================#
-    "NoAgentContextFlagSetException",
-    "TooManyAgentContextFlagsSetException"
+    "NoAgentContextFlagException",
+    "TooManyAgentContextFlagsException"
 ]
 
 # ========================= AGENT_CONTEXT FLAG EXCEPTIONS =========================#
-class NoAgentContextFlagSetException(InvalidAgentContextException, BoundsException):
-    """Raised if no AgentContext was selected."""
-    ERROR_CODE = "NO_AGENT_CONTEXT_FLAG_SET_ERROR"
-    DEFAULT_MESSAGE = "One and only one, AgentContext flag must be set."
+class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagException):
+    """
+    # ROLE: ContextFlagException, AgentContextException
+
+    # RESPONSIBILITIES:
+    1.  Raised if no AgentContext flag is provided with a search value.
+
+    # PROVIDES:
+    NoAgentContextFlagException
+
+    # ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "NO_AGENT_CONTEXT_FLAG_ERROR"
+    DEFAULT_MESSAGE = "No AgentContext flag was selected. A context flag must be turned on with a target value."
 
 
-class TooManyAgentContextFlagsSetException(InvalidAgentContextException, BoundsException):
+class TooManyAgentContextFlagsException(InvalidAgentContextException, ContextFlagException):
     """Raised if too many AgentContext flags were set."""
-    ERROR_CODE = "AGENT_CONTEXT_MAX_PARAM_ERROR"
-    DEFAULT_MESSAGE = "Only one AgentContext flag can be set."
+    ERROR_CODE = "TOO_MANY_AGENT_CONTEXT_FLAGS_ERROR"
+    DEFAULT_MESSAGE = "More than one AgentContext flag was selected. Only one context flag is allowed."

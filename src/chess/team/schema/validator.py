@@ -216,5 +216,5 @@ class TeamSchemaValidator(Validator[TeamSchema]):
             # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                TextException(ex=ex, message=f"{method} {TextException.DEFAULT_MESSAGE}")
+                TeamNameException(ex=ex, message=f"{method} {TeamNameException.DEFAULT_MESSAGE}")
             )

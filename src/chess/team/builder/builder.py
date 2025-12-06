@@ -7,7 +7,7 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, AgentIntegrityService
+from chess.agent import Agent, AgentService
 from chess.game import Game
 from chess.piece import PieceFactory, UniquePieceDataService
 from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
@@ -38,7 +38,7 @@ class TeamBuilder(Builder[Team]):
                     id: int.
                     agent: Agent,
                     schema: TeamSchema,
-                    agent_certifier: AgentIntegrityService = AgentIntegrityService(),
+                    agent_certifier: AgentService = AgentService(),
                     identity_service: IdentityService = IdentityService(),
                     roster: UniquePieceDataService = UniquePieceDataService(),
                     hostages: UniquePieceDataService = UniquePieceDataService(),
@@ -58,13 +58,12 @@ class TeamBuilder(Builder[Team]):
             game: Game,
             agent: Agent,
             schema: TeamSchema,
-
             identity_service: IdentityService = IdentityService(),
             # roster: UniquePieceDataService = UniquePieceDataService(),
             # hostages: UniquePieceDataService = UniquePieceDataService(),
-            game_certifier: GameIntegrityService = GameIntegrityService(),
+            game_certifier: GameService = GameService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
-            agent_certifier: AgentIntegrityService = AgentIntegrityService(),
+            agent_certifier: AgentService = AgentService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
@@ -80,7 +79,7 @@ class TeamBuilder(Builder[Team]):
             *   agent (Agent)
             *   schema (TeamSchema)
             *   identity_service (IdentityService)
-            *   agent_certifier (AgentIntegrityService)
+            *   agent_certifier (AgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
         
@@ -107,7 +106,7 @@ class TeamBuilder(Builder[Team]):
             if agent_certification.is_failure():
                 return BuildResult.failure(agent_certification.exception)
             
-            game_certification = game_certifier.validator.validate(game)
+            game_certification = game_certifier.item_validator.validate(game)
             if game_certification.is_failure():
                 return BuildResult.failure(game_certification.exception)
             # If no errors are detected build the Team object.

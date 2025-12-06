@@ -26,7 +26,7 @@ class DomainBuilder(Builder[Domain]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

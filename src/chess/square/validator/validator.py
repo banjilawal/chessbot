@@ -8,8 +8,8 @@ Created: 2025-09-11
 
 from typing import Any, cast
 
-from chess.board import BoardIntegrityService
-from chess.coord import CoordIntegrityService, CoordValidator
+from chess.board import BoardService
+from chess.coord import CoordService, CoordValidator
 from chess.piece import Piece, PieceValidator
 from chess.square import (
     InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square, InvalidSquareException,
@@ -39,12 +39,12 @@ class SquareValidator(Validator[Square]):
     
     # CLASS METHODS:
            validate(
-                candidate: Any, board_service: BoardIntegrityService, coord_service: CoordIntegrityService,
+                candidate: Any, board_service: BoardService, coord_service: CoordService,
                 identity_service: IdentityService
             ) -> ValidationResult[Square]:
             
            verify_agent_has_registered_team(
-                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentIntegrityService,
+                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentService,
                 team_context_service: TeamContextService,
             ) -> ValidationResult[(Team, Agent)]:
             
@@ -61,8 +61,8 @@ class SquareValidator(Validator[Square]):
     def validate(
             cls,
             candidate: Any,
-            board_service: BoardIntegrityService = BoardIntegrityService(),
-            coord_service: CoordIntegrityService = CoordIntegrityService(),
+            board_service: BoardService = BoardService(),
+            coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Square]:
         """
@@ -76,7 +76,7 @@ class SquareValidator(Validator[Square]):
 
         # PARAMETERS:
             *   candidate (Any): Object to validate.
-            *   coord_service (CoordIntegrityService)
+            *   coord_service (CoordService)
             *   identity_service: (IdentityService)
         coord_service and identity_service have default values.
 
@@ -145,7 +145,7 @@ class SquareValidator(Validator[Square]):
         # Parameters:
             * square_candidate (Any): The object to verify is a Square instance.
             * piece_candidate (Any): The object to verify is an disabled Piece instance.
-            * piece_service (type[PieceValidator])=PieceIntegrityService
+            * piece_service (type[PieceValidator])=PieceService
 
         # Returns:
           ValidationResult[(Square, Piece)] containing either:
@@ -168,7 +168,7 @@ class SquareValidator(Validator[Square]):
         # PARAMETERS:
             *   candidate_square (Any): Object to validate as a Square.
             *   candidate_piece (Any): object to validate as an disabled Piece
-            *   piece_service (ype[PieceIntegrityService])
+            *   piece_service (ype[PieceService])
 
         # Returns:
         ValidationResult[(Square, Piece)] containing either:

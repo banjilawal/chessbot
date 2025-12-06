@@ -33,7 +33,7 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

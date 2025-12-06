@@ -7,6 +7,10 @@ Created: 2025-11-21
 version: 1.0.0
 """
 
+# =========== CHESS.BOARD.VALIDATOR PACKAGE CONTENTS ===========#
 
+# Packages
 from .exception import *
+
+# Modules
 from .validator import BoardValidator

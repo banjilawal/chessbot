@@ -7,11 +7,11 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.system import IntegrityService, id_emitter
+from chess.system import Service, id_emitter
 from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator
 
 
-class TeamContextService(IntegrityService[TeamContext]):
+class TeamContextService(Service[TeamContext]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 

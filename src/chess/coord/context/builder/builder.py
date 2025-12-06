@@ -29,7 +29,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

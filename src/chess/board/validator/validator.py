@@ -25,7 +25,7 @@ class BoardValidator(Validator[Board]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

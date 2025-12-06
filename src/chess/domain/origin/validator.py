@@ -32,7 +32,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

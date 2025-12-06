@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.coord import Coord
 from chess.square import Square
-from chess.system.search import Context
+from chess.system import Context
 
 
 class SquareContext(Context[Square]):
@@ -29,7 +29,6 @@ class SquareContext(Context[Square]):
     @property
     def coord(self) -> Optional[Coord]:
         return self._coord
-    
     
     def to_dict(self) -> dict:
         return {

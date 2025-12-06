@@ -9,8 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
+from chess.game import GameService
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamCertifier, TeamInsertionFailedException
+from chess.team import (
+    Team, TeamBuilder, TeamContext, TeamContextService, TeamInsertionFailedException, TeamService, TeamValidator,
+)
 
 class TeamDataService(DataService[Team]):
     """
@@ -59,8 +62,7 @@ class TeamDataService(DataService[Team]):
             name=DEFAULT_NAME,
             id=id_emitter.service_id,
             items: List[Team] = List[Team],
-            search: TeamSearch = TeamSearch(),
-            integrity_service: TeamCertifier = TeamCertifier(),
+            service: TeamService = TeamService(),
             context_service: TeamContextService = TeamContextService(),
     ):
         """
@@ -74,18 +76,22 @@ class TeamDataService(DataService[Team]):
             id=id,
             name=name,
             items=items,
-            search=search,
-            integrity_service=integrity_service,
+            service=service,
             context_service=context_service,
         )
+        self._items = items
     
     @property
-    def integrity(self) -> TeamCertifier:
-        return cast(TeamCertifier, self._security_service)
+    def builder(self) -> TeamBuilder:
+        return cast(TeamBuilder, self.service.builder)
+    
+    @property
+    def validator(self) -> TeamValidator:
+        return cast(TeamValidator, self.service.validator)
     
     @property
     def context_service(self) -> TeamContextService:
-        return cast(TeamContextService, self.search_filter_service)
+        return cast(TeamContextService, self.context_service)
     
     def push(self, item: Team) -> InsertionResult[Team]:
         """
@@ -110,7 +116,7 @@ class TeamDataService(DataService[Team]):
         
         try:
             # Start the error detection process.
-            validation = self.security_service.validator.validate(item)
+            validation = self.data.item_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -154,5 +160,5 @@ class TeamDataService(DataService[Team]):
         method = "TeamDataService.search"
         
         return self.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.item_validator
+            data_set=self.items, context=context, context_validator=self.context_service.validator
         )

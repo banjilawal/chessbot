@@ -41,8 +41,8 @@ class Team:
     MAX_ROSTER_SIZE = 16
     
     _id: int
-    _agent: Agent
     _game: Game
+    _agent: Agent
     _schema: TeamSchema
     _roster: UniquePieceDataService
     _hostages: UniquePieceDataService
@@ -116,8 +116,4 @@ class Team:
         return hash(self._id)
     
     def __str__(self) -> str:
-        return (
-            f"Team{{"
-            f"id:{self._id} {self._agent.name} {self._schema}"
-            f"}}"
-        )
+        return f"Team{{id:{self._id} {self._agent.name} {self._schema}}}"

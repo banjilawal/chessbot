@@ -1,4 +1,4 @@
-# src/chess/system/builder/factory.py
+# src/chess/system/builder/builder.py
 
 """
 Module: chess.system.builder.builder

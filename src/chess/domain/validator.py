@@ -31,7 +31,7 @@ class DomainValidator(Validator[Domain]):
             - On failure: Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

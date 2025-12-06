@@ -20,8 +20,8 @@ __all__ = [
 # ======================# COORD BUILD EXCEPTIONS #======================#
 class CoordBuildFailedException(CoordException, BuildFailedException):
     """
-    Catchall/wrapper exception for when a condition not handled directly by CoordBuilder 
-    prevents successful Coord creation.
+    Catchall/wrapper exception for when a condition not handled directly by CoordBuilder prevents
+    successful Coord creation.
     """
     ERROR_CODE = "COORD_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "Coord build failed."

@@ -7,11 +7,11 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.system import BuildResult, IntegrityService, ValidationResult
+from chess.system import BuildResult, Service
 from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
 
 
-class ScalarIntegrityService(IntegrityService[Scalar]):
+class ScalarService(Service[Scalar]):
     """
     # ROLE: Service, Encapsulation, API layer.
     
@@ -29,7 +29,7 @@ class ScalarIntegrityService(IntegrityService[Scalar]):
         *   builder (ScalarBuilder)
         *   validator (ScalarValidator)
     """
-    SERVICE_NAME = "ScalarIntegrityService"
+    SERVICE_NAME = "ScalarService"
     
     _item_builder: ScalarBuilder
     _item_validator: ScalarValidator

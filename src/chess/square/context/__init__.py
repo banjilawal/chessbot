@@ -7,9 +7,13 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
+# =========== CHESS.SQUARE.CONTEXT PACKAGE CONTENTS ===========#
+
+# Packages
 from .builder import *
 from .service import *
 from .validator import *
-from .exception import *
 
+# Modules
+from .exception import *
 from .context import SquareContext

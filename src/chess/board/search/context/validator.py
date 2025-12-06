@@ -32,7 +32,7 @@ class BoardSearchContextValidator(Validator):
         - On failure:   Exception.
 
     # ATTRIBUTES:
-    No attributes.
+    None
     """
     
     @classmethod

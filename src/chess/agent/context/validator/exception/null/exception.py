@@ -17,6 +17,21 @@ __all__ = [
 
 # ======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
 class NullAgentContextException(InvalidAgentContextException, NullException):
-    """Raised if an entity, method, or operation requires an AgentContext but gets null instead."""
+    """
+    # ROLE: Exception
+
+    # RESPONSIBILITIES:
+    1.  Raised if an AgentContext validation candidate is null.
+    2.  Raised if an entity, method or operation requires an AgentContext but receives null instead.
+
+    # PROVIDES:
+    NullAgentContextException
+
+    # ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "NULL_AGENT_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "AgentContext cannot be null."
+    
+    
+    

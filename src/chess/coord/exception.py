@@ -1,4 +1,4 @@
-# src/chess/square/collision.py
+# src/chess/coord.exception.py
 
 """
 Module: chess.coord.exception
@@ -10,10 +10,12 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
+    # ======================# COORD EXCEPTION SUPER CLASS #======================#
     "CoordException",
 ]
 
 
+# ======================# COORD EXCEPTION SUPER CLASS #======================#
 class CoordException(ChessException):
     """
     Super class of exceptions raised by Scalar objects. Do not use directly. Subclasses give

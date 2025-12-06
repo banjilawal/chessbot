@@ -7,10 +7,12 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
+# =========== AGENT.MODEL PACKAGE CONTENTS ===========#
 
-from .exception import *
+# Packages
 from .human import *
 from .machne import *
 from .variety import *
 
+# Modules
 from .agent import Agent

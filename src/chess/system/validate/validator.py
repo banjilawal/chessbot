@@ -19,13 +19,13 @@ class Validator(ABC, Generic[T]):
     # ROLE: Validation, Data Integrity assurance.
   
     # RESPONSIBILITIES:
-    1.  Verifies a candidate is an instance of V, that meets integrity requirements, before the candidate is used.
+    1.  Verifies a candidate is an instance of T, that meets integrity requirements, before the candidate is used.
     2.  Returns any exceptions raised inside a ValidationResult
     
   
     # PROVIDES:
     ValidationResult[V] containing either:
-        - On success: V in the payload.
+        - On success: T in the payload.
         - On failure: Exception.
   
     # ATTRIBUTES:

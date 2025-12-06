@@ -17,7 +17,7 @@ __all__ = [
 # ======================# AGENT SERVICE EXCEPTIONS #======================#
 class AgentDataServiceException(DataServiceException):
     ERROR_CODE = "AGENT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "AgentIntegrityService raised an exception."
+    DEFAULT_MESSAGE = "AgentService raised an exception."
 
 class AgentNullDataSetException(AgentDataServiceException, NullException):
     ERROR_CODE = "AGENT_NULL_DATA_SET_ERROR"

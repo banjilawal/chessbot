@@ -10,7 +10,7 @@ Version: 1.0.0
 from typing import Any, cast
 
 from chess.rank import RankCertifier
-from chess.coord import CoordIntegrityService
+from chess.coord import CoordService
 from chess.team import RosterNumberOutOfBoundsException, Team, TeamCertifier
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.piece import (
@@ -27,7 +27,7 @@ class PieceValidator(Validator[Piece]):
             candidate: Any,
             team_service: TeamCertifier = TeamCertifier(),
             rank_service: RankCertifier = RankCertifier(),
-            coord_service: CoordIntegrityService = CoordIntegrityService(),
+            coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[Piece]:
         """"""

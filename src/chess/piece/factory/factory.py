@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.coord import CoordDataService
-from chess.square import Square, SquareCertifier
+from chess.square import Square, SquareService
 from chess.team import Team, TeamCertifier
 from chess.rank import King, Pawn, Rank, RankCertifier
 from chess.piece import (
@@ -69,7 +69,7 @@ class PieceFactory(Builder[Piece]):
             roster_number: int,
             opening_square: Square,
             id: int = id_emitter.piece_id,
-            # square_integrity: SquareCertifier = SquareCertifier(),
+            # square_integrity: SquareService = SquareService(),
             # rank_integrity: RankCertifier = RankCertifier(),
             # team_integrity: TeamCertifier = TeamCertifier(),
             # positions: CoordDataService = CoordDataService(),
@@ -333,7 +333,7 @@ class PieceFactory(Builder[Piece]):
             rank_certifier: RankCertifier = RankCertifier(),
             team_certifier: TeamCertifier = TeamCertifier(),
             identity_service: IdentityService = IdentityService(),
-            square_certifier: SquareCertifier = SquareCertifier(),
+            square_certifier: SquareService = SquareService(),
     ) -> ValidationResult[(int, str, Rank, Team, int, Square)]:
         """
         # ACTION

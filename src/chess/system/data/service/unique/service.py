@@ -10,12 +10,11 @@ Version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system.data import DataService, InsertionResult
-from chess.system import Context, LoggingLevelRouter, SearchResult, IntegrityService, UniqueDataServiceException
+from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, Service, Context
 
 T = TypeVar("T")
 
-class UniqueDataService(DataService[T]):
+class UniqueDataService(ABC, Generic[T]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -43,14 +42,14 @@ class UniqueDataService(DataService[T]):
         self._id = id
         self._name =  name
         self._data_service = data_service
-    #
-    # @property
-    # def id(self) -> int:
-    #     return self._id
-    #
-    # @property
-    # def name(self) -> str:
-    #     return self._name
+
+    @property
+    def id(self) -> int:
+        return self._id
+
+    @property
+    def name(self) -> str:
+        return self._name
     
     @property
     def size(self) -> int:
@@ -61,18 +60,21 @@ class UniqueDataService(DataService[T]):
         return self._data_service.current_item
     
     @property
-    def security_service(self) -> IntegrityService[T]:
-        return self._data_service.security_service
+    def is_empty(self) -> bool:
+        return self._data_service.is_empty
     
     @property
-    def is_empty(self) -> bool:
-        return self.data_service.is_empty
-
+    def service(self) -> Service[T]:
+        """"""
+        return self._data_service.service
     
-    # def search(self, context: C) -> SearchResult[List[T]]:
-    #     return self._data_service.search(context=context)
+    @LoggingLevelRouter.monitor
+    def search(self, context: Context) -> SearchResult[List[T]]:
+        return self._data_service.search(context)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def push_unique(self, item: T) -> InsertionResult[T]:
+        """"""
         pass
+        

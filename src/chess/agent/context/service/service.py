@@ -8,11 +8,11 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.system import IntegrityService, id_emitter
+from chess.system import Service, id_emitter
 from chess.agent import AgentContext, AgentContextBuilder, AgentContextValidator
 
 
-class AgentContextService(IntegrityService[AgentContext]):
+class AgentContextService(Service[AgentContext]):
     """"""
     DEFAULT_NAME = "AgentContextService"
     
@@ -27,7 +27,7 @@ class AgentContextService(IntegrityService[AgentContext]):
         
         @property
         def builder(self) -> AgentContextBuilder:
-            return cast(AgentContext, self.builder)
+            return cast(AgentContextBuilder, self.item_builder)
         
         @property
         def validator(self) -> AgentContextValidator:

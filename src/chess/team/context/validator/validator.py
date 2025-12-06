@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import AgentIntegrityService
+from chess.agent import AgentService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
     InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext, TeamSchema,
-    TooManyTeamContextFlagsException
+    TeamSchemaValidator, TooManyTeamContextFlagsException
 )
 
 
@@ -41,7 +41,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 validate(
                         candidate: Any,
                         schema: TeamSchema = TeamSchema,
-                        agent_certifier: AgentIntegrityService = AgentIntegrityService(),
+                        agent_certifier: AgentService = AgentService(),
                         identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
                 
@@ -55,8 +55,9 @@ class TeamContextValidator(Validator[TeamContext]):
             cls,
             candidate: Any,
             schema: TeamSchema = TeamSchema,
-            agent_service: AgentIntegrityService = AgentIntegrityService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
+            schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[TeamContext]:
         """
         # ACTION:
@@ -64,7 +65,7 @@ class TeamContextValidator(Validator[TeamContext]):
         2.  Check if candidate is a TeamContext. If so cast it.
         3.  Verify only one flag is set.
         4.  For whichever of the flag is set certify its correctness with either validators in:
-            AgentIntegrityService or IdentityService.
+            AgentService or IdentityService.
         5.  If any check fails, return the exception inside a ValidationResult.
         7.  If all pass return the TeamContext object in a ValidationResult
 
@@ -85,7 +86,6 @@ class TeamContextValidator(Validator[TeamContext]):
             *   InvalidTeamContextException
         """
         method = "TeamContextValidator.validate"
-        
         try:
             # Start the error detection process.
             if candidate is None:
@@ -97,17 +97,19 @@ class TeamContextValidator(Validator[TeamContext]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
-            # After not-null and type checks have passed cast te candidate.
+            # After not-null and type checks have passed cast te TeamContext.
             context = cast(TeamContext, candidate)
-            
+            # Check if no flags were set.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     NoTeamContextFlagsException(f"{method}: {NoTeamContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            
+            # Check if more than one flag is set.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyTeamContextFlagsException(f"{method}: {TooManyTeamContextFlagsException.DEFAULT_MESSAGE}")
+                    TooManyTeamContextFlagsException(
+                        f"{method}: {TooManyTeamContextFlagsException.DEFAULT_MESSAGE}"
+                    )
                 )
             # If no errors are detected pick the flag whose value is not for processing.
             if context.id is not None:
@@ -126,15 +128,17 @@ class TeamContextValidator(Validator[TeamContext]):
                 validation = agent_service.item_validator.validate(candidate=context.agent)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
-                return ValidationResult.succes(payload=context)
+                return ValidationResult.success(payload=context)
             
             if context.color is not None:
-                if context.color not in [TeamSchema.color.WHITE, TeamSchema.color.BLACK]:
-                    return ValidationResult.failure(
-                        InvalidTeamContextException(f"{method}: Color not in TeamSchema bounds.")
-                    )
-        
+                validation = schema_validator.verify_color_in_schema(candidate=context.color)
+                if validation.is_failure():
+                    return ValidationResult.failure(validation.exception)
+        # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
+        # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidTeamContextException(ex=ex, message=f"{method}: {InvalidTeamContextException.DEFAULT_MESSAGE}")
+                InvalidTeamContextException(
+                    ex=ex, message=f"{method}: {InvalidTeamContextException.DEFAULT_MESSAGE}"
+                )
             )

@@ -7,8 +7,8 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, AgentIntegrityService, UniqueAgentDataService
-from chess.board import BoardIntegrityService
+from chess.agent import Agent, AgentService, UniqueAgentDataService
+from chess.board import BoardService
 from chess.team import Team, UniqueTeamDataService
 from chess.game import Game, GameBuildFailedException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
@@ -39,7 +39,7 @@ class GameBuilder(Builder[Game]):
                     id: int.
                     white_player: Agent,
                     black_player: Agent,
-                    board: BoardIntegrityService = BoardIntegrityService(),
+                    board: BoardService = BoardService(),
                     players: UniqueAgentDataService = UniqueAgentDataService(),
                 ) -> BuildResult[Game]:
         For ease of use and cleaner code dependencies are given default values.
@@ -55,7 +55,7 @@ class GameBuilder(Builder[Game]):
             white_player: Agent,
             black_player: Agent,
             id: int = id_emitter.service_id,
-            board: BoardIntegrityService = BoardIntegrityService(),
+            board: BoardService = BoardService(),
             identity_service: IdentityService = IdentityService(),
             agent_data: UniqueAgentDataService = UniqueAgentDataService(),
     ) -> BuildResult[Game]:
@@ -73,7 +73,7 @@ class GameBuilder(Builder[Game]):
             *   white_player (Agent)
             *   black_player (GameSchema)
             *   identity_service (IdentityService)
-            *   agent_certifier (AgentIntegrityService)
+            *   agent_certifier (AgentService)
             *   schema_validator (GameSchemaValidator)
         All Services have default values to ensure they are never null.
         
@@ -104,7 +104,9 @@ class GameBuilder(Builder[Game]):
                 return BuildResult.failure(black_player_validation.exception)
             
             if not agent_data.size != 0:
-                return BuildResult.failure("Players already assigned to game.")
+                return BuildResult.failure(
+                    GameAlreadyHasPlayersException(f"{method}: {GameAlreadyHasPlayersException.DEFAULT_MESSAGE}")
+                )
             
             insertion_result = agent_data.push_unique(white_player_validation.payload)
             if insertion_result.is_failure():
@@ -117,7 +119,7 @@ class GameBuilder(Builder[Game]):
             # If no errors are detected build the Game object.
             
             # If the game is not in Agent.game_assignments register it.
-            if game not in agent.game_assignments:
+            if game not in agent.games:
                 agent.game_assignments.push_unique(game)
             # Send the successfully built and registered Game object inside a BuildResult.
             return BuildResult.success(game)

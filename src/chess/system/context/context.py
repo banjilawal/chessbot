@@ -1,4 +1,4 @@
-# src/chess/system/context/base.py
+# src/chess/system/context/context.py
 
 """
 Module: chess.system.context.context
@@ -15,10 +15,10 @@ T = TypeVar("T")
 
 class Context(ABC, Generic[T]):
     """
-    # ROLE: Option Selection,
+    # ROLE: Filtering Options,
   
     # RESPONSIBILITIES:
-    1.  Provides a series key-value pairs for selecting which operation should be performed with what attribute
+    1.  Provides a series of optional attributes that can be turned on by providing them a value.
         value.
     2.  Provide a single entry point into different logic flows in an easy, scalable manner.
     3.  Utility for factories.

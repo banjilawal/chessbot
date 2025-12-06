@@ -11,12 +11,12 @@ import logging
 
 log = logging.getLogger("chessbot")
 #
-# from .agent import AgentIntegrityService, TeamSearchService
+# from .agent import AgentService, TeamSearchService
 # from .arena import *
 # from .assets import *
 # from .board import *
 # from .checkmate import *
-# from .square import CoordIntegrityService
+# from .square import CoordService
 # from .domain import DomainService
 # from .driver import *
 # from .engine import *
@@ -29,15 +29,15 @@ log = logging.getLogger("chessbot")
 # from .king import *
 # from .neighbor import *
 # from .pawn import *
-# from .piece import CoordStackService, PieceIntegrityService
+# from .piece import CoordStackService, PieceService
 # from .rank import RankCertifier
 # from .runtime import *
 # from .randomize import *
 # from .rank import *
-# from .scalar import ScalarIntegrityService
-# from .square import SquareCertifier
+# from .scalar import ScalarService
+# from .square import SquareService
 # from .system import *
 # from .team import TeamCertifier, PieceSearchService
 # from .travel import *
-# from .vector import VectorIntegrityService
+# from .vector import VectorService
 

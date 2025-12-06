@@ -15,5 +15,5 @@ None
 # Modules
 from .queen import Queen
 from .exception import *
-from .service import QueenIntegrityService
+from .service import QueenService
 from .validator import QueenValidator

@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.board import Board
-from chess.coord import Coord, CoordIntegrityService
+from chess.coord import Coord, CoordService
 from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
     NoSquareContextFlagSetException, SquareContext, SquareContextBuildFailedException,
@@ -20,7 +20,21 @@ from chess.square import (
 
 
 class SquareContextBuilder(Builder[SquareContext]):
-    """"""
+    """
+    # ROLE: Builder, Data Integrity Guarantor
+
+    # RESPONSIBILITIES:
+    Produce SquareContext instances whose integrity is always guaranteed. If any
+    attributes do not pass their integrity checks, send an exception instead.
+
+    # PROVIDES:
+    BuildResult[SquareContext] containing either:
+        - On success: SquareContext in the payload.
+        - On failure: Exception.
+
+    # ATTRIBUTES:
+    None
+    """
     
     @classmethod
     def build(
@@ -29,28 +43,50 @@ class SquareContextBuilder(Builder[SquareContext]):
             name: Optional[str] = None,
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
-            coord_service: CoordIntegrityService = CoordIntegrityService(),
+            coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[SquareContext]:
-        """"""
+        """
+        # ACTION:
+        1.  Verify only one param is turned on.
+        2.  If either id or name is turned on verify them with identity_service.
+        2.  If the coord is turned on verify with coord_service.
+        3.  Run board-integrity checks with board_service.
+        4.  If any checks fail, send their exception to the caller in a BuildResult.
+        5.  When all checks pass, create a new Square object then send to the caller in a BuildResult.
+
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   cord (Coord)
+            *   board (Board)
+            *   board_service (BoardService)
+            *   coord_service (CoordService)
+            *   identity_service (IdentityService)
+
+        # Returns:
+        ValidationResult[Square] containing either:
+            - On success: Square in the payload.
+            - On failure: Exception.
+
+        # Raises:
+            *   SquareBuildFailedException
+        """
         method = "SquareContextBuilder.build"
         try:
+            # Start err
             params = [id, name, coord]
             param_count = sum(bool(p) for p in params)
             
             if param_count == 0:
                 return BuildResult.failure(
-                    NoSquareContextFlagSetException(
-                        f"{method}: "
-                        f"{NoSquareContextFlagSetException.DEFAULT_MESSAGE}"
-                    )
+                    NoSquareContextFlagSetException(f"{method}: {NoSquareContextFlagSetException.DEFAULT_MESSAGE}")
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
                     TooManySquareContextFlagsSetException(
-                        f"{method}: "
-                        f"{TooManySquareContextFlagsSetException.DEFAULT_MESSAGE}"
+                        f"{method}: {TooManySquareContextFlagsSetException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -71,14 +107,12 @@ class SquareContextBuilder(Builder[SquareContext]):
                 if coord_validation.is_failure:
                     return BuildResult.failure(coord_validation.exception)
                 return BuildResult.success(SquareContext(coord=coord))
-        
+            
+        # Finally, if there is an unhandled exception Wrap an SquareContextBuildFailedException around it
+        # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 SquareContextBuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{SquareContextBuildFailedException.DEFAULT_MESSAGE}"
-                    )
+                    ex=ex, message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
