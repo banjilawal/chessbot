@@ -1,7 +1,7 @@
 # src/chess/agent/context/validator/exception/flag/exception.py
 
 """
-Module: chess.agent.context.validator.exception.flag.__init__
+Module: chess.agent.context.validator.exception.flag.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -36,6 +36,17 @@ class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagCount
 
 
 class TooManyAgentContextFlagsException(InvalidAgentContextException, ContextFlagCountException):
-    """Raised if too many AgentContext flags were set."""
+    """
+    # ROLE: ContextFlagException, AgentContextException
+
+    # RESPONSIBILITIES:
+    1.  Indicate if more than one Agent attribute is going to be used in an AgentSearch.
+
+    # PROVIDES:
+    TooManyAgentContextFlagsException
+
+    # ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "TOO_MANY_AGENT_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = "More than one AgentContext flag was selected. Only one context flag is allowed."
