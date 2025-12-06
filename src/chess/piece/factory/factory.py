@@ -352,12 +352,12 @@ class PieceFactory(Builder[Piece]):
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             
-            team_validation = team_certifier.validator.validate(candidate=team)
+            team_validation = team_certifier.item_validator.validate(candidate=team)
             if team_validation.is_failure():
                 return BuildResult.failure(team_validation.exception)
 
         
-            square_validation = square_certifier.validator.validate(candidate=opening_square)
+            square_validation = square_certifier.item_validator.validate(candidate=opening_square)
             if square_validation.is_failure():
                 return BuildResult.failure(square_validation.exception)
             

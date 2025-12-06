@@ -41,11 +41,11 @@ class AgentDataService(DataService[Agent]):
     
     @property
     def builder(self) -> AgentFactory:
-        return cast(AgentFactory, self.service.builder)
+        return cast(AgentFactory, self.service.item_builder)
     
     @property
     def validator(self) -> AgentValidator:
-        return cast(AgentValidator, self.service.validator)
+        return cast(AgentValidator, self.service.item_validator)
     
     @property
     def context_service(self) -> AgentContextService:
@@ -74,5 +74,5 @@ class AgentDataService(DataService[Agent]):
         return self.context_service.search.find(
             data_set=self.items,
             context=context,
-            context_validator=self.context_service.validator
+            context_validator=self.context_service.item_validator
         )

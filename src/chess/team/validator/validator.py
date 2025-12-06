@@ -140,7 +140,7 @@ class TeamValidator(Validator[Team]):
             # For basic verification we only need to prove team has a safe game attribute.
             # Testng for a team<-->game relationship is not necessary. The team<--> game
             # relationship only matters during searches so a deeper check is not necessary.
-            game_validation = game_service.validator.validate(team.game)
+            game_validation = game_service.item_validator.validate(team.game)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
             

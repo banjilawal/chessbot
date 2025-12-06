@@ -68,12 +68,12 @@ class TeamService(Service[Team]):
         return self._schema
     
     @property
-    def builder(self) -> TeamBuilder:
-        return self.builder
+    def item_builder(self) -> TeamBuilder:
+        return self.item_builder
     
     @property
-    def validator(self) -> TeamValidator:
-        return cast(TeamValidator, self.validator)
+    def item_validator(self) -> TeamValidator:
+        return cast(TeamValidator, self.item_validator)
     
     @property
     def schema_validator(self) -> TeamSchemaValidator:

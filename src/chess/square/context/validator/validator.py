@@ -127,7 +127,7 @@ class SquareContextValidator(Validator[SquareContext]):
                 return ValidationResult.success(payload=context)
             
             if context.coord is not None:
-                coord_validation = coord_service.validator.validate(context.coord)
+                coord_validation = coord_service.item_validator.validate(context.coord)
                 if coord_validation.is_failure:
                     return ValidationResult.failure(coord_validation.exception)
                 return ValidationResult.success(payload=context)

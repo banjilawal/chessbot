@@ -76,11 +76,11 @@ class SquareBuilder(Builder[Square]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            coord_validation = coord_service.validator.validate(coord)
+            coord_validation = coord_service.item_validator.validate(coord)
             if coord_validation.is_failure():
                 return BuildResult.failure(coord_validation.exception)
             
-            board_validation = board_service.validator.validate(board)
+            board_validation = board_service.item_validator.validate(board)
             if board_validation.is_failure():
                 return BuildResult.failure(board_validation.exception)
             

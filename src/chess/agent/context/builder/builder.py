@@ -112,7 +112,7 @@ class AgentContextBuilder(Builder[AgentContext]):
                 return BuildResult.success(AgentContext(name=name))
                 
             if team is not None:
-                validation = team_service.validator.validate(candidate=team)
+                validation = team_service.item_validator.validate(candidate=team)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(AgentContext(team=team))

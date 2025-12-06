@@ -102,7 +102,7 @@ class TeamBuilder(Builder[Team]):
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             
-            agent_certification = agent_certifier.validator.validate(agent)
+            agent_certification = agent_certifier.item_validator.validate(agent)
             if agent_certification.is_failure():
                 return BuildResult.failure(agent_certification.exception)
             

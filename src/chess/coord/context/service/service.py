@@ -41,9 +41,9 @@ class CoordContextService(Service[CoordContext]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def builder(self) -> CoordContextBuilder:
-        return cast(CoordContextBuilder, self.builder)
+    def item_builder(self) -> CoordContextBuilder:
+        return cast(CoordContextBuilder, self.item_builder)
     
     @property
     def item_validator(self) -> CoordContextValidator:
-        return cast(CoordContextValidator, self.validator)
+        return cast(CoordContextValidator, self.item_validator)

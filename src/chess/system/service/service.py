@@ -60,11 +60,11 @@ class Service(ABC, Generic[T]):
         return self._name
     
     @property
-    def builder(self) -> Builder[T]:
+    def item_builder(self) -> Builder[T]:
         return self._builder
     
     @property
-    def validator(self) -> Validator[T]:
+    def item_validator(self) -> Validator[T]:
         return self._validator
     
     def __eq__(self, other):

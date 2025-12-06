@@ -51,12 +51,12 @@ class VectorService(Service[Vector]):
     
     
     @property
-    def validator(self) -> VectorValidator:
+    def item_validator(self) -> VectorValidator:
         return cast(VectorValidator, self.item_validator)
     
     
     @property
-    def builder(self) -> VectorBuilder:
+    def item_builder(self) -> VectorBuilder:
         return cast(VectorBuilder, self.item_builder)
     
     @LoggingLevelRouter.monitor

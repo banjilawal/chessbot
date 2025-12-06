@@ -62,12 +62,12 @@ class TeamContextService(Service[TeamContext]):
         self._search = search
         
     @property
-    def builder(self) -> TeamContextBuilder:
-        return cast(TeamContextBuilder, self.builder)
+    def item_builder(self) -> TeamContextBuilder:
+        return cast(TeamContextBuilder, self.item_builder)
     
     @property
-    def validator(self) ->TeamContextValidator:
-        return cast(TeamContextValidator, self.validator)
+    def item_validator(self) ->TeamContextValidator:
+        return cast(TeamContextValidator, self.item_validator)
         
     @property
     def search(self) -> TeamSearch:

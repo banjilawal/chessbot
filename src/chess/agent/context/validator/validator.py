@@ -83,13 +83,13 @@ class AgentContextValidator(Validator[AgentContext]):
                 return ValidationResult.success(context)
             
             if context.team is not None:
-                validation = team_service.validator.validate(candidate=context.name)
+                validation = team_service.item_validator.validate(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.game is not None:
-                validation = game_service.validator.validate(candidate=context.name)
+                validation = game_service.item_validator.validate(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)

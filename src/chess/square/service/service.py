@@ -50,10 +50,10 @@ class SquareService(Service[Square]):
         
         
     @property
-    def builder(self) -> SquareBuilder:
-        return cast(SquareBuilder, self.builder)
+    def item_builder(self) -> SquareBuilder:
+        return cast(SquareBuilder, self.item_builder)
     
     
     @property
-    def validator(self) -> SquareValidator:
-        return cast(SquareValidator, self.validator)
+    def item_validator(self) -> SquareValidator:
+        return cast(SquareValidator, self.item_validator)

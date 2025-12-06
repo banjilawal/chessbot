@@ -45,12 +45,12 @@ class AgentService(Service[Agent]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def builder(self) -> AgentFactory:
-        return cast(AgentFactory, self.builder)
+    def item_builder(self) -> AgentFactory:
+        return cast(AgentFactory, self.item_builder)
     
     @property
-    def validator(self) -> AgentValidator:
-        return cast(AgentValidator, self.validator)
+    def item_validator(self) -> AgentValidator:
+        return cast(AgentValidator, self.item_validator)
     
     
     

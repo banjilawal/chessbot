@@ -83,11 +83,11 @@ class TeamDataService(DataService[Team]):
     
     @property
     def builder(self) -> TeamBuilder:
-        return cast(TeamBuilder, self.service.builder)
+        return cast(TeamBuilder, self.service.item_builder)
     
     @property
     def validator(self) -> TeamValidator:
-        return cast(TeamValidator, self.service.validator)
+        return cast(TeamValidator, self.service.item_validator)
     
     @property
     def context_service(self) -> TeamContextService:
@@ -160,5 +160,5 @@ class TeamDataService(DataService[Team]):
         method = "TeamDataService.search"
         
         return self.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.validator
+            data_set=self.items, context=context, context_validator=self.context_service.item_validator
         )
