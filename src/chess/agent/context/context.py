@@ -47,6 +47,23 @@ class AgentContext(Context[Agent]):
             game: Optional[Game] = None,
             variety: Optional[AgentVariety] = None,
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (Optional[int])
+            *   name (Optional[str])
+            *   team (Optional[Team])
+            *   game (Optional[Game])
+            *   variety (Optional[AgentVariety])
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name)
         self._team = team
         self._game = game
@@ -65,6 +82,18 @@ class AgentContext(Context[Agent]):
         return self._variety
     
     def to_dict(self) -> dict:
+        """
+        # Convert the AgentContext object to a dictionary.
+
+        # PARAMETERS:
+        None
+
+        # Returns:
+        dict
+
+        # Raises:
+        None
+        """
         return {
             "id": self.id,
             "name": self.name,
