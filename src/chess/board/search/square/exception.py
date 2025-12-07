@@ -1,4 +1,4 @@
-# src/chess/board/searcher/square/exception.py
+# src/chess/board/searcher/square/base.py
 
 """
 Module: chess.board.searcher.square.exception

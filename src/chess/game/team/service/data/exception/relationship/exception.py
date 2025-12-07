@@ -1,4 +1,4 @@
-# src/chess/team/service/data/exception/relationship/exception.py
+# src/chess/team/service/data/exception/relationship/base.py
 
 """
 Module: chess.team.service.data.exception.relationship.exception

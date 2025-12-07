@@ -1,4 +1,4 @@
-# src/chess/board/exception/rollback/exception.py
+# src/chess/board/exception/rollback/base.py
 
 """
 Module: chess.board.exception.rollback.exception

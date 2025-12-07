@@ -1,4 +1,4 @@
-# src/chess/rank/model/pawn/exception.py
+# src/chess/rank/model/pawn/base.py
 
 """
 Module: chess.rank.model.pawn.exception

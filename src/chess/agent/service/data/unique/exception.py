@@ -1,4 +1,4 @@
-# src/chess/agent/service/data/unique/exception.py
+# src/chess/agent/service/data/unique/base.py
 
 """
 Module: chess.agent.service.data.unique.exception

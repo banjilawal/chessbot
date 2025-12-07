@@ -1,4 +1,4 @@
-# src/chess/coord/service/data/exception.py
+# src/chess/coord/service/data/base.py
 
 """
 Module: chess.coord.service.data.exception

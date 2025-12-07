@@ -1,4 +1,4 @@
-# src/chess/rank/model/rook/exception.py
+# src/chess/rank/model/rook/base.py
 
 """
 Module: chess.rank.model.rook.exception

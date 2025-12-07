@@ -1,4 +1,4 @@
-# src/chess/promotion/transaction/exception/rollback/exception.py
+# src/chess/promotion/transaction/exception/rollback/base.py
 
 """
 Module: chess.promotion.transaction.exception.rollback.exception

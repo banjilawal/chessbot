@@ -1,4 +1,4 @@
-# src/chess/square/context/builder/exception.py
+# src/chess/square/context/builder/base.py
 
 """
 Module: chess.square.context.builder.exception

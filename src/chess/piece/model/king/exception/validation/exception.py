@@ -1,4 +1,4 @@
-# src/chess/piece/model/king/exception/validation/exception.py
+# src/chess/piece/model/king/exception/validation/base.py
 
 """
 Module: chess.piece.model.king.exception.validation.exception

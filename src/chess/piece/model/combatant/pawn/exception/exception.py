@@ -1,4 +1,4 @@
-# src/chess/piece/model/combatant/pawn/exception/exception.py
+# src/chess/piece/model/combatant/pawn/exception/base.py
 
 """
 Module: chess.piece.model.combatant.pawn.exception.exception

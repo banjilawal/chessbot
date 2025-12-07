@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== AGENT.MODEL.VARIETY PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .exception import *
 from .variety import AgentVariety

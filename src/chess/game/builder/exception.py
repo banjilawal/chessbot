@@ -1,4 +1,4 @@
-# src/chess/game/builder/exception.py
+# src/chess/game/builder/base.py
 
 """
 Module: chess.game.builder.exception

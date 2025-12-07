@@ -1,7 +1,7 @@
-# src/chess/layout/exception/exception.py
+# src/chess/layout/exception/base.py
 
 """
-Module: chess.layout.exception.exception.py
+Module: chess.layout.exception.base.py
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

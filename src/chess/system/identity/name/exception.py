@@ -1,4 +1,4 @@
-# src/chess/system/identity/name/exception.py
+# src/chess/system/identity/name/base.py
 
 """
 Module: chess.system.identity.name.exception

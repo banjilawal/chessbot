@@ -1,4 +1,4 @@
-# src/chess/team/context/validator/exception.py
+# src/chess/team/context/validator/base.py
 
 """
 Module: chess.team.context.validator.exception

@@ -1,4 +1,4 @@
-# src/chess/system/searcher/collision/exception.py
+# src/chess/system/searcher/collision/base.py
 
 """
 Module: chess.system.searcher.collision.exception

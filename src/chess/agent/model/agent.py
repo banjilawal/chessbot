@@ -11,7 +11,7 @@ version: 1.0.0
 from abc import ABC
 from typing import Optional
 
-from chess.game import Game
+from chess.game import Game, UniqueGameDataService
 from chess.team import Team, UniqueTeamDataService
 
 
@@ -102,6 +102,9 @@ class Agent(ABC):
         if isinstance(other, Agent):
             return self._id == other.id
         return False
+
+    def __hash__(self):
+        return hash(self.id)
     
     # def __str__(self):
     #     total_games = self.teams.size()

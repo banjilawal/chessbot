@@ -1,4 +1,4 @@
-# src/chess/system/builder/result/exception.py
+# src/chess/system/builder/result/base.py
 
 """
 Module: chess.system.builder.result.__init__

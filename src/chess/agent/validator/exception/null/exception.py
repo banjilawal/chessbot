@@ -1,4 +1,4 @@
-# src/chess/agent/validator/exception/null/exception.py
+# src/chess/agent/validator/exception/null/base.py
 
 """
 Module: chess.agent.validator.exception.null.exception

@@ -1,4 +1,4 @@
-# src/chess/promotion/transaction/exception/exception.py
+# src/chess/promotion/transaction/exception/base.py
 
 """
 Module: chess.promotion.transaction.exception.exception_

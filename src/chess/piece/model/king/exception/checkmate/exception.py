@@ -1,4 +1,4 @@
-# src/chess/piece/model/king/exception/checkmate/exception.py
+# src/chess/piece/model/king/exception/checkmate/base.py
 
 """
 Module: chess.piece.model.king.exception.checkmate.exception

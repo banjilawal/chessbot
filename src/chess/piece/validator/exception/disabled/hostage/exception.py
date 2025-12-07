@@ -1,4 +1,4 @@
-# src/chess/piece/validator/exception/disabled/hostage/exception.py
+# src/chess/piece/validator/exception/disabled/hostage/base.py
 
 """
 Module: chess.piece.validator.exception.disabled.hostage.exception

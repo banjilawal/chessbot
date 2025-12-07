@@ -1,4 +1,4 @@
-# src/chess/system/resolution/exception/failure/square/exception.py
+# src/chess/system/resolution/exception/failure/square/base.py
 
 """
 Module: chess.system.resolution.exception.failure.square.exception

@@ -1,4 +1,4 @@
-# src/chess/team/searcher/exception.py
+# src/chess/team/searcher/base.py
 
 """
 Module: chess.team.searcher.exception

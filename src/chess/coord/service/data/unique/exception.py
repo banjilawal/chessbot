@@ -1,4 +1,4 @@
-# src/chess/coord/service/data/unique.exception.py
+# src/chess/coord/service/data/unique.base.py
 
 """
 Module: chess.coord.service.data.unique.exception

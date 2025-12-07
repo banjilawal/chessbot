@@ -1,4 +1,4 @@
-# src/chess/team/service/data/exception/exception.py
+# src/chess/team/service/data/exception/base.py
 
 """
 Module: chess.team.service.data.exception.exception

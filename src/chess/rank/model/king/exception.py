@@ -1,4 +1,4 @@
-# src/chess/rank/model/king/exception.py
+# src/chess/rank/model/king/base.py
 
 """
 Module: chess.rank.model.king.exception

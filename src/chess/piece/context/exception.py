@@ -1,4 +1,4 @@
-# src/chess/piece/context/exception.py
+# src/chess/piece/context/base.py
 
 """
 Module: chess.piece.context.exception

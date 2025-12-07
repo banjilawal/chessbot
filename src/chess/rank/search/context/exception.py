@@ -1,4 +1,4 @@
-# src/rank/searcher/context/exception.py
+# src/rank/searcher/context/base.py
 
 """
 Module: chess.rank.searcher.context.exception

@@ -1,4 +1,4 @@
-# src/chess/rank/spec/exception/quota/exception.py
+# src/chess/rank/spec/exception/quota/base.py
 
 """
 Module: chess.rank.spec.exception.quota.exception
