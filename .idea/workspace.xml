@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/model/variety/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/model/variety/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/finder/finder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -795,7 +795,7 @@
       <workItem from="1764997526159" duration="13000000" />
       <workItem from="1765045902992" duration="23761000" />
       <workItem from="1765072138213" duration="190000" />
-      <workItem from="1765072341689" duration="16505000" />
+      <workItem from="1765072341689" duration="19190000" />
     </task>
     <servers />
   </component>
