@@ -1,4 +1,4 @@
-# src/chess/rank/model/bishop/base.py
+# src/chess/rank/model/bishop/exception.py
 
 """
 Module: chess.rank.model.bishop.exception

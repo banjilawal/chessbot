@@ -1,4 +1,4 @@
-# src/coord/context/base.py
+# src/coord/context/exception.py
 
 """
 Module: chess.coord.context.exception

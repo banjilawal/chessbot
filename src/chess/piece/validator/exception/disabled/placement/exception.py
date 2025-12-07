@@ -1,4 +1,4 @@
-# src/chess/piece/validator/exception/disabled/placement/base.py
+# src/chess/piece/validator/exception/disabled/placement/exception.py
 
 """
 Module: chess.piece.validator.exception.disabled.placement.exception

@@ -1,4 +1,4 @@
-# src/chess/system/data/result/base.py
+# src/chess/system/data/result/exception.py
 
 """
 Module: chess.system.data.result.exception

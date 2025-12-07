@@ -1,4 +1,4 @@
-# src/chess/system/validate/exception/base.py
+# src/chess/system/validate/exception/exception.py
 
 """
 Module: chess.system.validate.exception.base

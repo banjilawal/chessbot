@@ -1,4 +1,4 @@
-# src/chess/piece/combatant/exception/base.py
+# src/chess/piece/combatant/exception/exception.py
 
 """
 Module: chess.piece.combatant.exception.exception

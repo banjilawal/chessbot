@@ -19,12 +19,12 @@ class MissingAgentContextValidatorException(InvalidAgentContextServiceException)
     """
     # ROLE: Error Tracing, Debugging
 
+    # RESPONSIBILITIES:
+    Indicate an AgentContextService was constructed with either no AgentContextBuilder or the wrong
+    type of object.
+
     # PARENT
         *   InvalidAgentContextServiceException
-
-    # RESPONSIBILITIES:
-    1.  Indicate an AgentContextService was constructed with either no AgentContextBuilder or the wrong
-        type of object.
 
     # PROVIDES:
     MissingAgentContextBuilderException

@@ -1,4 +1,4 @@
-# src/chess/agent/context/builder/base.py
+# src/chess/agent/context/builder/exception.py
 
 """
 Module: chess.agent.context.builder.exception

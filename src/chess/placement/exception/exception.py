@@ -1,4 +1,4 @@
-# src/chess/layout/exception/base.py
+# src/chess/layout/exception/exception.py
 
 """
 Module: chess.layout.exception.base.py

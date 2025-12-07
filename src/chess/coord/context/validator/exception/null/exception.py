@@ -1,4 +1,4 @@
-# src/chess/coord/context/validator/exception/null/base.py
+# src/chess/coord/context/validator/exception/null/exception.py
 
 """
 Module: chess.coord.context.validator.exception.null.exception

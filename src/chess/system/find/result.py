@@ -1,7 +1,7 @@
-# src/chess/system/searcher/result.py
+# src/chess/system/find/result.py
 
 """
-Module: `chess.system.searcher.result`
+Module: chess.system.find.result
 Author: Banji Lawal
 Created: 2025-10-04
 Updated: 2025-10-10
@@ -12,7 +12,7 @@ from typing import Optional, TypeVar, Generic, List
 
 from chess.system import Result
 
-T = TypeVar('V')
+T = TypeVar("T")
 
 
 class SearchResult(Result[Generic[T]]):
@@ -24,13 +24,13 @@ class SearchResult(Result[Generic[T]]):
   2. Indicate an empty old_search notification with an object that has neither a payload nor an rollback_exception.
 
   # PROVIDES:
-  Answer from the `Finder` entity_service provider containing either:
+  Answer from the Finder entity_service provider containing either:
     1. Matches to the client's query.
     2. An rollback_exception raised during the old_search process or query submission.
     3. A notification containing neither an rollback_exception nor a payload indicating no duplicates were found.
 
   # ATTRIBUTES:
-    * See `Result` superclass for attributes.
+    * See Result superclass for attributes.
   """
   def __init__(self, payload: Optional[List[T]] = None, exception: Optional[Exception] = None):
     super().__init__(payload, exception)

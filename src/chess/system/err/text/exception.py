@@ -1,4 +1,4 @@
-# src/chess/system/err/text/base.py
+# src/chess/system/err/text/exception.py
 
 """
 Module: chess.system.err.text.exception

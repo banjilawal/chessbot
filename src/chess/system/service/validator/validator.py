@@ -1,7 +1,7 @@
-# src/chess//service/validator.py
+# src/chess/service/validator.py
 
 """
-Module: chess..service.validator
+Module: chess.service.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -68,7 +68,7 @@ class ServiceValidator(Validator[EntityService]):
                     NullServiceException(f"{method}: {NullServiceException.DEFAULT_MESSAGE}")
                 )
             # If the candidate is not an  validation has failed.
-            if not isinstance(candidate, Service):
+            if not isinstance(candidate, EntityService):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Service, got {type(candidate).__name__} instead.")
                 )

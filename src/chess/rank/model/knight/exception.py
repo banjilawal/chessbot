@@ -1,4 +1,4 @@
-# src/chess/rank/model/knight/base.py
+# src/chess/rank/model/knight/exception.py
 
 """
 Module: chess.rank.model.knight.exception

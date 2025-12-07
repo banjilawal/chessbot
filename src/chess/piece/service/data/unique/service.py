@@ -53,7 +53,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         super().__init__(id=id, name=name, data_service=data_service)
     
     @LoggingLevelRouter.monitor
-    def push_unique(self, item: Piece) -> InsertionResult[Piece]:
+    def push_unique_item(self, item: Piece) -> InsertionResult[Piece]:
         """
         # ACTION:
         1.  Use TeamDataService.service.validator to certify item.

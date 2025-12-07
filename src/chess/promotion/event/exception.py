@@ -1,4 +1,4 @@
-# src/chess/promotion/event/base.py
+# src/chess/promotion/event/exception.py
 
 """
 Module: chess.promotion.event.exception

@@ -1,4 +1,4 @@
-# src/chess/arena/base.py
+# src/chess/arena/exception.py
 
 """
 Module: chess.arena.exception

@@ -1,4 +1,4 @@
-# src/chess/rank/factory/base.py
+# src/chess/rank/factory/exception.py
 
 """
 Module: chess.rank.factory.exception

@@ -1,4 +1,4 @@
-# src/chess/domain/origin/base.py
+# src/chess/domain/origin/exception.py
 
 """
 Module: chess.domain.origin.exception

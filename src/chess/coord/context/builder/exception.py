@@ -1,4 +1,4 @@
-# src/chess/coordContext/context/builder/base.py
+# src/chess/coordContext/context/builder/exception.py
 
 """
 Module: ches.coordContext.context.builder.exception

@@ -1,4 +1,4 @@
-# src/chess/agent/validator/exception/registration/base.py
+# src/chess/agent/validator/exception/registration/exception.py
 
 """
 Module: chess.agent.validator.exception.registration.exception

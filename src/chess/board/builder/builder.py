@@ -91,7 +91,7 @@ class BoardBuilder(Builder[Board]):
                     if square_build_result.is_failure():
                         return BuildResult.failure(square_build_result.exception)
                     
-                    addition_result = square_data.push_unique(square=square_build_result.payload)
+                    addition_result = square_data.push_unique_item(square=square_build_result.payload)
                     if addition_result.is_failure():
                         return BuildResult.failure(addition_result.exception)
                     ascii_value += 1

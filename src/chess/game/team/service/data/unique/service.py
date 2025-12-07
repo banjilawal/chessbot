@@ -56,7 +56,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         super().__init__(id=id, name=name,data_service=data_service )
     
     @LoggingLevelRouter.monitor
-    def push_unique(self, item: Team) -> InsertionResult[Team]:
+    def push_unique_item(self, item: Team) -> InsertionResult[Team]:
         """
         # ACTION:
         1.  Use self.service.validator to verify the item is safe.

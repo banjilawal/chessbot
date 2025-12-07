@@ -20,12 +20,11 @@ class MissingAgentContextBuilderException(InvalidAgentContextServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
+    # RESPONSIBILITIES:
+    Indicate an attempt was made to add a duplicate item o a collection that only allows uniques.
+
     # PARENT
         *   InvalidAgentContextServiceException
-
-    # RESPONSIBILITIES:
-    1.  Indicate an AgentContextService was constructed with either no AgentContextBuilder or the wrong
-        type of object.
 
     # PROVIDES:
     MissingAgentContextBuilderException

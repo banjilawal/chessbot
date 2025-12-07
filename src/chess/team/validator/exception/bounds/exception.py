@@ -1,4 +1,4 @@
-# src/chess/team/validator/exception/bounds/base.py
+# src/chess/team/validator/exception/bounds/exception.py
 
 """
 Module: chess.team.validator.exception.bounds.exception

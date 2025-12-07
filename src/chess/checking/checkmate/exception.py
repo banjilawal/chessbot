@@ -1,4 +1,4 @@
-# src/chess/checking/check/base.py
+# src/chess/checking/check/exception.py
 
 """
 Module: chess.checking.check.exception

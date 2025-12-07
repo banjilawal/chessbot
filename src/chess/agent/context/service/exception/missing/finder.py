@@ -20,12 +20,12 @@ class MissingAgentFinderException(InvalidAgentContextServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # PARENT
-        *   InvalidAgentContextServiceException
-
     # RESPONSIBILITIES:
     1.  Indicate an AgentContextService was constructed with either no AgentFinder or the wrong
         type of object.
+    
+    # PARENT
+        *   InvalidAgentContextServiceException
 
     # PROVIDES:
     MissingAgentContextBuilderException

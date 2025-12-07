@@ -1,4 +1,4 @@
-# src/chess/piece/service/validator/base.py
+# src/chess/piece/service/validator/exception.py
 
 """
 Module: chess.piece.service.validator.exception
@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.piece import PieceServiceException
-from chess.system import NullException, ValidationException
+from chess.system import NullException, ValidationFailedException
 
 __all__ = [
     "InvalidPieceServiceException",
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# PIECE_SERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidPieceServiceException(PieceServiceException, ValidationException):
+class InvalidPieceServiceException(PieceServiceException, ValidationFailedException):
     """Catchall Exception for PieceServiceValidator when a candidate fails a sanity check."""
     ERROR_CODE = "PIECE_SERVICE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "PieceService validation failed."

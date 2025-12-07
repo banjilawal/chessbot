@@ -10,7 +10,12 @@ Version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, EntityService, Context
+from chess.agent import UniqueAgentDataServiceException
+from chess.piece import AddingDuplicatePieceException
+from chess.system import (
+    AddingDuplicateDataException, DataService, InsertionResult, LoggingLevelRouter, SearchResult,
+    EntityService, Context, UniqueDataServiceException
+)
 
 T = TypeVar("T")
 
@@ -65,22 +70,35 @@ class UniqueDataService(ABC, Generic[T]):
         return self._data_service.is_empty
     
     @property
-    def service(self) -> EntityService[T]:
-        """"""
-        return self._data_service.entity_service
-    
-    @property
     def data_service(self) -> DataService[T]:
         return self._data_service
-        
     
     @LoggingLevelRouter.monitor
-    def search(self, context: Context) -> SearchResult[List[T]]:
-        return self._data_service.search(context)
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def push_unique(self, item: T) -> InsertionResult[T]:
-        """"""
-        pass
+    def push_unique_item(self, item: T) -> InsertionResult[T]:
+        method = "UniqueAgentDataService.push_unique"
+        try:
+            validation = self.data_service.entity_service.entity_validator.validate(item)
+            if validation.is_failure():
+                return InsertionResult.failure(validation.exception)
+
+            context_build = self._data_service.context_service.entity_builder.build(id=item.id)
+            if context_build.is_failure():
+                return InsertionResult.failure(context_build.exception)
+
+            query_result = self._data_service.search(context=context_build.payload)
+            if query_result.is_failure():
+                return InsertionResult.failure(query_result.exception)
+
+            if query_result.is_success():
+                return InsertionResult.failure(
+                    AddingDuplicateDataException(f"{method}: {AddingDuplicateDataException.DEFAULT_MESSAGE}")
+                )
+            return self._data_service.push_item(item)
+
+        except Exception as ex:
+            return InsertionResult.failure(
+                UniqueDataServiceException(
+                    ex=ex, message=f"{method}: {UniqueAgentDataServiceException.DEFAULT_MESSAGE}"
+                )
+            )
         

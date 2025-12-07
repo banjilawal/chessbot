@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import BuilderException, NullException, ValidationException
+from chess.system import BuilderException, NullException
 
 __all__ = [
     # ======================# UNRELIABLE_BUILDER_EXCEPTION #======================#
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# UNRELIABLE_BUILDER_EXCEPTION #======================#
-class UnreliableBuilderException(BuilderException, ValidationException):
+class UnreliableBuilderException(BuilderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   

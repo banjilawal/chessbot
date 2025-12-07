@@ -32,7 +32,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
         super().__init__(id=id, name=name, data_service=data_service)
     
     @LoggingLevelRouter.monitor
-    def push_unique(self, item: Square) -> InsertionResult[Square]:
+    def push_unique_item(self, item: Square) -> InsertionResult[Square]:
         method = "UniqueSquareDataService.push"
         try:
             validation = self._data_service.validator.validate(item)

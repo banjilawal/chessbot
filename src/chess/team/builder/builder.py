@@ -124,7 +124,7 @@ class TeamBuilder(Builder[Team]):
                 return BuildResult.failure(fill_roster_result.exception)
             # If the team is not in Agent.team_assignments register it.
             if team not in agent.team_assignments:
-                agent.team_assignments.push_unique(team)
+                agent.team_assignments.push_unique_item(team)
             # Send the successfully built and registered Team object inside a BuildResult.
             return BuildResult.success(team)
         
@@ -160,7 +160,7 @@ class TeamBuilder(Builder[Team]):
                 )
                 if build_result.is_failure():
                     return InsertionResult.failure(build_result.exception)
-                push_result = team.roster.push_unique(build_result.payload)
+                push_result = team.roster.push_unique_item(build_result.payload)
                 if push_result.is_failure():
                     return InsertionResult.failure(push_result.exception)
         except Exception as ex:

@@ -1,4 +1,4 @@
-# src/chess/promotion/event/validator/exception/base.py
+# src/chess/promotion/event/validator/exception/exception.py
 
 """
 Module: chess.promotion.event.validator.exception.exception

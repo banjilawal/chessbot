@@ -1,4 +1,4 @@
-# src/chess/system/context/base.py
+# src/chess/system/context/exception.py
 
 """
 Module: chess.system.context.exception

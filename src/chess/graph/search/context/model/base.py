@@ -1,4 +1,4 @@
-# src/chess/domain/searcher/context/model/base.py
+# src/chess/domain/searcher/context/model/exception.py
 
 """
 Module: chess.domain.searcher.context.model.base

@@ -1,4 +1,4 @@
-# src/chess/rank/model/queen/base.py
+# src/chess/rank/model/queen/exception.py
 
 """
 Module: chess.rank.model.queen.exception

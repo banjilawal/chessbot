@@ -1,4 +1,4 @@
-# src/chess/coord/validator/exception/bounds/base.py
+# src/chess/coord/validator/exception/bounds/exception.py
 
 """
 Module: chess.coord.validator.exception.bounds.exception

@@ -1,4 +1,4 @@
-# src/chess/system/builder/exception/base.py
+# src/chess/system/builder/exception/exception.py
 
 """
 Module: chess.system.builder.exception.base
@@ -12,7 +12,6 @@ from chess.system import ChessException
 __all__ = [
   # ======================# BUILDER EXCEPTION SUPER CLASS #======================#
   "BuilderException",
-
 ]
 
 

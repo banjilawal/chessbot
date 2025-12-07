@@ -108,11 +108,11 @@ class GameBuilder(Builder[Game]):
                     GameAlreadyHasPlayersException(f"{method}: {GameAlreadyHasPlayersException.DEFAULT_MESSAGE}")
                 )
             
-            insertion_result = agent_data.push_unique(white_player_validation.payload)
+            insertion_result = agent_data.push_unique_item(white_player_validation.payload)
             if insertion_result.is_failure():
                 return BuildResult.failure(insertion_result.exception)
             
-            insertion_result = agent_data.push_unique(black_player_validation.payload)
+            insertion_result = agent_data.push_unique_item(black_player_validation.payload)
             if insertion_result.is_failure():
                 return BuildResult.failure(insertion_result.exception)
             
@@ -120,7 +120,7 @@ class GameBuilder(Builder[Game]):
             
             # If the game is not in Agent.game_assignments register it.
             if game not in agent.games:
-                agent.game_assignments.push_unique(game)
+                agent.game_assignments.push_unique_item(game)
             # Send the successfully built and registered Game object inside a BuildResult.
             return BuildResult.success(game)
         

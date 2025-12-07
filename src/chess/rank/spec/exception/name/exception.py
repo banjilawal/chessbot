@@ -1,4 +1,4 @@
-# src/chess/rank/spec/exception/name/base.py
+# src/chess/rank/spec/exception/name/exception.py
 
 """
 Module: chess.rank.spec.exception.name.exception

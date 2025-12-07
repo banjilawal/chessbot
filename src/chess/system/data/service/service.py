@@ -11,13 +11,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from chess.system import (
-    Context, DataServiceException, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException, SearchResult,
+    Context, ContextService, DataServiceException, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException,
+    SearchResult,
     Finder, EntityService, DeletionResult
 )
 
 
 D = TypeVar("D")
-C = TypeVar("C", binding=Context[D])
+C = TypeVar("C", bound=Context)
 
 class DataService(ABC, Generic[D]):
     """
@@ -37,7 +38,7 @@ class DataService(ABC, Generic[D]):
         *   Validator
         *   Finder
         *   Insertion
-        *   Deletin
+        *   Deletion
 
     # ATTRIBUTES:
     None
@@ -46,7 +47,7 @@ class DataService(ABC, Generic[D]):
         *   items (List[D]):
         *   searcher (Finder[D]):
         *   entity_service (EntityService[D]):
-        *   context_service (EntityService[C]);
+        *   context_service (ContextService);
         *   current_item (D):
         *   size (int):
     """
@@ -54,7 +55,7 @@ class DataService(ABC, Generic[D]):
     _name: str
     _items: List[D]
     _entity_service: EntityService[D]
-    _context_service: EntityService[C]
+    _context_service: ContextService[C]
 
     def __init__(
             self,
@@ -62,7 +63,7 @@ class DataService(ABC, Generic[D]):
             name: str,
             items: List[D],
             entity_service: EntityService[D],
-            context_service: EntityService[C],
+            context_service: ContextService[C],
     ):
         self._id = id
         self._name = name
@@ -94,7 +95,7 @@ class DataService(ABC, Generic[D]):
         return self._entity_service
     
     @property
-    def context_service(self) -> EntityService[C]:
+    def context_service(self) -> ContextService[C]:
         return self._context_service
     
     @property
@@ -110,7 +111,7 @@ class DataService(ABC, Generic[D]):
         """"""
         method = "DataService.push"
         try:
-            validation = self._entity_service.item_validator.validate(item)
+            validation = self._entity_service.entity_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)
@@ -124,14 +125,20 @@ class DataService(ABC, Generic[D]):
     def search(self, context: C) -> SearchResult[List[D]]:
         """"""
         method = "DataService.search"
-        try:
-            validation = self._context_service.item_validator.validate(context)
-            if validation.is_failure():
-                return SearchResult.failure(validation.exception)
-        except Exception as ex:
-            return SearchResult.failure(
-                DataServiceException(ex=ex, message=f"{method}: {DataServiceException.DEFAULT_MESSAGE}")
-            )
+        return self._context_service.entity_finder.find(
+            data_set=self.items,
+            context=context,
+            context_validator=self._context_service.entity_validator,
+        )
+        # try:
+        #     validation = self._context_service.entity_validator.validate(context)
+        #     if validation.is_failure():
+        #         return SearchResult.failure(validation.exception)
+        #     return SearchResult.success(payload=validation.payload)
+        # except Exception as ex:
+        #     return SearchResult.failure(
+        #         DataServiceException(ex=ex, message=f"{method}: {DataServiceException.DEFAULT_MESSAGE}")
+        #     )
     
     @LoggingLevelRouter.monitor
     def undo_item_push(self) -> DeletionResult[D]:

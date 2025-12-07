@@ -1,4 +1,4 @@
-# src/board/searcher/context/base.py
+# src/board/searcher/context/exception.py
 
 """
 Module: chess.board.searcher.context.exception

@@ -1,4 +1,4 @@
-# src/chess/agent/factory/base.py
+# src/chess/agent/factory/exception.py
 
 """
 Module: chess.agent.factory.exception
