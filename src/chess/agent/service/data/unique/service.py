@@ -6,10 +6,11 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+from typing import Optional, cast
 
-
-from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService
-from chess.agent import AddingDuplicateAgentException, Agent, AgentDataService, UniqueAgentDataServiceException
+from chess.team import Team
+from chess.system import DeletionResult, InsertionResult, UniqueDataService
+from chess.agent import Agent, AgentContextService, AgentDataService, AgentService
 
 
 
@@ -21,9 +22,35 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
             self,
             id: int,
             name: str = DEFAULT_NAME,
-            data_service: AgentDataService =AgentDataService()
+            data_service: AgentDataService = AgentDataService()
     ):
         super().__init__(id=id, name=name, data_service=data_service)
+        
+    @property
+    def agent_service(self) -> AgentService:
+        return cast(AgentDataService, self.data_service).agent_service
+    
+    @property
+    def context_service(self) -> AgentContextService:
+        return cast(AgentDataService, self.data_service).agent_context_service
+    
+    @property
+    def size(self) -> int:
+        return self.data_service.size
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.data_service.is_empty
+    
+    @property
+    def current_team(self) -> Optional[Team]:
+        return cast(Team, self.data_service.current_item)
+    
+    def add_agent(self, agent: Agent) -> InsertionResult[Agent]:
+        return self.push_unique_item(agent)
+    
+    def undo_add_agent(self) -> DeletionResult[Agent]:
+        return self.data_service.undo_item_push()
     
     # @LoggingLevelRouter.monitor
     # def push_unique_item(self, item: Agent) -> InsertionResult[Agent]:

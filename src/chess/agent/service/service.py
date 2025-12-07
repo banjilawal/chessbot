@@ -62,11 +62,11 @@ class AgentService(EntityService[Agent]):
         
     @property
     def builder(self) -> AgentFactory:
-        return cast(AgentFactory, self.item_builder)
+        return cast(AgentFactory, self.entity_builder)
     
     @property
     def validator(self) -> AgentValidator:
-        return cast(AgentValidator, self.item_validator)
+        return cast(AgentValidator, self.entity_validator)
     
     
     
