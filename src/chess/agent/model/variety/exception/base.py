@@ -18,6 +18,25 @@ __all__ = [
 # ======================# AGENT_VARIETY EXCEPTION  #======================#
 class AgentVarietyException(ChessException):
     """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised during Agentt build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
+
+    # PARENT
+        *   AgentException
+        *   BuildFailedException
+
+    # PROVIDES:
+    BuildResult[Agent] containing either:
+            - On success: Agent in the payload.
+            - On failure: Exception.
+
+    # ATTRIBUTES:
+    None
+    """
+    """
     Super class for exceptions raised by AgentVariety objects. DO NOT USE DIRECTLY. Subclasses
     give more useful debugging messages.
     """

@@ -17,6 +17,25 @@ __all__ = [
 
 # ======================# NULL AGENT_VARIETY EXCEPTION  #======================#
 class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised during Agentt build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
+
+    # PARENT
+        *   AgentException
+        *   BuildFailedException
+
+    # PROVIDES:
+    BuildResult[Agent] containing either:
+            - On success: Agent in the payload.
+            - On failure: Exception.
+
+    # ATTRIBUTES:
+    None
+    """
     """"""
     ERROR_CODE = "NULL_AGENT_VARIETY_ERROR"
     DEFAULT_MESSAGE = "AgentVariety cannot be null."
