@@ -9,17 +9,15 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.team import UniqueTeamDataService
+from chess.engine import EngineService
 from chess.game import UniqueGameDataService
-from chess.engine.service import EngineService
-from chess.agent import (
-    Agent, AgentBuildFailedException, AgentContext, AgentContextBuildFailedException, AgentVariety,
-    AgentValidator, HumanAgent, HumanAgentBuildFailedException, MachineAgent, MachineAgentBuildFailedException,
-    NoAgentContextFlagException,
-    TooManyAgentContextFlagsException
-)
+from chess.team import UniqueTeamDataService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
+from chess.agent import (
+    Agent, AgentBuildFailedException, AgentVariety, AgentValidator, HumanAgent, HumanAgentBuildFailedException,
+    MachineAgent, MachineAgentBuildFailedException
+)
 
 class AgentFactory(Builder[Agent]):
         """

@@ -1,7 +1,7 @@
-# src/chess/agent/searcher/searcher
+# src/chess/agent/finder/finder
 
 """
-Module: chess.agent.searcher.searcher
+Module: chess.agent.finder.finder
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -111,7 +111,7 @@ class AgentFinder(Finder[Agent]):
         1.  Get the agents whose id matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the searcher returns multiple unique hits there is a problem.
+        4.  If the finder returns multiple unique hits there is a problem.
 
         # Parameters:
             *   id (int)
@@ -151,7 +151,7 @@ class AgentFinder(Finder[Agent]):
         1.  Get the agents whose names are a case-insensitive. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the searcher returns multiple hits call _resolve_matching_ids.
+        4.  If the finder returns multiple hits call _resolve_matching_ids.
 
         # Parameters:
             *   name (str)
@@ -283,7 +283,7 @@ class AgentFinder(Finder[Agent]):
         1.  Get the agents whose names are a agent_variety. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the searcher returns multiple hits call _resolve_matching_ids.
+        4.  If the finder returns multiple hits call _resolve_matching_ids.
 
         # Parameters:
             *   agent_variety (AgentVariety)
