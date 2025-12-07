@@ -16,6 +16,22 @@ from chess.team import Team, UniqueTeamDataService
 
 
 class Agent(ABC):
+    """
+    # ROLE: Controller
+
+    # RESPONSIBILITIES:
+    1.  Directs movement of pieces in a Team's roster on a Board.
+    2.  Forwards requests from the user to a Game.
+
+    # PROVIDES:
+    Agent
+
+    # ATTRIBUTES:
+        *   id (int)
+        *   name (string)
+        *   games (UniqueGameDataService)
+        *   team_assignment (UniqueTeamDataService)
+    """
     _id: int
     _name: str
     _games: UniqueGameDataService
@@ -28,6 +44,23 @@ class Agent(ABC):
             games: UniqueGameDataService = UniqueGameDataService(),
             team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
     ):
+        """
+        # Action:
+            1.  Constructor
+
+        # Parameters:
+            *   id (int)
+            *   name (str)
+            *   games (UniqueGameDataService)
+            *   team_assignments (UniqueTeamDataService)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
+        method = "AgentContextService.__init__"
         self._id = id
         self._name = name
         self._games = games
@@ -55,6 +88,10 @@ class Agent(ABC):
     @property
     def current_team(self) -> Optional[Team]:
         return self._team_assignments.current_team
+    
+    @property
+    def current_game(self) -> Optional[Game]:
+        return self._games.current_game
     
     def __eq__(self, other):
         if other is self: return True

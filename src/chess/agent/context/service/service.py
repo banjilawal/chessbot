@@ -68,6 +68,7 @@ class AgentContextService(Service[AgentContext]):
         # Raises:
         None
         """
+        method = "AgentContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._searcher = searcher
         
