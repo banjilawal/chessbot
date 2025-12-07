@@ -1,4 +1,4 @@
-# src/chess/agent/context/entity_service/exception/null.py
+# src/chess/agent/context/service/exception/null.py
 
 """
 Module: chess.agent.context.entity_service.exception.null

@@ -1,7 +1,7 @@
-# src/chess/coord/context/entity_service/entity_service.py
+# src/chess/coord/context/service/service.py
 
 """
-Module: chess.coord.context.entity_service.entity_service
+Module: chess.coord.context.service.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

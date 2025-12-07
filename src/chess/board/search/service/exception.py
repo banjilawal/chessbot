@@ -1,4 +1,4 @@
-# src/chess/board/searcher/entity_service/base.py
+# src/chess/board/searcher/service/base.py
 
 """
 Module: chess.board.searcher.entity_service.exception

@@ -1,4 +1,4 @@
-# src/chess/agent/context/entity_service/validator.py
+# src/chess/agent/context/service/validator.py
 
 """
 Module: chess.agent.context.entity_service.validator

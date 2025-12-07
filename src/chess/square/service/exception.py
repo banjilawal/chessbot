@@ -1,7 +1,7 @@
-# src/chess/square.entity_service/entity_service/collision.py
+# src/chess/square.entity_service/service/collision.py
 
 """
-Module: chess.square.entity_service.entity_service.exception
+Module: chess.square.service.service.exception
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0

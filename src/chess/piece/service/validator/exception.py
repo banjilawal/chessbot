@@ -1,4 +1,4 @@
-# src/chess/piece/entity_service/validator/base.py
+# src/chess/piece/service/validator/base.py
 
 """
 Module: chess.piece.entity_service.validator.exception

@@ -1,4 +1,4 @@
-# src/chess/checkmate/entity_service.py
+# src/chess/checkmate/service.py
 
 """
 Module: chess.checkmate.table

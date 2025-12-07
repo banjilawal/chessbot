@@ -1,4 +1,4 @@
-# src/chess/scalar/entity_service/py
+# src/chess/scalar/service/py
 
 """
 Module: chess.scalar.entity_service.__init__

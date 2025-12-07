@@ -1,4 +1,4 @@
-# src/chess/rank/entity_service/base.py
+# src/chess/rank/service/base.py
 
 """
 Module: chess.rank.entity_service.exception

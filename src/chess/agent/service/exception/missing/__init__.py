@@ -1,4 +1,4 @@
-# src/chess/agent/entity_service/exception/missing/__init__.py
+# src/chess/agent/service/exception/missing/__init__.py
 
 """
 Module: chess.agent.entity_service.exception.missing.__init__

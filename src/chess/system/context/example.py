@@ -32,7 +32,7 @@ Created: 2025-09-28
  * `TravelEventFactory`
 """
 
-# src/chess/system/roster/entity_service.py
+# src/chess/system/roster/service.py
 
 """
 Module: `chess.system.roster.roster`

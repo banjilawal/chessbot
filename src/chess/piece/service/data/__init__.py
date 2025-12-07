@@ -1,4 +1,4 @@
-# src/chess/piece/entity_service/data/__init__.py
+# src/chess/piece/service/data/__init__.py
 
 """
 Module: chess.piece.entity_service.data.__init__

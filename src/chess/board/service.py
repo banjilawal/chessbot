@@ -1,4 +1,4 @@
-# src/chess/board/entity_service.py
+# src/chess/board/service.py
 
 """
 Module: chess.board.entity_service

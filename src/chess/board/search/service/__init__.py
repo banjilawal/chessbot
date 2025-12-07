@@ -1,4 +1,4 @@
-# src/chess/board/searcher/entity_service/__init__.py
+# src/chess/board/searcher/service/__init__.py
 
 """
 Module: chess.board.searcher.entity_service.__init__

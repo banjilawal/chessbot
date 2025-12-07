@@ -46,7 +46,7 @@ See the list of exceptions in the `__all__` list following (e.g., `FinderExcepti
   * `ImpossibleFatalResultException`
 """
 
-# src/chess/system/searcher/entity_service.py
+# src/chess/system/searcher/service.py
 
 """
 Module: `chess.system.searcher.searcher`

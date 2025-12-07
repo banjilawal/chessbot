@@ -1,7 +1,7 @@
-# src/chess/scalar/entity_service/entity_service.py
+# src/chess/scalar/service/service.py
 
 """
-Module: chess.scalar.entity_service.entity_service
+Module: chess.scalar.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0

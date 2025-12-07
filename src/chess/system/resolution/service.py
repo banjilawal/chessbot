@@ -1,4 +1,4 @@
-# src/chess/system/resolution/entity_service.py
+# src/chess/system/resolution/service.py
 
 """
 module: chess.system.resolution.entity_service

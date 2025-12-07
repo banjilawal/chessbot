@@ -1,4 +1,4 @@
-# src/chess/team/entity_service/data/unique/__init__.py
+# src/chess/team/service/data/unique/__init__.py
 
 """
 Module: chess.team.entity_service.data.unique.__init__

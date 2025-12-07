@@ -1,4 +1,4 @@
-# src/chess/neighbor/entity_service.py
+# src/chess/neighbor/service.py
 
 """
 Module: chess.neighbor.entity_service

@@ -1,4 +1,4 @@
-# src/chess/agent/context/entity_service/exception/base
+# src/chess/agent/context/service/exception/base
 
 """
 Module: chess.agent.context.entity_service.exception.base

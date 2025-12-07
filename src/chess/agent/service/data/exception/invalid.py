@@ -1,4 +1,4 @@
-# src/chess/agent/entity_service/data/exception/invalid.py
+# src/chess/agent/service/data/exception/invalid.py
 
 """
 Module: chess.agent.entity_service.data.exception.invalid

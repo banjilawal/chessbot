@@ -1,4 +1,4 @@
-# src/chess/system/entity_service/__init__.py
+# src/chess/system/service/__init__.py
 
 """
 Module: chess.system.entity_service.__init__

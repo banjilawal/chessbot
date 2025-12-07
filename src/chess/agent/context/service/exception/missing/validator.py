@@ -1,4 +1,4 @@
-# src/chess/agent/context/entity_service/exception/missing/validator.py
+# src/chess/agent/context/service/exception/missing/validator.py
 
 """
 Module: chess.agent.context.entity_service.exception.missing.validator

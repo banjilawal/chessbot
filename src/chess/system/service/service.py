@@ -1,7 +1,7 @@
-# src/chess/system/entity_service/entity_service.py
+# src/chess/system/service/service.py
 
 """
-Module: chess.system.entity_service.entity_service
+Module: chess.system.service.service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -17,14 +17,13 @@ T = TypeVar("T")
 
 class EntityService(ABC, Generic[T]):
     """
-    # ROLE: EntityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for modules and objects responsible for a stage in the Entity's
-        lifecycle.
-    2.  Masks implementation details and business logic making features easier to use.
-    3.  Protects T objects from direct, unprotected access.
-    4.  Public facing API.
+    1.  Public facing API.
+    2.  Protects objects from direct, unprotected access.
+    3.  Encapsulates highly cohesive modules, and operations for easier extension, use and maintenance.
+    4.  Provide a single entry point managing an Entity's integrity lifecycle.
     
     # PARENT
     None
@@ -37,8 +36,8 @@ class EntityService(ABC, Generic[T]):
     None
         *   id (int):
         *   name (str):
-        *   item_builder (type[Builder[T]]):
-        *   item_validator (type[Validator[T]]):
+        *   _builder (Builder[T]):
+        *   _validator (Validator[T]):
     """
     _builder: Builder[T]
     _validator: Validator[T]
@@ -64,11 +63,11 @@ class EntityService(ABC, Generic[T]):
         return self._name
     
     @property
-    def item_builder(self) -> Builder[T]:
+    def entity_builder(self) -> Builder[T]:
         return self._builder
     
     @property
-    def item_validator(self) -> Validator[T]:
+    def entity_validator(self) -> Validator[T]:
         return self._validator
     
     def __eq__(self, other):

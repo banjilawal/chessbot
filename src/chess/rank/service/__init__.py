@@ -1,4 +1,4 @@
-# src/chess/rank/entity_service/__init__.py
+# src/chess/rank/service/__init__.py
 
 """
 Module: chess.rank.entity_service.__init__

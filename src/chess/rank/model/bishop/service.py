@@ -1,4 +1,4 @@
-# src/chess/rank/model/bishop/entity_service.py
+# src/chess/rank/model/bishop/service.py
 
 """
 Module: chess.rank.model.bishop.entity_service

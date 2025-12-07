@@ -1,4 +1,4 @@
-# src/chess/square/context/entity_service/__init__.py
+# src/chess/square/context/service/__init__.py
 
 """
 Module: chess.square.context.entity_service.__init__

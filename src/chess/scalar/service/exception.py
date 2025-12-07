@@ -1,4 +1,4 @@
-# src/chess/scalar/entity_service/base.py
+# src/chess/scalar/service/base.py
 
 """
 Module: chess.scalar.entity_service.exception

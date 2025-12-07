@@ -1,4 +1,4 @@
-# src/chess/team/context/entity_service/base.py
+# src/chess/team/context/service/base.py
 
 """
 Module: chess.team.context.entity_service.exception

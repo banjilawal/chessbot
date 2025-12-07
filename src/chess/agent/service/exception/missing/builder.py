@@ -1,4 +1,4 @@
-# src/chess/agent/entity_service/exception/missing/builder.py
+# src/chess/agent/service/exception/missing/builder.py
 
 """
 Module: chess.agent.entity_service.exception.missing.builder

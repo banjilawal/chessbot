@@ -1,4 +1,4 @@
-# src/chess/rank/model/queen/entity_service.py
+# src/chess/rank/model/queen/service.py
 
 """
 Module: chess.rank.model.queen.entity_service

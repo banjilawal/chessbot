@@ -1,4 +1,4 @@
-# src/chess/rank/validator/entity_service.py
+# src/chess/rank/validator/service.py
 
 """
 Module: chess.rank.validator.entity_service

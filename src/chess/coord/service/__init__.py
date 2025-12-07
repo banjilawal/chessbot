@@ -1,4 +1,4 @@
-# src/chess/coord/entity_service/__init__.py
+# src/chess/coord/service/__init__.py
 
 """
 Module: chess.coord.entity_service.__init__

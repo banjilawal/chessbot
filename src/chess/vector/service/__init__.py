@@ -1,4 +1,4 @@
-# src/chess/vector/entity_service/py
+# src/chess/vector/service/py
 
 """
 Module: chess.vector.entity_service.__init__

@@ -1,4 +1,4 @@
-# src/chess/agent/entity_service/data/entity_service.py
+# src/chess/agent/service/data/service.py
 
 """
 Module: chess.agent.entity_service.data.entity_service
