@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== CHESS.AGENT.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .missing import *
 
 # Modules
 from .base import AgentServiceException

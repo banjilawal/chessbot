@@ -1,4 +1,4 @@
-# src/chess/agent/context/service/validator_.py
+# src/chess/agent/context/service/validator.py
 
 """
 Module: chess.agent.context.service.validator
@@ -9,9 +9,9 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.agent import (
-    AgentContextBuilder, AgentContextService, AgentContextValidator, AgentSearcher,
-    InvalidAgentContextException, MissingAgentContextBuilderException, MissingAgentContextValidatorException,
-    MissingAgentSearcherException, NullAgentContextServiceException
+    AgentContextBuilder, AgentContextService, AgentContextValidator, AgentFinder,
+    InvalidAgentContextServiceException, MissingAgentContextBuilderException,
+    MissingAgentContextValidatorException, MissingAgentSearcherException, NullAgentContextServiceException
 )
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
 
@@ -91,7 +91,7 @@ class AgentContextServiceValidator(Validator[AgentContextService]):
                     )
                 )
             # Make sure searcher is a not-null AgentFinder instance.
-            if service.searcher is None or not isinstance(service.searcher, AgentSearcher):
+            if service.finder is None or not isinstance(service.finder, AgentFinder):
                 return ValidationResult.failure(
                     MissingAgentSearcherException(
                         f"{method}: {MissingAgentSearcherException.DEFAULT_MESSAGE}"
@@ -104,7 +104,7 @@ class AgentContextServiceValidator(Validator[AgentContextService]):
         # an InvalidAgentContextServiceException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:
             ValidationResult.failure(
-                InvalidAgentContextException(
-                    ex=ex, message=f"{method}: {InvalidAgentContextException.DEFAULT_MESSAGE}"
+                InvalidAgentContextServiceException(
+                    ex=ex, message=f"{method}: {InvalidAgentContextServiceException.DEFAULT_MESSAGE}"
                 )
             )

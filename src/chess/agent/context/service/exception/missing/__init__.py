@@ -15,4 +15,4 @@ None
 # Modules
 from .builder import MissingAgentContextBuilderException
 from .validator import MissingAgentContextValidatorException
-from .searcher import MissingAgentSearcherException
+from .finder import MissingAgentFinderException

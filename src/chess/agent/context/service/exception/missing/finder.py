@@ -1,7 +1,7 @@
 # src/chess/agent/context/service/exception/missing/finder.py
 
 """
-Module: chess.agent.context.service.exception.missing.searcher
+Module: chess.agent.context.service.exception.missing.finder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.agent import InvalidAgentContextServiceException
 
 __all__ = [
     # ======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
-    "MissingAgentSearcherException",
+    "MissingAgentFinderException",
 ]
 
 
 # ======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
-class MissingAgentSearcherException(InvalidAgentContextServiceException):
+class MissingAgentFinderException(InvalidAgentContextServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -33,5 +33,5 @@ class MissingAgentSearcherException(InvalidAgentContextServiceException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "MISSING_AGENT_SEARCHER_ERROR"
+    ERROR_CODE = "MISSING_AGENT_FINDER_ERROR"
     DEFAULT_MESSAGE = "AgentContextService does not have the required AgentFinder instance."
