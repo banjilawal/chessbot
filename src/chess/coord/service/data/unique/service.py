@@ -1,7 +1,7 @@
 # src/chess/coord/service/data/unique/service.py
 
 """
-Module: chess.coord.entity_service.data.unique.entity_service
+Module: chess.coord.service.data.unique.entity_service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

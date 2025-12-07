@@ -1,7 +1,7 @@
 # src/chess/square/service/data/service.py
 
 """
-Module: chess.square.entity_service.data.entity_service
+Module: chess.square.service.data.entity_service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -36,7 +36,7 @@ class SquareDataService(DataService[Square]):
     def push_item(self, item: Square) -> InsertionResult[Square]:
         method = "SquareDataService.push"
         try:
-            validation = self.entity_service.validator.validate(item)
+            validation = self.service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)

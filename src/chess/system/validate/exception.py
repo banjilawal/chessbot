@@ -45,6 +45,55 @@ The major theme influencing the modules design are
 from chess.system import ChessException
 
 
+
+
+
+__all__ = [
+  # ======================# VALIDATOR EXCEPTION SUPER_CLASS #======================#
+  "ValidatorException",
+  
+  # ======================# VALIDATOR VALIDATION EXCEPTIONS #======================#
+  "UnreliableValidatorException",
+  "NullValidatorException",
+  
+  # ======================# FAILED BUILD OPERATION EXCEPTION #======================#
+  "BuildFailedException",
+  
+  # ======================# MUTUAL EXCLUSION EXCEPTIONS #======================#
+  "AllParamsSetNullException",
+  "MutuallyExclusiveParamsException",
+  
+  # ======================# BUILD_OPTIONS EXCEPTIONS #======================#
+  "NoBuildOptionSelectedException",
+  "BuildOptionSelectionTooLargeException",
+]
+
+
+# ======================# VALIDATOR  #======================#
+class ValidatorException(ChessException):
+  """
+  Super class of exceptions organic to Validator objects. DO NOT USE DIRECTLY. Subclasses give
+  details useful for debugging. `ValidatorException` exists primarily to allow catching all `Validator`
+  exceptions.
+  """
+  ERROR_CODE = "VALIDATOR_ERROR"
+  DEFAULT_MESSAGE = "Validator raised an exception."
+
+
+# ======================# VALIDATOR CERTIFICATION EXCEPTIONS #======================#
+class UnreliableValidatorException(ValidatorException):
+  """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
+  ERROR_CODE = "NULL_ERROR"
+  DEFAULT_MESSAGE = "Validator cannot be validation"
+
+
+class NullValidatorException(UnreliableValidatorException):
+  """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
+  ERROR_CODE = "NULL_ERROR"
+  DEFAULT_MESSAGE = "Validator cannot be validation"
+
+
+# ======================# ENTITY VALIDATION EXCEPTION #======================#
 class ValidationException(ChessException):
   """
   Super class of all errors raised verifying correctness of existing entities. DO NOT USE DIRECTLY. Create or use
@@ -52,5 +101,3 @@ class ValidationException(ChessException):
   """
   ERROR_CODE = "VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Validation failed."
-
-

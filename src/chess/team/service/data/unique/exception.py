@@ -1,7 +1,7 @@
 # src/chess/team/service/data/unique/base.py
 
 """
-Module: chess.team.entity_service.data.unique.exception
+Module: chess.team.service.data.unique.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

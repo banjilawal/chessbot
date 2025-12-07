@@ -1,7 +1,7 @@
 # src/chess/scalar/service/base.py
 
 """
-Module: chess.scalar.entity_service.exception
+Module: chess.scalar.service.exception
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0

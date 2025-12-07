@@ -1,7 +1,7 @@
 # src/chess/vector/service/base.py
 
 """
-Module: chess.vector.entity_service.exception
+Module: chess.vector.service.exception
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0

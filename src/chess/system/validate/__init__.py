@@ -14,4 +14,5 @@ from .result import *
 
 # Modules
 from .exception import *
+from .certifier import CertifyValidator
 from .validator import Validator

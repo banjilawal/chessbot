@@ -14,7 +14,7 @@ __all__ = [
   "BuilderException",
   
 # ======================# BUILDER VALIDATION EXCEPTIONS #======================#
-  "InvalidBuilderException",
+  "UnreliableBuilderException",
   "NullBuilderException",
   
 # ======================# FAILED BUILD OPERATION EXCEPTION #======================#
@@ -41,19 +41,19 @@ class BuilderException(ChessException):
   DEFAULT_MESSAGE = "Builder raised an exception."
 
 
-# ======================# BUILDER VALIDATION EXCEPTIONS #======================#
-class InvalidBuilderException(BuilderException, ValidationException):
+# ======================# BUILDER CERTIFICATION EXCEPTIONS #======================#
+class UnreliableBuilderException(BuilderException, ValidationException):
   """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
   ERROR_CODE = "NULL_ERROR"
   DEFAULT_MESSAGE = "Builder cannot be validation"
 
-class NullBuilderException(InvalidBuilderException, NullException):
+class NullBuilderException(UnreliableBuilderException, NullException):
   """Raised if an entity, method, or operation requires team_name Engine but gets null instead."""
   ERROR_CODE = "NULL_ERROR"
   DEFAULT_MESSAGE = "Builder cannot be validation"
 
 
-# ======================# FAILED BUILD OPERATION EXCEPTION #======================#
+# ======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
 class BuildFailedException(BuilderException):
   """Raised when an error halts an object's build process."""
   ERROR_CODE = "BUILD_FAILED_ERROR"

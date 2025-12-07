@@ -1,7 +1,7 @@
 # src/chess/agent/context/service/exception/invalid.py
 
 """
-Module: chess.agent.context.entity_service.exception.invalid
+Module: chess.agent.context.service.exception.invalid
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

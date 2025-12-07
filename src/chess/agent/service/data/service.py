@@ -1,7 +1,7 @@
 # src/chess/agent/service/data/service.py
 
 """
-Module: chess.agent.entity_service.data.entity_service
+Module: chess.agent.service.data.entity_service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,11 +41,11 @@ class AgentDataService(DataService[Agent]):
     
     @property
     def builder(self) -> AgentFactory:
-        return cast(AgentFactory, self.entity_service.item_builder)
+        return cast(AgentFactory, self.service.item_builder)
     
     @property
     def validator(self) -> AgentValidator:
-        return cast(AgentValidator, self.entity_service.item_validator)
+        return cast(AgentValidator, self.service.item_validator)
     
     @property
     def context_service(self) -> AgentContextService:

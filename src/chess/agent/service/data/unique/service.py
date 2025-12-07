@@ -1,7 +1,7 @@
 # src/chess/agent/service/data/unique/service_.py
 
 """
-Module: chess.agent.entity_service.data.unique.entity_service
+Module: chess.agent.service.data.unique.entity_service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

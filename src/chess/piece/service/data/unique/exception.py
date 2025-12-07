@@ -1,7 +1,7 @@
 # src/chess/piece/service/data/unique/base.py
 
 """
-Module: chess.piece.entity_service.data.unique.exception
+Module: chess.piece.service.data.unique.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

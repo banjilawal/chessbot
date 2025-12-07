@@ -1,7 +1,7 @@
 # src/chess/piece/service/base.py
 
 """
-Module: chess.piece.entity_service.exception
+Module: chess.piece.service.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

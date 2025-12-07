@@ -1,7 +1,7 @@
 # src/chess/agent/context/service/validator.py
 
 """
-Module: chess.agent.context.entity_service.validator
+Module: chess.agent.context.service.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
 # src/chess/team/service/data/exception/registration/base.py
 
 """
-Module: chess.team.entity_service.data.exception.registration.exception
+Module: chess.team.service.data.exception.registration.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

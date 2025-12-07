@@ -1,7 +1,7 @@
-# src/chess/system/service/__init__.py
+# src/chess/system/service/validator/__init__.py
 
 """
-Module: chess.system.service.__init__
+Module: chess.system.service.validator.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 """
@@ -9,10 +9,7 @@ Created: 2025-11-18
 # =========== CHESS.SYSTEM.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .validator import *
+from .exception import *
 
 # Modules
-from .exception import *
-from .service import EntityService
-
-
+from .validator import ServiceValidator
