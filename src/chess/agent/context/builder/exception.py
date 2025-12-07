@@ -20,7 +20,7 @@ __all__ = [
 # ======================# AGENT_CONTEXT BUILD EXCEPTIONS #======================#
 class AgentContextBuildFailedException(AgentContextException, BuildFailedException):
     """
-    # ROLE: BuildFailedException, AgentContextException
+    # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised during AgentContext build process.

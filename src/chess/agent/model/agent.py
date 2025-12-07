@@ -18,8 +18,6 @@ from chess.team import Team, UniqueTeamDataService
 class Agent(ABC):
     _id: int
     _name: str
-    _current_team: Optional[Team]
-    _current_game: Optional[Game]
     _games: UniqueGameDataService
     _team_assignments: UniqueTeamDataService
     

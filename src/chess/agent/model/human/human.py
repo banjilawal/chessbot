@@ -13,8 +13,14 @@ from chess.team import UniqueTeamDataService
 
 class HumanAgent(Agent):
     
-    def __init__(self, id: int, name: str, team_stack: UniqueTeamDataService = UniqueTeamDataService):
-        super().__init__(id=id, name=name, team_stack=team_stack)
+    def __init__(
+            self,
+            id: int,
+            name: str,
+            games: UniqueGameDataService = UniqueGameDataService(),
+            team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
+    ):
+        super().__init__(id=id, name=name, games=games, team_assignments=team_assignments)
     
     def __eq__(self, other):
         if super().__eq__(other):

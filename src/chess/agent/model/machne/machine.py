@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+from lib2to3.fixes.fix_import import traverse_imports
 
 from chess.agent import Agent, TeamStackService
 from chess.engine.service import EngineService
@@ -19,10 +20,11 @@ class MachineAgent(Agent):
             self,
             id: int,
             name: str,
-            team_stack: UniqueTeamDataService = UniqueTeamDataService(),
+            games: UniqueGameDataService = UniqueGameDataService(),
+            team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
             engine_service: EngineService = EngineService(),
     ):
-        super().__init__(id=id, name=name, team_stack=team_stack)
+        super().__init__(id=id, name=name, games=games, team_assignments=team_assignments)
         self._engine_service = engine_service
     
     @property
@@ -31,12 +33,8 @@ class MachineAgent(Agent):
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, MachineAgent):
-                return True
+            if isinstance(other, MachineAgent): return True
         return False
     
     def __hash__(self):
         return super.__hash__()
-    
-    # def __str__(self):
-    #     return f"{super().__str__()} engine:{self._engine.__class__.__name__.title()}"

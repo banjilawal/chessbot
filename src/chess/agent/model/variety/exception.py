@@ -7,13 +7,16 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ChessException, NullException
+from chess.system import ChessException, NullException, ValidationException
 
 __all__ = [
-# ======================# AGENT_VARIETY EXCEPTION #======================#
+    # ======================# AGENT_VARIETY EXCEPTION #======================#
     "AgentVarietyException",
     
-# ======================# AGENT_VARIETY NULL EXCEPTION #======================#
+    # ======================# AGENT_VARIETY EXCEPTION #======================#
+    "InvalidAgentVarietyException",
+    
+    # ======================# AGENT_VARIETY NULL EXCEPTION #======================#
     "AgentVarietyNullException",
 ]
 
@@ -29,7 +32,15 @@ class AgentVarietyException(ChessException):
 
 
 # ======================# AGENT_VARIETY NULL EXCEPTION  #======================#
-class AgentVarietyNullException(AgentVarietyException, NullException):
+class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
+    """"""
+    ERROR_CODE = "AGENT_VARIETY_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "AgentVariety validation failed."
+    
+# ======================# AGENT_VARIETY NULL EXCEPTION  #======================#
+class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
     """"""
     ERROR_CODE = "NULL_AGENT_VARIETY_ERROR"
     DEFAULT_MESSAGE = "AgentVariety cannot be null."
+
+
