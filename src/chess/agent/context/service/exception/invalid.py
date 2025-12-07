@@ -12,12 +12,12 @@ from chess.agent import AgentContextServiceException
 
 
 __all__ = [
-    # ======================# INVALID_AGENT_CONTEXT_SERVICE EXCEPTION #======================#
+    # ======================# AGENT_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
     "InvalidAgentContextServiceException",
 ]
 
 
-# ======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
+# ======================# AGENT_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
 class InvalidAgentContextServiceException(AgentContextServiceException, ValidationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

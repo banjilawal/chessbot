@@ -11,7 +11,7 @@ from chess.system import NullException
 from chess.agent import InvalidAgentContextServiceException
 
 __all__ = [
-    # ======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
+    # ======================# NULL AGENT_CONTEXT_SERVICE EXCEPTIONS #======================#
     "NullAgentContextServiceException",
 ]
 
