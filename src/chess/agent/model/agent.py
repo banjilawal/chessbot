@@ -67,7 +67,7 @@ class Agent(ABC):
         self._team_assignments = team_assignments
     
         self._current_game = self._games.current_game
-        self._current_team = self._team_assignments.current_current_team
+        self._current_team = self._team_assignments.current_team
     
     @property
     def id(self) -> int:
