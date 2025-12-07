@@ -10,9 +10,9 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import (
-    BuilderValidator, EntityService, LoggingLevelRouter, ValidationResult, Validator,
-    ValidatorCertifier
+    BuilderValidator, EntityService, LoggingLevelRouter, ValidationResult, Validator, ValidatorCertifier
 )
+from chess.system.service.exception import InvalidServiceException, NullServiceException
 
 
 class ServiceValidator(Validator[EntityService]):

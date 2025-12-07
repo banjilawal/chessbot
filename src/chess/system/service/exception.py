@@ -6,10 +6,12 @@ Author: Banji Lawal
 Created: 2025-11-19
 """
 
-from chess.system import ChessException
+from chess.system import ChessException, NullException, ValidationFailedException
 
 __all__ = [
     "ServiceException",
+    "InvalidServiceException",
+    "NullServiceException",
 ]
 
 
@@ -21,3 +23,15 @@ class ServiceException(ChessException):
     """
     ERROR_CODE = "SERVICE_ERROR"
     DEFAULT_MESSAGE = "EntityService raised an exception."
+
+
+class InvalidServiceException(ServiceException, ValidationFailedException):
+    """Raised when an EntityService fails a safety check."""
+    ERROR_CODE = "SERVICE_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "EntityService validation failed."
+
+
+class NullServiceException(InvalidServiceException, NullException):
+    """Raised when a object, module or method is expecting an EntityService but gets null instead."""
+    ERROR_CODE = "NULL_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "EntityService cannot be null."
