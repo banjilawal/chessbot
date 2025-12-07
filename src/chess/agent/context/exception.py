@@ -27,10 +27,11 @@ class AgentContextException(AgentException, ContextException):
         *   ContextException
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an AgentContext's fields, methods, Builders and Validators.
-        encounter an error condition.
-    2.  Raised when no specific exception exists for the error interrupting AgentContext processes from
-        their normal flows.
+    1.  Parent of exceptions raised when an AgentContext's organic fields or methods run into a condition that
+        leads to an operation failing.
+    2.  Parent of exceptions raised by AgentContext Builders and Validators or any other classes that highly
+        cohere with AgentContext objects.
+    3.  Catchall for AgentContext failure states that are not covered by a lower level AgentContext exception.
 
     # PROVIDES:
     AgentContextException
