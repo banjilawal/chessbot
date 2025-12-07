@@ -1,4 +1,4 @@
-# src/chess/agent/service/base.py
+# src/chess/agent/service/exception.py
 
 """
 Module: chess.agent.service.exception
@@ -18,19 +18,20 @@ __all__ = [
 # ======================# AGENT_SERVICE EXCEPTIONS #======================#
 class AgentServiceException(ServiceException):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+    # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead of an unsafe Agent.
+    1.  Parent of exceptions raised when an AgentService's organic fields or methods run into a condition that
+        leads to an operation failing.
+    2.  Parent of exceptions raised by Agent Builders and Validators or any other classes that highly
+        cohere with AgentService objects.
+    3.  Catchall for AgentService failure states that are not covered by a lower level Agent exception.
 
     # PARENT
-        *   Builder
+        *   ServiceException
 
     # PROVIDES:
-    BuildResult[Agent] containing either:
-        - On success: Agent in the payload.
-        - On failure: Exception.
+    AgentServiceException
 
     # ATTRIBUTES:
     None
