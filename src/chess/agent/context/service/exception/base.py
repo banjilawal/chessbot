@@ -19,15 +19,15 @@ __all__ = [
 class AgentContextServiceException(ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
-
-    # PARENT
-        *   ServiceException
-
+    
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised when an AgentContextService's normal operations are halted
         by an error condition.
     2.  Raised when no specific exception exists for the error interrupting AgentContext processes from
         their normal flows.
+        
+    # PARENT
+        *   ServiceException
 
     # PROVIDES:
     AgentContextException

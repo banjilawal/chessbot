@@ -22,13 +22,13 @@ class InvalidAgentContextServiceException(AgentContextServiceException, Validati
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
-
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised during AgentContextService verification process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentContextServiceValidator method.
+    
     # PARENT
         *   AgentContextServiceException
         *   ValidationException
-
-    # RESPONSIBILITIES:
-    Indicate an InvalidAgentContextService validation candidate failed a check.
 
     # PROVIDES:
     InvalidAgentContextServiceException

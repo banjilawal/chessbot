@@ -21,12 +21,12 @@ class NullAgentContextServiceException(InvalidAgentContextServiceException, Null
     """
     # ROLE: Error Tracing, Debugging
 
+    # RESPONSIBILITIES:
+    1.  Indicate if an entity, method or operation required an AgentContextService but got null instead.
+    
     # PARENT
         *   InvalidAgentContextServiceException
         *   NullException
-
-    # RESPONSIBILITIES:
-    1.  Indicate if an entity, method or operation required an AgentContextService but got null instead.
 
     # PROVIDES:
     NullAgentContextServiceException

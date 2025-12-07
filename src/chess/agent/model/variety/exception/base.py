@@ -21,24 +21,18 @@ class AgentVarietyException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during Agentt build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
+    1.  Parent of exceptions raised when an AgentVariety's normal operations are halted by an error condition.
+    2.  Raised when no specific exception exists for the condition which brought the AgentVariety object into
+        an error state.
 
     # PARENT
-        *   AgentException
-        *   BuildFailedException
+        *   ChessException
 
     # PROVIDES:
-    BuildResult[Agent] containing either:
-            - On success: Agent in the payload.
-            - On failure: Exception.
+    AgentVarietyException
 
     # ATTRIBUTES:
     None
-    """
-    """
-    Super class for exceptions raised by AgentVariety objects. DO NOT USE DIRECTLY. Subclasses
-    give more useful debugging messages.
     """
     ERROR_CODE = "AGENT_VARIETY_ERROR"
     DEFAULT_MESSAGE = "AgentVariety raised an exception."

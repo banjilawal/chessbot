@@ -21,22 +21,19 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during Agentt build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
+    1.  Parent of exceptions raised during AgentVariety verification process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentVariety certifying method.
 
     # PARENT
-        *   AgentException
-        *   BuildFailedException
+        *   AgentVarietyException
+        *   ValidationException
 
     # PROVIDES:
-    BuildResult[Agent] containing either:
-            - On success: Agent in the payload.
-            - On failure: Exception.
+    InvalidAgentVarietyException
 
     # ATTRIBUTES:
     None
     """
-    """"""
     ERROR_CODE = "AGENT_VARIETY_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Failed AgentVariety validation."
 
