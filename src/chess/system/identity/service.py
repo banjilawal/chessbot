@@ -1,7 +1,7 @@
-# src/chess/system/identity/service.py
+# src/chess/system/identity/entity_service.py
 
 """
-Module: chess.system.identity.service
+Module: chess.system.identity.entity_service
 Author: Banji Lawal
 Created: 2025-11-13
 version: 1.0.0

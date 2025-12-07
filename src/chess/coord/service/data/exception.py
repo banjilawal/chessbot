@@ -1,7 +1,7 @@
-# src/chess/coord/service/data/base.py
+# src/chess/coord/entity_service/data/base.py
 
 """
-Module: chess.coord.service.data.exception
+Module: chess.coord.entity_service.data.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

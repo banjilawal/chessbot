@@ -29,7 +29,7 @@ The major theme influencing the modules design are
   2. Ensuring coord_stack_validator results are communicated are sent to clients is an integrity feature.
 
 # 6 Feature Delivery Mechanism:
-  1. The features are implemented by a communication mechanism between a coord_stack_validator service and its client.
+  1. The features are implemented by a communication mechanism between a coord_stack_validator entity_service and its client.
 
 # SECTION 7 - Dependencies:
 * From `chess.system.coord_stack_validator`:
@@ -63,7 +63,7 @@ class ValidationResult(Result[Generic[T]]):
     2. Enforcing mutual exclusion. A `ValidationResult` can either carry `_payload` or _exception`. Not both.
   
     # PROVIDES:
-    1. A correctness verification or denial for the `Validation` service provider.
+    1. A correctness verification or denial for the `Validation` entity_service provider.
   
     # ATTRIBUTES:
       * See `Result` superclass for attributes.

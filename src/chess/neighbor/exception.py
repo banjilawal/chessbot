@@ -56,25 +56,25 @@ class VisitationTeamFieldIsNullException(VisitationEventException, Inconsistency
     never be validation.
     """
     ERROR_CODE = "VISITATION_TEAM_FIELD_NULL_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.team_name consistency is validation. It should never be validation. There may be service inconsistency."
+    DEFAULT_MESSAGE = "Visitationation.team_name consistency is validation. It should never be validation. There may be entity_service inconsistency."
 
 
 class VisitationMissingCoordStackException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.positions` stack does not exist. If the `visitationation.positions == validation there is service inconsistency
+    Raised if `visitationation.positions` stack does not exist. If the `visitationation.positions == validation there is entity_service inconsistency
     or loss.
     """
     ERROR_CODE = "VISITATION_COORD_STACK_MISSING_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.positions list is validation. It should never be validation. There may be service inconsistency or loss."
+    DEFAULT_MESSAGE = "Visitationation.positions list is validation. It should never be validation. There may be entity_service inconsistency or loss."
 
 
 class VisitationMissingDiscoveriesException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.discovery` list does not exist. If the `visitationation.discoveries == validation there is service inconsistency
+    Raised if `visitationation.discovery` list does not exist. If the `visitationation.discoveries == validation there is entity_service inconsistency
     or loss.
     """
     ERROR_CODE = "VISITATION_DISCOVERY_LIST_MISSING_ERROR"
-    DEFAULT_MESSAGE = "Visitationation.discovery list is validation. It should never be validation. There may be service inconsistency or loss."
+    DEFAULT_MESSAGE = "Visitationation.discovery list is validation. It should never be validation. There may be entity_service inconsistency or loss."
 
 
 class UnregisteredTeamMemberException(VisitationEventException):
@@ -86,10 +86,10 @@ class UnregisteredTeamMemberException(VisitationEventException):
 class VisitationRosterNumberIsNullException(VisitationEventException, NullException):
     """
     Raised a visitationation's roster number is validation. This should never happen. the invariant roster number
-    is set during builder. If its validation during coord_stack_validator there has been service loss or an inconsistency.
+    is set during builder. If its validation during coord_stack_validator there has been entity_service loss or an inconsistency.
     """
     ERROR_CODE = "VISITATION_NULL_ROSTER_NUMBER_ERROR"
-    DEFAULT_MESSAGE = "A `Visitationation` object cannot have a validation roster number. There may be service inconsistency or loss."
+    DEFAULT_MESSAGE = "A `Visitationation` object cannot have a validation roster number. There may be entity_service inconsistency or loss."
 
 
 class VisitationRankOutOfBoundsException(VisitationEventException, NullException):

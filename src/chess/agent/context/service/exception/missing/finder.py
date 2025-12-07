@@ -1,7 +1,7 @@
-# src/chess/agent/context/service/exception/missing/finder.py
+# src/chess/agent/context/entity_service/exception/missing/finder.py
 
 """
-Module: chess.agent.context.service.exception.missing.finder
+Module: chess.agent.context.entity_service.exception.missing.finder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

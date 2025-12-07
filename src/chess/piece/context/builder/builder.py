@@ -54,7 +54,7 @@ class PieceContextBuilder(Builder[PieceContext]):
         """
         # Action:
             1. Confirm that only one in the tuple (id, name, coord), is not null.
-            2. Certify the not-null attribute is safe using the appropriate service and validator.
+            2. Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3. If all checks pass build the PieceContext in a BuildResult.
 
         # Parameters:

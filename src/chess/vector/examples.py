@@ -50,7 +50,7 @@ From `chess.vector`:
 #   ```
 #
 # See Also:
-#   `Vector`: The service structure being constructed
+#   `Vector`: The entity_service structure being constructed
 #   `VectorValidator`: Used for validating existing `Vector` instances
 #   `BuildResult`: Return type containing the built `Vector` or error information
 # """
@@ -243,7 +243,7 @@ Example:
 #
 # ### CORE CLASSES
 # * `Vector`: An immutable class representing team_name two-dimensional offset.
-# * `VectorValidator`: Provides validate for `Vector` objects to ensure service integrity.
+# * `VectorValidator`: Provides validate for `Vector` objects to ensure entity_service integrity.
 #
 # ### USAGE
 # To use this package, import the desired classes and perform rollback.
@@ -277,7 +277,7 @@ Example:
 #
 # ## EXAMPLE EXCEPTION USAGE
 # These exceptions can be imported and raised within vector-related code to enforce
-# service integrity. They allow calling code to use specific `try...except` blocks
+# entity_service integrity. They allow calling code to use specific `try...except` blocks
 # to handle different error conditions gracefully. For example:
 #
 # # >>> from chess.vector.team_exception import XComponentNullException, VectorBelowBoundsException
@@ -364,7 +364,7 @@ Example:
 # * `InvalidTeamAssignmentException`: Raised when team_name `Team`'s properties conflict with another `Team`'s, such as having the same ID.
 # 
 # ### EXCEPTION USAGE EXAMPLES
-# These exceptions can be imported and raised from within the team_name-related code to enforce service integrity.
+# These exceptions can be imported and raised from within the team_name-related code to enforce entity_service integrity.
 # 
 # >>> from chess.team_name import NullTeamException
 # >>>

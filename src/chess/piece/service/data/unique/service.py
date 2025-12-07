@@ -1,7 +1,7 @@
-# src/chess/piece/service/data/unique/service.py
+# src/chess/piece/entity_service/data/unique/entity_service.py
 
 """
-Module: chess.piece.service.data.unique.service
+Module: chess.piece.entity_service.data.unique.entity_service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -56,7 +56,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
     def push_unique(self, item: Piece) -> InsertionResult[Piece]:
         """
         # ACTION:
-        1.  Use TeamDataService.service.validator to certify item.
+        1.  Use TeamDataService.entity_service.validator to certify item.
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.
         4.  Send the successfully pushed data back in an InsertionResult.

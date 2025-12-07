@@ -56,8 +56,8 @@ This module provides:
 The module covers `Transaction` instances that emit a `TransactionResult` and consumers of the notification.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to presenting the answer from a `Finder` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of service in the notification.
+  1. The module is limited to presenting the answer from a `Finder` entity_service provider to the client delivering a query.
+  2. The module does not guarantee the accuracy or precision of entity_service in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -131,8 +131,8 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
       `chess.system.travel.notification` is responsible for the `Event` lifecycle.
-  2. The module does not verify the correctness of service control or routing information it contains. Directly using the
-      module can breach service integrity, propagate inconsistencies or negatively impact performance. Use a
+  2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
+      module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `chess.system.visitor_id.auto_id` module.
@@ -186,8 +186,8 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
       `chess.system.travel.notification` is responsible for the `Event` lifecycle.
-  2. The module does not verify the correctness of service control or routing information it contains. Directly using the
-      module can breach service integrity, propagate inconsistencies or negatively impact performance. Use a
+  2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
+      module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `chess.system.visitor_id.auto_id` module.

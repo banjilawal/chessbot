@@ -1,7 +1,7 @@
-# src/chess/system/service/base.py
+# src/chess/system/entity_service/base.py
 
 """
-Module: chess.system.service.exception
+Module: chess.system.entity_service.exception
 Author: Banji Lawal
 Created: 2025-11-19
 """

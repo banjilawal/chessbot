@@ -24,16 +24,16 @@ __all__ = [
 # ======================# INCONSISTENCY EXCEPTION SUPER CLASS #======================#
 class InconsistencyException(ChessException):
     """
-    Raised if service inconsistency is detected
+    Raised if entity_service inconsistency is detected
     """
     ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "A service inconsistency was detected."
+    DEFAULT_MESSAGE = "A entity_service inconsistency was detected."
 
 
 # ======================# INCONSISTENT COLLECTION EXCEPTION #======================#
 class InconsistentCollectionException(InconsistencyException):
     """
-    Raised if a data_set's state is inconsistent or its service corrupted
+    Raised if a data_set's state is inconsistent or its entity_service corrupted
     """
     ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
     DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."
@@ -47,4 +47,4 @@ class InvariantBreachException(ChessException):
     assumptions about its internal state are no longer valid.
     """
     DEFAULT_CODE = "INVARIANT_BREACH_ERROR"
-    DEFAULT_MESSAGE = "A system invariant was violated, indicating a critical state inconsistency. or service loss."
+    DEFAULT_MESSAGE = "A system invariant was violated, indicating a critical state inconsistency. or entity_service loss."

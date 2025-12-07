@@ -61,7 +61,7 @@ None
 #     *notification.__all__,
 #     *result.__all__,
 #     *searcher.__all__,
-#     *service.__all__,
+#     *entity_service.__all__,
 #     *searcher.__all__,
 #     *transaction.__all__,
 #     *utils.__all__,

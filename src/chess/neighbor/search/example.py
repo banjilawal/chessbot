@@ -1,4 +1,4 @@
-# src/chess/owner/searcher/service.py
+# src/chess/owner/searcher/entity_service.py
 
 """
 Module: chess.owner.searcher.exception

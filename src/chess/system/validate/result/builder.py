@@ -32,7 +32,7 @@ DEPENDENCIES:
 ------------
 This module requires components from various sub-systems:
 * `chess.bounds`: Movement strategy (`Rank`)
-* `chess.square`: Location service structure (`Square`)
+* `chess.square`: Location entity_service structure (`Square`)
 * `chess.old_search`: Board lookup utilities (`BoardSearch`)
 * `chess.validationResult`: ValidationResult subtypes (`KingValidationResult`, `CombatantValidationResult`, etc.)
 * `chess.team_name`: Roster management, rollback_exception handling

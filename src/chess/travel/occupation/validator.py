@@ -340,7 +340,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       describing the failure.
 #
 #   Raises:
-#   Errors raised will be about service and state inconsistencies OccupationException: Wraps any errors including:
+#   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
 #     -
 #
 #   Note:

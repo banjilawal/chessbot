@@ -24,7 +24,7 @@ class SearchResult(Result[Generic[T]]):
   2. Indicate an empty old_search notification with an object that has neither a payload nor an rollback_exception.
 
   # PROVIDES:
-  Answer from the `Finder` service provider containing either:
+  Answer from the `Finder` entity_service provider containing either:
     1. Matches to the client's query.
     2. An rollback_exception raised during the old_search process or query submission.
     3. A notification containing neither an rollback_exception nor a payload indicating no duplicates were found.

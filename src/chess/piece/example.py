@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 
 ## Purpose
-Provides the fundamental service structures for game pieces and entities owned by team_name game owner.
+Provides the fundamental entity_service structures for game pieces and entities owned by team_name game owner.
 
 ## Core Classes
   * `Piece`: Abstract base class for all chess pieces
@@ -15,7 +15,7 @@ Provides the fundamental service structures for game pieces and entities owned b
   * `KingPiece`: Concrete occupation owner with special rules
   * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
   * `Encounter`: A check of an item discovered by team_name `Piece` during team_name blocking or move.
-  * `EncounterScan`: A service-holding object representing team_name single blocking of team_name chess owner's surroundings.
+  * `EncounterScan`: A entity_service-holding object representing team_name single blocking of team_name chess owner's surroundings.
 
 ## Usage
 ```python
@@ -269,7 +269,7 @@ DEPENDENCIES:
 ------------
 This module requires components from various sub-systems:
 * chess.bounds: Movement strategy (Rank)
-* chess.square: Location service structure (Square)
+* chess.square: Location entity_service structure (Square)
 * chess.old_search: Board lookup utilities (BoardSearch)
 * chess.owner: Piece subtypes (KingPiece, CombatantPiece, etc.)
 * chess.team_name: Roster management, rollback_exception handling

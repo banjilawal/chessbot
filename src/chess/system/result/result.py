@@ -19,8 +19,8 @@ class Result(Generic[T]):
     # ROLE: Message passing, Data Transfer Object
   
     # RESPONSIBILITIES:
-    1. Carry the outcome of a service access or service generation operation to the caller.
-    2. Transporting errors from the service source to the requester for handling that preserves
+    1. Carry the outcome of a entity_service access or entity_service generation operation to the caller.
+    2. Transporting errors from the entity_service source to the requester for handling that preserves
         reliability and availability.
   
     # PROVIDES:

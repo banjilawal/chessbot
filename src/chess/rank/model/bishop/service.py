@@ -1,7 +1,7 @@
-# src/chess/rank/model/bishop/service.py
+# src/chess/rank/model/bishop/entity_service.py
 
 """
-Module: chess.rank.model.bishop.service
+Module: chess.rank.model.bishop.entity_service
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

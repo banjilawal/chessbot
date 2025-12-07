@@ -170,7 +170,7 @@ class TeamValidator(Validator[Team]):
         1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
         2.  Use agent_certifier to certify agent_candidate is a safe agent. If so pull from validation_result payload.
         3.  If team.agent != agent return an exception inside a ValidationResult.
-        4.  Build a search_context for the team with team_context service.
+        4.  Build a search_context for the team with team_context entity_service.
         5.  Finder for the team inside agent.team_assignments.
         6.  If the searcher generates an error or produces an no hits return an exception inside a ValidationResult.
         7.  If all checks pass return the (team, agent) registration tuple.

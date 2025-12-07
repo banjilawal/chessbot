@@ -1,7 +1,7 @@
-# src/chess/team/service/data/service.py
+# src/chess/team/entity_service/data/entity_service.py
 
 """
-Module: chess.team.service.data.service
+Module: chess.team.entity_service.data.entity_service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -35,7 +35,7 @@ class TeamDataService(DataService[Team]):
         *   name (str):
         *   items (List[Team]):
         *   searcher (TeamFinder):
-        *   service (TeamCertifier):
+        *   entity_service (TeamCertifier):
         *   context_service (TeamContextService):;
         *   current_item (Team):
         *   size (int):
@@ -43,7 +43,7 @@ class TeamDataService(DataService[Team]):
     # CONSTRUCTOR:
         *   __init__(
                 id: int, name: str, items: List[Team], searcher: TeamFinder,
-                service: TeamCertifier, contextService: TeamContextService
+                entity_service: TeamCertifier, contextService: TeamContextService
             )
     
     # CLASS METHODS:
@@ -73,7 +73,7 @@ class TeamDataService(DataService[Team]):
             id=id,
             name=name,
             items=items,
-            service=service,
+            entity_service=service,
             context_service=context_service,
         )
         self._items = items
@@ -88,7 +88,7 @@ class TeamDataService(DataService[Team]):
     
     @property
     def team_service(self) -> TeamService:
-        return cast(TeamService, self.service)
+        return cast(TeamService, self.entity_service)
     
     @property
     def context_service(self) -> TeamContextService:
@@ -97,7 +97,7 @@ class TeamDataService(DataService[Team]):
     def push(self, item: Team) -> InsertionResult[Team]:
         """
         # ACTION:
-        1.  Use TeamDataService.service.validator to certify item.
+        1.  Use TeamDataService.entity_service.validator to certify item.
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.
         4.  Send the successfully pushed data back in an InsertionResult.

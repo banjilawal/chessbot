@@ -1,4 +1,4 @@
-# src/chess/board/searcher/piece/service.py
+# src/chess/board/searcher/piece/entity_service.py
 
 """
 Module: chess.board.searcher.piece.searcher

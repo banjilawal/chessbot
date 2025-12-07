@@ -1,7 +1,7 @@
-# src/chess/piece/service/data/service_.py
+# src/chess/piece/entity_service/data/service_.py
 
 """
-Module: chess.piece.service.data.service
+Module: chess.piece.entity_service.data.entity_service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -36,7 +36,7 @@ class PieceDataService(DataService[Piece]):
         *   name (str):
         *   items (List[Piece]):
         *   searcher (Finder[Piece]):
-        *   service (EntityService[Piece]):
+        *   entity_service (EntityService[Piece]):
         *   context_service (EntityService[PieceContext]);
         *   current_item (Piece):
         *   size (int):
@@ -63,7 +63,7 @@ class PieceDataService(DataService[Piece]):
             name=name,
             items=items,
             search=search,
-            service=service,
+            entity_service=service,
             context_service=context_service,
         )
     
@@ -71,7 +71,7 @@ class PieceDataService(DataService[Piece]):
     def push(self, item: Piece) -> InsertionResult[Piece]:
         """
         # ACTION:
-        1.  Use PieceDataService.service.validator to certify item.
+        1.  Use PieceDataService.entity_service.validator to certify item.
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.
         4.  Send the successfully pushed data back in an InsertionResult.

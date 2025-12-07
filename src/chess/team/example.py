@@ -29,7 +29,7 @@ Usage:
   ```
 
 See Also:
-  `Team`: The service structure being constructed
+  `Team`: The entity_service structure being constructed
   `TeamValidator`: Used for validating existing `Team` instances
   `BuildResult`: Return type containing the built `Team` or error information
 """
@@ -319,7 +319,7 @@ Created: 2025-09-11
 -------
 **Limitation**: This module cannot prevent classes, processes or modules using `Team`
     instances that pass sanity checks will not fail when using the validated `Team`.
-    Once client's processes might fail, experience service inconsistency or have other
+    Once client's processes might fail, experience entity_service inconsistency or have other
     faults.
 **Limitation**: Objects authenticated by `TeamValidator` might fail additional requirements
     a client has for a `Team`. It is the client's responsibility to ensure the validated

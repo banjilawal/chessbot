@@ -1,7 +1,7 @@
-# src/chess/rank/searcher/service.py
+# src/chess/rank/searcher/entity_service.py
 
 """
-Module: chess.rank.searcher.service
+Module: chess.rank.searcher.entity_service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

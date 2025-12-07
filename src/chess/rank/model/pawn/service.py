@@ -1,7 +1,7 @@
-# src/chess/rank/model/pawn/service.py
+# src/chess/rank/model/pawn/entity_service.py
 
 """
-Module: chess.rank.model.pawn.service
+Module: chess.rank.model.pawn.entity_service
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

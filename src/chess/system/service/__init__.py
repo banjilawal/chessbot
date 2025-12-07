@@ -1,7 +1,7 @@
-# src/chess/system/service/__init__.py
+# src/chess/system/entity_service/__init__.py
 
 """
-Module: chess.system.service.__init__
+Module: chess.system.entity_service.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 """

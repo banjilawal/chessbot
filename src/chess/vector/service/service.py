@@ -1,7 +1,7 @@
-# src/chess/vector/service.py
+# src/chess/vector/entity_service.py
 
 """
-Module: chess.vector.service
+Module: chess.vector.entity_service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0

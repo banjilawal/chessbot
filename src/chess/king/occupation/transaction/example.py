@@ -28,7 +28,7 @@ Usage:
   ```
 
 See Also:
-  `KingCheckEvent`: The service structure being constructed
+  `KingCheckEvent`: The entity_service structure being constructed
   `AttackEventValidator`: Used for validating existing `KingCheckEvent` instances
   `BuildResult`: Return type containing the built `KingCheckEvent` or error information
 """
@@ -102,7 +102,7 @@ Example:
 #       describing the failure.
 #
 #   Raises:
-#   Errors raised will be about service and state inconsistencies OccupationException: Wraps any errors including:
+#   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
 #     -
 #
 #   Note:
@@ -350,7 +350,7 @@ Example:
 #       describing the failure.
 #
 #   Raises:
-#   Errors raised will be about service and state inconsistencies OccupationException: Wraps any errors including:
+#   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
 #     -
 #   Note:
 #   """

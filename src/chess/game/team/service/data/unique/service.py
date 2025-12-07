@@ -1,7 +1,7 @@
-# src/chess/team/service/data/unique/service.py
+# src/chess/team/entity_service/data/unique/entity_service.py
 
 """
-Module: chess.team.service.data.unique.service
+Module: chess.team.entity_service.data.unique.entity_service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -59,7 +59,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
     def push_unique(self, item: Team) -> InsertionResult[Team]:
         """
         # ACTION:
-        1.  Use self.service.validator to verify the item is safe.
+        1.  Use self.entity_service.validator to verify the item is safe.
         2.  There is no direct access to the internal list so use self.data_service.searcher to find item.
         3.  If item already exists return an exception in an InsertionResult.
         4.  Otherwise, push the item onto the stack and send the item.

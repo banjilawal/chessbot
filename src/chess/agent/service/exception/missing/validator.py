@@ -1,7 +1,7 @@
-# src/chess/agent/service/exception/missing/validator.py
+# src/chess/agent/entity_service/exception/missing/validator.py
 
 """
-Module: chess.agent.service.exception.missing.validator
+Module: chess.agent.entity_service.exception.missing.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

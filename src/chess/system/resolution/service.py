@@ -1,7 +1,7 @@
-# src/chess/system/resolution/service.py
+# src/chess/system/resolution/entity_service.py
 
 """
-module: chess.system.resolution.service
+module: chess.system.resolution.entity_service
 author: Banji Lawal
 date: 2025-11-20
 version: 0.0.1

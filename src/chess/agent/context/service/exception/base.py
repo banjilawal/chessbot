@@ -1,7 +1,7 @@
-# src/chess/agent/context/service/exception/base
+# src/chess/agent/context/entity_service/exception/base
 
 """
-Module: chess.agent.context.service.exception.base
+Module: chess.agent.context.entity_service.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

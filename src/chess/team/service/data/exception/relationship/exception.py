@@ -1,7 +1,7 @@
-# src/chess/team/service/data/exception/relationship/base.py
+# src/chess/team/entity_service/data/exception/relationship/base.py
 
 """
-Module: chess.team.service.data.exception.relationship.exception
+Module: chess.team.entity_service.data.exception.relationship.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

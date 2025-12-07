@@ -41,7 +41,7 @@ class VisitationSearchCollisionException(VisitationSearchException, OrphanExcept
   DEFAULT_CODE = "VISITATION_SEARCH_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "VisitationFinder results contains records with multiple records with properties that should be unique. There "
-    "may be service inconsistencies."
+    "may be entity_service inconsistencies."
   )
 
 
@@ -49,47 +49,47 @@ class VisitationSearchIdCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "VisitationFinder results contains has more than one consistency for the piece_id which should be unique. There "
-    "may be service inconsistencies."
+    "may be entity_service inconsistencies."
   )
 
 class VisitationSearchNameCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "VisitationFinder results contains has more than one consistency for visitation_name, which should be unique. There "
-    "may be service inconsistencies."
+    "may be entity_service inconsistencies."
   )
 
 class VisitationSearchCoordCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
     "VisitationFinder results contains has more than one consistency for visitation_position, which should be unique. There "
-    "may be service inconsistencies."
+    "may be entity_service inconsistencies."
   )
 
 
 class SquareSearchIdCollisionException(OrphanException):
   DEFAULT_CODE = "SQUARE_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same visitor_id. There may be a service inconsistency."
+    "More than one Square found with the same visitor_id. There may be a entity_service inconsistency."
   )
 
 
 class SquareSearchNameCollisionException(OrphanException):
   DEFAULT_CODE = "SQUARE_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found with the same visitor_name. There may be a service collision"
+    "More than one Square found with the same visitor_name. There may be a entity_service collision"
   )
 
 class SquareSearchCoordCollisionException(OrphanException):
   DEFAULT_CODE = "SQUARE_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Square found at the same coordinate. There may be a service inconsistency."
+    "More than one Square found at the same coordinate. There may be a entity_service inconsistency."
   )
 
 class TeamSearchIdCollisionException(OrphanException):
   DEFAULT_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "More than one Team found with the same visitor_name. There may be a service inconsistency."
+    "More than one Team found with the same visitor_name. There may be a entity_service inconsistency."
   )
 
 

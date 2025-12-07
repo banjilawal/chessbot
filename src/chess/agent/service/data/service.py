@@ -1,7 +1,7 @@
-# src/chess/agent/service/data/service.py
+# src/chess/agent/entity_service/data/entity_service.py
 
 """
-Module: chess.agent.service.data.service
+Module: chess.agent.entity_service.data.entity_service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,7 +11,7 @@ from typing import List, cast
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult
 from chess.agent import (
-    Agent, AgentContext, AgentContextService, AgentFactory, AgentService, AgentSearcher, AgentDataServiceException,
+    Agent, AgentContext, AgentContextService, AgentFactory, AgentService, AgentFinder, AgentDataServiceException,
     AgentValidator
 )
 
@@ -31,7 +31,7 @@ class AgentDataService(DataService[Agent]):
             id=id,
             name=name,
             items=items,
-            service=service,
+            entity_service=service,
             context_service=context_service,
         )
         
@@ -41,11 +41,11 @@ class AgentDataService(DataService[Agent]):
     
     @property
     def builder(self) -> AgentFactory:
-        return cast(AgentFactory, self.service.item_builder)
+        return cast(AgentFactory, self.entity_service.item_builder)
     
     @property
     def validator(self) -> AgentValidator:
-        return cast(AgentValidator, self.service.item_validator)
+        return cast(AgentValidator, self.entity_service.item_validator)
     
     @property
     def context_service(self) -> AgentContextService:
@@ -68,10 +68,10 @@ class AgentDataService(DataService[Agent]):
     
     @LoggingLevelRouter.monitor
     def search(self, context: AgentContext) -> SearchResult[List[Agent]]:
-        method = "AgentDataService.searcher"
+        method = "AgentDataService.finder"
         agent_context_service = cast(AgentContextService, self.context_service)
 
-        return self.context_service.searcher.find(
+        return self.context_service.finder.find(
             data_set=self.items,
             context=context,
             context_validator=self.context_service.item_validator

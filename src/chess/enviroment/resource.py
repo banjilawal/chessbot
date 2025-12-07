@@ -23,7 +23,7 @@ class BoardResourceValidator(Validator[Square, Board]):
   1. Ensure `TravelEvent` resource_candidate has a valid binding to the execution environment for `TravelEventFresourcey`.
   2. If binding requirements are not satisfied return the appropriate error to `TravelEventFresourcey` in
       `ValidationResult`.
-  3. Discover potential service integrity violations.
+  3. Discover potential entity_service integrity violations.
 
   # PROVIDES:
   `ValidationResult`: Return type containing the built `Team` or error information.

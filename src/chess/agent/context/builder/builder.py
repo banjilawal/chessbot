@@ -56,7 +56,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         """
         # Action:
             1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate service and validator.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success Build an AgentContext are return in a BuildResult.
 

@@ -43,7 +43,7 @@ class SquareException(ChessException):
 #     ERROR_CODE = "PIECE_INCONSISTENT_SQUARE_OCCUPATION_ERROR"
 #     DEFAULT_MESSAGE = (
 #         "A Piece sharing a Coord with a Square is not marked as the Square's occupant. There may be "
-#         "service or data inconsistency."
+#         "entity_service or data inconsistency."
 #     )
 
 

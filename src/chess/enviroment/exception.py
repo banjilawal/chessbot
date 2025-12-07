@@ -73,7 +73,7 @@ class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyExceptio
   """"""
   ERROR_CODE = "TURN_SCENE_SQUARE_NOT_FOUND_ERROR"
   DEFAULT_MESSAGE = (
-    "BoardSearch did not find a square associated with the actor_candidate's point. There may be a service "
+    "BoardSearch did not find a square associated with the actor_candidate's point. There may be a entity_service "
     "inconsistency."
   )
 

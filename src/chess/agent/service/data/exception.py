@@ -1,7 +1,7 @@
-# src/chess/agent/service/data/base.py
+# src/chess/agent/entity_service/data/base.py
 
 """
-Module: chess.agent.service.data.exception
+Module: chess.agent.entity_service.data.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

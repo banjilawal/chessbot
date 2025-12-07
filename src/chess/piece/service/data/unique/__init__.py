@@ -1,7 +1,7 @@
-# src/chess/piece/service/data/unique/__init__.py
+# src/chess/piece/entity_service/data/unique/__init__.py
 
 """
-Module: chess.piece.service.data.unique.__init__
+Module: chess.piece.entity_service.data.unique.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/system/data/service.py
+# src/chess/system/data/entity_service.py
 
 """
-Module: chess.system.data.service
+Module: chess.system.data.entity_service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -45,7 +45,7 @@ class DataService(ABC, Generic[D]):
         *   name (str):
         *   items (List[D]):
         *   searcher (Finder[D]):
-        *   service (EntityService[D]):
+        *   entity_service (EntityService[D]):
         *   context_service (EntityService[C]);
         *   current_item (D):
         *   size (int):
@@ -53,7 +53,7 @@ class DataService(ABC, Generic[D]):
     _id: int
     _name: str
     _items: List[D]
-    _service: EntityService[D]
+    _entity_service: EntityService[D]
     _context_service: EntityService[C]
 
     def __init__(
@@ -61,13 +61,13 @@ class DataService(ABC, Generic[D]):
             id: int,
             name: str,
             items: List[D],
-            service: EntityService[D],
+            entity_service: EntityService[D],
             context_service: EntityService[C],
     ):
         self._id = id
         self._name = name
         self._items = items
-        self._service = service
+        self._entity_service = entity_service
         self._context_service = context_service
         #
         # self._size = len(self._items)
@@ -90,8 +90,8 @@ class DataService(ABC, Generic[D]):
         return self._items
     
     @property
-    def service(self) -> EntityService[D]:
-        return self._service
+    def entity_service(self) -> EntityService[D]:
+        return self._entity_service
     
     @property
     def context_service(self) -> EntityService[C]:
@@ -105,16 +105,33 @@ class DataService(ABC, Generic[D]):
     def is_empty(self) -> bool:
         return len(self._items) == 0
     
-    @abstractmethod
     @LoggingLevelRouter.monitor
     def push(self, item: D) -> InsertionResult[D]:
-        """Each subclass must implement."""
-        pass
+        """"""
+        method = "DataService.push"
+        try:
+            validation = self._entity_service.item_validator.validate(item)
+            if validation.is_failure():
+                return InsertionResult.failure(validation.exception)
+            self.items.append(item)
+            return InsertionResult.success(payload=item)
+        except Exception as ex:
+            return InsertionResult.failure(
+                DataServiceException(ex=ex, message=f"{method}: {DataServiceException.DEFAULT_MESSAGE}")
+            )
     
     @abstractmethod
     def search(self, context: C) -> SearchResult[List[D]]:
-        """Each subclass must implement."""
-        pass
+        """"""
+        method = "DataService.search"
+        try:
+            validation = self._context_service.item_validator.validate(context)
+            if validation.is_failure():
+                return SearchResult.failure(validation.exception)
+        except Exception as ex:
+            return SearchResult.failure(
+                DataServiceException(ex=ex, message=f"{method}: {DataServiceException.DEFAULT_MESSAGE}")
+            )
     
     @LoggingLevelRouter.monitor
     def undo(self) -> DeletionResult[D]:

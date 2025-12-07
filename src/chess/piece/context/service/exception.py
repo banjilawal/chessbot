@@ -1,7 +1,7 @@
-# src/chess/piece/context/service/base.py
+# src/chess/piece/context/entity_service/base.py
 
 """
-Module: chess.piece.context.service.exception
+Module: chess.piece.context.entity_service.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

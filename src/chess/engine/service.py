@@ -1,7 +1,7 @@
-# src/chess/engine/service.py
+# src/chess/engine/entity_service.py
 
 """
-Module: chess.engine.service
+Module: chess.engine.entity_service
 Author: Banji Lawal
 Created: 2025-11-18
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/team/service/data/exception/service/base.py
+# src/chess/team/entity_service/data/exception/entity_service/base.py
 
 """
-Module: chess.team.service.data.exception.service.exception
+Module: chess.team.entity_service.data.exception.entity_service.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -23,7 +23,7 @@ __all__ = [
 class TeamDataServiceException(DataServiceException):
     """
     Catchall for exceptions which aren't about inserting or deleting Teams. Wrapper for
-    component service reliability failures.
+    component entity_service reliability failures.
     """
     ERROR_CODE = "TEAM_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "TeamDataService raised an exception."

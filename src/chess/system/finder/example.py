@@ -46,7 +46,7 @@ See the list of exceptions in the `__all__` list following (e.g., `FinderExcepti
   * `ImpossibleFatalResultException`
 """
 
-# src/chess/system/searcher/service.py
+# src/chess/system/searcher/entity_service.py
 
 """
 Module: `chess.system.searcher.searcher`
@@ -59,11 +59,11 @@ version: 1.0.0
 This module provides a satisfaction of the `ChessBot` performance requirement.
 
 # SECTION 2 - Scope:
-The module covers old_search service providers.
+The module covers old_search entity_service providers.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to old_search providers.  between service owners and information requesters.
-  2. The module does not provide any logic or directions on how the old_search providers implement their service.
+  1. The module is limited to old_search providers.  between entity_service owners and information requesters.
+  2. The module does not provide any logic or directions on how the old_search providers implement their entity_service.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -76,7 +76,7 @@ The major theme influencing the modules design are
 1. Fast old_search
 
 # SECTION G - Feature Delivery Mechanism:
-The module provides an interface that can separate old_search responsibilities from service management responsibilities.
+The module provides an interface that can separate old_search responsibilities from entity_service management responsibilities.
 
 
 # SECTION 7 - Dependencies:
@@ -107,11 +107,11 @@ This module provides:
   2. A satisfaction of the performance requirement.
 
 # SECTION 2 - Scope:
-The module covers clients servers, and service owners in the `ChessBot` old_search graph.
+The module covers clients servers, and entity_service owners in the `ChessBot` old_search graph.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to presenting the answer from a `Finder` service provider to the client delivering a query.
-  2. The module does not guarantee the accuracy or precision of service in the notification.
+  1. The module is limited to presenting the answer from a `Finder` entity_service provider to the client delivering a query.
+  2. The module does not guarantee the accuracy or precision of entity_service in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are

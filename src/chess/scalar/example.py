@@ -13,7 +13,7 @@ This package contains the foundational objects for representing and validating s
 
 ## CORE CLASSES
 * Scalar: A class representing team_name single numeric value used for scaling rollback.
-* ScalarValidator: A class that validates the service and integrity of team_name Scalar object.
+* ScalarValidator: A class that validates the entity_service and integrity of team_name Scalar object.
 
 ## USAGE
 To use this package, import the desired classes and perform scalar-related rollback.
@@ -51,7 +51,7 @@ This package defines specific exceptions for issues encountered when working wit
 * InvalidScalarException: A general team_exception raised when team_name scalar value fails to meet its validate criteria.
 
 ### EXCEPTION USAGE EXCEPTIONS
-These exceptions can be imported and raised from within the scalar-related code to enforce service integrity.
+These exceptions can be imported and raised from within the scalar-related code to enforce entity_service integrity.
 
 >>> from chess.scalar import Scalar, NullScalarException, ScalarAboveBoundsException
 >>>
@@ -95,7 +95,7 @@ Usage:
   ```
 
 See Also:
-  `Scalar`: The service structure being constructed
+  `Scalar`: The entity_service structure being constructed
   `ScalarValidator`: Used for validating existing `Scalar` instances
   `BuildResult`: Return type containing the built `Scalar` or error information
 """

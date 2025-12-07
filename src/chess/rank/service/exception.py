@@ -1,7 +1,7 @@
-# src/chess/rank/service/base.py
+# src/chess/rank/entity_service/base.py
 
 """
-Module: chess.rank.service.exception
+Module: chess.rank.entity_service.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

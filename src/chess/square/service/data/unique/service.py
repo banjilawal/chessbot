@@ -1,7 +1,7 @@
-# src/chess/square/service/data/service.py
+# src/chess/square/entity_service/data/entity_service.py
 
 """
-Module: chess.square.service.data.service
+Module: chess.square.entity_service.data.entity_service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

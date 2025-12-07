@@ -1,7 +1,7 @@
-# src/chess/team/context/service/service.py
+# src/chess/team/context/entity_service/entity_service.py
 
 """
-Module: chess.team.context.service.service
+Module: chess.team.context.entity_service.entity_service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/piece/service/validator/base.py
+# src/chess/piece/entity_service/validator/base.py
 
 """
-Module: chess.piece.service.validator.exception
+Module: chess.piece.entity_service.validator.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

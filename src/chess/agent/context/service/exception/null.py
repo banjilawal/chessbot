@@ -1,7 +1,7 @@
-# src/chess/agent/context/service/exception/null.py
+# src/chess/agent/context/entity_service/exception/null.py
 
 """
-Module: chess.agent.context.service.exception.null
+Module: chess.agent.context.entity_service.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/system/data/service/stack/service.py
+# src/chess/system/data/entity_service/stack/entity_service.py
 
 """
-Module: chess.system.data.service.unique.service
+Module: chess.system.data.entity_service.unique.entity_service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -67,7 +67,7 @@ class UniqueDataService(ABC, Generic[T]):
     @property
     def service(self) -> EntityService[T]:
         """"""
-        return self._data_service.service
+        return self._data_service.entity_service
     
     @property
     def data_service(self) -> DataService[T]:

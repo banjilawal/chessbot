@@ -1,7 +1,7 @@
-# src/chess/square/service/data/service.py
+# src/chess/square/entity_service/data/entity_service.py
 
 """
-Module: chess.square.service.data.service
+Module: chess.square.entity_service.data.entity_service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -26,17 +26,17 @@ class SquareDataService(DataService[Square]):
             service: SquareService = SquareService(),
             context_service: SquareContextService = SquareContextService(),
     ):
-        super().__init__(id=id, name=name, items=items, service=service, context_service=context_service, )
+        super().__init__(id=id, name=name, items=items, entity_service=service, context_service=context_service, )
         
     @LoggingLevelRouter.monitor
-    def service(self) -> SquareService:
-        return cast(SquareService, self.service)
+    def entity_service(self) -> SquareService:
+        return cast(SquareService, self.entity_service)
     
     @LoggingLevelRouter.monitor
     def push(self, item: Square) -> InsertionResult[Square]:
         method = "SquareDataService.push"
         try:
-            validation = self.service.validator.validate(item)
+            validation = self.entity_service.validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
             self.items.append(item)

@@ -20,7 +20,7 @@
     ```
 
   See Also:
-    `BlockingEvent`: The service structure being constructed
+    `BlockingEvent`: The entity_service structure being constructed
     `ScanEventValidator`: Used for validating existing `BlockingEvent` instances
     `BuildResult`: Return type containing the built `BlockingEvent` or error information
 
