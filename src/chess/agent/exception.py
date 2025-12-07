@@ -1,4 +1,4 @@
-# src/chess/agent/base.py
+# src/chess/agent/exception.py
 
 """
 Module: chess.agent.exception
@@ -18,8 +18,23 @@ __all__ = [
 # ======================# AGENT EXCEPTION SUPER CLASS #======================#
 class AgentException(ChessException):
     """
-    Super class for exceptions raised by Agent objects. DO NOT USE DIRECTLY. Subclasses
-    give more useful debugging messages.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised when an Agent's organic fields or methods run into a condition that
+        leads to an operation failing.
+    2.  Parent of exceptions raised by Agent Builders and Validators or any other classes that highly
+        cohere with Agent objects.
+    3.  Catchall for Agent failure states that are not covered by a lower level Agent exception.
+
+    # PARENT
+        *   Chess
+
+    # PROVIDES:
+    AgentException
+
+    # ATTRIBUTES:
+    None
     """
     ERROR_CODE = "AGENT_ERROR"
     DEFAULT_MESSAGE = "Agent raised an exception."
