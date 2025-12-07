@@ -11,48 +11,50 @@ from typing import TypeVar
 
 from chess.system import Builder, Context, EntityService, Finder, Validator
 
-D = TypeVar("D")
-C = TypeVar("C", bound=Context[D])
+T = TypeVar("T")
 
-class ContextService(EntityService[D]):
+class ContextService(EntityService[Context[T]]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Search lists of an Entity.
+    1.  Public facing API for querying datasets of T objects.
+    2.  Encapsulates Search and search filter validation in one extendable module.
+    3.  Manage Context integrity lifecycle.
 
     # PARENT
         *   EntityService
 
     # PROVIDES:
-        *   ContextService
+        *   Finder[T]
+        *   Builder[Context]
+        *   Validator[Context]
 
     # ATTRIBUTES:
-    None
+    See super class for inherited attributes.
         *   finder (Finder[T])
     """
-    _finder: Finder[D]
+    _finder: Finder[T]
     
     def __init__(
             self,
             id: int,
             name: str,
-            builder: Builder[C],
-            validator: Validator[C],
-            finder: Finder[D],
+            builder: Builder[Context[T]],
+            validator: Validator[Context[T]],
+            finder: Finder[T],
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._finder = finder
     
     @property
-    def entity_finder(self) -> Finder[D]:
+    def entity_finder(self) -> Finder[T]:
         return self._finder
     
     def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, EntityService):
-            return self._id == other.id
+        if super().__eq__(other):
+            if isinstance(other, ContextService):
+                return True
         return False
     
     def __hash__(self):

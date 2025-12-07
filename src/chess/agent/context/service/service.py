@@ -9,24 +9,21 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import EntityService, id_emitter
+from chess.system import ContextService, id_emitter
 from chess.agent import AgentContext, AgentContextBuilder, AgentContextValidator, AgentFinder
 
 
-class AgentContextService(EntityService[AgentContext]):
+class AgentContextService(ContextService[AgentContext]):
     """
-    # ROLE: Finder, EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Finder API.
-    2.  Module for searching AgentDataServices.
-    2.  Protects AgentContext's internal state from direct, unprotected access.
-    3.  Encapsulates Finder and Finder filtering operations in an extendable module.
-    4.  Single entry point for managing AgentContext integrity lifecycles with AgentContextBuilder
-        and AgentContextValidator.
+    1.  Public facing API for querying Agent datasets.
+    2.  Encapsulates Search and search filter validation in one extendable module.
+    3.  Manage AgentContext integrity lifecycle.
 
     # PARENT
-        *   EntityService
+        *   ContextService
 
     # PROVIDES:
         *   AgentFinder
@@ -34,11 +31,7 @@ class AgentContextService(EntityService[AgentContext]):
         *   AgentContextValidator
 
     # ATTRIBUTES:
-        *   id (int)
-        *   name (str)
-        *   searcher (AgentFinder)
-        *   builder (AgentContextBuilder)
-        *   validator (AgentContextValidator)
+    See super class for inherited attributes.
     """
     DEFAULT_NAME = "AgentContextService"
     _finder: AgentFinder
@@ -58,7 +51,7 @@ class AgentContextService(EntityService[AgentContext]):
         # Parameters:
             *   name (str): Default value - DEFAULT_NAME
             *   id (int): Default value - id_emitter.service_id
-            *   searcher (AgentFinder): Default value - AgentFinder()
+            *   finder (AgentFinder): Default value - AgentFinder()
             *   builder (AgentContextBuilder): Default value - AgentContextBuilder()
             *   validator (AgentContextValidator): Default value - AgentContextValidator()
 
@@ -69,17 +62,16 @@ class AgentContextService(EntityService[AgentContext]):
         None
         """
         method = "AgentContextService.__init__"
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._finder = finder
+        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property
     def finder(self) -> AgentFinder:
-        return self._finder
+        return cast(AgentFinder, self.entity_finder)
     
     @property
     def builder(self) -> AgentContextBuilder:
-        return cast(AgentContextBuilder, self.item_builder)
+        return cast(AgentContextBuilder, self.entity_builder)
     
     @property
     def validator(self) -> AgentContextValidator:
-        return cast(AgentContextValidator, self.item_validator)
+        return cast(AgentContextValidator, self.entity_validator)
