@@ -1,7 +1,7 @@
-# src/board/search/context/coord_stack_validator.py
+# src/board/searcher/context/coord_stack_validator.py
 
 """
-Module: chess.board.search.context.coord_stack_validator
+Module: chess.board.searcher.context.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -47,14 +47,14 @@ class BoardSearchContextValidator(Validator):
         """
         # Action:
         Verifies candidate is a TeamSearchContext in two steps.
-            1.  Test the candidate is a valid SearchBoardContext with a single search option switched on.
+            1.  Test the candidate is a valid SearchBoardContext with a single searcher option switched on.
             2.  Test the value passed to TeamSearchContext passes its validation contract..
 
         # Parameters:
           * candidate (Any):                            Object to verify is a Board.
-          * id_validator (type[IdValidator]):           Enforces safety requirements on id-search targets.
-          * name_validator (type[NameValidator]):       Enforces safety requirements on name-search targets.
-          * validator (type[CoordValidator]):     Enforces safety requirements on name-search targets.
+          * id_validator (type[IdValidator]):           Enforces safety requirements on id-searcher targets.
+          * name_validator (type[NameValidator]):       Enforces safety requirements on name-searcher targets.
+          * validator (type[CoordValidator]):     Enforces safety requirements on name-searcher targets.
           
         # Returns:
           ValidationResult[TeamSearchContext] containing either:

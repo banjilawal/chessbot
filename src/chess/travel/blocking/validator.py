@@ -81,7 +81,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
                 return ValidationResult.failure(context_build_result.exception)
             search_context = cast(DiscoverySearchContext, context_build_result.payload)
             
-            discovery_search = DiscoverySearch.search(owner=event.actor, search_context=search_context)
+            discovery_search = DiscoverySearch.searcher(owner=event.actor, search_context=search_context)
             if discovery_search.is_failure():
                 return ValidationResult.failure(discovery_search.exception)
             

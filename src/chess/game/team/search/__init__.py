@@ -1,7 +1,7 @@
-# src/chess/team/search/__init__.py
+# src/chess/team/searcher/__init__.py
 
 """
-Module: chess.team.search
+Module: chess.team.searcher
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

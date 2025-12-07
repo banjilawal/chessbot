@@ -86,13 +86,13 @@ class AgentContextBuilder(Builder[AgentContext]):
             # a value.
             params = [id, name, team, game, variety,]
             param_count = sum(bool(p) for p in params)
-            # Cannot search for an Agent object if no attribute value is provided for a hit.
+            # Cannot searcher for an Agent object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
                     NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
                 )
-            # Only one param can be used for a search. If you need to search by multiple params
-            # Filter the previous set of matches in a new AgentSearch with a new context.
+            # Only one param can be used for a searcher. If you need to searcher by multiple params
+            # Filter the previous set of matches in a new AgentSearcher with a new context.
             if param_count > 1:
                 return BuildResult.failure(
                     TooManyAgentContextFlagsException(f"{method}: {TooManyAgentContextFlagsException}")

@@ -1,7 +1,7 @@
-# src/chess/owner/search/service.py
+# src/chess/owner/searcher/service.py
 
 """
-Module: chess.owner.search.exception
+Module: chess.owner.searcher.exception
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0

@@ -80,7 +80,7 @@ class Agent(ABC):
     #     )
     
     # agent.order_move(
-    #   owner=TeamSearch.search(
+    #   owner=TeamSearch.searcher(
     #     data_owner=self._team_name,
     #     search_category=SearchCategory.ROSTER,
     #     context=TeamSearchContext(visitor_name="BN1")

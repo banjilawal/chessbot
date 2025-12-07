@@ -1,7 +1,7 @@
-# src/chess/rank/search/context/context
+# src/chess/rank/searcher/context/context
 
 """
-Module: chess.rank.search.context.context
+Module: chess.rank.searcher.context.context
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

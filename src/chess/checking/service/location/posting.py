@@ -26,7 +26,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
         if validation_result.is_error():
             return TransactionResult.errored(event_update=request, exception=validation_result.exception)
         
-        location_search_result = KingLocationSearch.search(data_owner=self._location_table, search_context=request.actor)
+        location_search_result = KingLocationSearch.searcher(data_owner=self._location_table, search_context=request.actor)
         if location_search_result.is_failure():
             return TransactionResult.errored(event_update=request, exception=location_search_result.exception)
            

@@ -1,6 +1,6 @@
-# src/chess/board/search/context/context
+# src/chess/board/searcher/context/context
 """
-Module: chess.board.search.context.context
+Module: chess.board.searcher.context.context
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0

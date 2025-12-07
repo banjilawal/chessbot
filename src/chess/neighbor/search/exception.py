@@ -1,7 +1,7 @@
-# src/chess/neighbor/search/collision.py
+# src/chess/neighbor/searcher/collision.py
 
 """
-Module: chess.neighbor.search.exception
+Module: chess.neighbor.searcher.exception
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0

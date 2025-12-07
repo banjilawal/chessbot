@@ -23,7 +23,7 @@ class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagCount
     # ROLE: ContextFlagException, AgentContextException
 
     # RESPONSIBILITIES:
-    1.  Raised if no AgentContext flag is provided with a search value.
+    1.  Raised if no AgentContext flag is provided with a searcher value.
 
     # PROVIDES:
     NoAgentContextFlagException
@@ -40,7 +40,7 @@ class TooManyAgentContextFlagsException(InvalidAgentContextException, ContextFla
     # ROLE: ContextFlagException, AgentContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Agent attribute is going to be used in an AgentSearch.
+    1.  Indicate if more than one Agent attribute is going to be used in an AgentSearcher.
 
     # PROVIDES:
     TooManyAgentContextFlagsException

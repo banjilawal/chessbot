@@ -1,7 +1,7 @@
-# src/chess/agent/search/search
+# src/chess/agent/searcher/searcher
 
 """
-Module: chess.agent.search.search
+Module: chess.agent.searcher.searcher
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -18,7 +18,7 @@ from chess.agent import (
 
 
 
-class AgentSearch(Search[Agent]):
+class AgentSearcher(Search[Agent]):
     """
     # ROLE: Search
   
@@ -27,7 +27,7 @@ class AgentSearch(Search[Agent]):
         AgentsSearchContext function param.
   
     # PROVIDES:
-    AgentSearch:
+    AgentSearcher:
   
     # ATTRIBUTES:
     None
@@ -36,8 +36,8 @@ class AgentSearch(Search[Agent]):
     Default Constructor
   
     # CLASS METHODS:
-        ## search signature:
-                def search(
+        ## searcher signature:
+                def searcher(
                         cls,
                         data_set: List[Agent],
                         search_context: AgentSearchContext
@@ -55,7 +55,7 @@ class AgentSearch(Search[Agent]):
             context: AgentContext,
             context_validator: AgentContextValidator = AgentContextValidator()
     ) -> SearchResult[List[Agent]]:
-        method = "AgentSearch.find"
+        method = "AgentSearcher.find"
         try:
             validation_result = context_validator.validate(context)
             if validation_result.is_failure():
@@ -96,12 +96,12 @@ class AgentSearch(Search[Agent]):
         1.  Get the agents whose id matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the search returns multiple hits call _resolve_matching_ids.
+        4.  If the searcher returns multiple hits call _resolve_matching_ids.
 
         # Parameters:
-            *   id (int):              Target color to search for.
+            *   id (int):              Target color to searcher for.
 
-            *   data_owner (Agent):     Provides the Agent objects to search.
+            *   data_owner (Agent):     Provides the Agent objects to searcher.
 
         # Returns:
         SearchResult[List[Agent]] containing either:
@@ -111,7 +111,7 @@ class AgentSearch(Search[Agent]):
         # Raises:
             *   AgentSearchException
         """
-        method = "AgentSearch._find_by_id"
+        method = "AgentSearcher._find_by_id"
         
         try:
             matches = [agent for agent in data_set if agent.id == id]
@@ -136,7 +136,7 @@ class AgentSearch(Search[Agent]):
         1.  Get the agents whose names are a case-insensitive. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the search returns multiple hits call _resolve_matching_ids.
+        4.  If the searcher returns multiple hits call _resolve_matching_ids.
 
         # Parameters:
             *   name (str)
@@ -150,7 +150,7 @@ class AgentSearch(Search[Agent]):
         # Raises:
             *   AgentSearchException
         """
-        method = "AgentSearch._find_by_name"
+        method = "AgentSearcher._find_by_name"
         
         try:
             matches = [agent for agent in data_set if agent.name.upper() == name.upper()]
@@ -175,7 +175,7 @@ class AgentSearch(Search[Agent]):
         1.  Get the agents whose names are a agent_variety. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the search returns multiple hits call _resolve_matching_ids.
+        4.  If the searcher returns multiple hits call _resolve_matching_ids.
 
         # Parameters:
             *   agent_variety (AgentVariety)
@@ -189,7 +189,7 @@ class AgentSearch(Search[Agent]):
         # Raises:
             *   AgentSearchException
         """
-        method = "AgentSearch._find_by_name"
+        method = "AgentSearcher._find_by_name"
         
         try:
             matches = []

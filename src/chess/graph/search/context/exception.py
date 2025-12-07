@@ -1,7 +1,7 @@
-# src/chess/neighbor/search/context/collision.py
+# src/chess/neighbor/searcher/context/collision.py
 
 """
-Module: chess.neighbor.search.context.exception
+Module: chess.neighbor.searcher.context.exception
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0
@@ -57,7 +57,7 @@ class NoVisitorSearchParamException(VisitorSearchContextException):
     """
     ERROR_CODE = "ZERO_VISITOR_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (
-        "A VisitorSearchContext cannot have no params selected. Pick one param to run a search."
+        "A VisitorSearchContext cannot have no params selected. Pick one param to run a searcher."
     )
 
 class TooManyVisitorSearchParamsException(VisitorSearchContextException):
@@ -66,7 +66,7 @@ class TooManyVisitorSearchParamsException(VisitorSearchContextException):
     """
     ERROR_CODE = "TOO_MANY_VISITOR_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (
-        "More than one VisitorSearchContext param was set. If more than one param is set a search cannot be run."
+        "More than one VisitorSearchContext param was set. If more than one param is set a searcher cannot be run."
     )
 
 

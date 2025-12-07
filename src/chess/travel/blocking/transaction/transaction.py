@@ -61,7 +61,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
                 )
             
             search_context = cast(DiscoverySearchContext, context_build.payload)
-            search_result = DiscoverySearch.search(data_owner=self.event.actor, search_context=search_context)
+            search_result = DiscoverySearch.searcher(data_owner=self.event.actor, search_context=search_context)
             
             if search_result.is_failure():
                 return TransactionResult.rolled_back(

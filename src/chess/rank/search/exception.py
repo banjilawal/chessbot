@@ -1,16 +1,16 @@
-# src/chess/rank/search/exception.py
+# src/chess/rank/searcher/exception.py
 
 """
-Module: chess.rank.search.exception
+Module: chess.rank.searcher.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
 """
 
-# src/rank/search/context/collision.py
+# src/rank/searcher/context/collision.py
 
 """
-Module: chess.rank.search.context.exception
+Module: chess.rank.searcher.context.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

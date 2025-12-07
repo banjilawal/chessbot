@@ -1,7 +1,7 @@
-# src/chess/domain/search/context/factory.py
+# src/chess/domain/searcher/context/factory.py
 
 """
-Module: chess.domain.search.context.builder
+Module: chess.domain.searcher.context.builder
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

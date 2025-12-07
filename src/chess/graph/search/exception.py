@@ -1,7 +1,7 @@
-# src/chess/domain/search/exception
+# src/chess/domain/searcher/exception
 
 """
-Module: chess.domain.search.exception
+Module: chess.domain.searcher.exception
 Author: Banji Lawal
 Created: 2025-11-09
 version: 1.0.0

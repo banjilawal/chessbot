@@ -1,7 +1,7 @@
-# src/chess/coord/search/search.py
+# src/chess/coord/searcher/searcher.py
 
 """
-Module: chess.coord.search.search
+Module: chess.coord.searcher.searcher
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

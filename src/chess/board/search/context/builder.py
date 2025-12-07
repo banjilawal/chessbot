@@ -1,7 +1,7 @@
-# src/chess/board/search/context/builder
+# src/chess/board/searcher/context/builder
 
 """
-Module: chess.board.search.context.builder
+Module: chess.board.searcher.context.builder
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -54,12 +54,12 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             2.  If the parameters are safe the TeamSearchContext is built and returned.
 
         # Parameters:
-            *   id (Optional[int]):                     Selected if search target is an id.
-            *   name (Optional[str]):                   Selected if search target is a name.
-            *   target (Optional[Coord]):                Selected if search target is a target.
-            *   id_validator (type[IdValidator]):       Validates an id-search-target
-            *   name_validator (type[NameValidator]):   Validates a name-search-target
-            *   builder (type[CoordBuilder]):     Validates a target-search-target
+            *   id (Optional[int]):                     Selected if searcher target is an id.
+            *   name (Optional[str]):                   Selected if searcher target is a name.
+            *   target (Optional[Coord]):                Selected if searcher target is a target.
+            *   id_validator (type[IdValidator]):       Validates an id-searcher-target
+            *   name_validator (type[NameValidator]):   Validates a name-searcher-target
+            *   builder (type[CoordBuilder]):     Validates a target-searcher-target
 
         # Returns:
         BuildResult[TeamSearchContext] containing either:
@@ -116,7 +116,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build an id-TeamSearchContext if IdValidator verifies search target is safe.
+        Build an id-TeamSearchContext if IdValidator verifies searcher target is safe.
 
         # Parameters:
           *     id (int):                           target id
@@ -154,7 +154,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build a name-TeamSearchContext if NameValidator verifies search target is safe.
+        Build a name-TeamSearchContext if NameValidator verifies searcher target is safe.
 
         # Parameters:
             *   name (str):                             target name
@@ -193,7 +193,7 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build a target-TeamSearchContext if CoordValidator verifies search target is safe.
+        Build a target-TeamSearchContext if CoordValidator verifies searcher target is safe.
 
         # Parameters:
           *     target (Coord):                              target Coord

@@ -1,7 +1,7 @@
-# src/chess/owner/search/collision.py
+# src/chess/owner/searcher/collision.py
 
 """
-Module: chess.owner.search.exception
+Module: chess.owner.searcher.exception
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0
@@ -24,7 +24,7 @@ class VisitationSearch(Search[List[Coord]]):
   @classmethod
   @LoggingLevelRouter.monitor
   def search(cls, owner: Visitation, search_context: VisitationSearchContext) -> SearchResult[List[Coord]]:
-      method = "VisitationSearch.search"
+      method = "VisitationSearch.searcher"
 
       visitation_validation = VisitationValidator.validate(owner)
       if not visitation_validation.is_success():

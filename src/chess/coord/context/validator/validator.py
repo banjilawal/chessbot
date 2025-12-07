@@ -45,7 +45,7 @@ class CoordContextValidator(Validator):
         """
         # Action:
         Verifies candidate is a CoordContext in two steps.
-            1. Test the candidate is a valid SearchCoordContext with a single search option switched on.
+            1. Test the candidate is a valid SearchCoordContext with a single searcher option switched on.
             2. Test the value passed to CoordContext passes its validation contract..
 
         # Parameters:

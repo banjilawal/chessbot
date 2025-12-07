@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.agent import (
-    AgentContextBuilder, AgentContextService, AgentContextValidator, AgentSearch,
+    AgentContextBuilder, AgentContextService, AgentContextValidator, AgentSearcher,
     InvalidAgentContextException, MissingAgentContextBuilderException, MissingAgentContextValidatorException,
     MissingAgentSearcherException, NullAgentContextServiceException
 )
@@ -91,7 +91,7 @@ class AgentContextServiceValidator(Validator[AgentContextService]):
                     )
                 )
             # Make sure searcher is a not-null AgentSearcher instance.
-            if service.search is None or not isinstance(service.search, AgentSearch):
+            if service.searcher is None or not isinstance(service.searcher, AgentSearcher):
                 return ValidationResult.failure(
                     MissingAgentSearcherException(
                         f"{method}: {MissingAgentSearcherException.DEFAULT_MESSAGE}"
@@ -99,6 +99,7 @@ class AgentContextServiceValidator(Validator[AgentContextService]):
                 )
             # If all checks pass return the AgentContextService.
             return ValidationResult.success(service)
+        
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
         # an InvalidAgentContextServiceException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:

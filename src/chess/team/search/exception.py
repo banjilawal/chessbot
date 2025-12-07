@@ -1,7 +1,7 @@
-# src/chess/team/search/exception.py
+# src/chess/team/searcher/exception.py
 
 """
-Module: chess.team.search.exception
+Module: chess.team.searcher.exception
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

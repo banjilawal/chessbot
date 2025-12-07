@@ -52,7 +52,7 @@ class SquareDataService(DataService[Square]):
     @LoggingLevelRouter.monitor
     def search(self, context: SquareContext) -> SearchResult[List[Square]]:
         """"""
-        method = "SquareDataService.search"
+        method = "SquareDataService.searcher"
         return self.context_service.search.find(
             data_set=self.items, context=context, context_validator=self.context_service.validator
         )

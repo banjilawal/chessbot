@@ -1,7 +1,7 @@
-# src/chess/rank/search/service.py
+# src/chess/rank/searcher/service.py
 
 """
-Module: chess.rank.search.service
+Module: chess.rank.searcher.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

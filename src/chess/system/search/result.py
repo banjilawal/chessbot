@@ -1,7 +1,7 @@
-# src/chess/system/search/result.py
+# src/chess/system/searcher/result.py
 
 """
-Module: `chess.system.search.result`
+Module: `chess.system.searcher.result`
 Author: Banji Lawal
 Created: 2025-10-04
 Updated: 2025-10-10

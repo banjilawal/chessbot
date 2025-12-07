@@ -210,7 +210,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # class TravelActorNotFoundException(TravelActorException, InconsistencyException):
 #   ERROR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
 #   DEFAULT_MESSAGE = (
-#     "TravelEvent actor_candidate was not found during the board search. There may be a service inconsistency."
+#     "TravelEvent actor_candidate was not found during the board searcher. There may be a service inconsistency."
 #   )
 #
 #

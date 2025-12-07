@@ -66,7 +66,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       rollback_exception=event_validation.rollback_exception
   #     )
   #
-  #   actor_square_search = BoardSearch.search(
+  #   actor_square_search = BoardSearch.searcher(
   #     board=context.board,
   #     data_source=BoardDatasource.SQUARE,
   #     context=BoardSearchcontext(point=travel.traveler.current_position)
@@ -79,7 +79,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       rollback_exception=actor_square_search.rollback_exception
   #     )
   #
-  #   destination_search = BoardSearch.search(
+  #   destination_search = BoardSearch.searcher(
   #     board=context.board,
   #     data_source=BoardDatasource.SQUARE,
   #     context=BoardSearchcontext(travel.enemy_square.visitor_id)
@@ -98,7 +98,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     )
   #
   #   destination_occupant = travel.enemy_square.occupant
-  #   actor_square = BoardSearch.search()
+  #   actor_square = BoardSearch.searcher()
   #
   #   if destination_occupant is None:
   #     build_result = OccupationEventBuilder.builder(

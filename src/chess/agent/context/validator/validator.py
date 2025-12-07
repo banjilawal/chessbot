@@ -90,7 +90,7 @@ class AgentContextValidator(Validator[AgentContext]):
             # For additional checks.
             context = cast(AgentContext, candidate)
             
-            # Perform the two checks ensuring only one Agent attribute value will be used in the search.
+            # Perform the two checks ensuring only one Agent attribute value will be used in the searcher.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")

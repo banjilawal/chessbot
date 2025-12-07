@@ -12,7 +12,10 @@ from typing import Optional
 from chess.team import UniqueTeamDataService
 from chess.game import UniqueGameDataService
 from chess.engine.service import EngineService
-from chess.agent import Agent, AgentBuildFailedException, AgentVariety, AgentValidator, HumanAgent, MachineAgent
+from chess.agent import (
+    Agent, AgentBuildFailedException, AgentContext, AgentContextBuildFailedException, AgentVariety,
+    AgentValidator, HumanAgent, MachineAgent, NoAgentContextFlagException, TooManyAgentContextFlagsException
+)
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
@@ -39,20 +42,17 @@ class AgentFactory(Builder[Agent]):
                 name: str,
                 id: id_emitter.agent_id,
                 agent_variety: AgentVariety,
-                agent_validator: AgentValidator = AgentValidator(),
-                identity_service: IdentityService = IdentityService(),
                 engine_service: Optional[EngineService] = None,
         ) -> BuildResult[Agent]:
             """
             # ACTION:
-            1.  Call _validate_build_params. to verify inputs are safe.
-            2.  If the _validate params returns failure include the failure in a BuildResult.
-            3.  If the engine is not validation call build_machine_agent. Otherwise, call build_human_agent.
+            1.  verify agent_variety is a not-null AgentVariety object.
+            2.  Use agent_variety to pick which factory method will create the concrete Agent object.
 
             # PARAMETERS:
                 *   id (int)
                 *   name (str)
-                *   identity_service (IdentityService)
+                *   agent_variety (AgentVariety)
                 *   engine_service (Optional[EngineService])
 
             # Returns:
@@ -64,7 +64,6 @@ class AgentFactory(Builder[Agent]):
                 *   AgentBuildFailedException
             """
             method = "AgentBuilder.build"
-            
             try:
                 # Ensure the agent_variety is the correct type and not null.
                 variety_validation = agent_validator.certify_variety(candidate=agent_variety)
@@ -73,41 +72,18 @@ class AgentFactory(Builder[Agent]):
                 # Use agent_variety to decide which factory method to call.
                 if isinstance(agent_variety, HumanAgent):
                     return cls.build_human_agent(id=id, name=name,)
+                # Machine agent requires an engine_service.
                 if isinstance(agent_variety, MachineAgent):
                     return cls.build_machine_agent(id=id, name=name, engine_service=engine_service)
                 
-                if agent_variety == AgentVariety.MACHINE_AGENT and engine_service is None:
-                    return BuildResult.failure(
-                        AgentBuildFailedException(
-                            f"{method}: Cannot build a MachineAgent "
-                            f"without an EngineService instance."
-                        )
-                    )
-                
-                if agent_variety == AgentVariety.MACHINE_AGENT and engine_service is not None:
-                    return cls.build_machine_agent(
-                        id=id,
-                        name=name,
-                        team_stack=team_stack,
-                        engine_service=engine_service,
-                        identity_service=identity_service,
-                    )
-                
-                return cls.build_human_agent(
-                    id=id,
-                    name=name,
-                    team_stack=team_stack,
-                    identity_service=identity_service,
-                )
-            
+            # The flow should only get here if the logic did not route all the types of concrete Agents.
+            # In that case wrap the unhandled exception inside an AgentBuildFailedException then, return
+            # the exception chain inside a ValidationResult.
+            # then return the exceptions inside a ValidationResult.
             except Exception as ex:
                 return BuildResult.failure(
                     AgentBuildFailedException(
-                        ex=ex,
-                        message=(
-                            f"{method}: "
-                            f"{AgentBuildFailedException.DEFAULT_MESSAGE}"
-                        )
+                        ex=ex, message=f"{method}: {AgentBuildFailedException.DEFAULT_MESSAGE}"
                     )
                 )
         
@@ -119,22 +95,42 @@ class AgentFactory(Builder[Agent]):
                 name: str,
                 identity_service: IdentityService = IdentityService(),
         ) -> BuildResult[HumanAgent]:
-            """"""
+            """
+            # ACTION:
+            1.  On successfully certifying the id and name create HumanAgent and return in BuildResult's
+                payload. Otherwise, return a BuildResult containing an exception.
+
+            # PARAMETERS:
+                *   id (int)
+                *   name (str)
+                *   identity_service (IdentityService)
+
+            # Returns:
+            ValidationResult[HumanAgent] containing either:
+                - On success: HumanAgent in the payload.
+                - On failure: Exception.
+
+            # Raises:
+                *   HumanAgentBuildFailedException
+            """
             method = "AgentBuilder.build_human_agent"
             try:
+                # Only need to certify the name and id are correct.
                 validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # On success return the HumanAgent in a BuildResult payload.
                 return BuildResult.success(
-                    HumanAgent(
+                    payload=HumanAgent(
                         id=id,
                         name=name,
                         games=UniqueGameDataService(),
                         team_assignments=UniqueTeamDataService(),
                     )
                 )
-            # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-            # then return the exceptions inside a ValidationResult.
+            
+            # Finally, if some exception unrelated to identity verification is raised wrap it inside a
+            # HumanAgentBuildFailedException then, send the exception chain inside a BuildResult.
             except Exception as ex:
                 return BuildResult.failure(
                     HumanAgentBuildFailedException(
@@ -150,33 +146,54 @@ class AgentFactory(Builder[Agent]):
                 id: int = id_emitter.service_id,
                 engine_service: EngineService = EngineService(),
                 identity_service: IdentityService = IdentityService(),
-        ) -> BuildResult[HumanAgent]:
-            """"""
+        ) -> BuildResult[MachineAgent]:
+            """
+            # ACTION:
+            1.  Certifying the id and name and name are safe with identity_service.
+            2.  Use engine_service_validator to ensure the engine_service has all the required components.
+
+            # PARAMETERS:
+                *   id (int)
+                *   name (str)
+                *   engine_service (EngineService)
+                *   identity_service (IdentityService)
+                *   engine_service_validator (EngineServiceValidator)
+
+            # Returns:
+            ValidationResult[MachineAgent] containing either:
+                - On success: MachineAgent in the payload.
+                - On failure: Exception.
+
+            # Raises:
+                *   MachineAgentBuildFailedException
+            """
             method = "AgentBuilder.build_machine_agent"
             try:
+                # Certify the id and name are safe.
                 identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
                 if identity_validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                
-                
-                
-    
+                    return BuildResult.failure(identity_validation.exception)
+                # Certify the engine_service has all the required components
+                engine_service_validation = engine_service_validator.validate(candidate=engine_service)
+                if engine_service_validation.is_failure():
+                    return BuildResult.failure(engine_service_validation.exception)
+                # When all checks pass send a MachineAgent back.
                 return BuildResult.success(
                     MachineAgent(
                         id=id,
                         name=name,
-                        team_stack=team_stack,
-                        engine_service=engine_service
+                        engine_service=engine_service,
+                        games=UniqueGameDataService(),
+                        team_assignments=UniqueTeamDataService(),
                     )
                 )
+            
+            # Finally, if some exception unrelated to identity verification is raised wrap it inside a
+            # MachineAgentBuildFailedException then, send the exception chain inside a BuildResult.
             except Exception as ex:
                 return BuildResult.failure(
-                    AgentBuildFailedException(
-                        ex=ex,
-                        message=(
-                            f"{method}: "
-                            f"{AgentBuildFailedException.DEFAULT_MESSAGE}"
-                        )
+                    MachineAgentBuildFailedException(
+                        ex=ex, message=f"{method}: {MachineAgentBuildFailedException.DEFAULT_MESSAGE}"
                     )
                 )
 
@@ -229,122 +246,3 @@ def _verify_build_attributes(
         return ValidationResult.failure(
             PieceBuildFailedException(ex=ex, message=f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}")
         )
-
-
-class AgentContextBuilder(Builder[AgentContext]):
-    """
-    # ROLE: Builder
-
-    # RESPONSIBILITIES:
-        1.  Produce new AgentContext instances that are guaranteed to be the safe and reliable.
-        2.  Ensure the only search value provided in the AgentContext has been verified to be safe.
-
-    # PROVIDES:
-      BuildResult[AgentContext] containing either:
-            - On success: AgentContext in the payload.
-            - On failure: Exception.
-
-    # ATTRIBUTES:
-    None
-    """
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build(
-            cls,
-            id: Optional[int] = None,
-            name: Optional[str] = None,
-            team: Optional[Team] = None,
-            game: Optional[Game] = None,
-            variety: Optional[AgentVariety] = None,
-            team_service: TeamService = TeamService(),
-            game_service: GameService = GameService(),
-            identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[AgentContext]:
-        """
-        # Action:
-            1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate service and validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an AgentContext are return in a BuildResult.
-
-        # Parameters:
-        Only one these must be provided:
-            *   id (Optional[int])
-            *   name (Optional[str])
-            *   team (Optional[Team])
-            *   game (Optional[Game])
-            *   agent_variety (Optional[AgentVariety])
-
-        These Parameters must be provided:
-            *   team_service (TeamService)
-            *   game_service (GameService)
-            *   identity_service (IdentityService)
-
-        # Returns:
-          BuildResult[AgentContext] containing either:
-                - On success: AgentContext in the payload.
-                - On failure: Exception.
-
-        # Raises:
-            *   AgentContextBuildFailedException
-            *   NoAgentContextFlagException
-            *   TooManyAgentContextFlagsException
-        """
-        method = "AgentSearchContextBuilder.builder"
-        try:
-            # Get how many optional parameters are not null. One param is expected to have
-            # a value.
-            params = [id, name, team, game, variety, ]
-            param_count = sum(bool(p) for p in params)
-            # Cannot search for an Agent object if no attribute value is provided for a hit.
-            if param_count == 0:
-                return BuildResult.failure(
-                    NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
-                )
-            # Only one param can be used for a search. If you need to search by multiple params
-            # Filter the previous set of matches in a new AgentSearch with a new context.
-            if param_count > 1:
-                return BuildResult.failure(
-                    TooManyAgentContextFlagsException(f"{method}: {TooManyAgentContextFlagsException}")
-                )
-            # After verifying the correct number of switches is turned on validate the target value
-            # with the appropriate Validator. On pass create an AgentContext.
-            if id is not None:
-                validation = identity_service.validate_id(id)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(id=id))
-            
-            if name is not None:
-                validation = identity_service.validate_name(name)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(name=name))
-            
-            if team is not None:
-                validation = team_service.item_validator.validate(candidate=team)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(team=team))
-            
-            if game is not None:
-                validation = game_service.validate_name(name)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(game=game))
-            
-            if variety is not None:
-                if not isinstance(variety, AgentVariety):
-                    return BuildResult.failure(
-                        TypeError(f"{method}: Expected AgentVariety, got {type(variety).__name__} instead.")
-                    )
-                return BuildResult.success(AgentContext(variety=variety))
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an AgentContextBuildFailedException and send the exception chain a BuildResult.failure.
-        except Exception as ex:
-            return BuildResult.failure(
-                AgentContextBuildFailedException(
-                    ex=ex, message=f"{method}: {AgentContextBuildFailedException.DEFAULT_MESSAGE}"
-                )
-            )

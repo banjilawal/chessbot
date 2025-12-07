@@ -1,7 +1,7 @@
-# src/board/search/context/__init__.py
+# src/board/searcher/context/__init__.py
 
 """
-Module: chess.board.search.context.__iinit__
+Module: chess.board.searcher.context.__iinit__
 Author: Banji Lawal
 Created: 2025-10-15
 version: 1.0.0

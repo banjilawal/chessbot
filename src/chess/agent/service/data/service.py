@@ -11,7 +11,7 @@ from typing import List, cast
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult
 from chess.agent import (
-    Agent, AgentContext, AgentContextService, AgentFactory, AgentService, AgentSearch, AgentDataServiceException,
+    Agent, AgentContext, AgentContextService, AgentFactory, AgentService, AgentSearcher, AgentDataServiceException,
     AgentValidator
 )
 
@@ -68,10 +68,10 @@ class AgentDataService(DataService[Agent]):
     
     @LoggingLevelRouter.monitor
     def search(self, context: AgentContext) -> SearchResult[List[Agent]]:
-        method = "AgentDataService.search"
+        method = "AgentDataService.searcher"
         agent_context_service = cast(AgentContextService, self.context_service)
 
-        return self.context_service.search.find(
+        return self.context_service.searcher.find(
             data_set=self.items,
             context=context,
             context_validator=self.context_service.item_validator

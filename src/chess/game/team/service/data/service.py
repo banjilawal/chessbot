@@ -19,8 +19,8 @@ class TeamDataService(DataService[Team]):
     # RESPONSIBILITIES:
     1.  Public facing API.
     2.  Stack data structure for Team objects with no guarantee of uniqueness.
-    3.  Implements search, insert, delete, and update operations on Team objects.
-    4.  ContextService for building selecting different search attributes.
+    3.  Implements searcher, insert, delete, and update operations on Team objects.
+    4.  ContextService for building selecting different searcher attributes.
     5.  Including a TeamCertifier instance creates a microservice for clients.
 
     # PROVIDES:
@@ -34,7 +34,7 @@ class TeamDataService(DataService[Team]):
         *   id (int):
         *   name (str):
         *   items (List[Team]):
-        *   search (TeamSearch):
+        *   searcher (TeamSearch):
         *   service (TeamCertifier):
         *   context_service (TeamContextService):;
         *   current_item (Team):
@@ -42,7 +42,7 @@ class TeamDataService(DataService[Team]):
         
     # CONSTRUCTOR:
         *   __init__(
-                id: int, name: str, items: List[Team], search: TeamSearch,
+                id: int, name: str, items: List[Team], searcher: TeamSearch,
                 service: TeamCertifier, contextService: TeamContextService
             )
     
@@ -123,8 +123,8 @@ class TeamDataService(DataService[Team]):
     def search(self, context: TeamContext) -> SearchResult[List[Team]]:
         """
         # ACTION:
-        1.  Pass context argument to self.search.
-        2.  Pass self.items and self.context_service.validator to self.search's renaming params.
+        1.  Pass context argument to self.searcher.
+        2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
         3.  The Search object will return any exceptions if it fails, success otherwise.
         4.  Because Search object does all the error using a try-catch is uneccesar
 
@@ -143,7 +143,7 @@ class TeamDataService(DataService[Team]):
         # Raises:
         None
         """
-        method = "TeamDataService.search"
+        method = "TeamDataService.searcher"
         
         return self.search.find(
             data_set=self.items, context=context, context_validator=self.context_service.item_validator

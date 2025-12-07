@@ -1,7 +1,7 @@
-# src/chess/domain/search/service.py
+# src/chess/domain/searcher/service.py
 
 """
-Module: chess.domain.search.search
+Module: chess.domain.searcher.searcher
 Author: Banji Lawal
 Created: 2025-11-09
 version: 1.0.0
@@ -26,7 +26,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def search(cls, data_owner: Domain, search_context: VisitorSearchContext) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch.search"
+        method = "DomainResidentSearch.searcher"
         
         try:
             domain_validation = DomainValidator.validate(data_owner)

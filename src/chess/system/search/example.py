@@ -1,7 +1,7 @@
-# src/chess/system/search/collision.py
+# src/chess/system/searcher/collision.py
 
 """
-Module: chess.system.search.exception
+Module: chess.system.searcher.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -46,10 +46,10 @@ See the list of exceptions in the `__all__` list following (e.g., `SearchExcepti
   * `ImpossibleFatalResultException`
 """
 
-# src/chess/system/search/service.py
+# src/chess/system/searcher/service.py
 
 """
-Module: `chess.system.search.search`
+Module: `chess.system.searcher.searcher`
 Author: Banji Lawal
 Created: 2025-09-28
 Updated: 2025-10-10
@@ -92,10 +92,10 @@ The module provides an interface that can separate old_search responsibilities f
 # SECTION 8 - Contains:
 1. `Search`
 """
-# src/chess/system/search/result.py
+# src/chess/system/searcher/result.py
 
 """
-Module: `chess.system.search.result`
+Module: `chess.system.searcher.result`
 Author: Banji Lawal
 Created: 2025-10-04
 Updated: 2025-10-10

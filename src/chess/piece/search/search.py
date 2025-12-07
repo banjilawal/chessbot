@@ -1,7 +1,7 @@
-# src/chess/piece/search/search.py
+# src/chess/piece/searcher/searcher.py
 
 """
-Module: chess.piece.search.search
+Module: chess.piece.searcher.searcher
 Author: Banji Lawal
 Created: 2025-10-18
 version: 1.0.0

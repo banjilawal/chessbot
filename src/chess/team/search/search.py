@@ -1,7 +1,7 @@
-# src/chess/team/search/search.py
+# src/chess/team/searcher/searcher.py
 
 """
-Module: chess.team.search.search
+Module: chess.team.searcher.searcher
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -33,8 +33,8 @@ class TeamSearch(Search[Team]):
     Default Constructor
   
     # CLASS METHODS:
-        ## search signature:
-                def search(
+        ## searcher signature:
+                def searcher(
                         cls,
                         data_set: List[Team],
                         search_context: TeamSearchContext

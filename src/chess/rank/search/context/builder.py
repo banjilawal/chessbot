@@ -1,7 +1,7 @@
-# src/chess/rank/search/context/factory.py
+# src/chess/rank/searcher/context/factory.py
 
 """
-Module: chess.rank.search.context.builder
+Module: chess.rank.searcher.context.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -54,12 +54,12 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             2. If the parameters are safe the RankSearchContext is built and returned.
 
         # Parameters:
-            *   id (Optional[int]):                     selected if search target is an id.
-            *   name (Optional[str]):                   selected if search target is a name.
-            *   ransom (Optional[int]):                 selected if search target is a ransom.
-            *   team_quota (Optional[int]):             selected if search target is a team quota.
-            *   designation (Optional[str]):            selected if search target is a designation.
-            *   rank_validator (type[RankValidator]):   validates an id-search-target
+            *   id (Optional[int]):                     selected if searcher target is an id.
+            *   name (Optional[str]):                   selected if searcher target is a name.
+            *   ransom (Optional[int]):                 selected if searcher target is a ransom.
+            *   team_quota (Optional[int]):             selected if searcher target is a team quota.
+            *   designation (Optional[str]):            selected if searcher target is a designation.
+            *   rank_validator (type[RankValidator]):   validates an id-searcher-target
 
         # Returns:
           BuildResult[RankSearchContext] containing either:
@@ -122,7 +122,7 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
     ) -> BuildResult[RankSearchContext]:
         """
         # Action:
-        Build an id-RankSearchContext if RankValidator verifies search target is safe.
+        Build an id-RankSearchContext if RankValidator verifies searcher target is safe.
 
         # Parameters:
           * row (int): target id
@@ -156,7 +156,7 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
     ) -> BuildResult[RankSearchContext]:
         """
         # Action:
-        Build a column-RankSearchContext if RankValidator verifies search target is safe.
+        Build a column-RankSearchContext if RankValidator verifies searcher target is safe.
 
         # Parameters:
           * column (int): target column
@@ -195,7 +195,7 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
     ) -> BuildResult[RankSearchContext]:
         """
         # Action:
-        Build a rank-RankSearchContext if RankValidator verifies search target is safe.
+        Build a rank-RankSearchContext if RankValidator verifies searcher target is safe.
 
         # Parameters:
           * rank (Rank): target Rank

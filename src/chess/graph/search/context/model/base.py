@@ -1,7 +1,7 @@
-# src/chess/domain/search/context/model/base.py
+# src/chess/domain/searcher/context/model/base.py
 
 """
-Module: chess.domain.search.context.model.base
+Module: chess.domain.searcher.context.model.base
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

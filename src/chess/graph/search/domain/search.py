@@ -1,7 +1,7 @@
-# src/chess/graph/search/domain/search
+# src/chess/graph/searcher/domain/searcher
 
 """
-Module: chess.graph.search.domain.search
+Module: chess.graph.searcher.domain.searcher
 Author: Banji Lawal
 Created: 2025-11-09
 version: 1.0.0
@@ -26,7 +26,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def search(cls, data_owner: Graph, search_context: GraphDomainFilter) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch.search"
+        method = "GraphDomainSearch.searcher"
         
         try:
             graph_validation = GraphValidator.validate(data_owner)

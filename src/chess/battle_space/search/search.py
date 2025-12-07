@@ -1,7 +1,7 @@
 # src/chess/battle_space/service.py
 
 """
-Module: chess.battle_space.search
+Module: chess.battle_space.searcher
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/neighbor/search/context/base.py
+# src/chess/neighbor/searcher/context/base.py
 
 """
-Module: chess.neighbor.search.context.context
+Module: chess.neighbor.searcher.context.context
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0

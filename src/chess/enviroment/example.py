@@ -45,7 +45,7 @@
 # # Check if the square is on the board. If there is going to be a problem finding the square on
 # # the board an earlier check was likely to fail. If this fails there is probably a service integrity
 # # or consistency problem.
-# square_search = BoardSquareSearch.search(
+# square_search = BoardSquareSearch.searcher(
 #   board=board,
 #   context=TeamSearchContext(visitor_id=square.visitor_id
 # ))
@@ -58,7 +58,7 @@
 #   return ValidationResult(rollback_exception=square_search.rollback_exception)
 #
 # # Find the square associated with the square's last position.
-# square_search = BoardSquareSearch.search(
+# square_search = BoardSquareSearch.searcher(
 #   board=board,
 #   context=TeamSearchContext(point=square.current_position)
 # )

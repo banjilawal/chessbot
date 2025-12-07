@@ -1,7 +1,7 @@
-# src/rank/search/context/coord_stack_validator.py
+# src/rank/searcher/context/coord_stack_validator.py
 
 """
-Module: chess.rank.search.context.coord_stack_validator
+Module: chess.rank.searcher.context.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -44,7 +44,7 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
         """
         # Action:
         Verifies candidate is a RankSearchContext in two steps.
-            1. Test the candidate is a valid SearchRankContext with a single search option switched on.
+            1. Test the candidate is a valid SearchRankContext with a single searcher option switched on.
             2. Test the value passed to RankSearchContext passes its validation contract..
 
         # Parameters:

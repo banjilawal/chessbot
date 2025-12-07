@@ -1,7 +1,7 @@
-# src/chess/square/search/search.py
+# src/chess/square/searcher/searcher.py
 
 """
-Module: chess.square.search.service
+Module: chess.square.searcher.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

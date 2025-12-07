@@ -72,7 +72,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
     @LoggingLevelRouter.monitor
     def search(cls, service: ProjectionService, search_context: ProjectionSearchContext) -> SearchResult[List[Projection]]:
         """"""
-        method = "WhiteTeamProjectionSearch.search"
+        method = "WhiteTeamProjectionSearch.searcher"
 
         service_validation = ProjectionServiceValidator.validate(service)
         if service_validation.is_failure():

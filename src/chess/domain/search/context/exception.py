@@ -1,7 +1,7 @@
-# src/chess/domain/search/context/collision.py
+# src/chess/domain/searcher/context/collision.py
 
 """
-Module: chess.domain.search.context.exception
+Module: chess.domain.searcher.context.exception
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0
@@ -57,7 +57,7 @@ class NoResidentSearchParamException(ResidentSearchContextException):
     """
     ERROR_CODE = "ZERO_RESIDENT_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (
-        "A ResidentFilter cannot have no params selected. Pick one param to run a search."
+        "A ResidentFilter cannot have no params selected. Pick one param to run a searcher."
     )
 
 class TooManyResidentSearchParamsException(ResidentSearchContextException):
@@ -66,7 +66,7 @@ class TooManyResidentSearchParamsException(ResidentSearchContextException):
     """
     ERROR_CODE = "TOO_MANY_RESIDENT_SEARCH_PARAMS_ERROR"
     DEFAULT_MESSAGE = (
-        "More than one ResidentFilter param was set. If more than one param is set a search cannot be run."
+        "More than one ResidentFilter param was set. If more than one param is set a searcher cannot be run."
     )
 
 

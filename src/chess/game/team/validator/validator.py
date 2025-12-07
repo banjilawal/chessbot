@@ -159,7 +159,7 @@ class TeamValidator(Validator[Team]):
         3.  If team.agent != agent return an exception inside a ValidationResult.
         4.  Build a search_context for the team with team_context service.
         5.  Search for the team inside agent.team_assignments.
-        6.  If the search generates an error or produces an no hits return an exception inside a ValidationResult.
+        6.  If the searcher generates an error or produces an no hits return an exception inside a ValidationResult.
         7.  If all checks pass return the (team, agent) registration tuple.
 
         # PARAMETERS:
@@ -196,16 +196,16 @@ class TeamValidator(Validator[Team]):
                     TeamMismatchesAgentException(f"{method}: {TeamMismatchesAgentException.DEFAULT_MESSAGE}")
                 )
             
-            # When team.agent == agent Search agent.team_assignments; build a search context
+            # When team.agent == agent Search agent.team_assignments; build a searcher context
             search_context_build = team_context_service.item_builder.build(id=team.id)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)
-            # Run a search for the target.
-            search_result = agent.team_assignments.search(search_context=search_context_build.payload)
+            # Run a searcher for the target.
+            search_result = agent.team_assignments.searcher(search_context=search_context_build.payload)
             if search_result.is_failure():
                 return ValidationResult.failure(search_result.exception)
             
-            # An empty search result means there is no registration.
+            # An empty searcher result means there is no registration.
             if search_result.is_empty():
                 return ValidationResult.failure(
                     TeamNotRegisteredWithAgentException(

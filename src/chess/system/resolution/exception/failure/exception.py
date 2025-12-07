@@ -1,7 +1,7 @@
-# src/chess/system/search/collision/exception.py
+# src/chess/system/searcher/collision/exception.py
 
 """
-Module: chess.system.search.collision.exception
+Module: chess.system.searcher.collision.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

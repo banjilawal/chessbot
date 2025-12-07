@@ -1,7 +1,7 @@
-# src/chess/piece/search/exception.py
+# src/chess/piece/searcher/exception.py
 
 """
-Module: chess.piece.search.exception
+Module: chess.piece.searcher.exception
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
