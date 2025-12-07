@@ -44,7 +44,7 @@ class AgentContextValidator(Validator[AgentContext]):
     ) -> ValidationResult[AgentContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, name, team, game, variety) tuple is not null.
+            1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success Build an AgentContext are return in a BuildResult.
@@ -55,7 +55,7 @@ class AgentContextValidator(Validator[AgentContext]):
             *   name (Optional[str])
             *   team (Optional[Team])
             *   game (Optional[Game])
-            *   variety (Optional[AgentVariety])
+            *   agent_variety (Optional[AgentVariety])
 
         These Parameters must be provided:
             *   team_service (TeamService)

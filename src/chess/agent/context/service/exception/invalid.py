@@ -1,0 +1,40 @@
+# src/chess/agent/context/service/exception/invalid.py
+
+"""
+Module: chess.agent.context.service.exception.invalid
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from chess.system import ValidationException
+from chess.agent import AgentContextServiceException
+
+
+__all__ = [
+    # ======================# INVALID_AGENT_CONTEXT_SERVICE EXCEPTION #======================#
+    "InvalidAgentContextServiceException",
+]
+
+
+# ======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
+class InvalidAgentContextServiceException(AgentContextServiceException, ValidationException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+
+    # Parent
+        *   AgentContextServiceException
+        *   ValidationException
+
+    # RESPONSIBILITIES:
+    Indicate an InvalidAgentContextService validation candidate failed a check.
+
+    # PROVIDES:
+    InvalidAgentContextServiceException
+
+    # ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "AGENT_CONTEXT_SERVICE_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "AgentContextService validation failed."

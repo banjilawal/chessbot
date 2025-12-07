@@ -172,13 +172,13 @@ class AgentSearch(Search[Agent]):
     def _find_by_variety(cls, data_set: List[Agent], variety) -> SearchResult[List[Agent]]:
         """
         # Action:
-        1.  Get the agents whose names are a variety. match for the target.
+        1.  Get the agents whose names are a agent_variety. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If the search returns multiple hits call _resolve_matching_ids.
 
         # Parameters:
-            *   variety (AgentVariety)
+            *   agent_variety (AgentVariety)
             *   data_set (List[Agent])
 
         # Returns:

@@ -20,6 +20,7 @@ class IdEmitter:
         self._board_id = 0
         self._event_id = 0
         self._game_id = 0
+        self._agent_id = 0
         self._human_agent_id = 0
         self._machine_agent_id = 0
         self._piece_id = 0
@@ -64,6 +65,11 @@ class IdEmitter:
     def event_id(self) -> int:
         self._event_id += 1
         return self._event_id
+    
+    @property
+    def agent(self) -> int:
+        self._agent_id += 1
+        return self._agent_id
     
     @property
     def human_agent(self) -> int:

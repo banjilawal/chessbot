@@ -70,14 +70,14 @@ class AgentContextService(Service[AgentContext]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._search = search
         
-        @property
-        def search(self) -> AgentSearch:
-            return self._search
-        
-        @property
-        def builder(self) -> AgentContextBuilder:
-            return cast(AgentContextBuilder, self.item_builder)
-        
-        @property
-        def validator(self) -> AgentContextValidator:
-            return cast(AgentContextValidator, self.item_validator)
+    @property
+    def search(self) -> AgentSearch:
+        return self._search
+    
+    @property
+    def builder(self) -> AgentContextBuilder:
+        return cast(AgentContextBuilder, self.item_builder)
+    
+    @property
+    def validator(self) -> AgentContextValidator:
+        return cast(AgentContextValidator, self.item_validator)

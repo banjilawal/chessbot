@@ -35,6 +35,6 @@ class AgentContext(Context[Agent]):
         return {
             "id": self.id,
             "name": self.name,
-            "variety": self._variety,
+            "agent_variety": self._variety,
         }
     

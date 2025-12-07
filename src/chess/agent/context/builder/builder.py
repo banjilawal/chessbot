@@ -25,8 +25,8 @@ class AgentContextBuilder(Builder[AgentContext]):
     # ROLE: Builder
 
     # RESPONSIBILITIES:
-        1.  Produce new AgentContext instances that are guaranteed to be the safe and reliable.
-        2.  Ensure the only search value provided in the AgentContext has been verified to be safe.
+        Produce AgentContext instances whose integrity is always guaranteed. If any attributes do not pass
+        their integrity checks, send an exception instead of an unsafe AgentContext.
 
     # PROVIDES:
       BuildResult[AgentContext] containing either:
@@ -52,7 +52,7 @@ class AgentContextBuilder(Builder[AgentContext]):
     ) -> BuildResult[AgentContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, name, team, game, variety) tuple is not null.
+            1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success Build an AgentContext are return in a BuildResult.
@@ -63,7 +63,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             *   name (Optional[str])
             *   team (Optional[Team])
             *   game (Optional[Game])
-            *   variety (Optional[AgentVariety])
+            *   agent_variety (Optional[AgentVariety])
 
         These Parameters must be provided:
             *   team_service (TeamService)
