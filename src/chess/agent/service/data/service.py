@@ -52,7 +52,7 @@ class AgentDataService(DataService[Agent]):
         return cast(AgentContextService, self.context_service)
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Agent) -> InsertionResult[Agent]:
+    def push_item(self, item: Agent) -> InsertionResult[Agent]:
         method = "AgentDataService.push"
         try:
             validation = self.data.item_validator.validate(item)

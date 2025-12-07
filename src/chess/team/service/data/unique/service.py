@@ -115,7 +115,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
                 )
             # After the error has been passed self._data_service returns the outcome of
             # pushing the item on to the stack.
-            return self._data_service.push(item)
+            return self._data_service.push_item(item)
         
         # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
         # then return the exceptions inside a BuildResult.

@@ -106,7 +106,7 @@ class DataService(ABC, Generic[D]):
         return len(self._items) == 0
     
     @LoggingLevelRouter.monitor
-    def push(self, item: D) -> InsertionResult[D]:
+    def push_item(self, item: D) -> InsertionResult[D]:
         """"""
         method = "DataService.push"
         try:
@@ -134,8 +134,8 @@ class DataService(ABC, Generic[D]):
             )
     
     @LoggingLevelRouter.monitor
-    def undo(self) -> DeletionResult[D]:
-        method = "DataService.undo"
+    def undo_item_push(self) -> DeletionResult[D]:
+        method = "DataService.undo_item_push"
         try:
             if self._items == 0:
                 return DeletionResult.failure(

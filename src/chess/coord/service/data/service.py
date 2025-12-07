@@ -87,7 +87,7 @@ class CoordDataService(DataService[Coord]):
         )
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Coord) -> InsertionResult[Coord]:
+    def push_item(self, item: Coord) -> InsertionResult[Coord]:
         method = "CoordDataService.push"
         try:
             validation = self.data.item_validator.validate(item)

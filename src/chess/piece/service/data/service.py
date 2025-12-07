@@ -68,7 +68,7 @@ class PieceDataService(DataService[Piece]):
         )
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Piece) -> InsertionResult[Piece]:
+    def push_item(self, item: Piece) -> InsertionResult[Piece]:
         """
         # ACTION:
         1.  Use PieceDataService.entity_service.validator to certify item.

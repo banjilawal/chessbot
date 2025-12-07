@@ -94,7 +94,7 @@ class TeamDataService(DataService[Team]):
     def context_service(self) -> TeamContextService:
         return cast(TeamContextService, self.context_service)
     
-    def push(self, item: Team) -> InsertionResult[Team]:
+    def push_item(self, item: Team) -> InsertionResult[Team]:
         """
         # ACTION:
         1.  Use TeamDataService.entity_service.validator to certify item.

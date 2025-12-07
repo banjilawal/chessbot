@@ -94,7 +94,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
                 )
             # After the error chain is passed self._data_service returns the outcome of
             # pushing the item on to the stack.
-            return self._data_service.push(item)
+            return self._data_service.push_item(item)
         
         # Finally return an InsertionResult containing any unhandled exceptions insided an
         # UniquePieceDataServiceException

@@ -47,7 +47,7 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
                         f"{method}: {AddingDuplicateAgentException.DEFAULT_MESSAGE}"
                     )
                 )
-            return self._data_service.push(item)
+            return self._data_service.push_item(item)
         except Exception as ex:
             return InsertionResult.failure(
                 UniqueAgentDataServiceException(

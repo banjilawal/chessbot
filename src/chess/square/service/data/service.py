@@ -33,7 +33,7 @@ class SquareDataService(DataService[Square]):
         return cast(SquareService, self.entity_service)
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Square) -> InsertionResult[Square]:
+    def push_item(self, item: Square) -> InsertionResult[Square]:
         method = "SquareDataService.push"
         try:
             validation = self.entity_service.validator.validate(item)
