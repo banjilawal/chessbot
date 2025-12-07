@@ -49,6 +49,22 @@ class EntityService(ABC, Generic[T]):
             builder: Builder[T],
             validator: Validator[T],
     ):
+        """
+        # Action:
+            1.  Constructor
+
+        # Parameters:
+            *   id (int)
+            *   name (str)
+            *   builder (Builder[T])
+            *   validator (Validator[T])
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         self._id = id
         self._name = name
         self._builder = builder
@@ -56,18 +72,22 @@ class EntityService(ABC, Generic[T]):
         
     @property
     def id(self) -> int:
+        """get entity id"""
         return self._id
     
     @property
     def name(self) -> str:
+        """get entity name"""
         return self._name
     
     @property
     def entity_builder(self) -> Builder[T]:
+        """get entity builder"""
         return self._builder
     
     @property
     def entity_validator(self) -> Validator[T]:
+        """get entity validator"""
         return self._validator
     
     def __eq__(self, other):
