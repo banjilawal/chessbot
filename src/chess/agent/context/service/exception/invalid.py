@@ -28,7 +28,7 @@ class InvalidAgentContextServiceException(AgentContextServiceException, Validati
     
     # PARENT
         *   AgentContextServiceException
-        *   ValidationException
+        *   ValidationFailedException
 
     # PROVIDES:
     InvalidAgentContextServiceException

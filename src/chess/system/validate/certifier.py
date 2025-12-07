@@ -1,7 +1,7 @@
-# src/chess/validator/guard.py
+# src/chess/validate/certifier.py
 
 """
-Module: chess..validator.validator
+Module: chess..validate.certifier
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

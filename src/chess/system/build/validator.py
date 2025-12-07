@@ -63,7 +63,6 @@ class BuilderValidator(Validator[Builder]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Builder, got {type(candidate).__name__} instead.")
                 )
-            
             # Once the two existence checks are passed cast candidate and return in the validation result.
             return ValidationResult.success(cast(Builder, candidate))
         
@@ -71,7 +70,5 @@ class BuilderValidator(Validator[Builder]):
         # an UnreliableBuilderException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:
             ValidationResult.failure(
-                UnreliableBuilderException(
-                    ex=ex, message=f"{method}: {UnreliableBuilderException.DEFAULT_MESSAGE}"
-                )
+                UnreliableBuilderException(ex=ex, message=f"{method}: {UnreliableBuilderException.DEFAULT_MESSAGE}")
             )

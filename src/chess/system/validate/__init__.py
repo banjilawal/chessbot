@@ -10,9 +10,9 @@ version: 1.0.0
 # =========== CHESS.SYSTEM.VALIDATE PACKAGE CONTENTS ===========#
 
 # Packages
+from .exception import *
 from .result import *
 
 # Modules
-from .exception import *
 from .certifier import CertifyValidator
 from .validator import Validator

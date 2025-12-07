@@ -459,7 +459,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationException`, `NullException`,
+  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
@@ -534,7 +534,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   ERROR_CODE = "NULL_EVENT_ERROR"
 #   DEFAULT_MESSAGE = "KingCheckEvent cannot be validation"
 #
-# class InvalidAttackEventException(AttackEventException, ValidationException):
+# class InvalidAttackEventException(AttackEventException, ValidationFailedException):
 #   """Raised by ExchangeValidators if client fails coord_stack_validator."""
 #   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
 #   DEFAULT_MESSAGE = "KingCheckEvent failed validate"

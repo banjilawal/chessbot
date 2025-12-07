@@ -38,7 +38,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 
 From chess.system:
-  * Exceptions: ValidationException, NullException
+  * Exceptions: ValidationFailedException, NullException
 
 From chess.team_name:
   * TeamException:
@@ -143,7 +143,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 
 From chess.system:
-  * Exceptions: ValidationException, NullException
+  * Exceptions: ValidationFailedException, NullException
 
 From chess.team_name:
   * TeamException:

@@ -26,7 +26,7 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
 
     # PARENT
         *   AgentVarietyException
-        *   ValidationException
+        *   ValidationFailedException
 
     # PROVIDES:
     InvalidAgentVarietyException

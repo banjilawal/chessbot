@@ -27,7 +27,7 @@ class InvalidMachineAgentException(MachineAgentException, ValidationException):
 
     # PARENT
         *   MachineAgentException
-        *   ValidationException
+        *   ValidationFailedException
 
     # PROVIDES:
     InvalidMachineAgentException

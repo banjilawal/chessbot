@@ -28,7 +28,7 @@ class UnreliableBuilderException(BuilderException, ValidationException):
     
     # PARENT
         *   BuilderException
-        *   ValidationException
+        *   ValidationFailedException
   
     # PROVIDES:
     UnreliableBuilderException

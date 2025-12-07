@@ -27,7 +27,7 @@ class InvalidHumanAgentException(HumanAgentException, ValidationException):
 
     # PARENT
         *   HumanAgentException
-        *   ValidationException
+        *   ValidationFailedException
 
     # PROVIDES:
     InvalidHumanAgentException

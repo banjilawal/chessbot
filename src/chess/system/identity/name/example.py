@@ -43,7 +43,7 @@ The major theme influencing the modules design are
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
-    `ValidationException`, `BlankStringException`, `NullException`
+    `ValidationFailedException`, `BlankStringException`, `NullException`
 
 # SECTION 8 - Contains:
 See the list of exceptions in the `__all__` list following (e.g., `InvalidNameException`,`NullNameException`).

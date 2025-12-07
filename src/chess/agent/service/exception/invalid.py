@@ -27,7 +27,7 @@ class InvalidAgentServiceException(AgentServiceException, ValidationException):
 
     # PARENT
         *   AgentServiceException
-        *   ValidationException
+        *   ValidationFailedException
 
     # PROVIDES:
     InvalidAgentServiceException

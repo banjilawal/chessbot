@@ -26,7 +26,7 @@ class InvalidAgentContextException(AgentContextException, ValidationException):
     
     # PARENT
         *   AgentContextException
-        *   ValidationException
+        *   ValidationFailedException
 
     # PROVIDES:
     InvalidAgentContextException
