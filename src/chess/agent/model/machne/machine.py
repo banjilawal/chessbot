@@ -6,14 +6,29 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
-from lib2to3.fixes.fix_import import traverse_imports
 
-from chess.agent import Agent, TeamStackService
-from chess.engine.service import EngineService
+from chess.agent import Agent
+from chess.engine import EngineService
+from chess.game import UniqueGameDataService
 from chess.team import UniqueTeamDataService
 
 
 class MachineAgent(Agent):
+    """
+    # ROLE: Controller
+
+    # RESPONSIBILITIES:
+    1.  Forward requests and commands from a Machine player to the Game model.
+
+    # PARENT
+        *   Agent
+
+    # PROVIDES:
+    MachineAgent
+
+    # ATTRIBUTES:
+        *   engine_service (EngineService)
+    """
     _engine_service: EngineService
     
     def __init__(

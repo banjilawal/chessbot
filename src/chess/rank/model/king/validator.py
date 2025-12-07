@@ -41,7 +41,7 @@ class KingValidator(Validator[King]):
             candidate: Any,
             text_validator: TextValidator = TextValidator(),
             number_validator: NumberValidator = NumberValidator(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[King]:
         """
         # ACTION:
@@ -124,18 +124,18 @@ class KingValidator(Validator[King]):
             cls,
             candidate: Any,
             rank_spec: RankSpec = RankSpec(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe id using identity_service. If so convert to id. Else return failure.
+        1.  Verify candidate is a safe id using idservice. If so convert to id. Else return failure.
         2.  Check if id != RankSpec.KING.id. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (RankSpec)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -149,7 +149,7 @@ class KingValidator(Validator[King]):
         method = "KingValidator.verify_id"
         try:
             # Test if the candidate is a safe id.
-            validation = identity_service.validate_id(candidate)
+            validation = idservice.validate_id(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
             # Next check if id is correct for a king.
@@ -174,18 +174,18 @@ class KingValidator(Validator[King]):
             cls,
             candidate: Any,
             rank_spec: RankSpec = RankSpec(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe name using identity_service. If so convert to name. Else return failure.
+        1.  Verify candidate is a safe name using idservice. If so convert to name. Else return failure.
         2.  Check if name != RankSpec.KING.name. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (RankSpec)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
         ValidationResult[str] containing either:
@@ -199,7 +199,7 @@ class KingValidator(Validator[King]):
         method = "KingValidator.verify_name"
         try:
             # Test if the candidate is a safe name.
-            validation = identity_service.validate_name(candidate)
+            validation = idservice.validate_name(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
             # Next check if name is correct for a king.

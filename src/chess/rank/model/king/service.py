@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from chess.rank import King, KingValidator, RankFactory
-from chess.system import Service, Validator, id_emitter
+from chess.system import EntityService, Validator, id_emitter
 
 
-class KingService(Service[King]):
+class KingService(EntityService[King]):
     DEFAULT_NAME = "KingService"
     
     def __init__(

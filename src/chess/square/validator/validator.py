@@ -40,7 +40,7 @@ class SquareValidator(Validator[Square]):
     # CLASS METHODS:
            validate(
                 candidate: Any, board_service: BoardService, coord_service: CoordService,
-                identity_service: IdentityService
+                idservice: IdentityService
             ) -> ValidationResult[Square]:
             
            verify_agent_has_registered_team(
@@ -63,13 +63,13 @@ class SquareValidator(Validator[Square]):
             candidate: Any,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[Square]:
         """
         # ACTION:
         1.  Check candidate is not validation.
         2.  Check if candidate is a Square.
-        3.  Run id and name integrity checks with identity_service
+        3.  Run id and name integrity checks with idservice
         4.  Run target integrity checks with coord_service.
         5  If any check fails, return the exception inside a ValidationResult.
         3.  When all checks pass cast candidate to a Square instance, then return inside a ValidationResult.
@@ -77,8 +77,8 @@ class SquareValidator(Validator[Square]):
         # PARAMETERS:
             *   candidate (Any): Object to validate.
             *   coord_service (CoordService)
-            *   identity_service: (IdentityService)
-        coord_service and identity_service have default values.
+            *   idservice: (IdentityService)
+        coord_service and idservice have default values.
 
         # Returns:
         ValidationResult[Coord] containing either:
@@ -105,7 +105,7 @@ class SquareValidator(Validator[Square]):
             square = cast(Square, candidate)
             
             # Verify the Square.id and Square.name
-            identity_validation = identity_service.validate_identity(
+            identity_validation = idservice.validate_identity(
                 id_candidate=square.id,
                 name_candidate=square.name
             )

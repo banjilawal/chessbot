@@ -9,13 +9,13 @@ version: 1.0.0
 from typing import cast
 
 from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, LoggingLevelRouter, Service
+from chess.system import BuildResult, LoggingLevelRouter, EntityService
 from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, VectorValidator
 
 
-class VectorService(Service[Vector]):
+class VectorService(EntityService[Vector]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -23,8 +23,8 @@ class VectorService(Service[Vector]):
     3.  Encapsulates AgentContext operations for easier extension and maintenance.
     4.  Single entry point for managing Vector integrity lifecycles with VectorBuilder and VectorValidator.
 
-    # Parent
-        *   Service
+    # PARENT
+        *   EntityService
 
     # PROVIDES:
         *   Vector building

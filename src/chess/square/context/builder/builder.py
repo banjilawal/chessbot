@@ -44,12 +44,12 @@ class SquareContextBuilder(Builder[SquareContext]):
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
             coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
         1.  Verify only one param is turned on.
-        2.  If either id or name is turned on verify them with identity_service.
+        2.  If either id or name is turned on verify them with idservice.
         2.  If the coord is turned on verify with coord_service.
         3.  Run board-integrity checks with board_service.
         4.  If any checks fail, send their exception to the caller in a BuildResult.
@@ -62,7 +62,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             *   board (Board)
             *   board_service (BoardService)
             *   coord_service (CoordService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
         ValidationResult[Square] containing either:
@@ -91,13 +91,13 @@ class SquareContextBuilder(Builder[SquareContext]):
                 )
             
             if id is not None:
-                id_validation = identity_service.validate_id(candidate=id)
+                id_validation = idservice.validate_id(candidate=id)
                 if id_validation.is_failure:
                     return BuildResult.failure(id_validation.exception)
                 return BuildResult.success(SquareContext(id=id))
             
             if name is not None:
-                name_validation = identity_service.validate_name(candidate=name)
+                name_validation = idservice.validate_name(candidate=name)
                 if name_validation.is_failure:
                     return BuildResult.failure(name_validation.exception)
                 return BuildResult.success(SquareContext(name=name))

@@ -18,15 +18,16 @@ from .data import *
 from .dto import *
 from .err import *
 from .event import *
+from .finder import *
 from .identity import *
 from .logging import *
 from .mouse import *
 from .notification import *
 from .result import *
 from .resolution import *
-from .search import *
+
 from .service import *
-from .search import *
+from .finder import *
 from .transaction import *
 from .utils import *
 from .validate import *

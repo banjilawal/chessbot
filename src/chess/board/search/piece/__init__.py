@@ -8,4 +8,4 @@ version: 1.0.0
 """
 
 from .exception import *
-from .search import BoardPieceSearch
+from .search import BoardPieceFinder

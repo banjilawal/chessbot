@@ -8,13 +8,13 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.system import Service
+from chess.system import EntityService
 from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamValidator
 
 
-class TeamService(Service[Team]):
+class TeamService(EntityService[Team]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

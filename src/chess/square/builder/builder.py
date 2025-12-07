@@ -40,11 +40,11 @@ class SquareBuilder(Builder[Square]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             square_validator: SquareValidator = SquareValidator(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> BuildResult[Square]:
         """
         # ACTION:
-        1.  Run id and name checks with identity_service.
+        1.  Run id and name checks with idservice.
         2.  Run coord checks with coord_service.
         3.  Run Board checks with board_service.
         4.  If any checks fail, send their exception to the caller in a BuildResult.
@@ -57,7 +57,7 @@ class SquareBuilder(Builder[Square]):
             *   board (Board)
             *   board_service (BoardService)
             *   coord_service (CoordService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
     
         # Returns:
         ValidationResult[Square] containing either:
@@ -69,7 +69,7 @@ class SquareBuilder(Builder[Square]):
         """
         method = "SquareBuilder.builder"
         try:
-            identity_validation = identity_service.validate_identity(
+            identity_validation = idservice.validate_identity(
                 id_candidate=id,
                 name_candidate=name
             )

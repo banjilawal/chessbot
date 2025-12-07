@@ -7,13 +7,13 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.system import BuildResult, Service
+from chess.system import BuildResult, EntityService
 from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
 
 
-class ScalarService(Service[Scalar]):
+class ScalarService(EntityService[Scalar]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: EntityService, Encapsulation, API layer.
     
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for ScalarValidator and ScalarBuilder.

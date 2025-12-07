@@ -20,11 +20,11 @@ class TeamContext(Context[Team]):
     # ROLE: Option Selection,
   
     # RESPONSIBILITIES:
-    1.  Selecting which Team attribute will be used for running TeamSearch.
+    1.  Selecting which Team attribute will be used for running TeamFinder.
     2.  Extend Context super class' features.
   
     # PROVIDES:
-    1. TeamSearch filtering key-value pair.
+    1. TeamFinder filtering key-value pair.
   
     # ATTRIBUTES:
         *   game (Optional[Game])

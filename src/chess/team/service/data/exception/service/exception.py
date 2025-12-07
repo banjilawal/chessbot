@@ -42,9 +42,9 @@ class TeamContextServiceNullException(TeamDataServiceException, NullException):
 
 
 class TeamSearchNullException(TeamDataServiceException, NullException):
-    """Raised if the internal TeamSearch object  is null"""
+    """Raised if the internal TeamFinder object  is null"""
     ERROR_CODE = "TEAM_SEARCH_NULL_ERROR"
-    DEFAULT_MESSAGE = "TeamDataService cannot have a null TeamSearch object."
+    DEFAULT_MESSAGE = "TeamDataService cannot have a null TeamFinder object."
 
 
 class TeamServiceNullException(TeamDataServiceException, NullException):

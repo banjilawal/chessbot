@@ -49,7 +49,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             team_service: TeamCertifier = TeamCertifier(),
             rank_service: RankCertifier = RankCertifier(),
             coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> BuildResult[PieceContext]:
         """
         # Action:
@@ -70,7 +70,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             *   team_certifier (TeamCertifier)
             *   rank_certifier (RankCertifier)
             *   coord_service (CoordService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
           BuildResult[CoordContext] containing either:
@@ -105,13 +105,13 @@ class PieceContextBuilder(Builder[PieceContext]):
                 )
             
             if id is not None:
-                validation = identity_service.validate_id(id)
+                validation = idservice.validate_id(id)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(PieceContext(id=id))
             
             if name is not None:
-                validation = identity_service.validate_name(name)
+                validation = idservice.validate_name(name)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(PieceContext(name=name))

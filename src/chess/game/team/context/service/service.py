@@ -7,13 +7,13 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.system import Service, id_emitter
+from chess.system import EntityService, id_emitter
 from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator
 
 
-class TeamContextService(Service[TeamContext]):
+class TeamContextService(EntityService[TeamContext]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

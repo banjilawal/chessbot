@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from chess.rank import Bishop, BishopValidator, RankFactory
-from chess.system import Service, Validator, id_emitter
+from chess.system import EntityService, Validator, id_emitter
 
 
-class BishopService(Service[Bishop]):
+class BishopService(EntityService[Bishop]):
     DEFAULT_NAME = "BishopService"
     def __init__(
             self,

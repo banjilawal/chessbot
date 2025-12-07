@@ -12,21 +12,21 @@ from typing import List
 from chess.coord import Coord
 from chess.piece import Piece
 from chess.graph import Graph, GraphDomainFilter, GraphValidator, graph
-from chess.system import LoggingLevelRouter, Search, SearchResult
+from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.domain import (
     Domain, DomainValidator, GraphSearchContext, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 
 
-class GraphDomainSearch(Search[Graph, Domain]):
+class GraphDomainFinder(Finder[Graph, Domain]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def search(cls, data_owner: Graph, search_context: GraphDomainFilter) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch.searcher"
+        method = "GraphDomainFinder.searcher"
         
         try:
             graph_validation = GraphValidator.validate(data_owner)
@@ -74,7 +74,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _id_search(cls, graph: Graph, id: int) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._id_search"
+        method = "GraphDomainFinder._id_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.owner.id == id]
@@ -91,7 +91,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _name_search(cls, graph: Graph, name: str) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._name_search"
+        method = "GraphDomainFinder._name_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.owner.name.upper == name.upper()]
@@ -108,7 +108,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _root_search(cls, graph: Graph, coord: Coord) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._root_search"
+        method = "GraphDomainFinder._root_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.tree_root == coord]
@@ -125,7 +125,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _previous_root_search(cls, graph: Graph, coord: Coord) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._previous_root_search"
+        method = "GraphDomainFinder._previous_root_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.previous_tree_root == coord]
@@ -142,7 +142,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _rank_name_search(cls, graph: Graph, name: str) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._rank_name_search"
+        method = "GraphDomainFinder._rank_name_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.ownerr.rank.name.upper() == name.upper()]
@@ -158,7 +158,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _ransom_search(cls, graph: Graph, ransom: int) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._ransom_search"
+        method = "GraphDomainFinder._ransom_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.owner.rank.ransom == ransom]
@@ -174,7 +174,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _team_id_search(cls, graph: Graph, id: int) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._team_id_search"
+        method = "GraphDomainFinder._team_id_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.downer.team.id == id]
@@ -191,7 +191,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _team_name_search(cls, graph: Graph, name: str) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._team_name_search"
+        method = "GraphDomainFinder._team_name_search"
         
         try:
             matches = [domain for domain in graph.domains if domain.owner.team.name.uppper() == name.upper()]
@@ -207,7 +207,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _resident_search(cls, graph: Graph, piece: Piece) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._resident_search"
+        method = "GraphDomainFinder._resident_search"
         
         try:
             matches = [domain for domain in graph.domains if piece in domain.residents]
@@ -223,7 +223,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _point_search(cls, graph: Graph, coord: Coord) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._point_search"
+        method = "GraphDomainFinder._point_search"
         
         try:
             matches = [domain for domain in graph.domains if coord in domain.tree]
@@ -239,7 +239,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _resolve_duplicate_ids(cls, graph: Graph, duplicates: List[Domain]) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._resolve_duplicate_ids"
+        method = "GraphDomainFinder._resolve_duplicate_ids"
         
         try:
             # Pop the first one to compare to all the others.
@@ -273,7 +273,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _resolve_duplicate_names(cls, graph: Graph, duplicates: List[Domain]) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._resolve_duplicate_names"
+        method = "GraphDomainFinder._resolve_duplicate_names"
         
         try:
             target = duplicates.pop()
@@ -302,7 +302,7 @@ class GraphDomainSearch(Search[Graph, Domain]):
     @LoggingLevelRouter.monitor
     def _resolve_duplicate_coords(cls, graph: Graph, duplicates: List[Coord]) -> SearchResult[List[Domain]]:
         """"""
-        method = "GraphDomainSearch._resolve_duplicate_coords"
+        method = "GraphDomainFinder._resolve_duplicate_coords"
         
         try:
             target = duplicates.pop()

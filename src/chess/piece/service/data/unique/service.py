@@ -13,7 +13,7 @@ from chess.piece import Piece, AddingDuplicatePieceException, PieceDataService, 
 
 class UniquePieceDataService(UniqueDataService[Piece]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

@@ -7,19 +7,19 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.system import SearchException
+from chess.system import FinderException
 
 __all__ = [
     # ======================# PIECE_SEARCH EXCEPTIONS #======================#
-    "PieceSearchException",
+    "PieceFinderException",
 ]
 
 
 # ======================# PIECE_SEARCH EXCEPTIONS #======================#
-class PieceSearchException(SearchException):
+class PieceFinderException(FinderException):
     """
-    Super class of exceptions raised by PieceSearch objects. Do not use directly. Subclasses give
+    Super class of exceptions raised by PieceFinder objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "PIECE_SEARCH_ERROR"
-    DEFAULT_MESSAGE = "PieceSearch raised an exception."
+    DEFAULT_MESSAGE = "PieceFinder raised an exception."

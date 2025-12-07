@@ -7,19 +7,19 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import SearchException
+from chess.system import FinderException
 
 __all__ = [
   # ======================# AGENT_SEARCH EXCEPTIONS #======================#
-  "AgentSearchException",
+  "AgentFinderException",
 ]
 
 
 # ======================# AGENT_SEARCH EXCEPTIONS #======================#
-class AgentSearchException(SearchException):
+class AgentFinderException(FinderException):
   """
-  Super class of exceptions raised by AgentSearcher objects. Do not use directly. Subclasses give
+  Super class of exceptions raised by AgentFinder objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
   ERROR_CODE = "AGENT_SEARCH_ERROR"
-  DEFAULT_MESSAGE = "AgentSearcher raised an exception."
+  DEFAULT_MESSAGE = "AgentFinder raised an exception."

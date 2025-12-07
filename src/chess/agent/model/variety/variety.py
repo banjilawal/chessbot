@@ -1,7 +1,7 @@
-# src/chess/agent/model/agent_variety.agent_variety.py
+# src/chess/agent/model/variety.variety.py
 
 """
-Module: chess.agent.model.agent_variety.agent_variety
+Module: chess.agent.model.variety.agent_variety
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

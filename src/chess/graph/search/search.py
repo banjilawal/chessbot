@@ -12,21 +12,21 @@ from typing import List
 
 from chess.coord import Coord
 from chess.piece import Piece
-from chess.system import LoggingLevelRouter, Search, SearchResult
+from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.domain import (
     Domain, DomainValidator, VisitorSearchContext, VisitorSearchContextValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 
 
-class DomainVisitorSearch(Search[Domain, Piece]):
+class DomainVisitorFinder(Finder[Domain, Piece]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def search(cls, data_owner: Domain, search_context: VisitorSearchContext) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch.searcher"
+        method = "DomainResidentFinder.searcher"
         
         try:
             domain_validation = DomainValidator.validate(data_owner)
@@ -66,7 +66,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _id_search(cls, domain: Domain, id: int) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._id_search"
+        method = "DomainResidentFinder._id_search"
         
         try:
             matches = [visitor for visitor in domain.residents if visitor.id == id]
@@ -84,7 +84,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _name_search(cls, domain: Domain, name: str) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._name_search"
+        method = "DomainResidentFinder._name_search"
         
         try:
             matches = [visitor for visitor in domain.residents if visitor.name.upper == name.upper()]
@@ -102,7 +102,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _coord_search(cls, domain: Domain, coord: Coord) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._coord_search"
+        method = "DomainResidentFinder._coord_search"
         
         try:
             matches = [visitor for visitor in domain.visitor if visitor.current_position == coord]
@@ -120,7 +120,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _rank_name_search(cls, domain: Domain, rank_name: str) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._rank_name_search"
+        method = "DomainResidentFinder._rank_name_search"
         
         try:
             matches = [visitor for visitor in domain.residents if visitor.rank.name.upper() == rank_name.upper()]
@@ -137,7 +137,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _ransom_search(cls, domain: Domain, ransom: int) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._ransom_search"
+        method = "DomainResidentFinder._ransom_search"
         
         try:
             matches = [visitor for visitor in domain.residents if visitor.rank.ransom == ransom]
@@ -153,7 +153,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _team_id_search(cls, domain: Domain, id: int) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._team_id_search"
+        method = "DomainResidentFinder._team_id_search"
         
         try:
             matches = [visitor for visitor in domain.visitor if visitor.team_name.visitor_id == id]
@@ -171,7 +171,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _team_name_search(cls, domain: Domain, name: str) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._team_name_search"
+        method = "DomainResidentFinder._team_name_search"
         
         try:
             matches = [visitor for visitor in domain.visitor if visitor.team_name.visitor_name.uppper() == name.upper()]
@@ -188,7 +188,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _resolve_duplicate_ids(cls, domain: Domain, duplicates: List[Piece]) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._resolve_duplicate_ids"
+        method = "DomainResidentFinder._resolve_duplicate_ids"
         
         try:
             # Pop the first one to compare to all the others.
@@ -223,7 +223,7 @@ class DomainVisitorSearch(Search[Domain, Piece]):
     @LoggingLevelRouter.monitor
     def _resolve_duplicate_names(cls, domain: Domain, duplicates: List[Piece]) -> SearchResult[List[Piece]]:
         """"""
-        method = "DomainResidentSearch._resolve_duplicate_names"
+        method = "DomainResidentFinder._resolve_duplicate_names"
         
         try:
             target = duplicates.pop()

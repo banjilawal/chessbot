@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.team import Team, TeamContext, TeamContextService, TeamSearch, TeamCertifier, TeamInsertionFailedException
+from chess.team import Team, TeamContext, TeamContextService, TeamFinder, TeamCertifier, TeamInsertionFailedException
 
 class TeamDataService(DataService[Team]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -26,7 +26,7 @@ class TeamDataService(DataService[Team]):
     # PROVIDES:
         *   TeamCertifier
         *   ContextService
-        *   Search
+        *   Finder
         *   TeamStack data structure
 
     # ATTRIBUTES:
@@ -34,7 +34,7 @@ class TeamDataService(DataService[Team]):
         *   id (int):
         *   name (str):
         *   items (List[Team]):
-        *   searcher (TeamSearch):
+        *   searcher (TeamFinder):
         *   service (TeamCertifier):
         *   context_service (TeamContextService):;
         *   current_item (Team):
@@ -42,7 +42,7 @@ class TeamDataService(DataService[Team]):
         
     # CONSTRUCTOR:
         *   __init__(
-                id: int, name: str, items: List[Team], searcher: TeamSearch,
+                id: int, name: str, items: List[Team], searcher: TeamFinder,
                 service: TeamCertifier, contextService: TeamContextService
             )
     
@@ -59,7 +59,7 @@ class TeamDataService(DataService[Team]):
             name=DEFAULT_NAME,
             id=id_emitter.service_id,
             items: List[Team] = List[Team],
-            search: TeamSearch = TeamSearch(),
+            search: TeamFinder = TeamFinder(),
             service: TeamCertifier = TeamCertifier(),
             context_service: TeamContextService = TeamContextService(),
     ):
@@ -125,8 +125,8 @@ class TeamDataService(DataService[Team]):
         # ACTION:
         1.  Pass context argument to self.searcher.
         2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
-        3.  The Search object will return any exceptions if it fails, success otherwise.
-        4.  Because Search object does all the error using a try-catch is uneccesar
+        3.  The Finder object will return any exceptions if it fails, success otherwise.
+        4.  Because Finder object does all the error using a try-catch is uneccesar
 
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.

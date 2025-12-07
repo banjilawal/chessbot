@@ -53,7 +53,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's effects and actions cover exceptions raised by implementors of the `Search` interface.
+The module's effects and actions cover exceptions raised by implementors of the `Finder` interface.
 
 # SECTION 3: Limitations
   1. Does not provide granular, precise information pertinent to debugging. The module's
@@ -80,9 +80,9 @@ The major theme influencing the modules design are
     `ChessException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `SearchException`,
+See the list of exceptions in the `__all__` list following (e.g., `FinderException`,
 `SearchParamException`, `RowAboveBoundsException`).
-  * `SearchException`
+  * `FinderException`
   * `SearchParamException`
   * `ImpossibleFatalResultException`
 """

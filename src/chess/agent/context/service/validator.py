@@ -40,7 +40,7 @@ class AgentContextServiceValidator(Validator[AgentContextService]):
             1.  Confirm the candidate is not null and an AgentContextService instance.
             2.  Certify it has a not null AgentContextBuilder
             3.  Certify it has a not null AgentContextValidator
-            4.  Certify it has a not null AgentSearcher
+            4.  Certify it has a not null AgentFinder
 
         # Parameters:
             *   candidate (Any)
@@ -90,7 +90,7 @@ class AgentContextServiceValidator(Validator[AgentContextService]):
                         f"{method}: {MissingAgentContextValidatorException.DEFAULT_MESSAGE}"
                     )
                 )
-            # Make sure searcher is a not-null AgentSearcher instance.
+            # Make sure searcher is a not-null AgentFinder instance.
             if service.searcher is None or not isinstance(service.searcher, AgentSearcher):
                 return ValidationResult.failure(
                     MissingAgentSearcherException(

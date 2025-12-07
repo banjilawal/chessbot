@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Tuple, cast
 
-from chess.board import Board, BoardSearchContext, BoardSquareSearch
+from chess.board import Board, BoardSearchContext, BoardSquareFinder
 from chess.board.search.context.builder import BoardSearchContextBuilder
 from chess.pawn.promotion.event import PromotionEvent
 from chess.pawn.promotion.exception import DoublePromotionException
@@ -78,7 +78,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
                 return ValidationResult.failure(context_build_result.exception)
             context = cast(BoardSearchContext, context_build_result.payload)
             
-            square_search_result = BoardSquareSearch.search(board=execution_environment, context=context)
+            square_search_result = BoardSquareFinder.search(board=execution_environment, context=context)
             if square_search_result.is_failure():
                 return ValidationResult.failure(square_search_result.exception)
             promotion_square = cast(Square, square_search_result.payload)

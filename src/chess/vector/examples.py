@@ -302,7 +302,7 @@ Example:
 
 #
 # # PURPOSE
-# Search
+# Finder
 #
 # # EXPORTS
 # This package exposes core classes and all exceptions from its sub-modules:

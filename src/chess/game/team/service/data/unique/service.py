@@ -16,7 +16,7 @@ from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService,
 
 class UniqueTeamDataService(UniqueDataService[Team]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

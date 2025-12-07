@@ -10,12 +10,12 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordSearch, CoordService, CoordContextService
+from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordFinder, CoordService, CoordContextService
 
 
 class CoordDataService(DataService[Coord]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: EntityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for Square, VectoValidator and SquareBuilder objects.
@@ -26,23 +26,23 @@ class CoordDataService(DataService[Coord]):
     # PROVIDES:
         *   SquareBuilder
         *   SquareValidator
-        *   Coord Data Service
+        *   Coord Data EntityService
         *
 
     # ATTRIBUTES:
         *   builder (type[SquareBuilder]):
         *   validator (type[SquareValidator]):
         *   coord_service (CoordService)
-        *   identity_service (IdentityService)
+        *   idservice (IdentityService)
     """
     """
-    # ROLE: Service, Data Protraction
+    # ROLE: EntityService, Data Protraction
 
     # RESPONSIBILITIES:
     1.  Manages integrity lifecycle of Coord objects.
     2.  Vector addition and scalar multiplication of Coord objects.
     3.  Calculate distance between two Coords.
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: EntityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.
@@ -72,7 +72,7 @@ class CoordDataService(DataService[Coord]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Coord] = List[Coord],
-            search: CoordSearch = CoordSearch(),
+            search: CoordFinder = CoordFinder(),
             service: CoordService = CoordService(),
             context_service: CoordContext = CoordContextService(),
     ):

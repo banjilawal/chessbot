@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 
-from chess.system import SearchException
+from chess.system import FinderException
 
 __all__ = [
-    "SquareSearchException",
+    "SquareFinderException",
 ]
-class SquareSearchException(SearchException):
+class SquareFinderException(FinderException):
     ERROR_CODE = "SQUARE_SEARCH_ERROR"
-    DEFAULT_MESSAGE = "SquareSearch raised an exception."
+    DEFAULT_MESSAGE = "SquareFinder raised an exception."

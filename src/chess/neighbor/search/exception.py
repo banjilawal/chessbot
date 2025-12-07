@@ -28,19 +28,19 @@ __all__ = [
 
 class VisitationSearchException(ChessException):
   """
-  Super class of exceptions organic to `Search` objects. DO NOT USE DIRECTLY. Subclasses give
-  details useful for debugging. `SearchException` exists primarily to allow catching all `Search`
+  Super class of exceptions organic to `Finder` objects. DO NOT USE DIRECTLY. Subclasses give
+  details useful for debugging. `FinderException` exists primarily to allow catching all `Finder`
   exceptions.
   """
   DEFAULT_CODE = "SEARCH_ERROR"
-  DEFAULT_MESSAGE = "Search raised an rollback_exception."
+  DEFAULT_MESSAGE = "Finder raised an rollback_exception."
 
 
 #======================# SEARCH_COLLISION EXCEPTIONS #======================#
 class VisitationSearchCollisionException(VisitationSearchException, OrphanException):
   DEFAULT_CODE = "VISITATION_SEARCH_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "VisitationSearch results contains records with multiple records with properties that should be unique. There "
+    "VisitationFinder results contains records with multiple records with properties that should be unique. There "
     "may be service inconsistencies."
   )
 
@@ -48,21 +48,21 @@ class VisitationSearchCollisionException(VisitationSearchException, OrphanExcept
 class VisitationSearchIdCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_ID_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "VisitationSearch results contains has more than one consistency for the piece_id which should be unique. There "
+    "VisitationFinder results contains has more than one consistency for the piece_id which should be unique. There "
     "may be service inconsistencies."
   )
 
 class VisitationSearchNameCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_NAME_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "VisitationSearch results contains has more than one consistency for visitation_name, which should be unique. There "
+    "VisitationFinder results contains has more than one consistency for visitation_name, which should be unique. There "
     "may be service inconsistencies."
   )
 
 class VisitationSearchCoordCollisionException(VisitationSearchCollisionException):
   DEFAULT_CODE = "VISITATION_SEARCH_COORD_COLLISION_ERROR"
   DEFAULT_MESSAGE = (
-    "VisitationSearch results contains has more than one consistency for visitation_position, which should be unique. There "
+    "VisitationFinder results contains has more than one consistency for visitation_position, which should be unique. There "
     "may be service inconsistencies."
   )
 

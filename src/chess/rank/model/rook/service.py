@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from chess.rank import Rook, RookValidator, RankFactory
-from chess.system import Service, Validator, id_emitter
+from chess.system import EntityService, Validator, id_emitter
 
 
-class RookService(Service[Rook]):
+class RookService(EntityService[Rook]):
     DEFAULT_NAME = "RookService"
     
     def __init__(

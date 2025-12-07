@@ -10,12 +10,12 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.piece import Piece, PieceContext, PieceDataServiceException, PieceSearch, PieceService, PieceContextService
+from chess.piece import Piece, PieceContext, PieceDataServiceException, PieceFinder, PieceService, PieceContextService
 
 
 class PieceDataService(DataService[Piece]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -27,7 +27,7 @@ class PieceDataService(DataService[Piece]):
     # PROVIDES:
         *   PieceService
         *   ContextService
-        *   Search
+        *   Finder
         *   PieceStack data structure
 
     # ATTRIBUTES:
@@ -35,9 +35,9 @@ class PieceDataService(DataService[Piece]):
         *   id (int):
         *   name (str):
         *   items (List[Piece]):
-        *   searcher (Search[Piece]):
-        *   service (Service[Piece]):
-        *   context_service (Service[PieceContext]);
+        *   searcher (Finder[Piece]):
+        *   service (EntityService[Piece]):
+        *   context_service (EntityService[PieceContext]);
         *   current_item (Piece):
         *   size (int):
     """
@@ -48,7 +48,7 @@ class PieceDataService(DataService[Piece]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             items: List[Piece] = List[Piece],
-            search: PieceSearch = PieceSearch(),
+            search: PieceFinder = PieceFinder(),
             service: PieceService = PieceService(),
             context_service: PieceContextService = PieceContextService(),
     ):
@@ -108,8 +108,8 @@ class PieceDataService(DataService[Piece]):
         # ACTION:
         1.  Pass context argument to self.searcher.
         2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
-        3.  The Search object will return any exceptions if it fails, success otherwise.
-        4.  Because Search object does all the error using a try-catch is uneccesar
+        3.  The Finder object will return any exceptions if it fails, success otherwise.
+        4.  Because Finder object does all the error using a try-catch is uneccesar
         
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.

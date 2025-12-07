@@ -26,7 +26,7 @@ class SquareDataService(DataService[Square]):
             service: SquareService = SquareService(),
             context_service: SquareContextService = SquareContextService(),
     ):
-        super().__init__(id=id, name=name, items=items, service=service, context_service=context_service,)
+        super().__init__(id=id, name=name, items=items, service=service, context_service=context_service, )
         
     @LoggingLevelRouter.monitor
     def service(self) -> SquareService:

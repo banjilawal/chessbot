@@ -14,6 +14,7 @@ __all__ = [
     "HumanAgentBuildFailedException",
 ]
 
+
 # ======================# HUMAN_AGENT BUILD EXCEPTIONS #======================#
 class HumanAgentBuildFailedException(HumanAgent, AgentBuildFailedException):
     """
@@ -23,7 +24,7 @@ class HumanAgentBuildFailedException(HumanAgent, AgentBuildFailedException):
     1.  Parent of exceptions raised during HumanAgent build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an HumanAgentBuilder method.
 
-    # Parent
+    # PARENT
         *   HumanAgentException
         *   AgentBuildFailedException
 
@@ -36,4 +37,4 @@ class HumanAgentBuildFailedException(HumanAgent, AgentBuildFailedException):
     None
     """
     ERROR_CODE = "HUMAN_AGENT_BUILD_ERROR"
-    DEFAULT_ERROR_CODE = "HumanAgent build failed."
+    DEFAULT_MESSAGE = "HumanAgent build failed."

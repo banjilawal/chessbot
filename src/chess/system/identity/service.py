@@ -16,7 +16,7 @@ from chess.system import (
 
 class IdentityService:
     """
-    # ROLE: Service, Validation, Data Integrity, ID Generation
+    # ROLE: EntityService, Validation, Data Integrity, ID Generation
 
     # RESPONSIBILITIES:
     1.  Issue IDs to new objects.

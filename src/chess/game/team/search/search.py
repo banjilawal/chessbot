@@ -1,4 +1,4 @@
-# src/chess/team/searcher/searcher.py
+# src/chess/team/searcher/finder.py
 
 """
 Module: chess.team.searcher.searcher
@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import Agent
-from chess.system import GameColor, LoggingLevelRouter, Search, SearchResult
+from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
 from chess.team import Team, TeamContext, TeamContextValidator, TeamSearchFailedException
 
 
-class TeamSearch(Search[Team]):
+class TeamFinder(Finder[Team]):
     """
-    # ROLE: Search
+    # ROLE: Finder
   
     # RESPONSIBILITIES:
     Find Team instances that match target attributes set in TeamContext
@@ -53,7 +53,7 @@ class TeamSearch(Search[Team]):
             context_validator: TeamContextValidator = TeamContextValidator()
     ) -> SearchResult[List[Team]]:
         """"""
-        method = "TeamSearch.find"
+        method = "TeamFinder.find"
         try:
             result = context_validator.validate(candidate=context)
             if result.is_failure():
@@ -102,7 +102,7 @@ class TeamSearch(Search[Team]):
         # Raises:
             *   TeamSearchFailedException
         """
-        method = "TeamSearch._find_by_id"
+        method = "TeamFinder._find_by_id"
         try:
             matches = [team for team in data_set if team.id == id]
             if len(matches) == 0:
@@ -139,7 +139,7 @@ class TeamSearch(Search[Team]):
         # Raises:
             *   TeamSearchFailedException
         """
-        method = "TeamSearch._find_by_name"
+        method = "TeamFinder._find_by_name"
         
         try:
             matches = [team for team in data_set if team.schema.name.upper() == name.upper()]
@@ -177,7 +177,7 @@ class TeamSearch(Search[Team]):
         # Raises:
             *   TeamSearchFailedException
         """
-        method = "TeamSearch._find_by_agent"
+        method = "TeamFinder._find_by_agent"
         
         try:
             matches = [team for team in data_set if team.agent == agent]
@@ -214,7 +214,7 @@ class TeamSearch(Search[Team]):
         # Raises:
             *   TeamSearchFailedException
         """
-        method = "TeamSearch._find_by_color"
+        method = "TeamFinder._find_by_color"
         
         try:
             matches = [team for team in data_set if team.schema.color == color]
@@ -251,7 +251,7 @@ class TeamSearch(Search[Team]):
         # Raises:
             *   TeamSearchFailedException
         """
-        method = "TeamSearch._find_by_game"
+        method = "TeamFinder._find_by_game"
         
         try:
             matches = [team for team in data_set if team.game == game]

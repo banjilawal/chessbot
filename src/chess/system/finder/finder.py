@@ -15,7 +15,7 @@ from chess.system import Context, Validator, SearchResult
 
 D = TypeVar("D")
 
-class Search(ABC, Generic[D]):
+class Finder(ABC, Generic[D]):
   """
   ROLE:
   ----

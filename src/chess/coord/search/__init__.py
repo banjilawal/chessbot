@@ -8,4 +8,4 @@ version: 1.0.0
 """
 
 from .exception import *
-from .search import CoordSearch
+from .search import CoordFinder

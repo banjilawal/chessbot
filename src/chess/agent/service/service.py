@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import Service, id_emitter
+from chess.system import EntityService, id_emitter
 from chess.agent import Agent, AgentFactory, AgentValidator
 
 
-class AgentService(Service[Agent]):
+class AgentService(EntityService[Agent]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

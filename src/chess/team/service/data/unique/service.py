@@ -6,18 +6,20 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
-from typing import cast
 
+from typing import Optional, cast
+
+from chess.game.team import TeamService
 from chess.team import (
     AddingDuplicateTeamException, Team, TeamDataService, TeamInsertionFailedException,
     UniqueTeamDataServiceException
 )
-from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
+from chess.system import EntityService, InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
 
 
 class UniqueTeamDataService(UniqueDataService[Team]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -56,8 +58,17 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         """
         super().__init__(id=id, name=name, data_service=data_service)
         
+    
     @property
-    def team_data_service(self) -> TeamDataService:
+    def current_team(self) -> Optional[Team]:
+        return self.data_service.current_team
+    
+    @property
+    def service(self) -> TeamService:
+        return self.data_service.team_service
+        
+    @property
+    def data_service(self) -> TeamDataService:
         return cast(TeamDataService, self._data_service)
     
     @LoggingLevelRouter.monitor

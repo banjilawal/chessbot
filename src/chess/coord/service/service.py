@@ -7,20 +7,20 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from chess.system import BuildResult, Service, id_emitter
+from chess.system import BuildResult, EntityService, id_emitter
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
 
 
-class CoordService(Service[Coord]):
+class CoordService(EntityService[Coord]):
     """
     # RESPONSIBILITIES:
 
     # PROVIDES:
         *   SquareBuilder
         *   SquareValidator
-        *   Coord Data Service
+        *   Coord Data EntityService
         *
 
     # ATTRIBUTES:
@@ -28,7 +28,7 @@ class CoordService(Service[Coord]):
         *   validator (type[SquareValidator]):
     """
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: EntityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  An API for managing the integrity lifecycle of Coord objects through CoordBuilder and CoordValidator.

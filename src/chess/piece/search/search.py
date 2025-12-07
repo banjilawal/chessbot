@@ -1,4 +1,4 @@
-# src/chess/piece/searcher/searcher.py
+# src/chess/piece/searcher/finder.py
 
 """
 Module: chess.piece.searcher.searcher
@@ -13,10 +13,10 @@ from chess.team import Team
 from chess.rank import Rank
 from chess.coord import Coord
 
-from chess.system import LoggingLevelRouter, Search, SearchResult
-from chess.piece import Piece, PieceContext, PieceContextValidator, PieceSearchException
+from chess.system import LoggingLevelRouter, Finder, SearchResult
+from chess.piece import Piece, PieceContext, PieceContextValidator, PieceFinderException
 
-class PieceSearch(Search[Piece]):
+class PieceFinder(Finder[Piece]):
     """"""
     
     @classmethod
@@ -28,7 +28,7 @@ class PieceSearch(Search[Piece]):
             context_validator: PieceContextValidator = PieceContextValidator()
     ) -> SearchResult[List[Piece]]:
         """"""
-        method = "PieceSearch.find"
+        method = "PieceFinder.find"
         try:
             result = context_validator.validate(candidate=context)
             if result.is_failure():
@@ -51,11 +51,11 @@ class PieceSearch(Search[Piece]):
             
         except Exception as ex:
             return SearchResult.failure(
-                PieceSearchException(
+                PieceFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{PieceSearchException.DEFAULT_MESSAGE}"
+                        f"{PieceFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -64,7 +64,7 @@ class PieceSearch(Search[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_id(cls, data_set: List[Piece], id: int) -> SearchResult[List[Piece]]:
         """"""
-        method = "PieceSearch._find_by_id"
+        method = "PieceFinder._find_by_id"
         try:
             matches = [
                 piece for piece in data_set if piece.id == id
@@ -76,11 +76,11 @@ class PieceSearch(Search[Piece]):
                 return SearchResult.success(payload=matches)
         except Exception as ex:
             return SearchResult.failure(
-                PieceSearchException(
+                PieceFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{PieceSearchException.DEFAULT_MESSAGE}"
+                        f"{PieceFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -89,7 +89,7 @@ class PieceSearch(Search[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_name(cls, data_set: List[Piece], name: str) -> SearchResult[List[Piece]]:
         """"""
-        method = "PieceSearch._find_by_name"
+        method = "PieceFinder._find_by_name"
         try:
             matches = [
                 piece for piece in data_set if piece.name.upper() == name.upper()
@@ -101,11 +101,11 @@ class PieceSearch(Search[Piece]):
                 return SearchResult.success(payload=matches)
         except Exception as ex:
             return SearchResult.failure(
-                PieceSearchException(
+                PieceFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{PieceSearchException.DEFAULT_MESSAGE}"
+                        f"{PieceFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -118,7 +118,7 @@ class PieceSearch(Search[Piece]):
             team: Team
     ) -> SearchResult[List[Piece]]:
         """"""
-        method = "PieceSearch._find_by_team"
+        method = "PieceFinder._find_by_team"
         try:
             matches = [
                 piece for piece in data_set if piece.team == team
@@ -130,11 +130,11 @@ class PieceSearch(Search[Piece]):
                 return SearchResult.success(payload=matches)
         except Exception as ex:
             return SearchResult.failure(
-                PieceSearchException(
+                PieceFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{PieceSearchException.DEFAULT_MESSAGE}"
+                        f"{PieceFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -143,7 +143,7 @@ class PieceSearch(Search[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_rank(cls, data_set: List[Piece], rank: Rank) -> SearchResult[List[Piece]]:
         """"""
-        method = "PieceSearch._find_by_name"
+        method = "PieceFinder._find_by_name"
         try:
             matches = [
                 piece for piece in data_set if piece.rank == rank
@@ -155,11 +155,11 @@ class PieceSearch(Search[Piece]):
                 return SearchResult.success(payload=matches)
         except Exception as ex:
             return SearchResult.failure(
-                PieceSearchException(
+                PieceFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{PieceSearchException.DEFAULT_MESSAGE}"
+                        f"{PieceFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -172,7 +172,7 @@ class PieceSearch(Search[Piece]):
             ransom: int
     ) -> SearchResult[List[Piece]]:
         """"""
-        method = "PieceSearch._find_by_team"
+        method = "PieceFinder._find_by_team"
         try:
             matches = [
                 piece for piece in data_set if piece.rank.ransom == ransom
@@ -184,11 +184,11 @@ class PieceSearch(Search[Piece]):
                 return SearchResult.success(payload=matches)
         except Exception as ex:
             return SearchResult.failure(
-                PieceSearchException(
+                PieceFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{PieceSearchException.DEFAULT_MESSAGE}"
+                        f"{PieceFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -201,7 +201,7 @@ class PieceSearch(Search[Piece]):
             coord: Coord,
     ) -> SearchResult[List[Piece]]:
         """"""
-        method = "PieceSearch._find_by_name"
+        method = "PieceFinder._find_by_name"
         try:
             matches = [
                 piece for piece in data_set if piece.current_position == coord
@@ -213,11 +213,11 @@ class PieceSearch(Search[Piece]):
                 return SearchResult.success(payload=matches)
         except Exception as ex:
             return SearchResult.failure(
-                PieceSearchException(
+                PieceFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{PieceSearchException.DEFAULT_MESSAGE}"
+                        f"{PieceFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )

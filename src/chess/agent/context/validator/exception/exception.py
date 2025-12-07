@@ -24,7 +24,7 @@ class InvalidAgentContextException(AgentContextException, ValidationException):
     1.  Parent of exceptions raised AgentContext validation.
     2.  Wraps unhandled exceptions that hit the finally-block in AgentContextValidator methods.
     
-    # Parent
+    # PARENT
         *   AgentContextException
         *   ValidationException
 

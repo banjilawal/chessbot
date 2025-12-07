@@ -41,7 +41,7 @@ class BoardBuilder(Builder[Board]):
             num_rows: int=BOARD_DIMENSION,
             num_columns: int=BOARD_DIMENSION,
             coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
             piece_service: UniquePieceDataService = UniquePieceDataService(),
             square_data: UniqueSquareDataService = UniqueSquareDataService(),
     ) -> BuildResult[Board]:
@@ -68,7 +68,7 @@ class BoardBuilder(Builder[Board]):
         method = "BoardBuilder.builder"
         
         try:
-            id_validation = identity_service.validate_id(id)
+            id_validation = idservice.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
 
@@ -84,7 +84,7 @@ class BoardBuilder(Builder[Board]):
                         return BuildResult.failure(coord_build_result.exception)
    
                     square_build_result = square_data.builder.build(
-                        id=identity_service.id_emitter.square_id,
+                        id=idservice.id_emitter.square_id,
                         name=name,
                         coord=coord_build_result.payload
                     )

@@ -7,14 +7,14 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import SearchException
+from chess.system import FinderException
 
 __all__ = [
     "SquareContextServiceException",
 ]
 
 
-class SquareContextServiceException(SearchException):
+class SquareContextServiceException(FinderException):
     """
      Super class of exceptions raised by SquareContextService objects. Do not use directly. Subclasses give
      precise, fined-grained, debugging info.

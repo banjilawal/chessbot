@@ -10,7 +10,7 @@ from re import search
 from typing import List, Optional, cast
 
 from chess.piece import OccupationEvent, OccupationEventValidator, Piece
-from chess.board import Board, BoardPieceSearch, BoardSearchContext
+from chess.board import Board, BoardPieceFinder, BoardSearchContext
 from chess.domain import Domain
 from chess.system.transaction import TransactionResult
 from chess.neighbor import NeighborTuple, VisitationService
@@ -55,7 +55,7 @@ class Graph:
    #      actor = event.actor
    #      domain = Domain(piece=event.actor)
    #      for point in actor.rank_name.compute_span(actor):
-   #          search_result = BoardPieceSearch.searcher(self._board, TeamSearchContext(target=point))
+   #          search_result = BoardPieceFinder.searcher(self._board, TeamSearchContext(target=point))
    #          if search_result.is_failure():
    #              return TransactionResult.errored(event_update=event, exception=search_result.exception)
    #

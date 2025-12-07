@@ -24,7 +24,7 @@ class MachineAgentException(AgentException):
         caused a failure.
     2.  Wraps unhandled exceptions that hit the try-finally block of an Agent method.
 
-    # Parent
+    # PARENT
         *   AgentException
 
     # PROVIDES:

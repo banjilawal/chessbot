@@ -8,12 +8,12 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.system import Service, id_emitter
+from chess.system import EntityService, id_emitter
 from chess.coord import CoordContext, CoordContextBuilder, CoordContextValidator
 
-class CoordContextService(Service[CoordContext]):
+class CoordContextService(EntityService[CoordContext]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: EntityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single entry point for CoordContextBuilder and CoordContextValidator objects.

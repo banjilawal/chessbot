@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import Service, id_emitter
+from chess.system import EntityService, id_emitter
 from chess.square import Square, SquareBuilder, SquareValidator
 
-class SquareService(Service[Square]):
+class SquareService(EntityService[Square]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

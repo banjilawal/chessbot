@@ -42,9 +42,9 @@ class RankSpecValidator(Validator[RankSpec]):
     # CLASS METHODS:
         *   validate(candidate: Any) -> ValidationResult[RankSpec]:
         
-        *   verify_id_in_spec(candidate: Any, identity_service: IdentityService) -> ValidationResult[int]:
+        *   verify_id_in_spec(candidate: Any, idservice: IdentityService) -> ValidationResult[int]:
         
-        *   verify_name_in_spec(candidate: Any, identity_service: IdentityService) -> ValidationResult[str]:
+        *   verify_name_in_spec(candidate: Any, idservice: IdentityService) -> ValidationResult[str]:
         
         *   verify_designation_in_spec(candidate: Any, text_validator: TextValidator) -> ValidationResult[str]:
         
@@ -108,17 +108,17 @@ class RankSpecValidator(Validator[RankSpec]):
     def verify_in_ransom_spec(
             cls,
             candidate: Any,
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe id using identity_service. If safe get the id. Else return failure.
+        1.  Verify candidate is a safe id using idservice. If safe get the id. Else return failure.
         2.  If number not in RankSpec.allowed_ransoms return a failed validation result.
         3.  If all checks pass the number in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -132,7 +132,7 @@ class RankSpecValidator(Validator[RankSpec]):
         method = "RankSpecValidator.verify_in_id_spec"
         try:
             # Start the error detection process.
-            id_validation = identity_service.validate_id(candidate)
+            id_validation = idservice.validate_id(candidate)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
                 # Next check if id is allowed.
@@ -156,17 +156,17 @@ class RankSpecValidator(Validator[RankSpec]):
     def verify_name_in_spec(
             cls,
             candidate: Any,
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[str]:
         """
         # ACTION:
-        1.  Verify candidate is a safe id using identity_service. If so convert to id. Else return failure.
+        1.  Verify candidate is a safe id using idservice. If so convert to id. Else return failure.
         2.  If id not in RankSpec.allowed_ids return a failed validation result.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
         ValidationResult[str] containing either:
@@ -180,7 +180,7 @@ class RankSpecValidator(Validator[RankSpec]):
         method = "RankSpecValidator.verify_name_in_spec"
         try:
             # Test if the candidate is safe text.
-            validation = identity_service.validate_name(candidate)
+            validation = idservice.validate_name(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
             # Next check if designation is allowed.

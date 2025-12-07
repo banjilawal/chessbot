@@ -8,8 +8,8 @@ version: 1.0.0
 """
 
 from chess.board import Board
-from chess.system.service import Service
+from chess.system.service import EntityService
 
-class BoardService(Service[Board]):
+class BoardService(EntityService[Board]):
     """"""
     pass

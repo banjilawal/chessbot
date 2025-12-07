@@ -49,7 +49,7 @@ class PieceFactory(Builder[Piece]):
                     rank_certifier: RankCertifier = RankCertifier(),
                     team_certifier: TeamCertifier = TeamCertifier(),
                     positions: CoordDataService = CoordDataService(),
-                    identity_service: IdentityService = IdentityService(),
+                    idservice: IdentityService = IdentityService(),
         ) -> BuildResult[Piece]:
         
         For ease of use and cleaner code dependencies are given default values. All flags must
@@ -73,7 +73,7 @@ class PieceFactory(Builder[Piece]):
             # rank_integrity: RankCertifier = RankCertifier(),
             # team_integrity: TeamCertifier = TeamCertifier(),
             # positions: CoordDataService = CoordDataService(),
-            # identity_service: IdentityService = IdentityService(),
+            # idservice: IdentityService = IdentityService(),
     ) -> BuildResult[Piece]:
         """
         # ACTION:
@@ -88,7 +88,7 @@ class PieceFactory(Builder[Piece]):
             *   rank_certifier (RankCertifier)
             *   team_certifier (TeamCertifier)
             *   positions (CoordDataService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
     
         # Returns:
         BuildResult[Position] containing either:
@@ -332,7 +332,7 @@ class PieceFactory(Builder[Piece]):
             opening_square: Square,
             rank_certifier: RankCertifier = RankCertifier(),
             team_certifier: TeamCertifier = TeamCertifier(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
             square_certifier: SquareService = SquareService(),
     ) -> ValidationResult[(int, str, Rank, Team, int, Square)]:
         """
@@ -344,7 +344,7 @@ class PieceFactory(Builder[Piece]):
         method = "PieceFactory._validate_build_attributes"
         try:
             # Start the error detection process.
-            identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
+            identity_validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
@@ -361,7 +361,7 @@ class PieceFactory(Builder[Piece]):
             if square_validation.is_failure():
                 return BuildResult.failure(square_validation.exception)
             
-            roster_number_validation = identity_service.validate_id(candidate=roster_number)
+            roster_number_validation = idservice.validate_id(candidate=roster_number)
             if roster_number_validation.is_failure():
                 return BuildResult.failure(roster_number_validation.exception)
             

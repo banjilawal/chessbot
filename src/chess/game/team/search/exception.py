@@ -7,26 +7,26 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.system import SearchException
+from chess.system import FinderException
 
 __all__ = [
     # ======================# TEAM_SEARCH EXCEPTIONS #======================#
-    "TeamSearchException",
+    "TeamFinderException",
     "TeamSearchFailedException",
 ]
 
 
 # ======================# TEAM_SEARCH EXCEPTIONS #======================#
-class TeamSearchException(SearchException):
+class TeamFinderException(FinderException):
     """
-    Super class of exceptions raised by TeamSearch objects. Do not use directly. Subclasses give
+    Super class of exceptions raised by TeamFinder objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "TEAM_SEARCH_ERROR"
-    DEFAULT_MESSAGE = "TeamSearch raised an exception."
+    DEFAULT_MESSAGE = "TeamFinder raised an exception."
 
 
-class TeamSearchFailedException(TeamSearchException):
+class TeamSearchFailedException(TeamFinderException):
     """"""
     ERROR_CODE = "TEAM_SEARCH_FAILED_ERROR"
-    DEFAULT_MESSAGE = "TeamSearch failed."
+    DEFAULT_MESSAGE = "TeamFinder failed."

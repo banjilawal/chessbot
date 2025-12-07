@@ -3,7 +3,7 @@ from typing import Union
 
 from chess.system import Result
 from chess.builder import BuildResult
-from chess.agent.search import SearchResult
+from chess.agent.finder import SearchResult
 
 
 class OperationResolver(Enum):

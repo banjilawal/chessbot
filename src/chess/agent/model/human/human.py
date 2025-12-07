@@ -8,10 +8,27 @@ version: 1.0.0
 """
 
 from chess.agent import Agent
+from chess.game import UniqueGameDataService
 from chess.team import UniqueTeamDataService
 
 
 class HumanAgent(Agent):
+    """
+    # ROLE: Controller
+
+    # RESPONSIBILITIES:
+    1.  Forward requests and commands from a Human player to the Game model.
+    2.  Forward movement commands from the person playing to their pieces on the Board.
+    
+    # PARENT
+        *   Agent
+
+    # PROVIDES:
+    HumanAgent
+
+    # ATTRIBUTES:
+    See super class.
+    """
     
     def __init__(
             self,

@@ -28,7 +28,7 @@ class PieceValidator(Validator[Piece]):
             team_service: TeamCertifier = TeamCertifier(),
             rank_service: RankCertifier = RankCertifier(),
             coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService()
+            idservice: IdentityService = IdentityService()
     ) -> ValidationResult[Piece]:
         """"""
         method = "Piece.validate"
@@ -52,7 +52,7 @@ class PieceValidator(Validator[Piece]):
                 )
             
             piece = cast(Piece, candidate)
-            identity_validation = identity_service.validate_identity(
+            identity_validation = idservice.validate_identity(
                 id_candidate=piece.id,
                 name_candidate=piece.name
             )

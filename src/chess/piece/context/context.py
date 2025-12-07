@@ -18,10 +18,10 @@ from chess.system import Context, LoggingLevelRouter
 
 class PieceContext(Context[Piece]):
     """
-    # ROLE: Search option filter
+    # ROLE: Finder option filter
 
     # RESPONSIBILITIES:
-    Provides options for what type of key-value pair PieceSearch should use to find matches.
+    Provides options for what type of key-value pair PieceFinder should use to find matches.
 
     # PROVIDES:
     PieceContext.

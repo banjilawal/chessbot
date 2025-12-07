@@ -39,7 +39,7 @@ class TeamBuilder(Builder[Team]):
                     agent: Agent,
                     schema: TeamSchema,
                     agent_certifier: AgentService = AgentService(),
-                    identity_service: IdentityService = IdentityService(),
+                    idservice: IdentityService = IdentityService(),
                     roster: UniquePieceDataService = UniquePieceDataService(),
                     hostages: UniquePieceDataService = UniquePieceDataService(),
                     schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
@@ -58,7 +58,7 @@ class TeamBuilder(Builder[Team]):
             game: Game,
             agent: Agent,
             schema: TeamSchema,
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
             # roster: UniquePieceDataService = UniquePieceDataService(),
             # hostages: UniquePieceDataService = UniquePieceDataService(),
             game_certifier: GameService = GameService(),
@@ -78,7 +78,7 @@ class TeamBuilder(Builder[Team]):
             *   id (int)
             *   agent (Agent)
             *   schema (TeamSchema)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
             *   agent_certifier (AgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
@@ -94,7 +94,7 @@ class TeamBuilder(Builder[Team]):
         method = "TeamBuilder.builder"
         try:
             # Certify the build resources are safe to use.
-            id_validation = identity_service.validate_id(id)
+            id_validation = idservice.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             

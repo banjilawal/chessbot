@@ -1,4 +1,4 @@
-# src/chess/square/searcher/searcher.py
+# src/chess/square/searcher/finder.py
 
 """
 Module: chess.square.searcher.service
@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import List
 
 from chess.coord import Coord
-from chess.system import LoggingLevelRouter, Search, SearchResult
-from chess.square import Square, SquareContext, SquareContextValidator, SquareSearchException
+from chess.system import LoggingLevelRouter, Finder, SearchResult
+from chess.square import Square, SquareContext, SquareContextValidator, SquareFinderException
 
 
-class SquareSearch(Search[Square]):
+class SquareFinder(Finder[Square]):
     
     @classmethod
     def find(

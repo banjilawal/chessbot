@@ -42,7 +42,7 @@ class TeamContextValidator(Validator[TeamContext]):
                         candidate: Any,
                         schema: TeamSchema = TeamSchema,
                         agent_certifier: AgentService = AgentService(),
-                        identity_service: IdentityService = IdentityService(),
+                        idservice: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
                 
     # INSTANCE METHODS:
@@ -56,7 +56,7 @@ class TeamContextValidator(Validator[TeamContext]):
             candidate: Any,
             schema: TeamSchema = TeamSchema,
             agent_service: AgentService = AgentService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[TeamContext]:
         """
         # ACTION:
@@ -70,7 +70,7 @@ class TeamContextValidator(Validator[TeamContext]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   identity_service (IdentityService):
+            *   idservice (IdentityService):
             *   agent_certifier (PlayerAgentService):
             *   schema (TeamSchema)
 
@@ -111,13 +111,13 @@ class TeamContextValidator(Validator[TeamContext]):
                 )
             # If no errors are detected pick the flag whose value is not for processing.
             if context.id is not None:
-                validation = identity_service.validate_id(candidate=context.id)
+                validation = idservice.validate_id(candidate=context.id)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(payload=context)
             
             if context.name is not None:
-                validation = identity_service.validate_name(candidate=context.name)
+                validation = idservice.validate_name(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(payload=context)

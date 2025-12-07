@@ -8,13 +8,13 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.system import Service, id_emitter
-from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator, TeamSearch
+from chess.system import EntityService, id_emitter
+from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator, TeamFinder
 
 
-class TeamContextService(Service[TeamContext]):
+class TeamContextService(EntityService[TeamContext]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -48,7 +48,7 @@ class TeamContextService(Service[TeamContext]):
     See super class.
     """
     DEFAULT_SERVICE_NAME = "TeamContextService"
-    _search: TeamSearch
+    _search: TeamFinder
     
     def __init__(
             self,
@@ -56,7 +56,7 @@ class TeamContextService(Service[TeamContext]):
             name: str = DEFAULT_SERVICE_NAME,
             builder: TeamContextBuilder = TeamContextBuilder(),
             validator: TeamContextValidator = TeamContextValidator(),
-            search: TeamSearch = TeamSearch(),
+            search: TeamFinder = TeamFinder(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._search = search
@@ -70,6 +70,6 @@ class TeamContextService(Service[TeamContext]):
         return cast(TeamContextValidator, self.item_validator)
         
     @property
-    def search(self) -> TeamSearch:
+    def search(self) -> TeamFinder:
         return self._search
         

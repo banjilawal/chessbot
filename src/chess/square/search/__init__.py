@@ -8,4 +8,4 @@ version: 1.0.0
 """
 
 from .exception import *
-from .seach import SquareSearch
+from .seach import SquareFinder

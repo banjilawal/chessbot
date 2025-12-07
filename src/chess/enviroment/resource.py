@@ -12,7 +12,7 @@ from typing import cast, Tuple
 
 from chess.square import Square, SquareValidator
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
-from chess.board import Board, BoardSearchContext, BoardSquareSearch, BoardValidator, SquareInvariantBreachException
+from chess.board import Board, BoardSearchContext, BoardSquareFinder, BoardValidator, SquareInvariantBreachException
 
 
 class BoardResourceValidator(Validator[Square, Board]):
@@ -58,7 +58,7 @@ class BoardResourceValidator(Validator[Square, Board]):
 
       environment = cast(Board, environment_validation.payload)
 
-      search_result = BoardSquareSearch.search(board=environment, search_context=BoardSearchContext(id=resource.id))
+      search_result = BoardSquareFinder.search(board=environment, search_context=BoardSearchContext(id=resource.id))
       if search_result.is_empty():
         return ValidationResult.failure(
           SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.DEFAULT_MESSAGE}")

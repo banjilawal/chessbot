@@ -12,7 +12,7 @@ from typing import cast
 from chess.rank import Queen
 from chess.square import Square
 from chess.system import LoggingLevelRouter, BuildResult, id_emitter
-from chess.board import Board, BoardSquareSearch, BoardSearchContext, CoordSearchInvariantBreachException
+from chess.board import Board, BoardSquareFinder, BoardSearchContext, CoordSearchInvariantBreachException
 from chess.piece import (
     KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, PromotablePiece,
     PromotionEvent, BoardActorValidator, TravelEvent, TravelResourceValidator, ActorAlreadyAtDestinationException
@@ -73,7 +73,7 @@ class TravelEventFactory:
                         )
                 )
             
-            actor_square_search = BoardSquareSearch.search(
+            actor_square_search = BoardSquareFinder.search(
                 board=board,
                 search_context=BoardSearchContext(coord=actor.current_position)
             )

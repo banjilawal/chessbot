@@ -14,7 +14,7 @@ from chess.system import SearchContext
 
 class BoardSearchContext(SearchContext):
     """
-    # ROLE: Search option filter
+    # ROLE: Finder option filter
   
     # RESPONSIBILITIES:
     Provides options for what type of key-value pair BoardSearch implementations use to find matches.

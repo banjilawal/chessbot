@@ -25,6 +25,9 @@ class AgentContextValidator(Validator[AgentContext]):
     # RESPONSIBILITIES:
     1. Verify a candidate is an AgentContext object's safety before a client uses it.
 
+    # PARENT
+        *   Validator
+
     # PROVIDES:
       ValidationResult[AgentContext] containing either:
             - On success: AgentContext in the payload.
@@ -40,7 +43,7 @@ class AgentContextValidator(Validator[AgentContext]):
             candidate: Any,
             team_service: TeamService = TeamService(),
             game_service: GameService = GameService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[AgentContext]:
         """
         # Action:
@@ -60,7 +63,7 @@ class AgentContextValidator(Validator[AgentContext]):
         These Parameters must be provided:
             *   team_service (TeamService)
             *   game_service (GameService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
           BuildResult[AgentContext] containing either:
@@ -104,25 +107,25 @@ class AgentContextValidator(Validator[AgentContext]):
                 )
             # Which ever attribute value is not null should be certified safe by the appropriate validator.
             if context.id is not None:
-                validation = identity_service.validate_id(candidate=context.id)
+                validation = idservice.validate_id(candidate=context.id)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.name is not None:
-                validation = identity_service.validate_name(candidate=context.name)
+                validation = idservice.validate_name(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.team is not None:
-                validation = team_service.item_validator.validate(candidate=context.name)
+                validation = team_service.item_validator.validate(candidate=context.team)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.game is not None:
-                validation = game_service.item_validator.validate(candidate=context.name)
+                validation = game_service.item_validator.validate(candidate=context.game)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)

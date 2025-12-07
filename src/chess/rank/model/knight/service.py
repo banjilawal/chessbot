@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from chess.rank import Knight, KnightValidator, RankFactory
-from chess.system import Service, Validator, id_emitter
+from chess.system import EntityService, Validator, id_emitter
 
 
-class KnightService(Service[Knight]):
+class KnightService(EntityService[Knight]):
     DEFAULT_NAME = "KnightService"
     
     def __init__(

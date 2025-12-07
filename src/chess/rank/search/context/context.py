@@ -15,7 +15,7 @@ from chess.system import SearchContext
 
 class RankSearchContext(SearchContext):
     """
-    # ROLE: Search option filter
+    # ROLE: Finder option filter
   
     # RESPONSIBILITIES:
     Provides options for what type of key-value pair RankSearch implementations use to find matches.

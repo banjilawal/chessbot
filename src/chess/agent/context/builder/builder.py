@@ -28,6 +28,9 @@ class AgentContextBuilder(Builder[AgentContext]):
         Produce AgentContext instances whose integrity is always guaranteed. If any attributes do not pass
         their integrity checks, send an exception instead of an unsafe AgentContext.
 
+    # PARENT
+        *   Builder
+
     # PROVIDES:
       BuildResult[AgentContext] containing either:
             - On success: AgentContext in the payload.
@@ -48,7 +51,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             variety: Optional[AgentVariety] = None,
             team_service: TeamService = TeamService(),
             game_service: GameService = GameService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> BuildResult[AgentContext]:
         """
         # Action:
@@ -68,7 +71,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         These Parameters must be provided:
             *   team_service (TeamService)
             *   game_service (GameService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
           BuildResult[AgentContext] containing either:
@@ -92,7 +95,7 @@ class AgentContextBuilder(Builder[AgentContext]):
                     NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
                 )
             # Only one param can be used for a searcher. If you need to searcher by multiple params
-            # Filter the previous set of matches in a new AgentSearcher with a new context.
+            # Filter the previous set of matches in a new AgentFinder with a new context.
             if param_count > 1:
                 return BuildResult.failure(
                     TooManyAgentContextFlagsException(f"{method}: {TooManyAgentContextFlagsException}")
@@ -100,13 +103,13 @@ class AgentContextBuilder(Builder[AgentContext]):
             # After verifying the correct number of switches is turned on validate the target value
             # with the appropriate Validator. On pass create an AgentContext.
             if id is not None:
-                validation = identity_service.validate_id(id)
+                validation = idservice.validate_id(id)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(AgentContext(id=id))
             
             if name is not None:
-                validation = identity_service.validate_name(name)
+                validation = idservice.validate_name(name)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 return BuildResult.success(AgentContext(name=name))

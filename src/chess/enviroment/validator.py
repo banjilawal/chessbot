@@ -9,7 +9,7 @@ Version: 1.0.1
 from typing import cast
 
 from chess.board import (
-    Board, BoardSearchContext, BoardSquareSearch, BoardValidator,
+    Board, BoardSearchContext, BoardSquareFinder, BoardValidator,
     SquareInvariantBreachException
 )
 from chess.board.search.context.builder import BoardSearchContextBuilder
@@ -97,7 +97,7 @@ class TurnSceneValidator(Validator[TurnScene]):
                 return ValidationResult.failure(search_context_build.exception)
             search_context = cast(BoardSearchContext, search_context_build.payload)
             
-            search_result = BoardSquareSearch.search(board=board, search_context=search_context)
+            search_result = BoardSquareFinder.search(board=board, search_context=search_context)
             if search_result.is_failure():
                 return ValidationResult.failure(search_result.exception)
             

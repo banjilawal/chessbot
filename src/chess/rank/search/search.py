@@ -10,7 +10,7 @@ from typing import List
 
 
 from chess.system import LoggingLevelRouter, SearchResult
-from chess.rank import RankSpec, RankSearchException
+from chess.rank import RankSpec, RankFinderException
 
 
 class RankSearch:
@@ -28,7 +28,7 @@ class RankSearch:
             return SearchResult.success(payload=matches)
         if len(matches) > 1:
             return SearchResult.failure(
-                RankSearchException(f"{method}: {RankSearchException.DEFAULT_MESSAGE}")
+                RankFinderException(f"{method}: {RankFinderException.DEFAULT_MESSAGE}")
             )
         
     @classmethod
@@ -43,7 +43,7 @@ class RankSearch:
             return SearchResult.success(payload=matches)
         if len(matches) > 1:
             return SearchResult.failure(
-                RankSearchException(f"{method}: {RankSearchException.DEFAULT_MESSAGE}")
+                RankFinderException(f"{method}: {RankFinderException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -78,5 +78,5 @@ class RankSearch:
             return SearchResult.success(payload=matches)
         if len(matches) > 1:
             return SearchResult.failure(
-                RankSearchException(f"{method}: {RankSearchException.DEFAULT_MESSAGE}")
+                RankFinderException(f"{method}: {RankFinderException.DEFAULT_MESSAGE}")
             )

@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.exception import SearchException
 from chess.piece.exception import PieceCapturingItSelfException
-from chess.agent.search import BoardSearch
+from chess.agent.finder import BoardSearch
 from chess.square import Square
 from assurance import ThrowHelper
 from chess.event import AttackEvent, AttackEventBuilderException, TargetSquareMismatchException

@@ -10,13 +10,13 @@ Version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, Service, Context
+from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, EntityService, Context
 
 T = TypeVar("T")
 
 class UniqueDataService(ABC, Generic[T]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Assures DataService only stores unique data with no duplicates.
@@ -26,6 +26,7 @@ class UniqueDataService(ABC, Generic[T]):
     5.  Public facing API.
 
     # PROVIDES:
+        *   EntityService
         *   DataService
 
     # ATTRIBUTES:
@@ -64,9 +65,14 @@ class UniqueDataService(ABC, Generic[T]):
         return self._data_service.is_empty
     
     @property
-    def service(self) -> Service[T]:
+    def service(self) -> EntityService[T]:
         """"""
         return self._data_service.service
+    
+    @property
+    def data_service(self) -> DataService[T]:
+        return self._data_service
+        
     
     @LoggingLevelRouter.monitor
     def search(self, context: Context) -> SearchResult[List[T]]:

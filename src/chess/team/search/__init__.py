@@ -14,6 +14,6 @@ None
 
 # Modules
 from .exception import *
-from .search import TeamSearch
+from .search import TeamFinder
 
 

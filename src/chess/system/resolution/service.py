@@ -11,12 +11,12 @@ version: 0.0.1
 from abc import ABC
 from typing import Generic, TypeVar
 
-from chess.system.service import Service
+from chess.system.service import EntityService
 
 T = TypeVar("T")
 
 
-class ResolutionService(Service[ABC, Generic[T]]):
+class ResolutionService(EntityService[ABC, Generic[T]]):
     """"""""
     pass
 

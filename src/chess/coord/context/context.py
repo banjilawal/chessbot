@@ -15,10 +15,10 @@ from chess.system import Context
 
 class CoordContext(Context[Coord]):
     """
-    # ROLE: Search option filter
+    # ROLE: Finder option filter
   
     # RESPONSIBILITIES:
-    Provides options for what type of key-value pair CoordSearch should use to find matches.
+    Provides options for what type of key-value pair CoordFinder should use to find matches.
   
     # PROVIDES:
     CoordContext.

@@ -24,6 +24,10 @@ class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagCount
 
     # RESPONSIBILITIES:
     1.  Raised if no AgentContext flag is provided with a searcher value.
+    
+    # PARENT
+        *   InvalidAgentContextException
+        *   ContextFlagCountException
 
     # PROVIDES:
     NoAgentContextFlagException
@@ -40,7 +44,11 @@ class TooManyAgentContextFlagsException(InvalidAgentContextException, ContextFla
     # ROLE: ContextFlagException, AgentContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Agent attribute is going to be used in an AgentSearcher.
+    1.  Indicate if more than one Agent attribute is going to be used in an AgentFinder.
+    
+    # PARENT
+        *   InvalidAgentContextException
+        *   ContextFlagCountException
 
     # PROVIDES:
     TooManyAgentContextFlagsException

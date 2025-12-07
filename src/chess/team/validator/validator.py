@@ -39,7 +39,7 @@ class TeamValidator(Validator[Team]):
     
     # CLASS METHODS:
            validate(
-                candidate: Any, agent_certifier: AgentService, identity_service: IdentityService
+                candidate: Any, agent_certifier: AgentService, idservice: IdentityService
                 team_schema_validator: TeamSchemaValidator
             ) -> ValidationResult[Team]:
             
@@ -62,7 +62,7 @@ class TeamValidator(Validator[Team]):
             cls,
             candidate: Any,
             agent_service: AgentService = AgentService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
         """
@@ -79,7 +79,7 @@ class TeamValidator(Validator[Team]):
             *   candidate (Any)
             *   schema (TeamSchema)
             *   agent_certifier (PlayerAgentService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
 
         # Returns:
         ValidationResult[Team] containing either:
@@ -112,7 +112,7 @@ class TeamValidator(Validator[Team]):
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
             # After schema checks out. Test name and id at the same time.
-            identity_validation = identity_service.validate_identity(
+            identity_validation = idservice.validate_identity(
                 id_candidate=team.id,
                 name_candidate=team.schema.name
             )
@@ -171,7 +171,7 @@ class TeamValidator(Validator[Team]):
         2.  Use agent_certifier to certify agent_candidate is a safe agent. If so pull from validation_result payload.
         3.  If team.agent != agent return an exception inside a ValidationResult.
         4.  Build a search_context for the team with team_context service.
-        5.  Search for the team inside agent.team_assignments.
+        5.  Finder for the team inside agent.team_assignments.
         6.  If the searcher generates an error or produces an no hits return an exception inside a ValidationResult.
         7.  If all checks pass return the (team, agent) registration tuple.
 
@@ -209,7 +209,7 @@ class TeamValidator(Validator[Team]):
                     TeamMismatchesAgentException(f"{method}: {TeamMismatchesAgentException.DEFAULT_MESSAGE}")
                 )
             
-            # When team.agent == agent Search agent.team_assignments; build a searcher context
+            # When team.agent == agent Finder agent.team_assignments; build a searcher context
             search_context_build = team_context_service.item_builder.build(id=team.id)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)

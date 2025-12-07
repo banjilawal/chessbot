@@ -170,7 +170,7 @@ class TeamSchemaValidator(Validator[TeamSchema]):
     def verify_name_in_schema(
             cls,
             candidate: Any,
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[str]:
         """
         # ACTION:
@@ -199,7 +199,7 @@ class TeamSchemaValidator(Validator[TeamSchema]):
         
         try:
             # Start the error detection process.
-            name_validation = identity_service.validate_name(candidate)
+            name_validation = idservice.validate_name(candidate)
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
             # Get the name from the validation payload on success.

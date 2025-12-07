@@ -21,7 +21,7 @@ from chess.system import Transaction, TransactionResult, TransactionState, Loggi
   SearchResult
 
 from chess.square import Square
-from chess.agent.search import BoardSearch
+from chess.agent.finder import BoardSearch
 
 from chess.team import AddEnemyHostageRolledBackException, PieceCollectionCategory
 from chess.team.exception import RemoveTeamMemberRolledBackException

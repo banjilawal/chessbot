@@ -49,7 +49,7 @@ class TeamContextBuilder(Builder[TeamContext]):
 
                         agent_certifier: AgentService = AgentService(),
                         team_validator: TeamValidator = TeamValidator(),
-                        identity_service: IdentityService = IdentityService(),
+                        idservice: IdentityService = IdentityService(),
                         schema_validator: Optional[TeamSchemaValidator] = TeamSchemaValidator(),
                ) -> BuildResult[TeamContext]:
         For ease of use and cleaner code dependencies are given default values. All flags must
@@ -70,7 +70,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             color: Optional[GameColor] = None,
             game_service: GameService = GameService(),
             agent_service: AgentService = AgentService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> BuildResult[TeamContext]:
         """
@@ -90,7 +90,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         These Parameters must be provided:
             *   game_service (GameService)
             *   agent_certifier (AgentService)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
             *   schema_validator (TeamSchemaValidator)
 
         # Returns:
@@ -122,7 +122,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             # If no errors are detected pick the flag whose value is not for processing.
             
             if id is not None:
-                validation = identity_service.validate_id(id)
+                validation = idservice.validate_id(id)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 # If id is correct create a id.TeamContext and return it.

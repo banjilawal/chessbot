@@ -60,19 +60,19 @@ from chess.coord import Coord
 from chess.piece import Piece
 from chess.board import Board, BoardSearchContext, BoardSearchContextValidator, BoardValidator
 from chess.system import (
-    Search, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException, 
+    Finder, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException,
     PieceSearchIdCollisionException
 )
 
 
-class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
+class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
     def search(cls, service: ProjectionService, search_context: ProjectionSearchContext) -> SearchResult[List[Projection]]:
         """"""
-        method = "WhiteTeamProjectionSearch.searcher"
+        method = "WhiteTeamProjectionFinder.searcher"
 
         service_validation = ProjectionServiceValidator.validate(service)
         if service_validation.is_failure():
@@ -89,13 +89,13 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
             return BoardPieceSearch._name_search(board=board, name=search_context.name)
 
         if search_context.coord is not None:
-            return WhiteTeamProjectionSearch._coord_search(board=board, ransom=search_context.coord)
+            return WhiteTeamProjectionFinder._coord_search(board=board, ransom=search_context.coord)
 
 
     @classmethod
     @LoggingLevelRouter.monitor
     def _id_search(cls, board: Board, id: int) -> SearchResult[List[Piece]]:
-        method = "BoardPieceSearch._id_search"
+        method = "BoardPieceFinder._id_search"
         try:
             matches = [piece for piece in board.pieces if piece.id == id]
             if len(matches) == 0:
@@ -111,7 +111,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _name_search(cls, board: Board, name: str) -> SearchResult[List[Piece]]:
-        method = "BoardPieceSearch._name_search"
+        method = "BoardPieceFinder._name_search"
         try:
             matches = [piece for piece in board.pieces if piece.name.upper == name.upper()]
             if len(matches) == 0:
@@ -126,7 +126,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _coord_search(cls, board: Board, coord: Coord) -> SearchResult[List[Piece]]:
-        method = "BoardPieceSearch._coord_search"
+        method = "BoardPieceFinder._coord_search"
         try:
             matches = [piece for piece in board.pieces if piece.current_position == coord]
             if len(matches) == 0:
@@ -142,7 +142,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_ids(cls, matches: List[Piece], board: Board) -> SearchResult[List[Piece]]:
-        method = "BoardPieceSearch._resolve_matching_ids"
+        method = "BoardPieceFinder._resolve_matching_ids"
         target = matches.pop()
         misses = [piece for piece in matches if piece.id == target.id and (
                 piece.name.upper() != target.name.upper() or piece.current_position != target.current_position
@@ -167,7 +167,7 @@ class WhiteTeamProjectionSearch(Search[ProjectionService, Projection]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_names(cls, matches: List[Piece], board: Board) -> SearchResult[List[Piece]]:
-        method = "BoardPieceSearch._resolve_matching_names"
+        method = "BoardPieceFinder._resolve_matching_names"
         target = matches.pop()
         misses = [piece for piece in matches if piece.name.upper() == target.name.upper() and (
                 piece.id != target.id or piece.current_position != target.current_position

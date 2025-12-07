@@ -14,7 +14,9 @@ from chess.game import UniqueGameDataService
 from chess.engine.service import EngineService
 from chess.agent import (
     Agent, AgentBuildFailedException, AgentContext, AgentContextBuildFailedException, AgentVariety,
-    AgentValidator, HumanAgent, MachineAgent, NoAgentContextFlagException, TooManyAgentContextFlagsException
+    AgentValidator, HumanAgent, HumanAgentBuildFailedException, MachineAgent, MachineAgentBuildFailedException,
+    NoAgentContextFlagException,
+    TooManyAgentContextFlagsException
 )
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
@@ -26,6 +28,9 @@ class AgentFactory(Builder[Agent]):
         # RESPONSIBILITIES:
         Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
         their integrity checks, send an exception instead of an unsafe Agent.
+        
+        # PARENT
+            *   Builder
 
         # PROVIDES:
         BuildResult[Agent] containing either:
@@ -43,6 +48,7 @@ class AgentFactory(Builder[Agent]):
                 id: id_emitter.agent_id,
                 agent_variety: AgentVariety,
                 engine_service: Optional[EngineService] = None,
+                agent_validator: AgentValidator = AgentValidator(),
         ) -> BuildResult[Agent]:
             """
             # ACTION:
@@ -70,8 +76,10 @@ class AgentFactory(Builder[Agent]):
                 if variety_validation.failure():
                     return BuildResult.failure(variety_validation.exception)
                 # Use agent_variety to decide which factory method to call.
+                
                 if isinstance(agent_variety, HumanAgent):
                     return cls.build_human_agent(id=id, name=name,)
+                
                 # Machine agent requires an engine_service.
                 if isinstance(agent_variety, MachineAgent):
                     return cls.build_machine_agent(id=id, name=name, engine_service=engine_service)
@@ -93,7 +101,7 @@ class AgentFactory(Builder[Agent]):
                 cls,
                 id: int,
                 name: str,
-                identity_service: IdentityService = IdentityService(),
+                idservice: IdentityService = IdentityService(),
         ) -> BuildResult[HumanAgent]:
             """
             # ACTION:
@@ -103,7 +111,7 @@ class AgentFactory(Builder[Agent]):
             # PARAMETERS:
                 *   id (int)
                 *   name (str)
-                *   identity_service (IdentityService)
+                *   idservice (IdentityService)
 
             # Returns:
             ValidationResult[HumanAgent] containing either:
@@ -116,7 +124,7 @@ class AgentFactory(Builder[Agent]):
             method = "AgentBuilder.build_human_agent"
             try:
                 # Only need to certify the name and id are correct.
-                validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
+                validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
                 # On success return the HumanAgent in a BuildResult payload.
@@ -134,7 +142,7 @@ class AgentFactory(Builder[Agent]):
             except Exception as ex:
                 return BuildResult.failure(
                     HumanAgentBuildFailedException(
-                        ex=ex, message=f"{method}:{HumanAgentBuildFailedException.DEFAULT_MESSAGE}"
+                        ex=ex, message=f"{method}: {HumanAgentBuildFailedException.DEFAULT_MESSAGE}"
                     )
                 )
         
@@ -145,18 +153,18 @@ class AgentFactory(Builder[Agent]):
                 name: str,
                 id: int = id_emitter.service_id,
                 engine_service: EngineService = EngineService(),
-                identity_service: IdentityService = IdentityService(),
+                idservice: IdentityService = IdentityService(),
         ) -> BuildResult[MachineAgent]:
             """
             # ACTION:
-            1.  Certifying the id and name and name are safe with identity_service.
+            1.  Certifying the id and name and name are safe with idservice.
             2.  Use engine_service_validator to ensure the engine_service has all the required components.
 
             # PARAMETERS:
                 *   id (int)
                 *   name (str)
                 *   engine_service (EngineService)
-                *   identity_service (IdentityService)
+                *   idservice (IdentityService)
                 *   engine_service_validator (EngineServiceValidator)
 
             # Returns:
@@ -170,9 +178,10 @@ class AgentFactory(Builder[Agent]):
             method = "AgentBuilder.build_machine_agent"
             try:
                 # Certify the id and name are safe.
-                identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
+                identity_validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
                 if identity_validation.is_failure():
                     return BuildResult.failure(identity_validation.exception)
+                
                 # Certify the engine_service has all the required components
                 engine_service_validation = engine_service_validator.validate(candidate=engine_service)
                 if engine_service_validation.is_failure():

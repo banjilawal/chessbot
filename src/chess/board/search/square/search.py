@@ -60,13 +60,13 @@ from chess.square import Square
 
 from chess.board import Board, BoardSearchContext, BoardSearchContextValidator
 from chess.system import (
-    Search, SearchResult, LoggingLevelRouter, SquareSearchNameCollisionException, SquareSearchCoordCollisionException, 
+    Finder, SearchResult, LoggingLevelRouter, SquareSearchNameCollisionException, SquareSearchCoordCollisionException,
     SquareSearchIdCollisionException
 )
 
 
 
-class BoardSquareSearch(Search[Board, Square]):
+class BoardSquareFinder(Finder[Board, Square]):
     """
     # ROLE: Builder implementation
   
@@ -85,7 +85,7 @@ class BoardSquareSearch(Search[Board, Square]):
     @classmethod
     @LoggingLevelRouter.monitor
     def search(cls, board: Board, search_context: BoardSearchContext) -> SearchResult[List[Square]]:
-        method = "BoardPieceSearch.old_search"
+        method = "BoardPieceFinder.old_search"
 
         # board_validation = BoardValidator.validate(board_validator)
         # if not board_validation.is_success():
@@ -96,19 +96,19 @@ class BoardSquareSearch(Search[Board, Square]):
             return SearchResult(exception=search_context_validation.exception)
 
         if search_context.id is not None:
-            return BoardSquareSearch._id_search(board=board, id=search_context.id)
+            return BoardSquareFinder._id_search(board=board, id=search_context.id)
 
         if search_context.name is not None:
-            return BoardSquareSearch._name_search(board=board, name=search_context.name)
+            return BoardSquareFinder._name_search(board=board, name=search_context.name)
 
         if search_context.coord is not None:
-            return BoardSquareSearch._coord_search(board=board, ransom=search_context.coord)
+            return BoardSquareFinder._coord_search(board=board, ransom=search_context.coord)
 
 
     @classmethod
     @LoggingLevelRouter.monitor
     def _id_search(cls, board: Board, id: int) -> SearchResult[List[Square]]:
-        method = "BoardPieceSearch._id_search"
+        method = "BoardPieceFinder._id_search"
         try:
             matches = [square for square in board.squares if square.id == id]
             if len(matches) == 0:
@@ -116,7 +116,7 @@ class BoardSquareSearch(Search[Board, Square]):
             elif len(matches) == 1:
                 return SearchResult(payload=matches)
             else:
-                return BoardSquareSearch._resolve_matching_ids(matches=matches, board=board)
+                return BoardSquareFinder._resolve_matching_ids(matches=matches, board=board)
         except Exception as e:
             return SearchResult(exception=e)
 
@@ -124,7 +124,7 @@ class BoardSquareSearch(Search[Board, Square]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _name_search(cls, board: Board, name: str) -> SearchResult[List[Square]]:
-        method = "BoardPieceSearch._name_search"
+        method = "BoardPieceFinder._name_search"
         try:
             matches = [square for square in board.squares if square.name.upper == name.upper()]
             if len(matches) == 0:
@@ -132,7 +132,7 @@ class BoardSquareSearch(Search[Board, Square]):
             elif len(matches) == 1:
                 return SearchResult(payload=matches)
             else:
-                return BoardSquareSearch._resolve_matching_names(matches=matches, board=board)
+                return BoardSquareFinder._resolve_matching_names(matches=matches, board=board)
         except Exception as e:
             return SearchResult(exception=e)
 
@@ -140,7 +140,7 @@ class BoardSquareSearch(Search[Board, Square]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _coord_search(cls, board: Board, coord: Coord) -> SearchResult[List[Square]]:
-        method = "BoardPieceSearch._coord_search"
+        method = "BoardPieceFinder._coord_search"
         try:
             matches = [square for square in board.squares if square.coord == coord]
             if len(matches) == 0:
@@ -148,7 +148,7 @@ class BoardSquareSearch(Search[Board, Square]):
             elif len(matches) == 1:
                 return SearchResult(payload=matches)
             else:
-                return BoardSquareSearch._resolve_matching_coords(matches=matches, board=board)
+                return BoardSquareFinder._resolve_matching_coords(matches=matches, board=board)
         except Exception as e:
             return SearchResult(exception=e)
 
@@ -156,7 +156,7 @@ class BoardSquareSearch(Search[Board, Square]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_ids(cls, matches: List[Square], board: Board) -> SearchResult[List[Square]]:
-        method = "BoardPieceSearch._resolve_matching_ids"
+        method = "BoardPieceFinder._resolve_matching_ids"
         target = matches.pop()
         misses = [square for square in matches if square.id == target.id and (
                 square.name.upper() != target.name.upper() or square.coord != target.coord
@@ -181,7 +181,7 @@ class BoardSquareSearch(Search[Board, Square]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_names(cls, matches: List[Square], board: Board) -> SearchResult[List[Square]]:
-        method = "BoardPieceSearch._resolve_matching_names"
+        method = "BoardPieceFinder._resolve_matching_names"
         target = matches.pop()
         misses = [square for square in matches if square.name.upper() == target.name.upper() and (
                 square.id != target.id or square.coord != target.coord
@@ -206,7 +206,7 @@ class BoardSquareSearch(Search[Board, Square]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _resolve_matching_coords(cls, matches: List[Square], board: Board) -> SearchResult[List[Square]]:
-        method = "BoardPieceSearch._resolve_matching_coords"
+        method = "BoardPieceFinder._resolve_matching_coords"
         target = matches.pop()
         misses = [square for square in matches if square.coord == target.coord and (
                 square.name.upper() != target.name.upper() or square.id != target.id

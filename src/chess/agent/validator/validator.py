@@ -24,7 +24,7 @@ class AgentValidator(Validator[Agent]):
     def validate(
             cls,
             candidate: Any,
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
     ) -> ValidationResult[Agent]:
         
         """
@@ -70,7 +70,7 @@ class AgentValidator(Validator[Agent]):
             
             agent = cast(Agent, candidate)
             
-            identity_validation = identity_service.validate_identity(agent.id, agent.name)
+            identity_validation = idservice.validate_identity(agent.id, agent.name)
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             

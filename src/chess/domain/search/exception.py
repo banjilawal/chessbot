@@ -8,44 +8,44 @@ version: 1.0.0
 """
 
 from chess.domain import DomainException
-from chess.system import SearchException
+from chess.system import FinderException
 
 __all__ = [
-    "DomainVisitorSearchException",
+    "DomainVisitorFinderException",
     "ResidentSearchIdCollisionException",
     "ResidentSearchNameCollisionException",
     "ResidentSearchCoordCollisionException"
 ]
 
 
-class DomainVisitorSearchException(DomainException, SearchException):
-    """Base class for all DomainResidentSearch exceptions"""
+class DomainVisitorFinderException(DomainException, FinderException):
+    """Base class for all DomainResidentFinder exceptions"""
     ERROR_CODE = "DOMAIN_VISITOR_SEARCH_ERROR"
-    DEFAULT_MESSAGE = "DomainResidentSearch raised an exception."
+    DEFAULT_MESSAGE = "DomainResidentFinder raised an exception."
 
 
-class ResidentSearchIdCollisionException(DomainVisitorSearchException):
+class ResidentSearchIdCollisionException(DomainVisitorFinderException):
     """"""
     ERROR_CODE = "VISITOR_SEARCH_ID_COLLISION_ERROR"
     DEFAULT_MESSAGE = (
-        "The DomainResidentSearch result had more than one result on a piece_id that should be unique. "
+        "The DomainResidentFinder result had more than one result on a piece_id that should be unique. "
         "There may be inconsistent data in the system."
     )
 
 
-class ResidentSearchNameCollisionException(DomainVisitorSearchException):
+class ResidentSearchNameCollisionException(DomainVisitorFinderException):
     """"""
     ERROR_CODE = "VISITOR_SEARCH_NAME_COLLISION_ERROR"
     DEFAULT_MESSAGE = (
-        "The DomainResidentSearch result had more than one result on a piece_name that should be unique. "
+        "The DomainResidentFinder result had more than one result on a piece_name that should be unique. "
         "There may be inconsistent data in the system."
     )
 
 
-class ResidentSearchCoordCollisionException(DomainVisitorSearchException):
+class ResidentSearchCoordCollisionException(DomainVisitorFinderException):
     """"""
     ERROR_CODE = "VISITOR_SEARCH_COORD_COLLISION_ERROR"
     DEFAULT_MESSAGE = (
-        "The DomainResidentSearch result had more than one result on a piece.current_position that should be unique. "
+        "The DomainResidentFinder result had more than one result on a piece.current_position that should be unique. "
         "There may be inconsistent data in the system."
     )

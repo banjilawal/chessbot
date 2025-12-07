@@ -7,15 +7,15 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-from chess.system import SearchException
+from chess.system import FinderException
 
-__all__ = ["CoordSearchException"]
+__all__ = ["CoordFinderException"]
 
-class CoordSearchException(SearchException):
+class CoordFinderException(FinderException):
     """
     Super class of exceptions raised by CoordSearche objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "COORD_SEARCH_ERROR"
-    DEFAULT_MESSAGE = "CoordSearch raised an exception."
+    DEFAULT_MESSAGE = "CoordFinder raised an exception."
 

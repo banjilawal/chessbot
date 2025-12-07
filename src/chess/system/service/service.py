@@ -15,19 +15,23 @@ from chess.system import Builder, Validator
 T = TypeVar("T")
 
 
-class Service(ABC, Generic[T]):
+class EntityService(ABC, Generic[T]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: EntityService, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for T objects and modules.
+    1.  Provide a single interface/entry point for modules and objects responsible for a stage in the Entity's
+        lifecycle.
     2.  Masks implementation details and business logic making features easier to use.
     3.  Protects T objects from direct, unprotected access.
     4.  Public facing API.
+    
+    # PARENT
+    None
 
     # PROVIDES:
-    Validator for T
-    Building of T objects.
+        *   EntityBuilder
+        *   EntityValidator
 
     # ATTRIBUTES:
     None
@@ -45,7 +49,7 @@ class Service(ABC, Generic[T]):
             name: str,
             builder: Builder[T],
             validator: Validator[T],
-    ) -> None:
+    ):
         self._id = id
         self._name = name
         self._builder = builder
@@ -70,7 +74,7 @@ class Service(ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Service):
+        if isinstance(other, EntityService):
             return self._id == other.id
         return False
     

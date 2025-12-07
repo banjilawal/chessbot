@@ -9,4 +9,4 @@ version: 1.0.0
 
 from .context import *
 from .exception import *
-from .search import DomainResidentSearch
+from .search import DomainResidentFinder

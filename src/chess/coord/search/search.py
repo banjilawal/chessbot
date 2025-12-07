@@ -1,4 +1,4 @@
-# src/chess/coord/searcher/searcher.py
+# src/chess/coord/searcher/finder.py
 
 """
 Module: chess.coord.searcher.searcher
@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system import LoggingLevelRouter, Search, SearchResult
-from chess.coord import Coord, CoordContext, CoordContextValidator, CoordSearchException
+from chess.system import LoggingLevelRouter, Finder, SearchResult
+from chess.coord import Coord, CoordContext, CoordContextValidator, CoordFinderException
 
 
-class CoordSearch(Search[Coord]):
+class CoordFinder(Finder[Coord]):
     """"""
     
     @classmethod
@@ -24,7 +24,7 @@ class CoordSearch(Search[Coord]):
             context: CoordContext,
             context_validator: CoordContextValidator = CoordContextValidator(),
     ) -> SearchResult[List[Coord]]:
-        method = "CoordSearch.find"
+        method = "CoordFinder.find"
         try:
             context_validation = context_validator.validate(context)
             if context_validation.is_failure():
@@ -51,11 +51,11 @@ class CoordSearch(Search[Coord]):
         
         except Exception as ex:
             return SearchResult.failure(
-                CoordSearchException(
+                CoordFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{CoordSearchException.DEFAULT_MESSAGE}"
+                        f"{CoordFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -68,7 +68,7 @@ class CoordSearch(Search[Coord]):
             row: int
     ) -> SearchResult[List[Coord]]:
         """"""
-        method = "CoordSearch._find_by_row"
+        method = "CoordFinder._find_by_row"
         
         try:
             matches = [
@@ -82,11 +82,11 @@ class CoordSearch(Search[Coord]):
         
         except Exception as ex:
             return SearchResult.failure(
-                CoordSearchException(
+                CoordFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{CoordSearchException.DEFAULT_MESSAGE}"
+                        f"{CoordFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -99,7 +99,7 @@ class CoordSearch(Search[Coord]):
             column: int
     ) -> SearchResult[List[Coord]]:
         """"""
-        method = "CoordSearch._find_by_column"
+        method = "CoordFinder._find_by_column"
         try:
             matches = [
                 coord for coord in data_set if coord.column == column
@@ -112,11 +112,11 @@ class CoordSearch(Search[Coord]):
         
         except Exception as ex:
             return SearchResult.failure(
-                CoordSearchException(
+                CoordFinderException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{CoordSearchException.DEFAULT_MESSAGE}"
+                        f"{CoordFinderException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -130,7 +130,7 @@ class CoordSearch(Search[Coord]):
             column: int
     ) -> SearchResult[List[Coord]]:
         """"""
-        method = "CoordSearch._find_by_row_and_column"
+        method = "CoordFinder._find_by_row_and_column"
         
         try:
             matches = [
@@ -144,8 +144,8 @@ class CoordSearch(Search[Coord]):
                 return SearchResult.success(payload=matches)
         except Exception as ex:
             return SearchResult.failure(
-                CoordSearchException(
+                CoordFinderException(
                     ex=ex,
-                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}"
+                    message=f"{method}: {CoordFinderException.DEFAULT_MESSAGE}"
                 )
             )

@@ -1,7 +1,7 @@
-# src/chess/agent/model/agent_variety.exception.py
+# src/chess/agent/model/variety.exception.py
 
 """
-Module: chess.agent.model.agent_variety.exception
+Module: chess.agent.model.variety.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

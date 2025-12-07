@@ -25,7 +25,7 @@ class Context(ABC, Generic[T]):
   
   
     # PROVIDES:
-    1. Search options.
+    1. Finder options.
   
     # ATTRIBUTES:
         *   id (Optional[int])

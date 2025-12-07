@@ -56,7 +56,7 @@ class GameBuilder(Builder[Game]):
             black_player: Agent,
             id: int = id_emitter.service_id,
             board: BoardService = BoardService(),
-            identity_service: IdentityService = IdentityService(),
+            idservice: IdentityService = IdentityService(),
             agent_data: UniqueAgentDataService = UniqueAgentDataService(),
     ) -> BuildResult[Game]:
         """
@@ -72,7 +72,7 @@ class GameBuilder(Builder[Game]):
             *   id (int)
             *   white_player (Agent)
             *   black_player (GameSchema)
-            *   identity_service (IdentityService)
+            *   idservice (IdentityService)
             *   agent_certifier (AgentService)
             *   schema_validator (GameSchemaValidator)
         All Services have default values to ensure they are never null.
@@ -89,7 +89,7 @@ class GameBuilder(Builder[Game]):
         
         try:
             # Start the error detection process.
-            id_validation = identity_service.validate_id(id)
+            id_validation = idservice.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             

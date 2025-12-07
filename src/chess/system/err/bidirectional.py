@@ -44,7 +44,7 @@ class BiDirectionalException(ChessException):
         
     ### Typical Use Case: Verifying a Piece is active if it is occupying a Square.
     
-    ## Search Filtering
+    ## Finder Filtering
     *   Using the one-side to filter items in a many-sides by one-side along with
         some other unique attribute they all have with the shared attribute that
         at least one collection member has.

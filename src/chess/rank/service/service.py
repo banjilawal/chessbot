@@ -7,11 +7,11 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import Service, id_emitter
+from chess.system import EntityService, id_emitter
 from chess.rank import Rank, RankFactory, RankSpecValidator, RankValidatorFactory
 
 
-class RankCertifier(Service[Rank]):
+class RankCertifier(EntityService[Rank]):
     DEFAULT_NAME = "RankCertifier"
     _spec_validator: RankSpecValidator
     

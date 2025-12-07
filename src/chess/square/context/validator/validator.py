@@ -43,7 +43,7 @@ class SquareContextValidator(Validator[SquareContext]):
                         candidate: Any,
                         board_service: BoardService = BoardService(),
                         coord_service: CoordService = CoordService(),
-                        identity_service: IdentityService = IdentityService(),
+                        idservice: IdentityService = IdentityService(),
                 ) -> ValidationResult[SquareContext]:
 
     # INSTANCE METHODS:
@@ -56,7 +56,7 @@ class SquareContextValidator(Validator[SquareContext]):
             candidate: Any,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService()
+            idservice: IdentityService = IdentityService()
     ) -> ValidationResult[SquareContext]:
         """
         # ACTION:
@@ -72,7 +72,7 @@ class SquareContextValidator(Validator[SquareContext]):
             *   candidate (Any)
             *   board_service (BoardService)
             *   coord_service (CoordService)
-            *   identity_service (IdentityService):
+            *   idservice (IdentityService):
 
         # Returns:
         ValidationResult[SquareContext] containing either:
@@ -115,13 +115,13 @@ class SquareContextValidator(Validator[SquareContext]):
                 )
             # Pick the flag which was turned on 
             if context.id is not None:
-                id_validation = identity_service.validate_id(candidate=context.id)
+                id_validation = idservice.validate_id(candidate=context.id)
                 if id_validation.is_failure:
                     return ValidationResult.failure(id_validation.exception)
                 return ValidationResult.success(payload=context)
             
             if context.name is not None:
-                name_validation = identity_service.validate_name(context.name)
+                name_validation = idservice.validate_name(context.name)
                 if name_validation.is_failure:
                     return ValidationResult.failure(name_validation.exception)
                 return ValidationResult.success(payload=context)

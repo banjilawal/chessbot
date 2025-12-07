@@ -7,12 +7,12 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.system import Service, id_emitter
+from chess.system import EntityService, id_emitter
 from chess.piece import Piece, PieceFactory, PieceValidator
 
-class PieceService(Service[Piece]):
+class PieceService(EntityService[Piece]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
