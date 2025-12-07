@@ -42,14 +42,30 @@ class AgentService(EntityService[Agent]):
             builder: AgentFactory = AgentFactory(),
             validator: AgentValidator = AgentValidator(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   builder (Team)
+            *   validator (Game)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def item_builder(self) -> AgentFactory:
+    def builder(self) -> AgentFactory:
         return cast(AgentFactory, self.item_builder)
     
     @property
-    def item_validator(self) -> AgentValidator:
+    def validator(self) -> AgentValidator:
         return cast(AgentValidator, self.item_validator)
     
     

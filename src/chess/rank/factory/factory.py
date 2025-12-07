@@ -7,7 +7,6 @@ Created: 2025-08-25
 version: 1.0.0
 """
 from typing import Optional
-from wsgiref.validate import validator
 
 from chess.system import Builder, BuildResult, IdEmitter, LoggingLevelRouter, id_emitter
 from chess.rank import (
@@ -23,6 +22,9 @@ class RankFactory(Builder[Rank]):
     # RESPONSIBILITIES:
         1. Manage construction of Rank instances that can be used safely by the client.
         2. Ensure params for Rank creation have met the application's safety contract.
+        
+    # PARENT
+        *   Builder
 
     # PROVIDES:
       ValidationResult[Rank] containing either:
